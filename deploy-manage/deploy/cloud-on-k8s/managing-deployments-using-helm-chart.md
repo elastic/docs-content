@@ -96,7 +96,7 @@ helm install eck-stack-with-autoops elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/autoops/basic.yaml -n elastic-stack
 ```
 
-The `eck-autoops-agent-policy` chart creates an `AutoOpsAgentPolicy` resource that connects your {{es}} clusters to AutoOps. ECK automatically handles the creation of API keys, agent configuration, and deployment of the AutoOps Agent required to send metrics to AutoOps.
+The `eck-autoops-agent-policy` chart creates an `AutoOpsAgentPolicy` resource that connects your {{es}} clusters to AutoOps. {{eck}} automatically handles the creation of API keys, agent configuration, and deployment of the AutoOps Agent required to send metrics to AutoOps.
 
 For more information about configuring AutoOps, refer to [AutoOps configuration](/deploy-manage/deploy/cloud-on-k8s/configuration-autoops.md).
 

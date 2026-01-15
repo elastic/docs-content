@@ -23,13 +23,14 @@ kind: AutoOpsAgentPolicy
 metadata:
   name: autoops-policy
 spec:
-  version: 9.2.1 <1>
+  version: {{version.stack}} <1>
   autoOpsRef:
     secretName: autoops-config
   resourceSelector:
     matchLabels:
       autoops: enabled
 ```
+
 1. 9.2.1 is the minimum version allowed for the AutoOps Agent
 
 The `AutoOpsAgentPolicy` resource requires:
@@ -62,7 +63,7 @@ kind: AutoOpsAgentPolicy
 metadata:
   name: autoops-policy
 spec:
-  version: 9.2.1
+  version: {{version.stack}}
   autoOpsRef:
     secretName: autoops-config
   resourceSelector:
@@ -71,7 +72,7 @@ spec:
 ```
 
 :::{note}
-The `autoops-token`, `autoops-otel-url` and `cloud-connected-mode-api-key` are required. You can obtain these from the ECK AutoOps installation wizard in {{ecloud}}. `cloud-connected-mode-api-url` is optional.
+The `autoops-token`, `autoops-otel-url` and `cloud-connected-mode-api-key` are required. You can obtain these from the ECK AutoOps installation wizard in {{ecloud}}. `cloud-connected-mode-api-url` is optional. Reference the detailed [AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) section for more information.
 :::
 
 ## Selecting {{es}} clusters [k8s-autoops-selecting-clusters]
@@ -91,8 +92,6 @@ spec:
     matchLabels:
       autoops: enabled
 ```
-
-The `resourceSelector` uses standard {{k8s}} [label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) to match {{es}} clusters. All {{es}} clusters within the cluster that match the selector are connected to AutoOps.
 
 ## Viewing AutoOps status
 
@@ -114,10 +113,10 @@ kubectl describe autoopsagentpolicy eck-autoops-config-policy
 ```
 
 The status shows:
+
 1. A count of errors encountered when configuring the AutoOps Agent.
-2. The Phase of the Policy.
-3. A count of the number of resources selected by the resourceSelector.
-4. A count of the number of resources that are ready, and shipping data to AutoOps.
+2. A count of the number of resources selected by the resourceSelector.
+3. A count of the number of resources that are ready, and shipping data to AutoOps.
 
 ## Removing the connection to AutoOps
 

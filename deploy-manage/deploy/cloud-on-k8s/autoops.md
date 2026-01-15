@@ -19,6 +19,6 @@ This section describes how to connect ECK-managed {{es}} clusters to AutoOps.
     * [Selecting {{es}} clusters](configuration-autoops.md#k8s-autoops-selecting-clusters)
 
 ::::{note}
-AutoOps on ECK is available starting from ECK 3.3.0. Your {{es}} cluster must be on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above) and on an [Enterprise self-managed license]({{subscriptions}}) or an active self-managed trial.
+AutoOps on {{eck}} is available starting from ECK 3.3.0. Your {{es}} cluster must be on a [supported {{es}} version](https://www.elastic.co/support/eol) and on an [Enterprise self-managed license]({{subscriptions}}) or an active self-managed trial.
 ::::
 

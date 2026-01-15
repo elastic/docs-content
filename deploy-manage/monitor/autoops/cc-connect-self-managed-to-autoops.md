@@ -95,7 +95,7 @@ This is the first step of the installation wizard. Your cluster ships metrics to
 
 Select one of the following methods to install {{agent}}:
 
-* **ECK**
+* **{{eck}}**
 * **{{k8s}}**
 * **Docker**
 * **Linux**
@@ -232,12 +232,12 @@ $$$firewall-allowlist$$$
 :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
 :::
 
-### Install agent
+### Install agent [install-agent]
 
 The wizard generates an installation command or YAML manifest based on your configuration. Depending on your installation method, the following formats are available:
 
-* ECK
-    * YAML (AutoOpsAgentPolicy resource)
+* {{eck}}
+    * YAML (`AutoOpsAgentPolicy` resource)
 * {{k8s}}
     * YAML
     <!-- Not applicable for private preview 
@@ -354,9 +354,9 @@ You can connect additional ECK-managed {{es}} clusters in one of two ways:
    kubectl label elasticsearch quickstart autoops=enabled
    ```
 
-   All {{es}} clusters in the {{k8s}} cluster that match the label selector are automatically connected to AutoOps.
+   All {{es}} clusters in the {{k8s}} cluster that match the label selector are automatically connected to AutoOps. The `resourceSelector` uses standard {{k8s}} [label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) to match {{es}} clusters.
 
-2. **Create additional AutoOpsAgentPolicy resources**: Create a new `AutoOpsAgentPolicy` for each set of additional clusters, either by repeating the installation wizard or by creating the resource manually.
+2. **Create additional `AutoOpsAgentPolicy` resources**: Create a new `AutoOpsAgentPolicy` for each set of additional clusters, either by repeating the installation wizard or by creating the resource manually.
 
 For more information, refer to [Selecting {{es}} clusters](/deploy-manage/deploy/cloud-on-k8s/configuration-autoops.md#k8s-autoops-selecting-clusters).
 
