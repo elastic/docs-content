@@ -204,7 +204,7 @@ Starting with ECK 2.0 the operator can make Kubernetes Node labels available as 
 
 ### Exposing Kubernetes node topology labels in Pods [k8s-availability-zone-awareness-downward-api]
 :::{note}
-Starting with Kubernetes 1.35, the `PodTopologyLabelsAdmission` feature is enabled by default. This means that the labels `topology.kubernetes.io/region` and `topology.kubernetes.io/zone` from the node are automatically propagated as labels on Pods. As a result, you may not need to use the `eck.k8s.elastic.co/downward-node-labels` annotation or additional configuration to make these topology labels available in your Pods.
+Starting with Kubernetes 1.35, the `PodTopologyLabelsAdmission` feature is enabled by default. This means that the labels `topology.kubernetes.io/region` and `topology.kubernetes.io/zone` from the node are automatically propagated as labels on Pods. As a result, you may not need to use the `eck.k8s.elastic.co/downward-node-labels` annotation or additional configuration to make these topology labels available in your Pods. In this case, you can skip the first two steps described below. Also note that in this case, node labels are exposed as Pod labels, not annotations.
 :::
 
 1. First, ensure that the operator’s flag `exposed-node-labels` contains the list of the Kubernetes node labels that should be exposed in the {{es}} Pods. If you are using the provided installation manifest, or the Helm chart, then this flag is already preset with two wildcard patterns for well-known node labels that describe Kubernetes cluster topology, like `topology.kubernetes.io/.*` and `failure-domain.beta.kubernetes.io/.*`.
