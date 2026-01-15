@@ -732,6 +732,7 @@ toc:
               - file: monitor/monitoring-data/beats-page.md
               - file: monitor/monitoring-data/elasticsearch-metrics.md
               - file: monitor/monitoring-data/kibana-page.md
+              - file: monitor/monitoring-data/integrations-server-page.md
               - file: monitor/monitoring-data/logstash-page.md
               - file: monitor/monitoring-data/monitor-troubleshooting.md
           - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
