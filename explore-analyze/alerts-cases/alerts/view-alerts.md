@@ -49,7 +49,7 @@ Alternatively, view those alerts in the [{{security-app}}](../../../solutions/se
 
 ## View alert details [view-alert-details]
 
-To get more information about a specific alert, open its action menu ({icon}`boxes_vertical`) and select **View alert details** in either **{{stack-manage-app}} > Alerts** or **{{rules-ui}}**. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, there is information such as the expected and actual threshold values and a summarized reason for the alert.
+To get more information about a specific alert, click the action menu icon {icon}`boxes_vertical` and select **View alert details** in either **{{stack-manage-app}} > Alerts** or **{{rules-ui}}**. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, there is information such as the expected and actual threshold values and a summarized reason for the alert.
 
 If an alert is affected by a maintenance window, the alert details include its identifier. For more information about their impact on alert notifications, refer to [Maintenance windows](maintenance-windows.md).
 
