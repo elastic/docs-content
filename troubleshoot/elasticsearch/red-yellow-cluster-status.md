@@ -203,7 +203,7 @@ If allocation not enabled, the response shows an override from the default value
 When `cluster.routing.allocation.enable` is set to `none`, ingestion is not blocked. However, new indices cannot be created (including indices created by ILM rollover) because neither primary shards nor replicas can be allocated to nodes in the cluster.
 ::::
 
-To re-enable allocation, reset the `cluster.routing.allocation.enable` cluster setting.
+To re-enable allocation, reset the `cluster.routing.allocation.enable` cluster setting:
 
 ```console
 PUT _cluster/settings
