@@ -451,10 +451,15 @@ toc:
         - file: observability/streams/management/retention.md
         - file: observability/streams/management/extract.md
           children:
+            - file: observability/streams/management/extract/drop.md
+            - file: observability/streams/management/extract/remove.md
             - file: observability/streams/management/extract/date.md
+            - file: observability/streams/management/extract/convert.md
+            - file: observability/streams/management/extract/replace.md
             - file: observability/streams/management/extract/dissect.md
             - file: observability/streams/management/extract/grok.md
             - file: observability/streams/management/extract/set.md
+            - file: observability/streams/management/extract/math.md
             - file: observability/streams/management/extract/rename.md
             - file: observability/streams/management/extract/append.md
             - file: observability/streams/management/extract/manual-pipeline-configuration.md
