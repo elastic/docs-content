@@ -16,7 +16,9 @@ Agent Builder MCP tools enable calling a remote [MCP server's](https://modelcont
 To use external MCP tools, you first need to set up an [MCP Kibana Stack Connector](kibana://reference/connectors-kibana/mcp-action-type.md). This interface enables Agent Builder MCP tools to communicate with a remote MCP server.
 
 ## Adding MCP tools
+
 You can import MCP tools individually or in bulk.
+
 ### Add a single tool
 
 Once you've set up an MCP Kibana Stack Connector, click "New tool" on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page and select the `MCP` tool type.
@@ -40,7 +42,7 @@ Once a tool is selected, the `Description` field of the tool automatically popul
 
 ### Bulk import MCP tools
 
-Agent Builder provides an efficient way to import multiple tools from an MCP server using the `Bulk import MCP tools` feature, which can be found in the Agent Builder [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page under the "Manage MCP" dropdown.
+To import multiple tools at once, go to the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page and select **Bulk import MCP tools** from the "Manage MCP" dropdown.
 
 :::{image} ../images/mcp-bulkimport-location.png
 :screenshot:
@@ -48,13 +50,7 @@ Agent Builder provides an efficient way to import multiple tools from an MCP ser
 :width: 500px
 :::
 
-Configuration for importing tools in bulk, while similar to single MCP tool creation, has some extra fields and automated behavior to consider.
-
-:::{image} ../images/mcp-bulkimport-config-example.png
-:screenshot:
-:alt: Example configuration for bulk importing MCP tools from the Context7 MCP server.
-:width: 800px
-:::
+Configure the following fields:
 
 MCP Server
 :   The MCP Kibana Stack Connector to interface with.
@@ -65,9 +61,15 @@ Tools to import
 Namespace
 :   A string to prepend to the tool name to aid in searching and organization. A namespace must start with a letter and contain only lowercase letters, numbers, and hyphens.
 
-Clicking "Import tools" generates a series of MCP tools that map to the associated MCP server tools that were selected.
+:::{image} ../images/mcp-bulkimport-config-example.png
+:screenshot:
+:alt: Example configuration for bulk importing MCP tools from the Context7 MCP server.
+:width: 800px
+:::
 
-Imported tools have their `Tool ID` generated as `ramespace.tool-name`, where `namespace` is the user-provided namespace string, and `tool-name` is the name of the tool as provided by the MCP server. Furthermore, the `Description` field automatically populates.
+After clicking **Import tools**, Agent Builder creates an MCP tool for each selection.
+
+Each tool's ID is generated as `namespace.tool-name` (for example, `context7.resolve-library-id`), and descriptions are populated automatically from the MCP server.
 
 ## How MCP tool calls work
 
@@ -107,3 +109,9 @@ An MCP tool is marked "unhealthy" when:
     :alt: Tool execution failed icon.
     :width: 100px
     :::
+
+## Related pages
+
+* [Tools](/explore-analyze/ai-features/agent-builder/tools.md)
+* [ES|QL tools](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md)
+* [Index search tools](/explore-analyze/ai-features/agent-builder/tools/index-search-tools.md)
