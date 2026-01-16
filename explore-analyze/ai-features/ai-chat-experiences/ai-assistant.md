@@ -33,8 +33,8 @@ $$$token-limits$$$
 
 AI Assistant requires specific privileges and a large language model (LLM) connector. The capabilities and ways to interact with AI Assistant can differ for each solution. To learn more about how it works in each solution, refer to:
 
-- [{{obs-ai-assistant}}](../../solutions/observability/observability-ai-assistant.md)
-- [AI Assistant for Security](../../solutions/security/ai/ai-assistant.md)
+- [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md)
+- [AI Assistant for Security](/solutions/security/ai/ai-assistant.md)
 
 To learn more about configuring LLM connectors, refer to:
 
@@ -43,7 +43,7 @@ To learn more about configuring LLM connectors, refer to:
 ## Prompt best practices [rag-for-esql]
 Elastic AI Assistant allows you to take full advantage of the Elastic platform to improve your operations. It can help you write an ES|QL query for a particular use case, or answer general questions about how to use the platform. Its ability to assist you depends on the specificity and detail of your questions. The more context and detail you provide, the more tailored and useful its responses will be.
 
-To maximize its usefulness, consider using more detailed prompts or asking for additional information. For instance, after asking for an ES|QL query example, you could ask a follow-up question like, “Could you give me some other examples?” You can also ask for clarification or further exposition, for example "Provide comments explaining the query you just gave."
+To maximize its usefulness, consider using more detailed prompts or asking for additional information. For instance, after asking for an ES|QL query example, you could ask a follow-up question like, “Could you give me some other examples?” You can also ask for clarification or further exposition, for example "Provide comments explaining the query you just gave".
 
 In addition to practical advice, AI Assistant can offer conceptual advice, tips, and best practices for enhancing your security measures. You can ask it, for example:
 
@@ -57,5 +57,5 @@ Elastic does not control third-party tools, and assumes no responsibility or lia
 
 ## Elastic Managed LLM [elastic-managed-llm-ai-assistant]
 
-:::{include} ../../solutions/_snippets/elastic-managed-llm.md
+:::{include} /solutions/_snippets/elastic-managed-llm.md
 :::

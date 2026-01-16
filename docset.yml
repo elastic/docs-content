@@ -83,6 +83,7 @@ toc:
   - file: archive.md
   - file: versions.md
   - hidden: 404.md
+  - hidden: _search.md
 
 subs:
   subscriptions:   "https://www.elastic.co/subscriptions"
