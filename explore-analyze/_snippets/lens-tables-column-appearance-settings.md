@@ -1,3 +1,5 @@
+- **Value format**: Choose to display the value as number, percent, bytes, bits, duration, or with a custom format that you can define.
+
 - **Text alignment**: Align the values in the column to the **Left**, **Center**, or **Right**.
 
 - **Color by value**: Apply colors to cell backgrounds or text based on values. Choose between:
