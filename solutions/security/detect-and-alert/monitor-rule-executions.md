@@ -97,7 +97,7 @@ stack: ga 9.3+
 You must have the appropriate subscription to use the automatic gap fill feature. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::
 
-To automate gap remediation for your rules, enable the automatic gap fill feature. When turned on, a job runs every five minutes to check for new and existing gaps, then schedules tasks to fill them. Details about the job and scheduled gap fill tasks are captured in the gap fill scheduler logs. 
+To automate gap remediation for your rules, enable the automatic gap fill feature. When turned on, a job runs every five minutes to check for new and existing gaps, then schedules tasks to fill them. 
 
 You can find the setting that controls the automatic gap fill feature by clicking **Settings** (above the Rules table), then going to the **Auto gap fill settings** section. Use the toggle to turn the feature on and off. 
 
@@ -105,9 +105,9 @@ You can find the setting that controls the automatic gap fill feature by clickin
 The **Auto gap fill status:** field (located in the panel above the Rules table) shows whether the automatic gap fill feature is on or off. Click the field value to access the automatic gap fill settings.
 ::::
 
-You access the gap fill scheduler logs by clicking **logs** in the **Auto gap fill settings** section description. Expand each row in the scheduler logs table to learn more about gaps that were discovered and gap fill tasks that were scheduled each time the automatic gap fill job ran. 
+Details about the job and scheduled gap fill tasks are captured in the gap fill scheduler logs. You access the gap fill scheduler logs by clicking **logs** in the **Auto gap fill settings** section description. 
 
-The logs also provide key details such as:
+With the scheduler logs table, expand the rows to learn more about gaps that were discovered and gap fill tasks that were scheduled each time the automatic gap fill job ran. You can also find key details such as:
 
 - When each job ran to check for gaps
 - The number of gaps each job detected and the number of rules that had gaps
