@@ -64,7 +64,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 
    ::::{note}
-   The provided queries download a default selection of assets. We do not recommend changing the query for QRadar exports. For Splunk, as long as you export your results as JSON, you can use a different query. For example, the following custom query would download rules related to just the `splunksysmonsecurity` app:
+   The provided queries download a default selection of assets. For QRadar exports, we do not recommend changing the query. For Splunk, as long as you export your results as JSON, you can use a different query. For example, the following custom query would download rules related to just the `splunksysmonsecurity` app:
 
    ```
    | rest /servicesNS/-/-/saved/searches
@@ -80,9 +80,11 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 6. After you upload your assets, Automatic Migration detects whether they use any macros, lookups, reference sets, or MITRE mappings. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later—however, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to stay on this page—a notification appears when processing is complete.
 
-7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears. Use the dropdown menu to select which AI connector to use. For rule migrations there is a **Match to Elastic prebuilt rules** option (on by default); when it's on, any migrated rules that are similar to an Elastic prebuilt rule are converted to those prebuilt rules (this uses fewer tokens). When it's off, each rules is converted into a new custom rule. 
+7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears.
 
-8. Click **Translate**. A name for the migration is automatically created, and you can track its progress on this page. The **More actions** ({icon}`boxes_vertical`) button lets you rename or delete the migration. 
+8. Use the dropdown menu to select which AI connector to use. For rule migrations, the **Match to Elastic prebuilt rules** option (on by default) converts any migrated rules that are similar to an Elastic prebuilt rule to that prebuilt rule (this uses fewer tokens). When the option is off, each rule is converted into a new custom rule. 
+
+9. Click **Translate**. A name for the migration is automatically created, and you can track its progress on this page. The **More actions** ({icon}`boxes_vertical`) button lets you rename or delete the migration. 
 
    ::::{image} /solutions/images/security-siem-migration-rule-status-more-actions.png
    :alt: The rule migration status view
@@ -93,7 +95,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    You don't need to stay on this page. A notification appears when the migration is complete.
 
 
-9. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rules migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
+10. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rules migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
 
    ::::{image} /solutions/images/security-siem-migration-integrations-panel.png
    :alt: The add integrations panel.
@@ -101,7 +103,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    :screenshot:
    ::::
 
-10. When migration is complete, click the notification or return to the **Get started** page then click **View translated rules** or **View translated dashboards** to open the [**Translated rules**](#the-translated-rules-page) page  or the [**Translated dashboards**](#the-translated-dashboards-page) page. 
+11. When migration is complete, click the notification or return to the **Get started** page then click **View translated rules** or **View translated dashboards** to open the [**Translated rules**](#the-translated-rules-page) page  or the [**Translated dashboards**](#the-translated-dashboards-page) page. 
 
 
 ## The Translated rules page
