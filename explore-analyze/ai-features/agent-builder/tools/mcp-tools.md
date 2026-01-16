@@ -16,7 +16,7 @@ Agent Builder MCP tools enable calling a remote [MCP server's](https://modelcont
 To use external MCP tools, you first need to set up an [MCP Kibana Stack Connector](kibana://reference/connectors-kibana/mcp-action-type.md). This interface enables Agent Builder MCP tools to communicate with a remote MCP server.
 
 ## Adding MCP tools
-
+You can import MCP tools individually or in bulk.
 ### Adding a single tool
 
 Once an MCP Kibana Stack Connector has been set up, an MCP tool can be created by clicking "New tool" on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page.
