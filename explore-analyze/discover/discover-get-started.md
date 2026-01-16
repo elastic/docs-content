@@ -292,7 +292,7 @@ In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
 :applies_to: stack: ga 9.1+
-Partial results that are available are shown when an {{esql}} query:
+Partial results appear when an {{esql}} query:
 - times out. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
 - {applies_to}`stack: ga 9.3+` is canceled.
 :::
