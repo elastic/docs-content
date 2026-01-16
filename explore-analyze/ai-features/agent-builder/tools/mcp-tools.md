@@ -30,6 +30,7 @@ Once you've set up an MCP Kibana Stack Connector, click "New tool" on the [Tools
 :::
 
 #### Configuration
+
 Individual MCP tools have the following configuration settings:
 
 MCP Server
