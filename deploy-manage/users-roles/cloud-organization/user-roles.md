@@ -93,7 +93,7 @@ You can apply the following predefined roles to {{serverless-full}} projects. So
 In the following table, the privileges outlined in **Project access** require [**Cloud Console, {{es}}, and {{kib}}** access](#access) to be granted for the relevant projects.
 
 :::{tip}
-You can optionally [create custom roles in a project](/deploy-manage/users-roles/cloud-organization/user-roles.md) and apply them to your organization users.
+You can optionally [create custom roles in a project](/deploy-manage/users-roles/cloud-organization/serverless-custom-roles.md) and apply them to your organization users.
 :::
 
 | Name | {{ecloud}} access | Project access | Availability |
@@ -131,23 +131,23 @@ Members with the **Admin** role assigned are able to see role assignments for de
 ```{applies_to}
 serverless: ga
 ```
-When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can also select the surfaces the user can access:
+When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can select the surfaces the user can access:
 
-* **Cloud Console, {{es}}, and {{kib}}** (default): Grants access to the {{ecloud}} Console, plus the {{kib}} interface and {{es}} service for the applicable projects.
-* **Cloud Console**: Grants access to only the {{ecloud}} Console for the applicable {{serverless-short}} projects.
+| Access | Grants |
+| **Cloud Console, {{es}}, and {{kib}}** (default) | Grants access to the {{ecloud}} Console, plus the {{kib}} interface and {{es}} service for the applicable projects. |
+| **Cloud Console** | Grants access to only the {{ecloud}} Console for the applicable {{serverless-short}} projects. |
 
 ### Considerations
 
-The **Access** selection impacts the behavior of the selected role. To take full effect, most roles need **Cloud Console, {{es}}, and {{kib}}** access to be granted. However, you might choose to only grant **Cloud Console** access if the user does not need to interact with the project directly.
+The **Access** selection impacts the behavior of the selected role. Most roles require Cloud Console, {{es}}, and {{kib}} access to take full effect.However, you might choose to only grant **Cloud Console** access if the user does not need to interact with the project directly.
 
 When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that are designed to work inside of the project have limited access, and can't open the project in {{kib}}. For example: 
 
-* If you select the **Admin** role, the user will still be able configure project settings and network security in {{ecloud}}, but can't to log into the relevant projects as superuser.
-* Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, are able to view the relevant projects on the {{ecloud}} Console home page, but can't open the project to view their dashboards and visualizations.
+* If you select the **Admin** role, the user is able configure project settings and network security in {{ecloud}}, but can't log in to the relevant projects as superuser.
+* Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, can view the relevant projects on the {{ecloud}} Console home page, but can't open the project to view their dashboards and visualizations.
+* [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) always require **Cloud Console, {{es}}, and {{kib}}** access. Without it, the user’s access is reduced to **Viewer** in the {{ecloud}} Console, and can't log in to the project.
 
-To learn about which permissions are granted depending on the level of access that you select, refer to the [predefined roles table](#general-assign-user-roles-table).
-
-If you apply a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md), then you must always select **Cloud Console, {{es}}, and {{kib}}** access for the role to take full effect. If you don't grant this access, then the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} Console, and can't log in to the project.
+For details on the permissions granted for each role, refer to the [predefined roles table](#general-assign-user-roles-table).
 
 :::{tip}
 When inviting a user to your organization with the {{ecloud}} API, you can set their access surfaces in the invitation request. To grant {{ecloud}} Console-only access, pass an empty `application_id` array in the role assignment. You can view an example in [Manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations).

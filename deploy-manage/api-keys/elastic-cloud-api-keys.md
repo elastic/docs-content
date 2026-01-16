@@ -118,8 +118,10 @@ serverless: ga
 
 When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can select your level of API access:
 
-* **Cloud API** (default): Grants access to only [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs.
-* **Cloud, {{es}} and {{kib}} API**: Grants access to the relevant projects and configuration options through the [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}), and [{{es}} {{serverless-short}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) API endpoints for the relevant projects. 
+| Access | Grant |
+| --- | --- |
+| **Cloud API** (default) | Grants access to only [{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs. No direct access to project {{es}} or {{kib}} API endpoints. |
+| **Cloud, {{es}} and {{kib}} API** | Grants the following access:<br><br>•[{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs.<br><br>• [{{es}} {{serverless-short}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) API endpoints for the relevant projects. |
 
 Using {{ecloud}} keys for project-level API access, rather than [granting keys from within each {{serverless-short}} project](serverless-project-api-keys.md), allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
 
@@ -127,13 +129,12 @@ When granting Cloud resource access, you can apply a [predefined role](/deploy-m
 
 #### Considerations
 
-Your **API access** selection impacts the behavior of your selected role. To take full effect, most roles need **Cloud, {{es}} and {{kib}} API** access to be granted. However, you might choose to only grant **Cloud API** access if your use case does not require {{es}} or {{kib}} APIs.
+All roles include permissions to both Cloud APIs and {{es}} and {{kib}} APIs. Your **API access** selection limits the role's scope, and, in some cases, can disable core functionality.
 
-When **Cloud, {{es}} and {{kib}} API** access is not granted, roles that are designed to interact with the project directly have limited access. For example: 
+* **Cloud API access**: The API key can use the role’s permissions for organization-level actions in {{ecloud}}, but it has no direct access to the project itself. Roles designed for project use, such as the Security **Tier 1 analyst** role, have only **Viewer** access to the relevant projects through {{ecloud}} APIs. 
+  
+  API keys with custom roles are also limited to **Viewer** access in the project.
 
-* If you select the **Admin** role, the API key will still be able configure project settings in {{ecloud}}, but won't be able to interact with the project as a superuser.
-* Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, will only have **Viewer** access to the relevant projects through the {{ecloud}} {{serverless-short}} API.
+* **Cloud, {{es}} and {{kib}} API access**: The API key can use the role’s permissions to fully interact with the project. This selection is required for custom roles to work as intended, because they rely on the {{es}} and {{kib}} serverless APIs for project-level access.
 
-To learn about the permissions that require **Cloud, {{es}} and {{kib}} API** access for each role, refer to the **Project access** column in the [predefined roles table](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table).
-
-If you apply a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md), then you must always select **Cloud, {{es}} and {{kib}} API** for API access for the role to take full effect. This is because custom roles are intended to work within the project itself, which can only be accessed through {{es}} and {{kib}} serverless APIs. If you don't grant this access, then the key only has the equivalent of **Viewer** access to the project in the {{ecloud}} serverless API.
+For details on the permissions granted for each role, refer to the [predefined roles table](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table).

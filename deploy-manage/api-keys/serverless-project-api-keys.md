@@ -9,13 +9,13 @@ products:
 
 # Serverless project API keys [api-keys]
 
-In Serverless projects, the following types of API keys exist:
+In {{serverless-short}} projects, the following types of API keys exist:
 
 - **Personal** API keys, that you can create to allow external services to access your serverless project, including the [{{es}}]({{es-apis}}) and [{{kib}}]({{kib-apis}}) APIs, on behalf of a user.
 - **Managed** API keys, created and managed by {{kib}} to correctly run background tasks.
 
-:::{admonition} Manage serverless project API access using {{ecloud}} API keys
-As an alternative to using Serverless project API keys, which are tied to a single project, you can create [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that include access to projects' {{es}} and {{kib}} APIs. This allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
+:::{admonition} Manage {{serverless-short}} project API access using {{ecloud}} API keys
+As an alternative to using {{serverless-short}} project API keys, which are tied to a single project, you can create [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that include access to projects' {{es}} and {{kib}} APIs. This allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
 :::
 
 To manage API keys in {{kib}}, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
