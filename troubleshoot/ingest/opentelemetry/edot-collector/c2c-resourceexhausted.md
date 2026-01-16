@@ -234,6 +234,11 @@ service:
 If possible, reduce payload size by:
 - Turn off unnecessary metrics in receivers
 - Filtering high-cardinality labels/attributes early in the pipeline
+
+:::{note}
+High cardinality (too many unique metric or attribute values) can impact costs and query performance. When telemetry data contains many unique combinations of attributes, labels, or metric names, it increases the volume of data stored and indexed, which may increase billing costs depending on your subscription model. Additionally, high cardinality can affect query performance in {{kib}} when analyzing your data.
+:::
+
 - Removing large attributes when safe for your use case
 
 ### Tune exporter queue and retry behavior to reduce drops during transient overload
