@@ -176,6 +176,8 @@ toc:
           - file: ai-features/agent-builder/models.md
           - file: ai-features/agent-builder/chat.md
           - file: ai-features/agent-builder/agent-builder-agents.md
+            children:
+            - file: ai-features/agent-builder/built-in-agents.md
           - file: ai-features/agent-builder/tools.md
             children:
               - file: ai-features/agent-builder/tools/builtin-tools-reference.md
