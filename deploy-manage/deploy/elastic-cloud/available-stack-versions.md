@@ -24,7 +24,7 @@ This section describes our version policy for {{ech}}, including:
 
 {{stack}} uses a version numbering scheme based on three numbers separated by dots. The leftmost number indicates the major release, the middle number indicates the minor release, and the rightmost number indicates the maintenance release. For example, `8.3.2` represents major release 8, minor release 3, and maintenance release 2.
 
-By default, the following versions are available in the {{ech}} UI:
+By default, the following versions are available in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
 * The two latest minor versions of the latest major version
 * The latest minor version of the previous major version
@@ -33,7 +33,9 @@ For example, if the latest {{stack}} version is {{version.stack}}, {{ech}} makes
 * {{version.stack | M.M }} and {{version.stack | M.M+1 | M.M }}
 * 8.19
 
-Additional versions can appear in the UI, such as [release candidate builds](#ec-release-builds) or older versions that you have a running deployment on. If a version is listed in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
+Additional versions can appear in the UI, such as [release candidate builds](#ec-release-builds) or older versions that are not end-of-life (EOL) and that you already have a running deployment on. This allows you, for example, to [clone an existing deployment](/deploy-manage/tools/snapshot-and-restore/ece-restore-snapshots-into-new-deployment.md) that uses one of those versions.
+
+Separately from the UI, the {{ech}} API allows you to [deploy any {{stack}} version as long as it is not EOL](cloud://reference/cloud-hosted/ec-api-deployment-crud.md#ec_using_the_api_to_create_deployment_with_non_eol_versions), even if that version is not listed in the UI.
 
 ## New {{stack}} versions [ec-version-policy-new]
 
