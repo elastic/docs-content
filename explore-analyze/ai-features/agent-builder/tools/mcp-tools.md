@@ -29,6 +29,12 @@ When an agent calls an MCP tool:
 
 ## Configuration
 
+:::{image} images/mcp-createnewtool-config-example.png
+:screenshot:
+:alt: Example configuration for a new MCP tool with the Context7 MCP server.
+:width: 150px
+:::
+
 MCP tools have the following configuration:
 
 MCP Server
@@ -41,6 +47,12 @@ Once a tool is selected, the `Description` field of the tool automatically popul
 
 ## Monitoring tool health
 
+:::{image} images/.png
+:screenshot:
+:alt: Example configuration for a new MCP tool with the Context7 MCP server.
+:width: 300px
+:::
+
 MCP type tools have built-in health monitoring. Tools that are unhealthy display an icon next to their IDs in the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page.
 
 An MCP tool is marked "unhealthy" when:
@@ -51,9 +63,21 @@ An MCP tool is marked "unhealthy" when:
 
 ## Bulk import MCP tools
 
+:::{image} images/mcp-bulkimport-location.png
+:screenshot:
+:alt: How to bulk import MCP tools from an MCP server.
+:width: 300px
+:::
+
 Agent Builder provides an efficient way to import multiple tools from an MCP server using the `Bulk import MCP tools` feature, which can be found in the Agent Builder [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page under the "Manage MCP" dropdown.
 
 ## Configuration for bulk tool import
+
+:::{image} images/mcp-bulkimport-config-example.png
+:screenshot:
+:alt: Example configuration for bulk importing MCP tools from the Context7 MCP server.
+:width: 300px
+:::
 
 Configuration for importing tools in bulk, while similar to single MCP tool creation, has some extra fields and automated behavior to consider.
 
