@@ -8,15 +8,15 @@ products:
 
 # Cross-project search [cross-project-search]
 
-**{{cps-cap}}** lets you run a single search request against one or more of your projects. For example, you can use a {{cps}} to filter and analyze log data stored accross your connected projects.
+**{{cps-cap}}** lets you run a single search request against one or more of your projects. For example, you can use a {{cps}} to filter and analyze log data stored accross your linked projects.
 
 ## Prerequisites
 
-* {{cps-cap}} requires connected projects. To set up connected projects, refer to [**TODO**]().
-* To use {{cps}} with ES|QL, both the origin and connected projects must have the appropriate [subscription level](https://www.elastic.co/subscriptions).
+* {{cps-cap}} requires linked projects. To set up linked projects, refer to [**TODO**]().
+* To use {{cps}} with ES|QL, both the origin and linked projects must have the appropriate [subscription level](https://www.elastic.co/subscriptions).
 * {{cps-cap}} requires [UIAM]() set up.
 
-## Project linking and connections
+## Project linking
 
 
 
