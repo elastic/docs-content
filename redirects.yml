@@ -585,7 +585,7 @@ redirects:
 
 # Moved explore-analyze AI assistant content into a subfolder (docs-content-internal/issues/455)
   'explore-analyze/manage-access-to-ai-assistant.md': 'explore-analyze/ai-features/manage-access-to-ai-assistant.md'
-  'explore-analyze/ai-assistant.md': 'explore-analyze/ai-features/ai-assistant.md'
+  'explore-analyze/ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3685
   'deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md': 'deploy-manage/monitor/autoops/ec-autoops-faq.md'
@@ -632,6 +632,9 @@ redirects:
   'solutions/search/cross-cluster-search.md': 'explore-analyze/cross-cluster-search.md'
   'solutions/search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
 
+  # Related to https://github.com/elastic/docs-content/pull/4438
+  'explore-analyze/ai-features/ai-agent-or-ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md'
+  
   # Related to agent builder restructure - moved agent builder docs to explore-analyze/
   'solutions/search/elastic-agent-builder.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
   'solutions/search/agent-builder/tools/esql-tools.md': 'explore-analyze/ai-features/agent-builder/tools/esql-tools.md'
@@ -648,3 +651,6 @@ redirects:
   'solutions/search/agent-builder/permissions.md': 'explore-analyze/ai-features/agent-builder/permissions.md'
   'solutions/search/agent-builder/programmatic-access.md': 'explore-analyze/ai-features/agent-builder/programmatic-access.md'
   'solutions/search/agent-builder/tools.md': 'explore-analyze/ai-features/agent-builder/tools.md'
+
+# Related to https://github.com/elastic/docs-content/pull/4438
+  'explore-analyze/ai-features/ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md'
