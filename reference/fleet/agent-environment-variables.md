@@ -2,6 +2,9 @@
 navigation_title: Environment variables
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-environment-variables.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -14,7 +17,7 @@ Use environment variables to configure {{agent}} when running in a containerized
 
 * [Common variables](#env-common-vars)
 * [Configure {{kib}}:](#env-prepare-kibana-for-fleet) prepare the {{fleet}} plugin in {{kib}}
-* [Configure {{fleet-server}}:](#env-bootstrap-fleet-server) bootstrap {{fleet-server}} on an {{agent}}
+* {applies_to}`serverless: unavailable` [Configure {{fleet-server}}:](#env-bootstrap-fleet-server) bootstrap {{fleet-server}} on an {{agent}}
 * [Configure {{agent}} and {{fleet}}:](#env-enroll-agent) enroll an {{agent}}
 
 
@@ -51,6 +54,10 @@ Settings used to prepare the {{fleet}} plugin in {{kib}}.
 
 
 ## Bootstrap {{fleet-server}} [env-bootstrap-fleet-server]
+
+```{applies_to}
+serverless: unavailable
+```
 
 Settings used to bootstrap {{fleet-server}} on this {{agent}}. At least one {{fleet-server}} is required in a deployment.
 

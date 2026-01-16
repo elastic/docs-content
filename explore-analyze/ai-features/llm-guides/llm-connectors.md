@@ -18,7 +18,7 @@ Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-th
 
 ## Elastic Managed LLMs
 
-:::{include} ../../../solutions/_snippets/elastic-managed-llm.md
+:::{include} /solutions/_snippets/elastic-managed-llm.md
 :::
 
 ## Connect to a third-party or self-managed LLM

@@ -62,23 +62,6 @@ toc:
           - file: search/esql-for-search.md
           - file: search/retrievers-overview.md
           - file: search/search-templates.md
-      - file: search/elastic-agent-builder.md
-        children:
-          - file: search/agent-builder/get-started.md
-          - file: search/agent-builder/models.md
-          - file: search/agent-builder/chat.md
-          - file: search/agent-builder/agent-builder-agents.md
-          - file: search/agent-builder/tools.md
-            children:
-              - file: search/agent-builder/tools/esql-tools.md
-              - file: search/agent-builder/tools/index-search-tools.md
-          - file: search/agent-builder/programmatic-access.md
-            children:
-              - file: search/agent-builder/kibana-api.md
-              - file: search/agent-builder/a2a-server.md
-              - file: search/agent-builder/mcp-server.md
-          - file: search/agent-builder/permissions.md
-          - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
         children:
           - file: search/rag/playground.md
@@ -116,6 +99,7 @@ toc:
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/opentelemetry/quickstart/index.md
             children:
+              - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
               - file: observability/get-started/opentelemetry/quickstart/self-managed/index.md
                 children:
                   - file: observability/get-started/opentelemetry/quickstart/self-managed/k8s.md
@@ -356,7 +340,7 @@ toc:
               - file: observability/synthetics/support-matrix.md
               - file: observability/synthetics/encryption-security.md
           - file: observability/applications/user-experience.md
-            children: 
+            children:
               - file: observability/applications/otel-rum.md
           - file: observability/applications/llm-observability.md
           - file: observability/uptime/index.md
@@ -518,6 +502,7 @@ toc:
             children:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
               - file: observability/incident-management/create-an-slo.md
+              - file: observability/incident-management/slo-management.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
         children:
@@ -681,20 +666,26 @@ toc:
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
+          - file: security/cloud/d4c/d4c-overview.md
+            children:
+              - file: security/cloud/d4c/get-started-with-d4c.md
+              - file: security/cloud/d4c/d4c-policies.md
+              - file: security/cloud/d4c/kubernetes-dashboard.md
       - file: security/integrations/ingest-third-party-security-data.md
         children:
-          - file: security/integrations/cncf-falco.md
-          - file: security/integrations/aws-security-hub.md
-          - file: security/integrations/wiz.md
-          - file: security/integrations/qualys.md
-          - file: security/integrations/tenablevm.md
-          - file: security/integrations/rapid7.md
           - file: security/integrations/aws-config.md
           - file: security/integrations/aws-inspector.md
+          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/cncf-falco.md
+          - file: security/integrations/google-security-command-center.md
           - file: security/integrations/microsoft-defender-for-cloud.md
           - file: security/integrations/microsoft-defender-for-endpoint.md
           - file: security/integrations/microsoft-defender-xdr.md
-          - file: security/integrations/google-security-command-center.md
+          - file: security/integrations/prisma-cloud.md
+          - file: security/integrations/qualys.md
+          - file: security/integrations/rapid7.md
+          - file: security/integrations/tenablevm.md
+          - file: security/integrations/wiz.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md
@@ -723,6 +714,7 @@ toc:
           - file: security/dashboards/overview-dashboard.md
           - file: security/dashboards/detection-response-dashboard.md
           - file: security/dashboards/cloud-security-posture-dashboard.md
+          - file: security/dashboards/kubernetes-dashboard.md
           - file: security/dashboards/entity-analytics-dashboard.md
           - file: security/dashboards/data-quality-dashboard.md
           - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
@@ -759,4 +751,5 @@ toc:
               - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
               - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
       - file: security/asset-management.md
+      - file: security/security-serverless-feature-tiers.md
       - file: security/apis.md

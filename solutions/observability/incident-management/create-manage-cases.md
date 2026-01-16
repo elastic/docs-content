@@ -17,16 +17,16 @@ Open a new {{observability}} case to keep track of issues and share the details 
 
 ::::{applies-switch}
 
-:::{applies-item} stack:
-**Requirements**
-
-To access and send cases to external systems, you need the appropriate [subscription](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
-:::
-
 :::{applies-item} serverless:
 **Requirements**
 
 For {{observability}} projects, you need the appropriate [feature tier](https://www.elastic.co/pricing), and your role must have the **Editor** role or higher to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+:::
+
+:::{applies-item} stack:
+**Requirements**
+
+To access and send cases to external systems, you need the appropriate [subscription](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
 :::
 
 ::::
@@ -49,12 +49,12 @@ To create a case:
 
     ::::{applies-switch}
 
-    :::{applies-item} stack:
-    You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
-    :::
-
     :::{applies-item} serverless:
     You can add users who are assigned the **Editor** user role (or a more permissive role) for the project.
+    :::
+
+    :::{applies-item} stack:
+    You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
     :::
 
     ::::
@@ -73,13 +73,6 @@ To create a case:
 You can also create a case from an alert or add an alert to an existing case. From the **Alerts** page, click the **More options** ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon and choose either **Add to existing case** or **Create new case**, and select or complete the details as required.
 
 ::::
-
-
-
-## Add files [observability-create-a-new-case-add-files]
-
-:::{include} /solutions/_snippets/add-case-files.md
-:::
 
 ## Send cases to external incident management systems [observability-create-a-new-case-send-cases-to-external-incident-management-systems]
 
@@ -100,6 +93,41 @@ To view a case, click on its name. You can then:
 * Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
 * Refresh the case to retrieve the latest updates.
-* Add and manage the following items:
-   * Alerts
-   * Files
+
+## Add context and supporting materials [observability-create-a-new-case-add-context]
+
+Provide additional context and resources by adding the following to the case:
+* [Alerts](#observability-create-a-new-case-examine-alerts) 
+* [Files](#observability-create-a-new-case-add-files)
+
+::::{tip}
+:applies_to: {stack: ga 9.3}
+From the **Attachments** tab, you can search for specific alert IDs and file names.
+::::
+
+### Add alerts [observability-create-a-new-case-examine-alerts]
+
+:::{include} /solutions/_snippets/add-case-alerts.md
+:::
+
+::::{note}
+[Add alerts](../../observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases) to new and existing cases from the **Alerts** page.
+::::
+
+### Add files [observability-create-a-new-case-add-files]
+
+:::{include} /solutions/_snippets/add-case-files.md
+:::
+
+::::{important}
+When you export cases as [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported. 
+::::
+
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
+## Search cases [search-stack-management-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::
