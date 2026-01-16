@@ -83,7 +83,7 @@ At least one of `spec.elasticsearch` or `spec.kibana` needs to be defined with a
 
 The following fields are optional:
 
-* `weight` is an integer that determines the priority of this policy when multiple policies target the same resource. Lower weight values have higher priority. The default value is `0`. When multiple policies have the same `weight` value and target the same resource, the operator reports a conflict.
+* `weight` is an integer that determines the priority of this policy when multiple policies target the same resource. [introduced in ECK `3.3.0` - See [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for details]
 * `namespace` is the namespace of the `StackConfigPolicy` resource and used to identify the {{es}} clusters and {{kib}} instances to which the policy applies. If it equals to the operator namespace, the policy applies to all namespaces managed by the operator, otherwise the policy only applies to the namespace of the policy.
 * `resourceSelector` is a [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to identify the {{es}} clusters and {{kib}} instances to which the policy applies in combination with the namespace(s). No `resourceSelector` means all {{es}} clusters and {{kib}} instances in the namespace(s).
 
@@ -288,7 +288,7 @@ spec:
       indices.recovery.max_bytes_per_sec: "100mb"
 ```
 
-In this example, both policies target the same Elasticsearch cluster (using the `cluster: my-cluster` label). The `high-priority-policy` (weight: 0) is applied because it has a lower weight value. The `low-priority-policy` (weight: 100) is ignored for that cluster. If both policies have the same `weight` value, the operator reports a conflict. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for more details on how weight determines policy priority.
+In this example, both policies target the same Elasticsearch cluster (using the `cluster: my-cluster` label). The `high-priority-policy` (weight: 0) settings take precedence and overwrite the `low-priority-policy` (weight: 100) settings. The `low-priority-policy` settings are applied first, then the `high-priority-policy` settings overwrite them. If both policies have the same `weight` value, a conflict occurs and no policies are applied to the cluster until the conflict is resolved. See [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for more details on how weight determines policy priority and conflict resolution.
 
 
 ## Monitor {{stack}} configuration policies [k8s-stack-config-policy-monitoring]
@@ -362,13 +362,19 @@ In order to avoid a conflict between multiple {{es}} clusters writing their snap
 
 ## Policy priority and weight [k8s-stack-config-policy-priority-weight]
 
-When multiple `StackConfigPolicy` resources target the same {{es}} cluster or {{kib}} instance, the `weight` field determines which policy takes precedence. The policy with the lowest `weight` value has the highest priority and is applied to the resource. Policies with higher `weight` values are ignored when a lower-weight policy also targets the same resource.
+The `weight` field is an integer that determines the priority of a policy when multiple `StackConfigPolicy` resources target the same {{es}} cluster or {{kib}} instance. When multiple policies target the same resource, policies are evaluated in order of their `weight` values (from highest to lowest). Settings from policies with lower `weight` values take precedence and overwrite settings from policies with higher `weight` values. The policy with the lowest `weight` value has the highest priority.
 
-The `weight` field is optional and defaults to `0` if not specified. If multiple policies have the same `weight` value and target the same resource, the operator reports a conflict and neither policy is applied until the conflict is resolved.
+The `weight` field is optional and defaults to `0` if not specified. Lower weight values have higher priority.
+
+::::{important}
+**Conflict resolution**
+
+If multiple policies have the same `weight` value and target the same resource, the operator reports a conflict. When a conflict occurs, **no policies are applied to that resource**—this includes not only the conflicting policies but also any other policies that target the same resource. The target resource remains unconfigured by any `StackConfigPolicy` until the conflict is resolved by adjusting the `weight` values of the conflicting policies.
+::::
 
 This allows you to create a hierarchy of policies, for example:
 * Base policies with higher weights (e.g., `weight: 100`) that provide default configurations
-* Override policies with lower weights (e.g., `weight: 0`) that provide environment-specific or cluster-specific configurations
+* Override policies with lower weights (e.g., `weight: 0`) that provide environment-specific or cluster-specific configurations and overwrite the base policy settings
 
 Example of using `weight` to create a policy hierarchy:
 
@@ -404,7 +410,7 @@ spec:
       indices.recovery.max_bytes_per_sec: "200mb"
 ```
 
-In this example, clusters labeled with both `env: production` and `tier: critical` use the `production-override-policy` (weight: 0) settings, while other production clusters use the `base-policy` (weight: 100) settings.
+In this example, clusters labeled with both `env: production` and `tier: critical` have the `production-override-policy` (weight: 0) settings applied, which overwrite the `base-policy` (weight: 100) settings. Other production clusters use only the `base-policy` (weight: 100) settings.
 
 
 ## Specifics for secret mounts [k8s-stack-config-policy-specifics-secret-mounts]
