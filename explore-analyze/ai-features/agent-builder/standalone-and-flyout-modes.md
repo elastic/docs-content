@@ -53,7 +53,9 @@ Once you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-feature
 :screenshot:
 :::
 
-2. Use the keyboard shortcut {kbd}`cmd+;`
+2. Use the keyboard shortcut:
+   - Mac: {kbd}`cmd+;`
+   - Windows/Linux: {kbd}`ctrl+;`
 
 You can resize the flyout by dragging its side edge. The flyout persists when you change pages in the main navigation.
 
