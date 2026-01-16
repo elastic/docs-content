@@ -48,29 +48,26 @@ MCP type tools have built-in health monitoring. Tools that are unhealthy display
 
 An MCP tool is marked "unhealthy" when:
 
-The MCP tool's associated MCP Kibana Stack Connector is unavaiable.
+* The MCP tool's associated MCP Kibana Stack Connector is unavaiable.
 
-    :::{image} ../images/mcp-connector-unavailable.png
-    :screenshot:
-    :alt: How to bulk import MCP tools from an MCP server.
-    :width: 150px
-    :::
+:::{image} ../images/mcp-connector-unavailable.png
+:screenshot:
+:width: 150px
+:::
 
-The MCP tool's associated tool on the MCP server no longer exists.
+* The MCP tool's associated tool on the MCP server no longer exists.
 
-    :::{image} ../images/mcp-tool-not-found.png
-    :screenshot:
-    :alt: How to bulk import MCP tools from an MCP server.
-    :width: 150px
-    :::
+:::{image} ../images/mcp-tool-not-found.png
+:screenshot:
+:width: 150px
+:::
 
-The MCP tool's execution failed.
+* The MCP tool's execution failed.
 
-    :::{image} ../images/mcp-tool-execution-failed.png
-    :screenshot:
-    :alt: How to bulk import MCP tools from an MCP server.
-    :width: 150px
-    :::
+:::{image} ../images/mcp-tool-execution-failed.png
+:screenshot:
+:width: 150px
+:::
 
 ## Bulk import MCP tools
 
