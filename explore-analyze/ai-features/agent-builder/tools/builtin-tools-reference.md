@@ -63,6 +63,7 @@ Platform Core tools provide fundamental capabilities for interacting with {{es}}
 `platform.core.get_workflow_execution_status` {applies_to}`stack: ga 9.3+`
 :   Retrieves the execution status of a workflow.
 
+<!--
 ### Attachment tools
 ```{applies_to}
 stack: ga 9.3+
@@ -86,6 +87,7 @@ The following tools manage file attachments in conversations:
 
 `platform.core.attachment_diff`
 :   Shows the differences between versions of a file attachment.
+-->
 
 <!-- 
 ## Dashboard tools
