@@ -79,7 +79,7 @@ When an agent calls an MCP tool:
 
 ## Monitoring tool health
 
-MCP type tools have built-in health monitoring. Tools that are unhealthy display an icon next to their IDs in the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page.
+MCP tools have built-in health monitoring. Tools that are unhealthy display an icon next to their IDs in the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page.
 
 An MCP tool is marked "unhealthy" when:
 
