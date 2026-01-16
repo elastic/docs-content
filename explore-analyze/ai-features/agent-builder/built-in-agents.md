@@ -27,6 +27,9 @@ stack: preview =9.2, ga 9.3
 
 The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is designed to help with a wide range of tasks, from writing {{esql}} queries to exploring your data indices.
 
+**Availability:**
+* **All views:** Available in {{es}}, {{observability}}, Security, and Classic views.
+
 **Assigned Tools:**
 * All **Platform core tools** (e.g., `list_indices`, `execute_esql`, `get_document_by_id`)
 * `product_documentation`
@@ -38,6 +41,10 @@ stack: preview =9.3
 
 A specialized agent for logs, metrics, and traces. It is designed to assist with infrastructure monitoring and application performance troubleshooting.
 
+**Availability:**
+* **Observability** view
+* **Classic** view
+
 **Assigned Tools:**
 * All **{{observability}} tools** (e.g., `observability.get_alerts`, `observability.get_services`, `observability.get_log_change_points`)
 * All **Platform core tools**
@@ -48,6 +55,10 @@ stack: preview =9.3
 ```
 
 A specialized agent for security alert analysis tasks, including alert investigation and security documentation. It helps analysts triage alerts and understand complex security events.
+
+**Availability:**
+* **Security** view
+* **Classic** view
 
 **Assigned Tools:**
 * All **Security tools** (e.g., `security.alerts`, `security.entity_risk_score`, `security.attack_discovery_search`)
