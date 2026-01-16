@@ -93,7 +93,7 @@ You can apply the following predefined roles to {{serverless-full}} projects. So
 In the following table, the privileges outlined in **Project access** require [**Cloud Console, {{es}}, and {{kib}}** access](#access) to be granted for the relevant projects.
 
 :::{tip}
-You can optionally [create custom roles in a project](/deploy-manage/users-roles/cloud-organization/serverless-custom-roles.md) and apply them to your organization users.
+You can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md) and apply them to your organization users.
 :::
 
 | Name | {{ecloud}} access | Project access | Availability |
