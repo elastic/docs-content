@@ -50,7 +50,7 @@ The operator automatically creates the necessary {{k8s}} resources, including:
 The following example shows a basic {{package-registry}} deployment:
 
 ```yaml
-apiVersion: package-registry.k8s.elastic.co/v1alpha1
+apiVersion: packageregistry.k8s.elastic.co/v1alpha1
 kind: PackageRegistry
 metadata:
   name: package-registry-sample
