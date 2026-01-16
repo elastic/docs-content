@@ -5,6 +5,7 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+    ece:
 products:
   - id: cloud-hosted
 navigation_title: Google Cloud Storage
@@ -14,6 +15,8 @@ navigation_title: Google Cloud Storage
 
 Configure a custom snapshot repository using your Google Cloud Storage account.
 
+::::{include} _snippets/ece_ech_custom_repo.md
+::::
 
 ## Set up your service account credentials [ec-gcs-service-account-key]
 
