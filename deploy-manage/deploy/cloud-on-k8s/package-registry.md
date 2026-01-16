@@ -43,23 +43,6 @@ The operator automatically creates the necessary {{k8s}} resources, including:
 * A Service to expose the {{package-registry}} within your cluster
 * TLS certificates for secure communication
 
-## Configure the Package Registry
-
-### Basic configuration
-
-The following example shows a basic {{package-registry}} deployment:
-
-```yaml
-apiVersion: packageregistry.k8s.elastic.co/v1alpha1
-kind: PackageRegistry
-metadata:
-  name: package-registry-sample
-  namespace: default
-spec:
-  version: {{version.stack}}
-  count: 1
-```
-
 ## Connect {{kib}} to the Package Registry
 
 After deploying the {{package-registry}}, configure your {{kib}} instance to use it by setting the `spec.packageRegistryRef` field:
