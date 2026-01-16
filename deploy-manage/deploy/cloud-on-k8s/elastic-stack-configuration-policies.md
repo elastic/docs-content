@@ -42,7 +42,15 @@ Additionally with ECK `2.11.0` it is possible to configure {{kib}} as well using
 * [{{kib}} Configuration](kibana://reference/configuration-reference/general-settings.md) (configuration settings for {{kib}} that will go into `kibana.yml`)
 * [{{kib}} Secure Settings](../../security/k8s-secure-settings.md)
 
-A policy can be applied to one or more {{es}} clusters or {{kib}} instances in any namespace managed by the ECK operator. Configuration policy settings applied by the ECK operator are immutable through the {{es}} REST API. It is currently not allowed to configure an {{es}} cluster or {{kib}} instance with more than one policy.
+A policy can be applied to one or more {{es}} clusters or {{kib}} instances in any namespace managed by the ECK operator. Configuration policy settings applied by the ECK operator are immutable through the {{es}} REST API.
+
+With ECK `3.3.0` and later, multiple {{stack}} configuration policies can target the same {{es}} cluster and {{kib}} instance. When multiple policies target the same resource, the policy with the lowest `weight` value takes precedence. If multiple policies have the same `weight` value, the operator reports a conflict. 
+
+::::{note}
+**Scale considerations**
+
+There is no hard limit to the maximum number of `StackConfigPolicy` resources that can target the same {{es}} cluster or {{kib}} instance. However, in our experimentation, we observed that when hundreds of `StackConfigPolicy` resources target the same {{es}} cluster or {{kib}} instance, the total reconciliation time (including the {{es}} cluster or {{kib}} instance and all `StackConfigPolicy` resources) can increase significantly, to the scale of minutes. To maintain fast total reconciliation times, we recommend efficiently utilizing the number of `StackConfigPolicy` resources by consolidating configurations where possible.
+::::
 
 
 ## Define {{stack}} configuration policies [k8s-stack-config-policy-definition]
@@ -75,8 +83,9 @@ At least one of `spec.elasticsearch` or `spec.kibana` needs to be defined with a
 
 The following fields are optional:
 
-* `namespace` is the namespace of the `StackConfigPolicy` resource and used to identify the {{es}} clusters to which this policy applies. If it equals to the operator namespace, the policy applies to all namespaces managed by the operator, otherwise the policy only applies to the namespace of the policy.
-* `resourceSelector` is a [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to identify the {{es}} clusters to which this policy applies in combination with the namespace(s). No `resourceSelector` means all {{es}} clusters in the namespace(s).
+* `weight` is an integer that determines the priority of this policy when multiple policies target the same resource. [introduced in ECK `3.3.0` - See [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for details]
+* `namespace` is the namespace of the `StackConfigPolicy` resource and used to identify the {{es}} clusters and {{kib}} instances to which the policy applies. If it equals to the operator namespace, the policy applies to all namespaces managed by the operator, otherwise the policy only applies to the namespace of the policy.
+* `resourceSelector` is a [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to identify the {{es}} clusters and {{kib}} instances to which the policy applies in combination with the namespace(s). No `resourceSelector` means all {{es}} clusters and {{kib}} instances in the namespace(s).
 
 Example of applying a policy that configures snapshot repository, SLM Policies, and cluster settings:
 
@@ -87,6 +96,7 @@ metadata:
   name: test-stack-config-policy
   # namespace: elastic-system or test-namespace
 spec:
+  weight: 0  # Optional: determines priority when multiple policies target the same resource
   resourceSelector:
     matchLabels:
       env: my-label
@@ -246,6 +256,41 @@ spec:
     - secretName: kibana-shared-secret
 ```
 
+Example showing how multiple `StackConfigPolicy` resources can target the same Elasticsearch cluster, with `weight` determining which policy takes precedence:
+
+```yaml
+# Policy with higher priority (lower weight)
+apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
+kind: StackConfigPolicy
+metadata:
+  name: high-priority-policy
+spec:
+  weight: 0  # Lower weight = higher priority
+  resourceSelector:
+    matchLabels:
+      cluster: my-cluster  # Both policies target the same cluster
+  elasticsearch:
+    clusterSettings:
+      indices.recovery.max_bytes_per_sec: "200mb"
+
+---
+# Policy with lower priority (higher weight)
+apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
+kind: StackConfigPolicy
+metadata:
+  name: low-priority-policy
+spec:
+  weight: 100  # Higher weight = lower priority
+  resourceSelector:
+    matchLabels:
+      cluster: my-cluster  # Both policies target the same cluster
+  elasticsearch:
+    clusterSettings:
+      indices.recovery.max_bytes_per_sec: "100mb"
+```
+
+In this example, both policies target the same Elasticsearch cluster (using the `cluster: my-cluster` label). The `high-priority-policy` (weight: 0) settings take precedence and overwrite the `low-priority-policy` (weight: 100) settings. The `low-priority-policy` settings are applied first, then the `high-priority-policy` settings overwrite them. If both policies have the same `weight` value, a conflict occurs and no policies are applied to the cluster until the conflict is resolved. See [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for more details on how weight determines policy priority and conflict resolution.
+
 
 ## Monitor {{stack}} configuration policies [k8s-stack-config-policy-monitoring]
 
@@ -296,11 +341,7 @@ kubectl get -n b scp test-err-stack-config-policy -o jsonpath="{.status}" | jq .
 }
 ```
 
-Important events are also reported through Kubernetes events, such as when two config policies conflict or you don’t have the appropriate license:
-
-```sh
-54s    Warning   Unexpected          stackconfigpolicy/config-test   conflict: resource Elasticsearch ns1/cluster-a already configured by StackConfigpolicy default/config-test-2
-```
+Important events are also reported through Kubernetes events, such as when you don't have the appropriate license:
 
 ```sh
 17s    Warning   ReconciliationError stackconfigpolicy/config-test   StackConfigPolicy is an enterprise feature. Enterprise features are disabled
@@ -314,6 +355,59 @@ In order to avoid a conflict between multiple {{es}} clusters writing their snap
 * sets the `base_path` to `snapshots/<namespace>-<esName>` when it is not provided, for Azure, GCS and S3 repositories
 * appends `<namespace>-<esName>` to `location` for a FS repository
 * appends `<namespace>-<esName>` to `path` for an HDFS repository
+
+
+## Policy priority and weight [k8s-stack-config-policy-priority-weight]
+
+The `weight` field is an integer that determines the priority of a policy when multiple `StackConfigPolicy` resources target the same {{es}} cluster or {{kib}} instance. When multiple policies target the same resource, policies are evaluated in order of their `weight` values (from highest to lowest). Settings from policies with lower `weight` values take precedence and overwrite settings from policies with higher `weight` values. The policy with the lowest `weight` value has the highest priority.
+
+The `weight` field is optional and defaults to `0` if not specified. Lower weight values have higher priority.
+
+::::{important}
+**Conflict resolution**
+
+If multiple policies have the same `weight` value and target the same resource, the operator reports a conflict. When a conflict occurs, **no policies are applied to that resource**—this includes not only the conflicting policies but also any other policies that target the same resource. The target resource remains unconfigured by any `StackConfigPolicy` until the conflict is resolved by adjusting the `weight` values of the conflicting policies.
+::::
+
+This allows you to create a hierarchy of policies, for example:
+* Base policies with higher weights (e.g., `weight: 100`) that provide default configurations
+* Override policies with lower weights (e.g., `weight: 0`) that provide environment-specific or cluster-specific configurations and overwrite the base policy settings
+
+Example of using `weight` to create a policy hierarchy:
+
+```yaml
+# Base policy with default settings (lower priority)
+apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
+kind: StackConfigPolicy
+metadata:
+  name: base-policy
+spec:
+  weight: 100  # Higher weight = lower priority
+  resourceSelector:
+    matchLabels:
+      env: production
+  elasticsearch:
+    clusterSettings:
+      indices.recovery.max_bytes_per_sec: "50mb"
+
+---
+# Override policy with production-specific settings (higher priority)
+apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
+kind: StackConfigPolicy
+metadata:
+  name: production-override-policy
+spec:
+  weight: 0  # Lower weight = higher priority
+  resourceSelector:
+    matchLabels:
+      env: production
+      tier: critical
+  elasticsearch:
+    clusterSettings:
+      indices.recovery.max_bytes_per_sec: "200mb"
+```
+
+In this example, clusters labeled with both `env: production` and `tier: critical` have the `production-override-policy` (weight: 0) settings applied, which overwrite the `base-policy` (weight: 100) settings. Other production clusters use only the `base-policy` (weight: 100) settings.
 
 
 ## Specifics for secret mounts [k8s-stack-config-policy-specifics-secret-mounts]
