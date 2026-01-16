@@ -893,6 +893,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Replaces the dashboard editor toolbar with the **Add** menu [#230324]({{kib-pull}}230324)
 * Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
+* Optimizes `dotCount` in the expanding dot parser [#135263](https://github.com/elastic/elasticsearch/pull/135263)
 
 * Releases DiskBBQ (`bbq_disk`) index type for `dense_vector` fields [#135299](https://github.com/elastic/elasticsearch/pull/135299)
 * Adds 'profile' support for knn query on HNSW with early termination [#135342](https://github.com/elastic/elasticsearch/pull/135342)
