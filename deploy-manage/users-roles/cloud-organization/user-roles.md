@@ -139,7 +139,7 @@ When you grant **Organization owner** access, or **Cloud resource** access for o
 
 ### Considerations
 
-The **Access** selection impacts the behavior of the selected role. Most roles require Cloud Console, {{es}}, and {{kib}} access to take full effect.However, you might choose to only grant **Cloud Console** access if the user does not need to interact with the project directly.
+The **Access** selection impacts the behavior of the selected role. Most roles require Cloud Console, {{es}}, and {{kib}} access to take full effect. However, you might choose to only grant **Cloud Console** access if the user does not need to interact with the project directly.
 
 When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that are designed to work inside of the project have limited access, and can't open the project in {{kib}}. For example: 
 
