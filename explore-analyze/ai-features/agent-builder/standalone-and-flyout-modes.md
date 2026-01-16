@@ -2,11 +2,11 @@
 description: Learn about the standalone and flyout modes for the Elastic Agent Builder chat UI
 navigation_title: "Chat UI modes"
 applies_to:
-  stack: preview 9.2+
+  stack: ga 9.2+
   serverless:
-    elasticsearch:
-    observability:
-    security:
+    elasticsearch: ga
+    observability: ga
+    security: ga
 ---
 
 # Standalone and flyout chat UI modes in {{agent-builder}}
@@ -22,7 +22,10 @@ The standalone and flyout modes have the same functionalities and can be used in
 
 ## Standalone mode
 
-{applies_to}`stack: preview =9.2, ga 9.3` {applies_to}`serverless: ga 
+```{applies_to}
+stack: preview =9.2, ga 9.3
+serverless: ga
+```
 
 Access Agent Builder by selecting **Agents** in the main navigation. In {{product.observability}} and {{product.security}}, the standalone experience is available when you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 
@@ -41,7 +44,10 @@ The following GIF shows how to access the standalone chat experience in an {{pro
 
 ## Flyout mode
 
-{applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
+```{applies_to}
+stack: preview =9.3
+serverless: preview
+```
 
 Once you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences), you can access the flyout in two ways:
 
