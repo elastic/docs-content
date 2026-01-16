@@ -33,7 +33,7 @@ For example, if the latest {{stack}} version is {{version.stack}}, {{ech}} makes
 * {{version.stack | M.M }} and {{version.stack | M.M+1 | M.M }}
 * 8.19
 
-Additional versions can appear in the UI, such as [release candidate builds](#ec-release-builds) or older versions that are not end-of-life (EOL) and that you already have a running deployment on. This allows you, for example, to [clone an existing deployment](/deploy-manage/tools/snapshot-and-restore/ece-restore-snapshots-into-new-deployment.md) that uses one of those versions.
+Additional versions can appear in the UI, such as [release candidate builds](#ec-release-builds) or older versions that are not [end-of-life (EOL)](#ec-version-policy-eol) and that you already have a running deployment on. This allows you, for example, to [clone an existing deployment](/deploy-manage/tools/snapshot-and-restore/ece-restore-snapshots-into-new-deployment.md) that uses one of those versions.
 
 Separately from the UI, the {{ech}} API allows you to [deploy any {{stack}} version as long as it is not EOL](cloud://reference/cloud-hosted/ec-api-deployment-crud.md#ec_using_the_api_to_create_deployment_with_non_eol_versions), even if that version is not listed in the UI.
 
