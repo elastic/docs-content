@@ -301,7 +301,7 @@ Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 
 ### Cancel a running query [cancel-query-in-discover]
 
-When you cancel a running in **Discover**, you can still get some results to show depending on the version that you're using.
+When you cancel a running query in **Discover**, you can still see some results depending on which version you're using.
 
 :::::{applies-switch}
 
