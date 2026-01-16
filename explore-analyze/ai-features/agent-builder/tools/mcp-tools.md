@@ -27,7 +27,8 @@ Once you've set up an MCP Kibana Stack Connector, click "New tool" on the [Tools
 :width: 800px
 :::
 
-MCP tools have the following configuration:
+#### Configuration
+Individual MCP tools have the following configuration settings:
 
 MCP Server
 :   The MCP Kibana Stack Connector to interface with.
