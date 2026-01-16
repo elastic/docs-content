@@ -15,16 +15,11 @@ Agent Builder MCP tools enable calling a remote [MCP server's](https://modelcont
 
 To use external MCP tools, you first need to set up an [MCP Kibana Stack Connector](kibana://reference/connectors-kibana/mcp-action-type.md). This interface enables Agent Builder MCP tools to communicate with a remote MCP server.
 
-## How it works
+## Adding MCP tools
 
-When an agent calls an MCP tool:
+### Adding a single tool
 
-1. Agent Builder retrieves the tool's input schema from the MCP Kibana Stack Connector.
-2. Agent Builder calls the MCP server tool with the required parameters.
-3. The MCP server returns the result directly to the LLM with no post-processing.
-4. The LLM interprets the result for the user.
-
-## Configuration
+Once an MCP Kibana Stack Connector has been set up, an MCP tool can be created by clicking "New tool" on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page.
 
 :::{image} ../images/mcp-createnewtool-config-example.png
 :screenshot:
@@ -41,6 +36,46 @@ Tool
 :   The specific tool on MCP server to create an Agent Builder MCP tool for.
 
 Once a tool is selected, the `Description` field of the tool automatically populates with the description provided by the MCP server.
+
+### Bulk import MCP tools
+
+Agent Builder provides an efficient way to import multiple tools from an MCP server using the `Bulk import MCP tools` feature, which can be found in the Agent Builder [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page under the "Manage MCP" dropdown.
+
+:::{image} ../images/mcp-bulkimport-location.png
+:screenshot:
+:alt: How to bulk import MCP tools from an MCP server.
+:width: 500px
+:::
+
+Configuration for importing tools in bulk, while similar to single MCP tool creation, has some extra fields and automated behavior to consider.
+
+:::{image} ../images/mcp-bulkimport-config-example.png
+:screenshot:
+:alt: Example configuration for bulk importing MCP tools from the Context7 MCP server.
+:width: 800px
+:::
+
+MCP Server
+:   The MCP Kibana Stack Connector to interface with.
+
+Tools to import
+:   The specific tools from the MCP server to import.
+
+Namespace
+:   A string to prepend to the tool name to aid in searching and organization. A namespace must start with a letter and contain only lowercase letters, numbers, and hyphens.
+
+Clicking "Import tools" generates a series of MCP tools that map to the associated MCP server tools that were selected.
+
+Imported tools have their `Tool ID` generated as `ramespace.tool-name`, where `namespace` is the user-provided namespace string, and `tool-name` is the name of the tool as provided by the MCP server. Furthermore, the `Description` field automatically populates.
+
+## How it works
+
+When an agent calls an MCP tool:
+
+1. Agent Builder retrieves the tool's input schema from the MCP Kibana Stack Connector.
+2. Agent Builder calls the MCP server tool with the required parameters.
+3. The MCP server returns the result directly to the LLM with no post-processing.
+4. The LLM interprets the result for the user.
 
 ## Monitoring tool health
 
@@ -71,36 +106,3 @@ An MCP tool is marked "unhealthy" when:
     :alt: Tool execution failed icon.
     :width: 100px
     :::
-
-## Bulk import MCP tools
-
-:::{image} ../images/mcp-bulkimport-location.png
-:screenshot:
-:alt: How to bulk import MCP tools from an MCP server.
-:width: 500px
-:::
-
-Agent Builder provides an efficient way to import multiple tools from an MCP server using the `Bulk import MCP tools` feature, which can be found in the Agent Builder [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page under the "Manage MCP" dropdown.
-
-## Configuration for bulk tool import
-
-:::{image} ../images/mcp-bulkimport-config-example.png
-:screenshot:
-:alt: Example configuration for bulk importing MCP tools from the Context7 MCP server.
-:width: 800px
-:::
-
-Configuration for importing tools in bulk, while similar to single MCP tool creation, has some extra fields and automated behavior to consider.
-
-MCP Server
-:   The MCP Kibana Stack Connector to interface with.
-
-Tools to import
-:   The specific tools from the MCP server to import.
-
-Namespace
-:   A string to prepend to the tool name to aid in searching and organization. A namespace must start with a letter and contain only lowercase letters, numbers, and hyphens.
-
-Clicking "Import tools" generates a series of MCP tools that map to the associated MCP server tools that were selected.
-
-Imported tools have their `Tool ID` generated as `ramespace.tool-name`, where `namespace` is the user-provided namespace string, and `tool-name` is the name of the tool as provided by the MCP server. Furthermore, the `Description` field automatically populates.
