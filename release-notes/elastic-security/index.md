@@ -38,11 +38,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Makes the Attack Discovery and Attack Discovery Schedules APIs generally available [#246788]({{kib-pull}}246788).
 * Improves Attack Discovery prompts [#241346]({{kib-pull}}241346).
 * Adds support for QRadar Reference Sets as lookups when migrating QRadar rules using the automatic migration feature [#244924]({{kib-pull}}244924).
-* Adds Agent Builder to the {{security-app}} [#246089]({{kib-pull}}246089).
-* Adds Security attachments to Agent Builder [#243574]({{kib-pull}}243574).
-* Adds an integration knowledge tool to Agent Builder [#245259]({{kib-pull}}245259).
-* Adds a product documentation tool to Agent Builder [#242598]({{kib-pull}}242598).
-* Adds the Threat Hunting Agent to Agent Builder [#245205]({{kib-pull}}245205), [#246193]({{kib-pull}}246193), [#246403]({{kib-pull}}246403).
+* Allows you to opt in to the new Agent Builder chat experience [#246089]({{kib-pull}}246089), [#243574]({{kib-pull}}243574), [#245259]({{kib-pull}}245259), [#242598]({{kib-pull}}242598), [#245205]({{kib-pull}}245205), [#246193]({{kib-pull}}246193), [#246403]({{kib-pull}}246403).
 * Improves the alert details flyout by saving the selected threat intelligence time to local storage [#243571]({{kib-pull}}243571).
 * Improves the alert details flyout by saving the selected prevalence time to local storage [#243543]({{kib-pull}}243543).
 * Displays Session View in full height [#245888]({{kib-pull}}245888).
