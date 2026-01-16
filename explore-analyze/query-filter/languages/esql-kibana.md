@@ -140,7 +140,7 @@ The maximum number of queries in the history depends on the version you're using
 
 ### Query help
 
-{{esql}} features in-app help and suggestions, so you can get started faster and don’t have to leave the application to check syntax.
+{{esql}} features in-app help, inline suggestions, and an autocomplete menu so you can get started faster and don’t have to leave the application to check syntax.
 
 ![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 

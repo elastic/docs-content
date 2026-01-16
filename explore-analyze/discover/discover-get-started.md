@@ -198,12 +198,15 @@ You can use **Discover** to compare and diff the field values of multiple result
 5. Exit the comparison view at any time using the **Exit comparison mode** button.
 
 
-### Copy results as text or JSON [copy-row-content]
+### Copy results as text, JSON, or Markdown [copy-row-content]
 
 You can quickly copy the content currently displayed in the table for one or several results to your clipboard.
 
-1. Select the results you want to copy.
-2. Open the **Selected** menu in the table toolbar, and select **Copy selection as text** or **Copy documents as JSON**.
+1. Select the rows you want to copy.
+2. Open the **Selected** menu in the table toolbar, and select one of the available formats:
+   - **Copy selection as text**.
+   - **Copy documents as JSON**, or **Copy results as JSON** if you're in {{esql}} mode.
+   - {applies_to}`stack: ga 9.3+` **Copy selection as Markdown**: Selected results are copied as a Markdown table.
 
 The content is copied to your clipboard in the selected format. Fields that are not currently added to the table are ignored.
 
