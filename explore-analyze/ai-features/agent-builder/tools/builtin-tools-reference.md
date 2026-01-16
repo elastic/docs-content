@@ -1,8 +1,8 @@
 ---
 navigation_title: "Built-in tools reference"
 applies_to:
-  stack: preview =9.2, ga 9.3+
-  serverless:
+  stack: ga 9.2+
+  serverless: ga
 ---
 
 # Elastic Agent Builder built-in tools reference
