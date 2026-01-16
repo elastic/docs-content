@@ -37,7 +37,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Enables the **Value report** page in {{stack}} [#243511]({{kib-pull}}243511).
 * Makes the Attack Discovery and Attack Discovery Schedules APIs generally available [#246788]({{kib-pull}}246788).
 * Improves Attack Discovery prompts [#241346]({{kib-pull}}241346).
-* Adds support for QRadar Reference Sets as lookups when migrating QRadar rules using the automatic migration feature [#244924]({{kib-pull}}244924).
+* Allows you to migrate QRadar rules to Elastic using Automatic Migration [#244924]({{kib-pull}}244924).
 * Allows you to opt in to the new Agent Builder chat experience [#246089]({{kib-pull}}246089), [#243574]({{kib-pull}}243574), [#245259]({{kib-pull}}245259), [#242598]({{kib-pull}}242598), [#245205]({{kib-pull}}245205), [#246193]({{kib-pull}}246193), [#246403]({{kib-pull}}246403).
 * Improves the alert details flyout by saving the selected threat intelligence time to local storage [#243571]({{kib-pull}}243571).
 * Improves the alert details flyout by saving the selected prevalence time to local storage [#243543]({{kib-pull}}243543).
@@ -48,15 +48,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves the graph investigation feature by introducing new popover components for displaying additional node details [#236906]({{kib-pull}}236906).
 * Prepares the monitoring entity source CRUD APIs for general availability of privileged user monitoring [#246978]({{kib-pull}}246978).
 * Updates the **Entity summary** section in the entity details flyout to align with new design specifications [#245532]({{kib-pull}}245532).
-* Adds Cloud Connector usage statistics collection for CSPM [#236992]({{kib-pull}}236992).
-* Creates a Cloud Connector usage collector in Asset Inventory [#240272]({{kib-pull}}240272).
+* Adds Cloud Connector usage statistics collection for the CSPM and Asset Discovery integrations [#236992]({{kib-pull}}236992),[#240272]({{kib-pull}}240272).
 * Improves the reliability of Cloud Security Posture (CSP) data by automatically upgrading outdated Misconfiguration and Vulnerabilities data views to the correct versions [#238547]({{kib-pull}}238547).
 * Fixes Cloud Security Posture regressions to ensure AWS, GCP, and Azure cloud providers are all supported [#242592]({{kib-pull}}242592).
 * Upgrades the Osquery schema to v5.19.0 and the ECS schema to v9.2.0 [#246005]({{kib-pull}}246005).
 * Adds a file download relative URI to response actions that provide file output [#237713]({{kib-pull}}237713).
 * Adds a free-text input option to the `runscript` response action for providing input to the selected script [#239436]({{kib-pull}}239436).
 * Displays `runscript` response action output for Microsoft Defender for Endpoint for files up to 4.5 KB [#242441]({{kib-pull}}242441).
-* Adds a server configuration setting that allows you to disable the automatic installation of the Endpoint Security ({{elastic-defend}}) rule when creating an {{elastic-defend}} integration policy [#246418]({{kib-pull}}246418).
+* Adds a server configuration setting that allows you to turn off automatic installation of the Endpoint Security ({{elastic-defend}}) rule when creating an {{elastic-defend}} integration policy [#246418]({{kib-pull}}246418).
 * Adds UI and API support for process descendants in trusted applications [#236318]({{kib-pull}}236318).
 * Adds an `actions` command to {{elastic-defend}} to list all queued response actions or cancel an action by ID.
 * Adds the `thumbprint_sha256` field to `code_signature` for process and library events in {{elastic-defend}} on Windows.
@@ -82,7 +81,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Enables {{elastic-defend}} to save response action upload progress and continue after restart.
 * Improves the {{elastic-defend}} startup log to explain unsigned policy details.
 * Reduces the performance impact of file copy and move operations involving Windows Offloaded Data Transfer while {{elastic-defend}} is installed.
-* Adds an {{elastic-defend}} policy advanced setting to maintain a minimum free disk space.
+* Adds an {{elastic-defend}} policy advanced setting to maintain a minimum amount of free disk space.
 * Reduces {{elastic-defend}} CPU usage when suppressing activity from trusted applications on Windows. This might be especially noticeable in applications that are JIT-heavy like PowerShell and .NET.
 * Improves {{elastic-defend}} visibility into image load events in mixed-architecture scenarios, such as during .NET library loading when the library and main executable might use different architectures. This only applies to Windows 10, version 1709 and later.
 * Refactors {{elastic-defend}} Windows file scanning behavior to reduce the risk of file sharing conflicts with other applications and improve the reliability of malware-on-write and event enrichments that rely on file contents such as code signatures and imphashes.
