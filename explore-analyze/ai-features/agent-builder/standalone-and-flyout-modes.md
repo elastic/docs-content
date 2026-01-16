@@ -2,7 +2,7 @@
 description: Learn about the standalone and flyout modes for the Elastic Agent Builder chat UI
 navigation_title: "Chat UI modes"
 applies_to:
-  stack: 
+  stack: preview 9.2+
   serverless:
     elasticsearch:
     observability:
