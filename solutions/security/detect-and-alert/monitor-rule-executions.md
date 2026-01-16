@@ -93,22 +93,24 @@ Manually fill gaps for multiple rules by using the **Fill gaps** bulk action in 
 stack: ga 9.3+
 ```
 
-Turn on the automatic gap fill feature to automate gap remediation for your rules (click **Settings** above the Rules table, then click the toggle in the **Auto gap fill settings** section). When turned on, a job runs every five minutes to check for new and existing gaps and schedules tasks to fill them. Details about the job and scheduled gap fill tasks are captured in the gap fill scheduler logs. To access the scheduler logs, go to the description under the **Auto gap fill settings** section, then click **logs**.  
+Turn on the automatic gap fill feature to automate gap remediation for your rules. When turned on, a job runs every five minutes to check for new and existing gaps, then schedules tasks to fill them. Details about the job and scheduled gap fill tasks are captured in the gap fill scheduler logs. 
+
+To access the setting that controls the automatic gap fill feature, click **Settings** (above the Rules table), then go to the **Auto gap fill settings** section. Use the toggle to turn the feature on and off. In the feature description, click **logs** to open the scheduler logs.
+
+Expand each row in the scheduler logs table to learn more about gaps that were discovered and gap fill tasks that were scheduled each time the automatic gap fill job ran. The logs also provide key details such as:
+
+- When each job ran to check for gaps
+- The number of gaps each job detected and the number of rules that had gaps
+- The number of gap fill tasks each job scheduled 
+- The status of the scheduled gap fill tasks. They can be:
+    - **Success**: Confirms that scheduled gap fill tasks were sucessfully run for all rules with gaps.
+    - **Error**: Indicates that scheduled gap fill tasks failed to run.    
+    - **Task skipped**: Indicates that gap fill tasks were scheduled, but did not run. This can happen if rules with gaps were disabled or the maximum limit for scheduled gap fill tasks was reached.
+    - **No gaps**: Indicates that gaps weren't detected, and no gap fill tasks were scheduled.
 
 ::::{note}
-The **Auto gap fill status:** field (in the panel above the Rules table) shows whether the automatic gap fill feature is on or off. Click the field value to access the automatic gap fill settings.
+The **Auto gap fill status:** field (located in the panel above the Rules table) shows whether the automatic gap fill feature is on or off. Click the field value to access the automatic gap fill settings.
 ::::
-
-In the logs table, expand each row to learn more about gaps that were detected and gap fill tasks that were scheduled each time the automatic gap fill job ran. You can also find key details such as:
-
-- When rules were checked for gaps
-- The number of gaps the job detected when it ran
-- The number of gap fill tasks the job scheduled when it ran
-- The status of the gap fill tasks that were scheduled. They can be:
-    - Success: Confirms that scheduled gap fill tasks were sucessfully run for all rules with gaps.
-    - Error: Indicates that scheduled gap fill tasks failed to run.    
-    - Task skipped: Indicates that gap fill tasks were scheduled, but did not run. This can happen if rules with gaps were disabled or the maximum limit for scheduled gap fill tasks was reached.
-    - No gaps: Indicates that gaps weren't detected, and no gap fill tasks were scheduled.
 
 ## Execution results tab [rule-execution-logs]
 
