@@ -50,7 +50,7 @@ To use CCS or CCR, your environment must meet the following criteria:
 System deployments cannot be used as remote clusters or have remote clusters.
 ::::
 
-## Set up remote clusters with {{ece}}
+## Set up remote clusters with {{ece}} [set-up-remote-clusters-ece]
 
 The steps, information, and authentication method required to configure CCS and CCR can vary depending on where the clusters you want to use as remote are hosted.
 
