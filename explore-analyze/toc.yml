@@ -168,6 +168,7 @@ toc:
   - file: cross-cluster-search.md
     children:
       - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
+  - hidden: cross-project-search.md
   - file: ai-features.md
     children:
       - file: ai-features/elastic-agent-builder.md
