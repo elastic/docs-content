@@ -78,7 +78,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 5. Select your JSON file and click **Upload**. If the file is large, you can separate it into multiple parts and upload them individually to avoid exceeding your LLM's context window.
 
-6. After you upload your Splunk assets, Automatic Migration detects whether they use any macros, lookups, reference sets, or MITRE mappings. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later—however, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to stay on this page until processing is complete—a notification appears when processing is complete.
+6. After you upload your assets, Automatic Migration detects whether they use any macros, lookups, reference sets, or MITRE mappings. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later—however, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to stay on this page—a notification appears when processing is complete.
 
 7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears. Use the dropdown menu to select which AI connector to use. For rule migrations there is a **Match to Elastic prebuilt rules** option (on by default); when it's on, any migrated rules that are similar to an Elastic prebuilt rule are converted to those prebuilt rules (this uses fewer tokens). When it's off, each rules is converted into a new custom rule. 
 
@@ -155,7 +155,7 @@ The table's fields are as follows:
 
 ### Finalize translated rules and view rule details
 
-To install any rules that were partially translated or not translated, you will need to edit them. Optionally, you can also edit rules that were successfully translated to finetune them.
+To install any rules that were partially translated or not translated, you must first edit them. Optionally, you can also edit rules that were successfully translated to finetune them.
 
 :::{note}
 You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page.
@@ -184,6 +184,11 @@ This section describes the **Translated dashboards** page's interface and the da
 :width: 850px
 :screenshot:
 ::::
+
+:::{admonition} Important warning for QRadar "BB" rules
+:applies_to: stack: preview =9.3
+In the technical preview of QRadar rule migration, QRadar Building Block rules can appear in QRadar migrations. You can identify them by their `BB:` prefix. You should not enable these rules, because they will generate noisy alerts. If you do enable them, we recommend you delete them.
+:::
 
 The table's fields are as follows:
 
