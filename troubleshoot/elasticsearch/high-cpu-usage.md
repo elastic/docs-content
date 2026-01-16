@@ -105,7 +105,7 @@ Although `ELASTIC_CPU` is the main driver of elevated `TOTAL_CPU`, you should al
 * `org.elasticsearch.ingest.Pipeline` or `org.elasticsearch.ingest.CompoundProcessor` is an [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 * `org.elasticsearch.xpack.core.esql` or `org.elasticsearch.xpack.esql` is a [running ES|QL](/explore-analyze/query-filter/languages/esql-kibana.md) query
 
-If your team would like assistance correlating hot threads and node tasks, kindly [{capture your {es}} diagnostics](/troubleshoot/elasticsearch/diagnostic.md) when you [contact us](/troubleshoot/index.md#contact-us).
+If your team would like assistance correlating hot threads and node tasks, kindly [capture your {{es}} diagnostics](/troubleshoot/elasticsearch/diagnostic.md) when you [contact us](/troubleshoot/index.md#contact-us).
 
 ### Check garbage collection [check-garbage-collection]
 
