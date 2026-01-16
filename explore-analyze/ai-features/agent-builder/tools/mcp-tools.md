@@ -2,10 +2,7 @@
 navigation_title: "MCP tools"
 applies_to:
   stack: preview 9.3
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+  serverless: preview
 ---
 
 
