@@ -5,6 +5,8 @@ toc:
   - file: migrate-from-beats-to-elastic-agent.md
     children:
       - file: migrate-auditbeat-to-agent.md
+  - file: deploy-fleet-server.md
+  - file: deploy-elastic-agent.md
   - file: deployment-models.md
     children:
       - file: fleet-server.md
@@ -20,6 +22,7 @@ toc:
   - file: install-elastic-agents.md
     children:
       - file: fleet-agent-release-process.md
+      - file: deploy-elastic-agent.md
       - file: install-fleet-managed-elastic-agent.md
       - file: install-standalone-elastic-agent.md
         children:
