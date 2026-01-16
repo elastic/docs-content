@@ -24,7 +24,7 @@ This section describes our version policy for {{ech}}, including:
 
 {{stack}} uses a version numbering scheme based on three numbers separated by dots. The leftmost number indicates the major release, the middle number indicates the minor release, and the rightmost number indicates the maintenance release. For example, `8.3.2` represents major release 8, minor release 3, and maintenance release 2.
 
-In {{ech}}, not all [{{stack}} versions](https://www.elastic.co/support/eol) are available for deploying. By default, the following versions are available in the UI:
+By default, the following versions are available in the {{ech}} UI:
 
 * The two latest minor versions of the latest major version
 * The latest minor version of the previous major version
@@ -33,7 +33,7 @@ For example, if the latest {{stack}} version is {{version.stack}}, {{ech}} makes
 * {{version.stack | M.M }} and {{version.stack | M.M+1 | M.M }}
 * 8.19
 
-Additional versions can appear in the UI, such as [release candidate builds](#ec-release-builds) or older versions. If a version is listed in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
+Additional versions can appear in the UI, such as [release candidate builds](#ec-release-builds) or older versions that you have a running deployment on. If a version is listed in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
 
 ## New {{stack}} versions [ec-version-policy-new]
 
