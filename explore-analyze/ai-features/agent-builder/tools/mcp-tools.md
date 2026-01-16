@@ -53,7 +53,7 @@ An MCP tool is marked "unhealthy" when:
     :::{image} ../images/mcp-connector-unavailable.png
     :screenshot:
     :alt: Connector unavailable icon.
-    :width: 150px
+    :width: 100px
     :::
 
 * The MCP tool's associated tool on the MCP server no longer exists.
@@ -61,7 +61,7 @@ An MCP tool is marked "unhealthy" when:
     :::{image} ../images/mcp-tool-not-found.png
     :screenshot:
     :alt: Tool not found icon.
-    :width: 150px
+    :width: 100px
     :::
 
 * The MCP tool's execution failed.
@@ -69,7 +69,7 @@ An MCP tool is marked "unhealthy" when:
     :::{image} ../images/mcp-tool-execution-failed.png
     :screenshot:
     :alt: Tool execution failed icon.
-    :width: 150px
+    :width: 100px
     :::
 
 ## Bulk import MCP tools
