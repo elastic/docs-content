@@ -1,7 +1,7 @@
 ---
 navigation_title: "Built-in agents reference"
 applies_to:
-  stack: preview 9.3+
+  stack: preview =9.2, ga 9.3
   serverless: preview
 products:
   - id: kibana
