@@ -18,7 +18,17 @@ products:
 
 ## Project linking
 
+## Tags
 
+## Search in {{cps-init}}
+
+### Flat-world search
+
+### Qualified and unqalified search expressions
+
+## Security
+
+A high-level overview
 
 ## Supported APIs [cps-supported-apis]
 
