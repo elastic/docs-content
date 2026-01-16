@@ -19,7 +19,7 @@ To use external MCP tools, you first need to set up an [MCP Kibana Stack Connect
 You can import MCP tools individually or in bulk.
 ### Add a single tool
 
-Once an MCP Kibana Stack Connector has been set up, an MCP tool can be created by clicking "New tool" on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page.
+Once you've set up an MCP Kibana Stack Connector, click "New tool" on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page and select the `MCP` tool type.
 
 :::{image} ../images/mcp-createnewtool-config-example.png
 :screenshot:
