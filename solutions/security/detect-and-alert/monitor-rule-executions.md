@@ -49,7 +49,7 @@ From the **Rule Monitoring** tab, you can get an overview of existing gaps and t
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.3+", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.3+"}
 The panel has the following:
 * **Rules with gaps:** Tells you the number of rules with gaps (left metric) and the number of rules with all gaps being filled (right metric). The metric shows data from the last 90 days.
 :::
@@ -74,10 +74,10 @@ Within the Rules table, several columns provide additional gap data:
 
 * **Last Gap (if any)**: Shows how long the most recent gap for a particular rule lasted.
 * **Unfilled gaps duration**: Shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select during the past 90 days (data on gaps that occurred past the last 90 days is not retained). If a rule has no gaps, the columns display a dash (`––`). 
-* {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga`**Gap fill status**: Shows the status of the rule's gaps. If any gaps are unfilled, the gap status is `Unfilled`. If any gaps are being are being filled, the status is `In progress`. If all gaps are filled, the status is `Filled`. 
+* {applies_to}`stack: ga 9.3+``**Gap fill status**: Shows the status of the rule's gaps. If any gaps are unfilled, the gap status is `Unfilled`. If any gaps are being are being filled, the status is `In progress`. If all gaps are filled, the status is `Filled`. 
 
     ::::{tip}
-    :applies_to:{stack: ga 9.3+, serverless: ga}
+    :applies_to:{stack: ga 9.3+}
     Use the **Gap fill status** filter in the Rules table to find rules with the specified gap status. 
     ::::
 
