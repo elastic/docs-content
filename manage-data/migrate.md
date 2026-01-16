@@ -64,6 +64,8 @@ Before migrating your {{es}} data, define the necessary [mappings](/manage-data/
 ::::
 
 ::::{note}
+:applies_to: { ess: }
+
 For {{ech}}, if your old cluster uses [TLS certificates](/deploy-manage/security/set-up-basic-security-plus-https.md) signed by a private (non–publicly trusted) certificate authority, follow [this guide](migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md) to establish trust.
 ::::
 
