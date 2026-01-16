@@ -85,7 +85,7 @@ Within the Rules table, several columns provide additional gap data:
 
 You can manually fill gaps in the following ways:
 
-- **For a sepecific rule**: Use the **Fill gaps** action in the rule's Gaps table, which lets you view and assess existing gaps. Refer to [](#gaps-table) to learn more.
+- **For a specific rule**: Use the **Fill gaps** action in the rule's Gaps table, which lets you assess and respond to existing gaps. Refer to [](#gaps-table) to learn more.
 
 - **For multiple rules**: Use the **Fill gaps** bulk action in the Rules table. Refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules) to learn more.
 
