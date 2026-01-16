@@ -69,7 +69,7 @@ Clicking "Import tools" generates a series of MCP tools that map to the associat
 
 Imported tools have their `Tool ID` generated as `ramespace.tool-name`, where `namespace` is the user-provided namespace string, and `tool-name` is the name of the tool as provided by the MCP server. Furthermore, the `Description` field automatically populates.
 
-## How it works
+## How MCP tool calls work
 
 When an agent calls an MCP tool:
 
