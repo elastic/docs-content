@@ -41,7 +41,7 @@ The following GIF shows how to access the standalone chat experience in an {{pro
 
 ## Flyout mode
 
-{applies_to}`stack: preview 9.3` {applies_to}`serverless: preview 9.3`
+{applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
 
 Once you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences), you can access the flyout in two ways:
 
