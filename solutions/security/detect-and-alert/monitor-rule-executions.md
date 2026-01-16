@@ -93,11 +93,17 @@ Manually fill gaps for multiple rules by using the **Fill gaps** bulk action in 
 stack: ga 9.3+
 ```
 
-Turn on the automatic gap fill feature to automate gap remediation for your rules. When turned on, a job runs every five minutes to check for new and existing gaps, then schedules tasks to fill them. Details about the job and scheduled gap fill tasks are captured in the gap fill scheduler logs. 
+::::{note}
+You must have the appropriate subscription to use the automatic gap fill feature. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
+::::
 
-To access the setting that controls the automatic gap fill feature, click **Settings** (above the Rules table), then go to the **Auto gap fill settings** section. Use the toggle to turn the feature on and off. In the feature description, click **logs** to open the scheduler logs.
+To automate gap remediation for your rules, enable the automatic gap fill feature. When turned on, a job runs every five minutes to check for new and existing gaps, then schedules tasks to fill them. Details about the job and scheduled gap fill tasks are captured in the gap fill scheduler logs. 
 
-Expand each row in the scheduler logs table to learn more about gaps that were discovered and gap fill tasks that were scheduled each time the automatic gap fill job ran. The logs also provide key details such as:
+You can find the setting that controls the automatic gap fill feature by clicking **Settings** (above the Rules table), then going to the **Auto gap fill settings** section. Use the toggle to turn the feature on and off. 
+
+You access the gap fill scheduler logs by clicking **logs** in the **Auto gap fill settings** section description. Expand each row in the scheduler logs table to learn more about gaps that were discovered and gap fill tasks that were scheduled each time the automatic gap fill job ran. 
+
+The logs also provide key details such as:
 
 - When each job ran to check for gaps
 - The number of gaps each job detected and the number of rules that had gaps
