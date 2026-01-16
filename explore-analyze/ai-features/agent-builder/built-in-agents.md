@@ -21,7 +21,9 @@ Unlike custom agents, you cannot modify or delete these agents. However, they se
 The availability of specific agents depends on your active solution and whether you have enabled {{agent-builder}} in that space.
 
 ## Elastic AI Agent
-{applies_to}`stack: ga 9.2+`
+```{applies_to}
+stack: preview =9.2, ga 9.3
+```
 
 The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is designed to help with a wide range of tasks, from writing {{esql}} queries to exploring your data indices.
 
@@ -30,7 +32,9 @@ The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is 
 * `product_documentation`
 
 ## {{observability}} Agent
-{applies_to}`stack: preview 9.3+`
+```{applies_to}
+stack: preview =9.3
+```
 
 A specialized agent for logs, metrics, and traces. It is designed to assist with infrastructure monitoring and application performance troubleshooting.
 
@@ -39,7 +43,9 @@ A specialized agent for logs, metrics, and traces. It is designed to assist with
 * All **Platform core tools**
 
 ## Threat Hunting Agent
-{applies_to}`stack: preview 9.3+`
+```{applies_to}
+stack: preview =9.3
+```
 
 A specialized agent for security alert analysis tasks, including alert investigation and security documentation. It helps analysts triage alerts and understand complex security events.
 
