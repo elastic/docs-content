@@ -22,7 +22,7 @@ The standalone and flyout modes have the same functionalities and can be used in
 
 ## Standalone mode
 
-{applies_to}`stack: preview =9.2, ga 9.3` {applies_to}`observability: ga 9.3+` {applies_to}`security: ga 9.3+`
+{applies_to}`stack: preview =9.2, ga 9.3` {applies_to}`serverless: ga 
 
 Access Agent Builder by selecting **Agents** in the main navigation. In {{product.observability}} and {{product.security}}, the standalone experience is available when you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 
