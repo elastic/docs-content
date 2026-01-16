@@ -101,6 +101,10 @@ To automate gap remediation for your rules, enable the automatic gap fill featur
 
 You can find the setting that controls the automatic gap fill feature by clicking **Settings** (above the Rules table), then going to the **Auto gap fill settings** section. Use the toggle to turn the feature on and off. 
 
+::::{tip}
+The **Auto gap fill status:** field (located in the panel above the Rules table) shows whether the automatic gap fill feature is on or off. Click the field value to access the automatic gap fill settings.
+::::
+
 You access the gap fill scheduler logs by clicking **logs** in the **Auto gap fill settings** section description. Expand each row in the scheduler logs table to learn more about gaps that were discovered and gap fill tasks that were scheduled each time the automatic gap fill job ran. 
 
 The logs also provide key details such as:
@@ -113,10 +117,6 @@ The logs also provide key details such as:
     - **Error**: Indicates that scheduled gap fill tasks failed to run.    
     - **Task skipped**: Indicates that gap fill tasks were scheduled, but did not run. This can happen if rules with gaps were disabled or the maximum limit for scheduled gap fill tasks was reached.
     - **No gaps**: Indicates that gaps weren't detected, and no gap fill tasks were scheduled.
-
-::::{note}
-The **Auto gap fill status:** field (located in the panel above the Rules table) shows whether the automatic gap fill feature is on or off. Click the field value to access the automatic gap fill settings.
-::::
 
 ## Execution results tab [rule-execution-logs]
 
