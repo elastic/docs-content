@@ -84,7 +84,7 @@ At least one of `spec.elasticsearch` or `spec.kibana` needs to be defined with a
 The following fields are optional:
 
 * `weight` is an integer that determines the priority of this policy when multiple policies target the same resource. Lower weight values have higher priority. The default value is `0`. When multiple policies have the same `weight` value and target the same resource, the operator reports a conflict.
-* `namespace` is the namespace of the `StackConfigPolicy` resource and used to identify the {{es}} clusters and {{kib}} instances to which this policy applies. If it equals to the operator namespace, the policy applies to all namespaces managed by the operator, otherwise the policy only applies to the namespace of the policy.
+* `namespace` is the namespace of the `StackConfigPolicy` resource and used to identify the {{es}} clusters and {{kib}} instances to which the policy applies. If it equals to the operator namespace, the policy applies to all namespaces managed by the operator, otherwise the policy only applies to the namespace of the policy.
 * `resourceSelector` is a [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to identify the {{es}} clusters and {{kib}} instances to which the policy applies in combination with the namespace(s). No `resourceSelector` means all {{es}} clusters and {{kib}} instances in the namespace(s).
 
 Example of applying a policy that configures snapshot repository, SLM Policies, and cluster settings:
