@@ -77,7 +77,7 @@ There are four common alert statuses:
     Once a flapping alert is recovered, it cannot be changed to flapping again. Only new alerts with repeated status changes are candidates for the flapping status. 
 
 `untracked`
-:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the action menu icon {icon}`boxes_vertical` and select **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
+:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the Alerts table, click the action menu icon {icon}`boxes_vertical` and select **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
 ## Mute alerts [mute-alerts]
 
@@ -89,7 +89,7 @@ If an alert is active or flapping, you can mute it to temporarily suppress futur
 You can mute individual alerts or multiple ones:
 
 - Mute individual alerts: Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**.
-- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bellSlash` in the **Alerts** table. 
+- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bellSlash` in the Alerts table. 
 :::
 
 :::{applies-item} stack: ga 9.0-9.2
@@ -104,6 +104,34 @@ To permanently suppress an alert's actions, open the actions menu for the approp
 
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
 ::::
+
+## Apply and filter alert tags [tag-alerts]
+
+```{applies_to}
+stack: ga 9.3+
+```
+
+Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `Production` alert tag to label a group of alerts as notifications from your production environment. Then, to find alerts with the `Production` tag, enter the `kibana.alert.workflow_tags : "Production"` query into the Alert's table KQL bar.
+
+::::{tip}
+To display alert tags in the Alerts table, click **Fields**, then add the `kibana.alert.workflow_tags` field. 
+::::
+
+To apply or remove alert tags on individual alerts:
+
+1. Go to the Alerts table, click the **More actions** menu {icon}`boxes_vertical` in an alert’s row, then select **Edit tags**. 
+2. In the flyout, do one of the following:
+   
+    * Apply a new tag: Enter a new tag into the search bar, then select the **Add _tag name_ as a tag** or click enter on your keyboard to apply your changes.
+    * Remove existing tags: Click the tag that you want to remove. To remove all tags from the alert, click **Select none**.
+
+        ::::{important}
+        Removing tags from an alert permanently deletes them. 
+        ::::
+
+3. Click **Save selection** to apply your changes to the alert. 
+
+To apply or remove alert tags on multiple alerts, select the alerts you want to change, then click **Selected *x* alerts** at the upper-left above the table. Click **Edit alert tags**, select or unselect tags, then click **Save selection**.
 
 ## Clean up alerts [clean-up-alerts]
 
