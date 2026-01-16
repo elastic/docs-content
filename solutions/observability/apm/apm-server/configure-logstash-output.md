@@ -301,7 +301,7 @@ To use SSL mutual authentication:
     * `ssl`: When set to true, enables {{ls}} to use SSL/TLS.
     * `ssl_certificate_authorities`: Configures {{ls}} to trust any certificates signed by the specified CA.
     * `ssl_certificate` and `ssl_key`: Specify the certificate and key that {{ls}} uses to authenticate with the client.
-    * `ssl_verify_mode`: Specifies whether the {{ls}} server verifies the client certificate against the CA. You need to specify either `peer` or `force_peer` to make the server ask for the certificate and validate it. If you specify `force_peer`, and APM Server doesn’t provide a certificate, the {{ls}} connection will be closed. If you choose not to use [`certutil`](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md), the certificates that you obtain must allow for both `clientAuth` and `serverAuth` if the extended key usage extension is present.
+    * `ssl_client_authentication`: Specifies whether the {{ls}} server verifies the client certificate against the CA. If you specify `required` and APM Server doesn’t provide a certificate, the {{ls}} connection will be closed. If you choose not to use [`certutil`](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md), the certificates that you obtain must allow for both `clientAuth` and `serverAuth` if the extended key usage extension is present.
 
         For example:
 
@@ -309,11 +309,11 @@ To use SSL mutual authentication:
         input {
           beats {
             port => 5044
-            ssl => true
+            ssl_enabled => true
             ssl_certificate_authorities => ["/etc/ca.crt"]
             ssl_certificate => "/etc/server.crt"
             ssl_key => "/etc/server.key"
-            ssl_verify_mode => "force_peer"
+            ssl_client_authentication => "required"
           }
         }
         ```

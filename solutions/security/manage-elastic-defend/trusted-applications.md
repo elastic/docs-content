@@ -20,6 +20,10 @@ If you use {{elastic-defend}} along with other antivirus (AV) software, you migh
 
 You can add Windows, macOS, and Linux applications that should be trusted, such as other antivirus or endpoint security applications. Trusted applications are designed to help mitigate performance issues and incompatibilities with other endpoint software installed on your hosts. Trusted applications apply only to hosts running the {{elastic-defend}} integration.
 
+::::{tip}
+To ensure you're using the right feature for your use case, we recommend reviewing [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) to understand the differences between trusted applications and alert exceptions.
+::::
+
 ::::{admonition} Requirements
 You must have the **Trusted Applications** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
 ::::

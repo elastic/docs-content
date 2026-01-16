@@ -2,6 +2,9 @@
 navigation_title: Apache HTTP Server
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/config-file-example-apache.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

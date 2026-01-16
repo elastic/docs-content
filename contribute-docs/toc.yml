@@ -3,9 +3,16 @@ toc:
   - file: on-the-web.md
   - file: locally.md
   - file: syntax-quick-reference.md
+  - folder: content-types
+    children:
+      - file: index.md
+      - file: how-tos.md
+      - file: overviews.md
   - folder: how-to
     children:
       - file: index.md
+      - file: good-issues.md
+      - file: seo.md
       - folder: cumulative-docs
         children:
           - file: index.md
@@ -13,6 +20,15 @@ toc:
           - file: badge-placement.md
           - file: example-scenarios.md
           - file: reference.md
+  - folder: style-guide
+    children:
+    - file: index.md
+    - file: voice-tone.md
+    - file: accessibility.md
+    - file: grammar-spelling.md
+    - file: word-choice.md
+    - file: formatting.md
+    - file: ui-writing.md
   - file: tools.md
     children:
       - file: vscode-extension.md

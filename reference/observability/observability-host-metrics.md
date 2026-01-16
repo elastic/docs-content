@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-host-metrics.html
   - https://www.elastic.co/guide/en/observability/current/host-metrics.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -27,7 +30,18 @@ Refer to the following sections for host metrics and field calculation formulas 
 * [Disk](#key-metrics-network)
 * [Legacy](#legacy-metrics)
 
-### Hosts metrics [key-metrics-hosts]
+### Entity definition [monitor-rds-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |
+| --- | --- |
+| **Filter** | `event.module: 'system'` or `metricset.module: 'system'` | Used to filter relevant data. |
+| **Identifier** | `host.name` | Used to identify each entity. |
+| **Display value** | `host.name` | Used as a display friendly value. |
+
+### Hosts count [key-metrics-hosts]
 
 | Metric | Description |
 | --- | --- |
@@ -114,13 +128,24 @@ Refer to the following sections for host metrics and field calculation formulas 
 * [Network](#otel-metrics-network)
 * [Disk](#otel-metrics-network)
 
-### OpenTelemetry hosts metrics [otel-metrics-hosts]
+### Entity definition [opentelemetry-host-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |
+| --- | --- |
+| **Filter** | `data_stream.dataset: 'hostmetricsreceiver.otel'` | Used to filter relevant data. |
+| **Identifier** | `host.name` | Used to identify each entity. |
+| **Display value** | `host.name` | Used as a display friendly value. |
+
+### Hosts count [otel-metrics-hosts]
 
 | Metric | Description |
 | --- | --- |
 | **Hosts** | Number of hosts returned by your search criteria.<br><br>**Field Calculation**: `unique_count(host.name)`<br> |
 
-### OpenTelemetry CPU usage metrics [otel-metrics-cpu]
+### CPU usage metrics [otel-metrics-cpu]
 
 | Metric | Description |
 | --- | --- |
@@ -137,7 +162,7 @@ Refer to the following sections for host metrics and field calculation formulas 
 | **Load (15m)** | 15 minute load average.<br><br>Load average gives an indication of the number of threads that are runnable (either busy running on CPU, waiting to run, or waiting for a blocking IO operation to complete).<br><br>**Field Calculation**: `average(metrics.system.cpu.load_average.15m)`<br> |
 | **Normalized Load** | 1 minute load average normalized by the number of CPU cores.<br><br>Load average gives an indication of the number of threads that are runnable (either busy running on CPU, waiting to run, or waiting for a blocking IO operation to complete).<br><br>100% means the 1 minute load average is equal to the number of CPU cores of the host.<br><br>Taking the example of a 32 CPU cores host, if the 1 minute load average is 32, the value reported here is 100%. If the 1 minute load average is 48, the value reported here is 150%.<br><br>**Field Calculation**: `average(metrics.system.cpu.load_average.1m) / max(metrics.system.cpu.logical.count)`<br> |
 
-### OpenTelemetry memory metrics [otel-metrics-memory]
+### Memory metrics [otel-metrics-memory]
 
 | Metric | Description |
 | --- | --- |
@@ -148,20 +173,20 @@ Refer to the following sections for host metrics and field calculation formulas 
 | **Memory Usage (%)** | Percentage of main memory usage excluding page cache.<br><br>This includes resident memory for all processes plus memory used by the kernel structures and code apart from the page cache.<br><br>A high level indicates a situation of memory saturation for the host. For example, 100% means the main memory is entirely filled with memory that can’t be reclaimed, except by swapping out.<br><br>**Field Calculation**: `average(system.memory.utilization, kql='state: used') + average(system.memory.utilization, kql='state: buffered') + average(system.memory.utilization, kql='state: slab_reclaimable') + average(system.memory.utilization, kql='state: slab_unreclaimable')`<br> |
 | **Memory Used** | Main memory usage excluding page cache.<br><br>**Field Calculation**: `average(metrics.system.memory.usage, kql='state: used') + average(metrics.system.memory.usage, kql='state: buffered') + average(metrics.system.memory.usage, kql='state: slab_reclaimable') + average(metrics.system.memory.usage, kql='state: slab_unreclaimable')`<br> |
 
-### OpenTelemetry log metrics [otel-metrics-log]
+### Log metrics [otel-metrics-log]
 
 | Metric | Description |
 | --- | --- |
 | **Log Rate** | Derivative of the cumulative sum of the document count scaled to a 1 second rate. This metric relies on the same indices as the logs.<br><br>**Field Calculation**: `cumulative_sum(doc_count)`<br> |
 
-### OpenTelemetry network metrics [otel-metrics-network]
+### Network metrics [otel-metrics-network]
 
 | Metric | Description |
 | --- | --- |
 | **Network Inbound (RX)** | Number of bytes that have been received per second on the public interfaces of the hosts.<br><br>**Field Calculation**: `8 * counter_rate(max(metrics.system.network.io, kql='direction: receive')))`<br> |
 | **Network Outbound (TX)** | Number of bytes that have been sent per second on the public interfaces of the hosts.<br><br>**Field Calculation**: `8 * counter_rate(max(metrics.system.network.io, kql='direction: transmit'))`<br> |
 
-### OpenTelemetry disk metrics [otel-metrics-disk]
+### Disk metrics [otel-metrics-disk]
 
 | Metric | Description |
 | --- | --- |
@@ -169,8 +194,7 @@ Refer to the following sections for host metrics and field calculation formulas 
 | **Disk Read IOPS** | Average count of read operations from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.operations, kql='attributes.direction: read'))`<br> |
 | **Disk Read Throughput** | Average number of bytes read from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.io, kql='attributes.direction: read'))`<br> |
 | **Disk Usage - Available (%)** | Percentage of disk space available.<br><br>**Field Calculation**: `average(system.filesystem.usage, kql='state: free')`<br> |
-| **Disk Usage - Used (%)** | Percentage of disk space used. <br><br>**Field Calculation**: `1 - sum(metrics.system.filesystem.usage, kql='state: free') / sum(metrics.system.filesystem.usage)`<br> |
+| **Disk Usage - Used (%)** | {applies_to}`stack: ga 9.0` Percentage of disk space used. <br><br>**Field Calculation**: `1 - sum(metrics.system.filesystem.usage, kql='state: free') / sum(metrics.system.filesystem.usage)`<br> |
+| **Disk Usage - Max (%)** | {applies_to}`stack: ga 9.2` Percentage of disk space used. <br><br>**Field Calculation**: `max(metrics.system.filesystem.utilization)`<br> |
 | **Disk Write IOPS** | Average count of write operations from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.operations, kql='attributes.direction: write'))`<br> |
 | **Disk Write Throughput** | Average number of bytes written from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.io, kql='attributes.direction: write'))')`<br> |
-
-

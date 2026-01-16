@@ -3,11 +3,7 @@ navigation_title: With Azure, Google, or Okta
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-oidc-op.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: cloud-hosted
 ---

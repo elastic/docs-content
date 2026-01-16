@@ -45,7 +45,7 @@ stack: ga 9.1
 This means the feature is:
 * Available on {{stack}}
 * Generally Available (GA)
-* Introduced in version 9.1.0
+* Introduced in version 9.1
 
 #### Serverless example
 
@@ -63,12 +63,12 @@ This means the feature is:
 
 ```{applies_to}
 deployment:
-  ece: deprecated 4.1.0
+  ece: deprecated 4.0+
 ```
 
 This means the feature is:
 * Available on {{ece}}
-* Deprecated starting in version 4.1.0
+* Deprecated starting in version 4.0
 
 :::{tip}
 Want to learn more about how we use availability badges? Check out the [Elastic Docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/).

@@ -38,7 +38,7 @@ The **Monitoring** page provides the following information:
 :alt: {{es}} Monitoring page
 :::
 
-* **Severity**: A critical issue impacts operations such as search and ingest and should be addressed as soon as possible. Warnings don’t impact the cluster immediately but might lead to more critical issues over time such as a corrupted repository might lead to no backups being available in the future. |
+* **Severity**: A critical issue impacts operations such as search and ingest and should be addressed as soon as possible. Warnings don’t impact the cluster immediately but might lead to more critical issues over time such as a corrupted repository might lead to no backups being available in the future.
 * **Description**: For most issues, you can click the description to get more details page on the specific issue and on how to fix it.
 * **Affected capabilities**: Each of these areas might impact search, ingest, backups, or deployment management capabilities.
 

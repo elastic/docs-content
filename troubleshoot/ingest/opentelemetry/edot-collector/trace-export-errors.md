@@ -2,7 +2,7 @@
 navigation_title: Export errors from the EDOT Collector
 description: Learn how to resolve export failures caused by `sending_queue` overflow and Elasticsearch exporter timeouts in the EDOT Collector.
 applies_to:
-  serverless: all
+  serverless: ga
   product:
     edot_collector: ga  
 products:
@@ -13,6 +13,8 @@ products:
 # Export failures when sending telemetry data from the EDOT Collector
 
 During high traffic or load testing scenarios, the EDOT Collector might fail to export telemetry data (traces, metrics, or logs) to {{es}}. This typically happens when the internal queue for outgoing data fills up faster than it can be drained, resulting in timeouts and dropped data.
+
+If you're experiencing network connectivity issues, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md). If no data appears in {{kib}}, refer to [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
 
 ## Symptoms
 
@@ -28,14 +30,14 @@ These errors indicate the Collector is overwhelmed and unable to export data fas
 This issue typically occurs when the `sending_queue` configuration or the Elasticsearch cluster scaling is misaligned with the incoming telemetry volume.  
 
 :::{important}
-{applies_to}`stack: ga 9.0, deprecated 9.3`
+{applies_to}`stack: ga 9.0-9.2, deprecated 9.3+`
 The sending queue is turned off by default. Verify that `enabled: true` is explicitly set — otherwise any queue configuration will be ignored.
 :::
 
 Common contributing factors include:
 
 * Underscaled Elasticsearch cluster is the most frequent cause of persistent export failures. If Elasticsearch cannot index data fast enough, the Collector’s queue fills up.
-* {applies_to}`stack: ga 9.0, deprecated 9.3` `sending_queue.block_on_overflow` is turned off (defaults to `false`), which can lead to data drops.
+* {applies_to}`stack: ga 9.0-9.2, deprecated 9.3+` `sending_queue.block_on_overflow` is turned off (defaults to `false`), which can lead to data drops.
 * Sending queue is enabled but `num_consumers` is too low to keep up with the incoming data volume.
 * Sending queue size (`queue_size`) is too small for the traffic load.
 * Both internal and sending queue batching are disabled, increasing processing overhead.
@@ -50,7 +52,7 @@ Increasing the `timeout` value (for example from 30s to 90s) doesn't help if the
 The resolution approach depends on your {{stack}} version and Collector configuration.
 
 ### When the sending queue is not enabled by default
-{applies_to}`stack: ga 9.0, deprecated 9.3`
+{applies_to}`stack: ga 9.0-9.2, deprecated 9.3+`
 
 Enable the sending queue and block on overflow to prevent data drops:
 
@@ -90,6 +92,8 @@ For a complete list of available metrics, refer to the upstream OpenTelemetry me
 
 * Ensure sufficient CPU and memory for the EDOT Collector.
 * Scale vertically (more resources) or horizontally (more replicas) as needed.
+
+For Kubernetes deployments, refer to [Insufficient resources in Kubernetes](/troubleshoot/ingest/opentelemetry/edot-collector/insufficient-resources-kubestack.md) for detailed resource configuration guidance.
 ::::
 
 ::::{step} Optimize Elasticsearch performance
@@ -104,6 +108,8 @@ Address indexing delays, rejected bulk requests, or shard imbalances that limit 
 Focus tuning efforts on {{es}} performance, Collector resource allocation, and queue sizing informed by the internal telemetry metrics above.
 :::
 
+
+For more detailed diagnostics, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) to troubleshoot export failures.
 
 ## Resources
 

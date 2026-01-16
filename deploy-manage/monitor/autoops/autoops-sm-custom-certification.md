@@ -46,6 +46,40 @@ Complete the following steps:
       - ${env:AUTOOPS_CA_CERT}
     ```
     After adding this line to both modules, make sure the` AUTOOPS_CA_CERT` environment variable is set on the host machine and contains the full path to your certificate file (for example: `/etc/ssl/certs/my_internal_ca.crt`).
+
+    The following code shows what your final configuration should look like when you use the environment variable method.
+
+    ```yaml
+    receivers:
+      metricbeatreceiver:
+        metricbeat:
+          modules:
+            # Metrics
+            - module: autoops_es
+              hosts: ${env:AUTOOPS_ES_URL}
+              period: 10s
+              metricsets:
+                - cat_shards
+                - cluster_health
+                - cluster_settings
+                - license
+                - node_stats
+                - tasks_management
+              # --- ADD THIS LINE ---
+              ssl.certificate_authorities:
+                - ${env:AUTOOPS_CA_CERT}
+            # Templates
+            - module: autoops_es
+              hosts: ${env:AUTOOPS_ES_URL}
+              period: 24h
+              metricsets:
+                - cat_template
+                - component_template
+                - index_template
+              # --- ADD THIS LINE ---
+              ssl.certificate_authorities:
+                - ${env:AUTOOPS_CA_CERT}
+    ```
     ::::
 
     ::::{tab-item} Hardcode file path
@@ -59,7 +93,7 @@ Complete the following steps:
     ssl.certificate_authorities:
       - "/path/to/your/ca.crt"
     ```
-    The following codeblock shows what your final configuration should look like when you use the hardcode method.
+    The following code shows what your final configuration should look like when you use the hardcode method.
 
     ```yaml
     receivers:
@@ -80,7 +114,6 @@ Complete the following steps:
               # --- ADD THIS LINE ---
               ssl.certificate_authorities:
                 - "/path/to/your/ca.crt"
-
             # Templates
             - module: autoops_es
               hosts: ${env:AUTOOPS_ES_URL}
@@ -99,14 +132,10 @@ Complete the following steps:
     :::::
 
 4. Save your changes to the `elastic-agent.yml` file.
-5. Restart {{agent}} so that the new settings can take effect.\
-    In most systemd-based Linux environments, you can use the following command to restart the agent:
-    ```bash
-    sudo systemctl restart elastic-agent
-    ```
+5. Restart {{agent}} for the new settings to take effect.
 6. Check the agent logs again to confirm that the error is gone and that {{agent}} has successfully connected your self-managed cluster to AutoOps. 
 
-    :::{note}
+    :::{tip}
     If you encounter the following error in the agent logs, there might be a formatting issue in the `elastic-agent.yml` file.
     ```sh
     ... can not convert 'object' into 'string' ... ssl.certificate_authorities ...

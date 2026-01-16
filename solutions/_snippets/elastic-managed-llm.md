@@ -1,9 +1,9 @@
-[Elastic Managed LLM](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) is the default large language model (LLM) connector available in the AI Assistant for eligible users. It provides immediate access to generative AI features without requiring any setup or external model integration.
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) are available in {{kib}} deployments and serverless projects with an appropriate [subscription or feature tier](https://www.elastic.co/pricing). They provide immediate access to generative AI features without requiring any setup or external model integration.  
 
-The Elastic Managed LLM is available out-of-the box; no manual connector setup or API key management is required for initial use. However, you can configure and use a third-party LLM connector, such as OpenAI, Azure, or Amazon Bedrock if you prefer.
+Elastic Managed LLMs are available out-of-the box. They do not require manual configuration or API key management. Alternatively, you can configure and use third-party LLM connectors, such as OpenAI, Azure, or Amazon Bedrock.
 
-To learn more about security and data privacy, refer to the [connector documentation](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) and [download the model card](https://raw.githubusercontent.com/elastic/kibana/refs/heads/main/docs/reference/resources/Elastic_Managed_LLM_model_card.pdf).
+To learn more about security and data privacy, refer to [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) which provides details on the models used by the connector.
 
 :::{important}
-Using the Elastic Managed LLM incurs additional costs. Refer to [{{ecloud}} pricing](https://www.elastic.co/pricing/serverless-search) for more information.
+Using Elastic Managed LLMs incurs additional costs. Refer to [{{ecloud}} pricing](https://www.elastic.co/pricing/serverless-search) for more information.
 :::

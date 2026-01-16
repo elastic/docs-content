@@ -9,12 +9,14 @@ applies_to:
 products:
   - id: cloud-hosted
 sub:
+  local_type_generic: deployment
+  remote_type_generic: cluster
   remote_type: Self-managed
 ---
 
 # Connect {{ech}} deployments to {{eck}} clusters [ec-enable-ccs-for-eck]
 
-These steps describe how to configure remote clusters between an {{es}} cluster in {{ech}} (ECH) and an {{es}} cluster running within [{{eck}} (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
+These steps describe how to configure remote clusters between an {{es}} cluster in {{ech}} (ECH) and an {{es}} cluster running within [{{eck}} (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that’s done, you’ll be able to [run CCS queries from {{es}}](/explore-analyze/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 :::{include} _snippets/terminology.md
 :::
@@ -59,7 +61,7 @@ These steps describe how to configure remote clusters between an {{es}} cluster 
 :::
 
 
-### Configure the local deployment [ec_configure_the_local_deployment_2]
+### Configure the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::

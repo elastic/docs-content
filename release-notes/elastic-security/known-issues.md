@@ -16,16 +16,37 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Intermittent blue screen due to conflict with Windows ODX in {{elastic-defend}}
+Applies to: 8.19.8, 8.19.9, 9.1.8, 9.1.9, 9.2.2, and 9.2.3
+
+**Impact**<br>
+An issue in {{elastic-defend}} on Windows can result in `KERNEL_AUTO_BOOST_LOCK_ACQUISITION_WITH_RAISED_IRQL` or `PAGE_FAULT_IN_NONPAGED_AREA` bug checks (blue screens) when [Offloaded Data Transfer (ODX)](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/offloaded-data-transfer) is used to copy files.
+
+**Workaround**<br>
+
+If you're unable to upgrade to a fixed version, you can disable the affected code by setting the `windows.advanced.kernel.filewrite` [advanced setting](/reference/security/defend-advanced-settings.md) to `false` in your {{elastic-defend}} integration policy.
+
+**Resolved**<br>
+
+Resolved in {{agent}} 8.19.10, 9.1.10 and 9.2.4
+
+:::{tip}
+As long as the major and minor versions match, you can run a newer patch version of {{agent}} than the {{stack}}. For example, you can use 9.1.10 {{agent}} with 9.1.8 {{stack}}.
+:::
+
+:::
+
+
 :::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
 Applies to: 9.2.0 and 9.2.1
 
-**Impact**<br> 
+**Impact**<br>
 New deployments of integrations that collect data from cloud service providers, such as Asset Discovery and Cloud Security Posture Management, do not work when deployed to AWS using agent-based deployment and the AWS CloudFormation deployment option. The problem results from a malformed CloudFormation parameter: `ElasticAgentVersion`. The default value for `ElasticAgentVersion` has a space instead of a `+`. This produces an invalid agent version value.
 
 For more information, check [#14627](https://github.com/elastic/kibana/pull/242365).
 
 
-**Workaround**<br> 
+**Workaround**<br>
 
 To work around this issue, update the default CloudFormation template by replacing the space in the `ElasticAgentVersion` parameter with a `+`.
 
@@ -35,7 +56,7 @@ Resolved in {{stack}} 9.2.2.
 
 :::
 
-:::{dropdown} Entity store transform is unavailable 
+:::{dropdown} Entity store transform is unavailable
 
 Applies to: 9.2.0
 
@@ -43,7 +64,7 @@ Applies to: 9.2.0
 
 A new feature introduced to the entity store in 9.2.0 caused the transform to scan for nonexistent indices.
 
-**Workaround** 
+**Workaround**
 
 Restart the entity store:
 1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -61,17 +82,17 @@ Applies to: ECH 9.2.0 deployments hosted on AWS
 
 **Impact**
 
-If your ECH deployment is hosted on AWS, new Cloud Security Posture Management (CSPM) and Asset Inventory integrations will fail to produce findings when deployed using agent-based deployment. ECH deployments hosted on GCP or Azure are not affected. Integrations that use agentless deployment are not affected. 
+If your ECH deployment is hosted on AWS, new Cloud Security Posture Management (CSPM) and Asset Inventory integrations will fail to produce findings when deployed using agent-based deployment. ECH deployments hosted on GCP or Azure are not affected. Integrations that use agentless deployment are not affected.
 
-**Workaround** 
+**Workaround**
 
 Two workarounds are available:
 
-1. Turn off the **Enable Cloud Connector** advanced setting. 
+1. Turn off the **Enable Cloud Connector** advanced setting.
     1. Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     2. In the **Security Solution** section, turn off the **Enable Cloud Connector** option.
     3. Your agent-based integration deployments will work as expected.
-2. Use agentless deployment. 
+2. Use agentless deployment.
     1. Instead of using agent-based deployment, use agentless deployment. Agentless deployment works as expected.
 
 **Resolved**<br>
@@ -82,22 +103,22 @@ Resolved in {{stack}} 9.2.1
 
 
 ::::{dropdown} Filters may not apply correctly on the Alerts page
-Applies to: 9.1.0, 9.1.1, 9.1.2, and 9.1.3 
+Applies to: 9.1.0, 9.1.1, 9.1.2, and 9.1.3
 
 **Impact**
 
-After upgrading to 9.1.0 and later, some users may experience inconsistent results when applying filters to the Alerts page. 
+After upgrading to 9.1.0 and later, some users may experience inconsistent results when applying filters to the Alerts page.
 
 **Workaround**
 
-You can turn off the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings), which only applies to the current space. However, turning off this setting might prevent dashboards and visualizations with applied filters from displaying properly. If you have important dashboards that this will impact, you can temporarily move them to a new space by doing the following: 
+You can turn off the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings), which only applies to the current space. However, turning off this setting might prevent dashboards and visualizations with applied filters from displaying properly. If you have important dashboards that this will impact, you can temporarily move them to a new space by doing the following:
 
-1. Create a [new space](/deploy-manage/manage-spaces.md#spaces-managing). 
-2. Turn on the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings) so that filters  apply to visualizations only if the index contains the filtering field. 
-3. Use the [import saved objects tool](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) to move the dashboards or visualizations to the space you just created. 
+1. Create a [new space](/deploy-manage/manage-spaces.md#spaces-managing).
+2. Turn on the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings) so that filters  apply to visualizations only if the index contains the filtering field.
+3. Use the [import saved objects tool](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) to move the dashboards or visualizations to the space you just created.
 
 :::{note}
-Ensure you give any users who will need access to the new space the appropriate permissions. 
+Ensure you give any users who will need access to the new space the appropriate permissions.
 :::
 
 **Resolved**<br>
@@ -106,13 +127,13 @@ Resolved in {{stack}} 9.1.4
 
 ::::
 
-:::{dropdown} The {{elastic-agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
+:::{dropdown} The {{agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
 
 Applies to: 9.0.0
 
 **Impact**
 
-The {{elastic-agent}} image is not available from `docker.elastic.co/beats/elastic-agent:9.0.0`. The default manifests for integrations that run {{elastic-agent}} on Kubernetes—such as CSPM or CNVM—use this image location, resulting in an error.
+The {{agent}} image is not available from `docker.elastic.co/beats/elastic-agent:9.0.0`. The default manifests for integrations that run {{agent}} on Kubernetes—such as CSPM or CNVM—use this image location, resulting in an error.
 
 **Workaround**
 

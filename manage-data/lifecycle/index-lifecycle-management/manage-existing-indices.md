@@ -28,7 +28,7 @@ If you’ve been using [](/manage-data/lifecycle/curator.md) or some other mecha
 
 The simplest way to transition to managing your periodic indices with {{ilm-init}} is to [configure an index template](configure-lifecycle-policy.md#apply-policy-template) to apply a lifecycle policy to new indices. A number of [example {{ilm-init}} polices](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md#ilm-rollover-ex) are available, showing how index rollover can be initiated based on different criteria.
 
-Once the index you are writing to is being managed by {{ilm-init}}, you can [manually apply a policy](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md) to your older indices. Define a separate policy for your older indices that omits the rollover action. Rollover is used to manage where new data goes, so isn’t applicable.
+Once the index you are writing to is being managed by {{ilm-init}}, you can manually [apply a policy to your older indices](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md). Define a separate policy for your older indices that omits the rollover action. Rollover is used to manage where new data goes, so isn’t applicable.
 
 Keep in mind that policies applied to existing indices compare the `min_age` for each phase to the original creation date of the index, and might proceed through multiple phases immediately. If your policy performs resource-intensive operations like force merge, you don’t want to have a lot of indices performing those operations all at once when you switch over to {{ilm-init}}.
 

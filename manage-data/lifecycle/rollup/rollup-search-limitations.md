@@ -1,4 +1,5 @@
 ---
+navigation_title: Rollup search limitations
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-search-limitations.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Rollup search limitations [rollup-search-limitations]
+# Rollup search limitations in {{es}} [rollup-search-limitations]
 
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
@@ -16,8 +17,7 @@ products:
 Rollups will be removed in a future version. [Migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
-
-While we feel the Rollup function is extremely flexible, the nature of summarizing data means there will be some limitations. Once live data is thrown away, you will always lose some flexibility.
+Learn about the search constraints when querying rolled-up data. While the rollup function is flexible, the nature of summarizing data means there are some limitations. Once live data is discarded, some loss of flexibility is inevitable.
 
 This page highlights the major limitations so that you are aware of them.
 

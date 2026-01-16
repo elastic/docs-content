@@ -1,5 +1,5 @@
 ---
-navigation_title: Index lifecycle
+navigation_title: ILM phases and actions
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html
 applies_to:
@@ -8,8 +8,9 @@ products:
   - id: elasticsearch
 ---
 
-# Index lifecycle [ilm-index-lifecycle]
+# {{ilm-cap}} phases and actions [ilm-index-lifecycle]
 
+{{ilm-cap}} ({{ilm-init}}) in {{es}} defines how indices transition through different phases—hot, warm, cold, frozen, and delete—based on age and usage. Each phase supports specific actions, from rollover and force merge to searchable snapshots and delete. This guide explains the purpose of each phase, the timing of transitions, and the actions available to manage index performance and storage efficiently.
 
 [{{ilm-cap}}](../index-lifecycle-management.md) ({{ilm-init}}) defines five index lifecycle *phases*:
 
@@ -124,17 +125,17 @@ The following table summarizes the actions available in each phase.
 
 | Action | `Hot` | `Warm` | `Cold` | `Frozen` | `Delete` |
 | --- | --- | --- | --- | --- | --- |
-| [Allocate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) | ✕ | ✓ | ✓ | ✕ | ✕ |
-| [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md) | ✕ | ✕ | ✕ | ✕ | ✓ |
-| [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | ✓ | ✓ | ✓ | ✕ | ✕ |
-| [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | ✓ | ✓ | ✕ | ✕ | ✕ |
-| [Migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) | ✕ | ✓ | ✓ | ✕ | ✕ |
-| [Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | ✓ | ✓ | ✓ | ✕ | ✕ |
-| [Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) | ✓ | ✕ | ✕ | ✕ | ✕ |
-| [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | ✓ | ✕ | ✓ | ✓ | ✕ |
-| [Set priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | ✓ | ✓ | ✓ | ✕ | ✕ |
-| [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) | ✓ | ✓ | ✕ | ✕ | ✕ |
-| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | ✓ | ✓ | ✓ | ✓ | ✕ |
-| [Wait for snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md) | ✕ | ✕ | ✕ | ✕ | ✓ |
+| [Allocate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) | ❌ | ✅ | ✅ | ❌ | ❌ |
+| [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md) | ❌ | ❌ | ❌ | ❌ | ✅ |
+| [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | ✅ | ✅ | ❌ | ❌ | ❌ |
+| [Migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) | ❌ | ✅ | ✅ | ❌ | ❌ |
+| [Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) | ✅ | ❌ | ❌ | ❌ | ❌ |
+| [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | ✅ | ❌ | ✅ | ✅ | ❌ |
+| [Set priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) | ✅ | ✅ | ❌ | ❌ | ❌ |
+| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | ✅ | ✅ | ✅ | ✅ | ❌ |
+| [Wait for snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md) | ❌ | ❌ | ❌ | ❌ | ✅ |
 
 
