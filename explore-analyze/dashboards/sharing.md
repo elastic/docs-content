@@ -11,19 +11,33 @@ products:
 
 # Sharing dashboards [share-the-dashboard]
 
-Share your dashboards with team members and stakeholders using shareable links, embeds, or file exports. {{product.kibana}} provides multiple sharing options to fit different collaboration needs, from quick URL sharing to exporting complete dashboard configurations for migration between environments.
+To share a dashboard with a larger audience, click {icon}`share` **Share** in the toolbar.
+
+:::{image} /explore-analyze/images/share-dashboard.png
+:screenshot:
+:width: 400px
+:::
+
+## Share dashboard permissions {applies_to}`stack: ga 9.3+`
+
+You can share your dashboard with one of the following permissions:
+
+- **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
+- **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
+
+The dashboard owner cannot be changed and is not visible from the UI. If a dashboard created by user A is exported and then re-imported by user B in the same space (overwriting the existing dashboard), the creator changes to user B, while user A remains the owner.
+
+::::{note}
+{{kib}} administrators always have write access to all dashboards.
+::::
 
 ## Share a dashboard with a link or embed [share-dashboard-link]
 
-To share a dashboard with a larger audience, click {icon}`share` **Share** in the toolbar. For detailed information about the sharing options and time ranges, refer to [Reporting and sharing](../report-and-share.md).
-
-![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
+For detailed information about the sharing options and time ranges, refer to [Reporting and sharing](../report-and-share.md).
 
 ::::{tip}
 When sharing a dashboard with a link while a panel is in maximized view, the generated link will also open the dashboard on the same maximized panel view.
 ::::
-
-
 
 ## Export dashboards [export-dashboards]
 
