@@ -140,7 +140,7 @@ To add a progress bar to your metric visualization:
    ![Metric maximum value option](../../images/metric-maximum-value.png "title =70%")
 
 4. Configure the **Primary metric** appearance to show the progress bar. Depending on the configuration of the primary metric, Lens might automatically set this option for you. If not, complete these steps:
-   1. In the primary metric configuration, set the **Background chart** to **Bar**.
+   1. In the primary metric configuration, set the **Background chart** or **Supporting visualization** type to **Bar**. The name of this option depends on the version you're using.
    3. Optionally, change the orientation of the progress bar as needed.
 
 5. Apply your changes.
