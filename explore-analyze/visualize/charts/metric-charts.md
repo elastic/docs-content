@@ -263,7 +263,7 @@ The following examples show various configuration options that you can use for b
     * **Primary metric**: `count(kql='response.code >= "200" and response.code < "300"') / count(response.code)`
       * **Value format**: `Percent`
       * **Color by value**: `Dynamic` (green when above 95%, yellow between 75% and 95%, red when below)
-      * **Background chart**: "Line" to show evolution over time
+      * **Background chart** or **Supporting visualization**: "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Value format**: `Percent`
       * **Label**: Custom, set to `Target:`
