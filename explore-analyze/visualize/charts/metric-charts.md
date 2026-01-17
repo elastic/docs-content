@@ -168,7 +168,7 @@ Customize your metric chart to display exactly the information you need, formatt
     - **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
     - **Value format**: Choose to display the metric as number, percent, bytes, bits, duration, or with a custom format that you can define.
     - **Icon decoration**: Add an icon to the top right corner of the chart.
-    - **Background chart**: Options include:
+    - **Background chart** or supporting visualization **Type** (depending on your version): Options include:
       - **None**: Show a unified background.    
       - **Line**: Show a light line chart in the background.
       - **Bar**: Show a progress bar that represents the current value of the chart measured against the [Maximum value](#max-value-options) defined for the chart.
