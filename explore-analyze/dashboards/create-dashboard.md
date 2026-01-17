@@ -56,7 +56,10 @@ Before creating a dashboard, ensure you have:
 
     When you create a dashboard, you become its owner and can control who can access it.  
 
-    ![Example dashboard](/explore-analyze/images/share-dashboard.png "title =50%")
+    :::{image} /explore-analyze/images/share-dashboard.png
+    :screenshot:
+    :width: 400px
+    :::
 
     You can share your dashboard with one of the following permissions:
     - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
