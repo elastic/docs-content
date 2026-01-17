@@ -56,14 +56,16 @@ Before creating a dashboard, ensure you have:
 
     When you create a dashboard, you become its owner and can control who can access it.  
 
-    A dashboard can have two types of permissions:
-    - **Can edit**: Everyone in the space can edit, delete, and fully manage the dashboard.
-    - **Can view**: Everyone in the space can view the dashboard but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
+    ![Example dashboard](/explore-analyze/images/share-dashboard.png "title =50%")
+
+    You can share your dashboard with one of the following permissions:
+    - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
+    - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
 
     The dashboard owner cannot be changed and is not visible from the UI. If a dashboard created by user A is exported and then re-imported by user B in the same space (overwriting the existing dashboard), the creator changes to user B, while user A remains the owner.
 
     ::::{note}
-    Admin users always have write access to all dashboards.
+    {{kib}} administrators always have write access to all dashboards.
     ::::
 
 7. Click **Save**  to save the dashboard.
