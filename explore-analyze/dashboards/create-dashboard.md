@@ -51,4 +51,19 @@ Before creating a dashboard, ensure you have:
        
        ![Change and apply dashboard settings](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt4a6e9807f1fac9f8/6750ee9cef6d5a250c229e50/dashboard-settings-8.17.0.gif "title =50%")
 
-6. Click **Save**  to save the dashboard.
+
+6. {applies_to}`stack: ga 9.3+` Manage dashboard permissions.
+
+    When you create a dashboard, you become its owner and can control who can access it.  
+
+    A dashboard can have two types of permissions:
+    - **Can edit**: Everyone in the space can edit, delete, and fully manage the dashboard.
+    - **Can view**: Everyone in the space can view the dashboard but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
+
+    The dashboard owner cannot be changed and is not visible from the UI. If a dashboard created by user A is exported and then re-imported by user B in the same space (overwriting the existing dashboard), the creator changes to user B, while user A remains the owner.
+
+    ::::{note}
+    Admin users always have write access to all dashboards.
+    ::::
+
+7. Click **Save**  to save the dashboard.
