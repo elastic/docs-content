@@ -276,7 +276,7 @@ The following examples show various configuration options that you can use for b
     * **Title**: "Successful requests (2xx)"
     * **Primary metric**: `count(kql='response.code >= 200 and response.code < 300') / count(response.code)`
       * **Value format**: `Percent`
-      * **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
+      * **Color mode** or **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
       * **Background chart** or **Supporting visualization**: "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Name**: `Target:`
