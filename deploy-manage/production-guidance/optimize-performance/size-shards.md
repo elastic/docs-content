@@ -31,7 +31,7 @@ To avoid either of these states, implement the following guidelines:
 
 ### Shard distribution guidelines
 
-To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. It can lead to an [unbalanced cluster](/troubleshoot/elasticsearch/troubleshooting-unbalanced-cluster.md) and potentially trigger [watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md).
+{{es}} uses its [desired balance allocator](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings#shards-rebalancing-heuristics) to distribute shards across nodes based off heuristics for data stream writes, shard counts, and disk usage. Shard counts may end up unevenly distributed in order to evenly spread the node work. An [unbalanced cluster](/troubleshoot/elasticsearch/troubleshooting-unbalanced-cluster.md) may lead to performance degradation and instability, such as [watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md). Poorly specified [sharding strategies](#create-a-sharding-strategy) may cause [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
 
 While {{es}} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
 
