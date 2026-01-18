@@ -88,17 +88,17 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
   eck: ga 3.3
 ```
 
-The following section allows installing a PackageRegistry resource along with {{es}}, {{kib}} and {{fleet-server}}.
-  
+The following section describes how to install a {{package-registry}} resource along with {{es}}, {{kib}} and {{fleet-server}}.
+
 ```sh subs=true
-# Install an eck-managed {{es}}, {{kib}} and {{fleet-server}} and connect to Package Registry using custom values.
+# Install an eck-managed {{es}}, {{kib}} and {{fleet-server}} and connect to {{package-registry}} using custom values.
 helm install eck-stack-with-package-registry elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/package-registry/basic-eck.yaml -n elastic-stack
 ```
 
-The `eck-package-registry` chart creates a `PackageRegistry` resource that connects your {{kib}} instance to the Package Registry. {{eck}} automatically handles the creation of the Package Registry and the connection to {{kib}} and {{fleet-server}}.
+The `eck-package-registry` chart creates a `PackageRegistry` resource that connects your {{kib}} instance to the {{package-registry}}. {{eck}} automatically handles the creation of the {{package-registry}} and the connection to {{kib}} and {{fleet-server}}.
 
-For more information about configuring Package Registry, refer to the [Package Registry documentation](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
+For more information about configuring {{package-registry}}, refer to the [documentation](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
 
 ## Enterprise Search server along with {{es}} and {{kib}} [k8s-install-enterprise-search-elasticsearch-kibana-helm]
 
