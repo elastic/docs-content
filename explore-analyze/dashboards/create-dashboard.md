@@ -65,7 +65,7 @@ Before creating a dashboard, ensure you have:
     - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
     - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
 
-    The dashboard owner cannot be changed and is not visible from the UI. If a dashboard created by user A is exported and then re-imported by user B in the same space (overwriting the existing dashboard), the creator changes to user B, while user A remains the owner.
+    The dashboard owner cannot be changed and is not visible from the UI. Note that if user A creates a dashboard, exports it, and user B re-imports it in the same space (overwriting the existing dashboard), user A remains the owner but user B becomes the creator.
 
     ::::{note}
     {{kib}} administrators always have write access to all dashboards.
