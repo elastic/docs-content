@@ -11,6 +11,7 @@ products:
 
 # Sharing dashboards [share-the-dashboard]
 
+Share your dashboards with team members and stakeholders using shareable links, embeds, or file exports. Kibana provides multiple sharing options to fit different collaboration needs, from quick URL sharing to exporting complete dashboard configurations for migration between environments.
 To share a dashboard with a larger audience, click {icon}`share` **Share** in the toolbar.
 
 :::{image} /explore-analyze/images/share-dashboard.png
@@ -18,7 +19,10 @@ To share a dashboard with a larger audience, click {icon}`share` **Share** in th
 :width: 400px
 :::
 
-## Share dashboard permissions {applies_to}`stack: ga 9.3+`
+## Share dashboard permissions
+```{applies_to}
+stack: ga 9.3+
+```
 
 You can share your dashboard with one of the following permissions:
 
