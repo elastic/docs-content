@@ -62,9 +62,6 @@ stack: preview =9.3
 
 A specialized agent for security alert analysis tasks, including alert investigation and security documentation. It helps analysts triage alerts and understand complex security events.
 
-**Availability:**
-* **Security** view
-* **Classic** view
 
 **Assigned Tools:**
 * All **Security tools** (e.g., `security.alerts`, `security.entity_risk_score`, `security.attack_discovery_search`)
