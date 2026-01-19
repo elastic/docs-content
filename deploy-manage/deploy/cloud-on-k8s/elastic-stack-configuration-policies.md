@@ -254,6 +254,7 @@ spec:
     secureSettings:
     - secretName: kibana-shared-secret
 ```
+1. {applies_to}`eck: ga 3.3+` Optional: determines priority when multiple policies target the same resource
 
 Example showing how multiple `StackConfigPolicy` resources can target the same Elasticsearch cluster, with `weight` determining which policy takes precedence:
 
