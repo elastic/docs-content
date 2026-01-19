@@ -60,6 +60,7 @@ If the command returns nothing, the integration doesn't collect logs data and lo
 ::::::{step} Create or update @custom component templates
 
 :::::{tab-set}
+:group: custom
 ::::{tab-item} {{kib}}
 :sync: kib
 
@@ -149,7 +150,7 @@ Changes are applied to existing data streams on [rollover](/manage-data/data-sto
 After your data streams roll over, verify that logsdb is enabled.
 
 ::::{tab-set}
-
+:group: custom
 :::{tab-item} {{kib}}
 :sync: kib
 
