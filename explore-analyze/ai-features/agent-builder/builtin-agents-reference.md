@@ -41,8 +41,8 @@ The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is 
 ## {{observability}} Agent
 ```{applies_to}
 stack: preview =9.3
-  serverless:
-    observability: preview
+serverless:
+  observability: preview
 ```
 
 A specialized agent for logs, metrics, and traces. It is designed to assist with infrastructure monitoring and application performance troubleshooting.
@@ -55,8 +55,8 @@ A specialized agent for logs, metrics, and traces. It is designed to assist with
 ## Threat Hunting Agent
 ```{applies_to}
 stack: preview =9.3
-  serverless:
-    security: preview
+serverless:
+  security: preview
 ```
 
 A specialized agent for security alert analysis tasks, including alert investigation and security documentation. It helps analysts triage alerts and understand complex security events.
