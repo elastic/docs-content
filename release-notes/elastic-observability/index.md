@@ -21,6 +21,32 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.2.4 [elastic-observability-9.2.4-release-notes]
+
+
+### Fixes [elastic-observability-9.2.4-fixes]
+* Fixes the icon in the "Elastic documentation not available" callout in AI Assistant Settings [#247885]({{kib-pull}}247885).
+* Fixes validation error with maintenance windows on lightweight Synthetics monitors [#247880]({{kib-pull}}247880).
+* Fixes related dashboards for ES Query and other stack rules supported in Observability [#247564]({{kib-pull}}247564).
+* Fixes console state from persisting across journey steps [#247376]({{kib-pull}}247376).
+* Fixes Elastic Agent from interpreting JS template literals as policy variables  [#247284]({{kib-pull}}247284).
+* Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
+* Fixes default alerts flow from breaking when default rules are not defined [#245736]({{kib-pull}}245736).
+* Fixes error handling for tool response [#241425]({{kib-pull}}241425).
+
+## 9.2.3 [elastic-observability-9.2.3-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.3-features-enhancements]
+* Adds a message to tell users when a stream is missing [#244366]({{kib-pull}}244366).
+* Adds a warning when deleting API keys that are currently in use by alerting rules [#243353]({{kib-pull}}243353).
+* Shows supported schemas in the Infrastructure inventory [#244481]({{kib-pull}}244481).
+
+
+### Fixes [elastic-observability-9.2.3-fixes]
+* Fixes alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559).
+* Adds managed field to `dataViewSpecSchema` [#244134]({{kib-pull}}244134).
+* Removes mentions of template snippets from descriptions [#243656]({{kib-pull}}243656).
+
 ## 9.2.2 [elastic-observability-9.2.2-release-notes]
 
 ### Features and enhancements [elastic-observability-9.2.2-features-enhancements]
@@ -119,6 +145,29 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility for Streams badges [#235625]({{kib-pull}}235625).
 * Fixes code area responsiveness in Stream management [#232630]({{kib-pull}}232630).
 
+## 9.1.10 [elastic-observability-9.1.10-release-notes]
+
+
+### Features and enhancements [elastic-observability-9.1.10-features-enhancements]
+* Adds API to enable auto-syncing of global parameters to private locations [#239284]({{kib-pull}}239284).
+
+
+### Fixes [elastic-observability-9.1.10-fixes]
+* Fixes validation error with maintenance windows on lightweight Synthetics monitors [#247880]({{kib-pull}}247880).
+* Fixes related dashboards for ES Query and other stack rules supported in Observability [#247564]({{kib-pull}}247564).
+* Fixes console state from persisting across journey steps [#247376]({{kib-pull}}247376).
+* Fixes Elastic Agent from interpreting JS template literals as policy variables [#247284]({{kib-pull}}247284).
+* Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
+* Fixes trace links to correctly calculate date range [#247531]({{kib-pull}}247531).
+
+## 9.1.9 [elastic-observability-9.1.9-release-notes]
+
+### Features and enhancements [elastic-observability-9.1.9-features-enhancements]
+*  Adds a warning when deleting API keys that are currently in use by alerting rules [#243353]({{kib-pull}}243353).
+
+### Fixes [elastic-observability-9.1.9-fixes]
+* Fixes alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559).
+
 ## 9.1.8 [elastic-observability-9.1.8-release-notes]
 
 ### Features and enhancements [elastic-observability-9.1.8-features-enhancements]
@@ -137,6 +186,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026).
 * Excludes stale SLOs from "group by" stats [#240077]({{kib-pull}}240077).
 * Fixes Kibana tool from failing when using a proxy [#236653]({{kib-pull}}236653).
+* Hides non-trace services from APM service inventory [#241080]({{kib-pull}}241080).
 
 ## 9.1.6 [elastic-observability-9.1.6-release-notes]
 

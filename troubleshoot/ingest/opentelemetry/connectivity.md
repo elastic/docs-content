@@ -15,7 +15,6 @@ products:
 
 Connectivity problems occur when the EDOT SDKs or the EDOT Collector can't reach Elastic. Even with correct proxy settings, network restrictions such as blocked ports or firewalls can prevent data from flowing.
 
-
 ## Symptoms
 
 You might see one or more of the following error messages:

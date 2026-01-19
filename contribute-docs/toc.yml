@@ -3,6 +3,11 @@ toc:
   - file: on-the-web.md
   - file: locally.md
   - file: syntax-quick-reference.md
+  - folder: content-types
+    children:
+      - file: index.md
+      - file: how-tos.md
+      - file: overviews.md
   - folder: how-to
     children:
       - file: index.md

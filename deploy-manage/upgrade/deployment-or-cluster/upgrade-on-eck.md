@@ -22,6 +22,10 @@ Before you start the upgrade, [plan your upgrade](/deploy-manage/upgrade/plan-up
 
 In this example, we’re modifying the version to {{version.stack}}.
 
+:::{important}
+For production use, for {{stack}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{stack}} version 8.15 and earlier, set `vm.max_map_count` to `262144`.
+:::
+
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
@@ -69,7 +73,7 @@ spec:
         - name: sysctl
           securityContext:
             privileged: true
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=1048576']
         containers:
         - name: elasticsearch
           resources:
@@ -103,7 +107,7 @@ spec:
         - name: sysctl
           securityContext:
             privileged: true
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=1048576']
         containers:
         - name: elasticsearch
           resources:

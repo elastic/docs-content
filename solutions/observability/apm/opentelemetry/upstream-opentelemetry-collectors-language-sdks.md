@@ -21,18 +21,16 @@ The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means lo
 To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/opentelemetry/index.md).
 
 ::::{important}
-The Elastic Distribution of OpenTelemetry Collector (EDOT Collector) include additional features and configurations to seamlessly integrate with Elastic. Refer to [EDOT compared to contrib OpenTelemetry](opentelemetry:///reference/compatibility/edot-vs-upstream.md) for a comparison.
+The Elastic Distribution of OpenTelemetry Collector (EDOT Collector) include additional features and configurations to seamlessly integrate with Elastic. Refer to [EDOT compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md) for a comparison.
 ::::
 
 ## Send data from a contrib OpenTelemetry Collector [apm-connect-open-telemetry-collector]
 
 Connect your OpenTelemetry Collector instances to Elastic {{observability}} or {{obs-serverless}} using the OTLP exporter:
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 ```yaml
 receivers: <1>
@@ -87,8 +85,7 @@ service:
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 ```yaml
 receivers:   <1>
@@ -157,11 +154,9 @@ To export traces and metrics to Elastic, instrument your services and applicatio
 
 Define environment variables to configure the OpenTelemetry agent or SDK and enable communication with Elastic APM. For example, if you are instrumenting a Java app, define the following environment variables:
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 ```bash
 export OTEL_RESOURCE_ATTRIBUTES=service.name=checkoutService,service.version=1.1,deployment.environment=production
@@ -201,8 +196,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 ```bash
 export OTEL_RESOURCE_ATTRIBUTES=service.name=checkoutService,service.version=1.1,deployment.environment=production

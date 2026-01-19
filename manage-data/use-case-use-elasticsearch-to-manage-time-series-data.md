@@ -22,9 +22,9 @@ The content tier is not typically used for time series data. However, it’s req
 
 The steps for setting up data tiers vary based on your deployment type:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Add or select your deployment from the {{ecloud}} home page or the **Hosted deployments** page.
 3. From your deployment menu, select **Edit deployment**.
@@ -35,7 +35,7 @@ The steps for setting up data tiers vary based on your deployment type:
 [Autoscaling](../deploy-manage/autoscaling.md) automatically adjusts your deployment’s capacity to meet your storage needs. To enable autoscaling, select **Autoscale this deployment** on the **Edit deployment** page. Autoscaling is only available for {{ech}}.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 To assign a node to a data tier, add the respective [node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) to the node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file. Changing an existing node’s roles requires a [rolling restart](../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
 
 ```yaml
@@ -76,9 +76,9 @@ The cold and frozen tiers can use [{{search-snaps}}](../deploy-manage/tools/snap
 
 To use {{search-snaps}}, you must register a supported snapshot repository. The steps for registering this repository vary based on your deployment type and storage provider:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 When you create a cluster, {{ech}} automatically registers a default [`found-snapshots`](../deploy-manage/tools/snapshot-and-restore.md) repository. This repository supports {{search-snaps}}.
 
 The `found-snapshots` repository is specific to your cluster. To use another cluster’s default repository, refer to the Cloud [Snapshot and restore](../deploy-manage/tools/snapshot-and-restore.md) documentation.
@@ -90,7 +90,7 @@ You can also use any of the following custom repository types with {{search-snap
 * [Amazon Web Services (AWS)](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 Use any of the following repository types with searchable snapshots:
 
 * [AWS S3](../deploy-manage/tools/snapshot-and-restore/s3-repository.md)

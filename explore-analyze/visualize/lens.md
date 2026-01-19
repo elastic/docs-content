@@ -48,7 +48,7 @@ Choose the data you want to visualize.
 
 1. Drag the fields directly to the layer pane. **Lens** automatically selects the aggregation function.
 2. If you want to learn more about the data a field contains, click the field.
-3. To visualize more than one {{data-source}}, click **Add layer**, select the layer type, then select the {{data-source}}.
+3. To visualize more than one {{data-source}}, select {icon}`plus_in_square` **Add layer**, choose the layer type, then select the {{data-source}}.
 
 Edit and delete.
 
@@ -106,7 +106,7 @@ Tables are highly customizable, and provide you with text alignment, value forma
 
 ### Assign colors to terms [assign-colors-to-terms]
 ```{applies_to}
-stack: preview 9.0, ga 9.1
+stack: preview =9.0, ga 9.1+
 serverless: ga
 ```
 
@@ -261,10 +261,10 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
 ### Use formulas to perform math [lens-formulas]
 
-Formulas allow you to perform math on aggregated data. The most common formulas divide two values to produce a percent.
+When you're defining the fields and data to show in a visualization, formulas allow you to perform math on aggregated data. For example, you can use formulas to divide two values and produce a percent value.
 
-1. In the layer pane, click a field.
-2. Click **Formula**, then enter the formula.
+1. Add a field to your visualization and select it to open its data and appearance settings.
+2. Select **Formula**, then enter the formula.
 
     Filter ratio example
     :   To filter a document set, use `kql=''`, then compare to other documents within the same grouping:
@@ -357,7 +357,7 @@ Any annotation layer can be saved as an annotation group to the **Visualize Libr
 
 Create a new annotation layer.
 
-1. In the layer pane, click **Add layer > Annotations > New annotation**.
+1. From your visualization, select {icon}`plus_in_square` **Add layer > Annotations > New annotation**.
 2. Select the {{data-source}} for the annotation.
 3. From the fields list, drag a field to the **Add an annotation** field.
 4. To use global filters in the annotation, click ![Actions menu for the annotations layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Keep global filters** from the dropdown.
@@ -389,13 +389,13 @@ Specify the annotation appearance.
 
 Save the annotation group to the library.
 
-1. In the layer pane, on your annotation layer, click ![Save button on annotations layer](/explore-analyze/images/kibana-lens_saveAnnotationLayerButton_8.9.0.png "").
+1. From your visualization, on your annotation layer, click ![Save button on annotations layer](/explore-analyze/images/kibana-lens_saveAnnotationLayerButton_8.9.0.png "").
 2. Enter the **Title**, **Description**, and add any applicable [**Tags**](../find-and-organize/tags.md).
 3. Click **Save group**.
 
 Add a library annotation group to a visualization.
 
-1. In the layer pane, click **Add layer > Annotations > Load from library**.
+1. From your visualization, select {icon}`plus_in_square` **Add layer > Annotations > Load from library**.
 2. Select the annotation group you want to use.
 
 
@@ -410,7 +410,7 @@ For example, to track the number of bytes in the 75th percentile, add a shaded *
 :screenshot:
 :::
 
-1. In the layer pane, click **Add layer > Reference lines**.
+1. From your visualization, click **Add layer > Reference lines**.
 2. Click the reference line value, then specify the reference line you want to use:
 
     * To add a static reference line, click **Static**, then enter the reference line value you want to use.
@@ -463,18 +463,16 @@ In the legend, click the field, then choose one of the following options:
 
 ## Customize the visualization display [configure-the-visualization-components]
 
-Each visualization type comes with a set of components that you access from the editor toolbar.
+Each visualization offers various options that you can use to customize its appearance:
 
-The following component menus are available:
-
-* **Appearance** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
+* **Style** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
 * **Labels** — Specifies how to display the labels for donut charts, pie charts, and treemaps.
 * **Legend** — Specifies how to display the legend. You can choose to display the legend inside or outside the visualization, truncate the legend values when they’re too long, and [select additional statistics to show](#customize-visualization-legend).
 * **Left axis**, **Bottom axis**, and **Right axis** — Specify how you want to display the chart axes. For example, add axis labels and change the orientation and bounds.
 
-### Visualization appearance options [customize-visualization-appearance]
+### Visualization appearance and style options [customize-visualization-appearance]
 
-When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
+You can customize the appearance of your visualizations with several options. To do that, look for the {icon}`brush` **Style** button.
 
 These options can vary depending on the type of chart.
 
@@ -535,7 +533,7 @@ These options can vary depending on the type of chart.
 ```{applies_to}
 stack: ga 9.2
 ```
-When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
+When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` **Style** button.
 
 **Primary metric**
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
@@ -587,7 +585,7 @@ When creating or editing a visualization, you can customize several appearance o
 
 ### Customize the visualization legend [customize-visualization-legend]
 
-When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") icon.
+When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") **Legend** button.
 
 :::{image} /explore-analyze/images/kibana-legend-popover-8.16.0.png
 :alt: Menu with options to customize the legend of a visualization

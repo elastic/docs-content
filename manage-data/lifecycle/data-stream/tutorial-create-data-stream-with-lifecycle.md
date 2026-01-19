@@ -8,9 +8,9 @@ products:
   - id: elasticsearch
 ---
 
-# Tutorial: Create a data stream with a lifecycle [tutorial-manage-new-data-stream]
+# Creating a data stream with a lifecycle [tutorial-manage-new-data-stream]
 
-To create a data stream with a built-in lifecycle, follow these steps:
+Follow these steps to create an {{es}} data stream with a configured lifecycle. Learn how to set the retention period for your data and to retrieve the lifecycle configuration details.
 
 1. [Create an index template](#create-index-template-with-lifecycle)
 2. [Create a data stream](#create-data-stream-with-lifecycle)

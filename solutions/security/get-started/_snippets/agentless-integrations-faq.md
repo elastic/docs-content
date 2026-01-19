@@ -1,11 +1,10 @@
-Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agentless CSPM integration.
+Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agentless integrations.
 
 ## When I make a new integration, when will I see the agent appear on the Integration Policies page? [_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page]
 
 After you create a new agentless integration, the new integration policy may show a button that says **Add agent** instead of the associated agent for several minutes during agent enrollment. No action is needed other than refreshing the page once enrollment is complete.
 
 ## Why isn't my agentless agent appearing in Fleet?
-
 ```{applies_to}
   stack: ga 9.1
   serverless: ga
@@ -20,7 +19,7 @@ Agentless agents (which run on Elastic's infrastructure to enable agentless inte
 Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and enable **Show agentless resources**.
 :::
 
-:::{applies-item} stack: ga 9.1
+:::{applies-item} stack: ga =9.1
 Add the following query to the end of the **Fleet** page's URL: `?showAgentless=true`. 
 :::
 
@@ -66,10 +65,10 @@ Deleting your integration will remove all associated resources and stop data ing
 ::::
 
 
-When you create a new agentless CSPM integration, a new agent policy appears within the **Agent policies** tab on the **{{fleet}}** page, but you can’t use the **Delete integration** button on this page. Instead, you must delete the integration from the CSPM Integration’s **Integration policies** tab.
+When you create a new agentless integration, a new agent policy appears within the **Agent policies** tab on the **{{fleet}}** page, but you can’t use the **Delete integration** button on this page. Instead, you must delete the integration from the Integration’s **Integration policies** tab.
 
-1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then search for and select `CSPM`.
-2. Go to the CSPM Integration’s **Integration policies** tab.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then search for your integration.
+2. Go to the integration’s **Integration policies** tab.
 3. Find the integration policy for the integration you want to delete. Click **Actions**, then **Delete integration**.
 4. Confirm by clicking **Delete integration** again.
 
@@ -77,3 +76,16 @@ When you create a new agentless CSPM integration, a new agent policy appears wit
 
 No, agentless integrations can not use a specific range of static IP addresses for configuring ingress and egress allow and deny rules.
 
+## Do agentless integrations work if I'm using traffic filtering?
+
+::::{applies-switch}
+
+:::{applies-item} serverless: ga
+Agentless integrations do not support traffic filtering.
+:::
+
+:::{applies-item} stack: ga 9.1+
+Agentless integrations support traffic filtering. No additional configuration is necessary.
+:::
+
+::::

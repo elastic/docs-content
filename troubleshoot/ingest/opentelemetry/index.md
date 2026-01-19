@@ -33,6 +33,10 @@ These guides apply to both the Collector and SDKs:
 
 * [Contact support](/troubleshoot/ingest/opentelemetry/contact-support.md): Learn how to contact Elastic Support and what information to include to help resolve issues faster.
 
+## Supported architectures
+
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+
 ## Additional resources
 
 * [Troubleshoot ingestion tools](/troubleshoot/ingest.md): Overview of troubleshooting for all ingestion tools, including EDOT, Logstash, Fleet, and Beats.
