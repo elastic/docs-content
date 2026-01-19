@@ -36,8 +36,7 @@ The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is 
 
 
 **Assigned Tools:**
-* All **Platform core tools** (e.g., `list_indices`, `execute_esql`, `get_document_by_id`)
-* `product_documentation`
+* All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
 ## {{observability}} Agent
 ```{applies_to}
@@ -50,8 +49,8 @@ A specialized agent for logs, metrics, and traces. It is designed to assist with
 
 
 **Assigned Tools:**
-* All **{{observability}} tools** (e.g., `observability.get_alerts`, `observability.get_services`, `observability.get_log_change_points`)
-* All **Platform core tools**
+* All [**{{observability}} tools**](./tools/builtin-tools-reference.md#observability-tools)
+* All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
 ## Threat Hunting Agent
 ```{applies_to}
@@ -64,8 +63,8 @@ A specialized agent for security alert analysis tasks, including alert investiga
 
 
 **Assigned Tools:**
-* All **Security tools** (e.g., `security.alerts`, `security.entity_risk_score`, `security.attack_discovery_search`)
-* All **Platform core tools**
+* All [**Security tools**](./tools/builtin-tools-reference.md#security-tools)
+* All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
 ## Related pages
 
