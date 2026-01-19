@@ -129,3 +129,13 @@ Storing this output into `nodes_stats.json` and then using [third-party tool JQ]
 {{es}}'s Ingest Pipeline processors don't have associated `id` like {{ls}}'s Pipelines to distinguish them so these emit in sequential order as seen in pipeline's definition. 
 
 The statistics report per node since its uptime, so will reset with node restarts. As a rough heuristic, you could look at an individual node's output knowing proportions will usually be about equal. 
+
+## Errors
+
+The Elasticsearch API response body includes any errors encountered at any stage of the ingestion flow. To diagnose ingestion issues, it is also recommended to review error logs. Note that Elastic client-side products (such as [Logstash](https://www.elastic.co/docs/reference/logstash/logging#_update_logging_levels) and [Elastic Agent](https://www.elastic.co/docs/reference/fleet/monitor-elastic-agent#change-logging-level)) may require debug logging level to be enabled in order to report HTTP 400-level errors. The following are examples of error log entries you may encounter:
+
+```console
+[DEBUG][org.elasticsearch.action.bulk.TransportShardBulkAction] 
+failed to execute bulk item (create) index {...}
+org.elasticsearch.index.mapper.MapperParsingException: failed to parse field [...]
+```
