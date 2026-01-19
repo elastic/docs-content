@@ -123,6 +123,7 @@ spec:
           min_count: 1
           max_count: 20
 ```
+1. {applies_to}`eck: ga 3.3+` Optional: determines priority when multiple policies target the same resource
 
 Another example of configuring role mappings, ingest pipelines, ILM and index templates:
 
@@ -254,7 +255,6 @@ spec:
     secureSettings:
     - secretName: kibana-shared-secret
 ```
-1. {applies_to}`eck: ga 3.3+` Optional: determines priority when multiple policies target the same resource
 
 Example showing how multiple `StackConfigPolicy` resources can target the same Elasticsearch cluster, with `weight` determining which policy takes precedence:
 
