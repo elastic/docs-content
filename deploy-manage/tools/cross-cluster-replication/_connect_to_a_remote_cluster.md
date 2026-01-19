@@ -16,6 +16,9 @@ Cross-cluster replication (CCR) relies on the [remote clusters](/deploy-manage/r
 :alt: ClusterA contains the leader index and ClusterB contains the follower index
 :::
 
+:::{include} _snippets/terminology.md
+:::
+
 Connecting to a remote cluster depends on the environment your local and remote clusters are deployed on and the security model you wish to use.
 
 The exact details needed to connect to a remote cluster vary. Select a suitable option for your specific scenario based on the local cluster you're configuring:
