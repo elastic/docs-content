@@ -16,7 +16,6 @@ To share a dashboard with a larger audience, click {icon}`share` **Share** in th
 
 :::{image} /explore-analyze/images/share-dashboard.png
 :screenshot:
-:width: 400px
 :::
 
 ## Manage dashboard permissions
