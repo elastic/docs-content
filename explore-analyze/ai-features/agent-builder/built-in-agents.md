@@ -48,9 +48,6 @@ stack: preview =9.3
 
 A specialized agent for logs, metrics, and traces. It is designed to assist with infrastructure monitoring and application performance troubleshooting.
 
-**Availability:**
-* **Observability** view
-* **Classic** view
 
 **Assigned Tools:**
 * All **{{observability}} tools** (e.g., `observability.get_alerts`, `observability.get_services`, `observability.get_log_change_points`)
