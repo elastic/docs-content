@@ -9,14 +9,14 @@ products:
   - id: cloud-serverless
 ---
 
-# `ResourceExhausted` and decompression size errors in Collector-to-Collector pipelines
+# `ResourceExhausted` errors in Collector-to-Collector pipelines
 
 This troubleshooting guide helps you diagnose and resolve `rpc error: code = ResourceExhausted` errors that occur in Collector-to-Collector pipelines when using {{edot}} (EDOT) Collectors. These errors typically indicate that one or more resource limits, such as gRPC message size, decompression memory, or internal buffering, have been exceeded.
 
 This issue is most often reported in the following setups:
 
 - Agent to Gateway Collector architectures
-- Multiple Collectors sending to a single gateway
+- Multiple Collectors sending to a single Gateway
 - {{k8s}} environments with autoscaling workloads
 - Large clusters where a single collection interval produces large payloads (for example, cluster-wide metrics)
 - Pipelines exporting large batches, such as:
@@ -49,7 +49,7 @@ This limit is not derived from pod CPU/memory sizing. It is primarily a protocol
 
 ## Causes
 
-`ResourceExhausted` errors indicate that a configured or implicit limit has been exceeded. In Collector-to-Collector pipelines, this is commonly caused by a combination of gRPC limits, memory pressure, and backpressure propagation:
+`ResourceExhausted` errors indicate that a configured or implicit limit has been exceeded. In Collector-to-Collector pipelines, this is commonly caused by a combination of gRPC limits, memory pressure, and backpressure propagation.
 
 ### gRPC message size limits (OTLP receiver)
 
@@ -91,15 +91,16 @@ Exceeding any of these limits results in a `ResourceExhausted` error. All limits
 
 In pipelines with multiple Collectors:
 
-- A downstream Collector might become saturated (CPU, memory, or queue limits)
-- Upstream Collectors continue sending data until their sending queues fill, or retry limits are exhausted
-- This can surface as `ResourceExhausted` errors even if the downstream Collector appears healthy
+- A downstream Collector might become saturated (CPU, memory, or queue limits).
+- Upstream Collectors continue sending data until their sending queues fill, or retry limits are exhausted.
+
+This can surface as `ResourceExhausted` errors even if the downstream Collector appears healthy.
 
 ### Batching and queue configuration mismatches
 
-- Export payloads that are too large can exceed gRPC receiver limits
-- Sending queues might fill faster than they can be drained during sudden traffic increases
-- Multiple Collectors competing for shared node resources (common in {{k8s}}) amplify the effect
+- Export payloads that are too large can exceed gRPC receiver limits.
+- Sending queues might fill faster than they can be drained during sudden traffic increases.
+- Multiple Collectors competing for shared node resources (common in {{k8s}}) amplify the effect.
 
 ## Diagnosis
 
@@ -109,8 +110,8 @@ To identify the cause, inspect both the sending and receiving Collectors.
 
 :::::{step} Identify where the error originates
 
-- Inspect logs on both upstream and downstream Collectors
-- Note which Collector reports the `ResourceExhausted` error (for example, on the exporter side or the receiver side)
+- Inspect logs on both upstream and downstream Collectors.
+- Note which Collector reports the `ResourceExhausted` error (for example, on the exporter side or the receiver side).
 
 :::::
 
@@ -191,12 +192,12 @@ receivers:
     protocols:
       grpc:
         endpoint: ${env:MY_POD_IP}:4317
-        max_recv_msg_size_mib: 16  # For example: 16 MiB
+        max_recv_msg_size_mib: 16
 ```
 
 Increase this cautiously:
-- Larger limits allow larger payloads but might increase memory usage
-- Validate gateway stability (CPU/memory) after the change
+- Larger limits allow larger payloads but might increase memory usage.
+- Validate gateway stability (CPU/memory) after the change.
 
 ### Reduce payload size from the sending Collector
 
@@ -232,14 +233,13 @@ service:
 #### Reduce high-volume or high-cardinality content
 
 If possible, reduce payload size by:
-- Turn off unnecessary metrics in receivers
+- Turning off unnecessary metrics in receivers
+- Removing large attributes when safe for your use case
 - Filtering high-cardinality labels/attributes early in the pipeline
 
 :::{note}
-High cardinality (too many unique metric or attribute values) can impact costs and query performance. When telemetry data contains many unique combinations of attributes, labels, or metric names, it increases the volume of data stored and indexed, which may increase billing costs depending on your subscription model. Additionally, high cardinality can affect query performance in {{kib}} when analyzing your data.
+High cardinality (too many unique metric or attribute values) can impact costs and query performance. When telemetry data contains many unique combinations of attributes, labels, or metric names, it increases the volume of data stored and indexed, which might increase billing costs depending on your subscription model. Additionally, high cardinality can affect query performance in {{kib}} when analyzing your data.
 :::
-
-- Removing large attributes when safe for your use case
 
 ### Tune exporter queue and retry behavior to reduce drops during transient overload
 
@@ -264,30 +264,30 @@ exporters:
 
 If the gateway is restarting, `OOMKilled`, or cannot export fast enough:
 
-- Increase gateway CPU/memory limits
-- Increase gateway replicas
-- Ensure environment limits align with container memory
+- Increase gateway CPU/memory limits.
+- Increase gateway replicas.
+- Ensure environment limits align with container memory.
 
 Backpressure commonly originates at the receiver when its own exporters (for example, {{es}} exporters) cannot keep up.
 
 ### Protect against memory exhaustion
 
-- Configure the `memory_limiter` processor early in the pipeline
-- Set limits based on available memory and workload characteristics
+Memory protection relies on the `memory_limiter` processor and careful tuning of batching, queues, and receiver limits.
 
-The OpenTelemetry Collector doesn't provide a memory ballast or heap pre-allocation mechanism. Memory protection relies on the `memory_limiter` processor and careful tuning of batching, queues, and receiver limits.
+- Configure the `memory_limiter` processor early in the pipeline.
+- Set limits based on available memory and workload characteristics.
 
 ## Best practices
 
 To prevent `ResourceExhausted` errors in Collector-to-Collector architectures:
 
-- Design pipelines with sufficient capacity at each Collector in the pipeline
-- Test under realistic peak load conditions (including burst traffic patterns)
+- Design pipelines with sufficient capacity at each Collector in the pipeline.
+- Test under realistic peak load conditions (including burst traffic patterns).
 - Monitor both sides:
-  - Exporter queue utilization and send failures on the sender
-  - Receiver refused metrics and resource usage on the receiver
-- Standardize batch and queue settings across environments
-- Minimize unnecessary Collector chaining
+  - Exporter queue utilization and send failures on the sender.
+  - Receiver refused metrics and resource usage on the receiver.
+- Standardize batch and queue settings across environments.
+- Minimize unnecessary Collector chaining.
 
 ## Resources
 
