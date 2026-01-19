@@ -1,6 +1,6 @@
 ---
 description: Reference of all built-in agents available in Elastic Agent Builder
-navigation_title: "Built-in agents reference"
+navigation_title: "Built-in agents"
 applies_to:
   stack: preview =9.2, ga 9.3
   serverless: preview
@@ -68,6 +68,6 @@ A specialized agent for security alert analysis tasks, including alert investiga
 
 ## Related pages
 
-- [Create a new agent](agent-builder-agents.md#create-a-new-agent-in-the-gui)
-- [{{agent-builder}}](../elastic-agent-builder.md)
-- [{{agent-builder}} built-in tools reference](./tools/builtin-tools-reference.md)
+- [Agents](agent-builder-agents.md)
+- [Create a custom agent](agent-builder-agents.md#create-a-new-agent-in-the-gui)
+- [Built-in tools reference](./tools/builtin-tools-reference.md)

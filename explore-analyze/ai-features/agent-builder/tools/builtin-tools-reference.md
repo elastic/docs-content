@@ -1,6 +1,6 @@
 ---
 description: Reference of all built-in tools available in Elastic Agent Builder
-navigation_title: "Built-in tools reference"
+navigation_title: "Built-in tools"
 applies_to:
   stack: ga 9.2+
   serverless: ga
