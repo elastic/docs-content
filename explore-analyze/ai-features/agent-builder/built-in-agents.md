@@ -34,8 +34,6 @@ serverless: ga
 
 The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is designed to help with a wide range of tasks, from writing {{esql}} queries to exploring your data indices.
 
-**Availability:**
-* **All views:** Available in {{es}}, {{observability}}, Security, and Classic views.
 
 **Assigned Tools:**
 * All **Platform core tools** (e.g., `list_indices`, `execute_esql`, `get_document_by_id`)
