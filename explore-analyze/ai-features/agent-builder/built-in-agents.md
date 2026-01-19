@@ -19,7 +19,11 @@ Unlike custom agents, you cannot modify or delete these agents. However, they se
 
 ## Availability
 
-The availability of specific agents depends on your active solution and whether you have enabled {{agent-builder}} in that space.
+The availability of specific agents depends on your solution view or serverless project type.
+
+:::{note}
+{{product.observability}} and {{product.security}} users must opt-in to use {{agent-builder}}. To learn more, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+:::
 
 ## Elastic AI Agent
 ```{applies_to}
