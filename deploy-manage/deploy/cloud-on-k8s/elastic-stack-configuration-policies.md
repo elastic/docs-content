@@ -370,8 +370,7 @@ The `weight` field is an integer that determines the priority of a policy when m
 
 The `weight` field is optional and defaults to `0` if not specified. Lower weight values have higher priority.
 
-::::{important}
-**Conflict resolution**
+::::{important} - Conflict resolution
 
 If multiple policies have the same `weight` value and target the same resource, the operator reports a conflict. When a conflict occurs, **no policies are applied to that resource**—this includes not only the conflicting policies but also any other policies that target the same resource. The target resource remains unconfigured by any `StackConfigPolicy` until the conflict is resolved by adjusting the `weight` values of the conflicting policies.
 ::::
