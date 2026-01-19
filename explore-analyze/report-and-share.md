@@ -33,10 +33,7 @@ $$$securing-reporting$$$
 
 {{kib}} provides you with several options to share **Discover** sessions, dashboards, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the {icon}`share` **Share** and {icon}`download` **Export** menus in the toolbar.
 
-:::{image} /explore-analyze/images/share-dashboard.png
-:screenshot:
-:width: 400px
-:::
+![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
 
 ## Permissions
 

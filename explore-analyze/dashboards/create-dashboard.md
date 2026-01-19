@@ -54,7 +54,7 @@ Before creating a dashboard, ensure you have:
 
 6. Save the dashboard.
 
-   {applies_to}`stack: ga 9.3+` When you save the dashboard for the first time, you can manage dashboard permissions.
+    {applies_to}`serverless:` {applies_to}`stack: ga 9.3+` When you save the dashboard for the first time, you can manage dashboard permissions.
 
     :::{image} /explore-analyze/images/save-as-new-dashboard.png
     :screenshot:
