@@ -69,3 +69,5 @@ A specialized agent for security alert analysis tasks, including alert investiga
 ## Related pages
 
 - [Create a new agent](agent-builder-agents.md#create-a-new-agent-in-the-gui)
+- [{{agent-builder}}](../elastic-agent-builder.md)
+- [{{agent-builder}} built-in tools reference](./tools/builtin-tools-reference.md)
