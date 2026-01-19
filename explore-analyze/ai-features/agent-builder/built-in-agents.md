@@ -15,7 +15,7 @@ products:
 
 This page lists the built-in agents available in {{agent-builder}}. Built-in agents are pre-configured by Elastic with specific instructions and tools to handle common use cases. 
 
-Unlike custom agents, you cannot modify or delete these agents. However, they serve as excellent examples for [building your own custom agents](agent-builder-agents.md#create-a-new-agent-in-the-gui).
+You cannot modify or delete built-in agents. To customize one, you can clone it and [create a custom agent](agent-builder-agents.md#create-a-new-agent-in-the-gui).
 
 ## Availability
 
