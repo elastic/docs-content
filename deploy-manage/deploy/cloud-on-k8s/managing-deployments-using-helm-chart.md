@@ -11,7 +11,9 @@ products:
 
 # {{stack}} Helm chart [k8s-stack-helm-chart]
 
-Starting from ECK 2.4.0, a Helm chart is available for managing {{stack}} resources using the ECK Operator. It is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
+Starting with ECK 2.4.0, a Helm chart is available to deploy and manage {{stack}} resources using the ECK Operator. This guide focuses on using the `eck-stack` Helm chart and assumes basic familiarity with [Helm](https://helm.sh/docs/); it does not provide a comprehensive introduction to Helm itself.
+
+The chart is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
 
 ```sh
 helm repo add elastic https://helm.elastic.co
@@ -113,14 +115,16 @@ helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-n
 
 ## Upgrade or change your {{stack}} configuration with Helm [k8s-upgrade-modify-helm]
 
-To upgrade your {{stack}} components to a new version or modify the configuration of your existing installation (known as a `release`), use the [`helm upgrade`](https://helm.sh/docs/helm/helm_upgrade/) command. The key principle is to use the same options and values you used during installation, along with any changes you want to apply.
+To upgrade your {{stack}} components to a new version or modify the configuration of your existing installation (known as a `release`), use the [`helm upgrade`](https://helm.sh/docs/helm/helm_upgrade/) command.
 
-The `helm upgrade` command requires the following arguments:
+When upgrading an existing release with `helm upgrade`, you must specify, at least:
 - The name of the release to update, which must match the name used with `helm install`.
 - The chart name, which must be the same chart used during installation.
 
-::::{important}
-When using `helm upgrade`, you must include all the options and values from your original installation command (for example, custom values files and `--set` options). Helm does not retain your previous configuration, so omitting them causes values to revert to their default settings.
+::::{note}
+When running `helm upgrade`, it’s recommended to pass the same values and configuration options that were used during installation, together with any changes you want to apply. This ensures that the resulting configuration matches your expectations and reduces the risk of values reverting to the chart defaults during the upgrade.
+
+Helm provides additional options to control how values associated with an existing release are reused or reset during an upgrade. For details, refer to the [`helm upgrade` documentation](https://helm.sh/docs/helm/helm_upgrade/).
 ::::
 
 By default, `helm upgrade` uses the latest available version of the chart unless the `--version` option is specified. Refer to [View chart versions](#show-versions) to list the available chart versions or the version associated with an installed release.
@@ -136,7 +140,7 @@ Each chart version defines default {{stack}} component versions. Unless explicit
 % When available we can tell users how to check the default {{stack}} version associated with each chart release. That's not feasible today.
 ::::
 
-All examples in this section assume that your release was installed using the `eck-stack` Helm chart. Adapt the examples if you deployed the [individual charts](#individual-chart) directly.
+All examples in this section assume that your release was installed using the `eck-stack` Helm chart. Adapt the examples if you deployed the [individual charts](#k8s-eck-stack-individual-components) directly.
 
 ### Upgrade to the latest version of the chart
 
