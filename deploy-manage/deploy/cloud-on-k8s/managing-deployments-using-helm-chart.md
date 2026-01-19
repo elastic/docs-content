@@ -24,7 +24,9 @@ The minimum supported version of Helm is {{eck_helm_minimum_version}}.
 
 The {{stack}} (`eck-stack`) Helm chart is built on top of individual charts such as `eck-elasticsearch` and `eck-kibana`. For more details on its structure and dependencies, refer to the [chart repository](https://github.com/elastic/cloud-on-k8s/tree/main/deploy/eck-stack/).
 
-The chart enables you to deploy the core components ({{es}} and {{kib}}) together, along with other {{stack}} applications if needed, under the same chart release. The following sections guide you through common installation, configuration, and upgrade use cases and assume basic familiarity with [Helm](https://helm.sh/docs/). It does not provide a comprehensive introduction to Helm itself.
+The chart enables you to deploy the core components ({{es}} and {{kib}}) together, along with other {{stack}} applications if needed, under the same chart release.
+
+The following sections guide you through common installation, configuration, and upgrade use cases, and assume basic familiarity with [Helm](https://helm.sh/docs/). It does not provide a comprehensive introduction to Helm itself.
 
 ::::{tip}
 All the provided examples deploy the applications in a namespace named `elastic-stack`. Consider adapting the commands to your use case.
