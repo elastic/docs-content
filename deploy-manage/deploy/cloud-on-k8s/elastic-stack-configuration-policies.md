@@ -95,6 +95,7 @@ metadata:
   name: test-stack-config-policy
   # namespace: elastic-system or test-namespace
 spec:
+  weight: 0 <1>
   resourceSelector:
     matchLabels:
       env: my-label
