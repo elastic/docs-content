@@ -4,7 +4,9 @@ applies_to:
   stack: ga
   serverless: ga
   deployment:
-    self: unavailable
+    self: ga
+    ece: ga
+    eck: ga
 ---
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
@@ -21,14 +23,36 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 * You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
+## EIS for self-managed clusters [eis-self-managed]
+
+```{applies_to}
+stack: ga 9.3
+deployment:
+  self: ga
+  ece: ga
+  eck: ga
+```
+
+Use EIS with your self-managed cluster through Cloud Connect to run AI-powered search without deploying models in your environment. For details, refer to [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
+
 ## Region and hosting [eis-regions]
 
-Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
-The request routing does not restrict the location of your deployments.
+Elastic {{infer-cap}} Service is currently available in a single region: {{aws}} `us-east-1`. All {{infer}} requests sent through EIS are routed to this region, regardless of where your {{es}} deployment or serverless project is hosted.
+
+:::{note}
+You may encounter different {{infer}} service URLs that appear to be region- or cloud-specific, such as `https://inference.europe-west3.gcp.svc.elastic.cloud`. These URLs are used for request routing within {{ecloud}}. Regardless of which {{infer}} service URL is configured, all EIS requests are ultimately routed to {{aws}} `us-east-1`.
+:::
+
+Depending on the model being used, request processing may involve Elastic {{infer}} infrastructure and, in some cases, trusted third-party model providers. For example, ELSER requests are processed entirely within Elastic {{infer}} infrastructure in {{aws}} `us-east-1`. Other models, such as large language models or third-party embedding models, may involve additional processing by their respective model providers, which can operate in different cloud platforms or regions.
 
 ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure, GCP, and more regions, we will automatically route requests to the same CSP and the closest region where the {{es}} cluster is hosted.
 
+<<<<<<< HEAD
 ## ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
+=======
+
+## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
+>>>>>>> eb9b6bdb8 (Add initial EIS Cloud Connect docs and self-managed setup draft)
 
 ```{applies_to}
 stack: preview =9.1, ga 9.2+
