@@ -11,7 +11,7 @@ products:
 
 # {{stack}} Helm chart [k8s-stack-helm-chart]
 
-Starting with ECK 2.4.0, a Helm chart is available to deploy and manage {{stack}} resources using the ECK Operator. It is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
+Starting from ECK 2.4.0, a Helm chart is available for managing {{stack}} resources using the ECK Operator. It is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
 
 ```sh
 helm repo add elastic https://helm.elastic.co
