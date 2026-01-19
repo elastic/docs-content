@@ -88,7 +88,7 @@ systemctl restart apm-server
 It is recommended that you use a configuration management tool to include drop-in unit files. If you need to add a drop-in manually, use `systemctl edit apm-server.service`.
 ::::
 
-#### Configuring the `nofile` limit
+#### Configuring the `nofile` limit [configuring-nofile-limit]
 
 ::::{note}
 In most cases, you don’t need to manually configure the `nofile` limit when running APM Server.
