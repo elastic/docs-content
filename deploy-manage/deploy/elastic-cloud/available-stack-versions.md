@@ -29,8 +29,8 @@ By default, the following versions are available in the [{{ecloud}} Console](htt
 * The two latest minor versions of the latest major version
 * The latest minor version of the previous major version
 
-For example, if the latest {{stack}} version is {{version.stack}}, {{ech}} makes the following versions available:
-* {{version.stack | M.M }} and {{version.stack | M.M+1 | M.M }}
+For example, if the latest {{stack}} version is 9.2.3, {{ech}} makes the following versions available:
+* 9.1 and 9.2
 * 8.19
 
 Additional versions can appear in the UI, such as [release candidate builds](#ec-release-builds) or older versions that are not [end-of-life (EOL)](#ec-version-policy-eol) and that you already have a running deployment on. This allows you, for example, to [clone an existing deployment](/deploy-manage/tools/snapshot-and-restore/ece-restore-snapshots-into-new-deployment.md) that uses one of those versions.
