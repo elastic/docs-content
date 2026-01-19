@@ -57,11 +57,17 @@ For programmatic access to connector management, refer to the [Connectors API do
 
 {{agent-builder}} requires models with strong reasoning and tool-calling capabilities. State-of-the-art models perform significantly better than smaller or older models.
 
-The following models are known to work well with {{agent-builder}}:
+The following models are known to work well with {{agent-builder}}. These categories represent a spectrum from maximum reasoning capability to maximum throughput, choose based on your latency, cost, and complexity requirements.
 
-- **OpenAI**: GPT-4.1, GPT-4o
-- **Anthropic**: Claude Sonnet 4.5, Claude Sonnet 4, Claude Sonnet 3.7
-- **Google**: Gemini 2.5 Pro
+| Category | Model examples | Use cases | Trade-offs |
+|---|---|---|---|
+| Extended reasoning | Gemini 3 Pro, Claude 4.5 Opus | Open-ended exploration, multi-step planning, and complex analysis | Higher latency and cost; best for latency-insensitive, batch, or async workflows |
+| Balanced performance | GPT-5.2, Claude 4.5 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost; suitable for real-time and interactive use |
+| High throughput | GPT-OSS-120B | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth; smaller context window. Ideal for air-gapped deployments |
+
+:::{tip}
+For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude 4.5 Sonnet and Gemini 3 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
+:::
 
 ## Incompatible models
 
