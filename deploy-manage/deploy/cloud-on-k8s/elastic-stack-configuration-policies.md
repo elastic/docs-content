@@ -256,7 +256,7 @@ spec:
     - secretName: kibana-shared-secret
 ```
 
-Multiple `StackConfigPolicy` resources can target the same {{es}} cluster or {{kib}} instance, with `weight` determining which policy takes precedence. Refer to [Policy priority and weight](k8s-stack-config-policy-priority-weight) for more information.
+Multiple `StackConfigPolicy` resources can target the same {{es}} cluster or {{kib}} instance, with `weight` determining which policy takes precedence. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for more information.
 
 
 ## Monitor {{stack}} configuration policies [k8s-stack-config-policy-monitoring]
