@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unbalanced-cluster.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -20,13 +15,13 @@ products:
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
-Elasticsearch balances shards across data tiers to achieve a good compromise between:
+{{es}} balances shards across data tiers to achieve a good compromise between:
 
 * shard count
 * disk usage
 * write load (for indices in data streams)
 
-Elasticsearch does not take into account the amount or complexity of search queries when rebalancing shards. This is indirectly achieved by balancing shard count and disk usage.
+{{es}} does not take into account the amount or complexity of search queries when rebalancing shards. This is indirectly achieved by balancing shard count and disk usage.
 
 There is no guarantee that individual components will be evenly spread across the nodes. This could happen if some nodes have fewer shards, or are using less disk space, but are assigned shards with higher write loads.
 

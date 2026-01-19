@@ -47,7 +47,7 @@ To learn how to create and adjust copies of built-in {{ilm-init}} policies for m
    ![Data stream status page](/manage-data/images/elasticsearch-reference-datastream-status.png "")
 
 
-**To view the current lifecycle status for a datastream on the Streams page:** {applies_to}`"stack": "ga 9.2, preview 9.1"` 
+**To view the current lifecycle status for a datastream on the Streams page:** {applies_to}`"stack": "ga 9.2+, preview =9.1"` 
 
 Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for common data management tasks in {{kib}}.
 

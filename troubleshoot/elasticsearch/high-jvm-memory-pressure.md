@@ -3,11 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-jvm-memory-pressure.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -23,11 +18,11 @@ High JVM memory usage can degrade cluster performance and trigger [circuit break
 
 ## Diagnose high JVM memory pressure [diagnose-high-jvm-memory-pressure]
 
-**Check JVM memory pressure**
+### Check JVM memory pressure [diagnose-check-pressure] 
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} { ess:, ece: }
 From your deployment menu, click **Elasticsearch**. Under **Instances**, each instance displays a **JVM memory pressure** indicator. When the JVM memory pressure reaches 75%, the indicator turns red.
 
 You can also use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.
@@ -41,7 +36,7 @@ Use the response to calculate memory pressure as follows:
 JVM Memory Pressure = `used_in_bytes` / `max_in_bytes`
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} { self:, eck: }
 To calculate the current JVM memory pressure for each node, use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
@@ -54,7 +49,8 @@ JVM Memory Pressure = `used_in_bytes` / `max_in_bytes`
 ::::::
 
 :::::::
-**Check garbage collection logs**
+
+### Check garbage collection logs [diagnose-check-gc]
 
 As memory usage increases, garbage collection becomes more frequent and takes longer. You can track the frequency and length of garbage collection events in [`elasticsearch.log`](../../deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md). For example, the following event states {{es}} spent more than 50% (21 seconds) of the last 40 seconds performing garbage collection.
 
@@ -62,10 +58,24 @@ As memory usage increases, garbage collection becomes more frequent and takes lo
 [timestamp_short_interval_from_last][INFO ][o.e.m.j.JvmGcMonitorService] [node_id] [gc][number] overhead, spent [21s] collecting in the last [40s]
 ```
 
-**Capture a JVM heap dump**
+For optimal JVM performance, garbage collection (GC) should meet these criteria:
 
-To determine the exact reason for the high JVM memory pressure, capture a heap dump of the JVM while its memory usage is high, and also capture the [garbage collector logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging) covering the same time period.
+| GC type | Completion time | Frequency |
+|---------|----------------|---------------------|
+| Young GC | <50ms | ~once per 10 seconds |
+| Old GC | <1s | ≤once per 10 minutes |
 
+
+### Capture a JVM heap dump [diagnose-check-dump] 
+
+To determine the exact reason for the high JVM memory pressure, capture and review a heap dump of the JVM while its memory usage is high. 
+
+If you have an [Elastic subscription](https://www.elastic.co/pricing), you can [request Elastic's assistance]](/troubleshoot.md#contact-us) reviewing this output. When doing so, kindly:
+
+* Grant written permission for Elastic to review your uploaded heap dumps within the support case.
+* Share this file only after receiving any necessary business approvals as it might contain private information. Files are handled according to [Elastic's privacy statement](https://www.elastic.co/legal/privacy-statement).
+* Share heap dumps through our secure [Support Portal](https://support.elastic.co/). If your files are too large to upload, you can request a secure URL in the support case.
+* Share the [garbage collector logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging) covering the same time period.
 
 ## Reduce JVM memory pressure [reduce-jvm-memory-pressure]
 

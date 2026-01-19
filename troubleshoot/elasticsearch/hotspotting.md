@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/hotspotting.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -50,26 +45,29 @@ Here we see two significantly unique utilizations: where the master node is at `
 
 ## Causes [causes]
 
-Historically, clusters experience hot spotting mainly as an effect of hardware, shard distributions, and/or task load. We’ll review these sequentially in order of their potentially impacting scope.
+Historically, clusters experience hot spotting mainly as an effect of hardware, shard distributions, and/or task load. From a user’s perspective, hot spotting may manifest as slower search responses, delayed indexing, ingestion backlogs, or timeouts during queries and bulk operations. We’ll review these sequentially in order of their potentially impacting scope.
 
 
-## Hardware [causes-hardware]
+### Hardware [causes-hardware]
 
-Here are some common improper hardware setups which may contribute to hot spotting:
+Here are some common improper hardware setups which might contribute to hot spotting:
 
-* Resources are allocated non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications.
+* Resources are allocated non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications. To check this, use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
+  ```console
+  GET _cat/nodes?v=true&s=name&h=name,role,disk.total,heap.max,allocated_processors
+  ```
 * Resources are consumed by another service on the host, including other {{es}} nodes. Refer to our [dedicated host](../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#dedicated-host) recommendation.
-* Resources experience different network or disk throughputs. For example, if one node’s I/O is lower than its peers. Refer to [Use faster hardware](../../deploy-manage/production-guidance/optimize-performance/indexing-speed.md) for more information.
+* Resources experience different network or disk throughputs. For example, if one node’s I/O is lower than its peers. Refer to [Use faster hardware](../../deploy-manage/production-guidance/optimize-performance/indexing-speed.md#indexing-use-faster-hardware) for more information.
 * A JVM that has been configured with a heap larger than 31GB. Refer to [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) for more information.
 * Problematic resources uniquely report [memory swapping](../../deploy-manage/deploy/self-managed/setup-configuration-memory.md).
 
 
-## Shard distributions [causes-shards]
+### Shard distributions [causes-shards]
 
 {{es}} indices are divided into one or more [shards](https://en.wikipedia.org/wiki/Shard_(database_architecture)) which can sometimes be poorly distributed. {{es}} accounts for this by [balancing shard counts](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) across data nodes. As [introduced in version 8.6](https://www.elastic.co/blog/whats-new-elasticsearch-kibana-cloud-8-6-0), {{es}} by default also enables [desired balancing](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) to account for ingest load. A node may still experience hot spotting either due to write-heavy indices or by the overall shards it’s hosting.
 
 
-### Node level [causes-shards-nodes]
+#### Node level [causes-shards-nodes]
 
 You can check for shard balancing via [cat allocation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-allocation), though as of version 8.6, [desired balancing](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) may no longer fully expect to balance shards. Kindly note, both methods may temporarily show problematic imbalance during [cluster stability issues](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md).
 
@@ -101,7 +99,7 @@ GET _nodes/stats?human&filter_path=nodes.*.name,nodes.*.indices.indexing
 ```
 
 
-### Index level [causes-shards-index]
+#### Index level [causes-shards-index]
 
 Hot spotted nodes frequently surface via [cat thread pool](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool)'s `write` and `search` queue backups. For example:
 
@@ -122,6 +120,8 @@ write  node_3   1 5 0 8714
 ```
 
 Here you can see two significantly unique situations. Firstly, `node_1` has a severely backed up write queue compared to other nodes. Secondly, `node_3` shows historically completed writes that are double any other node. These are both probably due to either poorly distributed write-heavy indices, or to multiple write-heavy indices allocated to the same node. Since primary and replica writes are majorly the same amount of cluster work, we usually recommend setting [`index.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) to force index spreading after lining up index shard counts to total nodes.
+
+It’s important to monitor and be aware of any changes in your data ingestion flow, as sudden increases or shifts can lead to high CPU usage and ingestion delays. Depending on your cluster architecture, optimizing the number of primary shards can significantly improve ingestion performance. For more details, see [Clusters, nodes, and shards](https://www.elastic.co/docs/deploy-manage/distributed-architecture/clusters-nodes-shards).
 
 We normally recommend heavy-write indices have sufficient primary `number_of_shards` and replica `number_of_replicas` to evenly spread across indexing nodes. Alternatively, you can [reroute](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) shards to more quiet nodes to alleviate the nodes with write hot spotting.
 
@@ -147,7 +147,7 @@ cat shard_stats.json | jq -rc 'sort_by(-.avg_indexing)[]' | head
 ```
 
 
-## Task loads [causes-tasks]
+### Task loads [causes-tasks]
 
 Shard distribution problems will most-likely surface as task load as seen above in the [cat thread pool](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool) example. It is also possible for tasks to hot spot a node either due to individual qualitative expensiveness or overall quantitative traffic loads.
 
@@ -182,4 +182,3 @@ indices[winlogbeat-*,logs-window*], sequence by winlog.computer_name with maxspa
 ```
 
 This lets you know which indices to check (`winlogbeat-*,logs-window*`), as well as the [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) request body. Most likely this is [SIEM related](/solutions/security.md). You can combine this with [audit logging](../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) as needed to trace the request source.
-
