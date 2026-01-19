@@ -932,8 +932,7 @@ COPY --chmod=0644 --chown=1000:1000 apm-server.yml /usr/share/apm-server/apm-ser
 
 #### Modify the `nofile` ulimit in Docker containers [ulimit-on-docker]
 
-You can set the `nofile` ulimit from the command line using `--ulimit=soft:hard`. For details, refer to [Set ulimits in container (--ulimit)](https://docs.docker.com/reference/cli/docker/container/run/#ulimit)
- in the Docker documentation.
+You can set the `nofile` ulimit from the command line using `--ulimit=soft:hard`. For details, refer to [Set ulimits in container (--ulimit)](https://docs.docker.com/reference/cli/docker/container/run/#ulimit) in the Docker documentation.
 
 ```sh
 docker run -d \
