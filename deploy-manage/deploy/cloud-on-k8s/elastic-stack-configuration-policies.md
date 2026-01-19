@@ -256,40 +256,7 @@ spec:
     - secretName: kibana-shared-secret
 ```
 
-Example showing how multiple `StackConfigPolicy` resources can target the same {{es}} cluster, with `weight` determining which policy takes precedence:
-
-```yaml
-# Policy with higher priority (higher weight)
-apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
-kind: StackConfigPolicy
-metadata:
-  name: high-priority-policy
-spec:
-  weight: 100  # Higher weight = higher priority
-  resourceSelector:
-    matchLabels:
-      cluster: my-cluster  # Both policies target the same cluster
-  elasticsearch:
-    clusterSettings:
-      indices.recovery.max_bytes_per_sec: "200mb"
-
----
-# Policy with lower priority (lower weight)
-apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
-kind: StackConfigPolicy
-metadata:
-  name: low-priority-policy
-spec:
-  weight: 0  # Lower weight = lower priority
-  resourceSelector:
-    matchLabels:
-      cluster: my-cluster  # Both policies target the same cluster
-  elasticsearch:
-    clusterSettings:
-      indices.recovery.max_bytes_per_sec: "100mb"
-```
-
-In this example, both policies target the same {{es}} cluster (using the `cluster: my-cluster` label). The `high-priority-policy` (weight: 100) settings take precedence and overwrite the `low-priority-policy` (weight: 0) settings. The `low-priority-policy` settings are applied first, then the `high-priority-policy` settings overwrite them. If both policies have the same `weight` value, a conflict occurs and no policies are applied to the cluster until the conflict is resolved. See [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for more details on how weight determines policy priority and conflict resolution.
+Multiple `StackConfigPolicy` resources can target the same {{es}} cluster or {{kib}} instance, with `weight` determining which policy takes precedence. Refer to [Policy priority and weight](k8s-stack-config-policy-priority-weight) for more information.
 
 
 ## Monitor {{stack}} configuration policies [k8s-stack-config-policy-monitoring]
