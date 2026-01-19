@@ -54,16 +54,14 @@ Before creating a dashboard, ensure you have:
 
 6. Save the dashboard.
 
-7. {applies_to}`stack: ga 9.3+` Manage dashboard permissions.
+   {applies_to}`stack: ga 9.3+` When you save the dashboard for the first time, you can manage dashboard permissions.
 
-    When you create a dashboard, you become its owner and control who can access it. You can manage permissions only when you save the dashboard for the first time.
-
-    :::{image} /explore-analyze/images/share-dashboard.png
+    :::{image} /explore-analyze/images/save-as-new-dashboard.png
     :screenshot:
     :width: 400px
     :::
 
-    You can share your dashboard with one of the following permissions:
+    When you create a dashboard, you become its owner and control who can access it. You can share your dashboard with one of the following permissions:
     - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
     - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
 
