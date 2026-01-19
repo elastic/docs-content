@@ -361,6 +361,10 @@ In order to avoid a conflict between multiple {{es}} clusters writing their snap
 
 
 ## Policy priority and weight [k8s-stack-config-policy-priority-weight]
+```{applies_to}
+deployment:
+  eck: ga 3.3+
+```
 
 The `weight` field is an integer that determines the priority of a policy when multiple `StackConfigPolicy` resources target the same {{es}} cluster or {{kib}} instance. When multiple policies target the same resource, policies are evaluated in order of their `weight` values (from highest to lowest). Settings from policies with lower `weight` values take precedence and overwrite settings from policies with higher `weight` values. The policy with the lowest `weight` value has the highest priority.
 
