@@ -26,7 +26,7 @@ The {{stack}} (`eck-stack`) Helm chart is built on top of individual charts such
 
 The chart enables you to deploy the core components ({{es}} and {{kib}}) together, along with other {{stack}} applications if needed, under the same chart release.
 
-The following sections guide you through common installation, configuration, and upgrade use cases, and assume basic familiarity with [Helm](https://helm.sh/docs/). It does not provide a comprehensive introduction to Helm itself.
+The following sections guide you through common installation, configuration, and upgrade use cases, and assume basic familiarity with [Helm](https://helm.sh/docs/). This guide does not provide a comprehensive introduction to Helm itself. Choose the command that best fits your setup.
 
 ::::{tip}
 All the provided examples deploy the applications in a namespace named `elastic-stack`. Consider adapting the commands to your use case.
