@@ -52,9 +52,11 @@ Before creating a dashboard, ensure you have:
        ![Change and apply dashboard settings](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt4a6e9807f1fac9f8/6750ee9cef6d5a250c229e50/dashboard-settings-8.17.0.gif "title =50%")
 
 
-6. {applies_to}`stack: ga 9.3+` Manage dashboard permissions.
+6. Save the dashboard.
 
-    When you create a dashboard, you become its owner and can control who can access it.  
+7. {applies_to}`stack: ga 9.3+` Manage dashboard permissions.
+
+    When you create a dashboard, you become its owner and control who can access it. You can manage permissions only when you save the dashboard for the first time.
 
     :::{image} /explore-analyze/images/share-dashboard.png
     :screenshot:
@@ -70,5 +72,3 @@ Before creating a dashboard, ensure you have:
     ::::{note}
     {{kib}} administrators always have write access to all dashboards.
     ::::
-
-7. Click **Save**  to save the dashboard.

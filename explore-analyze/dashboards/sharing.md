@@ -19,7 +19,7 @@ To share a dashboard with a larger audience, click {icon}`share` **Share** in th
 :width: 400px
 :::
 
-## Share dashboard permissions
+## Manage dashboard permissions
 ```{applies_to}
 stack: ga 9.3+
 ```
@@ -29,7 +29,7 @@ You can share your dashboard with one of the following permissions:
 - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
 - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
 
-The dashboard owner cannot be changed and is not visible from the UI. If a dashboard created by user A is exported and then re-imported by user B in the same space (overwriting the existing dashboard), the creator changes to user B, while user A remains the owner.
+By default, the dashboard owner is the dashboard creator. This cannot be changed and is not currently visible in the UI. However, in some cases the creator and owner can be different users. For example, if user A creates a dashboard and user B exports and re-imports it in the same space (overwriting the existing dashboard), the creator becomes user B while user A remains the owner.
 
 ::::{note}
 {{kib}} administrators always have write access to all dashboards.
