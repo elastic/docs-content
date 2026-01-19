@@ -46,8 +46,7 @@ A policy can be applied to one or more {{es}} clusters or {{kib}} instances in a
 
 With ECK `3.3.0` and later, multiple {{stack}} configuration policies can target the same {{es}} cluster and {{kib}} instance. When multiple policies target the same resource, the policy with the lowest `weight` value takes precedence. If multiple policies have the same `weight` value, the operator reports a conflict. 
 
-::::{note}
-**Scale considerations**
+::::{admonition} Scale considerations
 
 There is no hard limit to the maximum number of `StackConfigPolicy` resources that can target the same {{es}} cluster or {{kib}} instance. However, in our experimentation, we observed that when hundreds of `StackConfigPolicy` resources target the same {{es}} cluster or {{kib}} instance, the total reconciliation time (including the {{es}} cluster or {{kib}} instance and all `StackConfigPolicy` resources) can increase significantly, to the scale of minutes. To maintain fast total reconciliation times, we recommend efficiently utilizing the number of `StackConfigPolicy` resources by consolidating configurations where possible.
 ::::
