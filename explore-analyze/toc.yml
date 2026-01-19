@@ -190,6 +190,7 @@ toc:
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/limitations-known-issues.md
+          - file: ai-features/agent-builder/workflows.md
       - file: ai-features/ai-chat-experiences.md
         children:
           - hidden: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
