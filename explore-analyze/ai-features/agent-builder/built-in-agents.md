@@ -23,6 +23,7 @@ The availability of specific agents depends on your active solution and whether 
 ## Elastic AI Agent
 ```{applies_to}
 stack: preview =9.2, ga 9.3
+serverless: ga
 ```
 
 The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is designed to help with a wide range of tasks, from writing {{esql}} queries to exploring your data indices.
