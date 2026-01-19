@@ -88,15 +88,20 @@ systemctl restart apm-server
 It is recommended that you use a configuration management tool to include drop-in unit files. If you need to add a drop-in manually, use `systemctl edit apm-server.service`.
 ::::
 
-#### Configuring the NOFILE limit [configuring-nofile-limit]
+#### Configuring the `nofile` limit
 
 ::::{note}
-There should be no need to manually configure this limit when running APM Server.
-::::
+In most cases, you don’t need to manually configure the `nofile` limit when running APM Server.
+:::
 
-In systemd the `LimitNOFILE` defaults are set to `1024` (soft) and `524288` (hard) and most Linux systems with systemd do not change these values or reduce them drastically. Golang, starting from version 1.19 (refer to [golang/go#46279](https://github.com/golang/go/issues/46279)), automatically bump the process limit up to the available hard limit. This means that by default APM Server runs with the limit set to the hard limit value by the Operating System is being run on, generally `524287` on a recent system. There should be no reason to change this limit, as back-pressure from too many open files happens through memory usage.
+On systemd-based systems, the default `LimitNOFILE` is `1024` (soft) and `524288` (hard). Most Linux distributions do not override or significantly reduce these defaults.
 
-For guidelines on the value to set this value to refer to [modifying the `nofile` ulimit](/solutions/observability/apm/apm-server/binary.md#modify-nofile-ulimit).
+Starting with Go 1.19 ([golang/go#46279](https://github.com/golang/go/issues/46279)
+), the Go runtime automatically raises the soft limit to match the available hard limit. As a result, APM Server typically runs with the maximum allowed `nofile` limit provided by the operating system, which is often `524287` on modern systems.
+
+There is usually no need to manually change this limit, as back-pressure from too many open files happens through memory usage.
+
+For guidance on manually setting the `nofile` limit, refer to [Modify the `nofile` ulimit](/solutions/observability/apm/apm-server/binary.md#modify-nofile-ulimit).
 
 #### Configuration file ownership [apm-config-file-ownership]
 

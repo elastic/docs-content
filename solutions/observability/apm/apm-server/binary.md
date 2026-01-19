@@ -61,7 +61,7 @@ curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{versio
 tar xzvf apm-server-{{version.stack}}-linux-x86_64.tar.gz
 ```
 
-Refer to [modifying the `nofile` ulimit](#modify-nofile-ulimit).
+For more information, refer to [modifying the `nofile` ulimit](#modify-nofile-ulimit).
 
 $$$apm-mac$$$
 **Mac:**
@@ -930,9 +930,10 @@ FROM docker.elastic.co/apm/apm-server:9.0.0
 COPY --chmod=0644 --chown=1000:1000 apm-server.yml /usr/share/apm-server/apm-server.yml
 ```
 
-#### Modifying `nofile` ulimit [ulimit-on-docker]
+#### Modify the `nofile` ulimit in Docker containers [ulimit-on-docker]
 
-Limits can be set from the command line using `--ulimit=soft:hard`, refer to [Set ulimits in container (--ulimit)](https://docs.docker.com/reference/cli/docker/container/run/#ulimit) in the Docker documentation.
+You can set the `nofile` ulimit from the command line using `--ulimit=soft:hard`. For details, refer to [Set ulimits in container (--ulimit)](https://docs.docker.com/reference/cli/docker/container/run/#ulimit)
+ in the Docker documentation.
 
 ```sh
 docker run -d \
@@ -946,27 +947,32 @@ docker run -d \
   -E output.elasticsearch.hosts=["elasticsearch:9200"] <1> <2>
 ```
 
-1. Substitute your {{es}} hosts and ports.
-2. If you are using {{ech}}, replace the `-E output.elasticsearch.hosts` line with the Cloud ID and elastic password using the syntax shown earlier.
+1. Replace with your {{es}} hosts and ports.
+2. If you're using {{ech}}, replace the `-E output.elasticsearch.hosts` line with the Cloud ID and Elastic password as shown in the example above.
 
 
 ## Modify the `nofile` ulimit [modify-nofile-ulimit]
 
-When run as a standalone binary APM Server inherits the `nofile` limit from the user running the process. On most system this is configured to `1024`. This limit is too low for higher throughput scenarios or when using Tail Based Sampling.
+When running APM Server as a standalone binary, it inherits the `nofile` limit from the user running the process. On most systems, this limit is set to `1024`, which is too low for high-throughput scenarios or when using tail-based sampling.
 
-To chose the new limit, consider these guidelines:
-- there is no system performance impact of using a limit of ``;
-- a limit of `1024` would suffice for low throughput use cases;
-- the major contributor to open files is the number of incoming connections;
-- Tail Based Sampling is file based, when enabling it the number of open files is higher in proportion to the throughput and sampling policies.
+To choose an appropriate limit, take the following into consideration:
 
-To configure the limit for your user, you need to know the username you run APM Server process with.
+- A limit of 1024 is typically sufficient for low-throughput use cases.
+- There is no performance downside to not setting a limit.
+- The main contributor to open files is the number of incoming connections.
+- Tail-based sampling is file-based, and increases the number of open files proportionally to throughput and sampling policies.
+
+### Set the limit for your user
+
+To configure the limit for your user:
+
+1. Determine which user runs the APM Server process:
 
 ```sh
 whoami
 ```
 
-Edit `/etc/security/limits.conf` with root privileges:
+2. Edit `/etc/security/limits.conf` with root privileges:
 
 ```sh
 sudo nano /etc/security/limits.conf
@@ -981,13 +987,17 @@ apm-server hard nofile 524287 <1>
 
 1. Replace `apm-server` with the username you run APM Server process with.
 
-To update the `nofile` ulimit of a running process you need to know the process ID (PID):
+### Update the limit for a running process
+
+To modify the `nofile` limit of a running APM Server process:
+
+1. Get the process ID (PID):
 
 ```sh
 pgrep -f apm-server
 ```
 
-Then apply the new limits:
+2. Apply the new limits:
 
 ```sh
 prlimit --pid PID --nofile=524287:524287 <1>
