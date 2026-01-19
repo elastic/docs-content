@@ -11,9 +11,7 @@ products:
 
 # {{stack}} Helm chart [k8s-stack-helm-chart]
 
-Starting with ECK 2.4.0, a Helm chart is available to deploy and manage {{stack}} resources using the ECK Operator. This guide focuses on using the `eck-stack` Helm chart and assumes basic familiarity with [Helm](https://helm.sh/docs/); it does not provide a comprehensive introduction to Helm itself.
-
-The chart is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
+Starting with ECK 2.4.0, a Helm chart is available to deploy and manage {{stack}} resources using the ECK Operator. It is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
 
 ```sh
 helm repo add elastic https://helm.elastic.co
@@ -26,7 +24,7 @@ The minimum supported version of Helm is {{eck_helm_minimum_version}}.
 
 The {{stack}} (`eck-stack`) Helm chart is built on top of individual charts such as `eck-elasticsearch` and `eck-kibana`. For more details on its structure and dependencies, refer to the [chart repository](https://github.com/elastic/cloud-on-k8s/tree/main/deploy/eck-stack/).
 
-The chart enables you to deploy the core components ({{es}} and {{kib}}) together, along with other {{stack}} applications if needed, under the same chart release. The following sections guide you through the installation process for multiple use cases. Choose the command that best fits your setup.
+The chart enables you to deploy the core components ({{es}} and {{kib}}) together, along with other {{stack}} applications if needed, under the same chart release. The following sections guide you through common installation, configuration, and upgrade use cases and assume basic familiarity with [Helm](https://helm.sh/docs/). It does not provide a comprehensive introduction to Helm itself.
 
 ::::{tip}
 All the provided examples deploy the applications in a namespace named `elastic-stack`. Consider adapting the commands to your use case.
@@ -117,7 +115,7 @@ helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-n
 
 To upgrade your {{stack}} components to a new version or modify the configuration of your existing installation (known as a `release`), use the [`helm upgrade`](https://helm.sh/docs/helm/helm_upgrade/) command.
 
-When upgrading an existing release with `helm upgrade`, you must specify, at least:
+The `helm upgrade` command requires the following arguments:
 - The name of the release to update, which must match the name used with `helm install`.
 - The chart name, which must be the same chart used during installation.
 
