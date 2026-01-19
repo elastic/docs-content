@@ -16,7 +16,7 @@ This page lists the built-in agents available in {{agent-builder}}. Built-in age
 
 Unlike custom agents, you cannot modify or delete these agents. However, they serve as excellent examples for [building your own custom agents](agent-builder-agents.md#create-a-new-agent-in-the-gui).
 
-## Availability and location
+## Availability
 
 The availability of specific agents depends on your active solution and whether you have enabled {{agent-builder}} in that space.
 
