@@ -175,7 +175,7 @@ Customize your metric chart to display exactly the information you need, formatt
     - **Bar orientation**: Options include **Vertical** and **Horizontal**.
     - **Color mode** or **Color by value** (depending on your version): Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
       - **Static**: The color always remains the same and is independent from the metric's value.
-        - **Select color**: Pick a color and its opacity.
+        - **Color**: Pick a color and its opacity.
       - **Dynamic**: Define colors to apply to the chart based on the value of the primary metric.
         - **Dynamic color mapping**: Use the color palette to define custom color ranges.
 
