@@ -13,7 +13,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-01192026-features-enhancements]
 
-* Supports {{esql}} in Vega [#247186]({{kib-pull}}247186)
+* Adds support for {{esql}} in Vega [#247186]({{kib-pull}}247186)
 * Improves {{fleet}} setup memory usage by deferring package reinstalls to async tasks [#248235]({{kib-pull}}248235)
 * Adds tab-scoped, retainable flyout behavior in Discover [#246612]({{kib-pull}}246612)
 * Adds hover previews to the recently closed tabs menu in Discover [#246973]({{kib-pull}}246973)
