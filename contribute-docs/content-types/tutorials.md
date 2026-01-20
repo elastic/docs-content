@@ -80,7 +80,6 @@ Include the following when they add value:
 - **Explanatory callouts:** Use [admonitions](https://elastic.github.io/docs-builder/syntax/admonitions/) to provide extra context, troubleshooting tips, or explanations without interrupting the main flow.
 - **Time estimates:** Indicate how long each major section or the overall tutorial takes to complete.
 - A **summary:** Recap what users learned and accomplished in the tutorial. Reinforce the key learning objectives.
-% TODO: reviewer I've made the summary optional, because if the overview already lists learning objectives clearly, a summary that just repeats them feels redundant. The tutorial's value is in the journey, not bookending it with the repetive information. 🤺
 
 ## Best practices
 
@@ -111,4 +110,4 @@ Here are some examples of well-structured tutorials in the Elastic documentation
 - [Tutorial: Threat hunting with {{esql}}](/solutions/security/esql-for-security/esql-threat-hunting-tutorial.md): A **scenario-driven** tutorial that teaches {{esql}} through a realistic cybersecurity scenario, with extensive code annotations.
 - [{{esql}} for search tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md): A **feature-focused** tutorial that systematically teaches search concepts using {{esql}}, from basic text matching to AI-powered semantic search, with subsections breaking down complex topics.
 
-% TODO: Add links to 2-3 exemplary tutorials in the docs
+% TODO: Add other links to exemplary tutorials in the docs
