@@ -12,9 +12,7 @@ applies_to:
 
 This page lists all built-in tools available in {{agent-builder}}. Built-in tools enable core operations for working with {{es}} data across platform, observability, and security use cases out-of-the-box.
 
-Built-in tools are read-only: you can't modify or delete them. In the tools overview, the UI organizes built-in tools using labels (called [`tags`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-tools#operation-post-agent-builder-tools-body-application-json-tags) in the API) such as `security`, `apm`, and `alerts` to help you filter and find related tools.
-
-To check which tools are available in your Elastic deployment, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
+Built-in tools are read-only: you can't modify or delete them. To check which tools are available in your Elastic deployment, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
