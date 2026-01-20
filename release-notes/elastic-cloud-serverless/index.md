@@ -56,7 +56,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 ### Fixes [serverless-changelog-01192026-fixes]
 
 * Fixes incorrect time zone for CSV reports that use local date comparison [#244405]({{kib-pull}}244405)
-* Fixes timestamp override for {{esql}} CSV scheduled reports with relative time ranges [#248169]({{kib-pull}}248169)
+* Fixes timestamp override for {{esql}} CSV-formatted scheduled reports with relative time ranges [#248169]({{kib-pull}}248169)
 * Limits variable suggestions to in-scope variables [#248365]({{kib-pull}}248365)
 * Expands the time range of all documents with `date_nanos` time fields [#248495]({{kib-pull}}248495)
 * Fixes query drafts when switching tabs [#247968]({{kib-pull}}247968)
