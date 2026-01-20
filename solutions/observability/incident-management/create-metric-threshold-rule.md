@@ -27,20 +27,42 @@ Conditions for each rule can be applied to specific metrics that you select. You
 
 In this example, the conditions state that you will receive a critical alert for hosts with a CPU usage of 120% or above and a warning alert if CPU usage is 100% or above. Note that you will receive an alert only if memory usage is 20% or above, as per the second condition.
 
+
+:::::{applies-switch}
+
+::::{applies-item} stack: ga 9.1+
+If data is not reported, select one of the following options to control alert behavior:
+
+- **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
+- **Alert me about the missing data**
+  - **with groupBy**: Trigger a “no data” alert when a previously detected group stops reporting data; not recommended for dynamically scaling infrastructures that start and stop nodes automatically.
+  - **without groupBy**: Trigger a “no data” alert when no data is returned during rule execution or when the rule fails to query {{es}}.
+- **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
+
+
 :::{image} /solutions/images/observability-metrics-alert.png
-:alt: Metric threshold alert
+:alt: Metric threshold alert with no data options
 :screenshot:
+:width: 90%
 :::
+
+::::
+
+::::{applies-item} stack: 9.0
 
 When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
 
+:::{image} /solutions/images/observability-metrics-alert-nodata.png
+:alt: Metric threshold alert with alert if there is no data
+:screenshot:
+:width: 90%
+:::
+
+::::
+
+:::::
 
 ## Filtering and grouping [filtering-and-grouping]
-
-:::{image} /solutions/images/observability-metrics-alert-filters-and-group.png
-:alt: Metric threshold filter and group fields
-:screenshot:
-:::
 
 The **Filters** control the scope of the rule. If used, the rule will only evaluate metric data that matches the query in this field. In this example, the rule will only alert on metrics reported from a Cloud region called `us-east`.
 
@@ -51,15 +73,39 @@ If you've made a rule with the [create rule API](https://www.elastic.co/docs/api
 - After you save the rule, filters you've added to the **Filter** field are converted appropriately and specified in the rule's `filterQuery` parameter.
 ::::
 
-The **Group alerts by** creates an instance of the alert for every unique value of the `field` added. For example, you can create a rule per host or every mount point of each host. You can also add multiple fields. In this example, the rule will individually track the status of each `host.name` in your infrastructure. You will only receive an alert about `host-1`, if `host.name: host-1` passes the threshold, but `host-2` and `host-3` do not.
+:::::{applies-switch}
+
+::::{applies-item} stack: ga 9.1+
+If data is not reported, select one of the following options to control alert behavior:
+
+- **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
+- **Alert me about the missing data**
+  - **with groupBy**: Trigger a “no data” alert when a previously detected group stops reporting data; not recommended for dynamically scaling infrastructures that start and stop nodes automatically.
+  - **without groupBy**: Trigger a “no data” alert when no data is returned during rule execution or when the rule fails to query {{es}}.
+- **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
+::::
+
+::::{applies-item} stack: 9.0
 
 When you select **Alert me if a group stops reporting data**, the rule is triggered if a group that previously reported metrics does not report them again over the expected time period.
+
+:::{image} /solutions/images/observability-metrics-alert-filters-and-group-nodata.png
+:alt: Metric threshold alert with alert if there is no data
+:screenshot:
+:width: 90%
+:::
+
+::::
+
+:::::
+
+The **Group alerts by** creates an instance of the alert for every unique value of the `field` added. For example, you can create a rule per host or every mount point of each host. You can also add multiple fields. In this example, the rule will individually track the status of each `host.name` in your infrastructure. You will only receive an alert about `host-1`, if `host.name: host-1` passes the threshold, but `host-2` and `host-3` do not.
+
 
 ::::{important}
 If you include the same field in both your **Filter** and your **Group by**, you may receive fewer results than you’re expecting. For example, if you filter by `cloud.region: us-east`, then grouping by `cloud.region` will have no effect because the filter query can only match one region.
 
 ::::
-
 
 In the **Advanced options**, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
 
