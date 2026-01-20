@@ -8,7 +8,7 @@ applies_to:
 
 # Troubleshooting
 
-This page provides guidelines for Elastic Docs contributors writing effective troubleshooting pages in the Elastic docs.
+This page provides guidelines for Elastic Docs contributors on how to write effective troubleshooting pages in the Elastic docs.
 
 ## Types of troubleshooting content
 
@@ -65,6 +65,16 @@ The following elements are required in troubleshooting pages:
    - Include minimal configuration examples when relevant.
    - Assume the reader's situation matches the **Symptoms** section.
    - Avoid speculative or diagnostic language.
+   - Order steps from most common to least common to resolve the issue.
+   - Avoid diagnostic branching unless the problem cannot be resolved linearly.
+   
+   For more complex scenarios, consider the following patterns:
+   
+   - **Multiple resolutions or "combo" resolutions**: When multiple solutions can be applied together or independently, present them as a list of options. Users can choose one or combine multiple approaches based on their situation. For example, reducing JVM memory pressure might involve reducing shard count, avoiding expensive searches, and preventing mapping explosions, all of which can be applied together.
+   
+   - **Introducing a diagnostic section**: When the initial symptom requires diagnostic steps to identify the specific cause, consider splitting the diagnostic process from the resolution. Use a separate **Diagnosis** section before the **Resolution** section to help users narrow down the problem first. This is especially useful when the same symptom can have multiple root causes or there are multiple possible resolutions that depend on diagnostic findings.
+   
+   - **Resolutions that differ by deployment type**: When the resolution steps differ significantly based on deployment type (for example, {{ecloud}} versus self-managed versus ECK), organize the resolution by deployment type using clear headings or tabs. This helps users quickly find the steps relevant to their environment.
 
 ### Optional elements
 
@@ -72,6 +82,7 @@ Consider including the following when they add value:
 
 - A **Best practices** section: Use this section to explain how users can avoid encountering this specific problem again. Focus on preventive measures, configuration choices, or deployment patterns that directly relate to preventing this issue. This is the appropriate place to recommend supported or preferred patterns related to the problem, clarify Elastic-specific guidance, call out known limitations or constraints, and set expectations about scale, load, or deployment environments.
 - A **Resources** section: Provide links to supplementary documentation for readers who want deeper context. Resources must not be required to fix the issue. Prefer Elastic-owned documentation, but link to upstream or external docs when necessary.
+- A **Contact support** section: Use this section only if there is no dedicated "Contact support" page available in the troubleshooting folder.
 
 ## Best practices
 
