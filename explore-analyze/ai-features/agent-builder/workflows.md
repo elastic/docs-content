@@ -21,7 +21,11 @@ Before using these features, ensure that:
 You can wrap an existing workflow into a tool that your agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
 
 ### Create a workflow tool
-TODO
+1. Navigate to **Agents > More > View all tools > New tool**.
+2. Select **Workflow** as the tool type.
+3. Select the specific workflow you want to wrap from the drop down list.
+4. Add ID and descirption to the tool.
+5. Click **Save**.
 
 ### Invoke the tool in chat
 Once assigned to an agent, the agent will use this tool whenever a user's request matches the workflow's purpose. The agent will extract the necessary parameters from the conversation and trigger the workflow execution.
@@ -31,11 +35,11 @@ You can incorporate AI agents into your automated workflows using **AI Steps**. 
 
 ### Add an AI Step
 When building a workflow you can add an **Agentic Step**.
-TODO
+******TODO******
 
 ### Call Agent Builder APIs
 Workflows can interact with {{agent-builder}} programmatically.
-TODO
+******TODO******
 
 ## Related pages
 * [Tools overview](tools.md)
