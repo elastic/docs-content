@@ -19,7 +19,7 @@ To share a dashboard with a larger audience, click {icon}`share` **Share** in th
 :width: 60%
 :::
 
-## Manage permissions of your dashboard
+## Manage access of other users on your dashboard
 ```{applies_to}
 serverless:
 stack: ga 9.3+
