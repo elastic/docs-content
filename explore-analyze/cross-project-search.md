@@ -8,27 +8,103 @@ products:
 
 # Cross-project search [cross-project-search]
 
-**{{cps-cap}}** lets you run a single search request against one or more of your projects. For example, you can use a {{cps}} to filter and analyze log data stored accross your linked projects.
+**{{cps-cap}}** enables you to run a single search request across multiple projects. For example, you can use {{cps}} to filter and analyze log data stored in projects connected through {{cps-init}}.
+Common use cases include centralized log analysis, cross-environment troubleshooting, and incident investigation across multiple teams or services.
 
 ## Prerequisites
 
 * {{cps-cap}} requires linked projects. To set up linked projects, refer to [**TODO**]().
 * To use {{cps}} with ES|QL, both the origin and linked projects must have the appropriate [subscription level](https://www.elastic.co/subscriptions).
-* {{cps-cap}} requires [UIAM]() set up.
+* {{cps-cap}} requires [UIAM](TODO) set up.
 
 ## Project linking
 
-## Tags
+In {{cps-init}}, projects have one of two roles: origin projects and linked projects.
+An **origin project** is a project that you link other projects to.
+A **linked project** is a project that is connected to an origin project.
+After linking projects, you can run queries from the origin project that also search the linked projects ({{cps}}).
+Project linking is not bidirectional. When you search from an origin project, the query runs against its linked projects as well.
+However, searches initiated from a linked project do not run against the origin project.
+
+You can link projects by using the Cloud UI.
+
+%%TODO: screenshot%%
+
+1. On the home screen, select the project you want to use as the origin project and click **Manage**.
+2. Click **Configure** on the **{{cps-cap}}** tile. Or click **{{cps-cap}}** in the left-hand navigation.
+3. Click **Link projects**.
+4. Select the project you want to link from the project list.
+
+%%TODO: screenshot%%
+
+5. Click **Review and save**.
+6. Review the selected projects. If you are satisfied, click **Save**. You can also view and copy the corresponding API request by clicking **View API request**.
+
+%%TODO: screenshot%%
+
+Your configuration is saved, a page with the list of linked projects opens.
 
 ## Search in {{cps-init}}
 
 ### Flat-world search
 
-### Qualified and unqalified search expressions
+If a project has linked projects, any search initiated on the origin project is automatically performed on the origin project and all of its linked projects.
+This behavior is referred to as flat-world search.
+For example, the following request searches the `logs` indices in the origin project and in every linked project by default:
+
+```console
+GET logs/_search
+```
+
+For each linked project, the search runs only if an index named `logs` exists.
+If a linked project does not have a `logs` index, that project is skipped and the search continues without returning an error.
+
+### Unqualified and qalified search expressions
+
+{{cps-cap}} supports two types of search expressions: unqualified and qualified search expressions. The difference between them determines where a search request runs.
+
+An **unqualified** search expression does not include a project prefix or tags. When you use an unqualified expression, the search is executed according to the flat-world search model.
+In this case, the search runs against the origin project and all of its linked projects.
+
+A **qualified** search expression includes additional qualifiers, such as project prefixes or tags, that explicitly control the scope of the search.
+
+Qualified search expressions enables you to:
+
+* restrict the search to the origin project only
+* narrow the search to specific linked projects
+* limit the search to projects that match certain tags
+
+For example, the following request searches only the origin project:
+
+```console
+GET _origin:logs/_search
+```
+
+For additional examples of qualified search expressions, refer to the [examples section](#cps-examples).
+
+#### Search scope and index resolution
+
+In {{cps}}, when projects are linked to an origin project, all of their searchable resources are conceptually brought into the origin project’s search scope. For search purposes, this forms a single merged project view.
+
+* Unqualified index expressions are resolved against this merged project view.
+* Qualified index expressions are resolved independently within each qualified project.
+
+As a result, unqualified searches treat linked projects as part of one larger logical project, unless the search expression explicitly limits the scope.
+
+#### `ignore_unavaliable` and `allow_no_indices`
+
+The distinction between qualified and unqualified index expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied.
+When you use an **unqualified** index expression, the merged project view is taken into account. In this case, these options are evaluated based on whether the target indices exist in any of the linked projects, not only in the origin project.
+
+`ignore_unavaliable` defaults to `false`. If it `false`, the request returns an error if it targets a missing resource (for example, and index or a datastream).
+
+`allow_no_indices` defaults to `true`. 
+
+## Tags
 
 ## Security
 
-A high-level overview
+%%A high-level overview%%
 
 ## Supported APIs [cps-supported-apis]
 
@@ -67,4 +143,9 @@ The following APIs support {{cps}}:
 
 ## Limitations
 
-## {{cps-cap}} examples
+### Maximum of 20 linked projects per origin project
+
+Each origin project can have up to 20 linked projects.
+A linked project can be associated with any number of origin projects.
+
+## {{cps-cap}} examples [cps-examples]
