@@ -47,12 +47,7 @@ Depending on the model being used, request processing may involve Elastic {{infe
 
 ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure, GCP, and more regions, we will automatically route requests to the same CSP and the closest region where the {{es}} cluster is hosted.
 
-<<<<<<< HEAD
 ## ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
-=======
-
-## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
->>>>>>> eb9b6bdb8 (Add initial EIS Cloud Connect docs and self-managed setup draft)
 
 ```{applies_to}
 stack: preview =9.1, ga 9.2+

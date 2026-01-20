@@ -22,7 +22,7 @@ Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-clou
 ## Elastic {{infer-cap}} Service (EIS)
 
 [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) lets you add AI-powered search and assistance to your {{es}} deployment without running models yourself.
-It provides the default [Elastic Managed LLM connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) used by the [AI Assistant](/explore-analyze/ai-assistant.md) and [Search Playground](/explore-analyze/query-filter/tools/playground.md), and lets you use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) for semantic search as a service ([ELSER on EIS](/explore-analyze/elastic-inference/eis.md#elser-on-eis)).
+It provides the default [Elastic Managed LLM connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) used by the [AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md) and [Search Playground](/explore-analyze/query-filter/tools/playground.md), and lets you use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) for semantic search as a service ([ELSER on EIS](/explore-analyze/elastic-inference/eis#elser-on-eis)).
 
 Learn how to set up and use [](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
 

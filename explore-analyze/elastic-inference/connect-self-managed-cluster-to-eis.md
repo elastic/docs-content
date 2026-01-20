@@ -24,21 +24,131 @@ Before you can use EIS with your self-managed cluster, ensure you meet the follo
 
 To set up EIS for your self-managed cluster with Cloud Connect:
 
-1. In your self-managed cluster, navigate to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::::{stepper}
+:::::{step} Open Cloud Connect
+In your self-managed cluster, navigate to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-   :::{image} /explore-analyze/images/cloud-connect-eis.png
-   :screenshot:
-   :alt: Screenshot showing Cloud Connect page
-   :::
+:::{image} /explore-analyze/images/cloud-connect-eis.png
+:screenshot:
+:alt: Screenshot showing Cloud Connect page
+:::
 
-2. Sign up or log in to {{ecloud}} and get the Cloud Connect API key:
+:::::
 
-   - If you already have an {{ecloud}} account, click **Log in**.
-   - If you don’t have an account yet, click **Sign up** and follow the prompts to create your account and start a free trial.
+:::::{step} Get your Cloud Connect API key
+Sign up or log in to {{ecloud}} and get the Cloud Connect API key.
 
-3. Copy the Cloud Connect API key, paste it into your self-managed cluster's Cloud Connect page, then click **Connect**.
+- If you already have an {{ecloud}} account, click **Log in**.
+- If you don’t have an account yet, click **Sign up** and follow the prompts to create your account and start a free trial.
+:::::
 
-4. On the **Cloud connected services** page, click **Connect** for Elastic {{infer}} Service.
+:::::{step} Connect EIS
+Copy the Cloud Connect API key, paste it into your self-managed cluster's Cloud Connect page, then click **Connect**.
+
+:::::
+
+:::::{step} Enable Elastic Inference Service
+On the **Cloud connected services** page, click **Connect** for Elastic {{infer}} Service.
+
+:::{image} /explore-analyze/images/eis-cloud-connect-connect-ui.png
+:screenshot:
+:alt: Screenshot showing Cloud Connect and EIS 
+:::
+
+:::::
+
+:::::{step} Verify with a chat request
+In **{{dev-tools-app}}**, run this chat request to confirm EIS is responding:
+
+```console
+POST _inference/chat_completion/.rainbow-sprinkles-elastic/_stream
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "In only two digits and nothing else, what is the meaning of life?" <1>
+    }
+  ]
+}
+```
+% TEST[skip]
+1. A user message to drive the chat completion stream.
+
+The response should look like this:
+
+```text
+event: message <1>
+data: {
+  "id" : "unified-1a499203-a497-4ba5-a292-d9cfa15d32bb",
+  "choices" : [
+    {
+      "delta" : {
+        "role" : "assistant"
+      },
+      "index" : 0
+    }
+  ],
+  "model" : "rainbow-sprinkles",
+  "object" : "chat.completion.chunk"
+}
+
+
+event: message <2>
+data: {
+  "id" : "unified-1a499203-a497-4ba5-a292-d9cfa15d32bb",
+  "choices" : [
+    {
+      "delta" : {
+        "content" : "42"
+      },
+      "index" : 0
+    }
+  ],
+  "model" : "rainbow-sprinkles",
+  "object" : "chat.completion.chunk"
+}
+
+
+event: message <3>
+data: {
+  "id" : "unified-1a499203-a497-4ba5-a292-d9cfa15d32bb",
+  "choices" : [
+    {
+      "delta" : { },
+      "finish_reason" : "stop",
+      "index" : 0
+    }
+  ],
+  "model" : "rainbow-sprinkles",
+  "object" : "chat.completion.chunk"
+}
+
+
+event: message <4>
+data: {
+  "id" : "unified-1a499203-a497-4ba5-a292-d9cfa15d32bb",
+  "choices" : [
+    {
+      "delta" : { },
+      "index" : 0
+    }
+  ],
+  "model" : "rainbow-sprinkles",
+  "object" : "chat.completion.chunk",
+  "usage" : {
+    "completion_tokens" : 5,
+    "prompt_tokens" : 22,
+    "total_tokens" : 27
+  }
+}
+```
+1. The first event opens the stream and sets the assistant role.
+2. The next event streams the content (`"42"`).
+3. The third event signals completion with `finish_reason: "stop"`.
+4. The final event includes token usage details.
+:::::
+::::::
+
 
 
 ## Regions
