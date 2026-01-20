@@ -114,7 +114,7 @@ You can change the [hardware profile](/deploy-manage/deploy/elastic-cloud/ec-cha
 
 **Option 4 - {applies_to}`ece: ga ` Override disk quota**
 
-{{ece}} administrators can temporarily override the disk quota of {{es}} nodes in real time as explained in [](docs-content/deploy-manage/deploy/cloud-enterprise/resource-overrides.md). We strongly recommend making this change only under the guidance of Elastic Support, and only as a temporary measure or for troubleshooting purposes.
+{{ece}} administrators can temporarily override the disk quota of {{es}} nodes in real time as explained in [](/deploy-manage/deploy/cloud-enterprise/resource-overrides.md). We strongly recommend making this change only under the guidance of Elastic Support, and only as a temporary measure or for troubleshooting purposes.
 
 ::::::
 
