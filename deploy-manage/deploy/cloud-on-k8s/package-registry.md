@@ -9,7 +9,7 @@ products:
 
 # Deploy {{package-registry}} on {{eck}} [k8s-package-registry]
 
-The {{package-registry}} is a service that stores Elastic package definitions in a central location, making it easier to manage integrations in air-gapped environments or when you need to use a private registry. You can deploy and manage the {{package-registry}} (EPR) as a {{k8s}} resource using ECK. When deployed with ECK, it the registry runs as a containerized service in your {{k8s}} cluster and can be used by {{kib}} instances to download and manage integration packages for {{fleet}}.
+The {{package-registry}} is a service that stores Elastic package definitions in a central location, making it easier to manage integrations in air-gapped environments or when you need to use a private registry. You can deploy and manage the {{package-registry}} (EPR) as a {{k8s}} resource using ECK. When deployed with ECK, the registry runs as a containerized service in your {{k8s}} cluster and can be used by {{kib}} instances to download and manage integration packages for {{fleet}}.
 
 ## Deploy the Package Registry
 
