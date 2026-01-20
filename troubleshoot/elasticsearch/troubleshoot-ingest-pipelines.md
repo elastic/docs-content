@@ -132,7 +132,7 @@ The statistics report per node since its uptime, so will reset with node restart
 
 ## Errors
 
-The Elasticsearch API response body includes any errors encountered at any stage of the ingestion flow. To diagnose ingestion issues, it is also recommended to review error logs. Note that Elastic client-side products (such as [Logstash](https://www.elastic.co/docs/reference/logstash/logging#_update_logging_levels) and [Elastic Agent](https://www.elastic.co/docs/reference/fleet/monitor-elastic-agent#change-logging-level)) may require debug logging level to be enabled in order to report HTTP 400-level errors. The following are examples of error log entries you may encounter:
+The {{es}} API response body includes errors encountered at any stage of the ingestion flow. To diagnose ingestion issues, it's also recommended to review error logs. Elastic client-side products, including [Logstash](https://www.elastic.co/docs/reference/logstash/logging#_update_logging_levels) and [Elastic Agent](https://www.elastic.co/docs/reference/fleet/monitor-elastic-agent#change-logging-level), may require the `debug` logging level to be enabled in order to report HTTP 400-level errors. The following are examples of error log entries that you may encounter:
 
 ```console
 [DEBUG][org.elasticsearch.action.bulk.TransportShardBulkAction] 
