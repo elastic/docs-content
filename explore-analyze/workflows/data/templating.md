@@ -31,7 +31,7 @@ url: "https://api.example.com/users/{{user.id}}"      # Result: "https://api.exa
 
 ### Type-preserving expressions [workflows-type-preserving]
 
-Use the dollar-sign prefix (`${{}}`) when you need to preserve the original data type (array, object, number, boolean) instead of converting the result to a string.
+Use the dollar-sign prefix (`${{ }}`) when you need to preserve the original data type (array, object, number, boolean) instead of converting the result to a string.
 
 ```yaml
 # String syntax - converts to string
@@ -101,7 +101,34 @@ value: "{%raw%}{{_ingest.timestamp}}{%endraw%}"  # Result: "{{_ingest.timestamp}
 
 This section covers common patterns for accessing and transforming data in your workflows.
 
-### Reference step outputs [workflows-ref-step-outputs]
+### Reference inputs [workflows-ref-inputs]
+
+Access input parameters passed to the workflow using `{{inputs.<input_name>}}`. Inputs are defined at the workflow level and can be provided when the workflow is triggered manually.
+
+```yaml
+inputs:
+  - name: environment
+    type: string
+    required: true
+    default: "staging"
+  - name: batchSize
+    type: number
+    default: 100
+
+triggers:
+  - type: manual
+
+steps:
+  - name: log_config
+    type: console
+    with:
+      message: |
+        Running with:
+        - Environment: {{inputs.environment}}
+        - Batch Size: {{inputs.batchSize}}
+```
+
+### Reference outputs [workflows-ref-step-outputs]
 
 Access data from previous steps using `{{steps.<step_name>.output}}`:
 
@@ -124,7 +151,7 @@ steps:
 
 ### Reference constants [workflows-ref-constants]
 
-Reference workflow-level constants using `{{consts.<constant_name>}}`:
+Reference workflow-level constants using `{{consts.<constant_name>}}`. Constants are defined at a workflow level and can be provided when the workflow is triggered.
 
 ```yaml
 consts:
