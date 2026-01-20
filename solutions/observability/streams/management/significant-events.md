@@ -1,7 +1,7 @@
 ---
 applies_to:
   serverless: preview
-  stack: preview
+  stack: preview 9.1+
 ---
 
 # Add significant events
