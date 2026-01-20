@@ -22,7 +22,7 @@ For an overview of how tools work in {{agent-builder}}, refer to the [Tools over
 
 ## Availability
 
-Built-in tools are scoped by solution area and deployment type. Platform core tools are available across all deployments, while observability and security tools are available in their respective serverless projects and stack deployments.
+Built-in tools are scoped by solution area and deployment type. Platform core tools are available across all deployments, while observability and security tools are available in their respective serverless projects (or solution views).
 
 ### Tool naming conventions
 
