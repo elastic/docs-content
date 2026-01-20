@@ -76,6 +76,7 @@ If you've made a rule with the [create rule API](https://www.elastic.co/docs/api
 :::::{applies-switch}
 
 ::::{applies-item} stack: ga 9.1+
+
 If data is not reported, select one of the following options to control alert behavior:
 
 - **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
