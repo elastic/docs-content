@@ -98,7 +98,7 @@ helm install eck-stack-with-package-registry elastic/eck-stack \
 
 The `eck-package-registry` chart creates a `PackageRegistry` resource that connects your {{kib}} instance to the {{package-registry}}. {{eck}} automatically handles the creation of the {{package-registry}} and the connection to {{kib}} and {{fleet-server}}.
 
-For more information about configuring {{package-registry}}, refer to the [documentation](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
+For more information about configuring the {{package-registry}}, refer to the [](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
 
 ## Enterprise Search server along with {{es}} and {{kib}} [k8s-install-enterprise-search-elasticsearch-kibana-helm]
 
