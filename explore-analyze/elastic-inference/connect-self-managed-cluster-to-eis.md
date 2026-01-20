@@ -10,7 +10,7 @@ applies_to:
 
 # EIS for self-managed clusters
 
-Elastic {{infer-cap}} Service (EIS) for self-managed clusters is available through [Cloud Connect](/deploy-manage/cloud-connect.md), which enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself. This allows you to use AI-powered features like semantic search and text embeddings without deploying and managing {{ml}} nodes.
+Elastic {{infer-cap}} Service (EIS) for self-managed clusters is available through [Cloud Connect](/deploy-manage/cloud-connect.md), which enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself. This allows you to use AI-powered features like [AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md), [Search Playground](/explore-analyze/query-filter/tools/playground.md) and [semantic search](/solutions/search/semantic-search/semantic-search-semantic-text.md#semantic-text-index-mapping) without deploying and managing {{ml}} nodes.
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ In your self-managed cluster, navigate to the **Cloud Connect** page using the [
 :::::
 
 :::::{step} Get your Cloud Connect API key
-Sign up or log in to {{ecloud}} and get the Cloud Connect API key.
+Sign up or log in to {{ecloud}} and get the Cloud Connect API key:
 
 - If you already have an {{ecloud}} account, click **Log in**.
 - If you don’t have an account yet, click **Sign up** and follow the prompts to create your account and start a free trial.
@@ -151,11 +151,14 @@ data: {
 
 
 
-## Regions
+## Regions and billing
 
-For information about EIS regions and request routing, refer to the [Region and hosting](/explore-analyze/elastic-inference/eis.md#eis-regions).
+For information about EIS regions and request routing, refer to the [Region and hosting](/explore-analyze/elastic-inference/eis.md#eis-regions). 
 
-## Token consumption and billing
+:::{note}
+You may encounter different {{infer}} service URLs that appear to be region- or cloud-specific, such as `https://inference.europe-west3.gcp.svc.elastic.cloud`. These URLs are used for request routing within {{ecloud}}. Regardless of which {{infer}} service URL is configured, all EIS requests are ultimately routed to {{aws}} `us-east-1`.
+:::
+
 
 EIS is billed per million tokens. For details on pricing and usage tracking, refer to [Pricing](/explore-analyze/elastic-inference/eis.md#pricing) and [Monitor your token usage](/explore-analyze/elastic-inference/eis.md#monitor-your-token-usage).
 
