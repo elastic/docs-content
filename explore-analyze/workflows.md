@@ -9,8 +9,6 @@ description: Learn about Elastic workflows.
 
 A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It is a reusable, versionable "recipe" that transforms inputs into actions.
 
-Workflows are for anyone who wants to cut down on manual effort, speed up response times, and make sure recurring situations are handled the same way every time.
-
 ## Why use workflows? [workflows-why]
 
 Insights on your data isn't enough. The ultimate value lies in action and outcomes. Workflows complete the journey from data to insight to automated outcomes. Your critical operational data already lives in Elastic: security events, infrastructure metrics, application logs, and business context. Workflows let you automate end-to-end outcomes directly where that data lives, without needing external automation tools.
@@ -20,11 +18,14 @@ Workflows address common operational challenges, such as:
 * **Alert fatigue**: Automate responses to reduce manual triage.
 * **Understaffing**: Enable teams to do more with fewer resources.
 * **Manual, repetitive work**: Automate routine tasks consistently.
-* **Tool fragmentation**: Eliminate the need to bolt on external automation tools.
+* **Tool fragmentation**: Eliminate the need to add on external automation tools.
 
 Workflows can handle everything from simple, repeatable tasks to complex processes.
 
-## Key components [workflows-components]
+## Who should use workflows? [workflosw-who]
+Workflows are for anyone who wants to cut down on manual effort, speed up response times, and make sure recurring situations are handled the same way every time.
+
+## Key elements [workflows-key-elements]
 
 Every workflow is composed of three core elements:
 
@@ -32,3 +33,7 @@ Every workflow is composed of three core elements:
 * **Steps**: The individual units of logic or action that make up a workflow. Steps define _how_ data moves, decisions are made, and results are produced.
 * **Connectors**: The integrations that allow workflows to interact with external systems and services. Connectors define _where_ actions are executed.
 
+## Learn more
+
+- Follow [this tutorial](/explore-analyze/workflows/get-started.md) to create and run your first workflow.
+- Understand how to use the YAML editor in {{kib}} to define and run your workflows. Refer to [](/explore-analyze/workflows/create-workflows.md) to learn more.

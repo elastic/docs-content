@@ -7,11 +7,11 @@ description: Learn how to get started creating Elastic workflows.
 
 # Get started with workflows [workflows-get-started]
 
-In this tutorial, you'll create a workflow that indexes and searches through National Parks data, demonstrating the core concepts and capabilities of workflows along the way.
+In this tutorial, you'll create a workflow that indexes and searches through national parks data, demonstrating the core concepts and capabilities of workflows along the way.
 
 ## Prerequisites [workflows-prerequisites]
 
-- To use workflows, you must turn on the Elastic Workflows [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (`workflows:ui:enabled`).   
+- To use workflows, turn on the Elastic Workflows [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (`workflows:ui:enabled`).   
 - You must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 
 ## Prerequisites [workflows-prerequisites]
