@@ -46,8 +46,6 @@ The [A2A server](a2a-server.md) does not currently support streaming operations.
 
 ### Incompatible LLMs
 
-While Elastic offers LLM [connectors](kibana://reference/connectors-kibana.md) for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}. We recommend using the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) (the default). Learn more in [](models.md).
-
 The following errors suggest your selected model may not be compatible with {{agent-builder}}:
 
 ```console-response
@@ -57,6 +55,8 @@ Error: Invalid function call syntax
 ```console-response
 Error executing agent: No tool calls found in the response.
 ```
+
+To learn more, refer to [](models.md)
 
 ### Context length exceeded error [conversation-length-exceeded]
 
