@@ -48,7 +48,7 @@ If data is not reported, select one of the following options to control alert be
 
 ::::
 
-::::{applies-item} stack: 9.0
+::::{applies-item} stack: ga =9.0
 
 When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
 
@@ -100,7 +100,7 @@ If there is no data, you have the following options to control the alert behavio
 - **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
 ::::
 
-::::{applies-item} stack: 9.0
+::::{applies-item} stack: ga =9.0
 
 When you select **Alert me if a group stops reporting data**, the rule is triggered if a group that previously reported metrics does not report them again over the expected time period.
 
