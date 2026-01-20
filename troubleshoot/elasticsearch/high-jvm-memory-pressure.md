@@ -17,19 +17,19 @@ High JVM memory usage can degrade cluster performance and trigger [circuit break
 
 {{es}}'s JVM [uses a G1GC garbage collector](/deploy-manage/deploy/self-managed/bootstrap-checks.md). Over time this causes the JVM heap usage metric to reflect a sawtooth pattern as shown in [Understanding JVM heap memory](https://www.elastic.co/blog/jvm-essentials-for-elasticsearch). Due to this, we recommend focusing monitoring on the JVM memory pressure which gives a rolling average of old garbage collection and better represents the node's ongoing JVM responsiveness.
 
-You can also use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.
+Use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.
 
 ```console
 GET _nodes/stats?filter_path=nodes.*.name,nodes.*.jvm.mem.pools.old
 ```
 
-You can calculate the memory pressure from the ratio of `used_in_bytes` to `max_in_bytes`. For example, you can store this output into `nodes_stats.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/):
+From the previous output, you can calculate the memory pressure as the ratio of `used_in_bytes` to `max_in_bytes`. For example, you can store this output into `nodes_stats.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/) to process it:
 
 ```bash
 cat nodes_stats.json | jq -rc '.nodes[]|.name as $n|.jvm.mem.pools.old|{name:$n, memory_pressure:(100*.used_in_bytes/.max_in_bytes|round) }'
 ```
 
-{{ech}} and {{ece}} also include a JVM memory pressure indicator for each node in your cluster in your deployment overview as discussed under their [memory pressure monitoring](/deploy-manage/monitor/ec-memory-pressure.md). These indicators turn red once JVM memory pressure reaches 75%.
+{{ech}} and {{ece}} also include a JVM memory pressure indicator for each node in your cluster in the deployment's overview page. These indicators turn red when JVM memory pressure reaches 75%. [Learn more][memory pressure monitoring](/deploy-manage/monitor/ec-memory-pressure.md).
 
 :::::::
 
@@ -41,7 +41,7 @@ As memory usage increases, garbage collection becomes more frequent and takes lo
 [timestamp_short_interval_from_last][INFO ][o.e.m.j.JvmGcMonitorService] [node_id] [gc][number] overhead, spent [21s] collecting in the last [40s]
 ```
 
-Garbage collection will also surface as part of the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) output `OTHER_CPU` as described in [troubleshooting high CPU usage](/troubleshoot/elasticsearch/high-cpu-usage.md#check-hot-threads).
+Garbage collection activity can also appear in the output of the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads), under the `OTHER_CPU` category, as described in [troubleshooting high CPU usage](/troubleshoot/elasticsearch/high-cpu-usage.md#check-hot-threads).
 
 For optimal JVM performance, garbage collection (GC) should meet these criteria:
 
@@ -55,7 +55,7 @@ For optimal JVM performance, garbage collection (GC) should meet these criteria:
 
 To determine the exact reason for the high JVM memory pressure, capture and review a heap dump of the JVM while its memory usage is high. 
 
-If you have an [Elastic subscription](https://www.elastic.co/pricing), you can [request Elastic's assistance](/troubleshoot/index.md#contact-us) reviewing this output. When doing so, kindly:
+If you have an [Elastic subscription](https://www.elastic.co/pricing), you can [request Elastic's assistance](/troubleshoot/index.md#contact-us) reviewing this output. When reaching out, follow these guidelines:
 
 * Grant written permission for Elastic to review your uploaded heap dumps within the support case.
 * Share this file only after receiving any necessary business approvals as it might contain private information. Files are handled according to [Elastic's privacy statement](https://www.elastic.co/legal/privacy-statement).
@@ -67,12 +67,12 @@ If you have an [Elastic subscription](https://www.elastic.co/pricing), you can [
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
-To track JVM over time, we recommend enabling monitoring
+To track JVM memory pressure over time, enable monitoring using one of the following options, depending on your deployment type:
 
 :::::::{applies-switch}
 
 ::::::{applies-item} { ess:, ece: }
-* (Recommend) Enable [AutoOps](/deploy-manage/monitor/autoops.md)
+* (Recommend) Enable [AutoOps](/deploy-manage/monitor/autoops.md).
 * Enable [logs and metrics](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page. You can also enable the [JVM memory threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
 * From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) page's [memory pressure troubleshooting charts](/troubleshoot/monitoring/high-memory-pressure.md).
 ::::::
@@ -90,7 +90,7 @@ This section contains some common suggestions for reducing JVM memory pressure.
 
 ### Common setup issues [reduce-jvm-memory-pressure-setup]
 
-This section contains some common suggestions for why JVM memory pressure can remain high in the background or respond non-linearly during performance issues.
+This section highlights common setup issues that can cause JVM memory pressure to remain elevated, even in the absence of obvious load, or to respond non-linearly during performance issues.
 
 #### Disable swapping [reduce-jvm-memory-pressure-setup-swap]
 
@@ -102,7 +102,7 @@ Per guide, you can attempt to disable swap on the {{es}} level with [setting `bo
 GET _nodes?filter_path=**.mlockall,**.memory_lock,nodes.*.name
 ```
 
-For example, you can store this output into `nodes.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/):
+For example, you can store this output into `nodes.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/) to process it:
 
 ```bash
 cat nodes.json | jq -rc '.nodes[]|.name as $n|{node:.name, memory_lock:.settings.bootstrap.memory_lock, mlockall:.process.mlockall}'
@@ -114,7 +114,7 @@ cat nodes.json | jq -rc '.nodes[]|.name as $n|{node:.name, memory_lock:.settings
 GET _nodes/stats?filter_path=**.swap,nodes.*.name
 ```
 
-For example, you can store this output into `nodes_stats.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/):
+For example, you can store this output into `nodes_stats.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/) to process it:
 
 ```bash
 cat nodes_stats.json | jq -rc '.nodes[]|{name:.name, swap_used:.os.swap.used_in_bytes}' | sort
@@ -124,21 +124,21 @@ If nodes are found to be swapping after attempting to disable on the {{es}} leve
 
 #### Enable compressed OOPs [reduce-jvm-memory-pressure-setup-oops]
 
-JVM performance strongly depends on having [Compressed OOPs](https://docs.oracle.com/javase/7/docs/technotes/guides/vm/performance-enhancements-7.html#compressedOop) enabled. The exact max heap size cut off depends on operating system, but usually caps near 30GB. To check if it is enabled, poll the [node information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
+JVM performance strongly depends on having [Compressed OOPs](https://docs.oracle.com/javase/7/docs/technotes/guides/vm/performance-enhancements-7.html#compressedOop) enabled. The exact max heap size cutoff depends on operating system, but is typically around 30GB. To check if it is enabled, poll the [node information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
 
 ```console
 GET _nodes?filter_path=nodes.*.name,nodes.*.jvm.using_compressed_ordinary_object_pointers
 ```
 
-For example, you can store this output into `nodes.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/):
+For example, you can store this output into `nodes.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/) to process it:
 
 ```bash
 cat nodes.json | jq -rc '.nodes[]|{node:.name, compressed:.jvm.using_compressed_ordinary_object_pointers}'
 ```
 
-#### Max heap at less than half RAM [reduce-jvm-memory-pressure-setup-heap]
+#### Limit heap size to less than half of total RAM [reduce-jvm-memory-pressure-setup-heap]
 
-By default, {{es}} manages the JVM heap size. If manually overridden, `Xms` and `Xmx` should be equal and not more than half of total operating system RAM per [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). 
+By default, {{es}} manages the JVM heap size. If manually overridden, `Xms` and `Xmx` should be equal and not more than half of total operating system RAM. Refer to [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) for detailed guidance and best practices.
 
 To check these heap settings, poll the [node information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
 
@@ -146,7 +146,7 @@ To check these heap settings, poll the [node information API](https://www.elasti
 GET _nodes?filter_path=nodes.*.name,nodes.*.jvm.mem
 ```
 
-For example, you can store this output into `nodes.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/):
+For example, you can store this output into `nodes.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/) to process it:
 
 ```bash
 cat nodes.json | jq -rc '.nodes[]|.name as $n|.jvm.mem|{name:$n, heap_min:.heap_init, heap_max:.heap_max}'
@@ -154,7 +154,7 @@ cat nodes.json | jq -rc '.nodes[]|.name as $n|.jvm.mem|{name:$n, heap_min:.heap_
 
 #### Reduce your shard count [reduce-jvm-memory-pressure-setup-shards]
 
-Every shard uses memory. Usually a small set of large shards uses fewer resources than many small shards. For tips on reducing your shard count, refer to [Size your shards](../../deploy-manage/production-guidance/optimize-performance/size-shards.md).
+Every shard uses memory. Usually, a small set of large shards uses fewer resources than many small shards. For tips on reducing your shard count, refer to [](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
 
 ### Common traffic issues [reduce-jvm-memory-pressure-traffic]
 
@@ -190,7 +190,7 @@ PUT _cluster/settings
 
 Defining too many fields or nesting fields too deeply can lead to [mapping explosions](/troubleshoot/elasticsearch/mapping-explosion.md) that use large amounts of memory. To prevent mapping explosions, use the [mapping limit settings](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) to limit the number of field mappings.
 
-You might also consider setting {{kib}} [Advacned Settings](kibana://reference/advanced-settings.md) `data_views:fields_excluded_data_tiers` for faster performance. For example, to avoid searchable snapshots on cold and frozen [data tiers](/manage-data/lifecycle/data-tiers.md), you would set this to `data_cold,data_frozen`. This can help Discover fields to load faster as depicted in [Troubleshooting guide: Solving 6 common issues in Kibana Discover load](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load#2.-load-fields).
+You can also configure the {{kib}} [advanced setting](kibana://reference/advanced-settings.md) `data_views:fields_excluded_data_tiers` to improve performance by preventing {{kib}} from retrieving field data from specific data tiers. For example, to exclude cold and frozen tiers, typically used for searchable snapshots, set this value to `data_cold,data_frozen`. This can help Discover load fields faster, as described in [Troubleshooting guide: Solving 6 common issues in Kibana Discover load](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load#2.-load-fields).
 
 #### Spread out bulk requests [reduce-jvm-memory-pressure-setup-bulks]
 
