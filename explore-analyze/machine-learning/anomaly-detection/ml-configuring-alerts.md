@@ -85,7 +85,21 @@ You can preview how the rule would perform on existing data:
 :::
 
 9. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**.
-10. (Optional) Configure **Advanced options**:
+10. Specify the rule's scope, which determines the [{{kib}} feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that a role must have to access the rule and its alerts. Depending on your role's access, you can select one of the following:
+
+   - {applies_to}`stack: ga 9.3+` **All**: (Default) Roles must have the appropriate privileges for one of the following features:
+      - Infrastructure metrics (**Observability > Infrastructure**)
+      - Logs (**Observability > Logs**)
+      - APM (**Observability > APM and User Experience**)
+      - Synthetics (**Observability > Synthetics and Uptime**)
+      - Stack rules (**Management > {{stack-rules-feature}}**) 
+   - **Logs**: Roles must have the appropriate **Observability > Logs** feature privileges.
+   - **Metrics**: Roles must have the appropriate **Observability > Infrastructure** feature privileges.
+   - **Stack Management**: Roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges.
+
+   For example, if you select **All**, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} **Rules** page.
+
+11. (Optional) Configure **Advanced options**:
    - Define the number of consecutive matches required before an alert is triggered under **Alert delay**.
    - Enable or disable **Flapping Detection** to reduce noise from frequently changing alerts. You can customize the flapping detection settings if you need different thresholds for detecting flapping behavior.
 
