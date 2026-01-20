@@ -293,7 +293,7 @@ The following examples show various configuration options that you can use for b
     * **Title**: "Weekly page views"
     * **Primary metric**: `count()` (current week's page views)
     * **Secondary metric**: `count(shift='1w')` (previous week's page views)
-      * **Color by value**: Dynamic coloring
+      * **Color mode** or **Color by value**: Dynamic coloring
       * **Compare to**: Primary metric
       * **Display**: Both icon and value
       * **Label**: "Compared to previous week"
