@@ -18,9 +18,11 @@ products:
 
 ## Limitations
 
-:::{important}
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
-:::
+::::{admonition} Agent Builder subscription requirements
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::
 
 ### Feature availability
 

@@ -18,9 +18,11 @@ navigation_title: "Permissions"
 
 Use this page to learn how to configure security roles and API keys for {{agent-builder}}. Understanding these privileges helps you control who can use agents, which tools they can access, and what data they can query.
 
-:::{important}
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
-:::
+::::{admonition} Agent Builder subscription requirements
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::
 
 ## Required privileges
 
