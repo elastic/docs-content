@@ -6,7 +6,7 @@ applies_to:
 
 # Replace processor [streams-replace-processor]
 
-The replace processor replaces parts of a string field that match a regular expression pattern with a replacement string.
+The replace processor replaces portions of a string field that match a regular expression with a replacement string.
 
 To use the replace processor:
 
