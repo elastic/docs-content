@@ -31,6 +31,15 @@ Although breaking changes typically affect [major upgrades](#prepare-upgrade-fro
 If you are affected by a breaking change, you have to take action before upgrading. This can include updating your code, change configuration settings, or other steps.
 ::::
 
+::::{step} Check for archived settings
+:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/archived-index-settings-before.md
+:::
+
+Additionaly, check if there are any archived settings from a previous upgrade that should have been removed. If found, remove them before proceeding with the new upgrade.
+
+Refer to [Archived settings](/deploy-manage/upgrade/deployment-or-cluster/archived-settings.md) for details on how to detect and remove archived settings at cluster and index levels.
+::::
+
 ::::{step} Verify plugin compatibility
 If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to.
 ::::

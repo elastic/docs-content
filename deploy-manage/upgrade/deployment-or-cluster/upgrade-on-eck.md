@@ -158,6 +158,11 @@ spec:
 
 If you deploy your {{stack}} resources using our Helm chart, refer to [managing deployments using Helm chart](/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md#k8s-upgrade-modify-helm) for details on how to perform upgrades with Helm.
 
+## Archived settings [archived-settings]
+
+:::{include} _snippets/archived-settings.md
+:::
+
 ## Next steps
 
 Once you've successfully upgraded your deployment, you can [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md), such as {{ls}}, {{agents}}, or {{beats}}.
