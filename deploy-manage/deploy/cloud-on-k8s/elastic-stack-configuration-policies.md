@@ -49,6 +49,8 @@ With ECK `3.3.0` and later, multiple {{stack}} configuration policies can target
 ::::{admonition} Scale considerations
 
 While there is no hard limit on how many `StackConfigPolicy` resources can target the same {{es}} cluster or {{kib}} instance, targeting a single resource with more than 100 policies can increase total reconciliation time to several minutes. For optimal performance, combine related settings into fewer policies rather than creating many granular ones.
+
+Additionally, the total size of settings configured through `StackConfigPolicy` resources for a given {{es}} cluster or {{kib}} instance is limited to 1MB due to Kubernetes secret size constraints.
 ::::
 
 
