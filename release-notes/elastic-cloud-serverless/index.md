@@ -29,6 +29,29 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds Queries tab to the Significant Events Discovery page [#248243]({{kib-pull}}248243)
 * Adds `get_trace_change_points` tool for trace change point analysis [#247810]({{kib-pull}}247810)
 * Adds background task for significant events query generation [#248608]({{kib-pull}}248608)
+* Refactors the {{esql}} inference operator architecture to support multi-value fields [#139694]({{es-pull}}139694)
+* Removes the implicit `limit` appended to each subquery branch in {{esql}} [#139058]({{es-pull}}139058)
+* Makes the {{esql}} `TEXT_EMBEDDING` function generally available (GA) [#140555]({{es-pull}}140555)
+* Adds support for the multimodal embedding task type to the JinaAi service [#140323]({{es-pull}}140323)
+* Adds `CHICKEN` function to {{esql}} [#140645]({{es-pull}}140645)
+* Adds a suggestion for resolving the Machine Learning node allocation error [#139520]({{es-pull}}139520)
+* Adds top-level arithmetic operations support to `TS | STATS` [#140135]({{es-pull}}140135)
+* Adds `dense_vector` support for `COUNT`, `PRESENT`, and `ABSENT` aggregations in {{esql}} [#139914]({{es-pull}}139914)
+* Enables `NULLIFY` and `FAIL` unmapped field resolution in technical preview [#140528]({{es-pull}}140528)
+* Adds support for mapping-unavailable fields [#140463]({{es-pull}}140463)
+* Moves union types out of `BlockLoader` in {{esql}} [#140384]({{es-pull}}140384)
+* Adds timezone support to `TO_STRING`, `TO_DATETIME`, and `TO_DATENANOS` converters in {{esql}} [#138985]({{es-pull}}138985)
+* Adds timezone support to `TRange` in {{esql}} [#139911]({{es-pull}}139911)
+* Increases DiskBBQ vector block bulk size to 32 [#138217]({{es-pull}}138217)
+* Prefetches vectors during rescoring [#139955]({{es-pull}}139955)
+* Stores fallback match-only text fields in binary doc values [#140189]({{es-pull}}140189)
+* Stores flattened field data in binary doc values [#140246]({{es-pull}}140246)
+* Stores raw pattern text fields in binary doc values [#140191]({{es-pull}}140191)
+* Updates Grok to use `Matcher#setTimeout` [#139405]({{es-pull}}139405)
+* Makes vector functions generally available (GA) [#140545]({{es-pull}}140545)
+* Makes the auto-expand indices functionality use the desired cluster topology when one is available
+* Runs replica topology boundary enforcement when receiving the desired topology
+* Adds tests for {{esql}} index exclusion
 
 ### Fixes [serverless-changelog-01192026-fixes]
 
@@ -62,6 +85,17 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Makes the static lookup formatter work with aggregated boolean fields [#249311]({{kib-pull}}249311)
 * Adds datasource name to namespace [#249123]({{kib-pull}}249123)
 * Fixes an issue where the Discover histogram legend in {{esql}} mode was not filtering out null values correctly [#249302]({{kib-pull}}249302)
+* Fixes class cast exceptions in pipeline aggregations [#140069]({{es-pull}}140069)
+* Fixes an issue where `numCands` was passed instead of `k` [#140839]({{es-pull}}140839)
+* Fixes an issue where `ENRICH` in {{esql}} didn't work when using `dense_vector` as a column for adding as part of the `ENRICH` command [#139774]({{es-pull}}139774)
+* Fixes aggregation on null values in {{esql}} [#139797]({{es-pull}}139797)
+* Fixes nested aggregation `top_hits` with query `inner_hits` [#137351]({{es-pull}}137351)
+* Fixes converted fields not propagating through projections [#137923]({{es-pull}}137923)
+* Reduces priority of clear-cache tasks [#139685]({{es-pull}}139685)
+* Rejects `max_number_of_allocations` > 1 for low-priority model deployments [#140163]({{es-pull}}140163)
+* Sorts legacy histogram values during downsampling [#140771]({{es-pull}}140771)
+* Uses sub keyword block loader with `ignore_above` for text fields [#140622]({{es-pull}}140622)
+* Fixes auto-expand code for replicas
 
 ## January 13, 2026 [serverless-changelog-01132026]
 
