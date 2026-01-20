@@ -15,7 +15,7 @@ High JVM memory usage can degrade cluster performance and trigger [circuit break
 
 ### Check JVM memory pressure [diagnose-check-pressure] 
 
-{{es}}'s JVM [uses a G1GC garbage collector](/deploy-manage/deploy/self-managed/bootstrap-checks.md). Over time this causes the JVM heap usage metric to reflect a sawtooth pattern as shown in [Understanding JVM heap memory](https://www.elastic.co/blog/jvm-essentials-for-elasticsearch). Due to this, we recommend focusing monitoring on the JVM memory pressure which gives a rolling average of old garbage collection and better represents the node's ongoing JVM responsiveness.
+{{es}}'s JVM [uses a G1GC garbage collector](/deploy-manage/deploy/self-managed/bootstrap-checks.md). Over time this causes the JVM heap usage metric to reflect a sawtooth pattern as shown in [Understanding JVM heap memory](https://www.elastic.co/blog/jvm-essentials-for-elasticsearch). This causes the reported heap percent to fluctuate as it is an instantaneous measurement. You should focus monitoring on the JVM memory pressure, which is a rolling average of old garbage collection, and better represents the node's ongoing JVM responsiveness.
 
 Use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.
 
