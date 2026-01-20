@@ -1,11 +1,17 @@
 ---
 navigation_title: "A2A server"
 applies_to:
-  stack: preview 9.2
+  stack: preview =9.2, ga 9.3+
   serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+    elasticsearch: ga
+    observability: preview
+    security: preview
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Agent-to-Agent (A2A) server

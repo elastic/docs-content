@@ -2,11 +2,17 @@
 description: Learn about the standalone and flyout modes for the Elastic Agent Builder chat UI
 navigation_title: "Chat UI modes"
 applies_to:
-  stack: ga 9.2+
+  stack: preview =9.2, ga 9.3+
   serverless:
     elasticsearch: ga
-    observability: ga
-    security: ga
+    observability: preview
+    security: preview
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Standalone and flyout chat UI modes in {{agent-builder}}
