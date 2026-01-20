@@ -79,6 +79,8 @@ Refer to [Connect to {{ems}}](../../../explore-analyze/visualize/maps/maps-conne
 
 ## {{package-registry}} [air-gapped-elastic-package-registry]
 
+If using {{eck}}, you can follow the instructions in [Deploy {{package-registry}} on {{eck}}](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
+
 Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](/reference/fleet/air-gapped.md) page in the {{fleet}} and {{agent}} Guide.
 
 ::::{note}
