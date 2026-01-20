@@ -423,6 +423,8 @@ toc:
           - file: observability/infra-and-hosts/tutorial-observe-nginx-instances.md
             children:
               - file: observability/infra-and-hosts/understanding-no-results-found-message.md
+          - file: observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md
+          - file: observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md
       - file: observability/logs.md
         children:
           - file: observability/logs/get-started-with-system-logs.md
