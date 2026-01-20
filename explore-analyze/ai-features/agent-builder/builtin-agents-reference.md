@@ -34,11 +34,10 @@ serverless: ga
 
 The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is designed to help with a wide range of tasks, from writing {{esql}} queries to exploring your data indices.
 
-
-**Assigned Tools:**
+**Assigned tools:**
 * All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
-## {{observability}} Agent
+## Observability Agent
 ```{applies_to}
 stack: preview 9.3
 serverless:
@@ -48,7 +47,7 @@ serverless:
 A specialized agent for logs, metrics, and traces. It is designed to assist with infrastructure monitoring and application performance troubleshooting.
 
 
-**Assigned Tools:**
+**Assigned tools:**
 * All [**{{observability}} tools**](./tools/builtin-tools-reference.md#observability-tools)
 * All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
@@ -62,7 +61,7 @@ serverless:
 A specialized agent for security alert analysis tasks, including alert investigation and security documentation. It helps analysts triage alerts and understand complex security events.
 
 
-**Assigned Tools:**
+**Assigned tools:**
 * All [**Security tools**](./tools/builtin-tools-reference.md#security-tools)
 * All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 

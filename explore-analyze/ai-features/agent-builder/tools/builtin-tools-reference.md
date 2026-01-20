@@ -6,27 +6,46 @@ applies_to:
   serverless: ga
 ---
 
+<!-- Note: This file contains commented-out tool sections for features on main that are not yet available in released versions. -->
+
 # Elastic Agent Builder built-in tools reference
 
-This page lists all built-in tools available in {{agent-builder}} and their availability. Unless otherwise specified, all built-in tools are available within all types of deployments. These tools are available to all [custom agents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#create-a-new-agent-in-the-gui).
+This page lists all built-in tools available in {{agent-builder}}. Built-in tools enable core operations for working with {{es}} data across platform, observability, and security use cases out-of-the-box.
 
-Built-in tools provide core capabilities for working with {{es}} data. You can't modify or delete them. In the tools overview, the UI organizes built-in tools using labels (called `tags` in the API) such as `observability`, `security`, `apm`, and `alerts` to help you filter and find related tools. To learn more, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
+Built-in tools are read-only: you can't modify or delete them. In the tools overview, the UI organizes built-in tools using labels (called [`tags`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-tools#operation-post-agent-builder-tools-body-application-json-tags) in the API) such as `security`, `apm`, and `alerts` to help you filter and find related tools.
+
+To check which tools are available in your Elastic deployment, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
 :::
 
-## Tool naming conventions
+## Availability
 
-Tool naming conventions help organize and identify tools by their source. Built-in tools use consistent prefixes such as `platform.core`, `observability`, and `security`. This convention:
+Built-in tools are scoped by solution area and deployment type. Platform core tools are available across all deployments, while observability and security tools are available in their respective serverless projects and stack deployments.
 
-- Prevents naming conflicts between system and custom tools
-- Makes it easy to identify tool sources
-- Provides a consistent pattern for tool identification
+### Tool naming conventions
+
+Tool naming conventions help organize and identify tools by their source. Built-in tools use consistent prefixes such as `platform.core`, `observability`, and `security`. When you search for tools or review agent configurations, these prefixes help you quickly identify tool sources and understand their scope.
+
+## Agents and tools
+
+[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. For example, the Observability agent includes all observability tools by default. You can assign any available built-in tools to [custom agents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#create-a-new-agent-in-the-gui) you create.
 
 ## Platform core tools
+```{applies_to}
+stack: preview =9.2, ga 9.3
+serverless:
+  elasticsearch: ga
+  observability: ga
+  security: ga
+```
 
-Platform Core tools provide fundamental capabilities for interacting with {{es}} data, executing queries, and working with indices. They are relevant to many use cases.
+Platform core tools provide fundamental capabilities for interacting with {{es}} data, executing queries, and working with indices. They are relevant to many use cases.
+
+:::{note}
+All [built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are assigned these tools by default.
+:::
 
 `platform.core.execute_esql` {applies_to}`stack: ga 9.2+`
 :   Executes an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query and returns the results in a tabular format.
@@ -55,8 +74,8 @@ Platform Core tools provide fundamental capabilities for interacting with {{es}}
 `platform.core.integration_knowledge` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves knowledge from [{{fleet}}](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
 
-`platform.core.create_visualization` {applies_to}`stack: ga 9.3+`
-:   Creates a [Lens](/explore-analyze/visualize/lens.md) visualization based on specifications.
+<!-- `platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
+:   Creates a [Lens](/explore-analyze/visualize/lens.md) visualization based on specifications. -->
 
 `platform.core.cases` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves [cases](/explore-analyze/alerts-cases/cases.md) for tracking and managing issues.
@@ -108,11 +127,15 @@ Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze
 ## Observability tools
 ```{applies_to}
 stack: ga 9.3+
+serverless:
+  observability: ga
 ```
 
-% TODO mention that the built-in Observability agent is assigned these tools
-
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
+
+:::{note}
+The [built-in Observability agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) is assigned these tools by default.
+:::
 
 `observability.get_alerts`
 :   Retrieves Observability [alerts](/solutions/observability/incident-management/alerting.md) within a specified time range, supporting filtering by status (active/recovered) and KQL queries.
@@ -153,20 +176,24 @@ Observability tools provide specialized capabilities for monitoring applications
 ## Security tools
 ```{applies_to}
 stack: ga 9.3+
+serverless: 
+  security: ga
 ```
 
-% TODO mention that the built-in Security agent is assigned these tools
-
 Security tools provide specialized capabilities for security monitoring, threat detection, and incident response.
+
+:::{note}
+The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is assigned these tools by default.
+:::
 
 `security.alerts`
 :   Searches and analyzes security alerts using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
-`security.entity_risk_score`
-:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment.
+<!-- `security.entity_risk_score`
+:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. -->
 
-`security.attack_discovery_search`
-:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs.
+<!-- `security.attack_discovery_search`
+:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs.-->
 
 `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content.
