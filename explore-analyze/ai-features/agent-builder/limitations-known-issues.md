@@ -50,6 +50,8 @@ Error: Invalid function call syntax
 Error executing agent: No tool calls found in the response.
 ```
 
+To learn more, refer to [](models.md)
+
 ### Context length exceeded error [conversation-length-exceeded]
 
 This error occurs when a conversation exceeds the maximum context length supported by the LLM. This typically happens when tools return large responses that consume the available token budget.
