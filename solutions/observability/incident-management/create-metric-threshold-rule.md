@@ -31,14 +31,7 @@ In this example, the conditions state that you receive a critical alert for host
 :::::{applies-switch}
 
 ::::{applies-item} stack: ga 9.1+
-If data is not reported, go to **If there is no data** and select one of the following options to control alert behavior:
-
-- **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
-- **Alert me about the missing data**
-  - **with groupBy**: Trigger a “no data” alert when a previously detected group stops reporting data; not recommended for dynamically scaling infrastructures that start and stop nodes automatically.
-  - **without groupBy**: Trigger a “no data” alert when no data is returned during rule execution or when the rule fails to query {{es}}.
-- **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
-
+When data stops being reported, you can still control how alerts behave.
 
 :::{image} /solutions/images/observability-metrics-alert-nodata-options.png
 :alt: Metric threshold alert with no data options
@@ -46,6 +39,13 @@ If data is not reported, go to **If there is no data** and select one of the fol
 :width: 90%
 :::
 
+In the **If there is no data** area, select one of the following options:
+
+- **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
+- **Alert me about the missing data**
+  - **with groupBy**: Trigger a “no data” alert when a previously detected group stops reporting data; not recommended for dynamically scaling infrastructures that start and stop nodes automatically.
+  - **without groupBy**: Trigger a “no data” alert when no data is returned during rule execution or when the rule fails to query {{es}}.
+- **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
 ::::
 
 ::::{applies-item} stack: 9.0
