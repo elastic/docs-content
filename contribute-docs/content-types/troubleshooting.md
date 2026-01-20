@@ -8,7 +8,7 @@ applies_to:
 
 # Troubleshooting
 
-This page provides guidelines for writing effective troubleshooting pages in the Elastic docs.
+This page provides guidelines for Elastic Docs contributors writing effective troubleshooting pages in the Elastic docs.
 
 ## Types of troubleshooting content
 
@@ -81,11 +81,19 @@ When you create troubleshooting pages, follow these best practices:
 - Be explicit about supported and unsupported setups.
 - Optimize for fast resolution, not exhaustive coverage.
 
+## Common anti-patterns
+
 Do not use troubleshooting for teaching users how to use a feature for the first time (use a tutorial), explaining how a system works (use an overview), listing configuration options or APIs (use reference documentation), or describing general best practices that aren't tied to resolving a specific problem or preventing it from happening again.
+
+Additional common anti-patterns to avoid:
+
+- Page titles "Troubleshooting X" with no specific problem (acceptable only for index/landing pages that organize multiple troubleshooting topics)
+- Long explanations before the resolution
+- Mixing multiple unrelated issues
 
 ## Template
 
-To get started writing your troubleshooting page, use [the template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/troubleshooting-template.md).
+All new troubleshooting pages must be created using [the template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/troubleshooting-template.md).
 
 ## Examples
 

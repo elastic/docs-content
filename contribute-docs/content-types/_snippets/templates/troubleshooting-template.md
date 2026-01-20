@@ -49,9 +49,11 @@ Describe what users observe when the problem occurs. Focus on the symptoms thems
 
 Provide clear, actionable steps to resolve the issue.
 
+- Order steps from most common to least common to resolve the issue
 - Numbered instructions that begin with imperative verb phrases
 - Keep each step focused on a single action
 - Use the stepper component
+- Avoid diagnostic branching unless the problem cannot be resolved linearly. This keeps pages short and decisive.
 
 For more information about the stepper component, refer to [the syntax guide](https://elastic.github.io/docs-builder/syntax/stepper/).
 -->
@@ -79,13 +81,17 @@ For more information about the stepper component, refer to [the syntax guide](ht
 <!-- OPTIONAL BUT RECOMMENDED 
 
 Explain how to avoid this issue in the future. Use bullet points.
+
+Do not restate general product best practices or guidance that applies broadly beyond this issue.
 -->
 
 ## Resources
 
 <!-- OPTIONAL 
 
-Link to related documentation for deeper context. These links are supplementary — all information required to fix the issue should already be on this page. 
+Link to related documentation for deeper context. These links are supplementary — all information required to fix the issue should already be on this page.
+
+Avoid linking to GitHub issues, pull requests, or internal discussions. Resources should be stable, user-facing documentation.
 -->
 
 - [Related documentation link]
