@@ -398,7 +398,9 @@ toc:
               - file: workflows/triggers/alert-triggers.md
           - file: workflows/steps.md
       - file: workflows/data.md
-      - file: workflows/create-workflows.md    
+        children:
+          - file: workflows/data/templating.md
+      - file: workflows/create-workflows.md
       - file: workflows/monitor-troubleshoot.md
       - file: workflows/manage-workflows.md
       - file: workflows/use-cases.md
