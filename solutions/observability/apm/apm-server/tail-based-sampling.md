@@ -22,11 +22,11 @@ Enhanced privileges are required to use tail-based sampling. For more informatio
 
 ::::{note}
 If you're manually configuring `LimitNOFILE` or `LimitNOFILESoft` in systemd and using tail-based sampling, the APM Server process might encounter a `too many open files` error. Refer to [Configuring the `nofile` limit](/solutions/observability/apm/apm-server/systemd.md#configuring-nofile-limit) for more information.
-:::
+::::
 
 ::::{note}
 If you're running the APM Server binary standalone (not using the provided deb, RPM packages, or Docker image), you might need to adjust the `nofile` limit based on your throughput requirements. Refer to [Modify the `nofile` ulimit](/solutions/observability/apm/apm-server/binary.md#modify-nofile-ulimit) for guidance.
-:::
+::::
 
 Tail-based sampling configuration options.
 
