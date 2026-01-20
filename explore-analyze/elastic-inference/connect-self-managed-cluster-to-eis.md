@@ -70,7 +70,6 @@ POST _inference/chat_completion/.rainbow-sprinkles-elastic/_stream
   ]
 }
 ```
-% TEST[skip]
 1. A user message to drive the chat completion stream.
 
 The response should look like this:
