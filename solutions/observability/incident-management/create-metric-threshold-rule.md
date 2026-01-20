@@ -31,7 +31,7 @@ In this example, the conditions state that you receive a critical alert for host
 :::::{applies-switch}
 
 ::::{applies-item} stack: ga 9.1+
-If data is not reported, select one of the following options to control alert behavior:
+If data is not reported, go to **If there is no data** and select one of the following options to control alert behavior:
 
 - **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
 - **Alert me about the missing data**
@@ -40,7 +40,7 @@ If data is not reported, select one of the following options to control alert be
 - **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
 
 
-:::{image} /solutions/images/observability-metrics-alert.png
+:::{image} /solutions/images/observability-metrics-alert-nodata-options.png
 :alt: Metric threshold alert with no data options
 :screenshot:
 :width: 90%
