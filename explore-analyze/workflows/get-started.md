@@ -14,7 +14,7 @@ In this tutorial, you'll create a workflow that indexes and searches through nat
 - To use workflows, turn on the Elastic Workflows [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (`workflows:ui:enabled`).   
 - You must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 
-## Prerequisites [workflows-prerequisites]
+## Tutorial [workflows-tutorial]
 
 :::::{stepper}
 
