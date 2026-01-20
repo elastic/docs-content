@@ -11,13 +11,22 @@ The workflow templating engine enables dynamic, type-safe template rendering usi
 
 ## Syntax overview [workflows-template-syntax]
 
+The templating engine supports several syntax patterns for different use cases:
+
+| Syntax | Purpose | Example |
+|--------|---------|---------|
+| Double curly braces | Insert values as strings | `"Hello, {{name}}"` |
+| Dollar-sign prefix | Preserve data types (arrays, objects, numbers) | `${{myArray}}` |
+| Percent tags | Control flow (conditionals, loops) | `{%if active%}...{%end if%}` |
+| Raw tags | Output literal curly braces | `{%raw%}{{ }}{%end raw%}` |
+
 ### String interpolation [workflows-string-interpolation]
 
 Use double curly braces for basic string interpolation. Variables and expressions inside the braces are evaluated and rendered as strings.
 
 ```yaml
-message: "Hello {{ user.name }}!"                       # Result: "Hello Alice"
-url: "https://api.example.com/users/{{ user.id }}"      # Result: "https://api.example.com/users/12"
+message: "Hello {{user.name}}!"                       # Result: "Hello Alice"
+url: "https://api.example.com/users/{{user.id}}"      # Result: "https://api.example.com/users/12"
 ```
 
 ### Type-preserving expressions [workflows-type-preserving]
@@ -26,10 +35,10 @@ Use the dollar-sign prefix (`${{ }}`) when you need to preserve the original dat
 
 ```yaml
 # Using {{ }} - converts to string
-tags: "{{ inputs.tags }}"     # Result: "[\"admin\", \"user\"]" (string)
+tags: "{{inputs.tags}}"     # Result: "[\"admin\", \"user\"]" (string)
 
 # Using ${{ }} - preserves type
-tags: "${{ inputs.tags }}"    # Result: ["admin", "user"] (actual array)
+tags: "${{inputs.tags}}"    # Result: ["admin", "user"] (actual array)
 ```
 
 :::{important}
@@ -38,14 +47,14 @@ The type-preserving syntax (`${{ }}`) must occupy the entire string value. You c
 ✅ **Valid:**
 
 ```yaml
-tags: "${{ inputs.tags }}"
-items: "${{ inputs.items | slice: 0, 2 }}"
+tags: "${{inputs.tags}}"
+items: "${{inputs.items | slice: 0, 2}}"
 ```
 
 ❌ **Invalid:**
 
 ```yaml
-message: "Tags are: ${{ inputs.tags }}"
+message: "Tags are: ${{inputs.tags}}"
 ```
 :::
 
@@ -54,7 +63,7 @@ message: "Tags are: ${{ inputs.tags }}"
 Use raw tags (`{% raw %}`) to output literal curly brace characters (`{{ }}`) without rendering them.
 
 ```yaml
-value: "{% raw %}{{ _ingest.timestamp }}{% endraw %}"  # Result: "{{ _ingest.timestamp }}"
+value: "{% raw %}{{_ingest.timestamp }{%endraw%}"  # Result: "{{_ingest.timestamp }"
 ```
 
 ### Control flow with Liquid tags [workflows-control-flow]
@@ -106,7 +115,7 @@ steps:
     type: slack
     connector-id: "my-slack"
     with:
-      message: "Found {{ steps.search_users.output.hits.total.value }} active users"
+      message: "Found {{steps.search_users.output.hits.total.value}} active users"
 ```
 
 ### Use constants and inputs [workflows-use-constants]
@@ -122,10 +131,10 @@ steps:
   - name: search_data
     type: elasticsearch.search
     with:
-      index: "{{ consts.indexName }}"
+      index: "{{consts.indexName}}"
       query:
         match:
-          env: "{{ consts.environment }}"
+          env: "{{consts.environment}}"
 ```
 
 ### Preserve data types [workflows-preserve-types]
@@ -148,7 +157,7 @@ steps:
       index: "reports"
       document:
         # Preserves the array type, doesn't stringify it
-        tags: "${{ steps.get_tags.output.hits.hits[0]._source.tags }}"
+        tags: "${{steps.get_tags.output.hits.hits[0]._source.tags}}"
 ```
 
 ### Apply filters to transform data [workflows-apply-filters]
@@ -161,9 +170,9 @@ steps:
     type: console
     with:
       message: |
-        User: {{ user.name | upcase }}
-        Email: {{ user.email | downcase }}
-        Created: {{ user.created_at | date: "%Y-%m-%d" }}
+        User: {{user.name | upcase}}
+        Email: {{user.email | downcase}}
+        Created: {{user.created_at | date: "%Y-%m-%d"}}
 ```
 
 ### Use conditionals for dynamic content [workflows-conditionals]
@@ -178,9 +187,9 @@ steps:
     with:
       message: |
         {% if steps.search.output.hits.total.value > 100 %}
-        ⚠️ HIGH ALERT: {{ steps.search.output.hits.total.value }} events detected!
+        ⚠️ HIGH ALERT: {{steps.search.output.hits.total.value}} events detected!
         {% else %}
-        ✅ Normal: {{ steps.search.output.hits.total.value }} events detected.
+        ✅ Normal: {{steps.search.output.hits.total.value}} events detected.
         {% endif %}
 ```
 
@@ -196,7 +205,7 @@ steps:
       message: |
         Found users:
         {% for hit in steps.search_users.output.hits.hits %}
-        - {{ hit._source.name }} ({{ hit._source.email }})
+        - {{hit._source.name}} ({{hit._source.email}})
         {% endfor %}
 ```
 
@@ -207,10 +216,10 @@ The engine renders templates recursively through all data structures, ensuring f
 **Input:**
 
 ```yaml
-message: "Hello {{ user.name }}"
+message: "Hello {{user.name}}"
 config:
-  url: "{{ api.url }}"
-tags: ["{{ tag1 }}", "{{ tag2 }}"]
+  url: "{{api.url }}"
+tags: ["{{tag1}}", "{{tag2}}"]
 ```
 
 **After rendering:**
