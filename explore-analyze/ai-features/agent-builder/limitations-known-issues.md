@@ -24,15 +24,7 @@ products:
 
 ### Feature availability
 
-#### Non-serverless deployments
-
-{{agent-builder}} is enabled by default in {{serverless-full}} for {{es}} projects.
-
-However, it must be enabled for non-serverless deployments {applies_to}`stack: preview 9.2`. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
-
-#### Serverless deployments
-
-In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
+Refer to [Get started](get-started.md#enable-agent-builder) for instructions on enabling {{agent-builder}} for your deployment type.
 
 ### A2A streaming not supported
 
