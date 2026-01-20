@@ -92,7 +92,7 @@ It is recommended that you use a configuration management tool to include drop-i
 
 ::::{note}
 In most cases, you don’t need to manually configure the `nofile` limit when running APM Server.
-:::
+::::
 
 On systemd-based systems, the default `LimitNOFILE` is `1024` (soft) and `524288` (hard). Most Linux distributions do not override or significantly reduce these defaults.
 
