@@ -9,6 +9,59 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## January 19, 2026 [serverless-changelog-01192026]
+
+### Features and enhancements [serverless-changelog-01192026-features-enhancements]
+
+* Supports {{esql}} in Vega [#247186]({{kib-pull}}247186)
+* Improves {{fleet}} setup memory usage by deferring package reinstalls to async tasks [#248235]({{kib-pull}}248235)
+* Adds tab-scoped, retainable flyout behavior in Discover [#246612]({{kib-pull}}246612)
+* Adds hover previews to the recently closed tabs menu in Discover [#246973]({{kib-pull}}246973)
+* Adds unified rules list [#242208]({{kib-pull}}242208)
+* Adds Windows support to the OTel host onboarding flow [#248478]({{kib-pull}}248478)
+* Integrates the new app menu with dashboards [#246153]({{kib-pull}}246153)
+* Enhances anomaly detection model memory estimation for user-supplied configurations [#248479]({{kib-pull}}248479)
+* Adds time window buttons to the date picker in views across Machine Learning [#248142]({{kib-pull}}248142)
+* Adds `timeout` parameter to `InferenceChatModel` [#248326]({{kib-pull}}248326)
+* Redesigns the empty state for the Streams listing [#248636]({{kib-pull}}248636)
+* Redesigns the empty states for the Partitioning and Processing tabs [#248463]({{kib-pull}}248463)
+* Allows filtering from legend actions in {{esql}} when supported [#248789]({{kib-pull}}248789)
+* Adds Queries tab to the Significant Events Discovery page [#248243]({{kib-pull}}248243)
+* Adds `get_trace_change_points` tool for trace change point analysis [#247810]({{kib-pull}}247810)
+* Adds background task for significant events query generation [#248608]({{kib-pull}}248608)
+
+### Fixes [serverless-changelog-01192026-fixes]
+
+* Fixes incorrect time zone for CSV reports that use local date comparison [#244405]({{kib-pull}}244405)
+* Fixes timestamp override for {{esql}} CSV scheduled reports with relative time ranges [#248169]({{kib-pull}}248169)
+* Limits variable suggestions to in-scope variables [#248365]({{kib-pull}}248365)
+* Expands the time range of all documents with `date_nanos` time fields [#248495]({{kib-pull}}248495)
+* Fixes query drafts when switching tabs [#247968]({{kib-pull}}247968)
+* Prevents loss of UI state in signal-specific Discover flyout tabs when refreshing a query [#248203]({{kib-pull}}248203)
+* Fixes missing spans when viewing a trace with a large number of spans in Discover [#247689]({{kib-pull}}247689)
+* Uses monitor query ID for project monitor package policies [#248762]({{kib-pull}}248762)
+* Fixes duplicated test results in the monitor status heat map at higher granularity [#248761]({{kib-pull}}248761)
+* Adds no-data behavior options for metric threshold alerts [#247669]({{kib-pull}}247669)
+* Prevents unauthorized delete attempts for notes and improves the error message [#247617]({{kib-pull}}247617)
+* Fixes an issue where the pagination on the Notes tab was showing `1-0 of 0` when no notes exist [#248481]({{kib-pull}}248481)
+* Fixes an issue with share modal where all time ranges were shared as absolute [#248804]({{kib-pull}}248804)
+* Fixes missing `counter` fields in the anomaly detection dropdown [#248187]({{kib-pull}}248187)
+* Updates Packetbeat DNS tunneling datafeed to include runtime mappings [#249317]({{kib-pull}}249317)
+* Fixes the document rejection when partitioning streams while data is ingested [#247953]({{kib-pull}}247953)
+* Fixes the timestamps in the Recent Log Entries table to respect the time zone setting in {{kib}} (`dateFormat:tz`) [#249016]({{kib-pull}}249016)
+* Fixes an issue where the agent count was not updating on the homepage [#248657]({{kib-pull}}248657)
+* Fixes missing service environment in custom links [#248631]({{kib-pull}}248631)
+* Fixes an issue where duplicated managed ILM policies were marked as managed [#248586]({{kib-pull}}248586)
+* Adds `cold start` badge to Unified Waterfall [#248857]({{kib-pull}}248857)
+* Fixes broken links pointing from the View in context modal to Discover [#248939]({{kib-pull}}248939)
+* Fixes series tooltips not working in full screen [#248148]({{kib-pull}}248148)
+* Changes the Gauge chart default color palette to the status palette [#246734]({{kib-pull}}246734)
+* Fixes EIS OpenAI GPT-OSS 120B reasoning error [#248943]({{kib-pull}}248943)
+* Adds `maxQueue` backpressure to the anonymization regex worker pool [#249108]({{kib-pull}}249108)
+* Adds a check to ensure {{esql}} is valid before matching a metrics profile [#248917]({{kib-pull}}248917)
+* Makes the static lookup formatter work with aggregated boolean fields [#249311]({{kib-pull}}249311)
+* Adds datasource name to namespace [#249123]({{kib-pull}}249123)
+* Fixes an issue where the Discover histogram legend in {{esql}} mode was not filtering out null values correctly [#249302]({{kib-pull}}249302)
 
 ## January 13, 2026 [serverless-changelog-01132026]
 
