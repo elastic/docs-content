@@ -20,11 +20,7 @@ For an overview of how tools work in {{agent-builder}}, refer to the [Tools over
 
 ## Availability
 
-Built-in tools are scoped by solution area and deployment type. Platform core tools are available across all deployments, while observability and security tools are available in their respective serverless projects (or solution views).
-
-### Tool naming conventions
-
-Tool naming conventions help organize and identify tools by their source. Built-in tools use consistent prefixes such as `platform.core`, `observability`, and `security`. When you search for tools or review agent configurations, these prefixes help you quickly identify tool sources and understand their scope.
+Built-in platform core tools are available across all deployments, while observability and security tools are available in their respective serverless projects (or solution views). Tools use consistent prefixes (`platform.core`, `observability`, `security`) that reflect this scoping.
 
 ## Agents and tools
 
