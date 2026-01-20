@@ -16,7 +16,6 @@ Elastic {{infer-cap}} Service (EIS) for self-managed clusters is available throu
 
 Before you can use EIS with your self-managed cluster, ensure you meet the following requirements:
 
-* Your cluster is running {{es}} 9.3 or later
 * Your self-managed cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an [active self-managed trial](https://cloud.elastic.co/registration)
 * You have an {{ecloud}} account with either an [active Cloud Trial](https://cloud.elastic.co/registration) or [billing information configured](/deploy-manage/cloud-organization/billing/add-billing-details.md)
 
