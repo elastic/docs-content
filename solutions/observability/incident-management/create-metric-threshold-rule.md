@@ -25,7 +25,7 @@ You can also create a rule based on a single graph. On the **Metrics Explorer** 
 
 Conditions for each rule can be applied to specific metrics that you select. You can select the aggregation type (refer to [Aggregation options](aggregation-options.md)), the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. To help you determine which thresholds are meaningful to you, the preview charts provide a visualization.
 
-In this example, the conditions state that you will receive a critical alert for hosts with a CPU usage of 120% or above and a warning alert if CPU usage is 100% or above. Note that you will receive an alert only if memory usage is 20% or above, as per the second condition.
+In this example, the conditions state that you receive a critical alert for hosts with a CPU usage of 120% or above and a warning alert if CPU usage is 100% or above. Note that you will receive an alert only if memory usage is 20% or above, as per the second condition.
 
 
 :::::{applies-switch}
@@ -73,11 +73,25 @@ If you've made a rule with the [create rule API](https://www.elastic.co/docs/api
 - After you save the rule, filters you've added to the **Filter** field are converted appropriately and specified in the rule's `filterQuery` parameter.
 ::::
 
+The **Group alerts by** creates an instance of the alert for every unique value of the `field` added. For example, you can create a rule per host or every mount point of each host. You can also add multiple fields. In this example, the rule will individually track the status of each `host.name` in your infrastructure. You will only receive an alert about `host-1`, if `host.name: host-1` passes the threshold, but `host-2` and `host-3` do not.
+
+
+::::{important}
+If you include the same field in both your **Filter** and your **Group by**, you may receive fewer results than you’re expecting. For example, if you filter by `cloud.region: us-east`, then grouping by `cloud.region` will have no effect because the filter query can only match one region.
+
+::::
+
 :::::{applies-switch}
 
 ::::{applies-item} stack: ga 9.1+
 
-If data is not reported, select one of the following options to control alert behavior:
+If there is no data, you have the following options to control the alert behavior:
+
+:::{image} /solutions/images/observability-metrics-alertfiltersandgroup-nodata-options.png
+:alt: Metric threshold alert with alert if there is no data
+:screenshot:
+:width: 90%
+:::
 
 - **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
 - **Alert me about the missing data**
@@ -90,7 +104,7 @@ If data is not reported, select one of the following options to control alert be
 
 When you select **Alert me if a group stops reporting data**, the rule is triggered if a group that previously reported metrics does not report them again over the expected time period.
 
-:::{image} /solutions/images/observability-metrics-alert-filters-and-group-nodata.png
+:::{image} /solutions/images/observability-metrics-alertfiltersandgroup-nodata-alert.png
 :alt: Metric threshold alert with alert if there is no data
 :screenshot:
 :width: 90%
@@ -99,14 +113,6 @@ When you select **Alert me if a group stops reporting data**, the rule is trigge
 ::::
 
 :::::
-
-The **Group alerts by** creates an instance of the alert for every unique value of the `field` added. For example, you can create a rule per host or every mount point of each host. You can also add multiple fields. In this example, the rule will individually track the status of each `host.name` in your infrastructure. You will only receive an alert about `host-1`, if `host.name: host-1` passes the threshold, but `host-2` and `host-3` do not.
-
-
-::::{important}
-If you include the same field in both your **Filter** and your **Group by**, you may receive fewer results than you’re expecting. For example, if you filter by `cloud.region: us-east`, then grouping by `cloud.region` will have no effect because the filter query can only match one region.
-
-::::
 
 In the **Advanced options**, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
 
