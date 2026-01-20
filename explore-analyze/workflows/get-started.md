@@ -176,8 +176,8 @@ tags: ["demo", "getting-started"]
 ```
 
 * **`name`**: A unique identifier for your workflow.
-* **`description`**: Explains the workflow's purpose (shown in the UI).
-* **`enabled`**: Controls whether the workflow can be executed (set to `false` to disable).
+* **`description`**: Explains the workflow's purpose.
+* **`enabled`**: Controls whether the workflow can be run.
 * **`tags`**: Labels for organizing and finding workflows.
 
 ### Constants
@@ -188,8 +188,7 @@ consts:
 ```
 
 * **`consts`**: Defines reusable values that can be referenced throughout the workflow.
-* Accessed using template syntax: `{{ consts.indexName }}`.
-* Promotes consistency and makes workflows easier to maintain.
+* Accessed using template syntax: `{{ consts.indexName }}`. This promotes consistency and makes the workflow easier to maintain.
 
 ### Trigger
 
@@ -199,8 +198,7 @@ triggers:
 ```
 
 * **`triggers`**: Defines how the workflow starts.
-* **`manual`**: Requires user action (clicking the **Run** button).
-* Other trigger types (scheduled, alert-based) are covered in the [Triggers](./triggers.md) section.
+* **`manual`**: Specifies the trigger type. Manual triggers require explicit user action (clicking the **Run** icon {icon}`play`) to start a workflow.
 
 ### Step 1: Create index
 
@@ -219,15 +217,13 @@ triggers:
         description: { type: text }
 ```
 
-* **Step type**: This is an internal action step that directly interacts with {{es}}.
-* **Purpose in workflow**: Establishes the data structure for our park information, ensuring fields are properly typed for searching and aggregation.
+* **Step type**: This is an action step that directly interacts with {{es}}.
+* **Step purpose**: Establishes the data structure for our park information, ensuring fields are properly typed for searching and aggregation.
 * **Key elements**:
-    * Uses `elasticsearch.indices.create`—a built-in action that maps to the {{es}} Create Index API.
+    * Uses `elasticsearch.indices.create`, which is a built-in action that maps to the {{es}} Create Index API.
     * Defines mappings to control how data is indexed (`text` for full-text search, `keyword` for exact matching).
     * References the constant `indexName` for consistency.
     * Sets index settings for optimal performance in this demo.
-
-Learn more about internal action steps in the [Internal Actions](./steps.md) section.
 
 ### Step 2: Bulk index documents
 
@@ -247,7 +243,7 @@ Learn more about internal action steps in the [Internal Actions](./steps.md) sec
 ```
 
 * **Step type**: Another internal action step using {{es}}'s bulk API.
-* **Purpose in workflow**: Efficiently loads multiple documents in a single operation, populating our index with sample data.
+* **Step purpose**: Efficiently loads multiple documents in a single operation, populating our index with sample data.
 * **Key elements**:
     * The `operations` array contains the documents to index.
     * Each document becomes a searchable record in {{es}}.
@@ -269,7 +265,7 @@ Learn more about internal action steps in the [Internal Actions](./steps.md) sec
 ```
 
 * **Step type**: Internal action step for querying {{es}}.
-* **Purpose in workflow**: Retrieves specific data based on criteria, demonstrating how workflows can make decisions based on data.
+* **Step purpose**: Retrieves specific data based on criteria, demonstrating how workflows can make decisions based on data.
 * **Key elements**:
     * Searches for parks with category `"canyon"` (will find Grand Canyon and Zion).
     * Results are automatically available to subsequent steps via `steps.search_park_data.output`.
@@ -288,7 +284,7 @@ Learn more about internal action steps in the [Internal Actions](./steps.md) sec
 ```
 
 * **Step type**: A console step for output and debugging.
-* **Purpose in workflow**: Presents the results in a human-readable format, demonstrating how to access and format data from previous steps.
+* **Step purpose**: Presents the results in a human-readable format, demonstrating how to access and format data from previous steps.
 * **Key elements**:
     * Template variables access the search results: `{{ steps.search_park_data.output }}`.
     * The `| json(2)` filter formats JSON output with indentation.
@@ -299,7 +295,7 @@ Learn more about internal action steps in the [Internal Actions](./steps.md) sec
 
 This workflow introduces several fundamental concepts:
 
-* **Internal action steps**: Built-in steps that interact with {{es}} and {{kib}} APIs.
+* **Action steps**: Built-in steps that interact with {{es}} and {{kib}} APIs.
 * **Data flow**: How information moves from step to step using outputs and template variables.
 * **Constants**: Reusable values that make workflows maintainable.
 * **Template syntax**: The `{{ }}` notation for dynamic values.

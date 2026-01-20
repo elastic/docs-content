@@ -25,15 +25,15 @@ Workflows can handle everything from simple, repeatable tasks to complex process
 ## Who should use workflows? [workflosw-who]
 Workflows are for anyone who wants to cut down on manual effort, speed up response times, and make sure recurring situations are handled the same way every time.
 
-## Key elements [workflows-key-elements]
+## Key concepts [workflows-concepts]
 
-Every workflow is composed of three core elements:
+Some key concepts to understand while working with workflows: 
 
-* **Triggers**: The events or conditions that initiate a workflow. Triggers define _when_ a workflow runs.
-* **Steps**: The individual units of logic or action that make up a workflow. Steps define _how_ data moves, decisions are made, and results are produced.
-* **Connectors**: The integrations that allow workflows to interact with external systems and services. Connectors define _where_ actions are executed.
+* **Triggers**: The events or conditions that initiate a workflow. Refer to [](/explore-analyze/workflows/triggers.md) to learn more.
+* **Steps**: The individual units of logic or action that make up a workflow. Refer to [](/explore-analyze/workflows/steps.md) to learn more.
+* **Data**: How data flows through your workflow, including inputs, constants, context variables, step outputs, and Liquid templating for dynamic values. Refer to [](/explore-analyze/workflows/data.md) to learn more.
 
 ## Learn more
 
 - Follow [this tutorial](/explore-analyze/workflows/get-started.md) to create and run your first workflow.
-- Understand how to use the YAML editor in {{kib}} to define and run your workflows. Refer to [](/explore-analyze/workflows/create-workflows.md) to learn more.
+% - Understand how to use the YAML editor in {{kib}} to define and run your workflows. Refer to [](/explore-analyze/workflows/create-workflows.md) to learn more.
