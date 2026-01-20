@@ -9,67 +9,6 @@ description: Learn how to use the Liquid templating engine to create dynamic wor
 
 The workflow templating engine enables dynamic, type-safe template rendering using the [Liquid templating language](https://liquidjs.com/). It allows you to inject variables, apply transformations, and control data flow throughout your workflows.
 
-## Basic usage [workflows-templating-basic]
-
-Templates are used directly in your workflow YAML. Wrap any expression in double curly braces (`{{ }}`) to make it dynamic.
-
-### Inject dynamic values
-
-Use double curly braces (`{{ }}`) anywhere in your workflow to insert values:
-
-```yaml
-steps:
-  - name: greet_user
-    type: console
-    with:
-      message: "Hello {{ user.name }}!"  # Outputs: "Hello Alice!"
-```
-
-### Reference previous step outputs
-
-Access data from earlier steps using `steps.<step_name>.output`:
-
-```yaml
-steps:
-  - name: search_data
-    type: elasticsearch.search
-    with:
-      index: "users"
-      query:
-        match_all: {}
-
-  - name: log_count
-    type: console
-    with:
-      message: "Found {{ steps.search_data.output.hits.total.value }} users"
-```
-
-### Use workflow constants
-
-Define reusable values with `consts` and reference them throughout your workflow:
-
-```yaml
-consts:
-  indexName: "my-index"
-  alertThreshold: 100
-
-steps:
-  - name: search
-    type: elasticsearch.search
-    with:
-      index: "{{ consts.indexName }}"
-```
-
-### Transform values with filters
-
-Apply filters using the pipe `|` character to transform data:
-
-```yaml
-message: "{{ user.name | upcase }}"              # ALICE
-email: "{{ user.email | downcase }}"             # alice@example.com
-date: "{{ timestamp | date: '%Y-%m-%d' }}"       # 2026-01-20
-```
-
 ## Syntax overview [workflows-template-syntax]
 
 ### String interpolation [workflows-string-interpolation]

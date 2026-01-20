@@ -2,7 +2,7 @@
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how data flows through workflows and how to handle errors gracefully.
+description: Learn how data flows through workflows, use dynamic templating, and handle errors gracefully.
 ---
 
 # Data and error handling [workflows-data]
@@ -139,9 +139,21 @@ Sometimes a failure is not critical and you want the workflow to continue. Set `
           message: "Warning: Failed to create {{jira}} ticket. Continuing workflow."
 ```
 
-## Summary [workflows-data-summary]
+## Dynamic values with templating [workflows-dynamic-values]
 
-By combining data flow and robust error handling, you can build complex, reliable automations that react to dynamic conditions and recover from unexpected failures.
+To inject dynamic values into your workflow steps, use the templating engine. The templating engine uses the [Liquid templating language](https://liquidjs.com/) and allows you to:
+
+- **Reference step outputs**: Access data from previous steps using `steps.<step_name>.output`
+- **Use constants**: Reference workflow-level constants with `consts.<constant_name>`
+- **Apply filters**: Transform values with filters like `upcase`, `downcase`, and `date`
+- **Add conditional logic**: Use `if`/`else` statements for dynamic content
+- **Loop through data**: Iterate over arrays with `for` loops
+
+For complete syntax details and examples, refer to [Templating engine](./data/templating.md).
+
+## Quick reference [workflows-data-quick-reference]
+
+By combining data flow, templating, and robust error handling, you can build complex, reliable automations that react to dynamic conditions and recover from unexpected failures.
 
 | Action | Syntax | Description |
 |---------|--------|-------------|
