@@ -48,7 +48,7 @@ With ECK `3.3.0` and later, multiple {{stack}} configuration policies can target
 
 ::::{admonition} Scale considerations
 
-There is no hard limit to the maximum number of `StackConfigPolicy` resources that can target the same {{es}} cluster or {{kib}} instance. However, in testing, we observed that when hundreds of `StackConfigPolicy` resources target the same {{es}} cluster or {{kib}} instance, the total reconciliation time (including the {{es}} cluster or {{kib}} instance and all `StackConfigPolicy` resources) can increase significantly, sometimes to several minutes. To maintain fast total reconciliation times, we recommend consolidating configurations where possible.
+While there is no hard limit on how many `StackConfigPolicy` resources can target the same {{es}} cluster or {{kib}} instance, targeting a single resource with more than 100 policies can increase total reconciliation time to several minutes. For optimal performance, combine related settings into fewer policies rather than creating many granular ones.
 ::::
 
 
