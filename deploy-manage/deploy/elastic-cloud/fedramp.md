@@ -9,7 +9,11 @@ products:
 
 # Elastic FedRAMP authorized Cloud offerings
 
+<!-- old
 U.S. government agencies and partners can take advantage of the Elastic FedRAMP authorized Cloud offerings to host sensitive data in a secure environment that meets their regulatory and compliance requirements. These deployments are hosted on AWS GovCloud (US).
+-->
+
+Elastic users can take advantage of the FedRAMP authorized Cloud offerings to host sensitive data in a secure environment that meets their regulatory and compliance requirements. {{fedramp-mod}} deployments are available to all users who have a Platinum or Enterprise license. {{fedramp-high}} deployments are available to United States federal, state, and local agencies as well as tribal groups that have an Enterprise license. All FedRAMP deployments are hosted on AWS GovCloud (U.S.).
 
 Learn about the Elastic FedRAMP offerings:
 
@@ -22,39 +26,38 @@ Learn about the Elastic FedRAMP offerings:
 
 This table provides a comparison of features and capabilities included in {{ech}} and all FedRAMP authorized Cloud offerings.
 
-| Feature | {{ech}} | {{fedramp-mod}} | {{fedramp-high}} | {{fedramp-il5}} |
+| Feature | {{ech}} | {{fedramp-mod}} | {{fedramp-high}} |
 |--------------|-----------|--------|-----------|
-| Trial period | 14 days | 30 days | none | none |
-| Marketplace offering | AWS/GCP/Azure | AWS | AWS  | AWS |
-| Cloud service provider | AWS/GCP/Azure | 30 days | AWS | AWS |
-| [Required subscription level](https://www.elastic.co/pricing) | Standard, Gold, Platinum, Enterprise | Platinum, Enterprise | Enterprise | Enterprise |
-| [Available regions](cloud://reference/cloud-hosted/regions.md) | 50+ regions | `us-gov-east-1` | `us-gov-east-1`  | `us-gov-east-1` |
-| [Billing model](/deploy-manage/cloud-organization/billing.md) | Consumption-based | Currently offered as annual and prepaid consumption models | Consumption-based | Consumption-based |
-| Allowed users | All | All | U.S. federal, state, and local agencies; tribal groups | U.S. Department of Defence |
-| [Account creation](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) | Self serve | Self serve | By request | By request |
-| IPv6 support at the edge | No | Yes | Yes | Yes |
-| [Bring Your Own Key (BYOK)](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) | Yes | No | No | No |
-| Status page | Dedicated; publicly available | Dedicated; publicly available | Dedicated; private | Dedicated; not publicly available |
-| [Support policy](https://www.elastic.co/support/welcome) | Global coverage | Global coverage | U.S. persons on U.S. soil | U.S. persons on U.S. soil |
-| [{{kib}} connectors](kibana://reference/connectors-kibana.md) | All connector types | TBD | TBD | TBD |
-| [Cross-cluster search](/explore-analyze/cross-cluster-search.md) and [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Yes | Yes | Yes | TBD |
-| [Private connectivity](/deploy-manage/security/private-connectivity.md) | Yes | Yes | No | No |
-| [AutoOps](/deploy-manage/monitor/autoops.md) | Yes | No | No | No |
-| [Synthetic monitoring](/solutions/observability/synthetics/index.md) | Yes | No | No | No |
-| [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) | Yes | No | No | No |
-| [Managed OTLP Endpoint (mOTLP)](opentelemetry://reference/motlp.md) | Yes | No | No | No |
-| [Custom bundles and plugins](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No | No |
-| Salesforce support instance | Salesforce commercial | Salesforce commercial | Salesforce high | Salesforce high |
-| [Watcher](/explore-analyze/alerts-cases/watcher.md) | Yes | Yes | Internal only | Internal only |
-| [Elastic AI Assistant for Observability and Search](/solutions/observability/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available | Elastic Managed LLM not available |
-| [Attack Discovery](/solutions/security/ai/attack-discovery.md) | Yes | Yes | TBD | TBD |
-| [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No | TBD |
+| Trial period | 14 days | 30 days | none |
+| Marketplace offering | AWS/GCP/Azure | AWS | AWS  |
+| Cloud service provider | AWS/GCP/Azure | AWS | AWS |
+| [Required subscription level](https://www.elastic.co/pricing) | Standard, Gold, Platinum, Enterprise | Platinum, Enterprise | Enterprise |
+| [Available regions](cloud://reference/cloud-hosted/regions.md) | 50+ regions | `us-gov-east-1` | `us-gov-east-1`  |
+| Allowed users | All | All | U.S. federal, state, and local agencies; tribal groups |
+| [Account creation](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) | Self serve | Self serve | By request |
+| IPv6 support at the edge | No | Yes | Yes |
+| [Bring Your Own Key (BYOK)](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) | Yes | No | No |
+| Status page | Dedicated; publicly available | Dedicated; publicly available | Dedicated; private |
+| [Support policy](https://www.elastic.co/support/welcome) | Global coverage | Global coverage | U.S. persons on U.S. soil |
+| [{{kib}} connectors](kibana://reference/connectors-kibana.md) | All connector types | TBD | TBD |
+| [Cross-cluster search](/explore-analyze/cross-cluster-search.md) and [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Yes | Yes | Yes |
+| [Private connectivity](/deploy-manage/security/private-connectivity.md) | Yes | Yes | No |
+| [AutoOps](/deploy-manage/monitor/autoops.md) | Yes | No | No |
+| [Synthetic monitoring](/solutions/observability/synthetics/index.md) | Yes | No | No |
+| [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) | Yes | No | No |
+| [Managed OTLP Endpoint (mOTLP)](opentelemetry://reference/motlp.md) | Yes | No | No |
+| [Custom bundles and plugins](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No |
+| Salesforce support instance | Salesforce commercial | Salesforce commercial | Salesforce high |
+| [Watcher](/explore-analyze/alerts-cases/watcher.md) | Yes | Yes | Internal only |
+| [Elastic AI Assistant for Observability and Search](/solutions/observability/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
+| [Attack Discovery](/solutions/security/ai/attack-discovery.md) | Yes | Yes | TBD |
+| [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No |
 
 ## Get started with FedRAMP [ec-fedramp-get-started]
 
 {{fedramp-mod}} deployments are available for self-serve setup. Refer to the [Elastic FedRAMP authorized cloud offerings](https://www.elastic.co/industries/public-sector/fedramp) page to get started with a free trial. 
 
-To get started on {{fedramp-high}} and {{fedramp-il5}}, [contact our support team](/troubleshoot/index.md#contact-us).
+To get started on {{fedramp-high}}, [contact our support team](/troubleshoot/index.md#contact-us).
 
 ## FedRAMP FAQ [ec-fedramp-faq]
 
@@ -67,12 +70,22 @@ $$$who-can-use-fedramp$$$**Who can use FedRAMP?**
 :   The FedRAMP authorized Cloud offerings are intended for users who require their {{ecloud}} services to meet special security and compliance requirements:
 
     - {{fedramp-mod}} is available to all users having a Platinum or Enterprise license.
-    - {{fedramp-high}} is available to United States federal, state, and local agencies as well as tribal groups.
-    - {{fedramp-il5}} is available to the United States Department of Defense (DoD).
+    - {{fedramp-high}} is available to United States federal, state, and local agencies as well as tribal groups. An Enterprise license is required.
+    
+    {{fedramp-high}} users must be U.S. persons on U.S. soil:
+
+     - **Who is a U.S. Person?**
+        U.S. persons are U.S. Citizens or U.S Nationals including Lawful Permanent Residents.
+
+     - **What is US Soil?**
+        The 50 states, the District of Columbia, or U.S. territories. More information is available in the [Definitions](https://www.acquisition.gov/far/22.1901) section of the U.S. Government Federal Acquisition Regulation website.
+
+     - **Can I use a VPN to bypass the location restriction if I’m traveling outside of the US?**
+        No, VPNs cannot be used to bypass this restriction. 
 
 $$$where-is-fedramp-hosted$$$**Where is FedRAMP hosted?**
 
-    {{fedramp-mod}}, {{fedramp-high}}, and {{fedramp-il5}} {{ecloud}} deployments are hosted on [AWS GovCloud (US)](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/whatis.html) in the `us-gov-east-1` region.
+    {{fedramp-mod}} and {{fedramp-high}} {{ecloud}} deployments are hosted on [AWS GovCloud (US)](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/whatis.html) in the `us-gov-east-1` region.
 
 
 ## Limitations [ec-fedramp-limitations]
@@ -96,9 +109,9 @@ Be sure to enforce security in your FIPS environments through other means, such 
 
 ### Custom plugins
 
-Custom plugins are currently not supported in {{fedramp-high}} and {{fedramp-il5}} deployments. 
+Custom plugins are currently not supported in {{fedramp-high}} deployments. 
 
 ### {{elastic-defend}}
 
-In {{fedramp-mod}}, {{fedramp-high}}, and {{fedramp-il5}} environments, certain {{elastic-defend}} cloud-enabled features might require some manual configuration to work as expected.
+In {{fedramp-mod}} and {{fedramp-high}} environments, certain {{elastic-defend}} cloud-enabled features might require some manual configuration to work as expected.
 
