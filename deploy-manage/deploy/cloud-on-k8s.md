@@ -121,14 +121,14 @@ ECK is compatible with the following {{stack}} applications:
 
 :::{applies-item} eck: ga 3.3+
 * {{es}}, {{kib}}, APM Server: 8+, 9+
-* Enterprise Search: 7.17+, 8+
+* Enterprise Search: 8+
 * Beats: 8+, 9+
 * Elastic Agent: 8+, 9+ (Fleet, standalone)
 * Elastic Maps Server: 8+, 9+
 * Logstash: 8.12+, 9+
 :::
 
-:::{applies-item} eck: ga =3.2
+:::{applies-item} eck: ga 3.0-3.2
 * {{es}}, {{kib}}, APM Server: 7.17+, 8+, 9+
 * Enterprise Search: 7.7+, 8+
 * Beats: 7.17+, 8+, 9+
