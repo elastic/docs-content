@@ -27,7 +27,7 @@ You can have multiple API keys for different purposes, and you can revoke them w
 
 By default, {{ecloud}} API keys provide access to the APIs for managing your organization, deployments, and projects. 
 
-In the case of {{ech}} deployments, {{ecloud}} API keys do not provide access to {{es}} or {{kib}} APIs. [Learn how to create an {{es}} API key for ECH deployments](elasticsearch-api-keys.md).
+In {{ech}} deployments, {{ecloud}} API keys do not provide access to {{es}} or {{kib}} APIs. [Learn how to create an {{es}} API key for ECH deployments](elasticsearch-api-keys.md).
 
 In the case of {{serverless-full}} projects, you can optionally grant access to [{{es}} {{serverless-short}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) APIs when you [assign roles to the API key](#roles).
 :::
@@ -99,7 +99,7 @@ curl -XPOST \
    
 ## API key expiration [expiration]
 
-By default, API keys expire after three months. You can set the expiration to a different preset value or to a specific date, up to one year. If you need the key to work indefinitely, you can also set its expiration to **Never**. In this case, the key won’t expire.
+By default, API keys expire after three months. You can set the expiration to a different preset value or to a specific date, up to one year. If you need the key to work indefinitely, you can set its expiration to **Never**. 
 
 When an API key is nearing expiration, Elastic sends an email to the creator of the API key and each of the operational contacts. When you use an API key to authenticate, the API response header `X-Elastic-Api-Key-Expiration` indicates the key’s expiration date. You can log this value to detect API keys that are nearing expiration.
 
@@ -107,7 +107,7 @@ When an API key expires, it is automatically removed from the **API keys** tab.
 
 ## Applying roles to API keys [roles]
 
-Roles grant an API key specific privileges to your {{ecloud}} organization and resources.
+Roles grant an API key specific privileges for your {{ecloud}} organization and resources.
 
 You can grant a cloud API key [the same types of roles that you assign to users](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles): organization-level roles, cloud resource access roles, and connected cluster roles.
 
@@ -121,20 +121,20 @@ When you grant **Organization owner** access, or **Cloud resource** access for o
 | Access | Grant |
 | --- | --- |
 | **Cloud API** (default) | Grants access to only [{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs. No direct access to project {{es}} or {{kib}} API endpoints. |
-| **Cloud, {{es}} and {{kib}} API** | Grants the following access:<br><br>•[{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs.<br><br>• [{{es}} {{serverless-short}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) API endpoints for the relevant projects. |
+| **Cloud, {{es}}, and {{kib}} API** | Grants the following access:<br><br>• [{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs<br><br>• [{{es}} {{serverless-short}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) API endpoints for the relevant projects |
 
 Using {{ecloud}} keys for project-level API access, rather than [granting keys from within each {{serverless-short}} project](serverless-project-api-keys.md), allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
 
-When granting Cloud resource access, you can apply a [predefined role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) to granularly control access to the specified resources. The role that you select controls the resources that you can access in all relevant APIs. 
+When granting Cloud resource access, you can apply a [predefined role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) to granularly control access to the specified resources. The selected role controls access to resources in all relevant APIs. 
 
 #### Considerations
 
-All roles include permissions to both Cloud APIs and {{es}} and {{kib}} APIs. Your **API access** selection limits the role's scope, and, in some cases, can disable core functionality.
+All roles include permissions for Cloud APIs, as well as {{es}} and {{kib}} APIs. Your **API access** selection limits the role's scope and can disable core functionality:
 
 * **Cloud API access**: The API key can use the role’s permissions for organization-level actions in {{ecloud}}, but it has no direct access to the project itself. Roles designed for project use, such as the Security **Tier 1 analyst** role, have only **Viewer** access to the relevant projects through {{ecloud}} APIs. 
   
   API keys with custom roles are also limited to **Viewer** access in the project.
 
-* **Cloud, {{es}} and {{kib}} API access**: The API key can use the role’s permissions to fully interact with the project. This selection is required for custom roles to work as intended, because they rely on the {{es}} and {{kib}} serverless APIs for project-level access.
+* **Cloud, {{es}}, and {{kib}} API access**: The API key can use the role’s permissions to fully interact with the project. This selection is required for custom roles to work as intended, because they rely on the {{es}} and {{kib}} serverless APIs for project-level access.
 
 For details on the permissions granted for each role, refer to the [predefined roles table](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table).

@@ -134,6 +134,7 @@ serverless: ga
 When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can select the surfaces the user can access:
 
 | Access | Grants |
+| --- | --- |
 | **Cloud Console, {{es}}, and {{kib}}** (default) | Grants access to the {{ecloud}} Console, plus the {{kib}} interface and {{es}} service for the applicable projects. |
 | **Cloud Console** | Grants access to only the {{ecloud}} Console for the applicable {{serverless-short}} projects. |
 
@@ -150,5 +151,5 @@ When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that ar
 For details on the permissions granted for each role, refer to the [predefined roles table](#general-assign-user-roles-table).
 
 :::{tip}
-When inviting a user to your organization with the {{ecloud}} API, you can set their access surfaces in the invitation request. To grant {{ecloud}} Console-only access, pass an empty `application_id` array in the role assignment. You can view an example in [Manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations).
+When inviting a user to your organization with the {{ecloud}} API, you can set their access surfaces in the invitation request. To grant {{ecloud}} Console-only access, pass an empty `application_id` array in the role assignment. For an example, refer to [Manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations).
 ::: 
