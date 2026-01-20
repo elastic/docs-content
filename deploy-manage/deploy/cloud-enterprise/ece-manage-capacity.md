@@ -27,7 +27,7 @@ You should plan your deployment size based on the amount of data you ingest. Mem
 During installation, the allocator capacity defaults to 85% of the host physical memory, as the rest is reserved for ECE system services.
 
 ::::{note}
-ECE does not support hot-adding of resources to a running node.  When increasing CPU/memory allocated to a ECE node, a restart is needed to utilize the additional resources.
+ECE does not support hot-adding of resources to a running node.  When increasing CPU, memory, or disk allocated to an ECE node, a restart is needed to utilize the additional resources.
 ::::
 
 
