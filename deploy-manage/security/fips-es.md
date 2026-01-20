@@ -11,7 +11,7 @@ products:
 {{es}} supports both FIPS 140-2 and FIPS 140-3 compliant modes.
 
 :::{important}
-The JVM bundled with {{es}} is not configured for FIPS. You must configure an external JDK with a FIPS certified Java Security Provider. Refer to the {{es}} [JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm) for supported JVM configurations. See [subscriptions](https://www.elastic.co/subscriptions) for required licensing.
+The JVM bundled with {{es}} is not configured for FIPS. You must configure an external JDK with a FIPS certified Java Security Provider. Refer to the {{es}} [JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm) for supported JVM configurations. Refer to [subscriptions](https://www.elastic.co/subscriptions) for required licensing.
 :::
 
 Compliance with FIPS 140-2 or FIPS 140-3 requires using only FIPS approved / NIST recommended cryptographic algorithms. Generally this can be done by the following:
@@ -39,9 +39,9 @@ Here is a high-level overview of the required configuration:
 * Ensure the TLS settings are configured correctly ([see below](#fips-tls)).
 * Ensure the password hashing settings are configured correctly ([see below](#fips-stored-password-hashing)).
 * Ensure the cached password hashing settings are configured correctly ([see below](#fips-cached-password-hashing)).
-* Configure `elasticsearch.yml` to use FIPS mode, see ([below](#configuring-es-yml)).
-* Verify the security provider is installed and configured correctly ([see below](#verify-security-provider)).
-* Review the upgrade considerations ([see below](#fips-upgrade-considerations)) and limitations ([see below](#fips-limitations)).
+* Configure `elasticsearch.yml` to use FIPS mode ([refer to the section below](#configuring-es-yml)).
+* Verify the security provider is installed and configured correctly ([refer to the section below](#verify-security-provider)).
+* Review the upgrade considerations ([refer to the section below](#fips-upgrade-considerations)) and limitations ([refer to the section below](#fips-limitations)).
 
 
 ### Java security provider [java-security-provider]
@@ -63,7 +63,7 @@ Detailed instructions for installation and configuration of a FIPS certified Jav
 FIPS 140-3 requires an additional library (`bcutil-fips`) that is not needed for FIPS 140-2.
 :::
 
-See the {{es}} [JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm) for details on which combinations of JVM and security provider are supported in FIPS mode. {{es}} does not ship with a FIPS certified provider. It is the responsibility of the user to install and configure the security provider to ensure FIPS compliance. Using a FIPS certified provider will ensure that only approved cryptographic algorithms are used.
+Refer to the {{es}} [JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm) for details on which combinations of JVM and security provider are supported in FIPS mode. {{es}} does not ship with a FIPS certified provider. It is the responsibility of the user to install and configure the security provider to ensure FIPS compliance. Using a FIPS certified provider ensures that only approved cryptographic algorithms are used.
 
 To configure {{es}} to use additional security provider(s) configure {{es}}'s [JVM property](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options) `java.security.properties` to point to a file ([example](https://raw.githubusercontent.com/elastic/elasticsearch/main/build-tools-internal/src/main/resources/fips_java.security)) in {{es}}'s `config` directory. Ensure the FIPS certified security provider is configured with the lowest order. This file should contain the necessary configuration to instruct Java to use the FIPS certified security provider.
 
@@ -77,7 +77,7 @@ To configure {{es}}'s security manager configure the JVM property `java.security
 
 ### {{es}} Keystore [keystore-fips-password]
 
-FIPS (via NIST Special Publication 800-132) dictates that encryption keys should at least have an effective strength of 112 bits. As such, the {{es}} keystore that stores the node's [secure settings](/deploy-manage/security/secure-settings.md) needs to be password protected with a password that satisfies this requirement. This means that the password needs to be 14 bytes long which is equivalent to a 14 character ASCII encoded password, or a 7 character UTF-8 encoded password. You can use the [elasticsearch-keystore passwd](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) subcommand to change or set the password of an existing keystore. Note that when the keystore is password-protected, you must supply the password each time {{es}} starts.
+FIPS (as specified in NIST Special Publication 800-132) dictates that encryption keys should at least have an effective strength of 112 bits. As such, the {{es}} keystore that stores the node's [secure settings](/deploy-manage/security/secure-settings.md) needs to be password protected with a password that satisfies this requirement. This means that the password needs to be 14 bytes long which is equivalent to a 14 character ASCII encoded password, or a 7 character UTF-8 encoded password. You can use the [elasticsearch-keystore passwd](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) subcommand to change or set the password of an existing keystore. Note that when the keystore is password-protected, you must supply the password each time {{es}} starts.
 
 
 ### TLS [fips-tls]
@@ -85,14 +85,14 @@ FIPS (via NIST Special Publication 800-132) dictates that encryption keys should
 SSLv2 and SSLv3 are not allowed by FIPS, so `SSLv2Hello` and `SSLv3` cannot be used for [`ssl.supported_protocols`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 
 ::::{note}
-The use of TLS ciphers is mainly governed by the relevant crypto module (the FIPS Approved Security Provider that your JVM uses). All the ciphers that are configured by default in {{es}} are FIPS compliant and as such can be used in a FIPS-configured JVM. See [`ssl.cipher_suites`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
+The use of TLS ciphers is mainly governed by the relevant crypto module (the FIPS Approved Security Provider that your JVM uses). All the ciphers that are configured by default in {{es}} are FIPS compliant and as such can be used in a FIPS-configured JVM. Refer to [`ssl.cipher_suites`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 ::::
 
 
 
 ### TLS keystores and keys [_tls_keystores_and_keys]
 
-Keystores can be used in a number of [General TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings) in order to conveniently store key and trust material. Neither `JKS`, nor `PKCS#12` keystores can be used in a FIPS-configured JVM. Avoid using these types of keystores. Your FIPS provider may provide a compliant keystore implementation that can be used, or you can use PEM encoded files. To use PEM encoded key material, you can use the relevant `\*.key` and `*.certificate` configuration options, and for trust material you can use `*.certificate_authorities`.
+Keystores can be used in a number of [General TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings) to conveniently store key and trust material. Neither `JKS`, nor `PKCS#12` keystores can be used in a FIPS-configured JVM. Avoid using these types of keystores. Your FIPS provider can provide a compliant keystore implementation that can be used, or you can use PEM encoded files. To use PEM encoded key material, you can use the relevant `\*.key` and `*.certificate` configuration options, and for trust material you can use `*.certificate_authorities`.
 
 FIPS compliance dictates that the length of the public keys used for TLS must correspond to the strength of the symmetric key algorithm in use in TLS. Depending on the value of `ssl.cipher_suites` that you select to use, the TLS keys must have corresponding length according to the following table:
 
@@ -114,16 +114,16 @@ You can still use one of the plain `pbkdf2` options instead of `pbkdf2_stretch` 
 ::::
 
 
-You must set the `xpack.security.authc.password_hashing.algorithm` setting to one of the available `pbkdf_stretch_*` values. When FIPS mode is enabled, the default value for `xpack.security.authc.password_hashing.algorithm` is `pbkdf2_stretch`. See [User cache and password hash algorithms](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
+You must set the `xpack.security.authc.password_hashing.algorithm` setting to one of the available `pbkdf_stretch_*` values. When FIPS mode is enabled, the default value for `xpack.security.authc.password_hashing.algorithm` is `pbkdf2_stretch`. Refer to [User cache and password hash algorithms](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
 
 Password hashing configuration changes are not retroactive so the stored hashed credentials of existing users of the reserved, native, and file realms are not updated on disk. To ensure FIPS compliance, recreate users or change their password using the [elasticsearch-user](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md) CLI tool for the file realm and the [create users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) and [change password](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) APIs for the native and reserved realms. Other types of realms are not affected and do not require any changes.
 
 
 ### Cached password hashing [fips-cached-password-hashing]
 
-`ssha256` (salted `sha256`) is recommended for cache hashing. Though `PBKDF2` is compliant with FIPS, it is — by design — slow, and thus not generally suitable as a cache hashing algorithm. Cached credentials are never stored on disk, and salted `sha256` provides an adequate level of security for in-memory credential hashing, without imposing prohibitive performance overhead. You *may* use `PBKDF2`, however you should carefully assess performance impact first. Depending on your deployment, the overhead of `PBKDF2` could undo most of the performance gain of using a cache.
+`ssha256` (salted `sha256`) is recommended for cache hashing. Though `PBKDF2` is compliant with FIPS, it is—by design—slow, and not generally suitable as a cache hashing algorithm. Cached credentials are never stored on disk, and salted `sha256` provides an adequate level of security for in-memory credential hashing, without imposing prohibitive performance overhead. You *can* use `PBKDF2`, however you should carefully assess performance impact first. Depending on your deployment, the overhead of `PBKDF2` could undo most of the performance gain of using a cache.
 
-Either set all `cache.hash_algo` settings to `ssha256` or leave them undefined, since `ssha256` is the default value for all `cache.hash_algo` settings. See [User cache and password hash algorithms](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
+Either set all `cache.hash_algo` settings to `ssha256` or leave them undefined, since `ssha256` is the default value for all `cache.hash_algo` settings. Refer to [User cache and password hash algorithms](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
 
 The user cache will be emptied upon node restart, so any existing hashes using non-compliant algorithms will be discarded and the new ones will be created using the algorithm you have selected.
 
@@ -131,10 +131,10 @@ The user cache will be emptied upon node restart, so any existing hashes using n
 ### Configure {{es}} elasticsearch.yml [configuring-es-yml]
 
 * Set `xpack.security.fips_mode.enabled` to `true` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). This setting is used to ensure to configure some internal configuration to be FIPS compliant and provides some additional verification.
-* Set `xpack.security.autoconfiguration.enabled` to `false`. This will disable the automatic configuration of the security settings. Users must ensure that the security settings are configured correctly for FIPS compliance. This is only applicable for new installations.
-* Set `xpack.security.authc.password_hashing.algorithm` appropriately see [above](#fips-stored-password-hashing).
+* Set `xpack.security.autoconfiguration.enabled` to `false`. This turns off the automatic configuration of the security settings. Users must ensure that the security settings are configured correctly for FIPS compliance. This is only applicable for new installations.
+* Set `xpack.security.authc.password_hashing.algorithm` appropriately. Refer to the [stored password hashing section](#fips-stored-password-hashing).
 * Other relevant security settings. For example, TLS for the transport and HTTP interfaces. (not explicitly covered here or in the example below)
-* Optional: Set `xpack.security.fips_mode.required_providers` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) to ensure the required security providers (8.13+). see [below](#verify-security-provider).
+* Optional: Set `xpack.security.fips_mode.required_providers` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) to ensure the required security providers (8.13+). Refer to the [section below](#verify-security-provider).
 
 ```yaml
 xpack.security.fips_mode.enabled: true
@@ -149,7 +149,7 @@ xpack.security.authc.password_hashing.algorithm: "pbkdf2_stretch"
 To verify that the security provider is installed and in use, you can use any of the following steps:
 
 * Verify the required security providers are configured with the lowest order in the file pointed to by `java.security.properties`. For example, `security.provider.1` is a lower order than `security.provider.2`
-* Set `xpack.security.fips_mode.required_providers` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) to the list of required security providers. This setting is used to ensure that the correct security provider is installed and configured. (8.13+) If the security provider is not installed correctly, {{es}} will fail to start.
+* Set `xpack.security.fips_mode.required_providers` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) to the list of required security providers. This setting is used to ensure that the correct security provider is installed and configured. (8.13+) If the security provider is not installed correctly, {{es}} fails to start.
 
 The `xpack.security.fips_mode.required_providers` setting supports two formats:
 
@@ -171,16 +171,16 @@ Note that {{es}} does not ship with a FIPS certified security provider and requi
 Alternatively, consider using {{ech}} in the [FedRAMP-certified GovCloud region](https://www.elastic.co/industries/public-sector/fedramp).
 
 :::{important}
-Some encryption algorithms may no longer be available by default in updated FIPS security providers. Notably, Triple DES and PKCS1.5 RSA are now discouraged and [Bouncy Castle](https://www.bouncycastle.org/fips-java) now requires explicit configuration to continue using these algorithms.
+Some encryption algorithms might no longer be available by default in updated FIPS security providers. Notably, Triple DES and PKCS1.5 RSA are now discouraged and [Bouncy Castle](https://www.bouncycastle.org/fips-java) now requires explicit configuration to continue using these algorithms.
 :::
 
 
 If you plan to upgrade your existing cluster to a version that can be run in a FIPS-configured JVM, we recommend to first perform a rolling upgrade to the new version in your existing JVM and perform all necessary configuration changes in preparation for running in FIPS mode. You can then perform a rolling restart of the nodes, starting each node in a FIPS-configured JVM. During the restart, {{es}}:
 
-* Upgrades [secure settings](/deploy-manage/security/secure-settings.md) to the latest, compliant format. A FIPS-configured JVM cannot load previous format versions. If your keystore is not password-protected, you must manually set a password. See [{{es}} Keystore](#keystore-fips-password).
+* Upgrades [secure settings](/deploy-manage/security/secure-settings.md) to the latest, compliant format. A FIPS-configured JVM cannot load previous format versions. If your keystore is not password-protected, you must manually set a password. Refer to [{{es}} Keystore](#keystore-fips-password).
 * Upgrades self-generated trial licenses to the latest FIPS compliant format.
 
-If your [subscription](https://www.elastic.co/subscriptions) already supports FIPS mode, you can elect to perform a rolling upgrade while at the same time running each upgraded node in a FIPS-configured JVM. In this case, you would need to also manually regenerate your `elasticsearch.keystore` and migrate all secure settings to it, in addition to the necessary configuration changes outlined below, before starting each node.
+If your [subscription](https://www.elastic.co/subscriptions) already supports FIPS mode, you can elect to perform a rolling upgrade while at the same time running each upgraded node in a FIPS-configured JVM. In this case, you would also need to manually regenerate your `elasticsearch.keystore` and migrate all secure settings to it, along with the necessary configuration changes outlined below, before starting each node.
 
 
 ## Limitations [fips-limitations]
@@ -188,6 +188,6 @@ If your [subscription](https://www.elastic.co/subscriptions) already supports FI
 Due to the limitations that FIPS compliance enforces, a small number of features are not available while running in FIPS mode. The list is as follows:
 
 * Azure Classic Discovery Plugin
-* The [`elasticsearch-certutil`](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md) tool. However, `elasticsearch-certutil` can very well be used in a non-FIPS configured JVM (pointing `ES_JAVA_HOME` environment variable to a different java installation) in order to generate the keys and certificates that can be later used in the FIPS-configured JVM.
+* The [`elasticsearch-certutil`](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md) tool. However, `elasticsearch-certutil` can be used in a non-FIPS configured JVM (pointing `ES_JAVA_HOME` environment variable to a different java installation) to generate the keys and certificates that can be later used in the FIPS-configured JVM.
 * The SQL CLI client cannot run in a FIPS-configured JVM while using TLS for transport security or PKI for client authentication.
 
