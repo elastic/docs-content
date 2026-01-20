@@ -46,7 +46,7 @@ steps:
     type: kibana.createCaseDefaultSpace
     with:
       title: "Investigate user u-123"
-      description: "A case has been opened for user {{ steps.find_user_by_id.output.hits.hits[0]._source.user.fullName }}."
+      description: "A case has been opened for user {{steps.find_user_by_id.output.hits.hits[0]._source.user.fullName}}."
       tags: ["user-investigation"]
       connector:
         id: "none"
@@ -111,11 +111,11 @@ This workflow attempts to delete a document. If the `elasticsearch.delete` actio
         type: slack
         connector-id: "devops-alerts"
         with:
-          message: "Failed to delete document in workflow '{{ workflow.name }}'"
+          message: "Failed to delete document in workflow '{{workflow.name}}'"
       - name: log_failure
         type: console
         with:
-          message: "Document deletion failed, error: {{ steps.delete_critical_document.error }}"
+          message: "Document deletion failed, error: {{steps.delete_critical_document.error}}"
 ```
 
 ### Example: Continue after failure [workflows-continue-after-failure]

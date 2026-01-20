@@ -17,8 +17,8 @@ The templating engine supports several syntax patterns for different use cases:
 |--------|---------|---------|
 | Double curly braces | Insert values as strings | `"Hello, {{name}}"` |
 | Dollar-sign prefix | Preserve data types (arrays, objects, numbers) | `${{myArray}}` |
-| Percent tags | Control flow (conditionals, loops) | `{%if active%}...{%end if%}` |
-| Raw tags | Output literal curly braces | `{%raw%}{{ }}{%end raw%}` |
+| Percent tags | Control flow (conditionals, loops) | `{%if active%}...{%endif%}` |
+| Raw tags | Output literal curly braces | `{%raw%}{{}}{%endraw%}` |
 
 ### String interpolation [workflows-string-interpolation]
 
@@ -31,24 +31,23 @@ url: "https://api.example.com/users/{{user.id}}"      # Result: "https://api.exa
 
 ### Type-preserving expressions [workflows-type-preserving]
 
-Use the dollar-sign prefix (`${{ }}`) when you need to preserve the original data type (array, object, number, boolean) instead of converting the result to a string.
+Use the dollar-sign prefix (`${{}}`) when you need to preserve the original data type (array, object, number, boolean) instead of converting the result to a string.
 
 ```yaml
-# Using {{ }} - converts to string
+# String syntax - converts to string
 tags: "{{inputs.tags}}"     # Result: "[\"admin\", \"user\"]" (string)
 
-# Using ${{ }} - preserves type
+# Type-preserving syntax - keeps original type
 tags: "${{inputs.tags}}"    # Result: ["admin", "user"] (actual array)
 ```
 
 :::{important}
-The type-preserving syntax (`${{ }}`) must occupy the entire string value. You cannot mix it with other text.
+The type-preserving syntax must occupy the entire string value. You cannot mix it with other text.
 
 ✅ **Valid:**
 
 ```yaml
 tags: "${{inputs.tags}}"
-items: "${{inputs.items | slice: 0, 2}}"
 ```
 
 ❌ **Invalid:**
@@ -58,48 +57,53 @@ message: "Tags are: ${{inputs.tags}}"
 ```
 :::
 
-### Escaping template syntax [workflows-escaping]
+| Feature | String syntax | Type-preserving syntax |
+|---------|---------------|------------------------|
+| Output type | Always string | Preserves original type |
+| Arrays | Stringified | Actual array |
+| Objects | Stringified | Actual object |
+| Booleans | `"true"` / `"false"` | `true` / `false` |
+| Numbers | `"123"` | `123` |
 
-Use raw tags (`{% raw %}`) to output literal curly brace characters (`{{ }}`) without rendering them.
+### Control flow [workflows-control-flow]
 
-```yaml
-value: "{% raw %}{{_ingest.timestamp }{%endraw%}"  # Result: "{{_ingest.timestamp }"
-```
+Liquid tags are control flow constructs that use the `{% %}` syntax. Unlike output expressions, tags execute logic without directly rendering a value.
 
-### Control flow with Liquid tags [workflows-control-flow]
-
-Use Liquid tags (`{% %}`) for control flow and logic, such as conditionals and loops.
+**Conditionals:**
 
 ```yaml
 message: |
   {% if user.role == 'admin' %}
     Welcome, administrator!
+  {% else %}
+    Welcome, user!
   {% endif %}
 ```
 
-Common tags include: `if` (`{%if%}`), `for` (`{%for%}`), `assign` (`{%assign%}`), and `case` (`{%case%}`).
-
-### Liquid code blocks [workflows-liquid-blocks]
-
-Combine multiple Liquid statements inside one tag block using (`{%-liquid...-%}`):
+**Loops:**
 
 ```yaml
 message: |
-  {%- liquid
-    assign greeting = "Hello"
-    echo greeting
-    echo " "
-    echo user.name
-  -%}
+  {% for item in items %}
+    - {{item.name}}
+  {% endfor %}
 ```
 
-## How to use the templating engine [workflows-templating-howto]
+### Escaping template syntax [workflows-escaping]
 
-The templating engine is used directly within your workflow YAML to make your workflows dynamic.
+Use raw tags to output literal curly brace characters without rendering them:
 
-### Reference data from previous steps [workflows-ref-previous-steps]
+```yaml
+value: "{%raw%}{{_ingest.timestamp}}{%endraw%}"  # Result: "{{_ingest.timestamp}}"
+```
 
-Use double curly braces (`{{ }}`) to inject outputs from earlier steps into later ones:
+## Working with data [workflows-working-with-data]
+
+This section covers common patterns for accessing and transforming data in your workflows.
+
+### Reference step outputs [workflows-ref-step-outputs]
+
+Access data from previous steps using `{{steps.<step_name>.output}}`:
 
 ```yaml
 steps:
@@ -118,9 +122,9 @@ steps:
       message: "Found {{steps.search_users.output.hits.total.value}} active users"
 ```
 
-### Use constants and inputs [workflows-use-constants]
+### Reference constants [workflows-ref-constants]
 
-Reference workflow-level constants or inputs:
+Reference workflow-level constants using `{{consts.<constant_name>}}`:
 
 ```yaml
 consts:
@@ -137,9 +141,20 @@ steps:
           env: "{{consts.environment}}"
 ```
 
-### Preserve data types [workflows-preserve-types]
+### Apply filters [workflows-apply-filters]
 
-When you need arrays or objects (not strings), use the dollar-sign prefix (`${{ }}`):
+Transform values using filters with the pipe `|` character:
+
+```yaml
+message: |
+  User: {{user.name | upcase}}
+  Email: {{user.email | downcase}}
+  Created: {{user.created_at | date: "%Y-%m-%d"}}
+```
+
+### Preserve array and object types [workflows-preserve-types]
+
+When passing arrays or objects between steps, use the type-preserving syntax (`${{ }}`) to avoid stringification:
 
 ```yaml
 steps:
@@ -160,24 +175,9 @@ steps:
         tags: "${{steps.get_tags.output.hits.hits[0]._source.tags}}"
 ```
 
-### Apply filters to transform data [workflows-apply-filters]
+### Use conditionals for dynamic content [workflows-conditionals-example]
 
-Chain filters to manipulate values:
-
-```yaml
-steps:
-  - name: create_alert
-    type: console
-    with:
-      message: |
-        User: {{user.name | upcase}}
-        Email: {{user.email | downcase}}
-        Created: {{user.created_at | date: "%Y-%m-%d"}}
-```
-
-### Use conditionals for dynamic content [workflows-conditionals]
-
-Add logic with `if` (`{%for%}`) tags:
+Add logic to customize output based on data:
 
 ```yaml
 steps:
@@ -193,9 +193,9 @@ steps:
         {% endif %}
 ```
 
-### Loop through results [workflows-loops]
+### Loop through results [workflows-loops-example]
 
-Iterate over arrays with `for` (`{%for%}`) loops:
+Iterate over arrays to process multiple items:
 
 ```yaml
 steps:
@@ -211,14 +211,14 @@ steps:
 
 ## Template rendering behavior [workflows-template-rendering]
 
-The engine renders templates recursively through all data structures, ensuring full support for nested workflows and dynamic data substitution.
+The engine renders templates recursively through all data structures, processing nested objects and arrays.
 
 **Input:**
 
 ```yaml
 message: "Hello {{user.name}}"
 config:
-  url: "{{api.url }}"
+  url: "{{api.url}}"
 tags: ["{{tag1}}", "{{tag2}}"]
 ```
 
@@ -240,17 +240,6 @@ tags: ["admin", "user"]
 | Arrays | Each element processed recursively |
 | Objects | Each property value processed recursively (keys are not processed) |
 
-### Syntax comparison [workflows-syntax-comparison]
-
-| Feature | String syntax | Type-preserving syntax |
-|---------|---------|----------|
-| Output type | Always string | Preserves original type |
-| Arrays | Stringified | Actual array |
-| Objects | Stringified | Actual object |
-| Booleans | `"true"` / `"false"` | `true` / `false` |
-| Numbers | `"123"` | `123` |
-| Filters | Applied (stringified result) | Applied (type preserved) |
-
 ### Null and undefined handling [workflows-null-handling]
 
 | Case | Behavior |
@@ -259,21 +248,7 @@ tags: ["admin", "user"]
 | Undefined variables | Empty string in string syntax; `undefined` in type-preserving syntax |
 | Missing context properties | Treated as undefined |
 
-## Quick reference [workflows-templating-reference]
-
-| What you want to do | Syntax |
-|---------------------|--------|
-| Insert a string value | Double curly braces around the variable (`{{variable}}`)|
-| Preserve arrays/objects/numbers | Dollar sign prefix before double curly braces (`${{variable}}`)|
-| Access step output | `steps.step_name.output` inside braces (`{{steps.step_name.output}}`)|
-| Access constants | `consts.my_constant` inside braces (`{{consts.my_constant}}`) |
-| Apply a filter | Pipe character after the variable (`{{value \| filter_name}}`) |
-| Conditional logic | `if`/`endif` tags `{%if condition%}...{%endif%}` |
-| Loop through items | `for`/`endfor` tags `{%for item in array%}...{%endfor%}` |
-| Output literal braces | Use `raw`/`endraw` tags `{%raw%}{{ }}{%endraw%}` |
-
 ## Learn more
 
 - [Liquid Templating Language](https://shopify.github.io/liquid/)
 - [LiquidJS Documentation](https://liquidjs.com/)
-
