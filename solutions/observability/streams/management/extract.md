@@ -38,7 +38,7 @@ Streams supports the following processors:
 
 ### Processor limitations and inconsistencies [streams-processor-inconsistencies]
 
-While Streams relies on Elasticsearch ingest pipeline processors internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processors because it needs to support options that work in both ingest pipelines and ES|QL. The following are some limitations and inconsistencies when using Streamlang processors:
+Streams exposes a Streamlang configuration, but internally it relies on {{es}} ingest pipeline processors and ES|QL. Streamlang doesn’t always have 1:1 parity with the ingest processors because it needs to support options that work in both ingest pipelines and ES|QL. In most cases, you won’t need to worry about these details, but the underlying design decisions still affect the UI and available configuration options. The following are some limitations and inconsistencies when using Streamlang processors:
 
 - **Consistently typed fields**: ES|QL requires one consistent type per column, so workflows that produce mixed types across documents won’t transpile.
 - **Conversion of types**: ES|QL and ingest pipelines accept different conversion combinations and strictness (especially for strings), so `convert` can behave differently across targets.
