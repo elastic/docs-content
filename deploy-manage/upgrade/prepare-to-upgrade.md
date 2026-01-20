@@ -32,7 +32,7 @@ If you are affected by a breaking change, you have to take action before upgradi
 ::::
 
 ::::{step} Check for archived settings
-:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/archived-index-settings-before.md
+:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/archived-index-settings-pre.md
 :::
 
 Additionaly, check if there are any archived settings from a previous upgrade that should have been removed. If found, remove them before proceeding with the new upgrade.

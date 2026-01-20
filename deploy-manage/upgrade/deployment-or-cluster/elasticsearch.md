@@ -217,7 +217,7 @@ Similarly, if you run a testing/development environment with a single master nod
 
 ## Archived settings [archived-settings]
 
-:::{include} _snippets/archived-settings.md
+:::{include} _snippets/archived-settings-post.md
 :::
 
 ## Next steps

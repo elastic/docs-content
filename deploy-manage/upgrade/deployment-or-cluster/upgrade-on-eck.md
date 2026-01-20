@@ -160,7 +160,7 @@ If you deploy your {{stack}} resources using our Helm chart, refer to [managing 
 
 ## Archived settings [archived-settings]
 
-:::{include} _snippets/archived-settings.md
+:::{include} _snippets/archived-settings-post.md
 :::
 
 ## Next steps

@@ -42,7 +42,7 @@ PUT _cluster/settings
 ## Archived index settings [archived-index-settings]
 
 ::::{important}
-:::{include} _snippets/archived-index-settings-before.md
+:::{include} _snippets/archived-index-settings-pre.md
 :::
 ::::
 

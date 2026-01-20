@@ -68,7 +68,7 @@ Security realm settings
 
 ## Archived settings [archived-settings]
 
-:::{include} _snippets/archived-settings.md
+:::{include} _snippets/archived-settings-post.md
 :::
 
 ## Next steps
