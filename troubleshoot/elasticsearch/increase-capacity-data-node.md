@@ -96,7 +96,7 @@ In ECE, resizing is limited by your [allocator capacity](/deploy-manage/deploy/c
 
 To increase the disk capacity of the data nodes in your cluster, use the following options:
 
-**Option 1 - Configure Autoscaling**
+**Option 1: Configure Autoscaling**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or ECE Cloud UI.
 1. On the home page, find your deployment and select **Manage**.
@@ -104,22 +104,22 @@ To increase the disk capacity of the data nodes in your cluster, use the followi
 1. If autoscaling is successful, the cluster returns to a `healthy` status.
 If the cluster is still out of disk, check if autoscaling has reached its set limits and [update your autoscaling settings](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-update).
 
-**Option 2 - Add more capacity**
+**Option 2: Add more capacity**
 
 You can add more capacity by adding more nodes to your cluster and targeting the data tier that may be short of disk. For more information, refer to [](/troubleshoot/elasticsearch/add-tier.md).
 
-**Option 3 - Change the hardware profiles/deployment templates**
+**Option 3: Change the hardware profiles/deployment templates**
 
 You can change the [hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) for {{ech}} deployments or [deployment template](/deploy-manage/deploy/cloud-enterprise/deployment-templates.md) of the {{ece}} cluster to one with a higher disk-to-memory ratio.
 
-**Option 4 - {applies_to}`ece: ga ` Override disk quota**
+**Option 4: {applies_to}`ece: ga ` Override disk quota**
 
 {{ece}} administrators can temporarily override the disk quota of {{es}} nodes in real time as explained in [](/deploy-manage/deploy/cloud-enterprise/resource-overrides.md). We strongly recommend making this change only under the guidance of Elastic Support, and only as a temporary measure or for troubleshooting purposes.
 
 ::::::
 
 ::::::{applies-item} { self: }
-To increase the data node capacity in your cluster, you can [add more nodes](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) to the cluster, or increase the disk capacity of existing nodes. Disk expansion procedures depend on your operating system and storage infrastructure and are outside the scope of Elastic support. In practice, this is often achieved by [removing a node from the cluster](https://www.elastic.co/search-labs/blog/elasticsearch-remove-node) and reinstalling it with a larger disk.
+To increase the data node capacity in your cluster, you can [add more nodes](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) to the cluster, or increase the disk capacity of existing nodes. Disk expansion procedures depend on your operating system and storage infrastructure and are outside the scope of Elastic support. In practice, this is often achieved by [removing a node from the cluster](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) and reinstalling it with a larger disk.
 
 ::::::
 
