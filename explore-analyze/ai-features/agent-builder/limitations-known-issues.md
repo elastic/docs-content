@@ -1,11 +1,11 @@
 ---
 navigation_title: "Limitations"
 applies_to:
-  stack: preview 9.2
+  stack: preview =9.2, ga 9.3+
   serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+    elasticsearch: ga
+    observability: preview
+    security: preview
 ---
 
 # Limitations and known issues in {{agent-builder}}
