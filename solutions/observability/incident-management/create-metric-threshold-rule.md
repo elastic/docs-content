@@ -39,16 +39,17 @@ When data stops being reported, you can still control how alerts behave.
 :width: 90%
 :::
 
-In the **If there is no data** area, select one of the following options:
+In **If there is no data**, select one of the following options:
 
 - **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
 - **Alert me about the missing data**
   - **with groupBy**: Trigger a “no data” alert when a previously detected group stops reporting data; not recommended for dynamically scaling infrastructures that start and stop nodes automatically.
   - **without groupBy**: Trigger a “no data” alert when no data is returned during rule execution or when the rule fails to query {{es}}.
 - **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
+
 ::::
 
-::::{applies-item} stack: 9.0
+::::{applies-item} stack: ga =9.0
 
 When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
 
@@ -100,7 +101,7 @@ If there is no data, you have the following options to control the alert behavio
 - **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
 ::::
 
-::::{applies-item} stack: 9.0
+::::{applies-item} stack: ga =9.0
 
 When you select **Alert me if a group stops reporting data**, the rule is triggered if a group that previously reported metrics does not report them again over the expected time period.
 
