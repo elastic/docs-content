@@ -103,3 +103,8 @@ POST _inference/rerank/eis-jina-reranker-v2
 ```
 
 ### Performance considerations
+
+`jina-reranker-v2` works best on small, medium or large sized fields that contain natural language.
+This aligns best with fields like title, description, summary, or abstract.
+The model uses a context window of 1024 tokens and automatically chunks larger content.
+Larger documents take longer to process, and inference time also increases the more documents are present in the reranking request.
