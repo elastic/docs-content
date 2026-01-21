@@ -306,5 +306,5 @@ This workflow introduces several fundamental concepts:
 % Now that you have a working workflow, you're ready to explore more advanced features. In the following sections, you'll build upon this National Parks example to demonstrate:
 
 % * [**Triggers**](./triggers.md): Automate when this workflow runs (daily reports, alert responses).
-% * [**Stes**](./steps.md): Add conditional logic based on search results and send notifications about park data.
+% * [**Steps**](./steps.md): Add conditional logic based on search results and send notifications about park data.
 % * [**Data and error handling**](./data.md): Make the workflow resilient to failures.
