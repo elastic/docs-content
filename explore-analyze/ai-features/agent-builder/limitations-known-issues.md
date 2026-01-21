@@ -96,7 +96,7 @@ On 9.2 deployments, the **Copy your MCP server URL** button does not include the
 For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#working-with-spaces).
 
 
-## Related pages:
+## Related pages
 
 - [Get started](get-started.md)
 - [Troubleshooting](troubleshooting.md)
