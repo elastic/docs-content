@@ -25,7 +25,7 @@ In the UI, you might encounter messages such as:
 * _This conversation exceeded the maximum context length. This typically occurs when tools return a large response. Try again with a different request or start a new conversation._
 * _Something in the query caused the model to freeze mid-thought. Performance debugging can be broad - try narrowing your question._
 
-The API returns an error with `errCode: context_length_exceeded`:
+The equivalent API error is `errCode: context_length_exceeded`. For example:
 
 ```json
 {
@@ -47,7 +47,7 @@ You may also experience:
 
 ## Causes
 
-These symptoms share a root cause: the agent is retrieving more data than it can efficiently process.
+These symptoms share a root cause: the agent is retrieving more data than it can efficiently process. Common causes include:
 
 * **Broad queries with built-in agents**: [Built-in agents](../builtin-agents-reference.md) search across many indices and fields. If you ask a vague question, the agent may pull back more data than the context window can handle.
 * **Index search tools with large indices**: [Index search tools](../tools/index-search-tools.md) allow the LLM to decide what to retrieve. If your indices contain large documents, many fields, or high document counts, these tools can return more data than the context window can handle.
@@ -64,6 +64,8 @@ To identify which factor is contributing to the issue:
 4. **Check conversation length.** Long conversations accumulate context from previous messages. You can [view token usage](../monitor-usage.md) after each response to monitor consumption.
 
 ## Resolution
+
+There are a few quick fixes you can try to mitigate this issue, or you can create custom agents with custom tools that target only the data you need.
 
 ### Quick fixes
 
