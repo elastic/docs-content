@@ -294,7 +294,9 @@ def fetch_sheet_data(
         print(f"Error: Google Sheets API error: {e}", file=sys.stderr)
         sys.exit(EXIT_SHEET_ERROR)
     except Exception as e:
-        print(f"Error: Failed to fetch sheet data: {e}", file=sys.stderr)
+        import traceback
+        print(f"Error: Failed to fetch sheet data: {type(e).__name__}: {e}", file=sys.stderr)
+        print(f"Traceback: {traceback.format_exc()}", file=sys.stderr)
         sys.exit(EXIT_SHEET_ERROR)
 
 
