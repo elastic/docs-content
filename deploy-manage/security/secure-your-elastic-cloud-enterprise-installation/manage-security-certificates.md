@@ -257,7 +257,7 @@ To add a Cloud UI certificate from the Cloud UI:
 2. From the **Platform** menu, select **Settings**.
 3. Under **TLS settings** for the Cloud UI, choose **Upload new certificate** and select a concatenated file containing your RSA private key, server certificate, and CA certificate. Upload the selected file.
 
-To get the details of the certificate you added, select **Show certificate chain**.
+    To get the details of the certificate you added, select **Show certificate chain**.
 
 To add a Cloud UI certificate from the command line:
 
