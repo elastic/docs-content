@@ -26,10 +26,11 @@ For more information, refer to [Triggers](/explore-analyze/workflows/triggers.md
 Steps define _what_ a workflow does. A step is an individual unit of logic or action within a workflow. Steps control how data moves, how decisions are made, and what results are produced. Workflows can contain one or more steps, executed in sequence.
 
 For more information, refer to [Steps].
+% TODO: add link for steps
 
 ## {{connectors-ui}}
 
 {{connectors-ui}} define _where_ workflows can reach. A connector is the interface between {{kib}} and an external system, enabling workflows to act on or respond to events and services outside of {{kib}}.
 
 For more information, refer to [{{connectors-ui}}].
-
+% TODO: add link for connectors
