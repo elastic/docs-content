@@ -5,7 +5,7 @@ applies_to:
 ---
 # Grok processor [streams-grok-processor]
 
-The grok processor parses unstructured log messages using a set of predefined patterns to match the log messages and extract the fields. The grok processor is very powerful and can parse a wide variety of log formats.
+The **Grok** processor parses unstructured log messages using a set of predefined patterns to match the log messages and extract the fields. The grok processor is powerful and can parse a wide variety of log formats.
 
 You can provide multiple patterns to the grok processor. The grok processor tries to match the log message against each pattern in the order they are provided. If a pattern matches, it extracts the fields and the remaining patterns won't be used.
 

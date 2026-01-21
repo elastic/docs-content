@@ -6,7 +6,7 @@ applies_to:
 
 # Date processor [streams-date-processor]
 
-The date processor parses dates from fields, and then uses the date or timestamp as the timestamp for the document.
+The **Date** processor parses dates from fields, and then uses the date or timestamp as the timestamp for the document.
 
 To extract a timestamp field using the date processor:
 

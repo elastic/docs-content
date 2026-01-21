@@ -6,7 +6,7 @@ applies_to:
 # Append processor [streams-append-processor]
 % Need use cases
 
-Use the append processor to add a value to an existing array field, or create the field as an array if it doesn’t exist.
+Use the **Append** processor to add a value to an existing array field, or create the field as an array if it doesn’t exist.
 
 To use an append processor:
 
