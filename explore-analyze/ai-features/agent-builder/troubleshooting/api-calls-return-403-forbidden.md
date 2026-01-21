@@ -3,10 +3,7 @@ navigation_title: "403 Forbidden"
 description: "Learn how to diagnose and resolve 403 Forbidden errors when using Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
-  serverless:
-    elasticsearch: ga
-    observability: preview
-    security: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
