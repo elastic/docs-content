@@ -1,0 +1,134 @@
+name: Sync Google Sheets to CSV (Keyless Auth)
+
+on:
+  # Scheduled trigger - daily at 2 AM UTC
+  schedule:
+    - cron: '0 2 * * *'
+
+  # TODO: Remove after testing
+  push:
+    branches: ['add-sheet2csv-automation']
+  # TODO: Remove after testing
+  push:
+    branches: ['add-sheet2csv-automation']
+
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (skip PR creation)'
+        required: false
+        default: false
+        type: boolean
+
+# Required permissions
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write  # Required for OIDC token authentication
+
+jobs:
+  sync-sheet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/sheet2docs/requirements.txt
+
+      # Keyless authentication using Workload Identity Federation
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT_EMAIL }}
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          access_token_scopes: 'https://www.googleapis.com/auth/spreadsheets.readonly,https://www.googleapis.com/auth/drive.readonly'
+
+      # The auth action sets GOOGLE_APPLICATION_CREDENTIALS automatically
+      - name: Run sync script
+        env:
+          GOOGLE_SHEET_URL: ${{ secrets.GOOGLE_SHEET_URL }}
+        run: |
+          python scripts/sheet2docs/sync_sheet.py --config scripts/sheet2docs/config.yml --verbose
+
+      - name: Create Pull Request
+        if: github.event.inputs.dry_run != 'true'
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        with:
+          token: ${{ github.token }}
+          branch: automated/sheets-sync
+          delete-branch: true
+          title: "Update CSV from Google Sheets"
+          commit-message: |
+            Update CSV from Google Sheets
+
+            Generated: ${{ github.run_id }}
+            Workflow run: ${{ github.run_number }}
+          body: |
+            ## Summary
+
+            This PR updates the CSV file with the latest data from Google Sheets.
+
+            ### Changes
+
+            Please review the changes in the Files tab to ensure the data looks correct.
+
+            ### Next Steps
+
+            - [ ] Review the CSV changes
+            - [ ] Verify data accuracy
+            - [ ] Merge when ready
+
+            ---
+
+            🤖 Automated update from [sync-sheets workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          add-paths: |
+            explore-analyze/elastic-inference/models.csv
+
+      - name: Upload CSV artifact
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: generated-csv-${{ github.run_number }}
+          path: explore-analyze/elastic-inference/models.csv
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Generate job summary
+        if: always()
+        run: |
+          CSV_PATH="explore-analyze/elastic-inference/models.csv"
+          echo "## Sync Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Dry Run:** ${{ github.event.inputs.dry_run }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f "$CSV_PATH" ]; then
+            echo "### Generated Files" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            ls -lh "$CSV_PATH" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+
+            # Show first few rows as preview
+            echo "### Preview (first 5 rows)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`csv" >> $GITHUB_STEP_SUMMARY
+            head -n 6 "$CSV_PATH" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ No CSV file found" >> $GITHUB_STEP_SUMMARY
+          fi
