@@ -6,7 +6,7 @@ applies_to:
 
 # Drop document processor [streams-drop-processor]
 
-The drop document processor prevents documents from being indexed when they meet a specific condition, without raising an error.
+The **Drop document** processor prevents documents from being indexed when they meet a specific condition, without raising an error.
 
 To configure a condition for dropping documents:
 
@@ -18,4 +18,4 @@ To configure a condition for dropping documents:
   The default is the `always` condition. Not setting a specific condition results in every document that matches the drop condition getting dropped from indexing.
   :::
 
-This functionality uses the {{es}} [drop processor](elasticsearch://reference/enrich-processor/drop-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Drop processor](elasticsearch://reference/enrich-processor/drop-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).

@@ -6,7 +6,7 @@ applies_to:
 
 # Math processor [streams-math-processor]
 
-The math processor evaluates arithmetic or logical expressions and stores the result in the target field.
+The **Math** processor evaluates arithmetic or logical expressions and stores the result in the target field.
 
 To calculate a value using an expression and store the result in a target field:
 

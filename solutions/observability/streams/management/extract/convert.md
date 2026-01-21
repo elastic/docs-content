@@ -5,7 +5,7 @@ applies_to:
 ---
 
 # Convert processor [streams-convert-processor]
-The convert processor converts a field to a different data type. For example, you could convert a string to an integer.
+The **Convert** processor converts a field to a different data type. For example, you could convert a string to an integer.
 
 To convert a field to a different data type:
 
@@ -19,4 +19,4 @@ To convert a field to a different data type:
 If you add a **Convert** processor inside a condition group (a **WHERE** block), you must set a **Target field**.
 ::::
 
-This functionality uses the {{es}} [convert processor](elasticsearch://reference/enrich-processor/convert-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Convert processor](elasticsearch://reference/enrich-processor/convert-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
