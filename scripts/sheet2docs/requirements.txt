@@ -1,6 +1,7 @@
 # Google Sheets API
 gspread==6.1.2
 google-auth==2.35.0
+requests>=2.31.0
 
 # Configuration parsing
 PyYAML==6.0.2

@@ -15,9 +15,11 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+import google.auth
+from google.auth.transport.requests import Request
+from google.oauth2.service_account import Credentials as ServiceAccountCredentials
 import gspread
 import yaml
-from google.oauth2.service_account import Credentials
 
 
 # Exit codes
@@ -135,11 +137,16 @@ def load_config(config_path: str) -> Dict[str, Any]:
 
 def authenticate_google_sheets(credentials_path: Optional[str] = None) -> gspread.Client:
     """
-    Authenticate with Google Sheets API using service account credentials.
+    Authenticate with Google Sheets API.
+
+    Supports multiple authentication methods:
+    - Explicit service account JSON file (via --credentials flag)
+    - Workload Identity Federation (via GOOGLE_APPLICATION_CREDENTIALS)
+    - Application Default Credentials (gcloud auth)
 
     Args:
         credentials_path: Path to service account JSON file, or None to use
-                         GOOGLE_APPLICATION_CREDENTIALS environment variable
+                         Application Default Credentials
 
     Returns:
         Authenticated gspread client
@@ -154,17 +161,17 @@ def authenticate_google_sheets(credentials_path: Optional[str] = None) -> gsprea
             'https://www.googleapis.com/auth/drive.readonly'
         ]
 
-        # Load credentials
         if credentials_path:
-            creds = Credentials.from_service_account_file(credentials_path, scopes=scopes)
+            # Explicit service account JSON file provided
+            creds = ServiceAccountCredentials.from_service_account_file(
+                credentials_path, scopes=scopes
+            )
         else:
-            # Try environment variable
-            creds_path = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
-            if not creds_path:
-                print("Error: No credentials provided. Set GOOGLE_APPLICATION_CREDENTIALS "
-                      "or use --credentials flag", file=sys.stderr)
-                sys.exit(EXIT_AUTH_ERROR)
-            creds = Credentials.from_service_account_file(creds_path, scopes=scopes)
+            # Use Application Default Credentials (works with WIF, service account, gcloud auth)
+            creds, project = google.auth.default(scopes=scopes)
+            # Refresh credentials if needed
+            if hasattr(creds, 'refresh'):
+                creds.refresh(Request())
 
         # Create client
         client = gspread.authorize(creds)
