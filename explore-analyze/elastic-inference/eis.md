@@ -15,6 +15,8 @@ Elastic {{infer-cap}} Service (EIS) enables you to leverage AI-powered search as
 With EIS, you don't need to manage the infrastructure and resources required for {{ml}} {{infer}} by adding, configuring, and scaling {{ml}} nodes.
 Instead, you can use {{ml}} models for ingest, search, and chat independently of your {{es}} infrastructure.
 
+{applies_to}`stack: ga 9.3` You can use EIS with your self-managed cluster through Cloud Connect. For details, refer to [EIS for self-managed clusters](connect-self-managed-cluster-to-eis.md). 
+
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
 * Your Elastic deployment or project comes with an [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default LLM. This connector is used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
@@ -22,18 +24,6 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga`
 
 * You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
-
-## EIS for self-managed clusters [eis-self-managed]
-
-```{applies_to}
-stack: ga 9.3
-deployment:
-  self: ga
-  ece: ga
-  eck: ga
-```
-
-Use EIS with your self-managed cluster through Cloud Connect to run AI-powered search without deploying models in your environment. For details, refer to [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
 
 ## Region and hosting [eis-regions]
 

@@ -22,7 +22,7 @@ Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-clou
 ## Elastic {{infer-cap}} Service (EIS)
 
 [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) enables you to add AI-powered search and assistance to your {{es}} deployment without running models yourself.
-EIS is used by the [AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md) and [Search Playground](/explore-analyze/query-filter/tools/playground.md), and lets you use [semantic search](/solutions/search/semantic-search/semantic-search-semantic-text.md#semantic-text-index-mapping) as a service.
+You can use EIS for [semantic search](/solutions/search/semantic-search.md), [AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md) and [AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md), [Search Playground](/explore-analyze/query-filter/tools/playground.md), [Attack Discovery](/solutions/security/ai/attack-discovery.md), and [SIEM migrations](/solutions/security/get-started/automatic-migration.md).
 
 Learn how to set up and use [](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
 
