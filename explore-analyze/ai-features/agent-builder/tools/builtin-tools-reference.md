@@ -2,8 +2,14 @@
 description: Reference of all built-in tools available in Elastic Agent Builder
 navigation_title: "Built-in tools"
 applies_to:
-  stack: ga 9.2+
+  stack: preview =9.2, ga 9.3+
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 <!-- Note: This file contains commented-out tool sections for features on main that are not yet available in released versions. -->
