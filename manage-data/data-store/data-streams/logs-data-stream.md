@@ -33,7 +33,7 @@ In most cases, you won't need to enable logsdb mode manually. If you do need to 
 
 To enable logsdb, set `index.mode` to `logsdb` in the relevant [index template](#logsdb-index-template) or [@custom component template](#logsdb-component-template):
 
-- **New data streams:** Create a new template, specifying `logsdb` for the index mode. New data streams that match the template's index pattern will use logsdb mode automatically.
+- **New data streams:** Create a new template, specifying `logsdb` for the index mode. New data streams matching the template's index pattern use logsdb mode automatically.
 - **Existing data streams:** Update the templates the data stream uses, including any [managed templates](/manage-data/data-store/data-streams/logs-data-stream-managed.md). Logsdb mode will take effect on the next [rollover](/manage-data/data-store/data-streams.md#data-streams-rollover).
 
 ### Set logsdb mode in an index template [logsdb-index-template]
