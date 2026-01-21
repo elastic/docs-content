@@ -22,7 +22,7 @@ Workflows address common operational challenges, such as:
 
 Workflows can handle everything from simple, repeatable tasks to complex processes.
 
-## Who should use workflows? [workflosw-who]
+## Who should use workflows? [workflows-who]
 Workflows are for anyone who wants to cut down on manual effort, speed up response times, and make sure recurring situations are handled the same way every time.
 
 ## Key concepts [workflows-concepts]
@@ -32,6 +32,72 @@ Some key concepts to understand while working with workflows:
 * **Triggers**: The events or conditions that initiate a workflow. Refer to [](/explore-analyze/workflows/triggers.md) to learn more.
 * **Steps**: The individual units of logic or action that make up a workflow. Refer to [](/explore-analyze/workflows/steps.md) to learn more.
 * **Data**: How data flows through your workflow, including inputs, constants, context variables, step outputs, and Liquid templating for dynamic values. Refer to [](/explore-analyze/workflows/data.md) to learn more.
+
+## Workflow structure [workflow-structure]
+
+Workflows are defined as code using YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution.
+
+```yaml
+# ═══════════════════════════════════════════════════════════════
+# METADATA - Identifies and describes the workflow
+# ═══════════════════════════════════════════════════════════════
+name: My Workflow                    # Required: Unique identifier 
+description: What this workflow does # Optional: Shown in UI
+enabled: true                        # Optional: Enable or disable execution
+tags: ["demo", "production"]         # Optional: For organizing workflows
+
+# ═══════════════════════════════════════════════════════════════
+# CONSTANTS - Reusable values defined once, used throughout
+# ═══════════════════════════════════════════════════════════════
+consts:
+  indexName: "my-index"
+  environment: "production"
+  alertThreshold: 100
+  endpoints:                          # Can be objects/arrays
+    api: "https://api.example.com"
+    backup: "https://backup.example.com"
+
+# ═══════════════════════════════════════════════════════════════
+# INPUTS - Parameters passed when workflow is triggered
+# ═══════════════════════════════════════════════════════════════
+inputs:
+  - name: environment
+    type: string
+    required: true
+    default: "staging"
+    description: "Target environment"
+  - name: dryRun
+    type: boolean
+    default: true
+
+# ═══════════════════════════════════════════════════════════════
+# TRIGGERS - How/when the workflow starts
+# ═══════════════════════════════════════════════════════════════
+triggers:
+  - type: manual                      # User clicks Run button
+  # - type: schedule                  # Runs on a schedule
+  #   cron: "0 9 * * *"
+  # - type: alert                     # Triggered by an alert
+
+# ═══════════════════════════════════════════════════════════════
+# STEPS - The actual workflow logic (executed in order)
+# ═══════════════════════════════════════════════════════════════
+steps:
+  - name: step_one
+    type: elasticsearch.search
+    with:
+      index: "{{consts.indexName}}"   # Reference constants
+      query:
+        match_all: {}
+
+  - name: step_two
+    type: console
+    with:
+      message: |
+        Environment: {{inputs.environment}}              # Reference inputs
+        Found: {{steps.step_one.output.hits.total.value}} # Reference step output
+
+```
 
 ## Learn more
 
