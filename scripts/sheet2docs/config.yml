@@ -33,7 +33,7 @@ output:
   filename: "models.csv"
 
   # Output directory (relative to repo root)
-  directory: "explore-analyze/ai-features/agent-builder"
+  directory: "explore-analyze/elastic-inference"
 
   # CSV delimiter (default: comma)
   delimiter: ","
