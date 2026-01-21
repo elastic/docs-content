@@ -8,6 +8,9 @@ on:
   # TODO: Remove after testing
   push:
     branches: ['add-sheet2csv-automation']
+  # TODO: Remove after testing
+  push:
+    branches: ['add-sheet2csv-automation']
 
   # Manual trigger
   workflow_dispatch:
