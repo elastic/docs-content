@@ -13,6 +13,7 @@ applies_to:
 Use the topics in this section to troubleshoot common problems with {{agent-builder}}.
 
 * [Context length exceeded](troubleshooting/context-length-exceeded.md)
+* [API calls return `403 Forbidden`](troubleshooting/api-calls-return-403-forbidden.md)
 
 ## Related pages
 
