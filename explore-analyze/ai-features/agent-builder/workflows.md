@@ -91,8 +91,8 @@ steps:
   - name: summarize_delays
     type: ai.agent
     with:
-      agent_id: "elastic-ai-agent"
-      message: |
+      agent_id: "elastic-ai-agent" <1>
+      message: | <2>
         Review the following flight delay records and summarize which airlines are most affected and the average delay time:
         {{ steps.get_delayed_flights.output }}
 
