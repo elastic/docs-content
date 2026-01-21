@@ -193,8 +193,11 @@ def authenticate_google_sheets(credentials_path: Optional[str] = None) -> gsprea
                 # For external_account (WIF) and other types, use google.auth.default()
                 # which properly handles service account impersonation
                 from google.auth.transport.requests import AuthorizedSession
+                print(f"  Credential type in file: {creds_type}")
                 creds, project = google.auth.default(scopes=scopes)
+                print(f"  Loaded credential class: {type(creds).__name__}")
                 creds.refresh(Request())
+                print(f"  Token after refresh: {creds.token[:20] if creds.token else 'NO TOKEN'}...")
                 client = gspread.Client(auth=creds)
                 client.session = AuthorizedSession(creds)
 

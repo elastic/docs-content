@@ -53,6 +53,25 @@ jobs:
           project_id: ${{ vars.GCP_PROJECT_ID }}
           access_token_scopes: 'https://www.googleapis.com/auth/spreadsheets.readonly,https://www.googleapis.com/auth/drive.readonly'
 
+      # Debug: Inspect credentials setup
+      - name: Debug credentials
+        run: |
+          echo "=== Checking credentials file ==="
+          echo "GOOGLE_APPLICATION_CREDENTIALS: $GOOGLE_APPLICATION_CREDENTIALS"
+          if [ -f "$GOOGLE_APPLICATION_CREDENTIALS" ]; then
+            echo "File exists"
+            echo "Credential type: $(jq -r '.type' "$GOOGLE_APPLICATION_CREDENTIALS")"
+            echo "Has SA impersonation URL: $(jq 'has("service_account_impersonation_url")' "$GOOGLE_APPLICATION_CREDENTIALS")"
+            echo "SA impersonation URL: $(jq -r '.service_account_impersonation_url // "NOT SET"' "$GOOGLE_APPLICATION_CREDENTIALS")"
+            echo "Audience: $(jq -r '.audience // "NOT SET"' "$GOOGLE_APPLICATION_CREDENTIALS")"
+          else
+            echo "ERROR: Credentials file not found!"
+          fi
+          echo ""
+          echo "=== Variables check ==="
+          echo "GCP_SERVICE_ACCOUNT is set: ${{ vars.GCP_SERVICE_ACCOUNT != '' }}"
+          echo "GCP_WORKLOAD_IDENTITY_PROVIDER is set: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER != '' }}"
+
       # The auth action sets GOOGLE_APPLICATION_CREDENTIALS automatically
       - name: Run sync script
         env:
