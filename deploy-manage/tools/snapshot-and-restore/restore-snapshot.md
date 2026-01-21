@@ -324,7 +324,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
     }
     ```
 
-9. Restart All Kibana
+9. Start all {{kib}} instances
 
 10. When the restore operation is complete, resume indexing and restart any features you stopped:
 
