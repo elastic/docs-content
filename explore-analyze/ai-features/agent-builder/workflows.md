@@ -19,14 +19,14 @@ products:
 
 {{agent-builder}} integrates bi-directionally with [Elastic Workflows](TODO-LINK-TO-WORKFLOWS). This integration bridges the gap between conversational reasoning and automated execution:
 
-1. **Agents trigger Workflows:** Agents can be equipped with **Workflow tools**. This allows an agent to recognize when a specific automated process is needed (like "triage this alert" or "restart the service") and execute a predefined workflow to handle it.
+1. **Agents trigger Workflows:** Agents can be equipped with **Workflow tools**. This allows an agent to recognize when a specific automated process is needed (like "triage this alert" or "restart the service") and run a predefined workflow to handle it.
 2. **Workflows call Agents:** Workflows can include **AI Steps**. These steps invoke an agent to handle complex reasoning tasks—such as summarizing logs, classifying security events, or making decisions—within the middle of a deterministic workflow.
 
 ## Before you begin
 
 Before using these features, ensure that:
 * The **Workflows** feature is enabled in your deployment.
-* You have appropriate permissions to create and execute workflows.
+* You have appropriate permissions to create and run workflows.
 * (Optional) If using the example below, ensure the `kibana_sample_data_flights` dataset is installed.
 
 ## Trigger a workflow from an agent
@@ -57,7 +57,7 @@ Once you assign this tool to an agent, the agent can trigger the workflow autono
 
 1. Navigate to **Agents**, select your agent, and click **Add tool** to assign the workflow tool you just created.
 2. Open the **Agent chat** and ask a question that triggers the workflow.
-3. The agent will extract the necessary parameters from the conversation, execute the workflow, and return the workflow's final output to the chat.
+3. The agent extracts the necessary parameters from the conversation, runs the workflow, and returns the workflow's final output to the chat.
 
 :::{image} images/agent-builder-worflow-tool.png
 :screenshot:
@@ -112,7 +112,7 @@ steps:
       message: "{{ steps.summarize_delays.output }}"
 ```
 1. **agent_id**: The ID of the agent you want to call (must exist in Agent Builder).
-2. **message**: The prompt sent to the agent. You can use template variables (like {{ steps.step_name.output }}) to inject data dynamically.
+2. **message**: The prompt sent to the agent. You can use template variables (like `{{ steps.step_name.output }}`) to inject data dynamically.
 
 ### Call Agent Builder APIs
 For advanced use cases, workflows can interact with {{agent-builder}} programmatically using the generic `kibana.request` step. This allows you to perform management actions that aren't covered by the `ai.agent` step, such as listing available agents.
