@@ -61,112 +61,39 @@ jobs:
         run: |
           python scripts/sheet2docs/sync_sheet.py --config scripts/sheet2docs/config.yml --verbose
 
-      - name: Check for changes
-        id: check_changes
-        run: |
-          CSV_PATH="explore-analyze/elastic-inference/models.csv"
+      - name: Create Pull Request
+        if: github.event.inputs.dry_run != 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ github.token }}
+          branch: automated/sheets-sync
+          delete-branch: true
+          title: "Update CSV from Google Sheets"
+          commit-message: |
+            Update CSV from Google Sheets
 
-          # Check if file is new (untracked) or modified
-          is_new=false
-          is_modified=false
+            Generated: ${{ github.run_id }}
+            Workflow run: ${{ github.run_number }}
+          body: |
+            ## Summary
 
-          if [ -f "$CSV_PATH" ]; then
-            # Check if file is untracked (new)
-            if ! git ls-files --error-unmatch "$CSV_PATH" &>/dev/null; then
-              is_new=true
-              echo "New CSV file detected"
-            # Check if file has modifications
-            elif ! git diff --quiet "$CSV_PATH"; then
-              is_modified=true
-              echo "CSV file has been modified"
-            fi
-          fi
+            This PR updates the CSV file with the latest data from Google Sheets.
 
-          if [ "$is_new" = true ] || [ "$is_modified" = true ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in CSV file"
+            ### Changes
 
-            # Get row count from CSV (subtract 1 for header)
-            row_count=$(($(wc -l < "$CSV_PATH") - 1))
-            echo "row_count=${row_count}" >> $GITHUB_OUTPUT
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in CSV file"
-          fi
+            Please review the changes in the Files tab to ensure the data looks correct.
 
-      - name: Create or Update Pull Request
-        if: steps.check_changes.outputs.changed == 'true' && github.event.inputs.dry_run != 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          # Configure git
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+            ### Next Steps
 
-          # Use fixed branch name
-          branch_name="automated/sheets-sync"
-          CSV_PATH="explore-analyze/elastic-inference/models.csv"
+            - [ ] Review the CSV changes
+            - [ ] Verify data accuracy
+            - [ ] Merge when ready
 
-          # Check if branch exists on remote
-          if git ls-remote --exit-code --heads origin "$branch_name" &>/dev/null; then
-            echo "Branch exists, updating..."
-            git fetch origin "$branch_name"
-            git checkout -B "$branch_name" "origin/$branch_name"
-            git add "$CSV_PATH"
-            git commit -m "Update CSV from Google Sheets
+            ---
 
-          Generated: $(date -u +'%Y-%m-%d %H:%M:%S UTC')
-          Workflow run: ${{ github.run_number }}
-
-          [skip ci]"
-            git push origin "$branch_name"
-            echo "Branch updated. Existing PR will be updated automatically."
-          else
-            echo "Branch does not exist, creating new branch and PR..."
-            git checkout -b "$branch_name"
-            git add "$CSV_PATH"
-            git commit -m "Update CSV from Google Sheets
-
-          Generated: $(date -u +'%Y-%m-%d %H:%M:%S UTC')
-          Workflow run: ${{ github.run_number }}
-
-          [skip ci]"
-            git push origin "$branch_name"
-
-            # Get CSV info for PR body
-            csv_file="$CSV_PATH"
-            csv_filename=$(basename "$csv_file")
-            row_count=${{ steps.check_changes.outputs.row_count }}
-            col_count=$(head -n 1 "$csv_file" | awk -F',' '{print NF}')
-
-            # Create PR with gh CLI
-            gh pr create \
-              --title "Update CSV from Google Sheets" \
-              --body "## Summary
-
-          This PR updates the CSV file with the latest data from Google Sheets.
-
-          **File:** \`${csv_filename}\`
-          **Rows:** ${row_count}
-          **Columns:** ${col_count}
-          **Generated:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')
-
-          ### Changes
-
-          Please review the changes in the Files tab to ensure the data looks correct.
-
-          ### Next Steps
-
-          - [ ] Review the CSV changes
-          - [ ] Verify data accuracy
-          - [ ] Merge when ready
-
-          ---
-
-          🤖 Automated update from [sync-sheets workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" \
-              --head "$branch_name" \
-              --base main
-          fi
+            🤖 Automated update from [sync-sheets workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          add-paths: |
+            explore-analyze/elastic-inference/models.csv
 
       - name: Upload CSV artifact
         if: always()
@@ -184,7 +111,6 @@ jobs:
           echo "## Sync Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Changes Detected:** ${{ steps.check_changes.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
           echo "**Dry Run:** ${{ github.event.inputs.dry_run }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
