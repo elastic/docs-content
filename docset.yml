@@ -84,6 +84,7 @@ toc:
   - file: versions.md
   - hidden: 404.md
   - hidden: _search.md
+  - hidden: scripts/sheet2docs/readme.md
 
 subs:
   subscriptions:   "https://www.elastic.co/subscriptions"
