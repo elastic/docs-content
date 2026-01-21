@@ -14,7 +14,7 @@ This page shows you how to enable logsdb index mode for data streams that use ma
 
 Logsdb index mode is [automatically applied](/manage-data/data-store/data-streams/logs-data-stream.md#logsdb-availability) to new data streams in {{serverless-short}} and {{stack}} 9.0+. You might need to enable logsdb manually for older {{stack}} data streams, such as integration data streams that existed before you upgraded to 9.x. 
 
-In {{serverless-full}}, you typically won't need to enable logsdb, though the instructions on this page will still work.
+In {{serverless-full}}, you typically won't need to enable logsdb, but the instructions on this page work in both {{serverless-short}} and {{stack}}.
 
 :::{admonition} Why isn't logsdb enabled automatically for all logs data when upgrading?
 

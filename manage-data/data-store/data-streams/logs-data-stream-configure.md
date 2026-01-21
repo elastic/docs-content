@@ -33,7 +33,7 @@ In logsdb index mode, indices are sorted by the fields `host.name` and `@timesta
 
 * To prioritize the latest data, `host.name` is sorted in ascending order and `@timestamp` is sorted in descending order.
 
-You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, see [*Index Sorting*](elasticsearch://reference/elasticsearch/index-settings/sorting.md).
+You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, refer to [*Index Sorting*](elasticsearch://reference/elasticsearch/index-settings/sorting.md).
 
 To modify the sort configuration of an existing data stream, update the data stream’s component templates, and then perform or wait for a [rollover](../data-streams.md#data-streams-rollover).
 
@@ -71,7 +71,7 @@ To configure a routing optimization:
 * [Configure index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) with two or more fields, in addition to `@timestamp`.
 * Make sure the [`_id`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-id-field.md) field is not populated in ingested documents. It should be auto-generated instead.
 
-A custom sort configuration is required, to improve storage efficiency and to minimize hotspots from logging spikes that may route documents to a single shard. For best results, use a few sort fields that have a relatively low cardinality and don’t co-vary (for example, `host.name` and `host.id` are not optimal).
+A custom sort configuration is required, to improve storage efficiency and to minimize hotspots from logging spikes that might route documents to a single shard. For best results, use a few sort fields that have a relatively low cardinality and don’t co-vary (for example, `host.name` and `host.id` are not optimal).
 
 
 ## Specialized codecs [logsdb-specialized-codecs]
@@ -122,7 +122,7 @@ When automatically injected, `host.name` and `@timestamp` count toward the limit
 
 ## Fields without `doc_values` [logsdb-nodocvalue-fields]
 
-When the logsdb index mode uses synthetic `_source` and `doc_values` are disabled for a field in the mapping, {{es}} might set the `store` setting to `true` for that field. This ensures that the field’s data remains accessible for reconstructing the document’s source when using [synthetic source](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
+When the logsdb index mode uses synthetic `_source` and `doc_values` are turned off for a field in the mapping, {{es}} might set the `store` setting to `true` for that field. This ensures that the field’s data remains accessible for reconstructing the document’s source when using [synthetic source](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
 For example, this adjustment occurs with text fields when `store` is `false` and no suitable multi-field is available for reconstructing the original value.
 
