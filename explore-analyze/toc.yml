@@ -43,6 +43,7 @@ toc:
       - file: elastic-inference/eis.md
         children:
           - hidden: elastic-inference/ml-node-vs-eis.md
+          - file: elastic-inference/eis-model-list.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:

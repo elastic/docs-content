@@ -21,6 +21,8 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 * You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
+Refer to the [model catalogue](/explore-analyze/elastic-inference/eis-model-list.md) for the list of models you can use with EIS.
+
 ## Region and hosting [eis-regions]
 
 Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
@@ -73,14 +75,7 @@ The created {{infer}} endpoint uses the model for {{infer}} operations on the El
 ## Rate limits
 
 The service enforces rate limits on an ongoing basis. Exceeding a limit results in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
-
-| Model                 | Request/minute  | Tokens/minute (ingest)  | Tokens/minute (search)  | Notes                    |
-|-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
-| Claude Sonnet 3.7 {applies_to}`stack: ga 9.3+`  | 400             | -                       | -                       | No rate limit on tokens  |
-| Elastic Managed LLM {applies_to}`stack: ga 9.0-9.2`   | 400             | -                       | -                       | No rate limit on tokens. Renamed to *Claude Sonnet 3.7* in later versions  |
-| Claude Sonnet 4.5     | 400             | -                       | -                       | No rate limit on tokens  |
-| ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
-| `jina-embeddings-v3`  | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+Refer to the [model catalogue](/explore-analyze/elastic-inference/eis-model-list.md) for more information.
 
 ## Pricing
 
