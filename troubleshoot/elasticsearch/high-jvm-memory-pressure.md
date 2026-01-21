@@ -107,10 +107,13 @@ PUT _cluster/settings
 {
   "persistent": {
     "search.max_buckets": 20000,
-    "search.allow_expensive_queries": false
+    "search.allow_expensive_queries": false,
+    "search.default_search_timeout": "1m"
   }
 }
 ```
+
+You should also [avoid high search context build-up](/deploy-manage/production-guidance/optimize-performance/search-speed.md#_open_search_contexts).
 
 **Prevent mapping explosions**
 

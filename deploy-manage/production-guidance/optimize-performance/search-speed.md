@@ -464,8 +464,18 @@ This is a powerful way of making queries cheaper by putting common values in a d
 
 The `constant_keyword` is not strictly required for this optimization: it is also possible to update the client-side logic in order to route queries to the relevant indices based on filters. However `constant_keyword` makes it transparently and allows to decouple search requests from the index topology in exchange of very little overhead.
 
-
 ## Default search timeout [_default_search_timeout]
 
-By default, search requests don’t time out. You can set a timeout using the [`search.default_search_timeout`](../../../solutions/search/the-search-api.md#search-timeout) setting.
+By default, search requests don’t time out. You can set a default timeout using the [`search.default_search_timeout`](solutions/search/the-search-api.md#search-timeout) cluster setting.
 
+## Avoid high open search contexts [_open_search_contexts]
+
+When a [search executes](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model), it opens a search context per shard to act like a form of read lock. This context exists for the duration of the search request, or for [scroll searches](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll) for their designated timeout period. High scroll request search contexts can cause [high JVM memory pressure](/troubleshoot/elasticsearch/high-jvm-memory-pressure.md). 
+
+To check for `open_contexts`, poll the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats)
+
+```console
+GET _nodes/stats/indices/search
+```
+
+This value can reflects high when [task queue backlog](/troubleshoot/elasticsearch/task-queue-backlog.md) reports a high amount of pending searches. Otherwise it frequently suggests [scroll search timeouts](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) are set high. You should [clear scrolls](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#clear-scroll) as soon as they're no longer needed to release the context retention.
