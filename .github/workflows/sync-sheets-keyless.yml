@@ -4,7 +4,6 @@ on:
   # Scheduled trigger - daily at 2 AM UTC
   schedule:
     - cron: '0 2 * * *'
-  workflow_dispatch: ~
   # NOTE: for testing this
   push:
     branches: ['add-sheet2csv-automation']
