@@ -17,7 +17,7 @@ AutoOps on ECK uses the `AutoOpsAgentPolicy` custom resource to connect your ECK
 
 Define an `AutoOpsAgentPolicy` resource to connect your {{es}} clusters to AutoOps:
 
-```yaml
+```yaml subs=true
 apiVersion: autoops.k8s.elastic.co/v1alpha1
 kind: AutoOpsAgentPolicy
 metadata:
@@ -79,13 +79,13 @@ The `autoops-token`, `autoops-otel-url` and `cloud-connected-mode-api-key` are r
 
 You can connect {{es}} clusters using the `resourceSelector` with label matching:
 
-```yaml
+```yaml subs=true
 apiVersion: autoops.k8s.elastic.co/v1alpha1
 kind: AutoOpsAgentPolicy
 metadata:
   name: autoops-policy
 spec:
-  version: 9.2.1
+  version: {{version.stack}}
   autoOpsRef:
     secretName: autoops-config
   resourceSelector:
