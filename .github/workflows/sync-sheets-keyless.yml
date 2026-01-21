@@ -1,3 +1,5 @@
+name: Sync Google Sheets to CSV (Keyless Auth)
+
 on:
   # Scheduled trigger - daily at 2 AM UTC
   schedule:
