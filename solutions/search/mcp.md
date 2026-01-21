@@ -14,7 +14,7 @@ Elastic offers two MCP server options for connecting agents to your {{es}} data.
 stack: preview 9.2
 serverless: preview
 ```
-Elastic 9.2.0+ and Serverless deployments provide an [Agent Builder MCP server endpoint](https://www.elastic.co/docs/solutions/search/agent-builder/mcp-server) that exposes all built-in and custom [tools](https://www.elastic.co/docs/solutions/search/agent-builder/tools) you can use to power agentic workflows.
+Elastic 9.2.0+ and Serverless deployments provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes all built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
 
 ## {{es}} MCP server
 
