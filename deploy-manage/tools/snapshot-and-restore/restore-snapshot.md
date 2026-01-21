@@ -306,7 +306,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
     DELETE _data_stream/*?expand_wildcards=all
     ```
 
-6. Shutdown All Kibana (important, especially if you plan to restore .kibana* system indices).  
+6. Stop all {{kib}} instances connected to the cluster. This is an important step, especially if you plan to restore {{kib}} data.
 
 7. Delete all existing indices on the cluster.
 
