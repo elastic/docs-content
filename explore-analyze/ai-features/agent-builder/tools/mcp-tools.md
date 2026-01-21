@@ -1,11 +1,18 @@
 ---
 navigation_title: "MCP tools"
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3+
+  serverless:
+    elasticsearch: preview
+    observability: preview
+    security: preview
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
-
-
 
 # Model Context Protocol (MCP) tools
 

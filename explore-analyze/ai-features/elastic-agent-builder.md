@@ -1,11 +1,17 @@
 ---
 navigation_title: "Agent Builder"
 applies_to:
-  stack: preview 9.2
+  stack: preview =9.2, ga 9.3+
   serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+    elasticsearch: ga
+    observability: preview
+    security: preview
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # {{agent-builder}}
@@ -14,9 +20,11 @@ applies_to:
 
 You can use the built-in agent for natural language conversations with any {{es}} data or instance, or work programmatically with tools, agents, and conversations using Elastic APIs, MCP, and A2A.
 
-:::{important}
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
-:::
+::::{admonition} Agent Builder subscription requirements
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::
 
 ## Key capabilities
 

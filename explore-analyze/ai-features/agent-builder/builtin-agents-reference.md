@@ -2,8 +2,11 @@
 description: Reference of all built-in agents available in Elastic Agent Builder
 navigation_title: "Built-in agents"
 applies_to:
-  stack: preview =9.2, ga 9.3
-  serverless: preview
+  stack: preview =9.2, ga 9.3+
+  serverless:
+    elasticsearch: ga
+    observability: preview
+    security: preview
 products:
   - id: elasticsearch
   - id: kibana

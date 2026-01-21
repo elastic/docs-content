@@ -6,27 +6,27 @@ applies_to:
     elasticsearch: ga
     observability: preview
     security: preview
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Limitations and known issues in {{agent-builder}}
 
 ## Limitations
 
-:::{important}
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
-:::
+::::{admonition} Agent Builder subscription requirements
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::
 
 ### Feature availability
 
-#### Non-serverless deployments
-
-{{agent-builder}} is enabled by default in {{serverless-full}} for {{es}} projects.
-
-However, it must be enabled for non-serverless deployments {applies_to}`stack: preview 9.2`. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
-
-#### Serverless deployments
-
-In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
+Refer to [Get started](get-started.md#enable-agent-builder) for instructions on enabling {{agent-builder}} for your deployment type.
 
 ### A2A streaming not supported
 
