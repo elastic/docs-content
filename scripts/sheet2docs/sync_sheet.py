@@ -179,24 +179,10 @@ def authenticate_google_sheets(credentials_path: Optional[str] = None) -> gsprea
             with open(creds_file, 'r') as f:
                 creds_data = json.load(f)
 
-            # Check if it's an external account (WIF) or service account
+            # Check if it's a service account or other type (WIF, ADC, etc.)
             creds_type = creds_data.get('type', '')
 
-            if creds_type == 'external_account':
-                # Workload Identity Federation credentials
-                from google.auth import identity_pool
-                from google.auth.transport.requests import AuthorizedSession
-
-                # Create credentials and add scopes
-                creds = identity_pool.Credentials.from_info(creds_data)
-                creds = creds.with_scopes(scopes)
-                creds.refresh(Request())
-
-                # Create gspread client with authorized session
-                client = gspread.Client(auth=creds)
-                client.session = AuthorizedSession(creds)
-
-            elif creds_type == 'service_account':
+            if creds_type == 'service_account':
                 # Standard service account JSON
                 creds = ServiceAccountCredentials.from_service_account_file(
                     creds_file, scopes=scopes
@@ -204,7 +190,8 @@ def authenticate_google_sheets(credentials_path: Optional[str] = None) -> gsprea
                 client = gspread.authorize(creds)
 
             else:
-                # Fall back to google.auth.default for other types
+                # For external_account (WIF) and other types, use google.auth.default()
+                # which properly handles service account impersonation
                 from google.auth.transport.requests import AuthorizedSession
                 creds, project = google.auth.default(scopes=scopes)
                 creds.refresh(Request())
