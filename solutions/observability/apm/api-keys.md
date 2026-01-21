@@ -32,6 +32,10 @@ To secure the communication between APM Agents and either {{apm-server-or-mis}} 
 3. [Create an API key in {{kib}}](#apm-create-an-api-key)
 4. [Set the API key in your APM agents](#apm-agent-api-key)
 
+::::{note}
+If you're using [{{edot}} (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md), refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md) for EDOT-specific guidance on creating and using API keys.
+::::
+
 ## Enable API keys [apm-enable-api-key]
 
 :::::::{tab-set}
@@ -111,42 +115,12 @@ Assign the newly created `apm_agent_key_role` role to any user that wishes to cr
 
 The Applications UI has a built-in workflow that you can use to easily create and view {{apm-agent}} API keys. Only API keys created in the Applications UI will show up here.
 
-:::::::{tab-set}
-
-::::::{tab-item} Fleet-managed or APM Server binary
-
-Using a superuser account, or a user with the role created in the previous step, In {{kib}}, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Agent keys**. Enter a name for your API key and select at least one privilege.
-
-For example, to create an API key that can be used to ingest APM events and read agent central configuration, select `config_agent:read` and `event:write`.
-
-Click **Create APM Agent key** and copy the Base64 encoded API key. You will need this for the next step, and you will not be able to view it again.
-
-:::{image} /solutions/images/observability-apm-ui-api-key.png
-:alt: Applications UI API key
-:screenshot:
+:::{include} _snippets/create-apm-agent-key-applications-ui.md
 :::
 
-::::::
+For example, to create an API key that can be used to ingest {{product.apm}} events and read agent central configuration, select `config_agent:read` and `event:write`.
 
-::::::{tab-item} {{serverless-full}}
-To create a new API key:
-
-1. In your Elastic Observability Serverless project, go to any Applications page.
-1. Click **Settings**.
-1. Select the **Agent keys** tab.
-1. Click **Create APM agent key**.
-1. Name the key and assign privileges to it.
-1. Click **Create APM agent key**.
-1. Copy the key now. You will not be able to see it again. API keys do not expire.
-
-To view all API keys for your project:
-
-1. Expand **Project settings**.
-1. Select **Management**.
-1. Select **API keys**.
-::::::
-
-:::::::
+To view all API keys for your {{serverless-full}} project, expand **{{project-settings}}**, select **{{manage-app}}**, and then select **API keys**.
 
 ## Set the API key in your APM agents [apm-agent-api-key]
 
