@@ -2,8 +2,17 @@
 navigation_title: "Use workflows"
 description: "Learn how to trigger workflows from agents and invoke agents within workflow steps."
 applies_to:
-  stack: preview =9.3
-  serverless: preview
+  stack: preview =9.2, ga 9.3+
+  serverless:
+    elasticsearch: ga
+    observability: preview
+    security: preview
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Integrate workflows with {{agent-builder}}
