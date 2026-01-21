@@ -16,10 +16,10 @@ The YAML editor is the primary interface for creating and editing workflows. Thi
 
 ## Requirements [workflows-requirements]
 
-To access the YAML editor, you must:
+To access the YAML editor for workflows, you must:
 
 - Enable the Elastic Workflows [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (`workflows:ui:enabled`).
-- Have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
+- Have the appropriate subscription. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for the breakdown of available features and their associated subscription tiers.
 
 ## Editor layout [workflows-editor-layout]
 
@@ -28,7 +28,7 @@ The editor layout is composed of the following elements:
 | Component | Description |
 |-----------|-------------|
 | **Editor pane** | The main area for writing and editing workflows. To learn more about the expected workflow structure, refer to [](/explore-analyze/workflows.md) |
-| **Actions menu** | A quick-add menu for pre-formatted [triggers](triggers.md) and [step types](stepst.md).  |
+| **Actions menu** | A quick-add menu for pre-formatted [triggers](triggers.md) and [step types](steps.md).  |
 | **Save button** | Saves the current workflow. |
 | **Run button** | Manually runs the entire workflow or an individual step. <br> - Entire workflow: Click the **Run** icon {icon}`play` (next to **Save**).  <br> - Individual step: Select the step in the editor pane, then click the **Run** icon {icon}`play`.   |
 | **Executions tab** | Shows [execution history](monitor-troubleshoot.md) and real-time logs. |

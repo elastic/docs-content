@@ -2,7 +2,41 @@
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how to edit and manage existing Elastic workflows. 
+description: Learn how to view, organize, and manage your workflows.
 ---
 
-# Manage workflows
+# Manage workflows [workflows-manage]
+
+The **Workflows** page allows you to view and manage all your workflows. From the page, you can create, edit, duplicate, delete, and more with your workflows. To find the **Workflows** page, use the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::{image} /explore-analyze/images/workflows-page.png
+:alt: A view of Workflows editor
+:screenshot:
+:::
+
+## Available actions [workflow-available-actions]
+
+From the Workflows page, you can create new workflows, search and filter existing ones, run workflows on demand, edit workflow definitions, and enable or disable workflows.
+
+### Create a workflow [workflow-create]
+
+Click **Create a new workflow** to open the YAML editor. Refer to [](/explore-analyze/workflows/author-workflows.md) to learn how to use the editor.
+
+### Search and filter [workflow-search-filter]
+
+Use the search bar to filter workflows by name, description, or tag. You can also use the **Enabled** filter to only show workflows that are turned on (enabled) or off (disabled), and the **Created By** filter to only show workflows created by the specified user.
+
+### Run a workflow [workflow-run]
+
+To instantly run a workflow, click the **Run** icon {icon}`play` for a workflow, or open the **All actions** menu ({icon}`boxes_vertical`) and click **Run**. This manually runs the workflow regardless of its specified triggers. Refer to [](/explore-analyze/workflows/monitor-troubleshoot.md) to learn about monitoring workflow runs.
+
+### Edit a workflow [workflow-edit]
+
+Click the **Edit** icon to open the workflow in the YAML editor. You can also open the **All actions** menu ({icon}`boxes_vertical`) and click **Edit**.
+
+### Turn a workflow on or off [workflow-enable-disable]
+
+Use the **Enabled** toggle to control whether a workflow can run:
+
+- **Enabled**: The workflow responds to its configured triggers.
+- **Disabled**: The workflow does not run, even if triggered.

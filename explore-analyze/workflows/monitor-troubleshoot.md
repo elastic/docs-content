@@ -20,7 +20,7 @@ When a workflow runs, the execution panel displays:
 
 ## View execution history [workflows-execution-history]
 
-To review past runs, select the **Executions** tab, then click each run to see detailed logs. Worfklow runs can be `Pending`, `In progress`, `Completed`, or `Failed`. 
+To review past runs, select the **Executions** tab, then click each run to see detailed logs. Workflow runs can be `Pending`, `In progress`, `Completed`, or `Failed`. 
 
 ## Troubleshoot errors [workflows-troubleshoot-errors]
 
