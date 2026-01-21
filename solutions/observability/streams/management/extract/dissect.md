@@ -5,7 +5,7 @@ applies_to:
 ---
 # Dissect processor [streams-dissect-processor]
 
-The dissect processor parses structured log messages and extracts fields from them. It uses a set of delimiters to split the log message into fields instead of predefined patterns to match the log messages.
+The **Dissect** processor parses structured log messages and extracts fields from them. It uses a set of delimiters to split the log message into fields instead of predefined patterns to match the log messages.
 
 Dissect is much faster than Grok, and is recommend for log messages that follow a consistent, structured format.
 
