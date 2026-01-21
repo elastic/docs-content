@@ -18,9 +18,9 @@ In this tutorial, you'll create a workflow that indexes and searches through nat
 
 :::::{stepper}
 
-::::{step} Go to Worfklows
+::::{step} Go to Workflows
 
-To access the **Worfklows** page, find **Workflows** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To access the **Workflows** page, find **Workflows** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::
 
