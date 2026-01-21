@@ -19,7 +19,7 @@ Examples of triggers include:
 * A specific time or interval is reached
 * A detection alert is generated
 
-For more information, refer to [Triggers](/explore-analyze/workflows/triggers/triggers.md).
+For more information, refer to [Triggers](/explore-analyze/workflows/triggers.md).
 
 ## Steps
 
