@@ -170,7 +170,7 @@ Let's examine each part of our first workflow to understand how it works.
 
 ```yaml
 name: 🏔️ National Parks Demo
-description: Creates an {{es}} index, loads sample national park data using bulk operations, searches for parks by category, and displays the results.
+description: Creates an Elasticsearch index, loads sample national park data using bulk operations, searches for parks by category, and displays the results.
 enabled: true
 tags: ["demo", "getting-started"]
 ```
