@@ -17,7 +17,7 @@ products:
 
 # Integrate workflows with {{agent-builder}}
 
-{{agent-builder}} integrates bi-directionally with [Elastic Workflows](TODO-LINK-TO-WORKFLOWS). This integration bridges the gap between conversational reasoning and automated execution:
+{{agent-builder}} integrates bi-directionally with [Elastic Workflows](/explore-analyze/workflows.md). This integration bridges the gap between conversational reasoning and automated execution:
 
 1. **Agents trigger Workflows:** Agents can be equipped with **Workflow tools**. This allows an agent to recognize when a specific automated process is needed (like "triage this alert" or "restart the service") and run a predefined workflow to handle it.
 2. **Workflows call Agents:** Workflows can include **AI Steps**. These steps invoke an agent to handle complex reasoning tasks—such as summarizing logs, classifying security events, or making decisions—within the middle of a deterministic workflow.
@@ -132,4 +132,4 @@ steps:
 
 ## Related pages
 * [Tools overview](tools.md)
-* [Workflows](TODO-LINK-TO-WORKFLOWS)
+* [Workflows](/explore-analyze/workflows.md)
