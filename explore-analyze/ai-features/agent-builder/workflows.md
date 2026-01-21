@@ -31,6 +31,11 @@ You can wrap an existing workflow into a tool that your agent can call. This is 
 1. Navigate to **Agents > More > View all tools > New tool**.
 2. Select **Workflow** as the tool type.
 3. Select the specific workflow you want to wrap from the drop down list.
+
+    :::{note}
+    The UI will automatically detect the `inputs` defined in your workflow YAML and map them to tool parameters.
+    :::
+
 4. Fill in the required fields:
   * **Tool ID**: Create a unique identifier for the tool.
   * **Description**: Ensure the description clearly explains *when* the agent should use this tool. 
@@ -38,8 +43,9 @@ You can wrap an existing workflow into a tool that your agent can call. This is 
 
 ### Invoke the tool in chat
 Once you assign this tool to an agent, the agent can trigger the workflow autonomously.
-1. Navigate to **Agents > More > View all agents** and add the tool to the selected agent.
-2. In the **Agent chat**, and ask a question that triggers the workflow.
+
+1. Navigate to **Agents**, select your agent, and click **Add tool** to assign the workflow tool you just created.
+2. Open the **Agent chat** and ask a question that triggers the workflow.
 3. The agent will extract the necessary parameters from the conversation, execute the workflow, and return the workflow's final output to the chat.
 
 :::{image} images/agent-builder-worflow-tool.png
@@ -49,37 +55,57 @@ Once you assign this tool to an agent, the agent can trigger the workflow autono
 :::
 
 ## Use agents in workflows
-You can incorporate AI agents into your automated workflows using the `ai.agent` step type. This allows you to treat an agent as a "reasoning engine" that takes data from previous steps, processes it, and returns a human-readable summary or decision.
+You can incorporate AI agents into your automated workflows using the `ai.agent` step type. This allows you to treat an agent as a "reasoning engine" that takes data from previous steps, processes it, and returns a human-readable summary.
 
 ### Add an AI Step
 When authoring a workflow, use the `ai.agent` type to invoke an agent.
 
 1. Navigate to **Workflows**.
-2. Select **Create a new workflow** as the tool type.
-3. Add workflow step calling the agent or something
+2. Select **Create a new workflow**
+3. Add workflow step calling the selected AI agent.
 
-#### Example: AI Analysis Step
-This step calls a specific agent to analyze data retrieved in previous steps.
+#### Example: Analyze Flight Delays
+This workflow searches the sample flight data for delays and asks the **Elastic AI Agent** to summarize the most impacted airlines.
 
 ```yaml
-name: list_agents
+version: "1"
+name: analyze_flight_delays
+description: Fetches delayed flights and uses an agent to summarize the impact.
 enabled: true
 triggers:
   - type: manual
 steps:
-  - name: ai_analysis
+  # Step 1: Get data from Elasticsearch
+  - name: get_delayed_flights
+    type: elasticsearch.search
+    with:
+      index: "kibana_sample_data_flights"
+      query:
+        range:
+          FlightDelayMin:
+            gt: 60
+      size: 5
+
+  # Step 2: Ask the agent to reason over the data
+  - name: summarize_delays
     type: ai.agent
     with:
-      agent_id: "agent_security_analyst" <1>
-      message: | <2>
-        Analyze the following error logs and determine if they indicate a security breach:
-        {{ steps.get_error_logs.output }}
+      agent_id: "elastic-ai-agent"
+      message: |
+        Review the following flight delay records and summarize which airlines are most affected and the average delay time:
+        {{ steps.get_delayed_flights.output }}
+
+  # Step 3: Print the agent's summary
+  - name: print_summary
+    type: console
+    with:
+      message: "{{ steps.summarize_delays.output }}"
 ```
 1. **agent_id**: The ID of the agent you want to call (must exist in Agent Builder).
 2. **message**: The prompt sent to the agent. You can use template variables (like {{ steps.step_name.output }}) to inject data dynamically.
 
 ### Call Agent Builder APIs
-For advanced use cases, workflows can interact with {{agent-builder}} programmatically using the generic kibana.request step. This allows you to perform management actions that aren't covered by the `ai.agent` step, such as listing available agents.
+For advanced use cases, workflows can interact with {{agent-builder}} programmatically using the generic `kibana.request` step. This allows you to perform management actions that aren't covered by the `ai.agent` step, such as listing available agents.
 
 ```yaml
 name: list_agents
