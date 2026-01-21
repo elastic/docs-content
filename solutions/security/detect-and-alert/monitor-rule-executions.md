@@ -107,7 +107,7 @@ You can find the setting that controls the automatic gap fill feature by clickin
 The **Auto gap fill status:** field (located in the panel above the Rules table) shows whether the automatic gap fill feature is on or off. Click the field value to access the automatic gap fill settings.
 ::::
 
-Details about the job and scheduled gap fill tasks are captured in the gap fill scheduler logs. You access the gap fill scheduler logs by clicking **logs** in the **Auto gap fill settings** section description. 
+Details about the job and scheduled gap fill tasks are captured in the gap fill scheduler logs. You access the gap fill scheduler logs by clicking **Gap fill scheduler** in the **Auto gap fill settings** section description. 
 
 In the scheduler logs table, expand the rows to learn more about gaps that were discovered and gap fill tasks that were scheduled each time the automatic gap fill job ran. You can also find key details such as:
 
