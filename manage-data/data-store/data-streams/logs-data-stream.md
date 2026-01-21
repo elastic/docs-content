@@ -10,7 +10,7 @@ products:
 
 # Logs data streams [logs-data-stream]
 
-Logs data streams store data from logs more efficiently. In benchmarks, logs data streams reduced the storage footprint of logs data by 60%, with a small (10-20%) penalty to indexing performance. The exact impact varies by data set and version.
+Logs data streams store log data more efficiently. In benchmarks, logsdb index mode reduced the storage footprint of logs data by up to 60%, with a small impact (10-20%) to indexing performance. Results vary depending on your data set and {{es}} version.
 
 Logs data streams are created when the `index.mode` in the relevant template is set to `logsdb`, either automatically or manually.
 
@@ -33,7 +33,7 @@ In most cases, you won't need to enable logsdb mode manually. If you do need to 
 
 To enable logsdb, set `index.mode` to `logsdb` in the relevant [index template](#logsdb-index-template) or [@custom component template](#logsdb-component-template):
 
-- **New data streams:** Create a new template, specifying `logsdb` for the index mode. Data streams matching the template's index pattern will have logsdb mode enabled.
+- **New data streams:** Create a new template, specifying `logsdb` for the index mode. New data streams that match the template's index pattern will use logsdb mode automatically.
 - **Existing data streams:** Update the templates the data stream uses, including any [managed templates](/manage-data/data-store/data-streams/logs-data-stream-managed.md). Logsdb mode will take effect on the next [rollover](/manage-data/data-store/data-streams.md#data-streams-rollover).
 
 ### Set logsdb mode in an index template [logsdb-index-template]

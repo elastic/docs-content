@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# Enable logsdb for managed templates [logsdb-managed]
+# Enable logsdb for integrations and managed templates [logsdb-managed]
 
 This page shows you how to enable logsdb index mode for data streams that use managed templates, such as integration data streams. You can use `@custom` [component templates](/manage-data/data-store/index-basics.md#index-management-manage-component-templates) to enable logsdb for managed templates.
 
@@ -38,7 +38,7 @@ curl -sL epr.elastic.co/package/mysql/1.28.1 | jq '.data_streams[] |
 select(.type == "logs") | {dataset, type}'
 ```
 
-This command returns the integration's logs data streams. Example:
+This command returns the integration's logs data streams.
 
 ```json
 {
@@ -145,7 +145,7 @@ Make sure to consider your cluster's resource usage before enabling logsdb on ma
 
 ::::::{step} Verify logsdb mode
 
-Changes are applied to existing data streams on [rollover](/manage-data/data-store/data-streams.md#data-streams-rollover). Data streams roll over automatically based on your index lifecycle policy, or you can [trigger a rollover manually](/manage-data/data-store/data-streams.md#data-streams-rollover).
+Changes are applied to existing data streams on [rollover](/manage-data/data-store/data-streams.md#data-streams-rollover). Data streams roll over automatically based on your index lifecycle policy, or you can [trigger a rollover manually](/manage-data/data-store/data-streams/use-data-stream.md#manually-roll-over-a-data-stream).
 
 After your data streams roll over, verify that logsdb is enabled.
 

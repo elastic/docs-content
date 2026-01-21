@@ -8,11 +8,11 @@ products:
 
 # Configure a logs data stream
 
-These concepts and settings can help you optimize a [logs data stream](/manage-data/data-store/data-streams/logs-data-stream.md). 
+Use these concepts and settings to optimize a [logs data stream](/manage-data/data-store/data-streams/logs-data-stream.md). 
 
 ## Synthetic source [logsdb-synthetic-source]
 
-If you have the required [subscription](https://www.elastic.co/subscriptions), logsdb index mode uses [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), which omits storing the original `_source` field. Instead, the document source is synthesized from doc values or stored fields upon document retrieval.
+If you have the required [subscription](https://www.elastic.co/subscriptions), logsdb index mode uses [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), which doesn't store the original `_source` field. Instead, the document source is synthesized from doc values or stored fields upon document retrieval.
 
 If you don’t have the required [subscription](https://www.elastic.co/subscriptions), logsdb mode uses the original `_source` field.
 
