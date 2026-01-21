@@ -20,9 +20,9 @@ Broad questions or data spread across many indices can also cause slow responses
 
 ## Symptoms
 
-In the UI, you may see messages such as:
+In the UI, you might encounter messages such as:
 
-* _This conversation exceeded the maximum context length. This typically occurs when tools return a very large response. Try again with a different request or start a new conversation._
+* _This conversation exceeded the maximum context length. This typically occurs when tools return a large response. Try again with a different request or start a new conversation._
 * _Something in the query caused the model to freeze mid-thought. Performance debugging can be broad - try narrowing your question._
 
 The API returns an error with `errCode: context_length_exceeded`:
@@ -102,3 +102,9 @@ Assign your custom {{esql}} tools to the custom agent. Update the agent's system
 :::::
 
 ::::::
+
+## Related pages
+
+- [Troubleshooting](../troubleshooting.md)
+- [Monitor token usage](../monitor-usage.md)
+- [Custom tools](../tools.md#create-custom-tools)
