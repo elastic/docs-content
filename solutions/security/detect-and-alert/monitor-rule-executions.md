@@ -99,7 +99,7 @@ stack: ga 9.3+
 You must have the appropriate subscription to use the automatic gap fill feature. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::
 
-To automate gap remediation for your rules, enable the automatic gap fill feature. When turned on, a job runs every five minutes to check for new and existing gaps, then schedules tasks to fill them. 
+To automate gap remediation for your rules, enable the automatic gap fill feature. When turned on, a job runs every two minutes to check for new and existing gaps, then schedules tasks to fill them. 
 
 You can find the setting that controls the automatic gap fill feature by clicking **Settings** (above the Rules table), then going to the **Auto gap fill settings** section. Use the toggle to turn the feature on and off. 
 
