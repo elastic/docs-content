@@ -22,10 +22,20 @@ This section describes our version policy for {{ech}}, including:
 
 ## Available {{stack}} versions [ec-version-policy-available]
 
-{{stack}} uses a versions code that is constructed of three numbers separated by dots: the leftmost number is the number of the major release, the middle number is the number of the minor release and the rightmost number is the number of the maintenance release (e.g., 8.3.2 means major release 8, minor release 3 and maintenance release 2).
+{{stack}} uses a version numbering scheme based on three numbers separated by dots. The leftmost number indicates the major release, the middle number indicates the minor release, and the rightmost number indicates the maintenance release. For example, `8.3.2` represents major release 8, minor release 3, and maintenance release 2.
 
-You might sometimes notice additional versions listed in the user interface beyond the versions we currently support and maintain, such as [release candidate builds](#ec-release-builds) and older versions. If a version is listed in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
+By default, the following versions are available in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
+* The two latest minor versions of the latest major version
+* The latest minor version of the previous major version
+
+For example, if the latest {{stack}} version is 9.2.3, {{ech}} makes the following versions available:
+* 9.1 and 9.2
+* 8.19
+
+Additional versions can appear in the UI, such as [release candidate builds](#ec-release-builds) or older versions that are not [end-of-life (EOL)](#ec-version-policy-eol) and that you already have a running deployment on. This allows you, for example, to [clone an existing deployment](/deploy-manage/tools/snapshot-and-restore/ece-restore-snapshots-into-new-deployment.md) that uses one of those versions.
+
+Separately from the UI, the {{ech}} API allows you to [deploy any {{stack}} version as long as it is not EOL](cloud://reference/cloud-hosted/ec-api-deployment-crud.md#ec_using_the_api_to_create_deployment_with_non_eol_versions), even if that version is not listed in the UI.
 
 ## New {{stack}} versions [ec-version-policy-new]
 
