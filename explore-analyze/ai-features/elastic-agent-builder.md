@@ -2,10 +2,7 @@
 navigation_title: "Agent Builder"
 applies_to:
   stack: preview =9.2, ga 9.3+
-  serverless:
-    elasticsearch: ga
-    observability: preview
-    security: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
