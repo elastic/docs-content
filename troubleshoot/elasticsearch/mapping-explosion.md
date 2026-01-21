@@ -10,7 +10,7 @@ products:
 
 # Mapping explosion [mapping-explosion]
 
-In Elasticsearch, a mapping or [mapped field](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) defines the fields in an index and their data types, such as text for full-text search, keyword for exact filtering, or boolean for true/false values. Think of it as a schema that tells Elasticsearch how to interpret and store each piece of data. When the total number of mapped fields across an index grows excessively large, the cluster can experience performance degradation such as slower searches, high heap usage, and prolonged startup times. 
+In Elasticsearch, a mapping or [mapped field](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) defines the fields in an index and their data types, such as text for full-text search, keyword for exact filtering, or boolean for true/false values. Think of it as a schema that tells Elasticsearch how to interpret and store each piece of data.
 
 By default, {{es}} allows for [dynamic mappings](/manage-data/data-store/mapping/dynamic-mapping.md) which allows on-the-fly creation of fields. Runaway field growth is colloquially called "mapping explosion". Excessively mapped fields within or across indices can cause the cluster to experience performance degradation such as slower searches, [high JVM memory pressure](/troubleshoot/elasticsearch/high-jvm-memory-pressure.md), and prolonged startup times.
 
