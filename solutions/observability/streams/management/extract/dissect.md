@@ -5,7 +5,7 @@ applies_to:
 ---
 # Dissect processor [streams-dissect-processor]
 
-The dissect processor parses structured log messages and extracts fields from them. It uses a set of delimiters to split the log message into fields instead of predefined patterns to match the log messages.
+The **Dissect** processor parses structured log messages and extracts fields from them. It uses a set of delimiters to split the log message into fields instead of predefined patterns to match the log messages.
 
 Dissect is much faster than Grok, and is recommend for log messages that follow a consistent, structured format.
 
@@ -13,10 +13,10 @@ To parse a log message with a dissect processor:
 
 1. Select **Create** → **Create processor**.
 1. Select **Dissect** from the **Processor** menu.
-1. Set the **Source Field** to the field you want to dissect
+1. Set the **Source Field** to the field you want to dissect.
 1. Set the delimiters you want to use in the **Pattern** field. Refer to the [example pattern](#streams-dissect-example) for more information on setting delimiters.
 
-This functionality uses the {{es}} dissect pipeline processor. Refer to the [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) {{es}} documentation for more information.
+This functionality uses the {{es}} [Dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
 
 ## Example dissect pattern [streams-dissect-example]
 

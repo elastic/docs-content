@@ -1,32 +1,29 @@
 ---
 navigation_title: "Limitations"
 applies_to:
-  stack: preview 9.2
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Limitations and known issues in {{agent-builder}}
 
 ## Limitations
 
-:::{important}
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
-:::
+::::{admonition} Agent Builder subscription requirements
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::
 
 ### Feature availability
 
-#### Non-serverless deployments
-
-{{agent-builder}} is enabled by default in {{serverless-full}} for {{es}} projects.
-
-However, it must be enabled for non-serverless deployments {applies_to}`stack: preview 9.2`. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
-
-#### Serverless deployments
-
-In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
+Refer to [Get started](get-started.md#enable-agent-builder) for instructions on enabling {{agent-builder}} for your deployment type.
 
 ### A2A streaming not supported
 
@@ -40,8 +37,6 @@ The [A2A server](a2a-server.md) does not currently support streaming operations.
 
 ### Incompatible LLMs
 
-While Elastic offers LLM [connectors](kibana://reference/connectors-kibana.md) for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}. We recommend using the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) (the default). Learn more in [](models.md).
-
 The following errors suggest your selected model may not be compatible with {{agent-builder}}:
 
 ```console-response
@@ -51,6 +46,8 @@ Error: Invalid function call syntax
 ```console-response
 Error executing agent: No tool calls found in the response.
 ```
+
+To learn more, refer to [](models.md)
 
 ### Context length exceeded error [conversation-length-exceeded]
 
