@@ -50,6 +50,7 @@ jobs:
         with:
           workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+          project_id: ${{ vars.GCP_PROJECT_ID }}
 
       # The auth action sets GOOGLE_APPLICATION_CREDENTIALS automatically
       - name: Run sync script
