@@ -28,13 +28,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Keyless authentication using Workload Identity Federation
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v3
-        with:
-          service_account: "${{ vars.GCP_SERVICE_ACCOUNT }}"
-          workload_identity_provider: "${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}"
-
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
