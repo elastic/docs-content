@@ -44,6 +44,15 @@ Each tool is an atomic operation with a defined signature - accepting typed para
 Tool execution and result processing consume tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md).
 :::
 
+## Tool types
+
+{{agent-builder}} supports several types of tools:
+
+- **[Index search tools](tools/index-search-tools.md)**: Scope searches to specific indices or patterns. The LLM dynamically constructs queries based on user requests.
+- **[ES|QL tools](tools/esql-tools.md)**: Execute pre-defined {{esql}} queries with parameterized inputs for precise, repeatable data retrieval.
+- **[MCP tools](tools/mcp-tools.md)**: Connect to external Model Context Protocol servers, enabling agents to use remote tools and services.
+% - **Workflow tools**: Call pre-defined Workflows directly from the agent chat.
+
 ## Built-in tools
 
 {{agent-builder}} ships with a comprehensive set of built-in tools that provide core capabilities for working with your {{es}} data. These tools are ready to use. They cannot be modified or deleted.
