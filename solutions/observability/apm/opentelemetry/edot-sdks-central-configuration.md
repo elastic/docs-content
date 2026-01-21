@@ -18,10 +18,6 @@ APM Agent Central Configuration allows you to fine-tune your EDOT SDKs from with
 
 To get started, select the services and environments you want to configure. The Applications UI lets you know when your EDOT SDKs have applied your configurations.
 
-::::{important}
-To configure EDOT SDKs through APM Agent Central Configuration, refer to [EDOT SDKs Central Configuration](/solutions/observability/apm/opentelemetry/edot-sdks-central-configuration.md).
-::::
-
 ## Precedence [_precedence]
 
 Configurations set from the Applications UI take precedence over configurations set locally in each EDOT SDK. If the EDOT Collector is offline, reports an error, or is slow to respond, EDOT SDKs use local defaults until they’re able to update the configuration.

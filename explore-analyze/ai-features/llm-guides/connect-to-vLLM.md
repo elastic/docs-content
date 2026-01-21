@@ -1,4 +1,5 @@
 ---
+navigation_title: Connect to vLLM for {{elastic-sec}}
 applies_to:
   stack: all
   serverless:
@@ -8,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Connect to your own LLM using vLLM (air gapped environments)
+# Connect to your own LLM using vLLM (air-gapped environments)
 This guide shows you how to run an OpenAI-compatible large language model with [vLLM](https://docs.vllm.ai/en/latest/) and connect it to Elastic. The setup runs inside Docker or Podman, is served through an Nginx reverse proxy, and does not require any outbound network access. This makes it a safe option for air-gapped environments or deployments with strict network controls.
 
 The steps below show one example configuration, but you can use any model supported by vLLM, including private and gated models on Hugging Face.
@@ -189,4 +190,4 @@ With your vLLM connector set up, you can use it to power features including:
 * [Automatic import](/solutions/security/get-started/automatic-import.md): Use AI to create custom integrations for third-party data sources.
 * [AI Assistant for Observability and Search](/solutions/observability/observability-ai-assistant.md): Interact with an agent designed to assist with {{observability}} and Search tasks.
 
-You can also learn how to [set up other types of LLM connectors](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+You can also learn how to [set up other types of LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md).

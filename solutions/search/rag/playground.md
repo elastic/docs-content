@@ -102,7 +102,7 @@ To use Playground, you’ll need the following:
 
 You can also use locally hosted LLMs that are compatible with the OpenAI SDK. Once you’ve set up your LLM, you can connect to it using the OpenAI connector. Refer to the following for examples:
 
-* [Using LM Studio](../../security/ai/connect-to-own-local-llm.md)
+* [Using LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md)
 * [LocalAI with `docker-compose`](https://www.elastic.co/search-labs/blog/localai-for-text-embeddings)
 
 ::::
@@ -169,6 +169,10 @@ We’ve also provided some Jupyter notebooks to easily ingest sample data into {
 
 
 ### Select {{es}} indices [playground-getting-started-index]
+
+::::{note}
+Playground does not support [data stream](/manage-data/data-store/data-streams.md) indices.
+::::
 
 Once you’ve connected to your LLM provider, it’s time to choose the data you want to search.
 

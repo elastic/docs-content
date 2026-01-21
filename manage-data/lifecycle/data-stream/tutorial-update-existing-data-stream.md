@@ -8,9 +8,9 @@ products:
   - id: elasticsearch
 ---
 
-# Tutorial: Update the lifecycle of a data stream [tutorial-manage-existing-data-stream]
+# Update the lifecycle of a data stream [tutorial-manage-existing-data-stream]
 
-Follow these steps to configure or remove data stream lifecycle settings for an existing, individual data stream:
+Follow these steps to configure or remove data stream lifecycle settings for an existing, individual data stream.
 
 - [Set a data stream’s lifecycle](#set-lifecycle)
 - [Remove the lifecycle for a data stream](#delete-lifecycle)

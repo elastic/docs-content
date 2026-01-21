@@ -410,7 +410,7 @@ You only need to create this user on the **local** cluster.
 ::::
 
 
-Users with the `remote-search` role can then [search across clusters](../../solutions/search/cross-cluster-search.md).
+Users with the `remote-search` role can then [search across clusters](../../explore-analyze/cross-cluster-search.md).
 
 
 ### Configure privileges for {{ccs}} and {{kib}} [clusters-privileges-ccs-kibana-cert]

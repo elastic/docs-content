@@ -9,6 +9,153 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+
+## December 16, 2025 [serverless-changelog-12162025]
+
+### Features and enhancements [serverless-changelog-12162025-features-enhancements]
+
+* Adds four new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md) for {{serverless-full}}: GCP Singapore (`asia-southeast1`), GCP London (`europe-west2`), GCP Frankfurt (`europe-west3`), and GCP Netherlands (`europe-west4`)
+* Adds an integration knowledge opt-out UI setting and feature flag [#245080]({{kib-pull}}245080)
+* Redesigns the single and bulk agent actions menus in {{fleet}}, organizing commonly used actions at the top level and grouping other actions into nested menus by use case [#245174]({{kib-pull}}245174)
+* Adds agent internal YAML settings [#245819]({{kib-pull}}245819)
+* Adds support for chain controls [#242909]({{kib-pull}}242909)
+* Improves validation and autocomplete for CASE [#244280]({{kib-pull}}244280)
+* Avoids redundant requests when breakdown or chart interval changes [#245523]({{kib-pull}}245523)
+* Adds support for filtering on multivalue fields [#245554]({{kib-pull}}245554)
+* Adds an example plugin for UX testing of the {{esql}} editor [#245792]({{kib-pull}}245792)
+* Adds a **Copy as Markdown** option for selected results [#245545]({{kib-pull}}245545)
+* Adds an internal API for global params sync [#239284]({{kib-pull}}239284)
+* Adds the ability to bulk mute and unmute alerts [#245690]({{kib-pull}}245690)
+* Adds Rules feature privileges, allowing access to {{elastic-sec}} rules to be explicitly set for user roles [#239634]({{kib-pull}}239634)
+* Updates the threat hunting UI [#243311]({{kib-pull}}243311)
+* Adds support for QRadar reference sets as lookups [#244924]({{kib-pull}}244924)
+* Shows analyzer in full height [#245857]({{kib-pull}}245857)
+* Shows session view in full height [#245888]({{kib-pull}}245888)
+* Adds an integration knowledge platform tool to Agent Builder [#245259]({{kib-pull}}245259)
+* Adds Agent Builder UI settings, RBAC, navigation, and tour [#246089]({{kib-pull}}246089)
+* Redesigns Lookup join file upload [#244550]({{kib-pull}}244550)
+* Adds an action to create an anomaly detection alerting rule [#241274]({{kib-pull}}241274)
+* Adds an empty state for the Partitioning tab [#244893]({{kib-pull}}244893)
+* Improves attachment filters with multi-type selection, server-side filtering, and a suggestions limit [#245248]({{kib-pull}}245248)
+* Adds a new **Similar errors** section with an occurrences chart [#244665]({{kib-pull}}244665)
+* Adds dashboard ownership and write-restricted mode, allowing you to control who can edit your dashboards regardless of broader space permissions [#224552]({{kib-pull}}224552)
+* Adds a new gap fill status column to the Rules page [#242595]({{kib-pull}}242595)
+* Validates space ownership when unlinking attachments [#245250]({{kib-pull}}245250)
+* Adds `deactivate_all_instrumentations`, `deactivate_instrumentations`, `send_logs`, `send_metrics`, and `send_traces` agent configuration settings for EDOT PHP [#246021]({{kib-pull}}246021)
+* Adds dashboard suggestions for ECS Kubernetes and OTel dashboards when selecting pods in the Infrastructure inventory UI [#245784]({{kib-pull}}245784)
+* Enhances search for the main Cases page [#245321]({{kib-pull}}245321)
+* Adds concurrency to KMeansLocal [#139239]({{es-pull}}139239)
+* Enables CCS tests for {{esql}} subqueries [#137776]({{es-pull}}137776)
+* Adds CCS support for the {{esql}} Inference command [#139244]({{es-pull}}139244)
+* Introduces usage limits for COMPLETION and RERANK [#139074]({{es-pull}}139074)
+* Adds privileges to the {{kib}} System role to manage internal indexes in support of {{elastic-defend}} features [#138993]({{es-pull}}138993)
+* Optimizes native bulk dot product scoring for Int7 [#139069]({{es-pull}}139069)
+* Adds Azure OpenAI chat completion support [#138726]({{es-pull}}138726)
+* Adds NVIDIA support to the inference plugin [#132388]({{es-pull}}132388)
+* Adds TDigest histogram as a metric [#139247]({{es-pull}}139247)
+* Adds a `TOP_SNIPPETS` function to return the best snippets for a field [#138940]({{es-pull}}138940)
+* Takes `TOP_SNIPPETS` out of snapshot [#139272]({{es-pull}}139272)
+* Prevents `AggregateMetricDouble` fields from building BKD indexes [#138724]({{es-pull}}138724)
+* Bumps jruby/joni to 2.2.6 [#139075]({{es-pull}}139075)
+* Enables bfloat16 and on-disk rescoring for dense vectors [#138492]({{es-pull}}138492)
+* Enables the new `exponential_histogram` field type [#138968]({{es-pull}}138968)
+* Adds planning detailed timing to profile information in {{esql}} [#138564]({{es-pull}}138564)
+* Optimizes `GROUP BY ALL` in {{esql}} [#139130]({{es-pull}}139130)
+* Pulls `OrderBy` above `InlineJoin` in {{esql}} [#137648]({{es-pull}}137648)
+* Re-enables bfloat16 in semantic text [#139347]({{es-pull}}139347)
+* Adds filter support for pushing down `COUNT(*) BY DATE_TRUNC` [#138765]({{es-pull}}138765)
+* Restricts GPU indexing to FLOAT element types [#139084]({{es-pull}}139084)
+* Introduces an adaptive HNSW Patience collector [#138685]({{es-pull}}138685)
+* Rewrites terms queries to a filter on `constant_keyword` fields [#139106]({{es-pull}}139106)
+* Minimizes doc values fetches in `TSDBSyntheticIdFieldsProducer` [#139053]({{es-pull}}139053)
+* Monitors `/proc/net/tcp{,6}` for retransmissions
+* Removes the `DOC_VALUES_SKIPPER` feature flag [#138723]({{es-pull}}138723)
+* Removes the `gpu_vectors_indexing` feature flag [#139318]({{es-pull}}139318)
+* Adds semantic search CCS support when `ccs_minimize_roundtrips=false` [#138982]({{es-pull}}138982)
+* Stores the `@timestamp` field value range in the compound commit header
+* Uses the existing `DocumentMapper` when creating a new `MapperService` [#138489]({{es-pull}}138489)
+* Uses the new bulk scoring dot product for max inner product [#139409]({{es-pull}}139409)
+
+
+### Fixes [serverless-changelog-12162025-fixes]
+
+* Enables storing secrets in {{fleet-server}} host config if {{fleet-server}} is running at a minimum supported version [#237464]({{kib-pull}}237464)
+* Fixes Discover tab initialization [#245752]({{kib-pull}}245752)
+* Improves error handling for tool responses [#241425]({{kib-pull}}241425)
+* Updates Gemini connector configuration [#245647]({{kib-pull}}245647)
+* Limits the API for retrieving gap summaries to 100 `rule_id`s per request [#245924]({{kib-pull}}245924)
+* Fixes "now" and mixed-format date handling in the share modal [#245539]({{kib-pull}}245539)
+* Ensures chart tooltips are always shown correctly in anomaly detection result views [#246077]({{kib-pull}}246077)
+* Turns off geopoint mapping in the processing preview [#245506]({{kib-pull}}245506)
+* Validates child stream input [#242581]({{kib-pull}}242581)
+* Fixes an issue where the upgrade assistant would incorrectly warn about nodes breaching the low watermark despite the `max_headroom` setting [#243906]({{kib-pull}}243906)
+* Fixes an ECS-incompatible value in the logs [#245706]({{kib-pull}}245706)
+* Fixes grammatical issues in the Solution Nav tour and simplifies the content by consolidating multiple links into one [#245718]({{kib-pull}}245718)
+* Fixes Discover trace waterfall behavior with duplicate spans [#244984]({{kib-pull}}244984)
+* Avoids JVM metric conflicts with explicit cast [#244151]({{kib-pull}}244151)
+* Fixes an issue where metadata filtering was confusing or broken when typing "OR" in Host view [#233836]({{kib-pull}}233836)
+* Compares {{esql}} query builders using identity [#139080]({{es-pull}}139080)
+* Adds support for chunking settings for sparse embeddings in a custom service to the Inference API [#138776]({{es-pull}}138776)
+* Uses the `dimensions` field in JinaAI `text_embedding` requests to the Inference API [#139395]({{es-pull}}139395)
+* Adds a configurable `max_batch_size` for GoogleVertexAI embedding service settings [#138047]({{es-pull}}138047)
+* Improves `CompoundRetrieverBuilder` failure handling [#136732]({{es-pull}}136732)
+* Treats dash-prefixed expressions as index exclusions [#138467]({{es-pull}}138467)
+* Enables auto prefiltering for queries on dense `semantic_text` fields [#138989]({{es-pull}}138989)
+* Disallows index type updates to `bbq_disk`, reverting (#131760) [#139061]({{es-pull}}139061)
+* Enforces DiskBBQ licensing [#139087]({{es-pull}}139087)
+* Ensures integer sorts are rewritten to long sorts for backward compatible indexes [#139293]({{es-pull}}139293)
+* Fixes `project_routing` in EQL [#139366]({{es-pull}}139366)
+* Changes `FUSE KEY BY` to accept a list of `qualifiedName` [#139071]({{es-pull}}139071)
+* Fixes metrics that took between 1 and 10 hours in {{esql}} [#139257]({{es-pull}}139257)
+* Prunes `InlineJoin` right aggregations by delegating to the child plan in {{esql}} [#139357]({{es-pull}}139357)
+* Fixes downsampling with disabled subobjects [#138715]({{es-pull}}138715)
+* Fixes an offset maths bug in `InetAddress` parsing [#139420]({{es-pull}}139420)
+* Avoids `EsqlIllegalArgumentException` for invalid window values [#139470]({{es-pull}}139470)
+
+
+
+
+## December 8, 2025 [serverless-changelog-12082025]
+
+### Features and enhancements [serverless-changelog-12082025-features-enhancements]
+
+* Allows you to search scheduled reports by title and creator [#243841]({{kib-pull}}243841)
+* Updates the rule flapping schema to add an optional `enabled` field [#243855]({{kib-pull}}243855)
+* Improves suggestions for `LIKE` and `RLIKE` operators so they only suggest string-compatible options [#244903]({{kib-pull}}244903)
+* Redesigns the Lookup index editor with a new layout and controls [#244480]({{kib-pull}}244480)
+* Adds support for global custom ingest pipelines for service-level objectives (SLOs), allowing you to create a single pipeline that applies to all SLO rollup and summary documents [#245025]({{kib-pull}}245025)
+* Changes SLO rollup indexing to store service level indicator (SLI) data daily instead of monthly by default, with override support through a global custom ingest pipeline [#244978]({{kib-pull}}244978)
+* Adds ELSER in Elastic Inference Service (EIS) as a model option for the Observability AI Assistant knowledge base [#243298]({{kib-pull}}243298)
+* Adds an **Edit tags** action that lets you manually apply workflow tags to alerts [#243792]({{kib-pull}}243792)
+* Allows you to view and filter alerts by manually added workflow tags [#244251]({{kib-pull}}244251)
+* Adds a built-in product documentation tool to Agent Builder, available only when product documentation is installed [#242598]({{kib-pull}}242598)
+* Adds a platform cases tool and experimental security attachments and tools to Agent Builder to support existing **Ask AI Assistant** and **View in Agent Builder** workflows [#243574]({{kib-pull}}243574).
+* Adds an alerts search tool and two security agents (Alerts Agent and Entity Agent) to Agent Builder [#245205]({{kib-pull}}245205)
+* Updates the API keys management page to default to displaying personal API keys only [#245261]({{kib-pull}}245261)
+* Adds two new preconfigured connectors (General Purpose LLM v2 and General Purpose LLM v3) and renames the Elastic Managed LLM connector to General Purpose LLM v1 [#242791]({{kib-pull}}242791)
+* Adds the Groq icon to the providers list displayed during AI Connector and Inference endpoint creation [#244962]({{kib-pull}}244962)
+* Adds the **Suggest a pipeline** option in the Processing tab of streams to help generate ingest pipelines [#243950]({{kib-pull}}243950)
+* Adds support for `geo_point` fields in the schema editor for classic streams [#244356]({{kib-pull}}244356)
+* Enhances the Streams attachments feature with a details flyout, a better user experience, and better user feedback [#244880]({{kib-pull}}244880)
+* Adds validation for Streamlang DSL to enforce field namespacing in wired streams and detect type mismatches in processor configurations [#244221]({{kib-pull}}244221)
+* Adds an onboarding tour to the Streams UI to guide new users through core workflows [#244808]({{kib-pull}}244808)
+* Allows you to filter {{esql}} charts in dashboards [#243439]({{kib-pull}}243439)
+* Enables Value reports in {{ech}} and adds logic to export them using the share plugin [#243511]({{kib-pull}}243511)
+* Adds a **Span links** badge to the unified trace waterfall view [#244389]({{kib-pull}}244389)
+* Adds dynamic form elements for the IBM Resilient connector fields, improving the configuration experience [#238869]({{kib-pull}}238869)
+* Adds a time range selector to the Cases page to simplify filtering by timeframe [#243409]({{kib-pull}}243409)
+
+### Fixes [serverless-changelog-12082025-fixes]
+
+* Fixes an issue where `alert.consecutiveMatches` was missing in the action context for rule executions [#244997]({{kib-pull}}244997)
+* Fixes an issue where the Security alerts table did not update columns correctly when switching view mode [#245253]({{kib-pull}}245253)
+* Handles alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559)
+* Fixes an issue where the SLOs page could cause inconsistent browser back button behavior [#242761]({{kib-pull}}242761)
+* Standardizes error logging to make troubleshooting more consistent [#245030]({{kib-pull}}245030)
+* Fixes an issue that prevented IdP-initiated authentication when multiple OIDC providers were configured [#243869]({{kib-pull}}243869)
+* Improves UIAM reliability by increasing container health check timeouts and populating the UIAM shared secret in {{es}} [#245238]({{kib-pull}}245238)
+* Fixes CSP-agnostic regressions by removing cloud provider host checks, ensuring all cloud providers for {{ech}} deployments and {{serverless-short}} projects are supported [#242592]({{kib-pull}}242592)
+
 ## December 2, 2025 [serverless-changelog-12022025]
 
 ### Features and enhancements [serverless-changelog-12022025-features-enhancements]

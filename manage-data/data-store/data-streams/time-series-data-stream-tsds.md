@@ -100,6 +100,7 @@ A time series data stream works like a regular data stream, with some key differ
 * **Dimension-based routing:** The routing logic uses dimension fields to map all data points of a time series to the same shard, improving storage efficiency and query performance. Duplicate data points are rejected.
 * **Sorting:** A TSDS uses internal [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) to order shard segments by `_tsid` and `@timestamp`, for better compression. Time series data streams do not use `index.sort.*` settings.
 * **Source field:** A TSDS uses [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), and as a result is subject to some [restrictions](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-restrictions) and [modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) applied to the `_source` field.
+* {applies_to}`stack: ga 9.3` **Doc value Skippers:** A TSDS enables [docvalue skippers](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md#doc-values-skippers) on its `_tsid`, `@timestamp`, [dimension](#time-series-dimension), and [metric](#time-series-metric) fields. Because `tsid` and `@timestamp` are part of the index sort, the skippers allow {{es}} to avoid building backing indexes for these fields, meaning lower disk usage and faster ingest speed.
 
 ## Query time series data
 ```{applies_to}

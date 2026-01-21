@@ -57,7 +57,7 @@ Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may 
 
 ## Retention of logging and monitoring indices [logging-and-monitoring-retention]
 
-When sending monitoring and logging data to a deployment, an ILM policy is pre-configured to control data retention. To view or edit the policies, Go to the **Index Lifecycle Policiess** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+When sending monitoring and logging data to a deployment, an ILM policy is pre-configured to control data retention. To view or edit the policies, Go to the **Index Lifecycle Policies** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 For monitoring indices, the retention period is configured in the `.monitoring-8-ilm-policy` index lifecycle policy.
 
@@ -117,7 +117,7 @@ When shipping logs to a monitoring deployment there are more logging features av
 ### For {{es}} [extra-logging-features-elasticsearch]
 
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
-* [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
+* [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
 After you’ve enabled log delivery on your deployment, you can [add the {{es}} user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.

@@ -20,10 +20,6 @@ products:
 
 This error occurs because the machine where you have installed {{agent}} does not trust your custom or internal CA. To fix this error, follow the steps on this page to configure the agent with your custom SSL certificate.
 
-:::{note}
-These instructions only apply to environments where [AutoOps {{agent}} is installed using Linux](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent).
-:::
-
 ## Add custom certificate path to the `elastic-agent.yml` file
 
 To configure {{agent}} with your custom SSL certificate, add the path to your certificate to the [`elastic-agent.yml`](/reference/fleet/configure-standalone-elastic-agents.md) policy file on the host machine where the agent is installed. 
@@ -118,7 +114,6 @@ Complete the following steps:
               # --- ADD THIS LINE ---
               ssl.certificate_authorities:
                 - "/path/to/your/ca.crt"
-
             # Templates
             - module: autoops_es
               hosts: ${env:AUTOOPS_ES_URL}
@@ -137,11 +132,7 @@ Complete the following steps:
     :::::
 
 4. Save your changes to the `elastic-agent.yml` file.
-5. Restart {{agent}} so that the new settings can take effect.\
-    In most systemd-based Linux environments, you can use the following command to restart the agent:
-    ```bash
-    sudo systemctl restart elastic-agent
-    ```
+5. Restart {{agent}} for the new settings to take effect.
 6. Check the agent logs again to confirm that the error is gone and that {{agent}} has successfully connected your self-managed cluster to AutoOps. 
 
     :::{tip}

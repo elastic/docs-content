@@ -6,11 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-secure-clusters-kerberos.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/kerberos-realm.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: cloud-enterprise
   - id: cloud-hosted

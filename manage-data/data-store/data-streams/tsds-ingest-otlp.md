@@ -95,6 +95,32 @@ By default, metrics are ingested into the `metrics-generic.otel-default` data st
 
 The target data stream name is constructed as `metrics-${data_stream.dataset}.otel-${data_stream.namespace}`.
 
+## Configure histogram handling
+```{applies_to}
+stack: preview 9.3
+```
+
+You can configure how OTLP histograms are mapped using the `xpack.otel_data.histogram_field_type` cluster setting. Valid values are:
+
+ - `histogram` (default): Map histograms as T-Digests using the `histogram` field type
+ - `exponential_histogram`: Map histograms as exponential histograms using the `exponential_histogram` field type
+
+The setting is dynamic and can be updated at runtime:
+
+```console
+PUT /_cluster/settings
+{
+  "persistent" : {
+    "xpack.otel_data.histogram_field_type" : "exponential_histogram"
+  }
+}
+```
+
+Because both `histogram` and `exponential_histogram` support [coerce](elasticsearch://reference/elasticsearch/mapping-reference/coerce.md), changing this setting dynamically does not risk mapping conflicts or ingestion failures.
+
+This setting only applies to metrics ingested using the [Elasticsearch OTLP endpoint](./tsds-ingest-otlp.md).
+Documents ingested with the _bulk API (e.g. using the Elasticsearch exporter for the OpenTelemetry Collector) are not affected.
+
 ## Limitations
 
 * Only the OTLP metrics endpoint (`/_otlp/v1/metrics`) is supported.

@@ -3,11 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-jvm-memory-pressure.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -25,9 +20,9 @@ High JVM memory usage can degrade cluster performance and trigger [circuit break
 
 **Check JVM memory pressure**
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} { ess:, ece: }
 From your deployment menu, click **Elasticsearch**. Under **Instances**, each instance displays a **JVM memory pressure** indicator. When the JVM memory pressure reaches 75%, the indicator turns red.
 
 You can also use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.
@@ -41,7 +36,7 @@ Use the response to calculate memory pressure as follows:
 JVM Memory Pressure = `used_in_bytes` / `max_in_bytes`
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} { self:, eck: }
 To calculate the current JVM memory pressure for each node, use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
@@ -78,7 +73,7 @@ Every shard uses memory. In most cases, a small set of large shards uses fewer r
 $$$avoid-expensive-searches$$$
 **Avoid expensive searches**
 
-Expensive searches can use large amounts of memory. To better track expensive searches on your cluster, enable [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md).
+Expensive searches can use large amounts of memory. To better track expensive searches on your cluster, enable [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md).
 
 Expensive searches may have a large [`size` argument](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md), use aggregations with a large number of buckets, or include [expensive queries](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries). To prevent expensive searches, consider the following setting changes:
 

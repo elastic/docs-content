@@ -388,7 +388,6 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
         ilm_enabled => true
         cloud_id => "<DeploymentName>:<ID>" <1>
         cloud_auth => "elastic:<Password>" <2>
-        ssl => true
         # api_key => "<myAPIid:myAPIkey>"
       }
     }
@@ -455,7 +454,6 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
           elasticsearch {
             index => "%{[@metadata][beat]}-%{[@metadata][version]}"
             cloud_id => "<myDeployment>"
-            ssl => true
             ilm_enabled => true
             api_key => "2GBe63fBcxgJAetmgZeh:aB1cdeF-GJI23jble4NOH4"
             # user => "<Username>"

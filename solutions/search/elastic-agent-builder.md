@@ -72,6 +72,12 @@ Configure security roles and API keys to control who can use agents, which tools
 
 [**Learn more about permissions and access control**](agent-builder/permissions.md)
 
+## Monitor usage
+
+Understand how tokens are calculated and accumulated during agent execution to predict the impact on your usage and costs.
+
+[**Learn more about token usage**](agent-builder/monitor-usage.md)
+
 ## Limitations and known issues
 
 {{agent-builder}} is in technical preview.

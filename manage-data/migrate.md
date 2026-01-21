@@ -4,7 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrating-data.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-migrate-data2.html
 applies_to:
-  stack: ga
   deployment:
     ess: ga
     ece: ga

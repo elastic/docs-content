@@ -20,7 +20,7 @@ The following APIs support {{ccs}}:
 * [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
 * [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)
 * [Multi search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
-* [Search template](search-templates.md)
+* [Search template](/solutions/search/search-templates.md)
 * [Multi search template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template)
 * [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
 * [Painless execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md)
@@ -33,12 +33,12 @@ The following APIs support {{ccs}}:
 
 ## Prerequisites [_prerequisites]
 
-* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [*Remote clusters*](../../deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [*Remote clusters*](/deploy-manage/remote-clusters.md).
 
     To ensure your remote cluster configuration supports {{ccs}}, see [Supported {{ccs}} configurations](#ccs-supported-configurations).
 
 * To use cross-cluster search with ES|QL, both the local and remote clusters must have the appropriate [subscription level](https://www.elastic.co/subscriptions).
-* The local coordinating node must have the [`remote_cluster_client`](../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#remote-node) node role.
+* The local coordinating node must have the [`remote_cluster_client`](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#remote-node) node role.
 
 * If you use [sniff mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode), the local coordinating node must be able to connect to seed and gateway nodes on the remote cluster.
 
@@ -46,7 +46,7 @@ The following APIs support {{ccs}}:
 
 
 * If you use [proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
-* {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. See [Configure privileges for {{ccs}}](../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccs) and [*Remote clusters*](../../deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. See [Configure privileges for {{ccs}}](/deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccs) and [*Remote clusters*](/deploy-manage/remote-clusters.md).
 
 
 ## {{ccs-cap}} examples [ccs-example]
@@ -64,19 +64,19 @@ PUT _cluster/settings
       "remote": {
         "cluster_one": {
           "seeds": [
-            "35.238.149.1:9300"
+            "35.238.149.1:9443"
           ],
           "skip_unavailable": true
         },
         "cluster_two": {
           "seeds": [
-            "35.238.149.2:9300"
+            "35.238.149.2:9443"
           ],
           "skip_unavailable": false
         },
         "cluster_three": {  <1>
           "seeds": [
-            "35.238.149.3:9300"
+            "35.238.149.3:9443"
           ]
         }
       }
@@ -775,7 +775,7 @@ Response:
               "index": null,
               "reason": {
                 "type": "node_disconnected_exception",   <3>
-                "reason": "[myhostname1][35.238.149.1:9300][indices:data/read/search] disconnected"
+                "reason": "[myhostname1][35.238.149.1:9443][indices:data/read/search] disconnected"
               }
             }
           ]
@@ -790,7 +790,7 @@ Response:
               "index": null,
               "reason": {
                 "type": "node_disconnected_exception",
-                "reason": "[myhostname2][35.238.149.2:9300][indices:data/read/search] disconnected"
+                "reason": "[myhostname2][35.238.149.2:9443][indices:data/read/search] disconnected"
               }
             }
           ]
@@ -805,7 +805,7 @@ Response:
     "reason": "error while executing search",
     "caused_by": {
       "type": "node_disconnected_exception",
-      "reason": "[myhostname2][35.238.149.2:9300][indices:data/read/search] disconnected"
+      "reason": "[myhostname2][35.238.149.2:9443][indices:data/read/search] disconnected"
     }
   }
 }
@@ -990,10 +990,10 @@ You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cl
 cluster:
     remote:
         cluster_one:
-            seeds: 35.238.149.1:9300
+            seeds: 35.238.149.1:9443
             skip_unavailable: false
         cluster_two:
-            seeds: 35.238.149.2:9300
+            seeds: 35.238.149.2:9443
             skip_unavailable: true
 ```
 
@@ -1026,7 +1026,7 @@ The [vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/o
 
 
 ::::{note}
-The [Approximate kNN search](vector/knn.md#approximate-knn) doesn’t support minimizing network roundtrips, and sets the parameter `ccs_minimize_roundtrips` to `false`.
+The [Approximate kNN search](/solutions/search/vector/knn.md#approximate-knn) doesn’t support minimizing network roundtrips, and sets the parameter `ccs_minimize_roundtrips` to `false`.
 ::::
 
 
@@ -1084,7 +1084,7 @@ Here’s how {{ccs}} works when you don’t minimize network roundtrips.
 4. The coordinating node sends a search request to each shard, including those in its own cluster. Each shard performs the search request independently.
 
     ::::{warning}
-    When network roundtrips aren’t minimized, the search is executed as if all data were in the coordinating node’s cluster. We recommend updating cluster-level settings that limit searches, such as `action.search.shard_count.limit`, `pre_filter_shard_size`, and `max_concurrent_shard_requests`, to account for this. If these limits are too low, the search may be rejected.
+    When network roundtrips aren’t minimized, the search is executed as if all data were in the coordinating node’s cluster. We recommend updating cluster-level settings or search request parameters that limit searches, such as `action.search.shard_count.limit`, `pre_filter_shard_size`, and `max_concurrent_shard_requests`, to account for this. If these limits are too low, the search may be rejected.
 
     ::::
 
@@ -1115,7 +1115,7 @@ Version 8.19 is the final minor release in the 8.x series. Unlike past releases,
 
 $$$ccs-version-compatibility$$$
 
-:::{include} ../../deploy-manage/remote-clusters/_snippets/ccs-compatibility-table.md
+:::{include} /deploy-manage/remote-clusters/_snippets/ccs-compatibility-table.md
 :::
 
 ::::{important}
@@ -1144,4 +1144,4 @@ Running multiple versions of {{es}} in the same cluster beyond the duration of a
 ::::
 
 
-For more information about upgrades, see [Upgrading {{es}}](../../deploy-manage/upgrade/deployment-or-cluster.md).
+For more information about upgrades, see [Upgrading {{es}}](/deploy-manage/upgrade/deployment-or-cluster.md).
