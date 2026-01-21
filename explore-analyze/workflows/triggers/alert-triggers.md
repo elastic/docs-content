@@ -1,14 +1,8 @@
 ---
-navigation_title: Alert triggers
 applies_to:
-  stack: preview 9.3+
+  stack: preview 9.3
   serverless: preview
-products:
-  - id: kibana
-  - id: elasticsearch
-  - id: observability
-  - id: security
-  - id: cloud-serverless
+description: Understand alert triggers and how to create and configure them.
 ---
 
 # Alert triggers
@@ -68,3 +62,4 @@ After creating your workflow, configure your alert rule to trigger it.
 :::::
 
 When the configured rule generates an alert, your workflow automatically executes with the alert context.
+

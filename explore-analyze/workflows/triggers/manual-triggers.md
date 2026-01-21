@@ -1,17 +1,11 @@
 ---
-navigation_title: Manual triggers
 applies_to:
-  stack: preview 9.3+
+  stack: preview 9.3
   serverless: preview
-products:
-  - id: kibana
-  - id: elasticsearch
-  - id: observability
-  - id: security
-  - id: cloud-serverless
+description: Understand manual triggers and how to create and configure them.
 ---
 
-# Manual workflow triggers
+# Manual triggers
 
 Manual triggers run workflows on-demand through the UI or API. They require explicit user action to start a workflow. Use manual triggers for testing, one-off tasks, administrative actions, or workflows that require a human decision to start.
 
@@ -65,3 +59,4 @@ steps:
         - Batch Size: {{ inputs.batchSize }}
         - Dry Run: {{ inputs.dryRun }}
 ```
+

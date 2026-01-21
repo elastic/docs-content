@@ -1,17 +1,11 @@
 ---
-navigation_title: Scheduled triggers
 applies_to:
-  stack: preview 9.3+
+  stack: preview 9.3
   serverless: preview
-products:
-  - id: kibana
-  - id: elasticsearch
-  - id: observability
-  - id: security
-  - id: cloud-serverless
+description: Understand scheduled triggers and how to create and configure them.
 ---
 
-# Scheduled workflow triggers
+# Scheduled triggers
 
 Scheduled triggers run workflows automatically at specific times or intervals, without requiring manual intervention. Use scheduled triggers for recurring tasks like reports, data cleanup, or periodic health checks.
 
@@ -234,3 +228,4 @@ triggers:
         byhour: [8, 17]
         byminute: [0]
 ```
+

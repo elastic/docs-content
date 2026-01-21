@@ -1,17 +1,11 @@
 ---
-navigation_title: Core components
 applies_to:
-  stack: preview 9.3+
+  stack: preview 9.3
   serverless: preview
-products:
-  - id: kibana
-  - id: elasticsearch
-  - id: observability
-  - id: security
-  - id: cloud-serverless
+description: Learn about the core components that make up Elastic workflows. 
 ---
 
-# Core workflow components
+# Core components
 
 Workflows are composed of three core elements that make workflow automation possible: triggers, steps, and connectors. Together, these components define when workflows run, what they do, and where they can reach.
 
@@ -38,3 +32,4 @@ For more information, refer to [Steps].
 {{connectors-ui}} define _where_ workflows can reach. A connector is the interface between {{kib}} and an external system, enabling workflows to act on or respond to events and services outside of {{kib}}.
 
 For more information, refer to [{{connectors-ui}}].
+
