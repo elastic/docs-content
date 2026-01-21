@@ -115,7 +115,7 @@ In the scheduler logs table, expand the rows to learn more about gaps that were 
 - The number of gaps each job detected and the number of rules that had gaps
 - The number of gap fill tasks each job scheduled 
 - The status of the scheduled gap fill tasks. They can be:
-    - **Success**: Confirms that scheduled gap fill tasks were sucessfully run for all rules with gaps.
+    - **Success**: Confirms that gap fill tasks were successfully scheduled for rules assessed by the auto gap fill job. Refer to the log details to learn if any rules were not processed. 
     - **Error**: Indicates that scheduled gap fill tasks failed to run.    
     - **Task skipped**: Indicates that gap fill tasks were scheduled, but did not run. This can happen if rules with gaps were disabled or the maximum limit for scheduled gap fill tasks was reached.
     - **No gaps**: Indicates that gaps weren't detected, and no gap fill tasks were scheduled.
