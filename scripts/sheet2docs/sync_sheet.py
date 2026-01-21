@@ -166,15 +166,20 @@ def authenticate_google_sheets(credentials_path: Optional[str] = None) -> gsprea
             creds = ServiceAccountCredentials.from_service_account_file(
                 credentials_path, scopes=scopes
             )
+            client = gspread.authorize(creds)
         else:
             # Use Application Default Credentials (works with WIF, service account, gcloud auth)
             creds, project = google.auth.default(scopes=scopes)
-            # Refresh credentials if needed
-            if hasattr(creds, 'refresh'):
-                creds.refresh(Request())
 
-        # Create client
-        client = gspread.authorize(creds)
+            # For WIF/external credentials, we need to refresh to get an access token
+            # and then create an authorized session for gspread
+            from google.auth.transport.requests import AuthorizedSession
+            creds.refresh(Request())
+
+            # Create gspread client with authorized session
+            client = gspread.Client(auth=creds)
+            client.session = AuthorizedSession(creds)
+
         print("✓ Authenticated with Google Sheets API")
         return client
 
