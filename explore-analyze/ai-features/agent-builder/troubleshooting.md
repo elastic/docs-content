@@ -3,6 +3,12 @@ navigation_title: "Troubleshooting"
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Troubleshooting {{agent-builder}}
