@@ -13,7 +13,7 @@ products:
 
 If different persons from your organization are involved in billing and operations, you can specify their relevant contact details. These additional contacts only receive billing or operational emails. 
 
-By default, these notifications are sent to all users within an {{ecloud}} organization. If you specify billing and operational email contacts, then only these contacts and the organization owner will receive operational emails.
+By default, these notifications are sent to all users within an {{ecloud}} organization. If you specify billing and operational email contacts, then only these contacts and the organization owner will receive billing and operational emails.
 
 ::::{note} 
 Operational contacts can only receive operational notifications, such as out-of-memory alerts. Operational and billing contacts can’t log in to {{ecloud}}. To log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body),   you must log in as the [organization owner](/deploy-manage/users-roles/cloud-organization/user-roles.md), or be [a member](/deploy-manage/users-roles/cloud-organization.md) of the organization.

@@ -1,4 +1,5 @@
 ---
+navigation_title: Explore and analyze
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-explore-your-data.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html#visualize-and-analyze
@@ -10,9 +11,12 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: kibana
+description: Explore and analyze your data with Kibana. Query, filter, visualize,
+  and create interactive dashboards to gain insights from your Elasticsearch data.
+  Utilize machine learning, geospatial analysis, and more.
 ---
 
-# Explore and analyze
+# Explore and analyze data with Kibana
 
 $$$elasticsearch-explore-your-data-visualizations-save-to-the-visualize-library$$$
 

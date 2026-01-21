@@ -22,10 +22,13 @@ The data you store in {{es}} generally falls into one of two categories:
 To help you manage your data, {{es}} offers you the following options: {{ilm-cap}}, Data stream lifecycle, and Elastic Curator.
 
 ::::{note}
-[Data rollup](/manage-data/lifecycle/rollup.md) is a deprecated {{es}} feature that allows you to manage the amount of data that is stored in your cluster, similar to the downsampling functionality of {{ilm-init}} and data stream lifecycle. This feature should not be used for new deployments.
+[Data rollup](/manage-data/lifecycle/rollup.md) is a deprecated {{es}} feature that allows you to manage the amount of data that your cluster stores, similar to the downsampling functionality of{{ilm-init}} and data stream lifecycle. Do not use this feature for new deployments.
 ::::
 
 ## {{ilm-init}} [ilm]
+```{applies_to}
+serverless: unavailable
+```
 
 ::::{tip}
 {{ilm-init}} is not available on {{es-serverless}}.
@@ -37,9 +40,9 @@ In an {{ecloud}} or self-managed environment, ILM lets you automatically transit
 :::
 ::::
 
-**{{ilm-init}}** can be used to manage both indices and data streams. It allows you to do the following:
+**{{ilm-init}}** can manage both indices and data streams. It allows you to do the following:
 
-* Define the retention period of your data. The retention period is the minimum time your data will be stored in {{es}}. Data older than this period can be deleted by {{es}}.
+* Define the retention period of your data. The retention period is the minimum time {{es}} stores your data. {{es}} can delete data older than this period.
 * Define [multiple tiers](/manage-data/lifecycle/data-tiers.md) of data nodes with different performance characteristics.
 * Automatically transition indices through the data tiers according to your performance needs and retention policies.
 * Leverage [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) stored in a remote repository to provide resiliency for your older indices while reducing operating costs and maintaining search performance.
@@ -49,15 +52,18 @@ In an {{ecloud}} or self-managed environment, ILM lets you automatically transit
 
 ## Data stream lifecycle [data-stream-lifecycle]
 
-**Data stream lifecycle** is less feature rich but is focused on simplicity. It allows you to do the following:
+**Data stream lifecycle** is less feature rich but focuses on simplicity. It allows you to do the following:
 
-* Define the retention period of your data. The retention period is the minimum time your data will be stored in {{es}}. Data older than this period can be deleted by {{es}} at a later time.
-* Improve the performance of your data stream by performing background operations that will optimize the way your data stream is stored.
+* Define the retention period of your data. The retention period is the minimum time {{es}} stores your data. {{es}} can delete data older than this period at a later time.
+* Improve the performance of your data stream by performing background operations that optimize how {{es}} stores your data stream.
 
 **[Read more in Data stream lifecycle ->](/manage-data/lifecycle/data-stream.md)**
 
 ## Elastic Curator [elastic-curator]
+```{applies_to}
+serverless: unavailable
+```
 
-**Elastic Curator** is a tool that allows you to manage your indices and snapshots using user-defined filters and predefined actions. If ILM provides the functionality to manage your index lifecycle, and you have at least a Basic license, consider using ILM in place of Curator. Many stack components make use of ILM by default.
+**Elastic Curator** is a tool that allows you to manage your indices and snapshots using user-defined filters and predefined actions. If ILM provides the functionality to manage your index lifecycle, and you have at least a Basic license, consider using ILM in place of Curator. Many stack components use ILM by default.
 
 **[Read more in Elastic Curator ->](/manage-data/lifecycle/curator.md)**

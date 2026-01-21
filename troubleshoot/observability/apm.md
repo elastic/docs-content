@@ -17,7 +17,7 @@ products:
 
 This section provides solutions to common questions and problems, and processing and performance guidance.
 
-* [Common problems](/troubleshoot/observability/apm/common-problems.md)
+* [](/troubleshoot/observability/apm/common-problems.md)
 * [What happens when APM Server or {{es}} is down?](/troubleshoot/observability/apm/what-happens-when-apm-server-elasticsearch-is-down.md)
 * [APM Server response codes](/troubleshoot/observability/apm/apm-server-response-codes.md)
 * [Processing and performance](/troubleshoot/observability/apm/processing-performance.md)
@@ -31,15 +31,15 @@ For additional help with other APM components, see the links below.
 
 {{agent}}, the Applications UI, and each {{apm-agent}} has its own troubleshooting guide:
 
-* [**{{fleet}} and {{agent}}** troubleshooting](../ingest/fleet/fleet-elastic-agent.md)
-* [**.NET agent** troubleshooting](/troubleshoot/observability/apm-agent-dotnet/apm-net-agent.md)
-* [**Go agent** troubleshooting](/troubleshoot/observability/apm-agent-go/apm-go-agent.md)
-* [**Java agent** troubleshooting](/troubleshoot/observability/apm-agent-java/apm-java-agent.md)
-* [**Node.js agent** troubleshooting](/troubleshoot/observability/apm-agent-nodejs/apm-nodejs-agent.md)
-* [**PHP agent** troubleshooting](/troubleshoot/observability/apm-agent-php/apm-php-agent.md)
-* [**Python agent** troubleshooting](/troubleshoot/observability/apm-agent-python/apm-python-agent.md)
-* [**Ruby agent** troubleshooting](/troubleshoot/observability/apm-agent-ruby/apm-ruby-agent.md)
-* [**RUM agent** troubleshooting](/troubleshoot/observability/apm-agent-rum-js/apm-real-user-monitoring-javascript-agent.md)
+* [](/troubleshoot/ingest/fleet/fleet-elastic-agent.md)
+* [](/troubleshoot/observability/apm-agent-dotnet/apm-net-agent.md)
+* [](/troubleshoot/observability/apm-agent-go/apm-go-agent.md)
+* [](/troubleshoot/observability/apm-agent-java/apm-java-agent.md)
+* [](/troubleshoot/observability/apm-agent-nodejs/apm-nodejs-agent.md)
+* [](/troubleshoot/observability/apm-agent-php/apm-php-agent.md)
+* [](/troubleshoot/observability/apm-agent-python/apm-python-agent.md)
+* [](/troubleshoot/observability/apm-agent-ruby/apm-ruby-agent.md)
+* [](/troubleshoot/observability/apm-agent-rum-js/apm-real-user-monitoring-javascript-agent.md)
 
 
 ## Elastic Support [apm-elastic-support]

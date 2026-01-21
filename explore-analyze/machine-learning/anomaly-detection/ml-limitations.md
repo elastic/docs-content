@@ -9,9 +9,9 @@ products:
   - id: machine-learning
 ---
 
-# Limitations [ml-limitations]
+# Anomaly detection limitations [ml-limitations]
 
-The following limitations and known problems apply to the {{version}} release of the Elastic {{ml-features}}. The limitations are grouped into four categories:
+The following limitations and known problems apply to the Elastic {{ml-features}}. The limitations are grouped into four categories:
 
 * [Platform limitations](#ad-platform-limitations) are related to the platform that hosts the {{ml}} feature of the {{stack}}.
 * [Configuration limitations](#ad-config-limitations) apply to the configuration process of the {{anomaly-jobs}}.
@@ -140,22 +140,22 @@ The charts can also look odd in circumstances where there is very little data to
 
 | Detector functions | Function description | Supported |
 | --- | --- | --- |
-| count, high_count, low_count, non_zero_count, low_non_zero_count | [Count functions](/reference/data-analysis/machine-learning/ml-count-functions.md) | yes |
-| count, high_count, low_count, non_zero_count, low_non_zero_count with summary_count_field_name that is not doc_count (model plot not enabled) | [Count functions](/reference/data-analysis/machine-learning/ml-count-functions.md) | yes |
-| non_zero_count with summary_count_field that is not doc_count using cardinality aggregation in datafeed config (model plot not enabled) | [Count functions](/reference/data-analysis/machine-learning/ml-count-functions.md) | yes |
-| distinct_count, high_distinct_count, low_distinct_count | [Count functions](/reference/data-analysis/machine-learning/ml-count-functions.md) | yes |
-| mean, high_mean, low_mean | [Mean, high_mean, low_mean](/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-mean) | yes |
-| min | [Min](/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-min) | yes |
-| max | [Max](/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-max) | yes |
-| metric | [Metric](/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-metric) | yes |
-| median, high_median, low_median | [Median, high_median, low_median](/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-median) | yes |
-| sum, high_sum ,low_sum, non_null_sum, high_non_null_sum, low_non_null_sum | [Sum functions](/reference/data-analysis/machine-learning/ml-sum-functions.md) | yes |
-| varp, high_varp, low_varp | [Varp, high_varp, low_varp](/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-varp) | yes (only if model plot is enabled) |
-| lat_long | [Lat_long](/reference/data-analysis/machine-learning/ml-geo-functions.md#ml-lat-long) | no (but map is displayed in the Anomaly Explorer) |
-| info_content, high_info_content, low_info_content | [Info_content, High_info_content, Low_info_content](/reference/data-analysis/machine-learning/ml-info-functions.md#ml-info-content) | yes (only if model plot is enabled) |
-| rare | [Rare](/reference/data-analysis/machine-learning/ml-rare-functions.md#ml-rare) | yes |
-| freq_rare | [Freq_rare](/reference/data-analysis/machine-learning/ml-rare-functions.md#ml-freq-rare) | no |
-| time_of_day, time_of_week | [Time functions](/reference/data-analysis/machine-learning/ml-time-functions.md) | no |
+| count, high_count, low_count, non_zero_count, low_non_zero_count | [Count functions](/reference/machine-learning/ml-count-functions.md) | yes |
+| count, high_count, low_count, non_zero_count, low_non_zero_count with summary_count_field_name that is not doc_count (model plot not enabled) | [Count functions](/reference/machine-learning/ml-count-functions.md) | yes |
+| non_zero_count with summary_count_field that is not doc_count using cardinality aggregation in datafeed config (model plot not enabled) | [Count functions](/reference/machine-learning/ml-count-functions.md) | yes |
+| distinct_count, high_distinct_count, low_distinct_count | [Count functions](/reference/machine-learning/ml-count-functions.md) | yes |
+| mean, high_mean, low_mean | [Mean, high_mean, low_mean](/reference/machine-learning/ml-metric-functions.md#ml-metric-mean) | yes |
+| min | [Min](/reference/machine-learning/ml-metric-functions.md#ml-metric-min) | yes |
+| max | [Max](/reference/machine-learning/ml-metric-functions.md#ml-metric-max) | yes |
+| metric | [Metric](/reference/machine-learning/ml-metric-functions.md#ml-metric-metric) | yes |
+| median, high_median, low_median | [Median, high_median, low_median](/reference/machine-learning/ml-metric-functions.md#ml-metric-median) | yes |
+| sum, high_sum ,low_sum, non_null_sum, high_non_null_sum, low_non_null_sum | [Sum functions](/reference/machine-learning/ml-sum-functions.md) | yes |
+| varp, high_varp, low_varp | [Varp, high_varp, low_varp](/reference/machine-learning/ml-metric-functions.md#ml-metric-varp) | yes (only if model plot is enabled) |
+| lat_long | [Lat_long](/reference/machine-learning/ml-geo-functions.md#ml-lat-long) | no (but map is displayed in the Anomaly Explorer) |
+| info_content, high_info_content, low_info_content | [Info_content, High_info_content, Low_info_content](/reference/machine-learning/ml-info-functions.md#ml-info-content) | yes (only if model plot is enabled) |
+| rare | [Rare](/reference/machine-learning/ml-rare-functions.md#ml-rare) | yes |
+| freq_rare | [Freq_rare](/reference/machine-learning/ml-rare-functions.md#ml-freq-rare) | no |
+| time_of_day, time_of_week | [Time functions](/reference/machine-learning/ml-time-functions.md) | no |
 
 ### Jobs created in {{kib}} must use {{dfeeds}} [_jobs_created_in_kib_must_use_dfeeds]
 

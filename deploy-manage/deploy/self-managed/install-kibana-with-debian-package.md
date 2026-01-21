@@ -78,17 +78,34 @@ Examine `/etc/apt/sources.list.d/kibana-9.x.list` for the duplicate entry or loc
 
 ### Download and install the Debian package manually [install-deb]
 
-The Debian package for {{kib}} {{stack-version}} can be downloaded from the website and installed as follows:
+The Debian package for {{kib}} {{version.stack}} can be downloaded from the website and installed as follows:
 
+::::{tab-set}
+
+:::{tab-item} Latest
+To download and install the {{kib}} {{version.stack}} package, enter:
 ```sh subs=true
-wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-amd64.deb
-shasum -a 512 kibana-{{stack-version}}-amd64.deb <1>
-sudo dpkg -i kibana-{{stack-version}}-amd64.deb
+wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-amd64.deb
+shasum -a 512 kibana-{{version.stack}}-amd64.deb <1>
+sudo dpkg -i kibana-{{version.stack}}-amd64.deb
 ```
 
 1. 	Compare the SHA produced by shasum with the [published SHA](https://artifacts.elastic.co/downloads/kibana/kibana-9.0.0-amd64.deb.sha512).
-
 % version manually specified in the link above
+:::
+
+:::{tab-item} Specific version
+Because {{kib}} is an {{stack}} product, you must install the same version number as the rest of your {{stack}} components. Replace `<SPECIFIC.VERSION.NUMBER>` with the version that's used across your entire stack. For example, you can use {{version.stack.base}}.
+```sh subs=true
+wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-amd64.deb
+shasum -a 512 kibana-<SPECIFIC.VERSION.NUMBER>-amd64.deb <1>
+sudo dpkg -i kibana-<SPECIFIC.VERSION.NUMBER>-amd64.deb
+```
+
+1. 	Compare the SHA produced by shasum with the [published SHA](https://artifacts.elastic.co/downloads/kibana/kibana-9.0.0-amd64.deb.sha512).
+% version manually specified in the link above
+:::
+::::
 
 ## Step 3: Start {{es}} and generate an enrollment token for {{kib}} [deb-enroll]
 

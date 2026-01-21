@@ -107,10 +107,20 @@ Before your current Enterprise license expires, you will receive a new Enterpris
 You can check the expiry date of your license in the [elastic-licensing](#k8s-get-usage-data) ConfigMap. Enterprise licenses are container licenses that include multiple licenses for individual {{es}} clusters with shorter expiry. Therefore, you get a different expiry in {{kib}} or through the {{es}} [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API. ECK automatically updates the {{es}} cluster licenses until the expiry date of the ECK Enterprise license is reached.
 ::::
 
+::::{important}
+To avoid any unintended downgrade of individual {{es}} clusters to a Basic license while installing the new license, we recommend installing the new Enterprise license as a new Kubernetes secret next to your existing Enterprise license.
+::::
 
-To avoid any unintended downgrade of individual {{es}} clusters to a Basic license while installing the new license, we recommend installing the new Enterprise license as a new Kubernetes secret next to your existing Enterprise license. Just replace `eck-license` with a different name in the [Kubernetes secret example](#k8s-add-license). ECK will use the correct license automatically.
+To update your license, please refer to the [Add a license](#k8s-add-license) documentation and utilize a different Kubernetes secret name for your new license. For instance:
 
-Once you have created the new license secret you can safely delete the old license secret.
+```shell
+kubectl create secret generic eck-license-new --from-file=<path/to/your/new/license.json> -n elastic-system
+kubectl label secret eck-license-new "license.k8s.elastic.co/scope"=operator -n elastic-system
+```
+
+After creating the new license, verify its status as described in [Get usage data](#k8s-get-usage-data). For example, ensure that the `eck_license_expiry_date` reflects the expiration date of your new license.
+
+Once the new license is confirmed, you may safely delete the old license secret.
 
 
 ## Get usage data [k8s-get-usage-data]

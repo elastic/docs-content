@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-to-apm-integration.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -23,7 +23,7 @@ The APM integration offers a number of benefits over the standalone method of ru
 * More granular data control
 * Errors and metrics data streams are shared with other data sources — which means better long-term integration with the logs and metrics apps
 * Removes template inheritance for {{ilm-init}} policies and makes use of new {{es}} index and component templates
-* Fixes _resource 'apm-{{version}}-$type' exists, but it is not an alias_ error
+* Fixes _resource 'apm-{{version.stack}}-$type' exists, but it is not an alias_ error
 
 **APM Integration**:
 

@@ -34,6 +34,8 @@ Alternatively, or if you do not have a support contract, and if you are unable t
 * [ECK Discuss forums](https://discuss.elastic.co/c/eck) to ask any question
 * [Github issues](https://github.com/elastic/cloud-on-k8s/issues) for bugs and feature requests
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## View the list of resources [k8s-get-resources]
 
@@ -234,13 +236,13 @@ To increase or decrease the size of a disk, you cannot change the size of the vo
 
 For a concrete example, imagine you started with this:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -260,13 +262,13 @@ spec:
 
 and want to increase it to 10Gi of storage. You can change the nodeSet name and the volume size like so:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default-10gi
     count: 3

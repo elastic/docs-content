@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic for Security
+navigation_title: Security projects
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-billing.html
 applies_to:
@@ -8,7 +8,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Elastic for Security billing dimensions [security-billing]
+# {{elastic-sec}} billing dimensions [security-billing]
 
 {{elastic-sec}} serverless projects provide you with all the capabilities of {{elastic-sec}} to perform SIEM, security analytics, endpoint security, and cloud security workflows. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption based. Security Analytics/SIEM is available in two tiers of carefully selected features to enable common security operations:
 
@@ -22,6 +22,7 @@ Your monthly bill is based on the capabilities you use. When you use Security An
 
 Data volumes for ingest and retention are based on the fully enriched normalized data size at the end of the ingest pipeline, before {{es}} compression is performed, and will be higher than the volumes traditionally reported by {{es}} index size. In addition, these volumes might be larger than those reported by cloud provider proxy logs for data going into {{es}}. This allows you to have flexibility in choosing your preferred ingest architecture for enrichment, whether it’s through {{agent}}, {{ls}}, OpenTelemetry, or collectors — with no impact on the cost.
 
+[Create a serverless estimate](https://cloud.elastic.co/pricing/serverless?s=security) or refer to the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security) for more details.
 
 ## Endpoint Protection [security-billing-endpoint-protection]
 
@@ -73,4 +74,4 @@ For more details about {{elastic-sec}} serverless project rates and billable ass
 
 ## Elastic Managed LLM
 
-The default [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) enables you to leverage AI-powered search as a service without deploying a model in your serverless project. It's configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of your "Complete" tier subscription. Using the default LLM will use tokens and incur related token-based add-on billing for your serverless project.
+The default [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) enables you to leverage AI-powered search as a service without deploying a model in your serverless project. It's configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using the default LLM will use tokens and incur related token-based add-on billing for your serverless project.

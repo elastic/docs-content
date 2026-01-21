@@ -6,6 +6,7 @@ applies_to:
     ess:
 products:
   - id: cloud-hosted
+navigation_title: AWS and GCP
 ---
 
 # Repository isolation on AWS and GCP [ec-snapshot-repository-aws-gcp-migration]

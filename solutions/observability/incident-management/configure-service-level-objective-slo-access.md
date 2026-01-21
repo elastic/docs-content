@@ -23,17 +23,17 @@ You can enable access to SLOs in two different ways:
     * [**SLO Editor**](#slo-all-access) — Create, edit, and manage SLOs and their historical summaries.
     * [**SLO Viewer**](#slo-read-access) — Check SLOs and their historical summaries.
 
-* Using the `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices. Users assigned to this role can create, edit, and manage SLOs.
+* Using the `editor` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices. Users assigned to this role can create, edit, and manage SLOs.
 
     ::::{note}
-    The `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) grants write access to *all* {{kib}} apps. If you want to limit access to the SLOs only, you have to manually create and assign the mentioned roles.
+    The `editor` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor) grants write access to *all* {{kib}} apps. If you want to limit access to the SLOs only, you have to manually create and assign the mentioned roles.
 
     ::::
 
 
 To create a role:
 
-1. To open **Roles**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Roles** management page by finding it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Roles** page, click **Create role**.
 
 

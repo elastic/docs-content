@@ -5,7 +5,7 @@ navigation_title: Deprecations
 # Elastic {{observability}} deprecations [elastic-observability-deprecations]
 Over time, certain Elastic functionality becomes outdated and is replaced or removed. To help with the transition, Elastic deprecates functionality for a period before removal, giving you time to update your applications. 
 
-Review the deprecated functionality for Elastic {{observability}}. While deprecations have no immediate impact, we strongly encourage you update your implementation after you upgrade. To learn how to upgrade, check out [Upgrade](/deploy-manage/upgrade.md).
+Review the deprecated functionality for Elastic {{observability}}. While deprecations have no immediate impact, we strongly encourage you update your implementation after you upgrade. To learn how to upgrade, check out [](/deploy-manage/upgrade.md).
 
 % ## Next version
 

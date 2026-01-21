@@ -35,7 +35,7 @@ spec:
 
 In the case of Elastic Agent you can also specify several named references:
 
-```yaml
+```yaml subs=true
 apiVersion: v1
 kind: Secret
 metadata:
@@ -52,7 +52,7 @@ kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - outputName: default
     secretName: external-es-ref

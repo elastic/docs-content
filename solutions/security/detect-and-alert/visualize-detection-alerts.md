@@ -15,8 +15,8 @@ products:
 
 Visualize and group detection alerts by specific parameters in the visualization section of the Alerts page.
 
-:::{image} /solutions/images/security-alert-page-visualizations.png
-:alt: Alerts page with visualizations section highlighted
+:::{image} /solutions/images/security-alert-page.png
+:alt: Alerts page with visualizations section
 :screenshot:
 :::
 
@@ -55,7 +55,7 @@ On the Alerts page, the summary visualization displays by default and shows how 
 * **Alerts by name**: How many alerts each detection rule created.
 * **Top alerts by**: Percentage of alerts with a specified field value: `host.name` (default), `user.name`, `source.ip`, or `destination.ip`.
 
-You can hover and click on elements within the summary — such as severity levels, rule names, and host names — to add filters with those values to the Alerts page.
+You can interact with elements within the summary—such as severity levels, rule names, and host names—to add filters with those values to the Alerts page.
 
 :::{image} /solutions/images/security-alerts-viz-summary.png
 :alt: Summary visualization for alerts

@@ -11,9 +11,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: CSPM benchmarks
 ---
 
-# Benchmarks
+# Cloud Security Posture benchmarks 
 
 :::{include} _snippets/benchmarks.md
 :::

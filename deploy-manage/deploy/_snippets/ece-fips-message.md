@@ -1,0 +1,1 @@
+FIPS (Federal Information Processing Standards) compliance is not officially supported in ECE. While ECE may function on FIPS-enabled systems, this configuration has not been validated through our testing processes and is not recommended for production environments.

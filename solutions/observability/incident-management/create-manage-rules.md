@@ -2,12 +2,16 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-alerts-rules.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-manage-rules.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
+navigation_title: Create and manage rules
 ---
 
-# Create and manage rules [observability-create-manage-rules]
+# Create and manage rules for Elastic {{observability}} [observability-create-manage-rules]
 
 ::::{note}
 
@@ -29,7 +33,8 @@ Learn more about Observability rules and how to create them:
 | --- | --- | --- |
 | AIOps | [Anomaly detection](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | Anomalies match specific conditions. |
 | APM | [APM anomaly](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | The latency, throughput, or failed transaction rate of a service is abnormal. |
-| Observability | [Custom threshold](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | An Observability data type reaches or exceeds a given value. |
+| Observability | [Custom threshold](/solutions/observability/incident-management/create-custom-threshold-rule.md) | An Observability data type reaches or exceeds a given value. |
+| Data set quality | [Degraded docs](/solutions/observability/incident-management/create-a-degraded-docs-rule.md) | The percentage of degraded documents for a data view exceeds a threshold |
 | Stack | [{{es}} query](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) | Matches are found during the latest query run. |
 | APM | [Error count threshold](/solutions/observability/incident-management/create-an-error-count-threshold-rule.md) | The number of errors in a service exceeds a defined threshold. |
 | APM | [Failed transaction rate threshold](/solutions/observability/incident-management/create-failed-transaction-rate-threshold-rule.md) | The rate of transaction errors in a service exceeds a defined threshold. |
@@ -62,10 +67,9 @@ From the action menu you can also:
 * Run rule (without waiting for next scheduled check)
 * Update API keys
 
-
 ## View rule details [observability-create-manage-rules-view-rule-details]
 
-Click on an individual rule on the **{{rules-app}}** page to view details including the rule name, status, definition, execution history, related alerts, and more.
+Click on an individual rule on the **{{rules-ui}}** page to view details including the rule name, status, definition, execution history, related alerts, and more.
 
 :::{image} /solutions/images/serverless-alerts-detail-apm-anomaly.png
 :alt: Rule details (APM anomaly)
@@ -100,3 +104,26 @@ To temporarily suppress notifications for *all* rules, create a [maintenance win
 To import and export rules, use [{{saved-objects-app}}](/explore-analyze/find-and-organize.md).
 
 Rules are disabled on export. You are prompted to re-enable the rule on successful import.
+
+## Add resources for investigating alerts [observability-create-manage-rules-add-investigation-resources]
+```{applies_to}
+stack: ga 9.1+
+```
+
+When creating or editing a rule, add the following resources to help you get started with investigating alerts:
+
+* **Investigation guide**: Investigation guides can help you respond to alerts more efficiently and consistently. When creating them, you can include instructions for responding to alerts, links to external supporting materials, and more. When the rule generates an alert, the investigation guide can be accessed from the **Investigation guide** tab on the alert's details page.
+
+    ::::{tip}
+    Use Markdown to format and structure text in your investigation guide.
+    ::::
+
+* **Related and suggested dashboards**: Link to dashboards that provide useful insights about your environment, active events, and any other information that might be relevant during your investigations. When the rule generates an alert, linked dashboards can be accessed from the **Related dashboards** tab on the alert's details page. From the tab, you can also review and add suggested dashboards (available for custom threshold rules only).
+
+## Configure alert flapping [observability-create-manage-rules-defining-flapping-details]
+
+You can modify the criteria for changing an alert's status to [flapping state](view-alerts.md#observability-view-alerts-understand-statuses) by configuring the **Alert flapping detection** settings, which are turned on by default. When configuring flapping settings, you must set a look back window and threshold for alert status changes. For example, you can specify that alerts with at least 6 status changes in the last 10 runs are `flapping`.   
+
+{applies_to}`stack: ga 9.3+` You can modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (find the **Rules** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)), click **Settings**, then go to the **Alert flapping detection** settings.
+
+{applies_to}`stack: ga 9.0-9.2` You can only modify global flapping settings for your entire {{kib}} space or {{serverless-short}} project.

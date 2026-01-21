@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-correlations.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-find-transaction-latency-and-failure-correlations.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -17,23 +17,20 @@ Correlations surface attributes of your data that are potentially correlated wit
 
 To find correlations:
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
-
-Select a service on the **Services** page in the Applications UI then select a transaction group from the **Transactions** tab.
-
-:::
-
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. In your {{obs-serverless}} project, go to **Applications** → **Service Inventory**.
 2. Select a service.
 3. Select the **Transactions** tab.
 4. Select a transaction group in the **Transactions** table.
+
+:::
+
+:::{applies-item} stack:
+
+Select a service on the **Services** page in the Applications UI then select a transaction group from the **Transactions** tab.
 
 :::
 

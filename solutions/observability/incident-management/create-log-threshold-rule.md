@@ -2,6 +2,9 @@
 navigation_title: Log threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-threshold-alert.html
+applies_to:
+  stack: ga
+  serverless: unavailable 
 products:
   - id: observability
 ---
@@ -158,6 +161,9 @@ The following variables are specific to this rule type. You an also specify [var
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.
+
+`context.grouping` {applies_to}`stack: ga 9.2`
+:   The object containing groups that are reporting data.
 
 `context.interval`
 :   The length and unit of time period where the alert conditions were met.
@@ -334,7 +340,7 @@ When a rule check is performed, a query is built based on the configuration of t
 
 ## Settings [settings]
 
-With log threshold rules, it’s not possible to set an explicit index pattern as part of the configuration. The index pattern is instead inferred from **Log sources** at **Stack Management** → **Advanced settings** under **Observability**.
+With log threshold rules, it’s not possible to set an explicit index pattern as part of the configuration. The index pattern is instead inferred from the **Log sources** [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings).
 
 With each execution of the rule check, the **Log indices** setting is checked, but it is not stored when the rule is created.
 

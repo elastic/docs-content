@@ -16,13 +16,13 @@ You can connect an {{es}} cluster that is either managed by ECK or not managed b
 
 It is quite straightforward to connect a {{kib}} instance to an {{es}} cluster managed by ECK:
 
-```yaml
+```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: quickstart
@@ -55,13 +55,13 @@ For example, use the [secure settings](../../security/k8s-secure-settings.md) me
 kubectl create secret generic kibana-elasticsearch-credentials --from-literal=elasticsearch.password=$PASSWORD
 ```
 
-```yaml
+```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: kibana-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   config:
     elasticsearch.hosts:
@@ -73,13 +73,13 @@ spec:
 
 If the external {{es}} cluster is using a self-signed certificate, create a [`Secret`](https://kubernetes.io/docs/concepts/configuration/secret/) containing the CA certificate and mount it to the {{kib}} container as follows:
 
-```yaml
+```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: kibana-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   config:
     elasticsearch.hosts:

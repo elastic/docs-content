@@ -9,10 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-
-
-
-# Legacy collection methods [collecting-monitoring-data]
+# Legacy collection methods for self-managed {{es}} [collecting-monitoring-data]
 
 
 ::::{admonition} Deprecated in 7.16
@@ -99,7 +96,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
     2. If the Elastic {{security-features}} are enabled on the monitoring cluster, you must provide appropriate credentials when data is shipped to the monitoring cluster:
 
-        1. Create a user on the monitoring cluster that has the [`remote_monitoring_agent` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+        1. Create a user on the monitoring cluster that has the [`remote_monitoring_agent` built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-agent). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
         2. Add the user ID and password settings to the HTTP exporter settings in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file and keystore on each node.<br>
 
             For example:

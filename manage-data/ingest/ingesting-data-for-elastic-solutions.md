@@ -63,7 +63,7 @@ With [Elastic Observability](https://www.elastic.co/observability), you can moni
     * [Monitor hosts with {{agent}} ({{serverless-short}})](https://docs.elastic.co/serverless/observability/quickstarts/monitor-hosts-with-elastic-agent)
     * [Monitor your K8s cluster with {{agent}} ({{serverless-short}})](https://docs.elastic.co/serverless/observability/quickstarts/k8s-logs-metrics)
 
-* [Use OpenTelemetry with APM](/solutions/observability/apm/use-opentelemetry-with-apm.md)
+* [Use OpenTelemetry with APM](/solutions/observability/apm/opentelemetry/index.md)
 
 
 **Resources**

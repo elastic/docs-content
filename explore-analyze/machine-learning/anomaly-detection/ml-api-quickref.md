@@ -1,4 +1,5 @@
 ---
+navigation_title: API quick reference
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-api-quickref.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# API quick reference [ml-api-quickref]
+# Anomaly detection API quick reference [ml-api-quickref]
 
 All {{ml}} {{anomaly-detect}} endpoints have the following base:
 

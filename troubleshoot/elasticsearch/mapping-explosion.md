@@ -3,11 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-explosion.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  serverless:
 products:
   - id: elasticsearch
 ---
@@ -50,7 +46,7 @@ To confirm the field totals of an index to check for mapping explosion:
 * If you’re inclined to use the [third-party tool JQ](https://stedolan.github.io/jq), you can process the [get mapping](../../manage-data/data-store/mapping.md) `mapping.json` output.
 
     ```sh
-    $ cat mapping.json | jq -c 'to_entries[]| .key as $index| [.value.mappings| to_entries[]|select(.key=="properties") | {(.key):([.value|..|.type?|select(.!=null)]|length)}]| map(to_entries)| flatten| from_entries| ([to_entries[].value]|add)| {index: $index, field_count: .}'
+    cat mapping.json | jq -c 'to_entries[]| .key as $index| [.value.mappings| to_entries[]|select(.key=="properties") | {(.key):([.value|..|.type?|select(.!=null)]|length)}]| map(to_entries)| flatten| from_entries| ([to_entries[].value]|add)| {index: $index, field_count: .}'
     ```
 
 

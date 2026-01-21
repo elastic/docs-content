@@ -1,4 +1,5 @@
 ---
+navigation_title: Keep track of deployment activity
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-activity-page.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-activity-page.html
@@ -9,7 +10,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Keep track of deployment activity
+# Keep track of deployment activity on {{ech}}
 
 % What needs to be done: Lift-and-shift
 

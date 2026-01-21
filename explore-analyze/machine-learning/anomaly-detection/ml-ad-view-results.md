@@ -51,7 +51,7 @@ The influencer results show which entities were anomalous and when. One influenc
 
 For example, the `high_sum_total_sales` {{anomaly-job}} for the eCommerce orders sample data uses `customer_full_name.keyword` and `category.keyword` as influencers. You can examine the influencer results with the [get influencers API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-influencers). Alternatively, you can use the **Anomaly Explorer** in {{kib}}:
 
-:::{image} /explore-analyze/images/machine-learning-influencers.jpg
+:::{image} /explore-analyze/images/machine-learning-influencers.png
 :alt: Influencers in the {{kib}} Anomaly Explorer
 :screenshot:
 :::

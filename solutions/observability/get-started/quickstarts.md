@@ -31,7 +31,6 @@ Follow the steps in these guides to get started quickly:
 Want to use {{fleet}} or some other feature not covered in the quickstarts? Follow the steps in these guides to get started:
 
 * [Get started with system metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md).
-* [Get started with application traces and APM](/solutions/observability/apm/get-started-fleet-managed-apm-server.md).
 * [Get started with synthetic monitoring](/solutions/observability/synthetics/index.md).
 * [Get started with Universal Profiling](/solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 
@@ -39,7 +38,6 @@ Want to use {{fleet}} or some other feature not covered in the quickstarts? Foll
 
 Ready to dig into more features of Elastic Observability? See these guides:
 
-* [Add data from Splunk](/solutions/observability/get-started/other-tutorials/add-data-from-splunk.md).
 * [Create an alert](/solutions/observability/incident-management/alerting.md).
 * [Create a service-level objective (SLO)](/solutions/observability/incident-management/create-an-slo.md).
 

@@ -10,7 +10,7 @@ products:
 
 # MinIO self-managed repository [ece-configuring-minio]
 
-[MinIO](https://min.io/docs/minio/container/index.html) is a popular, open-source object storage server compatible with the Amazon AWS S3 API. As an [S3 compatible service](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-compatible-services), MinIO is supported for use as a snapshot repository in {{ece}} (ECE).
+[MinIO](https://github.com/minio/minio) is a popular, open-source object storage server compatible with the Amazon AWS S3 API. As an [S3 compatible service](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-compatible-services), MinIO is supported for use as a snapshot repository in {{ece}} (ECE).
 
 This guide walks you through integrating MinIO with ECE to store your {{es}} snapshots.
 
@@ -24,11 +24,11 @@ If you're evaluating MinIO in a test system, do not place MinIO containers on th
 
 This section provides guidance and recommendations for deploying MinIO. It does not include installation steps. As MinIO is a third-party product, its deployment, configuration, and maintenance are outside the scope of Elastic support.
 
-For installation instructions, refer to the official [MinIO documentation](https://min.io/docs/).
+For installation instructions, refer to the official [MinIO GitHub repository](https://github.com/minio/minio).
 
 The performance and reliability of MinIO depend on its configuration and the underlying infrastructure. Consider the following best practices:
 
-* For production use, deploy MinIO in a [Multi-Node Multi-Drive](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#minio-mnmd) configuration.
+* For production use, deploy MinIO in a Multi-Node Multi-Drive configuration.
 * Use a single MinIO endpoint with the ECE installation, to simplify repository configuration.
 * Secure access to the MinIO endpoint with TLS.
 
@@ -44,11 +44,11 @@ MinIO may report multiple endpoint URLs. Be sure to select the one reachable fro
 
 ### Testing and evaluation
 
-Use the [MinIO Quickstart Guide](https://charts.min.io/) or the [container deployment guide](https://min.io/docs/minio/container/index.html) to spin up a simple standalone MinIO container. Use `-v` to map persistent storage when using the `docker` or `podman` options.
+Use the [MinIO Quickstart Guide](https://charts.min.io/) or the [container deployment guide](https://docs.min.io/enterprise/aistor-object-store/installation/container/install/#deploy-minio-container) to spin up a simple standalone MinIO container. Use `-v` to map persistent storage when using the `docker` or `podman` options.
 
 ### Production environments
 
-Set up MinIO across multiple nodes and drives to ensure high availability, performance, and scalability, following the recommendations in the [MinIO documentation](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html).
+Set up MinIO across multiple nodes and drives to ensure high availability, performance, and scalability, following the recommendations in the [MinIO documentation](https://github.com/minio/docs).
 
 You can use Docker Compose, Kubernetes, or another orchestration tool of your choice.
 

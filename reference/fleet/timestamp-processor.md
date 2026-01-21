@@ -2,6 +2,9 @@
 navigation_title: timestamp
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/timestamp-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -71,7 +74,7 @@ Here is an example that parses the `start_time` field and writes the result to t
 | `layouts` | Yes |  | Timestamp layouts that define the expected time value format. In addition layouts, `UNIX` and `UNIX_MS` are accepted. |
 | `timezone` | No | `UTC` | IANA time zone name (for example, `America/New_York`) or fixed time offset (for example, `+0200`) to use when parsing times that do not contain a time zone. Specify `Local` to use the machine’s local time zone. |
 | `ignore_missing` | No | `false` | Whether to ignore errors when the source field is missing. |
-| `ignore_failure` | No | `false` | Whether to gnore all errors produced by the processor. |
+| `ignore_failure` | No | `false` | Whether to ignore all errors produced by the processor. |
 | `test` | No |  | List of timestamps that must parse successfully when loading the processor. |
 | `id` | No |  | Identifier for this processor instance. Useful for debugging. |
 

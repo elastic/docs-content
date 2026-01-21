@@ -11,7 +11,7 @@ products:
 
 # Deploy
 
-Whether you're planning to use Elastic's pre-built solutions or Serverless projects, build your own applications with {{es}}, or analyze your data using {{kib}} tools, you'll need to deploy Elastic first.
+Whether you're planning to use Elastic's pre-built solutions or Serverless projects, build your own applications with {{es}}, or analyze your data using {{kib}} tools, you need to deploy Elastic first.
 
 This page will help you understand your deployment options and choose the approach that best fits your needs.
 
@@ -38,6 +38,10 @@ To learn how to deploy optional {{stack}} components, refer to the following sec
 :::{include} _snippets/deployment-options-overview.md
 :::
 
+::::{tip}
+Documentation will specify when certain features or configurations are not applicable to specific deployment types.
+::::
+
 ### Who manages the infrastructure?
 
 #### Managed by Elastic
@@ -58,19 +62,19 @@ If you need to run Elastic on your infrastructure, choose between a fully self-m
   - **{{eck}} (ECK)**: If you need Kubernetes-native orchestration
   - **{{ece}} (ECE)**: If you need a multi-tenant orchestration platform
 
-::::{tip}
-Documentation will specify when certain features or configurations are not applicable to specific deployment types.
+:::{admonition} Use cloud services in your self-hosted environment with Cloud Connect
+With [Cloud Connect](/deploy-manage/cloud-connect.md), you can use Elastic-managed cloud services in your self-managed, ECE, or ECK environment without having to install and manage their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
 ::::
 
 ### About orchestration
 
 An orchestrator automates the deployment and management of multiple Elastic clusters, handling tasks like scaling, upgrades, and monitoring.
 
-Consider orchestration if you:
-- Need to manage multiple Elastic clusters
-- Want automated operations at scale
-- Have a Kubernetes environment (ECK)
-- Need to build a multi-tenant platform (ECE)
+Consider orchestration in the following cases:
+- You need to manage multiple Elastic clusters
+- You want automated operations at scale
+- You have a Kubernetes environment (ECK)
+- You need to build a multi-tenant platform (ECE)
 
 Orchestrators manage the lifecycle of your Elastic deployments but don't change how the core products work. When using an orchestrated deployment:
 - You'll still use the same {{es}} and {{kib}} features and configurations
@@ -82,7 +86,7 @@ Orchestrators manage the lifecycle of your Elastic deployments but don't change 
 
 In {{serverless-full}}, you automatically get access to the latest versions of Elastic features and you don't need to manage version compatibility.
 
-With other deployment types (ECH, ECE, and ECK), you control which {{stack}} versions you deploy and when you upgrade. The ECE and ECK orchestrators themselves also receive regular version updates, independent of the {{stack}} versions they manage.
+With other deployment types (fully self-managed, ECH, ECE, and ECK), you control which {{stack}} versions you deploy and when you upgrade. The ECE and ECK orchestrators themselves also receive regular version updates, independent of the {{stack}} versions they manage.
 
 Consider this when choosing your deployment type:
 
@@ -97,8 +101,8 @@ Learn more about [versioning and availability](/get-started/versioning-availabil
 
 - **{{serverless-full}}**: Pay for what you use
 - **{{ech}}**: Subscription-based with resource allocation
-- **Self-hosted options**: Infrastructure costs plus operational overhead mean a higher total cost of ownership (TCO)
+- **Self-hosted options**, **including fully self-managed, ECE, and ECK**: Infrastructure costs plus operational overhead mean a higher total cost of ownership (TCO)
 
 :::::{tip}
-For a detailed comparison of features and capabilities across deployment types, see the [Deployment comparison reference](./deploy/deployment-comparison.md).
+For a detailed comparison of features and capabilities across deployment types, see the [](./deploy/deployment-comparison.md).
 :::::

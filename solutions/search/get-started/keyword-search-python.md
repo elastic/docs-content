@@ -24,18 +24,24 @@ To follow the steps, you must have a recent version of a Python interpreter.
 
 ::::{step} Create a project
 
-Create an [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md) general purpose project.
-To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
-To learn about role-based access control, go to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+:::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
+:::
 
+Choose the {{es}} project type and provide a name.
+You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
+
+To add the sample data in subsequent steps, you must have a `developer` or `admin` predefined role or an equivalent custom role.
+To learn about role-based access control, go to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 ::::
 ::::{step} Create an index
 
 An index is a collection of documents uniquely identified by a name or an alias.
-To create an index, go to **{{es}} > Home**, select keyword search, and follow the guided workflow.
+To create an index:
+1. Go to **Index Management** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Create index**, select **Keyword Search**, and follow the guided workflow.
 
 To enable your client to talk to your project, you must also create an API key.
-Click **Create API Key** and use the default values, which are sufficient for this quickstart.
+Select **Create an API Key** and use the default values, which are sufficient for this quickstart.
 
 :::{tip}
 For more information about indices and API keys, go to [](/manage-data/data-store/index-basics.md) and [](/deploy-manage/api-keys/serverless-project-api-keys.md).
@@ -46,7 +52,7 @@ For more information about indices and API keys, go to [](/manage-data/data-stor
 Select your preferred language in the keyword search workflow.
 For this quickstart, use Python.
 
-![Client installation step in the keyword search workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltbf810f73fd4082fb/67c21c06304ea9790b82ee4d/screenshot-my-index.png)
+![Client installation step in the keyword search workflow](/solutions/images/search-quickstart-install-python-client.png)
 
 The {{es}} client library is a Python package that is installed with `pip`:
 
@@ -128,7 +134,7 @@ For more details about bulker helpers, refer to [Client helpers](elasticsearch-p
 
 You should now be able to see the documents in the guided workflow:
 
-![Viewing data in the guided workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt0ac36402cde2a645/67d0a443b8764e72b9e8e1f3/view_docs_in_elasticsearch.png)
+![Viewing data in the guided workflow](/solutions/images/search-quickstart-view-data-python-keywordsearch.png)
 
 Optionally open [Discover](/explore-analyze/discover.md) from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to familiarize yourself with this data set.
 
@@ -137,7 +143,7 @@ Optionally open [Discover](/explore-analyze/discover.md) from the navigation men
 
 A keyword search, also known as lexical search or [full-text search](/solutions/search/full-text.md) finds relevant documents in your indices using exact matches, patterns, or similarity scoring.
 The guided workflow provides an example that uses [Query DSL](/explore-analyze/query-filter/languages/querydsl.md).
-Alternatively, try out [{{es}} Query Language](/explore-analyze/query-filter/languages/esql.md) ({{esql}}) to find documents that match a specific keyword:
+Alternatively, try out [{{es}} Query Language](elasticsearch://reference/query-languages/esql.md) ({{esql}}) to find documents that match a specific keyword:
 
 ```py
 response = client.esql.query(

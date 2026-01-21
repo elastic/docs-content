@@ -39,8 +39,11 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
 ## Prerequisites [ec_prerequisites_3]
 
 :::::::{tab-set}
+:group: csps
 
 ::::::{tab-item} AWS
+:sync: aws
+
 * Have permissions on AWS KMS to [create a symmetric AWS KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks) and to configure AWS IAM roles.
 
   :::{tip}
@@ -51,6 +54,8 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
 ::::::
 
 ::::::{tab-item} Azure
+:sync: azure
+
 * Have the following permissions on Azure:
 
     * Permissions to [create an RSA key](https://learn.microsoft.com/en-us/azure/key-vault/keys/about-keys#key-types-and-protection-methods) in the Azure Key Vault where you want to store your key.
@@ -67,6 +72,8 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
 ::::::
 
 ::::::{tab-item} Google Cloud
+:sync: gcp
+
 * Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) supported by {{ecloud}}.
 * Have the following permissions in Google Cloud KMS:
 
@@ -93,8 +100,11 @@ At this time, the following features are not supported:
 ## Create an encryption key for your deployment [create-encryption-key]
 
 :::::::{tab-set}
+:group: csps
 
 ::::::{tab-item} AWS
+:sync: aws
+
 1. Create a symmetric [single-region key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) or [multi-region replica key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-replicate.html). The key must be available in each region in which you have deployments to encrypt. You can use the same key to encrypt multiple deployments. Later, you will need to provide the Amazon Resource Name (ARN) of that key or key alias to {{ecloud}}.
 
     ::::{note}
@@ -135,6 +145,8 @@ At this time, the following features are not supported:
 ::::::
 
 ::::::{tab-item} Azure
+:sync: azure
+
 1. Create an RSA key in your Key Vault. The key must be available in each region in which you have deployments to encrypt. You can use the same key to encrypt multiple deployments.
 2. After the key is created, view the key and note the key identifier. It should look similar to the following:
 
@@ -150,6 +162,8 @@ Provide your key identifier without the key version identifier so {{ecloud}} can
 ::::::
 
 ::::::{tab-item} Google Cloud
+:sync: gcp
+
 1. [Create a new symmetric key](https://cloud.google.com/kms/docs/create-key) in Google Cloud KMS.
 
     The key must be in a key ring that’s in the same region as your deployment. Do not use key ring in a multi-region location.
@@ -166,8 +180,11 @@ Provide your key identifier without the key version identifier so {{ecloud}} can
 ## Create a deployment encrypted with your key [ec_create_a_deployment_encrypted_with_your_key]
 
 :::::::{tab-set}
+:group: csps
 
 ::::::{tab-item} AWS
+:sync: aws
+
 1. Create a new deployment. You can do it from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API:
 
     * from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
@@ -211,6 +228,8 @@ The deployment is now created and encrypted using the specified key. Future snap
 ::::::
 
 ::::::{tab-item} Azure
+:sync: azure
+
 To create a new deployment with a customer-managed key in Azure, you need to perform actions in {{ecloud}} and in your Azure tenant.
 
 **Step 1: Create a service principal for {{ecloud}}**
@@ -285,6 +304,8 @@ The deployment is now created and encrypted using the specified key. Future snap
 ::::::
 
 ::::::{tab-item} Google Cloud
+:sync: gcp
+
 **Step 1: Grant service principals access to your key**
 
 {{ecloud}} uses two service principals to encrypt and decrypt data using your key. You must grant these services access to your key before you create your deployment.
@@ -313,9 +334,19 @@ The deployment is now created and encrypted using the specified key. Future snap
         * `cloudkms.cryptoKeyVersions.useToEncrypt`
 
 
-::::{tip}
-The user performing this action needs to belong to the **Owner** or **Cloud KMS Admin** role.
-::::
+    The user performing this action needs to belong to the **Owner** or **Cloud KMS Admin** role.
+
+
+    ::::{note}
+    If [domain restricted sharing](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains) is enabled, then you might not be able to grant the service principals access to the key resource directly. Alternatively, you can grant access to a Google group that contains the relevant service accounts.
+
+    1. Create a new Google group within the allowed domain.
+    2. In the Google Workspace administrator panel, [turn off domain restriction for your newly created Google group](https://support.google.com/a/answer/167097).
+    3. Add the service principals to the Google group.
+    4. Grant the Google group the roles as listed.
+    
+    If you can't use Google Groups for your org, then [contact Elastic Support](https://www.elastic.co/support) for alternatives. 
+    ::::
 
 
 **Step 2: Create your deployment**
@@ -370,14 +401,19 @@ You can check that your hosted deployment is correctly encrypted with the key yo
 ## Rotate a customer-managed key [rotate-a-customer-managed-key]
 
 :::::::{tab-set}
+:group: csps
 
 ::::::{tab-item} AWS
+:sync: aws
+
 {{ecloud}} will automatically rotate the keys every 31 days as a security best practice.
 
 You can also trigger a manual rotation [in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html), which will take effect in {{ecloud}} within 30 minutes. **For manual rotations to work, you must use an alias when creating the deployment. We do not currently support [on-demand rotations](https://docs.aws.amazon.com/kms/latest/APIReference/API_RotateKeyOnDemand.html) but plan on supporting this in the future.**
 ::::::
 
 ::::::{tab-item} Azure
+:sync: azure
+
 To rotate your key, you can [update your key version](https://learn.microsoft.com/en-us/azure/container-registry/tutorial-rotate-revoke-customer-managed-keys) or [configure a key rotation policy](https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation) in Azure Key Vault. In both cases, the rotation will take effect in {{ecloud}} within a day.
 
 For rotations to work, you must provide your key identifier without the key version identifier when you create your deployment.
@@ -386,6 +422,8 @@ For rotations to work, you must provide your key identifier without the key vers
 ::::::
 
 ::::::{tab-item} Google Cloud
+:sync: gcp
+
 Key rotations are triggered in Google Cloud. You can rotate your key [manually](https://cloud.google.com/kms/docs/rotate-key#manual) or [automatically](https://cloud.google.com/kms/docs/rotate-key#automatic). In both cases, the rotation will take effect in {{ecloud}} within a day.
 ::::::
 

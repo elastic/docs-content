@@ -100,7 +100,7 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
     This Python script randomly generates one of twelve log messages, continuously, at a random interval of between 1 and 10 seconds. The log messages are written to an `elvis.json` file, each with a timestamp, a log level of _info_, _warning_, _error_, or _critical_, and other data. To add some variance to the log data, the _info_ message _Elvis has left the building_ is set to be the most probable log event.
 
-    For simplicity, there is just one log file (`elvis.json`), and it is written to the local directory where `elvis.py` is located. In a production environment, you may have multiple log files associated with different modules and loggers and likely stored in `/var/log` or similar. To learn more about configuring logging in Python, check [Logging facility for Python](https://docs.python.org/3/library/logging.html).
+    For simplicity, there is only one log file (`elvis.json`), and it is written to the local directory where `elvis.py` is located. In a production environment, you may have multiple log files associated with different modules and loggers and likely stored in `/var/log` or similar. To learn more about configuring logging in Python, check [Logging facility for Python](https://docs.python.org/3/library/logging.html).
 
     Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsable format becomes increasingly important as the volume and type of data captured in your logs expands over time.
 
@@ -127,7 +127,7 @@ To connect to your {{ech}} deployment, stream data, and issue queries, you have 
 
 ### Cloud ID
 
-To find the [Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md) of your deployment, go to the {{kib}} main menu, then select **Management** → **Integrations** → **Connection details**. Note that the Cloud ID value is in the format `deployment-name:hash`. Save this value to use it later.
+To find the [Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md) of your deployment, go to the {{kib}} main menu, then select **Management** → **Integrations** → **Connection details**. The Cloud ID value is in the format `deployment-name:hash`. Save this value to use it later.
 
 ### Basic authentication
 
@@ -203,7 +203,7 @@ cloud.id: deployment-name:hash <1>
 cloud.auth: username:password <2>
 ```
 
-1. Uncomment the `cloud.id` line, and add the deployment’s Cloud ID as the key's value. Note that the `cloud.id` value is in the format `deployment-name:hash`. Find your Cloud ID by going to the {{kib}} main menu, and selecting **Management** → **Integrations** → **Connection details**.
+1. Uncomment the `cloud.id` line, and add the deployment's Cloud ID as the key's value. The `cloud.id` value is in the format `deployment-name:hash`. Find your Cloud ID by going to the {{kib}} main menu, and selecting **Management** → **Integrations** → **Connection details**.
 2. Uncomment the `cloud.auth` line, and add the username and password for your deployment in the format `username:password`. For example, `cloud.auth: elastic:57ugj782kvkwmSKg8uVe`.
 
 ::::{note}

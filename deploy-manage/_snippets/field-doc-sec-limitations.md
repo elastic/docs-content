@@ -40,5 +40,5 @@ When a user’s role enables document or [field level security](/deploy-manage/u
 
 * The request cache is disabled for search requests if either of the following are true:
 
-    * The role query that defines document level security is [templated](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) using a [stored script](/explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts).
+    * The role query that defines document level security is [templated](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) using a [stored script](/explore-analyze/scripting/modules-scripting-store-and-retrieve.md).
     * The target indices are a mix of local and remote indices.

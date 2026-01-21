@@ -43,7 +43,7 @@ For a list of supported settings, check [{{kib}} settings](kibana://reference/cl
 
 ### APM settings
 
-Refer to [APM configuration reference](/solutions/observability/apm/configure-apm-server.md) for information on how to configure the {{fleet}}-managed APM integration.
+Refer to [APM configuration reference](/solutions/observability/apm/apm-server/configure.md) for information on how to configure the {{fleet}}-managed APM integration.
 
 ## Edit settings [ec-add-user-settings]
 

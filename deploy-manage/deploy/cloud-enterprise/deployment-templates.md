@@ -45,7 +45,7 @@ The system deployment templates available by default are:
 
 * **Elastic Observability template**
 
-    This template allows you to consolidate your logs, metrics, application traces, and system availability with purpose-built UIs. Check the [**Elastic Observability**](../../../solutions/observability/get-started/what-is-elastic-observability.md) documentation for more information.
+    This template allows you to consolidate your logs, metrics, application traces, and system availability with purpose-built UIs. Check the [**Elastic Observability**](/solutions/observability.md) documentation for more information.
 
 ## Instance configurations [ece-getting-started-instance-configurations]
 

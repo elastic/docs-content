@@ -2,6 +2,9 @@
 navigation_title: Scenario 1
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario1.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -22,7 +25,7 @@ This tutorial explains how to apply a custom index lifecycle policy to all of th
 
 ## Step 1: Create an index lifecycle policy [data-streams-scenario1-step1]
 
-1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 
 Name your new policy. For this tutorial, you can use `my-ilm-policy`. Customize the policy to your liking, and when you’re done, click **Save policy**.
@@ -32,7 +35,7 @@ Name your new policy. For this tutorial, you can use `my-ilm-policy`. Customize 
 
 The **Index Templates** view in {{kib}} shows you all of the index templates available to automatically apply settings, mappings, and aliases to indices:
 
-1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Index Templates**.
 3. Search for `system` to see all index templates associated with the System integration.
 4. Select any `logs-*` index template to view the associated component templates. For example, you can select the `logs-system.application` index template.

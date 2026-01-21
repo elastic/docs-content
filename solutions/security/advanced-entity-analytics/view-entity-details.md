@@ -7,10 +7,10 @@ applies_to:
 
 # View entity details
 
-You can lean more about an entity (host, user, or service) from the entity details flyout, which is available throughout the {{elastic-sec}} app. To access this flyout, click on an entity name in places such as:
+You can learn more about an entity (host, user, or service) from the entity details flyout, which is available throughout the {{elastic-sec}} app. To access this flyout, click on an entity name in places such as:
 
 * The Alerts table
-* The Entity Analytics dashboard
+* The Entity Analytics overview
 * The **Users** and user details pages
 * The **Hosts** and host details pages
 
@@ -18,6 +18,7 @@ You can lean more about an entity (host, user, or service) from the entity detai
 
 The entity details flyout includes the following sections:
 
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
 * [Entity risk summary](#entity-risk-summary), which displays entity risk data and inputs.
 * [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
@@ -25,6 +26,40 @@ The entity details flyout includes the following sections:
 
 :::{image} /solutions/images/security-host-details-flyout.png
 :alt: Host details flyout
+:screenshot:
+:::
+
+### Entity summary
+```yaml {applies_to}
+stack: ga 9.3
+serverless: ga
+```
+
+::::{note}
+* To generate an AI summary, you need to configure a [generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+* This feature is only available for users and hosts.
+::::
+
+The **Entity summary** section allows you to generate an AI-powered summary of the entity's security context. Click **Generate** to create a comprehensive overview that aggregates information from:
+
+* Risk scores and risk inputs
+* Asset criticality levels
+* Vulnerabilities
+* {{ml-cap}} anomalies associated with the entity
+
+The summary provides a consolidated view of the entity's security posture, helping you quickly assess its significance and prioritize investigations. It includes information such as:
+
+* The entity's current risk score with details about which alerts or rules contribute most significantly to the score
+* The entity's asset criticality level and how it contributes to the overall risk score
+* Details about detected vulnerabilities, including CVE identifiers, CVSS scores, affected packages or systems, and remediation guidance
+* Recommended next steps based on the entity's security posture, such as updating vulnerable packages, investigating specific alerts, or implementing additional security controls
+
+::::{tip}
+If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) set up, you can select **More actions** ({icon}`boxes_vertical`) → **Ask AI Assistant** or **Add to chat** to continue the conversation about the entity in AI Assistant or Agent Builder.
+::::
+
+:::{image} /solutions/images/security-entity-summary.png
+:alt: Entity summary
 :screenshot:
 :::
 
@@ -46,6 +81,8 @@ To expand the entity risk summary section, click **View risk contributions**. Th
 * The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score.
 
 If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
+
+{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can also ask it to explain how the risk inputs contributed to the entity's risk score and recommend next steps.
 
 :::{image} /solutions/images/security-host-risk-inputs.png
 :alt: Host risk inputs

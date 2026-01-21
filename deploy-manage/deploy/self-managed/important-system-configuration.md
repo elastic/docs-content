@@ -18,7 +18,6 @@ The following settings **must** be considered before going to production:
 * [](setup-configuration-memory.md)
 * [](vm-max-map-count.md)
 * [](max-number-of-threads.md)
-* [](networkaddress-cache-ttl.md)
 * [](file-descriptors.md) (Linux and MacOS only)
 * [](executable-jna-tmpdir.md) (Linux only)
 * [](system-config-tcpretries.md) (Linux only)

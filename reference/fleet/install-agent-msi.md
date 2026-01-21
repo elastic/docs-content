@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-agent-msi.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -64,7 +67,7 @@ Installing using an MSI package has the following behaviors:
 
 ## Upgrading [_upgrading]
 
-The {{agent}} version can be upgraded via {{fleet}}, but the registered MSI version will display the initially installed version (this shortcoming will be addressed in future releases). Attempts to upgrade outside of {{fleet}} via the MSI will require an uninstall and reinstall procedure to upgrade. Also note that this MSI implementation relies on the tar {{agent}} binary to upgrade the installation. Therefore if the {{agent}} is installed in an air-gapped environment, you must ensure that the tar image is available before an upgrade request is issued.
+The {{agent}} version can be upgraded through {{fleet}}, but the registered MSI version will display the initially installed version (this shortcoming will be addressed in future releases). Attempts to upgrade outside of {{fleet}} through the MSI will require an uninstall and reinstall procedure to upgrade. This MSI implementation relies on the tar {{agent}} binary to upgrade the installation. Therefore if the {{agent}} is installed in an air-gapped environment, you must ensure that the tar image is available before an upgrade request is issued.
 
 
 ## Installing in a custom location [_installing_in_a_custom_location]

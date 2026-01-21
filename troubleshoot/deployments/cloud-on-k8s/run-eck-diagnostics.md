@@ -11,6 +11,9 @@ products:
 
 # Run eck-diagnostics [k8s-take-eck-dump]
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 `eck-diagnostics` is a stand-alone command line tool to create a diagnostic archive to help troubleshoot issues with ECK.
 
 

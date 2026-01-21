@@ -24,7 +24,7 @@ The logs you want to parse look similar to this:
 
 These logs contain a timestamp, IP address, and user agent. You want to give these three items their own field in {{es}} for faster searches and visualizations. You also want to know where the request is coming from.
 
-1. In {{kib}}, open the main menu and click **Stack Management** > **Ingest Pipelines**.
+1. In {{kib}}, go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-list.png
     :alt: Kibana's Ingest Pipelines list view

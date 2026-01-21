@@ -13,21 +13,10 @@ products:
 
 # Data views [data-views]
 
-$$$field-formatters-numeric$$$
-
-$$$managing-fields$$$
-
-$$$runtime-fields$$$
-
-$$$management-cross-cluster-search$$$
-
-$$$data-views-read-only-access$$$
-
-
 By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
 
 ::::{note}
-In certain apps, you can also query your {{es}} data using [{{esql}}](../query-filter/languages/esql.md). With {{esql}}, data views aren't required.
+In certain apps, you can also query your {{es}} data using [{{esql}}](elasticsearch://reference/query-languages/esql.md). With {{esql}}, data views aren't required.
 ::::
 
 
@@ -37,6 +26,7 @@ In certain apps, you can also query your {{es}} data using [{{esql}}](../query-f
   - `Data View Management` {{kib}} privilege.
   - `view_index_metadata` {{es}} privilege.
 * If a read-only indicator appears, you have insufficient privileges to create or save {{data-sources}}. In addition, the buttons to create {{data-sources}} or save existing {{data-sources}} are not visible.
+* {applies_to}`stack: ga 9.2` Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can [duplicate it](#duplicate-managed-data-view) and edit that new copy as needed.
 
 
 ## Create a data view [settings-create-pattern]
@@ -121,7 +111,7 @@ serverless: unavailable
 stack: ga
 ```
 
-If your {{es}} clusters are configured for [{{ccs}}](../../solutions/search/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
+If your {{es}} clusters are configured for [{{ccs}}](../../explore-analyze/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
 
 ```ts
 <remote_cluster_name>:<target>
@@ -159,7 +149,7 @@ cluster_*:logstash-*,-cluster_one:*
 
 Once you configure a {{data-source}} to use the {{ccs}} syntax, all searches and aggregations using that {{data-source}} in {{kib}} take advantage of {{ccs}}.
 
-For more information, refer to [Excluding clusters or indicies from cross-cluster search](../../solutions/search/cross-cluster-search.md#exclude-problematic-clusters).
+For more information, refer to [Excluding clusters or indicies from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
 
 
 ## Delete a {{data-source}} [delete-data-view]
@@ -175,7 +165,7 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](/explore-analyze/images/kibana-delete.png "") in the **Actions** column.
 
 
-## {{data-source}} field cache [data-view-field-cache]
+## Data view field cache [data-view-field-cache]
 
 The browser caches {{data-source}} field lists for increased performance. This is particularly impactful for {{data-sources}} with a high field count that span a large number of indices and clusters. The field list is updated every couple of minutes in typical {{kib}} usage. Alternatively, use the refresh button on the {{data-source}} management detail page to get an updated field list. A force reload of {{kib}} has the same effect.
 
@@ -183,7 +173,7 @@ The field list may be impacted by changes in indices and user permissions.
 
 ## Manage data views [managing-data-views]
 
-To customize the data fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{kib}} displays the data fields.
+To customize the fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{kib}} displays the data view fields.
 
 
 ### Explore your data with runtime fields [runtime-fields]
@@ -324,7 +314,7 @@ Edit the settings for runtime fields, or remove runtime fields from data views.
 ::::{admonition} Deprecated in 7.13.
 :class: warning
 
-Use [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) instead of scripted fields. Runtime fields support Painless scripting and provide greater flexibility. You can also use the [Elasticsearch Query Language (ES|QL)](../../explore-analyze/query-filter/languages/esql.md) to compute values directly at query time.
+Use [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) instead of scripted fields. Runtime fields support Painless scripting and provide greater flexibility. You can also use the [Elasticsearch Query Language (ES|QL)](elasticsearch://reference/query-languages/esql.md) to compute values directly at query time.
 ::::
 
 
@@ -346,9 +336,9 @@ doc['field_name'].value
 For more information on scripted fields and additional examples, refer to [Using Painless in {{kib}} scripted fields](https://www.elastic.co/blog/using-painless-kibana-scripted-fields)
 
 
-#### Migrate to runtime fields or ES|QL queries [migrate-off-scripted-fields]
+#### Migrate to runtime fields or {{esql}} queries [migrate-off-scripted-fields]
 
-The following code snippets demonstrate how an example scripted field called `computed_values` on the Kibana Sample Data Logs data view could be migrated to either a runtime field or an ES|QL query, highlighting the differences between each approach.
+The following code snippets demonstrate how an example scripted field called `computed_values` on the Kibana Sample Data Logs data view could be migrated to either a runtime field or an {{esql}} query, highlighting the differences between each approach.
 
 
 ##### Scripted field [scripted-field-example]
@@ -462,9 +452,9 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 
 
 
-### Format data fields [managing-fields]
+### Format data view fields [managing-fields]
 
-{{kib}} uses the same field types as {{es}}, however, some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data fields, use the formatting options.
+{{kib}} uses the same field types as {{es}}, however, some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data view fields, use the formatting options.
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the data view that contains the field you want to change.
@@ -473,7 +463,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 5. Select **Set format**, then enter the **Format** for the field.
 
 ::::{note}
-For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
+For numeric fields, the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
 ::::
 
 
@@ -678,3 +668,24 @@ The **Color** field formatter enables you to specify colors with ranges of value
 When you select the **Color** formatter, click **Add Color**, then specify the **Range**, **Text color**, and **Background color**.
 
 
+## Duplicate managed data views [duplicate-managed-data-view]
+```{applies_to}
+stack: ga 9.2
+```
+
+Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can duplicate it and edit that new copy as needed. To do this:
+
+1. Open the {{kib}} application where you want to use the data view. For example, **Discover** or **Lens**.
+   :::{note}
+   The duplication operation isn't available from the **Data Views** management page.
+   :::
+
+2. In the data view selection menu, select the managed data view that you want to duplicate.
+
+3. Still in the data view selection menu, select **Manage this data view**. A flyout with more details about the data view opens, and indicates that you can't edit it directly.
+
+   ![Manage this data view option](../images/manage-this-data-view.png "Manage this data view option =50%")
+
+4. Select **Duplicate**. A Similar flyout opens where you can adjust the settings of the new copy of the managed data view.
+
+5. Finalize your edits, then select **Save data view to Kibana** or **Use without saving**, depending on your needs. By saving it to {{kib}}, you can retrieve it and use it again later.

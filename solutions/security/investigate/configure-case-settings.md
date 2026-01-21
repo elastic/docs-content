@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: Configure case settings
 ---
 
-# Configure case settings [security-cases-settings]
+# Configure case settings for {{elastic-sec}} [security-cases-settings]
 
 This page explains how to change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types.
 First, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**. In {{serverless-short}}, you can access case settings in an {{elastic-sec}} project, go to **Cases** → **Settings**.
@@ -49,7 +50,7 @@ You can push {{elastic-sec}} cases to these third-party systems:
 To push cases, you need to create a connector, which stores the information required to interact with an external system. After you have created a connector, you can set {{elastic-sec}} cases to automatically close when they are sent to external systems.
 
 ::::{important}
-To create connectors and send cases to external systems, ensure you have the appropriate role privileges and [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). For more information, refer to [Cases requirements](/solutions/security/investigate/cases-requirements.md).
+To create connectors and send cases to external systems, ensure you have the appropriate role privileges and [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). For more information, refer to [Cases requirements](/solutions/security/investigate/cases-requirements.md).
 ::::
 
 
@@ -137,7 +138,7 @@ If you update or delete templates, existing cases are unaffected.
 ## Observable types [cases-observable-types]
 
 ::::{admonition} Requirements
-Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ::::
 

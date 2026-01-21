@@ -3,7 +3,7 @@ navigation_title: Breaking changes
 ---
 
 # Elastic {{observability}} breaking changes [elastic-observability-breaking-changes]
-Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the Elastic {{observability}} breaking changes and take the necessary steps to mitigate any issues. To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
+Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the Elastic {{observability}} breaking changes and take the necessary steps to mitigate any issues. To learn how to upgrade, check [](/deploy-manage/upgrade.md).
 
 % ## Next version [elastic-observability-nextversion-breaking-changes]
 % **Release date:** Month day, year

@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-common-cluster-issues.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -17,16 +12,14 @@ products:
 
 Use these topics to fix common issues with {{es}} clusters.
 
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
-
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+::: 
 
 [](fix-watermark-errors.md)
 :   Fix watermark errors that occur when a data node is critically low on disk space and has reached the flood-stage disk usage watermark.
 
 [](circuit-breaker-errors.md)
-:   {{es}} uses circuit breakers to prevent nodes from running out of JVM heap memory. If Elasticsearch estimates an operation would exceed a circuit breaker, it stops the operation and returns an error.
+:   {{es}} uses circuit breakers to prevent nodes from running out of JVM heap memory. If {{es}} estimates an operation would exceed a circuit breaker, it stops the operation and returns an error.
 
 [](high-cpu-usage.md)
 :   The most common causes of high CPU usage and their solutions.
@@ -44,10 +37,10 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 :   A backlogged task queue can prevent tasks from completing and put the cluster into an unhealthy state.
 
 [](mapping-explosion.md)
-:   A cluster in which an index or index pattern as exploded with a high count of mapping fields which causes performance look-up issues for Elasticsearch and Kibana.
+:   A cluster in which an index or index pattern as exploded with a high count of mapping fields which causes performance look-up issues for {{es}} and {kib}.
 
 [](hotspotting.md)
-:   Hot spotting may occur in {{es}} when resource utilizations are unevenly distributed across nodes.
+:   Hot spotting can occur in {{es}} when resource utilizations are unevenly distributed across nodes.
 
 ## Additional resources
 

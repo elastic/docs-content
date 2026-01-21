@@ -64,7 +64,7 @@ This feature is intended to make it easier to use your ML trained models. First,
 Trained models must be available in the current [Kibana Space](../../../deploy-manage/manage-spaces.md) and running in order to use them. By default, models should be available in all Kibana Spaces that have the **Analytics** > **Machine Learning** feature enabled. To manage your trained models, use the Kibana UI and navigate to **Stack Management → Machine Learning → Trained Models**. Spaces can be controlled in the **spaces** column. To stop or start a model, go to the **Machine Learning** tab in the **Analytics** menu of Kibana and click **Trained Models** in the **Model Management** section.
 
 ::::{note}
-The `monitor_ml` [Elasticsearch cluster privilege](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) is required to manage ML models and ML {{infer}} pipelines which use those models.
+The `monitor_ml` [Elasticsearch cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md) is required to manage ML models and ML {{infer}} pipelines which use those models.
 
 ::::
 
@@ -106,7 +106,7 @@ Here, you’ll be able to:
 
 Inference processors added to your index-specific ML {{infer}} pipelines are normal Elasticsearch pipelines. Once created, each processor will have options to **View in Stack Management** and **Delete Pipeline**. Deleting an {{infer}} processor from within the **Content** UI deletes the pipeline and also removes its reference from your index-specific ML {{infer}} pipeline.
 
-These pipelines can also be viewed, edited, and deleted in Kibana via **Stack Management → Ingest Pipelines**, just like all other Elasticsearch ingest pipelines. You may also use the [Ingest pipeline APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). If you delete any of these pipelines outside of the **Content** UI in Kibana, make sure to edit the ML {{infer}} pipelines that reference them.
+These pipelines can also be viewed, edited, and deleted in Kibana from the **Ingest Pipelines** management page, just like all other Elasticsearch ingest pipelines. You may also use the [Ingest pipeline APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). If you delete any of these pipelines outside of the **Content** UI in Kibana, make sure to edit the ML {{infer}} pipelines that reference them.
 
 ## Test your ML {{infer}} pipeline [ingest-pipeline-search-inference-test-inference-pipeline]
 

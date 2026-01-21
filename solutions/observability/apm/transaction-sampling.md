@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-sampling.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-transaction-sampling.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -28,8 +28,8 @@ Elastic APM supports two types of sampling:
 ## Head-based sampling [apm-head-based-sampling]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 In head-based sampling, the sampling decision for each trace is made when the trace is initiated. Each trace has a defined and equal probability of being sampled.
@@ -108,14 +108,14 @@ Refer to the documentation of your favorite OpenTelemetry agent or SDK for more 
 ## Tail-based sampling [apm-tail-based-sampling]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
 ::::{note}
 **Support for tail-based sampling**
 
-Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](/solutions/observability/apm/configure-output.md), tail-based sampling is *not* supported.
+Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](/solutions/observability/apm/apm-server/configure-output.md), tail-based sampling is *not* supported.
 ::::
 
 In tail-based sampling, the sampling decision for each trace is made after the trace has completed. This means all traces will be analyzed against a set of rules, or policies, which will determine the rate at which they are sampled.
@@ -140,17 +140,17 @@ In this example, `Service A` initiates four transactions. If our sample rate is 
 
 Tail-based sampling is implemented entirely in APM Server, and will work with traces sent by either Elastic APM agents or OpenTelemetry SDKs.
 
-Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/apm/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
+Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/apm/opentelemetry/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
 
 ### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
 
 Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded when a sampling decision is made.
 
-In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-storage_limit-ref) is insufficient, sampling will be bypassed.
+In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](/solutions/observability/apm/apm-server/tail-based-sampling.md#sampling-tail-storage_limit-ref) is insufficient, trace events are indexed or discarded based on the [discard on write failure](/solutions/observability/apm/apm-server/tail-based-sampling.md#sampling-tail-discard-on-write-failure-ref) configuration.
 
 It is recommended to use fast disks, ideally Solid State Drives (SSD) with high I/O per second (IOPS), when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
 
-To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load that is receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch and a **10% sample rate in the tail sampling policy**.
+To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load that is receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch, a **uniform 10% sample rate in the tail sampling policy**, events being sent from 1024 agents concurrently, and sufficient disk space.
 
 :::{important}
 These figures are for reference only and may vary depending on factors such as sampling rate, average event size, and the average number of events per distributed trace.
@@ -161,41 +161,52 @@ Terminology:
 * Event Ingestion Rate: The throughput from the APM agent to the APM Server using the Intake v2 protocol (the protocol used by Elastic APM agents), measured in events per second.
 * Event Indexing Rate: The throughput from the APM Server to Elasticsearch, measured in events per second or documents per second. Note that it should roughly be equal to Event Ingestion Rate * Sampling Rate.
 * Memory Usage: The maximum Resident Set Size (RSS) of APM Server process observed throughout the benchmark.
+* TBS: Tail-based sampling.
+* IOPS: Input/Output Operations Per Second, which is a measure of disk performance.
 
-#### APM Server 9.0
-
-| EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
-|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| c6id.2xlarge      | TBS disabled                                   | 47220                           | 47220 (100% sampling)          | 0.98              | 0               |
-| c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 21310                           | 2360                           | 1.41              | 13.1            |
-| c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 21210                           | 2460                           | 1.34              | 12.9            |
-| c6id.4xlarge      | TBS disabled                                   | 142200                          | 142200 (100% sampling)         | 1.12              | 0               |
-| c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 32410                           | 3710                           | 1.71              | 19.4            |
-| c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 37040                           | 4110                           | 1.73              | 23.6            |
-
-#### APM Server 8.18
+#### APM Server 9.x
 
 | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
 |-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| c6id.2xlarge      | TBS disabled                                   | 50260                           | 50270 (100% sampling)          | 0.98              | 0               |
-| c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 10960                           | 50                             | 5.24              | 24.3            |
-| c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 11450                           | 820                            | 7.19              | 30.6            |
-| c6id.4xlarge      | TBS disabled                                   | 149200                          | 149200 (100% sampling)         | 1.14              | 0               |
-| c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11990                           | 530                            | 26.57             | 33.6            |
-| c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 43550                           | 2940                           | 28.76             | 109.6           |
+| c6gd.xlarge       | TBS off                                        | 45120                           | 45120 (100% sampling)          | 0.95              | 0               |
+| c6gd.xlarge       | TBS enabled, EBS gp3 volume with 3000 IOPS     | 17120                           | 1527                           | 1.48              | 11.3            |
+| c6gd.xlarge       | TBS enabled, local NVMe SSD from c6gd instance | 19490                           | 1661                           | 1.48              | 12.3            |
+| c6gd.2xlarge      | TBS off                                        | 63460                           | 63460 (100% sampling)          | 1.45              | 0               |
+| c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 26340                           | 2248                           | 2.09              | 17.8            |
+| c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 36620                           | 3041                           | 2.22              | 21.8            |
+| c6gd.4xlarge      | TBS off                                        | 119800                          | 119800 (100% sampling)         | 1.44              | 0               |
+| c6gd.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 27620                           | 2485                           | 2.49              | 16.6            |
+| c6gd.4xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 46260                           | 3909                           | 2.43              | 25.8            |
+
+#### APM Server 8.19
+
+| EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
+|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
+| c6gd.xlarge       | TBS off                                        | 45480                           | 45480 (100% sampling)          | 0.95              | 0               |
+| c6gd.xlarge       | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11420                           | 11.55                          | 5.92              | 30.81           |
+| c6gd.xlarge       | TBS enabled, local NVMe SSD from c6gd instance | 12630                           | 86.52                          | 5.82              | 27.70           |
+| c6gd.2xlarge      | TBS off                                        | 61900                           | 61900 (100% sampling)          | 1.45              | 0               |
+| c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 12920                           | 37.31                          | 11.31             | 30.98           |
+| c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 23300                           | 574                            | 13.31             | 50.99           |
+| c6gd.4xlarge      | TBS off                                        | 122800                          | 122800 (100% sampling)         | 1.45              | 0               |
+| c6gd.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 13280                           | 34.20                          | 22.61             | 32.01           |
+| c6gd.4xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 35810                           | 2480                           | 30.41             | 86.86           |
 
 When interpreting these numbers, note that:
 
+* APM Server 9.x performance data is based on version 9.2.2, which includes optimizations compared to 9.0 and represents typical 9.x series performance characteristics.
 * The metrics are inter-related. For example, it is reasonable to see higher memory usage and disk usage when the event ingestion rate is higher.
-* The event ingestion rate and event indexing rate competes for disk IO. This is why there is an outlier data point where APM Server version 8.18 with a 32GB NVMe SSD shows a higher ingest rate but a slower event indexing rate than in 9.0.
+* Under normal operation, the event indexing rate divided by the event ingestion rate should approximate the configured sampling rate (10% in this case). However, in the version 8.19 numbers above, as APM Server is under full load, sampling decision handling lags behind due to disk read operations that compete with ingest path writes for disk I/O resources, resulting in a significantly lower event indexing rate than expected.
+* Memory usage measurements differ between versions: version 9.x numbers reflect only the APM Server process RSS (excluding OS cache), while version 8.19 numbers include OS cache because the database is memory-mapped. Despite this measurement difference, version 9.0+ uses significantly less memory overall due to its much smaller database footprint.
+* Lower sampling rates result in higher event ingestion rates because less overhead is required for sampling decisions. For example, reducing the sampling rate from 10% to 5% in version 9.x increases event ingestion rate by 5-10% (data not shown in the tables above).
 
-The tail-based sampling implementation in version 9.0 offers significantly better performance compared to version 8.18, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.18, as the database grows larger, the performance slowdown can become disproportionate.
+The tail-based sampling implementation in version 9.x offers significantly better performance compared to version 8.x, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.x, as the database grows larger, the performance slowdown can become disproportionate.
 
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data.[^1^](#footnote-1) Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
@@ -215,8 +226,8 @@ These calculation methods ensure that the APM app provides the most accurate met
 ## Sample rates [_sample_rates]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 What’s the best sampling rate? Unfortunately, there isn’t one. Sampling is dependent on your data, the throughput of your application, data retention policies, and other factors. A sampling rate from `.1%` to `100%` would all be considered normal. You’ll likely decide on a unique sample rate for different scenarios. Here are some examples:
@@ -231,15 +242,15 @@ Regardless of the above, cost conscious customers are likely to be fine with a l
 ## Configure head-based sampling [apm-configure-head-based-sampling]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 There are three ways to adjust the head-based sampling rate of your APM agents:
 
 ### Dynamic configuration [_dynamic_configuration]
 
-The transaction sample rate can be changed dynamically (no redeployment necessary) on a per-service and per-environment basis with [{{apm-agent}} Configuration](/solutions/observability/apm/apm-agent-central-configuration.md) in {{kib}}.
+The transaction sample rate can be changed dynamically (no redeployment necessary) on a per-service and per-environment basis with [{{apm-agent}} Configuration](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) in {{kib}}.
 
 ### {{kib}} API configuration [_kib_api_configuration]
 
@@ -260,7 +271,7 @@ Each agent provides a configuration value used to set the transaction sample rat
 ## Configure tail-based sampling [apm-configure-tail-based-sampling]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
@@ -268,7 +279,7 @@ serverless: unavailable
 Enhanced privileges are required to use tail-based sampling. For more information, refer to [Create a tail-based sampling role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-tail-based-sampling).
 ::::
 
-Enable tail-based sampling with [Enable tail-based sampling](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
+Enable tail-based sampling with [Enable tail-based sampling](/solutions/observability/apm/apm-server/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
 
 Trace events are matched to policies in the order specified. Each policy list must conclude with a default policy — one that only specifies a sample rate. This default policy is used to catch remaining trace events that don’t match a stricter policy. Requiring this default policy ensures that traces are only dropped intentionally. If you enable tail-based sampling and send a transaction that does not match any of the policies, APM Server will reject the transaction with the error `no matching policy`.
 
@@ -340,4 +351,4 @@ Policies are evaluated **in order** and the first one that meets all match condi
 
 ### Configuration reference [_configuration_reference]
 
-For a complete reference of tail-based sampling configuration options, refer to [](/solutions/observability/apm/tail-based-sampling.md).
+For a complete reference of tail-based sampling configuration options, refer to [](/solutions/observability/apm/apm-server/tail-based-sampling.md).

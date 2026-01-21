@@ -37,6 +37,7 @@ ECK supports multiple installation methods. Choose the one that best fits your i
 * [Install ECK using a Helm chart](./install-using-helm-chart.md)
 * [](./deploy-eck-on-openshift.md)
 * [](./deploy-eck-on-gke-autopilot.md)
+* [Deploy ECK on Google Distributed Hosted Cloud](./eck-gdch.md)
 * [](./deploy-fips-compatible-version-of-eck.md)
 
 For air-gapped environments, refer to [](./air-gapped-install.md) to understand the requirements and installation considerations.

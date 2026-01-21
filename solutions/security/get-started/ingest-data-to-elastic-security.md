@@ -19,7 +19,6 @@ To ingest data, you can use:
 * The {{agent}} with integrations, which are available in the [Elastic Package Registry (EPR)](/reference/fleet/index.md#package-registry-intro). To install an integration that works with {{elastic-sec}}, go to the {{kib}} Home page or navigation menu and click **Add integrations**. On the Integrations page, click the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
 * **{{beats}}** shippers installed for each system you want to monitor.
 * **{{ls}}**, which dynamically ingests, transforms, and ships your data regardless of format.
-* The {{agent}} to send data from Splunk to {{elastic-sec}}. Refer to [Get started with data from Splunk](/solutions/observability/get-started/other-tutorials/add-data-from-splunk.md).
 * Third-party collectors configured to ship ECS-compliant data. [](/reference/security/fields-and-object-schemas/siem-field-reference.md) provides a list of ECS fields used in {{elastic-sec}}.
 
 ::::{important}

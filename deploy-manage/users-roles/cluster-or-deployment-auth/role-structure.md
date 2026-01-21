@@ -1,10 +1,6 @@
 ---
 applies_to:
-  deployment:
-    ece:
-    ess:
-    eck:
-    self:
+  stack: all
 ---
 
 # Role structure
@@ -187,7 +183,7 @@ The following describes the structure of a remote cluster permissions entry:
 ```
 
 1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md). This field is required.
-2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
+2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
 
 
 ## Example [_example_9]
@@ -221,5 +217,5 @@ Based on the above definition, users owning the `clicks_admin` role can:
 * Within these document, only read the `category`, `@timestamp` and `message` fields.
 
 ::::{tip}
-View a complete list of available [cluster and indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+View a complete list of available [cluster and indices privileges](elasticsearch://reference/elasticsearch/security-privileges.md).
 ::::

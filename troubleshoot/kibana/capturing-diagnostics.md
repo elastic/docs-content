@@ -23,6 +23,7 @@ You can use the information captured by the tool to troubleshoot problems with {
 
 You can generate diagnostic information using this tool before you contact [Elastic Support](https://support.elastic.co) or [Elastic Discuss](https://discuss.elastic.co) to help get a timely answer.
 
+See this [this video](https://www.youtube.com/watch?v=t0J32qBKlIU) for a walkthrough of capturing a {{kib}} diagnostic.
 
 ## Requirements [kibana-diagnostic-tool-requirements]
 

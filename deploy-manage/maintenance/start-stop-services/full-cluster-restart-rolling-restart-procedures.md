@@ -10,7 +10,7 @@ products:
 
 # Full Cluster restart and rolling restart procedures [restart-cluster]
 
-There may be [situations where you want to perform a full-cluster restart](../../security/secure-cluster-communications.md) or a rolling restart. In the case of [full-cluster restart](#restart-cluster-full), you shut down and restart all the nodes in the cluster while in the case of [rolling restart](#restart-cluster-rolling), you shut down only one node at a time, so the service remains uninterrupted.
+There may be situations where you want to perform a full-cluster restart, and others where you might want to perform a rolling restart. In the case of [full-cluster restart](#restart-cluster-full), you shut down and restart all the nodes in the cluster while in the case of [rolling restart](#restart-cluster-rolling), you shut down only one node at a time, so the service remains uninterrupted.
 
 ::::{warning}
 Nodes exceeding the low watermark threshold will be slow to restart. Reduce the disk usage below the [low watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-low) before restarting nodes.

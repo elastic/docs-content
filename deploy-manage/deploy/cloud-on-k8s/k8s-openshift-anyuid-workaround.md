@@ -10,7 +10,7 @@ products:
 
 # Deploy Docker images with anyuid SCC [k8s-openshift-anyuid-workaround]
 
-Starting with version 7.9, it is possible to run the APM Server with the `restricted` SCC. For APM versions older than 7.9, you can use this workaround which allows the Pod to run with the default `uid 1000` by assigning it to the `anyuid` SCC:
+Starting with {{stack}} version 7.9, it is possible to run the APM Server with the `restricted` SCC. For APM versions older than 7.9, you can use this workaround which allows the Pod to run with the default `uid 1000` by assigning it to the `anyuid` SCC:
 
 1. Create a service account to run the APM Server:
 
@@ -30,14 +30,16 @@ Starting with version 7.9, it is possible to run the APM Server with the `restri
 
 3. Deploy an APM Server and a `Route` with the following manifest:
 
-    ```shell
+    % this example might require an older stack version
+    
+    ```shell subs=true
     cat <<EOF | oc apply -n elastic -f -
     apiVersion: apm.k8s.elastic.co/v1
     kind: ApmServer
     metadata:
       name: apm-server-sample
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       count: 1
       elasticsearchRef:
         name: "elasticsearch-sample"

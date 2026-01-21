@@ -44,7 +44,7 @@ Headers for the Tile Service JSON manifest describing the basemaps available.
 ::::::{tab-item} Curl Example
 ::::{dropdown}
 ```bash subs=true
-curl -I 'https://tiles.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version}}' \
+curl -I 'https://tiles.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version.stack}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -124,7 +124,7 @@ Headers for a vector tile asset in *protobuffer* format from the Tile Service.
 ::::::{tab-item} Curl Example
 ::::{dropdown}
 ```bash subs=true
-$ curl -I 'https://tiles.maps.elastic.co/data/v3/1/1/0.pbf?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version}}' \
+$ curl -I 'https://tiles.maps.elastic.co/data/v3/1/1/0.pbf?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version.stack}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -287,7 +287,7 @@ Headers for the File Service JSON manifest that declares all the datasets availa
 ::::::{tab-item} Curl example
 ::::{dropdown}
 ```bash subs=true
-curl -I 'https://vector.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version}}' \
+curl -I 'https://vector.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version.stack}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -378,7 +378,7 @@ Headers for a sample Dataset from the File Service in TopoJSON format.
 ::::::{tab-item} Curl example
 ::::{dropdown}
 ```bash subs=true
-curl -I 'https://vector.maps.elastic.co/files/world_countries_v7.topo.json?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version}}' \
+curl -I 'https://vector.maps.elastic.co/files/world_countries_v7.topo.json?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version.stack}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -465,7 +465,7 @@ X-Firefox-Spdy: h2
 
 ## Disable Elastic Maps Service [disable-ems]
 
-You might experience EMS connection issues if your Kibana server or browser are on a private network or behind a firewall. If this happens, you can disable the EMS connection to avoid unnecessary EMS requests.
+You might experience EMS connection issues if your {{kib}} browser is on a private network or behind a firewall. If this happens, you can disable the EMS connection to avoid unnecessary EMS requests.
 
 To disable EMS, change your [kibana.yml](kibana://reference/configuration-reference/general-settings.md) file.
 
@@ -487,20 +487,20 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 1. Pull the {{hosted-ems}} Docker image.
 
     ```bash subs=true
-    docker pull docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
+    docker pull docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     ```
 
 2. Optional: Install [Cosign](https://docs.sigstore.dev/system_config/installation/) for your environment. Then use Cosign to verify the {{es}} image’s signature.
 
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
+    cosign verify --key cosign.pub docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
     ```sh subs=true
-    Verification for docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}} --
+    Verification for docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}} --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
       - Existence of the claims in the transparency log was verified offline
@@ -511,7 +511,7 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
     ```bash subs=true
     docker run --rm --init --publish 8080:8080 \
-      docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
+      docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     ```
 
     Once {{hosted-ems}} is running, follow instructions from the webpage at `localhost:8080` to define a configuration file and optionally download a more detailed basemaps database.
@@ -566,7 +566,7 @@ One way to configure {{hosted-ems}} is to provide `elastic-maps-server.yml` via 
 ```yaml subs=true
 services:
   ems-server:
-    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
+    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     volumes:
       - ./elastic-maps-server.yml:/usr/src/app/server/config/elastic-maps-server.yml
 ```
@@ -586,7 +586,7 @@ These variables can be set with `docker-compose` like this:
 ```yaml subs=true
 services:
   ems-server:
-    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
+    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     environment:
       ELASTICSEARCH_HOST: http://elasticsearch.example.org
       ELASTICSEARCH_USERNAME: 'ems'

@@ -26,6 +26,5 @@ So what caused the sudden increase in response times? The key to the puzzle lies
 
 This cluster was sized to handle a certain number of user requests. As the user requests exceeded the maximum throughput that a cluster of this size could sustain, response times increased. To avoid such a slowdown, you either need to control the volume of user requests that reaches the {{es}} cluster or you need to size your cluster to be able to accommodate a sudden increase in user requests.
 
-:::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::

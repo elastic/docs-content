@@ -1,4 +1,5 @@
 ---
+navigation_title: Add plugins and extensions
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-adding-plugins.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-adding-elastic-plugins.html
@@ -10,7 +11,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Add plugins and extensions [ec-adding-plugins]
+# Add plugins and extensions in {{ech}} [ec-adding-plugins]
 
 Plugins extend the core functionality of {{es}}. There are many suitable plugins, including:
 

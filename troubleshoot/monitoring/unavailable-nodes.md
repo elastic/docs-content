@@ -41,11 +41,10 @@ Some actions described here, such as stopping indexing or Machine Learning jobs,
 
 For production deployments, we recommend setting up a dedicated monitoring cluster to collect metrics and logs, troubleshooting views, and cluster alerts.
 
-:::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-:::
-
 If your issue is not addressed here, then [contact Elastic support for help](/troubleshoot/index.md).
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## Full disk on single-node deployment [ec-single-node-deployment-disk-used]
 
@@ -68,6 +67,12 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 **Resolution**
 
 * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+  
+::::{note}
+You can delete unused data by running either:
+* API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+* direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum.
+::::
 * Increase the disk size on your Hot data and Content tier (scale up).
 
 ::::{note}
@@ -115,6 +120,12 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 **Resolution**
 
 * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+  
+::::{note}
+You can delete unused data by running either:
+* API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+* direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum.
+::::
 * Increase the disk size (scale up).
 
 ::::{note}
@@ -317,6 +328,12 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 * Disk/memory/CPU saturated:
 
     * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+      
+      ::::{note}
+      You can delete unused data by running either:
+        * API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+        * direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum. 
+      ::::
     * Increase disk size.
     * [Enable autoscaling](/deploy-manage/autoscaling.md).
     * Configuration of [ILM](/manage-data/lifecycle/index-lifecycle-management.md) policies.

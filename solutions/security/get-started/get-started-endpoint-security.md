@@ -3,6 +3,8 @@ navigation_title: Protect your hosts with endpoint security
 description: A quick start guide to securing your hosts with endpoint security.
 applies_to:
   serverless:
+    security: all
+  stack:
 products:
   - id: security
 ---
@@ -13,11 +15,11 @@ In this guide, you’ll learn how to use {{elastic-sec}} to protect your hosts f
 
 ## Prerequisites 
 
-* Access to an {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md) to learn how to create one. 
-* Ensure you have the appropriate [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
-* Ensure you have the appropriate user role to configure an integration policy and access the **Endpoints** page.
+* You can follow this guide using any deployment. To get up and running quickly, we recommend [{{sec-serverless}}](/solutions/security/get-started.md#create-sec-serverless-project) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). For a complete list of deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
+* Ensure you have the minimum [system requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) to install {{elastic-defend}}.  
+* Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).  We recommend granting them all, but you need at least `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
 
-## Enable {{elastic-defend}}
+## Install {{elastic-defend}}
 
 :::::{stepper}
 ::::{step} Install the Elastic Defend integration
@@ -61,7 +63,7 @@ If you’re using macOS, some versions may require you to grant {{elastic-endpoi
 
 ::::{step} Modify policy configuration settings
 
-After you install the {{agent}} with {{elastic-defend}}, several endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—are automatically enabled on protected hosts. If any of these behaviors are detected, {{elastic-defend}} generates an alert, and by default, prevents the malicious activity from completing. However, you can tailor the policy configuration to meet your organization’s security needs.
+After you install the {{agent}} with {{elastic-defend}}, several endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—are automatically turned on for protected hosts. If any of these behaviors are detected, {{elastic-defend}} generates an alert, and by default, prevents the malicious activity from completing. However, you can tailor the policy configuration to meet your organization’s security needs.
 
 :::{tip}
 You may want to consider analyzing which and how many alerts are generated over a specific time period to identify common patterns or anomalies before you make any policy changes. Check out the [SIEM quick start guide](/solutions/security/get-started/get-started-detect-with-siem.md) to learn more about how to monitor alerts. 
@@ -84,7 +86,7 @@ For a comprehensive explanation of all endpoint protections and policy settings,
 :::::
 
 ## Manage endpoints 
-Now that you've got endpoint protection enabled, it's important not only to monitor your environment for alerts, but to manage your hosts to ensure they're healthy and have all appropriate security settings. 
+Now that you've turned on endpoint protection, it's important not only to monitor your environment for alerts, but to manage your hosts to ensure they're healthy and have all appropriate security settings. 
 
 :::{{note}}
 You must have `admin` privileges to manage endpoints. 
@@ -115,8 +117,8 @@ You can apply trusted applications, blocklist entries, and host isolation except
 
 ## Next steps 
 
-After your hosts are secure and your environment has all the appropriate security configuration enabled, we recommend taking these next steps: 
+After your hosts are secure and your environment has all the appropriate security settings configured, we recommend taking these next steps: 
 
 * Check out the [Hosts page](/solutions/security/explore/hosts-page.md) for a comprehensive overview of all hosts and host-related security events. This page is also useful to identify uncommon processes and anomalies discovered by {{ml}} jobs. 
-*  Enable prebuilt detection rules. You're already set to receive endpoint threat alerts from {{elastic-defend}}, but did you know {{elastic-sec}} ships with several out-of-the-box rules that you can enable? Check out our [SIEM quick start guide](/solutions/security/get-started/get-started-detect-with-siem.md#add-elastic-prebuilt-detection-rules) or our [documentation](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules).  
+*  Install and turn on prebuilt detection rules. You're already set to receive endpoint threat alerts from {{elastic-defend}}, but did you know {{elastic-sec}} ships with several out-of-the-box rules you can turn on? Check out our [SIEM quick start guide](/solutions/security/get-started/get-started-detect-with-siem.md#add-elastic-prebuilt-detection-rules) or our [documentation](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules).  
 * Discover all the other tools available to [manage {{elastic-defend}}](/solutions/security/manage-elastic-defend.md). 

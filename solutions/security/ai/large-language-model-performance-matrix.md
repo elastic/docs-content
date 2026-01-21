@@ -37,7 +37,7 @@ Models from third-party LLM providers.
 
 ## Open-source models [_open_source_models]
 
-Models you can [deploy yourself](/solutions/security/ai/connect-to-own-local-llm.md).
+Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-llms-overview.md).
 
 | **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **Automatic Migration**
 | --- | --- | --- | --- | --- | --- | --- |

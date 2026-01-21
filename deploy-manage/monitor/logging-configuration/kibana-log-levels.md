@@ -1,10 +1,6 @@
 ---
 applies_to:
-  deployment:
-    self:
-    eck:
-    ece:
-    ess:
+  stack: all
 ---
 
 # Set global log levels for {{kib}}

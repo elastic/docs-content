@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring.html
 applies_to:
+  serverless:
   deployment:
     ess: all
     ece: all
@@ -21,26 +22,33 @@ Depending on your deployment type, you can use a variety of solutions for monito
 
 ## Monitoring your cluster or deployment
 
-Depending on your deployment type and context, you have several options for monitoring your cluster or deployment.
+You have several options for monitoring your cluster or deployment.
 
-If you’re using {{ech}}, you can use [AutoOps](/deploy-manage/monitor/autoops.md) to monitor your cluster. 
+Use [](/deploy-manage/monitor/autoops.md) to simplify cluster management through performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. 
 
-AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection, and resolution paths. AutoOps is [rolling out](/deploy-manage/monitor/autoops/ec-autoops-regions.md) in phases across {{ech}} regions and cloud service providers. It will be automatically activated for your deployment with no installation required.
+Alternatively, you can use [Stack Monitoring](/deploy-manage/monitor/stack-monitoring.md) to monitor logs and metrics across the {{stack}}.
 
-For other deployment types, use [Stack Monitoring](/deploy-manage/monitor/stack-monitoring.md) to monitor logs and metrics across the {{stack}}.
+To help you decide between these two options, refer to [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 
-To help you make your decision, refer to [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
+For ECE and {{ech}} deployments, there are also a number of out of the box monitoring tools available.
+
+The following sections provide more details.
 
 ### AutoOps (recommended)
 
 ```{applies_to}
+serverless:
 deployment:
   ess:
+  self:
+  ece:
+  eck:
 ```
 
 AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
-AutoOps is currently only available for Elastic Cloud Hosted deployments.
+:::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
+:::
 
 ### Stack monitoring
 

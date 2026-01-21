@@ -1,4 +1,5 @@
 ---
+navigation_title: Create and manage rules
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-and-manage-rules.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Create and manage rules [create-and-manage-rules]
+# Create and manage alerting rules with {{kib}} [create-and-manage-rules]
 
 The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
 
@@ -54,13 +55,21 @@ All rules must have a check interval, which defines how often to evaluate the ru
 
 For details on what types of rules are available and how to configure them, refer to [*Rule types*](rule-types.md).
 
+### Alert flapping [defining-rules-flapping-details]
+
+You can modify the criteria for changing an alert's status to [`flapping`](view-alerts.md#alert-status) by configuring the **Alert flapping detection** settings, which are turned on by default. When configuring flapping settings, you must set a look back window and threshold for alert status changes. For example, you can specify that alerts with at least 6 status changes in the last 10 runs are `flapping`.   
+
+{applies_to}`stack: ga 9.3+` You can modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (find the **Rules** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)), click **Settings**, then go to the **Alert flapping detection** settings.
+
+{applies_to}`stack: ga 9.0-9.2` You can only modify global flapping settings for your entire {{kib}} space or {{serverless-short}} project.
+
 ### Actions [defining-rules-actions-details]
 
 You can add one or more actions to your rule to generate notifications when its conditions are met and when they are no longer met.
 
 Each action uses a connector, which provides connection information for a {{kib}} service or third party integration, depending on where you want to send the notifications.
 
-[preview] Some connectors that perform actions within {{kib}}, such as the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md), require less configuration. For example, you do not need to set the action frequency or variables.
+{applies_to}`stack: preview` {applies_to}`serverless: preview` Some connectors that perform actions within {{kib}}, such as the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md), require less configuration. For example, you do not need to set the action frequency or variables.
 
 After you select a connector, set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you an choose to run actions for each alert (at each check interval, only when the alert status changes, or at a custom interval).
 
@@ -128,7 +137,7 @@ When you snooze a rule, the rule checks continue to run on a schedule but alerts
 
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
-[preview] To temporarily suppress notifications for rules, you can also create a [maintenance window](maintenance-windows.md).
+{applies_to}`stack: preview` {applies_to}`serverless: preview` To temporarily suppress notifications for rules, you can also create a [maintenance window](maintenance-windows.md).
 
 ## View rule details [rule-details]
 

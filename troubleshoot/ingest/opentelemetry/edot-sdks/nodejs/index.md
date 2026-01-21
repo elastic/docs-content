@@ -19,7 +19,7 @@ Use the information on this page to troubleshoot issues using EDOT Node.js.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
 
-As a first step, review the [supported technologies](opentelemetry://reference/edot-sdks/nodejs/supported-technologies.md) to ensure your application is supported by the SDK. Are you using a Node.js version that the SDK supports? Are the versions of your dependencies in the [supported version range](opentelemetry://reference/edot-sdks/nodejs/supported-technologies.md#instrumentations) to be instrumented?
+As a first step, review the [supported technologies](elastic-otel-node://reference/edot-node/supported-technologies.md) to ensure your application is supported by the SDK. Are you using a Node.js version that the SDK supports? Are the versions of your dependencies in the [supported version range](elastic-otel-node://reference/edot-node/supported-technologies.md#instrumentations) to be instrumented?
 
 ## Set a service name
 
@@ -27,7 +27,7 @@ Make sure you have set a service name set using `OTEL_SERVICE_NAME=my-service` o
 
 ## Check connectivity
 
-Check from the host, VM, pod, container running your application, that connectivity is available to the Collector. Run the following command:
+Check from the host, VM, pod, container running your application, that connectivity is available to the Collector. For more detailed connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md). Run the following command:
 
 ```bash
 curl -i $ELASTIC_OTLP_ENDPOINT \
@@ -35,7 +35,7 @@ curl -i $ELASTIC_OTLP_ENDPOINT \
     -H "Authorization: ApiKey $ELASTIC_API_KEY"
 ```
 
-For example, if you [configured](opentelemetry://reference/edot-sdks/nodejs/configuration.md#basic-configuration) EDOT Node.js with:
+For example, if you [configured](elastic-otel-node://reference/edot-node/configuration.md#basic-configuration) EDOT Node.js with:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-deployment-abc123.ingest.us-west-2.aws.elastic.cloud"
@@ -85,8 +85,10 @@ node --import @elastic/opentelemetry-node my-app.js
 Turn on verbose diagnostic or debug logging from EDOT Node.js:
 
 1. Set the `OTEL_LOG_LEVEL` environment variable to `verbose`.
-2. Restart your application, and reproduce the issue. If the issue is about not seeing telemetry that you expect to see, be sure to use your application so that telemetry data is generated.
+2. Restart your application, and reproduce the issue. If the issue is about not seeing telemetry that you expect to see, be sure to use your application so that telemetry data is generated. For troubleshooting missing telemetry, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 3. Gather the full verbose log from application start until after the issue was reproduced.
+
+For more information, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 The start of the diagnostic log will look something like this:
 
@@ -108,7 +110,7 @@ Look for warnings (`"level":40`) or errors (`"level":50`) in the log output that
 
 ## Deactivate an instrumentation
 
-To deactivate an instrumentation, set the [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](opentelemetry://reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) environment variable.
+To deactivate an instrumentation, set the [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](elastic-otel-node://reference/edot-node/configuration.md#otel_node_disabledenabled_instrumentations-details) environment variable.
 
 For example, to deactivate `@opentelemetry/instrumentation-net` and `@opentelemetry/instrumentation-dns` run the following commands:
 

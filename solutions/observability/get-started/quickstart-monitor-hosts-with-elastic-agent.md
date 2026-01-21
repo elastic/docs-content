@@ -6,8 +6,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-kubernetes.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -22,21 +22,23 @@ To scan your host, you’ll run an auto-detection script that downloads and inst
 
 The script also generates an {{agent}} configuration file that you can use with your existing Infrastructure-as-Code tooling.
 
+:::{tip}
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) as the preferred way to collect system metrics and logs using OpenTelemetry.
+:::
+
 
 ## Prerequisites [_prerequisites]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* A user with the `superuser` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
+* A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
 
     ::::{dropdown} Expand to view required privileges
-    * [**Cluster**](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `['monitor', 'manage_own_api_key']`
-    * [**Index**](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `{ names: ['logs-*-*', 'metrics-*-*'], privileges: ['auto_configure', 'create_doc'] }`
+    * [**Cluster**](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `['monitor', 'manage_own_api_key']`
+    * [**Index**](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `{ names: ['logs-*-*', 'metrics-*-*'], privileges: ['auto_configure', 'create_doc'] }`
     * [**Kibana**](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md): `{ spaces: ['*'], feature: { fleet: ['all'], fleetv2: ['all'] } }`
 
     ::::
@@ -45,8 +47,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * An Elastic deployment. If you don’t have one yet, go to [cloud.elastic.co](https://cloud.elastic.co/). Within **Hosted deployments**, select **Create hosted deployment**.
@@ -67,11 +68,9 @@ The script also generates an {{agent}} configuration file that you can use with 
 
 ## Collect your data [_collect_your_data]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
@@ -96,8 +95,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
@@ -178,4 +176,8 @@ For host monitoring, the following capabilities and features are recommended:
     * [Detect change points](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
 
 
-Refer to the [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+Refer to the [Observability overview](/solutions/observability.md) for a description of other useful features.
+
+## Manage your data [_manage_your_data]
+
+Now that you're ingesting data and using it gather insights, learn how to manage your [data lifecycle](/manage-data/lifecycle.md). These features in {{es}} allow you to govern how long your {{agent}} data is retained, and to tune performance by configuring background operations that optimize how your data is stored.

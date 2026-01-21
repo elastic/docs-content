@@ -51,7 +51,11 @@ Likewise, you can customize the **Rules Settings** sub-feature privileges relate
 
 To create a rule that uses the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md), you must also have `All` privileges for the **Cases** feature.
 
-The rule type also affects the privileges that are required. For example, to create or edit {{ml}} rules, you must have `all` privileges for the **Analytics > {{ml-app}}** feature. For {{stack-monitor-app}} rules, you must have the `monitoring_user` role. For {{observability}} rules, you must have `all` privileges for the appropriate {{observability}} features. For Security rules, refer to [Detections prerequisites and requirements](../../../solutions/security/detect-and-alert/detections-requirements.md).
+The rule type also affects the privileges that are required to create and edit rules. For example:
+* For {{ml}} rules, you must have `all` privileges for the **Analytics > {{ml-app}}** feature.
+* For {{stack-monitor-app}} rules, you must have the `monitoring_user` role.
+* For most {{observability}} rules, you must have `all` privileges for the appropriate {{observability}} features. However, for a custom threshold rule, you only need the `stack alerts` privilege.
+* For Security rules, refer to [Detections prerequisites and requirements](../../../solutions/security/detect-and-alert/detections-requirements.md).
 
 ::::
 

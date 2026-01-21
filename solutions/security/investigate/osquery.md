@@ -36,7 +36,7 @@ To use Osquery, you must add the [Osquery manager integration](manage-integratio
 
 To use **Osquery Manager**, you must be assigned to a role with the following privileges:
 
-* `Read` privileges for the `logs-osquery_manager.result*` index.
+* {applies_to}`stack: removed 9.2` {applies_to}`serverless: removed` `Read` privileges for the `logs-osquery_manager.result*` index.
 * {{kib}} privileges for **Osquery Manager**. The `All` privilege enables you to run, schedule, and save queries. `Read` enables you to view live and scheduled query results, but you cannot run live queries or edit.
 
 

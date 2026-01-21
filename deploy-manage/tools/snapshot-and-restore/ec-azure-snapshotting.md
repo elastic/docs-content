@@ -7,11 +7,12 @@ applies_to:
     ess:
 products:
   - id: cloud-hosted
+navigation_title: Azure Blob Storage
 ---
 
-# Configure a snapshot repository using Azure Blob storage [ec-azure-snapshotting]
+# Configure an Azure Blob Storage snapshot repository in {{ech}} [ec-azure-snapshotting]
 
-Configure a custom snapshot repository using your Azure Blob storage account.
+Configure a custom snapshot repository using your Azure Blob Storage account.
 
 
 ## Prepare a container [ec-prepare-azure-container]
@@ -19,26 +20,7 @@ Configure a custom snapshot repository using your Azure Blob storage account.
 Follow the Microsoft documentation to [set up an Azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create) with an access key, and then [create a container](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal).
 
 
-## Enable the `repository-azure` plugin in {{stack}} 7.17 and earlier [ec-enable-azure-plugin]
-
-For deployments with **{{stack}} version 7.17 and earlier**, you’ll need to enable the `repository-azure` plugin to use the Azure repository type. On the Azure platform, the plugin is enabled by default. If your deployment is on AWS or GCP, follow these steps to enable the `repository-azure` plugin:
-
-1. Refer to [Azure Repository Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/7.17/repository-azure.html) to download the version of the plugin that matches your {{stack}} version.
-2. Upload the plugin to your deployment:
-
-    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. From your deployment, select **Manage**.
-    3. From the lower navigation menu, select **Extensions** and then select **Upload extension**.
-    4. Specify the plugin name (`repository-azure`) and version.
-    5. Select **An installable plugin (compiled, no source code)**.
-    6. Select **Create extension**.
-    7. Navigate back to the **Extensions** page.
-    8. Select the extension name.
-    9. Drag and drop to upload the `repository-azure` plugin zip file.
-
-
-
-### Configure the keystore [ec-configure-azure-keystore]
+## Configure the keystore [ec-configure-azure-keystore]
 
 Create an entry for the Azure client in the {{es}} keystore:
 
@@ -52,8 +34,7 @@ Create an entry for the Azure client in the {{es}} keystore:
 
 5. Select **Save**.
 
-
-### Create the repository [ec-create-azure-repository]
+## Create the repository [ec-create-azure-repository]
 
 1. Open {{kib}} and go to **Management** > **Snapshot and Restore**.
 2. On the **Repositories** tab, select **Register a repository**.

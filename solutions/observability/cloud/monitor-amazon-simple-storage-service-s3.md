@@ -3,7 +3,8 @@ navigation_title: S3
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-s3.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
 ---

@@ -3,6 +3,8 @@ navigation_title: Detect and respond to threats with SIEM
 description: An introduction to detecting threats with SIEM in {{elastic-sec}}.
 applies_to:
   serverless:
+    security: all
+  stack:
 products:
   - id: security
 ---
@@ -13,13 +15,15 @@ In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM 
 
 ## Prerequisites 
 
-* Access to an {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md). 
-* Ensure you have the appropriate [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
-
+* You can follow this guide using any deployment. To get up and running quickly, we recommend [{{sec-serverless}}](/solutions/security/get-started.md#create-sec-serverless-project) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). For a complete list of deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
+* If you're using the recommended integration in this guide, {{elastic-defend}}, then: 
+  * Ensure you have the minimum [system requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) to install {{elastic-defend}}. 
+  * Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). At the least, you need `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
+* We recommend `manage` and `write` access to manage rules and alerts. Refer to [Detection requirements](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) for the required cluster, index, and space privileges. 
 
 ## Add data using {{elastic-defend}}
 
-Before you can start using {{elastic-sec}}, you need to choose an integration to start collecting and analyzing your data. For this guide, we're going to use the {{elastic-defend}} integration. {{elastic-defend}} detects and protects endpoints from malicious activity, and provides automated response options before damage and loss occur. You have full control over which protections are enabled 
+Before you can begin using {{elastic-sec}}, you need to choose an integration to start collecting and analyzing your data. This guide uses the {{elastic-defend}} integration. {{elastic-defend}} collects data from endpoints and provides several features that help protect them against threats.  
 
 :::::{stepper} 
 ::::{step} Install the Elastic Defend integration
@@ -64,14 +68,14 @@ If you’re using macOS, some versions may require you to grant {{elastic-endpoi
 
 ::::{step} Modify policy configuration settings
 
-After you install the {{agent}} with {{elastic-defend}}, the Endpoint Security ({{elastic-defend}}) detection rule is automatically enabled and can generate either detection or protection alerts.
-You can can also set up endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—on protected hosts.
-This means that {{elastic-defend}} not only monitors for these behaviors and generates an alert when they are detected but also blocks them. Due to this maximum level of protection, we recommend modifying the policy to _detect_ instead of _prevent_ so that only an alert will be generated, and you can decide how to respond to the threat. Then, closely monitor which alerts and how many are generating over a specific time period before enabling higher protection, if needed. 
+After you install the {{agent}} with {{elastic-defend}}, the Endpoint Security ({{elastic-defend}}) detection rule is automatically turned on and can generate detection or protection alerts.
+You can also set up endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—on protected hosts.
+This means that {{elastic-defend}} not only monitors these behaviors and generates an alert when they are detected, but also blocks them. Due to this maximum level of protection, we recommend modifying the policy to _detect_ instead of _prevent_ so that only an alert will be generated, and you can decide how to respond to the threat. Then, closely monitor which alerts and how many are generating over a specific time period before enabling higher protection, if needed. 
 
 :::{dropdown} Steps to modify an endpoint policy
 1. From the left navigation menu, go to **Assets** → **Endpoints** → **Policies**. 
 2. From the list, select the policy you want to configure. The policy configuration page appears.
-3. On the **Policy settings** tab, for each protection, switch the protection level from `Prevent` to `Detect`. 
+3. On the **Policy settings** tab, switch the protection level from `Prevent` to `Detect` for each protection. 
 4. Review and configure the event collection and antivirus settings as appropriate. 
 5. Once you're finished making changes, click **Save** in the lower-right corner to update the policy.  
 
@@ -83,9 +87,9 @@ For a comprehensive explanation of all endpoint protections and policy settings,
 
 ## Add Elastic prebuilt detection rules
 
-Detection rules allow you to monitor your environment by searching for source events, matches, sequences, or {{ml}} job anomaly results that meet their criteria. When a rule’s criteria are met, {{elastic-sec}} generates an alert. While you can create your own rules tailored for your environment, Elastic ships out-of-the-box prebuilt rules that you can install. Remember that if you installed {{elastic-defend}}, the Endpoint Security rule is already enabled.
+Detection rules allow you to monitor your environment by searching for source events, matches, sequences, or {{ml}} job anomaly results that meet their criteria. When a rule’s criteria are met, {{elastic-sec}} generates an alert. Although you can create your own rules tailored for your environment, Elastic ships out-of-the-box prebuilt rules that you can install. Remember that if you installed {{elastic-defend}}, the Endpoint Security rule is already turned on.
 
-:::{dropdown} Steps to install and enable prebuilt rules
+:::{dropdown} Steps to install and turn on prebuilt rules
 1. On the **Get Started** page, scroll down to the **Configure rules and alerts** section. 
 2. Click **Install Elastic rules**, then **Add Elastic rules**. The **Rules** page displays. 
 3. At the top of the page, click **Add Elastic rules**. The badge next to it shows the number of prebuilt rules available for installation.  
@@ -98,20 +102,22 @@ Detection rules allow you to monitor your environment by searching for source ev
     :::
 
 6. Select the check box next to the rules you want to install. To select all rules on the page, select the check box to the left of the **Rule** column heading. We recommend installing all the rules for your operating system, but you can install whichever rules you're comfortable with to start. You can always install more later.  
-7. Click ![Vertical boxes button](/solutions/images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules. Alternatively, after a rule is installed, you can enable it from the installed rules table. Once you enable a rule, it starts running on its configured schedule.
+7. Click ![Vertical boxes button](/solutions/images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules. Alternatively, after a rule is installed, you can turn it on from the installed rules table. Once you turn on a rule, it starts running on its configured schedule.
 
 :::{image} /solutions/images/security-gs-siem-install-rules.png 
 :alt: Alerts page with visualizations section collapsed
 :screenshot:
 :::
     
-    To learn how to view and manage all detection rules, refer to [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md). 
+::::{tip}
+{{elastic-sec}} regularly updates prebuilt rules to ensure they detect the latest threats. However, you must manually update these rules to the latest version. To learn how to do this, refer to [Update prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules).  To learn how to view and manage all detection rules, refer to [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md). 
+::::
 
 :::
 
 ## Visualize and examine alert details 
 
-Now that you've installed and enabled rules, it's time to monitor your {{sec-serverless}} project to see if you receive any alerts. Remember, an alert is generated if any of the rule's criteria are met. {{elastic-sec}} provides several tools for investigating security events:
+Now that you've installed and turned on rules, it's time to monitor your {{sec-serverless}} project to see if you receive any alerts. Remember, an alert is generated if any of the rule's criteria are met. {{elastic-sec}} provides several tools for investigating security events:
 
 * **Alerts table:** View all generated alerts in a comprehensive list, apply filters for a customized view, and drill down into details. 
 * **Timeline:** Explore alerts in a central, interactive workspace. Create customized queries and collaborate on incident analysis by combining data from various sources.  
@@ -151,7 +157,7 @@ In the visualization section, you can group alerts by a specific view type:
 
 **View alert details**
 
-At the bottom of the **Alerts** page is the alerts table, which includes a comprehensive list of all generated alerts, and inline actions so you can take action directly on the alert. You can customize and filter the table by specific criteria to help drill down and narrow alerts. 
+At the bottom of the **Alerts** page is the alerts table, which includes a comprehensive list of all generated alerts and inline actions so you can take action directly on the alert. You can customize and filter the table by specific criteria to help drill down and narrow alerts. 
 
 :::{tip} 
 Consider [grouping alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#group-alerts) by other parameters such as rule name, user name, host name, source IP address, or any other field. You can select up to three fields. 
@@ -176,4 +182,4 @@ Once you've had a chance to install detection rules and check out alerts, we rec
 * Learn how to use [Cases](/solutions/security/investigate/cases.md) to track investigation details.  
 * Download the "Guide to high-volume data sources for SIEM" [white paper](https://www.elastic.co/campaigns/guide-to-high-volume-data-sources-for-siem?elektra=organic&storm=CLP&rogue=siem-gic). 
 * Check out [Elastic Security Labs](https://www.elastic.co/security-labs) for the latest on threat research.  
-% add endpoint getting started guide when it's done 
+* Learn how to manage your [data lifecycle](/manage-data/lifecycle.md), including how long data is retained, and how to transition indices through data tiers according to your performance needs and retention policies.

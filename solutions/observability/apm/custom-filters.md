@@ -2,8 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-custom-filter.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -16,7 +16,7 @@ Custom filters, including [ingest pipeline filters](#apm-filters-ingest-pipeline
 ## Ingest pipeline filters [apm-filters-ingest-pipeline]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
@@ -34,8 +34,8 @@ For a step-by-step example, refer to [Tutorial: Use an ingest pipeline to redact
 ## APM agent filters [apm-filters-in-agent]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 Some APM agents offer a way to manipulate or drop APM events *before* they are sent to APM Server.
@@ -56,7 +56,7 @@ Refer to the relevant agent’s documentation for more information and examples:
 ## Tutorial: Use an ingest pipeline to redact sensitive information [apm-filters-ingest-pipeline-tutorial]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
@@ -64,7 +64,7 @@ Say you decide to [capture HTTP request bodies](/solutions/observability/apm/bui
 
 ```json
 {
-  "email": "test@abc.com",
+  "email": "test@example.com",
   "password": "hunter2"
 }
 ```
@@ -74,7 +74,7 @@ To obfuscate the passwords stored in the request body, you can use a series of [
 ### Create a pipeline [_create_a_pipeline]
 
 ::::{tip}
-This tutorial uses the [Ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest), but it’s also possible to create a pipeline using the UI. In Kibana, go to **Stack Management** → **Ingest Pipelines** → **Create pipeline** → **New pipeline** or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+This tutorial uses the [Ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest), but it’s also possible to create a pipeline using the UI. Open the **Ingest Pipelines** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create pipeline** → **New pipeline**.
 ::::
 
 To start, create a pipeline with a simple description and an empty array of processors:
@@ -206,7 +206,7 @@ POST _ingest/pipeline/apm_redacted_body_password/_simulate
         "http": {
           "request": {
             "body": {
-              "original": """{"email": "test@abc.com", "password": "hunter2"}"""
+              "original": """{"email": "test@example.com", "password": "hunter2"}"""
             }
           }
         }
@@ -249,7 +249,7 @@ The API response should be similar to this:
               "body" : {
                 "original" : {
                   "password" : "redacted",
-                  "email" : "test@abc.com"
+                  "email" : "test@example.com"
                 }
               }
             }

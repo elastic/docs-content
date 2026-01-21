@@ -59,7 +59,7 @@ The following topics, covered in other sections of the documentation, offer valu
 * Consider [data streams](/manage-data/data-store/data-streams.md) and [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) to manage and retain your data efficiently over time.
 
   ::::{tip}
-  [Elastic integrations](https://www.elastic.co/integrations) provide default index lifecycle policies, and you can [build your own policies for your custom integrations](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md).
+  [Elastic integrations](https://www.elastic.co/integrations) provide default index lifecycle policies, and you can [build your own policies for your custom integrations](/manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md).
   ::::
 
 ### Security and monitoring [security-and-monitoring]

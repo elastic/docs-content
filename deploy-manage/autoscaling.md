@@ -39,7 +39,9 @@ Cluster autoscaling supports:
 The available resources of self-managed deployments are static, so trained model autoscaling is not applicable. However, available resources are still segmented based on the settings described in this section.
 :::
 
-Trained model autoscaling automatically adjusts the resources allocated to trained model deployments based on demand. This feature is available on all cloud deployments (ECE, ECK, ECH) and {{serverless-short}}. See [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) for details.
+Trained model autoscaling automatically adjusts the resources allocated to trained model deployments based on demand. This feature is available on all cloud deployments (ECE, ECK, ECH) and {{serverless-short}}. Refer to [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) for details. 
+
+To ensure availability and avoid unnecessary scaling, trained model deployments operate with defined [cooldown periods](/deploy-manage/autoscaling/trained-model-autoscaling.md#cooldown-periods).
 
 Trained model autoscaling supports:
 * Scaling trained model deployments

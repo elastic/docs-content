@@ -1,4 +1,5 @@
 ---
+navigation_title: Failback when clusterA comes back
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_failback_when_clustera_comes_back.html
 applies_to:
@@ -11,7 +12,7 @@ products:
   - id: elasticsearch
 ---
 
-# Failback when clusterA comes back [_failback_when_clustera_comes_back]
+# Uni-directional recovery: failback when clusterA comes back [_failback_when_clustera_comes_back]
 
 When `clusterA` comes back, `clusterB` becomes the new leader and `clusterA` becomes the follower.
 

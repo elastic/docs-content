@@ -15,7 +15,7 @@ Several types of {{es}} API keys exist:
 * **Cross-cluster** API key: allows other clusters to connect to this cluster.
 * **Managed** API key: created and managed by {{kib}} to run background tasks.
 
-To manage API keys in {{kib}}, go to **Management > Stack Management > API Keys** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+To manage API keys in {{kib}}, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ![API Keys UI](/deploy-manage/images/kibana-api-keys.png "")
 
@@ -42,10 +42,13 @@ Two methods are available to create an API key:
   
   Your personal API key is created with a default expiration of 90 days from the time of creation. You can manage the key from the **API Keys** page.
 
-* To create a personal or cross-cluster API key with configurable options, go to **Management > Stack Management > API Keys** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Create API key**.
+* To create a personal or cross-cluster API key with configurable options: 
+  1. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+  2. Select **Create API key**.
 
-  ![Create API Key UI](/deploy-manage/images/kibana-create-user-api-key.png "")
+![Create API Key UI](/deploy-manage/images/kibana-create-user-api-key.png "")
 
+From the **Create API key** pane, you can configure your new key:
   1. Choose to create either a user or a cross-cluster API key.
   2. Optionally, set an expiry date. By default the API key will not expire, but it's a good security practice to give the key a limited lifespan.
   3. Configure access:
@@ -55,7 +58,9 @@ Two methods are available to create an API key:
 
 ## Update an API key [update-api-key]
 
-To update an API key, go to **Management > Stack Management > API Keys** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and then click on the name of the key. You cannot update the name or the type of an API key.
+To update an API key, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **API keys** page, click on the name of the key you want to update. 
+
+You can't update the name or the type of an API key.
 
 * For a user API key, you can update:
   * The API key's access to {{es}} APIs and resources.
@@ -71,7 +76,7 @@ To update an API key, go to **Management > Stack Management > API Keys** from th
 
 ## View and delete API keys [view-api-keys]
 
-The **API Keys** feature in {{kib}} lists your API keys, including the name, date created, and status. If an API key expires, its status changes from `Active` to `Expired`.
+The **API Keys** management page in {{kib}} lists your API keys, including the name, date created, and status. If an API key expires, its status changes from `Active` to `Expired`.
 
 If you have `manage_security` or `manage_api_key` permissions, you can view the API keys of all users, and see which API key was created by which user in which realm. If you have only the `manage_own_api_key` permission, you see only a list of your own keys.
 

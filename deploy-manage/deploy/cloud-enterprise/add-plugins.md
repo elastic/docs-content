@@ -1,11 +1,11 @@
 ---
-navigation_title: Configure plugins and extensions
+navigation_title: Add plugins and extensions
 applies_to:
   deployment:
     ece:
 ---
 
-# Add plugins and extensions [ece-adding-plugins]
+# Add plugins and extensions in {{ece}} [ece-adding-plugins]
 
 Plugins extend the core functionality of {{es}}. {{ece}} makes it easy to add plugins to your deployment by providing a number of plugins that work with your version of {{es}}. One advantage of these plugins is that you generally don’t have to worry about upgrading plugins when upgrading to a new {{es}} version, unless there are breaking changes. The plugins are upgraded along with the rest of your deployment.
 

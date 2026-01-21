@@ -2,9 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-java-app.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
+  - id: edot-sdk
 ---
 
 # Tutorial: Monitor a Java application [monitor-java-app]
@@ -19,6 +20,11 @@ You’ll learn how to:
 * Ingest logs using {{filebeat}} and view your logs in {{kib}}.
 * Ingest metrics using the [Metricbeat Prometheus Module](beats://reference/metricbeat/metricbeat-module-prometheus.md) and view your metrics in {{kib}}.
 * Instrument your application using the [Elastic APM Java agent](apm-agent-java://reference/index.md).
+
+:::{tip}
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application. The EDOT Java SDK provides OpenTelemetry-based instrumentation and can send telemetry data to Elastic.
+:::
+
 * Monitor your services using {{heartbeat}} and view your uptime data in {{kib}}.
 
 ## Before you begin [_before_you_begin]
@@ -368,34 +374,34 @@ To read the log file and send it to {{es}}, {{filebeat}} is required. To downloa
 
 ::::::{tab-item} DEB
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-amd64.deb
-sudo dpkg -i filebeat-{{stack-version}}-amd64.deb
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-amd64.deb
+sudo dpkg -i filebeat-{{version.stack}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-x86_64.rpm
-sudo rpm -vi filebeat-{{stack-version}}-x86_64.rpm
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-x86_64.rpm
+sudo rpm -vi filebeat-{{version.stack}}-x86_64.rpm
 ```
 ::::::
 
 ::::::{tab-item} MacOS
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-darwin-x86_64.tar.gz
-tar xzvf filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{version.stack}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Linux
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-linux-x86_64.tar.gz
-tar xzvf filebeat-{{stack-version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{version.stack}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Windows
-1. Download the [Filebeat Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-windows-x86_64.zip).
+1. Download the [Filebeat Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-windows-x86_64.zip).
 
 2. Extract the contents of the zip file into `C:\Program Files`.
 
@@ -1096,34 +1102,34 @@ To send metrics to {{es}}, {{metricbeat}} is required. To download and install {
 
 ::::::{tab-item} DEB
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-amd64.deb
-sudo dpkg -i metricbeat-{{stack-version}}-amd64.deb
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-amd64.deb
+sudo dpkg -i metricbeat-{{version.stack}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-x86_64.rpm
-sudo rpm -vi metricbeat-{{stack-version}}-x86_64.rpm
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-x86_64.rpm
+sudo rpm -vi metricbeat-{{version.stack}}-x86_64.rpm
 ```
 ::::::
 
 ::::::{tab-item} MacOS
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
-tar xzvf metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-darwin-x86_64.tar.gz
+tar xzvf metricbeat-{{version.stack}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Linux
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz
-tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-linux-x86_64.tar.gz
+tar xzvf metricbeat-{{version.stack}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Windows
-1. Download the [Metricbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-windows-x86_64.zip).
+1. Download the [Metricbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-windows-x86_64.zip).
 
 2. Extract the contents of the zip file into `C:\Program Files`.
 
@@ -1407,6 +1413,10 @@ Let’s look at the `process_files_open_files` metric. This should be a rather s
 The third piece of {{observability}} is Application Performance Management (APM). An APM setup consists of an APM server which accepts the data (and is already running within our {{ecloud}} setup) and an agent delivering the data to the server.
 
 The agent has two tasks: instrumenting the Java application to extract application performance information and sending that data to the APM Server.
+
+:::{note}
+This tutorial uses the Elastic APM Java agent. We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application with OpenTelemetry-based instrumentation. Refer to the [EDOT Java SDK setup guide](elastic-otel-java://reference/edot-java/setup/index.md) for instructions.
+:::
 
 One of the APM’s core ideas is the ability to follow the flow of a user session across your whole stack, regardless of whether you have dozens of microservices or a monolith answering your user requests. This implies the ability to tag a request across your entire stack.
 
@@ -1724,34 +1734,34 @@ To send uptime data to {{es}}, {{heartbeat}} (the polling component) is required
 
 ::::::{tab-item} DEB
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-amd64.deb
-sudo dpkg -i heartbeat-{{stack-version}}-amd64.deb
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-amd64.deb
+sudo dpkg -i heartbeat-{{version.stack}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-x86_64.rpm
-sudo rpm -vi heartbeat-{{stack-version}}-x86_64.rpm
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-x86_64.rpm
+sudo rpm -vi heartbeat-{{version.stack}}-x86_64.rpm
 ```
 ::::::
 
 ::::::{tab-item} MacOS
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-darwin-x86_64.tar.gz
-tar xzvf heartbeat-{{stack-version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-darwin-x86_64.tar.gz
+tar xzvf heartbeat-{{version.stack}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Linux
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-linux-x86_64.tar.gz
-tar xzvf heartbeat-{{stack-version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-linux-x86_64.tar.gz
+tar xzvf heartbeat-{{version.stack}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Windows
-1. Download the [Heartbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-windows-x86_64.zip).
+1. Download the [Heartbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-windows-x86_64.zip).
 
 2. Extract the contents of the zip file into `C:\Program Files`.
 
@@ -1912,5 +1922,5 @@ Do not underestimate the importance of this kind of monitoring. Also, consider t
 
 ## What’s next? [_whats_next]
 
-For more information about using  Elastic {{observability}}, see the [{{observability}} documentation](../what-is-elastic-observability.md).
+For more information about using  Elastic {{observability}}, refer to the [{{observability}} documentation](/solutions/observability.md).
 

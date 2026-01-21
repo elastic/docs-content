@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-metric-anomalies.html
   - https://www.elastic.co/guide/en/serverless/current/observability-detect-metric-anomalies.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -12,16 +12,15 @@ products:
 
 # Detect metric anomalies [observability-detect-metric-anomalies]
 
-::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to create {{ml}} jobs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
-
 You can create {{ml}} jobs to detect and inspect memory usage and network traffic anomalies for hosts and Kubernetes pods.
 
 You can model system memory usage, along with inbound and outbound network traffic across hosts or pods. You can detect unusual increases in memory usage and unusually high inbound or outbound traffic across hosts or pods.
+
+## Prerequisites
+To create ML jobs to detect metric anomalies, you need to meet the following requirements:
+
+* **For Observability serverless projects**, the **Editor** role or higher is required to create {{ml}} jobs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+* Metric anomaly detection isn't available for OpenTelemetry hosts.
 
 
 ## Enable {{ml}} jobs for hosts or Kubernetes pods [ml-jobs-hosts]
@@ -30,11 +29,9 @@ Create a {{ml}} job to detect anomalous memory usage and network traffic automat
 
 After creating {{ml}} jobs, you cannot change the settings. You can recreate these jobs later. However, you will remove any previously detected anomalies.
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 1. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the **Anomaly detection** link at the top of the page.
@@ -59,8 +56,7 @@ After creating {{ml}} jobs, you cannot change the settings. You can recreate the
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. In your {{obs-serverless}} project, go to **Infrastructure** → **Infrastructure inventory** and click the **Anomaly detection** link at the top of the page.
 2. Under **Hosts** or **Kubernetes Pods**, click **Enable** to create a {{ml}} job.

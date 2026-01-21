@@ -25,7 +25,7 @@ Behavioral detection integrations provide a convenient way to enable behavioral 
 
 ::::{admonition} Requirements
 * In {{stack}}, behavioral detection integrations require a [Platinum subscription](https://www.elastic.co/pricing) or higher.
-* In serverless, behavioral detection integrations require the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* In serverless, behavioral detection integrations require the Security Analytics Complete [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * To learn more about the requirements for using {{ml}} jobs, refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md).
 
 ::::
@@ -39,5 +39,5 @@ Here’s a list of integrations for various behavioral detection use cases:
 * [Living off the Land Attack Detection](https://docs.elastic.co/en/integrations/problemchild)
 * [Network Beaconing Identification](https://docs.elastic.co/en/integrations/beaconing)
 
-To learn more about {{ml}} jobs enabled by these integrations, refer to [](/reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md).
+To learn more about {{ml}} jobs enabled by these integrations, refer to [](/reference/machine-learning/ootb-ml-jobs-siem.md).
 

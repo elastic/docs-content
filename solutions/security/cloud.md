@@ -31,6 +31,22 @@ Allows you to identify configuration risks in the various components that make u
 
 [Read the KSPM docs](/solutions/security/cloud/kubernetes-security-posture-management.md).
 
+## Cloud Asset Discovery [_asset_discovery_cad]
+
+```{applies_to}
+stack: preview 9.1
+serverless:
+  security: preview
+```
+
+Creates an up-to-date, unified inventory of your cloud resources from AWS, GCP, and Azure. Once you connect your cloud accounts, this integration automatically finds and lists your cloud services and assets, such as:
+
+* **AWS:** S3 buckets, EC2 instances, EKS clusters, and more.
+* **GCP:** Cloud Storage buckets, Compute Engine instances, Kubernetes clusters, and more.
+* **Azure:** Virtual Machines, Blob Storage, Azure Kubernetes Service (AKS), and more.
+
+[Read the Cloud Asset Discovery docs](/solutions/security/cloud/asset-disc.md).
+
 
 ## Cloud Native Vulnerability Management (CNVM) [_cloud_native_vulnerability_management_cnvm]
 
@@ -45,3 +61,8 @@ Helps you monitor and protect your Linux VMs. It uses {{elastic-defend}} to inst
 
 [Read the CWP for VMs docs](/solutions/security/cloud/cloud-workload-protection-for-vms.md).
 
+## Cloud workload protection for Kubernetes 
+
+Uses Elastic's Defend for Containers (D4C) integration to provide cloud-native runtime protections for containerized environments by identifying and optionally blocking unexpected system behavior in Kubernetes containers.
+
+[Read the D4C docs](/solutions/security/cloud/d4c/d4c-overview.md).

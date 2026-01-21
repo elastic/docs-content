@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-node-logs.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-node-logs.html
 applies_to:
-  stack: ga
+  stack: ga 9.0
 products:
   - id: cloud-hosted
   - id: cloud-enterprise
@@ -11,7 +11,9 @@ products:
 
 # Ingest logs from a Node.js web application using Filebeat
 
-This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} or {{ece}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in Kibana as requests are made to the Node.js server. While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md#_get_started).
+This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} or {{ece}} deployment. You'll do that by using Filebeat and the Filestream input. You’ll run a simple Node.js server that emits ECS-formatted JSON logs, forward them securely to {{ecloud}}, and explore them in Kibana.
+
+While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md#_get_started).
 
 *Time required: 1.5 hours*
 
@@ -20,514 +22,446 @@ This guide demonstrates how to ingest logs from a Node.js web application and de
 
 To complete these steps you need the following applications installed on your system:
 
-* [Node.js](https://nodejs.org/) - You will set up a simple Node.js web server and client application. Check the Node.js download page for installation instructions.
+* [Node.js](https://nodejs.org/) (LTS or later) - you will set up a simple Node.js web server and client application. Check the Node.js download page for installation instructions.
+* [Filebeat](https://www.elastic.co/downloads/beats/filebeat)
 
 ::::{tip}
 For the three following packages, you can create a working directory to install the packages using the Node package manager (NPM). Then, you can run your Node.js webserver and client from the same directory so that it can use the packages. Alternatively, you can also install the Node packages globally by running the Node package install commands with the `-g` option. Refer to the NPM [package installation instructions](https://docs.npmjs.com/downloading-and-installing-packages-globally) for details.
 ::::
 
 
-* [winston](https://www.npmjs.com/package/winston) - This is a popular logging package for Node.js. Create a new, local directory and run the following command to install winston in it:
+* [winston](https://www.npmjs.com/package/winston): a popular logging package for Node.js. Create a new, local directory and run the following command to install winston in it:
 
     ```sh
     npm install winston
     ```
 
-* The [Elastic Common Schema (ECS) formatter](ecs-logging-nodejs://reference/winston.md) for the Node.js winston logger - This plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
+* The [Elastic Common Schema (ECS) formatter](ecs-logging-nodejs://reference/winston.md) for the Node.js winston logger: this plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
 
     ```sh
     npm install @elastic/ecs-winston-format
     ```
 
-* [Got](https://www.npmjs.com/package/got) - Got is a "Human-friendly and powerful HTTP request library for Node.js." - This plugin can be used to query the sample web server used in the tutorial. To install the Got package, run the following command in your working directory:
+* [Got](https://www.npmjs.com/package/got): Got is a "Human-friendly and powerful HTTP request library for Node.js" - this plugin can be used to query the sample web server used in the tutorial. To install the Got package, run the following command in your working directory:
 
     ```sh
     npm install got
     ```
 
 
-## Create a deployment [ec-node-logs-trial]
+## Before you begin
 
-::::{tab-set}
+Make sure you have access to an [Elastic Cloud deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md). You’ll need the **Cloud ID** and credentials to connect Filebeat later.
 
-:::{tab-item} Elastic Cloud Hosted
-1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
-3. Select **Create deployment**.
-4. Give your deployment a name. You can leave all other settings at their default values.
-5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
-6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
+To find your **Cloud ID**, open the Elastic Cloud console, locate your deployment, and select **Manage**. On the **Deployment overview** page, copy the **Cloud ID** value displayed. You’ll use it in your `filebeat.yml` configuration.
 
-Prefer not to subscribe to yet another service? You can also get {[ech]} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
-:::
+Connecting to, streaming data to, and issuing queries require authentication. There are two supported authentication mechanisms:
 
-:::{tab-item} Elastic Cloud Enterprise
-1. Log into the Elastic Cloud Enterprise admin console.
-2. Select **Create deployment**.
-3. Give your deployment a name. You can leave all other settings at their default values.
-4. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
-5. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
-:::
+* **Basic authentication**: This tutorial beings with basic authentication because it is easier to get started quickly.
+* **API key**: API keys are safer and preferred for production environments. To generate and use an API key, refer to [Optional: Use an API key to authenticate](#optional-use-an-api-key-to-authenticate).
+
+
+## Create a Node.js web application with ECS-formatted logs [ec-node-logs-create-server-script]
+
+First, create a basic Node.js script that runs a web server and logs HTTP requests.
+
+:::::{stepper}
+
+::::{step} Install dependencies
+
+```bash
+npm init -y
+npm install winston @elastic/ecs-winston-format got
+```
 
 ::::
 
-## Connect securely [ec-node-logs-connect-securely]
+::::{step} Create `webserver.js`
 
-When connecting to {{ech}} or {{ece}}, you can use a Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+```javascript
+const http = require('http')
+const winston = require('winston')
+const ecsFormat = require('@elastic/ecs-winston-format')
 
-To connect to, stream data to, and issue queries, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
-
-
-## Create a Node.js web application with logging [ec-node-logs-create-server-script]
-
-Next, create a basic Node.js script that runs a web server and logs HTTP requests.
-
-1. In the same local directory where you installed the winston and ECS formatter packages, create a new file *webserver.js* and save it with these contents:
-
-    ```javascript
-    const http = require('http')
-    const winston = require('winston')
-    const ecsFormat = require('@elastic/ecs-winston-format')
-
-    const logger = winston.createLogger({
-      level: 'debug',
-      format: ecsFormat({ convertReqRes: true }),
-      transports: [
-        //new winston.transports.Console(),
-        new winston.transports.File({
-          //path to log file
-          filename: 'logs/log.json',
-          level: 'debug'
-        })
-      ]
+const logger = winston.createLogger({
+  level: 'info',
+  format: ecsFormat({ convertReqRes: true }),
+  transports: [
+    new winston.transports.File({
+      filename: 'logs/log.json',
+      level: 'info'
     })
+  ]
+})
 
-    const server = http.createServer(handler)
-    server.listen(3000, () => {
-      logger.info('listening at http://localhost:3000')
-    })
+const server = http.createServer((req, res) => {
+  res.setHeader('Foo', 'Bar')
+  res.end('ok')
+  logger.info('handled request', { req, res })
+})
 
-    function handler (req, res) {
-     res.setHeader('Foo', 'Bar')
-      res.end('ok')
-      logger.info('handled request', { req, res })
-    }
-    ```
+server.listen(3000, () => {
+  logger.info('listening at http://localhost:3000')
+})
+```
 
-    This Node.js script runs a web server at `http://localhost:3000` and uses the winston logger to send logging events, based on HTTP requests, to the file `log.json`.
+::::
 
-2. Try a test run of the Node.js script:
+::::{step} Run the server
 
-    ```sh
-    node webserver.js
-    ```
+```bash
+node webserver.js
+```
 
-3. With the script running, open a web browser to `http://localhost:3000` and there should be a simple `ok` message.
-4. In the directory where you created `webserver.js`, you should now find a newly created `log.json` file. Open the file and check the contents. There should be one log entry indicating that Node.js is listening on the localhost port, and another entry for the HTTP request from when you opened `localhost` in your browser.
+::::
 
-    Leave `webserver.js` running for now and we’ll send it some HTTP requests.
+::::{step} Test the application
+
+With the script running, open a web browser to `http://localhost:3000` and there should be a simple `ok` message.
+
+::::
+
+:::::
+
+In the directory where you created `webserver.js`, you should now find a newly created `logs/log.json` file. Open the file and check the contents. There should be one log entry indicating that Node.js is listening on the localhost port, and another entry for the HTTP request from when you opened `localhost` in your browser.
+
+Leave `webserver.js` running for now and we’ll send it some HTTP requests.
 
 
-
-## Create a Node.js HTTP request application [ec-node-logs-create-request-script]
+## Generate sample traffic [ec-node-logs-create-request-script]
 
 In this step, you’ll create a Node.js application that sends HTTP requests to your web server.
 
-1. In your working directory, create a file `webrequests.js` and save it with these contents:
+:::::{stepper}
 
-    ```javascript
-    const got = require('got');
+::::{step} Create the traffic generator
 
-    const addresses = [
-        'aardvark@the.zoo',
-        'crocodile@the.zoo',
-        'elephant@the.zoo',
-        'emu@the.zoo',
-        'hippopotamus@the.zoo',
-        'llama@the.zoo',
-        'octopus@the.zoo',
-        'otter@the.zoo',
-        'panda@the.zoo',
-        'pangolin@the.zoo',
-        'tortoise@the.zoo',
-        'walrus@the.zoo'
-    ];
+Create `webrequests.js` to send random HTTP requests:
 
-    const method = [
-        'get',
-        'put',
-        'post'
-    ];
+```javascript
+const got = require('got')
 
-    async function sleep(millis) {
-        return new Promise(resolve => setTimeout(resolve, millis));
+const addresses = ['aardvark@zoo', 'emu@zoo', 'otter@zoo']
+const methods = ['get', 'post', 'put']
+
+async function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms))
+}
+
+;(async () => {
+  while (true) {
+    const method = methods[Math.floor(Math.random() * methods.length)]
+    const from = addresses[Math.floor(Math.random() * addresses.length)]
+    try {
+      await got['got'][method]('http://localhost:3000', { headers: { from } })
+    } catch (err) {
+      console.log("cannot execute request:", err)
     }
+    await sleep(Math.random() * 5000 + 2000)
+  }
+})()
+```
 
-    (async () => {
-        while (true) {
-            var type = Math.floor(Math.random() * method.length);
-            var email = Math.floor(Math.random() * addresses.length);
-            var sleeping = Math.floor(Math.random() * 9) + 1;
+This Node.js app generates HTTP requests with a random method of type `GET`, `POST`, or `PUT`, and a random `from` request header using various pretend email addresses. The requests are sent at random intervals between 2 and 7 seconds.
 
-            switch (method[type]) {
-                case 'get':
-                    try {
-                        const response = await got.get('http://localhost:3000/', {
-                            headers: {
-                                from: addresses[email]
-                            }
-                        }).json();
-                        console.log(response.body);
-                    } catch (error) {
-                        console.log(error.response.body);
-                    }
-                    break; // end case 'get'
-                case 'put':
-                    try {
-                        const response = await got.put('http://localhost:3000/', {
-                            headers: {
-                                from: addresses[email]
-                            }
-                        }).json();
-                        console.log(response.body);
-                    } catch (error) {
-                        console.log(error.response.body);
-                    }
-                    break; // end case 'put'
-                case 'post':
-                    try {
-                        const {
-                            data
-                        } = await got.post('http://localhost:3000/', {
-                            headers: {
-                                from: addresses[email]
-                            }
-                        }).json();
-                        console.log(data);
-                    } catch (error) {
-                        console.log(error.response.body);
-                    }
-                    break; // end case 'post'
-            } // end switch on method
-        await sleep(sleeping * 1000);
-        }
-    })();
-    ```
+The [Got package](https://www.npmjs.com/package/got) is used to send the requests, and they are directed to your web server at `http://localhost:3000`. To learn about sending custom headers such as the `from` field used in this example, check [headers](https://github.com/sindresorhus/got/blob/0fb6ec60d299fd9b48966608a4c3f201746d821c/documentation/2-options.md#headers) in the Got documentation.
 
-    This Node.js app generates HTTP requests with a random method of type `GET`, `POST`, or `PUT`, and a random `from` request header using various pretend email addresses. The requests are sent at random intervals between 1 and 10 seconds.
+::::
 
-    The [Got package](https://www.npmjs.com/package/got) is used to send the requests, and they are directed to your web server at `http://localhost:3000`. To learn about sending custom headers such as the `from` field used in this example, check [headers](https://github.com/sindresorhus/got/blob/0fb6ec60d299fd9b48966608a4c3f201746d821c/documentation/2-options.md#headers) in the Got documentation.
+::::{step} Run the traffic generator
 
-2. In a new terminal window, give the Node.js script a trial run:
+In a new terminal window, give the Node.js script a trial run:
 
-    ```sh
-    node webrequests.js
-    ```
+```bash
+node webrequests.js
+```
 
-3. After the script has run for about 30 seconds, enter *CTRL + C* to stop it. Have a look at your Node.js `logs/log.json` file. It should contain some entries like this one:
+::::
 
-    ```json
-    {"@timestamp":"2021-09-09T18:42:20.799Z","log.level":"info","message":"handled request","ecs":{"version":"1.6.0"},"http":{"version":"1.1","request":{"method":"POST","headers":{"user-agent":"got (https://github.com/sindresorhus/got)","from":"octopus@the.zoo","accept":"application/json","accept-encoding":"gzip, deflate, br","host":"localhost:3000","connection":"close","content-length":"0"},"body":{"bytes":0}},"response":{"status_code":200,"headers":{"foo":"Bar"}}},"url":{"path":"/","full":"http://localhost:3000/"},"client":{"address":"::ffff:127.0.0.1","ip":"::ffff:127.0.0.1","port":49930},"user_agent":{"original":"got (https://github.com/sindresorhus/got)"}}
-    ```
+::::{step} Verify log generation
 
-    Each log entry contains details of the HTTP request. In particular, in this example you can find the timestamp of the request, a request method of type `PUT`, and a request `from` header with the email address `octopus@the.zoo`. Your example will likely be a bit different since the request type and the email address are generated randomly.
+After the script has run for about 30 seconds, enter *CTRL + C* to stop it. Have a look at your Node.js `logs/log.json` file. It should contain some entries like this one:
 
-    Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsible format becomes increasingly important as the volume and type of data captured in your logs expands over time.
+```json
+{"@timestamp":"2025-10-14T16:11:36.402Z","client":{"address":"::1","ip":"::1","port":42836},"ecs.version":"8.10.0","http":{"request":{"body":{"bytes":0},"headers":{"accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"0","from":"emu@zoo","host":"localhost:3000","user-agent":"got (https://github.com/sindresorhus/got)"},"method":"PUT"},"response":{"headers":{"foo":"Bar"},"status_code":200},"version":"1.1"},"log.level":"info","message":"handled request","url":{"full":"http://localhost:3000/","path":"/"},"user_agent":{"original":"got (https://github.com/sindresorhus/got)"}}
+```
 
-4. After confirming that both `webserver.js` and `webrequests.js` run as expected, enter *CTRL + C* to stop the Node.js script, and also delete `log.json`.
+Each log entry contains details of the HTTP request. In particular, in this example you can find the timestamp of the request, a request method of type `PUT`, and a request `from` header with the email address `emu@zoo`. Your example will likely be a bit different since the request type and the email address are generated randomly.
+
+::::
+
+::::{step} Stop the Node.js script
+
+After confirming that both `webserver.js` and `webrequests.js` run as expected, enter *CTRL + C* to stop the Node.js script.
+
+::::
+
+:::::
+
+
+## Get Filebeat
+
+To collect and forward your Node.js application logs to Elastic Cloud, you'll need to set up Filebeat as your log shipper.
+
+:::::{stepper}
+
+::::{step} Download and install Filebeat
+
+[Download Filebeat](https://www.elastic.co/downloads/beats/filebeat) and unpack it on the local server from which you want to collect data.
+
+::::
+
+::::{step} Configure Filebeat to access {{ech}} or {{ece}}
+
+In `<localpath>/filebeat-<version>/` (where `<localpath>` is the directory where Filebeat is installed and `<version>` is the Filebeat version number), open the `filebeat.yml` configuration file for editing.
+
+
+```yaml
+cloud.id: "my-deployment:xxxxxxxxxxxx"
+cloud.auth: "elastic:your_password"
+```
+
+::::
+
+:::::
 
 
 ## Set up Filebeat [ec-node-logs-filebeat]
 
-Filebeat offers a straightforward, easy to configure way to monitor your Node.js log files and port the log data into your deployment.
+Filebeat offers a straightforward, easy-to-configure way to monitor your Node.js log files and port the log data into your deployment.
 
-**Get Filebeat**
+:::::{stepper}
 
-[Download Filebeat](https://www.elastic.co/downloads/beats/filebeat) and unpack it on the local server from which you want to collect data.
+::::{step} Ensure the cloud credentials are correct
 
-**Configure Filebeat to access {{ech}} or {{ece}}**
-
-In *<localpath>/filebeat-<version>/* (where *<localpath>* is the directory where Filebeat is installed and *<version>* is the Filebeat version number), open the *filebeat.yml* configuration file for editing.
-
-```txt
-# =============================== Elastic Cloud ================================
-
-# These settings simplify using Filebeat with the Elastic Cloud (https://cloud.elastic.co/).
-
-# The cloud.id setting overwrites the `output.elasticsearch.hosts` and
-# `setup.kibana.host` options.
-# You can find the `cloud.id` in the Elastic Cloud web UI.
-cloud.id: my-deployment:yTMtd5VzdKEuP2NwPbNsb3VkLtKzLmldJDcyMzUyNjBhZGP7MjQ4OTZiNTIxZTQyOPY2C2NeOGQwJGQ2YWQ4M5FhNjIyYjQ9ODZhYWNjKDdlX2Yz4ELhRYJ7 <1>
-
-# The cloud.auth setting overwrites the `output.elasticsearch.username` and
-# `output.elasticsearch.password` settings. The format is `<user>:<pass>`.
-cloud.auth: elastic:591KhtuAgTP46by9C4EmhGuk <2>
-```
-
-1. Uncomment the `cloud.id` line and add the deployment’s Cloud ID. You can include or omit the *<deploymentname>:* prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-2. Uncomment the `cloud.auth` line and add the username and password for your deployment that you recorded when you created your deployment. The format is *<username>:<password>*, for example *elastic:57ugj782kvkwmSKg8uVe*.
-
-
-**Configure Filebeat inputs**
-
-Filebeat has several ways to collect logs. For this example, you’ll configure log collection manually.
-
-In the *filebeat.inputs* section of *filebeat.yml*, set *enabled:* to *true*, and set *paths:* to the location of your web server log file. In this example, set the same directory where you saved *webserver.js*:
-
-```txt
-filebeat.inputs:
-
-# Each - is an input. Most options can be set at the input level, so
-# you can use different inputs for various configurations.
-# Below are the input specific configurations.
-
-- type: log
-
-  # Change to true to enable this input configuration.
-  enabled: true
-
-  # Paths that should be crawled and fetched. Glob based paths.
-  paths:
-    - /path/to/logs/log.json
-```
-
-::::{tip}
-You can specify a wildcard (*\**) character to indicate that all log files in the specified directory should be read. You can also use a wildcard to read logs from multiple directories. For example `/var/log/*/*.log`.
-::::
-
-
-**Add the JSON input options**
-
-Filebeat’s input configuration options include several settings for decoding JSON messages. Log files are decoded line by line, so it’s important that they contain one JSON object per line.
-
-For this example, Filebeat uses the following four decoding options.
-
-```txt
-  json.keys_under_root: true
-  json.overwrite_keys: true
-  json.add_error_key: true
-  json.expand_keys: true
-```
-
-To learn more about these settings, check [JSON input configuration options](beats://reference/filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](beats://reference/filebeat/decode-json-fields.md) in the Filebeat Reference.
-
-Append the four JSON decoding options to the *Filebeat inputs* section of *filebeat.yml*, so that the section now looks like this:
+Open the `filebeat.yml` file in the Filebeat installation directory and check your Elastic Cloud credentials. They should look similar to the following:
 
 ```yaml
-# ============================== Filebeat inputs ===============================
-
-filebeat.inputs:
-
-# Each - is an input. Most options can be set at the input level, so
-# you can use different inputs for various configurations.
-# Below are the input specific configurations.
-
-- type: log
-
-  # Change to true to enable this input configuration.
-  enabled: true
-
-  # Paths that should be crawled and fetched. Glob based paths.
-  paths:
-    - /path/to/logs/log.json
-  json.keys_under_root: true
-  json.overwrite_keys: true
-  json.add_error_key: true
-  json.expand_keys: true
+cloud.id: my-deployment:yTMtd5VzdKEuP2NwPbNsb3VkLtKzLmldJDcyMzUyNjBhZGP7MjQ4OTZiNTIxZTQyOPY2C2NeOGQwJGQ2YWQ4M5FhNjIyYjQ9ODZhYWNjKDdlX2Yz4ELhRYJ7
+cloud.auth: elastic:591KhtuAgTP46by9C4EmhGuk
 ```
-
-**Finish setting up Filebeat**
-
-Filebeat comes with predefined assets for parsing, indexing, and visualizing your data. To load these assets, run the following from the Filebeat installation directory:
-
-```txt
-./filebeat setup -e
-```
-
-::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
 ::::
 
+::::{step} Define a Filestream input
 
-The setup process takes a couple of minutes. If everything goes successfully you should get a confirmation message:
+Configure Filebeat to monitor your Node.js log files:
 
-```txt
-Loaded Ingest pipelines
+```yaml
+filebeat.inputs:
+- type: filestream
+  id: nodejs-logs
+  paths:
+    - /full/path/to/logs/log.json
+  parsers:
+    - ndjson:
+        overwrite_keys: true
+        add_error_key: true
+        expand_keys: true
 ```
 
-The Filebeat data view is now available in Elasticsearch. To verify:
+:::{important}
+The old `log` input is deprecated. Use `filestream` with the `ndjson` parser for JSON log files.
+:::
 
-1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
-2. Open the {{kib}} main menu and select **Management** > **{{kib}}** > **Data views**.
-3. In the search bar, search for *filebeat*. You should get _filebeat-*_ in the search results.
+::::
 
-**Optional: Use an API key to authenticate**
+::::{step} Optional: Configure API key authentication
+
+You can replace `cloud.auth` with an API key for enhanced security:
+
+```yaml
+output.elasticsearch:
+  api_key: "id:api_key"
+```
+
+::::
+
+:::::
+
+
+## Start Filebeat
+
+Filebeat comes with predefined assets for parsing, indexing, and visualizing your data. Follow these steps to start Filebeat and begin shipping your Node.js logs to Elasticsearch.
+
+:::::{stepper}
+
+::::{step} Set up Filebeat assets
+
+Load the predefined assets by running the following commands from the Filebeat installation directory:
+
+```bash
+./filebeat setup -e
+./filebeat -e
+```
+
+:::{important}
+Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of `filebeat.yml`, or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
+:::
+
+::::
+
+::::{step} Handle permission issues (if needed)
+
+If you encounter permissions errors when reading `filebeat.yml`, try disabling the permission check for the configuration file:
+
+```bash
+./filebeat -e --strict.perms=false
+```
+
+::::
+
+::::{step} Verify data ingestion
+
+Filebeat should begin tailing `logs/log.json` and shipping events to Elasticsearch. To verify the setup:
+
+1. [Log in to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+2. Open the {{kib}} main menu, under **Observability** select **Discover**.
+3. In the **Data view** dropdown, select **`filebeat-*`**.
+
+You should see the ingested events.
+
+::::
+
+:::::
+
+
+## Optional: Use an API key to authenticate
 
 For additional security, instead of using basic authentication you can generate an Elasticsearch API key through the {{ech}} or {{ece}} console, and then configure Filebeat to use the new key to connect securely to your deployment.
 
-1. For {{ech}}, log into [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), or for {{ece}}, log into the admin console.
-2. Select the deployment name and go to **☰** > **Management** > **Dev Tools**.
-3. Enter the following request:
+:::::{stepper}
 
-    ```json
-    POST /_security/api_key
-    {
-     "name": "filebeat-api-key",
-     "role_descriptors": {
-       "logstash_read_write": {
-         "cluster": ["manage_index_templates", "monitor"],
-         "index": [
-           {
-             "names": ["filebeat-*"],
-             "privileges": ["create_index", "write", "read", "manage"]
-           }
-         ]
-       }
-     }
+::::{step} Open Developer tools
+
+From the {{kib}} main menu, open **Developer tools**.
+
+::::
+
+::::{step} Generate the API key
+
+Enter the following request:
+
+```json
+POST /_security/api_key
+{
+  "name": "filebeat-api-key",
+  "role_descriptors": {
+    "filebeat_role": {
+      "cluster": ["manage_index_templates", "monitor", "read_ilm"],
+      "index": [
+        {
+          "names": ["filebeat-*"],
+          "privileges": ["create_index", "write", "read", "manage"]
+        }
+      ]
     }
-    ```
+  }
+}
+```
 
-    This creates an API key with the cluster `monitor` privilege which gives read-only access for determining the cluster state, and `manage_index_templates` which allows all operations on index templates. Some additional privileges also allow `create_index`, `write`, and `manage` operations for the specified index. The index `manage` privilege is added to enable index refreshes.
+::::
 
-4. Click **▶**. The output should be similar to the following:
+::::{step} Execute and copy the API key
 
-    ```json
-    {
-      "api_key": "tV1dnfF-GHI59ykgv4N0U3",
-      "id": "2TBR42gBabmINotmvZjv",
-      "name": "filebeat-api-key"
-    }
-    ```
+The output should be similar to the following:
 
-5. Add your API key information to the *Elasticsearch Output* section of *filebeat.yml*, just below *output.elasticsearch:*. Use the format `<id>:<api_key>`. If your results are as shown in this example, enter `2TBR42gBabmINotmvZjv:tV1dnfF-GHI59ykgv4N0U3`.
-6. Add a pound (`#`) sign to comment out the *cloud.auth: elastic:<password>* line, since Filebeat will use the API key instead of the deployment username and password to authenticate.
+```json
+{
+  "id": "yC9C5JkBk-xuk5nSlGlK",
+  "name": "filebeat-api-key",
+  "api_key": "hGDpbhHEeAUbvNaQlStNlg",
+  "encoded": "eUM5QzVKa0JrLXh1azVuU2xHbEs6aEdEcGJoSEVlQVVidk5hUWxTdE5sZw=="
+}
+```
 
-    ```txt
-    # =============================== Elastic Cloud ================================
+::::
 
-    # These settings simplify using Filebeat with the Elastic Cloud (https://cloud.elastic.co/).
+::::{step} Configure Filebeat to use the API key
 
-    # The cloud.id setting overwrites the `output.elasticsearch.hosts` and
-    # `setup.kibana.host` options.
-    # You can find the `cloud.id` in the Elastic Cloud web UI.
-    cloud.id: my-deployment:yTMtd5VzdKEuP2NwPbNsb3VkLtKzLmldJDcyMzUyNjBhZGP7MjQ4OTZiNTIxZTQyOPY2C2NeOGQwJGQ2YWQ4M5FhNjIyYjQ9ODZhYWNjKDdlX2Yz4ELhRYJ7
+Add your API key information to the *Elasticsearch Output* section of `filebeat.yml`, just below `output.elasticsearch:`. Use the format `<id>:<api_key>`.
 
-    # The cloud.auth setting overwrites the `output.elasticsearch.username` and
-    # `output.elasticsearch.password` settings. The format is `<user>:<pass>`.
-    #cloud.auth: elastic:591KhtuAgTP46by9C4EmhGuk
+```yaml
+cloud.id: my-deployment:yTMtd5VzdKEuP2NwPbNsb3VkLtKzLmldJDcyMzUyNjBhZGP7MjQ4OTZiNTIxZTQyOPY2C2NeOGQwJGQ2YWQ4M5FhNjIyYjQ9ODZhYWNjKDdlX2Yz4ELhRYJ7
+#cloud.auth: elastic:591KhtuAgTP46by9C4EmhGuk
+output.elasticsearch:
+  api_key: "yC9C5JkBk-xuk5nSlGlK:hGDpbhHEeAUbvNaQlStNlg"
+```
 
-    # ================================== Outputs ===================================
+::::
 
-    # Configure what output to use when sending the data collected by the beat.
-
-    # ---------------------------- Elasticsearch Output ----------------------------
-    output.elasticsearch:
-      # Array of hosts to connect to.
-      api_key: "2TBR42gBabmINotmvZjv:tV1dnfF-GHI59ykgv4N0U3"
-    ```
+:::::
 
 
 
 ## Send the Node.js logs to Elasticsearch [ec-node-logs-send-ess]
 
-It’s time to send some log data into {{es}}!
+It's time to send some log data into {{es}}. Follow these steps to start the data pipeline and verify that your logs are successfully ingested.
 
-**Launch Filebeat and webserver.js**
+:::::{stepper}
+
+::::{step} Launch Filebeat
 
 Launch Filebeat by running the following from the Filebeat installation directory:
 
-```txt
-./filebeat -e -c filebeat.yml
+```bash
+./filebeat -e
 ```
 
-In this command:
-
-* The *-e* flag sends output to the standard error instead of the configured log output.
-* The *-c* flag specifies the path to the Filebeat config file.
+In this command, the `-e` flag sends output to standard error instead of the configured log output.
 
 ::::{note}
-Just in case the command doesn’t work as expected, check the [Filebeat quick start](beats://reference/filebeat/filebeat-installation-configuration.md#installation) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
+If the command doesn’t work as expected, check the [Filebeat quick start](beats://reference/filebeat/filebeat-installation-configuration.md#installation) for OS-specific syntax.
 ::::
 
+::::
 
-Filebeat should now be running and monitoring the contents of *log.json*, which actually doesn’t exist yet. So, let’s create it. Open a new terminal instance and run the *webserver.js* Node.js script:
+::::{step} Start the Node.js web server
 
-```sh
+Filebeat should now be running and monitoring the contents of `logs/log.json`. Let's append data to it. Open a new terminal instance and run the `webserver.js` Node.js script:
+
+```bash
 node webserver.js
 ```
 
-Next, run the Node.js `webrequests.js` script to send random requests to the Node.js web server.
+::::
 
-```sh
+::::{step} Generate log traffic
+
+Run the Node.js `webrequests.js` script to send random requests to the Node.js web server:
+
+```bash
 node webrequests.js
 ```
 
-Let the script run for a few minutes and maybe brew up a quick coffee or tea ☕ . After that, make sure that the *log.json* file is generated as expected and is populated with several log entries.
+Let the script run for a few minutes. After that, make sure that the `logs/log.json` file is generated as expected and is populated with several log entries.
 
-**Verify the log entries**
+::::
 
-The next step is to confirm that the log data has successfully found it’s way into {{ech}} or {{ece}}.
+::::{step} Verify log ingestion in Kibana
 
-1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
-2. Open the {{kib}} main menu and select **Management** > **{{kib}}** > **Data views**.
-3. In the search bar, search for *filebeat*. You should get _filebeat-*_ in the search results.
-4. Select _filebeat-*_.
+The next step is to confirm that the log data has successfully found its way into {{ech}} or {{ece}}:
 
-The filebeat data view shows a list of fields and their details.
+1. [Log in to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+2. Open the {{kib}} main menu, under **Observability** select **Discover**.
+3. In the **Data view** dropdown, select **`filebeat-*`**.
+
+You should see the ingested events.
+
+::::
+
+:::::
 
 
 ## Create log visualizations in Kibana [ec-node-logs-view-kibana]
 
-Now it’s time to create visualizations based off of the application log data.
+Now you can explore and visualize your ingested log data in Kibana to gain insights from your Node.js application.
 
-1. Open the Kibana main menu and select **Dashboard**, then **Create dashboard**.
-2. Select **Create visualization**. The [Lens](../../../explore-analyze/visualize/lens.md) visualization editor opens.
-3. In the data view dropdown box, select **filebeat-\***, if it isn’t already selected.
-4. In the **CHART TYPE** dropdown box, select **Bar vertical stacked**, if it isn’t already selected.
-5. Check that the [time filter](../../../explore-analyze/query-filter/filtering.md) is set to **Last 15 minutes**.
-6. From the **Available fields** list, drag and drop the **@timestamp** field onto the visualization builder.
-7. Drag and drop the **http.request.method** field onto the visualization builder.
-8. A stacked bar chart now shows the relative frequency of each of the three request methods used in our example, measured over time.
+To visualize your log data, refer to the [Kibana documentation on creating visualizations](../../../explore-analyze/visualize.md). This ensures you’re using the latest interface for your deployment.
 
-    ![A screen capture of the Kibana "Bar vertical stacked" visualization with several bars. The X axis shows "Count of records" and the Y axis shows "@timestamp per 30 seconds". Each bar is divided into three HTTP request methods: GET](/manage-data/images/cloud-ec-node-logs-methods.png "")
+## Clean up
 
-9. Select **Save and return** to add this visualization to your dashboard.
+Stop all running processes by pressing `Ctrl + C` in each terminal window.
 
-Let’s create a second visualization.
+You can delete temporary files such as the `logs/` directory and the node_modules folder when finished.
 
-1. Select **Create visualization**.
-2. Again, make sure that **CHART TYPE** is set to **Bar vertical stacked**.
-3. From the **Available fields** list, drag and drop the **@timestamp** field onto the visualization builder.
-4. Drag and drop the **http.request.headers.from** field onto the visualization builder.
-5. In the chart settings area, under **Break down by**, select **Top values of http.request.headers.from** and set **Number of values** to *12*. In this example there are twelve different email addresses used in the HTTP *from* header, so this parameter sets all of them to appear in the chart legend.
-6. Select **Refresh**. A stacked bar chart now shows the relative frequency of each of the HTTP *from* headers over time.
-
-    ![A screen capture of the visualization builder](/manage-data/images/cloud-ec-node-logs-content.png "")
-
-7. Select **Save and return** to add this visualization to your dashboard.
-
-And now for the final visualization.
-
-1. Select **Create visualization**.
-2. In the **CHART TYPE** dropdown box, select **Donut**.
-3. From the list of available fields, drag and drop the **http.request.method** field onto the visualization builder. A donut chart appears.
-
-    ![A screen capture of a donut chart divided into three sections](/manage-data/images/cloud-ec-node-logs-donut.png "")
-
-4. Select **Save and return** to add this visualization to your dashboard.
-5. Select **Save** and add a title to save your new dashboard.
-
-You now have a Kibana dashboard with three visualizations: a stacked bar chart showing the frequency of each HTTP request method over time, another stacked bar chart showing the frequency of various HTTP *from* headers over time, and a donut chart showing the relative frequency of each HTTP request method type.
-
-You can add titles to the visualizations, resize and position them as you like, and then save your changes.
-
-**View log data updates in real time**
-
-1. Select **Refresh** on the Kibana dashboard. Since the application `webrequests.js` continues to run and send HTTP requests to the Node.js server, `webserver.js` continues to generate log data, and your Kibana visualizations update with that data with each page refresh.
-
-    ![A screen capture of the completed Kibana dashboard](/manage-data/images/cloud-ec-node-logs-final-dashboard.png "")
-
-2. As your final step, remember to stop Filebeat, the Node.js web server, and the client. Enter *CTRL + C* in the terminal window for each application to stop them.
-
-You now know how to monitor log files from a Node.js web application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](beats://reference/filebeat/index.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about ingesting data.
-
+You have learned how to monitor log files from a Node.js web application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. To learn more about the ingestion and processing options available for your data, refer to the [Filebeat documentation](beats://reference/filebeat/index.md).

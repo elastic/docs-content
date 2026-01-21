@@ -15,7 +15,7 @@ To import geospatical data into the Elastic Stack, the data must be indexed as [
 
 ## Security privileges [import-geospatial-privileges]
 
-The {{stack-security-features}} provide roles and privileges that control which users can upload files. You can manage your roles, privileges, and spaces in **{{stack-manage-app}}** in {{kib}}. For more information, see [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md), [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), and [{{kib}} role management](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+The {{stack-security-features}} provide roles and privileges that control which users can upload files. You can manage your roles, privileges, and spaces in **{{stack-manage-app}}** in {{kib}}. For more information, see [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md), [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), and [{{kib}} role management](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 To upload GeoJSON files, shapefiles, and draw features in {{kib}} with **Maps**, you must have:
 
@@ -50,9 +50,8 @@ You can upload a file and import it into an {{es}} index with latitude and longi
 **Upload file** indexes GeoJSON features in {{es}}, creating a document for each feature.
 
 ::::{note}
-GeoJSON feature coordinates must be in EPSG:4326 coordinate reference system..
+GeoJSON feature coordinates must be in EPSG:4326 coordinate reference system. For data using other coordinate systems, refer to our [conversion instructions](/explore-analyze/visualize/maps/maps-clean-data.md#_convert_to_wgs84_coordinate_reference_system). 
 ::::
-
 
 1. [Create a new map](maps-getting-started.md#maps-create).
 2. Click **Add layer**.

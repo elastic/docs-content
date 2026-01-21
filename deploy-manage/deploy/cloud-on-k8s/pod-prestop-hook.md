@@ -24,7 +24,7 @@ The exact behavior is configurable using an environment variable, for example:
 
 ```yaml
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
     - name: default
       count: 1

@@ -15,7 +15,8 @@ products:
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ech}} and self-managed {{es}}:
 
-* The number of {{agents}} that may be connected to an {{serverless-full}} project is limited to 10 thousand.
+* A maximum of 10,000 {{fleet}}-managed {{agents}} can be connected to an {{serverless-full}} project. This limit does not apply to standalone agents.
+* The maximum supported number of {{agent}} policies is 500.
 * The minimum supported version of {{agent}} supported for use with {{serverless-full}} is 8.11.0.
 
 ### Outputs
@@ -33,14 +34,14 @@ For more information, see [](upgrade-elastic-agent.md) and [](upgrade-standalone
 
 The path to get to the {{fleet}} application in {{kib}} differs across projects:
 
-* In {{ech}} deployments, navigate to **Management > Fleet**.
-* In {{serverless-short}} {{observability}} projects, navigate to **Project settings > Fleet**.
-* In {{serverless-short}} Security projects, navigate to **Assets > Fleet**.
+* In {{ech}} deployments, navigate to **Management** → **Fleet**.
+* In {{serverless-short}} {{observability}} projects, navigate to **Project settings** → **Fleet**.
+* In {{serverless-short}} Security projects, navigate to **Assets** → **Fleet**.
 
 
 ## {{fleet-server}} [fleet-server-serverless-restrictions]
 
-Note the following restrictions with using {{fleet-server}} on {{serverless-short}}:
+Note the following restrictions with using [{{fleet-server}}](/reference/fleet/fleet-server.md) on {{serverless-short}}:
 
 * On-premises {{fleet-server}} is not currently available for use in a {{serverless-short}} environment. We recommend using the hosted {{fleet-server}} that is included and configured automatically in {{serverless-short}} {{observability}} and Security projects.
-* On {{serverless-short}}, you can configure {{fleet-server}} to use a proxy, with the restriction that the {{fleet-server}} host URL is fixed. Any new {{fleet-server}} hosts must use the default {{fleet-server}} host URL.
+* On {{serverless-short}}, you can configure {{fleet-server}} to use a proxy, with the restriction that the {{fleet-server}} host URL is fixed. Any new {{fleet-server}} hosts must use the default {{fleet-server}} host URL. Refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md) for more information.

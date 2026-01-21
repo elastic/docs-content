@@ -6,14 +6,16 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Explore field statistics in Discover to view distributions, top values, and data quality metrics. Analyze numeric ranges, geographic coordinates, and field cardinality.
 ---
 
 # View field statistics [show-field-statistics]
 
-Explore the fields in your data with the **Field statistics** view in **Discover** and answer such questions as:
+The **Field statistics** view in **Discover** provides statistical summaries and visualizations of your data fields. View distributions, top values, minimum and maximum ranges, and cardinality to quickly understand your data quality and patterns. Use field statistics to identify data issues, understand field characteristics, and discover insights before building visualizations.
 
-* What does the latency look like when one of the containers is down on a Sunday?
-* Is the field type and format in the data view appropriate for the data and its cardinality?
+:::{note}
+Field statistics are only available when **Discover** is in default mode, not in {{esql}} mode.
+:::
 
 This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
@@ -46,5 +48,5 @@ This example explores the fields in the [sample web logs data](../index.md#gs-ge
    :::
 
 7. Explore additional field types to see the statistics that **Discover** provides.
-8. To create a visualization of the field data, click ![Click the magnifying glass icon to create a visualization of the data in Lens](/explore-analyze/images/kibana-visualization-icon.png "") or ![Click the Maps icon to explore the data in a map](/explore-analyze/images/kibana-map-icon.png "") in the **Actions** column.
+8. To create a Lens visualization of the field data, click ![the magnifying glass icon to create a visualization of the data in Lens](/explore-analyze/images/kibana-visualization-icon.png "") or ![the Maps icon to explore the data in a map](/explore-analyze/images/kibana-map-icon.png "") in the **Actions** column.
 

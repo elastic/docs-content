@@ -83,3 +83,5 @@ Finished creating file: /tmp/ecediag-192.168.44.10-20220506-084902.tar.gz (total
 
 At that point, you’re ready to upload the `.tar.gz` file to Elastic Support.
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::

@@ -27,7 +27,10 @@ The data streams replicated from a remote cluster by CCR are protected from loca
 Auto-follow patterns are especially useful with [{{ilm-cap}}](../../../manage-data/lifecycle/index-lifecycle-management.md), which might continually create new indices on the cluster containing the leader index.
 
 $$$ccr-access-ccr-auto-follow$$$
-To start using {{ccr}} auto-follow patterns from Stack Management in {{kib}}, select **Cross-Cluster Replication** from the side navigation and choose the **Auto-follow patterns** tab.
+To start using {{ccr}} auto-follow patterns from {{kib}}:
+
+1. Go to the **Cross Cluster Replication** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Choose the **Follower Indices** tab.
 
 
 

@@ -15,7 +15,7 @@ products:
 Different JDK versions support different versions of SSL, and this may affect how {{es}} operates.
 
 ::::{note}
-This support applies when running on the default JSSE provider in the JDK. JVMs that are configured to use a [FIPS 140-2](fips-140-2.md) security provider might have a custom TLS implementation, which might support TLS protocol versions that differ from this list.
+This support applies when running on the default JSSE provider in the JDK. JVMs that are configured to use a [FIPS 140-2](fips.md) security provider might have a custom TLS implementation, which might support TLS protocol versions that differ from this list.
 
 Check your security provider’s release notes for information on TLS support.
 
