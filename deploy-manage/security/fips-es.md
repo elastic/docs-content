@@ -10,6 +10,10 @@ products:
 
 {{es}} supports both FIPS 140-2 and FIPS 140-3 compliant modes.
 
+:::{note}
+FIPS 140-3 compliance is supported starting in {{es}} version 9.4.0. Earlier 9.x versions support FIPS 140-2 compliance only.
+:::
+
 :::{important}
 The JVM bundled with {{es}} is not configured for FIPS. You must configure an external JDK with a FIPS certified Java Security Provider. Refer to the {{es}} [JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm) for supported JVM configurations. Refer to [subscriptions](https://www.elastic.co/subscriptions) for required licensing.
 :::
