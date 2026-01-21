@@ -1,6 +1,6 @@
 ---
 navigation_title: "Use workflows"
-description: "Learn how to trigger workflows from agents and invoke agents within workflow steps."
+description: "Learn how to trigger Elastic Workflows from Elastic Agent Builder and invoke your agents within workflow steps."
 applies_to:
   stack: preview 9.3+
   serverless: preview
