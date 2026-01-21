@@ -34,9 +34,9 @@ jobs:
           fetch-depth: 0  # Full history for better diffs
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: '3.13'
           cache: 'pip'
 
       - name: Install dependencies
@@ -46,7 +46,7 @@ jobs:
 
       # Keyless authentication using Workload Identity Federation
       - name: Authenticate to Google Cloud
-        uses: elastic/oblt-actions/google/auth@v1
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
         with:
           workload-identity-provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service-account: ${{ vars.GCP_SERVICE_ACCOUNT }}
@@ -140,7 +140,7 @@ jobs:
 
       - name: Upload CSV artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: generated-csv-${{ github.run_number }}
           path: explore-analyze/ai-features/agent-builder/models.csv
