@@ -96,7 +96,7 @@ If there is no data, you have the following options to control the alert behavio
 - **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
 - **Alert me about the missing data**
   - **with groupBy**: Trigger a “no data” alert when a previously detected group stops reporting data; not recommended for dynamically scaling infrastructures that start and stop nodes automatically.
-  - **without groupBy**: Trigger a “no data” alert when no data is returned during rule execution or when the rule fails to query {{es}}.
+  - **without groupBy**: Trigger a “no data” alert when no data is returned during rule execution, or when the rule fails to query {{es}}.
 - **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
 ::::
 
