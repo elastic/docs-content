@@ -1,25 +1,27 @@
 ---
-navigation_title: "Workflows"
+navigation_title: "Use workflows"
+description: "Learn how to trigger workflows from agents and invoke agents within workflow steps."
 applies_to:
   stack: preview =9.3
   serverless: preview
 ---
 
-# Workflows in {{agent-builder}}
+# Integrate workflows with {{agent-builder}}
 
 {{agent-builder}} integrates bi-directionally with [Elastic Workflows](TODO-LINK-TO-WORKFLOWS). This integration bridges the gap between conversational reasoning and automated execution:
 
 1. **Agents trigger Workflows:** Agents can be equipped with **Workflow tools**. This allows an agent to recognize when a specific automated process is needed (like "triage this alert" or "restart the service") and execute a predefined workflow to handle it.
 2. **Workflows call Agents:** Workflows can include **AI Steps**. These steps invoke an agent to handle complex reasoning tasks—such as summarizing logs, classifying security events, or making decisions—within the middle of a deterministic workflow.
 
-## Prerequisites
+## Before you begin
 
 Before using these features, ensure that:
 * The **Workflows** feature is enabled in your deployment.
 * You have appropriate permissions to create and execute workflows.
+* (Optional) If using the example below, ensure the `kibana_sample_data_flights` dataset is installed.
 
-## Use workflows as tools
-You can wrap an existing workflow into a tool that your agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
+## Trigger a workflow from an agent
+Follow these steps to wrap an existing workflow into a tool that your agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
 
 :::{image} images/create-new-tool-workflows.png
 :screenshot:
@@ -54,18 +56,17 @@ Once you assign this tool to an agent, the agent can trigger the workflow autono
 :alt: Screenshot of the JSON raw response modal
 :::
 
-## Use agents in workflows
-You can incorporate AI agents into your automated workflows using the `ai.agent` step type. This allows you to treat an agent as a "reasoning engine" that takes data from previous steps, processes it, and returns a human-readable summary.
+## Call an agent from a workflow
+Follow these steps to invoke an AI agent as a step within a workflow. This allows you to use the agent's reasoning capabilities to process data and return a summary.
 
-### Add an AI Step
-When authoring a workflow, use the `ai.agent` type to invoke an agent.
-
-1. Navigate to **Workflows**.
-2. Select **Create a new workflow**
-3. Add workflow step calling the selected AI agent.
+1.  Open the **Workflows** editor and create or edit a workflow.
+2.  Add a new step with the type `ai.agent`.
+3.  Configure the step with the following parameters:
+    * **`agent_id`**: The ID of the agent to call.
+    * **`message`**: The prompt to send to the agent.
 
 #### Example: Analyze Flight Delays
-This workflow searches the sample flight data for delays and asks the **Elastic AI Agent** to summarize the most impacted airlines.
+The following example demonstrates a workflow that searches for flight delays and uses the **Elastic AI Agent** to summarize the impact.
 
 ```yaml
 version: "1"
