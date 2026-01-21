@@ -1,7 +1,7 @@
 ---
 applies_to:
   serverless: ga
-  stack: preview 9.1, ga 9.2
+  stack: preview =9.1, ga 9.2+
 ---
 
 # Streams
@@ -46,9 +46,9 @@ You can still edit non-managed ingest pipelines, templates, and other components
 
 Streams requires the following permissions:
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 Streams requires these {{serverless-full}} roles:
 
 - Admin: Ability to manage all Streams
@@ -56,7 +56,7 @@ Streams requires these {{serverless-full}} roles:
 
 :::
 
-:::{tab-item} Stack
+:::{applies-item} stack:
 To manage all streams, you need the following permissions:
 
 - **Cluster permissions**: `manage_index_templates`, `manage_ingest_pipelines`, `manage_pipeline`, `read_pipeline`

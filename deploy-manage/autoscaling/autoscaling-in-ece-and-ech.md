@@ -249,9 +249,9 @@ Although autoscaling can scale some tiers by CPU, the primary measurement of tie
 
 Run this example API request to create a deployment with autoscaling:
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ece}}
+:::{applies-item} ece:
 
 ```sh
 curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
@@ -455,7 +455,7 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
 
 :::
 
-:::{tab-item} {{ech}}
+:::{applies-item} ess:
 
 ```sh
 curl -XPOST \

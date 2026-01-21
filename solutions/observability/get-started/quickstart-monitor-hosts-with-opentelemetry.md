@@ -17,11 +17,9 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 
 ## Prerequisites [_prerequisites]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](https://docs.elastic.co/serverless/quickstart-monitor-hosts-with-otel.html).
 * This quickstart is only available for Linux and MacOS systems.
@@ -33,8 +31,7 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 * An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * This quickstart is only available for Linux and MacOS systems.
@@ -58,11 +55,9 @@ Refer to [Elastic OpenTelemetry Collector limitations](opentelemetry://reference
 
 Follow these steps to collect logs and metrics using the EDOT Collector:
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} Elastic Stack
-:sync: stack
+::::{applies-item} stack:
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **OpenTelemetry: Logs & Metrics**.
@@ -89,8 +84,7 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 
 ::::
 
-::::{tab-item} Serverless
-:sync: serverless
+::::{applies-item} serverless:
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. To open the quickstart, go to **Add Data**.
