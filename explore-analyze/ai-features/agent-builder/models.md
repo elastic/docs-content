@@ -24,7 +24,7 @@ Refer to [select a different model](/explore-analyze/ai-features/agent-builder/c
 
 ## Default model configuration
 
-By default, {{agent-builder}} uses the Elastic Managed LLM connector to interface with models running on the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) {applies_to}`serverless: ga` {applies_to}`ess: preview =9.2, ga 9.3+`. 
+By default, {{agent-builder}} uses the Elastic Managed LLM connector to interface with models running on the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md).
 
 This managed service requires zero setup and no additional API key management.
 
