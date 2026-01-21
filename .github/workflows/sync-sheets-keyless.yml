@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: '0 2 * * *'
 
+  # TODO: Remove after testing
+  push:
+    branches: ['add-sheet2csv-automation']
+
   # Manual trigger
   workflow_dispatch:
     inputs:
