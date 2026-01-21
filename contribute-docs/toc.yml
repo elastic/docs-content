@@ -8,6 +8,8 @@ toc:
       - file: index.md
       - file: how-tos.md
       - file: overviews.md
+      - file: troubleshooting.md
+      - file: tutorials.md
   - folder: how-to
     children:
       - file: index.md

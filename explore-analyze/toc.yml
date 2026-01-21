@@ -176,12 +176,16 @@ toc:
           - file: ai-features/agent-builder/models.md
           - file: ai-features/agent-builder/chat.md
             children:
-              - hidden: ai-features/agent-builder/standalone-and-flyout-modes.md
+              - file: ai-features/agent-builder/standalone-and-flyout-modes.md
           - file: ai-features/agent-builder/agent-builder-agents.md
+            children:
+            - file: ai-features/agent-builder/builtin-agents-reference.md
           - file: ai-features/agent-builder/tools.md
             children:
+              - file: ai-features/agent-builder/tools/builtin-tools-reference.md
               - file: ai-features/agent-builder/tools/esql-tools.md
               - file: ai-features/agent-builder/tools/index-search-tools.md
+              - file: ai-features/agent-builder/tools/mcp-tools.md
           - file: ai-features/agent-builder/programmatic-access.md
             children:
                - file: ai-features/agent-builder/kibana-api.md
@@ -192,7 +196,7 @@ toc:
           - file: ai-features/agent-builder/limitations-known-issues.md
       - file: ai-features/ai-chat-experiences.md
         children:
-          - hidden: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
+          - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/llm-guides/llm-connectors.md
@@ -385,7 +389,7 @@ toc:
           - file: alerts-cases/cases/setup-cases.md
           - file: alerts-cases/cases/manage-cases.md
           - file: alerts-cases/cases/manage-cases-settings.md
-          - file: alerts-cases/cases/cases-as-data.md
+          - file: alerts-cases/cases/cases-as-data.md   
   - file: workflows.md
     children:
       - file: workflows/get-started.md
