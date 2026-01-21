@@ -38,7 +38,7 @@ Remove the placeholder content and copy and paste the following YAML into the ed
 
 ```yaml
 name: 🏔️ National Parks Demo
-description: Creates an {{es}} index, loads sample national park data using bulk operations, searches for parks by category, and displays the results.
+description: Creates an Elasticsearch index, loads sample national park data using bulk operations, searches for parks by category, and displays the results.
 enabled: true
 tags: ["demo", "getting-started"]
 consts:
