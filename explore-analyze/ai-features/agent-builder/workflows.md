@@ -22,9 +22,9 @@ products:
 ## Before you begin
 
 Before using these features, ensure that:
-* The **Workflows** feature is enabled in your deployment.
-* You have appropriate permissions to create and run workflows.
-* (Optional) If using the example below, ensure the [Kibana sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
+
+* **Workflows are set up:** The feature must be enabled and you need specific privileges to create and run workflows. For details, see [Set up workflows](/explore-analyze/workflows/setup.md).
+* (Optional) If using the example below, ensure the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
 ## Trigger a workflow from an agent
 Follow these steps to wrap an existing workflow into a tool that your agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
