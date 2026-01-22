@@ -57,7 +57,7 @@ Detailed instructions for installation and configuration of a FIPS certified Jav
 * [bc-fips 1.0.2.6](https://repo1.maven.org/maven2/org/bouncycastle/bc-fips/1.0.2.6/bc-fips-1.0.2.6.jar)
 * [bctls-fips 1.0.19](https://repo1.maven.org/maven2/org/bouncycastle/bctls-fips/1.0.19/bctls-fips-1.0.19.jar)
 
-**For FIPS 140-3 compliance:**
+{applies_to}`stack 9.4+` **For FIPS 140-3 compliance:**
 * [bc-fips 2.0.1](https://repo1.maven.org/maven2/org/bouncycastle/bc-fips/2.0.1/bc-fips-2.0.1.jar)
 * [bctls-fips 2.0.22](https://repo1.maven.org/maven2/org/bouncycastle/bctls-fips/2.0.22/bctls-fips-2.0.22.jar)
 * [bcutil-fips 2.0.5](https://repo1.maven.org/maven2/org/bouncycastle/bcutil-fips/2.0.5/bcutil-fips-2.0.5.jar)
