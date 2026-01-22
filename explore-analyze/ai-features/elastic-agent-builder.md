@@ -42,7 +42,7 @@ The {{agent-builder}} framework consists of three key components: Agent Chat, Ag
 
 ### Agent Chat
 
-**Agent Chat** is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
+**Agent Chat** is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents. You can also chat with agents programmatically.
 
 [**Learn more about Agent Chat**](agent-builder/chat.md)
 
