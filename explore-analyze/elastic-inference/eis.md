@@ -4,9 +4,10 @@ applies_to:
   stack: ga
   serverless: ga
   deployment:
-    self: ga
-    ece: ga
-    eck: ga
+products:
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
