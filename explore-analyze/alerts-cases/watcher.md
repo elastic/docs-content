@@ -56,7 +56,7 @@ A full history of all watches is maintained in an {{es}} index. This history kee
 
 ## Backup and restore
 
-You can back up and restore watches by using the [snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) functionality.
+You can back up and restore watches using the [snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) functionality.
 
 Make sure your snapshots include the `watcher` feature state. By default, snapshots include all feature states, unless explicitly configured otherwise. For more information, refer to [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) in the snapshots documentation.
 
