@@ -18,7 +18,7 @@ You can use EIS, for example, for [semantic search](/solutions/search/semantic-s
 
 Before you can use EIS with your self-managed cluster, ensure you meet the following requirements:
 
-* Your self-managed cluster is on an [Enterprise self-managed license]({{subscriptions}}) or an [active self-managed trial](https://cloud.elastic.co/registration)
+* Your self-managed cluster is on an [Enterprise self-managed license]({{subscriptions}}) or an [active self-managed trial license](https://cloud.elastic.co/registration)
 * You have an {{ecloud}} account with either an [active Cloud Trial](https://cloud.elastic.co/registration) or [billing information configured](/deploy-manage/cloud-organization/billing/add-billing-details.md)
 
 ## Set up EIS with Cloud Connect
