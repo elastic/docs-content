@@ -11,7 +11,7 @@ products:
 {{es}} supports the following FIPS compliant modes:
 
 * FIPS 140-2 
-* {applies_to}`stack 9.4+` FIPS 140-3
+* {applies_to}`stack: ga 9.4+` FIPS 140-3
 
 :::{important}
 The JVM bundled with {{es}} is not configured for FIPS. You must configure an external JDK with a FIPS certified Java Security Provider. Refer to the {{es}} [JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm) for supported JVM configurations. Refer to [subscriptions](https://www.elastic.co/subscriptions) for required licensing.
