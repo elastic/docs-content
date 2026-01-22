@@ -18,6 +18,7 @@ from typing import Any, Dict, List, Optional
 import google.auth
 from google.auth.transport.requests import Request
 from google.oauth2.service_account import Credentials as ServiceAccountCredentials
+from googleapiclient.discovery import build
 import gspread
 import yaml
 
@@ -215,6 +216,25 @@ def authenticate_google_sheets(credentials_path: Optional[str] = None) -> gsprea
         sys.exit(EXIT_AUTH_ERROR)
 
 
+def column_index_to_letter(col_idx: int) -> str:
+    """
+    Convert 1-based column index to A1 notation (A, B, C, ..., Z, AA, AB, etc.).
+    
+    Args:
+        col_idx: 1-based column index (1 = A, 2 = B, etc.)
+        
+    Returns:
+        Column letter(s) in A1 notation
+    """
+    col_letter = ''
+    temp_col = col_idx
+    while temp_col > 0:
+        temp_col -= 1
+        col_letter = chr(65 + (temp_col % 26)) + col_letter
+        temp_col //= 26
+    return col_letter
+
+
 def extract_sheet_id(sheet_url: str) -> str:
     """
     Extract spreadsheet ID from Google Sheets URL or return as-is if already an ID.
@@ -239,13 +259,99 @@ def extract_sheet_id(sheet_url: str) -> str:
     return sheet_url
 
 
+def get_hyperlinks_from_sheets_api(
+    credentials: Any,
+    sheet_id: str,
+    tab_name: str
+) -> Dict[str, str]:
+    """
+    Fetch hyperlink metadata from Google Sheets API v4.
+    
+    Args:
+        credentials: Google credentials object
+        sheet_id: Spreadsheet ID
+        tab_name: Name of the worksheet/tab
+        
+    Returns:
+        Dictionary mapping cell addresses (A1 notation) to hyperlink URLs
+    """
+    try:
+        # Build the Sheets API service
+        service = build('sheets', 'v4', credentials=credentials)
+        
+        # Get all cells with hyperlinks using includeGridData
+        result = service.spreadsheets().get(
+            spreadsheetId=sheet_id,
+            ranges=[f"{tab_name}!A:ZZ"],  # Get all columns
+            includeGridData=True
+        ).execute()
+        
+        hyperlinks = {}
+        
+        # Find the correct sheet in the result
+        for sheet_data in result.get('sheets', []):
+            sheet_props = sheet_data.get('properties', {})
+            if sheet_props.get('title') == tab_name:
+                # Get the grid data
+                grid_data = sheet_data.get('data', [])
+                if not grid_data:
+                    continue
+                
+                row_data_list = grid_data[0].get('rowData', [])
+                
+                for row_idx, row_data in enumerate(row_data_list, start=1):
+                    cell_values = row_data.get('values', [])
+                    
+                    for col_idx, cell in enumerate(cell_values, start=1):
+                        # Convert column index to letter (A, B, C, etc.)
+                        col_letter = column_index_to_letter(col_idx)
+                        cell_address = f"{col_letter}{row_idx}"
+                        
+                        # Check for hyperlink in userEnteredFormat
+                        user_format = cell.get('userEnteredFormat', {})
+                        if 'hyperlink' in user_format:
+                            url = user_format['hyperlink']
+                            if url:
+                                hyperlinks[cell_address] = url
+        
+        return hyperlinks
+        
+    except Exception as e:
+        print(f"Warning: Could not fetch hyperlinks: {e}", file=sys.stderr)
+        return {}
+
+
+def format_cell_with_hyperlink(
+    cell_value: str,
+    cell_address: str,
+    hyperlinks: Dict[str, str]
+) -> str:
+    """
+    Format a cell value as Markdown link if it has a hyperlink.
+    
+    Args:
+        cell_value: The text value of the cell
+        cell_address: Cell address in A1 notation (e.g., "A1")
+        hyperlinks: Dictionary mapping cell addresses to URLs
+        
+    Returns:
+        Formatted string: Markdown link if hyperlink exists, otherwise plain text
+    """
+    if cell_address in hyperlinks and hyperlinks[cell_address]:
+        url = hyperlinks[cell_address]
+        # Escape brackets in text to avoid breaking Markdown
+        text = cell_value.replace('[', '\\[').replace(']', '\\]')
+        return f"[{text}]({url})"
+    return cell_value
+
+
 def fetch_sheet_data(
     client: gspread.Client,
     sheet_url: str,
     tab_name: str
 ) -> List[Dict[str, Any]]:
     """
-    Fetch all data from specified Google Sheet tab.
+    Fetch all data from specified Google Sheet tab, preserving hyperlinks as Markdown.
 
     Args:
         client: Authenticated gspread client
@@ -253,7 +359,8 @@ def fetch_sheet_data(
         tab_name: Name of the tab/sheet within the spreadsheet
 
     Returns:
-        List of dictionaries, where each dict represents a row with column headers as keys
+        List of dictionaries, where each dict represents a row with column headers as keys.
+        Cells with hyperlinks are formatted as Markdown links [text](url).
 
     Raises:
         SystemExit: If sheet cannot be accessed or tab not found
@@ -277,14 +384,64 @@ def fetch_sheet_data(
 
         print(f"✓ Found tab: {tab_name}")
 
+        # Get credentials from the client for API access
+        credentials = None
+        try:
+            # Try to get credentials from the client's session
+            if hasattr(client, 'session') and hasattr(client.session, 'credentials'):
+                credentials = client.session.credentials
+            elif hasattr(client, 'auth'):
+                credentials = client.auth
+            else:
+                # Fall back to default credentials
+                credentials, _ = google.auth.default()
+        except Exception as e:
+            print(f"Warning: Could not get credentials for hyperlink extraction: {e}", file=sys.stderr)
+            credentials = None
+
+        # Fetch hyperlinks if credentials are available
+        hyperlinks = {}
+        if credentials:
+            print("✓ Fetching hyperlink metadata...")
+            hyperlinks = get_hyperlinks_from_sheets_api(credentials, sheet_id, tab_name)
+            if hyperlinks:
+                print(f"✓ Found {len(hyperlinks)} cells with hyperlinks")
+            else:
+                print("  No hyperlinks found in sheet")
+        else:
+            print("⚠ Continuing without hyperlink extraction (links will be plain text)")
+
         # Get all records (returns list of dicts with headers as keys)
         data = worksheet.get_all_records()
         print(f"✓ Fetched {len(data)} rows")
 
         if len(data) == 0:
             print("Warning: Sheet has no data rows (may only have headers)", file=sys.stderr)
+            return []
 
-        return data
+        # Get the range to map cell addresses
+        all_values = worksheet.get_all_values()
+        headers = all_values[0] if all_values else []
+        
+        # Process each row and format cells with hyperlinks
+        formatted_data = []
+        for row_idx, row_data in enumerate(data, start=2):  # Start at 2 (row 1 is headers)
+            formatted_row = {}
+            for col_idx, header in enumerate(headers, start=1):
+                # Convert column index to letter (A, B, C, etc.)
+                col_letter = column_index_to_letter(col_idx)
+                cell_address = f"{col_letter}{row_idx}"
+                
+                # Get cell value
+                cell_value = row_data.get(header, '')
+                
+                # Format with hyperlink if available
+                formatted_value = format_cell_with_hyperlink(cell_value, cell_address, hyperlinks)
+                formatted_row[header] = formatted_value
+            
+            formatted_data.append(formatted_row)
+
+        return formatted_data
 
     except gspread.SpreadsheetNotFound:
         print(f"Error: Spreadsheet not found: {sheet_url}", file=sys.stderr)
