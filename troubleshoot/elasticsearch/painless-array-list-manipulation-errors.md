@@ -11,7 +11,7 @@ products:
 
 Follow these guidelines to avoid array (list) access errors in your Painless scripts.
 
-An array `index_out_of_bounds_exception` occurs when a script tries to access an element at a position that does not exist in the array. For example, if an array has two elements, trying to access a third element triggers this exception. 
+An array `index_out_of_bounds_exception` error occurs when a script tries to access an element at a position that does not exist in the array. For example, if an array has two elements, trying to access a third element triggers this exception. 
 
 ## Sample error
 
