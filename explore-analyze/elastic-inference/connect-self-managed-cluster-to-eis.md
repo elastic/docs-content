@@ -10,9 +10,9 @@ applies_to:
 
 # EIS for self-managed clusters
 
-Elastic {{infer-cap}} Service (EIS) for self-managed clusters is available through [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself.
+[Elastic {{infer-cap}} Service (EIS)](eis.md) for [self-managed](/deploy-manage/deploy/self-managed.md) clusters is available through [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself.
 
-You can use EIS, for example, for [semantic search](/solutions/search/semantic-search.md), [AI Assistants](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md) or [Attack Discovery](/solutions/security/ai/attack-discovery.md), among other use cases.
+With EIS, you can use AI-powered features such as [semantic search](/solutions/search/semantic-search.md), [AI Assistants](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md), or [Attack Discovery](/solutions/security/ai/attack-discovery.md). For a full list of EIS-powered features, refer to [AI features powered by EIS](eis.md#ai-features-powered-by-eis).
 
 ## Prerequisites
 
@@ -48,7 +48,7 @@ Copy the Cloud Connect API key, paste it into your self-managed cluster's Cloud 
 
 ::::::
 
-::::::{step} Enable Elastic {{infer-cap}} Service
+::::::{step} Enable Elastic Inference Service
 On the **Cloud connected services** page, click **Connect** for Elastic {{infer}} Service.
 
 :::{image} /explore-analyze/images/eis-cloud-connect-connect-ui.png

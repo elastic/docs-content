@@ -15,7 +15,7 @@ Elastic {{infer-cap}} Service (EIS) enables you to leverage AI-powered search as
 With EIS, you don't need to manage the infrastructure and resources required for {{ml}} {{infer}} by adding, configuring, and scaling {{ml}} nodes.
 Instead, you can use {{ml}} models for ingest, search, and chat independently of your {{es}} infrastructure.
 
-{applies_to}`stack: ga 9.3` You can use EIS with your self-managed cluster through Cloud Connect. For details, refer to [EIS for self-managed clusters](connect-self-managed-cluster-to-eis.md). 
+{applies_to}`stack: ga 9.3` You can use EIS with your [self-managed](/deploy-manage/deploy/self-managed.md) cluster through Cloud Connect. For details, refer to [EIS for self-managed clusters](connect-self-managed-cluster-to-eis.md). 
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
