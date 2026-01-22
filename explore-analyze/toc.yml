@@ -406,6 +406,6 @@ toc:
       - file: workflows/create-workflows.md    
       - file: workflows/monitor-troubleshoot.md
       - file: workflows/manage-workflows.md
-      - file: workflows/use-cases.md
+      - hidden: workflows/use-cases.md
       - file: workflows/templates.md
   - file: numeral-formatting.md
