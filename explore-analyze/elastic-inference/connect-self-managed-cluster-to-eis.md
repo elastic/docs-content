@@ -27,7 +27,7 @@ To set up EIS for your self-managed cluster with Cloud Connect:
 
 :::::::{stepper}
 ::::::{step} Open Cloud Connect
-In your self-managed Kibana instance, navigate to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+In your self-managed {{kib}} instance, navigate to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/cloud-connect-eis.png
 :screenshot:
@@ -39,8 +39,8 @@ In your self-managed Kibana instance, navigate to the **Cloud Connect** page usi
 ::::::{step} Get your Cloud Connect API key
 Sign up or log in to {{ecloud}} and get the Cloud Connect API key:
 
-- If you already have an {{ecloud}} account, click **Log in**.
 - If you don’t have an account yet, click **Sign up** and follow the prompts to create your account and start a free Cloud Trial.
+- If you already have an {{ecloud}} account, click **Log in**.
 ::::::
 
 ::::::{step} Connect your cluster
@@ -70,7 +70,8 @@ In this example, you’ll create an index with a `semantic_text` field, index a 
 
 In **{{dev-tools-app}}**, run the following requests:
 
-1. Create an index with a `semantic_text` field:
+:::::::{stepper}
+::::::{step} Create an index with a `semantic_text` field
 
 ```console
 PUT /semantic-search-eis
@@ -78,14 +79,18 @@ PUT /semantic-search-eis
   "mappings": {
     "properties": {
       "text": {
-        "type": "semantic_text"
+        "type": "semantic_text" <1>
       }
     }
   }
 }
 ```
 
-2. Index a document:
+1. Because you already enabled EIS, the `semantic_text` field type uses EIS through the default {{infer}} endpoint (`.elser-2-elastic`). To learn more, refer to [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
+
+::::::
+
+::::::{step} Index a document
 
 ```console
 POST /semantic-search-eis/_doc
@@ -94,7 +99,9 @@ POST /semantic-search-eis/_doc
 }
 ```
 
-3. Run a search query:
+::::::
+
+::::::{step} Run a search query
 
 ```console
 GET /semantic-search-eis/_search
@@ -106,6 +113,9 @@ GET /semantic-search-eis/_search
   }
 }
 ```
+
+::::::
+:::::::
 
 The response should include the indexed document:
 
