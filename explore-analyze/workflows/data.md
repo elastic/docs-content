@@ -62,65 +62,86 @@ In this example:
 
 ## Error handling [workflows-error-handling]
 
-By default, if any step in a workflow fails, the entire workflow execution stops immediately. You can override this behavior and define custom error handling logic using the `on-failure` block.
+By default, if any step in a workflow fails, the entire workflow execution stops immediately. You can override this behavior using the `on-failure` block, which supports retry logic, fallback steps, and continuation options.
 
-### The `on-failure` block [workflows-on-failure]
+### Configuration levels [workflows-on-failure-levels]
 
-The `on-failure` block is a special property you can add to any step. It contains a `fallback` array of steps that execute only if the primary step fails.
+You can configure `on-failure` at two levels:
+
+**Step-level** — applies to a specific step:
 
 ```yaml
 steps:
-  - name: risky_operation
-    type: elasticsearch.search
-    with:
-      index: "non-existent-index"
-      query:
-        match_all: {}
+  - name: api-call
+    type: http
     on-failure:
-      fallback:
-        - name: log_error
-          type: console
-          with:
-            message: "Operation failed, using fallback"
-        - name: default_response
-          type: http
-          with:
-            method: GET
-            url: "https://api.example.com/default"
+      retry:
+        max-attempts: 3
+        delay: "5s"
 ```
 
-Within the `on-failure.fallback` steps, you can access error information from the failed step using:
-
-```text
-steps.<failed_step_name>.error
-```
-
-### Example: Handle {{es}} failures [workflows-handle-es-failures]
-
-This workflow attempts to delete a document. If the `elasticsearch.delete` action fails, the `on-failure` block executes alternative steps:
+**Workflow-level** — applies to all steps as a default (under `settings`):
 
 ```yaml
-- name: delete_critical_document
-  type: elasticsearch.delete
-  with:
-    index: "my-critical-index"
-    id: "doc-abc-123"
+settings:
   on-failure:
-    fallback:
-      - name: notify_on_failure
-        type: slack
-        connector-id: "devops-alerts"
-        with:
-          message: "Failed to delete document in workflow '{{workflow.name}}'"
-      - name: log_failure
-        type: console
-        with:
-          message: "Document deletion failed, error: {{steps.delete_critical_document.error}}"
+    retry:
+      max-attempts: 2
+      delay: "1s"
+steps:
+  - name: api-call
+    type: http
 ```
 
-### Example: Continue after failure [workflows-continue-after-failure]
+:::{note}
+Step-level `on-failure` configuration always overrides workflow-level settings.
+:::
 
-Sometimes a failure is not critical and you want the workflow to continue. Set `continue: true` in the `on-failure` block to allow the workflow to proceed after handling the error:
+### Retry [workflows-on-failure-retry]
+
+Retries the failed step a configurable number of times, with an optional delay between attempts.
+
+```yaml
+on-failure:
+  retry:
+    max-attempts: 3  # Required, minimum 1 (for example, "1", "2", "5")
+    delay: "5s"      # Optional, duration format (for example, "5s", "1m", "2h")
+```
+
+The workflow fails if all retries are exhausted.
+
+### Fallback [workflows-on-failure-fallback]
+
+Executes alternative steps after the primary step fails and all retries (if configured) are exhausted.
+
+```yaml
+on-failure:
+  fallback:
+    - name: notify_on_failure
+      type: slack
+      connector-id: "devops-alerts"
+      with:
+        message: "Failed to delete document in workflow '{{workflow.name}}'"
+    - name: log_failure
+      type: console
+      with:
+        message: "Document deletion failed, error: {{steps.delete_critical_document.error}}"
+```
+
+Within fallback steps, access error information from the failed step using `steps.<failed_step_name>.error`.
+
+### Continue [workflows-on-failure-continue]
+
+Continues workflow execution even if a step fails. The failure is recorded, but does not interrupt the workflow.
+
+```yaml
+on-failure:
+  continue: true
+```
+
+### Combining options [workflows-on-failure-combining]
+
+You can combine multiple failure-handling options. They are processed in this order: retry → fallback → continue.
 
 ```yaml
 - name: create_ticket
@@ -130,14 +151,27 @@ Sometimes a failure is not critical and you want the workflow to continue. Set `
     projectKey: "PROJ"
     summary: "New issue from workflow"
   on-failure:
-    continue: true
+    retry:
+      max-attempts: 2
+      delay: "1s"
     fallback:
       - name: notify_jira_failure
         type: slack
         connector-id: "devops-alerts"
         with:
-          message: "Warning: Failed to create {{jira}} ticket. Continuing workflow."
+          message: "Warning: Failed to create ticket. Continuing workflow."
+    continue: true
 ```
+
+In this example:
+1. The step retries up to 2 times with a 1-second delay.
+2. If all retries fail, the fallback steps execute.
+3. The workflow continues regardless of the outcome.
+
+### Restrictions [workflows-on-failure-restrictions]
+
+- Flow-control steps (`if`, `foreach`) cannot have workflow-level `on-failure` configurations.
+- Fallback steps execute only after all retries have been exhausted.
 
 ## Dynamic values with templating [workflows-dynamic-values]
 
@@ -159,5 +193,6 @@ By combining data flow, templating, and robust error handling, you can build com
 |---------|--------|-------------|
 | Step output | `steps.<step_name>.output` | Access the result of a previous step |
 | Step error | `steps.<step_name>.error` | Access error details from a failed step |
+| Retry on failure | `on-failure.retry` | Retry a failed step with optional delay |
 | Fallback steps | `on-failure.fallback` | Define recovery actions when a step fails |
 | Continue on failure | `on-failure.continue: true` | Allow the workflow to proceed after a failure |
