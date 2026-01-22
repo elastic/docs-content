@@ -14,7 +14,7 @@ products:
 
 # Context length exceeded in {{agent-builder}} conversations
 
-A "context length exceeded" error occurs when a conversation exceeds the maximum context length supported by the LLM. It typically happens when tool responses return large amounts of data that consume the available token budget.
+A `context_length_exceeded` error occurs when a conversation exceeds the maximum context length supported by the LLM. It typically happens when tool responses return large amounts of data that consume the available token budget.
 
 Broad questions or data spread across many indices can also cause slow responses or incomplete answers, even before hitting the context limit.
 

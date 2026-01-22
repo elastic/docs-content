@@ -33,11 +33,11 @@ The [A2A server](a2a-server.md) does not currently support streaming operations.
 
 ### {{esql}} limitations
 
-{{esql}} tools are subject to the current limitations of the {{esql}} language.
+{{esql}} tools are subject to the current limitations of the [{{esql}} language](elasticsearch://reference/query-languages/esql.md).
 
-For non-serverless deployments, ensure your cluster version supports the {{esql}} features you intend to use.
+Ensure your cluster version supports the {{esql}} features you intend to use.
 
-For a complete list of {{esql}} limitations, refer to the the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
+For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 
 ## Known issues
 
@@ -53,7 +53,7 @@ Error: Invalid function call syntax
 Error executing agent: No tool calls found in the response.
 ```
 
-To learn more, refer to [](models.md)
+To learn more, refer to [](models.md).
 
 ### Context length exceeded error [conversation-length-exceeded]
 
