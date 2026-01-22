@@ -42,7 +42,7 @@ By default, {{agent-builder}} uses an Elastic Managed LLM. To use a different mo
 1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md)
 2. Select **Create Connector** and select your model provider
 3. Configure the connector with your API credentials and preferred model
-4. Expand **Additional settings** and select **chat_completion** as the task type
+4. Expand **Additional settings** and select `chat_completion` as the task type
    :::{image} images/additional-settings-chat-completion-task-type.png
    :alt: Additional settings expanded showing chat_completion task type selected
    :width: 450px
