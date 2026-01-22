@@ -17,7 +17,7 @@ This section documents core {{es}} search capabilities. These capabilities are a
 Use this section to understand search techniques, query methods, ranking strategies, and data ingestion for search applications.
 
 ::::{tip}
-Using the {{es}} solution or serverless project type? The [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) covers additional UI tools available if you are using the solution or project type.
+Using the {{es}} solution or serverless project type? The [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) covers additional UI tools included with these options.
 ::::
 
 ## What you can build

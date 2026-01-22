@@ -11,7 +11,7 @@ description: Get started with the search use case using the core Elasticsearch s
 
 # Get started with search
 
-New to search with {{es}}? Start building a search experience by setting up your first deployment, refining your search goals, and adding data. These core search capabilities are available to you regardless of your deployment type, solution, or project type.
+New to search with {{es}}? Start building a search experience by setting up your first deployment, refining your search goals, and adding data. **These core search capabilities are available to you regardless of your deployment type, solution, or project type.**
 
 :::{note}
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
@@ -84,7 +84,7 @@ Each decision builds on the previous ones, offering flexibility to mix and match
 
 Use these resources to learn more about {{es}} or get started in a different way:
 
-- Evaluate the [{{es}} solution](/solutions/elasticsearch-solution-project.md).
+- Evaluate the [{{es}} solution](/solutions/elasticsearch-solution-project.md)
 - [](/deploy-manage/deploy/deployment-comparison.md)
 - [Get started with Query DSL search and filters](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
 - [Get started with ES|QL queries](elasticsearch://reference/query-languages/esql/esql-getting-started.md)

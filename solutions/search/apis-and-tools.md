@@ -78,8 +78,8 @@ The following generative AI tools are available as part of the {{es}} solution a
 
 ### Agent Builder
 ```{applies_to}
-stack: preview 9.2
-elasticsearch: preview
+stack: preview =9.2, ga 9.3
+serverless: ga
 ```
 
 [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure, including an [MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md).

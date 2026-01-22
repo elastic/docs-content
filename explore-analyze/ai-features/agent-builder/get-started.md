@@ -24,7 +24,7 @@ Learn how to get started by enabling the {{agent-builder}} features and begin ch
 ::::::{stepper}
 ::::{step} Set up an {{es}} deployment
 
-If you don't already have an {{es}} deployment, refer to [Get started with search](/solutions/search/get-started.md).
+If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
 
 :::{note}
 For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation.
