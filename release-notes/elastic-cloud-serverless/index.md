@@ -13,6 +13,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-01192026-features-enhancements]
 
+* [Elastic Agent Builder](docs-content://explore-analyze/ai-features/elastic-agent-builder.md) is now generally available in {{serverless-full}}. Enabled by default in {{es}} projects, you can now [opt in](docs-content://explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) in Observability and Security projects. Learn how to [get started](docs-content://explore-analyze/ai-features/agent-builder/get-started.md).
 * Adds support for {{esql}} in Vega [#247186]({{kib-pull}}247186)
 * Improves {{fleet}} setup memory usage by deferring package reinstalls to async tasks [#248235]({{kib-pull}}248235)
 * Adds tab-scoped, retainable flyout behavior in Discover [#246612]({{kib-pull}}246612)
