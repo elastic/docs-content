@@ -2,10 +2,7 @@
 navigation_title: "Limitations"
 applies_to:
   stack: preview =9.2, ga 9.3+
-  serverless:
-    elasticsearch: ga
-    observability: preview
-    security: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -16,6 +13,8 @@ products:
 
 # Limitations and known issues in {{agent-builder}}
 
+This section lists the limitations and known issues in {{agent-builder}}.
+
 ## Limitations
 
 ::::{admonition} Agent Builder subscription requirements
@@ -24,19 +23,23 @@ products:
 - {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
 ::::
 
-### Feature availability
-
+:::{tip}
 Refer to [Get started](get-started.md#enable-agent-builder) for instructions on enabling {{agent-builder}} for your deployment type.
+:::
 
 ### A2A streaming not supported
 
 The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
 
+### {{esql}} limitations
+
+{{esql}} tools are subject to the current limitations of the [{{esql}} language](elasticsearch://reference/query-languages/esql.md).
+
+Ensure your cluster version supports the {{esql}} features you intend to use.
+
+For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
+
 ## Known issues
-
-### API key authentication returns 403 Forbidden
-
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
 
 ### Incompatible LLMs
 
@@ -50,26 +53,13 @@ Error: Invalid function call syntax
 Error executing agent: No tool calls found in the response.
 ```
 
-To learn more, refer to [](models.md)
+To learn more, refer to [](models.md).
 
 ### Context length exceeded error [conversation-length-exceeded]
 
 This error occurs when a conversation exceeds the maximum context length supported by the LLM. This typically happens when tools return large responses that consume the available token budget.
 
-To mitigate this issue, consider the following strategies:
-
-- **Optimize queries**: Narrow your questions to reduce the scope of data retrieval
-- **Start a new conversation**: Begin a fresh conversation, optionally providing a summary of the previous context
-- **Refine tool descriptions**: Update tool descriptions and agent instructions to guide the agent toward requesting only essential data
-- **Limit tool response size**: Create custom tools that filter or paginate data to return smaller, focused datasets
-
-### {{esql}} limitations
-
-{{esql}} tools are subject to the current limitations of the {{esql}} language itself.
-
-For non-serverless deployments, ensure your cluster version supports the {{esql}} features you intend to use.
-
-For a complete list of {{esql}} limitations, refer to the the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
+To learn more, refer to [Context length exceeded in {{agent-builder}} conversations](troubleshooting/context-length-exceeded.md).
 
 ### Misinterpreted SQL syntax as ES|QL
 
@@ -102,4 +92,9 @@ On 9.2 deployments, the **Copy your MCP server URL** button does not include the
 
 For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#working-with-spaces).
 
+
+## Related pages
+
+- [Get started](get-started.md)
+- [Troubleshooting](troubleshooting.md)
 
