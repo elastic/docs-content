@@ -265,11 +265,11 @@ Use an en dash:
 
 #### Em dashes
 
-Use em dashes to indicate a break in the flow of a sentence. Don't add spaces around an em dash.
+Use em dashes to indicate a break in the flow of a sentence.
 
 :::{dropdown} Examples
-* Consider adding exceptions—preferably with a combination of user agent and IP address conditions.
-* Filter out endpoint events that you don't want to store—for example, high-volume events.
+* Consider adding exceptions — preferably with a combination of user agent and IP address conditions.
+* Filter out endpoint events that you don't want to store — for example, high-volume events.
 :::
 
 ### Parentheses
