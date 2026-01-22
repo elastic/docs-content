@@ -113,7 +113,6 @@ PUT _cluster/settings
 }
 ```
 
-You should also [avoid high search context build-up](/deploy-manage/production-guidance/optimize-performance/search-speed.md#_open_search_contexts).
 
 **Prevent mapping explosions**
 

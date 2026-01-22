@@ -470,9 +470,9 @@ By default, search requests don’t time out. You can set a default timeout usin
 
 ## Avoid high open search contexts [_open_search_contexts]
 
-When a [search executes](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model), it opens a search context per shard to act like a form of read lock. This context exists for the duration of the search request, or for [scroll searches]({{es-apis}}operation/operation-scroll) for their designated timeout period. High scroll request search contexts can cause [high JVM memory pressure](/troubleshoot/elasticsearch/high-jvm-memory-pressure.md). 
+When a [search executes](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model), it opens a search context on each shard, which acts as a form of read lock. This context exists for the duration of the search request, or for [scroll searches]({{es-apis}}operation/operation-scroll) for their designated timeout period. High scroll request search contexts can cause [high JVM memory pressure](/troubleshoot/elasticsearch/high-jvm-memory-pressure.md). 
 
-To check for `open_contexts`, poll the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats)
+To check for `open_contexts`, poll the [node stats API]({{es-apis}}/operation/operation-nodes-stats):
 
 ```console
 GET _nodes/stats/indices/search

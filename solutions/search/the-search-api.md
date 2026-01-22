@@ -174,9 +174,8 @@ The response includes an aggregation based on the `day_of_week` runtime field. U
 
 Search requests do not time out by default. The request waits for complete results from every shard before returning a response as outlined in the [basic read model](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model).
 
-You can set a [`timeout` value](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to apply per shard, starting when the query phase begins on that shard. It does not enforce an overall search-level timeout. If a shard exceeds the `timeout` value, it returns partial results and the search response will be marked as `timed_out` of `true`.
+You can set a [`timeout` value](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to apply per shard, starting when the query phase begins on that shard. It does not enforce an overall search-level timeout. The timeout value is exceeded on a shard, it returns partial results and the search response is marked with `"timed_out": true`:
 
-For example response, if the `timeout` duration was surpassed for at least one shard, the API response will return a HTTP 200 status code and the response body field `timed_out` will report `true`.
 
 ```json
 {
@@ -198,12 +197,12 @@ For example response, if the `timeout` duration was surpassed for at least one s
 }
 ```
 
-If a particular search request should should error out instead of returning partial results, consider overriding [`default_allow_partial_results` setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to `false`.
+If a particular search request should error out instead of returning partial results, consider setting the [`default_allow_partial_results` setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to `false`.
 
-You can set a fallback cluster-wide default  `timeout` for all search requests by configuring the `search.default_search_timeout` cluster setting. In this case, the request will be cancelled using the [task cancellation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-tasks-cancel).
+You can set a fallback cluster-wide default timeout for all search requests by configuring the `search.default_search_timeout` cluster setting. In this case, the request will be cancelled using the [task cancellation API]({{es-apis}}/operation/operation-tasks-cancel).
 
 :::{note}
-The `search.default_search_timeout` setting's resolution sensitivity is based from expert setting `thread_pool.estimated_time_interval` which defaults to `200ms`. This means the minimum meaningful impact threshold for `search.default_search_timeout` would also be `200ms`. Elastic recommends against overriding this expert setting as it has far reaching impact.
+The `search.default_search_timeout` setting's resolution sensitivity is determined by the `thread_pool.estimated_time_interval` setting, which defaults to `200ms`. This means the minimum meaningful impact threshold for `search.default_search_timeout` would also be `200ms`. Elastic recommends against overriding this expert setting as it has far reaching impact.
 :::
 
 ## Search cancellation [global-search-cancellation]
