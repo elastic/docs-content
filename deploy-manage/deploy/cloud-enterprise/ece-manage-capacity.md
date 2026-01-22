@@ -19,17 +19,15 @@ This section focuses on the allocator role, and explains how to plan its capacit
 * [Processors setting](#ece-alloc-processors-setting)
 * [Storage](#ece-alloc-storage)
 
+::::{important}
+ECE does not support hot-adding of resources to a running node.  When increasing CPU, memory, or disk allocated to an ECE node, a restart is needed to use the additional resources.
+::::
 
 ## Memory [ece-alloc-memory]
 
 You should plan your deployment size based on the amount of data you ingest. Memory is the main scaling unit for a deployment. Other units, like CPU and disks, are proportional to the memory size. The memory available for an allocator is called *capacity*.
 
 During installation, the allocator capacity defaults to 85% of the host physical memory, as the rest is reserved for ECE system services.
-
-::::{note}
-ECE does not support hot-adding of resources to a running node.  When increasing CPU, memory, or disk allocated to an ECE node, a restart is needed to use the additional resources.
-::::
-
 
 To adjust the allocator capacity prior to ECE 3.5.0, you must reinstall ECE on the host with a new value assigned to the `--capacity` parameter. Starting with ECE 3.5.0, you can update the allocator capacity using the [allocator settings ECE API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-allocator-settings). After making this change, you must restart the allocator service for it to take effect.
 
