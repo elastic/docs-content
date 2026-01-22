@@ -172,9 +172,9 @@ The response includes an aggregation based on the `day_of_week` runtime field. U
 
 ## Search timeout [search-timeout]
 
-Search requests do not time out by default. The request waits for complete results from every shard before returning a response as outlined in the [basic read model](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model).
+By default, search requests do not time out. The request waits for complete results from every shard before returning a response.
 
-You can set a [`timeout` value](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to apply per shard, starting when the query phase begins on that shard. It does not enforce an overall search-level timeout. The timeout value is exceeded on a shard, it returns partial results and the search response is marked with `"timed_out": true`:
+You can set a [`timeout` value](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to apply per shard, starting when the query phase begins on that shard. It does not enforce an overall search-level timeout for other parts of the [read model](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model). The timeout value is exceeded on a shard, it returns partial results and the search response is marked with `"timed_out": true`:
 
 
 ```json
