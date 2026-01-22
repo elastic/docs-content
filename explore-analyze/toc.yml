@@ -392,6 +392,7 @@ toc:
           - file: alerts-cases/cases/cases-as-data.md   
   - file: workflows.md
     children:
+      - file: workflows/setup.md
       - file: workflows/get-started.md
       - file: workflows/core-components.md
         children:
