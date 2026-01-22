@@ -169,7 +169,7 @@ Emojis aren't limited to tables. Because they're part of the query results, you 
 Once you have your visualization working, you can:
 
 - Add [controls](../dashboards/add-controls.md#add-variable-control) to filter by host or time range.
-- Use [LOOKUP JOIN](elasticsearch://reference/query-languages/esql/commands/join.md) to enrich your data with metadata from other indices, such as team ownership or SLA thresholds.
+- Use [LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) to enrich your data with metadata from other indices, such as team ownership or SLA thresholds.
 - Create [alerts](../alerts-cases/alerts/rule-type-es-query.md) based on the same {{esql}} query to get notified when status changes.
 
 
