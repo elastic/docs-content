@@ -94,19 +94,12 @@ This section highlights common setup issues that can cause JVM memory pressure t
 
 #### Disable swapping [reduce-jvm-memory-pressure-setup-swap]
 
+```{applies_to}
+deployment:
+  self: ga
+```
+
 {{es}}'s JVM handles its own executables and can suffer severe performance degredation due to operating system swapping. We recommend [disabling swap](/deploy-manage/deploy/self-managed/setup-configuration-memory.md#bootstrap-memory_lock).
-
-Per guide, you can attempt to disable swap on the {{es}} level with [setting `bootstrap.memory_lock`](/deploy-manage/deploy/self-managed/setup-configuration-memory.md). In response, {{es}} will attempt to set `mlockall`; however this may fail. To check the setting and its outcome, poll the [node information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
-
-```console
-GET _nodes?filter_path=**.mlockall,**.memory_lock,nodes.*.name
-```
-
-For example, you can store this output into `nodes.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/) to process it:
-
-```bash
-cat nodes.json | jq -rc '.nodes[]|.name as $n|{node:.name, memory_lock:.settings.bootstrap.memory_lock, mlockall:.process.mlockall}'
-```
 
 {{es}} recommends completely disabling swap on the operating system. This is because anything set {{es}}-level is best effort but swap can have severe impact on {{es}} performance. To check if any nodes are currently swapping, poll the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats):
 
@@ -123,6 +116,12 @@ cat nodes_stats.json | jq -rc '.nodes[]|{name:.name, swap_used:.os.swap.used_in_
 If nodes are found to be swapping after attempting to disable on the {{es}} level, you need to escalate to [disabling swap on the operating system level](/deploy-manage/deploy/self-managed/setup-configuration-memory.md#disable-swap-files) to avoid performance impact.
 
 #### Enable compressed OOPs [reduce-jvm-memory-pressure-setup-oops]
+
+```{applies_to}
+deployment:
+  self: ga
+  eck: ga
+```
 
 JVM performance strongly depends on having [Compressed OOPs](https://docs.oracle.com/javase/7/docs/technotes/guides/vm/performance-enhancements-7.html#compressedOop) enabled. The exact max heap size cutoff depends on operating system, but is typically around 30GB. To check if it is enabled, poll the [node information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
 
