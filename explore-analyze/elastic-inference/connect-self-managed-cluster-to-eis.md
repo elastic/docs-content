@@ -43,7 +43,7 @@ Sign up or log in to {{ecloud}} and get the Cloud Connect API key:
 - If you don’t have an account yet, click **Sign up** and follow the prompts to create your account and start a free Cloud Trial.
 ::::::
 
-::::::{step} Connect EIS
+::::::{step} Connect your cluster
 Copy the Cloud Connect API key, paste it into your self-managed cluster's Cloud Connect page, then click **Connect**.
 
 ::::::
