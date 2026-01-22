@@ -23,6 +23,12 @@ A snapshot is a backup of a running {{es}} cluster. You can use snapshots to:
 - Transfer data between clusters
 - Reduce storage costs by using **[searchable snapshots](snapshot-and-restore/searchable-snapshots.md)** in the cold and frozen data tiers
 
+::::{important}
+Snapshots preserve more than your data. They also include the configuration and internal data of {{stack}} features, such as {{ilm-init}} policies, index templates, pipelines, {{kib}} saved objects, Alerting rules, {{fleet}}, {{elastic-sec}} data, and more, depending on your use case.
+
+You should consider using snapshots to back up at least all {{es}} system indices and cluster state, even if your data can be reindexed or recovered from other external sources. Without these backups, a disaster recovery scenario can result in the loss of your stack configuration and feature state, even if the underlying data can be restored.
+::::
+
 ## Snapshot workflow
 
 {{es}} stores snapshots in an off-cluster storage location called a **snapshot repository**. Before you can take or restore snapshots, you must [register a snapshot repository](snapshot-and-restore/self-managed.md#manage-snapshot-repos) on the cluster. {{es}} supports different repository types depending on your deployment type:
