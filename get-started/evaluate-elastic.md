@@ -32,7 +32,7 @@ To complete each step of your evaluation, your {{ecloud}} trial provides full ac
 
 - All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type. 
 - Integrations to ingest your data using the method that best suits your use case.
-- {{ml-cap}} features to evaluate anomaly detection results, search relevance, and explore visualization tools from our trained models.
+- {{ml-cap}} features to evaluate anomaly detection results and search relevance, and explore visualization tools from our trained models.
 - Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications.
 
 To learn how {{ecloud}} works, go to [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md).
