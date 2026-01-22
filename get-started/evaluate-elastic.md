@@ -35,7 +35,7 @@ To complete each step of your evaluation, your {{ecloud}} trial provides full ac
 - {{ml-cap}} features to evaluate anomaly detection results and search relevance, and explore visualization tools from our trained models.
 - Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications.
 
-To learn how {{ecloud}} works, go to [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md).
+To learn how {{ecloud}} works, refer to the [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) deployment documentation.
 
 :::{tip}
 If you prefer to set up {{es}} and {{kib}} in Docker for local development or testing, refer to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). By default, new installations have a Basic license that never expires. To explore all the available solutions and features, start a 30-day free trial by following the instructions in [](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md).  
