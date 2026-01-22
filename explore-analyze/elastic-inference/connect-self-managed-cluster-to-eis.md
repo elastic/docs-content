@@ -12,7 +12,7 @@ applies_to:
 
 Elastic {{infer-cap}} Service (EIS) for self-managed clusters is available through [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself.
 
-You can use EIS for [semantic search](/solutions/search/semantic-search.md), [AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md) and [AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md), [Search Playground](/explore-analyze/query-filter/tools/playground.md), [Attack Discovery](/solutions/security/ai/attack-discovery.md), and [SIEM migrations](/solutions/security/get-started/automatic-migration.md).
+You can use EIS, for example, for [semantic search](/solutions/search/semantic-search.md), [AI Assistants](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md) or [Attack Discovery](/solutions/security/ai/attack-discovery.md), among other use cases.
 
 ## Prerequisites
 
