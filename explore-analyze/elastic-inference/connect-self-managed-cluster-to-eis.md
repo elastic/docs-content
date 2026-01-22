@@ -2,10 +2,11 @@
 navigation_title: EIS for self-managed clusters
 applies_to:
   stack: ga 9.3
-  deployment:
-    self: ga
-    ece: ga
-    eck: ga
+products:
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Use Elastic Inference Service (EIS) with your self-managed, ECE, and ECK clusters thanks to Cloud Connect.
 ---
 
 # EIS for self-managed clusters
