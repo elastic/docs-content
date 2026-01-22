@@ -48,13 +48,13 @@ The {{agent-builder}} framework consists of three key components: Agent Chat, Ag
 
 ### Agents
 
-Agents are powered by custom LLM instructions and the ability to use tools to answer questions, take action, or support workflows. Each agent translates natural language requests into specific actions using the tools assigned to it.
+Agents are powered by custom LLM instructions and the ability to use tools to answer questions, take action, or support workflows. Each agent translates natural language requests into specific actions using the tools assigned to it. Choose from a set of built-in agents, or create your own.
 
 [**Learn more about agents**](agent-builder/agent-builder-agents.md)
 
 ### Tools [tools-concept]
 
-Tools are modular, reusable functions that agents use to search, retrieve, and manipulate {{es}} data. Tools are the primary mechanism for connecting agent capabilities to your data.
+Tools are modular, reusable functions that agents use to search, retrieve, and manipulate {{es}} data. Tools are the primary mechanism for connecting agent capabilities to your data. Choose from a set of built-in tools, or create your own and assign them to your custom agents.
 
 [**Learn more about tools**](agent-builder/tools.md)
 
@@ -89,6 +89,12 @@ Configure security roles and API keys to control who can use agents, which tools
 Understand how tokens are calculated and accumulated during agent execution to predict the impact on your usage and costs.
 
 [**Learn more about token usage**](agent-builder/monitor-usage.md)
+
+## Troubleshooting
+
+Find solutions to common problems when working with {{agent-builder}}.
+
+[**Learn more about troubleshooting**](agent-builder/troubleshooting.md)
 
 ## Limitations and known issues
 
