@@ -42,9 +42,15 @@ By default, {{agent-builder}} uses an Elastic Managed LLM. To use a different mo
 1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md)
 2. Select **Create Connector** and select your model provider
 3. Configure the connector with your API credentials and preferred model
-4. Search for **GenAI Settings** in the global search field
-5. Select your new connector from the **Default AI Connector** dropdown under **Custom connectors**
-6. Save your changes
+4. Expand **Additional settings** and select **chat_completion** as the task type
+   :::{image} images/additional-settings-chat-completion-task-type.png
+   :alt: Additional settings expanded showing chat_completion task type selected
+   :width: 450px
+   :screenshot:
+   :::
+5. Search for **GenAI Settings** in the global search field
+6. Select your new connector from the **Default AI Connector** dropdown under **Custom connectors**
+7. Save your changes
 
 For detailed instructions on creating connectors, refer to [Connectors](https://www.elastic.co/docs/deploy-manage/manage-connectors).
 
