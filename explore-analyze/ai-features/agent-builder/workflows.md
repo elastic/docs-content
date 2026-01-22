@@ -24,7 +24,7 @@ products:
 Before using these features, ensure that:
 * The **Workflows** feature is enabled in your deployment.
 * You have appropriate permissions to create and run workflows.
-* (Optional) If using the example below, ensure the `kibana_sample_data_flights` dataset is installed.
+* (Optional) If using the example below, ensure the [Kibana sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
 ## Trigger a workflow from an agent
 Follow these steps to wrap an existing workflow into a tool that your agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
@@ -71,7 +71,7 @@ Follow these steps to invoke an AI agent as a step within a workflow. This allow
     * **`agent_id`**: The ID of the agent to call.
     * **`message`**: The prompt to send to the agent.
 
-#### Example: Analyze Flight Delays
+#### Example: Analyze flight delays
 The following example demonstrates a workflow that searches for flight delays and uses the **Elastic AI Agent** to summarize the impact.
 
 ```yaml
