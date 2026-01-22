@@ -18,7 +18,7 @@ The workflows feature is turned off by default. To turn it on:
 3. Toggle the setting on.
 4. Click **Save changes** to turn on workflows in your space, then reload the page. 
 
-Workflows display in the main navigation menu and you can search for it using the global search field.
+The **Workflows** page displays in the main navigation menu and you can search for it using the global search field.
 
 ## Manage access to workflows [workflows-role-access]
 
