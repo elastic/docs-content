@@ -40,7 +40,7 @@ In your self-managed Kibana instance, navigate to the **Cloud Connect** page usi
 Sign up or log in to {{ecloud}} and get the Cloud Connect API key:
 
 - If you already have an {{ecloud}} account, click **Log in**.
-- If you don’t have an account yet, click **Sign up** and follow the prompts to create your account and start a free trial.
+- If you don’t have an account yet, click **Sign up** and follow the prompts to create your account and start a free Cloud Trial.
 ::::::
 
 ::::::{step} Connect EIS
