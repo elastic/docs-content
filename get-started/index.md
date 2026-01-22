@@ -22,7 +22,7 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
 Welcome to Elastic fundamentals. This section helps you understand our platform, learn core concepts, and explore deployment options.
 
 :::{tip}
-If you're on a trial and need guidance on building a proof of concept, refer to [Evaluate Elastic](/get-started/evaluate-elastic.md).
+If you are using a [free 14-day {{ecloud}} trial]((https://cloud.elastic.co/registration)) and need guidance on building a proof of concept, refer to [Evaluate Elastic during a trial](/get-started/evaluate-elastic.md).
 :::
 
 In this section, we'll walk you through the basics of what our products offer, what they do, how they can help your business, and how to set them up. You'll get a quick look at the core features and concepts, real-world use cases, and deployment options to understand how everything fits together.
