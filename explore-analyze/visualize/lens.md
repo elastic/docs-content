@@ -54,19 +54,20 @@ As you drag fields to the layer pane, Lens automatically selects an aggregation 
 
 ::::
 
-::::{step} Edit your visualization
+::::{step}  Customize the appearance of your visualization
 
-To edit a visualization directly on the dashboard, click the ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") icon on the panel. To edit a visualization, click **Edit in Lens** in the layer pane.
+In the Lens editor, you can customize the appearance of your visualization by clicking the **Style** icon {icon}`brush` and the **Legend** icon ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") in the layer pane.
 
 ::::
 
 ::::{step} (Optional) Add layers
 
-You can add multiple layers to a visualization, such as **Visualization**, **Annotations**, or **Reference lines**. Click {icon}`plus_in_square` **Add layer**, then choose the layer type and select the {{data-source}}. 
+You can add multiple layers to a visualization, such as **Visualization**, [**Annotations**](#add-annotations), or [**Reference lines**](#add-reference-lines). Click the **Add layer** icon {icon}`plus_in_square` , then choose the layer type and select the {{data-source}}. 
 To duplicate or delete a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
 
 ::::
 
+Once you have created your visualization, you can edit it directly on the dashboard. Click the **Edit visualization configuration** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
 :::::
 
 
