@@ -27,7 +27,7 @@ To set up EIS for your self-managed cluster with Cloud Connect:
 
 :::::::{stepper}
 ::::::{step} Open Cloud Connect
-In your self-managed cluster, navigate to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+In your self-managed Kibana instance, navigate to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/cloud-connect-eis.png
 :screenshot:
