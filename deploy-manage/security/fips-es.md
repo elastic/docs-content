@@ -167,7 +167,7 @@ The name-and-version format is useful when you need to verify that a specific ve
 {{es}} 8.0+ requires Java 17 or later. {{es}} has been tested with [Bouncy Castle](https://www.bouncycastle.org/java.html)'s FIPS implementations and is the recommended Java security provider when running {{es}} in FIPS mode:
 
 * For FIPS 140-2: Bouncy Castle 1.x libraries ([certified](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4616))
-* {applies_to}`stack 9.4+` For FIPS 140-3: Bouncy Castle 2.x libraries ([certified](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4743))
+* {applies_to}`stack: ga 9.4+` For FIPS 140-3: Bouncy Castle 2.x libraries ([certified](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4743))
 
 Note that {{es}} does not ship with a FIPS certified security provider and requires explicit installation and configuration.
 
