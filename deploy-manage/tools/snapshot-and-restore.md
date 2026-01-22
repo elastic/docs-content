@@ -24,9 +24,9 @@ A snapshot is a backup of a running {{es}} cluster. You can use snapshots to:
 - Reduce storage costs by using **[searchable snapshots](snapshot-and-restore/searchable-snapshots.md)** in the cold and frozen data tiers
 
 ::::{important}
-Snapshots preserve more than your data. They also include the configuration and internal data of {{stack}} features, such as {{ilm-init}} policies, index templates, pipelines, {{kib}} saved objects, Alerting rules, {{fleet}}, {{elastic-sec}} data, and more, depending on your use case.
+Snapshots preserve more than your data. They also include the configuration and internal data of {{stack}} features, such as {{ilm-init}} policies, index templates and pipelines, {{kib}} saved objects, alerting rules, {{fleet}} settings, {{elastic-sec}} data, and more, depending on your use case.
 
-You should consider using snapshots to back up at least all {{es}} system indices and cluster state, even if your data can be reindexed or recovered from other external sources. Without these backups, a disaster recovery scenario can result in the loss of your stack configuration and feature state, even if the underlying data can be restored.
+Consider using snapshots to back up, at minimum, all {{es}} system indices and the cluster state, even if your data can be reindexed or recovered from other external sources. Without these backups, a disaster recovery scenario can result in the loss of your stack configuration and feature state, even if the underlying data can be restored.
 ::::
 
 ## Snapshot workflow
