@@ -74,6 +74,10 @@ Refer to [](#settings) for a complete list of options.
 
 :::::
 
+::::{tip}
+As an alternative, you can also create tables using {{esql}} queries, which gives you full control over data transformations before visualization. For example, you can use `EVAL` and `CASE` to add emoji status indicators to your tables. Refer to [Use emojis in table visualizations](../esorql.md#esql-table-emojis) for a step-by-step example.
+::::
+
 ## Advanced table scenarios
 
 ### Create pivot tables
