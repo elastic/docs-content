@@ -133,7 +133,7 @@ The user cache will be emptied upon node restart, so any existing hashes using n
 
 ### Configure {{es}} elasticsearch.yml [configuring-es-yml]
 
-* Set `xpack.security.fips_mode.enabled` to `true` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). This setting is used to ensure to configure some internal configuration to be FIPS compliant and provides some additional verification.
+* Set `xpack.security.fips_mode.enabled` to `true` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). This setting enables all verification and functionality required for FIPS compliance.
 * Set `xpack.security.autoconfiguration.enabled` to `false`. This turns off the automatic configuration of the security settings. Users must ensure that the security settings are configured correctly for FIPS compliance. This is only applicable for new installations.
 * Set `xpack.security.authc.password_hashing.algorithm` appropriately. Refer to the [stored password hashing](#fips-stored-password-hashing) section.
 * Other relevant security settings. For example, TLS for the transport and HTTP interfaces. (not explicitly covered here or in the example below)
