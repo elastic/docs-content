@@ -307,12 +307,39 @@ def get_hyperlinks_from_sheets_api(
                         col_letter = column_index_to_letter(col_idx)
                         cell_address = f"{col_letter}{row_idx}"
                         
-                        # Check for hyperlink in userEnteredFormat
-                        user_format = cell.get('userEnteredFormat', {})
-                        if 'hyperlink' in user_format:
-                            url = user_format['hyperlink']
-                            if url:
-                                hyperlinks[cell_address] = url
+                        url = None
+                        
+                        # Check for hyperlink at cell level (most common for formatted links)
+                        if 'hyperlink' in cell:
+                            url = cell['hyperlink']
+                        
+                        # Check in textFormatRuns (rich text with links)
+                        if not url:
+                            text_format_runs = cell.get('textFormatRuns', [])
+                            for run in text_format_runs:
+                                link = run.get('format', {}).get('link', {})
+                                if 'uri' in link:
+                                    url = link['uri']
+                                    break
+                        
+                        # Check in effectiveFormat.textFormat.link
+                        if not url:
+                            effective_format = cell.get('effectiveFormat', {})
+                            text_format = effective_format.get('textFormat', {})
+                            link = text_format.get('link', {})
+                            if 'uri' in link:
+                                url = link['uri']
+                        
+                        # Check in userEnteredFormat.textFormat.link
+                        if not url:
+                            user_format = cell.get('userEnteredFormat', {})
+                            text_format = user_format.get('textFormat', {})
+                            link = text_format.get('link', {})
+                            if 'uri' in link:
+                                url = link['uri']
+                        
+                        if url:
+                            hyperlinks[cell_address] = url
         
         return hyperlinks
         
