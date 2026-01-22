@@ -26,7 +26,7 @@ A snapshot is a backup of a running {{es}} cluster. You can use snapshots to:
 ::::{important}
 Snapshots preserve more than your data. They also include the configuration and internal data of {{stack}} features, such as {{ilm-init}} policies, index templates and pipelines, {{kib}} saved objects, alerting rules, {{fleet}} settings and integrations, {{elastic-sec}} data, and more, depending on your use case.
 
-Consider using snapshots to back up, at minimum, all {{es}} system indices and the cluster state, even if your data can be reindexed or recovered from other external sources. Without these backups, a disaster recovery scenario can result in the loss of your stack configuration and feature state, even if the underlying data can be restored.
+Consider using snapshots to back up, at minimum, all {{es}} system indices and the cluster state, even if your data can be reindexed or recovered from other external sources. Without these backups, a disaster recovery scenario can result in the loss of your stack configuration and feature states, even if the underlying data can be restored.
 ::::
 
 ## Snapshot workflow
