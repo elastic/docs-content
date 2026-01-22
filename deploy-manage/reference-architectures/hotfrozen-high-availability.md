@@ -92,6 +92,7 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
   * Use this on top ~10 indices by events per second (EPS). Rollover at 30-40 GB for faster force_merge and snapshot. 
   * Minimize empty and low-volume shards. 
   * Target 100k shards per cluster maximum.
+  * Guard against single-index hotspot with total_shards_per_node: 1 or 2 depending on replica count.
 
 
 **Snapshots:**
