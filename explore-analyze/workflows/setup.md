@@ -18,11 +18,11 @@ The workflows feature is turned off by default. To turn it on:
 3. Toggle the setting on.
 4. Click **Save changes** to turn on workflows in your space, then reload the page. 
 
-Workflows displays in the main navigation menu and you can search for it using the global search field.
+Workflows display in the main navigation menu and you can search for it using the global search field.
 
 ## Manage access to workflows [workflows-role-access]
 
-Access to workflows is controlled by [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges. Ensure users have the appropriate roles assigned to create, edit, run, and manage workflows.
+Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). Ensure users have the appropriate roles assigned to create, edit, run, and manage workflows.
 
 | Action | Required privilege |
 |--------|-------------------|
