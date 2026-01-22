@@ -48,7 +48,7 @@ A tutorial should always be a standalone page, meaning it should have only one c
 - [How-to guides](how-tos.md)
 - [Overviews](overviews.md)
 - [Troubleshooting](troubleshooting.md)
-% - [Tutorial](tutorials.md)
+- [Tutorials](tutorials.md)
 
 ## Templates per content type
 
