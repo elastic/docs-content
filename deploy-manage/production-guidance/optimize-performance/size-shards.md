@@ -390,7 +390,7 @@ This calculation may differ from the [Count API’s](https://www.elastic.co/docs
 
 This limit is much higher than the [recommended maximum document count](#shard-size-recommendation) of approximately 200M documents per shard.
 
-If you encounter this problem, try to mitigate it by using the [Force Merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) - run force-merge during off-peak hours and preferably on indices that are no longer receiving writes - to merge away some deleted docs. For example:
+If you encounter this problem, try to mitigate it if possible during off-peak hours by using the [Force Merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to expunge away some deleted documents. For example:
 
 ```console
 POST my-index-000001/_forcemerge?only_expunge_deletes=true
@@ -401,7 +401,7 @@ This will launch an asynchronous task which can be monitored via the [Task Manag
 
 It may also be helpful to [delete unneeded documents](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query), or to [split](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split) or [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) the index into one with a larger number of shards.
 
-To **prevent** this issue, roll over or re-shard before shards approach the recommended per-shard document count (for example, via ILM rollover thresholds or a sharding strategy that keeps documents per shard well below the Lucene limit).
+To prevent this issue, roll over or re-shard before shards approach the recommended per-shard document count (for example, via {{ilm}} rollover thresholds or a sharding strategy that keeps documents per shard well below the Lucene limit).
 
 To check whether a shard is approaching the limit, run:
 ```console
