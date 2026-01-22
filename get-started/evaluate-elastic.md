@@ -22,7 +22,7 @@ During your trial, you will complete the following:
 - Evaluate Elastic features against success criteria
 - Measure results and document outcomes for a proof of concept (PoC)
 
-To start your trial, go to [Sign up for a free trial](https://cloud.elastic.co/registration).
+To start your trial, go to [Sign up for a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 
 By the end of this guide, you'll have a structured trial plan, clear evaluation results, and a solid foundation for a meaningful PoC.
 
