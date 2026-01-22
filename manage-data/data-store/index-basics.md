@@ -89,11 +89,9 @@ To add these privileges, go to **Stack Management > Security > Roles** or use th
 
 Investigate your indices and perform operations from the **Indices** view.
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{applies-item} serverless:
 
 :::{image} /manage-data/images/serverless-index-management-indices.png
 :alt: Index Management indices
@@ -113,7 +111,7 @@ Investigate your indices and perform operations from the **Indices** view.
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
 ::::
 
-::::{tab-item} {{stack}}
+::::{applies-item} stack:
 :sync: stack
 
 :::{image} /manage-data/images/elasticsearch-reference-management_index_labels.png

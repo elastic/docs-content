@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-context.html
 applies_to:
-  stack: preview 9.0, beta 9.1
+  stack: preview =9.0, beta 9.1+
   serverless: beta
 products:
   - id: kibana
@@ -15,7 +15,7 @@ Context is the information you provide to the LLM, to optimize the relevance of 
 There are a few ways to optimize this context for better results. Some adjustments can be made directly in the Playground UI. Others require refining your indexing strategy, and potentially reindexing your data.
 
 ::::{note} 
-:applies_to: stack: preview 9.0 
+:applies_to: stack: preview 9.0+
 
 Only **one field** can be selected as context for the LLM.
 ::::
@@ -24,7 +24,7 @@ Only **one field** can be selected as context for the LLM.
 
 ## Edit context in UI [playground-context-ui]
 ```{applies_to}
-stack: preview 9.0.0, unavailable 9.1.0
+stack: preview =9.0.0, removed 9.1+
 ```
 
 Use the **Playground context** section in the Playground UI to adjust the number of documents and fields sent to the LLM.

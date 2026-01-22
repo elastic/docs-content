@@ -46,7 +46,7 @@ The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assist
 
 - Manage which AI connectors are available in your environment. 
 - Enable or disable AI Assistant and other AI-powered features in your environment.
-- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
+- {applies_to}`stack: ga 9.2+` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
 
 
 
@@ -100,14 +100,14 @@ Each user’s chat history (up to the 99 most recent conversations) and custom Q
 Use these optional features to adjust and act on your conversations with AI Assistant:
 
 * Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…**.
-* {applies_to}`stack: ga 9.1` Select a *prompt tile* to start your conversation with a predefined goal or topic. Prompt tiles help you begin structured tasks or investigations into common {{elastic-sec}} workflows. The available prompt tiles include:
+* {applies_to}`stack: ga 9.1+` Select a *prompt tile* to start your conversation with a predefined goal or topic. Prompt tiles help you begin structured tasks or investigations into common {{elastic-sec}} workflows. The available prompt tiles include:
 
    * **Alerts**: Quickly identify and prioritize the most important alerts from the last 24 hours.
    * **Research**: Get a summary of the latest {{elastic-sec}} Labs research articles.
    * **Query**: Generate {{esql}} queries based on a specific goal or requirement.
    * **Suggest**: Explore the types of questions you can ask AI Assistant about {{elastic-sec}}.
 
-* {applies_to}`stack: removed 9.1` Select a default *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}. The default Quick Prompts' availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert.
+* {applies_to}`stack: removed 9.1+` Select a default *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}. The default Quick Prompts' availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert.
 
 * Create new custom Quick Prompts by clicking **Add quick prompt**.
 

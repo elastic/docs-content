@@ -42,7 +42,7 @@ The **Admin** role or higher is required to create projects. Refer to [Assign us
 
 1. Select **Create serverless project**. It takes a few minutes to create your project.
 1. When the project is ready, click **Continue**.
-
+::::
 ::::::
 
 ::::::{step} Collect infrastructure logs
@@ -89,6 +89,7 @@ Elastic {{observability}} can collect logs from cloud services through Elastic i
 3. Select the integration you want to add.
 4. Select **Add**.
 :::
+::::
 
 :::::
 
