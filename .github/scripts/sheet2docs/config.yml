@@ -26,6 +26,8 @@ columns:
   - source: "Author"
   - source: "Name"
   - source: "ID"
+  - source: "Release Date"
+    target: "release date"
 
 # Output configuration
 output:
