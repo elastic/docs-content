@@ -101,7 +101,7 @@ Snapshots don’t contain or back up:
 
 ### Feature states [feature-state]
 
-A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **{{es}} security** or **Kibana**. To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
+A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **{{es}} security**, **{{kib}}**, {{fleet}}, or {{watcher}}. To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
 
 ```console
 GET /_features
