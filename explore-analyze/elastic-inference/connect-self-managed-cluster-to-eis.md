@@ -62,7 +62,7 @@ On the **Cloud connected services** page, click **Connect** for Elastic {{infer}
 
 :::::::
 
-After you connect Elastic {{infer-cap}} Service through Cloud Connect, {{es}} automatically creates multiple {{infer}} endpoints for search and chat use cases, along with corresponding {{kib}} AI connectors. Supported {{kib}} features use these connectors out of the box.
+After you connect Elastic {{infer-cap}} Service through Cloud Connect, {{es}} automatically creates multiple {{infer}} endpoints for search and chat use cases, along with corresponding {{kib}} AI connectors. Supported {{kib}} features now use these connectors automatically.
 
 ## Test EIS with semantic search
 
