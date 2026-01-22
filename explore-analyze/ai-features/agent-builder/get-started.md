@@ -1,20 +1,25 @@
 ---
 navigation_title: "Get started"
 applies_to:
-  stack: preview 9.2
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Get started with {{agent-builder}}
 
 Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
 
-:::{important}
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
-:::
+::::{admonition} Agent Builder subscription requirements
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::
 
 ::::::{stepper}
 ::::{step} Set up an Elastic deployment
@@ -32,7 +37,7 @@ You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solutio
 
 ::::{applies-switch}
 
-:::{applies-item} { "serverless": "preview", "elasticsearch" }
+:::{applies-item} { "serverless": "ga", "elasticsearch" }
 
 {{agent-builder}} is enabled by default in serverless {{es}} projects.
 
@@ -40,15 +45,29 @@ Find **Agents** in the navigation menu to begin using the feature, or search for
 
 :::
 
-:::{applies-item} stack: preview 9.2
+:::{applies-item} { "serverless": "preview", "observability" }
 
-You have to enable {{agent-builder}} to get started on non-serverless deployments.
+{{product.observability}} users must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
 
-You can enable the features using the UI:
+Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-1. Search for **AI / Agent Builder** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Toggle **{{agent-builder}}** to on.
-3. Select **Save changes**.
+:::
+
+:::{applies-item} { "serverless": "preview", "security" }
+
+{{product.security}} users must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+
+Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::
+
+:::{applies-item} stack: preview =9.2, ga 9.3+
+
+On non-serverless deployments, {{agent-builder}} availability depends on your navigation mode:
+
+- **{{es}} solution view**: {{agent-builder}} is enabled by default and appears in the side navigation. It replaces Search Assistant.
+- **{{product.observability}} and {{product.security}} solution views**: You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+- **Classic view**: {{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 
 Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -89,7 +108,7 @@ Learn more in [Agent Chat](chat.md).
 
 ::::{step} Configure model (optional)
 
-By default, {{agent-builder}} uses the Elastic Managed LLM. To use a different model, refer to [model selection and configuration](models.md).
+By default, {{agent-builder}} uses an Elastic Managed LLM. To use a different model, refer to [model selection and configuration](models.md).
 
 ::::
 
