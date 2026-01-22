@@ -13,7 +13,7 @@ description: Build a successful proof of concept during your Elastic trial. Lear
 
 # Evaluate Elastic during a trial
 
-Use the free 14-day {{ecloud}} trial to evaluate Elastic with real data and use cases. Focus your time on the scenarios that matter most to your organization, validate key capabilities, and gather evidence to support a confident decision on whether Elastic is the right choice.
+Use the free 14-day {{ecloud}} trial to evaluate Elastic offerings with real data and use cases. Focus your time on the scenarios that matter most to your organization, validate key capabilities, and gather evidence to support a confident decision on whether Elastic is the right choice.
 
 During your trial, you will complete the following:
 
