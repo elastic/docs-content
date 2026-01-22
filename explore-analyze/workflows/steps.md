@@ -42,6 +42,7 @@ Flow control steps shape how a workflow moves. They control the order, structure
 These steps make workflows dynamic and responsive, allowing them to adapt in real time to data and conditions.
 
 % Refer to [](/explore-analyze/workflows/steps/flow-control-steps.md) for more information.
+% TODO uncomment link when flow control steps are merged
 
 ## AI steps
 
@@ -54,3 +55,4 @@ AI steps introduce reasoning and language understanding into workflows. Use AI s
 You can define the instructions or prompts that guide the agent, the tools it has access to, and the expected outcome. You can also specify which large language model powers the step.
 
 % Refer to [](/explore-analyze/workflows/steps/ai.md) for more information.
+% TODO uncomment link when ai steps are merged
