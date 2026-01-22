@@ -68,7 +68,7 @@ All [built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-
 `platform.core.search` {applies_to}`stack: ga 9.2+`
 :   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
 
-$$$agent-builderproduct-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
+$$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves documentation about Elastic products. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elastic documentation** from the **Documentation** section.
 
 `platform.core.integration_knowledge` {applies_to}`stack: ga 9.3+`
