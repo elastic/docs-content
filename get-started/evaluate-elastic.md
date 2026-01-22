@@ -13,23 +13,29 @@ description: Build a successful proof of concept during your Elastic trial. Lear
 
 # Evaluate Elastic during a trial
 
-To make the most of your free 14-day {{ecloud}} trial, set up high-value use cases, explore the most powerful Elastic features, and gather the evidence you need to determine whether Elastic is the right choice for your organization.
+Use the free 14-day {{ecloud}} trial to evaluate Elastic with real data and use cases. Focus your time on the scenarios that matter most to your organization, validate key capabilities, and gather evidence to support a confident decision on whether Elastic is the right choice.
 
-Ingest real data and validate the capabilities that will save you time, reduce costs, and prevent operational challenges in production.
+During your trial, you will complete the following:
 
-By the end of this guide, you'll know how to structure your trial, make strategic Elastic product decisions, and measure success so you can build a meaningful proof of concept (PoC).
+- Define high-value use cases
+- Ingest representative data
+- Evaluate Elastic features against success criteria
+- Measure results and document outcomes for a proof of concept (PoC)
 
-For a quick intro, start by learning more about [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md).
+To start your trial, go to [Sign up for a free trial](https://cloud.elastic.co/registration).
+
+By the end of this guide, you'll have a structured trial plan, clear evaluation results, and a solid foundation for a meaningful PoC.
 
 ## What is included in your trial
 
-Your {{ecloud}} trial gives you full access to explore the following features and capabilities:
+To complete each step of your evaluation, your {{ecloud}} trial provides full access to the following Elastic capabilities: 
 
-- All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
-- Access to the following: 
-  - Integrations to ingest your data using the simplest method that meets your use case.
-  - {{ml-cap}} features to evaluate anomaly detection results, search relevance, and explore visualization tools from our trained models.
-  - Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications.
+- All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type. 
+- Integrations to ingest your data using the simplest method that meets your use case.
+- {{ml-cap}} features to evaluate anomaly detection results, search relevance, and explore visualization tools from our trained models.
+- Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications.
+
+To learn how {{ecloud}} works, go to [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md).
 
 :::{tip}
 If you prefer to set up {{es}} and {{kib}} in Docker for local development or testing, refer to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). By default, new installations have a Basic license that never expires. To explore all the available solutions and features, start a 30-day free trial by following the instructions in [](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md).  
