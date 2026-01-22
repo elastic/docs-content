@@ -1,11 +1,14 @@
 ---
 navigation_title: "Agent Builder"
 applies_to:
-  stack: preview 9.2
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # {{agent-builder}}
@@ -14,9 +17,11 @@ applies_to:
 
 You can use the built-in agent for natural language conversations with any {{es}} data or instance, or work programmatically with tools, agents, and conversations using Elastic APIs, MCP, and A2A.
 
-:::{important}
-{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
-:::
+::::{admonition} Agent Builder subscription requirements
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::
 
 ## Key capabilities
 
@@ -34,19 +39,19 @@ The {{agent-builder}} framework consists of three key components: Agent Chat, Ag
 
 ### Agent Chat
 
-**Agent Chat** is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
+**Agent Chat** is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents. You can also chat with agents programmatically.
 
 [**Learn more about Agent Chat**](agent-builder/chat.md)
 
 ### Agents
 
-Agents are powered by custom LLM instructions and the ability to use tools to answer questions, take action, or support workflows. Each agent translates natural language requests into specific actions using the tools assigned to it.
+Agents are powered by custom LLM instructions and the ability to use tools to answer questions, take action, or support workflows. Each agent translates natural language requests into specific actions using the tools assigned to it. Choose from a set of built-in agents, or create your own.
 
 [**Learn more about agents**](agent-builder/agent-builder-agents.md)
 
 ### Tools [tools-concept]
 
-Tools are modular, reusable functions that agents use to search, retrieve, and manipulate {{es}} data. Tools are the primary mechanism for connecting agent capabilities to your data.
+Tools are modular, reusable functions that agents use to search, retrieve, and manipulate {{es}} data. Tools are the primary mechanism for connecting agent capabilities to your data. Choose from a set of built-in tools, or create your own and assign them to your custom agents.
 
 [**Learn more about tools**](agent-builder/tools.md)
 
@@ -81,6 +86,12 @@ Configure security roles and API keys to control who can use agents, which tools
 Understand how tokens are calculated and accumulated during agent execution to predict the impact on your usage and costs.
 
 [**Learn more about token usage**](agent-builder/monitor-usage.md)
+
+## Troubleshooting
+
+Find solutions to common problems when working with {{agent-builder}}.
+
+[**Learn more about troubleshooting**](agent-builder/troubleshooting.md)
 
 ## Limitations and known issues
 
