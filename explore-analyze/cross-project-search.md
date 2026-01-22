@@ -93,14 +93,90 @@ As a result, unqualified searches treat linked projects as part of one larger lo
 
 #### `ignore_unavaliable` and `allow_no_indices`
 
-The distinction between qualified and unqualified index expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied.
-When you use an **unqualified** index expression, the merged project view is taken into account. In this case, these options are evaluated based on whether the target indices exist in any of the linked projects, not only in the origin project.
+The distinction between qualified and unqualified index expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied in {{cps}}.
+When you use an **unqualified** index expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
 
-`ignore_unavaliable` defaults to `false`. If it `false`, the request returns an error if it targets a missing resource (for example, and index or a datastream).
+`ignore_unavaliable` defaults to `false`.
+When set to `false`, the request returns an error if it targets a missing resource (such as an index or data stream).
+When set to `true`, missing resources are ignored and the request returns an empty result instead of an error.
+For example, if the `logs` index does not exist, the following request returns an error because the default value is `false`:
 
-`allow_no_indices` defaults to `true`. 
+```console
+GET logs/_search
+```
+
+`allow_no_indices` defaults to `true`.
+When set to `true`, the request succeeds and returns an empty result if it targets a missing resource.
+When set to `false`, the request returns an error if any wildcard expression, index alias, or `_all` value does not resolve to an existing resource.
+
+For example, if no indices match `logs*`, the following request returns an empty result because the default value is `true`:
+
+```console
+GET logs*/_search
+```
+
+##### Behavior with qualified and unqalified expression
+
+When you use a **qualified search expression**, the default behavior of `ignore_unavailable` and `allow_no_indices` outlined above applies independently to each qualified project.
+
+When you use an **unqalified search expression**, the behavior is different:
+
+* As long as the targeted resources exist in at least one of the searched projects, the request succeeds, even if `ignore_unavailable` or `allow_no_indices` are set to false.
+* The request returns an error only if:
+  * the targeted resources are missing from all searched projects, or
+  * a search expression explicitly targets a specific project and the resource is missing from that project.
+
+##### Examples
+
+You have three linked projects: `origin`, `project1`, and `project2`.
+Resources:
+
+* `origin` has a `logs` index
+* `project1` has a `metrics` index
+* `project2` has a `books` index
+
+**The following request returns**, even with `ignore_unavailable=false`:
+
+```console
+GET logs,metrics/_search?ignore_unavailable=false`
+```
+
+Although `logs` is not present in `project2` and `metrics` is not present in `origin`, each index exists in at least one searched project, so the request succeeds.
+
+If the projects have the following resources, however:
+
+* `origin` has a `metrics` index
+* `project1` has a `metrics` index
+* `project2` has a `books` index
+
+**The following request returns an error**:
+
+```console
+GET logs,metrics/_search?ignore_unavailable=false
+```
+
+In this case, the `logs` index does not exist in any of the searched projects, so the request fails.
+
+In the next example, the request combines qualified and unqalified index expressions.
+Resources:
+
+* `origin` has a `logs` index
+* `project1` has a `metrics` index
+* `project2` has a `books` index
+
+**The following request returns an error**:
+
+```console
+GET logs,project2:metrics/_search?ignore_unavailable=false
+```
+
+Because the request explicitly targets `project2` for the `metrics` index and `ignore_unavailable` is set to `false`, the entire request returns an error, even though the `logs` index exists in one of the projects.
+
+Refer to [the examples section](#cps-examples) for more.
 
 ## Tags
+
+
 
 ## Security
 
