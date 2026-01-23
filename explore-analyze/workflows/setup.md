@@ -22,7 +22,7 @@ The **Workflows** page displays in the main navigation menu and you can search f
 
 ## Manage access to workflows [workflows-role-access]
 
-Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). Ensure users have the appropriate roles assigned to create, edit, run, and manage workflows.
+Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). The following table describes privileges required to create, edit, run, and manage workflows.
 
 | Action | Required privilege |
 |--------|-------------------|
