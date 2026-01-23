@@ -29,6 +29,7 @@ Use the following parameters to configure an `if` step:
 | `else` | No | An array of steps to execute if the condition is false |
 
 The `condition` field supports the following expression types:
+
 * [Boolean expressions](#boolean-expressions)
 * [KQL expressions](#kql-expressions)
 
@@ -44,6 +45,9 @@ steps:
     steps:
       - name: process-enabled
         type: http
+    else:
+      - name: log-disabled
+        type: console
 ```
 
 If the expression evaluates to `undefined`, it defaults to `false`.
@@ -73,6 +77,7 @@ condition: "status: active"
 condition: "user.role: admin"
 condition: "isActive: true"
 condition: "count: 42"
+condition: "users[0].name: Alice"  # Array index access
 ```
 
 #### Range operators
@@ -92,23 +97,25 @@ condition: "fieldName:*"        # Field exists
 condition: "user.name: John*"   # Starts with
 condition: "user.name: *Doe"    # Ends with
 condition: "txt: *ipsum*"       # Contains
+condition: "user.name: J*n Doe" # Pattern
 ```
 
 #### Logical operators
 
 ```yaml
-condition: "status: active and isEnabled: true"
-condition: "status: active or status: pending"
-condition: "not status: inactive"
-condition: "status: active and (role: admin or role: moderator)"
+condition: "status: active and isEnabled: true"             # AND
+condition: "status: active or status: pending"              # OR
+condition: "not status: inactive"                           # NOT
+condition: "status: active and (role: admin or role: moderator)"  # Nested
 ```
 
 #### Property path access
 
 ```yaml
-condition: "user.info.name: John Doe"                        # Nested property
-condition: "steps.fetchData.output.status: completed"        # Step output
-condition: "users[0].name: Alice"                            # Array index
+condition: "user.info.name: John Doe"            # Nested property
+condition: "steps.fetchData.output.status: completed"  # Deep nesting
+condition: "users[0].name: Alice"                # Array access
+condition: "users.0.name: Alice"                 # Alternative syntax
 ```
 
 ### Example: Check severity
@@ -137,6 +144,7 @@ steps:
 This example checks the number of search results and processes them differently based on the count:
 
 ```yaml
+name: National Parks Conditional Processing
 steps:
   - name: searchParks
     type: elasticsearch.search
@@ -160,7 +168,7 @@ steps:
       - name: handleSmallDataset
         type: console
         with:
-          message: "Only {{ steps.searchParks.output.hits.total.value }} parks found"
+          message: "Only {{ steps.searchParks.output.hits.total.value }} parks found - manual review needed"
 ```
 
 ### Example: Complex KQL condition
@@ -169,12 +177,10 @@ This example uses multiple logical operators to check a combination of condition
 
 ```yaml
 steps:
-  - name: check-authorization
+  - name: check-complex
     type: if
     condition: "status: active and (count >= 100 or role: admin)"
     steps:
       - name: process-authorized
         type: http
-        with:
-          url: "https://api.example.com/process"
 ```
