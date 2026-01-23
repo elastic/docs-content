@@ -218,7 +218,7 @@ triggers:
 ```
 
 * **Step type**: This is an action step that directly interacts with {{es}}.
-* **Step purpose**: Establishes the data structure for our park information, ensuring fields are properly typed for searching and aggregation.
+* **Step purpose**: Establishes the data structure for the park information, ensuring fields are properly typed for searching and aggregation.
 * **Key elements**:
     * Uses `elasticsearch.indices.create`, which is a built-in action that maps to the {{es}} Create Index API.
     * Defines mappings to control how data is indexed (`text` for full-text search, `keyword` for exact matching).
