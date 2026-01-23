@@ -24,7 +24,6 @@ Before you can use EIS with your self-managed cluster, ensure you meet the follo
 
 ## Set up EIS with Cloud Connect
 
-To set up EIS for your self-managed cluster with Cloud Connect:
 
 :::::::{stepper}
 ::::::{step} Open Cloud Connect
