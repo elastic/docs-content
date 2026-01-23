@@ -23,6 +23,12 @@ A snapshot is a backup of a running {{es}} cluster. You can use snapshots to:
 - Transfer data between clusters
 - Reduce storage costs by using **[searchable snapshots](snapshot-and-restore/searchable-snapshots.md)** in the cold and frozen data tiers
 
+::::{important}
+Snapshots preserve more than your data. They also include the configuration and internal data of {{stack}} features, such as {{ilm-init}} policies, index templates and pipelines, {{kib}} saved objects, alerting rules, {{fleet}} settings and integrations, {{elastic-sec}} data, and more, depending on your use case.
+
+Consider using snapshots to back up, at minimum, all {{es}} system indices and the cluster state, even if your data can be reindexed or recovered from other external sources. Without these backups, a disaster recovery scenario can result in the loss of your stack configuration and feature states, even if the underlying data can be restored.
+::::
+
 ## Snapshot workflow
 
 {{es}} stores snapshots in an off-cluster storage location called a **snapshot repository**. Before you can take or restore snapshots, you must [register a snapshot repository](snapshot-and-restore/self-managed.md#manage-snapshot-repos) on the cluster. {{es}} supports different repository types depending on your deployment type:
@@ -101,7 +107,7 @@ Snapshots don’t contain or back up:
 
 ### Feature states [feature-state]
 
-A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **{{es}} security** or **Kibana**. To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
+A feature state contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as {{es}} security, {{kib}}, {{fleet}}, or {{watcher}}. To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
 
 ```console
 GET /_features

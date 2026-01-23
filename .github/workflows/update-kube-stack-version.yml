@@ -37,7 +37,7 @@ jobs:
       id: update-script
       run: |
         echo "Running version update script (kube-stack-version and helm-version)..."
-        python scripts/update_kube_stack_version.py
+        python .github/scripts/update_kube_stack_version.py
         echo "Script completed successfully"
 
     - name: Check for changes
