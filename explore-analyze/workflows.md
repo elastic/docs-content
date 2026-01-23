@@ -102,4 +102,4 @@ steps:
 ## Learn more
 
 - To create and run your first workflow, refer to [](/explore-analyze/workflows/get-started.md).
-% - Understand how to use the YAML editor in {{kib}} to define and run your workflows. Refer to [](/explore-analyze/workflows/create-workflows.md) to learn more.
+- Understand how to use the YAML editor in {{kib}} to define and run your workflows. Refer to [](/explore-analyze/workflows/author-workflows.md) to learn more.
