@@ -1,9 +1,9 @@
-name: Sync Google Sheets to CSV (Keyless Auth)
+name: Sync Google Sheets to CSV
 
 on:
   # Scheduled trigger - daily at 2 AM UTC
-  schedule:
-    - cron: '0 2 * * *'
+  # schedule:
+  #   - cron: '0 2 * * *'
 
   # Manual trigger
   workflow_dispatch:
