@@ -15,7 +15,7 @@ Triggers also provide initial context to the workflow. For example, a workflow t
 
 ## Trigger types
 
-The following trigger types are available:
+The following types of triggers are available:
 
 ### Manual triggers
 
@@ -60,7 +60,7 @@ triggers:
 
 ### Alert triggers
 
-Alert triggers run workflows in response to {{kib}} alerts. When a detection or alerting rule generates an alert, the workflow receives the alert context, including all alert fields and values.
+Alert triggers run workflows automatically when a detection or alerting rule generates an alert. The workflow receives the full alert context, including all fields and values.
 
 Use alert triggers for:
 

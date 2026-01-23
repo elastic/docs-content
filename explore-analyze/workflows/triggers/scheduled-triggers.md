@@ -16,7 +16,7 @@ You can configure scheduled triggers using:
 
 ## Interval-based scheduling
 
-Interval-based scheduling runs a workflow repeatedly at a fixed interval, such as daily or weekly.
+Interval-based scheduling runs a workflow repeatedly at a fixed interval.
 
 The following example shows the basic syntax for an interval-based scheduled trigger:
 

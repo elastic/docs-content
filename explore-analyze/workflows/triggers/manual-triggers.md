@@ -9,7 +9,7 @@ description: Understand manual triggers and how to create and configure them.
 
 Manual triggers run workflows on-demand through the UI or API. They require explicit user action to start a workflow. Use manual triggers for testing, one-off tasks, administrative actions, or workflows that require a human decision to start.
 
-The following example shows the basic syntax for a manual trigger:
+To define a manual trigger, use the following syntax:
 
 ```yaml
 triggers:
@@ -19,11 +19,11 @@ triggers:
 This allows you to run a workflow manually by:
 
 * Clicking **Run** in the Workflows UI
-* Calling the workflow execution API, either directly or from external systems
+* Calling the workflow execution API, either directly or from an external system
 
 ## Input parameters
 
-Manual triggers can accept input parameters that are available throughout the workflow execution. Define inputs at the workflow level to prompt users for values when they run the workflow.
+Manual triggers can accept input parameters, which you can reference in any step. When you define inputs at the workflow level, users are prompted to provide values when they run the workflow.
 
 ```yaml
 name: Manual Processing Workflow
