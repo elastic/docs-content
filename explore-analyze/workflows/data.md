@@ -32,7 +32,7 @@ steps.<step_name>.error
 This workflow demonstrates a common pattern: searching for data in one step and using the results in a later step.
 
 ```yaml
-name: Create Case for a Specific User
+name: Create case for a specific user
 steps:
   - name: find_user_by_id
     type: elasticsearch.search
