@@ -3,8 +3,11 @@ navigation_title: Elastic Inference Service (EIS)
 applies_to:
   stack: ga
   serverless: ga
-  deployment:
-    self: unavailable
+products:
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Use Elastic Inference Service (EIS) to run inference for search, embeddings, and chat without deploying models in your environment.
 ---
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
@@ -12,6 +15,8 @@ applies_to:
 Elastic {{infer-cap}} Service (EIS) enables you to leverage AI-powered search as a service without deploying a model in your environment.
 With EIS, you don't need to manage the infrastructure and resources required for {{ml}} {{infer}} by adding, configuring, and scaling {{ml}} nodes.
 Instead, you can use {{ml}} models for ingest, search, and chat independently of your {{es}} infrastructure.
+
+{applies_to}`stack: ga 9.3` You can use EIS with your [self-managed](/deploy-manage/deploy/self-managed.md) cluster through Cloud Connect. For details, refer to [EIS for self-managed clusters](connect-self-managed-cluster-to-eis.md). 
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
@@ -23,10 +28,9 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## Region and hosting [eis-regions]
 
-Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
-The request routing does not restrict the location of your deployments.
+Elastic {{infer-cap}} Service is currently available in a single region: {{aws}} `us-east-1`. All {{infer}} requests sent through EIS are routed to this region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
 
-ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure, GCP, and more regions, we will automatically route requests to the same CSP and the closest region where the {{es}} cluster is hosted.
+Depending on the model being used, request processing may involve Elastic {{infer}} infrastructure and, in some cases, trusted third-party model providers. For example, ELSER requests are processed entirely within Elastic {{infer}} infrastructure in {{aws}} `us-east-1`. Other models, such as large language models or third-party embedding models, may involve additional processing by their respective model providers, which can operate in different cloud platforms or regions.
 
 ## ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
@@ -76,7 +80,8 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 
 | Model                 | Request/minute  | Tokens/minute (ingest)  | Tokens/minute (search)  | Notes                    |
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
-| Claude Sonnet 3.7     | 400             | -                       | -                       | No rate limit on tokens  |
+| Claude Sonnet 3.7 {applies_to}`stack: ga 9.3+`  | 400             | -                       | -                       | No rate limit on tokens  |
+| Elastic Managed LLM {applies_to}`stack: ga 9.0-9.2`   | 400             | -                       | -                       | No rate limit on tokens. Renamed to *Claude Sonnet 3.7* in later versions  |
 | Claude Sonnet 4.5     | 400             | -                       | -                       | No rate limit on tokens  |
 | ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | `jina-embeddings-v3`  | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |

@@ -1,11 +1,14 @@
 ---
 navigation_title: "ES|QL tools"
 applies_to:
-  stack: preview 9.2
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 
@@ -63,7 +66,8 @@ FROM books
 
 You can ask the LLM to infer the parameters for the query or add them manually.
 
-:::{image} ../images/create-esql-tool-query.png 
+:::{image} ../images/create-esql-tool-query.png
+:screenshot:
 :alt: Creating an ES|QL tool with a parameterized query
 :::
 

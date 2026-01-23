@@ -292,7 +292,7 @@ def main():
         
         # Get the script directory and project root
         script_dir = Path(__file__).parent
-        project_root = script_dir.parent
+        project_root = script_dir.parent.parent
         docset_path = project_root / "docset.yml"
         
         # Verify docset.yml exists
