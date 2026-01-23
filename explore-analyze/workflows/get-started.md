@@ -163,7 +163,7 @@ To examine past executions:
 
 ## Understand what happened
 
-Let's examine each part of our first workflow to understand how it works.
+Let's examine each part of the workflow to understand how it works.
 
 ### Workflow metadata
 
