@@ -58,7 +58,7 @@ consts:
     backup: "https://backup.example.com"
 
 # ═══════════════════════════════════════════════════════════════
-# INPUTS - Parameters passed when workflow is triggered
+# INPUTS - Parameters passed when the workflow is triggered
 # ═══════════════════════════════════════════════════════════════
 inputs:
   - name: environment
