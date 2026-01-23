@@ -3,11 +3,11 @@ navigation_title: Elastic Inference Service (EIS)
 applies_to:
   stack: ga
   serverless: ga
-  deployment:
 products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Use Elastic Inference Service (EIS) to run inference for search, embeddings, and chat without deploying models in your environment.
 ---
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
