@@ -108,7 +108,7 @@ We write docs in Markdown. Refer to our [syntax quick reference](syntax-quick-re
 
 This documentation is **cumulative**. This means that a new set of docs is not published for every minor release. Instead, each page stays valid over time and incorporates version-specific changes directly within the content. [Learn how to write cumulative documentation](how-to/cumulative-docs/index.md).
 
-:::{include} _snippets-contribute/tagged-warning.md
+:::{include} _snippets/tagged-warning.md
 :::
 
 ## Build the docs
