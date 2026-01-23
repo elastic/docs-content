@@ -18,7 +18,7 @@ products:
 
 The Federal Information Processing Standard (FIPS) Publication 140, titled "Security Requirements for Cryptographic Modules" is a U.S. government computer security standard used to approve cryptographic modules. FIPS 140-2 and its successor FIPS 140-3 define the security requirements that cryptographic modules must meet.
 
-- {{es}} can run in a JVM configured with a FIPS-certified security provider, and supports the following FIPS compliant modes:
+- [{{es}}](/deploy-manage/security/fips-es.md) can run in a JVM configured with a FIPS-certified security provider, and supports the following FIPS compliant modes:
   * FIPS 140-2 
   * {applies_to}`stack: ga 9.4+` FIPS 140-3
 - [{{kib}}](/deploy-manage/security/fips-kib.md) offers a FIPS 140-2 compliant mode and as such can run in a Node.js environment configured with a FIPS 140-2 compliant OpenSSL3 provider.
