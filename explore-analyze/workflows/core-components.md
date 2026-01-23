@@ -15,7 +15,7 @@ Triggers define _when_ a workflow runs. A trigger is an event or condition that 
 
 Examples of triggers include:
 
-* A user initiates a workflow on-demand
+* A user runs a workflow manually
 * A specific time or interval is reached
 * A detection alert is generated
 
