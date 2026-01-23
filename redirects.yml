@@ -660,4 +660,7 @@ redirects:
     to: 'explore-analyze/visualize/charts/tables.md'
     anchors:
       'create-custom-tables': 'build-tables-with-kibana'
-
+  'explore-analyze/visualize/lens.md':
+    to: 'explore-analyze/visualize/charts/metric-charts.md'
+    anchors:
+      'metric-trends': 'build-metric-charts-with-kibana'
