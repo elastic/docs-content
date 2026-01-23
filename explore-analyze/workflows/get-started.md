@@ -28,7 +28,6 @@ To access the **Workflows** page, find **Workflows** in the navigation menu or u
 
 Click **Create a new workflow**. The YAML editor opens.
 
-<!-- TODO: Add screenshot of YAML editor interface -->
 
 ::::
 
