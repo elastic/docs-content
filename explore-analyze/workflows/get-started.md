@@ -7,7 +7,7 @@ description: Learn how to get started creating Elastic workflows.
 
 # Get started with workflows [workflows-get-started]
 
-In this tutorial, you'll create a workflow that indexes and searches through national parks data, demonstrating the core concepts and capabilities of workflows along the way.
+In this tutorial, you'll create a workflow that indexes and searches through national parks data. Along the way, you’ll learn the core concepts and capabilities of workflows.
 
 ## Prerequisites [workflows-prerequisites]
 
