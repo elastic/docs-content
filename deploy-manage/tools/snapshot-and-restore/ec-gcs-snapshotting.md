@@ -11,7 +11,7 @@ products:
 navigation_title: Google Cloud Storage
 ---
 
-# Configure a GCS snapshot repository in {{ech}}
+# Configure a GCS snapshot repository in ECH and ECE
 
 Configure a custom snapshot repository using your Google Cloud Storage account.
 

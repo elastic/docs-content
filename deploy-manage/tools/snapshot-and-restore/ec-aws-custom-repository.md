@@ -12,7 +12,7 @@ products:
 navigation_title: AWS S3
 ---
 
-# Configure an AWS S3 snapshot repository in {{ech}} [ec-aws-custom-repository]
+# Configure an AWS S3 snapshot repository in ECH and ECE [ec-aws-custom-repository]
 
 Configure a custom snapshot repository using an S3 storage bucket in your AWS account.
 

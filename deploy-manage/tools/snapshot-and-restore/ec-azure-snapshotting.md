@@ -11,7 +11,7 @@ products:
 navigation_title: Azure Blob Storage
 ---
 
-# Configure an Azure Blob Storage snapshot repository in {{ech}} [ec-azure-snapshotting]
+# Configure an Azure Blob Storage snapshot repository in ECH and ECE [ec-azure-snapshotting]
 
 Configure a custom snapshot repository using your Azure Blob Storage account.
 
