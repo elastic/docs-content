@@ -28,23 +28,37 @@ However, searches initiated from a linked project do not run against the origin 
 
 You can link projects by using the Cloud UI.
 
-%%TODO: screenshot%%
+<!--
+TODO: screenshot
+-->
 
 1. On the home screen, select the project you want to use as the origin project and click **Manage**.
 2. Click **Configure** on the **{{cps-cap}}** tile. Or click **{{cps-cap}}** in the left-hand navigation.
 3. Click **Link projects**.
 4. Select the project you want to link from the project list.
 
-%%TODO: screenshot%%
+<!--
+TODO: screenshot
+-->
 
 5. Click **Review and save**.
 6. Review the selected projects. If you are satisfied, click **Save**. You can also view and copy the corresponding API request by clicking **View API request**.
 
-%%TODO: screenshot%%
+<!--
+TODO: screenshot
+-->
 
 Your configuration is saved, a page with the list of linked projects opens.
 
 ## Search in {{cps-init}}
+
+This section explains how search works in {{cps-init}}, including:
+
+* how **flat-world search** operates across origin and linked projects
+* **qualified and unqualified search expressions**, and how they control search scope
+* how **index resolution** works across the merged project view
+* how search options such as `ignore_unavailable`, `allow_no_indices`, and `allow_partial_search_results` behave in {{cps-init}}
+* common edge cases and examples involving mixed qualified and unqualified expressions
 
 ### Flat-world search
 
@@ -59,7 +73,7 @@ GET logs/_search
 For each linked project, the search runs only if an index named `logs` exists.
 If a linked project does not have a `logs` index, that project is skipped and the search continues without returning an error.
 
-### Unqualified and qalified search expressions
+### Unqualified and qualified search expressions
 
 {{cps-cap}} supports two types of search expressions: unqualified and qualified search expressions. The difference between them determines where a search request runs.
 
@@ -91,12 +105,12 @@ In {{cps}}, when projects are linked to an origin project, all of their searchab
 
 As a result, unqualified searches treat linked projects as part of one larger logical project, unless the search expression explicitly limits the scope.
 
-#### `ignore_unavaliable` and `allow_no_indices`
+#### `ignore_unavailable` and `allow_no_indices`
 
 The distinction between qualified and unqualified index expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied in {{cps}}.
 When you use an **unqualified** index expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
 
-`ignore_unavaliable` defaults to `false`.
+`ignore_unavailable` defaults to `false`.
 When set to `false`, the request returns an error if it targets a missing resource (such as an index or data stream).
 When set to `true`, missing resources are ignored and the request returns an empty result instead of an error.
 For example, if the `logs` index does not exist, the following request returns an error because the default value is `false`:
@@ -115,11 +129,11 @@ For example, if no indices match `logs*`, the following request returns an empty
 GET logs*/_search
 ```
 
-##### Behavior with qualified and unqalified expression
+##### Behavior with qualified and unqualified expression
 
 When you use a **qualified search expression**, the default behavior of `ignore_unavailable` and `allow_no_indices` outlined above applies independently to each qualified project.
 
-When you use an **unqalified search expression**, the behavior is different:
+When you use an **unqualified search expression**, the behavior is different:
 
 * As long as the targeted resources exist in at least one of the searched projects, the request succeeds, even if `ignore_unavailable` or `allow_no_indices` are set to false.
 * The request returns an error only if:
@@ -138,7 +152,7 @@ Resources:
 **The following request returns**, even with `ignore_unavailable=false`:
 
 ```console
-GET logs,metrics/_search?ignore_unavailable=false`
+GET logs,metrics/_search?ignore_unavailable=false
 ```
 
 Although `logs` is not present in `project2` and `metrics` is not present in `origin`, each index exists in at least one searched project, so the request succeeds.
@@ -157,7 +171,7 @@ GET logs,metrics/_search?ignore_unavailable=false
 
 In this case, the `logs` index does not exist in any of the searched projects, so the request fails.
 
-In the next example, the request combines qualified and unqalified index expressions.
+In the next example, the request combines qualified and unqualified index expressions.
 Resources:
 
 * `origin` has a `logs` index
@@ -174,13 +188,134 @@ Because the request explicitly targets `project2` for the `metrics` index and `i
 
 Refer to [the examples section](#cps-examples) for more.
 
+#### `allow_partial_search_results` in {{cps-init}}
+
+`allow_partial_search_results` defaults to `true`.
+When set to `true`, the request returns partial results if shard request timeouts or shard failures occur on either the origin project or any linked project.
+When set to `false`, the request returns an error and no partial results if shard request timeouts or shard failures occur on either the origin project or any linked project.
+<!--
+### System and hidden indices
+TODO
+-->
+
 ## Tags
 
+You can assign tags to projects and use them to control {{cps}} behavior. Tags are managed in the Elastic Cloud UI.
 
+With tags, you can:
+
+* target searches to specific projects based on tag values
+* include tag values in search or ES|QL results to identify which project each document came from
+* filter and aggregate results using project metadata tags
+
+The following tags are predefined:
+
+* `_alias`: the project alias
+* `_csp`: the cloud service provider
+* `_id`: the project identifier
+* `_organization`: the organization identifier
+* `_region`: the CPS region
+* `_type`: the project type (Observability, Search, Security)
+
+Predefined tags are always start with an underscore `_`.
+
+### Using tags in {{cps-init}}
+
+There are two ways to use tags in {{cps-init}}:
+
+* project routing
+* queries
+
+#### Project routing
+
+Project routing enables you to limit a search to a subset of connected projects (the origin project and its linked projects) based on tag values.
+When you use project routing, the routing decision is made before the search request is executed.
+Based on the specified tags, {{cps-init}} determines which projects the query is sent to, and the search is performed only on those projects.
+The `project_routing` parameter is available on all cross-project-enabled endpoints. Refer to the [](#cps-supported-apis) for a full list of endpoints.
+When you specify tags in the project_routing parameter, projects that do not match the specified tags are excluded from the search entirely. The query is never executed on those projects.
+
+For example, the following API request searches the `log` resource only on projects that have the `_alias:my_search_project` tag.
+
+```console
+GET logs/_search 
+{
+  "project_routing": "_alias:my_search_project"
+}
+```
+
+::::{important}
+Currently, project routing is only supported by the `_alias` tag.
+::::
+
+<!--
+Project routing supports prefix and suffix wildcards, boolean logic and groupings of terms. The tag syntax matches the Lucene syntax notation, including in ES|QL.
+For example:
+
+```console
+GET logs/_search
+{
+  project_routing="(_region:us-* AND _csp:aws) OR _csp:gcp"
+}
+```
+-->
+
+Refer to [the examples section](#cps-examples) for more.
+
+<!--
+Also link to the ES|QL CPS tutorial when it's available for more ES|QL examples.
+-->
+
+#### Using project tags in queries
+
+You can also use project tags within a search query. In this case, tags are treated as query-time metadata, not as routing criteria.
+You can explicitly request project tags to be included in search results. For both `_search` and ES|QL, you must request one or more tags to include them in the response.
+
+For example, with the `_search` endpoint:
+
+```console
+GET logs/_search
+{
+  "fields": ["*", "_project.mytag", "_project._region"]
+}
+```
+
+For example, with ES|QL:
+
+```console
+GET /_query
+{
+  "query": "FROM logs METADATA _project._csp, _project._region | ..."
+}
+```
+
+In both cases, the returned documents include the requested project metadata, which lets you identify which project each document originated from.
+
+You can also use project tags in queries to filter or aggregate search results.
+Unlike project routing, using tags inside a query does not affect which projects the query is sent to. The routing decision has already been made before the query is executed.
+When tags are used in queries, they act only as queryable metadata. They do not change search scope or limit execution to specific projects.
+For example, the following request aggregates results by cloud service provider:
+
+For example:
+
+```console
+GET foo/_search
+{
+ "query": { ... }
+ "aggs": {
+    "myagg": {
+      "terms": {
+        "field": "_project._csp"
+      }
+    }
+  }
+}
+```
 
 ## Security
 
-%%A high-level overview%%
+<!--
+A high-level overview
+-->
 
 ## Supported APIs [cps-supported-apis]
 
@@ -225,3 +360,16 @@ Each origin project can have up to 20 linked projects.
 A linked project can be associated with any number of origin projects.
 
 ## {{cps-cap}} examples [cps-examples]
+
+<!--
+Examples to include:
+
+* GET logs/_search
+* GET _origin:logs/_search
+* GET *:logs/_search
+* GET *:logs/_search?ignore_unavailable=false
+...
+* have example(s) of resuts
+* more complex project_routing examples
+* qualified search expressions and project_routing
+-->
