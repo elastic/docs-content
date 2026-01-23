@@ -249,7 +249,7 @@ config:
 tags: ["{{tag1}}", "{{tag2}}"]
 ```
 
-**After rendering:**
+**Rendered output:**
 
 ```yaml
 message: "Hello Alice"
