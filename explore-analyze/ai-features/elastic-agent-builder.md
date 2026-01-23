@@ -13,9 +13,9 @@ products:
 
 # {{agent-builder}}
 
-{{agent-builder}} is a set of AI-powered capabilities for developing and interacting with agents that work with your {{es}} data. Agent Builder simplifies building data-driven agents with intuitive UI and programmatic interfaces, so you don't have to compose the different pieces separately.
+{{agent-builder}} enables you to create AI agents grounded in your {{es}} data. It combines the power of large language models with Elastic-native features for prompt engineering, context engineering, and automation in one place, reducing the need to write and maintain custom application code.
 
-You can use the built-in agent for natural language conversations with any {{es}} data or instance, or work programmatically with tools, agents, and conversations using Elastic APIs, MCP, and A2A.
+Get started quickly with built-in agents, tools, and the chat UI, then extend with custom agents, custom tools, and programmatic interfaces for more advanced use cases.
 
 ::::{admonition} Agent Builder subscription requirements
 - {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
@@ -25,13 +25,14 @@ You can use the built-in agent for natural language conversations with any {{es}
 
 ## Key capabilities
 
-- **Interactive chat interface**: Ask questions about your {{es}} data using natural language in the Agent Chat UI.
-- **Agent-based architecture**: Configure AI-powered agents with customizable behaviors and tool access.
-- **Modular and extensible tools**: Extend your system with tools for {{es}} data access and manipulation.
-- **ES|QL integration**: Create and run [ES|QL](elasticsearch://reference/query-languages/esql.md)-powered tools for specialized data queries.
-- **MCP server**: Connect external MCP clients to access chat tools through a standardized interface.
-- **A2A server**: Enable agent-to-agent communication following the A2A protocol specification.
-- **Programmatic APIs**: Create, manage, and execute tools and agents through Kibana APIs.
+- **{{es}} relevance and security**: Leverage {{es}}'s search capabilities for precise context retrieval, with secure data access controls.
+- **Built-in agents and tools**: Get started immediately with pre-configured agents and tools available out of the box.
+- **Chat UI**: Chat with agents in real time using natural language.
+- **Custom and external tools**: Build targeted tools to deliver precise context, or connect external tools through the Model Context Protocol.
+ - **Custom agents**: Create agents with tailored instructions and toolsets for specific use cases.
+- **MCP and A2A servers**: Expose agents to external clients and enable agent-to-agent communication through standard protocols.
+- **Kibana REST APIs**: Work with  Agent Builder functionalities programmatically, including agents, tools, and conversations.
+- **Elastic Workflows integration**: Automate complex processes within your deployment using the Elastic-native automation engine. Your agents can trigger workflows and workflows can invoke agents in their steps.
 
 ## Key concepts
 
@@ -57,13 +58,13 @@ Tools are modular, reusable functions that agents use to search, retrieve, and m
 
 ## Get started
 
-To get started you need an Elastic deployment and you must enable the feature.
+To get started you need an Elastic deployment and you might need to enable the feature.
 
 [**Get started with {{agent-builder}}**](agent-builder/get-started.md)
 
 ## Model selection
 
-By default, agents use the Elastic Managed LLM, but you can configure other model providers using connectors, including local LLMs deployed on your infrastructure.
+By default, on {{ech}} and {{serverless-full}} agents use the Elastic Managed LLM, but you can configure other model providers using connectors, including local LLMs deployed on your infrastructure.
 
 [**Learn more about model selection**](agent-builder/models.md)
 
@@ -95,7 +96,7 @@ Find solutions to common problems when working with {{agent-builder}}.
 
 ## Limitations and known issues
 
-{{agent-builder}} is in technical preview.
+Understand current limitations and known issues with {{agent-builder}}.
 
 [**Learn more about limitations and known issues**](agent-builder/limitations-known-issues.md)
 
