@@ -224,90 +224,36 @@ Configure elements of your bar chart's legend. Configurable options include:
 The following examples show various configuration options that you can use for building impactful bar charts.
 
 
-**Monthly website traffic by source**
+**Weekly website traffic per region**
 :   Track website visits over time, broken down by traffic source:
 
-    * **Title**: "Monthly Website Traffic by Source"
+    * **Title**: "Weekly website traffic per region"
     * **Vertical axis**: `count()`
       * **Name**: "Page Views"
       * **Value format**: `Number`
-    * **Horizontal axis**: `date_histogram(timestamp, interval='1M')`
-      * **Name**: "Month"
-    * **Break down by**: `terms(traffic_source)`
-      * **Number of values**: `5`
-      * **Colors**: Custom palette (Organic=green, Paid=blue, Social=purple, Direct=orange, Referral=teal)
+    * **Horizontal axis**: `date_histogram(timestamp, interval='1w')`
+      * **Name**: "Week"
+    * **Break down by**: `geo.dest`
+      * **Number of values**: `9`
     * **Layout**: `Stacked`
-    * **Legend**: Right side, showing traffic source
+    * **Legend**: Right side, showing regions
 
-**Error rate by service (with threshold)**
-:   Monitor error rates across microservices with a target threshold line:
+![Stacked bar chart showing traffic per week broken down per region](/explore-analyze/images/weekly-website-traffic-per-region.png "=70%")
 
-    * **Title**: "Error Rate by Service"
-    * **Vertical axis**: `count(kql='log.level: "error"') / count() * 100`
+**Request error rate per host (with threshold)**
+:   Monitor error rates across hosts with a target threshold line:
+
+    * **Title**: "Request error rate per host"
+    * **Vertical axis**: `count(kql='response > "300"') / count()`
       * **Name**: "Error Rate %"
       * **Value format**: `Percent`
-      * **Color by value**: Dynamic coloring (green below 1%, yellow 1-5%, red above 5%)
     * **Horizontal axis**: `terms(service.name)`
-      * **Name**: "Service"
-      * **Number of values**: `15`
-      * **Sort by**: Error rate descending
-    * **Reference line**: Value `5` (5% threshold)
+      * **Name**: "Hosts"
+      * **Number of values**: `4`
+      * **Rank by**: Alphabetical
+    * **Reference line**: Value `0,10` (10% threshold)
       * **Label**: "Maximum acceptable error rate"
       * **Color**: Red, dashed line
     * **Layout**: Horizontal orientation (for better service name readability)
 
-**Resource usage comparison across regions**
-:   Compare CPU, memory, and disk usage across different geographic regions:
-
-    * **Title**: "Resource Usage by Region"
-    * **Vertical axis**: Multiple metrics:
-      * `average(cpu_usage_percent)` - Name: "CPU %"
-      * `average(memory_usage_percent)` - Name: "Memory %"
-      * `average(disk_usage_percent)` - Name: "Disk %"
-      * **Value format**: `Percent`
-    * **Horizontal axis**: `terms(cloud.region)`
-      * **Name**: "Region"
-      * **Number of values**: `8`
-    * **Layout**: `Clustered` (side by side)
-    * **Colors**: Different color for each metric
-    * **Legend**: Show at top with metric names
-
-**E-commerce conversion funnel**
-:   Display conversion rates at each stage of the purchase funnel:
-
-    * **Title**: "Conversion Funnel - Homepage to Purchase"
-    * **Vertical axis**: Custom formulas for each stage:
-      * `count(kql='page.name: "homepage"')` - 100%
-      * `count(kql='page.name: "product"')` - Product views
-      * `count(kql='page.name: "cart"')` - Add to cart
-      * `count(kql='event.type: "purchase"')` - Purchases
-    * **Horizontal axis**: `filters()` with custom labels:
-      * "Homepage Visits"
-      * "Product Views"
-      * "Added to Cart"
-      * "Completed Purchase"
-    * **Value format**: Show both count and percentage
-    * **Layout**: Basic bars with gradient colors (green to blue)
-    * **Sort**: Keep in funnel order (not by value)
-
-    ::::{tip}
-    Add value labels on bars showing both the count and the percentage drop-off from the previous stage to make conversion rates immediately visible.
-    ::::
-
-**Customer satisfaction scores by department**
-:   Show average satisfaction ratings for different departments with target line:
-
-    * **Title**: "Customer Satisfaction by Department (Q4 2024)"
-    * **Vertical axis**: `average(satisfaction_score)`
-      * **Name**: "Average Rating"
-      * **Value format**: `Number` with 1 decimal place
-      * **Axis bounds**: Custom (0 to 5)
-    * **Horizontal axis**: `terms(department)`
-      * **Name**: "Department"
-      * **Sort by**: Alphabetical
-    * **Break down by**: `terms(satisfaction_category)` with 3 values: "Promoter", "Passive", "Detractor"
-    * **Layout**: `Percentage mode` to show proportion of each rating category
-    * **Reference line**: Value `4.0` for target satisfaction score
-      * **Label**: "Target"
-      * **Color**: Green, solid line
-    * **Colors**: Promoter=green, Passive=yellow, Detractor=red
+![Bar chart with reference line showing traffic per week broken down per region](/explore-analyze/images/request-error-rate-per-host.png "=70%")
