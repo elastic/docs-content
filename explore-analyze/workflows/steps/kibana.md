@@ -31,7 +31,7 @@ steps:
     type: kibana.createCaseDefaultSpace
     with:
       title: "Suspicious Login Detected"
-      description: "Automated case created by workflow. Host '{{ event.host.name }}' exhibited unusual activity."
+      description: "Automated case created by workflow. Host '{{ event.alerts[0].host.name }}' exhibited unusual activity."
       tags: ["workflow", "automated-response"]
       severity: "critical"
       connector:
@@ -77,8 +77,7 @@ steps:
       method: POST
       path: /api/endpoint/action/unisolate
       body:
-        endpoints: 
-          - "{{ endpoint_id_value }}"
+        endpoint_ids: ["{{event.alerts[0].elastic.agent.id}}"]
         comment: "Unisolating endpoint as part of automated cleanup."
 ```
 

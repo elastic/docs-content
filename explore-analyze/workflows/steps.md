@@ -37,7 +37,6 @@ Flow control steps shape how a workflow moves. They control the order, structure
 * **Conditional logic**: Execute certain steps only when conditions are met
 * **Pauses and waits**: Introduce delays or time-based holds
 * **Early exits**: Skip or halt execution when needed
-* **Custom scripting**: Define custom logic that governs how the workflow progresses based on complex or non-standard conditions
 
 These steps make workflows dynamic and responsive, allowing them to adapt in real time to data and conditions.
 
