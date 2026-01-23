@@ -657,10 +657,13 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/4779
   'explore-analyze/visualize/lens.md':
-    to: 'explore-analyze/visualize/charts/tables.md'
-    anchors:
-      'create-custom-tables': 'build-tables-with-kibana'
-  'explore-analyze/visualize/lens.md':
-    to: 'explore-analyze/visualize/charts/metric-charts.md'
-    anchors:
-      'metric-trends': 'build-metric-charts-with-kibana'
+    to: 'explore-analyze/visualize/lens.md'
+    many:
+     - to: 'explore-analyze/visualize/charts/tables.md'
+       anchors:
+        'create-custom-tables': 'build-tables-with-kibana'
+
+     - to: 'explore-analyze/visualize/charts/metric-charts.md'
+       anchors:
+        'metric-trends': 'build-metric-charts-with-kibana'
+
