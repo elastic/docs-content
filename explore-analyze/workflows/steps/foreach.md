@@ -23,6 +23,8 @@ Use the following parameters to configure a `foreach` step:
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
+| `name` | Yes | Unique step identifier |
+| `type` | Yes | Step type - must be `foreach` |
 | `foreach` | Yes | An expression that evaluates to an array |
 | `steps` | Yes | An array of steps to execute for each iteration |
 

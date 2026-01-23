@@ -24,6 +24,8 @@ Use the following parameters to configure an `if` step:
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
+| `name` | Yes | Unique step identifier |
+| `type` | Yes | Step type - must be `if` |
 | `condition` | Yes | A boolean or KQL expression to evaluate |
 | `steps` | Yes | An array of steps to execute if the condition is true |
 | `else` | No | An array of steps to execute if the condition is false |
