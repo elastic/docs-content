@@ -191,8 +191,8 @@ By combining data flow, templating, and robust error handling, you can build com
 
 | Action | Syntax | Description |
 |---------|--------|-------------|
-| Step output | `steps.<step_name>.output` | Access the result of a previous step |
-| Step error | `steps.<step_name>.error` | Access error details from a failed step |
-| Retry on failure | `on-failure.retry` | Retry a failed step with optional delay |
-| Fallback steps | `on-failure.fallback` | Define recovery actions when a step fails |
-| Continue on failure | `on-failure.continue: true` | Allow the workflow to proceed after a failure |
+| Step output | `steps.<step_name>.output` | Access the result of a previous step. |
+| Step error | `steps.<step_name>.error` | Access error details from a failed step. |
+| Retry on failure | `on-failure.retry` | Retry a failed step with optional delay. |
+| Fallback steps | `on-failure.fallback` | Define recovery actions when a step fails. |
+| Continue on failure | `on-failure.continue: true` | Allow the workflow to proceed after a failure. |
