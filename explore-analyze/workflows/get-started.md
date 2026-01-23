@@ -247,7 +247,7 @@ triggers:
 * **Key elements**:
     * The `operations` array contains the documents to index.
     * Each document becomes a searchable record in {{es}}.
-    * Uses the field names defined in our mappings (`name`, `category`, `description`).
+    * Uses the field names defined in the mappings (`name`, `category`, `description`).
     * Each document becomes a searchable record with consistent field structure.
     * This step demonstrates how to handle batch operations in workflows.
 
