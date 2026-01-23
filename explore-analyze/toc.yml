@@ -42,6 +42,7 @@ toc:
     children:
       - file: elastic-inference/eis.md
         children:
+          - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
@@ -249,6 +250,8 @@ toc:
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
+          - hidden: visualize/charts/area-charts.md
+          - hidden: visualize/charts/metric-charts.md
           - hidden: visualize/charts/line-charts.md
           - hidden: visualize/charts/metric-charts.md
           - hidden: visualize/charts/tables.md
