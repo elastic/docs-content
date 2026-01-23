@@ -55,6 +55,16 @@ jobs:
         run: |
           python .github/scripts/sheet2docs/sync_sheet.py --config .github/scripts/sheet2docs/config.yml --verbose
 
+      - name: Get output path from config
+        id: get-output-path
+        run: |
+          CONFIG_FILE=".github/scripts/sheet2docs/config.yml"
+          OUTPUT_DIR=$(yq '.output.directory // "."' "$CONFIG_FILE")
+          OUTPUT_FILE=$(yq '.output.filename' "$CONFIG_FILE")
+          OUTPUT_PATH="${OUTPUT_DIR}/${OUTPUT_FILE}"
+          echo "csv_path=${OUTPUT_PATH}" >> "$GITHUB_OUTPUT"
+          echo "Output path: ${OUTPUT_PATH}"
+
       - name: Create Pull Request
         if: github.event.inputs.dry_run != 'true'
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
@@ -88,21 +98,22 @@ jobs:
 
             🤖 Automated update from [sync-sheets workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           add-paths: |
-            explore-analyze/elastic-inference/models.csv
+            ${{ steps.get-output-path.outputs.csv_path }}
 
       - name: Upload CSV artifact
         if: always()
         uses: actions/upload-artifact@v6
         with:
           name: generated-csv-${{ github.run_number }}
-          path: explore-analyze/elastic-inference/models.csv
+          path: ${{ steps.get-output-path.outputs.csv_path }}
           retention-days: 30
           if-no-files-found: warn
 
       - name: Generate job summary
         if: always()
+        env:
+          CSV_PATH: ${{ steps.get-output-path.outputs.csv_path }}
         run: |
-          CSV_PATH="explore-analyze/elastic-inference/models.csv"
           echo "## Sync Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
