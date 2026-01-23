@@ -654,3 +654,10 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/4438
   'explore-analyze/ai-features/ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md'
+
+# Related to https://github.com/elastic/docs-content/pull/4779
+  'explore-analyze/visualize/lens.md':
+    to: 'explore-analyze/visualize/charts/tables.md'
+    anchors:
+      'create-custom-tables': 'build-tables-with-kibana'
+

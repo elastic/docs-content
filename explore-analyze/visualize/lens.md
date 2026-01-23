@@ -27,11 +27,12 @@ Lens supports a wide range of visualization and analysis capabilities, including
 - Time shifts for period‑over‑period comparisons
 - Annotations and reference lines for contextual insights
 
-With Lens, you can create the following chart types:
+With Lens, you can create the following visualization types:
 
 - [Metric chart](/explore-analyze/visualize/charts/area-charts.md)
 - [Line chart](/explore-analyze/visualize/charts/line-charts.md)
 - [Area chart](/explore-analyze/visualize/charts/area-charts.md)
+- [Table](/explore-analyze/visualize/charts/tables.md)
 
 ## Create visualizations [create-the-visualization-panel]
 
@@ -85,31 +86,6 @@ Change the fields list to display a different {{data-source}}, different time ra
   ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](/explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png "")
   
   For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
-
-
-
-### Create custom tables [create-custom-tables]
-
-Tables are highly customizable, and provide you with text alignment, value formatting, coloring options, and more.
-
-1. From the **Visualization type** dropdown, select **Table**.
-2. Drag the fields you want to visualize to the workspace.
-3. To sort or hide the columns, click the arrow next to the column heading, then select an option.
-
-    All columns that belong to the same layer pane group are sorted in the table.
-
-4. To change the display options, click a **Metrics** field in the layer pane, then configure the following options:
-
-    * **Name** — Specifies the field display name.
-    * **Collapse by** — Aggregates all metric values with the same value into a single number.
-    * **Value format** — Specifies how the field value displays in the table.
-    * **Text alignment** — Aligns the values in the cell to the **Left**, **Center**, or **Right**.
-    * **Color by value** — Applies color to the cell or text values. To change the color, click the **Edit colors** icon.
-    * **Hide column** — Hides the column for the field.
-    * **Directly filter on click** — Turns column values into clickable links that allow you to filter or drill down into the data.
-    * **Summary row** — Adds a row that displays the summary value. When specified, allows you to enter a **Summary label**.
-
-
 
 ### Assign colors to terms [assign-colors-to-terms]
 ```{applies_to}
