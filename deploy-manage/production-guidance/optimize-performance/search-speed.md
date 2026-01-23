@@ -478,4 +478,4 @@ To check for `open_contexts`, poll the [node stats API]({{es-apis}}/operation/op
 GET _nodes/stats/indices/search
 ```
 
-This value can reflects high when [task queue backlog](/troubleshoot/elasticsearch/task-queue-backlog.md) reports a high amount of pending searches. Otherwise it frequently suggests [scroll search timeouts](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) are set high. You should [clear scrolls](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#clear-scroll) as soon as they're no longer needed to release the context retention.
+This value can be elevated when the [task queue backlog](/troubleshoot/elasticsearch/task-queue-backlog.md) reports a high amount of pending searches. If this is not the case, then your [scroll search timeouts](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) might be configured high. You should [clear scrolls](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#clear-scroll) as soon as they're no longer needed to release the context retention.
