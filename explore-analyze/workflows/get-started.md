@@ -243,7 +243,7 @@ triggers:
 ```
 
 * **Step type**: Another internal action step using {{es}}'s bulk API.
-* **Step purpose**: Efficiently loads multiple documents in a single operation, populating our index with sample data.
+* **Step purpose**: Efficiently loads multiple documents in a single operation, populating the index with sample data.
 * **Key elements**:
     * The `operations` array contains the documents to index.
     * Each document becomes a searchable record in {{es}}.
