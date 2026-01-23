@@ -71,6 +71,20 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 
 ::::
 
+## Manage Streams visibility [streams-space-privileges]
+```{applies_to}
+stack: ga 9.3+
+serverless: ga
+```
+
+You can set Streams visibility on a space-by-space basis by defining users' access to specific spaces. Refer to [Define access to a space](../../../deploy-manage/manage-spaces.md#spaces-control-user-access) for more information.
+
+Space settings only affect visibility. Set permissions to manage and edit Streams at the {{es}} level. Refer to [Required permissions](#streams-required-permissions) for more information.
+
+:::{note}
+Creating [significant events](./management/significant-events.md) requires access to the `default` space.
+:::
+
 ## Access Streams [streams-access]
 
 Open Streams from the following places in {{kib}}:
