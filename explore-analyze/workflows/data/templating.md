@@ -272,7 +272,7 @@ tags: ["admin", "user"]
 | Case | Behavior |
 |------|----------|
 | Null values | Returned as-is |
-| Undefined variables | Empty string in string syntax; `undefined` in type-preserving syntax |
+| Undefined variables | Returned as empty string in string syntax and as `undefined` in type-preserving syntax |
 | Missing context properties | Treated as undefined |
 
 ## Learn more
