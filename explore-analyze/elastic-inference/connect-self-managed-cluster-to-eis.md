@@ -6,7 +6,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
-description: Use Elastic Inference Service (EIS) with your self-managed, ECE, and ECK clusters thanks to Cloud Connect.
+description: Use Elastic Inference Service (EIS) with your self-managed, ECE, and ECK clusters through Cloud Connect.
 ---
 
 # EIS for self-managed clusters
