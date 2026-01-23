@@ -31,7 +31,7 @@ url: "https://api.example.com/users/{{user.id}}"      # Result: "https://api.exa
 
 ### Type-preserving expressions [workflows-type-preserving]
 
-Use the dollar-sign prefix (`${{ }}`) when you need to preserve the original data type (array, object, number, boolean) instead of converting the result to a string.
+Use the dollar-sign prefix (`${{ }}`) when you need to preserve the original data type (array, object, number, boolean).
 
 ```yaml
 # String syntax - converts to string
