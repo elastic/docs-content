@@ -49,7 +49,7 @@ Copy the Cloud Connect API key, paste it into your self-managed cluster's Cloud 
 ::::::
 
 ::::::{step} Enable Elastic Inference Service
-On the **Cloud connected services** page, click **Connect** for Elastic {{infer}} Service.
+On the **Cloud connected services** page, click **Connect** for Elastic {{infer-cap}} Service.
 
 :::{image} /explore-analyze/images/eis-cloud-connect-connect-ui.png
 :screenshot:
