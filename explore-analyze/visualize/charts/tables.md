@@ -74,10 +74,6 @@ Refer to [](#settings) for a complete list of options.
 
 :::::
 
-::::{tip}
-As an alternative, you can also create tables using {{esql}} queries, which gives you full control over data transformations before visualization. For example, you can use `EVAL` and `CASE` to add emoji status indicators to your tables. Refer to [Use emojis in table visualizations](../esorql.md#esql-table-emojis) for a step-by-step example.
-::::
-
 ## Advanced table scenarios
 
 ### Create pivot tables
@@ -114,6 +110,11 @@ To add a formula to a table:
 4. Customize the column name and formatting.
 
 Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for formula examples, including time-shifting comparisons and mathematical operations, and the {icon}`documentation` **Formula reference** available from Lens.
+
+### Use emojis in tables [esql-table-emojis]
+
+:::{include} ../_snippets/emoji-table-esql.md
+:::
 
 
 ## Table settings [settings]
