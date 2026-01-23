@@ -277,5 +277,5 @@ tags: ["admin", "user"]
 
 ## Learn more
 
-- [Liquid Templating Language](https://shopify.github.io/liquid/)
-- [LiquidJS Documentation](https://liquidjs.com/)
+- [Liquid templating language](https://shopify.github.io/liquid/)
+- [LiquidJS documentation](https://liquidjs.com/)
