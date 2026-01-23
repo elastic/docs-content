@@ -73,7 +73,5 @@ After creating your workflow, configure your alert rule to trigger it.
 
 :::::
 
-
-
 When the configured rule generates an alert, your workflow automatically executes with the alert context.
 
