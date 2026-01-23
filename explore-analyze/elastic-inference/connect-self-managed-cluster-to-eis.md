@@ -66,7 +66,7 @@ After you connect Elastic {{infer-cap}} Service through Cloud Connect, {{es}} au
 
 ## Test EIS through Cloud Connect with semantic search
 
-In this example, you’ll create an index with a `semantic_text` field, index a document, then run a query that returns a semantically related match. 
+In this example, you create an index with a `semantic_text` field, index a document, then run a query that returns a semantically related match. 
 
 In **{{dev-tools-app}}**, run the following requests:
 
