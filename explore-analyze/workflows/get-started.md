@@ -198,7 +198,7 @@ triggers:
 ```
 
 * **`triggers`**: Defines how the workflow starts.
-* **`manual`**: Specifies the trigger type. Manual triggers require explicit user action (clicking the **Run** icon {icon}`play`) to start a workflow.
+* **`type`**: Specifies the trigger type. Manual triggers require explicit user action (clicking the **Run** icon {icon}`play`) to start a workflow.
 
 ### Step 1: Create index
 
