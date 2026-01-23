@@ -186,6 +186,10 @@ When creating or editing a visualization, you can customize several appearance o
     - **Axis scale**: Select linear (default), log, or square-root scaling. Even though this is the bottom axis, it matters for horizontal bar charts or numeric bucketed X-axes.
     - **Bounds & rounding**: Manually clamp the axis to a min/max or let Lens round to nice intervals. For numeric histograms this also controls whether “nice” bucket labels are used.
 
+    :::{note}
+    Bottom axis and Left axis options can interchange depending on the orientation you selected for the bar chart.
+    :::
+
 **Left axis**
 :   Left-axis controls for Lens bar charts let you tune how the vertical scale looks and behaves. Key options are:
     - **Title**: Set the label that appears under the axis (for example “Date”); you can hide the label entirely if the layout is tight. 
