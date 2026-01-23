@@ -151,7 +151,7 @@ The response should include the indexed document:
 
 ## Regions and billing
 
-For information about EIS regions and request routing, refer to the [Region and hosting](eis.md#eis-regions).
+For information about EIS regions and request routing, refer to [Region and hosting](eis.md#eis-regions).
 
 EIS is billed per million tokens. For details on pricing and usage tracking, refer to [Pricing](eis.md#pricing) and [Monitor your token usage](eis.md#monitor-your-token-usage).
 
