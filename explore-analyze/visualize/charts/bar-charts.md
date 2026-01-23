@@ -14,7 +14,7 @@ They work with any type of data: numeric values, counts, averages, or calculatio
 
 You can create bar charts in {{kib}} using [**Lens**](../lens.md "title =70%").
 
-![Bar chart showing sales by category with different layouts](../../images/bar-chart.png)
+![Bar chart showing sales by category with different layouts](../../images/stacked-bar-chart.png)
 
 ## Build a bar chart
 
