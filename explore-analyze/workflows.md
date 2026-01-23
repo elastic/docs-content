@@ -20,7 +20,7 @@ Workflows address common operational challenges, such as:
 * **Manual, repetitive work**: Automate routine tasks consistently.
 * **Tool fragmentation**: Eliminate the need to add on external automation tools.
 
-Workflows can handle everything from simple, repeatable tasks to complex processes.
+Workflows can handle a wide range of tasks, from simple, repeatable steps to complex processes.
 
 ## Who should use workflows? [workflows-who]
 Workflows are for anyone who wants to cut down on manual effort, speed up response times, and make sure recurring situations are handled the same way every time.
