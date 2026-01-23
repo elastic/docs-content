@@ -11,7 +11,7 @@ A workflow is a defined sequence of steps designed to achieve a specific outcome
 
 ## Why use workflows? [workflows-why]
 
-Insights on your data isn't enough. The ultimate value lies in action and outcomes. Workflows complete the journey from data to insight to automated outcomes. Your critical operational data already lives in Elastic: security events, infrastructure metrics, application logs, and business context. Workflows let you automate end-to-end outcomes directly where that data lives, without needing external automation tools.
+Insight into your data isn't enough. The ultimate value lies in action and outcomes. Workflows complete the journey from data to insights to automated outcomes. Your critical operational data already lives in the Elastic cluster: security events, infrastructure metrics, application logs, and business context. Workflows let you automate end-to-end processes to achieve outcomes directly where that data lives, without needing external automation tools.
 
 Workflows address common operational challenges, such as:
 
