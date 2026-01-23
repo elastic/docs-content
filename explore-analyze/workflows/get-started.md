@@ -142,7 +142,7 @@ Click the **Run** icon {icon}`play` (next to **Save**) to execute your workflow.
 As your workflow runs, execution logs display in a panel next to your workflow. In the panel, you can find:
 
 * **Real-time execution logs**: Each step appears as it executes.
-* **Step status indicators**: Green checkmarks for success, timestamps for duration.
+* **Worfklow status indicators**: Green for success, red for failures, and timestamps for duration.
 * **Expandable step details**: Click any step to see input, output, and timeline.
 
 ::::
