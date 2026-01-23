@@ -1,10 +1,14 @@
-When you build a table with {{esql}}, query results can include emoji characters, which means you can use them in your visualizations. Combined with `EVAL` and `CASE` functions, this opens up options like mapping values to colored status indicators (🟢, 🟠, 🔴), adding visual labels, or highlighting specific categories.
+{{esql}} query results can include emoji characters, which means you can use them in your {{esql}} visualizations. Combined with `EVAL` and `CASE` functions, this opens up options like mapping values to colored status indicators (🟢, 🟠, 🔴), adding visual labels, or highlighting specific categories.
 
 This example uses the {{kib}} sample web logs data to build a status table that shows the success rate per host, with a colored status indicator.
 
 :::{image} /explore-analyze/images/esql-table-emoji.png
 :alt: Table visualization showing success rate per host with emoji status indicators
 :screenshot:
+:::
+
+:::{tip} - Emojis aren't limited to tables
+Because they're part of the query results, you can use them in any visualization type that displays text fields, such as bar charts with emoji labels or metric panels with status indicators.
 :::
 
 Before you begin, ensure you have the sample web logs data installed. In {{kib}}, go to **{{integrations}}** and search for **Sample data**. On the **Sample data** page, expand the **Other sample data sets** section and add **Sample web logs**.
@@ -51,6 +55,4 @@ To create the visualization:
 
 6. Optionally, once the panel is saved, select the panel title to give it a meaningful name like `Status per host`.
 
-Emojis aren't limited to tables. Because they're part of the query results, you can use them in any visualization type that displays text fields, such as bar charts with emoji labels or metric panels with status indicators.
-
-Once you have your visualization working, you can add [controls](../dashboards/add-controls.md#add-variable-control) to filter by host or time range, use [LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) to enrich your data with metadata from other indices, or create [alerts](../alerts-cases/alerts/rule-type-es-query.md) based on the same query to get notified when status changes.
+Once you have your visualization working, you can add [controls](/explore-analyze/dashboards/add-controls.md#add-variable-control) to filter by host or time range, use [LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) to enrich your data with metadata from other indices, or create [alerts](/explore-analyze/alerts-cases/alerts/rule-type-es-query.md) based on the same query to get notified when status changes.
