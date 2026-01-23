@@ -36,6 +36,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Does AutoOps for self-managed clusters incur additional costs?](#additional-payment)
 * [Does shipping metrics data to {{ecloud}} incur additional costs?](#autoops-metrics-cost)
 * [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
+* []
 
 **Setting up AutoOps for self-managed clusters**
 * [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
