@@ -111,6 +111,11 @@ To add a formula to a table:
 
 Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for formula examples, including time-shifting comparisons and mathematical operations, and the {icon}`documentation` **Formula reference** available from Lens.
 
+### Use emojis in tables [esql-table-emojis]
+
+:::{include} ../_snippets/emoji-table-esql.md
+:::
+
 
 ## Table settings [settings]
 

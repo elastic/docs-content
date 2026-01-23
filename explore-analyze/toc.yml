@@ -193,6 +193,10 @@ toc:
                - file: ai-features/agent-builder/mcp-server.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
+          - file: ai-features/agent-builder/troubleshooting.md
+            children:
+              - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
+              - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
           - file: ai-features/agent-builder/limitations-known-issues.md
       - file: ai-features/ai-chat-experiences.md
         children:
@@ -245,6 +249,8 @@ toc:
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
+          - hidden: visualize/charts/area-charts.md
+          - hidden: visualize/charts/metric-charts.md
           - hidden: visualize/charts/line-charts.md
           - hidden: visualize/charts/metric-charts.md
           - hidden: visualize/charts/tables.md
