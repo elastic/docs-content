@@ -13,7 +13,14 @@ description: Use Elastic Inference Service (EIS) with your self-managed, ECE, an
 
 [Elastic {{infer-cap}} Service (EIS)](eis.md) is available with zero setup on Elastic Cloud Hosted and Serverless deployments. To use EIS with other deployment types, you can use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself.
 
-With EIS, you can use AI-powered features such as [semantic search](/solutions/search/semantic-search.md), [AI Assistants](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md), or [Attack Discovery](/solutions/security/ai/attack-discovery.md). For a full list of EIS-powered features, refer to [AI features powered by EIS](eis.md#ai-features-powered-by-eis).
+You can use EIS to enable features such as:
+
+- [Semantic search](/solutions/search/semantic-search.md)
+- [AI Assistants](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md)
+- [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md)
+- [Attack Discovery](/solutions/security/ai/attack-discovery.md)
+
+For a full list of EIS-powered features, refer to [AI features powered by EIS](/explore-analyze/elastic-inference/eis.md#ai-features-powered-by-eis).
 
 ## Prerequisites
 
