@@ -35,7 +35,7 @@ Some key concepts to understand while working with workflows:
 
 ## Workflow structure [workflow-structure]
 
-Workflows are defined as code using YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution.
+Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution.
 
 ```yaml
 # ═══════════════════════════════════════════════════════════════
