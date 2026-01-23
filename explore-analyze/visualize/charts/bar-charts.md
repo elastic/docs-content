@@ -145,7 +145,7 @@ Customize your bar chart to display exactly the information you need, formatted 
 :   Define the formatting of the vertical axis, including:
     - **Name**: By default, the chart uses the function or formula as the axis label. It's a best practice to customize this with a meaningful title.
     - **Value format**: Select to display values as number, percent, bytes, bits, duration, or with a custom format.
-    - **Series color**: Assign a specific color to bars.
+    - **Series color**: Assign a specific color to bars. This option isn't available when the **Breakdown** option is defined for the chart, because it's the color mapping of that option that is then taken into account.
     - **Axis side**: Choose to display the vertical axis on the left or right side of the graph. By default, the axis displays on the left. 
 
 ### Breakdown settings [breakdown-options]
