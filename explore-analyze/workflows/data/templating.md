@@ -262,10 +262,10 @@ tags: ["admin", "user"]
 
 | Type | Behavior |
 |------|----------|
-| Strings | Processed as templates; variables interpolated, filters applied |
+| Strings | Processed as templates: variables are interpolated, and filters are applied |
 | Numbers, Booleans, Null | Returned as-is |
-| Arrays | Each element processed recursively |
-| Objects | Each property value processed recursively (keys are not processed) |
+| Arrays | Each element is processed recursively |
+| Objects | Each property value is processed recursively (keys are not processed) |
 
 ### Null and undefined handling [workflows-null-handling]
 
