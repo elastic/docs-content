@@ -29,7 +29,7 @@ steps.<step_name>.error
 
 ### Example: Chain steps with data [workflows-chain-steps-example]
 
-This workflow demonstrates a common pattern: searching for data in one step and using the results in a later step.
+This example demonstrates a common pattern: searching for data in one step and using the results in a later step. In this case, the workflow searches for a specific user's full name, then uses it to create a new security case.
 
 ```yaml
 name: Create case for a specific user
