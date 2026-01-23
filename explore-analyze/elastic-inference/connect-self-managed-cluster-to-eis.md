@@ -9,7 +9,7 @@ products:
 description: Use Elastic Inference Service (EIS) with your self-managed, ECE, and ECK clusters through Cloud Connect.
 ---
 
-# EIS for self-managed clusters
+# Elastic Inference Service for self-managed clusters
 
 [Elastic {{infer-cap}} Service (EIS)](eis.md) for [self-managed](/deploy-manage/deploy/self-managed.md) clusters is available through [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself.
 
