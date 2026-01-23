@@ -177,11 +177,11 @@ In this example:
 
 To inject dynamic values into your workflow steps, use the templating engine. The templating engine uses the [Liquid templating language](https://liquidjs.com/) and allows you to:
 
-- **Reference step outputs**: Access data from previous steps using `steps.<step_name>.output`
-- **Use constants**: Reference workflow-level constants with `consts.<constant_name>`
-- **Apply filters**: Transform values with filters like `upcase`, `downcase`, and `date`
-- **Add conditional logic**: Use `if`/`else` statements for dynamic content
-- **Loop through data**: Iterate over arrays with `for` loops
+- **Reference step outputs**: Access data from previous steps using `steps.<step_name>.output`.
+- **Use constants**: Reference workflow-level constants with `consts.<constant_name>`.
+- **Apply filters**: Transform values with filters like `upcase`, `downcase`, and `date`.
+- **Add conditional logic**: Use `if`/`else` statements for dynamic content.
+- **Loop through data**: Iterate over arrays with `for` loops.
 
 For complete syntax details and examples, refer to [Templating engine](./data/templating.md).
 
