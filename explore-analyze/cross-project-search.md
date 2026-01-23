@@ -62,7 +62,7 @@ This section explains how search works in {{cps-init}}, including:
 
 ### Flat-world search
 
-If a project has linked projects, any search initiated on the origin project is automatically performed on the origin project and all of its linked projects.
+If a project has linked projects, any search initiated on the origin project is automatically performed on the origin project and all its linked projects.
 This behavior is referred to as flat-world search.
 For example, the following request searches the `logs` indices in the origin project and in every linked project by default:
 
@@ -77,8 +77,8 @@ If a linked project does not have a `logs` index, that project is skipped and th
 
 {{cps-cap}} supports two types of search expressions: unqualified and qualified search expressions. The difference between them determines where a search request runs.
 
-An **unqualified** search expression does not include a project prefix or tags. When you use an unqualified expression, the search is executed according to the flat-world search model.
-In this case, the search runs against the origin project and all of its linked projects.
+An **unqualified** search expression does not include a project prefix or tags. When you use an unqualified expression, the search is performed according to the flat-world search model.
+In this case, the search runs against the origin project and all its linked projects.
 
 A **qualified** search expression includes additional qualifiers, such as project prefixes or tags, that explicitly control the scope of the search.
 
@@ -98,7 +98,7 @@ For additional examples of qualified search expressions, refer to the [examples 
 
 #### Search scope and index resolution
 
-In {{cps}}, when projects are linked to an origin project, all of their searchable resources are conceptually brought into the origin project’s search scope. For search purposes, this forms a single merged project view.
+In {{cps}}, when projects are linked to an origin project, all their searchable resources are conceptually brought into the origin project’s search scope. For search purposes, this forms a single merged project view.
 
 * Unqualified index expressions are resolved against this merged project view.
 * Qualified index expressions are resolved independently within each qualified project.
@@ -229,10 +229,10 @@ There are two ways to use tags in {{cps-init}}:
 #### Project routing
 
 Project routing enables you to limit a search to a subset of connected projects (the origin project and its linked projects) based on tag values.
-When you use project routing, the routing decision is made before the search request is executed.
+When you use project routing, the routing decision is made before the search request is performed.
 Based on the specified tags, {{cps-init}} determines which projects the query is sent to, and the search is performed only on those projects.
 The `project_routing` parameter is available on all cross-project-enabled endpoints. Refer to the [](#cps-supported-apis) for a full list of endpoints.
-When you specify tags in the project_routing parameter, projects that do not match the specified tags are excluded from the search entirely. The query is never executed on those projects.
+When you specify tags in the project_routing parameter, projects that do not match the specified tags are excluded from the search entirely. The query is never run on those projects.
 
 For example, the following API request searches the `log` resource only on projects that have the `_alias:my_search_project` tag.
 
@@ -291,8 +291,8 @@ GET /_query
 In both cases, the returned documents include the requested project metadata, which lets you identify which project each document originated from.
 
 You can also use project tags in queries to filter or aggregate search results.
-Unlike project routing, using tags inside a query does not affect which projects the query is sent to. The routing decision has already been made before the query is executed.
-When tags are used in queries, they act only as queryable metadata. They do not change search scope or limit execution to specific projects.
+Unlike project routing, using tags inside a query does not affect which projects the query is sent to. The routing decision has already been made before the query is performed.
+When tags are used in queries, they act only as queryable metadata. They do not change search scope or limit operation on specific projects.
 For example, the following request aggregates results by cloud service provider:
 
 For example:
