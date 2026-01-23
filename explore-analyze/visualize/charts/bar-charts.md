@@ -165,10 +165,10 @@ Customize your bar chart to display exactly the information you need, formatted 
 
 ### General layout [appearance-options]
 
-When creating or editing a visualization, you can customize several appearance options. Use the toolbar above the chart to access these settings.
+When creating or editing a visualization, you can customize several appearance options from the {icon}`brush` **Style** or ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") **Legend** menus.
 
 **Appearance**
-:   Select the bar orientation. It can be **Horizontal** or **Vertical**. Click the {icon}`brush` icon to access these settings.
+:   Select the bar orientation. It can be **Horizontal** or **Vertical**.
 
 **Titles and text**
 :    Specify to hide or show bar values on bar charts:
