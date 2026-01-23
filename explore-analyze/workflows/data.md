@@ -108,7 +108,7 @@ on-failure:
     delay: "5s"      # Optional, duration format (for example, "5s", "1m", "2h")
 ```
 
-The workflow fails if all retries are exhausted.
+The workflow fails when all retries are exhausted.
 
 ### Fallback [workflows-on-failure-fallback]
 
