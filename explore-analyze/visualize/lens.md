@@ -9,29 +9,29 @@ products:
   - id: kibana
 ---
 
-
-
 # Lens [lens]
 
-**Lens** is {{kib}}'s drag-and-drop visualization builder. It lets you create charts without writing queries: You drag fields onto the canvas, and {{kib}} suggests the best visualization types for your data.
+**Lens** is {{kib}}'s modern, drag‑and‑drop visualization editor designed to make data exploration fast and intuitive. It allows you to build charts and tables by simply dragging fields from a data view onto a workspace, while {{kib}} automatically suggests the most appropriate visualization types based on the data.
 
-These fields come from your data indices stored in {{es}}. When you bring data into {{es}}, like logs, metrics, or business data, each piece of information becomes a field: timestamps, user names, error codes, sales amounts, and so on.
-
-Lens doesn't directly look into your {{es}} indices. You first need to specify a [data view](/explore-analyze/find-and-organize/data-views.md) that tells {{kib}} which indices to look at. When you open Lens and select a data view, you see all the fields from that data as a list you can drag and drop to build visualizations.
+The Lens editor is centered around [data views](/explore-analyze/find-and-organize/data-views.md), which define which {{es}} indices and fields are available. Once a data view is selected, you can interactively create visualizations by choosing aggregations, splitting dimensions, and adjusting chart settings through a visual interface.
 
 :::{tip}
 If you collected data using one of the {{kib}} [ingest options](/manage-data/ingest.md), uploaded a file, or added sample data, you likely have a {{data-source}} created automatically, and can start exploring your data. If not, you must create one yourself.
 :::
 
-With **Lens**, you can:
+Lens supports a wide range of visualization and analysis capabilities, including:
 
-* Create area, line, and bar charts with layers to display multiple indices and chart types.
-* Change the aggregation function to change the data in the visualization.
-* Create custom tables.
-* Perform math on aggregations using **Formula**.
-* Use time shifts to compare the data in two time intervals, such as month over month.
-* Add annotations and reference lines.
+- Many chart types, with support for multiple layers
+- Custom data tables
+- Formula-based calculations on aggregations
+- Time shifts for period‑over‑period comparisons
+- Annotations and reference lines for contextual insights
 
+With Lens, you can create the following chart types:
+
+- [Metric chart](/explore-analyze/visualize/charts/area-charts.md)
+- [Line chart](/explore-analyze/visualize/charts/line-charts.md)
+- [Area chart](/explore-analyze/visualize/charts/area-charts.md)
 
 ## Create visualizations [create-the-visualization-panel]
 
