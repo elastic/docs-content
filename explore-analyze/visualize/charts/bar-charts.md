@@ -167,6 +167,8 @@ Customize your bar chart to display exactly the information you need, formatted 
 
 When creating or editing a visualization, you can customize several appearance options from the {icon}`brush` **Style** or ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") **Legend** menus.
 
+#### Style settings
+
 **Appearance**
 :   Select the bar orientation. It can be **Horizontal** or **Vertical**.
 
@@ -199,13 +201,23 @@ When creating or editing a visualization, you can customize several appearance o
     - **Partial data markers**: Highlights buckets at the edges of the time range that only contain partial data—useful for time-based bar charts so viewers know the first/last bucket might be incomplete.
     - **Current time marker**: Draws a vertical marker for “now” on time charts, so you can see how recent the latest bar is.
 
-**Legend**
-:   Configure elements of your bar chart's legend. Configurable options include:
-    - **Visibility**: Specify whether to automatically show the legend or hide it.
-    - **Position**: Choose to show the legend inside or outside the chart, then pick the side (left, right, top, or bottom) and fine-tune alignment (vertical/horizontal) for grid-style layouts.
-    - **Width**: Set the width of the legend.
-    - **Statistics**: Choose one or more statistic to show (for example, average, min, max, last value), Lens appends those numbers to every series label so you don’t have to hover over the chart to see headline figures.  
-    - **Label truncation**: Choose whether to truncate long series labels, and set a limit for how many lines render when it's inside the chart.
+#### Legend settings
+Configure elements of your bar chart's legend. Configurable options include:
+
+**Visibility**
+:   Specify whether to automatically show the legend or hide it.
+
+**Position**
+:   Choose to show the legend inside or outside the chart, then pick the side (left, right, top, or bottom) and fine-tune alignment (vertical/horizontal) for grid-style layouts.
+
+**Width**
+:   Set the width of the legend.
+
+**Statistics**
+:   Choose one or more statistic to show (for example, average, min, max, last value), Lens appends those numbers to every series label so you don’t have to hover over the chart to see headline figures.  
+
+**Label truncation**
+:   Choose whether to truncate long series labels, and set a limit for how many lines render when it's inside the chart.
 
 ## Bar chart examples
 
