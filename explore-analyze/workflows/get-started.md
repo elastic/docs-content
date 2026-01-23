@@ -189,7 +189,7 @@ consts:
 * **`consts`**: Defines reusable values that can be referenced throughout the workflow.
 * Accessed using template syntax: `{{ consts.indexName }}`. This promotes consistency and makes the workflow easier to maintain.
 
-### Trigger
+### Triggers
 
 ```yaml
 triggers:
