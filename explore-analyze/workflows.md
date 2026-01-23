@@ -23,7 +23,7 @@ Workflows address common operational challenges, such as:
 Workflows can handle a wide range of tasks, from simple, repeatable steps to complex processes.
 
 ## Who should use workflows? [workflows-who]
-Workflows are for anyone who wants to cut down on manual effort, speed up response times, and make sure recurring situations are handled the same way every time.
+Workflows are for you if you want to cut down on manual effort, speed up response times, and make sure recurring situations are handled consistently.
 
 ## Key concepts [workflows-concepts]
 
