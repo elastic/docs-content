@@ -10,8 +10,11 @@ products:
 
 # Azure Storage repository [ece-configure-azure-snapshotting]
 
-With {{ece}}, you can enable your {{es}} clusters to regularly snapshot data to Microsoft Azure Storage.
+This guide focuses on registering an Azure snapshot repository at the {{ece}} (ECE) platform level. Platform-level repositories can be assigned to deployments and are used by ECE to automatically manage snapshots through the `found-snapshots` repository.
 
+If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the {{ech}} guide for [Azure Blob Storage](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md), which is also applicable to {{ece}} deployments.
+
+At the ECE platform level, you can enable your {{es}} clusters to regularly snapshot data to Microsoft Azure Storage.
 
 ## Add the Azure repository [ece_add_the_azure_repository]
 
@@ -43,5 +46,5 @@ To save deployment snapshots to the Azure repository:
 
 1. Configure your deployment to [snapshot to the Azure repository](cloud-enterprise.md).
 
-The cluster should then have snapshots enabled and and begins snapshotting immediately. You can configure the how frequently snapshotting occurs on the **Snapshots** in the **Elasticsearch** menu.
+The cluster should then have snapshots enabled and and begins snapshotting immediately. You can configure the how frequently snapshotting occurs on the **Snapshots** in the **{{es}}** menu.
 

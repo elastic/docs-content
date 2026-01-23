@@ -7,9 +7,13 @@ applies_to:
 
 # Configure an AWS S3 snapshot repository in {{ece}} [ece-aws-custom-repository]
 
-To store {{es}} snapshots in AWS S3, you need to configure a snapshot repository in {{ece}} (ECE). This guide explains how to add an Amazon S3 repository using the Cloud UI and provides details on required settings and advanced configurations.
+This guide focuses on registering an AWS S3 snapshot repository at the {{ece}} (ECE) platform level. Platform-level repositories can be assigned to deployments and are used by ECE to automatically manage snapshots through the `found-snapshots` repository.
 
-To add a snapshot repository:
+If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the {{ech}} guide for [AWS S3](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md), which is also applicable to {{ece}} deployments.
+
+## Add the AWS S3 repository
+
+To add the repository:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Repositories**.
