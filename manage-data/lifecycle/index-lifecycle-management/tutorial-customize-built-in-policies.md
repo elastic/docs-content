@@ -1,4 +1,5 @@
 ---
+navigation_title: Customize built-in {{ilm-init}} policies
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/example-using-index-lifecycle-policy.html
 applies_to:
@@ -7,11 +8,12 @@ products:
   - id: elasticsearch
 ---
 
-# Customize duplicates of built-in {{ilm-init}} policies
+# Customize built-in {{ilm-init}} policies in {{es}}
 
-{{es}} includes a set of built-in {{ilm-init}} policies that define how managed indices transition across [data tiers](/manage-data/lifecycle/data-tiers.md) and what [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), such as rollover, downsampling, or shrinking, are performed at each phase.
 
-This tutorial demonstrates how to create a customized copy of a built-in {{ilm-init}} policy to better fit your data retention, performance, or storage requirements. You should never edit managed policies directly, because updates to {{es}} or Elastic integrations might overwrite those changes. Instead, you can duplicate a built-in policy, modify the duplicate, and assign it to your index or component templates.
+{{es}} includes several built-in {{ilm}} ({{ilm-init}}) policies to help manage your logs and metrics efficiently. This tutorial shows you how to safely duplicate and customize these policies to optimize [rollover](/manage-data/lifecycle/index-lifecycle-management/rollover.md) and other [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), control resource usage across hot and warm [data tiers](/manage-data/lifecycle/data-tiers.md), and enforce retention rules for your indices.
+
+Follow these steps to create a customized copy of a built-in {{ilm-init}} policy. You should never edit managed policies directly, because updates to {{es}} or Elastic integrations might overwrite those changes. Instead, you can duplicate a built-in policy, modify the duplicate, and assign it to your index or component templates.
 
 While this tutorial uses [{{agent}}](/reference/fleet/index.md) and its built-in `logs@lifecycle` policy as an example, the same process can be applied to any built-in policies. Common examples include:
 
@@ -25,6 +27,16 @@ While this tutorial uses [{{agent}}](/reference/fleet/index.md) and its built-in
 
 Customizing an {{ilm-init}} policy is useful when you have specific data retention or rollover requirements. For example, large log or metrics data streams might need different retention periods than the built-in defaults.
 
+:::{important}
+:applies_to: stack: ga 9.3+
+
+In {{stack}} 9.3 and later, the deprecated `logs`, `metrics`, and `synthetics` {{ilm-init}} policies are replaced by functionally equivalent `{type}@lifecycle` policies to align with the naming conventions for other stack-managed assets.
+
+If both the deprecated {{ilm-init}} policy and its `{type}@lifecycle` replacement haven’t been modified, {{fleet}} automatically migrates component templates that still reference the deprecated {{ilm-init}} policy.
+
+If either managed {{ilm-init}} policy has been modified, you need to migrate the customizations manually. Follow this tutorial to create a self-managed {{ilm-init}} policy with your custom settings, and reference it from the relevant `{type}@custom` component template.
+:::
+
 This tutorial covers customizing the way ingested logging data is managed. Rather than use the default lifecycle settings from the built-in `logs@lifecycle` {{ilm-init}} policy, you can use the **Index Lifecycle Policies** feature in {{kib}} to tailor a new policy based on your application’s specific performance, resilience, and retention requirements. You can adapt the same steps for any policy that manages your data streams.
 
 The process involves three main steps:
@@ -35,9 +47,9 @@ The process involves three main steps:
 Once applied, your customized policy will govern any new indices created after the change. Existing indices will continue to use their current lifecycle policy until they roll over. If you want the policy to take effect immediately, you can manually [roll over](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) the data stream.
 
 :::{tip}
-* If you're using [Elastic integrations](https://docs.elastic.co/en/integrations) and are not yet familiar with which data streams are associated with them, refer to [Manage the lifecycle policy for integrations data](/manage-data/lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md).
+* If you're using [Elastic integrations](https://docs.elastic.co/en/integrations) and are not yet familiar with which data streams are associated with them, refer to [](/manage-data/lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md).
 
-* If you're looking for a more advanced use case, such as customizing an ILM policy for a selected set of data streams in one or more integrations or namespaces, check the set of tutorials in [Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.
+* If you're looking for a more advanced use case, such as customizing an ILM policy for a selected set of data streams in one or more integrations or namespaces, check the set of tutorials in [](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.
 
     These tutorials go into greater depth about creating and using `@custom` component templates. For example, the tutorial [Apply an ILM policy to all data streams generated from {{fleet}} integrations across all namespaces](/reference/fleet/data-streams-scenario1.md) shows how to create and use the `logs@custom` and `metrics@custom` component templates to customize {{ilm-init}} policies associated with data streams in integrations.
 :::

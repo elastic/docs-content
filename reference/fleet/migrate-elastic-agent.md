@@ -2,6 +2,8 @@
 navigation_title: Migrate {{agent}}s
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/migrate-elastic-agent.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -51,7 +53,7 @@ You can create a new cluster based on the snapshot taken in the previous step, a
 
 ## Update settings in the target cluster [migrate-elastic-agent-target-settings]
 
-when the target cluster is available you’ll need to adjust a few settings. Take some time to examine the {{fleet}} setup in the new cluster.
+When the target cluster is available you’ll need to adjust a few settings. Take some time to examine the {{fleet}} setup in the new cluster.
 
 1. Open the {{kib}} menu and select **Fleet**.
 2. On the **Agents** tab, your agents should visible, however they’ll appear as `Offline`. This is because these agents have not yet enrolled in the new, target cluster, and are still enrolled in the original, source cluster.
@@ -64,7 +66,7 @@ when the target cluster is available you’ll need to adjust a few settings. Tak
 3. Open the {{fleet}} **Settings** tab.
 4. Examine the configurations captured there for {{fleet}}. These settings are copied from the snapshot of the source cluster and may not have a meaning in the target cluster, so they need to be modified accordingly.
 
-    In the following example, both the **Fleet Server hosts** and the **Outputs** settings are copied over from the source cluster:
+    In the following example, both the **Fleet server hosts** and the **Outputs** settings are copied over from the source cluster:
 
     :::{image} images/migrate-agent-host-output-settings.png
     :alt: Settings tab in Fleet showing source deployment host and output settings

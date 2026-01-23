@@ -11,6 +11,7 @@
 /deploy-manage/                             @elastic/admin-docs
 
 /explore-analyze/                           @elastic/core-docs @elastic/experience-docs
+/explore-analyze/ai-features/agent-builder/ @elastic/developer-docs
 /explore-analyze/alerts-cases/              @elastic/experience-docs
 /explore-analyze/dashboards/                @elastic/experience-docs
 /explore-analyze/discover/                  @elastic/experience-docs
@@ -20,6 +21,7 @@
 /explore-analyze/query-filter/              @elastic/developer-docs @elastic/experience-docs
 /explore-analyze/report-and-share/          @elastic/experience-docs
 /explore-analyze/scripting/                 @elastic/admin-docs
+/explore-analyze/cross-cluster-search/      @elastic/developer-docs
 /explore-analyze/transforms/                @elastic/developer-docs
 /explore-analyze/visualize/                 @elastic/experience-docs
 

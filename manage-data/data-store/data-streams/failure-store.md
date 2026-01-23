@@ -25,6 +25,13 @@ On this page, you'll learn how to set up, use, and manage a failure store, as we
 
 For examples of how to use failure stores to identify and fix errors in ingest pipelines and your data, refer to [](/manage-data/data-store/data-streams/failure-store-recipes.md).
 
+### Required permissions
+To view and modify a failure store in {{stack}}, you need the following data stream level privileges:
+- `read_failure_store`
+- `manage_failure_store`
+
+For more information, refer to [Granting privileges for data streams and aliases](/deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
+
 ## Set up a data stream failure store [set-up-failure-store]
 
 Each data stream has its own failure store that can be enabled to accept failed documents. By default, this failure store is disabled and any ingestion problems are raised in the response to write operations.

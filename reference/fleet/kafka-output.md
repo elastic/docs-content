@@ -2,6 +2,9 @@
 navigation_title: Kafka
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/kafka-output.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

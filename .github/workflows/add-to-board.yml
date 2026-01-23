@@ -17,7 +17,6 @@ jobs:
       github.event.label.name == 'team:Admin' ||
       github.event.label.name == 'team:Developer' ||
       github.event.label.name == 'team:DocsEng' ||
-      github.event.label.name == 'team:Obs' ||
       github.event.label.name == 'team:Platform' ||
       github.event.label.name == 'team:Projects' ||
       github.event.label.name == 'team:Search' ||
@@ -30,7 +29,6 @@ jobs:
           "team:Admin":       "1927",
           "team:Developer":   "726",
           "team:DocsEng":     "1625",
-          "team:Obs":         "649",
           "team:Platform":    "1232",
           "team:Projects":    "1415",
           "team:Search":      "726",
