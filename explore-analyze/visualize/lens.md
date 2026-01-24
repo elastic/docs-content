@@ -13,19 +13,11 @@ products:
 
 **Lens** is {{kib}}'s modern, drag‑and‑drop visualization editor designed to make data exploration fast and intuitive. It allows you to build charts and tables by simply dragging fields from a data view onto a workspace, while {{kib}} automatically suggests the most appropriate visualization types based on the data.
 
-The Lens editor is centered around [data views](/explore-analyze/find-and-organize/data-views.md), which define which {{es}} indices and fields are available. Once a data view is selected, you can interactively create visualizations by choosing aggregations, splitting dimensions, and adjusting chart settings through a visual interface.
+The Lens editor uses [data views](/explore-analyze/find-and-organize/data-views.md) to define the available {{es}} indices and fields. 
 
-:::{tip}
-If you collected data using one of the {{kib}} [ingest options](/manage-data/ingest.md), uploaded a file, or added sample data, you likely have a {{data-source}} created automatically, and can start exploring your data. If not, you must create one yourself.
-:::
+Data views are created automatically if you [upload a file](/manage-data/ingest/upload-data-files.md), or [add sample data](/manage-data/ingest/sample-data.md) by using one of the {{kib}} [ingest options](/manage-data/ingest.md). Otherwise, you must create a data view manually.
 
-Lens supports a wide range of visualization and analysis capabilities, including:
-
-- Many chart types, with support for multiple layers
-- Custom data tables
-- Formula-based calculations on aggregations
-- Time shifts for period‑over‑period comparisons
-- Annotations and reference lines for contextual insights
+Once you select a data view, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
 
 With Lens, you can create the following visualization types:
 
