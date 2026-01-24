@@ -15,9 +15,9 @@ products:
 
 The Lens editor uses [data views](/explore-analyze/find-and-organize/data-views.md) to define the available {{es}} indices and fields. 
 
-Data views are created automatically if you [upload a file](/manage-data/ingest/upload-data-files.md), or [add sample data](/manage-data/ingest/sample-data.md) by using one of the {{kib}} [ingest options](/manage-data/ingest.md). Otherwise, you must create a data view manually.
+Data views are created automatically if you [upload a file](/manage-data/ingest/upload-data-files.md), or [add sample data](/manage-data/ingest/sample-data.md) by using one of the {{kib}} [ingest options](/manage-data/ingest.md). Otherwise, you must create a {{data-source}} manually.
 
-Once you select a data view, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
+Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
 
 With Lens, you can create the following visualization types:
 
@@ -67,17 +67,14 @@ Once you have created your visualization, you can edit it directly on the dashbo
 
 ### Change the fields list [change-the-fields]
 
-Change the fields list to display a different {{data-source}}, different time range, or add your own fields.
+When you can create a visualization, you can change the fields list to display a different {{data-source}}, a different time range, or add your own fields. To do that, open the {{data-source}} dropdown and select **Add a field to this {{data-source}}**.
 
-* To create a visualization with fields in a different {{data-source}}, open the {{data-source}} dropdown, then select the {{data-source}}.
+![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](/explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png "")
 
-    For more information about {{data-sources}}, refer to [Create a {{data-source}}](../find-and-organize/data-views.md).
 
-* If the fields list is empty, change the [time filter](../query-filter/filtering.md).
-* To add fields, open the {{data-source}} dropdown, then select **Add a field to this {{data-source}}**.
-  ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](/explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png "")
-  
-  For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
+If the fields list is empty, change the [time filter](../query-filter/filtering.md).
+
+For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
 
 ### Assign colors to terms [assign-colors-to-terms]
 ```{applies_to}
