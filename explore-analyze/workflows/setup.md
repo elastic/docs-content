@@ -29,3 +29,8 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 | Access the **Workflows** page | `All` or `Read` for **Analytics > Workflows** |
 | Fully manage workflows | `All` for **Analytics > Workflows** |
 | Grant access to specific workflow actions | Set sub-feature privileges for **Analytics > Workflows** | 
+
+## What's new [workflows-what-next]
+
+- Create and run your first workflow. Refer to [](get-started.md) to learn more
+- Understand how to use the YAML editor in {{kib}} to define and run workflows. Refer to [](author-workflows.md) to learn more.
