@@ -14,7 +14,8 @@ products:
 
 # Integrate workflows with {{agent-builder}}
 
-{{agent-builder}} integrates bi-directionally with [Elastic Workflows](/explore-analyze/workflows.md). This integration bridges the gap between conversational reasoning and automated execution:
+{{agent-builder}} integrates bi-directionally with Elastic Workflows. This integration bridges the gap between conversational reasoning and automated execution:
+% (/explore-analyze/workflows.md)
 
 1. **Agents trigger Workflows:** Agents can be equipped with **Workflow tools**. This allows an agent to recognize when a specific automated process is needed (like "triage this alert" or "restart the service") and run a predefined workflow to handle it.
 2. **Workflows call Agents:** Workflows can include **AI Steps**. These steps invoke an agent to handle complex reasoning tasks—such as summarizing logs, classifying security events, or making decisions—within the middle of a deterministic workflow.
@@ -23,7 +24,8 @@ products:
 
 Before using these features, ensure that:
 
-* **Workflows are set up:** The feature must be enabled and you need specific privileges to create and run workflows. For details, see [Set up workflows](/explore-analyze/workflows/setup.md).
+* **Workflows are set up:** The feature must be enabled and you need specific privileges to create and run workflows. For details, see Set up workflows
+% (/explore-analyze/workflows/setup.md).
 * (Optional) If using the example below, ensure the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
 ## Trigger a workflow from an agent
@@ -129,4 +131,4 @@ steps:
 
 ## Related pages
 * [Tools overview](tools.md)
-* [Workflows](/explore-analyze/workflows.md)
+% * [Workflows](/explore-analyze/workflows.md)
