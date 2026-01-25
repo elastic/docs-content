@@ -216,17 +216,6 @@ These are examples of common formulas:
     sum(products.base_price) / overall_sum(sum(products.base_price))
     ```
 
-### Compare differences over time [compare-data-with-time-offsets]
-
-Compare your real-time data to the results that are offset by a time increment. For example, you can compare the real-time percentage of a user CPU time spent to the results offset by one hour.
-
-1. In the layer pane, click the field you want to offset.
-2. Click **Advanced**.
-3. In the **Time shift** field, enter the time offset increment.
-
-For a time shift example, refer to [Compare time ranges](../dashboards/create-dashboard-of-panels-with-ecommerce-data.md#compare-time-ranges).
-
-
 ### Create partition charts with multiple metrics [create-partition-charts-with-multiple-metrics]
 
 To create partition charts, such as pie charts, configure one or more **Slice by** dimensions to define the partitions, and a **Metric** dimension to define the size. To create partition charts with multiple metrics, use the layer settings. Multiple metrics are unsupported for mosaic visualizations.
