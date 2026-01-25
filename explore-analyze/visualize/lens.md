@@ -187,7 +187,7 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
 Lens formulas let you do math using a combination of {{es}} aggregations and math functions. For example, you can use formulas to divide two values and produce a percent value.
 
-When you add a categorical field to a visualization, select the field to open its appearance settings, choose **Formula**, and set **Appearance** > **Value format** to **Percent** for a more accurate display.
+When you add a categorical field to your visualization, select the field to open its appearance settings, choose **Formula**, and set **Appearance** > **Value format** to **Percent** for a more accurate display.
 
 For more details on how it works, click the **Formula reference** icon ![Formula reference icon](/explore-analyze/images/kibana-formula_reference.png "") on the Formula panel.
 
@@ -227,25 +227,10 @@ To create partition charts, such as pie charts, configure one or more **Slice by
 
 ### Improve visualization loading time [improve-visualization-loading-time]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
-Data sampling allows you to improve the visualization loading time. To decrease the loading time, use a lower sampling percentage, which also decreases the accuracy. Use low sampling percentages on large datasets.
-
-1. In the **Edit visualization** flyout, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
-2. To select the **Sampling** percentage, use the slider.
-3. Click **Apply and close**.
-4. Click **Save**.
+Data sampling allows you to improve the visualization loading time. When you can create your visualization, click the **Layer settings** icon {icon}`app_management` and use the slider to adjust the **Sampling** percentage. For example, on large datasets, you can decrease the loading time by using a lower sampling percentage. This increases performance but lowers the accuracy.
 
 
 ### Add annotations [add-annotations]
-
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
 
 Annotations allow you to call out specific points in your visualizations that are important, such as significant changes in the data. You can add annotations for any {{data-source}}, add text and icons, specify the line format and color, and more.
 
@@ -316,14 +301,18 @@ For example, to track the number of bytes in the 75th percentile, add a shaded *
 :screenshot:
 :::
 
-1. From your visualization, click **Add layer > Reference lines**.
-2. Click the reference line value, then specify the reference line you want to use:
+From your visualization, click **Add layer > Reference lines**. Click the vertical axis value, and specify the reference line you want to use by choosing one fhe following placement methods:
 
-    * To add a static reference line, click **Static**, then enter the reference line value you want to use.
-    * To add a dynamic reference line, click **Quick functions**, then click and configure the functions you want to use.
-    * To calculate the reference line value with math, click **Formula**, then enter the formula.
+**Static**
+:   To add a static reference line.
 
-3. Specify the display options, such as **Display name** and **Icon**, then click **Close**.
+**Quick functions**
+:   To add a dynamic reference line.
+
+**Formula**
+:   To calculate the reference line value with math.
+
+You can also customize the display by adjusting the **Appearance** settings.
 
 
 ### Apply filters [filter-the-data]
