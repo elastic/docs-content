@@ -154,7 +154,7 @@ Color mapping works best with fields that have a reasonable number of distinct v
 
 **Plan for themes**
 
-When choosing colors, consider how they will appear in both light and dark themes. Use theme-aware neutral colors when you want to de-emphasize data.
+When choosing colors, consider how they appear in both light and dark themes. Use theme-aware neutral colors when you want to de-emphasize data.
 
 
 ### Create visualizations with keyboard navigation [drag-and-drop-keyboard-navigation]
@@ -185,43 +185,36 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
 ### Use formulas to perform math [lens-formulas]
 
-When you're defining the fields and data to show in a visualization, formulas allow you to perform math on aggregated data. For example, you can use formulas to divide two values and produce a percent value.
+Lens formulas let you do math using a combination of {{es}} aggregations and math functions. For example, you can use formulas to divide two values and produce a percent value.
 
-1. Add a field to your visualization and select it to open its data and appearance settings.
-2. Select **Formula**, then enter the formula.
+When you add a categorical field to a visualization, select the field to open its appearance settings, choose **Formula**, and set **Appearance** > **Value format** to **Percent** for a more accurate display.
 
-    Filter ratio example
-    :   To filter a document set, use `kql=''`, then compare to other documents within the same grouping:
+For more details on how it works, click the **Formula reference** icon ![Formula reference icon](/explore-analyze/images/kibana-formula_reference.png "") on the Formula panel.
 
-        ```
-        count(kql='response.status_code > 400') / count()
-        ```
+These are examples of common formulas:
 
+**Filter ratio**
+:   To filter a document set, use `kql=''`, then compare to other documents within the same grouping:
 
-    Week over week example
-    :   To get the value for each grouping from the previous week, use `shift='1w'`.
+    ```
+    count(kql='response.status_code > 400') / count()
+     ```
 
-        ```
-        percentile(system.network.in.bytes, percentile=99) /
-        percentile(system.network.in.bytes, percentile=99, shift='1w')
-        ```
+**Week over week**
+:   To get the value for each grouping from the previous week, use `shift='1w'`.
 
-        You are unable to combine different time shifts, such as `count(shift="1w") - count()` and `count(shift="1w") - count(shift="1m")`, with the **Top values** function.
+    ```
+    percentile(system.network.in.bytes, percentile=99) /
+    percentile(system.network.in.bytes, percentile=99, shift='1w')
+    ```
+    You are unable to combine different time shifts, such as `count(shift="1w") - count()` and `count(shift="1w") - count(shift="1m")`, with the **Top values** function.
 
+**Percent of total**
+:   To convert each grouping into a percent of the total, formulas calculate `overall_sum` for all groupings:
 
-    Percent of total example
-    :   To convert each grouping into a percent of the total, formulas calculate `overall_sum` for all groupings:
-
-        ```
-        sum(products.base_price) / overall_sum(sum(products.base_price))
-        ```
-
-        ::::{tip}
-        For detailed information on formulas, click ![Formula reference icon](/explore-analyze/images/kibana-formula_reference.png "").
-        ::::
-
-3. To accurately display the formula, select **Percent** from the **Value format** dropdown.
-
+    ```
+    sum(products.base_price) / overall_sum(sum(products.base_price))
+    ```
 
 ### Compare differences over time [compare-data-with-time-offsets]
 
