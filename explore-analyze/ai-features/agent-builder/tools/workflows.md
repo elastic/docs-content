@@ -33,7 +33,7 @@ Before using these features, ensure that:
 ## Trigger a workflow from an agent
 Follow these steps to wrap an existing workflow into a tool that your agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
 
-:::{image} images/create-new-tool-workflows.png
+:::{image} ../images/create-new-tool-workflows.png
 :screenshot:
 :width: 900px
 :alt: Screenshot of creating a new workflow tool.
@@ -60,7 +60,7 @@ Once you assign this tool to an agent, the agent can trigger the workflow autono
 2. Open the **Agent chat** and ask a question that triggers the workflow.
 3. The agent extracts the necessary parameters from the conversation, runs the workflow, and returns the workflow's final output to the chat.
 
-:::{image} images/agent-builder-workflow-tool.png
+:::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:
 :width: 500px
 :alt: Screenshot of reasoning steps of agent builder.
@@ -132,5 +132,5 @@ steps:
 ```
 
 ## Related pages
-* [Tools overview](tools.md)
+* [Tools overview](../tools.md)
 % * [Workflows](/explore-analyze/workflows.md)
