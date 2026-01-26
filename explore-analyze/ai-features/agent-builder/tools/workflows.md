@@ -1,5 +1,5 @@
 ---
-navigation_title: "Use workflows"
+navigation_title: "Workflow tools"
 description: "Learn how to trigger Elastic Workflows from Elastic Agent Builder and invoke your agents within workflow steps."
 applies_to:
   stack: preview 9.3+
@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Integrate workflows with {{agent-builder}}
+# Workflow tools
 
 Workflows and {{agent-builder}} are built to work together:
 % (/explore-analyze/workflows.md)
