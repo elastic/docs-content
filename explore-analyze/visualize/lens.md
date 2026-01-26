@@ -241,45 +241,36 @@ Click the **Add layer** icon {icon}`plus_in_square` , select **Annotations** and
 
 To use global filters in the annotation, click the **Layer settings** icon {icon}`app_management` on the annotations layer, and select **Use global filters**.
 
-Annotations support two placement types:
+From the annotation panel, you can choose the type of placement and adjsut the its appearance.
 
-* **Static date** — Displays annotations for specific times or time ranges.
-* **Custom query** — Displays annotations based on custom {{es}} queries. For detailed information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
+**Placement**
+:   
+    - **Static date** — Displays annotations for specific times or time ranges. To create static annotations:
+      1. Select **Static date**.
+      2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
+      3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
+
+    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search). To create custom query annotations:
+      1. Select **Custom query**.
+      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
+      3. Select the **Target date field**.
 
 
+**Appearance**
+:   Configure the annotation settings, including:
+   - **Name**: Enter the name of the annotation.
+   - **Icon decoration**: .
+   - **Text decoration**: .
+   - **Line**: .
+   - **Color**: .
+   - **Hiode annotation**: .
 
 
+**Tooltip**
+:  Add a field to the annotation tooltip
+   1. If you created a custom query annotation, click **Add field** to add a field to the annotation tooltip.
 
-    When you add the visualization to dashboards, ![Visualization modifier popup](/explore-analyze/images/kibana-lens_visualizationModifierPopup_8.8.0.png "") appears, which allows you to view settings changes to the visualization.
-
-
-Create static annotations.
-
-1. Select **Static date**.
-2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
-3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
-
-Create custom query annotations.
-
-1. Select **Custom query**.
-2. Enter the **Annotation query** for the data you want to display.
-
-    For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
-
-3. Select the **Target date field**.
-
-Specify the annotation appearance.
-
-1. Enter the annotation **Name**.
-2. Change the **Appearance** options for how you want the annotation to display on the visualization.
-3. If you created a custom query annotation, click **Add field** to add a field to the annotation tooltip.
-4. To close, click **X**.
-
-Save the annotation group to the library.
-
-1. From your visualization, on your annotation layer, click ![Save button on annotations layer](/explore-analyze/images/kibana-lens_saveAnnotationLayerButton_8.9.0.png "").
-2. Enter the **Title**, **Description**, and add any applicable [**Tags**](../find-and-organize/tags.md).
-3. Click **Save group**.
+Once you are done, you can add your new annotation layer to the **Visualize Library** so that it can be reused in other visualizations. Note that any changes made to the annotation group is reflected in all visualizations to which it is added.
 :::
 
 :::{dropdown} Load from library
@@ -291,9 +282,6 @@ Add a library annotation group to a visualization.
 :alt: Lens annotations
 :screenshot:
 :::
-
-Any annotation layer can be saved as an annotation group to the **Visualize Library** to be reused in other visualizations. Any changes made to the annotation group is reflected in all visualizations to which it is added.
-
 
 
 ### Add reference lines [add-reference-lines]
