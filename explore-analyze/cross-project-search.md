@@ -13,7 +13,7 @@ Common use cases include centralized log analysis, cross-environment troubleshoo
 
 ## Prerequisites
 
-* {{cps-cap}} requires linked projects. <!-- To set up linked projects, refer to [**TODO**](). -->
+* {{cps-cap}} requires linked projects. <!-- To set up linked projects, refer to . -->
 * To use {{cps}} with ES|QL, both the origin and linked projects must have the appropriate [subscription level](https://www.elastic.co/subscriptions).
 <!-- * {{cps-cap}} requires [UIAM](TODO) set up. -->
 
@@ -360,9 +360,9 @@ The following APIs support {{cps}}:
 Each origin project can have up to 20 linked projects.
 A linked project can be associated with any number of origin projects.
 
-<!--
 ## {{cps-cap}} examples [cps-examples]
 
+<!--
 Examples to include:
 
 * GET logs/_search
