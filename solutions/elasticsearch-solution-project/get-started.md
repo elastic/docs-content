@@ -15,7 +15,7 @@ description: To try out an {{es}} project or solution, pick your deployment type
 
 # Get started with the {{es}} solution/project type
 
-Get started with the {{es}} solution, which provides specialized UI tools like Agent Builder, Playground, and Query Rules on top of core [search capabilities](/solutions/search.md). Follow these steps to set up your deployment, add data, and start building.
+This solution provides specialized UI tools, such as Agent Builder, Playground, and the Query Rules UI, to help you build and test search experiences faster. These tools build on top of the core [search capabilities](/solutions/search.md) available across all deployment types. If you only need core search features without these additional tools, start with the [search use case](/solutions/search/get-started.md) instead.
 
 :::{note}
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
@@ -91,12 +91,3 @@ The {{es}} solution provides additional UI tools on top of the core {{es}} capab
 - [**Query Rules UI**](/solutions/elasticsearch-solution-project/query-rules-ui.md): Create rules to modify search behavior
 - [**Search with synonyms**](/solutions/search/full-text/search-with-synonyms.md): Manage synonym sets through the UI
 :::::
-
-## Related resources
-
-Use these resources to learn more about {{es}} or get started in a different way:
-
-- [](/deploy-manage/deploy/deployment-comparison.md)
-- [Get started with Query DSL search and filters](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
-- [Get started with ES|QL queries](elasticsearch://reference/query-languages/esql/esql-getting-started.md)
-- [Analyze eCommerce data with aggregations using Query DSL](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md)

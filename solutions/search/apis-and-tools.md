@@ -62,16 +62,6 @@ These tools are documented in the **Explore & Analyze** section:
 | [Grok Debugger](/explore-analyze/query-filter/tools/grok-debugger.md) | Build and debug grok patterns before you use them in your data processing pipelines. |
 | [Painless Lab](/explore-analyze/scripting/painless-lab.md) | Test and debug Painless scripts in real-time. |
 
-### Search UI
-
-[Elastic Search UI](./site-or-app/search-ui.md) is a library of JavaScript and React tools for building search experiences, optimized for use with {{es}}.
-
-:::{tip}
-Check out the {{es}} Labs [blog](https://www.elastic.co/search-labs) to learn how to use Elastic to build advanced search experiences including generative AI, embedding models, reranking capabilities and more.
-
-The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearch-labs) contains hands-on Python notebooks and sample apps to help you get started with these advanced search features.
-:::
-
 ## Generative AI tools
 
 The following generative AI tools are available as part of the {{es}} solution and serverless project type. They enable you to build AI-powered search applications on top of the core {{es}} features, including retrieval augmented generation (RAG) systems and agentic workflows.
@@ -91,4 +81,15 @@ elasticsearch: beta
 ```
 
 [Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also useful for testing and debugging your {{es}} queries using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
+
+### Search UI
+
+[Elastic Search UI](./site-or-app/search-ui.md) is a library of JavaScript and React tools for building search experiences, optimized for use with {{es}}.
+
+:::{tip}
+Check out the {{es}} Labs [blog](https://www.elastic.co/search-labs) to learn how to use Elastic to build advanced search experiences including generative AI, embedding models, reranking capabilities and more.
+
+The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearch-labs) contains hands-on Python notebooks and sample apps to help you get started with these advanced search features.
+:::
+
 
