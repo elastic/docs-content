@@ -110,6 +110,9 @@ Streams defaults to interactive mode unless the configuration can't be represent
 :::
 
 #### YAML mode [streams-editing-yaml-mode]
+```{applies_to}
+stack: ga 9.3+
+```
 
 **YAML** mode provides a code editor for writing Streamlang directly. This mode works best for:
 
