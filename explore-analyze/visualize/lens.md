@@ -11,7 +11,7 @@ products:
 
 # Lens [lens]
 
-**Lens** is {{kib}}'s modern, drag‑and‑drop visualization editor designed to make data exploration fast and intuitive. It allows you to build charts and tables by simply dragging fields from a data view onto a workspace, while {{kib}} automatically suggests the most appropriate visualization types based on the data.
+**Lens** is {{kib}}'s modern, drag‑and‑drop visualization editor designed to make data exploration fast and intuitive. It allows you to build charts and tables by dragging fields from a data view onto a workspace, while {{kib}} automatically suggests the most appropriate visualization types based on the data.
 
 The Lens editor uses [data views](/explore-analyze/find-and-organize/data-views.md) to define the available {{es}} indices and fields. 
 
@@ -21,10 +21,20 @@ Once you select a {{data-source}}, you can build many types of visualizations by
 
 With Lens, you can create the following visualization types:
 
-- [Metric chart](/explore-analyze/visualize/charts/area-charts.md)
+- [Bar chart](/explore-analyze/visualize/charts/bar-charts.md)
 - [Line chart](/explore-analyze/visualize/charts/line-charts.md)
 - [Area chart](/explore-analyze/visualize/charts/area-charts.md)
+- [Metric chart](/explore-analyze/visualize/charts/area-charts.md)
 - [Table](/explore-analyze/visualize/charts/tables.md)
+- Pie chart
+- Gauge chart
+- Heat map chart
+- Waffle chart
+- Region map chart
+- Treemap chart
+- Tag cloud chart
+- Mosaic chart
+- Legacy Metric chart (deprecated)
 
 ## Create visualizations [create-the-visualization-panel]
 
