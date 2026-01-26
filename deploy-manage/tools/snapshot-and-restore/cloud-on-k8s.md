@@ -369,10 +369,10 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
             containers:
             - name: elasticsearch
               env:
-              - name: AZURE_FEDERATED_TOKEN_FILE <3>
-                value: /usr/share/elasticsearch/config/azure/tokens/azure-identity-token
+              - name: AZURE_FEDERATED_TOKEN_FILE 
+                value: /usr/share/elasticsearch/config/azure/tokens/azure-identity-token <3>
               volumeMounts:
-              - name: azure-identity-token <3>
+              - name: azure-identity-token
                 mountPath: /usr/share/elasticsearch/config/azure/tokens <3>
             volumes:
             - name: azure-identity-token <3>
