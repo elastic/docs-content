@@ -14,7 +14,7 @@ navigation_title: Elasticsearch solution
 
 # {{es}} solution overview
 
-The {{es}} solution and serverless project type provide specialized UI tools that help you build search applications faster. These tools build on top of core {{es}} [search capabilities](/solutions/search.md) that are available across all deployment types, solutions, and project types.
+The {{es}} solution and serverless project type provide specialized UI tools that help you build search-powered applications faster. These tools build on top of core {{es}} [search capabilities](/solutions/search.md) that are available across all deployment types, solutions, and project types.
 
 These UI affordances are exclusive to the {{es}} solution (on non-serverless deployments) and the {{es}} serverless project type.
 
@@ -29,7 +29,7 @@ Not sure which deployment type is right for you? Use the following resources to 
 
 ## Features and tools
 
-The {{es}} solution provides the following specialized UI tools and features to help you build search applications faster:
+The {{es}} solution provides the following specialized UI tools and features to help you build search-powered applications faster:
 
 ### Agent Builder
 

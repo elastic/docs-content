@@ -14,7 +14,7 @@ navigation_title: Search use case
 
 This section documents core {{es}} search capabilities. These capabilities are available across all Elastic deployments, solutions, and project types.
 
-Use this section to understand search techniques, query methods, ranking strategies, and data ingestion for search applications.
+Use this section to understand search techniques, query methods, ranking strategies, and data ingestion for search-powered applications.
 
 ::::{tip}
 Using the {{es}} solution or serverless project type? The [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) covers additional UI tools included with these options.

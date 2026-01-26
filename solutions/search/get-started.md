@@ -27,7 +27,7 @@ For simplicity and speed, try out {{serverless-full}}:
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
 
-If you're not sure which project type to choose, select the **{{es}}** project type. This project type provides core {{es}} search capabilities along with additional UI tools to help you build search applications faster.
+If you're not sure which project type to choose, select the **{{es}}** project type. This project type provides core {{es}} search capabilities along with additional UI tools to help you build search-powered applications faster.
 
 When your project is created, you're ready to move on to the next step and to start creating indices, adding data, and performing searches.
 ::::
