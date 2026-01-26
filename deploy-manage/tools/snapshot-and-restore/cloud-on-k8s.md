@@ -372,13 +372,21 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
               - name: AZURE_FEDERATED_TOKEN_FILE <3>
                 value: /usr/share/elasticsearch/config/azure/tokens/azure-identity-token
               volumeMounts:
-              - name: azure-identity-token
+              - name: azure-identity-token <3>
                 mountPath: /usr/share/elasticsearch/config/azure/tokens <3>
+            volumes:
+            - name: azure-identity-token <3>
+              projected:
+                sources:
+                - serviceAccountToken:
+                    audience: api://AzureADTokenExchange
+                    expirationSeconds: 3600
+                    path: azure-identity-token
     ```
 
     1. Specify the Kubernetes secret created in the previous step to configure the Azure storage account name as a secure setting.
     2. This is the service account created earlier in the steps from the [Azure Workload Identity](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-a-kubernetes-service-account) tutorial.
-    3. The corresponding volume is injected by the [Azure Workload Identity Mutating Admission Webhook](https://azure.github.io/azure-workload-identity/docs/installation/mutating-admission-webhook.html). For {{es}} to be able to access the token, the mount needs to be in a sub-directory of the {{es}} config directory. The corresponding environment variable needs to be adjusted as well.
+    3. For {{es}} to be able to access the token, the mount needs to be in a sub-directory of the {{es}} config directory. Therefore, the volume, volume mount, and environment variable must all be defined manually.
 
 11. Create a snapshot repository of type `azure` through the {{es}} API, or through [*{{stack}} configuration policies*](../../deploy/cloud-on-k8s/elastic-stack-configuration-policies.md).
 
