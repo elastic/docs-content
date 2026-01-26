@@ -199,8 +199,10 @@ In the **Cloud provider** field, select **Amazon Web Services**. In the **Region
   :::
 
 $$$firewall-allowlist$$$
+::::{note}
 :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
 :::
+::::
 
 ### Install agent
 

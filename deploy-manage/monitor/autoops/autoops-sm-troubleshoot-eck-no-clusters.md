@@ -12,7 +12,7 @@ products:
 
 If you used {{eck}} (ECK) to connect your self-managed clusters to AutoOps but you don't see any connected clusters in your account, go through this guide to diagnose and fix common issues. 
 
-## 1. Verify `AutoOpsAgentPolicy` status
+## Verify `AutoOpsAgentPolicy` status
 
 Check if the `AutoOpsAgentPolicy` was successfully created and the ECK operator is processing it correctly.
 
@@ -40,7 +40,7 @@ Repeat the steps to [install the agent](../autoops/cc-connect-self-managed-to-au
 
 :::::
 
-## 2. Verify that {{agent}} was deployed
+## Verify that {{agent}} was deployed
 
 Check if `AutoOpsAgentPolicy` successfully deployed {{agent}} for your {{es}} clusters. 
 
@@ -74,7 +74,7 @@ kubectl describe pod <AGENT_POD_NAME>
 
 :::::
 
-## 3. Validate connection secrets
+## Validate connection secrets
 
 Make sure there are no errors in your secret keys.
 
@@ -101,29 +101,27 @@ The command should return `autoops-config`.
 
 :::::
 
-## 4. Check cluster connectivity
+## Check for authorization errors
 
-Make sure there are no errors in your secret keys.
-
+When you go through the installation wizard, the ECK operator attempts to create a user or API key for {{agent}}. If there is an issue with this creation, you will see authorization errors in the operator logs.
 :::::{stepper}
 
-::::{step} Verify secret content
+::::{step} Pull operator logs
 Run the following command.
 ```shell
-kubectl get secret autoops-config -o yaml
+kubectl logs -f -n <ECK_OPERATOR_NAMESPACE> -l control-plane=elastic-operator
 ```
-Make sure you can see the following required keys in the secret:
-* `autoops-token`
-* `autoops-otel-url`
-* `cloud-connected-mode-api-key`
 ::::
 
-::::{step} Confirm secret reference
-Run the following command to confirm that `AutoOpsAgentPolicy` is actually referencing the correct configuration.
-```shell
-kubectl get autoopsagentpolicy quickstart -o jsonpath='{.spec.config.secretName}'
-```
-The command should return `autoops-config`. 
+::::{step} Inspect logs
+If you see any errors in the logs mentioning "authorization" or "unauthorized connection", go through the installation wizard again so that the operator can reattempt creating a user or API key.
 ::::
 
-:::::
+## Ensure that {{agent}} is allowed to send data to AutoOps
+
+:::{include} ../_snippets/autoops-allowlist-port-and-urls.md
+:::
+
+## Check cluster health
+
+Ensure that the {{es}} clusters you are trying to connect to AutoOps are healthy. {{agent}} may fail to connect clusters in a Red state.
