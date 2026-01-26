@@ -93,6 +93,30 @@ Streams processors support the following comparators:
 
 After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
 
+### Editing modes [streams-editing-modes]
+
+The Streams processing UI provides an [interactive mode](#streams-streamlang-interactive-mode) and a [YAML mode](#streams-streamlang-yaml-mode) for editing processors and conditions.
+
+#### Interactive mode [streams-editing-interactive-mode]
+
+**Interactive** mode provides a form-based interface for creating and editing processors. This mode works best for:
+
+- Building simple processing configurations
+- Users who prefer a guided, visual approach
+- Configurations that don't require deeply nested conditions
+
+:::{note}
+Streams defaults to interactive mode unless the configuration can't be represented in interactive mode (for example, when nesting levels are too deep).
+:::
+
+#### YAML mode [streams-editing-yaml-mode]
+
+**YAML** mode provides a code editor for writing Streamlang directly. This mode works best for:
+
+- Users who prefer working with code
+- Advanced configurations with complex or deeply nested conditions
+
+
 ### Preview changes [streams-preview-changes]
 
 After you create processors, the **Data preview** tab simulates processor results with additional filtering options depending on the outcome of the simulation.
