@@ -79,7 +79,7 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 - **Provide clear descriptions**: Help agents understand when and how to use each parameter
 
 :::{tip}
-If queries are slow or failing, you may be retrieving more data than the LLM can process. Refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md) for tips on diagnosing and resolving these issues.
+If queries are slow or failing, you might be retrieving more data than the LLM can process. Refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md) for tips on diagnosing and resolving these issues.
 :::
 
 ## Limitations
