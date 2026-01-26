@@ -34,7 +34,7 @@ This Hot/Frozen – High Availability architecture is intended for organizations
 **Automated operations that frequently read large data volumes require both high availability (replicas) and predictable low latency.**
 
 * Common examples of these tasks include look-back windows on security detection/alert rules, transforms, machine learning jobs, or watches; and long running scroll queries or external extract processes.
-* When automated processes query indices with replicas, replicas provide immediate failover on node loss. When they query searchable snapshots (cold fully mounted, frozen partially mounted), durability comes from the snapshot repository; node failure triggers shard restore, causing brief failed searches. To avoid interruption, use [replicate_for](https://www.elastic.co/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot#ilm-searchable-snapshot-options) on **frozen** or set local replicas for higher tiers.
+* When automated processes query indices with replicas, replicas provide immediate failover on node loss. When they query searchable snapshots (cold fully mounted, frozen partially mounted), durability comes from the snapshot repository; node failure triggers shard restore, causing brief failed searches. To avoid interruption, use the [replicate_for](https://www.elastic.co/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot#ilm-searchable-snapshot-options) option on the **frozen** tier, or set local replicas for higher tiers.
 
 ::::
 
