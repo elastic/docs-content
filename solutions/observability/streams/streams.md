@@ -108,6 +108,7 @@ Interact with and configure your streams in the following ways:
 - [**Retention**](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
 - [**Partitioning**](./management/partitioning.md): {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Route data into child streams.
 - [**Processing**](./management/extract.md): Parse and extract information from documents into dedicated fields.
+- [**Streamlang**](./management/extract/streamlang.md): Reference documentation for the Streamlang DSL used for defining conditions and processing.
 - [**Schema**](./management/schema.md): Manage field mappings.
 - [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
 - [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.

@@ -60,8 +60,8 @@ After adding all desired processors and conditions, select **Save changes**.
 
 Refer to individual [supported processors](#streams-extract-processors) for more on configuring specific processors.
 
-:::{note}
-Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
+:::{tip}
+For advanced configurations or if you prefer working with code, switch to **YAML mode** to write [Streamlang](./extract/streamlang.md) directly.
 :::
 
 ### Add conditions [streams-add-processor-conditions]
@@ -92,6 +92,27 @@ Streams processors support the following comparators:
 :::
 
 After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
+
+### Editing modes [streams-editing-modes]
+
+The Streams processing UI provides an [interactive mode](#streams-streamlang-interactive-mode) and a [YAML mode](#streams-streamlang-yaml-mode)
+
+#### Interactive mode [streams-editing-interactive-mode]
+
+**Interactive** mode provides a form-based interface for creating and editing processors. This mode works best for:
+
+- Building simple processing configurations
+- Users who prefer a guided, visual approach
+- Configurations that don't require deeply nested conditions
+
+Streams defaults to interactive mode unless the configuration can't be represented in interactive mode (for example, when nesting levels are too deep).
+
+#### YAML mode [streams-editing-yaml-mode]
+
+**YAML** mode provides a code editor for writing Streamlang directly. This mode works best for:
+
+- Users who prefer working with code
+- Advanced configurations with complex or deeply nested conditions
 
 ### Preview changes [streams-preview-changes]
 
