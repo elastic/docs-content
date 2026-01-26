@@ -23,12 +23,15 @@ Elastic helps you build applications for three main use cases: search, observabi
 
 | Your use case | What to use | Description |
 | --- | --- | --- |
-| Building search applications | 1. [Core search capabilities](/solutions/search.md)<br><br> 2. [Elasticsearch solution](/solutions/elasticsearch-solution-project.md) | - Core {{es}} search features available across all deployment types, solutions, and project types<br><br>- Additional UI tools that complement the core search features |
+| Building search-powered applications | 1. [Core search capabilities](/solutions/search.md)<br><br> 2. [Elasticsearch solution](/solutions/elasticsearch-solution-project.md) | 1. Core {{es}} search features available across all deployment types, solutions, and project types<br><br>2. Additional UI tools that complement the core search features |
 | Monitoring applications or infrastructure | [Observability solution](/solutions/observability.md) | Monitor and troubleshoot with logs, metrics, and traces |
 | Protecting against threats | [Security solution](/solutions/security.md) | Detect and respond to security threats |
 
 ::::{tip}
-If you're not sure which solution to use, the {{es}} solution is a good starting point for general-purpose search use cases.
+Not sure which to choose? Start with the {{es}} solution, if you don't need the additional features in {{product.observability}} or {{product.security}}.
 ::::
 
-**About solutions and project types:** Solutions are available as project types on {{serverless-full}} (select one when creating a project) or as solution views on {{ech}} and self-managed deployments (select a default solution view when creating a deployment, or configure per [space](/deploy-manage/manage-spaces.md)).
+## About solutions and project types
+
+- On {{serverless-full}}, select a solution as your project type when creating a project.
+- On {{ech}}, ECE, ECK, and self-managed clusters, select a default solution view when creating a deployment, or configure per [space](/deploy-manage/manage-spaces.md).
