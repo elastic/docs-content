@@ -689,6 +689,7 @@ toc:
               - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
                 children:
                   - file: monitor/autoops/autoops-sm-troubleshoot-firewalls.md
+                  - file: monitor/autoops/autoops-sm-troubleshoot-eck-no-clusters.md
           - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/views.md
             children:

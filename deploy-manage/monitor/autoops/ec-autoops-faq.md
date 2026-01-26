@@ -36,7 +36,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Does AutoOps for self-managed clusters incur additional costs?](#additional-payment)
 * [Does shipping metrics data to {{ecloud}} incur additional costs?](#autoops-metrics-cost)
 * [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
-* []
+* [Do I have to do any maintenance when using AutoOps for self-managed clusters?](#maintenance)
 
 **Setting up AutoOps for self-managed clusters**
 * [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
@@ -102,6 +102,9 @@ $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur addi
 
 $$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
+
+$$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for self-managed clusters?**
+:   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, we recommend keeping {{agent}} upgraded to the latest version so you can use new features and get known issues fixed. 
 
 ### Setting up AutoOps for self-managed clusters
 
