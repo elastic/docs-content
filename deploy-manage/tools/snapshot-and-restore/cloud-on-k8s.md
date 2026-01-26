@@ -13,10 +13,10 @@ products:
 
 Snapshots allow you to back up and restore {{es}} indices, helping protect data from accidental deletion and enabling migration between clusters. In {{eck}} (ECK), you can register snapshot repositories and configure snapshot lifecycle policies to automate backups.
 
-To set up automated snapshots for {{es}} on Kubernetes you have to:
+To set up automated snapshots for {{es}} on {{k8s}} you have to:
 
 1. Register the snapshot repository with the {{es}} API.
-2. Set up a Snapshot Lifecycle Management Policy through [API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm) or the [{{kib}} UI](/deploy-manage/tools/snapshot-and-restore.md)
+2. Set up a Snapshot Lifecycle {{manage-app}} Policy through [API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm) or the [{{kib}} UI](/deploy-manage/tools/snapshot-and-restore.md)
 
 ::::{note}
 Support for S3, GCS and Azure repositories is bundled in {{es}} by default from version 8.0. On older versions of {{es}}, or if another snapshot repository plugin should be used, you have to [Install a snapshot repository plugin](#k8s-install-plugin).
@@ -31,10 +31,10 @@ What follows is a non-exhaustive list of configuration examples. The first examp
 
 * [Basic snapshot repository setup using GCS as an example](#k8s-basic-snapshot-gcs)
 
-The following examples cover approaches that use Cloud-provider specific means to leverage Kubernetes service accounts to avoid having to configure snapshot repository credentials in {{es}}:
+The following examples cover approaches that use Cloud-provider specific means to leverage {{k8s}} service accounts to avoid having to configure snapshot repository credentials in {{es}}:
 
 * [Use GKE Workload Identity](#k8s-gke-workload-identiy)
-* [Use AWS IAM roles for service accounts (IRSA)](#k8s-iam-service-accounts)
+* [Use {{aws}} IAM roles for service accounts (IRSA)](#k8s-iam-service-accounts)
 * [Use Azure Workload Identity](#k8s-azure-workload-identity)
 
 The final example illustrates how to configure secure and trusted communication when you
@@ -66,7 +66,7 @@ Using ECK, you can automatically inject secure settings into a cluster node by p
     }
     ```
 
-2. Create a Kubernetes secret from that file:
+2. Create a {{k8s}} secret from that file:
 
     ```sh
     kubectl create secret generic gcs-credentials --from-file=gcs.client.default.credentials_file
@@ -124,14 +124,14 @@ GCS credentials are automatically propagated into each {{es}} node’s keystore.
 
 ### Use GKE Workload Identity [k8s-gke-workload-identiy]
 
-GKE Workload Identity allows a Kubernetes service account to impersonate a Google Cloud IAM service account and therefore to configure a snapshot repository in {{es}} without storing Google Cloud credentials in {{es}} itself. This feature requires your Kubernetes cluster to run on GKE and your {{es}} cluster to run at least [version 7.13](https://github.com/elastic/elasticsearch/pull/71239) and [version 8.1](https://github.com/elastic/elasticsearch/pull/82974) when using searchable snapshots.
+GKE Workload Identity allows a {{k8s}} service account to impersonate a Google Cloud IAM service account and therefore to configure a snapshot repository in {{es}} without storing Google Cloud credentials in {{es}} itself. This feature requires your {{k8s}} cluster to run on GKE and your {{es}} cluster to run at least [version 7.13](https://github.com/elastic/elasticsearch/pull/71239) and [version 8.1](https://github.com/elastic/elasticsearch/pull/82974) when using {{search-snaps}}.
 
 Follow the instructions in the [GKE documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to configure workload identity, specifically:
 
-1. Create or update your Kubernetes cluster with `--workload-pool=PROJECT_ID.svc.id.goog` enabled, where `PROJECT_ID` is your Google project ID
-2. Create a namespace and a Kubernetes service account (`test-gcs` and `gcs-sa` in this example)
-3. Create the bucket, the Google service account (`gcp-sa` in this example. Note that both Google and Kubernetes have the concept of a service account and this example is referring to the former) and set the relevant permissions through Google Cloud console or gcloud CLI
-4. Allow the Kubernetes service account to impersonate the Google service account:
+1. Create or update your {{k8s}} cluster with `--workload-pool=PROJECT_ID.svc.id.goog` enabled, where `PROJECT_ID` is your Google project ID
+2. Create a namespace and a {{k8s}} service account (`test-gcs` and `gcs-sa` in this example)
+3. Create the bucket, the Google service account (`gcp-sa` in this example. Note that both Google and {{k8s}} have the concept of a service account and this example is referring to the former) and set the relevant permissions through Google Cloud console or gcloud CLI
+4. Allow the {{k8s}} service account to impersonate the Google service account:
 
     ```sh
     gcloud iam service-accounts add-iam-policy-binding gcp-sa@PROJECT_ID.iam.gserviceaccount.com \
@@ -139,7 +139,7 @@ Follow the instructions in the [GKE documentation](https://cloud.google.com/kube
     --member "serviceAccount:PROJECT_ID.svc.id.goog[test-gcs/gcs-sa]"
     ```
 
-5. Add the `iam.gke.io/gcp-service-account` annotation on the Kubernetes service account
+5. Add the `iam.gke.io/gcp-service-account` annotation on the {{k8s}} service account
 
     ```sh
     kubectl annotate serviceaccount gcs-sa \
@@ -147,7 +147,7 @@ Follow the instructions in the [GKE documentation](https://cloud.google.com/kube
         iam.gke.io/gcp-service-account=gcp-sa@PROJECT_ID.iam.gserviceaccount.com
     ```
 
-6. Create an {{es}} cluster, referencing the Kubernetes service account
+6. Create an {{es}} cluster, referencing the {{k8s}} service account
 
     ```yaml
     apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -166,14 +166,14 @@ Follow the instructions in the [GKE documentation](https://cloud.google.com/kube
         count: 3
     ```
 
-7. Create the snapshot repository as described in [Register the repository in Elasticsearch](#k8s-create-repository)
+7. Create the snapshot repository as described in [Register the repository in {{es}}](#k8s-create-repository)
 
 
-### Use AWS IAM roles for service accounts (IRSA) [k8s-iam-service-accounts]
+### Use {{aws}} IAM roles for service accounts (IRSA) [k8s-iam-service-accounts]
 
-The AWS IAM roles for service accounts feature allows you to give {{es}} restricted access to a S3 bucket without having to expose and store AWS credentials directly in {{es}}. This requires you to run the ECK operator on Amazon’s EKS offering and an [{{es}} cluster running at least version 8.1](https://www.elastic.co/guide/en/elasticsearch/reference/8.1/repository-s3.html#iam-kubernetes-service-accounts).
+The {{aws}} IAM roles for service accounts feature allows you to give {{es}} restricted access to a S3 bucket without having to expose and store {{aws}} credentials directly in {{es}}. This requires you to run the ECK operator on Amazon’s EKS offering and an [{{es}} cluster running at least version 8.1](https://www.elastic.co/guide/en/elasticsearch/reference/8.1/repository-s3.html#iam-kubernetes-service-accounts).
 
-Follow [the AWS documentation](https://aws.amazon.com/premiumsupport/knowledge-center/eks-restrict-s3-bucket/) to set this feature up. Specifically you need to:
+Follow [the {{aws}} documentation](https://aws.amazon.com/premiumsupport/knowledge-center/eks-restrict-s3-bucket/) to set this feature up. Specifically you need to:
 
 1. Define an IAM policy file, called `iam-policy.json` in this example, giving access to an S3 bucket called `my_bucket`
 
@@ -208,7 +208,7 @@ Follow [the AWS documentation](https://aws.amazon.com/premiumsupport/knowledge-c
     }
     ```
 
-2. Create the policy using AWS CLI tooling, using the name `eck-snapshots` in this example
+2. Create the policy using {{aws}} CLI tooling, using the name `eck-snapshots` in this example
 
     ```sh
     aws iam create-policy \
@@ -216,7 +216,7 @@ Follow [the AWS documentation](https://aws.amazon.com/premiumsupport/knowledge-c
         --policy-document file://iam-policy.json
     ```
 
-3. Use `eksctl` to create an IAM role and create and annotate a Kubernetes service account with it. The service account is called `aws-sa` in the `default` namespace in this example.
+3. Use `eksctl` to create an IAM role and create and annotate a {{k8s}} service account with it. The service account is called `aws-sa` in the `default` namespace in this example.
 
     ```sh
     eksctl create iamserviceaccount \
@@ -228,7 +228,7 @@ Follow [the AWS documentation](https://aws.amazon.com/premiumsupport/knowledge-c
     ```
 
     1. Replace `YOUR_CLUSTER` with your actual EKS cluster name
-    2. Replace with the actual AWS IAM ARN for the policy you just created
+    2. Replace with the actual {{aws}} IAM ARN for the policy you just created
 
 4. Create an {{es}} cluster referencing the service account
 
@@ -268,7 +268,7 @@ Follow [the AWS documentation](https://aws.amazon.com/premiumsupport/knowledge-c
     1. {{es}} expects the service account token to be projected to exactly this path
     2. Replace with the actual `AWS_ROLE_ARN` for the IAM role you created in step 3
 
-5. Create the snapshot repository as described in [Register the repository in Elasticsearch](#k8s-create-repository) but of type `s3`
+5. Create the snapshot repository as described in [Register the repository in {{es}}](#k8s-create-repository) but of type `s3`
 
     ```sh
     PUT /_snapshot/my_s3_repository
@@ -291,7 +291,7 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
 1. [Create a resource group](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-a-resource-group), if it does not exist yet.
 2. [Create](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-an-aks-cluster) or [update](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#update-an-existing-aks-cluster) your AKS cluster to enable workload identity.
 3. [Retrieve the OIDC issuer URL](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#retrieve-the-oidc-issuer-url).
-4. [Create a managed identity](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-a-managed-identity) and [link it to a Kubernetes service account](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-a-kubernetes-service-account).
+4. [Create a managed identity](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-a-managed-identity) and [link it to a {{k8s}} service account](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-a-kubernetes-service-account).
 5. [Create the federated identity credential](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-the-federated-identity-credential).
 
     ::::{note}
@@ -339,14 +339,14 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
 
     1. The storage account ID needs to be specified as the scope for the role assignment without the leading slash returned by the `az storage account show` command.
 
-9. Create a Kubernetes secret, called `keystore` in this example, with the storage account name. This is necessary to be able to specify the account name as a secure setting in {{es}} in the next step.
+9. Create a {{k8s}} secret, called `keystore` in this example, with the storage account name. This is necessary to be able to specify the account name as a secure setting in {{es}} in the next step.
 
     ```sh
     kubectl create secret generic keystore \
       --from-literal=azure.client.default.account=${STORAGE_ACCOUNT_NAME}
     ```
 
-10. Create an {{es}} cluster that uses the Kubernetes service account created earlier.
+10. Create an {{es}} cluster that uses the {{k8s}} service account created earlier.
 
     ```yaml
     apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -384,7 +384,7 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
                     path: azure-identity-token
     ```
 
-    1. Specify the Kubernetes secret created in the previous step to configure the Azure storage account name as a secure setting.
+    1. Specify the {{k8s}} secret created in the previous step to configure the Azure storage account name as a secure setting.
     2. This is the service account created earlier in the steps from the [Azure Workload Identity](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-a-kubernetes-service-account) tutorial.
     3. For {{es}} to be able to access the token, the mount needs to be in a sub-directory of the {{es}} config directory. Therefore, the volume, volume mount, and environment variable must all be defined manually.
 
@@ -404,7 +404,7 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
 
 ### Use S3-compatible services [k8s-s3-compatible]
 
-The following example assumes that you have deployed and configured a S3 compatible object store like [MinIO](https://min.io) that can be reached from the Kubernetes cluster, and also that you have created a bucket in said service, called `es-repo` in this example. The example also assumes an {{es}} cluster named `es` is deployed within the cluster. Most importantly the steps describing how to customize the JVM trust store are only necessary if your S3-compatible service is using TLS certificates that are not issued by a well known certificate authority.
+The following example assumes that you have deployed and configured a S3 compatible object store like [MinIO](https://min.io) that can be reached from the {{k8s}} cluster, and also that you have created a bucket in said service, called `es-repo` in this example. The example also assumes an {{es}} cluster named `es` is deployed within the cluster. Most importantly the steps describing how to customize the JVM trust store are only necessary if your S3-compatible service is using TLS certificates that are not issued by a well known certificate authority.
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -425,7 +425,7 @@ spec:
     ```
 
     ::::{note}
-    You can skip this step if you want to create a new trust store that does not contain any well known CAs that {{es}} trusts by default. Be aware that this limits Elasticsearch’s ability to communicate with TLS secured endpoints to those for which you add CA certificates in the next steps.
+    You can skip this step if you want to create a new trust store that does not contain any well known CAs that {{es}} trusts by default. Be aware that this limits {{es}}’s ability to communicate with TLS secured endpoints to those for which you add CA certificates in the next steps.
     ::::
 
 2. Obtain the CA certificate used to sign the certificate of your S3-compatible service. We assume it is called `tls.crt`
@@ -439,13 +439,13 @@ spec:
     You need to have the Java Runtime environment with the `keytool` installed locally for this step. `changeit` is the default password used by the JVM, but it can be changed with `keytool` as well.
     ::::
 
-4. Create a Kubernetes secret with the amended trust store
+4. Create a {{k8s}} secret with the amended trust store
 
     ```sh
     kubectl create secret generic custom-truststore --from-file=cacerts
     ```
 
-5. Create a Kubernetes secret with the credentials for your object store bucket
+5. Create a {{k8s}} secret with the credentials for your object store bucket
 
     ```sh
     kubectl create secret generic snapshot-settings \
@@ -453,7 +453,7 @@ spec:
        --from-literal=s3.client.default.secret_key=$YOUR_SECRET_ACCESS_KEY
     ```
 
-6. Update your {{es}} cluster to use the trust store and credentials from the Kubernetes secrets
+6. Update your {{es}} cluster to use the trust store and credentials from the {{k8s}} secrets
 
     ```yaml
     apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -497,7 +497,7 @@ spec:
     }
     ```
 
-    1. Whether or not you need to enable `path_style_access` depends on your choice of S3-compatible storage service and how it is deployed. If it is exposed through a standard Kubernetes service it is likely you need this option
+    1. Whether or not you need to enable `path_style_access` depends on your choice of S3-compatible storage service and how it is deployed. If it is exposed through a standard {{k8s}} service it is likely you need this option
     2. Replace this with the actual endpoint of your S3-compatible service
 
 
