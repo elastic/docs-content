@@ -17,20 +17,19 @@ products:
 
 The chat GUI and programmatic interfaces enable real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 
-<!-- 
+
 :::{note}
-TODO: Uncomment once page is live.
 The chat UI is available in both standalone and flyout modes. For more information, refer to [Chat UI modes](standalone-and-flyout-modes.md).
 ::: 
--->
+
 
 ## Get started
 
 :::{tip}
-Refer to the [getting started](get-started.md) guide to enable the feature and ingest some data.
+Refer to the [getting started](get-started.md) guide if you need to enable the feature and ingest some data.
 :::
 
-Once the feature is enabled, find **Agents** in the navigation menu to begin chatting.
+Find **Agents** in the navigation menu to begin chatting.
 You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 This takes you to the chat GUI:
