@@ -47,21 +47,21 @@ Deploys two {{es}} clusters and two {{kib}} instances together with single Elast
 
 ## Storing local state in host path volume [k8s_storing_local_state_in_host_path_volume]
 
-{{agent}} managed by ECK stores local state in a host path volume by default. This ensures that {{integrations}} run by the agent can continue their work without duplicating work that has already been done after the Pod has been recreated for example because of a Pod configuration change. Multiple replicas of an agent, for example {{fleet}} Servers, can not be deployed on the same underlying {{k8s}} node as they would try to use the same host path. There are 1 or 2 options for managing this feature depending on the version of Elastic Agent.
+{{agent}} managed by ECK stores local state in a host path volume by default. This ensures that {{integrations}} run by the agent can continue their work without duplicating work that has already been done after the Pod has been recreated for example because of a Pod configuration change. Multiple replicas of an agent, for example {{fleet}} Servers, can not be deployed on the same underlying {{k8s}} node as they would try to use the same host path. The options for managing this feature differ depending on the version of Elastic Agent that you're using:
 
 
 ::::{tab-set}
 
-:::{tab-item} {{agent}} 8.16 and higher
+:::{tab-item} {{agent}} 8.16 and later
 
-1. If local state storage in `hostPath` volumes is not desired this can be turned off by configuring an `emptyDir` volume instead.
-2. If local state storage is still desired but running the Agent container as root is not allowed, then you can run a `DaemonSet` that adjusts the permissions for the Agent local state on each Node prior to running {{agent}}. Note that this `DaemonSet` must be `runAsUser: 0` and possibly `privileged: true`. Also note the {{kib}} changes required to trust the {{es}} CA when running in fleet mode.
+* If local state storage in `hostPath` volumes is not desired this can be turned off by configuring an `emptyDir` volume instead.
+* If local state storage is still desired but running the Agent container as root is not allowed, then you can run a `DaemonSet` that adjusts the permissions for the Agent local state on each Node prior to running {{agent}}. Note that this `DaemonSet` must be `runAsUser: 0` and possibly `privileged: true`. Also note the {{kib}} changes required to trust the {{es}} CA when running in fleet mode.
 
-Full configuration examples exist in  [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).
+For full configuration examples, refer to [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).
 
 :::
 
-:::{tab-item} {{agent}} 8.15 and before 
+:::{tab-item} {{agent}} 8.15 and earlier
 
 1. If local state storage in `hostPath` volumes is not desired this can be turned off by configuring an `emptyDir` volume instead.
 

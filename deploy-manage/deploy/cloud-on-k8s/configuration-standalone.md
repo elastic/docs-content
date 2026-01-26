@@ -267,7 +267,7 @@ To deploy Elastic Agent in clusters with the Pod Security Policy admission contr
 
 ## Running as a non-root user [k8s_running_as_a_non_root_user]
 
-In order to run {{agent}} as a non-root user you must choose how you want to persist data to the Agent’s volume.
+To run {{agent}} as a non-root user you must choose how you want to persist data to the Agent’s volume.
 
 ::::{tab-set}
 

@@ -93,7 +93,7 @@ spec:
               name: system
 ```
 
-* `xpack.fleet.agents.elasticsearch.hosts` must point to the {{es}} cluster where {{agents}} should send data. For ECK-managed {{es}} clusters ECK creates a Service accessible through `<ES_RESOURCE_NAME>-es-http.<ES_RESOURCE_NAMESPACE>.svc:9200` URL, where `ES_RESOURCE_NAME` is the name of {{es}} resource and `ES_RESOURCE_NAMESPACE` is the namespace it was deployed within. Refer to [Storing local state in host path volume](configuration-examples-standalone.md#k8s_storing_local_state_in_host_path_volume) for details on adjusting this field when running agent as non-root.
+* `xpack.fleet.agents.elasticsearch.hosts` must point to the {{es}} cluster where {{agents}} should send data. For ECK-managed {{es}} clusters ECK creates a service accessible through `<ES_RESOURCE_NAME>-es-http.<ES_RESOURCE_NAMESPACE>.svc:9200` URL, where `ES_RESOURCE_NAME` is the name of {{es}} resource and `ES_RESOURCE_NAMESPACE` is the namespace it was deployed within. Refer to [Storing local state in host path volume](configuration-examples-standalone.md#k8s_storing_local_state_in_host_path_volume) for details on adjusting this field when running agent as non-root.
 * `xpack.fleet.agents.fleet_server.hosts` must point to {{fleet-server}} that {{agents}} should connect to. For ECK-managed {{fleet-server}} instances, ECK creates a Service accessible through `<FS_RESOURCE_NAME>-agent-http.FS_RESOURCE_NAMESPACE.svc:8220` URL, where `FS_RESOURCE_NAME` is the name of {{agent}} resource with {{fleet-server}} enabled and `FS_RESOURCE_NAMESPACE` is the namespace it was deployed in.
 * `xpack.fleet.packages` are required packages to enable {{fleet-server}} and {{agents}} to enroll.
 * `xpack.fleet.agentPolicies` policies are needed for {{fleet-server}} and {{agents}} to enroll to, check https://www.elastic.co/guide/en/fleet/current/agent-policy.html for more information.
@@ -264,25 +264,25 @@ Note that the environment variables related to policy selection mentioned in the
 
 ## Running as a non-root user [k8s-elastic-agent-running-as-a-non-root-user]
 
-In order to run {{agent}} as a non-root user you must choose how you want to persist data to the Agent’s volume.
+To run {{agent}} as a non-root user you must choose how you want to persist data to the Agent’s volume.
 
 ::::{tab-set}
 
-:::{tab-item} {{agent}} 8.16 and higher
+:::{tab-item} {{agent}} 8.16 and later
 
-1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
-2. Run {{agent}} with a `hostPath` volume.
+* Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
+* Run {{agent}} with a `hostPath` volume.
 
 :::
 
-:::{tab-item} {{agent}} 8.15 and before 
+:::{tab-item} {{agent}} 8.15 and earlier
 
-1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
-2. Run {{agent}} with a `hostPath` volume which has the advantage of persisting data between restarts of the {{agent}}.
+* Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
+* Run {{agent}} with a `hostPath` volume which has the advantage of persisting data between restarts of the {{agent}}.
 
 In addition to these decisions, if you are running {{agent}} in {{fleet}} mode as a non-root user, you must configure `ssl.certificate_authorities` in each `xpack.fleet.outputs` to trust the CA of the {{es}} Cluster.
 
-To run {{agent}} with an `emptyDir` volume.
+To run {{agent}} with an `emptyDir` volume:
 
 ```yaml
 apiVersion: agent.k8s.elastic.co/v1alpha1
@@ -304,7 +304,7 @@ spec:
 1. Gid 1000 is the default group at which the Agent container runs. Adjust as necessary if `runAsGroup` has been modified.
 
 
-To run {{agent}} with a `hostPath` volume.
+To run {{agent}} with a `hostPath` volume:
 
 ```yaml
 apiVersion: agent.k8s.elastic.co/v1alpha1
