@@ -27,7 +27,7 @@ Conditions for each rule can be applied to specific metrics that you select. You
 
 In this example, the conditions state that you receive a critical alert for hosts with a CPU usage of 120% or above and a warning alert if CPU usage is 100% or above. Note that you will receive an alert only if memory usage is 20% or above, as per the second condition.
 
-{applies_to}`stack: ga =9.0` When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
+{applies_to}`stack: ga =9.0, removed 9.1+` When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
 
 
 :::{image} /solutions/images/observability-metrics-alert-nodata.png
