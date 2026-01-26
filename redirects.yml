@@ -667,7 +667,8 @@ redirects:
        anchors:
         'metric-trends': 'build-metric-charts-with-kibana'
     
-    - to: 'explore-analyze/visualize/charts/line-charts.md'
+     - to: 'explore-analyze/visualize/charts/line-charts.md'
        anchors:
         'compare-data-with-time-offsets': 'line-previous-period'
+
 

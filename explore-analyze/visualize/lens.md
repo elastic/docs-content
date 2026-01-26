@@ -233,25 +233,22 @@ Data sampling allows you to improve the visualization loading time. When you can
 ### Add annotations [add-annotations]
 
 Annotations allow you to call out specific points in your visualizations that are important, such as significant changes in the data. You can add annotations for any {{data-source}}, add text and icons, specify the line format and color, and more.
+Click the **Add layer** icon {icon}`plus_in_square` , select **Annotations** and select the annotation method you want to use:
 
-:::{image} /explore-analyze/images/kibana-lens_annotations_8.2.0.png
-:alt: Lens annotations
-:screenshot:
-:::
+:::{dropdown} New annotation
+1. Select the {{data-source}} for the annotation.
+2. From the fields list, drag a field to the **Horizontal axis** field.
+
+To use global filters in the annotation, click the **Layer settings** icon {icon}`app_management` on the annotations layer, and select **Use global filters**.
 
 Annotations support two placement types:
 
 * **Static date** — Displays annotations for specific times or time ranges.
 * **Custom query** — Displays annotations based on custom {{es}} queries. For detailed information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
 
-Any annotation layer can be saved as an annotation group to the **Visualize Library** in order to reuse it in other visualizations. Any changes made to the annotation group will be reflected in all visualizations to which it is added.
 
-Create a new annotation layer.
 
-1. From your visualization, select {icon}`plus_in_square` **Add layer > Annotations > New annotation**.
-2. Select the {{data-source}} for the annotation.
-3. From the fields list, drag a field to the **Add an annotation** field.
-4. To use global filters in the annotation, click ![Actions menu for the annotations layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Keep global filters** from the dropdown.
+
 
     When you add the visualization to dashboards, ![Visualization modifier popup](/explore-analyze/images/kibana-lens_visualizationModifierPopup_8.8.0.png "") appears, which allows you to view settings changes to the visualization.
 
@@ -283,11 +280,20 @@ Save the annotation group to the library.
 1. From your visualization, on your annotation layer, click ![Save button on annotations layer](/explore-analyze/images/kibana-lens_saveAnnotationLayerButton_8.9.0.png "").
 2. Enter the **Title**, **Description**, and add any applicable [**Tags**](../find-and-organize/tags.md).
 3. Click **Save group**.
+:::
 
+:::{dropdown} Load from library
 Add a library annotation group to a visualization.
+:::
 
-1. From your visualization, select {icon}`plus_in_square` **Add layer > Annotations > Load from library**.
-2. Select the annotation group you want to use.
+
+:::{image} /explore-analyze/images/kibana-lens_annotations_8.2.0.png
+:alt: Lens annotations
+:screenshot:
+:::
+
+Any annotation layer can be saved as an annotation group to the **Visualize Library** to be reused in other visualizations. Any changes made to the annotation group is reflected in all visualizations to which it is added.
+
 
 
 ### Add reference lines [add-reference-lines]
