@@ -279,16 +279,14 @@ From the annotation panel, you can choose the type of placement and adjsut the i
       2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
       3. Select the **Target date field**.
 
-
 **Appearance**
 :   Configure the annotation settings, including:
    - **Name**: Enter the name of the annotation.
-   - **Icon decoration**: .
-   - **Text decoration**: .
-   - **Line**: .
-   - **Color**: .
-   - **Hiode annotation**: .
-
+   - **Icon decoration**: Choose from various icon styles to represent your annotations on the visualization. Options include markers like circles, triangles, squares, and other symbols.
+   - **Text decoration**: Set the style for the text labels of your annotations.
+   - **Line**: Control the width/thickness of annotation lines.
+   - **Color**: Set a custom color for your annotation markers.
+   - **Hide annotation**: Temporarily hide annotations from your visualization without deleting them.
 
 **Tooltip**
 :  Add a field to the annotation tooltip
