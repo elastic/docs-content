@@ -94,7 +94,7 @@ MCP tools have built-in health monitoring. Tools that are unhealthy display an i
 
 An MCP tool is marked "unhealthy" when:
 
-* The MCP tool's associated MCP connector is unavaiable.
+* The MCP tool's associated MCP connector is unavailable.
 
     :::{image} ../images/mcp-connector-unavailable.png
     :screenshot:

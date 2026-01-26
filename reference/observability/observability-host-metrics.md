@@ -17,6 +17,9 @@ Learn about key host metrics displayed in the Infrastructure UI:
 * [Elastic System integration host metrics](#ecs-host-metrics)
 * [OpenTelemetry host metrics](#open-telemetry-host-metrics)
 
+## OpenTelemetry Collector configuration [open-telemetry-collector-configuration]
+
+By default, the {{product.edot-collector}} already collects the following metrics using the `hostmetrics` receiver. If you're using a different Collector distribution or the contrib Collector, refer to the [System OpenTelemetry Assets](integration-docs://reference/system_otel.md#collector-configuration) documentation.
 
 ## Elastic System integration host metrics [ecs-host-metrics]
 
