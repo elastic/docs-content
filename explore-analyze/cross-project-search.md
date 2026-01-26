@@ -13,7 +13,8 @@ Common use cases include centralized log analysis, cross-environment troubleshoo
 
 ## Prerequisites
 
-* {{cps-cap}} requires linked projects. <!-- To set up linked projects, refer to . -->
+* {{cps-cap}} requires linked projects.
+<!-- To set up linked projects, refer to . -->
 * To use {{cps}} with ES|QL, both the origin and linked projects must have the appropriate [subscription level](https://www.elastic.co/subscriptions).
 <!-- * {{cps-cap}} requires [UIAM](TODO) set up. -->
 
