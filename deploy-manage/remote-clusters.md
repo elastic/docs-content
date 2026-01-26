@@ -18,7 +18,7 @@ Remote clusters are especially useful in two cases:
   With [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md), or CCR, you ingest data to an index on a remote cluster. This leader index is replicated to one or more read-only follower indices on your local cluster. Creating a multi-cluster architecture with cross-cluster replication enables you to configure disaster recovery, bring data closer to your users, or establish a centralized reporting cluster to process reports locally.
 
 - **Cross-cluster search**
-  [Cross-cluster search](/solutions/search/cross-cluster-search.md), or CCS, enables you to run a search request against one or more remote clusters. This capability provides each region with a global view of all clusters, allowing you to send a search request from a local cluster and return results from all connected remote clusters. For full {{ccs}} capabilities, the local and remote cluster must be on the same [subscription level](https://www.elastic.co/subscriptions).
+  [Cross-cluster search](/explore-analyze/cross-cluster-search.md), or CCS, enables you to run a search request against one or more remote clusters. This capability provides each region with a global view of all clusters, allowing you to send a search request from a local cluster and return results from all connected remote clusters. For full {{ccs}} capabilities, the local and remote cluster must be on the same [subscription level](https://www.elastic.co/subscriptions).
 
 :::{include} ./remote-clusters/_snippets/terminology.md
 :::

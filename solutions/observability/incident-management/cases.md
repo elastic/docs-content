@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-cases.html
   - https://www.elastic.co/guide/en/serverless/current/observability-cases.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -26,5 +29,5 @@ After creating cases, use case data to build dashboards and visualizations that 
 
 ## Limitations [observability-case-limitations]
 
-* If you create cases in {{observability}}, they are not visible from the {{security-app}} or {{stack-manage-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}. 
+* If you create cases in {{observability}}, they are not visible from the {{security-app}} or {{stack-manage-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}.
 * You cannot attach alerts from {{elastic-sec}} or {{stack-manage-app}} to cases in {{observability}}.

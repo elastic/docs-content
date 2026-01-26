@@ -8,9 +8,11 @@ products:
   - id: elasticsearch
 ---
 
-# Tutorial: Configure data stream retention [tutorial-manage-data-stream-retention]
+# Setting retention for {{es}} data streams [tutorial-manage-data-stream-retention]
 
-This tutorial demonstrates lifecycle retention, showing how to define, configure, and apply it. Keep in mind that the following options apply only to data streams that are managed by the data stream lifecycle.
+This tutorial shows how to configure retention settings for data streams in {{es}}, helping you to control storage costs and compliance. Learn to adjust lifecycle policies so old data is deleted or moved automatically.
+
+The following options apply only to data streams managed by data stream lifecycle.
 
 1. [What is data stream retention?](#what-is-retention)
 2. [How to configure retention?](#retention-configuration)

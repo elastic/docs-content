@@ -1,0 +1,121 @@
+---
+navigation_title: "Get started"
+applies_to:
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
+---
+
+# Get started with {{agent-builder}}
+
+Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
+
+::::{admonition} Agent Builder subscription requirements
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::
+
+::::::{stepper}
+::::{step} Set up an Elastic deployment
+
+If you don't already have an Elastic deployment, refer to [Select your deployment type](/solutions/search/get-started.md#choose-your-deployment-type).
+
+:::{note}
+For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation.
+You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
+:::
+
+::::
+
+:::::{step} Enable {{agent-builder}}
+
+::::{applies-switch}
+
+:::{applies-item} { "serverless": "ga", "elasticsearch" }
+
+{{agent-builder}} is enabled by default in serverless {{es}} projects.
+
+Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::
+
+:::{applies-item} { "serverless": "preview", "observability" }
+
+{{product.observability}} users must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+
+Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::
+
+:::{applies-item} { "serverless": "preview", "security" }
+
+{{product.security}} users must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+
+Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::
+
+:::{applies-item} stack: preview =9.2, ga 9.3+
+
+On non-serverless deployments, {{agent-builder}} availability depends on your navigation mode:
+
+- **{{es}} solution view**: {{agent-builder}} is enabled by default and appears in the side navigation. It replaces Search Assistant.
+- **{{product.observability}} and {{product.security}} solution views**: You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+- **Classic view**: {{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+
+Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::
+
+::::
+
+:::{note}
+To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
+:::
+
+:::::
+
+::::{step} Ingest some data
+
+Before you begin with agents, you need some data in {{es}}. Otherwise, you will be chatting to the underlying LLM without any retrieval-augmented context.
+
+To learn about adding data for search use cases, go to [](/solutions/search/ingest-for-search.md).
+For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
+
+:::{tip}
+If you're not ready to add your own data, you can:
+- Use the Elastic [sample data](/manage-data/ingest/sample-data.md).
+- Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-).  (This requires your [{{es}} URL and an API key](/solutions/search/search-connection-details.md)).
+
+% TODO: we can link to a an agent builder tutorial if we add one in the docs
+:::
+
+::::
+
+::::{step} Begin chatting
+
+The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. {{agent-builder}} includes a default agent named `Elastic AI Agent` with access to all built-in tools, so you can begin chatting immediately.
+
+Learn more in [Agent Chat](chat.md).
+
+::::
+
+::::{step} Configure model (optional)
+
+By default, {{agent-builder}} uses an Elastic Managed LLM. To use a different model, refer to [model selection and configuration](models.md).
+
+::::
+
+::::{step} Begin building agents and tools
+
+Once you've tested the default **Elastic AI Agent** with the [built-in Elastic tools](tools.md), you can begin [building your own agents](agent-builder-agents.md#create-a-new-agent) with custom instructions and [creating your own tools](tools.md#create-custom-tools) to assign them.
+
+::::
+
+::::::

@@ -4,6 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-policy.html
 applies_to:
   stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -362,8 +363,8 @@ You can also set the log level for an individual agent:
 1. In {{fleet}}, click **Agents**. In the **Host** column, select the agent you want to edit. 
 2. Find the **Agent logging level** setting:
    
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1.0` On the agent's **Settings** tab.
-   - {applies_to}`stack: ga 9.0.0` On the agent's **Logs** tab.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` On the agent's **Settings** tab.
+   - {applies_to}`stack: ga =9.0` On the agent's **Logs** tab.
 
 3. Set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
 

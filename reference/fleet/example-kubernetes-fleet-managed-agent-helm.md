@@ -2,8 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-kubernetes-fleet-managed-agent-helm.html
 applies_to:
-  stack: ga 8.18
-  serverless: all
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

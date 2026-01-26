@@ -2,6 +2,9 @@
 navigation_title: Edit or delete an integration policy
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/edit-or-delete-integration-policy.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

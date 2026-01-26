@@ -1,12 +1,16 @@
 ---
+navigation_title: Deploy on Kubernetes
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-kubernetes.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Deploy Fleet Server on Kubernetes [add-fleet-server-kubernetes]
+# Deploy {{fleet-server}} on Kubernetes [add-fleet-server-kubernetes]
 
 ::::{note}
 If your {{stack}} is orchestrated by [ECK](/deploy-manage/deploy/cloud-on-k8s.md), we recommend to deploy the {{fleet-server}} through the operator. That simplifies the process, as the operator automatically handles most of the resources configuration and setup steps.
@@ -29,7 +33,7 @@ You can deploy {{fleet-server}} on Kubernetes and manage it yourself. In this de
 To deploy a {{fleet-server}} on Kubernetes and register it into {{fleet}} you will need the following details:
 
 * The **Policy ID** of a {{fleet}} policy configured with the {{fleet-server}} integration.
-* A **Service token**, used to authenticate {{fleet-server}} with Elasticsearch.
+* A **Service token**, used to authenticate {{fleet-server}} with {{es}}.
 * For outgoing traffic:
 
     * The **{{es}} endpoint URL** where the {{fleet-server}} should connect to, configured also in the {{es}} output associated to the policy.
@@ -61,7 +65,6 @@ This document walks you through the complete setup process, organized into the f
     * {{kib}} should be on the same minor version as {{es}}.
 
 
-
 ## Prerequisites [add-fleet-server-kubernetes-prereq]
 
 Before deploying {{fleet-server}}, you need to:
@@ -86,14 +89,12 @@ A {{fleet-server}} certificate is not required when installing the server using 
 
 ::::
 
-
 If your organization already uses the {{stack}}, you may have a CA certificate that could be used to generate the new cert for the {{fleet-server}}. If you do not have a CA certificate, refer to [Generate a custom certificate and private key for {{fleet-server}}](/reference/fleet/secure-connections.md#generate-fleet-server-certs) for an example to generate a CA and a server certificate using the `elasticsearch-certutil` tool.
 
 ::::{important}
 Before creating the certificate, you need to know and plan in advance the [hostname / URL](/reference/fleet/fleet-settings.md#fleet-server-hosts-setting) that the {{agent}} clients will use to access the {{fleet-server}}. This is important because the **hostname** part of the URL needs to be included in the server certificate as an `x.509 Subject Alternative Name (SAN)`. If you plan to make your {{fleet-server}} accessible through **multiple hostnames** or **FQDNs**, add all of them to the server certificate, and take in mind that the **{{fleet-server}} also needs to access the {{fleet}} URL during its bootstrap process**.
 
 ::::
-
 
 
 #### [{{fleet-server}} → {{es}} output] outbound traffic flow [add-fleet-server-kubernetes-cert-outbound]
@@ -104,7 +105,6 @@ In this flow, {{fleet-server}} acts as the client and {{es}} acts as the HTTPS s
 If your {{es}} cluster is on Elastic Cloud or if it uses a certificate signed by a public and known CA, you won’t need the {{es}} CA during the setup.
 
 ::::
-
 
 In summary, you need:
 
@@ -122,7 +122,7 @@ When {{es}} or {{fleet-server}} are deployed, components communicate over well-d
 | {{fleet-server}} → {{es}} | 9200 |
 | {{fleet-server}} → {{kib}} (optional, for {{fleet}} setup) | 5601 |
 | {{agent}} → {{es}} | 9200 |
-| {{agent}} → Logstash | 5044 |
+| {{agent}} → {{ls}} | 5044 |
 | {{agent}} → {{kib}} (optional, for {{fleet}} setup) | 5601 |
 
 In Kubernetes environments, you can adapt these ports without modifying the listening ports of the {{fleet-server}} or other applications, as traffic is managed by Kubernetes `Services`. This guide includes an example where {{agent}}s connect to the {{fleet-server}} through port `443` instead of the default `8220`.
@@ -141,7 +141,6 @@ If you already have a {{fleet}} policy with the {{fleet-server}} integration, yo
 The `service token` required by the {{fleet-server}} is different from the `enrollment tokens` used by {{agent}}s to enroll to {{fleet}}.
 
 ::::
-
 
 1. In {{kib}}, open **{{fleet}} → Settings** and ensure the **Elasticsearch output** that will be used by the {{fleet-server}} policy is correctly configured, paying special attention that:
 
@@ -197,7 +196,6 @@ The `service token` required by the {{fleet-server}} is different from the `enro
     When the {{fleet-server}} installation has succeeded, the **Confirm Connection** UI will show a **Connected** status.
 
 
-
 ### {{fleet-server}} installation [add-fleet-server-kubernetes-install]
 
 
@@ -207,8 +205,8 @@ To deploy {{fleet-server}} on Kubernetes and enroll it into {{fleet}} you need t
 
 * **Policy ID** of the {{fleet}} policy configured with the {{fleet-server}} integration.
 * **Service token**, that you can generate following the [{{fleet}} preparations](#add-fleet-server-kubernetes-preparations) or manually using the [{{es}}-service-tokens command](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md).
-* **{{es}} endpoint URL**, configured in both the {{es}} output associated to the policy and in the Fleet Server as an environment variable.
-* **{{es}} CA certificate file**, configured in both the {{es}} output associated to the policy and in the Fleet Server.
+* **{{es}} endpoint URL**, configured in both the {{es}} output associated to the policy and in the {{fleet-server}} as an environment variable.
+* **{{es}} CA certificate file**, configured in both the {{es}} output associated to the policy and in the {{fleet-server}}.
 * {{fleet-server}} **certificate and key** (for **Production** deployment mode only).
 * {{fleet-server}} **CA certificate file** (for **Production** deployment mode only).
 * {{fleet-server}} URL (for **Production** deployment mode only).
@@ -228,12 +226,12 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
 
 * CPU and memory `requests` and `limits`. Refer to [{{fleet-server}} scalability](/reference/fleet/fleet-server-scalability.md) for more information about {{fleet-server}} resources utilization.
 * Scheduling configuration, such as `affinity rules` or `tolerations`, if needed in your environment.
-* Number of replicas, to scale the Fleet Server horizontally.
+* Number of replicas, to scale the {{fleet-server}} horizontally.
 * Use an {{es}} CA fingerprint instead of a CA file.
 * Configure other [Environment variables](/reference/fleet/agent-environment-variables.md).
 
 
-#### Installation Steps [add-fleet-server-kubernetes-install-steps]
+#### Installation steps [add-fleet-server-kubernetes-install-steps]
 
 1. Create the Secret for the {{fleet-server}} configuration.
 
@@ -556,7 +554,6 @@ The following issues may occur when {{fleet-server}} settings are missing or con
     If the service and URL are correctly configured, this is usually a temporary issue caused by the Kubernetes Service not forwarding traffic to the Pod, and it should be cleared in a couple of restarts.
 
     As a workaround, consider using `https://localhost:8220` as the `FLEET_URL` for the {{fleet-server}} configuration, and ensure that `localhost` is included in the certificate’s SAN.
-
 
 
 ## Next steps [add-fleet-server-kubernetes-next]

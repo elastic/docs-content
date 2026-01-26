@@ -1,12 +1,17 @@
 ---
+navigation_title: Air-gapped environments
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/air-gapped.html
+applies_to:
+  deployment:
+    ece: ga
+    self: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Air-gapped environments [air-gapped]
+# Run {{agents}} in an air-gapped environment [air-gapped]
 
 When running {{agent}}s in a restricted or closed network, you need to take extra steps to make sure:
 
