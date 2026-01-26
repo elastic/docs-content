@@ -405,7 +405,7 @@ $$$using-minio-with-elasticsearch$$$
 The performance, reliability, and durability of a MinIO-backed repository depend on the properties of the underlying infrastructure and on the details of your MinIO configuration. You must design your storage infrastructure and configure MinIO in a way that ensures your MinIO-backed repository has performance, reliability, and durability characteristics which match AWS S3 in order for it to be fully S3-compatible. If you need assistance with your MinIO configuration, please contact the MinIO support team.
 ::::
 
-### Logging for incompatibility
+### Investigating incompatibilities
 
 Most storage systems can be configured to log the details of their interaction with {{es}}. If you are investigating a suspected incompatibility with AWS S3, it is usually simplest to collect these logs from your storage system and provide them to the supplier of your storage system for further analysis. Contact the supplier of your storage system for advice on how to configure it to log requests sufficiently verbosely for this troubleshooting.
 
@@ -416,7 +416,7 @@ If the incompatibility is not clear from the logs emitted by the storage system,
 :::::{applies-item} { "stack": "ga 9.1+" }
 
 ::::{warning}
-In {{es}} versions **9.1.0 to 9.1.8**, and **9.2.0 to 9.2.2**, it is not possible to obtain more detailed logs from the AWS Java SDK. Use the logs from the storage system itself, or upgrade to a newer version of {{es}}.
+In {{es}} versions **9.1.0 to 9.1.8**, and **9.2.0 to 9.2.2**, it is not possible to obtain more detailed logs from the AWS Java SDK. Use the logs from the storage system itself, or upgrade to a later version of {{es}}.
 ::::
 
 Configure {{es}} to log every request it makes to the S3 API by [setting the logging level](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) of the `software.amazon.awssdk.request` logger to `DEBUG`:
@@ -432,7 +432,7 @@ PUT /_cluster/settings
 
 To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is enabled. To do so, you must explicitly enable it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
 
-Collect the {{es}} logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. Refer to [Logging with the SDK for Java 2.x](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/logging-slf4j.html) for further information, including details about other loggers that can be used to obtain even more verbose logs. When configuring other loggers, note that {{es}} configures the AWS Java SDK to use the `ApacheHttpClient` synchronous HTTP client.
+Collect the {{es}} logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. Refer to [Logging with the AWS S3 SDK for Java 2.x](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/logging-slf4j.html) for further information, including details about other loggers that can be used to obtain even more verbose logs. When configuring other loggers, note that {{es}} configures the AWS Java SDK to use the `ApacheHttpClient` synchronous HTTP client.
 
 :::::
 
