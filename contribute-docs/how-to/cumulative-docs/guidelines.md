@@ -185,7 +185,7 @@ refer to [](reference.md#key).
 
 * **Always include page-level product and deployment model applicability information**.
   This is _mandatory_ for all pages.
-* **Use only one dimension per page at the page level.**
+* **Use only one dimension at the page level.**
   Choose either the Stack/Serverless dimension, the Deployment dimension, or the Product dimension.
   See [Dimensions](#dimensions) for more information.
 * **Determine if section or inline applicability information is necessary.**
