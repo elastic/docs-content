@@ -95,7 +95,7 @@ After creating a condition, add a processor or another condition to it by select
 
 ### Editing modes [streams-editing-modes]
 
-The Streams processing UI provides an [interactive mode](#streams-streamlang-interactive-mode) and a [YAML mode](#streams-streamlang-yaml-mode) for editing processors and conditions.
+The Streams processing UI provides an [interactive mode](#streams-editing-interactive-mode) and a [YAML mode](#streams-editing-yaml-mode) for editing processors and conditions.
 
 #### Interactive mode [streams-editing-interactive-mode]
 
