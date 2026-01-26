@@ -26,7 +26,6 @@ the Serverless UI, add both the `stack` and `serverless` keys to the `applies_to
 :::{include} /contribute-docs/_snippets/stack-serverless-lifecycle-example.md
 :::
 
-
 ## Section applicability differs from page-level applicability [page-section-varies]
 
 When a section has different applicability than the applicability indicated at the
@@ -174,7 +173,7 @@ applies_to:
 ```{applies_to}
 deployment:
   ech: ga
-serverless: ga
+  serverless: ga
 ```
 
 [...]
@@ -186,6 +185,48 @@ serverless: ga
 Likewise, when the difference is specific to just one paragraph or list item, the same rules apply.
 Just the syntax slightly differs so that it stays inline: `` {applies_to}`ech: ga` {applies_to}`serverless: ga` ``.
 :::
+
+## Choosing a primary dimension [primary-dimension]
+
+When your content has requirements that span multiple dimensions, choose one dimension as the primary for the page-level `applies_to` frontmatter, and document secondary dimension information as requirements, prerequisites, or in tagged sections.
+
+:::{tip}
+Use only one dimension at the page level. If you need to communicate information from another dimension, add it as requirements in prose, prerequisites sections, or use section-level or inline `applies_to` badges for specific content that varies.
+:::
+
+For example, a page about a Kibana feature (Stack/Serverless dimension) might have deployment-specific configuration requirements. Use the Stack/Serverless dimension at the page level, and document deployment-specific information in prose or tagged sections:
+
+````
+---
+applies_to:
+  stack: ga
+  serverless: ga
+---
+
+# Configure Kibana feature
+
+This feature is available in Elastic Stack 9.0+ and Serverless.
+
+## Prerequisites
+
+* If using ECE, requires ECE 4.0+ or later.
+
+## Configuration
+
+[... main configuration steps ...]
+
+## Deployment-specific settings
+
+```{applies_to}
+deployment:
+  ech: ga
+  ece: ga 4.0+
+```
+
+For Elastic Cloud Hosted and Elastic Cloud Enterprise deployments, you must also configure the following setting:
+
+[...]
+````
 
 ## Functionality is added to an unversioned product [unversioned-added]
 
@@ -316,7 +357,6 @@ serverless: ga
 ::::
 :::::
 
-
 ## Functionality is removed [removed]
 
 When the functionality described in any level of content is removed,
@@ -373,6 +413,31 @@ you can remove the content altogether regardless of whether it is versioned or u
 
 If the functionality was only ever available in an unversioned product or deployment mode,
 remove the content altogether.
+
+## Functionality is added to multiple patch versions [multiple-patch]
+
+Sometimes, features and enhancements slip through into patch versions, and the same functionality might be added for the first time to multiple patch versions at the same time.
+
+- **Standard case**: Our docs are aligned with the latest patch of any given minor version. That means that in most cases, we don't need to call out the exact patch version that introduced a change (that's for the release notes).
+- **Exceptions**: In rare cases, it can happen that the change is important enough to be explicitly called out in the docs with a precise patch-level information. In that case, you can add a callout and indicate patch-level versions using plain text to explain the change.
+
+For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-httpjson) page, the `terminate` helper function was added to a 9.0.x and 9.1.x patch version at the same time. Since the new functionality is available in the latest patch of both 9.0.x and 9.1.x, use the earlier version: 9.0.x.
+
+:::::{tab-set}
+::::{tab-item} Image
+:::{image} ./images/example-multiple-patch.png
+:screenshot:
+:alt:
+:::
+::::
+::::{tab-item} Code
+```markdown
+* `terminate`: exits the template without falling back to the default value
+  and without causing an error. It takes a single string argument that is
+  logged in debug logging. {applies_to}`stack: ga 9.1.2+!` {applies_to}`stack: ga 9.0.6+!`
+```
+::::
+:::::
 
 ## Code block content varies [code-block]
 
@@ -635,28 +700,3 @@ _Work in progress._
 % **When to use headings**:
 % **Best practices**:
 % **Example**:
-
-## Functionality is added to multiple patch versions [multiple-patch]
-
-Sometimes, features and enhancements slip through into patch versions, and the same functionality might be added for the first time to multiple patch versions at the same time.
-
-- **Standard case**: Our docs are aligned with the latest patch of any given minor version. That means that in most cases, we don't need to call out the exact patch version that introduced a change (that's for the release notes).
-- **Exceptions**: In rare cases, it can happen that the change is important enough to be explicitly called out in the docs with a precise patch-level information. In that case, you can add a callout and indicate patch-level versions using plain text to explain the change.
-
-For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-httpjson) page, the `terminate` helper function was added to a 9.0.x and 9.1.x patch version at the same time. Since the new functionality is available in the latest patch of both 9.0.x and 9.1.x, use the earlier version: 9.0.x.
-
-:::::{tab-set}
-::::{tab-item} Image
-:::{image} ./images/example-multiple-patch.png
-:screenshot:
-:alt:
-:::
-::::
-::::{tab-item} Code
-```markdown
-* `terminate`: exits the template without falling back to the default value
-  and without causing an error. It takes a single string argument that is
-  logged in debug logging. {applies_to}`stack: ga 9.1.2+!` {applies_to}`stack: ga 9.0.6+!`
-```
-::::
-:::::
