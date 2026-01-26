@@ -14,7 +14,7 @@ navigation_title: Elasticsearch solution
 
 # {{es}} solution overview
 
-The {{es}} solution and serverless project type provide specialized UI tools that help you build search applications faster. The solution is an optional complement to the core {{es}} [search capabilities](/solutions/search.md) which are available through APIs across all deployment types, solutions, and project types.[^api-note]
+The {{es}} solution and serverless project type provide specialized UI tools that help you build search applications faster. These tools build on top of core {{es}} [search capabilities](/solutions/search.md) that are available across all deployment types, solutions, and project types.
 
 These UI affordances are exclusive to the {{es}} solution (on non-serverless deployments) and the {{es}} serverless project type.
 
@@ -58,5 +58,3 @@ For a deeper understanding of search concepts and techniques, refer to the [Sear
 * [Search use case documentation](/solutions/search.md)
 * [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
 * [{{es}} API documentation]({{es-apis}})
-
-[^api-note]: Certain APIs are not available on serverless deployments because they are fully managed by Elastic. Refer to [Available Elasticsearch APIs](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-apis-availability) for details.
