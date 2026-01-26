@@ -103,7 +103,7 @@ This section covers common patterns for accessing and transforming data in your 
 
 ### Reference inputs [workflows-ref-inputs]
 
-Access input parameters passed to the workflow using `{{inputs.<input_name>}}`. Inputs are defined at the workflow level and can be provided when the workflow is triggered manually.
+Reference input parameters defined in the workflow using `{{inputs.<input_name>}}`. Inputs are defined at the workflow level and can be provided when the workflow is triggered manually.
 
 ```yaml
 inputs:
