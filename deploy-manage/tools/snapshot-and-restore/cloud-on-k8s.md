@@ -130,7 +130,7 @@ Follow the instructions in the [GKE documentation](https://cloud.google.com/kube
 
 1. Create or update your {{k8s}} cluster with `--workload-pool=PROJECT_ID.svc.id.goog` enabled, where `PROJECT_ID` is your Google project ID
 2. Create a namespace and a {{k8s}} service account (`test-gcs` and `gcs-sa` in this example)
-3. Create the bucket, the Google service account (`gcp-sa` in this example. Note that both Google and {{k8s}} have the concept of a service account and this example is referring to the former) and set the relevant permissions through Google Cloud console or gcloud CLI
+3. Create the bucket, the Google service account (`gcp-sa` in this example. Both Google and {{k8s}} have the concept of a service account and this example is referring to the former) and set the relevant permissions through Google Cloud console or gcloud CLI
 4. Allow the {{k8s}} service account to impersonate the Google service account:
 
     ```sh
@@ -228,7 +228,7 @@ Follow [the {{aws}} documentation](https://aws.amazon.com/premiumsupport/knowled
     ```
 
     1. Replace `YOUR_CLUSTER` with your actual EKS cluster name
-    2. Replace with the actual {{aws}} IAM ARN for the policy you just created
+    2. Replace with the actual {{aws}} IAM ARN for the policy you created
 
 4. Create an {{es}} cluster referencing the service account
 
@@ -497,7 +497,7 @@ spec:
     }
     ```
 
-    1. Whether or not you need to enable `path_style_access` depends on your choice of S3-compatible storage service and how it is deployed. If it is exposed through a standard {{k8s}} service it is likely you need this option
+    1. Whether you need to enable `path_style_access` depends on your choice of S3-compatible storage service and how it is deployed. If it is exposed through a standard {{k8s}} service it is likely you need this option
     2. Replace this with the actual endpoint of your S3-compatible service
 
 
