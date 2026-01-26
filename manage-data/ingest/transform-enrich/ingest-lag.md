@@ -210,7 +210,7 @@ POST _ingest/pipeline/_simulate
           {
             "script": {
               "description": "Calculates logstash to Elasticsearch latency",
-              "if": "ctx._tmp?.logstash != null",
+              "if": "ctx._tmp?.logstash_seen != null",
               "source": """
                 ZonedDateTime start = ZonedDateTime.parse(ctx._tmp.logstash_seen);
                 ctx.event.ingestion.latency_logstash_to_elasticsearch=ChronoUnit.SECONDS.between(start, metadata().now);
@@ -220,7 +220,7 @@ POST _ingest/pipeline/_simulate
           {
             "script": {
               "description": "Calculates Elastic Agent to Logstash latency",
-              "if": "ctx._tmp?.logstash != null",
+              "if": "ctx._tmp?.logstash_seen != null",
               "source": """
                 ZonedDateTime start = ZonedDateTime.parse(ctx['@timestamp']);
                 ZonedDateTime end = ZonedDateTime.parse(ctx._tmp.logstash_seen);
