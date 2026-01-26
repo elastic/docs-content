@@ -18,14 +18,6 @@ Workflow tools enable agents to trigger Elastic Workflows directly from a conver
 
 % (/explore-analyze/workflows.md)
 
-Workflows and {{agent-builder}} are built to work together:
-
-
-* Assign agents workflow tools to trigger workflows from your chats.
-* Add `ai.agent` steps to invoke agents in your workflows.
-
-Agents chat with your data by retrieving, summarizing, and reasoning. Workflows execute reliably with business-grade guardrails. Together, they combine flexible reasoning with deterministic execution.
-
 ## Prerequisites
 
 Before using these features, ensure that:
@@ -48,15 +40,23 @@ Follow these steps to configure a tool to invoke a workflow that an agent can ca
 1. Navigate to **Agents > More > View all tools > New tool**.
 2. Select **Workflow** as the tool type.
 3. Select the specific workflow you want to wrap from the drop down list.
-
-    :::{note}
-    The UI will automatically detect the `inputs` defined in your workflow YAML and map them to tool parameters.
-    :::
-
 4. Fill in the required fields:
-  * **Tool ID**: Create a unique identifier for the tool.
-  * **Description**: Ensure the description clearly explains *when* the agent should use this tool.
-  * **Label**: (Optional) Tags used to organize and filter tools within the {{agent-builder}} UI.
+
+  **Tool ID**
+  :   A unique identifier for the tool.
+  
+  **Description**
+  :   A natural language explanation of what the tool does. The agent uses this description to decide *when* to call the tool.
+  :   *Example:* "Use this tool when the user asks to investigate an alert regarding the payment service."
+  
+  **Workflow**
+  :   The specific Elastic Workflow to execute. Selecting a workflow automatically pulls its definition into the tool configuration.
+  
+  **Inputs**
+  :   The parameters required by the workflow. These are automatically detected from the `inputs` section of the selected workflow's YAML definition. The agent will attempt to extract values for these inputs from the user's chat message.
+  
+  **Labels** (Optional)
+  :   Tags used to organize and filter tools within the {{agent-builder}} UI.
 5. Click **Save**.
 
 ## Invoke the Workflow tool in Agent chat
@@ -71,10 +71,10 @@ Once you assign a Workflow tool to an agent, the agent can trigger the workflow 
 1. Navigate to **Agents**.
 2. Select your agent.
 3. Select **More > Edit Agent > Tools**
-3. Assign the workflow tool by selecting the checkbox.
-4. Click **Save**.
-2. Open the **Agent chat** and ask a question that triggers the workflow.
-3. The agent extracts the necessary parameters from the conversation, runs the workflow, and returns the workflow's final output to the chat.
+4. Assign the workflow tool by selecting the checkbox.
+5. Click **Save**.
+6. Open the **Agent chat** and ask a question that triggers the workflow.
+7. The agent extracts the necessary parameters from the conversation, runs the workflow, and returns the workflow's final output to the chat.
 
 
 <!--
