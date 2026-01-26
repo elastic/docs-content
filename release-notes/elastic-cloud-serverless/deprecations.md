@@ -10,7 +10,7 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % For more information, check [PR #](PR link).
 
 ## January 5, 2026 [elastic-cloud-serverless-01052026-deprecations]
-* Removes the {{kib}} user from root group. For more information, refer to [#244798]({{kib-pull}}244798).
+* Removes the {{kib}} user from the root group. For more information, refer to [#244798]({{kib-pull}}244798).
 
 ## November 24, 2025 [elastic-cloud-serverless-11242025-deprecations]
 * Shows a callout for deprecated, in-use ILM policies. For more information, check [#243416]({{kib-pull}}243416).
