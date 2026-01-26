@@ -29,7 +29,7 @@ This setup comes with a one-month trial license that includes all Elastic featur
 * Make sure you're running a supported version of the Docker Compose tool:
     * If you're using Docker Compose V1, then you can install version 1.29.0 and later.
     * Docker Compose V2 is included with Docker Desktop (Windows) version 3.4 and later.
-    * Docker Compose V2 is included with Docker Engine (Linux) version 20.10.13 and later.
+    * Packages to install the `docker-compose-plugin` and enable Docker Compose V2 are included with Docker Engine (Linux) version 20.10.13 and later.
 * If you’re using Microsoft Windows, then install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 ## Step 1: Run `start-local` script [local-dev-quick-start]
