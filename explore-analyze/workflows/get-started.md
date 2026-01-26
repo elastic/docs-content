@@ -301,10 +301,9 @@ This workflow introduces several fundamental concepts:
 * **Template syntax**: The `{{ }}` notation for dynamic values.
 * **Step chaining**: How each step builds on previous ones to create a complete process.
 
-% ## What's next?
+## What's next?
 
-% Now that you have a working workflow, you're ready to explore more advanced features. In the following sections, you'll build upon this National Parks example to demonstrate:
-
-% * [**Triggers**](./triggers.md): Automate when this workflow runs (daily reports, alert responses).
-% * [**Steps**](./steps.md): Add conditional logic based on search results and send notifications about park data.
-% * [**Data and error handling**](./data.md): Make the workflow resilient to failures.
+Learn more about the workflow framework:
+* [**Triggers**](./triggers.md): Control when workflows run.
+* [**Steps**](./steps.md): Define how a workflow operates and the outcomes it can produce. 
+* [**Data and error handling**](./data.md): Make the workflow resilient to failures and understand mechanisms for controlling data flow.
