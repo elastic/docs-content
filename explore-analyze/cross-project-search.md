@@ -52,6 +52,22 @@ TODO: screenshot
 
 When your configuration is saved, a page with the list of linked projects opens.
 
+### Project ID and aliases
+
+Each project has a unique project ID and a project alias.
+The project alias is derived from the project name and can be modified.
+
+The **project ID** uniquely identifies a project and is system-generated.
+
+The **project alias** is a human-readable identifier that you can change to make a project easier to recognize and reference.
+
+While both the project ID and project alias uniquely identify a project, {{cps}} uses project aliases in index expressions. Project aliases are intended to be user-friendly and descriptive, making search expressions easier to read and maintain.
+
+#### Referencing the origin project
+
+In addition to using a project alias, {{cps-init}} provides a reserved identifier, `_origin`, that always refers to the origin project of the search.
+You can use `_origin` in search expressions to explicitly target the origin project, without having to reference its specific project alias. Refer to [](#search-expressions) for detailed examples and to learn more.
+
 ## Search in {{cps-init}}
 
 This section explains how search works in {{cps-init}}, including:
@@ -78,7 +94,7 @@ GET logs/_search
 For each linked project, the search runs only if an index named `logs` exists.
 If a linked project does not have a `logs` index, that project is skipped and the search continues without returning an error. No error is returned as long as at least one project has the `logs` index.
 
-### Unqualified and qualified search expressions
+### Unqualified and qualified search expressions [search-expressions]
 
 {{cps-cap}} supports two types of search expressions: unqualified and qualified search expressions. The difference between them determines where a search request runs and how errors are handled.
 
