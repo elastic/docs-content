@@ -45,7 +45,7 @@ Refer to [](/explore-analyze/workflows/triggers/manual-triggers.md) for more inf
 Scheduled triggers run workflows automatically at specific times or intervals. You can configure schedules using:
 
 * Intervals: Run every _x_ minutes, hours, or days
-* Cron expressions: Run at specific times (for example, daily at 2 AM)
+* RRule expressions: Run at specific times (for example, daily at 2 AM)
 
 Use scheduled triggers for:
 
