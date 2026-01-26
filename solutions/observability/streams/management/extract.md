@@ -97,17 +97,20 @@ After creating a condition, add a processor or another condition to it by select
 
 The Streams processing UI provides an [interactive mode](#streams-editing-interactive-mode) and a [YAML mode](#streams-editing-yaml-mode) for editing processors and conditions.
 
+To switch modes, select the appropriate tab from the top of the processing page.
+
+:::{image} ../../../images/streams-editing-modes.png
+:screenshot:
+:::
+
+Streams defaults to interactive mode unless the configuration can't be represented in interactive mode (for example, when nesting levels are too deep).
+
 #### Interactive mode [streams-editing-interactive-mode]
 
 **Interactive** mode provides a form-based interface for creating and editing processors. This mode works best for:
 
-- Building simple processing configurations
 - Users who prefer a guided, visual approach
 - Configurations that don't require deeply nested conditions
-
-:::{note}
-Streams defaults to interactive mode unless the configuration can't be represented in interactive mode (for example, when nesting levels are too deep).
-:::
 
 #### YAML mode [streams-editing-yaml-mode]
 ```{applies_to}
