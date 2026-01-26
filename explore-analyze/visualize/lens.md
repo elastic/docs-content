@@ -60,6 +60,14 @@ To duplicate or delete a layer, click ![Actions menu to duplicate Lens visualiza
 
 ::::
 
+::::{step} Save and add the panel
+$$$save-the-lens-panel$$$
+- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
+- If you accessed Lens from the Visualize library, select **Save**. A menu opens and offers you to add the visualization to a dashboard and to the Visualize library.
+
+::::
+
+
 :::::
 
 Once you have created your visualization, you can edit it directly on the dashboard. Click the **Edit visualization configuration** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
@@ -216,6 +224,16 @@ These are examples of common formulas:
     sum(products.base_price) / overall_sum(sum(products.base_price))
     ```
 
+### Compare differences over time [compare-data-with-time-offsets]
+
+Compare your real-time data to the results that are offset by a time increment. For example, you can compare the real-time percentage of a user CPU time spent to the results offset by one hour.
+
+1. In the layer pane, click the field you want to offset.
+2. Click **Advanced**.
+3. In the **Time shift** field, enter the time offset increment.
+
+For a time shift example, refer to [Compare time ranges](../dashboards/create-dashboard-of-panels-with-ecommerce-data.md#compare-time-ranges).
+
 ### Create partition charts with multiple metrics [create-partition-charts-with-multiple-metrics]
 
 To create partition charts, such as pie charts, configure one or more **Slice by** dimensions to define the partitions, and a **Metric** dimension to define the size. To create partition charts with multiple metrics, use the layer settings. Multiple metrics are unsupported for mosaic visualizations.
@@ -226,11 +244,17 @@ To create partition charts, such as pie charts, configure one or more **Slice by
 
 
 ### Improve visualization loading time [improve-visualization-loading-time]
+```{applies_to}
+stack: preview
+```
 
 Data sampling allows you to improve the visualization loading time. When you can create your visualization, click the **Layer settings** icon {icon}`app_management` and use the slider to adjust the **Sampling** percentage. For example, on large datasets, you can decrease the loading time by using a lower sampling percentage. This increases performance but lowers the accuracy.
 
 
 ### Add annotations [add-annotations]
+```{applies_to}
+stack: preview
+```
 
 Annotations allow you to call out specific points in your visualizations that are important, such as significant changes in the data. You can add annotations for any {{data-source}}, add text and icons, specify the line format and color, and more.
 Click the **Add layer** icon {icon}`plus_in_square` , select **Annotations** and select the annotation method you want to use:
@@ -514,29 +538,6 @@ To view the data included in the visualization and the requests that collected t
 
     1. From the dropdown, select the requests you want to view.
     2. To view the requests in **Console**, click **Request**, then click **Open in Console**.
-
-
-
-## Save and add the panel [save-the-lens-panel]
-
-Save the panel to the **Visualize Library** and add it to the dashboard, or add it to the dashboard without saving.
-
-To save the panel to the **Visualize Library**:
-
-1. Click **Save to library**.
-2. Enter the **Title** and add any applicable [**Tags**](../find-and-organize/tags.md).
-3. Make sure that **Add to Dashboard after saving** is selected.
-4. Click **Save and return**.
-
-To save the panel to the dashboard:
-
-1. Click **Save and return**.
-2. Add an optional title to the panel.
-
-    1. In the panel header, click **No Title**.
-    2. On the **Panel settings** window, select **Show title**.
-    3. Enter the **Title**, then click **Save**.
-
 
 
 ## Frequently asked questions [lens-faq]
