@@ -513,15 +513,50 @@ To customize the legend of your visualization, click the **Legend** icon ![Legen
 :alt: Menu with options to customize the legend of a visualization
 :::
 
-The **Visibility**, **Position**, and **Width** options allow you to set the way the legend appears in or next to the visualization.
-
-You can set additional **Statistics** to make your legends as informative as possible. All statistics are computed based on the selected time range and the aggregated data points shown in the chart, rather than the original data coming from {{es}}.
-
-The **Label truncation** option allows you to keep your legend minimal in case of long labels that span over multiple lines.
-
 ::::{note}
-Options vary based on the type of chart you are creating. For example, showing additional statistics is only possible for time series charts.
+The options available can vary based on the type of chart you’re setting up. For example, showing additional statistics is only possible for time series charts.
 ::::
+
+
+**Change the legend’s display**
+
+With the **Visibility**, **Position**, and **Width** options, you can adjust the way the legend appears in or next to the visualization.
+
+**Truncate long labels**
+
+With the **Label truncation** option, you can keep your legend minimal in case of long labels that span over multiple lines.
+
+**Show additional statistics for time series charts**
+
+To make your legends as informative as possible, you can show some additional **Statistics** for charts with a timestamp on one of the axes, and add a **Series header**.
+
+**Bar**, **Line** and **Area** charts can show the following values:
+
+* **Average**: Average value considering all data points in the chart
+* **Median**: Median value considering all data points in the chart
+* **Minimum**: Minimum value considering all data points in the chart
+* **Maximum**: Maximum value considering all data points in the chart
+* **Range**: Difference between min and max values
+* **Last value**: Last value considering all data points in the chart
+* **Last non-null value:** Last non-null value
+* **First value**: First value considering all data points in the chart
+* **First non-null value**: First non-null value
+* **Difference**: Difference between first and last values
+* **Difference %**: % difference between first and last values
+* **Sum**: Sum of al values plotted in the chart
+* **Count**: number of data points plotted in the chart
+* **Distinct Count**: number of data points with different values plotted in the chart
+* **Variance**: Variance of all data points plotted in the chart
+* **Std Deviation**: Standard deviation of all data points plotted in the chart
+* **Current or last value**: The exact value of the current or last data point moused over
+
+All statistics are computed based on the selected time range and the aggregated data points shown in the chart, rather than the original data coming from {{es}}.
+
+For example, if the metric plotted in the chart is `Median(system.memory)` and the time range is **last 24 hours**, when you show the **Max** statistic in the Legend, the value that shows corresponds to the `Max[Median(system.memory)]` for the last 24 hours.
+
+:::{image} /explore-analyze/images/kibana-statistics-in-legends.png
+:alt: Additional statistics shown in the legend of a memory consumption bar chart
+:::
 
 ## Explore the data in Discover [explore-lens-data-in-discover]
 
