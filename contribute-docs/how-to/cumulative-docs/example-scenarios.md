@@ -5,33 +5,38 @@ navigation_title: Example scenarios
 # Cumulative docs example scenarios
 
 :::{note}
-This content is still in development.
 If you have questions about how to write cumulative documentation while contributing,
 reach out to **@elastic/docs** in the related GitHub issue or PR.
 :::
 
 Browse common scenarios you might run into as a docs contributor that require different approaches to labeling cumulative docs.
 
+While you can use any of these tools at any stage, the tools and approaches you use for cumulative documentation often differ depending on the maturity and complexity of your documentation. The scenarios below are organized by documentation stage to help you find the right approach for your situation.
+
 :::{note}
 Screenshots might not exactly match the example pages linked to.
 :::
 
-## Content applies to both stateful and serverless [stateful-serverless]
+## Early stage: New features and simple documentation
+
+When you're documenting a new feature or creating simple documentation, start with basic page-level tagging and simple refinements.
+
+### Content applies to both stateful and serverless [stateful-serverless]
 
 If an entire page is primarily about using or interacting with both Elastic Stack components and
 the Serverless UI, add both the `stack` and `serverless` keys to the `applies_to` in the frontmatter.
 
-### If released in Serverless, but not yet released in Elastic Stack
+#### If released in Serverless, but not yet released in Elastic Stack
 
 :::{include} /contribute-docs/_snippets/stack-serverless-lifecycle-example.md
 :::
 
-## Section applicability differs from page-level applicability [page-section-varies]
+### Section applicability differs from page-level applicability [page-section-varies]
 
 When a section has different applicability than the applicability indicated at the
 page level in the frontmatter, use section-level `applies_to` badges.
 
-### If labeling serverless vs. stateful [page-section-varies-product]
+#### If labeling serverless vs. stateful [page-section-varies-product]
 
 <!--
 TO DO: Consider other alternative titles:
@@ -114,7 +119,7 @@ Likewise, when the difference is specific to just one paragraph or list item, th
 Just the syntax slightly differs so that it stays inline: `` {applies_to}`serverless: unavailable` ``.
 :::
 
-### If labeling deployment modes [page-section-varies-deployment]
+#### If labeling deployment modes [page-section-varies-deployment]
 
 <!--
 TO DO: Consider other alternative titles:
@@ -186,9 +191,9 @@ Likewise, when the difference is specific to just one paragraph or list item, th
 Just the syntax slightly differs so that it stays inline: `` {applies_to}`ech: ga` {applies_to}`serverless: ga` ``.
 :::
 
-## Choosing a primary dimension [primary-dimension]
+### Choosing a primary dimension for your page [primary-dimension]
 
-When your content has requirements that span multiple dimensions, choose one dimension as the primary for the page-level `applies_to` frontmatter, and document secondary dimension information as requirements, prerequisites, or in tagged sections.
+When your content has requirements that span multiple [dimensions](/contribute-docs/how-to/cumulative-docs/guidelines.md#dimensions), choose one dimension as the primary for the page-level `applies_to` frontmatter, and document secondary dimension information as requirements, prerequisites, or in tagged sections.
 
 :::{tip}
 Use only one dimension at the page level. If you need to communicate information from another dimension, add it as requirements in prose, prerequisites sections, or use section-level or inline `applies_to` badges for specific content that varies.
@@ -228,12 +233,16 @@ For Elastic Cloud Hosted and Elastic Cloud Enterprise deployments, you must also
 [...]
 ````
 
-## Functionality is added to an unversioned product [unversioned-added]
+## Mid-stage: Features evolve and documentation needs updates
+
+As features change over time, you'll need to update your documentation to reflect lifecycle changes, additions, and removals.
+
+### Functionality is added to an unversioned product [unversioned-added]
 
 When functionality is _first added_ to an unversioned product/deployment mode,
 how it is labeled depends on if the functionality is in technical preview, beta, or GA.
 
-### If the section lifecycle is the same as the page level [unversioned-added-same]
+#### If the section lifecycle is the same as the page level [unversioned-added-same]
 
 For example, on the [Project settings](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#obs-serverless-project-features) page we added content about the Observability Logs Essentials feature tier, that was added to Serverless in GA.
 Since the page's frontmatter already includes `serverless: ga`, there is no need to label the added content.
@@ -265,7 +274,7 @@ applies_to:
 
 [...]
 
-#### Tables
+##### Tables
 
 **Density** {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga`
 :   Make the table more or less compact. Choose between **Compact**, **Normal** (default), and **Expanded**.
@@ -273,7 +282,7 @@ applies_to:
 ::::
 :::::
 
-### If the section lifecycle is different than the page level [unversioned-added-different]
+#### If the section lifecycle is different than the page level [unversioned-added-different]
 
 For example, on the [Dashboard controls](https://www.elastic.co/docs/explore-analyze/dashboards/add-controls#add-esql-control) page we added content about new ES|QL controls functionality that was added to Serverless in preview.
 Since this is different than the page-level applicability in the frontmatter, `serverless: ga`,
@@ -307,7 +316,7 @@ serverless: preview
 ::::
 :::::
 
-## Functionality changes lifecycle state [lifecycle-changed]
+### Functionality changes lifecycle state [lifecycle-changed]
 
 When the functionality described in any content changes lifecycle state,
 how it is labeled varies by whether the product/deployment mode is versioned or unversioned.
@@ -344,7 +353,7 @@ applies_to:
 
 [...]
 
-### Assign colors to terms [assign-colors-to-terms]
+##### Assign colors to terms [assign-colors-to-terms]
 
 ```{applies_to}
 stack: ga 9.1+, preview =9.0
@@ -357,13 +366,13 @@ serverless: ga
 ::::
 :::::
 
-## Functionality is removed [removed]
+### Functionality is removed [removed]
 
 When the functionality described in any level of content is removed,
 how to handle it varies by which lifecycle it was in before being removed and
 whether the product/deployment mode is versioned or unversioned.
 
-### If a GA or deprecated feature is removed from a versioned product
+#### If a GA or deprecated feature is removed from a versioned product
 
 For example, we removed the `securitySolution:enableVisualizationsInFlyout` setting that was described on the
 [Configure advanced settings](https://www.elastic.co/docs/solutions/security/get-started/configure-advanced-settings)
@@ -404,17 +413,17 @@ serverless: removed
 ::::
 :::::
 
-### If a beta or technical preview feature is removed [beta-removed]
+#### If a beta or technical preview feature is removed [beta-removed]
 
 If the functionality was only ever available in beta or technical preview before being removed,
 you can remove the content altogether regardless of whether it is versioned or unversioned.
 
-### If a feature is removed from an unversioned product
+#### If a feature is removed from an unversioned product
 
 If the functionality was only ever available in an unversioned product or deployment mode,
 remove the content altogether.
 
-## Functionality is added to multiple patch versions [multiple-patch]
+### Functionality is added to multiple patch versions [multiple-patch]
 
 Sometimes, features and enhancements slip through into patch versions, and the same functionality might be added for the first time to multiple patch versions at the same time.
 
@@ -439,12 +448,16 @@ For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beat
 ::::
 :::::
 
-## Code block content varies [code-block]
+## Mature and complex: Documentation with many variations
+
+When your documentation has accumulated many variations across different contexts, you'll need more sophisticated approaches to present the differences clearly.
+
+### Code block content varies [code-block]
 
 Often the content in a code block will vary between situations (versions, deployment types, etc).
 There are a couple possible solutions.
 
-### Solution A: Use a code callout [code-block-callout]
+#### Solution A: Use a code callout [code-block-callout]
 
 Using a code callout is the lightest-touch solution, but might not be sufficient in all cases.
 
@@ -467,7 +480,7 @@ Using a code callout is the lightest-touch solution, but might not be sufficient
 :screenshot:
 ::::
 
-### Solution B: Use applies switch tabs [code-block-tabs]
+#### Solution B: Use applies switch tabs [code-block-tabs]
 
 **When to use applies switch tabs**: If using a [code callout](#code-block-callout) isn't appropriate.
 
@@ -514,11 +527,11 @@ or {{obs-serverless}} using the OTLP exporter:
 :::::
 ::::::
 
-## Workflows vary [workflow]
+### Workflows vary [workflow]
 
 When one or more steps in a process differs.
 
-### Solution A: Use inline `applies_to` [workflow-inline]
+#### Solution A: Use inline `applies_to` [workflow-inline]
 
 Using inline `applies_to` badges to a few line items in an ordered list is the lightest-touch solution,
 but might not be sufficient in all cases.
@@ -555,7 +568,7 @@ but might not be sufficient in all cases.
 ::::
 :::::
 
-### Solution B: Use applies switch tabs [workflow-tabs]
+#### Solution B: Use applies switch tabs [workflow-tabs]
 
 Applies switch tabs are minimally disruptive in many situations.
 
@@ -613,7 +626,7 @@ Applies switch tabs are minimally disruptive in many situations.
 
 ::::::
 
-### Solution C: Use sibling pages [workflow-sibling-pages]
+#### Solution C: Use sibling pages [workflow-sibling-pages]
 
 Sibling pages are a last resort when no other solutions are appropriate.
 
@@ -637,11 +650,11 @@ Sibling pages are a last resort when no other solutions are appropriate.
 * [Cloud Hosted deployment billing dimensions](https://elastic.co/docs/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions)
 * [{{serverless-short}} project billing dimensions](https://elastic.co/docs/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions)
 
-## Screenshots vary [screenshot]
+### Screenshots vary [screenshot]
 
 Sometimes the UI differs between versions, deployment types or other conditions.
 
-### Solution A: Use applies switch tabs [screenshot-tabs]
+#### Solution A: Use applies switch tabs [screenshot-tabs]
 
 **When to use applies switch tabs**:
 * When the screenshot shows significantly different interfaces or workflows for each product, deployment type, or version.
@@ -653,7 +666,7 @@ Sometimes the UI differs between versions, deployment types or other conditions.
 **Example**: As of the Elastic Stack 9.1.0 release, there are no examples of this approach being used in live docs
 except for with images used in workflows.
 
-### Solution B: Add a note [screenshot-note]
+#### Solution B: Add a note [screenshot-note]
 
 In cases where only a small visual detail differs (for example, a button label or icon), it’s often more efficient to add a note rather than creating tabbed screenshots.
 
@@ -669,15 +682,15 @@ In cases where only a small visual detail differs (for example, a button label o
 **Example**: As of the Elastic Stack 9.1.0 release, there are no examples of this approach being used in live docs
 except for with images used in workflows.
 
-### Solution C: Keep the screenshot aligned with the latest version [screenshot-latest]
+#### Solution C: Keep the screenshot aligned with the latest version [screenshot-latest]
 
 In cases where the screenshot is rather conceptually demonstrating a capability, it's fine not to version it.
 
 For example, versioning the screenshot on the [Dashboards](https://www.elastic.co/docs/explore-analyze/dashboards) parent page would not add tremendous value unless the capability drastically evolves.
 
-## Multiple adjacent block elements vary [multiple-block]
+### Multiple adjacent block elements vary [multiple-block]
 
-### Solution A: Use applies switch tabs [multiple-block-tabs]
+#### Solution A: Use applies switch tabs [multiple-block-tabs]
 
 **When to use applies switch tabs**:
 * When the content is structurally similar but differs in detail — for example, slightly different instructions, outputs, or paths.
@@ -692,7 +705,7 @@ For example, versioning the screenshot on the [Dashboards](https://www.elastic.c
 % **Example**:
 % <image>
 
-### Solution B: Use headings [multiple-block-headings]
+#### Solution B: Use headings [multiple-block-headings]
 
 _Work in progress._
 
