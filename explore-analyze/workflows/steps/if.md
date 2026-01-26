@@ -105,9 +105,9 @@ condition: "user.name: J*n Doe" # Pattern
 #### Logical operators
 
 ```yaml
-condition: "status: active and isEnabled: true"             # AND
-condition: "status: active or status: pending"              # OR
-condition: "not status: inactive"                           # NOT
+condition: "status: active and isEnabled: true"             # And
+condition: "status: active or status: pending"              # Or
+condition: "not status: inactive"                           # Not
 condition: "status: active and (role: admin or role: moderator)"  # Nested
 ```
 
@@ -165,7 +165,7 @@ steps:
           - name: processPark
             type: console
             with:
-              message: "Processing park: {{ item._source.title }}"
+              message: "Processing park: {{ foreach.item._source.title }}"
     else:
       - name: handleSmallDataset
         type: console
