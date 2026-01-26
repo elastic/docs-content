@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-Script to update the kube-stack-version in docset.yml based on the version
-from the Kibana repository.
+Script to update the kube-stack-version and helm-version in docset.yml based on
+versions from the Kibana and Elastic Agent repositories.
 
 This script:
 1. Retrieves the latest semver from the Kibana repository
 2. Reads the constants.ts file from that Kibana version
 3. Extracts the OTEL_KUBE_STACK_VERSION value
-4. Updates the kube-stack-version in docset.yml
+4. Fetches the go.mod file from the Elastic Agent repository
+5. Extracts the Helm version from go.mod
+6. Updates both kube-stack-version and helm-version in docset.yml
 """
 
 import re
@@ -143,6 +145,64 @@ def extract_kube_stack_version(content: str) -> str:
     return version
 
 
+def fetch_elastic_agent_gomod() -> str:
+    """
+    Fetch the content of the go.mod file from the Elastic Agent repository with retry logic.
+    
+    Returns:
+        str: The content of the go.mod file
+        
+    Raises:
+        Exception: If unable to fetch the file content after retries
+    """
+    url = "https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/main/go.mod"
+    max_retries = 3
+    retry_delay = 2  # seconds
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Fetching go.mod from Elastic Agent repository (attempt {attempt + 1}/{max_retries})")
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            
+            print("Successfully fetched go.mod from Elastic Agent repository")
+            return response.text
+            
+        except requests.RequestException as e:
+            if attempt < max_retries - 1:
+                print(f"Attempt {attempt + 1} failed: {e}")
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                retry_delay *= 2  # Exponential backoff
+            else:
+                raise Exception(f"Failed to fetch go.mod file after {max_retries} attempts: {e}")
+
+
+def extract_helm_version(content: str) -> str:
+    """
+    Extract the Helm version from the go.mod file content.
+    
+    Args:
+        content (str): The content of the go.mod file
+        
+    Returns:
+        str: The Helm version (e.g., '3.15.4')
+        
+    Raises:
+        Exception: If the Helm version pattern is not found
+    """
+    # Pattern to match helm.sh/helm/v3 vX.Y.Z
+    pattern = r'helm\.sh/helm/v3\s+v([\d.]+)'
+    
+    match = re.search(pattern, content)
+    if not match:
+        raise Exception("Helm version pattern not found in go.mod file")
+    
+    version = match.group(1)
+    print(f"Extracted Helm version: {version}")
+    return version
+
+
 def update_docset_yml(kube_stack_version: str, docset_path: Path) -> None:
     """
     Update the kube-stack-version in the docset.yml file.
@@ -184,10 +244,51 @@ def update_docset_yml(kube_stack_version: str, docset_path: Path) -> None:
         raise Exception(f"Failed to update docset.yml: {e}")
 
 
+def update_helm_version(helm_version: str, docset_path: Path) -> None:
+    """
+    Update the helm-version in the docset.yml file.
+    
+    Args:
+        helm_version (str): The new version to set
+        docset_path (Path): Path to the docset.yml file
+        
+    Raises:
+        Exception: If unable to update the file
+    """
+    try:
+        # Read the current docset.yml content
+        with open(docset_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+        
+        # Pattern to match helm-version: <value> (with 2 spaces at the beginning)
+        pattern = r'(  helm-version:\s*)([^\s\n]+)'
+        
+        # Replace the version
+        new_content = re.sub(pattern, rf'\g<1>{helm_version}', content)
+        
+        if new_content == content:
+            # Check if the version is already correct
+            current_match = re.search(pattern, content)
+            if current_match and current_match.group(2) == helm_version:
+                print(f"helm-version is already set to {helm_version}")
+                return
+            else:
+                raise Exception("helm-version pattern not found in docset.yml")
+        
+        # Write the updated content back to the file
+        with open(docset_path, 'w', encoding='utf-8') as file:
+            file.write(new_content)
+        
+        print(f"Successfully updated helm-version to {helm_version} in docset.yml")
+        
+    except Exception as e:
+        raise Exception(f"Failed to update docset.yml: {e}")
+
+
 def main():
     """Main function to orchestrate the update process."""
     try:
-        print("Starting kube-stack-version update process...")
+        print("Starting version update process...")
         
         # Get the script directory and project root
         script_dir = Path(__file__).parent
@@ -210,11 +311,25 @@ def main():
         print("\n3. Extracting OTEL_KUBE_STACK_VERSION...")
         kube_stack_version = extract_kube_stack_version(constants_content)
         
-        # Step 4: Update docset.yml
-        print("\n4. Updating docset.yml...")
+        # Step 4: Fetch go.mod content from Elastic Agent repository
+        print("\n4. Fetching go.mod file content from Elastic Agent repository...")
+        gomod_content = fetch_elastic_agent_gomod()
+        
+        # Step 5: Extract Helm version
+        print("\n5. Extracting Helm version...")
+        helm_version = extract_helm_version(gomod_content)
+        
+        # Step 6: Update docset.yml with kube-stack-version
+        print("\n6. Updating kube-stack-version in docset.yml...")
         update_docset_yml(kube_stack_version, docset_path)
         
-        print(f"\n✅ Successfully updated kube-stack-version to {kube_stack_version}")
+        # Step 7: Update docset.yml with helm-version
+        print("\n7. Updating helm-version in docset.yml...")
+        update_helm_version(helm_version, docset_path)
+        
+        print(f"\n✅ Successfully updated:")
+        print(f"   - kube-stack-version to {kube_stack_version}")
+        print(f"   - helm-version to {helm_version}")
         
     except Exception as e:
         print(f"\n❌ Error: {e}")

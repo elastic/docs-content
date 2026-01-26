@@ -64,7 +64,8 @@ For full configuration examples, refer to [Running as a non-root user](configura
 :::{tab-item} {{agent}} 8.15 and earlier
 
 1. If local state storage in `hostPath` volumes is not desired this can be turned off by configuring an `emptyDir` volume instead.
+2. If local state storage is still desired but running the Agent container as root is not allowed, then you can run a `DaemonSet` that adjusts the permissions for the Agent local state on each Node prior to running {{agent}}. Note that this `DaemonSet` must be `runAsUser: 0` and possibly `privileged: true`. Also note the {{kib}} changes required to trust the {{es}} CA when running in fleet mode.
 
 :::
-
 ::::
+Full configuration examples exist in  [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).

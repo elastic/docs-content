@@ -12,7 +12,7 @@ products:
   - id: kibana
 ---
 
-# {{fleet}} and {{elastic-agent}} overview [fleet-and-elastic-agent]
+# {{fleet}} and {{agent}} overview [fleet-and-elastic-agent]
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 $$$package-registry-intro$$$
@@ -85,7 +85,7 @@ You can see the state of all your {{agents}} in {{fleet}}. On the **Agents** pag
 :alt: Agents page
 :::
 
-{{fleet}} in {{kib}} enables you to manage {{elastic-agent}} installations in standalone or {{fleet}} mode.
+{{fleet}} in {{kib}} enables you to manage {{agent}} installations in standalone or {{fleet}} mode.
 
 Standalone mode requires you to manually configure and manage the agent locally. It is recommended for advanced users only.
 

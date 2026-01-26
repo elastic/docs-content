@@ -53,9 +53,9 @@ To mitigate this issue, consider the following strategies:
 
 ### {{esql}} limitations
 
-{{esql}} tools are subject to the current limitations of the {{esql}} language itself. For example, [named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params) (`?parameter_name`) do not currently work with the `LIKE` and `RLIKE` operators ([issue #131356](https://github.com/elastic/elasticsearch/issues/131356)).
+{{esql}} tools are subject to the current limitations of the {{esql}} language itself.
 
-For non-serverless deployments, ensure your cluster supports the {{esql}} features you intend to use.
+For non-serverless deployments, ensure your cluster version supports the {{esql}} features you intend to use.
 
 For a complete list of {{esql}} limitations, refer to the the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 

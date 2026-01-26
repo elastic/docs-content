@@ -41,13 +41,13 @@ Some {{stack}} features also require specific node roles:
 
 * {{ccs-cap}} and {{ccr}} require the `remote_cluster_client` role.
 * {{stack-monitor-app}} and ingest pipelines require the `ingest` role.
-* {{fleet}}, the {{security-app}}, and {{transforms}} require the `transform` role. The `remote_cluster_client` role is also required to use {{ccs}} with these features.
+* {{fleet}}, the {{security-app}}, and transforms require the `transform` role. The `remote_cluster_client` role is also required to use {{ccs}} with these features.
 * {{ml-cap}} features, such as {{anomaly-detect}}, require the `ml` role.
 
 ::::
 
 
-As the cluster grows and in particular if you have large {{ml}} jobs or {{ctransforms}}, consider separating dedicated master-eligible nodes from dedicated data nodes, {{ml}} nodes, and {{transform}} nodes.
+As the cluster grows and in particular if you have large {{ml}} jobs or {{ctransforms}}, consider separating dedicated master-eligible nodes from dedicated data nodes, {{ml}} nodes, and transform nodes.
 
 
 ## Change the role of a node [change-node-role]
@@ -82,7 +82,7 @@ The following is a list of the roles that a node can perform in a cluster. A nod
 * [Ingest node](#node-ingest-node) (`ingest`): Ingest nodes are able to apply an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) to a document in order to transform and enrich the document before indexing. With a heavy ingest load, it makes sense to use dedicated ingest nodes and to not include the `ingest` role from nodes that have the `master` or `data` roles.
 * [Remote-eligible node](#remote-node) (`remote_cluster_client`): A node that is eligible to act as a remote client.
 * [Machine learning node](#ml-node-role) (`ml`): A node that can run {{ml-features}}. If you want to use {{ml-features}}, there must be at least one {{ml}} node in your cluster. For more information, see [Machine learning settings](../../deploy/self-managed/configure-elasticsearch.md) and [Machine learning in the {{stack}}](/explore-analyze/machine-learning.md).
-* [{{transform-cap}} node](#transform-node-role) (`transform`): A node that can perform {{transforms}}. If you want to use {{transforms}}, there must be at least one {{transform}} node in your cluster. For more information, see [{{transforms-cap}} settings](../../deploy/self-managed/configure-elasticsearch.md) and [*Transforming data*](../../../explore-analyze/transforms.md).
+* [Transform node](#transform-node-role) (`transform`): A node that can perform transforms. If you want to use transforms, there must be at least one transform node in your cluster. For more information, see [Transforms settings](../../deploy/self-managed/configure-elasticsearch.md) and [*Transforming data*](../../../explore-analyze/transforms.md).
 
 ::::{admonition} Coordinating node
 :class: note
@@ -299,15 +299,15 @@ node.roles: [ ml, remote_cluster_client]
 The `remote_cluster_client` role is optional but strongly recommended. Otherwise, {{ccs}} fails when used in {{ml}} jobs or {{dfeeds}}. If you use {{ccs}} in your {{anomaly-jobs}}, the `remote_cluster_client` role is also required on all master-eligible nodes. Otherwise, the {{dfeed}} cannot start. See [Remote-eligible node](#remote-node).
 
 
-### {{transform-cap}} node [transform-node-role]
+### Transform node [transform-node-role]
 
-{{transform-cap}} nodes run {{transforms}} and handle {{transform}} API requests. For more information, see [{{transforms-cap}} settings](../../deploy/self-managed/configure-elasticsearch.md).
+Transform nodes run transforms and handle transform API requests. For more information, see [Transforms settings](../../deploy/self-managed/configure-elasticsearch.md).
 
-To create a dedicated {{transform}} node, set:
+To create a dedicated transform node, set:
 
 ```yaml
 node.roles: [ transform, remote_cluster_client ]
 ```
 
-The `remote_cluster_client` role is optional but strongly recommended. Otherwise, {{ccs}} fails when used in {{transforms}}. See [Remote-eligible node](#remote-node).
+The `remote_cluster_client` role is optional but strongly recommended. Otherwise, {{ccs}} fails when used in transforms. See [Remote-eligible node](#remote-node).
 
