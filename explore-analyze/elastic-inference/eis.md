@@ -109,3 +109,9 @@ To track your token consumption:
 
 1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
+
+## Supported models
+
+:::{csv-include} explore-analyze/elastic-inference/models.csv
+:caption: Sample user data from the database
+:::
