@@ -36,15 +36,8 @@ Add your Azure Storage Container as a repository to the platform:
     }
     ```
 
+  3. Select **Save**.
 
-Snapshots are stored in the container you provide. Use the repository name you define here to configure your {{es}} clusters for snapshotting to this repository.
+## Configure your deployment to use the repository [ece_configure_your_deployment_for_azure_snapshots]
 
-
-## Configure your deployment for Azure snapshots [ece_configure_your_deployment_for_azure_snapshots]
-
-To save deployment snapshots to the Azure repository:
-
-1. Configure your deployment to [snapshot to the Azure repository](cloud-enterprise.md).
-
-The cluster should then have snapshots enabled and and begins snapshotting immediately. You can configure the how frequently snapshotting occurs on the **Snapshots** in the **{{es}}** menu.
-
+After adding the snapshots repository, [configure your deployment to use it](./cloud-enterprise.md#ece-manage-repositories-clusters). Once configured, snapshots run automatically according to the scheduled interval. You can update this schedule from the **Snapshots** section in the **{{es}}** menu of your deployment page.

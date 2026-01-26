@@ -62,3 +62,7 @@ To add the repository:
         ::::
 
 6. Select **Save**.
+
+## Configure your deployment to use the repository
+
+After adding the snapshot repository, [configure your deployment to use it](./cloud-enterprise.md#ece-manage-repositories-clusters). Once configured, snapshots run automatically according to the scheduled interval. You can update this schedule from the **Snapshots** section in the **{{es}}** menu of your deployment page.
