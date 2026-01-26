@@ -62,7 +62,7 @@ No repository types other than those listed are supported in the {{ece}} platfor
 
 For more details, refer to [Managing snapshot repositories in {{ece}}](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
 
-In addition to the platform-managed repositories, you can also register snapshot repositories directly at the deployment level for custom or deployment-specific use cases. For this, follow the {{ech}} guides, which are also applicable to {{ece}} deployments.
+In addition to the platform-managed repositories, you can also register snapshot repositories directly at the deployment level for custom or deployment-specific use cases. For this, follow [the {{ech}} guides](#elastic-cloud-hosted), which are also applicable to {{ece}} deployments.
 
 ### {{eck}} (ECK) [elastic-cloud-on-kubernetes]
 
