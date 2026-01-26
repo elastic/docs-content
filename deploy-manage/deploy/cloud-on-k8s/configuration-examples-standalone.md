@@ -68,4 +68,4 @@ For full configuration examples, refer to [Running as a non-root user](configura
 
 :::
 ::::
-Full configuration examples exist in  [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).
+For full configuration examples refer to [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).
