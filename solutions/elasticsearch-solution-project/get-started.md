@@ -15,7 +15,7 @@ description: To try out an {{es}} project or solution, pick your deployment type
 
 # Get started with the {{es}} solution/project type
 
-New to {{es}}? Start building a search experience by setting up your first deployment, refining your search goals, and adding data.
+Get started with the {{es}} solution, which provides specialized UI tools like Agent Builder, Playground, and Query Rules on top of core [search capabilities](/solutions/search.md). Follow these steps to set up your deployment, add data, and start building.
 
 :::{note}
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
