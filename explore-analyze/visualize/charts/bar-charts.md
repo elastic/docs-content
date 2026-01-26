@@ -179,27 +179,27 @@ When creating or editing a visualization, you can customize several appearance o
     
     Your selection applies to the entire chart layer, so you can turn labels on for quick KPI-style charts or keep them off for dense histograms.
 
-**Bottom axis**
-:   Bottom-axis controls for Lens bar charts let you tune how the horizontal scale looks and behaves. Key options are:
+**Left axis**
+:   Left-axis controls for Lens bar charts let you tune how the vertical scale looks and behaves. Key options are:
     - **Title**: Set the label that appears under the axis (for example, "Date"). You can hide the label entirely if the layout is tight. 
     - **Gridlines**: Toggles vertical guide lines across the chart, which help compare bar positions against the axis scale.
     - **Tick labels**: Show or hide the textual values beneath the ticks. When visible, the orientation picker lets you rotate them (horizontal, angled, vertical) to avoid overlap on dense timelines.
-    - **Orientation**: Set the placement of the bottom axis title. It can be **Horizontal**, **Vertical**, or **Angled**.
-    - **Axis scale**: Select linear (default), log, or square-root scaling. Even though this is the bottom axis, it matters for horizontal bar charts or numeric bucketed X-axes.
+    - **Orientation**: Set the placement of the axis title. It can be **Horizontal**, **Vertical**, or **Angled**.
+    - **Axis scale**: Select linear (default), log, or square-root scaling.
     - **Bounds & rounding**: Manually clamp the axis to a min/max or let Lens round to nice intervals. For numeric histograms this also controls whether “nice” bucket labels are used.
 
     :::{note}
-    Bottom axis and Left axis options can interchange depending on the orientation you selected for the bar chart.
+    **Left axis** and **Bottom axis** options can interchange depending on the orientation you selected for the bar chart.
     :::
 
-**Left axis**
-:   Left-axis controls for Lens bar charts let you tune how the vertical scale looks and behaves. Key options are:
+**Bottom axis**
+:   Bottom-axis controls for Lens bar charts let you tune how the horizontal scale looks and behaves. Key options are:
     - **Title**: Set the label that appears under the axis (for example “Date”); you can hide the label entirely if the layout is tight. 
     - **Gridlines**: Toggles vertical guide lines across the chart, which help compare bar positions against the axis scale.
     - **Tick labels**: Show or hide the textual values beneath the ticks. When visible, the orientation picker lets you rotate them (horizontal, angled, vertical) to avoid overlap on dense timelines.
-    - **Orientation**: Set the placement of the bottom axis title. It can be **Horizontal**, **Vertical**, or **Angled**.
-    - **Partial data markers**: Highlights buckets at the edges of the time range that only contain partial data—useful for time-based bar charts so viewers know the first/last bucket might be incomplete.
-    - **Current time marker**: Draws a vertical marker for “now” on time charts, so you can see how recent the latest bar is.
+    - **Show partial data markers**: Highlights buckets at the edges of the time range that only contain partial data—useful for time-based bar charts so viewers know the first/last bucket might be incomplete.
+    - **Show current time marker**: Draws a vertical marker for “now” on time charts, so you can see how recent the latest bar is.
+
 
 #### Legend settings
 Configure elements of your bar chart's legend. Configurable options include:
