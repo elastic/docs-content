@@ -14,24 +14,30 @@ products:
 
 # Workflow tools
 
-Workflows and {{agent-builder}} are built to work together:
+Workflow tools enable agents to trigger Elastic Workflows directly from a conversation. By wrapping a workflow in a tool, you allow the agent to offload complex, multi-step, or deterministic tasks to the workflow engine while maintaining a natural language interface with the user.
+
 % (/explore-analyze/workflows.md)
+
+Workflows and {{agent-builder}} are built to work together:
+
 
 * Assign agents workflow tools to trigger workflows from your chats.
 * Add `ai.agent` steps to invoke agents in your workflows.
 
 Agents chat with your data by retrieving, summarizing, and reasoning. Workflows execute reliably with business-grade guardrails. Together, they combine flexible reasoning with deterministic execution.
 
-## Before you begin
+## Prerequisites
 
 Before using these features, ensure that:
 
+* **Workflows basics**: Familiarize yourself with the core concepts of Elastic Workflows before you begin.
+% (/explore-analyze/workflows.md)
 * **Workflows are set up:** The feature must be enabled and you need specific privileges to create and run workflows. For details, see Set up workflows
 % (/explore-analyze/workflows/setup.md).
-* (Optional) If using the example below, ensure the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
-## Trigger a workflow from an agent
-Follow these steps to wrap an existing workflow into a tool that your agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
+## Add a Workflow tool
+
+Follow these steps to configure a tool to invoke a workflow that an agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
 
 :::{image} ../images/create-new-tool-workflows.png
 :screenshot:
@@ -39,7 +45,6 @@ Follow these steps to wrap an existing workflow into a tool that your agent can 
 :alt: Screenshot of creating a new workflow tool.
 :::
 
-### Create a workflow tool
 1. Navigate to **Agents > More > View all tools > New tool**.
 2. Select **Workflow** as the tool type.
 3. Select the specific workflow you want to wrap from the drop down list.
@@ -50,15 +55,12 @@ Follow these steps to wrap an existing workflow into a tool that your agent can 
 
 4. Fill in the required fields:
   * **Tool ID**: Create a unique identifier for the tool.
-  * **Description**: Ensure the description clearly explains *when* the agent should use this tool. 
+  * **Description**: Ensure the description clearly explains *when* the agent should use this tool.
+  * **Label**: (Optional) Tags used to organize and filter tools within the {{agent-builder}} UI.
 5. Click **Save**.
 
-### Invoke the tool in chat
-Once you assign this tool to an agent, the agent can trigger the workflow autonomously.
-
-1. Navigate to **Agents**, select your agent, and click **Add tool** to assign the workflow tool you just created.
-2. Open the **Agent chat** and ask a question that triggers the workflow.
-3. The agent extracts the necessary parameters from the conversation, runs the workflow, and returns the workflow's final output to the chat.
+## Invoke the Workflow tool in Agent chat
+Once you assign a Workflow tool to an agent, the agent can trigger the workflow autonomously.
 
 :::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:
@@ -66,8 +68,20 @@ Once you assign this tool to an agent, the agent can trigger the workflow autono
 :alt: Screenshot of reasoning steps of agent builder.
 :::
 
+1. Navigate to **Agents**.
+2. Select your agent.
+3. Select **More > Edit Agent > Tools**
+3. Assign the workflow tool by selecting the checkbox.
+4. Click **Save**.
+2. Open the **Agent chat** and ask a question that triggers the workflow.
+3. The agent extracts the necessary parameters from the conversation, runs the workflow, and returns the workflow's final output to the chat.
+
+
+<!--
 ## Call an agent from a workflow
 Follow these steps to invoke an AI agent as a step within a workflow. This allows you to use the agent's reasoning capabilities to process data and return a summary.
+
+* (Optional) If using the example below, ensure the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
 1.  Open the **Workflows** editor and create or edit a workflow.
 2.  Add a new step with the type `ai.agent`.
@@ -130,6 +144,7 @@ steps:
       method: GET
       path: /api/agent_builder/agents
 ```
+-->
 
 ## Related pages
 * [Tools overview](../tools.md)
