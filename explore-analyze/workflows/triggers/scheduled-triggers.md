@@ -24,7 +24,7 @@ The following example shows the basic syntax for an interval-based scheduled tri
 triggers:
   - type: scheduled
     with:
-      interval: <amount><unit>
+      every: <amount><unit>
 ```
 
 The supported units are:
@@ -42,7 +42,7 @@ Every 5 minutes:
 triggers:
   - type: scheduled
     with:
-      interval: 5m
+      every: 5m
 ```      
 
 Every hour:
@@ -51,7 +51,7 @@ Every hour:
 triggers:
   - type: scheduled
     with:
-      interval: 1h
+      every: 1h
 ```
 
 Every day:
@@ -60,7 +60,7 @@ Every day:
 triggers:
   - type: scheduled
     with:
-      interval: 1d
+      every: 1d
 ```
 
 Every week:
@@ -69,7 +69,7 @@ Every week:
 triggers:
   - type: scheduled
     with:
-      interval: 7d
+      every: 7d
 ```
 
 ## RRule-based scheduling

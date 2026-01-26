@@ -16,6 +16,9 @@ Triggers also provide initial context to the workflow. For example, a workflow t
 ## Trigger types
 
 The following types of triggers are available:
+* [Manual triggers](#manual-triggers)
+* [Scheduled triggers](#scheduled-triggers)
+* [Alert triggers](#alert-triggers)
 
 ### Manual triggers
 
@@ -34,6 +37,8 @@ Manual trigger example:
 triggers:
   - type: manual
 ```
+
+Refer to [](/explore-analyze/workflows/triggers/manual-triggers.md) for more information.
 
 ### Scheduled triggers
 
@@ -55,8 +60,10 @@ Scheduled trigger example:
 triggers:
   - type: scheduled
     with:
-      interval: 5m
+      every: 5m
 ```
+
+Refer to [](/explore-analyze/workflows/triggers/scheduled-triggers.md) for more information.
 
 ### Alert triggers
 
@@ -69,12 +76,14 @@ Use alert triggers for:
 * Case creation and assignment
 * Notification routing based on alert severity
 
-Scheduled trigger example:
+Alert trigger example:
 
 ```yaml
 triggers:
   - type: alert
 ```
+
+Refer to [](/explore-analyze/workflows/triggers/alert-triggers.md) for more information.
 
 ## Trigger context
 
