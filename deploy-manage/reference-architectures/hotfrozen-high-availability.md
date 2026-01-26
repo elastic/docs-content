@@ -87,7 +87,7 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 
 **Shard management:**
 
-* The most important foundational step to maintaining performance as you scale is proper shard management. This includes even shard distribution amongst nodes, shard size, and shard count. For a complete understanding of what shards are and how they should be used, refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md). 
+* The most important foundational step to maintaining performance as you scale is proper shard management. This includes even shard distribution among nodes, shard size, and shard count. For a complete understanding of what shards are and how they should be used, refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md). 
 * Time series data - Use the following algorithm as a starting point, (hot_nodes - 1) / 2 and one replica. This balances ingest and query by using half the nodes for ingest, almost all of the nodes for queries, and provides fault tolerance.
   * Use this on top ~10 indices by events per second (EPS). Rollover at 30-40 GB for faster force_merge and snapshot. 
   * Minimize empty and low-volume shards. 
