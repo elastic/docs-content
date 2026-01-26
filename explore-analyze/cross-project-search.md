@@ -63,9 +63,12 @@ This section explains how search works in {{cps-init}}, including:
 
 ### Flat-world search
 
-If a project has linked projects, any search initiated on the origin project is automatically performed on the origin project and all its linked projects.
-This behavior is referred to as flat-world search.
-For example, the following request searches the `logs` indices in the origin project and in every linked project by default:
+{{cps-init}} introduces a flat-world namespace for searchable resources (document containers) such as indices, aliases, and data streams.
+When you refer to a resource by a name, {{cps-init}} resolves that name across the origin project and all of its linked projects.
+This behavior is referred to as **flat-world search**.
+This means that when you run a search from the origin project and refer to an index name such as `logs`, the search is executed against all indices named `logs` across the origin project and its linked projects.
+
+For example, the following request searches the `logs` resource in the origin project and in every linked project by default:
 
 ```console
 GET logs/_search
@@ -78,16 +81,13 @@ If a linked project does not have a `logs` index, that project is skipped and th
 
 {{cps-cap}} supports two types of search expressions: unqualified and qualified search expressions. The difference between them determines where a search request runs and how errors are handled.
 
-An **unqualified** search expression does not include a project alias prefix. When you use an unqualified expression, the search is performed according to the flat-world search model.
+**Unqualified search expressions** follow the flat-world search model and represent the default, native behavior in {{cps-init}}.
+**Qualified search expressions** explicitly override flat-world behavior, providing CCS-like semantics for controlling where a search runs and how errors are handled.
+
+An unqualified search expression does not include a project alias prefix. When you use an unqualified expression, the search is performed according to the flat-world search model.
 In this case, the search runs against the origin project and all its linked projects.
 
-A **qualified** search expression includes additional qualifiers, such as project alias prefixes, that explicitly control the scope of the search.
-
-Qualified search expressions enables you to:
-
-* restrict the search to the origin project only
-* narrow the search to specific linked projects
-* limit the search to projects that match project aliases (for example, using a wildcard)
+A qualified search expression includes additional qualifiers, such as project alias prefixes, that explicitly control the scope of the search.
 
 For example, the following request searches only the origin project:
 
@@ -102,7 +102,7 @@ For additional examples of qualified search expressions, refer to the [examples 
 In {{cps}}, when projects are linked to an origin project, all their searchable resources are conceptually brought into the origin project’s search scope. For search purposes, this forms a single merged project view.
 
 * Unqualified index expressions are resolved against this merged project view.
-* Qualified index expressions are resolved independently within each qualified project.
+* Qualified index expressions are resolved independently within each project explicitly targeted by the search expression.
 
 As a result, unqualified searches treat linked projects as part of one larger logical project, unless the search expression explicitly limits the scope.
 
