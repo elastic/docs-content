@@ -12,7 +12,7 @@ Bar charts are one of the most versatile and widely used visualizations for comp
 
 They work with any type of data: numeric values, counts, averages, or calculations. You can compare sales by region, track errors by service, analyze user engagement by feature, or rank products by revenue. Using bar charts, you can display data horizontally or vertically, stacked to show part-to-whole relationships, or grouped to compare multiple metrics side by side.
 
-You can create bar charts in {{kib}} using [**Lens**](../lens.md "title =70%").
+You can create bar charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Bar chart showing sales by category with different layouts](../../images/stacked-bar-chart.png)
 
@@ -35,7 +35,7 @@ New visualizations default to creating **Bar** charts, so you don't need to chan
 ::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
 2. Set the **Horizontal axis** to define categories for your data. This is typically a dimension like a category field, date histogram, or terms aggregation. This setting creates the individual bars.
-3. Set the **Vertical axis** to define the numerical values or quantities being measured. They're what determines the height or length of your bars. 
+3. Set the **Vertical axis** to define the numerical values or quantities being measured. They're what determine the height or length of your bars. 
 4. Optionally:
     - Add a [**Break down by**](#breakdown-options) dimension to split each bar into segments, creating stacked or grouped bar charts.
     - Add multiple metrics to compare different measures side by side.
@@ -95,7 +95,7 @@ To create a stacked bar chart:
 3. Add a dimension to the horizontal axis to create the bars.
 4. Add a dimension to **Break down by** to split each bar into stacked segments, recognizable with varying colors.
 
-![Bar chart with stacking](../../images/stacked-bar-chart.png "title =70%")
+![Bar chart with stacking](../../images/stacked-bar-chart.png "=70%")
 
 ### Create unstacked (side-by-side) bar charts [grouped-bars]
 
@@ -113,7 +113,7 @@ To create an unstacked bar chart:
 3. Add a dimension to the horizontal axis.
 4. Add a dimension to **Break down by** to split each bar into different bars that show next to each other, recognizable with varying colors.
 
-![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "title =70%")
+![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "=70%")
 
 ## Bar chart settings [settings]
 
@@ -152,10 +152,10 @@ Customize your bar chart to display exactly the information you need, formatted 
 
 **Data**
 :   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. Common options include:
-    - **Date histogram**: Create time-based bars with configurable intervals
-    - **Filters**: Define custom categories using KQL queries
-    - **Intervals**: Group data into numerical ranges
-    - **Top values**: Specify fields for which to gather top values 
+    - **Date histogram**: Create time-based bars with configurable intervals.
+    - **Filters**: Define custom categories using KQL queries.
+    - **Intervals**: Group data into numerical ranges.
+    - **Top values**: Specify fields for which to gather top values.
 
 **Appearance**
 :   Define the formatting of the breakdown, including:
@@ -194,7 +194,7 @@ When creating or editing a visualization, you can customize several appearance o
 
 **Bottom axis**
 :   Bottom-axis controls for Lens bar charts let you tune how the horizontal scale looks and behaves. Key options are:
-    - **Title**: Set the label that appears under the axis (for example “Date”); you can hide the label entirely if the layout is tight. 
+    - **Title**: Set the label that appears under the axis (for example, "Date"). You can hide the label entirely if the layout is tight. 
     - **Gridlines**: Toggles vertical guide lines across the chart, which help compare bar positions against the axis scale.
     - **Tick labels**: Show or hide the textual values beneath the ticks. When visible, the orientation picker lets you rotate them (horizontal, angled, vertical) to avoid overlap on dense timelines.
     - **Show partial data markers**: Highlights buckets at the edges of the time range that only contain partial data—useful for time-based bar charts so viewers know the first/last bucket might be incomplete.
@@ -214,7 +214,7 @@ Configure elements of your bar chart's legend. Configurable options include:
 :   Set the width of the legend.
 
 **Statistics**
-:   Choose one or more statistic to show (for example, average, min, max, last value), Lens appends those numbers to every series label so you don’t have to hover over the chart to see headline figures.  
+:   Choose one or more statistics to show (for example, average, min, max, last value). Lens appends those numbers to every series label so you don't have to hover over the chart to see headline figures.  
 
 **Label truncation**
 :   Choose whether to truncate long series labels, and set a limit for how many lines render when it's inside the chart.
