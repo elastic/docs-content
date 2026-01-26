@@ -22,7 +22,7 @@ Using the {{es}} solution or serverless project type? The [{{es}} solution docum
 
 ## What you can build
 
-Use {{es}} search capabilities to build search applications including:
+Use {{es}} search capabilities for use cases such as:
 
 - Website and documentation search
 - Ecommerce product catalogs
@@ -30,6 +30,7 @@ Use {{es}} search capabilities to build search applications including:
 - RAG (Retrieval Augmented Generation) systems
 - Geospatial search applications
 - Question answering systems
+- Analytics dashboards and data exploration
 - Custom observability or cybersecurity search tools
 - Much more!
 
@@ -47,7 +48,7 @@ The following subjects are covered in this section:
 | [**RAG**](/solutions/search/rag.md) | Learn about tools for retrieval augmented generation with {{es}}|
 | [**Building applications**](/solutions/search/site-or-app.md) | Integrate {{es}} into your websites or applications |
 
-## Core concepts [search-concepts]
+## Search concepts [search-concepts]
 
 For an introduction to core {{es}} concepts such as indices, documents, and mappings, refer to [](/manage-data/data-store.md).
 
