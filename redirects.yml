@@ -6,6 +6,13 @@ redirects:
   'solutions/search/search-applications.md': 'solutions/elasticsearch-solution-project/search-applications.md'
   'solutions/search/search-applications/search-application-client.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-client.md'
   'solutions/search/search-connection-details.md': 'solutions/elasticsearch-solution-project/search-connection-details.md'
+  'solutions/search/ai-assistant.md': 'solutions/elasticsearch-solution-project/ai-assistant.md'
+  'solutions/search/rag/playground.md': 'solutions/elasticsearch-solution-project/playground.md'
+  'solutions/search/rag/playground-context.md': 'solutions/elasticsearch-solution-project/playground-context.md'
+  'solutions/search/rag/playground-query.md': 'solutions/elasticsearch-solution-project/playground-query.md'
+  'solutions/search/rag/playground-troubleshooting.md': 'solutions/elasticsearch-solution-project/playground-troubleshooting.md'
+  'solutions/search/search-applications/search-application-api.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-api.md'
+  'solutions/search/search-applications/search-application-security.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-security.md'
   'solutions/search/mcp.md':
     to: 'explore-analyze/ai-features.md'
     anchors:
