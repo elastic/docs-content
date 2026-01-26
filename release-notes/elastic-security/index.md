@@ -47,7 +47,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates graph visualization to use Elastic Common Schema (ECS) entity fields for actor and target identification [#243711]({{kib-pull}}243711).
 * Improves the graph investigation feature by introducing new popover components for displaying additional node details [#236906]({{kib-pull}}236906).
 * Prepares the monitoring entity source CRUD APIs for general availability of privileged user monitoring [#246978]({{kib-pull}}246978).
-* Updates the **Entity summary** section in the entity details flyout to align with new design specifications [#245532]({{kib-pull}}245532).
+* Introduces the **Entity summary** section in the entity details flyout [#245532]({{kib-pull}}245532).
 * Adds Cloud Connector usage statistics collection for the CSPM and Asset Discovery integrations [#236992]({{kib-pull}}236992),[#240272]({{kib-pull}}240272).
 * Improves the reliability of Cloud Security Posture (CSP) data by automatically upgrading outdated Misconfiguration and Vulnerabilities data views to the correct versions [#238547]({{kib-pull}}238547).
 * Fixes Cloud Security Posture regressions to ensure AWS, GCP, and Azure cloud providers are all supported [#242592]({{kib-pull}}242592).
