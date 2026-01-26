@@ -57,6 +57,7 @@ Follow these steps to configure a tool to invoke a workflow that an agent can ca
   
   **Labels** (Optional)
   :   Tags used to organize and filter tools within the {{agent-builder}} UI.
+
 5. Click **Save**.
 
 ## Invoke the Workflow tool in Agent chat
