@@ -325,7 +325,7 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
     IDENTITY_PRINCIPAL_ID=$(az identity show \
         --name "${USER_ASSIGNED_IDENTITY_NAME}" \
         --resource-group "${RESOURCE_GROUP}" \
-        --query principalId --o tsv)
+        --query principalId -o tsv)
 
     STORAGE_SCOPE=$(az storage account show \
       --resource-group "${RESOURCE_GROUP}" \
