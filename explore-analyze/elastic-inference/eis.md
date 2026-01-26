@@ -113,5 +113,5 @@ To track your token consumption:
 ## Supported models
 
 :::{csv-include} models.csv
-:caption: Sample user data from the database
+:caption: Models supported by Elastic Inference Service
 :::
