@@ -4,6 +4,7 @@
 # Templates, workflows, and config
 /.github/                                   @elastic/doc-leads
 /.github/workflows/                         @elastic/docs-engineering
+/.github/scripts/                           @elastic/docs-engineering
 /acrolinx/                                  @elastic/doc-leads
 
 # The docs
