@@ -183,23 +183,6 @@ message: |
 
 When passing arrays or objects between steps, use the type-preserving syntax (`${{ }}`) to avoid stringification:
 
-:::{important}
-The type-preserving syntax must occupy the entire string value. You cannot mix it with other text.
-
-✅ **Valid:**
-
-```yaml
-tags: "${{inputs.tags}}"
-```
-
-❌ **Invalid:**
-
-```yaml
-message: "Tags are: ${{inputs.tags}}"
-```
-:::
-
-
 ```yaml
 steps:
   - name: get_tags
@@ -218,6 +201,22 @@ steps:
         # Preserves the array type, doesn't stringify it
         tags: "${{steps.get_tags.output.hits.hits[0]._source.tags}}"
 ```
+
+:::{important}
+The type-preserving syntax must occupy the entire string value. You cannot mix it with other text.
+
+✅ **Valid:**
+
+```yaml
+tags: "${{inputs.tags}}"
+```
+
+❌ **Invalid:**
+
+```yaml
+message: "Tags are: ${{inputs.tags}}"
+```
+:::
 
 ### Use conditionals for dynamic content [workflows-conditionals-example]
 
