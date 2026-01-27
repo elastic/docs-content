@@ -20,7 +20,7 @@ You must also have the appropriate subscription. Refer to the subscription page 
 When a workflow runs, the execution panel displays:
 
 - **Real-time logs**: Each step appears as it executes.
-- **Status indicators**: Green indicate success and red represents failure.
+- **Status indicators**: Green indicates success and red represents failure.
 - **Timestamps**: The duration of each step.
 - **Expandable details**: Click any step to examine details such as input parameters, output data, and execution timelines.
 
