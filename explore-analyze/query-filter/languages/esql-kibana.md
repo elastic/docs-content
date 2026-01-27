@@ -270,8 +270,6 @@ The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-langua
 
 {applies_to}`stack: ga 9.2` You can perform lookup join in cross cluster queries.
 
-across also use lookup indices from your remote clusters.
-
 ![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 
 In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/try-esql.md#discover-esql-lookup-join).
