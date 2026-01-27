@@ -7,7 +7,7 @@ description: Learn how to enable workflows and configure role-based access.
 
 # Set up workflows [workflows-setup]
 
-Before you can use workflows, you need to turn on the feature and ensure users have the appropriate permissions. In addition, you must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
+To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 
 ## Enable workflows [workflows-enable]
 
