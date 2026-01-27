@@ -151,7 +151,9 @@ steps:
       path: /api/agent_builder/agents
 ```
 -->
+## Examples
 
+The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) contains more than 50 examples you can use as a starting point.
 ## Related pages
 * [Tools overview](../tools.md)
 % * [Workflows](/explore-analyze/workflows.md)
