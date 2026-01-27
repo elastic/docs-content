@@ -251,7 +251,7 @@ toc:
       - file: visualize/lens.md
         children:
           - hidden: visualize/charts/area-charts.md
-          - hidden: visualize/charts/metric-charts.md
+          - hidden: visualize/charts/bar-charts.md
           - hidden: visualize/charts/line-charts.md
           - hidden: visualize/charts/metric-charts.md
           - hidden: visualize/charts/tables.md
