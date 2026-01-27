@@ -14,7 +14,7 @@ products:
 
 # Workflow tools
 
-Workflow tools enable agents to trigger Elastic Workflows directly from a conversation. By wrapping a workflow in a tool, you allow the agent to offload complex, multi-step, or deterministic tasks to the workflow engine while maintaining a natural language interface with the user.
+Workflow tools enable agents to trigger Elastic Workflows directly from a conversation and use their output. This is ideal for offloading tasks from the LLM that require a deterministic, repeatable sequence of actions.
 
 % (/explore-analyze/workflows.md)
 
