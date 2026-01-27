@@ -1,11 +1,18 @@
 ---
 navigation_title: "MCP tools"
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3+
+  serverless:
+    elasticsearch: preview
+    observability: preview
+    security: preview
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
-
-
 
 # Model Context Protocol (MCP) tools
 
@@ -87,7 +94,7 @@ MCP tools have built-in health monitoring. Tools that are unhealthy display an i
 
 An MCP tool is marked "unhealthy" when:
 
-* The MCP tool's associated MCP connector is unavaiable.
+* The MCP tool's associated MCP connector is unavailable.
 
     :::{image} ../images/mcp-connector-unavailable.png
     :screenshot:
