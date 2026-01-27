@@ -112,7 +112,7 @@ The workflow fails when all retries are exhausted.
 
 ### Fallback [workflows-on-failure-fallback]
 
-Executes alternative steps after the primary step fails and all retries (if configured) are exhausted.
+Executes alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow executes two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
 
 ```yaml
 on-failure:
