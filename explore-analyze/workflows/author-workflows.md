@@ -9,17 +9,17 @@ description: Reference guide for the workflow YAML editor interface.
 
 The YAML editor is the primary interface for creating and editing workflows. This page describes the editor's components and features.
 
+::::{admonition} Requirements
+To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](setup.md) to learn more.
+
+You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
+::::
+
+
 :::{image} /explore-analyze/images/workflows-editor.png
 :alt: A view of Workflows editor
 :screenshot:
 :::
-
-## Requirements [workflows-requirements]
-
-To access the YAML editor for workflows, you must:
-
-- Enable the Elastic Workflows [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (`workflows:ui:enabled`).
-- Have the appropriate subscription. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for the breakdown of available features and their associated subscription tiers.
 
 ## Editor layout [workflows-editor-layout]
 
