@@ -412,7 +412,7 @@ toc:
       - file: workflows/data.md
         children:
           - file: workflows/data/templating.md
-      - file: workflows/create-workflows.md
+      - file: workflows/author-workflows.md
       - file: workflows/monitor-troubleshoot.md
       - file: workflows/manage-workflows.md
       - hidden: workflows/use-cases.md
