@@ -144,6 +144,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where the response actions API (for {{elastic-defend}} agent types) didn't send actions to more than 10 agents [#243387]({{kib-pull}}243387).
 * Updates response action response codes [#240420]({{kib-pull}}240420).
 * Fixes endpoint artifacts spaces migration to ensure all artifacts are processed [#238740]({{kib-pull}}238740).
+* Updates the datafeed of the `packetbeat_dns_tunneling` {{elastic-sec}} {{ml}} job to include runtime mappings [#249317]({{kib-pull}}249317).
 * Fixes an issue where {{elastic-defend}} on Windows could log a warning about "Quarantine directory failed validation due to ACL or file attribute change" for empty removable media drives such as optical drives.
 * Fixes an issue in {{elastic-defend}} that could result in delayed or missing malware-on-write alerts.
 * Fixes an issue where {{elastic-defend}} upgrades and uninstallations could fail on busy systems.
