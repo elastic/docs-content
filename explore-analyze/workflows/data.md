@@ -172,6 +172,7 @@ In the following example:
 
 - Flow-control steps (`if`, `foreach`) cannot have workflow-level `on-failure` configurations.
 - Fallback steps execute only after all retries have been exhausted.
+- When combined, failure-handling options are processed in this order: retry → fallback → continue.
 
 ## Dynamic values with templating [workflows-dynamic-values]
 
