@@ -31,6 +31,13 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds new preconfigured connectors [#249379]({{kib-pull}}249379)
 * Replaces the AJV library with Zod for improved schema validation across Kibana [#248317]({{kib-pull}}248317)
 * Adds an option to convert an index to a lookup index in the **Manage index** dropdown in Serverless mode [#248730]({{kib-pull}}248730)
+* [Inference API] Add Chat Completion to Amazon Bedrock for the Inference API [#139411]({{es-pull}}139411)
+* [Native] BBQ Int4 to 1-bit dot product functions [#140264]({{es-pull}}140264)
+* Add IntRangeVector for selected groups in aggregation [#141205]({{es-pull}}141205)
+* Case and Coalesce Support for Compound Types [#140677]({{es-pull}}140677)
+* ES|QL: add support for project METADATA [#140592]({{es-pull}}140592)
+* Partition time-series source [#140475]({{es-pull}}140475)
+* Preconditioning [#140198]({{es-pull}}140198)
 
 ### Fixes [serverless-changelog-01252026-fixes]
 * Fixes an issue with reporting in **Dashboards and Visualizations** [#249644]({{kib-pull}}249644)
@@ -48,6 +55,12 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes a word-breaking issue in **Anomaly Detection** page titles [#250058]({{kib-pull}}250058)
 * Ensures child stream names do not contain spaces [#249384]({{kib-pull}}249384)
 * Fixes a bug encountered when adding items to an index template [#249168]({{kib-pull}}249168)
+* Ensure we parse on_disk_rescore as its valid to pass false [#141158]({{es-pull}}141158)
+* ESQL: Fix `INLINE STATS GROUP BY null` being incorrectly pruned [#140027]({{es-pull}}140027)
+* Fix date fields sort formatting with missing values [#135899]({{es-pull}}135899)
+* Quantize ST_X, ST_Y and related functions [#140963]({{es-pull}}140963)
+* Use Double.compare to compare doubles in tdigest.Sort [#141049]({{es-pull}}141049)
+* ESQL: Refactor lookup join to allow for streaming - Part 1 [#139406]({{es-pull}}139406)
 
 ## January 19, 2026 [serverless-changelog-01192026]
 
