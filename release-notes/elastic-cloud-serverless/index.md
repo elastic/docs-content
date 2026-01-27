@@ -9,6 +9,46 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## January 25, 2026 [serverless-changelog-01252026]
+
+### Features and enhancements [serverless-changelog-01252026-features-enhancements]
+* Adds **PromQL** editor support to **Discover** [#249230]({{kib-pull}}249230)
+* Opts in to the flyout session for the **Unified Doc Viewer** flyout [#246719]({{kib-pull}}246719)
+* Enables cascading documents for **ES|QL STATS** in **Discover** [#220119]({{kib-pull}}220119)
+* Adds the ability to create and manage SLOs from the **Service Inventory** page [#249259]({{kib-pull}}249259)
+* Adds a concat processor for data management [#247940]({{kib-pull}}247940)
+* Enables **ES|QL** multi-terms charts in **Lens** [#244743]({{kib-pull}}244743)
+* Adds support for unmapped fields in **Discover** [#248606]({{kib-pull}}248606)
+* Supports KQL in the visor within **Discover** [#247224]({{kib-pull}}247224)
+* Adds support for restorable state for **Doc Viewer** flyout tabs [#249030]({{kib-pull}}249030)
+* Adds basic support for internal Kibana infrastructure [#249854]({{kib-pull}}249854)
+* Allows filtering of **ES|QL** sessions within a dashboard [#249357]({{kib-pull}}249357)
+* Supports autocomplete functionality inside KQL functions [#249510]({{kib-pull}}249510)
+* Adds a new **Approximate** setting to **Discover** [#248946]({{kib-pull}}248946)
+* Improves the context for AI Assistant insights in Alerts [#248195]({{kib-pull}}248195)
+* Adds pricing communication for Knowledge Base models in Elastic AI Assistant [#249298]({{kib-pull}}249298)
+* Moves the results view buttons closer to the job selection controls in **Anomaly Detection** [#249261]({{kib-pull}}249261)
+* Adds new preconfigured connectors [#249379]({{kib-pull}}249379)
+* Replaces the AJV library with Zod for improved schema validation across Kibana [#248317]({{kib-pull}}248317)
+* Adds an option to convert an index to a lookup index in the **Manage index** dropdown in Serverless mode [#248730]({{kib-pull}}248730)
+
+### Fixes [serverless-changelog-01252026-fixes]
+* Fixes an issue with reporting in **Dashboards and Visualizations** [#249644]({{kib-pull}}249644)
+* Updates the logs overview component to use Zod v4 [#249583]({{kib-pull}}249583)
+* Implements the **Observability Agent** in AI Assistant insights and flyout configurations [#249776]({{kib-pull}}249776)
+* Fixes KQL autocomplete functionality during custom threshold rule creation [#250044]({{kib-pull}}250044)
+* Fixes a bug that caused an incorrect number of users to be displayed in CSV exports [#249032]({{kib-pull}}249032)
+* Removes the **Technical preview** badge for the privileged access detection package [#249500]({{kib-pull}}249500)
+* Fixes a bug where tooltip information for status tags was not displayed on the **Gap fill scheduler logs** flyout [#247695]({{kib-pull}}247695)
+* Fixes pagination issues in the **Installation review** frontend [#248259]({{kib-pull}}248259)
+* Ensures schedules run correctly by addressing internal Elastic Managed LLM connector changes [#249891]({{kib-pull}}249891)
+* Disables the **Rule summary** button when a user lacks the required rule privileges [#248221]({{kib-pull}}248221)
+* Fixes broken breadcrumbs and sidebar navigation for **Data Visualizer** and **AIOps** within solutions [#248167]({{kib-pull}}248167)
+* Ensures the abort signal is passed to Elasticsearch during file uploads [#249623]({{kib-pull}}249623)
+* Fixes a word-breaking issue in **Anomaly Detection** page titles [#250058]({{kib-pull}}250058)
+* Ensures child stream names do not contain spaces [#249384]({{kib-pull}}249384)
+* Fixes a bug encountered when adding items to an index template [#249168]({{kib-pull}}249168)
+
 ## January 19, 2026 [serverless-changelog-01192026]
 
 ### Features and enhancements [serverless-changelog-01192026-features-enhancements]
