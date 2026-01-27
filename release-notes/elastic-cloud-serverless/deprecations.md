@@ -9,6 +9,9 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+:::{include} _snippets/2025-01-13/deprecations.md
+:::
+
 ## January 5, 2026 [elastic-cloud-serverless-01052026-deprecations]
 * Removes the {{kib}} user from the root group. For more information, refer to [#244798]({{kib-pull}}244798).
 
