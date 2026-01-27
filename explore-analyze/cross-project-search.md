@@ -6,10 +6,18 @@ products:
   - id: elasticsearch
 ---
 
-# Cross-project search [cross-project-search]
+# {{cps-cap}} [cross-project-search]
 
 **{{cps-cap}}** enables you to run a single search request across multiple projects. For example, you can use {{cps}} to filter and analyze log data stored in projects connected through {{cps-init}}.
 Common use cases include centralized log analysis, cross-environment troubleshooting, and incident investigation across multiple teams or services.
+
+## {{cps-cap}} as the default behavior for connected projects
+
+Projects are intended to act as logical namespaces for data, not hard boundaries for querying it. You can split data into projects to organize ownership, use cases, or environments, while still expecting to search and analyze that data from a single place.
+
+Because of this, {{cps}} is the default behavior for your connected projects.
+Searches are designed to run across projects automatically, providing the same experience for querying, analysis, and insights across projects as within a single project.
+Restricting search scope is always possible, but it requires an explicit choice rather than being the default.
 
 ## Prerequisites
 
@@ -20,7 +28,7 @@ Common use cases include centralized log analysis, cross-environment troubleshoo
 
 ## Project linking
 
-In {{cps-init}}, projects have one of two roles: origin projects and linked projects.
+In {{serverless}}, projects can be linked together. The project from which links are created is called the origin project, and the connected projects are referred to as linked projects.
 The **origin project** is the project you are currently working in and from which you run cross-project searches.
 **Linked projects** are other projects that are connected to the origin project and whose data can be searched from it.
 After you link projects, searches that you run from the origin project are no longer local by default.
@@ -80,19 +88,17 @@ This section explains how search works in {{cps-init}}, including:
 
 ### Flat-world search
 
-{{cps-init}} introduces a flat-world namespace for searchable resources (document containers) such as indices, aliases, and data streams.
+{{cps-init}} introduces a flat-world namespace for searchable resources such as indices, aliases, and data streams.
 When you refer to a resource by a name, {{cps-init}} resolves that name across the origin project and all of its linked projects.
 This behavior is referred to as **flat-world search**.
-This means that when you run a search from the origin project and refer to an index name such as `logs`, the search is executed against all indices named `logs` across the origin project and its linked projects.
-
-For example, the following request searches the `logs` resource in the origin project and in every linked project by default:
+This means that when you run a search from the origin project and refer to a searchable resource such as `logs`, the search is executed against all resources named `logs` across the origin project and its linked projects, for example:
 
 ```console
 GET logs/_search
 ```
 
-For each linked project, the search runs only if an index named `logs` exists.
-If a linked project does not have a `logs` index, that project is skipped and the search continues without returning an error. No error is returned as long as at least one project has the `logs` index.
+For each linked project, the search runs only if a resource named `logs` exists.
+If a linked project does not have a `logs` resource, that project is skipped and the search continues without returning an error. No error is returned as long as at least one project has the `logs` resource.
 
 ### Unqualified and qualified search expressions [search-expressions]
 
@@ -129,7 +135,7 @@ The distinction between qualified and unqualified index expressions affects how 
 When you use an **unqualified** index expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
 
 ::::{important}
-The way how missing resources are interpreted differs between qualified and unqalified expressions, refer to [this section](#behavior-qualified-unqualified) for detailed explanation.
+The way that missing resources are interpreted differs between qualified and unqalified expressions, refer to [this section](#behavior-qualified-unqualified) for a detailed explanation.
 ::::
 
 `ignore_unavailable` defaults to `false`.
@@ -164,7 +170,7 @@ When you use an **unqualified search expression**, the behavior is different:
 
 ##### Examples
 
-You have three linked projects: `origin`, `project1`, and `project2`.
+You have two projects linked to your `origin` project: `project1` and `project2`.
 Resources:
 
 * `origin` has a `logs` index
@@ -221,7 +227,7 @@ You can assign tags to projects and use them to control {{cps}} behavior. Tags a
 
 With tags, you can:
 
-* route API calls to specific values based on tag values
+* route API calls to specific projects based on tag values
 * include tag values in search or ES|QL results to identify which project each document came from
 * filter and aggregate results using project metadata tags
 
@@ -261,7 +267,7 @@ GET logs/_search
 ```
 
 ::::{important}
-Currently, project routing is only supports using the `_alias` tag.
+Currently, project routing only supports using the `_alias` tag.
 ::::
 
 <!--
@@ -327,6 +333,19 @@ GET foo/_search
   }
 }
 ```
+
+When you use project tags in ES|QL, you must explicitly include them in the METADATA clause.
+This is required not only to return tag values in the results, but also to use them in the query for filtering, sorting, or aggregation.
+
+For example, the following ES|QL query counts documents per project alias:
+
+```console
+FROM logs* METADATA _project._alias | STATS COUNT(*) by _project._alias
+```
+<!--
+Include a link to the ES|QL CPS tutorial.
+-->
+
 
 <!--
 ## Security
