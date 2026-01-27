@@ -143,6 +143,11 @@ on-failure:
 
 You can combine multiple failure-handling options. They are processed in this order: retry → fallback → continue.
 
+In the following example:
+1. The step retries up to 2 times with a 1-second delay.
+2. If all retries fail, the fallback steps execute.
+3. The workflow continues regardless of the outcome.
+
 ```yaml
 - name: create_ticket
   type: jira
@@ -162,11 +167,6 @@ You can combine multiple failure-handling options. They are processed in this or
           message: "Warning: Failed to create ticket. Continuing workflow."
     continue: true
 ```
-
-In this example:
-1. The step retries up to 2 times with a 1-second delay.
-2. If all retries fail, the fallback steps execute.
-3. The workflow continues regardless of the outcome.
 
 ### Restrictions [workflows-on-failure-restrictions]
 
