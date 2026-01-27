@@ -4,7 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-space.html
 applies_to:
   stack:
-  serverless:
+  serverless: 
+    elasticsearch: ga
 products:
   - id: elasticsearch
   - id: cloud-serverless
@@ -16,7 +17,7 @@ navigation_title: Elasticsearch solution
 
 The {{es}} solution and serverless project type provide specialized UI tools that help you build search-powered applications faster. These tools build on top of core {{es}} [search capabilities](/solutions/search.md) that are available across all deployment types, solutions, and project types.
 
-These UI affordances are exclusive to the {{es}} solution (on non-serverless deployments) and the {{es}} serverless project type.
+These UI affordances are exclusive to the {{es}} solution and serverless project type.
 
 ::::{tip}
 Not sure which deployment type is right for you? Use the following resources to help you decide:
