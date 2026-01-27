@@ -1,0 +1,6 @@
+{{es}} is the [open source](https://github.com/elastic/elasticsearch) search and analytics engine, data store, and vector database which powers the Elastic platform and is fundamental to every Elastic [deployment type](/deploy-manage/deploy.md).
+
+The term "{{es}}" has several additional meanings depending on the context in which it is used:
+- {{es}} is the name of a [**project** type](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) on {{serverless-full}}, tailored for general-purpose search use cases.
+- {{es}} is also the name of a **solution** in other Elastic deployment types. Each [space](/deploy-manage/manage-spaces.md) has its own navigation or **solution view**.
+- The **{{es}} platform** (also known as the "Elastic platform" or simply "the platform") is the umbrella term for Elastic's full suite of products and capabilities, built on the core {{es}} technology. It encompasses what was initially known as the [{{stack}}](/get-started/the-stack.md), extended with additional capabilities (such as the Search AI Lake) to power Elastic's various deployment types and managed services.
