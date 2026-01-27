@@ -70,7 +70,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
 ::::::{tab-item} TLS certificate (deprecated)
 
-To use TLS certificates for remote clusters, you must establish mutual TLS trust. The local {{ech}} deployment must trust the Certificate Authority (CA) used by the remote self-managed cluster, and the remote self-managed cluster must trust the CA used by the local {{ech}} deployment.
+To use [TLS certificates](/deploy-manage/remote-clusters/security-models.md#tls-certificate-authentication) for remote clusters, you must establish mutual TLS trust. The local {{ech}} deployment must trust the Certificate Authority (CA) used by the remote self-managed cluster, and the remote self-managed cluster must trust the CA used by the local {{ech}} deployment.
 
 The steps below guide you through both sides of this configuration.
 
@@ -79,7 +79,7 @@ The steps below guide you through both sides of this configuration.
 ::::{include} _snippets/configure-trust-ecloud-self.md
 ::::
 
-#### Optional: reissue self-managed node certificates to include `otherName` and follow the {{ecloud}} subject name pattern [self-reissue-certs]
+#### Optional: reissue self-managed node certificates to follow the {{ecloud}} subject name pattern  [self-reissue-certs]
 
 ::::{include} _snippets/reissue-certificates-self-ecloud.md
 ::::
