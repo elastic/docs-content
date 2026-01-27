@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Workflow tools
+# Workflow tools in {{agent-builder}}
 
 Workflow tools enable agents to trigger Elastic Workflows directly from a conversation and use their output. This is ideal for offloading tasks from the LLM that require a deterministic, repeatable sequence of actions.
 
