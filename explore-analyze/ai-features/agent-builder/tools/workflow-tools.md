@@ -82,8 +82,14 @@ Once you've created a workflow tool, you must assign it to an agent to make it a
 3. Select **More > Edit Agent > Tools**
 4. Assign the workflow tool by selecting the checkbox.
 5. Click **Save**.
-6. Open the **Agent chat** and ask a question that triggers the workflow.
-7. The agent extracts the necessary parameters from the conversation, runs the workflow, and returns the workflow's final output to the chat.
+### Trigger a workflow
+
+To test your workflow tool, open the [Agent chat UI](../chat.md#agent-chat-gui) and ask a question that triggers the workflow.
+
+The agent:
+- extracts the necessary parameters from the conversation
+- runs the workflow
+- returns the workflow's final output to the chat
 
 
 <!--
