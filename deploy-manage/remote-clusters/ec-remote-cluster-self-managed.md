@@ -69,98 +69,29 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)
-### Specify the deployments trusted to be used as remote clusters [ec-trust-self-managed]
 
-A deployment can be configured to trust all or specific deployments in any environment:
+To use TLS certificates for remote clusters, you must establish mutual TLS trust. The local {{ech}} deployment must trust the Certificate Authority (CA) used by the remote self-managed cluster, and the remote self-managed cluster must trust the CA used by the local {{ech}} deployment.
 
-1. From the **Security** page, select **Remote Connections > Add trusted environment** and choose **Self-managed**. Then click **Next**.
-2. Select **Certificates** as authentication mechanism and click **Next**.
-3. Upload the public certificate for the Certificate Authority of the self-managed environment (the one used to sign all the cluster certificates). The certificate needs to be in PEM format and should not contain the private key. If you only have the key in p12 format, then you can create the necessary file like this: `openssl pkcs12 -in elastic-stack-ca.p12 -out newfile.crt.pem -clcerts -nokeys`
-4. Select the clusters to trust. There are two options here depending on the subject name of the certificates presented by the nodes in your self managed cluster:
+The steps below guide you through both sides of this configuration.
 
-    * Following the {{ecloud}} pattern. In {{ecloud}}, the certificates of all {{es}} nodes follow this convention: `CN = {{node_id}}.node.{{cluster_id}}.cluster.{{scope_id}}`. If you follow the same convention in your self-managed environment, then choose this option and you will be able to select all or specific clusters to trust.
-    * If your clusters don’t follow the previous convention for the certificates subject name of your nodes, you can still specify the node name of each of the nodes that should be trusted by this deployment. (Keep in mind that following this convention will simplify the management of this cluster since otherwise this configuration will need to be updated every time the topology of your self-managed cluster changes along with the trust restriction file. For this reason, it is recommended migrating your cluster certificates to follow the previous convention).
+#### Configure trust on the {{ech}} deployment [ec-trust-self-managed]
 
-        ::::{note}
-        Trust management will not work properly in clusters without an `otherName` value specified, as is the case by default in an out-of-the-box [{{es}} installation](../deploy/self-managed/installing-elasticsearch.md). To have the {{es}} certutil generate new certificates with the `otherName` attribute, use the file input with the `cn` attribute as in the example below.
-        ::::
-
-5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
-6. Select **Create trust** to complete the configuration.
-7. Configure the self-managed cluster to trust this deployment, so that both deployments are configured to trust each other:
-
-   * Download the Certificate Authority used to sign the certificates of your deployment nodes (it can be found in the Security page of your deployment)
-   * Trust this CA either using the [setting](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) `xpack.security.transport.ssl.certificate_authorities` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) or by [adding it to the trust store](../security/different-ca.md).
-
-8. Generate certificates with an `otherName` attribute using the {{es}} certutil. Create a file called `instances.yaml` with all the details of the nodes in your on-premise cluster like below. The `dns` and `ip` settings are optional, but `cn` is mandatory for use with the `trust_restrictions` path setting in the next step. Next, run `./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12 -in instances.yaml` to create new certificates for all the nodes at once. You can then copy the resulting files into each node.
-
-    ```yaml
-    instances:
-      - name: "node1"
-        dns: ["<NODE1_FQDN>"]
-        ip: ["192.0.2.1"]
-        cn: ["node1.node.1234567abcd.cluster.myscope.account"]
-      - name: "node2"
-        dns: ["<NODE2_FQDN>"]
-        ip: ["192.0.2.2"]
-        cn: ["node2.node.1234567abcd.cluster.myscope.account"]
-    ```
-
-9. Restrict the trusted clusters to allow only the ones which your self-managed cluster should trust.
-
-    * All the clusters in an {{ecloud}} region are signed by the same certificate authority. Therefore, adding this CA would make the self-managed cluster trust all the clusters in that region, including clusters from other organizations.  This can be limited using the setting `xpack.security.transport.ssl.trust_restrictions.path` which points to a file that limits the certificates to trust based on their `otherName`-attribute.
-    * For example, the following file would trust:
-
-      ```yaml
-        trust.subject_name:
-        - *.node.aaaabbbbaaaabbbb.cluster.1053523734.account <1>
-        - *.node.xxxxyyyyxxxxyyyy.cluster.1053523734.account <1>
-        - *.node.*.cluster.83988631.account <2>
-        - node*.<CLUSTER_FQDN> <3>
-      ```
-      1. Two specific clusters with cluster ids `aaaabbbbaaaabbbb` and `xxxxyyyyxxxxyyyy` in an ECE environment with Environment ID `1053523734`
-      2. Any cluster from an ECE environment with Environment ID `83988631`
-      3. The nodes from its own cluster (whose certificates follow a different convention: `CN = node1.<CLUSTER_FQDN>`, `CN = node2.<CLUSTER_FQDN>` and `CN = node3.<CLUSTER_FQDN>`)
-
-::::{tip}
-Generate new node certificates for an entire cluster using the file input mode of the certutil.
+::::{include} _snippets/configure-trust-ecloud-self.md
 ::::
 
+#### Optional: reissue self-managed node certificates to include `otherName` and follow the {{ecloud}} subject name pattern [self-reissue-certs]
 
-::::{dropdown} Using the API
-You can update a deployment using the appropriate trust settings for the {{es}} payload.
-
-In order to trust a cluster whose nodes present certificates with the subject names: "CN = node1.<CLUSTER_FQDN>", "CN = node2.<CLUSTER_FQDN>" and "CN = node3.<CLUSTER_FQDN>" in a self-managed environment, you could update the trust settings with an additional direct trust relationship like this:
-
-```json
-{
-  "trust":{
-    "accounts":[
-      {
-         "account_id":"ec38dd0aa45f4a69909ca5c81c27138a",
-         "trust_all":true
-      }
-    ],
-    "direct": [
-      {
-        "type" : "generic",
-        "name" : "My Self-managed environment",
-        "additional_node_names" : ["node1.<CLUSTER_FQDN>", "node2.<CLUSTER_FQDN>", "node3.<CLUSTER_FQDN>",],
-        "certificates" : [
-            {
-                "pem" : "-----BEGIN CERTIFICATE-----\nMIIDTzCCA...H0=\n-----END CERTIFICATE-----"
-            }
-         ],
-         "trust_all":false
-       }
-    ]
-  }
-}
-```
-
+::::{include} _snippets/reissue-certificates-self-ecloud.md
 ::::
+
+#### Configure trust on the self-managed cluster
+
+::::{include} _snippets/configure-trust-self-ecloud.md
+::::
+
 ::::::
 :::::::
+
 You can now connect remotely to the trusted clusters.
 
 
