@@ -137,6 +137,13 @@ cat nodes.json | jq -rc '.nodes[]|{node:.name, compressed:.jvm.using_compressed_
 
 #### Limit heap size to less than half of total RAM [reduce-jvm-memory-pressure-setup-heap]
 
+```{applies_to}
+deployment:
+  self: ga
+  eck: ga
+```
+
+
 By default, {{es}} manages the JVM heap size. If manually overridden, `Xms` and `Xmx` should be equal and not more than half of total operating system RAM. Refer to [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) for detailed guidance and best practices.
 
 To check these heap settings, poll the [node information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
