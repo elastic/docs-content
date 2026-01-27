@@ -93,6 +93,15 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
+### Errors
+
+The {{es}} API response body includes errors encountered at any stage of the ingestion flow. To diagnose ingestion issues, it's also recommended to review error logs. Elastic client-side products, including [Logstash](https://www.elastic.co/docs/reference/logstash/logging#_update_logging_levels) and [Elastic Agent](https://www.elastic.co/docs/reference/fleet/monitor-elastic-agent#change-logging-level), may require the `debug` logging level to be enabled in order to report HTTP 400-level errors. The following are examples of error log entries that you may encounter:
+
+To demonstrate a common common example, a document may be rejected due to a mapping conflict when the incoming data does not match the explicit field types defined in the index mapping. The {{es}} logs may include entries such as:
+
+```console
+[instance-0000000001][index] Error while parsing document for index [index]: [1:852] object mapping for [field] tried to parse field [field] as object, but found a concrete value org.elasticsearch.index.mapper.DocumentParsingException: [1:852] object mapping for [field] tried to parse field [field] as object, but found a concrete value at org.elasticsearch.index.mapper.DocumentParser.throwOnConcreteValue(DocumentParser.java:359)
+```
 
 ## Metrics [troubleshooting-pipelines-metrics]
 
@@ -129,13 +138,3 @@ Storing this output into `nodes_stats.json` and then using [third-party tool JQ]
 {{es}}'s Ingest Pipeline processors don't have associated `id` like {{ls}}'s Pipelines to distinguish them so these emit in sequential order as seen in pipeline's definition. 
 
 The statistics report per node since its uptime, so will reset with node restarts. As a rough heuristic, you could look at an individual node's output knowing proportions will usually be about equal. 
-
-## Errors
-
-The {{es}} API response body includes errors encountered at any stage of the ingestion flow. To diagnose ingestion issues, it's also recommended to review error logs. Elastic client-side products, including [Logstash](https://www.elastic.co/docs/reference/logstash/logging#_update_logging_levels) and [Elastic Agent](https://www.elastic.co/docs/reference/fleet/monitor-elastic-agent#change-logging-level), may require the `debug` logging level to be enabled in order to report HTTP 400-level errors. The following are examples of error log entries that you may encounter:
-
-```console
-[DEBUG][org.elasticsearch.action.bulk.TransportShardBulkAction] 
-failed to execute bulk item (create) index {...}
-org.elasticsearch.index.mapper.MapperParsingException: failed to parse field [...]
-```
