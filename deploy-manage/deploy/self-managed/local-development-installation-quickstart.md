@@ -29,7 +29,7 @@ This setup comes with a one-month trial license that includes all Elastic featur
    
    In most cases, you need to install Docker Desktop or Docker Engine to access Docker Compose.
    
-   Docker Compose V2 is recommended, and is included in Docker Desktop 3.4 and higher, and Docker Engine 20.10.13 or higher.
+   Docker Compose V2 or later is recommended, and is included in Docker Desktop 3.4 and later, and Docker Engine 20.10.13 or later.
  
    The minimum supported version of Docker Compose is 1.29.0.
 * If you’re using Microsoft Windows, then install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install).
