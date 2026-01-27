@@ -12,6 +12,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 ## January 27, 2026 [serverless-changelog-01272026]
 
 ### Features and enhancements [serverless-changelog-01272026-features-enhancements]
+* Elastic will regularly be adding new ML models which will appear as pre-configured AI connectors in your projects. Refer to [the Elastic Inference Service page](docs-content://explore-analyze/elastic-inference/eis.md) for more details
 * Adds **PromQL** editor support to **Discover** [#249230]({{kib-pull}}249230)
 * Opts in to the flyout session for the **Unified Doc Viewer** flyout [#246719]({{kib-pull}}246719)
 * Enables cascading documents for **ES|QL STATS** in **Discover** [#220119]({{kib-pull}}220119)
