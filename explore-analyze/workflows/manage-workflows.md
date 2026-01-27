@@ -9,6 +9,12 @@ description: Learn how to view, organize, and manage your workflows.
 
 The **Workflows** page allows you to view and manage all your workflows. From the page, you can create, edit, duplicate, delete, and more with your workflows. To find the **Workflows** page, use the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+::::{admonition} Requirements
+To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](setup.md) to learn more.
+
+You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
+::::
+
 :::{image} /explore-analyze/images/workflows-page.png
 :alt: A view of Workflows editor
 :screenshot:

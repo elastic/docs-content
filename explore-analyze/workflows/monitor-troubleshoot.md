@@ -9,6 +9,12 @@ description: Learn how to monitor Elastic workflows executions and troubleshoot 
 
 After you run a workflow, you can track its progress in real time, review past executions, and diagnose any failures. This page explains how to use the execution panel and logs to understand what happened during a workflow run.
 
+::::{admonition} Requirements
+To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](setup.md) to learn more.
+
+You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
+::::
+
 ## Monitor execution [workflows-monitor-execution]
 
 When a workflow runs, the execution panel displays:
