@@ -11,7 +11,7 @@ products:
 
 
 
-# Search Application client guide [search-application-client]
+# Search Applications client guide [search-application-client]
 
 ::::{important}
 Search Applications is a beta feature and is not recommended for new users in {{es}} 9.x. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.

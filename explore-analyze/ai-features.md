@@ -83,14 +83,14 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### Model Context Protocol (MCP) servers
 
-Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ and Serverless deployments, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, you can use the `mcp-elasticsearch` server which has a limited tool set.
+Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ deployments and Serverless projects, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, you can use the `mcp-elasticsearch` server which has a limited tool set.
 
 #### {{agent-builder}} MCP server
 ```{applies_to}
 stack: preview 9.2
 elasticsearch: preview
 ```
-Elastic 9.2.0+ and Serverless deployments provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes all built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
+Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes all built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
 
 #### {{es}} MCP server
 ```{applies_to}

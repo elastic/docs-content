@@ -11,7 +11,7 @@ products:
 
 
 
-# Security for search applications [search-application-security]
+# Security for Search Applications [search-application-security]
 
 ::::{important}
 Search Applications is a beta feature and is not recommended for new users in {{es}} 9.x. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.

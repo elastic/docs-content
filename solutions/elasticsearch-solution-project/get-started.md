@@ -10,7 +10,7 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
 navigation_title: Get started
-description: To try out an {{es}} project or solution, pick your deployment type, search goals, and ingestion method.
+description: To try out an Elasticsearch project or solution, pick your deployment type, search goals, and ingestion method.
 ---
 
 # Get started with the {{es}} solution/project type
