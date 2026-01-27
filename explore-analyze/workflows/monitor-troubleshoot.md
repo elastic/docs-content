@@ -7,7 +7,7 @@ description: Learn how to monitor Elastic workflows executions and troubleshoot 
 
 # Monitor and troubleshoot workflows [workflows-monitor-troubleshoot]
 
-After you run a workflow, you can track its progress in real time, review past executions, and diagnose any failures. This page explains how to use the execution panel and logs to understand what happened during a workflow run.
+After you run a workflow, you can track its progress in real time, review past executions, and diagnose any failures. This page explains how to use the execution panel and logs on the **Executions tab** to understand what happened during a workflow run.
 
 ::::{admonition} Requirements
 To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](setup.md) to learn more.
