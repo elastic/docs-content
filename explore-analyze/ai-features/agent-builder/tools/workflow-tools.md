@@ -31,7 +31,7 @@ Before you begin:
 
 ## Add a Workflow tool
 
-Follow these steps to configure a tool to invoke a workflow that an agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
+Follow these steps to configure a workflow tool:
 
 1. Navigate to **Agents > More > View all tools > New tool**.
 2. Select **Workflow** as the tool type.
