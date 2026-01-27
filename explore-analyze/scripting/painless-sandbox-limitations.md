@@ -9,9 +9,14 @@ products:
 
 # Debug sandbox limitations in Painless
 
-Follow these guidelines to avoid Painless sandbox restriction errors in your script.
-
 Painless implements sandbox limitations that differ from standard Java syntax and behavior. These restrictions are designed to optimize performance and prevent logical errors, which can lead to unexpected compilation errors when common Java patterns are used. One limitation is that empty `foreach` loops are not allowed.
+
+Follow these guidelines to avoid Painless sandbox restriction errors in your script:
+
+* **Empty loops:** Painless intentionally prohibits empty `foreach` loops for performance reasons.  
+* **Syntax differences:** Painless syntax differs from Java in several ways to optimize execution and prevent logical errors.
+
+For details, refer to the following sample error and solution.
 
 ## Sample error
 
@@ -109,7 +114,7 @@ Painless implements sandbox limitations that differ from standard Java syntax an
 
 The error occurs because Painless expects meaningful code inside loop blocks and treats empty loops as potential bugs or risks.
 
-### Solution: Add code inside loop blocks
+## Solution: Add code inside loop blocks
 
 Always include actual code inside foreach loops. For example:
 
@@ -133,7 +138,3 @@ POST _scripts/painless/_execute
 }
 ```
 
-## Notes
-
-* **Empty loops:** Painless intentionally prohibits empty `foreach` loops for performance reasons.  
-* **Syntax differences:** Painless syntax differs from Java in several ways to optimize execution and prevent logical errors.

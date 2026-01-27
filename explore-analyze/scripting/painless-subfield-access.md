@@ -9,9 +9,15 @@ products:
 
 # Debug subfield access errors in Painless
 
-Follow these guidelines to avoid nested field access errors in your Painless scripts.
-
 When you access subfields using the doc accessor, using incorrect syntax or trying to access non-existent fields without proper validation leads to runtime errors.
+
+Follow these guidelines to avoid nested field access errors in your Painless scripts:
+
+* Use full dot notation as a single string: `doc['parent.child’]` rather than `doc['parent.['child’].`  
+* Always validate field existence using `.size() > 0` before accessing subfield values.  
+* Field validation is crucial when documents have varying object structures.
+
+For details, refer to the following sample error, solution, and the result when the solution is applied to some sample data.
 
 ## Sample error
 
@@ -186,7 +192,7 @@ POST events/_search
 }
 ```
 
-## Results
+## Result
 
 ```json
 {
@@ -277,10 +283,4 @@ POST events/_search
   }
 }
 ```
-
-## Notes
-
-* Use full dot notation as a single string: `doc['parent.child’]` rather than `doc['parent.['child’].`  
-* Always validate field existence using `.size() > 0` before accessing subfield values.  
-* Field validation is crucial when documents have varying object structures.
 

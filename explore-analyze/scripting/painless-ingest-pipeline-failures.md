@@ -9,9 +9,14 @@ products:
 
 # Debug ingest pipeline failures in Painless
 
-Follow these guidelines to avoid [ingest pipeline](elasticsearch://reference/scripting-languages/painless/painless-ingest-processor-context.md) errors in your Painless scripts.
-
 When you convert time strings to nanoseconds in ingest pipelines, attempting to perform arithmetic operations directly on string values without proper date parsing causes type casting errors. 
+
+Follow these guidelines to avoid [ingest pipeline](elasticsearch://reference/scripting-languages/painless/painless-ingest-processor-context.md) errors in your Painless scripts:
+
+* Time strings such as `"HH:mm:ss.SSS"` must be explicitly parsed before performaing arithmetic operations.  
+* Using `SimpleDateFormat` in a script processor allows custom parsing.
+
+For details, refer to the following sample error, solution, and the result when the solution is applied.
 
 ## Sample error
 
@@ -132,7 +137,4 @@ POST _ingest/pipeline/_simulate
 }
 ```
 
-## Notes
 
-* Time strings such as `"HH:mm:ss.SSS"` must be explicitly parsed before performaing arithmetic operations.  
-* Using `SimpleDateFormat` in a script processor allows custom parsing.

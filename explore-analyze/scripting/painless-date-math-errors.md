@@ -9,11 +9,17 @@ products:
 
 # Debug date math errors in Painless
 
-Follow these guidelines to avoid [date](elasticsearch://reference/scripting-languages/painless/using-datetime-in-painless.md) operation errors in your Painless scripts.
-
 When you work with date fields in runtime mappings, accessing methods directly on the document field object can cause errors if the proper value accessor is not used.
 
-## Error
+Follow these guidelines to avoid [date](elasticsearch://reference/scripting-languages/painless/using-datetime-in-painless.md) operation errors in your Painless scripts:
+
+* Always use `.value` when accessing single values from document fields in Painless.  
+* Check for empty fields when the field might not exist in all documents.  
+* Date arithmetic should be performed on the actual date value, not the field container object.
+
+For details, refer to the following sample error and solution.
+
+## Sample error
 
 ```json
 {
@@ -102,8 +108,3 @@ Access the date value using `.value` before calling date methods:
 }
 ```
 
-## Notes
-
-* Always use `.value` when accessing single values from document fields in Painless.  
-* Check for empty fields when the field might not exist in all documents.  
-* Date arithmetic should be performed on the actual date value, not the field container object.

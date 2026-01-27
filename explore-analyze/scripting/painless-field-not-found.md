@@ -9,9 +9,17 @@ products:
 
 # Debug field not found errors in Painless
 
-Follow these guidelines to avoid field access errors in your Painless scripts.
-
 When you work with document fields, attempting to access fields that don't exist in all documents or aren't properly mapped leads to field not found exceptions, causing script failures.
+
+Follow these guidelines to avoid field access errors in your Painless scripts:
+
+* **Field presence:** Always check if fields exist before accessing them, using `.size() > 0`.  
+* **Document variation:** Not all documents are guaranteed to have the same field structure.  
+* **Mapping awareness:** A field must be defined in the index mappings to be accessed with doc values, and its value in each document must be validated.  
+* **Field API:** The `field` API and `$` shortcut handle missing values gracefully, using default values.  
+* **Compatibility:** Some field types (such as `text` or `geo`) [aren't yet supported](/explore-analyze/scripting/script-fields-api.md#_supported_mapped_field_types) by the field API; continue using `doc` for those.
+
+For details, refer to the following sample error, solutions, and the result when any of the solutions is applied to a sample document.
 
 ## Sample error
 
@@ -202,7 +210,7 @@ GET articles/_search
 }
 ```
 
-## Results
+## Result
 
 ```json
 {
@@ -236,10 +244,3 @@ GET articles/_search
 }
 ```
 
-## Notes
-
-* **Field presence:** Always check if fields exist before accessing them, using `.size() > 0`.  
-* **Document variation:** Not all documents are guaranteed to have the same field structure.  
-* **Mapping awareness:** A field must be defined in the index mappings to be accessed with doc values, and its value in each document must be validated.  
-* **Field API:** The `field` API and `$` shortcut handle missing values gracefully, using default values.  
-* **Compatibility:** Some field types (such as `text` or `geo`) [aren't yet supported](/explore-analyze/scripting/script-fields-api.md#_supported_mapped_field_types) by the field API; continue using `doc` for those.

@@ -9,9 +9,15 @@ products:
 
 # Debug array manipulation errors in Painless
 
-Follow these guidelines to avoid array (list) access errors in your Painless scripts.
+An array `index_out_of_bounds_exception` error occurs when a script tries to access an element at a position that does not exist in the array. For example, if an array has two elements, trying to access a third element triggers this exception.
 
-An array `index_out_of_bounds_exception` error occurs when a script tries to access an element at a position that does not exist in the array. For example, if an array has two elements, trying to access a third element triggers this exception. 
+Follow these guidelines to avoid array (list) access errors in your Painless scripts:
+
+* **Array bounds:** Always check the size of an array before accessing specific indices.  
+* **Zero-indexed:** Remember that arrays start at index 0, so `size() - 1` is the last valid index.  
+* **Empty arrays:** Handle cases where arrays might be completely empty (`size() == 0`).
+
+For details, refer to the following sample error, solution, and the result when the solution is applied to a sample document.
 
 ## Sample error
 
@@ -90,11 +96,9 @@ An array `index_out_of_bounds_exception` error occurs when a script tries to acc
 }
 ```
 
-## Root cause
-
 The error occurs because the script tries to access index 2 (the third element) in an array that only has two elements (indices 0, 1). Arrays in Painless are zero-indexed, so accessing an index greater than or equal to the array size causes an exception.
 
-## Solution: Check array bounds before accessing
+## Solution: Check an array's bounds before accessing it
 
 Always verify the size of an array before accessing specific indices:
 
@@ -134,7 +138,7 @@ POST blog_posts/_doc
 }
 ```
 
-## Results
+## Result
 
 ```json
 {
@@ -156,9 +160,3 @@ POST blog_posts/_doc
   }
 }
 ```
-
-## Notes
-
-* **Array bounds:** Always check the size of an array before accessing specific indices.  
-* **Zero-indexed:** Remember that arrays start at index 0, so `size() - 1` is the last valid index.  
-* **Empty arrays:** Handle cases where arrays might be completely empty (`size() == 0`).

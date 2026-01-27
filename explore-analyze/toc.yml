@@ -164,7 +164,7 @@ toc:
           - file: scripting/painless-syntax-context-bridge.md
           - file: scripting/modules-scripting-security.md
           - file: scripting/painless-lab.md
-          - file: scripting/painless-scripting.md
+          - file: scripting/painless-debugging.md
             children:
               - file: scripting/painless-array-list-manipulation-errors.md
               - file: scripting/painless-date-math-errors.md

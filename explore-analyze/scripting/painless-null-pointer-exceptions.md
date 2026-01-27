@@ -9,9 +9,15 @@ products:
 
 # Debug null pointer exception errors in Painless
 
-Follow these guidelines to avoid null pointer exceptions in your Painless scripts.
-
 In Painless, field access methods vary depending on the script execution [context](elasticsearch://reference/scripting-languages/painless/painless-contexts.md). Using a field access pattern that is not valid for the current script context causes a `null_pointer_exception`.
+
+Follow these guidelines to avoid null pointer exceptions in your Painless scripts:
+
+* **Context matters:** Always verify the correct field access pattern for your script context.  
+* **Context limitations:** Script filters cannot access `params['_source']` .  
+* **Field mapping:** Use `.keyword` suffix for text fields when accessing via doc values.
+
+For details, refer to the following sample error, solution, and the result when the solution is applied to some sample data.
 
 ## Sample error
 
@@ -129,7 +135,7 @@ GET products/_search
 }
 ```
 
-### Results
+### Result
 
 ```json
 {
@@ -155,9 +161,4 @@ GET products/_search
 }
 ```
 
-### Notes
-
-* **Context matters:** Always verify the correct field access pattern for your script context.  
-* **Context limitations:** Script filters cannot access `params['_source']` .  
-* **Field mapping:** Use `.keyword` suffix for text fields when accessing via doc values.
 

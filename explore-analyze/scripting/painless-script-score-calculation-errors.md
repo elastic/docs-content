@@ -9,10 +9,17 @@ products:
 
 # Debug script score calculation errors in Painless
 
-Follow these guidelines to avoid scoring calculation errors in your Painless scripts.
-
 When you use [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with type `double`,
  the script can return unexpected null values, negative values `0.0`, or Infinity, causing documents to receive a score of `0` or be excluded from results entirely. This commonly occurs when field access patterns don't account for missing values or when mathematical operations result in null propagation.
+
+Follow these guidelines to avoid scoring calculation errors in your Painless scripts:
+
+* **Mathematical safety:** Validate inputs for functions like `Math.log()`.  
+* **Default values:** Provide meaningful defaults for missing fields to maintain consistent scoring.  
+* **Minimum scores:** Ensure scripts return positive values to avoid zero scores.  
+* **Null handling:** Mathematical operations with null values propagate null throughout the calculation.
+
+For details, refer to the following sample error, solution, and the result when the solution is applied to sample documents.
 
 ## Sample error
 
@@ -87,7 +94,7 @@ The error occurs because of mathematical edge cases in calculations:
 
 When a script returns `NaN`, negative infinity, or other invalid numbers, Painless converts the score to 0.0, causing unexpected ranking behavior.
 
-### Solution: Add mathematical safety checks
+## Solution: Add mathematical safety checks
 
 Always validate mathematical inputs and handle edge cases:
 
@@ -144,7 +151,7 @@ POST products/_doc
 }
 ```
 
-## Results
+## Result
 
 ```json
 {
@@ -179,10 +186,4 @@ POST products/_doc
 }
 ```
 
-## Notes
-
-* **Mathematical safety:** Validate inputs for functions like `Math.log()`.  
-* **Default values:** Provide meaningful defaults for missing fields to maintain consistent scoring.  
-* **Minimum scores:** Ensure scripts return positive values to avoid zero scores.  
-* **Null handling:** Mathematical operations with null values propagate null throughout the calculation.
 

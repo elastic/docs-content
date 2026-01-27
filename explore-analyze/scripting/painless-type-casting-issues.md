@@ -9,9 +9,17 @@ products:
 
 # Debug type casting errors in Painless
 
-Follow these guidelines to avoid type conversion errors in your Painless scripts.
-
 When you perform [type casting](elasticsearch://reference/scripting-languages/painless/painless-casting.md) in Painless scripts, attempting implicit conversions or casting incompatible types without proper validation leads to compilation and runtime errors.
+
+Follow these guidelines to avoid type conversion errors in your Painless scripts:
+
+* Validate the existence of a field using `.size() > 0` before accessing values.  
+* Check for null values using `value != null` before casting.  
+* Use `instanceof Number` to verify the value is numeric before casting.  
+* Handle missing fields gracefully with default values.  
+* When working with {{es}} field values, always validate the actual field type.
+
+For details, refer to the following sample error, solution, and the result when the solution is applied to a sample document.
 
 ## Sample error
 
@@ -147,7 +155,7 @@ POST products/_search
 }
 ```
 
-## Results
+## Result
 
 ```json
 {
@@ -206,10 +214,3 @@ POST products/_search
 }
 ```
 
-## Notes
-
-* Validate the existence of a field using `.size() > 0` before accessing values.  
-* Check for null values using `value != null` before casting.  
-* Use `instanceof Number` to verify the value is numeric before casting.  
-* Handle missing fields gracefully with default values.  
-* When working with {{es}} field values, always validate the actual field type.

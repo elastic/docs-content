@@ -9,9 +9,16 @@ products:
 
 # Debug regex pattern matching failures in Painless
 
-Follow these guidelines to avoid [regex](elasticsearch://reference/scripting-languages/painless/painless-regexes.md) operation errors in your Painless scripts.
+Regex operations in Painless can fail for several reasons: the regex feature is deactivated, there is incorrect matcher usage, or there are malformed regex patterns. This can occur when standard Java regex behavior is thought to apply directly to Painless.
 
-Regex operations in Painless can fail for several reasons: the regex feature is disabled, there is incorrect matcher usage, or there are malformed regex patterns. This may occur when standard Java regex behavior is thought to apply directly to Painless.
+Follow these guidelines to avoid [regex](elasticsearch://reference/scripting-languages/painless/painless-regexes.md) operation errors in your Painless scripts:
+
+* **Call find() first:** Always use `matcher.find()` before accessing groups.  
+* **Enable regex:** Set `script.painless.regex.enabled=true` in the `elasticsearch.yml` settings file if regex is disabled.  
+* **Group numbering:** Use `group(0)` for the entire match, `group(1)` for first capture group, and so on.  
+* **Performance impact:** Regex operations can be expensive, especially with complex patterns.
+
+For details, refer to the following sample error, solution, and the result when the solution is applied.
 
 ## Sample error
 
@@ -103,7 +110,7 @@ POST _scripts/painless/_execute
 }
 ```
 
-## Results
+## Result
 
 ```json
 {
@@ -111,9 +118,3 @@ POST _scripts/painless/_execute
 }
 ```
 
-## Notes
-
-* **Call find() first:** Always use `matcher.find()` before accessing groups.  
-* **Enable regex:** Set `script.painless.regex.enabled=true` in the `elasticsearch.yml` settings file if regex is disabled.  
-* **Group numbering:** Use `group(0)` for the entire match, `group(1)` for first capture group, and so on.  
-* **Performance impact:** Regex operations can be expensive, especially with complex patterns.

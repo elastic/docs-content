@@ -9,11 +9,14 @@ products:
 
 # Debug runtime field exception errors in Painless
 
-Follow these guidelines to avoid [runtime field](elasticsearch://reference/scripting-languages/painless/painless-runtime-fields-context.md) exceptions in your Painless scripts.
-
-## Using `return` instead of `emit` in runtime field in runtime mappings
-
 When you create runtime mappings in a Painless script, using `return` instead of `emit` to output values leads to compilation errors, as runtime field scripts require the `emit()` function to produce field values.
+
+Follow these guidelines to avoid [runtime field](elasticsearch://reference/scripting-languages/painless/painless-runtime-fields-context.md) exceptions in your Painless scripts:
+
+* Runtime field scripts must use `emit()` to output values, not `return`.  
+* `emit()` can be called multiple times in a script to emit multiple values.
+
+For details, refer to the following sample error, solution, and the result when the solution is applied.
 
 ## Sample error
 
@@ -125,7 +128,7 @@ POST users/_search
 }
 ```
 
-## Results
+## Result
 
 ```json
 {
@@ -157,7 +160,4 @@ POST users/_search
 }
 ```
 
-## Notes
 
-* Runtime field scripts must use `emit()` to output values, not `return`.  
-* `emit()` can be called multiple times in a script to emit multiple values.
