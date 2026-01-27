@@ -34,16 +34,17 @@ Before you begin:
 Follow these steps to configure a workflow tool:
 
 1. Navigate to **Agents > More > View all tools > New tool**.
+
+  :::{image} ../images/create-new-tool-workflows.png
+  :screenshot:
+  :width: 900px
+  :alt: Screenshot of creating a new workflow tool.
+  :::
+
 2. Select **Workflow** as the tool type.
 3. Select the specific workflow you want to wrap from the drop down list.
 4. Fill in the [configuration fields](#configuration).
 5. Click **Save**.
-
-:::{image} ../images/create-new-tool-workflows.png
-:screenshot:
-:width: 900px
-:alt: Screenshot of creating a new workflow tool.
-:::
 
 ## Configuration
 
@@ -85,6 +86,8 @@ The agent:
 - extracts the necessary parameters from the conversation
 - runs the workflow
 - returns the workflow's final output to the chat
+
+Expand the **Completed reasoning** section to trace the execution steps and inspect the raw workflow output.
 
 :::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:
