@@ -38,7 +38,11 @@ Use custom **Index search tools** when:
 
 Index search tools require only a single configuration parameter:
 
-* **`pattern`**: An index pattern string (e.g., `logs-*`, `my-index`, `.alerts-*`) specifying which indices, aliases, or data streams to search
+* **`pattern`**: An index pattern string (e.g., `logs-myapp-*`, `my-index`, `.alerts-security-*`) specifying which indices, aliases, or data streams to search
+
+  :::{tip}
+  [Avoid overly broad wildcard patterns](#wildcard-warning) like `*` or `logs-*` across large datasets.
+  :::
 
 ## How it works
 
@@ -67,4 +71,8 @@ When an agent calls an index search tool:
 * **Wildcard patterns**: `logs-*`, `metrics-*`, `events-*`
 * **Specific indices**: `products`, `users`, `orders`
 * **System indices**: `.alerts-security-*`, `.ml-anomalies-*`
-* **All resources**:  `*`
+
+$$$wildcard-warning$$$
+:::{warning}
+Avoid overly broad patterns like `*` or `logs-*` across large datasets. Broad wildcards can cause the agent to retrieve more data than the LLM can process, resulting in slow responses or errors. Refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md) for tips on diagnosing and resolving these issues.
+:::
