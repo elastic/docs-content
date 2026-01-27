@@ -7,17 +7,17 @@ description: Learn about flow control steps for controlling workflow execution o
 
 # Flow control steps
 
-Flow control steps allow you to add logic, conditionals, and loops to your workflows, making them dynamic and responsive to data.
+Flow control steps allow you to add logic, conditionals, and loops to your workflows, making them dynamic and responsive to data. Use them to run different steps based on conditions, process items in bulk, or control timing.
 
 The following flow control steps are available:
 
-* **Conditional execution** (`if`): Execute different steps based on boolean or {{kib}} Query Language (KQL) expressons
+* **Conditional execution** (`if`): Run different steps based on boolean or {{kib}} Query Language (KQL) expressions
 * **Loops and iteration** (`foreach`): Iterate over arrays or collections
-* **Execution control** (`wait`): Pause execution for a specified duration
+* **Execution control** (`wait`): Pause step execution for a specified duration
 
 ## If
 
-The `if` step evaluates a boolean or KQL expresson and executes different steps based on whether the condition is true or false.
+The `if` step evaluates a boolean or KQL expression and runs different steps based on whether the condition is true or false.
 
 ```yaml
 steps:
@@ -25,16 +25,16 @@ steps:
     type: if
     condition: <KQL expression>
     steps:
-      # Steps to execute if condition is true
+      # Steps to run if condition is true
     else:
-      # Steps to execute if condition is false (optional)
+      # Steps to run if condition is false (optional)
 ```
 
 Refer to [](/explore-analyze/workflows/steps/if.md) for more information.
 
 ## Foreach
 
-The `foreach` step iterates over an array, executing a set of steps for each item in the collection.
+The `foreach` step iterates over an array, running a set of steps for each item in the collection.
 
 ```yaml
 steps:
@@ -42,7 +42,7 @@ steps:
     type: foreach
     foreach: <array expression>
     steps:
-      # Steps to execute for each item
+      # Steps to run for each item
       # Current item is available as 'foreach.item'
 ```
 

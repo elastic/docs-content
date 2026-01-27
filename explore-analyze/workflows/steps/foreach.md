@@ -7,17 +7,7 @@ description: Learn about the foreach step for iterating over data in workflows.
 
 # Foreach
 
-The `foreach` step iterates over an array and executes its nested steps once for each item in the array.
-
-```yaml
-steps:
-  - name: loopStep
-    type: foreach
-    foreach: <array expression>
-    steps:
-      # Steps to execute for each item
-      # Current item is available as 'foreach.item'
-```
+The `foreach` step iterates over an array and runs its nested steps once for each item in the array.
 
 Use the following parameters to configure a `foreach` step:
 
@@ -25,8 +15,18 @@ Use the following parameters to configure a `foreach` step:
 |-----------|----------|-------------|
 | `name` | Yes | Unique step identifier |
 | `type` | Yes | Step type - must be `foreach` |
-| `foreach` | Yes | An expression that evaluates to an array |
-| `steps` | Yes | An array of steps to execute for each iteration |
+| `foreach` | Yes | A template or JSON expression that evaluates to an array |
+| `steps` | Yes | An array of steps to run for each iteration |
+
+```yaml
+steps:
+  - name: loopStep
+    type: foreach
+    foreach: <array expression>
+    steps:
+      # Steps to run for each item
+      # Current item is available as 'foreach.item'
+```
 
 ::::{note}
 Inside the loop, the current item is always available as `foreach.item`. You cannot customize this variable name.
@@ -40,7 +40,7 @@ The `foreach` field supports the following expression types:
 
 ## Template expressions
 
-Use `{{ }}` or `${{ }}` syntax when the array comes from context variables such as step outputs, inputs, or constants:
+Use `{{ }}` or `${{ }}` syntax when the array comes from context variables such as step outputs, inputs, or constants. Both syntaxes behave identically for `foreach`:
 
 ```yaml
 foreach: "{{ steps.getData.output.items }}"
@@ -115,7 +115,7 @@ Template expressions support bracket notation for keys that contain dots or othe
 
 ## Example: Process search results
 
-This example searches for documents and processes each result:
+This example searches for documents and enriches each result with metadata:
 
 ```yaml
 name: National Parks Enrichment

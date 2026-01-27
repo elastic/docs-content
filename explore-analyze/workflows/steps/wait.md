@@ -9,6 +9,14 @@ description: Learn about the wait step for adding delays in workflows.
 
 The `wait` step pauses workflow execution for a specified duration before continuing to the next step.
 
+Use the following parameters to configure a `wait` step:
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `name` | Yes | Unique step identifier |
+| `type` | Yes | Step type - must be `wait` |
+| `with.duration` | Yes | Duration to wait before continuing (for example, `"5s"`) |
+
 ```yaml
 steps:
   - name: waitStep
@@ -16,14 +24,6 @@ steps:
     with:
       duration: "5s"
 ```
-
-Use the following parameters to configure a `wait` step:
-
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `name` | Yes | Unique step identifier |
-| `type` | Yes | Step type - must be `wait` |
-| `with.duration` | Yes | Duration string specifying how long to pause |
 
 ## Duration format
 

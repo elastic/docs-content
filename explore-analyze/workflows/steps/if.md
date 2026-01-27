@@ -7,18 +7,7 @@ description: Learn about the if step for conditional logic in workflows.
 
 # If
 
-The `if` step evaluates a boolean or {{kib}} Query Language (KQL) expresson and executes different steps based on whether the condition is true or false.
-
-```yaml
-steps:
-  - name: conditionalStep
-    type: if
-    condition: <KQL expression>
-    steps:
-      # Steps to execute if condition is true
-    else:
-      # Steps to execute if condition is false (optional)
-```
+The `if` step evaluates a boolean or {{kib}} Query Language (KQL) expression and runs different steps based on whether the condition is true or false.
 
 Use the following parameters to configure an `if` step:
 
@@ -27,8 +16,19 @@ Use the following parameters to configure an `if` step:
 | `name` | Yes | Unique step identifier |
 | `type` | Yes | Step type - must be `if` |
 | `condition` | Yes | A boolean or KQL expression to evaluate |
-| `steps` | Yes | An array of steps to execute if the condition is true |
-| `else` | No | An array of steps to execute if the condition is false |
+| `steps` | Yes | An array of steps to run if the condition is true |
+| `else` | No | An array of steps to run if the condition is false |
+
+```yaml
+steps:
+  - name: conditionalStep
+    type: if
+    condition: <KQL expression>
+    steps:
+      # Steps to run if condition is true
+    else:
+      # Steps to run if condition is false (optional)
+```
 
 The `condition` field supports the following expression types:
 
@@ -122,7 +122,7 @@ condition: "users.0.name: Alice"                 # Alternative syntax
 
 ### Example: Check severity
 
-This example executes different steps based on the event severity:
+This example runs different steps based on the event severity:
 
 ```yaml
 steps:
