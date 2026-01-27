@@ -24,7 +24,7 @@ With Lens, you can create the following visualization types:
 - [Bar chart](/explore-analyze/visualize/charts/bar-charts.md)
 - [Line chart](/explore-analyze/visualize/charts/line-charts.md)
 - [Area chart](/explore-analyze/visualize/charts/area-charts.md)
-- [Metric chart](/explore-analyze/visualize/charts/area-charts.md)
+- [Metric chart](/explore-analyze/visualize/charts/metric-charts.md)
 - [Table](/explore-analyze/visualize/charts/tables.md)
 - Pie chart
 - Gauge chart
