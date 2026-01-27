@@ -79,7 +79,7 @@ The steps below guide you through both sides of this configuration.
 ::::{include} _snippets/configure-trust-ecloud-self.md
 ::::
 
-#### Optional: reissue self-managed node certificates to follow the {{ecloud}} subject name pattern  [self-reissue-certs]
+#### Optional: Reissue self-managed node certificates to follow the {{ecloud}} subject name pattern  [self-reissue-certs]
 
 ::::{include} _snippets/reissue-certificates-self-ecloud.md
 ::::

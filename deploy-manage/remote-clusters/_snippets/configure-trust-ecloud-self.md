@@ -35,7 +35,7 @@ A deployment can be configured to trust all or specific deployments in any envir
 :::{dropdown} Alternative method: using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-In order to trust a cluster whose nodes present certificates with the subject names: "CN = node1.<CLUSTER_FQDN>", "CN = node2.<CLUSTER_FQDN>" and "CN = node3.<CLUSTER_FQDN>" in a self-managed environment, you could update the trust settings with an additional direct trust relationship like this:
+To trust a cluster whose nodes present certificates with the subject names: "CN = node1.<CLUSTER_FQDN>", "CN = node2.<CLUSTER_FQDN>" and "CN = node3.<CLUSTER_FQDN>" in a self-managed environment, you can update the trust settings with an additional direct trust relationship like this:
 
 ```json
 {
