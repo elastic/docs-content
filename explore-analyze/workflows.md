@@ -9,7 +9,7 @@ description: Learn about Elastic workflows.
 
 A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It is a reusable, versionable "recipe" that transforms inputs into actions.
 
-## Why use workflows? [workflows-why]
+## Why use workflows [workflows-why]
 
 Insight into your data isn't enough. The ultimate value lies in action and outcomes. Workflows complete the journey from data to insights to automated outcomes. Your critical operational data already lives in the Elastic cluster: security events, infrastructure metrics, application logs, and business context. Workflows let you automate end-to-end processes to achieve outcomes directly where that data lives, without needing external automation tools.
 
@@ -22,7 +22,8 @@ Workflows address common operational challenges, such as:
 
 Workflows can handle a wide range of tasks, from simple, repeatable steps to complex processes.
 
-## Who should use workflows? [workflows-who]
+## Who should use workflows [workflows-who]
+
 Workflows are for you if you want to cut down on manual effort, speed up response times, and make sure recurring situations are handled consistently.
 
 ## Key concepts [workflows-concepts]

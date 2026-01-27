@@ -166,7 +166,9 @@ To examine past executions:
 
 Let's examine each part of the workflow to understand how it works.
 
-### Workflow metadata
+:::::{stepper}
+
+::::{step} Workflow metadata
 
 ```yaml
 name: 🏔️ National Parks Demo
@@ -180,7 +182,9 @@ tags: ["demo", "getting-started"]
 * **`enabled`**: Controls whether the workflow can be run.
 * **`tags`**: Labels for organizing and finding workflows.
 
-### Constants
+::::
+
+::::{step} Constants
 
 ```yaml
 consts:
@@ -190,7 +194,9 @@ consts:
 * **`consts`**: Defines reusable values that can be referenced throughout the workflow.
 * Accessed using template syntax: `{{ consts.indexName }}`. This promotes consistency and makes the workflow easier to maintain.
 
-### Triggers
+::::
+
+::::{step} Triggers
 
 ```yaml
 triggers:
@@ -200,7 +206,9 @@ triggers:
 * **`triggers`**: Defines how the workflow starts.
 * **`type`**: Specifies the trigger type. Manual triggers require explicit user action (clicking the **Run** icon {icon}`play`) to start a workflow.
 
-### Step 1: Create index
+::::
+
+::::{step} Create index
 
 ```yaml
 - name: create_parks_index
@@ -225,7 +233,9 @@ triggers:
     * References the constant `indexName` for consistency.
     * Sets index settings for optimal performance in this demo.
 
-### Step 2: Bulk index documents
+::::
+
+::::{step} Bulk index documents
 
 ```yaml
 - name: bulk_index_park_data
@@ -251,7 +261,9 @@ triggers:
     * Each document becomes a searchable record with consistent field structure.
     * This step demonstrates how to handle batch operations in workflows.
 
-### Step 3: Search parks
+::::
+
+::::{step} Search parks
 
 ```yaml
 - name: search_park_data
@@ -268,11 +280,13 @@ triggers:
 * **Step purpose**: Retrieves specific data based on criteria, demonstrating how workflows can make decisions based on data.
 * **Key elements**:
     * Searches for parks with category `"canyon"` (will find Grand Canyon and Zion).
-    * Results are automatically available to subsequent steps via `steps.search_park_data.output`.
+    * Results from `steps.search_park_data.output` are automatically available to subsequent steps.
     * Limits results to 5 documents for manageable output.
     * Shows how workflows can filter and process data dynamically.
 
-### Step 4: Log results
+::::
+
+::::{step} Log results
 
 ```yaml
 - name: log_results
@@ -291,6 +305,10 @@ triggers:
     * Uses the exact step name `search_park_data` to reference previous step output.
     * Shows how data flows through the workflow and can be transformed.
 
+::::
+
+:::::
+
 ## Key concepts demonstrated
 
 This workflow introduces several fundamental concepts:
@@ -301,7 +319,7 @@ This workflow introduces several fundamental concepts:
 * **Template syntax**: The `{{ }}` notation for dynamic values.
 * **Step chaining**: How each step builds on previous ones to create a complete process.
 
-## What's next?
+## What's next
 
 Learn more about the workflow framework:
 * [**Triggers**](./triggers.md): Control when workflows run.
