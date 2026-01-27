@@ -268,7 +268,9 @@ serverless: preview
 
 The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
-{applies_to}`stack: ga 9.2` You can also use lookup indices from your remote clusters.
+{applies_to}`stack: ga 9.2` You can perform lookup join in cross cluster queries.
+
+across also use lookup indices from your remote clusters.
 
 ![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 
