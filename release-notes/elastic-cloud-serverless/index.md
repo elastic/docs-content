@@ -9,9 +9,9 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
-## January 25, 2026 [serverless-changelog-01252026]
+## January 27, 2026 [serverless-changelog-01272026]
 
-### Features and enhancements [serverless-changelog-01252026-features-enhancements]
+### Features and enhancements [serverless-changelog-01272026-features-enhancements]
 * Adds **PromQL** editor support to **Discover** [#249230]({{kib-pull}}249230)
 * Opts in to the flyout session for the **Unified Doc Viewer** flyout [#246719]({{kib-pull}}246719)
 * Enables cascading documents for **ES|QL STATS** in **Discover** [#220119]({{kib-pull}}220119)
@@ -39,7 +39,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Partition time-series source [#140475]({{es-pull}}140475)
 * Preconditioning [#140198]({{es-pull}}140198)
 
-### Fixes [serverless-changelog-01252026-fixes]
+### Fixes [serverless-changelog-01272026-fixes]
 * Fixes an issue with reporting in **Dashboards and Visualizations** [#249644]({{kib-pull}}249644)
 * Updates the logs overview component to use Zod v4 [#249583]({{kib-pull}}249583)
 * Implements the **Observability Agent** in AI Assistant insights and flyout configurations [#249776]({{kib-pull}}249776)
