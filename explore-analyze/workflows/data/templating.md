@@ -130,7 +130,7 @@ steps:
 
 ### Reference outputs [workflows-ref-step-outputs]
 
-Access data from previous steps using `{{steps.<step_name>.output}}`:
+Access output data from previous steps using `{{steps.<step_name>.output}}`:
 
 ```yaml
 steps:
