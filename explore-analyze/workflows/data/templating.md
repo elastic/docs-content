@@ -183,6 +183,23 @@ message: |
 
 When passing arrays or objects between steps, use the type-preserving syntax (`${{ }}`) to avoid stringification:
 
+:::{important}
+The type-preserving syntax must occupy the entire string value. You cannot mix it with other text.
+
+✅ **Valid:**
+
+```yaml
+tags: "${{inputs.tags}}"
+```
+
+❌ **Invalid:**
+
+```yaml
+message: "Tags are: ${{inputs.tags}}"
+```
+:::
+
+
 ```yaml
 steps:
   - name: get_tags
