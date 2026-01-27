@@ -22,7 +22,7 @@ You must also have the appropriate subscription. Refer to the subscription page 
 
 ## Available actions [workflow-available-actions]
 
-From the Workflows page, you can create new workflows, search and filter existing ones, run workflows on demand, edit workflow definitions, and enable or disable workflows.
+From the Workflows page, you can create new workflows, search and filter existing ones, manually trigger workflows, and more.
 
 ### Create a workflow [workflow-create]
 
