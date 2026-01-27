@@ -72,6 +72,8 @@ Once you've created a workflow tool, you must assign it to an agent to make it a
 :alt: Screenshot of reasoning steps of agent builder.
 :::
 
+### Assign tool to agent
+
 1. Navigate to **Agents**.
 2. Select your agent.
 3. Select **More > Edit Agent > Tools**
