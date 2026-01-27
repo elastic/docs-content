@@ -22,9 +22,9 @@ Learn how to get started by enabling the {{agent-builder}} features and begin ch
 ::::
 
 ::::::{stepper}
-::::{step} Set up an Elastic deployment
+::::{step} Set up an {{es}} deployment
 
-If you don't already have an Elastic deployment, refer to [Select your deployment type](/solutions/search/get-started.md#choose-your-deployment-type).
+If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
 
 :::{note}
 For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation.
@@ -91,7 +91,7 @@ For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 :::{tip}
 If you're not ready to add your own data, you can:
 - Use the Elastic [sample data](/manage-data/ingest/sample-data.md).
-- Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-).  (This requires your [{{es}} URL and an API key](/solutions/search/search-connection-details.md)).
+- Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-).  (This requires your [{{es}} URL and an API key](/solutions/elasticsearch-solution-project/search-connection-details.md)).
 
 % TODO: we can link to a an agent builder tutorial if we add one in the docs
 :::
