@@ -14,23 +14,23 @@ products:
   - id: kibana
 ---
 
-# Watcher
+# {{watcher}}
 
 ::::{tip}
 {{kib}} Alerting provides a set of built-in actions and alerts that are integrated with applications such as APM, Metrics, Security, and Uptime. You can use {{kib}} Alerting to detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. For more information, refer to [Alerts and Cases](../alerts-cases.md).
 ::::
 
-You can use Watcher to watch for changes or anomalies in your data and perform the necessary actions in response. For example, you might want to:
+You can use {{watcher}} to watch for changes or anomalies in your data and perform the necessary actions in response. For example, you might want to:
 
 * Monitor social media as another way to detect failures in user-facing automated systems like ATMs or ticketing systems. When the number of tweets and posts in an area exceeds a threshold of significance, notify a service technician.
 * Monitor your infrastructure, tracking disk usage over time. Open a helpdesk ticket when any servers are likely to run out of free space in the next few days.
 * Track network activity to detect malicious activity, and proactively change firewall configuration to reject the malicious user.
-* Monitor Elasticsearch, and send immediate notification to the system administrator if nodes leave the cluster or query throughput exceeds an expected range.
+* Monitor {{es}}, and send immediate notification to the system administrator if nodes leave the cluster or query throughput exceeds an expected range.
 * Track application response times and if page-load time exceeds SLAs for more than 5 minutes, open a helpdesk ticket. If SLAs are exceeded for an hour, page the administrator on duty.
 
 All of these use-cases share a few key properties:
 
-* The relevant data or changes in data can be identified with a periodic Elasticsearch query.
+* The relevant data or changes in data can be identified with a periodic {{es}} query.
 * The results of the query can be checked against a condition.
 * One or more actions are taken if the condition is true — an email is sent, a 3rd party system is notified, or the query results are stored.
 
@@ -44,7 +44,7 @@ Schedule
 :   A schedule for running a query and checking the condition.
 
 Query
-:   The query to run as input to the condition. Watches support the full Elasticsearch query language, including aggregations.
+:   The query to run as input to the condition. Watches support the full {{es}} query language, including aggregations.
 
 Condition
 :   A condition that determines whether or not to execute the actions. You can use simple conditions (always true), or use scripting for more sophisticated scenarios.
@@ -52,4 +52,18 @@ Condition
 Actions
 :   One or more actions, such as sending email, pushing data to 3rd party systems through a webhook, or indexing the results of the query.
 
-A full history of all watches is maintained in an Elasticsearch index. This history keeps track of each time a watch is triggered and records the results from the query, whether the condition was met, and what actions were taken.
+A full history of all watches is maintained in an {{es}} index. This history keeps track of each time a watch is triggered and records the results from the query, whether the condition was met, and what actions were taken.
+
+## Backup and restore
+
+You can back up and restore watches using the [snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) functionality.
+
+Make sure your snapshots include the `watcher` feature state. By default, snapshots include all feature states, unless explicitly configured otherwise. For more information, refer to [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) in the snapshots documentation.
+
+To restore your defined watches, restore the `watcher` feature state from a snapshot.
+
+### Exporting watches using the {{watcher}} API
+
+As an alternative, you can export watch definitions using the `/_watcher/_query/watches` API, as described in [Listing watches](/explore-analyze/alerts-cases/watcher/managing-watches.md#listing-watches).
+
+This approach allows you to retrieve watch definitions in JSON format and is useful for inspection, migration between clusters, or storing watches in version control systems. Using the API, you can also filter and export only specific watches instead of all defined watches.
