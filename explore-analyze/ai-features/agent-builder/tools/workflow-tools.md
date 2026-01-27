@@ -33,17 +33,17 @@ Before you begin:
 
 Follow these steps to configure a tool to invoke a workflow that an agent can call. This is ideal for tasks that require a strict, repeatable sequence of actions.
 
-:::{image} ../images/create-new-tool-workflows.png
-:screenshot:
-:width: 900px
-:alt: Screenshot of creating a new workflow tool.
-:::
-
 1. Navigate to **Agents > More > View all tools > New tool**.
 2. Select **Workflow** as the tool type.
 3. Select the specific workflow you want to wrap from the drop down list.
 4. Fill in the [configuration fields](#configuration).
 5. Click **Save**.
+
+:::{image} ../images/create-new-tool-workflows.png
+:screenshot:
+:width: 900px
+:alt: Screenshot of creating a new workflow tool.
+:::
 
 ## Configuration
 
@@ -69,12 +69,6 @@ The Workflow tools have the following configuration settings:
 
 Once you've created a workflow tool, you must assign it to an agent to make it available in chat.
 
-:::{image} ../images/agent-builder-workflow-tool.png
-:screenshot:
-:width: 500px
-:alt: Screenshot of reasoning steps of agent builder.
-:::
-
 ### Assign tool to agent
 
 1. Navigate to **Agents**.
@@ -82,6 +76,7 @@ Once you've created a workflow tool, you must assign it to an agent to make it a
 3. Select **More > Edit Agent > Tools**
 4. Assign the workflow tool by selecting the checkbox.
 5. Click **Save**.
+
 ### Trigger a workflow
 
 To test your workflow tool, open the [Agent chat UI](../chat.md#agent-chat-gui) and ask a question that triggers the workflow.
@@ -90,6 +85,12 @@ The agent:
 - extracts the necessary parameters from the conversation
 - runs the workflow
 - returns the workflow's final output to the chat
+
+:::{image} ../images/agent-builder-workflow-tool.png
+:screenshot:
+:width: 500px
+:alt: Screenshot of reasoning steps of agent builder.
+:::
 
 
 <!--
@@ -163,6 +164,7 @@ steps:
 ## Examples
 
 The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) contains more than 50 examples you can use as a starting point.
+
 ## Related pages
 * [Tools overview](../tools.md)
 % * [Workflows](/explore-analyze/workflows.md)
