@@ -10,7 +10,7 @@ description: Reference guide for the workflow YAML editor interface.
 The YAML editor is the primary interface for creating and editing workflows. This page describes the editor's components and features.
 
 ::::{admonition} Requirements
-To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](setup.md) to learn more.
+To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](setup.md) for more information.
 
 You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::

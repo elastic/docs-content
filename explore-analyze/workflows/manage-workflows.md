@@ -10,7 +10,7 @@ description: Learn how to view, organize, and manage your workflows.
 The **Workflows** page allows you to view and manage all your workflows. From the page, you can create, edit, duplicate, delete, and more with your workflows. To find the **Workflows** page, use the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{admonition} Requirements
-To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](setup.md) to learn more.
+To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](setup.md) for more information.
 
 You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::
@@ -34,15 +34,15 @@ Use the search bar to filter workflows by name, description, or tag. You can als
 
 ### Run a workflow [workflow-run]
 
-To instantly run a workflow, click the **Run** icon {icon}`play` for a workflow, or open the **All actions** menu ({icon}`boxes_vertical`) and click **Run**. This manually runs the workflow regardless of its specified triggers. Refer to [](/explore-analyze/workflows/monitor-troubleshoot.md) to learn about monitoring workflow runs.
+To instantly run a workflow, click the **Run** icon {icon}`play` for a workflow, or open the **All actions** menu ({icon}`boxes_vertical`) and click **Run**. The workflow manually runs regardless of its specified triggers. To learn about monitoring workflow runs, refer to [](/explore-analyze/workflows/monitor-troubleshoot.md).
 
 ### Edit a workflow [workflow-edit]
 
-Click the **Edit** icon to open the workflow in the YAML editor. You can also open the **All actions** menu ({icon}`boxes_vertical`) and click **Edit**.
+Click the **Edit** icon to open the workflow in the YAML editor. Alternatively, open the **All actions** menu ({icon}`boxes_vertical`), and click **Edit**.
 
 ### Turn a workflow on or off [workflow-enable-disable]
 
 Use the **Enabled** toggle to control whether a workflow can run:
 
 - **Enabled**: The workflow responds to its configured triggers.
-- **Disabled**: The workflow does not run, even if triggered.
+- **Disabled**: The workflow won't run, even if it's triggered.
