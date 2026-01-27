@@ -44,7 +44,7 @@ These deployments do not include a preconfigured connector. You must [configure 
 
 Use the model selector in the chat interface to switch between available models. The selector displays all configured models, including preconfigured models (on {{ech}} and {{serverless-full}}) and any custom connectors you set up.
 
-Refer to [select a different model](/explore-analyze/ai-features/agent-builder/chat.md#select-a-different-model) to learn how.
+To learn more, refer to [select a different model](/explore-analyze/ai-features/agent-builder/chat.md#select-a-different-model).
 
 :::{image} images/model-selector.png
 :alt: Model selector dropdown in the chat interface
