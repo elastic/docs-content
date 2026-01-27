@@ -19,17 +19,16 @@ For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses
 
 ## Default model configuration
 
-::::{applies-switch}
+:::::{applies-switch}
 
 :::{applies-item} { ess:, serverless: }
 
 You can get started with zero setup using the Preconfigured AI connector.
 {{agent-builder}} uses this connector to interface with models running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires no additional API key management.
 
-:::{note}
+::::{note}
 Learn more about the [Preconfigured AI connector](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
-
-:::
+::::
 
 :::{applies-item} {ece:, eck, self: preview =9.2, ga 9.3+}
 
@@ -39,7 +38,7 @@ These deployments do not include a preconfigured connector. You must [configure 
 
 :::
 
-::::
+:::::
 
 ## Switch models in the UI
 
