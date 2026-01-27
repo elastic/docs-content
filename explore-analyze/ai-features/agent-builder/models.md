@@ -30,7 +30,7 @@ Learn more about the [Preconfigured AI connector](kibana://reference/connectors-
 
 :::
 
-:::{applies-item} {ece:, eck, self: ga 9.2+}
+:::{applies-item} {ece:, eck, self: preview =9.2, ga 9.3+}
 
 These deployments do not include a preconfigured connector. You must [configure a connector](#change-the-default-model) to use {{agent-builder}}.
 
