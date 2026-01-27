@@ -62,8 +62,9 @@ Follow these steps to configure a tool to invoke a workflow that an agent can ca
 
 5. Click **Save**.
 
-## Invoke the Workflow tool in Agent chat
-Once you assign a Workflow tool to an agent, the agent can trigger the workflow autonomously.
+## Call workflows from chat
+
+Once you've created a workflow tool, you must assign it to an agent to make it available in chat.
 
 :::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:
