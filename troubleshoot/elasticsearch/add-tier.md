@@ -26,25 +26,8 @@ To allow indices to be allocated, follow these steps:
 
 You can run the following step using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
-To determine which tiers an index's shards can be allocated to, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
-
-```console
-GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings
-```
-
-The response looks like this:
-
-```console-result
-{
-  "my-index-000001": {
-    "settings": {
-      "index.routing.allocation.include._tier_preference": "data_warm,data_hot" <1>
-    }
-  }
-}
-```
-
-1. Represents a comma-separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
+:::{include} /troubleshoot/elasticsearch/_snippets/determine-data-tier-that-needs-capacity.md
+:::
 
 ## Resize your deployment [resize-your-deployment]
 
@@ -63,12 +46,82 @@ To enable a new tier in your {{ech}} deployment, you edit the deployment topolog
 
 ::::::{applies-item} { self: }
 
-Add more nodes to your {{es}} cluster and assign the index’s target tier [node role](/manage-data/lifecycle/data-tiers.md#configure-data-tiers-on-premise) to the new nodes, by adjusting the configuration in `elasticsearch.yml`.
+To increase the data node capacity in your cluster, you can [add more nodes](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) to the cluster and assign the index’s target tier [node role](/manage-data/lifecycle/data-tiers.md#configure-data-tiers-on-premise) to the new nodes, or increase the disk capacity of existing nodes. Disk expansion procedures depend on your operating system and storage infrastructure and are outside the scope of Elastic support. In practice, this is often achieved by [removing a node from the cluster](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) and reinstalling it with a larger disk.
 ::::::
 
 
 ::::::{applies-item} { eck: }
-Add more nodes to your {{es}} cluster and assign the index’s target tier [node role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#change-node-role) to the new nodes, by adjusting the [node configuration](/deploy-manage/deploy/cloud-on-k8s/node-configuration.md) in the `spec` section of your {{es}} resource manifest. 
+To increase the disk capacity of data nodes in your {{eck}} cluster, you can either add more data nodes and assign the index's target tier [node role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#change-node-role) to the new nodes by adjusting the [node configuration](/deploy-manage/deploy/cloud-on-k8s/node-configuration.md) in the `spec` section of your {{es}} resource manifest, or increase the storage size of existing nodes.
+
+**Option 1: Add more data nodes**
+
+1. Update the `count` field in your data node `nodeSets` to add more nodes:
+
+    ```yaml subs=true
+    apiVersion: elasticsearch.k8s.elastic.co/v1
+    kind: Elasticsearch
+    metadata:
+      name: quickstart
+    spec:
+      version: {{version.stack}}
+      nodeSets:
+      - name: data-nodes
+        count: 5  # Increase from previous count
+        config:
+          node.roles: ["data"]
+        volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 100Gi
+    ```
+
+1. Apply the changes:
+
+    ```sh
+    kubectl apply -f your-elasticsearch-manifest.yaml
+    ```
+
+    ECK automatically creates the new nodes and {{es}} will relocate shards to balance the load. You can monitor the progress using:
+
+    ```console
+    GET /_cat/shards?v&h=state,node&s=state
+    ```
+
+**Option 2: Increase storage size of existing nodes**
+
+1. If your storage class supports [volume expansion](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims), you can increase the storage size in the `volumeClaimTemplates`:
+
+    ```yaml subs=true
+    apiVersion: elasticsearch.k8s.elastic.co/v1
+    kind: Elasticsearch
+    metadata:
+      name: quickstart
+    spec:
+      version: {{version.stack}}
+      nodeSets:
+      - name: data-nodes
+        count: 3
+        config:
+          node.roles: ["data"]
+        volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 200Gi  # Increased from previous size
+    ```
+
+1. Apply the changes. If the volume driver supports `ExpandInUsePersistentVolumes`, the filesystem will be resized online without restarting {{es}}. Otherwise, you may need to manually delete the Pods after the resize so they can be recreated with the expanded filesystem.
+
+For more information, refer to [](/deploy-manage/deploy/cloud-on-k8s/update-deployments.md) and [](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md). 
 
 ::::::
 
