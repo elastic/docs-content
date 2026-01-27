@@ -151,7 +151,7 @@ steps:
 
 ### Reference constants [workflows-ref-constants]
 
-Reference workflow-level constants using `{{consts.<constant_name>}}`. Constants are defined at a workflow level and can be provided when the workflow is triggered.
+Reference workflow-level constants using `{{consts.<constant_name>}}`. Constants are defined at the workflow level and can be referenced when the workflow is triggered.
 
 ```yaml
 consts:
