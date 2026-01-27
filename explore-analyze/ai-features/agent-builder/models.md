@@ -13,31 +13,60 @@ products:
 
 # Using different models in {{agent-builder}}
 
-{{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making. By default, agents use an [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md).
+{{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making.
 
-You can use additional models by [configuring a connector](#change-the-default-model).
-
-Refer to [select a different model](/explore-analyze/ai-features/agent-builder/chat.md#select-a-different-model) to learn how to switch configured models in the UI.
+For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses the Preconfigured AI connector to interface with models running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires zero setup.
 
 ## Default model configuration
 
-By default, {{agent-builder}} uses the Elastic Managed LLM connector to interface with models running on the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md).
+::::{applies-switch}
 
-This managed service requires zero setup and no additional API key management.
+:::{applies-item} { ess:, serverless: }
 
-Learn more about the [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
+You can get started with zero setup using the Preconfigured AI connector.
+{{agent-builder}} uses this connector to interface with models running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires no additional API key management.
+
+Learn more about the [Preconfigured AI connector](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
+
+:::
+
+:::{applies-item} {ece:, eck, self: ga 9.2+}
+
+These deployments do not include a preconfigured connector. You must [configure a connector](#change-the-default-model) to use {{agent-builder}}.
+
+% To access models on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md) from self-managed deployments, use [Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
+
+:::
+
+::::
+
+## Switch models in the UI
+
+Use the model selector in the chat interface to switch between available models. The selector displays all configured models, including preconfigured models (on {{ech}} and {{serverless-full}}) and any custom connectors you set up.
+
+Refer to [select a different model](/explore-analyze/ai-features/agent-builder/chat.md#select-a-different-model) to learn how.
+
+:::{image} images/model-selector.png
+:alt: Model selector dropdown in the chat interface
+:width: 550px
+:screenshot:
+:::
 
 ## Change the default model
 
-By default, {{agent-builder}} uses an Elastic Managed LLM. To use a different model, select a configured connector and set it as the default.
-
-### Use a pre-configured connector
+To change which model is used by default:
 
 1. Search for **GenAI Settings** in the global search field
 2. Select your preferred connector from the **Default AI Connector** dropdown
 3. Save your changes
 
-### Create a new connector in the UI
+## Use additional models
+
+To use additional models that aren't preconfigured, create a connector for your model provider.
+
+### Create a connector in the UI
+
+To create a new connector:
 
 1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md)
 2. Select **Create Connector** and select your model provider
@@ -48,23 +77,20 @@ By default, {{agent-builder}} uses an Elastic Managed LLM. To use a different mo
    :width: 450px
    :screenshot:
    :::
-5. Search for **GenAI Settings** in the global search field
-6. Select your new connector from the **Default AI Connector** dropdown under **Custom connectors**
-7. Save your changes
 
 For detailed instructions on creating connectors, refer to [Connectors](https://www.elastic.co/docs/deploy-manage/manage-connectors).
 
 Learn more about [preconfigured connectors](https://www.elastic.co/docs/reference/kibana/connectors-kibana/pre-configured-connectors).
 
-#### Connect a local LLM
+### Create connectors with the API
+
+To create connectors programmatically, refer to the [Connectors API documentation]({{kib-apis}}/operation/operation-post-actions-connector-id).
+
+### Connect a local LLM
 
 You can connect a locally hosted LLM to Elastic using the OpenAI connector. This requires your local LLM to be compatible with the OpenAI API format.
 
 Refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai-action-type.md) for detailed setup instructions.
-
-### Create connectors with the API
-
-To create connectors programmatically, refer to the [Connectors API documentation]({{kib-apis}}/operation/operation-post-actions-connector-id).
 
 ## Model requirements
 
@@ -110,7 +136,7 @@ While any chat-completion-compatible connector can technically be configured, we
 Smaller or "mini" model variants are not recommended for {{agent-builder}} as they lack the necessary capabilities for reliable agent workflows.
 :::
 
-## Related resources
+## Related pages
 
 - [Limitations and known issues](limitations-known-issues.md): Current limitations around model selection
 - [Get started](get-started.md): Initial setup and configuration
