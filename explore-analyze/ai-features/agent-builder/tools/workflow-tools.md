@@ -20,12 +20,14 @@ Workflow tools enable agents to trigger Elastic Workflows directly from a conver
 
 ## Prerequisites
 
-Before using these features, ensure that:
+Before you begin:
 
-* **Workflows basics**: Familiarize yourself with the core concepts of Elastic Workflows before you begin.
+* Familiarize yourself with the core concepts of Elastic Workflows.
 % (/explore-analyze/workflows.md)
-* **Workflows are set up:** The feature must be enabled and you need specific privileges to create and run workflows. For details, see Set up workflows
-% (/explore-analyze/workflows/setup.md).
+* Enable the Workflows feature in **Advanced settings**.
+* Ensure you have the correct privileges to create and run workflows.
+% For details, refer to Set up workflows (/explore-analyze/workflows/setup.md).
+* Create at least one workflow.
 
 ## Add a Workflow tool
 
