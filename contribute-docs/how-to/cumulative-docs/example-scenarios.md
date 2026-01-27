@@ -17,9 +17,9 @@ While you can use any of these tools at any stage, the tools and approaches you 
 Screenshots might not exactly match the example pages linked to.
 :::
 
-## Early stage: New features and simple documentation
+## Early stage: New features and basics
 
-When you're documenting a new feature or creating simple documentation, start with basic page-level tagging and simple refinements.
+When you're documenting a new feature or writing new guides or procedures, start with page-level tagging and section-level clarifications.
 
 ### Content applies to both stateful and serverless [stateful-serverless]
 
@@ -193,7 +193,7 @@ Just the syntax slightly differs so that it stays inline: `` {applies_to}`ech: g
 
 ### Choosing a primary dimension for your page [primary-dimension]
 
-When your content has requirements that span multiple [dimensions](/contribute-docs/how-to/cumulative-docs/guidelines.md#dimensions), choose one dimension as the primary for the page-level `applies_to` frontmatter, and document secondary dimension information as requirements, prerequisites, or in tagged sections.
+When your content has requirements that span multiple [dimensions](/contribute-docs/how-to/cumulative-docs/guidelines.md), choose one dimension as the primary for the page-level `applies_to` frontmatter, and document secondary dimension information as requirements, prerequisites, or in tagged sections.
 
 :::{tip}
 Use only one dimension at the page level. If you need to communicate information from another dimension, add it as requirements in prose, prerequisites sections, or use section-level or inline `applies_to` badges for specific content that varies.
@@ -245,7 +245,7 @@ how it is labeled depends on if the functionality is in technical preview, beta,
 #### If the section lifecycle is the same as the page level [unversioned-added-same]
 
 For example, on the [Project settings](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#obs-serverless-project-features) page we added content about the Observability Logs Essentials feature tier, that was added to Serverless in GA.
-Since the page's frontmatter already includes `serverless: ga`, there is no need to label the added content.
+Because the page's frontmatter already includes `serverless: ga`, there is no need to label the added content.
 
 However, if the functionality is also applicable to a specific version of a versioned product/deployment mode,
 label the content with both versioned and unversioned applicability information.
@@ -285,7 +285,7 @@ applies_to:
 #### If the section lifecycle is different than the page level [unversioned-added-different]
 
 For example, on the [Dashboard controls](https://www.elastic.co/docs/explore-analyze/dashboards/add-controls#add-esql-control) page we added content about new ES|QL controls functionality that was added to Serverless in preview.
-Since this is different than the page-level applicability in the frontmatter, `serverless: ga`,
+Because this is different than the page-level applicability in the frontmatter, `serverless: ga`,
 label the content about the new functionality with `serverless: preview`.
 
 :::::{tab-set}
@@ -377,7 +377,7 @@ whether the product/deployment mode is versioned or unversioned.
 For example, we removed the `securitySolution:enableVisualizationsInFlyout` setting that was described on the
 [Configure advanced settings](https://www.elastic.co/docs/solutions/security/get-started/configure-advanced-settings)
 page from the Elastic Stack in 9.1.0 and from Serverless around the same time.
-Since this this functionality is still available before 9.1.0, we need that content to continue to be
+Because this functionality is still available before 9.1.0, we need that content to continue to be
 available to users on Elastic Stack earlier versions while communicating to users on newer versions
 that it is no longer available.
 

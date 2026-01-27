@@ -63,7 +63,7 @@ The `applies_to` keys fall into three dimensions based on the products and user 
 | --- | --- | --- |
 | Stack/Serverless | Represents the version or "flavor" of the core Elastic platform. Use when your content is primarily about features, functionality, or workflows that vary based on which version of the Elastic platform users are running. | `stack`, `serverless` |
 | Deployment | Represents how the Elastic platform is deployed and orchestrated. Use when your content is primarily about deployment, configuration, or management tasks that differ based on how users have deployed Elasticsearch and Kibana. | `deployment` (with subkeys: `ece`, `eck`, `ech`, `self`), `serverless` |
-| Product | Represents software outside the core Elastic platform that has its own versioning scheme. Use when your content is primarily about features or functionality specific to these standalone products. | `product` (with subkeys: APM agents, EDOT items, etc.) |
+| Product | Represents software outside the core Elastic platform that has its own versioning scheme. Use when your content is primarily about features or functionality specific to these standalone products. | `product` (with subkeys, including those for APM agents, EDOT SDKs, and client libraries) |
 
 Most pages focus on one primary context, so you should only use keys from one dimension at the page level. For example, a page about a Kibana feature would use the Stack/Serverless dimension, while a page about configuring cluster settings would use the Deployment dimension.
 
