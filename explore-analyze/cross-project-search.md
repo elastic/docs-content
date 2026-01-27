@@ -28,7 +28,7 @@ Restricting search scope is always possible, but it requires an explicit choice 
 
 ## Project linking
 
-In {{serverless}}, projects can be linked together. The project from which links are created is called the origin project, and the connected projects are referred to as linked projects.
+In {{serverless-short}}, projects can be linked together. The project from which links are created is called the origin project, and the connected projects are referred to as linked projects.
 The **origin project** is the project you are currently working in and from which you run cross-project searches.
 **Linked projects** are other projects that are connected to the origin project and whose data can be searched from it.
 After you link projects, searches that you run from the origin project are no longer local by default.
