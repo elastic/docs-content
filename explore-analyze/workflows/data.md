@@ -128,7 +128,7 @@ on-failure:
         message: "Document deletion failed, error: {{steps.delete_critical_document.error}}"
 ```
 
-Within fallback steps, access error information from the failed step using `steps.<failed_step_name>.error`.
+Within fallback steps, access error information from the failed primary step using `steps.<failed_step_name>.error`.
 
 ### Continue [workflows-on-failure-continue]
 
