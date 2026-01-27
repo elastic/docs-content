@@ -80,7 +80,7 @@ steps:
         delay: "5s"
 ```
 
-**Workflow-level** — applies to all steps as a default (under `settings`):
+**Workflow-level** (configured under `settings`) - applies to all steps as the default error handling behavior:
 
 ```yaml
 settings:
