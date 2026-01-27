@@ -151,11 +151,6 @@ This problem can surface due to a number of possible causes:
 
 If an active task’s [hot thread](#diagnose-task-queue-hot-thread) shows no progress, consider [canceling the task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks#task-cancellation) if it's flagged as `cancellable`.
 
-If you consistently encounter `cancellable` tasks running longer than expected, you might consider reviewing:
-
-* setting a [`search.default_search_timeout`](/solutions/search/the-search-api.md#search-timeout)
-* ensuring [scroll requests are cleared](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#clear-scroll) in a timely manner
-
 For example, you can use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-tasks-list) to identify and cancel searches that consume excessive CPU time.
 
 ```console
