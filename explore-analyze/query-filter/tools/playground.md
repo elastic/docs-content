@@ -16,6 +16,6 @@ Use the Search Playground to test and edit {{es}} queries visually in the UI. Th
 Find Playground in the {{es-serverless}} UI under **{{es}} > Build > Playground**.
 
 ::::{note}
-ℹ️ For more details, check the full [Playground documentation](../../../solutions/search/rag/playground.md).
+ℹ️ For more details, check the full [Playground documentation](/solutions/elasticsearch-solution-project/playground.md).
 
 ::::

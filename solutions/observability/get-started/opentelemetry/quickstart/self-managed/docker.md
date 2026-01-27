@@ -35,7 +35,7 @@ Create the `otel-collector-config.yml` file with your EDOT Collector configurati
 
 ::::{step} Retrieve your settings
 
-Retrieve your [{{es}} endpoint](/solutions/search/search-connection-details.md) and [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md).
+Retrieve your [{{es}} endpoint](/solutions/elasticsearch-solution-project/search-connection-details.md) and [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 ::::
 
 ::::{step} Create the .env file
