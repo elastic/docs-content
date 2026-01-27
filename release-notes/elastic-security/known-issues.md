@@ -22,7 +22,7 @@ Applies to: {{stack}} upgrades from versions earlier than 8.9
 
 **Impact**
 
-After upgrading from a {{stack}} version earlier than 8.9, the gap auto fill scheduler task that queries the event log might fail with a security exception, and gap fill might not update gaps. This issue affects the following features:
+After upgrading from a {{stack}} version earlier than 8.9 to 9.3, the gap auto fill scheduler task that queries the event log might fail with a security exception, and gap fill might not update gaps. This issue affects the following features:
 
 * **Gap auto fill scheduler**: The task is created, but logs show an error similar to the following:
 
