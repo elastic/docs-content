@@ -25,9 +25,13 @@ This setup comes with a one-month trial license that includes all Elastic featur
 
 ## Prerequisites [local-dev-prerequisites]
 
-* If you don’t have Docker installed, [download and install Docker Desktop](https://www.docker.com/products/docker-desktop) for your operating system. 
-* Docker Compose V2 is recommended. The minimum recommended version for Docker Desktop (Windows) is version 3.4 and for Docker Engine (Linux) is version 20.10.13.
-* Docker Compose V1 is considered legacy, but may still exist in older setups. The minimum supported Docker Compose V1 is 1.29.0.
+* [Install Docker Compose](https://docs.docker.com/compose/install/). 
+   
+   In most cases, you need to install Docker Desktop or Docker Engine to access Docker Compose.
+   
+   Docker Compose V2 is recommended, and is included in Docker Desktop 3.4 and higher, and Docker Engine 20.10.13 or higher.
+ 
+   The minimum supported version of Docker Compose is 1.29.0.
 * If you’re using Microsoft Windows, then install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 ## Step 1: Run `start-local` script [local-dev-quick-start]
