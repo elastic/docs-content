@@ -26,6 +26,7 @@ For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses
 You can get started with zero setup using the Preconfigured AI connector.
 {{agent-builder}} uses this connector to interface with models running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires no additional API key management.
 
+:::{note}
 Learn more about the [Preconfigured AI connector](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
 
 :::
@@ -78,9 +79,11 @@ To create a new connector:
    :screenshot:
    :::
 
-For detailed instructions on creating connectors, refer to [Connectors](https://www.elastic.co/docs/deploy-manage/manage-connectors).
+:::{tip}
+For detailed instructions on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
-Learn more about [preconfigured connectors](https://www.elastic.co/docs/reference/kibana/connectors-kibana/pre-configured-connectors).
+To learn about preconfigured connectors, refer to [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md).
+:::
 
 ### Create connectors with the API
 
@@ -90,7 +93,8 @@ To create connectors programmatically, refer to the [Connectors API documentatio
 
 You can connect a locally hosted LLM to Elastic using the OpenAI connector. This requires your local LLM to be compatible with the OpenAI API format.
 
-Refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai-action-type.md) for detailed setup instructions.
+
+For detailed setup instructions, refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai-action-type.md).
 
 ## Model requirements
 
