@@ -42,7 +42,7 @@ Follow these steps to configure a workflow tool:
   :::
 
 2. Select **Workflow** as the tool type.
-3. Select the specific workflow you want to wrap from the drop down list.
+3. Select a workflow from the drop down list.
 4. Fill in the [configuration fields](#configuration).
 5. Click **Save**.
 
