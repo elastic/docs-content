@@ -42,7 +42,12 @@ Follow these steps to configure a tool to invoke a workflow that an agent can ca
 1. Navigate to **Agents > More > View all tools > New tool**.
 2. Select **Workflow** as the tool type.
 3. Select the specific workflow you want to wrap from the drop down list.
-4. Fill in the required fields:
+4. Fill in the [configuration fields](#configuration).
+5. Click **Save**.
+
+## Configuration
+
+The Workflow tools have the following configuration settings:
 
   **Tool ID**
   :   A unique identifier for the tool.
@@ -59,8 +64,6 @@ Follow these steps to configure a tool to invoke a workflow that an agent can ca
   
   **Labels** (Optional)
   :   Tags used to organize and filter tools within the {{agent-builder}} UI.
-
-5. Click **Save**.
 
 ## Call workflows from chat
 
