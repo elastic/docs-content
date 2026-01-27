@@ -42,6 +42,7 @@ toc:
     children:
       - file: elastic-inference/eis.md
         children:
+          - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
@@ -193,6 +194,10 @@ toc:
                - file: ai-features/agent-builder/mcp-server.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
+          - file: ai-features/agent-builder/troubleshooting.md
+            children:
+              - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
+              - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
           - file: ai-features/agent-builder/limitations-known-issues.md
       - file: ai-features/ai-chat-experiences.md
         children:
@@ -245,6 +250,8 @@ toc:
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
+          - hidden: visualize/charts/area-charts.md
+          - hidden: visualize/charts/metric-charts.md
           - hidden: visualize/charts/line-charts.md
           - hidden: visualize/charts/metric-charts.md
           - hidden: visualize/charts/tables.md
@@ -392,6 +399,7 @@ toc:
           - file: alerts-cases/cases/cases-as-data.md   
   - file: workflows.md
     children:
+      - file: workflows/setup.md
       - file: workflows/get-started.md
       - file: workflows/core-components.md
         children:
@@ -405,5 +413,6 @@ toc:
       - file: workflows/create-workflows.md    
       - file: workflows/monitor-troubleshoot.md
       - file: workflows/manage-workflows.md
-      - file: workflows/use-cases.md
+      - hidden: workflows/use-cases.md
+      - file: workflows/templates.md
   - file: numeral-formatting.md
