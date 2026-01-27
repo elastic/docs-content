@@ -1,0 +1,5 @@
+Author,Name,ID,Release Status,Input Modalities,Output Modalities,EOL Date,Prompts/Input Log Retention Period (Days),Prompts/Input Used To Train Models?,Model Card URL,Public Notes
+Anthropic,Claude Sonnet 3.7,anthropic-claude-3.7-sonnet,Production - GA,Text,Text,2026-04-28,0,No,[Claude 3.7 Sonnet System Card](https://assets.anthropic.com/m/785e231869ea8b3b/original/claude-3-7-sonnet-system-card.pdf),
+Anthropic,Claude Sonnet 4.5,anthropic-claude-4.5-sonnet,Production - GA,Text,Text,2026-09-29,0,No,[Claude Sonnet 4.5 System Card](https://assets.anthropic.com/m/12f214efcc2f457a/original/Claude-Sonnet-4-5-System-Card.pdf),
+Elastic,ELSER v2,elser-v2,Production - GA,Text,Embedding,,0,No,[ELSER docs](https://www.elastic.co/docs/explore-analyze/machine-learning/nlp/ml-nlp-elser),
+Jina,Embeddings v3,jina-embeddings-v3,Production - Tech Preview,Text,Embedding,,0,No,[jina-embeddings-v3](https://jina.ai/models/jina-embeddings-v3/),
