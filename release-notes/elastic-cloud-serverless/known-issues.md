@@ -14,9 +14,6 @@ Known issues are significant defects or limitations that may impact your impleme
 % **Workaround** 
 % Workaround description.
 
-<!-- :::{include} _snippets/2025-01-13/known-issues.md
-::: -->
-
 ## Active
 
 :::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
