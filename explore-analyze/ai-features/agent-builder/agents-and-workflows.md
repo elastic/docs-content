@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Call agents from workflows
+# Work with AI agents in Elastic Workflows
 
 Elastic Workflows and {{agent-builder}} allow you to combine deterministic automation with conversational reasoning. By invoking an AI agent directly within a workflow execution, you can treat the agent as a "reasoning engine" that summarizes data, classifies events, or makes decisions before passing the results to the next step in your automation.
 
