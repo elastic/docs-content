@@ -39,7 +39,7 @@ You can also use pre-configured [built-in agents](builtin-agents-reference.md) t
 
 Built-in agents cannot be modified or deleted. To customize one, you can clone it and create a custom agent.
 
-For the complete list of built-in agents and their assigned tools, refer to [Built-in agents reference](builtin-agents-reference.md).
+For the complete list of built-in agents and their assigned tools, refer to [Built-in agents reference](builtin-agents.md).
 
 ## Custom agents
 
