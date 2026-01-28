@@ -1,10 +1,7 @@
 ---
 applies_to:
   stack: preview =9.2, ga 9.3+
-  serverless:
-    elasticsearch: ga
-    observability: preview
-    security: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -55,7 +52,7 @@ Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsea
 Tools execute queries against {{es}} indices as the current user. Required privileges depend on which indices the tools access:
 
 - `read`: Required for tools that query data.
-- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](tools/index-search-tools.md), which may use index exploration capabilities internally.
+- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](tools/index-search-tools.md), which might use index exploration capabilities internally.
 
 Learn more about [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
