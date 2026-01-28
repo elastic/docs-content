@@ -670,13 +670,6 @@ redirects:
   'solutions/search/agent-builder/programmatic-access.md': 'explore-analyze/ai-features/agent-builder/programmatic-access.md'
   'solutions/search/agent-builder/tools.md': 'explore-analyze/ai-features/agent-builder/tools.md'
 
-  # Related to agent-builder-agents.md refactoring - moved create-a-new-agent content to custom-agents.md
-  'explore-analyze/ai-features/agent-builder/agent-builder-agents.md':
-    to: 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
-    anchors:
-      'create-a-new-agent-in-the-gui': '/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent'
-      'manage-your-agents': '#manage-agents'
-
 # Related to https://github.com/elastic/docs-content/pull/4438
   'explore-analyze/ai-features/ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md'
 
