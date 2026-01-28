@@ -58,7 +58,7 @@ The **Agents** page provides a centralized view of all your agents. From this pa
 - View all your agents with their names and labels
 - Search for specific agents using the search bar
 - Filter agents by labels using the **Labels** dropdown
-- Create new agents using the **+ New agent** button
+- Create new agents using the **New agent** button
 - Start chatting with an agent or perform other actions:
     - **Built-in agents**: You can **chat** or **clone** built-in agents. They cannot be edited or deleted.
       :::{image} images/chat-and-clone-buttons.png

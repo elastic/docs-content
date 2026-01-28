@@ -32,7 +32,7 @@ Navigate to the **Agents** page to access the agent management interface.
 
 ::::{step} Create a new agent
 
-Select the **New agent** button to being creating a new agent.
+Select the **New agent** button to begin creating a new agent.
 
 :::{image} images/new-agent-button.png
 :screenshot:
@@ -137,9 +137,9 @@ When creating custom agents, follow these best practices to ensure optimal perfo
 2. **Iterate based on feedback**: Refine instructions and tool assignments based on actual usage.
 3. **Monitor performance**: Track how well the agent addresses user needs and adjust as necessary.
 
-## Custom agents API
+## Agents API
 
-The Agents API enables programmatic access to custom agent creation and management.
+The Agents API enables programmatic management of custom agents.
 
 For an overview of agent API operations, refer to [Agents API](kibana-api.md#agents).
 
