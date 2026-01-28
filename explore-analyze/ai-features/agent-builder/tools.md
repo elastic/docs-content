@@ -1,11 +1,14 @@
 ---
 navigation_title: "Tools"
 applies_to:
-  stack: preview 9.2
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Tools in {{agent-builder}}
@@ -37,6 +40,15 @@ Each tool is an atomic operation with a defined signature - accepting typed para
 :::{note}
 Tool execution and result processing consume tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md).
 :::
+
+## Tool types
+
+{{agent-builder}} supports several types of tools:
+
+- **[Index search tools](tools/index-search-tools.md)**: Scope searches to specific indices or patterns. The LLM dynamically constructs queries based on user requests.
+- **[ES|QL tools](tools/esql-tools.md)**: Execute pre-defined {{esql}} queries with parameterized inputs for precise, repeatable data retrieval.
+- **[MCP tools](tools/mcp-tools.md)**: Connect to external Model Context Protocol servers, enabling agents to use remote tools and services.
+% - **Workflow tools**: Call pre-defined Workflows directly from the agent chat.
 
 ## Built-in tools
 
