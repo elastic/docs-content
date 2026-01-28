@@ -32,7 +32,7 @@ columns:
   - source: "Data Retention Period (Days)"
   - source: "Data Used To Train Models?"
   - source: "Model Card URL"
-  - source: "Provider Terms URL"
+  - source: "Author Terms URL"
 
 # Output configuration
 output:
