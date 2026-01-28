@@ -30,8 +30,7 @@ columns:
   - source: "Output Modalities"
   - source: "EOL Date"
   - source: "Data Retention Period (Days)"
-  - source: "Prompts/Input Used To Train Models?"
-    target: "Input Used To Train Models?"
+  - source: "Data Used To Train Models?"
   - source: "Model Card URL"
   - source: "Provider Terms URL"
 
