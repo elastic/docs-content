@@ -235,6 +235,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds more granular control over how alerts behave when data stops being reported for metric threshold rules [#247669]({{kib-pull}}247669).
 * Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
 *
+:::{include} _snippets/9.3.0/index.md
+:::
 
 ## 9.2.4 [elastic-observability-9.2.4-release-notes]
 

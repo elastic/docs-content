@@ -41,6 +41,8 @@ For more information, check [#250111]({{kib-pull}}250111).
 
 **Action**<br> Remove any `serializer` or `deserializer` parameters from your Lists API requests.
 ::::
+:::{include} _snippets/9.3.0/breaking-changes.md
+:::
 
 ## 9.2.0 [elastic-security-920-breaking-changes]
 ::::{dropdown} Changes invalid category for Gatekeeper

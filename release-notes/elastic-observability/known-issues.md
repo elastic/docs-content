@@ -58,6 +58,8 @@ Alternatively, you can switch to project monitors.
 
 ::::
 
+:::{include} _snippets/9.3.0/known-issues.md
+:::
 
 ::::{dropdown} Synthetics monitors statuses become pending after upgrade
 Applies to: {{stack}} 8.19.5 and later
