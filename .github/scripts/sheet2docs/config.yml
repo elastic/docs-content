@@ -22,6 +22,7 @@ source:
 # Column configuration
 # Define which columns to include in the CSV and optionally rename them
 columns:
+  - source: "Type"
   - source: "Author"
   - source: "Name"
   - source: "ID"
@@ -30,9 +31,11 @@ columns:
   - source: "Output Modalities"
   - source: "EOL Date"
   - source: "Prompts/Input Log Retention Period (Days)"
+    target: "Input Log Retention Period (Days)"
   - source: "Prompts/Input Used To Train Models?"
+    target: "Input Used To Train Models?"
   - source: "Model Card URL"
-  - source: "Public Notes"
+  - source: "Provider Terms URL"
 
 # Output configuration
 output:
