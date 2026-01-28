@@ -1,11 +1,14 @@
 ---
 navigation_title: "ES|QL tools"
 applies_to:
-  stack: preview 9.2
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 
@@ -74,6 +77,10 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 - **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents (e.g., `start_date` instead of `date1`)
 - **Define parameter types**: Ensure parameters have the correct type to avoid runtime errors
 - **Provide clear descriptions**: Help agents understand when and how to use each parameter
+
+:::{tip}
+If queries are slow or failing, you might be retrieving more data than the LLM can process. Refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md) for tips on diagnosing and resolving these issues.
+:::
 
 ## Limitations
 
