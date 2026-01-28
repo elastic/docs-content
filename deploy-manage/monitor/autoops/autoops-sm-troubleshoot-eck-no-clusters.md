@@ -21,7 +21,7 @@ Check if the `AutoOpsAgentPolicy` resource was successfully created and the ECK 
 ::::{step} Check if the policy was created
 Run the following command.
 ```shell
-kubectl get autoopsagentpolicy quickstart
+kubectl get autoopsagentpolicy <policy_name>
 ```
 If the policy doesn't appear, there was an issue with its creation.
 ::::
@@ -29,9 +29,9 @@ If the policy doesn't appear, there was an issue with its creation.
 ::::{step} Confirm the issue by checking logs
 Run the following command to show logs.
 ```shell
-kubectl logs -f -n <ECK_OPERATOR_NAMESPACE> -l control-plane=elastic-operator
+kubectl logs -f -n <ECK_operator_namespace> -l control-plane=elastic-operator
 ```
-If you see any errors mentioning `AutoOpsAgentPolicy` or `quickstart`, this confirms the policy's creation and processing is causing the issue. 
+If the log contains any errors mentioning `AutoOpsAgentPolicy` or the policy's name, this confirms that the policy's creation and processing is causing the issue. 
 ::::
 
 ::::{step} Re-add the YAML manifest to your configuration file
@@ -49,7 +49,7 @@ Check if `AutoOpsAgentPolicy` successfully deployed {{agent}} for your {{es}} cl
 ::::{step} List agent deployments
 Run the following command.
 ```shell
-kubectl get deployments -l autoops.k8s.elastic.co/policy=quickstart
+kubectl get deployments -l autoops.k8s.elastic.co/policy-name=<policy_name>
 ```
 If no deployments appear, there might be an issue with the `resourceSelector` label applied to your {{es}} clusters. If deployments appear but pods are not running, there might be an issue with a specific pod.
 ::::
@@ -57,18 +57,18 @@ If no deployments appear, there might be an issue with the `resourceSelector` la
 ::::{step} Check cluster labels and agent pods 
 If no deployments appeared in the previous step, run the following command to check your cluster labels.   
 ```shell
-kubectl get elasticsearch quickstart --show-labels
+kubectl get elasticsearch <policy_name> --show-labels
 ```
 Make sure that the label you applied in the [Launch AutoOps](../autoops/cc-connect-self-managed-to-autoops.md#launch-autoops) step of the wizard appears correctly in the list.
 
 If deployments appeared in the previous step, run the following command to check pod status.
 ```shell
-kubectl get pods -l autoops.k8s.elastic.co/policy=quickstart
+kubectl get pods -l autoops.k8s.elastic.co/policy-name=<policy_name>
 ```
 
-If you see a pod that is crashing or pending, run the following command to inspect its events:
+If the status indicates that a pod is crashing or in a pending state, run the following command to inspect its events:
 ```shell
-kubectl describe pod <AGENT_POD_NAME>
+kubectl describe pod <agent_pod_name>
 ```
 ::::
 
@@ -83,7 +83,7 @@ Make sure there are no errors in your secret keys.
 ::::{step} Verify secret content
 Run the following command.
 ```shell
-kubectl get secret autoops-config -o yaml
+kubectl get secret <secret_name> -o yaml
 ```
 Make sure the secret has the following required keys:
 * `autoops-token`
@@ -94,27 +94,27 @@ Make sure the secret has the following required keys:
 ::::{step} Confirm secret reference
 Run the following command to confirm that `AutoOpsAgentPolicy` is actually referencing the correct configuration.
 ```shell
-kubectl get autoopsagentpolicy quickstart -o jsonpath='{.spec.config.secretName}'
+kubectl get autoopsagentpolicy <policy_name> -o jsonpath='{.spec.autoOpsRef.secretName}'
 ```
-The command should return `autoops-config`. 
+The command should return the correct `.spec.autoOpsRef.secretName`. 
 ::::
 
 :::::
 
 ## Check for authorization errors
 
-When you go through the installation wizard, the ECK operator attempts to create a user or API key for {{agent}}. If there is an issue with this creation, you will see authorization errors in the operator logs.
+When you go through the installation wizard, the ECK operator attempts to create an API key for {{agent}} within {{es}}. If there is an issue with this creation, authorization errors will appear in the operator logs.
 :::::{stepper}
 
 ::::{step} Pull operator logs
 Run the following command.
 ```shell
-kubectl logs -f -n <ECK_OPERATOR_NAMESPACE> -l control-plane=elastic-operator
+kubectl logs -f -n <ECK_operator_namespace> -l control-plane=elastic-operator
 ```
 ::::
 
 ::::{step} Inspect logs
-If you see any errors in the logs mentioning "authorization" or "unauthorized connection", go through the installation wizard again so that the operator can reattempt creating a user or API key.
+If any errors in the logs mention "authorization" or "unauthorized connection", go through the installation wizard again so that the operator can reattempt creating a user or API key.
 ::::
 
 ## Ensure that {{agent}} is allowed to send data to AutoOps

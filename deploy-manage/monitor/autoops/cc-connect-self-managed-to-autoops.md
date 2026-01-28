@@ -12,7 +12,7 @@ products:
 
 # Connect your self-managed cluster to AutoOps
 
-To use AutoOps with your self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
+To use AutoOps with your fully self-managed, ECE, or ECK {{es}} cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
 
 The connection process takes about 10 minutes.
 
@@ -73,7 +73,7 @@ Select one of the following methods to install {{agent}}:
 * **{{k8s}}**
 * **Docker**
 * **Linux**
-* **{{eck}} (ECK)**
+* {applies_to}`eck: ga 3.3`  **{{eck}} (ECK)** (recommended for ECK-managed {{es}} clusters)
 
 :::{note}
 macOS is not a supported platform for installing {{agent}} to connect to AutoOps in a self-managed production environment. However, you can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
@@ -145,7 +145,7 @@ Depending on your selected installation method, you might have to provide some o
   ::::{tab-item} Basic
   :sync: basic
 
-  With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with the these privileges:
+  With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with these privileges:
 
   * (Recommended) Go to {{kib}} in your self-managed cluster and then go to **Developer tools**. In **Console**, run the following command:
   ```js
@@ -214,20 +214,19 @@ The wizard generates an installation command or a YAML manifest based on your co
     * Docker
     * Docker compose
 * Linux
-* ECK (recommended for ECK-managed {{es}} clusters)
+* {applies_to}`eck: ga 3.3` ECK
   * YAML
-
-:::{tip}
-For optimum resource usage, we recommend installing the agent on a different machine from the one where your cluster is running.
-:::
 
 Complete the following steps to install the agent:
 
-::::{tab-set}
+:::::{tab-set}
 :group: installation-eck-or-other
 
-:::{tab-item} {{k8s}}, Docker, or Linux
+::::{tab-item} {{k8s}}, Docker, or Linux
 :sync: installation-other
+:::{tip}
+For Docker or Linux-based installation, we recommend installing the agent on a different machine from the one where your cluster is running. This ensures optimum resource usage.
+:::
 1. Copy the command. 
 2. Paste it into a text editor and update the placeholder values for the following environment variables:
 
@@ -245,9 +244,9 @@ Complete the following steps to install the agent:
 4. Return to the wizard and select **I have run the command**.
 
 It might take a few minutes for your cluster details to be validated and the first metrics to be shipped to AutoOps.
-:::
+::::
 
-:::{tab-item} ECK
+::::{tab-item} ECK
 :sync: installation-ECK
 ```{applies_to}
 eck: ga 3.3
@@ -255,20 +254,20 @@ eck: ga 3.3
 1. Copy the YAML manifest. 
 2. (Optional) Paste it into a text editor and change the values of the following variables:
     * Secret name
-    * Namespace
+    * Policy name
     * `resourceSelector` label
-3. Add the manifest to your ECK environment on the machine where you want to install the agent. 
+3. Apply the manifest to your ECK environment.
 4. Return to the wizard and select **Next**.
 
-When you add this manifest, the ECK operator does the following:
-* Creates an `AutoOpsAgentPolicy` resource.
-* Configures {{agent}} to monitor the {{es}} clusters that match your `resourceSelector` label.
-* Deploys the agent so that it's ready to send data to AutoOps.
+When you apply this manifest, the following things happen:
+* An `AutoOpsAgentPolicy` resource is created.
+* The ECK operator is configured to create an API key in each {{es}} cluster that matches your `resourceSelector` label.
+* {{agent}} is deployed so that it's ready to send data from these clusters to AutoOps.
 
 :::{tip}
 After the `AutoOpsAgentPolicy` resource is created, you can check its status by running the following command:
 ```sh
-kubectl describe autoopsagentpolicy eck-autoops-config-policy
+kubectl describe autoopsagentpolicy <policy_name>
 ```
 The status shows:
 * Number of errors encountered when configuring {{agent}}.
@@ -276,9 +275,9 @@ The status shows:
 * Number of clusters that are connected and shipping data to AutoOps.
 :::
 
-:::
-
 ::::
+
+:::::
 
 If the connection is unsuccessful, an error message is displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors). Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
@@ -306,7 +305,7 @@ The agent detects which {{es}} clusters to monitor based on the correct `resourc
 Use the following command to apply the `resourceSelector` label to every cluster you want to connect. This code assumes your label is `autoops=enabled`.
 
 ```js
-  kubectl -n {{NAMESPACE}} label elasticsearch quickstart autoops=enabled
+  kubectl -n {{namespace}} label elasticsearch <policy_name> autoops=enabled
 ```
 :::{note}
 The agent runs in the namespace chosen for the policy. However, the agent can detect {{es}} clusters throughout the {{k8s}} environment regardless of where they are installed. 
@@ -358,7 +357,7 @@ Complete the following steps to disconnect your cluster from your Cloud organiza
 :applies_to: { eck: ga 3.3 }
 If your chosen installation method is ECK, you can also disconnect a cluster by removing your `resourceSelector` label from it. Run the following command:
 ```js
-  kubectl -n {{NAMESPACE}} label elasticsearch quickstart autoops-
+  kubectl -n {{namespace}} label elasticsearch <policy_name> autoops-
 ```
 :::
 
