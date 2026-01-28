@@ -13,6 +13,10 @@ Each {{es}} cluster has a *voting configuration*, which is the set of [master-el
 
 Usually the voting configuration is the same as the set of all the master-eligible nodes that are currently in the cluster. However, there are some situations in which they may be different.
 
+## High availability requirements [_high_availability_requirements]
+
+High availability (HA) clusters require at least three master-eligible nodes, at least two of which are not [voting-only nodes](../clusters-nodes-shards/node-roles.md#voting-only-node). This ensures the cluster can elect a master node even if one node fails.
+
 ::::{important}
 To be sure that the cluster remains available you **must not stop half or more of the nodes in the voting configuration at the same time**. As long as more than half of the voting nodes are available the cluster can still work normally. This means that if there are three or four master-eligible nodes, the cluster can tolerate one of them being unavailable. If there are two or fewer master-eligible nodes, they must all remain available.
 
@@ -20,6 +24,12 @@ If you stop half or more of the nodes in the voting configuration at the same ti
 
 ::::
 
+::::{note}
+This availability requirement applies during normal operations when you need the cluster to remain available. A [full cluster restart](../../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) intentionally makes the cluster temporarily unavailable. Stopping all nodes simultaneously is expected in that scenario.
+
+::::
+
+## Voting configuration updates [_voting_configuration_updates]
 
 After a node joins or leaves the cluster, {{es}} reacts by automatically making corresponding changes to the voting configuration in order to ensure that the cluster is as resilient as possible. It is important to wait for this adjustment to complete before you remove more nodes from the cluster. For more information, see [*Add and remove nodes in your cluster*](../../maintenance/add-and-remove-elasticsearch-nodes.md).
 
