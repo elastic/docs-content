@@ -17,7 +17,7 @@ products:
 Workflow tools enable agents to trigger Elastic Workflows directly from a conversation and use their output. This is ideal for offloading tasks from the LLM that require a deterministic, repeatable sequence of actions.
 
 :::{note}
-This page explains how to call a **workflow from an agent**. If you want to call an **agent from a workflow**, refer to [Call agents from workflows](../agents-and-workflows.md).
+This page explains how to trigger a workflow in an agent conversation. If you want to use an agent within a workflow step, refer to [Call agents from workflows](../agents-and-workflows.md).
 :::
 
 % (/explore-analyze/workflows.md)
