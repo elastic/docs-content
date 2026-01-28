@@ -45,7 +45,7 @@ Select the **New agent** button to begin creating a new agent.
 
 ::::{step} Configure essential settings
 
-Configure the essential agent settings in the **settings** tab:
+Configure the essential agent settings in the **Settings** tab:
 
 1. Enter an **Agent ID**, a unique identifier for reference in code.
 2. Add **Custom instructions**.<br><br>Custom instructions define the agent's personality and determine how it interacts with users and performs tasks.
