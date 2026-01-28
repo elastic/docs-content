@@ -40,7 +40,7 @@ Before you begin:
 
 ## Use the `ai.agent` step
 
-Follow these steps to invoke an `ai.agent` as a step within a workflow. If using the example below, ensure the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
+Follow these steps to invoke an `ai.agent` as a step within a workflow.
 
 1.  Open the **Workflows** editor and create or edit a workflow.
 2.  Add a new step with the type `ai.agent`.
