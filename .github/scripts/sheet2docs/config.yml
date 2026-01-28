@@ -29,10 +29,11 @@ columns:
   - source: "Input Modalities"
   - source: "Output Modalities"
   - source: "EOL Date"
-  - source: "Prompts/Input Log Retention Period (Days)"
-  - source: "Prompts/Input Used To Train Models?"
+  - source: "Data Retention Period (Days)"
+  - source: "Data Used To Train Models?"
   - source: "Model Card URL"
-  - source: "Public Notes"
+  - source: "Author Terms URL"
+  - source: "Inference Regions"
 
 # Output configuration
 output:
