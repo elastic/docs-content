@@ -17,7 +17,7 @@ products:
 Elastic Workflows and {{agent-builder}} allow you to combine deterministic automation with conversational reasoning. By invoking an AI agent directly within a workflow execution, you can treat the agent as a "reasoning engine" that summarizes data, classifies events, or makes decisions before passing the results to the next step in your automation.
 
 :::{note}
-This guide explains how to call an **agent from a workflow**. If you want to trigger a **workflow from an agent's chat interface**, refer to the [Workflow tools](./tools/workflow-tools.md) reference.
+This guide explains how to call an agent from a workflow. If you want to trigger a workflow in an agent conversation, you need to create a custom [workflow tool](./tools/workflow-tools.md).
 :::
 
 ## Approaches
