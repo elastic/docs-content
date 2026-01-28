@@ -88,7 +88,7 @@ steps:
 2. **message**: The prompt sent to the agent. You can use template variables (like `{{ steps.step_name.output }}`) to inject data dynamically.
 
 
-## Call an `kibana.request` from a workflow
+## Use `kibana.request` step
 For use cases that require management tasks workflows can interact with {{agent-builder}} programmatically using the generic `kibana.request` step. This allows you to perform management actions that aren't covered by the `ai.agent` step, such as listing available agents.
 
 1. Add a new step with the type `kibana.request`.
