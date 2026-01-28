@@ -536,10 +536,16 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Additional memory scanning of behavior alerts provides more context for responders analyzing alerts. Use this setting to disable this feature.
 
 
+`linux.advanced.events.populate_file_data`
+:   Added in 9.3.0.
+
+    *Enable collection of entropy and header bytes on file events. Default: `false`.*
+
+
 `mac.advanced.events.populate_file_data`
 :   Added in 9.2.0.
 
-    *Enable collection of header bytes in file events. Default: `true`.*
+    *Enable collection of entropy and header bytes in file events. Default: `true`.*
 
 
 `[linux,mac,windows].advanced.events.process_ancestry_length`
