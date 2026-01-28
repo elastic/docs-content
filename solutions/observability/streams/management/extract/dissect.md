@@ -31,3 +31,24 @@ The following example shows the dissect pattern for an unstructured log message.
 ```
 %{timestamp} %{log.level} %{source.ip} %{destination.ip} %{destination.port}
 ```
+
+## Generate patterns [streams-dissect-patterns]
+:::{note}
+This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+:::
+
+Instead of writing the dissect patterns by hand, you can select **Generate Patterns** to have AI generate them for you.
+
+Generated patterns work best on semi-structured data. For very custom logs with a lot of text, creating patterns manually generally creates more accurate results.
+
+To add a generated dissect pattern:
+
+1. Select **Create processor**.
+1. Select **Dissect** from the **Processor** menu.
+1. Select **Generate pattern**.
+1. Select **Accept** to add a generated pattern to the list of patterns used by the processor.
+
+### How does **Generate patterns** work? [streams-dissect-pattern-generation]
+
+:::{include} ../../../../_snippets/streams-suggestions.md
+:::

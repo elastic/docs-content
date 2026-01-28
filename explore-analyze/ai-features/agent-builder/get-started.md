@@ -1,4 +1,5 @@
 ---
+description: Learn how to get started with Elastic Agent Builder
 navigation_title: "Get started"
 applies_to:
   stack: preview =9.2, ga 9.3+
@@ -13,7 +14,9 @@ products:
 
 # Get started with {{agent-builder}}
 
-Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
+To start using {{agent-builder}} you need an {{es}} deployment. If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
+
+For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
 
 ::::{admonition} Agent Builder subscription requirements
 - {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
@@ -22,17 +25,6 @@ Learn how to get started by enabling the {{agent-builder}} features and begin ch
 ::::
 
 ::::::{stepper}
-::::{step} Set up an {{es}} deployment
-
-If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
-
-:::{note}
-For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation.
-You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
-:::
-
-::::
-
 :::::{step} Enable {{agent-builder}}
 
 ::::{applies-switch}
@@ -108,13 +100,13 @@ Learn more in [Agent Chat](chat.md).
 
 ::::{step} Configure model (optional)
 
-By default, {{agent-builder}} uses an Elastic Managed LLM. To use a different model, refer to [model selection and configuration](models.md).
+On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. To switch models or add your own, refer to [model selection and configuration](models.md).
 
 ::::
 
 ::::{step} Begin building agents and tools
 
-Once you've tested the default **Elastic AI Agent** with the [built-in Elastic tools](tools.md), you can begin [building your own agents](agent-builder-agents.md#create-a-new-agent) with custom instructions and [creating your own tools](tools.md#create-custom-tools) to assign them.
+Once you've tested [built-in agents](builtin-agents-reference.md) with [built-in Elastic tools](tools.md), you can begin [building your own agents](custom-agents.md#create-a-new-agent) with custom instructions and [creating your own tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to assign them.
 
 ::::
 

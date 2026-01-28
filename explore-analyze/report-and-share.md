@@ -14,10 +14,6 @@ $$$install-reporting-packages$$$
 
 $$$set-reporting-server-host$$$
 
-$$$csv-limitations$$$
-
-$$$embed-code$$$
-
 $$$grant-user-access-basic$$$
 
 $$$grant-user-access-external-provider$$$
