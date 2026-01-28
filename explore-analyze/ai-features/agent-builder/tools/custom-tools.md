@@ -143,6 +143,7 @@ A strong description explains what the tool does, when to use it, and what limit
 
 ## Related pages
 
+- [](../prompt-engineering.md)
 - [](../tools.md)
 - [](builtin-tools-reference.md)
 - [](../kibana-api.md#tools)

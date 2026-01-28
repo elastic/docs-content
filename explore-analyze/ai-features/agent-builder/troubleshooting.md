@@ -22,3 +22,5 @@ Use the topics in this section to troubleshoot common problems with {{agent-buil
 
 - [Limitations and known issues](limitations-known-issues.md)
 - [Monitor token usage](monitor-usage.md)
+- [](prompt-engineering.md)
+- [](tools/custom-tools.md#best-practices)
