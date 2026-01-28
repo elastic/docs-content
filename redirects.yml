@@ -673,6 +673,16 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/4438
   'explore-analyze/ai-features/ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md'
 
+# Related to tools.md refactor - moved custom tools content to custom-tools.md
+  'explore-analyze/ai-features/agent-builder/tools.md':
+    to: 'explore-analyze/ai-features/agent-builder/tools.md'
+    many:
+      - to: 'explore-analyze/ai-features/agent-builder/tools/custom-tools.md'
+        anchors:
+          'create-custom-tools': 'create-custom-tools'
+          'testing-your-tools': 'testing-your-tools'
+          'best-practices': 'best-practices'
+          'assign-tools-to-agents': 'assign-tools-to-agents'
 
 # Related to https://github.com/elastic/docs-content/pull/4779
   'explore-analyze/visualize/lens.md':
