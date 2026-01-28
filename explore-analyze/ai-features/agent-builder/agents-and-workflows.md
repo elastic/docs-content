@@ -38,7 +38,7 @@ Before you begin:
 % For details, refer to Set up workflows (/explore-analyze/workflows/setup.md).
 * Create at least one workflow.
 
-## Call an `ai.agent` from a workflow
+## Use the `ai.agent` step
 
 Follow these steps to invoke an `ai.agent` as a step within a workflow. If using the example below, ensure the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
