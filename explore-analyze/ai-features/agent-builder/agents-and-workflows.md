@@ -93,7 +93,7 @@ For use cases that require management tasks workflows can interact with {{agent-
 
 1. Add a new step with the type `kibana.request`.
 2. Set the method (e.g., `GET`, `POST`).
-3. Set the `path` to the specific [Agent Builder API endpoint](TODO).
+3. Set the `path` to the specific [Agent Builder API endpoint](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
 ### Example: List available agents
 This step retrieves a list of all agents currently available in Agent Builder.
@@ -116,5 +116,5 @@ steps:
 The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) contains more than 50 examples you can use as a starting point.
 
 ## Related pages
-* [Tools overview](../tools.md)
+* [Tools overview](./tools/)
 % * [Workflows](/explore-analyze/workflows.md)
