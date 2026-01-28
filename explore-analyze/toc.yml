@@ -42,6 +42,7 @@ toc:
     children:
       - file: elastic-inference/eis.md
         children:
+          - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
@@ -193,6 +194,10 @@ toc:
                - file: ai-features/agent-builder/mcp-server.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
+          - file: ai-features/agent-builder/troubleshooting.md
+            children:
+              - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
+              - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
           - file: ai-features/agent-builder/limitations-known-issues.md
       - file: ai-features/ai-chat-experiences.md
         children:
@@ -245,9 +250,11 @@ toc:
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
-          - hidden: visualize/charts/line-charts.md
-          - hidden: visualize/charts/metric-charts.md
-          - hidden: visualize/charts/tables.md
+          - file: visualize/charts/area-charts.md
+          - file: visualize/charts/bar-charts.md
+          - file: visualize/charts/line-charts.md
+          - file: visualize/charts/metric-charts.md
+          - file: visualize/charts/tables.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
