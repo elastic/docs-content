@@ -24,7 +24,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.agent.orphaned_remediation`
 :   Added in 9.2.0.
 
-    *Attempt to start {{elastic-agent}} service when {{elastic-defend}} becomes orphaned. Default: `false`.*
+    *Attempt to start {{agent}} service when {{elastic-defend}} becomes orphaned. Default: `false`.*
 
 
 `[mac,windows].advanced.alerts.cloud_lookup`
