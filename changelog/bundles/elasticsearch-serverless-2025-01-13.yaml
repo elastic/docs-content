@@ -1,0 +1,37 @@
+﻿products:
+- product: cloud-serverless
+  target: 2025-01-13
+entries:
+- file:
+    name: 5166.yaml
+    checksum: 2e3a61cd88c41b652614c489e7dc0625f02b5f4e
+  type: enhancement
+  title: Trigger topology checks when nodes leave the cluster
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Search
+  pr: https://github.com/elastic/elasticsearch-serverless/pull/5166
+- file:
+    name: 5195.yaml
+    checksum: 14b6fc52e7035d5c0541ca0978f57dca469b92bb
+  type: enhancement
+  title: Settings registration and test for logging hot-threads on large management queue size
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Distributed
+  pr: https://github.com/elastic/elasticsearch-serverless/pull/5195
+- file:
+    name: 5053.yaml
+    checksum: fe63d51dcfd4e37afd96f1ed4a574657d379043d
+  type: enhancement
+  title: 'Search: Change fielddata circuit breaker/indices cache defaults'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Search
+  pr: https://github.com/elastic/elasticsearch-serverless/pull/5053
