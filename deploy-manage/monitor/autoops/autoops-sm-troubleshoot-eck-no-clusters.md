@@ -14,7 +14,7 @@ If you used {{eck}} (ECK) to connect your self-managed clusters to AutoOps but y
 
 ## Verify `AutoOpsAgentPolicy` status
 
-Check if the `AutoOpsAgentPolicy` was successfully created and the ECK operator is processing it correctly.
+Check if the `AutoOpsAgentPolicy` resource was successfully created and the ECK operator is processing it correctly.
 
 :::::{stepper}
 
@@ -51,7 +51,7 @@ Run the following command.
 ```shell
 kubectl get deployments -l autoops.k8s.elastic.co/policy=quickstart
 ```
-If no deployments appear, there might be an issue with the label applied to your {{es}} clusters. If deployments appear but pods are not running, there might be an issue with a specific pod.
+If no deployments appear, there might be an issue with the `resourceSelector` label applied to your {{es}} clusters. If deployments appear but pods are not running, there might be an issue with a specific pod.
 ::::
 
 ::::{step} Check cluster labels and agent pods 
@@ -59,7 +59,7 @@ If no deployments appeared in the previous step, run the following command to ch
 ```shell
 kubectl get elasticsearch quickstart --show-labels
 ```
-Make sure that the label you chose in the [Install agent](../autoops/cc-connect-self-managed-to-autoops.md#install-agent) step of the wizard appears correctly in the list.
+Make sure that the label you applied in the [Launch AutoOps](../autoops/cc-connect-self-managed-to-autoops.md#launch-autoops) step of the wizard appears correctly in the list.
 
 If deployments appeared in the previous step, run the following command to check pod status.
 ```shell
