@@ -51,7 +51,7 @@ Run the following command.
 ```shell
 kubectl get deployments -l autoops.k8s.elastic.co/policy=quickstart
 ```
-If no deployments appear, there may be an issue with the label applied to your {{es}} clusters. If deployments appear but pods are not running, there may be an issue with a specific pod.
+If no deployments appear, there might be an issue with the label applied to your {{es}} clusters. If deployments appear but pods are not running, there might be an issue with a specific pod.
 ::::
 
 ::::{step} Check cluster labels and agent pods 

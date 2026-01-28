@@ -27,7 +27,7 @@ Ensure your system meets the following requirements before proceeding:
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above).
 * Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an [active self-managed trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
-* For {{eck}} environments, your ECK operator is on version 3.3.0 and above.
+* {applies_to}`eck: ga 3.3` Your ECK operator is on version 3.3.0 and above.
 
 ## Connect to AutoOps [connect-to-autoops]
 
@@ -89,7 +89,7 @@ To learn more about how AutoOps securely gathers data from your cluster, refer t
 
 ### Configure agent
 
-Depending on your selected installation method, you may have to provide the following information to create the installation command:
+Depending on your selected installation method, you might have to provide some or all of the following information to create the installation command:
 
 * **{{es}} endpoint URL**: Enter the URL for the {{es}} cluster you want to monitor by connecting to AutoOps.
 * **Preferred authentication method**: Choose one of the following:
@@ -206,7 +206,7 @@ $$$firewall-allowlist$$$
 
 ### Install agent
 
-The wizard generates a YAML manifest or an installation command based on your configuration. Depending on your installation method, the following formats are available:
+The wizard generates an installation command or a YAML manifest based on your configuration. Depending on your installation method, the following formats are available:
 
 * {{k8s}}
     * YAML
@@ -214,8 +214,8 @@ The wizard generates a YAML manifest or an installation command based on your co
     * Docker
     * Docker compose
 * Linux
-* ECK
-  * YAML (`AutoOpsAgentPolicy` resource)
+* ECK (recommended for ECK-managed {{es}} clusters)
+  * YAML
 
 :::{tip}
 For optimum resource usage, we recommend installing the agent on a different machine from the one where your cluster is running.
@@ -253,12 +253,28 @@ It might take a few minutes for your cluster details to be validated and the fir
 eck: ga 3.3
 ```
 1. Copy the YAML manifest. 
-2. (Optional) Paste it into a text editor and change the following example values:
-    * `autoops-config`
-    * `quickstart`
-    * `autoops: enabled`
-3. Add the manifest to a configuration file on the machine where you want to install the agent. 
+2. (Optional) Paste it into a text editor and change the values of the following variables:
+    * Secret name
+    * Namespace
+    * `resourceSelector` label
+3. Add the manifest to your ECK environment on the machine where you want to install the agent. 
 4. Return to the wizard and select **Next**.
+
+When you add this manifest, the ECK operator does the following:
+* Creates an `AutoOpsAgentPolicy` resource.
+* Configures {{agent}} to monitor the {{es}} clusters that match your `resourceSelector` label.
+* Deploys the agent so that it's ready to send data to AutoOps.
+
+:::{tip}
+After the `AutoOpsAgentPolicy` resource is created, you can check its status by running the following command:
+```sh
+kubectl describe autoopsagentpolicy eck-autoops-config-policy
+```
+The status shows:
+* Number of errors encountered when configuring {{agent}}.
+* Number of clusters matched by the `resourceSelector`.
+* Number of clusters that are connected and shipping data to AutoOps.
+:::
 
 :::
 
@@ -285,7 +301,9 @@ After your setup is complete, the **Open AutoOps** button is displayed in the wi
 ```{applies_to}
 eck: ga 3.3
 ```
-The agent detects which {{es}} clusters to monitor based on the correct `matchLabel`. Use the following command to apply the `matchLabel` to every cluster you want to connect. This code assumes your `matchLabel` is `autoops:enabled`.
+The agent detects which {{es}} clusters to monitor based on the correct `resourceSelector` label. The `resourceSelector` uses standard {{k8s}} [label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) to match the clusters. 
+
+Use the following command to apply the `resourceSelector` label to every cluster you want to connect. This code assumes your label is `autoops=enabled`.
 
 ```js
   kubectl -n {{NAMESPACE}} label elasticsearch quickstart autoops=enabled
@@ -322,9 +340,9 @@ By default, each cluster has a name made up of a string of characters, but you c
 
 To connect more clusters, repeat the steps to [connect to AutoOps](#connect-to-autoops).
 
-Or, if you don't need to change any of your [configuration settings](#configure-agent) for the additional clusters, you can skip ahead and reuse the same installation command to connect them.
+If you don't need to change any of your [configuration settings](#configure-agent) for the additional clusters, you can skip ahead and reuse the same installation command if you used the {{k8s}}, Docker, or Linux methods, or apply the same `resourceSelector` label if you used the ECK method.
 
-Remember that you must run the command to install a separate, dedicated {{agent}} for each cluster. You only need to install the agent once per cluster. 
+Remember that you must install a separate, dedicated {{agent}} for each cluster. You only need to install the agent once per cluster. 
 
 ### Disconnect a cluster
 
@@ -338,7 +356,7 @@ Complete the following steps to disconnect your cluster from your Cloud organiza
 
 :::{tip}
 :applies_to: { eck: ga 3.3 }
-If your chosen installation method is ECK, you can also disconnect a cluster by removing your `matchLabel` from it. Run the following command:
+If your chosen installation method is ECK, you can also disconnect a cluster by removing your `resourceSelector` label from it. Run the following command:
 ```js
   kubectl -n {{NAMESPACE}} label elasticsearch quickstart autoops-
 ```
