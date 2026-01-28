@@ -91,7 +91,7 @@ For example, try creating purpose-built tools that:
 Always include a `LIMIT` clause in your {{esql}} queries to cap the number of results.
 
 :::{tip}
-Learn more in [creating custom tools](../tools.md#create-custom-tools).
+Learn more in [creating custom tools](../tools/custom-tools.md).
 :::
 :::::
 
@@ -109,4 +109,4 @@ Assign your custom {{esql}} tools to the custom agent. Update the agent's system
 
 - [Troubleshooting](../troubleshooting.md)
 - [Monitor token usage](../monitor-usage.md)
-- [Custom tools](../tools.md#create-custom-tools)
+- [Custom tools](../tools/custom-tools.md)
