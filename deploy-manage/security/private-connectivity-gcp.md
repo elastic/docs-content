@@ -82,13 +82,7 @@ The process of setting up the Private link connection to your deployments is spl
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
 :::{admonition} Private connection policies are optional
-Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established.
-
-Creating a private connection policy and associating it with your deployments allows you to do the following: 
-
-* Record that you've established private connectivity between GCP and Elastic in the applicable region.
-* [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
-* Optionally filter traffic to your deployment using VPC filters.
+Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established. You only need to create a private connection policy if you want to filter traffic to your deployment using VPC filters.
 :::
 
 ### Create your Private Service Connect endpoint and DNS entries in Google Cloud [ec-private-service-connect-enpoint-dns]

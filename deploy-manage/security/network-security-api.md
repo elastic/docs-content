@@ -237,15 +237,9 @@ deployment:
 Learn how to create a private connection policy using the {{ecloud}} API. In the API, a VPC filter in a private connection policy is referred to as a rule.
 
 :::{tip}
-Private connection policies are optional for AWS PrivateLink and GCP Private Service Connect. After the VPC endpoint and DNS record are created, private connectivity is established.
+Private connection policies are optional for AWS PrivateLink and GCP Private Service Connect. After the VPC endpoint and DNS record are created, private connectivity is established. For these services, a private connection policy is only required to filter traffic to your deployment using VPC filters.
 
-Creating a private connection policy and associating it with your deployments allows you to do the following:
-
-* Record that you've established private connectivity between the cloud service provider and Elastic in the applicable region.
-* [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
-* Filter traffic to your deployment using VPC filters.
-
-A private connection policy is required to establish a private connection with Azure Private Link.
+A private connection policy is always required to establish a private connection with Azure Private Link.
 :::
 
 

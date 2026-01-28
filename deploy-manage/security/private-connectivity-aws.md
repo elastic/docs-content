@@ -105,13 +105,7 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
 :::{admonition} Private connection policies are optional
-Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established.
-
-Creating a private connection policy and associating it with your deployments allows you to do the following: 
-
-* Record that you've established private connectivity between AWS and Elastic in the applicable region.
-* [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
-* Optionally filter traffic to your deployment using VPC filters.
+Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established. You only need to create a private connection policy if you want to filter traffic to your deployment using VPC filters.
 :::
 
 
@@ -225,10 +219,7 @@ After you test your PrivateLink connection, you can create a private connection 
 
 Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established.
 
-Creating a private connection policy and associating it with your deployments allows you to do the following: 
-
-* Record that you've established private connectivity between AWS and Elastic in the applicable region.
-* Filter traffic to your deployment using VPC filters.
+Creating a private connection policy and associating it with your deployments allows you to filter traffic to your deployment using VPC filters.
 
 Follow these high-level steps to add a private connection policy that can be associated with your deployments.
 
