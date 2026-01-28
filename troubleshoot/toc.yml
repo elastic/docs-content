@@ -154,6 +154,7 @@ toc:
               - file: ingest/opentelemetry/edot-collector/collector-not-starting.md
               - file: ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md
               - file: ingest/opentelemetry/edot-collector/trace-export-errors.md
+              - file: ingest/opentelemetry/edot-collector/c2c-resourceexhausted.md
           - file: ingest/opentelemetry/edot-sdks/index.md
             children:
               - file: ingest/opentelemetry/edot-sdks/android/index.md
