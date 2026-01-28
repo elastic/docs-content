@@ -18,7 +18,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *How long to wait for agent connectivity before sending first policy reply, in seconds. Default: `60`.*
 
-    {{elastic-endpoint}} applies a cached configuration from disk immediately on start up. However, before generating a policy response document, {{elastic-endpoint}} waits to first establish a connection to {{elastic-agent}} to see if there are configuration updates. Use this setting to specify how long that delay should be. Regardless of this setting, {{elastic-endpoint}} will periodically attempt to (re)connect to {{elastic-agent}} if it isn't connected.
+    {{elastic-endpoint}} applies a cached configuration from disk immediately on start up. However, before generating a policy response document, {{elastic-endpoint}} waits to first establish a connection to {{agent}} to see if there are configuration updates. Use this setting to specify how long that delay should be. Regardless of this setting, {{elastic-endpoint}} will periodically attempt to (re)connect to {{agent}} if it isn't connected.
 
 
 `[linux,mac,windows].advanced.agent.orphaned_remediation`
@@ -61,7 +61,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable self-healing by erasing attack artifacts when prevention alerts are triggered. Warning: data loss can occur. Default: `false`.*
 
     When a prevention alert is generated, {{elastic-endpoint}} can [roll back](/solutions/security/configure-elastic-defend/configure-self-healing-rollback-for-windows-endpoints.md) recent filesystem changes likely associated with the attack. Use this setting to enable the self-healing rollback feature.
-    
+
     ::::{warning}
     This feature can cause permanent data loss.
     ::::
@@ -85,7 +85,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable self-healing of registry based malware artifacts when prevention alerts are triggered. Requires `windows.advanced.alerts.rollback.self_healing.enabled` to also be enabled. Default: `true`.*
 
     As an extension to the base-level self-healing rollback feature, {{elastic-endpoint}} can roll back recent registry changes when an attack occurs. Use this setting to enable this feature.
-    
+
     ::::{warning}
     This feature can cause permanent data loss.
     ::::
@@ -180,7 +180,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Provide an additional PEM-encoded certificate for {{fleet}} Server SSL/TLS verification. Default: none.*
 
-    Specifies the certificate used to verify the SSL/TLS connection to the {{fleet}} Server. We typically recommend configuring this at the {{fleet}} level, so it applies consistently across {{elastic-agent}} and all integrations, rather than setting it specifically for {{elastic-endpoint}}.
+    Specifies the certificate used to verify the SSL/TLS connection to the {{fleet}} Server. We typically recommend configuring this at the {{fleet}} level, so it applies consistently across {{agent}} and all integrations, rather than setting it specifically for {{elastic-endpoint}}.
 
 
 `[linux,mac,windows].advanced.artifacts.user.proxy_disable`
@@ -196,7 +196,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Override all other proxy settings for use when downloading user artifact updates from {{fleet}} Server. Default: none.*
 
-    Use this setting to configure a proxy server when communicating with the {{fleet}} Server. We typically recommend [configuring proxy settings at the {{elastic-agent}} level](/reference/fleet/fleet-agent-proxy-support.md) to ensure consistent and centralized proxy handling.
+    Use this setting to configure a proxy server when communicating with the {{fleet}} Server. We typically recommend [configuring proxy settings at the {{agent}} level](/reference/fleet/fleet-agent-proxy-support.md) to ensure consistent and centralized proxy handling.
 
 
 `[linux,mac,windows].advanced.capture_command_line`
@@ -226,12 +226,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Enable diagnostic features. Default: `true`.*
 
-    Use this setting to disable diagnostic mode, which tests new protections and rules to ensure low false positive rates upon production release. The results of this testing are only collected if telemetry is enabled. 
-    
+    Use this setting to disable diagnostic mode, which tests new protections and rules to ensure low false positive rates upon production release. The results of this testing are only collected if telemetry is enabled.
+
     ::::{note}
     We recommend keeping diagnostic mode enabled to help improve product quality and ensure new protections perform effectively in your environment before they’re released.
     ::::
-  
+
 
 `windows.advanced.diagnostic.rollback_telemetry_enabled`
 :   Added in 8.1.0.
@@ -246,9 +246,9 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Provide a comma-delimited set of key=value pairs of values to add into all documents. Each key must begin with `Custom`. An example is `Custom.key=value1,Custom.key2=value2`. Default: none.*
 
-    Use this setting to add custom key/value pairs into all {{elastic-endpoint}} documents. It works similarly to the [**Custom fields** {{elastic-agent}} policy configuration](/reference/fleet/agent-policy.md#add-custom-fields), which {{elastic-endpoint}} doesn't support.
+    Use this setting to add custom key/value pairs into all {{elastic-endpoint}} documents. It works similarly to the [**Custom fields** {{agent}} policy configuration](/reference/fleet/agent-policy.md#add-custom-fields), which {{elastic-endpoint}} doesn't support.
 
-    
+
 `[linux,mac,windows].advanced.elasticsearch.delay`
 :   Added in 7.9.0.
 
@@ -319,7 +319,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable ETW API events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable API event collection, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling API event collection may break other {{elastic-endpoint}} features.
     :::
@@ -515,7 +515,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Enable kernel image load events. `false` disables them even if they are needed by other features. Default: `true`.*
 
-    Use this setting to disable image load events, even if other {{elastic-endpoint}} features require them. 
+    Use this setting to disable image load events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
     Disabling image load events may break other {{elastic-endpoint}} features.
@@ -597,7 +597,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Provide a comma-separated list of additional filesystems for fanotify subsystem to monitor. Names should be as they appear in `/proc/filesystems`, for example `jfs,ufs,ramfs`. When `linux.advanced.fanotify.ignore_unknown_filesystems` is `false`, this option is ignored. Warning: it's recommended to avoid network backed filesystems. Default: none.*
 
-    Use this setting to specify filesystems for fanotify to monitor for malware. Filesystems that aren't monitored won't generate malware alerts. 
+    Use this setting to specify filesystems for fanotify to monitor for malware. Filesystems that aren't monitored won't generate malware alerts.
 
 
 `linux.advanced.fanotify.seccomp_restricted`
@@ -631,7 +631,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Enable self-protection hardening on macOS. Default: `true`.*
 
-    Use this setting to enable self-protection on macOS. This hardens {{elastic-endpoint}} and {{elastic-agent}} processes, files, and services against basic tampering attempts. This is distinct from [tamper protection](https://www.elastic.co/docs/solutions/security/configure-elastic-defend/prevent-elastic-agent-uninstallation).
+    Use this setting to enable self-protection on macOS. This hardens {{elastic-endpoint}} and {{agent}} processes, files, and services against basic tampering attempts. This is distinct from [tamper protection](https://www.elastic.co/docs/solutions/security/configure-elastic-defend/prevent-elastic-agent-uninstallation).
 
 
 `linux.advanced.host_isolation.allowed`
@@ -646,7 +646,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 :   Added in 8.11.0.
 
     *Collect and send image load events to {{es}}. Warning: this can lead to very high data volumes; use of event filters to drop unwanted events is strongly recommended. Default: `false`.*
-    
+
     If malicious behavior protection is enabled, {{elastic-endpoint}} by default monitors for image load events, but doesn't emit them to {{es}} due to high data volume. Use this setting to allow those events to be emitted to {{es}}, regardless of whether malicious behavior protection is enabled.
 
 
@@ -675,7 +675,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Control whether to connect to the kernel driver. Warning: disabling this will break most features. Default: `true`.*
 
-    On macOS, {{elastic-endpoint}} uses a system extension, and on Windows, a kernel driver. Use this setting to disable {{elastic-endpoint}}'s attempt to connect to those subsystems. 
+    On macOS, {{elastic-endpoint}} uses a system extension, and on Windows, a kernel driver. Use this setting to disable {{elastic-endpoint}}'s attempt to connect to those subsystems.
 
     :::{warning}
     Disabling the connection will break many {{elastic-endpoint}} features.
@@ -718,7 +718,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel file write events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable kernel file write events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling file write events may break other {{elastic-endpoint}} features.
     :::
@@ -742,7 +742,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel network events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable kernel network events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling network events may break other {{elastic-endpoint}} features.
     :::
@@ -754,7 +754,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable the network content filter, which will enable network eventing. Warning: host isolation will fail if this is disabled. Default: `true`.*
 
     Use this setting to enable or disable the macOS network content filter.
-    
+
     :::{warning}
     Disabling the network content filter will break other {{elastic-endpoint}} features.
     :::
@@ -766,7 +766,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable the network packet filter. Warning: host isolation will fail if this is disabled. Default: `true`.*
 
     Use this setting to enable or disable the macOS network packet filter.
-    
+
     :::{warning}
     Disabling the network packet filter will break other {{elastic-endpoint}} features.
     :::
@@ -802,7 +802,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel process events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable kernel process events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling process events may break other {{elastic-endpoint}} features.
     :::
@@ -814,7 +814,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable process and thread handle events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable process and thread handle events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling process and thread handle events may break other {{elastic-endpoint}} features.
     :::
@@ -826,7 +826,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel registry events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable registry modification events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling registry modification events may break other {{elastic-endpoint}} features.
     :::
@@ -844,7 +844,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel sync image load events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable synchronous image load events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling synchronous image load events may break other {{elastic-endpoint}} features.
     :::
@@ -929,7 +929,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Enable scanning for malicious memory regions as a part of memory protection. Default: `true`.*
 
-    Use this setting to disable memory scanning using YARA rules, even if Memory Threat protection is enabled. On Windows, Memory Threat protection will remain effective even without this scan. On macOS and Linux, disabling this scan will effectively disable Memory Threat protection. 
+    Use this setting to disable memory scanning using YARA rules, even if Memory Threat protection is enabled. On Windows, Memory Threat protection will remain effective even without this scan. On macOS and Linux, disabling this scan will effectively disable Memory Threat protection.
 
 
 `[linux,mac,windows].advanced.memory_protection.memory_scan_collect_sample`

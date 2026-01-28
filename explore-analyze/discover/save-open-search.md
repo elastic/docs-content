@@ -7,19 +7,24 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Save Discover sessions to reuse searches, queries, and configured views. Add saved searches to dashboards or use them as a foundation for building visualizations.
 ---
 
-# Discover sessions: Save a search for reuse [save-open-search]
+# Save a search for reuse [save-open-search]
 
-A saved Discover session is a convenient way to reuse a search that you’ve created in **Discover**. Discover sessions are good for saving a configured view of Discover to use later or adding search results to a dashboard, and can also serve as a foundation for building visualizations.
+Saved **Discover** sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, duplicate, and manage Discover sessions.
+
+## Requirements [save-search-requirements]
+
+To save searches, you need **Create** and **Edit** permissions for the {{saved-objects-app}} feature in {{product.kibana}}. If you don't have these permissions, the **Save** button won't be visible. For more information, refer to [Read-only access](#discover-read-only-access).
 
 
-## Read-only access [discover-read-only-access]
+### Read-only access [discover-read-only-access]
 
 If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 :::{image} /explore-analyze/images/kibana-read-only-badge.png
-:alt: Example of Discover's read only access indicator in Kibana's header
+:alt: Example of Discover's read only access indicator in the {{product.kibana}} header
 :screenshot:
 :::
 

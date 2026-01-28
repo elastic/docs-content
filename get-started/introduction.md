@@ -12,7 +12,7 @@ navigation_title: Solutions
 
 # Solutions overview [introduction]
 
-Elastic offers three major search-powered solutions: {{es}}, Elastic {{observability}}, and {{elastic-sec}}—all built on an open source, extensible platform.
+Elastic offers three major search-powered solutions: {{es}}, Elastic {{observability}}, and {{elastic-sec}}—all built on an open source, extensible [platform](/get-started/the-stack.md).
 Whether you're building a search experience, monitoring your infrastructure, or securing your environment, there is a solution that is right for your business needs.
 
 | Your need | Recommended solution | Best for |
@@ -20,6 +20,10 @@ Whether you're building a search experience, monitoring your infrastructure, or 
 | Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/search.md)<br>• [Get started](/solutions/search/get-started.md)| Developers, architects, data engineers |
 | Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
 | Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
+
+:::{note}
+The core [{{es}} search capabilities](/solutions/search.md) are available across all deployment types, solutions, and project types. The [{{es}} solution](/solutions/elasticsearch-solution-project.md) adds UI tools on top of these capabilities to help you build search-powered applications faster.
+:::
 
 :::{tip}
 Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.

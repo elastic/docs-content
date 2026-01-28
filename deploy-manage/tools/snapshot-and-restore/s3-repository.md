@@ -233,7 +233,7 @@ The following settings are supported:
 `get_register_retry_delay`
 :   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Sets the time to wait before trying again if an attempt to read a [linearizable register](#repository-s3-linearizable-registers) fails. Defaults to `5s`.
 
-`unsafely_incompatible_with_s3_conditional_writes` {applies_to}`stack: ga 9.3`
+`unsafely_incompatible_with_s3_conditional_writes` {applies_to}`stack: ga 9.2.3+`
 :   (boolean) {{es}} uses AWS S3's support for conditional writes to protect against repository corruption. If your repository is based on a storage system which claims to be S3-compatible but does not accept conditional writes, set this setting to `true` to make {{es}} perform unconditional writes, bypassing the repository corruption protection, while you work with your storage supplier to address this incompatibility with AWS S3. Defaults to `false`.
 
 ::::{note}
@@ -405,11 +405,39 @@ $$$using-minio-with-elasticsearch$$$
 The performance, reliability, and durability of a MinIO-backed repository depend on the properties of the underlying infrastructure and on the details of your MinIO configuration. You must design your storage infrastructure and configure MinIO in a way that ensures your MinIO-backed repository has performance, reliability, and durability characteristics which match AWS S3 in order for it to be fully S3-compatible. If you need assistance with your MinIO configuration, please contact the MinIO support team.
 ::::
 
-Most storage systems can be configured to log the details of their interaction with {{es}}. If you are investigating a suspected incompatibility with AWS S3, it is usually simplest to collect these logs and provide them to the supplier of your storage system for further analysis. If the incompatibility is not clear from the logs emitted by the storage system, configure {{es}} to log every request it makes to the S3 API by [setting the logging level](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) of the `com.amazonaws.request` logger to `DEBUG`.
+### Investigating incompatibilities
+
+Most storage systems can be configured to log the details of their interaction with {{es}}. If you are investigating a suspected incompatibility with AWS S3, it is usually simplest to collect these logs from your storage system and provide them to the supplier of your storage system for further analysis. Contact the supplier of your storage system for advice on how to configure it to log requests sufficiently verbosely for this troubleshooting.
+
+If the incompatibility is not clear from the logs emitted by the storage system, you can enable more granular logging:
+
+::::::{applies-switch}
+
+:::::{applies-item} { "stack": "ga 9.1+" }
+
+::::{warning}
+In {{es}} versions **9.1.0 to 9.1.8**, and **9.2.0 to 9.2.2**, it is not possible to obtain more detailed logs from the AWS Java SDK. Use the logs from the storage system itself, or upgrade to a later version of {{es}}.
+::::
+
+Configure {{es}} to log every request it makes to the S3 API by [setting the logging level](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) of the `software.amazon.awssdk.request` logger to `DEBUG`:
+
+```console
+PUT /_cluster/settings
+{
+  "persistent": {
+    "logger.software.amazon.awssdk.request": "DEBUG"
+  }
+}
+```
 
 To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is enabled. To do so, you must explicitly enable it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
 
-Once enabled, you can configure the `com.amazonaws.request` logger:
+Collect the {{es}} logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. Refer to [Logging with the AWS S3 SDK for Java 2.x](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/logging-slf4j.html) for further information, including details about other loggers that can be used to obtain even more verbose logs. When configuring other loggers, note that {{es}} configures the AWS Java SDK to use the `ApacheHttpClient` synchronous HTTP client.
+
+:::::
+
+:::::{applies-item} { "stack": "ga =9.0" }
+Configure {{es}} to log every request it makes to the S3 API by [setting the logging level](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) of the `com.amazonaws.request` logger to `DEBUG`:
 
 ```console
 PUT /_cluster/settings
@@ -420,11 +448,31 @@ PUT /_cluster/settings
 }
 ```
 
-Collect the {{es}} logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
+To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is activated. To do so, you must explicitly configure it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
+
+Collect the {{es}} logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. Refer to [Logging AWS SDK for Java Calls](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) for further information, including details about other loggers that can be used to obtain even more verbose logs.
+:::::
+
+::::::
+
+When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and deactivate insecure network trace logging again. Refer to [Logger](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
 
 
 ## Linearizable register implementation [repository-s3-linearizable-registers]
 
-The linearizable register implementation for S3 repositories is based on the strongly consistent semantics of the multipart upload API. {{es}} first creates a multipart upload to indicate its intention to perform a linearizable register operation. {{es}} then lists and cancels all other multipart uploads for the same register. {{es}} then attempts to complete the upload. If the upload completes successfully then the compare-and-exchange operation was atomic.
+### Conditional writes
+```{applies_to}
+stack: ga 9.3
+```
 
+From 9.3.0 onwards the linearizable register implementation for S3 repositories is based on [S3's conditional writes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html) using the `If-None-Match` and `If-Match` request headers.
 
+If your storage does not support conditional writes then it is not fully S3-compatible. However, if this is its only deviation in behavior from AWS S3 then it will work correctly with {{es}} as long as its multipart upload APIs have strongly consistent semantics, as described below. Future versions of {{es}} may remove this lenient behavior and require your storage to support conditional writes. Contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
+
+### Multipart uploads
+
+```{applies_to}
+stack: deprecated 9.3
+```
+
+In versions before 9.3.0, or if your storage does not support conditional writes, the linearizable register implementation for S3 repositories is based on the strongly consistent semantics of the multipart upload APIs. {{es}} first creates a multipart upload to indicate its intention to perform a linearizable register operation. {{es}} then lists and cancels all other multipart uploads for the same register. {{es}} then attempts to complete the upload. If the upload completes successfully then the compare-and-exchange operation was atomic.

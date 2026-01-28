@@ -1,11 +1,11 @@
 ---
 applies_to:
   serverless: ga
-  stack: preview 9.1, ga 9.2
+  stack: preview =9.1, ga 9.2+
 ---
-# Extract fields [streams-extract-fields]
+# Process documents [streams-extract-fields]
 
-After selecting a stream, use the **Processing** tab to add [processors](#streams-extract-processors) that extract meaningful fields from your log messages. These fields let you filter and analyze your data more effectively.
+After selecting a stream, use the **Processing** tab to add [processors](#streams-extract-processors) and [conditions](#streams-add-processor-conditions) that modify your documents and extract meaningful fields, so you can filter and analyze your data more effectively.
 
 For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
@@ -14,7 +14,7 @@ The **Processing** tab also:
 - Simulates your processors and provides an immediate [preview](#streams-preview-changes) that's tested end to end
 - Flags indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes
 
-After creating your processor, all future data ingested into the stream is parsed into structured fields accordingly.
+After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
 
 :::{note}
 Applied changes aren't retroactive and only affect *future ingested data*.
@@ -24,12 +24,27 @@ Applied changes aren't retroactive and only affect *future ingested data*.
 
 Streams supports the following processors:
 
+- [**Drop**](./extract/drop.md): Drops the document without raising any errors. This is useful to prevent the document from getting indexed based on a condition.
+- [**Remove**](./extract/remove.md): Removes existing fields.
 - [**Date**](./extract/date.md): Converts date strings into timestamps, with options for timezone, locale, and output formatting.
+- [**Convert**](./extract/convert.md): Converts a field in the currently ingested document to a different type, such as converting a string to an integer.
+- [**Replace**](./extract/replace.md): Replaces parts of a string field according to a regular expression pattern with a replacement string.
 - [**Dissect**](./extract/dissect.md): Extracts fields from structured log messages using defined delimiters instead of patterns, making it faster than Grok and ideal for consistently formatted logs.
-- [**Grok**](./extract/grok.md): Extracts fields from unstructured log messages using predefined or custom patterns, supports multiple match attempts in sequence, and can automatically generate patterns with an [LLM connector](../../../security/ai/set-up-connectors-for-large-language-models-llm.md).
+- [**Grok**](./extract/grok.md): Extracts fields from unstructured log messages using predefined or custom patterns, supports multiple match attempts in sequence, and can automatically generate patterns with an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 - [**Set**](./extract/set.md): Assigns a specific value to a field, creating the field if it doesn’t exist or overwriting its value if it does.
+- [**Math**](./extract/math.md): Evaluates arithmetic or logical expressions.
 - [**Rename**](./extract/rename.md): Changes the name of a field, moving its value to a new field name and removing the original.
 - [**Append**](./extract/append.md): Adds a value to an existing array field, or creates the field as an array if it doesn’t exist.
+
+### Processor limitations and inconsistencies [streams-processor-inconsistencies]
+
+Streams exposes a Streamlang configuration, but internally it relies on {{es}} ingest pipeline processors and ES|QL. Streamlang doesn’t always have 1:1 parity with the ingest processors because it needs to support options that work in both ingest pipelines and ES|QL. In most cases, you won’t need to worry about these details, but the underlying design decisions still affect the UI and available configuration options. The following are some limitations and inconsistencies when using Streamlang processors:
+
+- **Consistently typed fields**: ES|QL requires one consistent type per column, so workflows that produce mixed types across documents won’t transpile.
+- **Conversion of types**: ES|QL and ingest pipelines accept different conversion combinations and strictness (especially for strings), so `convert` can behave differently across targets.
+- **Multi-value commands/functions**: Fields can contain one or multiple values. ES|QL and ingest processors don’t always handle these cases the same way. For example, grok in ES|QL handles multiple values automatically, while the grok processor does not
+- **Conditional execution**: ES|QL's enforced table shape limits conditional casting, parsing, and wildcard field operations that ingest pipelines can do per-document.
+- **Arrays of objects / flattening**: Ingest pipelines preserve nested JSON arrays, while ES|QL flattens to columns, so operations like rename and delete on parent objects can differ or fail.
 
 ## Add a processor [streams-add-processors]
 
@@ -49,7 +64,7 @@ Refer to individual [supported processors](#streams-extract-processors) for more
 Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
 :::
 
-### Add conditions to processors [streams-add-processor-conditions]
+### Add conditions [streams-add-processor-conditions]
 
 You can add conditions to processors so they only run on data that meets those conditions. Each condition is a boolean expression that's evaluated for every document.
 
@@ -76,6 +91,38 @@ Streams processors support the following comparators:
 - not exists
 :::
 
+After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
+
+### Editing modes [streams-editing-modes]
+
+The Streams processing UI provides an [interactive mode](#streams-editing-interactive-mode) and a [YAML mode](#streams-editing-yaml-mode) for editing processors and conditions.
+
+To switch modes, select the appropriate tab from the top of the processing page.
+
+:::{image} ../../../images/streams-editing-modes.png
+:screenshot:
+:::
+
+Streams defaults to interactive mode unless the configuration can't be represented in interactive mode (for example, when nesting levels are too deep).
+
+#### Interactive mode [streams-editing-interactive-mode]
+
+**Interactive** mode provides a form-based interface for creating and editing processors. This mode works best for:
+
+- Users who prefer a guided, visual approach
+- Configurations that don't require deeply nested conditions
+
+#### YAML mode [streams-editing-yaml-mode]
+```{applies_to}
+stack: ga 9.3+
+```
+
+**YAML** mode provides a code editor for writing Streamlang directly. This mode works best for:
+
+- Users who prefer working with code
+- Advanced configurations with complex or deeply nested conditions
+
+
 ### Preview changes [streams-preview-changes]
 
 After you create processors, the **Data preview** tab simulates processor results with additional filtering options depending on the outcome of the simulation.
@@ -93,9 +140,9 @@ After making sure everything in the **Data preview** tab is correct, select **Sa
 
 If you edit the stream after saving your changes, keep the following in mind:
 
-- Adding processors to the end of the list will work as expected.
-- Editing or reordering existing processors can cause inaccurate results. Because the pipeline may have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
-- Adding a new processor and moving it before an existing processor may cause inaccurate results. **Data preview** only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
+- Adding processors to the end of the list works as expected.
+- Editing or reordering existing processors can cause inaccurate results. Because the pipeline might have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
+- Adding a new processor and moving it before an existing processor can cause inaccurate results. **Data preview** only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
 
 ### Ignore failures [streams-ignore-failures]
 
@@ -122,7 +169,7 @@ Selecting **Failed** shows the documents that weren't parsed correctly:
 :screenshot:
 :::
 
-Failures are displayed at the bottom of the process editor. Some failures may require fixes, while others simply serve as a warning:
+Streams displays failures at the bottom of the process editor. Some failures might require fixes, while others serve as a warning:
 
 :::{image} ../../../images/logs-streams-processor-failures.png
 :screenshot:
@@ -179,10 +226,10 @@ Streams then creates and manages the `<data_stream_name>@stream.processing` pipe
 ### User interaction with pipelines
 
 Do not manually modify the `<data_stream_name>@stream.processing` pipeline created by Streams.
-You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor created by Streams may cause unexpected behavior.
+You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor created by Streams might cause unexpected behavior.
 
 ## Known limitations [streams-known-limitations]
 
 - Streams does not support all processors. More processors will be added in future versions.
-- The data preview simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them. Streams will allow proper simulations using original documents in a future version.
+- The data preview simulation might not accurately reflect the changes to the existing data when editing existing processors or re-ordering them. Streams will allow proper simulations using original documents in a future version.
 - Streams can't properly handle arrays. While it supports basic actions like appending or renaming, it can't access individual array elements. For classic streams, the workaround is to use the [manual pipeline configuration](./extract/manual-pipeline-configuration.md) that supports Painless scripting and all ingest processors.

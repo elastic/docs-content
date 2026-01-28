@@ -1,10 +1,6 @@
 ---
 applies_to:
-  deployment:
-    ece:
-    ess:
-    eck:
-    self:
+  stack: all
 ---
 
 # Role structure

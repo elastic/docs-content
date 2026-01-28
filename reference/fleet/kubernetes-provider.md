@@ -1,12 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Kubernetes Provider [kubernetes-provider]
+# Kubernetes provider [kubernetes-provider]
 
 Provides inventory information from Kubernetes.
 

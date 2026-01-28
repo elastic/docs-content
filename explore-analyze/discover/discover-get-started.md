@@ -6,21 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Step-by-step tutorial for exploring data with Discover by selecting data views, filtering documents, analyzing fields, and creating visualizations using sample or your own data.
 ---
 
 # Explore fields and data with Discover [discover-get-started]
 
-Learn how to use **Discover** to:
-
-* **Select** and **filter** your {{es}} data.
-* **Explore** the fields and content of your data in depth.
-* **Present** your findings in a visualization.
-
-**Prerequisites:**
-
-* If you don’t already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on Elastic Cloud.
-* You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
-* You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
+Learn how to explore your {{product.elasticsearch}} data using **Discover**. This tutorial walks you through selecting {{data-sources}}, filtering documents, analyzing field structures, and creating visualizations from your data.
 
 ## Context-aware data exploration [context-aware-discover]
 
@@ -207,12 +198,15 @@ You can use **Discover** to compare and diff the field values of multiple result
 5. Exit the comparison view at any time using the **Exit comparison mode** button.
 
 
-### Copy results as text or JSON [copy-row-content]
+### Copy results as text, JSON, or Markdown [copy-row-content]
 
 You can quickly copy the content currently displayed in the table for one or several results to your clipboard.
 
-1. Select the results you want to copy.
-2. Open the **Selected** menu in the table toolbar, and select **Copy selection as text** or **Copy documents as JSON**.
+1. Select the rows you want to copy.
+2. Open the **Selected** menu in the table toolbar, and select one of the available formats:
+   - **Copy selection as text**.
+   - **Copy documents as JSON**, or **Copy results as JSON** if you're in {{esql}} mode.
+   - {applies_to}`stack: ga 9.3+` **Copy selection as Markdown**: Selected results are copied as a Markdown table.
 
 The content is copied to your clipboard in the selected format. Fields that are not currently added to the table are ignored.
 
@@ -300,10 +294,35 @@ If you've entered a KQL or Lucene query in the default mode of Discover, it auto
 In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
-{applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+:applies_to: stack: ga 9.1+
+Partial results appear when an {{esql}} query:
+- times out. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+- {applies_to}`stack: ga 9.3+` is canceled.
 :::
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
+
+### Cancel a running query [cancel-query-in-discover]
+
+When you cancel a running query in **Discover**, you might still see some results depending on which version you're using.
+
+:::::{applies-switch}
+
+::::{applies-item} { serverless:, stack: ga 9.3+ }
+Select the **Cancel** button that appears while the query executes. **Discover** stops the search and displays the partial results collected up to that point.
+::::
+
+::::{applies-item} stack: ga 9.0-9.2
+Select the **Cancel** button that appears while the query executes. **Discover** stops the search and shows an empty results table.
+::::
+
+:::::
+
+This behavior applies to all query types (KQL, Lucene, and {{esql}}).
+
+:::{tip}
+For long-running queries, you can also [send the query to the background](background-search.md) instead of canceling it, allowing it to complete while you continue working.
+:::
 
 ### Run multiple explorations with tabs
 ```{applies_to}
@@ -334,7 +353,7 @@ To manage and organize your tabs, you can:
   :::{tip}
   If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
   :::
-- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs bar menu** icon located at the end of the tab bar.
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs menu** icon located at the end of the tab bar.
 
 To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 

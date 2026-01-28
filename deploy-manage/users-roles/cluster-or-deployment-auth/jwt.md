@@ -6,11 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/jwt-auth-realm.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: cloud-hosted
   - id: cloud-enterprise

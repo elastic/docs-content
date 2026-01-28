@@ -69,7 +69,7 @@ You can store your Stack Monitoring logs and metrics in the following ways:
 ### Availability
 
 #### AutoOps [ao-availability]
-AutoOps lives in {{ecloud}}, so you need to have an {{ecloud}} account to access it. Once logged in, you can [access](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) AutoOps from your hosted deployments.
+AutoOps lives in {{ecloud}}, so you need to have an {{ecloud}} account to access it. Once logged in, you can access AutoOps from your [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md), [{{serverless-short}} projects](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md), or [connect your self-managed clusters](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) to it.
 
 #### Stack Monitoring [sm-availability]
 Once setup is complete, you can access the Stack Monitoring UI inside {{kib}}, where you can monitor all your {{stack}} components.
