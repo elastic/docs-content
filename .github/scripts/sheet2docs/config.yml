@@ -22,7 +22,6 @@ source:
 # Column configuration
 # Define which columns to include in the CSV and optionally rename them
 columns:
-  - source: "Type"
   - source: "Author"
   - source: "Name"
   - source: "ID"
