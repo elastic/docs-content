@@ -92,7 +92,7 @@ steps:
 For use cases that require management tasks workflows can interact with {{agent-builder}} programmatically using the generic `kibana.request` step. This allows you to perform management actions that aren't covered by the `ai.agent` step, such as listing available agents.
 
 1. Add a new step with the type `kibana.request`.
-2. Set the method (e.g., `GET`, `POST`).
+2. Set the method (for example: `GET`, `POST`).
 3. Set the `path` to the specific [Agent Builder API endpoint](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
 ### Example: List available agents
