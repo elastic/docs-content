@@ -579,7 +579,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `mac.advanced.events.script_max_size`
 :   Added in 9.3.0.
 
-    *Maximum size of scripts captured by `mac.advanced.events.script_capture`in bytes. Default `1024`.`
+    *Maximum size of scripts captured by `mac.advanced.events.script_capture`in bytes. Default `1024`.*
 
 
 `windows.advanced.events.security.event_disabled`
