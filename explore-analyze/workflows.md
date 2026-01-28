@@ -76,8 +76,9 @@ inputs:
 # ═══════════════════════════════════════════════════════════════
 triggers:
   - type: manual                      # User clicks Run button
-  # - type: schedule                  # Runs on a schedule
-  #   cron: "0 9 * * *"
+  # - type: scheduled                  # Runs on a schedule
+  #   with:
+        every: 1d
   # - type: alert                     # Triggered by an alert
 
 # ═══════════════════════════════════════════════════════════════
