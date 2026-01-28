@@ -409,6 +409,12 @@ toc:
               - file: workflows/triggers/scheduled-triggers.md
               - file: workflows/triggers/alert-triggers.md
           - file: workflows/steps.md
+            children:
+              - file: workflows/steps/flow-control-steps.md
+                children:
+                  - file: workflows/steps/if.md
+                  - file: workflows/steps/foreach.md
+                  - file: workflows/steps/wait.md
       - file: workflows/data.md
         children:
           - file: workflows/data/templating.md
