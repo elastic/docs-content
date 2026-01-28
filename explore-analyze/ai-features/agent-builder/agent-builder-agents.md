@@ -33,9 +33,9 @@ You can also use pre-configured [built-in agents](builtin-agents-reference.md) t
 
 {{agent-builder}} includes pre-configured built-in agents optimized for common use cases:
 
-- **Elastic AI Agent**: The default general-purpose agent with access to all platform core tools
-- **Observability Agent**: Specialized for logs, metrics, and traces
-- **Threat Hunting Agent**: Specialized for security alert analysis
+- **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent with access to all platform core tools
+- **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
+- **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
 
 Built-in agents cannot be modified or deleted. To customize one, you can clone it and create a custom agent.
 
