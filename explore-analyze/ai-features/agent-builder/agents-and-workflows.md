@@ -24,8 +24,8 @@ This guide explains how to call an agent from a workflow. If you want to trigger
 
 There are two ways to integrate agents into your workflows:
 
-* **Use `ai.agent` for Reasoning:** Use this step to send a natural language prompt to the agent and receive a text response. This is the standard way to "chat" with the agent inside a workflow.
-* **Use `kibana.request` for Administration:** Use this generic API step for management tasks, such as listing all available agents, updating agent configurations, or deleting sessions.
+* **The `ai.agent` step:** A simplified shorthand step for common operations. Use this when you want to send a prompt to an agent and receive a text response without complex configuration.
+* **The `kibana.request` step:** A generic step that provides full access to the {{agent-builder}} APIs. Use this for advanced use cases, such as listing available agents or managing agent sessions programmatically.
 
 ## Prerequisites
 
@@ -89,7 +89,7 @@ steps:
 
 
 ## Use `kibana.request` step
-For use cases that require management tasks workflows can interact with {{agent-builder}} programmatically using the generic `kibana.request` step. This allows you to perform management actions that aren't covered by the `ai.agent` step, such as listing available agents.
+Use the generic `kibana.request` step to interact with {{agent-builder}} APIs programmatically.
 
 1. Add a new step with the type `kibana.request`.
 2. Set the method (for example: `GET`, `POST`).
