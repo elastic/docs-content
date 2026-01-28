@@ -178,7 +178,7 @@ applies_to:
 ```{applies_to}
 deployment:
   ech: ga
-  serverless: ga
+serverless: ga
 ```
 
 [...]
@@ -195,9 +195,6 @@ Just the syntax slightly differs so that it stays inline: `` {applies_to}`ech: g
 
 When your content has requirements that span multiple [dimensions](/contribute-docs/how-to/cumulative-docs/guidelines.md), choose one dimension as the primary for the page-level `applies_to` frontmatter, and document secondary dimension information as requirements, prerequisites, or in tagged sections.
 
-:::{tip}
-Use only one dimension at the page level. If you need to communicate information from another dimension, add it as requirements in prose, prerequisites sections, or use section-level or inline `applies_to` badges for specific content that varies.
-:::
 
 For example, a page about a Kibana feature (Stack/Serverless dimension) might have deployment-specific configuration requirements. Use the Stack/Serverless dimension at the page level, and document deployment-specific information in prose or tagged sections:
 
@@ -443,7 +440,7 @@ For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beat
 ```markdown
 * `terminate`: exits the template without falling back to the default value
   and without causing an error. It takes a single string argument that is
-  logged in debug logging. {applies_to}`stack: ga 9.1.2+!` {applies_to}`stack: ga 9.0.6+!`
+  logged in debug logging. {applies_to}`stack: ga 9.0+`
 ```
 ::::
 :::::
