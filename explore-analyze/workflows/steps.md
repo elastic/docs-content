@@ -48,6 +48,12 @@ AI steps introduce reasoning and language understanding into workflows. Use AI s
 
 * Summarize or interpret information using a large language model
 * Extract key insights from unstructured data
-* Implement an agentic step where an AI agent is configured with a goal, access to tools, and autonomy to act
+* Send prompts to an AI connector using the `ai.prompt` step
+* Call a built-in or custom Elastic AI agent using the `ai.agent` step
+* Integrate with LLM providers such as OpenAI and Gemini
 
-You can define the instructions or prompts that guide the agent, the tools it has access to, and the expected outcome. You can also specify which large language model powers the step.
+### {{agent-builder}} integration
+
+In addition to calling Elastic AI agents from within workflows, agents built with {{agent-builder}} can also trigger workflows. To enable this, create a custom workflow tool type and assign it to an agent. The agent can then trigger the workflow from a conversation.
+
+Refer to [](/explore-analyze/ai-features/agent-builder/tools/workflow-tools.md) for more information.
