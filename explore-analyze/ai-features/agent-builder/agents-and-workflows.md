@@ -40,16 +40,12 @@ Before you begin:
 
 ## Call an `ai.agent` from a workflow
 
-The `ai.agent` step is the standard method for calling an agent. It abstracts the API complexity, allowing you to simply send a prompt and receive a response.
+Follow these steps to invoke an `ai.agent` as a step within a workflow. This allows you to use the agent's reasoning capabilities to process data and return a summary. If using the example below, ensure the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
 1.  Open the **Workflows** editor and create or edit a workflow.
 2.  Add a new step with the type `ai.agent`.
 3.  Configure the **`agent_id`** parameter with the unique identifier of the target agent.
 4.  Configure the **`message`** parameter with your natural language prompt.
-
-% Follow these steps to invoke an AI agent as a step within a workflow. This allows you to use the agent's reasoning capabilities to process data and return a summary.
-
-% * (Optional) If using the example below, ensure the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
 ### Example: Analyze flight delays
 The following example demonstrates a workflow that searches for flight delays and uses the **Elastic AI Agent** to summarize the impact.
@@ -93,12 +89,10 @@ steps:
 
 
 ## Call Agent Builder APIs
-For advanced use cases that require management tasks (like listing agents) or parameters not exposed by the `ai.agent` step, use the generic `kibana.request` step.
+For use cases that require management tasks workflows can interact with {{agent-builder}} programmatically using the generic `kibana.request` step. This allows you to perform management actions that aren't covered by the `ai.agent` step, such as listing available agents.
 
 1. Add a new step with the type `kibana.request`.
-
 2. Set the method (e.g., `GET`, `POST`).
-
 3. Set the `path` to the specific [Agent Builder API endpoint](TODO).
 
 ### Example: List available agents
