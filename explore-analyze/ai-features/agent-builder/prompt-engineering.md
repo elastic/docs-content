@@ -43,7 +43,7 @@ The prompt serves as the agent's operating manual. Follow these guidelines to mi
 Avoid "over-prompting" with excessive text. High-reasoning models are capable of inferring intent from concise, well-structured instructions.
 
 * **Begin with clarity**: Use unambiguous instructions specific to your primary tasks. Only add granular, step-by-step logic if the model fails a specific use case during testing.
-* **Consult provider guides**: If your agent relies on a specific model family (e.g., Anthropic Claude or OpenAI GPT), use their specific architecture optimizations. For example, certain models are sensitive to specific keywords when extended thinking features are enabled.
+* **Consult provider guides**: If your agent relies on a specific model family (for example Anthropic Claude or OpenAI GPT), use their specific architecture optimizations. For example, certain models are sensitive to specific keywords when extended thinking features are enabled.
 * **Benchmark changes**: Treat prompts like code. Version your prompts and measure performance against a "golden dataset"—a collection of verified query-and-response pairs. Avoid modifying prompts based on a single failure; ensure changes improve aggregate performance.
 
 ### Structure and scope
@@ -54,31 +54,7 @@ Avoid prompts that attempt to handle multiple unrelated tasks. If a prompt becom
 
 | Task requirement | Recommended approach |
 | :--- | :--- |
-| **High accuracy & sequential steps** | **Workflow**: Use a Workflow for logic that must be executed in a specific order (e.g., Step 1 must complete before Step 2). Hard-coded logic is more reliable than probabilistic reasoning. |
-| **Independent, complex tasks** | **Specialized Agents**: Break tasks into sub-agents to keep the context window focused and reduce tool-selection errors. |
-| **Open-ended discovery** | **Agent**: Use a standard agent when the path to a solution requires dynamic reasoning or
-
-## Prompting guidelines
-
-The prompt serves as the agent's operating manual. Follow these guidelines to minimize hallucinations and maximize tool accuracy.
-
-### Start light and iterate
-
-Avoid "over-prompting" with excessive text. High-reasoning models are capable of inferring intent from concise, well-structured instructions.
-
-* **Begin with clarity**: Use unambiguous instructions specific to your primary tasks. Only add granular, step-by-step logic if the model fails a specific use case during testing.
-* **Consult provider guides**: If your agent relies on a specific model family (e.g., Anthropic Claude or OpenAI GPT), use their specific architecture optimizations. For example, certain models are sensitive to specific keywords when extended thinking features are enabled.
-* **Benchmark changes**: Treat prompts like code. Version your prompts and measure performance against a "golden dataset"—a collection of verified query-and-response pairs. Avoid modifying prompts based on a single failure; ensure changes improve aggregate performance.
-
-### Structure and scope
-
-Avoid prompts that attempt to handle multiple unrelated tasks. If a prompt becomes difficult to manage or the agent fails to follow sequences, consider adjusting your architecture.
-
-#### Choose the right tool: Agent vs. Workflow
-
-| Task requirement | Recommended approach |
-| :--- | :--- |
-| **High accuracy & sequential steps** | **Workflow**: Use a Workflow for logic that must be executed in a specific order (e.g., Step 1 must complete before Step 2). Hard-coded logic is more reliable than probabilistic reasoning. |
+| **High accuracy & sequential steps** | **Workflow**: Use a Workflow for logic that must be executed in a specific order (for example Step 1 must complete before Step 2). Hard-coded logic is more reliable than probabilistic reasoning. |
 | **Independent, complex tasks** | **Specialized Agents**: Break tasks into sub-agents to keep the context window focused and reduce tool-selection errors. |
 | **Open-ended discovery** | **Agent**: Use a standard agent when the path to a solution requires dynamic reasoning or varied data exploration. |
 
