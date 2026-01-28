@@ -184,9 +184,12 @@ toc:
           - file: ai-features/agent-builder/tools.md
             children:
               - file: ai-features/agent-builder/tools/builtin-tools-reference.md
-              - file: ai-features/agent-builder/tools/esql-tools.md
-              - file: ai-features/agent-builder/tools/index-search-tools.md
-              - file: ai-features/agent-builder/tools/mcp-tools.md
+              - file: ai-features/agent-builder/tools/custom-tools.md
+                children:
+                  - file: ai-features/agent-builder/tools/esql-tools.md
+                  - file: ai-features/agent-builder/tools/index-search-tools.md
+                  - file: ai-features/agent-builder/tools/mcp-tools.md
+                  - file: ai-features/agent-builder/tools/workflow-tools.md
           - file: ai-features/agent-builder/programmatic-access.md
             children:
                - file: ai-features/agent-builder/kibana-api.md
@@ -250,11 +253,11 @@ toc:
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
-          - hidden: visualize/charts/area-charts.md
-          - hidden: visualize/charts/bar-charts.md
-          - hidden: visualize/charts/line-charts.md
-          - hidden: visualize/charts/metric-charts.md
-          - hidden: visualize/charts/tables.md
+          - file: visualize/charts/area-charts.md
+          - file: visualize/charts/bar-charts.md
+          - file: visualize/charts/line-charts.md
+          - file: visualize/charts/metric-charts.md
+          - file: visualize/charts/tables.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
