@@ -32,7 +32,7 @@ Refer to [](/explore-analyze/workflows/steps/action-steps.md) for more informati
 
 ## Flow control steps
 
-Flow control steps shape how a workflow moves. They control the order, structure, and branching logic of execution. This includes:
+Flow control steps define how a workflow runs. They control the order, structure, and branching logic of execution. This includes:
 
 * **Conditional logic**: Execute certain steps only when conditions are met
 * **Pauses and waits**: Introduce delays or time-based holds
@@ -47,7 +47,7 @@ These steps make workflows dynamic and responsive, allowing them to adapt in rea
 
 AI steps introduce reasoning and language understanding into workflows. Use AI steps to process natural language, make context-aware decisions, or operate through agents:
 
-* Summarize or interpret information using a language model
+* Summarize or interpret information using a large language model
 * Extract key insights from unstructured data
 * Implement an agentic step where an AI agent is configured with a goal, access to tools, and autonomy to act
 

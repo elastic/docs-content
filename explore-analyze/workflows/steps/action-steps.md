@@ -28,8 +28,7 @@ Refer to [](/explore-analyze/workflows/steps/elasticsearch.md) for more informat
 
 * Create or update cases
 * Manage alerts
-* Interact with saved objects
-* Work with other {{kib}} features
+* Interact with saved objects and other {{kib}} features
 
 Refer to [](/explore-analyze/workflows/steps/kibana.md) for more information.
 
@@ -40,6 +39,6 @@ External actions allow your workflows to communicate with third-party systems us
 * Send notifications to Slack or email
 * Create incidents in ServiceNow
 * Create issues in Jira
-* Call any external API using HTTP
+* Call any external API using HTTP requests
 
 Refer to [](/explore-analyze/workflows/steps/external-systems-apps.md) for more information.

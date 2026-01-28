@@ -10,16 +10,20 @@ description: Learn about Kibana action steps for automating tasks such as creati
 
 {{kib}} actions are built-in steps that allow your workflows to interact with {{kib}} APIs. You can automate tasks such as creating cases, updating alerts, or interacting with other {{kib}} features.
 
-All {{kib}} actions are automatically authenticated using the permissions of the user or API key executing the workflow.
+All {{kib}} actions are automatically authenticated using the permissions or API key of the user executing the workflow.
 
 There are two ways to use {{kib}} actions:
 
-* [Named actions](#named-actions): Simplified, high-level interface for common {{kib}} operations
-* [Generic request actions](#generic-request-actions): Full control over the HTTP request for advanced use cases
+* [Named actions](#named-actions): Common {{kib}} operations accessible through a simplified, high-level interface
+* [Generic request actions](#generic-request-actions): Actions that provide full control over the HTTP request for advanced use cases
 
 ## Named actions
 
-Named actions provide a simplified, high-level interface for common {{kib}} operations. Each action type corresponds to a specific {{kib}} function. The following example demonstrates a common use case.
+Named actions provide a simplified, high-level interface for common {{kib}} operations. Each action type corresponds to a specific {{kib}} function. 
+
+To view the available named actions, click **Actions menu** and select **{{kib}}**. For operations that are not available as a named action, use the [generic request action](#generic-request-actions).
+
+The following example demonstrates a common use case.
 
 ### Example: Create a case
 
@@ -44,7 +48,7 @@ steps:
 
 The generic `kibana.request` type gives you full control over the HTTP request. Use it for:
 
-* Accessing {{kib}} APIs that do not have a named action
+* Accessing [{{kib}} APIs]({{kib-apis}}) that do not have a named action
 * Advanced use cases that require specific headers or query parameters not exposed by a named action
 
 ::::{note}
@@ -55,7 +59,7 @@ Use the following parameters in the `with` block to configure the request:
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, `DELETE`) |
+| `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, or `DELETE`) |
 | `path` | Yes | The API endpoint path, starting with `/api/` or `/internal/` |
 | `body` | No | The JSON request body |
 | `query` | No | An object representing URL query string parameters |
@@ -67,7 +71,7 @@ You do not need to pass an `Authorization` header. The workflow engine automatic
 
 ### Example: Unisolate an endpoint
 
-This example uses the generic request to call the Security endpoint management API to unisolate a host ([Release an isolated endpoint]({{kib-apis}}operation/operation-endpointunisolateaction)).
+This example uses the generic request action to call the Security endpoint management API to unisolate a host ([Release an isolated endpoint]({{kib-apis}}operation/operation-endpointunisolateaction)).
 
 ```yaml
 steps:

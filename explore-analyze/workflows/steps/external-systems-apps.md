@@ -17,11 +17,13 @@ External systems actions allow your workflows to communicate with third-party se
 
 Connector-based actions use {{kib}}'s centralized {{connectors-ui}} framework. Before using them, you must first [configure a connector](/deploy-manage/manage-connectors.md).
 
-The step `type` is a keyword for the service (for example, `slack` or `jira`), and you must provide a `connector-id` at the same level as `type`.
+The step `type` is a keyword for the service (for example, `slack` or `jira`). You must also provide a `connector-id` at the same level as `type`.
+
+To view the available connectors, click **Actions menu** and select **External Systems & Apps**. 
 
 ### Identify a connector
 
-The `connector-id` field accepts either:
+The `connector-id` field accepts one of the following:
 
 * The unique name you gave the connector (for example, `"my-slack-connector"`). This is the recommended method for readability.
 * The connector's raw ID (for example, `"d6b62e80-ff9b-11ee-8678-0f2b2c0c3c68"`).
@@ -64,8 +66,8 @@ Use the following parameters in the `with` block to configure the request:
 | Parameter | Required | Description |
 |-----------|----------|-------------|
 | `url` | Yes | The full URL of the endpoint to call |
-| `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, `DELETE`) |
-| `headers` | No | An object of key-value pairs for HTTP headers |
+| `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, or `DELETE`) |
+| `headers` | No | An object with key-value pairs for HTTP headers |
 | `body` | No | The request body (typically a JSON object) |
 
 ::::{admonition} Known limitation
@@ -80,7 +82,7 @@ steps:
       url: "https://api.thirdparty.com/v1/data"
       method: "GET"
       headers:
-        Authorization: "Bearer my-super-secret-api-token"
+        Authorization: "Bearer my-secret-api-token"
 ```
 :::
 ::::

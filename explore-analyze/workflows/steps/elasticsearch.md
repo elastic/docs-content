@@ -10,18 +10,22 @@ description: Learn about Elasticsearch action steps for searching, indexing, and
 
 {{es}} actions are built-in steps that allow your workflows to interact directly with {{es}} APIs. You can search, index, update, and delete documents, manage indices, and perform any other operation supported by the {{es}} REST API.
 
-All {{es}} actions are automatically authenticated using the permissions of the user or API key executing the workflow.
+All {{es}} actions are automatically authenticated using the permissions or API key of the user executing the workflow.
 
 There are two ways to use {{es}} actions:
 
 * [Named actions](#named-actions): Structured actions that map directly to specific {{es}} API endpoints
-* [Generic request actions](#generic-request-actions): Full control over the HTTP request for advanced use cases
+* [Generic request actions](#generic-request-actions): Actions that provide full control over the HTTP request for advanced use cases
 
 ## Named actions
 
-Named actions provide a structured way to call specific {{es}} endpoints. The action type maps directly to the {{es}} API. The following table shows some examples:
+Named actions provide a structured way to call specific {{es}} endpoints. The action type maps directly to the {{es}} API. 
 
-| Action type | {{es}} API endpoint |
+To view the available named actions, click **Actions menu** and select **{{es}}**. For operations that are not available as a named action, use the [generic request action](#generic-request-actions).
+
+The following table shows some examples:
+
+| Action type | {{es}} operation |
 |-------------|--------------|
 | `elasticsearch.search` | `POST /<index>/_search` ([Run a search]({{es-apis}}operation/operation-search)) |
 | `elasticsearch.delete` | `DELETE /<index>/_doc/<id>` ([Delete a document]({{es-apis}}operation/operation-delete)) |
@@ -70,21 +74,27 @@ steps:
     with:
       index: "national-parks-data"
       body: |
-        { "index": { "_id": "1" } }
-        { "name": "Yellowstone National Park", "category": "geothermal" }
-        { "index": { "_id": "2" } }
-        { "name": "Grand Canyon National Park", "category": "canyon" }      
+        { "index": { "_id": "1" } } <1>
+        { "name": "Yellowstone National Park", "category": "geothermal" } <2>
+        { "index": { "_id": "2" } } <1>
+        { "name": "Grand Canyon National Park", "category": "canyon" } <2>
 ```
+1. **Action/metadata line**: Specifies the action and document ID
+2. **Source document line**: The document data 
 
 ## Generic request actions
 
-For advanced use cases or for accessing {{es}} APIs that do not have a named action, use the generic `elasticsearch.request` type. This gives you full control over the HTTP request.
+For advanced use cases or for accessing [{{es}} APIs]({{es-apis}}) that do not have a named action, use the generic `elasticsearch.request` type. This gives you full control over the HTTP request.
+
+::::{note}
+We recommend using named actions whenever possible. They are more readable and provide a stable interface for common operations.
+::::
 
 Use the following parameters in the `with` block to configure the request:
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, `DELETE`) |
+| `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, or `DELETE`) |
 | `path` | Yes | The API endpoint path (for example, `/_search`, `/_cluster/health`) |
 | `body` | No | The JSON request body |
 | `query` | No | An object representing URL query string parameters |
