@@ -80,17 +80,17 @@ You can use `_origin` in search expressions to explicitly target the origin proj
 
 This section explains how search works in {{cps-init}}, including:
 
-* the **flat-world search model**, a CPS-specific search behavior that changes how searches run across origin and linked projects
-* **qualified and unqualified search expressions**, and how they control search scope
+* the {{cps-init}} search model
+* **qualified search expressions** (for example,`logs` and `logs*`), **unqualified search expressions** (expressions with a project alias prefix, for example `project1:logs`) and how they control search scope
 * how **index resolution** works across the merged project view
 * how search options such as `ignore_unavailable` and `allow_no_indices` behave in {{cps-init}}
 * common edge cases and examples involving mixed qualified and unqualified expressions
 
-### Flat-world search
+### {{cps-init}} search model
 
-{{cps-init}} introduces a flat-world namespace for searchable resources such as indices, aliases, and data streams.
+With {{cps-init}}, searches are resolved across all projects, not just on the origin project by default.
+You explicitly need to limit the scope of your search to override this behavior. Refer to the [](#search-expressions) section to learn more.
 When you refer to a resource by a name, {{cps-init}} resolves that name across the origin project and all of its linked projects.
-This behavior is referred to as **flat-world search**.
 This means that when you run a search from the origin project and refer to a searchable resource such as `logs`, the search is executed against all resources named `logs` across the origin project and its linked projects, for example:
 
 ```console
@@ -104,10 +104,10 @@ If a linked project does not have a `logs` resource, that project is skipped and
 
 {{cps-cap}} supports two types of search expressions: unqualified and qualified search expressions. The difference between them determines where a search request runs and how errors are handled.
 
-**Unqualified search expressions** follow the flat-world search model and represent the default, native behavior in {{cps-init}}.
-**Qualified search expressions** explicitly override flat-world behavior, providing CCS-like semantics for controlling where a search runs and how errors are handled.
+**Unqualified search expressions** follow the {{cps}} model and represent the default, native behavior in {{cps-init}}.
+**Qualified search expressions** explicitly override the default behavior, providing CCS-like semantics for controlling where a search runs and how errors are handled.
 
-An unqualified search expression does not include a project alias prefix. When you use an unqualified expression, the search is performed according to the flat-world search model.
+An unqualified search expression does not include a project alias prefix.
 In this case, the search runs against the origin project and all its linked projects.
 
 A qualified search expression includes additional qualifiers, such as project alias prefixes, that explicitly control the scope of the search.
@@ -131,8 +131,8 @@ As a result, unqualified searches treat linked projects as part of one larger lo
 
 #### `ignore_unavailable` and `allow_no_indices`
 
-The distinction between qualified and unqualified index expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied in {{cps}}.
-When you use an **unqualified** index expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
+The distinction between qualified and unqualified search expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied in {{cps}}.
+When you use an **unqualified** expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
 
 ::::{important}
 The way that missing resources are interpreted differs between qualified and unqalified expressions, refer to [this section](#behavior-qualified-unqualified) for a detailed explanation.
