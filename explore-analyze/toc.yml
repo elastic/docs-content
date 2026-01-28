@@ -187,6 +187,7 @@ toc:
               - file: ai-features/agent-builder/tools/esql-tools.md
               - file: ai-features/agent-builder/tools/index-search-tools.md
               - file: ai-features/agent-builder/tools/mcp-tools.md
+              - hidden: ai-features/agent-builder/tools/workflow-tools.md
           - file: ai-features/agent-builder/programmatic-access.md
             children:
                - file: ai-features/agent-builder/kibana-api.md

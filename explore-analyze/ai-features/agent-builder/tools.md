@@ -41,15 +41,6 @@ Each tool is an atomic operation with a defined signature - accepting typed para
 Tool execution and result processing consume tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md).
 :::
 
-## Tool types
-
-{{agent-builder}} supports several types of tools:
-
-- **[Index search tools](tools/index-search-tools.md)**: Scope searches to specific indices or patterns. The LLM dynamically constructs queries based on user requests.
-- **[ES|QL tools](tools/esql-tools.md)**: Execute pre-defined {{esql}} queries with parameterized inputs for precise, repeatable data retrieval.
-- **[MCP tools](tools/mcp-tools.md)**: Connect to external Model Context Protocol servers, enabling agents to use remote tools and services.
-% - **Workflow tools**: Call pre-defined Workflows directly from the agent chat.
-
 ## Built-in tools
 
 {{agent-builder}} ships with a comprehensive set of built-in tools that provide core capabilities for working with your {{es}} data. These tools are ready to use. They cannot be modified or deleted.
@@ -60,13 +51,14 @@ For the complete list, refer to [Built-in tools reference](tools/builtin-tools-r
 
 ## Custom tools
 
-You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data:
+You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data. This flexibility allows you to create tools that match your specific use cases and data access patterns.
 
-- **[Index search tools](tools/index-search-tools.md)**: Define tools that are scoped to a specific index or pattern, allowing the LLM to decide how to query those indices based on the user's request.
-- **[ES|QL tools](tools/esql-tools.md)**: Define tools with explicit {{esql}} queries for precise, pre-defined data retrieval operations.
-- **[MCP tools](tools/mcp-tools.md)**: Define tools that map to a remote Model Context Protocol (MCP) server's tools, allowing an LLM to leverage the server during chat sessions.
+{{agent-builder}} supports several tool types:
 
-This flexibility allows you to create tools that match your specific use cases and data access patterns.
+- **[Index search tools](tools/index-search-tools.md)**: Scope searches to specific indices or patterns. The LLM dynamically constructs queries based on user requests.
+- **[ES|QL tools](tools/esql-tools.md)**: Execute pre-defined {{esql}} queries with parameterized inputs for precise, repeatable data retrieval.
+- **[MCP tools](tools/mcp-tools.md)**: Connect to external Model Context Protocol servers, enabling agents to use remote tools and services.
+- **[Workflow tools](tools/workflow-tools.md)**: Call pre-defined Workflows directly from the agent chat.
 
 ### Tool parameters
 
