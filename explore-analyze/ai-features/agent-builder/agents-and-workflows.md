@@ -48,7 +48,7 @@ Follow these steps to invoke an `ai.agent` as a step within a workflow.
 4.  Configure the **`message`** parameter with your natural language prompt.
 
 ### Example: Analyze flight delays
-The following example demonstrates a workflow that searches for flight delays and uses the **Elastic AI Agent** to summarize the impact.
+The following example demonstrates a workflow that searches for flight delays and uses the **Elastic AI Agent** to summarize the impact. To follow along with this example ensure that the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
 ```yaml
 version: "1"
