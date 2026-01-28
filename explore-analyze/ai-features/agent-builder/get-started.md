@@ -1,4 +1,5 @@
 ---
+description: Learn how to get started with Elastic Agent Builder
 navigation_title: "Get started"
 applies_to:
   stack: preview =9.2, ga 9.3+
@@ -13,7 +14,9 @@ products:
 
 # Get started with {{agent-builder}}
 
-Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
+To start using {{agent-builder}} you need an {{es}} deployment. If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
+
+For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
 
 ::::{admonition} Agent Builder subscription requirements
 - {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
@@ -22,17 +25,6 @@ Learn how to get started by enabling the {{agent-builder}} features and begin ch
 ::::
 
 ::::::{stepper}
-::::{step} Set up a deployment or project
-
-If you don't already have one, refer to [](/solutions/search/get-started.md), [](/solutions/observability/get-started.md), or [](/solutions/security/get-started.md) based on your use case.
-
-:::{note}
-For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation.
-You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution navigation.
-:::
-
-::::
-
 :::::{step} Enable {{agent-builder}}
 
 ::::{applies-switch}
