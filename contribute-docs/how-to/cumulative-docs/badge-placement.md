@@ -39,7 +39,7 @@ There are more specific guidelines on badge placement to follow when using speci
 
 ### Page frontmatter
 
-Use [`applies_to` in a page's frontmatter](https://elastic.github.io/docs-builder/syntax/applies#syntax) to provide signals that a page applies to the reader. You should use only one `applies_to` [dimension](/contribute-docs/how-to/cumulative-docs/guidelines.md#dimensions) at the page level. This dimension represent's the user's primary context, whether it's a platform version, deployment type, or supporting piece of software.
+Use [`applies_to` in a page's frontmatter](https://elastic.github.io/docs-builder/syntax/applies#syntax) to provide signals that a page applies to the reader. You should use only one `applies_to` [dimension](/contribute-docs/how-to/cumulative-docs/guidelines.md#dimensions) at the page level. This dimension represents the user's primary context, whether it's a platform version, deployment type, or supporting piece of software.
 
 ::::{warning}
 Do **not** use [section-level](https://elastic.github.io/docs-builder/syntax/applies#section-level) or [inline annotations](https://elastic.github.io/docs-builder/syntax/applies#inline-level) with the page title.
