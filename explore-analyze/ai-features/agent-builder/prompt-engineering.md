@@ -50,7 +50,7 @@ Avoid "over-prompting" with excessive text. High-reasoning models are capable of
 
 Avoid prompts that attempt to handle multiple unrelated tasks. If a prompt becomes difficult to manage or the agent fails to follow sequences, consider adjusting your architecture.
 
-#### Choose the right tool: Agent or Workflows
+#### Choose the right tool: Agents or Workflows
 
 | Task requirement | Recommended approach |
 | :--- | :--- |
