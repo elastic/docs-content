@@ -96,7 +96,7 @@ Learn more in [creating custom tools](../tools/custom-tools.md).
 :::::
 
 :::::{step} Create a custom agent
-Create a new agent to use your custom tools. Refer to [Agents in {{agent-builder}}](../agent-builder-agents.md) for instructions.
+Create a new agent to use your custom tools. Refer to [Custom agents in {{agent-builder}}](../custom-agents.md) for instructions.
 :::::
 
 :::::{step} Assign tools and refine instructions

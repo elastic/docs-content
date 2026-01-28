@@ -86,7 +86,7 @@ If you didn't select **Save and test** immediately:
 
 ## Assign tools to agents
 
-To start using a custom tool, you must assign it to a [custom agent](../agent-builder-agents.md#create-a-new-agent-in-the-gui).
+To start using a custom tool, you must assign it to a [custom agent](../custom-agents.md#create-a-new-agent).
 1. Navigate to the agent configuration page.
 2. Select the **Tools** tab.
 3. Add the desired tools to the agent.
