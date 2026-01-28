@@ -33,6 +33,7 @@ columns:
   - source: "Data Used To Train Models?"
   - source: "Model Card URL"
   - source: "Author Terms URL"
+  - source: "Inference Regions"
 
 # Output configuration
 output:
