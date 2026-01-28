@@ -21,13 +21,13 @@ The steps on this page work in {{serverless-full}}, but you typically won't need
 
 ## Before you begin
 
-To work with integration data streams, you need some details from the package manifest. Find your integration in the [Elastic integrations repository](https://github.com/elastic/integrations/tree/main/packages) or query the [{{package-registry}}](integration-docs://reference/elastic_package_registry.md) and make a note of the following:
+To work with integration data streams, you need some details from the package manifest. Find your integration in the [Elastic integrations repository](https://github.com/elastic/integrations/tree/main/packages) or query the [{{package-registry}}](https://github.com/elastic/package-registry) and make a note of the following:
 
-- **Package name:** The exact name in the package manifest. For example, the MySQL integration package is named `mysql`. The package name also matches the name shown on the **Installed integrations** tab in {{kib}}, with underscores instead of spaces in multi-word names.
+- **Package name:** The exact name in the package manifest. For example, the MySQL integration package is named `mysql`.
 - **Logs dataset names:** Make sure the integration has data streams where the `type` is `logs`. For example, the MySQL integration has `mysql.error` and `mysql.slowlog`. Note the name of each logs dataset for use in later steps.
 
     :::{dropdown} Elastic Package Registry query (curl)
-    You can use this `curl` command to confirm the integration's logs data streams in the [{{package-registry}}](integration-docs://reference/elastic_package_registry.md). Replace `mysql/1.28.1` with your integration package name and version:
+    You can use this `curl` command to confirm the integration's logs data streams in the [{{package-registry}}](https://github.com/elastic/package-registry). Replace `mysql/1.28.1` with your integration package name and version:
 
     ```bash
     curl -sL epr.elastic.co/package/mysql/1.28.1 | jq '.data_streams[] |
