@@ -109,3 +109,21 @@ To track your token consumption:
 
 1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
+
+## Supported models
+
+This table lists the models supported by Elastic {{infer-cap}} Service.
+
+::::{note}
+The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
+::::
+
+:::{csv-include} models.csv
+:caption: Models supported by Elastic Inference Service
+:::
+
+::::{important}
+
+* Elastic does not guarantee the availability of supported models.
+* Use of the Elastic {{infer-cap}} Service requires that customers have read and agreed to the applicable terms of the model providers. Use of a model constitutes a contract between the customer and the model provider.
+::::
