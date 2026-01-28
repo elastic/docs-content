@@ -119,4 +119,4 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 * [Tools overview](./tools.md)
 * [Workflow tools](../agent-builder/tools/workflow-tools.md)
 % * [Workflows](/explore-analyze/workflows.md)
-* [Agent Builder API]((https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder))
+* [Agent Builder API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder)
