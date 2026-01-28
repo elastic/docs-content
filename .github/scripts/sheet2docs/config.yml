@@ -31,8 +31,8 @@ columns:
   - source: "EOL Date"
   - source: "Data Retention Period (Days)"
   - source: "Data Used To Train Models?"
-  - source: "Model Card URL"
-  - source: "Author Terms URL"
+  - source: "Model Card"
+  - source: "Author Terms"
   - source: "Inference Regions"
 
 # Output configuration
