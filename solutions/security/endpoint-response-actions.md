@@ -232,7 +232,7 @@ The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-m
 
 Scan a specific file or directory on the host for malware. This uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) (such as **Detect** or **Prevent** options, or enabling the blocklist) as configured in the host’s associated {{elastic-defend}} integration policy. Use these parameters:
 
-* `--path` : (Required) The absolute path to a file or directory to be scanned.
+* `--path` : (Required) The absolute path to a file or directory to be recursively scanned.
 
 Predefined role (in {{serverless-short}}): **Tier 3 Analyst**, **SOC Manager**, or **Endpoint Operations Analyst**
 
