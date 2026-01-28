@@ -1,5 +1,5 @@
 ---
-navigation_title: "Call agents from workflows"
+navigation_title: "Agents and Elastic Workflows"
 description: "Learn how to invoke AI agents directly within Elastic Workflows."
 applies_to:
   stack: preview 9.3+
