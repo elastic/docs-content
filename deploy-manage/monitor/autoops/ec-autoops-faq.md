@@ -164,7 +164,7 @@ $$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure i
     :::
 
 $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
-:   Yes. AutoOps {{agent}} comes bundled with the `autoops_es_debug.yaml` configuration file, which you can use to view a sample of the data gathered from your cluster that would be sent to Elastic Cloud.
+:   Yes. AutoOps {{agent}} comes bundled with the `autoops_es_debug.yml` configuration file, which you can use to view a sample of the data gathered from your cluster that would be sent to Elastic Cloud.
 
     Complete the following steps to view a sample of this data locally:
 
