@@ -10,7 +10,7 @@ products:
 
 # Troubleshoot connected clusters not appearing with ECK installation
 
-If you used {{eck}} (ECK) to connect your self-managed clusters to AutoOps but you don't see any connected clusters in your account, go through this guide to diagnose and fix common issues. 
+If you used {{eck}} (ECK) to connect your self-managed clusters to AutoOps but you can't view any connected clusters in your account, go through this guide to diagnose and fix common issues. 
 
 ## Verify `AutoOpsAgentPolicy` status
 
@@ -85,7 +85,7 @@ Run the following command.
 ```shell
 kubectl get secret autoops-config -o yaml
 ```
-Make sure you can see the following required keys in the secret:
+Make sure the secret has the following required keys:
 * `autoops-token`
 * `autoops-otel-url`
 * `cloud-connected-mode-api-key`
