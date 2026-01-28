@@ -13,10 +13,6 @@ products:
 
 # Get started with {{agent-builder}}
 
-Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
-
-## Prerequisites
-
 To start using {{agent-builder}} you need an {{es}} deployment. If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
 
 For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
