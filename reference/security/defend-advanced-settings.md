@@ -564,6 +564,18 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Include `process.origin_url`, `process.origin_referrer_url`, and `process.Ext.windows.zone_identifier` in process events. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. For 9.1 and earlier, default: `false`. For 9.2 and later, default: `true`.*
 
 
+`mac.advanced.events.script_capture`
+:   Added in 9.3.0.
+
+    *Capture script content for process create events. Default: `false`.*
+
+
+`mac.advanced.events.script_max_size`
+:   Added in 9.3.0.
+
+    *Maximum size of scripts captured by `mac.advanced.events.script_capture`in bytes. Default `1024`.`
+
+
 `windows.advanced.events.security.event_disabled`
 :   Added in 9.2.0.
 
@@ -574,6 +586,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
 :   Added in 8.19.0.
 
     *Enable the Microsoft-Windows-Security-Auditing ETW provider for security events collection. Default: `true`.*
+
+
+`linux.advanced.fanotify.enable_ns_jumping`
+:   Added in 9.3.0.
+
+    *Enter the mount namespace of processes when they generate fanotify events. For 9.2 and earlier, default: `false`. For 9.3 and later, default: `true`.*
 
 
 `linux.advanced.fanotify.ignore_unknown_filesystems`
@@ -665,7 +683,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.kernel.capture_mode`
 :   Added in 8.2.0.
 
-    *Control whether kprobes or eBPF are used to gather data. Options are `kprobe`, `ebpf`, or `auto`. `auto` uses eBPF if possible, otherwise it uses kprobe. Default: `auto`.*
+    *Control whether kprobes, eBPF or Quark is used to gather data. Options are kprobe, ebpf, quark or auto. auto uses quark if possible (and supported), then tries legacy ebpf, and otherwise it uses kprobe. quark is supported by {{elastic-defend}} versions 9.3 and newer. Default: auto.*
 
     On Linux, {{elastic-endpoint}} can monitor system events using kprobes or eBPF. By default, {{elastic-endpoint}} automatically chooses the best option, but you can use this setting to override that behavior.
 
@@ -988,6 +1006,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable scanning memory for trampolines, even if Memory Threat protection is enabled. Memory Threat protection will remain effective even without this scan.
 
 
+`windows.advanced.mitigations.policies.redirection_guard`
+:   Added in 9.3.0.
+
+    *Enable Windows Redirection Guard on Win10/Win11 21H2 and later. Default: `true`.*
+
+
 `[linux,mac,windows].advanced.network_events_exclude_local`
 :   Added in 8.10.1.
 
@@ -1020,6 +1044,18 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable ransomware MBR protection. Default: `true`.*
 
     Use this setting to disable ransomware detection using Master Boot Record monitoring, even if ransomware protection is enabled. Ransomware protection will remain effective even when this ransomware detection is disabled.
+
+
+`[linux,mac,windows].advanced.response_actions.get_file.max_parallel_uploads`
+:   Added in 9.3.0.
+
+    *Maximum number of parallel uploads for get-file response action. Default: `1`.*
+
+
+`[linux,mac,windows].advanced.response_actions.get_file.upload_streams_count`
+:   Added in 9.3.0.
+
+    *Maximum number of upload streams for get-file response action. Default: `1`.*
 
 
 `[linux,mac,windows].advanced.set_extended_host_information`
