@@ -3,6 +3,8 @@ applies_to:
   deployment:
     self:
 navigation_title: Single-node cluster
+sub:
+  image: elasticsearch
 ---
 
 # Start a single-node cluster in Docker [docker-cli-run-dev-mode]

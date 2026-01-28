@@ -108,7 +108,7 @@ Learn more in [Agent Chat](chat.md).
 
 ::::{step} Configure model (optional)
 
-By default, {{agent-builder}} uses an Elastic Managed LLM. To use a different model, refer to [model selection and configuration](models.md).
+On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. To switch models or add your own, refer to [model selection and configuration](models.md).
 
 ::::
 
