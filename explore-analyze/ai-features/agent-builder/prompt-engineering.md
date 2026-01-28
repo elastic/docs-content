@@ -50,12 +50,12 @@ Avoid "over-prompting" with excessive text. High-reasoning models are capable of
 
 Avoid prompts that attempt to handle multiple unrelated tasks. If a prompt becomes difficult to manage or the agent fails to follow sequences, consider adjusting your architecture.
 
-#### Choose the right tool: Agent vs. Workflow
+#### Choose the right tool: Agent or Workflows
 
 | Task requirement | Recommended approach |
 | :--- | :--- |
-| **High accuracy & sequential steps** | **Workflow**: Use a Workflow for logic that must be executed in a specific order (for example Step 1 must complete before Step 2). Hard-coded logic is more reliable than probabilistic reasoning. |
-| **Independent, complex tasks** | **Specialized Agents**: Break tasks into sub-agents to keep the context window focused and reduce tool-selection errors. |
+| **High accuracy & sequential steps** | **Workflow**: Use a [Workflow](agents-and-workflows.md) for logic that must be executed in a specific order (for example Step 1 must complete before Step 2). Hard-coded logic is more reliable than probabilistic reasoning. |
+| **Independent, complex tasks** | **Specialized agents**: Break tasks into sub-agents to keep the context window focused and reduce tool-selection errors. |
 | **Open-ended discovery** | **Agent**: Use a standard agent when the path to a solution requires dynamic reasoning or varied data exploration. |
 
 #### Use structured formatting
