@@ -34,4 +34,3 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 
 - Create and run your first workflow. Refer to [](get-started.md) to learn more
 - Understand how to use the YAML editor in {{kib}} to define and run workflows. Refer to [](author-workflows.md) to learn more.
-% Commenting out for now to resolve CI checks
