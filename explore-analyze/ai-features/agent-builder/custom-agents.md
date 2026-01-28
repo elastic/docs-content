@@ -16,7 +16,7 @@ products:
 Custom agents enable you to create specialized AI assistants tailored to your specific use cases and workflows. Unlike [built-in agents](builtin-agents-reference.md), which are pre-configured by Elastic, custom agents give you full control over instructions, tools, and behavior.
 
 :::{note}
-The default `Elastic AI Agent` is immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning the default agent or creating a new one from scratch.
+Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch.
 :::
 
 ## Create a new agent
