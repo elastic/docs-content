@@ -27,6 +27,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+:::{include} _snippets/9.3.0/index.md
+:::
+
+
 ## 9.2.4 [elastic-security-9.2.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.2.4-features-enhancements]

@@ -16,6 +16,10 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{include} _snippets/9.3.0/known-issues.md
+:::
+
+
 :::{dropdown} Intermittent blue screen due to conflict with Windows ODX in {{elastic-defend}}
 Applies to: 8.19.8, 8.19.9, 9.1.8, 9.1.9, 9.2.2, and 9.2.3
 
