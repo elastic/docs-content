@@ -15,6 +15,12 @@ products:
 
 Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
 
+## Prerequisites
+
+To start using {{agent-builder}} you need an {{es}} deployment. If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
+
+For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
+
 ::::{admonition} Agent Builder subscription requirements
 - {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
 - {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
@@ -22,17 +28,6 @@ Learn how to get started by enabling the {{agent-builder}} features and begin ch
 ::::
 
 ::::::{stepper}
-::::{step} Set up an {{es}} deployment
-
-If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
-
-:::{note}
-For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation.
-You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
-:::
-
-::::
-
 :::::{step} Enable {{agent-builder}}
 
 ::::{applies-switch}
