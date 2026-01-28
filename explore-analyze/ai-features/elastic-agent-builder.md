@@ -64,7 +64,7 @@ To get started you need an Elastic deployment and you might need to enable the f
 
 ## Model selection
 
-By default, on {{ech}} and {{serverless-full}} agents use the Elastic Managed LLM, but you can configure other model providers using connectors, including local LLMs deployed on your infrastructure.
+On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. You can also configure other model providers using connectors, including local LLMs deployed on your infrastructure.
 
 [**Learn more about model selection**](agent-builder/models.md)
 
