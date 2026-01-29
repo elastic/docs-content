@@ -26,6 +26,28 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 * You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
+
+## Supported models
+
+This table lists the models supported by Elastic {{infer-cap}} Service.
+
+::::{note}
+The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
+::::
+
+:::{csv-include} models.csv
+:caption: Models supported by Elastic Inference Service
+:::
+
+::::{important}
+
+* Elastic does not guarantee the availability of supported models.
+* Use of the Elastic {{infer-cap}} Service requires that customers have read and agreed to the applicable terms of the model providers. Use of a model constitutes a contract between the customer and the model provider.
+* “AI Models” means the third-party generative artificial intelligence models accessed via API through the Service and listed on the [OpenRouter website](https://openrouter.ai/models).
+* “AI Model Provider” means the provider of the applicable AI Model.
+* Availability. OpenRouter does not guarantee availability of the AI Models and provides Customer access to the AI Models only on an as-available basis. AI Model uptime and performance are described in the applicable AI Model Terms, and Customer is responsible for (a) reviewing the AI Model Terms to understand the availability and data practices of each AI Model Provider, and (b) agreeing to the AI Model Terms prior to using the Service. 
+::::
+
 ## Region and hosting [eis-regions]
 
 Elastic {{infer-cap}} Service is currently available in a single region: {{aws}} `us-east-1`. All {{infer}} requests sent through EIS are routed to this region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
@@ -109,24 +131,3 @@ To track your token consumption:
 
 1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
-
-## Supported models
-
-This table lists the models supported by Elastic {{infer-cap}} Service.
-
-::::{note}
-The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
-::::
-
-:::{csv-include} models.csv
-:caption: Models supported by Elastic Inference Service
-:::
-
-::::{important}
-
-* Elastic does not guarantee the availability of supported models.
-* Use of the Elastic {{infer-cap}} Service requires that customers have read and agreed to the applicable terms of the model providers. Use of a model constitutes a contract between the customer and the model provider.
-* “AI Models” means the third-party generative artificial intelligence models accessed via API through the Service and listed on the [OpenRouter website](https://openrouter.ai/models).
-* “AI Model Provider” means the provider of the applicable AI Model.
-* Availability. OpenRouter does not guarantee availability of the AI Models and provides Customer access to the AI Models only on an as-available basis. AI Model uptime and performance are described in the applicable AI Model Terms, and Customer is responsible for (a) reviewing the AI Model Terms to understand the availability and data practices of each AI Model Provider, and (b) agreeing to the AI Model Terms prior to using the Service. 
-::::
