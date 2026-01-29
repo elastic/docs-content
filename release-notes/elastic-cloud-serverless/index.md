@@ -39,6 +39,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds {{esql}} support for project METADATA [#140592]({{es-pull}}140592)
 * Adds partitioning for time-series sources to speed up queries and improve memory management [#140475]({{es-pull}}140475)
 * Adds preconditioning utilities to help with edge cases where quantization causes vectors to become indistinguishable [#140198]({{es-pull}}140198)
+* Implements the **Observability Agent** in AI Assistant insights and flyout configurations [#249776]({{kib-pull}}249776)
 
 ### Fixes [serverless-changelog-01272026-fixes]
 * Fixes an issue with reporting in dashboards and visualizations [#249644]({{kib-pull}}249644)
