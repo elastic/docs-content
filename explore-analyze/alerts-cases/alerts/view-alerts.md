@@ -136,7 +136,7 @@ To apply or remove alert tags on multiple alerts, select the alerts you want to 
 ## Clean up alerts [clean-up-alerts]
 
 ```{applies_to}
-stack: ga 9.4+, preview 9.0-9.1`
+stack: ga 9.4+, preview 9.1-9.3`
 serverless: ga
 ```
 

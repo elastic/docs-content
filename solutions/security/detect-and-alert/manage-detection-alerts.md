@@ -319,7 +319,7 @@ Refer to [Timeline](/solutions/security/investigate/timeline.md) for information
 ## Clean up alerts [clean-up-alerts-sec]
 
 ```{applies_to}
-stack: ga 9.4+, preview 9.0-9.1`
+stack: ga 9.4+, preview 9.1-9.3`
 serverless: ga
 ```
 
