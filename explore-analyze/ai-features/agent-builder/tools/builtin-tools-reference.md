@@ -47,25 +47,25 @@ Platform core tools provide fundamental capabilities for interacting with {{es}}
 All [built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are assigned these tools by default.
 :::
 
-`platform.core.execute_esql` {applies_to}`stack: ga 9.2+`
+`platform.core.execute_esql`
 :   Executes an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query and returns the results in a tabular format.
 
-`platform.core.generate_esql` {applies_to}`stack: ga 9.2+`
+`platform.core.generate_esql`
 :   Generates an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query from a natural language query.
 
-`platform.core.get_document_by_id` {applies_to}`stack: ga 9.2+`
+`platform.core.get_document_by_id`
 :   Retrieves the full content of an {{es}} document based on its ID and index name.
 
-`platform.core.get_index_mapping` {applies_to}`stack: ga 9.2+`
+`platform.core.get_index_mapping`
 :   Retrieves mappings for the specified index or indices.
 
-`platform.core.index_explorer` {applies_to}`stack: ga 9.2+`
+`platform.core.index_explorer`
 :   Lists relevant indices and corresponding mappings based on a natural language query.
 
-`platform.core.list_indices` {applies_to}`stack: ga 9.2+`
+`platform.core.list_indices`
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
-`platform.core.search` {applies_to}`stack: ga 9.2+`
+`platform.core.search`
 :   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
 
 $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
