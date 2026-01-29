@@ -37,7 +37,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds IntRangeVector for selected groups in aggregation [#141205]({{es-pull}}141205)
 * Adds Case and Coalesce Support for Compound Types [#140677]({{es-pull}}140677)
 * Adds {{esql}} support for project METADATA [#140592]({{es-pull}}140592)
-* Partition time-series source [#140475]({{es-pull}}140475)
+* Adds partitioning for time-series sources to speed up queries and improve memory management [#140475]({{es-pull}}140475)
 * Adds preconditioning utilities to help with edge cases where quantization causes vectors to become indistinguishable [#140198]({{es-pull}}140198)
 
 ### Fixes [serverless-changelog-01272026-fixes]
