@@ -29,7 +29,7 @@ For more information on billing and token costs, refer to [Elastic pricing](http
 
 ## How to view token usage
 
-At the end of each round, the total token usage is displayed after the agent response:
+At the end of each round, the total token usage is displayed after the agent response. Input tokens are represented by {icon}`sort_up`, and output tokens by {icon}`sort_down`:
 
 :::{image} images/token-usage.png
 :screenshot:
