@@ -689,7 +689,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.kernel.capture_mode`
 :   Added in 8.2.0.
 
-    *Control whether kprobes, eBPF or Quark is used to gather data. Options are kprobe, ebpf, quark or auto. auto uses quark if possible (and supported), then tries legacy ebpf, and otherwise it uses kprobe. quark is supported by {{elastic-defend}} versions 9.3 and newer. Default: auto.*
+    *Control whether kprobes, eBPF or Quark is used to gather data. Options are kprobe, ebpf, quark or auto. auto uses quark if possible (and supported), then tries legacy ebpf, and otherwise it uses kprobe. Quark is supported by {{elastic-defend}} versions 9.3 and newer. Default: auto.*
 
     On Linux, {{elastic-endpoint}} can monitor system events using kprobes or eBPF. By default, {{elastic-endpoint}} automatically chooses the best option, but you can use this setting to override that behavior.
 
@@ -1093,7 +1093,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.utilization_limits.free_disk_space_gb`
 :   Added in 9.3.0.
 
-    *Keep at least gigabytes of free space on the volume where Endpoint is installed. If free space falls below this threshold, certain features, such as response actions that require additional storage space, will no longer function. Default: no limit.*
+    *Keep at least the specified number of gigabytes of free space on the volume where Endpoint is installed. If free space falls below this threshold, certain features, such as response actions that require additional storage space, will no longer function. Default: no limit.*
 
 
 `[linux,mac,windows].advanced.utilization_limits.free_disk_space_percent`
