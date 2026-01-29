@@ -1,11 +1,17 @@
 ---
 navigation_title: "Kibana APIs"
 applies_to:
-  stack: preview 9.2
+  stack: preview =9.2, ga 9.3+
   serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+    elasticsearch: ga
+    observability: ga
+    security: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Work with {{agent-builder}} using the APIs
@@ -37,7 +43,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
 ```
 :::{tip}
 To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-[Learn more](https://www.elastic.co/docs/solutions/search/search-connection-details).
+[Learn more](/solutions/elasticsearch-solution-project/search-connection-details.md).
 :::
 
 ### Working with Spaces
