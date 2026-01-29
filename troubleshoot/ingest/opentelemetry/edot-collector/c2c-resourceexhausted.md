@@ -13,6 +13,8 @@ products:
 
 This troubleshooting guide helps you diagnose and resolve `rpc error: code = ResourceExhausted` errors that occur in Collector-to-Collector pipelines when using {{edot}} (EDOT) Collectors. These errors typically indicate that one or more resource limits, such as gRPC message size, decompression memory, or internal buffering, have been exceeded.
 
+The root cause depends on your pipeline architecture (number of Collectors, transport, batching, and queue settings). Each case is different; use the diagnosis and resolution steps in this document to narrow down the cause and experiment with mitigations.
+
 This issue is most often reported in the following setups:
 
 - Agent to Gateway Collector architectures
@@ -53,13 +55,13 @@ This limit is not derived from pod CPU/memory sizing. It is primarily a protocol
 
 ### gRPC message size limits (OTLP receiver)
 
-When using the standard OTLP/gRPC receiver (`otlpreceiver`):
+When using the standard [OTLP receiver (`otlp`) with gRPC protocol](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver):
 
 - The EDOT Collector inherits upstream OpenTelemetry Collector behavior.
-- If `max_recv_msg_size_mib` is not explicitly configured, the Collector uses the gRPC library default, which is typically ~4 MiB.
-- Messages larger than this limit result in a `ResourceExhausted` error.
+- If `max_recv_msg_size_mib` is not explicitly configured, the Collector uses the [gRPC library default](https://pkg.go.dev/google.golang.org/grpc#MaxRecvMsgSize), which is 4 MiB.
+- Messages larger than this limit result in a `ResourceExhausted` error sent by the receiving side and logged on the sending side.
 
-This limit is configurable:
+This limit is configurable. For all gRPC server options, see the [OTLP receiver gRPC server configuration](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configgrpc/README.md#server-configuration). You can also limit payload size on the sending side using the exporter's [sending queue batch settings](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.144.0/exporter/exporterhelper/README.md#sending-queue-batch-settings) (for example, `max_size`) or the batch processor's `send_batch_max_size` (see below). The sending queue supports a byte-based sizer option for staying under size limits, at the cost of some performance overhead. For example:
 
 ```yaml
 receivers:
@@ -69,7 +71,7 @@ receivers:
         max_recv_msg_size_mib: <value>
 ```
 
-### Large single exports from high-volume receivers
+#### Large single exports from high-volume receivers
 
 Even without a `batch` processor, some receivers can produce large payloads per collection interval.
 For example, cluster-wide metrics can generate tens of thousands of data points in a single cycle. If a single export attempt exceeds the gRPC receive limit, the sending Collector might drop the entire payload for that attempt.
@@ -146,7 +148,7 @@ Look for evidence that the exporter cannot enqueue or send:
 - `otelcol_exporter_enqueue_failed_metric_points` / `_spans` / `_log_records`
 - `otelcol_exporter_send_failed_metric_points` / `_spans` / `_log_records`
 
-If `queue_size` stays near `queue_capacity` and enqueue failures increase, the sender is under pressure (often because the receiver cannot keep up).
+If `queue_size` stays near `queue_capacity` and enqueue failures increase, the sender is under pressure (often because the receiver cannot keep up). With `service.telemetry.metrics.level: detailed`, the histograms `otelcol_exporter_queue_batch_send_size` and `otelcol_exporter_queue_batch_send_size_bytes` show request sizes.
 
 **On the receiving Collector (receiver-side)**
 
@@ -157,6 +159,7 @@ Look for evidence of refusal/backpressure and resource saturation:
   - `otelcol_process_memory_rss`
   - `otelcol_process_runtime_heap_alloc_bytes`
   - `otelcol_process_cpu_seconds`
+- With detailed metrics level, the OTLP receiver reports the `rpc_server_request_size` histogram (request sizes).
 
 Also check {{k8s}} signals:
 - Pod restarts / `CrashLoopBackOff`
@@ -205,15 +208,15 @@ If the sending Collector is exporting payloads that exceed receiver limits, redu
 
 #### Add batching to high-volume pipelines
 
-If a sender exports large metric payloads per cycle, add a batch processor to split exports into smaller requests. Because batching limits are count-based (data points, log records, or spans), you might need to tune iteratively.
+If a sender exports large metric payloads per cycle, split exports into smaller requests. Prefer batching in the [exporter's sending queue](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.144.0/exporter/exporterhelper/README.md#sending-queue-batch-settings) (for example, `max_size`) over the batch processor, as the batch processor can be unreliable for enforcing batch size. If you use the batch processor, set `send_batch_max_size` to enforce batch size limits; `send_batch_size` only acts as a trigger and does not limit the size of batches sent downstream. Because batching limits are count-based (data points, log records, or spans), you might need to tune iteratively.
 
-Example (adding batching to a cluster-stats metrics pipeline):
+Example (adding batch size limits to a cluster-stats metrics pipeline using the batch processor):
 
 ```yaml
 processors:
   batch/metrics:
     timeout: 1s
-    send_batch_size: 2048 # The processor sends a batch when it reaches this many items or when the timeout expires, whichever comes first. Batches never exceed this size.
+    send_batch_max_size: 2048 # Maximum number of items per batch sent to the next component. Use with timeout to control when batches are sent.
 
 service:
   pipelines:
@@ -243,7 +246,7 @@ High cardinality (too many unique metric or attribute values) can impact costs a
 
 ### Tune exporter queue and retry behavior to reduce drops during transient overload
 
-If drops happen during sudden traffic increases or temporary downstream slowdowns, turn on and tune queued retry on the sending exporter.
+If drops happen during sudden traffic increases or temporary downstream slowdowns, turn on and tune queued retry on the sending exporter. Using persistent storage for the sending queue (for example, `storage: file_storage`) helps avoid losing data on Collector restart. Configure `max_elapsed_time: 0` on retry to retry indefinitely; the default stops after about 5 minutes and drops data.
 
 Configuration keys depend on the exporter and distribution, but commonly include:
 
@@ -251,13 +254,13 @@ Configuration keys depend on the exporter and distribution, but commonly include
 exporters:
   otlp/gateway:
     endpoint: "<gateway-service>:4317" # OTLP/gRPC endpoint (port 4317)
-    tls:
-      insecure: true
     sending_queue:
       enabled: true
       queue_size: 10000
+      storage: file_storage
     retry_on_failure:
       enabled: true
+      max_elapsed_time: 0  # Retry indefinitely; default stops after ~5 minutes and drops data
 ```
 
 ### Address backpressure by scaling and properly sizing the receiving Collector
@@ -267,6 +270,7 @@ If the gateway is restarting, `OOMKilled`, or cannot export fast enough:
 - Increase gateway CPU/memory limits.
 - Increase gateway replicas.
 - Ensure environment limits align with container memory.
+- If the gateway Collector is autoscaled, consider autoscaling based on the Collector's queue size instead of (or in addition to) CPU or memory usage.
 
 Backpressure commonly originates at the receiver when its own exporters (for example, {{es}} exporters) cannot keep up.
 
