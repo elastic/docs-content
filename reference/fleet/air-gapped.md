@@ -105,9 +105,9 @@ For more information, refer to [Using a proxy server with {{agent}} and {{fleet}
 The {{package-registry}} packages include signatures used in [package verification](/reference/fleet/package-signatures.md). By default, {{fleet}} uses the Elastic public GPG key to verify package signatures. If you ever need to change this GPG key, use the `xpack.fleet.packageVerification.gpgKeyPath` setting in [`kibana.yml`](/deploy-manage/stack-settings.md). For more information, refer to [{{fleet}} settings](kibana://reference/configuration-reference/fleet-settings.md).
 ::::
 
-If using {{eck}}, you can follow the instructions in [Deploy {{package-registry}} on {{eck}}](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
-
 If routing traffic through a proxy server is not an option, you can host your own {{package-registry}}.
+
+If using {{eck}}, you can follow the instructions in [Deploy {{package-registry}} on {{eck}}](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
 
 The {{package-registry}} can be deployed and hosted onsite using one of the available Docker images. These docker images include the {{package-registry}} and a selection of packages.
 
