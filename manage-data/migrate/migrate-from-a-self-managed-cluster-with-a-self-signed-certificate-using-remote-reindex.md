@@ -70,7 +70,7 @@ The `Destination` cluster should be the same or newer version as the `Source` cl
 
 ## Step 5: Reindex from remote `Source` cluster [ec-remote-reindex-step5]
 
-You can now run a remote reindex operation on the {{ech}} `Destination` cluster from the `Source` cluster, as described in the [migration guide](/manage-data/migrate.md#ech-reindex-remote):
+You can now run a remote reindex operation on the {{ech}} `Destination` cluster from the `Source` cluster, as described in the [migration guide](/manage-data/migrate/migrate-to-ech-or-ece.md#ech-reindex-remote).
 
 ```text
 POST _reindex

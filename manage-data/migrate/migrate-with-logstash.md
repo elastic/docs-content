@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate Elastic Cloud Hosted data to Serverless with Logstash
+navigation_title: Migrate with {{ls}}
 applies_to:
   serverless:
   deployment:
@@ -30,7 +30,7 @@ The Elasticsearch input plugin offers [additional configuration options](#additi
 - API keys in {{ls}} format for authentication with both deployments
 
 :::{important} 
-Kibana assets much be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
+Kibana assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
 Templates, data stream definitions, and ILM policies, must be in place _before_ you start data migration. 
 
 Visual components, such dashboard and visualizations, can be migrated after you have migrated the data.
