@@ -90,6 +90,9 @@ You can search existing cases and filter them by attributes such as assignees, c
 To view a case, click on its name. You can then:
 
 * Add and edit the case's description, comments, assignees, tags, status, severity, and category.
+
+    {applies_to}`stack: ga 9.2+` Copy and paste images into case comments using `Ctrl/Cmd` + `C` and `Ctrl/Cmd` + `V` shortcuts. Pasted images are preformatted in Markdown. 
+
 * Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
 * Refresh the case to retrieve the latest updates.

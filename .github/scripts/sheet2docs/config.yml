@@ -17,15 +17,24 @@ source:
 
   # Name of the tab/sheet within the spreadsheet
   # Can also use environment variable if needed
-  tab_name: "Models"
+  tab_name: "Public Model List"
 
 # Column configuration
 # Define which columns to include in the CSV and optionally rename them
 columns:
-  - source: "Type"
   - source: "Author"
   - source: "Name"
   - source: "ID"
+  - source: "Release Status"
+  - source: "Input Modalities"
+  - source: "Output Modalities"
+  - source: "EOL Date"
+  - source: "Data Retention Period (Days)"
+  - source: "Data Used To Train Models?"
+  - source: "Model Card"
+  - source: "Author Terms"
+  - source: "Provider Terms"
+  - source: "Inference Regions"
 
 # Output configuration
 output:
