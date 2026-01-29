@@ -53,7 +53,7 @@ Avoid prompts that attempt to handle multiple unrelated tasks. If a prompt becom
 
 #### Choose the right tool: Agents or Workflows
 
-Not every task benefits from prompt engineering. Some tasks are better suited to deterministic [Workflows](/explore-analyze/workflows.md) than to agent-based reasoning. Consider the following when deciding:
+Not every task benefits from prompt engineering. Some tasks are better suited to deterministic [workflows](/explore-analyze/workflows.md) than to agent-based reasoning. Consider the following when deciding:
 
 | Task requirement | Recommended approach |
 | :--- | :--- |
@@ -62,7 +62,7 @@ Not every task benefits from prompt engineering. Some tasks are better suited to
 | **Open-ended discovery** | **Agent**: Use a standard agent when the path to a solution requires dynamic reasoning or varied data exploration. |
 
 :::{tip}
-You can trigger Workflows directly from agent conversations using [Workflow tools](tools/workflow-tools.md).
+You can trigger workflows directly from agent conversations using [workflow tools](tools/workflow-tools.md).
 :::
 
 #### Use structured formatting
@@ -89,6 +89,8 @@ In the context window, custom instructions appear before tool definitions. To ma
 
 ## Define behavior and tone
 
+Use custom instructions to define how the agent communicates and handles uncertainty. A clear persona helps the agent make consistent decisions when faced with ambiguous situations.
+
 ### Set an operational persona
 
 Explicitly define the agent's risk tolerance and interaction style based on your use case:
@@ -105,6 +107,8 @@ Define formatting rules to ensure consistency between the LLM, the tools, and th
 * **Domain context**: Define organizational acronyms or naming conventions. (Example: "In this context, 'AOV' refers to Average Order Value.")
 
 ## Error handling and guardrails
+
+Agents encounter incomplete data, failed tool calls, and ambiguous requests. Explicit instructions for these scenarios prevent the agent from guessing or hallucinating responses.
 
 ### Anticipate edge cases
 
