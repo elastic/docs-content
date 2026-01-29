@@ -204,7 +204,7 @@ To add an alert to an existing case:
 ## Clean up alerts [clean-up-alerts-obs]
 
 ```{applies_to}
-stack: ga 9.4+, preview 9.1-9.3`
+stack: ga 9.4+, preview 9.1-9.3
 serverless: ga
 ```
 
