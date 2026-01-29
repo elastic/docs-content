@@ -44,7 +44,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 ### Fixes [serverless-changelog-01272026-fixes]
 * Fixes an issue with reporting in dashboards and visualizations [#249644]({{kib-pull}}249644)
 * Updates the logs overview component to use Zod v4 [#249583]({{kib-pull}}249583)
-* Implements the **Observability Agent** in AI Assistant insights and flyout configurations [#249776]({{kib-pull}}249776)
 * Fixes KQL autocomplete functionality during custom threshold rule creation [#250044]({{kib-pull}}250044)
 * Fixes a bug that caused an incorrect number of users to be displayed for CSV uploads [#249032]({{kib-pull}}249032)
 * Removes the **Technical preview** badge for the privileged access detection package [#249500]({{kib-pull}}249500)
