@@ -136,8 +136,8 @@ To apply or remove alert tags on multiple alerts, select the alerts you want to 
 ## Clean up alerts [clean-up-alerts]
 
 ```{applies_to}
-stack: preview 9.1 
-serverless: preview
+stack: ga 9.4+, preview 9.0-9.1`
+serverless: ga
 ```
 
 Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by running an alert cleanup task, which deletes alerts according to the criteria that you define.
