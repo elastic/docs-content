@@ -4,15 +4,15 @@ applies_to:
     self:
     ece:
     eck:
-navigation_title: Connect your self-managed cluster
+navigation_title: Connect your cluster
 products:
   - id: cloud-kubernetes
   - id: cloud-enterprise
 ---
 
-# Connect your self-managed cluster to AutoOps
+# Connect your ECE, ECK, or self-managed cluster to AutoOps
 
-To use AutoOps with your fully self-managed, ECE, or ECK {{es}} cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
+To use AutoOps with your ECE, ECK, or self-managed {{es}} cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
 
 The connection process takes about 10 minutes.
 
@@ -27,7 +27,7 @@ Ensure your system meets the following requirements before proceeding:
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above).
 * Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an [active self-managed trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
-* {applies_to}`eck: ga 3.3` Your ECK operator is on version 3.3.0 and above.
+* {applies_to}`eck: ga 3.3` To install {{agent}} using ECK, your ECK operator is on version 3.3.0 and above.
 
 ## Connect to AutoOps [connect-to-autoops]
 
@@ -73,10 +73,11 @@ Select one of the following methods to install {{agent}}:
 * **{{k8s}}**
 * **Docker**
 * **Linux**
-* {applies_to}`eck: ga 3.3`  **{{eck}} (ECK)** (recommended for ECK-managed {{es}} clusters)
+* {applies_to}`eck: ga 3.3`  **{{eck}} (ECK)**
 
 :::{note}
-macOS is not a supported platform for installing {{agent}} to connect to AutoOps in a self-managed production environment. However, you can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
+:applies_to: { eck: ga }
+You can choose any installation method when connecting your ECK-managed cluster to AutoOps. However, for ECK version 3.3.0+, we recommend choosing **ECK** as your installation method for a more integrated experience.   
 :::
 
 :::{important} 
@@ -102,7 +103,7 @@ Depending on your selected installation method, you might have to provide some o
 
   With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
 
-  1. Go to {{kib}} in your self-managed cluster.
+  1. Go to {{kib}} in your {{es}} cluster.
   2. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
   3. Select **Create API key**.
   4. In the flyout, enter a name for your key and select **User API key**.
@@ -147,7 +148,7 @@ Depending on your selected installation method, you might have to provide some o
 
   With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with these privileges:
 
-  * (Recommended) Go to {{kib}} in your self-managed cluster and then go to **Developer tools**. In **Console**, run the following command:
+  * (Recommended) Go to {{kib}} in your cluster and then go to **Developer tools**. In **Console**, run the following command:
   ```js
   POST /_security/role/autoops
   {
@@ -339,7 +340,9 @@ By default, each cluster has a name made up of a string of characters, but you c
 
 To connect more clusters, repeat the steps to [connect to AutoOps](#connect-to-autoops).
 
-If you don't need to change any of your [configuration settings](#configure-agent) for the additional clusters, you can skip ahead and reuse the same installation command if you used the {{k8s}}, Docker, or Linux methods, or apply the same `resourceSelector` label if you used the ECK method.
+If you don't need to change any of your [configuration settings](#configure-agent) for the additional clusters, you can skip ahead and reuse the same installation command if you used the {{k8s}}, Docker, or Linux installation methods. 
+
+{applies_to}`eck: ga 3.3`If you used ECK as your installation method, you can skip ahead and apply the same `resourceSelector` label to any additional clusters.
 
 Remember that you must install a separate, dedicated {{agent}} for each cluster. You only need to install the agent once per cluster. 
 

@@ -1,7 +1,6 @@
 ---
 applies_to:
   deployment:
-    self:
     eck:
 navigation_title: Connected clusters not appearing with ECK
 products:
@@ -10,7 +9,7 @@ products:
 
 # Troubleshoot connected clusters not appearing with ECK installation
 
-If you used {{eck}} (ECK) to connect your self-managed clusters to AutoOps but you can't view any connected clusters in your account, go through this guide to diagnose and fix common issues. 
+If you chose ECK as your installation method in the wizard to connect your {{es}} clusters to AutoOps, but you can't view any connected clusters in your account, go through this guide to diagnose and fix common issues.
 
 ## Verify `AutoOpsAgentPolicy` status
 

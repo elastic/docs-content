@@ -6,4 +6,4 @@ If your organization uses firewalls, you need to provide access to port 443 and 
 
     `https://otel-collector.auto-ops.us-east-1.aws.cloud.elastic.co/`
 
-Learn more about [defining an Elastic IP address](/deploy-manage/monitor/autoops/ec-autoops-faq.md#elastic-ip-address) for AutoOps for self-managed clusters.
+Learn more about [defining an Elastic IP address](/deploy-manage/monitor/autoops/ec-autoops-faq.md#elastic-ip-address) for AutoOps for ECE, ECK, or self-managed clusters.
