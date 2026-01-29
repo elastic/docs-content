@@ -42,6 +42,19 @@ From a TLS perspective, the local cluster must trust the remote cluster on the r
 
 Mutual TLS is not required in this model.
 
+### Strong identity verification [remote-cluster-strong-verification]
+```{applies_to}
+stack: preview 9.3
+```
+
+::::{include} _snippets/rcs_strong_identity_intro.md
+::::
+
+#### How strong identity verification works [_how_strong_verification_works]
+
+::::{include} _snippets/rcs_strong_identity_how.md
+::::
+
 ### Setup
 
 Refer to [Remote cluster setup](../remote-clusters.md#setup) for configuration guidance across all deployment types.
