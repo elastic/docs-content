@@ -106,7 +106,7 @@ exporters:
       enabled: true
 ```
 
-This ensures the Collector buffers data locally while waiting for the ingest endpoint to recover from throttling. For more information on export failures and queue configuration, refer to [Export failures when sending telemetry data](/troubleshoot/ingest/opentelemetry/edot-collector/trace-export-errors.md).
+This ensures the Collector buffers data locally while waiting for the ingest endpoint to recover from throttling. For more information on export failures and queue configuration, refer to [Export failures when sending telemetry data](/troubleshoot/ingest/opentelemetry/edot-collector/telemetry-export-errors.md).
 
 ## Best practices
 

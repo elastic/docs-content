@@ -33,7 +33,7 @@ If you're not sure where to start, review the Collector's logs for error message
 
 ## Connectivity and export issues
 
-* [Export failures when sending telemetry data](/troubleshoot/ingest/opentelemetry/edot-collector/trace-export-errors.md): Resolve export failures caused by `sending_queue` overflow and {{es}} exporter timeouts.
+* [Export failures when sending telemetry data](/troubleshoot/ingest/opentelemetry/edot-collector/telemetry-export-errors.md): Resolve export failures caused by `sending_queue` overflow and {{es}} exporter timeouts.
 
 ## Debugging
 
