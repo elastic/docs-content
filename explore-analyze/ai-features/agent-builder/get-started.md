@@ -1,4 +1,5 @@
 ---
+description: Learn how to get started with Elastic Agent Builder
 navigation_title: "Get started"
 applies_to:
   stack: preview =9.2, ga 9.3+
@@ -13,7 +14,9 @@ products:
 
 # Get started with {{agent-builder}}
 
-Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
+To start using {{agent-builder}} you need an {{es}} deployment. If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
+
+For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
 
 ::::{admonition} Agent Builder subscription requirements
 - {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
@@ -22,17 +25,6 @@ Learn how to get started by enabling the {{agent-builder}} features and begin ch
 ::::
 
 ::::::{stepper}
-::::{step} Set up an {{es}} deployment
-
-If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
-
-:::{note}
-For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation.
-You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
-:::
-
-::::
-
 :::::{step} Enable {{agent-builder}}
 
 ::::{applies-switch}
@@ -47,23 +39,23 @@ Find **Agents** in the navigation menu to begin using the feature, or search for
 
 :::{applies-item} { "serverless": "preview", "observability" }
 
-{{product.observability}} users must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+In {{product.observability}} projects, you must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
 
-Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Once enabled, find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
 :::{applies-item} { "serverless": "preview", "security" }
 
-{{product.security}} users must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+In {{product.security}} projects, you must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
 
-Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Once enabled, find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
 :::{applies-item} stack: preview =9.2, ga 9.3+
 
-On non-serverless deployments, {{agent-builder}} availability depends on your navigation mode:
+On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
 
 - **{{es}} solution view**: {{agent-builder}} is enabled by default and appears in the side navigation. It replaces Search Assistant.
 - **{{product.observability}} and {{product.security}} solution views**: You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
