@@ -9,9 +9,9 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
-## January 27, 2026 [serverless-changelog-01272026]
+## January 26, 2026 [serverless-changelog-01262026]
 
-### Features and enhancements [serverless-changelog-01272026-features-enhancements]
+### Features and enhancements [serverless-changelog-01262026-features-enhancements]
 * Elastic will regularly be adding new ML models which will appear as pre-configured AI connectors in your projects. Refer to [the Elastic Inference Service page](docs-content://explore-analyze/elastic-inference/eis.md) for more details
 * Adds support for PromQL queries in the {{esql}} editor [#249230]({{kib-pull}}249230)
 * Opts in to the flyout session for the **Unified Doc Viewer** flyout [#246719]({{kib-pull}}246719)
@@ -33,7 +33,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Replaces the AJV library with Zod for improved schema validation across Kibana [#248317]({{kib-pull}}248317)
 * Adds an option to convert an index to a lookup index in the **Manage index** dropdown [#248730]({{kib-pull}}248730)
 * Adds Chat Completion to Amazon Bedrock for the Inference API [#139411]({{es-pull}}139411)
-* [Native] BBQ Int4 to 1-bit dot product functions [#140264]({{es-pull}}140264)
+* Adds dot product functions for Int4 to 1-bit in BBQ [#140264]({{es-pull}}140264)
 * Adds IntRangeVector for selected groups in aggregation [#141205]({{es-pull}}141205)
 * Adds Case and Coalesce Support for Compound Types [#140677]({{es-pull}}140677)
 * Adds {{esql}} support for project METADATA [#140592]({{es-pull}}140592)
@@ -41,7 +41,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds preconditioning utilities to help with edge cases where quantization causes vectors to become indistinguishable [#140198]({{es-pull}}140198)
 * Implements the **Observability Agent** in AI Assistant insights and flyout configurations [#249776]({{kib-pull}}249776)
 
-### Fixes [serverless-changelog-01272026-fixes]
+### Fixes [serverless-changelog-01262026-fixes]
 * Fixes an issue with reporting in dashboards and visualizations [#249644]({{kib-pull}}249644)
 * Updates the logs overview component to use Zod v4 [#249583]({{kib-pull}}249583)
 * Fixes KQL autocomplete functionality during custom threshold rule creation [#250044]({{kib-pull}}250044)
