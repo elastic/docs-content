@@ -13,25 +13,26 @@ products:
 
 # Best practices for prompt engineering in {{agent-builder}}
 
-Effective AI agents succeed when they use the right tools at the right time. An agent’s ability to reason over user intent, discover relevant data sources, and execute precise tool sequences is determined by how its prompts and tool definitions are structured.
+Prompt engineering in {{agent-builder}} involves three key areas:
 
-This guide outlines core principles for crafting prompts that enable reliable, cost-effective, and efficient agents within {{agent-builder}}.
+* **Custom instructions**: When you [create a custom agent](custom-agents.md), you define instructions that shape the agent's persona, reasoning patterns, and guardrails.
+* **Tool descriptions**: When you [define custom tools](tools/custom-tools.md), you write descriptions that help the agent understand when and how to use each tool.
+* **Chat prompts**: How you phrase your questions when [chatting with agents](chat.md) affects the quality and accuracy of responses.
+
+This guide outlines best practices for all three to help you build reliable, cost-effective agents.
 
 :::{tip}
-To learn about best practices for your custom tool definitions, refer to [](tools/custom-tools.md#best-practices).
+To learn about best practices specifically for your custom tool definitions, refer to [](tools/custom-tools.md#best-practices).
 :::
 
-## How prompts interact with preconfigured agents
+## How agents process prompts
 
-When building agents with {{agent-builder}}, your custom instructions do not exist in a vacuum. General-purpose agents (like the Elastic AI Agent) and domain-specific agents (such as Observability or Threat Hunting agents) include preconfigured system-level instructions.
+When you chat with an agent, your message is combined with the agent's system-level instructions before being sent to the LLM. [Built-in agents](builtin-agents-reference.md) have preconfigured instructions optimized for their use case. [Custom agents](custom-agents.md) combine your custom instructions with {{agent-builder}}'s base system prompt, which enables core features like visualization and citations.
 
-Your custom prompt layers on top of these foundational instructions to:
-* **Refine behavior**: Narrow the agent's focus to a specific business unit or dataset.
-* **Add task-specific logic**: Introduce rules or multi-step reasoning patterns not present in the global prompt.
-* **Clarify operations**: Define how the agent should interpret unique organizational data.
+This means your chat prompts work together with the agent's instructions. A well-designed custom agent with clear instructions requires less detailed chat prompts, while a general-purpose built-in agent may need more specific prompts to achieve the same results.
 
 :::{tip}
-To understand the baseline reasoning patterns of your agent, refer to the official prompt engineering guides provided by LLM vendors. Understanding the "system prompt" philosophy of the underlying model helps you write custom instructions that complement, rather than contradict, the model's native behavior.
+To understand the baseline reasoning patterns of your agent, refer to the official prompt engineering guides provided by LLM vendors. Understanding the "system prompt" philosophy of the underlying model helps you write instructions and chat prompts that complement, rather than contradict, the model's native behavior.
 :::
 
 ## Prompting guidelines
@@ -43,7 +44,7 @@ The prompt serves as the agent's operating manual. Follow these guidelines to mi
 Avoid "over-prompting" with excessive text. High-reasoning models are capable of inferring intent from concise, well-structured instructions.
 
 * **Begin with clarity**: Use unambiguous instructions specific to your primary tasks. Only add granular, step-by-step logic if the model fails a specific use case during testing.
-* **Consult provider guides**: If your agent relies on a specific model family (for example Anthropic Claude or OpenAI GPT), use their specific architecture optimizations. For example, certain models are sensitive to specific keywords when extended thinking features are enabled.
+* **Consult provider guides**: If your agent relies on a specific [model](models.md) family (for example Anthropic Claude or OpenAI GPT), use their specific architecture optimizations. For example, certain models are sensitive to specific keywords when extended thinking features are enabled.
 * **Benchmark changes**: Treat prompts like code. Version your prompts and measure performance against a "golden dataset"—a collection of verified query-and-response pairs. Avoid modifying prompts based on a single failure; ensure changes improve aggregate performance.
 
 ### Structure and scope
@@ -52,11 +53,17 @@ Avoid prompts that attempt to handle multiple unrelated tasks. If a prompt becom
 
 #### Choose the right tool: Agents or Workflows
 
+Not every task benefits from prompt engineering. Some tasks are better suited to deterministic [Workflows](/explore-analyze/workflows.md) than to agent-based reasoning. Consider the following when deciding:
+
 | Task requirement | Recommended approach |
 | :--- | :--- |
-| **High accuracy & sequential steps** | **Workflow**: Use a [Workflow](agents-and-workflows.md) for logic that must be executed in a specific order (for example Step 1 must complete before Step 2). Hard-coded logic is more reliable than probabilistic reasoning. |
+| **High accuracy & sequential steps** | **Workflow**: Use a Workflow for logic that must be executed in a specific order (for example Step 1 must complete before Step 2). Hard-coded logic is more reliable than probabilistic reasoning. |
 | **Independent, complex tasks** | **Specialized agents**: Break tasks into sub-agents to keep the context window focused and reduce tool-selection errors. |
 | **Open-ended discovery** | **Agent**: Use a standard agent when the path to a solution requires dynamic reasoning or varied data exploration. |
+
+:::{tip}
+You can trigger Workflows directly from agent conversations using [Workflow tools](tools/workflow-tools.md).
+:::
 
 #### Use structured formatting
 
@@ -75,7 +82,7 @@ List constraints, safety rules, and prohibited actions.
 
 #### Optimize for prompt caching
 
-In the context window, custom instructions appear before tool definitions. To maximize prompt caching and reduce latency and costs:
+In the context window, custom instructions appear before tool definitions. To maximize prompt caching and reduce latency and [costs](monitor-usage.md):
 
 * **Maintain static instructions**: Keep the instruction block consistent across sessions.
 * **Avoid dynamic variables**: Do not insert volatile data (such as millisecond timestamps or session IDs) directly into the main instruction block. This forces the LLM to re-process the entire prompt, including the tool definitions, on every turn.
@@ -114,8 +121,8 @@ Teach the agent to be resilient. If a tool returns an error or an empty response
 
 ## Related pages
 
-* [Best practices for tool definitions](tools/custom-tools.md#best-practices)
+* [Custom agents](custom-agents.md)
 * [Custom tools](tools/custom-tools.md)
-* [Workflow tools](tools/workflow-tools.md)
-* [Built-in tools reference](tools/builtin-tools-reference.md)
+* [Best practices for tool definitions](tools/custom-tools.md#best-practices)
+* [Agent Chat](chat.md)
 
