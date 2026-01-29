@@ -7,11 +7,6 @@ applies_to:
 
 This quickstart provides a hands-on introduction to the fundamental concepts of {{es}}: [indices, documents, and field type mappings](../../../manage-data/data-store/index-basics.md). You'll learn how to create an index, add documents, work with dynamic and explicit mappings, and perform your first basic searches.
 
-::::{tip}
-The code examples are in [Console](/explore-analyze/query-filter/tools/console.md) syntax by default.
-You can [convert into other programming languages](/explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
-::::
-
 ## Requirements [getting-started-requirements]
 
 You can follow this guide using any {{es}} deployment.
@@ -20,25 +15,62 @@ To get started quickly, spin up a cluster [locally in Docker](/deploy-manage/dep
 
 ## Add data to {{es}} [getting-started-index-creation]
 
-::::{tip}
+:::::{tip}
 This quickstart uses {{es}} APIs, but there are many other ways to [add data to {{es}}](/solutions/search/ingest-for-search.md).
-::::
+:::::
 
 You add data to {{es}} as JSON objects called documents.
 {{es}} stores these documents in searchable indices.
 
-:::::{stepper}
-::::{step} Create an index
+::::::{stepper}
+:::::{step} Create an index
 
 Create a new index named `books`:
 
-```console
-PUT /books
-```
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+
+:::{include} _snippets/index-basics/example1-console.md
+:::
+
+:::{tab-item} curl
+:sync: curl
+
+:::{include} _snippets/index-basics/example1-curl.md
+:::
+
+:::{tab-item} Python
+:sync: python
+
+:::{include} _snippets/index-basics/example1-python.md
+:::
+
+:::{tab-item} JavaScript
+:sync: js
+
+:::{include} _snippets/index-basics/example1-js.md
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+:::{include} _snippets/index-basics/example1-php.md
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+:::{include} _snippets/index-basics/example1-ruby.md
+:::
+
+::::
 
 The following response indicates the index was created successfully.
 
-:::{dropdown} Example response
+::::{dropdown} Example response
 
 ```console-result
 {
@@ -48,26 +80,57 @@ The following response indicates the index was created successfully.
 }
 ```
 
-:::
 ::::
-::::{step} Add a single document
+:::::
+:::::{step} Add a single document
 
 Use the following request to add a single document to the `books` index.
 If the index doesn't already exist, this request will automatically create it.
 
-```console
-POST books/_doc
-{
-  "name": "Snow Crash",
-  "author": "Neal Stephenson",
-  "release_date": "1992-06-01",
-  "page_count": 470
-}
-```
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+
+:::{include} _snippets/index-basics/example2-console.md
+:::
+
+:::{tab-item} curl
+:sync: curl
+
+:::{include} _snippets/index-basics/example2-curl.md
+:::
+
+:::{tab-item} Python
+:sync: python
+
+:::{include} _snippets/index-basics/example2-python.md
+:::
+
+:::{tab-item} JavaScript
+:sync: js
+
+:::{include} _snippets/index-basics/example2-js.md
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+:::{include} _snippets/index-basics/example2-php.md
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+:::{include} _snippets/index-basics/example2-ruby.md
+:::
+
+::::
 
 The response includes metadata that {{es}} generates for the document, including a unique `_id` for the document within the index.
 
-:::{dropdown} Example response
+::::{dropdown} Example response
 
 ```console-result
 {
@@ -95,30 +158,57 @@ The response includes metadata that {{es}} generates for the document, including
 8. `failed`: The number of shards that failed during the indexing operation. *0* indicates no failures.
 9. `_seq_no`: A monotonically increasing number incremented for each indexing operation on a shard.
 10. `_primary_term`: A monotonically increasing number incremented each time a primary shard is assigned to a different node.
-:::
 ::::
-::::{step} Add multiple documents
+:::::
+:::::{step} Add multiple documents
 
 Use the [`_bulk` endpoint]({{es-apis}}operation/operation-bulk) to add multiple documents in a single request.
 Bulk data must be formatted as newline-delimited JSON (NDJSON).
 
-```console
-POST /_bulk
-{ "index" : { "_index" : "books" } }
-{"name": "Revelation Space", "author": "Alastair Reynolds", "release_date": "2000-03-15", "page_count": 585}
-{ "index" : { "_index" : "books" } }
-{"name": "1984", "author": "George Orwell", "release_date": "1985-06-01", "page_count": 328}
-{ "index" : { "_index" : "books" } }
-{"name": "Fahrenheit 451", "author": "Ray Bradbury", "release_date": "1953-10-15", "page_count": 227}
-{ "index" : { "_index" : "books" } }
-{"name": "Brave New World", "author": "Aldous Huxley", "release_date": "1932-06-01", "page_count": 268}
-{ "index" : { "_index" : "books" } }
-{"name": "The Handmaids Tale", "author": "Margaret Atwood", "release_date": "1985-06-01", "page_count": 311}
-```
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+
+:::{include} _snippets/index-basics/example3-console.md
+:::
+
+:::{tab-item} curl
+:sync: curl
+
+:::{include} _snippets/index-basics/example3-curl.md
+:::
+
+:::{tab-item} Python
+:sync: python
+
+:::{include} _snippets/index-basics/example3-python.md
+:::
+
+:::{tab-item} JavaScript
+:sync: js
+
+:::{include} _snippets/index-basics/example3-js.md
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+:::{include} _snippets/index-basics/example3-php.md
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+:::{include} _snippets/index-basics/example3-ruby.md
+:::
+
+::::
 
 You should receive a response indicating there were no errors.
 
-:::{dropdown} Example response
+::::{dropdown} Example response
 
 ```console-result
 {
@@ -209,9 +299,9 @@ You should receive a response indicating there were no errors.
 }
 ```
 
-:::
 ::::
-::::{step} Use dynamic mapping
+:::::
+:::::{step} Use dynamic mapping
 
 [Mappings](/manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings) define how data is stored and indexed in {{es}}, like a schema in a relational database.
 
@@ -220,28 +310,93 @@ The documents you've added so far have used dynamic mapping, because you didn't 
 
 To see how dynamic mapping works, add a new document to the `books` index with a field that isn't available in the existing documents.
 
-```console
-POST /books/_doc
-{
-  "name": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "release_date": "1925-04-10",
-  "page_count": 180,
-  "language": "EN" <1>
-}
-```
+::::{tab-set}
+:group: api-examples
 
-1. The new field.
+:::{tab-item} Console
+:sync: console
+
+:::{include} _snippets/index-basics/example4-console.md
+:::
+
+:::{tab-item} curl
+:sync: curl
+
+:::{include} _snippets/index-basics/example4-curl.md
+:::
+
+:::{tab-item} Python
+:sync: python
+
+:::{include} _snippets/index-basics/example4-python.md
+:::
+
+:::{tab-item} JavaScript
+:sync: js
+
+:::{include} _snippets/index-basics/example4-js.md
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+:::{include} _snippets/index-basics/example4-php.md
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+:::{include} _snippets/index-basics/example4-ruby.md
+:::
+
+::::
 
 View the mapping for the `books` index with the [get mapping API]({{es-apis}}operation/operation-indices-get-mapping).
 The new field `language` has been added to the mapping with a `text` data type.
 
-```console
-GET /books/_mapping
-```
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+
+:::{include} _snippets/index-basics/example5-console.md
+:::
+
+:::{tab-item} curl
+:sync: curl
+
+:::{include} _snippets/index-basics/example5-curl.md
+:::
+
+:::{tab-item} Python
+:sync: python
+
+:::{include} _snippets/index-basics/example5-python.md
+:::
+
+:::{tab-item} JavaScript
+:sync: js
+
+:::{include} _snippets/index-basics/example5-js.md
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+:::{include} _snippets/index-basics/example5-php.md
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+:::{include} _snippets/index-basics/example5-ruby.md
+:::
+
+::::
 
 The following response displays the mappings that were created by {{es}}.
-:::{dropdown} Example response
+::::{dropdown} Example response
 
 ```console-result
 {
@@ -286,34 +441,57 @@ The following response displays the mappings that were created by {{es}}.
   }
 }
 ```
-:::
 ::::
-::::{step} Define explicit mapping
+:::::
+:::::{step} Define explicit mapping
 
 Create an index named `my-explicit-mappings-books` and specify the mappings yourself.
 Pass each field's properties as a JSON object.
 This object should contain the [field data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) and any additional [mapping parameters](elasticsearch://reference/elasticsearch/mapping-reference/mapping-parameters.md).
 
-```console
-PUT /my-explicit-mappings-books
-{
-  "mappings": {
-    "dynamic": false,  <1>
-    "properties": {  <2>
-      "name": { "type": "text" },
-      "author": { "type": "text" },
-      "release_date": { "type": "date", "format": "yyyy-MM-dd" },
-      "page_count": { "type": "integer" }
-    }
-  }
-}
-```
+::::{tab-set}
+:group: api-examples
 
-1. `dynamic`: Turns off dynamic mapping for the index. If you don't define fields in the mapping, they'll still be stored in the document's `_source` field, but you can't index or search them.
-2. `properties`: Defines the fields and their corresponding data types.
+:::{tab-item} Console
+:sync: console
+
+:::{include} _snippets/index-basics/example6-console.md
+:::
+
+:::{tab-item} curl
+:sync: curl
+
+:::{include} _snippets/index-basics/example6-curl.md
+:::
+
+:::{tab-item} Python
+:sync: python
+
+:::{include} _snippets/index-basics/example6-python.md
+:::
+
+:::{tab-item} JavaScript
+:sync: js
+
+:::{include} _snippets/index-basics/example6-js.md
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+:::{include} _snippets/index-basics/example6-php.md
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+:::{include} _snippets/index-basics/example6-ruby.md
+:::
+
+::::
 
 The following response indicates a successful operation.
-:::{dropdown} Example response
+::::{dropdown} Example response
 ```console-result
 {
   "acknowledged": true,
@@ -321,29 +499,66 @@ The following response indicates a successful operation.
   "index": "my-explicit-mappings-books"
 }
 ```
-:::
+::::
 
 Explicit mappings are defined at index creation, and documents must conform to these mappings.
 You can also use the [update mapping API]({{es-apis}}operation/operation-indices-put-mapping).
 When an index has the `dynamic` flag set to `true`, you can add new fields to documents without updating the mapping, which allows you to combine explicit and dynamic mappings.
 Learn more about [managing and updating mappings](/manage-data/data-store/mapping.md#mapping-manage-update).
-::::
 :::::
+::::::
 
 ## Search your data [getting-started-search-data]
 
 Indexed documents are available for search in near real-time, using the [`_search` API](/solutions/search/querying-for-search.md).
 
-:::::{stepper}
-::::{step} Search all documents
+::::::{stepper}
+:::::{step} Search all documents
 
 Use the following request to search all documents in the `books` index:
 
-```console
-GET books/_search
-```
+::::{tab-set}
+:group: api-examples
 
-:::{dropdown} Example response
+:::{tab-item} Console
+:sync: console
+
+:::{include} _snippets/index-basics/example7-console.md
+:::
+
+:::{tab-item} curl
+:sync: curl
+
+:::{include} _snippets/index-basics/example7-curl.md
+:::
+
+:::{tab-item} Python
+:sync: python
+
+:::{include} _snippets/index-basics/example7-python.md
+:::
+
+:::{tab-item} JavaScript
+:sync: js
+
+:::{include} _snippets/index-basics/example7-js.md
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+:::{include} _snippets/index-basics/example7-php.md
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+:::{include} _snippets/index-basics/example7-ruby.md
+:::
+
+::::
+
+::::{dropdown} Example response
 ```console-result
 {
   "took": 2, <1>
@@ -389,30 +604,60 @@ GET books/_search
 9. `_score`: The relevance score of the document
 10. `_source`: The original JSON object submitted during indexing
 
-:::
 ::::
-::::{step} Search with a match query
+:::::
+:::::{step} Search with a match query
 
 Use the [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
 
 Use the following request to search the `books` index for documents containing `brave` in the `name` field:
 
-```console
-GET books/_search
-{
-  "query": {
-    "match": {
-      "name": "brave"
-    }
-  }
-}
-```
+::::{tab-set}
+:group: api-examples
 
-:::{tip}
-This example uses [Query DSL](/explore-analyze/query-filter/languages/querydsl.md), which is the primary query language for {{es}}.
+:::{tab-item} Console
+:sync: console
+
+:::{include} _snippets/index-basics/example8-console.md
 :::
 
-:::{dropdown} Example response
+:::{tab-item} curl
+:sync: curl
+
+:::{include} _snippets/index-basics/example8-curl.md
+:::
+
+:::{tab-item} Python
+:sync: python
+
+:::{include} _snippets/index-basics/example8-python.md
+:::
+
+:::{tab-item} JavaScript
+:sync: js
+
+:::{include} _snippets/index-basics/example8-js.md
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+:::{include} _snippets/index-basics/example8-php.md
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+:::{include} _snippets/index-basics/example8-ruby.md
+:::
+
+::::
+
+::::{tip}
+This example uses [Query DSL](/explore-analyze/query-filter/languages/querydsl.md), which is the primary query language for {{es}}.
+::::
+
+::::{dropdown} Example response
 ```console-result
 {
   "took": 9,
@@ -447,9 +692,9 @@ This example uses [Query DSL](/explore-analyze/query-filter/languages/querydsl.m
 ```
 
 1. `max_score`: Score of the highest-scoring document in the results. In this case, there is only one matching document, so the `max_score` is the score of that document.
-:::
 ::::
 :::::
+::::::
 
 ## Delete your indices [getting-started-delete-indices]
 
@@ -457,15 +702,51 @@ If you want to delete an index to start from scratch at any point, use the [dele
 
 For example, use the following request to delete the indices created in this quickstart:
 
-```console
-DELETE /books
-DELETE /my-explicit-mappings-books
-```
+::::{tab-set}
+:group: api-examples
 
-::::{warning}
-Deleting an index permanently deletes its documents, shards, and metadata.
+:::{tab-item} Console
+:sync: console
+
+:::{include} _snippets/index-basics/example9-console.md
+:::
+
+:::{tab-item} curl
+:sync: curl
+
+:::{include} _snippets/index-basics/example9-curl.md
+:::
+
+:::{tab-item} Python
+:sync: python
+
+:::{include} _snippets/index-basics/example9-python.md
+:::
+
+:::{tab-item} JavaScript
+:sync: js
+
+:::{include} _snippets/index-basics/example9-js.md
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+:::{include} _snippets/index-basics/example9-php.md
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+:::{include} _snippets/index-basics/example9-ruby.md
+:::
 
 ::::
+
+:::::{warning}
+Deleting an index permanently deletes its documents, shards, and metadata.
+
+:::::
 
 ## Next steps
 
