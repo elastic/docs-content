@@ -24,7 +24,7 @@ To connect your ECE, ECK, or self-managed cluster to AutoOps, you have to use yo
 :::
 
 :::{image} /deploy-manage/images/self-managed-autoops-diagram.png
-:alt: Diagram depicting how AutoOps for self-managed clusters works
+:alt: Diagram depicting how AutoOps for ECE, ECK, and self-managed clusters works
 :::
 
 For instructions on how to get started, refer to [](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md).
@@ -35,11 +35,11 @@ After this setup is complete, you can start using AutoOps to monitor your cluste
 
 In this section, you'll find the following information:
 
-* How to [connect your self-managed cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md)
+* How to [connect your ECE, ECK, or self-managed cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md)
 * How to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md)
 * How to [manage users of your connected clusters](/deploy-manage/monitor/autoops/cc-manage-users.md)
 * A [troubleshooting guide](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md) to help you with any issues you may encounter
 
 :::{tip}
-Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#questions-about-autoops-for-self-managed-clusters) for answers to frequently asked questions about AutoOps for self-managed clusters.
+Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#questions-about-autoops-for-ece-eck-or-self-managed-clusters) for answers to frequently asked questions about AutoOps for ECE, ECK, or self-managed clusters.
 :::
