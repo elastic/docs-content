@@ -117,7 +117,8 @@ Visual components, such dashboard and visualizations, can be migrated after you 
         }
         ```
         1. Your {{serverless-short}} host URL. This is the {{es}} endpoint that you copied in Step 1.
-        1. Your {{es}} username and password for authenticating the connection to your {{ech}} deployment.
+        1. Your {{es}} username for authenticating the connection to your {{ech}} deployment.
+        1. Your {{es}} password for authenticating the connection to your {{ech}} deployment.
         1. The source index in your {{ech}} deployment.
         1. The field and value to match when selecting documents from the source index.
         1. The destination index in your {{serverless-short}} project.
