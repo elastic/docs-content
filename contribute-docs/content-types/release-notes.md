@@ -77,7 +77,7 @@ When creating changelog entries, follow these best practices:
 
 ### Choose the changelog type [changelog-types]
 
-The changlog type categorizes your change and determines which section it appears in within the release notes. Choose the type that best describes your change:
+The changelog type categorizes your change and determines which section it appears in within the release notes. Choose the type that best describes your change:
 
 Breaking change
 :   Use `breaking-change` for changes that potentially make other systems that rely on the product break or misbehave.
