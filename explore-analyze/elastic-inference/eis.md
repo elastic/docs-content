@@ -26,53 +26,33 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 * You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
+
+## Supported models
+
+This table lists the models supported by Elastic {{infer-cap}} Service.
+
+::::{note}
+The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
+::::
+
+:::{csv-include} models.csv
+:caption: Models supported by Elastic Inference Service
+:::
+
+::::{important}
+
+* Elastic does not guarantee the availability of supported models.
+* Use of the Elastic {{infer-cap}} Service requires that customers have read and agreed to the applicable terms of the model providers. Use of a model constitutes a contract between the customer and the model provider.
+* “AI Models” means the third-party generative artificial intelligence models accessed via API through the Service and listed on the [OpenRouter website](https://openrouter.ai/models).
+* “AI Model Provider” means the provider of the applicable AI Model.
+* Availability. OpenRouter does not guarantee availability of the AI Models and provides Customer access to the AI Models only on an as-available basis. AI Model uptime and performance are described in the applicable AI Model Terms, and Customer is responsible for (a) reviewing the AI Model Terms to understand the availability and data practices of each AI Model Provider, and (b) agreeing to the AI Model Terms prior to using the Service. 
+::::
+
 ## Region and hosting [eis-regions]
 
 Elastic {{infer-cap}} Service is currently available in a single region: {{aws}} `us-east-1`. All {{infer}} requests sent through EIS are routed to this region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
 
 Depending on the model being used, request processing may involve Elastic {{infer}} infrastructure and, in some cases, trusted third-party model providers. For example, ELSER requests are processed entirely within Elastic {{infer}} infrastructure in {{aws}} `us-east-1`. Other models, such as large language models or third-party embedding models, may involve additional processing by their respective model providers, which can operate in different cloud platforms or regions.
-
-## ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
-
-```{applies_to}
-stack: preview =9.1, ga 9.2+
-serverless: ga
-```
-
-ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for ingest throughput than ML nodes and equivalent performance for search latency. We will continue to benchmark, remove limitations and address concerns.
-
-### Using the ELSER on EIS endpoint
-
-You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how to use the `.elser-2-elastic` inference endpoint, refer to [Using ELSER on EIS](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#using-elser-on-eis).
-
-#### Get started with semantic search with ELSER on EIS
-
-[Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
-
-## `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
-
-```{applies_to}
-stack: preview 9.3
-serverless: preview
-```
-
-You can use the `jina-embeddings-v3` model through Elastic {{infer-cap}} Service. Running the model on EIS means that you use the model on GPUs, without the need of managing infrastructure and model resources.
-
-### Get started with `jina-embeddings-v3` on EIS
-
-Create an {{infer}} endpoint that references the `jina-embeddings-v3` model in the `model_id` field.
-
-```console
-PUT _inference/text_embedding/eis-jina-embeddings-v3
-{
-  "service": "elastic",
-  "service_settings": {
-    "model_id": "jina-embeddings-v3"
-  }
-}
-```
-
-The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, text_embedding {{infer}} tasks, or search queries.
 
 ## Rate limits
 
@@ -109,3 +89,47 @@ To track your token consumption:
 
 1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
+
+## Usecases
+
+### ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
+
+```{applies_to}
+stack: preview =9.1, ga 9.2+
+serverless: ga
+```
+
+ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for ingest throughput than ML nodes and equivalent performance for search latency. We will continue to benchmark, remove limitations and address concerns.
+
+#### Using the ELSER on EIS endpoint
+
+You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how to use the `.elser-2-elastic` inference endpoint, refer to [Using ELSER on EIS](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#using-elser-on-eis).
+
+##### Get started with semantic search with ELSER on EIS
+
+[Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
+
+### `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
+
+```{applies_to}
+stack: preview 9.3
+serverless: preview
+```
+
+You can use the `jina-embeddings-v3` model through Elastic {{infer-cap}} Service. Running the model on EIS means that you use the model on GPUs, without the need of managing infrastructure and model resources.
+
+#### Get started with `jina-embeddings-v3` on EIS
+
+Create an {{infer}} endpoint that references the `jina-embeddings-v3` model in the `model_id` field.
+
+```console
+PUT _inference/text_embedding/eis-jina-embeddings-v3
+{
+  "service": "elastic",
+  "service_settings": {
+    "model_id": "jina-embeddings-v3"
+  }
+}
+```
+
+The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, text_embedding {{infer}} tasks, or search queries.
