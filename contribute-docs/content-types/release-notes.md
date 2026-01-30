@@ -31,9 +31,8 @@ Readers of release notes include:
 
 ## Structure of release notes
 
-Elastic release notes should be generated from changelog YAML files that follow a common schema.
+Elastic release notes should be generated from changelog YAML files that follow a [common schema](https://github.com/elastic/docs-builder/blob/main/docs/contribute/_snippets/changelog-fields.md).
 Each changelog file describes a single change and includes metadata such as the type of change, affected products, and user-facing descriptions.
-<!-- The changelog schema includes required and optional fields depending on the type of change. -->
 
 :::{note}
 The layout and formatting of release notes in the published documentation is handled automatically by Elastic Docs.
