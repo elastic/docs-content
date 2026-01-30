@@ -16,7 +16,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} Gap auto fill scheduler task might fail after upgrading from {{stack}} versions earlier than 8.9
+:::{dropdown} Details about gap fills aren't properly updated
 
 Applies to: 9.3
 
