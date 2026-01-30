@@ -524,7 +524,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.0.3-features-enhancements]
 * Adds `dns` event collection for macOS for {{elastic-defend}} [#223566]({{kib-pull}}223566).
-* Adds pricing information about Elastic Managed LLM in AI Assistant and Attack Discovery tours and callouts [#221566]({{kib-pull}}221566).
+* Adds pricing information about Preconfigured AI Connector in AI Assistant and Attack Discovery tours and callouts [#221566]({{kib-pull}}221566).
 * Adds support for DNS events on macOS. Events can be controlled from the policy using the **DNS events** checkbox.
 
 ### Fixes [elastic-security-9.0.3-fixes]

@@ -69,7 +69,7 @@ While AI Assistant is compatible with many different models, refer to the [Large
 
 ::::
 
-### Elastic Managed LLM [elastic-managed-llm-security-ai-assistant]
+### Preconfigured AI Connector [elastic-managed-llm-security-ai-assistant]
 
 :::{include} ../../_snippets/elastic-managed-llm.md
 :::

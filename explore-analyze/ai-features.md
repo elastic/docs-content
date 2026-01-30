@@ -21,7 +21,7 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 ## Requirements
 
 - To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
-- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLM is available by default if your license supports it.
+- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Preconfigured AI Connector is available by default if your license supports it.
 
 ## AI-powered features on the Elastic platform
 
@@ -35,7 +35,7 @@ To learn more, refer to:
 
 - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md):
 A managed service that runs {{infer}} without the need of deploying a model, or managing infrastructure and resources.
-- [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm.md):
+- [Preconfigured AI Connector connector](kibana://reference/connectors-kibana/elastic-managed-llm.md):
 This connector enables you to use built-in LLMs vetted for GenAI product features across the platform.
 - [The {{infer}} API](/explore-analyze/elastic-inference/inference-api.md):
 This general-purpose API enables you to perform {{infer}} operations using EIS, your own models, or third-party services.
