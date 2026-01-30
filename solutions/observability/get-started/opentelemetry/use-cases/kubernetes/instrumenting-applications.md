@@ -25,14 +25,14 @@ On the other hand, manual instrumentation with OpenTelemetry allows you to custo
 
 Before starting with application auto-instrumentation, ensure the following prerequisites are in place for proper setup:
 
-- Install the OpenTelemetry operator and EDOT collectors following the [quickstart guide]/solutions/observability/get-started/opentelemetry/quickstart/index.md).
+- Install the OpenTelemetry operator and EDOT collectors following the [quickstart guide](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 - Ensure a valid `kind: Instrumentation` object exists in the cluster.
 
 ## Auto-instrumentation basics
 
 Zero-code instrumentation is handled by the operator through `Instrumentation` objects, used to automatically inject the necessary SDKs and configuration into application workloads.
 
-If you followed the [quickstart guide]/solutions/observability/get-started/opentelemetry/quickstart/index.md) to install the operator, there should be an `Instrumentation` object with name `elastic-instrumentation` in namespace `opentelemetry-operator-system`:
+If you followed the [quickstart guide](/solutions/observability/get-started/opentelemetry/quickstart/index.md) to install the operator, there should be an `Instrumentation` object with name `elastic-instrumentation` in namespace `opentelemetry-operator-system`:
 
 ```bash
 kubectl get instrumentation -A
