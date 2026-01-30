@@ -5,7 +5,7 @@ description: "Guidelines for writing effective release notes content in changelo
 # Release notes
 
 This page provides guidelines for writing useful and consistent release notes for Elastic products.
-This page and the associated changelog schema can be used by humans and LLMs to draft new release notes or to evaluate existing content.
+Use this content type and the associated schema to draft new release notes or to evaluate existing content.
 
 Use this page to:
 
