@@ -78,6 +78,12 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 - **Define parameter types**: Ensure parameters have the correct type to avoid runtime errors
 - **Provide clear descriptions**: Help agents understand when and how to use each parameter
 
+For general guidance on naming tools and writing effective descriptions, refer to [Custom tools best practices](custom-tools.md#best-practices).
+
+:::{tip}
+If queries are slow or failing, you might be retrieving more data than the LLM can process. Refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md) for tips on diagnosing and resolving these issues.
+:::
+
 ## Limitations
 
 {{esql}} tools are subject to the current limitations of the {{esql}} language itself. For more information, refer to [{{esql}} tool limitations](../limitations-known-issues.md#esql-limitations).

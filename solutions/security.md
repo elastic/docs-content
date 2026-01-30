@@ -1,5 +1,5 @@
 ---
-navigation_title: Security
+navigation_title: Security solution
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/index.html
   - https://www.elastic.co/guide/en/security/current/es-overview.html
@@ -16,7 +16,7 @@ products:
 description: Elastic Security combines threat detection analytics, cloud native security, and endpoint protection capabilities in a single solution.
 ---
 
-# {{elastic-sec}} overview [es-overview]
+# {{elastic-sec}} solution & project type overview [es-overview]
 
 :::{include} ../get-started/_snippets/security-overview.md
 :::
