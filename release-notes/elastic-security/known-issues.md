@@ -22,13 +22,7 @@ Applies to: {{stack}} upgrades from versions earlier than 8.9
 
 **Impact**
 
-After upgrading from a {{stack}} version earlier than 8.9 to 9.3, the gap auto fill scheduler task that queries the event log might fail with a security exception, and gap fill might not update gaps. This issue affects the following features:
-
-* **Gap auto fill scheduler**: The task is created, but logs show an error similar to the following:
-
-    ```
-    Error during execution: querying for Event Log by for type "alert" and ids "c2e40c59-f403-4c0a-9791-6320a2a1ae29,b0604a70-c2c5-44f1-9ca5-5878871ccdaf" failed with: security_exceptionRoot causes:security_exception: action [indices:data/read/search] is unauthorized for user [elastic/kibana] with effective roles [elastic/kibana], this action is granted by the index privileges [read,all]
-    ```
+After upgrading from a {{stack}} version earlier than 8.9 to 9.3, you might encounter the following issues with gap fill functionality:
 
 * **Gap fills**: Manual runs are scheduled to fill gaps, but gap statuses aren't updated to `Filled` after the manual runs complete.
 
