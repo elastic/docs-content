@@ -34,7 +34,7 @@ Deploys {{agent}} as a DaemonSet in {{fleet}} mode with System and {{k8s}} {{int
 
 Starting with {{agent}} 8.16, the Agent automatically manages ownership of its volume mounts at startup. No additional DaemonSet is required on standard {{k8s}} clusters.
 
-Refer to [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user) for the required security context and capabilities configuration.
+Refer to [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user) for more details.
 
 :::
 

@@ -13,9 +13,9 @@ To run {{agent}} as a non-root user, you need to understand how permissions work
 Running {{agent}} with an `emptyDir` volume has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
 ::::
 
-## Option 1: Use `emptyDir` (any version, no persistence)
+## Option 1: Use `emptyDir`
 
-This is the simplest approach but data won't persist between Agent pod restarts.
+This is the simplest approach that will work in all {{k8s}} environments but data won't persist between Agent pod restarts.
 
 ```yaml
 apiVersion: agent.k8s.elastic.co/v1alpha1
@@ -36,7 +36,7 @@ spec:
 
 1. GID 1000 is the default group the Agent container runs as. Adjust if you've modified `runAsGroup`.
 
-## Option 2: Use `hostPath` with persistence
+## Option 2: Use `hostPath`
 
 ::::{tab-set}
 
