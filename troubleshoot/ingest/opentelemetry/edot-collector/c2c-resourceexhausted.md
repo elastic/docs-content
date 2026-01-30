@@ -33,7 +33,7 @@ You might observe one or more of the following:
   - `rpc error: code = ResourceExhausted`
   - Errors mentioning message size, decompression, or resource exhaustion
 - Telemetry data (traces, metrics, or logs) partially or completely dropped
-- Increased retry activity or growing queues in upstream Collectors
+- Increased retry activity or growing queues in contrib Collectors
 - Downstream Collectors appearing healthy but ingesting less data than expected
 - Issues that occur primarily when:
   - Multiple Collectors are chained together
@@ -57,7 +57,7 @@ This limit is not derived from pod CPU/memory sizing. It is primarily a protocol
 
 When using the standard [OTLP receiver (`otlp`) with gRPC protocol](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver):
 
-- The EDOT Collector inherits upstream OpenTelemetry Collector behavior.
+- The EDOT Collector inherits contrib OpenTelemetry Collector behavior.
 - If `max_recv_msg_size_mib` is not explicitly configured, the Collector uses the [gRPC library default](https://pkg.go.dev/google.golang.org/grpc#MaxRecvMsgSize), which is 4 MiB.
 - Messages larger than this limit result in a `ResourceExhausted` error sent by the receiving side and logged on the sending side.
 
@@ -70,8 +70,6 @@ receivers:
       grpc:
         max_recv_msg_size_mib: <value>
 ```
-
-#### Large single exports from high-volume receivers
 
 Even without a `batch` processor, some receivers can produce large payloads per collection interval.
 For example, cluster-wide metrics can generate tens of thousands of data points in a single cycle. If a single export attempt exceeds the gRPC receive limit, the sending Collector might drop the entire payload for that attempt.
@@ -94,7 +92,7 @@ Exceeding any of these limits results in a `ResourceExhausted` error. All limits
 In pipelines with multiple Collectors:
 
 - A downstream Collector might become saturated (CPU, memory, or queue limits).
-- Upstream Collectors continue sending data until their sending queues fill, or retry limits are exhausted.
+- Contrib Collectors continue sending data until their sending queues fill, or retry limits are exhausted.
 
 This can surface as `ResourceExhausted` errors even if the downstream Collector appears healthy.
 
@@ -108,25 +106,19 @@ This can surface as `ResourceExhausted` errors even if the downstream Collector 
 
 To identify the cause, inspect both the sending and receiving Collectors.
 
-::::::{stepper}
+### Identify where the error originates
 
-:::::{step} Identify where the error originates
-
-- Inspect logs on both upstream and downstream Collectors.
+- Inspect logs on both contrib and downstream Collectors.
 - Note which Collector reports the `ResourceExhausted` error (for example, on the exporter side or the receiver side).
 
-:::::
-
-:::::{step} Confirm the transport and receiver
+### Confirm the transport and receiver
 
 Determine whether traffic uses:
 
 - OTLP/gRPC (`otlpreceiver`)
 - OTLP with Apache Arrow (`otelarrowreceiver`)
 
-:::::
-
-:::::{step} Review configured limits
+### Review configured limits
 
 - For OTLP/gRPC:
   - `max_recv_msg_size_mib` on the receiving Collector
@@ -136,9 +128,7 @@ Determine whether traffic uses:
   - `arrow.zstd.memory_limit_mib`
   - `admission.waiting_limit_mib`
 
-:::::
-
-:::::{step} Use internal telemetry to distinguish sender versus receiver problems
+### Use internal telemetry to distinguish sender versus receiver problems
 
 **On the sending Collector (exporter-side)**
 
@@ -159,16 +149,14 @@ Look for evidence of refusal/backpressure and resource saturation:
   - `otelcol_process_memory_rss`
   - `otelcol_process_runtime_heap_alloc_bytes`
   - `otelcol_process_cpu_seconds`
-- With detailed metrics level, the OTLP receiver reports the `rpc_server_request_size` histogram (request sizes).
+- The OTLP receiver's `rpc_server_request_size` histogram shows request sizes (requires detailed metrics level).
 
 Also check {{k8s}} signals:
 - Pod restarts / `CrashLoopBackOff`
 - `OOMKilled` events
 - CPU throttling
 
-:::::
-
-:::::{step} Correlate with load patterns
+### Correlate with load patterns
 
 Check whether errors coincide with:
 
@@ -176,10 +164,6 @@ Check whether errors coincide with:
 - Traffic spikes
 - Load tests
 - Large cluster-wide metric collection intervals
-
-:::::
-
-::::::
 
 ## Resolution
 
@@ -246,7 +230,9 @@ High cardinality (too many unique metric or attribute values) can impact costs a
 
 ### Tune exporter queue and retry behavior to reduce drops during transient overload
 
-If drops happen during sudden traffic increases or temporary downstream slowdowns, turn on and tune queued retry on the sending exporter. Using persistent storage for the sending queue (for example, `storage: file_storage`) helps avoid losing data on Collector restart. Configure `max_elapsed_time: 0` on retry to retry indefinitely; the default stops after about 5 minutes and drops data.
+If drops happen during sudden traffic increases or temporary downstream slowdowns, turn on and tune queued retry on the sending exporter. 
+
+Using persistent storage for the sending queue (for example, `storage: file_storage`) helps avoid losing data on Collector restart. Configure `max_elapsed_time: 0` on retry to retry indefinitely; the default stops after about 5 minutes and drops data.
 
 Configuration keys depend on the exporter and distribution, but commonly include:
 
@@ -272,11 +258,9 @@ If the gateway is restarting, `OOMKilled`, or cannot export fast enough:
 - Ensure environment limits align with container memory.
 - If the gateway Collector is autoscaled, consider autoscaling based on the Collector's queue size instead of (or in addition to) CPU or memory usage.
 
-Backpressure commonly originates at the receiver when its own exporters (for example, {{es}} exporters) cannot keep up.
-
 ### Protect against memory exhaustion
 
-Memory protection relies on the `memory_limiter` processor and careful tuning of batching, queues, and receiver limits.
+Memory protection relies on the `memory_limiter` processor and careful tuning of batching, queues, and receiver limits:
 
 - Configure the `memory_limiter` processor early in the pipeline.
 - Set limits based on available memory and workload characteristics.
@@ -298,5 +282,5 @@ To prevent `ResourceExhausted` errors in Collector-to-Collector architectures:
 - [Contrib OpenTelemetry Collector troubleshooting (official)](https://opentelemetry.io/docs/collector/troubleshooting/)—guidance on debugging Collector health, pipelines, exporters, and more.
 - [Contrib OpenTelemetry Collector internal telemetry docs](https://opentelemetry.io/docs/collector/internal-telemetry/)—learn how to configure and interpret internal Collector logs & metrics.
 - [Contrib OpenTelemetry Collector configuration reference](https://opentelemetry.io/docs/collector/configuration/)—includes OTLP receiver configuration and general component docs.
-- [OTel-Arrow receiver in OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/otelarrowreceiver/README.md)—canonical upstream reference for Apache Arrow receiver configuration and resource limits.
-- [OTel-Arrow exporter in OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md)—canonical upstream reference for Apache Arrow exporter configuration.
+- [OTel-Arrow receiver in OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/otelarrowreceiver/README.md)—canonical contrib reference for Apache Arrow receiver configuration and resource limits.
+- [OTel-Arrow exporter in OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md)—canonical contrib reference for Apache Arrow exporter configuration.
