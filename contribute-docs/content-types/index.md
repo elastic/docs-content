@@ -47,6 +47,7 @@ A tutorial should always be a standalone page, meaning it should have only one c
 
 - [How-to guides](how-tos.md)
 - [Overviews](overviews.md)
+- [Release notes](release-notes.md)
 - [Troubleshooting](troubleshooting.md)
 - [Tutorials](tutorials.md)
 
