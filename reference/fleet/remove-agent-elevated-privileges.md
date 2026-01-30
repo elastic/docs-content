@@ -60,7 +60,12 @@ To remove elevated privileges from one or more {{agents}} using the {{fleet}} UI
 The eligible agents are switched to unprivileged mode. You can monitor the progress on the **Agents** tab. After the operation completes, the agents run as unprivileged users and their privilege mode is updated in the agent details.
 
 :::{note}
-You can also initiate the privilege removal for a single agent on the agent's **Agent details** page. Select **Actions** > **Security and removal** > **Remove root privilege**, then follow steps 4-6.
+You can also initiate the privilege removal for a single agent from either of these locations:
+
+- The action menu at the end of the agent's row on the **Agents** tab
+- The **Actions** menu on the agent's **Agent details** page
+
+From either location, select **Security and removal** > **Remove root privilege**, then review the information in the flyout and confirm to remove privileges.
 :::
 
 ## Remove elevated privileges using the {{fleet}} API [remove-elevated-privileges-api]
