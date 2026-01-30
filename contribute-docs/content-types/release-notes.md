@@ -24,10 +24,10 @@ They help users understand what changed, why it matters, and what they need to d
 
 Readers of release notes include:
 
-- **Developers** — Need to understand version updates that can impact their code or integrations, including breaking changes, new endpoints, deprecations, and bug fixes.
-- **Technical users** (System administrators, DevOps engineers, IT specialists) — Need to ensure updates are correctly applied and systems are properly maintained, considering configuration changes, security updates, and compatibility.
-- **End users** — Want to know how updates affect them, especially in production environments, focusing on new features, enhancements, and bug fixes.
-- **Support teams** — Need accurate information about issues and changes to effectively assist customers.
+- **Developers**: Need to understand version updates that can impact their code or integrations, including breaking changes, new endpoints, deprecations, and bug fixes.
+- **Technical users** (System administrators, DevOps engineers, IT specialists):  Need to ensure updates are correctly applied and systems are properly maintained, considering configuration changes, security updates, and compatibility.
+- **End users**: Want to know how updates affect them, especially in production environments, focusing on new features, enhancements, and bug fixes.
+- **Support teams**: Need accurate information about issues and changes to effectively assist customers.
 
 ## Structure of release notes
 
