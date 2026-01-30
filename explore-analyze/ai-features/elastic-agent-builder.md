@@ -23,6 +23,12 @@ Get started quickly with built-in agents, tools, and the chat UI, then extend wi
 - {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
 ::::
 
+## Get started
+
+To get started you need an Elastic deployment and you might need to enable the feature.
+
+[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
+
 ## Key capabilities
 
 - **{{es}} relevance and security**: Leverage {{es}}'s search capabilities for precise context retrieval, with secure data access controls.
@@ -55,12 +61,6 @@ Agents are powered by custom LLM instructions and the ability to use tools to an
 Tools are modular, reusable functions that agents use to search, retrieve, and manipulate {{es}} data. Tools are the primary mechanism for connecting agent capabilities to your data. Choose from a set of built-in tools, or create your own and assign them to your custom agents.
 
 [**Learn more about tools**](agent-builder/tools.md)
-
-## Get started
-
-To get started you need an Elastic deployment and you might need to enable the feature.
-
-[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
 
 ## Model selection
 
