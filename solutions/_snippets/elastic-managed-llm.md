@@ -5,5 +5,5 @@ Elastic Managed LLMs are available out-of-the box. They do not require manual co
 To learn more about security and data privacy, refer to [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) which provides details on the models.
 
 :::{important}
-Using Preconfigured AI Connectors incurs additional costs. Refer to [{{ecloud}} pricing](https://www.elastic.co/pricing/serverless-search) for more information.
+Using Elastic Managed LLMs incurs additional costs. Refer to [{{ecloud}} pricing](https://www.elastic.co/pricing/serverless-search) for more information.
 :::
