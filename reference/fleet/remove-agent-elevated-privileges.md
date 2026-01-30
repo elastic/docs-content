@@ -142,11 +142,11 @@ You can also view privilege status across all agents enrolled in a policy:
 
 2. Click the agent policy to view its details.
 
-3. Hover over the agent count to see the number of privileged and unprivileged agents enrolled in the policy.
+3. Hover over the agent count to display the number of privileged and unprivileged agents enrolled in the policy.
 
 ## Troubleshooting [remove-elevated-privileges-troubleshoot]
 
-After removing an agent's elevated privileges, some data sources may become inaccessible. To resolve this:
+After removing an agent's elevated privileges, some data sources might become inaccessible. To resolve this:
 
 1. Check the agent logs for permission errors.
 
