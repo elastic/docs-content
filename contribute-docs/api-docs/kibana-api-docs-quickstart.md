@@ -188,6 +188,24 @@ responses:
               id: '12345'
               name: 'Cool foo!'
               enabled: true
+x-codeSamples: # Optionally add examples in multiple languages. At a minimum, add curl and Console.
+- lang: cURL
+  # label: A label which will be used as a title. Defaults to the lang value.
+  source: |
+    curl \
+     -X POST "https://${KIBANA_URL}/api/foo" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+     ...
+     }'
+- lang: Console
+  source: |
+    POST kbn:/api/agent_builder/tools
+    {
+     ...
+    }
 ```
 ::::
 
