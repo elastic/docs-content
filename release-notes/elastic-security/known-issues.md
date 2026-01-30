@@ -22,7 +22,7 @@ Applies to: 9.3
 
 **Impact**
 
-After upgrading from a {{stack}} version earlier than 8.9 to 9.3, you might encounter the following issues with gap fill functionality:
+After upgrading to 9.3 from a {{stack}} version earlier than 8.9, you might encounter the following issues with gap fill functionality:
 
 * **Gap fills**: Manual runs are scheduled to fill gaps, but gap statuses aren't updated to `Filled` after the manual runs complete.
 
