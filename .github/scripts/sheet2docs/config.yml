@@ -26,6 +26,7 @@ columns:
   - source: "Name"
   - source: "ID"
   - source: "Release Status"
+  - source: "Stack Version"
   - source: "Input Modalities"
   - source: "Output Modalities"
   - source: "EOL Date"
