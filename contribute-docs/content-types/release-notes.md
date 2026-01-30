@@ -75,7 +75,7 @@ When creating changelog entries, follow these best practices:
 - **Link to related content**: Include links to documentation and related issues when helpful.
 - **Test your descriptions**: Have someone unfamiliar with the change read your entry to ensure it's clear.
 
-### Choosing the right type [changelog-types]
+### Choose the changelog type [changelog-types]
 
 The changlog type categorizes your change and determines which section it appears in within the release notes. Choose the type that best describes your change:
 
