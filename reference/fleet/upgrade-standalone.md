@@ -124,3 +124,69 @@ In the event of a private GPG key rotation, you can use the following options wi
 Under the basic upgrade scenario standalone {{agent}} will automatically fetch the most current public key, however in an air-gapped environment or in the event that the {{artifact-registry}} is otherwise inaccessible, these commands can be used instead.
 
 
+## Roll back an Elastic Agent upgrade for standalone agents [rollback-upgrade-standalone]
+```yaml {applies_to}
+stack: ga 9.3.0+
+serverless: ga
+```
+
+We have you covered in the unusual case that you need to rollback an upgrade for a standalone agent. 
+
+Earlier {{agent}} versions could detect issues and automatically roll back to the previous installed version within ten minutes of an upgrade if needed.
+This feature is still available and on by default. 
+
+**Manual rollback.**
+The manual rollback feature expands the time window for rollbacks, giving you the ability to roll back to the previous version within seven days.
+
+To roll back a recent upgrade to the previously installed version (if it is still available on disk): 
+
+:::::{tab-set}
+::::{tab-item} macOS
+
+```shell
+sudo elastic-agent upgrade --rollback
+```
+::::
+
+::::{tab-item} Linux
+```shell
+sudo elastic-agent upgrade --rollback
+```
+::::
+
+::::{tab-item} Windows
+As an Administrator, run:
+```shell
+.\elastic-agent.exe upgrade --rollback
+```
+::::
+
+::::{tab-item} DEB
+The manual rollback feature is not available for system-managed packages such as DEB and RPM. 
+::::
+
+::::{tab-item} RPM
+The manual rollback feature is not available for system-managed packages such as DEB and RPM. 
+::::
+:::::
+
+
+### Limitations for manual rollback (standalone agents) [rollback-upgrade-standalone-limitations]
+
+These limitations apply for the manual rollback feature: 
+
+* Rollback is limited to the version running _before_ the upgrade. The previously installed version must be 9.3.0 or later for this functionality to be available.
+* Data required for the rollback is stored on disk for seven days, which can impact available disk space.
+* Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
+* Rollback is only supported for versions 9.3.0 and later. The target version must be 9.3.0 or higher.
+* Manual rollback is not available for system-managed packages such as DEB and RPM.
+* Some data may be re-ingested. 
+
+#### Possible errors [rollback-upgrade-standalone-errors]
+
+If no version is available on disk to rollback to, you get an error.
+This situation can happen if:
+
+- the version you're coming from is earlier than 9.3.0, as the feature was not implemented in earlier versions. 
+
+- The rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 

@@ -328,3 +328,11 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
     ```
 
 3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since {{fleet}}-managed upgrades are not supported for this package type.
+
+### Roll back an Elastic Agent upgrade for Fleet-managed agents [rollback-upgrade-fleet-managed]
+```yaml {applies_to}
+stack: ga 9.3.0+
+serverless: ga
+```
+
+Content WIP
