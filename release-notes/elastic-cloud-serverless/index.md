@@ -14,9 +14,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 :::{changelog} /changelog/bundles
 :subsections:
-:merge:
 :config: /release-notes/elastic-cloud-serverless/elastic-cloud-serverless-changelog.yml
-:hide-links:
 :::
 
 ## January 19, 2026 [serverless-changelog-01192026]
