@@ -51,4 +51,17 @@ Fully qualified domain name (FQDN)
         enabled: true
     ```
 
+Encrypted Config
+:   When enabled, the {{agent}} will encrypt the contents of `elastic-agent.yml` into `fleet.enc`. The contents of `elastic-agent.yml` will be replaced with only this feature to indicate that the encrypted config store is used.
+
+    An {{agent}} enrolled in {{fleet}} will ignore this flag (encrypted storage is always used).
+    Config can be reloaded by replacing the `elastic-agent.yml` file, and restarting the {{agent}}.
+
+    To enable encrypted config for a standalone {{agent}} set `enabled: true` for the `encrypted_config` setting:
+
+    ```yaml
+    agent.features:
+      encrypted_config:
+        enabled: true
+    ```
 
