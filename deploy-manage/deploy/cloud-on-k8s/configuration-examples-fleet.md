@@ -26,16 +26,38 @@ kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{versio
 
 Deploys {{agent}} as a DaemonSet in {{fleet}} mode with System and {{k8s}} {{integrations}} enabled. System integration collects syslog logs, auth logs and system metrics (for CPU, I/O, filesystem, memory, network, process and others). {{k8s}} {{integrations}} collects API server, Container, Event, Node, Pod, Volume and system metrics.
 
-## System and {{k8s}} {{integrations}} running as non-root in Elastic Agent < 8.16 [k8s_system_and_k8s_integrations_running_as_non_root]
+## System and {{k8s}} {{integrations}} running as non-root [k8s_system_and_k8s_integrations_running_as_non_root]
+
+::::{tab-set}
+
+:::{tab-item} {{agent}} 8.16+ (standard {{k8s}})
+
+Starting with {{agent}} 8.16, the Agent automatically manages ownership of its volume mounts at startup. No additional DaemonSet is required on standard {{k8s}} clusters.
+
+Refer to [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user) for the required security context and capabilities configuration.
+
+:::
+
+:::{tab-item} {{agent}} 8.16+ (OpenShift/SELinux)
+
+On OpenShift or other SELinux-enabled clusters, the Agent cannot elevate its privileges to change volume ownership. You must use the DaemonSet approach described in the **{{agent}} 8.15 and earlier** tab.
+
+:::
+
+:::{tab-item} {{agent}} 8.15 and earlier
 
 ```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/elastic-agent/fleet-kubernetes-integration-nonroot.yaml
 ```
 
-The provided example is functionally identical to the previous section but runs the {{agent}} processes (both the {{agent}} running as the {{fleet}} server and the {{agent}} connected to {{fleet}}) as a non-root user by utilizing a DaemonSet to ensure directory and file permissions.
+This example runs the {{agent}} processes (both the {{agent}} running as the {{fleet}} server and the {{agent}} connected to {{fleet}}) as a non-root user by using a DaemonSet to ensure directory and file permissions.
 
 ::::{note}
-The DaemonSet itself must run as root to set up permissions and ECK >= 2.10.0 is required.
+The DaemonSet itself must run as root to set up permissions, and ECK >= 2.10.0 is required.
+::::
+
+:::
+
 ::::
 
 
