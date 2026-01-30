@@ -148,7 +148,7 @@ Follow these best practices:
 - "Fixed bug #12345" (uses internal reference, doesn't explain impact)
 - "Performance improvements" (too vague)
 
-### Writing effective descriptions [changelog-descriptions]
+### Write effective descriptions [changelog-descriptions]
 
 The changelog description provides additional context about the change.
 Not all changes need a description. If the title is self-explanatory, you can omit it.
