@@ -24,10 +24,10 @@ They help users understand what changed, why it matters, and what they need to d
 
 Readers of release notes include:
 
-- **Developers** — Need to understand version updates that may impact their code or integrations, including breaking changes, new endpoints, deprecations, and bug fixes
-- **Technical users** (System administrators, DevOps engineers, IT specialists) — Need to ensure updates are correctly applied and systems are properly maintained, considering configuration changes, security updates, and compatibility
-- **End users** — Want to know how updates affect them, especially in production environments, focusing on new features, enhancements, and bug fixes
-- **Support teams** — Need accurate information about issues and changes to effectively assist customers
+- **Developers** — Need to understand version updates that can impact their code or integrations, including breaking changes, new endpoints, deprecations, and bug fixes.
+- **Technical users** (System administrators, DevOps engineers, IT specialists) — Need to ensure updates are correctly applied and systems are properly maintained, considering configuration changes, security updates, and compatibility.
+- **End users** — Want to know how updates affect them, especially in production environments, focusing on new features, enhancements, and bug fixes.
+- **Support teams** — Need accurate information about issues and changes to effectively assist customers.
 
 ## Structure of release notes
 
@@ -111,7 +111,7 @@ Known issue
 :   Use `known-issue` for problems that are not fixed in the release but are actively being worked on.
 :   Include information about all affected versions and contexts.
 :   Optionally include `impact` and `action` fields (with workaround steps).
-:   Examples include significant defects or limitations that may impact implementation.
+:   Examples include significant defects or limitations that might impact implementation.
 
 Other
 :   Use `other` for any information that doesn't fit into the above categories.
@@ -152,7 +152,7 @@ Follow these best practices:
 ### Writing effective descriptions [changelog-descriptions]
 
 The changelog description provides additional context about the change.
-Not all changes need a description; if the title is self-explanatory, you can omit it.
+Not all changes need a description. If the title is self-explanatory, you can omit it.
 
 Include a description when:
 
@@ -171,14 +171,14 @@ Follow these best practices:
 
 #### Good description examples
 
-- "This enhancement allows you to configure custom authentication providers through the security settings. Previously, only built-in providers were supported."
-- "Fixes an issue where queries with date range filters could cause excessive memory usage in clusters with many shards. The fix optimizes memory allocation for date range queries."
+- This enhancement allows you to configure custom authentication providers through the security settings. Previously, only built-in providers were supported.
+- Fixes an issue where queries with date range filters could cause excessive memory usage in clusters with many shards. The fix optimizes memory allocation for date range queries.
 
 #### Poor description examples
 
-- "Internal refactoring" (doesn't explain user impact)
-- "See PR #12345 for details" (doesn't provide information, just a reference)
-- Repeating the title verbatim (adds no value)
+- "Internal refactoring": Doesn't explain user impact.
+- "See PR #12345 for details": Doesn't provide information, only a reference.
+- Repeating the title verbatim, which adds no value.
 
 ### Writing about impact and actions
 
@@ -202,14 +202,14 @@ Follow these best practices:
 
 #### Good impact examples
 
-- For a breaking change: "The `_all` field is no longer available in search queries. Any queries that reference `_all` will fail with an error."
-- For a deprecation: "The `old_api` endpoint continues to work but will be removed in version 10.0. No new features will be added to this endpoint."
+- For a breaking change: "The `_all` field is no longer available in search queries. Any queries that reference `_all` will fail with an error".
+- For a deprecation: "The `old_api` endpoint continues to work but will be removed in version 10.0. No new features will be added to this endpoint".
 
 #### Good action examples
 
-- For a breaking change: "Update all queries that use `_all` to use specific field names instead. For example, replace `_all:search_term` with `message:search_term OR title:search_term`."
-- For a deprecation: "Migrate to the new `new_api` endpoint before version 10.0. Update your code to use `POST /api/v2/endpoint` instead of `POST /api/v1/old_endpoint`. See the migration guide for detailed examples."
-- For a known issue: "As a workaround, restart the service after applying the configuration change. This issue will be fixed in the next release."
+- For a breaking change: "Update all queries that use `_all` to use specific field names instead. For example, replace `_all:search_term` with `message:search_term OR title:search_term`".
+- For a deprecation: "Migrate to the new `new_api` endpoint before version 10.0. Update your code to use `POST /api/v2/endpoint` instead of `POST /api/v1/old_endpoint`. View the migration guide for detailed examples."
+- For a known issue: "As a workaround, restart the service after applying the configuration change. This issue will be fixed in the next release".
 
 ## Common anti-patterns
 
