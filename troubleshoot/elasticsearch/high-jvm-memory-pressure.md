@@ -29,7 +29,7 @@ From the previous output, you can calculate the memory pressure as the ratio of 
 cat nodes_stats.json | jq -rc '.nodes[]|.name as $n|.jvm.mem.pools.old|{name:$n, memory_pressure:(100*.used_in_bytes/.max_in_bytes|round) }'
 ```
 
-{{ech}} and {{ece}} also include a JVM memory pressure indicator for each node in your cluster in the deployment's overview page. These indicators turn red when JVM memory pressure reaches 75%. [Learn more][memory pressure monitoring](/deploy-manage/monitor/ec-memory-pressure.md).
+{{ech}} and {{ece}} also include a JVM memory pressure indicator for each node in your cluster in the deployment's overview page. These indicators turn red when JVM memory pressure reaches 75%. [Learn more about memory pressure monitoring](/deploy-manage/monitor/ec-memory-pressure.md).
 
 :::::::
 
@@ -199,68 +199,72 @@ While more efficient than individual requests, large [bulk indexing](https://www
 
 Heavy indexing and search loads can cause high JVM memory pressure. To better handle heavy workloads, upgrade your nodes to increase their memory capacity.
 
-### Fielddata-related JVM pressure issues [reduce-jvm-memory-pressure-fielddata]
+### Field data related JVM pressure issues [reduce-jvm-memory-pressure-fielddata]
 
-This section describes how [fielddata](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/text#fielddata-mapping-param) and [global ordinals](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/eager-global-ordinals) can contribute to JVM memory pressure and how to mitigate their impact.
+This section describes how [field data mapping](elasticsearch://reference/elasticsearch/mapping-reference/text#fielddata-mapping-param) and [global ordinal mapping](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals) can contribute to JVM memory pressure and how to mitigate their impact.
 
-#### Why fielddata is problematic [reduce-jvm-memory-pressure-fielddata-problematic]
+#### Why field data is problematic [reduce-jvm-memory-pressure-fielddata-problematic]
 
-* It consumes CPU to generate the fielddata
-* The fielddata is consumed at search time so it primarily affects cluster performance during search execution on specific fields (except if `eager_global_ordinals` are enabled - but it will not reduce the memory usage - it will just move the generation of global ordinals at indexing time instead of search time)
-* As `fielddata` and `global ordinals` are expensive to be built, they're kept in the JVM heap, in the [fielddata cache](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/field-data-cache-settings). By default, it's unbounded. Please note limiting the cache with `indices.fielddata.cache.size` would lead to possible thrashing (if the queries really need the `fielddata` continuously, the cluster will be continuously generating and thrashing the results, leading to worse performance) and this will be visible in `fielddata` evictions in the Nodes stats APIs.
+* Loading field data in memory can consume significant memory.
+* The field data is consumed at search time so it primarily affects cluster performance during search execution on specific fields (except if `eager_global_ordinals` are enabled - which does not reduce the memory usage, but  moves the generation of global ordinals at indexing time instead of search time)
+* As `fielddata` and `global ordinals` are expensive to be built, they're kept in the JVM heap, in the [field data cache settings](elasticsearch://reference/elasticsearch/configuration-reference/field-data-cache-settings). By default, it's unbounded. Limiting the cache with `indices.fielddata.cache.size` would lead to possible thrashing (if the queries really need the `fielddata` continuously, the cluster will be continuously generating and thrashing the results, leading to worse performance) and this will be visible in `fielddata` evictions in the Nodes stats APIs.
 
-#### Identify high fielddata cache usage [reduce-jvm-memory-pressure-fielddata-cache-usage]
+#### Identify high field data cache usage [reduce-jvm-memory-pressure-fielddata-cache-usage]
 
-Fielddata is primarily loaded into heap in the following scenarios:
+Field data is primarily loaded into heap in the following scenarios when you:
 
-* [Explicitly enabling `fielddata` on `text` fields](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/text#enable-fielddata-text-fields)
-* [Global ordinals](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/eager-global-ordinals#_what_are_global_ordinals) used by aggregating and sorting on `keyword`, `ip`, and `flattened` fields with high cardinality of values.
+* [Explicitly enable `fielddata` on `text` fields](elasticsearch://reference/elasticsearch/mapping-reference/text#enable-fielddata-text-fields)
+* Use [global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals#_what_are_global_ordinals) by aggregating and sorting on `keyword`, `ip`, and `flattened` fields with high cardinality of values.
 
-Common symptoms of high fielddata usage:
+Common symptoms of high field data usage include:
 
 * Nodes using high amounts of JVM Heap
-  * Possible OutOfMemory exceptions (node crashes/stops)
-  * Possible [CircuitBreaker exceptions related to fielddata](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings#fielddata-circuit-breaker) (the request will be not fulfilled)
-  * High GC activity on the nodes storing the shards of the indices affected (both in terms of frequency/duration)
-* Performance issues due to time and resources needed to generate the fielddata (usually affects CPU)
+  * Possible `OutOfMemory` exceptions (the node crashes or stops)
+  * Possible [CircuitBreaker exceptions related to fielddata](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings#fielddata-circuit-breaker) (the request will be not fulfilled)
+  * High GC activity on the nodes storing the shards of the indices affected (both in terms of frequency and duration)
+* Performance issues due to time and resources needed to generate the field data (usually affects the CPU)
 
-To understand whether fielddata is a major contributor to memory pressure, compare it with total heap usage:
+To understand whether field data is a major contributor to memory pressure, compare it with total heap usage:
 
 ```console
 GET /_nodes/stats/jvm,indices/fielddata?filter_path=nodes.*.name,nodes.*.jvm.mem.heap_used_in_bytes,nodes.*.jvm.mem.heap_max_in_bytes,nodes.*.indices.fielddata.memory_size_in_bytes
 ```
-If fielddata accounts for a significant percentage of heap usage (for example, more than 10-20% on hot nodes), it is likely contributing to memory pressure.
+If field data accounts for a significant percentage of heap usage, for example more than 10-20% on hot nodes, it is likely contributing to memory pressure.
 
-Use the [cat fielddata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-fielddata) to find which fields are using fielddata and how much per node.
+Use the [cat fielddata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-fielddata) to find which fields are using field data and how much per node.
 
-#### Reduce fielddata usage [reduce-jvm-memory-pressure-fielddata-reduce-usage]
+#### Reduce field data usage [reduce-jvm-memory-pressure-fielddata-reduce-usage]
 
-##### Fielddata on `text` fields [reduce-jvm-memory-pressure-fielddata-on-text]
+##### Field data on `text` fields [reduce-jvm-memory-pressure-fielddata-on-text]
 
-In rare cases, `text` fields with `fielddata: true` enabled can load large amounts of data into JVM heap and should be avoided unless strictly required.
+In rare cases, `text` fields with `fielddata: true` enabled can load large amounts of data into the JVM heap and should be avoided unless strictly required.
 
 Avoid enabling `fielddata: true` on `text` fields. If aggregations or sorting are required, use multi-fields (`text` + `keyword`) and aggregate only on `.keyword` fields.
 
-##### Workaround: Clear the fielddata cache [reduce-jvm-memory-pressure-fielddata-clear-cache]
+##### Workaround: clear the field data cache [reduce-jvm-memory-pressure-fielddata-clear-cache]
 
-It is possible to clear specific fields or all the fields. **WARNING:** clearing the fielddata cache will free the memory used by fielddata temporarily until a query will re-trigger the generation of it. It might also generate performance issues if the fielddata was actively used.
+You can clear the cache for specific fields or for all the fields.
+
+:::{important}
+Clearing the field data cache frees the memory used by field data temporarily, until a query re-triggers its generation. It might generate performance issues if the field data was actively used.
+::: 
 
 Examples:
 
 * `POST <index name>/_cache/clear?fielddata=true&fields=fieldname1,fieldname2` to clear the fielddata cache only for fields `fieldname1` and `fieldname2` on the `<index name>` index
 * `POST */_cache/clear?fielddata=true` to clear any fielddata cache entry on all indices
 
-##### Fielddata generated by `keyword` fields (global ordinals) [reduce-jvm-memory-pressure-fielddata-global-ordinals]
+##### Field data generated by `keyword` fields (global ordinals) [reduce-jvm-memory-pressure-fielddata-global-ordinals]
 
-If the field which is using fielddata is a `keyword` field, it is likely that queries are aggregating and/or sorting on such field and the field has a high cardinality.
+If the field which is using field data is a `keyword` field, it is likely that queries are aggregating and/or sorting on this field and the field has a high cardinality.
 
-The aggregation/sorting on such high cardinality keyword field can happen:
+The aggregation or sorting on high cardinality keyword fields can happen:
 
-* directly, from a user who created a visualization, dashboard, query which explicitly aggregates on such field
-* indirectly, as the Kibana autocomplete feature in KQL runs aggregations behind the scenes to offer autocomplete on `non-text` fields
+* directly, when a user creates a visualization, dashboard, or query which explicitly aggregates on this field
+* indirectly, when the Kibana autocomplete feature in KQL runs aggregations behind the scenes to offer autocomplete on `non-text` fields
 
-In order to avoid global ordinals, follow [the guidance in our documentation](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/eager-global-ordinals#_avoiding_global_ordinal_loading).
+In order to avoid global ordinals, follow [the guidance in our documentation](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals#_avoiding_global_ordinal_loading).
 
 In general:
-* If the high cardinality field contains only `numeric` values, prefer mapping the field as a `numeric` type as numeric fields do not need global ordinals being generated. Obviously the index would need to be reindexed with the new mapping.
-* If the index is no more written, `forcemerging` the index to 1 segment will prevent `global ordinals` being generated as the field will be already "sorted" in the segment. This can be enforced in the ILM policy just after a rollover or in `warm` phase (if we're talking about a time series index/data stream).
+* If the high cardinality field contains only `numeric` values, map the field as a `numeric` type since numeric fields don't require global ordinals being generated. You'd need to reindexed the index with the new mapping.
+* If the index is not being written to, force merging the index to 1 segment will prevent global ordinals from being generated because the field will be sorted in the segment. This can be enforced in the ILM policy after a rollover or in the warm phase of your data streams).
