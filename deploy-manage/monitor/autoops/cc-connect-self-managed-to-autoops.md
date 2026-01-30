@@ -306,7 +306,7 @@ The agent detects which {{es}} clusters to monitor based on the correct `resourc
 Use the following command to apply the `resourceSelector` label to every cluster you want to connect. This code assumes your label is `autoops=enabled`.
 
 ```js
-  kubectl -n {{namespace}} label elasticsearch <policy_name> autoops=enabled
+  kubectl -n {{namespace}} label elasticsearch <elasticsearch_cluster_name> autoops=enabled
 ```
 :::{note}
 The agent runs in the namespace chosen for the policy. However, the agent can detect {{es}} clusters throughout the {{k8s}} environment regardless of where they are installed. 
@@ -360,7 +360,7 @@ Complete the following steps to disconnect your cluster from your Cloud organiza
 :applies_to: { eck: ga 3.3 }
 If your chosen installation method is ECK, you can also disconnect a cluster by removing your `resourceSelector` label from it. Run the following command:
 ```js
-  kubectl -n {{namespace}} label elasticsearch <policy_name> autoops-
+  kubectl -n {{namespace}} label elasticsearch <elasticsearch_cluster_name> autoops-
 ```
 :::
 

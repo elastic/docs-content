@@ -23,6 +23,12 @@ Run the following command.
 kubectl get autoopsagentpolicy <policy_name>
 ```
 If the policy doesn't appear, there was an issue with its creation.
+
+If the policy appears, run the following command to check its status and any associated events.
+
+```shell
+kubectl describe autoopsagentpolicy <policy_name>
+```
 ::::
 
 ::::{step} Confirm the issue by checking logs
@@ -56,7 +62,7 @@ If no deployments appear, there might be an issue with the `resourceSelector` la
 ::::{step} Check cluster labels and agent pods 
 If no deployments appeared in the previous step, run the following command to check your cluster labels.   
 ```shell
-kubectl get elasticsearch <policy_name> --show-labels
+kubectl get elasticsearch <elasticsearch_cluster_name> --show-labels
 ```
 Make sure that the label you applied in the [Launch AutoOps](../autoops/cc-connect-self-managed-to-autoops.md#launch-autoops) step of the wizard appears correctly in the list.
 
