@@ -40,12 +40,8 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 :::
 
 ::::{important}
-
-* Elastic does not guarantee the availability of supported models.
-* Use of the Elastic {{infer-cap}} Service requires that customers have read and agreed to the applicable terms of the model providers. Use of a model constitutes a contract between the customer and the model provider.
-* “AI Models” means the third-party generative artificial intelligence models accessed via API through the Service and listed on the [OpenRouter website](https://openrouter.ai/models).
-* “AI Model Provider” means the provider of the applicable AI Model.
-* Availability. OpenRouter does not guarantee availability of the AI Models and provides Customer access to the AI Models only on an as-available basis. AI Model uptime and performance are described in the applicable AI Model Terms, and Customer is responsible for (a) reviewing the AI Model Terms to understand the availability and data practices of each AI Model Provider, and (b) agreeing to the AI Model Terms prior to using the Service. 
+* The applicable terms of use, uptime, and performance for each of the AI models available with EIS are each described in the applicable AI model's Provider Terms and Model Card.
+* Prior to using the AI model with EIS, Customers are responsible for reviewing and agreeing to the chosen AI model's Provider Terms to understand the availability and data practices of the AI model's provider.
 ::::
 
 ## Region and hosting [eis-regions]
