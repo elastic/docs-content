@@ -103,7 +103,7 @@ While the {{obs-ai-assistant}} is compatible with many different models, refer t
 
 ::::
 
-### Preconfigured AI Connector [elastic-managed-llm-obs-ai-assistant]
+### Elastic Managed LLMs [elastic-managed-llm-obs-ai-assistant]
 
 :::{include} ../_snippets/elastic-managed-llm.md
 :::

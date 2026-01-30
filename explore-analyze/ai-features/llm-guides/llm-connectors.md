@@ -16,7 +16,7 @@ products:
 
 Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-the-box Preconfigured AI Connectors or with third-party LLMs configured using one of the available connectors.
 
-## Preconfigured AI Connectors
+## Elastic Managed LLMs
 
 :::{include} /solutions/_snippets/elastic-managed-llm.md
 :::

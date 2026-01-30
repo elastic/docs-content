@@ -199,11 +199,11 @@ Downgrade Helm to version 3.18.4.
 :::
 
 
-:::{dropdown} Observability AI Assistant: Preconfigured AI Connector may be automatically selected as default connector
+:::{dropdown} Observability AI Assistant: Elastic Managed LLM may be automatically selected as default connector
 
 Applies to: {{stack}} 9.x
 
-The Preconfigured AI Connector may be automatically selected as your default connector because of existing connector selection logic.
+The Elastic Managed LLM may be automatically selected as your default connector because of existing connector selection logic.
 This can occur if you had not previously specified a connector for any of the following reasons:
 
 * You only had one connector available and it was always automatically picked for your conversations.
@@ -212,7 +212,7 @@ This can occur if you had not previously specified a connector for any of the fo
 
 *And:*
 
-* All of your existing connector names come after the “Preconfigured AI Connector connector" when sorted alphabetically.
+* All of your existing connector names come after the “Elastic Managed LLM connector" when sorted alphabetically.
 
 For more information, check [#2088](https://github.com/elastic/docs-content/issues/2088)
 
