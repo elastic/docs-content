@@ -20,59 +20,35 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
-* Your Elastic deployment or project comes with an [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default LLM. This connector is used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
+* Your Elastic deployment or project comes with a [Preconfigured AI Connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default LLM. This connector is used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
 
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga`
 
 * You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
+
+
+## Supported models
+
+This table lists the models supported by Elastic {{infer-cap}} Service.
+
+::::{note}
+The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
+::::
+
+:::{csv-include} models.csv
+:caption: Models supported by Elastic Inference Service
+:::
+
+::::{important}
+* The applicable terms of use, uptime, and performance for each of the AI models available with EIS are each described in the applicable AI model's Provider Terms and Model Card.
+* Prior to using the AI model with EIS, Customers are responsible for reviewing and agreeing to the chosen AI model's Provider Terms to understand the availability and data practices of the AI model's provider.
+::::
 
 ## Region and hosting [eis-regions]
 
 Elastic {{infer-cap}} Service is currently available in a single region: {{aws}} `us-east-1`. All {{infer}} requests sent through EIS are routed to this region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
 
 Depending on the model being used, request processing may involve Elastic {{infer}} infrastructure and, in some cases, trusted third-party model providers. For example, ELSER requests are processed entirely within Elastic {{infer}} infrastructure in {{aws}} `us-east-1`. Other models, such as large language models or third-party embedding models, may involve additional processing by their respective model providers, which can operate in different cloud platforms or regions.
-
-## ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
-
-```{applies_to}
-stack: preview =9.1, ga 9.2+
-serverless: ga
-```
-
-ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for ingest throughput than ML nodes and equivalent performance for search latency. We will continue to benchmark, remove limitations and address concerns.
-
-### Using the ELSER on EIS endpoint
-
-You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how to use the `.elser-2-elastic` inference endpoint, refer to [Using ELSER on EIS](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#using-elser-on-eis).
-
-#### Get started with semantic search with ELSER on EIS
-
-[Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
-
-## `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
-
-```{applies_to}
-stack: preview 9.3
-serverless: preview
-```
-
-You can use the `jina-embeddings-v3` model through Elastic {{infer-cap}} Service. Running the model on EIS means that you use the model on GPUs, without the need of managing infrastructure and model resources.
-
-### Get started with `jina-embeddings-v3` on EIS
-
-Create an {{infer}} endpoint that references the `jina-embeddings-v3` model in the `model_id` field.
-
-```console
-PUT _inference/text_embedding/eis-jina-embeddings-v3
-{
-  "service": "elastic",
-  "service_settings": {
-    "model_id": "jina-embeddings-v3"
-  }
-}
-```
-
-The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, text_embedding {{infer}} tasks, or search queries.
 
 ## Rate limits
 
@@ -82,9 +58,11 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
 | Claude Sonnet 3.7 {applies_to}`stack: ga 9.3+`  | 400             | -                       | -                       | No rate limit on tokens  |
 | Elastic Managed LLM {applies_to}`stack: ga 9.0-9.2`   | 400             | -                       | -                       | No rate limit on tokens. Renamed to *Claude Sonnet 3.7* in later versions  |
-| Claude Sonnet 4.5     | 400             | -                       | -                       | No rate limit on tokens  |
-| ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
-| `jina-embeddings-v3`  | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Claude Sonnet 4.5 {applies_to}`stack: ga 9.3+`    | 400             | -                       | -                       | No rate limit on tokens  |
+| ELSER {applies_to}`stack: ga 9.0+`                | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Embeddings v3 {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Reranker v2 {applies_to}`stack: ga 9.3+`     | 50              | -                       | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Reranker v3 {applies_to}`stack: ga 9.3+`     | 50              | -                       | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 
 ## Pricing
 
@@ -109,3 +87,47 @@ To track your token consumption:
 
 1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
+
+## Usecases
+
+### ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
+
+```{applies_to}
+stack: preview =9.1, ga 9.2+
+serverless: ga
+```
+
+ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for ingest throughput than ML nodes and equivalent performance for search latency. We will continue to benchmark, remove limitations and address concerns.
+
+#### Using the ELSER on EIS endpoint
+
+You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how to use the `.elser-2-elastic` inference endpoint, refer to [Using ELSER on EIS](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#using-elser-on-eis).
+
+##### Get started with semantic search with ELSER on EIS
+
+[Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
+
+### `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
+
+```{applies_to}
+stack: preview 9.3
+serverless: preview
+```
+
+You can use the `jina-embeddings-v3` model through Elastic {{infer-cap}} Service. Running the model on EIS means that you use the model on GPUs, without the need of managing infrastructure and model resources.
+
+#### Get started with `jina-embeddings-v3` on EIS
+
+Create an {{infer}} endpoint that references the `jina-embeddings-v3` model in the `model_id` field.
+
+```console
+PUT _inference/text_embedding/eis-jina-embeddings-v3
+{
+  "service": "elastic",
+  "service_settings": {
+    "model_id": "jina-embeddings-v3"
+  }
+}
+```
+
+The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, text_embedding {{infer}} tasks, or search queries.

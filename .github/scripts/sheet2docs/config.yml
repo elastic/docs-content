@@ -26,13 +26,14 @@ columns:
   - source: "Name"
   - source: "ID"
   - source: "Release Status"
+  - source: "Stack Version"
   - source: "Input Modalities"
   - source: "Output Modalities"
   - source: "EOL Date"
   - source: "Data Retention Period (Days)"
   - source: "Data Used To Train Models?"
-  - source: "Model Card URL"
-  - source: "Author Terms URL"
+  - source: "Model Card"
+  - source: "Provider Terms"
   - source: "Inference Regions"
 
 # Output configuration
