@@ -173,7 +173,7 @@ In the event that the {{agent}} policy has integrations installed that require r
 
 ## Changing an {{agent}}'s privilege mode [unprivileged-change-mode]
 
-For any installed {{agent}} you can change the mode that it's running in by running the `privileged` or `unprivileged` subcommand.
+For any installed {{agent}} you can change the mode that it's running in by running the `privileged` or `unprivileged` subcommand. Alternatively, you can [remove agents' elevated privileges centrally using the {{fleet}} UI or API](/reference/fleet/remove-agent-root-privilege.md), which is particularly useful when managing multiple agents.
 
 :::{note}
 Changing privilege modes is not supported for {{agent}} installed using RPM or DEB packages.
