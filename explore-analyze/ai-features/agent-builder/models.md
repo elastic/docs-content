@@ -15,7 +15,7 @@ products:
 
 {{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making.
 
-For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses a preconfigured AI connector to interface with models running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires zero setup.
+For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses Elastic Managed LLMs running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires zero setup.
 
 ## Default model configuration
 
@@ -23,10 +23,10 @@ For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses
 
 :::{applies-item} { ess:, serverless: }
 
-You can get started with zero setup using a preconfigured AI connector. This connector provides access to built-in LLMs running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires no additional API key management.
+You can get started with zero setup using Elastic Managed LLMs. These are built-in LLMs running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires no additional API key management.
 
 ::::{note}
-Learn more about [preconfigured LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
+Learn more about [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
 ::::
 
 :::{applies-item} {ece:, eck, self: preview =9.2, ga 9.3+}
