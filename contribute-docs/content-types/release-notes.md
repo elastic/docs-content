@@ -9,11 +9,11 @@ Use this content type and the associated schema to draft new release notes or to
 
 Use this page to:
 
-- Understand the purpose and structure of release notes
-  - Learn about the different types
-  - Determine when to include optional information such as impact and actions
-- Write clear, user-focused content
-- Evaluate existing release notes against the standards outlined here
+- Understand the purpose and structure of release notes.
+  - Learn about the different types.
+  - Determine when to include optional information such as impact and actions.
+- Write clear, user-focused content.
+- Evaluate existing release notes against the standards outlined here.
 
 Whether you're summarizing your pull request in a changelog or reviewing someone else's work, these guidelines help ensure consistency, completeness, and quality across Elastic release notes.
 
