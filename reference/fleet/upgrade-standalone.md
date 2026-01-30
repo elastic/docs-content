@@ -135,6 +135,10 @@ We have you covered in the unusual case that you need to rollback an upgrade for
 Earlier {{agent}} versions could detect issues and automatically roll back to the previous installed version within ten minutes of an upgrade if needed.
 This feature is still available and on by default. 
 
+::::{admonition} Elastic subscription
+The manual rollback feature for {{agent}} is available only for some [Elastic subscription levels]({{subscriptions}}).
+::::
+
 **Manual rollback.**
 The manual rollback feature expands the time window for rollbacks, giving you the ability to roll back to the previous version within seven days.
 
@@ -178,15 +182,15 @@ These limitations apply for the manual rollback feature:
 * Rollback is limited to the version running _before_ the upgrade. The previously installed version must be 9.3.0 or later for this functionality to be available.
 * Data required for the rollback is stored on disk for seven days, which can impact available disk space.
 * Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
-* Rollback is only supported for versions 9.3.0 and later. The target version must be 9.3.0 or higher.
+* Rollback is supported only for versions 9.3.0 and later. The target version must be 9.3.0 or later.
 * Manual rollback is not available for system-managed packages such as DEB and RPM.
-* Some data may be re-ingested. 
+* Some data might be re-ingested. 
 
 #### Possible errors [rollback-upgrade-standalone-errors]
 
 If no version is available on disk to rollback to, you get an error.
 This situation can happen if:
 
-- the version you're coming from is earlier than 9.3.0, as the feature was not implemented in earlier versions. 
+- the version you upgraded from is earlier than 9.3.0, as the feature was not implemented in earlier versions. 
 
-- The rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 
+- the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 
