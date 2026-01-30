@@ -6,7 +6,7 @@ applies_to:
 description: Instructions and best practices for building tables with {{kib}} Lens in Elastic.
 ---
 
-# Build tables with {{kib}}
+# Build tables with {{kib}} [build-tables-with-kibana]
 
 Tables are versatile visualizations that display your data in rows and columns, making them ideal for detailed data analysis and comparison. They're perfect for displaying multiple metrics side-by-side, showing individual records, or creating pivot tables that summarize data across different dimensions.
 
