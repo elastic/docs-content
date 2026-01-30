@@ -24,5 +24,4 @@ Use the topics in this section to debug common errors in your [Painless](/explor
 * [Type casting issues](/explore-analyze/scripting/painless-type-casting-issues.md)
 
 ## Additional resources
-* [Introduction to Painless](/explore-analyze/scripting/modules-scripting-painless.md)
 * [A Brief Painless walkthrough](elasticsearch://reference/scripting-languages/painless/brief-painless-walkthrough.md)
