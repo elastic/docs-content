@@ -17,8 +17,8 @@ This section lists the limitations and known issues in {{agent-builder}}.
 
 ::::{admonition} Agent Builder subscription requirements
 - {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
-- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
-- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** [feature tier](/solutions/security/security-serverless-feature-tiers.md).
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** [feature tier](/solutions/observability/observability-serverless-feature-tiers.md).
 ::::
 
 ## Limitations
