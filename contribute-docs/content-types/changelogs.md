@@ -85,10 +85,11 @@ When creating changelogs, follow these best practices:
 The changelog type categorizes your change and determines which section it appears in within the release notes. Choose the type that best describes your change:
 
 Breaking change
-:   Use `breaking-change` for changes that potentially make other systems that rely on the product break or misbehave.
-:   Always include `impact` and `action` fields.
+:   Use `breaking-change` for intentional changes that can make previously working functionality no longer compatible.
+:   Focus on how it can make other systems that rely on the product break or misbehave.
+:   Always include `impact` and `action` fields to explain what users must do to update their code, configuration, or workflows.
 :   Consider including a `subtype` (for example, `api`, `behavioral`, or `configuration`.)
-:   Examples include API changes, configuration format changes, removed features, and behavioral changes that break compatibility.
+:   Examples include removing or renaming an API, configuration format changes, removed features, and behavioral changes that break compatibility.
 
 Bug fix
 :   Use `bug-fix` for the resolution of a bug that existed in previous releases.
@@ -101,6 +102,11 @@ Deprecation
 :   Optionally include `impact` and `action` fields.
 :   Examples include APIs, configuration options, or features scheduled for removal.
 
+Documentation
+:   Use `docs` for major documentation changes or reorganizations.
+:   Focus on the content gaps addressed or how the user experience is improved.
+:   Examples include search or navigation changes or significant content improvements.
+
 Enhancement
 :   Use `enhancement` for minor improvements that don't break or fix existing behavior.
 :   Focus on how existing functionality is improved.
@@ -108,6 +114,7 @@ Enhancement
 
 Feature
 :   Use `feature` for new user-facing functionality or significant new capabilities.
+:   Features are larger in scope, size, and impact than enhancements.
 :   Focus on what users can now do that they couldn't before.
 :   Examples include new APIs, major UI features, new integrations, and significant new capabilities.
 
@@ -115,11 +122,18 @@ Known issue
 :   Use `known-issue` for problems that are not fixed in the release but are actively being worked on.
 :   Include information about all affected versions and contexts.
 :   Optionally include `impact` and `action` fields (with workaround steps).
-:   Examples include significant defects or limitations that might impact implementation.
+:   Examples include defects or limitations that might impact implementation.
 
 Other
 :   Use `other` for any information that doesn't fit into the above categories.
 :   Use sparingly.
+
+Regression
+:   Use `regression` for unintended changes where functionality no longer works or behaves incorrectly.
+:   Unlike breaking changes, they are typically accidental and addressed in a future bug fix.
+:   Unlike known issues, they affect existing behavior and are therefore a higher severity.
+:   Include information about all affected versions and contexts.
+:   Examples include queries that worked in a previous release now failing, UI features disappearing due to refactoring, or a significant performance degradation after an update.
 
 Security
 :   Use `security` for security advisories about vulnerabilities.
