@@ -37,7 +37,7 @@ GET _cluster/health?filter_path=status,*_shards
 A healthy cluster has a green `status` and zero `unassigned_shards`. A yellow status means only replicas are unassigned. A red status means one or more primary shards are unassigned.
 
 :::{tip}
-:applies_to: {ece:, ess:}
+:applies_to: {ece: ga, ess: ga}
 For {{ece}} and {{ech}} deployments, you can also check cluster health from the deployment's **Monitoring** page in the {{ecloud}} Console or ECE Cloud UI. The Monitoring page provides detailed information on health issues, impacted areas, and troubleshooting support. Refer to [Cloud deployment health](/deploy-manage/monitor/cloud-health-perf.md#ec-es-cluster-health) for more information.
 :::
 
@@ -72,7 +72,7 @@ A shard can become unassigned for several reasons. The following tips outline th
 
 ### Single node cluster [fix-cluster-status-only-one-node]
 
-{{es}} will never assign a replica to the same node as the primary shard. A single-node cluster will always have yellow status. To change to green, set [number_of_replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) to 0 for all indices.
+{{es}} will never assign a replica to the same node as the primary shard. A single-node cluster will always have yellow status. To change to green, set [number_of_replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) to 0 for all indices. Only do this if you understand the impact of running without replicas (reduced fault tolerance and recovery options).
 
 Therefore, if the number of replicas equals or exceeds the number of nodes, some shards won’t be allocated.
 
@@ -171,7 +171,7 @@ If your nodes are running low on disk space, you have a few options:
 
 
 ::::{important}
-This is usually a temporary solution and may cause instability if disk space is not freed up.
+Increasing this watermark is usually a temporary solution and may cause instability if disk space is not freed up.
 
 ::::
 

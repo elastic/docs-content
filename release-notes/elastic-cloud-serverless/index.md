@@ -9,11 +9,66 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## January 26, 2026 [serverless-changelog-01262026]
+
+### Features and enhancements [serverless-changelog-01262026-features-enhancements]
+* Elastic will regularly be adding new ML models which will appear as pre-configured AI connectors in your projects. Refer to [the Elastic Inference Service page](docs-content://explore-analyze/elastic-inference/eis.md) for more details
+* Adds support for PromQL queries in the {{esql}} editor [#249230]({{kib-pull}}249230)
+* Opts in to the flyout session for the **Unified Doc Viewer** flyout [#246719]({{kib-pull}}246719)
+* Enables cascading documents for `STATS` queries in {{esql}} [#220119]({{kib-pull}}220119)
+* Adds the ability to create and manage SLOs from the **Service Inventory** page [#249259]({{kib-pull}}249259)
+* Adds a `concat` processor for data management [#247940]({{kib-pull}}247940)
+* Enables {{esql}} multi-terms charts in Lens [#244743]({{kib-pull}}244743)
+* Adds support for unmapped fields in Discover [#248606]({{kib-pull}}248606)
+* Supports KQL autocomplete in the search visor in {{esql}} [#247224]({{kib-pull}}247224)
+* Adds support for restorable state for **Doc Viewer** flyout tabs [#249030]({{kib-pull}}249030)
+* Adds basic support for PromQL in {{kib}} [#249854]({{kib-pull}}249854)
+* Allows you to filter {{esql}} sessions within a dashboard [#249357]({{kib-pull}}249357)
+* Supports autocomplete functionality inside KQL functions [#249510]({{kib-pull}}249510)
+* Adds a new `approximate` {{esql}} setting [#248946]({{kib-pull}}248946)
+* Improves the context for AI Assistant insights in **Alerts** [#248195]({{kib-pull}}248195)
+* Adds Elastic Inference Service (EIS) pricing communication for Knowledge Base models in Elastic AI Assistant [#249298]({{kib-pull}}249298)
+* Moves the results view buttons closer to the job selection controls in Anomaly Detection [#249261]({{kib-pull}}249261)
+* Adds new preconfigured connectors [#249379]({{kib-pull}}249379)
+* Replaces the AJV library with Zod for improved schema validation across Kibana [#248317]({{kib-pull}}248317)
+* Adds an option to convert an index to a lookup index in the **Manage index** dropdown [#248730]({{kib-pull}}248730)
+* Adds Chat Completion to Amazon Bedrock for the Inference API [#139411]({{es-pull}}139411)
+* Adds dot product functions for Int4 to 1-bit in BBQ [#140264]({{es-pull}}140264)
+* Adds IntRangeVector for selected groups in aggregation [#141205]({{es-pull}}141205)
+* Adds Case and Coalesce Support for Compound Types [#140677]({{es-pull}}140677)
+* Adds {{esql}} support for project METADATA [#140592]({{es-pull}}140592)
+* Adds partitioning for time-series sources to speed up queries and improve memory management [#140475]({{es-pull}}140475)
+* Adds preconditioning utilities to help with edge cases where quantization causes vectors to become indistinguishable [#140198]({{es-pull}}140198)
+* Implements the **Observability Agent** in AI Assistant insights and flyout configurations [#249776]({{kib-pull}}249776)
+
+### Fixes [serverless-changelog-01262026-fixes]
+* Fixes an issue with reporting in dashboards and visualizations [#249644]({{kib-pull}}249644)
+* Updates the logs overview component to use Zod v4 [#249583]({{kib-pull}}249583)
+* Fixes KQL autocomplete functionality during custom threshold rule creation [#250044]({{kib-pull}}250044)
+* Fixes a bug that caused an incorrect number of users to be displayed for CSV uploads [#249032]({{kib-pull}}249032)
+* Removes the **Technical preview** badge for the privileged access detection package [#249500]({{kib-pull}}249500)
+* Fixes a bug where tooltip information for status tags was not displayed on the **Gap fill scheduler logs** flyout [#247695]({{kib-pull}}247695)
+* Fixes pagination issues in the **Installation review** frontend [#248259]({{kib-pull}}248259)
+* Fixes an issue where schedules and conversations referencing outdated connector IDs using Elastic Managed LLMs failed to execute or display correctly [#249891]({{kib-pull}}249891)
+* Disables the **Rule summary** button when a user lacks the required rule privileges [#248221]({{kib-pull}}248221)
+* Fixes broken breadcrumbs and sidebar navigation for Data Visualizer and AIOps [#248167]({{kib-pull}}248167)
+* Ensures the abort signal is passed to Elasticsearch during file uploads [#249623]({{kib-pull}}249623)
+* Fixes a word-breaking issue in Anomaly Detection page titles [#250058]({{kib-pull}}250058)
+* Ensures child stream names do not contain spaces [#249384]({{kib-pull}}249384)
+* Fixes an error that occurred when adding items to an index template [#249168]({{kib-pull}}249168)
+* Ensures that parsing of `on_disk_rescore` accounts for valid false values [#141158]({{es-pull}}141158)
+* Fixes incorrect pruning of the `INLINE STATS GROUP BY null` {{esql}} expression [#140027]({{es-pull}}140027)
+* Fixes date fields sort formatting with missing values [#135899]({{es-pull}}135899)
+* Quantizes ST_X, ST_Y and related functions [#140963]({{es-pull}}140963)
+* Uses Double.compare to compare doubles in `tdigest.Sort` [#141049]({{es-pull}}141049)
+* Refactors {{esql}} lookup join to allow for streaming [#139406]({{es-pull}}139406)
+
 ## January 19, 2026 [serverless-changelog-01192026]
 
 ### Features and enhancements [serverless-changelog-01192026-features-enhancements]
 
 * [Elastic Agent Builder](docs-content://explore-analyze/ai-features/elastic-agent-builder.md) is now generally available in {{serverless-full}}. Enabled by default in {{es}} projects, you can now [opt in](docs-content://explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) in Observability and Security projects. Learn how to [get started](docs-content://explore-analyze/ai-features/agent-builder/get-started.md).
+* [Elastic Workflows](../../explore-analyze/workflows.md) is now available in technical preview. Build YAML-based workflows to automate actions across {{es}},{{kib}}, external systems, and AI. Workflows support manual, scheduled, and alert-based triggers, conditional logic, and integrations with existing connectors and Agent Builder. You must turn on the feature to get started.
 * Adds support for {{esql}} in Vega [#247186]({{kib-pull}}247186)
 * Improves {{fleet}} setup memory usage by deferring package reinstalls to async tasks [#248235]({{kib-pull}}248235)
 * Adds tab-scoped, retainable flyout behavior in Discover [#246612]({{kib-pull}}246612)
@@ -1293,7 +1348,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds a missing **Alert details actions** button to the UI [#233113]({{kib-pull}}233113)
 * Prevents SessionView crashes by normalizing event process arguments [#232462]({{kib-pull}}232462)
 * Adds maximum function call limits to prevent recursive tool invocations [#231719]({{kib-pull}}231719)
-* Ensures validation logic so the Elastic Managed LLM behaves as expected during testing [#231873]({{kib-pull}}231873)
+* Ensures validation logic so Elastic Managed LLMs behave as expected during testing [#231873]({{kib-pull}}231873)
 * Fixes the **Restore status** tab display for system indices [#232839]({{kib-pull}}232839)
 * Fixes responsiveness issues in the Stream management code editor area [#232630]({{kib-pull}}232630)
 * Fixes an empty tooltip issue when creating tags [#232853]({{kib-pull}}232853)
@@ -1665,7 +1720,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Falls back to default value when `lookbackInterval` is empty in Anomaly Detection rules [#225249]({{kib-pull}}225249)
 * Fixes time range handling in embedded anomaly swim lanes [#225803]({{kib-pull}}225803)
 * Adds discernible text to the **Refresh data preview** button [#225816]({{kib-pull}}225816)
-* Improves error handling in **Search Playground** when context limit is exceeded using Elastic Managed LLM [#225360]({{kib-pull}}225360)
+* Improves error handling in **Search Playground** when context limit is exceeded using Elastic Managed LLMs [#225360]({{kib-pull}}225360)
 * Fixes knn search error when dimensions are not set [#131081](https://github.com/elastic/elasticsearch/pull/131081)
 * Fixes `GET _synonyms` API to include rulesets with empty rules [#131032](https://github.com/elastic/elasticsearch/pull/131032)
 * Prevents field caps from using semantic queries as index filters [#131111](https://github.com/elastic/elasticsearch/pull/131111)
@@ -1719,7 +1774,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Resets to the default value when the `lookbackInterval` field is empty in Machine Learning [#225249]({{kib-pull}}225249)
 * Fixes the handling of time range in embedded anomaly swim lane in Machine Learning [#225803]({{kib-pull}}225803)
 * Adds discernible text to the refresh button on the **Streams** > **Processing** page [#225816]({{kib-pull}}225816)
-* Fixes handling of context limit errors in Playground when using the Elastic Managed LLM [#225360]({{kib-pull}}225360)
+* Fixes handling of context limit errors in Playground when using Elastic Managed LLMs [#225360]({{kib-pull}}225360)
 * Adds check for `isIndexed` in text fields when generating field exists queries to avoid `IllegalStateException` when field is stored but not indexed or with `doc_values` [#130531](https://github.com/elastic/elasticsearch/pull/130531)
 * Forces `niofs` for `fdt tmp` file read access when flushing stored fields [#130308](https://github.com/elastic/elasticsearch/pull/130308)
 

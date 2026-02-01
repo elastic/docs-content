@@ -10,7 +10,7 @@ products:
 
 # Optimize model context [playground-context]
 
-Context is the information you provide to the LLM, to optimize the relevance of your query results. Without additional context, an LLM will generate results solely based on its training data. In Playground, this additional context is the information contained in your {{es}} indices.
+Context is the information you provide to the LLM, to optimize the relevance of your query results. Without additional context, an LLM generates results solely based on its training data. In Playground, this additional context is the information contained in your {{es}} indices.
 
 There are a few ways to optimize this context for better results. Some adjustments can be made directly in the Playground UI. Others require refining your indexing strategy, and potentially reindexing your data.
 
@@ -42,7 +42,7 @@ This section covers additional context optimizations that you won’t be able to
 
 ### Chunking large documents [playground-context-index-chunking] 
 
-If you’re working with large fields, you may need to adjust your indexing strategy. Consider breaking your documents into smaller chunks, such as sentences or paragraphs.
+If you're working with large fields, you might need to adjust your indexing strategy. Consider breaking your documents into smaller chunks, such as sentences or paragraphs.
 
 If you don’t yet have a chunking strategy, start by chunking your documents into passages.
 

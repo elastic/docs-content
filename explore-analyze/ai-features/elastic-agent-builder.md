@@ -19,9 +19,15 @@ Get started quickly with built-in agents, tools, and the chat UI, then extend wi
 
 ::::{admonition} Agent Builder subscription requirements
 - {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
-- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
-- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** [feature tier](/solutions/security/security-serverless-feature-tiers.md).
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** [feature tier](/solutions/observability/observability-serverless-feature-tiers.md).
 ::::
+
+## Get started
+
+To get started you need an Elastic deployment and you might need to enable the feature.
+
+[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
 
 ## Key capabilities
 
@@ -56,15 +62,9 @@ Tools are modular, reusable functions that agents use to search, retrieve, and m
 
 [**Learn more about tools**](agent-builder/tools.md)
 
-## Get started
-
-To get started you need an Elastic deployment and you might need to enable the feature.
-
-[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
-
 ## Model selection
 
-By default, on {{ech}} and {{serverless-full}} agents use the Elastic Managed LLM, but you can configure other model providers using connectors, including local LLMs deployed on your infrastructure.
+On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. You can also configure other model providers using connectors, including local LLMs deployed on your infrastructure.
 
 [**Learn more about model selection**](agent-builder/models.md)
 
