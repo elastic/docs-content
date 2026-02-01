@@ -15,7 +15,7 @@ products:
 
 {{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making.
 
-For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses a preconfigured AI connector to interface with models running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires zero setup.
+For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses Elastic Managed LLMs running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires zero setup.
 
 ## Default model configuration
 
@@ -23,10 +23,10 @@ For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses
 
 :::{applies-item} { ess:, serverless: }
 
-You can get started with zero setup using a preconfigured AI connector. This connector provides access to built-in LLMs running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires no additional API key management.
+You can get started with zero setup using Elastic Managed LLMs. These are built-in LLMs running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires no additional API key management.
 
 ::::{note}
-Learn more about [preconfigured LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
+Learn more about [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
 ::::
 
 :::{applies-item} {ece:, eck, self: preview =9.2, ga 9.3+}
@@ -55,9 +55,9 @@ To learn more, refer to [select a different model](/explore-analyze/ai-features/
 
 To change which model is used by default:
 
-1. Search for **GenAI Settings** in the global search field
-2. Select your preferred connector from the **Default AI Connector** dropdown
-3. Save your changes
+1. Search for **GenAI Settings** in the global search field.
+2. Select your preferred connector from the **Default AI Connector** dropdown.
+3. Save your changes.
 
 ## Use additional models
 
@@ -67,10 +67,10 @@ To use additional models that aren't preconfigured, create a connector for your 
 
 To create a new connector:
 
-1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md)
-2. Select **Create Connector** and select your model provider
-3. Configure the connector with your API credentials and preferred model
-4. Expand **Additional settings** and select `chat_completion` as the task type
+1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Create Connector** and select your model provider.
+3. Configure the connector with your API credentials and preferred model.
+4. Expand **Additional settings** and select `chat_completion` as the task type.
    :::{image} images/additional-settings-chat-completion-task-type.png
    :alt: Additional settings expanded showing chat_completion task type selected
    :width: 450px
@@ -100,9 +100,9 @@ For detailed setup instructions, refer to the [OpenAI connector documentation](k
 
 Agent Builder relies on advanced LLM capabilities including:
 
-- **Function calling**: Models must accurately select appropriate tools and construct valid parameters from natural language requests
-- **Multi-step reasoning**: Agents need to plan, execute, and adapt based on tool results across multiple iterations
-- **Structured output**: Models must produce properly formatted responses that the agent framework can parse
+- **Function calling**: Models must accurately select appropriate tools and construct valid parameters from natural language requests.
+- **Multi-step reasoning**: Agents need to plan, execute, and adapt based on tool results across multiple iterations.
+- **Structured output**: Models must produce properly formatted responses that the agent framework can parse.
 
 While Elastic offers LLM [connectors](kibana://reference/connectors-kibana.md) for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}.
 
@@ -114,7 +114,7 @@ The following models are known to work well with {{agent-builder}}. These catego
 |---|---|---|---|
 | Extended reasoning | - Gemini 3 Pro <br>- Claude 4.5 Opus | Open-ended exploration, multi-step planning, and complex analysis | Higher latency and cost; best for latency-insensitive, batch, or async workflows |
 | Balanced performance | - GPT-5.2 <br>- Claude 4.5 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost; suitable for real-time and interactive use |
-| High throughput | GPT-OSS-120B | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth; smaller context window. Ideal for air-gapped deployments |
+| High throughput | GPT-OSS-120B | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth; smaller context window; ideal for air-gapped deployments |
 
 :::{tip}
 For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude 4.5 Sonnet and Gemini 3 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
