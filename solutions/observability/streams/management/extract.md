@@ -9,10 +9,11 @@ After selecting a stream, use the **Processing** tab to add [processors](#stream
 
 For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
-The **Processing** tab also:
+The **Processing** tab also has the following features:
 
-- Simulates your processors and provides an immediate [preview](#streams-preview-changes) that's tested end to end
-- Flags indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` [Generate pipeline suggestions](#streams-generate-pipeline-suggestions).
+- Simulate your processors and provide an immediate [preview](#streams-preview-changes) that's tested end to end.
+- Flag indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes.
 
 After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
 
@@ -46,7 +47,7 @@ Streams exposes a Streamlang configuration, but internally it relies on {{es}} i
 - **Conditional execution**: ES|QL's enforced table shape limits conditional casting, parsing, and wildcard field operations that ingest pipelines can do per-document.
 - **Arrays of objects / flattening**: Ingest pipelines preserve nested JSON arrays, while ES|QL flattens to columns, so operations like rename and delete on parent objects can differ or fail.
 
-## Add a processor [streams-add-processors]
+## Add processors [streams-add-processors]
 
 Streams uses [{{es}} ingest pipelines](../../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) made up of processors to transform your data, without requiring you to switch interfaces and manually update pipelines.
 
@@ -64,9 +65,29 @@ Refer to individual [supported processors](#streams-extract-processors) for more
 Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
 :::
 
+### Generate pipeline suggestions [streams-generate-pipeline-suggestions]
+```{applies_to}
+stack: preview 9.3+
+serverless: preview
+```
+:::{note}
+This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+:::
+
+Setting up processors is generally a multistep process. For example, you might need a grok processor to extract fields, a date processor to convert timestamps, and a remove processor to get rid of temporary fields. Instead of creating individual processors manually, you can have AI suggest an entire pipeline for you:
+
+1. From the **Processing** tab, select **Suggest a pipeline**.
+1. Review the suggested processors, and either **Accept** or **Reject** the suggestions.
+1. Select **Regenerate** to have Streams regenerate the suggested pipeline. Change the LLM that Streams uses to generate suggestions from the {icon}`controls` menu.
+
+#### How does **Suggest a pipeline** work? [streams-pipeline-generation]
+
+:::{include} ../../../_snippets/streams-suggestions.md
+:::
+
 ### Add conditions [streams-add-processor-conditions]
 
-You can add conditions to processors so they only run on data that meets those conditions. Each condition is a boolean expression that's evaluated for every document.
+You can add conditions, Boolean expressions that are evaluated for each document, and attach processors that only run when those conditions are met.
 
 To add a condition:
 
@@ -151,6 +172,17 @@ Each processor has the **Ignore failures** option. When enabled, document proces
 ### Ignore missing fields [streams-ignore-missing-fields]
 
 Dissect, grok, and rename processors include the **Ignore missing fields** option. When enabled, document processing continues even if a source field is missing.
+
+### Processor actions [streams-processor-actions]
+
+To modify an existing processor, open the actions menu {icon}`boxes_vertical` next to it to see the available options:
+
+* **Move up** or **Move down**: Change the order of the processor.
+* **Add description**: Change the processor description from its metadata to a description of your choice.
+* **Remove description**: For processors with an added description, use this option to return the description to the metadata.
+* **Edit**: Modify the processor configuration.
+* **Duplicate**: Create another processor with the same configuration to use as a template.
+* **Delete**: Remove the processor permanently.
 
 ## Detect and resolve failures [streams-detect-failures]
 
