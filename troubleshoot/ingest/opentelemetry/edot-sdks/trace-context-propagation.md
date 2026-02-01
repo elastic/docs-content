@@ -140,7 +140,7 @@ This can help maintain context propagation during the migration. Plan to move to
 
 ::::{step} Keep dual‑propagation active during migrations
 
-In mixed environments with OpenTelemetry SDKs (W3C only) and older Elastic agents, keep the default dual‑propagation mode turned on so that:
+In mixed environments with OpenTelemetry SDKs (W3C only) and earlier versions of Elastic agents, keep the default dual‑propagation mode turned on so that:
 
 - New services read W3C headers.
 - Legacy services read the `elastic-apm-traceparent` header.
