@@ -97,7 +97,7 @@ PUT _ingest/pipeline/my-pipeline
 
 The {{es}} API response body includes errors encountered at any stage of the ingestion flow. To diagnose ingestion issues, it's also recommended to review error logs. Elastic client-side products, including [Logstash](logstash://reference/logstash/logging#_update_logging_levels) and [Elastic Agent](fleet://reference/fleet/monitor-elastic-agent#change-logging-level), might require the `debug` logging level to be enabled to report HTTP 400-level errors. 
 
-To demonstrate a common example, a document may be rejected from indexing due to a [mapping](/manage-data/data-store/mapping.md) conflict when the incoming data does not match the [explicit field types](/manage-data/data-store/mapping/explicit-mapping.md) defined inside the existing index's mapping. The {{es}} logs might include entries such as:
+To demonstrate a common example, a document can be rejected from indexing due to a [mapping](/manage-data/data-store/mapping.md) conflict when the incoming data does not match the [explicit field types](/manage-data/data-store/mapping/explicit-mapping.md) defined inside the existing index's mapping. The {{es}} logs might include entries such as:
 
 ```console
 [index] Error while parsing document for index [index]: [1:852] object mapping for [field] tried to parse field [field] as object, but found a concrete value at org.elasticsearch.index.mapper.DocumentParser.throwOnConcreteValue(DocumentParser.java:359)
