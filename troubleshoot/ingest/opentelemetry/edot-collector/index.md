@@ -31,10 +31,6 @@ If you're not sure where to start, review the Collector's logs for error message
 
 * [Collector doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/edot-collector/metadata.md): Learn why the Collector doesn't extract custom attributes and how to propagate such values using EDOT SDKs.
 
-## Connectivity and export issues
-
-* [Export failures when sending telemetry data](/troubleshoot/ingest/opentelemetry/edot-collector/telemetry-export-errors.md): Resolve export failures caused by `sending_queue` overflow and {{es}} exporter timeouts.
-
 ## Debugging
 
 * [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md): Learn how to enable debug logging for the EDOT Collector in supported environments.

@@ -153,7 +153,6 @@ toc:
               - file: ingest/opentelemetry/edot-collector/enable-debug-logging.md
               - file: ingest/opentelemetry/edot-collector/collector-not-starting.md
               - file: ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md
-              - file: ingest/opentelemetry/edot-collector/telemetry-export-errors.md
           - file: ingest/opentelemetry/edot-sdks/index.md
             children:
               - file: ingest/opentelemetry/edot-sdks/android/index.md
