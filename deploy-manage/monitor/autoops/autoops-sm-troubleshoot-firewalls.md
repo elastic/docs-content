@@ -1,9 +1,6 @@
 ---
 applies_to:
-  deployment:
-    self:
-    ece:
-    eck:
+  stack: ga 7.17
 navigation_title: Firewalls blocking {{agent}}
 products:
   - id: cloud-kubernetes

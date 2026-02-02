@@ -38,11 +38,7 @@ The following sections provide more details.
 
 ```{applies_to}
 serverless:
-deployment:
-  ess:
-  self:
-  ece:
-  eck:
+stack: ga 7.17
 ```
 
 AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
