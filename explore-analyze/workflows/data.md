@@ -187,10 +187,10 @@ Template variables are the data sources you can reference inside template expres
 
 | Variable type | Syntax | Description |
 |---------------|--------|-------------|
-| **Step outputs** | `steps.<step_name>.output` | Data produced by each step during execution. Access results from previous steps to chain operations together. Refer to [Reference outputs](./data/templating.md#workflows-ref-step-outputs) for more details. |
-| **Constants** | `consts.<constant_name>` | Reusable values defined once at the workflow level using the `consts` block. Use constants for fixed values like index names, API endpoints, or thresholds that don't change between runs. Refer to [Reference constants](./data/templating.md#workflows-ref-constants) for more details. |
-| **Inputs** | `inputs.<input_name>` | Parameters defined in the `inputs` block that can be provided when the workflow is triggered. Use inputs for values that might vary between runs, such as environment names or user-provided data. Refer to [Reference inputs](./data/templating.md#workflows-ref-inputs) for more details. |
-| **Context variables** | `execution.id`, `event`, `foreach.item` | Data automatically provided by the workflow engine at runtime, including execution metadata, trigger data, and loop state. Refer to [Context variables reference](./data/templating.md#workflows-context-variables) for more details. |
+| Step outputs | `steps.<step_name>.output` | Data produced by each step during execution. Access results from previous steps to chain operations together. Refer to [Reference outputs](./data/templating.md#workflows-ref-step-outputs) for more details. |
+| Constants | `consts.<constant_name>` | Reusable values defined once at the workflow level using the `consts` block. Refer to [Reference constants](./data/templating.md#workflows-ref-constants) for more details. |
+| Inputs | `inputs.<input_name>` | Parameters defined in the `inputs` block that can be provided when the workflow is triggered. Refer to [Reference inputs](./data/templating.md#workflows-ref-inputs) for more details. |
+| Context variables | `execution.id`, `event`, `foreach.item` | Data automatically provided by the workflow engine at runtime, including execution metadata, trigger data, and loop state. Refer to [Context variables reference](./data/templating.md#workflows-context-variables) for more details. |
 
 #### Choose between constants and inputs [workflows-constants-or-inputs]
 
