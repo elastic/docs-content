@@ -2,7 +2,7 @@
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how to use the Liquid templating engine to create dynamic workflows.
+description: Learn how to use variables, constants, and the Liquid templating engine to create dynamic workflows.
 ---
 
 # Templating engine [workflows-templating]
@@ -251,6 +251,85 @@ steps:
         - {{hit._source.name}} ({{hit._source.email}})
         {% endfor %}
 ```
+
+## Context variables reference [workflows-context-variables]
+
+The workflow engine provides context variables that you can access using template syntax. These variables give you access to workflow metadata, execution details, trigger data, and step outputs.
+
+### Available context variables
+
+| Variable | Description | Example value |
+|----------|-------------|---------------|
+| `workflow.name` | Name of the current workflow | `"My Workflow"` |
+| `workflow.id` | Unique identifier of the workflow definition | `"abc-123"` |
+| `execution.id` | Unique identifier for this specific run | `"exec-456"` |
+| `execution.startedAt` | ISO timestamp when execution began | `"2024-01-15T10:30:00Z"` |
+| `event` | Data from the trigger that started the workflow | Varies by trigger type |
+| `inputs.<name>` | Input parameters passed at trigger time | Defined in workflow |
+| `consts.<name>` | Constants defined at the workflow level | Defined in workflow |
+| `steps.<step_name>.output` | Output data from a completed step | Varies by step type |
+| `steps.<step_name>.error` | Error details if a step failed | Error object |
+
+### Foreach loop variables
+
+These variables are only available inside `foreach` steps:
+
+| Variable | Description |
+|----------|-------------|
+| `foreach.item` | The current item being processed |
+| `foreach.index` | Zero-based index of the current iteration |
+| `foreach.total` | Total number of items in the array |
+| `foreach.items` | The complete array being iterated |
+
+### Trigger event data
+
+The `event` variable contains data from the trigger. Its structure depends on the trigger type:
+
+| Trigger type | Event contents |
+|--------------|----------------|
+| Manual | User information and any parameters passed |
+| Scheduled | Execution time and schedule information |
+| Alert | Complete alert data including fields, severity, and rule information |
+
+Example accessing alert data:
+
+```yaml
+message: "Alert severity: {{ event.kibana.alert.severity }}"
+```
+
+### Constants vs inputs
+
+Use **constants** for values that are fixed for the workflow definition and don't change between runs:
+
+```yaml
+consts:
+  indexName: "production-logs"
+  maxRetries: 3
+  endpoints:
+    primary: "https://api.example.com"
+    backup: "https://backup.example.com"
+```
+
+Use **inputs** for values that may vary each time the workflow runs:
+
+```yaml
+inputs:
+  - name: environment
+    type: string
+    required: true
+  - name: dryRun
+    type: boolean
+    default: true
+```
+
+| Use case | Use constants | Use inputs |
+|----------|---------------|------------|
+| Index names that never change | ✅ | |
+| API endpoints | ✅ | |
+| Threshold values | ✅ | |
+| User-provided parameters | | ✅ |
+| Values that vary per execution | | ✅ |
+| Test vs production toggles | | ✅ |
 
 ## Template rendering behavior [workflows-template-rendering]
 

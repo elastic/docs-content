@@ -33,6 +33,7 @@ Some key concepts to understand while working with workflows:
 * **Triggers**: The events or conditions that initiate a workflow. Refer to [](/explore-analyze/workflows/triggers.md) to learn more.
 * **Steps**: The individual units of logic or action that make up a workflow. Refer to [](/explore-analyze/workflows/steps.md) to learn more.
 * **Data**: How data flows through your workflow, including inputs, constants, context variables, step outputs, and Liquid templating for dynamic values. Refer to [](/explore-analyze/workflows/data.md) to learn more.
+* **Variables and constants**: Dynamic values you can reference throughout your workflow using template expressions. For a complete reference of available variables, refer to [Context variables reference](/explore-analyze/workflows/data/templating.md#workflows-context-variables).
 
 ## Workflow structure [workflow-structure]
 
