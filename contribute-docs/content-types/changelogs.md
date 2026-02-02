@@ -35,7 +35,7 @@ Changelogs are YAML files that follow a common schema.
 Each changelog file describes a single change and includes metadata such as the type of change, affected products, and user-facing descriptions.
 
 :::{important}
-The creation of release notes from changelogs and all of the layout and formatting of that content is handled automatically by Elastic Docs.
+The creation of release notes from changelogs and all the layout and formatting of that content is handled automatically by Elastic Docs.
 For technical details, refer to [Create and bundle changelogs](https://elastic.github.io/docs-builder/contribute/changelog/).
 
 Focus on creating clear, accurate content in the changelogs rather than worrying about how it will appear in the final documentation.
