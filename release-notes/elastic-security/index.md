@@ -30,6 +30,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.3.0 [elastic-security-9.3.0-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.0-features-enhancements]
+
+* Adds a new **Workflows** action to detection rules, allowing you to trigger workflows when a detection rule generates an alert. Refer to [](/explore-analyze/workflows.md) and [](/explore-analyze/workflows/triggers/alert-triggers.md) for more details.
 * Adds a new **Rules, Alerts, and Exceptions** feature privilege that controls access to detection rules, alerts, and rule exceptions [#239634]({{kib-pull}}239634).
 * Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
 * Adds the gap auto-fill scheduler UI and API for detection rules [#244719]({{kib-pull}}244719).
