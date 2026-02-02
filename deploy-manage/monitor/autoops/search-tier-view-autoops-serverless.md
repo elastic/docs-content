@@ -1,7 +1,7 @@
 ---
 applies_to:
   serverless:
-products:
+products
   - id: cloud-serverless
 navigation_title: Search Tier view
 ---
