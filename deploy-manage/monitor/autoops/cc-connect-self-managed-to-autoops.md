@@ -340,9 +340,7 @@ By default, each cluster has a name made up of a string of characters, but you c
 
 To connect more clusters, repeat the steps to [connect to AutoOps](#connect-to-autoops).
 
-If you don't need to change any of your [configuration settings](#configure-agent) for the additional clusters, you can skip ahead and reuse the same installation command if you used the {{k8s}}, Docker, or Linux installation methods. 
-
-{applies_to}`eck: ga 3.3`If you used ECK as your installation method, you can skip ahead and apply the same `resourceSelector` label to any additional clusters.
+If you don't need to change any of your [configuration settings](#configure-agent) for the additional clusters, you can skip ahead and reuse the same installation command if you used the {{k8s}}, Docker, or Linux methods, or apply the same `resourceSelector` label if you used the ECK method.
 
 Remember that you must install a separate, dedicated {{agent}} for each cluster. You only need to install the agent once per cluster. 
 

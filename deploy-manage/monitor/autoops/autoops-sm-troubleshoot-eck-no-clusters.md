@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-    eck:
+    eck: ga 3.3
 navigation_title: Connected clusters not appearing with ECK
 products:
   - id: cloud-kubernetes
