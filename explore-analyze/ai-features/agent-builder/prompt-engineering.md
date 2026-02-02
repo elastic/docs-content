@@ -70,7 +70,7 @@ For detailed guidance on writing effective tool descriptions, refer to [](tools/
 
 ## Core principles
 
-This section covers how to get started and iterate incrementally on your instructions, structure them for clarity, and optimize for prompt caching.
+This section covers how to get started and iterate incrementally on your instructions, structure them for clarity, and optimize for prompt caching. These principles help you build agents and tools that are efficient, effective, and easier to maintain.
 
 ### Start light and iterate
 
