@@ -16,13 +16,13 @@ products:
 Prompt engineering in {{agent-builder}} involves three key areas:
 
 * **Custom instructions**: When you [create a custom agent](custom-agents.md), you define instructions that shape the agent's persona, reasoning patterns, and guardrails.
-* **Tool descriptions**: When you [define custom tools](tools/custom-tools.md), you write descriptions that help the agent understand when and how to use each tool.
+* **Tool descriptions**: When you [define custom tools](tools/custom-tools.md#writing-effective-tool-descriptions), you write descriptions that help the agent understand when and how to use each tool.
 * **Chat prompts**: How you phrase your questions when [chatting with agents](chat.md) affects the quality and accuracy of responses.
 
-This guide outlines best practices for all three to help you build reliable, cost-effective agents.
+This guide outlines best practices to help you build reliable, cost-effective agents.
 
 :::{tip}
-To learn about best practices specifically for your custom tool definitions, refer to [](tools/custom-tools.md#best-practices).
+To learn about best practices for creating custom tools, refer to [](tools/custom-tools.md#best-practices).
 :::
 
 ## How agents process prompts
@@ -35,23 +35,7 @@ This means your chat prompts work together with the agent's instructions. A well
 To understand the baseline reasoning patterns of your agent, refer to the official prompt engineering guides provided by LLM vendors. Understanding the "system prompt" philosophy of the underlying model helps you write instructions and chat prompts that complement, rather than contradict, the model's native behavior.
 :::
 
-## Prompting guidelines
-
-The prompt serves as the agent's operating manual. Follow these guidelines to minimize hallucinations and maximize tool accuracy.
-
-### Start light and iterate
-
-Avoid "over-prompting" with excessive text. High-reasoning models are capable of inferring intent from concise, well-structured instructions.
-
-* **Begin with clarity**: Use unambiguous instructions specific to your primary tasks. Only add granular, step-by-step logic if the model fails a specific use case during testing.
-* **Consult provider guides**: If your agent relies on a specific [model](models.md) family (for example Anthropic Claude or OpenAI GPT), use their specific architecture optimizations. For example, certain models are sensitive to specific keywords when extended thinking features are enabled.
-* **Benchmark changes**: Treat prompts like code. Version your prompts and measure performance against a "golden dataset"—a collection of verified query-and-response pairs. Avoid modifying prompts based on a single failure; ensure changes improve aggregate performance.
-
-### Structure and scope
-
-Avoid prompts that attempt to handle multiple unrelated tasks. If a prompt becomes difficult to manage or the agent fails to follow sequences, consider adjusting your architecture.
-
-#### Choose the right tool: Agents or Workflows
+## Agents or workflows
 
 Not every task benefits from prompt engineering. Some tasks are better suited to deterministic [workflows](/explore-analyze/workflows.md) than to agent-based reasoning. Consider the following when deciding:
 
@@ -65,7 +49,35 @@ Not every task benefits from prompt engineering. Some tasks are better suited to
 You can trigger workflows directly from agent conversations using [workflow tools](tools/workflow-tools.md).
 :::
 
-#### Use structured formatting
+## Custom instructions, tool descriptions, or user input
+
+When building agents, you must decide where specific logic belongs: in the agent's custom instructions, in a tool description, or derived dynamically from the user query. Use the following table to guide your decisions:
+
+| Logic type | Source | Rationale |
+| :--- | :--- | :--- |
+| **Global behavior** | Custom instructions | Instructions like "Always answer in French" or "Be concise" apply to the entire session, regardless of which tools are used. |
+| **Multi-step sequences** | Custom instructions | "First search for the user, then look up their recent orders." The agent needs to know the order of operations before selecting tools. |
+| **Trigger criteria** | Tool description | "Use this tool ONLY for European market data." The LLM evaluates this when deciding which tool to call. |
+| **API constraints** | Tool description | "The search parameter must be at least 3 characters." This prevents invalid API calls. |
+| **Dynamic intent** | User input | "Find me the sales for Q3." The LLM extracts values from the user's message and passes them as tool parameters at runtime. |
+
+:::{tip}
+For detailed guidance on writing effective tool descriptions, refer to [](tools/custom-tools.md#best-practices).
+:::
+
+## Writing effective prompts
+
+The prompt serves as the agent's operating manual. Follow these guidelines to minimize hallucinations and maximize tool accuracy.
+
+### Start light and iterate
+
+Avoid "over-prompting" with excessive text. High-reasoning models are capable of inferring intent from concise, well-structured instructions.
+
+* **Begin with clarity**: Use unambiguous instructions specific to your primary tasks. Only add granular, step-by-step logic if the model fails a specific use case during testing.
+* **Consult provider guides**: If you aren't switching [models](models.md) frequently, consult that provider's official prompt engineering guide (for example, [Anthropic's Claude best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices)). These guides contain specific guidance to unlock maximum performance for that architecture. For example, certain models are sensitive to specific keywords: Claude Opus 4.5 is sensitive to the word "think" when extended thinking is disabled.
+* **Benchmark changes**: Treat prompts like code. Version your prompts and measure performance against a "golden dataset": a collection of verified query-and-response pairs. Avoid modifying prompts based on a single failure; ensure changes improve aggregate performance.
+
+### Use structured formatting
 
 Large blocks of text can lead to instruction drift. Use Markdown headers and whitespace to separate instructions into logical blocks:
 
@@ -80,7 +92,7 @@ Outline the preferred sequence of reasoning.
 List constraints, safety rules, and prohibited actions.
 ```
 
-#### Optimize for prompt caching
+### Optimize for prompt caching
 
 In the context window, custom instructions appear before tool definitions. To maximize prompt caching and reduce latency and [costs](monitor-usage.md):
 
