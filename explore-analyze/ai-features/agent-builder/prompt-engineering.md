@@ -108,14 +108,14 @@ Use custom instructions to define how the agent communicates and handles uncerta
 
 ### Set an operational persona
 
-Explicitly define the agent's risk tolerance and interaction style based on your use case:
+Explicitly define the agent's risk tolerance and interaction style based on your use case. For example:
 
 * **Precautionary (Finance/Security)**: "You are a precautionary agent. You must verify tool output before summarizing. If data is ambiguous, ask clarifying questions. Do not assume default values."
 * **Explorative (Research/Search)**: "You are an autonomous researcher. If a search yields few results, broaden your query terms and attempt a new search without prompting the user for permission."
 
 ### Normalize inputs and outputs
 
-Define formatting rules to ensure consistency between the LLM, the tools, and the user interface:
+Define formatting rules to ensure consistency between the LLM, the tools, and the user interface. For example:
 
 * **Date formats**: "Always format dates as `YYYY-MM-DD`."
 * **Financial values**: "Input monetary values as integers in cents for tool calls, but display them as `$XX.XX` in user responses."
