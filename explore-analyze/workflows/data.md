@@ -192,6 +192,12 @@ Template variables are the data sources you can reference inside template expres
 | **Inputs** | `inputs.<input_name>` | Parameters defined in the `inputs` block that can be provided when the workflow is triggered. Use inputs for values that may vary between runs, such as environment names or user-provided data. Refer to [Reference inputs](./data/templating.md#workflows-ref-inputs) for more details. |
 | **Context variables** | `execution.id`, `event`, `foreach.item` | Data automatically provided by the workflow engine at runtime, including execution metadata, trigger data, and loop state. Refer to [Context variables reference](./data/templating.md#workflows-context-variables) for more details. |
 
+#### Choose between constants and inputs [workflows-constants-vs-inputs]
+
+Constants and inputs are both template variables that let you define reusable values in your workflow, but they serve different purposes:
+
+- **Constants** — Use for values that are fixed for the workflow definition and don't change between runs, such as index names, API endpoints, and threshold values.
+- **Inputs** — Use for values that may vary each time the workflow runs, such as user-provided parameters, environment toggles, or any value that changes per execution.
 
 ### Template expressions [workflows-template-expressions]
 

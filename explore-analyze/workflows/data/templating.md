@@ -297,40 +297,6 @@ Example accessing alert data:
 message: "Alert severity: {{ event.kibana.alert.severity }}"
 ```
 
-### Constants vs inputs
-
-Use **constants** for values that are fixed for the workflow definition and don't change between runs:
-
-```yaml
-consts:
-  indexName: "production-logs"
-  maxRetries: 3
-  endpoints:
-    primary: "https://api.example.com"
-    backup: "https://backup.example.com"
-```
-
-Use **inputs** for values that may vary each time the workflow runs:
-
-```yaml
-inputs:
-  - name: environment
-    type: string
-    required: true
-  - name: dryRun
-    type: boolean
-    default: true
-```
-
-| Use case | Use constants | Use inputs |
-|----------|---------------|------------|
-| Index names that never change | ✅ | |
-| API endpoints | ✅ | |
-| Threshold values | ✅ | |
-| User-provided parameters | | ✅ |
-| Values that vary per execution | | ✅ |
-| Test vs production toggles | | ✅ |
-
 ## Template rendering behavior [workflows-template-rendering]
 
 The engine renders templates recursively through all data structures, processing nested objects and arrays.
