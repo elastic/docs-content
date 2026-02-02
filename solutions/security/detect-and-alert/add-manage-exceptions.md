@@ -29,7 +29,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
       and process.name != "process-name.exe"]`
     ```
 
-* Be careful when adding exceptions to [indicator match](create-detection-rule.md#create-indicator-rule) rules. Exceptions are evaluated against source and indicator indices, so if the exception matches events in *either* index, alerts are not generated.
+* Be careful when adding exceptions to [indicator match](/solutions/security/detect-and-alert/rule-types/indicator-match.md) rules. Exceptions are evaluated against source and indicator indices, so if the exception matches events in *either* index, alerts are not generated.
 
 ::::
 
