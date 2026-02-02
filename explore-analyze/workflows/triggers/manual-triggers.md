@@ -23,7 +23,12 @@ This allows you to run a workflow manually by:
 
 ## Input parameters
 
-Manual triggers can accept input parameters, which you can reference in any step. When you define inputs at the workflow level, users are prompted to provide values when they run the workflow. Use inputs for values that might vary between runs. For fixed values like index names or API endpoints, use [constants](/explore-analyze/workflows/data.md#workflows-constants-or-inputs) instead.
+Manual triggers can accept input parameters, which you can reference in any step. When you define inputs at the workflow level, users are prompted to provide values when they run the workflow. 
+
+:::{tip}
+Refer to [](/explore-analyze/workflows/data.md#workflows-constants-or-inputs) to learn when to use inputs or constants in workflows.
+:::
+
 
 ```yaml
 name: Manual Processing Workflow

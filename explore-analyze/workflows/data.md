@@ -225,5 +225,3 @@ By combining data flow, templating, and robust error handling, you can build com
 | Retry on failure | `on-failure.retry` | Retry a failed step with optional delay. |
 | Fallback steps | `on-failure.fallback` | Define recovery actions when a step fails. |
 | Continue on failure | `on-failure.continue: true` | Allow the workflow to proceed after a failure. |
-
-For a list of available variables, refer to [Context variables reference](./data/templating.md#workflows-context-variables).
