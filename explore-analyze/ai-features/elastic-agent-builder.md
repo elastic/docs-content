@@ -18,7 +18,7 @@ products:
 - **Chat with your {{es}} data immediately** using the chat interface, preconfigured agents, and built-in tools available out of the box.
 - **Build custom agents and tools** tailored to your specific use cases using the UI or APIs.
 - **Import tools from external MCP servers** to give your agents additional capabilities.
-- **Expose tools and agents to external systems** like Claude Desktop, Cursor, or agentic apps built with LangChain and OpenAI through the MCP server, A2A server, and REST APIs.
+- **Expose tools and agents to external systems** like Claude Desktop, Cursor, and LangChain apps through the MCP server, A2A server, and REST APIs.
 
 **[Learn more in key capabilities](#key-capabilities)**
 
