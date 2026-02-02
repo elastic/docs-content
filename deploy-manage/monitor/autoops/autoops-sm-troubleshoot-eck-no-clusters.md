@@ -9,7 +9,7 @@ products:
 
 # Troubleshoot connected clusters not appearing with ECK installation
 
-If you chose ECK as your installation method in the wizard to connect your {{es}} clusters to AutoOps, but you can't view any connected clusters in your account, go through this guide to diagnose and fix common issues.
+If you are using the ECK installation method (`AutoOpsAgentPolicy` resource) to connect your {{es}} clusters to AutoOps, but you can't view any connected clusters in your account, go through this guide to diagnose and fix common issues.
 
 ## Verify `AutoOpsAgentPolicy` status
 

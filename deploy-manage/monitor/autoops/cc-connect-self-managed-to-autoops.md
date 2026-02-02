@@ -207,18 +207,7 @@ $$$firewall-allowlist$$$
 
 ### Install agent
 
-The wizard generates an installation command or a YAML manifest based on your configuration. Depending on your installation method, the following formats are available:
-
-* {{k8s}}
-    * YAML
-* Docker
-    * Docker
-    * Docker compose
-* Linux
-* {applies_to}`eck: ga 3.3` ECK
-  * YAML
-
-Complete the following steps to install the agent:
+The wizard generates an installation command or a YAML manifest based on your configuration. Depending on your installation method, complete the following steps to install the agent:
 
 :::::{tab-set}
 :group: installation-eck-or-other
