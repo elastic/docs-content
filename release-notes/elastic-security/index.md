@@ -33,7 +33,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Further reduces {{elastic-defend}} behavioral protection CPU usage for trusted applications.
 
 ### Fixes [elastic-security-9.2.5-fixes]
-* Fixes a pagination issue in the **Add Elastic rules** table [#248259]({{kib-pull}}248259).
+* Improves the stability of the **Add Elastic rules** page on deployments with low RAM configurations [#248259]({{kib-pull}}248259).
 * Fixes an issue in {{elastic-defend}} on Windows that could reduce the detection efficacy of malware-on-write.
 * Fixes an issue where {{elastic-defend}} on Windows could log a warning about "Quarantine directory failed validation due to ACL or file attribute change" for empty removable media drives such as optical drives.
 * Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-endpoint}} uninstallation or upgrade.
@@ -71,14 +71,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Features and enhancements [elastic-security-9.2.3-features-enhancements]
 * Shows session view in full height [#245888]({{kib-pull}}245888).
 * Shows analyzer in full height [#245857]({{kib-pull}}245857).
-* Hardens {elastic defend} against cloud filter rebinding.
-* Adds `process.group_leader.pid` and `process.session_leader.pid` to {elastic-defend} MacOS process exec events.
-* Improves general system responsiveness while {elastic-defend} is installed.
-* Reduces the number of I/O operations performed by {elastic-defend} for file event enrichment.  This reduction is more pronounced when Ransomware Protection is not in use.
+* Hardens {{elastic-defend}} against cloud filter rebinding.
+* Adds `process.group_leader.pid` and `process.session_leader.pid` to {{elastic-defend}} MacOS process exec events.
+* Improves general system responsiveness while {{elastic-defend}} is installed.
+* Reduces the number of I/O operations performed by {{elastic-defend}} for file event enrichment.  This reduction is more pronounced when Ransomware Protection is not in use.
 
 ### Fixes [elastic-security-9.2.3-fixes]
 * Standardizes how to log errors [#245030]({{kib-pull}}245030).
-* Fixes a bug for {elastic-defend} on Linux, where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
+* Fixes a bug for {{elastic-defend}} on Linux, where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
 
 ## 9.2.2 [elastic-security-9.2.2-release-notes]
 
@@ -237,14 +237,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Features and enhancements [elastic-security-9.1.9-features-enhancements]
 * Shows session view in full height [#245888]({{kib-pull}}245888).
 * Shows analyzer in full height [#245857]({{kib-pull}}245857).
-* Hardens {elastic defend} against cloud filter rebinding.
-* Improves general system responsiveness while {elastic-defend} is installed.
+* Hardens {{elastic-defend}} against cloud filter rebinding.
+* Improves general system responsiveness while {{elastic-defend}} is installed.
 
 ### Fixes [elastic-security-9.1.9-fixes]
 * Standardizes how to log errors [#245030]({{kib-pull}}245030).
-* Fixes an issue that could prevent {elastic-defend} from properly handling upgrades when Tamper Protection is enabled.
-* {elastic-defend} no longer reloads its policy if nothing has functionally changed from the previous policy.
-* For Linux {elastic-defend}, fixes a bug where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
+* Fixes an issue that could prevent {{elastic-defend}} from properly handling upgrades when Tamper Protection is enabled.
+* {{elastic-defend}} no longer reloads its policy if nothing has functionally changed from the previous policy.
+* For Linux {{elastic-defend}}, fixes a bug where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
 
 ## 9.1.8 [elastic-security-9.1.8-release-notes]
 
