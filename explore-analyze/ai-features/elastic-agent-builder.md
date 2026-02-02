@@ -18,8 +18,7 @@ products:
 - **Chat with your {{es}} data immediately** using the chat interface, preconfigured agents, and built-in tools available out of the box.
 - **Build custom agents and tools** tailored to your specific use cases using the UI or APIs.
 - **Import tools from external MCP servers** to give your agents additional capabilities.
-- **Expose your Elastic tools to external MCP clients** like Claude Desktop and Cursor through the MCP server.
-- **Expose your agents to external agentic systems** built with LangChain, OpenAI, or other frameworks through A2A and REST APIs.
+- **Expose tools and agents to external systems** like Claude Desktop, Cursor, or agentic apps built with LangChain and OpenAI through the MCP server, A2A server, and REST APIs.
 
 **[Learn more in key capabilities](#key-capabilities)**
 
@@ -45,7 +44,7 @@ To get started you need an Elastic deployment and you might need to enable the f
 - **Custom agents**: Create [agents with tailored instructions](agent-builder/custom-agents.md) and toolsets for specific use cases.
 - **MCP and A2A servers**: Expose tools and agents to external clients through the [MCP server](agent-builder/mcp-server.md) and [A2A server](agent-builder/a2a-server.md).
 - **Kibana REST APIs**: Work with Agent Builder functionalities [programmatically](agent-builder/kibana-api.md), including agents, tools, and conversations.
-- **Elastic Workflows integration**: Automate complex processes within your deployment using the Elastic-native automation engine. Your agents can trigger workflows and [workflows can invoke agents](agent-builder/agents-and-workflows.md) in their steps.
+- **Elastic Workflows integration**: Automate complex processes within your deployment using the Elastic-native automation engine. Your agents can [trigger workflows](agent-builder/to-and-workflows.md) and [workflows can invoke agents](agent-builder/agents-and-workflows.md) in their steps.
 
 ## Key concepts
 
