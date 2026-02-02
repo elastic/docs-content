@@ -55,7 +55,7 @@ Encrypted config {applies_to}`stack: ga 9.4+`
 :   When enabled, the {{agent}} encrypts the contents of `elastic-agent.yml` into `fleet.enc`. The contents of `elastic-agent.yml` are then replaced with this feature only to indicate that the encrypted config store is used.
 
     ::::{note}
-    {fleet}-managed {{agents}} ignorre this flag as they always encrypt storage.
+    {fleet}-managed {{agents}} ignore this flag as they always encrypt storage.
     ::::
 
     To reload the config, replace the `elastic-agent.yml` file and restart the {{agent}}.
