@@ -25,7 +25,7 @@ Integrations are available for a wide array of popular services and platforms. T
 
 {applies_to}`stack: preview 9.2.0` {{fleet}} also supports installing {{agent}} integration packages for collecting and visualizing OpenTelemetry data. For more information, refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md).
 
-Note that the **Integrations** app in {{kib}} needs access to the public {{package-registry}} to discover integrations. If your deployment has network restrictions, you can [deploy your own self-managed {{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-diy-epr).
+The **Integrations** app in {{kib}} needs access to the public {{package-registry}} to discover integrations. If your deployment has network restrictions, you can [deploy your own self-managed {{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-diy-epr).
 
 ::::{note}
 Some integrations may function differently across different spaces, with some working only in the default space. Review the documentation specific to your integration for any space-related considerations.

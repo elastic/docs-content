@@ -16,11 +16,10 @@ Synthetic tests support the configuration of dynamic parameters that can be used
 
 Create a `synthetics.config.js` or `synthetics.config.ts` file in the root of the Synthetics project and specify the options. For example:
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
+
 ```ts
 import type { SyntheticsConfig } from '@elastic/synthetics';
 
@@ -59,8 +58,7 @@ export default env => {
 ```
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 ```ts
 import type { SyntheticsConfig } from '@elastic/synthetics';
@@ -170,6 +168,11 @@ clientCertificates: [
 Playwright has two types of timeouts that are used in Elastic Synthetics: [action and navigation timeouts](https://playwright.dev/docs/test-timeouts#action-and-navigation-timeouts).
 
 Elastic Synthetics uses a default action and navigation timeout of 50 seconds. You can override this default using [`actionTimeout`](https://playwright.dev/docs/api/class-testoptions#test-options-action-timeout) and [`navigationTimeout`](https://playwright.dev/docs/api/class-testoptions#test-options-navigation-timeout) in `playwrightOptions`.
+
+:::{note}
+Browser-based journeys have a timeout limit of 15 minutes.
+When `retry` is enabled (enabled by default), the journey attempts a second run if the first run times out. This allows for a maximum total runtime of 30 minutes: 15 minutes for the first run and up to 15 minutes for the retry.
+:::
 
 ### Timezones and locales [synthetics-configuration-playwright-options-timezones]
 
@@ -294,6 +297,9 @@ For information on configuring monitors individually, refer to:
 
 * [Configure individual browser monitors](/solutions/observability/synthetics/configure-individual-browser-monitors.md) for browser monitors
 * [Configure lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md) for lightweight monitors
+
+`maintenanceWindows` (`Array<string>`)
+:   A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
 
 ## `proxy` [synthetics-configuration-proxy]
 

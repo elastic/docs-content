@@ -87,7 +87,7 @@ The `state.yml` file (located under `data/elastic-agent-*`) contains the entire,
 
 ## Why can’t I see the data {{agent}} is sending? [where-is-the-data-agent-is-sending]
 
-If {{elastic-agent}} is set up and running, but you don’t see data in {{kib}}:
+If {{agent}} is set up and running, but you don’t see data in {{kib}}:
 
 1. Go to **Management > {{dev-tools-app}}** in {{kib}}, and in the Console, search your index for data. For example:
 
@@ -97,7 +97,7 @@ If {{elastic-agent}} is set up and running, but you don’t see data in {{kib}}:
 
     Or if you prefer, go to the **Discover** app.
 
-2. Look at the data that {{elastic-agent}} has sent and see if the `name.host` field contains your host machine name.
+2. Look at the data that {{agent}} has sent and see if the `name.host` field contains your host machine name.
 
 If you don’t see data for your host, it’s possible that the data is blocked in the network, or that a firewall or security problem is preventing the {{agent}} from sending the data.
 

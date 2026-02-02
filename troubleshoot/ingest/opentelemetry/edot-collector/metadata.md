@@ -62,7 +62,7 @@ This will not work, as the Collector doesn't automatically extract such values f
 
 ## Resolution
 
-If you want to propagate customer IDs or project names into spans or metrics, you must instrument this in your code using one of the SDKs.
+If you want to propagate customer IDs or project names into spans or metrics, you must instrument this in your code using one of the SDKs. For SDK-specific troubleshooting guidance, refer to [EDOT SDKs troubleshooting](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md).
 
 Use `span.set_attribute` in your application code, where OpenTelemetry spans are created. For example:
 

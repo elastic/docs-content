@@ -3,10 +3,7 @@ navigation_title: Automatic integrations synchronization
 description: The automatic integrations sync feature keeps integrations and custom assets synced between your management Elasticsearch cluster and one or more remote clusters.
 applies_to:
   stack: ga 9.1
-  deployment:
-    ess: ga
-    ece: ga
-    self: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -147,7 +144,7 @@ If the integration syncing reports connection errors or fails to report the sync
       2. In the **Outputs** section, check that the remote {{es}} output is healthy. In particular, check that the remote {{es}} output's host URL matches the host URL of an {{es}} output on the remote cluster.
       3. Edit the remote {{es}} output, and check if the remote {{kib}} URL is correct, as well as the validity and privileges of the remote {{kib}} API key.
       
-          Note that an incorrect value in either of these fields does not cause the output to become unhealthy, but it affects the integration synchronization.
+          An incorrect value in either of these fields does not cause the output to become unhealthy, but it affects the integration synchronization.
       ::::
 
 ### Integrations are not installed on the remote cluster

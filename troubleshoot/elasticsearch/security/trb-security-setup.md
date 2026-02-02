@@ -3,11 +3,7 @@ navigation_title: Password setup failures
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-setup.html
 applies_to:
-  stack:
   deployment:
-    eck:
-    ess:
-    ece:
     self:
 products:
   - id: elasticsearch
@@ -16,6 +12,10 @@ products:
 # Diagnose password setup connection failures [trb-security-setup]
 
 The [elasticsearch-setup-passwords command](elasticsearch://reference/elasticsearch/command-line-tools/setup-passwords.md) sets passwords for the built-in users by sending user management API requests. If your cluster uses SSL/TLS for the HTTP (REST) interface, the command attempts to establish a connection with the HTTPS protocol. If the connection attempt fails, the command fails.
+
+:::{admonition} Deprecated in 8.0
+The `elasticsearch-setup-passwords` tool is deprecated and will be removed in a future release. To manually reset the password for the built-in users (including the elastic user), use the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool, the {{es}} [change password API]({{es-apis}}/operation/operation-security-change-password), or the [user management features](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md#managing-native-users) in {{kib}}.
+:::
 
 **Symptoms:**
 

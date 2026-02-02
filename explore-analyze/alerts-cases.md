@@ -41,3 +41,9 @@ serverless: unavailable
 ```
 
 You can use Watcher for alerting and monitoring specific conditions in your data. It enables you to define rules and take automated actions when certain criteria are met. Watcher is a powerful alerting tool for custom use cases and more complex alerting logic. It allows advanced scripting using Painless to define complex conditions and transformations.
+
+:::{tip}
+For most use cases, you should use Kibana Alerts instead of Watcher. Kibana Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
+
+Watcher is not available in {{serverless-full}}.
+:::

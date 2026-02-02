@@ -31,6 +31,15 @@ Although breaking changes typically affect [major upgrades](#prepare-upgrade-fro
 If you are affected by a breaking change, you have to take action before upgrading. This can include updating your code, change configuration settings, or other steps.
 ::::
 
+::::{step} Check for archived settings
+:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/archived-index-settings-pre.md
+:::
+
+Additionaly, check if there are any archived settings from a previous upgrade that should have been removed. If found, remove them before proceeding with the new upgrade.
+
+Refer to [Archived settings](/deploy-manage/upgrade/deployment-or-cluster/archived-settings.md) for details on how to detect and remove archived settings at cluster and index levels.
+::::
+
 ::::{step} Verify plugin compatibility
 If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to.
 ::::
@@ -59,7 +68,7 @@ The monitoring cluster should be running the same version, or a newer one, than 
 ::::
 
 ::::{step} Upgrade remote clusters first
-If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
+If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../explore-analyze/cross-cluster-search.md).
 
 If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
 

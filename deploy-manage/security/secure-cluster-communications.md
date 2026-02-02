@@ -4,10 +4,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html
 applies_to:
+  serverless:
   deployment:
     self:
     eck:
     ece:
+    ess:
 products:
   - id: elasticsearch
   - id: kibana
@@ -57,35 +59,38 @@ Securing this layer prevents unauthorized nodes from joining your cluster and pr
 
 The way that transport layer security is managed depends on your deployment type:
 
-::::{tab-set}
-:group: deployments
+:::::{applies-switch}
 
-:::{tab-item} ECH and Serverless
-:sync: ech
+::::{applies-item} { serverless:, ess: }
+
 {{es}} transport security is fully managed by Elastic, and no configuration is required.
-:::
+::::
 
-:::{tab-item} ECE
-:sync: ece
-{{es}} transport security is fully managed by {{ece}} platform, and no configuration is required.
-:::
+::::{applies-item} ece:
+{{es}} transport security is fully managed by the {{ece}} platform, and no configuration is required.
+::::
 
-:::{tab-item} ECK
-:sync: eck
+::::{applies-item} eck:
 
 :::{include} ./_snippets/eck-transport.md
 :::
 
-:::
-
-:::{tab-item} Self-managed
-:sync: self
-{{es}} transport security can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [](set-up-basic-security.md).
-
-For additional TLS configuration options, refer to [](./self-tls.md).
+:::{include} ./_snippets/own-ca-warning.md
 :::
 
 ::::
+
+::::{applies-item} self:
+{{es}} transport security can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [](set-up-basic-security.md).
+
+For additional TLS configuration options, refer to [](./self-tls.md).
+
+:::{include} ./_snippets/own-ca-warning.md
+:::
+
+::::
+
+:::::
 
 ### HTTP layer security [encrypt-http-communication]
 
@@ -97,18 +102,15 @@ While HTTP TLS encryption is optional in self-managed environments, it is strong
 
 The way that HTTP layer security is managed depends on your deployment type:
 
-:::::{tab-set}
-:group: deployments
+:::::{applies-switch}
 
-::::{tab-item} ECH and Serverless
-:sync: ech
+::::{applies-item} { serverless:, ess: }
 
 HTTP TLS for {{es}} and {{kib}} is fully managed by Elastic. No configuration is required.
 {{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
 ::::
 
-::::{tab-item} ECE
-:sync: ece
+::::{applies-item} ece:
 
 HTTP TLS for deployments is managed at the platform proxy level. Refer to these guides for ECE-specific security customizations:
 * [Manage security certificates in ECE](./secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md)
@@ -118,16 +120,14 @@ HTTP TLS for deployments is managed at the platform proxy level. Refer to these 
 {{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
 ::::
 
-::::{tab-item} ECK
-:sync: eck
+::::{applies-item} eck:
 
 :::{include} ./_snippets/eck-http.md
 :::
 
 ::::
 
-::::{tab-item} Self-managed
-:sync: self
+::::{applies-item} self:
 
 HTTP TLS certificates for {{es}} can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [Set up HTTP SSL](./set-up-basic-security-plus-https.md).
 
@@ -148,31 +148,26 @@ For additional TLS configuration options, refer to [](./self-tls.md).
 
 Managing certificates is critical for secure communications. Certificates have limited lifetimes and must be renewed before expiry to prevent service disruptions. Each deployment type provides different tools or responsibilities for managing certificates lifecycle.
 
-::::{tab-set}
-:group: deployments
+::::{applies-switch}
 
-:::{tab-item} ECH and Serverless
-:sync: ech
+:::{applies-item} { serverless:, ess: }
 
 Certificate lifecycle is fully managed by Elastic, including renewal and rotation.
 :::
 
-:::{tab-item} ECE
-:sync: ece
+:::{applies-item} ece:
 
 In ECE, the platform automatically renews internal certificates. However, you must manually renew your custom proxy and Cloud UI certificates. For more details, refer to [Manage security certificates](secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
 :::
 
-:::{tab-item} ECK
-:sync: eck
+:::{applies-item} eck:
 
 :::{include} ./_snippets/eck-lifecycle.md
 :::
 
 :::
 
-:::{tab-item} Self-managed
-:sync: self
+:::{applies-item} self:
 
 You are responsible for certificate lifecycle management, including monitoring expiration dates, renewing certificates, and redeploying them as needed. If you used Elastic tools to generate your certificates, refer to [Update TLS certificates](./updating-certificates.md) for guidance on rotating or replacing them.
 :::

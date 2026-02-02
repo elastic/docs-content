@@ -12,7 +12,7 @@ These {{anomaly-jobs}} appear by default in the [{{logs-app}}](/solutions/observ
 
 ## Log analysis [logs-ui-analysis]
 
-Detect anomalies in log entries via the Logs UI.
+Detect anomalies in log entries through the Logs UI.
 
 | Name | Description | Job (JSON) | Datafeed |
 | --- | --- | --- | --- |

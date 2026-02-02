@@ -3,7 +3,7 @@
 Learn how to make documentation updates directly in your browser without setting up a local development environment.
 
 :::{tip}
-If you're working in [GitHub Codespaces](https://github.com/features/codespaces) or [github.dev](https://github.dev), you can install the [VS Code extension](tools.md#vs-code-extension) to simplify the authoring experience.
+If you're working in [GitHub Codespaces](https://github.com/features/codespaces) or [github.dev](https://github.dev), you can install the [Elastic Docs Utilities extension](vscode-extension.md) to simplify the authoring experience.
 :::
 
 ## Suggesting quick edits
@@ -29,7 +29,7 @@ An Elastician will review, merge, and propagate your change to the right places 
 
 For more details on editing files on GitHub, refer to [GitHub's documentation on editing files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
 
-:::{include} _snippets-contribute/tagged-warning.md
+:::{include} _snippets/tagged-warning.md
 :::
 
 ## Editing `elastic.co/guide` docs (Asciidoc)

@@ -23,7 +23,7 @@ As a first step, review the [supported technologies](elastic-otel-php://referenc
 
 ## Turn on logging
 
-When diagnosing issues with the agent's operation, logs play a key role. You can find a detailed explanation of the logging configuration options in [Configuration](elastic-otel-php://reference/edot-php/configuration.md#logging-configuration).
+When diagnosing issues with the agent's operation, logs play a key role. You can find a detailed explanation of the logging configuration options in [Configuration](elastic-otel-php://reference/edot-php/configuration.md#logging-configuration). For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 In most cases, setting the logging level to `debug` is sufficient. You can also use `trace` can be used, but keep in mind that the amount of generated data might be significant.
 
@@ -50,7 +50,7 @@ You need to restart your application for the changes to apply.
 
 ## Agent is not instrumenting code
 
-If the agent doesn't seem to be instrumenting code from your application, try the following actions.
+If the agent doesn't seem to be instrumenting code from your application, try the following actions. For more troubleshooting guidance, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 
 ### Native OTLP serializer issues
 

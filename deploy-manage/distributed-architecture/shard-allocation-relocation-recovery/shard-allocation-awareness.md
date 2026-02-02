@@ -2,9 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-awareness.html
 applies_to:
-  stack:
   deployment:
     self:
+    eck:
 products:
   - id: elasticsearch
 ---
@@ -12,6 +12,11 @@ products:
 # Shard allocation awareness [shard-allocation-awareness]
 
 You can use custom node attributes as *awareness attributes* to enable {{es}} to take your physical hardware configuration into account when allocating shards. If {{es}} knows which nodes are on the same physical server, in the same rack, or in the same zone, it can distribute the primary shard and its replica shards to minimize the risk of losing all shard copies in the event of a failure.
+
+:::{tip}
+:applies_to: {ece: ga, ess: ga}
+For {{ece}} and {{ech}} deployments, you can't set custom node attributes, so shard allocation awareness is not available. These platforms handle availability zone awareness automatically through their deployment configuration.
+:::
 
 When shard allocation awareness is enabled with the `cluster.routing.allocation.awareness.attributes` setting, shards are only allocated to nodes that have values set for the specified awareness attributes. If you use multiple awareness attributes, {{es}} considers each attribute separately when allocating shards.
 
@@ -44,6 +49,11 @@ To enable shard allocation awareness:
         ```sh
         ./bin/elasticsearch -Enode.attr.rack_id=rack_one
         ```
+
+    :::{tip}
+    :applies_to: eck:
+    For {{eck}} deployments, set custom node attributes in the `config` section of your {{es}} resource manifest instead of `elasticsearch.yml`. Refer to [Advanced {{es}} node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md) for examples.
+    :::
 
 2. Tell {{es}} to take one or more awareness attributes into account when allocating shards by setting `cluster.routing.allocation.awareness.attributes` in **every** master-eligible node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file.
 

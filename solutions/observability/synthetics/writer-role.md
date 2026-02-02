@@ -78,4 +78,3 @@ If the user should be able to create and update monitors using [projects](/solut
 | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_own_api_key` | Allows access to all security-related operations on {{es}} API keys that are owned by the current authenticated user. |
 | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_security` | Allows access to all security-related operations such as CRUD operations on users and roles and cache clearing. |
 | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_api_key` | Allows access to all security-related operations on {{es}} API keys. |
-

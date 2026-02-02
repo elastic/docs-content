@@ -2,6 +2,9 @@
 navigation_title: add_docker_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_docker_metadata-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -52,7 +55,7 @@ If the Docker daemon is restarted, the mounted socket will become invalid, and m
       #match_source: true
       #match_source_index: 4
       #match_short_id: true
-      #cleanup_timeout: 60
+      #cleanup_timeout: 60s
       #labels.dedot: false
       # To connect to Docker over TLS you must specify a client and CA certificate.
       #ssl:
@@ -72,7 +75,7 @@ If the Docker daemon is restarted, the mounted socket will become invalid, and m
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
 | `host` | No | `unix:///var/run/docker.sock` | Docker socket (UNIX or TCP socket). |
-| `ssl` | No |  | SSL configuration to use when connecting to the Docker socket. For a list ofavailable settings, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specificallythe settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options). |
+| `ssl` | No |  | SSL configuration to use when connecting to the Docker socket. For a list of available settings, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specifically the settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options). |
 | `match_fields` | No |  | List of fields to match a container ID. At least one of the fields most hold a container ID to get the event enriched. |
 | `match_pids` | No | `["process.pid", "process.parent.pid"]` | List of fields that contain process IDs. If the process is running in Docker, the event will be enriched. |
 | `match_source` | No | `true` | Whether to match the container ID from a log path present in the `log.file.path` field. |

@@ -39,9 +39,9 @@ Details about setting up and configuring Rollup are covered in [Create Job API](
 
 ## Rollup uses standard Query DSL [_rollup_uses_standard_query_dsl]
 
-The Rollup feature exposes a new search endpoint (`/_rollup_search` vs the standard `/_search`) which knows how to search over rolled-up data. Importantly, this endpoint accepts 100% normal {{es}} Query DSL. Your application does not need to learn a new DSL to inspect historical data, it can simply reuse existing queries and dashboards.
+The Rollup feature exposes a new search endpoint (`/_rollup_search` versus the standard `/_search`) which knows how to search over rolled-up data. Importantly, this endpoint accepts 100% normal {{es}} Query DSL. Your application does not need to learn a new DSL to inspect historical data, it can simply reuse existing queries and dashboards.
 
-There are some limitations to the functionality available; not all queries and aggregations are supported, certain search features (highlighting, etc) are disabled, and available fields depend on how the rollup was configured. These limitations are covered more in [Rollup Search limitations](/manage-data/lifecycle/rollup/rollup-search-limitations.md).
+There are some limitations to the functionality available; not all queries and aggregations are supported, certain search features (such as highlighting) are disabled, and available fields depend on how the rollup was configured. These limitations are covered more in [](/manage-data/lifecycle/rollup/rollup-search-limitations.md).
 
 But if your queries, aggregations and dashboards only use the available functionality, redirecting them to historical data is trivial.
 
@@ -57,6 +57,6 @@ If you were to query the raw data, you’d only see the most recent month. And i
 
 ## Rollup is multi-interval aware [_rollup_is_multi_interval_aware]
 
-Finally, Rollup is capable of intelligently utilizing the best interval available. If you’ve worked with summarizing features of other products, you’ll find that they can be limiting. If you configure rollups at daily intervals…  your queries and charts can only work with daily intervals. If you need a monthly interval, you have to create another rollup that explicitly stores monthly averages, etc.
+Finally, Rollup is capable of intelligently utilizing the best interval available. If you've worked with summarizing features of other products, you'll find that they can be limiting. If you configure rollups at daily intervals…  your queries and charts can only work with daily intervals. If you need a monthly interval, you have to create another rollup that explicitly stores monthly averages, and so on.
 
-The Rollup feature stores data in such a way that queries can identify the smallest available interval and use that for their processing. If you store rollups at a daily interval, queries can be executed on daily or longer intervals (weekly, monthly, etc) without the need to explicitly configure a new rollup job. This helps alleviate one of the major disadvantages of a rollup system; reduced flexibility relative to raw data.
+The Rollup feature stores data in such a way that queries can identify the smallest available interval and use that for their processing. If you store rollups at a daily interval, queries can be executed on daily or longer intervals (weekly, monthly, and so on) without the need to explicitly configure a new rollup job. This helps alleviate one of the major disadvantages of a rollup system; reduced flexibility relative to raw data.

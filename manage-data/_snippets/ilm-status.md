@@ -1,4 +1,4 @@
-To see the current status of the {{ilm-init}} service, use the [{{ilm-init}} status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-get-status):
+To view the current status of the {{ilm-init}} service, use the [{{ilm-init}} status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-get-status):
 
 ```console
 GET _ilm/status

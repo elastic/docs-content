@@ -106,7 +106,7 @@ When a backing index is created, the index is named using the following conventi
 
 Some operations, such as a [shrink](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) or [restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md), can change a backing index’s name. These name changes do not remove a backing index from its data stream.
 
-The generation of the data stream can change without a new index being added to the data stream (e.g. when an existing backing index is shrunk). This means the backing indices for some generations will never exist. You should not derive any intelligence from the backing indices names.
+The generation of the data stream can change without a new index being added to the data stream (for example, when an existing backing index is shrunk). This means the backing indices for some generations will never exist. You should not derive any intelligence from the backing indices names.
 
 
 ## Append-only (mostly) [data-streams-append-only]

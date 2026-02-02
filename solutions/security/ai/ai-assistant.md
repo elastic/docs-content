@@ -12,9 +12,9 @@ products:
 navigation_title: AI Assistant
 ---
 
-# AI Assistant for {{elastic-sec}}
+# Elastic AI Assistant for Security
 
-The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversation using natural language and much more.
+Elastic AI Assistant for Security helps you interact with your {{elastic-sec}} data and assists with tasks such as alert investigation, incident response, and query generation. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
@@ -23,15 +23,15 @@ The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity op
 :::
 
 ::::{warning}
-The Elastic AI Assistant is designed to enhance your analysis with smart dialogues. Its capabilities are still developing. Users should exercise caution as the quality of its responses might vary. Your insights and feedback will help us improve this feature. Always cross-verify AI-generated advice for accuracy.
+The Elastic AI Assistant is designed to enhance your analysis with smart dialogues. Its capabilities are still developing. You should exercise caution as the quality of its responses might vary. Your insights and feedback will help us improve this feature. Always cross-verify AI-generated advice for accuracy.
 ::::
 
 ::::{admonition} Requirements
 * {applies_to}`stack: ga` An [Enterprise subscription](https://www.elastic.co/pricing).
 * {applies_to}`serverless: ga` An {{sec-serverless}} project with the [EASE or Security Analytics Complete feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
-* To use AI Assistant, the **Elastic AI Assistant : All** and **Actions and Connectors : Read** [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+* To use AI Assistant, the **Elastic AI Assistant: All** Security [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and the **Actions and Connectors: Read** management [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * To set up AI Assistant, the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-* A [generative AI connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md), which AI Assistant uses to generate responses.
+* An [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which AI Assistant uses to generate responses.
 * A [machine learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
@@ -42,11 +42,11 @@ stack: ga 9.2
 serverless: ga
 ```
 
-The [**GenAI settings**](/explore-analyze/manage-access-to-ai-assistant.md) page allows you to:
+The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) page allows you to:
 
 - Manage which AI connectors are available in your environment. 
 - Enable or disable AI Assistant and other AI-powered features in your environment.
-- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
+- {applies_to}`stack: ga 9.2+` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
 
 
 
@@ -62,14 +62,14 @@ Elastic can automatically anonymize event data that you provide to AI Assistant 
 
 ## Set up AI Assistant [set-up-ai-assistant]
 
-You must create a generative AI connector before you can use AI Assistant. AI Assistant can connect to multiple large language model (LLM) providers so you can select the best model for your needs. To set up a connector, refer to [LLM connector setup guides](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+You must create a generative AI connector before you can use AI Assistant. AI Assistant can connect to multiple large language model (LLM) providers so you can select the best model for your needs. To set up a connector, refer to [LLM connector setup guides](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 ::::{admonition} Recommended models
 While AI Assistant is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to select models that perform well with your desired use cases.
 
 ::::
 
-### Elastic Managed LLM [elastic-managed-llm-security-ai-assistant]
+### Elastic Managed LLMs [elastic-managed-llm-security-ai-assistant]
 
 :::{include} ../../_snippets/elastic-managed-llm.md
 :::
@@ -100,14 +100,14 @@ Each user’s chat history (up to the 99 most recent conversations) and custom Q
 Use these optional features to adjust and act on your conversations with AI Assistant:
 
 * Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…**.
-* {applies_to}`stack: ga 9.1` Select a *prompt tile* to start your conversation with a predefined goal or topic. Prompt tiles help you begin structured tasks or investigations into common {{elastic-sec}} workflows. The available prompt tiles include:
+* {applies_to}`stack: ga 9.1+` Select a *prompt tile* to start your conversation with a predefined goal or topic. Prompt tiles help you begin structured tasks or investigations into common {{elastic-sec}} workflows. The available prompt tiles include:
 
    * **Alerts**: Quickly identify and prioritize the most important alerts from the last 24 hours.
    * **Research**: Get a summary of the latest {{elastic-sec}} Labs research articles.
    * **Query**: Generate {{esql}} queries based on a specific goal or requirement.
    * **Suggest**: Explore the types of questions you can ask AI Assistant about {{elastic-sec}}.
 
-* {applies_to}`stack: removed 9.1` Select a default *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}. The default Quick Prompts' availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert.
+* {applies_to}`stack: removed 9.1+` Select a default *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}. The default Quick Prompts' availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert.
 
 * Create new custom Quick Prompts by clicking **Add quick prompt**.
 
@@ -395,7 +395,14 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 
 ::::
 
-The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated.
+When you send alert data to AI Assistant, you may want to obfuscate sensitive information before it reaches the LLM provider. 
+
+The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated (replaced by placeholders), so AI Assistant won't have access to their actual values.
+
+This can help with:
+- **Compliance**: Avoid sending PII or sensitive data to third-party LLM providers.
+- **Privacy**: Protect internal data while still enabling AI analysis.
+- **Policy**: Meet your organization's data handling requirements.
 
 ::::{note}
 You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](/solutions/images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
@@ -406,9 +413,9 @@ You can access anonymization settings directly from the **Attack Discovery** pag
 :screenshot:
 :::
 
-The fields on this list are among those most likely to provide relevant context to AI Assistant. Fields with **Allowed** toggled on are included. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated.
+These fields are among those most likely to provide relevant context to AI Assistant, and are included by default.
 
-The **Show anonymized** toggle controls whether you see the obfuscated or plaintext versions of the fields you sent to AI Assistant. It doesn’t control what gets obfuscated — that’s determined by the anonymization settings. It also doesn’t affect how event fields appear *before* being sent to AI Assistant. Instead, it controls how fields that were already sent and obfuscated appear to you.
+The **Show anonymized** toggle controls whether you see the obfuscated or plaintext versions of the fields you sent to AI Assistant. In other words, it controls how fields that were already sent and obfuscated appear to you. It doesn’t control what gets obfuscated — that’s determined by the anonymization settings.
 
 When you include a particular event as context, such as an alert from the Alerts page, you can adjust anonymization behavior for the specific event. Be sure the anonymization behavior meets your specifications before sending a message with the event attached.
 
@@ -433,7 +440,5 @@ In addition to practical advice, AI Assistant can offer conceptual advice, tips,
 
 
 ## Learn more 
-
-- For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).
 
 The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).

@@ -155,7 +155,7 @@ The following response shows the data stream’s first generation backing index 
 }
 ```
 
-1. The age of the index used for calculating when to rollover the index via the `max_age`
+1. The age of the index used for calculating when to rollover the index using the `max_age`
 2. The policy used to manage the index
 3. The age of the indexed used to transition to the next phase (in this case it is the same with the age of the index).
 4. The step {{ilm-init}} is performing on the index

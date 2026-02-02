@@ -68,7 +68,7 @@ The estimation of expected additional data is based on past indexing that occurr
 :   (Optional, [time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The window of time to use for forecasting. Defaults to 30 minutes.
 
 
-### {{api-examples-title}} [autoscaling-proactive-storage-decider-examples]
+### Examples [autoscaling-proactive-storage-decider-examples]
 
 This example puts an autoscaling policy named `my_autoscaling_policy`, overriding the proactive decider’s `forecast_window` to be 10 minutes.
 
@@ -143,7 +143,7 @@ Both `num_anomaly_jobs_in_queue` and `num_analytics_jobs_in_queue` are designed 
 :   (Optional, [time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Specifies the time to delay before scaling down. Defaults to 1 hour. If a scale down is possible for the entire time window, then a scale down is requested. If the cluster requires a scale up during the window, the window is reset.
 
 
-### {{api-examples-title}} [autoscaling-machine-learning-decider-examples]
+### Examples [autoscaling-machine-learning-decider-examples]
 
 This example creates an autoscaling policy named `my_autoscaling_policy` that overrides the default configuration of the {{ml}} decider.
 
@@ -198,7 +198,7 @@ The [autoscaling](../../deploy-manage/autoscaling.md) `fixed` decider responds w
 :   (Optional, integer) Number of nodes to use when calculating capacity. Defaults to `1`.
 
 
-### {{api-examples-title}} [autoscaling-fixed-decider-examples]
+### Examples [autoscaling-fixed-decider-examples]
 
 This example puts an autoscaling policy named `my_autoscaling_policy`, enabling and configuring the fixed decider.
 

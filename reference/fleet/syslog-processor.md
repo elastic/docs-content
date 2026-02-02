@@ -2,6 +2,9 @@
 navigation_title: syslog
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/syslog-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -10,7 +13,7 @@ products:
 # Syslog [syslog-processor]
 
 
-The syslog processor parses RFC 3164 and/or RFC 5424 formatted syslog messages that are stored in a field. The processor itself does not handle receiving syslog messages from external sources. This is done through an input, such as the TCP input. Certain integrations, when enabled through configuration, will embed the syslog processor to process syslog messages, such as Custom TCP Logs and Custom UDP Logs.
+The syslog processor parses RFC 3164 or RFC 5424 formatted syslog messages that are stored in a field. The processor itself does not handle receiving syslog messages from external sources. This is done through an input, such as the TCP input. Certain integrations, when enabled through configuration, will embed the syslog processor to process syslog messages, such as Custom TCP Logs and Custom UDP Logs.
 
 
 ## Example [_example_33]

@@ -18,7 +18,7 @@ This tutorial is a follow-on to [installing a self-managed {{stack}}](/deploy-ma
 
 Since {{stack}} 8.0, security is enabled by default, meaning that traffic between {{es}} nodes and between {{kib}} and {{es}} is SSL-encrypted. While this is suitable for testing non-production viability of the Elastic platform, most production networks have requirements for the use of trusted CA-signed certificates. These steps demonstrate how to update the out-of-the-box self-signed certificates with your own trusted CA-signed certificates.
 
-For traffic to be encrypted between {{es}} cluster nodes and between {{kib}} and {{es}}, SSL certificates must be created for the transport ({{es}} inter-node communication) and HTTP (for the {{es}} REST API) layers. Similarly, when setting up {{fleet-server}} you’ll generate and configure a new certificate bundle, and then {{elastic-agent}} uses the generated certificates to communicate with both {{fleet-server}} and {{es}}. The process to set things up is as follows:
+For traffic to be encrypted between {{es}} cluster nodes and between {{kib}} and {{es}}, SSL certificates must be created for the transport ({{es}} inter-node communication) and HTTP (for the {{es}} REST API) layers. Similarly, when setting up {{fleet-server}} you’ll generate and configure a new certificate bundle, and then {{agent}} uses the generated certificates to communicate with both {{fleet-server}} and {{es}}. The process to set things up is as follows:
 
 * [Prerequisites and assumptions](#install-stack-demo-secure-prereqs)
 * [Step 1: Generate a new self-signed CA certificate](#install-stack-demo-secure-ca)

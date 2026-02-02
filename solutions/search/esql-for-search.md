@@ -126,7 +126,7 @@ Use `TEXT_EMBEDDING` to generate query vectors for KNN searches against your vec
 
 In {{esql}}, you can perform semantic searches on [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field types using the same match syntax as full-text search.
 
-Refer to [semantic search with semantic_text](/solutions/search/semantic-search/semantic-search-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
+Refer to [semantic search with semantic_text](/solutions/search/semantic-search/semantic-search-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md).
 
 ### Hybrid search
 
@@ -138,7 +138,7 @@ The [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) an
 
 `FORK` creates multiple execution branches that operate on the same input data. `FUSE` then combines and scores the results from these branches. Together, these commands allow you to execute different search strategies (such as lexical and semantic searches) in parallel and merge their results with proper relevance scoring.
 
-Refer to [hybrid search with semantic_text](hybrid-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
+Refer to [hybrid search with semantic_text](hybrid-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md).
 
 ### Text generation with `COMPLETION`
 

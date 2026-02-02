@@ -28,7 +28,7 @@ Each setting has several OS-specific variants, represented by `[linux|mac|window
 ## Network event deduplication [network-event-deduplication]
 
 :::{admonition} Added in 8.15.0
-This functionality was added in {{elastic-agent}} 8.15.0.
+This functionality was added in {{agent}} 8.15.0.
 :::
 
 When repeated network connections are detected from the same process, {{elastic-endpoint}} will not produce network events for subsequent connections. To disable or reduce deduplication of network events, use these advanced settings:
@@ -43,7 +43,7 @@ When repeated network connections are detected from the same process, {{elastic-
 ## Data in `host.*` fields [host-fields]
 
 :::{admonition} Added in 8.18.0
-This functionality was added in {{elastic-agent}} 8.18.0.
+This functionality was added in {{agent}} 8.18.0.
 :::
 
 {{elastic-endpoint}} includes only a small subset of the data in the `host.*` fieldset in event documents. Full `host.*` information is still included in documents written to the `metrics-*` index pattern and in {{elastic-endpoint}} alerts. To override this behavior and include all `host.*` data for events, use this advanced setting:
@@ -60,7 +60,7 @@ Users should take note of how a lack of some `host.*` information may affect the
 ## Merged process and network events [merged-process-network]
 
 :::{admonition} Added in 8.18.0
-This functionality was added in {{elastic-agent}} 8.18.0.
+This functionality was added in {{agent}} 8.18.0.
 :::
 
 {{elastic-endpoint}} merges process `create`/`terminate` events (Windows) and `fork`/`exec`/`end` events (macOS/Linux) when possible. This means short-lived processes only generate a single event containing the details from when the process terminated. {{elastic-endpoint}} also merges network `connection/termination` events (Windows/macOS/Linux) when possible for short-lived connections. To disable this behavior, use these advanced settings:
@@ -80,7 +80,7 @@ Merged events can affect the results of [event filters](../manage-elastic-defend
 ## MD5 and SHA-1 hashes [md5-sha1-hashes]
 
 :::{admonition} Added in 8.18.0
-This functionality was added in {{elastic-agent}} 8.18.0.
+This functionality was added in {{agent}} 8.18.0.
 :::
 
 {{elastic-endpoint}} does not report MD5 and SHA-1 hashes in event data by default. These will still be reported if any [trusted applications](../manage-elastic-defend/trusted-applications.md), [blocklist entries](../manage-elastic-defend/blocklist.md), [event filters](../manage-elastic-defend/event-filters.md), or [Endpoint exceptions](../detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) require them. To include these hashes in all event data, use these advanced settings:

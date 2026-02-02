@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -24,9 +27,9 @@ Note the following restrictions when installing {{agent}} on your system:
 
 
 ::::{admonition} New FIPS compatible install packages
-:class: note
+:applies_to: stack: preview 9.1
 
-{applies_to}`stack: preview 9.1` FIPS compatible binaries for {{agent}}, {{fleet}}, and other ingest tools are available for download. Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product [download page](https://www.elastic.co/downloads). Get more details about FIPS compatibility for {{agent}}, {{fleet}} and other ingest tools in [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
+FIPS compatible binaries for {{agent}}, {{fleet}}, and other ingest tools are available for download. Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product [download page](https://www.elastic.co/downloads). Get more details about FIPS compatibility for {{agent}}, {{fleet}} and other ingest tools in [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
 
 ::::
 

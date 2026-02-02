@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/ls-for-input.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: logstash
 ---
@@ -12,7 +15,7 @@ products:
 :::
 
 Ingest model
-:   {{ls}} to collect data from sources not currently supported by {{agent}} and sending the data to {{es}}. Note that the data transformation still happens within the {{es}} ingest pipeline.
+:   {{ls}} to collect data from sources not currently supported by {{agent}} and sending the data to {{es}}. The data transformation still happens within the {{es}} ingest pipeline.
 
 Use when
 :   {{agent}} doesn’t currently support your data source.
