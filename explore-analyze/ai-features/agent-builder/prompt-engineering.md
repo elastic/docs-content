@@ -68,9 +68,9 @@ When building agents, you must decide where specific logic belongs: in the agent
 For detailed guidance on writing effective tool descriptions, refer to [](tools/custom-tools.md#best-practices).
 :::
 
-## Writing effective prompts
+## Core principles
 
-The prompt serves as the agent's operating manual. Follow these guidelines to minimize hallucinations and maximize tool accuracy.
+This section covers how to get started and iterate incrementally on your instructions, structure them for clarity, and optimize for prompt caching.
 
 ### Start light and iterate
 
