@@ -6,7 +6,7 @@ applies_to:
 description: Instructions and best practices for building metric charts with Kibana Lens in Elastic.
 ---
 
-# Build metric charts with {{kib}}
+# Build metric charts with {{kib}} [build-metric-charts-with-kibana]
 
 Metric charts make important single values stand out on a dashboard. They're perfect for highlighting KPIs such as error rates or SLOs, and for making them understandable at a glance with dynamic coloring or trend indicators.
 

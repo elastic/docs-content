@@ -9,7 +9,11 @@ products:
   - id: elasticsearch
 ---
 
-# Search applications [search-application-overview]
+# Search Applications [search-application-overview]
+
+::::{important}
+Search Applications is a beta feature and is not recommended for new users in {{es}} 9.x. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.
+::::
 
 *Search Applications* enable users to build search-powered applications that leverage the full power of {{es}} and its Query DSL, with a simplified user experience. Create search applications based on your {{es}} indices, build queries using search templates, and easily preview your results directly in the {{kib}} Search UI.
 
@@ -29,10 +33,6 @@ Documentation for the Search Applications feature lives in two places:
 
 The Search Applications feature was introduced in Elastic version **8.8.0**.
 
-::::{note} 
-Search Applications is a beta feature. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.
-::::
-
 This feature is available to all **{{ech}}** deployments.
 
 This feature is also available to **self-managed** deployments when Elastic subscription requirements are satisfied. View the requirements for this feature under the **Elastic Search** section of the [Elastic Stack subscriptions](https://www.elastic.co/subscriptions) page.
@@ -48,7 +48,7 @@ Managing search applications requires the `manage_search_application` cluster pr
 
 The {{es}} [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md) is powerful and flexible, but it comes with a steep learning curve. Complex queries are verbose and hard to understand for non-experts. We’ve designed search applications to be easier to search over, but with the flexibility of working with an {{es}} index.
 
-Search Applications use [search templates](search-templates.md) to simplify the process of building queries. Templates are defined when creating a search application, and can be customized according to your needs. Read [Search API and templates](search-applications/search-application-api.md) for the details.
+Search Applications use [search templates](/solutions/search/search-templates.md) to simplify the process of building queries. Templates are defined when creating a search application, and can be customized according to your needs. Read [Search API and templates](search-applications/search-application-api.md) for the details.
 
 
 ## Get started [search-application-overview-get-started] 
@@ -83,7 +83,7 @@ Once created, you can explore the documents in your search application under **S
 
 Use the {{es}} [Put Search Application API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put) to create a search application.
 
-The following example creates a search application named `my_search_application` that searches over the `my_search_index1` and `my_search_index2` indices, along with defining a simple search template (Refer to [Default template example](search-applications/search-application-api.md#search-application-api-default-template)).
+The following example creates a search application named `my_search_application` that searches over the `my_search_index1` and `my_search_index2` indices, along with defining a basic search template (Refer to [Default template example](search-applications/search-application-api.md#search-application-api-default-template)).
 
 ```console
 PUT /_application/search_application/my_search_application
@@ -111,7 +111,7 @@ PUT /_application/search_application/my_search_application
 
 ### Search templates [search-application-overview-get-started-templates] 
 
-Search templates are the heart of your search applications. The [default template](search-applications/search-application-api.md#search-application-api-default-template) created for a search application is very minimal, and you’ll want to customize it to suit your needs. [Search API and templates](search-applications/search-application-api.md) contains a number of examples to get you started, including the default template, as well as templates for text search, semantic search and hybrid search.
+Search templates are the heart of your search applications. The [default template](search-applications/search-application-api.md#search-application-api-default-template) created for a search application is minimal, and you'll want to customize it to suit your needs. [Search API and templates](search-applications/search-application-api.md) contains a number of examples to get you started, including the default template, as well as templates for text search, semantic search and hybrid search.
 
 
 
