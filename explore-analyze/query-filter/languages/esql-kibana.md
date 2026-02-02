@@ -79,7 +79,21 @@ FROM kibana_sample_data_logs | LIMIT 10
 
 ::::
 
+### Convert free-text searches into {{esql}}
+```{applies_to}
+serverless: preview
+stack: preview 9.3+
+```
 
+You can use the **Quick search** functionality of the {{esql}} editor to translate a free-text search into a functioning {{esql}} query with a `WHERE KQL()` clause. This can be useful if you're getting started with {{esql}} and are familiar with [KQL](kql.md). 
+
+1. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open the **Quick search** bar.
+2. Select the data sources to search.
+3. Type the text you want to search for.
+4. Submit your search by pressing **Enter**. A new {{esql}} query is generated and overwrites the current query. It includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. Any queries that you have previously run are saved in the query history if you need to restore them. 
+5. Refine your query with any other {{esql}} command or function that you need. The **Quick search** bar closes automatically when you start typing in the editor or click outside of it.
+
+![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc8165d27051bdac3/6966744e818dc30008b336f8/esql-quick-search.gif "=60%")
 
 ### Make your query readable [_make_your_query_readable]
 
@@ -126,7 +140,7 @@ The maximum number of queries in the history depends on the version you're using
 
 ### Query help
 
-{{esql}} features in-app help and suggestions, so you can get started faster and don’t have to leave the application to check syntax.
+{{esql}} features in-app help, inline suggestions, and an autocomplete menu so you can get started faster and don’t have to leave the application to check syntax.
 
 ![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 
@@ -254,7 +268,7 @@ serverless: preview
 
 The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
-{applies_to}`stack: ga 9.2` You can also use lookup indices from your remote clusters.
+{applies_to}`stack: ga 9.2.0` Remote lookup joins are supported in [cross-cluster queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md). The lookup index must exist on _all_ remote clusters being queried, because each cluster uses its local lookup index data.
 
 ![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 

@@ -9,14 +9,14 @@ For example:
 :::{tab-item} Latest
 :sync: latest
 ```sh subs=true
-docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:{{version.stack}}
+docker pull docker.elastic.co/{{image}}/{{image}}-wolfi:{{version.stack}}
 ```
 :::
 
 :::{tab-item} Specific version
 :sync: specific
 ```sh subs=true
-docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:<SPECIFIC.VERSION.NUMBER>
+docker pull docker.elastic.co/{{image}}/{{image}}-wolfi:<SPECIFIC.VERSION.NUMBER>
 ```
 You can download and install a specific version of the {{stack}} by replacing `<SPECIFIC.VERSION.NUMBER>` with the version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 :::
