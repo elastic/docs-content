@@ -17,16 +17,16 @@ Open a new {{observability}} case to keep track of issues and share the details 
 
 ::::{applies-switch}
 
-:::{applies-item} stack:
-**Requirements**
-
-To access and send cases to external systems, you need the appropriate [subscription](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
-:::
-
 :::{applies-item} serverless:
 **Requirements**
 
 For {{observability}} projects, you need the appropriate [feature tier](https://www.elastic.co/pricing), and your role must have the **Editor** role or higher to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+:::
+
+:::{applies-item} stack:
+**Requirements**
+
+To access and send cases to external systems, you need the appropriate [subscription](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
 :::
 
 ::::
@@ -49,12 +49,12 @@ To create a case:
 
     ::::{applies-switch}
 
-    :::{applies-item} stack:
-    You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
-    :::
-
     :::{applies-item} serverless:
     You can add users who are assigned the **Editor** user role (or a more permissive role) for the project.
+    :::
+
+    :::{applies-item} stack:
+    You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
     :::
 
     ::::
@@ -90,6 +90,9 @@ You can search existing cases and filter them by attributes such as assignees, c
 To view a case, click on its name. You can then:
 
 * Add and edit the case's description, comments, assignees, tags, status, severity, and category.
+
+    {applies_to}`stack: ga 9.2+` Copy and paste images into case comments using `Ctrl/Cmd` + `C` and `Ctrl/Cmd` + `V` shortcuts. Pasted images are preformatted in Markdown. 
+
 * Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
 * Refresh the case to retrieve the latest updates.
