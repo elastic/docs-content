@@ -51,13 +51,16 @@ Fully qualified domain name (FQDN)
         enabled: true
     ```
 
-Encrypted Config
-:   When enabled, the {{agent}} will encrypt the contents of `elastic-agent.yml` into `fleet.enc`. The contents of `elastic-agent.yml` will be replaced with only this feature to indicate that the encrypted config store is used.
+Encrypted config {applies_to}`stack: ga 9.4+`
+:   When enabled, the {{agent}} encrypts the contents of `elastic-agent.yml` into `fleet.enc`. The contents of `elastic-agent.yml` are then replaced with this feature only to indicate that the encrypted config store is used.
 
-    An {{agent}} enrolled in {{fleet}} will ignore this flag (encrypted storage is always used).
-    Config can be reloaded by replacing the `elastic-agent.yml` file, and restarting the {{agent}}.
+    ::::{note}
+    {fleet}-managed {{agents}} ignorre this flag as they always encrypt storage.
+    ::::
 
-    To enable encrypted config for a standalone {{agent}} set `enabled: true` for the `encrypted_config` setting:
+    To reload the config, replace the `elastic-agent.yml` file and restart the {{agent}}.
+
+    To enable encrypted config for a standalone {{agent}}, set `enabled: true` for the `encrypted_config` setting:
 
     ```yaml
     agent.features:
