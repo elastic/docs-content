@@ -13,15 +13,14 @@ products:
 
 # {{agent-builder}}
 
-{{agent-builder}} enables you to create AI agents grounded in your {{es}} data. It combines the power of large language models with Elastic-native features for prompt engineering, context engineering, and automation in one place, reducing the need to write and maintain custom application code.
+{{agent-builder}} combines large language models with Elastic-native features for prompt engineering, context engineering, and automation. Key use cases enabled by Agent Builder include:
 
-Get started quickly with built-in agents, tools, and the chat UI, then extend with custom agents, custom tools, and programmatic interfaces for more advanced use cases.
+- **Chat with your {{es}} data immediately** using the chat interface, preconfigured agents, and built-in tools available out of the box.
+- **Expose built-in and custom Elastic tools to external MCP clients** like Claude Desktop and Cursor through the MCP server.
+- **Import tools from external MCP servers** to give your agents additional capabilities.
+- **Expose your agents to external agentic systems** built with LangChain, OpenAI, or other frameworks through A2A and REST APIs.
 
-::::{admonition} Agent Builder subscription requirements
-- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
-- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** [feature tier](/solutions/security/security-serverless-feature-tiers.md).
-- {{obs-serverless}} and {{es-serverless}} users: the **Complete** [feature tier](/solutions/observability/observability-serverless-feature-tiers.md).
-::::
+**[Learn more in key capabilities](#key-capabilities)**
 
 ## Get started
 
@@ -29,12 +28,19 @@ To get started you need an Elastic deployment and you might need to enable the f
 
 [**Get started with {{agent-builder}}**](agent-builder/get-started.md)
 
+::::{admonition} Agent Builder subscription requirements
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** [feature tier](/solutions/security/security-serverless-feature-tiers.md).
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** [feature tier](/solutions/observability/observability-serverless-feature-tiers.md).
+::::
+
+
 ## Key capabilities
 
 - **{{es}} relevance and security**: Leverage {{es}}'s search capabilities for precise context retrieval, with secure data access controls.
 - **Built-in agents and tools**: Get started immediately with pre-configured agents and tools available out of the box.
 - **Chat UI**: Chat with agents in real time using natural language.
-- **Custom and external tools**: Build targeted tools to deliver precise context, or connect external tools through the Model Context Protocol.
+- **Custom and external tools**: Build targeted tools to deliver precise context, or import external tools through the Model Context Protocol.
  - **Custom agents**: Create agents with tailored instructions and toolsets for specific use cases.
 - **MCP and A2A servers**: Expose agents to external clients and enable agent-to-agent communication through standard protocols.
 - **Kibana REST APIs**: Work with  Agent Builder functionalities programmatically, including agents, tools, and conversations.
