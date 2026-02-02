@@ -4,6 +4,7 @@
 # Templates, workflows, and config
 /.github/                                   @elastic/doc-leads
 /.github/workflows/                         @elastic/docs-engineering
+/.github/scripts/                           @elastic/docs-engineering
 /acrolinx/                                  @elastic/doc-leads
 
 # The docs
@@ -11,6 +12,7 @@
 /deploy-manage/                             @elastic/admin-docs
 
 /explore-analyze/                           @elastic/core-docs @elastic/experience-docs
+/explore-analyze/ai-features/agent-builder/ @elastic/developer-docs
 /explore-analyze/alerts-cases/              @elastic/experience-docs
 /explore-analyze/dashboards/                @elastic/experience-docs
 /explore-analyze/discover/                  @elastic/experience-docs
