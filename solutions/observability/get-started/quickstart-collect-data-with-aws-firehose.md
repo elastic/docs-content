@@ -17,6 +17,7 @@ products:
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
+The above version should be higher!
 
 In this quickstart guide, you’ll learn how to use AWS Firehose to send logs and metrics to Elastic.
 
