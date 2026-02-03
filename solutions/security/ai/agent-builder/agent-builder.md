@@ -25,6 +25,11 @@ Agent Builder features a pre-built [Threat Hunting agent](/explore-analyze/ai-fe
 
 You can customize it by giving it access to additional built-in tools, or to your own [custom tools](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md). 
 
+The three types of Agent Builder tools that you can create are `{{esql}}`, `workflow`, and `index search`:
+
+- **{{esql}}** tools allow agent builder to use specific queries that you've defined, with parameter values based on the data it's using. Use this to precisely find specific information, or to automate repetitive tasks.
+- **Index search** tools allow agent builder to search for relevant data in specific indices. Use these to help agent builder leverage data such as threat hunting reports, on-call rotations, your organization's physical addresses, and anything else you consider relevant.
+- **Workflow** tools let agent builder run specific workflows. Use these to automate complex, multi-step response actions, or to orchestrate across systems.
 
 ## Example: Alert triage 
 When conducted manually, alert triage in {{elastic-sec}} typically includes multiple steps which consume analyst time:
