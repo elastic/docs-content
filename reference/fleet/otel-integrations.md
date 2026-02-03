@@ -11,7 +11,7 @@ products:
 
 # Collect OpenTelemetry data with {{agent}} integrations [otel-integrations]
 
-{{fleet}} now supports installing {{agent}} integration packages for collecting and visualizing OpenTelemetry (OTel) data such as logs, metrics, and traces. To find the available OpenTelemetry integration packages, open the **Integrations** page in {{kib}}, then select the **OpenTelemetry** category.
+{{fleet}} supports installing {{agent}} integration packages for collecting and visualizing OpenTelemetry (OTel) data such as logs, metrics, and traces. To find the available OpenTelemetry integration packages, open the **Integrations** page in {{kib}}, then select the **OpenTelemetry** category.
 
 :::{note}
 Some OpenTelemetry integrations are in technical preview and only appear in the list when you enable the setting to show beta integrations.
@@ -30,26 +30,6 @@ When OTel data is collected using an OpenTelemetry input package, content packag
 OpenTelemetry input packages are used with {{fleet}} and {{agent}} running in default mode. They are distinct from [running {{agent}} as an EDOT Collector](/reference/fleet/otel-agent.md), and cannot be used on {{agent}} running in `otel` mode.
 :::
 
-## Hybrid agent policies [otel-integrations-hybrid-policies]
-
-You can configure {{agent}} policies to use both ECS-based integrations and OpenTelemetry input packages. This effectively turns enrolled {{agents}} into hybrid agents.
-
-Hybrid agent policies are useful when you want to:
-
-- Use an ECS-based integration for one data type (for example, to ingest logs and use built-in dashboards)
-- Use an OpenTelemetry input package for another data type (for example, to collect metrics using OpenTelemetry standards)
-
-This type of hybrid data collection provides flexibility without locking you into a single ingestion model, and allows you to:
-
-- Gradually migrate toward OpenTelemetry
-- Standardize ingestion using OpenTelemetry receivers at scale
-- Keep native integrations for logs or existing dashboards
-
-For examples on using a hybrid agent configuration to collect telemetry, refer to:
-
-- [Collect NGINX logs and metrics with a hybrid {{fleet}}-managed {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
-- [Collect NGINX logs and metrics with a hybrid standalone {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md)
-
 ## Configure OpenTelemetry input packages [otel-integrations-input-packages]
 
 The installation and configuration of OpenTelemetry input packages are similar to those of ECS-based integrations, and allow you to specify the namespace, dataset name, data stream type, and more. For step-by-step instructions, refer to [Add an integration to an {{agent}} policy](/reference/fleet/add-integration-to-policy.md).
@@ -58,10 +38,26 @@ When the integration policy for the input package is created, {{fleet}} creates 
 
 On the OpenTelemetry input package's **Configs** page, you can view a generated sample configuration, which you can use as a starting point to set up the integration on a standalone {{agent}}. 
 
-This is a partial configuration as it does not include an exporter component. For more information on setting up the exporter, refer to [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md).
+This is a partial configuration because it doesn't include an exporter component. For more information on setting up the exporter, refer to [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md).
 
 :::{note}
 Currently, OpenTelemetry input packages only support sending data using the {{es}} output.
 :::
 
 Only {{agents}} on version 9.2 or later can collect OTel data using OpenTelemetry input packages. OpenTelemetry input packages added to an agent policy do not affect enrolled agents on prior versions.
+
+## Hybrid agent policies [otel-integrations-hybrid-policies]
+
+Hybrid agent policies let you combine ECS-based integrations with OpenTelemetry input packages in a single {{agent}} configuration. This flexible approach allows you to leverage the strengths of both data collection methods without locking you into a single ingestion model.
+
+Hybrid agent policies allow you to:
+
+- Ingest logs and metrics with ECS-based integrations and leverage their built-in dashboards and alerts
+- Collect additional telemetry data using OpenTelemetry Collector components
+- Gradually adopt OpenTelemetry standards across your infrastructure
+- Maintain centralized management through {{fleet}}
+
+For examples on using a hybrid agent policy to collect telemetry, refer to:
+
+- [Collect NGINX logs and metrics with a hybrid {{fleet}}-managed {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
+- [Collect NGINX logs and metrics with a hybrid standalone {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md)
