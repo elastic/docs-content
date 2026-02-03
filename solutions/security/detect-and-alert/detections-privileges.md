@@ -21,7 +21,7 @@ Learn about the access requirements for detection features, including:
 
 For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/detections-requirements.md).
 
-### About index privileges
+## About index privileges
 
 When creating custom roles for detection features, you'll need to grant access to system indices that include your space ID (`<space-id>`). For example, the default space uses `.alerts-security.alerts-default`. Refer to the following details to understand which system indices your role might require access to. 
 
@@ -111,7 +111,7 @@ Index privileges
 
 {{kib}} privileges
 :   - {applies_to}`stack: ga 9.0` `All` for the `Security` feature
-    - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules Alerts, and Exceptions` feature
+    - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
 
 ::::{note}
 Alerts are managed through {{es}} index privileges. To view alert management flows, you need at least `Read` for the `Rules, Alerts, and Exceptions` feature.

@@ -41,7 +41,7 @@ No additional configuration is required.
 
 ::::::{tab-item} Self-managed {{stack}}
 
-Complete these steps to turn on the detections featur in your space.
+Complete these steps to turn on the detections feature in your space.
 
 :::::{stepper}
 
@@ -70,10 +70,13 @@ In your [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elast
 ::::
 
 ::::{step} Enable detections
-1. Go to the **Rules** page. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), 
+1. Go to the **Rules** page. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. The detection engine initializes when a user with [sufficient privileges](/solutions/security/detect-and-alert/detections-privileges.md) visits the page.
 
+::::{note}
 To enable detections in multiple spaces, visit the **Rules** page in each space.
+::::
+
 ::::
 
 :::::
