@@ -28,7 +28,7 @@ When a data node is reaching critical disk space usage, its [disk-based shard al
     flood-stage watermark [95%] exceeded on [NODE_ID][NODE_NAME], all indices on this node will be marked read-only
     ```
 
-To prevent a full disk, when a node reaches `flood-stage` watermark, {{es}} [blocks writes](elasticsearch://reference/elasticsearch/index-settings/index-block.md) to any index with a shard on the affected node(s). If the block affects related system indices, {{kib}} and other {{stack}} features may become unavailable. For example, `flood-stage` can induce errors like:
+To prevent a full disk, when a node reaches `flood-stage` watermark, {{es}} [blocks writes](elasticsearch://reference/elasticsearch/index-settings/index-block.md) to any index with a shard on the affected node(s). If the block affects related system indices, {{kib}} and other {{stack}} features can become unavailable. For example, `flood-stage` can induce errors like:
 
 * {{kib}}'s `Kibana Server is not Ready yet` [error message](/troubleshoot/kibana/error-server-not-ready.md).
 * {{es}}'s ingest API's [reject the request](/troubleshoot/elasticsearch/rejected-requests.md) with HTTP 429 error bodies like:
@@ -164,7 +164,7 @@ To resolve watermark errors permanently, perform one of the following actions:
 * Delete indices using the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete), either permanently if the index isn’t needed, or temporarily to later [restore from snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
 
 ::::{tip}
-On {{ech}} and {{ece}}, indices may need to be temporarily deleted using the its [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to resolve [cluster health status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health)'s `status: red` which blocks [attempted changes](/deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow, reach out to [Elastic Support](/troubleshoot#troubleshoot-work-with-support) for assistance.
+On {{ech}} and {{ece}}, indices may need to be temporarily deleted using the its [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to resolve [cluster health status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health)'s `status: red` which blocks [attempted changes](/deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow, reach out to [Elastic Support](/troubleshoot/index.md#troubleshoot-work-with-support) for assistance.
 ::::
 
 ## Preventing watermark errors  
