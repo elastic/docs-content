@@ -195,6 +195,7 @@ toc:
             children:
             - file: ai-features/agent-builder/custom-agents.md
             - file: ai-features/agent-builder/builtin-agents-reference.md
+            - file: ai-features/agent-builder/prompt-engineering.md
             - file: ai-features/agent-builder/agents-and-workflows.md
           - file: ai-features/agent-builder/tools.md
             children:

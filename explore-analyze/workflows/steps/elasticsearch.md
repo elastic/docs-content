@@ -65,7 +65,9 @@ steps:
 
 ### Example: Bulk indexing
 
-The `elasticsearch.bulk` action performs multiple indexing or delete operations in a single request. The `body` parameter must be a string containing the bulk operations in newline-delimited JSON (NDJSON) format. Each operation requires an action/metadata line followed by an optional source document line.
+The `elasticsearch.bulk` action performs multiple operations (`index`, `create`, `update`, or `delete`) in a single request. The `operations` parameter contains an array of alternating action/metadata objects and source document objects.
+
+The following example shows how to index multiple documents in a single bulk request.
 
 ```yaml
 steps:
@@ -73,14 +75,39 @@ steps:
     type: elasticsearch.bulk
     with:
       index: "national-parks-data"
-      body: |
-        { "index": { "_id": "1" } } <1>
-        { "name": "Yellowstone National Park", "category": "geothermal" } <2>
-        { "index": { "_id": "2" } } <1>
-        { "name": "Grand Canyon National Park", "category": "canyon" } <2>
+      operations:
+        - index: { "_id": "1" } # <1>
+        - name: "Yellowstone National Park" # <2>
+          category: "geothermal" #
+        - index: { "_id": "2" } # <1>
+        - name: "Grand Canyon National Park" # <2>
+          category: "canyon"
 ```
-1. **Action/metadata line**: Specifies the action and document ID
-2. **Source document line**: The document data 
+1. **Action/metadata object**: Specifies the action and document ID
+2. **Source document object**: The document data (can span multiple lines for additional fields)
+
+### Example: Bulk operations with all operation types
+
+The following example shows an `elasticsearch.bulk` action with all four operation types: `index`, `create`, `update`, and `delete`.
+
+```yaml
+steps:
+  - name: bulk_operations
+    type: elasticsearch.bulk
+    with:
+      index: "national-parks-data"
+      operations:
+        - index: { "_id": "1" }
+        - name: "Yellowstone National Park"
+          category: "geothermal"
+        - delete: { "_id": "2" }
+        - create: { "_id": "3" }
+        - name: "Yosemite National Park"
+          category: "mountain"
+        - update: { "_id": "1" }
+        - doc:
+            category: "geothermal-wildlife"
+```
 
 ## Generic request actions
 

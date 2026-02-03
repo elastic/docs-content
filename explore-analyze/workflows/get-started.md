@@ -82,22 +82,23 @@ steps:
     with:
       index: "{{ consts.indexName }}"
       operations:
+        - create: {}
         - name: "Yellowstone National Park"
           category: "geothermal"
           description: "America's first national park, established in 1872, famous for Old Faithful geyser and diverse wildlife including grizzly bears, wolves, and herds of bison and elk."
-
+        - create: {}
         - name: "Grand Canyon National Park"
           category: "canyon"
           description: "Home to the immense Grand Canyon, a mile deep gorge carved by the Colorado River, revealing millions of years of geological history in its colorful rock layers."
-
+        - create: {}
         - name: "Yosemite National Park"
           category: "mountain"
           description: "Known for its granite cliffs, waterfalls, clear streams, giant sequoia groves, and biological diversity. El Capitan and Half Dome are iconic rock formations."
-         
+        - create: {}
         - name: "Zion National Park"
           category: "canyon"
           description: "Utah's first national park featuring cream, pink, and red sandstone cliffs soaring into a blue sky. Famous for the Narrows wade through the Virgin River."
-         
+        - create: {}
         - name: "Rocky Mountain National Park"
           category: "mountain"
           description: "Features mountain environments, from wooded forests to mountain tundra, with over 150 riparian lakes and diverse wildlife at various elevations."
@@ -191,7 +192,7 @@ consts:
   indexName: national-parks-data
 ```
 
-* **`consts`**: Defines reusable values that can be referenced throughout the workflow.
+* **`consts`**: Defines reusable values that can be referenced throughout the workflow. Use constants for fixed values that don't change between runs. For values that vary per execution, use [inputs](/explore-analyze/workflows/data.md#workflows-constants-or-inputs) instead.
 * Accessed using template syntax: `{{ consts.indexName }}`. This promotes consistency and makes the workflow easier to maintain.
 
 ::::
@@ -243,9 +244,11 @@ triggers:
   with:
     index: "{{ consts.indexName }}"
     operations:
+      - create: {}
       - name: "Yellowstone National Park"
         category: "geothermal"
         description: "America's first national park, established in 1872..."
+      - create: {}
       - name: "Grand Canyon National Park"
         category: "canyon"
         description: "Home to the immense Grand Canyon..."
@@ -255,7 +258,7 @@ triggers:
 * **Step type**: Another internal action step using {{es}}'s bulk API.
 * **Step purpose**: Efficiently loads multiple documents in a single operation, populating the index with sample data.
 * **Key elements**:
-    * The `operations` array contains the documents to index.
+    * The `operations` array contains the operation name and documents to index.
     * Each document becomes a searchable record in {{es}}.
     * Uses the field names defined in the mappings (`name`, `category`, `description`).
     * Each document becomes a searchable record with consistent field structure.
