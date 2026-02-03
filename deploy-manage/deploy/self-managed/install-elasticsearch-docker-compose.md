@@ -3,6 +3,8 @@ applies_to:
   deployment:
     self:
 navigation_title: Multi-node cluster
+sub:
+  image: elasticsearch
 ---
 
 # Start a multi-node cluster with Docker Compose [docker-compose-file]

@@ -23,7 +23,7 @@ Explore the reference documentation for [Elastic APIs]({{apis}}).
 | APM | • [APM Server](/solutions/observability/apm/apm-server/api.md)<br>• [Observability intake Serverless]({{intake-apis}})<br> |
 | {{ecloud}} | • [{{ech}}]({{cloud-apis}})<br>• [{{ecloud}} Serverless]({{cloud-serverless-apis}})<br>• [{{ece}}]({{ece-apis}})<br>• [{{eck}}](cloud-on-k8s://reference/api-docs.md)<br>• [{{ecloud}} billing]({{cloud-billing-apis}})<br> |
 
-## Elasticsearch and index management
+## Elasticsearch
 
 Customize your Elastic Stack setup with our configuration reference guides. Explore JVM settings, client documentation, Elasticsearch privileges, and index lifecycle actions to find the detailed information you need to configure your environment to your specific needs.
 
