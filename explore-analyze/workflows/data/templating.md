@@ -278,12 +278,6 @@ Inside `foreach` steps, you have access to additional context variables such as 
 
 The `event` variable contains data from the trigger. Its structure depends on the trigger type. Refer to [Trigger context](/explore-analyze/workflows/triggers.md#trigger-context) to learn what data each trigger type provides.
 
-Example accessing alert data:
-
-```yaml
-message: "Alert severity: {{ event.kibana.alert.severity }}"
-```
-
 ## Template rendering behavior [workflows-template-rendering]
 
 The engine renders templates recursively through all data structures, processing nested objects and arrays.
