@@ -18,13 +18,13 @@ To increase the disk capacity of the data nodes in your cluster, use the followi
 1. If autoscaling is successful, the cluster returns to a `healthy` status.
 If the cluster is still out of disk, check if autoscaling has reached its set limits and [update your autoscaling settings](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-update).
 
-**Option 2: Add more capacity**
+**Option 2: COnfigure deployment size and tiers**
 
-You can add more capacity by adding more nodes to your cluster and targeting the data tier that may be short of disk.
+You can increase the deployment capacity by editing the deployment and adjusting the size of the existing data tiers or adding new ones.
 
 1. In {{kib}}, open your deployment’s navigation menu (placed under the Elastic logo in the upper left corner) and go to **Manage this deployment**.
 1. From the right hand side, click to expand the **Manage** dropdown button and select **Edit deployment** from the list of options.
-1. On the **Edit** page, click on **+ Add Capacity** for the tier you identified you need to enable in your deployment. Choose the desired size and availability zones for the new tier.
+1. On the **Edit** page, increase capacity for the data tier you identified earlier by either adding a new tier with **+ Add capacity** or adjusting the size of an existing one. Choose the desired size and availability zones for that tier.
 1. Navigate to the bottom of the page and click the **Save** button.
 
 **Option 3: Change the hardware profiles/deployment templates**
@@ -45,7 +45,7 @@ To increase the data node capacity in your cluster, you can [add more nodes](/de
 ::::::
 
 ::::::{applies-item} { eck: }
-To increase the disk capacity of data nodes in your {{eck}} cluster, you can either add more data nodes and assign the index's target tier [node role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#change-node-role) to the new nodes, or increase the storage size of existing nodes.
+To increase the disk capacity of data nodes in your {{eck}} cluster, you can either add more data nodes to the desired tier, or increase the storage size of existing nodes.
 
 **Option 1: Add more data nodes**
 
@@ -80,7 +80,9 @@ To increase the disk capacity of data nodes in your {{eck}} cluster, you can eit
     kubectl apply -f your-elasticsearch-manifest.yaml
     ```
 
-    ECK automatically creates the new nodes and {{es}} will relocate shards to balance the load. You can monitor the progress using:
+    ECK automatically creates the new nodes with a `data` [node role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md) and {{es}} will relocate shards to balance the load. 
+    
+    You can monitor the progress using:
 
     ```console
     GET /_cat/shards?v&h=state,node&s=state
@@ -113,7 +115,7 @@ To increase the disk capacity of data nodes in your {{eck}} cluster, you can eit
                 storage: 200Gi  # Increased from previous size
     ```
 
-1. Apply the changes. If the volume driver supports `ExpandInUsePersistentVolumes`, the filesystem will be resized online without restarting {{es}}. Otherwise, you may need to manually delete the Pods after the resize so they can be recreated with the expanded filesystem.
+1. Apply the changes. If the volume driver supports `ExpandInUsePersistentVolumes`, the filesystem will be resized online without restarting {{es}}. Otherwise, you might need to manually delete the Pods after the resize so they can be recreated with the expanded filesystem.
 
 For more information, refer to [](/deploy-manage/deploy/cloud-on-k8s/update-deployments.md) and [](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md#k8s-volume-claim-templates-update).
 ::::::
