@@ -176,15 +176,39 @@ In the following example:
 
 ## Dynamic values with templating [workflows-dynamic-values]
 
-To inject dynamic values into your workflow steps, use the templating engine. The templating engine uses the [Liquid templating language](https://liquidjs.com/) and allows you to:
+Workflows support dynamic values through template variables and template expressions.
 
-- **Reference step outputs**: Access data from previous steps using `steps.<step_name>.output`.
-- **Use constants**: Reference workflow-level constants with `consts.<constant_name>`.
-- **Apply filters**: Transform values with filters like `upcase`, `downcase`, and `date`.
-- **Add conditional logic**: Use `if`/`else` statements for dynamic content.
-- **Loop through data**: Iterate over arrays with `for` loops.
+- **Template variables**: The data you reference, such as step outputs (`steps.<name>.output`), constants (`consts.<name>`), inputs (`inputs.<name>`), and context variables (`execution.id`, `event`).
+- **Template expressions**: The syntax used to insert variables. Use `{{ }}` for string output or `${{ }}` to preserve data types like arrays and objects.
 
-For complete syntax details and examples, refer to [Templating engine](./data/templating.md).
+### Template variables [workflows-template-variables]
+
+Template variables are the data sources you can reference inside template expressions. The following template variables are available:
+
+| Variable type | Syntax | Description |
+|---------------|--------|-------------|
+| Step outputs | `steps.<step_name>.output` | Data produced by each step during execution. Access results from previous steps to chain operations together. Refer to [Reference outputs](./data/templating.md#workflows-ref-step-outputs) for more details. |
+| Constants | `consts.<constant_name>` | Reusable values defined once at the workflow level using the `consts` block. Refer to [Reference constants](./data/templating.md#workflows-ref-constants) for more details. |
+| Inputs | `inputs.<input_name>` | Parameters defined in the `inputs` block that can be provided when the workflow is triggered. Refer to [Reference inputs](./data/templating.md#workflows-ref-inputs) for more details. |
+| Context variables | `execution.id`, `event`, `foreach.item` | Data automatically provided by the workflow engine at runtime, including execution metadata, trigger data, and loop state. Refer to [Context variables reference](./data/templating.md#workflows-context-variables) for more details. |
+
+#### Choose between constants and inputs [workflows-constants-or-inputs]
+
+Constants and inputs are both template variables that let you define reusable values in your workflow, but they serve different purposes:
+
+- **Constants** — Use for values that are fixed for the workflow definition and don't change between runs, such as index names, API endpoints, and threshold values.
+- **Inputs** — Use for values that might vary each time the workflow runs, such as user-provided parameters, environment toggles, or any value that changes per execution.
+
+### Template expressions [workflows-template-expressions]
+
+Use template expressions to insert template variables into your workflow. The templating engine supports two syntax options:
+
+| Syntax | Purpose | Example |
+|--------|---------|---------|
+| `{{ }}` | Insert values as strings | `"Hello, {{user.name}}"` |
+| `${{ }}` | Preserve data types (arrays, objects, numbers) | `${{steps.search.output.hits}}` |
+
+For syntax details and examples, refer to [Templating engine](./data/templating.md).
 
 ## Quick reference [workflows-data-quick-reference]
 
@@ -194,6 +218,10 @@ By combining data flow, templating, and robust error handling, you can build com
 |---------|--------|-------------|
 | Step output | `steps.<step_name>.output` | Access the result of a previous step. |
 | Step error | `steps.<step_name>.error` | Access error details from a failed step. |
+| Constants | `consts.<constant_name>` | Access workflow-level constants. |
+| Inputs | `inputs.<input_name>` | Access parameters passed at trigger time. |
+| Execution metadata | `execution.id`, `execution.startedAt` | Access information about the current run. |
+| Trigger data | `event` | Access data from the trigger that started the workflow. |
 | Retry on failure | `on-failure.retry` | Retry a failed step with optional delay. |
 | Fallback steps | `on-failure.fallback` | Define recovery actions when a step fails. |
 | Continue on failure | `on-failure.continue: true` | Allow the workflow to proceed after a failure. |
