@@ -188,7 +188,7 @@ serverless: ga
 
 :::{tip}
 Likewise, when the difference is specific to just one paragraph or list item, the same rules apply.
-Just the syntax slightly differs so that it stays inline: `` {applies_to}`ech: ga` {applies_to}`serverless: ga` ``.
+Just the syntax slightly differs so that it stays inline: `` {applies_to}`ess: ga` {applies_to}`serverless: ga` ``.
 :::
 
 ### Choosing a primary dimension for your page [primary-dimension]
@@ -198,7 +198,7 @@ When your content has requirements that span multiple [dimensions](/contribute-d
 
 For example, a page about a Kibana feature (Stack/Serverless dimension) might have deployment-specific configuration requirements. Use the Stack/Serverless dimension at the page level, and document deployment-specific information in prose or tagged sections:
 
-````
+````markdown
 ---
 applies_to:
   stack: ga
@@ -221,7 +221,7 @@ This feature is available in Elastic Stack 9.0+ and Serverless.
 
 ```{applies_to}
 deployment:
-  ech: ga
+  ess: ga
   ece: ga 4.0+
 ```
 
@@ -427,7 +427,7 @@ Sometimes, features and enhancements slip through into patch versions, and the s
 - **Standard case**: Our docs are aligned with the latest patch of any given minor version. That means that in most cases, we don't need to call out the exact patch version that introduced a change (that's for the release notes).
 - **Exceptions**: In rare cases, it can happen that the change is important enough to be explicitly called out in the docs with a precise patch-level information. In that case, you can add a callout and indicate patch-level versions using plain text to explain the change.
 
-For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-httpjson) page, the `terminate` helper function was added to a 9.0.x and 9.1.x patch version at the same time. Since the new functionality is available in the latest patch of both 9.0.x and 9.1.x, use the earlier version: 9.0.x.
+For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-httpjson) page, the `terminate` helper function was added to a 9.0.x and 9.1.x patch version at the same time. Because the new functionality is available in the latest patch of both 9.0.x and 9.1.x, use the earlier version: 9.0.x.
 
 :::::{tab-set}
 ::::{tab-item} Image
