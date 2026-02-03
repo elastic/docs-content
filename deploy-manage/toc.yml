@@ -270,6 +270,7 @@ toc:
                   - file: deploy/cloud-on-k8s/configuration-examples-logstash.md
                   - file: deploy/cloud-on-k8s/update-strategy-logstash.md
                   - file: deploy/cloud-on-k8s/advanced-configuration-logstash.md
+              - file: deploy/cloud-on-k8s/package-registry.md
           - file: deploy/cloud-on-k8s/create-custom-images.md
           - file: deploy/cloud-on-k8s/tools-apis.md
       - file: deploy/self-managed.md
