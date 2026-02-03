@@ -179,12 +179,11 @@ The manual rollback feature is not available for system-managed packages such as
 
 These limitations apply for the manual rollback feature: 
 
-* Rollback is limited to the version running _before_ the upgrade. The previously installed version must be 9.3.0 or later for this functionality to be available.
+* Rollback is limited to the version running _before_ the upgrade. Both the previously and currently running versions must be 9.3.0 or later for this functionality to be available.
 * Data required for the rollback is stored on disk for seven days, which can impact available disk space.
 * Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
-* Rollback is supported only for versions 9.3.0 and later. The target version must be 9.3.0 or later.
 * Manual rollback is not available for system-managed packages such as DEB and RPM.
-* Some data might be re-ingested. 
+* Some data might be re-ingested after rollback. 
 
 #### Possible errors [rollback-upgrade-standalone-errors]
 

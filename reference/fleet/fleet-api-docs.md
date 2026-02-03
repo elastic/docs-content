@@ -479,6 +479,6 @@ To roll back multiple agents:
 If no version is available on disk to rollback to, you get an error.
 This situation can happen if:
 
-- the version you upgraded from is earlier than 9.3.0, as the feature was not implemented in earlier versions. 
+- the version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions. 
 
 - the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 

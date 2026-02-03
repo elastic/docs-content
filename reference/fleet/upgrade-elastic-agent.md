@@ -343,25 +343,23 @@ The manual rollback feature for {{agent}} gives you the ability to roll back to 
 
 To roll back one or more {{agent}} upgrades:
 1. Go to the **Actions** menu.
-2. Choose **Upgrade management** > **Roll back upgrade...**.
+2. Choose **Upgrade management** > **Roll back upgrade**.
 
 #### Limitations for manual rollback [rollback-upgrade-fleet-managed]
 
 These limitations apply for the manual rollback feature: 
 
-* Rollback is limited to the version running _before_ the upgrade. The previously installed version must be 9.3.0 or later for this functionality to be available.
+* Rollback is limited to the version running _before_ the upgrade. Both the previously and currently running versions must be 9.3.0 or later for this functionality to be available.
 * Data required for the rollback is stored on disk for seven days, which can impact available disk space.
 * Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
-* Rollback is supported only for versions 9.3.0 and later. The target version must be 9.3.0 or later.
 * Manual rollback is not available for system-managed packages such as DEB and RPM.
-* Some data might be re-ingested. 
-
+* Some data might be re-ingested after rollback.
 ##### Possible errors [rollback-upgrade-fleet-managed]
 
 If no version is available on disk to rollback to, you get an error.
 This situation can happen if:
 
-- the version you upgraded from is earlier than 9.3.0, as the feature was not implemented in earlier versions. 
+- the version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions. 
 
 - the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 
 
