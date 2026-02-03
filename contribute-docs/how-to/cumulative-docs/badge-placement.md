@@ -3,7 +3,7 @@
 :::{note}
 This content is still in development.
 If you have questions about how to write cumulative documentation while contributing,
-reach out to **@elastic/docs** in the related GitHub issue or PR. 
+reach out to **@elastic/docs** in the related GitHub issue or PR.
 :::
 
 As you continue contributing to documentation and more versions are released,
@@ -19,13 +19,12 @@ version and deployment type differences in your docs:
 * **Headings**: Provide signals about a section’s scope so a user can choose to read or skip it as needed.
 * **Lists**: Identify features in a list of features that are exclusive to a specific context, or that were introduced in a specific version or comparing differing requirements, limits, and other simple, mirrored facts.
 * **Definition lists**: Identify settings or options that are exclusive to a specific context, or that were introduced in a specific version.
-* **Tabs**: Provide two sets of procedures when one or more steps in a process differs between contexts or versions.
+* **Tabs**: Provide two sets of procedures when one or more steps in a process differs between contexts. For differences per version or deployment type, you should use [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) instead of a generic [`tab-set`](https://elastic.github.io/docs-builder/syntax/tabs/).
 * **Admonitions**: Draw attention to happy differences and basic clarifications.
 * **Sibling pages**: When the information is too complex to be addressed with only the other content patterns.
 
 ## General placement principles
 
-% Source: Brandon's PR review comment
 At a high level, you should follow these badge placement principles:
 
 * Place badges where they're most visible but least disruptive to reading flow.
