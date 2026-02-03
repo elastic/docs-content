@@ -195,6 +195,7 @@ Just the syntax slightly differs so that it stays inline: `` {applies_to}`ess: g
 
 When your content has requirements that span multiple [dimensions](/contribute-docs/how-to/cumulative-docs/guidelines.md), choose one dimension as the primary for the page-level `applies_to` frontmatter, and document secondary dimension information as requirements, prerequisites, or in tagged sections.
 
+#### Example: A stack/serverless feature with deployment-specific requirements
 
 For example, a page about a Kibana feature (Stack/Serverless dimension) might have deployment-specific configuration requirements. Use the Stack/Serverless dimension at the page level, and document deployment-specific information in prose or tagged sections:
 
@@ -207,7 +208,7 @@ applies_to:
 
 # Configure Kibana feature
 
-This feature is available in Elastic Stack 9.0+ and Serverless.
+Feature description.
 
 ## Prerequisites
 
@@ -229,6 +230,33 @@ For Elastic Cloud Hosted and Elastic Cloud Enterprise deployments, you must also
 
 [...]
 ````
+
+#### Example: A product feature that is only compatible with specific deployments
+
+If a feature in a product like a client library or EDOT distro requires a specific version of the stack, or a specific deployment type, then the page-level applies to should be about the product, and the stack version should be listed as a requirement or prerequisite:
+
+```markdown
+---
+applies_to:
+  product:
+    my_product: ga 1.1+
+---
+
+# My product feature
+
+The product feature adds functionality. You can use it.
+
+## Prerequisites
+
+* One of the following: 
+  * A deployment running Elastic Stack 9.0 or later
+  * An Elastic Observability Serverless project
+
+## Configuration 
+...
+```
+
+
 
 ## Mid-stage: Features evolve and documentation needs updates
 

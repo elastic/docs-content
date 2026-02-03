@@ -27,17 +27,17 @@ Use only one dimension at the page level. `serverless` can appear in both the St
 
 ## Key reference
 
-## key
+### key
 
 :::{include} /contribute-docs/_snippets/applies_to-key.md
 :::
 
-## lifecycle
+### lifecycle
 
 :::{include} /contribute-docs/_snippets/applies_to-lifecycle.md
 :::
 
-## version
+### version
 
 :::{include} /contribute-docs/_snippets/applies_to-version.md
 :::
