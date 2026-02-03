@@ -10,7 +10,7 @@ products:
 # Debug script score calculation errors in Painless
 
 When you use [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with type `double`,
- the script can return unexpected null values, negative values `0.0`, or Infinity, causing documents to receive a score of `0` or be excluded from results entirely. This commonly occurs when field access patterns don't account for missing values or when mathematical operations result in null propagation.
+ the script can return unexpected null values, negative values, `0.0`, or Infinity, causing documents to receive a score of `0` or be excluded from results entirely. This commonly occurs when field access patterns don't account for missing values or when mathematical operations result in null propagation.
 
 Follow these guidelines to avoid scoring calculation errors in your Painless scripts:
 
