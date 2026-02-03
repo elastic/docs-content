@@ -4,11 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring.html
 applies_to:
   serverless:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack:
 products:
   - id: elasticsearch
   - id: cloud-hosted
