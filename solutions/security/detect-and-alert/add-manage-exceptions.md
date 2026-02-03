@@ -57,7 +57,7 @@ To use exceptions ensure your role has the appropriate access. To learn how to a
 :::{applies-item} { "stack": "ga 9.4", "serverless": "ga" }
 
 - **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature and `Read` for the **Security > Rules > Exceptions** subfeature.
-- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needsat least `Read` {{kib}} privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature and `All` for the **Security > Rules > Exceptions** subfeature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs at least `Read` {{kib}} privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature and ensure **All** remains selected for the **Security > Rules, Alerts, and Exceptions > Manage Exceptions** sub-feature.
 :::
 
 ::::
