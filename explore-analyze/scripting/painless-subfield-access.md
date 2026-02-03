@@ -161,7 +161,7 @@ The error occurs because `doc[‘event’]` attempts to find a field named “ev
 
 ## Solution: Correct subfield access with validation
 
-Use full dot notation and validate that the field exists::
+Use full dot notation and validate that the field exists:
 
 ```json
 POST events/_search
