@@ -13,7 +13,7 @@ products:
 
 # Create a detection rule [security-rules-create]
 
-To create a new detection rule, follow these steps:
+Once the Detections feature is [turned on](/solutions/security/detect-and-alert/detections-requirements.md), follow these steps to create a detection rule:
 
 1. Define the [**rule type**](/solutions/security/detect-and-alert/about-detection-rules.md#rule-types). The configuration for this step varies depending on the rule type.
 2. Configure basic rule settings.
@@ -33,7 +33,7 @@ To create a new detection rule, follow these steps:
 To create detection rules, you must have:
 
 * Access to data views, which requires the `Data View Management` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
-* Permissions to enable and view detections, manage rules, manage alerts, and preview rules. These permissions depend on the user role. Refer to [Detections requirements](/solutions/security/detect-and-alert/detections-privileges.md) for more information.
+* The required privileges to preview rules, manage rules, and manage alerts. Refer to [](/solutions/security/detect-and-alert/detections-privileges.md) for more details.
 
 ::::{note}
 Additional configuration is required for detection rules using cross-cluster search. Refer to [Cross-cluster search and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md).
