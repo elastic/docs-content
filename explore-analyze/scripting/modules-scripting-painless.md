@@ -86,3 +86,5 @@ You can use Painless in multiple contexts throughout {{es}}:
 Write your first Painless script by trying out our [guide](/explore-analyze/scripting/modules-scripting-using.md) or jump into one of our [tutorials](/explore-analyze/scripting/common-script-uses.md) for real-world examples using sample data.
 
 For complete syntax and language features, refer to the [Painless language specification](elasticsearch://reference/scripting-languages/painless/painless-language-specification.md).
+
+Once you get started, refer to [Debug Painless scripts in {{es}}](/explore-analyze/scripting/painless-debugging.md) for helpful tips about how to resolve common scripting errors.
