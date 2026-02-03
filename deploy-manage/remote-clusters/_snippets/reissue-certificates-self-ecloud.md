@@ -37,4 +37,4 @@ You can use the [{{es}} `certutil` tool](elasticsearch://reference/elasticsearch
 
     Copy the generated certificate and key files to their corresponding nodes and update your {{es}} TLS configuration to use them. Then restart each node to apply the changes.
 
-Once the new certificates are in place with the desired naming pattern, you can [configure trust on your {{ecloud}} deployment](#configure-trust-deployment) to align with the updated names.
+After the new certificates are in place with the desired naming pattern, you can [configure trust on your {{ecloud}} deployment](#configure-trust-deployment) to align with the updated names.
