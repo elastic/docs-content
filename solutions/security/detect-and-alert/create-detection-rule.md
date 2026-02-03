@@ -22,21 +22,18 @@ To create a new detection rule, follow these steps:
 5. Set up rule actions (optional).
 6. Set up response actions (optional).
 
-::::{admonition} Requirements
-To create detection rules, you must have:
-
-* Access to data views, which requires the `Data View Management` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
-* Permissions to enable and view detections, manage rules, manage alerts, and preview rules. These permissions depend on the user role. Refer to [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) for more information.
-
-::::
-
-
 ::::{tip}
 * At any step, you can [preview the rule](/solutions/security/detect-and-alert/create-detection-rule.md#preview-rules) before saving it to see what kind of results you can expect.
 * To ensure rules don’t search cold and frozen data when executing, either configure the `excludedDataTiersForRuleExecution` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) (which applies to all rules in a space), or add a [Query DSL filter](/solutions/security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md) to individual rules. These options are only available if you're on the {{stack}}.
 
 ::::
 
+## Detection rule requirements
+
+To create detection rules, you must have:
+
+* Access to data views, which requires the `Data View Management` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
+* Permissions to enable and view detections, manage rules, manage alerts, and preview rules. These permissions depend on the user role. Refer to [Detections requirements](/solutions/security/detect-and-alert/detections-privileges.md) for more information.
 
 ::::{note}
 Additional configuration is required for detection rules using cross-cluster search. Refer to [Cross-cluster search and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md).
