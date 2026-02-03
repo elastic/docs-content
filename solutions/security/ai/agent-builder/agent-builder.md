@@ -56,15 +56,15 @@ You can create a workflow that:
  - Sends any discovered attacks to the Threat Hunting agent to analyze and create a report 
  - Sends that report to a third-party incident management platform and sends alerts to your team
 
-### Example 3: Triage an alert with a workflow
+### Example 2: Triage an alert with a workflow
 You can create a workflow that:
 
-- Runs manually on an alert of your choosing
+- Triggers automatically when a rule generates an alert
 - Provides the alert data to the Threat Hunting agent with a pre-defined prompt such as `analyze this alert, check whether it's connected to existing attacks, and identify all implicated entities`
 - Creates a report based on what it finds and sends it to a Slack channel
 - Suggests next steps
 
-### Example 3: Alert an triage using an Agent Builder prompt
+### Example 3: Alert triage using an Agent Builder prompt
 When conducted manually, alert triage in {{elastic-sec}} typically includes multiple steps which consume analyst time:
 
 - Receive alert
