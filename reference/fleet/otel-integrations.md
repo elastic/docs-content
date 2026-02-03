@@ -47,8 +47,8 @@ This type of hybrid data collection provides flexibility without locking you int
 
 For examples on using a hybrid agent configuration to collect telemetry, refer to:
 
-- [Collect nginx logs and metrics with a hybrid {{fleet}}-managed {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
-- [Collect nginx logs and metrics with a hybrid standalone {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md)
+- [Collect NGINX logs and metrics with a hybrid {{fleet}}-managed {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
+- [Collect NGINX logs and metrics with a hybrid standalone {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md)
 
 ## Configure OpenTelemetry input packages [configure-otel-input-packages]
 
