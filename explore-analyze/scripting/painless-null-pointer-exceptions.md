@@ -73,7 +73,7 @@ For details, refer to the following sample error, solution, and the result when 
     ]
   },
   "status": 400
-}á
+}
 ```
 
 ### Problematic code
