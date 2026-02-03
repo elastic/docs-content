@@ -566,6 +566,7 @@ toc:
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/detections-requirements.md
+          - file: security/detect-and-alert/detections-privileges.md
           - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/about-detection-rules.md
           - file: security/detect-and-alert/create-detection-rule.md

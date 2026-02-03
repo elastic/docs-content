@@ -3,12 +3,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/value-lists-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-value-lists-exceptions.html
 applies_to:
-  stack: all
+  stack: ga all
   serverless:
-    security: all
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
+description: Create and manage value lists to define exceptions for detection rules in Elastic Security.
 ---
 
 # Create and manage value lists [value-lists-exceptions]
@@ -27,6 +28,10 @@ After creating value lists, you can use `is in list` and `is not in list` operat
 ::::{tip}
 You can also use a value list as the [indicator match index](create-detection-rule.md#indicator-value-lists) when creating an indicator match rule.
 ::::
+
+## Value lists requirements
+
+To manage value lists, your role must have the required privileges. Refer to [Manage exception value lists](/solutions/security/detect-and-alert/detections-privileges.md#manage-value-lists) for details.
 
 ## Create value lists [create-value-lists]
 
@@ -107,3 +112,18 @@ You can also edit value lists while creating and managing exceptions that use va
         :alt: Import value list flyout with action buttons highlighted
         :screenshot:
         :::
+
+## Configure upload limits [adv-list-settings]
+
+
+You can configure limits for uploading value lists to {{elastic-sec}} by editing your [`kibana.yml`](/deploy-manage/stack-settings.md) [configuration file](kibana://reference/configuration-reference/general-settings.md) or your {{kib}} cloud instance.
+
+`xpack.lists.maxImportPayloadBytes`
+:   Maximum bytes allowed for uploading value lists. Default: `9000000`. Maximum: `100000000`.
+
+    For every 10 megabytes, reserve an additional 1 gigabyte of RAM for {{kib}}. For example, a {{kib}} instance with 2 GB of RAM can support up to 20 MB (`20000000`).
+
+`xpack.lists.importBufferSize`
+:   Buffer size for uploading value lists. Default: `1000`.
+
+    Increase this value to improve throughput (uses more memory), or decrease it to reduce memory usage (slower uploads).
