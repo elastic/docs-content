@@ -13,7 +13,7 @@ When you access subfields using the doc accessor, using incorrect syntax or tryi
 
 Follow these guidelines to avoid nested field access errors in your Painless scripts:
 
-* Use full dot notation as a single string: `doc['parent.child’]` rather than `doc['parent.['child’].`  
+* Use full dot notation as a single string: `doc['parent.child’]` rather than `doc['parent.['child’]`.
 * Always validate field existence using `.size() > 0` before accessing subfield values.  
 * Field validation is crucial when documents have varying object structures.
 
