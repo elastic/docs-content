@@ -555,6 +555,9 @@ toc:
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
+          - file: security/ai/agent-builder.md
+            children:
+              - file: security/ai/agent-builder/ab-workflows.md
           - file: security/ai/attack-discovery.md
           - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
