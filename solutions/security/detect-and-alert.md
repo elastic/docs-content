@@ -88,7 +88,7 @@ Depending on your privileges and whether detection system indices have already b
     If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
 
     ::::{note}
-    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.encryptedSavedObjects.encryptionKey`](/solutions/security/detect-and-alert.md#detections-permissions) setting has not been added to the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For more information, refer to [Configure self-managed {{stack}} deployments](/solutions/security/detect-and-alert/detections-requirements.md#detections-on-prem-requirements).
+    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.encryptedSavedObjects.encryptionKey`](/solutions/security/detect-and-alert.md#detections-permissions) setting has not been added to the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For more information, refer to [](/solutions/security/detect-and-alert/detections-requirements.md) for self-managed {{stack}} deployments.
     ::::
 
 * **`Detection engine permissions required`**
@@ -96,7 +96,7 @@ Depending on your privileges and whether detection system indices have already b
     If you get this message, you do not have the [required privileges](/solutions/security/detect-and-alert.md#detections-permissions) to view the **Detections** feature, and you should contact your {{kib}} administrator.
 
     ::::{note}
-    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.security.enabled`](/solutions/security/detect-and-alert.md#detections-permissions) setting is not enabled in the `elasticsearch.yml` file. For more information, refer to [Configure self-managed {{stack}} deployments](/solutions/security/detect-and-alert/detections-requirements.md#detections-on-prem-requirements).
+    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.security.enabled`](/solutions/security/detect-and-alert.md#detections-permissions) setting is not enabled in the `elasticsearch.yml` file. For more information, refer to [](/solutions/security/detect-and-alert/detections-requirements.md) for self-managed {{stack}} deployments.
     ::::
 
 
