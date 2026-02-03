@@ -58,7 +58,7 @@ To customize the retention period for the different data streams, [create a new 
     POST /cluster-logs-<version>/_rollover/
     ```
 
-    After the rollover completes, a new backing index is created using the cloned index template and is associated with the custom ILM policy. You can verify this by checking the data stream information:
+    After the rollover completes, a new backing index is created using the new index template and is associated with the custom ILM policy. You can verify this by checking the data stream information:
 
     ```console
     GET _data_stream/cluster-logs-8.18.8
@@ -97,7 +97,7 @@ To customize the retention period for the different data streams, [create a new 
     ```
     1. Previous backing indices remain associated with the original ILM policy.
     2. The `ilm_policy` for the new backing index and the data stream should match the custom ILM policy.
-    3. The `template` value should match the name of the cloned index template.
+    3. The `template` value should match the name of the new index template.
     :::::
 
 ::::{important}
