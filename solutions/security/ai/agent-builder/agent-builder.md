@@ -8,9 +8,11 @@ products:
   - id: cloud-serverless
 ---
 
-# Agent Builder
+# Agent Builder for Elastic Security
 
-[Agent Builder](/explore-analyze/ai-features/agent-builder/get-started.md) is Elastic's agent creation platform that integrates into {{kib}} and allows you to design custom agents with specialized tool access. For {{elastic-sec}} specifically, it can provide automation capabilities for a wide range of tasks to help your team achieve more. 
+[Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) is Elastic's AI platform which includes a natural language chat interface, built-in agents and Elastic tools, and allows creating custom agents and tools for your use case. You can manage and interact with your agents using the {{kib}} UI or work programmatically. 
+
+For {{elastic-sec}} specifically, it can provide automation capabilities for a wide range of tasks to help your team achieve more. 
 
 You can create custom agents equipped with additional tools, and create Elastic Workflows that can automatically isolate hosts, create cases, send notification messages to external platforms, and more. 
 
@@ -25,13 +27,44 @@ Agent Builder features a pre-built [Threat Hunting agent](/explore-analyze/ai-fe
 
 You can customize it by giving it access to additional built-in tools, or to your own [custom tools](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md). 
 
-The three types of Agent Builder tools that you can create are `{{esql}}`, `workflow`, and `index search`:
+To learn more about the types of Agent Builder tools that you can create, refer to [](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
 
-- **{{esql}}** tools allow agent builder to use specific queries that you've defined, with parameter values based on the data it's using. Use this to precisely find specific information, or to automate repetitive tasks.
-- **Index search** tools allow agent builder to search for relevant data in specific indices. Use these to help agent builder leverage data such as threat hunting reports, on-call rotations, your organization's physical addresses, and anything else you consider relevant.
-- **Workflow** tools let agent builder run specific workflows. Use these to automate complex, multi-step response actions, or to orchestrate across systems.
+## Use Agent Builder and Workflows together
 
-## Example: Alert triage 
+[Workflows](/explore-analyze/workflows.md) lets you augment your team's capabilities for responding to threats by setting up automated processes that use a wide range of tools, without needing an external automation platform. 
+
+There are two main ways to use workflows alongside Agent Builder:
+
+- **Enable an agent to run workflows:** You can allow custom agents to independently start workflows. For more information, refer to [](/explore-analyze/ai-features/agent-builder/tools/workflow-tools.md).
+- **Add AI-powered steps to your workflows:** AI steps introduce reasoning and language understanding into workflows. Use AI steps to process natural language, make context-aware decisions, or operate through agents. For more information, refer to [](/explore-analyze/workflows/steps.md)
+
+In combination, these tools can help:
+
+- Reduce alert fatigue by automating responses to reduce manual triage
+- Automate routine tasks
+- Eliminate the need for external automation tools
+
+
+## Examples: Agent Builder and Elastic Workflows
+
+This section provides conceptual examples of what you can achieve with Agent Builder workflows. For specific examples of workflows, including complete annotated code samples, refer to the [elastic/workflows/security](https://github.com/elastic/workflows/tree/main/workflows/security) GitHub repo.
+
+### Example 1: Run Attack Discovery using a workflow
+You can create a workflow that:
+
+ - Runs periodically, and initiates Attack Discovery when it runs
+ - Sends any discovered attacks to the Threat Hunting agent to analyze and create a report 
+ - Sends that report to a third-party incident management platform and sends alerts to your team
+
+### Example 3: Triage an alert with a workflow
+You can create a workflow that:
+
+- Runs manually on an alert of your choosing
+- Provides the alert data to the Threat Hunting agent with a pre-defined prompt such as `analyze this alert, check whether it's connected to existing attacks, and identify all implicated entities`
+- Creates a report based on what it finds and sends it to a Slack channel
+- Suggests next steps
+
+### Example 3: Alert an triage using an Agent Builder prompt
 When conducted manually, alert triage in {{elastic-sec}} typically includes multiple steps which consume analyst time:
 
 - Receive alert
