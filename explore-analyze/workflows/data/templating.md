@@ -264,32 +264,19 @@ The workflow engine provides context variables that you can access using templat
 | `workflow.id` | Unique identifier of the workflow definition | `"abc-123"` |
 | `execution.id` | Unique identifier for this specific run | `"exec-456"` |
 | `execution.startedAt` | ISO timestamp when execution began | `"2024-01-15T10:30:00Z"` |
-| `event` | Data from the trigger that started the workflow | Varies by trigger type |
-| `inputs.<name>` | Input parameters passed at trigger time | Defined in workflow |
-| `consts.<name>` | Constants defined at the workflow level | Defined in workflow |
-| `steps.<step_name>.output` | Output data from a completed step | Varies by step type |
-| `steps.<step_name>.error` | Error details if a step failed | Error object |
+| `event` | Data from the trigger that started the workflow | `{ "user": { "id": "u-123" }, "params": { "target": "host-1" } }` |
+| `inputs.<name>` | Input parameters passed at trigger time | `inputs.severity` resolves to `"high"` |
+| `consts.<name>` | Constants defined at the workflow level | `consts.api_url` resolves to `"https://api.example.com"` |
+| `steps.<step_name>.output` | Output data from a completed step | `steps.search.output.hits.total` resolves to `42` |
+| `steps.<step_name>.error` | Error details if a step failed | `{ "message": "Connection timeout", "code": "ETIMEDOUT" }` |
 
 ### Foreach loop variables
 
-These variables are only available inside `foreach` steps:
-
-| Variable | Description |
-|----------|-------------|
-| `foreach.item` | The current item being processed |
-| `foreach.index` | Zero-based index of the current iteration |
-| `foreach.total` | Total number of items in the array |
-| `foreach.items` | The complete array being iterated |
+Inside `foreach` steps, you have access to additional context variables such as `foreach.item`, `foreach.index`, and more. Refer to [Foreach context variables](/explore-analyze/workflows/steps/foreach.md#context-variables) for details.
 
 ### Trigger event data
 
-The `event` variable contains data from the trigger. Its structure depends on the trigger type:
-
-| Trigger type | Event contents |
-|--------------|----------------|
-| Manual | User information and any parameters passed |
-| Scheduled | Execution time and schedule information |
-| Alert | Complete alert data including fields, severity, and rule information |
+The `event` variable contains data from the trigger. Its structure depends on the trigger type. Refer to [Trigger context](/explore-analyze/workflows/triggers.md#trigger-context) to learn what data each trigger type provides.
 
 Example accessing alert data:
 
