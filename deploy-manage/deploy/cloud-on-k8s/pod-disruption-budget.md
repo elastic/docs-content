@@ -56,7 +56,7 @@ In the {{es}} specification, you can change the default behavior in two ways. By
 
 You can fully override the default PodDisruptionBudget by specifying your own PodDisruptionBudget in the {{es}} spec.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
