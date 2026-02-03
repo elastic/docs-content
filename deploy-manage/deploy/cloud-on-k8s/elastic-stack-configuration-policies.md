@@ -342,7 +342,7 @@ If multiple policies have the same `weight` value and target the same resource, 
 ::::
 
 This allows you to create a hierarchy of policies, for example:
-* Base policies with lower weights (e.g., `weight: 0`) that provide default configurations
+* Base policies with lower weights (for example, `weight: 0`) that provide default configurations
 * Override policies with higher weights (e.g., `weight: 100`) that provide environment-specific or cluster-specific configurations and overwrite the base policy settings
 
 Example of using `weight` to create a policy hierarchy:
