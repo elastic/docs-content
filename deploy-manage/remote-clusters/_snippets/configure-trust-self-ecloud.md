@@ -1,6 +1,6 @@
 Follow these steps to configure trust in your self-managed cluster:
 
-1. Trust the [deployment CA you downloaded previously](#download-ca) by either configuring the [setting](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) `xpack.security.transport.ssl.certificate_authorities` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) or by [adding it to the trust store](/deploy-manage/security/different-ca.md).
+1. Trust the [deployment CA you downloaded previously](#download-ca) by either configuring the [setting](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) `xpack.security.transport.ssl.certificate_authorities` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md), or by [adding it to the trust store](/deploy-manage/security/different-ca.md).
 
 2. Configure trust restrictions in the self-managed cluster:
 
