@@ -35,7 +35,7 @@ The following table compares features available in Observability Complete and Ob
 | **[Service level objectives (SLO)](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ❌ |
 | **[Infrastructure and hosts](/solutions/observability/infra-and-hosts.md)** | ✅ | ❌ |
 | **[APM](/solutions/observability/apm/index.md)** | ✅ | ❌ |
-| **[AI Assistant](/solutions/observability/observability-ai-assistant.md)** including Elastic Managed LLM | ✅ | ❌ |
+| **[AI Assistant](/solutions/observability/observability-ai-assistant.md)** including Elastic Managed LLMs | ✅ | ❌ |
 | **[Custom knowledge bases](/solutions/observability/observability-ai-assistant.md#obs-ai-kb-ui)** | ✅ | ❌ |
 | **[Synthetics testing and browser experience monitoring](/solutions/observability/synthetics/index.md)** | ✅ | ❌ |
 

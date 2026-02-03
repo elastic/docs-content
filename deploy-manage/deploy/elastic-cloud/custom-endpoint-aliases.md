@@ -40,7 +40,7 @@ To add an alias to an existing deployment:
 To remove an alias from your deployment, or if you want to re-assign an alias to another deployment, follow these steps:
 
 1. From the **Hosted deployments** menu, select a deployment.
-2. Under *Connection alias**, select **Edit**.
+2. Under **Connection alias**, select **Edit**.
 3. Remove the text from the **Connection alias** text box.
 4. Select **Update alias**.
 
