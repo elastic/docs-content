@@ -19,7 +19,7 @@ In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM 
 * If you're using the recommended integration in this guide, {{elastic-defend}}, then: 
   * Ensure you have the minimum [system requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) to install {{elastic-defend}}. 
   * Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). At the least, you need `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
-* We recommend `manage` and `write` access to manage rules and alerts. Refer to [Detection requirements](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) for the required cluster, index, and space privileges. 
+* We recommend `manage` and `write` access to manage rules and alerts. Refer to [Detection requirements](/solutions/security/detect-and-alert/detections-privileges.md) for the required cluster, index, and space privileges. 
 
 ## Add data using {{elastic-defend}}
 

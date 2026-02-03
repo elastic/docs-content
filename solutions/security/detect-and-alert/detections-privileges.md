@@ -124,7 +124,7 @@ Index privileges
     - {applies_to}`stack: ga 9.3` `All` for the `Rules, Alerts, and Exceptions` feature
     - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` `Read` for the `Rules, Alerts, and Exceptions` feature and `All` for the `Exceptions` subfeature
 
-## Manage exception value lists
+## Manage value lists [detections-privileges-manage-value-lists]
 
 Cluster privileges
 :   `manage`

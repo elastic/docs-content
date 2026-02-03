@@ -85,7 +85,7 @@ Depending on your privileges and whether detection system indices have already b
 
 * **`Let’s set up your detection engine`**
 
-    If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) for a list of all the requirements.
+    If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
 
     ::::{note}
     For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.encryptedSavedObjects.encryptionKey`](/solutions/security/detect-and-alert.md#detections-permissions) setting has not been added to the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For more information, refer to [Configure self-managed {{stack}} deployments](/solutions/security/detect-and-alert/detections-requirements.md#detections-on-prem-requirements).
