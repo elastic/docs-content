@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-standalone-monitor-nginx.html
+applies_to:
+  deployment:
+    ess: ga
 products:
   - id: fleet
   - id: elastic-agent

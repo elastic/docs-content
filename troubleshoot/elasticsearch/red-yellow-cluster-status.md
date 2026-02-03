@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/red-yellow-cluster-status.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -41,6 +36,11 @@ GET _cluster/health?filter_path=status,*_shards
 
 A healthy cluster has a green `status` and zero `unassigned_shards`. A yellow status means only replicas are unassigned. A red status means one or more primary shards are unassigned.
 
+:::{tip}
+:applies_to: {ece: ga, ess: ga}
+For {{ece}} and {{ech}} deployments, you can also check cluster health from the deployment's **Monitoring** page in the {{ecloud}} Console or ECE Cloud UI. The Monitoring page provides detailed information on health issues, impacted areas, and troubleshooting support. Refer to [Cloud deployment health](/deploy-manage/monitor/cloud-health-perf.md#ec-es-cluster-health) for more information.
+:::
+
 **View unassigned shards**
 
 To view unassigned shards, use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
@@ -72,7 +72,7 @@ A shard can become unassigned for several reasons. The following tips outline th
 
 ### Single node cluster [fix-cluster-status-only-one-node]
 
-{{es}} will never assign a replica to the same node as the primary shard. A single-node cluster will always have yellow status. To change to green, set [number_of_replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) to 0 for all indices.
+{{es}} will never assign a replica to the same node as the primary shard. A single-node cluster will always have yellow status. To change to green, set [number_of_replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) to 0 for all indices. Only do this if you understand the impact of running without replicas (reduced fault tolerance and recovery options).
 
 Therefore, if the number of replicas equals or exceeds the number of nodes, some shards won’t be allocated.
 
@@ -171,7 +171,7 @@ If your nodes are running low on disk space, you have a few options:
 
 
 ::::{important}
-This is usually a temporary solution and may cause instability if disk space is not freed up.
+Increasing this watermark is usually a temporary solution and may cause instability if disk space is not freed up.
 
 ::::
 
@@ -179,7 +179,31 @@ This is usually a temporary solution and may cause instability if disk space is 
 
 ### Re-enable shard allocation [fix-cluster-status-reenable-allocation]
 
-You typically disable allocation during a [restart](../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) or other cluster maintenance. If you forgot to re-enable allocation afterward, {{es}} will be unable to assign shards. To re-enable allocation, reset the `cluster.routing.allocation.enable` cluster setting.
+You typically disable shard allocation during a [restart](../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) or other cluster maintenance to prevent a recovery cascade while a node is temporarily out of the cluster. If allocation is not re-enabled afterward, {{es}} cannot assign shards.
+
+Verify whether allocation is disabled using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):
+
+```console
+GET _cluster/settings?include_defaults=true&filter_path=*.cluster.routing.allocation.enable
+```
+
+If allocation is not enabled, the response shows an override from the default value at either the `persistent` or `transient` level, for example:
+
+```
+{
+  "persistent": {
+    "cluster": {"routing": {"allocation": {"enable": "none" } } }
+  },
+  "defaults": {
+    "cluster": {"routing": {"allocation": {"enable": "all" } } } }
+}
+```
+
+::::{note}
+Setting [`cluster.routing.allocation.enable`](/troubleshoot/elasticsearch/allow-all-cluster-allocation.md) only affects shard allocations going forward but does not affect current allocations. So overriding this to `none` does not block existing ingestion. However, new indices cannot be created when overrode, including indices induced from [ILM Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md).
+::::
+
+To re-enable allocation, reset the `cluster.routing.allocation.enable` cluster setting:
 
 ```console
 PUT _cluster/settings
@@ -188,6 +212,12 @@ PUT _cluster/settings
     "cluster.routing.allocation.enable" : null
   }
 }
+```
+
+After re-enabling allocation, the cluster automatically resumes shard assignment, recovery, and rebalancing. You can verify this using the [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health):
+
+```console
+GET _cluster/health
 ```
 
 See [this video](https://www.youtube.com/watch?v=MiKKUdZvwnI) for walkthrough of troubleshooting "no allocations are allowed".

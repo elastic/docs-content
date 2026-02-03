@@ -27,6 +27,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 * [Node count and size](#ec-node-count-size)
 * [Repository analysis API is unavailable in {{ecloud}}](#ec-repository-analyis-unavailable)
+* [Service status](#ec-service-status)
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
 
@@ -38,6 +39,7 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
 
 * Due to a known issue with the {{stack}}, certain upgrade paths to and from version 8.17 are currently blocked or disabled. Review [this KB article](https://support.elastic.co/knowledge/7c3ad709) for more guidance on the known issue. Additionally, review [this KB article](https://support.elastic.co/knowledge/e87d76a5) for detailed information regarding the specific versions affected. 
 
+* Due to a known issue with the {{stack}}, the upgrade path from 9.1.10 to 9.2.4 is unavailable. Refer to [Elasticsearch known issues](elasticsearch://release-notes/known-issues.md#elasticsearch-9.2.4-known-issues) for more information on the underlying issue.
 
 
 ## Security [ec-restrictions-security]
@@ -151,3 +153,7 @@ To make a seamless migration, after restoring from a snapshot there are some add
 ## Repository analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
 
 * The {{es}} [Repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+
+## Service status [ec-service-status]
+
+* To ensure we can continue evolving our status page to best serve our customers, we cannot guarantee consistency of API implementation or component API identifiers. However, we communicate changes which might impact status page subscribers on a best-effort basis. Review [Service status](../../cloud-organization/service-status.md#service-status-support-limitations) for more guidance.

@@ -47,7 +47,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | Custom plugins and bundles | Available | Available | No |
 | [Self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) | Available | Limited | Limited |
 | [{{es}}-Hadoop integration](elasticsearch-hadoop://reference/index.md) | Available | Available | No |
-| [Cross cluster search (CCS)](/solutions/search/cross-cluster-search.md) | Available | Available | [Planned](https://www.elastic.co/cloud/serverless/roadmap) (as cross project search) |
+| [Cross cluster search (CCS)](/explore-analyze/cross-cluster-search.md) | Available | Available | [Planned](https://www.elastic.co/cloud/serverless/roadmap) (as cross project search) |
 | [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Available | Available | [Planned](https://www.elastic.co/cloud/serverless/roadmap) |
 
 ## Development and testing features

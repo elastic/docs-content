@@ -20,8 +20,8 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 
 ## Requirements
 
-- To use Elastic's AI-powered features, you need an appropriate license and feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
-- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). Elastic Managed LLM is available by default if your license supports it.
+- To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
+- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
 
 ## AI-powered features on the Elastic platform
 
@@ -35,8 +35,8 @@ To learn more, refer to:
 
 - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md):
 A managed service that runs {{infer}} without the need of deploying a model, or managing infrastructure and resources.
-- [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm.md):
-This connector enables you to use built-in LLMs vetted for GenAI product features across the platform.
+- [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md):
+Built-in LLMs vetted for GenAI product features across the platform.
 - [The {{infer}} API](/explore-analyze/elastic-inference/inference-api.md):
 This general-purpose API enables you to perform {{infer}} operations using EIS, your own models, or third-party services.
 
@@ -71,7 +71,7 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### Agent Builder
 
-[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
 ### AI assistant for {{es}}
 
@@ -79,15 +79,30 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### Playground
 
-[Playground](/solutions/search/rag/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
+[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
 
-### Model context protocol
+### Model Context Protocol (MCP) servers
 
-The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
+Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ deployments and Serverless projects, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, you can use the `mcp-elasticsearch` server which has a limited tool set.
+
+#### {{agent-builder}} MCP server
+```{applies_to}
+stack: preview 9.2
+elasticsearch: preview
+```
+Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes all built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
+
+#### {{es}} MCP server
+```{applies_to}
+stack: deprecated 9.2
+serverless: deprecated
+```
+
+If you're running earlier versions of {{es}} without Agent Builder, you can use [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server). This MCP server enables connecting agents to your {{es}} data and allows you to interact with your {{es}} indices through natural language conversations, though with a more limited tool set compared to the Agent Builder MCP server.
 
 ## AI-powered features in {{observability}}
 
-{{observability}}'s AI-powered features all require an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
+{{observability}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
 
 ### AI assistant for {{observability}}
 
@@ -104,20 +119,16 @@ The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI
 
 ## AI-powered features in {{elastic-sec}}
 
-{{elastic-sec}}'s AI-powered features all require an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
+{{elastic-sec}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
 
 ### AI Assistant for Security
 
 [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps.
 
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
-
 
 ### Attack Discovery
 
 [Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
-
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 
 
 ### Automatic Migration
@@ -127,14 +138,10 @@ This feature requires an [LLM connector](/solutions/security/ai/set-up-connector
 * Splunk rules
 * Splunk dashboards
 
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
-
 
 ### Automatic Import
 
 [Automatic Import](/solutions/security/get-started/automatic-import.md) helps you ingest data from sources that do not have prebuilt Elastic integrations. It uses AI to parse a sample of the data you want to ingest, and creates a new integration specifically for that type of data.
-
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 
 
 ### Automatic Troubleshooting
@@ -144,4 +151,11 @@ This feature requires an [LLM connector](/solutions/security/ai/set-up-connector
 * **Policy responses**: Detect warnings or failures in {{elastic-defend}}’s integration policies.
 * **Third-party antivirus (AV) software**: Identify installed third-party antivirus (AV) products that might conflict with {{elastic-defend}}.
 
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+
+### Entity summary
+```yaml {applies_to}
+stack: ga 9.3
+serverless: ga
+```
+
+[Entity summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-summary), available in the entity details flyout, uses AI to generate a summary of a user's or host's security context. It aggregates information such as risk scores, asset criticality, vulnerabilities, and {{ml}} anomalies to provide a consolidated view of the entity's security posture. The summary helps you prioritize investigations and identify recommended next steps.

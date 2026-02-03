@@ -1,0 +1,48 @@
+# Google Sheets to CSV Configuration
+#
+# This file defines which Google Sheet to sync and how to transform the data
+
+# Google Sheet source
+source:
+  # Google Sheets URL or spreadsheet ID
+  # SECURITY: For public repos, use environment variable substitution
+  # to avoid exposing the sheet URL
+  #
+  # Option 1: Environment variable (recommended for public repos)
+  # Set GOOGLE_SHEET_URL as a GitHub Secret
+  # sheet_url: "${GOOGLE_SHEET_URL}"
+  #
+  # Option 2: Direct value (for testing/private repos)
+  sheet_url: "${GOOGLE_SHEET_URL}"
+
+  # Name of the tab/sheet within the spreadsheet
+  # Can also use environment variable if needed
+  tab_name: "Public Model List"
+
+# Column configuration
+# Define which columns to include in the CSV and optionally rename them
+columns:
+  - source: "Author"
+  - source: "Name"
+  - source: "ID"
+  - source: "Release Status"
+  - source: "Stack Version"
+  - source: "Input Modalities"
+  - source: "Output Modalities"
+  - source: "EOL Date"
+  - source: "Data Retention Period (Days)"
+  - source: "Data Used To Train Models?"
+  - source: "Model Card"
+  - source: "Provider Terms"
+  - source: "Inference Regions"
+
+# Output configuration
+output:
+  # Output CSV filename
+  filename: "models.csv"
+
+  # Output directory (relative to repo root)
+  directory: "explore-analyze/elastic-inference"
+
+  # CSV delimiter (default: comma)
+  delimiter: ","

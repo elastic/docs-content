@@ -146,24 +146,26 @@ A standardized set of attributes is specified in [Browser resource semantic conv
 
 To define the resource, you need the following dependencies:
 
+- `@opentelemetry/resources`: This package provides information about the SDK to be placed in the resource. This information helps {{kib}} identify the service type and the SDK that generated the telemetry.
 - `@opentelemetry/resources`: This package helps you to define and work with resources because a Resource is not a plain object and has some properties (like immutability) and constraints.
 - `@opentelemetry/browser-detector`: Detectors help you to define a resource by querying the runtime and environment and resolving some attributes. In this case, the browser detector resolves the language, brands, and mobile attributes of the browser namespace.
 
 To install the dependencies, run the following command:
 
 ```bash
-npm install @opentelemetry/resources @opentelemetry/browser-detector
+npm install @opentelemetry/core @opentelemetry/resources @opentelemetry/browser-detector
 ```
 
 After the dependencies are installed, define the resource for your instrumentation with the following code:
 
 :::{dropdown} Resource definition
 ```javascript
+import { SDK_INFO } from '@opentelemetry/core';
 import { resourceFromAttributes, detectResources } from '@opentelemetry/resources';
 import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
 
 const detectedResources = detectResources({ detectors: [browserDetector] });
-let resource = resourceFromAttributes(OTEL_RESOURCE_ATTRIBUTES);
+let resource = resourceFromAttributes({ ...OTEL_RESOURCE_ATTRIBUTES, ...SDK_INFO});
 resource = resource.merge(detectedResources);
 ```
 :::
@@ -387,7 +389,7 @@ After the dependencies are installed, you can wrap the setup in a function with 
 ```javascript
 // file: telemetry.js
 import { diag, DiagConsoleLogger, trace, metrics } from '@opentelemetry/api';
-import { diagLogLevelFromString } from '@opentelemetry/core';
+import { diagLogLevelFromString, SDK_INFO } from '@opentelemetry/core';
 import { resourceFromAttributes, detectResources } from '@opentelemetry/resources';
 import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
@@ -422,8 +424,9 @@ export function initOpenTelemetry(config) {
   diag.info('OTEL bootstrap', config);
 
   // Resource definition
+  const resourceAttributes = { ...config.resourceAttributes, ...SDK_INFO };
   const detectedResources = detectResources({ detectors: [browserDetector] });
-  const resource = resourceFromAttributes(config.resourceAttributes)
+  const resource = resourceFromAttributes(resourceAttributes)
                               .merge(detectedResources);
 
   // Trace signal setup

@@ -29,11 +29,9 @@ Create a {{ml}} job to detect anomalous memory usage and network traffic automat
 
 After creating {{ml}} jobs, you cannot change the settings. You can recreate these jobs later. However, you will remove any previously detected anomalies.
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 1. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the **Anomaly detection** link at the top of the page.
@@ -58,8 +56,7 @@ After creating {{ml}} jobs, you cannot change the settings. You can recreate the
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. In your {{obs-serverless}} project, go to **Infrastructure** → **Infrastructure inventory** and click the **Anomaly detection** link at the top of the page.
 2. Under **Hosts** or **Kubernetes Pods**, click **Enable** to create a {{ml}} job.

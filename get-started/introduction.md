@@ -21,6 +21,10 @@ Whether you're building a search experience, monitoring your infrastructure, or 
 | Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
 | Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
 
+:::{note}
+The core [{{es}} search capabilities](/solutions/search.md) are available across all deployment types, solutions, and project types. The [{{es}} solution](/solutions/elasticsearch-solution-project.md) adds UI tools on top of these capabilities to help you build search-powered applications faster.
+:::
+
 :::{tip}
 Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
 :::

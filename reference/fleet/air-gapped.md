@@ -2,6 +2,10 @@
 navigation_title: Air-gapped environments
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/air-gapped.html
+applies_to:
+  deployment:
+    ece: ga
+    self: ga
 products:
   - id: fleet
   - id: elastic-agent

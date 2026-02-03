@@ -40,6 +40,7 @@ You can explore and manage billing, as well as your {{ecloud}} subscription, fro
 
 * [Add your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md)
 * [View your billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md)
+* [Manage your notifications](/deploy-manage/cloud-organization/billing/manage-billing-notifications.md)
 * [Manage your subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md)
 * [Monitor and analyze your account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md)
 
