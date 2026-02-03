@@ -821,7 +821,7 @@ Host isolation involves quarantining a host from the network to prevent further 
 You can preview any custom or prebuilt rule to find out how noisy it will be. For a custom rule, you can then adjust the rule’s query or other settings.
 
 ::::{note}
-To preview rules, you must have the appropriate user role. Refer to [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) for more information.
+To preview rules, you must have the appropriate user role. Refer to [](/solutions/security/detect-and-alert/detections-privileges.md) for more information.
 ::::
 
 

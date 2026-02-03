@@ -39,7 +39,7 @@ After rules have started running, you can monitor their executions to verify the
 You can create and manage rules and alerts via the UI or the [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api).
 
 ::::{important}
-To make sure you can access Detections and manage rules, see [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md).
+To make sure you can access Detections and manage rules, see [](/solutions/security/detect-and-alert/detections-privileges.md).
 
 ::::
 
@@ -77,7 +77,7 @@ In addition, the following support restrictions are in place:
 
 ## Detections configuration and index privilege prerequisites [detections-permissions]
 
-[Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) provides detailed information on all the permissions required to initiate and use the Detections feature.
+[](/solutions/security/detect-and-alert/detections-requirements.md) provides detailed information on all the permissions required to initiate and use the Detections feature.
 
 ## Resolve UI error messages [_resolve_ui_error_messages]
 
