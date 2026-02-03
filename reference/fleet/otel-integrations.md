@@ -9,7 +9,7 @@ products:
   - id: elastic-agent
 ---
 
-# Collect OpenTelemetry data with {{agent}} integrations
+# Collect OpenTelemetry data with {{agent}} integrations [otel-integrations]
 
 {{fleet}} now supports installing {{agent}} integration packages for collecting and visualizing OpenTelemetry (OTel) data such as logs, metrics, and traces. To find the available OpenTelemetry integration packages, open the **Integrations** page in {{kib}}, then select the **OpenTelemetry** category.
 
@@ -30,7 +30,7 @@ When OTel data is collected using an OpenTelemetry input package, content packag
 OpenTelemetry input packages are used with {{fleet}} and {{agent}} running in default mode. They are distinct from [running {{agent}} as an EDOT Collector](/reference/fleet/otel-agent.md), and cannot be used on {{agent}} running in `otel` mode.
 :::
 
-## Hybrid agents [otel-integrations-hybrid-agents]
+## Hybrid agent policies [otel-integrations-hybrid-policies]
 
 You can configure {{agent}} policies to use both ECS-based integrations and OpenTelemetry input packages. This effectively turns enrolled {{agents}} into hybrid agents.
 
@@ -50,7 +50,7 @@ For examples on using a hybrid agent configuration to collect telemetry, refer t
 - [Collect NGINX logs and metrics with a hybrid {{fleet}}-managed {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
 - [Collect NGINX logs and metrics with a hybrid standalone {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md)
 
-## Configure OpenTelemetry input packages [configure-otel-input-packages]
+## Configure OpenTelemetry input packages [otel-integrations-input-packages]
 
 The installation and configuration of OpenTelemetry input packages are similar to those of ECS-based integrations, and allow you to specify the namespace, dataset name, data stream type, and more. For step-by-step instructions, refer to [Add an integration to an {{agent}} policy](/reference/fleet/add-integration-to-policy.md).
 

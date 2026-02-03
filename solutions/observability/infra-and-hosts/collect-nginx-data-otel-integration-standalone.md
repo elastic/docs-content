@@ -16,90 +16,26 @@ Follow this guide to learn how to configure a standalone {{agent}} on a Linux ho
 - NGINX logs with Elastic's [Nginx integration](https://www.elastic.co/docs/reference/integrations/nginx), based on the [Elastic Common Schema](ecs://reference/index.md) (ECS)
 - NGINX metrics with Elastic's [NGINX OpenTelemetry Input Package](https://www.elastic.co/docs/reference/integrations/nginx_otel_input), which uses the [`nginxreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nginxreceiver) OpenTelemetry (OTel) Collector receiver
 
-## Prerequisites
+## Prerequisites [collect-nginx-data-standalone-prereqs]
 
-:::::{applies-switch}
-
-::::{applies-item} serverless: preview
-* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
-* A user with the **Admin** role or higher-required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
-* {{agent}} 9.2 or later installed on a Linux host.
-* NGINX installed on the same Linux host.
+::::{include} _snippets/collect-nginx-data-prerequisites.md
 ::::
 
-::::{applies-item} stack: preview 9.2+
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
-* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
-* {{agent}} 9.2 or later installed on a Linux host.
-* NGINX installed on the same Linux host.
+## Configure the NGINX status endpoint [collect-nginx-data-standalone-status-endpoint]
+
+::::{include} _snippets/collect-nginx-data-status-endpoint.md
 ::::
 
-:::::
-
-## Configure the NGINX status endpoint
-
-The [`nginxreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nginxreceiver) OTel Collector receiver needs an endpoint that exposes NGINX status metrics.
-
-1. Make sure the [`ngx_http_stub_status_module`](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html) module is enabled.
-2. In your NGINX configuration file (for example, `/etc/nginx/nginx.conf`), add or modify the `location` block in the `server { ... }` block with the following:
-
-    ```nginx
-    location = /status {
-      stub_status;
-    }
-    ```
-
-3. Save the configuration and restart NGINX:
-
-    ```bash
-    sudo systemctl restart nginx
-    ```
-
-4. Verify that the endpoint is active:
-
-    ```bash
-    curl http://localhost:80/status <1>
-    ```
-    1. Replace the port number with the port specified in the `listen` directive in the NGINX configuration.
-
-    If the endpoint returns data, you are ready to set up {{agent}}.
-
-For more details, refer to [Configuring NGINX for Metric Collection](https://docs.nginx.com/nginx-amplify/nginx-amplify-agent/configuring-metric-collection/#metrics-from-stub_status).
-
-## Configure the hybrid standalone agent policy
+## Configure the hybrid standalone agent policy [collect-nginx-data-standalone-policy]
 
 TODO
 
-## Validate your data
+## Validate your data [collect-nginx-data-standalone-validate]
 
-After you apply the policy changes, validate that both the ECS-based logs and the OTel-based metrics are flowing in.
+::::{include} _snippets/collect-nginx-data-validate.md
+::::
 
-:::::::{stepper}
-
-::::::{step} Validate the log collection
-
-1. In {{kib}}, go to **Discover**, then filter the results using the KQL search bar.
-2. Search for NGINX data stream datasets such as `nginx.access` and `nginx.error`, or enter:
-
-   ```
-   data_stream.dataset : "nginx.access" or "nginx.error"
-   ```
-
-3. Go to **Dashboards**, then select **[Logs Nginx] Access and error logs** to view the dashboard installed with the Nginx integration.
-
-::::::
-
-::::::{step} Validate the metrics collection
-
-Go to **Dashboards**, then select **[Metrics Nginx OTEL] Overview** to view the dashboard for visualizing OTel-based metrics.
-
-This dashboard is provided by the NGINX OpenTelemetry Assets content package, installed automatically when data is ingested through the NGINX OpenTelemetry Input Package.
-
-::::::
-
-:::::::
-
-## Related pages
+## Related pages [collect-nginx-data-standalone-related]
 
 - [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md)
 - [Collect NGINX logs and metrics with a hybrid {{fleet}}-managed {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
