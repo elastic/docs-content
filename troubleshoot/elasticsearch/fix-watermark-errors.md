@@ -12,57 +12,101 @@ products:
 
 # Watermark errors [fix-watermark-errors]
 
+When a data node is reaching critical disk space usage, its [disk-based shard allocation watermark settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) will trigger to protect the node's disk functionality. The default watermark percentage thresholds, the summary of {{es}}'s response, and their corresponding {{es}} log are:
 
-When a data node is critically low on disk space and has reached the [flood-stage disk usage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage), the following error is logged: `Error: disk usage exceeded flood-stage watermark, index has read-only-allow-delete block`.
+* 75% `none`: The Cloud Deployment's {{es}} node's disk bar turns red, but {{es}} takes no action. {applies_to}`ece: ga` {applies_to}`ech: ga`
+* 85% [`low`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-low): {{es}} stops allocating replica shards and primary shards unless from newly-created indices to the affected node(s).
+    ```
+    low disk watermark [85%] exceeded on [NODE_ID][NODE_NAME] free: Xgb[X%], replicas will not be assigned to this node
+    ```
+* 90% [`high`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high): {{es}} rebalances shards away from the affected node(s).
+    ```
+    high disk watermark [90%] exceeded on [NODE_ID][NODE_NAME] free: Xgb[X%], shards will be relocated away from this node
+    ```
+* 95% [`flood-stage`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage)): {{es}} sets all indices on the affected node(s) to read-only. This is automatically reverted once the affected node’s high disk usage falls below high watermark. 
+    ```
+    flood-stage watermark [95%] exceeded on [NODE_ID][NODE_NAME], all indices on this node will be marked read-only
+    ```
 
-To prevent a full disk, when a node reaches this watermark, {{es}} [blocks writes](elasticsearch://reference/elasticsearch/index-settings/index-block.md) to any index with a shard on the node. If the block affects related system indices, {{kib}} and other {{stack}} features may become unavailable. For example, this could induce {{kib}}'s `Kibana Server is not Ready yet` [error message](/troubleshoot/kibana/error-server-not-ready.md).
+To prevent a full disk, when a node reaches `flood-stage` watermark, {{es}} [blocks writes](elasticsearch://reference/elasticsearch/index-settings/index-block.md) to any index with a shard on the affected node(s). If the block affects related system indices, {{kib}} and other {{stack}} features may become unavailable. For example, `flood-stage` can induce errors like:
 
-{{es}} will automatically remove the write block when the affected node’s disk usage falls below the [high disk watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high). To achieve this, {{es}} attempts to rebalance some of the affected node’s shards to other nodes in the same data tier.
+* {{kib}}'s `Kibana Server is not Ready yet` [error message](/troubleshoot/kibana/error-server-not-ready.md).
+* {{es}}'s ingest API's [reject the request](/troubleshoot/elasticsearch/rejected-requests.md) with HTTP 429 error bodies like:
+    ```json
+    {
+      "reason": "index [INDEX_NAME] blocked by: [TOO_MANY_REQUESTS/12/disk usage exceeded flood-stage watermark, index has read-only-allow-delete block];",
+      "type": "cluster_block_exception"
+    }
+    ```
+
+The following are some common setup issues leading to watermark errors:
+
+* Sudden ingestion of large volumes of data that consumes disk above peak load testing expectations. Refer to [Indexing performance considerations](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md) for guidance.
+* Inefficient index settings, unnecessary stored fields, and suboptimal document structures can increase disk consumption. Refer to [Tune for disk usage](/deploy-manage/production-guidance/optimize-performance/disk-usage.md) for guidance.
+* A high number of replicas can quickly multiply storage requirements, as each replica consumes the same disk space as the primary shard. Refer to [Index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) for details.
+* Oversized shards can make disk usage spikes more likely and slow down recovery and rebalancing. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md#shard-size-recommendation) for guidance.
+
+## Monitor disk usage [fix-watermark-errors-monitor]
 
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
+To track disk usage over time, enable monitoring using one of the following options, depending on your deployment type:
 
-## Context
+:::::::{applies-switch}
 
-Elasticsearch uses [disk-based shard allocation watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) to prevent disk overuse and protect against data loss. Until a node reaches the flood-stage watermark, indexing is not blocked and shards can continue to grow on disk. Default watermark thresholds and their effects:  
-- **75% (`none`)** – In the Cloud UI (ECE and ECH), the disk bar appears red. Elasticsearch takes no action.  
-- **85% (`low`)** – Stops allocating new primary or replica shards to the affected node(s).  
-- **90% (`high`)** – Moves shards away from the affected node(s).  
-- **95% (`flood-stage`)** – Sets all indices on the affected node(s) to read-only. This is automatically reverted once the node’s usage drops below the high watermark. Indexing on affected nodes stops.  
+::::::{applies-item} { ess:, ece: }
+* (Recommend) Enable [AutoOps](/deploy-manage/monitor/autoops.md).
+* Enable [logs and metrics](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page. You can also enable the [Disk usage threshold alert](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues.
+* From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) page's disk usage chart.
+::::::
+
+::::::{applies-item} { self:, eck: }
+* (Recommend) Enable [AutoOps](/deploy-manage/monitor/autoops.md).
+* Enable [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page. You can also enable the [Disk usage threshold alert](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues.
+::::::
+
+:::::::
 
 
 ## Monitor rebalancing [fix-watermark-errors-rebalance]
 
-To verify that shards are moving off the affected node until it falls below high watermark, use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) and [cat recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery):
+To verify that shards are moving off the affected node until it falls below high watermark, use the following {{es}} API's:
 
-```console
-GET _cat/shards?v=true
+* [Cluster health status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) to check `relocating_shards`.
 
-GET _cat/recovery?v=true&active_only=true
-```
+    ```console
+    GET _cluster/health
+    ```
+    
+* [CAT recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery) to check the count of recoverying shards and their migrated `bp` bytes percent of `tb` total bytes.
 
-If shards remain on the node keeping it about high watermark, use the [cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) to get an explanation for their allocation status.
+    ```console
+    GET _cat/recovery?v=true&expand_wildcards=all&active_only=true&h=time,tb,bp,top,ty,st,snode,tnode,idx,sh&s=time:desc
+    ```
 
-```console
-GET _cluster/allocation/explain
-{
-  "index": "my-index",
-  "shard": 0,
-  "primary": false
-}
-```
+If shards remain on the node keeping it above high watermark, use the following {{es}} API's:
 
+* [CAT shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) to determine which shards are hosted on the node.
 
-## Common causes of watermark errors
+    ```console
+    GET _cat/shards?v=true
+    ```
 
-Watermark errors occur when a node’s disk usage exceeds the configured thresholds (`low`, `high`, or `flood-stage`). While these thresholds protect cluster stability, they can be triggered by several underlying factors including:  
+* [Cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) to get an explanation for the chosen shard's allocation status.
 
-* Sudden ingestion of large volumes of data, often referred to as large indexing bursts, can quickly consume disk space, especially if the cluster is not sized for peak loads. Refer to [Indexing performance considerations](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md) for guidance.  
-* Inefficient index settings, unnecessary stored fields, and suboptimal document structures can increase disk consumption. See [Tune for disk usage](/deploy-manage/production-guidance/optimize-performance/disk-usage.md) for guidance on reducing storage requirements.  
-* A high number of replicas can quickly multiply storage requirements, as each replica consumes the same disk space as the primary shard. Refer to [Index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) for details.  
-* Oversized shards can make disk usage spikes more likely and slow down recovery and rebalancing. Learn more in [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md). 
+    ```console
+    GET _cluster/allocation/explain
+    {
+      "index": "my-index-000001",
+      "shard": 0,
+      "primary": false
+    }
+    ```
 
+    Refer to [Using the cluster allocation API for troubleshooting](/troubleshoot/elasticsearch/cluster-allocation-api-examples.md) for guidance on interpreting this output.
+
+You should normally wait for {{es}} to balance itself. If advanced users determine shards which should migrate off node faster, whether due to forecasted ingestion rate or existing disk usage, they might consider using the [Reroute the cluster API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) to push their chosen shard to immediately rebalance to their determined target node.
 
 ## Temporary relief [fix-watermark-errors-temporary]
 
@@ -107,29 +151,26 @@ PUT _cluster/settings
 }
 ```
 
+::::{note}
+{{es}} recommends using default watermark settings. Advanced users can override [the watermark thresholds and headroom](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) but risk not giving enough disk for background processes such as force merge, not being right-sized to data ingestion rates vs {{ilm}} settings, and possibly `disk is full` errors if 100% disk is reached.
+::::
 
 ## Resolve [fix-watermark-errors-resolve]
 
 To resolve watermark errors permanently, perform one of the following actions:
 
-* Horizontally scale nodes of the affected [data tiers](../../manage-data/lifecycle/data-tiers.md).
-* Vertically scale existing nodes to increase disk space.
-* Delete indices using the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete), either permanently if the index isn’t needed, or temporarily to later [restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
-* update related [ILM policy](../../manage-data/lifecycle/index-lifecycle-management.md) to push indices through to later [data tiers](../../manage-data/lifecycle/data-tiers.md)
+* Horizontally scale nodes of the affected [data tiers](/manage-data/lifecycle/data-tiers.md).
+* Vertically scale existing nodes to increase disk space. Ensure nodes within a [data tier](/manage-data/lifecycle/data-tiers.md) are scaled to matching hardware profiles to avoid [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
+* Delete indices using the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete), either permanently if the index isn’t needed, or temporarily to later [restore from snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
 
+::::{tip}
+On {{ech}} and {{ece}}, indices may need to be temporarily deleted using the its [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to resolve [cluster health status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health)'s `status: red` which blocks [attempted changes](/deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow, reach out to [Elastic Support](/troubleshoot#troubleshoot-work-with-support) for assistance.
+::::
 
 ## Preventing watermark errors  
 
 To reduce the likelihood of watermark errors:  
 
-* Implement more restrictive ILM policies to delete or move data sooner, helping keep disk usage under control. Refer to [Index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md).
-* Enable [Autoscaling](/deploy-manage/autoscaling.md) to automatically adjust resources based on storage and performance needs.
-* Configure [Stack monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) and enable [disk usage monitoring alerts](/solutions/observability/incident-management/alerting.md) to track disk usage trends and identify increases before watermark thresholds are exceeded.
-* Optimize shard sizes to balance disk usage (and performance), avoiding a mix of overly large and small shards. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
-
-::::{tip}
-On {{ech}} and {{ece}}, indices may need to be temporarily deleted using the its [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to resolve [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) `status:red` which blocks [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow, reach out to [Elastic Support](https://support.elastic.co) for assistance.
-::::
-
-
-
+* Enable [Autoscaling](/deploy-manage/autoscaling.md) to automatically adjust resources based on storage and performance needs. {applies_to}`ece: ga` {applies_to}`ech: ga` {applies_to}`eck: ga`
+* Implement more restrictive [{{ilm}} policies](/manage-data/lifecycle/index-lifecycle-management.md) to move data through [data tiers](/manage-data/lifecycle/data-tiers.md) sooner to help keep higher tiers' disk usage under control.
+* Avoid a mix of overly large and small indices which can cause an [unbalanced cluster](/troubleshoot/elasticsearch/troubleshooting-unbalanced-cluster.md). Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md#shard-size-recommendation).
