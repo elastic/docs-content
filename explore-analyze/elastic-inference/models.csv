@@ -11,9 +11,9 @@ Google,Gemini 2.5 Pro,google-gemini-2.5-pro,Generally Available,9.3,Text,Text,20
 OpenAI,GPT-4.1,openai-gpt-4.1,Generally Available,9.3,Text,Text,2027-04-11,0,No,[OpenAI GPT 4.1](https://platform.openai.com/docs/models/gpt-4.1),[Microsoft Terms](https://azure.microsoft.com/en-gb/support/legal/),US
 OpenAI,GPT-4.1 Mini,openai-gpt-4.1-mini,Generally Available,9.3,Text,Text,2027-04-11,0,No,[OpenAI GPT 4.1 Mini](https://platform.openai.com/docs/models/gpt-4.1-mini),[Microsoft Terms](https://azure.microsoft.com/en-gb/support/legal/),US
 OpenAI,GPT-5.2,openai-gpt-5.2,Generally Available,9.3,Text,Text,,0,No,[OpenAI GPT 5.2](https://platform.openai.com/docs/models/gpt-5.2),[Microsoft Terms](https://azure.microsoft.com/en-gb/support/legal/),US
-OpenAI,GPT-OSS 120B,openai-gpt-oss-120b,Generally Available,9.3,Text,Text,,0,No,[OpenAI GPT-OSS-120B](http://gpt-oss-120b/),"[Nebius terms](https://docs.nebius.com/legal/terms-of-use)
+OpenAI,GPT-OSS 120B,openai-gpt-oss-120b,Generally Available,9.3,Text,Text,,0,No,[OpenAI GPT-OSS-120B](http://gpt-oss-120b/),[Nebius terms](https://docs.nebius.com/legal/terms-of-use)
 [Together AI Terms](https://www.together.ai/terms-of-service)
 [DeepInfra Terms](https://deepinfra.com/terms)
-[Groq Terms](https://groq.com/terms-of-use)",US
+[Groq Terms](https://groq.com/terms-of-use),US
 Jina,Reranker v2,jina-reranker-v2-base-multilingual,Generally Available,9.3,Text,Text,,0,No,[jina-reranker-v2-base-multilingual](https://jina.ai/models/jina-reranker-v2-base-multilingual/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),US
 Jina,Reranker v3,jina-reranker-v3,Generally Available,9.3,Text,Text,,0,No,[jina-reranker-v3](https://jina.ai/models/jina-reranker-v3/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),US
