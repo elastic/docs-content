@@ -84,6 +84,24 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```
 
+## AutoOps along with {{es}} [k8s-install-autoops-elasticsearch-helm]
+
+```{applies_to}
+  eck: ga 3.3
+```
+
+Use the following code to connect your ECK-managed {{es}} clusters to [AutoOps](../../monitor/autoops.md) using Helm.
+
+```sh subs=true
+# Install an eck-managed {{es}} cluster and connect to AutoOps using custom values.
+helm install eck-stack-with-autoops elastic/eck-stack \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/autoops/basic.yaml -n elastic-stack
+```
+
+The `eck-autoops-agent-policy` chart creates an `AutoOpsAgentPolicy` resource that connects your {{es}} clusters to AutoOps. The ECK operator handles the creation of API keys, agent configuration, and the deployment of {{agent}} required to send metrics to AutoOps.
+
+To connect to AutoOps using the installation wizard, refer to [](../../monitor/autoops/cc-connect-self-managed-to-autoops.md).
+
 ## Enterprise Search server along with {{es}} and {{kib}} [k8s-install-enterprise-search-elasticsearch-kibana-helm]
 
 Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example deployment of {{es}} version 8.x, {{kib}} 8.x, and an 8.x Enterprise Search server using the Helm chart, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s-stack-helm-chart.html).

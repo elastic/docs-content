@@ -9,7 +9,7 @@ products:
 
 # Configure AutoOps {{agent}} with a custom SSL certificate 
 
-{{agent}} might not recognize your SSL certificate if it is signed by a custom or internal Certificate Authority (CA). In this case, {{agent}} will fail to connect your self-managed cluster to AutoOps and you might encounter an error like the following:
+{{agent}} might not recognize your SSL certificate if it is signed by a custom or internal Certificate Authority (CA). In this case, {{agent}} will fail to connect your ECE, ECK, or self-managed cluster to AutoOps and you might encounter an error like the following:
 
 ```sh
 ... x509: certificate signed by unknown authority ...
@@ -130,7 +130,7 @@ Complete the following steps:
 
 4. Save your changes to the `elastic-agent.yml` file.
 5. Restart {{agent}} for the new settings to take effect.
-6. Check the agent logs again to confirm that the error is gone and that {{agent}} has successfully connected your self-managed cluster to AutoOps. 
+6. Check the agent logs again to confirm that the error is gone and that {{agent}} has successfully connected your cluster to AutoOps. 
 
     :::{tip}
     If you encounter the following error in the agent logs, there might be a formatting issue in the `elastic-agent.yml` file.
