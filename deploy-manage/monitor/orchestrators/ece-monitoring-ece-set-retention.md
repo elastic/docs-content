@@ -32,14 +32,14 @@ The following list contains the most relevant index templates and data stream na
 | allocator-metricbeat-<version>                   | ece_metrics                   | Metrics from the {{stack}} containers running in the allocators|
 
 ::::{note}
-Index templates and data stream names include a `<version>` tag as part of their names. This could change after every ECE upgrade, and needs to be taken into account when applying any type of customization.
+Index templates and data stream names include a `<version>` tag as part of their names. This version can change after an {{ece}} upgrade and must be taken into account when applying any type of customization.
 ::::
 
 ## Customize retention period
 
 To customize the retention period for the different data streams, [create a new ILM policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) with the required settings, and apply it to the relevant data sets as follows:
 
-1. In {{kib}}, go to **Index Management → Index Templates** and identify the template that applies to the data stream or indices whose retention you want to change. Refer to [](#available-templates) for a list of common templates.
+1. In {{kib}}, go to **Index Management → Index Templates** and identify the template that applies to the data stream or indices whose retention you want to change. Refer to [Availble index templates](#available-templates) for a list of common templates.
 
 2. Open the template’s contextual menu and select **Clone** to [create a new template](/manage-data/data-store/index-basics.md#index-management-manage-index-templates). When cloning the template:
 
