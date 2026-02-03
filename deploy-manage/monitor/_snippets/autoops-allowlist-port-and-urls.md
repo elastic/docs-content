@@ -1,4 +1,3 @@
-:::{note}
 If your organization uses firewalls, you need to provide access to port 443 and allow the agent to send data to the following URLs:
 * `https://api.elastic-cloud.com`
 * `https://otel-auto-ops.${region}.${csp}.svc.elastic.cloud/`
@@ -7,5 +6,4 @@ If your organization uses firewalls, you need to provide access to port 443 and 
 
     `https://otel-auto-ops.us-east-1.aws.svc.elastic.cloud/`
 
-Learn more about [defining an Elastic IP address](/deploy-manage/monitor/autoops/ec-autoops-faq.md#elastic-ip-address) for AutoOps for self-managed clusters.
-:::
+Learn more about [defining an Elastic IP address](/deploy-manage/monitor/autoops/ec-autoops-faq.md#elastic-ip-address) for AutoOps for ECE, ECK, or self-managed clusters.

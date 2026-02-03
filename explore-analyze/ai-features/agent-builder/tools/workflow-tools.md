@@ -14,23 +14,20 @@ products:
 
 # Workflow tools in {{agent-builder}}
 
-Workflow tools enable agents to trigger Elastic Workflows directly from a conversation and use their output. This is ideal for offloading tasks from the LLM that require a deterministic, repeatable sequence of actions.
+Workflow tools enable agents to trigger [Elastic Workflows](/explore-analyze/workflows.md) directly from a conversation and use their output. This is ideal for offloading tasks from the LLM that require a deterministic, repeatable sequence of actions.
 
 :::{note}
 This page explains how to trigger a workflow in an agent conversation. If you want to use an agent within a workflow step, refer to [Call agents from workflows](../agents-and-workflows.md).
 :::
 
-% (/explore-analyze/workflows.md)
-
 ## Prerequisites
 
 Before you begin:
 
-* Familiarize yourself with the core concepts of Elastic Workflows.
-% (/explore-analyze/workflows.md)
+* Familiarize yourself with the core concepts of [Elastic Workflows](/explore-analyze/workflows.md).
 * Enable the Workflows feature in **Advanced settings**.
 * Ensure you have the correct privileges to create and run workflows.
-% For details, refer to Set up workflows (/explore-analyze/workflows/setup.md).
+* For details, refer to [Set up workflows](/explore-analyze/workflows/setup.md).
 * Create at least one workflow.
 
 ## Add a Workflow tool
@@ -107,4 +104,4 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 ## Related pages
 * [Tools overview](../tools.md)
 * [Call agents from workflows](../agents-and-workflows.md)
-% * [Workflows](/explore-analyze/workflows.md)
+* [Workflows](/explore-analyze/workflows.md)

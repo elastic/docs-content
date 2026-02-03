@@ -20,12 +20,11 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
-* Your Elastic deployment or project comes with an [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default LLM. This connector is used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
+* Your Elastic deployment or project comes with [Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) by default. These can be used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
 
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga`
 
 * You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
-
 
 ## Supported models
 
@@ -40,12 +39,8 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 :::
 
 ::::{important}
-
-* Elastic does not guarantee the availability of supported models.
-* Use of the Elastic {{infer-cap}} Service requires that customers have read and agreed to the applicable terms of the model providers. Use of a model constitutes a contract between the customer and the model provider.
-* “AI Models” means the third-party generative artificial intelligence models accessed via API through the Service and listed on the [OpenRouter website](https://openrouter.ai/models).
-* “AI Model Provider” means the provider of the applicable AI Model.
-* Availability. OpenRouter does not guarantee availability of the AI Models and provides Customer access to the AI Models only on an as-available basis. AI Model uptime and performance are described in the applicable AI Model Terms, and Customer is responsible for (a) reviewing the AI Model Terms to understand the availability and data practices of each AI Model Provider, and (b) agreeing to the AI Model Terms prior to using the Service. 
+* The applicable terms of use, uptime, and performance for each of the AI models available with EIS are each described in the applicable AI model's Provider Terms and Model Card.
+* Prior to using the AI model with EIS, Customers are responsible for reviewing and agreeing to the chosen AI model's Provider Terms to understand the availability and data practices of the AI model's provider.
 ::::
 
 ## Region and hosting [eis-regions]
@@ -62,9 +57,11 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
 | Claude Sonnet 3.7 {applies_to}`stack: ga 9.3+`  | 400             | -                       | -                       | No rate limit on tokens  |
 | Elastic Managed LLM {applies_to}`stack: ga 9.0-9.2`   | 400             | -                       | -                       | No rate limit on tokens. Renamed to *Claude Sonnet 3.7* in later versions  |
-| Claude Sonnet 4.5     | 400             | -                       | -                       | No rate limit on tokens  |
-| ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
-| `jina-embeddings-v3`  | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Claude Sonnet 4.5 {applies_to}`stack: ga 9.3+`    | 400             | -                       | -                       | No rate limit on tokens  |
+| ELSER {applies_to}`stack: ga 9.0+`                | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Embeddings v3 {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Reranker v2 {applies_to}`stack: ga 9.3+`     | 50              | -                       | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Reranker v3 {applies_to}`stack: ga 9.3+`     | 50              | -                       | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 
 ## Pricing
 

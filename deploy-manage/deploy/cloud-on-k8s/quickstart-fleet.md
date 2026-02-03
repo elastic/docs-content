@@ -13,7 +13,7 @@ products:
 
 1. To deploy {{fleet-server}}, {{agents}}, {{es}}, and {{kib}}, apply the following specification:
 
-    ```yaml
+    ```yaml subs=true
     cat <<EOF | kubectl apply -f -
     apiVersion: agent.k8s.elastic.co/v1alpha1
     kind: Agent
