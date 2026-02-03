@@ -14,7 +14,7 @@ In Painless, field access methods vary depending on the script execution [contex
 Follow these guidelines to avoid null pointer exceptions in your Painless scripts:
 
 * **Context matters:** Always verify the correct field access pattern for your script context.  
-* **Context limitations:** Script filters cannot access `params['_source']` .  
+* **Context limitations:** Script filters cannot access `params['_source']`.
 * **Field mapping:** Use `.keyword` suffix for text fields when accessing via doc values.
 
 For details, refer to the following sample error, solution, and the result when the solution is applied to some sample data.
