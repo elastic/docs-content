@@ -14,7 +14,7 @@ products:
 
 For {{elastic-sec}} specifically, it can provide automation capabilities for a wide range of tasks to help your team achieve more. 
 
-You can create custom agents equipped with additional tools, and create Elastic Workflows that can automatically isolate hosts, create cases, send notification messages to external platforms, and more. 
+You can create custom agents equipped with additional tools, and create [Elastic Workflows](/explore-analyze/workflows.md) that can automatically isolate hosts, create cases, send notification messages to external platforms, and more. 
 
 :::{note}
 :applies_to: {stack: preview 9.3+, serverless: preview}
@@ -31,7 +31,7 @@ To learn more about the types of Agent Builder tools that you can create, refer 
 
 ## Use Agent Builder and Workflows together
 
-[Workflows](/explore-analyze/workflows.md) lets you augment your team's capabilities for responding to threats by setting up automated processes that use a wide range of tools, without needing an external automation platform. 
+Workflows lets you augment your team's capabilities for responding to threats by setting up automated processes that use a wide range of tools, without needing an external automation platform. 
 
 There are two main ways to use workflows alongside Agent Builder:
 
