@@ -74,7 +74,12 @@ To use [TLS certificates](/deploy-manage/remote-clusters/security-models.md#tls-
 
 The steps below guide you through both sides of this configuration.
 
-#### Configure trust on the {{ech}} deployment [ec-trust-self-managed]
+#### Retrieve the CAs of both clusters [download-ca]
+
+::::{include} _snippets/configure-trust-download-ca.md
+::::
+
+#### Configure trust on the {{ech}} deployment [configure-trust-deployment]
 
 ::::{include} _snippets/configure-trust-ecloud-self.md
 ::::

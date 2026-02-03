@@ -4,13 +4,7 @@ A deployment can be configured to trust all or specific deployments in any envir
 
 2. Select **Certificates** as authentication mechanism and click **Next**.
 
-3. Upload the public certificate of the Certificate Authority (CA) of the self-managed environment (the CA used to sign all the cluster transport certificates).
-
-    The CA needs to be in PEM format and should not contain the private key. If you only have the CA with the key in p12 format, then you can create the necessary file with the following command:
-    
-    ```sh
-    openssl pkcs12 -in elastic-stack-ca.p12 -out newfile.crt.pem -clcerts -nokeys
-    ```
+3. Upload the transport CA certificate of the self-managed environment [you obtained earlier](#download-ca). The CA must be in PEM format and should not contain the private key.
 
 4. Select the clusters to trust. There are two options depending on the subject name of the certificates presented by the nodes in your self-managed cluster:
 
