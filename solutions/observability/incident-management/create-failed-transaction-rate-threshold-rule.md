@@ -3,6 +3,9 @@ navigation_title: Failed transaction rate threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-failed-transaction-rate-threshold-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-failed-transaction-rate-threshold-alert-rule.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless

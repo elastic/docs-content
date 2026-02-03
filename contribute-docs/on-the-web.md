@@ -29,7 +29,7 @@ An Elastician will review, merge, and propagate your change to the right places 
 
 For more details on editing files on GitHub, refer to [GitHub's documentation on editing files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
 
-:::{include} _snippets-contribute/tagged-warning.md
+:::{include} _snippets/tagged-warning.md
 :::
 
 ## Editing `elastic.co/guide` docs (Asciidoc)
