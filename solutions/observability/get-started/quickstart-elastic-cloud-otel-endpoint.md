@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless: ga
   deployment:
-    ess: preview
+    ess:
     self: unavailable
 ---
 
@@ -46,8 +46,9 @@ To retrieve your {{motlp}} endpoint address and API key, follow these steps:
 Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
 :::
 
-:::{applies-item} ess: preview
-You need an {{ech}} deployment version 9.2 or later.
+:::{applies-item} ess:
+You need an {{ech}} deployment version 9.0 or later, or version 8.19 or later.
+
 1. In {{ecloud}}, create an {{ech}} deployment or open an existing one.
 2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
 3. Copy the endpoint and authentication headers values.
@@ -158,7 +159,7 @@ Exporting failed. Dropping data.
 
 You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK.
 
-### Error: too many requests
+### Error: Too many requests
 
 If you see HTTP `429 Too Many Requests` errors when sending data through the Elastic Cloud Managed OTLP Endpoint (mOTLP) endpoint, your project might be hitting ingest rate limits.
 
