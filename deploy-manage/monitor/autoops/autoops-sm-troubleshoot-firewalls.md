@@ -24,7 +24,7 @@ Ensure that you have allowed {{agent}} the required level of access. If the prob
 
 ## Test {{agent}}'s connection with your system
 
-There are [three main components](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md#how-your-self-managed-cluster-connects-to-autoops) of {{agent}}'s connection with your system:
+There are [three main components](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md#how-your-cluster-connects-to-autoops) of {{agent}}'s connection with your system:
 
 :::{include} /deploy-manage/monitor/_snippets/autoops-cc-components.md
 :::
