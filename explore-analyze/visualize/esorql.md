@@ -100,4 +100,7 @@ To create a rule without the threshold pre-specified:
 - Open the **More actions** (three dots) menu in the upper right of the panel and select **Add alert rule**. This opens the **Create rule** flyout. The generated query will define a threshold that corresponds to the data point you selected.
 - [Configure](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) your {{es}} rule.
 
+## Use emojis in visualizations [esql-table-emojis]
 
+:::{include} _snippets/emoji-table-esql.md
+:::
