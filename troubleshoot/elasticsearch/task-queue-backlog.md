@@ -195,7 +195,7 @@ To cancel this example search to free up resources, you would run:
 POST _tasks/oTUltX4IQMOUUVeiohTt8A:464/_cancel
 ```
 
-For additional tips on how to track and avoid resource-intensive searches, see [Avoid expensive searches](high-jvm-memory-pressure.md#avoid-expensive-searches).
+For additional tips on how to track and avoid resource-intensive searches, refer to [Avoid expensive searches](high-jvm-memory-pressure.md#reduce-jvm-memory-pressure-setup-searches).
 
 
 ### Address hot spotting [resolve-task-queue-backlog-hotspotting] 

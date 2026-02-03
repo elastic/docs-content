@@ -69,7 +69,7 @@ export KIBANA_URL="your-kibana-url"
 export API_KEY="your-api-key"
 ```
 
-For information on generating API keys, refer to [API keys](https://www.elastic.co/docs/solutions/search/search-connection-details).
+For information on generating API keys, refer to [](/deploy-manage/api-keys.md).
 
 Tools execute with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose through the MCP server. To learn more, refer to [](#api-key-application-privileges).
 :::
