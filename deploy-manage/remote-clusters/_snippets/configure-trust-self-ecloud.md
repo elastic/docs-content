@@ -10,7 +10,7 @@ Follow these steps to configure trust in your self-managed cluster:
 
     To avoid this, use the setting `xpack.security.transport.ssl.trust_restrictions.path`, which points to a file that limits the certificates that are trusted based on their `otherName` attribute.
 
-    For example, the following file would trust:
+	The following is an example of a trust restrictions file, with an explanation of what each entry allows.
 
       ```yaml
         trust.subject_name:
