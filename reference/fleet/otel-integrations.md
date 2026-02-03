@@ -32,17 +32,17 @@ OpenTelemetry input packages are used with {{fleet}} and {{agent}} running in de
 
 ## Hybrid agents [otel-integrations-hybrid-agents]
 
-{{agent}} policies can include configurations for both ECS-based integrations and OpenTelemetry input packages, which essentially turns the enrolled {{agents}} into *hybrid agents*.
+You can configure {{agent}} policies to use both ECS-based integrations and OpenTelemetry input packages. This effectively turns enrolled {{agents}} into hybrid agents.
 
 Hybrid agent policies are useful when you want to:
 
-- Keep an ECS-based integration for one data type (for example, to ingest logs and use built-in dashboards)
+- Use an ECS-based integration for one data type (for example, to ingest logs and use built-in dashboards)
 - Use an OpenTelemetry input package for another data type (for example, to collect metrics using OpenTelemetry standards)
 
-This type of hybrid data collection provides flexibility without forcing a single ingestion model, and allows you to:
+This type of hybrid data collection provides flexibility without locking you into a single ingestion model, and allows you to:
 
 - Gradually migrate toward OpenTelemetry
-- Standardize ingestion on OpenTelemetry receivers at scale
+- Standardize ingestion using OpenTelemetry receivers at scale
 - Keep native integrations for logs or existing dashboards
 
 For examples on using a hybrid agent configuration to collect telemetry, refer to:
@@ -52,7 +52,7 @@ For examples on using a hybrid agent configuration to collect telemetry, refer t
 
 ## Configure OpenTelemetry input packages [configure-otel-input-packages]
 
-The installation and configuration of OpenTelemetry input packages are similar to those of ECS-based integrations, and allow you to specify the namespace, dataset name, data stream type, and more. For more information, refer to [Add an integration to an {{agent}} policy](/reference/fleet/add-integration-to-policy.md).
+The installation and configuration of OpenTelemetry input packages are similar to those of ECS-based integrations, and allow you to specify the namespace, dataset name, data stream type, and more. For step-by-step instructions, refer to [Add an integration to an {{agent}} policy](/reference/fleet/add-integration-to-policy.md).
 
 When the integration policy for the input package is created, {{fleet}} creates a managed index template with an OTel configuration and an index pattern with an `.otel` suffix. The index template uses {{fleet}} component templates for settings and OTel component templates for default mappings. It also includes `@custom` component templates that allow you to [customize your {{es}} index](/reference/fleet/data-streams.md#data-streams-index-templates-edit) similarly to ECS-based integrations.
 

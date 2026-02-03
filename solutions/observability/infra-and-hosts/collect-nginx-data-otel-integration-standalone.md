@@ -22,16 +22,16 @@ Follow this guide to learn how to configure a standalone {{agent}} on a Linux ho
 
 ::::{applies-item} serverless: preview
 * An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
-* A user with the **Admin** role or higher required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+* A user with the **Admin** role or higher-required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 * {{agent}} 9.2 or later installed on a Linux host.
-* nginx installed on a Linux host.
+* nginx installed on the same Linux host.
 ::::
 
 ::::{applies-item} stack: preview 9.2+
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 * {{agent}} 9.2 or later installed on a Linux host.
-* nginx installed on a Linux host.
+* nginx installed on the same Linux host.
 ::::
 
 :::::
@@ -72,7 +72,7 @@ TODO
 
 ## Validate your data
 
-After you apply the policy changes, validate both the ECS-based logs and the OTel-based metrics.
+After you apply the policy changes, validate that both the ECS-based logs and the OTel-based metrics are flowing in.
 
 :::::::{stepper}
 
@@ -93,7 +93,7 @@ After you apply the policy changes, validate both the ECS-based logs and the OTe
 
 Go to **Dashboards**, then select **[Metrics Nginx OTEL] Overview** to view the dashboard for visualizing OTel-based metrics.
 
-This dashboard becomes available with the NGINX OpenTelemetry Assets content package, which is automatically installed when data is ingested trough the NGINX OpenTelemetry Input Package integration.
+This dashboard is provided by the NGINX OpenTelemetry Assets content package, installed automatically when data is ingested through the NGINX OpenTelemetry Input Package.
 
 ::::::
 
