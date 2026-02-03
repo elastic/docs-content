@@ -27,7 +27,7 @@ In combination, these tools can help:
 
 ## Examples
 
-This section provides conceptual examples of what you can achieve with Agent Builder. For specific examples of workflows, including complete annotated code samples, refer to the [elastic/workflows/security](https://github.com/elastic/workflows/tree/main/workflows/security) GitHub repo.
+This section provides conceptual examples of what you can achieve with Agent Builder workflows. For specific examples of workflows, including complete annotated code samples, refer to the [elastic/workflows/security](https://github.com/elastic/workflows/tree/main/workflows/security) GitHub repo.
 
 ### Example 1
 You can create a workflow that:
