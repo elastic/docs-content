@@ -47,7 +47,7 @@ Cluster privileges
 Index privileges
 :   `manage`, `write`, `read`, `view_index_metadata` on:
     - `.alerts-security.alerts-<space-id>`
-    - `.siem-signals-<space-id>` (only if you're upgrading from version 8.0 or earlier)
+    - `.siem-signals-<space-id>` (only if you upgraded from version 8.0 or earlier)
     - `.lists-<space-id>`
     - `.items-<space-id>`
 
@@ -77,7 +77,7 @@ Cluster privileges
 Index privileges
 :   `manage`, `write`, `read`, `view_index_metadata` on:
     - `.alerts-security.alerts-<space-id>`
-    - `.siem-signals-<space-id>` (only if you're upgrading from version 8.0 or earlier)
+    - `.siem-signals-<space-id>` (only if you upgraded from version 8.0 or earlier)
     - `.lists-<space-id>`
     - `.items-<space-id>`
 
@@ -105,7 +105,7 @@ Index privileges
 :   `maintenance`, `write`, `read`, `view_index_metadata` on:
     - `.alerts-security.alerts-<space-id>`
     - `.internal.alerts-security.alerts-<space-id>-*`
-    - `.siem-signals-<space-id>` (only if you're upgrading from version 8.0 or earlier)
+    - `.siem-signals-<space-id>` (only if you upgraded from version 8.0 or earlier)
     - `.lists-<space-id>`
     - `.items-<space-id>`
 
