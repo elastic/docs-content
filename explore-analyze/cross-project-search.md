@@ -8,14 +8,14 @@ products:
 
 # {{cps-cap}} [cross-project-search]
 
-**{{cps-cap}}** enables you to run a single search request across multiple projects. For example, you can use {{cps}} to filter and analyze log data stored in projects connected through {{cps-init}}.
+**{{cps-cap}}** enables you to run a single search request across multiple projects. For example, you can use {{cps}} to filter and analyze log data stored in projects linked through {{cps-init}}.
 Common use cases include centralized log analysis, cross-environment troubleshooting, and incident investigation across multiple teams or services.
 
-## {{cps-cap}} as the default behavior for connected projects
+## {{cps-cap}} as the default behavior for linked projects
 
 Projects are intended to act as logical namespaces for data, not hard boundaries for querying it. You can split data into projects to organize ownership, use cases, or environments, while still expecting to search and analyze that data from a single place.
 
-Because of this, {{cps}} is the default behavior for your connected projects.
+Because of this, {{cps}} is the default behavior for your linked projects.
 Searches are designed to run across projects automatically, providing the same experience for querying, analysis, and insights across projects as within a single project.
 Restricting search scope is always possible, but it requires an explicit choice rather than being the default.
 
@@ -251,7 +251,7 @@ There are two ways to use tags in {{cps-init}}:
 
 #### Project routing
 
-Project routing enables you to limit a search to a subset of connected projects (the origin project and its linked projects) based on tag values.
+Project routing enables you to limit a search to a subset of linked projects (the origin project and its linked projects) based on tag values.
 When you use project routing, the routing decision is made before the search request is performed.
 Based on the specified tags, {{cps-init}} determines which projects the query is sent to, and the search is performed only on those projects.
 The `project_routing` parameter is available on all cross-project-enabled endpoints. Refer to the [](#cps-supported-apis) for a full list of endpoints.
