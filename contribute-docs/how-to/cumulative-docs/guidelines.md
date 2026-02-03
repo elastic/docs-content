@@ -55,6 +55,25 @@ For each type of applicability information, you can add `applies_to` metadata at
 For a full syntax reference for page, section, and inline level `applies_to` annotations,
 refer to [the applies_to syntax guide](https://elastic.github.io/docs-builder/syntax/applies).
 
+## Dimensions
+
+The `applies_to` keys fall into three dimensions based on the products and user contexts being documented on the page:
+
+| Dimension | Description | Values |
+| --- | --- | --- |
+| Stack/Serverless | Represents the version or "flavor" of the core Elastic platform. Use when your content is primarily about features, functionality, or workflows that vary based on which version of the Elastic platform users are running.<br><br>Also use for deployment, configuration, or management tasks that are available or consistent across deployment types (these are often built into Elasticsearch - see tips). | `stack`, `serverless` |
+| Deployment | Represents how the Elastic platform is deployed and orchestrated. Use when your content is primarily about deployment, configuration, or management tasks that differ based on how users have deployed Elasticsearch and Kibana, or a deployment-specific tutorial for a stack task. | `deployment` (with subkeys: `ece`, `eck`, `ess`, `self`), `serverless` |
+| Product | Represents software outside the core Elastic platform that has its own versioning scheme. Use when your content is primarily about features or functionality specific to these standalone products. | `product` (with subkeys, including those for APM agents, EDOT SDKs, and client libraries) |
+
+Most pages focus on one primary context, so you should only use keys from one dimension at the page level. For example, a page about a Kibana feature would use the Stack/Serverless dimension, while a page about configuring cluster settings would use the Deployment dimension.
+
+### Dimension usage tips
+
+* `serverless` can appear in both the Stack/Serverless dimension and the Deployment dimension. This is because Serverless acts as both a "version" or "flavor" of the stack (like `stack`), and a unique deployment type with specialized management processes (like `ece` or `eck`).
+* The versioned Elastic Stack (`stack`) can be deployed across ECE, ECK, ECH, and self-managed clusters. When deployment, configuration, or management tasks are available or consistent across these deployment types (often because they're built into Elasticsearch), use `stack` in the Stack/Serverless dimension rather than specifying each deployment type individually.
+* If your content has nuances specific to another dimension, determine the "primary" dimension for the page level `applies_to` frontmatter, and then add the secondary dimension information as requirements, or as tagged sections later on the page. 
+* To determine the primary dimension of a page, consider what the main focus of the page is, what most of the content relates to, and what context users will primarily identify with when they arrive at the page. For example, if a page is primarily about a Kibana feature but mentions deployment-specific configuration, use the Stack/Serverless dimension as primary. Refer to [Cumulative docs example scenarios](/contribute-docs/how-to/cumulative-docs/example-scenarios.md#primary-dimension) for an example.
+
 ## General guidelines
 
 ### When to tag content
@@ -149,14 +168,13 @@ For example this syntax:
 deployment:
   ece: ga
   self: ga
-stack: ga
 serverless: ga
 ```
 ````
 
 Results in the badges in this order:
 
-{applies_to}`{ deployment: { ece: ga, self: ga }, stack: ga, serverless: ga }`
+{applies_to}`{ deployment: { ece: ga, self: ga }, serverless: ga }`
 
 ## Product and deployment model applicability [products-and-deployment-models]
 
@@ -167,10 +185,14 @@ refer to [](reference.md#key).
 
 * **Always include page-level product and deployment model applicability information**.
   This is _mandatory_ for all pages.
+* **Use only one dimension at the page level.**
+  Choose either the Stack/Serverless dimension, the Deployment dimension, or the Product dimension.
+  See [Dimensions](#dimensions) for more information.
 * **Determine if section or inline applicability information is necessary.**
   This _depends on the situation_.
   * For example, if a portion of a page is applicable to a different context than what was specified at the page level,
   clarify in what context it applies using section or inline `applies_to` badges.
+  * Section-level and inline annotations can reference items from a different dimension than the page-level dimension when needed to clarify specific requirements.
 % Source: https://elastic.github.io/docs-builder/versions/#defaults-and-hierarchy
 * **Do not assume a default product or deployment type.**
   Treat all products and deployment types equally. Don't treat one as the "base" and the other as the "exception".

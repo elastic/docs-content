@@ -192,7 +192,7 @@ consts:
   indexName: national-parks-data
 ```
 
-* **`consts`**: Defines reusable values that can be referenced throughout the workflow.
+* **`consts`**: Defines reusable values that can be referenced throughout the workflow. Use constants for fixed values that don't change between runs. For values that vary per execution, use [inputs](/explore-analyze/workflows/data.md#workflows-constants-or-inputs) instead.
 * Accessed using template syntax: `{{ consts.indexName }}`. This promotes consistency and makes the workflow easier to maintain.
 
 ::::
