@@ -18,6 +18,19 @@ Before you can create rules, manage alerts, or use other [detection capabilities
 
 :::::::{tab-set}
 
+::::::{tab-item} {{serverless-full}}
+
+The detections feature is turned on by default in {{serverless-short}} projects. Your access level depends on your assigned role.
+
+| Access level | Roles |
+| --- | --- |
+| Full access (manage rules, alerts, exceptions) | Editor, SOC Manager, Detections Eng, Tier 3 Analyst, Platform Engineer |
+| Read-only (only view rules and alerts) | Viewer, Tier 1 Analyst, Tier 2 Analyst |
+
+Refer to [Predefined roles](/solutions/security/detect-and-alert/detections-privileges.md#predefined-serverless-roles-detections) for a list of predefined roles with detection privileges.
+
+::::::
+
 ::::::{tab-item} {{ecloud}}
 
 The detection engine initializes automatically when a user with [sufficient privileges](/solutions/security/detect-and-alert/detections-privileges.md) visits the **Rules** page. To open the page, find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -67,23 +80,22 @@ To enable detections in multiple spaces, visit the **Rules** page in each space.
 
 ::::::
 
-::::::{tab-item} {{serverless-full}}
-
-The detections feature is turned on by default in {{serverless-short}} projects. Your access level depends on your assigned role.
-
-| Access level | Roles |
-| --- | --- |
-| Full access (manage rules, alerts, exceptions) | Editor, SOC Manager, Detections Eng, Tier 3 Analyst, Platform Engineer |
-| Read-only (only view rules and alerts) | Viewer, Tier 1 Analyst, Tier 2 Analyst |
-
-Refer to [Predefined roles](/solutions/security/detect-and-alert/detections-privileges.md#predefined-serverless-roles-detections) for a list of predefined roles with detection privileges.
-
-::::::
-
 :::::::
 
-## Next steps
+## Start detecting threats
 
-- [Create detection rules](/solutions/security/detect-and-alert/create-detection-rule.md) to detect threats in your environment
-- [Configure {{ml}} jobs](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for {{anomaly-detect}} rules
-- Review [detailed privilege requirements](/solutions/security/detect-and-alert/detections-privileges.md) for custom roles
+With detections enabled, you're ready to create rules and start responding to threats. Do the following:
+
+- **Add detection rules**
+   - [Install Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md): Get started quickly with hundreds of rules that detect common threats
+   - [Create custom rules](/solutions/security/detect-and-alert/create-detection-rule.md): Write rules tailored to your environment
+   - [Configure {{anomaly-detect}} rules](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md): Use {{ml}} to detect unusual behavior
+
+- **Respond to and manage alerts**
+   - [Manage detection alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): Triage, investigate, and resolve alerts
+   - [Set up alert notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications): Send alerts to external systems like Slack, email, or ticketing tools
+   - [Tune rules to reduce noise](/solutions/security/detect-and-alert/tune-detection-rules.md): Add exceptions and adjust rules to minimize false positives
+
+::::{tip}
+For a complete walkthrough, check out [Quickstart: Detect and respond to threats with SIEM](/solutions/security/get-started/get-started-detect-with-siem.md).
+::::
