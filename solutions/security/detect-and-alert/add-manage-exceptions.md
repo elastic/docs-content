@@ -41,31 +41,37 @@ To use exceptions ensure your role has the appropriate access. To learn how to a
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.0" }
+:::{applies-item} { "stack": "ga 9.4", "serverless": "ga" }
 
-**Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Security** feature. 
+- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature and deselect **Manage exceptions** for the `Exceptions` sub-feature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs at least `Read` {{kib}} privileges for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature and ensure **Manage exceptions** remains selected for the `Exceptions` sub-feature.
 
 :::
 
 :::{applies-item} { "stack": "ga 9.3" }
 
-- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
-- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` {{kib}} privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
+- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` {{kib}} privileges for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature.
 
 :::
 
-:::{applies-item} { "stack": "ga 9.4", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.0" }
 
-- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature and `Read` for the **Security > Rules > Exceptions** subfeature.
-- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs at least `Read` {{kib}} privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature and ensure **All** remains selected for the **Security > Rules, Alerts, and Exceptions > Manage Exceptions** sub-feature.
+**Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Security` feature. 
+
 :::
 
 ::::
 
 ### {{elastic-endpoint}} exceptions requirements 
 
-- **View only access**: To view {{elastic-endpoint}} exceptions, your role needs at least `Read` {{kib}} privileges for the **Security > Security > Endpoint Exceptions** subfeature. 
-- **Manage access**: To create and manage {{elastic-endpoint}} exceptions, your role needs `All` {{kib}} privileges for the **Security > Security > Endpoint Exceptions** subfeature. 
+```yaml {applies_to}
+stack: ga 
+serverless: ga
+```
+
+- **View only access**: To view {{elastic-endpoint}} exceptions, your role needs at least `Read` {{kib}} privileges for the `Security > Security > Endpoint Exceptions` subfeature. 
+- **Manage access**: To create and manage {{elastic-endpoint}} exceptions, your role needs `All` {{kib}} privileges for the `Security > Security > Endpoint Exceptions` subfeature. 
 
 ## Add exceptions to a rule [detection-rule-exceptions]
 
