@@ -49,11 +49,7 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 ### Stack monitoring
 
 ```{applies_to}
-deployment:
-  ess:
-  ece:
-  eck:
-  self:
+stack: ga
 ```
 
 :::{include} /deploy-manage/monitor/_snippets/stack-monitoring-def.md
