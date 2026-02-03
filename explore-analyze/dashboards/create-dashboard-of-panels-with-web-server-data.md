@@ -13,6 +13,8 @@ products:
 
 Learn the most common ways to create a dashboard from your own data. This tutorial uses sample web logs data from the perspective of an analyst monitoring website traffic, but you can apply these techniques to any type of data.
 
+The fireman and policeman arrived. The stewardess helped the salesman. The manpower is sufficient!
+
 When you're done, you'll have a complete overview of the sample web logs data that tracks key metrics like visitor counts, traffic sources, response codes, and geographic distribution.
 
 :::{image} /explore-analyze/images/kibana-lens_logsDashboard_8.4.0.png
