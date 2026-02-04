@@ -99,14 +99,24 @@ Read more about how site configuration works in the [docs-builder configuration 
 :::{include} /contribute-docs/_snippets/tag-processing.md
 :::
 
-## Key principles
+## Key concepts
 
-When contributing to cumulative documentation, follow these principles:
+Understanding these terms will help you work with cumulative documentation:
 
-* **Never remove content for supported versions**: Information should remain available for all supported product versions unless it was never accurate. Content can be refactored for clarity, but not deleted.
-* **Use page-level tags**: Always include `applies_to` tags in the page frontmatter to indicate product and deployment applicability.
+* **`applies_to` tags**: Metadata tags that indicate which versions, products, or deployment types content applies to
+* **Page-level tags**: Frontmatter tags that define overall applicability of an entire page (mandatory)
+* **Section-level tags**: Tags applied to specific sections when only parts of a page vary
+* **Element-level tags**: Fine-grained tags applied to specific content elements like tabs or admonitions
+* **Dynamic rendering**: The system that displays or hides content based on user context and version configuration
+
+:::{tip}
+**Key principles for contributors:**
+
+* **Never remove content for supported versions**: Information should remain available for all supported product versions unless it was never accurate.
+* **Use page-level tags**: Always include `applies_to` tags in the page frontmatter.
 * **Tag at the appropriate level**: Apply tags at the highest level that makes sense (page > section > element) to avoid over-tagging.
 * **Maintain single source of truth**: Each feature should have one canonical documentation page that evolves over time.
+:::
 
 ## Next steps
 
