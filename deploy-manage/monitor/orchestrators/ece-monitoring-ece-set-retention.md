@@ -12,12 +12,16 @@ products:
 
 {{ece}} sets up index lifecycle management (ILM) policies for the [ECE platform monitoring](./ece-platform-monitoring.md) data it collects inside the `logging-and-metrics` [system deployment](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md).
 
-By default, metrics indices are retained for one day and logging indices for seven days, as defined in the `ece_metrics` and `ece_logs` ILM policies of the deployment. These default policies and their associated index templates are managed by {{ece}} and should not be modified.
+By default, metrics indices are retained for two days and logging indices for eight days, as defined in the `ece_metrics` and `ece_logs` ILM policies of the deployment. This accounts for daily rollover plus the additional retention periods of one day for metrics and seven days for logs defined in the policies. These default policies and their associated index templates are managed by {{ece}} and should not be modified.
 
 You might need to adjust the retention period for one of the following reasons:
 
 * If your business requires you to retain logs and metrics for longer than the default period.
 * If the volume of logs and metrics collected is high enough to require reducing the amount of storage space consumed.
+
+::::{important}
+Before increasing retention, ensure the `logging-and-metrics` system deployment has sufficient resources and disk capacity. Longer retention increases storage usage and cluster workload, and can result in a busy or overloaded cluster if the deployment is not scaled appropriately. Refer to [ECE system deployments configuration](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md) for more information.
+::::
 
 ## Available index templates [available-templates]
 
@@ -32,7 +36,7 @@ The following list contains the most relevant index templates and data stream na
 | allocator-metricbeat-<version>                   | ece_metrics                   | Metrics from the {{stack}} containers running in the allocators|
 
 ::::{note}
-Index templates and data stream names include a `<version>` tag as part of their names. This version can change after an {{ece}} upgrade and must be taken into account when applying any type of customization.
+Index templates and data stream names include a `<version>` tag as part of their names, which corresponds to the {{stack}} version of the internal component that sends the data (for example, `proxy-logs-8.18.8`). This version can change after an {{ece}} upgrade and must be taken into account when applying any type of customization.
 ::::
 
 ## Customize retention period
@@ -101,5 +105,5 @@ To customize the retention period for the different data streams, [create a new 
     :::::
 
 ::::{important}
-In {{ece}}, the names of default index templates and data streams include the version of the internal component that sends the data (for example, `cluster-logs-8.18.8`). After an {{ece}} upgrade, new templates and data stream names can be created with updated version numbers. When this happens, your cloned template might no longer apply, and you must repeat this procedure to ensure your custom ILM policy continues to be applied.
+In {{ece}}, the names of default index templates and data streams include the {{stack}} version of the internal component that sends the data (for example, `cluster-logs-8.18.8`). After an {{ece}} upgrade, new templates and data stream names can be created with updated version numbers. When this happens, your cloned template might no longer apply, and you must repeat this procedure to ensure your custom ILM policy continues to be applied.
 ::::
