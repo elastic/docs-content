@@ -11,20 +11,28 @@ products:
 
 # Collect NGINX logs and metrics with a hybrid {{fleet}}-managed {{agent}}
 
-Follow this guide to learn how to configure a {{fleet}}-managed {{agent}} on a Linux host to collect:
+Learn how to monitor your NGINX server by collecting logs and metrics with a hybrid {{fleet}}-managed {{agent}} on Linux.
+
+You'll use {{kib}} and {{fleet}} to create a [hybrid agent policy](/reference/fleet/otel-integrations.md#otel-integrations-hybrid-policies) and apply it to your {{fleet}}-managed {{agent}}.
+
+You'll collect:
 
 - NGINX logs with Elastic's [Nginx integration](https://www.elastic.co/docs/reference/integrations/nginx), based on the [Elastic Common Schema](ecs://reference/index.md) (ECS)
 - NGINX metrics with Elastic's [NGINX OpenTelemetry Input Package](https://www.elastic.co/docs/reference/integrations/nginx_otel_input), which uses the [`nginxreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nginxreceiver) OpenTelemetry (OTel) Collector receiver
 
+:::{note}
+OpenTelemetry input packages cannot be used with an [{{agent}} running as an EDOT Collector](/reference/fleet/otel-agent.md) (an agent in `otel` mode).
+:::
+
 ## Prerequisites [collect-nginx-data-fleet-managed-prereqs]
 
-:::{include} _snippets/collect-nginx-data-prerequisites.md
-:::
+::::{include} _snippets/collect-nginx-data-prerequisites.md
+::::
 
 ## Configure the NGINX status endpoint [collect-nginx-data-fleet-managed-status-endpoint]
 
-:::{include} _snippets/collect-nginx-data-status-endpoint.md
-:::
+::::{include} _snippets/collect-nginx-data-status-endpoint.md
+::::
 
 ## Configure the hybrid agent policy [collect-nginx-data-fleet-managed-policy]
 
@@ -32,8 +40,8 @@ Follow this guide to learn how to configure a {{fleet}}-managed {{agent}} on a L
 
 ::::{step} Create an agent policy and enroll an agent
 
-1. In {{kib}}, go to **Fleet** → **Agent policies**.
-2. Create a new agent policy (for example, `nginx-telemetry`), or select an existing policy you want to use to collect NGINX telemetry.
+1. In {{kib}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Go to **Agent policies**, then [create an agent policy](reference/fleet/agent-policy#create-a-policy) (for example, `nginx-telemetry`), or select an existing policy you want to use to collect NGINX telemetry.
 3. Add an {{agent}} running version 9.2 or later to the policy.
 
    For detailed steps, refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md).
@@ -59,7 +67,7 @@ For more details, refer to [Add an integration to an {{agent}} policy](/referenc
 
 ::::{step} Configure metrics collection with the NGINX OpenTelemetry input package
 
-1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In {{kib}}, go to **Integrations**.
 2. Select **Display beta integrations** (the NGINX OpenTelemetry packages are in technical preview).
 3. Search for "nginx", then select **NGINX OpenTelemetry Input Package**.
 4. Select **Add NGINX OpenTelemetry Input Package**, then configure the integration. **NGINX OpenTelemetry Input** is enabled by default.
@@ -74,10 +82,6 @@ For more details, refer to [Add an integration to an {{agent}} policy](/referenc
 
 :::{note}
 The NGINX OpenTelemetry Assets content package is installed automatically when data is ingested through the NGINX OpenTelemetry Input Package. You can find it in the **Installed integrations** list and use it to visualize OTel-based metrics.
-:::
-
-:::{note}
-OpenTelemetry input packages are distinct from [running {{agent}} as an EDOT Collector](/reference/fleet/otel-agent.md), and cannot be used with {{agent}} running in `otel` mode.
 :::
 
 ::::
@@ -95,7 +99,7 @@ After you apply the policy changes, validate that both the ECS-based logs and th
 1. In {{kib}}, go to **Discover**, then filter the results using the KQL search bar.
 2. Search for NGINX data stream datasets such as `nginx.access` and `nginx.error`, or enter:
 
-   ```
+   ```text
    data_stream.dataset : "nginx.access" or "nginx.error"
    ```
 

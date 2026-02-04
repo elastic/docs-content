@@ -2,7 +2,7 @@
 navigation_title: OpenTelemetry integration packages
 description: Fleet supports installing Elastic Agent integration packages for collecting and visualizing OpenTelemetry data such as logs, metrics, and traces.
 applies_to:
-  stack: preview 9.2
+  stack: preview 9.2+
   serverless: preview
 products:
   - id: fleet
@@ -11,7 +11,9 @@ products:
 
 # Collect OpenTelemetry data with {{agent}} integrations [otel-integrations]
 
-{{fleet}} supports installing {{agent}} integration packages for collecting and visualizing OpenTelemetry (OTel) data such as logs, metrics, and traces. To find the available OpenTelemetry integration packages, open the **Integrations** page in {{kib}}, then select the **OpenTelemetry** category.
+{{fleet}} supports installing {{agent}} integration packages for collecting and visualizing OpenTelemetry (OTel) data such as logs, metrics, and traces. 
+
+To display the available OpenTelemetry integration packages, find **Integrations** in the {{kib}} navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **OpenTelemetry** category.
 
 :::{note}
 Some OpenTelemetry integrations are in technical preview and only appear in the list when you enable the setting to show beta integrations.
@@ -27,7 +29,7 @@ Unlike {{agent}} integrations based on the [Elastic Common Schema](ecs://referen
 When OTel data is collected using an OpenTelemetry input package, content packages with assets related to the collected data type are automatically installed if available.
 
 :::{important}
-OpenTelemetry input packages are used with {{fleet}} and {{agent}} running in default mode. They are distinct from [running {{agent}} as an EDOT Collector](/reference/fleet/otel-agent.md), and cannot be used on {{agent}} running in `otel` mode.
+OpenTelemetry input packages are used with {{fleet}} and {{agent}} running in default mode. They cannot be used with an [{{agent}} running as an EDOT Collector](/reference/fleet/otel-agent.md) (an agent in `otel` mode).
 :::
 
 ## Configure OpenTelemetry input packages [otel-integrations-input-packages]
