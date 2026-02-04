@@ -78,7 +78,7 @@ There are three levels where you can apply tags:
 * Every paragraph when applicability has been established earlier on the page
 * General availability features in unversioned products (Serverless) where all users are on the latest version
 
-### Version configuration and dynamic rendering
+### Version configuration and dynamic rendering [how-do-these-tags-behave-in-the-output]
 
 The cumulative docs system uses a central version configuration file ([`versions.yml`](https://github.com/elastic/docs-builder/blob/main/config/versions.yml)) that tracks:
 
