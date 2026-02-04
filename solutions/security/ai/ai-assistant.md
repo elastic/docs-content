@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-navigation_title: AI Assistant
+navigation_title: AI Assistant for Security
 ---
 
 # Elastic AI Assistant for Security
