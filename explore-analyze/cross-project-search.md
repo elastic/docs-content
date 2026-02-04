@@ -229,7 +229,7 @@ With tags, you can:
 
 * route API calls to specific projects based on tag values
 * include tag values in search or ES|QL results to identify which project each document came from
-* filter and aggregate results using project metadata tags
+* filter and aggregate results using tags
 
 The following tags are predefined:
 
