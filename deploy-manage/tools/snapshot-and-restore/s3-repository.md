@@ -98,7 +98,7 @@ The following list contains the available S3 client settings. Those that must be
     When using HTTPS, this repository type validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the root certificate authority is in this truststore using the JVM’s `keytool` tool. If you have a custom certificate authority for your S3 repository and you use the {{es}} [bundled JDK](../../deploy/self-managed/installing-elasticsearch.md#jvm-version), then you will need to reinstall your CA certificate every time you upgrade {{es}}.
 
 `protocol` {applies_to}`stack: deprecated 8.19 removed 10.0+`
-:   The protocol to use to connect to S3. Valid values are either `http` or `https`. Defaults to `https`. Note that this setting is deprecated since 8.19 and is only used if `endpoint` is set to a URL that does not include a scheme. Users should migrate to including the scheme in the `endpoint` setting. 
+:   The protocol scheme to use to connect to S3, if `endpoint` is set to an incomplete URL which does not specify the scheme. Valid values are either `http` or `https`. Defaults to `https`. Avoid using this setting. Instead, set the `endpoint` setting to a fully-qualified URL that starts with either `http://` or `https://`.
 
 `proxy.host`
 :   The host name of a proxy to connect to S3 through.
