@@ -66,8 +66,8 @@ Index privileges
     - `.internal.preview.alerts-security.alerts-<space-id>-*`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.0` `All` for the `Security` feature
-    - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+:   - {applies_to}`stack: ga 9.0+` `All` for the `Security` feature
+    - {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
 
 ## Manage rules
 
