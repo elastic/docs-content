@@ -13,7 +13,10 @@ products:
 
 {{fleet}} supports installing {{agent}} integration packages for collecting and visualizing OpenTelemetry (OTel) data such as logs, metrics, and traces. 
 
-To display the available OpenTelemetry integration packages, find **Integrations** in the {{kib}} navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **OpenTelemetry** category.
+To display the available OpenTelemetry integration packages:
+
+1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **OpenTelemetry** category.
 
 :::{note}
 Some OpenTelemetry integrations are in technical preview and only appear in the list when you enable the setting to show beta integrations.
