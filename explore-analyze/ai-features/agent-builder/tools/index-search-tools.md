@@ -65,6 +65,8 @@ When an agent calls an index search tool:
 - **Provide context in descriptions**: Explain what data the indices contain and what types of questions the tool can answer
 - **Create domain-specific tools**: Build separate tools for different data domains (logs, metrics, alerts) rather than one general-purpose tool
 
+For general guidance on naming tools and writing effective descriptions, refer to [Custom tools best practices](custom-tools.md#best-practices).
+
 
 ## Common patterns
 
