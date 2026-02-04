@@ -1,9 +1,6 @@
 ---
 applies_to:
-  deployment:
-    self:
-    ece:
-    eck:
+  stack: ga 7.17
 navigation_title: Firewalls blocking {{agent}}
 products:
   - id: cloud-kubernetes
@@ -12,7 +9,7 @@ products:
 
 # Troubleshoot firewalls blocking {{agent}}
 
-If you are running into issues connecting your cluster to AutoOps, a corporate firewall might be blocking {{agent}}.
+If you are running into issues connecting your ECE, ECK, or self-managed cluster to AutoOps, a corporate firewall might be blocking {{agent}}.
 
 Complete the steps on this page to test your setup and fix this issue.
 
@@ -24,7 +21,7 @@ Ensure that you have allowed {{agent}} the required level of access. If the prob
 
 ## Test {{agent}}'s connection with your system
 
-There are [three main components](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md#how-your-self-managed-cluster-connects-to-autoops) of {{agent}}'s connection with your system:
+There are [three main components](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md#how-your-cluster-connects-to-autoops) of {{agent}}'s connection with your system:
 
 :::{include} /deploy-manage/monitor/_snippets/autoops-cc-components.md
 :::

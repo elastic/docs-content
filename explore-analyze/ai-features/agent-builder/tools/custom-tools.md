@@ -117,6 +117,10 @@ A strong description explains what the tool does, when to use it, and what limit
 - **Limitations**: Are there constraints (for example, "returns max 50 rows" or "data is 24 hours old")?
 - **Relationships**: How does it relate to other tools?
 
+:::{tip}
+Not sure whether logic belongs in a tool description or in the agent's custom instructions? Refer to [Custom instructions, tool descriptions, or user input](../prompt-engineering.md#custom-instructions-tool-descriptions-or-user-input).
+:::
+
 #### Example: Customer support (retrieval)
 
 - **Tool ID**: `support.search_articles`
@@ -143,6 +147,7 @@ A strong description explains what the tool does, when to use it, and what limit
 
 ## Related pages
 
+- [](../prompt-engineering.md)
 - [](../tools.md)
 - [](builtin-tools-reference.md)
 - [](../kibana-api.md#tools)
