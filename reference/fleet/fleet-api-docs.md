@@ -469,12 +469,22 @@ stack: ga 9.3+
 The manual rollback feature for {{agent}} gives you the ability to roll back to the previously installed version if the install artifacts are still available on disk--typically seven days after the upgrade. 
 
 To roll back a single agent:
-   :Call `POST /api/fleet/package_policies`.
+   :Call `POST /api/fleet/agents/{agentID}/rollback`.
 
 To roll back multiple agents:
    :Call `POST /api/fleet/agents/bulk_rollback`.
 
-**Possible errors**
+### Limitations for manual rollback [rollback-limitations-api]
+
+These limitations apply for the manual rollback feature: 
+
+* Rollback is limited to the version running _before_ the upgrade. Both the previously and currently running versions must be 9.3.0 or later for this functionality to be available.
+* Data required for the rollback is stored on disk for seven days, which can impact available disk space.
+* Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
+* Manual rollback is not available for system-managed packages such as DEB and RPM.
+* Some data might be re-ingested after rollback.
+
+#### Possible errors [rollback-errors-api]
 
 If no version is available on disk to rollback to, you get an error.
 This situation can happen if:

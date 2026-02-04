@@ -329,7 +329,7 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
 
 3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since {{fleet}}-managed upgrades are not supported for this package type.
 
-### Roll back an Elastic Agent upgrade for Fleet-managed agents [rollback-upgrade-fleet-managed]
+## Roll back an Elastic Agent upgrade for Fleet-managed agents [rollback-upgrade-fleet-managed]
 ```yaml {applies_to}
 stack: ga 9.3.0+
 serverless: ga
@@ -343,9 +343,9 @@ The manual rollback feature for {{agent}} gives you the ability to roll back to 
 
 To roll back one or more {{agent}} upgrades:
 1. Go to the **Actions** menu.
-2. Choose **Upgrade management** > **Roll back upgrade**.
+2. Choose **Upgrade management**, and then select **Roll back** for a single agent, or **Roll back upgrade for N agents** for multiple agents.
 
-#### Limitations for manual rollback [rollback-upgrade-fleet-managed]
+### Limitations for manual rollback [rollback-upgrade-fleet-managed]
 
 These limitations apply for the manual rollback feature: 
 
@@ -354,7 +354,8 @@ These limitations apply for the manual rollback feature:
 * Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
 * Manual rollback is not available for system-managed packages such as DEB and RPM.
 * Some data might be re-ingested after rollback.
-##### Possible errors [rollback-upgrade-fleet-managed]
+
+#### Possible errors [rollback-upgrade-fleet-managed]
 
 If no version is available on disk to rollback to, you get an error.
 This situation can happen if:
@@ -362,4 +363,3 @@ This situation can happen if:
 - the version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions. 
 
 - the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 
-
