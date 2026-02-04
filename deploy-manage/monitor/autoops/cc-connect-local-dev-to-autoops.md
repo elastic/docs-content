@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-    self: ga 7.17
+    self:
 navigation_title: Connect your local development cluster
 products:
   - id: cloud-kubernetes
