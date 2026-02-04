@@ -97,8 +97,8 @@ The following list contains the available S3 client settings. Those that must be
 
     When using HTTPS, this repository type validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the root certificate authority is in this truststore using the JVM’s `keytool` tool. If you have a custom certificate authority for your S3 repository and you use the {{es}} [bundled JDK](../../deploy/self-managed/installing-elasticsearch.md#jvm-version), then you will need to reinstall your CA certificate every time you upgrade {{es}}.
 
-`protocol`
-:   The protocol to use to connect to S3. Valid values are either `http` or `https`. Defaults to `https`. Note that this setting is deprecated since 8.19 and is only used if `endpoint` is set to a URL that does not include a scheme. Users should migrate to including the scheme in the `endpoint` setting. 
+`protocol` {applies_to}`stack: deprecated 8.19`
+:   The protocol scheme to use to connect to S3, if `endpoint` is set to an incomplete URL which does not specify the scheme. Valid values are either `http` or `https`. Defaults to `https`. Avoid using this setting. Instead, set the `endpoint` setting to a fully-qualified URL that starts with either `http://` or `https://`.
 
 `proxy.host`
 :   The host name of a proxy to connect to S3 through.
@@ -233,7 +233,7 @@ The following settings are supported:
 `get_register_retry_delay`
 :   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Sets the time to wait before trying again if an attempt to read a [linearizable register](#repository-s3-linearizable-registers) fails. Defaults to `5s`.
 
-`unsafely_incompatible_with_s3_conditional_writes` {applies_to}`stack: ga 9.2.3+`
+`unsafely_incompatible_with_s3_conditional_writes` {applies_to}`stack: ga 9.2.3, deprecated 9.2.4`
 :   (boolean) {{es}} uses AWS S3's [support for conditional writes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html) to protect against repository corruption. If your repository is based on a storage system which claims to be S3-compatible but does not accept conditional writes, set this setting to `true` to make {{es}} perform unconditional writes, bypassing the repository corruption protection, while you work with your storage supplier to address this incompatibility with AWS S3. Defaults to `false`.
 
 ::::{note}
