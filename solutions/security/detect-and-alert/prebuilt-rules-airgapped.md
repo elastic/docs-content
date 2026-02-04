@@ -7,6 +7,7 @@ applies_to:
     eck: ga
 products:
   - id: security
+description: Learn how to install and update Elastic prebuilt detection rules in air-gapped environments using a self-hosted Package Registry or manual export and import.
 ---
 
 # Install and update prebuilt rules in air-gapped environments [prebuilt-rules-airgapped]
