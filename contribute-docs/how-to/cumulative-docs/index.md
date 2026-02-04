@@ -38,7 +38,7 @@ When users arrive at an Elastic documentation page, they find a single source of
 
 :::{image} ./images/reader-experience.png
 :screenshot:
-:alt: Screenshot showing how cumulative documentation displays version-specific badges
+:alt: Screenshot showing documentation with version-specific badges indicating which stack versions and deployment types features apply to, allowing users to quickly identify relevant content
 :::
 
 ### For contributors
