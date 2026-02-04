@@ -27,11 +27,11 @@ When creating custom roles for detection features, you'll need to grant access t
 
 :::::{tab-set}
 
-::::{tab-item} {{sec-serverless}}
+::::{tab-item} {{serverless-full}}
 Only uses the `.alerts-security.alerts-<space-id>` index.
 ::::
 
-::::{tab-item} {{elastic-sec}}
+::::{tab-item} {{ech}}
 Uses the `.alerts-security.alerts-<space-id>` index. If you upgraded from version 8.0 or earlier, you might also need privileges on the legacy `.siem-signals-<space-id>` index.
 ::::
 
@@ -52,8 +52,8 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.0` `All` for the `Security` feature
-    - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+:   - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+    - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ## Preview rules
 
@@ -66,8 +66,8 @@ Index privileges
     - `.internal.preview.alerts-security.alerts-<space-id>-*`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.0+` `All` for the `Security` feature
-    - {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+:   - {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+    - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ## Manage rules
 
@@ -82,11 +82,11 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.0+` `All` for the `Security` feature
-    - {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+:   - {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+    - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ::::{note}
-To manage rules with actions and connectors, you need additional privileges for the `Actions and Connectors` feature (`Management`→ `Actions and Connectors`):
+To manage rules with actions and connectors, you need additional privileges for the `Actions and Connectors` feature (`Management`> `Actions and Connectors`):
 
 - `All`: Provides full access to rule actions and connectors.
 - `Read`: Allows you to edit rule actions and use existing connectors, but you cannot create new connectors.
@@ -110,8 +110,8 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.0` `All` for the `Security` feature
-    - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+:   - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+    - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ::::{note}
 Alerts are managed through {{es}} index privileges. To view alert management flows, you need at least `Read` for the `Rules, Alerts, and Exceptions` feature.
@@ -128,9 +128,8 @@ Index privileges
 :   None
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.0` `All` for the `Security` feature
-    - {applies_to}`stack: ga 9.3` `All` for the `Rules, Alerts, and Exceptions` feature
-    - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` `Read` for the `Rules, Alerts, and Exceptions` feature and `All` for the `Exceptions` subfeature
+:   - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+    - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ## Manage value lists [detections-privileges-manage-value-lists]
 
@@ -143,8 +142,8 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.0` `All` for the `Security` feature
-    - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules` and `Saved Objects Management` features
+:   - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules` and `Saved Objects Management` features
+    - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ::::{important}
 To create the `.lists` and `.items` data streams in your space, visit the **Rules** page for each appropriate space. 
@@ -170,7 +169,7 @@ serverless: ga
 ## Authorization [alerting-auth-model]
 
 ```yaml {applies_to}
-stack:
+stack: ga 9.0+
 ```
 
 Detection rules, including all background detection checks and the actions they generate, are authorized using an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) associated with the last user to edit the rule. When a rule is created or modified, an API key is generated that captures a snapshot of that user's privileges. This API key is used to run all background tasks associated with the rule, including detection checks and executing actions.
