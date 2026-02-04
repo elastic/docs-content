@@ -15,7 +15,9 @@ products:
 
 This section lists the limitations and known issues in {{agent-builder}}.
 
+::::{admonition}
 This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
 
 ## Limitations
 

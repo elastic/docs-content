@@ -18,7 +18,9 @@ To start using {{agent-builder}} you need an {{es}} deployment. If you don't alr
 
 For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
 
+::::{admonition}
 This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
 
 ::::::{stepper}
 :::::{step} Enable {{agent-builder}}

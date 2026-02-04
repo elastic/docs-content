@@ -28,8 +28,9 @@ To get started you need an Elastic deployment and you might need to enable the f
 
 [**Get started with {{agent-builder}}**](agent-builder/get-started.md)
 
+::::{admonition}
 This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
-
+::::
 
 ## Key capabilities
 
