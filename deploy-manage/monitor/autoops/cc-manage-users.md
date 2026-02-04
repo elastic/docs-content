@@ -9,7 +9,7 @@ products:
 
 # Manage connected cluster users
 
-Learn how to invite users to your {{ecloud}} organization and give them access to AutoOps on your connected clusters.
+Learn how to invite users to your {{ecloud}} organization and give them access to AutoOps on your connected ECE, ECK, or self-managed clusters.
 
 ## Invite users
 
