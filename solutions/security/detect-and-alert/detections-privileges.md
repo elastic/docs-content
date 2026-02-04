@@ -142,7 +142,7 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules` and `Saved Objects Management` features
+:   - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ::::{important}
