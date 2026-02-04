@@ -96,7 +96,7 @@ To import rules with actions, you need at least `Read` privileges. To overwrite 
 
 ## Manage alerts
 
-Allows you to manage alerts without modifying rules.
+Allows you to manage alerts.
 
 Cluster privileges
 :   None
