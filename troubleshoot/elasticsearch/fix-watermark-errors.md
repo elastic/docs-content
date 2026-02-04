@@ -14,7 +14,7 @@ products:
 
 When a data node is reaching critical disk space usage, its [disk-based shard allocation watermark settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) will trigger to protect the node's disk functionality. The default watermark percentage thresholds, the summary of {{es}}'s response, and their corresponding {{es}} log are:
 
-* 75% `none`: The Cloud Deployment's {{es}} node's disk bar turns red, but {{es}} takes no action. {applies_to}`ece: ga` {applies_to}`ech: ga`
+* 75% `none`: The Cloud Deployment's {{es}} node's disk bar turns red, but {{es}} takes no action. {applies_to}`ece: ga` {applies_to}`ess: ga`
 * 85% [`low`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-low): {{es}} stops allocating replica shards and primary shards unless from newly-created indices to the affected node(s).
     ```
     low disk watermark [85%] exceeded on [NODE_ID][NODE_NAME] free: Xgb[X%], replicas will not be assigned to this node
@@ -171,6 +171,6 @@ On {{ech}} and {{ece}}, indices may need to be temporarily deleted using the its
 
 To reduce the likelihood of watermark errors:  
 
-* Enable [Autoscaling](/deploy-manage/autoscaling.md) to automatically adjust resources based on storage and performance needs. {applies_to}`ece: ga` {applies_to}`ech: ga` {applies_to}`eck: ga`
+* Enable [Autoscaling](/deploy-manage/autoscaling.md) to automatically adjust resources based on storage and performance needs. {applies_to}`ece: ga` {applies_to}`ess: ga` {applies_to}`eck: ga`
 * Implement more restrictive [{{ilm}} policies](/manage-data/lifecycle/index-lifecycle-management.md) to move data through [data tiers](/manage-data/lifecycle/data-tiers.md) sooner to help keep higher tiers' disk usage under control.
 * Avoid a mix of overly large and small indices which can cause an [unbalanced cluster](/troubleshoot/elasticsearch/troubleshooting-unbalanced-cluster.md). Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md#shard-size-recommendation).
