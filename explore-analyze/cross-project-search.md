@@ -34,7 +34,7 @@ The **origin project** is the project you are currently working in and from whic
 After you link projects, searches that you run from the origin project are no longer local to the origin project by default.
 **Any search initiated on the origin project automatically runs across the origin project and all its linked projects ({{cps}}).**
 Project linking is not bidirectional.
-When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the query scope by using [project routing expressions](#project-routing) or [qualified index expressions](search-expressions).
+When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the query scope by using [project routing expressions](#project-routing) or [qualified index expressions](#search-expressions).
 However, searches initiated from a linked project do not run against the origin project.
 
 You can link projects by using the Cloud UI.
