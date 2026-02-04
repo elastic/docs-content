@@ -108,10 +108,10 @@ The following examples use Docker commands. You can adapt them for other contain
     Replace `<container-name>` with your container's name and `<image-tag>` with the appropriate version tag.
 ::::
 
-::::{step} Install rule updates in {{elastic-sec}}
+::::{step} Update rules
 :anchor: install-rule-updates-airgapped
 
-After updating your registry, install the updated rules in your air-gapped {{elastic-sec}} instance:
+After updating your registry, update the rules in your air-gapped {{elastic-sec}} instance:
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
@@ -132,11 +132,16 @@ For more details about updating prebuilt rules, refer to [Update Elastic prebuil
 
 If you cannot set up a self-hosted {{package-registry}}, you can manually export prebuilt rules from an internet-connected {{elastic-sec}} instance and import them into your air-gapped environment.
 
-This method can be useful if:
+This method is useful when you don't have container infrastructure to host a {{package-registry}}, need to transfer a specific subset of rules, or want a simpler one-time transfer without ongoing registry maintenance.
 
-* You don't have container infrastructure to host a {{package-registry}}.
-* You need to transfer a specific subset of rules instead of the entire rule set.
-* You want a simpler, one-time rule transfer without ongoing registry maintenance.
+::::{note}
+When using the export import method:
+
+* Rule actions and connectors are imported, but you must re-add sensitive connector credentials.
+* Value lists that are used for rule exceptions are not included. You must export and import them separately. Refer to [Manage value lists](/solutions/security/detect-and-alert/create-manage-value-lists.md#edit-value-lists) for more details.
+
+For more details on exporting and importing rules, refer to [Export and import rules](/solutions/security/detect-and-alert/manage-detection-rules.md#import-export-rules-ui).
+::::
 
 :::::{stepper}
 
@@ -168,17 +173,14 @@ This method can be useful if:
 5. Click **Import** to add the rules.
 ::::
 
-:::::
+::::{step} Update rules
+:anchor: update-rules-export-import
 
-::::{note}
-When using the export import method:
-
-* Rule actions and connectors are imported, but you must re-add sensitive connector credentials.
-* Value lists that are used for rule exceptions are not included. You must export and import them separately. Refer to [Manage value lists](/solutions/security/detect-and-alert/create-manage-value-lists.md#edit-value-lists) for more details.
-* You must repeat the export import process from an updated internet-connected instance to get rule updates.
-
-For more details on exporting and importing rules, refer to [Export and import rules](/solutions/security/detect-and-alert/manage-detection-rules.md#import-export-rules-ui).
+1. To get rule updates, repeat this export import process after [updating your prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules) on the internet-connected instance. 
+2. When importing rules, select **Overwrite existing detection rules with conflicting "rule_id"** to update existing rules.
 ::::
+
+:::::
 
 ## Related documentation [prebuilt-rules-airgapped-related]
 
