@@ -18,19 +18,19 @@ Follow this guide to learn how to configure a {{fleet}}-managed {{agent}} on a L
 
 ## Prerequisites [collect-nginx-data-fleet-managed-prereqs]
 
-::::{include} _snippets/collect-nginx-data-prerequisites.md
-::::
+:::{include} _snippets/collect-nginx-data-prerequisites.md
+:::
 
 ## Configure the NGINX status endpoint [collect-nginx-data-fleet-managed-status-endpoint]
 
-::::{include} _snippets/collect-nginx-data-status-endpoint.md
-::::
+:::{include} _snippets/collect-nginx-data-status-endpoint.md
+:::
 
 ## Configure the hybrid agent policy [collect-nginx-data-fleet-managed-policy]
 
-:::::::{stepper}
+:::::{stepper}
 
-::::::{step} Create an agent policy and enroll an agent
+::::{step} Create an agent policy and enroll an agent
 
 1. In {{kib}}, go to **Fleet** → **Agent policies**.
 2. Create a new agent policy (for example, `nginx-telemetry`), or select an existing policy you want to use to collect NGINX telemetry.
@@ -38,9 +38,9 @@ Follow this guide to learn how to configure a {{fleet}}-managed {{agent}} on a L
 
    For detailed steps, refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md).
 
-::::::
+::::
 
-::::::{step} Configure log collection with the Nginx integration
+::::{step} Configure log collection with the Nginx integration
 
 1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for "nginx", then select the **Nginx** integration.
@@ -55,9 +55,9 @@ Follow this guide to learn how to configure a {{fleet}}-managed {{agent}} on a L
 
 For more details, refer to [Add an integration to an {{agent}} policy](/reference/fleet/add-integration-to-policy.md).
 
-::::::
+::::
 
-::::::{step} Configure metrics collection with the NGINX OpenTelemetry input package
+::::{step} Configure metrics collection with the NGINX OpenTelemetry input package
 
 1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Display beta integrations** (the NGINX OpenTelemetry packages are in technical preview).
@@ -72,22 +72,46 @@ For more details, refer to [Add an integration to an {{agent}} policy](/referenc
 6. Select the agent policy you used for the NGINX log collection (for example, `nginx-telemetry`).
 7. Select **Save and continue**.
 
-::::{note}
+:::{note}
 The NGINX OpenTelemetry Assets content package is installed automatically when data is ingested through the NGINX OpenTelemetry Input Package. You can find it in the **Installed integrations** list and use it to visualize OTel-based metrics.
-::::
+:::
 
-::::{note}
+:::{note}
 OpenTelemetry input packages are distinct from [running {{agent}} as an EDOT Collector](/reference/fleet/otel-agent.md), and cannot be used with {{agent}} running in `otel` mode.
+:::
+
 ::::
 
-::::::
-
-:::::::
+:::::
 
 ## Validate your data [collect-nginx-data-fleet-managed-validate]
 
-::::{include} _snippets/collect-nginx-data-validate.md
+After you apply the policy changes, validate that both the ECS-based logs and the OTel-based metrics are flowing in.
+
+:::::{stepper}
+
+::::{step} Validate the log collection
+
+1. In {{kib}}, go to **Discover**, then filter the results using the KQL search bar.
+2. Search for NGINX data stream datasets such as `nginx.access` and `nginx.error`, or enter:
+
+   ```
+   data_stream.dataset : "nginx.access" or "nginx.error"
+   ```
+
+3. Go to **Dashboards**, then select **[Logs Nginx] Access and error logs** to view the dashboard installed with the Nginx integration.
+
 ::::
+
+::::{step} Validate the metrics collection
+
+Go to **Dashboards**, then select **[Metrics Nginx OTEL] Overview** to view the dashboard for visualizing OTel-based metrics.
+
+This dashboard is provided by the NGINX OpenTelemetry Assets content package, installed automatically when data is ingested through the NGINX OpenTelemetry Input Package.
+
+::::
+
+:::::
 
 ## Related pages [collect-nginx-data-fleet-managed-related]
 
