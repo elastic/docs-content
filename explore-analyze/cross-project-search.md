@@ -393,7 +393,7 @@ The following APIs support {{cps}}:
 
 ### Maximum of 20 linked projects per origin project
 
-Each origin project can have up to 20 linked projects.
+Currently, each origin project can have up to 20 linked projects.
 A linked project can be associated with any number of origin projects.
 
 ## {{cps-cap}} examples [cps-examples]
