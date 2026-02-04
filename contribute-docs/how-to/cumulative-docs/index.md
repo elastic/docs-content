@@ -1,67 +1,96 @@
-# Write cumulative documentation
+---
+description: "Cumulative documentation is a single-source-of-truth approach where pages evolve over time to accommodate version and deployment differences, rather than maintaining separate documentation sets."
+applies_to:
+  stack:
+  serverless:
+type: overview
+---
 
-:::{note}
-This content is still in development.
-If you have questions about how to write cumulative documentation while contributing,
-reach out to **@elastic/docs** in the related GitHub issue or PR.
-:::
+# Cumulative documentation
 
-In [elastic.co/docs](https://elastic.co/docs) (Docs V3) we write docs cumulatively. This means that in our Markdown-based docs, there is no longer a new documentation set published with every minor release: the same page stays valid over time and shows version-related evolutions.
+Cumulative documentation is a single-source-of-truth approach used in the Elastic documentation ([elastic.co/docs](https://elastic.co/docs)). Instead of publishing separate documentation sets for each minor release, cumulative docs use a tagging system to indicate which content applies to specific versions, products, and deployment types. The same page evolves over time to accommodate these differences.
 
 :::{important}
-This new behavior starts with the following **versions** of our products: Elastic Stack 9.0, ECE 4.0, ECK 3.0, and even more like EDOT docs. It also includes our unversioned products: Serverless and Elastic Cloud.
+Cumulative documentation applies to the following versions and products: Elastic Stack 9.0+, ECE 4.0+, ECK 3.0+, EDOT, and unversioned products like Serverless and Elastic Cloud.
 
-Nothing changes for our AsciiDoc-based documentation system, that remains published and maintained for the following versions: Elastic Stack until 8.x, ECE until 3.x, ECK until 2.x, etc.
+Our AsciiDoc-based documentation system continues to be published and maintained for earlier versions: Elastic Stack 8.x and earlier, ECE 3.x and earlier, ECK 2.x and earlier.
 :::
 
-## Reader experience
+## Use cases
 
-With cumulative documentation, when a user arrives in our documentation from an outside source, they land on a page that is a single source of truth. This means it is more likely that the page they land on contains content that applies to them regardless of which version or deployment type they are using.
+Cumulative documentation is valuable when:
 
-Users can then compare and contrast differences on a single page to understand what is available to them and explore the ways certain offerings might improve their experience.
+* **Features evolve across versions**: When functionality is added, changed, or deprecated across product versions, cumulative docs allow you to document all supported versions in a single location.
+* **Deployment differences exist**: When features or configurations differ between Elastic Cloud Serverless, Elastic Cloud Hosted, or self-managed deployments, cumulative docs let users compare options on one page.
+* **Product availability varies**: When features are available in some products but not others (for example, available in {{es}} but not in Kibana), cumulative docs clearly indicate these boundaries.
+* **Lifecycle changes occur**: When features move between states (Tech Preview → Beta → GA), cumulative docs track these transitions without creating separate documentation sets.
+
+## Benefits
+
+### For readers
+
+When users arrive at an Elastic documentation page, they find a single source of truth that:
+
+* Contains content relevant to their specific version and deployment type
+* Allows comparison of features and functionality across different offerings
+* Eliminates the need to switch between multiple versions of the same page
+* Reduces confusion about which documentation applies to their situation
 
 :::{image} ./images/reader-experience.png
 :screenshot:
-:alt:
+:alt: Screenshot showing how cumulative documentation displays version-specific badges
 :::
 
-## Contributor experience
+### For contributors
 
-With cumulative documentation, there is a single "source of truth" for each feature, which helps with consistency, accuracy, and maintainability of our documentation over time. It also avoids "drift" between multiple similar sets of documentation.
+Cumulative documentation provides several advantages for documentation maintainers:
 
-As new minor versions are released, we want users to be able to distinguish which content applies to their own ecosystem and product versions without having to switch between different versions of a page.
+* **Single source of truth**: One canonical page per feature reduces inconsistencies and maintenance overhead
+* **No drift**: Eliminates divergence between similar documentation sets that can occur with version-specific copies
+* **Efficient updates**: Changes apply to all applicable versions from a single edit
+* **Clear history**: Version control shows the complete evolution of a feature's documentation
+* **Better coverage**: Makes it easier to document deprecations and removals without losing historical context for users on older versions
 
-This extends to deprecations and removals: No information should be removed for supported product versions, unless it was never accurate. It can be refactored to improve clarity and flow, or to accommodate information for additional products, deployment types, and versions as needed.
+## How it works
 
-To achieve this, the Markdown source files integrate a tagging system.
+Cumulative documentation uses the `applies_to` tagging system in Markdown source files to indicate version and deployment applicability. These tags control how content is displayed to users based on their context.
+
+### The tagging system
+
+There are three levels where you can apply tags:
+
+1. **Page-level tags** (mandatory): Added to the frontmatter to define overall applicability of the page
+2. **Section-level tags**: Applied to individual sections when only parts of a page vary
+3. **Element-level tags**: Applied to specific elements like tabs, dropdowns, and admonitions for fine-grained control
 
 ### When to tag content
 
-Every page should include page-level `applies_to` tags to indicate which product or deployment type
-the content applies to. This is **mandatory** for every page.
+**You should tag content when:**
 
-You should also generally tag content when:
+* Functionality is added in a specific version
+* Functionality changes state (for example, Tech Preview → Beta → GA)
+* Availability varies by deployment type (for example, available in {{ech}} but not in {{ece}})
+* Features are deprecated or removed in specific versions
 
-* Functionality is added
-* Functionality changes state, like going from beta to GA
-* Availability varies, like being available in Elastic Cloud Enterprise but not in Elastic Cloud Hosted
+**You generally don't need to tag:**
 
-**For detailed guidance on contributing to cumulative docs, refer to [](guidelines.md).**
+* Content-only changes like fixing typos or improving clarity
+* Every paragraph when applicability has been established earlier on the page
+* General availability features in unversioned products (Serverless) where all users are on the latest version
 
-### When _not_ to tag content
+### Version configuration and dynamic rendering
 
-You generally do not need to tag:
+The cumulative docs system uses a central version configuration file ([`versions.yml`](https://github.com/elastic/docs-builder/blob/main/config/versions.yml)) that tracks:
 
-* Content-only changes, like fixing typos
-* Every paragraph/section when the applicability has been established earlier on the page
-* Unversioned products, where all users are always on the latest version,
-  when adding features that are generally available
+* Latest released versions of all products
+* Earliest versions documented in the Docs V3 system
+* Version ranges for all supported products
 
-### How dynamic tags work [how-do-these-tags-behave-in-the-output]
+This configuration drives the dynamic rendering logic, which:
 
-We have a central version config called [`versions.yml`](https://github.com/elastic/docs-builder/blob/main/config/versions.yml), which tracks the latest released versions of our products. It also tracks the earliest version of each product documented in the Docs V3 system (the earliest available on elastic.co/docs).
-
-This central version config is used in certain inline version variables and drives our dynamic rendering logic, which allows us to label documentation related to unreleased versions as `planned`, continuously release documentation, and document our Serverless and {{stack}} offerings in one place.
+* Labels unreleased versions as `planned`
+* Enables continuous documentation releases
+* Allows {{stack}} and Serverless offerings to be documented together
 
 :::{tip}
 Read more about how site configuration works in the [docs-builder configuration guide](https://elastic.github.io/docs-builder/configure/site/).
@@ -70,15 +99,26 @@ Read more about how site configuration works in the [docs-builder configuration 
 :::{include} /contribute-docs/_snippets/tag-processing.md
 :::
 
-### How to tag content
+## Key principles
 
-Read more about _how_ to tag content in:
+When contributing to cumulative documentation, follow these principles:
 
-* [Guidelines](guidelines.md):
-  Review more detailed guidance on when to tag content.
-* [Badge usage and placement](badge-placement.md):
-  Learn how to integrate `applies_to` badges into docs content.
-* [Example scenarios](example-scenarios.md):
-  Browse common scenarios you might run into as a docs contributor that require different approaches to labeling cumulative docs.
-* [`applies_to` syntax guide](https://elastic.github.io/docs-builder/syntax/applies):
-  Reference all valid values and syntax patterns available in `applies_to`.
+* **Never remove content for supported versions**: Information should remain available for all supported product versions unless it was never accurate. Content can be refactored for clarity, but not deleted.
+* **Use page-level tags**: Always include `applies_to` tags in the page frontmatter to indicate product and deployment applicability.
+* **Tag at the appropriate level**: Apply tags at the highest level that makes sense (page > section > element) to avoid over-tagging.
+* **Maintain single source of truth**: Each feature should have one canonical documentation page that evolves over time.
+
+## Next steps
+
+To start contributing to cumulative documentation:
+
+* Review the [cumulative docs guidelines](guidelines.md) for detailed decision-making guidance on when and how to tag content
+* Learn about [badge usage and placement](badge-placement.md) to understand how to integrate `applies_to` badges into different content structures
+* Explore [example scenarios](example-scenarios.md) to see real-world examples organized by documentation maturity level
+* Reference the [`applies_to` syntax guide](https://elastic.github.io/docs-builder/syntax/applies) for all valid values and syntax patterns
+
+## Related pages
+
+* [Content types overview](/contribute-docs/content-types/index.md) - Understand how to structure different types of documentation pages
+* [Cumulative docs reference](reference.md) - Quick reference for `applies_to` syntax
+* [Docs builder syntax guide](https://elastic.github.io/docs-builder/syntax/) - Complete documentation for Markdown syntax in Elastic docs
