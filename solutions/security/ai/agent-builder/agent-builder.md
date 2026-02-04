@@ -79,3 +79,9 @@ With Agent Builder, you can automate this process to speed it up and require les
 - Search Attack Discovery for related attacks (using `attack_discovery_search_tool`)
 - Return an actionable alert summary based on rich context
 
+
+## Related resources
+
+- [](/explore-analyze/ai-features/ai-chat-experiences.md)
+- [](/explore-analyze/ai-features/elastic-agent-builder.md)
+- [](/explore-analyze/workflows.md)
