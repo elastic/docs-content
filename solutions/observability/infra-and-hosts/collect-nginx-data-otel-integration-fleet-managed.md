@@ -41,7 +41,7 @@ OpenTelemetry input packages cannot be used with an [{{agent}} running as an EDO
 ::::{step} Create an agent policy and enroll an agent
 
 1. In {{kib}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Go to **Agent policies**, then [create an agent policy](reference/fleet/agent-policy#create-a-policy) (for example, `nginx-telemetry`), or select an existing policy you want to use to collect NGINX telemetry.
+2. Go to **Agent policies**, then [create an agent policy](/reference/fleet/agent-policy.md#create-a-policy) (for example, `nginx-telemetry`), or select an existing policy you want to use to collect NGINX telemetry.
 3. Add an {{agent}} running version 9.2 or later to the policy.
 
    For detailed steps, refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md).
