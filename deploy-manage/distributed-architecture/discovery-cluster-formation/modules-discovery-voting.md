@@ -24,11 +24,6 @@ If you stop half or more of the nodes in the voting configuration at the same ti
 
 ::::
 
-::::{note}
-This availability requirement applies during normal operations when you need the cluster to remain available. A [full cluster restart](../../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) intentionally makes the cluster temporarily unavailable. Stopping all nodes simultaneously is expected in that scenario.
-
-::::
-
 ## Voting configuration updates [_voting_configuration_updates]
 
 After a node joins or leaves the cluster, {{es}} reacts by automatically making corresponding changes to the voting configuration in order to ensure that the cluster is as resilient as possible. It is important to wait for this adjustment to complete before you remove more nodes from the cluster. For more information, see [*Add and remove nodes in your cluster*](../../maintenance/add-and-remove-elasticsearch-nodes.md).
