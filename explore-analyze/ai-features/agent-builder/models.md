@@ -31,9 +31,10 @@ Learn more about [Elastic Managed LLMs](kibana://reference/connectors-kibana/ela
 
 :::{applies-item} {ece:, eck, self: preview =9.2, ga 9.3+}
 
-These deployments do not include a preconfigured connector. You must [configure a connector](#change-the-default-model) to use {{agent-builder}}.
+These deployments do not include a preconfigured connector. To use {{agent-builder}}, you have two options:
 
-% To access models on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md) from self-managed deployments, use [Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
+- [Configure a connector](#change-the-default-model)
+- [Connect to Elastic Inference Service (EIS) using Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md)
 
 :::
 
