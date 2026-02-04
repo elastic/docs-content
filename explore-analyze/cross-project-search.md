@@ -23,7 +23,7 @@ Restricting search scope is always possible, but it requires an explicit choice 
 
 * {{cps-cap}} requires linked projects.
 <!-- To set up linked projects, refer to . -->
-* To use {{cps}} with ES|QL, both the origin and linked projects must have the appropriate [subscription level](https://www.elastic.co/subscriptions).
+<!-- * Pricing info -->
 <!-- * {{cps-cap}} requires [UIAM](TODO) set up. -->
 
 ## Project linking
@@ -33,7 +33,8 @@ The **origin project** is the project you are currently working in and from whic
 **Linked projects** are other projects that are connected to the origin project and whose data can be searched from it.
 After you link projects, searches that you run from the origin project are no longer local to the origin project by default.
 **Any search initiated on the origin project automatically runs across the origin project and all its linked projects ({{cps}}).**
-Project linking is not bidirectional. When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the scope.
+Project linking is not bidirectional.
+When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the query scope by using [project routing expressions](#project-routing) or [qualified index expressions](search-expressions).
 However, searches initiated from a linked project do not run against the origin project.
 
 You can link projects by using the Cloud UI.
@@ -67,7 +68,8 @@ The project alias is derived from the project name and can be modified.
 
 The **project ID** uniquely identifies a project and is system-generated.
 
-The **project alias** is a human-readable identifier that you can change to make a project easier to recognize and reference.
+The **project alias** is a human-readable identifier derived from the project’s Connection alias. If you want to change the project alias, you must update the Connection alias of the linked project.
+<!-- Link to the page that explains how to update the Connection alias. -->
 
 While both the project ID and project alias uniquely identify a project, {{cps}} uses project aliases in index expressions. Project aliases are intended to be user-friendly and descriptive, making search expressions easier to read and maintain.
 
@@ -105,7 +107,7 @@ If a linked project does not have a `logs` resource, that project is skipped and
 {{cps-cap}} supports two types of search expressions: unqualified and qualified search expressions. The difference between them determines where a search request runs and how errors are handled.
 
 **Unqualified search expressions** follow the {{cps}} model and represent the default, native behavior in {{cps-init}}.
-**Qualified search expressions** explicitly override the default behavior, providing CCS-like semantics for controlling where a search runs and how errors are handled.
+**Qualified search expressions** explicitly override the default behavior, enabling you to precisely control which projects a search runs on and how errors are handled.
 
 An unqualified search expression does not include a project alias prefix.
 In this case, the search runs against the origin project and all its linked projects.
@@ -119,15 +121,6 @@ GET _origin:logs/_search
 ```
 
 For additional examples of qualified search expressions, refer to the [examples section](#cps-examples).
-
-#### Search scope and index resolution
-
-In {{cps}}, when projects are linked to an origin project, all their searchable resources are conceptually brought into the origin project’s search scope. For search purposes, this forms a single merged project view.
-
-* Unqualified index expressions are resolved against this merged project view.
-* Qualified index expressions are resolved independently within each project explicitly targeted by the search expression.
-
-As a result, unqualified searches treat linked projects as part of one larger logical project, unless the search expression explicitly limits the scope.
 
 #### `ignore_unavailable` and `allow_no_indices`
 
@@ -223,7 +216,7 @@ TODO
 
 ## Tags
 
-You can assign tags to projects and use them to control {{cps}} behavior. Tags are managed in the Elastic Cloud UI.
+You can assign [tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) to projects and use them to control {{cps}} behavior. Tags are managed in the Elastic Cloud UI.
 
 With tags, you can:
 
@@ -249,7 +242,7 @@ There are two ways to use tags in {{cps-init}}:
 * project routing
 * queries
 
-#### Project routing
+#### Project routing [project-routing]
 
 Project routing enables you to limit a search to a subset of linked projects (the origin project and its linked projects) based on tag values.
 When you use project routing, the routing decision is made before the search request is performed.
