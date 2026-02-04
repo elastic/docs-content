@@ -237,7 +237,7 @@ The following tags are predefined:
 * `_csp`: the cloud service provider
 * `_id`: the project identifier
 * `_organization`: the organization identifier
-* `_region`: the CPS region
+* `_region`: the Cloud region where the project is located
 * `_type`: the project type (Observability, Search, Security)
 
 Predefined tags are always start with an underscore `_`.
