@@ -82,8 +82,8 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.0` `All` for the `Security` feature
-    - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+:   - {applies_to}`stack: ga 9.0+` `All` for the `Security` feature
+    - {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
 
 ::::{note}
 To manage rules with actions and connectors, you need additional privileges for the `Actions and Connectors` feature (`Management`→ `Actions and Connectors`):
