@@ -484,6 +484,31 @@ def fetch_sheet_data(
         sys.exit(EXIT_SHEET_ERROR)
 
 
+def normalize_cell_value(value: Any) -> str:
+    """
+    Normalize a cell value for CSV output.
+    
+    - Converts to string
+    - Replaces newlines with <br> for proper HTML rendering in tables
+    
+    Args:
+        value: The cell value (can be any type)
+        
+    Returns:
+        Normalized string value
+    """
+    if value is None:
+        return ""
+    
+    str_value = str(value)
+    
+    # Replace newlines with <br> for HTML rendering
+    # This handles cells with multiple values separated by line breaks
+    str_value = str_value.replace('\r\n', '<br>').replace('\n', '<br>').replace('\r', '<br>')
+    
+    return str_value
+
+
 def filter_columns(
     data: List[Dict[str, Any]],
     column_config: List[Dict[str, str]]
@@ -520,12 +545,12 @@ def filter_columns(
         target = col_conf.get('target', source)  # Use source as target if not specified
         column_mapping[source] = target
 
-    # Filter and rename columns
+    # Filter, rename columns, and normalize cell values
     filtered_data = []
     for row in data:
         filtered_row = {}
         for source, target in column_mapping.items():
-            filtered_row[target] = row[source]
+            filtered_row[target] = normalize_cell_value(row[source])
         filtered_data.append(filtered_row)
 
     print(f"✓ Filtered to {len(column_mapping)} columns")
