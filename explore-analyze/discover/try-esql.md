@@ -314,7 +314,7 @@ Other interactions with the results table do not update the query, such as dragg
 
 ## Revert to Discover's classic mode [revert-to-classic-mode]
 
-You can go back to the classic data view and KQL mode of Discover at any time. When switching from {{esql}} mode to classic mode, your {{esql}} query is lost.
+You can go back to the classic data view and KQL mode in Discover at any time. When you switch from {{esql}} mode to classic mode, your {{esql}} query is lost.
 
 :::::{applies-switch}
 
@@ -326,12 +326,12 @@ You can go back to the classic data view and KQL mode of Discover at any time. W
 ![Tab contextual menu with an option to switch from {{esql}} to classic mode](/explore-analyze/images/discover-switch-to-classic.png "=30%")
 
 :::{tip}
-If you open the contextual menu of a tab other than the one currently open, the **Switch to classic** option doesn't show. You have to load that tab first.
+The **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
 :::
 ::::
 
 ::::{applies-item} stack: ga 9.2-9.3
-From the application menu, select **Switch to classic**. This affects only your current Discover tab.
+From the application menu, select **Switch to classic**. This only affects your current Discover tab.
 ::::
 
 ::::{applies-item} stack: ga 9.0-9.1

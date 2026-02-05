@@ -288,7 +288,7 @@ For example, exclude results from the ecommerce sample data view where day of we
 
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
-You can switch to the ES|QL mode of Discover from the application menu, and can [revert back to classic mode](try-esql.md#revert-to-classic-mode) at any time.
+You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](try-esql.md#revert-to-classic-mode) at any time.
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
 
 In ES|QL mode, the **Documents** tab is named **Results**.
