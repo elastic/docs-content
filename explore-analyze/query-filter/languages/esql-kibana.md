@@ -48,7 +48,7 @@ This will hide the {{esql}} user interface from various applications. However, u
 
 ## The {{esql}} editor [esql-kibana-get-started]
 
-To get started with {{esql}}, go to **Discover**. Next, select **Try ES|QL** from the application menu bar.
+To get started with {{esql}}, go to **Discover**. Next, select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
 
 ### The query bar [esql-kibana-query-bar]
