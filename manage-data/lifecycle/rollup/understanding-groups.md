@@ -1,4 +1,5 @@
 ---
+navigation_title: Rollup groups and configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-understanding-groups.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Understanding groups [rollup-understanding-groups]
+# {{es}} rollup groups and configuration [rollup-understanding-groups]
 
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
@@ -16,6 +17,7 @@ products:
 Rollups will be removed in a future version. [Migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
+Learn how to configure {{es}} rollup jobs with groupings for rollup queries and aggregations, as well as best practices for grouping time series data.
 
 To preserve flexibility, Rollup Jobs are defined based on how future queries may need to use the data. Traditionally, systems force the admin to make decisions about what metrics to rollup and on what interval. For example, the average of `cpu_time` on an hourly basis. This is limiting; if, in the future, the admin wishes to see the average of `cpu_time` on an hourly basis *and* partitioned by `host_name`, they are out of luck.
 

@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-troubleshooting.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -48,15 +43,14 @@ The API should return `"connected" : true`. When using [API key authentication](
   }
 }
 ```
-
 1. The remote cluster has connected successfully.
 2. If present, indicates the remote cluster has connected using [API key authentication](../../deploy-manage/remote-clusters/remote-clusters-api-key.md) instead of [certificate based authentication](../../deploy-manage/remote-clusters/remote-clusters-cert.md).
 
-
+If the remote cluster does not appear as connected, verify that the configured endpoint and port are correct, and that the selected [security model](/deploy-manage/remote-clusters/security-models.md) and [connection mode](/deploy-manage/remote-clusters/connection-modes.md) match your configuration and network setup, as each combination has different connectivity requirements.
 
 ### Enabling the remote cluster server [remote-clusters-troubleshooting-enable-server]
 
-When using API key authentication, cross-cluster traffic happens on the remote cluster interface, instead of the transport interface. The remote cluster interface is not enabled by default. This means a node is not ready to accept incoming cross-cluster requests by default, while it is ready to send outgoing cross-cluster requests. Ensure you’ve enabled the remote cluster server on every node of the remote cluster. In [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
+When using API key authentication, cross-cluster traffic happens on the remote cluster interface, instead of the transport interface. The remote cluster server interface is not enabled by default. This means a node is not ready to accept incoming cross-cluster requests by default, while it is ready to send outgoing cross-cluster requests. Ensure you’ve enabled the remote cluster server on every node of the remote cluster. In [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
 * Set [`remote_cluster_server.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.
 * Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
@@ -92,7 +86,7 @@ org.elasticsearch.transport.ConnectTransportException: [][192.168.0.42:9443] **c
 #### Resolution [_resolution]
 
 * Check the host and port for the remote cluster are correct.
-* Ensure the [remote cluster server is enabled](#remote-clusters-troubleshooting-enable-server) on the remote cluster.
+* Ensure the [remote cluster server is enabled](#remote-clusters-troubleshooting-enable-server) on the remote cluster if you are using API key-based authentication.
 * Ensure no firewall is blocking the communication.
 
 
@@ -127,6 +121,12 @@ Note that with some network configurations it could take minutes or hours for th
 ### TLS trust not established [remote-clusters-troubleshooting-tls-trust]
 
 TLS can be misconfigured on the local or the remote cluster. The result is that the local cluster does not trust the certificate presented by the remote cluster.
+
+::::{note}
+TLS certificate–based authentication requires mutual TLS trust between the local and remote clusters. In contrast, API key–based authentication only requires the local cluster (client) to trust the certificate presented by the remote cluster (server). Refer to [Remote clusters security models](/deploy-manage/remote-clusters/security-models.md) for details and requirements of each model.
+::::
+
+The following example describes a TLS trust issue that can occur when using API key-based authentication.
 
 #### Symptom [_symptom_3]
 
@@ -163,31 +163,30 @@ If you change the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file, 
 
 ## API key authentication issues [remote-clusters-troubleshooting-api-key]
 
-### Connecting to transport port when using API key authentication [remote-clusters-troubleshooting-transport-port-api-key]
+### Connecting to the transport port when using API key authentication [remote-clusters-troubleshooting-transport-port-api-key]
 
-When using API key authentication, a local cluster should connect to a remote cluster’s remote cluster server port (defaults to `9443`) instead of the transport port (defaults to `9300`). A misconfiguration can lead to a number of symptoms:
+When using API key authentication, the local cluster must connect to the remote cluster server interface (default port `9443`), not to the transport interface (default port `9300`). Configuration mismatches between the selected security model and the port being used can lead to several different failure scenarios, including:
 
 #### Symptom 1 [_symptom_1]
 
-It’s recommended to use different CAs and certificates for the transport interface and the remote cluster server interface. If this recommendation is followed, a remote cluster client node does not trust the server certificate presented by a remote cluster on the transport interface.
+It’s recommended to use different CAs and certificates for the transport interface and the remote cluster server interface. If this recommendation is followed, a remote cluster client node using API key based authentication does not trust the server certificate presented by a remote cluster on the transport interface.
 
-The local cluster logs `failed to establish trust with server`:
+In this case, if the local cluster is incorrectly configured to connect to the remote cluster's transport interface instead of the remote cluster server interface, the local cluster logs `failed to establish trust with server`:
 
 ```txt
 [2023-06-28T12:48:46,575][WARN ][o.e.c.s.DiagnosticTrustManager] [local-node] **failed to establish trust with server** at [1192.168.0.42]; the server provided a certificate with subject name [CN=transport], fingerprint [c43e628be2a8aaaa4092b82d78f2bc206c492322], no keyUsage and no extendedKeyUsage; the certificate is valid between [2023-01-29T12:05:53Z] and [2032-08-29T12:05:53Z] (current time is [2023-06-28T02:48:46.574738Z], certificate dates are valid); the session uses cipher suite [TLS_AES_256_GCM_SHA384] and protocol [TLSv1.3]; the certificate has subject alternative names [DNS:localhost,DNS:localhost6.localdomain6,IP:127.0.0.1,IP:0:0:0:0:0:0:0:1,DNS:localhost4,DNS:localhost6,DNS:localhost.localdomain,DNS:localhost4.localdomain4,IP:192.168.0.42]; the certificate is issued by [CN=Elastic Auto Transport CA] but the server did not provide a copy of the issuing certificate in the certificate chain; this ssl context ([xpack.security.remote_cluster_client.ssl (with trust configuration: PEM-trust{/rcs2/ssl/remote-cluster-ca.crt})]) is not configured to trust that issuer, it only trusts the issuer [CN=Elastic Auto RemoteCluster CA] with fingerprint [ba2350661f66e46c746c1629f0c4b645a2587ff4]
 sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
 ```
 
-The remote cluster logs `client did not trust this server's certificate`:
+The remote cluster transport interface logs `client did not trust this server's certificate`:
 
 ```txt
 [2023-06-28T12:48:46,584][WARN ][o.e.x.c.s.t.n.SecurityNetty4Transport] [remote-node] **client did not trust this server's certificate**, closing connection Netty4TcpChannel{localAddress=/192.168.0.42:9309, remoteAddress=/192.168.0.84:60810, profile=default}
 ```
 
-
 #### Symptom 2 [_symptom_2_2]
 
-The CA and certificate can be shared between the transport and remote cluster server interface. Since a remote cluster client does not have a client certificate by default, the server will fail to verify the client certificate.
+If the transport and remote cluster server interfaces share the same CA, the local cluster trusts the remote transport certificate even when connecting to the wrong port. The connection still fails because the transport interface requires mutual TLS and the remote cluster client does not present a client certificate by default.
 
 The local cluster logs `Received fatal alert: bad_certificate`:
 
@@ -206,7 +205,7 @@ io.netty.handler.codec.DecoderException: javax.net.ssl.SSLHandshakeException: **
 
 #### Symptom 3 [_symptom_3_2]
 
-If the remote cluster client is configured for mTLS and provides a valid client certificate, the connection fails because the client does not send the expected authentication header.
+If the remote cluster client is configured for mTLS and provides a valid client certificate, the connection still fails because the request is handled by the transport interface, which does not support API key–based authentication, and the client does not send the expected authentication header.
 
 The local cluster logs `missing authentication`:
 

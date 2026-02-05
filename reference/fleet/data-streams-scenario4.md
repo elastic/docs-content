@@ -2,12 +2,12 @@
 navigation_title: Scenario 4
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario4.html
+applies_to:
+  stack: ga 9.1
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
-applies_to:
-  stack: ga 9.1
-  serverless: ga
 ---
 
 # Scenario 4: Apply an ILM policy to all data streams in a custom integration [data-streams-scenario4]

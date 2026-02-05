@@ -41,7 +41,7 @@ Details about setting up and configuring Rollup are covered in [Create Job API](
 
 The Rollup feature exposes a new search endpoint (`/_rollup_search` versus the standard `/_search`) which knows how to search over rolled-up data. Importantly, this endpoint accepts 100% normal {{es}} Query DSL. Your application does not need to learn a new DSL to inspect historical data, it can simply reuse existing queries and dashboards.
 
-There are some limitations to the functionality available; not all queries and aggregations are supported, certain search features (such as highlighting) are disabled, and available fields depend on how the rollup was configured. These limitations are covered more in [Rollup Search limitations](/manage-data/lifecycle/rollup/rollup-search-limitations.md).
+There are some limitations to the functionality available; not all queries and aggregations are supported, certain search features (such as highlighting) are disabled, and available fields depend on how the rollup was configured. These limitations are covered more in [](/manage-data/lifecycle/rollup/rollup-search-limitations.md).
 
 But if your queries, aggregations and dashboards only use the available functionality, redirecting them to historical data is trivial.
 

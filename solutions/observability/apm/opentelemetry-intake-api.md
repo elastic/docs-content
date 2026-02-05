@@ -17,6 +17,10 @@ APM Server supports two OTLP communication protocols on the same port:
 * OTLP/HTTP (protobuf)
 * OTLP/gRPC
 
+:::{important}
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+:::
+
 ## OTLP/gRPC paths [_otlpgrpc_paths]
 
 | Name | Endpoint |

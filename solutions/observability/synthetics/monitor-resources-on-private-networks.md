@@ -56,10 +56,9 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 
 After setting up {{fleet}}, you’ll connect {{fleet}} to the {{stack}} or your Observability Serverless project and enroll an {{agent}} in {{fleet}}.
 
-Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily. For monitors running on {{private-location}}s, you *must* use the `elastic-agent-complete` Docker image to create a self-hosted {{agent}} node. The standard {{ecloud}} or self-hosted {{agent}} will not work.
-
+Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily. Additional installation methods can be found on the [{{agent}} installation guide](/reference/fleet/install-elastic-agents.md). 
 ::::{important}
-The `elastic-agent-complete` Docker image is the only way to have all available options that you see in the UI.
+For running browser monitors on {{private-location}}s, you *must* use one of the `elastic-agent-complete` Docker image variants in a containerized environment. The standard {{agent}} variant only supports TCP, ICMP, and HTTP monitors.
 
 ::::
 
@@ -67,31 +66,38 @@ To pull the Docker image run:
 
 ::::{tab-set}
 :group: docker
-:::{tab-item} Latest
-:sync: latest
+:::{tab-item} elastic-agent-complete
+:sync: specific
 
-```shell subs=true
+```sh subs=true
+# Supports all monitor types: TCP, ICMP, HTTP and Browser
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
 
 :::
 
-:::{tab-item} Specific version
-:sync: specific
+:::{tab-item} elastic-agent
+:sync: latest
 
-```sh subs=true
-docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:<SPECIFIC.VERSION.NUMBER>
+```shell subs=true
+# Supports TCP, ICMP and HTTP monitors
+docker pull docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
 ```
 
-You can download and install a specific version of the {{stack}} by replacing `<SPECIFIC.VERSION.NUMBER>` with the version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 :::
 
 ::::
+
+You can download and install a specific version of the {{stack}} by replacing `{{version.stack}}` with the version number you want. For example, you can replace `{{version.stack}}` with {{version.stack.base}}.
 
 Then enroll and run an {{agent}}. You’ll need an enrollment token and the URL of the {{fleet-server}}. You can use the default enrollment token for your policy or create new policies and [enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md) as needed.
 
 For more information on running {{agent}} with Docker, refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
 
+::::{tab-set}
+:group: docker
+:::{tab-item} elastic-agent-complete
+:sync: specific
 
 ```shell subs=true
 docker run \
@@ -103,8 +109,26 @@ docker run \
   --rm docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
 
-::::{important}
-The `elastic-agent-complete` Docker image requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+The `elastic-agent-complete` container, when running as Synthetics Private Locations, requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+
+:::
+
+:::{tab-item} elastic-agent
+:sync: latest
+
+```shell subs=true
+docker run \
+  --env FLEET_ENROLL=1 \
+  --env FLEET_URL={fleet_server_host_url} \
+  --env FLEET_ENROLLMENT_TOKEN={enrollment_token} \
+  --cap-add=NET_RAW \
+  --cap-add=SETUID \
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
+```
+
+The `elastic-agent` container, when running as Synthetics Private Locations, requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+
+:::
 
 ::::
 

@@ -20,10 +20,10 @@ The endpoint is available under `/_otlp/v1/metrics`.
 :::{important}
 The recommended approach for sending OpenTelemetry Protocol (OTLP) data depends on your deployment:
 
-- **ECH and {{serverless-short}}:** Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry:/reference/motlp.md) directly.
+- **ECH and {{serverless-short}}:** Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry://reference/motlp.md) directly.
 - **ECE, ECK, and self-managed:** Use the {{es}} OTLP endpoint described on this page, ideally through an OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
 
-For details on the recommended way to set up OpenTelemetry-based data ingestion, refer to the [EDOT reference architecture](opentelemetry:/reference/architecture/index.md).
+For details on the recommended way to set up OpenTelemetry-based data ingestion, refer to the [EDOT reference architecture](opentelemetry://reference/architecture/index.md).
 :::
 
 Ingesting metrics data using the OTLP endpoint has the following advantages:
@@ -95,10 +95,36 @@ By default, metrics are ingested into the `metrics-generic.otel-default` data st
 
 The target data stream name is constructed as `metrics-${data_stream.dataset}.otel-${data_stream.namespace}`.
 
+## Configure histogram handling
+```{applies_to}
+stack: preview 9.3
+```
+
+You can configure how OTLP histograms are mapped using the `xpack.otel_data.histogram_field_type` cluster setting. Valid values are:
+
+ - `histogram` (default): Map histograms as T-Digests using the `histogram` field type
+ - `exponential_histogram`: Map histograms as exponential histograms using the `exponential_histogram` field type
+
+The setting is dynamic and can be updated at runtime:
+
+```console
+PUT /_cluster/settings
+{
+  "persistent" : {
+    "xpack.otel_data.histogram_field_type" : "exponential_histogram"
+  }
+}
+```
+
+Because both `histogram` and `exponential_histogram` support [coerce](elasticsearch://reference/elasticsearch/mapping-reference/coerce.md), changing this setting dynamically does not risk mapping conflicts or ingestion failures.
+
+This setting only applies to metrics ingested using the [Elasticsearch OTLP endpoint](./tsds-ingest-otlp.md).
+Documents ingested with the _bulk API (e.g. using the Elasticsearch exporter for the OpenTelemetry Collector) are not affected.
+
 ## Limitations
 
 * Only the OTLP metrics endpoint (`/_otlp/v1/metrics`) is supported.
-  To ingest logs, traces, and profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry:/reference/edot-collector/components/elasticsearchexporter.md),
-  such as the [Elastic Distribution of OpenTelemetry (EDOT) Collector](opentelemetry:/reference/edot-collector/index.md).
+  To ingest logs, traces, and profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md),
+  such as the [Elastic Distribution of OpenTelemetry (EDOT) Collector](opentelemetry://reference/edot-collector/index.md).
 * Histograms are only supported in delta temporality. Set the temporality preference to delta in your SDKs, or use the [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) to avoid cumulative histograms to be dropped.
 * Exemplars are not supported.

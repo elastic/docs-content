@@ -37,7 +37,9 @@ Models from third-party LLM providers.
 | Google Gemini    | **Gemini 2.5 Flash**    | Excellent | Good | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Great | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Good | Excellent |
+| OpenAI    | **GPT-4.1 Mini**      | Excellent | Great | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | OpenAI    | **GPT-5**           | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Good | Excellent |
+| OpenAI    | **GPT-5.2**         | Excellent | Great | Excellent | Excellent | Excellent | Great | Good | Excellent |
 
 
 ## Open-source models [_open_source_models]
@@ -47,7 +49,7 @@ stack: preview 9.2
 serverless: preview
 ```
 
-Models you can [deploy and manage yourself](/solutions/observability/connect-to-own-local-llm.md).
+Models you can [deploy and manage yourself](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md).
 
 | Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

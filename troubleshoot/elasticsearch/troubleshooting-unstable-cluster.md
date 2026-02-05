@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unstable-cluster.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -83,15 +78,7 @@ Nodes typically leave the cluster with reason `disconnected` when they shut down
 
 The connections from the elected master node to every other node in the cluster are particularly important. The elected master never spontaneously closes its outbound connections to other nodes. Similarly, once an inbound connection is fully established, a node never spontaneously closes it unless the node is shutting down.
 
-If you see a node unexpectedly leave the cluster with the `disconnected` reason, something other than {{es}} likely caused the connection to close. A common cause is a misconfigured firewall with an improper timeout or another policy that’s [incompatible with {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). It could also be caused by general connectivity issues, such as packet loss due to faulty hardware or network congestion. If you’re an advanced user, configure the following loggers to get more detailed information about network exceptions:
-
-```yaml
-logger.org.elasticsearch.transport.TcpTransport: DEBUG
-logger.org.elasticsearch.xpack.core.security.transport.netty4.SecurityNetty4Transport: DEBUG
-```
-
-If these logs do not show enough information to diagnose the problem, obtain a packet capture simultaneously from the nodes at both ends of an unstable connection and analyse it alongside the {{es}} logs from those nodes to determine if traffic between the nodes is being disrupted by another device on the network.
-
+To determine whether the node which left the cluster with the `disconnected` reason did so because it was shutting down, look for the message from the `NodeJoinExecutor` logged when the node rejoined the cluster again as described in the previous section. This message indicates whether the node restarted or not. If the node did not restart, the disconnect is unexpected and indicates that something other than {{es}} caused the connection to close. Refer to [Diagnosing network disconnections](#troubleshooting-unstable-cluster-network) for further information about troubleshooting network disconnections.
 
 ## Diagnosing `lagging` nodes [troubleshooting-unstable-cluster-lagging]
 
@@ -172,19 +159,24 @@ cat shardlock.log | sed -e 's/.*://' | base64 --decode | gzip --decompress
 ```
 
 
-## Diagnosing other network disconnections [troubleshooting-unstable-cluster-network]
+## Diagnosing network disconnections [troubleshooting-unstable-cluster-network]
 
-{{es}} is designed to run on a fairly reliable network. It opens a number of TCP connections between nodes and expects these connections to remain open [forever](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). If a connection is closed then {{es}} will try and reconnect, so the occasional blip may fail some in-flight operations but should otherwise have limited impact on the cluster. In contrast, repeatedly-dropped connections will severely affect its operation.
+{{es}} is designed to run on a fairly reliable network. It opens a number of TCP connections between nodes and expects these transport connections to remain open [forever](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). If a transport connection is closed then {{es}} tries to reopen the connection, failing any in-flight operations that were using the connection at the time. Occasional closures of transport connections might be acceptable because they have a small impact on the cluster, but repeatedly-dropped transport connections severely affect its operations.
 
-{{es}} nodes will only actively close an outbound connection to another node if the other node leaves the cluster. See [Troubleshooting an unstable cluster](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md#cluster-fault-detection-troubleshooting) for further information about identifying and troubleshooting this situation. If an outbound connection closes for some other reason, nodes will log a message such as the following:
+{{es}} nodes only actively close an outbound transport connection to another node if the other node leaves the cluster. Refer to [Troubleshooting an unstable cluster](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md#cluster-fault-detection-troubleshooting) for further information about identifying and troubleshooting this situation. If an outbound transport connection closes for some other reason, {{es}} logs messages such as the following:
 
 ```text
 [INFO ][o.e.t.ClusterConnectionManager] [node-1] transport connection to [{node-2}{g3cCUaMDQJmQ2ZLtjr-3dg}{10.0.0.1:9300}] closed by remote
+[WARN ][o.e.c.NodeConnectionsService  ] [node-1] reopened transport connection to node [{node-2}{g3cCUaMDQJmQ2ZLtjr-3dg}{10.0.0.1:9300}] which disconnected exceptionally [500ms] ago but did not restart, so the disconnection is unexpected
 ```
 
-Similarly, once an inbound connection is fully established, a node never spontaneously closes it unless the node is shutting down.
+Similarly, once an inbound transport connection is fully established, a node never spontaneously closes it unless the node is shutting down.
 
-Therefore if you see a node report that a connection to another node closed unexpectedly, something other than {{es}} likely caused the connection to close. A common cause is a misconfigured firewall with an improper timeout or another policy that’s [incompatible with {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). It could also be caused by general connectivity issues, such as packet loss due to faulty hardware or network congestion. If you’re an advanced user, configure the following loggers to get more detailed information about network exceptions:
+Therefore if a node reports that a transport connection to another node closed unexpectedly, something other than {{es}} likely caused the connection to close. A common cause is a misconfigured firewall with an improper timeout or another policy that’s [incompatible with {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). It could also be caused by general connectivity issues, such as packet loss due to faulty hardware or severe network congestion.
+
+On Linux, the exception message `Connection timed out` indicates that some data or a sequence of consecutive keepalives went unacknowledged after many retransmission attempts. These acknowledgments and retransmissions are the responsibility of the operating systems on the hosts running the {{es}} nodes and cannot be influenced by {{es}} itself. Therefore a `Connection timed out` exception always indicates a problem in the environment in which {{es}} is running. Other exceptions might also arise from general connectivity issues.
+
+If you’re an advanced user, configure the following loggers to get more detailed information about network exceptions:
 
 ```yaml
 logger.org.elasticsearch.transport.TcpTransport: DEBUG
@@ -192,4 +184,3 @@ logger.org.elasticsearch.xpack.core.security.transport.netty4.SecurityNetty4Tran
 ```
 
 If these logs do not show enough information to diagnose the problem, obtain a packet capture simultaneously from the nodes at both ends of an unstable connection and analyse it alongside the {{es}} logs from those nodes to determine if traffic between the nodes is being disrupted by another device on the network.
-

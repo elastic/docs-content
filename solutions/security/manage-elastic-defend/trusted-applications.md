@@ -20,6 +20,10 @@ If you use {{elastic-defend}} along with other antivirus (AV) software, you migh
 
 You can add Windows, macOS, and Linux applications that should be trusted, such as other antivirus or endpoint security applications. Trusted applications are designed to help mitigate performance issues and incompatibilities with other endpoint software installed on your hosts. Trusted applications apply only to hosts running the {{elastic-defend}} integration.
 
+::::{tip}
+To ensure you're using the right feature for your use case, we recommend reviewing [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) to understand the differences between trusted applications and alert exceptions.
+::::
+
 ::::{admonition} Requirements
 You must have the **Trusted Applications** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
 ::::
@@ -84,8 +88,9 @@ To add a trusted application:
    Define more complex conditions, such as trusting specific file paths or remote IP addresses.
 
     1. `Select operating system`: Select the appropriate operating system from the drop-down.
-    2. `Field`: Select a field to identify the trusted application.
-    3. `Operator`: Select an operator to define the condition:
+    2. {applies_to}`stack: ga 9.3+`{applies_to}`serverless: ga`(Optional) Turn on the **Process Descendants** toggle to make your exception apply to processes that are descendants of your new trusted application.
+    3. `Field`: Select a field to identify the trusted application.
+    4. `Operator`: Select an operator to define the condition:
        * `is`
        * `is not`
        * `is one of`
@@ -100,8 +105,8 @@ To add a trusted application:
           Using wildcards can impact performance. To create a more efficient trusted application using wildcards, use multiple conditions and make them as specific as possible. For example, adding conditions using `process.name` or `file.name` can help limit the scope of wildcard matching.
           ::::
 
-    4. `Value`: Enter the value associated with the `Field`. To enter multiple values (when using `is one of` or `is not one of`), enter each value, then press **Return**. 
-    5. To define multiple conditions, click `AND` and configure a new condition. You can also add nested conditions by selecting `Add nested condition`.
+    5. `Value`: Enter the value associated with the `Field`. To enter multiple values (when using `is one of` or `is not one of`), enter each value, then press **Return**. 
+    6. To define multiple conditions, click `AND` and configure a new condition. You can also add nested conditions by selecting `Add nested condition`.
 
    :::::
 
