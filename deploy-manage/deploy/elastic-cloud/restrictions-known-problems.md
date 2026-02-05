@@ -111,8 +111,6 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 * Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 * Workflows using the `elasticsearch.bulk` step might mishandle bulk operations in Elastic Cloud Hosted. Bulk action metadata (such as `index`, `create`, `update`, or `delete`) can be interpreted as document data, which might cause unexpected behavior for bulk operations beyond basic indexing. The workaround is to use a generic Elasticsearch request action in the workflow to call the Bulk API directly instead of using the `elasticsearch.bulk` step. For more information, refer to [Generic request actions](https://www.elastic.co/docs/explore-analyze/workflows/steps/elasticsearch#generic-request-actions). This issue is fixed in Serverless deployments.
 
-* Workflows using the `elasticsearch.bulk` step might mishandle bulk operations in Elastic Cloud Hosted. Bulk action metadata (such as `index`, `create`, `update`, or `delete`) can be interpreted as document data, which might cause unexpected behavior for bulk operations beyond basic indexing. This issue is fixed in Serverless deployments.
-
 
 ## Fleet with network security [ec-restrictions-fleet-network-security]
 
