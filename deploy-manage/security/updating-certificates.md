@@ -68,7 +68,7 @@ While it’s possible to do an in-place update for security certificates, using 
 * If you use PEM files, your certificate and key are in separate files. You must update both files *simultaneously* or the node might experience a temporary period where it cannot establish new connections.
 * Updating the certificate and key does not automatically force existing connections to refresh. This means that even if you make a mistake, a node can seem like it’s functioning but only because it still has existing connections. It’s possible that a node will be unable to connect with other nodes, rendering it unable to recover from a network outage or node restart.
 
-If your team chooses to do an in-place update, you can just copy the new certificate and key files (or keystore) into the {{es}} [configuration directory](/deploy-manage/deploy/self-managed/configure-elasticsearch.md). To use this method you must use the same file names. {{es}} monitors the SSL resources for updates on a five-second interval and will automatically detect changes and reload the keys and certificates. 
+If your team chooses to do an in-place update, you can copy the new certificate and key files (or keystore) into the {{es}} [configuration directory](/deploy-manage/deploy/self-managed/configure-elasticsearch.md). To use this method you must use the same file names. {{es}} monitors the SSL resources for updates on a five-second interval and will automatically detect changes and reload the keys and certificates. 
 
 
 
