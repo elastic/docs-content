@@ -18,10 +18,8 @@ To start using {{agent-builder}} you need an {{es}} deployment. If you don't alr
 
 For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
 
-::::{admonition} Agent Builder subscription requirements
-- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
-- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
-- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::{admonition}
+This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 ::::::{stepper}

@@ -78,29 +78,23 @@ steps:
           category: { type: keyword }
           description: { type: text }
   - name: bulk_index_park_data
-    type: elasticsearch.bulk
+    type: elasticsearch.request
     with:
-      index: "{{ consts.indexName }}"
-      operations:
-        - name: "Yellowstone National Park"
-          category: "geothermal"
-          description: "America's first national park, established in 1872, famous for Old Faithful geyser and diverse wildlife including grizzly bears, wolves, and herds of bison and elk."
-
-        - name: "Grand Canyon National Park"
-          category: "canyon"
-          description: "Home to the immense Grand Canyon, a mile deep gorge carved by the Colorado River, revealing millions of years of geological history in its colorful rock layers."
-
-        - name: "Yosemite National Park"
-          category: "mountain"
-          description: "Known for its granite cliffs, waterfalls, clear streams, giant sequoia groves, and biological diversity. El Capitan and Half Dome are iconic rock formations."
-         
-        - name: "Zion National Park"
-          category: "canyon"
-          description: "Utah's first national park featuring cream, pink, and red sandstone cliffs soaring into a blue sky. Famous for the Narrows wade through the Virgin River."
-         
-        - name: "Rocky Mountain National Park"
-          category: "mountain"
-          description: "Features mountain environments, from wooded forests to mountain tundra, with over 150 riparian lakes and diverse wildlife at various elevations."
+      method: POST
+      path: /{{ consts.indexName }}/_bulk?refresh=wait_for
+      headers:
+        Content-Type: application/x-ndjson
+      body: |
+        {"index":{}}
+        {"name": "Yellowstone National Park", "category": "geothermal", "description": "America's first national park, established in 1872, famous for Old Faithful geyser and diverse wildlife including grizzly bears, wolves, and herds of bison and elk."}
+        {"index":{}}
+        {"name": "Grand Canyon National Park", "category": "canyon", "description": "Home to the immense Grand Canyon, a mile deep gorge carved by the Colorado River, revealing millions of years of geological history in its colorful rock layers."}
+        {"index":{}}
+        {"name": "Yosemite National Park", "category": "mountain", "description": "Known for its granite cliffs, waterfalls, clear streams, giant sequoia groves, and biological diversity. El Capitan and Half Dome are iconic rock formations."}
+        {"index":{}}
+        {"name": "Zion National Park", "category": "canyon", "description": "Utah's first national park featuring cream, pink, and red sandstone cliffs soaring into a blue sky. Famous for the Narrows wade through the Virgin River."}
+        {"index":{}}
+        {"name": "Rocky Mountain National Park", "category": "mountain", "description": "Features mountain environments, from wooded forests to mountain tundra, with over 150 riparian lakes and diverse wildlife at various elevations."}
   - name: search_park_data
     type: elasticsearch.search
     with:
@@ -191,7 +185,7 @@ consts:
   indexName: national-parks-data
 ```
 
-* **`consts`**: Defines reusable values that can be referenced throughout the workflow.
+* **`consts`**: Defines reusable values that can be referenced throughout the workflow. Use constants for fixed values that don't change between runs. For values that vary per execution, use [inputs](/explore-analyze/workflows/data.md#workflows-constants-or-inputs) instead.
 * Accessed using template syntax: `{{ consts.indexName }}`. This promotes consistency and makes the workflow easier to maintain.
 
 ::::
@@ -239,27 +233,30 @@ triggers:
 
 ```yaml
 - name: bulk_index_park_data
-  type: elasticsearch.bulk
+  type: elasticsearch.request
   with:
-    index: "{{ consts.indexName }}"
-    operations:
-      - name: "Yellowstone National Park"
-        category: "geothermal"
-        description: "America's first national park, established in 1872..."
-      - name: "Grand Canyon National Park"
-        category: "canyon"
-        description: "Home to the immense Grand Canyon..."
-      # ... additional parks
+    method: POST
+    path: /{{ consts.indexName }}/_bulk?refresh=wait_for
+    headers:
+      Content-Type: application/x-ndjson
+    body: |
+      {"index":{}}
+      {"name": "Yellowstone National Park", "category": "geothermal", "description": "America's first national park, established in 1872, famous for Old Faithful geyser and diverse wildlife including grizzly bears, wolves, and herds of bison and elk."}
+      {"index":{}}
+      {"name": "Grand Canyon National Park", "category": "canyon", "description": "Home to the immense Grand Canyon, a mile deep gorge carved by the Colorado River, revealing millions of years of geological history in its colorful rock layers."}
+    # ... additional parks
 ```
 
-* **Step type**: Another internal action step using {{es}}'s bulk API.
+* **Step type**: A generic {{es}} request action that calls the bulk API directly.
 * **Step purpose**: Efficiently loads multiple documents in a single operation, populating the index with sample data.
 * **Key elements**:
-    * The `operations` array contains the documents to index.
-    * Each document becomes a searchable record in {{es}}.
-    * Uses the field names defined in the mappings (`name`, `category`, `description`).
-    * Each document becomes a searchable record with consistent field structure.
-    * This step demonstrates how to handle batch operations in workflows.
+    * Uses `elasticsearch.request` with `method: POST` to call the `/<index>/_bulk` endpoint.
+    * The `refresh=wait_for` query parameter ensures documents are searchable immediately after indexing.
+    * The `headers` parameter sets `Content-Type: application/x-ndjson`, which is required for bulk operations.
+    * The `body` uses the pipe (`|`) syntax to define a multiline string in YAML.
+    * Each pair of lines represents an action (such as `{"index":{}}`) followed by the document to index.
+    * Uses the field names (`name`, `category`, `description`) from the mappings defined in the `create_parks_index` step.
+    * This step demonstrates how to handle batch operations using the generic request action.
 
 ::::
 
@@ -294,14 +291,14 @@ triggers:
   with:
     message: |-
       Found {{ steps.search_park_data.output.hits.total.value }} parks in category "canyon".
-      Top results: {{ steps.search_park_data.output.hits.hits | json(2) }}
+      Top results: {{ steps.search_park_data.output.hits.hits | json:2 }}
 ```
 
 * **Step type**: A console step for output and debugging.
 * **Step purpose**: Presents the results in a human-readable format, demonstrating how to access and format data from previous steps.
 * **Key elements**:
     * Template variables access the search results: `{{ steps.search_park_data.output }}`.
-    * The `| json(2)` filter formats JSON output with indentation.
+    * The `| json:2` filter formats JSON output with indentation.
     * Uses the exact step name `search_park_data` to reference previous step output.
     * Shows how data flows through the workflow and can be transformed.
 

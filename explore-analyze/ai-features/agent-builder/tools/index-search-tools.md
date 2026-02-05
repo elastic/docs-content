@@ -72,7 +72,6 @@ For general guidance on naming tools and writing effective descriptions, refer t
 
 * **Wildcard patterns**: `logs-*`, `metrics-*`, `events-*`
 * **Specific indices**: `products`, `users`, `orders`
-* **System indices**: `.alerts-security-*`, `.ml-anomalies-*`
 
 $$$wildcard-warning$$$
 :::{warning}

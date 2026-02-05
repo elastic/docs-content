@@ -19,6 +19,78 @@ Known issues are significant defects or limitations that may impact your impleme
 :::{include} _snippets/9.3.0/known-issues.md
 :::
 
+:::{dropdown} Details about gap fills aren't properly updated
+
+Applies to: 9.3
+
+**Impact**
+
+After upgrading to 9.3 from a {{stack}} version earlier than 8.9, you might encounter the following issues with gap fill functionality:
+
+* **Gap fills**: Manual runs are scheduled to fill gaps, but gap statuses aren't updated to `Filled` after the manual runs complete.
+
+* **Rule deletion**: If a rule has gaps and you delete the rule, the rule is removed but the gaps are not marked as deleted. You may see incorrect numbers when viewing total rules with gaps.
+
+**Root cause**
+
+When upgrading from {{stack}} versions earlier than 8.9, the old event log index is reindexed with a new name:
+
+* Old index: `.reindexed-v8-kibana-event-log-{version}-000001`
+* Aliases: `.kibana-event-log-{version}`, `.kibana-event-log-{version}-000001`
+
+Starting in {{stack}} 8.9.0, a new data stream (`.kibana-event-log-ds`) was introduced for event log storage.
+
+The `elastic/kibana` service account has permissions to access the new data stream but does not have permissions to access the old reindexed indices. When {{kib}} queries `.kibana-event-log-*`, it matches both the new data stream and the old reindexed index, causing Point-in-Time (PIT) operations to fail.
+
+**Workaround**
+
+Migrate data from the old reindexed index to the new data stream, then delete the old index.
+
+1. **Identify the old index**:
+
+    ```console
+    GET .kibana-event-log-*
+    ```
+
+    Look for indices with names like `.reindexed-v8-kibana-event-log-{version}-*`.
+
+2. **Reindex data to the new data stream**:
+
+    ```console
+    POST _reindex
+    {
+      "source": {
+        "index": ".reindexed-v8-kibana-event-log-7.17.29-000001" <1>
+      },
+      "dest": {
+        "index": ".kibana-event-log-ds",
+        "op_type": "create"
+      }
+    }
+    ```
+
+    1. Replace `7.17.29` with your version number.
+
+3. **Delete the old index**:
+
+    ```console
+    DELETE .reindexed-v8-kibana-event-log-7.17.29-000001
+    ```
+
+4. **Verify**:
+
+    ```console
+    GET .kibana-event-log-*
+    ```
+
+    Only the data stream (`.kibana-event-log-ds`) and its backing indices (`.ds-.kibana-event-log-ds-*`) should remain.
+
+:::{important}
+* **Backup**: Consider backing up your data before performing these operations in production environments.
+* **Event log retention**: Event log data has a default retention of 90 days. If you don't need historical data, you can skip the reindex step and simply delete the old index and its aliases.
+:::
+
+:::
 
 :::{dropdown} Intermittent blue screen due to conflict with Windows ODX in {{elastic-defend}}
 Applies to: 8.19.8, 8.19.9, 9.1.8, 9.1.9, 9.2.2, and 9.2.3
