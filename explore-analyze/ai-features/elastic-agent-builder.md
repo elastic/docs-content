@@ -28,12 +28,9 @@ To get started you need an Elastic deployment and you might need to enable the f
 
 [**Get started with {{agent-builder}}**](agent-builder/get-started.md)
 
-::::{admonition} Agent Builder subscription requirements
-- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
-- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** [feature tier](/solutions/security/security-serverless-feature-tiers.md).
-- {{obs-serverless}} and {{es-serverless}} users: the **Complete** [feature tier](/solutions/observability/observability-serverless-feature-tiers.md).
+::::{admonition}
+This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
-
 
 ## Key capabilities
 
@@ -44,7 +41,7 @@ To get started you need an Elastic deployment and you might need to enable the f
 - **Custom agents**: Create [agents with tailored instructions](agent-builder/custom-agents.md) and toolsets for specific use cases.
 - **MCP and A2A servers**: Expose tools and agents to external clients through the [MCP server](agent-builder/mcp-server.md) and [A2A server](agent-builder/a2a-server.md).
 - **Kibana REST APIs**: Work with Agent Builder functionalities [programmatically](agent-builder/kibana-api.md), including agents, tools, and conversations.
-- **Elastic Workflows integration**: Automate complex processes within your deployment using the Elastic-native automation engine. Your agents can [trigger workflows](agent-builder/agents-and-workflows.md) and [workflows can invoke agents](agent-builder/agents-and-workflows.md) in their steps.
+- **[Elastic Workflows](/explore-analyze/workflows.md) integration**: Automate complex processes within your deployment using the Elastic-native automation engine. Your agents can [trigger workflows](agent-builder/agents-and-workflows.md) and [workflows can invoke agents](agent-builder/agents-and-workflows.md) in their steps.
 
 ## Key concepts
 
