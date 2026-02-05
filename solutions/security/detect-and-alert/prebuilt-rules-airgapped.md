@@ -19,28 +19,91 @@ description: Learn how to install and update Elastic prebuilt detection rules in
 
 ## Install prebuilt rules from your self-hosted registry [install-prebuilt-rules-airgapped]
 
-This method requires hosting your own {{package-registry}} to provide prebuilt rules to your air-gapped {{kib}} instance. After setting up your registry, you can install prebuilt rules the same way as in a connected environment.
+This method requires hosting your own {{package-registry}} to provide prebuilt rules to your air-gapped {{kib}} instance. After setting up your registry, you can install and update prebuilt rules the same way as in a connected environment.
+
+### Set up your self-hosted {{package-registry}} [setup-self-hosted-epr]
+
+Before you can install prebuilt rules, you need to set up and run a self-hosted {{package-registry}} in your air-gapped environment.
 
 ::::{note}
-The versioned {{package-registry}} distribution images (such as `docker.elastic.co/package-registry/distribution:{{version.stack}}`) include prebuilt rules. However, rule updates are released continuously, so you might need to update your registry to get the latest rules.
+The following examples use Docker commands. You can adapt them for other container runtimes.
 ::::
 
-### Prerequisites
+#### Choose your registry image
 
-Before you can install or update prebuilt rules using a self-hosted registry, you must:
+The {{package-registry}} is available as a Docker image with different tags. Choose the appropriate image based on your update strategy.
 
-* Set up a self-hosted {{package-registry}}. Refer to [Host your own {{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-diy-epr) for setup instructions.
-* Configure {{kib}} to use your self-hosted {{package-registry}} and enable air-gapped mode. Add the following to your [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md) configuration file, then restart {{kib}}:
+::::{important}
+When choosing a {{package-registry}} image for production air-gapped environments, we recommend using one of the following options:
 
-    ```yaml
-    xpack.fleet.registryUrl: "http://<your-registry-host>:8080"
-    xpack.fleet.isAirGapped: true
+* **Versioned images** (such as `docker.elastic.co/package-registry/distribution:{{version.stack}}`): Use images that match your {{stack}} version, as described in the [{{fleet}} documentation](/reference/fleet/air-gapped.md#air-gapped-diy-epr). This is the safest option for environments where you cannot immediately upgrade your {{stack}} when new versions are released.
+* **Production images** (`docker.elastic.co/package-registry/distribution:production`): Use this image **only** if you keep your air-gapped {{stack}} up-to-date. If you want to rely on the `production` image for the most recent {{fleet}} packages and prebuilt detection rules, upgrade your {{stack}} as soon as new versions are released. This minimizes the risk of encountering breaking changes between the {{package-registry}} and your {{stack}} version.
+::::
+
+::::{note}
+The following examples use Docker commands. You can adapt them for other container runtimes.
+::::
+
+:::::{stepper}
+
+::::{step} Pull and transfer the image
+
+1. On a system with internet access, pull your chosen {{package-registry}} distribution image:
+
+    ```sh subs=true
+    docker pull docker.elastic.co/package-registry/distribution:{{version.stack}}
     ```
 
-    * [`xpack.fleet.registryUrl`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings): Points {{kib}} to your self-hosted registry. Replace `<your-registry-host>` with the hostname or IP address of your registry.
-    * [`xpack.fleet.isAirGapped`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings#general-fleet-settings-kb): Enables air-gapped mode, which allows {{fleet}} to skip requests or operations that require internet access.
+    Or, if using the production image:
 
-### Install the rules
+    ```sh
+    docker pull docker.elastic.co/package-registry/distribution:production
+    ```
+
+2. Save the Docker image to a file:
+
+    ```sh subs=true
+    docker save -o package-registry.tar docker.elastic.co/package-registry/distribution:<image-tag>
+    ```
+
+    Replace `<image-tag>` with your chosen tag (for example, `{{version.stack}}` or `production`).
+
+3. Transfer the image file to your air-gapped environment using your organization's approved file transfer method.
+
+4. Load the image into your container runtime:
+
+    ```sh
+    docker load -i package-registry.tar
+    ```
+::::
+
+::::{step} Start the {{package-registry}} container
+
+Run the {{package-registry}} container:
+
+```sh
+docker run -d -p 8080:8080 --name package-registry docker.elastic.co/package-registry/distribution:<image-tag>
+```
+
+Replace `<image-tag>` with your chosen tag.
+
+For more setup options and details, refer to [Host your own {{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-diy-epr).
+::::
+
+::::{step} Configure {{kib}}
+
+Configure {{kib}} to use your self-hosted {{package-registry}} and enable air-gapped mode. Add the following to your [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md) configuration file, then restart {{kib}}:
+
+```yaml
+xpack.fleet.registryUrl: "http://<your-registry-host>:8080"
+xpack.fleet.isAirGapped: true
+```
+
+* [`xpack.fleet.registryUrl`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings): Points {{kib}} to your self-hosted registry. Replace `<your-registry-host>` with the hostname or IP address of your registry.
+* [`xpack.fleet.isAirGapped`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings#general-fleet-settings-kb): Enables air-gapped mode, which allows {{fleet}} to skip requests or operations that require internet access.
+::::
+
+::::{step} Install the rules
 
 1. In your air-gapped {{elastic-sec}} instance, find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
@@ -53,6 +116,9 @@ Before you can install or update prebuilt rules using a self-hosted registry, yo
     * To install and immediately enable rules, click the options menu (![Vertical boxes button](/solutions/images/security-boxesVertical.svg "")) and select **Install and enable**.
 
 For more details about enabling installed rules, refer to [Install and enable Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules).
+::::
+
+:::::
 
 ## Update prebuilt rules in an air-gapped environment [update-prebuilt-rules-airgapped]
 
@@ -62,43 +128,14 @@ To update your prebuilt rules, first update your self-hosted {{package-registry}
 Elastic releases prebuilt rule updates continuously. To receive the latest updates in an air-gapped environment, we recommend updating your self-hosted {{package-registry}} at least monthly.
 ::::
 
-::::{note}
-The following examples use Docker commands. You can adapt them for other container runtimes.
-::::
-
-
 :::::{stepper}
 
 ::::{step} Update your self-hosted {{package-registry}}
 :anchor: update-air-gapped-epr
 
-1. On a system with internet access, pull the latest {{package-registry}} distribution image:
+1. Follow the same process described in [Pull and transfer the image](#setup-self-hosted-epr) to pull a newer image version, save it, transfer it to your air-gapped environment, and load it.
 
-    ```sh subs=true
-    docker pull docker.elastic.co/package-registry/distribution:{{version.stack}}
-    ```
-
-    Alternatively, use the `production` or `lite` image tags to get the most recent package updates:
-
-    ```sh
-    docker pull docker.elastic.co/package-registry/distribution:production
-    ```
-
-2. Save the Docker image to a file:
-
-    ```sh subs=true
-    docker save -o package-registry-{{version.stack}}.tar docker.elastic.co/package-registry/distribution:{{version.stack}}
-    ```
-
-3. Transfer the image file to your air-gapped environment using your organization's approved file transfer method.
-
-4. Load the image into your container runtime:
-
-    ```sh subs=true
-    docker load -i package-registry-{{version.stack}}.tar
-    ```
-
-5. Restart the {{package-registry}} container with the updated image:
+2. Restart the {{package-registry}} container with the updated image:
 
     ```sh
     docker stop <container-name>
@@ -109,10 +146,10 @@ The following examples use Docker commands. You can adapt them for other contain
     Replace `<container-name>` with your container's name and `<image-tag>` with the appropriate version tag.
 ::::
 
-::::{step} Update rules
+::::{step} Install rule updates
 :anchor: install-rule-updates-airgapped
 
-After updating your registry, update the rules in your air-gapped {{elastic-sec}} instance:
+After updating your registry, install the rule updates in your air-gapped {{elastic-sec}} instance:
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
