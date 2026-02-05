@@ -13,26 +13,35 @@ products:
 
 # {{agent-builder}}
 
-{{agent-builder}} enables you to create AI agents grounded in your {{es}} data. It combines the power of large language models with Elastic-native features for prompt engineering, context engineering, and automation in one place, reducing the need to write and maintain custom application code.
+{{agent-builder}} combines large language models with Elastic-native features for prompt engineering, context engineering, and automation. Key use cases enabled by Agent Builder include:
 
-Get started quickly with built-in agents, tools, and the chat UI, then extend with custom agents, custom tools, and programmatic interfaces for more advanced use cases.
+- **Chat with your {{es}} data immediately** using the chat interface, preconfigured agents, and built-in tools available out of the box.
+- **Build custom agents and tools** tailored to your specific use cases using the UI or APIs.
+- **Import tools from external MCP servers** to give your agents additional capabilities.
+- **Expose tools and agents to external systems** like Claude Desktop, Cursor, and LangChain apps through the MCP server, A2A server, and REST APIs.
 
-::::{admonition} Agent Builder subscription requirements
-- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
-- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
-- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+**[Learn more in key capabilities](#key-capabilities)**
+
+## Get started
+
+To get started you need an Elastic deployment and you might need to enable the feature.
+
+[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
+
+::::{admonition}
+This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 ## Key capabilities
 
-- **{{es}} relevance and security**: Leverage {{es}}'s search capabilities for precise context retrieval, with secure data access controls.
-- **Built-in agents and tools**: Get started immediately with pre-configured agents and tools available out of the box.
-- **Chat UI**: Chat with agents in real time using natural language.
-- **Custom and external tools**: Build targeted tools to deliver precise context, or connect external tools through the Model Context Protocol.
- - **Custom agents**: Create agents with tailored instructions and toolsets for specific use cases.
-- **MCP and A2A servers**: Expose agents to external clients and enable agent-to-agent communication through standard protocols.
-- **Kibana REST APIs**: Work with  Agent Builder functionalities programmatically, including agents, tools, and conversations.
-- **Elastic Workflows integration**: Automate complex processes within your deployment using the Elastic-native automation engine. Your agents can trigger workflows and workflows can invoke agents in their steps.
+- **{{es}} relevance and security**: Leverage {{es}}'s search capabilities for precise context retrieval, with [secure data access controls](agent-builder/permissions.md).
+- **Built-in agents and tools**: Get started immediately with pre-configured [agents](agent-builder/builtin-agents-reference.md) and [tools](agent-builder/tools/builtin-tools-reference.md) available out of the box.
+- **Chat UI**: [Chat with agents](agent-builder/chat.md) in real time using natural language.
+- **Custom and external tools**: Build targeted [custom tools](agent-builder/tools/custom-tools.md) to deliver precise context, or import external tools through the [Model Context Protocol](agent-builder/tools/mcp-tools.md).
+- **Custom agents**: Create [agents with tailored instructions](agent-builder/custom-agents.md) and toolsets for specific use cases.
+- **MCP and A2A servers**: Expose tools and agents to external clients through the [MCP server](agent-builder/mcp-server.md) and [A2A server](agent-builder/a2a-server.md).
+- **Kibana REST APIs**: Work with Agent Builder functionalities [programmatically](agent-builder/kibana-api.md), including agents, tools, and conversations.
+- **[Elastic Workflows](/explore-analyze/workflows.md) integration**: Automate complex processes within your deployment using the Elastic-native automation engine. Your agents can [trigger workflows](agent-builder/agents-and-workflows.md) and [workflows can invoke agents](agent-builder/agents-and-workflows.md) in their steps.
 
 ## Key concepts
 
@@ -55,12 +64,6 @@ Agents are powered by custom LLM instructions and the ability to use tools to an
 Tools are modular, reusable functions that agents use to search, retrieve, and manipulate {{es}} data. Tools are the primary mechanism for connecting agent capabilities to your data. Choose from a set of built-in tools, or create your own and assign them to your custom agents.
 
 [**Learn more about tools**](agent-builder/tools.md)
-
-## Get started
-
-To get started you need an Elastic deployment and you might need to enable the feature.
-
-[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
 
 ## Model selection
 

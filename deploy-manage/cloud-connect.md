@@ -1,9 +1,6 @@
 ---
 applies_to:
-  deployment:
-    self:
-    ece:
-    eck:
+  stack: ga 7.17
 navigation_title: Cloud Connect
 ---
 
@@ -16,6 +13,8 @@ AutoOps is the first service available for use with Cloud Connect. More services
 ## AutoOps
 
 [AutoOps](/deploy-manage/monitor/autoops.md) is a monitoring tool that helps you manage your cluster with real-time issue detection, performance recommendations, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and your usage patterns, AutoOps recommends operational and monitoring insights that deliver real savings in administration time and hardware cost. 
+
+AutoOps can be connected to clusters on {{es}} version 7.17 and later.
 
 Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md). 
 
@@ -30,6 +29,8 @@ You can use EIS to enable features such as:
 - [Attack Discovery](/solutions/security/ai/attack-discovery.md)
 
 For a full list of EIS-powered features, refer to [AI features powered by EIS](/explore-analyze/elastic-inference/eis.md#ai-features-powered-by-eis).
+
+EIS can be connected to clusters on {{es}} version 9.3 and later.
 
 Learn how to set up and use [](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
 
