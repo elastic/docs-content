@@ -1,5 +1,5 @@
 ﻿## 9.3.0 [kibana-release-notes-9.3.0]
-<!-- _[Deprecations](/release-notes/deprecations.md#kibana-9.3.0-deprecations)._ -->
+_[Deprecations](/release-notes/deprecations.md#kibana-9.3.0-deprecations)._
 
 ### Features and enhancements [kibana-9.3.0-features-enhancements]
 * [Risk Score] Enable the risk score reset feature. [#237829](https://github.com/elastic/kibana/pull/237829) 
@@ -11,7 +11,7 @@
 * Enable Value Reports in ESS. [#243511](https://github.com/elastic/kibana/pull/243511) 
 * Adds Support for QRadar Reference Sets as Lookups. [#244924](https://github.com/elastic/kibana/pull/244924) [#14588](https://github.com/elastic/security-team/issues/14588) 
 * [Entity Analytics][Threat Hunting][UI]Changes for threat hunting UI. [#243311](https://github.com/elastic/kibana/pull/243311) 
-* [Endpoint] Add file download relative URI to response actions that provide file output. [#237713](https://github.com/elastic/kibana/pull/237713) 
+% * Add file download relative URI to response actions that provide file output. [#237713](https://github.com/elastic/kibana/pull/237713) 
 * Update entity highlight UI to align with new design. [#245532](https://github.com/elastic/kibana/pull/245532) 
 * [Alerts] Fix grouping in alerts table. [#237911](https://github.com/elastic/kibana/pull/237911) 
 * Add CSPM Cloud Connector Usage Statistics Collection. [#236992](https://github.com/elastic/kibana/pull/236992) [#14106](https://github.com/elastic/security-team/issues/14106) 
