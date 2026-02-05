@@ -27,7 +27,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
 ## Get started with {{esql}} in Discover [tutorial-try-esql]
 
 1. Go to **Discover**.
-2. Select **Try {{esql}}** from the application menu.
+2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
    :::{tip}
    If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
