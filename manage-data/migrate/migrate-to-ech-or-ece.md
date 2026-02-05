@@ -21,6 +21,8 @@ You might have switched to {{ech}} (ECH) or {{ece}} (ECE) for any number of reas
 Although this guide focuses on migrating data from a self-managed cluster to an {{ech}} or {{ece}} deployment, the steps can also be adapted for other scenarios, such as when the source cluster is managed by {{eck}}, or when migrating from {{ece}} to {{ech}}.
 
 If both clusters belong to the same {{ech}} or {{ece}} environment, refer to [](/deploy-manage/tools/snapshot-and-restore/ece-restore-across-clusters.md).
+
+If you're migrating data to {{ech}} from a self-managed cluster that uses non–publicly trusted TLS certificates, refer to [Reindex from a self-managed cluster using a private CA](/manage-data/migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md) for instructions.
 ::::
 
 ## Before you begin [ec_migrate_before_you_begin]

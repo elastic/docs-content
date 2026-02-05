@@ -11,10 +11,10 @@ products:
 
 # Migrate {{ech}} data to {{serverless-short}} with the reindex API [migrate-reindex-from-remote]
 
-The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) offers a convenient way for you to migrate your documents from a source index, data stream, or alias in an {{ech}} deployment to an index in a {{serverless-full}} project.
+The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) offers a convenient way for you to migrate your documents from a source index, data stream, or alias in an {{ech}} deployment to an index in an {{serverless-full}} project.
 
 :::{admonition} Basic migration
-This guide focuses on a basic data migration scenario for moving either full index or selected documents in an index from an {{ech}} deployment to a {{serverless-full}} project.
+This guide focuses on a basic data migration scenario for moving a full index or selected index documents from an {{ech}} deployment to an {{serverless-full}} project.
 
 For more advanced use cases, including data modification using scripts or ingest pipelines, refer to the [Reindex indices examples](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) and the [Reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) documentation. 
 
@@ -50,9 +50,9 @@ Visual components, such dashboard and visualizations, can be migrated after you 
 
     1. Open the Developer Tools [Console](/explore-analyze/query-filter/tools/console.md).
 
-    1. Call the reindex API to migrate your documents.
+    1. Using one of the following three examples, call the reindex API to migrate your documents.
 
-        Migrate a single index using an API key:
+        **Migrate a single index using an API key:**
         ```
         POST _reindex
         {
@@ -68,12 +68,12 @@ Visual components, such dashboard and visualizations, can be migrated after you 
           }
         }
         ```
-        1. Your {{serverless-short}} host URL. This is the {{es}} endpoint that you copied in Step 1.
+        1. The URL for your {{serverless-short}} project. This is the {{es}} endpoint that you copied in Step 1.
         1. The API key for authenticating the connection to your {{ech}} deployment.
         1. The source index to copy from your {{ech}} deployment.
         1. The destination index in your {{serverless-short}} project.
 
-        Migrate documents from multilple indices in a single request:
+        **Migrate documents from multilple indices in a single request:**
         ```
         POST _reindex
         {
@@ -89,12 +89,12 @@ Visual components, such dashboard and visualizations, can be migrated after you 
           }
         }
         ```
-        1. Your {{serverless-short}} host URL. This is the {{es}} endpoint that you copied in Step 1.
+        1. The URL for your {{serverless-short}} project. This is the {{es}} endpoint that you copied in Step 1.
         1. The API key for authenticating the connection to your {{ech}} deployment.
         1. The source indices to copy from your {{ech}} deployment.
         1. The destination index in your {{serverless-short}} project.
 
-        Migrate selected documents from an index using basic authentication:
+        **Migrate selected documents from an index using basic authentication:**
         ```
         POST _reindex
         {
@@ -116,7 +116,7 @@ Visual components, such dashboard and visualizations, can be migrated after you 
           }
         }
         ```
-        1. Your {{serverless-short}} host URL. This is the {{es}} endpoint that you copied in Step 1.
+        1. The URL for your {{serverless-short}} project. This is the {{es}} endpoint that you copied in Step 1.
         1. Your {{es}} username for authenticating the connection to your {{ech}} deployment.
         1. Your {{es}} password for authenticating the connection to your {{ech}} deployment.
         1. The source index in your {{ech}} deployment.

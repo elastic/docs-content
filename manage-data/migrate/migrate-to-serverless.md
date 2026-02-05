@@ -13,9 +13,12 @@ products:
 
 # Migrate {{ech}} data to {{serverless-full}} [migrate-to-serverless]
 
-There are two approaches to migrating your {{ech}} data to {{serverless-full}}:
+You might currently be using ECH and want to switch to {{serverless-short}}. To better understand the differences between these offerings, refer to [Compare {{ech}} and {{serverless-short}}](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md).
 
- - [Migrate with the reindex API](/manage-data/migrate/migrate-with-reindex-api.md) - Using this more straightforward approach, you can migrate your data with the various features available in the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex), including the ability to run and control indexing, and to filter and transform documents as they are ingested into the target cluster. {applies_to}`serverless: preview`
+To make the change, you first need to [create a {{serverless-short}} project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md). Once the new project is set up, you're ready to migrate your data.
 
- - [Migrate with {{ls}}](/manage-data/migrate/migrate-with-logstash.md) - Using {{ls}} with the {{es}} input and {{es}} output plugins you can take advantage of the various advanced configuration options, such as controlling how many documents are retrieved per scroll, enabling parallel reads from the source index, and the ability to track fields and resume migration after a {{ls}} restart. 
+There are two approaches to migrating ECH data into {{serverless-short}}:
 
+ - [Migrate with the reindex API](/manage-data/migrate/migrate-with-reindex-api.md): The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) is a built-in component of {{es}}. You can use it to migrate your data from source indices, aliases, or data streams, and optionally to filter and transform documents as they are ingested into the target cluster. {applies_to}`serverless: preview`
+
+ - [Migrate with {{ls}}](/manage-data/migrate/migrate-with-logstash.md): [{{ls}}](logstash://reference/index.md) is a separately installable {{es}} product that, with its {{es}} input and {{es}} output plugins, allows for various advanced configuration options during data migration. For example, you can control how many documents are retrieved in a single HTTP request, enable parallel reads from the source index, or track documents fields in order to resume data migration in the event that {{ls}} needs to be restarted.

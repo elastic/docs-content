@@ -4,12 +4,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrating-data.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-migrate-data2.html
 applies_to:
-  deployment:
-    ess: ga
-    ece: ga
+  stack: ga
+  serverless: ga
 products:
+  - id: elasticsearch
   - id: cloud-hosted
   - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Migrate your {{es}} data
