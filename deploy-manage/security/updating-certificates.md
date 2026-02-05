@@ -55,7 +55,7 @@ Whether you're expanding usage of existing certificates or generated new certifi
 
 ### (Recommended) Rolling restart [update-node-certs-apply-rolling]
 
-You must complete a [rolling restart](#use-rolling-restarts) if you modify any of the following:
+You must complete a rolling restart if you modify any of the following:
 
 * the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration
 * passwords for the certificate keys 
