@@ -35,7 +35,7 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 ::::
 
 :::{csv-include} models.csv
-:caption: Models supported by the Elastic Inference Service
+:caption: Scroll horizontally to view more information.
 :::
 
 ::::{important}
