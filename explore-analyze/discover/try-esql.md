@@ -323,6 +323,8 @@ You can go back to the classic data view and KQL mode of Discover at any time. W
 
 2. From your tab's contextual menu, select **Switch to classic**. This affects only the selected Discover tab.
 
+![Tab contextual menu with an option to switch from {{esql}} to classic mode](/explore-analyze/images/discover-switch-to-classic.png "=30%")
+
 :::{tip}
 If you open the contextual menu of a tab other than the one currently open, the **Switch to classic** option doesn't show. You have to load that tab first.
 :::
