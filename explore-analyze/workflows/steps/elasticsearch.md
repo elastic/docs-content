@@ -28,7 +28,7 @@ The following table shows some examples:
 | Action type | {{es}} operation |
 |-------------|--------------|
 | `elasticsearch.search` | `POST /<index>/_search` ([Run a search]({{es-apis}}operation/operation-search)) |
-| `elasticsearch.update` | `POST /<index>/_update/<id>` ([Update a document]({{es-apis}}operation/operation-delete)) |
+| `elasticsearch.update` | `POST /<index>/_update/<id>` ([Update a document]({{es-apis}}operation/operation-update)) |
 | `elasticsearch.indices.create` | `PUT /<index>` ([Create an index]({{es-apis}}operation/operation-indices-create))  |
 
 The parameters you provide in the `with` block are passed as the body or query parameters of the API request. The following examples demonstrate common use cases.
