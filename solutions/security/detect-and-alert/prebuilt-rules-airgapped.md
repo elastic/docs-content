@@ -29,7 +29,9 @@ Before you can install prebuilt rules, you need to set up and run a self-hosted 
 The examples in this section use Docker commands. You can adapt them for other container runtimes.
 ::::
 
-#### Choose your registry image
+:::::{stepper}
+
+::::{step} Choose your registry image
 
 The {{package-registry}} is available as a Docker image with different tags. Choose the appropriate image based on your update strategy.
 
@@ -39,8 +41,7 @@ When choosing a {{package-registry}} image for production air-gapped environment
 * **Versioned images**: Use images that match your {{stack}} version (for example, `docker.elastic.co/package-registry/distribution:{{version.stack}}`), as described in the [{{fleet}} documentation](/reference/fleet/air-gapped.md#air-gapped-diy-epr). This is the safest option for environments where you cannot immediately upgrade your {{stack}} when new versions are released.
 * **Production images**: Use an image like `docker.elastic.co/package-registry/distribution:production` _only_ if you keep your air-gapped {{stack}} up-to-date. If you want to rely on the `production` image for the most recent {{fleet}} packages and prebuilt detection rules, upgrade your {{stack}} as soon as new versions are released. This minimizes the risk of encountering breaking changes between the {{package-registry}} and your {{stack}} version.
 ::::
-
-:::::{stepper}
+::::
 
 ::::{step} Pull and transfer the image
 
@@ -99,22 +100,23 @@ xpack.fleet.isAirGapped: true
 * [`xpack.fleet.isAirGapped`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings#general-fleet-settings-kb): Enables air-gapped mode, which allows {{fleet}} to skip requests or operations that require internet access.
 ::::
 
-::::{step} Install the rules
+:::::
+
+### Install the prebuilt rules
+
+After your self-hosted {{package-registry}} is running and {{kib}} is configured to use it, you can install prebuilt rules:
 
 1. In your air-gapped {{elastic-sec}} instance, find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
 2. Click **Add Elastic rules**. The available prebuilt rules from your self-hosted registry are displayed.
 
-3. Install the rules you need:
+3. Install the prebuilt rules you need:
 
     * To install all available rules, click **Install all**.
     * To install specific rules, select them and click **Install *x* selected rule(s)**.
     * To install and immediately enable rules, click the options menu (![Vertical boxes button](/solutions/images/security-boxesVertical.svg "")) and select **Install and enable**.
 
 For more details about enabling installed rules, refer to [Install and enable Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules).
-::::
-
-:::::
 
 ## Update prebuilt rules in an air-gapped environment [update-prebuilt-rules-airgapped]
 
@@ -184,7 +186,7 @@ For more details on exporting and importing rules, refer to [Export and import r
 
 1. On an internet-connected {{elastic-sec}} instance, [install the prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) you need.
 
-2. Export the rules:
+2. Export the prebuilt rules:
 
     1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
     2. Select the rules you want to export, or click **Select all** to select all rules.
