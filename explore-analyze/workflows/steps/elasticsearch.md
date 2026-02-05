@@ -28,7 +28,7 @@ The following table shows some examples:
 | Action type | {{es}} operation |
 |-------------|--------------|
 | `elasticsearch.search` | `POST /<index>/_search` ([Run a search]({{es-apis}}operation/operation-search)) |
-| `elasticsearch.delete` | `DELETE /<index>/_doc/<id>` ([Delete a document]({{es-apis}}operation/operation-delete)) |
+| `elasticsearch.update` | `POST /<index>/_update/<id>` ([Update a document]({{es-apis}}operation/operation-delete)) |
 | `elasticsearch.indices.create` | `PUT /<index>` ([Create an index]({{es-apis}}operation/operation-indices-create))  |
 
 The parameters you provide in the `with` block are passed as the body or query parameters of the API request. The following examples demonstrate common use cases.
@@ -50,63 +50,37 @@ steps:
                 kibana.alert.severity: "critical"
 ```
 
-### Example: Delete a document
+### Example: Update a document
 
-The `elasticsearch.delete` action deletes a single document by its ID. The `index` and `id` parameters are used to construct the API path.
+The `elasticsearch.update` action partially updates a document by its ID. The `doc` parameter specifies the fields to add or modify.
 
 ```yaml
 steps:
-  - name: delete_a_doc
-    type: elasticsearch.delete
+  - name: addMetadata
+    type: elasticsearch.update
     with:
-      index: "my-index"
-      id: "document_id_123"
+      index: national-parks-index
+      id: "{{ foreach.item._id }}"
+      doc:
+        last_processed: "{{ execution.startedAt }}"
+        workflow_run: "{{ execution.id }}"
+        category_uppercase: "{{ foreach.item._source.category | upcase }}"
 ```
 
-### Example: Bulk indexing
+### Example: Create an index
 
-The `elasticsearch.bulk` action performs multiple operations (`index`, `create`, `update`, or `delete`) in a single request. The `operations` parameter contains an array of alternating action/metadata objects and source document objects.
-
-The following example shows how to index multiple documents in a single bulk request.
+The `elasticsearch.indices.create` action creates a new index with optional settings and mappings.
 
 ```yaml
-steps:
-  - name: bulk_index_data
-    type: elasticsearch.bulk
+  - name: create_parks_index
+    type: elasticsearch.indices.create
     with:
-      index: "national-parks-data"
-      operations:
-        - index: { "_id": "1" } # <1>
-        - name: "Yellowstone National Park" # <2>
-          category: "geothermal" #
-        - index: { "_id": "2" } # <1>
-        - name: "Grand Canyon National Park" # <2>
-          category: "canyon"
-```
-1. **Action/metadata object**: Specifies the action and document ID
-2. **Source document object**: The document data (can span multiple lines for additional fields)
-
-### Example: Bulk operations with all operation types
-
-The following example shows an `elasticsearch.bulk` action with all four operation types: `index`, `create`, `update`, and `delete`.
-
-```yaml
-steps:
-  - name: bulk_operations
-    type: elasticsearch.bulk
-    with:
-      index: "national-parks-data"
-      operations:
-        - index: { "_id": "1" }
-        - name: "Yellowstone National Park"
-          category: "geothermal"
-        - delete: { "_id": "2" }
-        - create: { "_id": "3" }
-        - name: "Yosemite National Park"
-          category: "mountain"
-        - update: { "_id": "1" }
-        - doc:
-            category: "geothermal-wildlife"
+      index: "{{ consts.indexName }}"
+      mappings:
+        properties:
+          name: { type: text }
+          category: { type: keyword }
+          description: { type: text }
 ```
 
 ## Generic request actions
@@ -122,21 +96,21 @@ Use the following parameters in the `with` block to configure the request:
 | Parameter | Required | Description |
 |-----------|----------|-------------|
 | `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, or `DELETE`) |
-| `path` | Yes | The API endpoint path (for example, `/_search`, `/_cluster/health`) |
+| `path` | Yes | The API endpoint path (for example, `/_search`, `/_data_stream/<name>`) |
 | `body` | No | The JSON request body |
 | `query` | No | An object representing URL query string parameters |
 
-### Example: Get cluster health
+### Example: Get data stream
 
-This example uses the generic request to call the `GET /_cluster/health` endpoint ([Get cluster health]({{es-apis}}operation/operation-health-report)).
+This example uses the generic request to call the `GET /_data_stream/<name>` endpoint ([Get data stream]({{es-apis}}operation/operation-indices-get-data-stream)).
 
 ```yaml
 steps:
-  - name: get_cluster_health
+  - name: get_data_stream
     type: elasticsearch.request
     with:
       method: GET
-      path: /_cluster/health
+      path: /_data_stream/my-data-stream
 ```
 
 ### Example: Delete documents by query
@@ -180,11 +154,11 @@ steps:
     foreach: steps.search_for_docs.output.hits.hits
     steps:
       - name: delete_each_doc
-        type: elasticsearch.delete
+        type: elasticsearch.request
         with:
+          method: DELETE
           # The 'item' variable holds the current document from the loop
-          index: "{{ item._index }}"
-          id: "{{ item._id }}"
+          path: "/{{ item._index }}/_doc/{{ item._id }}"
 ```
 
 Key concepts in this example:
