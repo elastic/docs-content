@@ -23,7 +23,7 @@ When indices have specific tier preferences, shards may remain unallocated if th
 To allow indices to be allocated, follow these steps:
 
 1. [Determine which tiers](#determine-target-tier) an index's shards can be allocated to.
-1. [Resize your deployment](#resize-your-deployment).
+1. [Resize your deployment](#resize-your-deployment) to add resources to the required tier.
 
 
 ## Determine the target tier [determine-target-tier]

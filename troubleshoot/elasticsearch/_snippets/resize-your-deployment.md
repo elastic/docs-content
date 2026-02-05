@@ -8,7 +8,7 @@
 In ECE, resizing is limited by your [allocator capacity](/deploy-manage/deploy/cloud-enterprise/ece-manage-capacity.md).
 :::
 
-To increase the disk capacity of the data nodes in your cluster, use the following options:
+To resize your deployment and increase its capacity by expanding a data tier or adding a new one, use the following options:
 
 **Option 1: Configure Autoscaling**
 
@@ -18,7 +18,7 @@ To increase the disk capacity of the data nodes in your cluster, use the followi
 1. If autoscaling is successful, the cluster returns to a `healthy` status.
 If the cluster is still out of disk, check if autoscaling has reached its set limits and [update your autoscaling settings](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-update).
 
-**Option 2: COnfigure deployment size and tiers**
+**Option 2: Configure deployment size and tiers**
 
 You can increase the deployment capacity by editing the deployment and adjusting the size of the existing data tiers or adding new ones.
 
@@ -45,7 +45,7 @@ To increase the data node capacity in your cluster, you can [add more nodes](/de
 ::::::
 
 ::::::{applies-item} { eck: }
-To increase the disk capacity of data nodes in your {{eck}} cluster, you can either add more data nodes to the desired tier, or increase the storage size of existing nodes.
+To increase the capacity of the data nodes in your {{eck}} cluster, you can either add more data nodes to the desired tier, or increase the storage size of existing nodes.
 
 **Option 1: Add more data nodes**
 
