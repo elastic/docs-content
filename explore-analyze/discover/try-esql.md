@@ -318,7 +318,7 @@ You can go back to the classic data view and KQL mode of Discover at any time. W
 
 :::::{applies-switch}
 
-::::{applies-item} {serverless:, stack: 9.4+ }
+::::{applies-item} {serverless:, stack: ga 9.4+ }
 1. Open the Discover tab that you want to switch to classic mode.
 
 2. From your tab's contextual menu, select **Switch to classic**. This affects only the selected Discover tab.
@@ -328,11 +328,11 @@ If you open the contextual menu of a tab other than the one currently open, the 
 :::
 ::::
 
-::::{applies-item} stack: 9.2-9.3
+::::{applies-item} stack: ga 9.2-9.3
 From the application menu, select **Switch to classic**. This affects only your current Discover tab.
 ::::
 
-::::{applies-item} stack: 9.0-9.1
+::::{applies-item} stack: ga 9.0-9.1
 From the application menu, select **Switch to classic**.
 ::::
 
