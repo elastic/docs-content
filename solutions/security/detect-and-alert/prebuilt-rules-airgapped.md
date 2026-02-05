@@ -26,7 +26,7 @@ This method requires hosting your own {{package-registry}} to provide prebuilt r
 Before you can install prebuilt rules, you need to set up and run a self-hosted {{package-registry}} in your air-gapped environment.
 
 ::::{note}
-The following examples use Docker commands. You can adapt them for other container runtimes.
+The examples in this section use Docker commands. You can adapt them for other container runtimes.
 ::::
 
 #### Choose your registry image
@@ -36,12 +36,8 @@ The {{package-registry}} is available as a Docker image with different tags. Cho
 ::::{important}
 When choosing a {{package-registry}} image for production air-gapped environments, we recommend using one of the following options:
 
-* **Versioned images** (such as `docker.elastic.co/package-registry/distribution:{{version.stack}}`): Use images that match your {{stack}} version, as described in the [{{fleet}} documentation](/reference/fleet/air-gapped.md#air-gapped-diy-epr). This is the safest option for environments where you cannot immediately upgrade your {{stack}} when new versions are released.
-* **Production images** (`docker.elastic.co/package-registry/distribution:production`): Use this image **only** if you keep your air-gapped {{stack}} up-to-date. If you want to rely on the `production` image for the most recent {{fleet}} packages and prebuilt detection rules, upgrade your {{stack}} as soon as new versions are released. This minimizes the risk of encountering breaking changes between the {{package-registry}} and your {{stack}} version.
-::::
-
-::::{note}
-The following examples use Docker commands. You can adapt them for other container runtimes.
+* **Versioned images**: Use images that match your {{stack}} version (for example, `docker.elastic.co/package-registry/distribution:{{version.stack}}`), as described in the [{{fleet}} documentation](/reference/fleet/air-gapped.md#air-gapped-diy-epr). This is the safest option for environments where you cannot immediately upgrade your {{stack}} when new versions are released.
+* **Production images**: Use an image like `docker.elastic.co/package-registry/distribution:production` _only_ if you keep your air-gapped {{stack}} up-to-date. If you want to rely on the `production` image for the most recent {{fleet}} packages and prebuilt detection rules, upgrade your {{stack}} as soon as new versions are released. This minimizes the risk of encountering breaking changes between the {{package-registry}} and your {{stack}} version.
 ::::
 
 :::::{stepper}
@@ -191,7 +187,7 @@ For more details on exporting and importing rules, refer to [Export and import r
 2. Export the rules:
 
     1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
-    2. Select the rules you want to export (use **Select all** to select all rules).
+    2. Select the rules you want to export, or click **Select all** to select all rules.
     3. Click **Bulk actions** → **Export**.
 
 3. Transfer the exported `.ndjson` file to your air-gapped environment using your organization's approved file transfer method.
