@@ -365,6 +365,9 @@ toc:
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
+      - file: reference-architectures/genai-search-high-availability.md
+        children:
+          - file: reference-architectures/genai-search-high-availability/architecture.md
   - file: stack-settings.md
   - file: tools.md
     children:
