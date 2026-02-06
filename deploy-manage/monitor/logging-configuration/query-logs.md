@@ -1,10 +1,12 @@
 ---
 applies_to:
   deployment:
-    self: 9.4+
+    self: ga 9.4
+    ece: all
+    eck: all
 ---
 
-# Full query logging
+# Full query logging [logging]
 
 {{es}} allows to log every search and query operation performed on the cluster. This supports endpoints like `_search`,
 `_msearch`, [{{esql}}](/explore-analyze/discover/try-esql.md), [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv), [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md)
@@ -18,7 +20,7 @@ The following logging modules are available:
 - `sql`: Logs every query operation performed on the cluster using SQL.
 
 By default, the logging is disabled. To enable the logging, set the `elasticsearch.actionlog.<MODULE>.enabled` property
-to `true` in the `elasticsearch.yml` configuration file or via the settings API, for example:
+to `true` in the `elasticsearch.yml` configuration file or using the settings API, for example:
 
 ```yaml
 elasticsearch.actionlog.search.enabled: true
@@ -66,14 +68,14 @@ In addition to the fields listed above, each module may include fields specific 
 ### Search
 
 - `indices`: The indices that were searched in the request, as comma-separated values.
-- `hits`: The number of hits returned by the request. Note that there is a maximum of 10000 hits returned per request,
+- `hits`: The number of hits returned by the request. There is a maximum of 10000 hits returned per request,
   and this value will also be capped by this limit.
 - `is_system`: If system index logging is enabled, indicates whether the request was performed only on a system indices.
 
 ### EQL
 
 - `indices`: The indices that were queried in the request,
-- `hits`: The number of hits returned by the request. Note that there is a maximum of 10000 hits returned per request,
+- `hits`: The number of hits returned by the request. There is a maximum of 10000 hits returned per request,
   and this value will also be capped by this limit.
 
 ### SQL
