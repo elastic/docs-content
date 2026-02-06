@@ -224,7 +224,7 @@ You can assign [tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#pr
 {{cps-init}} supports two kinds of project tags:
 
 * predefined tags, which are provided by Elastic and describe built-in project metadata
-* custom tags, which you define and manage to organize projects according to your own needs
+* Custom tags, which you define and manage to organize projects according to your own needs. These tags are managed in the {{ecloud}} UI.
 
 Only custom tags can be added, modified, or removed. Predefined tags are always available and cannot be changed.
 
