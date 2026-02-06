@@ -219,7 +219,7 @@ TODO
 
 ## Tags
 
-You can assign [tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) to projects and use them to control {{cps}} behavior. Tags are managed in the Elastic Cloud UI.
+You can assign [tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) to projects and use them to control {{cps}} behavior.
 
 {{cps-init}} supports two kinds of project tags:
 
