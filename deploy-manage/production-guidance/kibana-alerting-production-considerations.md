@@ -60,9 +60,9 @@ Alerts and actions log activity in a set of "event log" data streams, one per {{
 
 For more information on data stream lifecycle management, see: [Data stream lifecycle](../../manage-data/lifecycle/data-stream.md).
 
-## Circuit breakers [alerting-circuit-breakers]
+## Performance guardrails [alerting-circuit-breakers]
 
-There are several scenarios where running alerting rules and actions can start to negatively impact the overall health of a {{kib}} instance either by clogging up Task Manager throughput or by consuming so much CPU/memory that other operations cannot complete in a reasonable amount of time. There are several [configurable](kibana://reference/configuration-reference/alerting-settings.md#alert-settings) circuit breakers to help minimize these effects.
+There are several scenarios where running alerting rules and actions can start to negatively impact the overall health of a {{kib}} instance either by clogging up Task Manager throughput or by consuming so much CPU/memory that other operations cannot complete in a reasonable amount of time. There are several [configurable settings](kibana://reference/configuration-reference/alerting-settings.md#alert-settings) that act as performance guardrails (sometimes referred to as circuit breakers), placing limits on how frequently rules run, how long they can execute, and how many actions they can generate, helping minimize these effects.
 
 ### Rules with very short intervals [_rules_with_very_short_intervals]
 
