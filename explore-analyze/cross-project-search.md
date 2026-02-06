@@ -324,7 +324,6 @@ In both cases, the returned documents include the requested project metadata, wh
 
 You can also use project tags in queries to filter, sort, or aggregate search results.
 Unlike project routing, using tags inside a query does not affect which projects the query is sent to, it only affects which results are returned. The routing decision has already been made before the query is performed. 
-When tags are used in queries, they act only as queryable metadata. They affect which results are returned, but they do not affect which projects the search request is sent to.
 For example, the following request aggregates results by cloud service provider:
 
 For example:
