@@ -260,7 +260,7 @@ There are two ways to use tags in {{cps-init}}:
 
 #### Project routing [project-routing]
 
-Project routing enables you to limit a search to a subset of linked projects (the origin project and its linked projects) based on tag values.
+Project routing enables you to limit a search to a subset of projects, including the origin project and linked projects, based on tag values.
 
 When you use project routing, the routing decision is made before the search request is performed.
 Based on the specified tags, {{cps-init}} determines which projects the query is sent to, and the search is performed only on those projects.
