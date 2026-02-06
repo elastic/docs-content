@@ -92,7 +92,7 @@ This section explains how search works in {{cps-init}}, including:
 
 With {{cps-init}}, searches are resolved across all linked projects by default—not just the origin project.
 You explicitly need to limit the scope of your search to override this behavior. Refer to the [Unqualified and qualified search expressions](#search-expressions) section to learn more.
-When you refer to a resource by a name, {{cps-init}} resolves that name across the origin project and all of its linked projects.
+When you refer to a resource (such an index, a data stream, or an alias) by a name, {{cps-init}} resolves that name across the origin project and all of its linked projects.
 This means that when you run a search from the origin project and refer to a searchable resource such as `logs`, the search is executed against all resources named `logs` across the origin project and its linked projects, for example:
 
 ```console
@@ -109,8 +109,6 @@ If a linked project does not have a `logs` resource, that project is skipped and
 * **Unqualified search expressions** follow the {{cps}} model and represent the default, native behavior in {{cps-init}}. An unqualified search expression does not include a project alias prefix. In this case, the search runs against the origin project and all its linked projects.
 * **Qualified search expressions** explicitly override the default behavior, enabling you to precisely control which projects a search runs on and how errors are handled. It includes additional qualifiers, such as project alias prefixes, that explicitly control the scope of the search.
 
-
-
 For example, the following qualified search expression request searches only the origin project:
 
 ```console
@@ -119,10 +117,10 @@ GET _origin:logs/_search
 
 For additional examples of qualified search expressions, refer to the [examples section](#cps-examples).
 
-::::tip
-[Project tags](#tags) provide an additional way to control search behavior, but they serve a different purpose than qualified search expressions.
-While qualified search expressions control scope by explicitly naming projects by their project aliases in the index expression, [project routing](#project-routing) expressions enable you to route the query to projects dynamically based on other project metadata.
-You can use qualified search expressions and tags together, depending on whether you want to scope searches by explicitly identifying projects or by selecting projects based on shared attributes.
+::::{tip}
+[Project routing expressions](#project-routing) provide an additional way for you to control which projects the query is routed to, but they serve a different purpose than qualified search expressions.
+While qualified search expressions control scope by explicitly naming projects by their project aliases in the index expression, project routing expressions enable you to route the query to projects dynamically based on other project metadata.
+You can use qualified search expressions and project routing expressions together, depending on whether you want to scope searches by explicitly identifying projects or by selecting projects based on shared attributes.
 ::::
 
 #### `ignore_unavailable` and `allow_no_indices`
