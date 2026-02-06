@@ -8,11 +8,13 @@ This content applies to {{eck_resources_list_short}} applications. To orchestrat
 
 The following guides provide specific instructions for deploying and configuring each application on ECK:
 * [APM Server](apm-server.md)
+* [AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) {applies_to}`eck: ga 3.3`
 * [Standalone Elastic Agent](standalone-elastic-agent.md)
 * [{{fleet}}-managed {{agent}}](fleet-managed-elastic-agent.md)
 * [Elastic Maps Server](elastic-maps-server.md)
 * [Beats](beats.md)
 * [{{ls}}](logstash.md)
+* [{{package-registry}}](package-registry.md)
 
 ::::{note}
 Enterprise Search is not available in {{stack}} versions 9.0 and later. To deploy or manage Enterprise Search in earlier versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s-enterprise-search.html).

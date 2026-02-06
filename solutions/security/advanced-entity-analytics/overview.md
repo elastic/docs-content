@@ -17,7 +17,7 @@ To access the page, find **Entity analytics** → **Overview** in the navigation
 :::{admonition} Requirements
 * This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 
-* To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
 :::
 
 
