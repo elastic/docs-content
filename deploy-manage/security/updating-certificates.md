@@ -53,7 +53,7 @@ If you determine you need to generate new certificates, then you might accomplis
 
 Whether you're expanding usage of existing certificates or generated new certificates as outlined earlier, you will now apply those against the nodes in your cluster.
 
-### (Recommended) Rolling restart [update-node-certs-apply-rolling]
+### (Recommended) Rolling restart [use-rolling-restarts]
 
 You must complete a rolling restart if you modify any of the following:
 
