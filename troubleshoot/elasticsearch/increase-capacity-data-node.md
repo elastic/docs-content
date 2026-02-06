@@ -76,8 +76,6 @@ Here are the most common ways to increase disk capacity:
 * You can expand the disk space of the existing nodes. This is typically achieved by replacing your nodes with ones with higher capacity.
 * You can add additional data nodes to the data tier that is short of disk space, increasing the overall capacity of that tier and potentially improving performance by distributing data and workload across more resources.
 
-If in the response the shards' state is `RELOCATING`, it means that shards are still moving. Wait until all shards turn to `STARTED`.
-
 To resize your deployment, follow the recommendations that apply to your deployment type:
 
 :::{include} /troubleshoot/elasticsearch/_snippets/resize-your-deployment.md
@@ -90,3 +88,5 @@ You can check the progress with the following API call:
 ```console
 GET /_cat/shards?v&h=state,node&s=state
 ```
+
+If in the response the shards' state is `RELOCATING`, it means that shards are still moving. Wait until all shards turn to `STARTED`.
