@@ -9,6 +9,9 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+:::{include} _snippets/2025-01-13/index.md
+:::
+
 ## February 2, 2026 [serverless-changelog-02022026]
 
 ### Features and enhancements [serverless-changelog-02022026-features-enhancements]
@@ -233,7 +236,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Uses a sub keyword block loader with `ignore_above` for text fields [#140622]({{es-pull}}140622)
 * Fixes auto-expand code for replicas
 
-## January 13, 2026 [serverless-changelog-01132026]
+## Old January 13, 2026 [serverless-changelog-01132026]
 
 ### Features and enhancements [serverless-changelog-01132026-features-enhancements]
 
