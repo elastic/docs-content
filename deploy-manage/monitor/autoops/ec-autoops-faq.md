@@ -169,7 +169,7 @@ $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
     Complete the following steps to view a sample of this data locally:
 
     1. Follow the steps to [connect to AutoOps](cc-connect-self-managed-to-autoops.md) until you reach the [Install agent](cc-connect-self-managed-to-autoops.md#install-agent) step.
-    2. In the **Install agent** step, edit the installation command to replace `autoops_es.yml` with `autoops_es_debug.yml` as shown in the following code block. The chosen installation method in this example is Docker.
+    2. In the **Install agent** step, edit the installation command to replace `autoops_es.yml` with `autoops_es_debug.yml` as shown in the following code block:
     ```json
         --config otel_samples/autoops_es_debug.yml \
     ```
