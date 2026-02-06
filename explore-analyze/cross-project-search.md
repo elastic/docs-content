@@ -111,7 +111,7 @@ If a linked project does not have a `logs` resource, that project is skipped and
 
 
 
-For example, the following request searches only the origin project:
+For example, the following qualified search expression request searches only the origin project:
 
 ```console
 GET _origin:logs/_search
