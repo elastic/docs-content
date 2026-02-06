@@ -32,7 +32,7 @@ Once the Detections feature is [turned on](/solutions/security/detect-and-alert/
 
 To create detection rules, you must have:
 
-* Access to data views, which requires the `Data View Management` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
+* At least `Read` access to data views, which requires the `Data View Management` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 * The required privileges to preview rules, manage rules, and manage alerts. Refer to [](/solutions/security/detect-and-alert/detections-privileges.md) for more details.
 
 ::::{note}
