@@ -3,7 +3,6 @@ navigation_title: Reindex using a private CA
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-reindex.html
 applies_to:
-  serverless: unavailable
   deployment:
     ess: all
 products:

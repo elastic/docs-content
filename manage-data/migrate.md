@@ -15,8 +15,7 @@ products:
 
 # Migrate your {{es}} data
 
-Choose one of our guides to learn how to move your {{es}} data into {{ecloud}} and {{ece}} deployments.
-
+Transitioning between Elastic deployment types involves migrating your {{es}} data. The migration method to choose depends on your source and destination deployment types. Choose one of our guides for detailed steps.
 
 Migrate your {{ech}} data to {{serverless-full}}:
 
