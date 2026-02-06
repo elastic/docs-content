@@ -2,14 +2,14 @@
 navigation_title: Metric threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/metrics-threshold-alert.html
+applies_to:
+  stack: ga
+  serverless: unavailable 
 products:
   - id: observability
 ---
 
-
-
 # Create a metric threshold rule [metrics-threshold-alert]
-
 
 Based on the metrics that are listed on the **Metrics Explorer** page within the {{infrastructure-app}}, you can create a threshold rule to notify you when a metric has reached or exceeded a value for a specific time period.
 
@@ -19,50 +19,74 @@ Additionally, each rule can be defined using multiple conditions that combine me
 When you create this rule on the **Metrics Explorer** page, the rule is automatically populated with the same parameters as the page. If you’ve chosen a **graph per** value, your rule is preconfigured to monitor and notify about each individual graph displayed on the page.
 
 You can also create a rule based on a single graph. On the **Metrics Explorer** page, click **Alerts and rules** → **Create alert**. The condition and filter sections of the threshold rule are automatically populated.
-
 ::::
-
-
 
 ## Metric conditions [metrics-conditions]
 
 Conditions for each rule can be applied to specific metrics that you select. You can select the aggregation type (refer to [Aggregation options](aggregation-options.md)), the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. To help you determine which thresholds are meaningful to you, the preview charts provide a visualization.
 
-In this example, the conditions state that you will receive a critical alert for hosts with a CPU usage of 120% or above and a warning alert if CPU usage is 100% or above. Note that you will receive an alert only if memory usage is 20% or above, as per the second condition.
+In this example, the conditions state that you receive a critical alert for hosts with a CPU usage of 120% or above and a warning alert if CPU usage is 100% or above. Note that you will receive an alert only if memory usage is 20% or above, as per the second condition.
 
-:::{image} /solutions/images/observability-metrics-alert.png
-:alt: Metric threshold alert
+{applies_to}`stack: ga =9.0, removed 9.1+` When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
+
+
+:::{image} /solutions/images/observability-metrics-alert-nodata.png
+:alt: Metric threshold alert with alert if there is no data
 :screenshot:
+:width: 90%
 :::
-
-When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
-
 
 ## Filtering and grouping [filtering-and-grouping]
-
-:::{image} /solutions/images/observability-metrics-alert-filters-and-group.png
-:alt: Metric threshold filter and group fields
-:screenshot:
-:::
 
 The **Filters** control the scope of the rule. If used, the rule will only evaluate metric data that matches the query in this field. In this example, the rule will only alert on metrics reported from a Cloud region called `us-east`.
 
 ::::{note}
 If you've made a rule with the [create rule API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-alerting-rule-id) and added Query DSL filters using the `filterQuery` parameter, the filters won't appear in the UI for editing a rule. As a workaround, manually re-add the filters through the UI and save the rule. As you're modifying the rule's filters from the UI, be mindful of the following:
 
-- The **Filter** field only accepts KQL syntax, meaning you may need to manually convert your Query DSL filters to KQL. 
-- After you save the rule, filters you've added to the **Filter** field are converted appropriately and specified in the rule's `filterQuery` parameter.  
+- The **Filter** field only accepts KQL syntax, meaning you may need to manually convert your Query DSL filters to KQL.
+- After you save the rule, filters you've added to the **Filter** field are converted appropriately and specified in the rule's `filterQuery` parameter.
 ::::
 
 The **Group alerts by** creates an instance of the alert for every unique value of the `field` added. For example, you can create a rule per host or every mount point of each host. You can also add multiple fields. In this example, the rule will individually track the status of each `host.name` in your infrastructure. You will only receive an alert about `host-1`, if `host.name: host-1` passes the threshold, but `host-2` and `host-3` do not.
 
-When you select **Alert me if a group stops reporting data**, the rule is triggered if a group that previously reported metrics does not report them again over the expected time period.
 
 ::::{important}
 If you include the same field in both your **Filter** and your **Group by**, you may receive fewer results than you’re expecting. For example, if you filter by `cloud.region: us-east`, then grouping by `cloud.region` will have no effect because the filter query can only match one region.
 
 ::::
 
+:::::{applies-switch}
+
+::::{applies-item} stack: ga 9.1+
+
+If there is no data, you have the following options to control the alert behavior:
+
+:::{image} /solutions/images/observability-metrics-alertfiltersandgroup-nodata-options.png
+:alt: Metric threshold alert with alert if there is no data
+:screenshot:
+:width: 90%
+:::
+
+- **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
+- **Alert me about the missing data**
+  - If **Group alerts by** is used: Trigger a “no data” alert when a previously detected group stops reporting data; not recommended for dynamically scaling infrastructures that start and stop nodes automatically.
+  - If **Group alerts by** is not used: Trigger a “no data” alert when no data is returned during rule execution, or when the rule fails to query {{es}}.
+- **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
+::::
+
+::::{applies-item} stack: ga =9.0
+
+When you select **Alert me if a group stops reporting data**, the rule is triggered if a group that previously reported metrics does not report them again over the expected time period.
+
+:::{image} /solutions/images/observability-metrics-alertfiltersandgroup-nodata-alert.png
+:alt: Metric threshold alert with alert if there is no data
+:screenshot:
+:width: 90%
+:::
+
+::::
+
+:::::
 
 In the **Advanced options**, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
 

@@ -3,11 +3,7 @@ navigation_title: Shards
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-shards-view.html
 applies_to:
-  deployment:
-    ess: all
-    self:
-    ece:
-    eck:
+  stack: ga 7.17
 products:
   - id: cloud-hosted
   - id: cloud-kubernetes

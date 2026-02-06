@@ -1,11 +1,7 @@
 ---
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  serverless:
 navigation_title: "Error: Unable to retrieve node fs stats"
 ---
 

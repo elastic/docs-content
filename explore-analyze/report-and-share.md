@@ -14,10 +14,6 @@ $$$install-reporting-packages$$$
 
 $$$set-reporting-server-host$$$
 
-$$$csv-limitations$$$
-
-$$$embed-code$$$
-
 $$$grant-user-access-basic$$$
 
 $$$grant-user-access-external-provider$$$
@@ -31,7 +27,7 @@ $$$reporting-roles-user-api$$$
 $$$securing-reporting$$$
 
 
-{{kib}} provides you with several options to share **Discover** sessions, dashboards, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the {icon}`share` **Share** and {icon}`download` **Export** menus in the toolbar.
+{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the toolbar.
 
 ## Permissions
 
@@ -53,8 +49,6 @@ When sharing an object with unsaved changes, you get a temporary link that might
 To access the object shared with the link, users need to authenticate.
 
 Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
-
-![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
 
 
 ## Export as a file [manually-generate-reports]
@@ -86,8 +80,8 @@ In the following dashboard, the shareable container is highlighted:
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
 
-    * {applies_to}`stack: ga 9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
-    * {applies_to}`stack: ga 9.1` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type. 
+    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type. 
+    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
 
     ::::{note}
     When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
@@ -98,7 +92,7 @@ In the following dashboard, the shareable container is highlighted:
     Tips for generating PDF reports:
 
     * If you are creating dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
-    * {applies_to}`stack: ga 9.0` If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
+    * If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
     
     ::::
 
@@ -107,7 +101,7 @@ In the following dashboard, the shareable container is highlighted:
     ::::{note}
     To generate the report from outside of {{kib}} or from {{watcher}}, use the POST URL, then submit an HTTP `POST` request using a script or {{watcher}}.
 
-    {applies_to}`stack: ga 9.1` You can schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more. 
+    {applies_to}`stack: ga 9.1+` You can schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more. 
     ::::
 
 Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management > Alerts and Insights > Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).

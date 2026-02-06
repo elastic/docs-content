@@ -114,9 +114,9 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 #### Adaptive resources enabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -128,7 +128,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
@@ -141,11 +141,11 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 ::::
 
 #### Adaptive resources disabled
-
-::::{tab-set}
-
-:::{tab-item} ECH, ECE
-
+```{applies_to}
+deployment:
+  ess:
+  ece:
+```
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
 | Low | 2 if available, otherwise 1, statically | 1 | 2 if available |
@@ -154,9 +154,6 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 \* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
-:::
-
-::::
 
 ### Search optimized
 
@@ -164,9 +161,9 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 #### Adaptive resources enabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -178,7 +175,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
@@ -192,9 +189,9 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 #### Adaptive resources disabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |

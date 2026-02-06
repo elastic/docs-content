@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/identify-third-party-av-products.html
 applies_to:
-  stack: ga 9.2, preview 9.0
+  stack: ga 9.2+, preview 9.0-9.1
   serverless:
     security: ga
 products:
