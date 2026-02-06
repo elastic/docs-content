@@ -240,7 +240,7 @@ Avoid these common mistakes:
 
 ## Examples
 
-Here are some examples of well-structured release notes in the Elastic documentation:
+Here are some examples of release notes that are generated from changelog files:
 
-- [{{es}} release notes](elasticsearch://release-notes/index.md)
-- [{{agent}} release notes](elastic-agent://release-notes/index.md)
+- [{{es}} release notes](elasticsearch://release-notes/index.md), generated from [changelog files in the Elasticsearch repo](https://github.com/elastic/elasticsearch/tree/main/docs/changelog)
+- [{{agent}} release notes](elastic-agent://release-notes/index.md), generated from [changelog files in the Elastic Agent repo](https://github.com/elastic/elastic-agent/tree/main/changelog)
