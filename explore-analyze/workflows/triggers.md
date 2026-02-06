@@ -101,5 +101,5 @@ steps:
     type: console
     with:
       message: "Workflow started at {{ execution.startedAt }}"
-      details: "Event data: {{ event | json(2) }}"
+      details: "Event data: {{ event | json:2 }}"
 ```
