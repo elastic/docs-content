@@ -15,7 +15,7 @@ Common use cases include centralized log analysis, cross-environment troubleshoo
 
 Projects are intended to act as logical namespaces for data, not hard boundaries for querying it. You can split data into projects to organize ownership, use cases, or environments, while still expecting to search and analyze that data from a single place.
 
-Because of this, {{cps}} is the default behavior for your linked projects.
+Because of this, after you link additional projects to your current (_origin_) project, all searches from the origin project query every linked project by default.
 Searches are designed to run across projects automatically, providing the same experience for querying, analysis, and insights across projects as within a single project.
 Restricting search scope is always possible, but it requires an explicit choice rather than being the default.
 
