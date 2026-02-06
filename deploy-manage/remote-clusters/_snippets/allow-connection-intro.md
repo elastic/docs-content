@@ -19,7 +19,7 @@ Before you start, consider the [security model](/deploy-manage/remote-clusters/s
 API key
 :   For deployments based on {{stack}} 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model uses a dedicated service endpoint, on port `9443` by default, and gives administrators fine-grained control over remote access. The API key is created on the remote cluster and defines the permissions available to all cross-cluster requests, while local user roles can further restrict, but not extend, those permissions.
 
-    Starting with {{stack}} 9.3, the API key security model also supports strong identity verification, adding an extra layer of security. With this feature, the API key can be restricted to only be usable by requests that present an allowed certificate identity, which the remote cluster validates during authentication.
+    Starting with {{stack}} 9.3, the API key security model also supports [strong identity verification](/deploy-manage/remote-clusters/security-models.md#remote-cluster-strong-verification), adding an extra layer of security. With this feature, the API key can be restricted to only be usable by requests that present an allowed certificate identity, which the remote cluster validates during authentication.
 
 TLS certificate (deprecated in {{stack}} 9.0.0)
 :   This model uses mutual TLS authentication over the {{es}} transport interface for cross-cluster operations. User authentication is performed on the local cluster and a user's role names are passed to the remote cluster for authorization. Because a superuser on the local cluster automatically gains full read access to the remote cluster, this model is only suitable for clusters within the same security domain.
