@@ -109,7 +109,6 @@ If a linked project does not have a `logs` resource, that project is skipped and
 * **Unqualified search expressions** follow the {{cps}} model and represent the default, native behavior in {{cps-init}}. An unqualified search expression does not include a project alias prefix. In this case, the search runs against the origin project and all its linked projects.
 * **Qualified search expressions** explicitly override the default behavior, enabling you to precisely control which projects a search runs on and how errors are handled.
 
-In this case, the search runs against the origin project and all its linked projects.
 
 A qualified search expression includes additional qualifiers, such as project alias prefixes, that explicitly control the scope of the search.
 
