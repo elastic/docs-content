@@ -15,7 +15,7 @@ products:
 You can use [{{es}} query language ({{esql}})](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) in {{kib}} to query and aggregate your data, create visualizations, and set up alerts.
 This page guides you through the basics of working with {{esql}} in the {{kib}} UI.
 
-{{esql}} is tightly integated with Elastic solutions:
+{{esql}} is tightly integrated with Elastic solutions:
 
 - **{{observability}}**
   - Query metrics, logs, and traces simultaneously
@@ -48,7 +48,7 @@ This will hide the {{esql}} user interface from various applications. However, u
 
 ## The {{esql}} editor [esql-kibana-get-started]
 
-To get started with {{esql}}, go to **Discover**. Next, select **Try ES|QL** from the application menu bar.
+To get started with {{esql}}, go to **Discover**. Next, select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
 
 ### The query bar [esql-kibana-query-bar]
@@ -165,7 +165,7 @@ In the **Starred** tab, find all the queries you have previously starred.
 For the example query, the results table shows 10 rows. Omitting the `LIMIT` command, the results table defaults to up to 1000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
 
 ::::{note}
-the 10,000 row limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Any query or aggregation runs on the full data set.
+The 10,000 row limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Any query or aggregation runs on the full data set.
 ::::
 
 
@@ -268,7 +268,7 @@ serverless: preview
 
 The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
-{applies_to}`stack: ga 9.2` You can also use lookup indices from your remote clusters.
+{applies_to}`stack: ga 9.2.0` Remote lookup joins are supported in [cross-cluster queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md). The lookup index must exist on _all_ remote clusters being queried, because each cluster uses its local lookup index data.
 
 ![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 
