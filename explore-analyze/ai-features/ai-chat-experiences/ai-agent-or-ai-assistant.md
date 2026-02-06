@@ -41,8 +41,9 @@ You can also switch chat experiences at any time:
 
 1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
 2. Toggle between the two experiences under **Chat Experience**.
+3. Click the **Save changes** button.
 
-% TODO: Link to /solutions/search/agent-builder/standalone-and-flyout-modes.md once that page exists
+To learn more about the chat UI modes, refer to [](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md)
 
 ## Feature differences between Agent Builder and AI Assistant
 

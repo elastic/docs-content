@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-navigation_title: AI Assistant
+navigation_title: AI Assistant for Security
 ---
 
 # Elastic AI Assistant for Security
@@ -69,7 +69,7 @@ While AI Assistant is compatible with many different models, refer to the [Large
 
 ::::
 
-### Elastic Managed LLM [elastic-managed-llm-security-ai-assistant]
+### Elastic Managed LLMs [elastic-managed-llm-security-ai-assistant]
 
 :::{include} ../../_snippets/elastic-managed-llm.md
 :::
