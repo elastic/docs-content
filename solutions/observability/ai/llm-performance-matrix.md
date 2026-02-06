@@ -10,7 +10,7 @@ products:
 
 # Large language model performance matrix
 
-This page summarizes internal test results comparing large language models (LLMs) across {{obs-ai-assistant}} use cases. To learn more about these use cases, refer to [AI Assistant](/solutions/observability/observability-ai-assistant.md).
+This page summarizes internal test results comparing large language models (LLMs) across {{obs-ai-assistant}} use cases. To learn more about these use cases, refer to [AI Assistant](/solutions/observability/ai/observability-ai-assistant.md).
 
 ::::{important}
 Rating legend:

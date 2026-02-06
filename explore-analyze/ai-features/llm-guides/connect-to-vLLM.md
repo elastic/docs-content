@@ -16,7 +16,7 @@ The steps below show one example configuration, but you can use any model suppor
 
 ## Prerequisites
 
-* To set up the necessary {{kib}} connector, the `Actions and connectors: all` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).  
+* To set up the necessary {{kib}} connector, the `Actions and connectors: all` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * Admin access to a sufficiently powerful server.
 
 ## Connect vLLM to {{kib}}
@@ -46,7 +46,7 @@ Set up your server then install all necessary GPU drivers.
     1. Log in to your Hugging Face account.
     2. Navigate to **Settings > Access Tokens**.
     3. Create a new token with at least `read` permissions. Save it in a secure location.
- 
+
 2. Create an OpenAI-compatible secret token. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between Elastic and your reverse proxy.
 
 ::::
@@ -94,7 +94,7 @@ docker run \
 15. Limits max GPU used by vLLM (may vary depending on the machine resources available).
 16. This value should match the number of available GPUs (in this case, 2). This is critical for performance on multi-GPU systems.
 
-:::{important} 
+:::{important}
 Verify the container's status by running the `docker ps -a` command. The output should show the value you specified for the `--name` parameter.
 :::
 
@@ -154,16 +154,16 @@ Create the connector within your Elastic deployment to link it to your vLLM inst
 6. Click **Save**
 7. To enable the connector to work with AI Assistant for Security, add the following to your `config/kibana.yml` file:
     ```
-    feature_flags.overrides:  
-        securitySolution.inferenceChatModelDisabled: true  
+    feature_flags.overrides:
+        securitySolution.inferenceChatModelDisabled: true
     ```
-8. Finally, open the **AI Assistant for Security** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+8. Finally, open the **AI Assistant for Security** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     * On the **Conversations** tab, turn off **Streaming**.
     * If your model supports tool use, then on the **System prompts** page, create a new system prompt with a variation of the following prompt, to prevent your model from returning tool calls in AI Assistant conversations:
-    
+
     ```markdown
     You are a model running under OpenAI-compatible tool calling mode.
-    
+
     Rules:
     1. When you want to invoke a tool, never describe the call in text.
     2. Always return the invocation in the `tool_calls` field.
@@ -188,6 +188,6 @@ With your vLLM connector set up, you can use it to power features including:
 * [AI Assistant for Security](/solutions/security/ai/ai-assistant.md): Interact with an agent designed to assist with {{elastic-sec}} tasks.
 * [Attack Discovery](/solutions/security/ai/attack-discovery.md): Use AI to quickly correlate and triage security alerts.
 * [Automatic import](/solutions/security/get-started/automatic-import.md): Use AI to create custom integrations for third-party data sources.
-* [AI Assistant for Observability and Search](/solutions/observability/observability-ai-assistant.md): Interact with an agent designed to assist with {{observability}} and Search tasks.
+* [AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md): Interact with an agent designed to assist with {{observability}} and Search tasks.
 
 You can also learn how to [set up other types of LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md).

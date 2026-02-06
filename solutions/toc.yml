@@ -511,9 +511,11 @@ toc:
               - file: observability/incident-management/create-an-slo.md
               - file: observability/incident-management/slo-management.md
       - file: observability/data-set-quality-monitoring.md
-      - file: observability/observability-ai-assistant.md
+      - file: observability/ai/observability-ai.md
         children:
-          - file: observability/llm-performance-matrix.md
+          - file: observability/ai/observability-ai-assistant.md
+          - file: observability/ai/agent-builder-observability.md
+          - file: observability/ai/llm-performance-matrix.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:

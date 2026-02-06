@@ -536,7 +536,7 @@ redirects:
   'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3461
-  'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
+  'manage-data/data-store/data-streams/time-series-data-stream-tsds.md':
     to: 'manage-data/data-store/data-streams/time-series-data-stream-tsds.md'
     anchors:
       'when-to-use-tsds': 'when-to-use-tsds'
@@ -552,7 +552,7 @@ redirects:
       'time-bound-indices':
       'dimension-based-routing':
       'tsds-accepted-time-range':
-      
+
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
 
@@ -565,7 +565,7 @@ redirects:
   'solutions/security/cloud/integration-qualys.md': 'solutions/security/integrations/qualys.md'
   'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/integrations/aws-security-hub.md'
   'solutions/security/cloud/aws-config-integration.md': 'solutions/security/integrations/aws-config.md'
-  
+
 # Deduplicate canvas function reference
   'reference/data-analysis/kibana/canvas-functions.md': 'explore-analyze/visualize/canvas/canvas-function-reference.md'
   'reference/data-analysis/kibana/tinymath-functions.md': 'explore-analyze/visualize/canvas/canvas-tinymath-functions.md'
@@ -610,7 +610,7 @@ redirects:
 
 # Related to https://github.com/elastic/docs-team/issues/104
   'solutions/observability/get-started/what-is-elastic-observability': 'solutions/observability.md'
-  'solutions/security/get-started/create-security-project.md': 
+  'solutions/security/get-started/create-security-project.md':
     to: 'solutions/security/get-started.md'
     anchors:
       'create-sec-serverless-project':
@@ -652,7 +652,7 @@ redirects:
 
   # Related to https://github.com/elastic/docs-content/pull/4438
   'explore-analyze/ai-features/ai-agent-or-ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md'
-  
+
   # Related to agent builder restructure - moved agent builder docs to explore-analyze/
   'solutions/search/elastic-agent-builder.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
   'solutions/search/agent-builder/tools/esql-tools.md': 'explore-analyze/ai-features/agent-builder/tools/esql-tools.md'
@@ -694,3 +694,7 @@ redirects:
       - to: 'explore-analyze/visualize/charts/metric-charts.md'
         anchors:
           'metric-trends': 'build-metric-charts-with-kibana'
+
+# Related to https://github.com/elastic/docs-content/pull/5033
+  'solutions/observability/observability-ai-assistant.md': 'solutions/observability/ai/observability-ai-assistant.md'
+  'solutions/observability/llm-performance-matrix.md': 'solutions/observability/ai/llm-performance-matrix.md'
