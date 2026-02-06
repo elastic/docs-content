@@ -122,7 +122,7 @@ For additional examples of qualified search expressions, refer to the [examples 
 
 ::::tip
 [Project tags](#tags) provide an additional way to control search behavior, but they serve a different purpose than qualified search expressions.
-While qualified search expressions control scope by explicitly naming projects in the index expression, tags enable you to select projects dynamically based on project metadata, either through [project routing](#project-routing) or within queries.
+While qualified search expressions control scope by explicitly naming projects by their project aliases in the index expression, [project routing](#project-routing) expressions enable you to route the query to projects dynamically based on other project metadata.
 When used for project routing, tags determine which projects receive the search request before execution. This routing step does not act as a search expression qualifier and does not change how the index expression itself is interpreted.
 You can use qualified search expressions and tags together, depending on whether you want to scope searches by explicitly identifying projects or by selecting projects based on shared attributes.
 ::::
