@@ -286,6 +286,11 @@ Also link to the ES|QL CPS tutorial when it's available for more ES|QL examples.
 You can also use project tags within a search query. In this case, tags are treated as query-time metadata, not as routing criteria.
 You can explicitly request project tags to be included in search results. For both `_search` and ES|QL, you must request one or more tags to include them in the response.
 
+::::{note}
+The `_project.` prefix is required when using tags in search or ES|QL queries to disambiguate project metadata from Lucene fields.
+It is optional when using tags for project routing.
+::::
+
 For example, with the `_search` endpoint:
 
 ```console
@@ -352,7 +357,6 @@ The following APIs support {{cps}}:
 
 * [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)
 * [CAT count](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-cat-count)
-* Datafeeds [PUT](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-ml-put-datafeed), [GET](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-ml-get-datafeeds), [DELETE](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-ml-delete-datafeed)
 * [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
 * [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
 * [Multi search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
@@ -364,7 +368,6 @@ The following APIs support {{cps}}:
 * [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
 * Search scroll [clear](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-clear-scroll), [run](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
-* [Transforms](https://www.elastic.co/docs/api/doc/elasticsearch/v9/group/endpoint-transform)
 
 <!--
 ### {{cps-cap}} specific APIs
