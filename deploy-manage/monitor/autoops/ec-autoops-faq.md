@@ -174,6 +174,9 @@ $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
         --config otel_samples/autoops_es_debug.yml \
     ```
     3. Run the command to start the container.
-    4. The sample data will be output to the containers standard out as json. You can use `docker logs autoops-otel-agent` to view the output and i.e. pipe it to `jq` for prettier formatting.
+    4. The data sample will be logged to the container's standard output in JSON format. To view the output, run the following command:
+    ```json
+    docker logs autoops-otel-agent
+    ```
 
 
