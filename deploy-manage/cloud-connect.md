@@ -40,16 +40,24 @@ Find answers to your questions about Cloud Connect.
 
 * [Does Cloud Connect require additional payment?](#cc-additional-payment)
 * [Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?](#cc-ech)
+* [Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to EIS?](#cc-ech-eis)
 * [Are more services going to be available with Cloud Connect?](#cc-more-services)
 
 $$$cc-additional-payment$$$ **Does Cloud Connect require additional payment?** 
 :   Each cloud connected service has its own licensing and payment requirements. 
-    :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
+
+    - :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
+
+    - :::{include} /deploy-manage/_snippets/eis-cc-payment-faq.md
 ::: 
 
 $$$cc-ech$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?**
 :   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
+
+$$$cc-ech-eis$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to EIS?**
+:   For {{ech}} deployments, EIS is set up and enabled automatically.
+
 
 $$$cc-more-services$$$ **Are more services going to be available with Cloud Connect?**
 :   Yes. Cloud Connect will support additional services over time. After AutoOps and the Elastic Inference Service (EIS), the next planned cloud connected service is Synthetics.
