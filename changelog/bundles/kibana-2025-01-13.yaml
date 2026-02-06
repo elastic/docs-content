@@ -1,345 +1,22 @@
 ﻿products:
 - product: cloud-serverless
   target: 2025-01-13
+  repo: kibana
 entries:
 - file:
-    name: 247721.yaml
-    checksum: 3b205f702f1cd291644b0fc37d4e06da4da2f109
+    name: 1768349442-[cases]-update-total-event-in-es-document-when-att.yaml
+    checksum: 7de189a93fab0f6927e1352140ccff3dd1067cf7
   type: bug-fix
-  title: "[Data Table] Fix link's color contrast"
+  title: '[Cases] Update total event in ES document when attaching an event'
   products:
   - product: cloud-serverless
     target: 2025-01-13
-  pr: "247721"
+  pr: "247996"
 - file:
-    name: 247808.yaml
-    checksum: 69e00902c55d1f9a87a83a1d1eafdfeb2da00aba
+    name: 1768349431-[entity-analytics][privmon]-prepare-monitoring-ent.yaml
+    checksum: 20ae053a552defaae9ed16c987cfce314e8d7127
   type: enhancement
-  title: '[Traces] Prevent nested button in full traces in discover'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  pr: "247808"
-- file:
-    name: 247982.yaml
-    checksum: 0b84857beca03b22ad5fcdbe8b8e32a35428c26c
-  type: bug-fix
-  title: Fix API key visibility toggle accessibility on search homepage
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  description: Fixes accessibility issue where the "Show API key" button aria-label did not update to "Hide API key" when toggled, causing screen readers to announce incorrect state.
-  areas:
-  - Search
-  pr: "247982"
-- file:
-    name: 246540.yaml
-    checksum: 5124f8a7367701d5570d9372a11dc42a4278a820
-  type: feature
-  title: '[Streamlang] Add uppercase, lowercase and trim processors'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Management
-  pr: "246540"
-- file:
-    name: 247003.yaml
-    checksum: 3b5d663a0decf51419784447d5bb937b3b67878b
-  type: enhancement
-  title: 'Mark MATCH_PHRASE second argument as constantOnly '
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - ES|QL
-  pr: "247003"
-- file:
-    name: 247691.yaml
-    checksum: 9a9c40be3f26de93a20ad1ef012214d5e80f9e54
-  type: enhancement
-  title: 'Trained Models: Adds button to synchronize saved objects'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Machine learning
-  pr: "247691"
-- file:
-    name: 247015.yaml
-    checksum: 4e9843e0c8d562f3d080e34ebeff04f1fab4a312
-  type: bug-fix
-  title: Increase default top values from 3/5 to 9 categories
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Dashboards and Visualizations
-  pr: "247015"
-- file:
-    name: 247002.yaml
-    checksum: 47ed6cb687196d31074007fa6f4531b97fc2bb13
-  type: bug-fix
-  title: Changes placement of `Migrations` and `Inventory` in Security Solution Nav
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Elastic Security solution
-  pr: "247002"
-- file:
-    name: 245588.yaml
-    checksum: 93e3563a6d49dc90b594d0c6a7ffb1bb086aea2b
-  type: feature
-  title: Feature Branch
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  description: Controls are now available as a panel type, which means that they can be freely placed anywhere in your Dashboards! The output filters are limited to their sections, which allows you to target only a subset of panels with a given control. If desired, controls can still be pinned to the top of the Dashboard with a global scope.
-  areas:
-  - Dashboards and Visualizations
-  pr: "245588"
-- file:
-    name: 247880.yaml
-    checksum: 8934a425cdc17d6c403725dd530c02d13a864336
-  type: bug-fix
-  title: Fixes validation error with maintenance windows on lightweight synthetics monitors.
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Elastic Observability solution
-  pr: "247880"
-- file:
-    name: 247615.yaml
-    checksum: 872d75e4ceb3a2286a53e91163aa985fe82ad0f3
-  type: bug-fix
-  title: 'Data Visualizer: fixes display of map view for small screen sizes'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Machine learning
-  pr: "247615"
-- file:
-    name: 247992.yaml
-    checksum: 113aa140fdae01c7b8f9720857e1d329f28082fe
-  type: bug-fix
-  title: Encode search term in cases page
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  pr: "247992"
-- file:
-    name: 247707.yaml
-    checksum: cc7c56c7e50a0e68f0d76a5fe60790fb2783f2f6
-  type: bug-fix
-  title: Encode URL Components for entities
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Elastic Security solution
-  pr: "247707"
-- file:
-    name: 243011.yaml
-    checksum: 8680f2dd4f5456ee64028532d9ac829e19d70ef6
-  type: feature
-  title: '[Streamlang] Expose range to the UI'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Management
-  pr: "243011"
-- file:
-    name: 247678.yaml
-    checksum: 415ff1aa910f24858115257f066df00c62fe62fe
-  type: bug-fix
-  title: "[Detection Engine] fixes \"Rule settings pop-up remain open on clicking 'Save' button after enabling/ disabling auto gap fill.\""
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Elastic Security solution
-  pr: "247678"
-- file:
-    name: 248020.yaml
-    checksum: 533d5098f7c82359301c1f4f516e15bd5714afe8
-  type: bug-fix
-  title: "Fix API doesn't use an associated conversation's system prompt "
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Elastic Security solution
-  pr: "248020"
-- file:
-    name: 247398.yaml
-    checksum: e9a4c2df83ef4b9d98696d2f189438b83db4e4a8
-  type: feature
-  title: Adds capability for rolling back a recent upgrade of a Fleet-managed Elastic Agent upgrade using Fleet UI or API.
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Data ingestion and Fleet
-  pr: "247398"
-- file:
-    name: 246073.yaml
-    checksum: 5036d547287e8c554276a2acdb79bb8d4d579d4e
-  type: feature
-  title: Set heap limit to min(60%, 4gb) for containers if unset
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  description: Containers now set the default Node.js heap to 75% of available memory up to a maximum of 4096mb.  Previously this was set to 50%.
-  areas:
-  - Operations
-  pr: "246073"
-- file:
-    name: 247531.yaml
-    checksum: 037c9f9b9b5c544dd524605fafad5533ffa161be
-  type: bug-fix
-  title: '[Discover] Fix trace links calculating date range incorrectly'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  pr: "247531"
-- file:
-    name: 247638.yaml
-    checksum: 2b248b0c26a2dce14f0fb3f81b3b5eebeff16654
-  type: feature
-  title: 'feat(slo): instance selector visible when current instance is not defined'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  description: Enhanced the SLO Details page to properly handle grouped SLOs when no specific instance is selected. Users can now search the SLO instances
-  areas:
-  - Elastic Observability solution
-  pr: "247638"
-- file:
-    name: 247744.yaml
-    checksum: b7bcaad6befb7652b57e2f15a96bff3ed9d01a7c
-  type: enhancement
-  title: '[Discover] Fix double scroll in fullscreen flyouts'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  pr: "247744"
-- file:
-    name: 246088.yaml
-    checksum: d17b91bfafd83b19b0ed8c1166ce4779e2e15d46
-  type: bug-fix
-  title: Only update relevant monitors where maintenance windows exists
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  description: Only update Synthetics package policies that use maintenance windows when maintenance windows are updated or deleted. Prevents extra Synthetics package policies from being updated when maintenance windows are updated or deleted, even if the monitor itself does not use maintenance windows.
-  areas:
-  - Elastic Observability solution
-  pr: "246088"
-- file:
-    name: 247836.yaml
-    checksum: 945b90ee210233224979bf8a8b21c4b40f0b7ead
-  type: bug-fix
-  title: Fix `ToolbarSelector` when clicking on tabs
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  pr: "247836"
-- file:
-    name: 248444.yaml
-    checksum: f42fe5107836918ef6260f44392da50bb64107d9
-  type: bug-fix
-  title: '[Attacks/Alerts][Attacks page][Table section] Hide tabs for generic attack groups'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Elastic Security solution
-  pr: "248444"
-- file:
-    name: 247877.yaml
-    checksum: 470544ddca77dcc0dc7053d6925cc6d026ea8aa3
-  type: bug-fix
-  title: Fixes a bug where Agent Builder Index Search tools would fail on aliases that contained semantic_text fields
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  pr: "247877"
-- file:
-    name: 247965.yaml
-    checksum: 84cdf006382ce6da199b52497d6851e8471479bd
-  type: enhancement
-  title: Improves Attack discovery hallucination detection
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Elastic Security solution
-  pr: "247965"
-- file:
-    name: 247964.yaml
-    checksum: 6ac1426cbaa9d354ca4f07cab16222aeaaf570f2
-  type: bug-fix
-  title: Change alert suppression icon
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Elastic Security solution
-  pr: "247964"
-- file:
-    name: 247641.yaml
-    checksum: fb5e8f32324edef427ce7650ab29334e8f5f4778
-  type: bug-fix
-  title: Disable ES|QL field stats for TS command
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Machine learning
-  pr: "247641"
-- file:
-    name: 246640.yaml
-    checksum: 5183755781a7bb65b41e29aa812b283884ca0b67
-  type: enhancement
-  title: 'Inference/AI Connector: mark 429 errors as user errors'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Machine learning
-  pr: "246640"
-- file:
-    name: 247417.yaml
-    checksum: b270fc315c15f0f9cd53f74962df8d485df4dc92
-  type: enhancement
-  title: Fix the inference endpoints pull-down on semantic text UI
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  description: Improves the inference endpoint selector layout to keep long endpoint names readable and stable while clarifying ML-node startup behavior.
-  areas:
-  - Search
-  pr: "247417"
-- file:
-    name: 248439.yaml
-    checksum: e61697ab819906ceb4d3d9b03b4c4f1ddbe8caa8
-  type: bug-fix
-  title: '[Attack Discovery][Bug] Attack-Discovery misclassified system error "Security AI Anonymization settings configured to not allow any fields" (#246595)'
-  products:
-  - product: cloud-serverless
-    target: 2025-01-13
-  areas:
-  - Elastic Security solution
-  pr: "248439"
-- file:
-    name: 246978.yaml
-    checksum: aff8d5b1f3462fea5c4f4b3f408808b1b806fc12
-  type: enhancement
-  title: '[Privmon] Prepare Monitoring Entity Source CRUD APIs for GA'
+  title: '[Entity Analytics][Privmon] Prepare Monitoring Entity Source CRUD APIs for GA'
   products:
   - product: cloud-serverless
     target: 2025-01-13
@@ -347,42 +24,211 @@ entries:
   - Elastic Security solution
   pr: "246978"
 - file:
-    name: 248462.yaml
-    checksum: 0982eb40915d3680efd1b97bb18400601020b91b
-  type: bug-fix
-  title: 'Fix: Only run ML saved object check if saving semantic text mapping'
+    name: 1768349435-[observabilitystreams][streamlang]-add-uppercase,-.yaml
+    checksum: 453defdf34c8af7877cacc6f201786a791bc2bd7
+  type: feature
+  title: '[Observability:Streams][Streamlang] Add uppercase, lowercase and trim processors'
   products:
   - product: cloud-serverless
     target: 2025-01-13
-  description: Fixes an issue when running Elasticsearch with a Basic license, where users might encounter errors when updating index mappings, even when adding non-ML field types. This issue has been resolved so that mapping updates now work as expected, while advanced semantic text features continue to require the appropriate license.
+  areas:
+  - Management
+  pr: "246540"
+- file:
+    name: 1768349461-[traces][discover]-fix-double-scroll-in-fullscreen.yaml
+    checksum: f301046673a06909ddc620e1c66256735e12423e
+  type: enhancement
+  title: '[Traces][Discover] Fix double scroll in fullscreen flyouts'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  pr: "247744"
+- file:
+    name: 1768349438-display-the-api-key-tab-if-the-user-has-permission.yaml
+    checksum: 959e860e3c2f61c68fde953fb4ffcfbc8c713717
+  type: enhancement
+  title: Display the API key tab if the user has permission
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
   areas:
   - Search
-  pr: "248462"
+  pr: "246979"
 - file:
-    name: 247996.yaml
-    checksum: e35c4e4161cdfaef0f163f68c4bd941d74996e6d
-  type: bug-fix
-  title: Update total event in ES document when attaching an event
+    name: 1768349434-[streams]-[streamlang]-expose-range-to-the-ui.yaml
+    checksum: 99b13c7ade284d6225986165fff2c77cba56f491
+  type: feature
+  title: '[Streams] [Streamlang] Expose range to the UI'
   products:
   - product: cloud-serverless
     target: 2025-01-13
-  pr: "247996"
+  areas:
+  - Management
+  pr: "243011"
 - file:
-    name: 245441.yaml
-    checksum: 35a5bc3d36da73b6cda9e2c1f586534e7bd6b5d9
+    name: 1768349441-[security-solution][attacks-alerts][attacks-page][.yaml
+    checksum: 4e60a780f67932eafdd97c4f6c20b0046946ffc9
   type: bug-fix
-  title: Default Rule creation
+  title: '[Security Solution][Attacks/Alerts][Attacks page][Table section] Hide tabs for generic attack groups'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Security solution
+  pr: "248444"
+- file:
+    name: 1768349450-[security-solution][attack-discovery][bug]-attack-.yaml
+    checksum: 2cf5a79b9ca9ca59c734e145b1846e3036eebac9
+  type: bug-fix
+  title: '[Security Solution][Attack Discovery][Bug] Attack-Discovery misclassified system error "Security AI Anonymization settings configured to not allow any fields" (#246595)'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Security solution
+  pr: "248439"
+- file:
+    name: 1768349453-fix-api-key-visibility-toggle-accessibility-on-sea.yaml
+    checksum: 44e4544909ea13021577812d4dca92f61ccde605
+  type: bug-fix
+  title: Fix API key visibility toggle accessibility on search homepage
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Search
+  pr: "247982"
+- file:
+    name: 1768349427-[controls-anywhere]-feature-branch.yaml
+    checksum: 5c60a7cd0cc3d728cbc3df5d47f28865ec27c1c2
+  type: feature
+  title: '[Controls Anywhere] Feature Branch'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Dashboards and Visualizations
+  pr: "245588"
+- file:
+    name: 1768349428-[fleet]-implement-agent-upgrade-rollback.yaml
+    checksum: 20b6095a1ce6ce0c24873387ed449ff81a336381
+  type: feature
+  title: '[Fleet] Implement agent upgrade rollback'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Data ingestion and Fleet
+  pr: "247398"
+- file:
+    name: 1768349462-[discover][traces]-prevent-nested-button-in-full-t.yaml
+    checksum: 08ab1dba068fbf6e120c9ea7ce52b861940b89e1
+  type: enhancement
+  title: '[Discover][Traces] Prevent nested button in full traces in discover'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  pr: "247808"
+- file:
+    name: 1768349440-[security-solution]-changes-placement-of-`migratio.yaml
+    checksum: 3fdce90cbb9ee9a967f517dcab2031aeedf239ce
+  type: bug-fix
+  title: '[Security Solution] Changes placement of `Migrations` and `Inventory` in Security Solution Nav'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Security solution
+  pr: "247002"
+- file:
+    name: 1768349446-[synthetics]-only-update-relevant-monitors-where-m.yaml
+    checksum: 2b7ff7c368287fa3defc3ba6798a837bc46a7f0c
+  type: bug-fix
+  title: '[Synthetics] Only update relevant monitors where maintenance windows exists'
   products:
   - product: cloud-serverless
     target: 2025-01-13
   areas:
   - Elastic Observability solution
-  pr: "245441"
+  pr: "246088"
 - file:
-    name: 247885.yaml
-    checksum: 20fc140f4d6e67db56e5b02f20bb37df7001c9a9
+    name: 1768349433-[ml]-trained-models-adds-button-to-synchronize-sav.yaml
+    checksum: 8eae24e1d500abcf6ed7c3f2668587934759c912
+  type: enhancement
+  title: '[ML] Trained Models: Adds button to synchronize saved objects'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Machine learning
+  pr: "247691"
+- file:
+    name: 1768349458-[discover]-fix-`toolbarselector`-when-clicking-on-.yaml
+    checksum: 2df6809e9675f09fdd3a928efdcb272c56d106cd
   type: bug-fix
-  title: Fixes the icon in the "Elastic documentation not available" callout in AI Assistant Settings.
+  title: '[Discover] Fix `ToolbarSelector` when clicking on tabs'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  pr: "247836"
+- file:
+    name: 1768349460-[cases]-encode-search-term-in-cases-page.yaml
+    checksum: f420b4bc9acfb4e93b9eb99a1929529c88032a87
+  type: bug-fix
+  title: '[Cases] Encode search term in cases page'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  pr: "247992"
+- file:
+    name: 1768349436-[build]-set-heap-limit-to-min(75%,-4gb)-for-contai.yaml
+    checksum: 55fcda972d7aa1e451a9d7a4ed9afdc629b43461
+  type: feature
+  title: '[build] Set heap limit to min(75%, 4gb) for containers if unset'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Operations
+  pr: "246073"
+- file:
+    name: 1768349449-[security-solution]-fix-api-doesnt-use-an-associat.yaml
+    checksum: 75671f263de505281c1388224c5120420777225b
+  type: bug-fix
+  title: "[Security solution] Fix API doesn't use an associated conversation's system prompt "
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Security solution
+  pr: "248020"
+- file:
+    name: 1768349447-[synthetics]-fix-validation-of-maintenance-windows.yaml
+    checksum: b519b2486b8936d363c5c1b23f01aaaef4fde476
+  type: bug-fix
+  title: '[Synthetics] Fix validation of maintenance windows in project monitors'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Observability solution
+  pr: "247880"
+- file:
+    name: 1768349437-fix-the-inference-endpoints-pull-down-on-semantic-.yaml
+    checksum: a5246c46f7eaaa560d53f098b0c88b2abc56cdf7
+  type: enhancement
+  title: Fix the inference endpoints pull-down on semantic text UI
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Search
+  pr: "247417"
+- file:
+    name: 1768349445-[obs-ai]-fix-product-documentation-not-available-c.yaml
+    checksum: a5546f40a8c4aaf3c23ca506a952f603c90ab3ee
+  type: bug-fix
+  title: '[Obs AI] Fix product documentation not available callout icon'
   products:
   - product: cloud-serverless
     target: 2025-01-13
@@ -390,22 +236,51 @@ entries:
   - Elastic Observability solution
   pr: "247885"
 - file:
-    name: 246979.yaml
-    checksum: 3d2ee638b32c579232ecaccb63496aac103701db
+    name: 1768349429-[es|ql]-mark-match_phrase-second-argument-as-const.yaml
+    checksum: 38ad4d1da14f1d5ab0285fda7c51309a41b24fb5
   type: enhancement
-  title: Display the API key tab if the user has permission
+  title: '[ES|QL] Mark MATCH_PHRASE second argument as constantOnly '
   products:
   - product: cloud-serverless
     target: 2025-01-13
-  description: Improves the Connection Details flyout by hiding the API Keys tab for users without API key management permissions, providing a cleaner experience.
   areas:
-  - Search
-  pr: "246979"
+  - Discover
+  - ES|QL
+  pr: "247003"
 - file:
-    name: 248072.yaml
-    checksum: 7627fb3277af83a4ff3b091d2cec25d7f81fe923
+    name: 1768349439-[synthetics]-default-rule-creation.yaml
+    checksum: 256d8d15611f6134df75233999be6ebde5bcbe04
   type: bug-fix
-  title: Disabled 'API keys' button on Elasticsearch homepage when logged in user have insufficient permissions.
+  title: '[Synthetics] Default Rule creation'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Observability solution
+  pr: "245441"
+- file:
+    name: 1768349459-[apm][discover]-fix-trace-links-calculating-date-r.yaml
+    checksum: 2b03b1e5b7bf67c281fab46c52be7cdbbbc2388e
+  type: bug-fix
+  title: '[APM][Discover] Fix trace links calculating date range incorrectly'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  pr: "247531"
+- file:
+    name: 1768349457-[lens][data-table]-fix-links-color-contrast.yaml
+    checksum: adf09687f1e12e0fa21aa47cedb0d0e18b22282f
+  type: bug-fix
+  title: "[Lens][Data Table] Fix link's color contrast"
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  pr: "247721"
+- file:
+    name: 1768349454-[bug]-[search-homepage]-disable-api-keys-on-insuff.yaml
+    checksum: 56d6bf0b361dc025c0b6995bffc81640e7c468b6
+  type: bug-fix
+  title: '[Bug] [Search Homepage] Disable API keys on insufficient permissions'
   products:
   - product: cloud-serverless
     target: 2025-01-13
@@ -413,10 +288,109 @@ entries:
   - Search
   pr: "248072"
 - file:
-    name: 248068.yaml
-    checksum: b9ba730b0a998c2f13890964642a6f57c2959dff
+    name: 1768349448-[security-solution][detection-engine]-fixes-rule-s.yaml
+    checksum: ac09e8401319a049ffe6a33ac37dde49bbb6c1da
   type: bug-fix
-  title: Refetches controls options when the timerange changes
+  title: "[Security Solution][Detection Engine] fixes \"Rule settings pop-up remain open on clicking 'Save' button after enabling/ disabling auto gap fill.\""
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Security solution
+  pr: "247678"
+- file:
+    name: 1768349441-[security-solution]-change-alert-suppression-icon.yaml
+    checksum: e15f7236eab16d1c646e41939b1685ab0cc93092
+  type: bug-fix
+  title: '[Security Solution] Change alert suppression icon'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Security solution
+  pr: "247964"
+- file:
+    name: 1768349429-feat(slo)-instance-selector-visible-when-current-i.yaml
+    checksum: ed9952bed23d9404eb24449aac3321f6c0da511e
+  type: feature
+  title: 'feat(slo): instance selector visible when current instance is not defined'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Observability solution
+  pr: "247638"
+- file:
+    name: 1768349431-[attack-discovery]-improves-attack-discovery-hallu.yaml
+    checksum: 52b295ef8c95c5698b45161abfc27da7c75bad5e
+  type: enhancement
+  title: '[Attack discovery] Improves Attack discovery hallucination detection'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Security solution
+  pr: "247965"
+- file:
+    name: 1768349455-fix-openai-connector-header-focus-order.yaml
+    checksum: 96f511daadecd65b03feb6507b17c7f666719491
+  type: bug-fix
+  title: Fix OpenAI connector header focus order
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Search
+  pr: "248204"
+- file:
+    name: 1768349448-[security-solution]-encode-url-components-for-enti.yaml
+    checksum: 3783cc825d004e677a32c2ce208a50b049b60880
+  type: bug-fix
+  title: '[Security Solution] Encode URL Components for entities'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Elastic Security solution
+  pr: "247707"
+- file:
+    name: 1768349444-[lens]-increase-default-top-values-from-3-5-to-9-c.yaml
+    checksum: c87d30388d8177006b60b3a16ac89c19f9d2677a
+  type: bug-fix
+  title: '[Lens] Increase default top values from 3/5 to 9 categories'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Dashboards and Visualizations
+  pr: "247015"
+- file:
+    name: 1768349456-[search]-fix-only-run-ml-saved-object-check-if-sav.yaml
+    checksum: 19e4d3158f0bd4f15d2dc2040000f77d6805bff7
+  type: bug-fix
+  title: '[Search] Fix: Only run ML saved object check if saving semantic text mapping'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Search
+  pr: "248462"
+- file:
+    name: 1768349451-[ml]-data-visualizer-fixes-display-of-map-view-for.yaml
+    checksum: 5a7247651a5693bc4048c6710454f293cf61c8fb
+  type: bug-fix
+  title: '[ML] Data Visualizer: fixes display of map view for small screen sizes'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Machine learning
+  pr: "247615"
+- file:
+    name: 1768349443-[es|ql]-refetches-controls-options-when-the-timera.yaml
+    checksum: d56e109f57b01894e0494ef0c9ed1da707513757
+  type: bug-fix
+  title: '[ES|QL] Refetches controls options when the timerange changes'
   products:
   - product: cloud-serverless
     target: 2025-01-13
@@ -424,14 +398,33 @@ entries:
   - Dashboards and Visualizations
   pr: "248068"
 - file:
-    name: 248204.yaml
-    checksum: 16fdd31847c9ce7e1a5dae790c34d4f62eff2476
+    name: 1768349456-use-simplified-retriever,-and-log-requests-and-err.yaml
+    checksum: dc5c4a8da3032570dda6b8306a9bb0c5d6a80129
   type: bug-fix
-  title: Fix OpenAI connector header focus order
+  title: Use simplified retriever, and log requests and error responses
   products:
   - product: cloud-serverless
     target: 2025-01-13
-  description: Fixes OpenAI connector header add flow so the newly added header Key input receives focus instead of leaving focus on the “Add header” button (addresses accessibility focus order).
+  pr: "247877"
+- file:
+    name: 1768349452-[ml]-disable-es|ql-field-stats-for-ts-command.yaml
+    checksum: ce72d8f337281a1d3ea857770dcca37d8c58f927
+  type: bug-fix
+  title: '[ML] Disable ES|QL field stats for TS command'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
   areas:
-  - Search
-  pr: "248204"
+  - Machine learning
+  pr: "247641"
+- file:
+    name: 1768349432-[ml]-inference-ai-connector-mark-429-errors-as-use.yaml
+    checksum: 4ded31a9784a1b06e2ef0f750844c0fb04e01270
+  type: enhancement
+  title: '[ML] Inference/AI Connector: mark 429 errors as user errors'
+  products:
+  - product: cloud-serverless
+    target: 2025-01-13
+  areas:
+  - Machine learning
+  pr: "246640"

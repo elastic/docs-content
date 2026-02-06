@@ -1,6 +1,7 @@
 ﻿products:
 - product: cloud-serverless
   target: 2025-01-13
+  repo: elasticsearch-serverless
 entries:
 - file:
     name: 5166.yaml

@@ -2,6 +2,7 @@
 - product: cloud-serverless
   target: 2025-01-13
   lifecycle: ga
+  repo: elasticsearch
 entries:
 - file:
     name: 140101.yaml
