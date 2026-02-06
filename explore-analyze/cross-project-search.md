@@ -135,7 +135,7 @@ The distinction between qualified and unqualified search expressions affects how
 When you use an **unqualified** expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
 
 ::::{important}
-The way that missing resources are interpreted differs between qualified and unqalified expressions, refer to [this section](#behavior-qualified-unqualified) for a detailed explanation.
+The way that missing resources are interpreted differs between qualified and unqalified expressions, refer to the [Qualified expression behavior](#behavior-qualified) and [Unqualified expression behavior](#behavior-unqualified) sections for a detailed explanation.
 ::::
 
 `ignore_unavailable` defaults to `false`.
