@@ -47,6 +47,4 @@ Deploys two {{es}} clusters and two {{kib}} instances together with single Elast
 
 ## Storing local state in host path volume [k8s_storing_local_state_in_host_path_volume]
 
-{{agent}} managed by ECK stores local state in a host path volume by default. This ensures that {{integrations}} run by the agent can continue their work without duplicating work that has already been done after the Pod has been recreated for example because of a Pod configuration change. Multiple replicas of an agent, for example {{fleet}} Servers, cannot be deployed on the same underlying {{k8s}} node as they would try to use the same host path.
-
-If local state storage in `hostPath` volumes is not desired, you can configure an `emptyDir` volume instead. For full configuration options including running as a non-root user, refer to [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).
+::::{include} _snippets/storing-local-state-host-path-volume.md
