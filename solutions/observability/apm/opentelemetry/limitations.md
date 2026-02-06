@@ -61,4 +61,4 @@ Using the [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetr
 
 As a workaround, you can use the [EDOT Collector tail-based sampling](elastic-agent://reference/edot-collector/config/tail-based-sampling.md) instead of sending data directly to APM Server. The EDOT Collector provides native support for tail-based sampling that properly handles metric extrapolation.
 
-Therefore, we recommend using either Elastic's native tail-based sampling in APM Server or EDOT Collector tail-based sampling when integrating with OpenTelemetry.
+Use either Elastic's native tail-based sampling in APM Server or EDOT Collector tail-based sampling when integrating with OpenTelemetry.
