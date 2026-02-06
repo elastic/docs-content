@@ -16,6 +16,9 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+:::{include} _snippets/9.3.0/deprecations.md
+:::
+
 ## 9.3.0 [elastic-security-9.3.0-deprecations]
 $$$elastic-security-233289$$$
 ::::{dropdown} Removes evaluation of Endpoint exceptions during detection rule execution

@@ -15,6 +15,9 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+:::{include} _snippets/9.3.0/breaking-changes.md
+:::
+
 ## 9.2.0 [elastic-security-920-breaking-changes]
 ::::{dropdown} Changes invalid category for Gatekeeper
 
