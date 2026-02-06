@@ -4,7 +4,7 @@ To run {{agent}} as a non-root user, you need to understand how permissions work
 
 | Scenario | Volume type | Additional setup required |
 |----------|-------------|---------------------------|
-| {{agent}} 8.16+ on standard {{k8s}} | `hostPath` | None — Agent handles permissions automatically |
+| {{agent}} 8.16+ on standard {{k8s}} | `hostPath` | allowPrivilegeEscalation: true, capabilities: add: ["CHOWN", "SETPCAP"] |
 | {{agent}} 8.16+ on OpenShift/SELinux | `hostPath` | DaemonSet for permissions (SELinux prevents Agent from managing its own permissions) |
 | {{agent}} 8.15 and earlier (ECK 2.10+) | `hostPath` | DaemonSet for permissions |
 | Any version | `emptyDir` | `fsGroup` security context only |
@@ -58,20 +58,19 @@ spec:
         containers:
         - name: agent
           securityContext:
+            allowPrivilegeEscalation: true
             runAsNonRoot: true
             capabilities:
               drop:
               - ALL
               add:
               - CHOWN # <1>
-              - DAC_READ_SEARCH # <2>
-              - SETPCAP # <3>
+              - SETPCAP # <2>
 ...
 ```
 
 1. Required for the Agent to change ownership of its data directories.
-2. Required for the Agent to read files regardless of permission modes.
-3. Required for the Agent to modify process capabilities.
+2. Required for the Agent to modify process capabilities.
 
 :::
 
