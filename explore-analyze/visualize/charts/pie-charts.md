@@ -116,7 +116,7 @@ Imagine your web logs data includes multiple numeric fields representing differe
 1. Create a **Pie** chart and remove any existing **Slice by** dimension.
 2. Open **Layer settings**:
    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`app_management` **Layer settings**.
-   * {applies_to}`stack: ga 9.0-9.2` Select {icon}`boxes_horizontal`, then select **Layer settings**.
+   * {applies_to}`stack: ga 9.0-9.2` Select {icon}`boxes_vertical`, then select **Layer settings**.
 3. Select **Multiple metrics**, then close the settings.
 4. Add metrics for each resource type:
 
@@ -148,8 +148,21 @@ When you have many categories with small values, you can group them into an "Oth
 4. Enable **Group other values as "Other"** to combine remaining values into a single slice.
 
 :::{tip}
-Be careful when using "Other" as it could end up being the largest category, which may obscure the meaning of your chart. Consider whether a bar chart might be more appropriate for data with many categories.
+Be careful when using "Other" as it could end up being the largest category, which might obscure the meaning of your chart. Consider whether a bar chart might be more appropriate for data with many categories.
 :::
+
+#### Example: Top hosts with remaining grouped as "Other"
+
+This example uses the **Kibana Sample Data Logs** data set. If you haven't installed it yet, refer to [Sample data](/manage-data/ingest/sample-data.md) for instructions.
+
+1. Create a **Pie** chart using the **Kibana Sample Data Logs** {{data-source}}.
+2. In the **Slice by** dimension, select `host.keyword` with **Top values** set to **3**.
+3. Expand **Advanced** and make sure that the **Group other values as "Other"** option is active.
+4. Set the **Metric** to the **Count** function.
+
+The resulting chart shows the 3 most common hosts, with all remaining hosts combined into a single "Other" slice. This keeps the chart readable while still accounting for the full data set.
+
+![Pie chart showing top 3 hosts with remaining hosts grouped as Other](/explore-analyze/images/pie-chart-group-as-other.png)
 
 ## Pie chart settings [pie-chart-settings]
 
@@ -160,32 +173,46 @@ Customize your pie chart to display exactly the information you need, formatted 
 The **Slice by** dimension defines how your pie is divided into segments. You can add up to 3 levels of slicing to create hierarchical visualizations.
 
 **Data**
-:   Common options include:
-    - **Top values**: Create slices for the most common values in a field. Specify the number of values to display.
-    - **Filters**: Define custom categories using KQL queries to create slices based on specific conditions.
-    - **Date histogram**: Group data into time-based buckets (useful for showing time-based composition).
+:   The **Slice by** dimension supports the following functions:
+
+    - **Top values**: Create slices for the most common values in a field. Configure the number of values to display, ranking criteria, and sort direction.
+      - **Number of values**: How many top values to display.
+      :::{include} ../../_snippets/lens-rank-by-options.md
+      :::
+      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
+      :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+      :::
+    - **Date histogram**: Group data into time-based buckets (useful for showing time-based composition). Configure the time interval and how to handle date formatting.
+      :::{include} ../../_snippets/lens-histogram-settings.md
+      :::
+      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
+    - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
+      - **Include empty rows**: Include intervals with no matching documents. On by default.
+      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
+      :::{dropdown} How does interval granularity work?
+      Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
+      
+      The size of the interval is a "nice" value. When the granularity of the slider changes, the interval stays the same when the "nice" interval is the same. The minimum granularity is 1, and the maximum value is histogram:maxBars. To change the maximum granularity, go to Advanced settings.
+      
+      Intervals are incremented by 10, 5 or 2. For example, an interval can be `100` or `0.2`.
+      :::
+    - **Filters**: Define custom KQL filters to create specific slices. Each filter creates one slice in the chart.
+      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
 
 **Appearance**
 :   Configure slice-level options:
     - **Name**: Customize the legend label.
     - **Color mapping**: Select a color palette or assign specific colors to categories. Refer to [Assign colors to terms](../lens.md#assign-colors-to-terms) for details.
 
-**Advanced options**
-:   - **Collapse by**: Aggregate values of the slice into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Group other values as "Other"**: Combine values beyond the top N into an "Other" category.
-
 ### Metric settings [metric-settings]
 
 The **Metric** dimension defines the size of each slice.
 
 **Data**
-:   Specify the aggregation function that determines slice sizes:
-    - **Count**: Number of documents in each slice.
-    - **Sum**: Total of a numeric field.
-    - **Average**: Average value of a numeric field.
-    - **Unique count**: Number of unique values.
-    - **Percentile**: A specific percentile of a numeric field.
-    - **Formula**: Create custom calculations. Refer to [Lens formulas](../lens.md#lens-formulas) for examples.
+:   The main value that appears prominently in your chart. When you drag a field onto the chart, {{kib}} suggests a function based on the field type. You can change it and use aggregation functions like `Sum`, `Average`, `Count`, `Median`, and more, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
+
+    :::{include} ../../_snippets/lens-value-advanced-settings.md
+    :::
 
 **Appearance**
 :   - **Name**: Customize the metric label displayed in tooltips and legends.
@@ -233,10 +260,7 @@ Configure elements of your pie chart's legend:
     - **Show**: Always show the legend.
     - **Hide**: Never show the legend.
 
-**Position**
-:   Choose where to display the legend relative to the chart (left, right, top, or bottom).
-
-**Nested legend**
+**Nested**
 :   When using multiple **Slice by** dimensions, enable this option to show the legend in a hierarchical format that reflects the slice hierarchy.
 
 **Statistics**
@@ -255,39 +279,38 @@ The following examples show various configuration options for building impactful
 **Website traffic by source**
 :   Visualize the distribution of traffic sources to your website:
 
-    * **Slice by**: `referrer.keyword` (Top values, 5)
-    * **Metric**: `Count of records`
+    * Example based on: Kibana Sample Data Logs
+    * Configuration: [**Multiple metrics**](#multiple-metrics)
+    * **Metrics**: 4 metrics based on formulas
+        * `count(kql='referer : *elastic*')`, named "Elastic website"
+        * `count(kql='referer : *twitter*')`, named "Twitter/X"
+        * `count(kql='referer : *facebook*')`, named "Facebook"
+        * `count(kql='referer : *nytimes*')`, named "NY Times"
     * **Style**: Donut with medium hole
-    * **Legend**: Right side, showing traffic sources
+    * **Legend**: Show
+
+![Donut chart with traffic by sources](/explore-analyze/images/pie-chart-example-traffic-by-source.png "=60%")
 
 **Revenue distribution by product category**
 :   Show how revenue is distributed across product categories:
 
+    * Example based on: Kibana Sample Data eCommerce
     * **Slice by**: `category.keyword` (Top values, 6)
-    * **Metric**: `Sum of revenue`
-    * **Slice values**: Percentage with 1 decimal place
+    * **Metric**: Sum of `taxful_total_price`
     * **Style**: Pie (no donut hole)
+
+![Pie chart with revenue by product category](/explore-analyze/images/pie-chart-example-revenue-by-product-category.png "=60%")
 
 **Error distribution by type**
 :   Display the proportion of different error types in your application:
 
+    * Example based on: Kibana Sample Data Logs
     * **Slice by**: `error.type` using **Filters**:
-      - "Client Error": `response.status >= 400 AND response.status < 500`
-      - "Server Error": `response.status >= 500`
-      - "Success": `response.status >= 200 AND response.status < 400`
+      - "Client Error": `response.keyword >= "400" AND response.keyword < "500"`
+      - "Server Error": `response.keyword >= "500"`
+      - "Success": `response.keyword >= "200" AND response.keyword < "400"`
     * **Metric**: `Count of records`
     * **Style**: Donut with large hole
-    * **Color mapping**: Red for errors, green for success
+    * **Color mapping**: Red for client errors, yellow for server errors, green for success
 
-## Alternatives to pie charts
-
-While pie charts are useful for specific scenarios, consider these alternatives:
-
-**Bar charts**
-:   Better for comparing values across categories, especially when you have more than 6 categories or need precise comparisons. Use [stacked bar charts](bar-charts.md#stacked-bars) for part-to-whole relationships with easier value comparison.
-
-**Treemaps**
-:   Better for hierarchical data with many categories. Treemaps use nested rectangles to show proportions and hierarchy simultaneously.
-
-**Waffle charts**
-:   A grid-based alternative that can be easier to read than pie charts for some audiences. Each cell represents a proportion of the whole.
+![Donut chart with distribution of errors by type](/explore-analyze/images/pie-chart-example-response-distribution.png "=60%")

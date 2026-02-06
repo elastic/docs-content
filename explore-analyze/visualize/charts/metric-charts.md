@@ -220,8 +220,8 @@ Customize your metric chart to display exactly the information you need, formatt
 :   Split your metric into multiple tiles based on a categorical field. Each unique value creates its own tile, allowing you to compare metrics across regions, products, time periods, or any other dimensions. You can optionally specify the following options:
 
     - **Number of values**: The number of tiles to show. If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
-    - **Rank by**: The dimension by which top values are ranked.
-    - **Rank direction**: The direction to use for the ranking.
+    :::{include} ../../_snippets/lens-rank-by-options.md
+    :::
     - **Collapse by**: Aggregate values of the various tiles into a single number. Possible aggregation options are `None` (default), `Sum`, `Average`, `Min`, and `Max`.
 
     :::{include} ../../_snippets/lens-breakdown-advanced-settings.md

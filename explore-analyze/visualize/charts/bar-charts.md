@@ -122,11 +122,18 @@ Customize your bar chart to display exactly the information you need, formatted 
 ### Horizontal axis settings [horizontal-axis-options]
 
 **Data**
-:   The dimension that creates your individual bars. Common options include:
+:   The dimension that creates your individual bars. Common functions include:
+    - **Top values**: Create bars for the most common values in a field.
+      - **Number of values**: How many top values to display.
+      :::{include} ../../_snippets/lens-rank-by-options.md
+      :::
+      :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+      :::
     - **Date histogram**: Create time-based bars with configurable intervals.
-    - **Filters**: Define custom categories using KQL queries.
+      :::{include} ../../_snippets/lens-histogram-settings.md
+      :::
     - **Intervals**: Group data into numerical ranges.
-    - **Top values**: Specify fields for which to gather top values. 
+    - **Filters**: Define custom categories using KQL queries.
 
 **Appearance**
 :   Define the formatting of the horizontal axis, including:
@@ -151,11 +158,18 @@ Customize your bar chart to display exactly the information you need, formatted 
 ### Breakdown settings [breakdown-options]
 
 **Data**
-:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. Common options include:
+:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. Common functions include:
+    - **Top values**: Create bar segments for the most common values in a field.
+      - **Number of values**: How many top values to display.
+      :::{include} ../../_snippets/lens-rank-by-options.md
+      :::
+      :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+      :::
     - **Date histogram**: Create time-based bars with configurable intervals.
-    - **Filters**: Define custom categories using KQL queries.
+      :::{include} ../../_snippets/lens-histogram-settings.md
+      :::
     - **Intervals**: Group data into numerical ranges.
-    - **Top values**: Specify fields for which to gather top values.
+    - **Filters**: Define custom categories using KQL queries.
 
 **Appearance**
 :   Define the formatting of the breakdown, including:

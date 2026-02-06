@@ -151,8 +151,8 @@ Customize your table to display exactly the information you need, formatted the 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
         - **Number of values**: How many top values to display
-        - **Rank by**: Which metric to use for ranking
-        - **Rank direction**: Ascending or descending order
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
       - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
@@ -186,8 +186,8 @@ Customize your table to display exactly the information you need, formatted the 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
         - **Number of values**: How many top values to display
-        - **Rank by**: Which metric to use for ranking
-        - **Rank direction**: Ascending or descending order
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
       - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.

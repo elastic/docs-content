@@ -113,10 +113,17 @@ Customize your area chart to match the information you need and how you want it 
 **Data**
 :   
     - **Functions**:
+      - **Top values**: Create separate areas for the most common values in a field.
+        - **Number of values**: How many top values to display.
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
+        :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+        :::
       - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+        :::{include} ../../_snippets/lens-histogram-settings.md
+        :::
       - **Intervals**: Determine the size of the time buckets in your date histogram. You can define the intervals granularity or specify custom ranges.
-      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
-      - **Top values**: Create separate lines for the most common values in a field.
+      - **Filters**: Allow you to segment your data based on specific conditions, creating separate areas for each filter.
 
 **Appearance**
 :   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
@@ -143,20 +150,17 @@ You can split your data by a categorical field to create multiple stacked or ove
 **Data**
 :   
     - **Functions**:
+      - **Top values**: Create separate areas for the most common values in a field.
+        - **Number of values**: How many top values to display.
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
+        :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+        :::
       - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+        :::{include} ../../_snippets/lens-histogram-settings.md
+        :::
       - **Intervals**: Define the intervals granularity or specify custom ranges.
       - **Filters**: Create separate colored areas based on filter conditions.
-      - **Top values**: Limit to show only the top N values (for example, top 5, top 10).
-
-    - **Fields**: Depending on the function and type of field that you select, you can specify more advanced settings.
-
-    - **Number of values**: The number of tiles to show. If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
-    - **Rank by**: The dimension by which top values are ranked.
-    - **Rank direction**: The direction to use for the ranking.
-    - **Collapse by**: Aggregate values of the various tiles into a single number. Possible aggregation options are `None` (default), `Sum`, `Average`, `Min`, and `Max`.
-
-    :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
-    :::
 
 **Appearance**
 :   Allow you to customize how your breakdown data is displayed in line charts, including:

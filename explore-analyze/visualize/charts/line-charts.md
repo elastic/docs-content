@@ -100,10 +100,17 @@ Customize your line chart to display exactly the information you need, formatted
 **Data**
 :   
     - **Functions**:
+      - **Top values**: Create separate lines for the most common values in a field.
+        - **Number of values**: How many top values to display.
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
+        :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+        :::
       - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+        :::{include} ../../_snippets/lens-histogram-settings.md
+        :::
       - **Intervals**: Determine the size of the time buckets in your date histogram. You can define the intervals granularity or specify custom ranges.
       - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
-      - **Top values**: Create separate lines for the most common values in a field.
 
 **Appearance**
 :   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
@@ -129,12 +136,17 @@ Breakdown functions segment your data into multiple lines on the same chart, wit
 **Data**
 :   
     - **Functions**:
+      - **Top values**: Create separate lines for the most common values in a field.
+        - **Number of values**: How many top values to display.
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
+        :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+        :::
       - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+        :::{include} ../../_snippets/lens-histogram-settings.md
+        :::
       - **Intervals**: Determine the size of the time buckets in your date histogram. You can define the intervals granularity or specify custom ranges.
       - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
-      - **Top values**: Create separate lines for the most common values in a field.
-
-Depending on the function and type of field that you select, you can specify more advanced settings.
 
 **Appearance**
 :   Allow you to customize how your breakdown data is displayed in line charts, including:
