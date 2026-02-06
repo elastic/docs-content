@@ -77,7 +77,7 @@ While both the project ID and project alias uniquely identify a project, {{cps}}
 #### Referencing the origin project
 
 In addition to using a project alias, {{cps-init}} provides a reserved identifier, `_origin`, that always refers to the origin project of the search.
-You can use `_origin` in search expressions to explicitly target the origin project, without having to reference its specific project alias. Refer to [](#search-expressions) for detailed examples and to learn more.
+You can use `_origin` in search expressions to explicitly target the origin project, without having to reference its specific project alias. Refer to [Qualified and unqualified search expressions](#search-expressions) for detailed examples and to learn more.
 
 ## Search in {{cps-init}}
 
