@@ -294,7 +294,7 @@ Also link to the ES|QL CPS tutorial when it's available for more ES|QL examples.
 
 #### Queries
 
-You can also use project tags within a search query. In this case, tags are treated as query-time metadata, not as routing criteria.
+You can also use project tags within a search query. In this case, tags are treated as query-time metadata fields, not as routing criteria.
 You can explicitly request project tags to be included in search results. For both `_search` and ES|QL, you must request one or more tags to include them in the response.
 
 ::::{note}
