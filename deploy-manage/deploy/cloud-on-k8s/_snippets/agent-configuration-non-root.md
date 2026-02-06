@@ -72,6 +72,10 @@ spec:
 1. Required for the Agent to change ownership of its data directories.
 2. Required for the Agent to modify process capabilities.
 
+::::{note}
+CHOWN and SETPCAP are granted by default in most {{k8s}} distributions. You only need to add them explicitly when dropping all capabilities with `capabilities.drop: [ALL]`, as in the example above.
+::::
+
 :::
 
 :::{tab-item} {{agent}} 8.16+ (OpenShift/SELinux)
