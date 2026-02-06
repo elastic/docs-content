@@ -823,9 +823,34 @@ DELETE _transform/my-transform?delete_dest_index
 
 ## Reindex to upgrade [reindex-to-upgrade]
 
-If you are running a pre-8.x version, you might need to perform multiple upgrades before being able to upgrade to 9.x. As an alternative method to upgrading the cluster, you can create a new deployment in the target version and reindex from remote:
+If you are running a pre-8.x version, you might need to perform multiple upgrades before being able to upgrade to 9.x. As an alternative method to upgrading the cluster, you can create a new deployment in the target version and reindex from remote.
 
-1. Provision an additional deployment running the desired version, such as {{version.stack}}.
-2. To reindex your data into the new {{es}} cluster, use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new indexing requests to both clusters.
-3. Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
-4. Delete the old deployment. On {{ecloud}}, you are billed for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
+This method is intended only for migrating your own user or application data and should not be used to migrate Elastic system indices, {{kib}} data, or other {{stack}} features such as {{ml}}, transforms, {{kib}} alerting, or detection rules. To preserve these configurations and feature data, follow the standard upgrade procedure instead.
+
+Follow these steps to perform a reindex-based upgrade to a new deployment or cluster:
+
+1. **Provision an additional deployment running the desired version, such as {{version.stack}}**
+
+    Create it on your chosen platform ({{ech}}, {{ece}}, {{eck}}, or self-managed) and configure it to meet your new requirements.
+
+    ::::{note}
+    On {{ecloud}}, you are billed for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
+    ::::
+
+2. **Migrate ingest pipelines, templates, and configuration**
+
+    Create in the new cluster the index templates, ingest pipelines, and ILM policies so that they work similarly to those in the old cluster.
+
+3. **Reindex your data into the new {{es}} cluster**
+
+    Use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) to migrate existing data from the old cluster to the new one, and temporarily send new indexing requests to both clusters.
+
+4. **Validate and cut over**
+
+    Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
+
+    The exact process to switch traffic from the old cluster to the new one depends on your environment and requirements. You are responsible for defining this cutover strategy, which can range from a brief maintenance window to a gradual transition. Common approaches include updating client configurations, DNS records, or load balancer targets once validation of the new cluster is complete.
+
+5. **Delete the old deployment**
+
+    Once the new cluster is fully operational and all traffic has been redirected, you can safely delete the old deployment.
