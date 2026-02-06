@@ -1,0 +1,1 @@
+Using Elastic {{infer-cap}} Service (EIS) for self-managed clusters (ECE, ECK, or standalone) on-premise or in private cloud environments through Cloud Connect requires a [self-managed Enterprise license](https://www.elastic.co/subscriptions). EIS is usage-based and consumes ECUs. 
