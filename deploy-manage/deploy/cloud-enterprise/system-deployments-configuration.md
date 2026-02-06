@@ -62,7 +62,7 @@ When sizing your `logging-and-metrics` cluster, consider:
 
 * the expected workload, which affects the daily ingest size.
 * the number of ECE hosts, deployments, and log types you want to enable, such as slow logs or audit logs.
-* the desired retention period for the data. As with any other time-series data, you must properly manage your indices and delete old indices based on that retention period.
+* the desired [retention period for the data](/deploy-manage/monitor/orchestrators/ece-monitoring-ece-set-retention.md). As with any other time-series data, you must properly manage your indices and delete old indices based on that retention period.
 
 ## Access to system deployments [ece_access_to_system_deployments] 
 
