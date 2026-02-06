@@ -110,7 +110,6 @@ If a linked project does not have a `logs` resource, that project is skipped and
 * **Qualified search expressions** explicitly override the default behavior, enabling you to precisely control which projects a search runs on and how errors are handled. It includes additional qualifiers, such as project alias prefixes, that explicitly control the scope of the search.
 
 
-A qualified search expression includes additional qualifiers, such as project alias prefixes, that explicitly control the scope of the search.
 
 For example, the following request searches only the origin project:
 
