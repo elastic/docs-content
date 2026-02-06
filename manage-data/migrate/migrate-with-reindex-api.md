@@ -50,9 +50,8 @@ Visual components, such dashboard and visualizations, can be migrated after you 
 
     1. Open the Developer Tools [Console](/explore-analyze/query-filter/tools/console.md).
 
-    1. Using one of the following three examples, call the reindex API to migrate your documents.
+    1. Call the reindex API to migrate your index. If you have multiiple indices to migrate, we recommend doing a separate call for each.
 
-        **Migrate a single index using an API key:**
         ```
         POST _reindex
         {
@@ -71,56 +70,6 @@ Visual components, such dashboard and visualizations, can be migrated after you 
         1. The URL for your {{serverless-short}} project. This is the {{es}} endpoint that you copied in Step 1.
         1. The API key for authenticating the connection to your {{ech}} deployment.
         1. The source index to copy from your {{ech}} deployment.
-        1. The destination index in your {{serverless-short}} project.
-
-        **Migrate documents from multilple indices in a single request:**
-        ```
-        POST _reindex
-        {
-          "source": {
-            "remote": {
-              "host": "https://<SERVERLESS_HOST_URL>:443", <1>
-              "api_key": "<ECH_API_KEY>" <2>
-            },
-            "index": ["<SOURCE_INDEX01>", "<SOURCE_INDEX02>", "<SOURCE_INDEX03>"] <3>
-          },
-          "dest": {
-            "index": "<DESTINATION_INDEX>" <4>
-          }
-        }
-        ```
-        1. The URL for your {{serverless-short}} project. This is the {{es}} endpoint that you copied in Step 1.
-        1. The API key for authenticating the connection to your {{ech}} deployment.
-        1. The source indices to copy from your {{ech}} deployment.
-        1. The destination index in your {{serverless-short}} project.
-
-        **Migrate selected documents from an index using basic authentication:**
-        ```
-        POST _reindex
-        {
-          "source": {
-            "remote": {
-              "host": "https://<SERVERLESS_HOST_URL>:443", <1>
-              "username": "<USERNAME>", <2>
-              "password": "<PASSWORD>" <3>
-            },
-            "index": "<SOURCE_INDEX>", <4>
-            "query": {
-              "match": {
-                "<FIELD>": "<VALUE>" <5>
-              }
-            }
-          },
-          "dest": {
-            "index": "<DESTINATION_INDEX>" <6>
-          }
-        }
-        ```
-        1. The URL for your {{serverless-short}} project. This is the {{es}} endpoint that you copied in Step 1.
-        1. Your {{es}} username for authenticating the connection to your {{ech}} deployment.
-        1. Your {{es}} password for authenticating the connection to your {{ech}} deployment.
-        1. The source index in your {{ech}} deployment.
-        1. The field and value to match when selecting documents from the source index.
         1. The destination index in your {{serverless-short}} project.
 
     1. Go to the **Index Management** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
