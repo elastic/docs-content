@@ -15,10 +15,8 @@ products:
 
 This section lists the limitations and known issues in {{agent-builder}}.
 
-::::{admonition} Agent Builder subscription requirements
-- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
-- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
-- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+::::{admonition}
+This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 ## Limitations
@@ -26,6 +24,10 @@ This section lists the limitations and known issues in {{agent-builder}}.
 :::{tip}
 Refer to [Get started](get-started.md#enable-agent-builder) if you need instructions about enabling {{agent-builder}} for your deployment type.
 :::
+
+### Cross-cluster search not supported
+
+Agent Builder does not yet support [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md).
 
 ### A2A streaming not supported
 
