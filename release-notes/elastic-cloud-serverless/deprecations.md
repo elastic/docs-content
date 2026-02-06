@@ -13,6 +13,7 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 :subsections:
 :config: /release-notes/elastic-cloud-serverless/elastic-cloud-serverless-changelog.yml
 :type: deprecation
+:product: cloud-serverless
 :::
 
 ## February 2, 2026 [elastic-cloud-serverless-02022026-deprecations]

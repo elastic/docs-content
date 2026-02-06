@@ -18,6 +18,7 @@ Known issues are significant defects or limitations that may impact your impleme
 :subsections:
 :config: /release-notes/elastic-cloud-serverless/elastic-cloud-serverless-changelog.yml
 :type: known-issue
+:product: cloud-serverless
 :::
 
 ## Active

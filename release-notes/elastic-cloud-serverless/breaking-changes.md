@@ -10,6 +10,7 @@ products:
 :subsections:
 :config: /release-notes/elastic-cloud-serverless/elastic-cloud-serverless-changelog.yml
 :type: breaking-change
+:product: cloud-serverless
 :::
 
 ## October 27, 2025 [serverless-changelog-10272025-breaking]
