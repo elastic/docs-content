@@ -9,6 +9,13 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+:::{changelog} /changelog/bundles
+:subsections:
+:config: /release-notes/elastic-cloud-serverless/elastic-cloud-serverless-changelog.yml
+:type: deprecation
+:product: cloud-serverless
+:::
+
 ## February 2, 2026 [elastic-cloud-serverless-02022026-deprecations]
 * Removes the URL limit from {{kib}} and deprecates the `storeInSessionStorage` setting. For more information, refer to [#242972]({{kib-pull}}242972).
 * Removes the `--stats` flag on `build_api_docs`. For more information, refer to [#249305]({{kib-pull}}249305).
