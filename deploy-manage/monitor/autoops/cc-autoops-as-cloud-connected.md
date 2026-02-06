@@ -1,9 +1,6 @@
 ---
 applies_to:
-  deployment:
-    self:
-    ece:
-    eck:
+  stack: ga 7.17
 navigation_title: For ECE, ECK, and self-managed clusters
 products:
   - id: cloud-kubernetes

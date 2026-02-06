@@ -1,9 +1,6 @@
 ---
 applies_to:
-  deployment:
-    self:
-    ece:
-    eck:
+  stack: ga 7.17
 navigation_title: Manage connected cluster users
 products:
   - id: cloud-kubernetes
@@ -12,7 +9,7 @@ products:
 
 # Manage connected cluster users
 
-Learn how to invite users to your {{ecloud}} organization and give them access to AutoOps on your connected clusters.
+Learn how to invite users to your {{ecloud}} organization and give them access to AutoOps on your connected ECE, ECK, or self-managed clusters.
 
 ## Invite users
 
