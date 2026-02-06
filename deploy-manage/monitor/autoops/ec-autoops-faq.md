@@ -171,7 +171,6 @@ $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
     1. Follow the steps to [connect to AutoOps](cc-connect-self-managed-to-autoops.md) until you reach the [Install agent](cc-connect-self-managed-to-autoops.md#install-agent) step.
     2. In the **Install agent** step, edit the installation command to replace `autoops_es.yml` with `autoops_es_debug.yml` as shown in the following code block. The chosen installation method in this example is Docker.
     ```json
-        docker.elastic.co/elastic-agent/elastic-otel-collector-wolfi:9.2.4
         --config otel_samples/autoops_es_debug.yml \
     ```
     3. Run the command to start the container.
