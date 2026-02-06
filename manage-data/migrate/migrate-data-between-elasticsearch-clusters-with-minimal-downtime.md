@@ -34,7 +34,7 @@ Before you migrate, review the prerequisites and requirements.
 ### Prerequisites
 * Learn how to [set up and manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md). 
 * If restoring to a different cluster, review [Restore to a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
-* As an alternative migration method, you can [reindex from a remote cluster](/manage-data/migrate.md#ech-reindex-remote).
+* As an alternative migration method, you can [reindex from a remote cluster](/manage-data/migrate/migrate-to-ech-or-ece.md#ech-reindex-remote).
 
 ### Requirements
 * **Cluster size** – The new cluster must be the same size or larger than the old cluster. 
@@ -45,7 +45,7 @@ Before you migrate, review the prerequisites and requirements.
 * **Custom integrations** – Some integrations that use the {{es}} API directly, such as the [Elasticsearch Java Client library](elasticsearch-java://reference/index.md), can require additional handling during cutover.
 
 ## Recommended migration timeline [recommended-migration-timeline]
-Tp complete the migration with minimal downtime, use incremental snapshots. While the exact sequence may differ depending on your infrastructure and operational requirements, you can use the recommended migration timeline as a reliable baseline that you can adapt. Adjust the steps and times to fit your own operational needs.
+To complete the migration with minimal downtime, use incremental snapshots. While the exact sequence might differ depending on your infrastructure and operational requirements, you can use the recommended migration timeline as a reliable baseline that you can adapt. Adjust the steps and times to fit your own operational needs.
 
 1. **09:00**: Take the initial full snapshot of the old cluster. You can also take the initial full snapshot the day before.
 2. **09:30**: Restore the snapshot to the new cluster.

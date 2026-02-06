@@ -18,7 +18,7 @@ However, using snapshot and restore for system indices does not mean you must us
 
 ## Migrate system indices using snapshot and restore
 
-To restore system indices from a snapshot, follow the same procedure described in [](../migrate.md#ec-restore-snapshots) and select the appropriate feature states when preparing the restore operation, such as `kibana` or `security`.
+To restore system indices from a snapshot, follow the same procedure described in [](/manage-data/migrate/migrate-to-ech-or-ece.md#ec-restore-snapshots) and select the appropriate feature states when preparing the restore operation, such as `kibana` or `security`.
 
 For more details about restoring feature states, or the entire cluster state, refer to [](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-feature-state).
 
