@@ -167,19 +167,19 @@ $$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure i
     ::::
 
 $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
-:   Yes. AutoOps {{agent}} comes bundled with the `autoops_es_debug.yaml` configuration file, which you can use to export and view a sample of the data gathered from your cluster and sent to Elastic Cloud.
+:   Yes. AutoOps {{agent}} comes bundled with the `autoops_es_debug.yml` configuration file, which you can use to view a sample of the data gathered from your cluster that would be sent to Elastic Cloud.
 
-    Complete the following steps to export this data locally:
+    Complete the following steps to view a sample of this data locally:
 
     1. Follow the steps to [connect to AutoOps](cc-connect-self-managed-to-autoops.md) until you reach the [Install agent](cc-connect-self-managed-to-autoops.md#install-agent) step.
-    2. In the **Install agent** step, edit the installation command to replace `autoops_es.yml` with `autoops_es_debug.yml` as shown in the following code block. The chosen installation method in this example is Docker.
+    2. In the **Install agent** step, edit the installation command to replace `autoops_es.yml` with `autoops_es_debug.yml` as shown in the following code block:
     ```json
-        --restart on-failure --name autoops-otel-agent
-        docker.elastic.co/elastic-agent/elastic-otel-collector-wolfi:9.1.4
         --config otel_samples/autoops_es_debug.yml \
     ```
-    3. Run the command.
-
-    A sample of the data gathered by the agent will be downloaded to your machine.
+    3. Run the command to start the container.
+    4. The data sample will be logged to the container's standard output in JSON format. To view the output, run the following command:
+    ```json
+    docker logs autoops-otel-agent
+    ```
 
 
