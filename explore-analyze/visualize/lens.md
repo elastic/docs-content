@@ -26,7 +26,7 @@ With Lens, you can create the following visualization types:
 - [Area chart](/explore-analyze/visualize/charts/area-charts.md)
 - [Metric chart](/explore-analyze/visualize/charts/metric-charts.md)
 - [Table](/explore-analyze/visualize/charts/tables.md)
-- Pie chart
+- [Pie chart](/explore-analyze/visualize/charts/pie-charts.md)
 - Gauge chart
 - Heat map chart
 - Waffle chart
@@ -247,6 +247,8 @@ For a time shift example, refer to [Compare time ranges](../dashboards/create-da
 ### Create partition charts with multiple metrics [create-partition-charts-with-multiple-metrics]
 
 To create partition charts, such as pie charts, configure one or more **Slice by** dimensions to define the partitions, and a **Metric** dimension to define the size. To create partition charts with multiple metrics, use the layer settings. Multiple metrics are unsupported for mosaic visualizations.
+
+For detailed instructions on creating pie charts, including best practices and configuration options, refer to [Build pie charts with {{kib}}](/explore-analyze/visualize/charts/pie-charts.md).
 
 1. In the layer pane, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
 2. Select **Multiple metrics**.
@@ -483,6 +485,8 @@ When creating or editing a visualization, you can customize several appearance o
 :   Turn on this option to paginate the table. Pagination shows when the table contains at least 10 items, and lets you define how many items to display per page. When turned off, you can scroll through all items.
 
 #### Pie charts
+
+For comprehensive pie chart documentation, including best practices, advanced scenarios, and all configuration options, refer to [Build pie charts with {{kib}}](/explore-analyze/visualize/charts/pie-charts.md).
 
 **Donut hole**
 :   Display a **Small**, **Medium**, or **Large** hole at the center of the pie chart. Defaults to **None**.
