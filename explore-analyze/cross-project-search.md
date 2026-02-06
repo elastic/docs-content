@@ -106,7 +106,7 @@ If a linked project does not have a `logs` resource, that project is skipped and
 
 {{cps-cap}} supports two types of search expressions: unqualified and qualified. The type of search expression determines where a search request runs and how errors are handled.
 
-* **Unqualified search expressions** follow the {{cps}} model and represent the default, native behavior in {{cps-init}}.
+* **Unqualified search expressions** follow the {{cps}} model and represent the default, native behavior in {{cps-init}}. An unqualified search expression does not include a project alias prefix. In this case, the search runs against the origin project and all its linked projects.
 * **Qualified search expressions** explicitly override the default behavior, enabling you to precisely control which projects a search runs on and how errors are handled.
 
 An unqualified search expression does not include a project alias prefix.
