@@ -45,7 +45,7 @@ Before you migrate, review the prerequisites and requirements.
 * **Custom integrations** – Some integrations that use the {{es}} API directly, such as the [Elasticsearch Java Client library](elasticsearch-java://reference/index.md), can require additional handling during cutover.
 
 ## Recommended migration timeline [recommended-migration-timeline]
-To complete the migration with minimal downtime, use incremental snapshots. While the exact sequence may differ depending on your infrastructure and operational requirements, you can use the recommended migration timeline as a reliable baseline that you can adapt. Adjust the steps and times to fit your own operational needs.
+To complete the migration with minimal downtime, use incremental snapshots. While the exact sequence might differ depending on your infrastructure and operational requirements, you can use the recommended migration timeline as a reliable baseline that you can adapt. Adjust the steps and times to fit your own operational needs.
 
 1. **09:00**: Take the initial full snapshot of the old cluster. You can also take the initial full snapshot the day before.
 2. **09:30**: Restore the snapshot to the new cluster.
