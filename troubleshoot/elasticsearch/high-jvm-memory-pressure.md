@@ -218,7 +218,7 @@ To check `fielddata` evictions as well as see if it is a major contributor to JV
 GET _cat/nodes?v=true&h=name,heap.*,fielddata.*
 ```
 
-If field data reports as a significant contributor to JVM usage, use the [cat fielddata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-fielddata) to determine which fields are using field data and how much per node.
+If the output shows that field data is a significant contributor to JVM memory usage, use the [cat fielddata](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-fielddata) API to determine which fields are using field data and how much per node.
 
 ```console
 GET _cat/fielddata?v=true&s=size:desc
