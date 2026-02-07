@@ -212,7 +212,7 @@ Computing the [field data mapping](elasticsearch://reference/elasticsearch/mappi
 
 Field data is loaded into the JVM heap cache and retained based on usage frequency. Field data can consume JVM heap memory up to the lower value between the [field data cache setting](elasticsearch://reference/elasticsearch/configuration-reference/field-data-cache-settings.md) and the [field data circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md). [Circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md) appear as [rejected requests](/troubleshoot/elasticsearch/rejected-requests.md#check-circuit-breakers). Setting `indices.fielddata.cache.size` too low causes thrashing and frequent evictions. 
 
-To check `fielddata` evictions as well as see if it is a major contributor to JVM usage, refer to the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
+To check `fielddata` evictions and determine whether field data contributes significantly to JVM memory usage, use the [cat nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes)  API:
 
 ```console
 GET _cat/nodes?v=true&h=name,heap.*,fielddata.*
