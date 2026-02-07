@@ -226,7 +226,7 @@ GET _cat/fielddata?v=true&s=size:desc
 
 You can use the [clear cache API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clear-cache) to temporarily reset the field data JVM usage. For example:
 
-* To clear the fielddata cache only for fields `fieldname1` and `fieldname2` on the `my-index-000001` index
+* To clear the fielddata cache only for fields `fieldname1` and `fieldname2` on the `my-index-000001` index:
 
   ```console
   POST my-index-000001/_cache/clear?fielddata=true&fields=fieldname1,fieldname2
