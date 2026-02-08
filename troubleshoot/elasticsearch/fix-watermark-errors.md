@@ -12,7 +12,7 @@ products:
 
 # Watermark errors [fix-watermark-errors]
 
-When a data node is reaching critical disk space usage, its [disk-based shard allocation watermark settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) will trigger to protect the node's disk functionality. The default watermark percentage thresholds, the summary of {{es}}'s response, and their corresponding {{es}} log are:
+When a data node reaches critical disk space usage, its [disk-based shard allocation watermark settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) trigger to protect the node's disk. The default watermark percentage thresholds, the summary of {{es}}'s response, and their corresponding {{es}} log are:
 
 * 75% `none`: The Cloud Deployment's {{es}} node's disk bar turns red, but {{es}} takes no action. {applies_to}`ece: ga` {applies_to}`ess: ga`
 * 85% [`low`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-low): {{es}} stops allocating replica shards and primary shards unless from newly-created indices to the affected node(s).
@@ -23,7 +23,7 @@ When a data node is reaching critical disk space usage, its [disk-based shard al
     ```
     high disk watermark [90%] exceeded on [NODE_ID][NODE_NAME] free: Xgb[X%], shards will be relocated away from this node
     ```
-* 95% [`flood-stage`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage)): {{es}} sets all indices on the affected node(s) to read-only. This is automatically reverted once the affected node’s high disk usage falls below high watermark. 
+* 95% [`flood-stage`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage): {{es}} sets all indices on the affected node(s) to read-only. The write block is automatically removed once disk usage on the affected node falls below the high watermark. 
     ```
     flood-stage watermark [95%] exceeded on [NODE_ID][NODE_NAME], all indices on this node will be marked read-only
     ```
@@ -56,13 +56,13 @@ To track disk usage over time, enable monitoring using one of the following opti
 :::::::{applies-switch}
 
 ::::::{applies-item} { ess:, ece: }
-* (Recommend) Enable [AutoOps](/deploy-manage/monitor/autoops.md).
+* (Recommended) Enable [AutoOps](/deploy-manage/monitor/autoops.md).
 * Enable [logs and metrics](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page. You can also enable the [Disk usage threshold alert](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues.
 * From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) page's disk usage chart.
 ::::::
 
 ::::::{applies-item} { self:, eck: }
-* (Recommend) Enable [AutoOps](/deploy-manage/monitor/autoops.md).
+* (Recommended) Enable [AutoOps](/deploy-manage/monitor/autoops.md).
 * Enable [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page. You can also enable the [Disk usage threshold alert](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues.
 ::::::
 
@@ -71,7 +71,7 @@ To track disk usage over time, enable monitoring using one of the following opti
 
 ## Monitor rebalancing [fix-watermark-errors-rebalance]
 
-To verify that shards are moving off the affected node until it falls below high watermark, use the following {{es}} API's:
+To verify that shards are moving off the affected node until it falls below high watermark, use the following {{es}} APIs:
 
 * [Cluster health status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) to check `relocating_shards`.
 
@@ -79,13 +79,13 @@ To verify that shards are moving off the affected node until it falls below high
     GET _cluster/health
     ```
     
-* [CAT recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery) to check the count of recoverying shards and their migrated `bp` bytes percent of `tb` total bytes.
+* [CAT recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery) to check the count of recovering shards and their migrated `bp` bytes percent of `tb` total bytes.
 
     ```console
     GET _cat/recovery?v=true&expand_wildcards=all&active_only=true&h=time,tb,bp,top,ty,st,snode,tnode,idx,sh&s=time:desc
     ```
 
-If shards remain on the node keeping it above high watermark, use the following {{es}} API's:
+If shards remain on the node keeping it above high watermark, use the following {{es}} APIs:
 
 * [CAT shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) to determine which shards are hosted on the node.
 
@@ -164,7 +164,7 @@ To resolve watermark errors permanently, perform one of the following actions:
 * Delete indices using the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete), either permanently if the index isn’t needed, or temporarily to later [restore from snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
 
 ::::{tip}
-On {{ech}} and {{ece}}, indices may need to be temporarily deleted using the its [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to resolve [cluster health status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health)'s `status: red` which blocks [attempted changes](/deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow, reach out to [Elastic Support](/troubleshoot/index.md#troubleshoot-work-with-support) for assistance.
+On {{ech}} and {{ece}}, you might need to temporarily delete indices using the [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md). This can resolve a `status: red` [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) status, which blocks [deployment changes](/deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). After resolving the issue, you can [restore](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) the indices from a snapshot. If you experience issues with this resolution flow, reach out to [Elastic Support](/troubleshoot/index.md#troubleshoot-work-with-support) for assistance.
 ::::
 
 ## Preventing watermark errors  
