@@ -270,6 +270,7 @@ toc:
                   - file: deploy/cloud-on-k8s/configuration-examples-logstash.md
                   - file: deploy/cloud-on-k8s/update-strategy-logstash.md
                   - file: deploy/cloud-on-k8s/advanced-configuration-logstash.md
+              - file: deploy/cloud-on-k8s/package-registry.md
           - file: deploy/cloud-on-k8s/create-custom-images.md
           - file: deploy/cloud-on-k8s/tools-apis.md
       - file: deploy/self-managed.md
@@ -662,8 +663,13 @@ toc:
         children:
           - file: remote-clusters/remote-clusters-api-key.md
           - file: remote-clusters/remote-clusters-cert.md
+          - file: remote-clusters/self-remote-cluster-eck.md
           - file: remote-clusters/remote-clusters-migrate.md
-      - file: remote-clusters/eck-remote-clusters.md
+      - file: remote-clusters/eck-remote-clusters-landing.md
+        children:
+          - file: remote-clusters/eck-remote-clusters.md
+          - file: remote-clusters/eck-remote-clusters-to-other-eck.md
+          - file: remote-clusters/eck-remote-clusters-to-external.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
@@ -684,6 +690,7 @@ toc:
               - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
                 children:
                   - file: monitor/autoops/autoops-sm-troubleshoot-firewalls.md
+                  - file: monitor/autoops/autoops-sm-troubleshoot-eck-no-clusters.md
           - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/views.md
             children:
@@ -727,6 +734,7 @@ toc:
               - file: monitor/monitoring-data/beats-page.md
               - file: monitor/monitoring-data/elasticsearch-metrics.md
               - file: monitor/monitoring-data/kibana-page.md
+              - file: monitor/monitoring-data/integrations-server-page.md
               - file: monitor/monitoring-data/logstash-page.md
               - file: monitor/monitoring-data/monitor-troubleshooting.md
           - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
@@ -831,13 +839,13 @@ toc:
           - file: upgrade/deployment-or-cluster/self-managed.md
             children:
               - file: upgrade/deployment-or-cluster/elasticsearch.md
-                children:
-                  - file: upgrade/deployment-or-cluster/archived-settings.md
-                  - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
+              - file: upgrade/deployment-or-cluster/upgrade-elasticsearch-docker.md
               - file: upgrade/deployment-or-cluster/kibana.md
                 children:
                   - file: upgrade/deployment-or-cluster/saved-object-migrations.md
                   - file: upgrade/deployment-or-cluster/kibana-roll-back.md
+          - file: upgrade/deployment-or-cluster/archived-settings.md
+          - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
           - file: upgrade/deployment-or-cluster/enterprise-search.md
       - file: upgrade/ingest-components.md
       - file: upgrade/orchestrator.md

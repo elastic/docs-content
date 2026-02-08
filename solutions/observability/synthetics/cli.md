@@ -307,11 +307,9 @@ If an administrator has disabled Elastic managed locations for the role you are 
 
 Generate a Time-based One-Time Password (TOTP) for multifactor authentication (MFA) in Synthetics.
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 ```sh
 npx @elastic/synthetics totp <secret>
@@ -320,8 +318,7 @@ npx @elastic/synthetics totp <secret> --issuer <string> --label <string>
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 ```sh
 npx @elastic/synthetics totp <secret> --issuer <issuer> --label <label>

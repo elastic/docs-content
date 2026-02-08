@@ -13,7 +13,7 @@ products:
 
 1. Apply the following specification to deploy Filebeat and collect the logs of all containers running in the Kubernetes cluster. ECK automatically configures the secured connection to an {{es}} cluster named `quickstart`, created in [](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md).
 
-    ```yaml
+    ```yaml subs=true
     cat <<EOF | kubectl apply -f -
     apiVersion: beat.k8s.elastic.co/v1beta1
     kind: Beat

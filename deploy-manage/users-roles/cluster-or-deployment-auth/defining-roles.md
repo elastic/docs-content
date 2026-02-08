@@ -108,8 +108,8 @@ click_admins:
 
 To configure file-based role management:
 
-::::{tab-set}
-:::{tab-item} Self hosted
+::::{applies-switch}
+:::{applies-item} self:
 
 Place the `roles.yml` file in `ES_PATH_CONF`. {{es}} continuously monitors the `roles.yml` file and automatically picks up and applies any changes to it.
 
@@ -117,7 +117,7 @@ The `roles.yml` file is managed locally by the node and is not globally by the c
 
 A safer approach would be to apply the change on one of the nodes and have the `roles.yml` distributed/copied to all other nodes in the cluster (either manually or using a configuration management system such as Puppet or Chef).
 :::
-:::{tab-item} ECK
+:::{applies-item} eck:
 
 You can set up file-based role management in {{eck}} by referencing Kubernetes secrets containing the roles specification.
 
