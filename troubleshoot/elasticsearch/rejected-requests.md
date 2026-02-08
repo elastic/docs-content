@@ -105,7 +105,7 @@ These errors are often related to:
 * The quantity of [backlogged tasks](task-queue-backlog.md).
 * The value of [Bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) sizing being set too large.
 * Large search response sizes.
-* Use of the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text) field type, which can cause rejections when indexing large batches of documents if the batch may otherwise incur an Out of Memory (OOM) error. {applies_to}`stack: ga 9.1`{applies_to}`serverless: ga`
+* Use of the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, which can cause rejections when indexing large batches of documents if the batch may otherwise incur an Out of Memory (OOM) error. {applies_to}`stack: ga 9.1`{applies_to}`serverless: ga`
 
 Refer to the [Index Pressure Rejections video](https://www.youtube.com/watch?v=QuV8QqSfc0c) for a troubleshooting walkthrough.
 
@@ -123,7 +123,7 @@ If {{es}} regularly rejects requests and other tasks, your cluster likely has hi
 stack: ga 9.1
 serverless: ga
 ```
-When bulk indexing documents with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text) field type, you may encounter rejections due to high memory usage during inference processing. These rejections will appear as an `InferenceException` in your cluster logs.
+When bulk indexing documents with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, you may encounter rejections due to high memory usage during inference processing. These rejections will appear as an `InferenceException` in your cluster logs.
 
 To resolve this issue:
 
