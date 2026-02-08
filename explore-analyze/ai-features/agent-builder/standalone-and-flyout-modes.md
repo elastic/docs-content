@@ -1,6 +1,6 @@
 ---
-description: Learn about the standalone and flyout modes for the Elastic Agent Builder chat UI
 navigation_title: "Chat UI modes"
+description: "Access Agent Builder through the full-page standalone interface or the persistent flyout for multitasking."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga

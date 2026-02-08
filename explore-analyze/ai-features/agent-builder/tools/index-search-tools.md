@@ -1,5 +1,6 @@
 ---
 navigation_title: "Index search tools"
+description: "Create custom tools that allow agents to intelligently search specific Elasticsearch index patterns using natural language."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -10,8 +11,6 @@ products:
   - id: security
   - id: cloud-serverless
 ---
-
-
 
 # Index search tools
 

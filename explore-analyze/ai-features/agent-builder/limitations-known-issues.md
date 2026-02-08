@@ -1,5 +1,6 @@
 ---
 navigation_title: "Limitations"
+description: "Check the current limitations and known issues in Agent Builder, including supported configurations and common error messages."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga

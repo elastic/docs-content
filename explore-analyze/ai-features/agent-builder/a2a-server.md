@@ -1,5 +1,6 @@
 ---
 navigation_title: "A2A server"
+description: "Interact with Agent Builder agents from external clients using the Agent-to-Agent (A2A) protocol endpoints."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
@@ -14,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Agent-to-Agent (A2A) server
+# Agent-to-Agent (A2A) server API
 
 The [**Agent-to-Agent (A2A) server**](https://github.com/a2aproject/A2A) enables external A2A clients to communicate with {{agent-builder}} agents.
 

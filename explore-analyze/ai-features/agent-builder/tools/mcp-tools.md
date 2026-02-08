@@ -1,5 +1,6 @@
 ---
 navigation_title: "MCP tools"
+description: "Connect to external MCP servers to enable agents to use remote tools and services."
 applies_to:
   stack: preview 9.3+
   serverless:

@@ -1,6 +1,6 @@
 ---
-navigation_title: "Agents and Elastic Workflows"
-description: "Learn how to invoke AI agents directly within Elastic Workflows."
+navigation_title: "Call agents from workflows"
+description: "Invoke AI agents directly within Elastic Workflows to add reasoning capabilities to automated tasks."
 applies_to:
   stack: preview 9.3+
   serverless: preview
@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Work with AI agents in Elastic Workflows
+# Call agents from workflows
 
 Elastic Workflows and {{agent-builder}} allow you to combine deterministic automation with conversational reasoning. By invoking an AI agent directly within a workflow execution, you can treat the agent as a "reasoning engine" that summarizes data, classifies events, or makes decisions before passing the results to the next step in your automation.
 

@@ -1,5 +1,6 @@
 ---
 navigation_title: "Models"
+description: "Configure the large language models (LLMs) used by Agent Builder, including Elastic Managed LLMs and custom connectors."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Using different models in {{agent-builder}}
+# Model configuration in {{agent-builder}}
 
 {{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making.
 
@@ -28,6 +29,8 @@ You can get started with zero setup using Elastic Managed LLMs. These are built-
 ::::{note}
 Learn more about [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
 ::::
+
+:::
 
 :::{applies-item} {ece:, eck, self: preview =9.2, ga 9.3+}
 

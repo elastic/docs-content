@@ -1,5 +1,6 @@
 ---
 navigation_title: "ES|QL tools"
+description: "Create custom tools that execute parameterized ES|QL queries for precise data retrieval and analysis."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -10,8 +11,6 @@ products:
   - id: security
   - id: cloud-serverless
 ---
-
-
 
 # {{esql}} tools
 

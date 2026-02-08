@@ -1,5 +1,6 @@
 ---
 navigation_title: "MCP server"
+description: "Connect external AI clients like Claude Desktop or VS Code to Agent Builder tools using the Model Context Protocol (MCP) server."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:

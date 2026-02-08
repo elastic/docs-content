@@ -1,4 +1,6 @@
 ---
+navigation_title: "Permissions"
+description: "Configure security roles, API keys, and privileges to control access to Agent Builder features and data."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -8,7 +10,6 @@ products:
   - id: observability
   - id: security
   - id: cloud-serverless
-navigation_title: "Permissions"
 ---
 
 # Permissions and access control in {{agent-builder}}

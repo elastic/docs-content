@@ -1,5 +1,6 @@
 ---
 navigation_title: "Custom agents"
+description: "Create specialized AI assistants with custom instructions and tools to handle specific workflows and use cases."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Custom agents in {{agent-builder}}
+# Create and manage custom agents
 
 Custom agents enable you to create specialized AI assistants tailored to your specific use cases and workflows. Unlike [built-in agents](builtin-agents-reference.md), which are pre-configured by Elastic, custom agents give you full control over instructions, tools, and behavior.
 

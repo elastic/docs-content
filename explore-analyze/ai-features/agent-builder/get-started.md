@@ -1,6 +1,6 @@
 ---
-description: Learn how to get started with Elastic Agent Builder
 navigation_title: "Get started"
+description: "Learn how to get started with Elastic Agent Builder"
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga

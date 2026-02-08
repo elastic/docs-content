@@ -1,5 +1,6 @@
 ---
 navigation_title: "Chat"
+description: "Interact with AI agents using the natural language chat interface, inspect reasoning steps, and manage conversation history."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{agent-builder}}: Agent Chat
+# Chat with agents
 
 **Agent Chat** is the chat interface for natural language conversations with your [agents](agent-builder-agents.md).
 

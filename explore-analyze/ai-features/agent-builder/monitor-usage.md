@@ -1,5 +1,6 @@
 ---
 navigation_title: "Monitor token usage"
+description: "Understand how Agent Builder calculates token usage for input and output, and learn how to monitor consumption during agent conversations."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Token usage in Elastic Agent Builder
+# Token usage in {{agent-builder}}
 
 When working with {{agent-builder}}, total token usage typically exceeds the visible conversation text. Because {{agent-builder}} uses an agentic framework, a single user request often triggers multiple model calls to process reasoning steps, run tools, and interpret results.
 

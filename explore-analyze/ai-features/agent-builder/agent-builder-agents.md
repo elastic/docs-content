@@ -1,5 +1,6 @@
 ---
 navigation_title: "Agents"
+description: "Understand the core concepts of AI agents in Agent Builder, including how they use tools to solve problems, and the difference between built-in and custom agents."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{agent-builder}}: Agents
+# {{agent-builder}} Agents overview
 
 Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
 

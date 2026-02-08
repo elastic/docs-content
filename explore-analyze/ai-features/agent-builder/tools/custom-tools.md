@@ -1,5 +1,6 @@
 ---
 navigation_title: "Custom tools"
+description: "Extend agent capabilities by creating custom tools for ES|QL queries, index searches, and external integrations."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
