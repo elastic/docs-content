@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Index search tools
+# Index search tools in {{agent-builder}}
 
 Index search tools provide intelligent, natural language-driven search over specified {{es}} resources. Instead of defining explicit queries, you specify a pattern of [indices](/manage-data/data-store/index-basics.md), [aliases](/manage-data/data-store/aliases.md), or [data streams](/manage-data/data-store/data-streams.md), and the tool uses a combination of built-in capabilities to intelligently interpret and execute search requests. The tool automatically generates queries in Query DSL or {{esql}} format based on the search intent.
 
