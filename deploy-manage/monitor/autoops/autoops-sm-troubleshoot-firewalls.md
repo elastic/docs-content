@@ -12,7 +12,7 @@ products:
 
 # Troubleshoot firewalls blocking {{agent}}
 
-If you are running into issues connecting your cluster to AutoOps, a corporate firewall might be blocking {{agent}}.
+If you are running into issues connecting your ECE, ECK, or self-managed cluster to AutoOps, a corporate firewall might be blocking {{agent}}.
 
 Complete the steps on this page to test your setup and fix this issue.
 
