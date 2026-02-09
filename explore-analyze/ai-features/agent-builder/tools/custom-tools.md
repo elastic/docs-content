@@ -1,6 +1,6 @@
 ---
 navigation_title: "Custom tools"
-description: "Extend agent capabilities by creating custom tools for ES|QL queries, index searches, and external integrations."
+description: "Learn how to create and manage custom tools in Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Custom tools
+# Create and manage custom tools
 
 You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data. This flexibility allows you to create tools that match your specific use cases and data access patterns.
 

@@ -1,6 +1,6 @@
 ---
 navigation_title: "Custom agents"
-description: "Create specialized AI assistants with custom instructions and tools to handle specific workflows and use cases."
+description: "Learn how to create and manage custom agents in Agent Builder. Define custom instructions, assign tools, and iterate on agent behavior for specific workflows."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Create and manage custom agents
+# Create and manage {{agent-builder}} custom agents
 
 Custom agents enable you to create specialized AI assistants tailored to your specific use cases and workflows. Unlike [built-in agents](builtin-agents-reference.md), which are pre-configured by Elastic, custom agents give you full control over instructions, tools, and behavior.
 
@@ -20,7 +20,7 @@ Custom agents enable you to create specialized AI assistants tailored to your sp
 Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch.
 :::
 
-## Create a new agent
+## Create a custom agent
 
 Follow these steps to create a new custom agent:
 

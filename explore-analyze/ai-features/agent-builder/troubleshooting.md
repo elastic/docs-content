@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Troubleshooting {{agent-builder}}
+# Troubleshoot {{agent-builder}}
 
 Use the topics in this section to troubleshoot common problems with {{agent-builder}}.
 

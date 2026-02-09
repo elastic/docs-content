@@ -1,6 +1,6 @@
 ---
 navigation_title: "Tools"
-description: "Understand how agents use tools to perform actions, search data, and retrieve information from Elasticsearch"
+description: "Learn how Agent Builder tools enable agents to search data and perform actions in Elasticsearch. Explore built-in tools, custom tool definitions, and MCP integration."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga

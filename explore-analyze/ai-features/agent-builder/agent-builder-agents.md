@@ -1,6 +1,6 @@
 ---
 navigation_title: "Agents"
-description: "Understand the core concepts of AI agents in Agent Builder, including how they use tools to solve problems, and the difference between built-in and custom agents."
+description: "Learn how Agent Builder agents use tools to solve problems. Compare built-in and custom agents and understand the iterative reasoning loop."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -52,7 +52,7 @@ Create custom agents tailored to your specific needs by defining custom instruct
 
 To learn how to create and manage custom agents, refer to [Custom agents](custom-agents.md).
 
-## Manage agents
+## Managing agents in the UI
 
 The **Agents** page provides a centralized view of all your agents. From this page you can:
 

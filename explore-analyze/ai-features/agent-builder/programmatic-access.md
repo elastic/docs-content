@@ -1,6 +1,6 @@
 ---
 navigation_title: "Programmatic access"
-description: "Integrate with Agent Builder using the MCP server, A2A protocol, or Kibana REST APIs."
+description: "Learn how to integrate with Agent Builder using the MCP server, A2A protocol, or Kibana REST APIs. Extend AI capabilities to external clients like Claude and Cursor."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:

@@ -1,6 +1,6 @@
 ---
-navigation_title: "Kibana APIs"
-description: "Learn how to programmatically manage agents, tools, and conversations using the Agent Builder REST APIs."
+navigation_title: "Agent Builder APIs"
+description: "Use the Agent Builder REST APIs to programmatically manage agents, tools, and conversation history."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
@@ -15,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{agent-builder}} APIs
+# {{agent-builder}} APIs overview
 
 This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
@@ -66,7 +66,7 @@ Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automaticall
 
 % TODO: we may remove this list once the API reference is live, but probably helpful in the short term
 
-### Tools
+### Tools APIs
 
 **Example:** List all tools
 
@@ -315,7 +315,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 ::::
 
-### Agents
+### Agents APIs
 
 **Example:** List all agents
 

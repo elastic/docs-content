@@ -1,6 +1,6 @@
 ---
-navigation_title: "Models"
-description: "Configure the large language models (LLMs) used by Agent Builder, including Elastic Managed LLMs and custom connectors."
+navigation_title: "Model configuration"
+description: "Learn how to configure LLMs in Agent Builder, including Elastic Managed LLMs via EIS and custom connectors for OpenAI, Claude, and Gemini."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -63,7 +63,7 @@ To change which model is used by default:
 2. Select your preferred connector from the **Default AI Connector** dropdown.
 3. Save your changes.
 
-## Use additional models
+## Add a custom model connector
 
 To use additional models that aren't preconfigured, create a connector for your model provider.
 

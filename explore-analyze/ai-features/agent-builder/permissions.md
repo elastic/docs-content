@@ -1,6 +1,6 @@
 ---
 navigation_title: "Permissions"
-description: "Configure security roles, API keys, and privileges to control access to Agent Builder features and data."
+description: "Learn how to configure security roles, API keys, and privileges for Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
