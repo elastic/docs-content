@@ -1,6 +1,6 @@
 ---
 navigation_title: "Kibana APIs"
-description: "Use the Agent Builder REST APIs to programmatically manage agents, tools, and conversation history."
+description: "Use the Agent Builder Kibana REST APIs to programmatically manage agents, tools, and conversation history."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
