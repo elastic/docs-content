@@ -296,10 +296,10 @@ spec:
       containers:
       - name: autoops-agent
         resources:
-          limits:
+          requests:
             cpu: 200m
             memory: 600Mi
-          requests:
+          limits:
             cpu: 200m
             memory: 600Mi
 ```
