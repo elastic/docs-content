@@ -208,7 +208,7 @@ Heavy indexing and search loads can cause high JVM memory pressure. To better ha
 
 ### Reduce field data usage [reduce-jvm-memory-pressure-fielddata]
 
-Computing the [field data mapping](elasticsearch://reference/elasticsearch/mapping-reference/text.md#fielddata-mapping-param) can be [CPU-intensive](/troubleshoot/elasticsearch/high-cpu-usage.md). By default, field data is computed at search time but can be [eager loaded](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md) to compute after ingestion. 
+Computing the [field data](elasticsearch://reference/elasticsearch/mapping-reference/text.md#fielddata-mapping-param) and global ordinals can be [CPU-intensive](/troubleshoot/elasticsearch/high-cpu-usage.md). By default, global ordinals are computed at search time but can be [eager loaded](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md) to compute after ingestion.
 
 Field data is loaded into the JVM heap cache and retained based on usage frequency. Field data can consume JVM heap memory up to the lower value between the [field data cache setting](elasticsearch://reference/elasticsearch/configuration-reference/field-data-cache-settings.md) and the [field data circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md). [Circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md) appear as [rejected requests](/troubleshoot/elasticsearch/rejected-requests.md#check-circuit-breakers). Setting `indices.fielddata.cache.size` too low causes thrashing and frequent evictions. 
 
