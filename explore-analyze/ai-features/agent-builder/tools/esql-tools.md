@@ -27,7 +27,7 @@ Use custom **{{esql}} tools** when:
 * Results should be in a predictable tabular format
 * You have well-defined data retrieval requirements
 
-While agents can generate {{esql}} queries dynamically using [index search tools](index-search-tools.md), pre-defined {{esql}} tools ensure syntax correctness and enforce critical business rules that an LLM might occasionally miss. For strategies to avoid data retrieval issues, refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md).
+While agents can generate {{esql}} queries dynamically using [index search tools](index-search-tools.md), custom {{esql}} tools ensure syntax correctness and enforce critical business rules that an LLM might occasionally miss. For strategies to avoid data retrieval issues, refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md).
 
 ## Key characteristics
 
