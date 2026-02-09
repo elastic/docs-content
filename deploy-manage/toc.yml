@@ -270,6 +270,7 @@ toc:
                   - file: deploy/cloud-on-k8s/configuration-examples-logstash.md
                   - file: deploy/cloud-on-k8s/update-strategy-logstash.md
                   - file: deploy/cloud-on-k8s/advanced-configuration-logstash.md
+              - file: deploy/cloud-on-k8s/package-registry.md
           - file: deploy/cloud-on-k8s/create-custom-images.md
           - file: deploy/cloud-on-k8s/tools-apis.md
       - file: deploy/self-managed.md
@@ -689,6 +690,7 @@ toc:
               - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
                 children:
                   - file: monitor/autoops/autoops-sm-troubleshoot-firewalls.md
+                  - file: monitor/autoops/autoops-sm-troubleshoot-eck-no-clusters.md
           - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/views.md
             children:

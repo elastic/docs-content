@@ -31,11 +31,10 @@ There are two ways to integrate agents into your workflows:
 
 Before you begin:
 
-* Familiarize yourself with the core concepts of Elastic Workflows.
-% (/explore-analyze/workflows.md)
+* Familiarize yourself with the core concepts of [Elastic Workflows](/explore-analyze/workflows.md).
 * Enable the Workflows feature in **Advanced settings**.
 * Ensure you have the correct privileges to create and run workflows.
-% For details, refer to Set up workflows (/explore-analyze/workflows/setup.md).
+* For details, refer to [Set up workflows](/explore-analyze/workflows/setup.md).
 * Create at least one workflow.
 
 ## Use the `ai.agent` step
@@ -118,5 +117,5 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 ## Related pages
 * [Tools overview](./tools.md)
 * [Workflow tools](../agent-builder/tools/workflow-tools.md)
-% * [Workflows](/explore-analyze/workflows.md)
+* [Workflows](/explore-analyze/workflows.md)
 * [Agent Builder API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder)
