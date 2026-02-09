@@ -71,7 +71,7 @@ When an agent calls an index search tool:
 - **Write descriptive tool names**: Help agents select the right tool for the query (e.g., "Search Security Alerts" vs. "Search Tool")
 - **Provide context in descriptions**: Explain what data the indices contain and what types of questions the tool can answer
 - **Create domain-specific tools**: Build separate tools for different data domains (logs, metrics, alerts) rather than one general-purpose tool
-- **Use custom instructions wisely**: Leverage the custom instructions parameter to guide {{esql}} query generation with domain-specific requirements, such as always including certain fields, applying specific filters, or handling time ranges in a particular way
+- **Use custom instructions**: Leverage the custom instructions parameter to guide {{esql}} query generation with domain-specific requirements, such as always including certain fields, applying specific filters, or handling time ranges in a particular way
 - **Set appropriate row limits**: Configure row limits to prevent retrieving excessive data that could exceed context length limits
 
 For general guidance on naming tools and writing effective descriptions, refer to [Custom tools best practices](custom-tools.md#best-practices).
