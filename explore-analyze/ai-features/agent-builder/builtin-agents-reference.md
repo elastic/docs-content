@@ -1,6 +1,6 @@
 ---
 navigation_title: "Built-in agents"
-description: "Reference of the pre-configured AI agents available in Agent Builder, including their specialized capabilities and assigned tools."
+description: "Reference of the pre-configured AI agents available in Elastic Agent Builder, including their specialized capabilities and assigned tools."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
