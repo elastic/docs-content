@@ -33,6 +33,8 @@ toc:
               - file: deploy/elastic-cloud/create-serverless-project.md
               - file: deploy/elastic-cloud/regions.md
               - file: deploy/elastic-cloud/project-settings.md
+                children:
+                  - file: deploy/elastic-cloud/custom-connection-aliases.md
               - file: deploy/elastic-cloud/manage-serverless-projects-using-api.md
           - file: deploy/elastic-cloud/cloud-hosted.md
             children:
