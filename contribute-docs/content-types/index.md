@@ -7,7 +7,7 @@ description: "Overview of guidelines for choosing the appropriate content types 
 
 Content types are proven structures for common kinds of documentation pages. They help readers find information and complete tasks efficiently. They help contributors and reviewers work more effectively, with less guesswork, faster reviews, and a shared vocabulary for feedback.
 
-Each content type gives you a template, a checklist, and a set of best practices so you can focus on *what* you're writing rather than *how* to structure it. Pick the type that matches what you're writing, follow the guide, and you'll produce a page that's consistent, scannable, and easy to maintain.
+Each content type gives you a template, a checklist, and a set of best practices so you can focus on *what* you're writing rather than *how* to structure it. Pick the type that matches what you're writing, follow the guide, and you'll produce a page that's consistent, scannable, and easier to maintain.
 
 ## When to use
 
