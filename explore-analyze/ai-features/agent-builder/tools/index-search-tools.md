@@ -15,7 +15,7 @@ products:
 
 # Index search tools
 
-Index search tools provide intelligent, natural language-driven search over specified {{es}} resources. Instead of defining explicit queries, you specify a pattern of [indices](/manage-data/data-store/index-basics.md), [aliases](/manage-data/data-store/aliases.md), or [data streams](/manage-data/data-store/data-streams.md), and the tool uses a combination of built-in capabilities to intelligently interpret and execute search requests.
+Index search tools provide intelligent, natural language-driven search over specified {{es}} resources. Instead of defining explicit queries, you specify a pattern of [indices](/manage-data/data-store/index-basics.md), [aliases](/manage-data/data-store/aliases.md), or [data streams](/manage-data/data-store/data-streams.md), and the tool uses a combination of built-in capabilities to intelligently interpret and execute search requests. The tool automatically generates queries in Query DSL or {{esql}} format based on the search intent.
 
 ## When to use index search tools
 
@@ -36,13 +36,34 @@ Use custom **Index search tools** when:
 
 ## Configuration
 
-Index search tools require only a single configuration parameter:
+Index search tools support the following configuration parameters:
 
 * **`pattern`**: An index pattern string (e.g., `logs-myapp-*`, `my-index`, `.alerts-security-*`) specifying which indices, aliases, or data streams to search
 
   :::{tip}
   [Avoid overly broad wildcard patterns](#wildcard-warning) like `*` or `logs-*` across large datasets.
   :::
+
+* **`row_limit`** (optional): Maximum number of rows to return from {{esql}} queries. This helps control the amount of data retrieved and prevents exceeding context length limits.
+
+* **`custom_instructions`** (optional): Additional guidance for {{esql}} query generation, such as field selection or limit logic. Use this to provide domain-specific instructions to the agent about how to construct queries for your data. 
+  
+  Custom instructions are passed to the agent when it generates {{esql}} queries, allowing you to:
+  - Specify fields that should always be included in results
+  - Define default sorting or filtering behavior  
+  - Set constraints on query structure or logic
+  - Provide context about data patterns or conventions
+  
+  Examples:
+  - "Always include the @timestamp field in results"
+  - "Prioritize recent events within the last 24 hours"
+  - "Filter out test data where environment='test'"
+  - "Include source.ip and destination.ip for network events"
+
+:::{image} ../images/create-index-search-tool.png
+:screenshot:
+:alt: Creating an index search tool with configuration parameters
+:::
 
 ## How it works
 
@@ -64,6 +85,8 @@ When an agent calls an index search tool:
 - **Write descriptive tool names**: Help agents select the right tool for the query (e.g., "Search Security Alerts" vs. "Search Tool")
 - **Provide context in descriptions**: Explain what data the indices contain and what types of questions the tool can answer
 - **Create domain-specific tools**: Build separate tools for different data domains (logs, metrics, alerts) rather than one general-purpose tool
+- **Use custom instructions wisely**: Leverage the custom instructions parameter to guide {{esql}} query generation with domain-specific requirements, such as always including certain fields, applying specific filters, or handling time ranges in a particular way
+- **Set appropriate row limits**: Configure row limits to prevent retrieving excessive data that could exceed context length limits
 
 For general guidance on naming tools and writing effective descriptions, refer to [Custom tools best practices](custom-tools.md#best-practices).
 
