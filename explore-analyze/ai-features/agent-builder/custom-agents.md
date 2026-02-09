@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Create and manage {{agent-builder}} custom agents
+# Create and manage custom agents in {{agent-builder}}
 
 Custom agents enable you to create specialized AI assistants tailored to your specific use cases and workflows. Unlike [built-in agents](builtin-agents-reference.md), which are pre-configured by Elastic, custom agents give you full control over instructions, tools, and behavior.
 
