@@ -14,7 +14,6 @@ products:
 
 When a data node reaches critical disk space usage, its [disk-based shard allocation watermark settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) trigger to protect the node's disk. The default watermark percentage thresholds, the summary of {{es}}'s response, and their corresponding {{es}} log are:
 
-* 75% `none`: The Cloud Deployment's {{es}} node's disk bar turns red, but {{es}} takes no action. {applies_to}`ece: ga` {applies_to}`ess: ga`
 * 85% [`low`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-low): {{es}} stops allocating replica shards and primary shards unless from newly-created indices to the affected node(s).
     ```
     low disk watermark [85%] exceeded on [NODE_ID][NODE_NAME] free: Xgb[X%], replicas will not be assigned to this node
