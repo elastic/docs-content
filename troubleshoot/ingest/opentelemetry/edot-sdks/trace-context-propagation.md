@@ -21,21 +21,36 @@ Mixing OpenTelemetry and non-OpenTelemetry (Elastic {{product.apm}} agent) confi
 
 The recommended path is to adopt an OpenTelemetry-native strategy using {{edot}}. However, if you are in a transition period, this page helps you diagnose and mitigate trace context propagation issues (`traceparent` / `tracestate`) until you can complete the migration.
 
+## Migration strategy overview
+
+Completing a move to OpenTelemetry removes the mixed propagation issues described below. A typical path includes the following steps:
+
+1. Add an OTLP endpoint and make it reachable from your applications (for example, in {{ecloud}} or your cluster).
+2. Update your application to use the OpenTelemetry API instead of the Elastic {{product.apm}} API. The [OpenTelemetry Bridge](#about-the-opentelemetry-bridge) (when turned on for an Elastic agent) lets you do this while keeping the agent in place.
+3. Replace Elastic {{product.apm}} agents with OpenTelemetry-based instrumentation ({{edot}} or contrib OpenTelemetry SDKs) when you are ready to go fully OTel-native.
+
+For setup and options, refer to [OpenTelemetry with Elastic {{product.apm}}](/solutions/observability/apm/opentelemetry/index.md).
+
+### About the OpenTelemetry Bridge
+
+Elastic {{product.apm}} agents provide an OpenTelemetry API bridge that allows applications to emit traces and metrics using the OpenTelemetry API while still relying on an Elastic agent. However, the OpenTelemetry Bridge doesn't handle context propagation. It only provides API compatibility for manual instrumentation.
+
+Use the bridge only as a short-term compatibility layer during migrations. For full OpenTelemetry support, including native propagation behavior, migrate to {{edot}}.
+
 ## Symptoms
 
-You might observe one or more of the following issues:
+If you are still in a mixed environment, you might observe one or more of the following issues:
 
 - Distributed traces are broken across service boundaries.
 - Downstream spans start new traces instead of continuing the existing one.
 - Traces appear split or uncorrelated in the UI.
 - Parent–child relationships are missing when traffic crosses between:
-  - OpenTelemetry-instrumented services and Elastic {{product.apm}} agents
-  - New and legacy Elastic {{product.apm}} agents in the same call chain
-  - Different versions of {{product.apm}} agents in the same call chain
+  - OpenTelemetry-instrumented services (including EDOT-based and contrib OpenTelemetry SDKs) and Elastic {{product.apm}} agents
+  - Elastic {{product.apm}} agents that support W3C Trace Context and older, pre-W3C agents in the same call chain
 
 ## Causes
 
-In mixed OpenTelemetry and Elastic {{product.apm}} environments, propagation issues typically stem from header or configuration mismatches.
+In mixed OpenTelemetry and Elastic {{product.apm}} environments, propagation issues typically stem from header handling or configuration mismatches.
 
 OpenTelemetry uses the [W3C Trace Context](https://www.w3.org/TR/trace-context/) standard headers:
 
@@ -51,109 +66,86 @@ For backward compatibility, Elastic agents also support a legacy proprietary hea
 
 Propagation issues often occur when:
 
-- Older (pre‑W3C) Elastic agents are still in use.
+- Elastic agents older than **version 1.14.0** (pre-W3C) are still in use.
 - Legacy propagation is turned off prematurely.
 - Trace continuation is misconfigured to restart traces.
 - Two tracing SDKs run in the same process and compete for instrumentation or context.
 
-## Recommended and migration-only patterns
+## Elastic {{product.apm}}–specific trace continuation behavior
 
-Before going fully OTel-native, you can use the OpenTelemetry Bridge offered by Elastic agents as a transitional solution:
-
-### OpenTelemetry Bridge (temporary)
-
-The bridge lets you use the OpenTelemetry API for manual instrumentation while still using an Elastic {{apm-agent}} for auto‑instrumentation and exporting.
-
-With the bridge:
-
-- The Elastic agent implements the OpenTelemetry API.
-- Spans created through the OTel API become native Elastic spans.
-- Parent–child relationships are preserved across manual and auto‑instrumentation.
-
-The bridge is available in major Elastic agents (Java, .NET, Node.js, Python). Prefer moving to {{edot}} (OTel-native) when you can.
-
-### Avoid running a full OpenTelemetry SDK alongside an Elastic agent
-
-Do not run a full OpenTelemetry SDK in the same process as an Elastic {{apm-agent}}.
-
-This setup causes:
-
-- Duplicate instrumentation and added overhead.
-- Trace fragmentation (conflicting trace IDs).
-- Startup conflicts (instrumentation, exporters, environment variables).
-
-Each SDK might try to manage propagation independently, breaking distributed tracing. For an OpenTelemetry-native setup, use {{edot}} instead of mixing SDKs.
-
-## Resolution
-
-The preferred resolution is to complete your migration to OpenTelemetry and use {{edot}} (OTel-native). However, if you are still in a gradual migration and need traces to connect across mixed services, the following steps might help.
-
-::::::{stepper}
-
-::::{step} Ensure all services support W3C Trace Context
-
-If you still have Elastic agents in the call path, verify that they support W3C Trace Context.
-
-| Agent          | Minimum version |
-| -------------- | --------------- |
-| Java           | 1.14.0          |
-| .NET           | 1.3.0           |
-| Node.js        | 3.4.0           |
-| Python         | 5.4.0           |
-| Go             | 1.6.0           |
-| Ruby           | 3.5.0           |
-| PHP            | 1.0.0           |
-| RUM (JS)       | 5.0.0           |
-
-All recent releases prefer W3C propagation by default.
-
-::::
-
-::::{step} Verify propagation and trace continuation settings
-
-Ensure agents:
-
-- Have W3C propagation turned on (default).
-- Retain legacy propagation if older agents are still present.
-- Are not misconfigured to restart traces unexpectedly.
-
-Some agents expose a trace continuation strategy (for example, .NET):
+Elastic {{product.apm}} agents expose a trace continuation strategy that controls how incoming trace headers are handled:
 
 - `continue` (default): Continue incoming traces.
 - `restart`: Always start a new trace.
-- `restart_external`: Restart only for non-Elastic sources.
+- `restart_external`: Restart traces only if the contrib service is not using an Elastic {{product.apm}} agent.
 
-Unexpected trace restarts might indicate incorrect strategy settings.
+The `restart_external` strategy is useful when a contrib service propagates W3C headers but sends its traces to a different backend, which otherwise results in missing or misleading parent transactions.
+
+:::{note}
+This trace continuation behavior is specific to Elastic {{product.apm}} agents. There is currently no equivalent feature in OpenTelemetry or EDOT.
+:::
+
+### Workaround for OpenTelemetry / EDOT
+
+If you need to force a downstream OpenTelemetry-instrumented service to start a new trace independently:
+
+- Strip or reset incoming trace context headers (`traceparent`, `tracestate`) at the ingress layer (for example, in an HTTP proxy or gateway).
+
+This prevents the downstream service from attempting to continue an incompatible contrib trace.
+
+## Resolution
+
+The preferred resolution is to complete your migration to an OpenTelemetry-native setup using {{edot}}.
+If you are still operating in a mixed environment, the following steps can help maintain trace continuity.
+
+::::::{stepper}
+
+::::{step} Ensure all Elastic agents support W3C Trace Context
+
+Verify that any Elastic {{product.apm}} agents in the call path meet the minimum W3C-compatible versions:
+
+| Agent    | Minimum version |
+|--------- |---------------- |
+| Java     | 1.14.0 |
+| .NET     | 1.3.0 |
+| Node.js  | 3.4.0 |
+| Python   | 5.4.0 |
+| Go       | 1.6.0 |
+| Ruby     | 3.5.0 |
+| PHP      | 1.0.0 |
+| RUM (JS) | 5.0.0 |
+
+Upgrading agents is often the most effective first step to reduce compatibility issues.
 
 ::::
 
-::::{step} Use the OpenTelemetry Bridge
+::::{step} Keep dual-propagation turned on in mixed environments
 
-If you're in transition and still use the OpenTelemetry API with an Elastic agent:
+In environments where OpenTelemetry SDKs (W3C-only) coexist with Elastic agents:
 
-- Turn on the OpenTelemetry Bridge in the agent.
-- Do not install a separate OpenTelemetry SDK in the same process.
+- Keep `elastic-apm-traceparent` turned on for Elastic agents.
+- Allow agents to emit both W3C and legacy headers.
 
-This can help maintain context propagation during the migration. Plan to move to {{edot}} (OTel-native) when possible.
+This maximizes compatibility and has negligible overhead.
 
-::::
+If you use an HTTP proxy, gateway, or load balancer, ensure that the following are forwarded unchanged:
 
-::::{step} Keep dual‑propagation active during migrations
+- `traceparent`
+- `tracestate`
+- `elastic-apm-traceparent`
 
-In mixed environments with OpenTelemetry SDKs (W3C only) and earlier versions of Elastic agents, keep the default dual‑propagation mode turned on so that:
-
-- New services read W3C headers.
-- Legacy services read the `elastic-apm-traceparent` header.
-
-Turning off the legacy header too early can break trace continuity.
+Some proxies require explicit configuration to allow custom headers.
 
 ::::
 
-::::{step} Turn off legacy headers after full migration
+::::{step} Review trace continuation settings on Elastic agents
 
-When all services support W3C Trace Context, you might turn off emission of the legacy header to reduce header size and network overhead.
+If traces unexpectedly restart:
 
-Refer to agent-specific documentation to turn off legacy header output.
+- Confirm the trace continuation strategy (`continue`, `restart`, `restart_external`).
+- Ensure the chosen strategy matches your contrib service topology.
+
+Misconfigured continuation settings can cause valid traces to be intentionally restarted.
 
 ::::
 
@@ -161,17 +153,14 @@ Refer to agent-specific documentation to turn off legacy header output.
 
 ## Best practices
 
-- Use {{edot}} for full OTel support and to avoid mixed-configuration issues.
-- If you are in a gradual migration: standardize on W3C Trace Context across services and upgrade older agents early.
-- Use one tracing implementation per process (Elastic agent or OpenTelemetry SDK). Avoid mixing SDKs.
-- If you must mix APIs during a transition, use the OpenTelemetry Bridge temporarily and plan to move to {{edot}}.
-- Validate cross-service tracing in staging before partial rollouts.
+- Upgrade Elastic {{product.apm}} agents to the latest available versions.
+- Standardize on W3C Trace Context across all services.
+- Keep `elastic-apm-traceparent` turned on for as long as mixed agents exist.
+- Ensure gateways and proxies forward trace headers unchanged.
+- Use one tracing implementation per process.
+- Plan and validate migrations in staging environments before partial rollouts.
 
 ## Resources
 
 - [W3C Trace Context specification](https://www.w3.org/TR/trace-context/)
 - [Contrib OpenTelemetry context propagation documentation](https://opentelemetry.io/docs/concepts/context-propagation/)
-- [Elastic {{product.apm}} OpenTelemetry Bridge (Java)](apm-agent-java://reference/opentelemetry-bridge.md)
-- [Elastic {{product.apm}} OpenTelemetry Bridge (.NET)](apm-agent-dotnet://reference/opentelemetry-bridge.md)
-- [Elastic {{product.apm}} OpenTelemetry Bridge (Node.js)](apm-agent-nodejs://reference/opentelemetry-bridge.md)
-- [Elastic {{product.apm}} OpenTelemetry Bridge (Python)](apm-agent-python://reference/opentelemetry-api-bridge.md)
