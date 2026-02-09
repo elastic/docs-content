@@ -27,7 +27,7 @@ git checkout -b docs-enhancement/my-docs-update
 ::::
 
 ::::{step} Edit the README source file
-Edit the source file at `packages/{package}/docs/README.md`.
+Edit the source file at `packages/{package}/docs/README.md` `packages/{package}/_dev/build/docs/README.md` .
 ::::
 
 ::::{step} Commit and push your changes
