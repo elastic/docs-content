@@ -39,7 +39,7 @@ Use custom **Index search tools** when:
 Index search tools support the following configuration parameters:
 
 `pattern`
-:   An index pattern string (e.g., `logs-myapp-*`, `my-index`, `.alerts-security-*`) specifying which indices, aliases, or data streams to search.
+:   An index pattern string specifying which indices, aliases, or data streams to search. Examples: `logs-myapp-*`, `my-index`, `.alerts-security-*`.
 
     :::{tip}
     [Avoid overly broad wildcard patterns](#wildcard-warning) like `*` or `logs-*` across large datasets.
@@ -55,7 +55,7 @@ Index search tools support the following configuration parameters:
 
 When an agent calls an index search tool:
 
-1. The agent provides a natural language query (e.g., "find recent errors related to authentication")
+1. The agent provides a natural language query (for example, "find recent errors related to authentication")
 2. The tool analyzes the query intent and available indices
 3. It automatically orchestrates built-in tools to:
    - Explore the index structure and mappings
@@ -67,8 +67,8 @@ When an agent calls an index search tool:
 
 ## Best practices
 
-- **Use specific patterns**: Scope tools to relevant index patterns rather than broad wildcards (e.g., `logs-myapp-*` instead of `logs-*`)
-- **Write descriptive tool names**: Help agents select the right tool for the query (e.g., "Search Security Alerts" vs. "Search Tool")
+- **Use specific patterns**: Scope tools to relevant index patterns rather than broad wildcards (for example, `logs-myapp-*` instead of `logs-*`)
+- **Write descriptive tool names**: Help agents select the right tool for the query (for example, "Search Security Alerts" vs. "Search Tool")
 - **Provide context in descriptions**: Explain what data the indices contain and what types of questions the tool can answer
 - **Create domain-specific tools**: Build separate tools for different data domains (logs, metrics, alerts) rather than one general-purpose tool
 - **Use custom instructions**: Leverage the custom instructions parameter to guide {{esql}} query generation with domain-specific requirements, such as always including certain fields, applying specific filters, or handling time ranges in a particular way
