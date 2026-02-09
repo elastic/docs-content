@@ -71,7 +71,7 @@ Built-in tools cannot be modified or deleted.
 
 ## Tools API
 
-For a quick overview of how to work programmatically with tools, refer to [Tools API](kibana-api.md#tools).
+For a quick overview of how to work programmatically with tools, refer to [Tools API](kibana-api.md#tools-apis).
 
 ### API reference
 
