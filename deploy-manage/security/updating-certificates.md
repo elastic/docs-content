@@ -11,15 +11,17 @@ products:
 
 # Update TLS certificates [update-node-certs]
 
-This guide discusses how to update certificates as determined necessary.
+This guide explains how to update TLS certificates in your cluster, the scenarios that require updates, and how to update certificate files and apply the changes.
 
 ## When to update [update-node-certs-when]
 
-You might need to update your TLS certificates if:
+You might need to update your TLS certificates in the following scenarios:
 
-* you’re adding new nodes to your secured cluster
-* a security breach has broken the trust of your certificate chain
-* your current node certificates will expire soon
+* **You are adding new nodes to your secured cluster.** In this case, you need to generate certificates for the new nodes, preferably using the same Certificate Authority (CA).
+
+* **A security breach has broken the trust of your certificate chain.** This situation usually requires generating new certificates signed by a new CA.
+
+* **Your current node certificates will expire soon.** In this case, you need to generate new certificates for all nodes, using the same CA if it remains valid, or a new CA if the current one is also expiring.
   
   Use the [SSL certificate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) API to check when your certificates are expiring.
 
@@ -51,7 +53,7 @@ If you determine you need to generate new certificates, then you might accomplis
 
 ## Apply updated certificates [update-node-certs-apply]
 
-Whether you're expanding usage of existing certificates or generated new certificates as outlined earlier, you will now apply those against the nodes in your cluster.
+To apply the new certificates to your cluster, either update the configuration on each node and perform a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) of the cluster, or update the certificate files in place and allow {{es}} to automatically reload them.
 
 ### (Recommended) Rolling restart [use-rolling-restarts]
 
