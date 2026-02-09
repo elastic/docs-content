@@ -48,14 +48,14 @@ To use exceptions ensure your role has the appropriate access. To learn how to a
 
 :::
 
-:::{applies-item} { "stack": "ga 9.3" }
+:::{applies-item} { "stack": "ga =9.3" }
 
 - **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature.
 - **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` {{kib}} privileges for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature.
 
 :::
 
-:::{applies-item} { "stack": "ga 9.0" }
+:::{applies-item} { "stack": "ga 9.0-9.2" }
 
 **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Security` feature. 
 
