@@ -63,7 +63,7 @@ To change which model is used by default:
 2. Select your preferred connector from the **Default AI Connector** dropdown.
 3. Save your changes.
 
-## Add a custom model connector
+## Use additional models
 
 To use additional models that aren't preconfigured, create a connector for your model provider.
 
