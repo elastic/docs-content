@@ -122,7 +122,8 @@ To fix this problem, pass the `--insecure` flag along with the `enroll` or `inst
 sudo ./elastic-agent install --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
 ```
 
-Traffic between {{agent}}s and {{fleet-server}} over HTTPS will be encrypted; you’re simply acknowledging that you understand that the certificate chain cannot be verified.
+Traffic between {{agent}}s and {{fleet-server}} over HTTPS is encrypted.
+By adding this flag, you are acknowledging that you understand that the certificate chain cannot be verified.
 
 Allowing {{fleet-server}} to generate self-signed certificates is useful to get things running for development, but not recommended in a production environment.
 
@@ -133,14 +134,14 @@ For more information, refer to [Configure SSL/TLS for self-managed {{fleet-serve
 
 To ensure that communication with {{es}} is encrypted, {{fleet-server}} requires {{es}} to present a signed certificate.
 
-This error occurs when you use self-signed certificates with {{es}} using IP as a Common Name (CN). With IP as a CN, {{fleet-server}} looks into subject alternative names (SANs), which are empty. To work around this situation, use the `--fleet-server-es-insecure` flag to disable certificate verification.
+This error occurs when you use self-signed certificates with {{es}} using IP as a Common Name (CN). With IP as a CN, {{fleet-server}} looks into subject alternative names (SANs), which are empty. To work around this situation, use the `--fleet-server-es-insecure` flag to deactivate certificate verification.
 
 You will also need to set `ssl.verification_mode: none` in the Output settings in {{fleet}} and {{integrations}} UI.
 
 
 ### {{agent}} enrollment fails on the host with `Client.Timeout exceeded` message [agent-enrollment-timeout]
 
-To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance. If the agent is unable to connect, you see the following failure:
+To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance. If the agent cannot connect, you get failures similar to these:
 
 ```txt
 fail to enroll: fail to execute request to Fleet Server:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
@@ -168,7 +169,7 @@ Here are several steps to help you troubleshoot the problem.
 
 ### {{agent}} fails to enroll with {{fleet-server}} running on localhost [mac-file-sharing]
 
-If you’re testing {{fleet-server}} locally on a macOS system using localhost (`https://127.0.0.1:8220`) as the Host URL, you may encounter this error:
+If you’re testing {{fleet-server}} locally on a macOS system using localhost (`https://127.0.0.1:8220`) as the Host URL, you might encounter this error:
 
 ```sh
 Error: fail to enroll: fail to execute request to fleet-server:
@@ -250,18 +251,18 @@ The automatic unenrollment behavior is removed in {{agent}} versions 8.19.0 and 
 
 During an {{agent}} upgrade on Windows, {{agent}} spawns a "watcher" process that monitors the upgrade process. Windows attempts to create a temporary console for this process. If Windows can't create this console, the watcher process initialization fails with error code `0xc0000142` (`STATUS_DLL_INIT_FAILED`), resulting in an upgrade failure. {{agent}} logs this error at the `info` level.
 
-The error is caused by Windows [desktop heap exhaustion](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory). When {{agent}} runs as a [Windows service application](https://learn.microsoft.com/en-us/dotnet/framework/windows-services/introduction-to-windows-service-applications), it uses the service desktop, and shares the desktop heap with other running services. If a service process is using windowing resources, but is failing to release them, this may exhaust the desktop heap and affect {{agent}}.
+The error is caused by Windows [desktop heap exhaustion](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory). When {{agent}} runs as a [Windows service application](https://learn.microsoft.com/en-us/dotnet/framework/windows-services/introduction-to-windows-service-applications), it uses the service desktop, and shares the desktop heap with other running services. If a service process is using windowing resources, but is failing to release them, this can exhaust the desktop heap and affect {{agent}}.
 
 :::{note}
 Interactively-run instances of `elastic-agent.exe` are not subject to this limitation. Only instances running as a service are potentially affected.
 :::
 
-To resolve the issue, you can try the following:
+To resolve the issue, try these tips:
 
 - **Update {{agent}} immediately after a system reboot**
 
     A system reboot destroys and recreates the desktop heap, resolving any prior exhaustion.
-    Because many memory leaks are gradual, updating {{agent}} immediately after a system reboot may allow {{agent}} to upgrade before the memory leaking application exhausts the desktop heap.
+    Because many memory leaks are gradual, updating {{agent}} immediately after a system reboot might allow {{agent}} to upgrade before the memory leaking application exhausts the desktop heap.
 
     :::{tip}
     A [cold startup](https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/distinguishing-fast-startup-from-wake-from-hibernation) resets kernel memory, but a fast startup or a wake from hibernation does not.
@@ -278,7 +279,7 @@ To resolve the issue, you can try the following:
 
     You can then install any updates from the listed applications' manufacturers.
 
-- **Terminate or uninstall third-party service applications**
+- **Stop or uninstall third-party service applications**
 
     You can try terminating or uninstalling non-critical third-party service applications before updating {{agent}}.
     Terminating a process releases its desktop heap resources.
@@ -287,7 +288,7 @@ To resolve the issue, you can try the following:
 
 - **Resize the desktop heap**
 
-    As a short-term solution, follow the steps described in the [Microsoft guide](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory) to increase the size of the desktop heap. Note that if a service application is causing a memory leak, increasing the size of the desktop heap may only postpone the desktop heap exhaustion.
+    As a short-term solution, follow the steps described in the [Microsoft guide](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory) to increase the size of the desktop heap. If a service application is causing a memory leak, increasing the size of the desktop heap might only postpone the desktop heap exhaustion.
 
 
 ### {{agent}} unenroll fails [deleted-policy-unenroll]
@@ -389,7 +390,7 @@ elastic-agent status
 
 Based on the information returned, you can take further action.
 
-If {{agent}} is running, but you do not see what you expect, here are some items to review:
+If {{agent}} is running, but you do not get what you expect, here are some items to review:
 
 1. In {{fleet}}, click **Agents**. Check which policy is associated with the running {{agent}}. If it is not the policy you expected, you can change it.
 2. In {{fleet}}, click **Agents**, and then select the {{agent}} policy. Check for the integrations that should be included.
@@ -416,13 +417,13 @@ The {{agent}} diagnostics bundle collects the following information:
 4. {{agent}}'s local log files
 5. {{agent}} and {{beats}} pprof profiles
 
-Note that the diagnostics bundle is intended for debugging purposes only. 
-Its structure may change between releases.
-
 ::::{important}
 - {{agent}} attempts to automatically redact credentials and API keys when creating diagnostics. Review the contents of the archive before sharing to ensure that there are no credentials in plain text.
 
-- The ZIP archive containing diagnostics information will include the raw events of documents sent to the {{agent}} output. By default, it will log only the failing events as `warn`. When the `debug` logging level is enabled, all events are logged. Review the contents of the archive before sharing to ensure that no sensitive information is included.
+- The ZIP archive containing diagnostics information includes the raw events of documents sent to the {{agent}} output. By default, it will log only the failing events as `warn`. When the `debug` logging level is enabled, all events are logged. Review the contents of the archive before sharing to ensure that no sensitive information is included.
+
+- Note that the diagnostics bundle is intended for debugging purposes only. 
+Its structure can change between releases.
 ::::
 
 **Get the diagnostics bundle using the CLI**
@@ -476,7 +477,7 @@ The stand-alone install command installs the {{agent}}, and all of the service c
 elastic-agent enroll --fleet-server-es=https://<es-url>:443 --fleet-server-service-token=<token> --fleet-server-policy=<policy-id>
 ```
 
-Note: Port `443` is commonly used in {{ecloud}}. However, with self-managed deployments, your {{es}} may run on port `9200` or something entirely different.
+Note: Port `443` is commonly used in {{ecloud}}. However, with self-managed deployments, your {{es}} might run on port `9200` or something entirely different.
 
 For information on where to find agent logs, refer to our [FAQ](frequently-asked-questions.md#where-are-the-agent-logs).
 
@@ -561,7 +562,7 @@ To remove this message from your logs, you can turn off telemetry for the {{elas
 
 ### Error when running {{agent}} commands with `sudo` [agent-sudo-error]
 
-On Linux systems, when you install {{agent}} [without administrative privileges](/reference/fleet/elastic-agent-unprivileged.md), that is, using the `--unprivileged` flag, {{agent}} commands should not be run with `sudo`. Doing so may result in an error due to the agent not having the required privileges.
+On Linux systems, when you install {{agent}} [without administrative privileges](/reference/fleet/elastic-agent-unprivileged.md), that is, using the `--unprivileged` flag, {{agent}} commands should not be run with `sudo`. Doing so can result in an error due to the agent not having the required privileges.
 
 For example, when you run {{agent}} with the `--unprivileged` flag, running the `elastic-agent inspect` command will result in an error like the following:
 
@@ -577,7 +578,7 @@ To resolve this, either install {{agent}} without the `--unprivileged` flag so t
 
 ### On {{fleet-server}} startup, ERROR seen with `State changed to CRASHED: exited with code: 1` [ca-cert-testing]
 
-You may see this error message for a number of different reasons. A common reason is when attempting production-like usage and the ca.crt file passed in cannot be found.  To verify if this is the problem, bootstrap {{fleet-server}} without passing a ca.crt file. This implies you would test any subsequent {{agent}} installs temporarily with {{fleet-server}}'s own self-signed cert.
+You might get this error message for a number of different reasons. A common reason is when attempting production-like usage and the ca.crt file passed in cannot be found.  To verify if this is the problem, bootstrap {{fleet-server}} without passing a ca.crt file. This implies you would test any subsequent {{agent}} installs temporarily with {{fleet-server}}'s own self-signed cert.
 
 ::::{tip}
 Ensure to pass in the full path to the ca.crt file. A relative path is not viable.
@@ -601,7 +602,7 @@ For more information, refer to [{{agent}} enrollment fails on the host with `x50
 
 ### {{fleet-server}} is running and healthy with data, but other Agents cannot use it to connect to {{es}} [secondary-agent-not-connecting]
 
-Some settings are only used when you have multiple {{agent}}s.  If this is the case, it may help to check that the hosts can communicate with the {{fleet-server}}.
+Some settings are only used when you have multiple {{agent}}s.  If this is the case, check to be sure that the hosts can communicate with the {{fleet-server}}.
 
 From the non-{{fleet-server}} host, run the following command:
 
@@ -609,21 +610,21 @@ From the non-{{fleet-server}} host, run the following command:
 curl -f http://<fleet-server-ip>:8220/api/status
 ```
 
-The response may yield errors that you can be debug further, or it may work and show that communication ports and networking are not the problems.
+The response might yield errors that you can debug further, or it might work and show that communication ports and networking are not the problems.
 
-One common problem is that the default {{fleet-server}} port of `8220` isn’t open on the {{fleet-server}} host to communicate. You can review and correct this using common tools in alignment with any networking and security concerns you may have.
+One common problem is that the default {{fleet-server}} port of `8220` isn’t open on the {{fleet-server}} host to communicate. You can review and correct this using common tools in alignment with any networking and security concerns that you have.
 
 
 ## Elastic Agent and integrations
 
 ### Integration policy upgrade has too many conflicts [upgrading-integration-too-many-conflicts]
 
-If you try to upgrade an integration policy that is several versions old, there may be substantial conflicts or configuration issues. Rather than trying to fix these problems, it might be faster to create a new policy, test it, and roll out the integration upgrade to additional hosts.
+If you try to upgrade an integration policy that is several versions old, there might be substantial conflicts or configuration issues. You might save time by creating a new policy, testing it, and rolling out the integration upgrade to additional hosts rather than trying to fix these problems.
 
 After [upgrading the integration](/reference/fleet/upgrade-integration.md):
 
 1. [Create a new policy](/reference/fleet/agent-policy.md#create-a-policy).
-2. [Add the integration to the policy](/reference/fleet/agent-policy.md#add-integration). The newer version is automatically used.
+2. [Add the integration to the policy](/reference/fleet/agent-policy.md#add-integration). The later version is automatically used.
 3. [Apply the policy](/reference/fleet/agent-policy.md#apply-a-policy) to an {{agent}}.
 
     ::::{tip}
@@ -693,7 +694,7 @@ After running these steps your {{agents}} should be able to connect with {{fleet
 
 ### illegal_argument_exception when TSDB is enabled [tsdb-illegal-argument]
 
-When you use an {{agent}} integration in which TSDB (Time Series Database) is enabled, you may encounter an `illegal_argument_exception` error in the {{fleet}} UI.
+When you use an {{agent}} integration in which TSDB (Time Series Database) is enabled, you might encounter an `illegal_argument_exception` error in the {{fleet}} UI.
 
 This can occur if you have a component template defined that includes a `_source` attribute, which conflicts with the `_source: synthetic` setting used when TSDB is enabled.
 
@@ -716,28 +717,17 @@ To scale the {{fleet-server}} deployment, {{ecloud}} starts new containers or sh
 
 ### {{agent}}s hosted on {{ecloud}} are stuck in `Updating` or `Offline` [agents-in-cloud-stuck-at-updating]
 
-In {{ecloud}}, after [upgrading](/reference/fleet/upgrade-integration.md) {{fleet-server}} and its integration policies, agents enrolled in the {{ecloud}} agent policy may experience issues updating. To resolve this problem:
+In {{ecloud}}, after [upgrading](/reference/fleet/upgrade-integration.md) {{fleet-server}} and its integration policies, agents enrolled in the {{ecloud}} agent policy might experience issues updating. To resolve this problem:
 
-1. In a terminal window, run the following `cURL` request, providing your {{kib}} superuser credentials to reset the {{ecloud}} agent policy.
+1. In a terminal window, run this `cURL` request, providing your {{kib}} superuser credentials to reset the {{ecloud}} agent policy:
 
-    * On {{kib}} versions 8.11 and later, run:
-
-        ```shell
-        curl -u <username>:<password> --request POST \
-          --url <kibana_url>/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
-          --header 'content-type: application/json' \
-          --header 'kbn-xsrf: xyz' \
-          --header 'elastic-api-version: 1'
-        ```
-
-    * On {{kib}} versions earlier than 8.11, run:
-
-        ```shell
-        curl -u <username>:<password> --request POST \
-          --url <kibana_url>/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
-          --header 'content-type: application/json' \
-          --header 'kbn-xsrf: xyz'
-        ```
+    ```shell
+    curl -u <username>:<password> --request POST \
+      --url <kibana_url>/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
+      --header 'content-type: application/json' \
+      --header 'kbn-xsrf: xyz' \
+      --header 'elastic-api-version: 1'
+    ```
 
 2. Force unenroll the agent stuck in `Updating`:
 
@@ -762,7 +752,7 @@ In {{ecloud}}, after [upgrading](/reference/fleet/upgrade-integration.md) {{flee
 
 ### When using {{ecloud}}, {{fleet-server}} is not listed in {{kib}} [fleet-server-not-in-kibana-cloud]
 
-If you are unable to see {{fleet-server}} in {{kib}}, make sure it’s set up.
+If {{fleet-server}} does not appear in {{kib}}, make sure that it’s set up.
 
 To set up {{fleet-server}} on {{ecloud}}:
 
@@ -802,7 +792,7 @@ To enable {{fleet}} and set up {{fleet-server}} on a self-managed cluster:
 
 ### {{agent}} Out of Memory errors on Kubernetes [agent-oom-k8s]
 
-In a Kubernetes environment, {{agent}} may be terminated with reason `OOMKilled` due to inadequate available memory.
+In a Kubernetes environment, {{agent}} might be stopped with reason `OOMKilled` due to inadequate available memory.
 
 To detect the problem, run the `kubectl describe pod` command and check the results for the following content:
 
@@ -945,7 +935,7 @@ For more information, refer to issue [#3586](https://github.com/elastic/elastic-
 
 ### {{kib}} cannot connect to {{package-registry}} in air-gapped environments [fleet-errors-tls]
 
-In air-gapped environments, you may encounter an error if you’re using a custom Certificate Authority (CA) that is not available to {{kib}}:
+In air-gapped environments, you might encounter an error if you’re using a custom Certificate Authority (CA) that is not available to {{kib}}:
 
 ```json
 {"type":"log","@timestamp":"2022-03-02T09:58:36-05:00","tags":["error","plugins","fleet"],"pid":58716,"message":"Error connecting to package registry: request to https://customer.server.name:8443/categories?experimental=true&include_policy_templates=true&kibana.version=7.17.0 failed, reason: self signed certificate in certificate chain"}
@@ -956,7 +946,7 @@ To fix this problem, add your CA certificate file path to the {{kib}} startup fi
 
 ### Air-gapped {{agent}} upgrade can fail due to an inaccessible PGP key [pgp-key-download-fail]
 
-An {{agent}} upgrade may fail when the upgrader can’t access a PGP key required to verify the binary signature. For details and a workaround, refer to the [PGP key download fails in an air-gapped environment](https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issue-3375) known issue in the version 8.9.0 Release Notes or to the [workaround documentation](https://github.com/elastic/elastic-agent/blob/main/docs/pgp-workaround.md) in the elastic-agent GitHub repository.
+An {{agent}} upgrade can fail when the upgrader can’t access a PGP key required to verify the binary signature. For details and a workaround, refer to the [PGP key download fails in an air-gapped environment](https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issue-3375) known issue in the version 8.9.0 Release Notes or to the [workaround documentation](https://github.com/elastic/elastic-agent/blob/main/docs/pgp-workaround.md) in the elastic-agent GitHub repository.
 
 % This was a known issue for 8.9.0, and should be deleted or updated if it still applies.  
 
