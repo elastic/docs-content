@@ -15,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{agent-builder}} APIs overview
+# {{agent-builder}} Kibana APIs overview
 
 This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
