@@ -1,6 +1,8 @@
 ---
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 navigation_title: Search AI Lake view
 ---
 

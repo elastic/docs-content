@@ -15,8 +15,8 @@ Elasticsearch Query Language ({{esql}}) helps you explore and analyze your {{pro
 
 ## Prerequisites [try-esql-prerequisites]
 
-- The `enableESQL` setting enabled in **Advanced Settings** (enabled by default)
-- Have data in {{product.elasticsearch}}.
+- The `enableESQL` setting must be enabled in {{product.kibana}}'s **Advanced Settings** (enabled by default).
+- You must have data in {{product.elasticsearch}}.
   The examples on this page use the {{product.kibana}} sample web logs to explore data and create visualizations. You can install sample data by following [Add sample data](../index.md#gs-get-data-into-kibana).
 
 ::::{tip}
@@ -24,12 +24,10 @@ For the complete {{esql}} documentation, including all supported commands, funct
 ::::
 
 
-## Use {{esql}} [tutorial-try-esql]
-
-To load the sample data:
+## Get started with {{esql}} in Discover [tutorial-try-esql]
 
 1. Go to **Discover**.
-2. Select **Try {{esql}}** from the application menu bar.
+2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
    :::{tip}
    If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
@@ -72,7 +70,7 @@ Let’s add `geo.dest` to our query to find out the geographical destination of 
    ![An image of the extended query result](/explore-analyze/images/kibana-esql-limit.png "")
 
 
-We will now take it a step further to sort the data by machine ram and filter out the `GB` destination.
+We will now take it a step further to sort the data by machine RAM and filter out the `GB` destination.
 
 1. Copy the query below:
 
@@ -91,14 +89,14 @@ We will now take it a step further to sort the data by machine ram and filter ou
 3. Click **Save** to save the query and visualization to a dashboard.
 
 
-### Edit the ES|QL visualization [_edit_the_esql_visualization]
+## Edit the ES|QL visualization [_edit_the_esql_visualization]
 
 You can make changes to the visualization by clicking the pencil icon. This opens additional settings that let you adjust the chart type, axes, breakdown, colors, and information displayed to your liking. If you’re not sure which route to go, check one of the suggestions available in the visualization editor.
 
 If you’d like to keep the visualization and add it to a dashboard, you can save it using the floppy disk icon.
 
 
-### ES|QL and time series data [_esql_and_time_series_data]
+## ES|QL and time series data [_esql_and_time_series_data]
 
 By default, ES|QL identifies time series data when an index contains a `@timestamp` field. This enables the time range selector and visualization options for your query.
 
@@ -128,7 +126,7 @@ FROM kibana_sample_data_ecommerce
 :alt: ESQL query with a custom time field enabled
 :::
 
-### Create and edit lookup indices from queries [discover-esql-lookup-join]
+## Create and edit lookup indices from queries [discover-esql-lookup-join]
 ```{applies_to}
 stack: preview 9.2
 serverless: preview
@@ -140,7 +138,7 @@ In **Discover**, LOOKUP JOIN commands include interactive options that let you c
 This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) and [Serverless](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-create).
 :::
 
-#### Create a lookup index from the editor [create-lookup-esql]
+### Create a lookup index from the editor [create-lookup-esql]
 
 You can create a lookup index directly from the {{esql}} editor. To populate this index, you can type in data manually or upload a CSV file up to 500 MB.
 
@@ -217,7 +215,7 @@ Data coming from the files is appended to the index, and the index is automatica
 
 :::::
 
-#### View or edit a lookup index from the editor [view-edit-lookup-esql]
+### View or edit a lookup index from the editor [view-edit-lookup-esql]
 
 You can view and modify existing lookup indices referenced in an {{esql}} query directly from the editor, depending on your privileges:
 - To edit lookup indices, you need the [`write`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
@@ -237,7 +235,7 @@ To view or edit an index:
 
 4. If you made changes, select **Save** before closing the flyout.
 
-#### Reset the lookup index configuration
+### Reset the lookup index configuration
 
 At any time, you can delete all the index data and fields.
 
@@ -259,7 +257,7 @@ In this version, you cannot fully reset the index configuration. For example, yo
 
 :::::
 
-### Add variable controls to your Discover queries [add-variable-control]
+## Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}
 stack: preview 9.2
 serverless: preview
@@ -277,7 +275,7 @@ You can add them from your Discover {{esql}} query.
 :::{include} ../_snippets/variable-control-examples.md
 :::
 
-#### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
+### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
 ```{applies_to}
 stack: preview 9.3
 serverless: preview
@@ -294,13 +292,13 @@ You can edit all of the options described in [](#add-variable-control).
 
 When you save your edits, the control is updated for your query.
 
-#### Import a Discover query along with its controls into a dashboard
+### Import a Discover query along with its controls into a dashboard
 
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
 :::
 
 
-### Refine an {{esql}} query by interacting with the results table
+## Refine an {{esql}} query by interacting with the results table
 
 Certain interactions with the results table of your {{esql}} query in Discover apply additional filters to your query. When hovering over a value cell, contextual options appear: 
 
@@ -313,3 +311,31 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 :::
 
 Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
+
+## Revert to Discover's classic mode [revert-to-classic-mode]
+
+You can go back to the classic data view and KQL mode in Discover at any time. When you switch from {{esql}} mode to classic mode, your {{esql}} query is lost.
+
+:::::{applies-switch}
+
+::::{applies-item} {serverless:, stack: ga 9.4+ }
+1. Open the Discover tab that you want to switch to classic mode.
+
+2. From your tab's contextual menu, select **Switch to classic**. This affects only the selected Discover tab.
+
+![Tab contextual menu with an option to switch from {{esql}} to classic mode](/explore-analyze/images/discover-switch-to-classic.png "=30%")
+
+:::{tip}
+The **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
+:::
+::::
+
+::::{applies-item} stack: ga 9.2-9.3
+From the application menu, select **Switch to classic**. This only affects your current Discover tab.
+::::
+
+::::{applies-item} stack: ga 9.0-9.1
+From the application menu, select **Switch to classic**.
+::::
+
+:::::
