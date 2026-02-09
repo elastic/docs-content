@@ -28,6 +28,12 @@ When a data node reaches critical disk space usage, its [disk-based shard alloca
     flood-stage watermark [95%] exceeded on [NODE_ID][NODE_NAME], all indices on this node will be marked read-only
     ```
 
+:::{note}
+:applies_to: { ess:, ece: }
+
+At 75% disk usage, the {{ecloud}} Console displays a red disk indicator for the node to signal elevated usage. This threshold is a visual indicator only and is not tied to any {{es}} watermark or disk-enforcement behavior. No {{es}} allocation or write restrictions are applied at this stage.
+:::
+
 To prevent a full disk, when a node reaches `flood-stage` watermark, {{es}} [blocks writes](elasticsearch://reference/elasticsearch/index-settings/index-block.md) to any index with a shard on the affected node(s). If the block affects related system indices, {{kib}} and other {{stack}} features can become unavailable. For example, `flood-stage` can induce errors like:
 
 * {{kib}}'s `Kibana Server is not Ready yet` [error message](/troubleshoot/kibana/error-server-not-ready.md).
