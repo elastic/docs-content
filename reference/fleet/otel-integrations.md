@@ -31,9 +31,8 @@ Unlike {{agent}} integrations based on the [Elastic Common Schema](ecs://referen
 
 When OTel data is collected using an OpenTelemetry input package, content packages with assets related to the collected data type are automatically installed if available.
 
-:::{important}
-OpenTelemetry input packages are used with {{fleet}} and {{agent}} running in default mode. They cannot be used with an [{{agent}} running as an EDOT Collector](/reference/fleet/otel-agent.md) (an agent in `otel` mode).
-:::
+::::{include} _snippets/otel-input-packages-default-mode-note.md
+::::
 
 ## Configure OpenTelemetry input packages [otel-integrations-input-packages]
 
@@ -53,9 +52,9 @@ Only {{agents}} on version 9.2 or later can collect OTel data using OpenTelemetr
 
 ## Hybrid agent policies [otel-integrations-hybrid-policies]
 
-Hybrid agent policies let you combine ECS-based integrations with OpenTelemetry input packages in a single {{agent}} configuration. This flexible approach allows you to leverage the strengths of both data collection methods without locking you into a single ingestion model.
+A hybrid agent policy is an agent policy that includes configurations for both ECS-based integrations and OpenTelemetry input packages. This combination lets you leverage the strengths of both data collection methods within a single {{agent}} configuration, without locking you into a single ingestion model.
 
-Hybrid agent policies allow you to:
+A hybrid agent policy allows you to:
 
 - Ingest logs and metrics with ECS-based integrations and leverage their built-in dashboards and alerts
 - Collect additional telemetry data using OpenTelemetry Collector components
@@ -64,5 +63,5 @@ Hybrid agent policies allow you to:
 
 For examples on using a hybrid agent policy to collect telemetry, refer to:
 
-- [Collect NGINX logs and metrics with a hybrid {{fleet}}-managed {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
-- [Collect NGINX logs and metrics with a hybrid standalone {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md)
+- [Collect NGINX data with OpenTelemetry integrations ({{fleet}}-managed)](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
+- [Collect NGINX data with OpenTelemetry integrations (standalone)](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md)

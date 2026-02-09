@@ -1,6 +1,6 @@
 ---
-navigation_title: Collect NGINX logs and metrics with hybrid standalone agent
-description: Collect NGINX logs and metrics with a hybrid standalone Elastic Agent using Elastic's Nginx integration and NGINX OpenTelemetry Input Package.
+navigation_title: Collect NGINX data with OpenTelemetry integrations (standalone)
+description: Collect NGINX logs and metrics with a standalone Elastic Agent using Elastic's Nginx integration and NGINX OpenTelemetry Input Package.
 applies_to:
   stack: preview 9.2+
   serverless: preview
@@ -9,20 +9,19 @@ products:
   - id: elastic-agent
 ---
 
-# Collect NGINX logs and metrics with a hybrid standalone {{agent}}
+# Collect NGINX data with OpenTelemetry integrations (standalone)
 
-Learn how to monitor your NGINX server by collecting logs and metrics with a hybrid standalone {{agent}} on Linux.
+Learn how to monitor your NGINX server by collecting logs and metrics with a standalone {{agent}} on Linux.
 
-You'll use {{kib}} and {{fleet}} to create a [hybrid agent policy](/reference/fleet/otel-integrations.md#otel-integrations-hybrid-policies), then download the policy file and deploy it to your standalone {{agent}}.
+You'll use {{kib}} and {{fleet}} to create an [agent policy that combines both ECS-based integrations and OpenTelemetry input packages](/reference/fleet/otel-integrations.md#otel-integrations-hybrid-policies), then download the policy file and deploy it to your standalone {{agent}}.
 
 You’ll collect:
 
 - NGINX logs with Elastic's [Nginx integration](https://www.elastic.co/docs/reference/integrations/nginx), based on the [Elastic Common Schema](ecs://reference/index.md) (ECS)
 - NGINX metrics with Elastic's [NGINX OpenTelemetry Input Package](https://www.elastic.co/docs/reference/integrations/nginx_otel_input), which uses the [`nginxreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nginxreceiver) OpenTelemetry (OTel) Collector receiver
 
-:::{note}
-OpenTelemetry input packages cannot be used with an [{{agent}} running as an EDOT Collector](/reference/fleet/otel-agent.md) (an agent in `otel` mode).
-:::
+::::{include} ../../../reference/fleet/_snippets/otel-input-packages-default-mode-note.md
+::::
 
 ## Prerequisites [collect-nginx-data-standalone-prereqs]
 
@@ -34,9 +33,9 @@ OpenTelemetry input packages cannot be used with an [{{agent}} running as an EDO
 ::::{include} _snippets/collect-nginx-data-status-endpoint.md
 ::::
 
-## Configure the hybrid standalone agent policy [collect-nginx-data-standalone-policy]
+## Configure the agent policy [collect-nginx-data-standalone-policy]
 
-To deploy a hybrid agent policy to a standalone {{agent}}, start by creating the policy in {{kib}}. This approach allows you to configure all integration settings in advance, create an API key for the agent, and then generate a working agent policy, already populated with the output and integration details.
+To deploy an agent policy to a standalone {{agent}}, start by creating the policy in {{kib}}. This approach allows you to configure all integration settings in advance, create an API key for the agent, and then generate a working agent policy, already populated with the output and integration details.
 
 :::::{stepper}
 
@@ -121,7 +120,7 @@ For more details on customizing standalone policies, refer to [Create a standalo
 
 ## Validate your data [collect-nginx-data-standalone-validate]
 
-After you deploy the hybrid agent policy to your standalone {{agent}}, validate that both the ECS-based logs and the OTel-based metrics are flowing in.
+After you deploy the agent policy to your standalone {{agent}}, validate that both the ECS-based logs and the OTel-based metrics are flowing in.
 
 :::::{stepper}
 
@@ -134,7 +133,7 @@ After you deploy the hybrid agent policy to your standalone {{agent}}, validate 
    data_stream.dataset : "nginx.access" or "nginx.error"
    ```
 
-3. Go to **Dashboards**, then select **[Logs Nginx] Access and error logs** to view the dashboard installed with the Nginx integration.
+3. Go to **Dashboards**, then select **[Logs Nginx] Access and error logs** to view the dashboard installed by the Nginx integration.
 
 ::::
 
@@ -151,5 +150,5 @@ This dashboard is provided by the NGINX OpenTelemetry Assets content package, in
 ## Related pages [collect-nginx-data-standalone-related]
 
 - [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md)
-- [Collect NGINX logs and metrics with a hybrid {{fleet}}-managed {{agent}}](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
+- [Collect NGINX data with OpenTelemetry integrations ({{fleet}}-managed)](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md)
 - [Elastic integrations](integration-docs://reference/index.md)
