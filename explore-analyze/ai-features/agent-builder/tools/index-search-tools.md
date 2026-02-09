@@ -38,32 +38,18 @@ Use custom **Index search tools** when:
 
 Index search tools support the following configuration parameters:
 
-* **`pattern`**: An index pattern string (e.g., `logs-myapp-*`, `my-index`, `.alerts-security-*`) specifying which indices, aliases, or data streams to search
+`pattern`
+:   An index pattern string (e.g., `logs-myapp-*`, `my-index`, `.alerts-security-*`) specifying which indices, aliases, or data streams to search.
 
-  :::{tip}
-  [Avoid overly broad wildcard patterns](#wildcard-warning) like `*` or `logs-*` across large datasets.
-  :::
+    :::{tip}
+    [Avoid overly broad wildcard patterns](#wildcard-warning) like `*` or `logs-*` across large datasets.
+    :::
 
-* **`row_limit`** (optional): Maximum number of rows to return from {{esql}} queries. This helps control the amount of data retrieved and prevents exceeding context length limits.
+`row_limit` (optional)
+:   Maximum number of rows to return from {{esql}} queries. This helps control the amount of data retrieved and prevents exceeding context length limits.
 
-* **`custom_instructions`** (optional): Additional guidance for {{esql}} query generation, such as field selection or query constraints. Use this to provide domain-specific instructions to the agent about how to construct queries for your data. 
-  
-  Custom instructions are passed to the agent when it generates {{esql}} queries, allowing you to:
-  - Specify fields that should always be included in results
-  - Define default sorting or filtering behavior  
-  - Set constraints on query structure or logic
-  - Provide context about data patterns or conventions
-  
-  Examples:
-  - "Always include the @timestamp field in results"
-  - "Prioritize recent events within the last 24 hours"
-  - "Filter out test data where environment='test'"
-  - "Include source.ip and destination.ip for network events"
-
-:::{image} ../images/create-index-search-tool.png
-:screenshot:
-:alt: Creating an index search tool with configuration parameters
-:::
+`custom_instructions` (optional)
+:   Domain-specific guidance for {{esql}} query generation. For example: `"Always include @timestamp and filter out records where environment='test'"`.
 
 ## How it works
 
