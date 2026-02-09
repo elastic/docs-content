@@ -54,15 +54,15 @@ If you attempt to assign an agent policy to a {{private-location}} *before* conf
 
 When creating a {{private-location}}, you have to:
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 1. [Set up {{agent}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
 2. [Connect {{fleet}} to your Observability project](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
 3. [Add a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the Synthetics UI.
 :::
 
-:::{tab-item} {{stack}}
+:::{applies-item} stack:
 1. [Set up {{fleet-server}} and {{agent}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
 2. [Connect {{fleet}} to the {{stack}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
 3. [Add a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}.
@@ -118,15 +118,15 @@ When using {{ecloud}}, if there are no options available in the *Locations* drop
 
 There are a few ways to fix this:
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 * If you have [Editor](/solutions/observability/synthetics/grant-access-to-secured-resources.md) access, you can [create a new Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
 * If you do *not* have the right privileges to create a Private Location, you can ask an [Admin](/solutions/observability/synthetics/grant-access-to-secured-resources.md) to create a Private Location or give you the necessary privileges so you can [create a new Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
 
 :::
 
-:::{tab-item} {{stack}}
+:::{applies-item} stack:
 * If you have [write access](/solutions/observability/synthetics/writer-role.md) including the privileges for [creating new Private Locations](/solutions/observability/synthetics/writer-role.md#synthetics-role-write-private-locations), you can [create a new Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
 * If you do *not* have the right privileges to create a Private Location, you can ask someone with the [necessary privileges](/solutions/observability/synthetics/writer-role.md#synthetics-role-write-private-locations) to create a Private Location or ask an administrator with a [setup role](/solutions/observability/synthetics/setup-role.md) to give you the necessary privileges and [create a new Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
 * If you want to create a monitor to run on Elastic’s global managed infrastructure, ask an administrator with a [setup role](/solutions/observability/synthetics/setup-role.md) to update [`Synthetics and Uptime` sub-feature privileges](/solutions/observability/synthetics/writer-role.md#disable-managed-locations) for the role you’re currently assigned. Then try creating the monitor again.

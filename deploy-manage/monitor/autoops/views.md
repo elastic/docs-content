@@ -1,10 +1,10 @@
 ---
 applies_to:
-  deployment:
-    ess: all
-    self:
-    ece:
-    eck:
+  stack:
+products:
+  - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 navigation_title: Views
 ---
 

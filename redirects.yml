@@ -1,4 +1,22 @@
 redirects:
+  # related to https://github.com/elastic/docs-content/pull/4251
+  'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'
+  'solutions/elasticsearch-solution-project/full-text/create-update-synonyms-api-example.md': 'solutions/search/full-text/create-update-synonyms-api-example.md'
+  'solutions/search/query-rules-ui.md': 'solutions/elasticsearch-solution-project/query-rules-ui.md'
+  'solutions/search/search-applications.md': 'solutions/elasticsearch-solution-project/search-applications.md'
+  'solutions/search/search-applications/search-application-client.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-client.md'
+  'solutions/search/search-connection-details.md': 'solutions/elasticsearch-solution-project/search-connection-details.md'
+  'solutions/search/ai-assistant.md': 'solutions/elasticsearch-solution-project/ai-assistant.md'
+  'solutions/search/rag/playground.md': 'solutions/elasticsearch-solution-project/playground.md'
+  'solutions/search/rag/playground-context.md': 'solutions/elasticsearch-solution-project/playground-context.md'
+  'solutions/search/rag/playground-query.md': 'solutions/elasticsearch-solution-project/playground-query.md'
+  'solutions/search/rag/playground-troubleshooting.md': 'solutions/elasticsearch-solution-project/playground-troubleshooting.md'
+  'solutions/search/search-applications/search-application-api.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-api.md'
+  'solutions/search/search-applications/search-application-security.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-security.md'
+  'solutions/search/mcp.md':
+    to: 'explore-analyze/ai-features.md'
+    anchors:
+      '': 'model-context-protocol-mcp-servers'
   'deploy-manage/security/secure-http-communications.md': '!deploy-manage/security/secure-cluster-communications.md'
   'deploy-manage/security/manually-configure-security-in-self-managed-cluster.md': '!deploy-manage/security/self-setup.md'
   'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
@@ -355,7 +373,7 @@ redirects:
   'troubleshoot/observability/apm-agent-swift/apm-ios-agent.md': 'troubleshoot/ingest/opentelemetry/edot-sdks/ios/index.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2843
-  'solutions/search/serverless-elasticsearch-get-started.md': 'solutions/search/get-started.md'
+  'solutions/search/serverless-elasticsearch-get-started.md': 'solutions/elasticsearch-solution-project/get-started.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3032
   'manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md': 'manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md'
@@ -518,7 +536,7 @@ redirects:
   'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3461
-  'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
+  'manage-data/data-store/data-streams/time-series-data-stream-tsds.md':
     to: 'manage-data/data-store/data-streams/time-series-data-stream-tsds.md'
     anchors:
       'when-to-use-tsds': 'when-to-use-tsds'
@@ -534,7 +552,7 @@ redirects:
       'time-bound-indices':
       'dimension-based-routing':
       'tsds-accepted-time-range':
-      
+
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
 
@@ -547,7 +565,7 @@ redirects:
   'solutions/security/cloud/integration-qualys.md': 'solutions/security/integrations/qualys.md'
   'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/integrations/aws-security-hub.md'
   'solutions/security/cloud/aws-config-integration.md': 'solutions/security/integrations/aws-config.md'
-  
+
 # Deduplicate canvas function reference
   'reference/data-analysis/kibana/canvas-functions.md': 'explore-analyze/visualize/canvas/canvas-function-reference.md'
   'reference/data-analysis/kibana/tinymath-functions.md': 'explore-analyze/visualize/canvas/canvas-tinymath-functions.md'
@@ -585,14 +603,14 @@ redirects:
 
 # Moved explore-analyze AI assistant content into a subfolder (docs-content-internal/issues/455)
   'explore-analyze/manage-access-to-ai-assistant.md': 'explore-analyze/ai-features/manage-access-to-ai-assistant.md'
-  'explore-analyze/ai-assistant.md': 'explore-analyze/ai-features/ai-assistant.md'
+  'explore-analyze/ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3685
   'deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md': 'deploy-manage/monitor/autoops/ec-autoops-faq.md'
 
 # Related to https://github.com/elastic/docs-team/issues/104
   'solutions/observability/get-started/what-is-elastic-observability': 'solutions/observability.md'
-  'solutions/security/get-started/create-security-project.md': 
+  'solutions/security/get-started/create-security-project.md':
     to: 'solutions/security/get-started.md'
     anchors:
       'create-sec-serverless-project':
@@ -630,4 +648,53 @@ redirects:
 
   # Move CCS feature docs to explore-analyze
   'solutions/search/cross-cluster-search.md': 'explore-analyze/cross-cluster-search.md'
-  'solutions/search/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
+  'solutions/search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
+
+  # Related to https://github.com/elastic/docs-content/pull/4438
+  'explore-analyze/ai-features/ai-agent-or-ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md'
+
+  # Related to agent builder restructure - moved agent builder docs to explore-analyze/
+  'solutions/search/elastic-agent-builder.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
+  'solutions/search/agent-builder/tools/esql-tools.md': 'explore-analyze/ai-features/agent-builder/tools/esql-tools.md'
+  'solutions/search/agent-builder/tools/index-search-tools.md': 'explore-analyze/ai-features/agent-builder/tools/index-search-tools.md'
+  'solutions/search/agent-builder/a2a-server.md': 'explore-analyze/ai-features/agent-builder/a2a-server.md'
+  'solutions/search/agent-builder/agent-builder-agents.md': 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
+  'solutions/search/agent-builder/chat.md': 'explore-analyze/ai-features/agent-builder/chat.md'
+  'solutions/search/agent-builder/get-started.md': 'explore-analyze/ai-features/agent-builder/get-started.md'
+  'solutions/search/agent-builder/kibana-api.md': 'explore-analyze/ai-features/agent-builder/kibana-api.md'
+  'solutions/search/agent-builder/limitations-known-issues.md': 'explore-analyze/ai-features/agent-builder/limitations-known-issues.md'
+  'solutions/search/agent-builder/mcp-server.md': 'explore-analyze/ai-features/agent-builder/mcp-server.md'
+  'solutions/search/agent-builder/models.md': 'explore-analyze/ai-features/agent-builder/models.md'
+  'solutions/search/agent-builder/monitor-usage.md': 'explore-analyze/ai-features/agent-builder/monitor-usage.md'
+  'solutions/search/agent-builder/permissions.md': 'explore-analyze/ai-features/agent-builder/permissions.md'
+  'solutions/search/agent-builder/programmatic-access.md': 'explore-analyze/ai-features/agent-builder/programmatic-access.md'
+  'solutions/search/agent-builder/tools.md': 'explore-analyze/ai-features/agent-builder/tools.md'
+
+# Related to https://github.com/elastic/docs-content/pull/4438
+  'explore-analyze/ai-features/ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md'
+
+# Related to tools.md refactor - moved custom tools content to custom-tools.md
+  'explore-analyze/ai-features/agent-builder/tools.md':
+    to: 'explore-analyze/ai-features/agent-builder/tools.md'
+    many:
+      - to: 'explore-analyze/ai-features/agent-builder/tools/custom-tools.md'
+        anchors:
+          'create-custom-tools': 'create-custom-tools'
+          'testing-your-tools': 'testing-your-tools'
+          'best-practices': 'best-practices'
+          'assign-tools-to-agents': 'assign-tools-to-agents'
+
+# Related to https://github.com/elastic/docs-content/pull/4779
+  'explore-analyze/visualize/lens.md':
+    to: 'explore-analyze/visualize/lens.md'
+    many:
+      - to: 'explore-analyze/visualize/charts/tables.md'
+        anchors:
+          'create-custom-tables': 'build-tables-with-kibana'
+      - to: 'explore-analyze/visualize/charts/metric-charts.md'
+        anchors:
+          'metric-trends': 'build-metric-charts-with-kibana'
+
+# Related to https://github.com/elastic/docs-content/pull/5033
+  'solutions/observability/observability-ai-assistant.md': 'solutions/observability/ai/observability-ai-assistant.md'
+  'solutions/observability/llm-performance-matrix.md': 'solutions/observability/ai/llm-performance-matrix.md'
