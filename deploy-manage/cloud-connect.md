@@ -59,7 +59,7 @@ $$$cc-ech$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted cluste
 :::
 
 $$$cc-ech-eis$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to EIS?**
-:   For {{ech}} deployments, EIS is set up and enabled automatically.
+:   For {{ech}} deployments with an Enterprise license, EIS is set up and enabled automatically.
 
 
 $$$cc-more-services$$$ **Are more services going to be available with Cloud Connect?**
