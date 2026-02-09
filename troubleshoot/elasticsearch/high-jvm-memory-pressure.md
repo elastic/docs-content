@@ -212,7 +212,7 @@ Computing the [field data](elasticsearch://reference/elasticsearch/mapping-refer
 
 Field data is loaded into the JVM heap cache and retained based on usage frequency. Field data can consume JVM heap memory up to the lower value between the [field data cache setting](elasticsearch://reference/elasticsearch/configuration-reference/field-data-cache-settings.md) and the [field data circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md). [Circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md) appear as [rejected requests](/troubleshoot/elasticsearch/rejected-requests.md#check-circuit-breakers). Setting `indices.fielddata.cache.size` too low causes thrashing and frequent evictions. 
 
-To check `fielddata` evictions and determine whether field data contributes significantly to JVM memory usage, use the [cat nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes)  API:
+To check `fielddata` evictions and determine whether field data contributes significantly to JVM memory usage, use the [cat nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) API:
 
 ```console
 GET _cat/nodes?v=true&h=name,heap.*,fielddata.*
@@ -232,13 +232,13 @@ You can use the [clear cache](https://www.elastic.co/docs/api/doc/elasticsearch/
   POST my-index-000001/_cache/clear?fielddata=true&fields=fieldname1,fieldname2
   ```
 
-* To clear any fielddata cache across all indices
+* To clear any fielddata cache across all indices:
 
   ```console
   POST */_cache/clear?fielddata=true&expand_wildcards=all&ignore_unavailable=true
   ```
 
-The most common reasons for field data JVM usage include when you:
+Common causes of high field data memory usage include:
 
 * Enabling [`fielddata` on `text` fields](elasticsearch://reference/elasticsearch/mapping-reference/text.md#enable-fielddata-text-fields). Instead, use a [multi-field](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) and search against the [keyword field](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md).
-* Either [aggregate](/explore-analyze/query-filter/aggregations.md) or [sort](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md) on high cardinality fields which have computed [global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md#_what_are_global_ordinals). For example, this can occur from {{kib}} autocomplete of `non-text` fields or loading [visualizations](/explore-analyze/visualize/visualize-library.md). Refer to [avoiding global ordinal loading](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md#_avoiding_global_ordinal_loading) for guidance.
+* Either [aggregating](/explore-analyze/query-filter/aggregations.md) or [sorting](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md) on high cardinality fields which have computed [global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md#_what_are_global_ordinals). For example, this can occur from {{kib}} autocomplete of `non-text` fields or loading [visualizations](/explore-analyze/visualize/visualize-library.md). Refer to [avoiding global ordinal loading](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md#_avoiding_global_ordinal_loading) for guidance.
