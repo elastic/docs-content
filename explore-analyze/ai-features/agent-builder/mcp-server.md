@@ -1,6 +1,6 @@
 ---
 navigation_title: "MCP server"
-description: "Learn how to connect Claude Desktop, Cursor, and VS Code to Agent Builder tools using the Model Context Protocol (MCP) server."
+description: "Learn how to connect Claude Desktop, Cursor, and VS Code to Elastic Agent Builder tools using the Model Context Protocol (MCP) server."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
