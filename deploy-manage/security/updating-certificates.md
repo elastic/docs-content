@@ -25,16 +25,17 @@ You might need to update your TLS certificates in the following scenarios:
   
   Use the [SSL certificate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) API to check when your certificates are expiring.
 
-
   ```console
   GET _ssl/certificates
   ```
 
-  Or check expiration date using third party tool [OpenSSL](https://wiki.openssl.org/index.php/Command_Line_Utilities):
+  ::::{tip}
+  You can check your certificate's expiration date using third party tool [OpenSSL](https://wiki.openssl.org/index.php/Command_Line_Utilities):
 
   ```bash
   openssl x509 -in /path/to/your/certificate.crt -noout -enddate
   ```
+  ::::
   
 ## Update certficate files [update-node-certs-update]
 
@@ -65,12 +66,11 @@ You must complete a rolling restart if you modify any of the following:
 
 ### Automatically apply keystore [update-node-certs-apply-keystore]
 
+To do an in-place update, copy the new certificate and key files (or keystore) into the {{es}} [configuration directory](/deploy-manage/deploy/self-managed/configure-elasticsearch.md). To use this method you must use the same file names. {{es}} monitors the SSL resources for updates on a five-second interval and will automatically detect changes and reload the keys and certificates. 
+
+::::{note}
 While it’s possible to do an in-place update for security certificates, using a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) on your cluster is safer and recommended. An in-place update avoids some complications of a rolling restart, but incurs the following risks:
 
 * If you use PEM files, your certificate and key are in separate files. You must update both files *simultaneously* or the node might experience a temporary period where it cannot establish new connections.
 * Updating the certificate and key does not automatically force existing connections to refresh. This means that even if you make a mistake, a node can seem like it’s functioning but only because it still has existing connections. It’s possible that a node will be unable to connect with other nodes, rendering it unable to recover from a network outage or node restart.
-
-If your team chooses to do an in-place update, you can copy the new certificate and key files (or keystore) into the {{es}} [configuration directory](/deploy-manage/deploy/self-managed/configure-elasticsearch.md). To use this method you must use the same file names. {{es}} monitors the SSL resources for updates on a five-second interval and will automatically detect changes and reload the keys and certificates. 
-
-
-
+::::
