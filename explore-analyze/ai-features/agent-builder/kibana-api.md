@@ -1,5 +1,5 @@
 ---
-navigation_title: "Agent Builder APIs"
+navigation_title: "Kibana APIs"
 description: "Use the Agent Builder REST APIs to programmatically manage agents, tools, and conversation history."
 applies_to:
   stack: preview =9.2, ga 9.3+
