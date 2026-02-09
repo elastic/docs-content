@@ -16,6 +16,8 @@ Before you start, make sure you have:
 - Write access to the [elastic/integrations](https://github.com/elastic/integrations) repository (for Elastic contributors).
 - The [`elastic-package`](https://github.com/elastic/elastic-package) tool installed locally.
 
+## Update the docs
+
 ::::::{stepper}
 
 ::::{step} Create a branch
@@ -27,7 +29,7 @@ git checkout -b docs-enhancement/my-docs-update
 ::::
 
 ::::{step} Edit the README source file
-Edit the source file at `packages/{package}/docs/README.md` `packages/{package}/_dev/build/docs/README.md` .
+Edit the source file at `packages/{package}/docs/README.md` or `packages/{package}/_dev/build/docs/README.md` .
 ::::
 
 ::::{step} Commit and push your changes
