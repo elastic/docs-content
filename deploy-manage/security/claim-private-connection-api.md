@@ -4,8 +4,10 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
+    serverless: ga
 products:
   - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Claim private connection ownership
