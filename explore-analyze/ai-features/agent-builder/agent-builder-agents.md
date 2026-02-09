@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{agent-builder}} Agents overview
+# {{agent-builder}} agents overview
 
 Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
 
