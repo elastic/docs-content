@@ -15,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Agent-to-Agent (A2A) server API reference
+# Agent-to-Agent (A2A) server API reference in {{agent-builder}}
 
 The [**Agent-to-Agent (A2A) server**](https://github.com/a2aproject/A2A) enables external A2A clients to communicate with {{agent-builder}} agents.
 

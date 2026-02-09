@@ -15,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Model Context Protocol (MCP) server
+# Model Context Protocol (MCP) server in {{agent-builder}}
 
 The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
 
