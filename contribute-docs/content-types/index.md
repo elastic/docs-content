@@ -73,11 +73,11 @@ Each guide covers the structure, best practices, and checklist for a specific co
 
 | Your writing goal | Start here |
 |---|---|
-| Introduce a feature or concept | [Overview](overviews.md) |
-| Complete a single, focused task | [How-to](how-tos.md) |
-| Build a longer-form, learning-focused guide | [Tutorial](tutorials.md) |
-| Troubleshoot common issues | [Troubleshooting](troubleshooting.md) |
-| Signal what changed in a release | [Changelog](changelogs.md) |
+| Explain what a feature is and why it matters | [Overview](overviews.md) |
+| Walk a user through a single, focused task | [How-to](how-tos.md) |
+| Build a longer-form, learning-focused guide  | [Tutorial](tutorials.md) |
+| Help users diagnose and fix common problems | [Troubleshooting](troubleshooting.md) |
+| Write useful and consistent changelogs | [Changelog](changelogs.md) |
 
 ## Templates per content type
 
