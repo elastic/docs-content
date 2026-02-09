@@ -80,7 +80,7 @@ The Agents API enables programmatic management of both built-in and custom agent
 
 ### Quick overview
 
-For an overview, refer to [Agents API](kibana-api.md#agents).
+For an overview, refer to [Agents API](kibana-api.md#agents-apis).
 
 ### API reference
 

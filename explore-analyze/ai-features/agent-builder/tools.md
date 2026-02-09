@@ -48,7 +48,7 @@ You can extend the built-in tool catalog with your own custom tool definitions. 
 
 ## Manage tools
 
-You can view, organize, and manage tools from the **Tools** page in Kibana or programmatically using the [Tools API](kibana-api.md#tools).
+You can view, organize, and manage tools from the **Tools** page in Kibana or programmatically using the [Tools API](kibana-api.md#tools-apis).
 
 The Tools page lists each tool by ID and description. Use the search bar or filter by labels to find specific tools. Built-in tools are marked with a lock icon (🔒).
 

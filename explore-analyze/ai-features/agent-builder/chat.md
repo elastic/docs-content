@@ -40,7 +40,7 @@ This takes you to the chat GUI:
 :alt: Annotated screenshot of the Agent Chat GUI with numbered callouts highlighting the chat input (1), agent selector (2), model selector (3), conversations panel (4), and more actions menu (5)
 :::
 
-1. [Chat input area](#chat-and-select-agent)
+1. [Chat input area](#chat-with-agent-builder-agents)
 2. [Agent selector](#select-a-different-agent)
 3. [Model selector](#select-a-different-model)
 4. [Conversation history](#find-conversation-history)

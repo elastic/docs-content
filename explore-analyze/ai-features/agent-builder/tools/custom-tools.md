@@ -151,4 +151,4 @@ Not sure whether logic belongs in a tool description or in the agent's custom in
 - [](../prompt-engineering.md)
 - [](../tools.md)
 - [](builtin-tools-reference.md)
-- [](../kibana-api.md#tools)
+- [](../kibana-api.md#tools-apis)
