@@ -163,7 +163,7 @@ Instead of creating a single generic search tool, consider creating multiple foc
 :::{dropdown} Security alerts tool example
 **Tool name**: `Search Security Alerts`
 
-**Pattern**: `.alerts-security-*`
+**Pattern**: `security-alerts-*`
 
 **Description**: "Search security detection alerts and findings. Use this for questions about threat detection, suspicious activity, or security incidents."
 :::
