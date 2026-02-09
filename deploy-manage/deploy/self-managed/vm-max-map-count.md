@@ -22,9 +22,17 @@ On Linux, you can increase the limits by running the following command as `root`
 sysctl -w vm.max_map_count=1048576
 ```
 
-To set this value permanently, update the `vm.max_map_count` setting in `/etc/sysctl.conf`. To verify after rebooting, run `sysctl vm.max_map_count`.
+To set this value permanently, update the `vm.max_map_count` setting in `/etc/sysctl.conf`.
 
-The RPM and Debian packages will configure this setting automatically. No further configuration is required.
+For systemd-based Linux systems, the `sysctl` load order can override a value set only in `/etc/sysctl.conf`. To make the setting permanent in those systems, you must also add a new conf file under `/etc/sysctl.d/` and include the the `vm.max_map_count=1048576` setting.
+
+
+To verify after rebooting, run:
+
+```sh
+sysctl vm.max_map_count
+```
+
 
 You can find out the current mmap count of a running {{es}} process using the following command, where `$PID` is the process ID of the running {{es}} process:
 
