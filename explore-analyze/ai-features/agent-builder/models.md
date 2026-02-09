@@ -1,5 +1,5 @@
 ---
-navigation_title: "Model configuration"
+navigation_title: "Models"
 description: "Learn how to configure LLMs in Agent Builder, including Elastic Managed LLMs using EIS and custom connectors for OpenAI, Claude, and Gemini."
 applies_to:
   stack: preview =9.2, ga 9.3+
