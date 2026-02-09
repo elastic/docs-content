@@ -70,8 +70,7 @@ stack: ga
 serverless: ga
 ```
 
-- **View only access**: To view {{elastic-endpoint}} exceptions, your role needs at least `Read` {{kib}} privileges for the `Security > Security > Endpoint Exceptions` subfeature. 
-- **Manage access**: To create and manage {{elastic-endpoint}} exceptions, your role needs `All` {{kib}} privileges for the `Security > Security > Endpoint Exceptions` subfeature. 
+For required privileges to view and manage {{elastic-endpoint}} exceptions, refer to [](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
 
 ## Add exceptions to a rule [detection-rule-exceptions]
 
