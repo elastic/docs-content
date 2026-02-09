@@ -46,7 +46,7 @@ Index search tools support the following configuration parameters:
 
 * **`row_limit`** (optional): Maximum number of rows to return from {{esql}} queries. This helps control the amount of data retrieved and prevents exceeding context length limits.
 
-* **`custom_instructions`** (optional): Additional guidance for {{esql}} query generation, such as field selection or limit logic. Use this to provide domain-specific instructions to the agent about how to construct queries for your data. 
+* **`custom_instructions`** (optional): Additional guidance for {{esql}} query generation, such as field selection or query constraints. Use this to provide domain-specific instructions to the agent about how to construct queries for your data. 
   
   Custom instructions are passed to the agent when it generates {{esql}} queries, allowing you to:
   - Specify fields that should always be included in results

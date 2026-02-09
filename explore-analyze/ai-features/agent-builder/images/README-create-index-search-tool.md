@@ -3,8 +3,7 @@
 The documentation at `tools/index-search-tools.md` references an image file `create-index-search-tool.png` that needs to be added to this directory.
 
 ## Source
-The screenshot should be obtained from the GitHub issue that requested this documentation update:
-https://github.com/user-attachments/assets/7ff3f961-dbc8-46b5-bf8c-4985e4a4cd3a
+The screenshot should be obtained from the GitHub issue that requested this documentation update. Contact the issue author if needed.
 
 ## Expected Content
 The screenshot should show the UI for creating an index search tool with the following configuration fields visible:
@@ -14,4 +13,4 @@ The screenshot should show the UI for creating an index search tool with the fol
 - Custom instructions field (with placeholder: "e.g., 'Always include timestamp field'" and description: "Additional guidance for ES|QL query generation, such as field selection or limit logic.")
 
 ## Action Required
-Please download the screenshot from the issue and save it as `create-index-search-tool.png` in this directory, then delete this README file.
+Please add the screenshot as `create-index-search-tool.png` in this directory, then delete this README file.
