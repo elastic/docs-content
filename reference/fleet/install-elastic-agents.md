@@ -19,7 +19,7 @@ Note the following restrictions when installing {{agent}} on your system:
 * See also the [resource requirements](#elastic-agent-installation-resource-requirements) described on this page.
 
 ::::{note}
-{{agent}} requires a writable file system to operate. The agent needs to write configuration files, logs, and other runtime data during installation and normal operation. If you're running {{agent}} in a containerized environment with a read-only root file system, you must provide a writable location for the agent to use. For more information, refer to the tips in [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
+{{agent}} requires a writable file system to operate. It needs to write configuration files, logs, and other runtime data during installation and normal operation. If you're running {{agent}} in a containerized environment with a read-only root file system, you must provide a writable location for the agent to use. For more information, refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
 ::::
 
 ::::{admonition} New FIPS compatible install packages
