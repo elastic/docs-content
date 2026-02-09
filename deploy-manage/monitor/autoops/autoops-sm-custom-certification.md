@@ -1,6 +1,9 @@
 ---
 applies_to:
-  stack: ga 7.17
+  deployment:
+    self:
+    ece:
+    eck:
 navigation_title: Configure Elastic agent with custom certificate
 products:
   - id: cloud-kubernetes

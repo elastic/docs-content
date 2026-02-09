@@ -15,7 +15,7 @@ products:
 
 # Index search tools
 
-Index search tools provide intelligent, natural language-driven search over specified {{es}} resources. Instead of defining explicit queries, you specify a pattern of [indices](/manage-data/data-store/index-basics.md), [aliases](/manage-data/data-store/aliases.md), or [data streams](/manage-data/data-store/data-streams.md), and the tool uses a combination of built-in capabilities to intelligently interpret and execute search requests.
+Index search tools provide intelligent, natural language-driven search over specified {{es}} resources. Instead of defining explicit queries, you specify a pattern of [indices](/manage-data/data-store/index-basics.md), [aliases](/manage-data/data-store/aliases.md), or [data streams](/manage-data/data-store/data-streams.md), and the tool uses a combination of built-in capabilities to intelligently interpret and execute search requests. The tool automatically generates queries in Query DSL or {{esql}} format based on the search intent.
 
 ## When to use index search tools
 
@@ -36,19 +36,26 @@ Use custom **Index search tools** when:
 
 ## Configuration
 
-Index search tools require only a single configuration parameter:
+Index search tools support the following configuration parameters:
 
-* **`pattern`**: An index pattern string (e.g., `logs-myapp-*`, `my-index`, `.alerts-security-*`) specifying which indices, aliases, or data streams to search
+`pattern`
+:   An index pattern string specifying which indices, aliases, or data streams to search. Examples: `logs-myapp-*`, `my-index`, `.alerts-security-*`.
 
-  :::{tip}
-  [Avoid overly broad wildcard patterns](#wildcard-warning) like `*` or `logs-*` across large datasets.
-  :::
+    :::{tip}
+    [Avoid overly broad wildcard patterns](#wildcard-warning) like `*` or `logs-*` across large datasets.
+    :::
+
+`row_limit` (optional)
+:   Maximum number of rows to return from {{esql}} queries. This helps control the amount of data retrieved and prevents exceeding context length limits.
+
+`custom_instructions` (optional)
+:   Domain-specific guidance for {{esql}} query generation. For example: `"Always include @timestamp and filter out records where environment='test'"`.
 
 ## How it works
 
 When an agent calls an index search tool:
 
-1. The agent provides a natural language query (e.g., "find recent errors related to authentication")
+1. The agent provides a natural language query (for example, "find recent errors related to authentication")
 2. The tool analyzes the query intent and available indices
 3. It automatically orchestrates built-in tools to:
    - Explore the index structure and mappings
@@ -60,10 +67,12 @@ When an agent calls an index search tool:
 
 ## Best practices
 
-- **Use specific patterns**: Scope tools to relevant index patterns rather than broad wildcards (e.g., `logs-myapp-*` instead of `logs-*`)
-- **Write descriptive tool names**: Help agents select the right tool for the query (e.g., "Search Security Alerts" vs. "Search Tool")
+- **Use specific patterns**: Scope tools to relevant index patterns rather than broad wildcards (for example, `logs-myapp-*` instead of `logs-*`)
+- **Write descriptive tool names**: Help agents select the right tool for the query (for example, "Search Security Alerts" vs. "Search Tool")
 - **Provide context in descriptions**: Explain what data the indices contain and what types of questions the tool can answer
 - **Create domain-specific tools**: Build separate tools for different data domains (logs, metrics, alerts) rather than one general-purpose tool
+- **Add custom instructions**: Use the custom instructions parameter to guide {{esql}} query generation with domain-specific requirements, such as always including certain fields, applying specific filters, or handling time ranges in a particular way
+- **Set appropriate row limits**: Configure row limits to prevent retrieving excessive data that could exceed context length limits
 
 For general guidance on naming tools and writing effective descriptions, refer to [Custom tools best practices](custom-tools.md#best-practices).
 
@@ -72,7 +81,6 @@ For general guidance on naming tools and writing effective descriptions, refer t
 
 * **Wildcard patterns**: `logs-*`, `metrics-*`, `events-*`
 * **Specific indices**: `products`, `users`, `orders`
-* **System indices**: `.alerts-security-*`, `.ml-anomalies-*`
 
 $$$wildcard-warning$$$
 :::{warning}
