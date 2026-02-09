@@ -18,15 +18,13 @@ stack: preview 9.3
 
 Starting with {{stack}} 9.3, the [API key security model](./security-models.md) for remote cluster connections supports [strong identity verification](./security-models.md#remote-cluster-strong-verification). This adds an extra layer of security by allowing an API key to be used only by requests that present an allowed certificate identity, which the remote cluster validates during authentication.
 
-This document explains how to enable strong identity verification for {{ech}} deployments. It builds on the standard procedure for configuring remote clusters with API key authentication and describes the additional requirements and settings needed. Refer to [Set up remote clusters with {{ech}}](./ec-enable-ccs.md#set-up-remote-clusters-with-ech) for the base procedure.
+This document explains how to enable strong identity verification for {{ech}} deployments. It builds on the standard procedure for configuring remote clusters with API key authentication and describes the additional requirements and settings needed. Refer to [Set up remote clusters with {{ech}}](./ec-enable-ccs.md#set-up-remote-clusters-with-ech) for the base procedures.
 
 ## Configure strong identity verification
 
-To use strong identity verification, both the local and remote clusters must be configured to sign and verify cross-cluster request headers. All settings described in this guide are dynamic and can be configured using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) or as static [`elasticsearch.yml` configuration](/deploy-manage/stack-settings.md#configure-stack-settings).
+To use strong identity verification, both the local and remote clusters must be configured to sign and verify cross-cluster request headers. All settings described in this guide are dynamic and can be configured using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) or as static [`elasticsearch.yml` configuration](/deploy-manage/stack-settings.md#configure-stack-settings) settings.
 
-:::{note}
-This guide assumes that both the local and remote clusters are {{ech}} deployments. If the remote cluster runs in a different environment (for example, {{ece}}, {{eck}}, or a self-managed cluster), follow the same general process and adapt the configuration steps as needed for that deployment type.
-:::
+For a full list of available strong identity verification settings for remote clusters, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-signing-settings).
 
 ### On the local cluster
 
@@ -101,5 +99,3 @@ The certificate and key used by the local cluster to sign cross-cluster requests
   * `"CN=local-cluster.*,O=Example Corp,C=US"` matches any certificate whose DN starts with `CN=local-cluster` and includes `O=Example Corp,C=US`.
   * `"CN=.*.node.<cluster-id>.cluster.*"` matches the {{ecloud}} transport certificates for a given `cluster_id`.
   * `"CN=.*.node.*.cluster.<org-id>"` matches the {{ecloud}} transport certificates for all clusters in a given ECH organization.
-
-For a full list of available strong identity verification settings for remote clusters, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-signing-settings).
