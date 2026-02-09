@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops.html
 applies_to:
   serverless:
-  stack: ga 7.17
+  stack: ga
 products:
   - id: cloud-hosted
   - id: cloud-kubernetes

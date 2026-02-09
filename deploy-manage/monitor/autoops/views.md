@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 7.17
+  stack:
 products:
   - id: cloud-hosted
   - id: cloud-kubernetes
