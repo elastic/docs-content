@@ -26,7 +26,7 @@ You don't always need to restructure a page from scratch to match a template: th
 
 ## How to use
 
-You can work through the guides by hand for a quick health check, or feed them to an LLM for a different kind of leverage. Either way, the guides are designed to be useful in whatever workflow you already have.
+Start by working through the guides manually to get familiar with the content types. Once you're familiar with them, you can use an LLM to apply them at scale.
 
 ### Manually
 
