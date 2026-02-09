@@ -282,7 +282,11 @@ For the container name, use the name of the Beat in lower case. For example `fil
 
 ### Set compute resources for Elastic AutoOps Agent [k8s-compute-resources-autoops-agent]
 
-For Elastic AutoOps Agent objects, the `podTemplate` can be configured as follows:
+```{applies_to}
+  eck: ga 3.3
+```
+
+For `AutoOpsAgentPolicy` resources (Elastic AutoOps Agent), the `podTemplate` can be configured as follows:
 
 ```yaml subs=true
 apiVersion: autoops.k8s.elastic.co/v1alpha1
