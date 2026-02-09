@@ -87,7 +87,7 @@ FROM finance-orders-*
 | STATS total_revenue = SUM(amount) BY quarter
 | LIMIT 5
 ```
-<1> The `?region` parameter gives agents flexibility while keeping the core calculation logic consistent and reliable
+1. The `?region` parameter gives agents flexibility while keeping the core calculation logic consistent and reliable
 :::
 
 ## Best practices

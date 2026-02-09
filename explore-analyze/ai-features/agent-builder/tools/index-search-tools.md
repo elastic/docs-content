@@ -108,8 +108,8 @@ PUT /ecommerce-orders-2025/_mapping
   }
 }
 ```
-<1> Clarify field semantics to prevent incorrect calculations
-<2> Document valid values to help agents generate accurate filter conditions
+1. Clarify field semantics to prevent incorrect calculations
+2. Document valid values to help agents generate accurate filter conditions
 
 ## Best practices
 
