@@ -20,7 +20,7 @@ There are several subtypes of troubleshooting content:
 
 * **A troubleshooting section within a general documentation page**: Use sparingly for brief, contextual troubleshooting tied to a specific feature or quickstart. If content grows beyond a few bullet points, extract it into a dedicated troubleshooting page and link to it.
 
-The rest of this guide focuses on dedicated troubleshooting pages. Generic wayfinding pages and troubleshooting sections within general docs have different structure requirements and may not include all elements described here.
+The rest of this guide focuses on dedicated troubleshooting pages. Generic wayfinding pages and troubleshooting sections within general docs have different structure requirements and might not include all elements described here.
 
 ## What is a troubleshooting page
 
