@@ -194,10 +194,11 @@ steps:
           type: "tags"
 
   - name: create_document
-    type: elasticsearch.index
+    type: elasticsearch.request
     with:
-      index: "reports"
-      document:
+      method: POST
+      path: /reports/_doc
+      body:
         # Preserves the array type, doesn't stringify it
         tags: "${{steps.get_tags.output.hits.hits[0]._source.tags}}"
 ```
