@@ -64,6 +64,8 @@ Transport client is not supported over PrivateLink connections.
 
 ## PrivateLink service names and aliases [ec-private-link-service-names-aliases]
 
+PrivateLink service names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
+
 :::::{applies-switch}
 ::::{applies-item} ess: ga
 PrivateLink Service is set up by Elastic in all supported AWS regions under the following service names:
@@ -156,6 +158,10 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
     Refer to the [AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint) for additional details on creating a VPC interface endpoint to an endpoint service.
 
     Select **PrivateLink Ready partner services** as the endpoint type. Use [the service name for your region](#ec-private-link-service-names-aliases) as the **Service name**.
+
+    :::{tip}
+    Service names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
+    :::
 
     :::{image} /deploy-manage/images/cloud-ec-private-link-service.png
     :alt: PrivateLink
