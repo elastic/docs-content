@@ -1,5 +1,6 @@
 ---
 navigation_title: "ES|QL tools"
+description: "Create custom tools that execute parameterized ES|QL queries for precise data retrieval and analysis."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,9 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-
-
-# {{esql}} tools
+# {{esql}} tools in {{agent-builder}}
 
 {{esql}} query tools enable you to create parameterized queries that execute directly against your {{es}} data. These custom tools provide precise control over data retrieval through templated [{{esql}}](elasticsearch://reference/query-languages/esql.md) statements.
 
