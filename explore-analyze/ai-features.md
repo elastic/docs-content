@@ -21,7 +21,7 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 ## Requirements
 
 - To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
-- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLM is available by default if your license supports it.
+- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
 
 ## AI-powered features on the Elastic platform
 
@@ -35,8 +35,8 @@ To learn more, refer to:
 
 - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md):
 A managed service that runs {{infer}} without the need of deploying a model, or managing infrastructure and resources.
-- [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm.md):
-This connector enables you to use built-in LLMs vetted for GenAI product features across the platform.
+- [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md):
+Built-in LLMs vetted for GenAI product features across the platform.
 - [The {{infer}} API](/explore-analyze/elastic-inference/inference-api.md):
 This general-purpose API enables you to perform {{infer}} operations using EIS, your own models, or third-party services.
 
@@ -75,15 +75,30 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### AI assistant for {{es}}
 
-[](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
+[](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 ### Playground
 
-[Playground](/solutions/search/rag/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
+[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
 
-### Model context protocol
+### Model Context Protocol (MCP) servers
 
-The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
+Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ deployments and Serverless projects, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, you can use the `mcp-elasticsearch` server which has a limited tool set.
+
+#### {{agent-builder}} MCP server
+```{applies_to}
+stack: preview 9.2
+elasticsearch: preview
+```
+Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes all built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
+
+#### {{es}} MCP server
+```{applies_to}
+stack: deprecated 9.2
+serverless: deprecated
+```
+
+If you're running earlier versions of {{es}} without Agent Builder, you can use [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server). This MCP server enables connecting agents to your {{es}} data and allows you to interact with your {{es}} indices through natural language conversations, though with a more limited tool set compared to the Agent Builder MCP server.
 
 ## AI-powered features in {{observability}}
 
@@ -91,7 +106,7 @@ The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI
 
 ### AI assistant for {{observability}}
 
-[](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
+[](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 ### Streams
 
@@ -102,7 +117,7 @@ The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI
 * [Partitioning](/solutions/observability/streams/management/partitioning.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
 * [Advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features, like significant events, use when generating suggestions.
 
-## AI-powered features in {{elastic-sec}}
+## AI-powered features in {{elastic-sec}} [security-features]
 
 {{elastic-sec}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
 

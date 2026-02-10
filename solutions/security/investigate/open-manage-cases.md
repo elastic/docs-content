@@ -91,9 +91,11 @@ From the Cases page, you can search existing cases and filter them by attributes
 
 To explore a case, click on its name. You can then:
 
-* [Review the case summary](/solutions/security/investigate/open-manage-cases.md#cases-summary)
+* [Review the case summary](/solutions/security/investigate/open-manage-cases.md#cases-summary).
 * Modify the case’s description, assignees, category, severity, status, and tags.
-* Add and manage [comments](/solutions/security/investigate/open-manage-cases.md#cases-manage-comments) and [lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization)
+* Add and manage [comments](/solutions/security/investigate/open-manage-cases.md#cases-manage-comments) and [lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization).
+
+    {applies_to}`stack: ga 9.2+` Copy and paste images into case comments using `Ctrl/Cmd` + `C` and `Ctrl/Cmd` + `V` shortcuts. Pasted images are preformatted in Markdown. 
 
     ::::{tip}
     Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](/solutions/images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
@@ -105,9 +107,9 @@ To explore a case, click on its name. You can then:
     * {applies_to}`stack: ga 9.2+` [Events](/solutions/security/investigate/open-manage-cases.md#cases-examine-events) 
     * [Files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
     * [Observables](/solutions/security/investigate/open-manage-cases.md#cases-add-observables)
-* [Manage connectors](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations) and send updates to external systems (if you’ve added a connector to the case)
+* [Manage connectors](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations) and send updates to external systems (if you’ve added a connector to the case).
 * [Copy the case UUID](/solutions/security/investigate/open-manage-cases.md#cases-copy-case-uuid)
-* Refresh the case to retrieve the latest updates
+* Refresh the case to retrieve the latest updates.
 
 
 ### Review the case summary [cases-summary]

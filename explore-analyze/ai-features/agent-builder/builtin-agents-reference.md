@@ -16,7 +16,7 @@ products:
 
 This page lists the built-in agents available in {{agent-builder}}. Built-in agents are pre-configured by Elastic with specific instructions and tools to handle common use cases. 
 
-You cannot modify or delete built-in agents. To customize one, you can clone it and [create a custom agent](agent-builder-agents.md#create-a-new-agent-in-the-gui).
+You cannot modify or delete built-in agents. To customize one, you can clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
 
 ## Availability
 
@@ -58,7 +58,7 @@ serverless:
   security: preview
 ```
 
-A specialized agent for security alert analysis tasks, including alert investigation and security documentation. It helps analysts triage alerts and understand complex security events.
+A specialized agent for security alert analysis tasks, including alert investigation and {{elastic-sec}} documentation. It helps analysts triage alerts and understand complex security events. For more information and example use-cases, refer to [](/solutions/security/ai/agent-builder/agent-builder.md).
 
 
 **Assigned tools:**
@@ -68,5 +68,5 @@ A specialized agent for security alert analysis tasks, including alert investiga
 ## Related pages
 
 - [Agents](agent-builder-agents.md)
-- [Create a custom agent](agent-builder-agents.md#create-a-new-agent-in-the-gui)
+- [Create a custom agent](custom-agents.md#create-a-new-agent)
 - [Built-in tools reference](./tools/builtin-tools-reference.md)

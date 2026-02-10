@@ -39,6 +39,7 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
 
 * Due to a known issue with the {{stack}}, certain upgrade paths to and from version 8.17 are currently blocked or disabled. Review [this KB article](https://support.elastic.co/knowledge/7c3ad709) for more guidance on the known issue. Additionally, review [this KB article](https://support.elastic.co/knowledge/e87d76a5) for detailed information regarding the specific versions affected. 
 
+* Due to a known issue with the {{stack}}, the upgrade path from 9.1.10 to 9.2.4 is unavailable. Refer to [Elasticsearch known issues](elasticsearch://release-notes/known-issues.md#elasticsearch-9.2.4-known-issues) for more information on the underlying issue.
 
 
 ## Security [ec-restrictions-security]
@@ -108,6 +109,8 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
 * Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Workflows using the `elasticsearch.bulk` step might mishandle bulk operations in Elastic Cloud Hosted. Bulk action metadata (such as `index`, `create`, `update`, or `delete`) can be interpreted as document data, which might cause unexpected behavior for bulk operations beyond basic indexing. The workaround is to use a generic Elasticsearch request action in the workflow to call the Bulk API directly instead of using the `elasticsearch.bulk` step. For more information, refer to [Generic request actions](https://www.elastic.co/docs/explore-analyze/workflows/steps/elasticsearch#generic-request-actions). This issue is fixed in Serverless deployments.
+
 
 ## Fleet with network security [ec-restrictions-fleet-network-security]
 
