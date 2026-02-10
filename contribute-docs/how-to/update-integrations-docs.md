@@ -30,6 +30,13 @@ git checkout -b docs-enhancement/my-docs-update
 
 ::::{step} Edit the README source file
 Edit the source file at `packages/{package}/docs/README.md` or `packages/{package}/_dev/build/docs/README.md` .
+
+:::{important}
+Other structures might occur. Most packages use a single README.md. A small minority use a multi-file structure, for example, one file per cloud service or component. 
+
+If your package has multiple docs files, edit the one that corresponds to the content you're updating.
+:::
+
 ::::
 
 ::::{step} Commit and push your changes
