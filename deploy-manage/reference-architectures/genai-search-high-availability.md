@@ -7,7 +7,7 @@ applies_to:
     eck: all
 ---
 
-# Architecture [architecture]
+# GenAI search - High Availability
 
 This reference architecture represents a production-grade, high-availability GenAI Search architecture built on Elasticsearch. It is intended to show physical deployment architecture, logical integration points, and highlight important best practices for enabling a retrieval layer for grounding generative AI responses.
 
