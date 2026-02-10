@@ -13,7 +13,7 @@ navigation_title: Google Cloud Storage
 
 This guide focuses on registering a Google Cloud Storage (GCS) snapshot repository at the {{ece}} (ECE) platform level. Platform-level repositories can be assigned to deployments and are used by ECE to automatically manage snapshots through the `found-snapshots` repository.
 
-If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the {{ech}} guide for [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md), which is also applicable to {{ece}} deployments.
+If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the [{{ech}} guide for Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md), which is also applicable to {{ece}} deployments.
 
 At ECE platform level, snapshots to Google Cloud Storage (GCS) are supported using an [advanced repository configuration](cloud-enterprise.md) and service account credentials that can administer your GCS bucket.
 

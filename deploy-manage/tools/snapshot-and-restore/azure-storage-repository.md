@@ -12,7 +12,7 @@ products:
 
 This guide focuses on registering an Azure snapshot repository at the {{ece}} (ECE) platform level. Platform-level repositories can be assigned to deployments and are used by ECE to automatically manage snapshots through the `found-snapshots` repository.
 
-If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the {{ech}} guide for [Azure Blob Storage](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md), which is also applicable to {{ece}} deployments.
+If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the [{{ech}} guide for Azure Blob Storage](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md), which is also applicable to {{ece}} deployments.
 
 At the ECE platform level, you can enable your {{es}} clusters to regularly snapshot data to Microsoft Azure Storage.
 

@@ -10,7 +10,7 @@ navigation_title: AWS S3
 
 This guide focuses on registering an AWS S3 snapshot repository at the {{ece}} (ECE) platform level. Platform-level repositories can be assigned to deployments and are used by ECE to automatically manage snapshots through the `found-snapshots` repository.
 
-If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the {{ech}} guide for [AWS S3](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md), which is also applicable to {{ece}} deployments.
+If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the [{{ech}} guide for AWS S3](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md), which is also applicable to {{ece}} deployments.
 
 ## Add the AWS S3 repository
 
