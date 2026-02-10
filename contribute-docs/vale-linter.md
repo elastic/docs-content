@@ -65,7 +65,7 @@ powershell -ExecutionPolicy Bypass -File .\install-windows.ps1
 ::::
 
 :::{tip}
-To update the Elastic style guide to the latest rules, rerun the installation script.
+To update the Elastic style guide to the latest rules, rerun the installation script. Alternatively, the [Elastic Docs Utilities](vscode-extension.md) extension automatically checks for style guide updates on activation and offers to update when a new version is available.
 :::
 :::::
 
@@ -92,20 +92,16 @@ The following table lists all the rules included in the [Elastic Vale style pack
 | Rule        | Description |
 |-------------|-------------|
 | [Accessibility](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Accessibility.yml) | Flags ableist language that defines people by their disability. Refer to [Avoid violent, offensive, ableist terminology](./style-guide/accessibility.md#avoid-violent-offensive-ableist-terminology). |
-| [Acronyms](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Acronyms.yml) | Checks that acronyms are defined before being used (unless they're common exceptions). Refer to [Abbreviations and acronyms](./style-guide/grammar-spelling.md#abbreviations-and-acronyms). |
 | [Articles](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Articles.yml) | Ensures correct article usage ("a" vs "an") based on pronunciation, not spelling. Refer to [Using the right article](./style-guide/grammar-spelling.md#using-the-right-article). |
 | [BritishSpellings](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/BritishSpellings.yml) | Suggests American English spellings instead of British English variants. Refer to [American English](./style-guide/grammar-spelling.md#american-english). |
-| [Capitalization](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Capitalization.yml) | Checks that headings use sentence-style capitalization. Refer to [Capitalization](./style-guide/grammar-spelling.md#capitalization). |
 | [ConflictMarkers](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/ConflictMarkers.yml) | Detects Git merge conflict markers in source code. |
 | [DeviceAgnosticism](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/DeviceAgnosticism.yml) | Suggests device-agnostic language (for example, "select" instead of "tap"). Refer to [Use device-agnostic language](./style-guide/accessibility.md#accessibility-guidelines). |
 | [Dimensions](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Dimensions.yml) | Suggests using "MxN" format instead of "M X N" for dimensions. Refer to [Dimensions](./style-guide/formatting.md#dimensions). |
 | [DontUse](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/DontUse.yml) | Flags words and phrases that shouldn't be used (for example, "please", "just", "aka"). Refer to [Word choice](./style-guide/word-choice.md). |
 | [Ellipses](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Ellipses.yml) | Discourages the use of ellipses. Refer to [Write like a minimalist](./style-guide/voice-tone.md#write-like-a-minimalist). |
-| [EmDashes](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/EmDashes.yml) | Checks that em dashes don't have spaces before or after. Refer to [Em dashes](./style-guide/grammar-spelling.md#em-dashes). |
 | [EndPuntuaction](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/EndPuntuaction.yml) | Flags headings that end with punctuation. Refer to [Capitalization](./style-guide/grammar-spelling.md#capitalization). |
 | [Exclamation](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Exclamation.yml) | Encourages sparing use of exclamation points. Refer to [Tone](./style-guide/voice-tone.md#tone). |
 | [FirstPerson](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/FirstPerson.yml) | Discourages first-person pronouns (I, me, my, mine). Refer to [Use singular first-person pronouns sparingly](./style-guide/grammar-spelling.md#use-singular-first-person-pronouns-sparingly-i-me-my-mine). |
-| [FutureTense](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/FutureTense.yml) | Encourages writing in present tense instead of future tense. Refer to [Verb tense](./style-guide/grammar-spelling.md#verb-tense). |
 | [Gender](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Gender.yml) | Flags gender-specific compound pronouns like "he/she" or "s/he". Refer to [Use gender-neutral language](./style-guide/accessibility.md#use-gender-neutral-language). |
 | [GenderBias](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/GenderBias.yml) | Suggests gender-neutral alternatives for gendered terms. Refer to [Use gender-neutral language](./style-guide/accessibility.md#use-gender-neutral-language). |
 | [HeadingColons](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/HeadingColons.yml) | Checks that text after colons in headings is capitalized. Refer to [Colons](./style-guide/grammar-spelling.md#colons). |

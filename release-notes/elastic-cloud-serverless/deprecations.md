@@ -9,8 +9,12 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+## February 2, 2026 [elastic-cloud-serverless-02022026-deprecations]
+* Removes the URL limit from {{kib}} and deprecates the `storeInSessionStorage` setting. For more information, refer to [#242972]({{kib-pull}}242972).
+* Removes the `--stats` flag on `build_api_docs`. For more information, refer to [#249305]({{kib-pull}}249305).
+
 ## January 5, 2026 [elastic-cloud-serverless-01052026-deprecations]
-* Removes the {{kib}} user from root group. For more information, refer to [#244798]({{kib-pull}}244798).
+* Removes the {{kib}} user from the root group. For more information, refer to [#244798]({{kib-pull}}244798).
 
 ## November 24, 2025 [elastic-cloud-serverless-11242025-deprecations]
 * Shows a callout for deprecated, in-use ILM policies. For more information, check [#243416]({{kib-pull}}243416).

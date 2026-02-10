@@ -5,7 +5,6 @@ toc:
     children:
       - file: search/get-started.md
         children:
-          - file: search/search-connection-details.md
           - file: search/get-started/quickstarts.md
             children:
               - file: search/get-started/index-basics.md
@@ -19,15 +18,15 @@ toc:
           - file: search/full-text.md
             children:
               - file: search/full-text/how-full-text-works.md
-              - file: search/full-text/search-with-synonyms.md
-                children:
-                  - file: search/full-text/create-update-synonyms-api-example.md
               - file: search/full-text/text-analysis-during-search.md
               - file: search/full-text/search-relevance.md
                 children:
                   - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
                   - file: search/full-text/search-relevance/consistent-scoring.md
                   - file: search/full-text/search-relevance/static-scoring-signals.md
+              - file: search/full-text/search-with-synonyms.md
+                children:
+                  - file: search/full-text/create-update-synonyms-api-example.md
           - file: search/ai-search/ai-search.md
             children:
               - file: search/vector.md
@@ -62,45 +61,29 @@ toc:
           - file: search/esql-for-search.md
           - file: search/retrievers-overview.md
           - file: search/search-templates.md
-      - file: search/elastic-agent-builder.md
-        children:
-          - file: search/agent-builder/get-started.md
-          - file: search/agent-builder/models.md
-          - file: search/agent-builder/chat.md
-          - file: search/agent-builder/agent-builder-agents.md
-          - file: search/agent-builder/tools.md
-            children:
-              - file: search/agent-builder/tools/esql-tools.md
-              - file: search/agent-builder/tools/index-search-tools.md
-          - file: search/agent-builder/programmatic-access.md
-            children:
-              - file: search/agent-builder/kibana-api.md
-              - file: search/agent-builder/a2a-server.md
-              - file: search/agent-builder/mcp-server.md
-          - file: search/agent-builder/monitor-usage.md
-          - file: search/agent-builder/permissions.md
-          - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
-        children:
-          - file: search/rag/playground.md
-            children:
-              - file: search/rag/playground-context.md
-              - file: search/rag/playground-query.md
-              - file: search/rag/playground-troubleshooting.md
-          - file: search/mcp.md
       - file: search/site-or-app.md
         children:
           - file: search/site-or-app/clients.md
           - file: search/site-or-app/search-ui.md
-          - file: search/search-applications.md
-            children:
-              - file: search/search-applications/search-application-api.md
-              - file: search/search-applications/search-application-security.md
-              - file: search/search-applications/search-application-client.md
-
       - file: search/apis-and-tools.md
-      - file: search/ai-assistant.md
-      - file: search/query-rules-ui.md
+  - file: elasticsearch-solution-project.md
+    children:
+      - file: elasticsearch-solution-project/get-started.md
+        children:
+          - file: elasticsearch-solution-project/search-connection-details.md
+      - file: elasticsearch-solution-project/playground.md
+        children:
+          - file: elasticsearch-solution-project/playground-context.md
+          - file: elasticsearch-solution-project/playground-query.md
+          - file: elasticsearch-solution-project/playground-troubleshooting.md
+      - file: elasticsearch-solution-project/ai-assistant.md
+      - file: elasticsearch-solution-project/query-rules-ui.md
+      - file: elasticsearch-solution-project/search-applications.md
+        children:
+          - file: elasticsearch-solution-project/search-applications/search-application-api.md
+          - file: elasticsearch-solution-project/search-applications/search-application-security.md
+          - file: elasticsearch-solution-project/search-applications/search-application-client.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -170,6 +153,7 @@ toc:
                     children:
                       - file: upstream-opentelemetry-collectors-language-sdks.md
                       - file: collect-metrics.md
+                      - file: create-apm-agent-key-for-edot-sdks.md
                       - file: edot-sdks-central-configuration.md
                       - file: limitations.md
                       - file: attributes.md
@@ -441,6 +425,8 @@ toc:
           - file: observability/infra-and-hosts/tutorial-observe-nginx-instances.md
             children:
               - file: observability/infra-and-hosts/understanding-no-results-found-message.md
+          - file: observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md
+          - file: observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md
       - file: observability/logs.md
         children:
           - file: observability/logs/get-started-with-system-logs.md
@@ -469,10 +455,15 @@ toc:
         - file: observability/streams/management/retention.md
         - file: observability/streams/management/extract.md
           children:
+            - file: observability/streams/management/extract/drop.md
+            - file: observability/streams/management/extract/remove.md
             - file: observability/streams/management/extract/date.md
+            - file: observability/streams/management/extract/convert.md
+            - file: observability/streams/management/extract/replace.md
             - file: observability/streams/management/extract/dissect.md
             - file: observability/streams/management/extract/grok.md
             - file: observability/streams/management/extract/set.md
+            - file: observability/streams/management/extract/math.md
             - file: observability/streams/management/extract/rename.md
             - file: observability/streams/management/extract/append.md
             - file: observability/streams/management/extract/manual-pipeline-configuration.md
@@ -522,9 +513,11 @@ toc:
               - file: observability/incident-management/create-an-slo.md
               - file: observability/incident-management/slo-management.md
       - file: observability/data-set-quality-monitoring.md
-      - file: observability/observability-ai-assistant.md
+      - file: observability/ai/observability-ai.md
         children:
-          - file: observability/llm-performance-matrix.md
+          - file: observability/ai/observability-ai-assistant.md
+          - file: observability/ai/agent-builder-observability.md
+          - file: observability/ai/llm-performance-matrix.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
@@ -566,6 +559,7 @@ toc:
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
+          - file: security/ai/agent-builder/agent-builder.md
           - file: security/ai/attack-discovery.md
           - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
@@ -577,6 +571,7 @@ toc:
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/detections-requirements.md
+          - file: security/detect-and-alert/detections-privileges.md
           - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/about-detection-rules.md
           - file: security/detect-and-alert/create-detection-rule.md
@@ -684,21 +679,27 @@ toc:
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
+          - file: security/cloud/d4c/d4c-overview.md
+            children:
+              - file: security/cloud/d4c/get-started-with-d4c.md
+              - file: security/cloud/d4c/d4c-policies.md
+              - file: security/cloud/d4c/kubernetes-dashboard.md
       - file: security/integrations/ingest-third-party-security-data.md
         children:
-          - file: security/integrations/cncf-falco.md
-          - file: security/integrations/aws-sec-hub.md
-          - file: security/integrations/aws-security-hub-cspm.md
-          - file: security/integrations/wiz.md
-          - file: security/integrations/qualys.md
-          - file: security/integrations/tenablevm.md
-          - file: security/integrations/rapid7.md
           - file: security/integrations/aws-config.md
           - file: security/integrations/aws-inspector.md
+          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/aws-security-hub-cspm.md
+          - file: security/integrations/cncf-falco.md
+          - file: security/integrations/google-security-command-center.md
           - file: security/integrations/microsoft-defender-for-cloud.md
           - file: security/integrations/microsoft-defender-for-endpoint.md
           - file: security/integrations/microsoft-defender-xdr.md
-          - file: security/integrations/google-security-command-center.md
+          - file: security/integrations/prisma-cloud.md
+          - file: security/integrations/qualys.md
+          - file: security/integrations/rapid7.md
+          - file: security/integrations/tenablevm.md
+          - file: security/integrations/wiz.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md
@@ -727,6 +728,7 @@ toc:
           - file: security/dashboards/overview-dashboard.md
           - file: security/dashboards/detection-response-dashboard.md
           - file: security/dashboards/cloud-security-posture-dashboard.md
+          - file: security/dashboards/kubernetes-dashboard.md
           - file: security/dashboards/entity-analytics-dashboard.md
           - file: security/dashboards/data-quality-dashboard.md
           - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
@@ -763,4 +765,5 @@ toc:
               - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
               - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
       - file: security/asset-management.md
+      - file: security/security-serverless-feature-tiers.md
       - file: security/apis.md
