@@ -200,7 +200,8 @@ Example (adding batch size limits to a cluster-stats metrics pipeline using the 
 processors:
   batch/metrics:
     timeout: 1s
-    send_batch_max_size: 2048 # Maximum number of items per batch sent to the next component. Use with timeout to control when batches are sent.
+    send_batch_size: 8192 # Send when this many items are ready (default: 8192). Must be <= send_batch_max_size.
+    send_batch_max_size: 8192 # Maximum number of items per batch sent to the next component. Use with timeout to control when batches are sent.
 
 service:
   pipelines:
