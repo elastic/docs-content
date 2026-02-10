@@ -20,15 +20,15 @@ Pie charts work best when:
 
 * You have a **maximum of 6 slices**. More slices make the chart difficult to read.
 * Values are around **25%, 50%, or 75%**. These proportions are easy to perceive accurately.
-* One category is **significantly larger** than the others
-* You want to show **part-to-whole relationships** at a glance
+* One category is **significantly larger** than the others.
+* You want to show **part-to-whole relationships** at a glance.
 
 Consider using [bar charts](bar-charts.md) instead when:
 
-* You need to **compare** the exact size of slices
-* You have **more than 6 categories**
+* You need to **compare** the exact size of slices.
+* You have **more than 6 categories**.
 * You need to compare **multiple data sets**. Use part-to-whole bar charts with percentages instead.
-* Your data includes **negative values**
+* Your data includes **negative values**.
 
 ## Build a pie chart
 
@@ -81,7 +81,7 @@ Refer to [Pie chart settings](#pie-chart-settings) to find all configuration opt
 
 :::::{step} Save the chart
 - If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and offers you to add the visualization to a dashboard and to the Visualize library.
+- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
 :::::
 
 ::::::
@@ -148,7 +148,7 @@ When you have many categories with small values, you can group them into an "Oth
 4. Enable **Group other values as "Other"** to combine remaining values into a single slice.
 
 :::{tip}
-Be careful when using "Other" as it could end up being the largest category, which might obscure the meaning of your chart. Consider whether a bar chart might be more appropriate for data with many categories.
+Be careful when using "Other", as it could end up being the largest category, which might obscure the meaning of your chart. Consider whether a bar chart might be more appropriate for data with many categories.
 :::
 
 #### Example: Top hosts with remaining grouped as "Other"

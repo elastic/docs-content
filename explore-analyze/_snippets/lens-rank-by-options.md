@@ -4,4 +4,4 @@
   - **Rarity**: Find terms that appear in very few documents, using a [rare terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-rare-terms-aggregation.md). You can configure the **Max doc count** to set the maximum number of documents a term can appear in to be considered rare (default: 1, max: 100). Only available for non-numeric fields and single-field terms.
   - **Significance**: Find statistically unusual terms compared to the overall data set, using a [significant terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-significantterms-aggregation.md). Only available for `keyword` fields and single-field terms.
   - **Custom**: Define a custom metric aggregation to rank by (for example, rank by the sum of a numeric field rather than by count).
-- **Rank direction**: Ascending or descending order. Disabled when **Rank by** is set to **Rarity** and **Significance**.
+- **Rank direction**: Ascending or descending order. Disabled when **Rank by** is set to **Rarity** or **Significance**.
