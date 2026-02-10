@@ -688,7 +688,7 @@ toc:
         children:
           - file: security/integrations/aws-config.md
           - file: security/integrations/aws-inspector.md
-          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/aws-sec-hub.md
           - file: security/integrations/aws-security-hub-cspm.md
           - file: security/integrations/cncf-falco.md
           - file: security/integrations/google-security-command-center.md
