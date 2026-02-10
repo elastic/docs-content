@@ -65,9 +65,9 @@ When an agent calls an index search tool:
 
 To help agents make better decisions during the source selection phase, you can optimize your index metadata and tool configurations.
 
-## Optimize with metadata
+## Add index metadata to improve agent search
 
-You can add metadata to your index mappings to help agents make better decisions. Index-level [`_meta.description`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-meta-field.md) helps agents select the appropriate indices, while [field-level `meta`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-field-meta.md) helps agents generate better {{esql}} queries.
+You can add metadata to your index mappings to help agents make better decisions. Index-level [`_meta.description`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-meta-field.md) helps agents select the appropriate indices.
 
 #### Example: Add index-level metadata
 
@@ -88,33 +88,9 @@ PUT /ecommerce-orders-2025/_mapping
 1. Include usage guidance, limitations, relationships, and field semantics in the description
 2. Example of fields that might need semantic clarification in the description
 
-#### Example: Add field-level metadata
-
-```console
-PUT /ecommerce-orders-2025/_mapping
-{
-  "properties": {
-    "total_amount": {
-      "type": "double",
-      "meta": {
-        "description": "Total order amount including tax. For pre-tax calculations, use the subtotal field instead." <1>
-      }
-    },
-    "status": {
-      "type": "keyword",
-      "meta": {
-        "description": "Order status. Valid values: pending, processing, shipped, delivered, cancelled." <2>
-      }
-    }
-  }
-}
-```
-1. Clarify field semantics to prevent incorrect calculations
-2. Document valid values to help agents generate accurate filter conditions
-
 ## Best practices
 
-- **Add index [metadata](#optimize-with-metadata) descriptions**: Include `_meta.description` fields in your index mappings:
+- **Add index [metadata](#add-index-metadata-to-improve-agent-search) descriptions**: Include `_meta.description` fields in your index mappings:
   - Explain what entities or events the index covers
   - Note what types of questions it can answer
   - Document how fields link to other indices

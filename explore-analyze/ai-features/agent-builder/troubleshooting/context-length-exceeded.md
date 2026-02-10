@@ -70,7 +70,7 @@ There are a few quick fixes you can try to mitigate this issue, or you can creat
 ### Quick fixes
 
 - **Write more targeted prompts**: Narrow your chat questions to reduce the scope of data retrieval. Specific questions retrieve less data than exploratory questions.
-- **Add index metadata descriptions**: Help agents select more appropriate indices by adding [`_meta.description` fields](../tools/index-search-tools.md#optimize-with-metadata) to your index mappings.
+- **Add index metadata descriptions**: Help agents select more appropriate indices by adding [`_meta.description` fields](../tools/index-search-tools.md#add-index-metadata-to-improve-agent-search) to your index mappings.
 - **Start a new conversation**: If you've been working in a long conversation, begin a fresh one. You can optionally provide a brief summary of relevant context from the previous conversation.
 - **Switch to a model with a larger context window**: Some LLMs support larger context windows that can accommodate bigger tool responses. Refer to [](../models.md) for options.
 
