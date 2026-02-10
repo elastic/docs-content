@@ -76,6 +76,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adjusts panel height in Discover for improved layout [#250778]({{kib-pull}}250778)
 * Fixes an issue where metrics grid titles were not updated when the column order changed [#250963]({{kib-pull}}250963)
 * Fixes server-side search in the user prompts API [#250882]({{kib-pull}}250882)
+* Fixes incorrect handling of action metadata in Workflows `elasticsearch.bulk` steps, ensuring proper support for all bulk operation types [#249771]({{kib-pull}}249771)
 * Fixes an infinite loop in {{esql}} Analyzer when subqueries reference indices with empty mappings [#141371]({{es-pull}}141371)
 * Fixes {{esql}} to use standard logic for conflicting metric types in time-series data, preserving the original type information [#141496]({{es-pull}}141496)
 * Appends an implicit limit to {{esql}} subqueries with an unbounded sort for consistent behavior [#141025]({{es-pull}}141025)
