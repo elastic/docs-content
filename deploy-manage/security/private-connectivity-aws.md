@@ -64,7 +64,7 @@ Transport client is not supported over PrivateLink connections.
 
 ## PrivateLink service names and aliases [ec-private-link-service-names-aliases]
 
-PrivateLink service names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
+Some metadata might differ between {{ech}} and {{serverless-full}}, even if the region is the same.
 
 :::::{applies-switch}
 ::::{applies-item} ess: ga
@@ -159,10 +159,6 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
 
     Select **PrivateLink Ready partner services** as the endpoint type. Use [the service name for your region](#ec-private-link-service-names-aliases) as the **Service name**.
 
-    :::{tip}
-    Service names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
-    :::
-
     :::{image} /deploy-manage/images/cloud-ec-private-link-service.png
     :alt: PrivateLink
     :screenshot:
@@ -184,9 +180,13 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
         
         For {{serverless-full}}, to view the service metadata for your selected region, start to [create a new private connection policy](#ec-add-vpc-elastic) for the region and find the **Domain name** in the **Service metadata** dropdown.
         
-        For example, in `us-east-1`, use `vpce.us-east-1.aws.elastic-cloud.com` as the zone domain name. 
+        For example, for {{ech}} deployments in `us-east-1`, use `vpce.us-east-1.aws.elastic-cloud.com` as the zone domain name. For {{serverless-full}} deployments in the same region, use `private.us-east-1.aws.elastic-cloud.com`.
         
         Don’t forget to associate the zone with your VPC.
+
+        :::{tip}
+        Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
+        :::
 
         :::{image} /deploy-manage/images/cloud-ec-private-link-private-hosted-zone-example.png
         :alt: Private hosted zone example
@@ -207,6 +207,10 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
 After you create your VPC endpoint and DNS entries, check that you are able to reach your deployment or project over PrivateLink.
 
 :::{include} _snippets/private-url-struct.md
+:::
+
+:::{tip}
+Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
 :::
 
 To test the connection:
@@ -234,7 +238,7 @@ To test the connection:
     $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
     :::
-    ::: {applies_item} serverless: ga
+    ::: {applies-item} serverless: ga
     ```sh
     $ curl -v https://my-project-d53192.es.private.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
@@ -355,6 +359,10 @@ Use the alias you’ve set up as CNAME DNS record to access your resource.
 :::{include} _snippets/private-url-struct.md
 :::
 
+:::{tip}
+Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
+:::
+
 To access the deployment or project:
 
 1. If needed, find the endpoint of an application in your deployment or project:
@@ -380,7 +388,7 @@ To access the deployment or project:
     $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
     :::
-    ::: {applies_item} serverless: ga
+    :::{applies-item} serverless: ga
     ```sh
     $ curl -v https://my-project-d53192.es.private.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
