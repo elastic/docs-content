@@ -16,18 +16,37 @@ products:
 If the operating system's default `vm.max_map_count` value is `1048576` or higher, no configuration change is necessary. If the default value is lower than `1048576`, configure the `vm.max_map_count` parameter to `1048576`.
 :::
 
-On Linux, you can increase the limits by running the following command as `root`:
 
-```sh
-sysctl -w vm.max_map_count=1048576
-```
+On Linux, you can increase the limits of the `vm.max_map_count` parameter by following these steps as an account with `root` privileges: 
 
-To set this value permanently, update the `vm.max_map_count` setting in `/etc/sysctl.conf`.
+1. Check the existing settings by searching for any existing configuration files under `/etc/sysctl.d/` that include the `vm.max_map_count` parameter:
 
-For systemd-based Linux systems, the `sysctl` load order can override a value set only in `/etc/sysctl.conf`. To make the setting permanent in those systems, you must also add a new conf file under `/etc/sysctl.d/` and include the the `vm.max_map_count=1048576` setting.
+    ```
+    grep -r vm.max_map_count /etc/sysctl.d/
+    ```
+   
+1. Update or create a configuration file:
+    * If the parameter already exists in a file under `/etc/sysctl.d/`, update its value to `1048576`:
+        ```sh
+        sysctl -w vm.max_map_count=1048576
+        ```
+    * If it does not exist, create a new conf file named `/etc/sysctl.d/99-elasticsearch.conf` which includes the following:
+        ```
+        vm.max_map_count=1048576
+        ```
+1. To apply the changes without rebooting, run the following command:
+    ```sh
+    sudo sysctl --system
+    ```
 
 
-To verify after rebooting, run:
+:::{note}
+On systemd-based systems, the {{es}} package might install `/usr/lib/sysctl.d/elasticsearch.conf` with a lower value such as `262144`. A file with the same name under `/etc/sysctl.d/` takes precedence, so creating `/etc/sysctl.d/99-elasticsearch.conf` is a valid option to permanently set the value of `vm.max_map_count` to `1048576`. Do not edit files under `/usr/lib/sysctl.d/` directly, as they are managed by the package and may be overwritten on upgrade.
+:::
+
+
+
+To confirm the setting is active, run:
 
 ```sh
 sysctl vm.max_map_count
