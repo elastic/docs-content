@@ -164,11 +164,25 @@ toc:
           - file: scripting/painless-syntax-context-bridge.md
           - file: scripting/modules-scripting-security.md
           - file: scripting/painless-lab.md
+          - file: scripting/painless-debugging.md
+            children:
+              - file: scripting/painless-array-list-manipulation-errors.md
+              - file: scripting/painless-date-math-errors.md
+              - file: scripting/painless-field-not-found.md
+              - file: scripting/painless-ingest-pipeline-failures.md
+              - file: scripting/painless-null-pointer-exceptions.md
+              - file: scripting/painless-regex-pattern-matching-failures.md
+              - file: scripting/painless-runtime-field-exceptions.md
+              - file: scripting/painless-sandbox-limitations.md
+              - file: scripting/painless-script-score-calculation-errors.md
+              - file: scripting/painless-subfield-access.md
+              - file: scripting/painless-type-casting-issues.md
       - file: scripting/modules-scripting-expression.md
       - file: scripting/modules-scripting-engine.md
   - file: cross-cluster-search.md
     children:
       - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
+  - hidden: cross-project-search.md
   - file: ai-features.md
     children:
       - file: ai-features/elastic-agent-builder.md

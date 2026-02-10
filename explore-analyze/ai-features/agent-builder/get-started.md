@@ -1,6 +1,6 @@
 ---
-description: Learn how to get started with Elastic Agent Builder
 navigation_title: "Get started"
+description: "Learn how to enable Elastic Agent Builder, ingest data, and start chatting with AI agents."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -18,10 +18,8 @@ To start using {{agent-builder}} you need an {{es}} deployment. If you don't alr
 
 For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
 
-::::{admonition} Agent Builder subscription requirements
-- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
-- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** [feature tier](/solutions/security/security-serverless-feature-tiers.md).
-- {{obs-serverless}} and {{es-serverless}} users: the **Complete** [feature tier](/solutions/observability/observability-serverless-feature-tiers.md).
+::::{admonition}
+This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 ::::::{stepper}
@@ -73,7 +71,7 @@ To learn about required privileges for {{agent-builder}}, refer to [Permissions 
 
 :::::
 
-::::{step} Ingest some data
+::::{step} Ingest data into Elasticsearch
 
 Before you begin with agents, you need some data in {{es}}. Otherwise, you will be chatting to the underlying LLM without any retrieval-augmented context.
 
@@ -90,7 +88,7 @@ If you're not ready to add your own data, you can:
 
 ::::
 
-::::{step} Begin chatting
+::::{step} Start a conversation
 
 The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. {{agent-builder}} includes a default agent named `Elastic AI Agent` with access to all built-in tools, so you can begin chatting immediately.
 
