@@ -6,6 +6,11 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Run {{kib}} in production

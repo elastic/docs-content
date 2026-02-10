@@ -2,8 +2,7 @@
 applies_to:
   serverless:
 products:
-  - id: cloud-serverless
-navigation_title: Search Tier view
+  - id: cloud-serverlessnavigation_title: Search Tier view
 ---
 
 # Search Tier view in AutoOps for {{serverless-short}}

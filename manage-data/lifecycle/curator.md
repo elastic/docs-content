@@ -3,6 +3,8 @@ navigation_title: Curator
 applies_to:
   stack: ga
   serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
 # Elasticsearch Curator

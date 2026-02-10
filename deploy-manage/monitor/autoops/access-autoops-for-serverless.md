@@ -2,8 +2,7 @@
 applies_to:
   serverless:
 products:
-  - id: cloud-serverless
-navigation_title: Access AutoOps in your project
+  - id: cloud-serverlessnavigation_title: Access AutoOps in your project
 ---
 
 # How to access AutoOps in your {{serverless-short}} project

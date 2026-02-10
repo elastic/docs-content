@@ -1,3 +1,13 @@
+---
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-serverless
+  - id: elastic-stack
+---
 
 # Detailed deployment comparison
 

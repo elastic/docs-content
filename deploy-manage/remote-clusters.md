@@ -6,6 +6,11 @@ applies_to:
     ess: ga
     self: ga
   serverless: unavailable
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Remote clusters [remote-clusters]

@@ -3,9 +3,9 @@ applies_to:
   stack:
 products:
   - id: cloud-hosted
-  - id: cloud-kubernetes
   - id: cloud-enterprise
-navigation_title: Views
+  - id: cloud-kubernetes
+  - id: elasticsearchnavigation_title: Views
 ---
 
 # AutoOps views
