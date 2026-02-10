@@ -17,9 +17,9 @@ products:
 Familiarity with {{ech}}, {{es}}, and {{ls}} is helpful, but not required. 
 
 :::{admonition} Basic migration
-This guide focuses on a basic data migration scenario for moving static data from an {{ech}} deployment to a {{serverless-full}} project. 
+This guide focuses on a basic data migration scenario for moving static data from an {{ech}} deployment to a {{serverless-full}} project. The steps can also be adapted for other scenarios, such as when the source cluster is managed by {{eck}}, or when migrating across other deployment types including self-managed, {{ech}}, {{ece}}, or {{eck}}.
 
-The Elasticsearch input plugin offers [additional configuration options](#additional-config) that can support more advanced use cases and migrations. More information about those options is available near the end of this topic. 
+The {{es}} input plugin also offers [additional configuration options](#additional-config) that can support more advanced use cases and migrations. More information about those options is available near the end of this topic.
 :::
 
 ## Prerequisites [migrate-prereqs]
