@@ -83,8 +83,8 @@ defaults:
      - source: "Release Status"
      - source: "Stack Version"
 #
- outputs:
-#   # Each entry generates one CSV file.
+outputs:
+   # Each entry generates one CSV file.
 #
    - filename: "chat-models.csv"
 #     # Inherits columns, directory, delimiter from defaults
