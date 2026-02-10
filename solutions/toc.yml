@@ -513,9 +513,11 @@ toc:
               - file: observability/incident-management/create-an-slo.md
               - file: observability/incident-management/slo-management.md
       - file: observability/data-set-quality-monitoring.md
-      - file: observability/observability-ai-assistant.md
+      - file: observability/ai/observability-ai.md
         children:
-          - file: observability/llm-performance-matrix.md
+          - file: observability/ai/observability-ai-assistant.md
+          - file: observability/ai/agent-builder-observability.md
+          - file: observability/ai/llm-performance-matrix.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
@@ -557,6 +559,7 @@ toc:
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
+          - file: security/ai/agent-builder/agent-builder.md
           - file: security/ai/attack-discovery.md
           - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
@@ -568,6 +571,7 @@ toc:
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/detections-requirements.md
+          - file: security/detect-and-alert/detections-privileges.md
           - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/about-detection-rules.md
           - file: security/detect-and-alert/create-detection-rule.md
