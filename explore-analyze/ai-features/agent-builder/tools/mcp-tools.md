@@ -1,5 +1,6 @@
 ---
 navigation_title: "MCP tools"
+description: "Connect to external MCP servers to enable agents to use remote tools and services."
 applies_to:
   stack: preview 9.3+
   serverless:
@@ -14,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Model Context Protocol (MCP) tools
+# Model Context Protocol (MCP) tools in {{agent-builder}}
 
 Agent Builder MCP tools enable calling a remote [MCP server's](https://modelcontextprotocol.io/docs/learn/server-concepts) tools in your agent [chat](../chat.md). When your agent calls an MCP tool, it executes the associated tool on the MCP server and returns its result.
 
