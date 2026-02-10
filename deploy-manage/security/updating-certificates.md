@@ -37,7 +37,7 @@ You might need to update your TLS certificates in the following scenarios:
   ```
   ::::
   
-## Update certficate files [update-node-certs-update]
+## Update certificate files [update-node-certs-update]
 
 Before updating certificates, you will need to determine which scenario applies to your Certificate Authority (CA):
 
@@ -64,7 +64,7 @@ You must complete a rolling restart if you modify any of the following:
 * passwords for the certificate keys 
 * passwords stored in the [keystore secure settings](secure-settings.md) 
 
-### Automatically apply keystore [update-node-certs-apply-keystore]
+### Automatic reload of certificates [update-node-certs-apply-keystore]
 
 To do an in-place update, copy the new certificate and key files (or keystore) into the {{es}} [configuration directory](/deploy-manage/deploy/self-managed/configure-elasticsearch.md). To use this method you must use the same file names. {{es}} monitors the SSL resources for updates on a five-second interval and will automatically detect changes and reload the keys and certificates. 
 
