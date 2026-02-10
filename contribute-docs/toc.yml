@@ -16,6 +16,7 @@ toc:
       - file: index.md
       - file: good-issues.md
       - file: seo.md
+      - file: update-integrations-docs.md
       - folder: cumulative-docs
         children:
           - file: index.md

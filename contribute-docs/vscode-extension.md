@@ -49,6 +49,18 @@ The extension also provides autocompletion for inline roles like `{icon}`, `{kbd
 
 The extension validates your frontmatter fields against the schema and provides real-time syntax validation for directives, showing red underlines and hover cards when it detects errors. It also warns you when you're using literal values that should be replaced with substitution variables, helping maintain consistency across your documentation.
 
+### docs-builder update checker
+
+When the extension activates, it checks whether [docs-builder](locally.md) is installed and up to date. If docs-builder is not installed, a warning popup links to the [installation documentation](locally.md). If an update is available, the extension offers to install the latest version directly from the integrated terminal.
+
+You can also check for updates manually by running **Elastic Docs: Check for docs-builder Updates** from the command palette.
+
+### Vale style guide update checker
+
+The extension checks whether the locally installed [Elastic Vale style guide](vale-linter.md) is up to date by comparing it against the latest release on GitHub. If a later version is available, a notification offers to update the rules automatically by running the appropriate install script for your operating system.
+
+You can also check for updates manually by running **Elastic Docs: Check for Vale Style Guide Updates** from the command palette. Refer to the [Vale style checker](vale-linter.md) page for more information about the style rules and how to install Vale locally.
+
 ### Tooltips
 
 Hover over existing `{{variable}}` references to see their full values and mutation transformations. When variables use mutation operators, you can view step-by-step transformation results in the preview.
@@ -69,4 +81,7 @@ When the extension detects a literal value that should be replaced, you can:
 
 The extension automatically replaces the literal text with the correct substitution variable syntax. This helps maintain consistency across your documentation and makes it easier to update product names and other values globally.
 
+## Report issues or contribute
+
+The Elastic Docs Utilities extension is open source. You can report issues, submit pull requests, and collaborate on the [elastic-docs-vscode](https://github.com/elastic/elastic-docs-vscode) GitHub repository.
 
