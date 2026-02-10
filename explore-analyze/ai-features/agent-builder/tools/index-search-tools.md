@@ -89,7 +89,7 @@ PUT /ecommerce-orders-2025/_mapping
 2. Example of fields that might need semantic clarification in the description
 
 :::{important}
-Keep descriptions concise (a few sentences) to avoid [context overflow](../troubleshooting/context-length-exceeded.md). The agent processes metadata for up to 100 indices per type (indices, aliases, data streams), and overly verbose descriptions can consume significant context.
+Keep descriptions concise (a few sentences) to avoid [context overflow](../troubleshooting/context-length-exceeded.md).
 :::
 
 ## Best practices
