@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
-    serverless: ga
+  serverless: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless
