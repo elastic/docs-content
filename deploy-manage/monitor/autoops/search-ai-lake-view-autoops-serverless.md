@@ -1,8 +1,9 @@
 ---
 applies_to:
   serverless:
+navigation_title: Search AI Lake view
 products:
-  - id: cloud-serverlessnavigation_title: Search AI Lake view
+  - id: cloud-serverless
 ---
 
 # Search AI Lake view in AutoOps for {{serverless-short}}

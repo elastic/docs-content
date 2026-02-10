@@ -5,7 +5,8 @@ products:
   - id: cloud-hosted
   - id: cloud-enterprise
   - id: cloud-kubernetes
-  - id: elasticsearchnavigation_title: Views
+  - id: elasticsearch
+navigation_title: Views
 ---
 
 # AutoOps views
