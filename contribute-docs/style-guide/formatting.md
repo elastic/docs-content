@@ -13,6 +13,67 @@ Enter a single line break between two elements, for example, between the end of 
 
 Use a single line break to control the spacing between paragraphs. In general, try to keep paragraphs short so users aren't overwhelmed with lengthy blocks of text. This is even more imperative if a user is on a mobile device. If your paragraph is more than seven lines, consider dividing it into two paragraphs.   
 
+## Admonitions 
+
+Admonitions allow you to highlight important information with varying levels of priority. Use these blocks to emphasize risks, provide helpful advice, or share relevant details. 
+
+These are the available admonition types: 
+* Note
+* Warning
+* Tip
+* Important
+
+Follow these general guidelines for using admonitions: 
+
+* Don't use too many admonitions on a single page, otherwise it can become distracting.
+* Where possible, avoid stacking admonitions of different types (for example, a `Note` immediately followed by a `Warning`). If you find it necessary to do so, consider rewriting the content. 
+* Don't use an admonition to inform the user about prerequisites. 
+* Keep admonitions concise. 
+
+### Note 
+Use a note to include a useful, relevant piece of information that's not critical if ignored.
+
+::::{dropdown} Example
+:::{note}
+The snapshot and restore and cross-cluster replication features are currently not available for {{serverless-full}} projects. These features will be introduced in the future.
+:::
+::::
+
+### Tip 
+Use a tip to provide a more efficient way for the user to perform a task, or to give advice that helps them make better choices when using a feature.
+
+::::{dropdown} Example
+:::{tip}
+Documentation is hosted in many repositories across Elastic. If you're unsure which repository to clone, you can use the **Edit this page** link on any documentation page to determine the location of the source file.
+:::
+::::
+
+### Warning 
+Use a warning when a step is irreversible, or a user could permanently lose data or leak sensitive information.
+
+::::{dropdown} Example
+:::{warning}
+Once a deployment is migrated to node roles, it is not possible to roll back.
+:::
+:::: 
+
+### Important 
+
+
+::::{dropdown} Example
+:::{important}
+Setting up {{filebeat}} is an admin-level task that requires extra privileges. As a best practice, use an administrator role to set up and a more restrictive role for event publishing.
+:::
+:::: 
+
+
+
+
+  
+
+
+
+
 ## Emphasis
 
 Bold, italic, and monospace formatting helps users distinguish words and phrases from the surrounding text and provides visual cues for users. 
