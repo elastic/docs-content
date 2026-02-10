@@ -65,7 +65,7 @@ powershell -ExecutionPolicy Bypass -File .\install-windows.ps1
 ::::
 
 :::{tip}
-To update the Elastic style guide to the latest rules, rerun the installation script.
+To update the Elastic style guide to the latest rules, rerun the installation script. Alternatively, the [Elastic Docs Utilities](vscode-extension.md) extension automatically checks for style guide updates on activation and offers to update when a new version is available.
 :::
 :::::
 
