@@ -14,7 +14,7 @@ products:
 
 :::{important}
 Elastic doesn’t support the setup and configuration of local LLMs. The example provided is for reference only.
-Before using a local LLM, evaluate its performance according to the [LLM performance matrix](/solutions/observability/llm-performance-matrix.md#evaluate-your-own-model).
+Before using a local LLM, evaluate its performance according to the [LLM performance matrix](/solutions/observability/ai/llm-performance-matrix.md#evaluate-your-own-model).
 :::
 
 This page provides instructions for setting up a connector to a large language model (LLM) of your choice using LM Studio. This allows you to use your chosen model within the {{obs-ai-assistant}}. You’ll first need to set up LM Studio, then download and deploy a model via LM studio and finally configure the connector in your Elastic deployment.
@@ -26,7 +26,7 @@ You do not have to set up a proxy if LM Studio is running locally, or on the sam
 ::::
 
 ::::{note}
-For information about the performance of open-source models on {{obs-ai-assistant}} tasks, refer to the [LLM performance matrix](/solutions/observability/llm-performance-matrix.md).
+For information about the performance of open-source models on {{obs-ai-assistant}} tasks, refer to the [LLM performance matrix](/solutions/observability/ai/llm-performance-matrix.md).
 ::::
 
 This example uses a server hosted in GCP to configure LM Studio with the [Llama-3.3-70B-Instruct](https://huggingface.co/lmstudio-community/Llama-3.3-70B-Instruct-GGUF) model.
@@ -146,7 +146,7 @@ Finally, configure the connector:
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features.
 
 ::::{note}
-While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [Set up the AI Assistant](/solutions/observability/observability-ai-assistant.md#obs-ai-set-up).
+While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [Set up the AI Assistant](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-set-up).
 ::::
 
 ## Air-gapped environments
