@@ -20,12 +20,11 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
-* Your Elastic deployment or project comes with a [Preconfigured AI Connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default LLM. This connector is used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
+* Your Elastic deployment or project comes with [Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) by default. These can be used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
 
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga`
 
 * You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
-
 
 ## Supported models
 
@@ -36,7 +35,7 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 ::::
 
 :::{csv-include} models.csv
-:caption: Models supported by Elastic Inference Service
+:caption: Scroll horizontally to view more information.
 :::
 
 ::::{important}
@@ -56,13 +55,11 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 
 | Model                 | Request/minute  | Tokens/minute (ingest)  | Tokens/minute (search)  | Notes                    |
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
-| Claude Sonnet 3.7 {applies_to}`stack: ga 9.3+`  | 400             | -                       | -                       | No rate limit on tokens  |
-| Elastic Managed LLM {applies_to}`stack: ga 9.0-9.2`   | 400             | -                       | -                       | No rate limit on tokens. Renamed to *Claude Sonnet 3.7* in later versions  |
-| Claude Sonnet 4.5     | 400             | -                       | -                       | No rate limit on tokens  |
-| ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
-| Jina Embeddings v3    | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
-| Jina Reranker v2      | 50              | -                       | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
-| Jina Reranker v3      | 50              | -                       | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Elastic Managed LLMs {applies_to}`stack: ga 9.3+` | 2000             | -                       | -                       | No rate limit on tokens  |
+| ELSER {applies_to}`stack: ga 9.0+`                | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Embeddings v3 {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Reranker v2 {applies_to}`stack: ga 9.3+`     | 50              | -                       | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Reranker v3 {applies_to}`stack: ga 9.3+`     | 50              | -                       | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 
 ## Pricing
 
