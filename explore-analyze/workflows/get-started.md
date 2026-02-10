@@ -310,7 +310,7 @@ triggers:
 
 This workflow introduces several fundamental concepts:
 
-* **Action steps**: Built-in steps that interact with {{es}} and {{kib}} APIs.
+* **Action steps**: Built-in steps that interact with {{es}} APIs.
 * **Data flow**: How information moves from step to step using outputs and template variables.
 * **Constants**: Reusable values that make workflows maintainable.
 * **Template syntax**: The `{{ }}` notation for dynamic values.
