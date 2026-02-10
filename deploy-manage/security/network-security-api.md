@@ -264,9 +264,6 @@ curl \
 {
   "regions": [
     {
-      "region": "eu-west-1",
-      "vpc_service_name": "com.amazonaws.vpce.eu-west-1.vpce-svc-01f2afe87944eb12b",
-      "private_hosted_zone_domain_name": "vpce.eu-west-1.aws.elastic-cloud.com",
       "availability_zones": [
         {
           "name": "eu-west-1a",
@@ -280,7 +277,10 @@ curl \
           "name": "eu-west-1c",
           "id": "euw1-az3"
         }
-      ]
+      ],
+      "private_hosted_zone_domain_name": "private.eu-west-1.aws.elastic-cloud.com",
+      "vpc_service_name": "com.amazonaws.vpce.eu-west-1.vpce-svc-0197c33d7deffd2fa",
+      "region": "eu-west-1",
     }
   ]
 }

@@ -221,9 +221,20 @@ To test the connection:
 2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment or project's endpoint information and the private hosted zone domain name that you registered.
 
     **Request**
+
+    ::::{applies-switch}
+    :::{applies-item} ess: ga
     ```sh
-    $ curl -v https://my-resource-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
+    $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
+    :::
+    ::: {applies_item} serverless: ga
+    ```sh
+    $ curl -v https://my-project-d53192.es.private.us-east-1.aws.elastic-cloud.com -u {username}:{password}
+    ```
+    :::
+    ::::
+
     **Response**
     ```sh
     * Server certificate:
@@ -356,9 +367,20 @@ To access the deployment or project:
 2. Send a request:
 
     **Request**
+
+    ::::{applies-switch}
+    :::{applies-item} ess: ga
     ```sh
-    $ curl -v https://my-resource-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
+    $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
+    :::
+    ::: {applies_item} serverless: ga
+    ```sh
+    $ curl -v https://my-project-d53192.es.private.us-east-1.aws.elastic-cloud.com -u {username}:{password}
+    ```
+    :::
+    ::::
+
     **Response**
     ```sh
     * Server certificate:
