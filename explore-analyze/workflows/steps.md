@@ -52,6 +52,8 @@ AI steps introduce reasoning and language understanding into workflows. Use AI s
 * Call a built-in or custom Elastic AI agent using the `ai.agent` step
 * Integrate with LLM providers such as OpenAI and Gemini
 
+Refer to [](/explore-analyze/workflows/steps/ai-steps.md) for more information.
+
 ### {{agent-builder}} integration
 
 In addition to calling Elastic AI agents from within workflows, agents built with {{agent-builder}} can also trigger workflows. To enable this, create a custom workflow tool type and assign it to an agent. The agent can then trigger the workflow from a conversation.
