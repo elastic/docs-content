@@ -5,6 +5,10 @@ applies_to:
 navigation_title: Multi-node cluster
 sub:
   image: elasticsearch
+products:
+  - id: elastic-stack
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Start a multi-node cluster with Docker Compose [docker-compose-file]
