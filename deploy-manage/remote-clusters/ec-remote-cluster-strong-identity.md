@@ -49,7 +49,7 @@ cluster.remote.<my_remote_cluster>.signing.key: "/app/config/<bundle-zip-directo
 
 The certificate and key used by the local cluster to sign cross-cluster requests determine how the remote cluster must be configured. Specifically:
 
-* Add the certificate authority (CA) that issued the local cluster certificate to the `cluster.remote.signing.certificate_authorities` setting of the remote cluster:
+1. Add the certificate authority (CA) that issued the local cluster certificate to the `cluster.remote.signing.certificate_authorities` setting of the remote cluster:
 
   ```yaml
   cluster.remote.signing.certificate_authorities: "internal_tls_ca.crt" <1>
@@ -67,7 +67,7 @@ The certificate and key used by the local cluster to sign cross-cluster requests
 
   * If you use custom certificates in the local cluster, upload the associated CA to the remote cluster [as a ZIP bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), and reference the file in the `cluster.remote.signing.certificate_authorities` setting.
 
-* When creating the cross-cluster API key on the remote cluster, you must specify a `certificate_identity` pattern that matches the Distinguished Name (DN) of the certificate used by the local cluster.
+1. When creating the cross-cluster API key on the remote cluster, you must specify a `certificate_identity` pattern that matches the Distinguished Name (DN) of the certificate used by the local cluster.
 
   :::{tip}
   In {{ecloud}}, the certificates of all {{es}} nodes follow this Distinguished Name (DN) format:  
