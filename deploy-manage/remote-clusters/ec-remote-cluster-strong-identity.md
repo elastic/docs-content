@@ -5,20 +5,19 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
-sub:
-  local_type_generic: deployment
-  remote_type_generic: deployment
-  remote_type: Elastic Cloud Hosted
 ---
 
 # Strong identity verification on {{ech}}
-```{applies_to}
-stack: preview 9.3
-```
 
 Starting with {{stack}} 9.3, the [API key security model](./security-models.md) for remote cluster connections supports [strong identity verification](./security-models.md#remote-cluster-strong-verification). This adds an extra layer of security by allowing an API key to be used only by requests that present an allowed certificate identity, which the remote cluster validates during authentication.
 
-This document explains how to enable strong identity verification for {{ech}} deployments. It builds on the standard procedure for configuring remote clusters with API key authentication and describes the additional requirements and settings needed. Refer to [Set up remote clusters with {{ech}}](./ec-enable-ccs.md#set-up-remote-clusters-with-ech) for the base procedures.
+::::{note}
+This document explains how to enable strong identity verification for {{ech}} deployments. Use it as a companion to the standard remote cluster setup procedure: follow the steps to [configure remote clusters](./ec-enable-ccs.md#set-up-remote-clusters-with-ech) with API key authentication, and apply the settings in this guide. Some settings are independent, and others are marked with "When..." to indicate where they fit into the standard steps.
+::::
+
+## Prerequisites
+
+Both the local and remote clusters must run {{stack}} 9.3 or later to use strong identity verification.
 
 ## Configure strong identity verification
 
@@ -55,15 +54,18 @@ The certificate and key used by the local cluster to sign cross-cluster requests
   ```yaml
   cluster.remote.signing.certificate_authorities: "internal_tls_ca.crt" <1>
   ```
-  1. The example configures the regional CA certificate available in all {{ecloud}} clusters, unique per {{ecloud}} region and cloud provider.
+  1. This example uses the regional CA certificate file that is available in all {{ecloud}} deployments. This CA is unique per {{ecloud}} region and cloud provider.
 
   The CA file to configure depends on how the local cluster is set up:
 
   * If the local cluster uses the default transport certificates, and both the local and remote clusters belong to the same cloud provided and region on {{ecloud}}, you can use the `internal_tls_ca.crt` file that already exist in your cluster. No additional upload is required.
 
-  * If the local cluster uses the default transport certificates, but the remote cluster belongs to a different {{ecloud}} provider or region, download the regional CA of the local cluster (available in the **Security -> CA Certificates** section of the deployment page), add it [as a ZIP bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) in the remote cluster, and reference the file in the setting.
+  * If the local cluster uses the default transport certificates, but the remote cluster belongs to a different {{ecloud}} provider or region, you must download the local cluster transport CA and upload it to the remote deployment as a bundle. To do that:
+    1. Open your deployment management page in the Elastic Cloud UI and go to **Security**.
+    1. Under **CA certificates**, select the download icon to save the CA into a local file.
+    1. Add the CA certificate [as a ZIP bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) in your remote deployment, and reference the file in the `cluster.remote.signing.certificate_authorities` setting.
 
-  * If you use custom certificates in the local cluster, upload the associated CA to the remote cluster [as a ZIP bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), and reference the file in the setting.
+  * If you use custom certificates in the local cluster, upload the associated CA to the remote cluster [as a ZIP bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), and reference the file in the `cluster.remote.signing.certificate_authorities` setting.
 
 * When creating the cross-cluster API key on the remote cluster, you must specify a `certificate_identity` pattern that matches the Distinguished Name (DN) of the certificate used by the local cluster.
 
