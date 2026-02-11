@@ -70,7 +70,7 @@ In addition, the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-
 
 The following recommendations assist with clusters that are self-deployed on-prem or self-deployed in a cloud provider. With {{ech}}, you can deploy clusters in {{aws}}, Azure, or Google Cloud. Available hardware types and configurations vary across providers, but each offers instance families that meet the performance needs of search and generative AI applications. 
 
-For details, refer to our documentation on [{{ech}} hardware](/reference/cloud/cloud-hosted/hardware.md) for {{aws}}, Azure, and GCP. The “Physical” column in the table below provides guidance when self-deploying {{es}} in your own data center, based on equivalent CPU, RAM, and storage profiles. 
+For details, refer to our documentation on [{{ech}} hardware](/reference/cloud/cloud-hosted/hardware.md) for {{aws}}, Azure, and GCP. The "Physical" column in the table below provides guidance when self-deploying {{es}} in your own data center, based on equivalent CPU, RAM, and storage profiles. 
 
 Elastic has performance-tested hardware profiles across the major cloud providers to identify the optimal balance for each node type. Significantly deviating from these tested ratios may appear to reduce costs, but typically leads to degraded performance, query latency spikes, or search scalability.
 
