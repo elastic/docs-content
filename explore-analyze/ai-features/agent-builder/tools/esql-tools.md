@@ -26,6 +26,8 @@ Use custom **{{esql}} tools** when:
 * Results should be in a predictable tabular format
 * You have well-defined data retrieval requirements
 
+While agents can generate {{esql}} queries dynamically using [index search tools](index-search-tools.md), custom {{esql}} tools ensure syntax correctness and enforce critical business rules that an LLM might occasionally miss. For strategies to avoid data retrieval issues, refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md).
+
 ## Key characteristics
 
 * Execute pre-defined {{esql}} queries with dynamic parameters
@@ -68,6 +70,23 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 :::{image} ../images/create-esql-tool-query.png
 :screenshot:
 :alt: Creating an ES|QL tool with a parameterized query
+:::
+
+:::{dropdown} Complex analytical query example
+For high-stakes or complex analytical queries, pre-defining the {{esql}} logic guarantees correctness and enforces business rules.
+
+**Tool name**: `Calculate Quarterly Revenue`
+
+**Description**: "Calculates confirmed revenue for a specific region broken down by quarter. Input requires a region code (e.g., 'US', 'EU')."
+
+**Query**:
+```esql
+FROM finance-orders-*
+| WHERE order_status == "completed" AND region == ?region <1>
+| STATS total_revenue = SUM(amount) BY quarter
+| LIMIT 5
+```
+1. The `?region` parameter gives agents flexibility while keeping the core calculation logic consistent and reliable
 :::
 
 ## Best practices
