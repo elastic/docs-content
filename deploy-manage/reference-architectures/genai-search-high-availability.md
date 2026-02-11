@@ -11,7 +11,7 @@ products:
   - id: cloud-hosted
 ---
 
-# GenAI Search - High Availability [gen-ai-architecture]
+# GenAI Search - High Availability
 
 This reference architecture represents a production-grade, high-availability GenAI search architecture built on {{es}}. It is intended to show physical deployment architecture, logical integration points, and highlight important best practices for enabling a retrieval layer for grounding generative AI responses.
 
