@@ -120,7 +120,7 @@ Imagine your web logs data includes multiple numeric fields representing differe
 2. Open **Layer settings**:
    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`app_management` **Layer settings**.
    * {applies_to}`stack: ga 9.0-9.2` Select {icon}`boxes_vertical`, then select **Layer settings**.
-3. Select **Multiple metrics**, then close the settings.
+3. Select **Multiple metrics**, then close the **Layer settings** menu.
 4. Add metrics for each resource type:
 
    | Slice | Metric configuration |
@@ -141,7 +141,7 @@ This example demonstrates the core value of multiple metrics: comparing differen
 The {{kib}} sample data sets don't include multiple comparable numeric fields. To try this scenario, adapt the field names to match your own data.
 :::
 
-### Group smaller values as "Other" [other-category]
+### Group smaller values into a single slice [other-category]
 
 When you have many categories with small values, you can group them into an "Other" category to simplify the visualization.
 
@@ -223,7 +223,7 @@ The **Metric** dimension defines the size of each slice.
 **Appearance**
 :   - **Name**: Customize the metric label displayed in tooltips and legends.
     - **Value format**: Control how numeric values are displayed (number, percent, bytes, and more).
-    - **Series color**: When using multiple metrics without a **Slice by** dimension, assign a specific color to each metric.
+    - **Series color**: When using multiple metrics without a **Slice by** dimension, use this option to assign a specific color to each metric.
 
 ### General layout [appearance-options]
 
