@@ -8,7 +8,7 @@ description: Instructions and best practices for building pie and donut charts w
 
 # Build pie charts with {{kib}}
 
-Pie charts display parts of a whole as slices, where each slice represents a data category and its size is proportional to the quantity it represents. Pie charts are ideal for showing comparisons between categories, illustrating the dominance of one category over others, and displaying percentage or proportional data.
+Pie charts display parts of a whole as slices, where each slice represents a value and its size represents its prevalence. Pie charts are ideal for illustrating the relative prevalence of categorical data, and for displaying percentage or proportional data.
 
 You can create pie charts in {{kib}} using [**Lens**](../lens.md).
 
