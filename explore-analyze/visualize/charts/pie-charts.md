@@ -226,29 +226,31 @@ When creating or editing a visualization, you can customize several appearance o
 #### Style settings
 
 **Appearance**
+:   Control the main visual aspects of the pie chart.
 
-**Donut hole**
-:   Transform your pie chart into a donut by adding a center hole:
-    - **None**: Standard pie chart with no hole (default).
-    - **Small**: Small center hole.
-    - **Medium**: Medium center hole.
-    - **Large**: Large center hole for emphasis or to display additional information.
+    **Donut hole**
+    :   Transform your pie chart into a donut by adding a center hole:
+        - **None**: Standard pie chart with no hole (default).
+        - **Small**: Small center hole.
+        - **Medium**: Medium center hole.
+        - **Large**: Large center hole for emphasis or to display additional information.
 
 **Titles and text**
+:   Control slice labels and values.
 
-**Slice labels**
-:   Control how labels appear on the slices:
-    - **Hide**: Do not display labels on slices.
-    - **Inside**: Display labels inside the slices.
-    - **Auto**: Automatically position labels for optimal readability (default).
+    **Slice labels**
+    :   Control how labels appear on the slices:
+        - **Hide**: Do not display labels on slices.
+        - **Inside**: Display labels inside the slices.
+        - **Auto**: Automatically position labels for optimal readability (default).
 
-**Slice values**
-:   Control what values appear on the slices (when labels are visible):
-    - **Hide**: Do not display values.
-    - **Integer**: Display the raw numeric value.
-    - **Percentage**: Display the percentage of the total.
+    **Slice values**
+    :   Control what values appear on the slices (when labels are visible):
+        - **Hide**: Do not display values.
+        - **Integer**: Display the raw numeric value.
+        - **Percentage**: Display the percentage of the total.
 
-When displaying percentages, you can also configure the **Decimal places** (0-10) for precision.
+          When displaying percentages, you can also configure the **Decimal places** (0-10) for precision.
 
 #### Legend settings
 
