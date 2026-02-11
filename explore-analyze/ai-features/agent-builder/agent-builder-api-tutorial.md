@@ -41,7 +41,7 @@ To build a custom agent with {{agent-builder}} APIs, you need the following:
 - [Permission](permissions.md) to create indices and use {{agent-builder}}
   - A {{kib}} API key for authentication if you're using `curl`
   :::{note}
-  Set the required environment variables to simply running `curl` commands:
+  Set the required environment variables to simplify running `curl` commands:
   ```bash
   export KIBANA_URL="your-kibana-url"
   export API_KEY="your-api-key"
