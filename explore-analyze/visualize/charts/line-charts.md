@@ -4,6 +4,13 @@ applies_to:
   stack: ga
   serverless: ga
 description: Instructions and best practices for building line charts with Kibana Lens in Elastic.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Build line charts with {{kib}}
