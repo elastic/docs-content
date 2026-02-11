@@ -2,6 +2,15 @@
 applies_to:
   serverless: ga
   stack: ga 9.3+
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Remove processor [streams-remove-processor]

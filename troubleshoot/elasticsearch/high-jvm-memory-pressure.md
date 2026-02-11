@@ -187,7 +187,8 @@ PUT _cluster/settings
 {
   "persistent": {
     "search.max_buckets": 20000,
-    "search.allow_expensive_queries": false
+    "search.allow_expensive_queries": false,
+    "search.default_search_timeout": "1m"
   }
 }
 ```
