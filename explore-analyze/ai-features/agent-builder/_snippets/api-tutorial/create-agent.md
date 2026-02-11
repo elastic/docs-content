@@ -25,7 +25,7 @@ POST kbn://api/agent_builder/agents
 ```
 1. Unique identifier for the agent
 2. Display name shown in the UI
-3. Greeting message users see when starting a conversation
+3. Greeting message users view when starting a conversation
 4. Labels for organizing and filtering agents
 5. Avatar background color (hex code)
 6. Avatar symbol or emoji

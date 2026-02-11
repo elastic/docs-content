@@ -13,5 +13,5 @@ POST kbn://api/agent_builder/tools
 1. Unique identifier for the tool
 2. Tool type - `esql` for {{esql}} query tools
 3. Description that helps agents understand when to use this tool
-4. The {{esql}} query to execute
+4. The {{esql}} query to run
 5. Query parameters (empty for this basic example)

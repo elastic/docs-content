@@ -28,7 +28,7 @@ This tutorial assumes you have basic knowledge of:
 
 By the end of this tutorial, you can:
 
-- Create and execute custom {{esql}} tools tailored to specific use cases
+- Create and run custom {{esql}} tools tailored to specific use cases
 - Build custom agents with specific instructions and tool sets
 - Chat with agents programmatically using the converse API
 - Manage conversations and clean up resources
@@ -40,6 +40,13 @@ To build a custom agent with {{agent-builder}} APIs, you need the following:
 - Access to the feature in {{kib}}. Refer to [](get-started.md)
 - [Permission](permissions.md) to create indices and use {{agent-builder}}
   - A {{kib}} API key for authentication if you're using `curl`
+  :::{note}
+  Set the required environment variables to simply running `curl` commands:
+  ```bash
+  export KIBANA_URL="your-kibana-url"
+  export API_KEY="your-api-key"
+  ```
+  :::
 
 ## Step 0: Set up sample data
 
@@ -151,7 +158,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
 
 ## Step 2: Explore available tools
 
-Tools are reusable functions that agents use to perform specific tasks. {{agent-builder}} includes built-in tools for common operations like searching indices and generating queries. You can also create custom tools.
+[Tools](tools.md) are reusable functions that agents use to perform specific tasks. {{agent-builder}} includes built-in tools for common operations like searching indices and generating queries. You can also create custom tools.
 
 List all available tools:
 
@@ -176,11 +183,11 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
 
 **Result:** The response includes all available tools, including built-in platform tools like `platform.core.search`, `platform.core.generate_esql`, and others.
 
-## Step 3: Execute a built-in tool
+## Step 3: Run a built-in tool
 
 Use the built-in {{esql}} generator tool to create a query for your sample data. This tool generates optimized {{esql}} queries based on natural language descriptions.
 
-Execute the {{esql}} generator tool:
+Run the {{esql}} generator tool:
 
 ::::{tab-set}
 :group: api-examples
@@ -214,7 +221,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 ## Step 4: Create a custom {{esql}} tool
 
-Create a custom tool using the query from the previous step. Custom tools encapsulate specific queries or operations, making them reusable and efficient.
+Create a [custom {{esql}} tool](tools/esql-tools.md) using the query from the previous step. Custom tools encapsulate specific queries or operations, making them reusable and efficient.
 
 Create a tool that finds the book with the most pages:
 
@@ -250,11 +257,11 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
 
 **Result:** The response confirms the tool was created with its full configuration.
 
-## Step 5: Execute your custom tool
+## Step 5: Run your custom tool
 
 Test your new custom tool to verify it works correctly.
 
-Execute the custom tool:
+Run the custom tool:
 
 ::::{tab-set}
 :group: api-examples
@@ -353,7 +360,7 @@ curl -X PUT "https://${KIBANA_URL}/api/agent_builder/tools/example-books-esql-to
 
 ::::
 
-Execute the updated tool with parameters:
+Run the updated tool with parameters:
 
 ::::{tab-set}
 :group: api-examples
@@ -387,7 +394,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 ## Step 8: Create a custom agent
 
-Agents combine instructions with specific tools to handle user conversations effectively. Create an agent specialized for searching the books collection.
+[Agents](custom-agents.md) combine instructions with specific tools to handle user conversations effectively. Create an agent specialized for searching the books collection.
 
 List all existing agents to see what's available:
 
@@ -731,7 +738,7 @@ curl -X DELETE "https://${KIBANA_URL}/kibana_sample_data_agents" \
 In this tutorial, you learned how to:
 
 - Create custom {{esql}} tools with and without parameters
-- Execute tools directly using the tools API
+- Run tools directly using the tools API
 - Build custom agents with specific instructions and tool sets
 - Chat with agents programmatically using the converse API
 - Manage conversation history
@@ -741,8 +748,9 @@ Custom tools optimized for specific use cases can significantly reduce token con
 ## Next steps
 
 - Explore [streaming responses](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-converse-async) for real-time chat experiences
-- Learn about [other tool types](tools.md) beyond {{esql}}
+- Learn about [other tool types](tools.md) beyond {{esql}}, including [index search tools](tools/index-search-tools.md), [MCP tools](tools/mcp-tools.md), and [workflow tools](tools/workflow-tools.md)
 - Try the [MCP server](mcp-server.md) to connect external AI clients like Claude Desktop to your agents
+- Review [best practices for prompt engineering](prompt-engineering.md) to optimize your agents
 
 ## Related pages
 
