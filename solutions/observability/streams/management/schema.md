@@ -3,6 +3,15 @@ navigation_title: Map fields
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Map fields in Streams [streams-schema]

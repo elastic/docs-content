@@ -1,5 +1,12 @@
 ---
 navigation_title: Known issues
+products:
+  - id: observability
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # {{observability}} known issues [elastic-observability-known-issues]

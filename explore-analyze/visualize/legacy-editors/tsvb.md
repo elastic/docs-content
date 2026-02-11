@@ -2,6 +2,13 @@
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # TSVB [tsvb-panel]
