@@ -117,7 +117,7 @@ Imagine your web logs data includes multiple numeric fields representing differe
 2. Open **Layer settings**:
    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`app_management` **Layer settings**.
    * {applies_to}`stack: ga 9.0-9.2` Select {icon}`boxes_vertical`, then select **Layer settings**.
-3. Select **Multiple metrics**, then close the settings.
+3. Select **Multiple metrics**, then close the **Layer settings** menu.
 4. Add metrics for each resource type:
 
    | Slice | Metric configuration |
