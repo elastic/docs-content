@@ -6,6 +6,14 @@ applies_to:
     ece: all
     ess: all
   serverless: all
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-serverless
+  - id: elastic-stack
 ---
 
 # Secure your cluster, deployment, or project

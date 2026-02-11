@@ -1,6 +1,13 @@
 ---
 applies_to:
   stack: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Watcher UI [watcher-ui]
