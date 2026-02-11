@@ -151,7 +151,7 @@ ECK does not measure actual runtime memory consumption. Instead, it reads the **
    * {{kib}}: the `--max-old-space-size` value from `NODE_OPTIONS`
    * Enterprise Search: the `-Xmx` value from `JAVA_OPTS`, doubled to account for non-heap memory
    * Logstash: the `-Xmx` value from `LS_JAVA_OPTS`, doubled to account for non-heap memory
-3. **Default value** — If neither of the above is set, ECK uses a built-in default for each resource type (for example, 2 GiB for {{es}}).
+3. **Default value** — If neither of the above is set, ECK uses a [built-in default](../deploy/cloud-on-k8s/manage-compute-resources.md#k8s-default-behavior) for each resource type.
 
 ### Retrieving usage data
 
