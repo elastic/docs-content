@@ -26,11 +26,11 @@ On Linux, you can increase the limits of the `vm.max_map_count` parameter by fol
     ```
    
 1. Update or create a configuration file:
-    * If the parameter already exists in a file under `/etc/sysctl.d/`, update its value to `1048576`:
-        ```sh
-        sysctl -w vm.max_map_count=1048576
+    * If the parameter already exists in a file under `/etc/sysctl.d/`, update its value to `1048576`: 
         ```
-    * If it does not exist, create a new conf file named `/etc/sysctl.d/99-elasticsearch.conf` which includes the following:
+        vm.max_map_count=1048576
+        ```
+    * If it does not exist, create a new conf file named `/etc/sysctl.d/zz-elasticsearch.conf` which includes the following:
         ```
         vm.max_map_count=1048576
         ```
@@ -41,7 +41,7 @@ On Linux, you can increase the limits of the `vm.max_map_count` parameter by fol
 
 
 :::{note}
-On systemd-based systems, the {{es}} package might install `/usr/lib/sysctl.d/elasticsearch.conf` with a lower value such as `262144`. A file with the same name under `/etc/sysctl.d/` takes precedence, so creating `/etc/sysctl.d/99-elasticsearch.conf` is a valid option to permanently set the value of `vm.max_map_count` to `1048576`. Do not edit files under `/usr/lib/sysctl.d/` directly, as they are managed by the package and may be overwritten on upgrade.
+On systemd-based systems, the {{es}} package might install `/usr/lib/sysctl.d/elasticsearch.conf` with a lower value such as `262144`. A file with the same name under `/etc/sysctl.d/` takes precedence, so creating `/etc/sysctl.d/zz-elasticsearch.conf` is a valid option to permanently set the value of `vm.max_map_count` to `1048576`. Do not edit files under `/usr/lib/sysctl.d/` directly, as they are managed by the package and may be overwritten on upgrade.
 :::
 
 
