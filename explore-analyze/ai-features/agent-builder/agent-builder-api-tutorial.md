@@ -44,6 +44,7 @@ To build a custom agent with {{agent-builder}} APIs, you need the following:
   Set the required environment variables to simplify running `curl` commands:
   ```bash
   export KIBANA_URL="your-kibana-url"
+  export ELASTICSEARCH_URL="your-elasticsearch-url"
   export API_KEY="your-api-key"
   ```
   :::
@@ -66,7 +67,7 @@ Create an index with book data:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X PUT "https://${KIBANA_URL}/kibana_sample_data_agents" \
+curl -X PUT "${ELASTICSEARCH_URL}/kibana_sample_data_agents" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "Content-Type: application/json" \
      -d '{
@@ -100,7 +101,7 @@ Add sample book documents to the index:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/_bulk" \
+curl -X POST "${ELASTICSEARCH_URL}/_bulk" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "Content-Type: application/x-ndjson" \
      --data-binary @- << 'EOF'
@@ -142,7 +143,7 @@ Send a message to the default agent:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -152,6 +153,58 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
 ```
 :::
 
+::::
+
+::::{dropdown} Example response
+```json
+{
+  "conversation_id": "173bd57d-bb27-464c-86a3-09ecaf6bc8ef",
+  "round_id": "a37100bc-3996-4be5-b874-7920a36e2ede",
+  "status": "completed",
+  "steps": [
+    {
+      "type": "reasoning",
+      "reasoning": "The user is asking about books in a specific index (kibana_sample_data_agents). I'll search this index to retrieve the book information."
+    },
+    {
+      "type": "tool_call",
+      "tool_id": "platform.core.search",
+      "params": {
+        "query": "all books in kibana_sample_data_agents index",
+        "index": "kibana_sample_data_agents"
+      },
+      "results": [
+        {
+          "type": "tabular_data",
+          "data": {
+            "columns": [
+              { "name": "name", "type": "text" },
+              { "name": "author", "type": "text" },
+              { "name": "page_count", "type": "integer" },
+              { "name": "release_date", "type": "date" }
+            ],
+            "values": [
+              ["1984", "George Orwell", 328, "1985-06-01T00:00:00.000Z"],
+              ["Brave New World", "Aldous Huxley", 268, "1932-06-01T00:00:00.000Z"],
+              ["Fahrenheit 451", "Ray Bradbury", 227, "1953-10-15T00:00:00.000Z"],
+              ["Revelation Space", "Alastair Reynolds", 585, "2000-03-15T00:00:00.000Z"],
+              ["Snow Crash", "Neal Stephenson", 470, "1992-06-01T00:00:00.000Z"],
+              ["The Handmaids Tale", "Margaret Atwood", 311, "1985-06-01T00:00:00.000Z"]
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "model_usage": {
+    "input_tokens": 30257,
+    "output_tokens": 670
+  },
+  "response": {
+    "message": "The **kibana_sample_data_agents** index contains 6 books:\n\n1. **1984** by George Orwell (328 pages, released June 1985)\n2. **Brave New World** by Aldous Huxley (268 pages, released June 1932)\n3. **Fahrenheit 451** by Ray Bradbury (227 pages, released October 1953)\n4. **Revelation Space** by Alastair Reynolds (585 pages, released March 2000)\n5. **Snow Crash** by Neal Stephenson (470 pages, released June 1992)\n6. **The Handmaid's Tale** by Margaret Atwood (311 pages, released June 1985)"
+  }
+}
+```
 ::::
 
 **Result:** The agent responds with information about the books in your sample data. Notice the `token_usage` field in the response. To learn how to track token consumption, refer to [Monitor token usage](monitor-usage.md). You'll compare this with your custom agent later to see how specialized tools can reduce token consumption.
@@ -174,11 +227,48 @@ List all available tools:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::
 
+::::
+
+::::{dropdown} Example response (truncated)
+```json
+{
+  "results": [
+    {
+      "id": "platform.core.search",
+      "type": "builtin",
+      "description": "A powerful tool for searching and analyzing data within your Elasticsearch cluster...",
+      "configuration": {},
+      "readonly": true
+    },
+    {
+      "id": "platform.core.generate_esql",
+      "type": "builtin",
+      "description": "Generate an ES|QL query from a natural language query.",
+      "configuration": {},
+      "readonly": true
+    },
+    {
+      "id": "platform.core.execute_esql",
+      "type": "builtin",
+      "description": "Execute an ES|QL query and return the results in a tabular format...",
+      "configuration": {},
+      "readonly": true
+    },
+    {
+      "id": "platform.core.list_indices",
+      "type": "builtin",
+      "description": "List the indices, aliases and datastreams from the Elasticsearch cluster...",
+      "configuration": {},
+      "readonly": true
+    }
+  ]
+}
+```
 ::::
 
 **Result:** The response includes all available tools, including built-in platform tools like `platform.core.search`, `platform.core.generate_esql`, and others.
@@ -201,7 +291,7 @@ Run the {{esql}} generator tool:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -215,6 +305,27 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
 ```
 :::
 
+::::
+
+::::{dropdown} Example response
+```json
+{
+  "results": [
+    {
+      "type": "query",
+      "data": {
+        "esql": "FROM kibana_sample_data_agents\n| SORT page_count DESC\n| LIMIT 1"
+      }
+    },
+    {
+      "type": "other",
+      "data": {
+        "answer": "Here's the ES|QL query:\n\n```esql\nFROM kibana_sample_data_agents\n| SORT page_count DESC\n| LIMIT 1\n```\n\nThis query will return the book with the highest page count."
+      }
+    }
+  ]
+}
+```
 ::::
 
 **Result:** The tool returns an {{esql}} query similar to: `FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1`. You'll use this query in the next step to create a custom tool.
@@ -237,7 +348,7 @@ Create a tool that finds the book with the most pages:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/tools" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -253,6 +364,28 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
 ```
 :::
 
+::::
+
+::::{dropdown} Example response
+```json
+{
+  "id": "example-books-esql-tool",
+  "type": "esql",
+  "description": "An ES|QL query tool for getting the book with the most pages",
+  "tags": [],
+  "configuration": {
+    "query": "FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1",
+    "params": {}
+  },
+  "readonly": false,
+  "schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false,
+    "description": "Parameters needed to execute the query"
+  }
+}
+```
 ::::
 
 **Result:** The response confirms the tool was created with its full configuration.
@@ -275,7 +408,7 @@ Run the custom tool:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -286,6 +419,37 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
 ```
 :::
 
+::::
+
+::::{dropdown} Example response
+```json
+{
+  "results": [
+    {
+      "type": "query",
+      "data": {
+        "esql": "FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1"
+      }
+    },
+    {
+      "type": "tabular_data",
+      "data": {
+        "source": "esql",
+        "query": "FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1",
+        "columns": [
+          { "name": "author", "type": "text" },
+          { "name": "name", "type": "text" },
+          { "name": "page_count", "type": "integer" },
+          { "name": "release_date", "type": "date" }
+        ],
+        "values": [
+          ["Alastair Reynolds", "Revelation Space", 585, "2000-03-15T00:00:00.000Z"]
+        ]
+      }
+    }
+  ]
+}
+```
 ::::
 
 **Result:** The response includes tabular data showing "Revelation Space" by Alastair Reynolds with 585 pages.
@@ -308,7 +472,7 @@ Get the tool you just created:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools/example-books-esql-tool" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/tools/example-books-esql-tool" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::
@@ -335,7 +499,7 @@ Update the tool to filter by year and limit results:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X PUT "https://${KIBANA_URL}/api/agent_builder/tools/example-books-esql-tool" \
+curl -X PUT "${KIBANA_URL}/api/agent_builder/tools/example-books-esql-tool" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -374,7 +538,7 @@ Run the updated tool with parameters:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -388,6 +552,38 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
 ```
 :::
 
+::::
+
+::::{dropdown} Example response
+```json
+{
+  "results": [
+    {
+      "type": "query",
+      "data": {
+        "esql": "FROM kibana_sample_data_agents\n| WHERE DATE_EXTRACT(\"year\", release_date) < 1960\n| SORT page_count DESC\n| LIMIT 2"
+      }
+    },
+    {
+      "type": "tabular_data",
+      "data": {
+        "source": "esql",
+        "query": "FROM kibana_sample_data_agents\n| WHERE DATE_EXTRACT(\"year\", release_date) < 1960\n| SORT page_count DESC\n| LIMIT 2",
+        "columns": [
+          { "name": "author", "type": "text" },
+          { "name": "name", "type": "text" },
+          { "name": "page_count", "type": "integer" },
+          { "name": "release_date", "type": "date" }
+        ],
+        "values": [
+          ["Aldous Huxley", "Brave New World", 268, "1932-06-01T00:00:00.000Z"],
+          ["Ray Bradbury", "Fahrenheit 451", 227, "1953-10-15T00:00:00.000Z"]
+        ]
+      }
+    }
+  ]
+}
+```
 ::::
 
 **Result:** The response shows "Brave New World" (268 pages, 1932) and "Fahrenheit 451" (227 pages, 1953), the two longest books published before 1960.
@@ -410,7 +606,7 @@ List all existing agents to see what's available:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/agents" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::
@@ -431,7 +627,7 @@ Create a specialized agent for book searches:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/agents" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -462,6 +658,35 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/agents" \
 
 ::::
 
+::::{dropdown} Example response
+```json
+{
+  "id": "books-search-agent",
+  "type": "chat",
+  "name": "Books Search Helper",
+  "description": "Hi! I can help you search and analyze the books in our sample data collection.",
+  "labels": ["books", "sample-data", "search"],
+  "avatar_color": "#BFDBFF",
+  "avatar_symbol": "📚",
+  "configuration": {
+    "instructions": "You are a helpful agent that assists users in searching and analyzing book data from the kibana_sample_data_agents index. Help users find books by author, title, or analyze reading patterns.",
+    "tools": [
+      {
+        "tool_ids": [
+          "example-books-esql-tool",
+          "platform.core.search",
+          "platform.core.list_indices",
+          "platform.core.get_index_mapping",
+          "platform.core.get_document_by_id"
+        ]
+      }
+    ]
+  },
+  "readonly": false
+}
+```
+::::
+
 **Result:** The response confirms the agent was created with its full configuration.
 
 ## Step 9: Get an agent by ID
@@ -482,7 +707,7 @@ Get the agent you just created:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents/books-search-agent" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/agents/books-search-agent" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::
@@ -509,7 +734,7 @@ Update the agent's description:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X PUT "https://${KIBANA_URL}/api/agent_builder/agents/books-search-agent" \
+curl -X PUT "${KIBANA_URL}/api/agent_builder/agents/books-search-agent" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -543,7 +768,7 @@ Start a conversation with the custom agent:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -554,6 +779,58 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
 ```
 :::
 
+::::
+
+::::{dropdown} Example response (truncated)
+```json
+{
+  "conversation_id": "e5b4e3ff-f5c9-4f52-9001-87b403df1a6a",
+  "round_id": "145aeacf-fa04-4d3d-a93c-141b5c2463fe",
+  "status": "completed",
+  "steps": [
+    {
+      "type": "reasoning",
+      "reasoning": "The user is asking about books in the collection. I should search the kibana_sample_data_agents index."
+    },
+    {
+      "type": "tool_call",
+      "tool_id": "platform.core.search",
+      "params": {
+        "query": "list all books in kibana_sample_data_agents index",
+        "index": "kibana_sample_data_agents"
+      },
+      "results": [
+        {
+          "type": "tabular_data",
+          "data": {
+            "columns": [
+              { "name": "name", "type": "text" },
+              { "name": "author", "type": "text" },
+              { "name": "page_count", "type": "integer" },
+              { "name": "release_date", "type": "date" }
+            ],
+            "values": [
+              ["1984", "George Orwell", 328, "1985-06-01T00:00:00.000Z"],
+              ["Brave New World", "Aldous Huxley", 268, "1932-06-01T00:00:00.000Z"],
+              ["Fahrenheit 451", "Ray Bradbury", 227, "1953-10-15T00:00:00.000Z"],
+              ["Revelation Space", "Alastair Reynolds", 585, "2000-03-15T00:00:00.000Z"],
+              ["Snow Crash", "Neal Stephenson", 470, "1992-06-01T00:00:00.000Z"],
+              ["The Handmaids Tale", "Margaret Atwood", 311, "1985-06-01T00:00:00.000Z"]
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "model_usage": {
+    "input_tokens": 30345,
+    "output_tokens": 704
+  },
+  "response": {
+    "message": "Your collection contains **6 books**:\n\n1. **1984** by George Orwell (328 pages, released June 1985)\n2. **Brave New World** by Aldous Huxley (268 pages, released June 1932)\n3. **Fahrenheit 451** by Ray Bradbury (227 pages, released October 1953)\n4. **Revelation Space** by Alastair Reynolds (585 pages, released March 2000)\n5. **Snow Crash** by Neal Stephenson (470 pages, released June 1992)\n6. **The Handmaid's Tale** by Margaret Atwood (311 pages, released June 1985)"
+  }
+}
+```
 ::::
 
 **Result:** The agent responds with information about your book collection. Note the `conversation_id` in the response - you'll use this to continue the conversation.
@@ -572,7 +849,7 @@ Continue the conversation using the custom tool:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -610,7 +887,7 @@ List all conversations:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/conversations" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::
@@ -631,7 +908,7 @@ Get the full history of a specific conversation:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations/<CONVERSATION_ID>" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/conversations/<CONVERSATION_ID>" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::
@@ -658,7 +935,7 @@ Delete the conversation:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/conversations/<CONVERSATION_ID>" \
+curl -X DELETE "${KIBANA_URL}/api/agent_builder/conversations/<CONVERSATION_ID>" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true"
 ```
@@ -680,7 +957,7 @@ Delete the custom agent:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/agents/books-search-agent" \
+curl -X DELETE "${KIBANA_URL}/api/agent_builder/agents/books-search-agent" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true"
 ```
@@ -702,7 +979,7 @@ Delete the custom tool:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/tools/example-books-esql-tool" \
+curl -X DELETE "${KIBANA_URL}/api/agent_builder/tools/example-books-esql-tool" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true"
 ```
@@ -724,7 +1001,7 @@ Delete the sample index:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X DELETE "https://${KIBANA_URL}/kibana_sample_data_agents" \
+curl -X DELETE "${ELASTICSEARCH_URL}/kibana_sample_data_agents" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::
