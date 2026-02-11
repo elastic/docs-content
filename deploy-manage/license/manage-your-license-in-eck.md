@@ -127,15 +127,15 @@ Once the new license is confirmed, you may safely delete the old license secret.
 
 ECK automatically tracks the memory capacity of all managed {{stack}} deployments and reports this information as Enterprise Resource Units (ERUs). This data is stored in a ConfigMap called `elastic-licensing` in the operator's namespace and is updated every **2 minutes**.
 
-### What counts towards usage
+### What counts toward usage
 
 ECK monitors the following managed resource types:
 
 * {{es}}
 * {{kib}}
-* APM Server
+* {{apm-server}}
 * Enterprise Search
-* Logstash (counted for informational purposes only; billable consumption depends on your license terms on a per-customer basis, refer to the [Self Managed Subscription Agreement](https://www.elastic.co/agreements/global/self-managed))
+* {{ls}} (counted for informational purposes only; billable consumption depends on your license terms on a per-customer basis, refer to the [Self Managed Subscription Agreement](https://www.elastic.co/agreements/global/self-managed))
 
 For each resource, ECK determines the memory capacity per node and multiplies it by the number of replicas to calculate the total memory for that resource type. The sum across all resource types is the **total managed memory**.
 
@@ -150,7 +150,7 @@ ECK does not measure actual runtime memory consumption. Instead, it reads the **
    * {{es}}: the `-Xmx` value from `ES_JAVA_OPTS`, doubled to account for non-heap memory
    * {{kib}}: the `--max-old-space-size` value from `NODE_OPTIONS`
    * Enterprise Search: the `-Xmx` value from `JAVA_OPTS`, doubled to account for non-heap memory
-   * Logstash: the `-Xmx` value from `LS_JAVA_OPTS`, doubled to account for non-heap memory
+   * {{ls}}: the `-Xmx` value from `LS_JAVA_OPTS`, doubled to account for non-heap memory
 3. **Default value** — If neither of the above is set, ECK uses a [built-in default](../deploy/cloud-on-k8s/manage-compute-resources.md#k8s-default-behavior) for each resource type.
 
 ### Retrieving usage data
