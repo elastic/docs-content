@@ -138,7 +138,7 @@ This example demonstrates the core value of multiple metrics: comparing differen
 The {{kib}} sample data sets don't include multiple comparable numeric fields. To try this scenario, adapt the field names to match your own data.
 :::
 
-### Group smaller values as "Other" [other-category]
+### Group smaller values into a single slice [other-category]
 
 When you have many categories with small values, you can group them into an "Other" category to simplify the visualization.
 
