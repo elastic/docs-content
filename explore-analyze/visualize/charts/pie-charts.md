@@ -217,7 +217,7 @@ The **Metric** dimension defines the size of each slice.
 **Appearance**
 :   - **Name**: Customize the metric label displayed in tooltips and legends.
     - **Value format**: Control how numeric values are displayed (number, percent, bytes, and more).
-    - **Series color**: When using multiple metrics without a **Slice by** dimension, assign a specific color to each metric.
+    - **Series color**: When using multiple metrics without a **Slice by** dimension, use this option to assign a specific color to each metric.
 
 ### General layout [appearance-options]
 
