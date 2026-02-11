@@ -210,6 +210,8 @@ toc:
           - file: ai-features/agent-builder/programmatic-access.md
             children:
                - file: ai-features/agent-builder/kibana-api.md
+                 children:
+                   - file: ai-features/agent-builder/agent-builder-api-tutorial.md
                - file: ai-features/agent-builder/a2a-server.md
                - file: ai-features/agent-builder/mcp-server.md
           - file: ai-features/agent-builder/monitor-usage.md

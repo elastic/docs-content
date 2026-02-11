@@ -21,6 +21,10 @@ This page provides a quick overview of the main {{kib}} API endpoints for {{agen
 
 These APIs allow you to programmatically work with the {{agent-builder}} abstractions.
 
+:::{tip}
+New to the {{agent-builder}} APIs? Try our hands-on [API tutorial](agent-builder-api-tutorial.md) that walks you through creating custom tools and agents step-by-step.
+:::
+
 ## Using the APIs
 
 The examples in this documentation use Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) syntax.
