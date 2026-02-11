@@ -19,6 +19,9 @@ You can create tables in {{kib}} using [**Lens**](../lens.md).
 
 ## Build a table
 
+:::{include} ../../_snippets/lens-prerequisites.md
+:::
+
 To build a table:
 
 :::::{stepper}
@@ -150,15 +153,18 @@ Customize your table to display exactly the information you need, formatted the 
 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
+        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each row represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
         - **Number of values**: How many top values to display
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
       - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
+        - **Field**: Select the date field to use for the time-based grouping.
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
       - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
+        - **Field**: Select the numeric field to create intervals from.
         :::{dropdown} How does interval granularity work?
         Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
         
@@ -185,15 +191,18 @@ Customize your table to display exactly the information you need, formatted the 
 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
+        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each column group represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
         - **Number of values**: How many top values to display
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
       - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
+        - **Field**: Select the date field to use for the time-based grouping.
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
       - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
+        - **Field**: Select the numeric field to create intervals from.
         :::{dropdown} How does interval granularity work?
         Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
         

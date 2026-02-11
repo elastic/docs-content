@@ -20,6 +20,9 @@ You can create metric charts in {{kib}} using [**Lens**](../lens.md).
 
 ## Build a metric chart
 
+:::{include} ../../_snippets/lens-prerequisites.md
+:::
+
 To build a metric chart:
 
 :::::{stepper}

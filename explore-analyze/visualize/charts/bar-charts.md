@@ -18,6 +18,9 @@ You can create bar charts in {{kib}} using [**Lens**](../lens.md).
 
 ## Build a bar chart
 
+:::{include} ../../_snippets/lens-prerequisites.md
+:::
+
 To build a bar chart:
 
 :::::{stepper}
@@ -124,15 +127,18 @@ Customize your bar chart to display exactly the information you need, formatted 
 **Data**
 :   The dimension that creates your individual bars. Common functions include:
     - **Top values**: Create bars for the most common values in a field.
+      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term bars. When multiple fields are selected, each bar represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
       - **Number of values**: How many top values to display.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
     - **Date histogram**: Create time-based bars with configurable intervals.
+      - **Field**: Select the date field to use for the time-based grouping.
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
     - **Intervals**: Group data into numerical ranges.
+      - **Field**: Select the numeric field to create intervals from.
     - **Filters**: Define custom categories using KQL queries.
 
 **Appearance**
@@ -160,15 +166,18 @@ Customize your bar chart to display exactly the information you need, formatted 
 **Data**
 :   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. Common functions include:
     - **Top values**: Create bar segments for the most common values in a field.
+      - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each segment represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
       - **Number of values**: How many top values to display.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
     - **Date histogram**: Create time-based bars with configurable intervals.
+      - **Field**: Select the date field to use for the time-based grouping.
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
     - **Intervals**: Group data into numerical ranges.
+      - **Field**: Select the numeric field to create intervals from.
     - **Filters**: Define custom categories using KQL queries.
 
 **Appearance**

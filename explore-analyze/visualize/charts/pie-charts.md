@@ -32,6 +32,9 @@ Consider using [bar charts](bar-charts.md) instead when:
 
 ## Build a pie chart
 
+:::{include} ../../_snippets/lens-prerequisites.md
+:::
+
 To build a pie chart:
 
 ::::::{stepper}
@@ -175,7 +178,8 @@ The **Slice by** dimension defines how your pie is divided into segments. You ca
 **Data**
 :   The **Slice by** dimension supports the following functions:
 
-    - **Top values**: Create slices for the most common values in a field. Configure the number of values to display, ranking criteria, and sort direction.
+    - **Top values**: Create slices for the most common values in a field.
+      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term slices. When multiple fields are selected, each slice represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
       - **Number of values**: How many top values to display.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
@@ -183,10 +187,12 @@ The **Slice by** dimension defines how your pie is divided into segments. You ca
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
     - **Date histogram**: Group data into time-based buckets (useful for showing time-based composition). Configure the time interval and how to handle date formatting.
+      - **Field**: Select the date field to use for the time-based grouping.
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
       - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
     - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
+      - **Field**: Select the numeric field to create intervals from.
       - **Include empty rows**: Include intervals with no matching documents. On by default.
       - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
       :::{dropdown} How does interval granularity work?
@@ -264,9 +270,6 @@ Configure elements of your pie chart's legend:
 
 **Nested**
 :   When using multiple **Slice by** dimensions, enable this option to show the legend in a hierarchical format that reflects the slice hierarchy.
-
-**Statistics**
-:   Show the **Value** statistic in the legend to display the numeric value alongside each legend entry.
 
 **Label truncation**
 :   Choose whether to truncate long legend labels, and set a limit for how many lines to display.

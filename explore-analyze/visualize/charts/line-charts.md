@@ -16,6 +16,9 @@ You can create line charts in {{kib}} using [**Lens**](../lens.md).
 
 ## Build a line chart
 
+:::{include} ../../_snippets/lens-prerequisites.md
+:::
+
 To build a line chart:
 
 ::::::{stepper}
@@ -101,15 +104,18 @@ Customize your line chart to display exactly the information you need, formatted
 :   
     - **Functions**:
       - **Top values**: Create separate lines for the most common values in a field.
+        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
         - **Number of values**: How many top values to display.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
       - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+        - **Field**: Select the date field to use for the time-based grouping.
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Determine the size of the time buckets in your date histogram. You can define the intervals granularity or specify custom ranges.
+      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
+        - **Field**: Select the numeric field to create intervals from.
       - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
 
 **Appearance**
@@ -137,15 +143,18 @@ Breakdown functions segment your data into multiple lines on the same chart, wit
 :   
     - **Functions**:
       - **Top values**: Create separate lines for the most common values in a field.
+        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
         - **Number of values**: How many top values to display.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
       - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+        - **Field**: Select the date field to use for the time-based grouping.
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Determine the size of the time buckets in your date histogram. You can define the intervals granularity or specify custom ranges.
+      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
+        - **Field**: Select the numeric field to create intervals from.
       - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
 
 **Appearance**
