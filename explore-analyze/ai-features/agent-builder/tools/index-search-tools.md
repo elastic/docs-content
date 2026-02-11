@@ -88,9 +88,13 @@ PUT /ecommerce-orders-2025/_mapping
 1. Include usage guidance, limitations, relationships, and field semantics in the description
 2. Example of fields that might need semantic clarification in the description
 
+:::{important}
+Keep descriptions concise (a few sentences) to avoid [context overflow](../troubleshooting/context-length-exceeded.md).
+:::
+
 ## Best practices
 
-- **Add index [metadata](#add-index-metadata-to-improve-agent-search) descriptions**: Include `_meta.description` fields in your index mappings:
+- **Add index [metadata](#add-index-metadata-to-improve-agent-search) descriptions**: Include `_meta.description` fields in your index mappings. Keep descriptions concise (a few sentences) to avoid [context overflow](../troubleshooting/context-length-exceeded.md).
   - Explain what entities or events the index covers
   - Note what types of questions it can answer
   - Document how fields link to other indices
