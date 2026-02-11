@@ -34,7 +34,7 @@ The following sections provide more details.
 
 ```{applies_to}
 serverless:
-stack: ga 7.17+
+stack:
 ```
 
 AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
@@ -45,7 +45,7 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 ### Stack monitoring
 
 ```{applies_to}
-stack: ga
+stack:
 ```
 
 :::{include} /deploy-manage/monitor/_snippets/stack-monitoring-def.md

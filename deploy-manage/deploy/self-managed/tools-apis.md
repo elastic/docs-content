@@ -3,6 +3,10 @@ navigation_title: Tools and APIs
 applies_to:
   deployment:
     self:
+products:
+  - id: elastic-stack
+  - id: elasticsearch
+  - id: kibana
 ---
 # Tools and APIs for self-managed clusters
 
