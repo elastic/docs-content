@@ -57,7 +57,7 @@ The certificate and key used by the local cluster to sign cross-cluster requests
   ```
   1. The example configures the regional CA certificate available in all {{ecloud}} clusters, unique per {{ecloud}} region and cloud provider.
 
-  The CA file to configure depends on how the local cluster is setup:
+  The CA file to configure depends on how the local cluster is set up:
 
   * If the local cluster uses the default transport certificates, and both the local and remote clusters belong to the same cloud provided and region on {{ecloud}}, you can use the `internal_tls_ca.crt` file that already exist in your cluster. No additional upload is required.
 
