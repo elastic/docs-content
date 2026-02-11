@@ -498,10 +498,10 @@ If you want to use **PEM formatted** keys and certificates for SAML encryption, 
 `encryption.certificate`
 :   The path to the PEM formatted certificate file. e.g. `saml/saml-crypt.crt`
 
-::::{note}
-Only the single leaf certificate is required for the `encryption.certificate` setting, even when using an internal or non-public Certificate Authority (CA).
-If additional certificates are included, {{es}} will attempt to validate the resulting chain, and the chain must be valid and complete.
-::::
+    :::::{note}
+    Only the single leaf certificate is required for the `encryption.certificate` setting, even when using an internal or non-public Certificate Authority (CA).
+    If additional certificates are included, {{es}} will attempt to validate the resulting chain, and the chain must be valid and complete.
+    :::::
 
 `encryption.key`
 :   The path to the PEM formatted key file. e.g. `saml/saml-crypt.key`
