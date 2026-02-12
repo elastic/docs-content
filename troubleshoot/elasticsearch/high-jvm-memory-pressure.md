@@ -29,7 +29,7 @@ From the previous output, you can calculate the memory pressure as the ratio of 
 cat nodes_stats.json | jq -rc '.nodes[]|.name as $n|.jvm.mem.pools.old|{name:$n, memory_pressure:(100*.used_in_bytes/.max_in_bytes|round) }'
 ```
 
-{{ech}} and {{ece}} also include a JVM memory pressure indicator for each node in your cluster in the deployment's overview page. These indicators turn red when JVM memory pressure reaches 75%. [Learn more][memory pressure monitoring](/deploy-manage/monitor/ec-memory-pressure.md).
+{{ech}} and {{ece}} also include a JVM memory pressure indicator for each node in your cluster in the deployment's overview page. These indicators turn red when JVM memory pressure reaches 75%. [Learn more about memory pressure monitoring](/deploy-manage/monitor/ec-memory-pressure.md).
 
 :::::::
 
@@ -137,6 +137,13 @@ cat nodes.json | jq -rc '.nodes[]|{node:.name, compressed:.jvm.using_compressed_
 
 #### Limit heap size to less than half of total RAM [reduce-jvm-memory-pressure-setup-heap]
 
+```{applies_to}
+deployment:
+  self: ga
+  eck: ga
+```
+
+
 By default, {{es}} manages the JVM heap size. If manually overridden, `Xms` and `Xmx` should be equal and not more than half of total operating system RAM. Refer to [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) for detailed guidance and best practices.
 
 To check these heap settings, poll the [node information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
@@ -180,7 +187,8 @@ PUT _cluster/settings
 {
   "persistent": {
     "search.max_buckets": 20000,
-    "search.allow_expensive_queries": false
+    "search.allow_expensive_queries": false,
+    "search.default_search_timeout": "1m"
   }
 }
 ```
@@ -198,3 +206,40 @@ While more efficient than individual requests, large [bulk indexing](https://www
 #### Scale node memory [reduce-jvm-memory-pressure-setup-scale]
 
 Heavy indexing and search loads can cause high JVM memory pressure. To better handle heavy workloads, upgrade your nodes to increase their memory capacity.
+
+### Reduce field data usage [reduce-jvm-memory-pressure-fielddata]
+
+Computing the [field data](elasticsearch://reference/elasticsearch/mapping-reference/text.md#fielddata-mapping-param) and global ordinals can be [CPU-intensive](/troubleshoot/elasticsearch/high-cpu-usage.md). By default, global ordinals are computed at search time but can be [eager loaded](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md) to compute after ingestion.
+
+Field data is loaded into the JVM heap cache and retained based on usage frequency. Field data can consume JVM heap memory up to the lower value between the [field data cache setting](elasticsearch://reference/elasticsearch/configuration-reference/field-data-cache-settings.md) and the [field data circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md). [Circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md) appear as [rejected requests](/troubleshoot/elasticsearch/rejected-requests.md#check-circuit-breakers). Setting `indices.fielddata.cache.size` too low causes thrashing and frequent evictions. 
+
+To check `fielddata` evictions and determine whether field data contributes significantly to JVM memory usage, use the [cat nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) API:
+
+```console
+GET _cat/nodes?v=true&h=name,heap.*,fielddata.*
+```
+
+If the output shows that field data is a significant contributor to JVM memory usage, use the [cat fielddata](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-fielddata) API to determine which fields are using field data and how much per node.
+
+```console
+GET _cat/fielddata?v=true&s=size:desc
+```
+
+You can use the [clear cache](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clear-cache) API to clear the field data cache and temporarily reduce memory usage. For example:
+
+* To clear the fielddata cache only for fields `fieldname1` and `fieldname2` on the `my-index-000001` index:
+
+  ```console
+  POST my-index-000001/_cache/clear?fielddata=true&fields=fieldname1,fieldname2
+  ```
+
+* To clear any fielddata cache across all indices:
+
+  ```console
+  POST */_cache/clear?fielddata=true&expand_wildcards=all&ignore_unavailable=true
+  ```
+
+Common causes of high field data memory usage include:
+
+* Enabling [`fielddata` on `text` fields](elasticsearch://reference/elasticsearch/mapping-reference/text.md#enable-fielddata-text-fields). Instead, use a [multi-field](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) and search against the [keyword field](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md).
+* Either [aggregating](/explore-analyze/query-filter/aggregations.md) or [sorting](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md) on high cardinality fields which have computed [global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md#_what_are_global_ordinals). For example, this can occur from {{kib}} autocomplete of `non-text` fields or loading [visualizations](/explore-analyze/visualize/visualize-library.md). Refer to [avoiding global ordinal loading](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md#_avoiding_global_ordinal_loading) for guidance.

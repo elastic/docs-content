@@ -1,5 +1,6 @@
 ---
 navigation_title: "Get started"
+description: "Learn how to enable Elastic Agent Builder, ingest data, and start chatting with AI agents."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -13,26 +14,15 @@ products:
 
 # Get started with {{agent-builder}}
 
-Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
+To start using {{agent-builder}} you need an {{es}} deployment. If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
 
-::::{admonition} Agent Builder subscription requirements
-- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
-- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
-- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier.
+For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
+
+::::{admonition}
+This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 ::::::{stepper}
-::::{step} Set up an {{es}} deployment
-
-If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
-
-:::{note}
-For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation.
-You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
-:::
-
-::::
-
 :::::{step} Enable {{agent-builder}}
 
 ::::{applies-switch}
@@ -47,23 +37,23 @@ Find **Agents** in the navigation menu to begin using the feature, or search for
 
 :::{applies-item} { "serverless": "preview", "observability" }
 
-{{product.observability}} users must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+In {{product.observability}} projects, you must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
 
-Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Once enabled, find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
 :::{applies-item} { "serverless": "preview", "security" }
 
-{{product.security}} users must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+In {{product.security}} projects, you must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
 
-Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Once enabled, find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
 :::{applies-item} stack: preview =9.2, ga 9.3+
 
-On non-serverless deployments, {{agent-builder}} availability depends on your navigation mode:
+On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
 
 - **{{es}} solution view**: {{agent-builder}} is enabled by default and appears in the side navigation. It replaces Search Assistant.
 - **{{product.observability}} and {{product.security}} solution views**: You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
@@ -81,7 +71,7 @@ To learn about required privileges for {{agent-builder}}, refer to [Permissions 
 
 :::::
 
-::::{step} Ingest some data
+::::{step} Ingest data into Elasticsearch
 
 Before you begin with agents, you need some data in {{es}}. Otherwise, you will be chatting to the underlying LLM without any retrieval-augmented context.
 
@@ -98,7 +88,7 @@ If you're not ready to add your own data, you can:
 
 ::::
 
-::::{step} Begin chatting
+::::{step} Start a conversation
 
 The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. {{agent-builder}} includes a default agent named `Elastic AI Agent` with access to all built-in tools, so you can begin chatting immediately.
 

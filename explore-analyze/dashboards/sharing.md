@@ -36,7 +36,11 @@ By default, the dashboard owner is the dashboard creator. This cannot be changed
 {{kib}} administrators always have write access to all dashboards.
 ::::
 
-## Share a dashboard with a link or embed [share-dashboard-link]
+## Share a dashboard [share-dashboard-link]
+
+You can share your dashboards in several ways:
+- [Share with a direct link](../report-and-share.md#share-a-direct-link)
+- {applies_to}`serverless: unavailable` [Embed a dashboard outside of {{kib}}](../report-and-share.md#embed-code)
 
 For detailed information about the sharing options and time ranges, refer to [Reporting and sharing](../report-and-share.md).
 
