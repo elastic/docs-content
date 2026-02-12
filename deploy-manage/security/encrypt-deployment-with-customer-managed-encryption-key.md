@@ -111,28 +111,42 @@ At this time, the following features are not supported:
     Use an alias ARN instead of the key ARN itself if you plan on doing manual key rotations. When using a key ARN directly, only automatic rotations are supported.
     ::::
 
-2. Apply a key policy with the settings required by {{ecloud}} to the key created in the previous step:
+2. Apply a key policy with the settings required by {{ecloud}} to the key created in the previous step. AWS KMS requires a complete key policy document with a `Version` and `Statement` array. The following example includes a statement that keeps key management access for your account, plus the statement that grants {{ecloud}} the permissions it needs. Replace `CUSTOMER_ACCOUNT_ID` with your own AWS account ID.
 
     ```json
     {
-      "Sid": "ElasticKeyAccess",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "*"
-      },
-      "Action": [
-        "kms:Decrypt", <1>
-        "kms:Encrypt", <2>
-        "kms:GetKeyRotationStatus", <3>
-        "kms:GenerateDataKey", <4>
-        "kms:DescribeKey" <5>
-      ],
-      "Resource": "*",
-      "Condition": { <6>
-        "ForAnyValue:StringLike": {
-          "aws:PrincipalOrgPaths": "o-ygducmlz12/r-e5t3/ou-e5t3-fzpdq76p/ou-e5t3-ysfcmd95/ou-e5t3-hwt05su3/*"
-       }
-     }
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "EnableKeyManagement",
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::CUSTOMER_ACCOUNT_ID:root"
+          },
+          "Action": "kms:*",
+          "Resource": "*"
+        },
+        {
+          "Sid": "ElasticKeyAccess",
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "*"
+          },
+          "Action": [
+            "kms:Decrypt", <1>
+            "kms:Encrypt", <2>
+            "kms:GetKeyRotationStatus", <3>
+            "kms:GenerateDataKey", <4>
+            "kms:DescribeKey" <5>
+          ],
+          "Resource": "*",
+          "Condition": { <6>
+            "ForAnyValue:StringLike": {
+              "aws:PrincipalOrgPaths": "o-ygducmlz12/r-e5t3/ou-e5t3-fzpdq76p/ou-e5t3-ysfcmd95/ou-e5t3-hwt05su3/*"
+            }
+          }
+        }
+      ]
     }
     ```
 
