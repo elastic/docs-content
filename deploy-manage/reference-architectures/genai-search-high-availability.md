@@ -158,7 +158,7 @@ Regular backups are essential when indexing business-critical or auditable data.
 
 A uniform hot tier is strongly recommended for the majority of search use cases. Disk-based vector methods like using DiskBBQ (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets on lower-cost tiers (IoT telemetry, financial transaction logs, etc)
 
-[How many nodes of each do you need?](/deploy-manage/reference-architectures/hotfrozen-high-availability.md#hot-frozen-estimate)
+##### How many nodes of each do you need?
 
 It depends on:
 
