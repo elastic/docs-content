@@ -83,11 +83,9 @@ Dedicated ML nodes are needed when {{infer}} is performed within the cluster, su
 | master | c5d | f16sv2 | N2 | 4 vCPU 16 GB RAM 256 GB SSD |
 | kibana | c6gd | f16sv2 | N2 | 8-16 vCPU 8 GB RAM 256 GB SSD |
 
-## Important considerations
+## Vector search considerations
 
-### Vector search considerations
-
-#### Storage and memory
+### Storage and memory
 
 Approximate nearest-neighbor (ANN) algorithms are dominated by irregular, latency-bound memory access rather than arithmetic. As a result, all vector distance computations occur in off-heap RAM and CPU. To make large-scale in-memory vector search feasible, {{es}} supports [many quantization techniques](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for up to a 32x reduction in vector footprint in RAM, and defaults to HNSW with [Better Binary Quantization](https://www.elastic.co/search-labs/blog/better-binary-quantization-lucene-elasticsearch). BBQ is Elastic’s patented approach for maximizing recall with a low vector memory footprint.
 
@@ -102,40 +100,40 @@ When vector quantization is enabled, {{es}} stores both the original `float32` v
 - Use [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) when you’re cost/memory sensitive, your recall target is more like “\~95%” and you want performance that doesn’t drop when the working set no longer fits RAM.
 - Use [BBQ flat](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-flat): (BBQ without HNSW) when filters reduce comparisons to \< \~100k vectors; typically lowest operational complexity.
 
-#### Vector sizing
+### Vector sizing
 
 - To learn about sizing formulas refer to [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md#_ensure_data_nodes_have_enough_memory). Use the formulas to calculate the disk needs. 
 - For HNSW, the same amount of ram will be required as the vector index storage. 
 - For DiskBBQ, you can provision as little as 5% of disk storage as RAM, as DiskBBQ swaps to disk effectively, but query performance will improve significantly with more data you can fit into RAM.
 
-#### Generating vector embeddings
+### Generating vector embeddings
 
 - If generating embeddings on Elastic ML nodes, capacity can be autoscaled using {{ech}} (ECH) or {{eck}} on-prem.  
 - Elastic provides [world class vector models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md) from Jina AI that can be used for NLP embeddings, and a re-ranker that can be either self-hosted on ML nodes or used through [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference.md/eis).  
 - Embeddings can also be generated with [Elastic’s {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) from many external model providers or internal or externally hosted foundation models.
 
-#### kNN search performance tuning
+### kNN search performance tuning
 
 - **Recall:** General guidance is to start with defaults → measure → [increasenum\_candidates](https://www.elastic.co/search-labs/blog/elasticsearch-knn-and-num-candidates-strategies) (oversample) → optionally add a [re-ranker](https://www.elastic.co/search-labs/blog/elastic-semantic-reranker-part-2).
 - **Runtime:** Refer to [this guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) to understand all the vector search performance optimizations to ensure high speed search. 
 
-#### Updating vector data
+### Updating vector data
 
 Updating dense or sparse vector data can be more resource-intensive than updating keyword-based fields, since embeddings often need to be regenerated. For applications with frequent document updates, plan for additional indexing throughput and consider whether embeddings should be pre-computed, updated asynchronously, or generated on demand.
 
-### General considerations
+## General considerations
 
-#### Hybrid Retrieval
+### Hybrid Retrieval
 
 - Over-fetch on both retrieval paths. Increase size, use RRF with a larger `rank_window_size`, and raise `num_candidates` on knn so ANN does not miss critical neighbors. Then trim results to find the best recall vs. latency balance.
 - Keep `minimum_should_match` loose, and rely on proper analyzers and multi-fields (text, .keyword, shingles/ngrams). Hybrid cannot recover documents BM25 never retrieves. 
 - The easiest framework for executing hybrid search on Elastic is [retrievers](/solutions/search/retrievers-overview.md) or [{{esql}} FORK and FUSE](/solutions/search/esql-for-search.md#fork-and-fuse).
 
-#### Multi-AZ deployment
+### Multi-AZ deployment
 
 Three availability zones is ideal, but at least two availability zones are recommended to ensure resiliency. This helps guarantee that there will be data nodes available in the event of an AZ failure. {{ecloud}} automatically distributes replicas across zones, while self-managed clusters should use shard allocation awareness to achieve the same.
 
-#### Shard management
+### Shard management
 
 Proper shard management is foundational to maintaining performance at scale. This includes ensuring an even distribution of shards across nodes, choosing an appropriate shard size, and managing shard counts as the cluster grows. For detailed guidance, refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).  
 
@@ -144,21 +142,21 @@ Proper shard management is foundational to maintaining performance at scale. Thi
 - **Plan scale at creation:** catalogs don’t roll over, so set shard math up front. If growth is possible, configure routing shards so the index can be **split later by clean multiples** (read-only \+ extra IO/disk required).  
 - **Scale with replicas, not primaries:** increase **replicas** first to improve search throughput and availability. Replicas increase concurrency by spreading queries across shard copies; **fan-out is still driven by primary shard count**.
 
-#### Snapshots
+### Snapshots
 
 Regular backups are essential when indexing business-critical or auditable data. Snapshots provide recoverability in case of data corruption or accidental deletion. For production workloads, configure automated snapshots through Snapshot Lifecycle {{manage-app}} ({{slm-init}}) and integrate them with Index Lifecycle {{manage-app}} ({{ilm-init}}) policies.
 
-#### {{kib}}, MCP, and Agent Builder
+### {{kib}}, MCP, and Agent Builder
 
 - If deploying outside of {{ecloud}}, ensure {{kib}} is configured for High Availability to avoid a single point of failure. Deploying {{kib}} across multiple availability zones also improves resiliency for management and user access.  
 - Ensure telemetry is collected from {{kib}} nodes if MCP server is used. This allows for proper capacity planning if usage is extensive.  
 - For self-deployed clusters, use a proxy in front of multiple {{kib}} nodes to avoid a single point of failure. {{ech}} has a single point of connection that is proxied.
 
-#### Data tiering
+### Data tiering
 
 A uniform hot tier is strongly recommended for the majority of search use cases. Disk-based vector methods like using DiskBBQ (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets on lower-cost tiers (IoT telemetry, financial transaction logs, etc)
 
-##### How many nodes of each do you need?
+#### How many nodes of each do you need?
 
 It depends on:
 
