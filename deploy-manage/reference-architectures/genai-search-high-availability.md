@@ -55,7 +55,7 @@ Below is a multi-availability-zone deployment designed for continuous availabili
 :::
 
 :::::{important}
-This architecture employs a single uniform hot/content data tier, as most search and generative AI workloads require very low latency across the full corpus, regardless of data age. However, disk-based vector storage methods such as [DiskBBQ](/reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets on lower-cost tiers, such as IoT telemetry, financial transaction logs.
+This architecture employs a single uniform hot/content data tier, as most search and generative AI workloads require very low latency across the full corpus, regardless of data age. However, disk-based vector storage methods such as [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets on lower-cost tiers, such as IoT telemetry, financial transaction logs.
 :::::
 
 The physical deployment architecture for GenAI applications is built around a resilient {{es}} cluster deployed across three availability zones (AZ). For production-grade deployments, two AZs are the minimum, with three AZs strongly recommended to maximize high availability and fault tolerance. In {{ecloud}}, shards are automatically distributed across zones, ensuring that primaries and replicas never reside in the same AZ. 
