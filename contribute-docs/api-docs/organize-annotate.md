@@ -332,6 +332,74 @@ class Foo {
 ```
 :::
 
+:::{tab-item} Kibana
+:sync: kibana
+
+**API availability and stability** is specified using the `availability` option in route definitions:
+
+```typescript
+router.versioned.post({
+  path: '/api/example/endpoint',
+  access: 'public',
+  options: {
+    tags: ['example', 'oas-tag:Example APIs'],
+    availability: {
+      stability: 'experimental',
+      since: '9.2.0',
+    },
+  },
+})
+```
+
+The `availability` option includes two fields:
+
+- **`stability`**: Indicates the lifecycle state of the API
+  - **`experimental`** → Technical preview; may change or be removed in future versions
+  - **`stable`** (default) → Generally available (GA); stable for production use
+- **`since`**: The version when the API was first added (e.g., `'9.2.0'`)
+
+**Example from the A2A route:**
+
+```typescript
+options: {
+  tags: ['a2a', 'oas-tag:agent builder'],
+  availability: {
+    stability: 'experimental',
+    since: '9.2.0',
+  },
+},
+```
+
+This generates a "Technical preview" badge and "Added in 9.2.0" version label in the published API documentation.
+
+:::{important}
+Always include the `availability` option for new API endpoints. Without it, users have no way to know when an API was introduced or whether it's in technical preview.
+:::
+
+**Stable APIs** can omit the `stability` field since it defaults to `'stable'`:
+
+```typescript
+options: {
+  tags: ['example', 'oas-tag:Example APIs'],
+  availability: {
+    since: '9.0.0',
+  },
+},
+```
+
+Or include it explicitly for clarity:
+
+```typescript
+options: {
+  tags: ['example', 'oas-tag:Example APIs'],
+  availability: {
+    stability: 'stable',
+    since: '9.0.0',
+  },
+},
+```
+:::
+
 ::::
 
 :::{important}

@@ -81,6 +81,22 @@ If dependencies are broken or bootstrap fails, run `yarn kbn clean` first. For m
 :sync: code-generated
 Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, request/response schemas, and examples as needed, per the [checklist](checklist.md).
 
+:::{important}
+**Always include version and lifecycle information** using the `availability` option in your route definitions. This powers the version badges and tech preview labels that help users understand when an API was introduced and its stability status.
+
+```typescript
+options: {
+  tags: ['example', 'oas-tag:Example APIs'],
+  availability: {
+    stability: 'experimental',  // 'experimental' or 'stable' (default)
+    since: '9.2.0',              // Version when added
+  },
+},
+```
+
+For detailed guidance and more examples, see [Specify API lifecycle status](./organize-annotate.md#specify-api-lifecycle-status).
+:::
+
 :::{note}
 **CI will automatically regenerate the OpenAPI files when you push your `.ts` changes.** The next two steps show how to capture the snapshot and add examples locally, which is useful for validating changes before pushing or debugging issues.
 :::
