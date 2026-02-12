@@ -4,11 +4,15 @@ applies_to:
   serverless: preview
 products:
   - id: elasticsearch
+description: Learn how cross-project search (CPS) enables you to search across multiple Elasticsearch Serverless projects from a single request.
 ---
 
 # {{cps-cap}} [cross-project-search]
 
-**{{cps-cap}}** ({{cps-init}}) enables you to run a single search request across multiple projects. For example, you can use {{cps}} to filter and analyze log data stored in projects linked through {{cps-init}}.
+**{{cps-cap}}** ({{cps-init}}) enables you to run a single search request across multiple {{serverless-short}} projects.
+When your data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all that data from a single place, without having to search each project individually.
+
+This overview explains how {{cps}} works, including project linking, search expressions, tags, and project routing.
 
 ## {{cps-cap}} as the default behavior for linked projects
 
@@ -17,13 +21,6 @@ Projects are intended to act as logical namespaces for data, not hard boundaries
 Because of this, after you link additional projects to your current (_origin_) project, all searches from the origin project query every linked project by default.
 Searches are designed to run across projects automatically, providing the same experience for querying, analysis, and insights across projects as within a single project.
 Restricting search scope is always possible, but it requires explicitly scoping the search request using [qualified expressions](#search-expressions) or [routing parameters](#project-routing).
-
-## Prerequisites
-
-* {{cps-cap}} requires linked projects.
-<!-- To set up linked projects, refer to . -->
-<!-- * Pricing info -->
-<!-- * {{cps-cap}} requires [UIAM](TODO) set up. -->
 
 ## Project linking
 
@@ -39,29 +36,7 @@ When you search from an origin project, the query runs against its linked projec
 
 Project linking is not bidirectional. Searches initiated from a linked project do not run against the origin project.
 
-You can link projects by using the Cloud UI.
-
-<!--
-TODO: screenshot
--->
-
-1. On the home screen, select the project you want to use as the origin project and click **Manage**.
-2. Click **Configure** on the **{{cps-cap}}** tile. Or click **{{cps-cap}}** in the left-hand navigation.
-3. Click **Link projects**.
-4. Select the projects you want to link from the project list.
-
-<!--
-TODO: screenshot
--->
-
-5. Click **Review and save**.
-6. Review the selected projects. If you are satisfied, click **Save**.
-
-<!--
-TODO: screenshot
--->
-
-When your configuration is saved, a page with the list of linked projects opens.
+You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/explore-analyze/cross-project-search/cross-project-search-link-projects.md).
 
 ### Project ID and aliases
 
@@ -85,7 +60,7 @@ You can use `_origin` in search expressions to explicitly target the origin proj
 This section explains how search works in {{cps-init}}, including:
 
 * the {{cps-init}} search model
-* **qualified search expressions** (for example, `logs` and `logs*`), **unqualified search expressions** (expressions with a project alias prefix, for example `project1:logs`) and how they control search scope
+* **unqualified search expressions** (for example, `logs` and `logs*`), **qualified search expressions** (expressions with a project alias prefix, for example `project1:logs`) and how they control search scope
 * how search options such as `ignore_unavailable` and `allow_no_indices` behave in {{cps-init}}
 * common edge cases and examples involving mixed qualified and unqualified expressions
 
@@ -130,7 +105,7 @@ The distinction between qualified and unqualified search expressions affects how
 When you use an **unqualified** expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
 
 ::::{important}
-The way that missing resources are interpreted differs between qualified and unqalified expressions, refer to the [Qualified expression behavior](#behavior-qualified) and [Unqualified expression behavior](#behavior-unqualified) sections for a detailed explanation.
+The way that missing resources are interpreted differs between qualified and unqualified expressions, refer to the [Qualified expression behavior](#behavior-qualified) and [Unqualified expression behavior](#behavior-unqualified) sections for a detailed explanation.
 ::::
 
 `ignore_unavailable` defaults to `false`.
@@ -244,7 +219,7 @@ The following tags are predefined:
 * `_region`: the Cloud region where the project is located
 * `_type`: the project type (Observability, Search, Security)
 
-Predefined tags are always start with an underscore `_`.
+Predefined tags always start with an underscore `_`.
 
 ### Using tags in {{cps-init}}
 
