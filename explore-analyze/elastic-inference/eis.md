@@ -34,7 +34,7 @@ The following tables list the models supported by Elastic {{infer-cap}} Service 
 The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
 ::::
 
-### LLM Chat
+### LLM chat models
 
 :::{csv-include} chat-models.csv
 :caption: Scroll horizontally to view more information.
