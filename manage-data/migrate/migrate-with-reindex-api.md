@@ -17,7 +17,7 @@ The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/op
 :::{admonition} Basic migration
 This guide focuses on a basic data migration scenario for moving a full index or selected index documents from an {{ech}} deployment to an {{serverless-full}} project.
 
-For more advanced use cases, including data modification using scripts or ingest pipelines, refer to the [Reindex indices examples](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) and the [Reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) documentation. 
+For more advanced use cases, including data modification using scripts or ingest pipelines, refer to the [Reindex indices examples](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) and the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) documentation. 
 
 To migrate data from {{ech}}, you need to include the remote host parameters as shown in the [reindex from remote](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) example and as described here.
 :::
