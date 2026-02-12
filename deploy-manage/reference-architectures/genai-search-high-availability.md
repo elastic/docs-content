@@ -37,7 +37,7 @@ The GenAI search – high availability architecture is intended for organization
 
 - [Better Binary Quantization (BBQ)](/reference/elasticsearch/mapping-reference/bbq.md) is Elastic’s patented quantization technology that dramatically reduces vector memory footprint while preserving high recall, enabling large-scale in-memory vector search at lower cost.  
 - [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) extends BBQ by efficiently paging vector data from disk, providing predictable performance even when the full vector working set does not fit in memory and enabling cost-efficient scaling for very large corpora.  
-- [HNSW](/reference/elasticsearch/mapping-reference/bbq.md#bbq-hnsw) is used where maximum recall and lowest tail latency are required and sufficient memory is available to keep vector indexes resident in RAM.  
+- [HNSW](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-hnsw) is used where maximum recall and lowest tail latency are required and sufficient memory is available to keep vector indexes resident in RAM.  
 - [ACORN](https://www.elastic.co/search-labs/blog/elasticsearch-9-1-bbq-acorn-vector-search) further optimizes filtered vector search by reducing unnecessary graph traversals, making it especially effective for high-selectivity queries common in security, observability, and multi-tenant environments.
 
 Together, these approaches allow the architecture to be tuned precisely for different latency, recall, update, and cost constraints without changing the overall system design.
