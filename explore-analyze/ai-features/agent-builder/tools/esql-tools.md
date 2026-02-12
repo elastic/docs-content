@@ -60,7 +60,6 @@ When the agent provides a value, it overrides the default.
 #### Set default values in UI
 ```{applies_to}
 stack: ga 9.4
-serverless: ga
 ```
 
 When creating {{esql}} tools in the Kibana UI, you must specify default values for all optional parameters. This requirement ensures that tools have sensible fallback behavior and prevents configuration errors that could cause queries to fail at runtime.
@@ -69,7 +68,6 @@ When creating {{esql}} tools in the Kibana UI, you must specify default values f
 #### Set default values with API
 ```{applies_to}
 stack: ga 9.3
-serverless: ga
 ```
 
 When creating {{esql}} tools via the API, default values for optional parameters are not required. However, they are strongly recommended to prevent query syntax errors when agents don't provide values. Without defaults, optional parameters that agents don't specify will be `null`, which can cause queries to fail.
