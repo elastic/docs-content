@@ -2,8 +2,6 @@
 applies_to:
   deployment:
     self: ga 9.4
-    ece: all
-    eck: all
 ---
 
 # Full query logging [logging]
