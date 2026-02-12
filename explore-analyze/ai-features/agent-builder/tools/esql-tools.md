@@ -123,7 +123,7 @@ FROM finance-orders-*
 - **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents (for example, `start_date` instead of `date1`)
 - **Define parameter types**: Ensure parameters have the correct type to avoid runtime errors
 - **Provide clear descriptions**: Help agents understand when and how to use each parameter
-- **Use [default values](#default-values-for-optional-parameters)** for optional parameters: Set sensible defaults for optional parameters to reduce complexity for agents and ensure consistent behavior when parameters are omitted {applies_to}`stack: ga 9.3`
+- **Use [default values](#default-values-for-optional-parameters)** for optional parameters: Set sensible defaults for optional parameters to reduce complexity for agents and ensure consistent behavior when parameters are omitted {applies_to}`stack: ga 9.3+`
 
 For general guidance on naming tools and writing effective descriptions, refer to [Custom tools best practices](custom-tools.md#best-practices).
 
