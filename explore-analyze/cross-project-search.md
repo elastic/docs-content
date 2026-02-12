@@ -4,7 +4,7 @@ applies_to:
   serverless: preview
 products:
   - id: elasticsearch
-description: Learn how cross-project search (CPS) enables you to search across multiple Elasticsearch Serverless projects from a single request.
+description: Learn how cross-project search (CPS) enables you to search across multiple Serverless projects from a single request.
 ---
 
 # {{cps-cap}} [cross-project-search]

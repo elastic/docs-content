@@ -1,5 +1,5 @@
 ---
-description: "Link projects in the Cloud UI to enable cross-project search across multiple Elasticsearch Serverless projects."
+description: "Link projects in the Cloud UI to enable cross-project search across multiple Serverless projects."
 applies_to:
   stack: unavailable
   serverless: preview
