@@ -45,41 +45,35 @@ Use custom **{{esql}} tools** when:
 Parameters can be configured as:
 
 * **Required**: The agent must provide a value when calling the tool
-* **Optional**: The agent doesn't need to provide a value when calling the tool
-
-  ::::{applies-switch}
-
-  :::{applies-item} { "stack": "ga 9.3" }
-
-  * You can specify a [default value](#default-values-for-optional-parameters) for optional parameters to prevent query errors when agents don't provide them
-
-  :::
-
-  :::{applies-item} { "stack": "preview 9.2" }
-
-  * You don't need to specify a default value, the agent uses `null` when not provided
-
-  :::
-
-  ::::
+* **Optional**: The agent can omit the parameter when calling the tool. You can set [default values for optional parameters](#default-values-for-optional-parameters).
 
 
 
 ### Default values for optional parameters
-```{applies_to}
-stack: ga 9.3
-```
-
-:::{important}
-Support for optional parameters with default values in {{esql}} tools is an API-only feature initially. While default values are not required by the API, they are strongly recommended for all optional parameters to prevent query syntax errors.
-:::
 
 Optional parameters can have default values that are automatically applied when the agent doesn't provide a value. This ensures valid query syntax and consistent behavior.
 
-When an agent calls a tool without specifying parameters, it automatically uses the defaults.
+When an agent calls a tool without specifying optional parameters, it automatically uses the defaults.
 When the agent provides a value, it overrides the default.
 
-Refer to the [API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-tools) for details about the {{esql}} tools API.
+#### Set default values in UI
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+When creating {{esql}} tools in the Kibana UI, you must specify default values for all optional parameters. This requirement ensures that tools have sensible fallback behavior and prevents configuration errors that could cause queries to fail at runtime.
+
+
+#### Set default values with API
+```{applies_to}
+stack: ga 9.3
+serverless: ga
+```
+
+When creating {{esql}} tools via the API, default values for optional parameters are not required. However, they are strongly recommended to prevent query syntax errors when agents don't provide values. Without defaults, optional parameters that agents don't specify will be `null`, which can cause queries to fail.
+
+For details about the {{esql}} tools API, refer to the [API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-tools).
 
 ## Query syntax
 
