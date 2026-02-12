@@ -225,6 +225,6 @@ To modify the connection alias for a project:
 
 4. Select **Update alias**.
 
-::::[important]
-Renaming connection aliases may cause disruptions to applications and services that rely on these endpoints. Ensure that you update any references to the old alias to prevent issues.
+::::{important}
+Renaming connection aliases might cause disruptions to applications and services that rely on these endpoints. Ensure that you update any references to the old alias to prevent issues.
 ::::
