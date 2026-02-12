@@ -34,4 +34,4 @@ For instructions on configuring these, refer to [Configure system settings](/dep
 
 ## File and directory ownership
 
-The {{es}} user must own the data and log directories. Verify ownership after installation and before starting the service. RPM and Debian packages set correct ownership automatically.
+The {{es}} user must be able to read the configuration and write to data and log directories. Verify ownership after installation and before starting the service. RPM and Debian packages set correct ownership automatically.
