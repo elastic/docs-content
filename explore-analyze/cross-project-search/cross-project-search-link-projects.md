@@ -11,7 +11,7 @@ products:
 
 This guide explains how to link projects in the {{ecloud}} UI so you can run cross-project searches from an origin project.
 
-For an overview of {{cps}} concepts such as origin projects, linked projects, and search expressions, refer to [{{cps-cap}}](explore-analyze/cross-project-search.md).
+For an overview of {{cps}} concepts such as origin projects, linked projects, and search expressions, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 ## Prerequisites
 
