@@ -43,14 +43,50 @@ products:
 
 % cf (../../deploy-manage/deploy/self-managed/access.md#status) 
 
-The status page displays information about the server resource usage and installed plugins.
+The status page displays information about the server resource usage and installed plugins. It only reports for the individual responding {{kib}} instance.
 
-To view the {{kib}} status page, use the status endpoint. For example, `localhost:5601/status`.
+To view the {{kib}} status page, use the status page. For example, `localhost:5601/status`.
 
 :::{image} /troubleshoot/images/kibana-kibana-status-page-7_14_0.png
 :alt: Kibana server status page
 :screenshot:
 :::
 
-For JSON-formatted server status details, use the `localhost:5601/api/status` API endpoint.
+For JSON-formatted server status details, use the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status). For example, `localhost:5601/api/status`.
 
+## Triage {{kib}} health [access-triage]
+
+The following steps demonstrate a typical investigative flow. It assumes the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status) is saved locally as `kibana_status.json`.
+
+1. Check the Kibana Status
+
+   The UI will report "Kibana status is" and then the status. Using third-party tool [JQ](https://jqlang.github.io/jq/), you can see this in the API output by running:
+
+   ```bash
+   cat kibana_status.json | jq '{ overall: .status.overall.level }'
+   ```
+    
+2. Check core dependencies
+
+  The UI will report "Plugin Status" with a list of plugins. The core plugins prefix `core`. Using third-party tool [JQ](https://jqlang.github.io/jq/), you can check these in the API output by running:
+
+  ```bash
+  cat kibana_status.json | jq -r '.status.core|{ elasticsearch: .elasticsearch.level, savedObjects: .savedObjects.level }'
+  ```
+
+  These two core dependencies `elasticsearch` and `savedObjects` need to be healthy before reviewing any further plugins. If the connection to 
+  
+  * {{es}} is unhealthy, refer to [](/troubleshoot/kibana/error-server-not-ready.md).
+  * Saved Objects is unhealthy, refer to [](/troubleshoot/kibana/migration-failures.md).
+
+3. Check non-core plugins
+
+  The UI "Plugin Status" list will report the other plugins running on the instance. Plugins can be dependent upon each other. You should first check the health of the common underlying plugins: `reporting`, `ruleRegistry`, `savedObjects`, `security`, and `taskManager`. Using third-party tool [JQ](https://jqlang.github.io/jq/), you can check these in the API output by running:
+
+  ```bash
+  cat kibana_status.json | jq -rc '.status.plugins|to_entries[]|select(.key=="taskManager" or .key=="savedObjects" or .key=="security" or .key=="reporting" or .key=="ruleRegistry" or .key=="alerting") |{plugin:.key, status:.value.level, reason:.value.summary}'
+  ```
+
+  For an example of a degraded Task Manager and how its degraded plugin cascades into other plugins, refer to [Troubleshooting Kibana health](https://www.elastic.co/blog/troubleshooting-kibana-health#check-dependencies). For more information on investigating a degraded Task Manager, refer to [](/troubleshoot/kibana/task-manager.md).
+
+For a deeper troubleshooting walkthrough, refer to our [Troubleshooting Kibana health](https://www.elastic.co/blog/troubleshooting-kibana-health) blog and our [Troubleshooting Kibana health](https://www.youtube.com/watch?v=AlgGYcpGvOA&list=PL_mJOmq4zsHbQlfEMEh_30_LuV_hZp-3d&index=28) video.
