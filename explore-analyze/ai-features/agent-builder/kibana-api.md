@@ -183,7 +183,7 @@ POST kbn://api/agent_builder/tools
         "defaultValue": "2024-01-01T00:00:00Z"
       },
       "region": {
-        "type": "keyword",
+        "type": "string",
         "description": "Sales region to filter by. If omitted, defaults to 'ALL' to include all regions",
         "optional": true,
         "defaultValue": "ALL"
@@ -222,7 +222,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
              "defaultValue": "2024-01-01T00:00:00Z"
            },
            "region": {
-             "type": "keyword",
+             "type": "string",
              "description": "Sales region to filter by. If omitted, defaults to \"ALL\" to include all regions",
              "optional": true,
              "defaultValue": "ALL"
