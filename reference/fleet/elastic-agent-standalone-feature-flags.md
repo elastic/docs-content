@@ -68,3 +68,6 @@ Encrypted config {applies_to}`stack: ga 9.4+`
         enabled: true
     ```
 
+    ::::{note}
+    If encryption is disabled, the `fleet.enc` file should be deleted manually.
+    ::::
