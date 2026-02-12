@@ -50,8 +50,6 @@ Parameters can be configured as:
 * **Required**: The agent must provide a value when calling the tool
 * **Optional**: The agent can omit the parameter when calling the tool. You can set [default values for optional parameters](#default-values-for-optional-parameters).
 
-
-
 ### Default values for optional parameters
 
 Optional parameters can have default values that are automatically applied when the agent doesn't provide a value. This ensures valid query syntax and consistent behavior.
