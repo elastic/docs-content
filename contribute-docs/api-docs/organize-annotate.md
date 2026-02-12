@@ -372,11 +372,11 @@ options: {
 
 This generates a "Technical preview" badge and "Added in 9.2.0" version label in the published API documentation.
 
-::::{important}
+:::::{important}
 Always include the `availability` option for new API endpoints. Without it, users have no way to know when an API was introduced or whether it's in technical preview.
 
 **Note:** The `availability` option is only available at the API/route level. For individual parameters, you must manually document version and lifecycle information in the parameter's description field.
-::::
+:::::
 
 **Stable APIs** can omit the `stability` field since it defaults to `'stable'`:
 
