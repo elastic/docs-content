@@ -15,10 +15,7 @@ products:
 
 # Migrate your {{es}} data [migrate-your-elasticsearch-data]
 
-Transitioning between Elastic deployment types involves migrating your {{es}} data. Some data can be transfered automatically, for example as part of a snapshot and restore procedure when you restore backed-up data into your new, destination {{es}} cluster.
-
-To make sure that all of the data you want to migrate is moved over successfully, review the data types and migration options described here.
-
+Transitioning between Elastic deployment types involves migrating your {{es}} data. This page helps you plan your migration by describing the main categories of data you may need to move (ingested user data, {{es}} system data, {{kib}} saved objects, and feature-specific data), the migration methods available for each, and where to find step-by-step guides for your scenario.
 
 ## Data types [migration-data-types]
 
@@ -30,34 +27,35 @@ Your migration options depend on the type of data that you need to migrate, whic
 
 - **{{kib}} saved objects**: Dashboards, visualizations, maps, data views, Canvas workpads, and any other objects that you've saved in {{kib}}.
 
-- **Feature and component data**: Data stored in {{es}} that is specific to a given Elastic feature or component. This includes, for example, configuration data for {{fleet}} and {{integrations}}, {{watcher}} data, alerting rules and security detection rules, security data such as role mappings, API keys, and service tokens, and others.
+- **Feature and component data**: Data stored in {{es}} that is specific to a given Elastic feature or component. This includes, for example, configuration data for {{fleet}} and {{integrations}}, {{watcher}} data, alerting and security detection rules, security data such as role mappings, API keys, and service tokens, and others.
 
 ## Migration options [migration-options]
 
 Depending on the type of data that you need to move, various migration options are available:
 
- - **Reindex from source**: Reindexing into your destination deployment from the data's original source is often the most straightforward migration path.
- - **Snapshot and restore**: Create a backup of your running {{es}} cluster, and then migrate by restoring your data into a new cluster. Refer to [Snaphot and restore](/deploy-manage/tools/snapshot-and-restore.md) to learn more.
+ - **Reindex from source**: For your own data, reindexing into your new, destination deployment from the data's original source is typically the most straightforward approach, since it's available without any need to consider differing {{es}} versions or deployment types.
+ - **Snapshot and restore**: Use a snapshot to create a backup of your running {{es}} cluster, and then migrate by restoring your data into a new cluster.
  - **Reindex API**: Copy documents from a source index to a destination index. You can reindex across clusters and deployment types and transform the data en route. 
  - **{{ls}}**: With {{ls}} you can collect, process, and forward data from a variety of sources to a variety of destinations. It serves as a highly configurable option available for migrating data across any deployment types.
- - **[Saved objects](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) API**: Use this API for your {{kib}} saved 
+ - **Saved objects API**: Use this API or the {{kib}} UI to migrate objects that you've saved in {{kib}}.
+ - **{{kib}} saved object management**: You can also Use the {{kib}} UI to to migrate your saved objects.
 
-The following table describes the migration options available for each data type:
+The following table describes the migration options available for each data type and where to find guidance.
 
 | Data type | Migration options |
 | ------ | ------ |
-| Ingested user data | The reindex API, {{ls}}, and snapshot and restore migration options are available for your user data, with some restrictions based on the source and target deployment type. Refer to the [data migration guides](#data-migration-guides) listed on this page to learn more. |
+| Ingested user data | The reindex API, snapshot and restore, and {{ls}} migration options are available for your user data, with some restrictions based on the source and target deployment type. Refer to the [data migration guides](#data-migration-guides) listed on this page to learn more. |
 | {{es}} system data | System indices must be migrated using the snapshot and restore [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) component. Refer to [Migrate system indices](/manage-data/migrate/migrate-internal-indices.md) for detailed migration steps. |
-| {{kib}} saved objects | {{kib}} saved objects can be migrated using the Import and Export endpoints of the [Saved objects](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) API. Refer to the API documentation or to [Import and export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) in the Explore and Analyze section. |
+| {{kib}} saved objects | {{kib}} saved objects can be migrated using the Import and Export endpoints of the [Saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or using the [import and export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) tools available through the {{kib}} UI. |
 | Elastic feature and component data | Configuration data for products such as {{fleet}}, {{integrations}}, and {{watcher}} is typically migrated using the snapshot and restore feature. Refer to [Snaphot and restore](/deploy-manage/tools/snapshot-and-restore.md) and to the documentation for each specific product for additional detail. |
 
 ## Data migration guides [data-migration-guides]
 
-Choose one of our guides for detailed steps to migrate {{es}} your {{es}} data.
+Choose one of our guides for detailed steps to migrate your {{es}} data.
 
 Migrate your user data to {{serverless-full}}:
 
-- [Migrate with the reindex API](/manage-data/migrate/migrate-with-reindex-api.md) {applies_to}`self: unavailable`
+- [Migrate with the reindex API](/manage-data/migrate/migrate-with-reindex-api.md)
 - [Migrate with {{ls}}](/manage-data/migrate/migrate-with-logstash.md)
 
 Migrate your user data to {{ech}} or {{ece}}:

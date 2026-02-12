@@ -1,9 +1,10 @@
 ---
 navigation_title: Migrate with the reindex API
 applies_to:
-  serverless: preview
+  serverless: preview 9.3
   deployment:
     ess: ga
+    self: unavailable
 products:
   - id: elasticsearch
   - id: cloud-hosted

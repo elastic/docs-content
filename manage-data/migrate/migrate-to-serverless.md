@@ -21,7 +21,7 @@ To make the change, you first need to [create a {{serverless-short}} project](/d
 
 There are two approaches to migrating ECH data into {{serverless-short}}:
 
- - [Migrate with the reindex API](/manage-data/migrate/migrate-with-reindex-api.md): The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) is a built-in component of {{es}}. You can use it to migrate your data from source indices, aliases, or data streams, and optionally to filter and transform documents as they are ingested into the target cluster. This option is not currently available for migrating data from a self-hosted {{es}} deployment to {{serverless-short}}. It can be used for migrating data from {applies_to}`serverless: preview`
+ - [Migrate with the reindex API](/manage-data/migrate/migrate-with-reindex-api.md): The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) is a built-in component of {{es}}. You can use it to migrate your data from source indices, aliases, or data streams, and optionally to filter and transform documents as they are ingested into the target cluster. {applies_to}`serverless: preview 9.3`
 
    This method is not currently available for migrating {{es}} data from self-hosted deployments.
 
