@@ -272,6 +272,30 @@ By default, each {{kib}} instance includes a Device Control dashboard. When at l
 To collect device control data, {{elastic-defend}} must be updated to at least version 9.2.0. Until you update it to this version, the device control dashboard will not appear and device control events will not be ingested. Device control blocking will still work. 
 :::
 
+### Access levels for Windows devices
+```yaml {applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+Device control supports the following USB storage access levels:
+
+* **Allow all**
+* **Read only**
+* **Block execute**
+* **Block all**
+
+These access levels apply fully to native Windows volumes (USB mass storage devices), such as USB flash drives and external hard drives. However, Windows Portable Devices, such as smartphones and digital cameras, use a transfer protocol that doesn't support granular access control. For these devices, device control maps access levels as follows:
+
+| Configured access level | Behavior for Windows Portable Devices |
+|-------------------------|---------------------------------------|
+| Allow all               | Allow all                             |
+| Read only               | Block all                             |
+| Block execute           | Block all                             |
+| Block all               | Block all                             |
+
+This means that if you want to allow any access to Windows Portable Devices, you must select **Allow all**. The **Read only** and **Block execute** options block these devices entirely to maintain security when granular control isn't possible.
+
 ## Event collection [event-collection]
 
 In the **Settings** section, select which categories of events to collect on each operating system. Most categories are collected by default.
