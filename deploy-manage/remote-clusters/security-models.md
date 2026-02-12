@@ -65,7 +65,7 @@ To configure strong identity verification for remote clusters, refer to the appr
 - [Configure strong identity verification on {{ech}} deployments](./ec-remote-cluster-strong-identity.md)
 - [Configure strong identity verification in self-managed clusters](./remote-clusters-api-key.md#remote-cluster-strong-verification)
 
-% If useful we can add a note here saying that the self-managed instructions can be adapted to any other deployment type
+The self-managed configuration procedure can be adapted to other deployment types, such as {{ece}} and {{eck}}, using the platform-specific methods to apply the required configuration.
 
 ## TLS certificate authentication
 ```{applies_to}
