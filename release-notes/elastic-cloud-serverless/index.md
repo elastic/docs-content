@@ -78,7 +78,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves handling of 204 responses to Cases webhooks [#251090]({{kib-pull}}251090)
 * Fixes {{esql}} test tool failing when the numerical value is zero [#251901]({{kib-pull}}251901)
 * Fixes document flyout loading loop with relative time ranges [#251647]({{kib-pull}}251647)
-* Fixes Agent Builder index search support for special text fields `match_only_text` and `pattern_text` [#252082]({{kib-pull}}252082).
+* Fixes Agent Builder index search support for special text fields `match_only_text` and `pattern_text` [#252082]({{kib-pull}}252082)
 * Improves errors on some {{esql}} queries missing timestamps [#141503]({{es-pull}}141503)
 * Fixes {{esql}} bug when grouping on aliases [#141568]({{es-pull}}141568)
 * Extends the `read` index privilege to consistently cover all actions required to run cross-cluster search queries [#141376]({{es-pull}}141376)
