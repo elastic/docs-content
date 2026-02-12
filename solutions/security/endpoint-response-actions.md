@@ -247,6 +247,10 @@ Scanning can take longer for directories containing a lot of files.
 
 ### `runscript` [runscript]
 
+::::{note}
+This response action is supported only for hosts enrolled in [third-party endpoint protection systems](/solutions/security/endpoint-response-actions/third-party-response-actions.md).
+::::
+
 Run a script on a host. 
 
 #### CrowdStrike

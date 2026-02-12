@@ -99,13 +99,13 @@ The AI Assistant connects to one of these supported LLM providers:
    - Your authentication key or secret.
 
 ::::{admonition} Recommended models
-While the {{obs-ai-assistant}} is compatible with many different models, refer to the [Large language model performance matrix](/solutions/observability/llm-performance-matrix.md) to select models that perform well with your desired use cases.
+While the {{obs-ai-assistant}} is compatible with many different models, refer to the [Large language model performance matrix](/solutions/observability/ai/llm-performance-matrix.md) to select models that perform well with your desired use cases.
 
 ::::
 
 ### Elastic Managed LLMs [elastic-managed-llm-obs-ai-assistant]
 
-:::{include} ../_snippets/elastic-managed-llm.md
+:::{include} ../../_snippets/elastic-managed-llm.md
 :::
 
 ### Connect to a custom local LLM
@@ -169,7 +169,7 @@ You're not limited to search connector indices in the **Search connector index p
 :::
 
 ##### Space awareness
-The **Search connector index pattern** setting is [space](../../deploy-manage/manage-spaces.md) aware. This means you can assign different values for different spaces. For example, a "Developers" space may include an index pattern like `github-*,jira*`, while an "HR" space may include an index pattern like `employees-*`.
+The **Search connector index pattern** setting is [space](../../../deploy-manage/manage-spaces.md) aware. This means you can assign different values for different spaces. For example, a "Developers" space may include an index pattern like `github-*,jira*`, while an "HR" space may include an index pattern like `employees-*`.
 
 ##### Custom index field name requirements
 Field names in custom indices have no specific requirements. Any `semantic_text` field is automatically queried. Documents matching the index pattern are sent to the LLM in full, including all fields. It's not currently possible to include or exclude specific fields.
@@ -233,7 +233,7 @@ After creating the pipeline, complete the following steps:
 
 ### Add user-specific system prompts [obs-ai-assistant-user-prompt]
 
-User-specific prompts customize how the AI assistant responds by appending personalized instructions to built-in system prompts. For example, you could specify "Always respond in French," and all subsequent responses will be in French.
+User-specific prompts customize how the AI assistant responds by appending personalized instructions to built-in system prompts. For example, you could specify "Always respond in French", and all subsequent responses will be in French.
 
 A user-specific prompt only applies to the user that sets it.
 
@@ -422,7 +422,7 @@ Continue a conversation from a contextual prompt by clicking **Start chat** to o
 
 Use the [Observability AI Assistant connector](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows as follows:
 
-1. Navigate to **Observability / Alerts** to [create (or edit) an alerting rule](incident-management/create-manage-rules.md) that uses the AI Assistant connector. Specify the conditions that must be met for the alert to fire.
+1. Navigate to **Observability / Alerts** to [create (or edit) an alerting rule](../incident-management/create-manage-rules.md) that uses the AI Assistant connector. Specify the conditions that must be met for the alert to fire.
 2. Under **Actions**, select the **Observability AI Assistant** connector type.
 3. In the **Connector** list, select the AI connector you created when you set up the assistant.
 4. In the **Message** field, specify the message to send to the assistant:
@@ -447,7 +447,7 @@ When the alert fires, contextual details about the event—such as when the aler
 
 It might take a minute or two for the AI Assistant to process the message and create the conversation.
 
-Note that overly broad prompts may result in the request exceeding token limits. For more information, refer to [Token limits](#obs-ai-token-limits). Also, attempting to analyze several alerts in a single connector execution may cause you to exceed the function call limit. If this happens, modify the message specified in the connector configuration to avoid exceeding limits.
+Overly broad prompts may result in the request exceeding token limits. For more information, refer to [Token limits](#obs-ai-token-limits). Also, attempting to analyze several alerts in a single connector execution may cause you to exceed the function call limit. If this happens, modify the message specified in the connector configuration to avoid exceeding limits.
 
 When asked to send a message to another connector, such as Slack, the AI Assistant attempts to include a link to the generated conversation.
 
@@ -462,7 +462,7 @@ The `server.publicBaseUrl` setting must be correctly specified under {{kib}} set
 
 {{obs-ai-assistant}} connector is called when the alert fires and when it recovers.
 
-To learn more about alerting, actions, and connectors, refer to [Alerting](incident-management/alerting.md).
+To learn more about alerting, actions, and connectors, refer to [Alerting](../incident-management/alerting.md).
 
 ## AI Assistant Settings [obs-ai-settings]
 
@@ -556,7 +556,7 @@ The following example shows the anonymized content highlighted in the chat windo
 Anonymization requires the following:
 
 * **Advanced Settings privilege**: Necessary to edit the configuration and enable rules.
-  Once saved, *all* users in the same **Space** benefit from the anonymization (the setting is [space-aware](../../deploy-manage/manage-spaces.md)).
+  Once saved, *all* users in the same **Space** benefit from the anonymization (the setting is [space-aware](../../../deploy-manage/manage-spaces.md)).
 * **ML privilege and resources**: If you enable a rule of type NER, you must first [deploy and start a named-entity-recognition model](/explore-analyze/machine-learning/nlp/ml-nlp-ner-example.md#ex-ner-deploy) and have sufficient ML capacity.
 
 ::::{important}

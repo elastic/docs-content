@@ -1,5 +1,6 @@
 ---
 navigation_title: "ES|QL tools"
+description: "Create custom tools that execute parameterized ES|QL queries for precise data retrieval and analysis."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{esql}} tools
+# {{esql}} tools in {{agent-builder}}
 
 {{esql}} query tools enable you to create parameterized queries that execute directly against your {{es}} data. These custom tools provide precise control over data retrieval through templated [{{esql}}](elasticsearch://reference/query-languages/esql.md) statements.
 
@@ -24,6 +25,8 @@ Use custom **{{esql}} tools** when:
 * You want to expose specific, parameterized queries to agents
 * Results should be in a predictable tabular format
 * You have well-defined data retrieval requirements
+
+While agents can generate {{esql}} queries dynamically using [index search tools](index-search-tools.md), custom {{esql}} tools ensure syntax correctness and enforce critical business rules that an LLM might occasionally miss. For strategies to avoid data retrieval issues, refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md).
 
 ## Key characteristics
 
@@ -99,6 +102,21 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 
 :::{note}
 For API examples, refer to [](/explore-analyze/ai-features/agent-builder/kibana-api.md#tools)
+:::{dropdown} Complex analytical query example
+For high-stakes or complex analytical queries, pre-defining the {{esql}} logic guarantees correctness and enforces business rules.
+
+**Tool name**: `Calculate Quarterly Revenue`
+
+**Description**: "Calculates confirmed revenue for a specific region broken down by quarter. Input requires a region code (e.g., 'US', 'EU')."
+
+**Query**:
+```esql
+FROM finance-orders-*
+| WHERE order_status == "completed" AND region == ?region <1>
+| STATS total_revenue = SUM(amount) BY quarter
+| LIMIT 5
+```
+1. The `?region` parameter gives agents flexibility while keeping the core calculation logic consistent and reliable
 :::
 
 ## Best practices

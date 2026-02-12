@@ -1,5 +1,6 @@
 ---
 navigation_title: "Kibana APIs"
+description: "Use the Agent Builder Kibana REST APIs to programmatically manage agents, tools, and conversation history."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
@@ -14,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Work with {{agent-builder}} using the APIs
+# {{agent-builder}} Kibana APIs overview
 
 This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
@@ -38,7 +39,7 @@ export API_KEY="your-api-key"
 :::
 
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{tip}
@@ -53,7 +54,7 @@ To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must i
 For example, to list tools in a space named `my-space`:
 
 ```bash
-curl -X GET "https://${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
+curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 
@@ -65,7 +66,7 @@ Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automaticall
 
 % TODO: we may remove this list once the API reference is live, but probably helpful in the short term
 
-### Tools
+### Tools APIs
 
 **Example:** List all tools
 
@@ -84,7 +85,7 @@ GET kbn://api/agent_builder/tools
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{include} _snippets/spaces-api-note.md
@@ -129,7 +130,7 @@ POST kbn://api/agent_builder/tools
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/tools" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -264,7 +265,7 @@ GET kbn://api/agent_builder/tools/{id}
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools/{id}" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/tools/{id}" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{include} _snippets/spaces-api-note.md
@@ -290,7 +291,7 @@ DELETE kbn://api/agent_builder/tools/{id}
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/tools/{id}" \
+curl -X DELETE "${KIBANA_URL}/api/agent_builder/tools/{id}" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true"
 ```
@@ -334,7 +335,7 @@ PUT kbn://api/agent_builder/tools/{toolId}
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X PUT "https://${KIBANA_URL}/api/agent_builder/tools/{toolId}" \
+curl -X PUT "${KIBANA_URL}/api/agent_builder/tools/{toolId}" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -385,7 +386,7 @@ POST kbn://api/agent_builder/tools/_execute
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -402,7 +403,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 ::::
 
-### Agents
+### Agents APIs
 
 **Example:** List all agents
 
@@ -421,7 +422,7 @@ GET kbn://api/agent_builder/agents
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/agents" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{include} _snippets/spaces-api-note.md
@@ -468,7 +469,7 @@ POST kbn://api/agent_builder/agents
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/agents" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -517,7 +518,7 @@ GET kbn://api/agent_builder/agents/{id}
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/agents/{id}" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{include} _snippets/spaces-api-note.md
@@ -561,7 +562,7 @@ PUT kbn://api/agent_builder/agents/{id}
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X PUT "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
+curl -X PUT "${KIBANA_URL}/api/agent_builder/agents/{id}" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -607,7 +608,7 @@ DELETE kbn://api/agent_builder/agents/{id}
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
+curl -X DELETE "${KIBANA_URL}/api/agent_builder/agents/{id}" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true"
 ```
@@ -640,7 +641,7 @@ POST kbn://api/agent_builder/converse
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -676,7 +677,7 @@ POST kbn://api/agent_builder/converse/async
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse/async" \
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse/async" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
@@ -709,7 +710,7 @@ GET kbn://api/agent_builder/conversations
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/conversations" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{include} _snippets/spaces-api-note.md
@@ -735,7 +736,7 @@ GET kbn://api/agent_builder/conversations/{conversation_id}
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{include} _snippets/spaces-api-note.md
@@ -761,7 +762,7 @@ DELETE kbn://api/agent_builder/conversations/{conversation_id}
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}" \
+curl -X DELETE "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true"
 ```
@@ -793,7 +794,7 @@ GET kbn://api/agent_builder/a2a/{agentId}.json
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{include} _snippets/spaces-api-note.md
