@@ -1,9 +1,9 @@
 ---
 applies_to:
   serverless:
+navigation_title: For {{serverless-full}}
 products:
   - id: cloud-serverless
-navigation_title: For {{serverless-full}}
 ---
 
 # AutoOps for {{serverless-full}}
