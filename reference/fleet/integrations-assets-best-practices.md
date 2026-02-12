@@ -58,7 +58,7 @@ Note, however, that creating standalone integration assets based off of {{fleet}
 
 ## Editing assets managed by {{fleet}} [assets-restrictions-editing-assets]
 
-{{fleet}}-managed integration assets should not be edited. Examples of these assets include an integration index template, the `@package` component templates, and ingest pipelines that are bundled with integrations. Any changes made to these assets will be overwritten when the integration is upgraded.
+{{fleet}}-managed integration assets should not be edited. Examples of these assets include an integration index template, the `@package` component templates, and ingest pipelines that are bundled with integrations. Any changes made to these assets will be overwritten when the integration is upgraded, and may be overwritten at any other time without notice.
 
 
 ## Creating custom component templates [assets-restrictions-custom-component-templates]
