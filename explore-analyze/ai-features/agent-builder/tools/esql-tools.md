@@ -101,7 +101,7 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 :::
 
 :::{note}
-For API examples, refer to [](/explore-analyze/ai-features/agent-builder/kibana-api.md#tools)
+For API examples, refer to [](/explore-analyze/ai-features/agent-builder/kibana-api.md#tools-apis)
 :::{dropdown} Complex analytical query example
 For high-stakes or complex analytical queries, pre-defining the {{esql}} logic guarantees correctness and enforces business rules.
 
