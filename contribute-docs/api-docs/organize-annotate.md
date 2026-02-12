@@ -333,7 +333,6 @@ class Foo {
 :::
 
 :::{tab-item} Kibana
-:sync: kibana
 
 **API availability and stability** is specified using the `availability` option in route definitions:
 
