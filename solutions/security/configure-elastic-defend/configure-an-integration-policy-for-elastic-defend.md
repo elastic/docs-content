@@ -274,7 +274,7 @@ To collect device control data, {{elastic-defend}} must be updated to at least v
 
 ### Access levels for Windows devices
 ```yaml {applies_to}
-stack: ga 9.4
+stack: ga 9.4+
 serverless: ga
 ```
 
