@@ -4,6 +4,14 @@ applies_to:
   stack: preview 9.3
   serverless: preview
 description: Learn about Elasticsearch action steps for searching, indexing, and managing data in workflows.
+products:
+  - id: kibana
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # {{es}} action steps

@@ -1,5 +1,7 @@
 ---
 navigation_title: More topics
+products:
+  - id: elasticsearch
 ---
 
 # More Elasticsearch troubleshooting topics

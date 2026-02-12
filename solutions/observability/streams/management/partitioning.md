@@ -2,6 +2,15 @@
 applies_to:
   serverless: preview
   stack: preview 9.2
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Partition data into child streams [streams-partitioning]

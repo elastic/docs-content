@@ -3,6 +3,8 @@ applies_to:
   deployment:
     ece: all
 navigation_title: Deploy an orchestrator
+products:
+  - id: cloud-enterprise
 ---
 # Deploy an {{ece}} orchestrator
 
