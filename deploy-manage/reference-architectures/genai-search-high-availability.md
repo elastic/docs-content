@@ -98,7 +98,7 @@ To increase off-heap memory available for vector search, you have the following 
 
 When vector quantization is enabled, {{es}} stores both the original `float32` vectors and their quantized representations on disk. Retaining the `float32` vectors preserves flexibility for re-ranking, re-indexing, and future model changes. Only the quantized vectors are loaded into memory for search. 
 
-- Use [HNSW](/reference/elasticsearch/mapping-reference/bbq.md#bbq-hnsw) when you are optimizing for 99%+ recall and absolute lowest tail latency, and you can afford the RAM/off-heap footprint (and you’re not constantly updating the index).
+- Use [HNSW](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-hnsw) when you are optimizing for 99%+ recall and absolute lowest tail latency, and you can afford the RAM/off-heap footprint (and you’re not constantly updating the index).
 - Use [DiskBBQ](/reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) when you’re cost/memory sensitive, your recall target is more like “\~95%” and you want performance that doesn’t drop when the working set no longer fits RAM.
 - Use [BBQ flat](/reference/elasticsearch/mapping-reference/bbq.md#bbq-flat): (BBQ without HNSW) when filters reduce comparisons to \< \~100k vectors; typically lowest operational complexity.
 
