@@ -169,7 +169,7 @@ It depends on:
 
 You can [contact us](https://www.elastic.co/contact) for an estimate and recommended configuration based on your specific scenario.
 
-## [**Resources and references**](/deploy-manage/reference-architectures/hotfrozen-high-availability.md#hot-frozen-resources)
+## Resources and references
 
 * [{{es}} \- Vector Search Documentation](/solutions/search/vector.md)  
 * [{{es}} \- Get ready for production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)  
