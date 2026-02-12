@@ -2,7 +2,14 @@
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how to get started creating Elastic workflows. 
+description: Learn how to get started creating Elastic workflows.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Get started with workflows [workflows-get-started]

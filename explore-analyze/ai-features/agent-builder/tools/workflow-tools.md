@@ -1,6 +1,6 @@
 ---
 navigation_title: "Workflow tools"
-description: "Learn how to trigger Elastic Workflows from Elastic Agent Builder and invoke your agents within workflow steps."
+description: "Create custom tools that allow agents to trigger Elastic Workflows directly from a chat conversation to perform deterministic tasks."
 applies_to:
   stack: preview 9.3+
   serverless: preview
