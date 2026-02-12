@@ -91,7 +91,10 @@ Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, r
   - **`stable`** (default) → Generally available (GA); stable for production use
 - **`since`**: The version when the API was first added (e.g., `'9.2.0'`)
 
-::::{dropdown} Basic example
+**Note:** The `availability` option is only available at the API/route level. For individual parameters, you must manually document version and lifecycle information in the parameter's description field.
+:::
+
+:::::{dropdown} Basic example
 
 ```typescript
 router.versioned.post({
@@ -106,9 +109,9 @@ router.versioned.post({
   },
 })
 ```
-::::
+:::::
 
-::::{dropdown} Example from the A2A route
+:::::{dropdown} Example from the A2A route
 
 ```typescript
 options: {
@@ -119,10 +122,7 @@ options: {
   },
 },
 ```
-::::
-
-**Note:** The `availability` option is only available at the API/route level. For individual parameters, you must manually document version and lifecycle information in the parameter's description field.
-:::
+:::::
 
 :::{note}
 **CI will automatically regenerate the OpenAPI files when you push your `.ts` changes.** The next two steps show how to capture the snapshot and add examples locally, which is useful for validating changes before pushing or debugging issues.
