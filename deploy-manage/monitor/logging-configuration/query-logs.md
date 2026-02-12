@@ -17,45 +17,44 @@ The following logging modules are available:
 - `eql`: Logs every query operation performed on the cluster using EQL.
 - `sql`: Logs every query operation performed on the cluster using SQL.
 
-By default, the logging is disabled. To enable the logging, set the `elasticsearch.actionlog.<MODULE>.enabled` property to `true` in the `elasticsearch.yml` configuration file or using the settings API, for example:
+By default, the logging is disabled. To enable the logging, set the `elasticsearch.activitylog.<MODULE>.enabled` property to `true` in the `elasticsearch.yml` configuration file or using the settings API, for example:
 
 ```yaml
-elasticsearch.actionlog.search.enabled: true
+elasticsearch.activitylog.search.enabled: true
 ```
 
-By default, search queries that query only system indices are not logged. To enable logging of such queries, use the `elasticsearch.actionlog.search.include.system_indices` setting described below.
+By default, search queries that query only system indices are not logged. To enable logging of such queries, use the `elasticsearch.activitylog.search.include.system_indices` setting described below.
 
 ## Configuring query logging
 
 The following configuration options are available:
 
-- `elasticsearch.actionlog.<MODULE>.enabled`: Enables or disables logging for the specified module.
-- `elasticsearch.actionlog.<MODULE>.threshold`: Sets the request duration threshold for logging events in the specified
-  module. If the threshold is set to the value greater than 0, only the requests that take as much time or longer than
-  the threshold are logged.
-- `elasticsearch.actionlog.<MODULE>.log_level`: Sets the log level for the specified module.
-- `elasticsearch.actionlog.<MODULE>.include.user`: Enables or disables user information logging for the specified module.
+- `elasticsearch.activitylog.<MODULE>.enabled`: Enables or disables logging for the specified module.
+- `elasticsearch.activitylog.<MODULE>.threshold`: Sets the request duration threshold for logging events in the specified module. If the threshold is set to the value greater than 0, only the requests that take as much time or longer than the threshold are logged.
+- `elasticsearch.activitylog.<MODULE>.include.user`: Enables or disables the user information logging for the specified module.
 
 Additionally, for the search module:
 
-- `elasticsearch.actionlog.search.include.system_indices`: Enables or disables logging of system indices for the search module.
+- `elasticsearch.activitylog.search.include.system_indices`: Enables or disables logging of system indices for the search module.
 
 ## What is included in the log
 
 The logs are output in JSON format, and include the following fields:
 
 - `@timestamp`: The timestamp of the log entry.
-- `log.level`: The log level (e.g., WARN, INFO, DEBUG, TRACE).
-- `success`: Whether the request was successful (`true`) or not (`false`).
+- `log.level`: The log level (e.g., `WARN`, `INFO`, `DEBUG`, `TRACE`).
+- `event.outcome`: Whether the request was successful (`success`) or not (`failure`).
+- `event.duration`: How long (in nanoseconds) the request took to complete.
 - `error.type` and `error.message`: Error information fields if the request failed.
-- `took` and `took_ms`: The duration of the request, in nanoseconds and milliseconds.
 - `user.*`: User information fields if enabled.
-- `x_opaque_id`: The X-Opaque-ID header value if enabled. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
-- `type`: The type of operation (search, esql, etc.).
-- `query`: The query source (depends on the module).
-- Additional fields specific to {{es}} environment may be added.
+- `http.request.headers.x_opaque_id`: The X-Opaque-ID header value if enabled. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
+- `elasticsearch.activitylog.type`: The type of operation (`search`, `esql`, etc.).
+- `elasticsearch.activitylog.took`: How long (in nanoseconds) the request took to complete.
+- `elasticsearch.activitylog.took_millis`: How long (in milliseconds) the request took to complete.
+- Additional fields specific to {{es}} environment may be added, for example:
+    - `elasticsearch.activitylog.query`: The query source (depends on the module).
 
-In addition to the fields listed above, each module may include fields specific to the module:
+In addition to the fields listed above, each module may include fields specific to the module, prefixed with `elasticsearch.activitylog.`
 
 ### Search
 
@@ -76,28 +75,56 @@ Example log entry:
 
 ```js
 {
-	"@timestamp": "2026-01-14T21:34:37.988Z",
+	"@timestamp": "2026-02-06T20:22:41.345Z",
 	"log.level": "INFO",
 	"auth.type": "REALM",
-	"hits": 4,
-	"indices": "my-index-2,my-index",
-	"query": "{\"size\":1,\"fields\":[{\"field\":\"id\"},{\"field\":\"title\"},{\"field\":\"_tier\"}]}",
-	"success": "true",
-	"took": 5000000,
-	"took_millis": 5,
-	"type": "search",
+	"elasticsearch.activitylog.hits": 3,
+	"elasticsearch.activitylog.indices": "my-index",
+	"elasticsearch.activitylog.query": "{\"size\":1,\"fields\":[{\"field\":\"id\"},{\"field\":\"title\"},{\"field\":\"_tier\"}]}",
+	"elasticsearch.activitylog.took": 1000000,
+	"elasticsearch.activitylog.took_millis": 1,
+	"elasticsearch.activitylog.type": "search",
+	"event.duration": 1000000,
+	"event.outcome": "success",
 	"user.name": "elastic",
 	"user.realm": "reserved",
-	"x_opaque_id": null,
 	"ecs.version": "1.2.0",
 	"service.name": "ES_ECS",
-	"event.dataset": "elasticsearch.search_actionlog",
-	"process.thread.name": "elasticsearch[node-1][transport_worker][T#8]",
-	"log.logger": "search.actionlog",
-	"trace.id": "408bc58c794ae797d6a02a9b62ed1564",
+	"event.dataset": "elasticsearch.search_log",
+	"process.thread.name": "elasticsearch[node-1][search][T#8]",
+	"log.logger": "search.activitylog",
 	"elasticsearch.cluster.uuid": "gjYgb-uQQAuLmDoKlQInZw",
 	"elasticsearch.node.id": "juurGSfgRYGwTP2ttZbtOQ",
-	"elasticsearch.node.name": "node-1"
+	"elasticsearch.node.name": "node-1",
+	"elasticsearch.cluster.name": "querying"
+}
+```
+
+Example failure entry:
+```js
+{
+	"@timestamp": "2026-02-12T20:57:55.058Z",
+	"log.level": "INFO",
+	"auth.type": "REALM",
+	"elasticsearch.activitylog.query": "\nfrom my-missing\n",
+	"elasticsearch.activitylog.took": 1757709,
+	"elasticsearch.activitylog.took_millis": 1,
+	"elasticsearch.activitylog.type": "esql",
+	"error.message": "Unknown index [my-missing]",
+	"error.type": "org.elasticsearch.xpack.esql.VerificationException",
+	"event.duration": 1757709,
+	"event.outcome": "failure",
+	"user.name": "elastic",
+	"user.realm": "reserved",
+	"ecs.version": "1.2.0",
+	"service.name": "ES_ECS",
+	"event.dataset": "elasticsearch.esql_log",
+	"process.thread.name": "elasticsearch[node-1][search_coordination][T#4]",
+	"log.logger": "esql.activitylog",
+	"elasticsearch.cluster.uuid": "gjYgb-uQQAuLmDoKlQInZw",
+	"elasticsearch.node.id": "juurGSfgRYGwTP2ttZbtOQ",
+	"elasticsearch.node.name": "node-1",
+	"elasticsearch.cluster.name": "querying"
 }
 ```
 
@@ -105,12 +132,14 @@ Example log entry:
 
 The logs are always emitted on the node that executed the request. These logs can be viewed in the following locations:
 
-* If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). The query logs have the `logger` value of `<MODULE>.actionlog`(e.g. `search.actionlog`).
-* From the local {{es}} service logs directory. Slow log files have a suffix of `_<MODULE>_log.json` , e.g. `_search_log.json`.
+* If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). The query logs have the `logger` value of `<MODULE>.activitylog`(e.g. `search.activitylog`).
+* From the local {{es}} service logs directory. Slow log files have a suffix of `_<MODULE>_log.json` , e.g. `mycluster_search_log.json`.
 
 ## When and how to use query logging
 
-TODO
+While query logging is designed to have as little impact on the performance of your cluster as possible, it will necessarily consume resources needed to create and store the logs. Thus, it is advised to enable query logging only when necessary for troubleshooting or monitoring purposes, and to disable it after the investigation is complete. It is also recommended to set the threshold to avoid logging very fast queries that are of little consequence for cluster performance. 
+
+Query logging uses an asynchronous logging mechanism that does not block query execution. As a result, if there are too many incoming queries and the logging system can log store all the logs, some log entries may be lost. If that is a problem, consider increasing the thresholds to only log the most impactful queries. 
 
 ## Learn more [_learn_more]
 
