@@ -285,6 +285,12 @@ stack: preview 9.3
 To use strong identity verification, the local and remote clusters must be configured to sign request headers and to verify request
 headers. This can be done through the cluster settings API or `elasticsearch.yaml`.
 
+:::{note}
+The steps in this section describe the configuration for self-managed clusters. The same procedure can be adapted for other deployment types, such as {{ece}} and {{eck}}, with the appropriate platform-specific configuration steps.
+
+For {{ech}}-specific steps to configure strong identity verification, refer to [Strong identity verification on {{ech}}](./ec-remote-cluster-strong-identity.md).
+:::
+
 #### On the local cluster [_certificate_identity_local_cluster]
 
 When [adding the remote cluster](#using-the-es-api) to the local cluster, you must configure it to sign cross-cluster requests with a certificate–private key pair. You can generate a signing certificate using [elasticsearch-certutil](#remote-clusters-security-api-key-remote-action) or use an existing certificate. The private key can be encrypted and the password must be stored securely as a secure setting in Elasticsearch keystore. Refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-signing-settings) for details.
