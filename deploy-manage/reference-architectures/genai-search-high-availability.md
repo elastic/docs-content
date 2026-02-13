@@ -70,11 +70,11 @@ In addition, the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-
 
 The following recommendations assist with clusters that are self-deployed on-prem or self-deployed in a cloud provider. With {{ech}}, you can deploy clusters in {{aws}}, Azure, or Google Cloud. Available hardware types and configurations vary across providers, but each offers instance families that meet the performance needs of search and generative AI applications. 
 
-For details, refer to our documentation on [{{ech}} hardware](cloud://reference/cloud/cloud-hosted/hardware.md) for {{aws}}, Azure, and GCP. The "Physical" column in the table below provides guidance when self-deploying {{es}} in your own data center, based on equivalent CPU, RAM, and storage profiles.
+For details, refer to our documentation on [{{ech}} hardware](cloud://reference/cloud-hosted/hardware.md) for {{aws}}, Azure, and GCP. The "Physical" column in the table below provides guidance when self-deploying {{es}} in your own data center, based on equivalent CPU, RAM, and storage profiles.
 
 Elastic has performance-tested hardware profiles across the major cloud providers to identify the optimal balance for each node type. Significantly deviating from these tested ratios may appear to reduce costs, but typically leads to degraded performance, query latency spikes, or search scalability.
 
-Dedicated ML nodes are needed when {{infer}} is performed within the cluster, such as running [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) or [custom transformer models](/explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md) locally. These nodes should be dedicated and provisioned with sufficient memory to load models into RAM. When {{infer}} is offloaded to an LLM or embedding model external to the cluster (for example, [Elastic {{infer-cap}} Service](kibana://reference/kibana/connectors-kibana/elastic-managed-llm.md), Azure OpenAI, Anthropic, or Bedrock), dedicated ML nodes are not required.
+Dedicated ML nodes are needed when {{infer}} is performed within the cluster, such as running [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) or [custom transformer models](/explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md) locally. These nodes should be dedicated and provisioned with sufficient memory to load models into RAM. When {{infer}} is offloaded to an LLM or embedding model external to the cluster (for example, [Elastic {{infer-cap}} Service](kibana://reference/connectors-kibana/elastic-managed-llm.md), Azure OpenAI, Anthropic, or Bedrock), dedicated ML nodes are not required.
 
 | Type | {{aws}} | Azure | GCP | Physical |
 | :---- | :---- | :---- | :---- | :---- |
