@@ -13,7 +13,7 @@ type: overview
 {{es}} must run under an appropriate user account with specific permissions and consistent configuration across all nodes in your cluster. 
 This page describes the requirements for the user account that runs the {{es}} service.
 
-RPM and Debian packages automatically create the `elasticsearch` user and group during installation. For `.tar.gz` or `.zip` installations, create the user manually before starting {{es}}.
+RPM and Debian packages automatically create the `elasticsearch` user and group during installation. For `.tar.gz` or `.zip` installations, create the user and group manually before starting {{es}}.
 
 ## Don't run as a privileged user
 
