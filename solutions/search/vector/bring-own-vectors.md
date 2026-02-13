@@ -135,7 +135,7 @@ POST /_bulk
 { "index": { "_index": "amazon-reviews", "_id": "4" } }
 { "review_text": "This product is great. I can do anything with it.", "review_vector": "VGhpcyBwcm9kdWN0IGlzIGdyZWF0LiBJIGNhbiBkbyBhbnl0aGluZyB3aXRoIGl0Lg==" }
 { "index": { "_index": "amazon-reviews", "_id": "5" } }
-{ "review_text": "This product has ruined my life and the lives of my family and friends.", "review_vector": "VGhpcyBwcm9kdWN0IGhhcyBydWluZWQgbXkgbGlmZSBhbmQgdGhlIGxpdmVzIG9mIG15IGZhbWlseSBhbmQgZnJpZW5kcy4=" }
+{ "review_text": "This product has ruined my life and the lives of my family and friends.", "review_vector": "P0zMzT8zMzM/GZmaPwAAAD7MzM0+mZmaPkzMzT3MzM0=" }
 ```
 :::
 ::::
