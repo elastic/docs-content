@@ -19,139 +19,74 @@ Contributing to [elastic.co/guide](https://www.elastic.co/guide/index.html)? Ref
 
 Use admonitions to caution users, or to provide helpful tips or extra information.
 
-::::::{dropdown} Types
-These examples show the available admonition types, with rendered output followed by the Markdown syntax.
+::::{dropdown} Types
 
-**Warning**
+These examples show the syntax first, followed by the rendered admonition.
 
-:::::{tab-set}
+ **Warning**
 
-::::{tab-item} Output
+  ```markdown
+      :::{warning}
+      Users could permanently lose data or leak sensitive information.
+      :::
+  ```
+  :::{warning}
+  Users could permanently lose data or leak sensitive information.
+  :::
 
-:::{warning}
-Users could permanently lose data or leak sensitive information.
-:::
+  **Important**
 
-::::
+  ```markdown
+      :::{important}
+      Less dire than a warning. Users might encounter issues with performance or stability.
+      :::
+  ```
+  :::{important}
+  Less dire than a warning. Users might encounter issues with performance or stability.
+  :::
 
-::::{tab-item} Markdown
+  **Note**
+  ```markdown
+      :::{note}
+      Supplemental information that provides context or clarification.
+      :::
+  ```
+  :::{note}
+  Supplemental information that provides context or clarification.
+  :::
 
-```markdown
-:::{warning}
-Users could permanently lose data or leak sensitive information.
-:::
-```
+  **Tip**
+  ```markdown
+      :::{tip}
+      Advice that helps users work more efficiently or make better choices.
+      :::
+  ```
+  :::{tip}
+  Advice that helps users work more efficiently or make better choices.
+  :::
 
-::::
-
-:::::
-
-**Important**
-
-:::::{tab-set}
-
-::::{tab-item} Output
-
-:::{important}
-Less dire than a warning. Users might encounter issues with performance or stability.
-:::
-
-::::
-
-::::{tab-item} Markdown
-
-```markdown
-:::{important}
-Less dire than a warning. Users might encounter issues with performance or stability.
-:::
-```
-
-::::
-
-:::::
-
-**Note**
-
-:::::{tab-set}
-
-::::{tab-item} Output
-
-:::{note}
-Supplemental information that provides context or clarification.
-:::
+  **Custom**
+  ```markdown
+      :::{admonition} Special note
+      Custom admonition with custom label.
+      :::
+  ```
+  :::{admonition} Special note
+  Custom admonition with custom label.
+  :::
 
 ::::
 
-::::{tab-item} Markdown
+**DOs**<br>
+✅ **Do:** Use custom admonitions as needed
 
-```markdown
-:::{note}
-Supplemental information that provides context or clarification.
-:::
-```
-
-::::
-
-:::::
-
-**Tip**
-
-:::::{tab-set}
-
-::::{tab-item} Output
-
-:::{tip}
-Advice that helps users work more efficiently or make better choices.
-:::
-
-::::
-
-::::{tab-item} Markdown
-
-```markdown
-:::{tip}
-Advice that helps users work more efficiently or make better choices.
-:::
-```
-
-::::
-
-:::::
-
-**Custom**
-
-:::::{tab-set}
-
-::::{tab-item} Output
-
-:::{admonition} Special note
-Custom admonition with custom label.
-:::
-
-::::
-
-::::{tab-item} Markdown
-
-```markdown
-:::{admonition} Special note
-Custom admonition with custom label.
-:::
-```
-
-::::
-
-:::::
-
-::::::
-
-**Best practices**
-- ✅ Use custom admonitions as needed
-
-**Avoid**
-- ❌ Stacking admonitions
-- ❌ Overloading a page with too many admonitions
+**DON'Ts**<br>
+❌ **Don't:** Stack admonitions<br>
+❌ **Don't:** Overload a page with too many admonitions
 
 For more details, refer to [Admonitions](https://elastic.github.io/docs-builder/syntax/admonitions).
+<br>
+<br>
 
 ---
 
@@ -173,14 +108,16 @@ A default anchor is automatically created for each [heading](#headings), in the 
 ```
 :::
 
-**Best practices**
-- ✅ Create custom anchors for repeated structural headings like "Example request"
+**DOs**<br>
+✅ **Do:** Create custom anchors for repeated structural headings like "Example request"<br>
 
-**Avoid**
-- ❌ Including punctuation marks in custom anchors
-- ❌ Defining custom anchors in text that is not a heading
+**DON'Ts**<br>
+❌ **Don't:** Include punctuation marks in custom anchors<br>
+❌ **Don't:** Define custom anchors in text that is not a heading
 
 For more details, refer to [Links](https://elastic.github.io/docs-builder/syntax/links#same-page-links-anchors).
+<br>
+<br>
 
 ---
 
@@ -192,29 +129,21 @@ This metadata enables you to write [cumulative documentation](how-to/cumulative-
 
 **Example: Section tag**
 
-::::{tab-set}
-
-:::{tab-item} Output
-
-#### Stack-only content
-```{applies_to}
-stack:
-```
-
-:::
-
-:::{tab-item} Markdown
-
+:::{dropdown} Syntax
 ````markdown
 # Stack-only content
 ```{applies_to}
 stack:
 ```
 ````
-
 :::
 
-::::
+:::{dropdown} Output
+#### Stack-only content
+```{applies_to}
+stack:
+```
+:::
 
 For full syntax and more examples, refer to [the `applies_to` documentation](https://elastic.github.io/docs-builder/syntax/applies).
 
@@ -227,16 +156,17 @@ The syntax for `applies_to` metadata differs depending on whether it's added at 
 The `applies_to` tags are scope signals for readers, not comprehensive metadata. If a page contains general information that applies to all contexts, it doesn't need tags.
 :::
 
-**Best practices**
-- ✅ Define a set of [page-level tags](https://elastic.github.io/docs-builder/syntax/applies#page-level) in a front matter block
-- ✅ Add section-level tags in an `{applies_to}` [directive](https://elastic.github.io/docs-builder/syntax/applies#section-level) after a heading
-- ✅ Indicate versions (`major.minor`) and release phases like `beta`
-- ✅ Describe critical patch-level differences in prose rather than using version tags
+**DOs**<br>
+✅ **Do:** Define a set of [page-level tags](https://elastic.github.io/docs-builder/syntax/applies#page-level) in a front matter block<br>
+✅ **Do:** Add section-level tags in an `{applies_to}` [directive](https://elastic.github.io/docs-builder/syntax/applies#section-level) after a heading<br>
+✅ **Do:** Indicate versions (`major.minor`) and release phases like `beta`<br>
+✅ **Do:** Describe critical patch-level differences in prose rather than using version tags
 
-**Avoid**
-
-- ❌ Adding `applies_to` tags to general, broadly applicable content
-- ❌ Overloading pages with repetitive tags
+**DON'Ts**<br>
+❌ **Don't:** Add `applies_to` tags to general, broadly applicable content<br>
+❌ **Don't:** Overload pages with repetitive tags
+<br>
+<br>
 
 ---
 
@@ -244,40 +174,34 @@ The `applies_to` tags are scope signals for readers, not comprehensive metadata.
 
 Multi-line blocks for code, commands, configuration, and similar content. Use three backticks ` ``` ` on separate lines to start and end the block. For syntax highlighting, add a language identifier after the opening backticks.
 
-::::{tab-set}
-
-:::{tab-item} Output
-
-```yaml
-server.host: "0.0.0.0"
-elasticsearch.hosts: ["http://localhost:9200"]
-```
-
-:::
-
-:::{tab-item} Markdown
-
+:::{dropdown} Syntax
 ```markdown
     ```yaml
     server.host: "0.0.0.0"
     elasticsearch.hosts: ["http://localhost:9200"]
     ```
 ```
-
 :::
 
-::::
+:::{dropdown} Output
+```yaml
+server.host: "0.0.0.0"
+elasticsearch.hosts: ["http://localhost:9200"]
+```
+:::
 
 
-**Best practices**
-- ✅ Include code blocks within lists or other block elements as needed
-- ✅ Add language identifiers like `yaml`, `json`, `bash`
+**DOs**<br>
+✅ **Do:** Include code blocks within lists or other block elements as needed<br>
+✅ **Do:** Add language identifiers like `yaml`, `json`, `bash`
 
-**Avoid**
-- ❌ Placing code blocks in admonitions
-- ❌ Using inline code formatting (single backticks) for multi-line content
+**DON'Ts**<br>
+❌ **Don't:** Place code blocks in admonitions<br>
+❌ **Don't:** Use inline code formatting (single backticks) for multi-line content
 
 For more details, refer to [Code](https://elastic.github.io/docs-builder/syntax/code).
+<br>
+<br>
 
 ---
 
@@ -288,9 +212,21 @@ Inline annotations that highlight or explain specific lines in a code block.
 ### Explicit callout
 To explicitly create a code callout, add a number marker in angle brackets (`<1>`, `<2>`, and so on) at the end of a line. Add the corresponding callout text below the code block, in a numbered list that matches the markers.
 
-::::{tab-set}
+:::{dropdown} Syntax
 
-:::{tab-item} Output
+  ````markdown callouts=false
+      ```json
+      {
+        "match": {
+          "message": "search text" <1>
+        }
+      }
+      ```
+      1. Searches the `message` field for the phrase "search text"
+  ````
+:::
+
+:::{dropdown} Output
 
 ```json
 {
@@ -299,33 +235,25 @@ To explicitly create a code callout, add a number marker in angle brackets (`<1>
   }
 }
 ```
-1. Searches the `message` field for the phrase "search text"
-
+1. Searches the `message` field for the phrase "search text"<br>
 :::
-
-:::{tab-item} Markdown
-
-````markdown callouts=false
-    ```json
-    {
-      "match": {
-        "message": "search text" <1>
-      }
-    }
-    ```
-    1. Searches the `message` field for the phrase "search text"
-````
-
-:::
-
-::::
 
 ### Automatic (comment-based) callout [magic-callout]
 Add comments with `//` or `#` to automatically create callouts.
 
-::::{tab-set}
+:::{dropdown} Syntax
+  ````markdown callouts=false
+    ```json
+    {
+      "match": {
+        "message": "search text" // Searches the message field
+      }
+    }
+    ```
+  ````
+:::
 
-:::{tab-item} Output
+:::{dropdown} Output
 
 ```json
 {
@@ -334,34 +262,19 @@ Add comments with `//` or `#` to automatically create callouts.
   }
 }
 ```
-
 :::
 
-:::{tab-item} Markdown
+**DOs**<br>
+✅ **Do:** Keep callout text short and specific<br>
+✅ **Do:** Use only one type of callout per code block (don't mix [explicit](#explicit-callout) and [automatic](#magic-callout))<br>
+✅ **Do:** Make sure there's a corresponding list item for each explicit callout marker in a code block
 
-````markdown callouts=false
-```json
-{
-  "match": {
-    "message": "search text" // Searches the message field
-  }
-}
-```
-````
-
-:::
-
-::::
-
-**Best practices**
-- ✅ Keep callout text short and specific
-- ✅ Use only one type of callout per code block (don't mix [explicit](#explicit-callout) and [automatic](#magic-callout))
-- ✅ Make sure there's a corresponding list item for each explicit callout marker in a code block
-
-**Avoid**
-- ❌ Overusing callouts—they can impede readability
+**DON'Ts**<br>
+❌ **Don't:** Overuse callouts — they can impede readability
 
 For more details, refer to [Code callouts](https://elastic.github.io/docs-builder/syntax/code#code-callouts).
+<br>
+<br>
 
 ---
 
@@ -369,10 +282,22 @@ For more details, refer to [Code callouts](https://elastic.github.io/docs-builde
 
 Use `%` to add single-line comments. Use HTML-style `<!--` and `-->` for multi-line comments.
 
-::::{tab-set}
+:::{dropdown} Syntax
+```markdown
+    % This is a comment
+    This is regular text
 
-:::{tab-item} Output
+    <!--
+    so much depends
+    upon
+    a multi-line
+    comment
+    -->
+    Regular text after multi-line comment
+```
+:::
 
+:::{dropdown} Output
 % This is a comment
 This is regular text
 
@@ -386,30 +311,13 @@ Regular text after multi-line comment
 
 :::
 
-:::{tab-item} Markdown
+**DOs**<br>
+✅ **Do:** Add a space after the `%` in single-line comments
 
-```markdown
-    % This is a comment
-    This is regular text
-
-    <!--
-    so much depends
-    upon
-    a multi-line
-    comment
-    -->
-    Regular text after multi-line comment
-```
-
-:::
-
-::::
-
-**Best practices**
-- ✅ Add a space after the `%` in single-line comments
-
-**Avoid**
-- ❌ Using `#` or `//` for comments (reserved for [magic callouts](#magic-callout))
+**DON'Ts**<br>
+❌ **Don't:** Use `#` or `//` for comments (reserved for [magic callouts](#magic-callout))
+<br>
+<br>
 
 ---
 
@@ -417,108 +325,95 @@ Regular text after multi-line comment
 
 Collapsible blocks for hiding and showing content.
 
-::::::{tab-set}
-
-:::::{tab-item} Output
-
-::::{dropdown} Title or label
-Collapsible content
+::::{dropdown} Syntax
+```markdown
+    :::{dropdown} Title or label
+    Collapsible content
+    :::
+```
 ::::
 
-:::::
-
-:::::{tab-item} Markdown
-
-```markdown
+::::{dropdown} Output
 :::{dropdown} Title or label
 Collapsible content
 :::
-```
+::::
 
-:::::
+**DOs**<br>
+✅ **Do:** Use dropdowns for text, lists, images, code blocks, and tables<br>
+✅ **Do:** Add `:open:` to auto-expand a dropdown by default
 
-::::::
-
-**Best practices**
-- ✅ Use dropdowns for text, lists, images, code blocks, and tables
-- ✅ Add `:open:` to auto-expand a dropdown by default
-
-**Avoid**
-- ❌ Using dropdowns for very long paragraphs or entire sections
+**DON'Ts**<br>
+❌ **Don't:** Use dropdowns for very long paragraphs or entire sections
 
 For more details, refer to [Dropdowns](https://elastic.github.io/docs-builder/syntax/dropdowns).
+<br>
+<br>
 
 ---
 
 ## Headings
 Headings mark the title of a page or section. To create a heading, add number signs `#` at the beginning of the line (one `#` for each heading level).
 
-::::{tab-set}
-
-:::{tab-item} Output
-
-![Heading levels](images/headings.png)
-
-:::
-
-:::{tab-item} Markdown
-
+:::{dropdown} Syntax
 ```markdown
 # Heading 1
 ## Heading 2
 ### Heading 3
 #### Heading 4
 ```
+:::
 
+::::{dropdown} Output
+:::{image} images/headings.png
+:screenshot:
+:alt: Heading levels
+:width: 300px
 :::
 
 ::::
 
-**Best practices**
-- ✅ Start every page with a Heading 1
-- ✅ Use only one Heading 1 per page
-- ✅ Define custom anchors for repeated headings
+**DOs**<br>
+✅ **Do:** Start every page with a Heading 1<br>
+✅ **Do:** Use only one Heading 1 per page<br>
+✅ **Do:** Define custom anchors for repeated headings
 
-**Avoid**
-- ❌ Using headings in tabs or dropdowns
-- ❌ Going deeper than Heading 4
+**DON'Ts**<br>
+❌ **Don't:** Use headings in tabs or dropdowns<br>
+❌ **Don't:** Go deeper than Heading 4
 
 For more details, refer to [Headings](https://elastic.github.io/docs-builder/syntax/headings).
+<br>
+<br>
 
 ---
 
 ## Images
-Standard Markdown image syntax: `![alt text]` followed by the image path in parentheses.
+Standard Markdown image syntax: `![alt text]` in square brackets, followed by the image path in parentheses.
 
-::::{tab-set}
-
-:::{tab-item} Output
-
-![Bear emerging from hibernation](images/bear.png)
-
-:::
-
-:::{tab-item} Markdown
-
+:::{dropdown} Syntax
 ```markdown
 ![Bear emerging from hibernation](images/bear.png)
 ```
-
 :::
 
-::::
+:::{dropdown} Output
+![Bear emerging from hibernation](images/bear.png)
+:::
 
-**Best practices**
-- ✅ Store images in a centralized directory
-- ✅ Follow v3 [best practices for screenshots](how-to/cumulative-docs/badge-placement.md#images)
-- ✅ Specify `:screenshot:` in an [image directive](https://elastic.github.io/docs-builder/syntax/images#screenshots) to add a border
+**DOs**<br>
+✅ **Do:** Store images in a centralized directory<br>
+✅ **Do:** Follow v3 [best practices for screenshots](how-to/cumulative-docs/badge-placement.md#images)<br>
+✅ **Do:** Specify `:screenshot:` in an [image directive](https://elastic.github.io/docs-builder/syntax/images#screenshots) to add a border
 
-**Avoid**
-- ❌ Using lots of UI screenshots that create a maintenance burden
-- ❌ Including confidential info or PII in an image
-- ❌ Adding a drop shadow or torn edge effect
+**DON'Ts**<br>
+❌ **Don't:** Use lots of UI screenshots that create a maintenance burden<br>
+❌ **Don't:** Include confidential info or PII in an image<br>
+❌ **Don't:** Add a drop shadow or torn edge effect
 
 For more details, refer to [Images](https://elastic.github.io/docs-builder/syntax/images).
+<br>
+<br>
 
 ---
 
@@ -534,12 +429,14 @@ Elastic Docs v3 supports standard Markdown inline formatting.
 | ~~strikethrough~~ | \~\~strikethrough\~\~ |
 | \*escaped symbols\* | `\*escaped symbols\*` |
 
-**Best practices**
-- ✅ Use `_emphasis_` to introduce a term
-- ✅ Use inline `code` in headings and other elements as needed
+**DOs**<br>
+✅ **Do:** Use `_emphasis_` to introduce a term<br>
+✅ **Do:** Use inline `code` in headings and other elements as needed
 
-**Avoid**
-- ❌ Overusing `**strong**` or `_emphasis_`—aim for readability
+**DON'Ts**<br>
+❌ **Don't:** Overuse `**strong**` or `_emphasis_` — aim for readability
+<br>
+<br>
 
 ---
 
@@ -556,16 +453,18 @@ Standard Markdown links to doc pages, sections (anchors), or external content. P
 ```
 :::
 
-**Best practices**
-- ✅ Use inline formatting in link text: `[**bold link**](https://elastic.github.io/docs-builder/syntax/bold-page)`
-- ✅ Autogenerate link text from the page or section title: `[](https://elastic.github.io/docs-builder/syntax/use-title#section)`
-- ✅ Define a custom [anchor](#anchors) by adding `[anchor-text]` at the end of a heading line
+**DOs**<br>
+✅ **Do:** Use inline formatting in link text: `[**bold link**](https://elastic.github.io/docs-builder/syntax/bold-page)`<br>
+✅ **Do:** Autogenerate link text from the page or section title: `[](https://elastic.github.io/docs-builder/syntax/use-title#section)`<br>
+✅ **Do:** Define a custom [anchor](#anchors) by adding `[anchor-text]` at the end of a heading line
 
-**Avoid**
-- ❌ Using unclear, inaccessible link text like "click here" or "this"
-- ❌ Including terminal punctuation in link text
+**DON'Ts**<br>
+❌ **Don't:** Use unclear, inaccessible link text like "click here" or "this"<br>
+❌ **Don't:** Include terminal punctuation in link text
 
 For more details, refer to [Links](https://elastic.github.io/docs-builder/syntax/links).
+<br>
+<br>
 
 ---
 
@@ -587,18 +486,20 @@ Standard Markdown ordered (numbered) and unordered (bulleted) lists. Indent with
   ```
 :::
 
-**Best practices**
-- ✅ Add code blocks, images, admonitions, and other content within a list item
-- ✅ Nest lists, mixing ordered and unordered as needed
-- ✅ Use parallel structure and phrasing in list items
-- ✅ Capitalize only the first word of list items (sentence case)
-- ✅ Use terminal punctuation consistently and only for complete sentences
+**DOs** <br>
+✅ **Do:** Add code blocks, images, admonitions, and other content within a list item<br>
+✅ **Do:** Nest lists, mixing ordered and unordered as needed<br>
+✅ **Do:** Use parallel structure and phrasing in list items<br>
+✅ **Do:** Capitalize only the first word of list items (sentence case)<br>
+✅ **Do:** Use terminal punctuation consistently and only for complete sentences
 
-**Avoid**
-- ❌ Using lists solely for layout purposes
-- ❌ Using lists for structured data or comparisons—use tables instead
+**DON'Ts** <br>
+❌ **Don't:** Use lists solely for layout purposes <br>
+❌ **Don't:** Use lists for structured data or comparisons — use tables instead
 
 For more details, refer to [Lists](https://elastic.github.io/docs-builder/syntax/lists).
+<br>
+<br>
 
 ---
 
@@ -606,15 +507,7 @@ For more details, refer to [Lists](https://elastic.github.io/docs-builder/syntax
 
 Optional [front matter](https://elastic.github.io/docs-builder/syntax/frontmatter) element that sets a custom title for navigation items. Appears in the left navigation (table of contents), breadcrumbs, and previous/next links. For information about page titles, refer to [Headings](#headings).
 
-::::{tab-set}
-
-:::{tab-item} Output
-
-![Rendered nav title](images/nav-title.png)
-
-:::
-
-:::{tab-item} Markdown
+:::{dropdown} Syntax
 
 Page front matter (YAML):
 
@@ -632,26 +525,31 @@ Page title (Markdown H1):
 
 :::
 
-::::
+:::{dropdown} Output
+
+![Rendered nav title](images/nav-title.png)
+
+:::
 
 
-**Best practices**
-- ✅ Use active phrasing and shorter forms
-- ✅ Make sure the navigation title clearly identifies the page topic
-- ✅ Omit product names that appear in the full H1 page title
+**DOs**<br>
+✅ **Do:** Use active phrasing and shorter forms<br>
+✅ **Do:** Make sure the navigation title clearly identifies the page topic<br>
+✅ **Do:** Omit product names that appear in the full H1 page title
 
-**Avoid**
-- ❌ Duplicating the H1 page title
-- ❌ Using a long navigation title or lots of punctuation
-- ❌ Abbreviating with periods or ellipses
+**DON'Ts**<br>
+❌ **Don't:** Duplicate the H1 page title<br>
+❌ **Don't:** Use a long navigation title or lots of punctuation<br>
+❌ **Don't:** Abbreviate with periods or ellipses
 
 For more details, refer to [Title](https://elastic.github.io/docs-builder/syntax/titles).
+<br>
+<br>
 
 ---
 
 ## Substitutions
 Key-value pairs that define reusable variables. They help ensure consistency and enable short forms. To use a substitution (or "sub"), surround the key with double curly brackets: `{{variable}}`
-
 
 ### Define a sub
 
@@ -672,36 +570,32 @@ subs:
 
 This example uses the sub defined in `docset.yml` above.
 
-::::{tab-set}
-
-:::{tab-item} Output
-
-{{ech}} supports most standard {{kib}} settings.
-
-:::
-
-:::{tab-item} Markdown
+:::{dropdown} Syntax
 
 In `myfile.md`:
 
 ```
 {{ech}} supports most standard {{kib}} settings.
 ```
-
 :::
 
-::::
+:::{dropdown} Output
 
-**Best practices**
-- ✅ Check the global `docset.yml` file for existing product and feature name subs
-- ✅ Use substitutions in code blocks by setting `subs=true`
-- ✅ Define new page-specific substitutions as needed
+{{ech}} supports most standard {{kib}} settings.
+:::
 
-**Avoid**
-- ❌ Overriding a `docset.yml` sub by defining a page-level sub with the same key (causes build errors)
-- ❌ Using substitutions for common words that don't need to be standardized
+**DOs** <br>
+✅ **Do:** Check the global `docset.yml` file for existing product and feature name subs<br>
+✅ **Do:** Use substitutions in code blocks by setting `subs=true`  <br>
+✅ **Do:** Define new page-specific substitutions as needed
+
+**DON'Ts**<br>
+❌ **Don't:** Override a `docset.yml` sub by defining a page-level sub with the same key (causes build errors)<br>
+❌ **Don't:** Use substitutions for common words that don't need to be standardized
 
 For more details, refer to [Substitutions](https://elastic.github.io/docs-builder/syntax/substitutions).
+<br>
+<br>
 
 ---
 
@@ -709,27 +603,23 @@ For more details, refer to [Substitutions](https://elastic.github.io/docs-builde
 
 Block element that displays content in switchable tabs to help users find the right context (such as deployment type or programming language). [Synced tab groups](https://elastic.github.io/docs-builder/syntax/tabs#tab-groups) are supported.
 
-:::::::{tab-set}
+:::::{dropdown} Syntax
+```markdown
+    ::::{tab-set}
 
-::::::{tab-item} Output
+    :::{tab-item} Tab 1 title
+    Tab 1 content
+    :::
 
-:::::{tab-set}
+    :::{tab-item} Tab 2 title
+    Tab 2 content
+    :::
 
-::::{tab-item} Tab 1 title
-Tab 1 content
-::::
-
-::::{tab-item} Tab 2 title
-Tab 2 content
-::::
-
+    ::::
+```
 :::::
 
-::::::
-
-::::::{tab-item} Markdown
-
-```markdown
+:::::{dropdown} Output
 ::::{tab-set}
 
 :::{tab-item} Tab 1 title
@@ -741,26 +631,24 @@ Tab 2 content
 :::
 
 ::::
-```
+:::::
 
-::::::
+**DOs**<br>
+✅ **Do:** Use clear, descriptive tab labels<br>
+✅ **Do:** Make sure all tabs have the same type of content and similar goals<br>
+✅ **Do:** Keep tab content scannable and self-contained (don't make users switch tabs to follow steps or compare content)<br>
+✅ **Do:** Include other block elements in tabs, like [admonitions](#admonitions)
 
-:::::::
-
-**Best practices**
-- ✅ Use clear, descriptive tab labels
-- ✅ Make sure all tabs have the same type of content and similar goals
-- ✅ Keep tab content scannable and self-contained (don't make users switch tabs to follow steps or compare content)
-- ✅ Include other block elements in tabs, like [admonitions](#admonitions)
-
-**Avoid**
-- ❌ Nesting tabs
-- ❌ Splitting step-by-step procedures across tabs
-- ❌ Using more than 6 tabs (use as few as possible)
-- ❌ Using tabs in [dropdowns](#dropdowns)
+**DON'Ts**<br>
+❌ **Don't:** Nest tabs<br>
+❌ **Don't:** Split step-by-step procedures across tabs<br>
+❌ **Don't:** Use more than 6 tabs (use as few as possible)<br>
+❌ **Don't:** Use tabs in [dropdowns](#dropdowns)
 
 
 For more details, refer to [Tabs](https://elastic.github.io/docs-builder/syntax/tabs).
+<br>
+<br>
 
 ---
 
@@ -768,38 +656,30 @@ For more details, refer to [Tabs](https://elastic.github.io/docs-builder/syntax/
 
 Standard table layout for structured data. Automatically scrolls horizontally if needed. The **header** row is optional.
 
-::::{tab-set}
-
-:::{tab-item} Output
-
-| Header | Header |
-| ------ | ------ |
-| Data   | Info   |
-| Info	 | Data   |
-
-:::
-
-:::{tab-item} Markdown
-
+:::{dropdown} Syntax
 ```markdown
+    | Header | Header |
+    | ------ | ------ |
+    | Data   | Info   |
+    | Info	 | Data   |
+```
+:::
+
+:::{dropdown} Output
 | Header | Header |
 | ------ | ------ |
 | Data   | Info   |
 | Info	 | Data   |
-```
-
 :::
 
-::::
+**DOs**<br>
+✅ **Do:** Use leading and trailing pipes for clarity<br>
+✅ **Do:** Add spaces for readability (they're trimmed)<br>
+✅ **Do:** Keep cell content scannable and parallel<br>
+✅ **Do:** Use standard Markdown text alignment when necessary (`:-- --: :--:`)
 
-**Best practices**
-- ✅ Use leading and trailing pipes for clarity
-- ✅ Add spaces for readability (they're trimmed)
-- ✅ Keep cell content scannable and parallel
-- ✅ Use standard Markdown text alignment when necessary (`:-- --: :--:`)
-
-**Avoid**
-- ❌ Inserting block elements or multiple paragraphs in a table cell
-- ❌ Using a table solely for position or spacing purposes
+**DON'Ts**<br>
+❌ **Don't:** Insert block elements or multiple paragraphs in a table cell<br>
+❌ **Don't:** Use a table solely for position or spacing purposes
 
 For more details, refer to [Tables](https://elastic.github.io/docs-builder/syntax/tables).
