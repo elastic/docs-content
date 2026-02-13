@@ -56,11 +56,11 @@ For JSON-formatted server status details, use the [{{kib}} current status API](h
 
 ## Triage {{kib}} health using the status API [access-triage]
 
-The following steps demonstrate a typical investigative flow. It assumes the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status) is saved locally as `kibana_status.json`.
+The following steps demonstrate a typical investigative flow. It assumes the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status) is saved locally as `kibana_status.json` and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor.
 
 1. Check the overall status.
 
-   The UI will report "Kibana status is" and then the status. Using third-party tool [JQ](https://jqlang.github.io/jq/), you can see this in the API output by running:
+   The UI will report "Kibana status is" and then the status. You can see this in the API output by running:
 
    ```bash
    cat kibana_status.json | jq '{ overall: .status.overall.level }'
@@ -68,7 +68,7 @@ The following steps demonstrate a typical investigative flow. It assumes the [{{
     
 2. Check core dependencies.
 
-    The UI will report "Plugin Status" with a list of plugins. The core plugins prefix `core`. Using [JQ](https://jqlang.github.io/jq/), you can check these in the API output by running the following command:
+    The UI will report "Plugin Status" with a list of plugins. The core plugins prefix `core`. You can check these in the API output by running the following command:
 
   ```bash
   cat kibana_status.json | jq -r '.status.core|{ elasticsearch: .elasticsearch.level, savedObjects: .savedObjects.level }'
@@ -83,7 +83,7 @@ The following steps demonstrate a typical investigative flow. It assumes the [{{
 
     The UI **Plugin Status** list reports the status of the other plugins running on the instance. Plugins can be dependent upon each other. You should first check the health of the common underlying plugins: `alerting`, `reporting`, `ruleRegistry`, `savedObjects`, `security`, and `taskManager`. 
     
-    Using the [JQ](https://jqlang.github.io/jq/), you can check these in the API output by running the following command:
+    You can check these in the API output by running the following command:
 
     ```bash
     cat kibana_status.json | jq -rc '.status.plugins|to_entries[]|select(.key=="taskManager" or .key=="savedObjects" or .key=="security" or .key=="reporting" or .key=="ruleRegistry" or .key=="alerting") |{plugin:.key, status:.value.level, reason:.value.summary}'
