@@ -180,7 +180,7 @@ $$$client-ssl-options$$$
     **Default:** `full`
 
 `ssl.ca_trusted_fingerprint` $$$ssl.ca_trusted_fingerprint$$$
-:   (string) A HEX encoded SHA-256 of a CA certificate. If this certificate is present in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally.
+:   (string) A HEX encoded SHA-256 of a CA certificate that is present in the certificate chain sent by the server during the TLS handshake. If this certificate is found in the chain, it will be added to the `certificate_authorities` list and the handshake will continue normally.
 
     Example:
 
