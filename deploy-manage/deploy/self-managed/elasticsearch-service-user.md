@@ -3,11 +3,11 @@
 {{es}} must run under an appropriate user account with specific permissions and consistent configuration across all nodes in your cluster. 
 This page describes the requirements for the user account that runs the {{es}} service.
 
+RPM and Debian packages automatically create the `elasticsearch` user and group automatically during installation. For `.tar.gz` or `.zip` installations, create the user manually before starting {{es}}.
+
 ## Don't run as root
 
 Elastic recommends that you avoid running commands as the `root` user. Instead, create a dedicated, unprivileged user account to run the service, such as `elasticsearch` for example.
-
-RPM and Debian packages create this user and group automatically during installation. For `.tar.gz` or `.zip` installations, create the user manually  before starting {{es}}.
 
 ## Use consistent user and group IDs across nodes
 
@@ -18,9 +18,9 @@ If the `elasticsearch` account has different numeric IDs on different nodes, you
 
 For more information, refer to [Troubleshooting a shared file system repository](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md#_troubleshooting_a_shared_file_system_repository).
 
-## Required system permissions
+## Required system resource limits
 
-The user running {{es}} requires the following system-level permissions: 
+Processes running as the `elasticsearch` user must be configured with the following system resource limits: 
 
 | Permission | Minimum value | Details |
 | --- | --- | --- |
@@ -32,6 +32,6 @@ The user running {{es}} requires the following system-level permissions:
 
 For instructions on configuring these, refer to [Configure system settings](/deploy-manage/deploy/self-managed/setting-system-settings.md).
 
-## File and directory ownership
+## File and directory ownership and permissions
 
-The {{es}} user must be able to read the configuration and write to data and log directories. Verify ownership after installation and before starting the service. RPM and Debian packages set correct ownership automatically.
+The {{es}} user must be able to read the configuration and write to data and log directories. Verify ownership and permissions after installation and before starting the service. RPM and Debian packages set correct ownership automatically.
