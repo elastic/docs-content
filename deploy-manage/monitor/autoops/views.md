@@ -3,8 +3,9 @@ applies_to:
   stack:
 products:
   - id: cloud-hosted
-  - id: cloud-kubernetes
   - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elasticsearch
 navigation_title: Views
 ---
 
