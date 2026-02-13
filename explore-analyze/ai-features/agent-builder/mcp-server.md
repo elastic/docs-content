@@ -15,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{agent-builder}} MCP server 
+# {{agent-builder}} MCP server
 
 The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
 
@@ -60,6 +60,7 @@ Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar co
   }
 }
 ```
+
 1. Refer to [](#api-key-application-privileges)
 
 :::{note}
@@ -77,11 +78,11 @@ Tools execute with the scope assigned to the API key. Make sure your API key has
 
 ## API key application privileges
 
-To access the MCP server endpoint, your API key must include {{kib}} application privileges. 
+To access the MCP server endpoint, your API key must include {{kib}} application privileges for {{agent-builder}}.
 
 ### Development and testing
 
-For development and testing purposes, you can create an unrestricted API key with full access:
+For development, grant access to all indices:
 
 ```json
 POST /_security/api_key
@@ -89,12 +90,18 @@ POST /_security/api_key
   "name": "my-mcp-api-key",
   "expiration": "1d",
   "role_descriptors": {
-    "unrestricted": {
-      "cluster": ["all"],
+    "mcp-access": {
       "indices": [
         {
-          "names": ["*"],
-          "privileges": ["all"]
+          "names": ["*"], <1>
+          "privileges": ["all"] <2>
+        }
+      ],
+      "applications": [
+        {
+          "application": "kibana-.kibana", <3>
+          "privileges": ["feature_agentBuilder.read"],
+          "resources": ["*"] <4>
         }
       ]
     }
@@ -102,33 +109,53 @@ POST /_security/api_key
 }
 ```
 
+1. `["*"]` allows tools to query any index.
+2. `["all"]` grants full index permissions for development convenience.
+3. Must be exactly `kibana-.kibana` - this is how {{kib}} registers its application privileges with Elasticsearch.
+4. `["*"]` grants access to all {{kib}} Spaces. Use `["space:default"]` to restrict to a specific Space.
+
 ### Production
 
-For production environments, use a restricted API key with specific application privileges:
+For production, restrict to specific index patterns:
 
 ```json
 POST /_security/api_key
 {
   "name": "my-mcp-api-key",
-  "expiration": "1d",   
-  "role_descriptors": { 
+  "expiration": "30d",
+  "role_descriptors": {
     "mcp-access": {
-      "cluster": ["all"],
       "indices": [
         {
-          "names": ["*"],
+          "names": ["logs-*", "metrics-*"], <1>
           "privileges": ["read", "view_index_metadata"]
         }
       ],
       "applications": [
         {
           "application": "kibana-.kibana",
-          "privileges": ["read_onechat", "space_read"], <1>
-          "resources": ["space:default"]
+          "privileges": ["feature_agentBuilder.read"],
+          "resources": ["*"]
         }
       ]
     }
   }
 }
 ```
-1. The `read_onechat` and `space_read` application privileges are required to authorize access to the MCP endpoint. Without these privileges, you'll receive a 403 Forbidden error.
+
+1. Only these index patterns are accessible. Queries to other indices will fail with security exceptions. Adjust patterns based on what data your tools should access.
+
+:::{important}
+**Always set an expiration date** on API keys. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production.
+
+**Required configuration:**
+
+- `application: "kibana-.kibana"`
+- `privileges: ["feature_agentBuilder.read"]`
+- `indices` with appropriate privileges
+
+The key differences between development and production:
+
+- **Index patterns**: `["*"]` (all indices) vs specific patterns like `["logs-*", "metrics-*"]`
+- **Index privileges**: `["all"]` (permissive) vs `["read", "view_index_metadata"]` (read-only)
+  :::
