@@ -101,7 +101,7 @@ PUT /amazon-reviews/_doc/1
 PUT /amazon-reviews/_doc/1
 {
   "review_text": "This product is lifechanging! I'm telling all my friends about it.",
-  "review_vector": "VGhpcyBwcm9kdWN0IGlzIGxpZmVjaGFuZ2luZyEgSSdtIHRlbGxpbmcgYWxsIG15IGZyaWVuZHMgYWJvdXQgaXQu" 
+  "review_vector": "PczMzT5MzM0+mZmaPszMzT8AAAA/GZmaPzMzMz9MzM0=" 
 }
 ```
 :::
