@@ -46,12 +46,12 @@ For instructions on applying these limits using `ulimit`, `/etc/security/limits.
 
 ## File and directory ownership and permissions
 
-The {{es}} user must be able to read the configuration and write to data and log directories. Verify ownership and permissions after installation and 
-before starting the service. RPM and Debian packages set correct ownership automatically. 
+The {{es}} user must be able to read the configuration and write to data and log directories. Verify ownership and permissions after installation and before starting the service. RPM and Debian packages set correct ownership and permissions automatically.
 
 For the default directory paths and their expected ownership, refer to the directory layout for your installation method:
 
-* [`.tar.gz` archive on Linux or MacOS](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md#targz-layout)
+* [`.tar.gz` archive on Linux or macOS](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md#targz-layout)
 * [`.zip` archive on Windows](/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md#windows-layout)
 * [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md#deb-layout)
 * [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#rpm-layout)
+* [Docker](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-prod.md#_configuration_files_must_be_readable_by_the_elasticsearch_user)
