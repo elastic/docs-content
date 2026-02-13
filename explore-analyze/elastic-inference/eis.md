@@ -28,13 +28,27 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## Supported models
 
-This table lists the models supported by Elastic {{infer-cap}} Service.
+The following tables list the models supported by Elastic {{infer-cap}} Service by LLM type.
 
 ::::{note}
 The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
 ::::
 
-:::{csv-include} models.csv
+### LLM chat models
+
+:::{csv-include} chat-models.csv
+:caption: Scroll horizontally to view more information.
+:::
+
+### Embedding models
+
+:::{csv-include} embedding-models.csv
+:caption: Scroll horizontally to view more information.
+:::
+
+### Rerankers
+
+:::{csv-include} reranker-models.csv
 :caption: Scroll horizontally to view more information.
 :::
 

@@ -41,6 +41,8 @@ These guides apply to all EDOT SDKs:
 
 * [Missing or incomplete traces due to SDK sampling](/troubleshoot/ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md): Troubleshoot missing or incomplete traces caused by SDK-level sampling configuration.
 
+* [Troubleshoot trace context header propagation](/troubleshoot/ingest/opentelemetry/edot-sdks/trace-context-propagation.md): Troubleshoot missing or broken distributed traces when combining OpenTelemetry instrumentation with Elastic {{product.apm}} agents.
+
 ## Supported architectures
 
 EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
