@@ -32,14 +32,14 @@ Use the following features to explore this view:
 
 ## Index and data stream-level insights
  
-The bottom half of the **Indexing Tier** page offers a more granular breakdown table of index-level and data stream-level insights into indexing performance. 
+The bottom half of the **Indexing Tier** page offers a more granular breakdown of index-level and data stream-level insights into indexing performance. 
 
 :::{image} /deploy-manage/images/indexing-tier-breakdown-table.png
 :screenshot:
 :alt: Screenshot showing an expanded row in the Data Streams table on the bottom half of the Indexing Tier page
 :::
 
-Each row of the table represents a single index or data stream, providing the following information:
+A table lists all of your indices and data streams, with each row providing the following information:
 * The **number of documents** in the index or data stream.
 * The latest **indexing rate** in the selected time period.
 * The latest **indexing latency** in the selected time period.
@@ -47,12 +47,12 @@ Each row of the table represents a single index or data stream, providing the fo
 
 Using this table, you can detect which of your indices or data streams is currently being ingested and at what rate and latency. This helps you identify which indices have a high [ingestion load](https://www.elastic.co/search-labs/blog/elasticsearch-ingest-autoscaling#ingestion-load), so that you can deduce where that load is coming from and manage it accordingly.
 
-For historical analysis, you can also expand each row to reveal performance trends over time, helping you detect patterns or anomalies in indexing performance for each index and data stream individually.
+For historical analysis, you can also expand each row to reveal performance trends over time. These help you detect patterns or anomalies in indexing performance for each index and data stream individually.
 
-Also, this table is interactive and can be:
+This table is interactive and can be:
 
 * filtered by index or data stream name.
-* sorted by index or data stream name, documents count, indexing rate rate, indexing latency, or last indexing time.
+* sorted by index or data stream name, documents count, indexing rate, indexing latency, or last indexing time.
 * paginated to handle large sets of indices or data streams.
 
 ## Factors affecting ingest VCU consumption
@@ -60,7 +60,7 @@ The **Indexing Tier** view shows you how many ingest VCUs are consumed in your p
 
 The consumption of ingest VCUs is directly related to [autoscaling](/deploy-manage/autoscaling.md), which depends on your ingest rate and the complexity of your data. When your project scales up, more VCUs are consumed, and when your project scales down, fewer VCUs are consumed. When no data is being indexed, the indexing tier scales down to zero (with some [exceptions](https://www.elastic.co/search-labs/pt/blog/elasticsearch-serverless-pricing-vcus-ecus#minimum-ingest-vcus)).
 
-The following factors might cause upscaling or downscaling and consequently an increase or decrease in the number of ingest VCUs consumed:
+Both indexing rate and indexing latency can cause upscaling or downscaling, and consequently an increase or decrease in the number of ingest VCUs consumed.
 
 ### Indexing rate
 A higher indexing rate will lead to a larger [ingestion load](https://www.elastic.co/search-labs/blog/elasticsearch-ingest-autoscaling#ingestion-load), which means the project might be upscaled and more ingest VCUs might be consumed. Similarly, a smaller indexing load means fewer ingest VCUs being consumed.
@@ -71,16 +71,16 @@ When that happens, the indexing tier will try to respond to all requests as quic
 
 ### Indexing latency
 
-Alternatively, the indexing rate on your project might remain steady, but the indexing latency might increase because some computationally heavy indexing queries have been executing for several minutes, preventing the tier from serving newer indexing queries.
+While the indexing rate on your project might remain steady, but the indexing latency might increase because some computationally heavy indexing queries have been executing for several minutes, preventing the tier from serving newer indexing queries.
 
-This could be caused by a number of reasons:
+A number of things could cause this:
 
-* You might have a lot of small indices (less than 1GB) that are causing overhead
+* You might have a lot of small indices (less than 1GB) that are creating computational overhead
 * Indexed documents might need to be processed by resource-intensive ingest pipelines, such as pipelines with complex grok patterns or inference requirements
 * Transforms might be running on large amounts of data
 * Index mappings might be inefficient or they might be defining too many fields, causing higher memory consumption
 
-As a result, the indexing tier gets slowly saturated and the new indexing requests get queued up waiting for the long-running ones to terminate. This increase in indexing latency can trigger upscaling and in turn increase your ingest VCU consumption. Similarly, low indexing latency means downscaling and decreased ingest VCU consumption.
+As a result, the indexing tier slowly becomes saturated and the new indexing requests get queued up waiting for the long-running ones to complete. This increase in indexing latency can trigger upscaling and in turn increase your ingest VCU consumption. Similarly, low indexing latency means downscaling and decreased ingest VCU consumption.
 
 
 :::{admonition} Coming soon to AutoOps
