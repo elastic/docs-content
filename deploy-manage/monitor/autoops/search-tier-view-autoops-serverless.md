@@ -25,7 +25,7 @@ On the **Search Tier** page, the top half of the page offers general insights at
 
 Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** to explore usage and performance data up to the last 10 days. The charted data is bucketed per day except when you select a period of up to 72 hours, when it is bucketed per hour.
+* Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
 * Explore different **visualizations** presenting the trend of search VCU usage over time and how it compares to the performance of the search tier in terms of search rate and latency.
 * View the **annotations** overlaying the search VCUs usage chart to understand when the search power and boost window changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption). 
 * Gain insights from the **performance charts** depicting search rate and search latency trends to understand why your VCU consumption might fluctuate over time. 
@@ -36,7 +36,7 @@ The bottom half of the page offers a more granular breakdown table of index-leve
 
 :::{image} /deploy-manage/images/search-tier-breakdown-table.png
 :screenshot:
-:alt: Screenshot showing an expanded row in the data set table in the bottom half of the Search Tier page
+:alt: Screenshot showing an expanded row in the Data Stream table on the bottom half of the Search Tier page
 :::
 
 Each row of the table represents a single index or data stream, providing the following information:
