@@ -16,7 +16,14 @@ Review the deprecated functionality for Elastic {{observability}}. While depreca
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-:::{include} _snippets/9.3.0/deprecations.md
+<!-- :::{include} _snippets/9.3.0/deprecations.md
+::: -->
+
+:::{changelog} /releases/observability
+:subsections:
+:type: deprecation
+:config: /changelog.yml
+:product: observability
 :::
 
 ## 9.0.1 [elastic-observability-9.0.1-deprecations]

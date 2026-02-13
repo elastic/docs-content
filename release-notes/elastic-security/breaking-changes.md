@@ -15,7 +15,14 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-:::{include} _snippets/9.3.0/breaking-changes.md
+<!-- :::{include} _snippets/9.3.0/breaking-changes.md
+::: -->
+
+:::{changelog} /releases/security
+:subsections:
+:type: breaking-change
+:config: /changelog.yml
+:product: security
 :::
 
 ## 9.2.0 [elastic-security-920-breaking-changes]

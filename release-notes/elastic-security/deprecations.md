@@ -16,7 +16,14 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-:::{include} _snippets/9.3.0/deprecations.md
+<!-- :::{include} _snippets/9.3.0/deprecations.md
+::: -->
+
+:::{changelog} /releases/security
+:subsections:
+:type: deprecation
+:config: /changelog.yml
+:product: security
 :::
 
 ## 9.3.0 [elastic-security-9.3.0-deprecations]
