@@ -37,7 +37,7 @@ Depending on the type of data that you need to move, various migration options a
  - **Snapshot and restore**: Use a snapshot to create a backup of your running {{es}} cluster, and then migrate by restoring your data into a new cluster.
  - **Reindex API**: Copy documents from a source index to a destination index. You can reindex across clusters and deployment types and transform the data en route. 
  - **{{ls}}**: With {{ls}} you can collect, process, and forward data from a variety of sources to a variety of destinations. It serves as a highly configurable option available for migrating data across any deployment types.
- - **Saved objects API**: Use this API or the {{kib}} UI to migrate objects that you've saved in {{kib}}.
+ - **Saved objects API**: You can use this API or the {{kib}} UI to migrate objects that you've saved in {{kib}}.
  - **{{kib}} saved object management**: You can also use the {{kib}} UI to to migrate your saved objects.
 
 The following table describes the migration options available for each data type and where to find guidance.
