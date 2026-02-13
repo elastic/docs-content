@@ -83,7 +83,7 @@ First, index a single document to understand the document structure.
 You can provide vectors in two different input formats: 
 
 - Array of floats: A JSON array of numeric values representing each vector dimension.
-- Base64-encoded string: A Base64-encoded binary representation of the vector. More compact than float arrays, reducing payload size and improving efficiency for large vectors and bulk indexing.
+- Base64-encoded string: A Base64-encoded binary representation of the vector. More compact than float arrays, reducing payload size and improving efficiency for large vectors and bulk indexing. You can use the [Python client dense vector packing](https://elasticsearch-py.readthedocs.io/en/stable/api_helpers.html#dense-vector-packing) utility to convert float arrays into Base64-encoded binary representation.
 ::::{tab-set}
 :::{tab-item} Array of floats
 ```console
