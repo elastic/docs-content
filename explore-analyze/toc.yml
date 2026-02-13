@@ -274,6 +274,7 @@ toc:
         children:
           - file: visualize/charts/area-charts.md
           - file: visualize/charts/bar-charts.md
+          - file: visualize/charts/heat-map-charts.md
           - file: visualize/charts/line-charts.md
           - file: visualize/charts/metric-charts.md
           - file: visualize/charts/pie-charts.md
