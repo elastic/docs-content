@@ -13,6 +13,10 @@ Enter a single line break between two elements, for example, between the end of 
 
 Use a single line break to control the spacing between paragraphs. In general, try to keep paragraphs short so users aren't overwhelmed with lengthy blocks of text. This is even more imperative if a user is on a mobile device. If your paragraph is more than seven lines, consider dividing it into two paragraphs.   
 
+## Headings 
+
+Headings organize content into a logical hierarchy, making it scannable for users and discoverable for search engines and LLMs. At Elastic, we treat headings as the "skeleton" of our documentation. For guidance on how to structure headings for optimal discovery and usability, refer to the [Headings](/contribute-docs/how-to/seo.md#headings) section in our SEO how-to guide. 
+
 ## Admonitions 
 
 Admonitions allow you to highlight important information with varying levels of priority. Use these blocks to emphasize risks, provide helpful advice, or share relevant details. 
@@ -58,21 +62,13 @@ Once a deployment is migrated to node roles, it is not possible to roll back.
 :::: 
 
 ### Important 
-
+Use an important admonition to highlight information that's crucial for the user to know, or could impact performance or the stability of their system. 
 
 ::::{dropdown} Example
 :::{important}
 Setting up {{filebeat}} is an admin-level task that requires extra privileges. As a best practice, use an administrator role to set up and a more restrictive role for event publishing.
 :::
 :::: 
-
-
-
-
-  
-
-
-
 
 ## Emphasis
 
@@ -86,7 +82,7 @@ Use bold text formatting to emphasize the names of UI elements so that users can
 
 | Element | Example |
 | ------- | ------- |
-| Apps | **Visualize** allows you to create visualizations of the data in your Elasticsearch indices. |
+| Apps | **Visualize** allows you to create visualizations of the data in your {{es}} indices. |
 | Columns | In the **Value** column, go to the value you want to edit and click **Edit**. |
 | Interactive UI functions | To use a dark color theme, click **Options** and select **Use dark theme**. |
 | Key combinations | Press **Alt+C**. |
@@ -339,6 +335,71 @@ When using a percent in a sentence, use numerals and the percent sign, without a
 
   ✔️ **Do**: Thirty percent of the memory must be free. 
 :::
+
+## Dates and times
+
+Writing dates and times in a uniform and unambiguous way helps support writing for our global audience.  
+
+### Date formatting 
+
+In general, don't express months as numbers since different world regions put parts of the date in a different order for numeric dates. Use the "**Month DD, YYYY**" format; this is the most unambiguous format for a global audience.
+
+:::{dropdown} Examples
+  ✔️ **Do**: January 15, 2026.  
+
+  ❌ **Don't**: 1/15/2026.
+
+  ❌ **Don't**: 15/01/2026. 
+:::
+
+Do not use ordinal indicators: Avoid adding _st_, _nd_, _rd_, or _th_ to the day.
+
+:::{dropdown} Examples
+  ✔️ **Do**: March 5.  
+
+  ❌ **Don't**: March 5th.
+:::
+
+If you must include a date and time together, mention the date first, then the time. 
+
+:::{dropdown} Example
+  ✔️ **Do**: May 4, 2009, at 6 PM  
+:::
+
+
+
+### Time formatting 
+Use a 12-hour clock with AM/PM: Use a space before "AM" or "PM", and use uppercase without periods.
+
+:::{dropdown} Examples
+  ✔️ **Do**: 10:00 AM 
+  ❌ **Don't**: 10am
+  ❌ **Don't**: 4:30p.m. 
+  ❌ **Don't**: 16:30
+:::
+
+### Time zones 
+
+Use Coordinated Universal Time (UTC): As a global SaaS company, UTC is our primary reference point. If a local time is necessary, provide UTC as well.
+
+:::{dropdown} Example
+✔️ **Do**: 9:00 AM PT (5:00 PM UTC)
+:::
+
+Avoid seasonal abbreviations like "PST" or "PDT" unless the distinction is critical. Use the generic "PT" (Pacific Time) or "ET" (Eastern Time) to avoid errors when the clocks change.
+
+### Duration and relative time 
+
+Avoid relative dates. Never use terms like "last month," "recently," or "currently." These terms become inaccurate as soon as documentation is published.
+
+:::{dropdown} Example
+  ✔️ **Do**: In version 9.3.0 and newer...
+  ✔️ **Do**: In versions older than 9.1.0...
+  ❌ **Don't**: In the current version... 
+
+:::
+
+
 
 ## Code samples
 
