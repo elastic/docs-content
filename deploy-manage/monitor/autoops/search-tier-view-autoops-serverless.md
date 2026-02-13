@@ -1,6 +1,7 @@
 ---
 applies_to:
   serverless:
+    elasticsearch: ga
 navigation_title: Search Tier view
 products:
   - id: cloud-serverless
