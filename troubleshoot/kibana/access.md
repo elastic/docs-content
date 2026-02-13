@@ -56,27 +56,29 @@ For JSON-formatted server status details, use the [{{kib}} current status API](h
 
 ## Triage {{kib}} health using the status API [access-triage]
 
-The following steps demonstrate a typical investigative flow. It assumes the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status) is saved locally as `kibana_status.json` and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor.
+The following steps demonstrate a typical investigative flow. It assumes the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status) is saved locally as `kibana_status.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor.
 
 1. Check the overall status.
 
-   The UI will report "Kibana status is" and then the status. You can see this in the API output by running:
+   The UI will report "Kibana status is" and then the status. You can see this in the API output by running the following command:
 
    ```bash
    cat kibana_status.json | jq '{ overall: .status.overall.level }'
    ```
     
-2. Check core dependencies.
+2. Check the core plugins.
 
-    The UI will report "Plugin Status" with a list of plugins. The core plugins prefix `core`. You can check these in the API output by running the following command:
+    The UI includes a **Plugin status** table with a list of plugins. IDs for core plugins use a prefix of `core`. 
+    
+    You can check these in the API output by running the following command:
 
-  ```bash
-  cat kibana_status.json | jq -r '.status.core|{ elasticsearch: .elasticsearch.level, savedObjects: .savedObjects.level }'
-  ```
+    ```bash
+    cat kibana_status.json | jq -r '.status.core|{ elasticsearch: .elasticsearch.level, savedObjects: .savedObjects.level }'
+    ```
 
-    Before you review any further plugins, check that the `elasticsearch` and `savedObjects` are healthy and resolve any issues:
+     Before you review any further plugins, check that the `elasticsearch` and `savedObjects` are healthy and resolve any issues:
   
-  * If the connection to {{es}} is unhealthy, refer to [](/troubleshoot/kibana/error-server-not-ready.md).
+    * If the connection to {{es}} is unhealthy, refer to [](/troubleshoot/kibana/error-server-not-ready.md).
     * If the connection to Saved Objects is unhealthy, refer to [](/troubleshoot/kibana/migration-failures.md).
 
 3. Check non-core plugins.
