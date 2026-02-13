@@ -32,7 +32,8 @@ To migrate data from {{ech}}, you need to include the remote host parameters as 
 
 :::{important} 
 Kibana assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
-Templates, data stream definitions, and ILM policies, must be in place _before_ you start data migration. 
+
+Templates, data stream definitions, and ILM policies, must be in place _before_ you start data migration. However, be mindful that if you have any [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) configured, it's typically best to add these _after_ data migration so as to avoid re-transforming data that had already been transformed at the time that it was ingested into your source deployment (though if the data is idempotent, re-transforming is not a concern).
 
 Visual components, such dashboard and visualizations, can be migrated after you have migrated the data.
 :::

@@ -38,7 +38,7 @@ Depending on the type of data that you need to move, various migration options a
  - **Reindex API**: Copy documents from a source index to a destination index. You can reindex across clusters and deployment types and transform the data en route. 
  - **{{ls}}**: With {{ls}} you can collect, process, and forward data from a variety of sources to a variety of destinations. It serves as a highly configurable option available for migrating data across any deployment types.
  - **Saved objects API**: Use this API or the {{kib}} UI to migrate objects that you've saved in {{kib}}.
- - **{{kib}} saved object management**: You can also Use the {{kib}} UI to to migrate your saved objects.
+ - **{{kib}} saved object management**: You can also use the {{kib}} UI to to migrate your saved objects.
 
 The following table describes the migration options available for each data type and where to find guidance.
 
@@ -46,7 +46,7 @@ The following table describes the migration options available for each data type
 | ------ | ------ |
 | Ingested user data | The reindex API, snapshot and restore, and {{ls}} migration options are available for your user data, with some restrictions based on the source and target deployment type. Refer to the [data migration guides](#data-migration-guides) listed on this page to learn more. |
 | {{es}} system data | System indices must be migrated using the snapshot and restore [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) component. Refer to [Migrate system indices](/manage-data/migrate/migrate-internal-indices.md) for detailed migration steps. |
-| {{kib}} saved objects | {{kib}} saved objects can be migrated using the Import and Export endpoints of the [Saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or using the [import and export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) tools available through the {{kib}} UI. |
+| {{kib}} saved objects | {{kib}} saved objects can be migrated using the snapshot and restore [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) component or the {{kib}} import and export tools. The tools include the import and export endpoints of the [Saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) and the [import and export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) options in the {{kib}} UI.<br><br>Snapshot and restore is generally the preferred migration method due to both speed and ease of use. In case you need to migrate {{fleet}} configuration data through snapshot and restore, this requires also restoring the {{kib}} feature state. |
 | Elastic feature and component data | Configuration data for products such as {{fleet}}, {{integrations}}, and {{watcher}} is typically migrated using the snapshot and restore feature. Refer to [Snaphot and restore](/deploy-manage/tools/snapshot-and-restore.md) and to the documentation for each specific product for additional detail. |
 
 ## Data migration guides [data-migration-guides]
