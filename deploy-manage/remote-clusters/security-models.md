@@ -59,7 +59,7 @@ stack: preview 9.3
 ::::{include} _snippets/rcs_strong_identity_how.md
 ::::
 
-#### Strong identity verification configuration
+#### Configure strong identity verification
 
 To configure strong identity verification for remote clusters, refer to the appropriate guide for your deployment type:
 - [Configure strong identity verification on {{ech}} deployments](./ec-remote-cluster-strong-identity.md)

@@ -14,7 +14,7 @@ Starting with {{stack}} 9.3, the [API key security model](./security-models.md) 
 This document describes how to enable strong identity verification for {{ech}} deployments and is intended to augment the standard remote cluster setup tutorials. While following the steps to [configure remote clusters](./ec-enable-ccs.md#set-up-remote-clusters-with-ech) with API key authentication, apply the additional settings and procedures described here. Some settings can be applied independently, while others note the stage in the procedure where you should apply them.
 
 :::{note}
-For self-managed steps to configure strong identity verification, refer to [Strong identity verification](./remote-clusters-api-key.md#remote-cluster-strong-verification).
+For steps to configure strong identity verification for other deployment types, refer to [Strong identity verification](./remote-clusters-api-key.md#remote-cluster-strong-verification).
 :::
 
 ## Prerequisites

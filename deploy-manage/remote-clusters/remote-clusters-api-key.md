@@ -286,7 +286,7 @@ To use strong identity verification, the local and remote clusters must be confi
 headers. This can be done through the cluster settings API or `elasticsearch.yaml`.
 
 :::{note}
-The steps in this section describe the configuration for self-managed clusters. The same procedure can be adapted for other deployment types, such as {{ece}} and {{eck}}, with the appropriate platform-specific configuration steps.
+The steps in this section describe the configuration for self-managed clusters. The same procedure can be adapted for {{ece}} and {{eck}} with the appropriate platform-specific configuration steps.
 
 For {{ech}}-specific steps to configure strong identity verification, refer to [Strong identity verification on {{ech}}](./ec-remote-cluster-strong-identity.md).
 :::
