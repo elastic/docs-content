@@ -35,7 +35,7 @@ The GenAI search – high availability architecture is intended for organization
 
 {{es}} supports multiple vector search execution models and optimizations, allowing this architecture to balance recall, latency, and cost based on workload requirements.
 
-- [Better Binary Quantization (BBQ)](/reference/elasticsearch/mapping-reference/bbq.md) is Elastic’s patented quantization technology that dramatically reduces vector memory footprint while preserving high recall, enabling large-scale in-memory vector search at lower cost.  
+- [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) is Elastic’s patented quantization technology that dramatically reduces vector memory footprint while preserving high recall, enabling large-scale in-memory vector search at lower cost.
 - [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) extends BBQ by efficiently paging vector data from disk, providing predictable performance even when the full vector working set does not fit in memory and enabling cost-efficient scaling for very large corpora.  
 - [HNSW](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-hnsw) is used where maximum recall and lowest tail latency are required and sufficient memory is available to keep vector indexes resident in RAM.  
 - [ACORN](https://www.elastic.co/search-labs/blog/elasticsearch-9-1-bbq-acorn-vector-search) further optimizes filtered vector search by reducing unnecessary graph traversals, making it especially effective for high-selectivity queries common in security, observability, and multi-tenant environments.
@@ -70,7 +70,7 @@ In addition, the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-
 
 The following recommendations assist with clusters that are self-deployed on-prem or self-deployed in a cloud provider. With {{ech}}, you can deploy clusters in {{aws}}, Azure, or Google Cloud. Available hardware types and configurations vary across providers, but each offers instance families that meet the performance needs of search and generative AI applications. 
 
-For details, refer to our documentation on [{{ech}} hardware](/reference/cloud/cloud-hosted/hardware.md) for {{aws}}, Azure, and GCP. The "Physical" column in the table below provides guidance when self-deploying {{es}} in your own data center, based on equivalent CPU, RAM, and storage profiles. 
+For details, refer to our documentation on [{{ech}} hardware](cloud://reference/cloud/cloud-hosted/hardware.md) for {{aws}}, Azure, and GCP. The "Physical" column in the table below provides guidance when self-deploying {{es}} in your own data center, based on equivalent CPU, RAM, and storage profiles.
 
 Elastic has performance-tested hardware profiles across the major cloud providers to identify the optimal balance for each node type. Significantly deviating from these tested ratios may appear to reduce costs, but typically leads to degraded performance, query latency spikes, or search scalability.
 
@@ -109,7 +109,7 @@ When vector quantization is enabled, {{es}} stores both the original `float32` v
 ### Generating vector embeddings
 
 - If generating embeddings on Elastic ML nodes, capacity can be autoscaled using {{ech}} (ECH) or {{eck}} on-prem.  
-- Elastic provides [world class vector models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md) from Jina AI that can be used for NLP embeddings, and a re-ranker that can be either self-hosted on ML nodes or used through [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference.md/eis).  
+- Elastic provides [world class vector models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md) from Jina AI that can be used for NLP embeddings, and a re-ranker that can be either self-hosted on ML nodes or used through [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md).
 - Embeddings can also be generated with [Elastic’s {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) from many external model providers or internal or externally hosted foundation models.
 
 ### kNN search performance tuning
@@ -137,7 +137,7 @@ Three availability zones is ideal, but at least two availability zones are recom
 
 Proper shard management is foundational to maintaining performance at scale. This includes ensuring an even distribution of shards across nodes, choosing an appropriate shard size, and managing shard counts as the cluster grows. For detailed guidance, refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).  
 
-- Recommendations for time series data can be found in the [Hot/Frozen architecture](/reference-architectures/genai-search-high-availability.md#general-considerations).  
+- Recommendations for time series data can be found in the [Hot/Frozen architecture](./hotfrozen-high-availability.md).
 - **Size shards intentionally:** estimate total index size and choose primaries that land in the **\~10–50 GB, \<200M docs** range. This is the natural shard count for a catalog; don’t add shards unless search metrics demand it.  
 - **Plan scale at creation:** catalogs don’t roll over, so set shard math up front. If growth is possible, configure routing shards so the index can be **split later by clean multiples** (read-only \+ extra IO/disk required).  
 - **Scale with replicas, not primaries:** increase **replicas** first to improve search throughput and availability. Replicas increase concurrency by spreading queries across shard copies; **fan-out is still driven by primary shard count**.
@@ -171,5 +171,5 @@ You can [contact us](https://www.elastic.co/contact) for an estimate and recomme
 
 * [{{es}} \- Vector Search Documentation](/solutions/search/vector.md)  
 * [{{es}} \- Get ready for production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)  
-* [{{ech}} \- Preparing a deployment for production](deploy-manage/deploy/elastic-cloud/cloud-hosted.md)  
+* [{{ech}} \- Preparing a deployment for production](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
 * [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md)
