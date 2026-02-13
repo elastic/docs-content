@@ -170,6 +170,50 @@ The `applies_to` tags are scope signals for readers, not comprehensive metadata.
 
 ---
 
+## Applies switch
+
+The `applies-switch` directive creates tabbed content where each tab displays an `applies_to` badge instead of a text title. Use this to show content that varies by deployment type or version. All applies switches on a page automatically sync together.
+
+:::::{dropdown} Syntax
+```markdown
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.0+
+Content for Stack
+:::
+
+:::{applies-item} serverless: ga
+Content for Serverless
+:::
+
+::::
+```
+:::::
+
+:::::{dropdown} Output
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.0+
+Content for Stack
+:::
+
+:::{applies-item} serverless: ga
+Content for Serverless
+:::
+
+::::
+:::::
+
+**DOs**<br>
+✅ **Do:** Use when content varies significantly by deployment type or version<br>
+✅ **Do:** Combine multiple `applies_to` definitions using YAML object notation: `{ ece: ga 4.0+, ess: ga }`
+
+For more details, refer to [Applies switch](https://elastic.github.io/docs-builder/syntax/applies-switch).
+<br>
+<br>
+
+---
+
 ## Code blocks
 
 Multi-line blocks for code, commands, configuration, and similar content. Use three backticks ` ``` ` on separate lines to start and end the block. For syntax highlighting, add a language identifier after the opening backticks.
@@ -352,6 +396,42 @@ For more details, refer to [Dropdowns](https://elastic.github.io/docs-builder/sy
 
 ---
 
+## Footnotes
+
+Add notes and references without cluttering the main text. Footnotes are automatically numbered and linked. References appear as superscript numbers in the text, and the footnote content renders at the bottom of the page.
+
+:::{dropdown} Syntax
+```markdown
+Here's a simple footnote[^fn-1] and a named one[^fn-note].
+
+[^fn-1]: This is the first footnote.
+[^fn-note]: This footnote uses a named identifier.
+```
+:::
+
+:::{dropdown} Output
+Here's a simple footnote[^fn-1] and a named one[^fn-note].
+:::
+
+[^fn-1]: This is the first footnote.
+[^fn-note]: This footnote uses a named identifier.
+
+**DOs**<br>
+✅ **Do:** Use descriptive identifiers like `[^api-note]` for maintainability<br>
+✅ **Do:** Keep footnotes focused on a single piece of information<br>
+✅ **Do:** Place footnote definitions at the document level, not inside directives
+
+**DON'Ts**<br>
+❌ **Don't:** Use footnotes for content important enough to be in the main text<br>
+❌ **Don't:** Write very long footnotes — consider using the main text instead<br>
+❌ **Don't:** Define footnotes inside tab-sets, admonitions, or other containers
+
+For more details, refer to [Footnotes](https://elastic.github.io/docs-builder/syntax/footnotes).
+<br>
+<br>
+
+---
+
 ## Headings
 Headings mark the title of a page or section. To create a heading, add number signs `#` at the beginning of the line (one `#` for each heading level).
 
@@ -417,24 +497,86 @@ For more details, refer to [Images](https://elastic.github.io/docs-builder/synta
 
 ---
 
+## Icons
+
+Include icons inline using the `` {icon}`icon-name` `` syntax.
+
+:::{dropdown} Syntax
+```markdown
+Click the {icon}`gear` **Settings** icon.
+Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
+```
+:::
+
+:::{dropdown} Output
+Click the {icon}`gear` **Settings** icon.
+
+Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
+:::
+
+**DOs**<br>
+✅ **Do:** Use icons in headings, lists, tables, and paragraphs<br>
+✅ **Do:** Pair icons with descriptive text for accessibility<br>
+
+**DON'Ts**<br>
+❌ **Don't:** Use icons without context or explanation<br>
+❌ **Don't:** Overuse icons — they should enhance, not clutter
+
+For more details and the full icon list, refer to [Icons](https://elastic.github.io/docs-builder/syntax/icons).
+<br>
+<br>
+
+---
 
 ## Inline formatting
 Elastic Docs v3 supports standard Markdown inline formatting.
 
-| Output | Markdown |
-| ------ | -------- |
-| **bold** | \*\*bold\*\* |
-| _italics_ | \_italics\_ |
-| `monospace` | \`monospace\` |
-| ~~strikethrough~~ | \~\~strikethrough\~\~ |
-| \*escaped symbols\* | `\*escaped symbols\*` |
+| Markdown | Output |
+| -------- | ------ |
+| \*\*strong\*\* | **strong** |
+| \_emphasis\_ | _emphasis_ |
+| \`monospace\` | `monospace` |
+| \~\~strikethrough\~\~ | ~~strikethrough~~ |
+| `\*escaped symbols\*` | \*escaped symbols\* |
 
 **DOs**<br>
 ✅ **Do:** Use `_emphasis_` to introduce a term<br>
-✅ **Do:** Use inline `code` in headings and other elements as needed
+✅ **Do:** Use `monospace` in headings and other elements as needed
 
 **DON'Ts**<br>
 ❌ **Don't:** Overuse `**strong**` or `_emphasis_` — aim for readability
+<br>
+<br>
+
+---
+
+## Keyboard markup
+
+Represent keyboard keys and shortcuts using the `` {kbd}`key-name` `` syntax. Combine keys with `+` and show alternatives with `|`.
+
+:::{dropdown} Syntax
+```markdown
+Press {kbd}`enter` to submit.
+Use {kbd}`cmd+shift+p` to open the command palette.
+Use {kbd}`ctrl|cmd+c` to copy text.
+```
+:::
+
+:::{dropdown} Output
+Press {kbd}`enter` to submit.
+
+Use {kbd}`cmd+shift+p` to open the command palette.
+
+Use {kbd}`ctrl|cmd+c` to copy text.
+:::
+
+**DOs**<br>
+✅ **Do:** Use keyword equivalents `plus` and `pipe` to render those literal keys<br>
+
+**DON'Ts**<br>
+❌ **Don't:** Use raw `+` or `|` characters when you mean to display them as keys
+
+For more details and available key names, refer to [Keyboard markup](https://elastic.github.io/docs-builder/syntax/keyboard).
 <br>
 <br>
 
@@ -498,6 +640,70 @@ Standard Markdown ordered (numbered) and unordered (bulleted) lists. Indent with
 ❌ **Don't:** Use lists for structured data or comparisons — use tables instead
 
 For more details, refer to [Lists](https://elastic.github.io/docs-builder/syntax/lists).
+<br>
+<br>
+
+---
+
+## Math
+
+Render mathematical expressions using LaTeX syntax with the `{math}` directive. Expressions are rendered client-side using KaTeX.
+
+::::{dropdown} Syntax
+```markdown
+:::{math}
+E = mc^2
+:::
+```
+::::
+
+::::{dropdown} Output
+:::{math}
+E = mc^2
+:::
+::::
+
+**DOs**<br>
+✅ **Do:** Use LaTeX display delimiters (`\[` `\]`) or environments (`\begin{align}`) for complex expressions<br>
+✅ **Do:** Add labels with `:label:` for cross-referencing
+
+For more details, refer to [Math](https://elastic.github.io/docs-builder/syntax/math).
+<br>
+<br>
+
+---
+
+## Mermaid diagrams
+
+Create diagrams using [Mermaid](https://mermaid.js.org/) with standard fenced code blocks. Diagrams are rendered client-side in the browser.
+
+::::{dropdown} Syntax
+````markdown
+```mermaid
+flowchart LR
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Action]
+    B -->|No| D[End]
+```
+````
+::::
+
+::::{dropdown} Output
+```mermaid
+flowchart LR
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Action]
+    B -->|No| D[End]
+```
+::::
+
+**DOs**<br>
+✅ **Do:** Use different types of diagrams, such as flowcharts, sequence diagrams, state diagrams, and so on<br>
+
+**DON'Ts**<br>
+❌ **Don't:** Rely on diagrams for users with JavaScript disabled — they will see raw Mermaid code
+
+For more details, refer to [Mermaid diagrams](https://elastic.github.io/docs-builder/syntax/mermaid).
 <br>
 <br>
 
@@ -594,6 +800,59 @@ In `myfile.md`:
 ❌ **Don't:** Use substitutions for common words that don't need to be standardized
 
 For more details, refer to [Substitutions](https://elastic.github.io/docs-builder/syntax/substitutions).
+<br>
+<br>
+
+---
+
+## Stepper
+
+Steppers provide a visual representation of sequential steps for tutorials or guides. Use steppers instead of numbered section headings when documenting complex procedures. Step titles automatically appear in the page's table of contents.
+
+::::::{dropdown} Syntax
+```markdown
+:::::{stepper}
+
+::::{step} Install
+First install the dependencies.
+::::
+
+::::{step} Build
+Then build the project.
+::::
+
+::::{step} Done
+::::
+
+:::::
+```
+::::::
+
+::::::{dropdown} Output
+:::::{stepper}
+
+::::{step} Install
+First install the dependencies.
+::::
+
+::::{step} Build
+Then build the project.
+::::
+
+::::{step} Done
+::::
+
+:::::
+::::::
+
+**DOs**<br>
+✅ **Do:** Use steppers for multi-step tutorials or complex procedures<br>
+✅ **Do:** Add `:anchor:` to override the default anchor for a step
+
+**DON'Ts**<br>
+❌ **Don't:** Nest steppers inside tabs, dropdowns, or other containers if you want step titles in the ToC
+
+For more details, refer to [Stepper](https://elastic.github.io/docs-builder/syntax/stepper).
 <br>
 <br>
 
