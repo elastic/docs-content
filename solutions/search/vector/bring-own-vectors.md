@@ -129,7 +129,7 @@ POST /_bulk
 ```console
 POST /_bulk
 { "index": { "_index": "amazon-reviews", "_id": "2" } }
-{ "review_text": "This product is amazing! I love it.", "review_vector": "VGhpcyBwcm9kdWN0IGlzIGFtYXppbmchIEkgbG92ZSBpdC4=" }
+{ "review_text": "This product is amazing! I love it.", "review_vector": "PczMzT5MzM0+mZmaPszMzT8AAAA/GZmaPzMzMz9MzM0=" }
 { "index": { "_index": "amazon-reviews", "_id": "3" } }
 { "review_text": "This product is terrible. I hate it.", "review_vector": "VGhpcyBwcm9kdWN0IGlzIHRlcnJpYmxlLiBJIGhhdGUgaXQu" }
 { "index": { "_index": "amazon-reviews", "_id": "4" } }
