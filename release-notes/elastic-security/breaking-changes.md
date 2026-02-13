@@ -22,6 +22,13 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+
+:::{changelog} /releases/security
+:subsections:
+:type: breaking-change
+:config: /changelog.yml
+:::
+
 ## 9.3.2 [elastic-security-932-breaking-changes]
 ::::{dropdown} Removes `serializer` and `deserializer` parameters from the Lists API
 Removes the unused `serializer` and `deserializer` parameters from the Lists API endpoints.
@@ -32,6 +39,9 @@ For more information, check [#250111]({{kib-pull}}250111).
 **Action**<br> Remove any `serializer` or `deserializer` parameters from your Lists API requests.
 ::::
 
+::::
+:::{include} _snippets/9.3.0/breaking-changes.md
+
 ## 9.2.7 [elastic-security-927-breaking-changes]
 ::::{dropdown} Removes `serializer` and `deserializer` parameters from the Lists API
 Removes the unused `serializer` and `deserializer` parameters from the Lists API endpoints.
@@ -40,9 +50,6 @@ For more information, check [#250111]({{kib-pull}}250111).
 **Impact**<br> API requests that include `serializer` or `deserializer` parameters will return a deprecation warning header. The parameters are ignored.
 
 **Action**<br> Remove any `serializer` or `deserializer` parameters from your Lists API requests.
-::::
-:::{include} _snippets/9.3.0/breaking-changes.md
-:::
 
 ## 9.2.0 [elastic-security-920-breaking-changes]
 ::::{dropdown} Changes invalid category for Gatekeeper

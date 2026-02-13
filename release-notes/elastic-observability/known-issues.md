@@ -23,6 +23,12 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{changelog} /releases/observability
+:subsections:
+:type: known-issue
+:config: /changelog.yml
+:::
+
 ::::{dropdown} Browser monitors with JavaScript template literals fail on private locations
 Applies to: All {{stack}} versions
 
@@ -55,11 +61,6 @@ step('Go to page', async () => {
 ```
 
 Alternatively, you can switch to project monitors.
-
-::::
-
-:::{include} _snippets/9.3.0/known-issues.md
-:::
 
 ::::{dropdown} Synthetics monitors statuses become pending after upgrade
 Applies to: {{stack}} 8.19.5 and later

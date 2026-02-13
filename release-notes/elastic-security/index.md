@@ -27,6 +27,11 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+:::{changelog} /releases/security
+:subsections:
+:config: /changelog.yml
+:::
+
 ## 9.3.2 [elastic-security-9.3.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.2-features-enhancements]
@@ -71,7 +76,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where the privileged user monitoring table didn't refresh alert data when the time range changed [#250618]({{kib-pull}}250618).
 * Fixes a DNS parsing bug in Linux versions of {{elastic-defend}} that could result in crashes.
 * Fixes a bug in version 9.3.0 of {{elastic-defend}} that resulted in the Windows Security Center status page showing an error.
-
 
 ## 9.3.0 [elastic-security-9.3.0-release-notes]
 
