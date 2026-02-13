@@ -78,8 +78,14 @@ Here we’re using an 8-dimensional embedding for readability. The vectors that 
 ::::
 ::::{step} Add documents with embeddings
 
-First, index a single document to understand the document structure:
+First, index a single document to understand the document structure.
 
+You can provide vectors in two different input formats: 
+
+- Array of floats: A JSON array of numeric values representing each vector dimension.
+- Base64-encoded string: A Base64-encoded binary representation of the vector. More compact than float arrays, reducing payload size and improving efficiency for large vectors and bulk indexing.
+::::{tab-set}
+:::{tab-item} Array of floats
 ```console
 PUT /amazon-reviews/_doc/1
 {
@@ -87,12 +93,25 @@ PUT /amazon-reviews/_doc/1
   "review_vector": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8] <1>
 }
 ```
+1. The `review_vector` value has 8 dimensions, matching the `dims` count specified in the mapping.
+:::
 
-1. The size of the `review_vector` array is 8, matching the `dims` count specified in the mapping.
+:::{tab-item} Base64
+```console
+PUT /amazon-reviews/_doc/1
+{
+  "review_text": "This product is lifechanging! I'm telling all my friends about it.",
+  "review_vector": "VGhpcyBwcm9kdWN0IGlzIGxpZmVjaGFuZ2luZyEgSSdtIHRlbGxpbmcgYWxsIG15IGZyaWVuZHMgYWJvdXQgaXQu" 
+}
+```
+:::
+::::
 
 In a production scenario, you'll want to index many documents at once using the [`_bulk` endpoint]({{es-apis}}operation/operation-bulk).
 Here's an example of indexing multiple documents in a single `_bulk` request:
 
+::::{tab-set}
+:::{tab-item} Array of floats
 ```console
 POST /_bulk
 { "index": { "_index": "amazon-reviews", "_id": "2" } }
@@ -104,6 +123,22 @@ POST /_bulk
 { "index": { "_index": "amazon-reviews", "_id": "5" } }
 { "review_text": "This product has ruined my life and the lives of my family and friends.", "review_vector": [0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1] }
 ```
+:::
+
+:::{tab-item} Base64
+```console
+POST /_bulk
+{ "index": { "_index": "amazon-reviews", "_id": "2" } }
+{ "review_text": "This product is amazing! I love it.", "review_vector": "VGhpcyBwcm9kdWN0IGlzIGFtYXppbmchIEkgbG92ZSBpdC4=" }
+{ "index": { "_index": "amazon-reviews", "_id": "3" } }
+{ "review_text": "This product is terrible. I hate it.", "review_vector": "VGhpcyBwcm9kdWN0IGlzIHRlcnJpYmxlLiBJIGhhdGUgaXQu" }
+{ "index": { "_index": "amazon-reviews", "_id": "4" } }
+{ "review_text": "This product is great. I can do anything with it.", "review_vector": "VGhpcyBwcm9kdWN0IGlzIGdyZWF0LiBJIGNhbiBkbyBhbnl0aGluZyB3aXRoIGl0Lg==" }
+{ "index": { "_index": "amazon-reviews", "_id": "5" } }
+{ "review_text": "This product has ruined my life and the lives of my family and friends.", "review_vector": "VGhpcyBwcm9kdWN0IGhhcyBydWluZWQgbXkgbGlmZSBhbmQgdGhlIGxpdmVzIG9mIG15IGZhbWlseSBhbmQgZnJpZW5kcy4=" }
+```
+:::
+::::
 
 ::::
 :::::
