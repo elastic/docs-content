@@ -8,7 +8,7 @@ products:
 
 # Indexing Tier view in AutoOps for {{serverless-short}}
 
-The **Indexing Tier** view in AutoOps for {{serverless-short}} provides visibility into the consumption of search VCUs, which are a type of [compute billing dimension](/deploy-manage/monitor/autoops/autoops-for-serverless.md#compute-billing-dimensions) for {{es}} projects. This view helps you understand how indexing activities and performance contribute to your ingest VCU consumption and, as a result, your project's bill. 
+The **Indexing Tier** view in AutoOps for {{serverless-short}} provides visibility into the consumption of ingest VCUs, which are a type of [compute billing dimension](/deploy-manage/monitor/autoops/autoops-for-serverless.md#compute-billing-dimensions) for {{es}} projects. This view helps you understand how indexing activities and performance contribute to your ingest VCU consumption and, as a result, your project's bill. 
 
 This view provides both high-level project summaries and detailed index-level and data stream-level breakdowns. 
 
@@ -59,7 +59,7 @@ The **Indexing Tier** view shows you how many ingest VCUs are consumed in your p
 
 The consumption of ingest VCUs is directly related to [autoscaling](/deploy-manage/autoscaling.md), which depends on your ingest rate and the complexity of your data. When your project scales up, more VCUs are consumed, and when your project scales down, fewer VCUs are consumed. When no data is being indexed, the indexing tier scales down to zero (with some [exceptions](https://www.elastic.co/search-labs/pt/blog/elasticsearch-serverless-pricing-vcus-ecus#minimum-ingest-vcus)).
 
-The following factors may cause upscaling or downscaling and consequently an increase or decrease in the number of ingest VCUs consumed:
+The following factors might cause upscaling or downscaling and consequently an increase or decrease in the number of ingest VCUs consumed:
 
 ### Indexing rate
 A higher indexing rate will lead to a larger [ingestion load](https://www.elastic.co/search-labs/blog/elasticsearch-ingest-autoscaling#ingestion-load), which means the project might be upscaled and more ingest VCUs might be consumed. Similarly, a smaller indexing load means fewer ingest VCUs being consumed.
@@ -70,13 +70,13 @@ When that happens, the indexing tier will try to respond to all requests as quic
 
 ### Indexing latency
 
-Alternatively, the indexing rate on your project may remain steady, but the indexing latency may increase because some computationally heavy indexing queries have been executing for several minutes, preventing the tier from serving newer indexing queries.
+Alternatively, the indexing rate on your project might remain steady, but the indexing latency might increase because some computationally heavy indexing queries have been executing for several minutes, preventing the tier from serving newer indexing queries.
 
 This could be caused by a number of reasons:
 
-* You might have a large number of small indices (less than 1GB) that are causing overhead
+* You might have a lot of small indices (less than 1GB) that are causing overhead
 * Indexed documents might need to be processed by resource-intensive ingest pipelines, such as pipelines with complex grok patterns or inference requirements
-* Transforms may be running on very large amounts of data
+* Transforms might be running on large amounts of data
 * Index mappings might be inefficient or they might be defining too many fields, causing higher memory consumption
 
 As a result, the indexing tier gets slowly saturated and the new indexing requests get queued up waiting for the long-running ones to terminate. This increase in indexing latency can trigger upscaling and in turn increase your ingest VCU consumption. Similarly, low indexing latency means downscaling and decreased ingest VCU consumption.
