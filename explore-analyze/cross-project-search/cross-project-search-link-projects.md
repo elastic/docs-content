@@ -1,17 +1,18 @@
 ---
-description: "Link projects in the Cloud UI to enable cross-project search across multiple Elasticsearch Serverless projects."
+description: Link projects in the Cloud UI to enable cross-project search across multiple Serverless projects.
 applies_to:
   stack: unavailable
   serverless: preview
 products:
   - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Link projects for {{cps}} [link-projects-for-cps]
 
-This guide explains how to link projects in the {{ecloud}} UI so you can run cross-project searches from an origin project.
+Before you can search across multiple projects, you must link them together. {{cps-cap}} only works between projects that are explicitly linked within your {{ecloud}} organization.
 
-For an overview of {{cps}} concepts such as origin projects, linked projects, and search expressions, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md).
+This guide explains how to link projects in the {{ecloud}} UI so you can run cross-project searches from an origin project. For an overview of {{cps}} concepts such as origin projects, linked projects, and search expressions, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 ## Prerequisites
 

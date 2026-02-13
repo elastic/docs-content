@@ -4,13 +4,15 @@ applies_to:
   serverless: preview
 products:
   - id: elasticsearch
-description: Learn how cross-project search (CPS) enables you to search across multiple Elasticsearch Serverless projects from a single request.
+description: Learn how cross-project search (CPS) enables you to search across multiple Serverless projects from a single request.
 ---
 
 # {{cps-cap}} [cross-project-search]
 
 **{{cps-cap}}** ({{cps-init}}) enables you to run a single search request across multiple {{serverless-short}} projects.
 When your data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all that data from a single place, without having to search each project individually.
+
+{{cps-cap}} relies on linking projects within your {{ecloud}} organization. After you link projects together, searches from the origin project automatically run across all linked projects.
 
 This overview explains how {{cps}} works, including project linking, search expressions, tags, and project routing.
 
