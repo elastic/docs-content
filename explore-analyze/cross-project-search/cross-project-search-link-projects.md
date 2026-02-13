@@ -1,11 +1,11 @@
 ---
-description: Link projects in the Cloud UI to enable cross-project search across multiple Serverless projects.
 applies_to:
   stack: unavailable
   serverless: preview
 products:
   - id: elasticsearch
   - id: cloud-serverless
+description: Link projects in the Cloud UI to enable cross-project search across multiple Serverless projects.
 ---
 
 # Link projects for {{cps}} [link-projects-for-cps]
