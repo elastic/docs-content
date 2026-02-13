@@ -2,7 +2,14 @@
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how to use the Liquid templating engine to create dynamic workflows.
+description: Learn how to use variables, constants, and the Liquid templating engine to create dynamic workflows.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Templating engine [workflows-templating]
@@ -194,10 +201,11 @@ steps:
           type: "tags"
 
   - name: create_document
-    type: elasticsearch.index
+    type: elasticsearch.request
     with:
-      index: "reports"
-      document:
+      method: POST
+      path: /reports/_doc
+      body:
         # Preserves the array type, doesn't stringify it
         tags: "${{steps.get_tags.output.hits.hits[0]._source.tags}}"
 ```
@@ -251,6 +259,32 @@ steps:
         - {{hit._source.name}} ({{hit._source.email}})
         {% endfor %}
 ```
+
+## Context variables reference [workflows-context-variables]
+
+The workflow engine provides context variables that you can access using template syntax. These variables give you access to workflow metadata, execution details, trigger data, and step outputs.
+
+### Available context variables
+
+| Variable | Description | Example value |
+|----------|-------------|---------------|
+| `workflow.name` | Name of the current workflow | `"My Workflow"` |
+| `workflow.id` | Unique identifier of the workflow definition | `"abc-123"` |
+| `execution.id` | Unique identifier for this specific run | `"exec-456"` |
+| `execution.startedAt` | ISO timestamp when execution began | `"2024-01-15T10:30:00Z"` |
+| `event` | Data from the trigger that started the workflow | `{ "user": { "id": "u-123" }, "params": { "target": "host-1" } }` |
+| `inputs.<name>` | Input parameters passed at trigger time | `inputs.severity` resolves to `"high"` |
+| `consts.<name>` | Constants defined at the workflow level | `consts.api_url` resolves to `"https://api.example.com"` |
+| `steps.<step_name>.output` | Output data from a completed step | `steps.search.output.hits.total` resolves to `42` |
+| `steps.<step_name>.error` | Error details if a step failed | `{ "message": "Connection timeout", "code": "ETIMEDOUT" }` |
+
+### Foreach loop variables
+
+Inside `foreach` steps, you have access to additional context variables such as `foreach.item`, `foreach.index`, and more. Refer to [Foreach context variables](/explore-analyze/workflows/steps/foreach.md#context-variables) for details.
+
+### Trigger event data
+
+The `event` variable contains data from the trigger. Its structure depends on the trigger type. Refer to [Trigger context](/explore-analyze/workflows/triggers.md#trigger-context) to learn what data each trigger type provides.
 
 ## Template rendering behavior [workflows-template-rendering]
 

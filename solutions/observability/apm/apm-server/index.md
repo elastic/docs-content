@@ -2,6 +2,13 @@
 applies_to:
   stack: ga
   serverless: unavailable
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Work with {{apm-server}}

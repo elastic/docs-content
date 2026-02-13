@@ -75,7 +75,7 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### AI assistant for {{es}}
 
-[](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
+[](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 ### Playground
 
@@ -106,7 +106,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ### AI assistant for {{observability}}
 
-[](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
+[](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 ### Streams
 
@@ -117,7 +117,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 * [Partitioning](/solutions/observability/streams/management/partitioning.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
 * [Advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features, like significant events, use when generating suggestions.
 
-## AI-powered features in {{elastic-sec}}
+## AI-powered features in {{elastic-sec}} [security-features]
 
 {{elastic-sec}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
 

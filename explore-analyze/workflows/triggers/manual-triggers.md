@@ -3,6 +3,13 @@ applies_to:
   stack: preview 9.3
   serverless: preview
 description: Understand manual triggers and how to create and configure them.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Manual triggers
@@ -23,7 +30,12 @@ This allows you to run a workflow manually by:
 
 ## Input parameters
 
-Manual triggers can accept input parameters, which you can reference in any step. When you define inputs at the workflow level, users are prompted to provide values when they run the workflow.
+Manual triggers can accept input parameters, which you can reference in any step. When you define inputs at the workflow level, users are prompted to provide values when they run the workflow. 
+
+:::{tip}
+Refer to [](/explore-analyze/workflows/data.md#workflows-constants-or-inputs) to learn when to use inputs or constants in workflows.
+:::
+
 
 ```yaml
 name: Manual Processing Workflow
