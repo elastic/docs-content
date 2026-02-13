@@ -1,3 +1,13 @@
+---
+description: Requirements for the user account that runs the Elasticsearch service, including identity, kernel resource limits, and file ownership.
+applies_to:
+  deployment:
+    self:
+products:
+  - id: elasticsearch
+type: overview
+---
+
 # {{es}} service user requirements [elasticsearch-service-user]
 
 {{es}} must run under an appropriate user account with specific permissions and consistent configuration across all nodes in your cluster. 
@@ -26,4 +36,11 @@ For instructions on applying these limits using `ulimit`, `/etc/security/limits.
 
 ## File and directory ownership and permissions
 
-The {{es}} user must be able to read the configuration and write to data and log directories. Verify ownership and permissions after installation and before starting the service. RPM and Debian packages set correct ownership automatically. 
+The {{es}} user must be able to read the configuration and write to data and log directories. Verify ownership and permissions after installation and 
+before starting the service. RPM and Debian packages set correct ownership automatically. 
+
+For the default directory paths and their expected ownership, refer to the directory layout for your installation method:
+
+* [Archive (`.tar.gz`)](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md#targz-layout)
+* [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md#deb-layout)
+* [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#rpm-layout)
