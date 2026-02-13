@@ -310,6 +310,8 @@ spec:
 
 For the container name, use `autoops-agent`.
 
+[Learn more about configuring AutoOps in {{eck}}](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md).
+
 
 ## Default behavior [k8s-default-behavior]
 
