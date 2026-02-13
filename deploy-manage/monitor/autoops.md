@@ -3,15 +3,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops.html
 applies_to:
   serverless:
-  deployment:
-    ess: all
-    self:
-    ece:
-    eck:
+  stack: ga
 products:
   - id: cloud-hosted
   - id: cloud-kubernetes
   - id: cloud-enterprise
+  - id: cloud-serverless
 ---
 
 # AutoOps [ec-autoops]

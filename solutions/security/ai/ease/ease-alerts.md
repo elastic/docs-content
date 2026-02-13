@@ -3,6 +3,9 @@ navigation_title: Triage alerts
 applies_to:
   serverless:
     security: preview
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Triage alerts in EASE

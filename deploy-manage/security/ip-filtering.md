@@ -7,6 +7,14 @@ applies_to:
     self: ga
   serverless: ga
 navigation_title: "Add IP filters"
+products:
+  - id: elastic-stack
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-serverless
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # IP filtering

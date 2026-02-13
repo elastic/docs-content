@@ -5,6 +5,11 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Manage snapshot repositories
@@ -34,7 +39,7 @@ Other repository types are available through official plugins:
 
 The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s found-snapshots repository if the deployments are under the same account and in the same region.
 
-{{ech}} deployments also support the following repository types:
+In addition to the platform-managed `found-snapshots` repository, you can register custom snapshot repositories in {{ech}} deployments of the following types:
 
 * [Azure](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
@@ -61,6 +66,8 @@ No repository types other than those listed are supported in the {{ece}} platfor
 :::
 
 For more details, refer to [Managing snapshot repositories in {{ece}}](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
+
+In addition to the platform-managed repositories, you can also register snapshot repositories directly at the deployment level for custom or deployment-specific use cases. For this, follow [the {{ech}} guides](#elastic-cloud-hosted), which are also applicable to {{ece}} deployments.
 
 ### {{eck}} (ECK) [elastic-cloud-on-kubernetes]
 
