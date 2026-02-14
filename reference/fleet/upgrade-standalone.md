@@ -121,7 +121,7 @@ In the event of a private GPG key rotation, you can use the following options wi
     ```
 
 
-Under the basic upgrade scenario standalone {{agent}} will automatically fetch the most current public key, however in an air-gapped environment or in the event that the {{artifact-registry}} is otherwise inaccessible, these commands can be used instead.
+Under the basic upgrade scenario standalone {{agent}} automatically fetches the most current public key, however in an air-gapped environment or in the event that the {{artifact-registry}} is otherwise inaccessible, these commands can be used instead.
 
 
 ## Roll back an Elastic Agent upgrade for standalone agents [rollback-upgrade-standalone]
@@ -131,9 +131,6 @@ serverless: ga
 ```
 
 We have you covered in the unusual case that you need to rollback an upgrade for a standalone agent. 
-
-Earlier {{agent}} versions could detect issues and automatically roll back to the previous installed version within ten minutes of an upgrade if needed.
-This feature is still available and on by default. 
 
 ::::{admonition} Elastic subscription
 The manual rollback feature for {{agent}} is available only for some [Elastic subscription levels]({{subscriptions}}).

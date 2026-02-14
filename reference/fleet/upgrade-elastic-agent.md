@@ -345,6 +345,10 @@ To roll back one or more {{agent}} upgrades:
 1. Go to the **Actions** menu.
 2. Choose **Upgrade management**, and then select **Roll back** for a single agent, or **Roll back upgrade for N agents** for multiple agents.
 
+For a single agent, the roll back menu item appears only if a valid, non-expired rollback is available.
+For multiple agents, the roll back menu item is always enabled, and reports errors for agents that did not have a valid rollback available. 
+
+
 ### Limitations for manual rollback [rollback-upgrade-fleet-managed]
 
 These limitations apply for the manual rollback feature: 
