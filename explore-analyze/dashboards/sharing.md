@@ -33,10 +33,6 @@ From the icon {icon}`share`, you can set whether other users in the space can ed
 :::{include} ../_snippets/dashboard-ownership.md
 :::
 
-::::{note}
-{{kib}} administrators always have write access to all dashboards.
-::::
-
 ## Share a dashboard [share-dashboard-link]
 
 You can share your dashboards in several ways:

@@ -68,6 +68,3 @@ Before creating a dashboard, ensure you have:
     :::{include} ../_snippets/dashboard-ownership.md
     :::
 
-    ::::{note}
-    {{kib}} administrators always have write access to all dashboards.
-    ::::
