@@ -110,6 +110,10 @@ Follow the steps to install the integration.
 
 All user names, specified in the `user.name` field in your selected indices, will be defined as privileged users.
 
+:::{note}
+By default, the index selector excludes dot-prefixed indices and index patterns that are part of the [Security Default Data View](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security) (such as `logs-*`). This prevents adding excessive data to privileged user monitoring, which could cause performance issues.
+:::
+
 ### Import a list of privileged users from a text file [privmon-upload]
 
 1. On the **Privileged user monitoring** page, click **File**.
