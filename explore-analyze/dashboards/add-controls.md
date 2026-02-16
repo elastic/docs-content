@@ -82,7 +82,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 
     * For Range sliders, set the step size. The step size determines the slider's number of steps. The smaller a slider's step size, the more steps it has.
 
-8. Select **Save and close**. The control can now be used.
+8. Select **Save**. The control can now be used.
 9. Consider the position of the control if you have several controls active on the dashboard. Controls are applied from left to right, which can change the options available depending on their position when the [Chain controls](#configure-controls-settings) setting is enabled.
 10. Save the dashboard.
 
@@ -247,7 +247,7 @@ Several settings apply to all controls that are part of a dashboard.
 
     * To remove all controls from the dashboard, select **Delete all**.
 
-3. Select **Save and close** to apply the changes.
+3. Select **Save** to apply the changes.
 
 
 ## Edit Options list and Range slider control settings [edit-controls]
