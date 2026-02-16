@@ -58,7 +58,7 @@ import requests
 
 To create your {{es}} client, you need:
 
-* [your Cloud ID](https://www.elastic.co/docs/solutions/elasticsearch-solution-project/search-connection-details),
+* [your Elasticsearch endpoint](https://www.elastic.co/docs/solutions/elasticsearch-solution-project/search-connection-details),
 * [an encoded API key](https://www.elastic.co/search-labs/tutorials/install-elasticsearch/elastic-cloud#creating-an-api-key).
 
 ```py
@@ -66,7 +66,7 @@ ELASTICSEARCH_ENDPOINT = "elastic_endpoint"
 ELASTIC_API_KEY = "elastic_api_key"
 
 client = Elasticsearch(
-  cloud_id=ELASTICSEARCH_ENDPOINT,
+  elastic_endpoint=ELASTICSEARCH_ENDPOINT,
   api_key=ELASTIC_API_KEY
 )
 
