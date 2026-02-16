@@ -21,7 +21,7 @@ A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-
 
 These limitations apply to remote {{es}} output:
 
-* {{fleet-server}} must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
+* At least one {{fleet-server}} must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
 * Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not currently supported.
 
@@ -65,29 +65,32 @@ In the **Service Token** field, add a service token to access the remote cluster
 :::
 
 :::{note}
-To prevent unauthorized access, the {{es}} service token is stored as a secret value. While secret storage is recommended, you can choose to override this setting, and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or higher. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases).
+To prevent unauthorized access, the {{es}} service token is stored as a secret value. While secret storage is recommended, you can choose to override this setting, and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or later. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases).
 :::
 :::::
 
 :::::{step} Configure SSL certificate authorities (optional)
 
-Configure SSL certificate authorities if the remote {{es}} cluster uses certificates that are not publicly trusted.
+Configure SSL certificate authorities if the remote {{es}} cluster uses certificates that are not publicly trusted. The certificate authority (CA) is used to sign the remote {{es}} cluster's SSL certificate. This allows {{fleet-server}} to validate the remote cluster's certificate.
 
 ::::{applies-switch}
 
 :::{applies-item} stack: ga 9.1
 
-Expand the **Authentication** section to configure the SSL settings:
-
-- **Server SSL certificate authorities**: Add the certificate authority (CA) used to sign the remote {{es}} cluster's SSL certificate. This allows {{fleet-server}} to validate the remote cluster's certificate.
-- **Client SSL certificate** (optional): Add a client certificate if the remote {{es}} cluster requires mutual TLS (mTLS) authentication.
-- **Client SSL certificate key** (optional): Add the private key for the client certificate.
+Expand the **Authentication** section, then paste the certificate content into the **Server SSL certificate authorities** field.
 
 :::
 
 :::{applies-item} stack: ga =9.0
 
-Add SSL settings in the **Advanced YAML configuration** section. For example:
+Add the SSL certificate authorities in the **Advanced YAML configuration** section. For example:
+
+```yaml
+ssl:
+  certificate_authorities: ["/path/to/ca.pem"]
+```
+
+Alternatively, you can embed the CA certificate directly in the YAML configuration:
 
 ```yaml
 ssl:
@@ -103,7 +106,54 @@ ssl:
 
 ::::
 
-For more information about TLS configuration options, refer to [One-way and mutual TLS certifications flow > Output SSL options](/reference/fleet/tls-overview.md#output-ssl-options).
+:::::
+
+:::::{step} Configure mutual TLS (optional)
+
+If your remote {{es}} cluster requires mutual TLS (mTLS) authentication, configure the client certificate and key.
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.1
+
+Expand the **Authentication** section to configure mTLS settings:
+
+- **Client SSL certificate**: Paste the client certificate content that {{agents}} will use to authenticate with the remote cluster.
+- **Client SSL certificate key**: Paste the private key content associated with the client certificate.
+
+:::
+
+:::{applies-item} stack: ga =9.0
+
+Add the client certificate settings in the **Advanced YAML configuration** section. For example:
+
+```yaml
+ssl:
+  certificate: "/path/to/client-cert.pem"
+  key: "/path/to/client-cert.key"
+```
+
+Alternatively, you can embed the certificate and key directly in the YAML configuration:
+
+```yaml
+ssl:
+  certificate: |
+    -----BEGIN CERTIFICATE-----
+    MIIDCjCCAfKgAwIBAgITJ706Mu2wJlKckpIvkWxEHvEyijANBgkqhkiG9w0BAQsF
+    ...
+    -----END CERTIFICATE-----
+  key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDXHufGPycpCOfI
+    ...
+    -----END PRIVATE KEY-----
+```
+
+:::
+
+::::
+
+For more information about TLS configuration options, refer to [One-way and mutual TLS certifications flow → Output SSL options](/reference/fleet/tls-overview.md#output-ssl-options).
 :::::
 
 :::::{step} Configure output preferences
@@ -118,7 +168,7 @@ For more information about TLS configuration options, refer to [One-way and mutu
 
 3. Select the [performance tuning settings](/reference/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) to optimize {{agent}}s for throughput, scale, or latency, or leave the default `balanced` setting.
 
-4. {applies_to}`stack: preview 9.2` Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). Using this feature requires additional steps. For more details, refer to [Ship data to streams > {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
+4. {applies_to}`stack: preview 9.2` Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). Using this feature requires additional steps. For more details, refer to [Ship data to streams → {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
 :::::
 
 :::::{step} Configure advanced settings (optional)
