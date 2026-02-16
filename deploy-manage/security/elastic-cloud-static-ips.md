@@ -12,7 +12,7 @@ products:
 
 {{ecloud}} provides a range of static IP addresses that enable you to allow or deny IP ranges. There are two types of static IP addresses, [ingress](#ec-ingress) and [egress](#ec-egress), and they each have their own set of use cases. In general, static IPs can be used to introduce network controls (for example, firewall rules) for traffic that goes to and from {{ecloud}} deployments over the Internet. Use of static IPs is not applicable to private cloud service provider connections (for example, AWS/Azure PrivateLink, GCP Private Service Connect). 
 
-Static IP addresses are [subject to change](#ec-warning), and not all [cloud provider regions](#ec-regions) are currently fully supported for ingress and egress static IPs. For this reason, we generally do not recommend that you use firewall rules to allow or restrict certain IP ranges. Consider using [private link](/deploy-manage/security/private-link-traffic-filters.md) traffic filters for deployment endpoints on {{ech}}. However, in situations where using Private Link services do not meet requirements (for example, secure traffic **from** {{ecloud}}), static IP ranges can be used.
+Static IP addresses are [subject to change](#ec-warning), and not all [cloud provider regions](#ec-regions) are currently fully supported for ingress and egress static IPs. For this reason, we generally do not recommend that you use firewall rules to allow or restrict certain IP ranges. Consider using [private connectivity](/deploy-manage/security/private-connectivity.md) for deployment endpoints on {{ech}}. However, in situations where using private connectivity services do not meet requirements (for example, secure traffic **from** {{ecloud}}), static IP ranges can be used.
 
 
 ## Ingress Static IPs: Traffic to {{ecloud}} [ec-ingress] 
@@ -33,7 +33,7 @@ Not suitable usage of ingress static IPs to introduce network controls:
 Suitable usage of egress static IPs to introduce network controls:
 
 * Traffic **from {{ecloud}} deployments** towards the public Internet, your private cloud network over the public Internet, or your on-premises network over the public Internet (e.g. custom Slack alerts, Email alerts, {{kib}} alerts, etc.) uses Egress Static IPs as network source
-* Cross-cluster replication/cross-cluster search traffic **from {{ecloud}} deployments** towards on-premises {{ece}} deployments protected by on-premises firewalls or {{ece}} traffic filters
+* Cross-cluster replication/cross-cluster search traffic **from {{ecloud}} deployments** towards on-premises {{ece}} deployments protected by on-premises firewalls or {{ece}} IP filters
 
 Not suitable usage of egress static IPs to introduce network controls:
 

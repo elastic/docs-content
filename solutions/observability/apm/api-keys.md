@@ -2,13 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-key.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
+navigation_title: API keys
 ---
 
-# API keys [apm-api-key]
+# API keys for Elastic APM [apm-api-key]
 
 :::{include} _snippets/apm-server-vs-mis.md
 :::
@@ -21,7 +22,7 @@ When enabled, API keys are used to authorize requests to {{apm-server-or-mis}}. 
 
 You can assign one or more unique privileges to each API key:
 
-* **Agent configuration** (`config_agent:read`): Required for agents to read [Agent configuration remotely](/solutions/observability/apm/apm-agent-central-configuration.md).
+* **Agent configuration** (`config_agent:read`): Required for agents to read [Agent configuration remotely](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md).
 * **Ingest** (`event:write`): Required for ingesting agent events.
 
 To secure the communication between APM Agents and either {{apm-server-or-mis}} with API keys, make sure [TLS](/solutions/observability/apm/apm-agent-tls-communication.md) is enabled, then complete these steps:
@@ -31,12 +32,16 @@ To secure the communication between APM Agents and either {{apm-server-or-mis}} 
 3. [Create an API key in {{kib}}](#apm-create-an-api-key)
 4. [Set the API key in your APM agents](#apm-agent-api-key)
 
+::::{note}
+If you're using [{{edot}} (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md), refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md) for EDOT-specific guidance on creating and using API keys.
+::::
+
 ## Enable API keys [apm-enable-api-key]
 
 :::::::{tab-set}
 
 ::::::{tab-item} Fleet-managed
-Enable API key authorization in the [API key authentication options](/solutions/observability/apm/apm-agent-authorization.md#apm-api-key-auth-settings). You should also set a limit on the number of unique API keys that APM Server allows per minute; this value should be the number of unique API keys configured in your monitored services.
+Enable API key authorization in the [API key authentication options](/solutions/observability/apm/apm-server/apm-agent-authorization.md#apm-api-key-auth-settings). You should also set a limit on the number of unique API keys that APM Server allows per minute; this value should be the number of unique API keys configured in your monitored services.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -110,51 +115,21 @@ Assign the newly created `apm_agent_key_role` role to any user that wishes to cr
 
 The Applications UI has a built-in workflow that you can use to easily create and view {{apm-agent}} API keys. Only API keys created in the Applications UI will show up here.
 
-:::::::{tab-set}
-
-::::::{tab-item} Fleet-managed or APM Server binary
-
-Using a superuser account, or a user with the role created in the previous step, In {{kib}}, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Agent keys**. Enter a name for your API key and select at least one privilege.
-
-For example, to create an API key that can be used to ingest APM events and read agent central configuration, select `config_agent:read` and `event:write`.
-
-Click **Create APM Agent key** and copy the Base64 encoded API key. You will need this for the next step, and you will not be able to view it again.
-
-:::{image} /solutions/images/observability-apm-ui-api-key.png
-:alt: Applications UI API key
-:screenshot:
+:::{include} _snippets/create-apm-agent-key-applications-ui.md
 :::
 
-::::::
+For example, to create an API key that can be used to ingest {{product.apm}} events and read agent central configuration, select `config_agent:read` and `event:write`.
 
-::::::{tab-item} {{serverless-full}}
-To create a new API key:
-
-1. In your Elastic Observability Serverless project, go to any Applications page.
-1. Click **Settings**.
-1. Select the **Agent keys** tab.
-1. Click **Create APM agent key**.
-1. Name the key and assign privileges to it.
-1. Click **Create APM agent key**.
-1. Copy the key now. You will not be able to see it again. API keys do not expire.
-
-To view all API keys for your project:
-
-1. Expand **Project settings**.
-1. Select **Management**.
-1. Select **API keys**.
-::::::
-
-:::::::
+To view all API keys for your {{serverless-full}} project, expand **{{project-settings}}**, select **{{manage-app}}**, and then select **API keys**.
 
 ## Set the API key in your APM agents [apm-agent-api-key]
 
 You can now apply your newly created API keys in the configuration of each of your APM agents. See the relevant agent documentation for additional information:
 
-* **Android**: [`apiKey`](opentelemetry://reference/edot-sdks/android/configuration.md)
+* **Android**: [`apiKey`](apm-agent-android://reference/edot-android/configuration.md)
 * **Go agent**: [`ELASTIC_APM_API_KEY`](apm-agent-go://reference/configuration.md#config-api-key)
 * **.NET agent**: [`ApiKey`](apm-agent-dotnet://reference/config-reporter.md#config-api-key)
-* **iOS**: [`withApiKey`](opentelemetry://reference/edot-sdks/ios/configuration.md#withapikey)
+* **iOS**: [`withApiKey`](apm-agent-ios://reference/edot-ios/configuration.md#withapikey)
 * **Java agent**: [`api_key`](apm-agent-java://reference/config-reporter.md#config-api-key)
 * **Node.js agent**: [`apiKey`](apm-agent-nodejs://reference/configuration.md#api-key)
 * **PHP agent**: [`api_key`](apm-agent-php://reference/configuration-reference.md#config-api-key)
@@ -164,7 +139,7 @@ You can now apply your newly created API keys in the configuration of each of yo
 ## Alternate API key creation method [apm-configure-api-key-alternative]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 

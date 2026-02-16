@@ -27,9 +27,630 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.3.0 [elastic-security-9.3.0-release-notes]
+
+### Features and enhancements [elastic-security-9.3.0-features-enhancements]
+
+* Adds a new **Workflows** action to detection rules, allowing you to trigger workflows when a detection rule generates an alert. Refer to [](/explore-analyze/workflows.md) and [](/explore-analyze/workflows/triggers/alert-triggers.md) for more details.
+* Adds a new **Rules, Alerts, and Exceptions** feature privilege that controls access to detection rules, alerts, and rule exceptions [#239634]({{kib-pull}}239634).
+* Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
+* Adds the gap auto-fill scheduler UI and API for detection rules [#244719]({{kib-pull}}244719).
+* Adds a **Gap fill status** column and filter to the Rules table on the **Rule Monitoring** tab [#242595]({{kib-pull}}242595).
+* Enables the **Value report** page in {{stack}} [#243511]({{kib-pull}}243511).
+* Makes the Attack Discovery and Attack Discovery Schedules APIs generally available [#246788]({{kib-pull}}246788).
+* Improves Attack Discovery prompts [#241346]({{kib-pull}}241346).
+* Allows you to migrate QRadar rules to Elastic using Automatic Migration [#244924]({{kib-pull}}244924).
+* Allows you to opt in to the new Agent Builder chat experience [#246089]({{kib-pull}}246089), [#243574]({{kib-pull}}243574), [#245259]({{kib-pull}}245259), [#242598]({{kib-pull}}242598), [#245205]({{kib-pull}}245205), [#246193]({{kib-pull}}246193), [#246403]({{kib-pull}}246403).
+* Improves the alert details flyout by saving the selected threat intelligence time to local storage [#243571]({{kib-pull}}243571).
+* Improves the alert details flyout by saving the selected prevalence time to local storage [#243543]({{kib-pull}}243543).
+* Displays Session View in full height [#245888]({{kib-pull}}245888).
+* Displays the visual event analyzer in full height [#245857]({{kib-pull}}245857).
+* Persists the visual event analyzer's data view selection in local storage [#245002]({{kib-pull}}245002).
+* Updates graph visualization to use Elastic Common Schema (ECS) entity fields for actor and target identification [#243711]({{kib-pull}}243711).
+* Improves the graph investigation feature by introducing new popover components for displaying additional node details [#236906]({{kib-pull}}236906).
+* Prepares the monitoring entity source CRUD APIs for general availability of privileged user monitoring [#246978]({{kib-pull}}246978).
+* Introduces the **Entity summary** section in the entity details flyout [#245532]({{kib-pull}}245532).
+* Adds Cloud Connector usage statistics collection for the CSPM and Asset Discovery integrations [#236992]({{kib-pull}}236992),[#240272]({{kib-pull}}240272).
+* Improves the reliability of Cloud Security Posture (CSP) data by automatically upgrading outdated Misconfiguration and Vulnerabilities data views to the correct versions [#238547]({{kib-pull}}238547).
+* Fixes Cloud Security Posture regressions to ensure AWS, GCP, and Azure cloud providers are all supported [#242592]({{kib-pull}}242592).
+* Upgrades the Osquery schema to v5.19.0 and the ECS schema to v9.2.0 [#246005]({{kib-pull}}246005).
+* Adds a file download relative URI to response actions that provide file output [#237713]({{kib-pull}}237713).
+* Adds a free-text input option to the `runscript` response action for providing input to the selected script [#239436]({{kib-pull}}239436).
+* Displays `runscript` response action output for Microsoft Defender for Endpoint for files up to 4.5 KB [#242441]({{kib-pull}}242441).
+* Adds a server configuration setting that allows you to turn off automatic installation of the Endpoint Security ({{elastic-defend}}) rule when creating an {{elastic-defend}} integration policy [#246418]({{kib-pull}}246418).
+* Adds UI and API support for process descendants in trusted applications [#236318]({{kib-pull}}236318).
+* Adds an `actions` command to {{elastic-defend}} to list all queued response actions or cancel an action by ID.
+* Adds the `thumbprint_sha256` field to `code_signature` for process and library events in {{elastic-defend}} on Windows.
+* Adds the `desktop_name` field to {{elastic-defend}} on Windows process events to assist with the detection of malicious hidden desktop activity.
+* Improves {{elastic-defend}} by integrating two new Event Tracing for Windows (ETW) providers (`Microsoft-Windows-WebIO` and `Microsoft-Windows-WinINet`) to detect malicious HTTP activity.
+* Moves the {{elastic-defend}} response actions internal state location. If an unsuccessful {{elastic-defend}} upgrade is rolled back to the previous version, existing pending actions are aborted early.
+* Adds service-less (no systemd) install mode for {{elastic-defend}} on Linux. Enable by setting the `ELASTIC_ENDPOINT_NO_SYSTEM_SERVICES=1` environment variable during install.
+* Adds the `memory-dump` response action to {{elastic-defend}} on Windows.
+* Hardens {{elastic-defend}} on Windows against Bind Filter rebinding attacks.
+* Adds a new event capture mode, Quark, to {{elastic-defend}} on Linux.
+* Adds DNS events for {{elastic-defend}} on Linux (only supported by eBPF-based event collection).
+* Removes the 100 MB file size limit for the {{elastic-defend}} `get-file` response action.
+* Adds `entropy` and `header_bytes` fields to Linux file events in {{elastic-defend}}.
+* Adds a trusted ancestor feature to {{elastic-defend}}. When enabled, allows a trusted process to also be marked as a trusted ancestor, so all child processes are automatically trusted and skipped by other endpoint subsystems. Configure using the `advanced.trusted_ancestors` policy setting.
+* Adds the `size` field to {{elastic-defend}} file events on Linux.
+* Optimizes the {{elastic-defend}} kernel driver to collect file and registry access events more efficiently, improving overall system responsiveness and reducing CPU usage.
+* Adds script content collection to {{elastic-defend}} on macOS. Use the `advanced.events.script_capture` setting to enable this feature and `advanced.events.script_max_size` to control the maximum size of collected content.
+* Improves responsiveness on systems running {{elastic-defend}}.
+* Adds an {{elastic-defend}} advanced configuration option to use multiple streams for `get-file` uploads.
+* Adds an {{elastic-defend}} advanced configuration option to process multiple `get-file` action uploads in parallel.
+* Improves {{elastic-defend}} Tamper Protection error logging to include current policy information when uninstall or upgrade fails due to an invalid uninstall token.
+* Reduces the number of I/O operations performed by {{elastic-defend}} for file event enrichment. This reduction is more pronounced when Ransomware Protection is not in use.
+* Enables {{elastic-defend}} to save response action upload progress and continue after restart.
+* Improves the {{elastic-defend}} startup log to explain unsigned policy details.
+* Reduces the performance impact of file copy and move operations involving Windows Offloaded Data Transfer while {{elastic-defend}} is installed.
+* Adds an {{elastic-defend}} policy advanced setting to maintain a minimum amount of free disk space.
+* Reduces {{elastic-defend}} CPU usage when suppressing activity from trusted applications on Windows. This might be especially noticeable in applications that are JIT-heavy like PowerShell and .NET.
+* Improves {{elastic-defend}} visibility into image load events in mixed-architecture scenarios, such as during .NET library loading when the library and main executable might use different architectures. This only applies to Windows 10, version 1709 and later.
+* Refactors {{elastic-defend}} Windows file scanning behavior to reduce the risk of file sharing conflicts with other applications and improve the reliability of malware-on-write and event enrichments that rely on file contents such as code signatures and imphashes.
+* Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
+
+
+### Fixes [elastic-security-9.3.0-fixes]
+* Fixes an issue where the rule settings pop-up remained open after clicking **Save** when enabling or disabling auto gap fill [#247678]({{kib-pull}}247678).
+* Fixes the **Get started** page visibility for users with read-only privileges for rules [#247355]({{kib-pull}}247355).
+* Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
+* Limits the retrieval of gap summaries to 100 `rule_id`s [#245924]({{kib-pull}}245924).
+* Fixes threshold rule logic when no "group by" fields are defined [#241022]({{kib-pull}}241022).
+* Fixes an issue where alerts generated by threshold rules had non-functional source event links [#238707]({{kib-pull}}238707).
+* Fixes multiple issues searching installed rules by allowing partial matches on rule name and improving special character support [#237496]({{kib-pull}}237496).
+* Updates the icon that is shown when alert suppression is not available because of insufficient license [#247964]({{kib-pull}}247964).
+* Truncates long text in the **Value** column in the value list modal [#246679]({{kib-pull}}246679).
+* Ignores `resource_already_exists_exception` for value list creation hook [#243642]({{kib-pull}}243642).
+* Fixes an infinite loop bug related to bootstrapping value list resources [#241052]({{kib-pull}}241052).
+* Fixes an issue where rule exception operators could not be cleared when editing a rule exception [#236051]({{kib-pull}}236051).
+* Fixes an issue where the Security AI Assistant chat completion API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
+* Updates the configuration validation logic for the Google Gemini connector [#245647]({{kib-pull}}245647).
+* Fixes an issue with the Security AI Assistant **Regenerate** button [#241240]({{kib-pull}}241240).
+* Fixes Security AI Assistant index entry form field suggestions for nested and multi-fields [#239453]({{kib-pull}}239453).
+* Prioritizes connector `defaultModel` over stored conversation model [#237947]({{kib-pull}}237947).
+* Fixes an issue where attack discovery schedules couldn't be created with Case as the connector type [#239748]({{kib-pull}}239748).
+* Clears the rule selection on the **Translated rules** page after successfully updating an index pattern [#239245]({{kib-pull}}239245).
+* Fixes an issue where users couldn't change the migration when translating rules [#238679]({{kib-pull}}238679).
+* Fixes an issue where the `createdBy` field in the notes filter didn't use exact matching [#247351]({{kib-pull}}247351).
+* Changes the placement of **Migrations** and **Inventory** items in the {{elastic-sec}} navigation menu [#247002]({{kib-pull}}247002).
+* Fixes an issue where Timeline actions appeared in the Alerts table bulk actions menu without proper privileges [#246150]({{kib-pull}}246150).
+* Fixes an issue where the visual event analyzer preview didn't use the same data view that was selected in the analyzer [#246081]({{kib-pull}}246081).
+* Fixes an issue where the visual event analyzer rendered before the data view was ready [#245712]({{kib-pull}}245712).
+* Fixes an issue where the **Threat intelligence** section in the alert details flyout didn't display multiple values [#245449]({{kib-pull}}245449).
+* Fixes an issue where clicking a rule link from an alert flyout inside a saved Timeline also opened the Timeline [#242313]({{kib-pull}}242313).
+* Fixes a UI issue when displaying {{esql}} queries in Timeline full screen mode [#242027]({{kib-pull}}242027).
+* Allows saving a Timeline with an adhoc data view [#240537]({{kib-pull}}240537).
+* Fixes an issue where the onboarding integrations list wasn't fetched for all pages [#239709]({{kib-pull}}239709).
+* Fixes an issue where the names of the `Security solution default` and `Security solution alerts` data views were displayed incorrectly [#238354]({{kib-pull}}238354).
+* Fixes an issue where the graph visualization didn't render when switching tabs or refreshing the page [#238038]({{kib-pull}}238038).
+* Fixes controls on the **Alerts** page [#236756]({{kib-pull}}236756).
+* Adds support for multiple values in the Indicator details flyout's **Table** tab [#236110]({{kib-pull}}236110).
+* Fixes a pagination issue with the data table on the **Indicators** page [#241108]({{kib-pull}}241108).
+* Fixes alert grouping in the alerts table [#237911]({{kib-pull}}237911).
+* Fixes an issue where the "Top <_n_>" popover stayed open after opening the create case flyout [#242045]({{kib-pull}}242045).
+* Fixes an issue where entity user and host names were not escaped in URLs, which resulted in invalid URLs [#247707]({{kib-pull}}247707).
+* Fixes an issue where special characters in {{esql}} queries for risk scoring were not handled correctly [#247060]({{kib-pull}}247060).
+* Fixes an issue where the **Entity summary** section in the entity details flyout showed incorrect vulnerabilities data [#246889]({{kib-pull}}246889).
+* Updates Active Directory matchers to use SID-based privileged groups for privileged user monitoring [#246763]({{kib-pull}}246763).
+* Fixes an issue where the **Integrations** section on the privileged user monitoring **Manage data sources** page always showed a "no data stream" warning [#246180]({{kib-pull}}246180).
+* Fixed the entity risk engine custom filters so that user-supplied KQL syntax isn't double-negated [#242171]({{kib-pull}}242171).
+* Fixes the entity flyout **Risk contributions** tab link [#241153]({{kib-pull}}241153).
+* Fixes an issue where the entity popover showed a missing `EngineMetadata.type` error [#239661]({{kib-pull}}239661).
+* Fixes an issue where the CSPM and Asset Discovery integrations failed to collect data when using agent-based deployment [#241390]({{kib-pull}}241390).
+* Standardizes how to log errors [#245030]({{kib-pull}}245030).
+* Adds encoding for CloudFormation URL parameters [#242365]({{kib-pull}}242365).
+* Fixes a react-query key collision that occurred when two different integration lookups shared the same key [#240517]({{kib-pull}}240517).
+* Sanitizes lookup names for index creation [#240228]({{kib-pull}}240228).
+* Introduces a check for {{fleet}} `read` permissions before loading in the integrations data source component [#239122]({{kib-pull}}239122).
+* Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin [#237796]({{kib-pull}}237796).
+* Fixes an issue where the response actions API (for {{elastic-defend}} agent types) didn't send actions to more than 10 agents [#243387]({{kib-pull}}243387).
+* Updates response action response codes [#240420]({{kib-pull}}240420).
+* Fixes endpoint artifacts spaces migration to ensure all artifacts are processed [#238740]({{kib-pull}}238740).
+* Updates the datafeed of the `packetbeat_dns_tunneling` {{elastic-sec}} {{ml}} job to include runtime mappings [#249317]({{kib-pull}}249317).
+* Fixes an issue where {{elastic-defend}} on Windows could log a warning about "Quarantine directory failed validation due to ACL or file attribute change" for empty removable media drives such as optical drives.
+* Fixes an issue in {{elastic-defend}} that could result in delayed or missing malware-on-write alerts.
+* Fixes an issue where {{elastic-defend}} upgrades and uninstallations could fail on busy systems.
+* Fixes an issue in {{elastic-defend}} on Windows where Mark of the Web parsing incorrectly handled file origin information ending with a `\0`.
+* Prevents unnecessary policy reloads in {{elastic-defend}} when only the overall config version changes.
+* Fixes a bug where {{elastic-defend}} for Linux could fail to bootstrap with {{agent}}.
+* Fixes an issue that could prevent {{elastic-defend}} from properly handling upgrades when Tamper Protection is enabled.
+* Fixes an issue in {{elastic-defend}} that could cause `get-file` and `execute` response actions to start failing after many are issued with a single running instance of {{elastic-defend}}.
+* Improves {{elastic-defend}} detection of file rename operations that occur on Windows over SMB.
+* Fixes a bug in {{elastic-defend}} on Linux where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
+* Fixes multiple {{elastic-defend}} issues in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
+* For {{elastic-defend}} on Linux, reduces the occurrence of policy failures related to malware protection system deadlock avoidance.
+* Improves {{elastic-defend}} on Linux to better handle fanotify events from different mount namespaces.
+* Fixes a bug in {{elastic-defend}} Linux event collection where some long-running processes were not enriched.
+
+## 9.2.5 [elastic-security-9.2.5-release-notes]
+
+### Features and enhancements [elastic-security-9.2.5-features-enhancements]
+* Further reduces {{elastic-defend}} behavioral protection CPU usage for trusted applications.
+
+### Fixes [elastic-security-9.2.5-fixes]
+* Improves the stability of the **Add Elastic rules** page on deployments with low RAM configurations [#248259]({{kib-pull}}248259).
+* Fixes an issue in {{elastic-defend}} on Windows that could reduce the detection efficacy of malware-on-write.
+* Fixes an issue where {{elastic-defend}} on Windows could log a warning about "Quarantine directory failed validation due to ACL or file attribute change" for empty removable media drives such as optical drives.
+* Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-endpoint}} uninstallation or upgrade.
+
+## 9.2.4 [elastic-security-9.2.4-release-notes]
+
+### Features and enhancements [elastic-security-9.2.4-features-enhancements]
+* Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
+* Adds a server configuration setting that allows you to disable the automatic installation of the Endpoint Security ({{elastic-defend}}) rule when creating an {{elastic-defend}} integration policy [#246418]({{kib-pull}}246418).
+* Persists the visual event analyzer's data view selection in local storage [#245002]({{kib-pull}}245002).
+* Improves responsiveness on systems running {{elastic-defend}}.
+* Optimizes the {{elastic-defend}} kernel driver to collect file and registry access events more efficiently, improving overall system responsiveness and reducing CPU usage.
+
+### Fixes [elastic-security-9.2.4-fixes]
+* Fixes an issue where the Security AI Assistant chat completion API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
+* Fixes an issue where entity user and host names were not escaped in URLs, which resulted in invalid URLs [#247707]({{kib-pull}}247707).
+* Fixes an issue where the `createdBy` field in the notes filter didn't use exact matching [#247351]({{kib-pull}}247351).
+* Fixes an issue where special characters in {{esql}} queries for risk scoring were not handled correctly [#247060]({{kib-pull}}247060).
+* Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
+* Fixes an issue where the **Integrations** section on the privileged user monitoring **Manage data sources** page always showed a "no data stream" warning [#246180]({{kib-pull}}246180).
+* Fixes an issue where Timeline actions appeared in the Alerts table bulk actions menu without proper privileges [#246150]({{kib-pull}}246150).
+* Fixes an issue where the visual event analyzer preview didn't use the same data view that was selected in the analyzer [#246081]({{kib-pull}}246081).
+* Fixes an issue where the visual event analyzer rendered before the data view was ready [#245712]({{kib-pull}}245712).
+* Fixes an issue where the **Threat intelligence** section in the alert details flyout didn't display multiple values [#245449]({{kib-pull}}245449).
+* Fixes an issue in {{elastic-defend}} Windows on-write malware scanning that could cause sharing violations when other applications attempted to open files.
+* Fixes an issue where {{elastic-defend}} upgrades and uninstallations could fail on busy systems.
+* Fixes an issue in {{elastic-defend}} on Windows where Mark of the Web parsing incorrectly handled file origin information ending with a `\0`.
+* For {{elastic-defend}} on Linux, reduces the occurrence of policy failures related to malware protection system deadlock avoidance.
+* Fixes an issue in {{elastic-defend}} that could result in delayed or missing malware-on-write alerts.
+* Fixes a bug in {{elastic-defend}} on Windows that could sometimes result in `KERNEL_AUTO_BOOST_LOCK_ACQUISITION_WITH_RAISED_IRQL` or `PAGE_FAULT_IN_NONPAGED_AREA` bugchecks when [Offloaded Data Transfer (ODX)](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/offloaded-data-transfer) was used to copy files.  This regression was introduced in {{elastic-defend}} versions 8.19.8, 9.1.8, and 9.2.2.
+
+
+## 9.2.3 [elastic-security-9.2.3-release-notes]
+
+### Features and enhancements [elastic-security-9.2.3-features-enhancements]
+* Shows session view in full height [#245888]({{kib-pull}}245888).
+* Shows analyzer in full height [#245857]({{kib-pull}}245857).
+* Hardens {{elastic-defend}} against cloud filter rebinding.
+* Adds `process.group_leader.pid` and `process.session_leader.pid` to {{elastic-defend}} MacOS process exec events.
+* Improves general system responsiveness while {{elastic-defend}} is installed.
+* Reduces the number of I/O operations performed by {{elastic-defend}} for file event enrichment.  This reduction is more pronounced when Ransomware Protection is not in use.
+
+### Fixes [elastic-security-9.2.3-fixes]
+* Standardizes how to log errors [#245030]({{kib-pull}}245030).
+* Fixes a bug for {{elastic-defend}} on Linux, where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
+
+## 9.2.2 [elastic-security-9.2.2-release-notes]
+
+### Features and enhancements [elastic-security-9.2.2-features-enhancements]
+* Improves the alert details flyout by saving the selected threat intelligence time to local storage [#243571]({{kib-pull}}243571).
+* Improves the alert details flyout by saving the selected prevalence time to local storage [#243543]({{kib-pull}}243543).
+
+### Fixes [elastic-security-9.2.2-fixes]
+* Fixes response actions API (for {{elastic-defend}} agent types) not sending action to more than 10 agents [#243387]({{kib-pull}}243387).
+* Fixes an issue where clicking a rule link from an alert flyout inside a saved Timeline would also open the Timeline [#242313]({{kib-pull}}242313).
+* Fixes an issue where the "Top <_n_>" popover stayed open after opening the create case flyout. It now closes automatically when the flyout opens [#242045]({{kib-pull}}242045).
+* Fixes a UI issue when displaying {{esql}} queries in Timeline full screen mode [#242027]({{kib-pull}}242027).
+* Allows saving a Timeline with an adhoc data view [#240537]({{kib-pull}}240537).
+* Fixes an issue where alerts generated by threshold rules had non-functional source event links [#238707]({{kib-pull}}238707).
+* Ignores `resource_already_exists_exception` for value list creation hook [#243642]({{kib-pull}}243642).
+* Adds support for multiple values in the Indicator details flyout's **Table** tab [#236110]({{kib-pull}}236110).
+* Prevents unnecessary policy reloads in {{elastic-defend}} when only the overall config version changes.
+* Fixes a bug where {{elastic-defend}} for Linux could fail to bootstrap with {{agent}}.
+* Generates already mounted events for device control.
+
+## 9.2.1 [elastic-security-9.2.1-release-notes]
+
+### Features and enhancements [elastic-security-9.2.1-features-enhancements]
+
+* Improves the startup log in {{elastic-defend}} to explain the details of unsigned policy.
+* Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
+
+### Fixes [elastic-security-9.2.1-fixes]
+* Fixes an issue where the CSPM and Asset Discovery integrations failed to collect data when using agent-based deployment [#241390]({{kib-pull}}241390).
+* Fixes a react-query key collision that occurred when two different integration lookups shared the same key, which could cause errors when navigating between pages [#240517]({{kib-pull}}240517).
+* Fixes multiple issues searching installed rules by allowing partial matches on rule name and improving special character support [#237496]({{kib-pull}}237496).
+* Fixes an {{elastic-defend}} bug in Linux event collection where some long-running processes were not enriched.
+* Fixes multiple {{elastic-defend}} issues in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
+* Fixes an {{elastic-defend}} issue that could cause the `get-file` and `execute` response actions to fail after many were issued with a single running instance of {{elastic-defend}}
+* Improves {{elastic-defend}} detection of file rename operations on Windows when performed over Server Message Block (SMB).
+* Fixes an {{elastic-defend}} issue on Windows where the `code_signature.thumbprint_sha256` field was missing under process and DLL events for certain event types.
+
+
+## 9.2.0 [elastic-security-9.2.0-release-notes]
+
+### Features and enhancements [elastic-security-9.2.0-features-enhancements]
+
+* Adds the Security Entity Analytics risk score reset feature [#237829]({{kib-pull}}237829).
+* Introduces a Security risk scoring AI Assistant tool [#233647]({{kib-pull}}233647).
+* Uses {{esql}} for calculating entity risk scores [#237871]({{kib-pull}}237871).
+* Enables privileged user monitoring and the Entity analytics navigation item by default [#237436]({{kib-pull}}237436).
+* Enables discovering privileged users from the Entity Analytics Okta integration [#237129]({{kib-pull}}237129).
+* Adds the data view picker to the **Privileged user monitoring** dashboard page [#233264]({{kib-pull}}233264).
+* Implements minor UI changes on **Privileged user monitoring** dashboard page [#231921]({{kib-pull}}231921).
+* Populates the `entity.attributes.Privileged` field in the entity store for users [#237038]({{kib-pull}}237038).
+* Adds public APIs for attack discovery and attack discovery schedules [#236736]({{kib-pull}}236736).
+* Displays total execution time for automatic migrations [#236147]({{kib-pull}}236147).
+* Adds **Update missing index pattern** option to the automatic migration **Translated rules** page [#233258]({{kib-pull}}233258).
+* Introduces new API endpoints for automatic migration of dashboards [#229112]({{kib-pull}}229112).
+* Adds a new deployment method, "cloud connector", for the CSPM and Asset Discovery integrations [#235442]({{kib-pull}}235442), [#230137]({{kib-pull}}230137).
+* Implements CDR Data View versioning and migration logic [#238547]({{kib-pull}}238547).
+* Makes automatic troubleshooting generally available [#234853]({{kib-pull}}234853).
+* Updates the automatic troubleshooting feature to detect warnings and failures in {{elastic-defend}} policy responses and suggest possible remediations [#231908]({{kib-pull}}231908).
+* Adds an advanced setting that keeps the alert suppression window active after you close an alert, preventing new alerts during that period [#231079]({{kib-pull}}231079).
+* Adds `DOES NOT MATCH` capability to indicator match rules [#227084]({{kib-pull}}227084).
+* Adds the `customized_fields` and `has_base_version` fields to the `rule_source` object schema [#234793]({{kib-pull}}234793).
+* Enables the auto-extract observables toggle in the alerts table for both row and bulk actions when adding alerts to a case [#235433]({{kib-pull}}235433).
+* Enables the new data view picker [#234101]({{kib-pull}}234101).
+* Adds a `managed` property to data views, marking Kibana-managed data views with a **Managed** tag [#223451]({{kib-pull}}223451).
+* Adds support for specifying a reason when closing an alert [#226590]({{kib-pull}}226590).
+* Adds a source event ID link to the alert flyout's **Highlighted fields** section, allowing you to quickly preview the event that triggered the alert [#224451]({{kib-pull}}224451).
+* Updates the indicator details flyout's UI to be more consistent with the alert details flyout's UI [#230593]({{kib-pull}}230593).
+* Restricts **Value report** page access to `admin` and `soc_manager` roles in the Security Analytics Complete {{serverless-short}} feature tier [#234377]({{kib-pull}}234377).
+* Implements the **Value report** page for the Elastic AI SOC Engine (EASE) {{serverless-short}} project type [#228877]({{kib-pull}}228877).
+* Adds conversation sharing functionality to the Security AI Assistant, allowing you to share conversations with team members [#230614]({{kib-pull}}230614).
+* Adds a non-CVE reference link list to the vulnerability details flyout [#225601]({{kib-pull}}225601).
+* Adds support for using the `runscript` response action on SentinelOne-enrolled hosts [#234492]({{kib-pull}}234492).
+* Adds support for using the `cancel` response action on MDE-enrolled hosts [#230399]({{kib-pull}}230399).
+* Adds support for trusted applications advanced mode [#230111]({{kib-pull}}230111).
+* Introduces the {{elastic-defend}} **Endpoint Exceptions** sub-feature privilege [#233433]({{kib-pull}}233433).
+* Adds an {{elastic-defend}} advanced policy setting that allows you to disable the firewall anti-tamper plugin or move it into detect-only mode [#236431]({{kib-pull}}236431).
+* Adds two new {{elastic-defend}} advanced policy settings that allow you to opt out of collecting ransomware diagnostics on macOS [#235193]({{kib-pull}}235193).
+* Adds an {{elastic-defend}} advanced policy setting to disable the filtering of file-backed volumes and CD-ROMs in the `device_control` plugin [#236620]({{kib-pull}}236620).
+* Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start {{agent}} service.
+* Adds a new device data stream to the {{elastic-defend}} integration.
+* Adds two new dashboards to the {{elastic-defend}} integration.
+* Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control.
+* Increases the throughput of {{elastic-defend}}'s {{ls}} connections by increasing the maximum size it can upload at once.
+* Adds {{elastic-defend}} support for device control on macOS and Windows.
+* Adds architecture of PE file in Windows malware alerts to {{elastic-defend}}.
+* Adds the `Endpoint.state.orphaned` indicator to {{elastic-defend}} policy response.
+* Adds {{elastic-defend}} support for cluster migration.
+* Adds firewall anti-tamper plug-in to protect {{elastic-endpoint}} processes against network blocking through Windows Firewall.
+* Includes `origin_url`, `origin_referrer_url`, and `Ext.windows.zone_identifier` fields to {{elastic-defend}} by default to Windows image load and process events, if the information can be retrieved.
+* Improves {{elastic-defend}} by integrating a new Event Tracing for Windows (ETW) provider (Microsoft-Windows-Ldap-Client) to create new event types that prebuilt endpoint rules can use to detect malicious LDAP activity.
+* Improves reporting reliability and accuracy of {{elastic-defend}}'s {{es}} connection.
+* Enriches {{elastic-defend}} macOS network connect events with `network.direction`. Possible values are `ingress` and `egress`.
+* Improves {{elastic-defend}} malware scan queue efficiency by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
+* Adds an {{elastic-defend}} advanced policy setting `windows.advanced.events.security.event_disabled` that lets users disable security event collection per event ID.
+* Shortens the time it takes {{elastic-defend}} to recover from a `DEGRADED` status caused by communication issues with {{agent}}.
+* Improves the `verify` command to ensure {{elastic-endpoint}} service is running, otherwise {{agent}} has to fix it automatically.
+* Adds experimental {{elastic-defend}} support for Windows on ARM. This is pre-release software under active development, and should not be run on any production systems. We welcome feedback in our [community Slack](https://ela.st/slack).
+* Improves the reliability of {{elastic-defend}} Kafka connections.
+
+### Fixes [elastic-security-9.2.0-fixes]
+
+* Fixes an issue where the names of the `Security solution default` and `Security solution alerts` data views were displayed incorrectly [#238354]({{kib-pull}}238354).
+* Fixes an issue where the navigation manu overlapped expandable flyouts [#236655]({{kib-pull}}236655).
+* Ensures the data view picker icon is always vertically centered [#236379]({{kib-pull}}236379).
+* Integrates data view logic into host KPIs charts [#236084]({{kib-pull}}236084).
+* Fixes integrations RAG in automatic migration rule translations [#234211]({{kib-pull}}234211).
+* Removes the feature flag for privileged user monitoring [#233960]({{kib-pull}}233960).
+* Returns a 500 response code if there is an error during privileged user monitoring engine initialization [#234368]({{kib-pull}}234368).
+* Ensures that privileged user `@timestamp` and `event.ingested` fields are updated when a privileged user is updated [#233735]({{kib-pull}}233735).
+* Fixes a bug in privileged user monitoring index synchronization where stale users weren't removed after index pattern changes [#229789]({{kib-pull}}229789).
+* Updates the privileged user monitoring UI to replace hard-coded CSS values with the EUI theme [#225307]({{kib-pull}}225307).
+* Fixes incorrect threat enrichment for partially matched `AND` conditions in indicator match rules [#230773]({{kib-pull}}230773).
+* Adds a validation error to prevent users from setting a custom action interval shorter than the rule's check interval [#229976]({{kib-pull}}229976).
+* Fixes accessibility issues on the **Benchmarks** page [#229521]({{kib-pull}}229521).
+* Simplifies the Cloud Security Posture Misconfigurations data view by removing redundancy in the index pattern definition [#227995]({{kib-pull}}227995).
+* Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin.
+* Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within Malware Protections to avoid invalid watchdog firings.
+* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on busy Windows systems.
+* Adds support in {{elastic-defend}} for installing eBPF event probes on Linux endpoints when cgroup2 is mounted in a non-standard location or not mounted at all.
+* Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
+* Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
+* Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
+* Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output. This may have limited event throughput on extremely busy endpoints.
+* Improves the reliability of local {{elastic-defend}} administrative shell commands. In rare cases, a command could fail to execute due to issues with interprocess communication.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{agent}} connectivity changes no longer alter the host isolation state.
+* Fixes a bug in {{elastic-defend}} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
+* Fixes an issue which could cause {{elastic-defend}} to improperly report success when self-healing rollback attempted to terminate a process with an active debugger on Windows.
+* Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') was logged.
+* Fixes an issue to improve reliability of health status reporting between {{elastic-endpoint}} and {{agent}}.
+* Fixes a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count`, and `process.args`, leading to false positives.
+* Fixes an issue in {{elastic-defend}} that could result in a crash if a specified {{ls}} output configuration contained a certificate that couldn't be parsed.
+* Fixes CVE-2025-37735 ([ESA-2025-23](https://discuss.elastic.co/t/elastic-defend-8-19-6-9-1-6-and-9-2-0-security-update-esa-2025-23/383272)) in {{elastic-defend}} on Windows which could allow a low-privilege attacker to delete arbitrary files on the system and potentially escalate privileges to SYSTEM. Windows 11 24H2 includes changes which make this issue harder to exploit.
+
+
+## 9.1.10 [elastic-security-9.1.10-release-notes]
+
+### Features and enhancements [elastic-security-9.1.10-features-enhancements]
+* Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
+
+### Fixes [elastic-security-9.1.10-fixes]
+* Fixes an issue where the Security AI Assistant chat completion API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
+* Fixes an issue where entity user and host names were not escaped in URLs, which resulted in invalid URLs [#247707]({{kib-pull}}247707).
+* Fixes an issue where the `createdBy` field in the notes filter didn't use exact matching [#247351]({{kib-pull}}247351).
+* Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
+* Fixes an issue where Timeline actions appeared in the Alerts table bulk actions menu without proper privileges [#246150]({{kib-pull}}246150).
+* Limits the detection rule execution gaps API for retrieving gap summaries to 100 `rule_id`s per request [#245924]({{kib-pull}}245924).
+* Fixes an issue where the **Threat intelligence** section in the alert details flyout didn't display multiple values [#245449]({{kib-pull}}245449).
+* Fixes an issue where {{elastic-defend}} upgrades and uninstallations could fail on busy systems.
+* Fixes an issue in {{elastic-defend}} on Windows where Mark of the Web parsing incorrectly handled file origin information ending with a `\0`.
+* For {{elastic-defend}} on Linux, reduces the occurrence of policy failures related to malware protection system deadlock avoidance.
+* Fixes a bug in {{elastic-defend}} on Windows that could sometimes result in `KERNEL_AUTO_BOOST_LOCK_ACQUISITION_WITH_RAISED_IRQL` or `PAGE_FAULT_IN_NONPAGED_AREA` bugchecks when [Offloaded Data Transfer (ODX)](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/offloaded-data-transfer) was used to copy files.  This regression was introduced in {{elastic-defend}} versions 8.19.8, 9.1.8, and 9.2.2.
+
+
+## 9.1.9 [elastic-security-9.1.9-release-notes]
+
+### Features and enhancements [elastic-security-9.1.9-features-enhancements]
+* Shows session view in full height [#245888]({{kib-pull}}245888).
+* Shows analyzer in full height [#245857]({{kib-pull}}245857).
+* Hardens {{elastic-defend}} against cloud filter rebinding.
+* Improves general system responsiveness while {{elastic-defend}} is installed.
+
+### Fixes [elastic-security-9.1.9-fixes]
+* Standardizes how to log errors [#245030]({{kib-pull}}245030).
+* Fixes an issue that could prevent {{elastic-defend}} from properly handling upgrades when Tamper Protection is enabled.
+* {{elastic-defend}} no longer reloads its policy if nothing has functionally changed from the previous policy.
+* For Linux {{elastic-defend}}, fixes a bug where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
+
+## 9.1.8 [elastic-security-9.1.8-release-notes]
+
+### Features and enhancements [elastic-security-9.1.8-features-enhancements]
+* Improves the alert details flyout by saving the selected threat intelligence time to local storage [#243571]({{kib-pull}}243571).
+* Ignores `resource_already_exists_exception` for value list creation hook [#243642]({{kib-pull}}243642).
+
+### Fixes [elastic-security-9.1.8-fixes]
+* Fixes an issue where the "Top <_n_>" popover stayed open after opening the create case flyout. It now closes automatically when the new case flyout opens [#242045]({{kib-pull}}242045).
+* Fixes a UI issue when displaying {{esql}} queries in Timeline full screen mode [#242027]({{kib-pull}}242027).
+* Prevents unnecessary policy reloads in {{elastic-defend}} when only the overall config version changes.
+* Fixes a bug where {{elastic-defend}} for Linux could fail to bootstrap with {{agent}}.
+
+
+## 9.1.7 [elastic-security-9.1.7-release-notes]
+
+### Features and enhancements [elastic-security-9.1.7-features-enhancements]
+* Improves the reliability of Cloud Security Posture (CSP) data by automatically upgrading outdated Misconfiguration and Vulnerabilities data views to the correct versions [#238547]({{kib-pull}}238547).
+* Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control.
+* Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
+
+
+### Fixes [elastic-security-9.1.7-fixes]
+* Fixes entity flyout **Risk contributions** tab link [#241153]({{kib-pull}}241153).
+* Fixes a pagination issue with the data table on the **Indicators** page [#241108]({{kib-pull}}241108).
+* Fixes a react-query key collision that occurred when two different integration lookups shared the same key, which could cause errors when navigating between pages [#240517]({{kib-pull}}240517).
+* Fixes multiple issues searching installed rules by allowing partial matches on rule name and improving special character support [#237496]({{kib-pull}}237496).
+* Fixes an issue where rule exception operators could not be cleared when editing a rule exception [#236051]({{kib-pull}}236051).
+* Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within malware protection to avoid invalid watchdog firings.
+* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on busy Windows systems.
+* Fixes multiple {{elastic-defend}} issues in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
+* Fixes CVE-2025-37735 ([ESA-2025-23](https://discuss.elastic.co/t/elastic-defend-8-19-6-9-1-6-and-9-2-0-security-update-esa-2025-23/383272)) in {{elastic-defend}} on Windows which could allow a low-privilege attacker to delete arbitrary files on the system and potentially escalate privileges to SYSTEM. Windows 11 24H2 includes changes which make this issue harder to exploit.
+* Fixes an {{elastic-defend}} bug in Linux event collection where some long-running processes were not enriched.
+* Fixes an {{elastic-defend}} issue that could cause the `get-file` and `execute` response actions to fail after many were issued with a single running instance of {{elastic-defend}}.
+
+
+## 9.1.6 [elastic-security-9.1.6-release-notes]
+
+### Features and enhancements [elastic-security-9.1.6-features-enhancements]
+* Adds the `customized_fields` and `has_base_version` fields to the `rule_source` object schema  [#234793]({{kib-pull}}234793).
+* Implements CDR Data View versioning and migration logic [#238547]({{kib-pull}}238547).
+
+### Fixes [elastic-security-9.1.6-fixes]
+* Fixes {{elastic-endpoint}} artifacts spaces migration to ensure all artifacts are processed [#238740]({{kib-pull}}238740).
+* Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin [#237796]({{kib-pull}}237796).
+* Prioritizes connector `defaultModel` over stored conversation model [#237947]({{kib-pull}}237947).
+
+
+## 9.1.5 [elastic-security-9.1.5-release-notes]
+
+### Features and enhancements [elastic-security-9.1.5-features-enhancements]
+* Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start Elastic Agent service.
+* Increases the throughput of {{elastic-defend}} Logstash connections by increasing the maximum size it can upload at once.
+* Improves reliability and accuracy of reporting of the {{elastic-defend}}'s {{es}} connection.
+
+### Fixes [elastic-security-9.1.5-fixes]
+* Fixes browser fields caching to use the `dataView` ID instead of the index pattern [#234381]({{kib-pull}}234381).
+* Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
+* Fixes the URL passed to detection rule actions using the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
+* Fixes system prompt updates from the Conversations tab in AI Assistant [#234812]({{kib-pull}}234812).
+* Fixes an issue in the Highlighted fields table in the alert details flyout [#234222]({{kib-pull}}234222).
+* Fixes an issue in rule exceptions to include the `matches` operator only for supported fields [#233127]({{kib-pull}}233127).
+* Adds support in {{elastic-defend}} for installing eBPF event probes on Linux endpoints when cgroup2 is mounted in a non-standard location or not mounted at all.
+* Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
+* Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
+* Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{agent}} connectivity changes no longer alter the host isolation state.
+* Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output.  This may have limited event throughput on extremely busy endpoints.
+* Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') would be logged.
+
+
+## 9.1.4 [elastic-security-9.1.4-release-notes]
+
+### Features and enhancements [elastic-security-9.1.4-features-enhancements]
+* Adds more Linux diagnostic process `ptrace` events.
+
+### Fixes [elastic-security-9.1.4-fixes]
+* Fixes filtering on the **Alerts** page by checking for an empty dataView [#235144]({{kib-pull}}235144).
+* Fixes a bug where the toggle column functionality only functioned on the **Alerts** page [#234278]({{kib-pull}}234278).
+* Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
+* Makes the delivery of {{elastic-endpoint}} command line commands more robust. In rare cases, commands could previously fail due to interprocess communication issues.
+
+## 9.1.3 [elastic-security-9.1.3-release-notes]
+
+### Fixes [elastic-security-9.1.3-fixes]
+* Fixes a bug that prevented the vulnerability findings contextual flyout from showing details [#231778]({{kib-pull}}231778).
+* Fixes an issue preventing the creation of Knowledge Base Index Entries in deployments with a large number of indices/mappings [#231376]({{kib-pull}}231376).
+* Fixes a bug where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
+
+## 9.1.2 [elastic-security-9.1.2-release-notes]
+
+### Features and enhancements [elastic-security-9.1.2-features-enhancements]
+* Adds Automatic Import documentation links for users in log description and the error message so that users have better access to the data types that are valid [#229375]({{kib-pull}}229375).
+* To help identify which parts of `elastic-endpoint.exe` are using a significant amount of CPU, {{elastic-defend}} on Windows can now include CPU profiling data in diagnostics. To request CPU profiling data using the command line, refer to [{{agent}} command reference](/reference/fleet/agent-command-reference.md#_options). To request CPU profiling data using {{kib}}, check the **Collect additional CPU metrics** box when requesting {{agent}} diagnostics.
+* Improves {{elastic-defend}} malware scan queue efficiency on Windows by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
+* Allows {{elastic-defend}} to automatically recover in some situations when it loses connectivity with {{agent}}.
+
+### Fixes [elastic-security-9.1.2-fixes]
+* Fixes privileged user monitoring index sync in non-default {{kib}} spaces [#230420]({{kib-pull}}230420).
+* Only creates a privileged user monitoring default index source if one doesn't currently exist [#229693]({{kib-pull}}229693).
+* Fixes a race condition in {{elastic-defend}} that may occasionally result in corrupted process command lines on Windows. When this occurs, `process.command_line`, `process.args_count` and `process.args` may be incorrect, leading to false positives.
+* Due to an issue in macOS, {{elastic-defend}} would sometimes send network events without `user.name` populated. {{elastic-defend}} will now identify these events and populate `user.name` if necessary.
+
+## 9.1.1 [elastic-security-9.1.1-release-notes]
+
+### Features and enhancements [elastic-security-9.1.1-features-enhancements]
+
+* Improves the reliability of {{elastic-defend}} Kafka connections.
+
+### Fixes [elastic-security-9.1.1-fixes]
+* Fixes a bug by moving the `scheduleNow` call to the privileged monitoring engine initialization step, ensuring the task is only scheduled after the engine is fully created and ready [#230263]({{kib-pull}}230263).
+* Fixes a bug where the base version API route cache was not properly invalidated after rule import [#228475]({{kib-pull}}228475).
+* Fixes an issue in {{elastic-defend}} performance metrics that resulted in `endpoint_uptime_percent` always being 0 for behavioral rules.
+
+## 9.1.0 [elastic-security-9.1.0-release-notes]
+
+### Features and enhancements [elastic-security-9.1.0-features-enhancements]
+
+* Adds an option to update the `kibana.alert.workflow_status` field for alerts associated with attack discoveries [#225029]({{kib-pull}}225029).
+* The rule execution gaps functionality is now generally available [#224657]({{kib-pull}}224657).
+* Adds the Security Entity Analytics privileged user monitoring feature [#224638]({{kib-pull}}224638).
+* Adds the ability to bulk fill gaps [#224585]({{kib-pull}}224585).
+* Automatic migration is now generally available [#224544]({{kib-pull}}224544).
+* Adds a name field to the automatic migration UI [#223860]({{kib-pull}}223860).
+* Adds the ability to bulk set up and delete alert suppression [#223090]({{kib-pull}}223090).
+* Adds a human-readable incremental ID to cases, making referencing cases easier [#222874]({{kib-pull}}222874).
+* Adds the ability to change rule migration execution settings when re-processing a migration [#222542]({{kib-pull}}222542).
+* Adds `runscript` response action support for Microsoft Defender for Endpoint–enrolled hosts [#222377]({{kib-pull}}222377).
+* Updates automatic migration API schema [#219597]({{kib-pull}}219597).
+* Adds `siemV3` role migration to support the new Security **Global Artifact Management** privilege [#219566]({{kib-pull}}219566).
+* Adds automatic saving of attack discoveries, with search and filter capabilities [#218906]({{kib-pull}}218906).
+* Adds the ability to edit highlighted fields in the alert details flyout [#216740]({{kib-pull}}216740).
+* Adds API endpoints for the Entity Analytics privileged user monitoring feature [#215663]({{kib-pull}}215663).
+* Adds the onboarding flow for the Asset Inventory feature [#212315]({{kib-pull}}212315).
+* Adds the XSOAR connector [#212049]({{kib-pull}}212049).
+* Adds a custom script selector for choosing scripts to execute when using the `runscript` response action [#204965]({{kib-pull}}204965).
+* Updates {{elastic-sec}} Labs Knowledge Base content [#227125]({{kib-pull}}227125).
+* Bumps default Gemini model [#225917]({{kib-pull}}225917).
+* Groups vulnerabilities by resource and cloud account using IDs instead of names [#225492]({{kib-pull}}225492).
+* Adds prompt tiles to the Security AI Assistant [#224981]({{kib-pull}}224981).
+* Adds support for collapsible sections in integrations READMEs [#223916]({{kib-pull}}223916).
+* Adds advanced policy settings in {{elastic-defend}} to enable collection of file origin information for File, Process, and DLL (ImageLoad) events [#223882]({{kib-pull}}223882), [#222030]({{kib-pull}}222030).
+* Adds the `ecs@mappings` component to the transform destination index template [#223878]({{kib-pull}}223878).
+* Adds the ability to revert a customized prebuilt rule to its original version [#223301]({{kib-pull}}223301).
+* Displays which fields are customized for prebuilt rules [#225939]({{kib-pull}}225939).
+* Adds an {{elastic-defend}} advanced policy setting that allows you to enable or disable the Microsoft-Windows-Security-Auditing ETW provider for security events collection [#222197]({{kib-pull}}222197).
+* Updates the risk severity color map to match the new design [#222061]({{kib-pull}}222061).
+* Updates the asset criticality status color map to match the new design [#222024]({{kib-pull}}222024).
+* Updates the highlighted fields button styling in the alert details flyout [#221862]({{kib-pull}}221862).
+* Adds support for content connectors in {{elastic-sec}} and {{observability}} [#221856]({{kib-pull}}221856).
+* Expands CVE ID search to all search parameters, not only names [#221099]({{kib-pull}}221099).
+* Improves alert searching and filtering by including additional ECS data stream fields [#220447]({{kib-pull}}220447).
+* Updates default model IDs for Amazon Bedrock and OpenAI connectors [#220146]({{kib-pull}}220146).
+* Adds support for PKI (certificate-based) authentication for the OpenAI **Other** connector providers [#219984]({{kib-pull}}219984).
+* Adds pinning and settings to the **Table** tab in the alert and event details flyouts [#218686]({{kib-pull}}218686).
+* Updates the data view selector in the event analyzer [#218183]({{kib-pull}}218183).
+* Updates the data view selector in the global header [#216685]({{kib-pull}}216685).
+* Updates UI handling for multiple CVEs and package fields [#216411]({{kib-pull}}216411).
+* Adds the Security AI prompts integration [#216106]({{kib-pull}}216106).
+* Adds support for grouping multi-value fields in Cloud Security [#215913]({{kib-pull}}215913).
+* Limits unassigned notes to a maximum of 100 per document instead of globally [#214922]({{kib-pull}}214922).
+* Updates the Detection rule monitoring dashboard to include rule gaps histogram [#214694]({{kib-pull}}214694).
+* Adds support for multiple CVEs and improves vulnerability data grid, flyout, and contextual flyout UI [#213039]({{kib-pull}}213039).
+* Adds support for the `MV_EXPAND` command for the {{esql}} rule type [#212675]({{kib-pull}}212675).
+* Adds support for partial results for the {{esql}} rule type [#223198]({{kib-pull}}223198).
+* Updates the data view selector in Timelines [#210585]({{kib-pull}}210585).
+* Adds `unassigned` as an asset criticality level for bulk uploads [#208884]({{kib-pull}}208884).
+* Enables `isolate` and `release` response actions from the event details flyout [#206857]({{kib-pull}}206857).
+* Standardizes action triggers in alerts KPI visualizations [#206340]({{kib-pull}}206340).
+* Introduces space-awareness capabilities for {{elastic-defend}} and other {{elastic-sec}}-specific {{fleet}} features.
+* Adds {{elastic-defend}} process event monitoring for `ptrace` and `memfd` activity on Linux (kernel 5.10+) using eBPF.
+* Adds support for DNS events on macOS. Events can be controlled from the {{elastic-defend}} policy using the **DNS events** checkbox.
+* Adds TCC (Transparency Consent and Control) events to {{elastic-defend}} on macOS. Events are generated every time the TCC database is altered.
+* Adds `parent.command_line` to {{elastic-defend}} process events on macOS to keep in line with Linux and Windows.
+* Reduces {{elastic-defend}} CPU usage for ETW events, API events, and behavioral protections. In some cases, this may be a significant reduction.
+* {{elastic-defend}}: Changes the security events source from the Event Log provider to Event Tracing for Windows (Microsoft-Windows-Security Auditing) provider and enriches the events with additional data.
+* Adds {{elastic-defend}} support for Elliptic Curve certificates and TLS output settings, including `supported_protocols`, `cipher_suites`, and `curve_types`.
+* Reduces {{elastic-defend}} CPU and memory usage for behavioral protections.
+* Reduces {{elastic-defend}} CPU when processing events from the System process, such as IIS network events.
+* Improves {{elastic-defend}} logging of fatal exceptions.
+* Improves {{elastic-defend}} call site analysis logic.
+
+### Fixes [elastic-security-9.1.0-fixes]
+
+* Fixes a bug where data wasn't fetched by the vulnerability expandable flyout in preview mode [#227262]({{kib-pull}}227262).
+* Fixes a bug where Timelines and investigations did not consistently use the default Security data view [#226314]({{kib-pull}}226314).
+* Fixes a bug where opening an alert deeplink didn't correctly load filters on the **Alerts** page [#225650]({{kib-pull}}225650).
+* Updates entity links to open in a flyout instead of leaving the current page [#225381]({{kib-pull}}225381).
+* Adds a title to the rule gap histogram in the Detection rule monitoring dashboard [#225274]({{kib-pull}}225274).
+* Fixes URL query handling for the asset inventory flyout [#225199]({{kib-pull}}225199).
+* Fixes a bug where pressing Escape with an alert details flyout open from a Timeline closed the Timeline instead of the flyout [#224352]({{kib-pull}}224352).
+* Fixes a bug where comma-separated `process.args` values didn't wrap properly in the alert details flyout's **Overview** tab [#223544]({{kib-pull}}223544).
+* Fixes wrapping for threat indicator match event renderer [#223164]({{kib-pull}}223164).
+* Fixes a z-index issue in the {{esql}} query editor within Timeline [#222841]({{kib-pull}}222841).
+* Fixes incorrect content displaying after tab switching in the integrations section on the **Get started** page [#222271]({{kib-pull}}222271).
+* Fixes the exception flyout to show the correct "Edit rule exception" title and button label when editing an exception item [#222248]({{kib-pull}}222248).
+* Retrieves active integrations from the installed integrations API [#218988]({{kib-pull}}218988).
+* Updates tooltips in the gap fills table [#218926]({{kib-pull}}218926).
+* Fixes AI Assistant prompt updates so UI changes reflect only successful updates [#217058]({{kib-pull}}217058).
+* Fixes error callout placement on the **Engine Status** tab of the **Entity Store** page [#216228]({{kib-pull}}216228).
+* Fixes alert severity ordering to display from highest severity to lowest [#215813]({{kib-pull}}215813).
+* Generalizes and consolidates custom {{fleet}} onboarding logic [#215561]({{kib-pull}}215561).
+* Fixes an alert grouping re-render issue that caused infinite rendering loops when selecting a group [#215086]({{kib-pull}}215086).
+* Fixes a bug in the alert details flyout's **Table** tab where fields displayed duplicate hover actions [#212316]({{kib-pull}}212316).
+* Refactors conversation pagination for the Security AI Assistant [#211831]({{kib-pull}}211831).
+* Fixes a bug in {{elastic-defend}} where the `fqdn` feature flag wasn't being persisted across system or endpoint restarts.
+* Fixes a crash in the {{elastic-defend}} scan response action and suppresses the end-user popup when running background malware scans.
+* Fixes an unbounded kernel non-paged memory growth issue in the {{elastic-defend}} kernel driver during extremely high event load situations on Windows. Systems affected by this issue would slow down or become unresponsive until the triggering event load (such as network activity) subsided [#88](https://github.com/elastic/endpoint/issues/88).
+* Fixes a memory growth bug in {{elastic-defend}} on Linux when both **Collect session data** and **Capture terminal output** are enabled.
+* Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
+* Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
+
+## 9.0.8 [elastic-security-9.0.8-release-notes]
+
+### Features and enhancements [elastic-security-9.0.8-features-enhancements]
+* Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start Elastic Agent service.
+
+### Fixes [elastic-security-9.0.8-fixes]
+* Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
+* Fixes the URL passed to detection rule actions using the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
+* Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
+* Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
+* Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{agent}} connectivity changes no longer alter the host isolation state.
+* Improves the reliability of local {{elastic-defend}} administrative shell commands. In rare cases, a command could fail to execute due to issue with interprocess communication.
+* Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output.  This may have limited event throughput on extremely busy endpoints.
+* Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') would be logged.
+
+## 9.0.7 [elastic-security-9.0.7-release-notes]
+
+### Fixes [elastic-security-9.0.7-fixes]
+* Prevents users without appropriate privileges from deleting notes [#233948]({{kib-pull}}233948).
+* Fixes a bug that prevented the **MITRE ATT&CK** section from appearing in the alert details flyout [#233805]({{kib-pull}}233805).
+* Updates {{kib}} MITRE ATT&CK data to v17.1 [#231375]({{kib-pull}}231375).
+* Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
+* Makes the delivery of {{elastic-endpoint}} command line commands more robust. In rare cases, commands could previously fail due to interprocess communication issues.
+
+## 9.0.6 [elastic-security-9.0.6-release-notes]
+
+### Features and enhancements [elastic-security-9.0.6-features-enhancements]
+* Improves the reliability of {{elastic-defend}}'s connection to its kernel driver. This should reduce the instances of temporary `DEGRADED` policy statuses at boot due to `connect_kernel` failures.
+* Improves {{elastic-defend}} malware scan queue efficiency by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
+* To help identify which parts of `elastic-endpoint.exe` are using a significant amount of CPU, {{elastic-defend}} on Windows can now include CPU profiling data in diagnostics. To request CPU profiling data using the command line, refer to [{{agent}} command reference](/reference/fleet/agent-command-reference.md#_options). To request CPU profiling data using {{kib}}, check the **Collect additional CPU metrics** box when requesting {{agent}} diagnostics.
+* Enriches {{elastic-defend}} macOS network connect events with `network.direction`. Possible values are `ingress` and `egress`.
+
+### Fixes [elastic-security-9.0.6-fixes]
+* Prevents the {{esql}} form from locking in read-only mode in the rule upgrade flyout [#231699]({{kib-pull}}231699).
+* Fixes a bug in {{elastic-defend}} where the `fqdn` feature flag was not being persisted across system/endpoint restarts.
+* Fix a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count` and `process.args`, leading to false positives.
+* Fixes a bug in {{elastic-defend}} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
+
+## 9.0.5 [elastic-security-9.0.5-release-notes]
+
+### Features and enhancements [elastic-security-9.0.5-features-enhancements]
+* Adds the `detection_rule_upgrade_status` object to snapshot telemetry schema [#223086]({{kib-pull}}223086).
+* Reduces {{elastic-defend}} CPU when processing events from the System process on Windows.
+* Allows {{elastic-defend}} to automatically recover in some situations when it loses connectivity with {{agent}}.
+* Shortens the time it takes {{elastic-defend}} to recover from a `DEGRADED` status caused by communication issues with {{agent}}.
+* Due to an issue in macOS, {{elastic-defend}} would sometimes send network events without `user.name` populated. {{elastic-defend}} will now identify these events and populate `user.name` if necessary.
+* Reduces {{elastic-defend}} CPU usage for ETW events, API events, and Behavioral Protections. In some cases, this may be a significant reduction.
+
+
+### Fixes [elastic-security-9.0.5-fixes]
+* Fixes a bug where Security AI Assistant settings landed on the wrong page for users on the Basic license  [#229163]({{kib-pull}}229163).
+* Fixes an issue in {{elastic-defend}} performance metrics that resulted in `endpoint_uptime_percent` always being 0 for behavioral rules.
+* Fixes an issue in {{elastic-defend}} that could result in a crash if a {{ls}} output configuration is specified containing a certificate that cannot not be parsed.
+
 ## 9.0.4 [elastic-security-9.0.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.0.4-features-enhancements]
+* Adds the `elastic_customized_total`, `elastic_noncustomized_total`, and `is_customized` fields to snapshot telemetry schema [#222370]({{kib-pull}}222370).
 * Improves logging of fatal exceptions in {{elastic-defend}}.
 
 ### Fixes [elastic-security-9.0.4-fixes]
@@ -37,10 +658,12 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates a placeholder and validation message in the **Related Integrations** section of the rule upgrade flyout [#225775]({{kib-pull}}225775).
 * Excludes {{ml}} rules from installation and upgrade checks for users with Basic or Essentials licenses [#224676]({{kib-pull}}224676).
 * Allows using days as a time unit in rule schedules, fixing an issue where durations normalized to days were incorrectly displayed as 0 seconds [#224083]({{kib-pull}}224083).
+* Fixes a bug where unmodified prebuilt rules installed before v8.18 didn't appear in the **Upgrade** table when the **Unmodified** filter was selected [#227859]({{kib-pull}}227859).
+* Improves UI copy for the "bulk update with conflicts" modal [#227803]({{kib-pull}}227803).
 * Strips `originId` from connectors before rule import to ensure correct ID regeneration and prevent errors when migrating connector references on rules [#223454]({{kib-pull}}223454).
 * Fixes an issue that prevented the AI Assistant Knowledge Base settings UI from displaying [#225033]({{kib-pull}}225033).
 * Fixes a bug in {{elastic-defend}} where Linux network events would fail to load if IPv6 is not supported by the system.
-* Fixes an issue in {{elastic-defend}} that may result in bugchecks (BSODs) on Windows systems with a very high volume of network connections. This issue has only been observed on Windows Server.
+* Fixes an issue in {{elastic-defend}} that may result in bugchecks (BSODs) on Windows systems with a very high volume of network connections.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
 
 ## 9.0.3 [elastic-security-9.0.3-release-notes]

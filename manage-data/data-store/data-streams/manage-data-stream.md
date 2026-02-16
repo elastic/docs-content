@@ -2,6 +2,10 @@
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Manage a data stream [index-management-manage-data-streams]
@@ -21,4 +25,25 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 
 * To view more information about a data stream, such as its generation or its current index lifecycle policy, click the stream’s name. From this view, you can navigate to **Discover** to further explore data within the data stream.
 * To view information about the stream’s backing indices, click the number in the **Indices** column.
-* [preview] To modify the data retention value, select an index, open the **Manage**  menu, and click **Edit data retention**.
+* To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**.
+
+## Manage data streams on the Streams page [manage-data-streams-with-streams]
+```{applies_to}
+serverless: ga
+stack: preview =9.1, ga 9.2+
+```
+The [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make on the **Streams** page are automatically propagated to the associated data stream.
+
+:::{image} /manage-data/images/data-stream-management-streams.png
+:alt: The Streams page
+:screenshot:
+:::
+
+
+You can perform the following data management tasks on the **Streams** page:
+* [define parsing and field extraction logic](/solutions/observability/streams/management/extract.md)
+* [configure data retention policies](/solutions/observability/streams/management/retention.md)
+* [manually adjust index settings](/solutions/observability/streams/management/advanced.md)
+* [manage and update field mappings](/solutions/observability/streams/management/schema.md)
+* [identify failed and degraded documents](/solutions/observability/streams/management/data-quality.md)
+* [partition data into child streams](/solutions/observability/streams/management/partitioning.md) {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview`

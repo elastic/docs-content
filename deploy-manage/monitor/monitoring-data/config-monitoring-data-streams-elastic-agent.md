@@ -35,7 +35,9 @@ metrics-elasticsearch.stack_monitoring.shard
 
 To change the settings of each data stream, edit the `metrics-{{product}}.stack_monitoring.{{dataset}}@custom` component template that already exists. You can do this in {{kib}}:
 
-* Navigate to **Stack Management** > **Index Management** > **Component Templates**.
+
+* Go to the **Index Management** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* Select **Component Templates**.
 * Search for the component template.
 * Select the **Edit** action.
 

@@ -10,6 +10,9 @@ products:
   - id: elastic-stack
   - id: cloud-hosted
   - id: cloud-enterprise
+description: Troubleshooting resources and guidance for Elastic products including
+  Elasticsearch, Kibana, Observability, Security, and deployment platforms. Find
+  solutions and get support.
 ---
 
 # Troubleshooting

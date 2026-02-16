@@ -29,11 +29,18 @@ Self-hosted options:
 For a comparison of these deployment options, refer to [Choosing your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) and [](/deploy-manage/deploy/deployment-comparison.md).
 :::
 
+:::{admonition} Use cloud services in your self-managed cluster with Cloud Connect
+If you need to run Elastic on your own infrastructure, use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud connect enables you to use Elastic-managed cloud services in your self-managed cluster without having to install and manage their infrastructure yourself.
+
+This way, you can get faster access to new cloud features while still meeting your infrastructure requirements.
+:::: 
+
 ## Section overview
 
 This section focuses on deploying {{es}} and {{kib}} without an orchestrator.
 
-Depending on your use case, you might need to deploy other components, such as APM, Fleet, or Logstash. Deploying those components is not covered in this section. [Learn more about optional components](/get-started/the-stack.md).
+Depending on your use case, you might need to deploy other components, such as APM, Fleet, or Logstash.
+Deploying those components is not covered in this section. [Learn more about optional components](/get-started/the-stack.md).
 
 This section covers the following tasks:
 
@@ -86,7 +93,7 @@ Learn how to secure your Elastic environment to restrict access to only authoriz
 * [](/deploy-manage/manage-spaces.md): Learn how to organize content in {{kib}}, and restrict access to this content to specific users.
 * [](/deploy-manage/api-keys.md): Authenticate and authorize programmatic access to your deployments and {{es}} resources.
 * [](/deploy-manage/manage-connectors.md): Manage connection information between Elastic and third-party systems.
-* [](/deploy-manage/remote-clusters/remote-clusters-self-managed.md): Enable communication between {{es}} clusters to support [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/solutions/search/cross-cluster-search.md).
+* [](/deploy-manage/remote-clusters/remote-clusters-self-managed.md): Enable communication between {{es}} clusters to support [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/explore-analyze/cross-cluster-search.md).
 
 ### Administer and maintain
 

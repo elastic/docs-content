@@ -3,7 +3,7 @@ navigation_title: Create an APM reader user
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-reader.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm

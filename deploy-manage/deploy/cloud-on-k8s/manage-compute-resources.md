@@ -29,13 +29,13 @@ You can set compute resource constraints in the `podTemplate` of objects managed
 
 ### Set compute resources for {{es}} [k8s-compute-resources-elasticsearch]
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1
@@ -58,13 +58,13 @@ Starting with {{es}} 7.11, the heap size of the JVM is automatically calculated 
 
 For {{es}} before 7.11, or if you want to override the default calculated heap size on newer versions, set the `ES_JAVA_OPTS` environment variable in the `podTemplate` to an appropriate value:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1
@@ -109,13 +109,13 @@ A [known Kubernetes issue](https://github.com/kubernetes/kubernetes/issues/51135
 
 ### Set compute resources for {{kib}}, Elastic Maps Server, APM Server and Logstash [k8s-compute-resources-kibana-and-apm]
 
-```yaml
+```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   podTemplate:
     spec:
       containers:
@@ -132,13 +132,13 @@ spec:
             cpu: 2
 ```
 
-```yaml
+```yaml subs=true
 apiVersion: maps.k8s.elastic.co/v1alpha1
 kind: ElasticMapsServer
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   podTemplate:
     spec:
       containers:
@@ -155,13 +155,13 @@ spec:
             cpu: 1
 ```
 
-```yaml
+```yaml subs=true
 apiVersion: apm.k8s.elastic.co/v1
 kind: ApmServer
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   podTemplate:
     spec:
       containers:
@@ -175,13 +175,15 @@ spec:
             cpu: 2
 ```
 
+% enterprise search not available in 9.0+ so this uses a hardcoded version
+
 ```yaml
 apiVersion: enterprisesearch.k8s.elastic.co/v1
 kind: EnterpriseSearch
 metadata:
   name: enterprise-search-quickstart
 spec:
-  version: 8.16.1
+  version: 8.19.1
   podTemplate:
     spec:
       containers:
@@ -198,13 +200,13 @@ spec:
           value: -Xms3500m -Xmx3500m
 ```
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1
 kind: logstash
 metadata:
   name: logstash-quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   podTemplate:
     spec:
       containers:
@@ -230,14 +232,14 @@ For Beats or Elastic Agent objects, the `podTemplate` can be configured as follo
 
 When deploying as a Kubernetes Deployment:
 
-```yaml
+```yaml subs=true
 apiVersion: beat.k8s.elastic.co/v1beta1
 kind: Beat
 metadata:
   name: quickstart
 spec:
   type: filebeat
-  version: 8.16.1
+  version: {{version.stack}}
   deployment:
     podTemplate:
       spec:
@@ -254,13 +256,13 @@ spec:
 
 When deploying as a Kubernetes DaemonSet:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     podTemplate:
       spec:
@@ -278,6 +280,39 @@ spec:
 For the container name, use the name of the Beat in lower case. For example `filebeat`, `metricbeat`, or `heartbeat`. In case of Elastic Agent, use `agent`.
 
 
+### Set compute resources for Elastic AutoOps Agent [k8s-compute-resources-autoops-agent]
+
+```{applies_to}
+  eck: ga 3.3
+```
+
+For `AutoOpsAgentPolicy` resources (Elastic AutoOps Agent), the `podTemplate` can be configured as follows:
+
+```yaml subs=true
+apiVersion: autoops.k8s.elastic.co/v1alpha1
+kind: AutoOpsAgentPolicy
+metadata:
+  name: autoops-agent-policy
+spec:
+  version: {{version.stack}}
+  podTemplate:
+    spec:
+      containers:
+      - name: autoops-agent
+        resources:
+          requests:
+            cpu: 200m
+            memory: 600Mi
+          limits:
+            cpu: 200m
+            memory: 600Mi
+```
+
+For the container name, use `autoops-agent`.
+
+[Learn more about configuring AutoOps in {{eck}}](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md).
+
+
 ## Default behavior [k8s-default-behavior]
 
 If `resources` is not defined in the specification of an object, then the operator applies a default memory limit to ensure that Pods have enough resources to start correctly. This memory limit will also be applied to any user-defined init containers that do not have explict resource requirements set. As the operator cannot make assumptions about the available CPU resources in the cluster, no CPU limits will be set — resulting in the Pods having the "Burstable" QoS class. Check if this is acceptable for your use case and follow the instructions in [Set compute resources](#k8s-compute-resources) to configure appropriate limits.
@@ -291,6 +326,8 @@ If `resources` is not defined in the specification of an object, then the operat
 | Elastic Agent | `400Mi` | `400Mi` |
 | Elastic Maps Server | `200Mi` | `200Mi` |
 | Logstash | `2Gi` | `2Gi` |
+| Elastic Package Registry | `1Gi` | `1Gi` |
+| AutoOps Agent | `400Mi` | `400Mi` |
 
 If the Kubernetes cluster is configured with [LimitRanges](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/) that enforce a minimum memory constraint, they could interfere with the operator defaults and cause object creation to fail.
 

@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-alerting.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -35,5 +38,5 @@ You can filter this table by alert status or time period, customize the visible 
 
 ## Next steps [observability-alerting-next-steps]
 
-* [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md)
+* [](/solutions/observability/incident-management/create-manage-rules.md)
 * [View alerts](/solutions/observability/incident-management/view-alerts.md)

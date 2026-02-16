@@ -16,7 +16,7 @@ You can deploy a model multiple times by assigning a unique deployment ID when s
 
 You can optimize your deplyoment for typical use cases, such as search and ingest. When you optimize for ingest, the throughput will be higher, which increases the number of {{infer}} requests that can be performed in parallel. When you optimize for search, the latency will be lower during search processes. When you have dedicated deployments for different purposes, you ensure that the search speed remains unaffected by ingest workloads, and vice versa. Having separate deployments for search and ingest mitigates performance issues resulting from interactions between the two, which can be hard to diagnose.
 
-:::{image} /explore-analyze/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+:::{image} /explore-analyze/images/ml-nlp-deployment-id-elser.png
 :alt: Model deployment on the Trained Models UI.
 :screenshot:
 :::
@@ -24,7 +24,7 @@ You can optimize your deplyoment for typical use cases, such as search and inges
 Each deployment will be fine-tuned automatically based on its specific purpose you choose.
 
 ::::{note}
-Since eland uses APIs to deploy the models, you cannot see the models in {{kib}} until the saved objects are synchronized. You can follow the prompts in {{kib}}, wait for automatic synchronization, or use the [sync {{ml}} saved objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
+Since eland uses APIs to deploy the models, you cannot see the models in {{kib}} until the saved objects are synchronized. You can follow the prompts in {{kib}}, wait for automatic synchronization, or use the [sync {{ml}} saved objects API]({{kib-apis}}group/endpoint-ml).
 ::::
 
 You can define the resource usage level of the NLP model during model deployment. The resource usage levels behave differently depending on [adaptive resources](../../../deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations) being enabled or disabled. When adaptive resources are disabled but {{ml}} autoscaling is enabled, vCPU usage of Cloud deployments derived from the Cloud console and functions as follows:

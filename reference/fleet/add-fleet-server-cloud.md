@@ -1,12 +1,18 @@
 ---
+navigation_title: Deploy on Elastic Cloud
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-cloud.html
+applies_to:
+  deployment:
+    ess: ga
+    ece: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Deploy on Elastic Cloud [add-fleet-server-cloud]
+# Deploy {{fleet-server}} on {{ecloud}} [add-fleet-server-cloud]
 
 To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/fleet-server.md) must be running and accessible to your hosts.
 
@@ -37,29 +43,26 @@ This approach might *not* be right for you if you have restrictions on connectiv
     * Requires additional wildcard domains and certificates (which normally only cover `*.cname`, not `*.*.cname`). This enables us to provide the URL for {{fleet-server}} of `https://.fleet.`.
     * The deployment template must contain an {{integrations-server}} node.
 
-    For more information about hosting {{fleet-server}} on {{ece}}, refer to [Manage your {{integrations-server}}](/deploy-manage/deploy/cloud-enterprise/manage-integrations-server.md).
-
+    For more information about hosting {{fleet-server}} on {{ece}}, refer to [](/deploy-manage/deploy/cloud-enterprise/manage-integrations-server.md).
 
 ::::{note}
 The TLS certificates used to secure connections between {{agent}} and {{fleet-server}} are managed by {{ecloud}}. You do not need to create a private key or generate certificates.
 ::::
 
-
 When {{es}} or {{fleet-server}} are deployed, components communicate over well-defined, pre-allocated ports. You may need to allow access to these ports. See the following table for default port assignments:
 
 | Component communication | Default port |
 | --- | --- |
-| Elastic Agent → {{fleet-server}} | 443 |
-| Elastic Agent → {{es}} | 443 |
-| Elastic Agent → Logstash | 5044 |
-| Elastic Agent → {{kib}} ({{fleet}}) | 443 |
+| {{agent}} → {{fleet-server}} | 443 |
+| {{agent}} → {{es}} | 443 |
+| {{agent}} → {{ls}} | 5044 |
+| {{agent}} → {{kib}} ({{fleet}}) | 443 |
 | {{fleet-server}} → {{kib}} ({{fleet}}) | 443 |
 | {{fleet-server}} → {{es}} | 443 |
 
 ::::{note}
 If you do not specify the port for {{es}} as 443, the {{agent}} defaults to 9200.
 ::::
-
 
 
 ## Setup [add-fleet-server-cloud-set-up]
@@ -78,7 +81,6 @@ Don’t see the agent? Make sure your deployment includes an {{integrations-serv
 :::
 
 :::::
-
 
 
 ## Next steps [add-fleet-server-cloud-next]

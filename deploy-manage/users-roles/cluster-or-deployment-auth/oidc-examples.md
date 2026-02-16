@@ -3,11 +3,7 @@ navigation_title: With Azure, Google, or Okta
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-oidc-op.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: cloud-hosted
 ---
@@ -99,6 +95,15 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
     * `KIBANA_ENDPOINT_URL` is your {{kib}} endpoint.
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
+    :::{admonition} For organizations with many group memberships
+    If you configure [`claims.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-user-properties) to read the list of Azure AD groups from the ID token, be aware that users who belong to many groups may exceed Azure AD’s token size limit. In that case, the `groups` claim will be omitted.
+
+    To avoid this, enable the **Groups assigned to the application** option in Azure Entra (**App registrations > Token configuration > Edit groups claim**). This setting limits the `groups` claim to only those assigned to the application.
+
+    **Alternative:** If you can’t restrict groups to app-assigned ones, use the [Microsoft Graph Authz plugin for Elasticsearch](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz.md). It looks up group memberships through Microsoft Graph during authorization, so it continues to work even when the `groups` claim is omitted due to overage.
+
+    Refer to [Group overages](https://learn.microsoft.com/en-us/security/zero-trust/develop/configure-tokens-group-claims-app-roles#group-overages) in the Microsoft Security documentation for more information.
+    :::
 
     If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
 
@@ -304,12 +309,12 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
       rp.response_type: "code"
       rp.requested_scopes: ["openid", "email"]
       rp.redirect_uri: "KIBANA_ENDPOINT_URL/api/security/oidc/callback"
-      op.issuer: "https://YOUR_OKTA_DOMAIN"
-      op.authorization_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/authorize"
-      op.token_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/token"
-      op.userinfo_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/userinfo"
-      op.endsession_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/logout"
-      op.jwkset_path: "https://YOUR_OKTA_DOMAIN/oauth2/v1/keys"
+      op.issuer: "https://<YOUR_OKTA_DOMAIN>"
+      op.authorization_endpoint: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/authorize"
+      op.token_endpoint: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/token"
+      op.userinfo_endpoint: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/userinfo"
+      op.endsession_endpoint: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/logout"
+      op.jwkset_path: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/keys"
       claims.principal: email
       claim_patterns.principal: "^([^@]+)@YOUR_DOMAIN\\.TLD$"
     ```
@@ -318,7 +323,7 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
 
     * `YOUR_CLIENT_ID` is the Client ID that you set up in the previous steps.
     * `KIBANA_ENDPOINT_URL` is your {{kib}} endpoint, available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    * `YOUR_OKTA_DOMAIN` is the URL of your Okta domain shown on your Okta dashboard.
+    * `<YOUR_OKTA_DOMAIN>` is the URL of your Okta domain shown on your Okta dashboard.
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
 

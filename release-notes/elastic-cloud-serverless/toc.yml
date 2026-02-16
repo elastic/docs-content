@@ -1,4 +1,5 @@
 toc:
   - file: index.md
+  - file: breaking-changes.md
   - file: known-issues.md
   - file: deprecations.md

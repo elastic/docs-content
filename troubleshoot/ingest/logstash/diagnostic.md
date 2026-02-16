@@ -1,17 +1,12 @@
 ---
 navigation_title: Diagnostics
 applies_to:
-  stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  stack: ga 9.0+
 products:
   - id: logstash
 ---
 
-# Capture diagnostics [diagnostic]
+# Capture {{ls}} diagnostics [diagnostic]
 
 The {{ls}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of its statistics and most settings. It works against all {{ls}} versions.
 
@@ -19,6 +14,7 @@ This information can be used to troubleshoot problems with your data pipeline. F
 
 You can generate diagnostic information using this tool before you contact [Elastic Support](https://support.elastic.co) or [Elastic Discuss](https://discuss.elastic.co) to minimize turnaround time.
 
+See this [this video](https://www.youtube.com/watch?v=0a1I5yPmoOk) for a walkthrough of capturing a {{ls}} diagnostic.
 
 ## Requirements [diagnostic-tool-requirements]
 

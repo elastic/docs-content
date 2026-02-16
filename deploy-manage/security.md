@@ -18,6 +18,7 @@ products:
   - id: cloud-kubernetes
   - id: cloud-enterprise
   - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Security

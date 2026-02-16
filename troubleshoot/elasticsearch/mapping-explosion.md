@@ -3,28 +3,38 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-explosion.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  serverless:
 products:
   - id: elasticsearch
 ---
 
 # Mapping explosion [mapping-explosion]
 
-{{es}}'s search and [{{kib}}'s discover](../../explore-analyze/discover.md) Javascript rendering are dependent on the search’s backing indices total amount of [mapped fields](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md), of all mapping depths. When this total amount is too high or is exponentially climbing, we refer to it as experiencing mapping explosion. Field counts going this high are uncommon and usually suggest an upstream document formatting issue as [shown in this blog](https://www.elastic.co/blog/found-crash-elasticsearch#mapping-explosion).
+In Elasticsearch, a mapping or [mapped field](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) defines the fields in an index and their data types, such as text for full-text search, keyword for exact filtering, or boolean for true/false values. Think of it as a schema that tells Elasticsearch how to interpret and store each piece of data.
+
+By default, {{es}} allows for [dynamic mappings](/manage-data/data-store/mapping/dynamic-mapping.md) which allows on-the-fly creation of fields. Runaway field growth is colloquially called "mapping explosion". Excessively mapped fields within or across indices can cause the cluster to experience performance degradation such as slower searches, [high JVM memory pressure](/troubleshoot/elasticsearch/high-jvm-memory-pressure.md), and prolonged startup times.
+
+To guard against mapping explosion, {{es}} default enforces field limit of `1000` by way of its [`index.mapping.total_fields.limit`](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) setting. {{es}} will reject ingestion requests which would induce further mapped fields for any specific index once its limit threshold is reached with error
+
+```text
+Limit of total fields [<index.mapping.total_fields.limit>] has been exceeded while adding new fields [<count>]
+```
+
+Advanced users may choose to bypass this rejection with [`index.mapping.total_fields.ignore_dynamic_beyond_limit`](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) setting after weighing its effects against their use case.
+
+Mapping explosion typically signals an upstream data formatting issue that should be addressed client-side as [described in this blog](https://www.elastic.co/blog/3-ways-to-prevent-mapping-explosion-in-elasticsearch).
 
 Mapping explosion may surface as the following performance symptoms:
 
 * [CAT nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) reporting high heap or CPU on the main node and/or nodes hosting the indices shards. This may potentially escalate to temporary node unresponsiveness and/or main overwhelm.
 * [CAT tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-tasks) reporting long search durations only related to this index or indices, even on simple searches.
 * [CAT tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-tasks) reporting long index durations only related to this index or indices. This usually relates to [pending tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-pending-tasks) reporting that the coordinating node is waiting for all other nodes to confirm they are on mapping update request.
+* [CAT pending tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-pending-tasks) reporting a task queue backlog with a lot of `put-mapping [MY_INDEX_NAME/MY_INDEX_UUID]` messages.
 * Discover’s **Fields for wildcard** page-loading API command or [Dev Tools](../../explore-analyze/query-filter/tools/console.md) page-refreshing Autocomplete API commands are taking a long time (more than 10 seconds) or timing out in the browser’s Developer Tools Network tab. For more information, refer to our [walkthrough on troubleshooting Discover](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load).
 * Discover’s **Available fields** taking a long time to compile Javascript in the browser’s Developer Tools Performance tab. This may potentially escalate to temporary browser page unresponsiveness.
 * Kibana’s [alerting](../../explore-analyze/alerts-cases/alerts.md) or [security rules](../../solutions/security/detect-and-alert.md) may error `The content length (X) is bigger than the maximum allowed string (Y)` where `X` is attempted payload and `Y` is {{kib}}'s [`server-maxPayload`](kibana://reference/configuration-reference/general-settings.md#server-maxpayload).
 * Long {{es}} start-up durations.
+* Kibana Javascript erring within browser while loading a Dashboard or Discover with message `Maximum call stack size exceeded`.
 
 
 ## Prevent or prepare [prevent]
@@ -44,13 +54,14 @@ Modifying to the [nested](elasticsearch://reference/elasticsearch/mapping-refere
 
 To confirm the field totals of an index to check for mapping explosion:
 
-* Check {{es}} cluster logs for errors `Limit of total fields [X] in index [Y] has been exceeded` where `X` is the value of  `index.mapping.total_fields.limit` and `Y` is your index. The correlated ingesting source log error would be `Limit of total fields [X] has been exceeded while adding new fields [Z]` where `Z` is attempted new fields.
+* Check {{es}} cluster logs for errors similar to `Limit of total fields [X] in index [Y] has been exceeded` where `X` is the value of  `index.mapping.total_fields.limit` and `Y` is the index name. The correlated client-side ingesting source HTTP 400 `mapper_parsing_exception` log error would be `Limit of total fields [X] has been exceeded while adding new fields [Z]` where `Z` is attempted new fields.
+* Review the elected-master node logs for a flood of `[elasticsearch.server][INFO] update_mapping [_doc]` messages. If they time out, a large amount of `org.elasticsearch.cluster.metadata.ProcessClusterEventTimeoutException: failed to process cluster event (put-mapping [<INDEX_NAME>/<INDEX_UUID>]) within 30s` messages display as well.
 * For top-level fields, poll [field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps) for `fields=*`.
 * Search the output of [get mapping](../../manage-data/data-store/mapping.md) for `"type"`.
 * If you’re inclined to use the [third-party tool JQ](https://stedolan.github.io/jq), you can process the [get mapping](../../manage-data/data-store/mapping.md) `mapping.json` output.
 
     ```sh
-    $ cat mapping.json | jq -c 'to_entries[]| .key as $index| [.value.mappings| to_entries[]|select(.key=="properties") | {(.key):([.value|..|.type?|select(.!=null)]|length)}]| map(to_entries)| flatten| from_entries| ([to_entries[].value]|add)| {index: $index, field_count: .}'
+    cat mapping.json | jq -c 'to_entries[]| .key as $index| [.value.mappings| to_entries[]|select(.key=="properties") | {(.key):([.value|..|.type?|select(.!=null)]|length)}]| map(to_entries)| flatten| from_entries| ([to_entries[].value]|add)| {index: $index, field_count: .}'
     ```
 
 

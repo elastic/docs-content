@@ -31,10 +31,10 @@ To change a cluster’s topology, from deployment management, select **Edit depl
 
 For trials, larger sizes are not available until you [add a credit card](../../cloud-organization/billing/add-billing-details.md).
 
-Currently, half the memory is assigned to the JVM heap (a bit less when monitoring is activated). For example, on a 32 GB cluster, 16 GB are allotted to heap. The disk-to-RAM ratio currently is 1:24, meaning that you get 24 GB of storage space for each 1 GB of RAM. All clusters are backed by SSD drives.
+For instances up to 64 GB of RAM, half the memory is assigned to the JVM heap (a bit less when monitoring is activated). For instances larger than 64 GB, the heap size is capped at 32 GB. For example, on a 32 GB instance, 16 GB are allotted to heap, while on a 128 GB instance, 32 GB are allotted to heap. Up to 256 GB RAM per instance is supported. The disk-to-RAM ratio currently is 1:24, meaning that you get 24 GB of storage space for each 1 GB of RAM. All clusters are backed by SSD drives.
 
 ::::{tip}
-For production systems, we recommend not using less than 4 GB of RAM for your cluster, which assigns 2 GB to the JVM heap.
+For production systems, each {{es}} instance in your cluster should have at least 4 GB of RAM, which assigns 2 GB to the JVM heap. Review [Minimum size recommendations for production use](elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
 ::::
 
 
@@ -43,7 +43,7 @@ The CPU resources assigned to a cluster are relative to the size of your cluster
 If you don’t want to autoscale your deployment, you can manually increase or decrease capacity by adjusting the size of hot, warm, cold, and frozen [data tiers](../../../manage-data/lifecycle/data-tiers.md) nodes. For example, you might want to add warm tier nodes if you have time series data that is accessed less frequently and rarely needs to be updated. Alternatively, you might need cold tier nodes if you have time series data that is accessed occasionally and not normally updated. For clusters that have six or more {{es}} nodes, dedicated master-eligible nodes are introduced. When your cluster grows, it becomes important to consider separating dedicated master-eligible nodes from dedicated data nodes.
 
 ::::{tip}
-We recommend using at least 4GB RAM for dedicated master nodes.
+For clusters with dedicated master nodes, we recommend using at least 4 GB of RAM for each dedicated master node. Review [Minimum size recommendations for production use](elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
 ::::
 
 
@@ -129,7 +129,7 @@ Refer to [Manage your Integrations Server](manage-integrations-server.md) to lea
 
 ## Security [ec_security]
 
-Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up traffic filters, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.
+Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up network security, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.
 
 
 ## Actions [ec_actions]

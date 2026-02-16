@@ -1,15 +1,16 @@
 ---
+navigation_title: Errors
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-model-errors.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
 ---
 
-# Errors [apm-data-model-errors]
+# Errors in Elastic APM [apm-data-model-errors]
 
 An error event contains at least information about the original `exception` that occurred or about a `log` created when the exception occurred. For simplicity, errors are represented by a unique ID.
 

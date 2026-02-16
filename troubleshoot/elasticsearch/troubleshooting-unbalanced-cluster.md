@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unbalanced-cluster.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -17,18 +12,16 @@ products:
 
 # Troubleshoot an unbalanced cluster [troubleshooting-unbalanced-cluster]
 
-Elasticsearch balances shards across data tiers to achieve a good compromise between:
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
+{{es}} balances shards across data tiers to achieve a good compromise between:
 
 * shard count
 * disk usage
 * write load (for indices in data streams)
 
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
-
-
-Elasticsearch does not take into account the amount or complexity of search queries when rebalancing shards. This is indirectly achieved by balancing shard count and disk usage.
+{{es}} does not take into account the amount or complexity of search queries when rebalancing shards. This is indirectly achieved by balancing shard count and disk usage.
 
 There is no guarantee that individual components will be evenly spread across the nodes. This could happen if some nodes have fewer shards, or are using less disk space, but are assigned shards with higher write loads.
 
@@ -80,3 +73,6 @@ $$$delete-desired-balance-request-example$$$
 DELETE /_internal/desired_balance
 ```
 
+::::{note}
+If your deployment runs on an orchestrating platform such as {{ech}}, {{ece}}, or {{eck}}, the desired balance can only be reset by a user with operator privileges. Refer to [operator privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) for more information.
+::::

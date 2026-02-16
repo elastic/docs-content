@@ -17,7 +17,7 @@ A namespace other than the default namespaces (default, kube-system, kube-**, op
 ::::
 
 
-```shell
+```shell subs=true
 cat <<EOF | oc apply -n elastic -f -
 # This sample sets up an Elasticsearch cluster with an OpenShift route
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -25,7 +25,7 @@ kind: Elasticsearch
 metadata:
   name: elasticsearch-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1

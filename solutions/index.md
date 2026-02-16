@@ -6,33 +6,32 @@ applies_to:
   serverless: ga
 products:
   - id: cloud-hosted
+description: Learn about Elastic solutions for search, observability, and security
+  use cases. Get started with ready-to-use implementations and discover how to build
+  custom applications.
 ---
 
 # Solutions and use cases
 
 :::{tip}
-New to Elastic? Refer to [get started](/get-started/the-stack.md) to understand the Elastic Stack and its components, and your deployment options.
+New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the {{stack}}, its components, and your deployment options.
 :::
 
-Users reach for Elastic products, features, and tools for three main use cases: observability, security, and search.
+Elastic helps you build applications for three main use cases: search, observability, and security. You can work directly with platform capabilities through APIs, use pre-built solutions with integrated UIs, or combine both approaches.
 
-These use cases are supported by ready-to-use implementations that help you get started quickly:
+## Choose your path
 
-- As integrated solutions on [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) and [self-managed](/deploy-manage/deploy/self-managed.md) deployments
-- As project types on [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)
+| Your use case | What to use | Description |
+| --- | --- | --- |
+| Building search-powered applications | 1. [Core search capabilities](/solutions/search.md)<br><br> 2. [Elasticsearch solution](/solutions/elasticsearch-solution-project.md) | 1. Core {{es}} search features available across all deployment types, solutions, and project types<br><br>2. Additional UI tools that complement the core search features |
+| Monitoring applications or infrastructure | [Observability solution](/solutions/observability.md) | Monitor and troubleshoot with logs, metrics, and traces |
+| Protecting against threats | [Security solution](/solutions/security.md) | Detect and respond to security threats |
 
-While these solutions and project types provide pre-built components for common use cases, you can also build custom implementations using Elastic's features, APIs, and tools. This documentation guides you through:
+::::{tip}
+Not sure which to choose? Start with the {{es}} solution, if you don't need the additional features in {{product.observability}} or {{product.security}}.
+::::
 
-1. Evaluating if an Elastic solution fits your needs
-2. Getting started with your chosen solution
-3. Implementing specific features and capabilities
+## About solutions and project types
 
-## Solution and use case documentation
-
-Learn more in the following sections:
-
-| Solution | Use case | 
-| --- | --- | 
-| [Elasticsearch](search.md) | Build search experiences, or implement custom use cases with Elasticsearch
-| [Observability](observability.md) | Monitor and troubleshoot applications and infrastructure with Elastic Observability
-| [Security](security.md) | Protect applications and infrastructure with Elastic Security
+- On {{serverless-full}}, select a solution as your project type when creating a project.
+- On {{ech}}, ECE, ECK, and self-managed clusters, select a default solution view when creating a deployment, or configure per [space](/deploy-manage/manage-spaces.md).

@@ -44,7 +44,8 @@ You need to repeat this procedure when upgrading the {{stack}} to get the latest
 
 You can clone index templates in {{kib}}:
 
-* Navigate to **Stack Management** > **Index Management** > **Index Templates**.
+* go to the **Index Management** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* Select **Index Templates**, 
 * From the **View** dropdown, select **System templates**.
 * Search for the index template.
 * Select the **Clone** action.

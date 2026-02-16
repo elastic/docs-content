@@ -12,14 +12,14 @@ products:
 
 Use the following code to create a {{kib}} instance and a "passthrough" route to access it:
 
-```shell
+```shell subs=true
 cat <<EOF | oc apply -n elastic -f -
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: kibana-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: "elasticsearch-sample"

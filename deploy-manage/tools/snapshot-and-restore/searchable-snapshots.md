@@ -12,6 +12,9 @@ products:
 ---
 
 # Searchable snapshots [searchable-snapshots]
+::::{important}
+Searchable snapshots is a feature that requires an Enterprise license. 
+::::
 
 {{search-snaps-cap}} let you use [snapshots](../snapshot-and-restore.md) to search infrequently accessed and read-only data in a very cost-effective fashion. The [cold](../../../manage-data/lifecycle/data-tiers.md#cold-tier) and [frozen](../../../manage-data/lifecycle/data-tiers.md#frozen-tier) data tiers use {{search-snaps}} to reduce your storage and operating costs.
 
@@ -164,7 +167,7 @@ Without replicas, rarely-accessed {{search-snap}} indices require far fewer reso
 When a shard of a regular index is moved between nodes, its contents are copied from another node in your cluster. In many environments, the costs of moving data between nodes are significant, especially if running in a Cloud environment with nodes in different zones. In contrast, when mounting a {{search-snap}} index or moving one of its shards, the data is always copied from the snapshot repository. This is typically much cheaper.
 
 ::::{warning}
-Most cloud providers charge significant fees for data transferred between regions and for data transferred out of their platforms. You should only mount snapshots into a cluster that is in the same region as the snapshot repository. If you wish to search data across multiple regions, configure multiple clusters and use [{{ccs}}](../../../solutions/search/cross-cluster-search.md) or [{{ccr}}](../cross-cluster-replication.md) instead of {{search-snaps}}.
+Most cloud providers charge significant fees for data transferred between regions and for data transferred out of their platforms. You should only mount snapshots into a cluster that is in the same region as the snapshot repository. If you wish to search data across multiple regions, configure multiple clusters and use [{{ccs}}](../../../explore-analyze/cross-cluster-search.md) or [{{ccr}}](../cross-cluster-replication.md) instead of {{search-snaps}}.
 ::::
 
 

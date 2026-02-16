@@ -1,15 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
 # Install Elastic Agents [elastic-agent-installation]
-
-::::{admonition} Restrictions
-:class: important
 
 Note the following restrictions when installing {{agent}} on your system:
 
@@ -18,8 +18,15 @@ Note the following restrictions when installing {{agent}} on your system:
 * Running {{agent}} commands using the Windows PowerShell ISE is not supported.
 * See also the [resource requirements](#elastic-agent-installation-resource-requirements) described on this page.
 
+::::{note}
+{{agent}} requires a writable file system to operate. It needs to write configuration files, logs, and other runtime data during installation and normal operation. If you're running {{agent}} in a containerized environment with a read-only root file system, you must provide a writable location for the agent to use. For more information, refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
 ::::
 
+::::{admonition} New FIPS compatible install packages
+:applies_to: stack: preview 9.1
+
+FIPS compatible binaries for {{agent}}, {{fleet}}, and other ingest tools are available for download. Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product [download page](https://www.elastic.co/downloads). Get more details about FIPS compatibility for {{agent}}, {{fleet}} and other ingest tools in [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
+::::
 
 You have a few options for installing and managing an {{agent}}:
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/otel-agent-transform.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -21,10 +24,11 @@ To ingest host logs and metrics into Elasticsearch using the OTel Collector, you
 
 1. A suitable [{{es}} API key](grant-access-to-elasticsearch.md#create-api-key-standalone-agent) for authenticating on Elasticsearch.
 2. An installed standalone {{agent}}.
-3. A valid OTel Collector configuration. This example uses the OTel sample configuration included in the {{agent}} repository: `otel_samples/platformlogs_hostmetrics.yml`.
+3. A valid OTel Collector configuration. This example uses the `platformlogs_hostmetrics.yml` OTel sample configuration file included in the {{agent}} repository:
 
-    * [Linux version](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml)
-    * [MacOS version](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/darwin/platformlogs_hostmetrics.yml)
+    * [Linux version](https://github.com/elastic/elastic-agent/blob/main/internal/edot/samples/linux/platformlogs_hostmetrics.yml)
+    * [MacOS version](https://github.com/elastic/elastic-agent/blob/main/internal/edot/samples/darwin/platformlogs_hostmetrics.yml)
+    * [Windows version](https://github.com/elastic/elastic-agent/blob/main/internal/edot/samples/windows/platformlogs_hostmetrics.yml)
 
 ### Steps
 
@@ -88,4 +92,4 @@ To change a running standalone {{agent}} to run as an OTel Collector:
              └─ status: StatusOK
     ```
 
-Host logs and metrics are now being collected and ingested by the {{agent}} service running an OTel Collector instance. For further details about OpenTelemetry Collector components supported by {{agent}}, refer to [Components](opentelemetry://reference/edot-collector/components.md).
+Host logs and metrics are now being collected and ingested by the {{agent}} service running an OTel Collector instance. For further details about OpenTelemetry Collector components supported by {{agent}}, refer to [Components](elastic-agent://reference/edot-collector/components.md).

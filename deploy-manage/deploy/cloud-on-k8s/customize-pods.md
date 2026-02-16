@@ -14,13 +14,13 @@ You can customize the Pods created for each {{stack}} application by modifying t
 
 The following example illustrates how to add a custom label, annotation, and an environment variable using the `podTemplate` field.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1
@@ -38,13 +38,13 @@ spec:
                 value: "-Xms4g -Xmx4g"
 ```
 
-```yaml
+```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   podTemplate:
     metadata:
@@ -67,13 +67,13 @@ Configuration for other {{stack}} applications, like APM Server, or Beats, is id
 
 The following example shows how it’s also possible to customize the init containers created as part of the Pods to initialize the filesystem or to manage the keystores.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
     - name: default
       count: 3

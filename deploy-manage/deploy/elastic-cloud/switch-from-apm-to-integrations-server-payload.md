@@ -6,9 +6,10 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
+navigation_title: Switch from APM to Integrations Server
 ---
 
-# Switch from APM to Integrations Server payload [ec-integrations-server-apm-switch]
+# Switch from APM to Integrations Server payload on {{ech}} [ec-integrations-server-apm-switch]
 
 This example shows how to use the {{ecloud}} RESTful API to switch from using [APM & Fleet Server](#ec-manage-apm-and-fleet) to [Integrations Server](manage-integrations-server.md).
 
@@ -404,7 +405,7 @@ From the deployment **APM & Fleet** page you can also:
 
 ### Upgrading to {{stack}} 8.0 [ec-upgrade-apm-stack-8]
 
-The following APM settings have been removed in {{stack}} version 8.0. This change is only relevant to users upgrading a standalone (legacy) deployment of APM Server to {{stack}} version 8.0. Check [Add APM user settings](/solutions/observability/apm/configure-apm-server.md) for more details.
+The following APM settings have been removed in {{stack}} version 8.0. This change is only relevant to users upgrading a standalone (legacy) deployment of APM Server to {{stack}} version 8.0. Check [Add APM user settings](/solutions/observability/apm/apm-server/configure.md) for more details.
 
 ```yaml
 apm-server.api_key.enabled

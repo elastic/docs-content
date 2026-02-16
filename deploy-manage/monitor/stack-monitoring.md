@@ -17,10 +17,13 @@ products:
 :::{include} _snippets/stack-monitoring-def.md
 :::
 
-::::{admonition} Better monitoring with AutoOps
-:::{include} _snippets/autoops.md
+:::{admonition} Simplify monitoring with AutoOps
+Use [AutoOps](/deploy-manage/monitor/autoops.md) in your {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, or self-managed clusters. 
+
+AutoOps is a monitoring tool that simplifies cluster management through performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. 
+
+To help you make your decision, refer to [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 :::
-::::
 
 ## How it works
 
@@ -89,7 +92,7 @@ Most of these methods require that you configure monitoring of {{es}} before mon
     * [Packetbeat](beats://reference/packetbeat/monitoring.md)
     * [Winlogbeat](beats://reference/winlogbeat/monitoring.md)
 
-* [**APM Server**](/solutions/observability/apm/monitor-apm-server.md)
+* [**APM Server**](/solutions/observability/apm/apm-server/monitor.md)
 
 * **{{agent}}s**:
   * [{{fleet}}-managed {{agent}}s](/reference/fleet/monitor-elastic-agent.md)

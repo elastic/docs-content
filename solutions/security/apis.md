@@ -3,9 +3,18 @@ applies_to:
   stack: all
   serverless:
     security: all
+navigation_title: APIs
+products:
+  - id: security
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
-# APIs
+# {{elastic-sec}} APIs
 
 You can use these APIs to interface with {{elastic-sec}} features:
 
@@ -21,3 +30,4 @@ You can use these APIs to interface with {{elastic-sec}} features:
 * [Osquery API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-osquery-api): Manage live queries, packs, and saved queries.
 * [Timeline API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-timeline-api): Manage, import, and export Timelines.
 
+To view other APIs, such as {{kib}} or {{es}} APIs, refer to [Elastic APIs]({{apis}}).

@@ -6,9 +6,18 @@ applies_to:
     ece: ga
     self: ga
   serverless: ga
+navigation_title: API keys
+products:
+  - id: elastic-stack
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-serverless
 ---
 
-# API keys
+# Elastic API keys
 
 API keys are security mechanisms used to authenticate and authorize access to your deployments and {{es}} resources. 
 

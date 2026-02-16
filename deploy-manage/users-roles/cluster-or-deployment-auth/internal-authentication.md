@@ -1,10 +1,13 @@
 ---
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: all
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: elastic-stack
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Internal authentication

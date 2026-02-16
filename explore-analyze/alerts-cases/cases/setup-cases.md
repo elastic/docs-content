@@ -1,4 +1,5 @@
 ---
+navigation_title: Configure access to cases
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/setup-cases.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Configure access to cases [setup-cases]
+# Configure access to cases in {{kib}} [setup-cases]
 
 To access cases in **{{stack-manage-app}}**, you must have the appropriate {{kib}} privileges:
 

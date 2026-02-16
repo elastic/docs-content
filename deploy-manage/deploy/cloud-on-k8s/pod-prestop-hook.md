@@ -22,9 +22,9 @@ To address this issue and minimize unavailability, ECK relies on a [PreStop life
 
 The exact behavior is configurable using an environment variable, for example:
 
-```yaml
+```yaml subs=true
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
     - name: default
       count: 1

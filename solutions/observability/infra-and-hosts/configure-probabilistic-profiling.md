@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-probabilistic-profiling.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: unavailable
 products:
   - id: observability
 ---
@@ -14,7 +15,7 @@ Probabilistic profiling allows you to reduce storage costs by collecting a repre
 Profiling Events linearly correlate with the probabilistic profiling value. The lower the value, the fewer events are collected.
 
 
-## Configure probabilistic profiling [_configure_probabilistic_profiling] 
+## Configure probabilistic profiling [_configure_probabilistic_profiling]
 
 To configure probabilistic profiling,  set the `-probabilistic-threshold` and `-probabilistic-interval` options.
 
@@ -23,7 +24,7 @@ Set the `-probabilistic-threshold` option to a unsigned integer between 1 and 99
 Set the `-probabilistic-interval` option to a time duration to define the time interval for which probabilistic profiling is either enabled or disabled. The default value is 1 minute.
 
 
-## Example [_example] 
+## Example [_example]
 
 The following example shows how to configure the Universal Profiling agent with a threshold of 50 and an interval of 2 minutes and 30 seconds:
 

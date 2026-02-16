@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-logstash-configuration]
+# Configuration for Logstash on {{eck}} [k8s-logstash-configuration]
 
 ## Upgrade the Logstash specification [k8s-logstash-upgrade-specification]
 
@@ -19,13 +20,13 @@ You can upgrade the Logstash version or change settings by editing the YAML spec
 
 Define the Logstash configuration (the ECK equivalent to `logstash.yml`) in the `spec.config` section:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
   - name: quickstart
@@ -40,13 +41,13 @@ spec:
 
 Alternatively, you can provide the configuration through a Secret specified in the `spec.configRef` section. The Secret must have a `logstash.yml` entry with your settings:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
   - name: quickstart
@@ -69,13 +70,13 @@ stringData:
 
 Define Logstash pipelines in the `spec.pipelines` section (the ECK equivalent to `pipelines.yml`):
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - clusterName: qs
@@ -100,13 +101,13 @@ spec:
 
 Alternatively, you can provide the pipelines configuration through a Secret specified in the `spec.pipelinesRef` field. The Secret must have a `pipelines.yml` entry with your configuration:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - clusterName: qs
@@ -139,13 +140,13 @@ stringData:
 
 Logstash on ECK supports all options present in `pipelines.yml`, including settings to update the number of workers, and the size of the batch that the pipeline will process. This also includes using `path.config` to point to volumes mounted on the Logstash container:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - clusterName: qs
@@ -432,13 +433,13 @@ where NORMALIZED_CLUSTERNAME is the value taken from the `clusterName` field of 
 
 This example demonstrates how to create a Logstash deployment that connects to different {{es}} instances, one of which is in a separate namespace:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:        <1>
     - clusterName: prod-es  <2>
@@ -481,13 +482,13 @@ spec:
 
 Logstash can connect to external {{es}} cluster that is not managed by ECK. You can reference a Secret instead of an {{es}} cluster in the `elasticsearchRefs` section through the `secretName` attribute:
 
-```yaml
+```yaml subs=true
 apiVersion: v1
 kind: Secret
 metadata:
   name: external-es-ref
 stringData:
-  url: https://abcd-42.xyz.elastic-cloud.com:443 <1>
+  url: https://<example-url>.elastic-cloud.com:443 <1>
   username: logstash_user <2>
   password: REDACTED <3>
   ca.crt: REDACTED <4>
@@ -497,7 +498,7 @@ kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - clusterName: prod-es
@@ -561,13 +562,13 @@ You can [customize the {{ls}} Pod](customize-pods.md) using a Pod template, defi
 
 This example demonstrates how to create a {{ls}} deployment with increased heap size and resource limits.
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: logstash-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - name: "elasticsearch-sample"

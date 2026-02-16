@@ -13,7 +13,7 @@ The Cloud Security Posture dashboard shows:
 * Configuration risks grouped by CIS section (security guideline category)
 
 ::::{admonition} Requirements
-* The Cloud Security Posture dashboard is available to all Elastic Cloud users. For on-prem deployments, it requires an [Enterprise subscription](https://www.elastic.co/pricing).
+* The Cloud Security Posture dashboard is available to all Elastic Cloud users. For on-prem deployments, it requires an [appropriate subscription](https://www.elastic.co/pricing) level.
 
 ::::
 
@@ -21,9 +21,9 @@ The Cloud Security Posture dashboard shows:
 
 ## Cloud Security Posture dashboard UI [cloud-posture-dashboard-UI]
 
-At the top of the dashboard, you can switch between the cloud accounts and Kubernetes cluster views.
+At the top right of the dashboard, you can filter the data by which namespace of the findings index it's saved in. At the top left of the dashboard, you can switch between the cloud accounts and Kubernetes cluster views. 
 
-The top section of either view summarizes your overall cloud security posture (CSP) by aggregating data from all monitored resources. The summary cards on the left show the number of cloud accounts or clusters evaluated, and the number of resources evaluated. You can click **Enroll more accounts** or **Enroll more clusters** to deploy to additional cloud assets. Click **View all resources** to open the [Findings page](/solutions/security/cloud/findings-page-2.md).
+The summary section summarizes your overall cloud security posture (CSP) by aggregating data from all monitored resources. The summary cards on the left show the number of cloud accounts or clusters evaluated, and the number of resources evaluated. You can click **Enroll more accounts** or **Enroll more clusters** to deploy to additional cloud assets. Click **View all resources** to open the [Findings page](/solutions/security/cloud/findings-page-2.md).
 
 The remaining summary cards show your overall compliance score, and your compliance score for each CIS section. Click **View all failed findings** to view all failed findings, or click a CIS section name to view failed findings from only that section on the Findings page.
 
@@ -48,4 +48,7 @@ A cluster will disappear as soon as the KSPM integration fetches data while that
 
 ::::
 
+::::{dropdown} How do I organize security posture data by namespace?
+You can configure a CSPM or KSPM integration to send its data to a particular namespace by going to **Configure integration -> Advanced options**, then entering the desired namespace under `Namespace`.
 
+::::

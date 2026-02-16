@@ -32,11 +32,11 @@ The results below include numbers for a synthetic workload. You can use the resu
 
 | Profile / Cloud | AWS | Azure | GCP |
 | --- | --- | --- | --- |
-| **1 GB**<br>(10 agents) | 15,000<br>events/second | 14,000<br>events/second | 17,000<br>events/second |
-| **4 GB**<br>(30 agents) | 29,000<br>events/second | 26,000<br>events/second | 35,000<br>events/second |
-| **8 GB**<br>(60 agents) | 50,000<br>events/second | 34,000<br>events/second | 48,000<br>events/second |
-| **16 GB**<br>(120 agents) | 96,000<br>events/second | 57,000<br>events/second | 90,000<br>events/second |
-| **32 GB**<br>(240 agents) | 133,000<br>events/second | 89,000<br>events/second | 143,000<br>events/second |
+| **1 GB**<br>(10 agents) | 19,000<br>events/second | 17,000<br>events/second | 18,000<br>events/second |
+| **4 GB**<br>(30 agents) | 33,000<br>events/second | 23,000<br>events/second | 25,000<br>events/second |
+| **8 GB**<br>(60 agents) | 52,000<br>events/second | 36,000<br>events/second | 48,000<br>events/second |
+| **16 GB**<br>(120 agents) | 74,000<br>events/second | 58,000<br>events/second | 71,000<br>events/second |
+| **32 GB**<br>(240 agents) | 127,000<br>events/second | 90,000<br>events/second | 133,000<br>events/second |
 
 Don’t forget that the APM Server is stateless. Several instances running do not need to know about each other. This means that with a properly sized {{es}} instance, APM Server scales out linearly.
 

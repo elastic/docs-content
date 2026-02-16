@@ -3,11 +3,18 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # CNVM privilege requirements [cnvm-required-permissions]
 
-This page lists required privileges for {{elastic-sec}}'s CNVM features. There are three access levels: `read`, `write`, and `manage`. Each access level and its requirements are described below.
+This page lists required privileges for {{elastic-sec}}'s CNVM features. There are three access levels: `read`, `write`, and `manage`. Each access level and its requirements are described next on this page.
 
 ## Read
 

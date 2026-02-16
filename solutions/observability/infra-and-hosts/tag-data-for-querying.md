@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-tag-data-query.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: unavailable
 products:
   - id: observability
 ---

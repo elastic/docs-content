@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/debug-standalone-agents.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -12,7 +15,7 @@ When you run standalone {{agent}}s, you are responsible for monitoring the statu
 
 Use the following tips to help identify potential issues.
 
-Also refer to [Troubleshoot common problems](/troubleshoot/ingest/fleet/common-problems.md) for guidance on specific problems.
+Also refer to [](/troubleshoot/ingest/fleet/common-problems.md) for guidance on specific problems.
 
 ::::{note}
 You might need to log in as a root user (or Administrator on Windows) to run these commands.

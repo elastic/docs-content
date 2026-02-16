@@ -7,11 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restoring-snapshots.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-snapshots.html
 applies_to:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  stack: all
 products:
   - id: elasticsearch
   - id: cloud-hosted
@@ -26,6 +22,12 @@ A snapshot is a backup of a running {{es}} cluster. You can use snapshots to:
 - Recover data after deletion or a hardware failure
 - Transfer data between clusters
 - Reduce storage costs by using **[searchable snapshots](snapshot-and-restore/searchable-snapshots.md)** in the cold and frozen data tiers
+
+::::{important}
+Snapshots preserve more than your data. They also include the configuration and internal data of {{stack}} features, such as {{ilm-init}} policies, index templates and pipelines, {{kib}} saved objects, alerting rules, {{fleet}} settings and integrations, {{elastic-sec}} data, and more, depending on your use case.
+
+Consider using snapshots to back up, at minimum, all {{es}} system indices and the cluster state, even if your data can be reindexed or recovered from other external sources. Without these backups, a disaster recovery scenario can result in the loss of your stack configuration and feature states, even if the underlying data can be restored.
+::::
 
 ## Snapshot workflow
 
@@ -91,7 +93,7 @@ By default, a snapshot of a cluster contains the cluster state, all regular data
 - [Legacy index templates](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-templates-v1.html)
 - [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 - [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md)
-- [Stored scripts](/explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts)
+- [Stored scripts](/explore-analyze/scripting/modules-scripting-store-and-retrieve.md)
 - For snapshots taken after 7.12.0, [feature states](#feature-state)
 
 You can also take snapshots of only specific data streams or indices in the cluster. A snapshot that includes a data stream or index automatically includes its aliases. When you restore a snapshot, you can choose whether to restore these aliases.
@@ -105,15 +107,26 @@ Snapshots don’t contain or back up:
 
 ### Feature states [feature-state]
 
-A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **{{es}} security** or **Kibana**.
+A feature state contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as {{es}} security, {{kib}}, {{fleet}}, or {{watcher}}. To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
 
-::::{note}
-To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
-::::
+```console
+GET /_features
+```
 
 A feature state typically includes one or more [system indices or system data streams](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices). It may also include regular indices and data streams used by the feature. For example, a feature state may include a regular index that contains the feature’s execution history. Storing this history in a regular index lets you more easily search it.
 
-In {{es}} 8.0 and later versions, feature states are the only way to back up and restore system indices and system data streams.
+Starting with {{es}} 8.0 and later versions, feature states are the only way to back up and restore system indices and system data streams. Attempting to restore a system index or data stream outside its feature state is not permitted and will result in the following error:
+
+```
+requested system indices [.example], but system indices can only be restored as part of a feature state
+```
+
+Restoring system indices and data streams will require temporary elevated permissions to edit restricted indices. For more information, refer to [File-based access recovery](/troubleshoot/elasticsearch/file-based-recovery.md). Attempting to restore a system index or data stream without the required temporary elevated permissions will result in the following error:
+
+```
+Indices [.example] use and access is reserved for system operations
+```
+
 
 ## How snapshots work
 
@@ -141,16 +154,17 @@ You can’t restore a snapshot to an earlier version of {{es}}. For example, you
 
 ### Index compatibility
 
-Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt will fail.
+Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt fails.
 
-| Index creation version | 6.8 | 7.0–7.1 | 7.2–7.17 | 8.0–8.2 | 8.3–8.18 | 9.0 |
-|------------------------|-----|---------|---------|---------|---------|-----|
-| 5.0–5.6               | ✅   | ❌       | ❌       | ❌       | ✅ ^1^   | ✅ ^1^ |
-| 6.0–6.7               | ✅   | ✅       | ✅       | ❌       | ✅ ^1^   | ✅ ^1^ |
-| 6.8                   | ✅   | ❌       | ✅       | ❌       | ✅ ^1^   | ✅ ^1^ |
-| 7.0–7.1               | ❌   | ✅       | ✅       | ✅       | ✅       | ✅ ^1, 2^ |
-| 7.2–7.17              | ❌   | ❌       | ✅       | ✅       | ✅       | ✅ ^1, 2^ |
-| 8.0–8.18              | ❌   | ❌       | ❌       | ✅       | ✅       | ✅ |
+| Index creation version                   | {{version.stack.base}}–{{version.stack}} | 8.3–8.19 | 8.0–8.2 | 7.2–7.17 | 7.0–7.1 | 6.8 | 
+|------------------------------------------| ----------------------------------------- |----------|---------|----------|---------|-----|
+| 5.0–5.6                                  | ✅ ^1^                                    | ✅ ^1^   | ❌      | ❌       | ❌      | ✅  |         
+| 6.0–6.7                                  | ✅ ^1^                                    | ✅ ^1^   | ❌      | ✅       | ✅      | ✅  | 
+| 6.8                                      | ✅ ^1^                                    | ✅ ^1^   | ❌      | ✅       | ❌      | ✅  |    
+| 7.0–7.1                                  | ✅ ^1, 2^                                 | ✅       | ✅      | ✅       | ✅      | ❌  |       
+| 7.2–7.17                                 | ✅ ^1, 2^                                 | ✅       | ✅      | ✅       | ❌      | ❌  |      
+| 8.0–8.19                                 | ✅                                        | ✅       | ✅      | ❌       | ❌      | ❌  |
+| {{version.stack.base}}–{{version.stack}} | ✅                                        | ❌       | ❌      | ❌       | ❌      | ❌  | 
 
 ^1^ $$$footnote-1$$$ Supported with [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 

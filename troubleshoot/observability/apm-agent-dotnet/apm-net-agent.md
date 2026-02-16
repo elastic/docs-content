@@ -163,6 +163,34 @@ Agent.Setup(new AgentComponents(logger: new ApmLoggerAdapter()));
 ```
 
 
+## Missing transactions
+
+If you receive trace data for some but not all transactions, you should check the two main variables which control
+sampling of transactions.
+
+The first variable is the [transaction sample rate](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate). To reduce volume, this configuration option may specify a reduced sampling rate. To sample all transactions, ensure that this is either set to `1`, or not set at all. By default, the agent samples every transaction (every request to your service). ```
+
+The second variable is context propagation. To facilitate distributed tracing, the W3C specification
+defines a [trace context](https://www.w3.org/TR/trace-context/), used to transfer a trace across service boundaries.
+For web applications, this occurs through the `traceparent` header. Of specific importance for this issue is
+a flag defined on that context, the [sampled flag](https://www.w3.org/TR/trace-context/#sampled-flag).
+
+This flag allows a sampling decision made earlier in a distributed trace to continue onto downstream services,
+and the .NET APM agent honours this automatically. When a request comes in with the sampling flag
+unset (not sampled), the agent will not record a trace in the instrumented service either. This is
+by design to avoid collecting incomplete traces.
+
+When all services within a distributed system are managed and instrumented using Elastic APM agents and communication
+is internal, the default behaviour is usually correct. If some requests to instrumented applications may come from
+external users, then the `traceparent` header cannot be controlled. In these cases, it's often incorrect to allow
+an outside party to control what transactions are recorded through the sampled flag.
+
+To control the context propagation behaviour, we have a [trace continuation strategy](apm-agent-dotnet://reference/config-http.md#config-trace-continuation-strategy) option. Choose either `restart` or `restart_external`. `restart` will ignore
+the sampling flag on all requests and always include a transaction for the trace. `restart_external` is similar,
+however it uses an extra header to detect if the calling service was instrumented by an Elastic APM agent. If so,
+it honors the sampling flag; if not (such as for an external request), it forces the trace to be sampled.
+
+
 ## Following error appears in logs: `The singleton APM agent has already been instantiated and can no longer be configured.` [double-agent-initialization-log]
 
 See "[An `InstanceAlreadyCreatedException` exception is thrown](#double-agent-initialization)".

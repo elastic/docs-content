@@ -58,6 +58,6 @@ If you are using a custom TLS certificate and you need to set `insecureSkipVerif
 
 2. Ensure that the CA secret is mounted within the Prometheus Pod.
 
-    Steps will vary between Prometheus installations. If you're using the Prometheus operator, you can set the `spec.secrets` field of the `Prometheus` custom resource to the name of the previously created Kubernetes Secret. See the [ECK Helm chart values file](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/deploy/eck-operator/values.yaml) for more information.
+    Steps will vary between Prometheus installations. If you're using the Prometheus operator, you can set the `spec.secrets` field of the `Prometheus` custom resource to the name of the previously created Kubernetes Secret. See the [ECK Helm chart values file](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/deploy/eck-operator/values.yaml) for more information.
 
 

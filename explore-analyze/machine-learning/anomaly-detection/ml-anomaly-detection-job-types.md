@@ -41,7 +41,7 @@ In the case of the population jobs, the analyzed data is split by the distinct v
 
 For example, if you want to detect IP addresses with unusual request rates compared to the number of requests coming from other IP addresses, you can use a population job. That job has a `count` function to detect unusual number of requests and the analysis is split by the `client_ip` field. In this context, an event is anomalous if the request rate of an IP address is unusually high or low compared to the request rate of all IP addresses in the population. The population job builds a model of the typical number of requests for the IP addresses collectively and compares the behavior of each IP address against that collective model to detect outliers.
 
-Refer to [Performing population analysis](/explore-analyze/machine-learning/anomaly-detection/ml-anomaly-detection-job-types.md) to learn more.
+Refer to [](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-populations.md) to learn more.
 
 ## Advanced jobs [advanced-jobs]
 

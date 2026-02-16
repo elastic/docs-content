@@ -2,6 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/reference.html
   - https://www.elastic.co/guide/en/observability/current/reference.html
+navigation_title: Observability
 applies_to:
   stack: all
   serverless: all
@@ -10,7 +11,7 @@ products:
   - id: observability
 ---
 
-# Observability
+# Elastic {{observability}} reference
 
 This section contains reference information for Elastic Observability features, including:
 

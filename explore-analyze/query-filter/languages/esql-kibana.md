@@ -1,7 +1,8 @@
 ---
-navigation_title: "{{kib}}"
+navigation_title: "ES|QL"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
+  - https://www.elastic.co/guide/en/kibana/current/esql.html
 applies_to:
   stack: ga
   serverless: ga
@@ -9,20 +10,34 @@ products:
   - id: elasticsearch
 ---
 
-# Use ES|QL in Kibana [esql-kibana]
+# Use ES|QL in the {{kib}} UI [esql-kibana]
 
-You can use {{esql}} in {{kib}} to query and aggregate your data, create visualizations, and set up alerts.
+You can use [{{es}} query language ({{esql}})](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) in {{kib}} to query and aggregate your data, create visualizations, and set up alerts.
+This page guides you through the basics of working with {{esql}} in the {{kib}} UI.
 
-More specifically, {{esql}} is a powerful tool in Kibana that can help you with specific solution use cases. For example:
+{{esql}} is tightly integrated with Elastic solutions:
 
-- {{observability}}: {{esql}} makes it much easier to analyze metrics, logs and traces from a single query. Find performance issues fast by defining fields on the fly, enriching data with lookups, and using simultaneous query processing. Combining {{esql}} with {{ml}} and AiOps can improve detection accuracy and use aggregated value thresholds.
-- Security: Use {{esql}} to retrieve important information for investigation by using lookups. Enrich data and create new fields on the go to gain valuable insight for faster decision-making and actions. For example, perform a lookup on an IP address to identify its geographical location, its association with known malicious entities, or whether it belongs to a known cloud service provider all from one search bar. {{esql}} ensures more accurate alerts by incorporating aggregated values in detection rules.
-
-This guide shows you how to use {{esql}} in Kibana. To follow along with the queries, load the "Sample web logs" sample data set by selecting **Sample Data** from the **Integrations** page in {{kib}}, selecting **Other sample data sets**, and clicking **Add data** on the **Sample web logs** card.
+- **{{observability}}**
+  - Query metrics, logs, and traces simultaneously
+  - Define fields dynamically, enrich data with lookups, and process queries in parallel
+  - Integrate with {{ml}} and AiOps for improved detection accuracy using aggregated thresholds
+- **Security**
+  - Enrich investigation data with lookups and dynamic field creation
+  - Perform IP geolocation, threat intelligence, and cloud provider identification from a single query
+  - Use aggregated values in detection rules for more accurate alerts
+  - Find more details and examples in [{{esql}} for {{elastic-sec}} use cases](/solutions/security/esql-for-security.md) 
 
 :::{tip}
 Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 :::
+
+## Load sample data
+
+To run the queries in this guide in the {{kib}} UI, you must load the "Sample web logs" sample data set. Follow these steps:
+
+1. Select **Sample Data** from the **Integrations** page in {{kib}}
+2. Select **Other sample data sets**
+3. Click **Add data** on the **Sample web logs** card
 
 ## Enable or disable {{esql}} [esql-kibana-enable]
 
@@ -33,7 +48,7 @@ This will hide the {{esql}} user interface from various applications. However, u
 
 ## The {{esql}} editor [esql-kibana-get-started]
 
-To get started with {{esql}}, go to **Discover**. Next, select **Try ES|QL** from the application menu bar.
+To get started with {{esql}}, go to **Discover**. Next, select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
 
 ### The query bar [esql-kibana-query-bar]
@@ -52,11 +67,7 @@ A source command can be followed by one or more [processing commands](elasticsea
 Click the **ES|QL help** button to open the in-product reference documentation for all commands and functions or to get recommended queries that will help you get started.
 ::::
 
-
-To make it easier to write queries, auto-complete offers suggestions with possible commands and functions:
-
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-auto-complete.png
-:alt: esql kibana auto complete
+:::{include} /explore-analyze/query-filter/_snippets/discover-esql-autocomplete.md
 :::
 
 ::::{note}
@@ -68,22 +79,36 @@ FROM kibana_sample_data_logs | LIMIT 10
 
 ::::
 
+### Convert free-text searches into {{esql}}
+```{applies_to}
+serverless: preview
+stack: preview 9.3+
+```
 
+You can use the **Quick search** functionality of the {{esql}} editor to translate a free-text search into a functioning {{esql}} query with a `WHERE KQL()` clause. This can be useful if you're getting started with {{esql}} and are familiar with [KQL](kql.md). 
+
+1. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open the **Quick search** bar.
+2. Select the data sources to search.
+3. Type the text you want to search for.
+4. Submit your search by pressing **Enter**. A new {{esql}} query is generated and overwrites the current query. It includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. Any queries that you have previously run are saved in the query history if you need to restore them. 
+5. Refine your query with any other {{esql}} command or function that you need. The **Quick search** bar closes automatically when you start typing in the editor or click outside of it.
+
+![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc8165d27051bdac3/6966744e818dc30008b336f8/esql-quick-search.gif "=60%")
 
 ### Make your query readable [_make_your_query_readable]
 
-For readability, you can put each processing command on a new line. The following query is identical to the previous one:
+For readability, you can put each processing command on a new line and add indentation. The following query is identical to the previous one:
 
 ```esql
 FROM kibana_sample_data_logs
-| LIMIT 10
+  | LIMIT 10
 ```
 
-You can do that using the **Add line breaks on pipes** button from the query editor’s footer.
+You can do that automatically using the {icon}`pipeBreaks` **Prettify query** button from the query editor’s footer.
 
 :::{image} /explore-analyze/images/esql-line-breakdown.gif
-:alt: Automatic line breaks for ES|QL queries
-:width: 50%
+:alt: Automatic line breaks and indentation for ES|QL queries
+:width: 75%
 :::
 
 You can adjust the editor’s height by dragging its bottom border to your liking.
@@ -96,17 +121,26 @@ A query may result in warnings, for example when querying an unsupported field t
 
 ### Query history [esql-kibana-query-history]
 
-You can reuse your recent {{esql}} queries in the query bar. In the query bar, click **Show recent queries**.
+You can reuse your recent {{esql}} queries in the query bar. In the query bar, select **Show recent queries**.
 
-You can then scroll through your recent queries:
+You can then: 
+- scroll through your most recent queries
+- {applies_to}`stack: ga 9.2` search for specific queries of your history
 
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-discover-query-history.png
+:::{image} /explore-analyze/images/esql-history.gif
 :alt: esql discover query history
+:width: 75%
+:::
+
+:::{note}
+The maximum number of queries in the history depends on the version you're using:
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` The query history can keep up to 50 KB of queries, which represents about 200 large queries, or about 300 short queries.
+- {applies_to}`stack: ga 9.0-9.1` The query history keeps your 20 most recent queries.
 :::
 
 ### Query help
 
-{{esql}} features in-app help and suggestions, so you can get started faster and don’t have to leave the application to check syntax.
+{{esql}} features in-app help, inline suggestions, and an autocomplete menu so you can get started faster and don’t have to leave the application to check syntax.
 
 ![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 
@@ -131,7 +165,7 @@ In the **Starred** tab, find all the queries you have previously starred.
 For the example query, the results table shows 10 rows. Omitting the `LIMIT` command, the results table defaults to up to 1000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
 
 ::::{note}
-the 10,000 row limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Any query or aggregation runs on the full data set.
+The 10,000 row limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Any query or aggregation runs on the full data set.
 ::::
 
 
@@ -204,12 +238,41 @@ FROM kibana_sample_data_logs
 | WHERE timestamp > NOW() - 15minutes
 ```
 
+
+### Create controls with {{esql}} variables [add-variable-control]
+
+{{esql}} variables help you add interactive controls to your queries and make them more dynamic.
+
+They're available for:
+* [Discover queries](/explore-analyze/discover/try-esql.md#add-variable-control) {applies_to}`stack: ga 9.2`
+* [{{esql}} visualizations in dashboards](/explore-analyze/dashboards/add-controls.md#add-variable-control)
+
+:::{include} ../../_snippets/variable-control-procedure.md
+:::
+
+:::{include} ../../_snippets/variable-control-examples.md
+:::
+
+% Link from the product
+#### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
+```{applies_to}
+stack: preview 9.3
+serverless: preview
+```
+
+:::{include} ../../_snippets/multi-value-esql-controls.md
+:::
+
+
 ### LOOKUP JOINs
 
 The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
+{applies_to}`stack: ga 9.2.0` Remote lookup joins are supported in [cross-cluster queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md). The lookup index must exist on _all_ remote clusters being queried, because each cluster uses its local lookup index data.
+
 ![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 
+In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/try-esql.md#discover-esql-lookup-join).
 
 ### Keyboard shortcuts
 
@@ -274,12 +337,12 @@ You can also edit the {{esql}} visualization from here. Click the options button
 :width: 50%
 :::
 
-You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-esql-control)
+You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-variable-control)
 
 
 ## Create an enrich policy [esql-kibana-enrich]
 
-The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich) command enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](elasticsearch://reference/query-languages/esql/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
+The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich) command enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](elasticsearch://reference/query-languages/esql/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by autocomplete. If not, click **Click to create** to create one.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
 :alt: esql kibana enrich autocomplete

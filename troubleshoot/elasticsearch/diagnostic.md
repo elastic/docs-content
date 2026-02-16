@@ -4,16 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnostic.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
 
-# Capture diagnostics [diagnostic]
+# Capture {{es}} diagnostics [diagnostic]
 
 
 The {{es}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of cluster statistics and most settings. It works against all {{es}} versions.
@@ -22,11 +17,10 @@ This information can be used to troubleshoot problems with your cluster. For exa
 
 You can generate diagnostic information using this tool before you contact [Elastic Support](https://support.elastic.co) or [Elastic Discuss](https://discuss.elastic.co) to minimize turnaround time.
 
-See this [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
+Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
 
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 
 
@@ -119,7 +113,7 @@ The following are common errors that you might encounter when running the diagno
 
     This indicates that you accidentally downloaded the source code file instead of `diagnostics-X.X.X-dist.zip` from the releases page.
 
-* `Could not retrieve the Elasticsearch version due to a system or network error - unable to continue.`
+* `Could not retrieve the {{es}} version due to a system or network error - unable to continue.`
 
     This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the dianostic batch or shell file.
 

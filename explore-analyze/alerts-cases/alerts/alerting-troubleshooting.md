@@ -1,4 +1,5 @@
 ---
+navigation_title: Troubleshooting and limitations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Troubleshooting and limitations [alerting-troubleshooting]
+# Troubleshooting and limitations of alerting in {{kib}} [alerting-troubleshooting]
 
 Alerting provides many options for diagnosing problems with rules and connectors.
 
@@ -61,7 +62,7 @@ curl -X POST -k \
  -d '{"params":{"subject":"hallo","message":"hallo!","to":["me@example.com"]}}'
 ```
 
-[preview] In addition, there is a command-line client that uses legacy rule APIs, which can be easier to use, but must be updated for the new APIs. CLI tools to list, create, edit, and delete alerts (rules) and actions (connectors) are available in [kbn-action](https://github.com/pmuellr/kbn-action), which you can install as follows:
+{applies_to}`stack: preview` {applies_to}`serverless: preview` In addition, there is a command-line client that uses legacy rule APIs, which can be easier to use, but must be updated for the new APIs. CLI tools to list, create, edit, and delete alerts (rules) and actions (connectors) are available in [kbn-action](https://github.com/pmuellr/kbn-action), which you can install as follows:
 
 ```txt
 npm install -g pmuellr/kbn-action
@@ -193,7 +194,7 @@ This approach should be used only temporarily as a last resort to restore functi
 
 ## Limitations [alerting-limitations]
 
-The following limitations and known problems apply to the {{version}} release of the {{kib}} {{alert-features}}:
+The following limitations and known problems apply to the {{version.stack}} release of the {{kib}} {{alert-features}}:
 
 ### Alert visibility [_alert_visibility]
 

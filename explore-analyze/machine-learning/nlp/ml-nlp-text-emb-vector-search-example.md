@@ -53,7 +53,7 @@ You need to provide an administrator username and password and replace the `$CLO
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
-Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
+Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API]({{kib-apis}}group/endpoint-ml).
 
 ## Test the text embedding model [ex-text-emb-test]
 
@@ -116,7 +116,7 @@ Upload the file by using the [Data Visualizer](../../../manage-data/ingest/uploa
 
 Process the initial data with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
 
-Now create an ingest pipeline either in the [{{stack-manage-app}} UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
+Now create an ingest pipeline either from the [Ingest Pipelines](ml-nlp-inference.md#ml-nlp-inference-processor) management page in {{kib}} or by using the API:
 
 ```js
 PUT _ingest/pipeline/text-embeddings

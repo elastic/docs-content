@@ -3,7 +3,8 @@ navigation_title: CloudTrail logs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-cloudtrail-firehose.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
 ---
@@ -101,7 +102,7 @@ You now have a CloudWatch log group with events coming from CloudTrail. For more
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Select **Open Kibana**.
-        3. Expand the left-hand menu, under **Management** select **Stack management > API Keys** and click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
+        3. Open the **API keys** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
 
 2. Set up the delivery stream by specifying the following data:
 

@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-otel.html
   - https://www.elastic.co/guide/en/serverless/current/quickstart-monitor-hosts-with-otel.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -17,15 +17,13 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 
 ## Prerequisites [_prerequisites]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} serverless:
 
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](https://docs.elastic.co/serverless/quickstart-monitor-hosts-with-otel.html).
+* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * This quickstart is only available for Linux and MacOS systems.
-* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * Root privileges on the host—required to run the OpenTelemetry collector because of these components:
 
     * `hostmetrics` receiver to read all system metrics (all processes, memory, etc.).
@@ -33,12 +31,11 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} stack:
 
-* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
+* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * This quickstart is only available for Linux and MacOS systems.
-* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 * Root privileges on the host—required to run the OpenTelemetry collector because of these components:
 
     * `hostmetrics` receiver to read all system metrics (all processes, memory, etc.).
@@ -58,11 +55,34 @@ Refer to [Elastic OpenTelemetry Collector limitations](opentelemetry://reference
 
 Follow these steps to collect logs and metrics using the EDOT Collector:
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} Elastic Stack
-:sync: stack
+::::
+
+::::{applies-item} serverless:
+
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
+2. To open the quickstart, go to **Add Data**.
+3. Select **Collect and analyze logs**, and then select **OpenTelemetry**.
+4. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
+
+    :::{image} /solutions/images/serverless-quickstart-monitor-hosts-otel-entry-point.png
+    :alt: Host monitoring entry point
+    :screenshot:
+    :::
+
+5. Select the appropriate platform, and complete the following:
+6. For **MacOS and Linux**, copy the command, open a terminal on your host, and run the command to download and configure the OpenTelemetry collector.
+7. For **Kubernetes**, download the manifest.
+8. Copy the command under Step 2:
+9. For **MacOS and Linux**, run the command in your terminal to start the EDOT Collector.
+10. For **Kubernetes**, run the command from the directory where you downloaded the manifest to install the EDOT Collector on every node of your cluster.
+
+Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector. The default log path is `/var/log/*`. To update the path, modify `otel.yml`.
+
+::::
+
+::::{applies-item} stack:
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **OpenTelemetry: Logs & Metrics**.
@@ -83,33 +103,9 @@ Follow these steps to collect logs and metrics using the EDOT Collector:
 
 5. Copy the command under Step 2 and run it in your terminal to start the EDOT Collector.
 
-::::{note}
+:::{note}
 Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector.
-::::
-
-::::
-
-::::{tab-item} Serverless
-:sync: serverless
-
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
-2. To open the quickstart, go to **Add Data**.
-3. Select **Collect and analyze logs**, and then select **OpenTelemetry**.
-4. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
-
-    :::{image} /solutions/images/serverless-quickstart-monitor-hosts-otel-entry-point.png
-    :alt: Host monitoring entry point
-    :screenshot:
-    :::
-
-5. Select the appropriate platform, and complete the following:
-6. For **MacOS and Linux**, copy the command, open a terminal on your host, and run the command to download and configure the OpenTelemetry collector.
-7. For **Kubernetes**, download the manifest.
-8. Copy the command under Step 2:
-9. For **MacOS and Linux**, run the command in your terminal to start the EDOT Collector.
-10. For **Kubernetes**, run the command from the directory where you downloaded the manifest to install the EDOT Collector on every node of your cluster.
-
-Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector. The default log path is `/var/log/*`. To update the path, modify `otel.yml`.
+:::
 
 ::::
 

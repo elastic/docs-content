@@ -1,6 +1,6 @@
 ---
 navigation_title: EDOT Java
-description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, covering connectivity, agent identification, and debugging.
+description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) Java agent, covering connectivity, agent identification, and debugging.
 applies_to:
   stack:
   serverless:
@@ -13,9 +13,9 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT Java Agent
+# Troubleshooting the EDOT Java agent
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](opentelemetry://reference/edot-sdks/java/supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](elastic-otel-java://reference/edot-java/supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues)
 
@@ -25,7 +25,7 @@ Make you have set a service name, for example `-Dotel.service.name=Service1` or 
 
 ## Connectivity to endpoint
 
-Check from the host, VM, pod, container, or image running the app that connectivity is available to the Collector.
+Check from the host, VM, pod, container, or image running the app that connectivity is available to the Collector. For more detailed connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
 The following examples use a default URL, `http://127.0.0.1:4318/, which you should replace with the endpoint you are using:
 
@@ -47,12 +47,14 @@ Determine if the issue is related to the agent by following these steps:
 
 ## Agent debug logging
 
-As debugging output is verbose and might produce noticeable overhead on the application, follow one of these strategies when you need logging:
+As debugging output is verbose and might produce noticeable overhead on the application, follow one of these strategies when you need logging: 
 
 - In case of a technical issue or exception with the agent, use [agent debugging](#agent-debugging).
 - If you need details on the captured data, use [per-signal debugging](#per-signal-debugging).
 
-In case of missing data, check first that the technology used in the application is supported in [upstream OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](opentelemetry://reference/edot-sdks/java/supported-technologies.md).
+For more information, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+
+In case of missing data, check first that the technology used in the application is supported in [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](elastic-otel-java://reference/edot-java/supported-technologies.md). For more troubleshooting guidance, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 
 ### Agent debugging
 
@@ -122,7 +124,7 @@ Executing the agent jar as an application with `java -jar elastic-otel-javaagent
 
 Also, you can inspect the `Implementation-Version` entry in `META-INF/MANIFEST.MF` file of the agent jar, for example with `unzip -p elastic-otel-javaagent.jar META-INF/MANIFEST.MF|grep 'Implementation-Version'`.
 
-## Versions of the OpenTelemetry upstream dependencies
+## Versions of the OpenTelemetry contrib dependencies
 
 Because EDOT Java is a distribution of [OpenTelemetry Java instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation), it includes the following dependencies:
 
@@ -162,4 +164,4 @@ Updates of the OpenTelemetry API/SDK in the application and the EDOT Java agent 
 
 ### How to update
 
-Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](opentelemetry://reference/edot-sdks/java/setup/index.md).
+Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](elastic-otel-java://reference/edot-java/setup/index.md).

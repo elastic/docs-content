@@ -27,11 +27,12 @@ The Kubernetes Security Posture Management (KSPM) integration allows you to iden
 
 This integration supports Amazon EKS and unmanaged Kubernetes clusters. For setup instructions, refer to [Get started with KSPM](/solutions/security/cloud/get-started-with-kspm.md).
 
-::::{admonition} Requirements
-* The KSPM integration is available to all Elastic Cloud users. For on-prem deployments, it requires an [Enterprise subscription](https://www.elastic.co/pricing).
-* KSPM is not supported on EKS clusters in AWS GovCloud. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
 
-::::
+## Requirements 
+
+* The KSPM integration is available to all Elastic Cloud users. For on-prem deployments, it requires an [appropriate subscription](https://www.elastic.co/pricing) level.
+* KSPM for AWS deployments is supported only on AWS, not on AWS GovCloud. To request support, [submit a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
+
 
 
 

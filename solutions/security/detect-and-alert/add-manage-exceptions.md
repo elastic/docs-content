@@ -33,7 +33,44 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
 ::::
 
+## Requirements [exceptions-requirements]
 
+To use exceptions ensure your role has the appropriate access. To learn how to access other detection features, refer to [](/solutions/security/detect-and-alert/detections-requirements.md).
+
+### Exceptions requirements
+
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.4", "serverless": "ga" }
+
+- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature and deselect **Manage Exceptions** for the `Exceptions` sub-feature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs at least `Read` {{kib}} privileges for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature and ensure **Manage Exceptions** remains selected for the `Exceptions` sub-feature.
+
+:::
+
+:::{applies-item} { "stack": "ga =9.3" }
+
+- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` {{kib}} privileges for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature.
+
+:::
+
+:::{applies-item} { "stack": "ga 9.0-9.2" }
+
+**Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Security` feature. 
+
+:::
+
+::::
+
+### {{elastic-endpoint}} exceptions requirements 
+
+```yaml {applies_to}
+stack: ga 
+serverless: ga
+```
+
+For required privileges to view and manage {{elastic-endpoint}} exceptions, refer to [](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
 
 ## Add exceptions to a rule [detection-rule-exceptions]
 
@@ -78,6 +115,9 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
     When you create a new exception from an alert, exception conditions are auto-populated with relevant alert data. Data from custom highlighted fields is listed first. A comment that describes the auto-generated exception conditions is also added to the **Add comments** section.
     ::::
 
+    ::::{note}
+    When using ES|QL, you can append new fields with commands such as [`EVAL`](https://www.elastic.co/docs/reference/query-languages/esql/commands/eval), but you can't apply exceptions to these appended fields. Exceptions are only applied to the index source fields.
+    ::::
 
     1. **Field**: Select a field to identify the event being filtered.
 
@@ -103,7 +143,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
         * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\\path\\*\\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
 
             ::::{note}
-            Some characters must be escaped with a backslash, such as `\\` for a literal backslash, `\*` for an asterisk, and `\?` for a question mark. Windows paths must be divided with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider.
+            For detection rule exceptions, some characters must be escaped with a backslash, such as `\\` for a literal backslash, `\*` for an asterisk, and `\?` for a question mark. Windows paths must be divided with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider.
             ::::
 
 
@@ -125,9 +165,9 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
         :screenshot:
         :::
 
-4. Click **AND** or **OR** to create multiple conditions and define their relationships.
-5. Click **Add nested condition** to create conditions using nested fields. This is only required for [these nested fields](#nested-field-list). For all other fields, nested conditions should not be used.
-6. Choose to add the exception to a rule or a shared exception list.
+5. Click **AND** or **OR** to create multiple conditions and define their relationships.
+6. Click **Add nested condition** to create conditions using nested fields. This is only required for [these nested fields](#nested-field-list). For all other fields, nested conditions should not be used.
+7. Choose to add the exception to a rule or a shared exception list.
 
     ::::{note}
     If you are creating an exception from the Shared Exception Lists page, you can add the exception to multiple rules.
@@ -138,14 +178,14 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
     If a shared exception list doesn’t exist, you can [create one](create-manage-shared-exception-lists.md) from the Shared Exception Lists page.
     ::::
 
-7. (Optional) Enter a comment describing the exception.
-8. (Optional) Enter a future expiration date and time for the exception.
-9. Select one of the following alert actions:
+8. (Optional) Enter a comment describing the exception.
+9. (Optional) Enter a future expiration date and time for the exception.
+10. Select one of the following alert actions:
 
     * **Close this alert**: Closes the alert when the exception is added. This option is only available when adding exceptions from the Alerts table.
     * **Close all alerts that match this exception and were generated by this rule**: Closes all alerts that match the exception’s conditions and were generated only by the current rule.
 
-10. Click **Add rule exception**.
+11. Click **Add rule exception**.
 
 
 ## Add {{elastic-endpoint}} exceptions [endpoint-rule-exceptions]
@@ -208,6 +248,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
     ::::{note}
     * Fields with conflicts are marked with a warning icon (![Field conflict warning icon](/solutions/images/security-field-warning-icon.png "title =20x20")). Using these fields might cause unexpected exceptions behavior. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
     * The `is one of` and `is not one of` operators support identical, case-sensitive values. For example, if you want to match the values `Windows` and `windows`, add both values to the **Value** field.
+    * Unlike detection rule exceptions, Elastic Endpoint exceptions do not require escaping special characters.
 
     ::::
 

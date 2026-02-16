@@ -1,17 +1,18 @@
 ---
+navigation_title: Errors UI
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-errors.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-errors.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
   - id: cloud-serverless
 ---
 
-# Errors [apm-errors]
+# Errors UI in Elastic APM [apm-errors]
 
 *Errors* are groups of exceptions with a similar exception or log message. The **Errors** overview provides a high-level view of the exceptions that APM agents catch, or that users manually report with APM agent APIs. Like errors are grouped together to make it easy to quickly see which errors are affecting your services, and to take actions to rectify them.
 

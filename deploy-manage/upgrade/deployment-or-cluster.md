@@ -13,11 +13,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: kibana
   - id: cloud-enterprise
@@ -28,17 +23,42 @@ products:
 
 # Upgrade your deployment or cluster [upgrade-deployment-cluster]
 
-When upgrading an existing cluster, you perform a minor or major upgrade. For example, a minor upgrade takes you from version 9.0.0 to 9.1.0, while a major upgrade takes you from version 8.0.0 to 9.0.0.
+This section contains the upgrade instructions for {{es}} clusters and {{kib}} instances. Upgrade procedures depend on whether you installed Elastic components using Elastic-managed or self-managed infrastructure.
 
-Upgrade procedures depend on whether you installed Elastic components using Elastic-managed or self-managed infrastructure.
+## Prerequisites
+
+Before proceeding with the upgrade, review the [Plan your upgrade](/deploy-manage/upgrade/plan-upgrade.md) guidance to understand compatibility and timing considerations, and follow the steps in [Prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) to get your environment ready for the upgrade.
+
+Additionally, review the [Restrictions and known problems](../deploy/elastic-cloud/restrictions-known-problems.md) section to gain a comprehensive understanding of the known issues in {{ech}}. 
+
+If you’re still running {{stack}} version 7.17 or earlier, refer to the [Upgrade from 7.17 guide](/deploy-manage/upgrade/deployment-or-cluster/upgrade-717.md) for detailed guidance on planning and executing the upgrade to the latest {{version.stack}} release.
+
+## Out-of-order releases [out-of-order-releases]
+
+Elastic maintains several minor versions of {{es}} at the same time. This means releases do not always happen in order of their version numbers. You can only upgrade to {{version.stack}} if the version you are currently running meets both of these conditions:
+
+* Has a lower version number than {{version.stack}}
+* Has an earlier release date than {{version.stack}}
+
+If you are currently running a version with a lower version number but a later release date than {{version.stack}}, wait for a newer release before upgrading.
+
+Additionally, upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
+
+## Upgrade methods
 
 If you’re using Elastic-managed infrastructure, use the following options:
 
 * [Upgrade on {{ech}}](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ech.md)
-* Upgrade on [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), which is automatically performed by Elastic and requires no user management
 
 If you’re using self-managed infrastructure - either on-prem or public cloud - use the following options:
 
 * [Upgrade the {{stack}} on a self-managed cluster](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md)
-* [Upgrade on {{ece}} (ECE)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md)
-* [Upgrade on {{eck}} (ECK)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)
+* [Upgrade your deployment on {{ece}} (ECE)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md)
+* [Upgrade your deployment on {{eck}} (ECK)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)
+
+:::{include} /deploy-manage/_snippets/serverless-upgrade.md
+:::
+
+## Next steps
+
+Once you've successfully upgraded your deployment, you can [upgrade your ingest components](./ingest-components.md), such as {{ls}}, {{agent}}, or {{beats}}.

@@ -54,13 +54,13 @@ This returns a healthy response as:
 For {{ece}} 2.1 and later, the health check endpoint has changed. You can use `/_health` on proxy hosts with a result of either a 200 OK to indicate healthy or a 502 Bad Gateway response for unhealthy. A healthy response also means that internal routing tables in the proxy are valid and initialized, but not necessarily up-to-date.
 
 ```
-http://PROXY_ADDRESS:9200/_health
+http://<PROXY_ADDRESS>:9200/_health
 ```
 
 or
 
 ```
-https://PROXY_ADDRESS:9243/_health
+https://<PROXY_ADDRESS>:9243/_health
 ```
 
 This returns a healthy response as:

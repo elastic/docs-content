@@ -6,11 +6,16 @@ applies_to:
     ece:
 products:
   - id: cloud-enterprise
+navigation_title: Google Cloud Storage
 ---
 
-# Google Cloud Storage (GCS) repository [ece-configure-gcp-snapshotting]
+# Configure a Google Cloud Storage snapshot repository in {{ece}}
 
-Snapshots to GCS are supported using an [advanced repository configuration](cloud-enterprise.md) and service account credentials that can administer your GCS bucket.
+This guide focuses on registering a Google Cloud Storage (GCS) snapshot repository at the {{ece}} (ECE) platform level. Platform-level repositories can be assigned to deployments and are used by ECE to automatically manage snapshots through the `found-snapshots` repository.
+
+If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the [{{ech}} guide for Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md), which is also applicable to {{ece}} deployments.
+
+At ECE platform level, snapshots to Google Cloud Storage (GCS) are supported using an [advanced repository configuration](cloud-enterprise.md) and service account credentials that can administer your GCS bucket.
 
 ## Set up your service account credentials [ece_set_up_your_service_account_credentials]
 
@@ -37,7 +42,7 @@ Add your Google Cloud Storage bucket as a repository to the platform:
       "type": "gcs",
       "settings": {
         "bucket": "acme-snapshot-repo",
-        "bucket": "acme-snapshots"
+        "client": "acme-snapshots"
       }
     }
     ```
@@ -60,7 +65,7 @@ To save deployment snapshots to the custom GCS repository:
     The contents within *credentials_file* must be the exact contents of your GCS credentials file.
     ::::
 
-2. Configure your deployment to [snapshot to the GCS repository](cloud-enterprise.md).
+2. Configure your deployment to [snapshot to the GCS repository](cloud-enterprise.md#ece-manage-repositories-clusters).
 
 After you enable snapshots, snapshotting will begin within 30 minutes (the default snapshot interval).
 

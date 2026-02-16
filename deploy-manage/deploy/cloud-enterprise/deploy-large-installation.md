@@ -14,11 +14,11 @@ products:
 This type of installation is recommended for deployments with significant overall search and indexing throughput. You need:
 
 * 3 hosts with at least 64 GB RAM each for directors and coordinators (ECE management services)
-* 3 hosts for allocators, each with one of the following RAM configurations:
+* A minimum of 3 hosts for allocators, using one of the following configurations per availability zone:
 
-    * 1 x 256 GB RAM
-    * 2 x 128 GB RAM
-    * 4 x 64 GB RAM
+    * 1 host with 256 GB RAM → 3 hosts total
+    * 2 hosts with 128 GB RAM each → 6 hosts total
+    * 4 hosts with 64 GB RAM each → 12 hosts total
 
 * 3 hosts with 16 GB RAM each for proxies
 * 3 availability zones
@@ -26,6 +26,10 @@ This type of installation is recommended for deployments with significant overal
 :::{image} /deploy-manage/images/cloud-enterprise-ece-pb-9.png
 :alt: A large installation with nine to twelve hosts across three availability zones
 :::
+
+::::{note}
+In the diagram, the Director Coordinator host in Availability zone 1, which represents the first host to be installed, has the allocator and proxy roles greyed out. This host temporarily holds all roles until the other nodes are added and configured. Eventually, the allocator and proxy roles will be removed from this host.
+::::
 
 ## Important considerations  [ece_before_you_start_3]
 
@@ -100,8 +104,24 @@ Make sure you have completed all prerequisites and environment preparations desc
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "proxy" --availability-zone MY_ZONE-3 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"}}'
     ```
 
-6. [Change the deployment configuration](working-with-deployments.md) for the `admin-console-elasticsearch`, `logging-and-metrics`, and `security` clusters to use three availability zones and resize the nodes to use at least 4 GB of RAM. This change makes sure that the clusters used by the administration console are highly available and provisioned sufficiently.
+6. [Log into the Cloud UI](log-into-cloud-ui.md).
 
-7. [Log into the Cloud UI](log-into-cloud-ui.md) to provision your deployment.
+7. [Change the deployment configuration](/deploy-manage/deploy/cloud-enterprise/customize-deployment.md) for the `admin-console-elasticsearch`, `logging-and-metrics`, and `security` [system deployments](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md) to use three availability zones and resize the nodes to use at least 4 GB of RAM. This ensures the system clusters are both highly available and sufficiently provisioned.
+
+8. [Vacate all instances from the initial host](/deploy-manage/maintenance/ece/move-nodes-instances-from-allocators.md#move-nodes-from-allocators). This host runs some {{es}} and {{kib}} instances from system deployments, which must be moved to other allocators before proceeding.
+
+    Wait until all instances have been moved off the initial host before continuing.
+
+9. [Remove the `allocator` and `proxy` roles](/deploy-manage/deploy/cloud-enterprise/assign-roles-to-hosts.md) from the initial host. You cannot remove the `allocator` role until all instances have been vacated.
+
+    ::::{note}
+    After removing the proxy role from the first host, the {{es}} and {{kib}} URLs shown in the Cloud UI will stop working. This happens because the **Deployment domain name** in **Platform** > **Settings** is set to the IP address of the first host, in the format `FIRST_HOST_IP.ip.es.io`. For more details, refer to [Change endpoint URLs](./change-endpoint-urls.md).
+
+    To resolve this, follow the steps in [Post-installation steps](./post-installation-steps.md) to complete the integration between your load balancer, ECE proxies, TLS certificates, and wildcard DNS record.
+    ::::
+
+    ::::{tip}
+    If you don't yet have a load balancer, TLS certificates, or a wildcard DNS record ready, you can [change the endpoint URL](./change-endpoint-urls.md) to the IP address of one of the ECE proxies, using the format `PROXY_IP.ip.es.io`. This will allow you to continue using the deployment endpoint URLs provided by the Cloud UI.
+    ::::
 
 Once the installation is complete, you can continue with [](./post-installation-steps.md).

@@ -2,12 +2,16 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/manage-cases-settings.html
   - https://www.elastic.co/guide/en/serverless/current/observability-case-settings.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
+navigation_title: Configure case settings
 ---
 
-# Configure case settings [manage-cases-settings]
+# Configure case settings for Elastic {{observability}} [manage-cases-settings]
 
 % Serverless only for the following role, does stateful require a special role?
 

@@ -24,7 +24,7 @@ Detection rule investigation guides suggest steps for triaging, analyzing, and r
 
 ::::{admonition} Requirements
 * The [Osquery manager integration](/solutions/security/investigate/manage-integration.md) must be installed.
-* {{agent}}'s [status](/reference/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
+* {{agent}}'s [status](/reference/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
 * In {{stack}}, your role must have [Osquery feature privileges](/solutions/security/investigate/osquery.md).
 * In {{serverless-short}}, you must have the appropriate user role to use this feature.
 

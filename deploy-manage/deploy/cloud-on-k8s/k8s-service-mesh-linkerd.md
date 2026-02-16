@@ -12,7 +12,7 @@ products:
 
 The following sections describe how to connect the operator and managed resources to the Linkerd service mesh. It is assumed that Linkerd is already installed and configured on your Kubernetes cluster. If you are new to Linkerd, refer to the [product documentation](https://linkerd.io) for more information and installation instructions.
 
-::::{note} 
+::::{note}
 These instructions have been tested with Linkerd 2.7.0.
 ::::
 
@@ -22,8 +22,8 @@ These instructions have been tested with Linkerd 2.7.0.
 In order to connect the operator to the service mesh, Linkerd sidecar must be injected into the ECK deployment. This can be done during installation as follows:
 
 ```sh subs=true
-kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
-linkerd inject https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml | kubectl apply -f -
+kubectl create -f https://download.elastic.co/downloads/eck/{{version.eck}}/crds.yaml
+linkerd inject https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml | kubectl apply -f -
 ```
 
 Confirm that the operator is now meshed:
@@ -58,13 +58,13 @@ If automatic sidecar injection is enabled and [auto mounting of service account 
 
 ### {{es}} [k8s-service-mesh-linkerd-elasticsearch]
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elastic-linkerd
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   http:
     tls: <1>
       selfSignedCertificate:
@@ -92,13 +92,13 @@ spec:
 
 The configuration is almost identical for {{kib}} and APM Server resources.
 
-```yaml
+```yaml subs=true
 apiVersion: ...
 kind: ...
 metadata:
   name: elastic-linkerd
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: elastic-linkerd

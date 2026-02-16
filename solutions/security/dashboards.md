@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: Dashboards
 ---
 
-# Dashboards
+# {{elastic-sec}} dashboards
 
 The {{security-app}}'s default dashboards provide useful visualizations of your security environment. To view them in {{elastic-sec}}, select **Dashboards** from the navigation menu. From the Dashboards page, you can access the default dashboards, as well as create and access custom dashboards.
 

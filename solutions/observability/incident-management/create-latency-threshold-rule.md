@@ -3,6 +3,9 @@ navigation_title: Latency threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-latency-threshold-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-latency-threshold-alert-rule.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -125,6 +128,9 @@ The following variables are specific to this rule type. You can also specify [va
 
 `context.environment`
 :   The transaction type the alert is created for.
+
+`context.grouping` {applies_to}`stack: ga 9.1`
+:   The object containing groups that are reporting data.
 
 `context.interval`
 :   The length and unit of time period where the alert conditions were met.

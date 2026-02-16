@@ -1,5 +1,7 @@
 ---
 navigation_title: Deprecations
+products:
+  - id: cloud-serverless
 ---
 
 # {{serverless-full}} deprecations [elastic-cloud-serverless-deprecations]
@@ -9,11 +11,30 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+## February 2, 2026 [elastic-cloud-serverless-02022026-deprecations]
+* Removes the URL limit from {{kib}} and deprecates the `storeInSessionStorage` setting. For more information, refer to [#242972]({{kib-pull}}242972).
+* Removes the `--stats` flag on `build_api_docs`. For more information, refer to [#249305]({{kib-pull}}249305).
+
+## January 5, 2026 [elastic-cloud-serverless-01052026-deprecations]
+* Removes the {{kib}} user from the root group. For more information, refer to [#244798]({{kib-pull}}244798).
+
+## November 24, 2025 [elastic-cloud-serverless-11242025-deprecations]
+* Shows a callout for deprecated, in-use ILM policies. For more information, check [#243416]({{kib-pull}}243416).
+
+## October 13, 2025 [elastic-cloud-serverless-10132025-deprecations]
+* Filters endpoint exceptions from the detection engine's execution logic. For more information, check [#233289]({{kib-pull}}233289).
+
+## August 25, 2025 [elastic-cloud-serverless-08252025-deprecations]
+* Changes the `reporting_user` role to leverage reserved {{kib}} privileges. For more information, check [#132766](https://github.com/elastic/elasticsearch/pull/132766)
+
 ## June 30, 2025 [elastic-cloud-serverless-06302025-deprecations]
 * Removes Default Quick Prompts from the Security AI Assistant. For more information, check [#225536]({{kib-pull}}225536).
 
 ## June 2, 2025 [elastic-cloud-serverless-06022025-deprecations]
 * Removes the `allowByValueEmbeddables` setting from the Dashboard plugin. For more information, check [#221165]({{kib-pull}}221165). 
+
+## February 24, 2025 [elastic-cloud-serverless-02242025-deprecations]
+* Deprecates the Behavioral Analytics CRUD APIs [#122960](https://github.com/elastic/elasticsearch/pull/122960)
 
 ## February 3, 2025 [elastic-cloud-serverless-02032025-deprecations]
 * Renames the `integration-assistant` plugin to `automatic-import`. For more information, check [#207325]({{kib-pull}}207325).

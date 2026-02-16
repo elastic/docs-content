@@ -16,6 +16,7 @@ To install ECE, make sure you prepare your environment with the following softwa
 * [Linux distributions with compatible Docker versions](#ece-linux-docker)
 * [Free RAM](#ece-free-ram)
 * [XFS](#ece-xfs)
+* [FIPS compliance](#ece-fips)
 
 
 ## Supported Linux kernel [ece-linux-kernel] 
@@ -81,3 +82,9 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 ::::
 
 
+## FIPS compliance [ece-fips]
+
+:::{include} /deploy-manage/deploy/_snippets/ece-fips-message.md
+:::
+
+For more information about FIPS compliance across the {{stack}}, refer to [](/deploy-manage/security/fips.md).

@@ -21,14 +21,14 @@ The following index API request creates a source index and indexes a new documen
 ```console
 PUT /users/_doc/1?refresh=wait_for
 {
-  "email": "mardy.brown@asciidocsmith.com",
+  "email": "mardy.brown@example.com",
   "first_name": "Mardy",
   "last_name": "Brown",
   "city": "New Orleans",
   "county": "Orleans",
   "state": "LA",
   "zip": 70116,
-  "web": "mardy.asciidocsmith.com"
+  "web": "mardy.example.com"
 }
 ```
 
@@ -83,7 +83,7 @@ Use the ingest pipeline to index a document. The incoming document should includ
 ```console
 PUT /my-index-000001/_doc/my_id?pipeline=user_lookup
 {
-  "email": "mardy.brown@asciidocsmith.com"
+  "email": "mardy.brown@example.com"
 }
 ```
 
@@ -105,14 +105,14 @@ The API returns the following response:
   "_primary_term": 1,
   "_source": {
     "user": {
-      "email": "mardy.brown@asciidocsmith.com",
+      "email": "mardy.brown@example.com",
       "first_name": "Mardy",
       "last_name": "Brown",
       "zip": 70116,
       "city": "New Orleans",
       "state": "LA"
     },
-    "email": "mardy.brown@asciidocsmith.com"
+    "email": "mardy.brown@example.com"
   }
 }
 ```

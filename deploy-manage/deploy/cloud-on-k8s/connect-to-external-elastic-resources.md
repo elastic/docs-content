@@ -18,7 +18,7 @@ kind: Secret
 metadata:
   name: external-es-ref
 stringData:
-  url: https://sample.gcp.elastic-cloud.com
+  url: <ELASTIC_CLOUD_URL>
   username: "elastic"
   password: REDACTED
 ---
@@ -35,13 +35,13 @@ spec:
 
 In the case of Elastic Agent you can also specify several named references:
 
-```yaml
+```yaml subs=true
 apiVersion: v1
 kind: Secret
 metadata:
   name: external-es-ref
 stringData:
-  url: https://abcd-42.xyz.elastic-cloud.com:443
+  url: <ELASTIC-CLOUD-URL>:443
   username: ""
   password: ""
   api-key: REDACTED
@@ -52,7 +52,7 @@ kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - outputName: default
     secretName: external-es-ref

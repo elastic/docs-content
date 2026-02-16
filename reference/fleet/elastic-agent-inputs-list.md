@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-inputs-list.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -19,7 +22,7 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | --- | --- | --- |
 | `audit/auditd` | Receives audit events from the Linux Audit Framework that is a part of the Linux kernel. | [Auditd Module](beats://reference/auditbeat/auditbeat-module-auditd.md) ({{auditbeat}} docs) |
 | `audit/file_integrity` | Sends events when a file is changed (created, updated, or deleted) on disk. The events contain file metadata and hashes. | [File Integrity Module](beats://reference/auditbeat/auditbeat-module-file_integrity.md) ({{auditbeat}} docs) |
-| `audit/system` | [beta] Collects various security related information about a system. All datasets send both periodic state information (e.g. all currently running processes) and real-time changes (e.g. when a new process starts or stops). | [System Module](beats://reference/auditbeat/auditbeat-module-system.md) ({{auditbeat}} docs) |
+| `audit/system` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Collects various security related information about a system. All datasets send both periodic state information (for example, all currently running processes) and real-time changes (for example, when a new process starts or stops). | [System Module](beats://reference/auditbeat/auditbeat-module-system.md) ({{auditbeat}} docs) |
 
 ::::
 
@@ -32,11 +35,11 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | `activemq/metrics` | Periodically fetches JMX metrics from Apache ActiveMQ. | [ActiveMQ module](beats://reference/metricbeat/metricbeat-module-activemq.md) ({{metricbeat}} docs) |
 | `apache/metrics` | Periodically fetches metrics from [Apache HTTPD](https://httpd.apache.org/) servers. | [Apache module](beats://reference/metricbeat/metricbeat-module-apache.md) ({{metricbeat}} docs) |
 | `aws/metrics` | Periodically fetches monitoring metrics from AWS CloudWatch using [GetMetricData API](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.md) for AWS services. | [AWS module](beats://reference/metricbeat/metricbeat-module-aws.md) ({{metricbeat}} docs) |
-| `awsfargate/metrics` | [beta] Retrieves various metadata, network metrics, and Docker stats about tasks and containers. | [AWS Fargate module](beats://reference/metricbeat/metricbeat-module-awsfargate.md) ({{metricbeat}} docs) |
+| `awsfargate/metrics` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Retrieves various metadata, network metrics, and Docker stats about tasks and containers. | [AWS Fargate module](beats://reference/metricbeat/metricbeat-module-awsfargate.md) ({{metricbeat}} docs) |
 | `azure/metrics` | Collects and aggregates Azure logs and metrics from a variety of sources into a common data platform where it can be used for analysis, visualization, and alerting. | [Azure module](beats://reference/metricbeat/metricbeat-module-azure.md) ({{metricbeat}} docs) |
 | `beat/metrics` | Collects metrics about any Beat or other software based on libbeat. | [Beat module](beats://reference/metricbeat/metricbeat-module-beat.md) ({{metricbeat}} docs) |
 | `cloudfoundry/metrics` | Connects to Cloud Foundry loggregator to gather container, counter, and value metrics into a common data platform where it can be used for analysis, visualization, and alerting. | [Cloudfoundry module](beats://reference/metricbeat/metricbeat-module-cloudfoundry.md) ({{metricbeat}} docs) |
-| `containerd/metrics` | [beta] Collects cpu, memory and blkio statistics about running containers controlled by containerd runtime. | [Containerd module](beats://reference/metricbeat/metricbeat-module-containerd.md) ({{metricbeat}} docs) |
+| `containerd/metrics` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Collects CPU, memory and blkio statistics about running containers controlled by containerd runtime. | [Containerd module](beats://reference/metricbeat/metricbeat-module-containerd.md) ({{metricbeat}} docs) |
 | `docker/metrics` | Fetches metrics from [Docker](https://www.docker.com/) containers. | [Docker module](beats://reference/metricbeat/metricbeat-module-docker.md) ({{metricbeat}} docs) |
 | `elasticsearch/metrics` | Collects metrics about {{es}}. | [Elasticsearch module](beats://reference/metricbeat/metricbeat-module-elasticsearch.md) ({{metricbeat}} docs) |
 | `etcd/metrics` | This module targets Etcd V2 and V3. When using V2, metrics are collected using [Etcd v2 API](https://coreos.com/etcd/docs/latest/v2/api.md). When using V3, metrics are retrieved from the `/metrics` endpoint as intended for [Etcd v3](https://coreos.com/etcd/docs/latest/metrics.md). | [Etcd module](beats://reference/metricbeat/metricbeat-module-etcd.md) ({{metricbeat}} docs) |
@@ -48,7 +51,7 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | `kafka/metrics` | Collects metrics from the [Apache Kafka](https://kafka.apache.org/intro) event streaming platform. | [Kafka module](beats://reference/metricbeat/metricbeat-module-kafka.md) ({{metricbeat}} docs) |
 | `kibana/metrics` | Collects metrics about {{kib}}. | [{{kib}} module](beats://reference/metricbeat/metricbeat-module-kibana.md) ({{metricbeat}} docs) |
 | `kubernetes/metrics` | As one of the main pieces provided for Kubernetes monitoring, this module is capable of fetching metrics from several components. | [Kubernetes module](beats://reference/metricbeat/metricbeat-module-kubernetes.md) ({{metricbeat}} docs) |
-| `linux/metrics` | [beta] Reports on metrics exclusive to the Linux kernel and GNU/Linux OS. | [Linux module](beats://reference/metricbeat/metricbeat-module-linux.md) ({{metricbeat}} docs) |
+| `linux/metrics` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Reports on metrics exclusive to the Linux kernel and GNU/Linux OS. | [Linux module](beats://reference/metricbeat/metricbeat-module-linux.md) ({{metricbeat}} docs) |
 | `logstash/metrics` | collects metrics about {{ls}}. | [{{ls}} module](beats://reference/metricbeat/metricbeat-module-logstash.md) ({{metricbeat}} docs) |
 | `memcached/metrics` | Collects metrics about the [memcached](https://memcached.org/) memory object caching system. | [Memcached module](beats://reference/metricbeat/metricbeat-module-memcached.md) ({{metricbeat}} docs) |
 | `mongodb/metrics` | Periodically fetches metrics from [MongoDB](https://www.mongodb.com/) servers. | [MongoDB module](beats://reference/metricbeat/metricbeat-module-mongodb.md) ({{metricbeat}} docs) |
@@ -64,7 +67,7 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | `sql/metrics` | Allows you to execute custom queries against an SQL database and store the results in {{es}}. | [SQL module](beats://reference/metricbeat/metricbeat-module-sql.md) ({{metricbeat}} docs) |
 | `stan/metrics` | Uses [STAN monitoring server APIs](https://github.com/nats-io/nats-streaming-server/blob/master/server/monitor.go) to collect metrics. | [Stan module](beats://reference/metricbeat/metricbeat-module-stan.md) ({{metricbeat}} docs) |
 | `statsd/metrics` | Spawns a UDP server and listens for metrics in StatsD compatible format. | [Statsd module](beats://reference/metricbeat/metricbeat-module-statsd.md) ({{metricbeat}} docs) |
-| `syncgateway/metrics` | [beta] Monitor a Sync Gateway instance by using its REST API. | [SyncGateway module](beats://reference/metricbeat/metricbeat-module-syncgateway.md) ({{metricbeat}} docs) |
+| `syncgateway/metrics` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Monitor a Sync Gateway instance by using its REST API. | [SyncGateway module](beats://reference/metricbeat/metricbeat-module-syncgateway.md) ({{metricbeat}} docs) |
 | `system/metrics` | Allows you to monitor your server metrics, including CPU, load, memory, network, processes, sockets, filesystem, fsstat, uptime, and more. | [System module](beats://reference/metricbeat/metricbeat-module-system.md) ({{metricbeat}} docs) |
 | `traefik/metrics` | Periodically fetches metrics from a [Traefik](https://traefik.io/) instance. | [Traefik module](beats://reference/metricbeat/metricbeat-module-traefik.md) ({{metricbeat}} docs) |
 | `uwsgi/metrics` | By default, collects the uWSGI stats metricset, using [StatsServer](https://uwsgi-docs.readthedocs.io/en/latest/StatsServer.html). | [uWSGI module](beats://reference/metricbeat/metricbeat-module-uwsgi.md) ({{metricbeat}} docs) |
@@ -95,10 +98,10 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | `event/tcp` | Alias for `tcp`. | n/a |
 | `filestream` | Reads lines from active log files. Replaces and imporoves on the `log` input. | [filestream input](beats://reference/filebeat/filebeat-input-filestream.md) ({{filebeat}} docs) |
 | `gcp-pubsub` | Reads messages from a Google Cloud Pub/Sub topic subscription. | [GCP Pub/Sub input](beats://reference/filebeat/filebeat-input-gcp-pubsub.md) ({{filebeat}} docs) |
-| `gcs` | [beta] Reads content from files stored in buckets which reside on your Google Cloud. | [Google Cloud Storage input](beats://reference/filebeat/filebeat-input-gcs.md) ({{filebeat}} docs) |
-| `http_endpoint` | [beta] Initializes a listening HTTP server that collects incoming HTTP POST requests containing a JSON body. | [HTTP Endpoint input](beats://reference/filebeat/filebeat-input-http_endpoint.md) ({{filebeat}} docs) |
+| `gcs` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Reads content from files stored in buckets which reside on your Google Cloud. | [Google Cloud Storage input](beats://reference/filebeat/filebeat-input-gcs.md) ({{filebeat}} docs) |
+| `http_endpoint` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Initializes a listening HTTP server that collects incoming HTTP POST requests containing a JSON body. | [HTTP Endpoint input](beats://reference/filebeat/filebeat-input-http_endpoint.md) ({{filebeat}} docs) |
 | `httpjson` | Read messages from an HTTP API with JSON payloads. | [HTTP JSON input](beats://reference/filebeat/filebeat-input-httpjson.md) ({{filebeat}} docs) |
-| `journald` | [beta] A system service that collects and stores logging data. | [Journald input](beats://reference/filebeat/filebeat-input-journald.md) ({{filebeat}} docs) |
+| `journald` | {applies_to}`stack: beta` {applies_to}`serverless: beta` A system service that collects and stores logging data. | [Journald input](beats://reference/filebeat/filebeat-input-journald.md) ({{filebeat}} docs) |
 | `kafka` | Reads from topics in a Kafka cluster. | [Kafka input](beats://reference/filebeat/filebeat-input-kafka.md) ({{filebeat}} docs) |
 | `log` | DEPRECATED: Use the `filestream` input instead. | n/a |
 | `logfile` | Alias for `log`. | n/a |
@@ -106,13 +109,13 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | `log/syslog` | Alias for `syslog`. | n/a |
 | `mqtt` | Reads data transmitted using lightweight messaging protocol for small and mobile devices, optimized for high-latency or unreliable networks. | [MQTT input](beats://reference/filebeat/filebeat-input-mqtt.md) ({{filebeat}} docs) |
 | `netflow` | Reads NetFlow and IPFIX exported flows and options records over UDP. | [NetFlow input](beats://reference/filebeat/filebeat-input-netflow.md) ({{filebeat}} docs) |
-| `o365audit` | [beta] Retrieves audit messages from Office 365 and Azure AD activity logs. | [Office 365 Management Activity API input](beats://reference/filebeat/filebeat-input-o365audit.md) ({{filebeat}} docs) |
+| `o365audit` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Retrieves audit messages from Office 365 and Azure AD activity logs. | [Office 365 Management Activity API input](beats://reference/filebeat/filebeat-input-o365audit.md) ({{filebeat}} docs) |
 | `osquery` | Collects and decodes the result logs written by [osqueryd](https://osquery.readthedocs.io/en/latest/introduction/using-osqueryd/) in the JSON format. | - |
-| `redis` | [beta] Reads entries from Redis slowlogs. | [Redis input](beats://reference/filebeat/index.md) ({{filebeat}} docs) |
+| `redis` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Reads entries from Redis slowlogs. | [Redis input](beats://reference/filebeat/index.md) ({{filebeat}} docs) |
 | `syslog` | Reads Syslog events as specified by RFC 3164 and RFC 5424, over TCP, UDP, or a Unix stream socket. | [Syslog input](beats://reference/filebeat/filebeat-input-syslog.md) ({{filebeat}} docs) |
 | `tcp` | Reads events over TCP. | [TCP input](beats://reference/filebeat/filebeat-input-tcp.md) ({{filebeat}} docs) |
 | `udp` | Reads events over UDP. | [UDP input](beats://reference/filebeat/filebeat-input-udp.md) ({{filebeat}} docs) |
-| `unix` | [beta] Reads events over a stream-oriented Unix domain socket. | [Unix input](beats://reference/filebeat/index.md) ({{filebeat}} docs) |
+| `unix` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Reads events over a stream-oriented Unix domain socket. | [Unix input](beats://reference/filebeat/index.md) ({{filebeat}} docs) |
 | `winlog` | Reads from one or more event logs using Windows APIs, filters the events based on user-configured criteria, then sends the event data to the configured outputs ({{es}} or {{ls}}). | [Winlogbeat Overview](beats://reference/winlogbeat/index.md) ({{winlogbeat}} docs) |
 
 ::::

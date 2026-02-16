@@ -36,7 +36,7 @@ To use Osquery, you must add the [Osquery manager integration](manage-integratio
 
 To use **Osquery Manager**, you must be assigned to a role with the following privileges:
 
-* `Read` privileges for the `logs-osquery_manager.result*` index.
+* {applies_to}`stack: removed 9.2` {applies_to}`serverless: removed` `Read` privileges for the `logs-osquery_manager.result*` index.
 * {{kib}} privileges for **Osquery Manager**. The `All` privilege enables you to run, schedule, and save queries. `Read` enables you to view live and scheduled query results, but you cannot run live queries or edit.
 
 
@@ -195,8 +195,10 @@ The prebuilt Osquery packs are included with the integration and can be optional
 
 You can modify the scheduled agent policies for a prebuilt pack, but you cannot edit queries in the pack. To edit the queries, you must first create a copy of the pack.
 
-For information about the prebuilt packs that are available, refer to [*Prebuilt packs reference*](kibana://reference/osquery-manager-prebuilt-packs.md).
+For information about the available prebuilt packs, refer to:
 
+* [Elastic queries and packs](https://github.com/elastic/integrations/blob/main/packages/osquery_manager/artifacts_matrix.md):  Elastic-maintained packs tailored for security forensics and threat hunting
+* [Osquery packs](https://github.com/osquery/osquery/tree/master/packs): Osquery-maintained packs for IT operations and security
 
 #### Load and activate prebuilt Elastic packs [load-prebuilt-packs]
 
@@ -236,6 +238,8 @@ A set of saved queries are included with the integration and available to run as
 * The queries are not editable.
 * Several of the queries include default ECS mappings to standardize the results.
 * The prebuilt Elastic queries all follow the same naming convention and identify what type of information is being queried, what operating system it supports if it’s limited to one or more, and that these are Elastic queries. For example, `firewall_rules_windows_elastic`.
+
+For information about the available prebuilt queries, refer to [Elastic queries and packs](https://github.com/elastic/integrations/blob/main/packages/osquery_manager/artifacts_matrix.md).
 
 
 ## Map result fields to ECS [osquery-map-fields]

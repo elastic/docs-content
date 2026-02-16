@@ -13,11 +13,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-saml-authentication.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: elasticsearch
   - id: cloud-enterprise
@@ -135,10 +131,10 @@ If you're using {{ece}} or {{ech}}, and you're using machine learning or a deplo
 xpack.security.authc.realms.saml.saml1:
   order: 2
   idp.metadata.path: saml/idp-metadata.xml
-  idp.entity_id: "https://sso.example.com/"
-  sp.entity_id:  "https://kibana.example.com/"
-  sp.acs: "https://kibana.example.com/api/security/saml/callback"
-  sp.logout: "https://kibana.example.com/logout"
+  idp.entity_id: "<sso-example-url>"
+  sp.entity_id:  "<kibana-example-url>"
+  sp.acs: "<kibana-example-url>/api/security/saml/callback"
+  sp.logout: "<kibana-example-url>/logout"
   attributes.principal: "urn:oid:0.9.2342.19200300.100.1.1"
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 ```
@@ -265,14 +261,14 @@ groups
 :   *(Recommended)* If you want to use your IdP’s concept of groups or roles as the basis for a user’s {{es}} privileges, you should map them with this attribute. The `groups` are passed directly to your [role mapping rules](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-role-mapping).
 
     :::{note}
-    Some IdPs are configured to send the `groups` list as a single value, comma-separated string. To map this SAML attribute to the `attributes.groups` setting in the {{es}} realm, you can configure a string delimiter using the `attribute_delimiters.group` setting.<br><br>For example, splitting the SAML attribute value `engineering,elasticsearch-admins,employees` on a delimiter value of `,` will result in `engineering`, `elasticsearch-admins`, and `employees` as the list of groups for the user.
+    Some IdPs are configured to send the `groups` list as a single value, comma-separated string. To map this SAML attribute to the `attributes.groups` setting in the {{es}} realm, you can configure a string delimiter using the `attribute_delimiters.groups` setting.<br><br>For example, splitting the SAML attribute value `engineering,elasticsearch-admins,employees` on a delimiter value of `,` will result in `engineering`, `elasticsearch-admins`, and `employees` as the list of groups for the user.
     ::::
 
 name
-:   *(Optional)* The user’s full name.
+:   *(Optional)* The user’s full name. It will be used in {{kib}}'s profile page to display user details.
 
 mail
-:   *(Optional)* The user’s email address.
+:   *(Optional)* The user’s email address. It will be used in {{kib}}'s profile page to display user details.
 
 dn
 :   *(Optional)* The user’s X.500 *Distinguished Name*.
@@ -410,7 +406,7 @@ The generated zip archive will contain 3 files:
 
 * `saml-sign.crt`, the public certificate to be used for signing
 * `saml-sign.key`, the private key for the certificate
-* `ca.crt`, a CA certificate that is not need, and can be ignored.
+* `ca.crt`, a CA certificate that is not needed, and can be ignored.
 
 Encryption certificates can be generated with the same process.
 
@@ -426,12 +422,17 @@ By default, {{es}} will sign *all* outgoing SAML messages if a signing certifica
 :::
 
 ::::{tab-set}
-:::{tab-item} PEM formatted keys
+:::{tab-item} PEM-formatted keys
 
 If you want to use **PEM formatted** keys and certificates for signing, then you should configure the following settings on the SAML realm:
 
 `signing.certificate`
 :   The path to the PEM formatted certificate file. e.g. `saml/saml-sign.crt`
+
+    :::::{note}
+    Only the single leaf certificate is required for the `signing.certificate` setting, even when using an internal or non-public Certificate Authority (CA).
+    If additional certificates are included, {{es}} attempts to validate the resulting chain, and the chain must be valid and complete.
+    :::::
 
 `signing.key`
 :   The path to the PEM formatted key file. e.g. `saml/saml-sign.key`
@@ -497,6 +498,11 @@ If you want to use **PEM formatted** keys and certificates for SAML encryption, 
 `encryption.certificate`
 :   The path to the PEM formatted certificate file. e.g. `saml/saml-crypt.crt`
 
+    :::::{note}
+    Only the single leaf certificate is required for the `encryption.certificate` setting, even when using an internal or non-public Certificate Authority (CA).
+    If additional certificates are included, {{es}} will attempt to validate the resulting chain, and the chain must be valid and complete.
+    :::::
+
 `encryption.key`
 :   The path to the PEM formatted key file. e.g. `saml/saml-crypt.key`
 
@@ -535,22 +541,21 @@ curl -u user_name:password  -X GET http://localhost:9200/_security/saml/metadata
 ```
 
 ### Using the `elasticsearch-saml-metadata` command
-
-You can generate the SAML metadata by running the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
-
 ```{applies_to}
 deployment:
   self:
   eck:
 ```
 
-::::{tab-set}
-::: {tab-item} Self-managed
+You can generate the SAML metadata by running the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
+
+::::{applies-switch}
+:::{applies-item} self:
 ```sh
 bin/elasticsearch-saml-metadata --realm saml1
 ```
 :::
-::: {tab-item} ECK
+:::{applies-item} eck:
 To generate the Service Provider metadata using the `elasticsearch-saml-metadata` command in {{eck}}, you need to run the command using `kubectl`, and then copy the generated metadata file to your local machine. For example:
 
 ```sh
@@ -701,34 +706,34 @@ Each SAML realm must have its own unique Entity ID (`sp.entity_id`), and its own
 
 These realms may use the same Identity Provider, but are not required to.
 
-The following is example of having 3 difference {{kib}} instances, 2 of which use the same internal IdP, and another which uses a different IdP.
+The following is example of having 3 different {{kib}} instances, 2 of which use the same internal IdP, and another which uses a different IdP.
 
 ```yaml
 xpack.security.authc.realms.saml.saml_finance:
   order: 2
   idp.metadata.path: saml/idp-metadata.xml
-  idp.entity_id: "https://sso.example.com/"
-  sp.entity_id:  "https://kibana.finance.example.com/"
-  sp.acs: "https://kibana.finance.example.com/api/security/saml/callback"
-  sp.logout: "https://kibana.finance.example.com/logout"
+  idp.entity_id: "<sso-example-url>"
+  sp.entity_id:  "<kibana-finance-example-url>"
+  sp.acs: "<kibana-finance-example-url>/api/security/saml/callback"
+  sp.logout: "<kibana-finance-example-url>/logout"
   attributes.principal: "urn:oid:0.9.2342.19200300.100.1.1"
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 xpack.security.authc.realms.saml.saml_sales:
   order: 3
   idp.metadata.path: saml/idp-metadata.xml
-  idp.entity_id: "https://sso.example.com/"
-  sp.entity_id:  "https://kibana.sales.example.com/"
-  sp.acs: "https://kibana.sales.example.com/api/security/saml/callback"
-  sp.logout: "https://kibana.sales.example.com/logout"
+  idp.entity_id: "<sso-example-url>"
+  sp.entity_id:  "<kibana-sales-example-url>"
+  sp.acs: "<kibana-sales-example-url>/api/security/saml/callback"
+  sp.logout: "<kibana-sales-example-url>/logout"
   attributes.principal: "urn:oid:0.9.2342.19200300.100.1.1"
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 xpack.security.authc.realms.saml.saml_eng:
   order: 4
   idp.metadata.path: saml/idp-external.xml
-  idp.entity_id: "https://engineering.sso.example.net/"
-  sp.entity_id:  "https://kibana.engineering.example.com/"
-  sp.acs: "https://kibana.engineering.example.com/api/security/saml/callback"
-  sp.logout: "https://kibana.engineering.example.com/logout"
+  idp.entity_id: "<engineering-sso-example-url>"
+  sp.entity_id:  "<kibana-engineering-example-url>"
+  sp.acs: "<kibana-engineering-example-url>/api/security/saml/callback"
+  sp.logout: "<kibana-engineering-example-url>/logout"
   attributes.principal: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
 ```
 

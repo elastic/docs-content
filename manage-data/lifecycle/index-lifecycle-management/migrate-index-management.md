@@ -1,15 +1,18 @@
 ---
+navigation_title: Migrate to {{ilm-init}} (ECH or ECE)
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-index-management.html
   - https://www.elastic.co/guide/en/cloud/current/ec-migrate-index-management.html
 applies_to:
-  stack: ga
+  deployment:
+    ece: ga
+    ess: ga
 products:
   - id: cloud-enterprise
   - id: cloud-hosted
 ---
 
-# Migrate to index lifecycle management
+# Migrate to {{ilm}} ({{ilm-init}}) on {{ech}} or {{ece}} deployments
 
 ::::{important}
 Index curation is deprecated. Any deployments using index curation are prompted to migrate to ILM.
@@ -17,16 +20,16 @@ Index curation is deprecated. Any deployments using index curation are prompted 
 
 The index lifecycle management (ILM) feature of the {{stack}} provides an integrated and streamlined way to manage time-based data, making it easier to follow best practices for managing your indices. Compared to index curation, migrating to ILM gives you more fine-grained control over the lifecycle of each index.
 
-For existing hot-warm deployments that are currently using index curation, there are a couple of options for migrating to index lifecycle management (ILM). You can:
+For existing {{ecloud}} hot-warm deployments that are currently using index curation, there are a couple of options for migrating to index lifecycle management (ILM). You can:
 
 * Use the migration process in the console to change an existing deployment to ILM.
 * Take a snapshot and restore your data to a new Elastic Stack deployment that has ILM enabled.
 
 To configure ILM Migration in the console:
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
+:::{applies-item} ess:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the **Hosted deployments** page, select your deployment.
 
@@ -37,7 +40,7 @@ To configure ILM Migration in the console:
 5. Set the ILM policy name for each data view (formerly *index pattern*).
 :::
 
-:::{tab-item} Elastic Cloud Enterprise
+:::{applies-item} ece:
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Deployments** page, select your deployment.
 

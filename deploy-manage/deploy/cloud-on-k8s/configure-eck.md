@@ -97,6 +97,7 @@ data:
     enable-leader-election: true
     elasticsearch-observation-interval: 10s
     ubi-only: false
+    password-length: 24
 ```
 
 Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section of the operator container — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
@@ -139,7 +140,7 @@ If you use [Operator Lifecycle Manager (OLM)](https://github.com/operator-framew
       name: elastic-cloud-eck
       source: elastic-operators
       sourceNamespace: openshift-marketplace
-      startingCSV: elastic-cloud-eck.v{{eck_version}}
+      startingCSV: elastic-cloud-eck.v{{version.eck}}
       config:
         volumes:
           - name: config

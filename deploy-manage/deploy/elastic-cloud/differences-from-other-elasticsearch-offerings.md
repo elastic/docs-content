@@ -15,7 +15,7 @@ products:
 This guide compares {{ech}} deployments with {{serverless-full}} projects, highlighting key features and capabilities across different project types. Use this information to understand what's available in each deployment option or to plan migrations between platforms.
 
 :::{note}
-The information below reflects our strategic goals, plans and objectives and includes estimated release dates, anticipated features and functions, and proposed descriptions for commercial features. All details are for information only and are subject to change in our discretion. Information may be updated, added, or removed from this document as features or products become available, canceled, or postponed.
+The following information reflects our strategic goals, plans and objectives and includes estimated release dates, anticipated features and functions, and proposed descriptions for commercial features. All details are for information only and are subject to change in our discretion. Information might be updated, added, or removed from this document as features or products become available, canceled, or postponed.
 :::
 
 ## Architectural differences
@@ -37,6 +37,7 @@ The information below reflects our strategic goals, plans and objectives and inc
 | **Cross-origin resource sharing (CORS)** | Supported | Not available. Browser-based applications must route requests through a backend proxy server. |
 
 In Serverless, Elastic automatically manages:
+
 * Cluster scaling and optimization
 * Node management and allocation
 * Shard distribution and replication
@@ -57,18 +58,18 @@ This table compares the core platform capabilities between {{ech}} deployments a
 |----------|----------------------|--------------------|--------|
 | **Audit logging** | ✅ | **Planned** | Anticipated in a future release |
 | **Authentication realms** | ✅ | ✅ | Managed at organization level in Serverless; deployment level in Hosted |
-| **BYO-Key for Encryption at Rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
+| **BYO-Key for encryption at rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
-| **Custom roles** | ✅ | ✅ | Not available in Serverless Observability projects. |
+| **Custom roles** | ✅ | ✅ |  |
 | **Deployment health monitoring** | AutoOps or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | Public IP traffic filtering, private connectivity (VPCs, PrivateLink) | **Planned** | - Traffic filtering anticipated in a future release <br>- Private connectivity options anticipated in a future release |
+| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering | Private connectivity options anticipated in a future release |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
@@ -82,47 +83,56 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 
 | **Feature** | {{ech}} | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ | ✅ | |
 | **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | [**Clone index API**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
+| [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The baseline write latency in {{serverless-short}} is 200ms [^1^](#footnote-1) |
 | [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
-| [**Cross-cluster search**](/solutions/search/cross-cluster-search.md) | ✅ | **Planned** | Anticipated in a future release |
+| [**Cross-cluster search**](/explore-analyze/cross-cluster-search.md) | ✅ | **Planned** | Anticipated in a future release |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
 | **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
 | **Enterprise Search (App Search & Workplace Search)** | ❌ (discontinued in 9.0) | ❌ | Not available in Serverless |
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
-| [**Reindexing from remote**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) | ✅ | **Planned** | Anticipated in a future release |
+| [**Reindexing from remote**](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) | ✅ | **Tech Preview** | |
 | **Repository management** | ✅ | Managed | Automatically managed by Elastic |
-| [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](/explore-analyze/query-filter/languages/esql.md) |
-| [**Search applications**](/solutions/search/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
+| [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](elasticsearch://reference/query-languages/esql.md) |
+| [**`join` fields**](elasticsearch://reference/elasticsearch/mapping-reference/parent-join.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is the ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md) command |
+| [**Search applications**](/solutions/elasticsearch-solution-project/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
 | **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
+| [**Synonyms**](/solutions/search/full-text/search-with-synonyms.md) | - Index time synonyms <br>- File-based synonyms <br>- Synonyms API | Synonyms API only (does not support index-time or file-based synonyms) | |
 | [**Watcher**](/explore-analyze/alerts-cases/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
 | **Web crawler** | ❌ (Managed Elastic Crawler discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler) |
 
+^1^ $$$footnote-1$$$ In {{serverless-short}}, Elastic ensures data durability by storing indexed data in an [object store](https://www.elastic.co/blog/elastic-serverless-architecture) rather than local replicas. Writes are batched over a 200ms window to ensure durability while optimizing performance and cost, which means that single-document indexing can appear slower than in {{ech}}. However, this design makes {{serverless-short}} more scalable and resilient to high indexing loads without relying on in-cluster replication for fault tolerance. Because of a higher baseline write latency, {{serverless-short}} indexing can be scaled by increasing concurrent indexing clients.
+
 ### Observability
 
-This table compares Observability capabilities between {{ech}} deployments and Serverless projects:
+This table compares Observability capabilities between {{ech}} deployments and Observability Complete Serverless projects. For more information on Observability Logs Essentials Serverless projects, refer to [Observability feature tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
 
-| **Feature** | {{ech}} | Serverless Observability projects | Serverless notes |
+| **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
-| **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
-| [**APM Agent Central Configuration**](/solutions/observability/apm/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ | ✅ | |
+| **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](opentelemetry://reference/motlp.md) for OTLP data ingestion |
+| [**APM Agent Central Configuration**](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
-| [**Android agent/SDK instrumentation**](opentelemetry://reference/edot-sdks/android/index.md) | ✅ | ❌ | Not available in Serverless |
+| [**Android agent/SDK instrumentation**](apm-agent-android://reference/edot-android/index.md) | ✅ | ✅ | |
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
-| **Custom roles for Kibana Spaces** | ✅ | **Planned** | Anticipated in a future release |
+| [**Custom roles for Kibana Spaces**](/deploy-manage/manage-spaces.md#spaces-control-user-access) | ✅ | ✅ | |
 | [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
+| [**EDOT Central Configuration**](opentelemetry://reference/central-configuration.md) | ✅ | ❌ | |
+| [**EDOT Cloud Forwarder**](opentelemetry://reference/edot-cloud-forwarder/index.md) | ✅ | ✅ | |
+| [**EDOT Tail-based sampling**](elastic-agent://reference/edot-collector/config/tail-based-sampling.md) | ✅ | ✅ | |
 | **[Elastic Serverless Forwarder](elastic-serverless-forwarder://reference/index.md)** | ✅ | ❌ | |
 | **[Elastic Synthetics Private Locations](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add)** | ✅ | ✅ | |
 | **[Fleet Agent policies](/reference/fleet/agent-policy.md)** | ✅ | ✅ | |
 | **[Fleet server](/reference/fleet/fleet-server.md)** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
 | [**Index lifecycle management**](/manage-data/lifecycle/index-lifecycle-management.md) | ✅ | ❌ | Use [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) instead |
-| **[iOS agent/SDK instrumentation](opentelemetry://reference/edot-sdks/ios/index.md)** | ✅ | ❌ | Not available in Serverless |
+| **[iOS agent/SDK instrumentation](apm-agent-ios://reference/edot-ios/index.md)** | ✅ | ✅ | |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
+| **[Managed OTLP Endpoint](opentelemetry:///reference/motlp.md)** | ✅ | ✅ | |
 | **[Metrics monitoring](/solutions/observability/apm/metrics.md)** | ✅ | ✅ | |
 | **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
 | [**Real User Monitoring (RUM)**](/solutions/observability/applications/user-experience.md) | ✅ | **Planned** | Anticipated in a future release |
@@ -137,13 +147,14 @@ This table compares Security capabilities between {{ech}} deployments and Server
 |---------|---------------------|------------------------------|------------------|
 | **[Advanced Entity Analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
-| **API keys** | ✅ | ✅ | |
+| **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | |
 | **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |
 | [**Defend for Containers integration**](https://www.elastic.co/guide/en/security/8.18/d4c-overview.html) | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **[Endpoint security](/solutions/security/configure-elastic-defend.md)** | ✅ | ✅ | |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
+| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | Only API key-based authentication is supported at the project level. User authentication, including SAML SSO, is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
 | **Role-based access control** | ✅ | Limited | Core RBAC functionality supported |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
@@ -157,7 +168,7 @@ To ensure optimal performance in Serverless Elasticsearch projects, follow these
 | **General search (non data-stream)** | 300GB | General purpose |
 | **Other uses (non data-stream)** | 600GB | General purpose |
 
-For large datasets that exceed the recommended maximum size, consider splitting your data across smaller indices and using an alias to search them collectively.
+If you expect that you will have large datasets that exceed the recommended maximum size, consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md), or configuring [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to prevent data streams from growing larger than the maximum size. You should design your indexing and data lifecycle strategy with the size and growth of your data in mind.
 
 These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for more information.
 
@@ -214,6 +225,8 @@ Available settings
     * Mapping parameters
     * Search/query settings
     * Indexing settings such as `refresh_interval`
+
+  Some settings might have different default values or value constraints in {{serverless-short}}. This information is documented in the [settings reference](elasticsearch://reference/elasticsearch/index-settings/index.md).
 
 Managed settings
 :   **Infrastructure-related settings**: Settings that affect cluster resources or data distribution are not available to end users. These include:

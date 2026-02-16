@@ -11,12 +11,6 @@ products:
 
 # Query DSL
 
-$$$filter-context$$$
-
-$$$query-dsl-allow-expensive-queries$$$
-
-$$$relevance-scores$$$
-
 ## What's Query DSL? [search-analyze-query-dsl]
 
 **Query DSL** is a full-featured JSON-style query language that enables complex searching, filtering, and aggregations. It is the original and most powerful query language for {{es}} today.
@@ -26,7 +20,7 @@ The [`_search` endpoint](../../../solutions/search/querying-for-search.md) accep
 
 ### Search and filter with Query DSL [search-analyze-query-dsl-search-filter]
 
-Query DSL support a wide range of search techniques, including the following:
+Query DSL supports a wide range of search techniques, including the following:
 
 * [**Full-text search**](/solutions/search/full-text.md): Search text that has been analyzed and indexed to support phrase or proximity queries, fuzzy matches, and more.
 * [**Keyword search**](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md): Search for exact matches using `keyword` fields.
@@ -65,12 +59,12 @@ $$$query-dsl-allow-expensive-queries$$$
 
 **Allow expensive queries**: Certain types of queries will generally execute slowly due to the way they are implemented, which can affect the stability of the cluster. Those queries can be categorized as follows:
 
-  - Queries that need to do linear scans to identify matches:
+ - Queries that need to do linear scans to identify matches:
 
     - [`script` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-query.md)
     - queries on [numeric](elasticsearch://reference/elasticsearch/mapping-reference/number.md), [date](elasticsearch://reference/elasticsearch/mapping-reference/date.md), [boolean](elasticsearch://reference/elasticsearch/mapping-reference/boolean.md), [ip](elasticsearch://reference/elasticsearch/mapping-reference/ip.md), [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields that are not indexed but have [doc values](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) enabled
 
-  - Queries that have a high up-front cost:
+ - Queries that have a high up-front cost:
 
     - [`fuzzy` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-fuzzy-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
     - [`regexp` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-regexp-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
@@ -78,8 +72,8 @@ $$$query-dsl-allow-expensive-queries$$$
     - [`wildcard` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-wildcard-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
     - [`range` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) on [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields
 
-  - [Joining queries](elasticsearch://reference/query-languages/query-dsl/joining-queries.md)
-  - Queries that may have a high per-document cost:
+ - [Joining queries](elasticsearch://reference/query-languages/query-dsl/joining-queries.md)
+ - Queries that may have a high per-document cost:
 
     - [`script_score` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md)
     - [`percolate` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-percolate-query.md)

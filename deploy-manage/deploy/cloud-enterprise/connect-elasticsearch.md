@@ -32,7 +32,7 @@ Once you have the endpoint, use it in your client application. To test connectiv
 * Modify the following `curl` example to fit your environment by replacing the URL and proxy CA certificate with your own values.
 
   ```sh
-  curl --cacert /path/to/elastic-ece-ca-cert.pem -u elastic https://f76e96da2a7f4d3f8f3ee25d686b879c.HOST-IP-ADDRESS.ip.es.io:9243
+  curl --cacert /path/to/elastic-ece-ca-cert.pem -u elastic https://<CLUSTER_ID.LOCAL_HOST_IP>.ip.es.io:9243
   {
     "name" : "instance-0000000000",
     "cluster_name" : "f76e96da2a7f4d3f8f3ee25d686b879c",

@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-uptime-synthetics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-synthetics.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -35,7 +35,7 @@ You can monitor the status of network endpoints using the following lightweight 
 | --- | --- |
 | **HTTP monitor** | Monitor your website. The HTTP monitor checks to make sure specific endpoints return the correctstatus code and display the correct text. |
 | **ICMP monitor** | Check the availability of your hosts. The ICMP monitor uses ICMP (v4 and v6) EchoRequests to check the network reachability of the hosts you are pinging. This will tell you whether thehost is available and connected to the network, but doesn’t tell you if a service on the host is running ornot. |
-| **TCP monitor** | Monitor the services running on your hosts. The TCP monitor checks individual portsto make sure the service is accessible and running. |
+| **TCP monitor** | Monitor the services running on your hosts. The TCP monitor checks individual ports to make sure the service is accessible and running. |
 
 To set up your first monitor, refer to [Get started](/solutions/observability/synthetics/get-started.md).
 

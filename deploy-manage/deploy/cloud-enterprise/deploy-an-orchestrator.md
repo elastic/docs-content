@@ -2,8 +2,11 @@
 applies_to:
   deployment:
     ece: all
+navigation_title: Deploy an orchestrator
+products:
+  - id: cloud-enterprise
 ---
-# Deploy an orchestrator
+# Deploy an {{ece}} orchestrator
 
 {{ece}} (ECE) provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines, whether in a private or public cloud, virtual machines, or your own premises.
 

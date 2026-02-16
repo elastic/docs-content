@@ -9,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Troubleshoot deployment health warnings [ece-deployment-no-op]
+# Troubleshoot deployment health warnings on {{ece}} [ece-deployment-no-op]
 
 The {{ece}} **Deployments** page shows the current status of your active deployments. From time to time you may get one or more health warnings, such as the following:
 
@@ -35,6 +35,9 @@ To run a no-op plan:
 
 If multiple health warnings appear for one of your deployments, check [](/troubleshoot/deployments/cloud-enterprise/common-issues.md) or [contact us](/troubleshoot/index.md#contact-us).
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 ## Additional resources
-* [Elastic Cloud Hosted deployment health warnings](/troubleshoot/monitoring/deployment-health-warnings.md)
+* [](/troubleshoot/monitoring/deployment-health-warnings.md)
 * [Troubleshooting overview](/troubleshoot/index.md)

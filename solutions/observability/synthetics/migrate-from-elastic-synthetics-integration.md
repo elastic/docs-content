@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-migrate-from-integration.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
 ---
@@ -84,7 +84,14 @@ Find more details in [Use the {{synthetics-app}}](/solutions/observability/synth
 
 ## Where monitors run [synthetics-migrate-integration-location]
 
-If you want to continue hosting on your infrastructure, you will need to create a {{private-location}} before creating monitors. If you have already have an {{agent}} running using `elastic-agent-complete`, you can [add it as a new {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}. To create a new {{private-location}} from scratch, follow all instructions in [Monitor resources on private networks](/solutions/observability/synthetics/monitor-resources-on-private-networks.md).
+If you want to continue hosting on your infrastructure, create a {{private-location}} before creating monitors. If you already have an {{agent}} running using `elastic-agent` or any of its variants, you can [add it as a new {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}.
+
+::::{note}
+Only the `elastic-agent-complete` image (and its `wolfi` variant) allows you to run Synthetic Browser tests.
+
+::::
+
+To create a new {{private-location}} from scratch, follow the instructions in [Monitor resources on private networks](/solutions/observability/synthetics/monitor-resources-on-private-networks.md).
 
 Alternatively, you can start hosting on Elastic’s global managed infrastructure. With Elastic’s global managed testing infrastructure, you can create and run monitors in multiple locations without having to manage your own infrastructure. Elastic takes care of software updates and capacity planning for you.
 

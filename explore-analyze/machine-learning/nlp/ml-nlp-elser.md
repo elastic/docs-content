@@ -18,7 +18,7 @@ ELSER is an out-of-domain model which means it does not require fine-tuning on y
 This model is recommended for English language documents and queries. If you want to perform semantic search on non-English language documents, use the [E5](ml-nlp-e5.md) model.
 
 ::::{important}
-While ELSER V2 is generally available, ELSER V1 is in [preview] and will remain in technical preview.
+While ELSER V2 is generally available, ELSER V1 is and will remain in technical preview.
 ::::
 
 ## Tokens - not synonyms [elser-tokens]
@@ -32,7 +32,10 @@ This approach provides a more understandable search experience compared to vecto
 To use ELSER, you must have the [appropriate subscription](https://www.elastic.co/subscriptions) level for semantic search or the trial period activated.
 
 ::::{note}
-The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
+
+- You can use the ELSER model through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). If you use ELSER on EIS, you don't need to manage the infrastructure and resources required by the ELSER model as it doesn't use the resources of your nodes.
+
+- The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
 Enabling trained model autoscaling for your ELSER deployment is recommended. Refer to [*Trained model autoscaling*](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) to learn more.
@@ -107,7 +110,7 @@ You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Mo
 3. After the download is finished, start the deployment by clicking the **Start deployment** button.
 4. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.
 
-    :::{image} /explore-analyze/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+    :::{image} /explore-analyze/images/ml-nlp-deployment-id-elser.png
     :alt: Deploying ELSER
     :screenshot:
     :::

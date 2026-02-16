@@ -22,7 +22,7 @@ For a contextual logs experience, set the **Solution view** for your space to **
 
 :::{image} ../../images/observability-log-explorer.png
 :alt: Screen capture of Discover
-:class: screenshot
+:screenshot:
 :::
 
 ## Required {{kib}} privileges [logs-explorer-privileges]
@@ -32,7 +32,7 @@ Viewing data in Discover logs data views requires `read` privileges for **Discov
 
 ## Find your logs [find-your-logs]
 
-By default, the **All logs** data view shows all of your logs, according to the index patterns set in the **logs sources** advanced setting. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+By default, the **All logs** data view shows all of your logs, according to the index patterns set in the **logs sources** advanced setting. To open **Advanced settings**, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 To focus on logs from a specific source or sources, create a data view using the index patterns of those source. For more information on creating data views, refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md#settings-create-pattern)
 
@@ -73,6 +73,6 @@ The following actions help you filter and focus on specific fields in the log de
 
 ## View log data set details [view-log-data-set-details]
 
-Go to **Data Sets** to view more details about your data sets and monitor their overall quality. To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Go to **Data Sets** to view more details about your data sets and monitor their overall quality. To open the **Data Set Quality** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-Refer to [*Data set quality*](/solutions/observability/data-set-quality-monitoring.md) for more information.
+Refer to [Data set quality](/solutions/observability/data-set-quality-monitoring.md) for more information.

@@ -15,13 +15,13 @@ products:
 
 The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. You can then use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
 
-To open the **Data Set Quality** page, find it under **Stack Management** in the main menu, or search for "data set quality" using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To open the **Data Set Quality** management page, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
 
 ## Required roles and privileges
 
-Users with the `viewer` [role](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) can only view the **Data Set Quality** summary. To view the **Active Data Sets** and **Estimated Data** summaries, you need the `monitor` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for the `logs-*-*` index.
+Users with the `viewer` [role](elasticsearch://reference/elasticsearch/roles.md) can only view the **Data Set Quality** summary. To view the **Active Data Sets** and **Estimated Data** summaries, you need the `monitor` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the `logs-*-*` index.
 
 ## Monitor data sets
 
@@ -48,7 +48,7 @@ To help diagnose issues with ingestion or mapping, documents that are rejected d
 
 #### Required privileges
 
-Accessing failure store requires the `read_failure_store` or `all` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices).
+Accessing failure store requires the `read_failure_store` or `all` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
 #### Find failed documents
 

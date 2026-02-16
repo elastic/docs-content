@@ -29,22 +29,18 @@ Use {{agent}} with one of hundreds of [Elastic integrations](https://docs.elasti
 
 Ready to try [{{agent}}](/reference/fleet/index.md)? Check out the [installation instructions](/reference/fleet/install-elastic-agents.md).
 
-
 ## {{beats}} [ingest-beats]
 
-[Beats](beats://reference/index.md) are the original Elastic lightweight data shippers, and their capabilities live on in Elastic Agent. When you use Elastic Agent, you’re getting core Beats functionality, but with more added features.
+:::{include} /manage-data/_snippets/beats.md
+:::
 
-Beats require that you install a separate Beat for each type of data you want to collect. A single Elastic Agent installed on a host can collect and transport multiple types of data.
-
-**Best practice:** Use [{{agent}}](/reference/fleet/index.md) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/manage-data/ingest/tools.md#additional-capabilities-beats-and-agent) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-beats-to-elastic-agent.md).
-
+**Best practice:** Use [{{agent}}](/reference/fleet/index.md) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/reference/fleet/beats-agent-comparison.md) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-beats-to-elastic-agent.md).
 
 ## OpenTelemetry (OTel) collectors [ingest-otel]
 
-[OpenTelemetry](https://opentelemetry.io/docs) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. Elastic is a member of the Cloud Native Computing Foundation (CNCF) and active contributor to the OpenTelemetry project.
-
-In addition to supporting upstream OTel development, Elastic provides [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md), specifically designed to work with Elastic Observability. We’re also expanding [{{agent}}](/reference/fleet/index.md) to use OTel collection.
-
+:::{include} /manage-data/_snippets/otel.md
+:::
+We’re also expanding [{{agent}}](/reference/fleet/index.md) to use OTel collection.
 
 ## Logstash [ingest-logstash]
 

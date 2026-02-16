@@ -15,10 +15,10 @@ products:
 
 The response console allows you to perform response actions on an endpoint using a terminal-like interface. You can enter action commands and get near-instant feedback on them. Actions are also recorded in the endpoint’s [response actions history](/solutions/security/endpoint-response-actions.md#actions-log) for reference.
 
-Response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
+Unless otherwise specified, response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
 
 ::::{admonition} Requirements
-* Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+* Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * Endpoints must have {{agent}} version 8.4 or higher installed with the {{elastic-defend}} integration to receive response actions.
 * Some response actions require:
   * In {{stack}}, specific [privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md), indicated below.
@@ -41,7 +41,7 @@ Launch the response console from any of the following places in {{elastic-sec}}:
 * Endpoint details flyout → **Take action** → **Respond**
 * Alert details flyout → **Take action** → **Respond**
 * Host details page → **Respond**
-* {applies_to}`stack: ga 9.1` Event details flyout → **Take action** → **Respond** 
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` Event details flyout → **Take action** → **Respond** 
 
 To perform an action on the endpoint, enter a [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the input area at the bottom of the console, then press **Return**. Output from the action is displayed in the console.
 
@@ -165,7 +165,8 @@ Required privilege (in {{stack}}) or custom role privilege (in {{serverless-shor
 Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
 
 ::::{note}
-The maximum file size that can be retrieved using `get-file` is `104857600` bytes, or 100 MB.
+:applies_to: {"stack": "removed 9.3", "serverless": "removed"}
+The maximum file size that `get-file` can retrieve is `104857600` bytes, or 100 MB.
 ::::
 
 ::::{tip}
@@ -221,7 +222,9 @@ You can follow this with the `execute` response action to upload and run scripts
 
 
 ::::{note}
-The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes (the maximum is `104857600` bytes, or 100 MB).
+The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes. 
+
+({applies_to}`stack: removed 9.4+` the maximum value of `xpack.securitySolution.maxUploadResponseActionFileBytes` is `104857600` bytes, or 100 MB).
 ::::
 
 
@@ -229,7 +232,7 @@ The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-m
 
 Scan a specific file or directory on the host for malware. This uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) (such as **Detect** or **Prevent** options, or enabling the blocklist) as configured in the host’s associated {{elastic-defend}} integration policy. Use these parameters:
 
-* `--path` : (Required) The absolute path to a file or directory to be scanned.
+* `--path` : (Required) The absolute path to a file or directory to be recursively scanned.
 
 Predefined role (in {{serverless-short}}): **Tier 3 Analyst**, **SOC Manager**, or **Endpoint Operations Analyst**
 
@@ -244,6 +247,10 @@ Scanning can take longer for directories containing a lot of files.
 
 ### `runscript` [runscript]
 
+::::{note}
+This response action is supported only for hosts enrolled in [third-party endpoint protection systems](/solutions/security/endpoint-response-actions/third-party-response-actions.md).
+::::
+
 Run a script on a host. 
 
 #### CrowdStrike
@@ -253,7 +260,7 @@ For CrowdStrike, you must include one of the following parameters to identify th
 * `--Raw`: The full script content provided directly as a string.
 * `--CloudFile`: The name of the script stored in a cloud storage location.
 
-   {applies_to}`serverless: ga` When using this parameter, select from a list of saved custom scripts.
+   {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` When using this parameter, select from a list of saved custom scripts.
 
 * `--HostPath`: The absolute or relative file path of the script located on the host machine.
 
@@ -277,7 +284,8 @@ Examples:
 
 #### Microsoft Defender for Endpoint
 ```yaml {applies_to}
-serverless:
+stack: ga 9.1
+serverless: ga
 ```
 
 For Microsoft Defender for Endpoint, you must include the following parameter to identify the script you want to run:
@@ -291,11 +299,81 @@ You can also use this optional parameter:
   The response console does not support double-dash (`--`) syntax within the `--Args` parameter.
   :::
 
-Predefined role: **SOC manager** or **Endpoint operations analyst**
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
 
-Required custom role privilege: **Execute Operations**
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
 
 Example: `runscript --ScriptName="Script2.sh" --Args="-Verbose true"`
+
+#### SentinelOne
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+For SentinelOne, you must include the following parameter to identify the script you want to run:
+
+* `--script`: The name of the script to run. Select from a list of saved custom scripts.
+
+You can also use this optional parameter:
+
+* `--inputParams`: Additional command-line arguments passed to the script to customize its execution.
+
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Example: `runscript --script="copy.sh" --inputParams="~/logs/log.txt /tmp/log.backup.txt"`
+
+### `cancel` [cancel]
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+::::{note}
+This response action is supported only for [Microsoft Defender for Endpoint–enrolled hosts](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions).
+::::
+
+Cancel an ongoing action on the host. This allows you to force-cancel actions that are stuck in a pending state, unblocking further use of the response console.
+
+You must include the following parameter to identify the action to cancel:
+
+* `--action`: The response action to cancel. Select from a list of pending actions.
+
+Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
+
+Example: `cancel --action="copy.sh" --comment="Canceled because it is stuck"`
+
+### `memory-dump` [memory-dump]
+```yaml {applies_to}
+stack: ga 9.3+
+serverless: ga
+```
+
+Trigger a virtual process or kernel system memory dump on a Windows endpoint. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
+
+::::{note}
+This response action is supported only for Windows endpoints.
+::::
+
+The memory dump is stored on the endpoint's local disk. After running `memory-dump`, you must use the [`get-file`](#get-file) response action to download the dump from the endpoint.
+
+Use one of the following parameters to specify the type of memory dump:
+
+* `--kernel`: Generate a kernel-level memory dump. No other arguments are required when using this parameter.
+* `--process`: Generate a process-level memory dump. When using this parameter, you must also include one of the following to identify the process:
+    * `--pid`: The process ID (PID) of the process to dump.
+    * `--entityId`: The entity ID of the process to dump.
+
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Examples:
+
+`memory-dump --process --entityId="jshks0fhksh"`
+
+`memory-dump --kernel --comment "Dumping kernel memory for investigation"`
 
 
 ## Supporting commands and parameters [supporting-commands-parameters]
@@ -329,7 +407,7 @@ You can also get a list of commands in the [Help panel](/solutions/security/endp
 
 ## Help panel [help-panel]
 
-Click ![Help icon](/solutions/images/security-help-icon.png "title =20x20") **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
+Click {icon}`question` **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
 
 ::::{note}
 This panel displays only the response actions that you have the user role or privileges to perform.

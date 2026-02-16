@@ -1,4 +1,5 @@
 ---
+navigation_title: Access {{kib}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-access-kibana.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-access-kibana.html
@@ -10,7 +11,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Access {{kib}} [ec-access-kibana]
+# Access {{kib}} on {{ech}} [ec-access-kibana]
 
 % What needs to be done: Lift-and-shift
 

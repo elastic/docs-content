@@ -1,15 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/archived-settings.html
+applies_to:
+  stack: ga
 products:
   - id: elasticsearch
+navigation_title: Archived settings
 ---
 
-# Archived settings [archived-settings]
+# {{es}} archived settings [archived-settings]
 
 If you upgrade a cluster with a deprecated persistent cluster setting to a version that no longer supports the setting, {{es}} automatically archives that setting. Similarly, if you upgrade a cluster that contains an index with an unsupported index setting, {{es}} archives the index setting.
 
-We recommend you remove any archived settings after upgrading. Archived settings are considered invalid and can interfere with your ability to configure other settings.
+You should remove any archived settings after upgrading. Archived settings are considered invalid and can interfere with your ability to configure other settings.
 
 Archived settings start with the `archived.` prefix.
 
@@ -39,7 +42,8 @@ PUT _cluster/settings
 ## Archived index settings [archived-index-settings]
 
 ::::{important}
-Before you upgrade, remove any unsupported index settings from index and component templates. {{es}} doesn’t archive unsupported index settings in templates during an upgrade. Attempts to use a template that contains an unsupported index setting will fail and return an error. This includes automated operations, such the {{ilm-init}} rollover action.
+:::{include} _snippets/archived-index-settings-pre.md
+:::
 ::::
 
 
