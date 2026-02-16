@@ -168,7 +168,7 @@ Waffle charts do not have configurable style settings. The chart automatically d
 The following examples show various configuration options for building impactful waffle charts.
 
 **Response status breakdown**
-:   Visualize the proportion of successful vs. failed HTTP requests at a glance:
+:   Visualize the proportion of successful and failed HTTP requests at a glance:
 
     * Example based on: {{kib}} Sample Data Logs
     * **Group by**: Filters
