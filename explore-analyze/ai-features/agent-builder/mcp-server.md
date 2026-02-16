@@ -115,7 +115,7 @@ Without the `feature_agentBuilder.read` application privilege, you'll receive a 
 
 Always set an expiration date on API keys for security. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production, rotating keys regularly.
 
-### Limiting {{agent-builder}} to specific indices
+### Limit Agent Builder to specific indices
 
 For production environments, restrict API keys to only the indices your tools need to access. This follows the principle of least privilege and prevents agents from querying sensitive data.
 
