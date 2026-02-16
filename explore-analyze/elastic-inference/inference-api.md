@@ -75,7 +75,7 @@ However, you may choose to manually create a **custom Elastic Inference Service 
 To create a custom EIS endpoint:
 
 1. In the **Service** dropdown, select **Elastic Inference Service**.
-2. In the **Settings** section, enter the specific **Model ID** (see table below).
+2. In the **Settings** section, enter the specific **Model ID** (refer to [Supported EIS Model IDs](#supported-eis-model-ids-and-task-types)).
 3. (Optional) Under **More options**, set the **Maximum Input Tokens**. This limits the number of tokens processed per request. If left blank, the model's default limit is used.
 4. Expand **Additional settings** and select the **Task type** that corresponds to your model.
 5. Select **Save**.
