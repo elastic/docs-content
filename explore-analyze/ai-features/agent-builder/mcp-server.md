@@ -105,13 +105,15 @@ POST /_security/api_key
 }
 ```
 
-:::{important}
-Always set an expiration date on API keys for security. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production, rotating keys regularly.
-
+:::{note}
 Without the `feature_agentBuilder.read` application privilege, you'll receive a `403 Forbidden` error when attempting to connect to the MCP endpoint.
 :::
 
 ## Best practices
+
+### Set API key expiration dates
+
+Always set an expiration date on API keys for security. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production, rotating keys regularly.
 
 ### Limiting {{agent-builder}} to specific indices
 
