@@ -33,6 +33,7 @@ toc:
               - file: deploy/elastic-cloud/create-serverless-project.md
               - file: deploy/elastic-cloud/regions.md
               - file: deploy/elastic-cloud/project-settings.md
+              - file: deploy/elastic-cloud/serverless-limits.md
               - file: deploy/elastic-cloud/manage-serverless-projects-using-api.md
           - file: deploy/elastic-cloud/cloud-hosted.md
             children:
