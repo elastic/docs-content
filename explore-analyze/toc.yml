@@ -276,6 +276,7 @@ toc:
           - file: visualize/charts/bar-charts.md
           - file: visualize/charts/line-charts.md
           - file: visualize/charts/metric-charts.md
+          - file: visualize/charts/mosaic-charts.md
           - file: visualize/charts/pie-charts.md
           - file: visualize/charts/tables.md
       - file: visualize/esorql.md
