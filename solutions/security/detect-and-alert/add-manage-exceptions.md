@@ -33,7 +33,44 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
 ::::
 
+## Requirements [exceptions-requirements]
 
+To use exceptions ensure your role has the appropriate access. To learn how to access other detection features, refer to [](/solutions/security/detect-and-alert/detections-requirements.md).
+
+### Exceptions requirements
+
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.4", "serverless": "ga" }
+
+- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature and deselect **Manage Exceptions** for the `Exceptions` sub-feature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs at least `Read` {{kib}} privileges for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature and ensure **Manage Exceptions** remains selected for the `Exceptions` sub-feature.
+
+:::
+
+:::{applies-item} { "stack": "ga =9.3" }
+
+- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` {{kib}} privileges for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature.
+
+:::
+
+:::{applies-item} { "stack": "ga 9.0-9.2" }
+
+**Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Security` feature. 
+
+:::
+
+::::
+
+### {{elastic-endpoint}} exceptions requirements 
+
+```yaml {applies_to}
+stack: ga 
+serverless: ga
+```
+
+For required privileges to view and manage {{elastic-endpoint}} exceptions, refer to [](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
 
 ## Add exceptions to a rule [detection-rule-exceptions]
 

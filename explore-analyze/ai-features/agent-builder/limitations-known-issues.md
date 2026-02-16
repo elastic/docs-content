@@ -1,5 +1,6 @@
 ---
 navigation_title: "Limitations"
+description: "Find limitations and known issues for Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -25,9 +26,9 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 Refer to [Get started](get-started.md#enable-agent-builder) if you need instructions about enabling {{agent-builder}} for your deployment type.
 :::
 
-### Cross-cluster search not supported
+### Cross-cluster search not supported in index search tools
 
-Agent Builder does not yet support [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md).
+Index search tool types do not yet support [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md).
 
 ### A2A streaming not supported
 
@@ -43,7 +44,7 @@ For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations 
 
 ## Known issues
 
-### Incompatible LLMs
+### Troubleshoot incompatible LLMs
 
 The following errors suggest your selected model may not be compatible with {{agent-builder}}:
 

@@ -3,6 +3,15 @@ applies_to:
   stack: ga
   serverless: ga
 navigation_title: Getting started with alerts
+products:
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Getting started with alerting [alerting-getting-started]
