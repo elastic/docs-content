@@ -157,6 +157,10 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 ::::
 
+### Result
+
+The agent responds with information about the books in your sample data. Notice the `token_usage` field in the response. To learn how to track token consumption, refer to [Monitor token usage](monitor-usage.md). You'll compare this with your custom agent later to see how specialized tools can reduce token consumption.
+
 ::::{dropdown} Example response
 ```json
 {
@@ -209,10 +213,6 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 ```
 ::::
 
-### Result
-
-The agent responds with information about the books in your sample data. Notice the `token_usage` field in the response. To learn how to track token consumption, refer to [Monitor token usage](monitor-usage.md). You'll compare this with your custom agent later to see how specialized tools can reduce token consumption.
-
 ## Step 2: Explore available tools
 
 [Tools](tools.md) are reusable functions that agents use to perform specific tasks. {{agent-builder}} includes built-in tools for common operations like searching indices and generating queries. You can also create custom tools.
@@ -237,6 +237,10 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
 :::
 
 ::::
+
+### Result
+
+The response includes all available tools, including built-in platform tools like `platform.core.search`, `platform.core.generate_esql`, and others.
 
 ::::{dropdown} Example response (truncated)
 ```json
@@ -275,10 +279,6 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
 ```
 ::::
 
-### Result
-
-The response includes all available tools, including built-in platform tools like `platform.core.search`, `platform.core.generate_esql`, and others.
-
 ## Step 3: Run a built-in tool
 
 Use the built-in {{esql}} generator tool to create a query for your sample data. This tool generates optimized {{esql}} queries based on natural language descriptions.
@@ -313,6 +313,10 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 ::::
 
+### Result
+
+The tool returns an {{esql}} query similar to: `FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1`. You'll use this query in the next step to create a custom tool.
+
 ::::{dropdown} Example response
 ```json
 {
@@ -333,10 +337,6 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 }
 ```
 ::::
-
-### Result
-
-The tool returns an {{esql}} query similar to: `FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1`. You'll use this query in the next step to create a custom tool.
 
 ## Step 4: Create a custom {{esql}} tool
 
@@ -374,6 +374,10 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools" \
 
 ::::
 
+### Result
+
+The response confirms the tool was created with its full configuration.
+
 ::::{dropdown} Example response
 ```json
 {
@@ -395,10 +399,6 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools" \
 }
 ```
 ::::
-
-### Result
-
-The response confirms the tool was created with its full configuration.
 
 ## Step 5: Run your custom tool
 
@@ -431,6 +431,10 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 ::::
 
+### Result
+
+The response includes tabular data showing "Revelation Space" by Alastair Reynolds with 585 pages.
+
 ::::{dropdown} Example response
 ```json
 {
@@ -461,10 +465,6 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 }
 ```
 ::::
-
-### Result
-
-The response includes tabular data showing "Revelation Space" by Alastair Reynolds with 585 pages.
 
 ## Step 6: Get a tool by ID
 
@@ -568,6 +568,10 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 ::::
 
+### Result
+
+The response shows "Brave New World" (268 pages, 1932) and "Fahrenheit 451" (227 pages, 1953), the two longest books published before 1960.
+
 ::::{dropdown} Example response
 ```json
 {
@@ -599,10 +603,6 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 }
 ```
 ::::
-
-### Result
-
-The response shows "Brave New World" (268 pages, 1932) and "Fahrenheit 451" (227 pages, 1953), the two longest books published before 1960.
 
 ## Step 8: Create a custom agent
 
@@ -674,6 +674,10 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
 
 ::::
 
+### Result
+
+The response confirms the agent was created with its full configuration.
+
 ::::{dropdown} Example response
 ```json
 {
@@ -702,10 +706,6 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
 }
 ```
 ::::
-
-### Result
-
-The response confirms the agent was created with its full configuration.
 
 ## Step 9: Get an agent by ID
 
@@ -803,6 +803,10 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 ::::
 
+### Result
+
+The agent responds with information about your book collection. Note the `conversation_id` in the response - you'll use this to continue the conversation.
+
 ::::{dropdown} Example response (truncated)
 ```json
 {
@@ -854,10 +858,6 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 }
 ```
 ::::
-
-### Result
-
-The agent responds with information about your book collection. Note the `conversation_id` in the response - you'll use this to continue the conversation.
 
 Continue the conversation using the custom tool:
 
