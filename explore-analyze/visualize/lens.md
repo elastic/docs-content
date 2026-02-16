@@ -29,7 +29,7 @@ With Lens, you can create the following visualization types:
 - [Pie chart](/explore-analyze/visualize/charts/pie-charts.md)
 - Gauge chart
 - Heat map chart
-- Waffle chart
+- [Waffle chart](/explore-analyze/visualize/charts/waffle-charts.md)
 - Region map chart
 - Treemap chart
 - Tag cloud chart
