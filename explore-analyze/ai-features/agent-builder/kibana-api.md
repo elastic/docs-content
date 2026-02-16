@@ -723,3 +723,7 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
 ## API reference
 
 For the full API documentation, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
+
+## Tutorial
+
+Try the hands-on [API tutorial](agent-builder-api-tutorial.md) to get a feel for the flow of working with Agent Builder programmatically. 
