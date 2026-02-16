@@ -80,28 +80,24 @@ Tools execute with the scope assigned to the API key. Make sure your API key has
 
 To access the MCP server endpoint, your API key must include {{kib}} application privileges for {{agent-builder}}.
 
-### Development and testing
-
-For development, grant access to all indices:
-
 ```json
 POST /_security/api_key
 {
   "name": "my-mcp-api-key",
-  "expiration": "1d",
+  "expiration": "30d",
   "role_descriptors": {
     "mcp-access": {
       "indices": [
         {
-          "names": ["*"], <1>
-          "privileges": ["all"] <2>
+          "names": ["*"],
+          "privileges": ["read", "view_index_metadata"]
         }
       ],
       "applications": [
         {
-          "application": "kibana-.kibana", <3>
+          "application": "kibana-.kibana",
           "privileges": ["feature_agentBuilder.read"],
-          "resources": ["*"] <4>
+          "resources": ["space:default"]
         }
       ]
     }
@@ -109,14 +105,17 @@ POST /_security/api_key
 }
 ```
 
-1. `["*"]` allows tools to query any index.
-2. `["all"]` grants full index permissions for development convenience.
-3. Must be exactly `kibana-.kibana` - this is how {{kib}} registers its application privileges with Elasticsearch.
-4. `["*"]` grants access to all {{kib}} Spaces. Use `["space:default"]` to restrict to a specific Space.
+:::{important}
+Always set an expiration date on API keys for security. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production, rotating keys regularly.
 
-### Production
+Without the `feature_agentBuilder.read` application privilege, you'll receive a `403 Forbidden` error when attempting to connect to the MCP endpoint.
+:::
 
-For production, restrict to specific index patterns:
+## Best practices
+
+### Limiting {{agent-builder}} to specific indices
+
+For production environments, restrict API keys to only the indices your tools need to access. This follows the principle of least privilege and prevents agents from querying sensitive data.
 
 ```json
 POST /_security/api_key
@@ -128,14 +127,14 @@ POST /_security/api_key
       "indices": [
         {
           "names": ["logs-*", "metrics-*"], <1>
-          "privileges": ["read", "view_index_metadata"]
+          "privileges": ["read", "view_index_metadata"] <2>
         }
       ],
       "applications": [
         {
-          "application": "kibana-.kibana",
+          "application": "kibana-.kibana", <3>
           "privileges": ["feature_agentBuilder.read"],
-          "resources": ["*"]
+          "resources": ["space:default"]
         }
       ]
     }
@@ -143,19 +142,6 @@ POST /_security/api_key
 }
 ```
 
-1. Only these index patterns are accessible. Queries to other indices will fail with security exceptions. Adjust patterns based on what data your tools should access.
-
-:::{important}
-**Always set an expiration date** on API keys. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production.
-
-**Required configuration:**
-
-- `application: "kibana-.kibana"`
-- `privileges: ["feature_agentBuilder.read"]`
-- `indices` with appropriate privileges
-
-The key differences between development and production:
-
-- **Index patterns**: `["*"]` (all indices) vs specific patterns like `["logs-*", "metrics-*"]`
-- **Index privileges**: `["all"]` (permissive) vs `["read", "view_index_metadata"]` (read-only)
-  :::
+1. Restrict index access to only the indices your tools need to query. Adjust the index patterns based on your security requirements.
+2. Read-only privileges prevent the agent from modifying data.
+3. Must be exactly `kibana-.kibana` - this is how {{kib}} registers its application privileges with {{es}}.
