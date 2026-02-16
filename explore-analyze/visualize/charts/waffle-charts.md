@@ -108,16 +108,20 @@ The **Group by** dimension defines how the waffle is divided into colored sectio
       - **Number of values**: How many top values to display.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
+      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
     - **Date histogram**: Group data into time-based buckets.
       - **Field**: Select the date field to use for the time-based grouping.
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
+      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
     - **Intervals**: Create numeric ranges for continuous data.
       - **Field**: Select the numeric field to create intervals from.
       - **Include empty rows**: Include intervals with no matching documents.
+      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
     - **Filters**: Define custom KQL filters to create specific sections.
+      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
 
 **Appearance**
 :   - **Name**: Customize the legend label.
