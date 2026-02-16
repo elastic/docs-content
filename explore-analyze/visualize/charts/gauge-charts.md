@@ -156,6 +156,9 @@ The **Minimum value** dimension defines the lower bound of the gauge range.
     The minimum value must be less than the maximum value. If the minimum is greater than or equal to the maximum, the gauge displays an error.
     :::
 
+**Appearance**
+:   - **Name**: Customize the label for the minimum value.
+
 ### Maximum value settings [maximum-value-settings]
 
 The **Maximum value** dimension defines the upper bound of the gauge range.
@@ -166,6 +169,9 @@ The **Maximum value** dimension defines the upper bound of the gauge range.
     :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
 
+**Appearance**
+:   - **Name**: Customize the label for the maximum value.
+
 ### Goal settings [goal-settings]
 
 The **Goal** dimension displays a target marker on the gauge, providing a visual reference point for the metric value.
@@ -175,6 +181,9 @@ The **Goal** dimension displays a target marker on the gauge, providing a visual
 
     :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
+
+**Appearance**
+:   - **Name**: Customize the label for the goal value.
 
 ### General layout [appearance-options]
 
