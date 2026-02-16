@@ -123,7 +123,9 @@ EOF
 
 ::::
 
-**Result:** You now have a `kibana_sample_data_agents` index with six books, ready for querying with custom tools.
+### Result
+
+You now have a `kibana_sample_data_agents` index with six books, ready for querying with custom tools.
 
 ## Step 1: Chat with the default agent
 
@@ -207,7 +209,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 ```
 ::::
 
-**Result:** The agent responds with information about the books in your sample data. Notice the `token_usage` field in the response. To learn how to track token consumption, refer to [Monitor token usage](monitor-usage.md). You'll compare this with your custom agent later to see how specialized tools can reduce token consumption.
+### Result
+
+The agent responds with information about the books in your sample data. Notice the `token_usage` field in the response. To learn how to track token consumption, refer to [Monitor token usage](monitor-usage.md). You'll compare this with your custom agent later to see how specialized tools can reduce token consumption.
 
 ## Step 2: Explore available tools
 
@@ -271,7 +275,9 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
 ```
 ::::
 
-**Result:** The response includes all available tools, including built-in platform tools like `platform.core.search`, `platform.core.generate_esql`, and others.
+### Result
+
+The response includes all available tools, including built-in platform tools like `platform.core.search`, `platform.core.generate_esql`, and others.
 
 ## Step 3: Run a built-in tool
 
@@ -328,7 +334,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 ```
 ::::
 
-**Result:** The tool returns an {{esql}} query similar to: `FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1`. You'll use this query in the next step to create a custom tool.
+### Result
+
+The tool returns an {{esql}} query similar to: `FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1`. You'll use this query in the next step to create a custom tool.
 
 ## Step 4: Create a custom {{esql}} tool
 
@@ -388,7 +396,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools" \
 ```
 ::::
 
-**Result:** The response confirms the tool was created with its full configuration.
+### Result
+
+The response confirms the tool was created with its full configuration.
 
 ## Step 5: Run your custom tool
 
@@ -452,7 +462,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 ```
 ::::
 
-**Result:** The response includes tabular data showing "Revelation Space" by Alastair Reynolds with 585 pages.
+### Result
+
+The response includes tabular data showing "Revelation Space" by Alastair Reynolds with 585 pages.
 
 ## Step 6: Get a tool by ID
 
@@ -479,7 +491,9 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/tools/example-books-esql-tool" \
 
 ::::
 
-**Result:** The response includes the full tool definition with all its configuration details.
+### Result
+
+The response includes the full tool definition with all its configuration details.
 
 ## Step 7: Update the tool to accept parameters
 
@@ -586,7 +600,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 ```
 ::::
 
-**Result:** The response shows "Brave New World" (268 pages, 1932) and "Fahrenheit 451" (227 pages, 1953), the two longest books published before 1960.
+### Result
+
+The response shows "Brave New World" (268 pages, 1932) and "Fahrenheit 451" (227 pages, 1953), the two longest books published before 1960.
 
 ## Step 8: Create a custom agent
 
@@ -687,7 +703,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
 ```
 ::::
 
-**Result:** The response confirms the agent was created with its full configuration.
+### Result
+
+The response confirms the agent was created with its full configuration.
 
 ## Step 9: Get an agent by ID
 
@@ -714,7 +732,9 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/agents/books-search-agent" \
 
 ::::
 
-**Result:** The response includes the full agent definition with all its configuration details.
+### Result
+
+The response includes the full agent definition with all its configuration details.
 
 ## Step 10: Update an agent
 
@@ -748,7 +768,9 @@ curl -X PUT "${KIBANA_URL}/api/agent_builder/agents/books-search-agent" \
 
 ::::
 
-**Result:** The response confirms the agent was updated with the new configuration.
+### Result
+
+The response confirms the agent was updated with the new configuration.
 
 ## Step 11: Chat with your custom agent
 
@@ -833,7 +855,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 ```
 ::::
 
-**Result:** The agent responds with information about your book collection. Note the `conversation_id` in the response - you'll use this to continue the conversation.
+### Result
+
+The agent responds with information about your book collection. Note the `conversation_id` in the response - you'll use this to continue the conversation.
 
 Continue the conversation using the custom tool:
 
@@ -863,7 +887,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 ::::
 
-**Result:** The agent uses your custom `example-books-esql-tool` to efficiently answer the query in a single step. Compare the `token_usage` in this response with Step 1. Custom tools optimized for specific use cases typically consume fewer tokens than general-purpose agents. To learn more about token consumption, refer to [Monitor token usage](monitor-usage.md).
+### Result
+
+The agent uses your custom `example-books-esql-tool` to efficiently answer the query in a single step. Compare the `token_usage` in this response with Step 1. Custom tools optimized for specific use cases typically consume fewer tokens than general-purpose agents. To learn more about token consumption, refer to [Monitor token usage](monitor-usage.md).
 
 :::{tip}
 For real-time chat responses, use the [streaming converse API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-converse-async) instead.
@@ -915,7 +941,9 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/conversations/<CONVERSATION_ID>" \
 
 ::::
 
-**Result:** The response includes the complete conversation history with all messages, tool calls, and responses.
+### Result
+
+The response includes the complete conversation history with all messages, tool calls, and responses.
 
 ## Step 13: Clean up resources (optional)
 
@@ -1008,7 +1036,9 @@ curl -X DELETE "${ELASTICSEARCH_URL}/kibana_sample_data_agents" \
 
 ::::
 
-**Result:** All resources created during this tutorial are now removed.
+### Result
+
+All resources created during this tutorial are now removed.
 
 ## Summary
 
