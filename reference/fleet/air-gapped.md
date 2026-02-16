@@ -164,8 +164,8 @@ These steps use the standard Docker CLI, but you can create a Kubernetes manifes
         docker.elastic.co/package-registry/distribution:{{version.stack}}
     ```
 
-    The `/health?ready=true` API can be used as a readiness API to check if EPR is ready to serve requests.
-    When this endpoint returns `200` HTTP status code, the service is ready to handle requests.
+    You can use the `/health` or `/health?ready=true` API endpoints to check if EPR is ready to serve requests.
+    When either endpoint returns a `200` HTTP status code, the service is ready to handle requests.
 
 
 ### Connect {{kib}} to your hosted {{package-registry}} [air-gapped-diy-epr-kibana]
