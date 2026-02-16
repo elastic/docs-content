@@ -15,7 +15,7 @@ products:
 
 This reference architecture represents a production-grade, high-availability GenAI search architecture built on {{es}}. It is intended to show physical deployment architecture, logical integration points, and highlight important best practices for enabling a retrieval layer for grounding generative AI responses.
 
-{{es}} can combine [lexical search](/solutions/search/full-text.md), [dense](/solutions/search/vector/dense-vector.md) and [sparse vector search](/solutions/search/vector/sparse-vector.md), temporal and geospatial filtering, and hybrid ranking techniques. These capabilities form the foundation for [Retrieval Augmented Generation (RAG)](/solutions/search/rag.md), [agentic workflows](/explore-analyze/ai-features/elastic-agent-builder.md), and AI-assisted applications.
+{{es}} can combine [lexical search](/solutions/search/full-text.md), [dense vector search](/solutions/search/vector/dense-vector.md), [sparse vector search](/solutions/search/vector/sparse-vector.md), temporal and geospatial filtering, and hybrid ranking techniques. These capabilities form the foundation for [Retrieval Augmented Generation (RAG)](/solutions/search/rag.md), [agentic workflows](/explore-analyze/ai-features/elastic-agent-builder.md), and AI-assisted applications.
 
 ## GenAI search use cases
 
@@ -60,7 +60,7 @@ This architecture employs a single uniform hot/content data tier, as most search
 
 The physical deployment architecture for GenAI applications is built around a resilient {{es}} cluster deployed across three availability zones (AZ). For production-grade deployments, two AZs are the minimum, with three AZs strongly recommended to maximize high availability and fault tolerance. In {{ecloud}}, shards are automatically distributed across zones, ensuring that primaries and replicas never reside in the same AZ. 
 
-In self-managed deployments, [shard allocation awareness](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) and forced awareness should be configured to achieve the same resiliency. {{kib}} instances are deployed in each AZ to not become a single point of failure. And, in some use cases, it should be fronted by a load balancer. For example, Elastic MCP server is a foundational component of Agent Builder. It enables agentic workflows via API using natural language to query {{es}}. As a result, high volume programmatic access is likely required and should be balanced across multiple nodes.
+In self-managed deployments, [shard allocation awareness](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) and forced awareness should be configured to achieve the same resiliency. {{kib}} instances are deployed in each AZ to not become a single point of failure. And, in some use cases, it should be fronted by a load balancer. For example, Elastic MCP server is a foundational component of Agent Builder. It enables agentic workflows through API using natural language to query {{es}}. As a result, high volume programmatic access is likely required and should be balanced across multiple nodes.
 
 All data nodes host both primary and replica shards, with replicas contributing both to redundancy and to query throughput. High-performance SSD-backed storage is recommended, along with memory-rich nodes to support vector indexes, hybrid lexical and vector search, and high concurrent load. {{ml-cap}} nodes are also distributed across zones to support optional embedding generation using self-hosted models such as Elastic’s Jina text embedding models. 
 
@@ -97,25 +97,25 @@ To increase off-heap memory available for vector search, you have the following 
 When vector quantization is enabled, {{es}} stores both the original `float32` vectors and their quantized representations on disk. Retaining the `float32` vectors preserves flexibility for re-ranking, re-indexing, and future model changes. Only the quantized vectors are loaded into memory for search. 
 
 - Use [HNSW](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-hnsw) when you are optimizing for 99%+ recall and absolute lowest tail latency, and you can afford the RAM/off-heap footprint (and you’re not constantly updating the index).
-- Use [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) when you’re cost/memory sensitive, your recall target is more like “\~95%” and you want performance that doesn’t drop when the working set no longer fits RAM.
-- Use [BBQ flat](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-flat): (BBQ without HNSW) when filters reduce comparisons to \< \~100k vectors; typically lowest operational complexity.
+- Use [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) when you’re cost/memory sensitive, your recall target is more like around 95% and you want performance that doesn’t drop when the working set no longer fits RAM.
+- Use [BBQ flat](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-flat) (BBQ without HNSW) when filters reduce comparisons to \< \~100k vectors; typically lowest operational complexity.
 
 ### Vector sizing
 
 - To learn about sizing formulas refer to [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md#_ensure_data_nodes_have_enough_memory). Use the formulas to calculate the disk needs. 
-- For HNSW, the same amount of ram will be required as the vector index storage. 
+- For HNSW, the same amount of RAM will be required as the vector index storage. 
 - For DiskBBQ, you can provision as little as 5% of disk storage as RAM, as DiskBBQ swaps to disk effectively, but query performance will improve significantly with more data you can fit into RAM.
 
 ### Generating vector embeddings
 
 - If generating embeddings on Elastic ML nodes, capacity can be autoscaled using {{ech}} (ECH) or {{eck}} on-prem.  
 - Elastic provides [world class vector models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md) from Jina AI that can be used for NLP embeddings, and a re-ranker that can be either self-hosted on ML nodes or used through [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md).
-- Embeddings can also be generated with [Elastic’s {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) from many external model providers or internal or externally hosted foundation models.
+- Embeddings can also be generated with [Elastic’s {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) from many external model providers or internally or externally hosted foundation models.
 
 ### kNN search performance tuning
 
-- **Recall:** General guidance is to start with defaults → measure → [increasenum\_candidates](https://www.elastic.co/search-labs/blog/elasticsearch-knn-and-num-candidates-strategies) (oversample) → optionally add a [re-ranker](https://www.elastic.co/search-labs/blog/elastic-semantic-reranker-part-2).
-- **Runtime:** Refer to [this guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) to understand all the vector search performance optimizations to ensure high speed search. 
+- **Recall:** General guidance is to start with defaults → measure → [increase num_candidates](https://www.elastic.co/search-labs/blog/elasticsearch-knn-and-num-candidates-strategies) (oversample) → optionally add a [re-ranker](https://www.elastic.co/search-labs/blog/elastic-semantic-reranker-part-2).
+- **Runtime:** Refer to [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) to understand all the vector search performance optimizations to ensure high speed search. 
 
 ### Updating vector data
 
@@ -144,7 +144,7 @@ Proper shard management is foundational to maintaining performance at scale. Thi
 
 ### Snapshots
 
-Regular backups are essential when indexing business-critical or auditable data. Snapshots provide recoverability in case of data corruption or accidental deletion. For production workloads, configure automated snapshots through Snapshot Lifecycle {{manage-app}} ({{slm-init}}) and integrate them with Index Lifecycle {{manage-app}} ({{ilm-init}}) policies.
+Regular backups are essential when indexing business-critical or auditable data. Snapshots provide recoverability in case of data corruption or accidental deletion. For production workloads, configure automated snapshots through Snapshot Lifecycle {{manage-app}} ({{slm-init}}) and integrate them with [Index Lifecycle {{manage-app}} ({{ilm-init}})](/manage-data/lifecycle/index-lifecycle-management.md) policies.
 
 ### {{kib}}, MCP, and Agent Builder
 
@@ -169,7 +169,7 @@ You can [contact us](https://www.elastic.co/contact) for an estimate and recomme
 
 ## Resources and references
 
-* [{{es}} \- Vector Search Documentation](/solutions/search/vector.md)  
-* [{{es}} \- Get ready for production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)  
-* [{{ech}} \- Preparing a deployment for production](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
-* [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md)
+- [Vector search in {{es}}](/solutions/search/vector.md)  
+- [Run {{es}} in production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)  
+- [Run {{es}} in production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)
+- [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md)
