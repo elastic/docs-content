@@ -17,7 +17,7 @@ You can use these instructions to deploy a [named entity recognition (NER)](ml-n
 
 To follow along the process on this page, you must have:
 
-* an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
+* a {{serverless-short}} project or an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
 * The [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated.
 * [Docker](https://docs.docker.com/get-docker/) installed.
 
@@ -45,7 +45,7 @@ docker run -it --rm docker.elastic.co/eland/eland \
       --start
 ```
 
-You need to provide an administrator username and its password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the **Hosted deployments** page on your Cloud website.
+You need to provide an administrator username and its password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. To find your Cloud ID based on your deployment type, refer to [this page](/solutions/elasticsearch-solution-project/search-connection-details.md).
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 

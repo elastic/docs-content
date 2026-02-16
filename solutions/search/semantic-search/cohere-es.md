@@ -13,7 +13,6 @@ products:
 
 # Using Cohere with Elasticsearch [cohere-es]
 
-
 The instructions in this tutorial shows you how to compute embeddings with Cohere using the {{infer}} API and store them for efficient vector or hybrid search in {{es}}. This tutorial will use the Python {{es}} client to perform the operations.
 
 You’ll learn how to:
@@ -31,13 +30,11 @@ Refer to [Cohere’s tutorial](https://docs.cohere.com/docs/elasticsearch-and-co
 
 You can also review the [Colab notebook version of this tutorial](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/integrations/cohere/cohere-elasticsearch.ipynb).
 
-
 ## Requirements [cohere-es-req]
 
 * A paid [Cohere account](https://cohere.com/) is required to use the {{infer-cap}} API with the Cohere service as the Cohere free trial API usage is limited,
-* an [Elastic Cloud](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) account,
+* an Elastic [Serverless](/deploy-manage/deploy/elastic-cloud/serverless.md) or a [Cloud](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) account,
 * Python 3.7 or higher.
-
 
 ## Install required packages [cohere-es-packages]
 
@@ -57,12 +54,11 @@ import json
 import requests
 ```
 
-
 ## Create the {{es}} client [cohere-es-client]
 
 To create your {{es}} client, you need:
 
-* [your Cloud ID](https://www.elastic.co/search-labs/tutorials/install-elasticsearch/elastic-cloud#finding-your-cloud-id),
+* [your Cloud ID](https://www.elastic.co/docs/solutions/elasticsearch-solution-project/search-connection-details),
 * [an encoded API key](https://www.elastic.co/search-labs/tutorials/install-elasticsearch/elastic-cloud#creating-an-api-key).
 
 ```py
@@ -77,7 +73,6 @@ client = Elasticsearch(
 # Confirm the client has connected
 print(client.info())
 ```
-
 
 ## Create the {{infer}} endpoint [cohere-es-infer-endpoint]
 
