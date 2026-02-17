@@ -278,7 +278,7 @@ curl \
           "id": "euw1-az3"
         }
       ],
-      "private_hosted_zone_domain_name": "private.eu-west-1.aws.elastic-cloud.com",
+      "private_hosted_zone_domain_name": "private.eu-west-1.aws.elastic.cloud",
       "vpc_service_name": "com.amazonaws.vpce.eu-west-1.vpce-svc-0197c33d7deffd2fa",
       "region": "eu-west-1",
     }

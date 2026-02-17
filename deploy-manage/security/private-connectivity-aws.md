@@ -180,7 +180,7 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
         
         For {{serverless-full}}, to view the service metadata for your selected region, start to [create a new private connection policy](#ec-add-vpc-elastic) for the region and find the **Domain name** in the **Service metadata** dropdown.
         
-        For example, for {{ech}} deployments in `us-east-1`, use `vpce.us-east-1.aws.elastic-cloud.com` as the zone domain name. For {{serverless-full}} deployments in the same region, use `private.us-east-1.aws.elastic-cloud.com`.
+        For example, for {{ech}} deployments in `us-east-1`, use `vpce.us-east-1.aws.elastic-cloud.com` as the zone domain name. For {{serverless-full}} deployments in the same region, use `private.us-east-1.aws.elastic.cloud`.
         
         Don’t forget to associate the zone with your VPC.
 
@@ -230,22 +230,16 @@ To test the connection:
 
 2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment or project's endpoint information and the private hosted zone domain name that you registered.
 
-    **Request**
-
     ::::{applies-switch}
     :::{applies-item} ess: ga
+    **Request**
+
     ```sh
     $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
-    :::
-    ::: {applies-item} serverless: ga
-    ```sh
-    $ curl -v https://my-project-d53192.es.private.us-east-1.aws.elastic-cloud.com -u {username}:{password}
-    ```
-    :::
-    ::::
 
     **Response**
+    
     ```sh
     * Server certificate:
     *  subject: CN=*.us-east-1.aws.elastic-cloud.com
@@ -261,6 +255,33 @@ To test the connection:
         "tagline" : "You Know, for Search"
     }
     ```
+    :::
+    :::{applies-item} serverless: ga
+    **Request**
+
+    ```sh
+    $ curl -v https://my-project-d53192.es.private.us-east-1.aws.elastic.cloud -u {username}:{password}
+    ```
+
+    **Response**
+
+    ```sh
+    * Server certificate:
+    *  subject: CN=*.es.private.us-east-1.aws.elastic.cloud
+    *  SSL certificate verify ok.
+    ..
+        < HTTP/1.1 200 OK
+    ..
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
+    ```
+    :::
+    ::::
 
 The connection is established, and a valid certificate is presented to the client. Elastic responds, in the case of the {{es}} endpoint, with basic information about the cluster.
 
@@ -380,22 +401,16 @@ To access the deployment or project:
 
 2. Send a request:
 
-    **Request**
-
     ::::{applies-switch}
     :::{applies-item} ess: ga
+    **Request**
+
     ```sh
     $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
-    :::
-    :::{applies-item} serverless: ga
-    ```sh
-    $ curl -v https://my-project-d53192.es.private.us-east-1.aws.elastic-cloud.com -u {username}:{password}
-    ```
-    :::
-    ::::
 
     **Response**
+    
     ```sh
     * Server certificate:
     *  subject: CN=*.us-east-1.aws.elastic-cloud.com
@@ -411,6 +426,35 @@ To access the deployment or project:
         "tagline" : "You Know, for Search"
     }
     ```
+    :::
+    :::{applies-item} serverless: ga
+    **Request**
+
+    ```sh
+    $ curl -v https://my-project-d53192.es.private.us-east-1.aws.elastic.cloud -u {username}:{password}
+    ```
+
+    **Response**
+
+    ```sh
+    * Server certificate:
+    *  subject: CN=*.us-east-1.aws.elastic.cloud
+    *  SSL certificate verify ok.
+    ..
+        < HTTP/1.1 200 OK
+    ..
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
+    ```
+    :::
+    ::::
+
+
 
 ### AWS PrivateLink and Fleet
 
