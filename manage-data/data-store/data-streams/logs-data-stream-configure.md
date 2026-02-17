@@ -33,7 +33,7 @@ In logsdb index mode, indices are sorted by the fields `host.name` and `@timesta
 
 * To prioritize the latest data, `host.name` is sorted in ascending order and `@timestamp` is sorted in descending order.
 
-You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, refer to [*Index Sorting*](elasticsearch://reference/elasticsearch/index-settings/sorting.md).
+You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, refer to [Index sorting settings](elasticsearch://reference/elasticsearch/index-settings/sorting.md).
 
 To modify the sort configuration of an existing data stream, update the data stream’s component templates, and then perform or wait for a [rollover](../data-streams.md#data-streams-rollover).
 
