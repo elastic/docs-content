@@ -31,7 +31,7 @@ With Lens, you can create the following visualization types:
 - Heat map chart
 - Waffle chart
 - Region map chart
-- Treemap chart
+- [Treemap chart](/explore-analyze/visualize/charts/treemap-charts.md)
 - Tag cloud chart
 - Mosaic chart
 - Legacy Metric chart (deprecated)
