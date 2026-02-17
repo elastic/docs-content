@@ -1,5 +1,7 @@
 ---
 navigation_title: Deprecations
+products:
+  - id: cloud-serverless
 ---
 
 # {{serverless-full}} deprecations [elastic-cloud-serverless-deprecations]

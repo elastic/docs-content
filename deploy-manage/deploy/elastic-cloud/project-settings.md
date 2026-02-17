@@ -15,6 +15,7 @@ Project settings are configurations that apply to your entire project, managed f
 - **[Search AI Lake settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention.
 - **[Project features and add-ons](#project-features-add-ons)**: Select feature tiers and enable add-ons for your project type.
 - **[Project tags](#project-tags)**: Add custom metadata to categorize and organize your projects.
+- **[Connection aliases](#elasticsearch-manage-project-connection-aliases)**: Use predictable, human-readable URLs for your projects that you can share easily.
 
 To manage these settings:
 
@@ -204,4 +205,26 @@ For example, to query for all {{es}} projects that are staging environments belo
 GET /api/v1/serverless/projects/elasticsearch?tag[env]=staging&tag[dept]=support_eng
 ```
 
+## Connection aliases [elasticsearch-manage-project-connection-aliases]
 
+Connection aliases for your projects enable you to have predictable, human-readable URLs that can be shared easily.
+The connection alias must be unique for each region, across all accounts.
+New projects are assigned a default alias derived from the project name.
+
+### Update a connection alias for a project
+
+To modify the connection alias for a project:
+
+1. From the **Serverless projects** menu, select a project and click **Manage**.
+2. Locate **Connection alias**, click **Edit**.
+3. Define a new alias. Make sure you choose something meaningful to you.
+
+    ::::{tip}
+    Make the alias as unique as possible to avoid collisions. Aliases might have been already claimed by other users for projects in the region.
+    ::::
+
+4. Select **Update alias**.
+
+::::{important}
+Renaming connection aliases might cause disruptions to applications and services that rely on these endpoints. Ensure that you update any references to the old alias to prevent issues.
+::::

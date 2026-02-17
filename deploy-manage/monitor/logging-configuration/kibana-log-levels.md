@@ -1,6 +1,8 @@
 ---
 applies_to:
   stack: all
+products:
+  - id: kibana
 ---
 
 # Set global log levels for {{kib}}
