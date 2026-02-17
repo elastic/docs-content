@@ -61,7 +61,7 @@ $$$elasticsearch-manage-project-search-power-settings$$$
 
 Project features and add-ons control which capabilities are available in your serverless project and how they are billed. What you can configure depends on your project type: 
 
-* [{{es}} add-ons](#es-add-ons)
+* [{{es}} add-ons](#es-serverless-project-features)
 * [{{elastic-sec}} feature tiers and add-ons](#elastic-sec-project-features)
 * [{{obs-serverless}} feature tiers](#obs-serverless-project-features) 
 
