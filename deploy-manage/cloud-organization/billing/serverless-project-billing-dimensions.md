@@ -3,7 +3,7 @@ navigation_title: Serverless billing dimensions
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-billing.html
 applies_to:
-  serverless: all
+  serverless: ga
 products:
   - id: cloud-serverless
 ---
@@ -37,4 +37,14 @@ To learn about billing dimensions for specific offerings, refer to:
 ### Support [general-serverless-billing-support] 
 
 If your subscription level is Standard, there is no separate charge for Support reflected on your bill. If your subscription level is Gold, Platinum, or Enterprise, a charge is made for Support as a percentage (%) of the ECUs. To find out more about our support levels, go to [https://www.elastic.co/support](https://www.elastic.co/support).
+
+### Serverless Plus add-on [serverless-plus-add-on]
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-plus.md
+:::
+
+#### Availability [serverless-plus-add-on-availability]
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-plus-availability.md
+:::
 

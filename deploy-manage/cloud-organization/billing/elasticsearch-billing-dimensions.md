@@ -39,6 +39,12 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
+## Serverless Plus add-on [elasticsearch-billing-serverless-plus-add-on]
+
+The [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus-add-on) is an optional add-on for {{es-serverless}} projects. It includes enterprise features such as IP filtering, private connectivity, and cross-project search (coming soon).
+
+Serverless Plus is free for a limited promotional period. Enabling or using features included in the add-on opts your project in. When the promotional period ends, a charge for the add-on is applied as a percentage of the project's ECUs. To learn more about the add-on and the  promotional period, refer to [Project features and add-ons](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus-add-on).
+
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
 
 You can control costs using the following strategies:
