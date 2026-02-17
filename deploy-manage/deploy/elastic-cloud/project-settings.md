@@ -67,7 +67,7 @@ Project features and add-ons control which capabilities are available in your se
 
 The [Serverless Plus add-on](#serverless-plus) is included with Security and Observability Complete, and is optional for {{es}} projects.
 
-### {{es}} add-ons [es-add-ons]
+### {{es}} project features [es-serverless-project-features]
 
 The only add-on available for {{es}} projects is Serverless Plus. To opt in during the promotional period, start using the features on the relevant project. For more information, refer to [Serverless Plus add-on](#serverless-plus).
 
