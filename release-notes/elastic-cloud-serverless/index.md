@@ -9,6 +9,56 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## February 16, 2026 [serverless-changelog-02162026]
+
+### Features and enhancements [serverless-changelog-02162026-features-enhancements]
+
+* Suggests lines for time series queries in Lens [#252661]({{kib-pull}}252661)
+* Adds an alerting rule template to newly installed integration packages for inactivity monitoring [#252546]({{kib-pull}}252546)
+* Adds authentication fields to {{agent}} binary download sources managed by {{fleet}} to support connecting to self-hosted artifact registries [#250557]({{kib-pull}}250557)
+* Persists query mode to local storage [#250388]({{kib-pull}}250388)
+* Makes the `RERANK` command generally available [#252242]({{kib-pull}}252242)
+* Uses restorable state in the doc viewer's **JSON** tab [#252054]({{kib-pull}}252054)
+* Adds **View in Discover** link to APM rule-based alert details to view related documents in Discover [#248990]({{kib-pull}}248990)
+* Adds `get_runtime_metrics` tool [#251768]({{kib-pull}}251768)
+* Adds support for duplicating packs and saved queries in the Osquery plugin [#252517]({{kib-pull}}252517)
+* Improves the **User** and **Host** entity details flyouts to show a skeleton loading state for observed data [#252657]({{kib-pull}}252657)
+* Adds Anthropic Claude Opus 4.6 preconfigured connector [#252177]({{kib-pull}}252177)
+* Adds **Zoom in** button to the date picker [#252252]({{kib-pull}}252252)
+* Adds a new `redact` processor [#250389]({{kib-pull}}250389)
+* Adds a summary statistics bar to the Inference endpoints page to show counts of services, models, types, and endpoints [#251558]({{kib-pull}}251558)
+* Adds sorting capabilities to the Inference endpoints page to sort by endpoint, service, type, or model [#252189]({{kib-pull}}252189)
+* Consolidates badges under the endpoint name and removes the Type column on the Inference endpoints page [#252621]({{kib-pull}}252621)
+* Adds support for multi-dimension breakdowns [#250727]({{kib-pull}}250727)
+* Adds a data source browser to the {{esql}} editor [#251897]({{kib-pull}}251897)
+* Adds Jira Cloud data source [#251345]({{kib-pull}}251345)
+* Adds a fields browser to the {{esql}} editor in Discover [#252749]({{kib-pull}}252749)
+* Migrates metrics in Discover flyout to the new flyout system [#251395]({{kib-pull}}251395)
+* Adds audit logging for agent and tool actions [#252143]({{kib-pull}}252143)
+* Allows sorting and retrieving latency percentiles in the `get_trace_metrics` tool [#249488]({{kib-pull}}249488)
+
+### Fixes [serverless-changelog-02162026-fixes]
+
+* Fixes rule execution failing due to null execution UUIDs [#252618]({{kib-pull}}252618)
+* Adjusts the horizontal link panel height to two rows [#252707]({{kib-pull}}252707)
+* Fixes `TypeError` when an integration has no SVG icons [#251308]({{kib-pull}}251308)
+* Restores support for generating CSV reports of {{fleet}} agent data in serverless environments [#247185]({{kib-pull}}247185)
+* Fixes handling of missing values [#251892]({{kib-pull}}251892)
+* Applies integration limit check after the deduplication step in `parseIntegrationsTSV` [#252486]({{kib-pull}}252486)
+* Fixes accessibility issues in the **Confirm delete** modal [#251962]({{kib-pull}}251962)
+* Updates the OpenAI connector to use `labelAppend` to indicate optional fields [#251857]({{kib-pull}}251857)
+* Replaces deprecated `listAdd` icon with `indexOpen` icon [#251930]({{kib-pull}}251930)
+* Excludes failed rules from non-failed status filters [#252263]({{kib-pull}}252263)
+* Updates the Rule management APIs to ensure that response actions are validated [#251352]({{kib-pull}}251352)
+* Adds option to update mappings with index patterns instead of individual indices [#252431]({{kib-pull}}252431)
+* Adds `region` to the Amazon Bedrock connector schema [#252956]({{kib-pull}}252956)
+* Fixes file size limit checks in file uploads [#251515]({{kib-pull}}251515)
+* Fixes document count loading in Index Management when using larger page sizes with long index names [#252422]({{kib-pull}}252422)
+* Improves the tooltip for missing trace/span relationship in APM [#251850]({{kib-pull}}251850)
+* Propagates connector API errors [#252372]({{kib-pull}}252372)
+* Fixes a UI issue with the workflow tool type [#252563]({{kib-pull}}252563)
+* Fixes an issue with the Create new tool page when switching tool types [#252811]({{kib-pull}}252811)
+* Adds datemath support to the KQL evaluator [#252840]({{kib-pull}}252840)
 
 ## February 9, 2026 [serverless-changelog-02092026]
 
