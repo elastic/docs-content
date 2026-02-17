@@ -94,5 +94,6 @@ Custom plugins are currently not supported in {{fedramp-high}} deployments.
 
 ### {{elastic-defend}}
 
-In {{fedramp-mod}} and {{fedramp-high}} environments, certain {{elastic-defend}} cloud-enabled features might require some manual configuration to work as expected.
+In {{fedramp-mod}} and {{fedramp-high}} environments, certain {{elastic-defend}} cloud-enabled features might require some manual configuration to work as expected. 
 
+Specifically, the {{elastic-defend}} integration that runs on hosts being protected has various features that require data to be sent directly to Elastic-managed cloud services. You can use the {{elastic-defend}} [advanced setting](/reference/security/defend-advanced-settings.md) `[linux,mac,windows].advanced.allow_cloud_features` to activate or deactivate each feature individually.
