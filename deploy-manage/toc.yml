@@ -270,6 +270,7 @@ toc:
                   - file: deploy/cloud-on-k8s/configuration-examples-logstash.md
                   - file: deploy/cloud-on-k8s/update-strategy-logstash.md
                   - file: deploy/cloud-on-k8s/advanced-configuration-logstash.md
+              - file: deploy/cloud-on-k8s/package-registry.md
           - file: deploy/cloud-on-k8s/create-custom-images.md
           - file: deploy/cloud-on-k8s/tools-apis.md
       - file: deploy/self-managed.md
@@ -678,6 +679,7 @@ toc:
             children:
               - file: monitor/autoops/access-autoops-for-serverless.md
               - file: monitor/autoops/search-tier-view-autoops-serverless.md
+              - file: monitor/autoops/indexing-tier-view-autoops-serverless.md
               - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children: 

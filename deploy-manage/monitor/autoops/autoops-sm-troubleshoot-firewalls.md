@@ -12,7 +12,7 @@ products:
 
 # Troubleshoot firewalls blocking {{agent}}
 
-If you are running into issues connecting your cluster to AutoOps, a corporate firewall might be blocking {{agent}}.
+If you are running into issues connecting your ECE, ECK, or self-managed cluster to AutoOps, a corporate firewall might be blocking {{agent}}.
 
 Complete the steps on this page to test your setup and fix this issue.
 
@@ -133,14 +133,14 @@ If you are using Docker, you might need to complete this configuration directly 
 If there is an issue with the third component, the agent attempts to establish the connection and your logs might show the following error: 
     
 ```sh
-... Exporting failed. Dropping data. ... no more retries left: failed to make an HTTP request: Post \"https://otel-collector.auto-ops.eu-west-1.aws.cloud.elastic.co:443/v1/logs\": ...
+... Exporting failed. Dropping data. ... no more retries left: failed to make an HTTP request: Post \"https://otel-auto-ops.us-east-2.aws.svc.elastic.cloud/v1/logs\": ...
 ```
     
-To test if your organization is not allowing the agent to send metrics from your cluster to {{ecloud}}, run the following command. The command uses AWS eu-west-1 as the CSP (cloud service provider) region, but you should replace it with your chosen CSP region before running the command.
+To test if your organization is not allowing the agent to send metrics from your cluster to {{ecloud}}, run the following command.
 
 ```json
 curl -XPOST -i \
-https://otel-collector.auto-ops.eu-west-1.aws.cloud.elastic.co:443/v1/logs \
+https://otel-auto-ops.${region}.${csp}.svc.elastic.cloud/v1/logs \
 -H 'Content-Type: application/json'
 
 ```
@@ -153,7 +153,7 @@ The command should return an HTTP 401 response:
 If you do not receive a similar response, configure your HTTP proxy to allow it to reach the URL (with headers and an arbitrary body):
 
 ```json
-  POST https://otel-collector.auto-ops.${REGION}.${CSP}.cloud.elastic.co:443/v1/logs
+  POST https://otel-auto-ops.${region}.${csp}.svc.elastic.cloud/v1/logs
 ```
 :::{note}
 If you are using Docker, you might need to complete this configuration directly using the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables.

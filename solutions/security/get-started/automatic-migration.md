@@ -3,6 +3,13 @@ applies_to:
   stack: preview =9.0, ga 9.1+
   serverless:
     security: ga
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Automatic migration

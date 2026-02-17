@@ -48,7 +48,7 @@ Alternatively, you can retrieve the endpoint from the **Manage project** page an
 :::{applies-item} ess: preview
 1. Log in to the Elastic Cloud Console.
 2. Find your deployment on the home page or on the **Hosted deployments** page, and then select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP (technical preview)**.
+3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
 4. Copy the public endpoint value.
 :::
 ::::
