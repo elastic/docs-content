@@ -201,6 +201,4 @@ If you choose not to synchronize integrations automatically, you need to make su
 
 {{fleet-server}} requires connectivity to the remote cluster to generate API keys for {{agents}}. When you use a remote {{es}} output, {{fleet-server}} tests whether it can reach the remote cluster. The result determines whether the remote output is reported as healthy or unhealthy in the **Status** column for the output on the **{{fleet}}** → **Settings** page.
 
-:::{note}
-If you have multiple {{fleet-server}} instances, each {{fleet-server}} will attempt to test connectivity to all remote {{es}} outputs. If the {{fleet-server}} instances have different network scopes, it's expected that some of them might not be able to reach a certain remote output. In this case, the remote output will show as unhealthy in the UI with an `Unable to connect` error. You can ignore this status as long as the {{fleet-server}} instance that manages the {{agents}} using that remote output has connectivity to the remote cluster.
-:::
+If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests connectivity to all remote {{es}} outputs. If the {{fleet-server}} instances have different network scopes, it's expected that some of them might not be able to reach a certain remote output. In this case, the remote output will show as unhealthy in the UI with an `Unable to connect` error. You can ignore this status as long as the {{fleet-server}} instance that manages the {{agents}} using that remote output has connectivity to the remote cluster.
