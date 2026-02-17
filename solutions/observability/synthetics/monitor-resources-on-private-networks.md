@@ -170,7 +170,8 @@ Example: For a private location expected to run 2 concurrent browser monitors an
 
 ### Known limitations on vertical scaling
 
-- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated.
+- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated. If you need to run a high number of Synthetic monitors on a single private location, you might need to increase the `server.limits.checkin_limit.max_body_byte_size` setting on Fleet Server to 8 MB, 16 MB, or, if required, -1 to deactivate the limit entirely.
+
 - Complex monitor configuration can disproportionately increase the private location policy size, leading to agent communication errors and degradation even if the limit mentioned above hasn't been reached.
 
 If you're facing one of these scenarios, it is likely that the private location has grown too large and needs to be split into smaller locations, each alloted a portion of the original location monitors.
