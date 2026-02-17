@@ -172,7 +172,7 @@ If you expect that you will have large datasets that exceed the recommended maxi
 
 These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for more information.
 
-### Index and resource limits
+### Index and resource limits [index-and-resource-limits]
 
 {{serverless-full}} applies certain project-level limits to ensure reliable performance and stability.
 
