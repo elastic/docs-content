@@ -54,6 +54,8 @@ Using the dropdown indicating **Bar**, select **Metric**.
     - Specify a [maximum value](#max-value-options).
     - [Break down](#breakdown-options) the metric into multiple tiles based on another dimension. 
 
+The chart preview updates to show a large numeric value. If you added a secondary metric, it appears below the primary value. If you added a breakdown dimension, separate tiles appear for each category.
+
 Refer to [](#settings) to find all data configuration options for your metric chart.
 ::::
 

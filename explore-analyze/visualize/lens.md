@@ -21,19 +21,19 @@ Once you select a {{data-source}}, you can build many types of visualizations by
 
 With Lens, you can create the following visualization types:
 
-- [Bar chart](/explore-analyze/visualize/charts/bar-charts.md)
-- [Line chart](/explore-analyze/visualize/charts/line-charts.md)
 - [Area chart](/explore-analyze/visualize/charts/area-charts.md)
+- [Bar chart](/explore-analyze/visualize/charts/bar-charts.md)
+- [Gauge chart](/explore-analyze/visualize/charts/gauge-charts.md)
+- [Heat map chart](/explore-analyze/visualize/charts/heat-map-charts.md)
+- [Line chart](/explore-analyze/visualize/charts/line-charts.md)
 - [Metric chart](/explore-analyze/visualize/charts/metric-charts.md)
-- [Table](/explore-analyze/visualize/charts/tables.md)
+- [Mosaic chart](/explore-analyze/visualize/charts/mosaic-charts.md)
 - [Pie chart](/explore-analyze/visualize/charts/pie-charts.md)
-- Gauge chart
-- Heat map chart
-- Waffle chart
-- Region map chart
-- Treemap chart
-- Tag cloud chart
-- Mosaic chart
+- [Region map chart](/explore-analyze/visualize/charts/region-map-charts.md)
+- [Table](/explore-analyze/visualize/charts/tables.md)
+- [Tag cloud chart](/explore-analyze/visualize/charts/tag-cloud-charts.md)
+- [Treemap chart](/explore-analyze/visualize/charts/treemap-charts.md)
+- [Waffle chart](/explore-analyze/visualize/charts/waffle-charts.md)
 - Legacy Metric chart (deprecated)
 
 ## Create visualizations [create-the-visualization-panel]
