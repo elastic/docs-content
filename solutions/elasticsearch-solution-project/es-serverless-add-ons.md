@@ -17,4 +17,4 @@ description: Learn about add-ons for Elasticsearch Serverless projects.
 :::{include} /deploy-manage/deploy/_snippets/serverless-plus.md
 :::
 
-This add-on is currently free for a limited promotional period. Enabling or using these features opts your project in to Serverless Plus. [Learn more](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus-add-on).
+This add-on is currently free for a limited promotional period. Enabling or using these features opts your project in to Serverless Plus. [Learn more](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus).
