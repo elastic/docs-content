@@ -1,6 +1,6 @@
 ---
-description: Reference of all built-in agents available in Elastic Agent Builder
 navigation_title: "Built-in agents"
+description: "Reference of the pre-configured AI agents available in Elastic Agent Builder, including their specialized capabilities and assigned tools."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -58,7 +58,7 @@ serverless:
   security: preview
 ```
 
-A specialized agent for security alert analysis tasks, including alert investigation and security documentation. It helps analysts triage alerts and understand complex security events.
+A specialized agent for security alert analysis tasks, including alert investigation and {{elastic-sec}} documentation. It helps analysts triage alerts and understand complex security events. For more information and example use-cases, refer to [](/solutions/security/ai/agent-builder/agent-builder.md).
 
 
 **Assigned tools:**

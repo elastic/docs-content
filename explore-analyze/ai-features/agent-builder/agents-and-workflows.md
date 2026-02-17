@@ -1,6 +1,6 @@
 ---
-navigation_title: "Agents and Elastic Workflows"
-description: "Learn how to invoke AI agents directly within Elastic Workflows."
+navigation_title: "Call agents from workflows"
+description: "Learn how to invoke AI agents in Elastic Workflows using the `ai.agent` or `kibana.request` steps to add reasoning to your automated tasks."
 applies_to:
   stack: preview 9.3+
   serverless: preview
@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Work with AI agents in Elastic Workflows
+# Call {{agent-builder}} agents from Elastic Workflows
 
 Elastic Workflows and {{agent-builder}} allow you to combine deterministic automation with conversational reasoning. By invoking an AI agent directly within a workflow execution, you can treat the agent as a "reasoning engine" that summarizes data, classifies events, or makes decisions before passing the results to the next step in your automation.
 
@@ -31,11 +31,10 @@ There are two ways to integrate agents into your workflows:
 
 Before you begin:
 
-* Familiarize yourself with the core concepts of Elastic Workflows.
-% (/explore-analyze/workflows.md)
+* Familiarize yourself with the core concepts of [Elastic Workflows](/explore-analyze/workflows.md).
 * Enable the Workflows feature in **Advanced settings**.
 * Ensure you have the correct privileges to create and run workflows.
-% For details, refer to Set up workflows (/explore-analyze/workflows/setup.md).
+* For details, refer to [Set up workflows](/explore-analyze/workflows/setup.md).
 * Create at least one workflow.
 
 ## Use the `ai.agent` step
@@ -118,5 +117,5 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 ## Related pages
 * [Tools overview](./tools.md)
 * [Workflow tools](../agent-builder/tools/workflow-tools.md)
-% * [Workflows](/explore-analyze/workflows.md)
+* [Workflows](/explore-analyze/workflows.md)
 * [Agent Builder API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder)

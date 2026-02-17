@@ -3,6 +3,9 @@ applies_to:
   stack: ga
   serverless: 
     observability: ga
+products:
+  - id: apm
+  - id: apm-agent
 ---
 
 # APM agents
