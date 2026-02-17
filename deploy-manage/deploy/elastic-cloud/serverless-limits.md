@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Index Limit Per Project
+# Index limit per project
 
 Elastic Cloud Serverless scales automatically to support your project loads. While the Elastic Cloud Serverless product offering aims to provide a service which scales well around most variations in the shape of customer data and load, there are some unusual scenarios which can’t necessarily be supported well yet. To ensure a reliable and consistent experience with the service, we have implemented some limits. These limits provide guardrails for performance and stability, and are documented here to help you design your solution with confidence.
 
