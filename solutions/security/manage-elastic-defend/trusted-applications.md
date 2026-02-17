@@ -37,7 +37,7 @@ Trusted applications are blindspots for {{elastic-defend}}, because they are not
 Trusted applications can still generate alerts if the application’s process events indicate malicious behavior. To reduce false positive alerts, add an [Endpoint alert exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions), which prevents {{elastic-defend}} from generating alerts. To compare trusted applications with other endpoint artifacts, refer to [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md).
 :::
 
-:::{applies-item} { stack: ga 9.2+, serverless: ga }
+:::{applies-item} { stack: ga 9.2.5+, serverless: ga }
 Trusted applications are not monitored for malicious behavior, which improves performance.
 :::
 
