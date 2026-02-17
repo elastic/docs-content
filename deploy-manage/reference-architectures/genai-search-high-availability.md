@@ -36,7 +36,7 @@ The GenAI search – high availability architecture is intended for organization
 {{es}} supports multiple vector search execution models and optimizations, allowing this architecture to balance recall, latency, and cost based on workload requirements.
 
 - [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) is Elastic’s patented quantization technology that dramatically reduces vector memory footprint while preserving high recall, enabling large-scale in-memory vector search at lower cost.
-- [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) extends BBQ by efficiently paging vector data from disk, providing predictable performance even when the full vector working set does not fit in memory and enabling cost-efficient scaling for very large corpora.  
+- [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) extends BBQ by efficiently paging vector data from disk, providing predictable performance even when the full vector working set does not fit in memory and enabling cost-efficient scaling for very large datasets.
 - [HNSW](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-hnsw) is used where maximum recall and lowest tail latency are required and sufficient memory is available to keep vector indexes resident in RAM.  
 - [ACORN](https://www.elastic.co/search-labs/blog/elasticsearch-9-1-bbq-acorn-vector-search) further optimizes filtered vector search by reducing unnecessary graph traversals, making it especially effective for high-selectivity queries common in security, observability, and multi-tenant environments.
 
@@ -55,7 +55,7 @@ Below is a multi-availability-zone deployment designed for continuous availabili
 :::
 
 :::::{important}
-This architecture employs a single uniform hot/content data tier, as most search and generative AI workloads require very low latency across the full corpus, regardless of data age. However, disk-based vector storage methods such as [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets on lower-cost tiers, such as IoT telemetry, financial transaction logs.
+This architecture employs a single uniform hot/content data tier, as most search and generative AI workloads require very low latency across the full corpus, regardless of data age. However, disk-based vector storage methods such as [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets, such as IoT telemetry and financial transaction logs, on lower-cost tiers.
 :::::
 
 The physical deployment architecture for GenAI applications is built around a resilient {{es}} cluster deployed across three availability zones (AZ). For production-grade deployments, two AZs are the minimum, with three AZs strongly recommended to maximize high availability and fault tolerance. In {{ecloud}}, shards are automatically distributed across zones, ensuring that primaries and replicas never reside in the same AZ. 
@@ -108,7 +108,7 @@ When vector quantization is enabled, {{es}} stores both the original `float32` v
 
 ### Generating vector embeddings
 
-- If generating embeddings on Elastic ML nodes, capacity can be autoscaled using {{ech}} (ECH) or {{eck}} on-prem.  
+- If generating embeddings on Elastic ML nodes, capacity can be [autoscaled](/deploy-manage/autoscaling.md) using {{ech}} (ECH) or {{eck}} on-prem.
 - Elastic provides [world class vector models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md) from Jina AI that can be used for NLP embeddings, and a re-ranker that can be either self-hosted on ML nodes or used through [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md).
 - Embeddings can also be generated with [Elastic’s {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) from many external model providers or internally or externally hosted foundation models.
 
@@ -144,7 +144,7 @@ Proper shard management is foundational to maintaining performance at scale. Thi
 
 ### Snapshots
 
-Regular backups are essential when indexing business-critical or auditable data. Snapshots provide recoverability in case of data corruption or accidental deletion. For production workloads, configure automated snapshots through Snapshot Lifecycle {{manage-app}} ({{slm-init}}) and integrate them with [Index Lifecycle {{manage-app}} ({{ilm-init}})](/manage-data/lifecycle/index-lifecycle-management.md) policies.
+Regular backups are essential when indexing business-critical or auditable data. [Snapshots](/deploy-manage/tools/snapshot-and-restore.md) provide recoverability in case of data corruption or accidental deletion. For production workloads, configure automated snapshots through Snapshot Lifecycle {{manage-app}} ({{slm-init}}) and integrate them with [Index Lifecycle {{manage-app}} ({{ilm-init}})](/manage-data/lifecycle/index-lifecycle-management.md) policies.
 
 ### {{kib}}, MCP, and Agent Builder
 
@@ -154,16 +154,16 @@ Regular backups are essential when indexing business-critical or auditable data.
 
 ### Data tiering
 
-A uniform hot tier is strongly recommended for the majority of search use cases. Disk-based vector methods like using DiskBBQ (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets on lower-cost tiers (IoT telemetry, financial transaction logs, etc)
+A uniform hot tier is strongly recommended for the majority of search use cases. Disk-based vector methods like using DiskBBQ (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets, such as IoT telemetry and financial transaction logs, on lower-cost tiers.
 
-#### How many nodes of each do you need?
+#### How many nodes of each tier do you need?
 
 It depends on:
 
 - The type of data being ingested (such as logs, metrics, traces)  
 - The retention period of searchable data (such as 30 days, 90 days, 1 year)  
 - The amount of data you need to ingest each day  
-- The number of dashboards, queries, query types and how frequent they are run.
+- The number of dashboards, queries, query types and how frequent they are run
 
 You can [contact us](https://www.elastic.co/contact) for an estimate and recommended configuration based on your specific scenario.
 
