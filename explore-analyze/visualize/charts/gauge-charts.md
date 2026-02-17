@@ -3,6 +3,8 @@ navigation_title: Gauge charts
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
 description: Instructions and best practices for building gauge charts with Kibana Lens in Elastic.
 ---
 
