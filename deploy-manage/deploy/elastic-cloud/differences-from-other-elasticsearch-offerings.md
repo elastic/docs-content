@@ -172,6 +172,16 @@ If you expect that you will have large datasets that exceed the recommended maxi
 
 These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for more information.
 
+### Index and resource limits
+
+{{serverless-full}} applies certain project-level limits to ensure reliable performance and stability.
+
+| Limit | Value | Adjustable |
+| :--- | :--- | :--- |
+| Number of indices per project | 15,000 | Yes |
+
+Some index limits are adjustable and can be increased by request, while others are fixed. To request a limit increase, open a support case and include the limit you want to increase, your preferred new value, and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
+
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
 In {{serverless-full}}, access is limited to a subset of {{es}} APIs, as Elastic manages the underlying infrastructure. These restrictions help maintain cluster stability, availability, and data integrity, ensuring reliable operation of Serverless projects.
