@@ -1016,6 +1016,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
+* Adds support for choosing the downsampling method in data stream lifecycle [#137023](https://github.com/elastic/elasticsearch/pull/137023)
+* Fixes `illegal_access_exception: class com.maxmind.db.Decoder` from `ip_location` processor [#137479](https://github.com/elastic/elasticsearch/pull/137479)
 * Catches and rethrows `TooComplexToDeterminizeException` in {{esql}} [#137024](https://github.com/elastic/elasticsearch/pull/137024)
 
 
@@ -1096,6 +1098,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Validates multiple `GROK` patterns individually [#137082](https://github.com/elastic/elasticsearch/pull/137082)
 * Manages `INLINE STATS` count(*) on result sets with no columns in {{esql}} [#137017](https://github.com/elastic/elasticsearch/pull/137017)
 * Fixes handling equality with `MV constants` properly in {{esql}} [#137032](https://github.com/elastic/elasticsearch/pull/137032)
+
+* Improves concurrency design of `EnterpriseGeoIpDownloader` [#134223](https://github.com/elastic/elasticsearch/pull/134223)
+* Fixes mapping conflicts in clone, split, and shrink APIs [#137096](https://github.com/elastic/elasticsearch/pull/137096)
 
 ## October 20, 2025 [serverless-changelog-10202025]
 
@@ -1183,6 +1188,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Late materialization after `TopN` (Node level) [#132757](https://github.com/elastic/elasticsearch/pull/132757)
 * Adds `m` alias for `minute` duration literal [#136448](https://github.com/elastic/elasticsearch/pull/136448)
 
+* Adds convenience API key parameter to remote reindex [#135949](https://github.com/elastic/elasticsearch/pull/135949)
+* Adds `match_only_text` subfield to `*.display_name` fields in `ecs@mappings` to be compliant with the latest additions in ECS [#136265](https://github.com/elastic/elasticsearch/pull/136265)
+
 ### Fixes [serverless-changelog-10132025-fixes]
 
 * Fixes an error that occurred when deleting orphaned integration policies [#237875]({{kib-pull}}237875)
@@ -1213,6 +1221,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Replaces any `Attribute` type when pushing down past Project [#135295](https://github.com/elastic/elasticsearch/pull/135295)
 * Fixes an {{esql}} breaker bug [#136105](https://github.com/elastic/elasticsearch/pull/136105)
 * Fixes `Page.equals()` [#136266](https://github.com/elastic/elasticsearch/pull/136266)
+
+* Uses index setting providers for data stream setting validation [#136214](https://github.com/elastic/elasticsearch/pull/136214)
 
 
 ## October 6, 2025 [serverless-changelog-10062025]
@@ -1251,6 +1261,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Runs single phase aggregation when possible [#131485](https://github.com/elastic/elasticsearch/pull/131485)
 * Fills in `topn` values if competitive [#135734](https://github.com/elastic/elasticsearch/pull/135734)
 * Makes order in TOP optional [#135932](https://github.com/elastic/elasticsearch/pull/135932)
+
+* Adds option for `Append Processor` to skip/allow empty values [#105718](https://github.com/elastic/elasticsearch/pull/105718)
+* Adds small optimizations to ``PUT _component_template`` API [#135644](https://github.com/elastic/elasticsearch/pull/135644)
 
 ### Fixes [serverless-changelog-10062025-fixes]
 * Rolls over the reporting data stream automatically when a newer template version is available [#234119]({{kib-pull}}234119)
@@ -1308,6 +1321,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
 
+* Adds classes to represent raw docs sampling configs [#134585](https://github.com/elastic/elasticsearch/pull/134585)
 * Adds {{esql}} support for expressions with LOOKUP JOIN in tech preview [#134952](https://github.com/elastic/elasticsearch/pull/134952)
 * Un-snapshots all 3 URL scalar functions in {{esql}} [#135272](https://github.com/elastic/elasticsearch/pull/135272)
 * Takes `INLINE STATS` out of snapshot in {{esql}} [#135403](https://github.com/elastic/elasticsearch/pull/135403)
@@ -1353,6 +1367,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes alias id when dropping all aggregates [#135247](https://github.com/elastic/elasticsearch/pull/135247)
 * Handles right hand side of inline stats becoming optimized with `LocalRelation` shortcut in {{esql}} [#135011](https://github.com/elastic/elasticsearch/pull/135011)
 
+* Correctly apply field path to JSON processor when adding contents to document root [#135479](https://github.com/elastic/elasticsearch/pull/135479)
+
 
 ## September 22, 2025 [serverless-changelog-09222025]
 
@@ -1372,6 +1388,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds search functionality to the Query rules details page [#232579]({{kib-pull}}232579)
 * Adds a link to Agent Builder in the **View Data** dropdown [#234679]({{kib-pull}}234679)
 * Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into {{serverless-short}} resources (VCUs) and performances
+* Better `max_age` rollover for tiny retentions in data lifecycle management [#134941](https://github.com/elastic/elasticsearch/pull/134941)
+* Removes ingest conditionals `_type` deprecation warning [#134851](https://github.com/elastic/elasticsearch/pull/134851)
 
 * Adds telemetry support for `LOOKUP JOIN` on Expression in {{esql}} [#134942](https://github.com/elastic/elasticsearch/pull/134942)
 * Adds support for include_execution_metadata parameter in {{esql}} [#134446](https://github.com/elastic/elasticsearch/pull/134446)
@@ -1454,6 +1472,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures mapped fields are remembered across simulations [#233799]({{kib-pull}}233799)
 * Adds time series telemetry in xpack usage [#134214](https://github.com/elastic/elasticsearch/pull/134214)
 
+* Adds `recover_failure_document` processor to remediate failurestore docs [#133360](https://github.com/elastic/elasticsearch/pull/133360)
 * Adds SET instruction in {{esql}} [#134029](https://github.com/elastic/elasticsearch/pull/134029)
 * Adds `PRESENT` {{esql}} function [#133986](https://github.com/elastic/elasticsearch/pull/133986)
 * Adds `PresentOverTime` {{esql}} function [#134355](https://github.com/elastic/elasticsearch/pull/134355)
@@ -1493,6 +1512,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Stops sharing weight between drivers in {{esql}} [#133446](https://github.com/elastic/elasticsearch/pull/133446)
 * Adds {{esql}} telemetry with `inlinestats` [#134309](https://github.com/elastic/elasticsearch/pull/134309)
 * Fixes `CB` on reduction phase in aggregations [#133398](https://github.com/elastic/elasticsearch/pull/133398)
+
+* Fixes exceptions in index pattern conflict checks [#134231](https://github.com/elastic/elasticsearch/pull/134231)
+* Fixes `allow_duplicates` edge case bug in append processor [#134319](https://github.com/elastic/elasticsearch/pull/134319)
+* Adds support for flexible access pattern to `NormalizeForStreamProcessor` [#134524](https://github.com/elastic/elasticsearch/pull/134524)
 
 ## September 8, 2025 [serverless-changelog-09082025]
 
@@ -1577,6 +1600,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes responsiveness issues in the Stream management code editor area [#232630]({{kib-pull}}232630)
 * Fixes an empty tooltip issue when creating tags [#232853]({{kib-pull}}232853)
 * Fixes an issue where the **Create tag** modal wouldn't close properly [#233012]({{kib-pull}}233012)
+* Fixes service destination template file name [#133403](https://github.com/elastic/elasticsearch/pull/133403)
+* Avoids stale enrich results after policy execution [#133752](https://github.com/elastic/elasticsearch/pull/133752)
+* Fixes enrich caches outdated value after policy run [#133680](https://github.com/elastic/elasticsearch/pull/133680)
 * Tracks memory in {{esql}} `evaluators` [#133392](https://github.com/elastic/elasticsearch/pull/133392)
 * Fixes bug in `topn` [#133601](https://github.com/elastic/elasticsearch/pull/133601)
 * Fixes wrong marking of a field as `unmapped` when indices shared the same mapping [#133298](https://github.com/elastic/elasticsearch/pull/133298)
@@ -1616,6 +1642,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Stops running {{esql}} planning and scheduling on transport threads [#133313](https://github.com/elastic/elasticsearch/pull/133313)
 * Adds query heads priority to `SliceQueue` [#133245](https://github.com/elastic/elasticsearch/pull/133245)
 
+* Upgrades to tika 3.2.2 [#133410](https://github.com/elastic/elasticsearch/pull/133410)
+* Adds index mode to resolve index response [#132858](https://github.com/elastic/elasticsearch/pull/132858)
+
 ### Fixes [serverless-changelog-08252025-fixes]
 * Fixes a rendering issue that affected progress elements in Canvas [#232432]({{kib-pull}}232432)
 * Fixes the enforcement of deployment mode restrictions when creating package policies in {{fleet}} [#231679]({{kib-pull}}231679)
@@ -1633,6 +1662,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes a broken link in the **Build** breadcrumb that incorrectly pointed to the search indices page in {{es-serverless}} [#232504]({{kib-pull}}232504)
 * Fixes inconsistencies in case activity statistics [#231948]({{kib-pull}}231948)
 * Adds support for a `reporting_user` role with a reserved set of privileges [#231533]({{kib-pull}}231533)
+* Changes `GeoIpCache` and `EnrichCache` to `LongAdder` [#132922](https://github.com/elastic/elasticsearch/pull/132922)
+* Returns 400 on invalid processors in simulate API [#130325](https://github.com/elastic/elasticsearch/pull/130325)
+* Forces rollover on write to true when data stream indices list is empty [#133347](https://github.com/elastic/elasticsearch/pull/133347)
 * Marks `LOOKUP JOIN` as `ExecutesOn.Any` by default in {{esql}} [#133064](https://github.com/elastic/elasticsearch/pull/133064)
 * Fixes update expiration for async query in {{esql}} [#133021](https://github.com/elastic/elasticsearch/pull/133021)
 * Fixes `AsyncOperator` status values and adds emitted rows [#132738](https://github.com/elastic/elasticsearch/pull/132738)
@@ -1654,6 +1686,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds inline markdown visualization [#229191]({{kib-pull}}229191)
 * Adds an `AI` section to the `Stack Management` menu [#227289]({{kib-pull}}227289)
 * Sets the default retention period for Logs anomaly detection to 120 days [#231080]({{kib-pull}}231080)
+* Adds a `merge_type` parameter to the ingest simulate API [#132210](https://github.com/elastic/elasticsearch/pull/132210)
+* Only allows enabling streams if no conflicting indices exist [#132064](https://github.com/elastic/elasticsearch/pull/132064)
+* Adds simulate ingest effective mapping [#132833](https://github.com/elastic/elasticsearch/pull/132833)
+* Adds `created_date` and `modified_date` in index templates [#132083](https://github.com/elastic/elasticsearch/pull/132083)
 * Improves CPU utilization with dynamic slice size in doc partitioning [#132774](https://github.com/elastic/elasticsearch/pull/132774)
 * Considers `min`/`max` from predicates when transforming `date_trunc`/bucket to `round_to` option 2 in {{esql}} [#132143](https://github.com/elastic/elasticsearch/pull/132143)
 * Adds some optimizations for constant blocks [#132456](https://github.com/elastic/elasticsearch/pull/132456)
@@ -1777,6 +1813,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fails `profile` on text response formats [#128627](https://github.com/elastic/elasticsearch/pull/128627)
 * Adds pruning in {{esql}} for columns added by `InlineJoin` [#131204](https://github.com/elastic/elasticsearch/pull/131204)
 
+* Adds `{created,modified}_date` in component templates [#131536](https://github.com/elastic/elasticsearch/pull/131536)
+* Adds `created_date` and `modified_date` in pipelines [#130847](https://github.com/elastic/elasticsearch/pull/130847)
+* Handles structured log messages [#131027](https://github.com/elastic/elasticsearch/pull/131027)
+* Enable failure store for new `logs-*-*` data streams [#131261](https://github.com/elastic/elasticsearch/pull/131261)
+
 ### Fixes [serverless-changelog-08042025-fixes]
 * Fixes loading of saved queries in the Alerting rule definition [#229964]({{kib-pull}}229964)
 * Fixes dashboard panel rendering when the defer-below-the-fold setting is on and panels are focused/unfocused [#229662]({{kib-pull}}229662)
@@ -1812,6 +1853,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Restricts remote `ENRICH` after `FORK` [#131945](https://github.com/elastic/elasticsearch/pull/131945)
 * Fixes combine result for `ingest_took` [#132088](https://github.com/elastic/elasticsearch/pull/132088)
 
+* Prevents auto-sharding for data streams in `LOOKUP` index mode [#131429](https://github.com/elastic/elasticsearch/pull/131429)
+* Simulate ingest API uses existing index mapping when `mapping_addition` is given [#132101](https://github.com/elastic/elasticsearch/pull/132101)
+
 ## July 28, 2025 [serverless-changelog-07282025]
 
 ### Features and enhancements [serverless-changelog-07282025-features-enhancements]
@@ -1845,6 +1889,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures the Gemini Vertex AI documentation link is available in the AI Connector [#228348]({{kib-pull}}228348)
 * Fixes a skipped autocomplete test in the console [#229274]({{kib-pull}}229274)
 * Ignores missing filters in rule parameters instead of causing errors [#229422]({{kib-pull}}229422)
+* Correctly handles `download_database_on_pipeline_creation` within a pipeline processor within a default or final pipeline [#131236](https://github.com/elastic/elasticsearch/pull/131236)
 * Adds `Sample operator` `NamedWritable` to plugin [#131541](https://github.com/elastic/elasticsearch/pull/131541)
 * Supports semantic reranking using contextual snippets instead of entire field text [#129369](https://github.com/elastic/elasticsearch/pull/129369)
 * Fixes memory usage estimation for ELSER models [#131630](https://github.com/elastic/elasticsearch/pull/131630)
@@ -1870,6 +1915,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enhances `semantic_text` inference error messages [#131519](https://github.com/elastic/elasticsearch/pull/131519)
 * Fixes a semantic highlighting bug on flat quantized fields [#131525](https://github.com/elastic/elasticsearch/pull/131525)
 
+* Enables failure store for newly created APM datastreams [#131296](https://github.com/elastic/elasticsearch/pull/131296)
+* Enables failure store for newly created OTel data streams [#131395](https://github.com/elastic/elasticsearch/pull/131395)
 * Speeds up reading multivalued keywords [#131061](https://github.com/elastic/elasticsearch/pull/131061)
 * Substitutes `date_trunc` with `round_to` when the pre-calculated rounding points are available [#128639](https://github.com/elastic/elasticsearch/pull/128639)
 * Adds support for `RLIKE` LIST with pushdown [#129929](https://github.com/elastic/elasticsearch/pull/129929)
@@ -1900,6 +1947,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes `mv_expand` inconsistent column order [#129745](https://github.com/elastic/elasticsearch/pull/129745)
 * Disallows remote `enrich` after lookup join [#131426](https://github.com/elastic/elasticsearch/pull/131426)
 
+* Moves streams status actions to `cluster:monitor` group [#131015](https://github.com/elastic/elasticsearch/pull/131015)
+
 
 ## July 15, 2025 [serverless-changelog-07152025]
 
@@ -1920,6 +1969,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Implements `INLINESTATS` with multiple `LogicalPlan` updates [#128917](https://github.com/elastic/elasticsearch/pull/128917)
 * Adds `Dependency Checker` for `LogicalLocalPlanOptimizer` [#130409](https://github.com/elastic/elasticsearch/pull/130409)
 * Implements remote `LOOKUP JOIN` [#129013](https://github.com/elastic/elasticsearch/pull/129013)
+
 
 ### Fixes [serverless-changelog-07152025-fixes]
 * Fixes an issue where reports timed out and failed with an invalid header error [#225919]({{kib-pull}}225919)
@@ -1956,6 +2006,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Avoids O(N^2) in `VALUES` with ordinals grouping [#130576](https://github.com/elastic/elasticsearch/pull/130576)
 * Fixes behavior for `_index` LIKE for {{esql}} [#130849](https://github.com/elastic/elasticsearch/pull/130849)
 * Fixes `LIMIT` null pointer exception with null value [#130914](https://github.com/elastic/elasticsearch/pull/130914)
+
+* Specifies master timeout when submitting alias tasks [#130733](https://github.com/elastic/elasticsearch/pull/130733)
+* Adds existing shards allocator settings to failure store allowed list [#131056](https://github.com/elastic/elasticsearch/pull/131056)
 
 ## July 7, 2025 [serverless-changelog-07072025]
 
@@ -2007,6 +2060,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Supports `avg` on aggregate metric double [#130421](https://github.com/elastic/elasticsearch/pull/130421)
 * Handles unavailable `MD5` in {{esql}} [#130158](https://github.com/elastic/elasticsearch/pull/130158)
 * Prevents search functions from working with a non-STANDARD index [#130638](https://github.com/elastic/elasticsearch/pull/130638)
+
 
 ## June 30, 2025 [serverless-changelog-06302025]
 
@@ -2115,6 +2169,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Implements navigation UI for the **Overview Page** in **Entity Analytics** [#221748]({{kib-pull}}221748)
 * Adds support for partial result handling in **ES|QL** [#223198]({{kib-pull}}223198)
 * Adds an **Executable Name** tab to the TopN view [#224291]({{kib-pull}}224291)
+* Adds RemoveBlock API to allow `DELETE /{index}/_block/{block}` [#129128](https://github.com/elastic/elasticsearch/pull/129128)
 * Makes `FORK` available in release builds [#129606](https://github.com/elastic/elasticsearch/pull/129606)
 * Adds support for `LIKE` LIST [#129170](https://github.com/elastic/elasticsearch/pull/129170)
 * Pushes down `LOOKUP JOIN` past `Project` [#129503](https://github.com/elastic/elasticsearch/pull/129503)
@@ -2158,6 +2213,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Fixes `PushQueriesIT.testLike()` fails [#129647](https://github.com/elastic/elasticsearch/pull/129647)
 * Fixes `PushQueryIT#testEqualityOrTooBig` [#129657](https://github.com/elastic/elasticsearch/pull/129657)
+
+* Uses a temp `IndexService` for template validation [#129507](https://github.com/elastic/elasticsearch/pull/129507)
+* Sets `event.dataset` if empty for logs [#129074](https://github.com/elastic/elasticsearch/pull/129074)
 
 ## June 17, 2025 [serverless-changelog-06172025]
 
@@ -2233,6 +2291,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Implements SAML custom attributes support in the Identity Provider plugin [#128176](https://github.com/elastic/elasticsearch/pull/128176)
 * Fixes unsupported privileges error message during role and API key creation [#128858](https://github.com/elastic/elasticsearch/pull/128858)
 
+* Adds `NormalizeForStreamProcessor` [#125699](https://github.com/elastic/elasticsearch/pull/125699)
 * Adds another option for {{esql}} date nanos implicit casting in union types  [#127797](https://github.com/elastic/elasticsearch/pull/127797)
 * Adds COMPLETION command as a tech preview {{esql}} feature [#128948](https://github.com/elastic/elasticsearch/pull/128948)
 * Adds {{esql}} support for `ST_GEOHASH`, `ST_GEOTILE`, and `ST_GEOHEX`" [#125143](https://github.com/elastic/elasticsearch/pull/125143)
@@ -2269,6 +2328,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Supports `DATE_NANOS` in `LOOKUP JOIN` [#127962](https://github.com/elastic/elasticsearch/pull/127962)
 * Adds workaround for `RLike` handling of empty lang pattern [#128895](https://github.com/elastic/elasticsearch/pull/128895)
 * Throws `ISE` instead of `IAE` for illegal block in page [#128960](https://github.com/elastic/elasticsearch/pull/128960)
+
+* Avoids unnecessary determinization in index pattern conflict checks [#128362](https://github.com/elastic/elasticsearch/pull/128362)
 
 ## June 2, 2025 [serverless-changelog-06022025]
 
@@ -2374,6 +2435,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Avoids unintended attribute removal [#127563](https://github.com/elastic/elasticsearch/pull/127563)
 * Considers `inlinestats` when having field_caps check for field names [#127564](https://github.com/elastic/elasticsearch/pull/127564)
 
+* System data streams incorrectly show up in the list of template validation problems [#128161](https://github.com/elastic/elasticsearch/pull/128161)
+
 ## May 19, 2025 [serverless-changelog-05192025]
 
 ### Features and enhancements [serverless-changelog-05192025-features-enhancements]
@@ -2439,6 +2502,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures ordinal builder emits ordinal blocks [#127949](https://github.com/elastic/elasticsearch/pull/127949)
 * Keeps `DROP` attributes when resolving field names [#127009](https://github.com/elastic/elasticsearch/pull/127009)
 
+* Skips the validation when retrieving the index mode during reindexing a time series data stream [#127824](https://github.com/elastic/elasticsearch/pull/127824)
+
 ## May 5, 2025 [serverless-changelog-050525]
 
 ### Features and enhancements [serverless-changelog-050525-features-enhancements]
@@ -2454,6 +2519,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Makes the {{fleet}} agents tag filter searchable and sortable [#219639](https://github.com/elastic/kibana/pull/219639)
 * Adds logic to exclude the `temperature` parameter from the body request of some OpenAI models [#218887](https://github.com/elastic/kibana/pull/218887)
 * Adds the ability to switch between relative and absolute time range in Discover [#218056](https://github.com/elastic/kibana/pull/218056)
+
+* Introduces default retention for failure indices [#127573](https://github.com/elastic/elasticsearch/pull/127573)
 
 ### Fixes [serverless-changelog-050525-fixes]
 
@@ -2488,6 +2555,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes metrics and logs from the `get_service_stats` API [#218346](https://github.com/elastic/kibana/pull/218346)
 * Allows you to customize the table tab [#218686](https://github.com/elastic/kibana/pull/218686)
 * Enables keyboard navigation for the create annotations form [#217918](https://github.com/elastic/kibana/pull/217918)
+* Adds ability to redirect ingestion failures on data streams to a failure store [#126973](https://github.com/elastic/elasticsearch/pull/126973)
 * Adds `documents_found` and `values_loaded` [#125631](https://github.com/elastic/elasticsearch/pull/125631)
 * Retries shard movements during {{esql}} query [#126653](https://github.com/elastic/elasticsearch/pull/126653)
 * Pushes more `==` on text fields to Lucene [#126641](https://github.com/elastic/elasticsearch/pull/126641)
@@ -2524,6 +2592,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes bug in single value query [#127146](https://github.com/elastic/elasticsearch/pull/127146)
 * Disables a bugged commit in {{esql}} [#127199](https://github.com/elastic/elasticsearch/pull/127199)
 * Retains aggregate when grouping [#126598](https://github.com/elastic/elasticsearch/pull/126598)
+
+* Bumps plugin version to release `_metric_names_hash` changes [#126850](https://github.com/elastic/elasticsearch/pull/126850)
+* Correctly handle non-integers in nested paths in the remove processor [#127006](https://github.com/elastic/elasticsearch/pull/127006)
 
 
 ## April 21, 2025 [serverless-changelog-04212025]
@@ -2626,6 +2697,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Retrieves token text only when necessary in {{esql}} [#126578](https://github.com/elastic/elasticsearch/pull/126578)
 * `TO_IP` can handle leading zeros [#126532](https://github.com/elastic/elasticsearch/pull/126532)
 
+* Correctly handles nulls in nested paths in the remove processor [#126417](https://github.com/elastic/elasticsearch/pull/126417)
+
 ## April 7, 2025 [serverless-changelog-04072025]
 
 ### Features and enhancements [elastic-cloud-serverless-04072025-features-enhancements]
@@ -2653,6 +2726,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Infers the score mode to use from the Lucene collector in {{esql}} [#125930](https://github.com/elastic/elasticsearch/pull/125930)
 * Supports explicit `Z`/`M` attributes using `WKT` geometry [#125896](https://github.com/elastic/elasticsearch/pull/125896)
 * Enhances `DATE_TRUNC` with arbitrary intervals [#120302](https://github.com/elastic/elasticsearch/pull/120302)
+
+* Runs `TransportGetSettingsAction` on local node [#126051](https://github.com/elastic/elasticsearch/pull/126051)
+* Runs `TransportGetIndexAction` on local node [#125652](https://github.com/elastic/elasticsearch/pull/125652)
 
 
 ### Fixes [elastic-cloud-serverless-04072025-fixes]
@@ -2686,6 +2762,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Supports integrations having secrets with multiple values in Fleet [#216918]({{kib-pull}}216918)
 * Adds overlay to the add/edit integration page in Fleet [#217151]({{kib-pull}}217151)
 
+* Prevents `ConcurrentModificationException` when updating settings for more than one index [#126077](https://github.com/elastic/elasticsearch/pull/126077)
 * Reverts "Allow partial results by default in {{esql}}" [#126286](https://github.com/elastic/elasticsearch/pull/126286)
 * Fixes `ReplaceMissingFieldsWithNull` [#125764](https://github.com/elastic/elasticsearch/pull/125764)
 
@@ -2712,6 +2789,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Takes double parameter markers for identifiers out of snapshot in {{esql}}[#125690](https://github.com/elastic/elasticsearch/pull/125690)
 * Adds `original_types` to description in unsuppored fields in {{esql}} [#124913](https://github.com/elastic/elasticsearch/pull/124913)
 * Fixes sorting when `aggregate_metric_double` present in {{esql}} [#125191](https://github.com/elastic/elasticsearch/pull/125191)
+
+* Avoids creating `known_fields` for every check in alias [#124690](https://github.com/elastic/elasticsearch/pull/124690)
 
 
 ### Fixes [elastic-cloud-serverless-03312025-fixes]
@@ -2770,6 +2849,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Reuses child `outputSet` inside the plan where possible in {{esql}} [#124611](https://github.com/elastic/elasticsearch/pull/124611)
 * Keeps ordinals in {{esql}} conversion functions [#125357](https://github.com/elastic/elasticsearch/pull/125357)
 
+* Reindexes data stream indices on different nodes [#125171](https://github.com/elastic/elasticsearch/pull/125171)
+* Runs `TransportGetDataStreamLifecycleAction` on local node [#125214](https://github.com/elastic/elasticsearch/pull/125214)
+* Runs `TransportGetDataStreamOptionsAction` on local node [#125213](https://github.com/elastic/elasticsearch/pull/125213)
+
 ### Fixes [elastic-cloud-serverless-03242025-fixes]
 * Fixes color by value for Last value array mode [#213917]({{kib-pull}}213917)
 * Fixes can edit check [#213887]({{kib-pull}}213887)
@@ -2800,6 +2883,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Changes "Close project" to "Log out" in nav menu in serverless mode [#211463]({{kib-pull}}211463)
 * Fixes search profiler index reset field when query is changed [#215420]({{kib-pull}}215420)
 
+* Fixes null pointer exception in rolling over unknown target and returns 404 [#125352](https://github.com/elastic/elasticsearch/pull/125352)
+
 * Lets terms run in global ords mode with no match [#124782](https://github.com/elastic/elasticsearch/pull/124782)
 * Fixes scoring for non-full text functions in {{esql}} [#124540](https://github.com/elastic/elasticsearch/pull/124540)
 * Aligns `RENAME` behavior with `EVAL` for sequential processing [#122250](https://github.com/elastic/elasticsearch/pull/122250)
@@ -2827,6 +2912,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds `vector_rescore` parameter as a quantized index type option [#124581](https://github.com/elastic/elasticsearch/pull/124581)
 
 * Indicates when errors represent timeouts [#124936](https://github.com/elastic/elasticsearch/pull/124936)
+
+* Runs `TransportGetMappingsAction` on local node [#122921](https://github.com/elastic/elasticsearch/pull/122921)
+* Runs `TransportGetDataStreamsAction` on local node [#122852](https://github.com/elastic/elasticsearch/pull/122852)
 
 * Speeds up block serialization [#124394](https://github.com/elastic/elasticsearch/pull/124394)
 * Adds initial grammar and planning for `RRF` (snapshot) [#123396](https://github.com/elastic/elasticsearch/pull/123396)
@@ -2877,6 +2965,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * `TO_LOWER` processes all values [#124676](https://github.com/elastic/elasticsearch/pull/124676)
 * Improves error message for `(` and `[` in {{esql}} [#124177](https://github.com/elastic/elasticsearch/pull/124177)
 
+* Fixes geoip databases index access after system feature migration [#124604](https://github.com/elastic/elasticsearch/pull/124604)
+
 
 * Avoids reading unnecessary dimension values when downsampling [#124451](https://github.com/elastic/elasticsearch/pull/124451)
 * Merges template mappings properly during validation [#124784](https://github.com/elastic/elasticsearch/pull/124784)
@@ -2902,6 +2992,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes `Driver` status iterations and `cpuTime` [#123290](https://github.com/elastic/elasticsearch/pull/123290)
 * Allows skipping shards with `_tier` and `_index` in {{esql}} [#123728](https://github.com/elastic/elasticsearch/pull/123728)
 * Introduces `allow_partial_results` setting in {{esql}} [#122890](https://github.com/elastic/elasticsearch/pull/122890)
+
+* Adds index mode to get data stream API [#122486](https://github.com/elastic/elasticsearch/pull/122486)
+* Retries ILM async action after reindexing data stream [#124149](https://github.com/elastic/elasticsearch/pull/124149)
+* Sets cause on create index request in create from action [#124363](https://github.com/elastic/elasticsearch/pull/124363)
 
 ### Fixes [elastic-cloud-serverless-03102025-fixes]
 * Fixes an issue where Korean characters were split into two characters with a space in between when typing in the options list search input in Dashboards and visualizations [#213164]({{kib-pull}}213164)
@@ -2940,6 +3034,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures non-zero row size in `EstimatesRowSize` [#122762](https://github.com/elastic/elasticsearch/pull/122762)
 * Uses a must boolean statement when pushing down to Lucene when scoring is also needed [#124001](https://github.com/elastic/elasticsearch/pull/124001)
 * Revives some more of `inlinestats` functionality [#123589](https://github.com/elastic/elasticsearch/pull/123589)
+
+* Avoids hoarding cluster state references during rollover [#124107](https://github.com/elastic/elasticsearch/pull/124107)
 
 ## March 3, 2025 [serverless-changelog-03032025]
 
@@ -2985,6 +3081,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Renders `aggregate_metric_double` in {{esql}} [#122660](https://github.com/elastic/elasticsearch/pull/122660)
 * Adds initial grammar and changes for `FORK` (snapshot) [#121948](https://github.com/elastic/elasticsearch/pull/121948)
 
+* Allows setting the `type` in the reroute processor [#122409](https://github.com/elastic/elasticsearch/pull/122409)
+
 ### Fixes [elastic-cloud-serverless-02242025-fixes]
 * Fixes Discover session embeddable drilldown [#211678]({{kib-pull}}211678)
 * Passes system message to inferenceCliente.chatComplete [#211263]({{kib-pull}}211263)
@@ -3001,6 +3099,14 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows deploying a model after a failed deployment in Machine Learning [#211459]({{kib-pull}}211459)
 * Ensures the members array is unique for GroupStreamDefinitions [#210089]({{kib-pull}}210089)
 * Improves function search for easier navigation and discovery [#210437]({{kib-pull}}210437)
+* Uses ordered maps for `PipelineConfiguration` xcontent deserialization [#123403](https://github.com/elastic/elasticsearch/pull/123403)
+* Fixes redact processor arraycopy bug [#122640](https://github.com/elastic/elasticsearch/pull/122640)
+* Adds `_metric_names_hash` field to OTel metric mappings [#120952](https://github.com/elastic/elasticsearch/pull/120952)
+* Updates the deprecation info API to not warn about system indices and data streams [#122951](https://github.com/elastic/elasticsearch/pull/122951)
+* Registers `IngestGeoIpMetadata` as a `NamedXContent` [#123079](https://github.com/elastic/elasticsearch/pull/123079)
+* Updates `TransportRolloverAction.checkBlock` so that non-write-index blocks do not prevent data stream rollover [#122905](https://github.com/elastic/elasticsearch/pull/122905)
+* Uses representative count as `event.success_count` in APM data if available [#119995](https://github.com/elastic/elasticsearch/pull/119995)
+* Fixes geoip databases index access after system feature migration [#122938](https://github.com/elastic/elasticsearch/pull/122938)
 * Uses min node version to guard injecting settings in logs provider [#123005](https://github.com/elastic/elasticsearch/pull/123005)
 * Fixes stale data in synthetic source for string stored field [#123105](https://github.com/elastic/elasticsearch/pull/123105)
 
@@ -3078,6 +3184,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Fixes listener leak in exchange service [#122417](https://github.com/elastic/elasticsearch/pull/122417)
 * Revives `inlinestats` [#122257](https://github.com/elastic/elasticsearch/pull/122257)
+
+* Deduplicates `IngestStats` and `IngestStats.Stats` identity records when deserializing [#122496](https://github.com/elastic/elasticsearch/pull/122496)
+* Canonicalizes processor names and types in `IngestStats` [#122610](https://github.com/elastic/elasticsearch/pull/122610)
+* Ensures removal of index blocks does not leave key with null value [#122246](https://github.com/elastic/elasticsearch/pull/122246)
 
 ## February 10, 2025 [serverless-changelog-02102025]
 
