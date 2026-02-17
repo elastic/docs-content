@@ -3,6 +3,8 @@ navigation_title: Tag cloud charts
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
 description: Instructions and best practices for building tag cloud charts with Kibana Lens in Elastic.
 ---
 
