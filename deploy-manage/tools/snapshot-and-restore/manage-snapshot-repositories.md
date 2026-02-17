@@ -5,6 +5,11 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Manage snapshot repositories

@@ -3,6 +3,10 @@ applies_to:
   deployment:
     self:
 navigation_title: Production settings
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: elastic-stack
 ---
 
 # Using the Docker images in production [docker-prod-prerequisites]

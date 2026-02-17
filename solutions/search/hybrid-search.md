@@ -2,6 +2,13 @@
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 # Hybrid search
 

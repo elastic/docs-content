@@ -288,18 +288,18 @@ The FormatDate lambda provides date formatting capabilities. Dates can be format
 
 To use it, surround the date and formatting parameters with `{{#FormatDate}}...{{/FormatDate}}`.
 
-The format of the text passed to the lambda is: `<date>; <time zone>; <date format>`, where semicolons (`;`) separate each parameter. The `<date>` parameter is required; the `<time zone>` and `<date format>` parameters are optional. The default time zone is `"UTC"` and the default date format is `"YYYY-MM-DD hh:mma"`. For example, the following templates all render the same value:
+The format of the text passed to the lambda is: `<date>; <time zone>; <date format>`, where semicolons (`;`) separate each parameter. The `<date>` parameter is required; the `<time zone>` and `<date format>` parameters are optional. The default time zone is `"UTC"` and the default date format is `"YYYY-MM-DD hh:mm"`. For example, the following templates all render the same value:
 
 ```sh
     {{#FormatDate}} {{{timestamp}}} {{/FormatDate}}
     {{#FormatDate}} {{{timestamp}}} ; UTC {{/FormatDate}}
-    {{#FormatDate}} {{{timestamp}}} ; UTC; YYYY-MM-DD hh:mma {{/FormatDate}}
-    {{#FormatDate}} {{{timestamp}}} ; ; YYYY-MM-DD hh:mma {{/FormatDate}}
+    {{#FormatDate}} {{{timestamp}}} ; UTC; YYYY-MM-DD hh:mm {{/FormatDate}}
+    {{#FormatDate}} {{{timestamp}}} ; ; YYYY-MM-DD hh:mm {{/FormatDate}}
 ```
 
 The `<time zone>` parameter must be a valid time zone identifier as listed in [TZ database time zone names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), such as `"America/New_York"`.
 
-The `<date format>` parameter must be a valid date format string as described in the [Moment `format()` documentation](https://momentjs.com/docs/#/displaying/). For example, the date format `"YYYY-MM-DD hh:mma"` will render in the following format: `"2023-04-24 11:21pm"`.
+The `<date format>` parameter must be a valid date format string as described in the [Moment `format()` documentation](https://momentjs.com/docs/#/displaying/). For example, the date format `"YYYY-MM-DD hh:mm"` will render in the following format: `"2023-04-24 11:21pm"`.
 
 The date value itself should usually be referenced with triple braces since some characters in date strings may contain values that are escaped, which would prevent them from being parsed as dates.
 

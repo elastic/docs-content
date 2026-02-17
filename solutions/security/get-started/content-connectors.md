@@ -2,6 +2,15 @@
 applies_to:
   stack: 
   serverless:
+products:
+  - id: security
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Content connectors
