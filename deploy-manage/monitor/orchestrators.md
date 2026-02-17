@@ -3,6 +3,9 @@ applies_to:
   deployment:
     ece: all
     eck: all
+products:
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Monitoring orchestrators

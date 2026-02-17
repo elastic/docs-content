@@ -1,9 +1,10 @@
 ---
 applies_to:
   serverless:
+    elasticsearch: ga
+navigation_title: Search Tier view
 products:
   - id: cloud-serverless
-navigation_title: Search Tier view
 ---
 
 # Search Tier view in AutoOps for {{serverless-short}}
@@ -25,21 +26,21 @@ On the **Search Tier** page, the top half of the page offers general insights at
 
 Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** to explore usage and performance data up to the last 10 days. The charted data is bucketed per day except when you select a period of up to 72 hours, when it is bucketed per hour.
+* Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
 * Explore different **visualizations** presenting the trend of search VCU usage over time and how it compares to the performance of the search tier in terms of search rate and latency.
 * View the **annotations** overlaying the search VCUs usage chart to understand when the search power and boost window changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption). 
 * Gain insights from the **performance charts** depicting search rate and search latency trends to understand why your VCU consumption might fluctuate over time. 
 
 ## Index and data stream-level insights
  
-The bottom half of the page offers a more granular breakdown table of index-level and data stream-level insights into search performance. 
+The bottom half of the page offers a more granular breakdown of index-level and data stream-level insights into search performance. 
 
 :::{image} /deploy-manage/images/search-tier-breakdown-table.png
 :screenshot:
-:alt: Screenshot showing an expanded row in the data set table in the bottom half of the Search Tier page
+:alt: Screenshot showing an expanded row in the Data Stream table on the bottom half of the Search Tier page
 :::
 
-Each row of the table represents a single index or data stream, providing the following information:
+A table lists all of your indices and data streams, with each row providing the following information:
 * The **number of documents** in the index or data stream.
 * The latest **search rate** in the selected time period.
 * The latest **search latency** in the selected time period.
@@ -47,9 +48,9 @@ Each row of the table represents a single index or data stream, providing the fo
 
 Using this table, you can detect which of your indices or data streams is currently being searched and at what rate and latency. This helps you identify which indices are suffering from high [search load](https://www.elastic.co/search-labs/blog/elasticsearch-serverless-tier-autoscaling#what-is-search-load?), so that you can deduce where that load is coming from and manage it accordingly.
 
-For historical analysis, you can also expand each row to reveal performance trends over time, helping you detect patterns or anomalies in search performance for each index and data stream individually.
+For historical analysis, you can also expand each row to reveal performance trends over time. These help you detect patterns or anomalies in search performance for each index and data stream individually.
 
-Also, this table is interactive and can be:
+This table is interactive and can be:
 
 * filtered by index or data stream name.
 * sorted by index or data stream name, documents count, search rate, search latency, or last searched time.
@@ -60,7 +61,7 @@ The **Search Tier** view shows you how many search VCUs are consumed in your pro
 
 The consumption of search VCUs is directly related to autoscaling. When your project is upscaled, more VCUs are consumed, and when your project is downscaled, fewer VCUs are consumed. 
 
-The following factors may cause upscaling or downscaling and consequently an increase or decrease in the number of search VCUs consumed:
+The next sections describe factors that may cause upscaling or downscaling and consequently an increase or decrease in the number of search VCUs consumed.
 
 ### Search rate
 A higher search rate will lead to a larger [search load](https://www.elastic.co/search-labs/blog/elasticsearch-serverless-tier-autoscaling#what-is-search-load?), which means the project will be upscaled and more search VCUs will be consumed. Similarly, a smaller search load means fewer search VCUs being consumed.
@@ -71,15 +72,15 @@ When that happens, the search tier will try to respond to all requests as quickl
 
 ### Search latency
 
-Alternatively, the search rate on your project may remain steady, but the search latency may increase because some computationally heavy search queries have been executing for several minutes, preventing the search tier from serving the newer search queries. 
+While the search rate on your project may remain steady, but the search latency may increase because some computationally heavy search queries have been executing for several minutes, preventing the search tier from serving the newer search queries. 
 
-This could be caused by a number of reasons:
+A number of things could cause this:
 
 * A user may be sending complex full-text queries including regular expressions or leading wildcards
 * A dashboard may be issuing search queries running on a very large time frame including non-search-ready data
 * Index mappings may be inefficient or they may be defining too many fields, causing higher memory consumption
 
-As a result, the search tier gets slowly saturated and the new search queries get queued up waiting for the long-running ones to terminate. This increase in search latency can trigger upscaling and in turn increase your search VCU consumption. Low search latency means decreased search VCU consumption.
+As a result, the search tier slowly becomes saturated and the new search requests get queued up waiting for the long-running ones to complete. This increase in search latency can trigger upscaling and in turn increase your search VCU consumption. Low search latency means decreased search VCU consumption.
 
 :::{admonition} Coming soon to AutoOps
 We plan to display long-running search queries in the **Search Tier** view so that you can learn which queries are causing increased search latency and improve their performance.

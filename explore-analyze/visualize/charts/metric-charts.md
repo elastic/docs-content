@@ -4,6 +4,13 @@ applies_to:
   stack: ga
   serverless: ga
 description: Instructions and best practices for building metric charts with Kibana Lens in Elastic.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Build metric charts with {{kib}} [build-metric-charts-with-kibana]
@@ -19,6 +26,9 @@ You can create metric charts in {{kib}} using [**Lens**](../lens.md).
 ![Metric chart representing an SLO with different layouts](../../images/metric-chart.png)
 
 ## Build a metric chart
+
+:::{include} ../../_snippets/lens-prerequisites.md
+:::
 
 To build a metric chart:
 
@@ -64,7 +74,7 @@ Refer to [](#settings) for a complete list of options.
 
 ::::{step} Save the chart
 - If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and offers you to add the visualization to a dashboard and to the Visualize library.
+- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
 ::::
 
 :::::
@@ -220,8 +230,8 @@ Customize your metric chart to display exactly the information you need, formatt
 :   Split your metric into multiple tiles based on a categorical field. Each unique value creates its own tile, allowing you to compare metrics across regions, products, time periods, or any other dimensions. You can optionally specify the following options:
 
     - **Number of values**: The number of tiles to show. If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
-    - **Rank by**: The dimension by which top values are ranked.
-    - **Rank direction**: The direction to use for the ranking.
+    :::{include} ../../_snippets/lens-rank-by-options.md
+    :::
     - **Collapse by**: Aggregate values of the various tiles into a single number. Possible aggregation options are `None` (default), `Sum`, `Average`, `Min`, and `Max`.
 
     :::{include} ../../_snippets/lens-breakdown-advanced-settings.md

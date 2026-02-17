@@ -1,5 +1,14 @@
 ---
 navigation_title: LLM and agentic AI observability
+products:
+  - id: observability
+  - id: apm
+  - id: edot-sdk
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # LLM and agentic AI observability
