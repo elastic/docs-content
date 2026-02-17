@@ -65,7 +65,7 @@ These permissions are needed by the Service Account that ECK operator runs as.
 | `PodDisruptionBudget` | `policy` | no | Ensuring update safety for {{es}}. Check [docs](/deploy-manage/deploy/cloud-on-k8s/pod-disruption-budget.md) to learn more. |
 | `StorageClass` | `storage.k8s.io` | yes | Validating storage expansion support. Check [docs](volume-claim-templates.md#k8s-volume-claim-templates-update) to learn more. |
 | `coreauthorization.k8s.io` | `SubjectAccessReview` | yes | Controlling access between referenced resources. Check [docs](/deploy-manage/deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md) to learn more. |
-| `Namespace` |  | yes | AutoOps functionality uses an optional namespaceSelector to match namespaces by label, which requires listing and filtering namespace resources across the cluster to determine which Elasticsearch instances should be configured.
+| `Namespace` |  | yes | The AutoOps functionality uses an optional `namespaceSelector` to match namespaces by label. It requires listing and filtering namespace resources across the cluster to determine which {{es}} instances must be configured.
 
 And all permissions that the [Using ECK-managed resources](#k8s-eck-permissions-using) chapter specifies.
 
