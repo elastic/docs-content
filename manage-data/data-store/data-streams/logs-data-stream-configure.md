@@ -50,7 +50,7 @@ If you’re enabling logsdb index mode on a data stream that already exists, mak
 To avoid mapping conflicts, consider these options:
 
 * **Adjust mappings:** Check your existing [mappings](/manage-data/data-store/mapping.md) to ensure that `host.name` is mapped as a keyword.
-* **Change sorting:** If needed, you can remove `host.name` from the sort settings and use a different set of fields. Sorting by `@timestamp` can be a good fallback.
+* **Change sorting:** If needed, you can remove `host.name` from the [sort settings](#logsdb-sort-settings) and use a different set of fields. Sorting by `@timestamp` can be a good fallback.
 * **Switch to a different [index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)**: If resolving `host.name` mapping conflicts is not feasible, you can choose not to use logsdb mode.
 
 ::::{important}
