@@ -80,10 +80,10 @@ By default, logsdb index mode uses the `best_compression` [codec](elasticsearch:
 
 The logsdb index mode also automatically applies specialized codecs for numeric doc values, in order to optimize storage usage. Numeric fields are encoded using the following sequence of codecs:
 
-* **Delta encoding**: Stores the difference between consecutive values instead of the actual values.
-* **Offset encoding**: Stores the difference from a base value rather than between consecutive values.
-* **Greatest Common Divisor (GCD) encoding**: Finds the greatest common divisor of a set of values and stores the differences as multiples of the GCD.
-* **Frame Of Reference (FOR) encoding**: Determines the smallest number of bits required to encode a block of values and uses bit-packing to fit such values into larger 64-bit blocks.
+1. **Delta encoding**: Stores the difference between consecutive values instead of the actual values.
+1. **Offset encoding**: Stores the difference from a base value rather than between consecutive values.
+1. **Greatest Common Divisor (GCD) encoding**: Finds the greatest common divisor of a set of values and stores the differences as multiples of the GCD.
+1. **Frame Of Reference (FOR) encoding**: Determines the smallest number of bits required to encode a block of values and uses bit-packing to fit such values into larger 64-bit blocks.
 
 Each encoding is evaluated according to heuristics determined by the data distribution. For example, the algorithm checks whether the data is monotonically non-decreasing or non-increasing. If so, delta encoding is applied; otherwise, the process continues with the next encoding method (offset).
 
