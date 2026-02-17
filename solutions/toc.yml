@@ -84,6 +84,7 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
+      - file: elasticsearch-solution-project/es-serverless-add-ons.md
   - file: observability.md
     children:
       - file: observability/get-started.md
