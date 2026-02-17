@@ -26,7 +26,8 @@ To send data from {{agent}} to {{ls}} securely, you need to configure Transport 
 You can use whatever process you typically use to generate PEM-formatted certificates. The examples shown here use the `certutil` tool provided by {{es}}.
 
 ::::{tip}
-The `certutil` tool is not available on {{ecloud}}, but you can still use it to generate certificates for {{agent}} to {{ls}} connections. [Download an {{es}} package](https://www.elastic.co/downloads/elasticsearch), extract it to a local directory, and run the `elasticsearch-certutil` command. There's no need to start {{es}}!
+* The `certutil` tool is not available on {{ecloud}}, but you can still use it to generate certificates for {{agent}} to {{ls}} connections. [Download an {{es}} package](https://www.elastic.co/downloads/elasticsearch), extract it to a local directory, and run the `elasticsearch-certutil` command. There's no need to start {{es}}!
+* If you choose not to use [`certutil`](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md), the certificates that you obtain must allow for both `clientAuth` and `serverAuth` if the extended key usage extension is present.
 ::::
 
 
