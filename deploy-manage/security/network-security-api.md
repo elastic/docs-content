@@ -41,6 +41,10 @@ Refer to [](network-security.md) to learn more about network security across all
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{ecloud}} API.
 :::
 
+:::{note}
+Serverless projects require the Serverless Plus add-on to apply network security policies. During the promotional period, applying a network security policy to a project opts that project in to Serverless Plus.
+:::
+
 ## API reference
 
 To learn more about these endpoints, refer to the reference for your deployment type:

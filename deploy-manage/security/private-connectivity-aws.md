@@ -31,6 +31,14 @@ To learn how private connection policies impact your deployment or project, refe
 {{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
 :::
 
+## Requirements
+
+Serverless projects require the Serverless Plus add-on to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus. 
+
+:::{tip}
+You can opt out by disconnecting all policies from the project.
+:::
+
 ## Considerations
 
 Before you begin, review  the following considerations:
@@ -335,6 +343,10 @@ Create a new private connection policy.
     :::
 
 9.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. If you specified a VPC filter, then after you associate the filter with a resource, it starts filtering traffic.
+    
+    :::{note}
+    Serverless projects require the Serverless Plus add-on to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
+    :::
 10. To automatically attach this private connection policy to new resources of this type, select **Apply by default**.
 11.  Click **Create**.
 12. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
@@ -344,6 +356,8 @@ The next step is to [associate the policy](#associate-private-connection-policy)
 ### Optional: Associate a private connection policy with a deployment or project[associate-private-connection-policy]
 
 You can associate a private connection policy with your deployment or project from the policy's settings, or from your deployment's or project's settings. 
+
+Serverless projects require the Serverless Plus add-on to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
 
 #### From a deployment or project
 

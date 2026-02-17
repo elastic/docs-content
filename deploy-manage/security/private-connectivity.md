@@ -12,6 +12,8 @@ products:
 
 Private connectivity is a secure way for your {{ecloud}} deployments and projects to communicate with other cloud provider services over your cloud provider's private network. You can create a virtual private connection (VPC) using your provider's private link service, and then manage it in {{ecloud}} using a private connection policy. You can also optionally filter traffic to your deployments and projects by creating ingress filters for your VPC in {{ecloud}}.
 
+Serverless projects require the Serverless Plus add-on to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
+
 :::{tip}
 Private connection policies are a type of [network security policy](/deploy-manage/security/network-security-policies.md).
 :::
