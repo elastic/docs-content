@@ -3,6 +3,8 @@ navigation_title: Waffle charts
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
 description: Instructions and best practices for building waffle charts with Kibana Lens in Elastic.
 ---
 
