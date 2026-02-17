@@ -10,8 +10,11 @@ products:
 
 # Azure Storage repository [ece-configure-azure-snapshotting]
 
-With {{ece}}, you can enable your {{es}} clusters to regularly snapshot data to Microsoft Azure Storage.
+This guide focuses on registering an Azure snapshot repository at the {{ece}} (ECE) platform level. Platform-level repositories can be assigned to deployments and are used by ECE to automatically manage snapshots through the `found-snapshots` repository.
 
+If you have custom requirements or deployment-specific use cases that are independent of the ECE-managed automation, you can also register snapshot repositories directly at the deployment level. To do that, follow the [{{ech}} guide for Azure Blob Storage](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md), which is also applicable to {{ece}} deployments.
+
+At the ECE platform level, you can enable your {{es}} clusters to regularly snapshot data to Microsoft Azure Storage.
 
 ## Add the Azure repository [ece_add_the_azure_repository]
 
@@ -33,15 +36,8 @@ Add your Azure Storage Container as a repository to the platform:
     }
     ```
 
+  3. Select **Save**.
 
-Snapshots are stored in the container you provide. Use the repository name you define here to configure your {{es}} clusters for snapshotting to this repository.
+## Configure your deployment to use the repository [ece_configure_your_deployment_for_azure_snapshots]
 
-
-## Configure your deployment for Azure snapshots [ece_configure_your_deployment_for_azure_snapshots]
-
-To save deployment snapshots to the Azure repository:
-
-1. Configure your deployment to [snapshot to the Azure repository](cloud-enterprise.md).
-
-The cluster should then have snapshots enabled and and begins snapshotting immediately. You can configure the how frequently snapshotting occurs on the **Snapshots** in the **Elasticsearch** menu.
-
+After adding the snapshots repository, [configure your deployment to use it](./cloud-enterprise.md#ece-manage-repositories-clusters). Once configured, snapshots run automatically according to the scheduled interval. You can update this schedule from the **Snapshots** section in the **{{es}}** menu of your deployment page.

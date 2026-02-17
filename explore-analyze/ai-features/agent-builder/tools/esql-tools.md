@@ -1,5 +1,6 @@
 ---
 navigation_title: "ES|QL tools"
+description: "Create custom tools that execute parameterized ES|QL queries for precise data retrieval and analysis."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,9 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-
-
-# {{esql}} tools
+# {{esql}} tools in {{agent-builder}}
 
 {{esql}} query tools enable you to create parameterized queries that execute directly against your {{es}} data. These custom tools provide precise control over data retrieval through templated [{{esql}}](elasticsearch://reference/query-languages/esql.md) statements.
 
@@ -27,6 +26,8 @@ Use custom **{{esql}} tools** when:
 * Results should be in a predictable tabular format
 * You have well-defined data retrieval requirements
 
+While agents can generate {{esql}} queries dynamically using [index search tools](index-search-tools.md), custom {{esql}} tools ensure syntax correctness and enforce critical business rules that an LLM might occasionally miss. For strategies to avoid data retrieval issues, refer to [Context length exceeded](../troubleshooting/context-length-exceeded.md).
+
 ## Key characteristics
 
 * Execute pre-defined {{esql}} queries with dynamic parameters
@@ -38,9 +39,25 @@ Use custom **{{esql}} tools** when:
 
 {{esql}} tools support the following parameter types:
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.2-9.3 }
+{{esql}} tools support the following parameter types:
+
 * **String types**: `text`, `keyword`
 * **Numeric types**: `long`, `integer`, `double`, `float`
 * **Other types**: `boolean`, `date`, `object`, `nested`
+:::
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+{{esql}} tools support the following parameter types:
+
+* **Textual types**: `string`
+* **Numeric types**: `integer`, `float`
+* **Other types**: `boolean`, `date`, `array`
+:::
+
+::::
 
 ## Parameter options
 
@@ -69,6 +86,23 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 :::{image} ../images/create-esql-tool-query.png
 :screenshot:
 :alt: Creating an ES|QL tool with a parameterized query
+:::
+
+:::{dropdown} Complex analytical query example
+For high-stakes or complex analytical queries, pre-defining the {{esql}} logic guarantees correctness and enforces business rules.
+
+**Tool name**: `Calculate Quarterly Revenue`
+
+**Description**: "Calculates confirmed revenue for a specific region broken down by quarter. Input requires a region code (e.g., 'US', 'EU')."
+
+**Query**:
+```esql
+FROM finance-orders-*
+| WHERE order_status == "completed" AND region == ?region <1>
+| STATS total_revenue = SUM(amount) BY quarter
+| LIMIT 5
+```
+1. The `?region` parameter gives agents flexibility while keeping the core calculation logic consistent and reliable
 :::
 
 ## Best practices

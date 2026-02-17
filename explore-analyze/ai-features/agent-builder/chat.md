@@ -1,5 +1,6 @@
 ---
 navigation_title: "Chat"
+description: "Learn how to chat with AI agents in Agent Builder, inspect reasoning steps, and manage conversation history through the UI or API."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{agent-builder}}: Agent Chat
+# Chat with {{agent-builder}} agents
 
 **Agent Chat** is the chat interface for natural language conversations with your [agents](agent-builder-agents.md).
 
@@ -39,7 +40,7 @@ This takes you to the chat GUI:
 :alt: Annotated screenshot of the Agent Chat GUI with numbered callouts highlighting the chat input (1), agent selector (2), model selector (3), conversations panel (4), and more actions menu (5)
 :::
 
-1. [Chat input area](#chat-and-select-agent)
+1. [Chat input area](#start-a-chat-and-select-an-agent)
 2. [Agent selector](#select-a-different-agent)
 3. [Model selector](#select-a-different-model)
 4. [Conversation history](#find-conversation-history)
@@ -47,7 +48,7 @@ This takes you to the chat GUI:
 
 ## Agent Chat GUI
 
-### Chat and select agent
+### Start a chat and select an agent
 
 Use the text input area to chat with an agent in real time. By default, you chat with the built-in Elastic AI Agent.
 
