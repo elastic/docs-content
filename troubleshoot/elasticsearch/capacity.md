@@ -1,5 +1,7 @@
 ---
 navigation_title: Capacity
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot capacity issues in {{es}}
