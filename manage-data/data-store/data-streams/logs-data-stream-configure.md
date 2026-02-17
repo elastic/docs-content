@@ -16,7 +16,7 @@ If you have the required [subscription](https://www.elastic.co/subscriptions), l
 
 If you don’t have the required [subscription](https://www.elastic.co/subscriptions), logsdb mode uses the original `_source` field.
 
-Before using synthetic source, make sure to review the [restrictions](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-restrictions).
+Before using synthetic `_source`, make sure to review the [restrictions](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-restrictions).
 
 When working with multi-value fields, the `index.mapping.synthetic_source_keep` setting controls how field values are preserved for synthetic `_source` reconstruction. In logsdb, the default value is `arrays`, which retains both duplicate values and the order of entries. However, the exact structure of array elements and objects is not necessarily retained. Preserving duplicates and ordering can be critical for some log fields, such as DNS A records, HTTP headers, and log entries that represent sequential or repeated events.
 
