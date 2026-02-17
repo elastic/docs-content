@@ -128,7 +128,7 @@ For example, this adjustment occurs with text fields when `store` is `false` and
 
 ## Logsdb settings reference [logsdb-settings-summary]
 
-Logs data streams use the following settings:
+By default, logs data streams use the following settings:
 
 * **`index.mode`**: `"logsdb"`
 * **`index.mapping.synthetic_source_keep`**: `"arrays"`
