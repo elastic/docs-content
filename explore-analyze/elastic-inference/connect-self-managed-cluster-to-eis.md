@@ -9,7 +9,7 @@ products:
 description: Use Elastic Inference Service (EIS) with your self-managed, ECE, and ECK clusters through Cloud Connect.
 ---
 
-# Elastic Inference Service for self-managed clusters
+# Elastic {{infer-cap}} Service for self-managed clusters
 
 [Elastic {{infer-cap}} Service (EIS)](eis.md) is available with zero setup on Elastic Cloud Hosted and Serverless deployments. To use EIS with other deployment types, you can use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself.
 
@@ -155,6 +155,24 @@ The response should include the indexed document:
   }
 }
 ```
+
+## Supported models with EIS through Cloud Connect
+
+Using Elastic {{infer-cap}} Service through Cloud Connect, you have access to multiple models, including LLMs, embedding models, and rerankers. For the complete list of available models, refer to [Supported models](/explore-analyze/elastic-inference/eis.md#supported-models). 
+
+To use these models, you need [{{kib}} connectors](kibana://reference/connectors-kibana.md) and [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference). Some connectors and {{infer}} endpoints are created automatically, while others must be created manually, depending on the model.
+
+### LLMs 
+
+For the Claude 3.7 and Claude 4.5 models, connectors and {{infer}} endpoints are preconfigured. To use these models, you don’t need to create anything unless you want to use custom settings. In that case, you can create [your own connectors](kibana://reference/connectors-kibana.md#creating-new-connector) and [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+
+To use other LLMs listed under [Supported models](/explore-analyze/elastic-inference/eis.md#supported-models), you must [create the {{kib}} connectors](kibana://reference/connectors-kibana.md#creating-new-connector) and [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) manually.
+
+### Embedding and rerank models
+
+Predefined {{infer}} endpoints and connectors are available for all models listed under [Embedding models](/explore-analyze/elastic-inference/eis.md#embedding-models) and [Rerankers](/explore-analyze/elastic-inference/eis.md#rerankers).
+
+For these models, you only need to create new connectors or {{infer}} endpoints if you want to use custom settings.
 
 ## Regions and billing
 
