@@ -697,14 +697,16 @@ PUT _scripts/my-search-template
 {
   "script": {
     "lang": "mustache",
-    "source": {
+    "source": """
+    {
       "query":{
         "multi_match":{
           "query": "{{query_string}}",
-          "fields": """[{{#text_fields}}{{user_name}},{{/text_fields}}]"""
+          "fields": [{{#text_fields}}"{{field_name}}",{{/text_fields}}]
         }
       }
     }
+    """
   }
 }
 ```
@@ -719,10 +721,10 @@ POST _render/template
     "query_string": "My string",
     "text_fields": [
       {
-        "user_name": "John"
+        "field_name": "first_name"
       },
       {
-        "user_name": "kimchy"
+        "field_name": "last_name"
       }
     ]
   }
@@ -737,7 +739,7 @@ When rendered, template outputs:
     "query": {
       "multi_match": {
         "query": "My string",
-        "fields": "[John,kimchy,]"
+        "fields": ["first_name","last_name",]
       }
     }
   }
@@ -756,14 +758,16 @@ PUT _scripts/my-search-template
 {
   "script": {
     "lang": "mustache",
-    "source": {
+    "source": """
+    {
       "query":{
         "multi_match":{
           "query": "{{query_string}}",
-          "fields": """[{{#text_fields}}{{user_name}}{{^last}},{{/last}}{{/text_fields}}]"""
+          "fields": [{{#text_fields}}"{{field_name}}"{{^last}},{{/last}}{{/text_fields}}]
         }
       }
     }
+    """
   }
 }
 ```
@@ -778,11 +782,11 @@ POST _render/template
     "query_string": "My string",
     "text_fields": [
       {
-        "user_name": "John",
+        "field_name": "first_name",
         "last": false
       },
       {
-        "user_name": "kimchy",
+        "field_name": "last_name",
         "last": true
       }
     ]
@@ -798,7 +802,10 @@ When rendered the template outputs:
     "query": {
       "multi_match": {
         "query": "My string",
-        "fields": "[John,kimchy]"
+        "fields": [
+          "first_name",
+          "last_name"
+        ]
       }
     }
   }
