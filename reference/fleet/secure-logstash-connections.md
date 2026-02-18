@@ -103,7 +103,35 @@ In your {{ls}} configuration directory, open the `pipelines.yml` file and add th
 
 In the `elastic-agent-pipeline.conf` file, add the pipeline configuration. The configuration needed for {{ech}} is different from self-managed {{es}} clusters. If you copied the configuration shown in {{fleet}}, adjust it as needed.
 
-{{ech}} example:
+
+### {{es-serverless}} example
+
+```text
+input {
+  elastic_agent {
+    port => 5044
+    ssl_enabled => true
+    ssl_certificate_authorities => ["/path/to/ca.crt"]
+    ssl_certificate => "/path/to/logstash.crt"
+    ssl_key => "/path/to/logstash.pkcs8.key"
+    ssl_client_authentication => "required"
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => "ELASTICSEARCH_ENDPOINT_URL" <1>
+    api_key => "xxxx:xxxx" <2>
+    data_stream => true
+  }
+}
+```
+
+1. The Elasticsearch endpoint URL for your {{es-serverless}} project is available in **Application endpoints, cluster and component IDs**. Select **Manage** next to your project to access this information. 
+
+2. In {{fleet}}, you can generate this API key when you add a {{ls}} output.
+
+### {{ech}} example
 
 ```text
 input {
@@ -130,7 +158,7 @@ output {
 2. In {{fleet}}, you can generate this API key when you add a {{ls}} output.
 
 
-Self-managed {{es}} cluster example:
+### Self-managed {{es}} cluster example
 
 ```text
 input {
