@@ -87,6 +87,7 @@ POST /_security/api_key
   "expiration": "30d",
   "role_descriptors": {
     "mcp-access": {
+      "cluster": ["monitor_inference"],
       "indices": [
         {
           "names": ["*"],
@@ -126,6 +127,7 @@ POST /_security/api_key
   "expiration": "30d",
   "role_descriptors": {
     "mcp-access": {
+      "cluster": ["monitor_inference"],
       "indices": [
         {
           "names": ["logs-*", "metrics-*"], <1>
