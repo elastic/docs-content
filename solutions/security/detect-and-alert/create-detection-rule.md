@@ -512,7 +512,11 @@ When writing your query, consider the following:
     If the `LIMIT` value and **Max alerts per run** value are different, the rule uses the lower value to determine the maximum number of alerts the rule generates.
 
 * When writing an aggregating query, use the [`STATS...BY`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) command with fields that you want to search and filter for after alerts are created. For example, using the `host.name`, `user.name`, `process.name` fields with the `BY` operator of the `STATS...BY` command returns these fields in alert documents, and allows you to search and filter for them from the Alerts table.
-* When configuring alert suppression on a non-aggregating query, we recommend sorting results by ascending `@timestamp` order. Doing so ensures that alerts are properly suppressed, especially if the number of alerts generated is higher than the **Max alerts per run** value.
+* When configuring alert suppression on a non-aggregating query, we recommend sorting results by ascending `@timestamp` order. Doing so ensures that alerts are properly suppressed, especially if the number of alerts generated is higher than the **Max alerts per run** value. 
+
+    ::::{note}
+    If your query uses the [`MV_EXPAND`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-mv_expand) command, add a tiebreaker field such as `_index` to your `SORT` command (for example, `SORT @timestamp ASC, _index ASC`). `MV_EXPAND` can produce multiple rows with identical timestamps, and without a tiebreaker, the sort order of those rows is undefined, which can lead to inconsistent alert suppression results.
+    ::::
 
 
 ### {{esql}} rule limitations [esql-rule-limitations]
