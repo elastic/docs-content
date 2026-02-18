@@ -43,7 +43,7 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 The [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) is an optional add-on for {{es-serverless}} projects. It includes enterprise features such as IP filtering, private connectivity, and {{cps}} (coming soon).
 
-Serverless Plus is free for a limited promotional period. Enabling or using features included in the add-on opts your project in. When the promotional period ends, a charge for the add-on is applied as a percentage of the project's ECUs. To learn more about the add-on and the  promotional period, refer to [Project features and add-ons](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus).
+Serverless Plus is free for a limited promotional period. Enabling or using features included in the add-on opts your project in. When the promotional period ends, a charge for the add-on is applied as a percentage of the project's ECUs. To learn more about the add-on and the promotional period, refer to [Project features and add-ons](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus).
 
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
 
