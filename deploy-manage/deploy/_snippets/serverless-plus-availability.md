@@ -1,4 +1,9 @@
-The add-on is included at no additional charge with [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features) ({{sec-serverless}}) and [Observability Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#obs-serverless-project-features) ({{obs-serverless}}). For {{es}} projects, Serverless Plus is an optional add-on.
+Serverless Plus features are included at no additional charge in the following feature tiers:
+
+* {{sec-serverless}} projects: [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features)
+* {{obs-serverless}} projects: [Observability Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#obs-serverless-project-features)
+
+For {{es}} projects, Serverless Plus is offered as an optional add-on.
 
 Serverless Plus is free for a limited promotional period. Enabling or using these features opts your project in to Serverless Plus. At the end of the promotional period, for any project using Serverless Plus:
 

@@ -65,7 +65,7 @@ Project features and add-ons control which capabilities are available in your se
 * [{{sec-serverless}} project features](#elastic-sec-project-features)
 * [{{obs-serverless}} project features](#obs-serverless-project-features) 
 
-The [Serverless Plus add-on](#serverless-plus) is included with Security and Observability Complete, and is optional for {{es}} projects.
+[Serverless Plus](#serverless-plus) is included at no additional charge in the Security Analytics Complete and Observability Complete feature tiers, and is offered as an optional add-on for {{es}} projects.
 
 ### {{es-serverless}} project features [es-serverless-project-features]
 
