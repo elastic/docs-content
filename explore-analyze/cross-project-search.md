@@ -106,9 +106,15 @@ You can use qualified search expressions and project routing expressions togethe
 The distinction between qualified and unqualified search expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied in {{cps}}.
 When you use an **unqualified** expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
 
+Project routing expressions do not affect the behavior of the `ignore_unavailable` or `allow_no_indices` settings.
+
 ::::{important}
 The way that missing resources are interpreted differs between qualified and unqualified expressions, refer to the [Qualified expression behavior](#behavior-qualified) and [Unqualified expression behavior](#behavior-unqualified) sections for a detailed explanation.
 ::::
+
+##### Default (non-CPS) and qualified expression behavior
+
+The following describes the standard {{es}} behavior:
 
 `ignore_unavailable` defaults to `false`.
 When set to `false`, the request returns an error if it targets a missing resource (such as an index or data stream).
@@ -129,9 +135,9 @@ For example, if no indices match `logs*`, the following request returns an empty
 GET logs*/_search
 ```
 
-##### Qualified expression behavior [behavior-qualified]
-
 When you use a **qualified search expression**, the default behavior of `ignore_unavailable` and `allow_no_indices` outlined above applies independently to each qualified project.
+
+The next section explains how this behavior differs when using unqualified search expressions in {{cps-init}}.
 
 ##### Unqualified expression behavior [behavior-unqualified]
 
@@ -342,16 +348,18 @@ A high-level overview
 The following APIs support {{cps}}:
 
 * [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)
-* [CAT count](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-cat-count)
+* [Count](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-count) and [CAT count](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-cat-count)
+* [ES|QL query](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-esql-queryv) and [ES|QL async query](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-esql-async-query)
 * [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
 * [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
 * [Multi search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
 * [Multi search template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template)
 * PIT (point in time) [close](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-close-point-in-time), [open](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-open-point-in-time)
-* [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-reindex)
+* [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-reindex)
 * [Resolve Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index)
 * [SQL](https://www.elastic.co/docs/api/doc/elasticsearch/v9/group/endpoint-sql)
 * [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* [Search a vector tile](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-search-mvt)
 * Search scroll [clear](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-clear-scroll), [run](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
 
