@@ -3,7 +3,7 @@ The Serverless Plus add-on is a package of enterprise features that help you to 
 Serverless Plus includes the following features:
 
 * Network security features, including [IP filtering](/deploy-manage/security/ip-filtering-cloud.md) and [private connectivity](/deploy-manage/security/private-connectivity.md)
-* Coming soon: Cross-project search
+* Coming soon: {{cps-cap}}
 
 In future, Serverless Plus will include the following additional features:
 
