@@ -172,7 +172,7 @@ Example: For a private location expected to run 2 concurrent browser monitors an
 
 - A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated.
 
-- Complex monitor configuration can disproportionately increase the private location policy size, leading to agent communication errors and degradation even if the limit mentioned above hasn't been reached. In these edge cases, increasing the `server.limits.checkin_limit.max_body_byte_size` setting on Fleet Server to 8 MB or 16 MB (or setting it to -1 to disable the limit entirely) might help prevent communication errors.
+- Complex monitor configuration can disproportionately increase the private location policy size, leading to agent communication errors and degradation even if the limit mentioned above hasn't been reached. In these edge cases, increasing the `server.limits.checkin_limit.max_body_byte_size` setting on Fleet Server to 8 MB or 16 MB (or setting it to -1 to turn off the limit entirely) might help prevent communication errors.
 
 If you're facing one of these scenarios, it is likely that the private location has grown too large and needs to be split into smaller locations, each alloted a portion of the original location monitors.
 
