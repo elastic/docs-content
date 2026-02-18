@@ -180,7 +180,7 @@ service or supported third-party integration, depending on where you want to
 send the notifications. For example, you can use a Slack connector to send a
 message to a channel. Or you can use an index connector that writes a JSON
 object to a specific index. For details about creating connectors, refer to
-[Connectors](kibana://reference/connectors-kibana.md#creating-new-connector).
+[Connectors](/deploy-manage/manage-connectors.md#creating-new-connector).
 :::
 
 2. Set the action frequency. Choose whether you want to send:
