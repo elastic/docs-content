@@ -164,7 +164,7 @@ To use these models, you need [{{kib}} connectors](kibana://reference/connectors
 
 ### LLMs 
 
-For the Claude 3.7 and Claude 4.5 models, connectors are preconfigured and ready to be used.
+For Claude 3.7 and Claude 4.5, connectors are preconfigured and ready to be used.
 
 To use other LLMs listed under [Supported models](/explore-analyze/elastic-inference/eis.md#supported-models), you must [create the {{kib}} connectors](kibana://reference/connectors-kibana.md#creating-new-connector) manually. The corresponding {{infer}} endpoints are preconfigured.
 
