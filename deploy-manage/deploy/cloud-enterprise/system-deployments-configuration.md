@@ -18,6 +18,9 @@ We will review each cluster and provide recommendations to make sure that you ar
 By default, the system deployments have a dedicated `system_owned` flag set to `true` to avoid mistakenly changing the configuration of those clusters. Most configuration changes suggested in this section do not require this flag to be set to `false`, but there are some cases where changing the flag might be required. If you do change this flag, always make sure to set it back to `true` once you have completed the changes. The flag can be set by navigating to the **Data** section in the **Advanced cluster configuration** page.
 ::::
 
+:::{warning}
+Independent upgrades should only be performed when Elastic Support explicitly instructs you to do so.
+:::
 
 
 ## Overview of system deployments [ece_overview_of_system_deployments] 
