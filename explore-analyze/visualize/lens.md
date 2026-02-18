@@ -21,20 +21,23 @@ Once you select a {{data-source}}, you can build many types of visualizations by
 
 With Lens, you can create the following visualization types:
 
-- [Bar chart](/explore-analyze/visualize/charts/bar-charts.md)
-- [Line chart](/explore-analyze/visualize/charts/line-charts.md)
-- [Area chart](/explore-analyze/visualize/charts/area-charts.md)
-- [Metric chart](/explore-analyze/visualize/charts/metric-charts.md)
-- [Table](/explore-analyze/visualize/charts/tables.md)
-- [Pie chart](/explore-analyze/visualize/charts/pie-charts.md)
-- Gauge chart
-- Heat map chart
-- Waffle chart
-- Region map chart
-- Treemap chart
-- Tag cloud chart
-- Mosaic chart
-- Legacy Metric chart (deprecated)
+
+| **Chart type** | **Use when you want to...** |
+| --- | --- |
+| [Bar chart](/explore-analyze/visualize/charts/bar-charts.md) | Compare values across discrete categories or show distributions with histogram buckets. |
+| [Line chart](/explore-analyze/visualize/charts/line-charts.md) | Show how a metric changes over time or another continuous dimension. |
+| [Area chart](/explore-analyze/visualize/charts/area-charts.md) | Show change over time while emphasizing cumulative magnitude or part-to-whole stacking. |
+| [Metric chart](/explore-analyze/visualize/charts/metric-charts.md) | Highlight a single KPI or a small set of critical numbers. |
+| [Table](/explore-analyze/visualize/charts/tables.md) | Present precise values, rankings, or multi-metric details in a compact layout. |
+| [Pie chart](/explore-analyze/visualize/charts/pie-charts.md) | Show simple part-to-whole composition with a small number of categories (generally ≤ 5). |
+| Gauge chart | Show progress toward a target or status against thresholds for a single metric. |
+| Heat map chart | Reveal patterns by magnitude across two binned dimensions using color. |
+| Waffle chart | Show part-to-whole as a grid of equal cells where filled cells represent proportion. |
+| Region chart | Show geospatial patterns by coloring regions based on aggregated values (choropleth). |
+| Treemap chart | Visualize hierarchical part-to-whole across categories and subcategories. |
+| Tag cloud chart | Emphasize the most frequent terms; font size reflects relative magnitude. |
+| Mosaic chart | Compare part-to-whole across two categorical dimensions in a tiled layout. |
+| Legacy metric chart (deprecated)| Maintain existing legacy panels; prefer the modern Metric chart for new visuals. |
 
 ## Create visualizations [create-the-visualization-panel]
 
