@@ -158,7 +158,7 @@ The response should include the indexed document:
 
 ## Supported models with EIS through Cloud Connect
 
-Using Elastic {{infer-cap}} Service through Cloud Connect, you have access to multiple models, including LLMs, embedding models, and rerankers. For the complete list of available models, refer to [Supported models](/explore-analyze/elastic-inference/eis.md#supported-models). 
+Using Elastic {{infer-cap}} Service through Cloud Connect, you have access all availble models, including LLMs, embedding models, and rerankers. For the complete list of available models, refer to [Supported models](/explore-analyze/elastic-inference/eis.md#supported-models). 
 
 To use these models, you need [{{kib}} connectors](kibana://reference/connectors-kibana.md) (for LLMs) or [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference). There are preconfigured {{infer}} endpoints for all models. For some LLMs, connectors need to be created manually, depending on the model.
 
