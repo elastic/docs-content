@@ -82,3 +82,8 @@ You can’t use ECE’s single sign-on (SSO) to access system deployments.
 ::::{note} 
 Enabling integration with external authentication provider requires that you set the `system_owned` flag to `false` in order to change the elasticsearch.yaml configuration. Remember to set the flag back to `true` after you are done.
 ::::
+
+## System cluster upgrade policy
+
+The system cluster stack versions are validated as part of each ECE release and are not intended to be upgraded separately from the platform. Platform services depend on the versions that ship with the installed ECE release. Upgrading them out of band can create incompatibilities and may lead to reduced availability or platform failures. To chnge system cluster versions, upgrade to a supported ECE release instead. You can review which stack versions align with each release in the [default system deployment versions](./default-system-deployment-versions.md) page.
+
