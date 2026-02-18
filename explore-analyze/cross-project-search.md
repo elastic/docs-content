@@ -109,7 +109,7 @@ When you use an **unqualified** expression, index resolution is performed agains
 Project routing expressions do not affect the behavior of the `ignore_unavailable` or `allow_no_indices` settings.
 
 ::::{important}
-The way that missing resources are interpreted differs between qualified and unqualified expressions, refer to the [Qualified expression behavior](#behavior-qualified) and [Default (non-CPS) and unqualified expression behavior](#behavior-default-qualified) sections for a detailed explanation.
+The way that missing resources are interpreted differs between unqualified and qualified expressions, refer to the [Unqualified expression behavior](#behavior-unqualified) and [Default (non-CPS) and qualified expression behavior](#behavior-default-qualified) sections for a detailed explanation.
 ::::
 
 ##### Default (non-CPS) and qualified expression behavior [behavior-default-qualified]
