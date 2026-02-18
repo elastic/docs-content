@@ -3,6 +3,7 @@ navigation_title: "ES|QL"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
   - https://www.elastic.co/guide/en/kibana/current/esql.html
+description: Overview of the ES|QL editor in Kibana, including query structure, editor tools, time filtering, variables, and query management.
 applies_to:
   stack: ga
   serverless: ga
@@ -31,7 +32,12 @@ Find the complete list of supported commands, functions, and operators in the [{
 
 ### Query structure [esql-kibana-query-bar]
 
-Every {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands), such as [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from), which retrieves data from data streams, indices, or aliases, or [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md), which is optimized for querying time series data streams. You can follow a source command with one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-processing-commands). For example, [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) filters rows based on a condition, and [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) aggregates data. You can chain multiple commands using pipe (`|`) characters:
+Every {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands) that retrieves data:
+
+- [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) retrieves data from data streams, indices, or aliases.
+- [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) is optimized for querying time series data streams.
+
+You can then chain one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-processing-commands) using pipe (`|`) characters. For example, [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) filters rows and [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) aggregates data:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -42,18 +48,11 @@ FROM kibana_sample_data_logs
 When querying many indices at once without filters, the response might be too large. If you encounter a content length error, use [`DROP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-drop) or [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) to limit the number of fields returned.
 
 ::::{note}
-{{esql}} keywords are case-insensitive. The following query is identical to the previous one:
-
-```esql
-from kibana_sample_data_logs
-| where response.keyword == "200"
-| stats total_bytes = sum(bytes) by geo.dest
-```
-
+{{esql}} keywords are case-insensitive. `FROM`, `from`, and `From` are all equivalent.
 ::::
 
 
-### Editor tools [_make_your_query_readable]
+### Editor tools
 
 The {{esql}} editor includes several built-in tools to help you write queries efficiently.
 
@@ -63,7 +62,7 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 ![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 
-#### Query formatting
+#### Query formatting [_make_your_query_readable]
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
 
@@ -197,6 +196,8 @@ serverless: preview
 
 ## Manage queries
 
+The {{esql}} editor keeps track of your queries so you can reuse and organize them.
+
 ### Query history [esql-kibana-query-history]
 
 You can reuse your recent {{esql}} queries in the query bar. In the query bar, select **Show recent queries**.
@@ -231,3 +232,10 @@ In the **Starred** tab, find all the queries you have previously starred.
 :::
 
 
+## Related pages
+
+- [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators.
+- [Using {{esql}} in Discover](/explore-analyze/discover/try-esql.md): Hands-on tutorial and Discover-specific features like result tables, visualizations, and lookup indices.
+- [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
+- [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
+- [Dashboard controls](/explore-analyze/dashboards/add-controls.md): Add {{esql}}-powered controls to dashboards.

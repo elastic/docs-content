@@ -114,21 +114,12 @@ FROM kibana_sample_data_logs
 
 Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
 
-::::{note}
-The 10,000 row limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Any query or aggregation runs on the full data set.
-::::
+### Limitations [esql-kibana-results-table-limitations]
 
-::::{note}
-The maximum number of columns in Discover is 50. If a query returns more than 50 columns, Discover only shows the first 50.
-::::
-
-::::{note}
-The data filtering UI is not available when Discover is in {{esql}} mode. To filter data, use the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command in your query instead.
-::::
-
-::::{note}
-CSV export from Discover shows no more than 10,000 rows. This limit only applies to the number of rows that the query retrieves and Discover displays. Queries and aggregations run on the full data set.
-::::
+- **Row limit:** Discover displays up to 10,000 rows. This limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Any query or aggregation runs on the full data set.
+- **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
+- **CSV export:** CSV exports from Discover are also limited to 10,000 rows. Queries and aggregations still run on the full data set.
+- **No data filtering UI:** The data filtering UI is not available when Discover is in {{esql}} mode. Use the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command instead.
 
 
 ## Sort query results [_sorting]
