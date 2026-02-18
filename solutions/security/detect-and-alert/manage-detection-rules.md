@@ -24,11 +24,16 @@ On the Rules page, you can:
 
 * [Sort and filter the rules list](/solutions/security/detect-and-alert/manage-detection-rules.md#sort-filter-rules)
 * [Check the current status of rules](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-status)
-* [Modify existing rules settings](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings)
-* [Manage rules](/solutions/security/detect-and-alert/manage-detection-rules.md#manage-rules-ui)
+* [Edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings)
+* [Revert modifications to prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#revert-rule-changes)
+* [Enable and disable rules](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules)
+* [Duplicate rules](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules)
+* [Delete rules](/solutions/security/detect-and-alert/manage-detection-rules.md#delete-rules)
 * [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules)
+* [Fill gaps for multiple rules](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules)
 * [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions)
 * [Export and import rules](/solutions/security/detect-and-alert/manage-detection-rules.md#import-export-rules-ui)
+* [Bulk actions reference](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-actions-reference)
 * [Confirm rule prerequisites](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites)
 * [Troubleshoot missing alerts](/troubleshoot/security/detection-rules.md#troubleshoot-signals)
 
@@ -64,7 +69,9 @@ The **Last response** column displays the current status of each rule, based on 
 For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/images/security-rules-table-error-icon.png "title =20x20")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
 
 
-## Modify existing rules settings [edit-rules-settings]
+## Edit rule settings [edit-rules-settings]
+
+Edit rule settings to modify detection logic, notifications, schedules, and other rule configurations. You can edit a single rule or use bulk actions to update multiple rules at once.
 
 ::::{admonition} Requirements
 * You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
@@ -74,42 +81,14 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 ::::
 
 
+### Edit a single rule [edit-single-rule]
+
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
-
-    * Edit a single rule: Select the **All actions** menu (**…**) on a rule, then select **Edit rule settings**. Alternatively, open the rule’s details page and click **Edit rule settings**. The **Edit rule settings** view opens, where you can modify the [rule’s settings](/solutions/security/detect-and-alert/create-detection-rule.md).
-    * Bulk edit multiple rules: Select the rules you want to edit, then select an action from the **Bulk actions** menu:
-
-        ::::{note}
-        Rules will be skipped if they can’t be modified by a bulk edit. For example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
-        ::::
-
-        * **Index patterns**: Add or delete the index patterns used by all selected rules.
-        * **Tags**: Add or delete tags on all selected rules.
-        * **Custom highlighted fields**: Add custom highlighted fields on all selected rules. You can choose any fields that are available in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices), or enter field names from other indices. To overwrite a rule’s current set of custom highlighted fields, select the **Overwrite all selected rules' custom highlighted fields** option, then click **Save**.
-        * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions select the option to **Overwrite all selected rules actions**.
-
-        ::::{important}
-        After upgrading to {{stack}} 8.8 or later, frequency settings for rule actions created in 8.7 or earlier are moved from the rule level to the action level. The action schedules remain the same and will continue to run on their previously specified frequency (`On each rule execution`, `Hourly`, `Daily`, or `Weekly`).
-        ::::
-
-
-        :::{note}
-        Rule actions won’t run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md). They’ll resume running after the maintenance window ends.
-        ::::
-
-
-        * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and look-back times on all selected rules.
-        * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.
-
-3. On the page or flyout that opens, update the rule settings and actions.
-
-    ::::{tip}
-    To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon.
-    ::::
-
-4. If available, select **Overwrite all selected _x_** to overwrite the settings on the rules. For example, if you’re adding tags to multiple rules, selecting **Overwrite all selected rules tags** removes all the rules' original tags and replaces them with the tags you specify.
-5. Click **Save**.
+    * In the Rules table, select the **All actions** menu (**…**) on a rule, then select **Edit rule settings**.
+    * Click on a rule's name to open its details page, then click **Edit rule settings**.
+3. The **Edit rule settings** view opens, where you can modify the [rule's settings](/solutions/security/detect-and-alert/create-detection-rule.md).
+4. Click **Save changes**.
 
 ::::{note}
 
@@ -119,6 +98,42 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 
 Modified fields on prebuilt rules are marked with the **Modified** badge. From the rule's details page, click the badge to view the changed fields. Changes are displayed in a side-by-side comparison of the original Elastic version and the modified version. Deleted characters are highlighted in red; added characters are highlighted in green. You can also view this comparison by clicking the **Modified Elastic rule** badge under the rule's name on the rule's details page.
 
+::::
+
+::::{tip}
+To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon.
+::::
+
+
+### Bulk edit rule settings [bulk-edit-rules]
+
+Use bulk editing to update settings on multiple rules simultaneously.
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the Rules table, select the rules you want to edit.
+3. From the **Bulk actions** menu, select one of the following:
+
+    * **Index patterns**: Add or delete the index patterns used by all selected rules.
+    * **Tags**: Add or delete tags on all selected rules.
+    * **Custom highlighted fields**: Add custom highlighted fields on all selected rules. You can choose any fields that are available in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices), or enter field names from other indices. To overwrite a rule's current set of custom highlighted fields, select the **Overwrite all selected rules' custom highlighted fields** option, then click **Save**.
+    * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions select the option to **Overwrite all selected rules actions**.
+    * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and look-back times on all selected rules.
+    * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.
+
+4. On the page or flyout that opens, update the rule settings.
+5. If available, select **Overwrite all selected _x_** to overwrite the settings on the rules. For example, if you're adding tags to multiple rules, selecting **Overwrite all selected rules tags** removes all the rules' original tags and replaces them with the tags you specify.
+6. Click **Save**.
+
+::::{note}
+Rules will be skipped if they can't be modified by a bulk edit. For example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
+::::
+
+::::{important}
+After upgrading to {{stack}} 8.8 or later, frequency settings for rule actions created in 8.7 or earlier are moved from the rule level to the action level. The action schedules remain the same and will continue to run on their previously specified frequency (`On each rule execution`, `Hourly`, `Daily`, or `Weekly`).
+::::
+
+::::{note}
+Rule actions won't run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md). They'll resume running after the maintenance window ends.
 ::::
 
 ## Revert modifications to prebuilt rules [revert-rule-changes]
@@ -138,22 +153,70 @@ If you haven’t updated the rule in a while, its original version might be unav
 ::::
 
 
-## Manage rules [manage-rules-ui]
+## Enable and disable rules [enable-disable-rules]
 
-You can duplicate, enable, disable, delete, and do more to rules:
+Enable rules to activate them so they run on their defined schedules and generate alerts. Disable rules to stop them from running without deleting them.
 
-::::{note}
-When duplicating a rule with exceptions, you can choose to duplicate the rule and its exceptions (active and expired), the rule and active exceptions only, or only the rule. If you duplicate the rule and its exceptions, copies of the exceptions are created and added to the duplicated rule’s [default rule list](/solutions/security/detect-and-alert/rule-exceptions.md). If the original rule used exceptions from a shared exception list, the duplicated rule will reference the same shared exception list.
-::::
-
+### Enable or disable a single rule
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, do one of the following:
+    * Switch the rule's **Enabled** toggle on or off.
+    * Select the **All actions** menu (**…**) on a rule, then select **Enable** or **Disable**.
+    * Click on a rule's name to open its details page, then select **All actions** → **Enable** or **Disable**.
 
-    * Select the **All actions** menu (**…**) on a rule, then select an action.
-    * Select all the rules you want to modify, then select an action from the **Bulk actions** menu.
-    * To enable or disable a single rule, switch on the rule’s **Enabled** toggle.
-    * To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) actions for rules, click the bell icon.
+### Bulk enable or disable rules
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the Rules table, select the rules you want to enable or disable.
+3. From the **Bulk actions** menu, select **Enable** or **Disable**.
+
+
+## Duplicate rules [duplicate-rules]
+
+Duplicate rules to create copies that you can modify independently. This is useful for creating variations of existing rules or testing changes without affecting the original rule.
+
+### Duplicate a single rule
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Do one of the following:
+    * In the Rules table, select the **All actions** menu (**…**) on a rule, then select **Duplicate**.
+    * Click on a rule's name to open its details page, then select **All actions** → **Duplicate**.
+3. If the rule has exceptions, choose how to handle them:
+    * Duplicate the rule and its exceptions (active and expired)
+    * Duplicate the rule and active exceptions only
+    * Duplicate only the rule
+
+::::{note}
+If you duplicate the rule and its exceptions, copies of the exceptions are created and added to the duplicated rule's [default rule list](/solutions/security/detect-and-alert/rule-exceptions.md). If the original rule used exceptions from a shared exception list, the duplicated rule will reference the same shared exception list.
+::::
+
+### Bulk duplicate rules
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the Rules table, select the rules you want to duplicate.
+3. From the **Bulk actions** menu, select **Duplicate**.
+4. If any selected rules have exceptions, choose how to handle them.
+
+
+## Delete rules [delete-rules]
+
+Delete rules to permanently remove them from your system. This action cannot be undone.
+
+### Delete a single rule
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Do one of the following:
+    * In the Rules table, select the **All actions** menu (**…**) on a rule, then select **Delete**.
+    * Click on a rule's name to open its details page, then select **All actions** → **Delete**.
+3. Confirm the deletion.
+
+### Bulk delete rules
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the Rules table, select the rules you want to delete.
+3. From the **Bulk actions** menu, select **Delete**.
+4. Confirm the deletion.
 
 
 
@@ -272,6 +335,27 @@ The rules are exported to an `.ndjson` file.
         * **Overwrite existing connectors with conflicting action "id"**: Updates existing connectors if they match the `action id` value of any rule actions in the import file. Configuration data included with the actions is also overwritten.
 
 The imported rules are added to the Rules table.
+
+
+## Bulk actions reference [bulk-actions-reference]
+
+The following table summarizes all bulk actions available from the **Bulk actions** menu in the Rules table. Select multiple rules in the table, then choose an action from the menu.
+
+| Bulk action | Description | Learn more |
+|---|---|---|
+| **Enable** | Activate selected rules so they run on their defined schedules | [Enable and disable rules](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules) |
+| **Disable** | Deactivate selected rules to stop them from running | [Enable and disable rules](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules) |
+| **Duplicate** | Create copies of selected rules | [Duplicate rules](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules) |
+| **Delete** | Permanently remove selected rules | [Delete rules](/solutions/security/detect-and-alert/manage-detection-rules.md#delete-rules) |
+| **Export** | Export selected rules to an `.ndjson` file | [Export rules](/solutions/security/detect-and-alert/manage-detection-rules.md#export-rules-ui) |
+| **Manual run** | Run selected rules for a specified time period | [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) |
+| **Fill gaps** | Fill gaps for selected rules | [Fill gaps for multiple rules](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules) |
+| **Index patterns** | Add or delete index patterns on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
+| **Tags** | Add or delete tags on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
+| **Custom highlighted fields** | Add custom highlighted fields on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
+| **Add rule actions** | Add rule actions on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
+| **Update rule schedules** | Update schedules and look-back times on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
+| **Apply Timeline template** | Apply a Timeline template to selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
 
 
 ## Confirm rule prerequisites [rule-prerequisites]
