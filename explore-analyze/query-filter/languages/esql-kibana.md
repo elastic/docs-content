@@ -39,7 +39,7 @@ FROM kibana_sample_data_logs
 | STATS total_bytes = SUM(bytes) BY geo.dest
 ```
 
-When querying many indices at once without filters, the response may be too large. If you encounter a content length error, use [`DROP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-drop) or [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) to limit the number of fields returned.
+When querying many indices at once without filters, the response might be too large. If you encounter a content length error, use [`DROP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-drop) or [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) to limit the number of fields returned.
 
 ::::{note}
 {{esql}} keywords are case-insensitive. The following query is identical to the previous one:
@@ -74,7 +74,7 @@ For readability, you can put each processing command on a new line and add inden
 
 #### Warnings [_warnings]
 
-A query may result in warnings, for example when querying an unsupported field type. When that happens, the query bar displays a warning symbol. To see the detailed warning, expand the query bar, and select **warnings**.
+A query might result in warnings, for example when querying an unsupported field type. When that happens, the query bar displays a warning symbol. To see the detailed warning, expand the query bar, and select **warnings**.
 
 #### Keyboard shortcuts
 
