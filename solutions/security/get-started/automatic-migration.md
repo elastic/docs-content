@@ -194,7 +194,7 @@ This section describes the **Translated dashboards** page's interface and the da
 :screenshot:
 ::::
 
-:::{admonition} Important information for QRadar "BB" rules
+:::::{admonition} Important information for QRadar "BB" rules
 
 ::::{applies-switch}
 
@@ -208,7 +208,7 @@ Building block rule logic is included automatically in translated rules. No acti
 
 ::::
 
-:::
+:::::
 
 The table's fields are as follows:
 
