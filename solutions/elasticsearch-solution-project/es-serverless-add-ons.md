@@ -12,7 +12,7 @@ description: Learn about add-ons for Elasticsearch Serverless projects.
 
 # {{es-serverless}} add-ons [elasticsearch-add-ons]
 
-{{es-serverless}} projects support optional add-ons. The only add-on available is **Serverless Plus**.
+{{es-serverless}} projects currently support the optional **Serverless Plus** add-on.
 
 :::{include} /deploy-manage/deploy/_snippets/serverless-plus.md
 :::
