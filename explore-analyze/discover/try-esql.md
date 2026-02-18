@@ -124,7 +124,7 @@ Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Us
 
 ## Sort query results [_sorting]
 
-To sort on one of the columns, click the column name you want to sort on and select the sort order. This performs client-side sorting and only sorts the rows that were retrieved by the query, which may not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
+To sort on one of the columns, click the column name you want to sort on and select the sort order. This performs client-side sorting and only sorts the rows that were retrieved by the query, which might not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
 
 ```esql
 FROM kibana_sample_data_logs
