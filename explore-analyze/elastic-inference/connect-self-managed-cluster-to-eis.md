@@ -172,7 +172,7 @@ To use other LLMs listed under [Supported models](/explore-analyze/elastic-infer
 
 Predefined {{infer}} endpoints and connectors are available for all models listed under [Embedding models](/explore-analyze/elastic-inference/eis.md#embedding-models) and [Rerankers](/explore-analyze/elastic-inference/eis.md#rerankers).
 
-For these models, you only need to create new connectors or {{infer}} endpoints if you want to use custom settings.
+For these models, you only need to create new {{infer}} endpoints if you want to use custom settings.
 
 ## Regions and billing
 
