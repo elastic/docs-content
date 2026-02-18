@@ -349,7 +349,7 @@ Create a new private connection policy.
     :::
 10. To automatically attach this private connection policy to new resources of this type, select **Apply by default**.
 11.  Click **Create**.
-12. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
+12. (Optional) If you created a private connection policy for {{ech}} deployments, you can [claim your VPC endpoint ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
 
 The next step is to [associate the policy](#associate-private-connection-policy) with your deployment or project.
 
