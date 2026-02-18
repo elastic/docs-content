@@ -82,10 +82,6 @@ A: {{serverless-full}} is available in select AWS, GCP, and Azure regions, with 
 **Q: How can I move data to or from {{serverless-short}} projects?**  
 A: You can migrate data into your {{serverless-short}} projects using either the reindex API or {{ls}}. Refer to [Migrate data to {{serverless-short}}](/manage-data/migrate/migrate-to-serverless.md) to learn more.
 
-
-
-
-
 **Q: Can I request backups or restores for my serverless projects?**  
 A: Request for project backups or restores is currently unsupported, and we are working on data migration tools to better support this.
 
