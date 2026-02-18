@@ -563,7 +563,7 @@ redirects:
   'solutions/security/cloud/integration-tenablevm.md': 'solutions/security/integrations/tenablevm.md'
   'solutions/security/cloud/integration-rapid7.md': 'solutions/security/integrations/rapid7.md'
   'solutions/security/cloud/integration-qualys.md': 'solutions/security/integrations/qualys.md'
-  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/integrations/aws-security-hub.md'
+  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/integrations/aws-security-hub-cspm.md'
   'solutions/security/cloud/aws-config-integration.md': 'solutions/security/integrations/aws-config.md'
 
 # Deduplicate canvas function reference
@@ -634,7 +634,7 @@ redirects:
 # Related to https://github.com/elastic/docs-content/issues/2662
   'solutions/security/cloud/integrations/aws-config.md': 'solutions/security/integrations/aws-config.md'
   'solutions/security/cloud/integrations/aws-inspector.md': 'solutions/security/integrations/aws-inspector.md'
-  'solutions/security/cloud/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub.md'
+  'solutions/security/cloud/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub-cspm.md'
   'solutions/security/cloud/integrations/cncf-falco.md': 'solutions/security/integrations/cncf-falco.md'
   'solutions/security/cloud/integrations/google-security-command-center.md': 'solutions/security/integrations/google-security-command-center.md'
   'solutions/security/cloud/integrations/ingest-third-party-cloud-security-data.md': 'solutions/security/integrations/ingest-third-party-security-data.md'
@@ -648,6 +648,8 @@ redirects:
 
   # Move CCS feature docs to explore-analyze
   'solutions/search/cross-cluster-search.md': 'explore-analyze/cross-cluster-search.md'
+  # Rename AWS Security Hub integration's name to AWS Security Hub CSPM
+  'solutions/security/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub-cspm.md'
   'solutions/search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
 
   # Related to https://github.com/elastic/docs-content/pull/4438
