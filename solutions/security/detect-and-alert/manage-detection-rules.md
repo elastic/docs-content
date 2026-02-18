@@ -22,20 +22,13 @@ The Rules page allows you to view and manage all prebuilt and custom detection r
 
 On the Rules page, you can:
 
-* [Sort and filter the rules list](/solutions/security/detect-and-alert/manage-detection-rules.md#sort-filter-rules)
-* [Check the current status of rules](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-status)
-* [Edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings)
-* [Revert modifications to prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#revert-rule-changes)
-* [Enable and disable rules](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules)
-* [Duplicate rules](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules)
-* [Delete rules](/solutions/security/detect-and-alert/manage-detection-rules.md#delete-rules)
-* [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules)
-* [Fill gaps for multiple rules](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules)
+* [Sort and filter the rules list](/solutions/security/detect-and-alert/manage-detection-rules.md#sort-filter-rules) and [check rule status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-status)
+* [Edit](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings), [enable/disable](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules), [duplicate](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules), and [delete](/solutions/security/detect-and-alert/manage-detection-rules.md#delete-rules) rules
+* [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) and [fill gaps](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules)
 * [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions)
 * [Export and import rules](/solutions/security/detect-and-alert/manage-detection-rules.md#import-export-rules-ui)
-* [Bulk actions reference](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-actions-reference)
-* [Confirm rule prerequisites](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites)
-* [Troubleshoot missing alerts](/troubleshoot/security/detection-rules.md#troubleshoot-signals)
+* [Confirm rule prerequisites](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) and [troubleshoot missing alerts](/troubleshoot/security/detection-rules.md#troubleshoot-signals)
+* Perform actions on multiple rules with [bulk actions](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-actions-reference)
 
 
 ## Sort and filter the rules list [sort-filter-rules]
@@ -337,25 +330,25 @@ The rules are exported to an `.ndjson` file.
 The imported rules are added to the Rules table.
 
 
-## Bulk actions reference [bulk-actions-reference]
+## Available bulk actions [bulk-actions-reference]
 
-The following table summarizes all bulk actions available from the **Bulk actions** menu in the Rules table. Select multiple rules in the table, then choose an action from the menu.
+The following table summarizes bulk actions that are available from the **Bulk actions** menu in the Rules table.
 
-| Bulk action | Description | Learn more |
-|---|---|---|
-| **Enable** | Activate selected rules so they run on their defined schedules | [Enable and disable rules](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules) |
-| **Disable** | Deactivate selected rules to stop them from running | [Enable and disable rules](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules) |
-| **Duplicate** | Create copies of selected rules | [Duplicate rules](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules) |
-| **Delete** | Permanently remove selected rules | [Delete rules](/solutions/security/detect-and-alert/manage-detection-rules.md#delete-rules) |
-| **Export** | Export selected rules to an `.ndjson` file | [Export rules](/solutions/security/detect-and-alert/manage-detection-rules.md#export-rules-ui) |
-| **Manual run** | Run selected rules for a specified time period | [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) |
-| **Fill gaps** | Fill gaps for selected rules | [Fill gaps for multiple rules](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules) |
-| **Index patterns** | Add or delete index patterns on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
-| **Tags** | Add or delete tags on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
-| **Custom highlighted fields** | Add custom highlighted fields on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
-| **Add rule actions** | Add rule actions on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
-| **Update rule schedules** | Update schedules and look-back times on selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
-| **Apply Timeline template** | Apply a Timeline template to selected rules | [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules) |
+| Bulk action | Description |
+|---|---|
+| Enable | Activate selected rules so they run on their defined schedules. Refer to [Enable and disable rules](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules). |
+| Disable | Deactivate selected rules to stop them from running. Refer to [Enable and disable rules](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules). |
+| Duplicate | Create copies of selected rules. Refer to [Duplicate rules](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules). |
+| Delete | Permanently remove selected rules. Refer to [Delete rules](/solutions/security/detect-and-alert/manage-detection-rules.md#delete-rules). |
+| Export | Export selected rules to an `.ndjson` file. Refer to [Export rules](/solutions/security/detect-and-alert/manage-detection-rules.md#export-rules-ui). |
+| Manual run | Run selected rules for a specified time period. Refer to [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules). |
+| Fill gaps | Fill gaps for selected rules. Refer to [Fill gaps for multiple rules](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules). |
+| Index patterns | Add or delete index patterns on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
+| Tags | Add or delete tags on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
+| Custom highlighted fields | Add custom highlighted fields on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
+| Add rule actions | Add rule actions on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
+| Update rule schedules | Update schedules and look-back times on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
+| Apply Timeline template | Apply a Timeline template to selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
 
 
 ## Confirm rule prerequisites [rule-prerequisites]
