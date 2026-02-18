@@ -1,4 +1,4 @@
-The Serverless Plus add-on is a package of enterprise features that help you to secure your data and supercharge your data insights.
+The Serverless Plus add-on is a package of enterprise features that help you to secure your data and enhance your data insights.
 
 Serverless Plus includes the following features:
 
