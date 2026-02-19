@@ -10,7 +10,7 @@ products:
 # Enable Watcher [enable-watcher]
 
 ::::{note}
-If you are looking for Kibana alerting, check [Alerts and Cases](../../../explore-analyze/alerts-cases.md).
+If you are looking for Kibana alerting, check [Alerting](../../../explore-analyze/alerting.md).
 ::::
 
 Watcher can be enabled when configuring your cluster. You can run Alerting on a separate cluster from the cluster whose data you are actually watching.
@@ -23,7 +23,7 @@ To enable Watcher on a cluster, you may first need to perform one or several of 
 
 * To receive default Elasticsearch Watcher alerts (cluster status, nodes changed, version mismatch), you need to have monitoring enabled to send to the Admin email address specified in Kibana. To enable this, go to **Advanced Settings > Admin email**.
 
-To learn more about Kibana alerting and how to use it, check [Alerting and Actions](../../../explore-analyze/alerts-cases.md).
+To learn more about Kibana alerting and how to use it, check [Alerting and Actions](../../../explore-analyze/alerting.md).
 
 ## Send alerts by email [watcher-allowlist]
 
@@ -31,9 +31,9 @@ You can configure notifications similar to the [operational emails](../../../dep
 
 Watcher in Elastic Cloud is preconfigured with an email service and can be used without any additional configuration. Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](#watcher-custom-mail-server)
 
-You can optionally add [HTML sanitization](../../../explore-analyze/alerts-cases/watcher/actions-email.md#email-html-sanitization) settings under [Elasticsearch User settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) so that HTML elements are sanitized in the email notification.
+You can optionally add [HTML sanitization](actions-email.md#email-html-sanitization) settings under [Elasticsearch User settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) so that HTML elements are sanitized in the email notification.
 
-For more information on sending alerts by email, check [Email action](../../../explore-analyze/alerts-cases/watcher/actions-email.md).
+For more information on sending alerts by email, check [Email action](actions-email.md).
 
 ## Cloud email service limits [cloud-email-service-limits]
 
@@ -132,7 +132,7 @@ PUT _watcher/watch/test-alarm
 
 ## Configuring a custom mail server [watcher-custom-mail-server]
 
-It is possible to use a custom mail service instead of the one configured by default. It can be configured by following the [Elasticsearch documentation for configuring email accounts](/explore-analyze/alerts-cases/watcher/actions-email.md).
+It is possible to use a custom mail service instead of the one configured by default. It can be configured by following the [Elasticsearch documentation for configuring email accounts](/explore-analyze/alerting/watcher/actions-email.md).
 
 An example on how to configure a new account from the Elastic cloud console:
 

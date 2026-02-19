@@ -95,7 +95,7 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 
 
         :::{note}
-        Rule actions won’t run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md). They’ll resume running after the maintenance window ends.
+        Rule actions won’t run during a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md). They’ll resume running after the maintenance window ends.
         ::::
 
 

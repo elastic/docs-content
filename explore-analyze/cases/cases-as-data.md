@@ -39,19 +39,19 @@ You also do not need to manually manage the lifecycle policies of the analytics 
 
 ## Grant access to case analytics indices [case-analytics-indices-privs]
 
-Ensure your role has at least `read` and `view_index_metadata` access to the appropriate [case analytics indices](../../../explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names).
+Ensure your role has at least `read` and `view_index_metadata` access to the appropriate [case analytics indices](#case-analytics-indices-names).
 
 ## Explore case data with Discover and Lens [explore-case-data]
 
-Use [Discover](../../discover.md) and [Lens](../../visualize/lens.md) to search and filter your case data and display your findings in visualizations. 
+Use [Discover](../discover.md) and [Lens](../visualize/lens.md) to search and filter your case data and display your findings in visualizations. 
 
-To get started, create a [{{data-source}}](../../find-and-organize/data-views.md) that points to one or more [case analytics indices or their aliases](../../../explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names). To point to all case analytics indices in your space, use the `.internal.cases*` index pattern.
+To get started, create a [{{data-source}}](../find-and-organize/data-views.md) that points to one or more [case analytics indices or their aliases](#case-analytics-indices-names). To point to all case analytics indices in your space, use the `.internal.cases*` index pattern.
 
 ::::{note} 
 Case data is stored in hidden indices. You can display hidden indices by selecting **Show advanced settings**, then turning on **Allow hidden and system indices**. 
 ::::
 
-You can also interact with your case data using [{{esql}} in Discover](../../../explore-analyze/discover/try-esql.md). Here are some sample queries to get you started: 
+You can also interact with your case data using [{{esql}} in Discover](../discover/try-esql.md). Here are some sample queries to get you started: 
 
 * Find the total number of open {{observability}} cases in the default space:
 

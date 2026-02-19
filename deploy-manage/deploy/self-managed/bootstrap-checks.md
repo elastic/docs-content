@@ -187,7 +187,7 @@ $$$bootstrap-checks-xpack-encrypt-sensitive-data$$$
 
 If you use {{watcher}} and have chosen to encrypt sensitive data (by setting `xpack.watcher.encrypt_sensitive_data` to `true`), you must also place a key in the secure settings store.
 
-To pass this bootstrap check, you must set the `xpack.watcher.encryption_key` on each node in the cluster. For more information, see [Encrypting sensitive data in Watcher](../../../explore-analyze/alerts-cases/watcher/encrypting-data.md).
+To pass this bootstrap check, you must set the `xpack.watcher.encryption_key` on each node in the cluster. For more information, see [Encrypting sensitive data in Watcher](../../../explore-analyze/alerting/watcher/encrypting-data.md).
 :::
 
 :::{dropdown} PKI realm check

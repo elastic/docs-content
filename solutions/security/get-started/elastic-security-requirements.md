@@ -43,7 +43,7 @@ Changes might be required if your nodes have customized roles. When updating nod
 
 To use {{elastic-sec}}, your role must have at least:
 
-* `Read` privilege for the `Security` feature in the [space](/deploy-manage/manage-spaces.md). This grants you `Read` access to all features in {{elastic-sec}} except cases. You need additional [minimum privileges](/solutions/security/investigate/cases-requirements.md) to use cases.
+* `Read` privilege for the `Security` feature in the [space](/deploy-manage/manage-spaces.md). This grants you `Read` access to all features in {{elastic-sec}} except cases. You need additional [minimum privileges](/explore-analyze/cases/configure-case-access.md) to use cases.
 * `Read` and `view_index_metadata` privileges for all {{elastic-sec}} indices, such as `filebeat-*`, `packetbeat-*`, `logs-*`, and `endgame-*` indices.
 
 ::::{note}
@@ -59,7 +59,7 @@ For more information about index privileges, refer to [{{es}} security privilege
 There are some additional requirements for specific features:
 
 * [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md)
-* [Cases requirements](/solutions/security/investigate/cases-requirements.md)
+* [Configure access to cases](/explore-analyze/cases/configure-case-access.md)
 * [Entity risk scoring requirements](/solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md)
 * [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md)
 * [{{elastic-defend}} requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md)

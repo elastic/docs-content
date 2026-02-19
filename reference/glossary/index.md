@@ -658,7 +658,7 @@ $$$glossary-rule$$$ rule
 :   A set of [conditions](/reference/glossary/index.md#glossary-condition), schedules, and [actions](/reference/glossary/index.md#glossary-action) that enable notifications. See [{{rules-ui}}](/reference/glossary/index.md#glossary-rules).
 
 $$$glossary-rules$$$ Rules
-:   A comprehensive view of all your alerting rules. Enables you to access and manage rules for all {{kib}} apps from one place. See [{{rules-ui}}](/explore-analyze/alerts-cases.md).
+:   A comprehensive view of all your alerting rules. Enables you to access and manage rules for all {{kib}} apps from one place. See [{{rules-ui}}](/explore-analyze/alerting.md).
 
 $$$glossary-runner$$$ runner
 :   A local control agent that runs on all hosts, used to deploy local containers based on role definitions. Ensures that containers assigned to it exist and are able to run, and creates or recreates the containers if necessary.
@@ -733,7 +733,7 @@ $$$glossary-split$$$ split
 :   Adds more [primary shards](/reference/glossary/index.md#glossary-primary-shard) to an [index](/reference/glossary/index.md#glossary-index).
 
 $$$glossary-stack-alert$$$ stack rule
-:   The general purpose rule types {{kib}} provides out of the box. Refer to [Stack rules](/explore-analyze/alerts-cases/alerts/rule-types.md#stack-rules).
+:   The general purpose rule types {{kib}} provides out of the box. Refer to [Stack rules](/explore-analyze/alerting/alerts/rule-types.md#stack-rules).
 
 $$$glossary-standalone$$$ standalone
 :   This mode allows manual configuration and management of {{agent}}s locally on the systems where they are installed. See [Install standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md).
@@ -826,7 +826,7 @@ $$$glossary-warm-tier$$$ warm tier
 :   [Data tier](/reference/glossary/index.md#glossary-data-tier) that contains [nodes](/reference/glossary/index.md#glossary-node) that hold time series data that is accessed less frequently and rarely needs to be updated. See [Data tiers](/manage-data/lifecycle/data-tiers.md).
 
 $$$glossary-watcher$$$ Watcher
-:   The original suite of alerting features. See [Watcher](/explore-analyze/alerts-cases/watcher.md).
+:   The original suite of alerting features. See [Watcher](/explore-analyze/alerting/watcher.md).
 
 $$$glossary-wms$$$ Web Map Service (WMS)
 :   A layer type in the **Maps** application. Add a WMS source to provide authoritative geographic context to your map. See the [OpenGIS Web Map Service](https://www.ogc.org/standards/wms).

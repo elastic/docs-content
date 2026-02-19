@@ -503,10 +503,6 @@ toc:
                   - file: observability/incident-management/triage-slo-burn-rate-breaches.md
                   - file: observability/incident-management/triage-threshold-breaches.md
           - file: observability/incident-management/cases.md
-            children:
-              - file: observability/incident-management/configure-access-to-cases.md
-              - file: observability/incident-management/create-manage-cases.md
-              - file: observability/incident-management/configure-case-settings.md
           - file: observability/incident-management/service-level-objectives-slos.md
             children:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
@@ -720,9 +716,7 @@ toc:
           - file: security/investigate/indicators-of-compromise.md
           - file: security/investigate/cases.md
             children:
-              - file: security/investigate/cases-requirements.md
-              - file: security/investigate/open-manage-cases.md
-              - file: security/investigate/configure-case-settings.md
+              - file: security/investigate/security-cases-features.md
       - file: security/dashboards.md
         children:
           - file: security/dashboards/overview-dashboard.md

@@ -101,7 +101,7 @@ serverless: unavailable
 
 ## Elastic Cloud email service
 
-{{ecloud}} provides a built-in email service used by the preconfigured [email connector](kibana://reference/connectors-kibana/email-action-type.md), available in both {{ech}} deployments and {{serverless-full}} projects. This service can be used to send [alert](/explore-analyze/alerts-cases/alerts.md) notifications and is also supported in {{ech}} by [Watcher](/explore-analyze/alerts-cases/watcher/enable-watcher.md).
+{{ecloud}} provides a built-in email service used by the preconfigured [email connector](kibana://reference/connectors-kibana/email-action-type.md), available in both {{ech}} deployments and {{serverless-full}} projects. This service can be used to send [alert](/explore-analyze/alerting/alerts.md) notifications and is also supported in {{ech}} by [Watcher](/explore-analyze/alerting/watcher/enable-watcher.md).
 
 ### Email service limits
 

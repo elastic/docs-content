@@ -14,37 +14,17 @@ navigation_title: Cases
 
 # Cases for {{elastic-sec}} [security-cases-overview]
 
-Collect and share information about security issues by opening a case in {{elastic-sec}}. Cases allow you to track key investigation details, collect alerts in a central location, and more. The {{elastic-sec}} UI provides several ways to create and manage cases. Alternatively, you can use the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases) to perform the same tasks.
+Cases are a collaboration and tracking tool, which is particularly useful for incidents or issues that arise from alerts. You can group related alerts into a case for easier management, add notes and comments to provide context, track investigation progress, and assign cases to team members or link them to external systems. Cases ensure that teams have a central place to track and resolve alerts efficiently.
 
-{applies_to}`stack: ga 9.2` Cases are automatically assigned human-readable numeric IDs, which you can use for easier referencing. Each time you create a new case in your [space](docs-content://deploy-manage/manage-spaces.md), the case ID increments by one. IDs are assigned to cases by a background task that runs every 10 minutes, which can cause a delay in ID assignment, especially in spaces with many cases. You can find the case ID after the case's name and can use it while searching the Cases table.
+## Get started [cases-get-started]
 
-You can also send cases to these external systems by [configuring external connectors](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations):
+Refer to the central Cases documentation for complete instructions:
 
-* {{sn-itsm}}
-* {{sn-sir}}
-* {{jira}} (including Jira Service Desk)
-* {{ibm-r}}
-* {{swimlane}}
-* {{webhook-cm}}
+* **[Open and manage cases](/explore-analyze/cases/manage-cases.md)** — Create cases, add alerts, files, observables, and visualizations
+* **[Configure case settings](/explore-analyze/cases/manage-cases-settings.md)** — Set up connectors, custom fields, and templates
+* **[Configure access to cases](/explore-analyze/cases/configure-case-access.md)** — Set up privileges and permissions
+* **[Cases as data](/explore-analyze/cases/cases-as-data.md)** — Build dashboards from case data
 
-:::{image} /solutions/images/security-cases-home-page.png
-:alt: Case UI Home
-:screenshot:
-:::
+## Security-specific features [security-specific]
 
-::::{tip}
-:applies_to: {stack: preview 9.2, serverless: unavailable}
-After creating cases, use case data to build dashboards and visualizations that provide insights into case trends and operational metrics. Refer to [Cases as data](/explore-analyze/alerts-cases/cases/cases-as-data.md) to learn more.
-::::
-
-
-## Limitations [security-case-limitations]
-
-* If you create cases in the {{security-app}}, they are not visible from {{observability}} or {{stack-manage-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in {{elastic-sec}} or {{observability}}.
-* You cannot attach alerts from the {{observability}} or {{stack-manage-app}} to cases in {{elastic-sec}}.
-
-
-
-
-
-
+{{elastic-sec}} includes additional case features. Refer to [Security case features](security-cases-features.md) to learn more. 

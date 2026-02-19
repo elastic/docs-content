@@ -78,7 +78,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Creates a [Lens](/explore-analyze/visualize/lens.md) visualization based on specifications. -->
 
 `platform.core.cases` {applies_to}`stack: ga 9.3+`
-:   Searches and retrieves [cases](/explore-analyze/alerts-cases/cases.md) for tracking and managing issues.
+:   Searches and retrieves [cases](/explore-analyze/cases.md) for tracking and managing issues.
 
 `platform.core.get_workflow_execution_status` {applies_to}`stack: ga 9.3+`
 :   Retrieves the execution status of a workflow.

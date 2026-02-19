@@ -13,21 +13,13 @@ navigation_title: Cases
 
 # Cases for Elastic {{observability}} [observability-cases]
 
-Collect and share information about observability issues by creating a case. Cases allow you to track key investigation details, add assignees and tags to your cases, set their severity and status, and add alerts, comments, and visualizations. You can also send cases to third-party systems by [configuring external connectors](/solutions/observability/incident-management/configure-case-settings.md).
+Cases are a collaboration and tracking tool, which is particularly useful for incidents or issues that arise from alerts. You can group related alerts into a case for easier management, add notes and comments to provide context, track investigation progress, and assign cases to team members or link them to external systems. Cases ensure that teams have a central place to track and resolve alerts efficiently.
 
-{applies_to}`stack: ga 9.2` Cases are automatically assigned human-readable numeric IDs, which you can use for easier referencing. Each time you create a new case in your [space](docs-content://deploy-manage/manage-spaces.md), the case ID increments by one. IDs are assigned to cases by a background task that runs every 10 minutes, which can cause a delay in ID assignment, especially in spaces with many cases. You can find the case ID after the case's name and can use it while searching the Cases table.
+## Get started [cases-get-started]
 
-:::{image} /solutions/images/observability-cases.png
-:alt: Cases page
-:screenshot:
-:::
+Refer to the central Cases documentation for complete instructions:
 
-::::{tip}
-:applies_to: {stack: preview 9.2, serverless: unavailable}
-After creating cases, use case data to build dashboards and visualizations that provide insights into case trends and operational metrics. Refer to [Use cases as data](/explore-analyze/alerts-cases/cases/cases-as-data.md) to learn more.
-::::
-
-## Limitations [observability-case-limitations]
-
-* If you create cases in {{observability}}, they are not visible from the {{security-app}} or {{stack-manage-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}.
-* You cannot attach alerts from {{elastic-sec}} or {{stack-manage-app}} to cases in {{observability}}.
+* **[Open and manage cases](/explore-analyze/cases/manage-cases.md)** — Create cases, add alerts, files, and visualizations
+* **[Configure case settings](/explore-analyze/cases/manage-cases-settings.md)** — Set up connectors, custom fields, and templates
+* **[Configure access to cases](/explore-analyze/cases/configure-case-access.md)** — Set up privileges and permissions
+* **[Cases as data](/explore-analyze/cases/cases-as-data.md)** — Build dashboards from case data

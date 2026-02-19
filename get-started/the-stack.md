@@ -81,7 +81,7 @@ With {{kib}}, you can:
 - Build custom [visualizations](/explore-analyze/visualize.md) like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
 - Assemble your visualizations into interactive [dashboards](/explore-analyze/dashboards.md) to get a comprehensive overview of your information.
 - Perform [geospatial analysis](/explore-analyze/geospatial-analysis.md) and add maps to your dashboards.
-- Configure notifications for significant data events and track incidents with [alerts and cases](/explore-analyze/alerts-cases.md).
+- Configure notifications for significant data events and track incidents with [alerts and cases](/explore-analyze/alerting.md).
 - Manage resources such as processors, pipelines, data streams, trained models, and more.
 
 Each solution or project type provides access to customized features in {{kib}} such as built-in dashboards and [AI assistants](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md).

@@ -307,7 +307,7 @@ For the second week, focus on the following activities:
 
 - Add a few additional data sources relevant to your use case. Refer to [Fleet integrations](/reference/fleet/manage-integrations.md) for available integrations.
 - Focus on metrics that demonstrate clear business value. Use [Lens visualizations](/explore-analyze/visualize/lens.md) to highlight KPIs.
-- Set up alerts for critical conditions or thresholds. Refer to [Alerting](/explore-analyze/alerts-cases.md) for configuration options.
+- Set up alerts for critical conditions or thresholds. Refer to [Alerting](/explore-analyze/alerting.md) for configuration options.
 - Create dashboards that answer key stakeholder questions. Refer to [Create a dashboard](/explore-analyze/dashboards/create-dashboard.md) for guidance.
 - Compare results against your success criteria.
 - Quantify time savings, efficiency gains, or risk reduction.
