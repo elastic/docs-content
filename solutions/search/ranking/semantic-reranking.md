@@ -131,7 +131,7 @@ POST _search
 
 ### Handling long documents
 
-A limitation of many cross-encoder models is that they do not perform well when used on corpi with long documents.
+A limitation of many cross-encoder models is that they do not perform well when used on corpora with long documents.
 This is because many models truncate input to the length of their token window, which can potentially cut off the most relevant part of the document before it is sent to the reranker. The preconfigured `.rerank-v1-elasticsearch` endpoint truncates in this manner.
 
 The `chunk_rescorer` in the `text_similarity_reranker` retriever allows explicit control over how much content is sent to the reranker. This addresses the long document problem and also allows control of inference costs by sending fewer tokens into the reranker.

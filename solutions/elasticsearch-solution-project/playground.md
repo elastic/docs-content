@@ -33,7 +33,7 @@ Watch these video tutorials to help you get started:
 
 ## How Playground works [playground-how-it-works]
 
-Here’s a simpified overview of how Playground works:
+Here’s a simplified overview of how Playground works:
 
 * User **creates a connection** to LLM provider
 * User **selects a model** to use for generating responses

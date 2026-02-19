@@ -109,7 +109,7 @@ Download the file and upload it to your cluster using the [File Uploader](../../
 
 ### Ingest the data through the {{infer}} ingest pipeline [reindexing-data-elser]
 
-Create the tokens from the text by reindexing the data throught the {{infer}} pipeline that uses ELSER as the inference model.
+Create the tokens from the text by reindexing the data through the {{infer}} pipeline that uses ELSER as the inference model.
 
 ```console
 POST _reindex?wait_for_completion=false
