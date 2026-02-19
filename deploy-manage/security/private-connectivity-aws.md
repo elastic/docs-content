@@ -57,7 +57,7 @@ Refer to [interface endpoint availability zone considerations](https://docs.aws.
 :::{applies-item} ess: ga
 Elastic [charges](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) for inter-node traffic regardless of whether nodes are in the same or different availability zones (AZ). As a result, placing the deployment nodes within a single AZ, instead of two or three, does not reduce inter-node costs.
 
-On the customer VPC side, the inter-availability zone data transfer, within the same AWS region, towards AWS PrivateLink endpoints, [is free of charge](https://aws.amazon.com/about-aws/whats-new/2022/04/aws-data-transfer-price-reduction-privatelink-transit-gateway-client-vpn-services/). As a result, you do not incur charges for cross-AZ data transfer within your VPC when the target is the AWS Privatelink {{ecloud}} service endpoint. We recommend you set up the VPC endpoints in all supported {{ecloud}} AZs for a particular region for maximum traffic throughput and resiliency.
+On the customer VPC side, the inter-availability zone data transfer, within the same AWS region, towards AWS PrivateLink endpoints, [is free of charge](https://aws.amazon.com/about-aws/whats-new/2022/04/aws-data-transfer-price-reduction-privatelink-transit-gateway-client-vpn-services/). As a result, you do not incur charges for cross-AZ data transfer within your VPC when the target is the AWS PrivateLink {{ecloud}} service endpoint. We recommend you set up the VPC endpoints in all supported {{ecloud}} AZs for a particular region for maximum traffic throughput and resiliency.
 
 If Elastic and your VPC overlap in two AZs or less, you can create subnets and VPC PrivateLink endpoints in your VPC within the same availability zones where the Elastic PrivateLink service is present.
 :::
@@ -177,7 +177,7 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
     <!--need to verify this for serverless-->
 
     :::{tip}
-    You can also create a cross-region endpoint. Refer to [Setting up an cross-region Private Link connection](#ec-aws-inter-region-private-link).
+    You can also create a cross-region endpoint. Refer to [Setting up a cross-region Private Link connection](#ec-aws-inter-region-private-link).
     :::
 
 2. Create a DNS record.
@@ -331,7 +331,7 @@ Create a new private connection policy.
     :::{tip}
     Private connection policies are bound to a single resource type and region, and can be assigned only to resources with the same resource type and in the same region. If you want to associate a policy with multiple resource types or resources in multiple regions, then you have to recreate the policy for all applicable resource types and regions.
     :::
-7.  Under **Connectivity**, select **Privatelink**.
+7.  Under **Connectivity**, select **PrivateLink**.
 8.  Optional: Under **VPC filter**, enter your VPC endpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment or project. 
     
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
