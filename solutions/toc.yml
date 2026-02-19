@@ -471,7 +471,7 @@ toc:
         - file: observability/streams/management/partitioning.md
         - file: observability/streams/management/schema.md
         - file: observability/streams/management/data-quality.md
-        - file: observability/streams/management/significant-events.md
+        - hidden: observability/streams/management/significant-events.md
         - file: observability/streams/management/advanced.md
         - file: observability/streams/wired-streams.md
       - file: observability/incident-management.md
