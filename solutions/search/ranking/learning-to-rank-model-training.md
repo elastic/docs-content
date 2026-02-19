@@ -83,7 +83,7 @@ feature_extractors=[
 ::::{admonition} Term statistics as features
 :class: note
 
-It is very common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query.
+It is common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query.
 
 ::::
 
