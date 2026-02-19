@@ -10,7 +10,7 @@ products:
 Review the changes, fixes, and more to {{serverless-full}}.
 
 
-## February 17, 2026 [serverless-changelog-02172026]
+## February 23, 2026 [serverless-changelog-02172026]
 
 ### Features and enhancements [serverless-changelog-02172026-features-enhancements]
 
