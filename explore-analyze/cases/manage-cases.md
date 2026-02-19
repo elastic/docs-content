@@ -26,7 +26,7 @@ From the **Cases** page, you can select multiple cases and use bulk actions to d
 
 To view a case, select its name. From the case details page, you can edit the description, add comments, update assignees, change status and severity, add connectors, and push updates to external systems. 
 
-{applies_to}`stack: ga 9.2+` You can also paste images directly into comments using `Ctrl/Cmd` + `C` and `Ctrl/Cmd` + `V` keyboard shortcuts. Pasted images are preformatted in Markdown.
+{applies_to}`stack: ga 9.2+` You can also paste images directly into comments using {kbd}`cmd+c` (Mac) or {kbd}`ctrl+v` (Windows/Linux). Pasted images are preformatted in Markdown. 
 
 ## Add context and supporting materials [add-case-context]
 
@@ -38,7 +38,7 @@ Escalate alerts and track them in a single place by attaching them to cases. To 
 
 You can find the **Alerts** tab in the following places:
 
-- {applies_to}`serverless:` {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
+- {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
 - {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  
 
 You can add up to 1,000 alerts to a case.
@@ -48,7 +48,7 @@ You can add up to 1,000 alerts to a case.
 After you create a case, you can upload and manage files on the **Files** tab. To find the tab:
 
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.
+- {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.
 
 To download or delete the file or copy the file hash to your clipboard, open the action menu {icon}`boxes_horizontal`. The available hash functions are MD5, SHA-1, and SHA-256.
 
@@ -61,7 +61,7 @@ Observables are discrete pieces of data relevant to an investigation—such as I
 From the **Observables** tab, you can view and manage case observables:
 
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
+- {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  
 
 You can manually add observables to cases, or {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` with the appropriate subscription, auto-extract them from alerts. Each case supports up to 50 observables.
 
@@ -76,7 +76,7 @@ To manually add an observable:
 
 3. Select **Add observable**.
 
-After adding an observable to a case, you can remove or edit it using the **Actions** menu (**…**). To find related investigations, check the **Similar cases** tab for other cases that share the same observables.
+After adding an observable to a case, you can remove or edit it using the action menu {icon}`boxes_horizontal`. To find related investigations, check the **Similar cases** tab for other cases that share the same observables.
 
 ### Add Lens visualizations [cases-lens-visualization]
 
@@ -84,7 +84,7 @@ After adding an observable to a case, you can remove or edit it using the **Acti
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
 
-Add Lens visualizations to case descriptions or comments to portray event and alert data through charts and graphs. You can add them from dashboard panels, or create visualizations directly in a case, To add a visualization from a dashboard, open a panel's menu and select **More actions (…)** → **Add to existing case** or **Add to new case**.
+Add Lens visualizations to case descriptions or comments to portray event and alert data through charts and graphs. You can add them from dashboard panels or create visualizations directly in a case. To add a visualization from a dashboard, open a panel's menu, select the action menu {icon}`boxes_horizontal`, then **Add to existing case** or **Add to new case**.
 
 To create a visualization in a case:
 

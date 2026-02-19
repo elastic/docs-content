@@ -37,7 +37,7 @@ To perform these tasks, you must have [full access](control-case-access.md) to t
 
 If you close cases in your external incident management system, the cases will remain open in {{kib}} until you close them manually.
 
-To close cases when they are sent to an external system, select the option to automatically close cases when pushing new incident to external system.
+To close cases when they are sent to an external system, select the option to automatically close cases when pushing a new incident to an external system.
 
 ## Configure external connectors [case-connectors]
 
@@ -58,7 +58,7 @@ You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}** (see [
     * [{{hive}} connector](kibana://reference/connectors-kibana/thehive-action-type.md)
     * [{{webhook-cm}} connector](kibana://reference/connectors-kibana/cases-webhook-action-type.md)
 
-3. Enter your required settings, the click **Save**.
+3. Enter your required settings, then click **Save**.
 
 ### Edit a connector [edit-connector]
 
@@ -93,7 +93,7 @@ You can subsequently remove or edit custom fields on the **Settings** page.
 
 ## Create templates [case-templates]
 
-Templates let you pre-fill case fields like severity, tags, title, description, and custom fields, speeding case creation and ensuring consistency across your team. When creating a case, you can select a template and use its values or override them. Updating or deleting templates does not affect existing cases.
+Templates let you pre-fill case fields like severity, tags, title, description, and custom fields—speeding up case creation and ensuring consistency across your team. When creating a case, you can select a template and use its values or override them. Updating or deleting templates does not affect existing cases.
 
 To create a template:
 

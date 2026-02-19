@@ -33,7 +33,9 @@ Note the following rules for search:
 
 ## Filter cases [filter-cases]
 
-You can filter cases by attributes such as assignees, categories, severity, status, and tags. To find cases created during a specific time range, use the date time picker above the Cases table. The default selection is the last 30 days—click **Show all cases** to display every case in your space.
+You can filter cases by attributes such as assignees, categories, severity, status, and tags. 
+
+{applies_to}`stack: ga 9.3` To find cases created during a specific time range, use the date time picker above the Cases table. The default selection is the last 30 days—click **Show all cases** to display every case in your space.
 
 ## Send cases to external systems [send-cases-external]
 
@@ -46,4 +48,4 @@ For more information about configuring connections to external incident manageme
 Cases have two types of identifiers:
 
 * {applies_to}`stack: ga 9.2+` **Numeric ID**: A short, human-readable number that appears after the case name. Use it for quick reference in conversations or searches. Numeric IDs increment by one for each new case in your [space](docs-content://deploy-manage/manage-spaces.md) and are assigned by a background task that runs every 10 minutes.
-* **UUID**: A longer alphanumeric identifier for the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases). Copy it from **Actions** → **Copy Case ID** on the Cases page or from the **More actions** menu in a case.
+* **UUID**: A longer alphanumeric identifier for the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases). Copy it from **Actions** → **Copy Case ID** on the Cases page or from the action menu {icon}`boxes_horizontal` in a case.
