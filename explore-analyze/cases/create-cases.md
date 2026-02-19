@@ -18,42 +18,33 @@ products:
 
 # Create cases [create-cases]
 
-1. Go to the **Cases** page:
-   * For **{{stack-manage-app}}**: Go to **Management > {{stack-manage-app}} > Cases**, then select **Create case**.
-   * For **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases`, then select **Create case**.
-   * For **{{observability}}**: Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Create case**.
+To create a new case:
 
+1. Go to **Cases** and select **Create case**:
+   * **{{stack-manage-app}}**: **Management** > **{{stack-manage-app}}** > **Cases**
+   * **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases`
+   * **{{observability}}**: Find **Cases** in the main menu
 
-2. If you defined [templates](configure-case-settings.md#case-templates), you can optionally select one to use its default field values.
+2. (Optional) Select a [template](configure-case-settings.md#case-templates) to pre-fill field values.
 
-3. Give the case a name, severity, and description.
+3. Enter a name, severity, and description. If you do not assign your case a severity level, it will be assigned **Low** by default. The description supports [Markdown](https://www.markdownguide.org/cheat-sheet).
 
-    ::::{tip}
-    In the **Description** area, you can use [Markdown](https://www.markdownguide.org/cheat-sheet) syntax to create formatted text.
-    ::::
+4. (Optional) Add a category, [assignees](control-case-access.md), and tags.
 
-    ::::{note}
-    If you do not assign your case a severity level, it will be assigned **Low** by default.
-    ::::
+5. (Optional) Fill in any [custom fields](configure-case-settings.md#case-custom-fields) in the **Additional fields** section.
 
-4. Optionally, add a category, assignees, and tags. You can add users only if they meet the necessary [prerequisites](control-case-access.md).
+6. Configure sync and extraction options:
+   * **Sync alert status** syncs alert statuses with the case status (on by default).
+   * {applies_to}`stack: ga 9.2+` {applies_to}`serverless:` **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription).
 
-5. If you defined [custom fields](configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
+7. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system.
 
-6. Choose if you want alert statuses to sync with the case's status after they're added to the case. This option is turned on by default.
-
-7. {applies_to}`stack: ga 9.2+` {applies_to}`serverless:` With the appropriate subscription or project feature tier, you can select to automatically extract observables from alerts that you're adding to the case. This option is turned on by default.
-
-8. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you've created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](configure-case-settings.md#case-connectors).
-
-9. Select **Create case**.
-
-If you've selected a connector for the case, the case is automatically pushed to the third-party system it's connected to.
-
-{applies_to}`stack: preview` {applies_to}`serverless: preview` Alternatively, you can configure your rules to automatically create cases by using [case actions](kibana://reference/connectors-kibana/cases-action-type.md). By default, the rule adds all of the alerts within a specified time window to a single case.
+8. Select **Create case**. If you've selected a connector for the case, the case is automatically pushed to the third-party system it's connected to.
 
 ::::{tip}
-You can also create a case from an alert or add an alert to an existing case. From the **Alerts** page, select the **More options** icon and choose either **Add to existing case** or **Create new case**.
+To automate case creation, you can:
+- {applies_to}`stack: preview` {applies_to}`serverless: preview` configure rules to create cases using [case actions](kibana://reference/connectors-kibana/cases-action-type.md)
+- Create cases directly from alerts on the **Alerts** page by selecting **More options** → **Add to existing case** or **Create new case**.
 ::::
 
 ## Set up email notifications [add-case-notifications]
