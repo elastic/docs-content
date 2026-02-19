@@ -10,6 +10,10 @@ products:
 
 # Deploy the operator [k8s-openshift-deploy-the-operator]
 
+::::{note}
+These instructions do not apply if the operator is installed from the OpenShift software catalog or when using Operator Lifecycle Manager (OLM). However, creating resources outside of the installation namespace, as mentioned in step 3, is always advised.
+::::
+
 This page shows the installation steps to deploy ECK in Openshift:
 
 1. Apply the manifests the same way as described in [](./install-using-yaml-manifest-quickstart.md) document:

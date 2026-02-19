@@ -1,5 +1,7 @@
 ---
 navigation_title: Snapshot and restore
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot snapshot and restore in {{es}}

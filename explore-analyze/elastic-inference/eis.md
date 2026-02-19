@@ -28,14 +28,28 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## Supported models
 
-This table lists the models supported by Elastic {{infer-cap}} Service.
+The following tables list the models supported by Elastic {{infer-cap}} Service by LLM type.
 
 ::::{note}
 The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
 ::::
 
-:::{csv-include} models.csv
-:caption: Models supported by the Elastic Inference Service
+### LLM chat models
+
+:::{csv-include} chat-models.csv
+:caption: Scroll horizontally to view more information.
+:::
+
+### Embedding models
+
+:::{csv-include} embedding-models.csv
+:caption: Scroll horizontally to view more information.
+:::
+
+### Rerankers
+
+:::{csv-include} reranker-models.csv
+:caption: Scroll horizontally to view more information.
 :::
 
 ::::{important}
@@ -55,9 +69,7 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 
 | Model                 | Request/minute  | Tokens/minute (ingest)  | Tokens/minute (search)  | Notes                    |
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
-| Claude Sonnet 3.7 {applies_to}`stack: ga 9.3+`  | 400             | -                       | -                       | No rate limit on tokens  |
-| Elastic Managed LLM {applies_to}`stack: ga 9.0-9.2`   | 400             | -                       | -                       | No rate limit on tokens. Renamed to *Claude Sonnet 3.7* in later versions  |
-| Claude Sonnet 4.5 {applies_to}`stack: ga 9.3+`    | 400             | -                       | -                       | No rate limit on tokens  |
+| Elastic Managed LLMs {applies_to}`stack: ga 9.3+` | 2000             | -                       | -                       | No rate limit on tokens  |
 | ELSER {applies_to}`stack: ga 9.0+`                | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Embeddings v3 {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Reranker v2 {applies_to}`stack: ga 9.3+`     | 50              | -                       | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
