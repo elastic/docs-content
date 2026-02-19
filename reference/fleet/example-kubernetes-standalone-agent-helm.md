@@ -283,11 +283,11 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
     USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
     elastic+           1  0.0  0.0   1936   416 ?        Ss   21:04   0:00 /usr/bin/tini -- /usr/local/bin/docker-entrypoint -c /etc/elastic-agent/agent.yml -e
     elastic+          10  0.2  1.3 2555252 132804 ?      Sl   21:04   0:13 elastic-agent container -c /etc/elastic-agent/agent.yml -e
-    elastic+          37  0.6  2.0 2330112 208468 ?      Sl   21:04   0:37 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
-    elastic+          38  0.2  1.7 2190072 177780 ?      Sl   21:04   0:13 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
-    elastic+          56  0.1  1.7 2190136 175896 ?      Sl   21:04   0:11 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
-    elastic+          68  0.1  1.8 2190392 184140 ?      Sl   21:04   0:12 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
-    elastic+          78  0.7  2.0 2330496 204964 ?      Sl   21:04   0:48 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
+    elastic+          37  0.6  2.0 2330112 208468 ?      Sl   21:04   0:37 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
+    elastic+          38  0.2  1.7 2190072 177780 ?      Sl   21:04   0:13 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
+    elastic+          56  0.1  1.7 2190136 175896 ?      Sl   21:04   0:11 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
+    elastic+          68  0.1  1.8 2190392 184140 ?      Sl   21:04   0:12 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
+    elastic+          78  0.7  2.0 2330496 204964 ?      Sl   21:04   0:48 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
     elastic+         535  0.0  0.0   3884  3012 pts/0    Ss   22:47   0:00 bash
     elastic+         543  0.0  0.0   5480  2360 pts/0    R+   22:47   0:00 ps aux
     ```
@@ -333,11 +333,11 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
     USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
     root       1  0.0  0.0   1936   452 ?        Ss   23:10   0:00 /usr/bin/tini -- /usr/local/bin/docker-entrypoint -c /etc/elastic-agent/agent.yml -e
     root       9  0.9  1.3 2488368 135920 ?      Sl   23:10   0:01 elastic-agent container -c /etc/elastic-agent/agent.yml -e
-    root      27  0.9  1.9 2255804 203128 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
-    root      44  0.3  1.8 2116148 187432 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
-    root      64  0.3  1.8 2263868 188892 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
-    root      76  0.4  1.8 2190136 190972 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
-    root     100  1.2  2.0 2256316 207692 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
+    root      27  0.9  1.9 2255804 203128 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
+    root      44  0.3  1.8 2116148 187432 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
+    root      64  0.3  1.8 2263868 188892 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
+    root      76  0.4  1.8 2190136 190972 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
+    root     100  1.2  2.0 2256316 207692 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
     root     142  0.0  0.0   3752  3068 pts/0    Ss   23:12   0:00 bash
     root     149  0.0  0.0   5480  2376 pts/0    R+   23:13   0:00 ps aux
     ```
