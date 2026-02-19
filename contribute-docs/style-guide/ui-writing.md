@@ -147,7 +147,7 @@ Use the language in this table when writing about UI components.
   button.
 * In the docs, refer to an icon with its symbol. 
 :::{dropdown} Example
-    From the action menu (...), select _Delete job_.
+    From the action menu (...), select **Delete job**.
 :::
   In this example, the (...) represents the action menu icon.
 
@@ -157,13 +157,23 @@ To ensure clarity and precision when describing user interactions, choose the ve
 
 **Use "select" for choices**
 
-Use select when a user is choosing an option, toggling a state, or picking an item from a set. This verb emphasizes the choice being made rather than the physical action.
+Use "select" when a user is choosing an option, toggling a state, or picking an item from a set, such as a dropdown. This verb emphasizes the choice being made rather than the physical action. 
 
 :::{dropdown} Examples
-    Select the **Enforce HTTPS checkbox**.
-    Select the **Logs** tab to view system events.
+  ✔️ **Do**: Select the **Enforce HTTPS checkbox**.
+  ✔️ **Do**: Select the **Logs** tab to view system events.
+  ❌ **Don't**: Select the **Save** button to confirm your changes. 
 :::
-  
+
+**Use "click" for actions** 
+
+Use "click" when a user is initiating a process, performing a command, following a link, or needs to physically click a button or icon. Do not use "click" if the user needs to make a choice from a selection.   
+
+:::{dropdown} Examples
+  ✔️ **Do**: Click the **Save** button to save confirm your changes.
+  ✔️ **Do**: Click the **Help** icon for more information.
+  ❌ **Don't**: From the action menu (...), click the **Delete** button to delete the job. 
+:::
   
 ### Prepositions
 

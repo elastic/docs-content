@@ -407,7 +407,7 @@ Good code samples can be extremely valuable in developer documentation. They're 
 
 In general, follow the formatting rules of the language of the code sample. 
 
-The following guidelines will help to ensure your code samples are clear, readable, and easily understandable.
+The following guidelines will help to ensure your code samples are clear, readable, and understandable.
 
 ### Use consistent indentation
 
@@ -506,7 +506,7 @@ WatcherState watcherState = watcherStatsResponse.getWatcherState();
 
 :::
 
-For languages that don't support comments natively, such as JSON, you can add explanations about specific lines using [footnotes](./formatting.md).
+For languages that don't support comments natively, such as JSON, you can add explanations about specific lines using [footnotes](#footnotes).
 
 :::{dropdown} Example
 
@@ -536,7 +536,7 @@ For languages that don't support comments natively, such as JSON, you can add ex
 ```
 1. Indicates this item is for endpoint rules.
 2. Relevant OS.
-3. Item accessible from all Kibana spaces.
+3. Item accessible from all {{Kibana}} spaces.
 
 :::
 
@@ -550,6 +550,27 @@ Instead of a footnote, consider adding a link or putting the information in an a
 * If you have more than one footnote, number them in sequential order. 
 * Offset the numeral with superscript. 
   
+## Release notes 
+
+The goal of our release notes is to provide clear, scannable, and actionable information to our users. Follow these formatting and grammatical standards for all entries.
+
+Follow these general guidelines: 
+
+* To maintain an immediate and professional tone, every entry must start with a present-tense active verb (for example, _Adds_, _Fixes_, _Updates_, _Enhances_, _Removes_).
+* Focus on the "what" and the "why." Avoid filler phrases like, "The system now allows you to..."
+* Bold all specific page titles, buttons, icon names, modal/dialog titles, API names, and column names. 
+* Use monospace formatting for file paths, parameters, field or CLI commands. For a comprehensive list, refer to our [guidance on using monospace text](#monospace-code). 
+  
+:::{dropdown} Release note examples
+  ✔️ **Do**: Adds a search bar to the **Dashboard** page.
+  ✔️ **Do**: Adds a **View in Discover** link to APM rule-based alert details to view related documents in Discover.  
+  ✔️ **Do**: Adds the `xpack.productDocBase.artifactRepositoryProxyUrl` setting to `kibana.yml`.
+  ✔️ Adds support for `doc_values` to text fields. 
+  ❌ **Don't**: From the action menu (...), click the **Delete** button to delete the job. 
+  ❌ **Don't**: Now there's an auto-push option for case connectors, enabling automatic case synchronization.
+:::
+
+
 ## Redaction of sensitive information
 
 End-user documentation may contain screen captures and examples that show
