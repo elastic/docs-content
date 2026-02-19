@@ -84,6 +84,7 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
+      - file: elasticsearch-solution-project/es-serverless-add-ons.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -688,7 +689,8 @@ toc:
         children:
           - file: security/integrations/aws-config.md
           - file: security/integrations/aws-inspector.md
-          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/aws-sec-hub.md
+          - file: security/integrations/aws-security-hub-cspm.md
           - file: security/integrations/cncf-falco.md
           - file: security/integrations/google-security-command-center.md
           - file: security/integrations/microsoft-defender-for-cloud.md
