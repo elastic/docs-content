@@ -59,20 +59,27 @@ $$$elasticsearch-manage-project-search-power-settings$$$
 
 ## Project features and add-ons [project-features-add-ons]
 
-```yaml {applies_to}
-serverless:
-  security:
-  observability:
-```
-### {{elastic-sec}} project features
+Project features and add-ons control which capabilities are available in your serverless project and how they are billed. What you can configure depends on your project type: 
 
-For {{elastic-sec}} projects, edit the **Project features** to select a feature tier and enable add-on options for specific use cases.
+* [{{es-serverless}} project features](#es-serverless-project-features)
+* [{{sec-serverless}} project features](#elastic-sec-project-features)
+* [{{obs-serverless}} project features](#obs-serverless-project-features) 
+
+[Serverless Plus](#serverless-plus) is included at no additional charge in the Security Analytics Complete and Observability Complete feature tiers, and is offered as an optional add-on for {{es}} projects.
+
+### {{es-serverless}} project features [es-serverless-project-features]
+
+The only add-on available for {{es}} projects is Serverless Plus. To opt in during the promotional period, start using the features on the relevant project. For more information, refer to [Serverless Plus add-on](#serverless-plus).
+
+### {{sec-serverless}} project features [elastic-sec-project-features]
+
+For {{sec-serverless}} projects, edit the **Project features** to select a feature tier and enable add-on options for specific use cases.
 
 | Feature tier | Description and add-ons |
 | :--- | :--- |
 | **Elastic AI SOC Engine (EASE)** | A package of AI-powered tools meant to work with and enhance your existing SOC platforms: triage and correlate alerts from any platform using Attack Discovery, get realtime recommendations and assistance from AI Assistant, and share insights with your other tools.  |
-| **Security Analytics Essentials** | A suite of security analytics, detections, investigations, and collaboration tools. Does not include AI-powered tools. Allows these add-ons:<br><br>* **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>* **Cloud Protection Essentials**: Cloud native security features.<br> |
-| **Security Analytics Complete** | Everything in **Security Analytics Essentials** and **EASE**, plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>* **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>* **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.<br> |
+| **Security Analytics Essentials** | A suite of security analytics, detections, investigations, and collaboration tools. Does not include AI-powered tools. Allows these add-ons:<br>• **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>• **Cloud Protection Essentials**: Cloud native security features.<br> |
+| **Security Analytics Complete** | Everything in **Security Analytics Essentials** and **EASE**, plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>• **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>• **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.<br><br>The [Serverless Plus add-on](#serverless-plus) is included with this tier at no additional charge. |
 
 #### Downgrading the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
 
@@ -115,10 +122,20 @@ For {{obs-serverless}} projects, edit the **Project features** to select a featu
 | Feature tier | Description|
 | :--- | :--- |
 | **Observability Logs Essentials** | Includes everything you need to store and analyze logs at scale.<br> |
-| **Observability Complete** | Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.<br> |
+| **Observability Complete** | Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.<br><br>The [Serverless Plus add-on](#serverless-plus) is included with this tier at no additional charge. |
 
 :::{tip}
 For a full feature comparison, upgrading instructions, and more, refer to [{{obs-serverless}} feature tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
+:::
+
+### Serverless Plus add-on [serverless-plus]
+
+:::{include} ../_snippets/serverless-plus.md
+:::
+
+#### Availability [serverless-plus-add-on-availability]
+
+:::{include} ../_snippets/serverless-plus-availability.md
 :::
 
 ## Project tags
