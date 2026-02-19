@@ -2,6 +2,10 @@
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Manage a data stream [index-management-manage-data-streams]

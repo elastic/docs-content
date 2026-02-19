@@ -182,6 +182,9 @@ toc:
   - file: cross-cluster-search.md
     children:
       - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
+  - hidden: cross-project-search.md
+    children:
+      - hidden: cross-project-search/cross-project-search-link-projects.md
   - file: ai-features.md
     children:
       - file: ai-features/elastic-agent-builder.md
@@ -273,6 +276,7 @@ toc:
           - file: visualize/charts/bar-charts.md
           - file: visualize/charts/line-charts.md
           - file: visualize/charts/metric-charts.md
+          - file: visualize/charts/pie-charts.md
           - file: visualize/charts/tables.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
