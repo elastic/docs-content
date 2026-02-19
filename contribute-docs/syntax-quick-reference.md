@@ -20,6 +20,7 @@ Contributing to [elastic.co/guide](https://www.elastic.co/guide/index.html)? Ref
 Use admonitions to caution users, or to provide helpful tips or extra information.
 
 ::::{dropdown} Types
+:open:
 
 These examples show the syntax first, followed by the rendered admonition.
 
@@ -95,6 +96,7 @@ For more details, refer to [Admonitions](https://elastic.github.io/docs-builder/
 A default anchor is automatically created for each [heading](#headings), in the form `#heading-text` (lowercase, with spaces converted to hyphens and special characters removed). To create a custom anchor, add it in square brackets at the end of a heading: `[my-better-anchor]`
 
 :::{dropdown} Default anchor
+:open:
 ```markdown
 #### Hello world!
 <!-- Auto-generated default anchor: #hello-world -->
@@ -103,6 +105,7 @@ A default anchor is automatically created for each [heading](#headings), in the 
 
 
 :::{dropdown} Custom anchor
+:open:
 ```markdown
 #### Hello world! [get-started]
 ```
@@ -130,6 +133,7 @@ This metadata enables you to write [cumulative documentation](how-to/cumulative-
 **Example: Section tag**
 
 :::{dropdown} Syntax
+:open:
 ````markdown
 # Stack-only content
 ```{applies_to}
@@ -139,6 +143,7 @@ stack:
 :::
 
 :::{dropdown} Output
+:open:
 #### Stack-only content
 ```{applies_to}
 stack:
@@ -175,6 +180,7 @@ The `applies_to` tags are scope signals for readers, not comprehensive metadata.
 The `applies-switch` directive creates tabbed content where each tab displays an `applies_to` badge instead of a text title. Use this to show content that varies by deployment type or version. All applies switches on a page automatically sync together.
 
 :::::{dropdown} Syntax
+:open:
 ```markdown
 ::::{applies-switch}
 
@@ -191,6 +197,7 @@ Content for Serverless
 :::::
 
 :::::{dropdown} Output
+:open:
 ::::{applies-switch}
 
 :::{applies-item} stack: ga 9.0+
@@ -219,6 +226,7 @@ For more details, refer to [Applies switch](https://elastic.github.io/docs-build
 Multi-line blocks for code, commands, configuration, and similar content. Use three backticks ` ``` ` on separate lines to start and end the block. For syntax highlighting, add a language identifier after the opening backticks.
 
 :::{dropdown} Syntax
+:open:
 ```markdown
     ```yaml
     server.host: "0.0.0.0"
@@ -228,6 +236,7 @@ Multi-line blocks for code, commands, configuration, and similar content. Use th
 :::
 
 :::{dropdown} Output
+:open:
 ```yaml
 server.host: "0.0.0.0"
 elasticsearch.hosts: ["http://localhost:9200"]
@@ -257,6 +266,7 @@ Inline annotations that highlight or explain specific lines in a code block.
 To explicitly create a code callout, add a number marker in angle brackets (`<1>`, `<2>`, and so on) at the end of a line. Add the corresponding callout text below the code block, in a numbered list that matches the markers.
 
 :::{dropdown} Syntax
+:open:
 
   ````markdown callouts=false
       ```json
@@ -271,6 +281,7 @@ To explicitly create a code callout, add a number marker in angle brackets (`<1>
 :::
 
 :::{dropdown} Output
+:open:
 
 ```json
 {
@@ -286,6 +297,7 @@ To explicitly create a code callout, add a number marker in angle brackets (`<1>
 Add comments with `//` or `#` to automatically create callouts.
 
 :::{dropdown} Syntax
+:open:
   ````markdown callouts=false
     ```json
     {
@@ -298,6 +310,7 @@ Add comments with `//` or `#` to automatically create callouts.
 :::
 
 :::{dropdown} Output
+:open:
 
 ```json
 {
@@ -327,6 +340,7 @@ For more details, refer to [Code callouts](https://elastic.github.io/docs-builde
 Use `%` to add single-line comments. Use HTML-style `<!--` and `-->` for multi-line comments.
 
 :::{dropdown} Syntax
+:open:
 ```markdown
     % This is a comment
     This is regular text
@@ -342,6 +356,7 @@ Use `%` to add single-line comments. Use HTML-style `<!--` and `-->` for multi-l
 :::
 
 :::{dropdown} Output
+:open:
 % This is a comment
 This is regular text
 
@@ -370,6 +385,7 @@ Regular text after multi-line comment
 Collapsible blocks for hiding and showing content.
 
 ::::{dropdown} Syntax
+:open:
 ```markdown
     :::{dropdown} Title or label
     Collapsible content
@@ -378,6 +394,7 @@ Collapsible blocks for hiding and showing content.
 ::::
 
 ::::{dropdown} Output
+:open:
 :::{dropdown} Title or label
 Collapsible content
 :::
@@ -401,6 +418,7 @@ For more details, refer to [Dropdowns](https://elastic.github.io/docs-builder/sy
 Add notes and references without cluttering the main text. Footnotes are automatically numbered and linked. References appear as superscript numbers in the text, and the footnote content renders at the bottom of the page.
 
 :::{dropdown} Syntax
+:open:
 ```markdown
 Here's a simple footnote[^fn-1] and a named one[^fn-note].
 
@@ -410,6 +428,7 @@ Here's a simple footnote[^fn-1] and a named one[^fn-note].
 :::
 
 :::{dropdown} Output
+:open:
 Here's a simple footnote[^fn-1] and a named one[^fn-note].
 :::
 
@@ -436,6 +455,7 @@ For more details, refer to [Footnotes](https://elastic.github.io/docs-builder/sy
 Headings mark the title of a page or section. To create a heading, add number signs `#` at the beginning of the line (one `#` for each heading level).
 
 :::{dropdown} Syntax
+:open:
 ```markdown
 # Heading 1
 ## Heading 2
@@ -445,6 +465,7 @@ Headings mark the title of a page or section. To create a heading, add number si
 :::
 
 ::::{dropdown} Output
+:open:
 :::{image} images/headings.png
 :screenshot:
 :alt: Heading levels
@@ -472,12 +493,14 @@ For more details, refer to [Headings](https://elastic.github.io/docs-builder/syn
 Standard Markdown image syntax: `![alt text]` in square brackets, followed by the image path in parentheses.
 
 :::{dropdown} Syntax
+:open:
 ```markdown
 ![Bear emerging from hibernation](images/bear.png)
 ```
 :::
 
 :::{dropdown} Output
+:open:
 ![Bear emerging from hibernation](images/bear.png)
 :::
 
@@ -502,6 +525,7 @@ For more details, refer to [Images](https://elastic.github.io/docs-builder/synta
 Include icons inline using the `` {icon}`icon-name` `` syntax.
 
 :::{dropdown} Syntax
+:open:
 ```markdown
 Click the {icon}`gear` **Settings** icon.
 Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
@@ -509,6 +533,7 @@ Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Er
 :::
 
 :::{dropdown} Output
+:open:
 Click the {icon}`gear` **Settings** icon.
 
 Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
@@ -555,6 +580,7 @@ Elastic Docs v3 supports standard Markdown inline formatting.
 Represent keyboard keys and shortcuts using the `` {kbd}`key-name` `` syntax. Combine keys with `+` and show alternatives with `|`.
 
 :::{dropdown} Syntax
+:open:
 ```markdown
 Press {kbd}`enter` to submit.
 Use {kbd}`cmd+shift+p` to open the command palette.
@@ -563,6 +589,7 @@ Use {kbd}`ctrl|cmd+c` to copy text.
 :::
 
 :::{dropdown} Output
+:open:
 Press {kbd}`enter` to submit.
 
 Use {kbd}`cmd+shift+p` to open the command palette.
@@ -587,6 +614,7 @@ For more details and available key names, refer to [Keyboard markup](https://ela
 Standard Markdown links to doc pages, sections (anchors), or external content. Prefer absolute paths for links within the doc set.
 
 :::{dropdown} Syntax
+:open:
 ```markdown
     [link text](/absolute/file.md#anchor)
     [link text](https://external-site.com)
@@ -615,6 +643,7 @@ For more details, refer to [Links](https://elastic.github.io/docs-builder/syntax
 Standard Markdown ordered (numbered) and unordered (bulleted) lists. Indent with four spaces to nest paragraphs and other elements under a list item. Unordered lists can start with hyphens `-`, asterisks `*`, or plus signs `+`.
 
 :::{dropdown} Syntax
+:open:
 
   ```
       - Unordered item 1
@@ -650,6 +679,7 @@ For more details, refer to [Lists](https://elastic.github.io/docs-builder/syntax
 Render mathematical expressions using LaTeX syntax with the `{math}` directive. Expressions are rendered client-side using KaTeX.
 
 ::::{dropdown} Syntax
+:open:
 ```markdown
 :::{math}
 E = mc^2
@@ -658,6 +688,7 @@ E = mc^2
 ::::
 
 ::::{dropdown} Output
+:open:
 :::{math}
 E = mc^2
 :::
@@ -678,6 +709,7 @@ For more details, refer to [Math](https://elastic.github.io/docs-builder/syntax/
 Create diagrams using [Mermaid](https://mermaid.js.org/) with standard fenced code blocks. Diagrams are rendered client-side in the browser.
 
 ::::{dropdown} Syntax
+:open:
 ````markdown
 ```mermaid
 flowchart LR
@@ -689,6 +721,7 @@ flowchart LR
 ::::
 
 ::::{dropdown} Output
+:open:
 ```mermaid
 flowchart LR
     A[Start] --> B{Decision}
@@ -714,6 +747,7 @@ For more details, refer to [Mermaid diagrams](https://elastic.github.io/docs-bui
 Optional [front matter](https://elastic.github.io/docs-builder/syntax/frontmatter) element that sets a custom title for navigation items. Appears in the left navigation (table of contents), breadcrumbs, and previous/next links. For information about page titles, refer to [Headings](#headings).
 
 :::{dropdown} Syntax
+:open:
 
 Page front matter (YAML):
 
@@ -732,6 +766,7 @@ Page title (Markdown H1):
 :::
 
 :::{dropdown} Output
+:open:
 
 ![Rendered nav title](images/nav-title.png)
 
@@ -760,6 +795,7 @@ Key-value pairs that define reusable variables. They help ensure consistency and
 ### Define a sub
 
 :::{dropdown} Syntax
+:open:
 
 In `docset.yml`:
 
@@ -777,6 +813,7 @@ subs:
 This example uses the sub defined in `docset.yml` above.
 
 :::{dropdown} Syntax
+:open:
 
 In `myfile.md`:
 
@@ -786,6 +823,7 @@ In `myfile.md`:
 :::
 
 :::{dropdown} Output
+:open:
 
 {{ech}} supports most standard {{kib}} settings.
 :::
@@ -810,6 +848,7 @@ For more details, refer to [Substitutions](https://elastic.github.io/docs-builde
 Steppers provide a visual representation of sequential steps for tutorials or guides. Use steppers instead of numbered section headings when documenting complex procedures. Step titles automatically appear in the page's table of contents.
 
 ::::::{dropdown} Syntax
+:open:
 ```markdown
 :::::{stepper}
 
@@ -829,6 +868,7 @@ Then build the project.
 ::::::
 
 ::::::{dropdown} Output
+:open:
 :::::{stepper}
 
 ::::{step} Install
@@ -863,6 +903,7 @@ For more details, refer to [Stepper](https://elastic.github.io/docs-builder/synt
 Block element that displays content in switchable tabs to help users find the right context (such as deployment type or programming language). [Synced tab groups](https://elastic.github.io/docs-builder/syntax/tabs#tab-groups) are supported.
 
 :::::{dropdown} Syntax
+:open:
 ```markdown
     ::::{tab-set}
 
@@ -879,6 +920,7 @@ Block element that displays content in switchable tabs to help users find the ri
 :::::
 
 :::::{dropdown} Output
+:open:
 ::::{tab-set}
 
 :::{tab-item} Tab 1 title
@@ -916,6 +958,7 @@ For more details, refer to [Tabs](https://elastic.github.io/docs-builder/syntax/
 Standard table layout for structured data. Automatically scrolls horizontally if needed. The **header** row is optional.
 
 :::{dropdown} Syntax
+:open:
 ```markdown
     | Header | Header |
     | ------ | ------ |
@@ -925,6 +968,7 @@ Standard table layout for structured data. Automatically scrolls horizontally if
 :::
 
 :::{dropdown} Output
+:open:
 | Header | Header |
 | ------ | ------ |
 | Data   | Info   |
