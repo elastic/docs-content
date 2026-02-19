@@ -107,7 +107,7 @@ POST /_security/api_key
 ```
 
 1. Required to use {{es}} inference endpoints. You can also use `"cluster": ["all"]` for broader access during development.
-2. Must be exactly `kibana-.kibana` — this is how {{kib}} registers its application privileges with {{es}}. Without the `feature_agentBuilder.read` privilege, you'll receive a `403 Forbidden` error.
+2. Must be exactly `kibana-.kibana`. This is how {{kib}} registers its application privileges with {{es}}. Without the `feature_agentBuilder.read` privilege, you'll receive a `403 Forbidden` error.
 
 :::{note}
 Without the `feature_agentBuilder.read` application privilege, you'll receive a `403 Forbidden` error when attempting to connect to the MCP endpoint.
