@@ -16,8 +16,7 @@ products:
 Agentless integrations provide a means to ingest data while avoiding the orchestration, management, and maintenance needs associated with standard ingest infrastructure. Using agentless integrations makes manual agent deployment unnecessary, allowing you to focus on your data instead of the agent that collects it.
 
 ::::{important}
-During technical preview, there are no additional costs associated with deploying agentless integrations. 
-There is a limit of 5 agentless integrations per project. 
+During technical preview, there are no additional costs associated with deploying agentless integrations. There is a limit of 5 agentless integrations per project. 
 ::::
 
 ## Requirements
@@ -33,14 +32,11 @@ Elastic fully supports agentless deployment for the Cloud Security Posture Manag
 
 To learn more about agentless CSPM deployments, refer to the getting started guides for CSPM on [AWS](../cloud/get-started-with-cspm-for-aws.md), [Azure](../cloud/get-started-with-cspm-for-azure.md), or [GCP](../cloud/get-started-with-cspm-for-gcp.md)
 
-
 ## Beta agentless integrations
 
 Agentless deployment for other integrations is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 
-For a complete list of all integrations that support agentless deployment, refer to [Agentless integrations quick reference](integration-docs://reference/agentless_integrations.md). For setup guides and to learn more about Elastic's integrations, refer to [Elastic integrations](https://docs.elastic.co/en/integrations/).
-
-## Filter the integrations page to find agentless integrations
+## Find agentless integrations
 
 ```{applies_to}
 stack: ga 9.2
@@ -50,4 +46,8 @@ serverless: ga
 To identify which integrations support agentless deployment:
 
 1. In {{kib}}, go to **Integrations**.
-2. On the left, enable the **Only agentless integrations** toggle. 
+2. On the left, enable the **Only agentless integrations** toggle.
+
+:::{tip}
+For a complete list of all integrations that support agentless deployment, refer to [Agentless integrations quick reference](integration-docs://reference/agentless_integrations.md). For setup guides and to learn more about Elastic's integrations, refer to [Elastic integrations](https://docs.elastic.co/en/integrations/).
+:::
