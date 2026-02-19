@@ -41,11 +41,9 @@ To send a case to an external system, select the push button in the **External i
 
 For more information about configuring connections to external incident management systems, refer to [Configure case settings](configure-case-settings.md).
 
-## Copy case identifiers [case-identifiers]
+## Use case identifiers [case-identifiers]
 
 Cases have two types of identifiers:
 
 * {applies_to}`stack: ga 9.2+` **Numeric ID**: A short, human-readable number that appears after the case name. Use it for quick reference in conversations or searches. Numeric IDs increment by one for each new case in your [space](docs-content://deploy-manage/manage-spaces.md) and are assigned by a background task that runs every 10 minutes.
-* **UUID**: A longer alphanumeric identifier used for sharing cases and working with the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
-
-To copy a case's UUID, go to the **Cases** page and select **Actions** → **Copy Case ID**. You can also open a case and select **Copy Case ID** from the **More actions** menu (…).
+* **UUID**: A longer alphanumeric identifier for the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases). Copy it from **Actions** → **Copy Case ID** on the Cases page or from the **More actions** menu in a case.
