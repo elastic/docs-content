@@ -16,7 +16,7 @@ products:
 
 Elastic Learned Sparse EncodeR - or ELSER - is an NLP model trained by Elastic that enables you to perform semantic search by using sparse vector representation. Instead of literal matching on search terms, semantic search retrieves results based on the intent and the contextual meaning of a search query.
 
-The instructions in this tutorial shows you how to use ELSER to perform semantic search on your data.
+The instructions in this tutorial show you how to use ELSER to perform semantic search on your data.
 
 ::::{important}
 For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](semantic-search-semantic-text.md) end-to-end tutorial.
@@ -100,7 +100,7 @@ In this step, you load the data that you later use in the {{infer}} ingest pipel
 Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
 
 ::::{important}
-The `msmarco-passagetest2019-top1000` dataset was not utilized to train the model. We use this sample dataset in the tutorial because is easily accessible for demonstration purposes. You can use a different data set to test the workflow and become familiar with it.
+The `msmarco-passagetest2019-top1000` dataset was not utilized to train the model. We use this sample dataset in the tutorial because it is easily accessible for demonstration purposes. You can use a different data set to test the workflow and become familiar with it.
 ::::
 
 

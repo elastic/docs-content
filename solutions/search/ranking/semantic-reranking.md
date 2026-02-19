@@ -41,7 +41,7 @@ Semantic re-ranking enables a variety of use cases:
 
 * **General applications**
 
-    * Provides explicit control over document relevance in retrieval-augmented generation (RAG) uses cases or other scenarios involving language model (LLM) inputs.
+    * Provides explicit control over document relevance in retrieval-augmented generation (RAG) use cases or other scenarios involving language model (LLM) inputs.
 
 
 Now that we’ve outlined the value of semantic re-ranking, we’ll explore the specific models that power this process and how they differ.
