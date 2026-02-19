@@ -41,15 +41,14 @@ To close cases when they are sent to an external system, select the option to au
 
 ## Configure external connectors [case-connectors]
 
-To create connectors and send cases to external systems, you must have the appropriate {{kib}} feature privileges and subscription or project feature tier. Refer to [Control access to cases](control-case-access.md).
+Connectors let you send cases to external incident management systems. To create and manage connectors, you need the appropriate {{kib}} feature privileges and subscription or project feature tier. Refer to [Control access to cases](control-case-access.md).
 
-You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}**, as described in [Connectors](/deploy-manage/manage-connectors.md) or from the case **Settings** page.
+### Create a connector [create-connector]
 
-To create a new connector from the case **Settings** page.:
+You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}** (see [Connectors](/deploy-manage/manage-connectors.md)) or from the case **Settings** page:
 
 1. From the **Incident management system** list, select **Add new connector**.
-2. Select the system to send cases to: **{{sn}}**, **{{jira}}**, **{{ibm-r}}**, **{{swimlane}}**, **{{hive}}**, or **{{webhook-cm}}**.
-3. Enter your required settings. For connector configuration details, refer to:
+2. Select the system to send cases to:
 
     * [{{ibm-r}} connector](kibana://reference/connectors-kibana/resilient-action-type.md)
     * [{{jira}} connector](kibana://reference/connectors-kibana/jira-action-type.md)
@@ -59,29 +58,27 @@ To create a new connector from the case **Settings** page.:
     * [{{hive}} connector](kibana://reference/connectors-kibana/thehive-action-type.md)
     * [{{webhook-cm}} connector](kibana://reference/connectors-kibana/cases-webhook-action-type.md)
 
-4. Click **Save**.
+  To find configuration details for other case connectors, refer to [Connectors](kibana://reference/connectors-kibana/connectors.md).
 
-To change the settings of an existing connector:
+3. Enter your required settings, the click **Save**.
+
+### Edit a connector [edit-connector]
 
 1. Select the required connector from the incident management system list.
 2. Click **Update <connector name>**.
-3. In the **Edit connector** flyout, modify the connector fields as required, then click **Save & close** to save your changes.
+3. Modify the connector fields as needed, then click **Save & close**.
 
-To change the default connector used to send cases to external systems, select the required connector from the incident management system list.
+### Set the default connector [default-connector]
 
-You can subsequently choose the connector when you create cases and use it in case templates. To change the default connector for new cases, select the connector from the **Incident management system** list.
+Select a connector from the **Incident management system** list to set it as the default for new cases. You can also choose a connector when creating individual cases or in case templates.
 
-### Mapped case fields [mapped-case-fields]
+### About field mappings [mapped-case-fields]
 
-When you use a connector to push a case to an external system, case fields are automatically mapped to corresponding fields in that system. For example, the case title is mapped to the short description in {{sn}} and the summary in {{jira}} incidents. Case tags are mapped to labels in {{jira}}. Case comments are mapped to work notes in {{sn}}.
+When you push a case to an external system, case fields are automatically mapped to corresponding fields in that system. For example, the case title maps to the short description in {{sn}} and the summary in {{jira}}. Case tags map to labels in {{jira}}, and comments map to work notes in {{sn}}.
 
-When you use a {{webhook-cm}} connector, case fields can be mapped to custom or existing fields.
+With a {{webhook-cm}} connector, you can map case fields to custom or existing fields.
 
-When you push updates to external systems, mapped fields are either overwritten or appended, depending on the field and the connector.
-
-:::{note}
-Retrieving data from external systems is not supported.
-:::
+When you push updates, mapped fields are either overwritten or appended, depending on the field and connector. Retrieving data from external systems is not supported.
 
 ## Add custom fields [case-custom-fields]
 
@@ -98,39 +95,23 @@ You can subsequently remove or edit custom fields on the **Settings** page.
 
 ## Create templates [case-templates]
 
-You can make the case creation process faster and more consistent by adding templates. A template defines values for one or all of the case fields (such as severity, tags, description, and title) as well as any custom fields.
+Templates let you pre-fill case fields like severity, tags, title, description, and custom fields, speeding case creation and ensuring consistency across your team. When creating a case, you can select a template and use its values or override them. Updating or deleting templates does not affect existing cases.
 
 To create a template:
 
 1. In the **Templates** section, click **Add template**.
-2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.
-
-When users create cases, they can optionally select a template and use its field values or override them.
-
-::::{note}
-If you update or delete templates, existing cases are unaffected.
-::::
-
+2. Provide a template name and case severity. 
+3. (Optional) Add template tags and a description, values for each case field, and a case connector.
 
 ## Add observable types [cases-observable-types]
-
-{applies_to}`serverless:` {applies_to}`stack:`
 
 ::::{admonition} Requirements
 Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
-In addition to the preset observable types (such as IP addresses and file hashes), you can create custom types to match your investigation needs. Custom observable types appear as options when you [add observables to cases](manage-cases.md#add-case-observables).
+In addition to the preset observable types (such as IP addresses and file hashes), you can create up to 10 custom types to match your investigation needs. Custom observable types appear as options when you [add observables to cases](manage-cases.md#add-case-observables).
 
 1. In the **Observable types** section, click **Add observable type**.
 2. Enter a descriptive label for the observable type, then click **Save**.
 
-After creating a new observable type, you can remove or edit it from the **Settings** page.
-
-::::{note}
-You can create up to 10 custom observable types.
-::::
-
-::::{important}
-Deleting a custom observable type deletes all instances of it.
-::::
+You can edit or remove custom observable types from the **Settings** page. Be aware that deleting a custom observable type also deletes all instances of it from your cases.
