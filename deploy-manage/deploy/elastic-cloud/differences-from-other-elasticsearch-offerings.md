@@ -180,7 +180,7 @@ These recommendations do not apply to indices using better binary quantization (
 | :--- | :--- | :--- |
 | Number of indices per project | 15,000 | Yes |
 
-The index limit is adjustable and can be increased by request, while others are fixed. To request a limit increase, open a support case and include the limit you want to increase, your preferred new value, and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
+The index limit is adjustable and can be increased by request, while others are fixed. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
