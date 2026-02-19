@@ -118,12 +118,6 @@ The UI and any new rules you create will use the new metric definition. However,
 
 ## OpenTelemetry host metrics [open-telemetry-host-metrics]
 
-### OpenTelemetry Collector configuration [open-telemetry-collector-configuration]
-
-By default, the {{product.edot-collector}} uses one of several predefined host metrics configurations based on the `hostmetrics` receiver. Refer to the [default configurations](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
-
-If you're using a different Collector distribution or the upstream Contrib Collector, refer to the [System OpenTelemetry Assets](integration-docs://reference/system_otel.md#collector-configuration) documentation.
-
 Refer to the following sections for host metrics and field calculation formulas for OpenTelemetry data:
 
 * [Hosts](#otel-metrics-hosts)
@@ -203,3 +197,9 @@ stack: ga 9.3
 | **Disk Usage - Max (%)** | {applies_to}`stack: ga 9.2` Percentage of disk space used. <br><br>**Field Calculation**: `max(metrics.system.filesystem.utilization)`<br> |
 | **Disk Write IOPS** | Average count of write operations from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.operations, kql='attributes.direction: write'))`<br> |
 | **Disk Write Throughput** | Average number of bytes written from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.io, kql='attributes.direction: write'))')`<br> |
+
+## OpenTelemetry Collector configuration [open-telemetry-collector-configuration]
+
+By default, the {{product.edot-collector}} uses one of several predefined host metrics configurations based on the `hostmetrics` receiver. Refer to the [default configurations](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+
+If you're using a different Collector distribution or the upstream Contrib Collector, refer to the [System OpenTelemetry Assets](integration-docs://reference/system_otel.md#collector-configuration) documentation.
