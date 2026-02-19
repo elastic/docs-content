@@ -17,12 +17,6 @@ Learn about key host metrics displayed in the Infrastructure UI:
 * [Elastic System integration host metrics](#ecs-host-metrics)
 * [OpenTelemetry host metrics](#open-telemetry-host-metrics)
 
-## OpenTelemetry Collector configuration [open-telemetry-collector-configuration]
-
-By default, the {{product.edot-collector}} uses one of several predefined host metrics configurations based on the `hostmetrics` receiver. Refer to the [default configurations](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
-
-If you're using a different Collector distribution or the contrib Collector, refer to the [System OpenTelemetry Assets](integration-docs://reference/system_otel.md#collector-configuration) documentation.
-
 ## Elastic System integration host metrics [ecs-host-metrics]
 
 Refer to the following sections for host metrics and field calculation formulas for the Elastic System integration data:
@@ -123,6 +117,12 @@ The UI and any new rules you create will use the new metric definition. However,
 | **Network Outbound (TX) (legacy)** | Number of bytes that have been sent per second on the public interfaces of the hosts.<br><br>**Field Calculation**: `average(host.network.egress.bytes) * 8 / (max(metricset.period, kql='host.network.egress.bytes: *') / 1000)`<br> |
 
 ## OpenTelemetry host metrics [open-telemetry-host-metrics]
+
+### OpenTelemetry Collector configuration [open-telemetry-collector-configuration]
+
+By default, the {{product.edot-collector}} uses one of several predefined host metrics configurations based on the `hostmetrics` receiver. Refer to the [default configurations](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+
+If you're using a different Collector distribution or the upstream Contrib Collector, refer to the [System OpenTelemetry Assets](integration-docs://reference/system_otel.md#collector-configuration) documentation.
 
 Refer to the following sections for host metrics and field calculation formulas for OpenTelemetry data:
 
