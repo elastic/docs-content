@@ -156,7 +156,7 @@ The Private Link connection will be approved automatically after the private con
     :::{tip}
     Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
-7.  Under **Connectivity**, select **Privatelink**.
+7.  Under **Connectivity**, select **PrivateLink**.
 8.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment, this information will be used to filter traffic.
 
     :::{tip}
