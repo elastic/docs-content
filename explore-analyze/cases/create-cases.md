@@ -18,11 +18,7 @@ products:
 
 # Create cases [create-cases]
 
-Open a new case to keep track of issues and share their details with colleagues.
-
 You can create cases using the UI or the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
-
-## Open a new case
 
 To create a case:
 
@@ -105,3 +101,13 @@ For self-managed {{kib}}:
 3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 
 When you subsequently add assignees to cases, they receive an email.
+
+## Limitations [cases-limitations]
+
+Cases created in one solution are not visible in other solutions:
+
+* Cases created in **{{stack-manage-app}}** are not visible in {{observability}} or {{elastic-sec}}
+* Cases created in **{{observability}}** are not visible in {{stack-manage-app}} or {{elastic-sec}}
+* Cases created in **{{elastic-sec}}** are not visible in {{stack-manage-app}} or {{observability}}
+
+You also cannot attach alerts from one solution to cases in another solution.

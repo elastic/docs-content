@@ -13,13 +13,6 @@ navigation_title: Cases
 
 # Cases for Elastic {{observability}} [observability-cases]
 
-Cases are a collaboration and tracking tool, which is particularly useful for incidents or issues that arise from alerts. You can group related alerts into a case for easier management, add notes and comments to provide context, track investigation progress, and assign cases to team members or link them to external systems. Cases ensure that teams have a central place to track and resolve alerts efficiently.
+Use cases to track and manage operational incidents from detection to resolution. You can attach related alerts, document root cause analysis, and collaborate with your team, all in one place. Cases also integrate with external incident management systems like Jira, ServiceNow, and PagerDuty, so you can coordinate response efforts across your organization.
 
-## Get started [cases-get-started]
-
-Refer to the central Cases documentation for complete instructions:
-
-* **[Open and manage cases](/explore-analyze/cases/manage-cases.md)** — Create cases, add alerts, files, and visualizations
-* **[Configure case settings](/explore-analyze/cases/manage-cases-settings.md)** — Set up connectors, custom fields, and templates
-* **[Configure access to cases](/explore-analyze/cases/configure-case-access.md)** — Set up privileges and permissions
-* **[Cases as data](/explore-analyze/cases/cases-as-data.md)** — Build dashboards from case data
+Refer to the central [Cases documentation](/explore-analyze/cases.md) for complete instructions on creating, managing, and configuring cases.

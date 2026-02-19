@@ -14,16 +14,9 @@ navigation_title: Cases
 
 # Cases for {{elastic-sec}} [security-cases-overview]
 
-Cases are a collaboration and tracking tool, which is particularly useful for incidents or issues that arise from alerts. You can group related alerts into a case for easier management, add notes and comments to provide context, track investigation progress, and assign cases to team members or link them to external systems. Cases ensure that teams have a central place to track and resolve alerts efficiently.
+Create cases to collect and share information about security incidents and investigations. You can attach alerts, document findings, and collaborate with your SOC team, all in one place. Cases also integrate with external ticketing systems like Jira, ServiceNow, and IBM Resilient, so you can escalate and track incidents across your security workflow.
 
-## Get started [cases-get-started]
-
-Refer to the central Cases documentation for complete instructions:
-
-* **[Open and manage cases](/explore-analyze/cases/manage-cases.md)** — Create cases, add alerts, files, observables, and visualizations
-* **[Configure case settings](/explore-analyze/cases/manage-cases-settings.md)** — Set up connectors, custom fields, and templates
-* **[Configure access to cases](/explore-analyze/cases/configure-case-access.md)** — Set up privileges and permissions
-* **[Cases as data](/explore-analyze/cases/cases-as-data.md)** — Build dashboards from case data
+Refer to the central [Cases documentation](/explore-analyze/cases.md) for complete instructions on creating, managing, and configuring cases.
 
 ## Security-specific features [security-specific]
 

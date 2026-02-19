@@ -20,36 +20,14 @@ products:
 
 Cases are a collaboration and tracking tool, which is particularly useful for incidents or issues that arise from alerts. You can group related alerts into a case for easier management, add notes and comments to provide context, track investigation progress, and assign cases to team members or link them to external systems. Cases ensure that teams have a central place to track and resolve alerts efficiently.
 
-## External incident management systems [cases-external-systems]
+## Get started [cases-get-started]
 
-You can send cases to these external incident management systems by configuring connectors:
+Ready to start using cases? First, make sure users have the [required permissions](cases/configure-case-access.md). Then [create your first case](cases/create-cases.md).
 
-* {{ibm-r}}
-* {{jira}} (including Jira Service Desk)
-* {{sn-itsm}}
-* {{sn-sir}}
-* {{swimlane}}
-* {{hive}}
-* {{webhook-cm}}
-:::
+To streamline your workflow, you can also [configure case settings](cases/manage-cases-settings.md) to add external connectors, custom fields, and templates.
 
-For details on configuring connectors, refer to [Configure case settings](cases/manage-cases-settings.md).
+## Learn more [cases-learn-more]
 
-## Get started with cases [cases-get-started]
-
-* [Configure access to cases](cases/configure-case-access.md)
-* [Open and manage cases](cases/manage-cases.md)
-* [Configure case settings](cases/manage-cases-settings.md)
-* {applies_to}`stack: preview 9.2` {applies_to}`serverless: unavailable` [Use cases as data](cases/cases-as-data.md)
-
-For information on Security-specific case features like Timeline integration, events, indicators, and export/import, refer to [Security case features](/solutions/security/investigate/security-cases-features.md).
-
-## Limitations [cases-limitations]
-
-Cases created in one solution are not visible in other solutions:
-
-* Cases created in **{{stack-manage-app}}** are not visible in {{observability}} or {{elastic-sec}}
-* Cases created in **{{observability}}** are not visible in {{stack-manage-app}} or {{elastic-sec}}
-* Cases created in **{{elastic-sec}}** are not visible in {{stack-manage-app}} or {{observability}}
-
-You cannot attach alerts from one solution to cases in another solution.
+* [Manage cases](cases/manage-cases.md) 
+* [Find and share cases](cases/find-share-cases.md)
+* [Security case features](/solutions/security/investigate/security-cases-features.md)
