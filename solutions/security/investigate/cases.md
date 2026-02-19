@@ -14,9 +14,7 @@ navigation_title: Cases
 
 # Cases for {{elastic-sec}} [security-cases-overview]
 
-Create cases to collect and share information about security incidents and investigations. You can attach alerts, document findings, and collaborate with your SOC team, all in one place. Cases also integrate with external ticketing systems like Jira, ServiceNow, and IBM Resilient, so you can escalate and track incidents across your security workflow.
-
-Refer to the central [Cases documentation](/explore-analyze/cases.md) for complete instructions on creating, managing, and configuring cases.
+Create cases to collect and share information about security incidents and investigations. You can attach alerts, document findings, and collaborate with your SOC team, all in one place. Cases also integrate with external ticketing systems like Jira, ServiceNow, and IBM Resilient, so you can escalate and track incidents across your security workflow. Refer to [](/explore-analyze/cases.md) for help creating, managing, and configuring cases.
 
 ## Security-specific features [security-specific]
 

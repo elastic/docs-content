@@ -18,8 +18,6 @@ products:
 
 # Create cases [create-cases]
 
-You can create cases in {{elastic-sec}}, {{observability}}, or {{stack-manage-app}} using the UI or the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
-
 1. Go to the **Cases** page:
    * For **{{stack-manage-app}}**: Go to **Management > {{stack-manage-app}} > Cases**, then select **Create case**.
    * For **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases`, then select **Create case**.
@@ -103,8 +101,6 @@ You do not need to configure an email connector or update {{kib}} user settingsâ
 :::
 
 :::::
-
-When you add assignees to cases, they will receive an email notification.
 
 ## Case visibility across solutions [cases-limitations]
 

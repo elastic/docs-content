@@ -69,22 +69,21 @@ To change the settings of an existing connector:
 
 To change the default connector used to send cases to external systems, select the required connector from the incident management system list.
 
-
 You can subsequently choose the connector when you create cases and use it in case templates. To change the default connector for new cases, select the connector from the **Incident management system** list.
 
 ### Mapped case fields [mapped-case-fields]
 
-{applies_to}`serverless:` {applies_to}`stack:`
-
-When you export a case to an external system, case fields are mapped to existing fields in the external system. For example, the case title is mapped to the short description in {{sn}} and the summary in {{jira}} incidents. Case tags are mapped to labels in {{jira}}. Case comments are mapped to work notes in {{sn}}.
+When you use a connector to push a case to an external system, case fields are automatically mapped to corresponding fields in that system. For example, the case title is mapped to the short description in {{sn}} and the summary in {{jira}} incidents. Case tags are mapped to labels in {{jira}}. Case comments are mapped to work notes in {{sn}}.
 
 When you use a {{webhook-cm}} connector, case fields can be mapped to custom or existing fields.
 
 When you push updates to external systems, mapped fields are either overwritten or appended, depending on the field and the connector.
 
+:::{note}
 Retrieving data from external systems is not supported.
+:::
 
-## Custom fields [case-custom-fields]
+## Add custom fields [case-custom-fields]
 
 You can add optional and required fields for customized case collaboration.
 
@@ -97,7 +96,7 @@ When you create a custom field, it's added to all new and existing cases. In exi
 
 You can subsequently remove or edit custom fields on the **Settings** page.
 
-## Templates [case-templates]
+## Create templates [case-templates]
 
 You can make the case creation process faster and more consistent by adding templates. A template defines values for one or all of the case fields (such as severity, tags, description, and title) as well as any custom fields.
 
@@ -113,7 +112,7 @@ If you update or delete templates, existing cases are unaffected.
 ::::
 
 
-## Observable types [cases-observable-types]
+## Add observable types [cases-observable-types]
 
 {applies_to}`serverless:` {applies_to}`stack:`
 
@@ -121,7 +120,7 @@ If you update or delete templates, existing cases are unaffected.
 Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
-Create custom observable types for enhanced case collaboration.
+In addition to the preset observable types (such as IP addresses and file hashes), you can create custom types to match your investigation needs. Custom observable types appear as options when you [add observables to cases](manage-cases.md#add-case-observables).
 
 1. In the **Observable types** section, click **Add observable type**.
 2. Enter a descriptive label for the observable type, then click **Save**.

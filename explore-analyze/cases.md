@@ -18,16 +18,17 @@ products:
 
 # Cases [cases]
 
-Cases are a collaboration and tracking tool, which is particularly useful for incidents or issues that arise from alerts. You can group related alerts into a case for easier management, add notes and comments to provide context, track investigation progress, and assign cases to team members or link them to external systems. Cases ensure that teams have a central place to track and resolve alerts efficiently.
+Cases provide a central place to track incidents, document findings, and coordinate response efforts. Whether you're a security analyst triaging threats, a site reliability engineer responding to outages, or a platform engineer monitoring your Elastic Stack, cases bring together alerts, evidence, and team communication in one place.
+
+You can create cases in {{elastic-sec}}, {{observability}}, or {{stack-manage-app}} depending on your workflow. Attach alerts and files, add comments and context, assign team members, and push updates to external systems like Jira or ServiceNow.
 
 ## Get started [cases-get-started]
 
-Ready to start using cases? First, make sure users have the [required permissions](cases/control-case-access.md). Then [create your first case](cases/create-cases.md).
-
-To streamline your workflow, you can also [configure case settings](cases/configure-case-settings.md) to add external connectors, custom fields, and templates.
+Ready to start using cases? [Create your first case](cases/create-cases.md), then [configure case settings](cases/configure-case-settings.md) to add external connectors, custom fields, and templates.
 
 ## Learn more [cases-learn-more]
 
 * [Manage cases](cases/manage-cases.md) 
-* [Find and share cases](cases/find-share-cases.md)
+* [Search and share cases](cases/search-share-cases.md)
+* [Control access to cases](cases/control-case-access.md)
 * [Security case features](/solutions/security/investigate/security-cases-features.md)

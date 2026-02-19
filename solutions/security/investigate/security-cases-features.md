@@ -16,6 +16,21 @@ products:
 
 {{elastic-sec}} includes additional case features beyond the core functionality. For general case management, refer to [](/explore-analyze/cases/manage-cases.md).
 
+## View case metrics [cases-view-metrics]
+
+Select an existing case to access its summary. The case summary, located under the case title, contains metrics that summarize alert information and response times:
+
+* **Total alerts**: Total number of unique alerts attached to the case
+* **Associated users**: Total number of unique users represented in the attached alerts
+* **Associated hosts**: Total number of unique hosts represented in the attached alerts
+* **Total connectors**: Total number of connectors added to the case
+* **Case created**: Date and time the case was created
+* **Open duration**: Time elapsed since the case was created
+* **In progress duration**: How long the case has been in the `In progress` state
+* **Duration from creation to close**: Time elapsed from case creation to closure
+
+Use these metrics to assess incident scope, track response efficiency, and identify trends across cases for process improvements.
+
 ## Add Timelines [cases-timeline]
 
 Attach [Timelines](/solutions/security/investigate/timeline.md) to cases to preserve your investigation context and share it with your team. When you link a Timeline, other analysts can see the exact queries, filters, and events you examined, making it easier to collaborate, hand off investigations, or document your evidence trail.
@@ -24,7 +39,7 @@ Attach [Timelines](/solutions/security/investigate/timeline.md) to cases to pres
 To insert a Timeline link in the case description, click the Timeline icon (![Timeline icon](/solutions/images/security-add-timeline-button.png "title =20x20")).
 ::::
 
-## Add events [cases-examine-events]
+## Add events [cases-add-events]
 
 ```{applies_to}
 stack: ga 9.2

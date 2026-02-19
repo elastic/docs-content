@@ -15,20 +15,13 @@ products:
   - id: cloud-serverless
 ---
 
-# Find and share cases [find-share-cases]
+# Search and share cases [search-share-cases]
 
-Locate specific cases using search, copy case IDs to share with colleagues, and push cases to external incident management systems.
+Quickly locate relevant cases and share them with colleagues or external ticketing systems to streamline collaboration and handoffs.
 
 ## Search cases [search-cases]
 
 The **Cases** page has a search bar for quickly finding cases and case data. You can search for case titles, descriptions, and IDs using keywords and text. 
-
-:::{note}
-:applies_to: {stack: ga 9.2+}
-Cases are automatically assigned human-readable numeric IDs, which you can use for easier referencing. Each time you create a new case in your [space](docs-content://deploy-manage/manage-spaces.md), the case ID increments by one. 
-    
-IDs are assigned to cases by a background task that runs every 10 minutes, which can cause a delay in ID assignment, especially in spaces with many cases. You can find the case ID after the case's name and can use it while searching the Cases table.
-:::
 
 Note the following rules for search:
 
@@ -40,14 +33,19 @@ Note the following rules for search:
 
 ## Filter cases [filter-cases]
 
-To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every case in your space. The action also adjusts the starting time range to the date of when the first case was created.
-
-## Find the case UUID [cases-find-case-uuid]
-
-Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case's UUID to a clipboard, go to the **Cases** page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case's details page, then from the **More actions** menu (…), select **Copy Case ID**.
+You can filter cases by attributes such as assignees, categories, severity, status, and tags. To find cases created during a specific time range, use the date time picker above the Cases table. The default selection is the last 30 days—click **Show all cases** to display every case in your space.
 
 ## Send cases to external systems [send-cases-external]
 
 To send a case to an external system, select the push button in the **External incident management system** section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
 
 For more information about configuring connections to external incident management systems, refer to [Configure case settings](configure-case-settings.md).
+
+## Copy case identifiers [case-identifiers]
+
+Cases have two types of identifiers:
+
+* {applies_to}`stack: ga 9.2+` **Numeric ID**: A short, human-readable number that appears after the case name. Use it for quick reference in conversations or searches. Numeric IDs increment by one for each new case in your [space](docs-content://deploy-manage/manage-spaces.md) and are assigned by a background task that runs every 10 minutes.
+* **UUID**: A longer alphanumeric identifier used for sharing cases and working with the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
+
+To copy a case's UUID, go to the **Cases** page and select **Actions** → **Copy Case ID**. You can also open a case and select **Copy Case ID** from the **More actions** menu (…).

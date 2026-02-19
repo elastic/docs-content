@@ -13,6 +13,4 @@ navigation_title: Cases
 
 # Cases for Elastic {{observability}} [observability-cases]
 
-Use cases to track and manage operational incidents from detection to resolution. You can attach related alerts, document root cause analysis, and collaborate with your team, all in one place. Cases also integrate with external incident management systems like Jira, ServiceNow, and PagerDuty, so you can coordinate response efforts across your organization.
-
-Refer to the central [Cases documentation](/explore-analyze/cases.md) for complete instructions on creating, managing, and configuring cases.
+Use cases to track and manage operational incidents from detection to resolution. You can attach related alerts, document root cause analysis, and collaborate with your team, all in one place. Cases also integrate with external incident management systems like Jira, ServiceNow, and PagerDuty, so you can coordinate response efforts across your organization. Refer to [](/explore-analyze/cases.md) for help creating, managing, and configuring cases.

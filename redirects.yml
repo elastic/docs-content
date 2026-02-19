@@ -716,6 +716,7 @@ redirects:
   'explore-analyze/alerts-cases/cases/cases-as-data.md': 'explore-analyze/cases/cases-as-data.md'
   'explore-analyze/cases/setup-cases.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/cases/configure-case-access.md': 'explore-analyze/cases/control-case-access.md'
+  'explore-analyze/cases/find-share-cases.md': 'explore-analyze/cases/search-share-cases.md'
   
   # Alerts redirects
   'explore-analyze/alerts-cases/alerts/alerting-getting-started.md': 'explore-analyze/alerting/alerts/alerting-getting-started.md'
