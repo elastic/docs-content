@@ -85,5 +85,5 @@ Enabling integration with external authentication provider requires that you set
 
 ## System cluster upgrade policy
 
-The system cluster stack versions are validated as part of each ECE release and are not intended to be upgraded separately from the platform. Platform services depend on the versions that ship with the installed ECE release. Upgrading them out of band can create incompatibilities and may lead to reduced availability or platform failures. To chnge system cluster versions, upgrade to a supported ECE release instead. You can review which stack versions align with each release in the [default system deployment versions](./default-system-deployment-versions.md) page.
+The system cluster stack versions are validated as part of each ECE release and are not intended to be upgraded separately from the platform. Platform services depend on the versions that ship with the installed ECE release. Upgrading them out of band can create incompatibilities and might lead to reduced availability or platform failures. Instead, to change the system cluster versions, upgrade to a supported ECE release. You can review which stack versions align with each release in the [default system deployment versions](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md) page.
 
