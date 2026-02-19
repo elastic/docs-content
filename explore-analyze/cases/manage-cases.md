@@ -51,28 +51,6 @@ Select an existing case to access its summary. The case summary, located under t
 * **In progress duration**: How long the case has been in the `In progress` state
 * **Duration from creation to close**: Time elapsed from when the case was created to when it was closed
 
-## Add visualizations [cases-lens-visualization]
-
-Add a Lens visualization to your case to portray event and alert data through charts and graphs.
-
-To add a visualization to a comment within your case:
-
-1. Select the **Visualization** button. The **Add visualization** dialog appears.
-2. Select an existing visualization from your Visualize Library or create a new visualization.
-
-    ::::{important}
-    Set an absolute time range for your visualization. This ensures your visualization doesn't change over time after you save it to your case, and provides important context for others viewing the case.
-    ::::
-
-3. Save the visualization to your Visualize Library by selecting the **Save to library** button (optional).
-4. After you've finished creating your visualization, select **Save and return** to go back to your case.
-5. Select **Preview** to show how the visualization will appear in the case comment.
-6. Select **Add Comment** to add the visualization to your case.
-
-Alternatively, while viewing a dashboard you can open a panel's menu then select **More actions (…) → Add to existing case** or **More actions (…) → Add to new case**.
-
-After a visualization has been added to a case, you can modify or interact with it by selecting the **Open Visualization** option in the case's comment menu.
-
 ## Add context and supporting materials [add-case-context]
 
 Provide additional context and resources by adding the following to the case:
@@ -102,7 +80,7 @@ You can find the **Alerts** tab in the following places:
 - {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  
 
 ::::{important}
-Each case can have a maximum of 1,000 alerts.
+You can add up to 1,000 alerts to a case.
 ::::
 
 ### Add files [add-case-files]
@@ -122,18 +100,20 @@ Uploaded files are also accessible from the **Files** management page, which you
 
 ### Add observables [add-case-observables]
 
-An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case. 
+Observables are discrete pieces of data relevant to an investigation—such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you may be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
 
-View and manage observables from the **Observables** tab. You can find the tab in the following places:
+From the **Observables** tab, you can view and manage case observables:
 
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
 - {applies_to}`stack: ga 9.0`: Go to the case's details page.  
 
+You can manually add observables to cases, or {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` with the appropriate subscription, auto-extract them from alerts. 
+
 ::::{important}
-Each case can have a maximum of 50 observables.
+You can add up to 50 observables to a case.
 ::::
 
-To create an observable:
+To manually add an observable:
 
 1. Select **Add observable** from the **Observables** tab.
 2. Provide the necessary details:
@@ -147,12 +127,10 @@ To create an observable:
 After adding an observable to a case, you can remove or edit it by using the **Actions** menu (**…**). 
 
 ::::{tip}
-Go to the **Similar cases** tab to access other cases with the same observables.
+To find related investigations, check the **Similar cases** tab for other cases that share the same observables.
 ::::
 
-{applies_to}`stack: ga 9.2` {applies_to}`serverless:` With the appropriate subscription or project feature tier, you can use **Auto-extract observables** to instantly extract observables from alerts that you're adding to the case.
-
-## Add Lens visualizations [cases-lens-visualization]
+### Add Lens visualizations [cases-lens-visualization]
 
 ::::{warning}
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
@@ -180,45 +158,30 @@ Alternatively, while viewing a dashboard you can open a panel's menu then click 
 
 After a visualization has been added to a case, you can modify or interact with it by clicking the **Open Visualization** option in the case's comment menu.
 
-## Export and import cases [cases-export-import]
-
-Cases can be exported and imported as saved objects using the {{kib}} [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md) UI.
-
-::::{note}
-Before importing Lens visualizations, Timelines, or alerts into a space, ensure their data is present. Without it, they won't work after being imported.
-::::
-
-### Export a case [cases-export]
+## Export a case [cases-export]
 
 1. Find **Saved Objects** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for the case by choosing a saved object type or entering the case title in the search bar.
 3. Select one or more cases, then click the **Export** button.
-4. Click **Export**. The following data will exported to a newline-delimited JSON (`.ndjson`) file:
+4. Click **Export**. 
 
-    * Case details
-    * User actions
-    * Text string comments
-    * Case alerts
-    * Lens visualizations (exported as JSON blobs)
+Case data including user actions, text string comments, and lens visualizations are exported to a newline-delimited JSON (`.ndjson`) file. Files and alerts that were attached to the case **won't** be exported. You must re-add them after importing the case. 
 
-    ::::{tip}
-    Keep the **Include related objects** option enabled to ensure connectors are exported too.
-    ::::
+::::{tip}
+Keep the **Include related objects** option enabled to ensure connectors are exported too.
+::::
 
-:::{note} 
-The following attachments are *not* exported:
+## Import a case [cases-import]
 
-* **Case files**: Case files are not exported, but you can access them from the **Files** page (find **Files** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
-* **Alerts**: You must re-add alerts that were attached to the case and ensure the alerts' source documents are present in the environment. Case features that interact with alerts rely on the source documents to properly function.
-:::
-
-### Import a case [cases-import]
+::::{important}
+Before importing Lens visualizations, Timelines, or alerts into a space, ensure their data is present. Without it, they won't work after being imported.
+::::
 
 1. Find **Saved Objects** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Import**.
 3. Select the NDJSON file containing the exported case and configure the import options.
 4. Click **Import**.
-5. Review the import log and click **Done**.
+5. Review the import log, then click **Done**.
 
 ::::{note}
 If the imported case had connectors attached to it, you'll be prompted to re-authenticate the connectors. To do so, click **Go to connectors** on the **Import saved objects** flyout and complete the necessary steps. You can also access connectors from the **{{connectors-ui}}** page (find **{{connectors-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
