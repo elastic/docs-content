@@ -38,7 +38,7 @@ To learn more about agentless CSPM deployments, refer to the getting started gui
 
 Agentless deployment for other integrations is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 
-For setup guides and to learn more about Elastic's integrations, including whether each supports agentless deployment, refer to [Elastic integrations](https://docs.elastic.co/en/integrations/).
+For a complete list of all integrations that support agentless deployment, refer to [Agentless integrations quick reference](integration-docs://reference/agentless_integrations.md). For setup guides and to learn more about Elastic's integrations, refer to [Elastic integrations](https://docs.elastic.co/en/integrations/).
 
 ## Filter the integrations page to find agentless integrations
 
