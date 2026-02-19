@@ -33,29 +33,19 @@ To perform these tasks, you must have [full access](configure-case-access.md) to
 ::::
 
 
-## Case closures [case-closures]
+## Close cases automatically [case-closures]
 
 If you close cases in your external incident management system, the cases will remain open in {{kib}} until you close them manually.
 
 To close cases when they are sent to an external system, select the option to automatically close cases when pushing new incident to external system.
 
-## External incident management systems [case-connectors]
-
-You can push cases to these externxal incident management systems:
-
-* {{ibm-r}}
-* {{jira}} (including Jira Service Desk)
-* {{sn-itsm}}
-* {{sn-sir}}
-* {{swimlane}}
-* {{hive}}
-* {{webhook-cm}}
+## Configure external connectors [case-connectors]
 
 To create connectors and send cases to external systems, you must have the appropriate {{kib}} feature privileges and subscription or project feature tier. Refer to [Configure access to cases](configure-case-access.md).
 
-You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}**, as described in [Connectors](/deploy-manage/manage-connectors.md). Alternatively, you can create them from case settings.
+You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}**, as described in [Connectors](/deploy-manage/manage-connectors.md) or from the case **Settings** page.
 
-To create a new connector:
+To create a new connector from the case **Settings** page.:
 
 1. From the **Incident management system** list, select **Add new connector**.
 2. Select the system to send cases to: **{{sn}}**, **{{jira}}**, **{{ibm-r}}**, **{{swimlane}}**, **{{hive}}**, or **{{webhook-cm}}**.

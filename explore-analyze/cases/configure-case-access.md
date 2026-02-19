@@ -17,13 +17,7 @@ products:
 
 # Configure access to cases [setup-cases]
 
-
-* To send cases to external systems, ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
-* You need particular subscriptions and privileges to manage case attachments. For example, to add alerts to cases, you must have privileges for managing alerts.
-* If you have an on-premises deployment and want email notifications and external incident management systems to contain links back to {{kib}}, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
-
-For {{observability}} projects, the **Editor** role or higher is required to create and manage cases. Refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
+To manage cases, users need the appropriate {{kib}} feature privileges. You can grant different levels of access depending on what users need to do, from full control over cases to view-only access.
 
 ## Give full access to manage cases and settings [give-full-access]
 
