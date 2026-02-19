@@ -27,6 +27,31 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.3.1 [elastic-security-9.3.1-release-notes]
+
+### Features and enhancements [elastic-security-9.3.1-features-enhancements]
+* Allows user and host details flyouts to open while observed data is loading [#252657]({{kib-pull}}252657).
+* Adds a new **Overview** tab to the rule details page [#251662]({{kib-pull}}251662).
+* Adds a `region` field to the Amazon Bedrock connector [#252960]({{kib-pull}}252960), [#252956]({{kib-pull}}252956).
+* Improves Automatic Migration performance by reducing the number of {{es}} calls when updating field mappings [#252431]({{kib-pull}}252431).
+* Updates the `fast-xml-parser` package dependency to version 5.3.4 [#251644]({{kib-pull}}251644).
+* Further reduces {{elastic-defend}} behavioral protection CPU usage for trusted applications.
+
+### Fixes [elastic-security-9.3.1-fixes]
+* Improves the performance of bulk rule deletion [#253116]({{kib-pull}}253116).
+* Fixes an Automatic Migration issue where failed rules appeared in non-failed status filters [#252263]({{kib-pull}}252263).
+* Fixes accessibility issues in the Security AI Assistant confirm delete modal [#251962]({{kib-pull}}251962).
+* Replaces a deprecated icon in the UI [#251930]({{kib-pull}}251930).
+* Adds optional field indicators to the OpenAI connector configuration [#251857]({{kib-pull}}251857).
+* Fixes an accessibility issue with a missing label in the Security AI Assistant flyout [#251656]({{kib-pull}}251656).
+* Fixes the `spaceId` handling in Agent Builder security tools [#251513]({{kib-pull}}251513).
+* Fixes an issue where detection rules APIs didn't properly validate endpoint response actions [#251352]({{kib-pull}}251352).
+* Fixes an issue in the Security AI Assistant where the **Add connector** button was incorrectly grayed out for users with permission to create connectors [#250921]({{kib-pull}}250921).
+* Fixes an issue where the privileged user monitoring table didn't refresh alert data when the time range changed [#250618]({{kib-pull}}250618).
+* Fixes a DNS parsing bug in Linux versions of {{elastic-defend}} that could result in crashes.
+* Fixes a bug in version 9.3.0 of {{elastic-defend}} that resulted in the Windows Security Center status page showing an error.
+
+
 ## 9.3.0 [elastic-security-9.3.0-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.0-features-enhancements]
