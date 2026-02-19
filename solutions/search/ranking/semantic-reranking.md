@@ -19,7 +19,7 @@ This overview focuses more on the high-level concepts and use cases for semantic
 
 Re-rankers improve the relevance of results from earlier-stage retrieval mechanisms. *Semantic* re-rankers use machine learning models to reorder search results based on their semantic similarity to a query.
 
-Semantic re-ranking requires relatively large and complex machine learning models and operates in real-time in response to queries. This technique makes sense on a small *top-k* result set, as one the of the final steps in a pipeline. This is a powerful technique for improving search relevance that works equally well with keyword, semantic, or hybrid retrieval algorithms.
+Semantic re-ranking requires relatively large and complex machine learning models and operates in real-time in response to queries. This technique makes sense on a small *top-k* result set, as one of the final steps in a pipeline. This is a powerful technique for improving search relevance that works equally well with keyword, semantic, or hybrid retrieval algorithms.
 
 The next sections provide more details on the benefits, use cases, and model types used for semantic re-ranking. The final sections include a practical, high-level overview of how to implement [semantic re-ranking in {{es}}](#semantic-reranking-in-es) and links to the full reference documentation.
 
