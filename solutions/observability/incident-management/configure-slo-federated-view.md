@@ -8,12 +8,15 @@ applies_to:
   serverless: ga
 ---
 
-
 # Configure SLOs for federated views [observability-configure-slo-federated-views]
 
 Federated views allow you to view SLOs from remote {{es}} clusters alongside the local SLOs on the SLO listing page of your {{kib}} instance. This enables a centralized overview cluster where you can monitor SLOs across your entire fleet without switching between {{kib}} instances.
 
-The remote SLO is created on a remote cluster and is identified by the presence of a remote field containing `remoteName` (the CCS cluster name) and `kibanaUrl` (the {{kib}} URL of the remote cluster).
+## Prerequisites
+
+- {{es}} Cross-Cluster Search (CCS) must be configured between the overview cluster and remote clusters.
+- Remote clusters must be running {{kib}} with the SLO feature and have SLOs created.
+- The remote cluster's `kibanaUrl` should be set in the SLO summary documents for full functionality (edit/clone/delete links).
 
 From your {{kib}} instance, navigate to the SLOs page and click **Settings** on the menu bar.
 
