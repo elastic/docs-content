@@ -26,7 +26,7 @@ We cover the following examples:
   * [Egress](#ip-filter-policy-egress) {applies_to}`ess: beta`
   
 * [Create a private connection policy](#private-connection)  {applies_to}`ess: ga` {applies_to}`serverless: ga`
-  * [AWS Privatelink](#private-connection-policy-aws) {applies_to}`ess: ga` {applies_to}`serverless: ga`
+  * [AWS PrivateLink](#private-connection-policy-aws) {applies_to}`ess: ga` {applies_to}`serverless: ga`
   * [Azure Private Link](#private-connection-policy-azure)  {applies_to}`ess:`
   * [GCP Private Service Connect](#private-connection-policy-gcp)  {applies_to}`ess:`
 
@@ -292,7 +292,7 @@ curl \
 
 
 
-### AWS Privatelink [private-connection-policy-aws]
+### AWS PrivateLink [private-connection-policy-aws]
 ```{applies_to}
 serverless:
 deployment:
