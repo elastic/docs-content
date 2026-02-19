@@ -58,8 +58,6 @@ You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}** (see [
     * [{{hive}} connector](kibana://reference/connectors-kibana/thehive-action-type.md)
     * [{{webhook-cm}} connector](kibana://reference/connectors-kibana/cases-webhook-action-type.md)
 
-  To find configuration details for other case connectors, refer to [Connectors](kibana://reference/connectors-kibana/connectors.md).
-
 3. Enter your required settings, the click **Save**.
 
 ### Edit a connector [edit-connector]
