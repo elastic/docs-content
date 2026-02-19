@@ -115,3 +115,4 @@ Get started using SLOs to measure your service performance:
 * [SLO burn rate](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md)
 * [View alerts](/solutions/observability/incident-management/view-alerts.md)
 * [SLO burn rate breaches](/solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)
+* [Configure SLO federated view](/solutions/observability/incident-management/configure-slo-federated-view.md)
