@@ -661,7 +661,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
 Use actions to set up notifications sent via other systems when alerts are generated.
 
 ::::{note}
-To use actions for alert notifications, you need the [appropriate license](https://www.elastic.co/subscriptions). For more information, see [Configure access to cases](/explore-analyze/cases/configure-case-access.md).
+To use actions for alert notifications, you need the [appropriate license](https://www.elastic.co/subscriptions). For more information, see [Control access to cases](/explore-analyze/cases/control-case-access.md).
 ::::
 
 ::::{tip}

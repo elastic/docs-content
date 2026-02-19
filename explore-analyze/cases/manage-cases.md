@@ -116,11 +116,7 @@ To download or delete the file or copy the file hash to your clipboard, open the
 
 When you upload a file, a comment is added to the case activity log. To view an image, select its name in the activity or file list.
 
-::::{important}
-When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported.
-::::
-
-::::{note}
+::::{tip}
 Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 ::::
 
@@ -142,7 +138,7 @@ To create an observable:
 1. Select **Add observable** from the **Observables** tab.
 2. Provide the necessary details:
 
-    * **Type**: Select a type for the observable. You can choose a preset type or a [custom one](/explore-analyze/cases/manage-cases-settings.md#cases-observable-types).
+    * **Type**: Select a type for the observable. You can choose a preset type or a [custom one](/explore-analyze/cases/configure-case-settings.md#cases-observable-types).
     * **Value**: Enter a value for the observable. The value must align with the type you select.
     * **Description** (Optional): Provide additional information about the observable.
 
@@ -155,3 +151,75 @@ Go to the **Similar cases** tab to access other cases with the same observables.
 ::::
 
 {applies_to}`stack: ga 9.2` {applies_to}`serverless:` With the appropriate subscription or project feature tier, you can use **Auto-extract observables** to instantly extract observables from alerts that you're adding to the case.
+
+## Add Lens visualizations [cases-lens-visualization]
+
+::::{warning}
+This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
+::::
+
+Add a Lens visualization to your case to portray event and alert data through charts and graphs.
+
+1. Click the **Visualization** button. The **Add visualization** dialog appears.
+2. Select an existing visualization from your Visualize Library or create a new visualization.
+
+    ::::{important}
+    Set an absolute time range for your visualization. This ensures your visualization doesn't change over time after you save it to your case, and provides important context for others managing the case.
+    ::::
+
+3. Save the visualization to your Visualize Library by clicking the **Save to library** button (optional).
+
+    1. Enter a title and description for the visualization.
+    2. Choose if you want to keep the **Update panel on Security** activated. This option is activated by default and automatically adds the visualization to your Visualize Library.
+
+4. After you've finished creating your visualization, click **Save and return** to go back to your case.
+5. Click **Preview** to show how the visualization will appear in the case comment.
+6. Click **Add Comment** to add the visualization to your case.
+
+Alternatively, while viewing a dashboard you can open a panel's menu then click **More actions (…) → Add to existing case** or **More actions (…) → Add to new case**.
+
+After a visualization has been added to a case, you can modify or interact with it by clicking the **Open Visualization** option in the case's comment menu.
+
+## Export and import cases [cases-export-import]
+
+Cases can be exported and imported as saved objects using the {{kib}} [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md) UI.
+
+::::{note}
+Before importing Lens visualizations, Timelines, or alerts into a space, ensure their data is present. Without it, they won't work after being imported.
+::::
+
+### Export a case [cases-export]
+
+1. Find **Saved Objects** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for the case by choosing a saved object type or entering the case title in the search bar.
+3. Select one or more cases, then click the **Export** button.
+4. Click **Export**. The following data will exported to a newline-delimited JSON (`.ndjson`) file:
+
+    * Case details
+    * User actions
+    * Text string comments
+    * Case alerts
+    * Lens visualizations (exported as JSON blobs)
+
+    ::::{tip}
+    Keep the **Include related objects** option enabled to ensure connectors are exported too.
+    ::::
+
+:::{note} 
+The following attachments are *not* exported:
+
+* **Case files**: Case files are not exported, but you can access them from the **Files** page (find **Files** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
+* **Alerts**: You must re-add alerts that were attached to the case and ensure the alerts' source documents are present in the environment. Case features that interact with alerts rely on the source documents to properly function.
+:::
+
+### Import a case [cases-import]
+
+1. Find **Saved Objects** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Click **Import**.
+3. Select the NDJSON file containing the exported case and configure the import options.
+4. Click **Import**.
+5. Review the import log and click **Done**.
+
+::::{note}
+If the imported case had connectors attached to it, you'll be prompted to re-authenticate the connectors. To do so, click **Go to connectors** on the **Import saved objects** flyout and complete the necessary steps. You can also access connectors from the **{{connectors-ui}}** page (find **{{connectors-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
+::::

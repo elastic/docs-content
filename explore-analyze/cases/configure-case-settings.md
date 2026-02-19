@@ -16,7 +16,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Configure case settings [manage-cases-settings]
+# Configure case settings [configure-case-settings]
 
 Configure case closure options, custom fields, templates, and connectors for external incident management systems.
 
@@ -27,7 +27,7 @@ To access case settings:
 
 
 ::::{note}
-To perform these tasks, you must have [full access](configure-case-access.md) to the appropriate case and connector features.
+To perform these tasks, you must have [full access](control-case-access.md) to the appropriate case and connector features.
 
 {applies_to}`serverless:` For {{observability}} serverless projects, the **Editor** role or higher is required to create and edit connectors. Refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 ::::
@@ -41,7 +41,7 @@ To close cases when they are sent to an external system, select the option to au
 
 ## Configure external connectors [case-connectors]
 
-To create connectors and send cases to external systems, you must have the appropriate {{kib}} feature privileges and subscription or project feature tier. Refer to [Configure access to cases](configure-case-access.md).
+To create connectors and send cases to external systems, you must have the appropriate {{kib}} feature privileges and subscription or project feature tier. Refer to [Control access to cases](control-case-access.md).
 
 You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}**, as described in [Connectors](/deploy-manage/manage-connectors.md) or from the case **Settings** page.
 

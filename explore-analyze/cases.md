@@ -22,9 +22,9 @@ Cases are a collaboration and tracking tool, which is particularly useful for in
 
 ## Get started [cases-get-started]
 
-Ready to start using cases? First, make sure users have the [required permissions](cases/configure-case-access.md). Then [create your first case](cases/create-cases.md).
+Ready to start using cases? First, make sure users have the [required permissions](cases/control-case-access.md). Then [create your first case](cases/create-cases.md).
 
-To streamline your workflow, you can also [configure case settings](cases/manage-cases-settings.md) to add external connectors, custom fields, and templates.
+To streamline your workflow, you can also [configure case settings](cases/configure-case-settings.md) to add external connectors, custom fields, and templates.
 
 ## Learn more [cases-learn-more]
 

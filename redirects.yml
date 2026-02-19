@@ -709,11 +709,13 @@ redirects:
   'explore-analyze/alerts-cases/watcher.md': 'explore-analyze/alerting/watcher.md'
   
   # Cases redirects
-  'explore-analyze/alerts-cases/cases/setup-cases.md': 'explore-analyze/cases/configure-case-access.md'
+  'explore-analyze/alerts-cases/cases/setup-cases.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/alerts-cases/cases/manage-cases.md': 'explore-analyze/cases/manage-cases.md'
-  'explore-analyze/alerts-cases/cases/manage-cases-settings.md': 'explore-analyze/cases/manage-cases-settings.md'
+  'explore-analyze/alerts-cases/cases/manage-cases-settings.md': 'explore-analyze/cases/configure-case-settings.md'
+  'explore-analyze/cases/manage-cases-settings.md': 'explore-analyze/cases/configure-case-settings.md'
   'explore-analyze/alerts-cases/cases/cases-as-data.md': 'explore-analyze/cases/cases-as-data.md'
-  'explore-analyze/cases/setup-cases.md': 'explore-analyze/cases/configure-case-access.md'
+  'explore-analyze/cases/setup-cases.md': 'explore-analyze/cases/control-case-access.md'
+  'explore-analyze/cases/configure-case-access.md': 'explore-analyze/cases/control-case-access.md'
   
   # Alerts redirects
   'explore-analyze/alerts-cases/alerts/alerting-getting-started.md': 'explore-analyze/alerting/alerts/alerting-getting-started.md'

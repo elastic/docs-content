@@ -28,7 +28,7 @@ To create a case:
    * For **{{observability}}**: Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Create case**.
 
 
-2. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [templates](manage-cases-settings.md#case-templates), you can optionally select one to use its default field values.
+2. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [templates](configure-case-settings.md#case-templates), you can optionally select one to use its default field values.
 
 3. Give the case a name, severity, and description.
 
@@ -40,15 +40,15 @@ To create a case:
     If you do not assign your case a severity level, it will be assigned **Low** by default.
     ::::
 
-4. Optionally, add a category, assignees, and tags. You can add users only if they meet the necessary [prerequisites](configure-case-access.md).
+4. Optionally, add a category, assignees, and tags. You can add users only if they meet the necessary [prerequisites](control-case-access.md).
 
-5. If you defined [custom fields](manage-cases-settings.md#case-custom-fields), they appear in the **Additional fields** section.
+5. If you defined [custom fields](configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
 
 6. {applies_to}`serverless:` {applies_to}`stack:` Select if you want alert statuses to sync with the case's status after they are added to the case. This option is turned on by default.
 
 7. {applies_to}`stack: ga 9.2+` {applies_to}`serverless:` With the appropriate subscription or project feature tier, you can select to automatically extract observables from alerts that you're adding to the case. This option is turned on by default.
 
-8. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you've created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
+8. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you've created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](configure-case-settings.md#case-connectors).
 
 9. Select **Create case**.
 

@@ -43,7 +43,7 @@ To add alerts to a new case:
     If you do not assign your case a severity level, it will be assigned **Low** by default.
     ::::
 
-3. Optionally, add a category, assignees and relevant tags. You can add users only if they meet the necessary [prerequisites](/explore-analyze/cases/configure-case-access.md).
+3. Optionally, add a category, assignees and relevant tags. You can add users only if they meet the necessary [prerequisites](/explore-analyze/cases/control-case-access.md).
 4. Specify whether you want to sync the status of associated alerts. It is enabled by default; however, you can toggle this setting on or off at any time. If it remains enabled, the alert’s status updates whenever the case’s status is modified.
 5. Select a connector. If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
 6. Click **Create case** after you’ve completed all of the required fields. A confirmation message is displayed with an option to view the new case. Click the link in the notification or go to the Cases page to view the case.

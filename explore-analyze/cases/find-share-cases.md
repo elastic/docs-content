@@ -50,4 +50,4 @@ Each case has a universally unique identifier (UUID) that you can copy and share
 
 To send a case to an external system, select the push button in the **External incident management system** section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
 
-For more information about configuring connections to external incident management systems, refer to [Configure case settings](manage-cases-settings.md).
+For more information about configuring connections to external incident management systems, refer to [Configure case settings](configure-case-settings.md).

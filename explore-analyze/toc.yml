@@ -416,11 +416,11 @@ toc:
           - file: alerting/watcher/watcher-limitations.md
   - file: cases.md
     children:
-      - file: cases/configure-case-access.md
+      - file: cases/control-case-access.md
       - file: cases/create-cases.md
       - file: cases/manage-cases.md
       - file: cases/find-share-cases.md
-      - file: cases/manage-cases-settings.md
+      - file: cases/configure-case-settings.md
       - file: cases/cases-as-data.md
   - file: workflows.md
     children:
