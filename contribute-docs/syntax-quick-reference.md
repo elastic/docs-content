@@ -732,9 +732,13 @@ flowchart LR
 
 **DOs**<br>
 ✅ **Do:** Use different types of diagrams, such as flowcharts, sequence diagrams, state diagrams, and so on<br>
+✅ **Do:** Keep diagrams focused on a single concept<br>
+✅ **Do:** Summarize complex diagrams in accompanying text
 
 **DON'Ts**<br>
-❌ **Don't:** Rely on diagrams for users with JavaScript disabled — they will see raw Mermaid code
+❌ **Don't:** Use diagrams as the only way to convey important information<br>
+❌ **Don't:** Create overly complex diagrams with too many elements
+
 
 For more details, refer to [Mermaid diagrams](https://elastic.github.io/docs-builder/syntax/mermaid).
 <br>
