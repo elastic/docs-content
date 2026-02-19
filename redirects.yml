@@ -700,3 +700,14 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/5033
   'solutions/observability/observability-ai-assistant.md': 'solutions/observability/ai/observability-ai-assistant.md'
   'solutions/observability/llm-performance-matrix.md': 'solutions/observability/ai/llm-performance-matrix.md'
+
+# Related to cases documentation restructuring
+  'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'
+  'explore-analyze/alerts-cases/cases.md': 'explore-analyze/cases.md'
+  'explore-analyze/alerts-cases/cases/setup-cases.md': 'explore-analyze/cases/configure-case-access.md'
+  'explore-analyze/alerts-cases/cases/manage-cases.md': 'explore-analyze/cases/manage-cases.md'
+  'explore-analyze/alerts-cases/cases/manage-cases-settings.md': 'explore-analyze/cases/manage-cases-settings.md'
+  'explore-analyze/alerts-cases/cases/cases-as-data.md': 'explore-analyze/cases/cases-as-data.md'
+  'explore-analyze/alerts-cases/alerts.md': 'explore-analyze/alerting/alerts.md'
+  'explore-analyze/alerts-cases/watcher.md': 'explore-analyze/alerting/watcher.md'
+  'explore-analyze/cases/setup-cases.md': 'explore-analyze/cases/configure-case-access.md'
