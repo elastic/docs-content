@@ -187,7 +187,7 @@ message: |
 ```
 
 :::{note}
-Visit [Filters](https://liquidjs.com/filters/overview.html) to learn more about available filters.
+Workflows supports all available LiquidJS [filters](https://liquidjs.com/filters/overview.html).
 :::
 
 ### Preserve array and object types [workflows-preserve-types]
