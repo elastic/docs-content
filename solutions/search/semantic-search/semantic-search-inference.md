@@ -140,7 +140,7 @@ When using this model the recommended similarity measure to use in the `dense_ve
 ```console
 PUT _inference/sparse_embedding/elser_embeddings <1>
 {
-  "service": "elasticsearch",
+  "service": "elastic",
   "service_settings": {
     "model_id": ".elser_model_2",
     "num_allocations": 1,
