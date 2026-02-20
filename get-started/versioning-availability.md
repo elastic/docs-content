@@ -74,9 +74,9 @@ This means the feature is:
 Want to learn more about how we use availability badges? Check out the [Elastic Docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/).
 :::
 
-:::{note}
+### What about patch versions?
+
 Availability badges show version information down to the minor release level (for example, 9.1), not the patch level. The documentation corresponds to the latest patch available for each minor version. If you're not using the latest patch, check the [release notes](/release-notes/index.md) for changes.
-:::
 
 ### What if I'm using a version earlier than {{stack}} 9.0.0?
 
