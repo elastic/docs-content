@@ -22,6 +22,10 @@ For more advanced use cases, including data modification using scripts or ingest
 To migrate data from {{ech}}, you need to include the remote host parameters as shown in the [reindex from remote](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) example and as described here.
 :::
 
+:::{tip}
+If you're migrating from a self-managed cluster that uses non–publicly trusted TLS certificates, including self-signed certificates and certificates signed by a private certificate authority (CA), refer to our guide [Reindex from a self-managed cluster using a private CA](/manage-data/migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md).
+:::
+
 ## Prerequisites [migrate-reindex-from-remote-prereqs]
 
 - An {{ech}} deployment with data to migrate

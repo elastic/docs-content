@@ -34,6 +34,11 @@ Your migration options depend on the type of data that you need to migrate, whic
 Depending on the type of data that you need to move, various migration options are available:
 
  - **Reindex from source**: For your own data, reindexing into your new, destination deployment from the data's original source is typically the most straightforward approach, since it's available without any need to consider differing {{es}} versions or deployment types.
+ 
+    If you still have access to the original data source, outside of your former {{es}} cluster, you can load the data from there. You have the option to use any ingestion method that you want—Logstash, Beats, the {{es}} clients, or whatever works best for you.
+
+    If the original source isn’t available or has other issues that make it non-viable, you can choose from one of the other migration options described here.
+
  - **Snapshot and restore**: Use a snapshot to create a backup of your running {{es}} cluster, and then migrate by restoring your data into a new cluster.
  - **Reindex API**: Copy documents from a source index to a destination index. You can reindex across clusters and deployment types and transform the data en route. 
  - **{{ls}}**: With {{ls}} you can collect, process, and forward data from a variety of sources to a variety of destinations. It serves as a highly configurable option available for migrating data across any deployment types.
@@ -71,7 +76,7 @@ Migrate data using snapshot and restore, including system data:
 -->
 
 
-## Data migration guides [data-migration-guides]
+## User data migration guides [data-migration-guides]
 
 To migrate your {{es}} ingested user data, choose one of the available migration options depending on your source and target deployment types.
 
@@ -82,7 +87,7 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 | ECH | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECE | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECK | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
-| Serverless | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| {{serverless-short}} | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | Self-managed | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md)*, [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 * See also [Reindex from a Self-managed cluster using a private CA](https://docs-v3-preview.elastic.dev/elastic/docs-content/pull/4914/manage-data/migrate/migrate-from-a-Self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex)
 
@@ -93,7 +98,7 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 | ECH | ECE | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECE | ECE | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECK | ECE | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
-| Serverless | ECE |  Logstash |
+| {{serverless-short}} | ECE |  Logstash |
 | Self-managed | ECE | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 
 **To Elastic Cloud on Kubernetes**:
@@ -103,18 +108,18 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 | ECH | ECK | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECE | ECK | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECK | ECK | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
-| Serverless | ECK | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| {{serverless-short}} | ECK | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | Self-managed | ECK | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 
 **To Elastic Cloud Serverless**:
 
 | From | To | Supported Methods |
 | --- | --- | --- |
-| ECH | Serverless | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md)*, [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
-| ECE | Serverless | Logstash |
-| ECK | Serverless | Logstash |
-| Serverless | Serverless | Logstash |
-| Self-managed | Serverless | not currently supported |
+| ECH | {{serverless-short}} | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md)*, [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| ECE | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| ECK | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| {{serverless-short}} | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| Self-managed | {{serverless-short}} | Not currently supported |
 
 * {applies_to}`stack: preview 9.3+`
 
@@ -125,6 +130,6 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 | ECH | Self-managed | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |  
 | ECE | Self-managed | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECK | Self-managed | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
-| Serverless | Self-managed | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| {{serverless-short}} | Self-managed | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | Self-managed | Self-managed | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 
