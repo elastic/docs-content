@@ -52,11 +52,15 @@ AutoOps is currently not available in any region for GovCloud customers.
 
 | Region | Name |
 | --- | --- |
-| us-central-1 | US Central (Iowa) |
+| us-east1 | US East (S. Carolina) |
+| us-east4 | US East (N. Virginia) |
+| us-west1 | US West (Oregon) |
+| us-central1 | US Central (Iowa) |
+| europe-west1 | Europe (Belgium) |
 
 ## AutoOps for {{serverless-full}} regions
 
-[AutoOps for {{serverless-short}}](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) is set up and enabled automatically in the following regions for AWS. The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, Azure, and GCP.
+[AutoOps for {{serverless-short}}](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) is set up and enabled automatically in the following regions for AWS. The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, GCP, and Azure.
 
 ### AWS
 

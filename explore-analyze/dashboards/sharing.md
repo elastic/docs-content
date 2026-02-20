@@ -30,13 +30,14 @@ From the icon {icon}`share`, you can set whether other users in the space can ed
 - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
 - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
 
-By default, the dashboard owner is the dashboard creator. This cannot be changed and is not currently visible in the UI. However, in some cases the creator and owner can be different users. For example, if user A creates a dashboard and user B exports and re-imports it in the same space (overwriting the existing dashboard), the creator becomes user B while user A remains the owner.
+:::{include} ../_snippets/dashboard-ownership.md
+:::
 
-::::{note}
-{{kib}} administrators always have write access to all dashboards.
-::::
+## Share a dashboard [share-dashboard-link]
 
-## Share a dashboard with a link or embed [share-dashboard-link]
+You can share your dashboards in several ways:
+- [Share with a direct link](../report-and-share.md#share-a-direct-link)
+- {applies_to}`serverless: unavailable` [Embed a dashboard outside of {{kib}}](../report-and-share.md#embed-code)
 
 For detailed information about the sharing options and time ranges, refer to [Reporting and sharing](../report-and-share.md).
 

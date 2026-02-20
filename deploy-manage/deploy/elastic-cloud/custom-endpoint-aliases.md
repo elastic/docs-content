@@ -45,7 +45,7 @@ To remove an alias from your deployment, or if you want to re-assign an alias to
 4. Select **Update alias**.
 
 ::::{note}
-After removing an alias, your organisation’s account will hold a claim on it for 30 days. After that period, other users can re-use this alias.
+After removing an alias, your organization’s account will hold a claim on it for 30 days. After that period, other users can re-use this alias.
 ::::
 
 
