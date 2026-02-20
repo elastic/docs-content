@@ -302,13 +302,17 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
      -d '{
-       "tool_id": "platform.core.generate_esql",
+       "tool_id": "platform.core.generate_esql", <1>
        "tool_params": {
-         "query": "Build an ES|QL query to get the book with the most pages",
-         "index": "kibana_sample_data_agents"
+         "query": "Build an ES|QL query to get the book with the most pages", <2>
+         "index": "kibana_sample_data_agents" <3>
        }
      }'
 ```
+1. ID of the built-in {{esql}} generator tool
+2. Natural language description of the desired query
+3. Index to query
+
 :::
 
 ::::
@@ -361,15 +365,21 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
      -d '{
-       "id": "example-books-esql-tool",
-       "type": "esql",
-       "description": "An ES|QL query tool for getting the book with the most pages",
+       "id": "example-books-esql-tool", <1>
+       "type": "esql", <2>
+       "description": "An ES|QL query tool for getting the book with the most pages", <3>
        "configuration": {
-         "query": "FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1",
-         "params": {}
+         "query": "FROM kibana_sample_data_agents | SORT page_count DESC | LIMIT 1", <4>
+         "params": {} <5>
        }
      }'
 ```
+1. Unique identifier for the tool
+2. Tool type - `esql` for {{esql}} query tools
+3. Description that helps agents understand when to use this tool
+4. The {{esql}} query to run
+5. Query parameters (empty for this basic example)
+
 :::
 
 ::::
@@ -470,7 +480,7 @@ The response includes tabular data showing "Revelation Space" by Alastair Reynol
 
 Retrieve the details of a specific tool using its ID.
 
-Get the tool you just created:
+Get the tool you created:
 
 ::::{tab-set}
 :group: api-examples
@@ -520,13 +530,13 @@ curl -X PUT "${KIBANA_URL}/api/agent_builder/tools/example-books-esql-tool" \
      -d '{
        "description": "An ES|QL query tool for finding the longest books published before a certain year",
        "configuration": {
-         "query": "FROM kibana_sample_data_agents | WHERE DATE_EXTRACT(\"year\", release_date) < ?maxYear | SORT page_count DESC | LIMIT ?limit",
+         "query": "FROM kibana_sample_data_agents | WHERE DATE_EXTRACT(\"year\", release_date) < ?maxYear | SORT page_count DESC | LIMIT ?limit", <1>
          "params": {
-           "maxYear": {
+           "maxYear": { <2>
              "type": "integer",
              "description": "Maximum year to filter books (exclusive)"
            },
-           "limit": {
+           "limit": { <3>
              "type": "integer",
              "description": "Maximum number of results to return"
            }
@@ -534,6 +544,10 @@ curl -X PUT "${KIBANA_URL}/api/agent_builder/tools/example-books-esql-tool" \
        }
      }'
 ```
+1. Query with parameterized placeholders (`?maxYear`, `?limit`)
+2. Integer parameter for filtering by publication year
+3. Integer parameter for limiting results
+
 :::
 
 ::::
@@ -559,11 +573,14 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
      -d '{
        "tool_id": "example-books-esql-tool",
        "tool_params": {
-         "maxYear": 1960,
-         "limit": 2
+         "maxYear": 1960, <1>
+         "limit": 2 <2>
        }
      }'
 ```
+1. Find books published before 1960
+2. Return only the top 2 results
+
 :::
 
 ::::
@@ -648,15 +665,15 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
      -H "kbn-xsrf: true" \
      -H "Content-Type: application/json" \
      -d '{
-       "id": "books-search-agent",
-       "name": "Books Search Helper",
-       "description": "Hi! I can help you search and analyze the books in our sample data collection.",
-       "labels": ["books", "sample-data", "search"],
-       "avatar_color": "#BFDBFF",
-       "avatar_symbol": "📚",
+       "id": "books-search-agent", <1>
+       "name": "Books Search Helper", <2>
+       "description": "Hi! I can help you search and analyze the books in our sample data collection.", <3>
+       "labels": ["books", "sample-data", "search"], <4>
+       "avatar_color": "#BFDBFF", <5>
+       "avatar_symbol": "📚", <6>
        "configuration": {
-         "instructions": "You are a helpful agent that assists users in searching and analyzing book data from the kibana_sample_data_agents index. Help users find books by author, title, or analyze reading patterns.",
-         "tools": [
+         "instructions": "You are a helpful agent that assists users in searching and analyzing book data from the kibana_sample_data_agents index. Help users find books by author, title, or analyze reading patterns.", <7>
+         "tools": [ <8>
            {
              "tool_ids": [
                "example-books-esql-tool",
@@ -670,6 +687,15 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
        }
      }'
 ```
+1. Unique identifier for the agent
+2. Display name shown in the UI
+3. Greeting message users view when starting a conversation
+4. Labels for organizing and filtering agents
+5. Avatar background color (hex code)
+6. Avatar symbol or emoji
+7. System instructions that guide the agent's behavior
+8. Tools the agent can use - includes your custom tool and built-in tools
+
 :::
 
 ::::
@@ -711,7 +737,7 @@ The response confirms the agent was created with its full configuration.
 
 Retrieve the details of a specific agent using its ID.
 
-Get the agent you just created:
+Get the agent you created:
 
 ::::{tab-set}
 :group: api-examples
@@ -796,9 +822,11 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
      -H "Content-Type: application/json" \
      -d '{
        "input": "What books do we have in our collection?",
-       "agent_id": "books-search-agent"
+       "agent_id": "books-search-agent" <1>
      }'
 ```
+1. Specify your custom agent ID
+
 :::
 
 ::::
@@ -880,10 +908,12 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
      -d '{
        "input": "Can you find the longest book published before 1960?",
        "agent_id": "books-search-agent",
-       "conversation_id": "<CONVERSATION_ID>"
+       "conversation_id": "<CONVERSATION_ID>" <1>
      }'
 ```
 :::
+
+1. Use the conversation ID from the previous response to maintain context
 
 ::::
 
@@ -934,9 +964,11 @@ Get the full history of a specific conversation:
 :::{tab-item} curl
 :sync: curl
 ```bash
-curl -X GET "${KIBANA_URL}/api/agent_builder/conversations/<CONVERSATION_ID>" \
+curl -X GET "${KIBANA_URL}/api/agent_builder/conversations/<CONVERSATION_ID>" \ <1>
      -H "Authorization: ApiKey ${API_KEY}"
 ```
+1. Replace with an actual conversation ID from the previous step
+
 :::
 
 ::::
