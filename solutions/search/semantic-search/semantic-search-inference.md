@@ -142,7 +142,7 @@ PUT _inference/sparse_embedding/elser_embeddings <1>
 {
   "service": "elastic",
   "service_settings": {
-    "model_id": ".elser_model_2",
+    "model_id": "elser_model_2",
     "num_allocations": 1,
     "num_threads": 1
   }
