@@ -14,6 +14,7 @@ products:
   - id: security
   - id: observability
   - id: cloud-serverless
+description: Track incidents, document findings, and coordinate response efforts with cases in Elastic Security, Observability, or Stack Management.
 ---
 
 # Cases [cases]

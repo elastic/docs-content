@@ -13,6 +13,7 @@ products:
   - id: security
   - id: observability
   - id: cloud-serverless
+description: Create custom roles and configure Kibana feature privileges to control access to cases.
 ---
 
 # Control access to cases [setup-cases]

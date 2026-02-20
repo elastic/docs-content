@@ -1,4 +1,5 @@
 ---
+navigation_title: Cases
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-cases.html
   - https://www.elastic.co/guide/en/serverless/current/observability-cases.html
@@ -8,7 +9,7 @@ applies_to:
 products:
   - id: observability
   - id: cloud-serverless
-navigation_title: Cases
+description: Track and manage operational incidents from detection to resolution with Elastic Observability cases.
 ---
 
 # Cases for Elastic {{observability}} [observability-cases]

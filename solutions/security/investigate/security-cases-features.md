@@ -10,6 +10,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Use Elastic Security case features like observables, events, indicators, Timelines, and case metrics.
 ---
 
 # Security case features [security-cases-features]

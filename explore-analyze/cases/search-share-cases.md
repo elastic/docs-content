@@ -1,4 +1,5 @@
 ---
+navigation_title: Search and share
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-cases.html
   - https://www.elastic.co/guide/en/security/current/cases-open-manage.html
@@ -13,6 +14,7 @@ products:
   - id: security
   - id: observability
   - id: cloud-serverless
+description: Search, filter, and share cases with colleagues or external ticketing systems.
 ---
 
 # Search and share cases [search-share-cases]

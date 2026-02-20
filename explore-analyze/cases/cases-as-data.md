@@ -1,4 +1,5 @@
 ---
+navigation_title: Cases as data
 applies_to:
   stack: preview 9.2
   serverless: unavailable
@@ -8,6 +9,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Query case data from dedicated indices to build dashboards and track operational metrics like MTTR and analyst workload.
 ---
 
 # Use cases as data [use-cases-as-data]

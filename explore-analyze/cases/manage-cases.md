@@ -14,6 +14,7 @@ products:
   - id: security
   - id: observability
   - id: cloud-serverless
+description: Update cases with alerts, files, visualizations, and comments. Export and import cases between spaces.
 ---
 
 # Manage cases [manage-cases]

@@ -14,6 +14,7 @@ products:
   - id: security
   - id: observability
   - id: cloud-serverless
+description: Create cases to track incidents, attach alerts and files, assign team members, and push updates to external systems.
 ---
 
 # Create cases [create-cases]
@@ -46,7 +47,7 @@ To create a new case:
 
 4. (Optional) Add a category, [assignees](control-case-access.md), and tags.
 
-5. {applies_to}`stack: preview` {applies_to}`serverless: preview` (Optional) Fill in any [custom fields](configure-case-settings.md#case-custom-fields) in the **Additional fields** section.
+5. (Optional) Fill in any [custom fields](configure-case-settings.md#case-custom-fields) in the **Additional fields** section.
 
 6. Configure sync and extraction options:
    * **Sync alert status** syncs alert statuses with the case status (on by default).

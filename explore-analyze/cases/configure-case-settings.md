@@ -14,6 +14,7 @@ products:
   - id: security
   - id: observability
   - id: cloud-serverless
+description: Configure case closure options, custom fields, templates, and connectors for external incident management systems.
 ---
 
 # Configure case settings [configure-case-settings]

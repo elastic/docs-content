@@ -1,4 +1,5 @@
 ---
+navigation_title: Cases
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cases-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-overview.html
@@ -9,7 +10,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-navigation_title: Cases
+description: Create and manage security cases to track incidents, attach alerts, and collaborate with your SOC team.
 ---
 
 # Cases for {{elastic-sec}} [security-cases-overview]
