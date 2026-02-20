@@ -1,17 +1,28 @@
 # Changelog Configuration
 # This file configures the valid values for changelog fields using the pivot structure.
 # Place this file as `changelog.yml` in the `docs/` directory
+#
+# NOTE: All list-like fields accept BOTH forms:
+#   - Comma-separated string: "value1, value2, value3"
+#   - YAML list:
+#     - value1
+#     - value2
+#     - value3
+# Both forms produce the same result. Choose whichever is more readable for your use case.
 
+# Products configuration (optional)
+# If not specified, all products from products.yml are allowed
 products:
   # List of available product IDs (empty = all from products.yml)
+  # Accepts string or list: "elasticsearch, kibana" or [elasticsearch, kibana]
   available:
+    - cloud-serverless
     - kibana
     - observability
-    - cloud-serverless
     - security
   # Default products when --products not specified
   # default:
-  #   - product: kibana
+  #   - product: elasticsearch
   #     lifecycle: ga
 
 # Extraction configuration
@@ -25,77 +36,81 @@ extract:
   issues: true
 
 # Available lifecycle values (strongly typed: preview, beta, ga)
-# New name (preferred):
-# lifecycles:
-#   - preview
-#   - beta
-#   - ga
+# Accepts string or list: "preview, beta, ga" or a YAML list
+lifecycles:
+  - preview
+  - beta
+  - ga
 
 # Pivot configuration for types, subtypes, and areas with label mappings.
 # By default we render entries grouped by type > subtype > area.
 # NOTE: subtype and area are optional and either may be omitted.
 # Labels are specified in a "label -> value" format
-pivot:
+# pivot:
   # Type definitions with optional labels
+  # At a minimum, feature, bug-fix, and breaking-change must be configured.
   # Keys are type names, values can be:
   #   - simple string: comma-separated label list (e.g., ">bug, >fix")
+  #   - YAML list: [">bug", ">fix"]
   #   - empty/null: no labels for this type
   #   - object: { labels: "...", subtypes: {...} } for breaking-change type only
-  types:
+  #     (labels and subtype values also accept string or list)
+  # types:
     # Complex object form with subtypes (ONLY allowed for breaking-change)
     # Subtypes help categorize breaking changes by their nature
+    # Both labels and subtype values accept string or list form
     # breaking-change:
-      # labels: "release_note:breaking"
-    #   subtypes:
-    #     api: ">api-breaking"
-    #     behavioral: ">behavioral-breaking"
-    #     configuration: ">config-breaking"
-    #     dependency: ">dependency-breaking"
-    #     subscription: ">subscription-breaking"
-    #     plugin: ">plugin-breaking"
-    #     security: ">security-breaking"
-    #     other:
+      # labels: ">breaking, >bc"
+      # Equivalent list form:
+      # labels:
+      #   - ">breaking"
+      #   - ">bc"
+      # subtypes:
+      #   api: ">api-breaking"
+      #   behavioral: ">behavioral-breaking"
+      #   configuration: ">config-breaking"
+      #   dependency: ">dependency-breaking"
+      #   subscription: ">subscription-breaking"
+      #   plugin: ">plugin-breaking"
+      #   security: ">security-breaking"
+      #   other:
     # Simple string form: labels as comma-separated string
-    # bug-fix: "release_note:fix"
-    # deprecation: "release_note:deprecation"
-    # feature: "release_note:feature"
-    # enhancement: "release_note:enhancement"
-    # docs: ">docs"
+    # bug-fix: ">bug"
+    # deprecation: ">deprecation"
+    # # Empty block: no labels (YAML null)
+    # feature:
+    # enhancement:
+    # docs:
     # known-issue:
     # other:
     # regression:
     # security:
 
-  # Area definitions with labels
-  # Keys are area display names, values are label strings
-  # Multiple labels can be comma-separated
-  # areas:
-    # Alerting: "Feature:Alerting, Team:Alerting Services, Feature:Actions, Team:ResponseOps"
-    # "Beats management": "Feature:beats-cm, Team:Beats"
-    # Canvas: "Feature:Canvas"
-    # "Dashboards and Visualizations": "Feature:Dashboard, Feature:Drilldowns, Project:TimeToVisualize, Team:Presentation, Feature:Lens, Feature:Timelion, Feature:TSVB, Feature:Coordinate Map, Feature:Region Map, Feature:Vega, Feature:Gauge Vis, Feature:Tagcloud, Feature:Vis Loader, Feature:Vislib, Feature:Vis Editor, Feature:Aggregations, Feature:Input Control, Feature:Visualizations, Feature:Markdown, Feature:Data Table, Feature:Heatmap, Feature:Pie Chart, Feature:XYAxis, Feature:Graph, Feature:Graph, Feature:New Feature, Feature:MetricVis, Team:Visualizations"
-    # "Data ingestion and Fleet": "Team:Fleet, Ingest, Feature:Ingest Node Pipelines"
-    # Discover: "Feature:Discover, Team:DataDiscovery"
-    # "ES|QL": "Team:ESQL"
-    # "Elastic Observability solution": "Feature:Observability Home, Feature:SLO, Team:obs-ux-management, Team:Obs AI Assistant, Team:obs-ux-infra_services, Team:obs-ux-logs, Team:obs-knowledge, Team:obs-entities, ci:project-deploy-observability, Feature:Uptime, Team:uptime, Team:apm, Team:APM, Feature:Metrics UI, Team:logs-metrics-ui, Feature:Logs UI, Feature:Infra UI, Feature:Service Maps"
-    # "Elastic Security solution": "Team:SIEM, Team:SecuritySolution, Team: SecuritySolution, Team:Endpoint Response, Team:Entity Analytics, Team:Security Generative AI, Team:Threat Hunting, Team:Threat Hunting:Explore, Team:Threat Hunting:Investigations, Team:Detections and Resp, Team:Asset Management, Team:Onboarding and Lifecycle Mgt, Team:Security Solution Platform, Team:Detection Alerts, Team: CTI, Team:Threat Hunting:Cases, Team:Cloud Security, Team:Detection Engine, Team:Defend Workflows, Team:Detection Rules, Team:Security-Scalability, Feature:Timeline, Feature:Detection Rules, Feature:Detection Alerts, Feature:Entity Analytics, Feature:Rule Exceptions, Feature:AutomaticImport"
-    # "Kibana platform": "Team:SharedUX, Team:Design, Project:Accessibility, Feature:Add Data, Feature:Home, Team:Cloud"
-    # "Kibana security": "Team:Security, Feature:Security/Spaces, Feature:users and roles, Feature:Security/Authentication, Feature:Security/Authorization, Feature:Security/Feature Controls, Team:Security-Scalability"
-    # "Kibana UI": "Kibana UI, Team:Core UI, Feature:Header"
-    # Logstash: "Feature:Logstash Pipelines"
-    # "Machine learning": ":ml, Feature:Anomaly Detection, Feature:Data Frames, Feature:File Data Viz, Feature:ml-results, Feature:Data Frame Analytics, Feature:Inference UI"
-    # Management: "Feature:license, Feature:Console, Feature:Search Profiler, Feature:watcher, Feature:Index Patterns, Feature:Data Views, Feature:Kibana Management, Feature:Dev Tools, Feature:Inspector, Feature:Index Management, Feature:Streams, Feature:Snapshot and Restore, Team:Elasticsearch UI, Team:Stack Management, Feature:FieldFormatters, Feature:CCR, Feature:ILM, Feature:Transforms, Feature:Search, Project:AsyncSearch, Feature:Upgrade Assistant" 
-    # Maps: "Team:Geo"
-    # Monitoring: "Team:Monitoring, Feature:Telemetry, Feature:Stack Monitoring"
-    # Operations: "Feature:license, Team:Operations"
-    # Platform: "Team:Core, Feature:Plugins, Feature:New Platform, Project:i18n, Feature:ExpressionLanguage, Feature:Saved Objects, Team:Stack Services, Feature:NP Migration, Feature:Task Manager, Team:Pulse"
-    # QA: "Team:QA"
-    # "Querying and filtering": "Feature:Query Bar, Feature:Courier, Feature:Filters, Feature:Timepicker, Feature:Highlight, Feature:KQL, Feature:Rollups, Feature:Search, Project:AsyncSearch"
-    # Reporting: "Feature:Reporting, Team:Reporting Services"
-    # Search: "Team:Search"
-    # Sharing: "Feature:Embedding, Feature:SharingURLs"
+  # Labels that trigger the highlight flag (accepts string or list)
+  # String form: highlight: ">highlight, >release-highlight"
+  # List form:
+  # highlight:
+  #   - ">highlight"
+  #   - ">release-highlight"
 
-# Rules configuration — controls which PRs create changelogs and which changelogs are published.
+  # Area definitions with labels
+  # Keys are area display names, values are label strings or lists
+  # String form: "label1, label2" | List form: [label1, label2]
+  # areas:
+    # Example mappings - customize based on your label naming conventions
+    # Autoscaling: ":Distributed Coordination/Autoscaling"
+    # Search: ":Search/Search"
+    # Security: ":Security/Security"
+    # Watcher: ":Data Management/Watcher"
+    # List form example:
+    # Search:
+    #   - ":Search/Search"
+    #   - ":Search/Ranking"
+
+# Rules configuration — controls which PRs create changelogs and which entries are published.
+# All list-like fields (exclude, include, exclude_types, etc.) accept BOTH forms:
+#   - Comma-separated string: "value1, value2, value3"
+#   - YAML list: [value1, value2, value3]
 #
 # Global match default for multi-valued fields (labels, areas).
 #   any (default) = match if ANY item matches the list
@@ -103,13 +118,18 @@ pivot:
 # Inherited by create, publish, and all product overrides.
 rules:
   # match: any
-# Create — controls which PRs generate changelogs.
-  #   exclude: block PRs with these labels (comma-separated)
-  #   include: only create changelogs for PRs with these labels
+
+  # Create — controls which PRs generate changelog entries.
+  #   exclude: block PRs with these labels (string or list)
+  #   include: only create changelogs for PRs with these labels (string or list)
   # Cannot specify both.
   #
   # create:
   #   exclude: ">non-issue, >test"
+  #   # Or equivalently:
+  #   # exclude:
+  #   #   - ">non-issue"
+  #   #   - ">test"
   #   # match: any
   #   products:
   #     'elasticsearch, kibana':
@@ -117,20 +137,65 @@ rules:
   #     'cloud-serverless':
   #       exclude: "ILM"
 
-  # Publish — controls which changelogs appear in rendered output.
-  #   exclude_types / include_types
-  #   exclude_areas / include_areas
+  # Publish — controls which entries appear in rendered output.
+  #   exclude_types / include_types (string or list)
+  #   exclude_areas / include_areas (string or list)
   # Cannot mix exclude_ and include_ for the same field.
+  #
   # match_areas inherits from rules.match if not specified.
   #
   publish:
-    # match_areas: all
-  #   exclude_types:
-  #     - deprecation
-  #     - known-issue
+  #   # match_areas: any
+    # exclude_types: "docs"
+  #   # Or equivalently:
+  #   # exclude_types:
+  #   #   - deprecation
+  #   #   - known-issue
   #   exclude_areas:
   #     - "Internal"
     products:
+  #     'elasticsearch, kibana':
+  #       exclude_types:
+  #         - docs
+      'cloud-serverless':
+        match_areas: any
+        exclude_areas:
+          - Allocation
+          - Audit
+          - Authentication
+          - Autoscaling
+          - CCR
+          - CCS
+          - "Cluster coordination"
+          - Codec
+          - "Discovery-Plugins"
+          - Engine
+          - FIPS
+          - Health
+          - ILM
+          - IdentityProvider
+          - "Infra/Circuit breakers"
+          - "Infra/CLI"
+          - "Infra/Core"
+          - "Infra/Entitlements"
+          - "Infra/Logging"
+          - "Infra/Metrics"
+          - "Infra/Node lifecycle"
+          - "Infra/Plugins"
+          - "Infra/Transport API"
+          - License
+          - Monitoring
+          - Packaging
+          - "Searchable snapshots"
+          - SLM
+          - "Snapshot and restore"
+          - Stats
+          - Watcher
+        exclude_types:
+          - docs
+  #       include_areas:
+  #         - "Search"
+  #         - "Monitoring"
       'kibana':
         match_areas: all
         exclude_types:
@@ -138,9 +203,6 @@ rules:
         exclude_areas:
           - "Elastic Observability solution"
           - "Elastic Security solution"
-      'cloud-serverless':
-        exclude_types:
-          - docs
       'observability':
         exclude_types:
           - docs
@@ -153,20 +215,28 @@ rules:
         match_areas: any
         include_areas:
           - "Elastic Security solution"
-  # Bundle configuration (profiles and defaults)
+
+# Bundle configuration (profiles and defaults)
 bundle:
   # Input directory containing changelog YAML files
-  directory: docs/changelog
+  directory: changelog
   # Output directory for bundled changelog files
-  output_directory: docs/releases
+  output_directory: releases
   # Whether to resolve (copy contents) by default
   resolve: true
 
   # Named bundle profiles for different release scenarios
   # profiles:
-  #   kibana-release:
-  #     products: "kibana {version} {lifecycle}"
-  #     output: "kibana-{version}.yaml"
-  #   serverless-release:
-  #     products: "cloud-serverless {version} {lifecycle}"
-  #     output: "serverless-{version}.yaml"
+    # Example: Elasticsearch release profile
+    # elasticsearch-release:
+    #   products: "elasticsearch {version} {lifecycle}"
+    #   output: "elasticsearch-{version}.yaml"
+
+    # Example: Serverless release profile
+    # serverless-release:
+    #   products: "cloud-serverless {version} *"
+    #   output: "serverless-{version}.yaml"
+    #   # Feature IDs to hide when bundling with this profile (accepts string or list)
+    #   hide_features:
+    #     - feature-flag-1
+    #     - feature-flag-2
