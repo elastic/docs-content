@@ -53,15 +53,13 @@ To create a new case:
    * **Sync alert status** syncs alert statuses with the case status (on by default).
    * {applies_to}`security: ga 9.2+` **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription).
 
+      :::{note}
+      Observables are not available in {{product.serverless-observability}} or {{observability}}.
+      :::
+
 7. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system.
 
 8. Select **Create case**. If you've selected a connector for the case, the case is automatically pushed to the third-party system it's connected to.
-
-::::{tip}
-Alternative methods for creating cases:
-- {applies_to}`stack: preview` {applies_to}`serverless: preview` configure rules to create cases using [case actions](kibana://reference/connectors-kibana/cases-action-type.md)
-- Create cases directly from alerts on the **Alerts** page by selecting **More options** → **Add to existing case** or **Create new case**.
-::::
 
 ## Set up email notifications [add-case-notifications]
 

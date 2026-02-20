@@ -31,13 +31,13 @@ Note the following rules for search:
 * **Text**: Text searches (such as case titles and descriptions) are case-insensitive.
 * **Syntax**: No special syntax is required when entering your search criteria.
 
-{applies_to}`stack: ga 9.3` You can also search for alert and event IDs, observable values, case comments, and custom fields (text type only). For example, you can search a {{elastic-sec}} for a specific IP address that's been specified as an observable, a colleague's comment, or the ID of an alert that's attached to the case.
+{applies_to}`stack: ga 9.3+` You can also search for alert and event IDs, observable values, case comments, and custom fields (text type only). For example, you can search {{elastic-sec}} for a specific IP address that's been specified as an observable, a colleague's comment, or the ID of an alert that's attached to the case.
 
 ## Filter cases [filter-cases]
 
 You can filter cases by attributes such as assignees, categories, severity, status, and tags. 
 
-{applies_to}`stack: ga 9.3` To find cases created during a specific time range, use the date time picker above the Cases table. The default selection is the last 30 days—click **Show all cases** to display every case in your space.
+{applies_to}`stack: ga 9.3+` To find cases created during a specific time range, use the date time picker above the Cases table. The default selection is the last 30 days—click **Show all cases** to display every case in your space.
 
 ## Send cases to external systems [send-cases-external]
 

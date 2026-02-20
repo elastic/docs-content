@@ -116,7 +116,7 @@ To create a template:
 Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
-In addition to the preset observable types (such as IP addresses and file hashes), you can create up to 10 custom types to match your investigation needs. Custom observable types appear as options when you [add observables to cases](/solutions/security/investigate/security-cases-features.md#add-case-observables).
+In addition to the preset observable types (such as IP addresses and file hashes), you can create up to 10 custom types to match your investigation needs. Custom observable types appear as options when you [add observables to cases](manage-cases.md#add-case-observables).
 
 1. In the **Observable types** section, click **Add observable type**.
 2. Enter a descriptive label for the observable type, then click **Save**.
