@@ -16,9 +16,9 @@ Known issues are significant defects or limitations that may impact your impleme
 % **Workaround** 
 % Workaround description.
 
-:::{changelog} /changelog/bundles
+:::{changelog} /releases
 :subsections:
-:config: /release-notes/elastic-cloud-serverless/elastic-cloud-serverless-changelog.yml
+:config: /changelog.yml
 :type: known-issue
 :product: cloud-serverless
 :::

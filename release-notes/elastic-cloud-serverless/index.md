@@ -12,9 +12,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 <!-- :::{include} _snippets/2025-01-13/index.md
 ::: -->
 
-:::{changelog} /changelog/bundles
+:::{changelog} /releases
 :subsections:
-:config: /release-notes/elastic-cloud-serverless/elastic-cloud-serverless-changelog.yml
+:config: /changelog.yml
 :product: cloud-serverless
 :::
 

@@ -6,9 +6,9 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
-:::{changelog} /changelog/bundles
+:::{changelog} /releases
 :subsections:
-:config: /release-notes/elastic-cloud-serverless/elastic-cloud-serverless-changelog.yml
+:config: /changelog.yml
 :type: breaking-change
 :product: cloud-serverless
 :::

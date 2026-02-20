@@ -11,9 +11,9 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
-:::{changelog} /changelog/bundles
+:::{changelog} /releases
 :subsections:
-:config: /release-notes/elastic-cloud-serverless/elastic-cloud-serverless-changelog.yml
+:config: /changelog.yml
 :type: deprecation
 :product: cloud-serverless
 :::
