@@ -18,9 +18,9 @@ products:
 The **Partitioning** tab and the ability to route data into child streams is only available on [wired streams](../wired-streams.md).
 :::
 
-For [wired streams](../wired-streams.md), the `/logs` endpoint acts as the entry point for all your log data.
+For [wired streams](../wired-streams.md), the wired streams endpoints act as the entry point for all your log data.
 
-Once you've sent your data to the `/logs` endpoint, open the stream and use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
+Once you've sent your data to a wired streams endpoint, open the stream and use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
 
 - Route application logs to a `logs.myapp` child stream.
 - Route system logs to a `logs.system` child stream.
