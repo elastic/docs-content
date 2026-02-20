@@ -1,6 +1,8 @@
 ---
-navigation_title: Security case features
+navigation_title: Cases
 mapped_pages:
+  - https://www.elastic.co/guide/en/security/current/cases-overview.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cases-overview.html
   - https://www.elastic.co/guide/en/security/current/cases-open-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
 applies_to:
@@ -10,12 +12,14 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Use Elastic Security case features like observables, events, indicators, Timelines, and case metrics.
+description: Create and manage security cases to track incidents, attach alerts, and collaborate with your SOC team using Security-specific features.
 ---
 
-# Security case features [security-cases-features]
+# Cases for {{elastic-sec}} [security-cases-overview]
 
-{{elastic-sec}} includes additional case features beyond the core functionality. For general case management, refer to [](/explore-analyze/cases/manage-cases.md).
+Create cases to collect and share information about security incidents and investigations. You can attach alerts, document findings, and collaborate with your SOC team, all in one place. Cases also integrate with external ticketing systems like Jira, ServiceNow, and IBM Resilient, so you can escalate and track incidents across your security workflow. 
+
+Beyond the core case functionality, {{elastic-sec}} lets you view case metrics, attach events from Timeline, add threat intelligence indicators, and link Timelines to preserve investigation context. Refer to [](/explore-analyze/cases.md) for help creating, managing, and configuring cases.
 
 ## View case metrics [cases-view-metrics]
 
@@ -55,4 +59,4 @@ Attach [Timelines](/solutions/security/investigate/timeline.md) to cases to pres
 
 ::::{tip}
 To insert a Timeline link in the case description, click the Timeline icon (![Timeline icon](/solutions/images/security-add-timeline-button.png "title =20x20")).
-::::
+:::: 

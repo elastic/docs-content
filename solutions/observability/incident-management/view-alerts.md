@@ -191,7 +191,7 @@ To add an alert to a new case:
 1. Select **Add to new case**.
 2. Enter a case name, add relevant tags, and include a case description.
 3. Under **External incident management system**, select a connector. If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
-4. After you’ve completed all of the required fields, click **Create case**. A notification message confirms you successfully created the case. To view the case details, click the notification link or go to the [Cases](/solutions/observability/incident-management/cases.md) page.
+4. After you’ve completed all of the required fields, click **Create case**. A notification message confirms you successfully created the case. To view the case details, click the notification link or go to the [Cases](/solutions/observability/incident-management/observability-cases.md) page.
 
 
 ### Add an alert to an existing case [observability-view-alerts-add-an-alert-to-an-existing-case]

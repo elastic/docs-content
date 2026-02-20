@@ -15,7 +15,7 @@ products:
 
 The following are tools for investigating security events and tracking security issues directly in the {{security-app}}.
 
-* [**Cases**](investigate/cases.md): Track investigation details about security issues.
+* [**Cases**](investigate/security-cases.md): Track investigation details about security issues.
 * [**Timelines**](investigate/timeline.md): Workspace for investigations and threat hunting.
 * [**Osquery**](investigate/osquery.md): Run live and scheduled queries on operating systems.
 * [**Intelligence**](../../troubleshoot/security/indicators-of-compromise.md): Indicators of compromise used for threat intelligence.

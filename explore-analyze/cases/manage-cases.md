@@ -31,7 +31,7 @@ To view a case, select its name. From the case details page, you can edit the de
 
 ## Add context and supporting materials [add-case-context]
 
-Provide additional context by adding [alerts](#add-case-alerts), [files](#add-case-files), [observables](#add-case-observables), and [Lens visualizations](#cases-lens-visualization) to your case. In {{elastic-sec}}, you can also add [events](/solutions/security/investigate/security-cases-features.md#cases-add-events), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), and more.
+Provide additional context by adding [alerts](#add-case-alerts), [files](#add-case-files), [observables](#add-case-observables), and [Lens visualizations](#cases-lens-visualization) to your case. In {{elastic-sec}}, you can also add [events](/solutions/security/investigate/security-cases.md#cases-add-events), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), and more.
 
 ### Add alerts [add-case-alerts]
 

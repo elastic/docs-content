@@ -25,11 +25,8 @@ You can create cases in {{elastic-sec}}, {{observability}}, or {{stack-manage-ap
 
 ## Get started [cases-get-started]
 
-Ready to start using cases? [Create your first case](cases/create-cases.md), then [configure case settings](cases/configure-case-settings.md) to add external connectors, custom fields, and templates.
+Start by [creating your first case](cases/create-cases.md), then [configure case settings](cases/configure-case-settings.md) to add external connectors, custom fields, and templates. Once you have cases, you can [add alerts, files, and visualizations](cases/manage-cases.md) to document your investigation, and [share cases](cases/search-share-cases.md) with external systems. 
 
-## Learn more [cases-learn-more]
-
-* [Manage cases](cases/manage-cases.md) 
-* [Search and share cases](cases/search-share-cases.md)
-* [Control access to cases](cases/control-case-access.md)
-* [Security case features](/solutions/security/investigate/security-cases-features.md)
+:::{note}
+If you're using {{elastic-sec}}, explore [Security case features](/solutions/security/investigate/security-cases.md#security-cases-features) for additional capabilities like adding events and Timelines to cases.
+:::

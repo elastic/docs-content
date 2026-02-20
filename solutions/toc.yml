@@ -503,7 +503,7 @@ toc:
                 children:
                   - file: observability/incident-management/triage-slo-burn-rate-breaches.md
                   - file: observability/incident-management/triage-threshold-breaches.md
-          - file: observability/incident-management/cases.md
+          - file: observability/incident-management/observability-cases.md
           - file: observability/incident-management/service-level-objectives-slos.md
             children:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
@@ -715,9 +715,7 @@ toc:
               - file: security/investigate/use-placeholder-fields-in-osquery-queries.md
           - file: security/investigate/notes.md
           - file: security/investigate/indicators-of-compromise.md
-          - file: security/investigate/cases.md
-            children:
-              - file: security/investigate/security-cases-features.md
+          - file: security/investigate/security-cases.md
       - file: security/dashboards.md
         children:
           - file: security/dashboards/overview-dashboard.md

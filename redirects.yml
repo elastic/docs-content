@@ -776,3 +776,6 @@ redirects:
   'explore-analyze/alerts-cases/watcher/transform-chain.md': 'explore-analyze/alerting/watcher/transform-chain.md'
   'explore-analyze/alerts-cases/watcher/throttling.md': 'explore-analyze/alerting/watcher/throttling.md'
   'explore-analyze/alerts-cases/watcher/execute-watch.md': 'explore-analyze/alerting/watcher/execute-watch.md'
+  'solutions/security/investigate/security-cases-features.md': 'solutions/security/investigate/security-cases.md'
+  'solutions/security/investigate/cases.md': 'solutions/security/investigate/security-cases.md'
+  'solutions/observability/incident-management/cases.md': 'solutions/observability/incident-management/observability-cases.md'
