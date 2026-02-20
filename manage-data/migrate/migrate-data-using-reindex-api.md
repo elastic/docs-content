@@ -12,15 +12,13 @@ products:
 
 # Migrate {{es}} data using the reindex API [migrate-reindex-from-remote]
 
-The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) offers a convenient way for you to migrate your documents from a source index, data stream, or alias in an {{ech}} deployment to an index in an {{serverless-full}} project.
+The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) offers a convenient way for you to migrate your {{es}} documents from a source index, data stream, or alias in one deployment to another.
 
-:::{admonition} Basic migration
-This guide focuses on a basic data migration scenario for moving a full index or selected index documents from an {{ech}} deployment to an {{serverless-full}} project.
+This guide gives the example of reindexing a full index from an {{ech}} deployment an {{serverless-full}} project, but the steps can be adapted to other deployment types. 
 
 For more advanced use cases, including data modification using scripts or ingest pipelines, refer to the [Reindex indices examples](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) and the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) documentation. 
 
 To migrate data from {{ech}}, you need to include the remote host parameters as shown in the [reindex from remote](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) example and as described here.
-:::
 
 :::{tip}
 If you're migrating from a self-managed cluster that uses non–publicly trusted TLS certificates, including self-signed certificates and certificates signed by a private certificate authority (CA), refer to our guide [Reindex from a self-managed cluster using a private CA](/manage-data/migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md).
@@ -33,6 +31,26 @@ If you're migrating from a self-managed cluster that uses non–publicly trusted
 - An [API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) for authentication with the {{ech}} deployment
 
   Basic authentication can be used in place of an API key, but an API key is recommended as a more secure option.
+
+- The target deployment must be able to access your original source cluster to perform the reindex operation. Access is controlled by the {{es}} `reindex.remote.whitelist` user setting.
+
+    Domains matching the patterns `["*.io:*", "*.com:*"]` are allowed by default, so if your remote host URL matches that pattern you do not need to explicitly define `reindex.remote.whitelist`.
+
+    Otherwise, if your remote endpoint is not covered by the default patterns, adjust the setting to add the remote {{es}} cluster as an allowed host:
+
+    1. From your deployment menu, go to the **Edit** page.
+    2. In the **Elasticsearch** section, select **Manage user settings and extensions**. For deployments with existing user settings, you might have to expand the **Edit elasticsearch.yml** caret for each node type instead.
+    3. Add the following `reindex.remote.whitelist: [REMOTE_HOST:PORT]` user setting, where `REMOTE_HOST` is a pattern matching the URL for the remote {{es}} host that you are reindexing from, and `PORT` is the host port number. Do not include the `https://` prefix.
+
+        If you override the parameter, it replaces the defaults: `["*.io:*", "*.com:*"]`. If you still want these patterns to be allowed, you need to specify them explicitly in the value.
+
+        For example:
+
+        `reindex.remote.whitelist: ["*.us-east-1.aws.found.io:9243", "*.com:*"]`
+
+    4. Save your changes.
+
+
 
 :::{important} 
 Kibana assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
@@ -58,6 +76,8 @@ Visual components, such dashboard and visualizations, can be migrated after you 
 
     1. Call the reindex API to migrate your index. If you have multiiple indices to migrate, we recommend doing a separate call for each.
 
+        Example: Reindex from an {{ech}} deployment to a {[serverless-short]} project using an API key:
+
         ```
         POST _reindex
         {
@@ -73,13 +93,15 @@ Visual components, such dashboard and visualizations, can be migrated after you 
           }
         }
         ```
-        1. The URL for your {{serverless-short}} project. This is the {{es}} endpoint that you copied in Step 1.
+        1. The URL for your {{serverless-short}} project. This is the {{es}} endpoint that you copied in Step 1. If you're migrating to, for example, an {{ech}} cluster, you can modify the remote host address accordingly.
         1. The API key for authenticating the connection to your {{ech}} deployment.
         1. The source index to copy from your {{ech}} deployment.
         1. The destination index in your {{serverless-short}} project.
 
-    1. Go to the **Index Management** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+    1. Verify that the new index is present:
 
-    1. Use the search field to confirm that your destination index has been created with the expected number of documents.
+        ```sh
+        GET INDEX-NAME/_search?pretty
+        ```
 
-
+    1. If you are not planning to reindex more data from the remote and you configured a `reindex.remote.whitelist` user setting, that setting can now be removed.
