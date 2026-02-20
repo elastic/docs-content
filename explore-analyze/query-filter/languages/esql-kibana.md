@@ -81,7 +81,7 @@ A query might result in warnings, for example when querying an unsupported field
 |--------------------|---------------------|-----------------------------|
 | {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
 | {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment a line |
-| {kbd}`cmd+i`       | {kbd}`ctrl+i`       | Prettify query              |
+| {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) |
 | {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open [Quick search](#esql-kibana-quick-search) |
 
 :::{tip}
