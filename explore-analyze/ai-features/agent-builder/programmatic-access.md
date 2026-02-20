@@ -1,5 +1,6 @@
 ---
 navigation_title: "Programmatic access"
+description: "Learn how to integrate with Agent Builder using the MCP server, A2A protocol, or Kibana REST APIs. Extend AI capabilities to external clients like Claude and Cursor."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
@@ -14,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Work programmatically with {{agent-builder}}
+# Programmatic access to {{agent-builder}}
 
 {{agent-builder}} provides comprehensive integration options for programmatic access and automation.
 
