@@ -1451,7 +1451,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Makes the last source shard completely remove reshard metadata
 * Adds a monitor for estimated heap usage 
 
-* Has last source shard to complete remove reshard metadata
 
 ### Fixes [serverless-changelog-09222025-fixes]
 
