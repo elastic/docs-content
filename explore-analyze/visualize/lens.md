@@ -30,7 +30,7 @@ With Lens, you can create the following visualization types:
 | [Metric chart](/explore-analyze/visualize/charts/metric-charts.md) | Highlight a single KPI or a small set of critical numbers. |
 | [Table](/explore-analyze/visualize/charts/tables.md) | Present precise values, rankings, or multi-metric details in a compact layout. |
 | [Pie chart](/explore-analyze/visualize/charts/pie-charts.md) | Show simple part-to-whole composition with a small number of categories (generally ≤ 5). |
-| Gauge chart | Show progress toward a target or status against thresholds for a single metric. |
+| [Gauge chart](/explore-analyze/visualize/charts/gauge-charts.md) | Show progress toward a target or status against thresholds for a single metric. |
 | Heat map chart | Reveal patterns by magnitude across two binned dimensions using color. |
 | Waffle chart | Show part-to-whole as a grid of equal cells where filled cells represent proportion. |
 | Region chart | Show geospatial patterns by coloring regions based on aggregated values (choropleth). |

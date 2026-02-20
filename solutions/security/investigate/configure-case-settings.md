@@ -109,11 +109,6 @@ You can subsequently remove or edit custom fields on the **Settings** page.
 
 ## Templates [cases-templates]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 You can make the case creation process faster and more consistent by adding templates. A template defines values for one or all of the case fields (such as severity, tags, description, and title) as well as any custom fields.
 
 To create a template:
