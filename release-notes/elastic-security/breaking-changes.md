@@ -1,5 +1,12 @@
 ---
 navigation_title: Breaking changes
+products:
+  - id: security
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 # {{elastic-sec}} breaking changes [elastic-security-breaking-changes]
 Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the {{elastic-sec}} breaking changes and take the necessary steps to mitigate any issues. To learn how to upgrade, check [](/deploy-manage/upgrade.md).

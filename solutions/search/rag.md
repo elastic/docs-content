@@ -71,11 +71,11 @@ You can build RAG applications with {{es}} by retrieving relevant context from y
 
 **Agent Builder:** Create AI agents that can search your {{es}} indices, use tools, and maintain conversational context. Agent Builder provides a complete framework for building stateful RAG applications. Learn more in the [Agent Builder documentation](/explore-analyze/ai-features/elastic-agent-builder.md).
 
-**Custom implementation:** Retrieve documents using any {{es}} [search approach](/solutions/search/search-approaches.md) (Query DSL, {{esql}}, or retrievers), then integrate with your choice of language model provider in your applications code using their APIs or SDKs.
+**Custom implementation:** Retrieve documents using any {{es}} [search approach](/solutions/search/search-approaches.md) (Query DSL, {{esql}}, or retrievers), then integrate with your choice of language model provider in your application's code using their APIs or SDKs.
 
 ### {{es}} solution UI tools
 
-If you're using the {{es}} solution or serverless project type, these additional tools provide enable RAG workflows:
+If you're using the {{es}} solution or serverless project type, these additional tools enable RAG workflows:
 
 **Playground:** Build, test, and deploy RAG interfaces with a UI that automatically selects retrieval methods and provides full control over queries and model instructions. Download Python code to integrate with your applications. Learn more in the [Playground documentation](/solutions/elasticsearch-solution-project/playground.md).
 

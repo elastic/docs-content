@@ -2,6 +2,13 @@
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # TSVB [tsvb-panel]
@@ -10,7 +17,7 @@ applies_to:
 
 With **TSVB**, you can:
 
-* Combine an infinite number of [aggregations](../supported-chart-types.md#aggregation-reference) to display your data.
+* Combine an infinite number of [aggregations](../../query-filter/aggregations.md) to display your data.
 * Annotate time series data with timestamped events from an {{es}} index.
 * View the data in several types of visualizations, including charts, data tables, and markdown panels.
 * Display multiple [data views](../../find-and-organize/data-views.md) in each visualization.
@@ -258,6 +265,5 @@ For other types of month over month calculations, use [**Timelion**](timelion.md
 Calculating the duration between the start and end of an event is unsupported in **TSVB** because **TSVB** requires correlation between different time periods. **TSVB** requires that the duration is pre-calculated.
 
 ::::
-
 
 

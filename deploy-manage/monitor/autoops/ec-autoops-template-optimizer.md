@@ -3,7 +3,7 @@ navigation_title: Template Optimizer
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-template-optimizer.html
 applies_to:
-  stack: ga 7.17
+  stack:
 products:
   - id: cloud-hosted
   - id: cloud-kubernetes

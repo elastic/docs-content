@@ -182,6 +182,9 @@ toc:
   - file: cross-cluster-search.md
     children:
       - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
+  - hidden: cross-project-search.md
+    children:
+      - hidden: cross-project-search/cross-project-search-link-projects.md
   - file: ai-features.md
     children:
       - file: ai-features/elastic-agent-builder.md
@@ -264,16 +267,23 @@ toc:
           - file: dashboards/create-dashboard-of-panels-with-ecommerce-data.md
   - file: visualize.md
     children:
-      - file: visualize/supported-chart-types.md
       - file: visualize/visualize-library.md
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
           - file: visualize/charts/area-charts.md
           - file: visualize/charts/bar-charts.md
+          - file: visualize/charts/heat-map-charts.md
+          - file: visualize/charts/gauge-charts.md
           - file: visualize/charts/line-charts.md
           - file: visualize/charts/metric-charts.md
+          - file: visualize/charts/mosaic-charts.md
+          - file: visualize/charts/pie-charts.md
+          - file: visualize/charts/region-map-charts.md
           - file: visualize/charts/tables.md
+          - file: visualize/charts/waffle-charts.md
+          - file: visualize/charts/tag-cloud-charts.md
+          - file: visualize/charts/treemap-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md

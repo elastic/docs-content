@@ -2,6 +2,15 @@
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Streams
@@ -81,9 +90,9 @@ You can set Streams visibility on a space-by-space basis by defining users' acce
 
 Space settings only affect visibility. Set permissions to manage and edit Streams at the {{es}} level. Refer to [Required permissions](#streams-required-permissions) for more information.
 
-:::{note}
-Creating [significant events](./management/significant-events.md) requires access to the `default` space.
-:::
+% :::{note}
+% Creating [significant events](./management/significant-events.md) requires access to the `default` space.
+% :::
 
 ## Access Streams [streams-access]
 

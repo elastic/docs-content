@@ -1,6 +1,9 @@
 ---
 applies_to:
-  stack: ga 7.17
+  deployment:
+    self:
+    ece:
+    eck:
 navigation_title: Connect your cluster
 products:
   - id: cloud-kubernetes
@@ -73,7 +76,7 @@ Select one of the following methods to install {{agent}}:
 * {applies_to}`eck: ga 3.3`  **{{eck}} (ECK)**
 
 :::{note}
-:applies_to: { eck: ga }
+:applies_to: { eck: }
 You can choose any installation method when connecting your ECK-managed cluster to AutoOps. However, for ECK version 3.3.0+, we recommend choosing **ECK** as your installation method for a more integrated experience.   
 :::
 
