@@ -427,7 +427,7 @@ Unlike bundles, plugins *must* match the {{es}} version down to the patch level 
     Submit a plan change that performs the following operations in a *single* [update deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-update-deployment) call:
 
     * Upgrade the version of {{es}} to the upgrade version (for example, `8.4.3`).
-    * Remove reference to the the plugin on the older version (for example, `8.3.0`) from the plan.
+    * Remove reference to the plugin on the older version (for example, `8.3.0`) from the plan.
     * Add reference to the new plugin on the upgrade version (for example, `8.4.3`) to the plan.
 
     This triggers a rolling upgrade plan change to the later {{es}} version, removes reference to the older plugin, and deploys your updated plugin at the same time.
