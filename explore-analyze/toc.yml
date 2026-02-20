@@ -281,6 +281,7 @@ toc:
           - file: visualize/charts/pie-charts.md
           - file: visualize/charts/region-map-charts.md
           - file: visualize/charts/tables.md
+          - file: visualize/charts/waffle-charts.md
           - file: visualize/charts/tag-cloud-charts.md
           - file: visualize/charts/treemap-charts.md
       - file: visualize/esorql.md
