@@ -31,12 +31,12 @@ With Lens, you can create the following visualization types:
 | [Table](/explore-analyze/visualize/charts/tables.md) | Present precise values, rankings, or multi-metric details in a compact layout. |
 | [Pie chart](/explore-analyze/visualize/charts/pie-charts.md) | Show simple part-to-whole composition with a small number of categories (generally ≤ 5). |
 | [Gauge chart](/explore-analyze/visualize/charts/gauge-charts.md) | Show progress toward a target or status against thresholds for a single metric. |
-| Heat map chart | Reveal patterns by magnitude across two binned dimensions using color. |
-| Waffle chart | Show part-to-whole as a grid of equal cells where filled cells represent proportion. |
-| Region chart | Show geospatial patterns by coloring regions based on aggregated values (choropleth). |
-| Treemap chart | Visualize hierarchical part-to-whole across categories and subcategories. |
-| Tag cloud chart | Emphasize the most frequent terms; font size reflects relative magnitude. |
-| Mosaic chart | Compare part-to-whole across two categorical dimensions in a tiled layout. |
+| [Heat map chart](/explore-analyze/visualize/charts/heat-map-charts.md) | Reveal patterns by magnitude across two binned dimensions using color. |
+| [Waffle chart](/explore-analyze/visualize/charts/waffle-charts.md) | Show part-to-whole as a grid of equal cells where filled cells represent proportion. |
+| [Region map chart](/explore-analyze/visualize/charts/region-map-charts.md) | Show geospatial patterns by coloring regions based on aggregated values (choropleth). |
+| [Treemap chart](/explore-analyze/visualize/charts/treemap-charts.md) | Visualize hierarchical part-to-whole across categories and subcategories. |
+| [Tag cloud chart](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Emphasize the most frequent terms; font size reflects relative magnitude. |
+| [Mosaic chart](/explore-analyze/visualize/charts/mosaic-charts.md) | Compare part-to-whole across two categorical dimensions in a tiled layout. |
 
 ## Create visualizations [create-the-visualization-panel]
 
