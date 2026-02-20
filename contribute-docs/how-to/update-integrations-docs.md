@@ -63,7 +63,7 @@ Wait for the **Documentation edit helper** check to complete. This check generat
    ```bash
    for pkg in docker; do
      cd packages/$pkg
-     elastic-package changelog add --type enhancement --description "Improve documentation" --link "https://github.com/elastic/integrations/pull/123456" --next minor
+     elastic-package changelog add --type enhancement --description "Improve documentation" --link "https://github.com/elastic/integrations/pull/123456" --next patch
      elastic-package build
      cd ../..
    done
