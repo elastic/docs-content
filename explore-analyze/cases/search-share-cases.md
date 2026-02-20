@@ -19,7 +19,7 @@ description: Search, filter, and share cases with colleagues or external ticketi
 
 # Search and share cases [search-share-cases]
 
-Quickly locate relevant cases and share them with colleagues or external ticketing systems to streamline collaboration and handoffs.
+Quickly locate relevant cases and share them with others or external ticketing systems to streamline collaboration and handoffs.
 
 ## Search cases [search-cases]
 

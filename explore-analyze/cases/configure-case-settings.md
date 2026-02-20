@@ -19,7 +19,7 @@ description: Configure case closure options, custom fields, templates, and conne
 
 # Configure case settings [configure-case-settings]
 
-Configure case closure options, custom fields, templates, and connectors for external incident management systems.
+Customize how your team works with cases by setting up templates for faster case creation, adding custom fields to capture data specific to your workflow, and connecting to external systems like Jira or ServiceNow to keep incidents in sync.
 
 To perform these tasks, you must have [full access](control-case-access.md) to the appropriate case and connector features.
 

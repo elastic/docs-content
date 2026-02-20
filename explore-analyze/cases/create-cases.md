@@ -51,10 +51,10 @@ To create a new case:
 
 6. Configure sync and extraction options:
    * **Sync alert status** syncs alert statuses with the case status (on by default).
-   * {applies_to}`security: ga 9.2+` **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription).
+   * **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription).
 
       :::{note}
-      Observables are not available in {{observability}} for {{stack}} or {{serverless-short}}.
+      Auto-extracting observables is only available for {{elastic-sec}} in {{sec-serverless}} and {{stack}} 9.2+.
       :::
 
 7. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system.
@@ -115,4 +115,4 @@ A case created in one solution is only visible within that solution:
 * **{{observability}}** cases are not visible in {{stack-manage-app}} or {{elastic-sec}}
 * **{{elastic-sec}}** cases are not visible in {{stack-manage-app}} or {{observability}}
 
-Alerts also can't cross solution boundaries—you can only attach alerts from the same solution to cases. For example, you can't attach {{observability}} alerts to an {{elastic-sec}} case.
+Alerts also can't cross solution boundaries. You can only attach alerts from the same solution to cases. For example, you can't attach {{observability}} alerts to an {{elastic-sec}} case.

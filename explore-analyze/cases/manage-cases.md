@@ -61,14 +61,18 @@ When you upload a file, a comment is added to the case activity log. To view an 
 Observables are not available in {{observability}} for {{stack}} or {{serverless-short}}.
 :::
 
-Observables are discrete pieces of data relevant to an investigation—such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you may be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
+Observables are discrete pieces of data relevant to an investigation, such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you may be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
 
 From the **Observables** tab, you can view and manage case observables:
 
 - {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
 - {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  
 
-You can manually add observables to cases, or {applies_to}`stack: ga 9.2+` with the appropriate subscription, auto-extract them from alerts. Each case supports up to 50 observables.
+You can manually add observables to cases or with the appropriate subscription, auto-extract them from alerts. Each case supports up to 50 observables.
+
+:::{note}
+ Auto-extracting observables is only available for {{elastic-sec}} in {{sec-serverless}} and {{stack}} 9.2+.
+:::
 
 To manually add an observable:
 
