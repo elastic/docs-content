@@ -82,23 +82,9 @@ To add interactive Options list and Range slider controls, create the controls, 
 
     * For Range sliders, set the step size. The step size determines the slider's number of steps. The smaller a slider's step size, the more steps it has.
 
-8. Select **Save and close**. The control can now be used.
+8. Select **Save**. The control can now be used.
 9. Consider the position of the control if you have several controls active on the dashboard. Controls are applied from left to right, which can change the options available depending on their position when the [Chain controls](#configure-controls-settings) setting is enabled.
 10. Save the dashboard.
-
-## Add time slider controls [add-time-slider-controls]
-
-You can add one interactive time slider control to a dashboard.
-
-1. Open or create a new dashboard.
-2. Add a time slider control.
-
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
-    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
-
-3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
-4. Save the dashboard. The control can now be used.
-
 
 ## Add variable controls [add-variable-control]
 ```{applies_to}
@@ -212,7 +198,6 @@ To chain variable controls, you reference one control's variable in another cont
 When you select a value in a parent control, the child control's query reruns automatically. If the currently selected value in the child control is no longer available in the new result set, it is marked as invalid or incompatible.
 :::
 
-
 ### Import a Discover query along with its controls into a dashboard
 ```{applies_to}
 stack: preview 9.2
@@ -221,6 +206,19 @@ serverless: preview
 
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
 :::
+
+## Add time slider controls [add-time-slider-controls]
+
+You can add one interactive time slider control to a dashboard.
+
+1. Open or create a new dashboard.
+2. Add a time slider control.
+
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
+
+3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
+4. Save the dashboard. The control can now be used.
 
 ## Configure the controls settings [configure-controls-settings]
 
@@ -247,7 +245,7 @@ Several settings apply to all controls that are part of a dashboard.
 
     * To remove all controls from the dashboard, select **Delete all**.
 
-3. Select **Save and close** to apply the changes.
+3. Select **Save** to apply the changes.
 
 
 ## Edit Options list and Range slider control settings [edit-controls]
