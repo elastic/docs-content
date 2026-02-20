@@ -75,6 +75,7 @@ Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](/refer
 * [Integration policy upgrade has too many conflicts](#upgrading-integration-too-many-conflicts)
 * [{{agents}} are unable to connect after removing the {{fleet-server}} integration](#fleet-server-integration-removed)
 * [illegal_argument_exception when TSDB is enabled](#tsdb-illegal-argument)
+* [The `/api/fleet/setup` endpoint can’t reach the package registry to install {{integrations}}](#fleet-setup-fails)
 
 ---
 
@@ -98,8 +99,6 @@ Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](/refer
 **Air-gapped environments**
 
 * [{{kib}} cannot connect to {{package-registry}} in air-gapped environments](#fleet-errors-tls)
-* [Air-gapped {{agent}} upgrade can fail due to an inaccessible PGP key](#pgp-key-download-fail)
-* [The `/api/fleet/setup` endpoint can’t reach the package registry](#fleet-setup-fails)
 
 ---
 
@@ -701,6 +700,13 @@ This can occur if you have a component template defined that includes a `_source
 For details about the error and how to resolve it, refer to the section `Runtime fields cannot be used in TSDB indices` in the Innovation Hub article [TSDB enabled integrations for {{agent}}](https://support.elastic.co/knowledge/9363b9fd).
 
 
+### The `/api/fleet/setup` endpoint can’t reach the package registry to install {{integrations}} [fleet-setup-fails]
+
+To install {{integrations}}, the {{fleet}} app requires a connection to an external service called the {{package-registry}}.
+
+For this to work, the {{kib}} server must connect to `https://epr.elastic.co` on port `443`.
+
+
 ## Elastic Cloud and Kibana
 
 ### {{fleet}} in {{kib}} crashes [fleet-app-crashes]
@@ -942,17 +948,3 @@ In air-gapped environments, you might encounter an error if you’re using a cus
 ```
 
 To fix this problem, add your CA certificate file path to the {{kib}} startup file by defining the `NODE_EXTRA_CA_CERTS` environment variable. More information about this in [TLS configuration of the {{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-tls) section.
-
-
-### Air-gapped {{agent}} upgrade can fail due to an inaccessible PGP key [pgp-key-download-fail]
-
-An {{agent}} upgrade can fail when the upgrader can’t access a PGP key required to verify the binary signature. For details and a workaround, refer to the [PGP key download fails in an air-gapped environment](https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issue-3375) known issue in the version 8.9.0 Release Notes or to the [workaround documentation](https://github.com/elastic/elastic-agent/blob/main/docs/pgp-workaround.md) in the elastic-agent GitHub repository.
-
-% This was a known issue for 8.9.0, and should be deleted or updated if it still applies.  
-
-
-### The `/api/fleet/setup` endpoint can’t reach the package registry [fleet-setup-fails]
-
-To install {{integrations}}, the {{fleet}} app requires a connection to an external service called the {{package-registry}}.
-
-For this to work, the {{kib}} server must connect to `https://epr.elastic.co` on port `443`.
