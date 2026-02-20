@@ -21,22 +21,25 @@ Once you select a {{data-source}}, you can build many types of visualizations by
 
 With Lens, you can create the following visualization types:
 
-
 | **Chart type** | **Use when you want to...** |
 | --- | --- |
-| [Bar chart](/explore-analyze/visualize/charts/bar-charts.md) | Compare values across discrete categories or show distributions with histogram buckets. |
-| [Line chart](/explore-analyze/visualize/charts/line-charts.md) | Show how a metric changes over time or another continuous dimension. |
-| [Area chart](/explore-analyze/visualize/charts/area-charts.md) | Show change over time while emphasizing cumulative magnitude or part-to-whole stacking. |
-| [Metric chart](/explore-analyze/visualize/charts/metric-charts.md) | Highlight a single KPI or a small set of critical numbers. |
+| **XY charts** | **Plot data on axes to reveal trends, comparisons, and distributions.** |
+| [Bar](/explore-analyze/visualize/charts/bar-charts.md) | Compare values across discrete categories or show distributions with histogram buckets. |
+| [Line](/explore-analyze/visualize/charts/line-charts.md) | Show how a metric changes over time or another continuous dimension. |
+| [Area](/explore-analyze/visualize/charts/area-charts.md) | Show change over time while emphasizing cumulative magnitude or part-to-whole stacking. |
+| **Partition charts** | **Divide a total into segments to show how parts relate to the whole.** |
+| [Pie](/explore-analyze/visualize/charts/pie-charts.md) | Show simple part-to-whole composition with a small number of categories (generally ≤ 5). |
+| [Treemap](/explore-analyze/visualize/charts/treemap-charts.md) | Visualize hierarchical part-to-whole across categories and subcategories. |
+| [Waffle](/explore-analyze/visualize/charts/waffle-charts.md) | Show part-to-whole as a grid of equal cells where filled cells represent proportion. |
+| [Mosaic](/explore-analyze/visualize/charts/mosaic-charts.md) | Compare part-to-whole across two categorical dimensions in a tiled layout. |
+| **Single value charts** | **Highlight a key number, KPI, or progress toward a goal.** |
+| [Metric](/explore-analyze/visualize/charts/metric-charts.md) | Highlight a single KPI or a small set of critical numbers. |
+| [Gauge](/explore-analyze/visualize/charts/gauge-charts.md) | Show progress toward a target or status against thresholds for a single metric. |
+| **More charts** | **Additional visualizations for tabular data, spatial patterns, and text analysis.** |
 | [Table](/explore-analyze/visualize/charts/tables.md) | Present precise values, rankings, or multi-metric details in a compact layout. |
-| [Pie chart](/explore-analyze/visualize/charts/pie-charts.md) | Show simple part-to-whole composition with a small number of categories (generally ≤ 5). |
-| [Gauge chart](/explore-analyze/visualize/charts/gauge-charts.md) | Show progress toward a target or status against thresholds for a single metric. |
-| [Heat map chart](/explore-analyze/visualize/charts/heat-map-charts.md) | Reveal patterns by magnitude across two binned dimensions using color. |
-| [Waffle chart](/explore-analyze/visualize/charts/waffle-charts.md) | Show part-to-whole as a grid of equal cells where filled cells represent proportion. |
-| [Region map chart](/explore-analyze/visualize/charts/region-map-charts.md) | Show geospatial patterns by coloring regions based on aggregated values (choropleth). |
-| [Treemap chart](/explore-analyze/visualize/charts/treemap-charts.md) | Visualize hierarchical part-to-whole across categories and subcategories. |
-| [Tag cloud chart](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Emphasize the most frequent terms; font size reflects relative magnitude. |
-| [Mosaic chart](/explore-analyze/visualize/charts/mosaic-charts.md) | Compare part-to-whole across two categorical dimensions in a tiled layout. |
+| [Heat map](/explore-analyze/visualize/charts/heat-map-charts.md) | Reveal patterns by magnitude across two binned dimensions using color. |
+| [Tag cloud](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Emphasize the most frequent terms; font size reflects relative magnitude. |
+| [Region map](/explore-analyze/visualize/charts/region-map-charts.md) | Show geospatial patterns by coloring regions based on aggregated values (choropleth). |
 
 ## Create visualizations [create-the-visualization-panel]
 
