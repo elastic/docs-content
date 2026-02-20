@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-manage-organization.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ess: ga
+  serverless: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless
@@ -73,8 +73,8 @@ For {{ech}} deployments, the following predefined roles are available:
 
 There are two ways for a user to access {{kib}} instances of an {{ech}} deployment:
 
-* [Directly with {{es}} credentials](/deploy-manage/users-roles/cluster-or-deployment-auth.md). In this case, users and their roles are managed directly in {{kib}}. Users in this case don’t need to be members of the {{ecloud}} organization to access the deployment. Note that if you have several deployments, you need to manage users for each of them, individually.
-* Through your {{ecloud}} organization. In this case, users who are members of your organization log in to {{ecloud}} and can open the deployments they have access to. Their access level is determined by the roles assigned to them from the **Organization** page. {{ecloud}} roles are mapped to [{{stack}} roles](elasticsearch://reference/elasticsearch/roles.md) on a per-deployment level. When logging in to a specific deployment, users get the stack role that maps to their {{ecloud}} role for that particular deployment.
+* **[Directly with {{es}} credentials](/deploy-manage/users-roles/cluster-or-deployment-auth.md)**. In this case, users and their roles are managed directly in {{kib}}. Users in this case don’t need to be members of the {{ecloud}} organization to access the deployment. If you have several deployments, you need to manage users for each of them, individually.
+* **Through your {{ecloud}} organization**. In this case, users who are members of your organization log in to {{ecloud}} and can open the deployments they have access to. Their access level is determined by the roles assigned to them from the **Organization** page. {{ecloud}} roles are mapped to [{{stack}} roles](elasticsearch://reference/elasticsearch/roles.md) on a per-deployment level. When logging in to a specific deployment, users get the stack role that maps to their {{ecloud}} role for that particular deployment.
 
 The following table shows the default mapping:
 
@@ -90,26 +90,28 @@ The following table shows the default mapping:
 
 You can apply the following predefined roles to {{serverless-full}} projects. Some roles are only available to certain project types.
 
+In the following table, the privileges outlined in **Project access** require [**Cloud Console, {{es}}, and {{kib}}** access](#access) to be granted for the relevant projects.
+
 :::{tip}
-You can optionally [create custom roles in a project](/deploy-manage/users-roles/cloud-organization/user-roles.md) and apply them to your organization users.
+You can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md) and apply them to your organization users.
 :::
 
-| Name | Description | Available |
-| --- | --- | --- |
-| Admin | Has full access to project management, properties, and security privileges. Admins log into projects with superuser role privileges. | [![Elasticsearch](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![Observability](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Developer | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![Elasticsearch](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md) |
-| Viewer | Has read-only access to project details, data, and features. | [![Elasticsearch](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![Observability](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Editor | Configures all Observability or Security projects. Has read-only access to data indices. Has full access to all project features. | [![Observability](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Tier 1 analyst | Ideal for initial alert triage. General read access, can create dashboards and visualizations. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Tier 2 analyst | Ideal for alert triage and beginning the investigation process. Can create cases. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Tier 3 analyst | Deeper investigation capabilities. Access to rules, lists, cases, Osquery, and response actions. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Threat intelligence analyst | Access to alerts, investigation tools, and intelligence pages. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Rule author | Access to detection engineering and rule creation. Can create rules from available data sources and add exceptions to reduce false positives. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| SOC manager | Access to alerts, cases, investigation tools, endpoint policy management, and response actions. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Endpoint operations analyst | Access to endpoint response actions. Can manage endpoint policies, {{fleet}}, and integrations. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Platform engineer | Access to {{fleet}}, integrations, endpoints, and detection content. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Detections admin | All available detection engine permissions to include creating rule actions, such as notifications to third-party systems. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Endpoint policy manager | Access to endpoint policy management and related artifacts. Can manage {{fleet}} and integrations. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Name | {{ecloud}} access | Project access | Availability |
+| --- | --- | --- | --- |
+| Admin | Has full access to project management, properties, and security privileges. | Superuser role privileges | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Developer | Manage project settings. | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md) |
+| Viewer | Has read-only access to project details. | Has read-only access to project data and features. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Editor | Configures all {{observability}} or Security projects. | Has read-only access to data indices. Has full access to all project features. | [![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Tier 1 analyst | Viewer | Ideal for initial alert triage. General read access, can create dashboards and visualizations. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Tier 2 analyst | Viewer | Ideal for alert triage and beginning the investigation process. Can create cases. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Tier 3 analyst | Viewer | Deeper investigation capabilities. Access to rules, lists, cases, Osquery, and response actions. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Threat intelligence analyst | Viewer | Access to alerts, investigation tools, and intelligence pages. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Rule author | Viewer | Access to detection engineering and rule creation. Can create rules from available data sources and add exceptions to reduce false positives. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| SOC manager | Viewer | Access to alerts, cases, investigation tools, endpoint policy management, and response actions. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Endpoint operations analyst | Viewer | Access to endpoint response actions. Can manage endpoint policies, {{fleet}}, and integrations. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Platform engineer | Viewer | Access to {{fleet}}, integrations, endpoints, and detection content. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Detections admin | Viewer | All available detection engine permissions to include creating rule actions, such as notifications to third-party systems. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Endpoint policy manager | Viewer | Access to endpoint policy management and related artifacts. Can manage {{fleet}} and integrations. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 
 ## Role scopes [ec-role-scoping]
 
@@ -124,3 +126,30 @@ This list describes the scope of the different roles:
 Members are only able to see the role assignments of other members under the organization they belong to, for role assignments they are able to manage. Members with the **Organization owner** role assigned are able to see the role assignments of every member of their organization.
 
 Members with the **Admin** role assigned are able to see role assignments for deployments or projects within their scope. For example, admins of all deployments and projects are able to see role assignments scoped to all and specific deployments and projects in the organization, while admins of specific deployments or projects only see role assignments scoped to those specific deployments or projects. This ensures that members assigned to specific deployments or projects do not try to remove role assignments from other members, and that the existence of other deployments or projects are not revealed to these members.
+
+## Access options [access]
+```{applies_to}
+serverless: ga
+```
+When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can select the surfaces the user can access:
+
+| Access | Grants |
+| --- | --- |
+| **Cloud Console, {{es}}, and {{kib}}** (default) | Grants access to the {{ecloud}} Console, plus the {{kib}} interface and {{es}} service for the applicable projects. |
+| **Cloud Console** | Grants access to only the {{ecloud}} Console for the applicable {{serverless-short}} projects. |
+
+### Considerations
+
+The **Access** selection impacts the behavior of the selected role. Most roles require **Cloud Console, {{es}}, and {{kib}}** access to take full effect. However, you might choose to only grant **Cloud Console** access if the user does not need to interact with the project directly.
+
+When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that are designed to work inside of the project have limited access, and can't open the project in {{kib}}. For example: 
+
+* If you select the **Admin** role, the user is able configure project settings and network security in {{ecloud}}, but can't log in to the relevant projects as superuser.
+* Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, can view the relevant projects on the {{ecloud}} Console home page, but can't open the project to view their dashboards and visualizations.
+* [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) always require **Cloud Console, {{es}}, and {{kib}}** access. Without it, users have only **Viewer** access in the {{ecloud}} Console, and can't log in to the project.
+
+For details on the permissions granted for each role, refer to the [predefined roles table](#general-assign-user-roles-table).
+
+:::{tip}
+When inviting a user to your organization with the {{ecloud}} API, you can set their access surfaces in the invitation request. To grant {{ecloud}} Console-only access, pass an empty `application_id` array in the role assignment. For an example, refer to [Manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations).
+::: 

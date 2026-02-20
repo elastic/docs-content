@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Serverless project custom roles [custom-roles]
+# {{serverless-short}} project custom roles [custom-roles]
 
 Built-in [organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) and [cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) are great for getting started with {{serverless-full}}, and for system administrators who do not need more restrictive access.
 
@@ -100,12 +100,13 @@ None
 Some features have finer access control and you can optionally enable sub-feature privileges.
 
 ::::{admonition} New features
-:class: note
-
 As new features are added to {{serverless-full}}, roles that use the custom option do not automatically get access to the new features. You must manually update the roles.
-
 ::::
 
 ## Assign custom roles
 
 After your roles are set up, the next step to securing access is to assign roles to your users. Click the **Assign roles** link to go to the **Members** tab of the **Organization** page. Learn more in [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+
+:::{warning}
+When you assign custom roles, you must always select **Cloud Console, {{es}}, and {{kib}}** access for the role to take full effect. If you don't grant this access, the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} console, and can't log in to the project. [Learn more](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
+:::

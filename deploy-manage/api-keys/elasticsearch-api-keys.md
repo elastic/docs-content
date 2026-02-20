@@ -5,15 +5,21 @@ applies_to:
   stack: ga
 products:
   - id: kibana
+  - id: elasticsearch
 ---
 
 # {{es}} API keys [api-keys]
 
 Several types of {{es}} API keys exist:
 
-* **Personal/User** API key: allows external services to access the {{stack}} on behalf of a user.
+* **Personal/User** API key: allows external services to access the {{stack}}, including the [{{es}}]({{es-apis}}) and [{{kib}}]({{kib-apis}}) APIs, on behalf of a user.
 * **Cross-cluster** API key: allows other clusters to connect to this cluster.
 * **Managed** API key: created and managed by {{kib}} to run background tasks.
+
+:::{tip}
+:applies_to: serverless:
+To create equivalent keys for {{serverless-full}} projects, refer to [](serverless-project-api-keys.md). For {{serverless-full}} projects, you can also create [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that include access to {{es}} and {{kib}} APIs. 
+:::
 
 To manage API keys in {{kib}}, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -33,7 +39,7 @@ To manage roles, go to the **Roles** management page using the navigation menu o
 
 ## Create an API key [create-api-key]
 
-Two methods are available to create an API key:
+The following are available to create an API key:
 
 * As a quick option to create a personal API key from anywhere in {{kib}}:
   1. From the **Help menu** (![help icon](/deploy-manage/images/help-icon.svg)), select **Connection details > API key**.  
@@ -55,6 +61,10 @@ From the **Create API key** pane, you can configure your new key:
       * For a user API key, you can opt to configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) and the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API documentation to learn more.
       * For a cross-cluster API key, you can control the indices that other clusters have access to. Refer to the [Create cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API documentation to learn more.
   4. Add any additional metadata about the API as one or more key-value pairs. Refer to the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API documentation for examples.
+
+:::{tip}
+You can also create an API key [using the {{es}} API]({{es-apis}}/operation/operation-security-create-api-key).
+:::
 
 ## Update an API key [update-api-key]
 
