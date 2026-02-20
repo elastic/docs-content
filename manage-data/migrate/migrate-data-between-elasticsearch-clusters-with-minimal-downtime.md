@@ -34,7 +34,7 @@ Before you migrate, review the prerequisites and requirements.
 ### Prerequisites
 * Learn how to [set up and manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md). 
 * If restoring to a different cluster, review [Restore to a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
-* As an alternative migration method, you can [reindex from a remote cluster](/manage-data/migrate.md#ech-reindex-remote).
+* As an alternative migration method, you can [reindex from a remote cluster](/manage-data/migrate/migrate-data-using-reindex-api.md).
 
 ### Requirements
 * **Cluster size** – The new cluster must be the same size or larger than the old cluster. 

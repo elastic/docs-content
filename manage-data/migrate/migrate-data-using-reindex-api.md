@@ -10,7 +10,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Migrate {{ech}} data using the reindex API [migrate-reindex-from-remote]
+# Migrate {{es}} data using the reindex API [migrate-reindex-from-remote]
 
 The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) offers a convenient way for you to migrate your documents from a source index, data stream, or alias in an {{ech}} deployment to an index in an {{serverless-full}} project.
 
