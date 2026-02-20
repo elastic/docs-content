@@ -139,7 +139,7 @@ Use the language in this table when writing about UI components.
 * Don't use the verbs _open_ and/or _close_ when a user interacts with a menu. Use _From the menu,..._ instead.
 * Refer to it as "menu." Don't call it a "dropdown menu" or "dropdown list."
 
-### Icon vs. button
+### Icon versus button
 
 * If there is no text next to an actionable, visual symbol, it's an icon.
 * If there is text next to an actionable visual symbol, it's a button.
@@ -151,7 +151,7 @@ Use the language in this table when writing about UI components.
 :::
   In this example, the (...) represents the action menu icon.
 
-### Select vs. click 
+### Select versus click 
 
 To ensure clarity and precision when describing user interactions, choose the verb that matches the type of UI element and the intent of the action.
 
@@ -170,7 +170,7 @@ Use "select" when a user is choosing an option, toggling a state, or picking an 
 Use "click" when a user is initiating a process, performing a command, following a link, or needs to physically click a button or icon. Do not use "click" if the user needs to make a choice from a selection.   
 
 :::{dropdown} Examples
-  ✔️ **Do**: Click the **Save** button to save confirm your changes.
+  ✔️ **Do**: Click **Save** to confirm your changes.
   ✔️ **Do**: Click the **Help** icon for more information.
   ❌ **Don't**: From the action menu (...), click the **Delete** button to delete the job. 
 :::

@@ -39,7 +39,7 @@ Use a note to include a useful, relevant piece of information that's not critica
 
 ::::{dropdown} Example
 :::{note}
-The snapshot and restore and cross-cluster replication features are currently not available for {{serverless-full}} projects. These features will be introduced in the future.
+The snapshot and restore and {{ccr}} features are currently not available for {{serverless-full}} projects.
 :::
 ::::
 
@@ -373,8 +373,11 @@ Use a 12-hour clock with AM/PM: Use a space before "AM" or "PM", and use upperca
 
 :::{dropdown} Examples
   ✔️ **Do**: 10:00 AM 
+
   ❌ **Don't**: 10am
+
   ❌ **Don't**: 4:30p.m. 
+
   ❌ **Don't**: 16:30
 :::
 
@@ -394,12 +397,13 @@ Avoid relative dates. Never use terms like "last month," "recently," or "current
 
 :::{dropdown} Example
   ✔️ **Do**: In version 9.3.0 and newer...
+
   ✔️ **Do**: In versions older than 9.1.0...
+
   ❌ **Don't**: In the current version... 
 
+
 :::
-
-
 
 ## Code samples
 
@@ -558,16 +562,22 @@ Follow these general guidelines:
 
 * To maintain an immediate and professional tone, every entry must start with a present-tense active verb (for example, _Adds_, _Fixes_, _Updates_, _Enhances_, _Removes_).
 * Focus on the "what" and the "why." Avoid filler phrases like, "The system now allows you to..."
-* Bold all specific page titles, buttons, icon names, modal/dialog titles, API names, and column names. 
+* Bold all specific page titles, buttons, icon names, modal/dialog titles, API names, and column names. For a comprehensive list, refer to our [guidance on using bold text](#bold-strong). 
 * Use monospace formatting for file paths, parameters, field or CLI commands. For a comprehensive list, refer to our [guidance on using monospace text](#monospace-code). 
   
 :::{dropdown} Release note examples
   ✔️ **Do**: Adds a search bar to the **Dashboard** page.
+
   ✔️ **Do**: Adds a **View in Discover** link to APM rule-based alert details to view related documents in Discover.  
+
   ✔️ **Do**: Adds the `xpack.productDocBase.artifactRepositoryProxyUrl` setting to `kibana.yml`.
+
   ✔️ Adds support for `doc_values` to text fields. 
+
   ❌ **Don't**: From the action menu (...), click the **Delete** button to delete the job. 
-  ❌ **Don't**: Now there's an auto-push option for case connectors, enabling automatic case synchronization.
+
+  ❌ **Don't**: Now there's an auto-push option for case connectors, enabling automatic case 
+  synchronization.
 :::
 
 
