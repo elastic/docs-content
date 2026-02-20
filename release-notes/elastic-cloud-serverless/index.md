@@ -924,7 +924,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Prevents deletion of stale indices that appear in the last state check
 * Resolves `projectId` from context for new index shard recovery
 
-* Prevents delete stale indices appear in the last state check
+* Prevents deletion of stale indices that appear in the last state check
 
 
 ## July 15, 2025 [serverless-changelog-07152025]
@@ -1056,7 +1056,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds missing model Claude 3.7 to accepted models in {{es-serverless}} [#224943]({{kib-pull}}224943)
 * Parses `StatelessCompoundCommit` contained in referenced BCCs incrementally during recoveries
 
-* Parses `StatelessCompoundCommit` contained in referenced `BCCs` incrementally during recoveries
+* Keeps memory consumption under control by parsing the `StatelessCompoundCommit` contained in referenced `BatchedCompoundCommits` incrementally during recoveries
 
 
 
@@ -1240,7 +1240,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates the "Highlighted fields" button in the details flyout and enables the feature flag in {{sec-serverless}} [#221862]({{kib-pull}}221862)
 * Introduces new `empty` states for the Change Point Detection page in {{ml-cap}} [#219072]({{kib-pull}}219072)
 
-* Uploads large `VBCC` using concurrent multipart uploads in Azure
+* Uploads large `VirtualBatchedCompoundCommit` using concurrent multipart uploads in Azure
 
 
 ### Fixes [serverless-changelog-06022025-fixes]
@@ -1727,7 +1727,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue in solution project navigation where panels sometimes failed to toggle closed [#211852]({{kib-pull}}211852)
 * Updates wording for options in the sortBy dropdown component [#206464]({{kib-pull}}206464)
 * Allows EU hooks hostname in the Torq connector for Elastic Security Serverless [#212563]({{kib-pull}}212563)
-* Checks integrity of `VBCC` files on read, not close
+* Checks integrity of `VirtualBatchedCompoundCommit ` files on read, not close
 
 ## March 3, 2025 [serverless-changelog-03032025]
 
