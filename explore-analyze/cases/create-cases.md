@@ -20,10 +20,25 @@ products:
 
 To create a new case:
 
-1. Go to **Cases** and select **Create case**:
-   * **{{stack-manage-app}}**: **Management** > **{{stack-manage-app}}** > **Cases**
-   * **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases`
-   * **{{observability}}**: Find **Cases** in the main menu
+1. Go to the **Cases** page, then select **Create case**.
+
+   ::::{applies-switch}
+
+   :::{applies-item} stack: ga
+   To access the **Cases** page:
+   * **{{stack-manage-app}}**: Go to **{{stack-manage-app}}** > **Cases**.
+   * **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+   * **{{observability}}**: Find **Cases** in the navigation menu or search for `Observability/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+   :::
+
+   :::{applies-item} serverless: ga
+   To access the **Cases** page:
+   * **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+   * **{{observability}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+   :::
+
+   ::::
 
 2. (Optional) Select a [template](configure-case-settings.md#case-templates) to pre-fill field values.
 
@@ -35,14 +50,14 @@ To create a new case:
 
 6. Configure sync and extraction options:
    * **Sync alert status** syncs alert statuses with the case status (on by default).
-   * {applies_to}`stack: ga 9.2+` **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription).
+   * {applies_to}`security: ga 9.2+` **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription).
 
 7. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system.
 
 8. Select **Create case**. If you've selected a connector for the case, the case is automatically pushed to the third-party system it's connected to.
 
 ::::{tip}
-To automate case creation, you can:
+Alternative methods for creating cases:
 - {applies_to}`stack: preview` {applies_to}`serverless: preview` configure rules to create cases using [case actions](kibana://reference/connectors-kibana/cases-action-type.md)
 - Create cases directly from alerts on the **Alerts** page by selecting **More options** → **Add to existing case** or **Create new case**.
 ::::

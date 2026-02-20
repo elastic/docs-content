@@ -30,13 +30,13 @@ To view a case, select its name. From the case details page, you can edit the de
 
 ## Add context and supporting materials [add-case-context]
 
-Provide additional context by adding [alerts](#add-case-alerts), [files](#add-case-files), or [observables](#add-case-observables) to your case. In {{elastic-sec}}, you can also add [events](/solutions/security/investigate/security-cases-features.md#cases-add-events), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), and more.
+Provide additional context by adding [alerts](#add-case-alerts), [files](#add-case-files), and [Lens visualizations](#cases-lens-visualization) to your case. In {{elastic-sec}}, you can also add [events](/solutions/security/investigate/security-cases-features.md#cases-add-events), [observables](#add-case-observables), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), and more.
 
 ### Add alerts [add-case-alerts]
 
 Escalate alerts and track them in a single place by attaching them to cases. To examine the alerts, select the **Alerts** tab in the case. In the table, alerts are organized from oldest to newest. To view alert details, select the **View details** button.
 
-You can find the **Alerts** tab in the following places:
+To find the **Alerts** tab:
 
 - {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
 - {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  
@@ -53,30 +53,6 @@ After you create a case, you can upload and manage files on the **Files** tab. T
 To download or delete the file or copy the file hash to your clipboard, open the action menu {icon}`boxes_horizontal`. The available hash functions are MD5, SHA-1, and SHA-256.
 
 When you upload a file, a comment is added to the case activity log. To view an image, select its name in the activity or file list. Uploaded files are also accessible from the **Files** management page.
-
-### Add observables [add-case-observables]
-
-Observables are discrete pieces of data relevant to an investigation—such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you may be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
-
-From the **Observables** tab, you can view and manage case observables:
-
-- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  
-
-You can manually add observables to cases, or {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` with the appropriate subscription, auto-extract them from alerts. Each case supports up to 50 observables.
-
-To manually add an observable:
-
-1. Select **Add observable** from the **Observables** tab.
-2. Provide the necessary details:
-
-    * **Type**: Select a type for the observable. You can choose a preset type or a [custom one](/explore-analyze/cases/configure-case-settings.md#cases-observable-types).
-    * **Value**: Enter a value for the observable. The value must align with the type you select.
-    * **Description** (Optional): Provide additional information about the observable.
-
-3. Select **Add observable**.
-
-After adding an observable to a case, you can remove or edit it using the action menu {icon}`boxes_horizontal`. To find related investigations, check the **Similar cases** tab for other cases that share the same observables.
 
 ### Add Lens visualizations [cases-lens-visualization]
 

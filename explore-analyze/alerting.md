@@ -14,7 +14,7 @@ products:
 
 Alerting tools in Elasticsearch and Kibana provide functionality to monitor data and notify you about significant changes or events in real time. This page provides an overview of how the key components work.
 
-## {{kib}} alerts
+## Alerts
 
 Alerts are notifications generated when specific conditions are met. These notifications are sent to you through channels that you previously set such as email, Slack, webhooks, PagerDuty, and so on. 
 

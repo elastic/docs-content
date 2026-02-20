@@ -20,16 +20,24 @@ products:
 
 Configure case closure options, custom fields, templates, and connectors for external incident management systems.
 
-To access case settings:
-* For **{{stack-manage-app}}**: Go to **{{stack-manage-app}} > Cases** and click **Settings**.
-* For **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases`, then click **Settings**.
-* For **{{observability}}**: Go to **Cases** → **Settings**.
-
-
-::::{note}
 To perform these tasks, you must have [full access](control-case-access.md) to the appropriate case and connector features.
 
-{applies_to}`serverless:` For {{observability}} serverless projects, the **Editor** role or higher is required to create and edit connectors. Refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+::::{applies-switch}
+
+:::{applies-item} stack: ga
+To access case settings:
+* **{{stack-manage-app}}**: Go to **{{stack-manage-app}}** > **Cases**, then click **Settings**.
+* **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
+* **{{observability}}**: Find **Cases** in the navigation menu or search for `Observability/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
+:::
+
+:::{applies-item} serverless: ga
+To access case settings:
+* **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
+* **{{observability}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
+
+:::
+
 ::::
 
 
