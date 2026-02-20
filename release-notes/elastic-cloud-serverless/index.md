@@ -2208,7 +2208,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 ### Features and enhancements [serverless-changelog-06262025-features-enhancements]
 * {{serverless-full}} is now available in the Microsoft Azure `eastus` [region](/deploy-manage/deploy/elastic-cloud/regions.md). 
 * Uploads large VBCC using concurrent multipart uploads in Azure
-* Modifies the mechanism to pause indexing
 
 * Checks if cluster aliases and index patterns are valid before executing query [#122497](https://github.com/elastic/elasticsearch/pull/122497)
 * Aggressively releases shard contexts [#129454](https://github.com/elastic/elasticsearch/pull/129454)
