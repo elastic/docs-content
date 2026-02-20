@@ -3268,7 +3268,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Prevents trace context from propagating in `SearchShardSizeCollector` to protect against high memory usage in the APM agent
 * Reduces license checks in `LicensedWriteLoadForecaster` [#123346](https://github.com/elastic/elasticsearch/pull/123346)
 
-* Prevents trace context to propagate in `SearchShardSizeCollector` to protect from high memory usage in APM agent
 * Updates to allow using Cohere binary embedding response in semantic search queries [#121827](https://github.com/elastic/elasticsearch/pull/121827)
 * Adds enterprise license check to inference action for semantic text fields [#122293](https://github.com/elastic/elasticsearch/pull/122293)
 * Adds `ElasticInferenceServiceCompletionServiceSettings` [#123155](https://github.com/elastic/elasticsearch/pull/123155)
