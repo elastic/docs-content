@@ -23,6 +23,9 @@ On the **SLOs Settings** page, you can configure the following controls:
 **Stale SLOs threshold**
 :   You can hide SLOs from the overview list if they haven’t been updated within the defined stale threshold.
 
+**Stale instances cleanup**
+:   Automatically cleanup stale SLO instances that have not been updated within the stale threshold.
+
 :::{image} /solutions/images/observability-slo-remote-clusters.png
 :alt: Select remote clusters to fetch SLOs
 :screenshot:
