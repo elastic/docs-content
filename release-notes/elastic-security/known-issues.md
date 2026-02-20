@@ -23,6 +23,16 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+<!-- :::{include} _snippets/9.3.0/known-issues.md
+::: -->
+
+:::{changelog} /releases/security
+:subsections:
+:type: known-issue
+:config: /changelog.yml
+:product: security
+:::
+
 :::{dropdown} Details about gap fills aren't properly updated
 
 Applies to: 9.3

@@ -21,7 +21,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+<!-- :::{include} _snippets/9.3.0/index.md
+::: -->
 
+:::{changelog} /releases/observability
+:subsections:
+:config: /changelog.yml
+:product: observability
+:::
 
 ## 9.3.0 [elastic-observability-9.3.0-release-notes]
 
