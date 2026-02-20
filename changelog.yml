@@ -197,24 +197,39 @@ rules:
   #         - "Search"
   #         - "Monitoring"
       'kibana':
-        match_areas: all
         exclude_types:
           - docs
+        # Exclude changelogs that have only one or more of the following areas:
+        match_areas: all
         exclude_areas:
-          - "Elastic Observability solution"
-          - "Elastic Security solution"
+         - "AI for security"
+         - "Cloud security"
+         - "Detection rules and alerts"
+         - "Endpoint security"
+         - "Entity analytics"
+         - "Elastic Observability solution"
+         - "Elastic Security solution"
+         - "Investigations"
       'observability':
         exclude_types:
           - docs
+        # Include changelogs that have (at least) the following areas:
         match_areas: any
         include_areas:
           - "Elastic Observability solution"
       'security':
         exclude_types:
           - docs
+        # Include changelogs that have (at least) the following areas:
         match_areas: any
         include_areas:
-          - "Elastic Security solution"
+          - "AI for security"
+          - "Cloud security"
+          - "Detection rules and alerts"
+          - "Endpoint security"
+          - "Elastic Security solution"   
+          - "Entity analytics"
+          - "Investigations"
 
 # Bundle configuration (profiles and defaults)
 bundle:
