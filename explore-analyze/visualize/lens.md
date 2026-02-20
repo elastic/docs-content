@@ -30,8 +30,8 @@ With Lens, you can create the following visualization types:
 - [Gauge chart](/explore-analyze/visualize/charts/gauge-charts.md)
 - Heat map chart
 - Waffle chart
-- Region map chart
-- Treemap chart
+- [Region map chart](/explore-analyze/visualize/charts/region-map-charts.md)
+- [Treemap chart](/explore-analyze/visualize/charts/treemap-charts.md)
 - Tag cloud chart
 - Mosaic chart
 - Legacy Metric chart (deprecated)
