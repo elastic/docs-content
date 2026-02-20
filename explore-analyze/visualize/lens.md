@@ -33,7 +33,7 @@ With Lens, you can create the following visualization types:
 - [Region map chart](/explore-analyze/visualize/charts/region-map-charts.md)
 - [Treemap chart](/explore-analyze/visualize/charts/treemap-charts.md)
 - [Tag cloud chart](/explore-analyze/visualize/charts/tag-cloud-charts.md)
-- Mosaic chart
+- [Mosaic chart](/explore-analyze/visualize/charts/mosaic-charts.md)
 - Legacy Metric chart (deprecated)
 
 ## Create visualizations [create-the-visualization-panel]
