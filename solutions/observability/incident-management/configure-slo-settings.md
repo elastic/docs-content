@@ -44,7 +44,7 @@ Federated views allow you to view SLOs from remote {{es}} clusters alongside the
 Use the three dots menu on the remote cluster to perform the following operations:
 
 **Details**
-:   Opens a new panel that displays details of the remote instance.
+:   Opens a new panel that displays details of the remote SLO instance.
 
 **Edit**, **Clone**, **Delete**
 :   TBD 
