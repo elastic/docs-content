@@ -30,6 +30,10 @@ On the Rules page, you can:
 * [Confirm rule prerequisites](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) and [troubleshoot missing alerts](/troubleshoot/security/detection-rules.md#troubleshoot-signals)
 * Perform actions on multiple rules with [bulk actions](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-actions-reference)
 
+:::{note}
+For information about the role privileges required to manage rules, refer to [Detections prerequisites and requirements](/solutions/security/detect-and-alert/detections-privileges.md).
+:::
+
 
 ## Sort and filter the rules list [sort-filter-rules]
 
@@ -66,13 +70,9 @@ For {{ml}} rules, an indicator icon {icon}`warning` also appears in this column 
 
 Edit rule settings to modify detection logic, notifications, schedules, and other rule configurations. You can edit a single rule or use bulk actions to update multiple rules at once.
 
-::::{admonition} Requirements
-* You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* You can edit [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) (notifications and response actions) for prebuilt rules with any {{stack}} subscription or {{serverless-short}} project feature tier.
-* You must have an [Enterprise subscription](https://www.elastic.co/pricing) {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them.
-
-::::
-
+### Requirements
+* **Custom rules**: You can edit and bulk-modify custom rules with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). 
+* **Prebuilt rules**: You can edit [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) with any subscription or project tier. Editing all other prebuilt rule settings (except **Author** and **License**) or bulk-modifying prebuilt rules requires an [Enterprise subscription](https://www.elastic.co/pricing) or [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ### Edit a single rule [edit-single-rule]
 
@@ -80,23 +80,18 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 2. Do one of the following:
     * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Edit rule settings**.
     * Click on a rule's name to open its details page, then click **Edit rule settings**.
-3. The **Edit rule settings** view opens, where you can modify the [rule's settings](/solutions/security/detect-and-alert/create-detection-rule.md).
+3. The **Edit rule settings** view opens, where you can modify the [rule's settings](/solutions/security/detect-and-alert/create-detection-rule.md). To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon {icon}`bell`.
 4. Click **Save changes**.
 
-::::{note}
-:applies_to: { stack: ga 9.1+ }
-Modified fields on prebuilt rules are marked with the **Modified** badge. From the rule's details page, click the badge to view the changed fields. Changes are displayed in a side-by-side comparison of the original Elastic version and the modified version. Deleted characters are highlighted in red; added characters are highlighted in green. You can also view this comparison by clicking the **Modified Elastic rule** badge under the rule's name on the rule's details page.
-
-::::
-
-::::{tip}
-To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon {icon}`bell`.
-::::
+   ::::{admonition} Prebuilt rules
+   :applies_to: { stack: ga 9.1+ }
+   After saving changes to a prebuilt rule, modified fields are marked with the **Modified** badge. From the rule's details page, click the badge to view a side-by-side comparison of the original Elastic version and your modified version. Deleted characters are highlighted in red; added characters are highlighted in green. You can also access this comparison by clicking the **Modified Elastic rule** badge under the rule's name.
+   ::::
 
 
 ### Bulk edit rule settings [bulk-edit-rules]
 
-Use bulk editing to update settings on multiple rules simultaneously.
+Use bulk editing to update settings on multiple rules simultaneously. Rules that can't be modified are automatically skipped—for example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to edit.
@@ -105,25 +100,13 @@ Use bulk editing to update settings on multiple rules simultaneously.
     * **Index patterns**: Add or delete the index patterns used by all selected rules.
     * **Tags**: Add or delete tags on all selected rules.
     * **Custom highlighted fields**: Add custom highlighted fields on all selected rules. You can choose any fields that are available in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices), or enter field names from other indices. To overwrite a rule's current set of custom highlighted fields, select the **Overwrite all selected rules' custom highlighted fields** option, then click **Save**.
-    * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions select the option to **Overwrite all selected rules actions**.
+    * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions, select the option to **Overwrite all selected rules actions**. Keep in mind that rule actions won't run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md); they'll resume after the maintenance window ends.
     * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and look-back times on all selected rules.
     * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.
 
 4. On the page or flyout that opens, update the rule settings.
 5. If available, select **Overwrite all selected _x_** to overwrite the settings on the rules. For example, if you're adding tags to multiple rules, selecting **Overwrite all selected rules tags** removes all the rules' original tags and replaces them with the tags you specify.
 6. Click **Save**.
-
-::::{note}
-Rules will be skipped if they can't be modified by a bulk edit. For example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
-::::
-
-::::{important}
-After upgrading to {{stack}} 8.8 or later, frequency settings for rule actions created in 8.7 or earlier are moved from the rule level to the action level. The action schedules remain the same and will continue to run on their previously specified frequency (`On each rule execution`, `Hourly`, `Daily`, or `Weekly`).
-::::
-
-::::{note}
-Rule actions won't run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md). They'll resume running after the maintenance window ends.
-::::
 
 ## Revert modifications to prebuilt rules [revert-rule-changes]
 
