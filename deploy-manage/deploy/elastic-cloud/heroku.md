@@ -73,7 +73,7 @@ There are several ways to ingest data into the deployment:
 
 * Use the sample data available from the {{kib}} home page without loading your own data. There are multiple data sets available and you can add them with one click.
 * Ingest your own data. [Learn more](/manage-data/ingest.md).
-* Have existing {{es}} data? Consider your [migration options](../../../manage-data/migrate.md).
+* Have existing {{es}} data? Consider your [migration options](/manage-data/migrate-data.md).
 
 
 ### Increase security [ech-increase-security]

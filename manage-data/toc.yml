@@ -168,10 +168,12 @@ toc:
           - file: lifecycle/rollup/rollup-aggregation-limitations.md
           - file: lifecycle/rollup/rollup-search-limitations.md
           - file: lifecycle/rollup/migrating-from-rollup-to-downsampling.md
-  - file: migrate.md
+  - file: migrate-data.md
     children:
-      - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
-      - file: migrate/migrate-internal-indices.md
       - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
+      - file: migrate/migrate-data-using-reindex-api.md
+        children:
+          - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
       - file: migrate/migrate-with-logstash.md  
+      - file: migrate/migrate-internal-indices.md
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md

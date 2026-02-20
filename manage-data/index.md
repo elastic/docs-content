@@ -44,4 +44,4 @@ Strategies for managing data depend on the type of data and how you're using it.
 
 If you move to new infrastructure, there are several options for moving existing data between {{es}} clusters.
 
-**Learn more in [Migrate your {{es}} data](/manage-data/migrate.md).**
+**Learn more in [Migrate your {{es}} data](/manage-data/migrate-data.md).**

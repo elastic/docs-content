@@ -47,7 +47,7 @@ To create a deployment in ECE:
 
 8. Once the deployment is ready, select **Continue** to open the deployment’s main page.
 
-After a deployment is spun up, you can scale the size and add other features; however, the instance configuration and computing ratios cannot be changed. If you need to change an existing deployment to another template, we recommend [migrating your data](../../../manage-data/migrate.md).
+After a deployment is spun up, you can scale the size and add other features; however, the instance configuration and computing ratios cannot be changed. If you need to change an existing deployment to another template, we recommend [migrating your data](/manage-data/migrate-data.md).
 
 ## Next steps
 
