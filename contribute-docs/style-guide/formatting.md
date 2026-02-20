@@ -13,6 +13,63 @@ Enter a single line break between two elements, for example, between the end of 
 
 Use a single line break to control the spacing between paragraphs. In general, try to keep paragraphs short so users aren't overwhelmed with lengthy blocks of text. This is even more imperative if a user is on a mobile device. If your paragraph is more than seven lines, consider dividing it into two paragraphs.   
 
+## Headings 
+
+Headings organize content into a logical hierarchy, making it scannable for users and discoverable for search engines and LLMs. At Elastic, we treat headings as the "skeleton" of our documentation. For guidance on how to structure headings for optimal discovery and usability, refer to the [Headings](/contribute-docs/how-to/seo.md#headings) section in our SEO how-to guide. 
+
+## Admonitions 
+
+Admonitions allow you to highlight important information with varying levels of priority. Use these blocks to emphasize risks, provide helpful advice, or share relevant details. 
+
+These are the available admonition types: 
+* Note
+* Warning
+* Tip
+* Important
+
+Follow these general guidelines for using admonitions: 
+
+* Don't use too many admonitions on a single page, otherwise it can become distracting.
+* Where possible, avoid stacking admonitions of different types (for example, a `Note` immediately followed by a `Warning`). If you find it necessary to do so, consider rewriting the content. 
+* Don't use an admonition to inform the user about prerequisites. 
+* Keep admonitions concise. 
+
+### Note 
+Use a note to include a useful, relevant piece of information that's not critical if ignored.
+
+::::{dropdown} Example
+:::{note}
+The snapshot and restore and {{ccr}} features are currently not available for {{serverless-full}} projects.
+:::
+::::
+
+### Tip 
+Use a tip to provide a more efficient way for the user to perform a task, or to give advice that helps them make better choices when using a feature.
+
+::::{dropdown} Example
+:::{tip}
+Documentation is hosted in many repositories across Elastic. If you're unsure which repository to clone, you can use the **Edit this page** link on any documentation page to determine the location of the source file.
+:::
+::::
+
+### Warning 
+Use a warning when a step is irreversible, or a user could permanently lose data or leak sensitive information.
+
+::::{dropdown} Example
+:::{warning}
+Once a deployment is migrated to node roles, it is not possible to roll back.
+:::
+:::: 
+
+### Important 
+Use an important admonition to highlight information that's crucial for the user to know, or could impact performance or the stability of their system. 
+
+::::{dropdown} Example
+:::{important}
+Setting up {{filebeat}} is an admin-level task that requires extra privileges. As a best practice, use an administrator role to set up and a more restrictive role for event publishing.
+:::
+:::: 
+
 ## Emphasis
 
 Bold, italic, and monospace formatting helps users distinguish words and phrases from the surrounding text and provides visual cues for users. 
@@ -25,7 +82,7 @@ Use bold text formatting to emphasize the names of UI elements so that users can
 
 | Element | Example |
 | ------- | ------- |
-| Apps | **Visualize** allows you to create visualizations of the data in your Elasticsearch indices. |
+| Apps | **Visualize** allows you to create visualizations of the data in your {{es}} indices. |
 | Columns | In the **Value** column, go to the value you want to edit and click **Edit**. |
 | Interactive UI functions | To use a dark color theme, click **Options** and select **Use dark theme**. |
 | Key combinations | Press **Alt+C**. |
@@ -279,13 +336,82 @@ When using a percent in a sentence, use numerals and the percent sign, without a
   ✔️ **Do**: Thirty percent of the memory must be free. 
 :::
 
+## Dates and times
+
+Writing dates and times in a uniform and unambiguous way helps support writing for our global audience.  
+
+### Date formatting 
+
+In general, don't express months as numbers since different world regions put parts of the date in a different order for numeric dates. Use the "**Month DD, YYYY**" format; this is the most unambiguous format for a global audience.
+
+:::{dropdown} Examples
+  ✔️ **Do**: January 15, 2026.  
+
+  ❌ **Don't**: 1/15/2026.
+
+  ❌ **Don't**: 15/01/2026. 
+:::
+
+Do not use ordinal indicators: Avoid adding _st_, _nd_, _rd_, or _th_ to the day.
+
+:::{dropdown} Examples
+  ✔️ **Do**: March 5.  
+
+  ❌ **Don't**: March 5th.
+:::
+
+If you must include a date and time together, mention the date first, then the time. 
+
+:::{dropdown} Example
+  ✔️ **Do**: May 4, 2009, at 6 PM  
+:::
+
+
+
+### Time formatting 
+Use a 12-hour clock with AM/PM: Use a space before "AM" or "PM", and use uppercase without periods.
+
+:::{dropdown} Examples
+  ✔️ **Do**: 10:00 AM 
+
+  ❌ **Don't**: 10am
+
+  ❌ **Don't**: 4:30p.m. 
+
+  ❌ **Don't**: 16:30
+:::
+
+### Time zones 
+
+Use Coordinated Universal Time (UTC): As a global SaaS company, UTC is our primary reference point. If a local time is necessary, provide UTC as well.
+
+:::{dropdown} Example
+✔️ **Do**: 9:00 AM PT (5:00 PM UTC)
+:::
+
+Avoid seasonal abbreviations like "PST" or "PDT" unless the distinction is critical. Use the generic "PT" (Pacific Time) or "ET" (Eastern Time) to avoid errors when the clocks change.
+
+### Duration and relative time 
+
+Avoid relative dates. Never use terms like "last month," "recently," or "currently." These terms become inaccurate as soon as documentation is published.
+
+:::{dropdown} Example
+  ✔️ **Do**: In version 9.3.0 and newer...
+
+  ✔️ **Do**: In versions older than 9.1.0...
+
+  ❌ **Don't**: In the current version... 
+
+
+:::
+
 ## Code samples
 
 Good code samples can be extremely valuable in developer documentation. They're a great way to illustrate how to implement specific features or functionality. Whenever possible, provide complete and runnable code samples that users can copy and test out themselves.
 
 In general, follow the formatting rules of the language of the code sample. 
 
-The following guidelines will help to ensure your code samples are clear, readable, and easily understandable.
+The following guidelines will help to ensure your code samples are clear, readable, and understandable.
 
 ### Use consistent indentation
 
@@ -384,7 +510,7 @@ WatcherState watcherState = watcherStatsResponse.getWatcherState();
 
 :::
 
-For languages that don't support comments natively, such as JSON, you can add explanations about specific lines using [footnotes](./formatting.md).
+For languages that don't support comments natively, such as JSON, you can add explanations about specific lines using [footnotes](#footnotes).
 
 :::{dropdown} Example
 
@@ -414,7 +540,7 @@ For languages that don't support comments natively, such as JSON, you can add ex
 ```
 1. Indicates this item is for endpoint rules.
 2. Relevant OS.
-3. Item accessible from all Kibana spaces.
+3. Item accessible from all {{kib}} spaces.
 
 :::
 
@@ -428,6 +554,33 @@ Instead of a footnote, consider adding a link or putting the information in an a
 * If you have more than one footnote, number them in sequential order. 
 * Offset the numeral with superscript. 
   
+## Release notes 
+
+The goal of our release notes is to provide clear, scannable, and actionable information to our users. Follow these formatting and grammatical standards for all entries.
+
+Follow these general guidelines: 
+
+* To maintain an immediate and professional tone, every entry must start with a present-tense active verb (for example, _Adds_, _Fixes_, _Updates_, _Enhances_, _Removes_).
+* Focus on the "what" and the "why." Avoid filler phrases like, "The system now allows you to..."
+* Bold all specific page titles, buttons, icon names, modal/dialog titles, API names, and column names. For a comprehensive list, refer to our [guidance on using bold text](#bold-strong). 
+* Use monospace formatting for file paths, parameters, field or CLI commands. For a comprehensive list, refer to our [guidance on using monospace text](#monospace-code). 
+  
+:::{dropdown} Release note examples
+  ✔️ **Do**: Adds a search bar to the **Dashboard** page.
+
+  ✔️ **Do**: Adds a **View in Discover** link to APM rule-based alert details to view related documents in Discover.  
+
+  ✔️ **Do**: Adds the `xpack.productDocBase.artifactRepositoryProxyUrl` setting to `kibana.yml`.
+
+  ✔️ Adds support for `doc_values` to text fields. 
+
+  ❌ **Don't**: From the action menu (...), click the **Delete** button to delete the job. 
+
+  ❌ **Don't**: Now there's an auto-push option for case connectors, enabling automatic case 
+  synchronization.
+:::
+
+
 ## Redaction of sensitive information
 
 End-user documentation may contain screen captures and examples that show
