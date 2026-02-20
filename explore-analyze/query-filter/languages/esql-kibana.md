@@ -89,6 +89,7 @@ After running a query, the editor's footer displays statistics about the last ru
 |--------------------|---------------------|-----------------------------|
 | {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
 | {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment a line |
+| {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`stack: ga 9.4+` |
 | {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open [Quick search](#esql-kibana-quick-search) |
 
 :::{tip}
