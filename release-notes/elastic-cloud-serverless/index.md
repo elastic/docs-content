@@ -2186,7 +2186,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Replaces hard-coded CSS values to us the `euiTheme` instead in {{sec-serverless}} [#225307]({{kib-pull}}225307)
 * Fixes URL query handling for asset inventory flyout in {{sec-serverless}} [#225199]({{kib-pull}}225199)
 * Adds missing model Claude 3.7 to accepted models in {{es-serverless}} [#224943]({{kib-pull}}224943)
-* Parses `StatelessCompoundCommit` contained in referenced BCCs incrementally during recoveries
 
 * Keeps memory consumption under control by parsing the `StatelessCompoundCommit` contained in referenced `BatchedCompoundCommits` incrementally during recoveries
 * Supports returning default `index_options` for `semantic_text` fields when `include_defaults` is true [#129967](https://github.com/elastic/elasticsearch/pull/129967)
