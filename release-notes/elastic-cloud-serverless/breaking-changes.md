@@ -6,6 +6,13 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+:::{changelog} /releases
+:subsections:
+:config: /changelog.yml
+:type: breaking-change
+:product: cloud-serverless
+:::
+
 ## October 27, 2025 [serverless-changelog-10272025-breaking]
 
 :::{dropdown} Implement native synthetic source for normalized keywords

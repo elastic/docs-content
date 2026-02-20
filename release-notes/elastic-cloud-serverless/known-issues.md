@@ -16,6 +16,13 @@ Known issues are significant defects or limitations that may impact your impleme
 % **Workaround** 
 % Workaround description.
 
+:::{changelog} /releases
+:subsections:
+:config: /changelog.yml
+:type: known-issue
+:product: cloud-serverless
+:::
+
 ## Active
 
 :::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
