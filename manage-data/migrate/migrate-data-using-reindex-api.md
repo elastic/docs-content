@@ -14,11 +14,9 @@ products:
 
 The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) offers a convenient way for you to migrate your {{es}} documents from a source index, data stream, or alias in one deployment to another.
 
-This guide gives the example of reindexing a full index from an {{ech}} deployment an {{serverless-full}} project, but the steps can be adapted to other deployment types. 
+This guide gives the example of reindexing a full index from an {{ech}} deployment an {{serverless-full}} project using the remote host parameters as shown in the [reindex from remote](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) example. These steps can be adapted to other deployment types according to the tables listed in [User data migration guides](/manage-data/migrate.md#data-migration-guides).
 
 For more advanced use cases, including data modification using scripts or ingest pipelines, refer to the [Reindex indices examples](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) and the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) documentation. 
-
-To migrate data from {{ech}}, you need to include the remote host parameters as shown in the [reindex from remote](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) example and as described here.
 
 :::{tip}
 If you're migrating from a self-managed cluster that uses non–publicly trusted TLS certificates, including self-signed certificates and certificates signed by a private certificate authority (CA), refer to our guide [Reindex from a self-managed cluster using a private CA](/manage-data/migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md).
