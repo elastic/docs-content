@@ -447,6 +447,7 @@ toc:
               - file: observability/logs/inspect-log-anomalies.md
           - file: observability/logs/run-pattern-analysis-on-log-data.md
           - file: observability/logs/log-data-sources.md
+          - file: observability/logs/logs-data-retention.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
             children:
