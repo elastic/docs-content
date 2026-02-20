@@ -260,7 +260,7 @@ $$$azure-integration-migrate$$$How do I migrate my data from the classic Azure m
     3. Navigate to Azure and log in as the user that manages the {{es}} resources.
     4. Before proceeding, ensure the new account is configured according to the [prerequisites](#azure-integration-get-started).
     5. Create a [new {{es}} resource](#azure-integration-get-started) for each existing deployment that needs migration from the classic Azure account.
-    6. In the new {{es}} resource, follow the steps in [Restore from a snapshot](/manage-data/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md) to register the custom snapshot repository from Step 1.
+    6. In the new {{es}} resource, follow the steps in [Restore from a snapshot](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md) to register the custom snapshot repository from Step 1.
     7. In the same set of steps, restore the snapshot data from the snapshot repository that you registered.
     8. Confirm the data has moved successfully into your new {{es}} resource on Azure.
     9. To remove the old Azure subscription and the old deployments, go to the [Azure SaaS page](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.SaaS%2Fresources) and unsubscribe from the {{ecloud}} ({{es}}) marketplace subscription. This action triggers the existing deployments termination.
