@@ -50,9 +50,9 @@ Audit logs are disabled by default and must be explicitly enabled.
 ::::
 
 
-::::::{tab-set}
+::::::{applies-switch}
 
-:::::{tab-item} Self-managed
+:::::{applies-item} self:
 
 **To enable audit logging in {{es}}**:
 
@@ -67,7 +67,7 @@ Audit logs are disabled by default and must be explicitly enabled.
 To learn how to consume these logs in an {{es}} cluster, refer to [](/deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md).
 :::::
 
-:::::{tab-item} {{ech}}
+:::::{applies-item} ess:
 
 To enable audit logging in an {{ech}} deployment:
 
@@ -90,7 +90,7 @@ To enable audit logging in an {{ech}} deployment:
 A plan change will run on your deployment. When it finishes, audit logs will be delivered to your monitoring deployment.
 :::::
 
-:::::{tab-item} ECE
+:::::{applies-item} ece:
 
 
 To enable audit logging in an ECE deployment:
@@ -115,7 +115,7 @@ To enable audit logging in an ECE deployment:
 A plan change will run on your deployment. When it finishes, audit logs will be delivered to your monitoring deployment.
 :::::
 
-:::::{tab-item} ECK
+:::::{applies-item} eck:
 
 
 To enable audit logging in an ECK-managed cluster, add `xpack.security.audit.enabled: true` to the `config` section of each {{es}} `nodeSet` and to the `config` section of the {{kib}} object's specification. 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Update or switch an index lifecycle policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-lifecycle-policy.html
 applies_to:
@@ -7,15 +8,15 @@ products:
   - id: elasticsearch
 ---
 
-# Update or switch a lifecycle policy
+# Update or switch an {{es}} index lifecycle policy
 
-You can change how the lifecycle of an index or collection of rolling indices is managed by modifying the current policy or switching to a different policy.
+{{ilm}} ({{ilm-init}}) enables automated handling of index phases and data retention. You can update a policy to modify how indices progress through phases or switch an index to a different policy to change its lifecycle management. This page explains how to safely apply updates using {{kib}} or the {{es}} API.
 
 To ensure that policy updates don’t put an index into a state where it can’t exit the current phase, the phase definition is cached in the index metadata when it enters the phase. If changes can be safely applied, {{ilm-init}} updates the cached phase definition. If they cannot, phase execution continues using the cached definition.
 
 When the index advances to the next phase, it uses the phase definition from the updated policy.
 
-To configure an index not currently managed by {{ilm-init}} to be governed by an lifecycle policy, refer to [Manually apply a policy to an index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md).
+To configure an index not currently managed by {{ilm-init}} to be governed by an lifecycle policy, refer to [Apply an index lifecycle policy to an existing {{es}} index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md).
 
 ## How changes are applied [ilm-apply-changes]
 

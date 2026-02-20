@@ -22,6 +22,10 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment
 :::{include} ../../_snippets/guided-instructions.md
 :::
 
+## Prerequisites
+
+To use the OpenTelemetry Kube Stack Chart, you need Helm version 3.9+ up to and including {{helm-version}}.
+
 ## Manual installation
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Kubernetes.

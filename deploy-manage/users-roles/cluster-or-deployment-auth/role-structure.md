@@ -1,10 +1,13 @@
 ---
 applies_to:
-  deployment:
-    ece:
-    ess:
-    eck:
-    self:
+  stack: all
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: elastic-stack
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Role structure

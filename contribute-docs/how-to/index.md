@@ -2,6 +2,14 @@
 
 Find practical guides for common documentation tasks.
 
+## Write good issues
+
+Learn how to [write good issues](good-issues.md) for documentation.
+
+## Update {{integrations}} documentation
+
+Learn how to [update {{integrations}} documentation](update-integrations-docs.md), which follows a different workflow than other Elastic documentation.
+
 ## Write cumulative documentation
 
 :::{note}

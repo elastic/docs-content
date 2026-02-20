@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-filtering.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery-prioritization.html
 applies_to:
-  stack:
   deployment:
+    eck:
     self:
 products:
   - id: elasticsearch
@@ -19,6 +19,11 @@ In {{es}}, per-index settings allow you to control the allocation of shards to n
 * [Delayed allocation](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md): Delaying allocation of unassigned shards caused by a node leaving.
 * [Total shards per node](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md): A hard limit on the number of shards from the same index per node.
 * [Data tier allocation](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md): Controls the allocation of indices to [data tiers](../../../manage-data/lifecycle/data-tiers.md).
+
+:::{tip}
+:applies_to: {ece: ga, ess: ga}
+For {{ece}} and {{ech}} deployments, you can't set custom node attributes, so index-level shard allocation filtering is less effective. Use [data tier allocation](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md) with the `_tier` attribute instead, which works with node roles to manage data across tiers.
+:::
 
 ## Index-level shard allocation filtering [shard-allocation-filtering]
 
@@ -114,7 +119,7 @@ Unallocated shards are recovered in order of priority, whenever possible. Indice
 
 This means that, by default, newer indices will be recovered before older indices.
 
-Use the per-index dynamically updatable `index.priority` setting to customise the index prioritization order. For instance:
+Use the per-index dynamically updatable `index.priority` setting to customize the index prioritization order. For instance:
 
 ```console
 PUT index_1

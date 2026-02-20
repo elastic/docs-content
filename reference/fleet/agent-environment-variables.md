@@ -2,6 +2,9 @@
 navigation_title: Environment variables
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-environment-variables.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -14,7 +17,7 @@ Use environment variables to configure {{agent}} when running in a containerized
 
 * [Common variables](#env-common-vars)
 * [Configure {{kib}}:](#env-prepare-kibana-for-fleet) prepare the {{fleet}} plugin in {{kib}}
-* [Configure {{fleet-server}}:](#env-bootstrap-fleet-server) bootstrap {{fleet-server}} on an {{agent}}
+* {applies_to}`serverless: unavailable` [Configure {{fleet-server}}:](#env-bootstrap-fleet-server) bootstrap {{fleet-server}} on an {{agent}}
 * [Configure {{agent}} and {{fleet}}:](#env-enroll-agent) enroll an {{agent}}
 
 
@@ -52,6 +55,10 @@ Settings used to prepare the {{fleet}} plugin in {{kib}}.
 
 ## Bootstrap {{fleet-server}} [env-bootstrap-fleet-server]
 
+```{applies_to}
+serverless: unavailable
+```
+
 Settings used to bootstrap {{fleet-server}} on this {{agent}}. At least one {{fleet-server}} is required in a deployment.
 
 | Settings | Description |
@@ -62,8 +69,8 @@ Settings used to bootstrap {{fleet-server}} on this {{agent}}. At least one {{fl
 | $$$env-bootstrap-fleet-fleet-server-es-cert$$$<br>`FLEET_SERVER_ES_CERT`<br> | (string) The path to the mutual TLS client certificate that {{fleet-server}} will use to connect to {{es}}.<br><br>**Default:** `""`<br> |
 | $$$env-bootstrap-fleet-fleet-server-es-cert-key$$$<br>`FLEET_SERVER_ES_CERT_KEY`<br> | (string) The path to the mutual TLS private key that {{fleet-server}} will use to connect to {{es}}.<br><br>**Default:** `""`<br> |
 | $$$env-bootstrap-fleet-fleet-server-insecure-http$$$<br>`FLEET_SERVER_INSECURE_HTTP`<br> | (bool) When `true`, {{fleet-server}} is exposed over insecure or unverified HTTP. Setting this to `true` is not recommended.<br><br>**Default:** `false`<br> |
-| $$$env-bootstrap-fleet-fleet-server-service-token$$$<br>`FLEET_SERVER_SERVICE_TOKEN`<br> | (string) Service token to use for communication with {{es}} and {{kib}} if [`KIBANA_FLEET_SETUP`](#env-prepare-kibana-for-fleet) is enabled. If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.<br><br>**Default:** none<br> |
-| $$$env-bootstrap-fleet-fleet-server-service-token-path$$$<br>`FLEET_SERVER_SERVICE_TOKEN_PATH`<br> | (string) The path to the service token file to use for communication with {{es}} and {{kib}} if [`KIBANA_FLEET_SETUP`](#env-prepare-kibana-for-fleet) is enabled. If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.<br><br>**Default:** none<br> |
+| $$$env-bootstrap-fleet-fleet-server-service-token$$$<br>`FLEET_SERVER_SERVICE_TOKEN`<br> | (string) Service token to use for communication with {{es}} and {{kib}}. If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.<br><br>**Default:** none<br> |
+| $$$env-bootstrap-fleet-fleet-server-service-token-path$$$<br>`FLEET_SERVER_SERVICE_TOKEN_PATH`<br> | (string) The path to the service token file to use for communication with {{es}} and {{kib}}. If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.<br><br>**Default:** none<br> |
 | $$$env-bootstrap-fleet-fleet-server-policy-name$$$<br>`FLEET_SERVER_POLICY_NAME`<br> | (string) The name of the policy for {{fleet-server}} to use on itself. Overrides `FLEET_TOKEN_POLICY_NAME` when set.<br><br>**Default:** none<br> |
 | $$$env-bootstrap-fleet-fleet-server-policy-id$$$<br>`FLEET_SERVER_POLICY_ID`<br> | (string) The policy ID for {{fleet-server}} to use on itself.<br> |
 | $$$env-bootstrap-fleet-fleet-server-host$$$<br>`FLEET_SERVER_HOST`<br> | (string) The binding host for {{fleet-server}} HTTP. Overrides the host defined in the policy.<br><br>**Default:** none<br> |
@@ -73,7 +80,7 @@ Settings used to bootstrap {{fleet-server}} on this {{agent}}. At least one {{fl
 | $$$env-bootstrap-fleet-fleet-server-cert-key-passphrase$$$<br>`FLEET_SERVER_CERT_KEY_PASSPHRASE`<br> | (string) The path to the private key passphrase for an encrypted private key file.<br><br>**Default:** none<br> |
 | $$$env-bootstrap-fleet-fleet-server-client-auth$$$<br>`FLEET_SERVER_CLIENT_AUTH`<br> | (string) One of `none`, `optional`, or `required`. {{fleet-server}}'s client authentication option for client mTLS connections. If `optional` or `required` is specified, client certificates are verified using CAs.<br><br>**Default:** `none`<br> |
 | $$$env-bootstrap-fleet-fleet-server-es-ca-trusted-fingerprint$$$<br>`FLEET_SERVER_ELASTICSEARCH_CA_TRUSTED_FINGERPRINT`<br> | (string) The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {{es}} certificates. This fingerprint is used to verify self-signed certificates presented by {{fleet-server}} and any inputs started by {{agent}} for communication. This flag is required when using self-signed certificates with {{es}}.<br><br>**Default:** `""`<br> |
-| $$$env-bootstrap-fleet-fleet-daemon-timeout$$$<br>`FLEET_DAEMON_TIMEOUT`<br> | (duration) Set to indicate how long {{fleet-server}} will wait during the bootstrap process for {{elastic-agent}}.<br> |
+| $$$env-bootstrap-fleet-fleet-daemon-timeout$$$<br>`FLEET_DAEMON_TIMEOUT`<br> | (duration) Set to indicate how long {{fleet-server}} will wait during the bootstrap process for {{agent}}.<br> |
 | $$$env-bootstrap-fleet-fleet-server-timeout$$$<br>`FLEET_SERVER_TIMEOUT`<br> | (duration) Set to indicate how long {{agent}} will wait for {{fleet-server}} to check in as healthy.<br> |
 
 

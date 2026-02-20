@@ -9,29 +9,32 @@ products:
   - id: kibana
 ---
 
-
-
 # Lens [lens]
 
-**Lens** is {{kib}}'s drag-and-drop visualization builder. It lets you create charts without writing queries: You drag fields onto the canvas, and {{kib}} suggests the best visualization types for your data.
+**Lens** is {{kib}}'s modern, drag‑and‑drop visualization editor designed to make data exploration fast and intuitive. It allows you to build charts and tables by dragging fields from a data view onto a workspace, while {{kib}} automatically suggests the most appropriate visualization types based on the data.
 
-These fields come from your data indices stored in {{es}}. When you bring data into {{es}}, like logs, metrics, or business data, each piece of information becomes a field: timestamps, user names, error codes, sales amounts, and so on.
+The Lens editor uses [data views](/explore-analyze/find-and-organize/data-views.md) to define the available {{es}} indices and fields. 
 
-Lens doesn't directly look into your {{es}} indices. You first need to specify a [data view](/explore-analyze/find-and-organize/data-views.md) that tells {{kib}} which indices to look at. When you open Lens and select a data view, you see all the fields from that data as a list you can drag and drop to build visualizations.
+Data views are created automatically if you [upload a file](/manage-data/ingest/upload-data-files.md), or [add sample data](/manage-data/ingest/sample-data.md) by using one of the {{kib}} [ingest options](/manage-data/ingest.md). Otherwise, you must create a {{data-source}} manually.
 
-:::{tip}
-If you collected data using one of the {{kib}} [ingest options](/manage-data/ingest.md), uploaded a file, or added sample data, you likely have a {{data-source}} created automatically, and can start exploring your data. If not, you must create one yourself.
-:::
+Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
 
-With **Lens**, you can:
+With Lens, you can create the following visualization types:
 
-* Create area, line, and bar charts with layers to display multiple indices and chart types.
-* Change the aggregation function to change the data in the visualization.
-* Create custom tables.
-* Perform math on aggregations using **Formula**.
-* Use time shifts to compare the data in two time intervals, such as month over month.
-* Add annotations and reference lines.
-
+- [Bar chart](/explore-analyze/visualize/charts/bar-charts.md)
+- [Line chart](/explore-analyze/visualize/charts/line-charts.md)
+- [Area chart](/explore-analyze/visualize/charts/area-charts.md)
+- [Metric chart](/explore-analyze/visualize/charts/metric-charts.md)
+- [Table](/explore-analyze/visualize/charts/tables.md)
+- [Pie chart](/explore-analyze/visualize/charts/pie-charts.md)
+- [Gauge chart](/explore-analyze/visualize/charts/gauge-charts.md)
+- [Heat map chart](/explore-analyze/visualize/charts/heat-map-charts.md)
+- [Waffle chart](/explore-analyze/visualize/charts/waffle-charts.md)
+- [Region map chart](/explore-analyze/visualize/charts/region-map-charts.md)
+- [Treemap chart](/explore-analyze/visualize/charts/treemap-charts.md)
+- [Tag cloud chart](/explore-analyze/visualize/charts/tag-cloud-charts.md)
+- [Mosaic chart](/explore-analyze/visualize/charts/mosaic-charts.md)
+- Legacy Metric chart (deprecated)
 
 ## Create visualizations [create-the-visualization-panel]
 
@@ -39,74 +42,61 @@ If you’re unsure about the visualization type you want to use, or how you want
 
 If you already know the visualization type you want to use, and how you want to display the data, use the following process.
 
-Choose the visualization type.
+:::::{stepper}
 
-1. Before you drag fields to the workspace, open the **Visualization type** dropdown, then select the visualization you want to use.
-2. To view more visualizations that **Lens** automatically created for the fields, click **Suggestions**. If one of the **Suggestions** meets your visualization needs, click **Save and return** to add it to the dashboard.
+::::{step} Choose the visualization type
 
-Choose the data you want to visualize.
+New visualizations default to **Bar** charts. Use the dropdown indicating **Bar** and select the visualization type you want.
+As you drag fields into the workspace or to the layer pane, Lens automatically generates alternative visualizations. To view them, click **Suggestions** at the bottom of the workspace. If a suggested visualization meets your needs, click **Save and return** to add it to the dashboard.
 
-1. Drag the fields directly to the layer pane. **Lens** automatically selects the aggregation function.
-2. If you want to learn more about the data a field contains, click the field.
-3. To visualize more than one {{data-source}}, click **Add layer**, select the layer type, then select the {{data-source}}.
-
-Edit and delete.
-
-1. Hover over the panel and click ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") to edit the visualization. The **Edit visualization** flyout appears.
-2. To change the aggregation **Quick function**, click the field in the flyout.
-3. To delete a field, click ![Actions menu icon to delete a field](/explore-analyze/images/kibana-trash_can.png "kibana-trash_can =5%x5%") next to the field.
-4. To duplicate a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Duplicate layer**.
-5. To clear the layer configuration, click ![Actions menu to clear Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Clear layer**.
-6. Click **Apply and close**.
-
-::::{tip}
-Use the **Edit visualization** flyout to make edits without having to leave the dashboard, or click **Edit in Lens** in the flyout to make edits using the Lens application.
 ::::
 
+::::{step} Choose the data you want to visualize
+
+As you drag fields to the layer pane, Lens automatically selects an aggregation function, for example **Date histogram**, **Intervals**, or **Top values**. Click a field to learn more about its data or to edit its appearance.
+
+::::
+
+::::{step}  Customize the appearance of your visualization
+
+In the Lens editor, you can customize the appearance of your visualization by clicking the **Style** icon {icon}`brush` and the **Legend** icon ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") in the layer pane.
+
+::::
+
+::::{step} (Optional) Add layers
+
+You can add multiple layers to a visualization, such as **Visualization**, [**Annotations**](#add-annotations), or [**Reference lines**](#add-reference-lines). Click the **Add layer** icon {icon}`plus_in_square` , then choose the layer type and select the {{data-source}}. 
+To duplicate or delete a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
+
+::::
+
+::::{step} Save and add the panel
+$$$save-the-lens-panel$$$
+- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
+- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+
+::::
+
+
+:::::
+
+Once you have created your visualization, you can edit it directly on the dashboard. Click the **Edit visualization configuration** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
 
 
 ### Change the fields list [change-the-fields]
 
-Change the fields list to display a different {{data-source}}, different time range, or add your own fields.
+When you can create a visualization, you can change the fields list to display a different {{data-source}}, a different time range, or add your own fields. To do that, open the {{data-source}} dropdown and select **Add a field to this {{data-source}}**.
 
-* To create a visualization with fields in a different {{data-source}}, open the {{data-source}} dropdown, then select the {{data-source}}.
-
-    For more information about {{data-sources}}, refer to [Create a {{data-source}}](../find-and-organize/data-views.md).
-
-* If the fields list is empty, change the [time filter](../query-filter/filtering.md).
-* To add fields, open the {{data-source}} dropdown, then select **Add a field to this {{data-source}}**.
-  ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](/explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png "")
-  
-  For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
+![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](/explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png "")
 
 
+If the fields list is empty, change the [time filter](../query-filter/filtering.md).
 
-### Create custom tables [create-custom-tables]
-
-Tables are highly customizable, and provide you with text alignment, value formatting, coloring options, and more.
-
-1. From the **Visualization type** dropdown, select **Table**.
-2. Drag the fields you want to visualize to the workspace.
-3. To sort or hide the columns, click the arrow next to the column heading, then select an option.
-
-    All columns that belong to the same layer pane group are sorted in the table.
-
-4. To change the display options, click a **Metrics** field in the layer pane, then configure the following options:
-
-    * **Name** — Specifies the field display name.
-    * **Collapse by** — Aggregates all metric values with the same value into a single number.
-    * **Value format** — Specifies how the field value displays in the table.
-    * **Text alignment** — Aligns the values in the cell to the **Left**, **Center**, or **Right**.
-    * **Color by value** — Applies color to the cell or text values. To change the color, click the **Edit colors** icon.
-    * **Hide column** — Hides the column for the field.
-    * **Directly filter on click** — Turns column values into clickable links that allow you to filter or drill down into the data.
-    * **Summary row** — Adds a row that displays the summary value. When specified, allows you to enter a **Summary label**.
-
-
+For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
 
 ### Assign colors to terms [assign-colors-to-terms]
 ```{applies_to}
-stack: preview 9.0, ga 9.1
+stack: preview =9.0, ga 9.1+
 serverless: ga
 ```
 
@@ -182,55 +172,7 @@ Color mapping works best with fields that have a reasonable number of distinct v
 
 **Plan for themes**
 
-When choosing colors, consider how they will appear in both light and dark themes. Use theme-aware neutral colors when you want to de-emphasize data.
-
-### Show trends in Metric charts [metric-trends]
-```{applies_to}
-stack: ga 9.1
-serverless: ga
-```
-
-When creating **Metric** visualizations with numeric data, you can add trend indicators that compare your primary metric to a secondary value. This feature displays colored badges with directional arrows to help you quickly identify whether values are increasing, decreasing, or staying the same.
-
-| Without trend | With trend |
-|--------|-------|
-| ![Secondary metric before comparison](../images/secondary_metric_before_compare.png "title =70%") | ![Secondary metric after comparison](../images/secondary_metric_after_compare.png "title =70%") |
-
-To add trend indicators to your metric visualization:
-
-1. Create a **Metric** visualization with a numeric primary metric.
-2. Add a secondary metric that represents the comparison value.
-
-    ::::{tip}
-    Use the `shift` parameter in formulas to compare current values against historical data. For example, if your primary metric is counting orders (based on an `order_id` field) for the current week, you can use the `count(order_id, shift='1w')` formula to compare this week's count of orders to last week's count.
-    ::::
-
-3. In the secondary metric configuration, look for the **Color by value** option. The possible choices are:
-   * **None** — No trend indicators (default)
-   * **Static** — Shows the secondary metric as a badge with a single color that you select
-   * **Dynamic** — Enables both color coding and directional icons based on the comparison
-
-4. Select **Dynamic** coloring. More options appear.
-
-5. Choose a **Color palette** that matches how you'd like to represent the comparison.
-
-6. Configure the **Display** option:
-   * **Icon** — Shows only directional arrows: ↑ for increase, ↓ for decrease, = for no change
-   * **Value** — Shows only the secondary metric value
-   * **Both** — Shows both the icon and value (default)
-
-7. The secondary metric does not automatically compare with the primary metric. Define the value to **Compare to**:
-   * **Static value** — Compares against a fixed baseline value that you specify
-   * **Primary metric** — Compares the secondary metric directly against the primary metric. This option is only available when the primary metric is numeric. 
-   
-     When you select this option, the secondary metric is automatically updated:
-
-       * The secondary metric label changes to **Difference**. You can change this by editing the **Prefix** option of the metric.
-       * If you chose a **Display** option that shows a value, the secondary metric value is automatically updated to show the difference compared to the primary metric.
-
-7. Apply your changes. 
-
-The metric visualization is updated and now shows the secondary metric as a comparison with a trend indicator.
+When choosing colors, consider how they appear in both light and dark themes. Use theme-aware neutral colors when you want to de-emphasize data.
 
 
 ### Create visualizations with keyboard navigation [drag-and-drop-keyboard-navigation]
@@ -261,43 +203,36 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
 ### Use formulas to perform math [lens-formulas]
 
-Formulas allow you to perform math on aggregated data. The most common formulas divide two values to produce a percent.
+Lens formulas let you do math using a combination of {{es}} aggregations and math functions. For example, you can use formulas to divide two values and produce a percent value.
 
-1. In the layer pane, click a field.
-2. Click **Formula**, then enter the formula.
+When you add a categorical field to your visualization, select the field to open its appearance settings, choose **Formula**, and set **Appearance** > **Value format** to **Percent** for a more accurate display.
 
-    Filter ratio example
-    :   To filter a document set, use `kql=''`, then compare to other documents within the same grouping:
+For more details on how it works, click the **Formula reference** icon ![Formula reference icon](/explore-analyze/images/kibana-formula_reference.png "") on the Formula panel.
 
-        ```
-        count(kql='response.status_code > 400') / count()
-        ```
+These are examples of common formulas:
 
+**Filter ratio**
+:   To filter a document set, use `kql=''`, then compare to other documents within the same grouping:
 
-    Week over week example
-    :   To get the value for each grouping from the previous week, use `shift='1w'`.
+    ```
+    count(kql='response.status_code > 400') / count()
+     ```
 
-        ```
-        percentile(system.network.in.bytes, percentile=99) /
-        percentile(system.network.in.bytes, percentile=99, shift='1w')
-        ```
+**Week over week**
+:   To get the value for each grouping from the previous week, use `shift='1w'`.
 
-        You are unable to combine different time shifts, such as `count(shift="1w") - count()` and `count(shift="1w") - count(shift="1m")`, with the **Top values** function.
+    ```
+    percentile(system.network.in.bytes, percentile=99) /
+    percentile(system.network.in.bytes, percentile=99, shift='1w')
+    ```
+    You are unable to combine different time shifts, such as `count(shift="1w") - count()` and `count(shift="1w") - count(shift="1m")`, with the **Top values** function.
 
+**Percent of total**
+:   To convert each grouping into a percent of the total, formulas calculate `overall_sum` for all groupings:
 
-    Percent of total example
-    :   To convert each grouping into a percent of the total, formulas calculate `overall_sum` for all groupings:
-
-        ```
-        sum(products.base_price) / overall_sum(sum(products.base_price))
-        ```
-
-        ::::{tip}
-        For detailed information on formulas, click ![Formula reference icon](/explore-analyze/images/kibana-formula_reference.png "").
-        ::::
-
-3. To accurately display the formula, select **Percent** from the **Value format** dropdown.
-
+    ```
+    sum(products.base_price) / overall_sum(sum(products.base_price))
+    ```
 
 ### Compare differences over time [compare-data-with-time-offsets]
 
@@ -309,10 +244,11 @@ Compare your real-time data to the results that are offset by a time increment. 
 
 For a time shift example, refer to [Compare time ranges](../dashboards/create-dashboard-of-panels-with-ecommerce-data.md#compare-time-ranges).
 
-
 ### Create partition charts with multiple metrics [create-partition-charts-with-multiple-metrics]
 
 To create partition charts, such as pie charts, configure one or more **Slice by** dimensions to define the partitions, and a **Metric** dimension to define the size. To create partition charts with multiple metrics, use the layer settings. Multiple metrics are unsupported for mosaic visualizations.
+
+For detailed instructions on creating pie charts, including best practices and configuration options, refer to [Build pie charts with {{kib}}](/explore-analyze/visualize/charts/pie-charts.md).
 
 1. In the layer pane, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
 2. Select **Multiple metrics**.
@@ -320,83 +256,66 @@ To create partition charts, such as pie charts, configure one or more **Slice by
 
 
 ### Improve visualization loading time [improve-visualization-loading-time]
+```{applies_to}
+stack: preview
+```
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
-Data sampling allows you to improve the visualization loading time. To decrease the loading time, use a lower sampling percentage, which also decreases the accuracy. Use low sampling percentages on large datasets.
-
-1. In the **Edit visualization** flyout, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
-2. To select the **Sampling** percentage, use the slider.
-3. Click **Apply and close**.
-4. Click **Save**.
+Data sampling allows you to improve the visualization loading time. When you can create your visualization, click the **Layer settings** icon {icon}`app_management` and use the slider to adjust the **Sampling** percentage. For example, on large datasets, you can decrease the loading time by using a lower sampling percentage. This increases performance but lowers the accuracy.
 
 
 ### Add annotations [add-annotations]
-
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
+```{applies_to}
+stack: preview
+```
 
 Annotations allow you to call out specific points in your visualizations that are important, such as significant changes in the data. You can add annotations for any {{data-source}}, add text and icons, specify the line format and color, and more.
+Click the **Add layer** icon {icon}`plus_in_square` , select **Annotations** and select the annotation method you want to use:
+
+:::{dropdown} New annotation
+1. Select the {{data-source}} for the annotation.
+2. From the fields list, drag a field to the **Horizontal axis** field.
+
+To use global filters in the annotation, click the **Layer settings** icon {icon}`app_management` on the annotations layer, and select **Use global filters**.
+
+From the annotation panel, you can choose the type of placement and adjsut the its appearance.
+
+**Placement**
+:   
+    - **Static date** — Displays annotations for specific times or time ranges. To create static annotations:
+      1. Select **Static date**.
+      2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
+      3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
+
+    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search). To create custom query annotations:
+      1. Select **Custom query**.
+      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
+      3. Select the **Target date field**.
+
+**Appearance**
+:   Configure the annotation settings, including:
+   - **Name**: Enter the name of the annotation.
+   - **Icon decoration**: Choose from various icon styles to represent your annotations on the visualization. Options include markers like circles, triangles, squares, and other symbols.
+   - **Text decoration**: Set the style for the text labels of your annotations.
+   - **Line**: Control the width/thickness of annotation lines.
+   - **Color**: Set a custom color for your annotation markers.
+   - **Hide annotation**: Temporarily hide annotations from your visualization without deleting them.
+
+**Tooltip**
+:  Add a field to the annotation tooltip
+   1. If you created a custom query annotation, click **Add field** to add a field to the annotation tooltip.
+
+Once you are done, you can add your new annotation layer to the **Visualize Library** so that it can be reused in other visualizations. Note that any changes made to the annotation group is reflected in all visualizations to which it is added.
+:::
+
+:::{dropdown} Load from library
+Add a library annotation group to a visualization.
+:::
+
 
 :::{image} /explore-analyze/images/kibana-lens_annotations_8.2.0.png
 :alt: Lens annotations
 :screenshot:
 :::
-
-Annotations support two placement types:
-
-* **Static date** — Displays annotations for specific times or time ranges.
-* **Custom query** — Displays annotations based on custom {{es}} queries. For detailed information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
-
-Any annotation layer can be saved as an annotation group to the **Visualize Library** in order to reuse it in other visualizations. Any changes made to the annotation group will be reflected in all visualizations to which it is added.
-
-Create a new annotation layer.
-
-1. In the layer pane, click **Add layer > Annotations > New annotation**.
-2. Select the {{data-source}} for the annotation.
-3. From the fields list, drag a field to the **Add an annotation** field.
-4. To use global filters in the annotation, click ![Actions menu for the annotations layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Keep global filters** from the dropdown.
-
-    When you add the visualization to dashboards, ![Visualization modifier popup](/explore-analyze/images/kibana-lens_visualizationModifierPopup_8.8.0.png "") appears, which allows you to view settings changes to the visualization.
-
-
-Create static annotations.
-
-1. Select **Static date**.
-2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
-3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
-
-Create custom query annotations.
-
-1. Select **Custom query**.
-2. Enter the **Annotation query** for the data you want to display.
-
-    For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
-
-3. Select the **Target date field**.
-
-Specify the annotation appearance.
-
-1. Enter the annotation **Name**.
-2. Change the **Appearance** options for how you want the annotation to display on the visualization.
-3. If you created a custom query annotation, click **Add field** to add a field to the annotation tooltip.
-4. To close, click **X**.
-
-Save the annotation group to the library.
-
-1. In the layer pane, on your annotation layer, click ![Save button on annotations layer](/explore-analyze/images/kibana-lens_saveAnnotationLayerButton_8.9.0.png "").
-2. Enter the **Title**, **Description**, and add any applicable [**Tags**](../find-and-organize/tags.md).
-3. Click **Save group**.
-
-Add a library annotation group to a visualization.
-
-1. In the layer pane, click **Add layer > Annotations > Load from library**.
-2. Select the annotation group you want to use.
 
 
 ### Add reference lines [add-reference-lines]
@@ -410,14 +329,18 @@ For example, to track the number of bytes in the 75th percentile, add a shaded *
 :screenshot:
 :::
 
-1. In the layer pane, click **Add layer > Reference lines**.
-2. Click the reference line value, then specify the reference line you want to use:
+From your visualization, click **Add layer > Reference lines**. Click the vertical axis value, and specify the reference line you want to use by choosing one fhe following placement methods:
 
-    * To add a static reference line, click **Static**, then enter the reference line value you want to use.
-    * To add a dynamic reference line, click **Quick functions**, then click and configure the functions you want to use.
-    * To calculate the reference line value with math, click **Formula**, then enter the formula.
+**Static**
+:   To add a static reference line.
 
-3. Specify the display options, such as **Display name** and **Icon**, then click **Close**.
+**Quick functions**
+:   To add a dynamic reference line.
+
+**Formula**
+:   To calculate the reference line value with math.
+
+You can also customize the display by adjusting the **Appearance** settings.
 
 
 ### Apply filters [filter-the-data]
@@ -463,18 +386,16 @@ In the legend, click the field, then choose one of the following options:
 
 ## Customize the visualization display [configure-the-visualization-components]
 
-Each visualization type comes with a set of components that you access from the editor toolbar.
+Each visualization offers various options that you can use to customize its appearance:
 
-The following component menus are available:
-
-* **Appearance** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
+* **Style** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
 * **Labels** — Specifies how to display the labels for donut charts, pie charts, and treemaps.
 * **Legend** — Specifies how to display the legend. You can choose to display the legend inside or outside the visualization, truncate the legend values when they’re too long, and [select additional statistics to show](#customize-visualization-legend).
 * **Left axis**, **Bottom axis**, and **Right axis** — Specify how you want to display the chart axes. For example, add axis labels and change the orientation and bounds.
 
-### Visualization appearance options [customize-visualization-appearance]
+### Visualization appearance and style options [customize-visualization-appearance]
 
-When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
+You can customize the appearance of your visualizations with several options. To do that, look for the {icon}`brush` **Style** button.
 
 These options can vary depending on the type of chart.
 
@@ -535,7 +456,7 @@ These options can vary depending on the type of chart.
 ```{applies_to}
 stack: ga 9.2
 ```
-When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
+When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` **Style** button.
 
 **Primary metric**
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
@@ -565,6 +486,8 @@ When creating or editing a visualization, you can customize several appearance o
 
 #### Pie charts
 
+For comprehensive pie chart documentation, including best practices, advanced scenarios, and all configuration options, refer to [Build pie charts with {{kib}}](/explore-analyze/visualize/charts/pie-charts.md).
+
 **Donut hole**
 :   Display a **Small**, **Medium**, or **Large** hole at the center of the pie chart. Defaults to **None**.
 
@@ -587,9 +510,10 @@ When creating or editing a visualization, you can customize several appearance o
 
 ### Customize the visualization legend [customize-visualization-legend]
 
-When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") icon.
+To customize the legend of your visualization, click the **Legend** icon ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") in the layer pane.
 
-:::{image} /explore-analyze/images/kibana-legend-popover-8.16.0.png
+:::{image} /explore-analyze/images/kibana-lens-legend.png
+:screenshot:
 :alt: Menu with options to customize the legend of a visualization
 :::
 
@@ -638,7 +562,6 @@ For example, if the metric plotted in the chart is `Median(system.memory)` and t
 :alt: Additional statistics shown in the legend of a memory consumption bar chart
 :::
 
-
 ## Explore the data in Discover [explore-lens-data-in-discover]
 
 When your visualization includes one data view, you can open and explore the visualization data in **Discover**.
@@ -662,29 +585,6 @@ To view the data included in the visualization and the requests that collected t
 
     1. From the dropdown, select the requests you want to view.
     2. To view the requests in **Console**, click **Request**, then click **Open in Console**.
-
-
-
-## Save and add the panel [save-the-lens-panel]
-
-Save the panel to the **Visualize Library** and add it to the dashboard, or add it to the dashboard without saving.
-
-To save the panel to the **Visualize Library**:
-
-1. Click **Save to library**.
-2. Enter the **Title** and add any applicable [**Tags**](../find-and-organize/tags.md).
-3. Make sure that **Add to Dashboard after saving** is selected.
-4. Click **Save and return**.
-
-To save the panel to the dashboard:
-
-1. Click **Save and return**.
-2. Add an optional title to the panel.
-
-    1. In the panel header, click **No Title**.
-    2. On the **Panel settings** window, select **Show title**.
-    3. Enter the **Title**, then click **Save**.
-
 
 
 ## Frequently asked questions [lens-faq]

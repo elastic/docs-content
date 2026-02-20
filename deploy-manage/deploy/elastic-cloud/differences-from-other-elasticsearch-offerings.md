@@ -69,7 +69,7 @@ This table compares the core platform capabilities between {{ech}} deployments a
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering | Private connectivity options anticipated in a future release |
+| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering, private connectivity (VPCs, PrivateLink) | Private connectivity for Serverless projects is currently supported in AWS regions only. Requires the Serverless Plus add-on. |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
@@ -83,23 +83,24 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 
 | **Feature** | {{ech}} | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ | ✅ | |
 | **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | [**Clone index API**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
 | [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The baseline write latency in {{serverless-short}} is 200ms [^1^](#footnote-1) |
 | [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
-| [**Cross-cluster search**](/solutions/search/cross-cluster-search.md) | ✅ | **Planned** | Anticipated in a future release |
+| [**Cross-cluster search**](/explore-analyze/cross-cluster-search.md) | ✅ | **Planned** | Anticipated in a future release |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
 | **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
 | **Enterprise Search (App Search & Workplace Search)** | ❌ (discontinued in 9.0) | ❌ | Not available in Serverless |
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
-| [**Reindexing from remote**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) | ✅ | **Planned** | Anticipated in a future release |
+| [**Reindexing from remote**](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) | ✅ | **Tech Preview** | |
 | **Repository management** | ✅ | Managed | Automatically managed by Elastic |
 | [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](elasticsearch://reference/query-languages/esql.md) |
 | [**`join` fields**](elasticsearch://reference/elasticsearch/mapping-reference/parent-join.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is the ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md) command |
-| [**Search applications**](/solutions/search/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
+| [**Search applications**](/solutions/elasticsearch-solution-project/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
 | **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
+| [**Synonyms**](/solutions/search/full-text/search-with-synonyms.md) | - Index time synonyms <br>- File-based synonyms <br>- Synonyms API | Synonyms API only (does not support index-time or file-based synonyms) | |
 | [**Watcher**](/explore-analyze/alerts-cases/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
 | **Web crawler** | ❌ (Managed Elastic Crawler discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler) |
 
@@ -111,7 +112,7 @@ This table compares Observability capabilities between {{ech}} deployments and O
 
 | **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ | ✅ | |
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](opentelemetry://reference/motlp.md) for OTLP data ingestion |
 | [**APM Agent Central Configuration**](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |

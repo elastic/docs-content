@@ -25,6 +25,8 @@ These symptoms are common when the Kube-Stack chart is deployed with insufficien
 - Cluster or Daemon pods are unable to export data to the Gateway collector due being `OOMKilled` (high memory usage). 
 - Pods have logs similar to: `error	internal/queue_sender.go:128	Exporting failed. Dropping data.`
 
+For detailed diagnostics on OOMKilled issues, refer to [Collector out of memory](/troubleshoot/ingest/opentelemetry/edot-collector/collector-oomkilled.md). For more information on enabling debug logging, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).
+
 ## Resolution
 
 Follow these steps to resolve the issue.

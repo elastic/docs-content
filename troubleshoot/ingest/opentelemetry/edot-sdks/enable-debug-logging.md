@@ -189,4 +189,4 @@ Disable diagnostic collection when you're done by unsetting the variable or rest
 
 ## Resources
 
-To learn how to enable debug logging for the EDOT Collector, refer to [Enable debug logging for EDOT Collector](../edot-collector/enable-debug-logging.md).
+To learn how to enable debug logging for the EDOT Collector, refer to [Enable debug logging for EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).

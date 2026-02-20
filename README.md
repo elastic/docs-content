@@ -8,7 +8,7 @@ This repo contains source files for Elastic documentation.
 
 If you find any bugs in our documentation, or want to request an enhancement, [open an issue](https://github.com/elastic/docs-content/issues). We also welcome contributions in the form of PRs. Before you submit a PR, make sure that you have signed our [Contributor License Agreement](https://www.elastic.co/contributor-agreement/).
 
-We write our docs in markdown. See our [syntax guide](https://elastic.github.io/docs-builder/syntax/index.html) for examples and additional functionality.
+We write our docs in markdown. Refer to our [syntax quick reference](https://elastic.co/docs/contribute-docs/syntax-quick-reference) for examples and additional functionality.
 
 ### Preview your changes
 

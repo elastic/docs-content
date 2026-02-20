@@ -9,10 +9,10 @@ products:
 
 # Cross-cluster search and detection rules [rules-cross-cluster-search]
 
-[Cross-cluster search](../../search/cross-cluster-search.md) is an {{es}} feature that allows one cluster (the *local* cluster) to query data in a separate cluster (the *remote* cluster). {{elastic-sec}}'s detection rules can perform a cross-cluster search to query data in remote clusters.
+[Cross-cluster search](/explore-analyze/cross-cluster-search.md) is an {{es}} feature that allows one cluster (the *local* cluster) to query data in a separate cluster (the *remote* cluster). {{elastic-sec}}'s detection rules can perform a cross-cluster search to query data in remote clusters.
 
 ::::{admonition} Requirements
-* To learn about the requirements for using cross-cluster search in the {{stack}}, refer to [Cross-cluster search](../../search/cross-cluster-search.md). 
+* To learn about the requirements for using cross-cluster search in the {{stack}}, refer to [Cross-cluster search](/explore-analyze/cross-cluster-search.md). 
 * Using cross-cluster search for {{esql}} rules in the {{stack}} requires an [Enterprise subscription](https://www.elastic.co/pricing). 
 
 ::::
@@ -50,7 +50,7 @@ This section explains the general process for setting up cross-cluster search in
 
         ::::{important}
         * This step ensures that the privileges to read remote indices are applied from the user to the rule itself. When a user creates a new rule or saves edits to an existing rule, their current privileges are saved to the rule’s API key. If that user’s privileges change in the future, the rule’s API key will not update until you manually update it. Refer to [Update a rule’s API key](#update-api-key) for details.
-        * This user must also have the [appropriate privileges](detections-requirements.md#enable-detections-ui) to manage and preview rules.
+        * This user must also have the [appropriate privileges](detections-privileges.md) to manage and preview rules.
 
         ::::
 

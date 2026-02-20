@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/add-controls.html
+description: Add interactive filter controls to your Kibana dashboards to help users explore data with options lists, range sliders, and time sliders.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,17 @@ products:
 
 # Add filter controls [add-controls]
 
-**Controls** are interactive panels that you add to your dashboards to help viewers filter and display only the data they want to explore quicker. Controls apply to all relevant panels in a dashboard.
+**Controls** are interactive options that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters across all relevant panels in a dashboard to focus on specific data segments without writing filtering queries.
+
+## Requirements [add-controls-requirements]
+
+To add controls to a dashboard, you need:
+
+* **All** privilege for the **Dashboard** feature in {{product.kibana}}
+* An existing dashboard open in **Edit** mode
+* A [data view](../find-and-organize/data-views.md) configured with fields available for filtering
+
+## Control types [control-types]
 
 There are three types of controls:
 
@@ -36,8 +47,8 @@ To add interactive Options list and Range slider controls, create the controls, 
 1. Open or create a new dashboard.
 2. Add a control.
 
-    * {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
-    * {applies_to}`stack: ga 9.0` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
+    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
 3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the **Control**.
 4. In the **Field** list, select the field you want to filter on.
@@ -82,8 +93,8 @@ You can add one interactive time slider control to a dashboard.
 1. Open or create a new dashboard.
 2. Add a time slider control.
 
-    * {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
-    * {applies_to}`stack: ga 9.0` In **Edit** mode, select **Controls** > **Add time slider control**.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
 
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
 4. Save the dashboard. The control can now be used.
@@ -96,6 +107,7 @@ serverless: preview
 ```
 
 :::{note}
+:applies_to: stack: ga 9.0-9.1
 In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
 :::
 
@@ -133,6 +145,74 @@ serverless: preview
 :::{include} ../_snippets/multi-value-esql-controls.md
 :::
 
+### Make variable control values depend on another variable control [chain-variable-controls]
+```{applies_to}
+serverless: ga
+stack: ga 9.3+
+```
+
+You can set up variable controls in such a way that the selection of one control determines the options available for another control.
+
+This allows you to narrow down control selections dynamically without affecting the entire dashboard, which is especially useful when working with data from multiple indices or when you need hierarchical filtering.
+
+To chain variable controls, you reference one control's variable in another control's {{esql}} query using the `?variable_name` syntax.
+
+**Example**: You create a dashboard that analyzes web traffic by region and IP address. Next, you want to see only the IP addresses that are active in a selected region, and then analyze traffic patterns for a specific IP, all without filtering the entire dashboard by region.
+
+![Chaining controls filtering an {{esql}} visualization in a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltf697c4ba34f1baf8/6967d6ca03b22700081fadb3/dashboard-chaining-variable-controls.gif "=75%")
+
+1. Create the first control that will be referenced in other controls.
+
+   :::{tip}
+   Create the controls that will be referenced in other controls first. This allows the {{esql}} editor to provide proper autocomplete suggestions.
+   :::
+   
+   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar, then define the control:
+   
+   * **Type**: Values from a query
+   * **Query**: 
+     ```esql
+     FROM kibana_sample_data_logs | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart | STATS BY geo.dest
+     ```
+   * **Variable name**: `?region`
+   * **Label**: Region
+   
+   This control extracts all unique destination regions from your logs.
+
+2. Create the second control that depends on the first control.
+   
+   Add another variable control:
+   
+   * **Type**: Values from a query
+   * **Query**: 
+     ```esql
+     FROM kibana_sample_data_logs 
+     | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND geo.dest == ?region 
+     | STATS BY ip
+     ```
+   * **Variable name**: `?ip`
+   * **Label**: IP address
+   
+   This control references the `?region` variable and the built-in time range variables (`?_tstart` and `?_tend`). The available IP addresses will be only those associated with the selected region.
+
+3. Test the chained controls. Both controls are now visible on your dashboard. Select different values in the **Region** control and observe how the available IP addresses in the **IP address** control change to show only IPs from that region.
+
+4. Create an {{esql}} visualization that uses the `?ip` control to filter data. For example:
+   
+   ```esql
+   FROM kibana_sample_data_logs
+   | WHERE ip == ?ip
+   | STATS count = COUNT(*) BY day = DATE_TRUNC(1 day, @timestamp)
+   | SORT day
+   ```
+   
+   This visualization filters data based on the selected IP address, while the IP address options themselves are filtered by the selected region.
+
+:::{note}
+When you select a value in a parent control, the child control's query reruns automatically. If the currently selected value in the child control is no longer available in the new result set, it is marked as invalid or incompatible.
+:::
+
+
 ### Import a Discover query along with its controls into a dashboard
 ```{applies_to}
 stack: preview 9.2
@@ -148,8 +228,8 @@ Several settings apply to all controls that are part of a dashboard.
 
 1. Configure the control settings.
 
-    * {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
-    * {applies_to}`stack: ga 9.0` In **Edit** mode, select **Controls** > **Settings**.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
+    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Settings**.
 
 2. On the **Control settings** flyout, configure the following settings:
 

@@ -1,8 +1,17 @@
 ---
 applies_to:
   serverless: ga
-  stack: preview 9.1, ga 9.2
+  stack: preview =9.1, ga 9.2+
 navigation_title: Configure advanced settings
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 # Configure advanced settings for streams [streams-advanced-settings]
 
@@ -12,7 +21,7 @@ You can use the **Advanced** tab to add [descriptions](#streams-advanced-descrip
 
 ## Stream description [streams-advanced-description]
 
-Describe the data in the stream. AI features like system identification and significant events use this description when generating suggestions.
+Describe the data in the stream. AI features like system identification use this description when generating suggestions.
 
 ## Stream feature configuration [streams-advanced-features]
 
@@ -22,7 +31,7 @@ Each feature has a natural language description and an optional filter which poi
 
 For example, in a stream of Kubernetes logs, the feature identification process would be able to identify that you have data from "nginx" which can be found by filtering for `WHERE service.name==nginx`. It would also include a description defining nginx.
 
-Features provide useful information for AI processes, such as significant events, and are used as the foundation for them.
+Features provide useful information for AI processes.
 
 ## Index configuration [streams-advanced-index-config]
 

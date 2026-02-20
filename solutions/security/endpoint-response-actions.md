@@ -15,7 +15,7 @@ products:
 
 The response console allows you to perform response actions on an endpoint using a terminal-like interface. You can enter action commands and get near-instant feedback on them. Actions are also recorded in the endpoint’s [response actions history](/solutions/security/endpoint-response-actions.md#actions-log) for reference.
 
-Response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
+Unless otherwise specified, response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
 
 ::::{admonition} Requirements
 * Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
@@ -165,7 +165,8 @@ Required privilege (in {{stack}}) or custom role privilege (in {{serverless-shor
 Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
 
 ::::{note}
-The maximum file size that can be retrieved using `get-file` is `104857600` bytes, or 100 MB.
+:applies_to: {"stack": "removed 9.3", "serverless": "removed"}
+The maximum file size that `get-file` can retrieve is `104857600` bytes, or 100 MB.
 ::::
 
 ::::{tip}
@@ -221,7 +222,9 @@ You can follow this with the `execute` response action to upload and run scripts
 
 
 ::::{note}
-The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes (the maximum is `104857600` bytes, or 100 MB).
+The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes. 
+
+({applies_to}`stack: removed 9.4+` the maximum value of `xpack.securitySolution.maxUploadResponseActionFileBytes` is `104857600` bytes, or 100 MB).
 ::::
 
 
@@ -229,7 +232,7 @@ The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-m
 
 Scan a specific file or directory on the host for malware. This uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) (such as **Detect** or **Prevent** options, or enabling the blocklist) as configured in the host’s associated {{elastic-defend}} integration policy. Use these parameters:
 
-* `--path` : (Required) The absolute path to a file or directory to be scanned.
+* `--path` : (Required) The absolute path to a file or directory to be recursively scanned.
 
 Predefined role (in {{serverless-short}}): **Tier 3 Analyst**, **SOC Manager**, or **Endpoint Operations Analyst**
 
@@ -243,6 +246,10 @@ Scanning can take longer for directories containing a lot of files.
 
 
 ### `runscript` [runscript]
+
+::::{note}
+This response action is supported only for hosts enrolled in [third-party endpoint protection systems](/solutions/security/endpoint-response-actions/third-party-response-actions.md).
+::::
 
 Run a script on a host. 
 
@@ -336,6 +343,38 @@ You must include the following parameter to identify the action to cancel:
 Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
 
 Example: `cancel --action="copy.sh" --comment="Canceled because it is stuck"`
+
+### `memory-dump` [memory-dump]
+```yaml {applies_to}
+stack: ga 9.3+
+serverless: ga
+```
+
+Trigger a virtual process or kernel system memory dump on a Windows endpoint. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
+
+::::{note}
+This response action is supported only for Windows endpoints.
+::::
+
+The memory dump is stored on the endpoint's local disk. After running `memory-dump`, you must use the [`get-file`](#get-file) response action to download the dump from the endpoint.
+
+Use one of the following parameters to specify the type of memory dump:
+
+* `--kernel`: Generate a kernel-level memory dump. No other arguments are required when using this parameter.
+* `--process`: Generate a process-level memory dump. When using this parameter, you must also include one of the following to identify the process:
+    * `--pid`: The process ID (PID) of the process to dump.
+    * `--entityId`: The entity ID of the process to dump.
+
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Examples:
+
+`memory-dump --process --entityId="jshks0fhksh"`
+
+`memory-dump --kernel --comment "Dumping kernel memory for investigation"`
+
 
 ## Supporting commands and parameters [supporting-commands-parameters]
 

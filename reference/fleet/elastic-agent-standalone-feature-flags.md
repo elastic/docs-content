@@ -2,6 +2,9 @@
 navigation_title: Feature flags
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-standalone-feature-flags.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -48,4 +51,23 @@ Fully qualified domain name (FQDN)
         enabled: true
     ```
 
+Encrypted config {applies_to}`stack: ga 9.4+`
+:   When enabled, the {{agent}} encrypts the contents of `elastic-agent.yml` into `fleet.enc`. The contents of `elastic-agent.yml` are then replaced with this feature only to indicate that the encrypted config store is used.
 
+    ::::{note}
+    {{fleet}}-managed {{agents}} ignore this flag as they always encrypt storage.
+    ::::
+
+    To reload the config, replace the `elastic-agent.yml` file and restart the {{agent}}.
+
+    To enable encrypted config for a standalone {{agent}}, set `enabled: true` for the `encrypted_config` setting:
+
+    ```yaml
+    agent.features:
+      encrypted_config:
+        enabled: true
+    ```
+
+    ::::{note}
+    If encryption is disabled, the `fleet.enc` file should be deleted manually.
+    ::::

@@ -25,10 +25,10 @@ We cover the following examples:
   * [Ingress](#ip-filter-policy-ingress)
   * [Egress](#ip-filter-policy-egress) {applies_to}`ess: beta`
   
-* [Create a private connection policy](#private-connection) {applies_to}`ess:`
-  * [AWS Privatelink](#private-connection-policy-aws)
-  * [Azure Private Link](#private-connection-policy-azure)
-  * [GCP Private Service Connect](#private-connection-policy-gcp)
+* [Create a private connection policy](#private-connection)  {applies_to}`ess: ga` {applies_to}`serverless: ga`
+  * [AWS PrivateLink](#private-connection-policy-aws) {applies_to}`ess: ga` {applies_to}`serverless: ga`
+  * [Azure Private Link](#private-connection-policy-azure)  {applies_to}`ess:`
+  * [GCP Private Service Connect](#private-connection-policy-gcp)  {applies_to}`ess:`
 
 * [Update a policy or rule set](#update-policy-rs)
 * [Associate a policy or rule set with a project or deployment](#associate-policy-rs-with-deployment)
@@ -39,6 +39,10 @@ Refer to [](network-security.md) to learn more about network security across all
 
 :::{tip}
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{ecloud}} API.
+:::
+
+:::{note}
+Serverless projects require the Serverless Plus add-on to apply network security policies. During the promotional period, applying a network security policy to a project opts that project in to Serverless Plus.
 :::
 
 ## API reference
@@ -77,43 +81,10 @@ Both policies and rule sets consist of multiple unique entries, each representin
 
 Send a request like the following to create an IP filter ingress policy or rule set:
 
-::::{tab-set}
-:group: ech-serverless-ece
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
-:sync: ech
+:::{applies-item} serverless:
 
-```json
-curl \
--H "Authorization: ApiKey $API_KEY" \
--H 'content-type: application/json' \
-https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
--d '
-{
-  "name": "My ingress IP filter policy",
-  "region": "azure-japaneast", <1>
-  "description": "",
-  "type": "ip", <2>
-  "rules": [
-    {
-      "description": "Allow inbound traffic from IP address 192.168.131.0",
-      "source": "192.168.131.0"
-    },
-    {
-      "description": "Allow inbound traffic within CIDR block 192.168.132.6/22",
-      "source": "192.168.132.6/22"
-    }
-  ],
-  "include_by_default": false
-}
-'
-```
-
-1. The region is always the same region as the deployment you want to associate with an IP filter policy. For details, check the [list of available regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md).
-2. The type of policy. In the JSON object, we use `ip` for IP filter policies. Currently, we support `ip`, `egress_firewall`, `vpce` (AWS Private Link), `azure_private_endpoint` and `gcp_private_service_connect_endpoint`. These are described in further detail below.
-:::
-:::{tab-item} {{serverless-full}}
-:sync: serverless
 ```json
 curl \
 -H "Authorization: ApiKey $API_KEY" \
@@ -144,8 +115,40 @@ https://api.elastic-cloud.com/api/v1/serverless/traffic-filters \
 
 2. The type of policy. In the JSON object, we use `ip` for IP filter policies. Currently, only `ip` is supported.
 :::
-:::{tab-item} {{ece}}
-:sync: ece
+
+:::{applies-item} ess:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+-H 'content-type: application/json' \
+https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
+-d '
+{
+  "name": "My ingress IP filter policy",
+  "region": "azure-japaneast", <1>
+  "description": "",
+  "type": "ip", <2>
+  "rules": [
+    {
+      "description": "Allow inbound traffic from IP address 192.168.131.0",
+      "source": "192.168.131.0"
+    },
+    {
+      "description": "Allow inbound traffic within CIDR block 192.168.132.6/22",
+      "source": "192.168.132.6/22"
+    }
+  ],
+  "include_by_default": false
+}
+'
+```
+
+1. The region is always the same region as the deployment you want to associate with an IP filter policy. For details, check the [list of available regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md).
+2. The type of policy. In the JSON object, we use `ip` for IP filter policies. Currently, we support `ip`, `egress_firewall`, `vpce` (AWS Private Link), `azure_private_endpoint` and `gcp_private_service_connect_endpoint`. These are described in further detail below.
+:::
+
+:::{applies-item} ece:
 
 ```json
 curl \
@@ -233,26 +236,99 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 ```{applies_to}
 deployment:
   ess:
+serverless:
 ```
 
 Learn how to create a private connection policy using the {{ecloud}} API. In the API, a VPC filter in a private connection policy is referred to as a rule.
 
 :::{tip}
-Private connection policies are optional for AWS PrivateLink and GCP Private Service Connect. After the VPC endpoint and DNS record are created, private connectivity is established.
+Private connection policies are optional for AWS PrivateLink and GCP Private Service Connect. After the VPC endpoint and DNS record are created, private connectivity is established. For these services, a private connection policy is only required to filter traffic to your deployment or project using VPC filters.
 
-Creating a private connection policy and associating it with your deployments allows you to do the following:
-
-* Record that you've established private connectivity between the cloud service provider and Elastic in the applicable region.
-* [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
-* Filter traffic to your deployment using VPC filters.
-
-A private connection policy is required to establish a private connection with Azure Private Link.
+A private connection policy is always required to establish a private connection with Azure Private Link.
 :::
 
 
-### AWS Privatelink [private-connection-policy-aws]
+### Retrieve PrivateLink region metadata
+```{applies_to}
+serverless:
+```
+
+To create a private connection, cloud service providers require connectivity metadata, including a service name. For {{serverless-full}}, you can retrieve this metadata from an endpoint, optionally filtered by region.
+
+**Request:**
+
+```json
+curl \
+  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?region=eu-west-1' \
+  --header "Authorization: ApiKey $API_KEY"
+```
+
+**Response:**
+```json
+{
+  "regions": [
+    {
+      "availability_zones": [
+        {
+          "name": "eu-west-1a",
+          "id": "euw1-az2"
+        },
+        {
+          "name": "eu-west-1b",
+          "id": "euw1-az1"
+        },
+        {
+          "name": "eu-west-1c",
+          "id": "euw1-az3"
+        }
+      ],
+      "private_hosted_zone_domain_name": "private.eu-west-1.aws.elastic.cloud",
+      "vpc_service_name": "com.amazonaws.vpce.eu-west-1.vpce-svc-0197c33d7deffd2fa",
+      "region": "eu-west-1",
+    }
+  ]
+}
+```
+
+
+
+### AWS PrivateLink [private-connection-policy-aws]
+```{applies_to}
+serverless:
+deployment:
+  ess:
+```
 
 Send a request like the following to create an AWS PrivateLink private connection policy:
+
+::::{applies-switch}
+
+:::{applies-item} serverless:
+```json
+curl \
+  --request POST 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters' \
+  --header "Authorization: ApiKey $API_KEY" \
+  --header "Content-Type: application/json" \
+  -d '
+{
+  "name": "AWS Private Link private connection policy (serverless)",
+  "region": "us-east-1",
+  "description": "",
+  "type": "vpce",
+  "rules": [
+    {
+      "source": "vpce-00000000000" <1>
+    }
+  ],
+  "include_by_default": false
+}
+'
+```
+
+1. To learn how to find the value for `source` for type `vpce`, refer to [Find your VPC endpoint ID](private-connectivity-aws.md#ec-find-your-endpoint). This setting is supported only in AWS regions.
+:::
+
+:::{applies-item} ess:
 
 ```json
 curl -XPOST \
@@ -277,8 +353,15 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 
 1. To learn how to find the value for `source` for type `vpce`, refer to [Find your VPC endpoint ID](private-connectivity-aws.md#ec-find-your-endpoint). This setting is supported only in AWS regions.
 
+:::
+::::
+
 
 ### Azure Private Link [private-connection-policy-azure]
+```{applies_to}
+deployment:
+  ess:
+```
 
 Send a request like the following to create an Azure Private Link private connection policy:
 
@@ -308,6 +391,10 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 
 
 ### GCP Private Service Connect [private-connection-policy-gcp]
+```{applies_to}
+deployment:
+  ess:
+```
 
 Send a request like the following to create a GCP Private Service Connect private connection policy:
 
@@ -341,11 +428,10 @@ Send a request like the following to update an IP filter ingress policy or rule 
 
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}}.
 
-::::{tab-set}
-:group: ech-ece
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
-:sync: ech
+:::{applies-item} ess:
+
 ```json
 curl -XPUT \
 -H "Authorization: ApiKey $API_KEY" \
@@ -372,8 +458,8 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$POLICY
 '
 ```
 :::
-:::{tab-item} {{serverless-full}}
-:sync: serverless
+:::{applies-item} serverless:
+
 ```json
 curl -X PATCH \
 -H "Authorization: ApiKey $API_KEY" \
@@ -393,8 +479,7 @@ https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/$POLICY_ID \
 '
 ```
 :::
-:::{tab-item} {{ece}}
-:sync: ece
+:::{applies-item} ece:
 
 ```json
 curl -XPUT \
@@ -431,11 +516,10 @@ Send a request like the following to associate a policy or rule set with a proje
 
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}}.
 
-:::::{tab-set}
-:group: ech-serverless-ece
+:::::{applies-switch}
 
-::::{tab-item} {{ech}}
-:sync: ech
+::::{applies-item} ess:
+
 ```json
 curl -XPOST \
 -H "Authorization: ApiKey $API_KEY" \
@@ -450,8 +534,8 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$POLICY
 ```
 ::::
 
-::::{tab-item} {{serverless-full}}
-:sync: serverless
+::::{applies-item} serverless:
+
 To associate a network security policy to a project, you must update the project object.
 
 ```json
@@ -479,8 +563,7 @@ When adding, updating, or removing a policy association, you must provide a comp
 :::
 ::::
 
-::::{tab-item} {{ece}}
-:sync: ece
+::::{applies-item} ece:
 
 ```json
 curl -XPOST \
@@ -504,11 +587,9 @@ Send a request like the following to remove a policy or rule set from a project 
 
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}}.
 
-::::{tab-set}
-:group: ech-serverless-ece
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
-:sync: ech
+:::{applies-item} ess:
 
 ```json
 curl -XDELETE \
@@ -518,8 +599,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$POLICY
 ```
 :::
 
-:::{tab-item} {{serverless-full}}
-:sync: serverless
+:::{applies-item} serverless:
 
 To remove a network security policy from a project, you must update the project object. Pass a complete list of policies in the `PATCH` request body, excluding the policy that you want to remove from the list.
 
@@ -543,8 +623,7 @@ https://api.elastic-cloud.com/api/v1/admin/serverless/projects/elasticsearch \ <
 :::
 :::
 
-:::{tab-item} {{ece}}
-:sync: ece
+:::{applies-item} ece:
 
 ```json
 curl -XDELETE \
@@ -562,11 +641,9 @@ Send a request like the following to delete a policy or rule set.
 
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}}.
 
-::::{tab-set}
-:group: ech-serverless-ece
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
-:sync: ech
+:::{applies-item} ess:
 
 ```json
 curl -XDELETE \
@@ -574,8 +651,7 @@ curl -XDELETE \
 https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$POLICY_ID \
 ```
 :::
-:::{tab-item} {{serverless-full}}
-:sync: serverless
+:::{applies-item} serverless:
 
 ```json
 curl -XDELETE \
@@ -583,8 +659,7 @@ curl -XDELETE \
 https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/$POLICY_ID \
 ```
 :::
-:::{tab-item} {{ece}}
-:sync: ece
+:::{applies-item} ece:
 
 ```json
 curl -XDELETE \

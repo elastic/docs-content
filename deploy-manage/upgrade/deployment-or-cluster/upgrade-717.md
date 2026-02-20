@@ -2,6 +2,13 @@
 applies_to:
   stack: ga
   serverless: unavailable
+products:
+  - id: elastic-stack
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 # Upgrade from 7.17 to {{version.stack}}
 
@@ -89,6 +96,15 @@ Finally, we strongly recommend [testing the full upgrade process in a non-produc
 This step covers upgrading your deployment from 7.17.x to 8.19.x, following the [planning phase](#planning) and assuming that all ingest components and client libraries are compatible with 8.19.x.
 
 It's highly recommended to start this upgrade from the latest 7.17.x patch release to ensure that you’re using the most recent version of the Elastic Upgrade Assistant. You should also upgrade to the latest available 8.19.x patch release so that the same benefits apply when you later upgrade to 9.x.
+
+:::::{warning}
+If you use the [{{elastic-sec}} solution](/solutions/security.md), then you need to perform additional steps as part of the upgrade process. Review [Upgrade {{elastic-sec}} from 7.17 to 8.x](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html) before you begin your upgrade.
+
+In particular:
+* Export all custom detection rules as a backup before upgrading, in case there are issues with the detection engine after the upgrade.
+* Review [alert schema changes](https://www.elastic.co/guide/en/security/8.19/alert-schema.html) if alerts are forwarded to an external SOAR, or if you directly query alert data in custom dashboards or visualizations.
+* Plan for the [post-upgrade steps](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html#_post_upgrade_steps), such as re-enabling and verifying rules after the upgrade.
+:::::
 
 ### 8.19 upgrade preparations
 

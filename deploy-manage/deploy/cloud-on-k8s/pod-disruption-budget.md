@@ -56,7 +56,7 @@ In the {{es}} specification, you can change the default behavior in two ways. By
 
 You can fully override the default PodDisruptionBudget by specifying your own PodDisruptionBudget in the {{es}} spec.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
@@ -103,6 +103,17 @@ spec:
       config:
         node.roles: ["data_hot", "data_content", "ingest"]
         node.store.allow_mmap: false
+
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: master-nodes-pdb
+spec:
+  minAvailable: 2 <2>
+  selector:
+    matchLabels:
+      elasticsearch.k8s.elastic.co/cluster-name: quickstart <3>
+      elasticsearch.k8s.elastic.co/statefulset-name: quickstart-es-master <4>
 
 apiVersion: policy/v1
 kind: PodDisruptionBudget

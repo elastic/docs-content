@@ -230,7 +230,7 @@ You can snooze rule notifications from the **Installed Rules** tab, the rule det
 
 ::::{admonition} Requirements
 * You can export and import custom rules and prebuilt rules (modified and unmodified) with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) to learn more about the required privileges for managing rules.
+* At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-privileges.md) to learn more about the required privileges for managing rules.
 ::::
 
 You can export custom detection rules to an `.ndjson` file, which you can then import into another {{elastic-sec}} environment.

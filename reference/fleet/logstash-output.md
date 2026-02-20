@@ -2,6 +2,9 @@
 navigation_title: "{{ls}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/logstash-output.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -30,7 +33,7 @@ To receive the events in {{ls}}, you also need to create a {{ls}} configuration 
 
 Be aware that the structure of the documents sent from {{agent}} to {{ls}} must not be modified by the pipeline. We recommend that the pipeline doesn’t edit or remove the fields and their contents. Editing the structure of the documents coming from {{agent}} can prevent the {{es}} ingest pipelines associated to the integrations in use to work correctly. We cannot guarantee that the {{es}} ingest pipelines associated to the integrations using {{agent}} can work with missing or modified fields.
 
-The following {{ls}} pipeline definition example configures a pipeline that listens on port `5044` for incoming {{agent}} connections and routes received events to {{es}}.
+This {{ls}} pipeline definition example configures a pipeline that listens on port `5044` for incoming {{agent}} connections and routes received events to {{es}}.
 
 ```yaml
 input {
