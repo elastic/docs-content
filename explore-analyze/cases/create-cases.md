@@ -54,7 +54,7 @@ To create a new case:
    * {applies_to}`security: ga 9.2+` **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription).
 
       :::{note}
-      Observables are not available in {{product.serverless-observability}} or {{observability}}.
+      Observables are not available in {{observability}} for {{stack}} or {{serverless-short}}.
       :::
 
 7. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system.

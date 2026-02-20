@@ -58,7 +58,7 @@ When you upload a file, a comment is added to the case activity log. To view an 
 ### Add observables [add-case-observables]
 
 :::{note}
-Observables are not available in {{product.serverless-observability}} or {{observability}}.
+Observables are not available in {{observability}} for {{stack}} or {{serverless-short}}.
 :::
 
 Observables are discrete pieces of data relevant to an investigation—such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you may be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
