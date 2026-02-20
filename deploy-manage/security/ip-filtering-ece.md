@@ -29,7 +29,14 @@ To learn how to create IP filters for self-managed clusters or {{eck}} deploymen
 
 ## Prerequisites
 
-Make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) handles the `X-Forwarded-For` header appropriately for HTTP requests to prevent IP address spoofing. Make sure the proxy protocol v2 is enabled for HTTP and transport protocols (ports 9243 and 9343).
+Make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) preserves the real client IP address so the ECE proxy can enforce IP filtering rules. The mechanism depends on your load balancer mode:
+
+* For HTTP (L7) mode: Configure the load balancer to set the `X-Forwarded-For` header with the client source IP and strip any inbound `X-Forwarded-For` headers to prevent spoofing.
+* For TCP (L4) mode: Enable Proxy Protocol v2 on the load balancer.
+
+For transport protocol traffic (ports 9300/9343), enable Proxy Protocol v2 regardless of mode.
+
+For more details, refer to [Client IP preservation](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md#ece-client-ip-preservation).
 
 ## Apply an IP filter to a deployment
 
