@@ -36,12 +36,12 @@ When using the default `operator.yaml` manifest, ECK is installed with a `Valida
 
 ## Manual configuration [k8s-webhook-manual-config]
 
-If you installed ECK without the webhook and want to enable it later on, or if you want to customise the configuration such as providing your own certificates, this section describes the options available to you.
+If you installed ECK without the webhook and want to enable it later on, or if you want to customize the configuration such as providing your own certificates, this section describes the options available to you.
 
 
 ### Configuration options [k8s-webhook-config-options]
 
-You can customise almost all aspects of the webhook setup by changing the [operator configuration](configure-eck.md).
+You can customize almost all aspects of the webhook setup by changing the [operator configuration](configure-eck.md).
 
 | Configuration option | Default value | Description |
 | --- | --- | --- |
