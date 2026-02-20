@@ -19,9 +19,13 @@ description: Create and manage security cases to track incidents, attach alerts,
 
 Create cases to collect and share information about security incidents and investigations. You can attach alerts, document findings, and collaborate with your SOC team, all in one place. Cases also integrate with external ticketing systems like Jira, ServiceNow, and IBM Resilient, so you can escalate and track incidents across your security workflow. 
 
-Beyond the core case functionality, {{elastic-sec}} lets you view case metrics, attach events from Timeline, add threat intelligence indicators, and link Timelines to preserve investigation context. Refer to [](/explore-analyze/cases.md) for help creating, managing, and configuring cases.
+Refer to [](/explore-analyze/cases.md) for help creating, managing, and configuring cases.
 
-## View case metrics [cases-view-metrics]
+## Security-specific features [security-cases-features]
+
+Beyond the core case functionality, {{elastic-sec}} lets you view case metrics, attach events from Timeline, add threat intelligence indicators, and link Timelines to preserve investigation context.
+
+### View case metrics [cases-view-metrics]
 
 Select an existing case to access its summary. The case summary, located under the case title, contains metrics that summarize alert information and response times:
 
@@ -36,7 +40,7 @@ Select an existing case to access its summary. The case summary, located under t
 
 Use these metrics to assess incident scope, track response efficiency, and identify trends across cases for process improvements.
 
-## Add events [cases-add-events]
+### Add events [cases-add-events]
 
 ```{applies_to}
 stack: ga 9.2
@@ -49,11 +53,11 @@ View attached events in the case's **Events** tab, where they're organized from 
 - {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
 - {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.
 
-## Add indicators [cases-indicators]
+### Add indicators [cases-indicators]
 
 Attach [threat intelligence indicators](/solutions/security/investigate/indicators-of-compromise.md) to cases to document evidence of compromise and connect your investigation to known threats. This helps you correlate alerts with threat actor tactics, track IOCs across related incidents, and build a complete picture of an attack.
 
-## Add Timelines [cases-timeline]
+### Add Timelines [cases-timeline]
 
 Attach [Timelines](/solutions/security/investigate/timeline.md) to cases to preserve your investigation context and share it with your team. When you link a Timeline, other analysts can see the exact queries, filters, and events you examined, making it easier to collaborate, hand off investigations, or document your evidence trail.
 
