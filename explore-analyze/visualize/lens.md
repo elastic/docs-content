@@ -37,7 +37,6 @@ With Lens, you can create the following visualization types:
 | Treemap chart | Visualize hierarchical part-to-whole across categories and subcategories. |
 | Tag cloud chart | Emphasize the most frequent terms; font size reflects relative magnitude. |
 | Mosaic chart | Compare part-to-whole across two categorical dimensions in a tiled layout. |
-| Legacy metric chart (deprecated)| Maintain existing legacy panels; prefer the modern Metric chart for new visuals. |
 
 ## Create visualizations [create-the-visualization-panel]
 
