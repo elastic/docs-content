@@ -88,7 +88,7 @@ When you set up {{agent}}, you might not yet have all input configuration detail
 
 The basic {{agent}} flavor is installed by default using the `elastic-agent install` command with an agent package: `.zip`, .`tar.gz`, `.deb`, `.rpm`, or `.msi`. This flavor includes only the following components:
 
-* `agentbeat` - used to implement all [{{beats}}](beats://reference/index.md)-based integrations.
+* `elastic-otel-collector` - used to implement all [{{beats}}](beats://reference/index.md)-based integrations.
 * `endpoint-security` - used to implement [{{elastic-defend}}](../../solutions/security/configure-elastic-defend.md).
 * `pf-host-agent` - used to collect profiling data from hosts as part of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 
