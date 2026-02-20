@@ -59,7 +59,7 @@ The **Last response** column displays the current status of each rule, based on 
 * **Failed**: The rule encountered an error that prevented it from running. For example, a {{ml}} rule whose corresponding {{ml}} job wasn’t running.
 * **Warning**: Nothing prevented the rule from running, but it might have returned unexpected results. For example, a custom query rule tried to search an index pattern that couldn’t be found in {{es}}.
 
-For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/images/security-rules-table-error-icon.png "title =20x20")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
+For {{ml}} rules, an indicator icon {icon}`warning` also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
 
 
 ## Edit rule settings [edit-rules-settings]
@@ -78,23 +78,19 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
-    * In the Rules table, select the **All actions** menu (**…**) on a rule, then select **Edit rule settings**.
+    * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Edit rule settings**.
     * Click on a rule's name to open its details page, then click **Edit rule settings**.
 3. The **Edit rule settings** view opens, where you can modify the [rule's settings](/solutions/security/detect-and-alert/create-detection-rule.md).
 4. Click **Save changes**.
 
 ::::{note}
-
-```{applies_to}
-   stack: ga 9.1 
-```
-
+:applies_to: { stack: ga 9.1+ }
 Modified fields on prebuilt rules are marked with the **Modified** badge. From the rule's details page, click the badge to view the changed fields. Changes are displayed in a side-by-side comparison of the original Elastic version and the modified version. Deleted characters are highlighted in red; added characters are highlighted in green. You can also view this comparison by clicking the **Modified Elastic rule** badge under the rule's name on the rule's details page.
 
 ::::
 
 ::::{tip}
-To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon.
+To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon {icon}`bell`.
 ::::
 
 
@@ -137,7 +133,7 @@ Rule actions won't run during a [maintenance window](/explore-analyze/alerts-cas
 
 After modifying a prebuilt rule, you can restore it's original version. To do this:
 
-1. Open the rule's details page, click the **All actions** menu, then **Revert to Elastic version**.
+1. Open the rule's details page, click the **All actions** menu {icon}`boxes_horizontal`, then **Revert to Elastic version**.
 2. In the flyout, review the modified fields. Deleted characters are highlighted in red; added characters are highlighted in green.
 3. Click **Revert** to restore the modified fields to their original versions. 
 
@@ -155,7 +151,7 @@ Enable rules to activate them so they run on their defined schedules and generat
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, do one of the following:
     * Switch the rule's **Enabled** toggle on or off.
-    * Select the **All actions** menu (**…**) on a rule, then select **Enable** or **Disable**.
+    * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Enable** or **Disable**.
     * Click on a rule's name to open its details page, then select **All actions** → **Enable** or **Disable**.
 
 ### Bulk enable or disable rules
@@ -173,7 +169,7 @@ Duplicate rules to create copies that you can modify independently. This is usef
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
-    * In the Rules table, select the **All actions** menu (**…**) on a rule, then select **Duplicate**.
+    * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Duplicate**.
     * Click on a rule's name to open its details page, then select **All actions** → **Duplicate**.
 3. If the rule has exceptions, choose how to handle them:
     * Duplicate the rule and its exceptions (active and expired)
@@ -200,7 +196,7 @@ Delete rules to permanently remove them from your system. This action cannot be 
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
-    * In the Rules table, select the **All actions** menu (**…**) on a rule, then select **Delete**.
+    * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Delete**.
     * Click on a rule's name to open its details page, then select **All actions** → **Delete**.
 3. Confirm the deletion.
 
@@ -225,7 +221,7 @@ Before manually running rules, make sure you properly understand and plan for ru
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, do one of the following:
 
-    * Select the **All actions** menu (**…**) on a rule, then select **Manual run**.
+    * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Manual run**.
     * Select all the rules you want to manually run, select the **Bulk actions** menu, then select **Manual run**.
 
 3. Specify when the manual run starts and ends. The default selection is the current day starting three hours in the past. The rule will search for events during the selected time range.
@@ -315,9 +311,9 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 
 The rules are exported to an `.ndjson` file.
 
-### Import rules [impr=ort-rules-ui]
+### Import rules [import-rules-ui]
 
-1. Above the Rules table, click *Import rules*.
+1. Above the Rules table, click **Import rules**.
 2. In the Import rules modal:
 
     1. Drag and drop the `.ndjson` file that contains the exported rules.
