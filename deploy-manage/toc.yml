@@ -671,6 +671,7 @@ toc:
           - file: remote-clusters/eck-remote-clusters.md
           - file: remote-clusters/eck-remote-clusters-to-other-eck.md
           - file: remote-clusters/eck-remote-clusters-to-external.md
+  - hidden: cross-project-search-config.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
