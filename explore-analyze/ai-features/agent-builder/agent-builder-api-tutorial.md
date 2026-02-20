@@ -911,9 +911,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
        "conversation_id": "<CONVERSATION_ID>" <1>
      }'
 ```
-:::
-
 1. Use the conversation ID from the previous response to maintain context
+
+:::
 
 ::::
 
