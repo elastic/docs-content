@@ -190,9 +190,9 @@ To rotate a CA certificate on {{es}} for connections from {{agent}}:
 
 1. In {{fleet}} open the **Settings** tab.
 2. In the **Outputs** section, click the edit button for the {{es}} output that requires a certificate rotation.
-3. In the **Elasticsearch CA trusted fingerprint** field, add the new trusted fingerprint to use. This is the SHA-256 fingerprint (hash) of the certificate authority used to self-sign {{es}} certificates. This fingerprint will be used to verify self-signed certificates presented by {{es}}.
+3. In the **Elasticsearch CA trusted fingerprint** field, add the new trusted fingerprint to use. This is the SHA-256 fingerprint (hash) of a certificate authority that is present in the certificate chain sent by {{es}} during the TLS handshake.
 
-    If this certificate is present in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally.
+    When a certificate matching this fingerprint is found in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally. For more information, refer to [Using certificate fingerprints](/reference/fleet/certificate-fingerprints.md).
 
     :::{image} images/certificate-rotation-agent-es.png
     :alt: Screen capture of the Edit Output UI: Elasticsearch CA trusted fingerprint

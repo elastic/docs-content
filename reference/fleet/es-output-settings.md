@@ -33,7 +33,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
     Refer to the [{{fleet-server}}](/reference/fleet/fleet-server.md) documentation for default ports and other configuration details.
 
 **{{es}} CA trusted fingerprint** $$$es-trusted-fingerprint-yaml-setting$$$
-:   HEX encoded SHA-256 of a CA certificate. If this certificate is present in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally. To learn more about trusted fingerprints, refer to the [{{es}} security documentation](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+:   HEX encoded SHA-256 of a CA certificate that is present in the certificate chain sent by {{es}} during the TLS handshake. If this certificate is found in the chain, it will be added to the `certificate_authorities` list and the handshake will continue normally. For more information, refer to [Using certificate fingerprints](/reference/fleet/certificate-fingerprints.md).
 
 **Proxy** $$$es-agent-proxy-output$$$
 :   Select a proxy URL for {{agent}} to connect to {{es}}. To learn about proxy configuration, refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
