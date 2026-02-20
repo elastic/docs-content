@@ -18,7 +18,7 @@ On the **SLOs Settings** page, you can configure the following controls:
 :   You can fetch SLOs from every connected remote cluster by enabling the option **Use all remote clusters**.
 
 **Remote clusters**
-:   To select specific remote clusters, disable the option **Use all remote clusters**, open the **Select remote clusters** dropdown, and choose the remote clusters from which you want to fetch SLOs.
+:   To select the remote clusters from which you want to fetch SLOs, disable the option **Use all remote clusters** and open the **Select remote clusters** dropdown.
 
 **Stale SLOs threshold**
 :   You can hide SLOs from the overview list if they haven’t been updated within the defined stale threshold.
