@@ -2004,7 +2004,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes sub-menu behavior in the solution nav when collapsed [#227705]({{kib-pull}}227705)
 * Prevents deletion of stale indices that appear in the last state check
 * Resolves `projectId` from context for new index shard recovery
-
 * Prevents deletion of stale indices that appear in the last state check
 * Fixes semantic highlighting bug on flat quantized fields [#131525](https://github.com/elastic/elasticsearch/pull/131525)
 * Fixes semantic query rewrite interception dropping boosts [#129282](https://github.com/elastic/elasticsearch/pull/129282)
