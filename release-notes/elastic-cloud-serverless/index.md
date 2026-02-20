@@ -1364,7 +1364,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Uses optimized field visitor for ignored source queries [#135039](https://github.com/elastic/elasticsearch/pull/135039)
 * Improves the block loader for source-only runtime IP fields [#135393](https://github.com/elastic/elasticsearch/pull/135393)
 
-* Deletes unowned documents upon recovery after shard starts
 
 ### Fixes [serverless-changelog-09292025-fixes]
 
