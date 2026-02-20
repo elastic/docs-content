@@ -33,7 +33,7 @@ On the **SLOs Settings** page, you can configure the following controls:
 
 ## Configure SLOs for federated views[observability-configure-slo-settings-federated-view] 
 
-Federated views allow you to view SLOs from remote {{es}} clusters alongside the local SLOs on the SLO listing page of your {{kib}} instance. This enables a centralized overview cluster where you can monitor SLOs across your entire fleet without switching between {{kib}} instances.
+Federated views allow you to view SLOs from remote {{es}} clusters alongside the local SLOs on the SLO listing page of your {{kib}} instance. This enables a centralized overview cluster where you can monitor SLOs across your entire fleet within the same {{kib}} space.
 
 ### Prerequisites[observability-federated-view-prerequisites]
 
