@@ -170,8 +170,15 @@ toc:
           - file: lifecycle/rollup/migrating-from-rollup-to-downsampling.md
   - file: migrate.md
     children:
-      - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
-      - file: migrate/migrate-internal-indices.md
-      - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
-      - file: migrate/migrate-with-logstash.md  
+      - file: migrate/migrate-to-serverless.md
+        children:
+          - file: migrate/migrate-with-reindex-api.md  
+          - file: migrate/migrate-with-logstash.md
+      - file: migrate/migrate-to-ech-or-ece.md
+        children:
+          - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
+      - file: migrate/migrate-using-snapshots.md
+        children:
+          - file: migrate/migrate-internal-indices.md
+          - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md
