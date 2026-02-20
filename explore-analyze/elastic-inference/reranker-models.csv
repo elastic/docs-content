@@ -1,3 +1,3 @@
-Author,Name,ID,Model Card,Provider Terms,Input Modalities,Output Modalities,EOL Date,Data Retention Period (Days),Data Used To Train Models?,Inference Regions,Release Status,Stack Version
-Jina,Reranker v2,jina-reranker-v2-base-multilingual,[jina-reranker-v2-base-multilingual](https://jina.ai/models/jina-reranker-v2-base-multilingual/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,US,Generally Available,9.3
-Jina,Reranker v3,jina-reranker-v3,[jina-reranker-v3](https://jina.ai/models/jina-reranker-v3/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,US,Generally Available,9.3
+Author,Name,Release Date,ID,Model Card,Provider Terms,Input Modalities,Output Modalities,EOL Date,Data Retention Period (Days),Data Used To Train Models?,Inference Regions,Release Status,Stack Version
+Jina,Reranker v3,2025-10-01,jina-reranker-v3,[jina-reranker-v3](https://jina.ai/models/jina-reranker-v3/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,US,Generally Available,9.3
+Jina,Reranker v2,2024-06-25,jina-reranker-v2-base-multilingual,[jina-reranker-v2-base-multilingual](https://jina.ai/models/jina-reranker-v2-base-multilingual/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,US,Generally Available,9.3
