@@ -683,7 +683,7 @@ toc:
               - file: monitor/autoops/indexing-tier-view-autoops-serverless.md
               - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
-            children: 
+            children:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/autoops-sm-custom-certification.md
@@ -767,6 +767,7 @@ toc:
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
           - file: monitor/logging-configuration/update-elasticsearch-logging-levels.md
+          - file: monitor/logging-configuration/query-logs.md
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
           - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
