@@ -21,20 +21,25 @@ Once you select a {{data-source}}, you can build many types of visualizations by
 
 With Lens, you can create the following visualization types:
 
-- [Bar chart](/explore-analyze/visualize/charts/bar-charts.md)
-- [Line chart](/explore-analyze/visualize/charts/line-charts.md)
-- [Area chart](/explore-analyze/visualize/charts/area-charts.md)
-- [Metric chart](/explore-analyze/visualize/charts/metric-charts.md)
-- [Table](/explore-analyze/visualize/charts/tables.md)
-- [Pie chart](/explore-analyze/visualize/charts/pie-charts.md)
-- Gauge chart
-- Heat map chart
-- Waffle chart
-- Region map chart
-- Treemap chart
-- Tag cloud chart
-- Mosaic chart
-- Legacy Metric chart (deprecated)
+| **Chart type** | **Use when you want to...** |
+| --- | --- |
+| **XY charts** | **Plot data on axes to reveal trends, comparisons, and distributions.** |
+| [Bar](/explore-analyze/visualize/charts/bar-charts.md) | Compare values across discrete categories or show distributions with histogram buckets. |
+| [Line](/explore-analyze/visualize/charts/line-charts.md) | Show how a metric changes over time or another continuous dimension. |
+| [Area](/explore-analyze/visualize/charts/area-charts.md) | Show change over time while emphasizing volume or stacked proportions. |
+| **Partition charts** | **Divide a total into segments to show how parts relate to the whole.** |
+| [Pie](/explore-analyze/visualize/charts/pie-charts.md) | Show how parts make up a whole with a small number of slices. |
+| [Treemap](/explore-analyze/visualize/charts/treemap-charts.md) | Show hierarchical proportions across nested categories. |
+| [Waffle](/explore-analyze/visualize/charts/waffle-charts.md) | Show part-to-whole as a grid of equal cells where filled cells represent proportion. |
+| [Mosaic](/explore-analyze/visualize/charts/mosaic-charts.md) | Compare part-to-whole across two categorical dimensions in a tiled layout. |
+| **Single value charts** | **Highlight a key number, KPI, or progress toward a goal.** |
+| [Metric](/explore-analyze/visualize/charts/metric-charts.md) | Highlight a single KPI or a small set of critical numbers. |
+| [Gauge](/explore-analyze/visualize/charts/gauge-charts.md) | Show progress toward a target or status against thresholds for a single metric. |
+| **More charts** | **Additional visualizations for tabular data, spatial patterns, and text analysis.** |
+| [Table](/explore-analyze/visualize/charts/tables.md) | Present precise values, rankings, or multi-metric details in a compact layout. |
+| [Heat map](/explore-analyze/visualize/charts/heat-map-charts.md) | Reveal density or patterns across two dimensions using color intensity. |
+| [Tag cloud](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Highlight the most frequent or important terms in a dataset. |
+| [Region map](/explore-analyze/visualize/charts/region-map-charts.md) | Show how values vary across geographic regions (choropleth). |
 
 ## Create visualizations [create-the-visualization-panel]
 
