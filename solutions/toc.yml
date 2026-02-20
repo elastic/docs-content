@@ -513,6 +513,7 @@ toc:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
               - file: observability/incident-management/create-an-slo.md
               - file: observability/incident-management/slo-management.md
+              - file: observability/incident-management/configure-slo-settings.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/ai/observability-ai.md
         children:
