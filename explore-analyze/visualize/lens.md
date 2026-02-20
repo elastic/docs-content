@@ -32,7 +32,7 @@ With Lens, you can create the following visualization types:
 - Waffle chart
 - [Region map chart](/explore-analyze/visualize/charts/region-map-charts.md)
 - [Treemap chart](/explore-analyze/visualize/charts/treemap-charts.md)
-- Tag cloud chart
+- [Tag cloud chart](/explore-analyze/visualize/charts/tag-cloud-charts.md)
 - Mosaic chart
 - Legacy Metric chart (deprecated)
 
