@@ -194,10 +194,15 @@ This section describes the **Translated dashboards** page's interface and the da
 :screenshot:
 ::::
 
-:::{admonition} Important warning for QRadar "BB" rules
-:applies_to: stack: preview =9.3
-In the technical preview of QRadar rule migration, QRadar Building Block rules can appear in QRadar migrations. You can identify them by their `BB:` prefix. You should not enable these rules, because they will generate noisy alerts. If you do enable them, we recommend you delete them.
-:::
+:::::{admonition} Important information for QRadar "BB" rules
+
+- {applies_to}`stack: preview =9.3`
+QRadar Building Block rules can appear in QRadar migrations. You can identify them by their `BB:` prefix. You should not enable these rules, because they will generate noisy alerts. If you do enable them, we recommend you delete them.
+
+- {applies_to}`serverless: preview`{applies_to}`stack: preview 9.4+`
+Building block rule logic is included automatically in translated rules. No action is required.
+
+:::::
 
 The table's fields are as follows:
 
