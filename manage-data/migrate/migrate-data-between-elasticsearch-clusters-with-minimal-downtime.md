@@ -1,5 +1,5 @@
 ---
-navigation_title: Minimal-downtime migration using snapshots
+navigation_title: Migrate data using snapshots
 applies_to:
   stack: ga
 products:
