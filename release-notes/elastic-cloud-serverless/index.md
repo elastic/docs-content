@@ -1304,7 +1304,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes layout issues with the **Parse in streams** button on smaller flyouts [#236548]({{kib-pull}}236548)
 * Displays `(missing value)` and `(empty)` instead of `null` in charts and tables [#233369]({{kib-pull}}233369)
 * Fixes privilege requirements for reindexing indices in Upgrade Assistant [#237055]({{kib-pull}}237055)
-* Deletes unowned documents upon recovery after shard starts
 * Unmutes `modules:stateless:internalClusterTestWithHollow` test
 * Resets the health status on a successful empty checkpoint [#135653](https://github.com/elastic/elasticsearch/pull/135653)
 * Switches `TextExpansionQueryBuilder` and `TextEmbeddingQueryVectorBuilder` to return 400 instead of 500 errors [#135800](https://github.com/elastic/elasticsearch/pull/135800)
