@@ -1173,7 +1173,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ## October 15, 2025 [serverless-changelog-10152025]
 * {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `ap-northeast-1` (Tokyo) and `eu-west-2` (London)
-* Ensures that only `REFRESH` blocks are taken into account in `RemoveRefreshClusterBlockService`
 
 
 ## October 13, 2025 [serverless-changelog-10132025]
