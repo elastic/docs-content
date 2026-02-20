@@ -23,8 +23,33 @@ You’ll learn how to:
 
 ## Before you begin [_before_you_begin_3]
 
-Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment or [{{obs-serverless}}](../../../deploy-manage/deploy/elastic-cloud/create-serverless-project.md) project. Both include an {{es}} cluster for storing and searching your data and {{kib}} for visualizing and managing your data.
 
+This tutorial assumes the {{es}} cluster is already running.
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga
+For {{ech}} deployments, you need your **Cloud ID** and an **API Key**.
+
+To find the Cloud ID of your [deployment](https://cloud.elastic.co/deployments), go to the deployment’s **Overview** page.
+
+![Cloud ID](/solutions/images/observability-monitor-gcp-cloud-id.png "")
+:::
+
+:::{applies-item} serverless: ga
+For {{obs-serverless}} projects, you need your **{{es}} endpoint URL** and an **API key**.
+
+To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+:::
+
+::::
+
+Use {{kib}} to [create a Base64-encoded API key](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to authenticate on your deployment.
+
+::::{important}
+You can optionally restrict the privileges of your API Key; otherwise they’ll be a point in time snapshot of permissions of the authenticated user. For this tutorial the data is written to the `logs-gcp.audit-default` data streams.
+::::
 
 ## Step 1: Install the GCP integration [_step_1_install_the_gcp_integration]
 
@@ -44,25 +69,6 @@ You’ll start with installing the Elastic GCP integration to add pre-built dash
     :::
 
 4. Click **Save integration**.
-
-:::::{note}
-This tutorial assumes the Elastic cluster is already running. To continue, you’ll need your **Cloud ID** and an **API Key**.
-
-To find the Cloud ID of your [deployment](https://cloud.elastic.co/deployments), go to the deployment’s **Overview** page.
-
-![Cloud ID](/solutions/images/observability-monitor-gcp-cloud-id.png "")
-
-Use [{{kib}}](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to create a Base64-encoded API key to authenticate on your deployment.
-
-::::{important}
-You can optionally restrict the privileges of your API Key; otherwise they’ll be a point in time snapshot of permissions of the authenticated user. For this tutorial the data is written to the `logs-gcp.audit-default` data streams.
-
-::::
-
-
-:::::
-
-
 
 ## Step 2: Create a Pub/Sub topic and subscription [_step_2_create_a_pubsub_topic_and_subscription]
 
@@ -129,7 +135,13 @@ Before running the job, fill in required parameters:
 :::
 
 ::::{note}
-For **Cloud Pub/Sub subscription**, use the subscription you created in the previous step. For **Cloud ID** and **Base64-encoded API Key**, use the values you got earlier. If you don’t have an **Error output topic**, create one like you did in the previous step.
+For **Cloud Pub/Sub subscription**, use the subscription you created in the previous step. Use the values you obtained earlier for the following fields:
+
+* For {{ech}} deployments, your **Cloud ID**
+* For {{serverless-short}}, your **{{es}} endpoint URL in the format https://hostname:[port]**.
+* **Base64-encoded API Key**.
+
+If you don’t have an **Error output topic**, create one like you did in the previous step.
 
 ::::
 
