@@ -84,6 +84,7 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
+      - file: elasticsearch-solution-project/es-serverless-add-ons.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -425,6 +426,8 @@ toc:
           - file: observability/infra-and-hosts/tutorial-observe-nginx-instances.md
             children:
               - file: observability/infra-and-hosts/understanding-no-results-found-message.md
+          - file: observability/infra-and-hosts/collect-nginx-data-otel-integration-fleet-managed.md
+          - file: observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md
       - file: observability/logs.md
         children:
           - file: observability/logs/get-started-with-system-logs.md
@@ -468,7 +471,7 @@ toc:
         - file: observability/streams/management/partitioning.md
         - file: observability/streams/management/schema.md
         - file: observability/streams/management/data-quality.md
-        - file: observability/streams/management/significant-events.md
+        - hidden: observability/streams/management/significant-events.md
         - file: observability/streams/management/advanced.md
         - file: observability/streams/wired-streams.md
       - file: observability/incident-management.md
@@ -686,7 +689,8 @@ toc:
         children:
           - file: security/integrations/aws-config.md
           - file: security/integrations/aws-inspector.md
-          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/aws-sec-hub.md
+          - file: security/integrations/aws-security-hub-cspm.md
           - file: security/integrations/cncf-falco.md
           - file: security/integrations/google-security-command-center.md
           - file: security/integrations/microsoft-defender-for-cloud.md

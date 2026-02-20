@@ -36,9 +36,10 @@ The following table compares features available in Observability Complete and Ob
 | **[Infrastructure and hosts](/solutions/observability/infra-and-hosts.md)** | ✅ | ❌ |
 | **[APM](/solutions/observability/apm/index.md)** | ✅ | ❌ |
 | **[AI Assistant](/solutions/observability/ai/observability-ai-assistant.md)** including Elastic Managed LLMs | ✅ | ❌ |
-| **[Agent Builder](/solutions/observability/ai/agent-builder-observability.md)** | ✅ | ❌ |
+| {applies_to}`serverless: preview` **[Agent Builder](/solutions/observability/ai/agent-builder-observability.md)** | ✅ | ❌ |
 | **[Custom knowledge bases](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-kb-ui)** | ✅ | ❌ |
 | **[Synthetics testing and browser experience monitoring](/solutions/observability/synthetics/index.md)** | ✅ | ❌ |
+| **[Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus)** | ✅ | ❌ |
 
 ## Add data to a serverless project [obs-subscription-ingest]
 

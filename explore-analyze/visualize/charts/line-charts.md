@@ -4,6 +4,13 @@ applies_to:
   stack: ga
   serverless: ga
 description: Instructions and best practices for building line charts with Kibana Lens in Elastic.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Build line charts with {{kib}}
@@ -15,6 +22,9 @@ You can create line charts in {{kib}} using [**Lens**](../lens.md).
 ![Example Lens line chart](../../images/kibana-line-new.png)
 
 ## Build a line chart
+
+:::{include} ../../_snippets/lens-prerequisites.md
+:::
 
 To build a line chart:
 
@@ -100,10 +110,20 @@ Customize your line chart to display exactly the information you need, formatted
 **Data**
 :   
     - **Functions**:
-      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
-      - **Intervals**: Determine the size of the time buckets in your date histogram. You can define the intervals granularity or specify custom ranges.
-      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
       - **Top values**: Create separate lines for the most common values in a field.
+        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
+        - **Number of values**: How many top values to display.
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
+        :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+        :::
+      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+        - **Field**: Select the date field to use for the time-based grouping.
+        :::{include} ../../_snippets/lens-histogram-settings.md
+        :::
+      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
+        - **Field**: Select the numeric field to create intervals from.
+      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
 
 **Appearance**
 :   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
@@ -129,12 +149,20 @@ Breakdown functions segment your data into multiple lines on the same chart, wit
 **Data**
 :   
     - **Functions**:
-      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
-      - **Intervals**: Determine the size of the time buckets in your date histogram. You can define the intervals granularity or specify custom ranges.
-      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
       - **Top values**: Create separate lines for the most common values in a field.
-
-Depending on the function and type of field that you select, you can specify more advanced settings.
+        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
+        - **Number of values**: How many top values to display.
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
+        :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+        :::
+      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+        - **Field**: Select the date field to use for the time-based grouping.
+        :::{include} ../../_snippets/lens-histogram-settings.md
+        :::
+      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
+        - **Field**: Select the numeric field to create intervals from.
+      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
 
 **Appearance**
 :   Allow you to customize how your breakdown data is displayed in line charts, including:

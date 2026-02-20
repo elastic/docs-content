@@ -2,7 +2,7 @@
 applies_to:
   stack: preview 9.3+
   serverless:
-    observability: preview 9.3+
+    observability: preview
 products:
   - id: observability
   - id: cloud-serverless
