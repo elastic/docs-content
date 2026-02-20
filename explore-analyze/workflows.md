@@ -2,7 +2,7 @@
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn about Elastic workflows.
+description: Build automated workflows in Kibana to turn data insights into action.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -11,6 +11,10 @@ products:
   - id: cloud-kubernetes
   - id: elastic-stack
 ---
+
+:::{admonition} Welcome to the Elastic workflow docs! 
+If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/overview/introduction), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
+:::
 
 # Workflows [workflows-overview]
 
