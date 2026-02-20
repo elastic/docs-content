@@ -153,7 +153,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 4. Adjust the system limits.
 
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for {{ece}} as well.
+    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for {{ece}} as well. These settings apply to host-level processes and interactive user sessions (for example, SSH).
 
     ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
@@ -175,6 +175,10 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     root             hard    nofile         1024000
     root             soft    memlock        unlimited
     ```
+
+    ::::{important}
+    The `/etc/security/limits.conf` settings are PAM-based and do not apply to processes running inside Docker containers. To ensure the same limits are enforced inside containers, you must also configure the Docker daemon default ulimits. Refer to [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu) for details.
+    ::::
 
 5. NOTE: This step is optional if the Docker registry doesn’t require authentication.
 
@@ -245,7 +249,36 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     ExecStart=/usr/bin/dockerd $DOCKER_OPTS
     ```
 
-2. Apply the updated Docker daemon configuration:
+2. Configure the default container ulimits by creating or updating the `/etc/docker/daemon.json` file. These settings ensure that all containers created by the Docker daemon inherit the correct resource limits, which are not inherited from `/etc/security/limits.conf`.
+
+    ```json
+    {
+      "default-ulimits": {
+        "nofile": {
+          "Name": "nofile",
+          "Hard": 1024000,
+          "Soft": 1024000
+        },
+        "memlock": {
+          "Name": "memlock",
+          "Hard": -1,
+          "Soft": -1
+        },
+        "nproc": {
+          "Name": "nproc",
+          "Hard": -1,
+          "Soft": -1
+        }
+      }
+    }
+    ```
+
+    ::::{note}
+    If you already have a `/etc/docker/daemon.json` file with other settings, merge the `default-ulimits` key into the existing file rather than replacing it.
+    ::::
+
+
+3. Apply the updated Docker daemon configuration:
 
     Reload the Docker daemon configuration:
 
@@ -265,13 +298,13 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     sudo systemctl enable docker
     ```
 
-3. Enable your user to communicate with the Docker subsystem by adding it to the `docker` group:
+4. Enable your user to communicate with the Docker subsystem by adding it to the `docker` group:
 
     ```sh
     sudo usermod -aG docker $USER
     ```
 
-4. Recommended: Tune your network settings.
+5. Recommended: Tune your network settings.
 
     Create a `70-cloudenterprise.conf` file in the `/etc/sysctl.d/` file path that includes these network settings:
 
@@ -283,7 +316,7 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     SETTINGS
     ```
 
-5. Pin the Docker version to ensure that the package does not get upgraded:
+6. Pin the Docker version to ensure that the package does not get upgraded:
 
     ```sh
     echo "docker-ce hold" | sudo dpkg --set-selections
@@ -291,13 +324,13 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     echo "containerd.io hold" | sudo dpkg --set-selections
     ```
 
-6. Reboot your system to ensure that all configuration changes take effect:
+7. Reboot your system to ensure that all configuration changes take effect:
 
     ```sh
     sudo reboot
     ```
 
-7. After rebooting, verify that your Docker settings persist as expected:
+8. After rebooting, verify that your Docker settings persist as expected:
 
     ```sh
     sudo docker info | grep Root
@@ -307,4 +340,4 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
 
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
 
-8. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
+9. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
