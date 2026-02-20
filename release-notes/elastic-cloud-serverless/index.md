@@ -2581,7 +2581,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds Hugging Face Chat Completion support to Inference Plugin [#127254](https://github.com/elastic/elasticsearch/pull/127254)
 * Adds {{esql}} SAMPLE aggregation function [#127629](https://github.com/elastic/elasticsearch/pull/127629)
 
-* Ignores initializing unpromotable node commit notifications responses
 
 ### Fixes [serverless-changelog-05192025-fixes]
 * Removes extra icon from map visualization tooltips [#220134]({{kib-pull}}220134)
