@@ -41,7 +41,7 @@ Federated views allow you to view SLOs from remote {{es}} clusters alongside the
 - Remote clusters must be running {{kib}} with the SLO feature and have SLOs created.
 - The remote cluster's `kibanaUrl` should be set in the SLO summary documents for full functionality (edit/clone/delete links).
 
-Use the three dots menu on the remote cluster to perform the following operations:
+Use the three dots menu on the remote SLO to perform the following operations:
 
 **Details**
 :   Opens a new panel that displays details of the remote SLO instance.
