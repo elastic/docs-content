@@ -8,9 +8,9 @@ products:
   - id: elasticsearch
 ---
 
-# Tutorial: Update the lifecycle of a data stream [tutorial-manage-existing-data-stream]
+# Update the lifecycle of a data stream [tutorial-manage-existing-data-stream]
 
-Follow these steps to configure or remove data stream lifecycle settings for an existing, individual data stream:
+Follow these steps to configure or remove data stream lifecycle settings for an existing, individual data stream.
 
 - [Set a data stream’s lifecycle](#set-lifecycle)
 - [Remove the lifecycle for a data stream](#delete-lifecycle)
@@ -218,7 +218,7 @@ GET .ds-my-data-stream-*/_lifecycle/explain
 ## Manage data retention on the Streams page [data-retention-streams]
 ```{applies_to}
 serverless: ga
-stack: preview 9.1, ga 9.2
+stack: preview =9.1, ga 9.2+
 ```
 
 Starting with {{stack}} version 9.2, the **Streams** page provides a centralized interface for common data management tasks in {{kib}}, including getting insight into how your data streams retain data. 

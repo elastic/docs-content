@@ -66,7 +66,7 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
    ./otelcol --set=service.telemetry.logs.level=debug
    ```
 
-   This is especially helpful for diagnosing configuration parsing issues or startup errors.
+   This is especially helpful for diagnosing configuration parsing issues or startup errors. For more information on enabling debug logging, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).
 
 
 * Confirm required components are defined
@@ -95,7 +95,7 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
    lsof -i :4317
    ```
 
-   If needed, adjust your configuration or free up the port.
+   If needed, adjust your configuration or free up the port. For network connectivity issues, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
 ### Kubernetes EDOT Collector
 
@@ -116,6 +116,8 @@ If you're deploying the EDOT Collector using the Elastic Helm charts, try to:
     ```
 
   Common issues include volume mount errors, image pull failures, or misconfigured environment variables.
+
+If the Collector starts but no data appears in {{kib}}, refer to [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md) for additional troubleshooting steps.
 
 ## Resources
 

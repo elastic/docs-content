@@ -10,7 +10,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# AutoOps for self-managed clusters troubleshooting
+# AutoOps for ECE, ECK, or self-managed clusters troubleshooting
 
 Learn about issues that might come up when connecting your clusters and using AutoOps.
 
@@ -24,6 +24,7 @@ Use this guide to troubleshoot any issues you may encounter.
 * [After running the installation command, I can't move on to the next steps.](#next-steps)
 * [My organization's firewall may be preventing {{agent}} from collecting and sending metrics.](#firewall)
 * [{{agent}} is failing to connect because it doesn't recognize my SSL certificate.](#custom-cert)
+* [I went through the wizard with {{ECK}} (ECK) as my installation method, but I can't view any connected clusters in my account.](#eck-no-clusters) {applies_to}`eck: ga 3.3`
 
 $$$single-cloud-org$$$**I’m trying to create a Cloud organization, but I’m already part of a different one.**
 :   :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
@@ -42,7 +43,10 @@ $$$firewall$$$**My organization's firewall may be preventing {{agent}} from coll
 :   If you're having issues with connecting your cluster to AutoOps and you suspect that a firewall may be the reason, refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-firewalls.md).
 
 $$$custom-cert$$$**{{agent}} is failing to connect because it doesn't recognize my SSL certificate.**
-:   If {{agent}} is failing to connect your self-managed cluster to AutoOps because it doesn't recognize your SSL certificate, refer to [](/deploy-manage/monitor/autoops/autoops-sm-custom-certification.md). 
+:   If {{agent}} is failing to connect your cluster to AutoOps because it doesn't recognize your SSL certificate, refer to [](/deploy-manage/monitor/autoops/autoops-sm-custom-certification.md). 
+
+$$$eck-no-clusters$$$**I went through the wizard with {{ECK}} (ECK) as my installation method, but I can't view any connected clusters in my account.** {applies_to}`eck: ga 3.3`
+:   Refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-eck-no-clusters.md) to diagnose and resolve common issues.
 
 ## Potential errors
 

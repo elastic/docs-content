@@ -327,7 +327,7 @@ POST /_security/role/remote-replication
 }
 ```
 
-After creating the `remote-replication` role on each cluster, use the [create or update users API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) to create a user on the local cluster cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
+After creating the `remote-replication` role on each cluster, use the [create or update users API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) to create a user on the local cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
 
 ```console
 POST /_security/user/cross-cluster-user
@@ -410,7 +410,7 @@ You only need to create this user on the **local** cluster.
 ::::
 
 
-Users with the `remote-search` role can then [search across clusters](../../solutions/search/cross-cluster-search.md).
+Users with the `remote-search` role can then [search across clusters](../../explore-analyze/cross-cluster-search.md).
 
 
 ### Configure privileges for {{ccs}} and {{kib}} [clusters-privileges-ccs-kibana-cert]
@@ -424,7 +424,7 @@ To grant {{kib}} users access to remote clusters, assign them a local role with 
 
 To grant users read access on the remote data streams and indices, you must create a matching role on the remote clusters that grants the `read_cross_cluster` privilege with access to the appropriate data streams and indices.
 
-For example, you might be actively indexing {{ls}} data on a local cluster and and periodically offload older time-based indices to an archive on your remote cluster. You want to search across both clusters, so you must enable {{kib}} users on both clusters.
+For example, you might be actively indexing {{ls}} data on a local cluster and periodically offload older time-based indices to an archive on your remote cluster. You want to search across both clusters, so you must enable {{kib}} users on both clusters.
 
 
 #### Local cluster [_local_cluster_3]

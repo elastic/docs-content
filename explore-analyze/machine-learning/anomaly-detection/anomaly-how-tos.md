@@ -26,7 +26,7 @@ Though it is quite simple to analyze your data and provide quick {{ml}} results,
 * [Mapping anomalies by location](mapping-anomalies.md)
 * [Adding custom URLs to machine learning results](ml-configuring-url.md)
 * [{{anomaly-jobs-cap}} from visualizations](ml-jobs-from-lens.md)
-* [Exporting and importing {{ml}} jobs](move-jobs.md)
+* [Exporting and importing {{ml}} jobs](../setting-up-machine-learning.md#move-jobs)
 
 ## {{anomaly-detect-cap}} examples in blog posts [anomaly-examples-blog-posts]
 

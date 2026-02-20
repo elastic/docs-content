@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secure-logstash-connections.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -23,7 +26,8 @@ To send data from {{agent}} to {{ls}} securely, you need to configure Transport 
 You can use whatever process you typically use to generate PEM-formatted certificates. The examples shown here use the `certutil` tool provided by {{es}}.
 
 ::::{tip}
-The `certutil` tool is not available on {{ecloud}}, but you can still use it to generate certificates for {{agent}} to {{ls}} connections. [Download an {{es}} package](https://www.elastic.co/downloads/elasticsearch), extract it to a local directory, and run the `elasticsearch-certutil` command. There's no need to start {{es}}!
+* The `certutil` tool is not available on {{ecloud}}, but you can still use it to generate certificates for {{agent}} to {{ls}} connections. [Download an {{es}} package](https://www.elastic.co/downloads/elasticsearch), extract it to a local directory, and run the `elasticsearch-certutil` command. There's no need to start {{es}}!
+* If you choose not to use [`certutil`](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md), the certificates that you obtain must allow for both `clientAuth` and `serverAuth` if the extended key usage extension is present.
 ::::
 
 
@@ -99,7 +103,35 @@ In your {{ls}} configuration directory, open the `pipelines.yml` file and add th
 
 In the `elastic-agent-pipeline.conf` file, add the pipeline configuration. The configuration needed for {{ech}} is different from self-managed {{es}} clusters. If you copied the configuration shown in {{fleet}}, adjust it as needed.
 
-{{ech}} example:
+
+### {{es-serverless}} example
+
+```text
+input {
+  elastic_agent {
+    port => 5044
+    ssl_enabled => true
+    ssl_certificate_authorities => ["/path/to/ca.crt"]
+    ssl_certificate => "/path/to/logstash.crt"
+    ssl_key => "/path/to/logstash.pkcs8.key"
+    ssl_client_authentication => "required"
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => "ELASTICSEARCH_ENDPOINT_URL" <1>
+    api_key => "xxxx:xxxx" <2>
+    data_stream => true
+  }
+}
+```
+
+1. The Elasticsearch endpoint URL for your {{es-serverless}} project is available in **Application endpoints, cluster and component IDs**. Select **Manage** next to your project to access this information. 
+
+2. In {{fleet}}, you can generate this API key when you add a {{ls}} output.
+
+### {{ech}} example
 
 ```text
 input {
@@ -118,17 +150,15 @@ output {
     cloud_id => "xxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxx=" <1>
     api_key => "xxxx:xxxx" <2>
     data_stream => true
-    ssl => true <3>
   }
 }
 ```
 
 1. Use the `cloud_id` shown on your deployment page in {{ecloud}}.
 2. In {{fleet}}, you can generate this API key when you add a {{ls}} output.
-3. {{ech}} uses standard publicly trusted certificates, so there’s no need specify other SSL settings here.
 
 
-Self-managed {{es}} cluster example:
+### Self-managed {{es}} cluster example
 
 ```text
 input {
@@ -147,8 +177,7 @@ output {
     hosts => "https://xxxx:9200"
     api_key => "xxxx:xxxx"
     data_stream => true
-    ssl => true
-    cacert => "/path/to/http_ca.crt" <1>
+    ssl_certificate_authorities => "/path/to/http_ca.crt" <1>
   }
 }
 ```

@@ -4,11 +4,14 @@ applies_to:
   deployment:
     ess: ga
   serverless: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Network security policies in {{ecloud}}
 
-By default, in {{ech}} and {{serverless-full}}, all your deployments are accessible over the public internet without restrictions.
+By default, in {{ech}} and {{serverless-full}}, all your deployments or projects are accessible over the public internet without restrictions.
 
 Network security policies include [IP filters](/deploy-manage/security/ip-filtering-cloud.md) and [private connections](/deploy-manage/security/private-connectivity.md). They are created at the organization level, and need to be associated with one or more resources, such as a deployment or project, to take effect. After you associate at least one policy with a resource, traffic that does not match the policy or any other policy associated with the resource is denied.
 
@@ -57,8 +60,8 @@ To identify which network security policies are automatically applied to new dep
 
 To identify the network security policies that are applied to your deployment or project:
 
-::::{tab-set}
-:::{tab-item} Serverless
+::::{applies-switch}
+:::{applies-item} serverless:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Serverless projects** page, select your project.
 3. Select the **Network security** tab on the left-hand side menu bar.
@@ -66,7 +69,7 @@ To identify the network security policies that are applied to your deployment or
 Network security policies are listed on the page. From this page, you can view and remove existing policies and attach new policies.
 
 :::
-:::{tab-item} Hosted
+:::{applies-item} ess:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** page, select your deployment.
 3. Select the **Security** tab on the left-hand side menu bar.

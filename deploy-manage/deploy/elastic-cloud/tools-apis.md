@@ -40,16 +40,15 @@ The following REST APIs allow you to manage your {{ecloud}} organization, users,
 
 The following APIs allow you to interact with your {{es}} cluster, its data, and the features available to you in your {{ech}} deployments and {{serverless-full}} projects. Separate APIs are used for {{ech}} and {{serverless-full}}.
 
-Note that some [restrictions](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using the these APIs on {{ecloud}}.
+Note that some [restrictions](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using these APIs on {{ecloud}}.
 
 :::{tip}
 Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md) to learn about headers, request body conventions, and examples for {{es-serverless}} and {{es}} REST APIs.
 :::
 
-:::::{tab-set}
-:group: serverless-hosted
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+:::::{applies-switch}
+
+::::{applies-item} serverless:
 
 The following APIs are available for {{es-serverless}} users:
 
@@ -59,8 +58,7 @@ The following APIs are available for {{es-serverless}} users:
 - [{{kib}} {{serverless-short}} APIs](https://www.elastic.co/docs/api/doc/serverless): Use these APIs to manage resources such as connectors, data views, and saved objects for your {{serverless-full}} project.
 ::::
 
-::::{tab-item} {{ech}}
-:sync: hosted
+::::{applies-item} ess:
 
 The following APIs are available for {{ech}} users:
 

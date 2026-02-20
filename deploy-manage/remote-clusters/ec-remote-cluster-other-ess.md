@@ -8,6 +8,8 @@ applies_to:
 products:
   - id: cloud-hosted
 sub:
+  local_type_generic: deployment
+  remote_type_generic: deployment
   remote_type: Elastic Cloud Hosted
 ---
 
@@ -34,6 +36,9 @@ If network security policies are applied to the remote cluster, the remote clust
 :::{include} _snippets/apikeys-intro.md
 :::
 
+:::{note}
+To configure strong identity verification together with API key authentication for remote cluster connections, refer to [](./ec-remote-cluster-strong-identity.md). Follow the steps there in addition to the procedure described in this section.
+:::
 
 ### Prerequisites and limitations [ec_prerequisites_and_limitations_2]
 
@@ -46,7 +51,7 @@ If network security policies are applied to the remote cluster, the remote clust
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-### Add the cross-cluster API key to the keystore of the local deployment [ec_add_the_cross_cluster_api_key_to_the_keystore_of_the_local_deployment_2]
+### Add the cross-cluster API key to the keystore of the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::

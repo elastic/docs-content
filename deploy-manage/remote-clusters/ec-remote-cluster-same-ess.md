@@ -8,6 +8,8 @@ applies_to:
 products:
   - id: cloud-hosted
 sub:
+  local_type_generic: deployment
+  remote_type_generic: deployment
   remote_type: Elastic Cloud Hosted
 ---
 
@@ -34,6 +36,9 @@ If network security policies are applied to the remote cluster, the remote clust
 :::{include} _snippets/apikeys-intro.md
 :::
 
+:::{note}
+To configure strong identity verification together with API key authentication for remote cluster connections, refer to [](./ec-remote-cluster-strong-identity.md). Follow the steps there in addition to the procedure described in this section.
+:::
 
 ### Prerequisites and limitations [ec_prerequisites_and_limitations]
 
@@ -46,7 +51,7 @@ If network security policies are applied to the remote cluster, the remote clust
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-### Add the cross-cluster API key to the local deployment [ec_add_the_cross_cluster_api_key_to_the_local_deployment]
+### Add the cross-cluster API key to the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::
@@ -186,7 +191,7 @@ curl -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $EC_AP
 Note the following when using the {{ecloud}} RESTful API:
 
 1. A cluster alias must contain only letters, numbers, dashes (-), or underscores (_).
-2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](/solutions/search/cross-cluster-search.md#skip-unavailable-clusters).
+2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](/explore-analyze/cross-cluster-search.md#skip-unavailable-clusters).
 3. When remote clusters are already configured for a deployment, the `PUT` request replaces the existing configuration with the new configuration passed. Passing an empty array of resources will remove all remote clusters.
 
 The following API request retrieves the remote clusters configuration:

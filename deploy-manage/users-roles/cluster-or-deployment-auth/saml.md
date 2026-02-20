@@ -13,11 +13,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-saml-authentication.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: elasticsearch
   - id: cloud-enterprise
@@ -410,7 +406,7 @@ The generated zip archive will contain 3 files:
 
 * `saml-sign.crt`, the public certificate to be used for signing
 * `saml-sign.key`, the private key for the certificate
-* `ca.crt`, a CA certificate that is not need, and can be ignored.
+* `ca.crt`, a CA certificate that is not needed, and can be ignored.
 
 Encryption certificates can be generated with the same process.
 
@@ -426,12 +422,17 @@ By default, {{es}} will sign *all* outgoing SAML messages if a signing certifica
 :::
 
 ::::{tab-set}
-:::{tab-item} PEM formatted keys
+:::{tab-item} PEM-formatted keys
 
 If you want to use **PEM formatted** keys and certificates for signing, then you should configure the following settings on the SAML realm:
 
 `signing.certificate`
 :   The path to the PEM formatted certificate file. e.g. `saml/saml-sign.crt`
+
+    :::::{note}
+    Only the single leaf certificate is required for the `signing.certificate` setting, even when using an internal or non-public Certificate Authority (CA).
+    If additional certificates are included, {{es}} attempts to validate the resulting chain, and the chain must be valid and complete.
+    :::::
 
 `signing.key`
 :   The path to the PEM formatted key file. e.g. `saml/saml-sign.key`
@@ -497,6 +498,11 @@ If you want to use **PEM formatted** keys and certificates for SAML encryption, 
 `encryption.certificate`
 :   The path to the PEM formatted certificate file. e.g. `saml/saml-crypt.crt`
 
+    :::::{note}
+    Only the single leaf certificate is required for the `encryption.certificate` setting, even when using an internal or non-public Certificate Authority (CA).
+    If additional certificates are included, {{es}} will attempt to validate the resulting chain, and the chain must be valid and complete.
+    :::::
+
 `encryption.key`
 :   The path to the PEM formatted key file. e.g. `saml/saml-crypt.key`
 
@@ -535,22 +541,21 @@ curl -u user_name:password  -X GET http://localhost:9200/_security/saml/metadata
 ```
 
 ### Using the `elasticsearch-saml-metadata` command
-
-You can generate the SAML metadata by running the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
-
 ```{applies_to}
 deployment:
   self:
   eck:
 ```
 
-::::{tab-set}
-::: {tab-item} Self-managed
+You can generate the SAML metadata by running the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
+
+::::{applies-switch}
+:::{applies-item} self:
 ```sh
 bin/elasticsearch-saml-metadata --realm saml1
 ```
 :::
-::: {tab-item} ECK
+:::{applies-item} eck:
 To generate the Service Provider metadata using the `elasticsearch-saml-metadata` command in {{eck}}, you need to run the command using `kubectl`, and then copy the generated metadata file to your local machine. For example:
 
 ```sh

@@ -2,6 +2,10 @@
 navigation_title: Air-gapped environments
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/air-gapped.html
+applies_to:
+  deployment:
+    ece: ga
+    self: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -22,7 +26,6 @@ The {{artifact-registry}} must therefore be accessible from {{kib}} through an H
 See the {{elastic-sec}} Solution documentation for air-gapped [offline endpoints](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md).
 
 ::::
-
 
 When upgrading all the components in an air-gapped environment, it is recommended that you upgrade in the following order:
 
@@ -102,8 +105,9 @@ For more information, refer to [Using a proxy server with {{agent}} and {{fleet}
 The {{package-registry}} packages include signatures used in [package verification](/reference/fleet/package-signatures.md). By default, {{fleet}} uses the Elastic public GPG key to verify package signatures. If you ever need to change this GPG key, use the `xpack.fleet.packageVerification.gpgKeyPath` setting in [`kibana.yml`](/deploy-manage/stack-settings.md). For more information, refer to [{{fleet}} settings](kibana://reference/configuration-reference/fleet-settings.md).
 ::::
 
-
 If routing traffic through a proxy server is not an option, you can host your own {{package-registry}}.
+
+If using {{eck}}, you can follow the instructions in [Deploy {{package-registry}} on {{eck}}](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
 
 The {{package-registry}} can be deployed and hosted onsite using one of the available Docker images. These docker images include the {{package-registry}} and a selection of packages.
 
@@ -160,6 +164,8 @@ These steps use the standard Docker CLI, but you can create a Kubernetes manifes
         docker.elastic.co/package-registry/distribution:{{version.stack}}
     ```
 
+    You can use the `/health` or `/health?ready=true` API endpoints to check if EPR is ready to serve requests.
+    When either endpoint returns a `200` HTTP status code, the service is ready to handle requests.
 
 
 ### Connect {{kib}} to your hosted {{package-registry}} [air-gapped-diy-epr-kibana]

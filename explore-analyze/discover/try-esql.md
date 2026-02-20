@@ -15,8 +15,8 @@ Elasticsearch Query Language ({{esql}}) helps you explore and analyze your {{pro
 
 ## Prerequisites [try-esql-prerequisites]
 
-- The `enableESQL` setting enabled in **Advanced Settings** (enabled by default)
-- Have data in {{product.elasticsearch}}.
+- The `enableESQL` setting must be enabled in {{product.kibana}}'s **Advanced Settings** (enabled by default).
+- You must have data in {{product.elasticsearch}}.
   The examples on this page use the {{product.kibana}} sample web logs to explore data and create visualizations. You can install sample data by following [Add sample data](../index.md#gs-get-data-into-kibana).
 
 ::::{tip}
@@ -24,12 +24,10 @@ For the complete {{esql}} documentation, including all supported commands, funct
 ::::
 
 
-## Use {{esql}} [tutorial-try-esql]
-
-To load the sample data:
+## Get started with {{esql}} in Discover [tutorial-try-esql]
 
 1. Go to **Discover**.
-2. Select **Try {{esql}}** from the application menu bar.
+2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
    :::{tip}
    If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
@@ -72,7 +70,7 @@ Let’s add `geo.dest` to our query to find out the geographical destination of 
    ![An image of the extended query result](/explore-analyze/images/kibana-esql-limit.png "")
 
 
-We will now take it a step further to sort the data by machine ram and filter out the `GB` destination.
+We will now take it a step further to sort the data by machine RAM and filter out the `GB` destination.
 
 1. Copy the query below:
 
@@ -91,14 +89,51 @@ We will now take it a step further to sort the data by machine ram and filter ou
 3. Click **Save** to save the query and visualization to a dashboard.
 
 
-### Edit the ES|QL visualization [_edit_the_esql_visualization]
+## Edit the ES|QL visualization [_edit_the_esql_visualization]
 
 You can make changes to the visualization by clicking the pencil icon. This opens additional settings that let you adjust the chart type, axes, breakdown, colors, and information displayed to your liking. If you’re not sure which route to go, check one of the suggestions available in the visualization editor.
 
 If you’d like to keep the visualization and add it to a dashboard, you can save it using the floppy disk icon.
 
 
-### ES|QL and time series data [_esql_and_time_series_data]
+## Organize the query results [esql-kibana-results-table]
+
+By default, the results table shows a column with the `@timestamp` field and a column with the full document. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
+
+```esql
+FROM kibana_sample_data_logs
+| KEEP @timestamp, bytes, geo.dest
+```
+
+To display all fields as separate columns, use `KEEP *`:
+
+```esql
+FROM kibana_sample_data_logs
+| KEEP *
+```
+
+Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
+
+### Limitations [esql-kibana-results-table-limitations]
+
+- **Row limit:** Discover displays up to 10,000 rows. This limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Any query or aggregation runs on the full data set.
+- **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
+- **CSV export:** CSV exports from Discover are also limited to 10,000 rows. Queries and aggregations still run on the full data set.
+- **No data filtering UI:** The data filtering UI is not available when Discover is in {{esql}} mode. Use the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command instead.
+
+
+## Sort query results [_sorting]
+
+To sort on one of the columns, click the column name you want to sort on and select the sort order. This performs client-side sorting and only sorts the rows that were retrieved by the query, which might not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
+
+```esql
+FROM kibana_sample_data_logs
+| KEEP @timestamp, bytes, geo.dest
+| SORT bytes DESC
+```
+
+
+## ES|QL and time series data [_esql_and_time_series_data]
 
 By default, ES|QL identifies time series data when an index contains a `@timestamp` field. This enables the time range selector and visualization options for your query.
 
@@ -128,7 +163,7 @@ FROM kibana_sample_data_ecommerce
 :alt: ESQL query with a custom time field enabled
 :::
 
-### Create and edit lookup indices from queries [discover-esql-lookup-join]
+## Create and edit lookup indices from queries [discover-esql-lookup-join]
 ```{applies_to}
 stack: preview 9.2
 serverless: preview
@@ -136,9 +171,13 @@ serverless: preview
 
 In **Discover**, LOOKUP JOIN commands include interactive options that let you create or edit lookup indices directly from the editor.
 
-#### Create a lookup index from the editor
+:::{note}
+This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) and [Serverless](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-create).
+:::
 
-You can create a lookup index directly from the ES|QL editor. To populate this index, you can type in data manually or upload a CSV file up to 500 MB.
+### Create a lookup index from the editor [create-lookup-esql]
+
+You can create a lookup index directly from the {{esql}} editor. To populate this index, you can type in data manually or upload a CSV file up to 500 MB.
 
 To create lookup indices, you need the [`create_index`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege on the corresponding pattern.
 
@@ -147,28 +186,73 @@ To create lookup indices, you need the [`create_index`](elasticsearch://referenc
    FROM kibana_sample_data_logs
    | LOOKUP JOIN
    ```
-   Add a space after the command. The editor suggests existing lookup indices and offers to create one. You can also type an index name in your query. If it doesn't exist, the editor suggests to create it.
+   Add a space after the command. The editor suggests existing lookup indices and offers to create one. You can also type an index name in your query. If it doesn't exist, the editor suggests creating it.
 
 2. Select the **Create lookup index** suggestion that appears in the autocomplete menu.
 
-3. Define a name for the lookup index, then validate it. 
-   - It must not contain spaces nor any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
-   - It must not start with `-`, `_`, or `+`.
+3. Define a name for the lookup index. 
+   - The name must not contain spaces or any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
+   - The name must not start with `-`, `_`, or `+`.
 
-4. Provide the data of the lookup index. You can choose between:
-   - **Uploading a CSV file up to 500 MB**. When uploading a file, you can preview the data and inspect the file's content before it is imported. If issues are detected, a **File issues** tab with more details also appears before you validate the import.
-   - **Adding data manually**. To do that, you can add rows and columns, and edit cells directly.
-   - **Using a combination of both methods**. You can upload a file after adding data manually, and edit or expand data imported from a file.
+4. Provide data for the lookup index. You can either:
+   - **Upload a CSV file up to 500 MB**. When you upload a file, you can preview its data, inspect its contents, and review any detected issues before importing it. Refer to [](#esql-lookup-index-from-file) for more details.
+   - **Add data manually**. You can add fields and populate data directly. When adding a field, you must set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
+     :::{note}
+     Some {{es}} data types aren't supported in {{kib}}.
+     :::
+   - **Using a combination of both methods**. You can upload a file after adding data manually, and edit or expand the data imported from a file.
 
-   :::{tip}
-   You can explore your index using the search field, or in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
-   :::
+5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
 
-5. **Save** any unsaved changes, then **Close** the index editor to return to your query.
+6. **Save** any unsaved changes, then **Close** the index editor to return to your query.
 
 Your new index is automatically added to your query. You can then specify the field to join using `ON <field_to_join>`.
 
-#### View or edit a lookup index from the editor
+##### Load data into a lookup index from a CSV file [esql-lookup-index-from-file]
+
+When you are editing a lookup index from the {{esql}} editor, you can add data to it by uploading CSV files up to 500 MB.
+
+:::::{applies-switch}
+
+::::{applies-item} { serverless:, stack: ga 9.3+ } 
+1. Drag the files you want to upload from your computer. You can add several files at a time and can repeat the operation multiple times.
+
+   :::{note}
+   If your index has unsaved changes, a message informs you that these changes will be lost. To keep those changes, cancel the upload and save your index, then start a new upload.
+   :::
+
+2. Preview the data for each file you're importing, then select **Continue**. If issues are detected, a message appears with more details. Typical issues include differences between the fields of the index and those of the imported files.
+   - New fields coming from imported files will be added to the index.
+   - Fields that exist in the index but are missing from the imported file will be kept but not filled with any data.
+
+3. Review and adjust the field names and data types to match the needs of your lookup index. After the import, you can no longer edit them.
+
+4. Select **Import** to validate the configuration and proceed with the import, then **Finish** to finalize the operation and return to the lookup index.
+
+Data coming from the files is appended to the index, and the index is automatically saved.
+::::
+
+::::{applies-item} stack: ga =9.2
+1. Select {icon}`download` **Upload file**.
+
+2. Select the CSV file to import on your machine. You can select several files to import at once.
+
+   :::{note}
+   If your index has unsaved changes, a message informs you that these changes will be lost. To keep those changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
+   :::
+
+3. Preview the data for each file you're importing. Field data types are automatically detected and set. If issues are detected, a **File issues** tab with more details appears before you validate the import. Common issues include differences between the fields in the index and in the imported files.
+   - New fields coming from imported files will be added to the index.
+   - Fields that exist in the index but are missing from the imported file will be kept but not filled with any data.
+
+4. Select **Import** to finalize the operation.
+
+Data coming from the files is appended to the index, and the index is automatically saved.
+::::
+
+:::::
+
+### View or edit a lookup index from the editor [view-edit-lookup-esql]
 
 You can view and modify existing lookup indices referenced in an {{esql}} query directly from the editor, depending on your privileges:
 - To edit lookup indices, you need the [`write`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
@@ -180,7 +264,7 @@ To view or edit an index:
 
 2. Select the **Edit lookup index** or **View lookup index** option that appears. A flyout showing the index appears.
 
-3. Depending on your permissions and needs, explore or edit the index.
+3. Depending on your permissions and needs, explore or edit the index. When editing the index, you have the same options described in [](#create-lookup-esql).
 
    :::{note}
    Editing a lookup index affects all {{esql}} queries that reference it. Make sure that your changes are compatible with existing queries that use this index.
@@ -188,7 +272,29 @@ To view or edit an index:
 
 4. If you made changes, select **Save** before closing the flyout.
 
-### Add variable controls to your Discover queries [add-variable-control]
+### Reset the lookup index configuration
+
+At any time, you can delete all the index data and fields.
+
+:::::{applies-switch}
+
+::::{applies-item} { serverless:, stack: ga 9.3+ } 
+1. Select all the index data using the checkbox in the header of the table.
+
+2. Select **Delete selected** from the contextual menu that appears upon selecting entries.
+
+3. Once all entries are deleted, a **Reset index** button appears. Select it to remove all fields configured in the index.
+
+The lookup index is fully reset and saved automatically.
+::::
+
+::::{applies-item} stack: ga =9.2
+In this version, you cannot fully reset the index configuration. For example, you can't remove columns. However, you can delete the index data. To do that, select the entries to delete, then select **Delete selected** from the contextual menu that appears.
+::::
+
+:::::
+
+## Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}
 stack: preview 9.2
 serverless: preview
@@ -206,7 +312,7 @@ You can add them from your Discover {{esql}} query.
 :::{include} ../_snippets/variable-control-examples.md
 :::
 
-#### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
+### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
 ```{applies_to}
 stack: preview 9.3
 serverless: preview
@@ -223,7 +329,50 @@ You can edit all of the options described in [](#add-variable-control).
 
 When you save your edits, the control is updated for your query.
 
-#### Import a Discover query along with its controls into a dashboard
+### Import a Discover query along with its controls into a dashboard
 
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
 :::
+
+
+## Refine an {{esql}} query by interacting with the results table
+
+Certain interactions with the results table of your {{esql}} query in Discover apply additional filters to your query. When hovering over a value cell, contextual options appear: 
+
+- Selecting {icon}`plus_in_circle` **Filter for this...** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE host.keyword == "www.elastic.co"`.
+- Selecting {icon}`minus_in_circle` **Filter out this...** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
+
+:::{note}
+:applies_to: { serverless:, stack: ga 9.3+ }
+Up to and including version 9.2, filtering for multi-value fields isn't supported. On later versions, filtering for multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example, `WHERE MATCH(tags.keyword, "error") AND MATCH(tags.keyword, "security")`.
+:::
+
+Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
+
+## Revert to Discover's classic mode [revert-to-classic-mode]
+
+You can go back to the classic data view and KQL mode in Discover at any time. When you switch from {{esql}} mode to classic mode, your {{esql}} query is lost.
+
+:::::{applies-switch}
+
+::::{applies-item} {serverless:, stack: ga 9.4+ }
+1. Open the Discover tab that you want to switch to classic mode.
+
+2. From your tab's contextual menu, select **Switch to classic**. This affects only the selected Discover tab.
+
+![Tab contextual menu with an option to switch from {{esql}} to classic mode](/explore-analyze/images/discover-switch-to-classic.png "=30%")
+
+:::{tip}
+The **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
+:::
+::::
+
+::::{applies-item} stack: ga 9.2-9.3
+From the application menu, select **Switch to classic**. This only affects your current Discover tab.
+::::
+
+::::{applies-item} stack: ga 9.0-9.1
+From the application menu, select **Switch to classic**.
+::::
+
+:::::
