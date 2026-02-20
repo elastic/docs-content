@@ -2588,7 +2588,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds {{esql}} SAMPLE aggregation function [#127629](https://github.com/elastic/elasticsearch/pull/127629)
 
 * Ignores initializing unpromotable node commit notifications responses
-* Pauses indexing completely in serverless when throttling
 
 ### Fixes [serverless-changelog-05192025-fixes]
 * Removes extra icon from map visualization tooltips [#220134]({{kib-pull}}220134)
