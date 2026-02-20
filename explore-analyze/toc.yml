@@ -278,7 +278,10 @@ toc:
           - file: visualize/charts/line-charts.md
           - file: visualize/charts/metric-charts.md
           - file: visualize/charts/pie-charts.md
+          - file: visualize/charts/region-map-charts.md
           - file: visualize/charts/tables.md
+          - file: visualize/charts/tag-cloud-charts.md
+          - file: visualize/charts/treemap-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
