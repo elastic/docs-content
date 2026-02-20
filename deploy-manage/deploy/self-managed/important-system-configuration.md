@@ -14,6 +14,7 @@ Ideally, {{es}} should run alone on a server and use all of the resources availa
 
 The following settings **must** be considered before going to production:
 
+* [](elasticsearch-service-user.md) (Linux and MacOS only)
 * [](setting-system-settings.md)
 * [](setup-configuration-memory.md)
 * [](vm-max-map-count.md)

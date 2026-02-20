@@ -280,6 +280,7 @@ toc:
               - file: deploy/self-managed/local-development-installation-quickstart.md
               - file: deploy/self-managed/important-system-configuration.md
                 children:
+                  - file: deploy/self-managed/elasticsearch-service-user.md
                   - file: deploy/self-managed/setting-system-settings.md
                   - file: deploy/self-managed/setup-configuration-memory.md
                   - file: deploy/self-managed/file-descriptors.md
