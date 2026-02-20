@@ -141,7 +141,7 @@ If an individual task is causing a [thread pool `queue`](#diagnose-task-queue-th
 
 This problem can surface due to a number of possible causes:
 
-* Creating new  tasks or modifying scheduled tasks which either run frequently or are broad in their effect, such as [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) policies or [rules](/explore-analyze/alerts-cases.md)
+* Creating new  tasks or modifying scheduled tasks which either run frequently or are broad in their effect, such as [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) policies or [rules](/explore-analyze/alerting.md)
 * Performing traffic load testing
 * Doing extended look-backs, especially across [data tiers](/manage-data/lifecycle/data-tiers.md)
 * [Searching](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search) or performing [bulk updates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to a high number of indices in a single request

@@ -36,7 +36,7 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
     You can add custom information to AI Assistant's [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md), either in the form of individual documents or entire indices containing numerous documents. This information informs the AI Assistant's responses and can include everything from threat intelligence, to information about your team's on-call rotation, to information about your infrastructure, and more. 
 
-- **[Cases](/solutions/security/investigate/cases.md)**: Helps you track and share related information about security issues. Track key investigation details and collect alerts in a central location.
+- **[Cases](/solutions/security/investigate/security-cases.md)**: Helps you track and share related information about security issues. Track key investigation details and collect alerts in a central location.
 
     :::{image} /solutions/images/security-ease-cases.png
     :alt: The Cases page in an EASE project showing the default state

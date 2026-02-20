@@ -28,7 +28,7 @@ The following table compares features available in each feature tier:
 
 | **Feature Name** | **Security Analytics Complete** | **Security Analytics Essentials** | **EASE** |
 | :--- | :---: | :---: | :---: |
-| **[Cases](/solutions/security/investigate/cases.md) (collect and share information)** | ✅ | ✅ | ✅ |
+| **[Cases](/solutions/security/investigate/security-cases.md) (collect and share information)** | ✅ | ✅ | ✅ |
 | **[Native integrations](https://www.elastic.co/docs/reference/integrations) with third-party SIEM and EDR platforms** | ✅ | ✅ | ✅ |
 | **Out of the box [dashboards](/solutions/security/dashboards.md)** | ✅ | ✅ | ❌ |
 | **Prebuilt and custom [detection rules](/solutions/security/detect-and-alert.md)** | ✅ | ✅ | ❌ |

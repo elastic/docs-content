@@ -15,7 +15,7 @@ The instructions in this section describe how to connect the operator and manage
 These instructions have been tested with Istio 1.24.3. Older or newer versions of Istio might require additional configuration steps not documented here.
 
 ::::{warning}
-Some {{stack}} features such as [{{kib}} alerting and actions](/explore-analyze/alerts-cases.md) rely on the {{es}} API keys feature which requires TLS to be enabled at the application level. If you want to use these features, you should not disable the self-signed certificate on the {{es}} resource and enable `PERMISSIVE` mode for the {{es}} service through a `DestinationRule` or `PeerAuthentication` resource. Strict mTLS mode is currently not compatible with {{stack}} features requiring TLS to be enabled for the {{es}} HTTP layer.
+Some {{stack}} features such as [{{kib}} alerting and actions](/explore-analyze/alerting.md) rely on the {{es}} API keys feature which requires TLS to be enabled at the application level. If you want to use these features, you should not disable the self-signed certificate on the {{es}} resource and enable `PERMISSIVE` mode for the {{es}} service through a `DestinationRule` or `PeerAuthentication` resource. Strict mTLS mode is currently not compatible with {{stack}} features requiring TLS to be enabled for the {{es}} HTTP layer.
 ::::
 
 

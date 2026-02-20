@@ -97,4 +97,4 @@ For each metric chart, you can perform the following actions:
 * **Inspect** ({icon}`inspect`): Show details about the query request and response.
 * **View details** ({icon}`eye`): Get additional information about the metric like metric type, dimensions, and ES|QL query.
 * **Copy to dashboard** ({icon}`app_dashboard`): Save the metric chart to an existing or new [dashboard](/explore-analyze/dashboards.md).
-* **Add to case** ({icon}`app_cases`): Add the metric chart to a [case](/solutions/observability/incident-management/cases.md).
+* **Add to case** ({icon}`app_cases`): Add the metric chart to a [case](/solutions/observability/incident-management/observability-cases.md).
