@@ -75,6 +75,14 @@ For readability, you can put each processing command on a new line and add inden
 
 A query might result in warnings, for example when querying an unsupported field type. When that happens, the query bar displays a warning symbol. To see the detailed warning, expand the query bar, and select **warnings**.
 
+#### Query statistics
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+After running a query, the editor's footer displays statistics about the last run, including the number of documents processed. These statistics are available in **Discover** and in **{{esql}} visualizations** in dashboards.
+
 #### Keyboard shortcuts
 
 | Mac                | Windows/Linux       | Description                 |
@@ -118,8 +126,6 @@ Some {{esql}} commands have dedicated editor features beyond autocomplete, such 
 The {{esql}} editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
 {applies_to}`stack: ga 9.2.0` Remote lookup joins are supported in [cross-cluster queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md). The lookup index must exist on _all_ remote clusters being queried, because each cluster uses its local lookup index data.
-
-![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 
 In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/try-esql.md#discover-esql-lookup-join).
 
@@ -202,6 +208,8 @@ serverless: preview
 
 The {{esql}} editor keeps track of your queries so you can reuse and organize them.
 
+![ES|QL editor query history and starred queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt2d3183eafde13ca0/699889744357070008f66a99/query_history_starred.gif "=60%")
+
 ### Query history [esql-kibana-query-history]
 
 You can reuse your recent {{esql}} queries in the query bar. In the query bar, select **Show recent queries**.
@@ -209,11 +217,6 @@ You can reuse your recent {{esql}} queries in the query bar. In the query bar, s
 You can then: 
 - scroll through your most recent queries
 - {applies_to}`stack: ga 9.2` search for specific queries of your history
-
-:::{image} /explore-analyze/images/esql-history.gif
-:alt: esql discover query history
-:width: 75%
-:::
 
 :::{note}
 The maximum number of queries in the history depends on the version you're using:
@@ -230,10 +233,6 @@ In the query bar, select **Show recent queries**.
 From the **Recent** tab, you can star any queries you want.
 
 In the **Starred** tab, find all the queries you have previously starred.
-
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-discover-query-starred.png
-:alt: esql discover query starred
-:::
 
 
 ## Related pages
