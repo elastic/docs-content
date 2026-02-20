@@ -18,7 +18,7 @@ $$$panels-editors$$$
 
 | **Content** | **Panel type** | **Description** |
 | --- | --- | --- |
-| Visualizations | [Lens](visualize/lens.md) | Create powerful [charts](visualize/lens.md) in {{kib}}. This is the default editor. |
+| Visualizations | [Lens](visualize/lens.md) | Create powerful charts in {{kib}}. This is the default editor. |
 |  | [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md) | Create visualizations from {{esql}} queries |
 |  | [Maps](visualize/maps.md) | Create beautiful displays of your geographical data |
 |  | [Alerts](visualize/alert-panels.md) | View Observability or Security alerts in your dashboard |

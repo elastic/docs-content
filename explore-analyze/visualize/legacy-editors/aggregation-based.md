@@ -102,7 +102,7 @@ Open the **Aggregation based** editor and change the time range.
 
 ### Create the bar chart [tutorial-configure-the-bar-chart]
 
-To create the bar chart, add a [bucket aggregation](elasticsearch://reference/aggregations/bucket.md), then add the terms sub-aggregation to display the top values.
+To create the bar chart, add a [bucket aggregation](../../query-filter/aggregations.md), then add the terms sub-aggregation to display the top values.
 
 1. Add a **Buckets** aggregation.
 
