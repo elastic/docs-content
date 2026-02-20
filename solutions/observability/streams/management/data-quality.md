@@ -2,6 +2,15 @@
 applies_to:
   serverless: preview
   stack: preview =9.1, ga 9.2+
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Manage data quality [streams-data-quality]

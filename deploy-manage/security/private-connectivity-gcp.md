@@ -82,13 +82,7 @@ The process of setting up the Private link connection to your deployments is spl
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
 :::{admonition} Private connection policies are optional
-Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established.
-
-Creating a private connection policy and associating it with your deployments allows you to do the following: 
-
-* Record that you've established private connectivity between GCP and Elastic in the applicable region.
-* [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
-* Optionally filter traffic to your deployment using VPC filters.
+Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established. You only need to create a private connection policy if you want to filter traffic to your deployment using VPC filters.
 :::
 
 ### Create your Private Service Connect endpoint and DNS entries in Google Cloud [ec-private-service-connect-enpoint-dns]
@@ -196,7 +190,7 @@ Create a new private connection policy.
     :::{tip}
     Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
-11. Under **Connectivity**, select **Privatelink**.
+11. Under **Connectivity**, select **PrivateLink**.
 12. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
     
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
@@ -298,7 +292,7 @@ You can also edit network security policies from your deployment's **Security** 
 
 ### Remove a private connection policy from your deployment [remove-private-connection-policy]
 
-If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
+If you want to remove a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
 #### From your deployment
 

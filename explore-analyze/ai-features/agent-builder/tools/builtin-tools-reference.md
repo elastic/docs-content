@@ -1,6 +1,6 @@
 ---
-description: Reference of all built-in tools available in Elastic Agent Builder
 navigation_title: "Built-in tools"
+description: "Reference of all built-in tools available in Elastic Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -14,11 +14,11 @@ products:
 
 <!-- Note: This file contains commented-out tool sections for features on main that are not yet available in released versions. -->
 
-# Elastic Agent Builder built-in tools reference
+# {{agent-builder}} built-in tools reference
 
 This page lists all built-in tools available in {{agent-builder}}. Built-in tools enable core operations for working with {{es}} data across platform, observability, and security use cases out-of-the-box.
 
-Built-in tools are read-only: you can't modify or delete them. To check which tools are available in your Elastic deployment, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
+Built-in tools are read-only: you can't modify or delete them. To check which tools are available in your Elastic deployment, refer to [Manage tools](/explore-analyze/ai-features/agent-builder/tools.md#manage-tools).
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
@@ -30,7 +30,7 @@ Built-in platform core tools are available across all deployments, while observa
 
 ## Agents and tools
 
-[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. For example, the Observability agent includes all observability tools by default. You can assign any available built-in tools to [custom agents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#create-a-new-agent-in-the-gui) you create.
+[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. For example, the Observability agent includes all observability tools by default. You can assign any available built-in tools to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create.
 
 ## Platform core tools
 ```{applies_to}
@@ -47,25 +47,25 @@ Platform core tools provide fundamental capabilities for interacting with {{es}}
 All [built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are assigned these tools by default.
 :::
 
-`platform.core.execute_esql` {applies_to}`stack: ga 9.2+`
+`platform.core.execute_esql`
 :   Executes an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query and returns the results in a tabular format.
 
-`platform.core.generate_esql` {applies_to}`stack: ga 9.2+`
+`platform.core.generate_esql`
 :   Generates an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query from a natural language query.
 
-`platform.core.get_document_by_id` {applies_to}`stack: ga 9.2+`
+`platform.core.get_document_by_id`
 :   Retrieves the full content of an {{es}} document based on its ID and index name.
 
-`platform.core.get_index_mapping` {applies_to}`stack: ga 9.2+`
+`platform.core.get_index_mapping`
 :   Retrieves mappings for the specified index or indices.
 
-`platform.core.index_explorer` {applies_to}`stack: ga 9.2+`
+`platform.core.index_explorer`
 :   Lists relevant indices and corresponding mappings based on a natural language query.
 
-`platform.core.list_indices` {applies_to}`stack: ga 9.2+`
+`platform.core.list_indices`
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
-`platform.core.search` {applies_to}`stack: ga 9.2+`
+`platform.core.search`
 :   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
 
 $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
@@ -197,6 +197,10 @@ The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/b
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
+
+:::{tip}
+You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
+:::
 
 ## Related pages
 

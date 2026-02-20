@@ -1,5 +1,6 @@
 ---
 navigation_title: "MCP server"
+description: "Learn how to connect Claude Desktop, Cursor, and VS Code to Elastic Agent Builder tools using the Model Context Protocol (MCP) server."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
@@ -14,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Model Context Protocol (MCP) server
+# {{agent-builder}} MCP server
 
 The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
 
@@ -59,6 +60,7 @@ Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar co
   }
 }
 ```
+
 1. Refer to [](#api-key-application-privileges)
 
 :::{note}
@@ -69,50 +71,23 @@ export KIBANA_URL="your-kibana-url"
 export API_KEY="your-api-key"
 ```
 
-For information on generating API keys, refer to [API keys](https://www.elastic.co/docs/solutions/search/search-connection-details).
+For information on generating API keys, refer to [](/deploy-manage/api-keys.md).
 
 Tools execute with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose through the MCP server. To learn more, refer to [](#api-key-application-privileges).
 :::
 
 ## API key application privileges
 
-To access the MCP server endpoint, your API key must include {{kib}} application privileges. 
-
-### Development and testing
-
-For development and testing purposes, you can create an unrestricted API key with full access:
+To access the MCP server endpoint, your API key must include {{kib}} application privileges for {{agent-builder}}.
 
 ```json
 POST /_security/api_key
 {
   "name": "my-mcp-api-key",
-  "expiration": "1d",
+  "expiration": "30d",
   "role_descriptors": {
-    "unrestricted": {
-      "cluster": ["all"],
-      "indices": [
-        {
-          "names": ["*"],
-          "privileges": ["all"]
-        }
-      ]
-    }
-  }
-}
-```
-
-### Production
-
-For production environments, use a restricted API key with specific application privileges:
-
-```json
-POST /_security/api_key
-{
-  "name": "my-mcp-api-key",
-  "expiration": "1d",   
-  "role_descriptors": { 
     "mcp-access": {
-      "cluster": ["all"],
+      "cluster": ["monitor_inference"], <1>
       "indices": [
         {
           "names": ["*"],
@@ -121,8 +96,8 @@ POST /_security/api_key
       ],
       "applications": [
         {
-          "application": "kibana-.kibana",
-          "privileges": ["read_onechat", "space_read"], <1>
+          "application": "kibana-.kibana", <2>
+          "privileges": ["feature_agentBuilder.read"],
           "resources": ["space:default"]
         }
       ]
@@ -130,4 +105,51 @@ POST /_security/api_key
   }
 }
 ```
-1. The `read_onechat` and `space_read` application privileges are required to authorize access to the MCP endpoint. Without these privileges, you'll receive a 403 Forbidden error.
+
+1. Required to use {{es}} inference endpoints. You can also use `"cluster": ["all"]` for broader access during development.
+2. Must be exactly `kibana-.kibana`. This is how {{kib}} registers its application privileges with {{es}}. Without the `feature_agentBuilder.read` privilege, you'll receive a `403 Forbidden` error.
+
+:::{note}
+Without the `feature_agentBuilder.read` application privilege, you'll receive a `403 Forbidden` error when attempting to connect to the MCP endpoint.
+:::
+
+## Best practices
+
+### Set API key expiration dates
+
+Always set an expiration date on API keys for security. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production, rotating keys regularly.
+
+### Limit Agent Builder to specific indices
+
+For production environments, restrict API keys to only the indices your tools need to access. This follows the principle of least privilege and prevents agents from querying sensitive data.
+
+```json
+POST /_security/api_key
+{
+  "name": "my-mcp-api-key",
+  "expiration": "30d",
+  "role_descriptors": {
+    "mcp-access": {
+      "cluster": ["monitor_inference"], <1>
+      "indices": [
+        {
+          "names": ["logs-*", "metrics-*"], <2>
+          "privileges": ["read", "view_index_metadata"] <3>
+        }
+      ],
+      "applications": [
+        {
+          "application": "kibana-.kibana", <4>
+          "privileges": ["feature_agentBuilder.read"],
+          "resources": ["space:default"]
+        }
+      ]
+    }
+  }
+}
+```
+
+1. Required to use {{es}} inference endpoints. You can also use `"cluster": ["all"]` for broader access during development.
+2. Restrict index access to only the indices your tools need to query. Adjust the index patterns based on your security requirements.
+3. Read-only privileges prevent the agent from modifying data.
+4. Must be exactly `kibana-.kibana` - this is how {{kib}} registers its application privileges with {{es}}.

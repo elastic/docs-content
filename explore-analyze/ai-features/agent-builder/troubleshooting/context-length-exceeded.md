@@ -70,6 +70,7 @@ There are a few quick fixes you can try to mitigate this issue, or you can creat
 ### Quick fixes
 
 - **Write more targeted prompts**: Narrow your chat questions to reduce the scope of data retrieval. Specific questions retrieve less data than exploratory questions.
+- **Add index metadata descriptions**: Help agents select more appropriate indices by adding [`_meta.description` fields](../tools/index-search-tools.md#add-index-metadata-to-improve-agent-search) to your index mappings.
 - **Start a new conversation**: If you've been working in a long conversation, begin a fresh one. You can optionally provide a brief summary of relevant context from the previous conversation.
 - **Switch to a model with a larger context window**: Some LLMs support larger context windows that can accommodate bigger tool responses. Refer to [](../models.md) for options.
 
@@ -91,12 +92,12 @@ For example, try creating purpose-built tools that:
 Always include a `LIMIT` clause in your {{esql}} queries to cap the number of results.
 
 :::{tip}
-Learn more in [creating custom tools](../tools.md#create-custom-tools).
+Learn more in [creating custom tools](../tools/custom-tools.md).
 :::
 :::::
 
 :::::{step} Create a custom agent
-Create a new agent to use your custom tools. Refer to [Agents in {{agent-builder}}](../agent-builder-agents.md) for instructions.
+Create a new agent to use your custom tools. Refer to [Custom agents in {{agent-builder}}](../custom-agents.md) for instructions.
 :::::
 
 :::::{step} Assign tools and refine instructions
@@ -109,4 +110,6 @@ Assign your custom {{esql}} tools to the custom agent. Update the agent's system
 
 - [Troubleshooting](../troubleshooting.md)
 - [Monitor token usage](../monitor-usage.md)
-- [Custom tools](../tools.md#create-custom-tools)
+- [Index search tools](../tools/index-search-tools.md)
+- [{{esql}} tools](../tools/esql-tools.md)
+- [Custom tools](../tools/custom-tools.md)
