@@ -16,7 +16,8 @@ products:
 
 Automatic Migration helps you quickly migrate Splunk and QRadar assets to {{elastic-sec}}. The following asset types are supported:
 
-* {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Classic Splunk dashboards (v1.1)
+* {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Splunk Classic dashboards (v1.1)
+* {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Splunk Dashboard Studio dashboards 
 * {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` Splunk rules
 * {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview` QRadar rules
 
@@ -52,7 +53,6 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 ::::
 
 ::::{admonition} Splunk dashboard migration limitations
-* Only supports classic Splunk dashboards (v1.1). Attempting to translate unsupported dashboards results in an `Unsupported Splunk XML` error and a `Not translated` status.
 * Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels do not appear in migrated dashboards.
 ::::
 
@@ -196,7 +196,7 @@ This section describes the **Translated dashboards** page's interface and the da
 
 :::::{admonition} Important information for QRadar "BB" rules
 
-- {applies-to}`stack: preview =9.3`
+- {applies_to}`stack: preview =9.3`
 QRadar Building Block rules can appear in QRadar migrations. You can identify them by their `BB:` prefix. You should not enable these rules, because they will generate noisy alerts. If you do enable them, we recommend you delete them.
 
 - {applies_to}`serverless: preview`{applies_to}`stack: preview 9.4+`
