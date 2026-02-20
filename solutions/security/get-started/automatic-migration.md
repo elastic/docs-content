@@ -196,17 +196,11 @@ This section describes the **Translated dashboards** page's interface and the da
 
 :::::{admonition} Important information for QRadar "BB" rules
 
-::::{applies-switch}
-
-:::{applies-item} { stack: preview =9.3 }
+- {applies-to}`stack: preview =9.3`
 In the technical preview of QRadar rule migration, QRadar Building Block rules can appear in QRadar migrations. You can identify them by their `BB:` prefix. You should not enable these rules, because they will generate noisy alerts. If you do enable them, we recommend you delete them.
-:::
 
-:::{applies-item} { serverless: preview, stack: ga 9.4 }
+- {applies_to}`serverless: preview, stack: ga 9.4`
 Building block rule logic is included automatically in translated rules. No action is required.
-:::
-
-::::
 
 :::::
 
