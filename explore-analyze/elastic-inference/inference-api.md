@@ -66,6 +66,31 @@ To add a new {{infer}} endpoint using the UI:
 
 If your {{infer}} endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to dynamically adjust resource usage based on the current demand.
 
+### Creating custom EIS endpoints [create-custom-eis]
+
+Your deployment includes [Default {{infer}} endpoints](#default-enpoints) which are preconfigured and ready to use. In most cases, you should use these default endpoints.
+
+However, you may choose to manually create a **custom Elastic Inference Service (EIS)** endpoint if you need to instantiate a specific model version or configuration that is not covered by the defaults.
+
+To create a custom EIS endpoint:
+
+1. In the **Service** dropdown, select **Elastic Inference Service**.
+2. In the **Settings** section, enter the specific **Model ID** (refer to [Supported EIS Model IDs](#supported-eis-model-ids-and-task-types)).
+3. (Optional) Under **More options**, set the **Maximum Input Tokens**. This limits the number of tokens processed per request. If left blank, the model's default limit is used.
+4. Expand **Additional settings** and select the **Task type** that corresponds to your model.
+5. Select **Save**.
+
+#### Supported EIS Model IDs and Task Types
+
+When configuring a custom EIS endpoint, you must enter the exact Model ID and select the corresponding Task Type:
+
+| Model Name | Model ID String | Task Type |
+| :--- | :--- | :--- |
+| **ELSER v2** | `.elser_model_2` | `sparse_embedding` |
+| **Jina Embeddings v3** | `jina-embeddings-v3` | `text_embedding` |
+| **Jina Reranker v2** | `jina-reranker-v2-base-en` | `rerank` |
+| **Jina Reranker v3** | `jina-reranker-v3-turbo-en` | `rerank` |
+
 ## Adaptive allocations [adaptive-allocations]
 
 Adaptive allocations allow {{infer}} services to dynamically adjust the number of model allocations based on the current load.
