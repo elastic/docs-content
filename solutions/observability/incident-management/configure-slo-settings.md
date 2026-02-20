@@ -31,6 +31,10 @@ On the **SLOs Settings** page, you can configure the following controls:
 :screenshot:
 :::
 
+:::{note}
+The SLOs settings are specific to your {{kib}} space.
+:::
+
 ## Configure SLOs for federated views[observability-configure-slo-settings-federated-view] 
 
 Federated views allow you to view SLOs from remote {{es}} clusters alongside the local SLOs on the SLO listing page of your {{kib}} instance. This enables a centralized overview cluster where you can monitor SLOs across your entire fleet within the same {{kib}} space.
@@ -41,10 +45,10 @@ Federated views allow you to view SLOs from remote {{es}} clusters alongside the
 - Remote clusters must be running {{kib}} with the SLO feature and have SLOs created.
 - The remote cluster's `kibanaUrl` should be set in the SLO summary documents for full functionality (edit/clone/delete links).
 
-Use the three dots menu on the remote SLO to perform the following operations:
+On the **SLOs Settings** page, you can perform operations on your remote clusters by clicking the three dots menu on the remote cluster:
 
 **Details**
-:   Opens a new panel that displays details of the remote SLO instance.
+:   Opens a new panel that displays details of the remote instance.
 
 **Edit**, **Clone**, **Delete**
 :   TBD 
