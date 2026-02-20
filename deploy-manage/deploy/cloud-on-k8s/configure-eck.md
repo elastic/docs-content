@@ -164,7 +164,7 @@ This section provides a low-level overview of alternative configuration methods,
 
 To pass configuration options as environment variables, convert the flag name to upper case and replace any dashes (`-`) with underscores (`_`). For example, the `log-verbosity` flag can be set by an environment variable named `LOG_VERBOSITY`.
 
-If you use a combination of all or some of the these methods, the descending order of precedence in case of a conflict is as follows:
+If you use a combination of all or some of these methods, the descending order of precedence in case of a conflict is as follows:
 
 * Flag
 * Environment variable
