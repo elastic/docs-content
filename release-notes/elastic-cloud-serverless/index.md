@@ -1320,6 +1320,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Replaces the dashboard editor toolbar with the **Add** menu [#230324]({{kib-pull}}230324)
 * Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
+* Optimizes `dotCount` in the expanding dot parser [#135263](https://github.com/elastic/elasticsearch/pull/135263)
 
 * Adds classes to represent raw docs sampling configs [#134585](https://github.com/elastic/elasticsearch/pull/134585)
 * Adds {{esql}} support for expressions with LOOKUP JOIN in tech preview [#134952](https://github.com/elastic/elasticsearch/pull/134952)
