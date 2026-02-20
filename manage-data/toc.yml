@@ -168,7 +168,7 @@ toc:
           - file: lifecycle/rollup/rollup-aggregation-limitations.md
           - file: lifecycle/rollup/rollup-search-limitations.md
           - file: lifecycle/rollup/migrating-from-rollup-to-downsampling.md
-  - file: migrate.md
+  - file: migrate-data.md
     children:
       - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
       - file: migrate/migrate-data-using-reindex-api.md
