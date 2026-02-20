@@ -12,13 +12,15 @@ products:
   - id: elastic-stack
 ---
 
+# Workflows [workflows-overview]
+
 :::{admonition} Welcome to the Elastic workflow docs! 
 If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/overview/introduction), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
 :::
 
-# Workflows [workflows-overview]
+## What are workflows [workflows-what]
 
-A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It is a reusable, versionable "recipe" that transforms inputs into actions.
+A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It's a reusable, versionable "recipe" that transforms inputs into actions.
 
 ## Why use workflows [workflows-why]
 
