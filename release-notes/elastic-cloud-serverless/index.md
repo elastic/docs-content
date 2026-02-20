@@ -1285,7 +1285,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds small optimizations to ``PUT _component_template`` API [#135644](https://github.com/elastic/elasticsearch/pull/135644)
 
 * Deletes unowned documents upon recovery after shard starts
-* Unmutes `modules:stateless:internalClusterTestWithHollow`
 
 ### Fixes [serverless-changelog-10062025-fixes]
 * Rolls over the reporting data stream automatically when a newer template version is available [#234119]({{kib-pull}}234119)
