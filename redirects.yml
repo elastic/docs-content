@@ -700,3 +700,8 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/5033
   'solutions/observability/observability-ai-assistant.md': 'solutions/observability/ai/observability-ai-assistant.md'
   'solutions/observability/llm-performance-matrix.md': 'solutions/observability/ai/llm-performance-matrix.md'
+
+# Related to https://github.com/elastic/docs-content/pull/5251
+  'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
+  'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
+  'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/agentless/cloud-connector-deployment.md'
