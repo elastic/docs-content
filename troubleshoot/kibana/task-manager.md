@@ -14,7 +14,7 @@ products:
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
-{{kib}} instances do not form a cluster. Instead, a {{kib}} instance manages its state by syncing it down to {{es}} under the [`kibana` feature state](/deploy-manage/tools/snapshot-and-restore.md#feature-state). This is why {{kib}} [will become unavailable](/main/troubleshoot/kibana/error-server-not-ready.md) if {{es}} or {{kib}}-specific underlying indices are unavailable. Part of this synced state includes {{kib}}'s [Task Manager](/deploy-manage/distributed-architecture/kibana-tasks-management.md).
+{{kib}} instances do not form a cluster. Instead, a {{kib}} instance manages its state by syncing it down to {{es}} under the [`kibana` feature state](/deploy-manage/tools/snapshot-and-restore.md#feature-state). This is why {{kib}} [will become unavailable](/troubleshoot/kibana/error-server-not-ready.md) if {{es}} or {{kib}}-specific underlying indices are unavailable. Part of this synced state includes {{kib}}'s [Task Manager](/deploy-manage/distributed-architecture/kibana-tasks-management.md).
 
 The Task Manager is used by a wide range of services in {{kib}}, such as [Alerting](/deploy-manage/production-guidance/kibana-alerting-production-considerations.md), Actions, [Reporting](/explore-analyze/report-and-share.md), and Telemetry. Unexpected behavior in these services might be an upstream issue originating in Task Manager which can be checked from the [{{kib}} server status](/troubleshoot/kibana/access.md).
 
