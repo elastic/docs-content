@@ -19,7 +19,7 @@ Learn about the access requirements for detection features, including:
 - **Predefined roles**: {{serverless-full}} roles with detection privileges
 - **Authorization model**: How detection rules use API keys to run background tasks
 
-For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/detections-requirements.md).
+For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/requirements-privileges.md).
 
 ## About index privileges
 

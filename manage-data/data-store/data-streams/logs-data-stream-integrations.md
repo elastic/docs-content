@@ -173,4 +173,4 @@ If your cluster is already near capacity, stability issues can occur if you enab
 
 - Review the documentation for [](logs-data-stream.md), [](/manage-data/data-store/templates.md), and the [](/solutions/observability/logs/logs-index-template-defaults.md)
 - [](logs-data-stream-configure.md)
-- [](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md)
+- [](/solutions/security/detect-and-alert/advanced-data-source-configuration.md)

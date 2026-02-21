@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Visualize and group detection alerts using Summary, Trend, Counts, and Treemap views on the Alerts page.
 ---
 
 # Visualize detection alerts [security-visualize-alerts]

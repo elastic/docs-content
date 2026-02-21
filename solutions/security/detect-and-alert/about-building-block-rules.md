@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Create rules that generate hidden alerts used as building blocks for downstream detection rules.
 ---
 
 # About building block rules [security-building-block-rules]
@@ -19,7 +20,7 @@ Create building block rules when you do not want to see their generated alerts i
 * Rules that execute on the alert indices (`.alerts-security.alerts-<kibana space>`). You can then use building block rules to create hidden alerts that act as a basis for an *ordinary* rule to generate visible alerts.
 
 ::::{tip}
-Add [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) to building block rules to notify you when building block alerts are generated. 
+Add [rule notifications](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications) to building block rules to notify you when building block alerts are generated. 
 ::::
 
 

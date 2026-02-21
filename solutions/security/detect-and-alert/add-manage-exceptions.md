@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Add and manage rule exceptions to prevent false positives and reduce alert noise.
 ---
 
 # Add and manage exceptions [add-exceptions]
@@ -17,7 +18,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
 ::::{important}
 * To ensure an exception is successfully applied, ensure that the fields you’ve defined for its query are correctly and consistently mapped in their respective indices. Refer to [ECS](ecs://reference/index.md) to learn more about supported mappings.
-* Be careful when adding exceptions to [event correlation](create-detection-rule.md#create-eql-rule) rules. Exceptions are evaluated against every event in the sequence, and if an exception matches any events that are necessary to complete the sequence, alerts are not created.
+* Be careful when adding exceptions to [event correlation](eql.md) rules. Exceptions are evaluated against every event in the sequence, and if an exception matches any events that are necessary to complete the sequence, alerts are not created.
 
     To exclude values from a specific event in the sequence, update the rule’s EQL statement. For example:
 
@@ -29,13 +30,13 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
       and process.name != "process-name.exe"]`
     ```
 
-* Be careful when adding exceptions to [indicator match](create-detection-rule.md#create-indicator-rule) rules. Exceptions are evaluated against source and indicator indices, so if the exception matches events in *either* index, alerts are not generated.
+* Be careful when adding exceptions to [indicator match](indicator-match.md) rules. Exceptions are evaluated against source and indicator indices, so if the exception matches events in *either* index, alerts are not generated.
 
 ::::
 
 ## Requirements [exceptions-requirements]
 
-To use exceptions ensure your role has the appropriate access. To learn how to access other detection features, refer to [](/solutions/security/detect-and-alert/detections-requirements.md).
+To use exceptions ensure your role has the appropriate access. To learn how to access other detection features, refer to [](/solutions/security/detect-and-alert/requirements-privileges.md).
 
 ### Exceptions requirements
 
@@ -190,7 +191,7 @@ For required privileges to view and manage {{elastic-endpoint}} exceptions, refe
 
 ## Add {{elastic-endpoint}} exceptions [endpoint-rule-exceptions]
 
-You can add {{elastic-endpoint}} exceptions to [endpoint protection rules](../manage-elastic-defend/endpoint-protection-rules.md) or to rules that are associated with {{elastic-endpoint}} rule exceptions. To associate rules when creating or editing a rule, select the [**{{elastic-endpoint}} exceptions**](create-detection-rule.md#rule-ui-advanced-params) option.
+You can add {{elastic-endpoint}} exceptions to [endpoint protection rules](../manage-elastic-defend/endpoint-protection-rules.md) or to rules that are associated with {{elastic-endpoint}} rule exceptions. To associate rules when creating or editing a rule, select the [**{{elastic-endpoint}} exceptions**](rule-settings-reference.md#rule-ui-advanced-params) option.
 
 Endpoint exceptions are added to the endpoint protection rules **and** the {{elastic-endpoint}} on your hosts.
 
@@ -227,7 +228,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
         2. Expand the Endpoint Security Exception List or click the list name to open the list’s details page. Next, click **Add endpoint exception**.
 
             ::::{note}
-            The Endpoint Security Exception List is automatically created. By default, it’s associated with endpoint protection rules and any rules with the [**{{elastic-endpoint}} exceptions**](create-detection-rule.md#rule-ui-advanced-params) option selected.
+            The Endpoint Security Exception List is automatically created. By default, it’s associated with endpoint protection rules and any rules with the [**{{elastic-endpoint}} exceptions**](rule-settings-reference.md#rule-ui-advanced-params) option selected.
             ::::
 
 

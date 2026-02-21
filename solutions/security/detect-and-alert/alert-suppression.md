@@ -14,7 +14,7 @@ description: Use alert suppression to reduce duplicate detection alerts by group
 
 # Suppress detection alerts [security-alert-suppression]
 
-Alert suppression allows you to reduce the number of repeated or duplicate detection alerts created by [detection rules](/solutions/security/detect-and-alert/about-detection-rules.md). Normally, when a rule meets its criteria repeatedly, it creates multiple alerts, one for each time the rule’s criteria are met. When alert suppression is configured, alerts for duplicate events are not created. Instead, the qualifying events are grouped, and only one alert is created for each group. 
+Alert suppression allows you to reduce the number of repeated or duplicate detection alerts created by [detection rules](/solutions/security/detect-and-alert/choose-the-right-rule-type.md). Normally, when a rule meets its criteria repeatedly, it creates multiple alerts, one for each time the rule’s criteria are met. When alert suppression is configured, alerts for duplicate events are not created. Instead, the qualifying events are grouped, and only one alert is created for each group. 
 
 Depending on the rule type, you can configure alert suppression to create alerts each time the rule runs, or once within a specified time window. You can also specify multiple fields to group events by unique combinations of values.
 
@@ -28,7 +28,7 @@ The {{security-app}} displays several indicators in the Alerts table and the ale
 
 ::::
 
-You can configure alert suppression when [creating](/solutions/security/detect-and-alert/create-detection-rule.md) or editing a rule.  
+You can configure alert suppression when [creating](/solutions/security/detect-and-alert/using-the-rule-builder.md) or editing a rule.  
 
 1. When configuring the rule (the **Define rule** step for a new rule, or the **Definition** tab for an existing rule), specify how you want to group alerts for alert suppression:
 
@@ -44,7 +44,7 @@ You can configure alert suppression when [creating](/solutions/security/detect-a
 
     ::::{tip}
     
-    Refer to [Suppression for fields with an array of values](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-fields-with-multiple-values) to learn how fields with multiple values are handled.
+    Refer to [Suppression for fields with an array of values](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-fields-with-multiple-values) to learn how fields with multiple values are handled.
 
     ::::
 
@@ -74,7 +74,7 @@ You can configure alert suppression when [creating](/solutions/security/detect-a
 
 ::::{tip}
 * Use the **Rule preview** before saving the rule to visualize how alert suppression will affect the alerts created, based on historical data.
-* If a rule times out while suppression is turned on, try shortening the rule’s [look-back](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) time or turn off suppression to improve the rule’s performance.
+* If a rule times out while suppression is turned on, try shortening the rule’s [look-back](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-schedule) time or turn off suppression to improve the rule’s performance.
 
 ::::
 
@@ -94,7 +94,7 @@ When specifying fields to suppress alerts by, you can select fields that have mu
 The {{security-app}} displays several indicators of whether a detection alert was created with alert suppression enabled, and how many qualifying alerts were suppressed.
 
 ::::{important}
-Changing an alert's status to `Closed` can affect suppression. Refer to [Impact of closing suppressed alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts) to learn more.
+Changing an alert's status to `Closed` can affect suppression. Refer to [Impact of closing suppressed alerts](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts) to learn more.
 ::::
 
 
@@ -157,8 +157,8 @@ For example, say you set the suppression time period to 5 minutes and specify to
 
 Some rule types have a maximum number of alerts that can be suppressed (custom query rules don’t have a suppression limit):
 
-* **Threshold, event correlation, {{esql}}, and {{ml}}:** The maximum number of alerts is the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params), which is `100` by default.
-* **Indicator match and new terms:** The maximum number is five times the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params). The default value is `100`, which means the default maximum limit for indicator match rules and new terms rules is `500`.
+* **Threshold, event correlation, {{esql}}, and {{ml}}:** The maximum number of alerts is the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params), which is `100` by default.
+* **Indicator match and new terms:** The maximum number is five times the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params). The default value is `100`, which means the default maximum limit for indicator match rules and new terms rules is `500`.
 
 ## Bulk apply and remove alert suppression [security-alert-suppression-bulk-apply]
 

@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Monitor rule executions, execution logs, gaps, and manual runs for detection rules.
 ---
 
 # Monitor rule executions [alerts-ui-monitor]

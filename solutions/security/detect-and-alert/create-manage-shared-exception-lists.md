@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Create and manage shared exception lists to apply the same exceptions to multiple rules.
 ---
 
 # Create and manage shared exception lists [shared-exception-lists]

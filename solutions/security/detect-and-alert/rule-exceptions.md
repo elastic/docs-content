@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Associate rule exceptions with detection rules to prevent trusted activity from generating unnecessary alerts.
 ---
 
 # Rule exceptions [detections-ui-exceptions]
