@@ -162,6 +162,24 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves {{elastic-defend}} on Linux to better handle fanotify events from different mount namespaces.
 * Fixes a bug in {{elastic-defend}} Linux event collection where some long-running processes were not enriched.
 
+
+## 9.2.6 [elastic-security-9.2.6-release-notes]
+
+### Features and enhancements [elastic-security-9.2.6-features-enhancements]
+* Adds a new **Overview** tab to the rule details page [#251662]({{kib-pull}}251662).
+* Adds a `region` field to the Amazon Bedrock connector [#252960]({{kib-pull}}252960), [#252956]({{kib-pull}}252956).
+* Improves Automatic Migration performance by reducing the number of {{es}} calls when updating field mappings [#252431]({{kib-pull}}252431).
+* Updates the `fast-xml-parser` package dependency to version 5.3.4 [#251644]({{kib-pull}}251644).
+
+### Fixes [elastic-security-9.2.6-fixes]
+* Improves the performance of bulk rule deletion [#253116]({{kib-pull}}253116).
+* Fixes accessibility issues in the Security AI Assistant confirm delete modal [#251962]({{kib-pull}}251962).
+* Adds optional field indicators to the OpenAI connector configuration [#251857]({{kib-pull}}251857).
+* Fixes an accessibility issue with a missing label in the Security AI Assistant flyout [#251656]({{kib-pull}}251656).
+* Fixes an issue where detection rules APIs didn't properly validate endpoint response actions [#251352]({{kib-pull}}251352).
+* Fixes an issue where the `os_types` field was not saved when creating an exception list [#250279]({{kib-pull}}250279).
+
+
 ## 9.2.5 [elastic-security-9.2.5-release-notes]
 
 ### Features and enhancements [elastic-security-9.2.5-features-enhancements]
