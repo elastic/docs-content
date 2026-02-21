@@ -186,6 +186,7 @@ toc:
           - file: ingest/logstash/diagnostic.md
       - file: ingest/fleet/fleet-elastic-agent.md
         children:
+          - file: ingest/fleet/diagnostic.md
           - file: ingest/fleet/common-problems.md
           - file: ingest/fleet/frequently-asked-questions.md
       - file: ingest/beats-loggingplugin/elastic-logging-plugin-for-docker.md
