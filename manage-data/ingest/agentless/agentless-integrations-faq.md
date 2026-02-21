@@ -14,5 +14,5 @@ navigation_title: Agentless integrations FAQs
 
 # {{elastic-sec}} agentless integrations FAQs [agentless-integration-troubleshooting]
 
-:::{include} _snippets/agentless-integrations-faq.md
+:::{include} ../_snippets/agentless-integrations-faq.md
 :::

@@ -31,7 +31,7 @@ There is a limit of 5 agentless integrations per project.
 
 Elastic fully supports agentless deployment for the Cloud Security Posture Management (CSPM) integration. Using this integration’s agentless deployment option, you can enable Elastic’s CSPM capabilities just by providing the necessary credentials. Agentless CSPM deployments support AWS, Azure, and GCP accounts.
 
-To learn more about agentless CSPM deployments, refer to the getting started guides for CSPM on [AWS](../cloud/get-started-with-cspm-for-aws.md), [Azure](../cloud/get-started-with-cspm-for-azure.md), or [GCP](../cloud/get-started-with-cspm-for-gcp.md)
+To learn more about agentless CSPM deployments, refer to the getting started guides for CSPM on [AWS](/solutions/security/cloud/get-started-with-cspm-for-aws.md), [Azure](/solutions/security/cloud/get-started-with-cspm-for-azure.md), or [GCP](/solutions/security/cloud/get-started-with-cspm-for-gcp.md)
 
 
 ## Beta agentless integrations
