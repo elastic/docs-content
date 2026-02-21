@@ -45,18 +45,18 @@ The following steps demonstrate a typical investigation flow. It assumes the [Ta
   cat kibana_task_manager_health.json | jq '.stats.runtime.value|{drift, load}'
   ```
 
-For most performance issues, these subsections will report obvious health issues via their status. You can confirm the subsection status’s roll-up from its own child data: 
+For most performance issues, these subsections will report obvious health issues using their status. You can confirm the subsection status’s roll-up from its own child data: 
 
 | Section | Description |
 | --- | --- |
 | [Configuration](#task-manager-health-evaluate-the-configuration) | This section summarizes the current configuration of Task Manager.  This includes dynamic configurations that change over time, such as `poll_interval` and `max_workers`, which can adjust in reaction to changing load on the system. |
 | [Workload](#task-manager-health-evaluate-the-workload) | This section summarizes the work load across the cluster, including the tasks in the system, their types, and current status. |
 | [Runtime](#task-manager-health-evaluate-the-runtime) | This section tracks execution performance of Task Manager, tracking task *drift*, worker *load*, and execution stats broken down by type, including duration and execution results. |
-| [Capacity Estimation](#task-manager-health-evaluate-the-capacity-estimation) | This section provides a rough estimate about the sufficiency of its capacity. As the name suggests, these are estimates based on historical data and should not be used as predictions. Use these estimations when following the Task Manager [Scaling guidance](../production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance). |
+| [Capacity Estimation](#task-manager-health-evaluate-the-capacity-estimation) | This section provides a rough estimate about the sufficiency of its capacity. As the name suggests, these are estimates based on historical data and should not be used as predictions. Use these estimations when following the Task Manager [Scaling guidance](/deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance). |
 
 
 ::::{important}
-Some tasks (such as [connectors](../manage-connectors.md)) will incorrectly report their status as successful even if the task failed. The runtime and workload block will return data about success and failures and will not take this into consideration.
+Some tasks (such as [connectors](/deploy-manage/manage-connectors.md)) will incorrectly report their status as successful even if the task failed. The runtime and workload block will return data about success and failures and will not take this into consideration.
 
 To get a better sense of action failures, refer to the [Event log index](/explore-analyze/alerts-cases/alerts/event-log-index.md) for more accurate context into failures and successes.
 ::::
@@ -955,7 +955,7 @@ For example:
 
 Refer to [Diagnose a root cause for drift](#task-manager-diagnosing-root-cause) for step-by-step instructions on identifying the correct resolution.
 
-*Drift* is often addressed by adjusting the scaling the deployment to better suit your usage. For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage//production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
+*Drift* is often addressed by adjusting the scaling the deployment to better suit your usage. For details on scaling Task Manager, refer to [Scaling guidance](../../deploy-manage//production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 ### What do I do if the Task’s `runAt` is in the past? [task-runat-is-in-the-past]
 
