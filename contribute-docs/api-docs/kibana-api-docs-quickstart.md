@@ -81,6 +81,49 @@ If dependencies are broken or bootstrap fails, run `yarn kbn clean` first. For m
 :sync: code-generated
 Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, request/response schemas, and examples as needed, per the [checklist](checklist.md).
 
+:::{important}
+**Always include version and lifecycle information** using the `availability` option in your route definitions. This powers the version badges and tech preview labels that help users understand when an API was introduced and its stability status.
+
+**The `availability` option includes two fields:**
+
+- **`stability`**: Indicates the lifecycle state of the API
+  - **`experimental`** → Technical preview; may change or be removed in future versions
+  - **`stable`** (default) → Generally available (GA); stable for production use
+- **`since`**: The version when the API was first added (e.g., `'9.2.0'`)
+
+**Note:** The `availability` option is only available at the API/route level. For individual parameters, you must manually document version and lifecycle information in the parameter's description field.
+:::
+
+:::::{dropdown} Basic example
+
+```typescript
+router.versioned.post({
+  path: '/api/example/endpoint',
+  access: 'public',
+  options: {
+    tags: ['example', 'oas-tag:Example APIs'],
+    availability: {
+      stability: 'experimental',  // 'experimental' or 'stable' (default)
+      since: '9.2.0',              // Version when added
+    },
+  },
+})
+```
+:::::
+
+:::::{dropdown} Example from the A2A route
+
+```typescript
+options: {
+  tags: ['a2a', 'oas-tag:agent builder'],
+  availability: {
+    stability: 'experimental',
+    since: '9.2.0',
+  },
+},
+```
+:::::
+
 :::{note}
 **CI will automatically regenerate the OpenAPI files when you push your `.ts` changes.** The next two steps show how to capture the snapshot and add examples locally, which is useful for validating changes before pushing or debugging issues.
 :::
