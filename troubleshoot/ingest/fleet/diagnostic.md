@@ -21,7 +21,7 @@ As explained under [What is {{fleet}} Server?](/reference/fleet/fleet-server.md)
 * {{kib}} from the [{{kib}} {{fleet}} APIs](/reference/fleet/fleet-api-docs.md)
 * {{agent}} and {{fleet}} from their [command reference](/reference/fleet/agent-command-reference.md)
 
-[Standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md) are not associated to {{kibana}} nor {{fleet}}, but their diagnostics are still accessible from the CLI.
+[Standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md) are not associated to {{kib}} nor {{fleet}}, but their diagnostics are still accessible from the CLI.
 
 To pull data from the respective applicable locations, you will refer to:
 
@@ -46,7 +46,7 @@ You will need to determine which diagnostic types are needed to investigate your
 When in doubt, start with the {{kib}} and {{agent}} diagnostics.
 
 :::{tip}
-Some {{agent}} configuration issues only appear in their start-up debug logs. This is more common for cloud-connecting [{{elastic}} Integrations](https://www.elastic.co/docs/reference/integrations) which maintain checkpoints. This can cause later logs to only note that the subprocess has stopped or that it has not changed state from an earlier error. In these situations, you will want to
+Some {{agent}} configuration issues only appear in their start-up debug logs. This is more common for cloud-connecting [Elastic Integrations](https://www.elastic.co/docs/reference/integrations) which maintain checkpoints. This can cause later logs to only document that the subprocess has stopped or that it has not changed state from an earlier error. In these situations, you will want to
 
 1. Enable [`debug` logging](/reference/fleet/monitor-elastic-agent.md#change-logging-level).
 2. [Restart {{agent}}](/reference/fleet/agent-command-reference.md#elastic-agent-restart-command).
@@ -62,7 +62,7 @@ Some {{agent}} configuration issues only appear in their start-up debug logs. Th
 The {{fleet}} UI provides the ability to remotely generate and gather an {{agent}}'s diagnostics bundle if it is online in a [`Healthy` or `Unhealthy` status](/reference/fleet/monitor-elastic-agent.md#view-agent-status). For {{agent}}s in other statuses, you must use the CLI to grab their diagnostic.
 
 :::{warning}
-Diagnostics and logs mainly emit product metadata and settings, but they may expose sensitive data which needs to be redacted before being shared outside of your organization. See [Sanitize](#agent-diagnostics-sanitize)
+Diagnostics and logs mainly emit product metadata and settings, but they might expose sensitive data which needs to be redacted before being shared outside of your organization. Refer to [Sanitize](#agent-diagnostics-sanitize)
 :::
 
 ### Using the {{fleet}} UI [agent-diagnostics-ui]
@@ -167,4 +167,4 @@ Run the [`diagnostics` command](/reference/fleet/agent-command-reference.md#elas
 
 * There are no credentials in plain text in [its `*.yaml` diagnostic files](/reference/fleet/agent-command-reference.md#elastic-agent-diagnostics-command).
 
-* The raw form of event's failing to output may show under `*.ndjson`. By default only `warn` log. When the `debug` logging level is enabled, all events are logged. If you want to omit the raw events from the diagnostic, add the flag `--exclude-events`.
+* The raw form of event's failing to output can show under `*.ndjson`. By default only `warn` log. When the `debug` logging level is enabled, all events are logged. If you want to omit the raw events from the diagnostic, add the flag `--exclude-events`.
