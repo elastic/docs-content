@@ -10,6 +10,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Update modified and unmodified Elastic prebuilt rules, resolve conflicts, and understand rule field update statuses.
 ---
 
 # Update modified and unmodified Elastic prebuilt rules [prebuilt-rules-update-modified-unmodified]
@@ -18,11 +19,11 @@ products:
 
 You must have an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}} to access this feature. 
 
-If you have a Platinum subscription or lower on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, follow the guidelines in [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules) instead.
+If you have a Platinum subscription or lower on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, follow the guidelines in [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#update-prebuilt-rules) instead.
 
 ::::
 
-This page provides instructions for updating modified and unmodified prebuilt rules. You can also find information about [statuses](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#rule-field-update-statuses) or [conflicts](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#resolve-reduce-rule-conflicts) that you might encounter when updating rules. 
+This page provides instructions for updating modified and unmodified prebuilt rules. You can also find information about [statuses](/solutions/security/detect-and-alert/update-prebuilt-rules.md#rule-field-update-statuses) or [conflicts](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts) that you might encounter when updating rules. 
 
 To update rules:
 
@@ -48,9 +49,9 @@ To update rules:
     If you haven't updated the rule in a while, its original version might be unavailable for comparison. Instead, you will only have access to the rule's current version and the incoming Elastic update. You can avoid this by updating prebuilt rules more often.
     ::::
 
-    * Check the update status: View the status of the entire rule update and for [each field that's being changed](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#rule-field-update-statuses). 
+    * Check the update status: View the status of the entire rule update and for [each field that's being changed](/solutions/security/detect-and-alert/update-prebuilt-rules.md#rule-field-update-statuses). 
 
-    * Address update conflicts: Find and address conflicts that [need additional attention](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#resolve-reduce-rule-conflicts). 
+    * Address update conflicts: Find and address conflicts that [need additional attention](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts). 
 
     * Edit the final update: Change the update that will be applied to the field when you update the rule. To change the update, go to the **Final update** section, make your changes, and then save them.
 
@@ -66,7 +67,7 @@ To update rules:
 
 4. From the **Rule Updates** tab, do one of the following to update prebuilt rules:
 
-    * Update all available rules: Click **Update all**. If any rules have conflicts, you will be prompted to take [additional action](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#resolve-reduce-rule-conflicts).
+    * Update all available rules: Click **Update all**. If any rules have conflicts, you will be prompted to take [additional action](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts).
     * Update a single rule without conflicts: Click **Update rule** for that rule. 
     * Update multiple rules: Select the rules and click **Update _x_ selected rule(s)**. If any rules have conflicts, you will be prompted to take additional action.
 
@@ -76,7 +77,7 @@ To update rules:
     To find specific rules to update:
 
     * Use the **Modified/Unmodified** drop-down menu to only display modified or unmodified prebuilt rules.
-    * Use the search bar and **Tags** filter to find the rules you want to update. For example, filter by `OS: Windows` if your environment only includes Windows endpoints. For more on tag categories, refer to [Prebuilt rule tags](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#prebuilt-rule-tags).
+    * Use the search bar and **Tags** filter to find the rules you want to update. For example, filter by `OS: Windows` if your environment only includes Windows endpoints. For more on tag categories, refer to [Prebuilt rule tags](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#prebuilt-rule-tags).
 
     ::::
 
@@ -88,8 +89,8 @@ This table describes statuses that might appear for rule fields being updated.
 | --- | --- |
 | **Ready for update** | Displays when there are no conflicts to resolve.<br><br>Further action is not required for the field. It is ready to be updated.<br> |
 | **No update** | Displays when the field is not being updated by Elastic, but the current field value differs from the original one. This typically happens when the field's value was changed after the prebuilt rule was initially installed.<br><br>Further action is not required for the field. It is ready to be updated.<br><br> **Tip**: You can still change the final field update, if needed. To do so, make your changes in the **Final update** section and save them.<br><br> |
-| **Review required** | Displays when Elastic auto-resolves a conflict between the current field value and the value from the incoming Elastic update.<br><br>You must accept or edit the field's final update and save the changes. Refer to [Resolve and reduce update conflicts](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#resolve-reduce-rule-conflicts) to learn more about auto-resolved conflicts and how to reduce future conflicts.<br> |
-| **Action required** | Displays when Elastic could not auto-resolve the conflict between the current field value and the value from the incoming Elastic update.<br><br>You must manually set and save the field's final update. Refer to [Resolve and reduce update conflicts](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#resolve-reduce-rule-conflicts) to learn more about conflicts that need manual fixes and how to reduce future conflicts.<br> |
+| **Review required** | Displays when Elastic auto-resolves a conflict between the current field value and the value from the incoming Elastic update.<br><br>You must accept or edit the field's final update and save the changes. Refer to [Resolve and reduce update conflicts](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts) to learn more about auto-resolved conflicts and how to reduce future conflicts.<br> |
+| **Action required** | Displays when Elastic could not auto-resolve the conflict between the current field value and the value from the incoming Elastic update.<br><br>You must manually set and save the field's final update. Refer to [Resolve and reduce update conflicts](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts) to learn more about conflicts that need manual fixes and how to reduce future conflicts.<br> |
 
 
 ## Resolve and reduce update conflicts [resolve-reduce-rule-conflicts]

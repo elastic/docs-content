@@ -95,7 +95,7 @@ Be aware that automatic host isolation can result in unintended consequences, su
 
 1. Add an endpoint response action to a new or existing custom query rule. The endpoint response action will run whenever rule conditions are met:
 
-    * **New rule**: On the last step of [custom query rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-custom-rule) creation, go to the **Response Actions** section and select **{{elastic-defend}}**.
+    * **New rule**: On the last step of [custom query rule](/solutions/security/detect-and-alert/custom-query.md) creation, go to the **Response Actions** section and select **{{elastic-defend}}**.
     * **Existing rule**: Edit the rule’s settings, then go to the **Actions** tab. In the tab, select **{{elastic-defend}}** under the **Response Actions** section.
 
 2. In the **Response action** field, select **Isolate**.

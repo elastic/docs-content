@@ -55,7 +55,7 @@ The rule type also affects the privileges that are required to create and edit r
 * For {{ml}} rules, you must have `all` privileges for the **Analytics > {{ml-app}}** feature.
 * For {{stack-monitor-app}} rules, you must have the `monitoring_user` role.
 * For most {{observability}} rules, you must have `all` privileges for the appropriate {{observability}} features. However, for a custom threshold rule, you only need the `stack alerts` privilege.
-* For Security rules, refer to [](../../../solutions/security/detect-and-alert/detections-requirements.md).
+* For Security rules, refer to [](../../../solutions/security/detect-and-alert/requirements-privileges.md).
 
 ::::
 
@@ -68,7 +68,7 @@ The rule type also affects the privileges that are required to create and edit r
 * `Read` for the **Management > {{connectors-feature}}** feature.
 
 ::::{note}
-The rule type also affects the privileges that are required. For example, to view {{ml}} rules, you must have `read` privileges for the **Analytics > {{ml-app}}** feature. For {{stack-monitor-app}} rules, you must have the `monitoring_user` role. For {{observability}} rules, you must have `read` privileges for the appropriate {{observability}} features. For Security rules, refer to [](../../../solutions/security/detect-and-alert/detections-requirements.md).
+The rule type also affects the privileges that are required. For example, to view {{ml}} rules, you must have `read` privileges for the **Analytics > {{ml-app}}** feature. For {{stack-monitor-app}} rules, you must have the `monitoring_user` role. For {{observability}} rules, you must have `read` privileges for the appropriate {{observability}} features. For Security rules, refer to [](../../../solutions/security/detect-and-alert/requirements-privileges.md).
 
 ::::
 

@@ -571,36 +571,60 @@ toc:
           - file: security/ai/ease/ease-value-report.md
       - file: security/detect-and-alert.md
         children:
-          - file: security/detect-and-alert/detections-requirements.md
-          - file: security/detect-and-alert/detections-privileges.md
-          - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
-          - file: security/detect-and-alert/about-detection-rules.md
-          - file: security/detect-and-alert/create-detection-rule.md
+          - file: security/detect-and-alert/before-you-begin.md
             children:
-              - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
-              - file: security/detect-and-alert/launch-timeline-from-investigation-guides.md
-              - file: security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md
-          - file: security/detect-and-alert/install-manage-elastic-prebuilt-rules.md
+              - file: security/detect-and-alert/requirements-privileges.md
+              - file: security/detect-and-alert/detections-privileges.md
+              - file: security/detect-and-alert/advanced-data-source-configuration.md
+                children:
+                  - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
+                  - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
+          - file: security/detect-and-alert/prebuilt-rules.md
             children:
-              - file: security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md
+              - file: security/detect-and-alert/install-manage-prebuilt-rules.md
+              - file: security/detect-and-alert/update-prebuilt-rules.md
+              - file: security/detect-and-alert/mitre-attack-coverage.md
+          - file: security/detect-and-alert/create-a-detection-rule.md
+            children:
+              - file: security/detect-and-alert/choose-the-right-rule-type.md
+                children:
+                  - file: security/detect-and-alert/about-building-block-rules.md
+              - file: security/detect-and-alert/rule-types.md
+                children:
+                  - file: security/detect-and-alert/eql.md
+                  - file: security/detect-and-alert/custom-query.md
+                  - file: security/detect-and-alert/threshold.md
+                  - file: security/detect-and-alert/indicator-match.md
+                  - file: security/detect-and-alert/new-terms.md
+                  - file: security/detect-and-alert/esql.md
+                  - file: security/detect-and-alert/machine-learning.md
+              - file: security/detect-and-alert/using-the-rule-builder.md
+              - file: security/detect-and-alert/using-the-api.md
+
+              - file: security/detect-and-alert/set-rule-data-sources.md
+              - file: security/detect-and-alert/write-investigation-guides.md
+              - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
-          - file: security/detect-and-alert/rule-exceptions.md
+          - file: security/detect-and-alert/reduce-noise-and-false-positives.md
             children:
-              - file: security/detect-and-alert/create-manage-value-lists.md
-              - file: security/detect-and-alert/add-manage-exceptions.md
-              - file: security/detect-and-alert/create-manage-shared-exception-lists.md
-          - file: security/detect-and-alert/about-building-block-rules.md
-          - file: security/detect-and-alert/mitre-attandckr-coverage.md
+              - file: security/detect-and-alert/tune-detection-rules.md
+              - file: security/detect-and-alert/rule-exceptions.md
+                children:
+                  - file: security/detect-and-alert/create-manage-value-lists.md
+                  - file: security/detect-and-alert/add-manage-exceptions.md
+                  - file: security/detect-and-alert/create-manage-shared-exception-lists.md
+              - file: security/detect-and-alert/alert-suppression.md
+              - file: security/detect-and-alert/snooze-rule-actions.md
           - file: security/detect-and-alert/manage-detection-alerts.md
             children:
               - file: security/detect-and-alert/visualize-detection-alerts.md
               - file: security/detect-and-alert/view-detection-alert-details.md
               - file: security/detect-and-alert/add-detection-alerts-to-cases.md
-              - file: security/detect-and-alert/suppress-detection-alerts.md
-          - file: security/detect-and-alert/reduce-notifications-alerts.md
-          - file: security/detect-and-alert/query-alert-indices.md
-          - file: security/detect-and-alert/tune-detection-rules.md
+          - file: security/detect-and-alert/detections-reference.md
+            children:
+              - file: security/detect-and-alert/rule-settings-reference.md
+              - file: security/detect-and-alert/query-alert-indices.md
       - file: security/configure-elastic-defend.md
         children:
           - file: security/configure-elastic-defend/elastic-defend-requirements.md

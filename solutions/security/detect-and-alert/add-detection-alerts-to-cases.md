@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Attach one or more detection alerts to new or existing cases from the Alerts table.
 ---
 
 # Add detection alerts to cases [security-signals-to-cases]

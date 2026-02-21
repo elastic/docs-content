@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Optimize detection rules to reduce noise by adding exceptions, disabling rules, cloning rules, or enabling suppression.
 ---
 
 # Tune detection rules [security-tune-detection-signals]
@@ -24,7 +25,7 @@ Using the {{security-app}}, you can tune prebuilt and custom detection rules to 
 * Disable detection rules that rarely produce actionable alerts because they match expected local behavior, workflows, or policy exceptions.
 * [Clone and modify](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules) detection rule queries so they are aligned with local policy exceptions. This reduces noise while retaining actionable alerts.
 * Clone and modify detection rule risk scores, and use branching logic to map higher risk scores to higher priority workflows.
-* Enable [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for custom query rules to reduce the number of repeated or duplicate alerts.
+* Enable [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) for custom query rules to reduce the number of repeated or duplicate alerts.
 
 For details about tuning rules for specific categories:
 
@@ -137,7 +138,7 @@ Take the following steps to tune indicator match rules:
 * Avoid cluster performance issues by scheduling your rule to run in one-hour intervals or longer. For example, avoid scheduling an indicator match rule to check for indicators every five minutes.
 
 ::::{note}
-{{elastic-sec}} provides limited support for indicator match rules. Visit [support limitations](/solutions/security/detect-and-alert.md#support-indicator-rules) for more information.
+{{elastic-sec}} provides limited support for indicator match rules. Visit [Indicator match rules](/solutions/security/detect-and-alert/indicator-match.md) for more information.
 ::::
 
 

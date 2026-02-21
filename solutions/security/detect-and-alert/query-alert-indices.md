@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Query alert indices when building rule queries, dashboards, or visualizations in Elastic Security.
 ---
 
 # Query alert indices [security-query-alert-indices]

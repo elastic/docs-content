@@ -138,7 +138,7 @@ The table's fields are as follows:
   * `Failed`: Translation failed. Refer to the the error for details.
 * **Risk Score:** For Elastic-authored rules, risk scores are predefined. For custom translated rules, risk scores are defined as follows:
   * If the source rule has a field comparable to Elastic's `risk score`, we use that value.
-  * Otherwise, if the source rule has a field comparable to Elastic's `rule severity` field, we base the risk score on that value according to [these guidelines](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+  * Otherwise, if the source rule has a field comparable to Elastic's `rule severity` field, we base the risk score on that value according to [these guidelines](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-basic-params).
   * If neither of the above apply, we assign a default value.
 * **Rule severity:** For Elastic-authored rules, severity scores are predefined. For custom translated rules, risk scores are based on the source rule's severity field. Splunk severity scores are translated to Elastic rule severity scores as follows:
 

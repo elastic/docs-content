@@ -19,7 +19,7 @@ In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM 
 * If you're using the recommended integration in this guide, {{elastic-defend}}, then: 
   * Ensure you have the minimum [system requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) to install {{elastic-defend}}. 
   * Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). At the least, you need `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
-* We recommend `manage` and `write` access to manage rules and alerts. Refer to [](/solutions/security/detect-and-alert/detections-privileges.md) for the required cluster, index, and space privileges. 
+* We recommend `manage` and `write` access to manage rules and alerts. Refer to [](/solutions/security/detect-and-alert/requirements-privileges.md) for the required cluster, index, and space privileges. 
 
 ## Add data using {{elastic-defend}}
 
@@ -110,7 +110,7 @@ Detection rules allow you to monitor your environment by searching for source ev
 :::
     
 ::::{tip}
-{{elastic-sec}} regularly updates prebuilt rules to ensure they detect the latest threats. However, you must manually update these rules to the latest version. To learn how to do this, refer to [Update prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules).  To learn how to view and manage all detection rules, refer to [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md). 
+{{elastic-sec}} regularly updates prebuilt rules to ensure they detect the latest threats. However, you must manually update these rules to the latest version. To learn how to do this, refer to [Update prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#update-prebuilt-rules).  To learn how to view and manage all detection rules, refer to [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md). 
 ::::
 
 :::

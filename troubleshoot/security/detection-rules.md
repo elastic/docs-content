@@ -17,7 +17,7 @@ products:
 # Troubleshoot detection rules [ts-detection-rules]
 
 
-This topic covers common troubleshooting issues when creating or managing [detection rules](../../solutions/security/detect-and-alert/create-detection-rule.md).
+This topic covers common troubleshooting issues when creating or managing [detection rules](../../solutions/security/detect-and-alert/using-the-rule-builder.md).
 
 
 ## {{ml-cap}} rules [ML-rules-ts]
@@ -150,7 +150,7 @@ You can also use Task Manager in {{kib}} to troubleshoot background tasks and pr
 
 When a rule reaches the maximum number of alerts it can generate during a single rule execution, the following warning appears on the rule’s details page and in the rule execution log: `This rule reached the maximum alert limit for the rule execution. Some alerts were not created.`
 
-If you receive this warning, go to the rule’s **Alerts** tab and check for anything unexpected. Unexpected alerts might be created from data source issues or queries that are too broadly scoped. To further reduce alert volume, you can also add [rule exceptions](../../solutions/security/detect-and-alert/add-manage-exceptions.md) or [suppress alerts](../../solutions/security/detect-and-alert/suppress-detection-alerts.md).
+If you receive this warning, go to the rule’s **Alerts** tab and check for anything unexpected. Unexpected alerts might be created from data source issues or queries that are too broadly scoped. To further reduce alert volume, you can also add [rule exceptions](../../solutions/security/detect-and-alert/add-manage-exceptions.md) or [suppress alerts](../../solutions/security/detect-and-alert/alert-suppression.md).
 
 
 ### Troubleshoot gaps [troubleshoot-gaps]
@@ -162,7 +162,7 @@ It’s recommended to set the `Additional look-back time` to at least 1 minute. 
 {{elastic-sec}} prevents duplication. Any duplicate alerts that are discovered during the `Additional look-back time` are *not* created.
 
 ::::{note}
-If the rule that experiences gaps is an indicator match rule, see [how to tune indicator match rules](../../solutions/security/detect-and-alert/tune-detection-rules.md#tune-indicator-rules). Also note that {{elastic-sec}} provides [limited support for indicator match rules](../../solutions/security/detect-and-alert.md#support-indicator-rules).
+If the rule that experiences gaps is an indicator match rule, see [how to tune indicator match rules](../../solutions/security/detect-and-alert/tune-detection-rules.md#tune-indicator-rules). Also note that {{elastic-sec}} provides [limited support for indicator match rules](../../solutions/security/detect-and-alert/indicator-match.md).
 ::::
 
 
@@ -178,7 +178,7 @@ Even if your rule runs at its scheduled time, there might still be missing alert
 
 In addition, use caution when creating custom rule schedules to ensure that the specified interval + additional look-back time is greater than your deployment’s ingestion pipeline delay.
 
-You can reduce the number of missed alerts due to ingestion pipeline delay by specifying the `Timestamp override` field value to `event.ingested` in [advanced settings](../../solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) during rule creation or editing. The detection engine uses the value from the `event.ingested` field as the timestamp when executing the rule.
+You can reduce the number of missed alerts due to ingestion pipeline delay by specifying the `Timestamp override` field value to `event.ingested` in [advanced settings](../../solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params) during rule creation or editing. The detection engine uses the value from the `event.ingested` field as the timestamp when executing the rule.
 
 For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} until 10:10 due to an ingestion pipeline delay. If you created a rule to detect that event with an interval + additional look-back time of 6 minutes, and the rule executes at 10:12, it would still detect the event because the `event.ingested` timestamp was from 10:10, only 2 minutes before the rule executed and well within the rule’s 6-minute interval + additional look-back time.
 

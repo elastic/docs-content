@@ -80,8 +80,8 @@ The non-ECS fields listed below are beta and subject to change.
 | `kibana.alert.original_event.*` | Event information copied from the original source event.<br>Type: object |
 | `kibana.alert.original_time` | The value copied from the source event (`@timestamp`).<br>Type: date |
 | `kibana.alert.reason` | Type: keyword |
-| `kibana.alert.rule.author` | The value of the `author` who created the rule. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params).<br>Type: keyword |
-| `kibana.alert.building_block_type` | The value of `building_block_type` from the rule that generated this alert. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params).<br>Type: keyword |
+| `kibana.alert.rule.author` | The value of the `author` who created the rule. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params).<br>Type: keyword |
+| `kibana.alert.building_block_type` | The value of `building_block_type` from the rule that generated this alert. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params).<br>Type: keyword |
 | `kibana.alert.rule.created_at` | The value of `created.at` from the rule that generated this alert.<br>Type: date |
 | `kibana.alert.rule.created_by` | Type: keyword |
 | `kibana.alert.rule.description` | Type: keyword |

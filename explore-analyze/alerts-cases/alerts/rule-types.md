@@ -10,7 +10,7 @@ products:
 
 # Rule types [rule-types]
 
-A rule is a set of [conditions](../alerts.md#rules-conditions), [schedules](../alerts.md#rules-schedule), and [actions](../alerts.md#rules-actions ) that enable notifications. {{kib}} provides rules built into the {{stack}} and rules registered by one of the {{kib}} apps. You can create most rules types in [{{stack-manage-app}} > {{rules-ui}}](create-manage-rules.md). Security rules must be defined in the Security app. For more information, refer to the documentation about [creating a detection rule](../../../solutions/security/detect-and-alert/create-detection-rule.md).
+A rule is a set of [conditions](../alerts.md#rules-conditions), [schedules](../alerts.md#rules-schedule), and [actions](../alerts.md#rules-actions ) that enable notifications. {{kib}} provides rules built into the {{stack}} and rules registered by one of the {{kib}} apps. You can create most rules types in [{{stack-manage-app}} > {{rules-ui}}](create-manage-rules.md). Security rules must be defined in the Security app. For more information, refer to the documentation about [creating a detection rule](../../../solutions/security/detect-and-alert/using-the-rule-builder.md).
 
 ::::{note}
 Some rule types are subscription features, while others are free features. For a comparison of the Elastic subscription levels, see [the subscription page](https://www.elastic.co/subscriptions).

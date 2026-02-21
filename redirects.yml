@@ -701,3 +701,17 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/5033
   'solutions/observability/observability-ai-assistant.md': 'solutions/observability/ai/observability-ai-assistant.md'
   'solutions/observability/llm-performance-matrix.md': 'solutions/observability/ai/llm-performance-matrix.md'
+
+# Related to Detect & Alert section restructure (issue #1210)
+  # Renamed files
+  'solutions/security/detect-and-alert/detections-requirements.md': 'solutions/security/detect-and-alert/requirements-privileges.md'
+  'solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md': 'solutions/security/detect-and-alert/install-manage-prebuilt-rules.md'
+  'solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md': 'solutions/security/detect-and-alert/update-prebuilt-rules.md'
+  'solutions/security/detect-and-alert/mitre-attandckr-coverage.md': 'solutions/security/detect-and-alert/mitre-attack-coverage.md'
+  'solutions/security/detect-and-alert/about-detection-rules.md': 'solutions/security/detect-and-alert/choose-the-right-rule-type.md'
+  'solutions/security/detect-and-alert/create-detection-rule.md': 'solutions/security/detect-and-alert/using-the-rule-builder.md'
+  'solutions/security/detect-and-alert/launch-timeline-from-investigation-guides.md': 'solutions/security/detect-and-alert/write-investigation-guides.md'
+  'solutions/security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md': 'solutions/security/detect-and-alert/set-rule-data-sources.md'
+  'solutions/security/detect-and-alert/suppress-detection-alerts.md': 'solutions/security/detect-and-alert/alert-suppression.md'
+  'solutions/security/detect-and-alert/reduce-notifications-alerts.md': 'solutions/security/detect-and-alert/snooze-rule-actions.md'
+  'solutions/security/detect-and-alert/reference.md': 'solutions/security/detect-and-alert/detections-reference.md'

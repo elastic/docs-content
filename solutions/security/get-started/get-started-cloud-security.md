@@ -80,7 +80,7 @@ You can create a detection rule directly from the **Findings** page:
 
 1. Click the arrow to the left of a finding to open the findings flyout.
 2. Click **Take action**, then **Create a detection rule**. 
-3. To review or customize the new rule, click **View rule**. For example, you might want to set up a rule action—like an email or Slack notification—when alerts are generated. To learn more about rule actions, refer to [](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications).   
+3. To review or customize the new rule, click **View rule**. For example, you might want to set up a rule action—like an email or Slack notification—when alerts are generated. To learn more about rule actions, refer to [](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications).   
 
 ## More resources 
 
