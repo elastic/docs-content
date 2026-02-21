@@ -92,33 +92,3 @@ Detected potential performance issue with Task Manager. Set 'xpack.task_manager.
 ```
 
 If this message appears, set [`xpack.task_manager.monitored_stats_health_verbose_log.enabled`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) to `true` in your [`kibana.yml`](/deploy-manage/stack-settings.md). This will start logging the health metrics at either a `warn` or `error` log level, depending on the detected severity of the potential problem.
-
-
-## Making sense of Task Manager health stats [making-sense-of-task-manager-health-stats]
-
-The health monitoring API exposes the following sections:
-
-| Section | Description |
-| --- | --- |
-| Configuration | This section summarizes the current configuration of Task Manager.  This includes dynamic configurations that change over time, such as `poll_interval` and `max_workers`, which can adjust in reaction to changing load on the system. |
-| Workload | This section summarizes the work load across the cluster, including the tasks in the system, their types, and current status. |
-| Runtime | This section tracks execution performance of Task Manager, tracking task *drift*, worker *load*, and execution stats broken down by type, including duration and execution results. |
-| Capacity Estimation | This section provides a rough estimate about the sufficiency of its capacity. As the name suggests, these are estimates based on historical data and should not be used as predictions. Use these estimations when following the Task Manager [Scaling guidance](../production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance). |
-
-Each section has a `timestamp` and a `status` that indicates when the last update to this section took place and whether the health of this section was evaluated as `OK`, `Warning` or `Error`.
-
-The root `status` indicates the `status` of the system overall.
-
-The Runtime `status` indicates whether task executions have exceeded any of the [configured health thresholds](#task-manager-configuring-health-monitoring). An `OK` status means none of the threshold have been exceeded. A `Warning` status means that at least one warning threshold has been exceeded. An `Error` status means that at least one error threshold has been exceeded.
-
-::::{important}
-Some tasks (such as [connectors](../manage-connectors.md)) will incorrectly report their status as successful even if the task failed. The runtime and workload block will return data about success and failures and will not take this into consideration.
-
-To get a better sense of action failures, refer to the [Event log index](../../explore-analyze/alerts-cases/alerts/event-log-index.md) for more accurate context into failures and successes.
-
-::::
-
-
-The Capacity Estimation `status` indicates the sufficiency of the observed capacity. An `OK` status means capacity is sufficient. A `Warning` status means that capacity is sufficient for the scheduled recurring tasks, but non-recurring tasks often cause the cluster to exceed capacity. An `Error` status means that there is insufficient capacity across all types of tasks.
-
-By monitoring the `status` of the system overall, and the `status` of specific task types of interest, you can evaluate the health of the {{kib}} Task Management system.
