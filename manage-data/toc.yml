@@ -103,10 +103,10 @@ toc:
             children:
               - file: ingest/ingest-reference-architectures/agent-es-airgapped.md
               - file: ingest/ingest-reference-architectures/agent-ls-airgapped.md
-      - file: security/get-started/agentless-integrations.md
+      - file: ingest/agentless/agentless-integrations.md
         children:
-          - file: security/get-started/cloud-connector-deployment.md
-          - file: security/get-started/agentless-integrations-faq.md
+          - file: ingest/agentless/cloud-connector-deployment.md
+          - file: ingest/agentless/agentless-integrations-faq.md
       - file: ingest/sample-data.md
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
