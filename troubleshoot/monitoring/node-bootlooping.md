@@ -6,6 +6,7 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+    ece: all
 products:
   - id: cloud-hosted
 ---
