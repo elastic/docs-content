@@ -2,6 +2,12 @@
 applies_to:
   stack: preview 9.2
   serverless: unavailable
+products:
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Use cases as data [use-cases-as-data]

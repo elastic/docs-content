@@ -1,6 +1,6 @@
 ---
-description: Reference of all built-in tools available in Elastic Agent Builder
 navigation_title: "Built-in tools"
+description: "Reference of all built-in tools available in Elastic Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -14,7 +14,7 @@ products:
 
 <!-- Note: This file contains commented-out tool sections for features on main that are not yet available in released versions. -->
 
-# Elastic Agent Builder built-in tools reference
+# {{agent-builder}} built-in tools reference
 
 This page lists all built-in tools available in {{agent-builder}}. Built-in tools enable core operations for working with {{es}} data across platform, observability, and security use cases out-of-the-box.
 

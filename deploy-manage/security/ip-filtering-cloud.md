@@ -36,6 +36,14 @@ To learn how to create IP filters for {{ece}} deployments, refer to [](ip-filter
 To learn how to create IP filters for self-managed clusters or {{eck}} deployments, refer to [](ip-filtering-basic.md).
 :::
 
+## Requirements
+
+Serverless projects require the Serverless Plus add-on to apply IP filter policies. During the promotional period, applying an IP filter policy to a project opts that project in to Serverless Plus. 
+
+:::{tip}
+You can opt out by disconnecting all policies from the project.
+:::
+
 ## Apply an IP filter to a deployment or project
 
 To apply an IP filter to a deployment or project, you must first create an IP filter policy (referred to as "IP filter") at the organization or platform level, and then apply it to your deployment.
@@ -65,9 +73,9 @@ To create an IP filter:
 7.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the  IP filter with a deployment or project, it starts filtering traffic.
 
     :::{tip}
-    You can apply multiple policies to a single deployment. For {{ech}} deployments, you can apply both IP filter policies and private connection policies. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+    You can apply multiple policies to a single deployment or project. For {{ech}} deployments and {{serverless-short}} projects, you can apply both IP filter policies and private connection policies. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
-    [Learn more about how network security policies affect your deployment](network-security-policies.md).
+    [Learn more about how network security policies affect your deployment or project](network-security-policies.md).
     :::
 
 8.  To automatically attach this IP filter to new deployments or projects, select **Apply by default**.
@@ -77,10 +85,12 @@ To create an IP filter:
 
 You can associate an IP filter with your deployment or project from the IP filter's settings, or from your deployment or project's settings. After you associate the IP filter with a deployment or project, it starts filtering traffic.
 
-:::{tip}
-You can apply multiple policies to a single deployment. For {{ech}} deployments, you can apply both IP filter policies and private connection policies. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+Serverless projects require the Serverless Plus add-on to apply IP filters. During the promotional period, applying an IP filter to a project opts that project in to Serverless Plus.
 
-[Learn more about how network security policies affect your deployment](network-security-policies.md).
+:::{tip}
+You can apply multiple policies to a single deployment or project. For {{ech}} deployments and {{serverless-short}} projects, you can apply both IP filter policies and private connection policies. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+
+[Learn more about how network security policies affect your deployment or project](network-security-policies.md).
 :::
 
 #### From a deployment or project

@@ -27,8 +27,9 @@ Example
     In such use cases, agents send the data to {{ls}} as a routing mechanism to different destinations. The System and Windows integrations must be installed on all {{es}} clusters to which the data is routed.
 
 
-Sample config
-:   ```ruby
+## Sample config: Sending data to both {{ech}} and {{es-serverless}}
+
+```ruby
 input {
   elastic_agent {
     port => 5044
@@ -44,18 +45,17 @@ filter {
 output {
   if [@metadata][tenant] == "tenant01" {
     elasticsearch {
-      cloud_id => "<cloud id>"
+      hosts => "ELASTICSEARCH_ENDPOINT_URL"         # Use the `hosts` option with the Elasticsearch endpoint URL to send data to Elasticsearch Serverless
       api_key => "<api key>"
     }
   } else if [@metadata][tenant] == "tenant02" {
     elasticsearch {
-      cloud_id => "<cloud id>"
+      cloud_id => "<cloud id>"         # Use `cloud_id` to send data to Elastic Cloud Hosted
       api_key => "<api key>"
     }
   }
 }
 ```
-
 
 
 ## Resources [multi-resources]

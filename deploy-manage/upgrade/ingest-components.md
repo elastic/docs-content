@@ -2,6 +2,14 @@
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elastic-stack
+  - id: elastic-agent
+  - id: fleet
+  - id: beats
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: logstash
 ---
 # Upgrade your ingest components
 
