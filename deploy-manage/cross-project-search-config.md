@@ -9,6 +9,10 @@ navigation_title: "Cross-project search"
 
 # Configure {{cps}} [configure-cross-project-search]
 
+::::{admonition} WIP
+This page is in progress. See the various TODOs (some are in comments). 
+::::
+
 % TODO reconcile with E&A doc
 % TODO match phrasing of admin docs (esp you/user)
 % TODO apply our new content types
@@ -50,9 +54,8 @@ To configure {{cps}}, make sure you meet these prerequisites:
 % TODO match to Learn More link(s)
 
 ::::{important}
-% TODO applies-to
-**Preview: Origin projects must be new**<br>
-During technical preview, only newly created projects can be origin projects for {{cps}}. To get started, create a new {{serverless-short}} project and link it to your existing projects.
+:applies_to: serverless: preview
+**Origin projects must be new**: During technical preview, only newly created projects can be origin projects for {{cps}}. To get started, create a new {{serverless-short}} project and link it to your existing projects.
 ::::
 
 When you configure {{cps}}, only compatible projects are available for linking:
@@ -65,7 +68,7 @@ When you configure {{cps}}, only compatible projects are available for linking:
 
 Workplace AI projects are not compatible with {{cps}}.
 
-{{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. During technical preview, {{cps}} linking is supported for Complete-to-Complete project connections.
+{applies_to}`serverless: preview` {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. During technical preview, {{cps}} linking is supported for Complete-to-Complete project connections.
 
 % TODO add licensing/subscription tier details incl Platform+ pack
 
@@ -104,6 +107,8 @@ On the origin project's **{{cps-cap}}** page, you can reconfigure {{cps}} as nee
 
 % TODO repetitive    
 
+TODO move [project ID and alias info](/explore-analyze/cross-project-search.md#project-id-and-aliases) here
+
 ### Unlink projects [cps-unlink-projects]
 
 You can remove linked projects from your origin project at any time. Select the checkbox next to the projects you want to remove from {{cps}}, then click **Unlink**.
@@ -127,6 +132,8 @@ As an administrator, make sure that users who need to search across linked proje
 % TODO confirm: "if I create an API key from inside of my project for personal use, do I get CPS results at all?"
 % TODO link to UIAM docs and summarize?
 % TODO altering impacts of user role changes 
+
+For details about managing roles and API keys, refer to [Users and roles](/deploy-manage/users-roles.md) and [API keys](/deploy-manage/api-keys.md).
 
 ## Configure the default search scope [cps-search-scope]
 
@@ -214,18 +221,15 @@ Enabling {{cps}} affects several features in the origin project:
 % TODO double-check all sources 
 % TODO are all of these limitations? do some belong in the overview?
 
-- **New projects only (technical preview):** During the technical preview, only newly created projects can function as origin projects. This is a temporary restriction.
+- {applies_to}`serverless: preview` **New projects only:** During technical preview, only newly created projects can function as origin projects. This is a temporary restriction. 
 - **Maximum of 20 linked projects:** Each origin project can have up to 20 linked projects. A linked project can be associated with any number of origin projects.
 - **No chaining or transitivity:** If Project A links to Project B, and Project B links to Project C, Project A cannot search Project C. Each link is independent.
 - **Links are unidirectional:** Searches that run from a linked project do **not** run against the origin project. If you need bidirectional search, link the projects twice, in both directions.
 - **System indices are excluded:** System indices (such as `.security` and `.fleet-*`) are excluded from {{cps}}.
-- **Some APIs are not supported.** `_reindex` (cross-project), `_transform`, and `_fleet_search` are not supported for cross-project use.
-- **Failure store:** Failure store does not work with {{cps}} in the technical preview.
+- **Some APIs are not supported:** `_reindex` (cross-project), `_transform`, and `_fleet_search` are not supported for cross-project use.
+- TODO verify {applies_to}`serverless: preview`**Failure store:** Failure store does not work with {{cps}} in the technical preview.
 - **Workplace AI projects:** Workplace AI projects are not compatible with {{cps}}.
-% TODO applies to preview for the next one
-- **Project aliases:** In technical preview, you can't edit a project's alias on the **{{cps-cap}}** page.
-
-% TODO ^^ is that last one something we don't want to mention?
+- {applies_to}`serverless: preview` **Project aliases:** During technical preview, you can't edit a project's alias on the **{{cps-cap}}** page.  
 
 ## Using APIs with {{cps-init}}
 
