@@ -9,6 +9,17 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+
+## February 23, 2026 [serverless-changelog-02172026]
+
+### Features and enhancements [serverless-changelog-02172026-features-enhancements]
+
+Adds four new Microsoft Azure [regions](/deploy-manage/deploy/elastic-cloud/regions.md) for {{serverless-full}}: 
+* East US 2 (`eastus2`) located in Virginia
+* Germany West Central (`germanywestcentral`) located in Frankfurt
+* Southeast Asia (`southeastasia`) located in Singapore
+* Spain Central (`spaincentral`) located in Madrid
+
 ## February 16, 2026 [serverless-changelog-02162026]
 
 ### Features and enhancements [serverless-changelog-02162026-features-enhancements]
@@ -151,7 +162,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Reduces cancellation check interval in `CancellableBulkScorer` for better responsiveness [#141747]({{es-pull}}141747)
 * Refreshes SQL PIT ID after each response [#141736]({{es-pull}}141736)
 * Updates constant-value fields to support normalized wildcard queries [#141784]({{es-pull}}141784)
-
 
 ## February 2, 2026 [serverless-changelog-02022026]
 

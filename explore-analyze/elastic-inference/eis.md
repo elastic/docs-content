@@ -57,6 +57,7 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 ::::{important}
 * The applicable terms of use, uptime, and performance for each of the AI models available with EIS are each described in the applicable AI model's Provider Terms and Model Card.
 * Prior to using the AI model with EIS, Customers are responsible for reviewing and agreeing to the chosen AI model's Provider Terms to understand the availability and data practices of the AI model's provider.
+* After the listed end-of-life (EOL) date, the model is no longer available for {{infer}} use and requests will fail. You need to actively transition to another model before the EOL date, there is no automated migration.
 ::::
 
 ## Region and hosting [eis-regions]
