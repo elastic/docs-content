@@ -14,17 +14,22 @@ navigation_title: "Cross-project search"
 % TODO apply our new content types
 % TODO fix applies-tos at all levels
 
-With {{cps}}, users can search across multiple linked {{serverless-full}} projects from a single origin project. This page explains how to configure and manage {{cps}} for your users, including linking projects, managing user access, and configuring search scopes.
+With {{cps}} ({{cps-init}}), users can search across multiple linked {{serverless-full}} projects from a single origin project. This page explains how to configure and manage {{cps}} for your users, including linking projects, managing user access, and configuring search scopes.
 
 % TODO expand overview
 
-To configure {{cps}}, start by linking projects within your {{ecloud}} organization. The project from which you create links and run searches is called the _origin project._ The projects you connect to the origin project are called _linked projects._ After you link projects, searches from the origin project automatically run across the origin and all linked projects.
+{{cps-cap}} runs across _origin_ and _linked_ projects within your {{ecloud}} organization:
+
+- **Origin project:** The base project where you create links and run searches. 
+- **Linked projects:** The projects you connect to the origin project. 
+    
+After you link projects, searches from the origin project run across the origin and all linked projects by default. To adjust this, you can [configure the default search scope](#cps-search-scope).
 
 % TODO diagram?
 
 % TODO check consistency w/ dev docs
 
-For more information about {{cps}}, including search expressions, tags, and project routing, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md).
+For more information about using {{cps}}, including search expressions, tags, and project routing, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 :::{note}
 {{cps-cap}} is available for {{serverless-short}} projects only. For other deployment types, refer to [{{ccs}}](/explore-analyze/cross-cluster-search.md).
@@ -32,10 +37,9 @@ For more information about {{cps}}, including search expressions, tags, and proj
 
 ## Before you begin [cps-prerequisites]
 
-To configure {{cps}}, make sure you meet the following prerequisites:
+To configure {{cps}}, make sure you meet these prerequisites:
 
-- You must be an organization owner or project admin.
-- Your origin project must be a {{serverless-short}} project.
+- You must be an organization owner or project administrator.
 - Your origin and linked projects must be compatible, as explained in the next section.
 
 % TODO add licensing/subscription tier requirements 
@@ -67,7 +71,7 @@ Workplace AI projects are not compatible with {{cps}}.
 
 ## Link projects [cps-link-projects]
 
-To link projects, open your origin project and use the {{cps}} linking wizard:
+To link projects, use the Cloud UI. Open your origin project and use the {{cps}} linking wizard:
 
 % TODO revise/expand (copied from other stub)
 
@@ -86,42 +90,55 @@ To link projects, open your origin project and use the {{cps}} linking wizard:
 
 ::::{important}
 After you link projects, all searches from the origin project automatically query **every** linked project by default. This applies immediately to all queries, including those from existing dashboards and alerting rules.
-::::
 
 To limit the search, you can [define a default {{cps}} scope](#cps-search-scope). Even after you set a default, users can select the scope of their choice when searching and filtering data and when running queries.
+::::
 
-## User access [cps-user-access]
+## Manage linked projects [cps-manage-linked-projects]
 
-{{cps-cap}} respects user permissions across projects. When a user runs a {{cps}} search from the origin project, results are filtered based on that user's permissions in each linked project, not just the origin. A user only sees results from linked projects where they have the necessary roles.
+On the origin project's **{{cps-cap}}** page, you can reconfigure {{cps}} as needed:
+
+- **Link additional projects:**  Click **Link projects** to add more linked projects, up to the 20-project maximum.
+- **Unlink projects:** Remove connections by [unlinking projects](#cps-unlink-projects).
+- **Open space settings in {{kib}}:**  Click **Manage Space** to set or adjust the default search scope.
+
+% TODO repetitive    
+
+### Unlink projects [cps-unlink-projects]
+
+You can remove linked projects from your origin project at any time. Select the checkbox next to the projects you want to remove from {{cps}}, then click **Unlink**.
+
+% TODO confirm the unlinking?? not a word
+
+After you confirm, searches from the origin project will no longer include data from the unlinked projects.
+
+::::{warning}
+If you delete a {{serverless-short}} project that's linked to an origin project, cross-project searches that rely on the project's data might return incomplete results, or fail. For best results, first unlink the project (everywhere it's linked), then delete it.
+::::
+
+### Manage user access
+
+{{cps-cap}} respects user permissions across projects. When a user runs a {{cps}} from the origin project, results are filtered based on that user's permissions in each linked project (not just the origin). A user only sees results from linked projects where they have the necessary roles.
 
 For example, if Project A is linked to Projects B and C, but a user only has access to Projects A and B, that user's cross-project searches will return results from A and B only. Results from Project C are excluded because the user does not have the necessary role assignments on that project.
 
-Administrators should make sure that users who need to search across linked projects have the appropriate roles on each project they need to access. Authorization for {{cps}} is evaluated on the linked project side, based on the user's role assignments on that project.
+As an administrator, make sure that users who need to search across linked projects have the appropriate roles on each project they need to access. Authorization for {{cps}} is evaluated on the linked project side, based on the user's role assignments on that project.
 
 % TODO confirm: "if I create an API key from inside of my project for personal use, do I get CPS results at all?"
 % TODO link to UIAM docs and summarize?
 % TODO altering impacts of user role changes 
 
-For details about managing roles and API keys, refer to [Users and roles](/deploy-manage/users-roles.md) and [API keys](/deploy-manage/api-keys.md).
-
 ## Configure the default search scope [cps-search-scope]
 
-After you link a project for {{cps}}, a banner appears at the top of your origin project's page:
+By default, all linked projects are included in cross-project searches. You can restrict the scope per space so that users query a subset of linked projects instead of the combined set.
 
-% TODO screenshot instead?
-
-    _Manage search context in {{kib}} — All queries in this project will automatically include data from all linked projects by default. To customize the default search scope for specific {{kib}} spaces, adjust the project's search settings._
-
-By default, all linked projects are included in cross-project searches. You can restrict the scope per space so that users only query a subset of linked projects.
-
-To open space settings in {{kib}}, click **Configure Space settings in {{kib}}** in the banner, or click **Manage Space** at the top of the project page. Select the space you want to configure.  
+To open space settings in {{kib}}, click **Configure Space settings in {{kib}}** in the banner that appears when you link projects. Or click **Manage Space** at the top of the project page. Select the space you want to configure.  
 
 % ::::{important}
 % If you don't adjust the default search scope, all searches, dashboards, visualizations, and alerting rules in the origin project will query data from % **every** linked project.
 % ::::
 
 % TODO verify steps; fix repetition
-
 
 % TODO confirm steps and UI labels; not available yet
 
@@ -149,33 +166,7 @@ Users can also set the search scope on a per-query basis as needed, using [quali
 
 % TODO link to alerting impacts and ML/transform considerations
 
-## Manage linked projects [cps-manage-linked-projects]
 
-The **{{cps-cap}}** page shows linked projects in a list. You can search and filter the list by project name, project type, cloud provider, region, and tags.
-
-% TODO link to tags doc; clarify how tags work with CPS  (examples)
-
-On this page, you can reconfigure {{cps}} as needed:
-
-- **Link additional projects:**  Click **Link projects** to add more linked projects, up to the 20-project maximum.
-- **Unlink projects:** Refer to [Unlink projects](#cps-unlink-projects).
-- **Open space settings in {{kib}}:**  Click **Manage Space** to set or adjust the default search scope.
-
-% TODO repetitive    
-
-### Unlink projects [cps-unlink-projects]
-
-You can remove linked projects from your origin project at any time.
-
-To unlink projects, select the checkbox next to the project or projects, then click **Unlink**.
-
-% TODO confirm the unlinking?? not a word
-
-After you confirm, searches from the origin project will no longer include data from the unlinked projects.
-
-::::{warning}
-If you delete a {{serverless-short}} project that's linked to an origin project, cross-project searches that rely on the project's data might return incomplete results, or fail. For best results, first unlink the project (everywhere it's linked), then delete it.
-::::
 
 ## Recommended architecture [cps-arch]
 
@@ -205,18 +196,15 @@ Enabling {{cps}} affects several features in the origin project:
 
 % TODO cf original sources
 
-**Billing and data transfer**
-:  {{cps-cap}} generates network egress traffic. When the origin project queries the linked projects, data transfer occurs between projects. Data transfer fees might apply, especially for cross-region or cross-cloud-provider queries.
+- **Billing and data transfer:** {{cps-cap}} generates network egress traffic. When the origin project queries the linked projects, data transfer occurs between projects. Data transfer fees might apply, especially for cross-region or cross-cloud-provider queries.
 
 % TODO link to billing docs
 
-**Alerting**
-:  By default, alerting rules in the origin project run against the combined dataset of the origin and all linked projects. (This is one reason we recommend a [hub-and-spoke architecture](#cps-arch) with a dedicated overview project, to ensure that the alerting rules on your existing projects are not affected.)
+- **Alerting:** By default, alerting rules in the origin project run against the combined dataset of the origin and all linked projects. (This is one reason we recommend a [hub-and-spoke architecture](#cps-arch) with a dedicated overview project, to ensure that the alerting rules on your existing projects are not affected.)
 
 % TODO link to alerting impacts when available
 
-**Dashboards and visualizations**
-:  After you link projects, existing dashboards and visualizations in the origin project will query all linked projects. To limit this scope, refer to [Configure the default search scope](#cps-search-scope).
+- **Dashboards and visualizations:** After you link projects, existing dashboards and visualizations in the origin project will query all linked projects. To limit this scope, refer to [Configure the default search scope](#cps-search-scope).
 
 % TODO check for repetition 
 
@@ -239,11 +227,11 @@ Enabling {{cps}} affects several features in the origin project:
 
 % TODO ^^ is that last one something we don't want to mention?
 
-## API-based setup [cps-api-setup]
+## Using APIs with {{cps-init}}
+
+TODO expand
 
 You can also link and unlink projects using the API. In the linking wizard, click **View API request** on the review step to see the equivalent API call for your current selection.
-
-% TODO expand
 
 For information about searching across linked projects using the API, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md#cps-supported-apis).
 
