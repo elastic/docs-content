@@ -26,6 +26,7 @@ These are the available admonition types:
 * Warning
 * Tip
 * Important
+* Plain 
 
 Follow these general guidelines for using admonitions: 
 
@@ -69,6 +70,35 @@ Use an important admonition to highlight information that's crucial for the user
 Setting up {{filebeat}} is an admin-level task that requires extra privileges. As a best practice, use an administrator role to set up and a more restrictive role for event publishing.
 :::
 :::: 
+
+### Plain 
+
+Use plain (neutral) admonitions to pull important information out of the main narrative flow. Because these boxes have a neutral background and no "high-alert" icons, they're ideal for highlighting specific context without causing warning fatigue.
+
+Use a plain admonition for these scenarios: 
+
+* Requirements/Prerequisites. Use a plain admonition at the start of a procedure, how-to guide, or tutorial to list the requirements for completing a task. This ensures users have the necessary permissions or tools before they start Step 1.
+
+::::{dropdown} Example
+:::{admonition} Requirements
+* You must have the `cluster_admin` role.
+* A running {{es}} cluster with at least one node.
+:::
+:::: 
+
+* Special notes and highlights. Use a plain admonition to call out specific information that's critical for the user to notice but isn't a danger to the system. Think of it as a _"pay attention to this_" box. 
+
+::::{dropdown} Example
+:::{admonition} Other stack components
+This section focuses on deploying and managing {{es}} and {{kib}}, as well as supporting orchestration technologies. However, depending on your use case, you might need to deploy [other {{stack}} components](/get-started/the-stack.md). For example, you might need to add components to ingest logs or metrics.
+:::
+:::: 
+
+**Best practices for plain admonitions** 
+
+* Don't over use. If a page has more than three plain admonitions, the "highlight" effect is lost. Consider if the information should be integrated into the body copy or if the page needs more subheadings.
+* Keep it concise. Plain admonitions should be scannable. Avoid long paragraphs, use bullet points for requirements lists, or a single, clear sentence for a special note.
+* Don't include "invisible" information. Do not put information in an admonition if it's the primary step of a procedure. Steps belong in numbered lists; context belongs in admonitions.
 
 ## Emphasis
 
