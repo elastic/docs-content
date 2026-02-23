@@ -178,6 +178,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an accessibility issue with a missing label in the Security AI Assistant flyout [#251656]({{kib-pull}}251656).
 * Fixes an issue where detection rules APIs didn't properly validate endpoint response actions [#251352]({{kib-pull}}251352).
 * Fixes an issue where the `os_types` field was not saved when creating an exception list [#250279]({{kib-pull}}250279).
+* Fixes a DNS parsing bug in Linux versions of {{elastic-defend}} that could result in crashes.
 
 
 ## 9.2.5 [elastic-security-9.2.5-release-notes]
