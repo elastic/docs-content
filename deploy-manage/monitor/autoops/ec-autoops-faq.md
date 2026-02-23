@@ -28,7 +28,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [How long does Elastic retain AutoOps data?](#autoops-data-retention)
 * [Where are AutoOps metrics stored, and does AutoOps affect customer ECU usage?](#autoops-metrics-storage)
 * [Has AutoOps replaced Stack Monitoring?](#autoops-vs-stack-monitoring)
-* [How can I provide feedback about AutoOps?](#feedback)
+* [How do I provide feedback about AutoOps?](#feedback)
 
 **Questions about AutoOps for ECE, ECK, or self-managed clusters**
 * [Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?](#additional-payment)
@@ -88,8 +88,8 @@ $$$autoops-metrics-storage$$$**Where are AutoOps metrics stored, and does AutoOp
 $$$autoops-vs-stack-monitoring$$$**Has AutoOps replaced Stack Monitoring?**
 :   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, not logs. Read more in [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 
-$$$feedback$$$**How can I provide feedback about AutoOps?**
-:   We value your feedback. [link]
+$$$feedback$$$**How do I provide feedback about AutoOps?**
+:   We value your feedback. Help us improve AutoOps by visiting [link]. You can also post in our [Slack community](https://elasticstack.slack.com/) or the [Monitoring Discuss forum](https://discuss.elastic.co/c/elastic-stack/monitoring/103).
 
 ## Questions about AutoOps for ECE, ECK, or self-managed clusters
 
