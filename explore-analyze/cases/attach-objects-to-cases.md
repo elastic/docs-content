@@ -41,9 +41,7 @@ Escalate alerts and track them in a single place by attaching them to cases.
 
 To add alerts, select **More actions (…)** on a single alert or use the **Bulk actions** menu for multiple alerts, then choose **Add to a new case** or **Add to existing case**. You can add up to 1,000 alerts to a case.
 
-After adding alerts, you can review them from the **Alerts** tab in the case. Alerts are organized from oldest to newest, and you can select **View details** to inspect individual alerts.
-
-To find the **Alerts** tab:
+After adding alerts, you can review them from the **Alerts** tab in the case. Alerts are organized from oldest to newest, and you can select **View details** to inspect individual alerts. To find the **Alerts** tab:
 
 - {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
 - {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  

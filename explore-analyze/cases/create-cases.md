@@ -61,6 +61,8 @@ To create a new case:
 
 8. Select **Create case**. If you've selected a connector for the case, the case is automatically pushed to the third-party system it's connected to.
 
+After creating a case, you can [attach objects](attach-objects-to-cases.md) like alerts, files, observables, and visualizations to provide context and supporting evidence. You can also [set up email notifications](#add-case-notifications) so users are alerted when they're assigned to a case.
+
 ## Set up email notifications [add-case-notifications]
 
 Set up email notifications to alert users when they're assigned to a case, so they can respond promptly.
