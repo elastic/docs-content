@@ -54,12 +54,7 @@ Find answers to your questions about Cloud Connect.
 * [Are more services going to be available with Cloud Connect?](#cc-more-services)
 
 $$$cc-additional-payment$$$ **Does Cloud Connect require additional payment?** 
-:   Each cloud connected service has its own licensing and payment requirements. 
-
-    - Using AutoOps for ECE, ECK, or self-managed clusters (on-premise or in private cloud environments) through Cloud Connect is available for free across all [self-managed license types](https://www.elastic.co/subscriptions) and self-managed free trials. This does not consume ECUs.
-
-    - :::{include} /deploy-manage/_snippets/eis-cc-payment-faq.md
-::: 
+:   :::{include} /deploy-manage/_snippets/cc-license-and-payment.md
 
 $$$cc-ech$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?**
 :   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md

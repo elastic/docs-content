@@ -54,8 +54,7 @@ AutoOps is currently not available for air-gapped environments because it's a cl
 :::{include} /deploy-manage/monitor/_snippets/cc-autoops-all-licenses.md
 :::
 
-For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available for free to {{ecloud}} customers at all subscription levels, and it does not consume ECU.
-:::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
+:::{include} /deploy-manage/monitor/_snippets/how-is-autoops-licensed.md
 :::
 
 ## How long AutoOps retains data [ec_autoops_retention_period]

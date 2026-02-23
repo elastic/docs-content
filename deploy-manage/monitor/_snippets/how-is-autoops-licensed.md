@@ -1,0 +1,1 @@
+AutoOps is available for free across all subscription levels and license types in {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, and self-managed clusters. It does not consume ECUs.

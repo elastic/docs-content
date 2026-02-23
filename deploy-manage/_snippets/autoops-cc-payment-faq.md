@@ -1,1 +1,0 @@
-For ECE, ECK, or self-managed clusters (on-premise or in private cloud environments), AutoOps is available for free across all [self-managed license types](https://www.elastic.co/subscriptions) and self-managed free trials through Cloud Connect. This does not consume ECUs.
