@@ -1,4 +1,4 @@
-In this document, we examine how to ingest logs from Azure services using Filebeat and Elastic Agent.
+In this document, we examine how to ingest logs from Azure services using Beats.
 
 We specifically address a multi-tenant scenario where credentials are stored within tenant T1, while the actual log events reside in a separate tenant, T2.
 
@@ -23,22 +23,6 @@ $ az login --tenant aaaaaaaa-1111-1111-1111-111111111111 # T1
 $ az ad app create \
   --display-name "My Multi-Tenant App" \
   --sign-in-audience AzureADMultipleOrgs
-
-{
-  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#applications/$entity",
-  "addIns": [],
-  "api": {
-    "acceptMappedClaims": null,
-    "knownClientApplications": [],
-    "oauth2PermissionScopes": [],
-    "preAuthorizedApplications": [],
-    "requestedAccessTokenVersion": null
-  },
-  "appId": "cccccccc-3333-3333-3333-333333333333",
-
-  [...]
-}
-
 ```
 
 <!-- TODO: Add screenshot of Azure Portal showing multi-tenant app registration -->
@@ -52,7 +36,6 @@ $ az ad app credential reset \
   --append \
   --display-name "Production Secret" \
   --years 1
-
 {
   "appId": "cccccccc-3333-3333-3333-333333333333",
   "password": "<redacted>",
@@ -71,58 +54,6 @@ $ az login --tenant bbbbbbbb-2222-2222-2222-222222222222 # T2
 
 ```shell
 $ az ad sp create --id cccccccc-3333-3333-3333-333333333333
-{
-  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#servicePrincipals/$entity",
-  "accountEnabled": true,
-  "addIns": [],
-  "alternativeNames": [],
-  "appDescription": null,
-  "appDisplayName": "My Multi-Tenant App",
-  "appId": "cccccccc-3333-3333-3333-333333333333",
-  "appOwnerOrganizationId": "aaaaaaaa-1111-1111-1111-111111111111",
-  "appRoleAssignmentRequired": false,
-  "appRoles": [],
-  "applicationTemplateId": null,
-  "createdDateTime": "2026-02-03T18:34:19Z",
-  "deletedDateTime": null,
-  "description": null,
-  "disabledByMicrosoftStatus": null,
-  "displayName": "My Multi-Tenant App",
-  "homepage": null,
-  "id": "dddddddd-4444-4444-4444-444444444444",
-  "info": {
-    "logoUrl": null,
-    "marketingUrl": null,
-    "privacyStatementUrl": null,
-    "supportUrl": null,
-    "termsOfServiceUrl": null
-  },
-  "keyCredentials": [],
-  "loginUrl": null,
-  "logoutUrl": null,
-  "notes": null,
-  "notificationEmailAddresses": [],
-  "oauth2PermissionScopes": [],
-  "passwordCredentials": [],
-  "preferredSingleSignOnMode": null,
-  "preferredTokenSigningKeyThumbprint": null,
-  "replyUrls": [],
-  "resourceSpecificApplicationPermissions": [],
-  "samlSingleSignOnSettings": null,
-  "servicePrincipalNames": [
-    "cccccccc-3333-3333-3333-333333333333"
-  ],
-  "servicePrincipalType": "Application",
-  "signInAudience": "AzureADMultipleOrgs",
-  "tags": [],
-  "tokenEncryptionKeyId": null,
-  "verifiedPublisher": {
-    "addedDateTime": null,
-    "displayName": null,
-    "verifiedPublisherId": null
-  }
-}
-
 ```
 
 ### Event Hubs and the Storage Account
