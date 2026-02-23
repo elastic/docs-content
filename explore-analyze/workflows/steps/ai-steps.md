@@ -23,7 +23,12 @@ The `ai.prompt` step sends a prompt to an AI connector and returns the response.
 * Make context-aware decisions based on data in your workflow
 * Generate structured output based on a defined schema
 
-All AI connectors are configured and managed separately through {{kib}}'s {{connectors-ui}} framework. Before using this step, you must first [configure an AI connector](/deploy-manage/manage-connectors.md).
+To use a specific AI connector, configure it through {{kib}}'s [{{connectors-ui}} framework](/deploy-manage/manage-connectors.md). If you don't configure a connector, this step uses the connector selected as the **Default AI Connector** in [GenAI Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#the-genai-settings-page). [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) are available out of the box and require no setup.
+
+:::{note}
+:applies_to: { self: }
+On self-managed deployments, you must configure an AI connector before using this step.
+:::
 
 ### Parameters
 
