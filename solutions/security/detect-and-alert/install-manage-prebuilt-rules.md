@@ -17,28 +17,21 @@ description: Learn how to install, enable, update, and manage Elastic prebuilt d
 
 Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](detection-rules://index.md), keep them updated, and make sure they have the data needed to run successfully.
 
-There are several special prebuilt rules you should know about:
-
-* **Endpoint protection rules**: Create alerts based on {{elastic-defend}}'s threat monitoring and prevention.
-* **External Alerts**: Create an alert for all incoming third-party system alerts (for example, Suricata alerts).
-
 * [Install and enable Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#load-prebuilt-rules)
 * [Prebuilt rule tags](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#prebuilt-rule-tags)
 * [Select and duplicate all prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#select-all-prebuilt-rules)
 * [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#update-prebuilt-rules)
 * [Confirm rule prerequisites](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites)
 
-::::{note}
-* Most prebuilt rules don’t start running by default. You can use the **Install and enable** option to start running rules as you install them, or first install the rules, then enable them manually. After installation, only a few prebuilt rules will be enabled by default, such as the Endpoint Security rule.
+Without an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, you can't modify most prebuilt rule settings. You must [duplicate them](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#select-all-prebuilt-rules) first, then customize the copies.
 
-* Without an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, you can't modify most settings on Elastic prebuilt rules. You must first duplicate them, then make your changes to the duplicated rules. Refer to [Select and duplicate all prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#select-all-prebuilt-rules) to learn more.
-* On {{stack}}, automatic updates of Elastic prebuilt rules are supported for the current {{elastic-sec}} version and the latest three previous minor releases. For example, if you’re on {{elastic-sec}} 9.0, you’ll be able to use the Rules UI to update your prebuilt rules until {{elastic-sec}} 9.4 is released. After that point, you can still manually download and install updated prebuilt rules, but you must upgrade to the latest {{elastic-sec}} version to receive automatic updates.
-
-::::
-
-
+:::{admonition} Endpoint protection rules
+Some prebuilt rules serve special purposes: [Endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) generate alerts from {{elastic-defend}}'s threat monitoring and prevention, while the [External Alerts](detection-rules://rules/promotions/external_alerts.md) rule creates alerts for incoming third-party system alerts (for example, Suricata alerts).
+:::
 
 ## Install and enable Elastic prebuilt rules [load-prebuilt-rules]
+
+Most prebuilt rules don't start running by default. Use **Install and enable** to start rules immediately, or install first and enable later. 
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
@@ -129,6 +122,10 @@ If you have an Enterprise subscription on {{stack}} or a Security Analytics Comp
 ::::
 
 Elastic regularly updates prebuilt rules to optimize their performance and ensure they detect the latest threats and techniques. When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page, allowing you to update your installed rules with the latest versions.
+
+::::{note}
+On {{stack}}, automatic updates are supported for the current {{elastic-sec}} version and the latest three previous minor releases. For example, if you're on version 9.0, you can use the Rules UI to update prebuilt rules until version 9.4 is released. After that, you can still manually download and install updates, but must upgrade {{elastic-sec}} to receive automatic updates again.
+::::
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, select the **Rule Updates** tab.
