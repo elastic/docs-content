@@ -108,3 +108,9 @@ POST _inference/rerank/eis-jina-reranker-v2
 This aligns best with fields like title, description, summary, or abstract.
 The model uses a context window of 1024 tokens and automatically chunks larger content.
 Larger documents take longer to process, and inference time also increases the more documents are present in the reranking request.
+
+## Further reading
+The following blog posts provide additional background and context:
+
+* [Jina rerankers bring fast, multilingual reranking to Elastic Inference Service (EIS)](https://www.elastic.co/search-labs/blog/jina-rerankers-elastic-inference-service)
+* [jina-embeddings-v3 is now available on Elastic Inference Service](https://www.elastic.co/search-labs/blog/jina-embeddings-v3-elastic-inference-service)
