@@ -68,7 +68,7 @@ If your {{infer}} endpoint uses a model deployed in Elastic’s infrastructure, 
 
 ### Creating custom EIS endpoints [create-custom-eis]
 
-Your deployment includes [Default {{infer}} endpoints](#default-enpoints) (such as `.elser-2-elastic`) which are preconfigured and ready to use. In most cases, you should use these default endpoints.
+Your deployment includes [Default {{infer}} endpoints](#default-enpoints) which are preconfigured and ready to use. In most cases, you should use these default endpoints.
 
 However, you may choose to manually create a **custom Elastic Inference Service (EIS)** endpoint if you need to instantiate a specific model version or configuration that is not covered by the defaults.
 
