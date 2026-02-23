@@ -41,7 +41,7 @@ Refer to [](/explore-analyze/workflows/steps/kibana.md) for more information.
 
 ## External systems and apps
 
-External actions allow your workflows to communicate with third-party systems using connectors. Use external actions to:
+External actions allow your workflows to communicate with third-party systems using [connectors](kibana:/reference/connectors-kibana.md). Use external actions to:
 
 * Send notifications to Slack or email
 * Create incidents in ServiceNow

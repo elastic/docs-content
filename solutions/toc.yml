@@ -84,6 +84,7 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
+      - file: elasticsearch-solution-project/es-serverless-add-ons.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -470,7 +471,7 @@ toc:
         - file: observability/streams/management/partitioning.md
         - file: observability/streams/management/schema.md
         - file: observability/streams/management/data-quality.md
-        - file: observability/streams/management/significant-events.md
+        - hidden: observability/streams/management/significant-events.md
         - file: observability/streams/management/advanced.md
         - file: observability/streams/wired-streams.md
       - file: observability/incident-management.md

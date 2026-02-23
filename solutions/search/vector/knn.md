@@ -1292,7 +1292,7 @@ POST /my-index/_search
 ```
 
 1. The number of results to return, note its only 10 and we will oversample by 2x, gathering 20 nearest neighbors.
-2. The number of results to return from the KNN search. This will do an approximate KNN search with 50 candidates per HNSW graph and use the quantized vectors, returning the 20 most similar vectors according to the quantized score. Additionally, since this is the top-level `knn` object, the global top 20 results will from all shards will be gathered before rescoring. Combining with `rescore`, this is oversampling by `2x`, meaning gathering 20 nearest neighbors according to quantized scoring and rescoring with higher fidelity float vectors.
+2. The number of results to return from the KNN search. This will do an approximate KNN search with 50 candidates per HNSW graph and use the quantized vectors, returning the 20 most similar vectors according to the quantized score. Additionally, because this is the top-level `knn` object, the global top 20 results from all shards will be gathered before rescoring. Combining with `rescore`, this is oversampling by `2x`, meaning gathering 20 nearest neighbors according to quantized scoring and rescoring with higher fidelity float vectors.
 3. The number of results to rescore, if you want to rescore all results, set this to the same value as `k`
 4. The script to rescore the results. Script score will interact directly with the originally provided float32 vector.
 5. The weight of the original query, here we simply throw away the original score
