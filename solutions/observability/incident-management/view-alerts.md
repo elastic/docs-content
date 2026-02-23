@@ -176,30 +176,7 @@ You can also use the toolbar buttons in the upper-right to customize the display
 
 ## Add alerts to cases [observability-view-alerts-add-alerts-to-cases]
 
-From the Alerts table, you can add one or more alerts to a case. Click the {icon}`boxes_horizontal` icon to add the alert to a new or existing case. You can add an unlimited amount of alerts from any rule type.
-
-::::{note}
-Each case can have a maximum of 1,000 alerts.
-
-::::
-
-
-### Add an alert to a new case [observability-view-alerts-add-an-alert-to-a-new-case]
-
-To add an alert to a new case:
-
-1. Select **Add to new case**.
-2. Enter a case name, add relevant tags, and include a case description.
-3. Under **External incident management system**, select a connector. If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
-4. After you’ve completed all of the required fields, click **Create case**. A notification message confirms you successfully created the case. To view the case details, click the notification link or go to the [Cases](/solutions/observability/incident-management/observability-cases.md) page.
-
-
-### Add an alert to an existing case [observability-view-alerts-add-an-alert-to-an-existing-case]
-
-To add an alert to an existing case:
-
-1. Select **Add to existing case**.
-2. Select the case where you will attach the alert. A confirmation message displays.
+From the Alerts table, you can add one or more alerts to a case. For detailed instructions, refer to [Attach objects to cases](/explore-analyze/cases/attach-objects-to-cases.md#add-case-alerts).
 
 ## Clean up alerts [clean-up-alerts-obs]
 

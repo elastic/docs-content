@@ -27,24 +27,26 @@ In {{elastic-sec}}, you can also attach [events](/solutions/security/investigate
 
 | Object | Description | Stack solutions | Serverless projects |
 | --- | --- | --- | --- |
-| [Alerts](#add-case-alerts) | Attach alerts to escalate and track detections | Security, Observability, Stack Management | Security, Observability |
-| [Files](#add-case-files) | Upload screenshots, logs, or other supporting files | Security, Observability, Stack Management | Security, Observability |
-| [Observables](#add-case-observables) | Add IP addresses, file hashes, domains, or URLs to identify patterns | Security, Stack Management | Security |
-| [Lens visualizations](#cases-lens-visualization) | Embed charts and graphs to illustrate event and alert data | Security, Observability, Stack Management | Security, Observability |
-| [Events](/solutions/security/investigate/security-cases.md#cases-add-events) | Attach host, network, or user events from Timeline | Security | Security |
-| [Indicators](/solutions/security/investigate/indicators-of-compromise.md#attach-indicator-to-case) | Link threat intelligence indicators to document evidence of compromise | Security | Security |
-| [Timelines](/solutions/security/investigate/security-cases.md#cases-timeline) | Preserve investigation context by linking Timeline queries and filters | Security | Security |
+| [Alerts](#add-case-alerts) | Attach alerts to escalate and track detections. | Security, Observability | Security, Observability |
+| [Files](#add-case-files) | Upload screenshots, logs, or other supporting files. | Security, Observability, Stack Management | Security, Observability |
+| [Observables](#add-case-observables) | Add IP addresses, file hashes, domains, or URLs to identify patterns. | Security, Stack Management | Security |
+| [Lens visualizations](#cases-lens-visualization) | Embed charts and graphs to illustrate event and alert data. | Security, Observability, Stack Management | Security, Observability |
+| [Events](/solutions/security/investigate/security-cases.md#cases-add-events) | Attach host, network, or user events from Timeline. | Security | Security |
+| [Indicators](/solutions/security/investigate/indicators-of-compromise.md#attach-indicator-to-case) | Link threat intelligence indicators to document evidence of compromise. | Security | Security |
+| [Timelines](/solutions/security/investigate/security-cases.md#cases-timeline) | Preserve investigation context by linking Timeline queries and filters. | Security | Security |
 
 ## Add alerts [add-case-alerts]
 
-Escalate alerts and track them in a single place by attaching them to cases. To examine the alerts, select the **Alerts** tab in the case. In the table, alerts are organized from oldest to newest. To view alert details, select the **View details** button.
+Escalate alerts and track them in a single place by attaching them to cases. 
+
+To add alerts, select **More actions (…)** on a single alert or use the **Bulk actions** menu for multiple alerts, then choose **Add to a new case** or **Add to existing case**. You can add up to 1,000 alerts to a case.
+
+After adding alerts, you can review them from the **Alerts** tab in the case. Alerts are organized from oldest to newest, and you can select **View details** to inspect individual alerts.
 
 To find the **Alerts** tab:
 
 - {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
 - {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  
-
-You can add up to 1,000 alerts to a case.
 
 ## Add files [add-case-files]
 
