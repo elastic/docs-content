@@ -196,10 +196,12 @@ $ filebeat -e -v -d "*" \
   -E output.elasticsearch.allow_older_versions=true 
 ```
 
-Next:
+### Verify the setup
 
-1. Posted a message to the event hub in T2  
-   1. [Send event | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/eventhub/send-event)  
-2. Received the same message
+To confirm the pipeline is working end to end:
 
-<!-- TODO: Add screenshot showing message sent to Event Hub and received successfully -->  
+1. Send a test message to the event hub in T2.
+    * [Send event | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/eventhub/send-event)
+2. Check that Filebeat receives and forwards the message to Elasticsearch.
+
+<!-- TODO: Add screenshot showing message sent to Event Hub and received successfully -->
