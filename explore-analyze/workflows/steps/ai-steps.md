@@ -12,7 +12,7 @@ AI steps allow your workflows to interact with AI services and Elastic AI agents
 The following AI step types are available:
 
 * **Prompt** (`ai.prompt`): Send prompts to [AI connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md) (such as OpenAI or Google Gemini)
-* **Agent** (`ai.agent`): Invoke Elastic AI agents built in Agent Builder
+* **Agent** (`ai.agent`): Invoke Elastic AI agents built in [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md)
 
 ## Prompt
 
