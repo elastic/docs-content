@@ -57,11 +57,11 @@ When you upload a file, a comment is added to the case activity log. To view an 
 
 ### Add observables [add-case-observables]
 
-:::{note}
-Observables are not available in {{observability}} for {{stack}} or {{serverless-short}}.
-:::
-
 Observables are discrete pieces of data relevant to an investigation, such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you may be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
+
+:::{note}
+Observables aren't available for {{obs-serverless}} or {{stack}} {{observability}} cases.
+:::
 
 From the **Observables** tab, you can view and manage case observables:
 
@@ -71,7 +71,7 @@ From the **Observables** tab, you can view and manage case observables:
 You can manually add observables to cases or with the appropriate subscription, auto-extract them from alerts. Each case supports up to 50 observables.
 
 :::{note}
- Auto-extracting observables is only available in {{sec-serverless}} and {{elastic-sec}} 9.2+.
+Auto-extracting observables is only available in {{sec-serverless}} and {{elastic-sec}} 9.2+.
 :::
 
 To manually add an observable:
