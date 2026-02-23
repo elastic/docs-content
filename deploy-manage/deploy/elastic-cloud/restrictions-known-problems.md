@@ -94,10 +94,12 @@ Watcher comes preconfigured with a directly usable email account provided by Ela
 Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#watcher-custom-mail-server)
 
 
-## Private connectivity and SSO to {{kib}} URLs [ec-restrictions-network-security-kibana-sso]
+## Private connectivity
 
-Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by private connections. However, you can still SSO into private {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
+$$$ec-restrictions-network-security-kibana-sso$$$
 
+```{include} /deploy-manage/security/_snippets/private-connectivity-limitations-ech.md
+```
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 
