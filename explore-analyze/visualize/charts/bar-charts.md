@@ -52,6 +52,8 @@ New visualizations default to creating **Bar** charts, so you don't need to chan
     - Add layers to your chart to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
     - Configure the axis settings to customize scale, labels, and gridlines.
 
+The chart preview updates to show bars representing your data. If you added a breakdown dimension, bars are segmented or grouped by category.
+
 Refer to [](#settings) for all data configuration options for your bar chart.
 ::::
 

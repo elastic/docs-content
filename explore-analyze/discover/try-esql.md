@@ -96,6 +96,43 @@ You can make changes to the visualization by clicking the pencil icon. This open
 If you’d like to keep the visualization and add it to a dashboard, you can save it using the floppy disk icon.
 
 
+## Organize the query results [esql-kibana-results-table]
+
+By default, the results table shows a column with the `@timestamp` field and a column with the full document. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
+
+```esql
+FROM kibana_sample_data_logs
+| KEEP @timestamp, bytes, geo.dest
+```
+
+To display all fields as separate columns, use `KEEP *`:
+
+```esql
+FROM kibana_sample_data_logs
+| KEEP *
+```
+
+Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
+
+### Limitations [esql-kibana-results-table-limitations]
+
+- **Row limit:** Discover displays up to 10,000 rows. This limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Any query or aggregation runs on the full data set.
+- **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
+- **CSV export:** CSV exports from Discover are also limited to 10,000 rows. Queries and aggregations still run on the full data set.
+- **No data filtering UI:** The data filtering UI is not available when Discover is in {{esql}} mode. Use the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command instead.
+
+
+## Sort query results [_sorting]
+
+To sort on one of the columns, click the column name you want to sort on and select the sort order. This performs client-side sorting and only sorts the rows that were retrieved by the query, which might not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
+
+```esql
+FROM kibana_sample_data_logs
+| KEEP @timestamp, bytes, geo.dest
+| SORT bytes DESC
+```
+
+
 ## ES|QL and time series data [_esql_and_time_series_data]
 
 By default, ES|QL identifies time series data when an index contains a `@timestamp` field. This enables the time range selector and visualization options for your query.

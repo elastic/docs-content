@@ -64,6 +64,14 @@ $$$ignored-filesystems$$$
     Entries in this setting override entries in `monitored_filesystems`.
 
 
+## Btrfs subvolume monitoring [btrfs-subvolume-monitoring]
+
+Btrfs (B-tree file system) is a Linux file system that supports subvolumes — independent directory trees that can be mounted separately within a single file system. Some Linux distributions mount only Btrfs subvolumes without mounting the root volume.
+
+Due to a limitation in fanotify, {{elastic-defend}} cannot directly monitor Btrfs subvolumes. Fanotify can only monitor the root of a Btrfs file system.
+
+If your Linux hosts use Btrfs with subvolume-only mounts, you must also mount the Btrfs root volume to enable malware protection coverage. Without the root volume mounted, {{elastic-defend}} cannot detect or prevent malware on files within those subvolumes.
+
 ## Find file system names [find-file-system-names]
 
 This section provides a few ways to determine the file system names needed for `linux.advanced.fanotify.monitored_filesystems` and `linux.advanced.fanotify.ignored_filesystems`.

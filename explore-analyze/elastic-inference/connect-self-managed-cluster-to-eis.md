@@ -9,7 +9,7 @@ products:
 description: Use Elastic Inference Service (EIS) with your self-managed, ECE, and ECK clusters through Cloud Connect.
 ---
 
-# Elastic Inference Service for self-managed clusters
+# Elastic {{infer-cap}} Service for self-managed clusters
 
 [Elastic {{infer-cap}} Service (EIS)](eis.md) is available with zero setup on Elastic Cloud Hosted and Serverless deployments. To use EIS with other deployment types, you can use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself.
 
@@ -155,6 +155,24 @@ The response should include the indexed document:
   }
 }
 ```
+
+## Supported models with EIS through Cloud Connect
+
+Using Elastic {{infer-cap}} Service through Cloud Connect, you have access to all available models listed under [Supported models](/explore-analyze/elastic-inference/eis.md#supported-models), including LLMs, embedding models, and rerankers.
+
+To use these models, you need [{{kib}} connectors](kibana://reference/connectors-kibana.md) (for LLMs) or [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference). There are preconfigured {{infer}} endpoints for all models. For some LLMs, connectors need to be created manually, depending on the model.
+
+### LLMs 
+
+For Claude 3.7 and Claude 4.5, connectors are preconfigured and ready to be used.
+
+To use other LLMs listed under [Supported models](/explore-analyze/elastic-inference/eis.md#supported-models), you must [create the {{kib}} connectors](kibana://reference/connectors-kibana.md#creating-new-connector) manually. The corresponding {{infer}} endpoints are preconfigured.
+
+### Embedding and rerank models
+
+Predefined {{infer}} endpoints and connectors are available for all models listed under [Embedding models](/explore-analyze/elastic-inference/eis.md#embedding-models) and [Rerankers](/explore-analyze/elastic-inference/eis.md#rerankers).
+
+For these models, you only need to create new {{infer}} endpoints if you want to use custom settings.
 
 ## Regions and billing
 
