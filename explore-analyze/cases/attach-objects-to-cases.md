@@ -32,7 +32,7 @@ In {{elastic-sec}}, you can also attach [events](/solutions/security/investigate
 | [Observables](#add-case-observables) | Add IP addresses, file hashes, domains, or URLs to identify patterns | Security, Stack Management | Security |
 | [Lens visualizations](#cases-lens-visualization) | Embed charts and graphs to illustrate event and alert data | Security, Observability, Stack Management | Security, Observability |
 | [Events](/solutions/security/investigate/security-cases.md#cases-add-events) | Attach host, network, or user events from Timeline | Security | Security |
-| [Indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case) | Link threat intelligence indicators to document evidence of compromise | Security | Security |
+| [Indicators](/solutions/security/investigate/indicators-of-compromise.md#attach-indicator-to-case) | Link threat intelligence indicators to document evidence of compromise | Security | Security |
 | [Timelines](/solutions/security/investigate/security-cases.md#cases-timeline) | Preserve investigation context by linking Timeline queries and filters | Security | Security |
 
 ## Add alerts [add-case-alerts]
