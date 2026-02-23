@@ -9,30 +9,21 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Optimize detection rules to reduce noise by adding exceptions, disabling rules, cloning rules, or enabling suppression.
+description: Modify detection rule queries, thresholds, and schedules to improve detection precision.
 ---
 
 # Tune detection rules [security-tune-detection-signals]
 
-Using the {{security-app}}, you can tune prebuilt and custom detection rules to optimize alert generation. To reduce noise, you can:
+Tuning means modifying a rule's query, threshold, or schedule so it only matches events that are genuinely suspicious. Use tuning when the rule itself is too broad and catches normal behavior in any environment, not just yours.
 
-* Add [exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) to detection rules.
+If a rule is correctly written but fires on known-safe activity specific to your environment, use [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) instead. If you're unsure which approach fits your situation, refer to [Reduce noise and false positives](/solutions/security/detect-and-alert/reduce-noise-and-false-positives.md) to compare all available mechanisms.
 
-    ::::{tip}
-    Using exceptions is recommended as this ensure excluded source event values persist even after prebuilt rules are updated.
-    ::::
+This page covers tuning guidance for specific rule categories:
 
-* Disable detection rules that rarely produce actionable alerts because they match expected local behavior, workflows, or policy exceptions.
-* [Clone and modify](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules) detection rule queries so they are aligned with local policy exceptions. This reduces noise while retaining actionable alerts.
-* Clone and modify detection rule risk scores, and use branching logic to map higher risk scores to higher priority workflows.
-* Enable [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) for custom query rules to reduce the number of repeated or duplicate alerts.
-
-For details about tuning rules for specific categories:
-
-* [Tune rules detecting authorized processes](/solutions/security/detect-and-alert/tune-detection-rules.md#tune-authorized-processes)
-* [Tune Windows child process and PowerShell rules](/solutions/security/detect-and-alert/tune-detection-rules.md#tune-windows-rules)
-* [Tune network rules](/solutions/security/detect-and-alert/tune-detection-rules.md#tune-network-rules)
-* [Tune indicator match rules](/solutions/security/detect-and-alert/tune-detection-rules.md#tune-indicator-rules)
+* [Tune rules detecting authorized processes](#tune-authorized-processes)
+* [Tune Windows child process and PowerShell rules](#tune-windows-rules)
+* [Tune network rules](#tune-network-rules)
+* [Tune indicator match rules](#tune-indicator-rules)
 
 
 ## Filter out uncommon application alerts [filter-rule-process]
