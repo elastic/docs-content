@@ -157,6 +157,7 @@ From the Alerts table or the alert details flyout, you can:
 
 * [Add detection alerts to cases](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md)
 * [Change an alert’s status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status)
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Run a workflow from an alert](/solutions/security/detect-and-alert/manage-detection-alerts.md#run-workflow-from-alert)
 * [Add a rule exception from an alert](/solutions/security/detect-and-alert/manage-detection-alerts.md#add-exception-from-alerts)
 * [Apply and filter alert tags](/solutions/security/detect-and-alert/manage-detection-alerts.md#apply-alert-tags)
 * [Assign users to alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#assign-users-to-alerts)
@@ -207,6 +208,25 @@ You can specify a reason for closing an alert by selecting one of the following 
 * **Other**: Any other reason not covered by the predefined categories.
 
 When you select a closing reason, the alert document is populated with a new field called `kibana.alert.workflow_reason`. You can use this field to filter and sort alerts on the **Alerts** page. If you later reopen the alert, the field is removed from the document.
+
+### Run a workflow from an alert [run-workflow-from-alert]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+You can run an [Elastic workflow](/explore-analyze/workflows.md) directly from an alert to trigger an on-demand response or investigation. To use this feature, make sure you meet the [workflows prerequisites](/explore-analyze/workflows/get-started.md#workflows-prerequisites).
+
+To run a workflow on an individual alert, do one of the following:
+
+* In the Alerts table, click **More actions** ({icon}`boxes_vertical`) in an alert's row, then click **Run workflow**. Use the search bar to select a workflow, then click **Run workflow**.
+* In an alert's details flyout, click **Take action → Run workflow**. Use the search bar to select a workflow, then click **Run workflow**.
+
+::::{note}
+You can select only enabled workflows.
+::::
+
+To run a workflow on multiple alerts, select the alerts, then click **Selected *x* alerts** at the upper-left above the table. Click **Run workflow**, select a workflow, then click **Run workflow**.
 
 ### Apply and filter alert tags [apply-alert-tags]
 
