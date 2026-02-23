@@ -721,5 +721,6 @@ redirects:
     to: 'solutions/security/detect-and-alert/manage-detection-rules.md'
     anchors:
       '': 'snooze-rule-actions'
-  'solutions/security/detect-and-alert/reference.md': 'solutions/security/detect-and-alert/detections-reference.md'
+  'solutions/security/detect-and-alert/reference.md': 'solutions/security/detect-and-alert/common-rule-settings.md'
+  'solutions/security/detect-and-alert/detections-reference.md': 'solutions/security/detect-and-alert/common-rule-settings.md'
   'solutions/security/detect-and-alert/rule-settings-reference.md': 'solutions/security/detect-and-alert/common-rule-settings.md'

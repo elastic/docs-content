@@ -18,30 +18,19 @@ description: Compare detection rule types and select the best fit for your threa
 
 ## Rule type comparison [rule-types]
 
-Use the following table to narrow your selection based on what you want to detect:
+Use the following table to select the right rule type. The rows are ordered as a decision flow: start at the top and use the first rule type that fits your detection goal.
 
-| If you want to detect... | Use this rule type | Learn more |
+| Ask yourself... | Rule type | Description |
 |---|---|---|
-| A known field value, pattern, or boolean condition | [**Custom query**](/solutions/security/detect-and-alert/custom-query.md) | Matches events using KQL or Lucene. The most flexible and widely used type. |
-| An ordered sequence of events or a missing event | [**Event correlation (EQL)**](/solutions/security/detect-and-alert/eql.md) | Uses EQL to correlate events by shared fields across time. Detects multi-step attack chains and gaps in expected activity. |
-| A field value count exceeding a boundary | [**Threshold**](/solutions/security/detect-and-alert/threshold.md) | Fires when the number of matching events grouped by one or more fields meets or exceeds a threshold. Ideal for brute-force and volume-based patterns. |
-| Events matching a known threat indicator | [**Indicator match**](/solutions/security/detect-and-alert/indicator-match.md) | Compares source event fields against threat intelligence indices. Alerts are enriched with indicator metadata. |
-| A field value appearing for the first time | [**New terms**](/solutions/security/detect-and-alert/new-terms.md) | Fires when a value (or combination of up to three values) has never appeared in a configurable history window. Surfaces novel activity. |
-| Aggregated, transformed, or computed conditions | [**{{esql}}**](/solutions/security/detect-and-alert/esql.md) | Uses pipe-based {{esql}} queries to aggregate, transform, and filter data before alerting. Each result row becomes an alert. |
-| Behavioral anomalies without a fixed pattern | [**{{ml-cap}}**](/solutions/security/detect-and-alert/machine-learning.md) | Relies on {{ml}} anomaly detection jobs to model normal behavior and flag deviations. No query authoring required. |
+| Is the threat a behavioral deviation I can't define with an exact pattern? | [**{{ml-cap}}**](/solutions/security/detect-and-alert/machine-learning.md) | Relies on {{ml}} anomaly detection jobs to model normal behavior and flag deviations. No query authoring required. |
+| Do I need to compare events against a threat intelligence feed? | [**Indicator match**](/solutions/security/detect-and-alert/indicator-match.md) | Compares source event fields against threat intelligence indices. Alerts are enriched with indicator metadata. |
+| Am I looking for a field value appearing for the first time? | [**New terms**](/solutions/security/detect-and-alert/new-terms.md) | Fires when a value (or combination of up to three values) has never appeared in a configurable history window. Surfaces novel activity. |
+| Does detection require an ordered sequence of events or a missing event? | [**Event correlation (EQL)**](/solutions/security/detect-and-alert/eql.md) | Uses EQL to correlate events by shared fields across time. Detects multi-step attack chains and gaps in expected activity. |
+| Should an alert fire when event volume crosses a threshold? | [**Threshold**](/solutions/security/detect-and-alert/threshold.md) | Fires when the number of matching events grouped by one or more fields meets or exceeds a threshold. Ideal for brute-force and volume-based patterns. |
+| Do I need aggregation, transformation, or computed fields? | [**{{esql}}**](/solutions/security/detect-and-alert/esql.md) | Uses pipe-based {{esql}} queries to aggregate, transform, and filter data before alerting. Each result row becomes an alert. |
+| None of the above? | [**Custom query**](/solutions/security/detect-and-alert/custom-query.md) | Matches events using KQL or Lucene. The most flexible and widely used type for known field values, patterns, or boolean conditions. |
 
-## Decision flowchart
-
-Ask these questions in order to identify the right rule type:
-
-1. **Can you describe the exact pattern?** If not, and the threat is a behavioral deviation from normal, use a **{{ml}}** rule.
-2. **Does the detection require comparing events against an external threat feed?** If yes, use an **indicator match** rule.
-3. **Is the signal the first-ever appearance of a value?** If yes, use a **new terms** rule.
-4. **Does the detection require a sequence of events in a specific order, or detecting a missing event?** If yes, use an **EQL** rule.
-5. **Does the detection require counting events and firing when a volume threshold is crossed?** If yes, use a **threshold** rule.
-6. **Do you need aggregation, transformation, or computed fields within the query?** If yes, use an **{{esql}}** rule.
-7. **None of the above?** Use a **custom query** rule.
-
+<!-- BUILDING BLOCK SECTION - COMMENTED OUT FOR REVIEW
 ## Building block rules and detection chains [about-building-block-rules]
 
 Any rule type can be designated as a **building block** rule. Building block rules generate alerts that are hidden from the Alerts page by default. They serve as intermediate signals that feed into higher-level detection logic.
@@ -85,6 +74,7 @@ On a building block rule's details page, the rule's alerts are always displayed.
 ### Marking a rule as a building block
 
 Select the **Building block** option in the rule's [advanced settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) when creating or editing any rule type.
+END BUILDING BLOCK SECTION -->
 
 ## Shared concepts [shared-rule-concepts]
 
