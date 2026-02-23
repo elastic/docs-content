@@ -189,9 +189,11 @@ The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/b
 `security.alerts`
 :   Searches and analyzes security alerts using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
+$$$agent-builder-security-entity-risk-score-tool$$$
 `security.entity_risk_score`
 :   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. {applies_to}`stack: ga 9.4+`
 
+$$$agent-builder-security-attack-discovery-search-tool$$$
 `security.attack_discovery_search`
 :   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. {applies_to}`stack: ga 9.4+`
 
