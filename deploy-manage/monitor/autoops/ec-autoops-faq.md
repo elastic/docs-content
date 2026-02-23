@@ -64,7 +64,7 @@ $$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
 :   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
 
 $$$autoops-license$$$**How is AutoOps licensed?**
-:   For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.
+:   For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available for free to {{ecloud}} customers at all subscription levels, and it does not consume ECU.
     :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
     ::: 
 
