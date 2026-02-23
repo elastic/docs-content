@@ -716,6 +716,7 @@ redirects:
   'solutions/security/detect-and-alert/reduce-notifications-alerts.md': 'solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions'
   'solutions/security/detect-and-alert/snooze-rule-actions.md': 'solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions'
   'solutions/security/detect-and-alert/reference.md': 'solutions/security/detect-and-alert/detections-reference.md'
+  'solutions/security/detect-and-alert/rule-settings-reference.md': 'solutions/security/detect-and-alert/common-rule-settings.md'
   # Anchor redirect for cold/frozen data content moved to set-rule-data-sources.md
   'solutions/security/detect-and-alert/requirements-privileges.md':
     to: 'solutions/security/detect-and-alert/requirements-privileges.md'
