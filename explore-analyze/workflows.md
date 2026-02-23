@@ -15,7 +15,7 @@ products:
 # Workflows [workflows-overview]
 
 :::{admonition} Welcome to the Elastic workflow docs! 
-If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/overview/introduction), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
+If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/workflows/overview), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
 :::
 
 ## What are workflows [workflows-what]
