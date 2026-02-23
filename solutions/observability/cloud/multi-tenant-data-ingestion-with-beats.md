@@ -17,7 +17,7 @@ We’ll set up a multi-tenant app registration and client secret in T1, provisio
 
 ```shell
 # log into the T1 tenant
-az login --tenant aaaaaaaa-1111-1111-1111-111111111111 # T1
+$ az login --tenant aaaaaaaa-1111-1111-1111-111111111111 # T1
 
 
 $ az ad app create \
@@ -58,13 +58,12 @@ $ az ad app credential reset \
   "password": "<redacted>",
   "tenant": "aaaaaaaa-1111-1111-1111-111111111111"
 }
-
 ```
 
 ### Provision enterprise app in T2
 
 ```shell
-az login --tenant bbbbbbbb-2222-2222-2222-222222222222 # T2
+$ az login --tenant bbbbbbbb-2222-2222-2222-222222222222 # T2
 ```
 
 * Create Service Principal  
@@ -139,7 +138,7 @@ export AZURE_EVENTHUB_NAMESPACE="contoso-multi-tenant-demo"
 export AZURE_STORAGE_ACCOUNT_NAME="contosomultitenantdemo"
 
 # Create a brand new resource group to host the resources
-az group create --name $RESOURCE_GROUP --location $AZURE_LOCATION
+$ az group create --name $RESOURCE_GROUP --location $AZURE_LOCATION
 ```
 
 #### Event Hubs namespace
@@ -152,7 +151,7 @@ Next, we need to create the Event Hubs’ namespace and hub
 ```shell
 
 # Create an event hubs namespace
-az eventhubs namespace create \
+$ az eventhubs namespace create \
   --name $AZURE_EVENTHUB_NAMESPACE \
   --resource-group $RESOURCE_GROUP \
   --location $AZURE_LOCATION \
@@ -160,7 +159,7 @@ az eventhubs namespace create \
   --capacity 1
 
 # Create the event hub
-az eventhubs eventhub create \
+$ az eventhubs eventhub create \
   --name logs \
   --namespace-name $AZURE_EVENTHUB_NAMESPACE \
   --resource-group $RESOURCE_GROUP \
@@ -178,7 +177,7 @@ Then, we create the storage account.
 
 ```shell
 # Create a storage account
-az storage account create \
+$ az storage account create \
   --name $AZURE_STORAGE_ACCOUNT_NAME \
   --resource-group $RESOURCE_GROUP \
   --location $AZURE_LOCATION \
@@ -195,17 +194,16 @@ Let’s grant the permission to receive messages from the event hub and read/wri
 
 ```shell
 # Assign the "Azure Event Hubs Data Receiver" to the multi-tenant application.
-az role assignment create \
+$ az role assignment create \
   --role "Azure Event Hubs Data Receiver" \
   --assignee cccccccc-3333-3333-3333-333333333333 \
   --scope /subscriptions/eeeeeeee-5555-5555-5555-555555555555/resourceGroups/contoso-multi-tenant-demo/providers/Microsoft.EventHub/namespaces/contoso-multi-tenant-demo
 
 # Assign the "Storage Blob Data Contributor" role
-az role assignment create \
+$ az role assignment create \
   --role "Storage Blob Data Contributor" \
   --assignee cccccccc-3333-3333-3333-333333333333 \
   --scope /subscriptions/eeeeeeee-5555-5555-5555-555555555555/resourceGroups/contoso-multi-tenant-demo/providers/Microsoft.Storage/storageAccounts/contosomultitenantdemo
-
 ```
 
 ### Collect logs using Filebeat
@@ -226,7 +224,7 @@ filebeat.inputs:
   # - connection_string (default)
   # - client_secret
   # 
-  # Avaialble starting from Filebeat 8.19.10, 9.1.10, 9.2.4, or later.
+  # Available starting from Filebeat 8.19.10, 9.1.10, 9.2.4, or later.
   auth_type: client_secret
   
   # Entra ID (Azure AD tenant) and application (client) credentials.
@@ -256,7 +254,7 @@ Here’s an example of how to run Filebeat.
 * [Filebeat command reference | Beats](https://www.elastic.co/docs/reference/beats/filebeat/command-line-options#run-command) 
 
 ```shell
-filebeat -e -v -d "*" \
+$ filebeat -e -v -d "*" \
   --strict.perms=false \
   --path.home . \
   -E cloud.id=<redacted> \
@@ -274,7 +272,3 @@ Next:
 2. Received the same message
 
 <!-- TODO: Add screenshot showing message sent to Event Hub and received successfully -->  
-
-
-
-
