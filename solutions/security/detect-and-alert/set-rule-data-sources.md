@@ -37,7 +37,21 @@ For indicator match rules, the **Indicator index patterns** field controls which
 
 ## Exclude cold and frozen data [exclude-cold-frozen-tier]
 
-Rules may perform slower or time out if they query data stored in cold or frozen [data tiers](../../../manage-data/lifecycle/data-tiers.md). You have two options for excluding this data:
+Cold data tiers store time series data that's accessed infrequently and rarely updated, while frozen data tiers hold time series data that's accessed even less frequently and never updated. Rules may perform slower or time out if they query data stored in these [data tiers](../../../manage-data/lifecycle/data-tiers.md).
+
+### Best practices
+
+* **Retention in hot tier**: Keep data in the hot tier ({{ilm}} hot phase) for at least 24 hours. {{ilm-cap}} policies that move ingested data from the hot phase to another phase (for example, cold or frozen) in less than 24 hours may cause performance issues or rule execution errors.
+* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't have replicas by default, shard unavailability can cause partial rule run failures. Shard unavailability may also be encountered during or after {{stack}} upgrades. If this happens, you can manually rerun rules over the affected time period once the shards are available.
+
+### Limitations
+
+* To avoid rule failures, do not modify {{ilm}} policies for {{elastic-sec}}-controlled indices, such as alert and list indices.
+* Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least 24 hours before moving to cold or frozen tiers.
+
+### Exclusion options
+
+You have two options for excluding cold and frozen data from rules:
 
 **Space-level setting (all rules).** Configure the `excludedDataTiersForRuleExecution` [advanced setting](../get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) to exclude cold or frozen data from all rules in a {{kib}} space. This does not apply to {{ml}} rules. Only available on {{stack}}.
 
@@ -88,4 +102,4 @@ To apply a filter, paste the Query DSL into the **Custom query** filter bar when
 
 * [Advanced data source configuration](/solutions/security/detect-and-alert/advanced-data-source-configuration.md): Deployment-level settings that affect data sources, including {{ccs}} and logsdb index mode.
 * [Update default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices): Change the space-level default index patterns inherited by all rules.
-* [Rule settings reference](/solutions/security/detect-and-alert/rule-settings-reference.md): Shared rule settings including timestamp override, which controls which timestamp field the rule uses when querying data.
+* [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md): Shared rule settings including timestamp override, which controls which timestamp field the rule uses when querying data.

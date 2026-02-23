@@ -9,7 +9,7 @@ products:
 description: Overview and workflow for building custom detection rules tailored to your threat model.
 ---
 
-# Create a detection rule
+# Custom rules
 
 Build custom detection rules tailored to your environment and threat model. The pages in this section walk you through selecting a rule type, writing rule logic, and configuring rule settings.
 

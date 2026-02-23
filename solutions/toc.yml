@@ -584,7 +584,7 @@ toc:
               - file: security/detect-and-alert/install-manage-prebuilt-rules.md
               - file: security/detect-and-alert/update-prebuilt-rules.md
               - file: security/detect-and-alert/mitre-attack-coverage.md
-          - file: security/detect-and-alert/create-a-detection-rule.md
+          - file: security/detect-and-alert/custom-rules.md
             children:
               - file: security/detect-and-alert/choose-the-right-rule-type.md
                 children:
@@ -604,6 +604,8 @@ toc:
               - file: security/detect-and-alert/set-rule-data-sources.md
               - file: security/detect-and-alert/write-investigation-guides.md
               - file: security/detect-and-alert/validate-and-test-rules.md
+          - file: security/detect-and-alert/common-rule-settings.md
+          - file: security/detect-and-alert/query-alert-indices.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
           - file: security/detect-and-alert/reduce-noise-and-false-positives.md
@@ -615,16 +617,11 @@ toc:
                   - file: security/detect-and-alert/add-manage-exceptions.md
                   - file: security/detect-and-alert/create-manage-shared-exception-lists.md
               - file: security/detect-and-alert/alert-suppression.md
-              - file: security/detect-and-alert/snooze-rule-actions.md
           - file: security/detect-and-alert/manage-detection-alerts.md
             children:
               - file: security/detect-and-alert/visualize-detection-alerts.md
               - file: security/detect-and-alert/view-detection-alert-details.md
               - file: security/detect-and-alert/add-detection-alerts-to-cases.md
-          - file: security/detect-and-alert/detections-reference.md
-            children:
-              - file: security/detect-and-alert/rule-settings-reference.md
-              - file: security/detect-and-alert/query-alert-indices.md
       - file: security/configure-elastic-defend.md
         children:
           - file: security/configure-elastic-defend/elastic-defend-requirements.md

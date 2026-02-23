@@ -88,7 +88,7 @@ The anomaly score ranges from 0 to 100, where higher scores indicate stronger de
 
 ## {{ml}} field reference [ml-fields]
 
-The following settings are specific to {{ml}} rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/rule-settings-reference.md).
+The following settings are specific to {{ml}} rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **{{ml-cap}} jobs**
 :   The {{anomaly-jobs}} whose results the rule evaluates. Select one or more jobs. If a selected job is not active, it starts automatically when the rule is enabled.

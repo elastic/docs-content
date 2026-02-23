@@ -17,6 +17,11 @@ description: Learn how to install, enable, update, and manage Elastic prebuilt d
 
 Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](detection-rules://index.md), keep them updated, and make sure they have the data needed to run successfully.
 
+There are several special prebuilt rules you should know about:
+
+* **Endpoint protection rules**: Create alerts based on {{elastic-defend}}'s threat monitoring and prevention.
+* **External Alerts**: Create an alert for all incoming third-party system alerts (for example, Suricata alerts).
+
 * [Install and enable Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#load-prebuilt-rules)
 * [Prebuilt rule tags](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#prebuilt-rule-tags)
 * [Select and duplicate all prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#select-all-prebuilt-rules)
@@ -103,7 +108,7 @@ Each prebuilt rule includes several tags identifying the rule’s purpose, detec
 
 ## Select and duplicate prebuilt rules [select-all-prebuilt-rules]
 
-Without an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, you can't modify most settings on Elastic prebuilt rules. You can only edit [rule actions](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-schedule) and [add exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md). If you want to modify other settings on a prebuilt rule, you must first duplicate it, then make your changes to the duplicated rule. Note that your customized rule is entirely separate from the original prebuilt rule, and will not get updates from Elastic if the prebuilt rule is updated.
+Without an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, you can't modify most settings on Elastic prebuilt rules. You can only edit [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule) and [add exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md). If you want to modify other settings on a prebuilt rule, you must first duplicate it, then make your changes to the duplicated rule. Note that your customized rule is entirely separate from the original prebuilt rule, and will not get updates from Elastic if the prebuilt rule is updated.
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, select the **Elastic rules** filter.

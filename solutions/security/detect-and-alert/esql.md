@@ -92,7 +92,7 @@ If your {{esql}} query creates new fields that are not part of the ECS schema, t
 
 ### Custom highlighted fields
 
-When configuring an {{esql}} rule's **Custom highlighted fields** (in [advanced settings](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params)), you can specify any fields that the query returns. This ensures returned fields are visible in the alert details flyout during investigation.
+When configuring an {{esql}} rule's **Custom highlighted fields** (in [advanced settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params)), you can specify any fields that the query returns. This ensures returned fields are visible in the alert details flyout during investigation.
 
 ::::{tip}
 **See it in practice.** These patterns demonstrate {{esql}} detection use cases:
@@ -103,7 +103,7 @@ When configuring an {{esql}} rule's **Custom highlighted fields** (in [advanced 
 
 ## {{esql}} field reference [esql-fields]
 
-The following settings are specific to {{esql}} rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/rule-settings-reference.md).
+The following settings are specific to {{esql}} rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **{{esql}} query**
 :   The [{{esql}} query](elasticsearch://reference/query-languages/esql.md) that defines the detection logic. Can be aggregating (with `STATS...BY`) or non-aggregating. Each row in the query result becomes an alert.

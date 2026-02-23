@@ -76,7 +76,7 @@ The **History Window Size** determines how far back the rule looks to decide whe
 
 ## New terms field reference [new-terms-fields]
 
-The following settings are specific to new terms rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/rule-settings-reference.md).
+The following settings are specific to new terms rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **Index patterns or {{data-source}}**
 :   The {{es}} indices or {{data-source}} the rule searches.

@@ -73,7 +73,7 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 
 ### Requirements
 * **Custom rules**: You can edit and bulk-modify custom rules with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). 
-* **Prebuilt rules**: You can edit [rule notifications](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications) with any subscription or project tier. Editing all other prebuilt rule settings (except **Author** and **License**) or bulk-modifying prebuilt rules requires an [Enterprise subscription](https://www.elastic.co/pricing) or [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* **Prebuilt rules**: You can edit [rule notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) with any subscription or project tier. Editing all other prebuilt rule settings (except **Author** and **License**) or bulk-modifying prebuilt rules requires an [Enterprise subscription](https://www.elastic.co/pricing) or [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ### Edit a single rule [edit-single-rule]
 
@@ -101,8 +101,8 @@ Use bulk editing to update settings on multiple rules simultaneously. Rules that
     * **Index patterns**: Add or delete the index patterns used by all selected rules.
     * **Tags**: Add or delete tags on all selected rules.
     * **Custom highlighted fields**: Add custom highlighted fields on all selected rules. You can choose any fields that are available in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices), or enter field names from other indices. To overwrite a rule's current set of custom highlighted fields, select the **Overwrite all selected rules' custom highlighted fields** option, then click **Save**.
-    * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions, select the option to **Overwrite all selected rules actions**. Keep in mind that rule actions won't run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md); they'll resume after the maintenance window ends.
-    * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-schedule) and look-back times on all selected rules.
+    * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions, select the option to **Overwrite all selected rules actions**. Keep in mind that rule actions won't run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md); they'll resume after the maintenance window ends.
+    * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule) and look-back times on all selected rules.
     * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.
 
 4. On the page or flyout that opens, update the rule settings.
@@ -211,7 +211,7 @@ Before manually running rules, make sure you properly understand and plan for ru
 3. Specify when the manual run starts and ends. The default selection is the current day starting three hours in the past. The rule will search for events during the selected time range.
 4. Click **Run** to manually run the rule.
 
-The rule will run over the time range that you selected. Note that all [rule actions](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications) will also be activated, except for **Summary of alerts** actions that run at a custom frequency.
+The rule will run over the time range that you selected. Note that all [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) will also be activated, except for **Summary of alerts** actions that run at a custom frequency.
 
 Go to the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table) on the **Execution results** tab to track the manual rule executions. If you manually ran the rule over a gap, you can also monitor the gap fill's progress from the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
 
@@ -352,11 +352,3 @@ You can also check rules' related integrations in the **Installed Rules** and **
 ::::{tip}
 You can hide the **integrations** badge in the Rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations).
 ::::
-
-## Manage rules as code [manage-rule-dac]
-
-Utilize the [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) principles to externally manage your detection rules.
-
-The {{elastic-sec}} Labs team uses the [detection-rules](https://github.com/elastic/detection-rules) repo to develop, test, and release {{elastic-sec}}'s[ prebuilt rules](https://github.com/elastic/detection-rules/tree/main/rules). The repo provides DaC features and allows you to customize settings to simplify the setup for managing user rules with the DaCe pipeline.
-
-To get started, refer to the [DaC documentation](https://github.com/elastic/detection-rules/blob/main/README.md#detections-as-code-dac).

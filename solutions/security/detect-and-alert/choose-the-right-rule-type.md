@@ -70,7 +70,7 @@ For example, you might create three building block rules:
 Each of these individually produces low-confidence alerts. A downstream EQL sequence rule can then query the alert index to detect all three occurring on the same host within a short time window, producing a single high-confidence alert for a likely intrusion chain.
 
 ::::{tip}
-Add [rule actions](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications) to building block rules if you want notifications when building block alerts are generated, even though the alerts are hidden from the default Alerts view.
+Add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) to building block rules if you want notifications when building block alerts are generated, even though the alerts are hidden from the default Alerts view.
 ::::
 
 ### Viewing building block alerts
@@ -84,11 +84,11 @@ On a building block rule's details page, the rule's alerts are always displayed.
 
 ### Marking a rule as a building block
 
-Select the **Building block** option in the rule's [advanced settings](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params) when creating or editing any rule type.
+Select the **Building block** option in the rule's [advanced settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) when creating or editing any rule type.
 
 ## Shared concepts [shared-rule-concepts]
 
-The following concepts apply to all rule types. For the full settings reference, see [Rule settings reference](/solutions/security/detect-and-alert/rule-settings-reference.md).
+The following concepts apply to all rule types. For the full settings reference, see [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 ### Data sources [views-index-patterns]
 
@@ -120,4 +120,4 @@ Exceptions are supported for custom query, {{ml}}, event correlation, and indica
 
 ### Notifications [about-notifications]
 
-For both prebuilt and custom rules, you can send notifications when alerts are created. Notifications can be sent through {{jira}}, Microsoft Teams, PagerDuty, Slack, and other connectors. Configure actions when you [create or edit a rule](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications).
+For both prebuilt and custom rules, you can send notifications when alerts are created. Notifications can be sent through {{jira}}, Microsoft Teams, PagerDuty, Slack, and other connectors. Configure actions when you [create or edit a rule](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).

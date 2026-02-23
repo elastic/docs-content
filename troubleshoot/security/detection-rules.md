@@ -20,6 +20,33 @@ products:
 This topic covers common troubleshooting issues when creating or managing [detection rules](../../solutions/security/detect-and-alert/using-the-rule-builder.md).
 
 
+## Setup errors [setup-errors-ts]
+
+Depending on your privileges and whether detection system indices have already been created for the {{kib}} space, you might get one of these error messages when you open the **Alerts** or **Rules** page:
+
+::::{dropdown} Let's set up your detection engine
+:name: setup-detection-engine-ts
+
+If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Detections prerequisites and requirements](../../solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
+
+:::{note}
+For **self-managed** {{stack}} deployments only, this message may be displayed when the `xpack.encryptedSavedObjects.encryptionKey` setting has not been added to the `kibana.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/requirements-privileges.md).
+:::
+
+::::
+
+::::{dropdown} Detection engine permissions required
+:name: detection-permissions-ts
+
+If you get this message, you do not have the required privileges to view the **Detections** feature, and you should contact your {{kib}} administrator.
+
+:::{note}
+For **self-managed** {{stack}} deployments only, this message may be displayed when the `xpack.security.enabled` setting is not enabled in the `elasticsearch.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/requirements-privileges.md).
+:::
+
+::::
+
+
 ## {{ml-cap}} rules [ML-rules-ts]
 
 ::::{dropdown} {{ml-cap}} rule is failing and a required {{ml}} job is stopped
@@ -178,7 +205,7 @@ Even if your rule runs at its scheduled time, there might still be missing alert
 
 In addition, use caution when creating custom rule schedules to ensure that the specified interval + additional look-back time is greater than your deployment’s ingestion pipeline delay.
 
-You can reduce the number of missed alerts due to ingestion pipeline delay by specifying the `Timestamp override` field value to `event.ingested` in [advanced settings](../../solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params) during rule creation or editing. The detection engine uses the value from the `event.ingested` field as the timestamp when executing the rule.
+You can reduce the number of missed alerts due to ingestion pipeline delay by specifying the `Timestamp override` field value to `event.ingested` in [advanced settings](../../solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) during rule creation or editing. The detection engine uses the value from the `event.ingested` field as the timestamp when executing the rule.
 
 For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} until 10:10 due to an ingestion pipeline delay. If you created a rule to detect that event with an interval + additional look-back time of 6 minutes, and the rule executes at 10:12, it would still detect the event because the `event.ingested` timestamp was from 10:10, only 2 minutes before the rule executed and well within the rule’s 6-minute interval + additional look-back time.
 

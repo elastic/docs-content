@@ -22,9 +22,9 @@ Use the following table to identify which mechanism matches your situation. If m
 | The rule fires on activity that isn't suspicious in any environment (for example, the query is too broad and catches normal admin behavior) | [Tune rule logic](/solutions/security/detect-and-alert/tune-detection-rules.md) | Refine the query, threshold, or schedule so the rule only matches what it should |
 | The rule correctly identifies a pattern, but a specific known-safe case keeps firing in your environment (for example, an SCCM server triggers your remote service creation rule nightly) | [Exception](/solutions/security/detect-and-alert/rule-exceptions.md) | Permanently suppress alerts matching specific field values. The rule logic stays unchanged. |
 | The rule generates many alerts for the same entity in a short window (for example, a compromised host triggers the same rule every 5 minutes for an hour) | [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) | After the first alert for a given field value, suppress further alerts for a defined time window |
-| You need to temporarily stop receiving notifications during scheduled maintenance or a known event | [Snooze actions](/solutions/security/detect-and-alert/snooze-rule-actions.md) | The rule runs and alerts are still created and stored. Only notifications (email, Slack, webhooks) are paused. |
+| You need to temporarily stop receiving notifications during scheduled maintenance or a known event | [Snooze actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) | The rule runs and alerts are still created and stored. Only notifications (email, Slack, webhooks) are paused. |
 | A specific known-safe process or user keeps appearing across many different rules (for example, your vulnerability scanner triggers dozens of rules) | [Shared exception list](/solutions/security/detect-and-alert/create-manage-shared-exception-lists.md) | Apply one exception list across multiple rules simultaneously, avoiding duplicate exceptions rule by rule |
-| You're deploying a new rule and want to observe alert volume before enabling notifications | [Snooze actions](/solutions/security/detect-and-alert/snooze-rule-actions.md) | Enable the rule fully, review alerts in the UI, and only enable notifications once you're confident in the signal |
+| You're deploying a new rule and want to observe alert volume before enabling notifications | [Snooze actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) | Enable the rule fully, review alerts in the UI, and only enable notifications once you're confident in the signal |
 
 ## How each mechanism works
 
@@ -68,7 +68,7 @@ Acts on: **notifications, after alerts are created and stored**
 
 Temporarily pause the rule's notification actions (emails, Slack messages, webhooks) without affecting rule execution or alert creation. Alerts generated during a snooze period are stored normally and visible in the Alerts UI. Snoozing expires automatically or can be canceled manually. For space-wide pausing, use a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
 
-Refer to [Snooze rule actions](/solutions/security/detect-and-alert/snooze-rule-actions.md) for detailed guidance.
+Refer to [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) for detailed guidance.
 
 ## Key distinctions
 

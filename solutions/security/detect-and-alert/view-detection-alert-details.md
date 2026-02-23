@@ -107,7 +107,7 @@ The Investigation section provides the following information:
     Add an [investigation guide](/solutions/security/detect-and-alert/write-investigation-guides.md#add-ig-actions-rule) to a rule when creating a new custom rule or modifying an existing custom rule’s settings.
     ::::
 
-* **Highlighted fields**: Shows relevant fields for the alert and any [custom highlighted fields](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params) you added to the rule. Custom highlighted fields with values are added to this section. Those without values aren’t added.
+* **Highlighted fields**: Shows relevant fields for the alert and any [custom highlighted fields](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) you added to the rule. Custom highlighted fields with values are added to this section. Those without values aren’t added.
 
     ::::{tip}
     {applies_to}`stack: ga 9.1` You can quickly add and remove custom highlighted fields from the rule by clicking **Add field** in the Highlighted fields table. 

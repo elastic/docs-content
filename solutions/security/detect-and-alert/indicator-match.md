@@ -15,6 +15,15 @@ description: Detect security events that match known threat indicators from thre
 
 Indicator match rules continuously compare field values in your security event indices against field values in threat indicator indices. When a match is found, an alert is generated, enriched with metadata from the matched indicator. This makes indicator match rules the primary mechanism for operationalizing threat intelligence feeds within {{elastic-sec}}.
 
+### Limitations
+
+Indicator match rules provide a powerful capability to search your security data; however, their queries can consume significant deployment resources. When creating an indicator match rule, limit the time range of the indicator index query to the minimum period necessary for the desired rule coverage. For example, the default indicator index query `@timestamp > "now-30d/d"` searches specified indicator indices for indicators ingested during the past 30 days and rounds the query start time down to the nearest day (resolves to UTC `00:00:00`). Without this limitation, the rule includes all of the indicators in your indicator indices, which may extend the time it takes for the indicator index query to complete.
+
+In addition, the following support restrictions are in place:
+
+* Indicator match rules don't support cold or frozen data. Cold or frozen data in indices queried by indicator match rules must be older than the time range queried by the rule. If your data's timestamps are unreliable, you can exclude cold and frozen tier data using a Query DSL filter.
+* Indicator match rules with an additional look-back time value greater than 24 hours are not supported.
+
 ### When to use an indicator match rule
 
 Indicator match rules are the right fit when:
@@ -77,7 +86,7 @@ You can use [value lists](/solutions/security/detect-and-alert/create-manage-val
 
 ## Indicator match field reference [indicator-match-fields]
 
-The following settings are specific to indicator match rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/rule-settings-reference.md).
+The following settings are specific to indicator match rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **Source**
 :   The index patterns or {{data-source}} that store your source event documents. Prepopulated with indices from the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) advanced setting.

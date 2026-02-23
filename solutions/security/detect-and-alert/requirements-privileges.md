@@ -96,7 +96,7 @@ With detections enabled, you're ready to create rules and start responding to th
 
 - **Respond to and manage alerts**
    - [Manage detection alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): Triage, investigate, and resolve alerts
-   - [Set up alert notifications](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications): Send alerts to external systems like Slack, email, or ticketing tools
+   - [Set up alert notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications): Send alerts to external systems like Slack, email, or ticketing tools
    - [Tune rules to reduce noise](/solutions/security/detect-and-alert/tune-detection-rules.md): Add exceptions and adjust rules to minimize false positives
 
 ::::{tip}

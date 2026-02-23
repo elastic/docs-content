@@ -191,7 +191,7 @@ For required privileges to view and manage {{elastic-endpoint}} exceptions, refe
 
 ## Add {{elastic-endpoint}} exceptions [endpoint-rule-exceptions]
 
-You can add {{elastic-endpoint}} exceptions to [endpoint protection rules](../manage-elastic-defend/endpoint-protection-rules.md) or to rules that are associated with {{elastic-endpoint}} rule exceptions. To associate rules when creating or editing a rule, select the [**{{elastic-endpoint}} exceptions**](rule-settings-reference.md#rule-ui-advanced-params) option.
+You can add {{elastic-endpoint}} exceptions to [endpoint protection rules](../manage-elastic-defend/endpoint-protection-rules.md) or to rules that are associated with {{elastic-endpoint}} rule exceptions. To associate rules when creating or editing a rule, select the [**{{elastic-endpoint}} exceptions**](common-rule-settings.md#rule-ui-advanced-params) option.
 
 Endpoint exceptions are added to the endpoint protection rules **and** the {{elastic-endpoint}} on your hosts.
 
@@ -228,7 +228,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
         2. Expand the Endpoint Security Exception List or click the list name to open the list’s details page. Next, click **Add endpoint exception**.
 
             ::::{note}
-            The Endpoint Security Exception List is automatically created. By default, it’s associated with endpoint protection rules and any rules with the [**{{elastic-endpoint}} exceptions**](rule-settings-reference.md#rule-ui-advanced-params) option selected.
+            The Endpoint Security Exception List is automatically created. By default, it’s associated with endpoint protection rules and any rules with the [**{{elastic-endpoint}} exceptions**](common-rule-settings.md#rule-ui-advanced-params) option selected.
             ::::
 
 

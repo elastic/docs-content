@@ -18,11 +18,11 @@ description: Step-by-step guide to create detection rules using the Kibana rule 
 Once the Detections feature is [turned on](/solutions/security/detect-and-alert/requirements-privileges.md), follow these steps to create a detection rule:
 
 1. Define the [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#rule-types). The configuration for this step varies depending on the rule type.
-2. Configure [basic rule settings](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-basic-params).
-3. Configure [advanced rule settings](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params) (optional).
-4. Set the [rule's schedule](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-schedule).
-5. Set up [rule actions](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications) (optional).
-6. Set up [response actions](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-response-action) (optional).
+2. Configure [basic rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params).
+3. Configure [advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) (optional).
+4. Set the [rule's schedule](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule).
+5. Set up [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) (optional).
+6. Set up [response actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-response-action) (optional).
 
 ::::{tip}
 * At any step, you can preview the rule before saving it to see what kind of results you can expect.
@@ -56,6 +56,6 @@ To understand which type to use, refer to [Select the right rule type](/solution
 
 ## Related pages
 
-* [Rule settings reference](/solutions/security/detect-and-alert/rule-settings-reference.md): All shared rule settings, including severity, risk score, schedule, actions, and notification variables.
+* [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md): All shared rule settings, including severity, risk score, schedule, actions, and notification variables.
 * [Using the API](/solutions/security/detect-and-alert/using-the-api.md): Create and manage rules programmatically.
 * [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md): Enable, export, duplicate, and bulk-edit rules.

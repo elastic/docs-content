@@ -74,7 +74,7 @@ You can configure alert suppression when [creating](/solutions/security/detect-a
 
 ::::{tip}
 * Use the **Rule preview** before saving the rule to visualize how alert suppression will affect the alerts created, based on historical data.
-* If a rule times out while suppression is turned on, try shortening the rule’s [look-back](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-schedule) time or turn off suppression to improve the rule’s performance.
+* If a rule times out while suppression is turned on, try shortening the rule’s [look-back](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule) time or turn off suppression to improve the rule’s performance.
 
 ::::
 
@@ -157,8 +157,8 @@ For example, say you set the suppression time period to 5 minutes and specify to
 
 Some rule types have a maximum number of alerts that can be suppressed (custom query rules don’t have a suppression limit):
 
-* **Threshold, event correlation, {{esql}}, and {{ml}}:** The maximum number of alerts is the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params), which is `100` by default.
-* **Indicator match and new terms:** The maximum number is five times the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-ui-advanced-params). The default value is `100`, which means the default maximum limit for indicator match rules and new terms rules is `500`.
+* **Threshold, event correlation, {{esql}}, and {{ml}}:** The maximum number of alerts is the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params), which is `100` by default.
+* **Indicator match and new terms:** The maximum number is five times the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params). The default value is `100`, which means the default maximum limit for indicator match rules and new terms rules is `500`.
 
 ## Bulk apply and remove alert suppression [security-alert-suppression-bulk-apply]
 

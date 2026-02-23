@@ -20,7 +20,7 @@ Create building block rules when you do not want to see their generated alerts i
 * Rules that execute on the alert indices (`.alerts-security.alerts-<kibana space>`). You can then use building block rules to create hidden alerts that act as a basis for an *ordinary* rule to generate visible alerts.
 
 ::::{tip}
-Add [rule notifications](/solutions/security/detect-and-alert/rule-settings-reference.md#rule-notifications) to building block rules to notify you when building block alerts are generated. 
+Add [rule notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) to building block rules to notify you when building block alerts are generated. 
 ::::
 
 
