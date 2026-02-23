@@ -34,6 +34,7 @@ Custom query rules are **not** the best fit when you need to:
 
 Custom query rules require at least one {{es}} index pattern or [data view](/solutions/security/get-started/data-views-elastic-security.md) that contains the events you want to match. The indices must be accessible to the user who creates or last edits the rule, because the rule executes with that user's [API key privileges](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#alerting-authorization-model).
 
+<!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective queries [craft-custom-query]
 
 ### Query language
@@ -80,6 +81,7 @@ event.action:"Process Create (rule: ProcessCreate)" and process.name:"vssadmin.e
 * **Clearing Windows Event Logs.** Uses `or` to cover multiple utilities (`wevtutil`, `powershell`) that can clear event logs. Demonstrates variant coverage.
 * **Potential Process Injection via PowerShell.** Combines `process.name` with `powershell.file.script_block_text` field matching to detect in-memory injection techniques. An example of pairing process metadata with deeper content inspection.
 ::::
+END CRAFT LAYER -->
 
 ## Custom query field reference [custom-query-fields]
 

@@ -33,6 +33,7 @@ New terms rules are **not** the best fit when:
 
 New terms rules require at least one {{es}} index pattern or [{{data-source}}](/solutions/security/get-started/data-views-elastic-security.md) with a sufficient history of events. The history window must contain enough data to establish a reliable baseline. A window that is too short leads to excessive false positives as many values appear "new".
 
+<!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective new terms rules [craft-new-terms]
 
 ### Selecting fields
@@ -73,6 +74,7 @@ The **History Window Size** determines how far back the rule looks to decide whe
 * **First Occurrence of User Agent For a GitHub Personal Access Token (PAT).** Detects a new user agent string associated with a GitHub PAT, which may indicate token compromise.
 * **First Time Seen Google Workspace OAuth Login from Third-Party Application.** Detects novel third-party OAuth application logins, surfacing potential unauthorized integrations.
 ::::
+END CRAFT LAYER -->
 
 ## New terms field reference [new-terms-fields]
 

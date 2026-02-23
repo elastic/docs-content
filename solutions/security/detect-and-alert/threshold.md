@@ -33,6 +33,7 @@ Threshold rules are **not** the best fit when:
 
 Threshold rules require at least one {{es}} index pattern or {{data-source}}. The data should contain the fields you plan to group by and enough event volume for meaningful threshold evaluation.
 
+<!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective threshold rules [craft-threshold]
 
 ### Choosing Group by fields
@@ -73,6 +74,7 @@ Keep this in mind when configuring severity overrides, risk score overrides, or 
 * **High Number of Process Terminations** counts process termination events per host, surfacing hosts where mass process termination may indicate ransomware activity.
 * **Multiple Alerts Involving a Single User** groups existing alerts by `user.name` to detect users generating an unusually high volume of alerts, a useful meta-detection pattern.
 ::::
+END CRAFT LAYER -->
 
 ## Threshold field reference [threshold-fields]
 

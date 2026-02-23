@@ -33,6 +33,7 @@ description: Create detection rules using Elasticsearch Query Language (ESQL) wi
 
 {{esql}} rules query {{es}} indices directly using the `FROM` command. The indices must be accessible to the user who creates or last edits the rule.
 
+<!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective {{esql}} queries [craft-esql]
 
 ### Query types
@@ -100,6 +101,7 @@ When configuring an {{esql}} rule's **Custom highlighted fields** (in [advanced 
 * **High event count per host.** An aggregating query that groups by `host.name` and fires when a host exceeds a threshold count. Useful for detecting noisy hosts or denial-of-service patterns.
 * **Process execution with computed risk.** A non-aggregating query with `EVAL` that computes a custom risk score from multiple fields, alerting only when the computed score exceeds a threshold.
 ::::
+END CRAFT LAYER -->
 
 ## {{esql}} field reference [esql-fields]
 

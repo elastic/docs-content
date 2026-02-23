@@ -17,7 +17,7 @@ description: Create detection rules that trigger on machine learning anomaly det
 
 ### When to use a {{ml}} rule
 
-{{ml}} rules are the right fit when:
+{{ml-cap}} rules are the right fit when:
 
 * You want to detect **behavioral anomalies** that are difficult to express as static queries, such as unusual login times, atypical data transfer volumes, or rare process executions for a given user or host.
 * A {{ml}} job is already active (or you plan to enable one) that models the relevant behavior.
@@ -40,6 +40,7 @@ To create or edit {{ml}} rules, you need:
 
 For an overview of using {{ml}} with {{elastic-sec}}, refer to [{{anomaly-detect-cap}}](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 
+<!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Configuring effective {{ml}} rules [craft-ml]
 
 ### Selecting {{ml}} jobs
@@ -85,8 +86,9 @@ The anomaly score ranges from 0 to 100, where higher scores indicate stronger de
 * **Unusual Login Activity.** Triggers when a user logs in at unusual times or from unusual source IPs, based on a login-activity {{ml}} job.
 * **Spike in Network Traffic To a Country.** Detects sudden increases in outbound network traffic to a specific country, useful for identifying data exfiltration.
 ::::
+END CRAFT LAYER -->
 
-## {{ml}} field reference [ml-fields]
+## {{ml-cap}} field reference [ml-fields]
 
 The following settings are specific to {{ml}} rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 

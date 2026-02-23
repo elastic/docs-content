@@ -34,6 +34,7 @@ EQL rules are **not** the best fit when:
 
 EQL rules require at least one {{es}} index pattern or [{{data-source}}](/solutions/security/get-started/data-views-elastic-security.md). The indexed data must include a timestamp field (defaults to `@timestamp`) and an event category field (defaults to `event.category`). Sequence queries also benefit from a tiebreaker field to resolve events that share the same timestamp.
 
+<!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective EQL queries [craft-eql]
 
 ### Sequence queries
@@ -92,6 +93,7 @@ This detects a successful login that is never followed by a logout within one ho
 * **Potential Credential Access through Renamed COM+ Services DLL**: A single-event EQL query using `process.pe.original_file_name` to catch renamed binaries.
 * **Startup Persistence through DLL Search Order Hijacking**: A sequence that links file creation in a specific directory to a subsequent process load, illustrating file-to-process correlation.
 ::::
+END CRAFT LAYER -->
 
 ## EQL field reference [eql-fields]
 

@@ -45,6 +45,7 @@ Indicator match rules require:
 * **Source event indices** containing the security events you want to scan.
 * **Indicator indices** containing threat intelligence data. Data in these indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md) and must contain a `@timestamp` field.
 
+<!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective indicator match rules [craft-indicator-match]
 
 ### Designing threat mappings
@@ -83,6 +84,7 @@ You can use [value lists](/solutions/security/detect-and-alert/create-manage-val
 * **Threat Intel Indicator Match:** The foundational indicator match rule that compares source events against threat intelligence indices across multiple field types (IP, domain, hash).
 * **Threat Intel Hash Indicator Match:** A focused variant matching file hashes (`file.hash.sha256`, `file.hash.md5`) against indicator indices for malware detection.
 ::::
+END CRAFT LAYER -->
 
 ## Indicator match field reference [indicator-match-fields]
 
