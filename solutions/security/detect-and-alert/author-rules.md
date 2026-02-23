@@ -11,7 +11,7 @@ products:
 description: Create and configure detection rules tailored to your environment and threat model.
 ---
 
-# Author custom rules [rules-ui-create]
+# Author rules [rules-ui-create]
 
 Create detection rules tailored to your environment and threat model. Whether you're writing rules from scratch or customizing prebuilt rules, the pages in this section guide you through selecting a rule type, writing rule logic, and configuring settings.
 
