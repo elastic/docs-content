@@ -113,6 +113,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves {{elastic-defend}} visibility into image load events in mixed-architecture scenarios, such as during .NET library loading when the library and main executable might use different architectures. This only applies to Windows 10, version 1709 and later.
 * Refactors {{elastic-defend}} Windows file scanning behavior to reduce the risk of file sharing conflicts with other applications and improve the reliability of malware-on-write and event enrichments that rely on file contents such as code signatures and imphashes.
 * Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
+* Further reduces {{elastic-defend}} behavioral protection CPU usage for trusted applications.
 
 
 ### Fixes [elastic-security-9.3.0-fixes]
