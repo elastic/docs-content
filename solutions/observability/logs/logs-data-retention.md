@@ -12,17 +12,8 @@ Your data retention policies define how long {{es}} keeps your log data before a
 
 Manage log data retention in the following ways:
 
-* [Manage log data retention in Streams](#logs-data-retention-streams)
-* [Manage log data retention in data streams](#logs-data-retention-data-streams)
-
-## Manage data retention using Streams [logs-data-retention-streams]
-```{applies_to}
-stack: ga 9.2+
-```
-
-[Streams](../streams/streams.md) provides a single, centralized UI within {{kib}} that simplifies common tasks, including setting data retention. The **Retention** tab lets you manage how your stream retains data and provides insight into data ingestion and storage size.
-
-For more on managing data retention through the Streams UI, refer to [Manage data retention for Streams](../streams/management/retention.md).
+* [Manage log data retention in Streams](../streams/management/retention.md): Streams provides a single, centralized UI within {{kib}} that simplifies common tasks, including setting data retention. The **Retention** tab lets you manage how your stream retains data and provides insight into data ingestion and storage size.
+* [Manage log data retention in data streams](#logs-data-retention-data-streams): Data streams store append-only time series data across multiple indices and use {{ilm-init}} to automate backing index management, including automatic rollover and tiered storage.
 
 ## Manage data retention in data streams [logs-data-retention-data-streams]
 
