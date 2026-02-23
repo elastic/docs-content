@@ -39,9 +39,9 @@ From the **Cases** page, select one or more cases to perform bulk actions such a
 
 ## Export and import cases [export-import-cases]
 
-Use export and import to move cases between {{kib}} spaces or to preserve cases when upgrading to a new {{stack}} version. The process is the same for both scenarios: export cases from the source, then import them into the destination.
+Use export and import to move cases between {{kib}} spaces. Exports are saved as newline-delimited JSON (`.ndjson`) files and include user actions, text string comments, and Lens visualizations. 
 
-Exports are saved as newline-delimited JSON (`.ndjson`) files and include user actions, text string comments, and Lens visualizations. Files and alerts attached to the case are **not** included; you must re-add them after importing. Before importing cases, also ensure that any referenced data (such as Lens visualizations, Timelines, or alerts) already exists in the destination space, otherwise those references won't work.
+Files and alerts attached to the case are **not** included; you must re-add them after importing. Before importing cases, also ensure that any referenced data (such as Lens visualizations, Timelines, or alerts) already exists in the destination space, otherwise those references won't work.
 
 ### Export cases [cases-export]
 
