@@ -45,6 +45,15 @@ Indicator match rules require:
 * **Source event indices** containing the security events you want to scan.
 * **Indicator indices** containing threat intelligence data. Data in these indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md) and must contain a `@timestamp` field.
 
+## Using value lists as indicator indices [using-value-lists]
+
+You can use [value lists](/solutions/security/detect-and-alert/create-manage-value-lists.md) as the indicator index. This is useful when you have a flat list of indicators (IPs, domains, hashes) that you want to match against without creating a full indicator index:
+
+1. Upload a value list of indicators.
+2. In the **Indicator index patterns** field, enter `.items-<{{kib}} space>` (the hidden index where value lists are stored).
+3. In the **Indicator index query** field, enter `list_id : <your-list-name>`.
+4. In **Indicator mapping**, set the **Indicator index field** to the list type (`keyword`, `text`, or `IP`).
+
 <!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective indicator match rules [craft-indicator-match]
 
@@ -62,15 +71,6 @@ The default indicator index query `@timestamp > "now-30d/d"` limits matches to i
 
 * **Shorter window (7-14 days):** Reduces stale matches but may miss long-lived indicators.
 * **Longer window (60-90 days):** Catches more indicators but increases the volume of matches and rule execution time.
-
-### Using value lists as indicator indices [using-value-lists]
-
-You can use [value lists](/solutions/security/detect-and-alert/create-manage-value-lists.md) as the indicator index. This is useful when you have a flat list of indicators (IPs, domains, hashes) that you want to match against without creating a full indicator index:
-
-1. Upload a value list of indicators.
-2. In the **Indicator index patterns** field, enter `.items-<{{kib}} space>` (the hidden index where value lists are stored).
-3. In the **Indicator index query** field, enter `list_id : <your-list-name>`.
-4. In **Indicator mapping**, set the **Indicator index field** to the list type (`keyword`, `text`, or `IP`).
 
 ### Best practices
 

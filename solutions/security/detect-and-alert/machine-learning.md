@@ -31,12 +31,7 @@ description: Create detection rules that trigger on machine learning anomaly det
 
 ### Requirements
 
-::::{admonition} Prerequisites
-To create or edit {{ml}} rules, you need:
-* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* The [`machine_learning_admin`](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-ml-admin) role in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
-* At least one {{ml}} {{anomaly-job}} active or configured to start.
-::::
+{{ml-cap}} rules require the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), and you must have the [`machine_learning_admin`](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-ml-admin) role in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}. You also need at least one {{ml}} {{anomaly-job}} active or configured to start.
 
 For an overview of using {{ml}} with {{elastic-sec}}, refer to [{{anomaly-detect-cap}}](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 
