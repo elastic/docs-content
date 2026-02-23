@@ -28,12 +28,14 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [How long does Elastic retain AutoOps data?](#autoops-data-retention)
 * [Where are AutoOps metrics stored, and does AutoOps affect customer ECU usage?](#autoops-metrics-storage)
 * [Has AutoOps replaced Stack Monitoring?](#autoops-vs-stack-monitoring)
+* [How can I provide feedback about AutoOps?](#feedback)
 
 **Questions about AutoOps for ECE, ECK, or self-managed clusters**
 * [Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?](#additional-payment)
 * [Does shipping metrics data to {{ecloud}} incur additional costs?](#autoops-metrics-cost)
 * [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
 * [Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?](#maintenance)
+* [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
 
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
 * [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
@@ -86,6 +88,9 @@ $$$autoops-metrics-storage$$$**Where are AutoOps metrics stored, and does AutoOp
 $$$autoops-vs-stack-monitoring$$$**Has AutoOps replaced Stack Monitoring?**
 :   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, not logs. Read more in [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 
+$$$feedback$$$**How can I provide feedback about AutoOps?**
+:   We value your feedback. [link]
+
 ## Questions about AutoOps for ECE, ECK, or self-managed clusters
 
 $$$additional-payment$$$ **Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?**
@@ -102,6 +107,11 @@ $$$deployment-types$$$ **Which deployment types can be connected to AutoOps thro
 
 $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, we recommend keeping {{agent}} upgraded to the latest version so you can access new features and fixes. 
+
+$$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
+:   Support eligibility is determined by the license of your connected cluster:
+* Platinum and Enterprise licenses: Eligible for [Elastic support](https://support.elastic.co/).
+* Free and open (Basic) licenses: Eligible for community-based support through the [Elastic Stack Community on Slack](https://elasticstack.slack.com/) or the [Monitoring Discuss forum](https://discuss.elastic.co/c/elastic-stack/monitoring/103).
 
 ### Setting up AutoOps for ECE, ECK, or self-managed clusters
 
