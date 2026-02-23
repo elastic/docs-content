@@ -35,7 +35,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds a `region` field to the Amazon Bedrock connector [#252960]({{kib-pull}}252960), [#252956]({{kib-pull}}252956).
 * Improves Automatic Migration performance by reducing the number of {{es}} calls when updating field mappings [#252431]({{kib-pull}}252431).
 * Updates the `fast-xml-parser` package dependency to version 5.3.4 [#251644]({{kib-pull}}251644).
-* Further reduces {{elastic-defend}} behavioral protection CPU usage for trusted applications.
 
 ### Fixes [elastic-security-9.3.1-fixes]
 * Improves the performance of bulk rule deletion [#253116]({{kib-pull}}253116).
