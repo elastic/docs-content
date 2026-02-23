@@ -186,6 +186,10 @@ message: |
   Created: {{user.created_at | date: "%Y-%m-%d"}}
 ```
 
+:::{note}
+Workflows supports all available LiquidJS [filters](https://liquidjs.com/filters/overview.html).
+:::
+
 ### Preserve array and object types [workflows-preserve-types]
 
 When passing arrays or objects between steps, use the type-preserving syntax (`${{ }}`) to avoid stringification:

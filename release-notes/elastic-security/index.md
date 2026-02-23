@@ -206,7 +206,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Features and enhancements [elastic-security-9.2.3-features-enhancements]
 * Shows session view in full height [#245888]({{kib-pull}}245888).
 * Shows analyzer in full height [#245857]({{kib-pull}}245857).
-* Hardens {{elastic-defend}} against cloud filter rebinding.
+* Hardens {{elastic-defend}} on Windows against Bind Filter rebinding attacks.
 * Adds `process.group_leader.pid` and `process.session_leader.pid` to {{elastic-defend}} MacOS process exec events.
 * Improves general system responsiveness while {{elastic-defend}} is installed.
 * Reduces the number of I/O operations performed by {{elastic-defend}} for file event enrichment.  This reduction is more pronounced when Ransomware Protection is not in use.
@@ -372,7 +372,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Features and enhancements [elastic-security-9.1.9-features-enhancements]
 * Shows session view in full height [#245888]({{kib-pull}}245888).
 * Shows analyzer in full height [#245857]({{kib-pull}}245857).
-* Hardens {{elastic-defend}} against cloud filter rebinding.
+* Hardens {{elastic-defend}} on Windows against Bind Filter rebinding attacks.
 * Improves general system responsiveness while {{elastic-defend}} is installed.
 
 ### Fixes [elastic-security-9.1.9-fixes]

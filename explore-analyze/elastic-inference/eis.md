@@ -28,7 +28,9 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## Supported models
 
-The following tables list the models supported by Elastic {{infer-cap}} Service by LLM type.
+The following tables list the models supported by Elastic {{infer-cap}} Service by model type.
+
+The corresponding {{kib}} connectors and {{infer}} endpoints for these models are created automatically. To customize the configuration, you can create [your own connectors](kibana://reference/connectors-kibana.md#creating-new-connector) or [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 
 ::::{note}
 The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
@@ -55,6 +57,7 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 ::::{important}
 * The applicable terms of use, uptime, and performance for each of the AI models available with EIS are each described in the applicable AI model's Provider Terms and Model Card.
 * Prior to using the AI model with EIS, Customers are responsible for reviewing and agreeing to the chosen AI model's Provider Terms to understand the availability and data practices of the AI model's provider.
+* After the listed end-of-life (EOL) date, the model is no longer available for {{infer}} use and requests will fail. You need to actively transition to another model before the EOL date, there is no automated migration.
 ::::
 
 ## Region and hosting [eis-regions]
