@@ -71,7 +71,7 @@ From the **Observables** tab, you can view and manage case observables:
 You can manually add observables to cases or with the appropriate subscription, auto-extract them from alerts. Each case supports up to 50 observables.
 
 :::{note}
- Auto-extracting observables is only available in {{sec-serverless}} and {{stack}} 9.2+.
+ Auto-extracting observables is only available in {{sec-serverless}} and {{elastic-sec}} 9.2+.
 :::
 
 To manually add an observable:

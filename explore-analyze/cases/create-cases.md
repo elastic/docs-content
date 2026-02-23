@@ -54,7 +54,7 @@ To create a new case:
    * **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription).
 
       :::{note}
-      Auto-extracting observables is only available in {{sec-serverless}} and {{stack}} 9.2+.
+      Auto-extracting observables is only available in {{sec-serverless}} and {{elastic-sec}} 9.2+.
       :::
 
 7. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system.
