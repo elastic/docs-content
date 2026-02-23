@@ -110,7 +110,7 @@ Users must log in to their deployment at least once before they can be assigned 
 
 :::{applies-item} stack: ga
 
-* `All` for the **Cases** feature under the appropriate solution (**Management**, **Security**, or **{{observability}}**). 
+* `All` for the **Cases** feature under the appropriate solution (**Security** or **{{observability}}**). 
 * `Read` for a solution that has alerts (for example, **{{observability}}** or **Security**).
 
 :::
