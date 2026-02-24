@@ -376,7 +376,7 @@ POST /_security/role/remote-replication
 }
 ```
 
-After creating the local `remote-replication` role, use the [Create or update users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) API to create a user on the local cluster cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
+After creating the local `remote-replication` role, use the [Create or update users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
 
 ```console
 POST /_security/user/cross-cluster-user

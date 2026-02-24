@@ -69,7 +69,7 @@ This table compares the core platform capabilities between {{ech}} deployments a
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering | Private connectivity options anticipated in a future release |
+| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering, private connectivity (VPCs, PrivateLink) | Private connectivity for Serverless projects is currently supported in AWS regions only. Requires the Serverless Plus add-on. |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
