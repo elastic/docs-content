@@ -164,6 +164,7 @@ When deploying {{fleet-server}} behind a load balancer/reverse proxy the followi
     * Ensure that timeouts for the load balancer have been raised to support the long-polling connections {{agents}} create when checking in to {{fleet-server}}.
       The default timeout for long-poll in {{fleet-server}} is 5 minutes, the {{fleet-server}}'s write timeout, and the {{agent}}'s request timeout are set to 10 minutes. The load balancer timeout should be set to 10 minutes.
     * It's recommended to configure the load balancer with TLS pass through.
+
     ::::{note}
     Starting with {{stack}} v9.4 or later, the {{fleet-server}} status API `GET /api/status` may be used to determine instance health from the load balancer.
     ::::
