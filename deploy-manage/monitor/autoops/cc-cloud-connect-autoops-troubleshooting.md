@@ -61,9 +61,6 @@ The following table shows the errors you might encounter if something goes wrong
 | `CLUSTER_ALREADY_CONNECTED` | Cluster connected to another account | This cluster is already connected to another {{ecloud}} organization. Disconnect it and then try again. |
 | `CLUSTER_NOT_READY` | {{es}} cluster is still connecting | Your {{es}} cluster is not yet ready to connect. Wait a few moments for it to finish starting up and then try again. |
 | `HTTP_0` | Connection error | {{agent}} couldn't connect to the cluster. There may be various reasons for this issue. Review the [documentation](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) or contact [Elastic support](https://support.elastic.co/) if the issue persists. |
-| `LICENSE_EXPIRED` | Elastic license is expired | Contact [sales](https://www.elastic.co/contact#sales) to renew your license. |
-| `LICENSE_USED_BY_ANOTHER_ACCOUNT` | License key connected to another account | A license key can only be connected to one {{ecloud}} organization. Contact [Elastic support](https://support.elastic.co/) for help. |
 | `VERSION_MISMATCH` | {{es}} version is unsupported | Upgrade your cluster to a [supported version](https://www.elastic.co/support/eol). |
 | `UNKNOWN_ERROR` | Installation failed | {{agent}} couldn't be installed due to an unknown issue. Consult the troubleshooting guide or contact [Elastic support](https://support.elastic.co/) for more help. |
-| | Failed to register Cloud Connected Mode: cluster license type is not supported | The cluster you are trying to connect doesn't have the required license to connect to AutoOps. For more information, refer to the [prerequisites](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites). |
 | `x509` | Certificate signed by unknown authority | {{agent}} couldn't connect. SSL certificate signed by unknown authority. |
