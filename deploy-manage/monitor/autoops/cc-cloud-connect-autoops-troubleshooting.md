@@ -22,7 +22,7 @@ Use this guide to troubleshoot any issues you may encounter.
 * [I need to uninstall {{agent}}.](#unistall-agent)
 * [My cluster was disconnected from {{ecloud}} and I want to reconnect it.](#disconnected-cluster)
 * [After running the installation command, I can't move on to the next steps.](#next-steps)
-* [My organization's firewall may be preventing {{agent}} from collecting and sending metrics.](#firewall)
+* [My organization's firewall might be preventing {{agent}} from collecting and sending metrics.](#firewall)
 * [{{agent}} is failing to connect because it doesn't recognize my SSL certificate.](#custom-cert)
 * [I went through the wizard with {{ECK}} (ECK) as my installation method, but I can't view any connected clusters in my account.](#eck-no-clusters) {applies_to}`eck: ga 3.3`
 
@@ -43,7 +43,7 @@ $$$next-steps$$$**After running the installation command, I can't move on to the
 If you're having issues connecting your cluster to AutoOps and sending metrics to {{ecloud}}, run the [AutoOps Connectivity Check](../autoops/autoops-connectivity-check.md) to test your configuration.
 :::
 
-$$$firewall$$$**My organization's firewall may be preventing {{agent}} from collecting and sending metrics.**
+$$$firewall$$$**My organization's firewall might be preventing {{agent}} from collecting and sending metrics.**
 :   If you're having issues with connecting your cluster to AutoOps and you suspect that a firewall may be the reason, refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-firewalls.md).
 
 $$$custom-cert$$$**{{agent}} is failing to connect because it doesn't recognize my SSL certificate.**
@@ -54,7 +54,7 @@ $$$eck-no-clusters$$$**I went through the wizard with {{ECK}} (ECK) as my instal
 
 ## Run the AutoOps Connectivity Check
 
-Run the [AutoOps Connectivity Check](../autoops/autoops-connectivity-check.md) to test your system and diagnose any issues that may prevent you from connecting your cluster to AutoOps.
+Run the [AutoOps Connectivity Check](../autoops/autoops-connectivity-check.md) to test your system and diagnose any issues that might prevent you from connecting your cluster to AutoOps.
 
 ## Potential errors
 

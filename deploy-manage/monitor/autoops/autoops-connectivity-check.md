@@ -12,7 +12,7 @@ products:
 
 # Run the AutoOps Connectivity Check
 
-The AutoOps Connectivity Check is a diagnostic tool that validates the communication paths between {{agent}}, your {{es}} cluster, and {{ecloud}}. Run it when going through the installation wizard to get immediate feedback on your network, proxy, and authentication configuration using simple HTTP requests.
+The AutoOps Connectivity Check is a diagnostic tool that validates the communication paths between {{agent}}, your {{es}} cluster, and {{ecloud}}. Run it when going through the installation wizard to get immediate feedback on your network, proxy, and authentication configuration using HTTP requests.
 
 Shipping metrics from your cluster to {{ecloud}} involves navigating complex firewall rules, proxy configurations, and TLS requirements. The AutoOps Connectivity Check helps you:
 
@@ -51,18 +51,18 @@ Update the placeholder values in the following command and run it.
 
 ```bash
 export ELASTIC_CLOUD_CONNECTED_MODE_API_URL="https://api.elastic-cloud.com"
-export AUTOOPS_OTEL_URL="https://otel-auto-ops.ap-northeast-1.aws.svc.elastic.cloud"
+export AUTOOPS_OTEL_URL="https://otel-auto-ops.${region}.${csp}.svc.elastic.cloud/"
 export AUTOOPS_ES_URL="https://your-elasticsearch-host:9200"  
-export AUTOOPS_ES_USERNAME="your_username"  # Optional
-export AUTOOPS_ES_PASSWORD="your_password"  # Optional
-export AUTOOPS_ES_API_KEY="your_api_key_here"  # Optional
-# export AUTOOPS_ES_CA="/path/to/your/ca.crt"  # Optional. Uncomment if needed
-# export HTTP_PROXY="http://proxy.example.com:8080"  # Optional. Uncomment if needed
-# export HTTPS_PROXY="http://proxy.example.com:8080"  # Optional. Uncomment if needed
-# export NO_PROXY="localhost,127.0.0.1"  # Optional. Uncomment if needed
+export AUTOOPS_ES_USERNAME="your_username"  ## Optional
+export AUTOOPS_ES_PASSWORD="your_password"  ## Optional
+export AUTOOPS_ES_API_KEY="your_api_key_here"  ## Optional
+# export AUTOOPS_ES_CA="/path/to/your/ca.crt"  ## Optional. Uncomment if needed
+# export HTTP_PROXY="http://proxy.example.com:8080"  ## Optional. Uncomment if needed
+# export HTTPS_PROXY="http://proxy.example.com:8080"  ## Optional. Uncomment if needed
+# export NO_PROXY="localhost,127.0.0.1"  ## Optional. Uncomment if needed
 ```
 :::{tip}
-You may get the following error message for lines that start with `#`:
+You might get the following error message for lines that start with `#`:
 ```bash
 zsh: command not found: #
 ```
@@ -90,7 +90,7 @@ The following table describes the variables.
 ::::
 
 ::::{step} Download and run the tool
-Use curl to download the latest version of the AutoOps Connectivity Check directly from the Elastic repository and execute it:
+Use curl to download the latest version of the AutoOps Connectivity Check directly from the Elastic repository and run it:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/elastic/autoops-install/main/tools/check_connectivity.sh -o check_connectivity.sh && chmod u+x check_connectivity.sh && ./check_connectivity.sh
@@ -99,7 +99,7 @@ curl -fsSL https://raw.githubusercontent.com/elastic/autoops-install/main/tools/
 
 ::::{step} View the results
 
-When the tool has finished running all the checks, it will present one of the following messages to indicate the results. Refer to the **Action** column for next steps.
+After the tool has finished running all the checks, it presents one of the following messages to indicate the results. Refer to the **Action** column for next steps.
 
 | Message type | Description | Action |
 |---|---|---|
