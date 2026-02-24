@@ -53,7 +53,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 ::::
 
 ::::{admonition} Splunk dashboard migration limitations
-* Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels do not appear in migrated dashboards.
+* Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels appear as `Unsupported` in migrated dashboards.
 ::::
 
 ## Get started with Automatic Migration
