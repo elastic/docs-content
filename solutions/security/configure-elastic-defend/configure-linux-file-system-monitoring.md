@@ -27,7 +27,7 @@ To monitor or ignore additional file systems, configure the following advanced s
 Even when configured to monitor all file systems (`ignore_unknown_filesystems` is `false`), {{elastic-defend}} will still ignore specific file systems that Elastic has internally identified as incompatible. The following settings apply to any *other* file systems.
 
 :::{dropdown} View incompatible file systems
-{{elastic-defen}} cannot monitor the following incompatible file systems:
+{{elastic-defend}} cannot monitor the following incompatible file systems:
 
  - cifs
  - lustre
