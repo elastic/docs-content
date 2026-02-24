@@ -48,8 +48,6 @@ Investigate your indices and perform operations from the **Indices** view.
 
     * For multiple indices, select their checkboxes and then open the **Manage indices** menu. 
 
-    Refer to [Perform operations on indices](/manage-data/data-store/perform-index-operations.md) for details about the actions that you can run.
-
 * Enable **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
 
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
@@ -69,13 +67,12 @@ Investigate your indices and perform operations from the **Indices** view.
 
     * For multiple indices, select their checkboxes and then open the **Manage indices** menu. 
 
-    Refer to [Perform operations on indices](/manage-data/data-store/perform-index-operations.md) for details about the actions that you can run.
-
 * Enable **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
 
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
 ::::
 :::::
+
 
 ## Manage data streams
 

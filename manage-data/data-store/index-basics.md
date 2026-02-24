@@ -11,9 +11,9 @@ products:
 
 # Index basics
 
-An index is the fundamental unit of storage in {{es}}: a collection of documents identified by a unique name or an [alias](/manage-data/data-store/aliases.md). This name is used to target the index in search requests and other operations.
+An _index_ is the fundamental unit of storage in {{es}}: a collection of documents identified by a unique name or an [alias](/manage-data/data-store/aliases.md). This name is used to target the index in search requests and other operations.
 
-This page explains the core parts of an index -- documents, metadata fields, and mappings -- and highlights common design decisions for working with indices.
+This page explains the core parts of an index (_documents_, _metadata fields_, and _mappings_) and highlights common design decisions for working with indices.
 
 :::::{tip}
 A closely related concept is a [data stream](/manage-data/data-store/data-streams.md), which is optimized for append-only timestamped data and backed by hidden, auto-generated indices.
@@ -67,7 +67,7 @@ Each index has a [mapping](/manage-data/data-store/mapping.md) that defines fiel
 
 ## Common index design decisions
 
-When working with indices, you typically make the following decisions:
+When working with indices, you typically make decisions that focus on:
 
 * **Naming and aliases**: Use clear index naming patterns and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
 * **Mapping strategy**: Use dynamic mapping for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping.md) for production use cases where field control and query behavior matter.
@@ -75,8 +75,8 @@ When working with indices, you typically make the following decisions:
 
 ## Next steps
 
-Choose the path that matches how you manage indices:
+After learning index fundamentals, choose the management path that fits your workflow:
 
-* [](/manage-data/data-store/index-management.md): Use {{kib}}'s **Index Management** UI to view and manage your indices, data streams, templates, component templates, and enrich policies.
-  * [](/manage-data/data-store/perform-index-operations.md): Perform operations like closing, refreshing, and deleting indices from the **Manage index** menu.
-* [](/manage-data/data-store/manage-data-from-the-command-line.md): Index, update, retrieve, search, and delete documents using curl and the {{es}} REST API.
+* [](/manage-data/data-store/perform-index-operations.md): Run common index operations from the **Manage index** menu.
+* [](/manage-data/data-store/index-management.md): Navigate the full **Index Management** experience in {{kib}}.
+* [](/manage-data/data-store/manage-data-from-the-command-line.md): Manage indices and documents with the {{es}} REST API.
