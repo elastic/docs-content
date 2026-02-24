@@ -157,7 +157,7 @@ You can update your {{fleet-server}} configuration in {{kib}} at any time by goi
 
 When deploying {{fleet-server}} behind a load balancer/reverse proxy the following steps need to be taken:
 
-1. Create a certificate that contains DNS entries for the agent-facing load balancer, and the hostnames it routes to. For example, the load balancer may be `fleet.example.com` and the hostnames `fleet1.example.com`, and `fleet2.example.com`.
+1. Create a certificate that contains DNS entries for the agent-facing load balancer, and the hostnames it routes to. For example, the load balancer `fleet.example.com` will route to hostnames `fleet1.example.com`, and `fleet2.example.com`.
 
 2. Configure the load balancer/reverse proxy.
     * The load balancer directs traffic to all {{fleet-server}} instances.
