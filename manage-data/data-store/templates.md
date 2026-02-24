@@ -40,7 +40,7 @@ An **index template** is used to configure an index when it is created. [Mapping
 
 You can create and manage index templates on the **Index management** page in {{kib}} or by using the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API. 
 
-For the {{kib}} steps and a walk-through example, refer to [Manage index templates](/manage-data/data-store/index-basics.md#index-management-manage-index-templates).
+For the {{kib}} steps and a walk-through example, refer to [Manage index templates](/manage-data/data-store/index-management.md#index-management-manage-index-templates).
 
 Using the API, the following request creates an index template that is *composed of* the two component templates shown in the [component templates](#component-templates) example.
 
@@ -111,7 +111,7 @@ If you use {{fleet}} or {{agent}}, assign your index templates a priority lower 
 
 A **component template** is a reusable building block that defines mappings, settings, and aliases. Component templates are not applied directly to indices, but referenced by index templates and used when determining the final configuration of an index.
 
-You can create and manage component templates on the **Index management** page in {{kib}} or by using the [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API. For the {{kib}} steps, refer to [Manage component templates](/manage-data/data-store/index-basics.md#index-management-manage-component-templates).
+You can create and manage component templates on the **Index management** page in {{kib}} or by using the [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API. For the {{kib}} steps, refer to [Manage component templates](/manage-data/data-store/index-management.md#index-management-manage-component-templates).
 
 Using the API, the following request creates the two component templates used in the previous index template example:
 

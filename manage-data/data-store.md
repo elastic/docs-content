@@ -12,10 +12,28 @@ products:
 
 [{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene.
 
-The documentation in this section details how {{es}} works as a _data store_ starting with the fundamental unit of storage in Elasticsearch: the index. An index is a collection of documents uniquely identified by a name or an alias. Read more in [Index basics](/manage-data/data-store/index-basics.md).
+This section explains how {{es}} stores your data — from the fundamental storage unit (the index) to the mappings, templates, and abstractions that control how data is organized and retrieved.
 
-Then, learn how these documents and the fields they contain are stored and indexed in [Mapping](/manage-data/data-store/mapping.md), and how unstructured text is converted into a structured format that’s optimized for search in [Text analysis](/manage-data/data-store/text-analysis.md).
+## Understand data storage
 
-You can also read more about working with {{es}} as a data store including how to use [index templates](/manage-data/data-store/templates.md) to tell {{es}} how to configure an index when it is created, how to use [aliases](/manage-data/data-store/aliases.md) to point to multiple indices, and how to use the [command line to manage data](/manage-data/data-store/manage-data-from-the-command-line.md) stored in {{es}}.
+Learn about the core storage concepts in {{es}}.
 
-If your use case involves working with continuous streams of time series data, you can consider using a [data stream](./data-store/data-streams.md). These are optimally suited for storing append-only data. You can access the data through a single, named resource, while {{es}} stores it in a series of hidden, auto-generated backing indices.
+* [](/manage-data/data-store/index-basics.md): Learn about the fundamental unit of storage in {{es}} — a collection of documents identified by a name or alias. Understand the key components of an index, including documents, metadata fields, and mappings.
+* [](/manage-data/data-store/data-streams.md): Use data streams for append-only timestamped data such as logs, events, and metrics. A data stream provides a single named resource backed by multiple auto-generated indices.
+* [](/manage-data/data-store/near-real-time-search.md): Understand how {{es}} makes newly indexed data searchable within seconds.
+
+## Configure how data is stored
+
+Control how {{es}} indexes, maps, and analyzes your data.
+
+* [](/manage-data/data-store/mapping.md): Define how documents and their fields are stored and indexed. Choose between dynamic mapping for automatic field detection and explicit mapping for full control over field types and indexing behavior.
+* [](/manage-data/data-store/text-analysis.md): Configure how unstructured text is converted into a structured format optimized for full-text search, including tokenization, normalization, and custom analyzers.
+* [](/manage-data/data-store/templates.md): Define reusable index configurations — including settings, mappings, and aliases — that are automatically applied when new indices or data streams are created.
+* [](/manage-data/data-store/aliases.md): Create named references that point to one or more indices or data streams, enabling zero-downtime reindexing and simplified query targeting.
+
+## Manage data
+
+Work with your indices and data using the {{kib}} UI or the {{es}} REST API.
+
+* [](/manage-data/data-store/index-management.md): Use {{kib}}'s **Index Management** page to view and manage your indices, data streams, templates, component templates, and enrich policies.
+* [](/manage-data/data-store/manage-data-from-the-command-line.md): Index, update, retrieve, search, and delete documents using curl and the {{es}} REST API.
