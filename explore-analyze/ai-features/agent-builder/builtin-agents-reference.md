@@ -16,7 +16,9 @@ products:
 
 This page lists the built-in agents available in {{agent-builder}}. Built-in agents are pre-configured by Elastic with specific instructions and tools to handle common use cases. 
 
+:::{tip}
 You cannot modify or delete built-in agents. To customize one, you can clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
+:::
 
 ## Availability
 
@@ -49,7 +51,7 @@ A specialized agent for logs, metrics, and traces. It is designed to assist with
 
 **Assigned tools:**
 * All [**{{observability}} tools**](./tools/builtin-tools-reference.md#observability-tools)
-* All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
+* A subset of [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
 ## Threat Hunting Agent
 ```{applies_to}
@@ -63,7 +65,7 @@ A specialized agent for security alert analysis tasks, including alert investiga
 
 **Assigned tools:**
 * All [**Security tools**](./tools/builtin-tools-reference.md#security-tools)
-* All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
+* A subset of [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
 ## Related pages
 
