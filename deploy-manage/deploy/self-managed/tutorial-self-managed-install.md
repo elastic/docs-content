@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
   - id: kibana
 ---
-# Tutorial 1: Installing a self-managed {{stack}} {#installing-stack-demo-self}
+# Tutorial 1: Installing a self-managed {{stack}} [installing-stack-demo-self]
 
 This tutorial demonstrates how to install and configure the {{stack}} in a self-managed environment. Following these steps, you'll set up a three node {{es}} cluster, with {{kib}}, {{fleet-server}}, and {{agent}}, each on separate hosts. The {{agent}} will be configured with the System integration, enabling it to gather local system logs and metrics and deliver them into the {{es}} cluster. Finally, you'll learn how to view the system data in {{kib}}.
 
@@ -27,36 +27,40 @@ It should take between one and two hours to complete these steps.
 * [Step 9: View your system data](#install-stack-self-view-data)
 * [Next steps](#install-stack-self-next-steps)
 
-**Important:** If you're using these steps to configure a production cluster that uses trusted CA-signed certificates for secure communications, after completing Step 6 to install {{kib}} we recommend jumping directly to [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure). The second tutorial includes steps to configure security across the {{stack}}, and then to set up {{fleet-server}} and {{agent}} with SSL certificates enabled.
+:::{important} Note about using trusted CA-signed certificates
+If you're using these steps to configure a production cluster that uses trusted CA-signed certificates for secure communications, after completing Step 6 to install {{kib}} we recommend jumping directly to [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure). The second tutorial includes steps to configure security across the {{stack}}, and then to set up {{fleet-server}} and {{agent}} with SSL certificates enabled.
+:::
 
-## Prerequisites and assumptions {#install-stack-self-prereqs}
+## Prerequisites and assumptions [install-stack-self-prereqs]
 
-To get started, you'll need the following:
+To get started, you need the following:
 
 * A set of virtual or physical hosts on which to install each stack component.
 * On each host, a super user account with `sudo` privileges.
 
-The examples in this guide use RPM packages to install the {{stack}} components on hosts running Red Hat Enterprise Linux 8. The steps for other install methods and operating systems are similar, and can be found in the documentation linked from each section. The packages that you'll install are:
+The examples in this guide use RPM Package Manager (RPM) packages to install the {{stack}} components on hosts running Red Hat Enterprise Linux 8. The steps for other install methods and operating systems are similar, and can be found in the documentation linked from each section. The packages to install are:
 
 * https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version}}-x86_64.rpm
 * https://artifacts.elastic.co/downloads/kibana/kibana-{{version}}-x86_64.rpm
 * https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version}}-linux-x86_64.tar.gz
 
-**Note:** For {{agent}} and {{fleet-server}} (both of which use the elastic-agent-{{version}}-linux-x86_64.tar.gz package) we recommend using TAR/ZIP packages over RPM/DEB system packages, since only the former support upgrading using {{fleet}}.
+:::{note}
+For {{agent}} and {{fleet-server}} (both of which use the elastic-agent-{{version}}-linux-x86_64.tar.gz package) we recommend using TAR/ZIP packages over RPM/DEB system packages, since only the former support upgrading using {{fleet}}.
+:::
 
 Special considerations such as firewalls and proxy servers are not covered here.
 
 For the basic ports and protocols required for the installation to work, refer to the following overview section.
 
-## {{stack}} overview {#install-stack-self-overview}
+## {{stack}} overview [install-stack-self-overview]
 
 Before starting, take a moment to familiarize yourself with the {{stack}} components.
 
-::{image} /deploy-manage/images/stack-install-final-state.png
+![Overview of the Elastic Stack components](/deploy-manage/images/stack-install-final-state.png)
 
-To learn more about the {{stack}} and how each of these components are related, refer to [An overview of the {{stack}}](https://www.elastic.co/docs/stack/current/stack-components.html).
+To learn more about the {{stack}} and how each of these components are related, refer to [An overview of the {{stack}}](/get-started/the-stack.md).
 
-## Step 1: Set up the first {{es}} node {#install-stack-self-elasticsearch-first}
+## Step 1: Set up the first {{es}} node [install-stack-self-elasticsearch-first]
 
 To begin, use RPM to install {{es}} on the first host. This initial {{es}} instance will serve as the master node.
 
@@ -102,16 +106,16 @@ To begin, use RPM to install {{es}} on the first host. This initial {{es}} insta
 
 7. Copy the terminal output from the install command to a local file. In particular, you'll need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to run as a service, which you'll use in the next step.
 
-8. Run the following two commands to enable {{es}} to run as a service using `systemd`. This enables {{es}} to start automatically when the host system reboots. You can find details about this and the following steps in [Running {{es}} with `systemd`](https://www.elastic.co/docs/reference/current/starting-elasticsearch.html#start-es-deb-systemd).
+8. Run the following two commands to enable {{es}} to run as a service using `systemd`. This enables {{es}} to start automatically when the host system reboots. You can find details about this and the following steps in [Running {{es}} with `systemd`](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#running-systemd).
 
    ```shell
    sudo systemctl daemon-reload
    sudo systemctl enable elasticsearch.service
    ```
 
-## Step 2: Configure the first {{es}} node for connectivity {#install-stack-self-elasticsearch-config}
+## Step 2: Configure the first {{es}} node for connectivity [install-stack-self-elasticsearch-config]
 
-Before moving ahead to configure additional {{es}} nodes, you'll need to update the {{es}} configuration on this first node so that other hosts are able to connect to it. This is done by updating the settings in the `elasticsearch.yml` file. For details about all available settings refer to [Configuring {{es}}](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
+Before moving ahead to configure additional {{es}} nodes, you'll need to update the {{es}} configuration on this first node so that other hosts are able to connect to it. This is done by updating the settings in the `elasticsearch.yml` file. For details about all available settings refer to [Configure {{es}}](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 
 1. In a terminal, run the `ifconfig` command and copy the value for the host inet IP address (for example, `10.128.0.84`). You'll need this value later.
 
@@ -133,17 +137,17 @@ Before moving ahead to configure additional {{es}} nodes, you'll need to update 
    network.host: 10.128.0.84
    ```
 
-5. {{es}} needs to be enabled to listen for connections from other, external hosts. Uncomment the line `#transport.host: 0.0.0.0`. The `0.0.0.0` setting enables {{es}} to listen for connections on all available network interfaces. Note that in a production environment you might want to restrict this by setting this value to match the value set for `network.host`.
+5. {{es}} needs to be enabled to listen for connections from other, external hosts. Uncomment the line `#transport.host: 0.0.0.0`. The `0.0.0.0` setting enables {{es}} to listen for connections on all available network interfaces. In a production environment you might want to restrict this by setting this value to match the value set for `network.host`.
 
    ```yaml
    transport.host: 0.0.0.0
    ```
 
-   **Tip:** You can find details about the `network.host` and `transport.host` settings in the {{es}} [Networking](https://www.elastic.co/docs/reference/current/modules-network.html) documentation.
+   **Tip:** You can find details about the `network.host` and `transport.host` settings in the {{es}} [Networking](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) documentation.
 
 6. Save your changes and close the editor.
 
-## Step 3: Start {{es}} {#install-stack-self-elasticsearch-start}
+## Step 3: Start {{es}} [install-stack-self-elasticsearch-start]
 
 1. Now, it's time to start the {{es}} service:
 
@@ -191,7 +195,7 @@ Before moving ahead to configure additional {{es}} nodes, you'll need to update 
 
    As with the previous `curl` command, the output should confirm that {{es}} started successfully. Type `q` to exit from the `status` command results.
 
-## Step 4: Set up a second {{es}} node {#install-stack-self-elasticsearch-second}
+## Step 4: Set up a second {{es}} node [install-stack-self-elasticsearch-second]
 
 To set up a second {{es}} node, the initial steps are similar to those that you followed for [Step 1: Set up the first {{es}} node](#install-stack-self-elasticsearch-first).
 
@@ -237,11 +241,15 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
    sudo systemctl enable elasticsearch.service
    ```
 
-   **Important:** Don't start the {{es}} service yet! There are a few more configuration steps to do before restarting.
+   :::{important}
+   Don't start the {{es}} service yet! There are a few more configuration steps to do before restarting.
+   :::
 
 8. To enable this second {{es}} node to connect to the first, you need to configure an enrollment token.
 
-   **Important:** Be sure to run all of these configuration steps before starting the {{es}} service. You can find additional details about these steps in [Reconfigure a node to join an existing cluster](https://www.elastic.co/docs/reference/current/rpm.html#_reconfigure_a_node_to_join_an_existing_cluster_2) and also in [Enroll nodes in an existing cluster](https://www.elastic.co/docs/reference/current/add-elasticsearch-nodes.html#_enroll_nodes_in_an_existing_cluster_5).
+   :::{important}
+   Be sure to run all of these configuration steps before starting the {{es}} service. You can find additional details about these steps in [Reconfigure a node to join an existing cluster](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster).
+   :::
 
    Return to your terminal shell on the first {{es}} node and generate a node enrollment token:
 
@@ -251,7 +259,11 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
 
 9. Copy the generated enrollment token from the command output.
 
-   **Tip:** Note the following tips about enrollment tokens: An enrollment token has a lifespan of 30 minutes. In case the `elasticsearch-reconfigure-node` command returns an `Invalid enrollment token` error, try generating a new token. Be sure not to confuse an [{{es}} enrollment token](https://www.elastic.co/docs/reference/current/starting-elasticsearch.html#_enroll_nodes_in_an_existing_cluster_3) (for enrolling {{es}} nodes in an existing cluster) with a [{{kib}} enrollment token](https://www.elastic.co/docs/reference/current/start-stop.html#_run_kibana_from_the_command_line) (to enroll your {{kib}} instance with {{es}}, as described in the next section). These two tokens are not interchangeable.
+   :::{tip} 
+   An enrollment token has a lifespan of 30 minutes. In case the `elasticsearch-reconfigure-node` command returns an `Invalid enrollment token` error, try generating a new token.
+   
+   Be sure not to confuse an [{{es}} enrollment token](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster) (for enrolling {{es}} nodes in an existing cluster) with a [{{kib}} enrollment token](/deploy-manage/maintenance/start-stop-services/start-stop-kibana.md#run-kibana-from-command-line) (to enroll your {{kib}} instance with {{es}}, as described in the next section). These two tokens are not interchangeable.
+   :::
 
 10. In the terminal shell for your second {{es}} node, pass the enrollment token as a parameter to the `elasticsearch-reconfigure-node` tool:
 
@@ -312,7 +324,7 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
 
     Here, `hostname1` is your first {{es}} instance node, and `hostname2` is your second {{es}} instance node. The message indicates that the second {{es}} node has successfully contacted the initial {{es}} node and joined the cluster.
 
-19. As a final check, run the following `curl` request on the new node to confirm that {{es}} is still running properly and viewable at the new node's `localhost` IP address. Note that you need to replace `$ELASTIC_PASSWORD` with the same `elastic` superuser password that you used on the first {{es}} node.
+19. As a final check, run the following `curl` request on the new node to confirm that {{es}} is still running properly and viewable at the new node's `localhost` IP address. You need to replace `$ELASTIC_PASSWORD` with the same `elastic` superuser password that you used on the first {{es}} node.
 
     ```shell
     sudo curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200
@@ -340,11 +352,11 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
     }
     ```
 
-## Step 5: Set up additional {{es}} nodes {#install-stack-self-elasticsearch-third}
+## Step 5: Set up additional {{es}} nodes [install-stack-self-elasticsearch-third]
 
 To set up your next {{es}} node, follow exactly the same steps as you did previously in [Step 4: Set up a second {{es}} node](#install-stack-self-elasticsearch-second). The process is identical for each additional {{es}} node that you would like to add to the cluster. As a recommended best practice, create a new enrollment token for each new node that you add.
 
-## Step 6: Install {{kib}} {#install-stack-self-kibana}
+## Step 6: Install {{kib}} [install-stack-self-kibana]
 
 As with {{es}}, you can use RPM to install {{kib}} on another host. You can find details about all of the following steps in the section [Install {{kib}} with RPM](/deploy-manage/deploy/self-managed/install-kibana-with-rpm.md).
 
@@ -398,7 +410,7 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
    sudo systemctl enable kibana.service
    ```
 
-10. Before starting the {{kib}} service there's one configuration change to make, to set {{kib}} to run on the {{es}} host IP address. This is done by updating the settings in the `kibana.yml` file. For details about all available settings refer to [Configure {{kib}}](https://www.elastic.co/docs/reference/current/settings.html).
+10. Before starting the {{kib}} service there's one configuration change to make, to set {{kib}} to run on the {{es}} host IP address. This is done by updating the settings in the `kibana.yml` file. For details about all available settings refer to [{{kib}} configuration reference](kibana://reference/configuration-reference.md).
 
 11. In a terminal, run the `ifconfig` command and copy the value for the host inet IP address.
 
@@ -453,13 +465,18 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
 
 {{kib}} is now fully set up and communicating with your {{es}} cluster!
 
-**Important: Stop here if you intend to configure SSL certificates.**
 
-**Important:** For simplicity, in this tutorial we're setting up all of the {{stack}} components without configuring security certificates. You can proceed to configure {{fleet}}, {{agent}}, and then confirm that your system data appears in {{kib}}. However, in a production environment, before going further to install {{fleet-server}} and {{agent}} it's recommended to update your security settings to use trusted CA-signed certificates as described in [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md). After new security certificates are configured any {{agent}}s would need to be reinstalled. If you're currently setting up a production environment, we recommend that you jump directly to Tutorial 2, which includes steps to secure the {{stack}} using certificates and then to set up {{fleet}} and {{agent}} with those certificates already in place.
+:::{admonition} Important! Stop here if you intend to configure SSL certificates
+For simplicity, in this tutorial we're setting up the {{stack}} components without configuring security certificates. You can proceed to configure {{fleet}}, {{agent}}, and then confirm that your system data appears in {{kib}}.
 
-## Step 7: Install {{fleet-server}} {#install-stack-self-fleet-server}
+However, in a production environment, before going further to install {{fleet-server}} and {{agent}} it's recommended to update your security settings to use trusted CA-signed certificates as described in [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md).
 
-Now that {{kib}} is up and running, you can install {{fleet-server}}, which will manage the {{agent}} that you'll set up in a later step. If you need more detail about these steps, refer to [Deploy on-premises and self-managed](https://www.elastic.co/docs/fleet/current/add-fleet-server-on-prem.html) in the {{fleet}} and {{agent}} Guide.
+After new security certificates are configured any {{agent}}s would need to be reinstalled. If you're currently setting up a production environment, we recommend that you jump directly to Tutorial 2, which includes steps to secure the {{stack}} using certificates and then to set up {{fleet}} and {{agent}} with those certificates already in place.
+:::
+
+## Step 7: Install {{fleet-server}} [install-stack-self-fleet-server]
+
+Now that {{kib}} is up and running, you can install {{fleet-server}}, which will manage the {{agent}} that you'll set up in a later step. If you need more detail about these steps, refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server-on-prem.md) in the {{fleet}} and {{agent}} Guide.
 
 1. Log in to the host where you'd like to set up {{fleet-server}}.
 
@@ -485,13 +502,13 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}, which will
 
 8. Specify a name for your {{fleet-server}} host, for example `Fleet Server`.
 
-9. Specify the host URL where {{agent}}s will reach {{fleet-server}}, for example: `http://10.128.0.203:8220`. This is the inet value that you copied from the `ifconfig` output. Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](https://www.elastic.co/docs/fleet/current/add-fleet-server-on-prem.html#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
+9. Specify the host URL where {{agent}}s will reach {{fleet-server}}, for example: `http://10.128.0.203:8220`. This is the inet value that you copied from the `ifconfig` output. Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](/reference/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
 
 10. Click **Generate Fleet Server policy**. A policy is created that contains all of the configuration settings for the {{fleet-server}} instance.
 
-11. On the **Install Fleet Server to a centralized host** step, for this example we select the **Linux Tar** tab, but you can instead select the tab appropriate to the host operating system where you're setting up {{fleet-server}}. Note that TAR/ZIP packages are recommended over RPM/DEB system packages, since only the former support upgrading {{fleet-server}} using {{fleet}}.
+11. On the **Install Fleet Server to a centralized host** step, for this example we select the **Linux Tar** tab, but you can instead select the tab appropriate to the host operating system where you're setting up {{fleet-server}}. TAR/ZIP packages are recommended over RPM/DEB system packages, since only the former support upgrading {{fleet-server}} using {{fleet}}.
 
-12. Copy the generated commands and then run them one-by-one in the terminal on your {{fleet-server}} host. These commands will, respectively: download the {{fleet-server}} package from the {{artifact-registry}}; unpack the package archive; change into the directory containing the install binaries; install {{fleet-server}}. If you'd like to learn about the install command options, refer to [`elastic-agent install`](https://www.elastic.co/docs/fleet/current/elastic-agent-cmd-options.html#elastic-agent-install-command) in the {{agent}} command reference.
+12. Copy the generated commands and then run them one-by-one in the terminal on your {{fleet-server}} host. These commands will, respectively: download the {{fleet-server}} package from the {{artifact-registry}}; unpack the package archive; change into the directory containing the install binaries; install {{fleet-server}}. If you'd like to learn about the install command options, refer to [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
 
 13. At the prompt, enter `Y` to install {{agent}} and run it as a service. Wait for the installation to complete.
 
@@ -501,7 +518,7 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}, which will
 
 {{fleet-server}} is now fully set up!
 
-## Step 8: Install {{agent}} {#install-stack-self-elastic-agent}
+## Step 8: Install {{agent}} [install-stack-self-elastic-agent]
 
 Next, you'll install {{agent}} on another host and use the System integration to monitor system logs and metrics.
 
@@ -563,7 +580,7 @@ Next, you'll install {{agent}} on another host and use the System integration to
 
 Your new {{agent}} is now installed and enrolled with {{fleet-server}}.
 
-## Step 9: View your system data {#install-stack-self-view-data}
+## Step 9: View your system data [install-stack-self-view-data]
 
 Now that all of the components have been installed, it's time to view your system data.
 
@@ -583,12 +600,12 @@ Now that all of the components have been installed, it's time to view your syste
 
 Congratulations! You've successfully set up a three node {{es}} cluster, with {{kib}}, {{fleet-server}}, and {{agent}}.
 
-## Next steps {#install-stack-self-next-steps}
+## Next steps [install-stack-self-next-steps]
 
 Now that you've successfully configured an on-premises {{stack}}, you can learn how to configure the {{stack}} in a production environment using trusted CA-signed certificates. Refer to [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md) to learn more.
 
 You can also start using your newly set up {{stack}} right away:
 
-* Do you have data ready to ingest? Learn how to [add data to Elasticsearch](https://www.elastic.co/docs/cloud/current/ec-cloud-ingest-data.html).
+* Do you have data ready to ingest? Learn how to [bring your data to Elastic](/manage-data/ingest.md).
 * Use [Elastic {{observability}}](https://www.elastic.co/observability) to unify your logs, infrastructure metrics, uptime, and application performance data.
 * Want to protect your endpoints from security threats? Try [{{elastic-sec}}](https://www.elastic.co/security). Adding endpoint protection is just another integration that you add to the agent policy!
