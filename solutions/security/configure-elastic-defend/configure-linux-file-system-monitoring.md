@@ -25,6 +25,42 @@ To monitor or ignore additional file systems, configure the following advanced s
 
 ::::{note}
 Even when configured to monitor all file systems (`ignore_unknown_filesystems` is `false`), {{elastic-defend}} will still ignore specific file systems that Elastic has internally identified as incompatible. The following settings apply to any *other* file systems.
+
+:::{dropdown} View incompatible file systems
+The following file systems are incompatible and won't be monitored:
+
+ - cifs
+ - lustre
+ - nfs
+ - nfs4
+ - smbfs
+ - autofs
+ - binfmt_misc
+ - bpf
+ - cgroup
+ - cgroup2
+ - configfs
+ - debugfs
+ - devpts
+ - devtmpfs
+ - efivarfs
+ - fuse.gvfsd-fuse
+ - fuse.portal
+ - fusectl
+ - hugetlbfs
+ - inotifyfs
+ - mqueue
+ - nfsd
+ - nsfs
+ - proc
+ - pstore
+ - rpc_pipefs
+ - securityfs
+ - selinuxfs
+ - sysfs
+ - tracefs
+
+:::
 ::::
 
 
