@@ -28,7 +28,9 @@ It should take between one and two hours to complete these steps.
 * [Next steps](#install-stack-self-next-steps)
 
 :::{important} Note about using trusted CA-signed certificates
-If you're using these steps to configure a production cluster that uses trusted CA-signed certificates for secure communications, after completing Step 6 to install {{kib}} we recommend jumping directly to [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure). The second tutorial includes steps to configure security across the {{stack}}, and then to set up {{fleet-server}} and {{agent}} with SSL certificates enabled.
+If you're using these steps to configure a production cluster that uses trusted CA-signed certificates for secure communications, after completing Step 6 to install {{kib}} we recommend jumping directly to [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure).
+
+The second tutorial includes steps to configure security across the {{stack}}, and then to set up {{fleet-server}} and {{agent}} with SSL certificates enabled.
 :::
 
 ## Prerequisites and assumptions [install-stack-self-prereqs]
@@ -40,12 +42,12 @@ To get started, you need the following:
 
 The examples in this guide use RPM Package Manager (RPM) packages to install the {{stack}} components on hosts running Red Hat Enterprise Linux 8. The steps for other install methods and operating systems are similar, and can be found in the documentation linked from each section. The packages to install are:
 
-* https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version}}-x86_64.rpm
-* https://artifacts.elastic.co/downloads/kibana/kibana-{{version}}-x86_64.rpm
-* https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version}}-linux-x86_64.tar.gz
+* https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm)
+* https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm
+* https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz
 
 :::{note}
-For {{agent}} and {{fleet-server}} (both of which use the elastic-agent-{{version}}-linux-x86_64.tar.gz package) we recommend using TAR/ZIP packages over RPM/DEB system packages, since only the former support upgrading using {{fleet}}.
+For {{agent}} and {{fleet-server}} (both of which use the elastic-agent-{{version.stack}}-linux-x86_64.tar.gz package) we recommend using TAR/ZIP packages over RPM/DEB system packages, since only the former support upgrading using {{fleet}}.
 :::
 
 Special considerations such as firewalls and proxy servers are not covered here.
