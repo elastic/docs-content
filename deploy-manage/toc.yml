@@ -314,6 +314,10 @@ toc:
           - file: deploy/self-managed/access-kibana.md
           - file: deploy/self-managed/air-gapped-install.md
           - file: deploy/self-managed/tools-apis.md
+          - file: deploy/self-managed/tutorials.md
+            children:
+              - file: deploy/self-managed/tutorial-self-managed-install.md
+              - file: deploy/self-managed/tutorial-self-managed-secure.md
   - file: distributed-architecture.md
     children:
       - file: distributed-architecture/clusters-nodes-shards.md
