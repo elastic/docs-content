@@ -51,11 +51,11 @@ AutoOps is currently not available for air-gapped environments because it's a cl
 
 ## How AutoOps is licensed
 
-:::{include} /deploy-manage/monitor/_snippets/cc-autoops-all-licenses.md
-:::
+AutoOps is available for free across all subscription levels in {{ech}} deployments and {{serverless-short}} projects.
 
-:::{include} /deploy-manage/monitor/_snippets/how-is-autoops-licensed.md
-:::
+New: AutoOps is now also available for free across all [self-managed license types](https://www.elastic.co/subscriptions) in ECE, ECK, and self-managed clusters. 
+
+Using AutoOps does not consume ECUs.
 
 ## How long AutoOps retains data [ec_autoops_retention_period]
 

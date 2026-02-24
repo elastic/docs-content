@@ -66,8 +66,7 @@ $$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
 :   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
 
 $$$autoops-license$$$**How is AutoOps licensed?**
-:   :::{include} /deploy-manage/monitor/_snippets/how-is-autoops-licensed.md
-:::
+:   AutoOps is available for free across all subscription levels and license types in {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, and self-managed clusters. It does not consume ECUs.
 
 $$$autoops-monitoring$$$**Does AutoOps monitor the entire {{stack}}?**
 :   AutoOps is currently limited to {{es}} (not {{kib}}, Logstash, or Beats).
@@ -88,7 +87,7 @@ $$$autoops-vs-stack-monitoring$$$**Has AutoOps replaced Stack Monitoring?**
 :   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, not logs. Read more in [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 
 $$$feedback$$$**How do I provide feedback about AutoOps?**
-:   We value your feedback. Help us improve by posting in our [Slack community](https://elasticstack.slack.com/) or the [Monitoring Discuss forum](https://discuss.elastic.co/c/elastic-stack/monitoring/103).
+:   We value your feedback. Help us improve by posting in our [Slack community](https://elasticstack.slack.com/) or the [Monitoring category](https://discuss.elastic.co/c/elastic-stack/monitoring/103) in the Elastic Discuss forum.
 
 ## Questions about AutoOps for ECE, ECK, or self-managed clusters
 
@@ -109,7 +108,7 @@ $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, 
 $$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   Support eligibility is determined by the license of your connected cluster:
 * Platinum and Enterprise licenses: Eligible for [Elastic support](https://support.elastic.co/).
-* Free and open (Basic) licenses: Eligible for community-based support through the [Elastic Stack Community on Slack](https://elasticstack.slack.com/) or the [Monitoring Discuss forum](https://discuss.elastic.co/c/elastic-stack/monitoring/103).
+* Free and open (Basic) licenses: Eligible for community-based support through the [Elastic Stack Community on Slack](https://elasticstack.slack.com/) or the [Monitoring category](https://discuss.elastic.co/c/elastic-stack/monitoring/103) in the Elastic Discuss forum.
 
 ### Setting up AutoOps for ECE, ECK, or self-managed clusters
 
