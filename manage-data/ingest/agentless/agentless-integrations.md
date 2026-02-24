@@ -13,7 +13,7 @@ products:
 
 # Agentless integrations [agentless-integrations]
 
-Agentless integrations provide a means to ingest data while avoiding the orchestration, management, and maintenance needs associated with standard ingest infrastructure. Using agentless integrations makes manual agent deployment unnecessary, allowing you to focus on your data instead of the agent that collects it.
+Agentless integrations provide a means to ingest data while avoiding the orchestration, management, and maintenance needs associated with standard ingest infrastructure. Using agentless integrations makes manual agent deployment unnecessary, allowing you to focus on your data instead of the agent that collects it. For setup guides and to learn more about Elastic's integrations, refer to [Elastic integrations](integration-docs://reference/index.md).
 
 ::::{important}
 During technical preview, there are no additional costs associated with deploying agentless integrations. 
@@ -51,3 +51,5 @@ To identify which integrations support agentless deployment:
 
 1. In {{kib}}, go to **Integrations**.
 2. On the left, enable the **Only agentless integrations** toggle. 
+
+For a complete list of all integrations that support agentless deployment, refer to [Agentless integrations quick reference](integration-docs://reference/agentless_integrations.md).
