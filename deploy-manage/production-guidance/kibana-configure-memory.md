@@ -3,6 +3,8 @@ navigation_title: Configure memory
 applies_to:
   deployment:
     self: all
+products:
+  - id: kibana
 ---
 
 # Configure {{kib}} memory

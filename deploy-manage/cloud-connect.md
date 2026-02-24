@@ -5,6 +5,10 @@ applies_to:
     ece:
     eck:
 navigation_title: Cloud Connect
+products:
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elasticsearch
 ---
 
 # Cloud Connect

@@ -3,6 +3,13 @@ applies_to:
   stack: preview 9.3
   serverless: preview
 description: Learn about action steps that perform tasks in your workflows.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Action steps
@@ -34,7 +41,7 @@ Refer to [](/explore-analyze/workflows/steps/kibana.md) for more information.
 
 ## External systems and apps
 
-External actions allow your workflows to communicate with third-party systems using connectors. Use external actions to:
+External actions allow your workflows to communicate with third-party systems using [connectors](kibana:/reference/connectors-kibana.md). Use external actions to:
 
 * Send notifications to Slack or email
 * Create incidents in ServiceNow

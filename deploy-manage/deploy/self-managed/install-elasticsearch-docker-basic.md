@@ -5,6 +5,10 @@ applies_to:
 navigation_title: Single-node cluster
 sub:
   image: elasticsearch
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: elastic-stack
 ---
 
 # Start a single-node cluster in Docker [docker-cli-run-dev-mode]

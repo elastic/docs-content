@@ -664,6 +664,10 @@ Use actions to set up notifications sent via other systems when alerts are gener
 To use actions for alert notifications, you need the [appropriate license](https://www.elastic.co/subscriptions). For more information, see [Cases requirements](/solutions/security/investigate/cases-requirements.md).
 ::::
 
+::::{tip}
+:applies_to: {stack: preview 9.3+, serverless: preview}
+You can use [workflows](/explore-analyze/workflows.md) as a rule action to automate alert response processes. Workflows can create cases, route notifications, or perform other automated tasks when alerts are generated. To learn how to set up a workflow as a rule action, refer to [](/explore-analyze/workflows/triggers/alert-triggers.md).
+:::: 
 
 1. Select a connector type to determine how notifications are sent. For example, if you select the {{jira}} connector, notifications are sent to your {{jira}} system.
 

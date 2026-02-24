@@ -4,6 +4,13 @@ applies_to:
   stack: preview 9.2
   serverless:
     security: preview
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Authenticate agentless integrations using cloud connectors

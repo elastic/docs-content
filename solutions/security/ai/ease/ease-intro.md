@@ -3,6 +3,9 @@ navigation_title: Elastic AI SOC Engine
 applies_to:
   serverless:
     security: preview
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 # Elastic AI SOC Engine with {{sec-serverless}}
 

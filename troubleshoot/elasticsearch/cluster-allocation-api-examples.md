@@ -1,5 +1,7 @@
 ---
 navigation_title: Cluster allocation API examples
+products:
+  - id: elasticsearch
 ---
 
 # Using the cluster allocation API for troubleshooting
