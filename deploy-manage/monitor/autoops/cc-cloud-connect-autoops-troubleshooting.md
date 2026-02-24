@@ -22,7 +22,7 @@ Use this guide to troubleshoot any issues you may encounter.
 * [I need to uninstall {{agent}}.](#unistall-agent)
 * [My cluster was disconnected from {{ecloud}} and I want to reconnect it.](#disconnected-cluster)
 * [After running the installation command, I can't move on to the next steps.](#next-steps)
-* [My organization's firewall may be preventing {{agent}} from collecting and sending metrics.](#firewall)
+* [My organization's firewall might be preventing {{agent}} from collecting and sending metrics.](#firewall)
 * [{{agent}} is failing to connect because it doesn't recognize my SSL certificate.](#custom-cert)
 * [I went through the wizard with {{ECK}} (ECK) as my installation method, but I can't view any connected clusters in my account.](#eck-no-clusters) {applies_to}`eck: ga 3.3`
 
@@ -39,7 +39,11 @@ $$$disconnected-cluster$$$**My cluster was disconnected from {{ecloud}} and I wa
 $$$next-steps$$$**After running the installation command, I can't move on to the next steps.**
 :   If an error appears on the screen, follow the suggestion in the error message and try to run the command again. If the issue is not resolved, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
-$$$firewall$$$**My organization's firewall may be preventing {{agent}} from collecting and sending metrics.**
+:::{tip}
+If you're having issues connecting your cluster to AutoOps and sending metrics to {{ecloud}}, run the [AutoOps Connectivity Check](../autoops/autoops-connectivity-check.md) to test your configuration.
+:::
+
+$$$firewall$$$**My organization's firewall might be preventing {{agent}} from collecting and sending metrics.**
 :   If you're having issues with connecting your cluster to AutoOps and you suspect that a firewall may be the reason, refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-firewalls.md).
 
 $$$custom-cert$$$**{{agent}} is failing to connect because it doesn't recognize my SSL certificate.**
@@ -48,19 +52,23 @@ $$$custom-cert$$$**{{agent}} is failing to connect because it doesn't recognize 
 $$$eck-no-clusters$$$**I went through the wizard with {{ECK}} (ECK) as my installation method, but I can't view any connected clusters in my account.** {applies_to}`eck: ga 3.3`
 :   Refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-eck-no-clusters.md) to diagnose and resolve common issues.
 
+## Run the AutoOps Connectivity Check
+
+Run the [AutoOps Connectivity Check](../autoops/autoops-connectivity-check.md) to test your system and diagnose any issues that might prevent you from connecting your cluster to AutoOps.
+
 ## Potential errors
 
-The following table shows the errors you might encounter if something goes wrong while you set up and use AutoOps on your clusters.
+The following table shows the errors you might encounter if something goes wrong while you set up and use AutoOps in your clusters.
 
 | Error code | Error message | Description |
 | :--- | :--- | :--- |
-| `HTTP_401` | Authentication failed | Connection denied because of an authentication error. Verify that your API key and password are correct and all [necessary privileges](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#configure-agent) have been granted. |
-| `HTTP_502` | Server error | Received an invalid response from the server. Verify the server status and network configuration. |
+| `HTTP_401` | Authentication failed | Connection denied because of an authentication error. Run the AutoOps Connectivity Check script to diagnose the issue. [Learn more](../autoops/autoops-connectivity-check.md). |
+| `HTTP_502` | Server error | Received an invalid response from the server. There may be an issue with the server status or network configuration. Run the AutoOps Connectivity Check script to diagnose the issue. [Learn more](../autoops/autoops-connectivity-check.md). |
 | `HTTP_503` | Server unavailable | Invalid or corrupt response received from the server. The server acting as a proxy may be busy or undergoing scheduled maintenance. If the issue persists, check the cluster's health and resource usage. |
 | `HTTP_504` | Request timed out | Did not receive a response from the cluster within the expected time frame. Check the cluster's performance or consider changing your connection timeout settings. |
 | `CLUSTER_ALREADY_CONNECTED` | Cluster connected to another account | This cluster is already connected to another {{ecloud}} organization. Disconnect it and then try again. |
 | `CLUSTER_NOT_READY` | {{es}} cluster is still connecting | Your {{es}} cluster is not yet ready to connect. Wait a few moments for it to finish starting up and then try again. |
-| `HTTP_0` | Connection error | {{agent}} couldn't connect to the cluster. There may be various reasons for this issue. Review the [documentation](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) or contact [Elastic support](https://support.elastic.co/) if the issue persists. |
+| `HTTP_0` | Connection error | {{agent}} couldn't connect to the cluster. Run the AutoOps Connectivity Check script to diagnose the issue. [Learn more](../autoops/autoops-connectivity-check.md). If the issue persists, contact [Elastic support](https://support.elastic.co/) (for clusters on an Enterprise or Platinum license) or visit the [community forums](https://discuss.elastic.co/c/elastic-stack/monitoring/103). |
 | `VERSION_MISMATCH` | {{es}} version is unsupported | Upgrade your cluster to a [supported version](https://www.elastic.co/support/eol). |
-| `UNKNOWN_ERROR` | Installation failed | {{agent}} couldn't be installed due to an unknown issue. Consult the troubleshooting guide or contact [Elastic support](https://support.elastic.co/) for more help. |
+| `UNKNOWN_ERROR` | Installation failed | Could not install {{agent}}. Consult the [troubleshooting guide](../autoops/cc-cloud-connect-autoops-troubleshooting.md) or run the AutoOps Connectivity Check script to test your network settings. If the issue persists, contact [Elastic support](https://support.elastic.co/) (for clusters on an Enterprise or Platinum license) or visit the [community forums](https://discuss.elastic.co/c/elastic-stack/monitoring/103). |
 | `x509` | Certificate signed by unknown authority | {{agent}} couldn't connect. SSL certificate signed by unknown authority. |

@@ -273,6 +273,10 @@ The status shows:
 
 If the connection is unsuccessful, an error message is displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors). Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
+:::{tip}
+If you're having issues connecting your cluster to AutoOps and sending metrics to {{ecloud}}, run the [AutoOps Connectivity Check](../autoops/autoops-connectivity-check.md) to test your configuration.
+:::
+
 To uninstall the agent, refer to [](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md).
 
 ### Launch AutoOps
