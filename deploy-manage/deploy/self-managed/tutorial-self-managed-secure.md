@@ -739,15 +739,19 @@ Your new {{agent}} is now installed and enrolled with {{fleet-server}}.
 
 Now that all of the components have been installed, it's time to view your system data.
 
-**View your system log data:** 
+**View your system log data:**
 
- - Open {{kib}} **Analytics -> Dashboard**, search for `Logs System`, and select the `[Logs System] Syslog dashboard` link. The {{kib}} Dashboard opens with visualizations of Syslog events, hostnames and processes, and more.
+1. Open the {{kib}} menu and go to **Analytics -> Dashboard**.
+2. In the query field, search for `Logs System`.
+3. Select the `[Logs System] Syslog dashboard` link. The {{kib}} Dashboard opens with visualizations of Syslog events, hostnames and processes, and more.
 
-**View your system metrics data:** 
+**View your system metrics data:**
 
- - In **Analytics -> Dashboard**, search for `Metrics System` and open the `[Metrics System] Host overview` link. The Kibana Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and more.
+1. Open the {{kib}} menu and return to **Analytics -> Dashboard**.
+2. In the query field, search for `Metrics System`.
+3. Select the `[Metrics System] Host overview` link. The {{kib}} Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and others.
 
-   ![Sample Kibana dashboard](/deploy-manage/images/install-stack-metrics-dashboard.png)
+![Sample Kibana dashboard](/deploy-manage/images/install-stack-metrics-dashboard.png)
 
 Congratulations! You've successfully configured security for {{es}}, {{kib}}, {{fleet}}, and {{agent}} using your own trusted CA-signed certificates.
 

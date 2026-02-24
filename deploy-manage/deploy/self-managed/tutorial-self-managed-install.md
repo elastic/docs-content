@@ -28,7 +28,7 @@ It should take between one and two hours to complete these steps.
 * [Next steps](#install-stack-self-next-steps)
 
 :::{important} Note about using trusted CA-signed certificates
-If you're using these steps to configure a production cluster that uses trusted CA-signed certificates for secure communications, after completing Step 6 to install {{kib}} we recommend jumping directly to [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure).
+If you're using these steps to configure a production cluster that uses trusted CA-signed certificates for secure communications, after completing Step 6 to install {{kib}} we recommend jumping directly to [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md).
 
 The second tutorial includes steps to configure security across the {{stack}}, and then to set up {{fleet-server}} and {{agent}} with SSL certificates enabled.
 :::
@@ -127,25 +127,33 @@ Before moving ahead to configure additional {{es}} nodes, you'll need to update 
    sudo vim /etc/elasticsearch/elasticsearch.yml
    ```
 
-3. In a multi-node {{es}} cluster, all of the {{es}} instances need to have the same name. In the configuration file, uncomment the line `#cluster.name: my-application` and give the {{es}} instance any name that you'd like:
+3. In a multi-node {{es}} cluster, all of the {{es}} instances need to have the same name.
+
+   In the configuration file, uncomment the line `#cluster.name: my-application` and give the {{es}} instance any name that you'd like:
 
    ```yaml
    cluster.name: elasticsearch-demo
    ```
 
-4. By default, {{es}} runs on `localhost`. In order for {{es}} instances on other nodes to be able to join the cluster, you'll need to set up {{es}} to run on a routable, external IP address. Uncomment the line `#network.host: 192.168.0.1` and replace the default address with the value that you copied from the `ifconfig` command output. For example:
+4. By default, {{es}} runs on `localhost`. In order for {{es}} instances on other nodes to be able to join the cluster, you'll need to set up {{es}} to run on a routable, external IP address.
+
+   Uncomment the line `#network.host: 192.168.0.1` and replace the default address with the value that you copied from the `ifconfig` command output. For example:
 
    ```yaml
    network.host: 10.128.0.84
    ```
 
-5. {{es}} needs to be enabled to listen for connections from other, external hosts. Uncomment the line `#transport.host: 0.0.0.0`. The `0.0.0.0` setting enables {{es}} to listen for connections on all available network interfaces. In a production environment you might want to restrict this by setting this value to match the value set for `network.host`.
+5. {{es}} needs to be enabled to listen for connections from other, external hosts.
+
+   Uncomment the line `#transport.host: 0.0.0.0`. The `0.0.0.0` setting enables {{es}} to listen for connections on all available network interfaces. In a production environment you might want to restrict this by setting this value to match the value set for `network.host`.
 
    ```yaml
    transport.host: 0.0.0.0
    ```
 
-   **Tip:** You can find details about the `network.host` and `transport.host` settings in the {{es}} [Networking](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) documentation.
+   :::{tip}
+   You can find details about the `network.host` and `transport.host` settings in the {{es}} [Networking](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) documentation.
+   :::
 
 6. Save your changes and close the editor.
 
@@ -316,7 +324,12 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
     sudo tail -f /var/log/elasticsearch/elasticsearch-demo.log
     ```
 
-    Notice in the log file some helpful diagnostics, such as: `Security is enabled`, `Profiling is enabled`, `using discovery type [multi-node]`, `intialized`, `starting...`
+    Notice in the log file some helpful diagnostics, such as: 
+     - `Security is enabled`
+     - `Profiling is enabled`
+     - `using discovery type [multi-node]`
+     - `intialized`
+     - `starting...`
 
     After a minute or so, the log should show a message like:
 
@@ -324,7 +337,9 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
     [<hostname2>] master node changed {previous [], current [<hostname1>...]}
     ```
 
-    Here, `hostname1` is your first {{es}} instance node, and `hostname2` is your second {{es}} instance node. The message indicates that the second {{es}} node has successfully contacted the initial {{es}} node and joined the cluster.
+    Here, `hostname1` is your first {{es}} instance node, and `hostname2` is your second {{es}} instance node.
+    
+    The message indicates that the second {{es}} node has successfully contacted the initial {{es}} node and joined the cluster.
 
 19. As a final check, run the following `curl` request on the new node to confirm that {{es}} is still running properly and viewable at the new node's `localhost` IP address. You need to replace `$ELASTIC_PASSWORD` with the same `elastic` superuser password that you used on the first {{es}} node.
 
@@ -444,8 +459,11 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
     sudo systemctl status kibana
     ```
 
-17. In the `status` command output, a URL is shown with: a host address to access {{kib}}, and a six digit verification code. For example:
-
+17. In the `status` command output, a URL is shown with: 
+    - a host address to access {{kib}}
+    - a six digit verification code
+    
+    For example:
     ```text
     Kibana has not been configured.
     Go to http://10.128.0.28:5601/?code=<code> to get started.
@@ -453,7 +471,9 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
 
     Make a note of the verification code.
 
-18. Open a web browser to the external IP address of the {{kib}} host machine, for example: `http://<kibana-host-address>:5601`. It can take a minute or two for {{kib}} to start up, so refresh the page if you don't see a prompt right away.
+18. Open a web browser to the external IP address of the {{kib}} host machine, for example: `http://<kibana-host-address>:5601`.
+
+    It can take a minute or two for {{kib}} to start up, so refresh the page if you don't see a prompt right away.
 
 19. When {{kib}} starts you're prompted to provide an enrollment token. Paste in the {{kib}} enrollment token that you generated earlier.
 
@@ -504,19 +524,27 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}, which will
 
 8. Specify a name for your {{fleet-server}} host, for example `Fleet Server`.
 
-9. Specify the host URL where {{agent}}s will reach {{fleet-server}}, for example: `http://10.128.0.203:8220`. This is the inet value that you copied from the `ifconfig` output. Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](/reference/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
+9. Specify the host URL where {{agent}}s will reach {{fleet-server}}, for example: `http://10.128.0.203:8220`. This is the inet value that you copied from the `ifconfig` output.
+
+   Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](/reference/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
 
 10. Click **Generate Fleet Server policy**. A policy is created that contains all of the configuration settings for the {{fleet-server}} instance.
 
 11. On the **Install Fleet Server to a centralized host** step, for this example we select the **Linux Tar** tab, but you can instead select the tab appropriate to the host operating system where you're setting up {{fleet-server}}. TAR/ZIP packages are recommended over RPM/DEB system packages, since only the former support upgrading {{fleet-server}} using {{fleet}}.
 
-12. Copy the generated commands and then run them one-by-one in the terminal on your {{fleet-server}} host. These commands will, respectively: download the {{fleet-server}} package from the {{artifact-registry}}; unpack the package archive; change into the directory containing the install binaries; install {{fleet-server}}. If you'd like to learn about the install command options, refer to [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
+12. Copy the generated commands and then run them one-by-one in the terminal on your {{fleet-server}} host. These commands will, respectively:
+    - Download the {{fleet-server}} package from the {{artifact-registry}}
+    - Unpack the package archive
+    - Change into the directory containing the install binaries
+    - Install {{fleet-server}}.
+    
+    If you'd like to learn about the install command options, refer to [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
 
 13. At the prompt, enter `Y` to install {{agent}} and run it as a service. Wait for the installation to complete.
 
 14. In the {{kib}} **Add a Fleet Server** flyout, wait for confirmation that {{fleet-server}} has connected.
 
-15. For now, ignore the *Continue enrolling Elastic Agent* option and close the flyout.
+15. For now, ignore the **Continue enrolling Elastic Agent** option and close the flyout.
 
 {{fleet-server}} is now fully set up!
 
@@ -554,13 +582,19 @@ Next, you'll install {{agent}} on another host and use the System integration to
 
 11. For the **Enroll in Fleet?** step, leave **Enroll in Fleet** selected.
 
-12. On the **Install Elastic Agent on your host** step, for this example we select the **Linux Tar** tab, but you can instead select the tab appropriate to the host operating system where you're setting up {{fleet-server}}. As with {{fleet-server}}, note that TAR/ZIP packages are recommended over RPM/DEB system packages, since only the former support upgrading {{agent}} using {{fleet}}.
+12. On the **Install Elastic Agent on your host** step, for this example we select the **Linux Tar** tab, but you can instead select the tab appropriate to the host operating system where you're setting up {{fleet-server}}.
+
+    As with {{fleet-server}}, note that TAR/ZIP packages are recommended over RPM/DEB system packages, since only the former support upgrading {{agent}} using {{fleet}}.
 
 13. Copy the generated commands.
 
-14. In the `sudo ./elastic-agent install` command, make two changes: for the `--url` parameter, check that the port number is set to `8220` (used for on-premises {{fleet-server}}); append an `--insecure` flag at the end.
+14. In the `sudo ./elastic-agent install` command, make two changes:
+    - For the `--url` parameter, check that the port number is set to `8220` (used for on-premises {{fleet-server}}).
+    - Append an `--insecure` flag at the end.
 
-    **Tip:** If you want to set up secure communications using SSL certificates, refer to [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md).
+    :::{tip}
+    If you want to set up secure communications using SSL certificates, refer to [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md).
+    :::
 
     The result should be like the following:
 
@@ -568,7 +602,11 @@ Next, you'll install {{agent}} on another host and use the System integration to
     sudo ./elastic-agent install --url=https://10.128.0.203:8220 --enrollment-token=VWCobFhKd0JuUnppVYQxX0VKV5E6UmU3BGk0ck9RM2HzbWEmcS4Bc1YUUM==
     ```
 
-15. Run the commands one-by-one in the terminal on your {{agent}} host. The commands will, respectively: download the {{agent}} package from the {{artifact-registry}}; unpack the package archive; change into the directory containing the install binaries; install {{agent}}.
+15. Run the commands one-by-one in the terminal on your {{agent}} host. The commands will, respectively:
+    - Download the {{agent}} package from the {{artifact-registry}}.
+    - Unpack the package archive.
+    - Change into the directory containing the install binaries.
+    - Install {{agent}}.
 
 16. At the prompt, enter `Y` to install {{agent}} and run it as a service. Wait for the installation to complete. If everything goes well, the install will complete successfully:
 
@@ -598,7 +636,7 @@ Now that all of the components have been installed, it's time to view your syste
 2. In the query field, search for `Metrics System`.
 3. Select the `[Metrics System] Host overview` link. The {{kib}} Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and others.
 
-::{image} /deploy-manage/images/install-stack-metrics-dashboard.png
+![Sample Kibana dashboard](/deploy-manage/images/install-stack-metrics-dashboard.png)
 
 Congratulations! You've successfully set up a three node {{es}} cluster, with {{kib}}, {{fleet-server}}, and {{agent}}.
 
