@@ -404,7 +404,7 @@ Now that the security is configured for the first {{es}} node, some steps need t
       sudo /usr/share/elasticsearch/bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
       ```
 
-4. For the HTTP layer, the certificates have been generated already on the first {{es}} node. Each additional {{es}} node just needs to be configured to use the new certificates.
+4. For the HTTP layer, the certificates have been generated already on the first {{es}} node. Each additional {{es}} node needs to be configured to use the new certificates.
 
    1. Update the `/etc/elasticsearch/elasticsearch.yml` settings file with the new truststore and keystore filenames:
 
