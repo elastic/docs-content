@@ -4,7 +4,7 @@ applies_to:
     self:
     ece:
     eck:
-navigation_title: Connectivity Check
+navigation_title: Run the Connectivity Check
 products:
   - id: cloud-kubernetes
   - id: cloud-enterprise
@@ -12,116 +12,116 @@ products:
 
 # Run the AutoOps Connectivity Check
 
-The AutoOps Connectivity Check is a diagnostic tool designed to validate the communication paths between your on-premises environment and {{ecloud}} as well as the Agent and your {{es}} cluster. Before deploying the {{agent}}, or when troubleshooting missing metrics, this tool provides immediate feedback on your network, proxy, and authentication configurations. The check uses simple HTTP requests.
+The AutoOps Connectivity Check is a diagnostic tool that validates the communication paths between {{agent}}, your {{es}} cluster, and {{ecloud}}. Run it when going through the installation wizard to get immediate feedback on your network, proxy, and authentication configuration using simple HTTP requests.
 
-## Why use this tool?
+Shipping metrics from your cluster to {{ecloud}} involves navigating complex firewall rules, proxy configurations, and TLS requirements. The AutoOps Connectivity Check helps you:
 
-Setting up cross-network observability by shipping {{es}} cluster metrics to {{ecloud}} involves navigating complex firewall rules, proxy configurations, and TLS requirements. This tool is offered to help you:
+*   **Prevent common issues**: Confirms that your environment meets all network prerequisites before you run the agent installation command.
+*   **Troubleshoot issues**: If metrics are not appearing in your {{ecloud}} account, this tool determines the cause.
+*   **Verify security paths**: Checks that your SSL/TLS certificates and API keys are correct, avoiding situations where the agent runs but cannot communicate securely.
 
-*   **Prevent common issues**: Confirm that your environment meets all network prerequisites before you run the agent installation command.
-*   **Rapid troubleshooting**: If metrics are not appearing in your {{ecloud}} account, this script pinpoints exactly where the "data pipe" is broken—be it a firewall block, a missing proxy setting, or an authentication error.
-*   **Verify security paths**: Ensure that your SSL/TLS certificates and API keys are correctly recognized by the system, avoiding "silent failures" where the agent runs but cannot communicate securely.
-
-:::{note}
-This script does not install or configure AutoOps. It only tests whether the required network and configuration are in place.
+:::{important}
+The AutoOps Connectivity Check does not install or configure AutoOps in your cluster. It is only a diagnostic tool that runs tests to make sure your system has all the required configuration.
 :::
 
-It runs four checks in order:
+## How the AutoOps Connectivity Check works
+The tool runs four checks in order:
 
-1.  **Proxy configuration**: Detects whether proxy environment variables are set (informational only).
-2.  **{{ecloud}} Connected Mode API**: Sends a request to the Cloud API. Any response means the endpoint is reachable so the agent can register.
+1.  **Proxy configuration**: Detects whether proxy environment variables are set.
+2.  **{{ecloud}} Connected Mode API**: Sends a request to the Cloud API. Any response means the endpoint is reachable so the agent can register your cluster with {{ecloud}}.
 3.  **OTel endpoint**: Sends a request to the OTel metrics endpoint. Any response means the agent can send metrics to {{ecloud}}.
-4.  **{{es}} (optional)**: If you set `AUTOOPS_ES_URL`, the script calls your cluster root and the `/_license` endpoint to verify connectivity, {{es}} version (7.17.0 or higher), and that the license is active.
+4.  **{{es}} (optional)**: If you set `AUTOOPS_ES_URL`, the tool calls your cluster root and the `/_license` endpoint to verify connectivity, appropriate {{es}} version, and that the license is active.
 
-At the end it prints a summary (passed / failed / skipped / warnings). If any required check fails, the script tells you the agent will not function and points you to the troubleshooting guide.
+After running the checks, it prints a summary of its findings. If any required check fails, the tool tells you why and points you to the [troubleshooting guide](../autoops/cc-cloud-connect-autoops-troubleshooting.md).
 
-## How to run the AutoOps Connectivity Check
+## Run the AutoOps Connectivity Check
 
-Follow these steps to verify your environment is ready for the {{agent}}. These commands should be run from a terminal on the same host where you intend to install the agent.
+Follow these steps to run the tool and verify your environment is ready. 
 
-### 1. Set your environment variables
+:::{note}
+Run the following commands from the machine where you are installing the agent.
+:::
 
-The script uses environment variables to understand how to connect to your specific local {{es}} cluster and your {{ecloud}} account. Note that some variables are set by default and others are optional.
+:::::{stepper}
+
+::::{step} Set your environment variables
+The tool uses environment variables to understand how to connect to your {{es}} cluster and your {{ecloud}} account. Some variables are set by default. 
+
+Update the placeholder values in the following command and run it.
 
 ```bash
 export ELASTIC_CLOUD_CONNECTED_MODE_API_URL="https://api.elastic-cloud.com"
 export AUTOOPS_OTEL_URL="https://otel-auto-ops.ap-northeast-1.aws.svc.elastic.cloud"
 export AUTOOPS_ES_URL="https://your-elasticsearch-host:9200"  
-export AUTOOPS_ES_USERNAME="your_username" # Optional
-export AUTOOPS_ES_PASSWORD="your_password" # Optional
-export AUTOOPS_ES_API_KEY="your_api_key_here" # Optional
-# export AUTOOPS_ES_CA="/path/to/your/ca.crt" # Optional. Uncomment if needed
-# export HTTP_PROXY="http://proxy.example.com:8080" # Optional. Uncomment if needed
-# export HTTPS_PROXY="http://proxy.example.com:8080" # Optional. Uncomment if needed
-# export NO_PROXY="localhost,127.0.0.1" # Optional. Uncomment if needed
+export AUTOOPS_ES_USERNAME="your_username"  # Optional
+export AUTOOPS_ES_PASSWORD="your_password"  # Optional
+export AUTOOPS_ES_API_KEY="your_api_key_here"  # Optional
+# export AUTOOPS_ES_CA="/path/to/your/ca.crt"  # Optional. Uncomment if needed
+# export HTTP_PROXY="http://proxy.example.com:8080"  # Optional. Uncomment if needed
+# export HTTPS_PROXY="http://proxy.example.com:8080"  # Optional. Uncomment if needed
+# export NO_PROXY="localhost,127.0.0.1"  # Optional. Uncomment if needed
 ```
+:::{tip}
+You may get the following error message for lines that start with `#`:
+```bash
+zsh: command not found: #
+```
+To enable running codeblocks that contain comments, tell your computer to allow "interactive comments" with the following command:
+```bash
+setopt interactive_comments
+```
+After running this command, try setting your environment variables again.
+:::
 
-#### Variables - Required vs Optional
+The following table describes the variables.
 
-| Variable | Required / Optional | Description | Default or example |
-|---|---|---|---|
-| `ELASTIC_CLOUD_CONNECTED_MODE_API_URL` | Required | Base URL for the {{ecloud}} Connected Mode API. | Default: `https://api.elastic-cloud.com` |
-| `AUTOOPS_OTEL_URL` | Required | Base URL for the OTel endpoint where the agent sends metrics as selected in the installation wizard (under storage location) | Example: `https://otel-auto-ops.ap-northeast-1.aws.svc.elastic.cloud` |
-| `AUTOOPS_ES_URL` | Optional | Your {{es}} cluster URL. Set this to run the {{es}} check. | `https://my-cluster.example.com:9200` |
-| `AUTOOPS_ES_USERNAME` | Optional | Username for HTTP Basic auth. Use with `AUTOOPS_ES_PASSWORD`. | Add your username (when not using API Key) |
-| `AUTOOPS_ES_PASSWORD` | Optional | Password for HTTP Basic auth. Use with `AUTOOPS_ES_USERNAME`. | Add your password (when not using API Key) |
-| `AUTOOPS_ES_API_KEY` | Optional | API key for auth. Use instead of username/password if you prefer. | Add your API key (when not using username/password) |
-| `AUTOOPS_ES_CA` | Optional | Path to a CA certificate file if your cluster uses a custom or corporate CA. | `/path/to/ca.crt` |
-| `HTTP_PROXY` / `http_proxy` | Optional | HTTP proxy URL. Script only detects; set if your environment uses a proxy. | — |
-| `HTTPS_PROXY` / `https_proxy` | Optional | HTTPS proxy URL. Recommended when using HTTPS endpoints. | — |
-| `NO_PROXY` / `no_proxy` | Optional | Hosts that should bypass the proxy (comma-separated). | — |
+| Variable | Required or Optional | Description |
+|---|---|---|
+| `ELASTIC_CLOUD_CONNECTED_MODE_API_URL` | Required | Base URL for the {{ecloud}} Connected Mode API. This is set to `https://api.elastic-cloud.com` by default. |
+| `AUTOOPS_OTEL_URL` | Required | Base URL for the OTel endpoint where the agent sends metrics. You selected this as your [storage location](../autoops/cc-connect-self-managed-to-autoops.md#storage-location) in the wizard. |
+| `AUTOOPS_ES_URL` | Required | Your {{es}} cluster URL. Set this if you want to run the {{es}} check. |
+| `AUTOOPS_ES_USERNAME` | Optional | Username for HTTP Basic authentication. Use with `AUTOOPS_ES_PASSWORD`. |
+| `AUTOOPS_ES_PASSWORD` | Optional | Password for HTTP Basic authentication. Use with `AUTOOPS_ES_USERNAME`. |
+| `AUTOOPS_ES_API_KEY` | Optional | API key for authentication. Can be used instead of `AUTOOPS_ES_PASSWORD` and `AUTOOPS_ES_USERNAME`. |
+| `AUTOOPS_ES_CA` | Optional | Path to a Certificate Authority (CA) file if your cluster uses a custom or internal CA. |
+| `HTTP_PROXY` / `http_proxy` | Optional | HTTP proxy URL. Set if your environment uses a proxy. |
+| `HTTPS_PROXY` / `https_proxy` | Optional | HTTPS proxy URL. Recommended when using HTTPS endpoints. |
+| `NO_PROXY` / `no_proxy` | Optional | Hosts that should bypass the proxy (comma-separated). |
+::::
 
-### 2. Download and run the script
-
-Use cURL to download the latest version of the connectivity script directly from the Elastic repository and execute it:
+::::{step} Download and run the tool
+Use curl to download the latest version of the AutoOps Connectivity Check directly from the Elastic repository and execute it:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/elastic/autoops-install/main/tools/check_connectivity.sh -o check_connectivity.sh && chmod u+x check_connectivity.sh && ./check_connectivity.sh
 ```
+::::
 
-### 3. Review the results
+::::{step} View the results
 
-*   **If the script ends with "Result: All checks passed"**: You are ready to install the agent! Copy the agent installation command from AutoOps installation wizard and run the command.
-*   **If the script ends with "Result: FAIL"**: Review the specific error messages in the output. Common fixes include updating firewall rules for Port 443 or verifying that your `AUTOOPS_ES_URL` is reachable from this host.
+When the tool has finished running all the checks, it will present one of the following messages to indicate the results. Refer to the **Action** column for next steps.
 
-#### Connectivity message reference table
-
-The script runs through three main stages: Proxy Check, {{ecloud}} Connection, and {{es}} Cluster Check. Below is a breakdown of what the results mean and how to fix errors.
-
-| Message Type | Description | Recommendation |
+| Message type | Description | Action |
 |---|---|---|
-| SUCCESS | The connection to {{ecloud}} or {{es}} worked perfectly. | No action needed. You are ready for the next installation step. |
-| FAIL: 'curl' required | The script cannot run because the curl tool is missing. | Install curl using your system’s package manager (e.g., `sudo apt install curl`). |
-| FAIL: DNS resolution | Your computer cannot find the address for {{ecloud}}. | Check your internet connection or verify DNS settings with your IT team. |
-| FAIL: Connection timeout | A firewall is likely blocking the request on Port 443. | Ask your network team to open Port 443 for outbound traffic to {{ecloud}}. |
-| FAIL: SSL handshake | The secure connection was blocked, often by "SSL Inspection." | Request that your IT department allowlist the Elastic URLs to bypass inspection. |
-| FAIL: 401 Unauthorized | The username, password, or API key provided is incorrect. | Double-check your credentials for typos and re-run the script. |
-| FAIL: 403 Forbidden | Your account connects but lacks the required permissions. | Update the user role in Kibana to include monitor privileges. |
-| FAIL: Version too low | Your {{es}} version is older than 7.17.0. | Upgrade your {{es}} cluster to version 7.17.0 or newer. |
-| FAIL: License inactive | Your {{es}} license has expired or is invalid. | Renew your license or contact your Elastic Administrator. |
-| WARNING: Proxy found | A proxy is set but might be blocking the specific connection. | If the connection fails, verify with IT that the proxy allows HTTPS traffic. |
-| SKIPPED | The {{es}} check was skipped because no URL was set. | Set `AUTOOPS_ES_URL` if you want to test your local cluster connection. |
+| SUCCESS | The connection to {{ecloud}} or {{es}} worked perfectly. | No action needed. Continue the steps in the installation wizard. |
+| FAIL: 'curl' required | The script cannot run because the curl tool is missing. | Install curl using your system’s package manager (`sudo apt install curl`). |
+| FAIL: DNS resolution | Your computer cannot find the address for {{ecloud}}. | Check your internet connection or verify DNS settings. |
+| FAIL: Connection timeout | A firewall is likely blocking the request on port 443. | Open port 443 for outbound traffic to {{ecloud}}. |
+| FAIL: SSL handshake | The secure connection was blocked, often by "SSL Inspection." | Allowlist the Elastic URLs to bypass inspection. |
+| FAIL: 401 Unauthorized | The username, password, or API key provided is incorrect. | Double-check your credentials for typos and then re-run the tool. |
+| FAIL: 403 Forbidden | Your account connects but lacks the required permissions. | Update the user role in {{kib}} to include monitor privileges. |
+| FAIL: Version too low | Your {{es}} version is older than 7.17.0. | Upgrade your {{es}} cluster to version 7.17.0 or later. |
+| FAIL: License inactive | Your {{es}} license has expired or is invalid. | Renew your license or contact your Elastic administrator. |
+| WARNING: Proxy found | A proxy is set but might be blocking the specific connection. | If the connection fails, verify that the proxy allows HTTPS traffic. |
+| SKIPPED | The {{es}} check was skipped because no URL was set. | Set `AUTOOPS_ES_URL` in Step 1 if you want to run the {{es}} check |
+::::
 
-### Important security information
-
-If you see **SSL certificate verification failed**, it means your system doesn't recognize the security certificate of the server. If using a private/company CA, you must point the script to your certificate file using the variable:
+:::{important}
+If your result output shows **SSL certificate verification failed**, your system doesn't recognize the security certificate of the server. If you are using a custom or internal CA, you must point the tool to your certificate file using the following command:
 
 ```bash
 export AUTOOPS_ES_CA=/path/to/your/cert.pem
 ```
+:::
 
-## Final Summary
-
-*   **Passed**: The environment is ready to use AutoOps.
-*   **Failed**: You must resolve the specific "FAIL" items in the table above before the agent will function.
-*   **Warnings**: These provide helpful context but may not stop the agent from working.
-
-## Troubleshooting
-
-Running the Agent installation is not officially supported. Users who wish to install {{es}} cluster on their local machine and connect {{agent}}, may be getting an error message when trying to set the parameters: `zsh: command not found: #`.
-
-An error may appear for the lines that start with `#`. If you want to be able to paste code blocks that contain comments without errors, you need to tell your Mac to allow "interactive comments." Run this command in your terminal before setting the variables:
-
-```bash
-setopt interactive_comments
-```
+:::::
