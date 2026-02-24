@@ -8,8 +8,9 @@ products:
   - id: elasticsearch
   - id: kibana
 ---
-# Tutorials for self-managed clusters
+# Tutorials for installing and securing a self-managed cluster
 
-For a full walk-through example of installing and configuring the {{stack}}, try out our tutorial [Tutorial 1: Installing a self-managed {{stack}}](tutorial-self-managed-install.md).
+Try out these tutorials for a full walk-through of installing and securing the {{stack}} in a self-managed environment:
 
-Then, you can also learn how to secure your installation for production following the steps in [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md).
+- [Tutorial 1: Installing a self-managed {{stack}}](tutorial-self-managed-install.md).
+- [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md).
