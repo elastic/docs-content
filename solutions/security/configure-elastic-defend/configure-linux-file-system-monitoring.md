@@ -27,7 +27,7 @@ To monitor or ignore additional file systems, configure the following advanced s
 Even when configured to monitor all file systems (`ignore_unknown_filesystems` is `false`), {{elastic-defend}} will still ignore specific file systems that Elastic has internally identified as incompatible. The following settings apply to any *other* file systems.
 
 :::{dropdown} View incompatible file systems
-The following file systems are incompatible and won't be monitored:
+{{elastic-defen}} cannot monitor the following incompatible file systems:
 
  - cifs
  - lustre
@@ -59,8 +59,22 @@ The following file systems are incompatible and won't be monitored:
  - selinuxfs
  - sysfs
  - tracefs
-
 :::
+
+:::{dropdown} View monitored file systems
+{{elastic-defend}} monitors the following file systems by default:
+
+ - ext2
+ - ext3
+ - ext4
+ - overlay
+ - tmpfs
+ - vfat
+ - xfs
+ - btrfs 
+ - zfs
+:::
+
 ::::
 
 
