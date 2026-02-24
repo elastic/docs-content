@@ -78,10 +78,10 @@ Dedicated ML nodes are needed when {{infer}} is performed within the cluster, su
 
 | Type | {{aws}} | Azure | GCP | Physical |
 | :---- | :---- | :---- | :---- | :---- |
-| hot | c6gd | f32sv2 | N2 | 16-32 vCPU **64-256 GB RAM\*** 2-6 TB NVMe SSD |
-| ml | m6gd | f16sv2 | N2 | 16-32 vCPU 64 GB RAM 256 GB SSD |
-| master | c5d | f16sv2 | N2 | 4 vCPU 16 GB RAM 256 GB SSD |
-| kibana | c6gd | f16sv2 | N2 | 8-16 vCPU 8 GB RAM 256 GB SSD |
+| hot | c6gd | f32sv2 | N2 | 16-32 vCPU, 64-256 GB RAM, 2-6 TB NVMe SSD |
+| ml | m6gd | f16sv2 | N2 | 16-32 vCPU, 64 GB RAM, 256 GB SSD |
+| master | c5d | f16sv2 | N2 | 4 vCPU, 16 GB RAM, 256 GB SSD |
+| kibana | c6gd | f16sv2 | N2 | 8-16 vCPU, 8 GB RAM, 256 GB SSD |
 
 ## Vector search considerations
 
