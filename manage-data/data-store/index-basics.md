@@ -11,17 +11,17 @@ products:
 
 # Index basics
 
-An index is the fundamental unit of storage in {{es}}. It is a collection of documents uniquely identified by a name or an [alias](/manage-data/data-store/aliases.md). This unique name is used to target the index in search queries and other operations.
+An index is the fundamental unit of storage in {{es}}: a collection of documents identified by a unique name or an [alias](/manage-data/data-store/aliases.md). This name is used to target the index in search requests and other operations.
 
-This page introduces what an index contains and how it's structured, and links to related topics depending on what you need to do with your indices.
+This page explains the core parts of an index -- documents, metadata fields, and mappings -- and highlights common design decisions for working with indices.
 
-::::{tip}
-A closely related concept is a [data stream](/manage-data/data-store/data-streams.md). This index abstraction is optimized for append-only timestamped data, and is made up of hidden, auto-generated backing indices. If you're working with timestamped data, we recommend the [Elastic Observability](/solutions/observability/get-started.md) solution for additional tools and optimized content.
-::::
+:::::{tip}
+A closely related concept is a [data stream](/manage-data/data-store/data-streams.md), which is optimized for append-only timestamped data and backed by hidden, auto-generated indices.
+:::::
 
 ## Index components
 
-An index is made up of the following components.
+Understanding these components helps you design indices that are easier to query, scale, and manage.
 
 ### Documents [elasticsearch-intro-documents-fields]
 
@@ -56,35 +56,27 @@ A simple {{es}} document might look like this:
 
 ### Metadata fields [elasticsearch-intro-documents-fields-data-metadata]
 
-An indexed document contains data and metadata. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system fields that store information about the documents. In {{es}}, metadata fields are prefixed with an underscore. For example, the following fields are metadata fields:
+An indexed document includes both source data and metadata. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system-managed fields that describe the document and how {{es}} stores it. In {{es}}, metadata fields are prefixed with an underscore. For example:
 
 * `_index`: The name of the index where the document is stored.
 * `_id`: The document's ID. IDs must be unique per index.
 
-
 ### Mappings and data types [elasticsearch-intro-documents-fields-mappings]
 
-Each index has a [mapping](/manage-data/data-store/mapping.md) or schema for how the fields in your documents are indexed. A mapping defines the [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
+Each index has a [mapping](/manage-data/data-store/mapping.md) that defines field types and indexing behavior. Mappings determine how fields are stored, queried, and aggregated.
 
-## Related topics
+## Common index design decisions
 
-Depending on your goals, explore the following topics to learn more about working with indices and related data store concepts in {{es}}.
+When working with indices, you typically make the following decisions:
 
-### Configure your indices
+* **Naming and aliases**: Use clear index naming patterns and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
+* **Mapping strategy**: Use dynamic mapping for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping.md) for production use cases where field control and query behavior matter.
+* **Index or data stream**: Use a regular index when you need frequent updates or deletes. Use a [data stream](/manage-data/data-store/data-streams.md) for append-only timestamped data such as logs, events, and metrics.
 
-* [](/manage-data/data-store/mapping.md): Define how documents and their fields are stored and indexed, using dynamic mapping for automatic field detection or explicit mapping for full control.
-* [](/manage-data/data-store/templates.md): Create reusable configurations — including settings, mappings, and aliases — that are automatically applied when new indices or data streams are created.
-* [](/manage-data/data-store/aliases.md): Create named references that point to one or more indices or data streams, enabling zero-downtime reindexing and simplified query targeting.
-* [](/manage-data/data-store/text-analysis.md): Configure how unstructured text is converted into a structured format optimized for full-text search.
+## Next steps
 
-### Manage your indices
+Choose the path that matches how you manage indices:
 
 * [](/manage-data/data-store/index-management.md): Use {{kib}}'s **Index Management** UI to view and manage your indices, data streams, templates, component templates, and enrich policies.
   * [](/manage-data/data-store/perform-index-operations.md): Perform operations like closing, refreshing, and deleting indices from the **Manage index** menu.
 * [](/manage-data/data-store/manage-data-from-the-command-line.md): Index, update, retrieve, search, and delete documents using curl and the {{es}} REST API.
-
-### Work with time series data
-
-* [](/manage-data/data-store/data-streams.md): Store append-only time series data across multiple backing indices while using a single named resource for requests.
-* [](/manage-data/data-store/near-real-time-search.md): Understand how {{es}} makes new data searchable within seconds of indexing.
-* [](/manage-data/lifecycle.md): Manage your data over time, including retention policies and tiered storage.
