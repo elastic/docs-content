@@ -114,11 +114,12 @@ TODO move [project ID and alias info](/explore-analyze/cross-project-search.md#p
 You can remove linked projects from your origin project at any time. Select the checkbox next to the projects you want to remove from {{cps}}, then click **Unlink**.
 
 % TODO confirm the unlinking?? not a word
+% TODO confirm new unlink flow (figma updates coming soon)
 
 After you confirm, searches from the origin project will no longer include data from the unlinked projects.
 
-::::{warning}
-If you delete a {{serverless-short}} project that's linked to an origin project, cross-project searches that rely on the project's data might return incomplete results, or fail. For best results, first unlink the project (everywhere it's linked), then delete it.
+::::{important}
+You can't delete a linked project. To delete a project, first unlink it everywhere it's linked, then delete it.
 ::::
 
 ### Manage user access
@@ -135,9 +136,15 @@ As an administrator, make sure that users who need to search across linked proje
 
 For details about managing roles and API keys, refer to [Users and roles](/deploy-manage/users-roles.md) and [API keys](/deploy-manage/api-keys.md).
 
-## Configure the default search scope [cps-search-scope]
+## Manage search scope [cps-search-scope]
 
-By default, all linked projects are included in cross-project searches. You can restrict the scope per space so that users query a subset of linked projects instead of the combined set.
+### About search scope
+
+By default, an unqualified search from an origin project targets all linked projects plus the origin. This default search scope can be narrowed by a few different mechanisms:
+
+TODO expand
+
+### Set the default {{cps}} scope for a space
 
 To open space settings in {{kib}}, click **Configure Space settings in {{kib}}** in the banner that appears when you link projects. Or click **Manage Space** at the top of the project page. Select the space you want to configure.  
 
@@ -155,7 +162,7 @@ In the {{cps}} scope settings, choose the default scope:
    - **Specific projects:** Select individual linked projects to include in the default scope.
 
 :::{note}
-The {{cps}} scope is a setting, not an access control. Even after you set a default, users can select their preferred scope and can access data in linked projects outside the default scope.
+The {{cps}} scope is a space setting, not an access control. Even after you set a default, users can select their preferred scope and can access data in linked projects outside the default scope.
 :::
 
 % alt
@@ -166,13 +173,7 @@ The {{cps}} scope is a setting, not an access control. Even after you set a defa
 Users can also set the search scope on a per-query basis as needed, using [qualified search expressions](/explore-analyze/cross-project-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search.md#project-routing).
 
 % TODO check original source for this
-
-:::{important}
-{{ml-jobs-cap}} and persistent tasks (such as transforms) might not inherit the space-level scope defaults. If you use ML or transforms, consider configuring the scope explicitly using [project routing](/explore-analyze/cross-project-search.md#project-routing).
-:::
-
 % TODO link to alerting impacts and ML/transform considerations
-
 
 
 ## Recommended architecture [cps-arch]
@@ -194,6 +195,10 @@ A project can act as both an origin project and a linked project (the configurat
 :::{note}
 If your overview project handles high search volumes, monitor its performance. Even if the project doesn't store data, it uses compute resources to run searches.
 :::
+
+### Other architectures
+
+TODO cover other arch patterns (less recommended)
 
 % TODO check autoscaling concerns (empty overview projects and OOM errors)
 
