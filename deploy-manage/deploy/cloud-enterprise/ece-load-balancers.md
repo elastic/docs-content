@@ -24,7 +24,7 @@ Use the following recommendations when configuring your load balancer:
 
 ## Port and mode configuration [ece-load-balancer-ports]
 
-The following table describes the supported load balancer modes for each port range. TLS termination occurs at the ECE proxy for all ports.
+The following table describes the supported load balancer modes for each type of traffic and associated ports. TLS termination occurs at the ECE proxy for all ports.
 
 | Ports | Traffic type | Supported modes | Client IP mechanism | Notes |
 | :--- | :--- | :--- | :--- | :--- |
