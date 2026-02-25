@@ -34,7 +34,7 @@ Make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-b
 * For HTTP (L7) mode: Configure the load balancer to set the `X-Forwarded-For` header with the client source IP and strip any inbound `X-Forwarded-For` headers to prevent spoofing.
 * For TCP (L4) mode: Enable Proxy Protocol v2 on the load balancer.
 
-For transport protocol traffic (ports 9300/9343), enable Proxy Protocol v2 regardless of mode.
+For {{es}} transport traffic (ports 9300/9343), enable Proxy Protocol v2 regardless of the mode.
 
 For more details, refer to [Client IP preservation](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md#ece-client-ip-preservation).
 
