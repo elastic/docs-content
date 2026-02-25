@@ -187,13 +187,13 @@ Before moving ahead to configure additional {{es}} nodes, you'll need to update 
      "cluster_name" : "elasticsearch",
      "cluster_uuid" : "AT69_C_DTp-1qgIJlatQqA",
      "version" : {
-       "number" : "{{version_qualified}}",
-       "build_type" : "{{build_type}}",
+       "number" : "{version_qualified}",
+       "build_type" : "{build_type}",
        "build_hash" : "f27399d",
        "build_flavor" : "default",
        "build_date" : "2016-03-30T09:51:41.449Z",
        "build_snapshot" : false,
-       "lucene_version" : "{{lucene_version}}",
+       "lucene_version" : "{lucene_version}",
        "minimum_wire_compatibility_version" : "1.2.3",
        "minimum_index_compatibility_version" : "1.2.3"
      },
@@ -365,7 +365,7 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
         "build_flavor" : "default",
         "build_date" : "2016-03-30T09:51:41.449Z",
         "build_snapshot" : false,
-        "lucene_version" : "{{lucene_version}}",
+        "lucene_version" : "{lucene_version}",
         "minimum_wire_compatibility_version" : "1.2.3",
         "minimum_index_compatibility_version" : "1.2.3"
       },
