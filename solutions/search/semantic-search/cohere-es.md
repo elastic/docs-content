@@ -13,7 +13,7 @@ products:
 
 # Using Cohere with Elasticsearch [cohere-es]
 
-The instructions in this tutorial shows you how to compute embeddings with Cohere using the {{infer}} API and store them for efficient vector or hybrid search in {{es}}. This tutorial will use the Python {{es}} client to perform the operations.
+The instructions in this tutorial show you how to compute embeddings with Cohere using the {{infer}} API and store them for efficient vector or hybrid search in {{es}}. This tutorial will use the Python {{es}} client to perform the operations.
 
 You’ll learn how to:
 

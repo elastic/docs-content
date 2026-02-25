@@ -75,12 +75,21 @@ For readability, you can put each processing command on a new line and add inden
 
 A query might result in warnings, for example when querying an unsupported field type. When that happens, the query bar displays a warning symbol. To see the detailed warning, expand the query bar, and select **warnings**.
 
+#### Query statistics
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+After running a query, the editor's footer displays statistics about the last run, including the number of documents processed. These statistics are available in **Discover** and in **{{esql}} visualizations** in dashboards.
+
 #### Keyboard shortcuts
 
 | Mac                | Windows/Linux       | Description                 |
 |--------------------|---------------------|-----------------------------|
 | {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
 | {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment a line |
+| {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`stack: ga 9.4+` |
 | {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open [Quick search](#esql-kibana-quick-search) |
 
 :::{tip}
@@ -94,15 +103,18 @@ serverless: preview
 stack: preview 9.3+
 ```
 
-You can use the **Quick search** functionality of the {{esql}} editor to translate a free-text search into a functioning {{esql}} query with a `WHERE KQL()` clause. This can be useful if you're getting started with {{esql}} and are familiar with [KQL](kql.md). 
+You can use the **Quick search** functionality of the {{esql}} editor to translate a free-text or KQL search into a functioning {{esql}} query with a `WHERE KQL()` clause. This can be useful if you're getting started with {{esql}} or are familiar with [KQL](kql.md).
 
 1. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open the **Quick search** bar.
 2. Select the data sources to search.
-3. Type the text you want to search for.
-4. Submit your search by pressing **Enter**. The editor generates a new {{esql}} query that overwrites the current query. It includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. The editor saves previously run queries in the query history if you need to restore them. 
-5. Refine your query with any other {{esql}} command or function that you need. The **Quick search** bar closes automatically when you start typing in the editor or select outside of it.
+3. Type the text you want to search for as free text or using [KQL](kql.md) syntax.
+4. Submit your search by pressing **Enter**. The editor generates a new {{esql}} query that overwrites the current query and runs it. It includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. The editor saves previously run queries in the query history if you need to restore them. 
 
-![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc8165d27051bdac3/6966744e818dc30008b336f8/esql-quick-search.gif "=60%")
+   The **Quick search** bar closes automatically when you press **Enter**, start typing in the editor or click outside of it.
+
+5. Refine your query with any other {{esql}} command or function that you need.
+
+![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc8165d27051bdac3/6997303fcf7e250008e681d8/esql-quick-search.gif "=60%")
 
 
 ### Commands with additional editor support
@@ -114,8 +126,6 @@ Some {{esql}} commands have dedicated editor features beyond autocomplete, such 
 The {{esql}} editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
 {applies_to}`stack: ga 9.2.0` Remote lookup joins are supported in [cross-cluster queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md). The lookup index must exist on _all_ remote clusters being queried, because each cluster uses its local lookup index data.
-
-![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 
 In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/try-esql.md#discover-esql-lookup-join).
 
@@ -151,7 +161,7 @@ FROM my_index
 | WHERE custom_timestamp >= ?_tstart AND custom_timestamp < ?_tend
 ```
 
-You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions.md#esql-bucket) function to create auto-incrementing time buckets in {{esql}} visualizations. For example:
+You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/bucket.md) function to create auto-incrementing time buckets in {{esql}} visualizations. For example:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -161,7 +171,7 @@ FROM kibana_sample_data_logs
 
 ### Time ranges with WHERE [_where_command]
 
-You can also limit the time range using the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command and the [`NOW`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-now) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
+You can also limit the time range using the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command and the [`NOW`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions/now.md) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -198,6 +208,8 @@ serverless: preview
 
 The {{esql}} editor keeps track of your queries so you can reuse and organize them.
 
+![ES|QL editor query history and starred queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt2d3183eafde13ca0/699889744357070008f66a99/query_history_starred.gif "=60%")
+
 ### Query history [esql-kibana-query-history]
 
 You can reuse your recent {{esql}} queries in the query bar. In the query bar, select **Show recent queries**.
@@ -205,11 +217,6 @@ You can reuse your recent {{esql}} queries in the query bar. In the query bar, s
 You can then: 
 - scroll through your most recent queries
 - {applies_to}`stack: ga 9.2` search for specific queries of your history
-
-:::{image} /explore-analyze/images/esql-history.gif
-:alt: esql discover query history
-:width: 75%
-:::
 
 :::{note}
 The maximum number of queries in the history depends on the version you're using:
@@ -226,10 +233,6 @@ In the query bar, select **Show recent queries**.
 From the **Recent** tab, you can star any queries you want.
 
 In the **Starred** tab, find all the queries you have previously starred.
-
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-discover-query-starred.png
-:alt: esql discover query starred
-:::
 
 
 ## Related pages
