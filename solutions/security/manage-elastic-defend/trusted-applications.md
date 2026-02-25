@@ -75,6 +75,10 @@ To add a trusted application:
             To find the signer’s name for an application, go to **Discover** and query the process name of the application’s executable (for example, `process.name : "mctray.exe"` for a McAfee security binary). Then, search the results for the `process.code_signature.subject_name` field, which contains the signer’s name (for example, `McAfee, Inc.`).
             ::::
 
+            ::::{note}
+            Entries relying solely on a process hash can be brittle as application updates may change the hash and render the entry ineffective. A more robust approach involves using a combination of `Path` and `Signature`.
+            ::::
+
     3. `Operator`: Select an operator to define the condition:
 
         * `is`: Must be *exactly* equal to `Value`; wildcards are not supported. This operator is required for the `Hash` and `Signature` field types.
