@@ -196,10 +196,11 @@ Because the request explicitly targets `project2` for the `metrics` index using 
 
 Refer to [the examples section](#cps-examples) for more.
 
-<!--
-### System and hidden indices
-TODO
--->
+### Dot-prefixed and system indices
+
+Indices with names that start with a dot (`.`) but are not system indices behave the same as other non-system indices in {{cps-init}}. They are resolved across the origin project and all linked projects according to the unqualified and qualified expression rules.
+
+System indices are not accessible through {{cps}} or local search.
 
 ## Tags
 
