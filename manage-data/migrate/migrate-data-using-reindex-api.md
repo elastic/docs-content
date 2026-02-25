@@ -2,9 +2,7 @@
 navigation_title: Migrate data using the reindex API
 applies_to:
   serverless: preview 9.3
-  deployment:
-    ess: ga
-    self: unavailable
+  stack: all
 products:
   - id: elasticsearch
   - id: cloud-hosted
