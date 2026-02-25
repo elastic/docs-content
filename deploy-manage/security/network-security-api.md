@@ -42,7 +42,7 @@ Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{eclo
 :::
 
 :::{note}
-Serverless projects require the Serverless Plus add-on to apply network security policies. During the promotional period, applying a network security policy to a project opts that project in to Serverless Plus.
+Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply network security policies. During the promotional period, applying a network security policy to a project opts that project in to Serverless Plus.
 :::
 
 ## API reference
