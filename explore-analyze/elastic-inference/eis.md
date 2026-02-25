@@ -102,7 +102,9 @@ To track your token consumption:
 1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
 
-## Usecases
+## Use cases
+
+The following sections describe how to get started with specific models available through Elastic {{infer-cap}} Service, including creating {{infer}} endpoints and using them for search and ingest.
 
 ### `jina-embeddings-v5-text-small` on EIS [jina-embeddings-v5-on-eis]
 
