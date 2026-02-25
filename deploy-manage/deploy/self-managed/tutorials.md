@@ -8,9 +8,18 @@ products:
   - id: elasticsearch
   - id: kibana
 ---
-# Tutorials for installing and securing a self-managed cluster
+# Tutorials
 
-Try out these tutorials for a full walk-through of installing and securing the {{stack}} in a self-managed environment:
+This section provides step-by-step instructions to deploy and protect a self-managed {{stack}}. You will learn how to move from an initial installation to a production-ready, secure configuration.
 
-- [Tutorial 1: Installing a self-managed {{stack}}](tutorial-self-managed-install.md).
-- [Tutorial 2: Securing a self-managed {{stack}}](tutorial-self-managed-secure.md).
+ - [Install a self-managed {{stack}}](tutorial-self-managed-install.md)
+
+    - **Objective:** Set up a functional environment for testing or development.
+    - **What you will do:** Install the components of the {{stack}}, including {{es}}, {{kib}}, {{fleet-server}}, and {{agent}} to collect system data from a host.
+    - **Outcome:** A running multi-node {{es}} instance with ingested system data viewable in {{kib}}.
+
+ - [Secure a self-managed {{stack}}](tutorial-self-managed-secure.md)
+
+    - **Objective:** Apply security protocols to an existing installation.
+    - **What you will do:** Generate SSL/TLS certificates and enable node-to-node encryption between {{es}} components.
+    - **Outcome:** A hardened deployment with encrypted traffic and password authentication enabled.

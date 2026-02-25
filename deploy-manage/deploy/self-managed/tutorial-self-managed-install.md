@@ -1,5 +1,5 @@
 ---
-navigation_title: Installing a self-managed {{stack}}
+navigation_title: Install a self-managed {{stack}}
 applies_to:
   deployment:
     self:
@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
   - id: kibana
 ---
-# Tutorial 1: Installing a self-managed {{stack}} [installing-stack-demo-self]
+# Tutorial 1: Install a self-managed {{stack}} [installing-stack-demo-self]
 
 This tutorial demonstrates how to install and configure the {{stack}} in a self-managed environment. Following these steps, you'll set up a three node {{es}} cluster, with {{kib}}, {{fleet-server}}, and {{agent}}, each on separate hosts. The {{agent}} will be configured with the System integration, enabling it to gather local system logs and metrics and deliver them into the {{es}} cluster. Finally, you'll learn how to view the system data in {{kib}}.
 
@@ -82,23 +82,23 @@ To begin, use RPM to install {{es}} on the first host. This initial {{es}} insta
 
 4. Download the {{es}} RPM and checksum file from the {{artifact-registry}}. You can find details about these steps in the section [Download and install the RPM manually](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md).
 
-   ```shell
-   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version}}-x86_64.rpm
-   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version}}-x86_64.rpm.sha512
+   ```shell subs=true
+   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm
+   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm.sha512
    ```
 
 5. Confirm the validity of the downloaded package by checking the SHA of the downloaded RPM against the published checksum:
 
-   ```shell
-   shasum -a 512 -c elasticsearch-{{version}}-x86_64.rpm.sha512
+   ```shell subs=true
+   shasum -a 512 -c elasticsearch-{{version.stack}}-x86_64.rpm.sha512
    ```
 
-   The command should return: `elasticsearch-{{version}}-x86_64.rpm: OK`.
+   The command should return: `elasticsearch-{{version.stack}}-x86_64.rpm: OK`.
 
 6. Run the {{es}} install command:
 
-   ```shell
-   sudo rpm --install elasticsearch-{{version}}-x86_64.rpm
+   ```shell subs=true
+   sudo rpm --install elasticsearch-{{version.stack}}-x86_64.rpm
    ```
 
    The {{es}} install process enables certain security features by default, including the following:
@@ -225,21 +225,21 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
 
 4. Download the {{es}} RPM and checksum file:
 
-   ```shell
-   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version}}-x86_64.rpm
-   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version}}-x86_64.rpm.sha512
+   ```shell subs=true
+   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm
+   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm.sha512
    ```
 
 5. Check the SHA of the downloaded RPM:
 
-   ```shell
-   shasum -a 512 -c elasticsearch-{{version}}-x86_64.rpm.sha512
+   ```shell subs=true
+   shasum -a 512 -c elasticsearch-{{version.stack}}-x86_64.rpm.sha512
    ```
 
 6. Run the {{es}} install command:
 
-   ```shell
-   sudo rpm --install elasticsearch-{{version}}-x86_64.rpm
+   ```shell subs=true
+   sudo rpm --install elasticsearch-{{version.stack}}-x86_64.rpm
    ```
 
    Unlike the setup for the first {{es}} node, in this case you don't need to copy the output of the install command, since these settings will be updated in a later step.
@@ -258,7 +258,7 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
 8. To enable this second {{es}} node to connect to the first, you need to configure an enrollment token.
 
    :::{important}
-   Be sure to run all of these configuration steps before starting the {{es}} service. You can find additional details about these steps in [Reconfigure a node to join an existing cluster](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster).
+   Be sure to run these configuration steps before starting the {{es}} service. You can find additional details about these steps in [Reconfigure a node to join an existing cluster](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster).
    :::
 
    Return to your terminal shell on the first {{es}} node and generate a node enrollment token:
@@ -355,8 +355,8 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
       "cluster_name" : "elasticsearch",
       "cluster_uuid" : "AT69_C_DTp-1qgIJlatQqA",
       "version" : {
-        "number" : "{{version_qualified}}",
-        "build_type" : "{{build_type}}",
+        "number" : "{version_qualified}",
+        "build_type" : "{build_type}",
         "build_hash" : "f27399d",
         "build_flavor" : "default",
         "build_date" : "2016-03-30T09:51:41.449Z",
@@ -391,23 +391,23 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
 
 3. Download the {{kib}} RPM and checksum file from the Elastic website.
 
-   ```shell
-   wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version}}-x86_64.rpm
-   wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version}}-x86_64.rpm.sha512
+   ```shell subs=true
+   wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm
+   wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm.sha512
    ```
 
 4. Confirm the validity of the downloaded package by checking the SHA of the downloaded RPM against the published checksum:
 
-   ```shell
-   shasum -a 512 -c kibana-{{version}}-x86_64.rpm.sha512
+   ```shell subs=true
+   shasum -a 512 -c kibana-{{version.stack}}-x86_64.rpm.sha512
    ```
 
-   The command should return: `kibana-{{version}}-x86_64.rpm: OK`.
+   The command should return: `kibana-{{version.stack}}-x86_64.rpm: OK`.
 
 5. Run the {{kib}} install command:
 
-   ```shell
-   sudo rpm --install kibana-{{version}}-x86_64.rpm
+   ```shell subs=true
+   sudo rpm --install kibana-{{version.stack}}-x86_64.rpm
    ```
 
 6. As with each additional {{es}} node that you added, to enable this {{kib}} instance to connect to the first {{es}} node, you need to configure an enrollment token. Return to your terminal shell into the first {{es}} node.

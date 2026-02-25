@@ -1,5 +1,5 @@
 ---
-navigation_title: Securing a self-managed {{stack}}
+navigation_title: Secure a self-managed {{stack}}
 applies_to:
   deployment:
     self:
@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
   - id: kibana
 ---
-# Tutorial 2: Securing a self-managed {{stack}} [install-stack-demo-secure]
+# Tutorial 2: Secure a self-managed {{stack}} [install-stack-demo-secure]
 
 This tutorial is a follow-on to [Tutorial 1: Installing a self-managed {{stack}}](tutorial-self-managed-install.md). The first tutorial describes how to configure a multi-node {{es}} cluster and then set up {{kib}}, followed by {{fleet-server}} and {{agent}}. In a production environment, it's recommended after completing the {{kib}} setup to proceed directly to this tutorial to configure your SSL certificates. These steps guide you through that process, and then describe how to configure {{fleet-server}} and {{agent}} with the certificates in place.
 
