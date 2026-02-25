@@ -42,9 +42,9 @@ To get started, you need the following:
 
 The examples in this guide use RPM Package Manager (RPM) packages to install the {{stack}} components on hosts running Red Hat Enterprise Linux 8. The steps for other install methods and operating systems are similar, and can be found in the documentation linked from each section. The packages to install are:
 
-* [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm) - TESTING
-* https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm
-* https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz
+* [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm)
+* [https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm)
+* [https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz)
 
 :::{note}
 For {{agent}} and {{fleet-server}} (both of which use the elastic-agent-{{version.stack}}-linux-x86_64.tar.gz package) we recommend using TAR/ZIP packages over RPM/DEB system packages, since only the former support upgrading using {{fleet}}.
