@@ -27,6 +27,7 @@ For traffic to be encrypted between {{es}} cluster nodes and between {{kib}} and
 * [Step 6: Install {{fleet}} with SSL certificates configured](#install-stack-demo-secure-fleet)
 * [Step 7: Install {{agent}}](#install-stack-demo-secure-agent)
 * [Step 8: View your system data](#install-stack-demo-secure-view-data)
+* [Next steps](#install-stack-demo-secure-next-steps)
 
 It should take between one and two hours to complete these steps.
 
@@ -755,7 +756,9 @@ Now that all of the components have been installed, it's time to view your syste
 
 Congratulations! You've successfully configured security for {{es}}, {{kib}}, {{fleet}}, and {{agent}} using your own trusted CA-signed certificates.
 
-## What's next?
+## Next steps [install-stack-demo-secure-next-steps]
+
+Now that you’ve successfully installed and secured an on-premises {{stack}}, learn how to bring in data and start exploring:
 
 * Do you have data ready to ingest? Learn how to [bring your data to Elastic](/manage-data/ingest.md).
 * Use [Elastic {{observability}}](https://www.elastic.co/observability) to unify your logs, infrastructure metrics, uptime, and application performance data.
