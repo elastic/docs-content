@@ -18,6 +18,9 @@ We will review each cluster and provide recommendations to make sure that you ar
 By default, the system deployments have a dedicated `system_owned` flag set to `true` to avoid mistakenly changing the configuration of those clusters. Most configuration changes suggested in this section do not require this flag to be set to `false`, but there are some cases where changing the flag might be required. If you do change this flag, always make sure to set it back to `true` once you have completed the changes. The flag can be set by navigating to the **Data** section in the **Advanced cluster configuration** page.
 ::::
 
+:::{warning}
+Independent upgrades should only be performed when Elastic Support explicitly instructs you to do so.
+:::
 
 
 ## Overview of system deployments [ece_overview_of_system_deployments] 
@@ -79,3 +82,8 @@ You can’t use ECE’s single sign-on (SSO) to access system deployments.
 ::::{note} 
 Enabling integration with external authentication provider requires that you set the `system_owned` flag to `false` in order to change the elasticsearch.yaml configuration. Remember to set the flag back to `true` after you are done.
 ::::
+
+## System cluster upgrade policy
+
+The system cluster stack versions are validated as part of each ECE release and are not intended to be upgraded separately from the platform. Platform services depend on the versions that ship with the installed ECE release. Upgrading them out of band can create incompatibilities and might lead to reduced availability or platform failures. Instead, to change the system cluster versions, upgrade to a supported ECE release. You can review which stack versions align with each release in the [default system deployment versions](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md) page.
+
