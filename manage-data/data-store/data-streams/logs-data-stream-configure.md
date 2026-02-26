@@ -147,4 +147,4 @@ By default, logs data streams use the following settings:
 - [](logs-data-stream-integrations.md)
 - [](/manage-data/data-store/templates.md)
 - [](/solutions/observability/logs/logs-index-template-defaults.md)
-- [](/solutions/security/detect-and-alert/advanced-data-source-configuration.md)
+- [Advanced data source configuration for {{elastic-sec}} rules](/solutions/security/detect-and-alert/advanced-data-source-configuration.md)

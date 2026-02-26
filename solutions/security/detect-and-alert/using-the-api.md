@@ -18,28 +18,23 @@ You can create and manage detection rules programmatically instead of using the 
 The detection APIs are part of the {{kib}} API. Use the appropriate reference for your deployment type:
 
 **{{stack}}**
-:   [Security detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api): Create, read, update, delete, and bulk-manage detection rules. Also covers alert management (status, tags, assignees) and prebuilt rule installation.
+:   [Security detections API]({{kib-apis}}/group/endpoint-security-detections-api): Create, read, update, delete, and bulk-manage detection rules. Also covers alert management (status, tags, assignees) and prebuilt rule installation. For a complete list of {{elastic-sec}} APIs, refer to [{{elastic-sec}} APIs](/solutions/security/apis.md).
 
 **{{serverless-full}}**
-:   [Security detections API (Serverless)](https://www.elastic.co/docs/api/doc/kibana-serverless/group/endpoint-security-detections-api): The same detection operations, scoped to {{serverless-short}} projects.
-
-For rule exceptions and value lists, use these additional APIs:
-
-- [Exceptions API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-exceptions-api): Create and manage rule exceptions and shared exception lists.
-- [Endpoint exceptions API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-endpoint-exceptions-api): Manage endpoint-specific exceptions.
-- [Lists API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-lists-api): Create source event value lists for use with rule exceptions.
-
-For a complete list of {{elastic-sec}} APIs, refer to [{{elastic-sec}} APIs](/solutions/security/apis.md).
+:   [Security detections API (Serverless)]({{kib-serverless-apis}}/group/endpoint-security-detections-api): The same detection operations, scoped to {{serverless-short}} projects.
 
 ## Common operations
 
-| Task | Endpoint |
-|---|---|
-| Create a rule | [`POST /api/detection_engine/rules`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-createrule) |
-| List all rules | [`GET /api/detection_engine/rules/_find`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-findrules) |
-| Update a rule | [`PUT /api/detection_engine/rules`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-updaterule) |
-| Bulk actions (enable, export, duplicate, delete) | [`POST /api/detection_engine/rules/_bulk_action`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-performrulesbulkaction) |
-| Import rules | [`POST /api/detection_engine/rules/_import`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-importrules) |
-| Export rules | [`POST /api/detection_engine/rules/_export`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-exportrules) |
-| Install prebuilt rules | [`PUT /api/detection_engine/rules/prepackaged`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-installprebuiltrulesandtimelines) |
-| Set alert status | [`POST /api/detection_engine/signals/status`](https://www.elastic.co/docs/api/doc/kibana/operation/operation-setalertsstatus) |
+| Task | {{stack}} | {{serverless-full}} |
+|---|---|---|
+| Create a rule | [Stack]({{kib-apis}}/operation/operation-createrule) | [Serverless]({{kib-serverless-apis}}/operation/operation-createrule) |
+| List all rules | [Stack]({{kib-apis}}/operation/operation-findrules) | [Serverless]({{kib-serverless-apis}}/operation/operation-findrules) |
+| Update a rule | [Stack]({{kib-apis}}/operation/operation-updaterule) | [Serverless]({{kib-serverless-apis}}/operation/operation-updaterule) |
+| Bulk actions | [Stack]({{kib-apis}}/operation/operation-performrulesbulkaction) | [Serverless]({{kib-serverless-apis}}/operation/operation-performrulesbulkaction) |
+| Import rules | [Stack]({{kib-apis}}/operation/operation-importrules) | [Serverless]({{kib-serverless-apis}}/operation/operation-importrules) |
+| Export rules | [Stack]({{kib-apis}}/operation/operation-exportrules) | [Serverless]({{kib-serverless-apis}}/operation/operation-exportrules) |
+| Install prebuilt rules | [Stack]({{kib-apis}}/operation/operation-installprebuiltrulesandtimelines) | [Serverless]({{kib-serverless-apis}}/operation/operation-installprebuiltrulesandtimelines) |
+| Set alert status | [Stack]({{kib-apis}}/operation/operation-setalertsstatus) | [Serverless]({{kib-serverless-apis}}/operation/operation-setalertsstatus) |
+| Manage rule exceptions | [Stack]({{kib-apis}}/group/endpoint-security-exceptions-api) | [Serverless]({{kib-serverless-apis}}/group/endpoint-security-exceptions-api) |
+| Manage endpoint exceptions | [Stack]({{kib-apis}}/group/endpoint-security-endpoint-exceptions-api) | [Serverless]({{kib-serverless-apis}}/group/endpoint-security-endpoint-exceptions-api) |
+| Manage value lists | [Stack]({{kib-apis}}/group/endpoint-security-lists-api) | [Serverless]({{kib-serverless-apis}}/group/endpoint-security-lists-api) |

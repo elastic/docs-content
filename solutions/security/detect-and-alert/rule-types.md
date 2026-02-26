@@ -13,8 +13,6 @@ description: Learn when to use each detection rule type and access detailed guid
 
 {{elastic-sec}} provides several rule types for building detections. Each rule type page covers when to use it, how to write effective queries, real-world examples, and field configuration specific to that type.
 
-Not sure which rule type fits your use case? Refer to [Select the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) for a decision guide comparing all rule types.
-
 | If you want to detect... | Rule type |
 |---|---|
 | A known field value, pattern, or boolean condition | [Custom query](/solutions/security/detect-and-alert/custom-query.md) |
@@ -24,3 +22,5 @@ Not sure which rule type fits your use case? Refer to [Select the right rule typ
 | A field value appearing for the first time | [New terms](/solutions/security/detect-and-alert/new-terms.md) |
 | Aggregated, transformed, or computed conditions | [{{esql}}](/solutions/security/detect-and-alert/esql.md) |
 | Behavioral anomalies without a fixed pattern | [{{ml-cap}}](/solutions/security/detect-and-alert/machine-learning.md) |
+
+Still unsure which rule type fits your use case? Refer to [Select the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) for a decision guide comparing all rule types.

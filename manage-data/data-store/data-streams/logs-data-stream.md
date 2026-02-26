@@ -100,4 +100,4 @@ To enable logsdb mode for integration data streams, create or update a `@custom`
 - [Review mappings and sorting](/manage-data/data-store/data-streams/logs-data-stream-configure.md#logsdb-host-name)
 - [](/manage-data/data-store/data-streams/use-data-stream.md)
 - [](/manage-data/data-store/data-streams/logs-data-stream-integrations.md)
-- [](/solutions/security/detect-and-alert/advanced-data-source-configuration.md)
+- [Advanced data source configuration for {{elastic-sec}} rules](/solutions/security/detect-and-alert/advanced-data-source-configuration.md)

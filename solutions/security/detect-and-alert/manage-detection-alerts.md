@@ -46,7 +46,7 @@ The Alerts page offers various ways for you to organize and triage detection ale
     :screenshot:
     :::
 
-* Filter alert results to include building block alerts or to only show alerts from indicator match rules by selecting the **Additional filters** drop-down. By default, [building block alerts](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) are excluded from the Overview and Alerts pages. You can choose to include building block alerts on the Alerts page, which expands the number of alerts.
+* Filter alert results to include building block alerts or to only show alerts from indicator match rules by selecting the **Additional filters** drop-down. By default, [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) are excluded from the Overview and Alerts pages. You can choose to include building block alerts on the Alerts page, which expands the number of alerts.
 
     ::::{note}
     When updating alert results to include building block alerts, the Security app searches the `.alerts-security.alerts-<Kibana space>` index for the `kibana.alert.building_block_type` field. When looking for alerts created from indicator match rules, the app searches the same index for `kibana.alert.rule.type:'threat_match'`.

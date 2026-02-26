@@ -74,12 +74,6 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 3. The **Edit rule settings** view opens, where you can modify the [rule's settings](/solutions/security/detect-and-alert/using-the-rule-builder.md). To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon {icon}`bell`.
 4. Click **Save changes**.
 
-   ::::{admonition} Prebuilt rules
-   :applies_to: { stack: ga 9.1+ }
-   After saving changes to a prebuilt rule, modified fields are marked with the **Modified** badge. From the rule's details page, click the badge to view a side-by-side comparison of the original Elastic version and your modified version. Deleted characters are highlighted in red; added characters are highlighted in green. You can also access this comparison by clicking the **Modified Elastic rule** badge under the rule's name.
-   ::::
-
-
 ### Bulk edit rule settings [bulk-edit-rules]
 
 Use bulk editing to update settings on multiple rules simultaneously. Rules that can't be modified are automatically skipped—for example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
