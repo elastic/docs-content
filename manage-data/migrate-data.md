@@ -121,8 +121,6 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 | {{serverless-short}} | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | Self-managed | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 
-* {applies_to}`serverless: preview 9.3+`
-
 **Migrate data to Elastic self-managed**:
 
 | From | To | Supported Methods |
