@@ -16,11 +16,11 @@ There are several subtypes of troubleshooting content:
 
 * **A dedicated troubleshooting page** (preferred): Use for specific, well-defined problems. The problem appears in the page title. Includes required **Symptoms** and **Resolution** sections. Optimized for search and direct linking.
 
-* **Generic "Troubleshooting" or "Common problems" index page**: Use to organize multiple related troubleshooting topics. The title is generic (for example, "Common problems with {{product.apm}}"). Contains anchor links to sections on the same page or links to dedicated troubleshooting pages. Consider breaking out individual problems into dedicated pages as content grows.
+* **A generic "Troubleshooting" or "Common problems" wayfinding page**: Use to organize multiple related troubleshooting topics. The title is generic (for example, "Common problems with {{product.apm}}"). Contains anchor links to sections on the same page or links to dedicated troubleshooting pages. Consider breaking out individual problems into dedicated pages as content grows.
 
-* **Troubleshooting section within a general documentation page**: Use sparingly for brief, contextual troubleshooting tied to a specific feature or quickstart. If content grows beyond a few bullet points, extract it into a dedicated troubleshooting page and link to it.
+* **A troubleshooting section within a general documentation page**: Use sparingly for brief, contextual troubleshooting tied to a specific feature or quickstart. If content grows beyond a few bullet points, extract it into a dedicated troubleshooting page and link to it.
 
-The rest of this guide focuses on dedicated troubleshooting pages. Generic index pages and troubleshooting sections within general docs have different structure requirements and may not include all elements described here.
+The rest of this guide focuses on dedicated troubleshooting pages. Generic wayfinding pages and troubleshooting sections within general docs have different structure requirements and might not include all elements described here.
 
 ## What is a troubleshooting page
 
@@ -98,7 +98,7 @@ Do not use troubleshooting for teaching users how to use a feature for the first
 
 Additional common anti-patterns to avoid:
 
-- Page titles "Troubleshooting X" with no specific problem (acceptable only for index/landing pages that organize multiple troubleshooting topics)
+- Page titles "Troubleshooting X" with no specific problem (acceptable only for wayfinding pages that organize multiple troubleshooting topics)
 - Long explanations before the resolution
 - Mixing multiple unrelated issues
 
@@ -112,4 +112,4 @@ Here are some examples of well-structured troubleshooting pages in the Elastic d
 
 - [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md): Addresses a specific data visibility issue with clear symptoms and resolution steps.
 - [EDOT Collector doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/edot-collector/metadata.md): Focuses on a specific configuration problem with symptoms and actionable resolution steps.
-- [Troubleshoot common errors in {{es}}](/troubleshoot/elasticsearch/errors.md): An example of an error reference index page that organizes multiple error-based troubleshooting topics.
+- [Troubleshoot common errors in {{es}}](/troubleshoot/elasticsearch/errors.md): An example of an error reference wayfinding page that organizes multiple error-based troubleshooting topics.

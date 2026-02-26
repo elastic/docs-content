@@ -40,7 +40,7 @@ For more on assigning Kibana privileges, refer to the [Kibana privileges documen
 To visualize your metrics data as charts, its data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
 :::
 
-The dedicated metrics view is only available in ES|QL mode. From the **Discover** main page, select **Try ES|QL** to open ES|QL mode.
+The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
 Use the `TS` command to select the data source. For example, the following query returns all of your metrics data:
 

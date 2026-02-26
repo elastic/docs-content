@@ -1,5 +1,7 @@
 ---
 navigation_title: Clusters
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot {{es}} clusters

@@ -2,11 +2,14 @@
 """
 Google Sheets to CSV Sync Script
 
-Fetches data from a Google Sheet, filters columns based on configuration,
-and generates a CSV file.
+Fetches data from a Google Sheet, filters and sorts rows, selects columns
+based on configuration, and generates one or more CSV files. Supports
+per-output column selection, row filtering by column value, configurable
+sorting, and shared defaults.
 """
 
 import argparse
+import copy
 import csv
 import json
 import os
@@ -64,18 +67,165 @@ def substitute_env_vars(obj: Any) -> Any:
         return obj
 
 
+def normalize_config(config: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Normalize configuration to the multi-output format.
+
+    Supports two config formats:
+    1. Legacy (single output): top-level 'columns' and 'output' keys.
+       Converted internally into a single-entry 'outputs' list.
+    2. Multi-output: top-level 'outputs' key with a list of output entries,
+       each with its own 'columns', 'filename', 'filter', 'sort', etc.
+       An optional 'defaults' key provides shared values merged into each
+       output (output-level values take precedence).
+
+    Args:
+        config: Raw parsed configuration dictionary
+
+    Returns:
+        Configuration with a normalized 'outputs' list
+
+    Raises:
+        SystemExit: If configuration format is ambiguous or invalid
+    """
+    has_legacy = 'output' in config and 'columns' in config
+    has_new = 'outputs' in config
+
+    if has_legacy and has_new:
+        print("Error: Config cannot have both 'output'/'columns' (legacy) and "
+              "'outputs' (new format). Use one or the other.", file=sys.stderr)
+        sys.exit(EXIT_CONFIG_ERROR)
+
+    if not has_legacy and not has_new:
+        print("Error: Config must have either 'output' + 'columns' (legacy) or "
+              "'outputs' (new format)", file=sys.stderr)
+        sys.exit(EXIT_CONFIG_ERROR)
+
+    if has_legacy:
+        # Convert legacy format to normalized outputs list
+        legacy_output = config['output']
+        legacy_columns = config['columns']
+        normalized_output = {
+            'filename': legacy_output.get('filename'),
+            'directory': legacy_output.get('directory', '.'),
+            'delimiter': legacy_output.get('delimiter', ','),
+            'columns': legacy_columns,
+        }
+        config['outputs'] = [normalized_output]
+        print("  Using legacy single-output config format")
+    else:
+        # New multi-output format: merge defaults into each output
+        defaults = config.get('defaults', {})
+        for output in config['outputs']:
+            for key, value in defaults.items():
+                if key not in output:
+                    # Deep copy lists/dicts to avoid shared references
+                    if isinstance(value, (list, dict)):
+                        output[key] = copy.deepcopy(value)
+                    else:
+                        output[key] = value
+        output_count = len(config['outputs'])
+        print(f"  Using multi-output config format "
+              f"({output_count} output{'s' if output_count != 1 else ''})")
+
+    return config
+
+
+def validate_outputs(config: Dict[str, Any]) -> None:
+    """
+    Validate all output entries in the normalized config.
+
+    Checks that each output has required fields (filename, columns) and
+    validates optional filter and sort configurations.
+
+    Args:
+        config: Normalized configuration with 'outputs' list
+
+    Raises:
+        SystemExit: If any output entry is invalid
+    """
+    outputs = config.get('outputs', [])
+
+    if not outputs:
+        print("Error: 'outputs' must be a non-empty list", file=sys.stderr)
+        sys.exit(EXIT_CONFIG_ERROR)
+
+    for i, output in enumerate(outputs):
+        label = f"outputs[{i}]"
+
+        # filename is required
+        if 'filename' not in output:
+            print(f"Error: Missing 'filename' in {label}", file=sys.stderr)
+            sys.exit(EXIT_CONFIG_ERROR)
+
+        # columns is required
+        if 'columns' not in output:
+            print(f"Error: Missing 'columns' in {label} "
+                  f"(and no default columns defined)", file=sys.stderr)
+            sys.exit(EXIT_CONFIG_ERROR)
+
+        if not isinstance(output['columns'], list) or len(output['columns']) == 0:
+            print(f"Error: 'columns' in {label} must be a non-empty list",
+                  file=sys.stderr)
+            sys.exit(EXIT_CONFIG_ERROR)
+
+        for j, col in enumerate(output['columns']):
+            if not isinstance(col, dict):
+                print(f"Error: Column {j} in {label} must be a dictionary",
+                      file=sys.stderr)
+                sys.exit(EXIT_CONFIG_ERROR)
+            if 'source' not in col:
+                print(f"Error: Column {j} in {label} missing 'source' field",
+                      file=sys.stderr)
+                sys.exit(EXIT_CONFIG_ERROR)
+
+        # Validate filter (optional)
+        if 'filter' in output:
+            filt = output['filter']
+            if 'column' not in filt:
+                print(f"Error: Missing 'column' in {label}.filter",
+                      file=sys.stderr)
+                sys.exit(EXIT_CONFIG_ERROR)
+            if 'values' not in filt:
+                print(f"Error: Missing 'values' in {label}.filter",
+                      file=sys.stderr)
+                sys.exit(EXIT_CONFIG_ERROR)
+            if not isinstance(filt['values'], list) or len(filt['values']) == 0:
+                print(f"Error: 'values' in {label}.filter must be a non-empty "
+                      f"list", file=sys.stderr)
+                sys.exit(EXIT_CONFIG_ERROR)
+
+        # Validate sort (optional)
+        if 'sort' in output:
+            sort_conf = output['sort']
+            if 'by' not in sort_conf:
+                print(f"Error: Missing 'by' in {label}.sort", file=sys.stderr)
+                sys.exit(EXIT_CONFIG_ERROR)
+            direction = sort_conf.get('direction', 'ascending')
+            if direction not in ('ascending', 'descending'):
+                print(f"Error: Invalid sort direction '{direction}' in "
+                      f"{label}.sort (must be 'ascending' or 'descending')",
+                      file=sys.stderr)
+                sys.exit(EXIT_CONFIG_ERROR)
+
+
 def load_config(config_path: str) -> Dict[str, Any]:
     """
     Load and parse YAML configuration file.
 
-    Supports environment variable substitution for sensitive values.
+    Supports two formats:
+    1. Legacy: top-level 'source', 'columns', and 'output' keys (single CSV).
+    2. Multi-output: top-level 'source' and 'outputs' keys (one or more CSVs),
+       with optional 'defaults' for shared settings.
+
+    Environment variable substitution is supported for sensitive values.
     Use ${VAR_NAME} in config.yml to reference environment variables.
 
     Args:
         config_path: Path to YAML config file
 
     Returns:
-        Dictionary containing configuration
+        Normalized configuration dictionary with 'outputs' list
 
     Raises:
         SystemExit: If config file is invalid or missing required fields
@@ -84,21 +234,20 @@ def load_config(config_path: str) -> Dict[str, Any]:
         with open(config_path, 'r', encoding='utf-8') as f:
             config = yaml.safe_load(f)
 
-        # Validate required fields
+        # Validate non-empty
         if not config:
             print(f"Error: Config file is empty: {config_path}", file=sys.stderr)
             sys.exit(EXIT_CONFIG_ERROR)
 
-        required_fields = ['source', 'columns', 'output']
-        for field in required_fields:
-            if field not in config:
-                print(f"Error: Missing required field '{field}' in config", file=sys.stderr)
-                sys.exit(EXIT_CONFIG_ERROR)
-
         # Substitute environment variables in config
         config = substitute_env_vars(config)
 
-        # Validate source fields
+        # Validate source (required in all formats)
+        if 'source' not in config:
+            print("Error: Missing required field 'source' in config",
+                  file=sys.stderr)
+            sys.exit(EXIT_CONFIG_ERROR)
+
         if 'sheet_url' not in config['source']:
             print("Error: Missing 'sheet_url' in source config", file=sys.stderr)
             sys.exit(EXIT_CONFIG_ERROR)
@@ -107,23 +256,9 @@ def load_config(config_path: str) -> Dict[str, Any]:
             print("Error: Missing 'tab_name' in source config", file=sys.stderr)
             sys.exit(EXIT_CONFIG_ERROR)
 
-        # Validate columns
-        if not isinstance(config['columns'], list) or len(config['columns']) == 0:
-            print("Error: 'columns' must be a non-empty list", file=sys.stderr)
-            sys.exit(EXIT_CONFIG_ERROR)
-
-        for i, col in enumerate(config['columns']):
-            if not isinstance(col, dict):
-                print(f"Error: Column {i} must be a dictionary", file=sys.stderr)
-                sys.exit(EXIT_CONFIG_ERROR)
-            if 'source' not in col:
-                print(f"Error: Column {i} missing 'source' field", file=sys.stderr)
-                sys.exit(EXIT_CONFIG_ERROR)
-
-        # Validate output
-        if 'filename' not in config['output']:
-            print("Error: Missing 'filename' in output config", file=sys.stderr)
-            sys.exit(EXIT_CONFIG_ERROR)
+        # Normalize to multi-output format and validate
+        config = normalize_config(config)
+        validate_outputs(config)
 
         print(f"✓ Loaded config from {config_path}")
         return config
@@ -484,6 +619,121 @@ def fetch_sheet_data(
         sys.exit(EXIT_SHEET_ERROR)
 
 
+def normalize_cell_value(value: Any) -> str:
+    """
+    Normalize a cell value for CSV output.
+    
+    - Converts to string
+    - Replaces newlines with <br> for proper HTML rendering in tables
+    
+    Args:
+        value: The cell value (can be any type)
+        
+    Returns:
+        Normalized string value
+    """
+    if value is None:
+        return ""
+    
+    str_value = str(value)
+    
+    # Replace newlines with <br> for HTML rendering
+    # This handles cells with multiple values separated by line breaks
+    str_value = str_value.replace('\r\n', '<br>').replace('\n', '<br>').replace('\r', '<br>')
+    
+    return str_value
+
+
+def filter_rows(
+    data: List[Dict[str, Any]],
+    filter_config: Optional[Dict[str, Any]]
+) -> List[Dict[str, Any]]:
+    """
+    Filter data rows by exact match on a column's values.
+
+    Used to split output by column value (e.g. keep only rows where
+    Type is "LLM Chat") or to group multiple values into one output
+    (e.g. keep rows where Type is "Embedding - Sparse" or "Embedding - Dense").
+
+    Args:
+        data: List of row dictionaries from Google Sheets
+        filter_config: Filter configuration with 'column' and 'values' keys,
+                       or None to skip filtering (return all rows)
+
+    Returns:
+        Filtered list of row dictionaries
+
+    Raises:
+        SystemExit: If the filter column doesn't exist in the data
+    """
+    if not filter_config or not data:
+        return data
+
+    column = filter_config['column']
+    values = set(str(v).strip() for v in filter_config['values'])
+
+    # Validate that the filter column exists
+    available_columns = set(data[0].keys())
+    if column not in available_columns:
+        print(f"Error: Filter column '{column}' not found in sheet",
+              file=sys.stderr)
+        print(f"Available columns: {', '.join(sorted(available_columns))}",
+              file=sys.stderr)
+        sys.exit(EXIT_DATA_ERROR)
+
+    filtered = [row for row in data if str(row.get(column, '')).strip() in values]
+    print(f"✓ Filtered rows by '{column}': "
+          f"{len(filtered)} of {len(data)} rows match")
+    return filtered
+
+
+def sort_rows(
+    data: List[Dict[str, Any]],
+    sort_config: Optional[Dict[str, str]]
+) -> List[Dict[str, Any]]:
+    """
+    Sort data rows by a column value.
+
+    Uses Python's stable sort, so rows with equal sort keys preserve
+    their original spreadsheet order.
+
+    Args:
+        data: List of row dictionaries
+        sort_config: Sort configuration with 'by' (column name) and optional
+                     'direction' ('ascending' or 'descending') keys,
+                     or None to preserve original order
+
+    Returns:
+        Sorted list of row dictionaries
+
+    Raises:
+        SystemExit: If the sort column doesn't exist in the data
+    """
+    if not sort_config or not data:
+        return data
+
+    sort_column = sort_config['by']
+    direction = sort_config.get('direction', 'ascending')
+    reverse = direction == 'descending'
+
+    # Validate that the sort column exists
+    available_columns = set(data[0].keys())
+    if sort_column not in available_columns:
+        print(f"Error: Sort column '{sort_column}' not found in sheet",
+              file=sys.stderr)
+        print(f"Available columns: {', '.join(sorted(available_columns))}",
+              file=sys.stderr)
+        sys.exit(EXIT_DATA_ERROR)
+
+    sorted_data = sorted(
+        data,
+        key=lambda row: str(row.get(sort_column, '')).strip().lower(),
+        reverse=reverse
+    )
+    print(f"✓ Sorted rows by '{sort_column}' ({direction})")
+    return sorted_data
+
+
 def filter_columns(
     data: List[Dict[str, Any]],
     column_config: List[Dict[str, str]]
@@ -520,12 +770,12 @@ def filter_columns(
         target = col_conf.get('target', source)  # Use source as target if not specified
         column_mapping[source] = target
 
-    # Filter and rename columns
+    # Filter, rename columns, and normalize cell values
     filtered_data = []
     for row in data:
         filtered_row = {}
         for source, target in column_mapping.items():
-            filtered_row[target] = row[source]
+            filtered_row[target] = normalize_cell_value(row[source])
         filtered_data.append(filtered_row)
 
     print(f"✓ Filtered to {len(column_mapping)} columns")
@@ -587,7 +837,7 @@ def write_csv(
 def main():
     """Main entry point for the script."""
     parser = argparse.ArgumentParser(
-        description='Sync Google Sheets data to CSV file',
+        description='Sync Google Sheets data to one or more CSV files',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -617,34 +867,51 @@ Examples:
 
     args = parser.parse_args()
 
-    # Load configuration
+    # Load configuration (normalized to multi-output format)
     config = load_config(args.config)
 
     # Authenticate
     client = authenticate_google_sheets(args.credentials)
 
-    # Fetch data
+    # Fetch data once from the source spreadsheet
     data = fetch_sheet_data(
         client,
         config['source']['sheet_url'],
         config['source']['tab_name']
     )
 
-    # Filter columns
-    filtered_data = filter_columns(data, config['columns'])
+    # Process each output
+    generated_paths = []
+    for i, output_config in enumerate(config['outputs']):
+        filename = output_config['filename']
+        print(f"\n--- Output {i + 1}: {filename} ---")
 
-    # Prepare output path
-    output_dir = config['output'].get('directory', '.')
-    output_filename = config['output']['filename']
-    output_path = os.path.join(output_dir, output_filename)
+        # 1. Filter rows by column value (if configured)
+        output_data = filter_rows(data, output_config.get('filter'))
 
-    # Get delimiter
-    delimiter = config['output'].get('delimiter', ',')
+        # 2. Sort rows (if configured)
+        output_data = sort_rows(output_data, output_config.get('sort'))
 
-    # Write CSV
-    write_csv(filtered_data, output_path, delimiter)
+        # 3. Filter and rename columns
+        output_data = filter_columns(output_data, output_config['columns'])
 
-    print("✓ CSV file generated successfully")
+        # 4. Write CSV
+        output_dir = output_config.get('directory', '.')
+        output_path = os.path.join(output_dir, filename)
+        delimiter = output_config.get('delimiter', ',')
+        write_csv(output_data, output_path, delimiter)
+
+        generated_paths.append(output_path)
+
+    # Print summary
+    count = len(generated_paths)
+    print(f"\n✓ Generated {count} CSV file{'s' if count != 1 else ''} "
+          f"successfully")
+
+    # Print machine-readable output paths for workflow integration
+    for path in generated_paths:
+        print(f"OUTPUT_CSV_PATH={path}")
+
     sys.exit(EXIT_SUCCESS)
 
 

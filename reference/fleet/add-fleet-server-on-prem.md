@@ -153,6 +153,30 @@ You can update your {{fleet-server}} configuration in {{kib}} at any time by goi
 * Specify proxy URLs to use for {{fleet-server}} or {{agent}} outputs.
 
 
+## {{fleet-server}} setup using a load balancer [fleet-server-setup-using-a-load-balancer]
+
+Follow these steps when deploying {{fleet-server}} behind a load balancer/reverse proxy:
+
+1. Create a certificate that contains DNS entries for the agent-facing load balancer, and the hostnames it routes to. For example, the load balancer `fleet.example.com` will route to hostnames `fleet1.example.com`, and `fleet2.example.com`.
+
+2. Configure the load balancer/reverse proxy.
+    * Ensure the load balancer directs traffic to all {{fleet-server}} instances.
+    * Ensure that timeouts for the load balancer have been raised to support the long-polling connections {{agents}} create when checking in to {{fleet-server}}.
+      By default, the timeout for long-poll in {{fleet-server}} is 5 minutes, while the {{fleet-server}}'s write timeout and the {{agent}}'s request timeout are set to 10 minutes. In this case, the load balancer timeout should be set to 10 minutes.
+    * (Recommended) Configure the load balancer with TLS pass through.
+
+    ::::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting with {{stack}} version 9.4, you can use the {{fleet-server}} `GET /api/status` API endpoint to determine instance health from the load balancer.
+    ::::
+
+3. In **{{fleet}} > Settings**, add the load balancer (for example, `https://fleet.example.com:8220`) as a {{fleet-server}} host.
+
+4. Install {{fleet-server}} on each backing host using the in-product instructions which should specify the load balancer as the URL.
+
+5. Enroll other {{agent}} instances using the load balancer URL.
+
+
 ## Troubleshooting [add-fleet-server-on-prem-troubleshoot]
 
 If you’re unable to add a {{fleet}}-managed agent, click the **Agents** tab and confirm that the agent running {{fleet-server}} is healthy.

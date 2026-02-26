@@ -1,5 +1,6 @@
 ---
 navigation_title: "Monitor token usage"
+description: "Learn how Agent Builder calculates token usage for input and output. Monitor conversation costs, view raw JSON usage data, and optimize agent calls."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Token usage in Elastic Agent Builder
+# Token usage in {{agent-builder}}
 
 When working with {{agent-builder}}, total token usage typically exceeds the visible conversation text. Because {{agent-builder}} uses an agentic framework, a single user request often triggers multiple model calls to process reasoning steps, run tools, and interpret results.
 
@@ -27,7 +28,7 @@ Each conversation round includes all previous rounds as context. This means toke
 For more information on billing and token costs, refer to [Elastic pricing](https://www.elastic.co/pricing).
 
 
-## How to view token usage
+## View token usage in the UI
 
 At the end of each round, the total token usage is displayed after the agent response. Input tokens are represented by {icon}`sort_up`, and output tokens by {icon}`sort_down`:
 

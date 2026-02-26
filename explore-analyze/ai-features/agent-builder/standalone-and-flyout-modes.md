@@ -1,6 +1,6 @@
 ---
-description: Learn about the standalone and flyout modes for the Elastic Agent Builder chat UI
 navigation_title: "Chat UI modes"
+description: "Learn how to use Agent Builder chat UI modes. Switch between the full-page standalone interface and the persistent flyout for seamless multitasking in Kibana."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Standalone and flyout chat UI modes in {{agent-builder}}
+# Chat UI modes in {{agent-builder}}
 
 The {{agent-builder}} [chat UI](chat.md#agent-chat-gui) is available in two modes: 
 

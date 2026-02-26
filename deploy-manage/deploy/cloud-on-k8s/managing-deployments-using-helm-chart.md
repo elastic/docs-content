@@ -84,6 +84,42 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```
 
+## AutoOps along with {{es}} [k8s-install-autoops-elasticsearch-helm]
+
+```{applies_to}
+  eck: ga 3.3
+```
+
+Use the following code to connect your ECK-managed {{es}} clusters to [AutoOps](../../monitor/autoops.md) using Helm.
+
+```sh subs=true
+# Install an eck-managed {{es}} cluster and connect to AutoOps using custom values.
+helm install eck-stack-with-autoops elastic/eck-stack \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/autoops/basic.yaml -n elastic-stack
+```
+
+The `eck-autoops-agent-policy` chart creates an `AutoOpsAgentPolicy` resource that connects your {{es}} clusters to AutoOps. The ECK operator handles the creation of API keys, agent configuration, and the deployment of {{agent}} required to send metrics to AutoOps.
+
+To connect to AutoOps using the installation wizard, refer to [](../../monitor/autoops/cc-connect-self-managed-to-autoops.md).
+
+## Package Registry along with {{es}} and {{kib}} [k8s-install-package-registry-elasticsearch-kibana-helm]
+
+```{applies_to}
+  eck: ga 3.3
+```
+
+The following section describes how to install a {{package-registry}} resource along with {{es}}, {{kib}} and {{fleet-server}}.
+
+```sh subs=true
+# Install an eck-managed {{es}}, {{kib}} and {{fleet-server}} and connect to {{package-registry}} using custom values.
+helm install eck-stack-with-package-registry elastic/eck-stack \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/package-registry/basic-eck.yaml -n elastic-stack
+```
+
+The `eck-package-registry` chart creates a `PackageRegistry` resource that connects your {{kib}} instance to the {{package-registry}}. {{eck}} automatically handles the creation of the {{package-registry}} and the connection to {{kib}} and {{fleet-server}}.
+
+For more information about configuring the {{package-registry}}, refer to the [](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
+
 ## Enterprise Search server along with {{es}} and {{kib}} [k8s-install-enterprise-search-elasticsearch-kibana-helm]
 
 Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example deployment of {{es}} version 8.x, {{kib}} 8.x, and an 8.x Enterprise Search server using the Helm chart, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s-stack-helm-chart.html).
@@ -314,6 +350,7 @@ helm show values elastic/eck-beats
 helm show values elastic/eck-apm-server
 helm show values elastic/eck-fleet-server
 helm show values elastic/eck-logstash
+helm show values elastic/eck-package-registry
 ```
 
 ## View available chart versions [show-versions]

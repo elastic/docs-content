@@ -3,6 +3,13 @@ applies_to:
   stack: preview 9.3
   serverless: preview
 description: Learn about workflow triggers and how to create and configure them.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Triggers
@@ -101,5 +108,5 @@ steps:
     type: console
     with:
       message: "Workflow started at {{ execution.startedAt }}"
-      details: "Event data: {{ event | json(2) }}"
+      details: "Event data: {{ event | json:2 }}"
 ```

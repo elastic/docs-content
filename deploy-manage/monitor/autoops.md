@@ -3,15 +3,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops.html
 applies_to:
   serverless:
-  deployment:
-    ess: all
-    self:
-    ece:
-    eck:
+  stack: ga
 products:
   - id: cloud-hosted
   - id: cloud-kubernetes
   - id: cloud-enterprise
+  - id: cloud-serverless
 ---
 
 # AutoOps [ec-autoops]
@@ -54,9 +51,11 @@ AutoOps is currently not available for air-gapped environments because it's a cl
 
 ## How AutoOps is licensed
 
-For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.
-:::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-:::
+AutoOps is available for free across all subscription levels in {{ech}} deployments and {{serverless-short}} projects.
+
+New: AutoOps is now also available for free across all [self-managed license types](https://www.elastic.co/subscriptions) in ECE, ECK, and self-managed clusters. 
+
+Using AutoOps does not consume ECUs.
 
 ## How long AutoOps retains data [ec_autoops_retention_period]
 

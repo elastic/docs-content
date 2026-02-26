@@ -3,6 +3,13 @@ applies_to:
   stack: preview 9.3
   serverless: preview
 description: Learn how to view, organize, and manage your workflows.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Manage workflows [workflows-manage]

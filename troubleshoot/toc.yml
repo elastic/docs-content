@@ -154,6 +154,7 @@ toc:
               - file: ingest/opentelemetry/edot-collector/collector-not-starting.md
               - file: ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md
               - file: ingest/opentelemetry/edot-collector/trace-export-errors.md
+              - file: ingest/opentelemetry/edot-collector/c2c-resourceexhausted.md
           - file: ingest/opentelemetry/edot-sdks/index.md
             children:
               - file: ingest/opentelemetry/edot-sdks/android/index.md
@@ -169,6 +170,7 @@ toc:
               - file: ingest/opentelemetry/edot-sdks/missing-app-telemetry.md
               - file: ingest/opentelemetry/edot-sdks/proxy.md
               - file: ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md
+              - file: ingest/opentelemetry/edot-sdks/trace-context-propagation.md
           - file: ingest/opentelemetry/no-data-in-kibana.md
           - file: ingest/opentelemetry/connectivity.md
           - file: ingest/opentelemetry/429-errors-motlp.md

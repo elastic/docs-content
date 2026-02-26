@@ -175,6 +175,12 @@ In the event that the {{agent}} policy has integrations installed that require r
 
 For any installed {{agent}} you can change the mode that it's running in by running the `privileged` or `unprivileged` subcommand.
 
+:::{tip}
+:applies_to: { serverless: ga, stack: ga 9.3 }
+
+When managing multiple agents, you can [remove agents' elevated privileges centrally using the {{fleet}} UI or API](/reference/fleet/remove-agent-elevated-privileges.md).
+:::
+
 :::{note}
 Changing privilege modes is not supported for {{agent}} installed using RPM or DEB packages.
 :::

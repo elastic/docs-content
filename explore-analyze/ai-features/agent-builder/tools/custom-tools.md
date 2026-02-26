@@ -1,5 +1,6 @@
 ---
 navigation_title: "Custom tools"
+description: "Learn how to create and manage custom tools in Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Custom tools
+# Create and manage custom tools in {{agent-builder}}
 
 You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data. This flexibility allows you to create tools that match your specific use cases and data access patterns.
 
@@ -117,6 +118,10 @@ A strong description explains what the tool does, when to use it, and what limit
 - **Limitations**: Are there constraints (for example, "returns max 50 rows" or "data is 24 hours old")?
 - **Relationships**: How does it relate to other tools?
 
+:::{tip}
+Not sure whether logic belongs in a tool description or in the agent's custom instructions? Refer to [Custom instructions, tool descriptions, or user input](../prompt-engineering.md#custom-instructions-tool-descriptions-or-user-input).
+:::
+
 #### Example: Customer support (retrieval)
 
 - **Tool ID**: `support.search_articles`
@@ -143,6 +148,7 @@ A strong description explains what the tool does, when to use it, and what limit
 
 ## Related pages
 
+- [](../prompt-engineering.md)
 - [](../tools.md)
 - [](builtin-tools-reference.md)
-- [](../kibana-api.md#tools)
+- [](../kibana-api.md#tools-apis)

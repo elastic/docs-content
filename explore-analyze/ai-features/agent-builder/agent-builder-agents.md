@@ -1,5 +1,6 @@
 ---
 navigation_title: "Agents"
+description: "Learn how Agent Builder agents use tools to solve problems. Compare built-in and custom agents and understand the iterative reasoning loop."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{agent-builder}}: Agents
+# {{agent-builder}} agents overview
 
 Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
 
@@ -51,7 +52,7 @@ Create custom agents tailored to your specific needs by defining custom instruct
 
 To learn how to create and manage custom agents, refer to [Custom agents](custom-agents.md).
 
-## Manage agents
+## Managing agents in the UI
 
 The **Agents** page provides a centralized view of all your agents. From this page you can:
 
@@ -79,7 +80,7 @@ The Agents API enables programmatic management of both built-in and custom agent
 
 ### Quick overview
 
-For an overview, refer to [Agents API](kibana-api.md#agents).
+For an overview, refer to [Agents API](kibana-api.md#agents-apis).
 
 ### API reference
 
@@ -88,5 +89,6 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 ## Related pages
 
 - [Custom agents](custom-agents.md)
+- [](prompt-engineering.md)
 - [Built-in agents reference](builtin-agents-reference.md)
 - [Tools](tools.md)

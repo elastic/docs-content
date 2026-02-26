@@ -1,5 +1,6 @@
 ---
 navigation_title: "Custom agents"
+description: "Learn how to create and manage custom agents in Agent Builder. Define custom instructions, assign tools, and iterate on agent behavior for specific workflows."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Custom agents in {{agent-builder}}
+# Create and manage custom agents in {{agent-builder}}
 
 Custom agents enable you to create specialized AI assistants tailored to your specific use cases and workflows. Unlike [built-in agents](builtin-agents-reference.md), which are pre-configured by Elastic, custom agents give you full control over instructions, tools, and behavior.
 
@@ -19,7 +20,7 @@ Custom agents enable you to create specialized AI assistants tailored to your sp
 Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch.
 :::
 
-## Create a new agent
+## Create a custom agent
 
 Follow these steps to create a new custom agent:
 
@@ -141,12 +142,13 @@ When creating custom agents, follow these best practices to ensure optimal perfo
 
 The Agents API enables programmatic management of custom agents.
 
-For an overview of agent API operations, refer to [Agents API](kibana-api.md#agents).
+For an overview of agent API operations, refer to [Agents API](kibana-api.md#agents-apis).
 
 For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).
 
 ## Related pages
 
 - [Agents overview](agent-builder-agents.md)
+- [](prompt-engineering.md)
 - [Built-in agents reference](builtin-agents-reference.md)
 - [Tools](tools.md)

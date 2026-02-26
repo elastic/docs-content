@@ -33,11 +33,11 @@ Watch these video tutorials to help you get started:
 
 ## How Playground works [playground-how-it-works]
 
-Here’s a simpified overview of how Playground works:
+Here’s a simplified overview of how Playground works:
 
 * User **creates a connection** to LLM provider
 * User **selects a model** to use for generating responses
-* User **define the model’s behavior and tone** with initial instructions
+* User **defines the model’s behavior and tone** with initial instructions
 
     * **Example**: "*You are a friendly assistant for question-answering tasks. Keep responses as clear and concise as possible.*"
 
@@ -74,8 +74,7 @@ To use Playground, you’ll need the following:
 
 3. An account with a **supported LLM provider**. Playground supports the following:
 
-    * **Elastic**
-        * [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md)
+    * [**Elastic Managed LLMs**](kibana://reference/connectors-kibana/elastic-managed-llm.md)
 
     * **Amazon Bedrock**
 
@@ -116,7 +115,7 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 
 ### Connect to LLM provider [playground-getting-started-connect]
 
-To get started with Playground, you need to create a [connector](/deploy-manage/manage-connectors.md) for your LLM provider. By default, an Elastic Managed LLM is connected. You can also connect to [locally hosted LLMs](playground.md#playground-local-llms) which are compatible with the OpenAI API, by using the OpenAI connector.
+To get started with Playground, you need to create a [connector](/deploy-manage/manage-connectors.md) for your LLM provider. You can use Elastic Managed LLMs by default. You can also connect to [locally hosted LLMs](playground.md#playground-local-llms) which are compatible with the OpenAI API, by using the OpenAI connector.
 
 To connect to an LLM provider, use the following steps on the Playground landing page:
 

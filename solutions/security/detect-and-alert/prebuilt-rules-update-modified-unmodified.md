@@ -3,6 +3,13 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Update modified and unmodified Elastic prebuilt rules [prebuilt-rules-update-modified-unmodified]

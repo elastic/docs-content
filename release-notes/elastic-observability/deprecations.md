@@ -1,5 +1,12 @@
 ---
 navigation_title: Deprecations
+products:
+  - id: observability
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Elastic {{observability}} deprecations [elastic-observability-deprecations]

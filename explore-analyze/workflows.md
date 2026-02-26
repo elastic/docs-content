@@ -2,12 +2,25 @@
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn about Elastic workflows. 
+description: Build automated workflows in Kibana to turn data insights into action.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Workflows [workflows-overview]
 
-A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It is a reusable, versionable "recipe" that transforms inputs into actions.
+:::{admonition} Welcome to the Elastic workflow docs! 
+If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/workflows/overview), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
+:::
+
+## What are workflows [workflows-what]
+
+A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It's a reusable, versionable "recipe" that transforms inputs into actions.
 
 ## Why use workflows [workflows-why]
 
