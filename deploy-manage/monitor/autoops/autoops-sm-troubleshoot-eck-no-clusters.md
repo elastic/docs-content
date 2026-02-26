@@ -127,6 +127,42 @@ If any errors in the logs mention "authorization" or "unauthorized connection", 
 :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
 :::
 
+## Verify AutoOps Agent version meets license requirements
+
+```{applies_to}
+eck: ga 3.3.1
+```
+
+The minimum AutoOps Agent version depends on your license type. If the agent version is below the minimum for your license, the `AutoOpsAgentPolicy` enters `Invalid` phase.
+
+| License type | Minimum agent version |
+| --- | --- |
+| Basic | 9.2.4 |
+| Enterprise | 9.2.1 |
+
+:::::{stepper}
+
+::::{step} Check the policy status and version
+Run the following command.
+```shell
+kubectl get autoopsagentpolicy <policy_name> -o jsonpath='{.spec.version}{"\n"}{.status.phase}{"\n"}'
+```
+If the status shows `Invalid` with a version-related message, the agent version may not meet the minimum for your license type.
+::::
+
+::::{step} Check your license type
+Run the following command to check the ECK license level.
+```shell
+kubectl get configmap elastic-licensing -n <ECK_operator_namespace> -o jsonpath='{.data.eck_license_level}'
+```
+::::
+
+::::{step} Upgrade the agent if necessary
+If your license type is Basic and your agent version is below 9.2.4, upgrade the AutoOps Agent to version 9.2.4 or later.
+::::
+
+:::::
+
 ## Check cluster health
 
 Ensure that the {{es}} clusters you are trying to connect to AutoOps are healthy. {{agent}} may fail to connect clusters in a Red state.

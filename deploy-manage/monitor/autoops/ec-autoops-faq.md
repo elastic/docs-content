@@ -75,7 +75,9 @@ $$$autoops-issue-resolution$$$**Can AutoOps automatically resolve issues?**
 :   AutoOps only analyzes metrics and is a read-only solution.
 
 $$$autoops-supported-versions$$$**Which versions of {{es}} are supported in AutoOps for {{ech}} and ECE, ECK, and self-managed clusters?**
-:   AutoOps is compatible with [supported {{es}} versions](https://www.elastic.co/support/eol) (7.17.x and above).
+:   AutoOps is compatible with [supported {{es}} versions](https://www.elastic.co/support/eol) (7.17.x and above). When using the ECK installation method (`AutoOpsAgentPolicy`), the minimum AutoOps Agent version depends on your license type:
+    * **Basic license**: 9.2.4 or later
+    * **Enterprise license**: 9.2.1 or later
 
 $$$autoops-data-retention$$$**How long does Elastic retain AutoOps data?**
 :   AutoOps has a 10 day retention period.
@@ -103,7 +105,7 @@ $$$deployment-types$$$ **Which deployment types can be connected to AutoOps thro
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
 
 $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?**
-:   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, we recommend keeping {{agent}} upgraded to the latest version so you can access new features and fixes. 
+:   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, we recommend keeping {{agent}} upgraded to the latest version so you can access new features and fixes. When using the ECK installation method, ensure that your AutoOps Agent version meets the [minimum version requirements](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for your license type.
 
 $$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   Support eligibility is determined by the license of your connected cluster:
