@@ -11,7 +11,7 @@ description: Prerequisites and initial setup tasks before creating and running d
 
 # Before you begin
 
-Before you can create and run detection rules, confirm that your environment meets the infrastructure requirements and that your users have the necessary privileges. Some tasks only need to be done once during initial setup, while others should be revisited as your environment evolves.
+Before you can create and run detection rules, confirm that your environment meets the infrastructure requirements and that your users have the necessary privileges. Some tasks only need to be done once during initial setup, while others should be revisited as your environment evolves. If you're new to {{elastic-sec}} detections, check out [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md) for an overview of how rules work.
 
 ## One-time setup
 
@@ -19,7 +19,6 @@ These tasks are typically completed once when you first configure detection capa
 
 - [Turn on detections](/solutions/security/detect-and-alert/requirements-privileges.md): Enable the Detections feature for your deployment type. On {{serverless-short}}, detections are on by default.
 - [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md): Understand the cluster, index, and {{kib}} privileges required for detection features, and review predefined roles and the authorization model.
-- [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md): Learn foundational concepts that apply across all rule types such as data sources, rule authorization, exceptions, and notifications.
 
 ## Revisit as your environment changes
 
