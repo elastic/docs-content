@@ -51,7 +51,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes a bug with PagerDuty where setting the **Custom details** field caused rules to fail [#253683]({{kib-pull}}253683)
 * Fixes config panel scrolling in the Lens editor so that all configuration options are accessible when content exceeds the visible area [#253247]({{kib-pull}}253247)
 * Fixes overly restrictive filter `meta.value` validation that rejected valid phrase and range filter values [#253537]({{kib-pull}}253537)
-* Fixes an issue where an agent that was rolled back after an upgrade could not be upgraded again in the Fleet UI [#253850]({{kib-pull}}253850)
+* Fixes an issue where an agent that was rolled back after an upgrade could not be upgraded again in the {{fleet}} UI [#253850]({{kib-pull}}253850)
 * Fixes incorrect {{esql}} validation of the `TS` (time series) command that was wrongly applying `FROM` command rules [#253635]({{kib-pull}}253635)
 * Fixes the Synthetics monitor toggle state leaking between monitors in the details flyout when switching between different monitors [#253314]({{kib-pull}}253314)
 * Speeds up bulk rule deletion, significantly reducing the time to delete large numbers of prebuilt rules [#253116]({{kib-pull}}253116)
