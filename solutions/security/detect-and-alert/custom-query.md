@@ -32,7 +32,7 @@ Custom query rules are **not** the best fit when you need to:
 
 ### Data requirements
 
-Custom query rules require at least one {{es}} index pattern or [data view](/solutions/security/get-started/data-views-elastic-security.md) that contains the events you want to match. The indices must be accessible to the user who creates or last edits the rule, because the rule executes with that user's [API key privileges](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#alerting-authorization-model).
+Custom query rules require at least one {{es}} index pattern or [data view](/solutions/security/get-started/data-views-elastic-security.md) that contains the events you want to match. The indices must be accessible to the user who creates or last edits the rule, because the rule executes with that user's [API key privileges](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept).
 
 <!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective queries [craft-custom-query]

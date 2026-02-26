@@ -731,7 +731,9 @@ redirects:
     to: 'solutions/security/detect-and-alert/install-prebuilt-rules.md'
     anchors:
       'load-prebuilt-rules': 'load-prebuilt-rules'
-      'prebuilt-rule-tags': 'solutions/security/detect-and-alert/prebuilt-rules.md#prebuilt-rule-tags'
-      'rule-prerequisites': 'solutions/security/detect-and-alert/prebuilt-rules.md#rule-prerequisites'
-      'select-all-prebuilt-rules': 'solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules'
+  
+  # Anchors moved to different files (separate redirects needed)
+  'solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#prebuilt-rule-tags': 'solutions/security/detect-and-alert/prebuilt-rules.md#prebuilt-rule-tags'
+  'solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#rule-prerequisites': 'solutions/security/detect-and-alert/prebuilt-rules.md#rule-prerequisites'
+  'solutions/security/detect-and-alert/install-manage-prebuilt-rules.md#select-all-prebuilt-rules': 'solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules'
 

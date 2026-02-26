@@ -64,7 +64,7 @@ Most prebuilt rules don't start running by default. Use **Install and enable** t
     * Install multiple rules: Select the rules, and then at the top of the page either select **Install *x* selected rule(s)** to install without enabling the rules, or select ![Vertical boxes button](/solutions/images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules.
 
     ::::{tip}
-    Use the search bar and **Tags** filter to find the rules you want to install. For example, filter by `OS: Windows` if your environment only includes Windows endpoints. For more on tag categories, refer to [Prebuilt rule tags](#prebuilt-rule-tags).
+    Use the search bar and **Tags** filter to find the rules you want to install. For example, filter by `OS: Windows` if your environment only includes Windows endpoints. For more on tag categories, refer to [Prebuilt rule tags](/solutions/security/detect-and-alert/prebuilt-rules.md#prebuilt-rule-tags).
     ::::
 
     :::{image} /solutions/images/security-prebuilt-rules-add.png
