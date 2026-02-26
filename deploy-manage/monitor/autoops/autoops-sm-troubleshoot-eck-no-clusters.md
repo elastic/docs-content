@@ -133,7 +133,7 @@ If any errors in the logs mention "authorization" or "unauthorized connection", 
 eck: ga 3.3.1
 ```
 
-The minimum AutoOps Agent version depends on your license type. If the agent version is below the minimum for your license, the `AutoOpsAgentPolicy` enters `Invalid` phase.
+The minimum AutoOps Agent version depends on your license type. If the agent version is below the minimum for your license, the `AutoOpsAgentPolicy` enters the `Invalid` phase.
 
 | License type | Minimum agent version |
 | --- | --- |
