@@ -35,21 +35,21 @@ Depending on the type of data that you need to move, various migration options a
 
  - **Reindex from source**: For your own data, reindexing into your new, destination deployment from the data's original source is typically the most straightforward approach, since it's available without any need to consider differing {{es}} versions or deployment types.
  
-    If you still have access to the original data source, outside of your former {{es}} cluster, you can load the data from there. You have the option to use any ingestion method that you want—Logstash, Beats, the {{es}} clients, or whatever works best for you.
+    If you still have access to the original data source, outside of your former {{es}} cluster, you can load the data from there. You have the option to use any ingestion method that you want—{{ls}}, {{agent}}, {{beats}}, the {{es}} clients, or whatever works best for you.
 
     If the original source isn’t available or has other issues that make it non-viable, you can choose from one of the other migration options described here.
 
  - **Snapshot and restore**: Use a snapshot to create a backup of your running {{es}} cluster, and then migrate by restoring your data into a new cluster.
  - **Reindex API**: Copy documents from a source index to a destination index. You can reindex across clusters and deployment types and transform the data en route. 
  - **{{ls}}**: With {{ls}} you can collect, process, and forward data from a variety of sources to a variety of destinations. It serves as a highly configurable option available for migrating data across any deployment types.
- - **Saved objects API**: You can use this API or the {{kib}} UI to migrate objects that you've saved in {{kib}}.
- - **{{kib}} saved object management**: You can also use the {{kib}} UI to to migrate your saved objects.
+ - **Saved objects API**: Use this API to migrate objects that you've saved in {{kib}}.
+ - **{{kib}} saved object management**: You can also use the {{kib}} UI to migrate your saved objects.
 
 The following table describes the migration options available for each data type and where to find guidance.
 
 | Data type | Migration options |
 | ------ | ------ |
-| Ingested user data | The reindex API, snapshot and restore, and {{ls}} migration options are available for your user data, with some restrictions based on the source and target deployment type. Refer to the [data migration guides](#data-migration-guides) listed on this page to learn more. |
+| Ingested user data | The reindex API, snapshot and restore, and {{ls}} migration options are available for your user data, with some restrictions based on the source and target deployment type. Refer to [User data migration guides](#data-migration-guides) on this page to learn more. |
 | {{es}} system data | System indices must be migrated using the snapshot and restore [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) component. Refer to [Migrate system indices](/manage-data/migrate/migrate-internal-indices.md) for detailed migration steps. |
 | {{kib}} saved objects | {{kib}} saved objects can be migrated using the snapshot and restore [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) component or the {{kib}} import and export tools. The tools include the import and export endpoints of the [Saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) and the [import and export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) options in the {{kib}} UI.<br><br>Snapshot and restore is generally the preferred migration method due to both speed and ease of use. In case you need to migrate {{fleet}} configuration data through snapshot and restore, this requires also restoring the {{kib}} feature state. |
 | Elastic feature and component data | Configuration data for products such as {{fleet}}, {{integrations}}, and {{watcher}} is typically migrated using the snapshot and restore feature. Refer to [Snaphot and restore](/deploy-manage/tools/snapshot-and-restore.md) and to the documentation for each specific product for additional detail. |

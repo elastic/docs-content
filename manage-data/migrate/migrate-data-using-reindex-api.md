@@ -49,7 +49,7 @@ If you're migrating from a self-managed cluster that uses non–publicly trusted
 
 
 :::{important} 
-Kibana assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
+Kibana assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually. Refer to [Migration options](/manage-data/migrate-data.md#migration-options) for details about migrating different types of {{es}} data.
 
 Templates, data stream definitions, and ILM policies, must be in place _before_ you start data migration. However, be mindful that if you have any [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) configured, it's typically best to add these _after_ data migration so as to avoid re-transforming data that had already been transformed at the time that it was ingested into your source deployment (though if the data is idempotent, re-transforming is not a concern).
 

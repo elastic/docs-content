@@ -2,6 +2,7 @@
 navigation_title: Migrate data using snapshots
 applies_to:
   stack: ga
+  serverless: unavailable
 products:
   - id: elasticsearch
   - id: cloud-hosted
@@ -11,7 +12,7 @@ products:
 
 # Migrate {{es}} data with minimal downtime using snapshots [migrate-elasticsearch-data-with-minimal-downtime]
 
-When moving your data and services from one {{es}} cluster to another, such as to {{ech}}, {{ece}}, new on-premises hardware, or any other {{es}} environment, you can migrate with minimal downtime using incremental snapshots. 
+When moving your data and services from one {{es}} cluster to another, such as to {{ech}}, {{ece}}, or new on-premises hardware, you can migrate with minimal downtime using incremental snapshots. 
 
 Migrating with incremental snapshots is useful when you want to:
 
@@ -49,7 +50,7 @@ For {{ece}}, Amazon S3 is the most common snapshot storage, but you can restore 
 ::::
 
 ## Recommended migration timeline [recommended-migration-timeline]
-Tp complete the migration with minimal downtime, use incremental snapshots. While the exact sequence may differ depending on your infrastructure and operational requirements, you can use the recommended migration timeline as a reliable baseline that you can adapt. Adjust the steps and times to fit your own operational needs.
+To complete the migration with minimal downtime, use incremental snapshots. While the exact sequence may differ depending on your infrastructure and operational requirements, you can use the recommended migration timeline as a reliable baseline that you can adapt. Adjust the steps and times to fit your own operational needs.
 
 1. **09:00**: Take the initial full snapshot of the old cluster. You can also take the initial full snapshot the day before.
 2. **09:30**: Restore the snapshot to the new cluster.
