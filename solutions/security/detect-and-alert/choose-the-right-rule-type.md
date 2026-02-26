@@ -76,38 +76,3 @@ On a building block rule's details page, the rule's alerts are always displayed.
 Select the **Building block** option in the rule's [advanced settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) when creating or editing any rule type.
 END BUILDING BLOCK SECTION -->
 
-## Shared concepts [shared-rule-concepts]
-
-The following concepts apply to all rule types. For the full settings reference, see [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
-
-### Data sources [views-index-patterns]
-
-When you create a rule, you must specify either {{es}} index patterns or a {{data-source}} as the data source (except for {{ml}} rules, which do not use queries). If you select a {{data-source}}, you can use [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) associated with that {{data-source}} in your rule query.
-
-::::{note}
-To access {{data-source}}s in {{stack}}, you must have the [required permissions](/explore-analyze/find-and-organize/data-views.md#data-views-read-only-access). In {{serverless-short}}, you must have the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](../../../deploy-manage/users-roles/cloud-organization/user-roles.md) with the right privileges.
-::::
-
-::::{important}
-System indices, such as the alert indices, contain important configuration and internal data. Do not change their mappings. Changes can lead to rule execution and alert indexing failures. Use [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) instead to add fields to existing alert and event documents.
-::::
-
-### Authorization [alerting-authorization-model]
-
-Rules are authorized using an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) associated with the last user to edit the rule. When you create or modify a rule, an API key is generated that captures a snapshot of your privileges. This API key is used for all background tasks, including detection checks and action execution.
-
-::::{important}
-If a user without the required privileges (such as index privileges) updates a rule, the rule stops functioning. Ensure that only users with appropriate access edit rules.
-::::
-
-### Exceptions [about-exceptions]
-
-You can [add exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) to rules to prevent them from generating alerts even when their criteria are met. This is useful for reducing noise from trusted processes, internal IP addresses, or known-benign activity.
-
-::::{note}
-Exceptions are supported for custom query, {{ml}}, event correlation, and indicator match rule types.
-::::
-
-### Notifications [about-notifications]
-
-For both prebuilt and custom rules, you can send notifications when alerts are created. Notifications can be sent through {{jira}}, Microsoft Teams, PagerDuty, Slack, and other connectors. Configure actions when you [create or edit a rule](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).

@@ -90,7 +90,7 @@ To enable detections in multiple spaces, visit the **Rules** page in each space.
 With detections enabled, you're ready to create rules and start responding to threats. Do the following:
 
 - **Add detection rules**
-   - [Install Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md): Get started quickly with hundreds of rules that detect common threats
+   - [Install Elastic prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md): Get started quickly with hundreds of rules that detect common threats
    - [Create custom rules](/solutions/security/detect-and-alert/using-the-rule-builder.md): Write rules tailored to your environment
    - [Configure {{anomaly-detect}} rules](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md): Use {{ml}} to detect unusual behavior
 

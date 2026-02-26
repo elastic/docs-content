@@ -18,7 +18,7 @@ The **MITRE ATT&CK coverage** page shows which [MITRE ATT&CK](https://attack.mit
 
 How you use this page depends on your goal:
 
-- **Identifying coverage gaps**: Filter to view only enabled rules, then look for light or empty cells to find tactics and techniques where your detection coverage is thin. Use this to prioritize which [prebuilt rules](/solutions/security/detect-and-alert/install-manage-prebuilt-rules.md) to install or which [custom rules](/solutions/security/detect-and-alert/using-the-rule-builder.md) to build next.
+- **Identifying coverage gaps**: Filter to view only enabled rules, then look for light or empty cells to find tactics and techniques where your detection coverage is thin. Use this to prioritize which [prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) to install or which [custom rules](/solutions/security/detect-and-alert/using-the-rule-builder.md) to build next.
 - **Activating coverage quickly**: Find techniques you care about and [enable installed rules](#security-rules-coverage-enable-rules) directly from the coverage grid, without leaving the page.
 
 ## Access the page [access-mitre-page]

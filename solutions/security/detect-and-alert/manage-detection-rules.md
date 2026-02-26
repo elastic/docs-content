@@ -23,12 +23,12 @@ The Rules page allows you to view and manage all prebuilt and custom detection r
 
 On the Rules page, you can:
 
-* [Sort and filter the rules list](/solutions/security/detect-and-alert/manage-detection-rules.md#sort-filter-rules) and [check rule status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-status)
+* [Sort and filter the rules list](/solutions/security/detect-and-alert/manage-detection-rules.md#sort-filter-rules) and [check rule status](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-status)
 * [Edit](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings), [enable/disable](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules), [duplicate](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules), and [delete](/solutions/security/detect-and-alert/manage-detection-rules.md#delete-rules) rules
-* [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) and [fill gaps](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules)
+* [Run rules manually](#manually-run-rules) and [fill gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md)
 * [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions)
 * [Export and import rules](/solutions/security/detect-and-alert/manage-detection-rules.md#import-export-rules-ui)
-* [Confirm rule prerequisites](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) and [troubleshoot missing alerts](/troubleshoot/security/detection-rules.md#troubleshoot-signals)
+* [Troubleshoot missing alerts](/troubleshoot/security/detection-rules.md#troubleshoot-signals)
 * Perform actions on multiple rules with [bulk actions](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-actions-reference)
 
 :::{note}
@@ -55,16 +55,6 @@ You can also filter the rules list by selecting the **Tags**, **Last response**,
 
 The rules list retains your sorting and filtering settings when you navigate away and return to the page. These settings are also preserved when you copy the page’s URL and paste into another browser. Select **Clear filters** above the table to revert to the default view.
 
-
-## Check the current status of rules [rule-status]
-
-The **Last response** column displays the current status of each rule, based on the most recent attempt to run the rule:
-
-* **Succeeded**: The rule completed its defined search. This doesn’t necessarily mean it generated an alert, just that it ran without error.
-* **Failed**: The rule encountered an error that prevented it from running. For example, a {{ml}} rule whose corresponding {{ml}} job wasn’t running.
-* **Warning**: Nothing prevented the rule from running, but it might have returned unexpected results. For example, a custom query rule tried to search an index pattern that couldn’t be found in {{es}}.
-
-For {{ml}} rules, an indicator icon {icon}`warning` also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
 
 
 ## Edit rule settings [edit-rules-settings]
@@ -108,23 +98,6 @@ Use bulk editing to update settings on multiple rules simultaneously. Rules that
 4. On the page or flyout that opens, update the rule settings.
 5. If available, select **Overwrite all selected _x_** to overwrite the settings on the rules. For example, if you're adding tags to multiple rules, selecting **Overwrite all selected rules tags** removes all the rules' original tags and replaces them with the tags you specify.
 6. Click **Save**.
-
-## Revert modifications to prebuilt rules [revert-rule-changes]
-
-```{applies_to}
-   stack: ga 9.1 
-```
-
-After modifying a prebuilt rule, you can restore it's original version. To do this:
-
-1. Open the rule's details page, click the **All actions** menu {icon}`boxes_horizontal`, then **Revert to Elastic version**.
-2. In the flyout, review the modified fields. Deleted characters are highlighted in red; added characters are highlighted in green.
-3. Click **Revert** to restore the modified fields to their original versions. 
-
-::::{note}
-If you haven’t updated the rule in a while, its original version might be unavailable for comparison. You can avoid this by regularly updating prebuilt rules.
-::::
-
 
 ## Enable and disable rules [enable-disable-rules]
 
@@ -193,59 +166,6 @@ Delete rules to permanently remove them from your system. This action cannot be 
 
 
 
-## Run rules manually [manually-run-rules]
-
-Manually run enabled rules for a specified period of time to deliberately test them, provide additional rule coverage, or fill gaps in rule executions.
-
-::::{important}
-Before manually running rules, make sure you properly understand and plan for rule dependencies. Incorrect scheduling can lead to inconsistent rule results.
-::::
-
-
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the **Rules** table, do one of the following:
-
-    * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Manual run**.
-    * Select all the rules you want to manually run, select the **Bulk actions** menu, then select **Manual run**.
-
-3. Specify when the manual run starts and ends. The default selection is the current day starting three hours in the past. The rule will search for events during the selected time range.
-4. Click **Run** to manually run the rule.
-
-The rule will run over the time range that you selected. Note that all [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) will also be activated, except for **Summary of alerts** actions that run at a custom frequency.
-
-Go to the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table) on the **Execution results** tab to track the manual rule executions. If you manually ran the rule over a gap, you can also monitor the gap fill's progress from the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
-
-::::{note}
-Be mindful of the following:
-
-* Any changes that you make to the manual run or rule settings will display in the Manual runs table after the current run completes.
-* Except for threshold rules, duplicate alerts aren't created if you manually run a rule during a time range that was already covered by a scheduled run.
-* Manually running a custom query rule with suppression may incorrectly inflate the number of suppressed alerts.
-
-::::
-
-## Fill gaps for multiple rules [bulk-fill-gaps-multiple-rules]
-
-```{applies_to}
-   stack: ga 9.1
-```
-
-From the Rules table, fill gaps for multiple rules by using the **Fill gaps** bulk action.
-
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the Rules table, click the **Rule Monitoring** tab, then do one of the following:
-
-   * Fill rules with unfilled or partially filled gaps: Select the appropriate rules or all rules on the page, then click **Bulk actions → Fill gaps**.
-   
-   * Only fill rules with unfilled gaps: In the panel above the table, click the **Only rules with unfilled gaps** filter to only show rules with unfilled gaps (rules with gaps that are being filled are excluded). Select the appropriate rules or all of them, then click **Bulk actions → Fill gaps**. 
-
-3. Specify when to start and end the manual run that will fill the gaps. 
-4. Click **Schedule gap fills**. The rule will manually run over unfilled gaps in the selected time range. 
-
-After scheduling the manual run, you can track gap fill progress by checking the **Total rules with gaps:** field in the panel above the Rules table. The field displays two metrics separated by a forward slash. The metric on the left tells you the remaining number of rules with unfilled gaps. The metric on the right tells you the number of rules that are currently having their gaps filled. 
-
-Alternatively, you can check gap fill progress for individual rules by going to their details page, clicking the **Execution results** tab, then going to the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
- 
 
 ## Snooze rule actions [snooze-rule-actions]
 
@@ -258,6 +178,63 @@ You can snooze rule notifications from the **Installed Rules** tab, the rule det
 :::{image} /solutions/images/security-rule-snoozing.png
 :alt: Rules snooze options
 :width: 75%
+:screenshot:
+:::
+
+
+## Run rules manually [manually-run-rules]
+
+Manually run enabled rules for a specified time period to deliberately test them, provide additional rule coverage, or fill gaps in rule executions.
+
+::::{important}
+Before manually running rules, make sure you properly understand and plan for rule dependencies. Incorrect scheduling can lead to inconsistent rule results.
+::::
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the Rules table, do one of the following:
+
+    * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Manual run**.
+    * Select all the rules you want to manually run, select the **Bulk actions** menu, then select **Manual run**.
+
+3. Specify when the manual run starts and ends. The default selection is the current day starting three hours in the past. The rule searches for events during the selected time range.
+4. Select **Run** to manually run the rule.
+
+The rule runs over the time range that you selected. All [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) are also activated, except for **Summary of alerts** actions that run at a custom frequency.
+
+::::{note}
+Be mindful of the following:
+
+* Any changes that you make to the manual run or rule settings display in the Manual runs table after the current run completes.
+* Except for threshold rules, duplicate alerts aren't created if you manually run a rule during a time range that was already covered by a scheduled run.
+* Manually running a custom query rule with suppression may incorrectly inflate the number of suppressed alerts.
+
+::::
+
+### Manual runs table [manual-runs-table]
+
+Each manual run can produce multiple rule executions, depending on the time range of the run and the rule's execution schedule.
+
+::::{note}
+Manual runs are executed with low priority and limited concurrency, meaning they might take longer to complete. This can be especially apparent for rules requiring multiple executions.
+::::
+
+The Manual runs table (found on a rule's **Execution results** tab) tracks manual rule executions and provides important details such as:
+
+* The total number of rule executions that the manual run will produce and how many are failing, pending, running, and completed.
+* When the manual run started and the time range that it will cover.
+
+    ::::{note}
+    To stop an active run, go to the appropriate row in the table and select **Stop run** in the **Actions** column. Completed rule executions for each manual run are logged in the Execution log table.
+    ::::
+
+* The status of each manual run:
+
+    * `Pending`: The rule is not yet running.
+    * `Running`: The rule is executing during the time range you specified. Some rule types, such as indicator match rules, can take longer to run.
+    * `Error`: The rule's configuration is preventing it from running correctly. For example, the rule's conditions cannot be validated.
+
+:::{image} /solutions/images/security-manual-rule-run-table.png
+:alt: Manual rule runs table on the rule execution results tab
 :screenshot:
 :::
 
@@ -321,8 +298,8 @@ The following table summarizes bulk actions that are available from the **Bulk a
 | Duplicate | Create copies of selected rules. Refer to [Duplicate rules](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules). |
 | Delete | Permanently remove selected rules. Refer to [Delete rules](/solutions/security/detect-and-alert/manage-detection-rules.md#delete-rules). |
 | Export | Export selected rules to an `.ndjson` file. Refer to [Export rules](/solutions/security/detect-and-alert/manage-detection-rules.md#export-rules-ui). |
-| Manual run | Run selected rules for a specified time period. Refer to [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules). |
-| Fill gaps | Fill gaps for selected rules. Refer to [Fill gaps for multiple rules](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules). |
+| Manual run | Run selected rules for a specified time period. Refer to [Run rules manually](#manually-run-rules). |
+| Fill gaps | Fill gaps for selected rules. Refer to [Fill gaps for multiple rules](/solutions/security/detect-and-alert/fill-rule-gaps.md#bulk-fill-gaps). |
 | Index patterns | Add or delete index patterns on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
 | Tags | Add or delete tags on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
 | Custom highlighted fields | Add custom highlighted fields on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
@@ -330,25 +307,3 @@ The following table summarizes bulk actions that are available from the **Bulk a
 | Update rule schedules | Update schedules and look-back times on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
 | Apply Timeline template | Apply a Timeline template to selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
 
-
-## Confirm rule prerequisites [rule-prerequisites]
-
-Many detection rules are designed to work with specific [Elastic integrations](https://docs.elastic.co/en/integrations) and data fields. These prerequisites are identified in **Related integrations** and **Required fields** on a rule’s details page. **Related integrations** also displays each integration’s installation status and includes links for installing and configuring the listed integrations.
-
-Additionally, the **Setup guide** section provides guidance on setting up the rule’s requirements.
-
-:::{image} /solutions/images/security-rule-details-prerequisites.png
-:alt: Rule details page with Related integrations
-:screenshot:
-:::
-
-You can also check rules' related integrations in the **Installed Rules** and **Rule Monitoring** tables. Click the **integrations** badge to display the related integrations in a popup.
-
-:::{image} /solutions/images/security-rules-table-related-integrations.png
-:alt: Rules table with related integrations popup
-:screenshot:
-:::
-
-::::{tip}
-You can hide the **integrations** badge in the Rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations).
-::::

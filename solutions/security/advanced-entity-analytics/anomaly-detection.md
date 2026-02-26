@@ -41,7 +41,7 @@ If you have the appropriate role, you can use the **ML job settings** interface 
 
 You can also check the status of {{ml}} detection rules, and start or stop their associated {{ml}} jobs:
 
-* On the **Rules** page, the **Last response** column displays the rule’s current [status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-status). An indicator icon (![Error icon from rules table](/solutions/images/security-rules-table-error-icon.png "title =20x20")) also appears if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page.
+* On the **Rules** page, the **Last response** column displays the rule’s current [status](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-status). An indicator icon (![Error icon from rules table](/solutions/images/security-rules-table-error-icon.png "title =20x20")) also appears if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page.
 
     :::{image} /solutions/images/security-rules-table-ml-job-error.png
     :alt: Rules table {{ml}} job error

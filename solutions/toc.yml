@@ -576,14 +576,16 @@ toc:
             children:
               - file: security/detect-and-alert/requirements-privileges.md
               - file: security/detect-and-alert/detections-privileges.md
+              - file: security/detect-and-alert/detection-rule-concepts.md
               - file: security/detect-and-alert/advanced-data-source-configuration.md
                 children:
                   - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
                   - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/prebuilt-rules.md
             children:
-              - file: security/detect-and-alert/install-manage-prebuilt-rules.md
+              - file: security/detect-and-alert/install-prebuilt-rules.md
               - file: security/detect-and-alert/update-prebuilt-rules.md
+              - file: security/detect-and-alert/customize-prebuilt-rules.md
               - file: security/detect-and-alert/mitre-attack-coverage.md
           - file: security/detect-and-alert/author-rules.md
             children:
@@ -607,6 +609,7 @@ toc:
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
+          - file: security/detect-and-alert/fill-rule-gaps.md
           - file: security/detect-and-alert/reduce-noise-and-false-positives.md
             children:
               - file: security/detect-and-alert/tune-detection-rules.md

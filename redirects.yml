@@ -705,7 +705,7 @@ redirects:
 # Related to Detect & Alert section restructure (issue #1210)
   # Renamed files
   'solutions/security/detect-and-alert/detections-requirements.md': 'solutions/security/detect-and-alert/requirements-privileges.md'
-  'solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md': 'solutions/security/detect-and-alert/install-manage-prebuilt-rules.md'
+  'solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md': 'solutions/security/detect-and-alert/install-prebuilt-rules.md'
   'solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md': 'solutions/security/detect-and-alert/update-prebuilt-rules.md'
   'solutions/security/detect-and-alert/mitre-attandckr-coverage.md': 'solutions/security/detect-and-alert/mitre-attack-coverage.md'
   'solutions/security/detect-and-alert/about-detection-rules.md': 'solutions/security/detect-and-alert/choose-the-right-rule-type.md'
@@ -725,3 +725,13 @@ redirects:
   'solutions/security/detect-and-alert/detections-reference.md': 'solutions/security/detect-and-alert/common-rule-settings.md'
   'solutions/security/detect-and-alert/rule-settings-reference.md': 'solutions/security/detect-and-alert/common-rule-settings.md'
   'solutions/security/detect-and-alert/custom-rules.md': 'solutions/security/detect-and-alert/author-rules.md'
+
+  # Prebuilt rules restructure
+  'solutions/security/detect-and-alert/install-manage-prebuilt-rules.md':
+    to: 'solutions/security/detect-and-alert/install-prebuilt-rules.md'
+    anchors:
+      'load-prebuilt-rules': 'load-prebuilt-rules'
+      'prebuilt-rule-tags': 'solutions/security/detect-and-alert/prebuilt-rules.md#prebuilt-rule-tags'
+      'rule-prerequisites': 'solutions/security/detect-and-alert/prebuilt-rules.md#rule-prerequisites'
+      'select-all-prebuilt-rules': 'solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules'
+

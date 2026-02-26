@@ -19,6 +19,7 @@ These tasks are typically completed once when you first configure detection capa
 
 - [**Turn on detections**](/solutions/security/detect-and-alert/requirements-privileges.md): Enable the Detections feature for your deployment type. On {{serverless-short}}, detections are on by default.
 - [**Detections privileges**](/solutions/security/detect-and-alert/detections-privileges.md): Understand the cluster, index, and {{kib}} privileges required for detection features, and review predefined roles and the authorization model.
+- [**Detection rule concepts**](/solutions/security/detect-and-alert/detection-rule-concepts.md): Learn foundational concepts—data sources, rule authorization, exceptions, and notifications—that apply across all rule types.
 
 ## Revisit as your environment changes
 

@@ -14,156 +14,182 @@ description: Use alert suppression to reduce duplicate detection alerts by group
 
 # Suppress detection alerts [security-alert-suppression]
 
-Alert suppression allows you to reduce the number of repeated or duplicate detection alerts created by [detection rules](/solutions/security/detect-and-alert/choose-the-right-rule-type.md). Normally, when a rule meets its criteria repeatedly, it creates multiple alerts, one for each time the rule’s criteria are met. When alert suppression is configured, alerts for duplicate events are not created. Instead, the qualifying events are grouped, and only one alert is created for each group. 
+When a detection rule runs, it can generate many alerts for similar events—sometimes hundreds of near-identical alerts for the same threat. Alert suppression helps you cut through this noise by grouping related events and creating a single representative alert instead of one alert per event.
 
-Depending on the rule type, you can configure alert suppression to create alerts each time the rule runs, or once within a specified time window. You can also specify multiple fields to group events by unique combinations of values.
+::::{admonition} Requirements
+* Alert suppression requires the appropriate [subscription](https://www.elastic.co/pricing) for {{stack}} and {{serverless-short}}.
+* {{ml-cap}} rules have [additional requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for alert suppression.
+::::
 
-The {{security-app}} displays several indicators in the Alerts table and the alert details flyout when a detection alert is created with alert suppression enabled. You can view the original events associated with suppressed alerts by investigating the alert in Timeline.
+## When to use alert suppression
+
+Alert suppression is useful when:
+
+* A rule generates too many alerts for the same activity (for example, repeated failed login attempts from the same IP address)
+* You want to focus analyst attention on unique threats rather than duplicates
+* You need to reduce alert volume without weakening your detection coverage
+
+Alert suppression doesn't ignore events—it groups them. You can still investigate all the original events associated with a suppressed alert.
+
+
+## How alert suppression works
+
+Without suppression, a rule creates one alert for every event that matches its criteria. With suppression enabled:
+
+1. You specify one or more fields to group events by (for example, `host.name` or `source.ip`).
+2. When multiple events share the same field values, they're grouped together.
+3. Instead of creating separate alerts for each event, the rule creates one alert per group.
+4. For some rule types, you can also control *how often* alerts are created:
+   * **Per rule execution**: A new alert is created each time the rule runs (if matching events exist).
+   * **Per time period**: One alert is created for all matching events within a time window you specify.
+
 
 ## Configure alert suppression [security-alert-suppression-configure-alert-suppression]
 
-::::{admonition} Requirements and notices
-* To use alert suppression in {{stack}} and {{serverless-short}}, you must have the appropriate [subscription](https://www.elastic.co/pricing). 
-* {{ml-cap}} rules have [additional requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for alert suppression.
+You can configure alert suppression when [creating](/solutions/security/detect-and-alert/using-the-rule-builder.md) or editing a rule.
+
+::::::{stepper}
+
+::::{step} Choose fields to group by
+When configuring the rule (the **Define rule** step for a new rule, or the **Definition** tab for an existing rule), specify how you want to group alerts:
+
+:::{dropdown} For all rule types except threshold rules
+In **Suppress alerts by**, enter one or more field names to group alerts by. Events with the same values for these fields are grouped together.
+
+* {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` You can enter up to 5 fields.
+* {applies_to}`stack: ga 9.0-9.1` You can enter up to 3 fields.
+
+For {{esql}} rules, fields created in the {{esql}} query (for example, with the `EVAL` command) are available to select in **Suppress alerts by**.
+:::
+
+:::{dropdown} For threshold rules only
+In **Group by**, enter up to 3 field names to group events by, or leave the setting empty to group all qualifying events together.
+:::
+
+:::{tip}
+If you're suppressing by fields that contain arrays, refer to [Suppression for fields with an array of values](#security-alert-suppression-fields-with-multiple-values) for details on how different rule types handle them.
+:::
+::::
+
+::::{step} Choose suppression frequency
+Choose how often to create alerts for qualifying events:
+
+* **Per rule execution**: Create an alert each time the rule runs and finds matching events.
+* **Per time period**: Create one alert for all matching events that occur within a specified time window. The window starts when an event first matches and creates an alert.
+
+    For example, if a rule runs every 5 minutes but you don't need alerts that frequently, you can set the suppression time period to 1 hour. The rule creates an alert when it first matches, then suppresses any subsequent matching events for the next hour.
+
+   :::{note}
+   **Per time period** is the only option available for threshold rules.
+   :::
 
 ::::
 
-You can configure alert suppression when [creating](/solutions/security/detect-and-alert/using-the-rule-builder.md) or editing a rule.  
+::::{step} Handle missing fields
+Under **If a suppression field is missing**, choose how to handle events where one or more suppression fields don't exist:
 
-1. When configuring the rule (the **Define rule** step for a new rule, or the **Definition** tab for an existing rule), specify how you want to group alerts for alert suppression:
+* **Suppress and group alerts for events with missing fields**: Treat missing fields as having a `null` value. Events with missing fields are grouped together and suppressed.
+* **Do not suppress alerts for events with missing fields**: Create a separate alert for each event with missing fields. This falls back to normal alert behavior for those events.
 
-    * **All rule types except the threshold rule:** In **Suppress alerts by**, enter 1 or more field names to group alerts by the fields' values. The maximum limit of fields that you can enter is as follows:
-       * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Enter up to 5 fields.
-       * {applies_to}`stack: ga 9.0-9.1` Enter up to 3 fields.
-
-        ::::{note}
-        For {{esql}} rules, fields created in the {{esql}} query are available to select in **Suppress alerts by**. For example, fields created with the `EVAL` command can be selected when choosing how to group alerts for alert suppression.
-        ::::
-
-    * **Threshold rule only:** In **Group by**, enter up to 3 field names to group events by the fields' values, or leave the setting empty to group all qualifying events together.
-
-    ::::{tip}
-    
-    Refer to [Suppression for fields with an array of values](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-fields-with-multiple-values) to learn how fields with multiple values are handled.
-
-    ::::
-
-
-2. Choose how often to create alerts for qualifying events:
-
-    * **Per rule execution**: Create an alert each time the rule runs and an event meets its criteria.
-    * **Per time period**: Create one alert for all qualifying events that occur within a specified time window, beginning from when an event first meets the rule criteria and creates the alert. This is the only option available when configuring alert suppression for threshold rules.
-
-        For example, if a rule runs every 5 minutes but you don’t need alerts that frequently, you can set the suppression time period to a longer time, such as 1 hour. If the rule meets its criteria, it creates an alert at that time, and for the next hour, it’ll suppress any subsequent qualifying events.
-
-        :::{image} /solutions/images/security-alert-suppression-options.png
-        :alt: Alert suppression options
-        :width: 450px
-        :::
-
-3. Under **If a suppression field is missing**, choose how to handle events with missing suppression fields (events in which one or more of the **Suppress alerts by** fields don’t exist):
-
-    ::::{note}
-    These options are available for all rule types except threshold rules.
-    ::::
-
-    * **Suppress and group alerts for events with missing fields**: Create one alert for each group of events with missing fields. Missing fields get a `null` value, which is used to group and suppress alerts.
-    * **Do not suppress alerts for events with missing fields**: Create a separate alert for each matching event. This basically falls back to normal alert creation for events with missing suppression fields.
-
-4. Configure other rule settings, then save and enable the rule.
-
-::::{tip}
-* Use the **Rule preview** before saving the rule to visualize how alert suppression will affect the alerts created, based on historical data.
-* If a rule times out while suppression is turned on, try shortening the rule’s [look-back](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule) time or turn off suppression to improve the rule’s performance.
-
+:::{note}
+These options are available for all rule types except threshold rules.
+:::
 ::::
 
+::::{step} Save and enable the rule
+Configure any other rule settings, then save and enable the rule.
 
-### Suppression for fields with an array of values [security-alert-suppression-fields-with-multiple-values]
+:::{tip}
+* Use the **Rule preview** before saving to visualize how alert suppression will affect alerts based on historical data.
+* If a rule times out while suppression is enabled, try shortening the rule's [look-back](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule) time or turning off suppression to improve performance.
+:::
+::::
 
-When specifying fields to suppress alerts by, you can select fields that have multiple values. When alerts for those fields are generated, they're handled as follows:
+::::::
 
-* **Custom query or threshold rules:** Alerts are grouped by each unique value and an alert is created for each group. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts are grouped separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3` and an alert is created for each group.
 
-* **Indicator match, event correlation (non-sequence queries only), new terms, {{esql}}, or {{ml}} rules:** Alerts with identical array values are grouped together. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts with the entire array are grouped and only one alert is created for the group.
-           
-* **Event correlation (sequence queries only) rules:** Alerts that are an exact match are grouped. To be an exact match, array values must be identical and in the same order. For example, if you specify the field `myips` and one sequence alert has `[1.1.1.1, 0.0.0.0]` and another sequence alert has `[1.1.1.1, 192.168.0.1]`, neither of those alerts is suppressed, despite sharing an array element.
+## Suppression for fields with an array of values [security-alert-suppression-fields-with-multiple-values]
+
+When you suppress alerts by fields that contain multiple values (arrays), the behavior depends on the rule type:
+
+| Rule type | Behavior |
+|-----------|----------|
+| Custom query or threshold | Alerts are grouped by each unique value separately. For example, if `destination.ip` contains `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, three separate alert groups are created—one for each IP address. |
+| Indicator match, event correlation (non-sequence), new terms, {{esql}}, or {{ml}} | Alerts with identical arrays are grouped together. The entire array must match exactly. |
+| Event correlation (sequence queries) | Alerts are grouped only if arrays are an exact match *and* in the same order. For example, `[1.1.1.1, 0.0.0.0]` and `[1.1.1.1, 192.168.0.1]` are not grouped together, even though they share an element. |
+
 
 ## Confirm suppressed alerts [security-alert-suppression-confirm-suppressed-alerts]
 
-The {{security-app}} displays several indicators of whether a detection alert was created with alert suppression enabled, and how many qualifying alerts were suppressed.
+The {{security-app}} shows several indicators when an alert was created with suppression enabled.
 
 ::::{important}
-Changing an alert's status to `Closed` can affect suppression. Refer to [Impact of closing suppressed alerts](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts) to learn more.
+Closing a suppressed alert can affect suppression behavior. Refer to [Impact of closing suppressed alerts](#security-alert-suppression-impact-close-alerts) for details.
 ::::
 
+### Alerts table
 
-* **Alerts** table — Icon in the **Rule** column. Hover to display the number of suppressed alerts:
+- **Icon in the Rule column**: Hover over the icon to see the number of suppressed alerts.
 
-    :::{image} /solutions/images/security-suppressed-alerts-table.png
-    :alt: Suppressed alerts icon and tooltip in Alerts table
-    :screenshot:
-    :width: 650px
-    :::
+   :::{image} /solutions/images/security-suppressed-alerts-table.png
+   :alt: Suppressed alerts icon and tooltip in Alerts table
+   :screenshot:
+   :width: 650px
+   :::
 
-* **Alerts** table — Column for suppressed alerts count. Select **Fields** to open the fields browser, then add `kibana.alert.suppression.docs_count` to the table.
+- **Suppressed alerts count column**: Select **Fields** to open the fields browser, then add `kibana.alert.suppression.docs_count` to the table.
 
-    :::{image} /solutions/images/security-suppressed-alerts-table-column.png
-    :alt: Suppressed alerts count field column in Alerts table
-    :screenshot:
-    :width: 750px
-    :::
+   :::{image} /solutions/images/security-suppressed-alerts-table-column.png
+   :alt: Suppressed alerts count field column in Alerts table
+   :screenshot:
+   :width: 750px
+   :::
 
-* Alert details flyout — **Insights** → **Correlations** section:
+### Alert details flyout
 
-    :::{image} /solutions/images/security-suppressed-alerts-details.png
-    :alt: Suppressed alerts in the Correlations section within the alert details flyout
-    :screenshot:
-    :width: 450px
-    :::
+Open the **Insights** → **Correlations** section to see suppression details.
 
-
-## Investigate events for suppressed alerts [security-alert-suppression-investigate-events-for-suppressed-alerts]
-
-With alert suppression, detection alerts aren’t created for the grouped source events, but you can still retrieve the events for further analysis or investigation. Do one of the following to open Timeline with the original events associated with both the created alert and the suppressed alerts:
-
-* **Alerts** table — Select **Investigate in timeline** in the **Actions** column.
-
-    :::{image} /solutions/images/security-timeline-button.png
-    :alt: Investigate in timeline button
-    :width: 250px
-    :screenshot:
-    :::
-
-* Alert details flyout — Select **Take action** → **Investigate in timeline**.
-
-
-## Impact of closing suppressed alerts [security-alert-suppression-impact-close-alerts]
-
-By default, if you close a suppressed alert while a suppression window is still active, suppression resets. Subsequently, any new qualifying alerts are suppressed and added to a new alert for suppression.
-
-For example, say you set the suppression time period to 5 minutes and specify to group alerts by the `host.name` field. The first time an event meets the rule's criteria, an alert is created. Over the next 5 minutes, any subsequent qualifying alerts are suppressed and grouped by unique `host.name` value. If you close that first alert before the active suppression window ends (the 5 minute suppression time period), alert suppression stops and restarts when the next qualifying alert meets the suppression criteria. 
-
-
-:::{image} /solutions/images/security-alert-suppression-close-alert-example.png
-:alt: Example of suppression configuration for a rule
+:::{image} /solutions/images/security-suppressed-alerts-details.png
+:alt: Suppressed alerts in the Correlations section within the alert details flyout
 :screenshot:
 :width: 450px
 :::
 
-{applies_to}`stack: ga 9.2` You can change the default behavior and continue suppressing alerts until the end of suppression window after you close an investigated alert. To do this, change the `securitySolution:suppressionBehaviorOnAlertClosure` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#suppression-window-behavior) to **Continue until suppression window ends**.
 
-## Alert suppression limit by rule type [security-alert-suppression-alert-suppression-limit-by-rule-type]
+## Investigate events for suppressed alerts [security-alert-suppression-investigate-events-for-suppressed-alerts]
 
-Some rule types have a maximum number of alerts that can be suppressed (custom query rules don’t have a suppression limit):
+Even though suppressed events don't generate their own alerts, you can still access the original events for analysis. Open Timeline with all the events associated with a suppressed alert using one of these methods:
 
-* **Threshold, event correlation, {{esql}}, and {{ml}}:** The maximum number of alerts is the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params), which is `100` by default.
-* **Indicator match and new terms:** The maximum number is five times the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params). The default value is `100`, which means the default maximum limit for indicator match rules and new terms rules is `500`.
+* Alerts table— select **Investigate in timeline** in the **Actions** column.
+* Alert details flyout— select **Take action > Investigate in timeline**.
 
-## Bulk apply and remove alert suppression [security-alert-suppression-bulk-apply]
+
+## Impact of closing suppressed alerts [security-alert-suppression-impact-close-alerts]
+
+By default, closing a suppressed alert while the suppression window is still active resets suppression. The next qualifying event starts a new suppression window and creates a new alert.
+
+For example, say you set suppression to 5 minutes, grouped by `host.name`. When an event matches, an alert is created. For the next 5 minutes, matching events are suppressed and grouped with that alert. If you close the alert before the 5-minute window ends, suppression stops. The next matching event creates a new alert and starts a new 5-minute window.
+
+{applies_to}`stack: ga 9.2` You can change this default behavior to continue suppressing alerts until the suppression window ends, even after you close the alert. To do this, change the `securitySolution:suppressionBehaviorOnAlertClosure` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#suppression-window-behavior) to **Continue until suppression window ends**.
+
+
+## Alert suppression limits [security-alert-suppression-alert-suppression-limit-by-rule-type]
+
+Some rule types limit the number of alerts that can be suppressed. Custom query rules have no suppression limit.
+
+| Rule type | Maximum suppressed alerts |
+|-----------|---------------------------|
+| Threshold, event correlation, {{esql}}, and {{ml}} | Equal to the rule's **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) (default: `100`) |
+| Indicator match and new terms | Five times the rule's **Max alerts per run** setting (default: `500`) |
+
+
+## Bulk apply or remove alert suppression [security-alert-suppression-bulk-apply]
 
 ```{applies_to}
-   stack: ga 9.1 
+stack: ga 9.1
 ```
 
-From the Rules table, use the **Bulk actions** menu to apply or remove alert suppression to multiple rules. The **Apply alert suppression** option can be used for all rules types except for the threshold rule type. To bulk-apply alert suppression to threshold rules, use the bulk menu option that's labeled for threshold rules only.
+You can apply or remove alert suppression from multiple rules at once using the **Bulk actions** menu in the Rules table.
+
+* For most rule types, use the **Apply alert suppression** option.
+* For threshold rules, use the bulk menu option labeled specifically for threshold rules.
