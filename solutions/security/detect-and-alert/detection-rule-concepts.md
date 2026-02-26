@@ -54,13 +54,7 @@ Exceptions prevent rules from generating alerts for specific conditions, even wh
 * Filter out known-benign activity specific to your environment
 * Reduce alert noise without modifying the rule's query logic
 
-Exceptions can be scoped to a single rule or shared across multiple rules using [shared exception lists](/solutions/security/detect-and-alert/create-manage-shared-exception-lists.md).
-
-::::{note}
-Exceptions are supported for custom query, {{ml}}, event correlation (EQL), indicator match, new terms, and {{esql}} rule types. Threshold rules do not support exceptions.
-::::
-
-For detailed guidance, refer to [Rule exceptions](/solutions/security/detect-and-alert/rule-exceptions.md).
+Exceptions can be scoped to a [single rule](/solutions/security/detect-and-alert/add-manage-exceptions.md) or shared across multiple rules using [shared exception lists](/solutions/security/detect-and-alert/create-manage-shared-exception-lists.md). You can add exceptions to all rule types.
 
 ## Notifications and actions [notifications-concept]
 

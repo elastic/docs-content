@@ -50,11 +50,15 @@ Each prebuilt rule includes several tags identifying the rule's purpose, detecti
     * `Vulnerability`: Detects exploitation of specific vulnerabilities.
 
 
-## Rule prerequisites [rule-prerequisites]
+## Prebuilt rule data sources [rule-prerequisites]
 
-Many prebuilt rules are designed to work with specific [{{product.integrations}}](https://docs.elastic.co/en/integrations) and data fields. These prerequisites are identified in **Related integrations** and **Required fields** on a rule's details page. **Related integrations** also displays each integration's installation status and includes links for installing and configuring the listed integrations.
+Each prebuilt rule queries specific index patterns or a data view, which determines the data the rule searches at runtime. You can see a rule's index patterns on its details page under **Definition**.
 
-Additionally, the **Setup guide** section provides guidance on setting up the rule's requirements.
+To help you set up the right data sources, rule details pages include:
+
+- **Related integrations**: [{{product.integrations}}](https://docs.elastic.co/en/integrations) that can provide compatible data. You don't need to install all listed integrations. Installing any of the integrations that matches your environment is typically sufficient. Some rules also work with data from legacy beats (such as {{filebeat}} or {{winlogbeat}}) without requiring a Fleet integration. This field also displays each integration's installation status and includes links for installing and configuring the listed integrations.
+- **Required fields**: Data fields the rule expects to find. This is informational—rules will still run if fields are missing, but may not generate expected alerts.
+- **Setup guide**: Step-by-step guidance for configuring the rule's data requirements.
 
 :::{image} /solutions/images/security-rule-details-prerequisites.png
 :alt: Rule details page with Related integrations
