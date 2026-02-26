@@ -28,12 +28,14 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [How long does Elastic retain AutoOps data?](#autoops-data-retention)
 * [Where are AutoOps metrics stored, and does AutoOps affect customer ECU usage?](#autoops-metrics-storage)
 * [Has AutoOps replaced Stack Monitoring?](#autoops-vs-stack-monitoring)
+* [How do I provide feedback about AutoOps?](#feedback)
 
 **Questions about AutoOps for ECE, ECK, or self-managed clusters**
 * [Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?](#additional-payment)
 * [Does shipping metrics data to {{ecloud}} incur additional costs?](#autoops-metrics-cost)
 * [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
 * [Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?](#maintenance)
+* [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
 
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
 * [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
@@ -64,9 +66,7 @@ $$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
 :   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
 
 $$$autoops-license$$$**How is AutoOps licensed?**
-:   For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.
-    :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-    ::: 
+:   AutoOps is available for free across all subscription levels and license types in {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, and self-managed clusters. It does not consume ECUs.
 
 $$$autoops-monitoring$$$**Does AutoOps monitor the entire {{stack}}?**
 :   AutoOps is currently limited to {{es}} (not {{kib}}, Logstash, or Beats).
@@ -86,11 +86,13 @@ $$$autoops-metrics-storage$$$**Where are AutoOps metrics stored, and does AutoOp
 $$$autoops-vs-stack-monitoring$$$**Has AutoOps replaced Stack Monitoring?**
 :   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, not logs. Read more in [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 
+$$$feedback$$$**How do I provide feedback about AutoOps?**
+:   We value your feedback. Help us improve by posting in our [Slack community](https://elasticstack.slack.com/) or the [Monitoring category](https://discuss.elastic.co/c/elastic-stack/monitoring/103) in the Elastic Discuss forum.
+
 ## Questions about AutoOps for ECE, ECK, or self-managed clusters
 
 $$$additional-payment$$$ **Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?**
-:   :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-::: 
+:   In ECE, ECK, and self-managed clusters, AutoOps is available for free across all [self-managed license types](https://www.elastic.co/subscriptions) through [Cloud Connect](/deploy-manage/cloud-connect.md). This does not consume ECUs.
 
 $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur additional costs?**
 :   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs are determined by your agreement with that CSP. 
@@ -102,6 +104,11 @@ $$$deployment-types$$$ **Which deployment types can be connected to AutoOps thro
 
 $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, we recommend keeping {{agent}} upgraded to the latest version so you can access new features and fixes. 
+
+$$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
+:   Support eligibility is determined by the license of your connected cluster:
+* Platinum and Enterprise licenses: Eligible for [Elastic support](https://support.elastic.co/).
+* Free and open (Basic) licenses: Eligible for community-based support through the [Elastic Stack Community on Slack](https://elasticstack.slack.com/) or the [Monitoring category](https://discuss.elastic.co/c/elastic-stack/monitoring/103) in the Elastic Discuss forum.
 
 ### Setting up AutoOps for ECE, ECK, or self-managed clusters
 
