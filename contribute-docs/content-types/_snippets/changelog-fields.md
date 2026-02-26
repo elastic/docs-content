@@ -70,10 +70,10 @@ issues:
 # They are externalized in the release docs so users can follow the links and
 # understand the context.
 
-pr: 
+prs:
 
-# An optional string that contains the pull request identifier.
-# It is externalized in the release docs so users can follow the link and find more details.
+# An optional array of pull request identifiers (URLs or numbers).
+# Each value is externalized in the release docs so users can follow the links and find more details.
 
 subtype:
 

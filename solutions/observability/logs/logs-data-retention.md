@@ -6,7 +6,7 @@ products:
   - id: observability
 ---
 
-# Configure logs data retention
+# Configure log data retention
 
 Your data retention policies define how long {{es}} keeps your log data before automatically removing it. Setting an appropriate data retention period helps manage storage costs and keeps your log data manageable.
 
@@ -35,7 +35,7 @@ The logs {{ilm-init}} policy provides a foundation for your logs data streams, b
 - Set retention durations for different phases.
 - Update rollover conditions.
 
-Refer to the **[Customize built-in policies tutorial](../../../manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md))** for more on modifying the logs {{ilm-init}} policy.
+Refer to the **[Customize built-in policies tutorial](../../../manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)** for more on modifying the logs {{ilm-init}} policy.
 
 ### Automate rollover based on log volume [logs-data-retention-automate-rollover]
 

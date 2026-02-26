@@ -161,7 +161,7 @@ FROM my_index
 | WHERE custom_timestamp >= ?_tstart AND custom_timestamp < ?_tend
 ```
 
-You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions.md#esql-bucket) function to create auto-incrementing time buckets in {{esql}} visualizations. For example:
+You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/bucket.md) function to create auto-incrementing time buckets in {{esql}} visualizations. For example:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -171,7 +171,7 @@ FROM kibana_sample_data_logs
 
 ### Time ranges with WHERE [_where_command]
 
-You can also limit the time range using the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command and the [`NOW`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-now) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
+You can also limit the time range using the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command and the [`NOW`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions/now.md) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
 
 ```esql
 FROM kibana_sample_data_logs
