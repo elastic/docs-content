@@ -9,7 +9,7 @@ products:
   - id: security
 ---
 
-# Quickstart: Detect and respond to threats with SIEM
+# Get started with Elastic Security SIEM: Detect and respond to threats
 
 In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM features to detect, investigate, and respond to threats. 
 
