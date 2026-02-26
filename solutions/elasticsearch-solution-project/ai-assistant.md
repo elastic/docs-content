@@ -3,6 +3,14 @@ applies_to:
   stack: ga
   serverless: ga
 navigation_title: AI Assistant
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # AI Assistant for Elastic {{observability}} and {{es}}

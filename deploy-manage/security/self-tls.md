@@ -3,6 +3,9 @@ navigation_title: Self-managed
 applies_to:
   deployment:
     self: ga
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 % scope: TLS encryption tasks and settings after the initial setup is completed.

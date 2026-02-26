@@ -4,6 +4,9 @@ applies_to:
   deployment:
     ece:
 navigation_title: AWS S3
+products:
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # Configure an AWS S3 snapshot repository in {{ece}} [ece-aws-custom-repository]

@@ -2,6 +2,13 @@
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Aggregation-based [add-aggregation-based-visualization-panels]
@@ -55,7 +62,7 @@ Choose the type of visualization you want to create, then use the editor to conf
        There is no performance impact on the data source you select. For example, saved Discover sessions perform the same as {{data-sources}}.
        ::::
 
-2. Add the [aggregations](../supported-chart-types.md#aggregation-reference) you want to visualize using the editor, then click **Update**.
+2. Add the aggregations you want to visualize using the editor, then click **Update**.
 
    ::::{note}
    For the **Date Histogram** to use an **auto interval**, the date field must match the primary time field of the {{data-source}}.
@@ -95,7 +102,7 @@ Open the **Aggregation based** editor and change the time range.
 
 ### Create the bar chart [tutorial-configure-the-bar-chart]
 
-To create the bar chart, add a [bucket aggregation](../supported-chart-types.md#bucket-aggregations), then add the terms sub-aggregation to display the top values.
+To create the bar chart, add a bucket aggregation, then add the terms sub-aggregation to display the top values.
 
 1. Add a **Buckets** aggregation.
 
@@ -161,5 +168,4 @@ To save the panel to the dashboard:
     1. In the panel header, click **No Title**.
     2. On the **Panel settings** window, select **Show title**.
     3. Enter the **Title**, then click **Save**.
-
 

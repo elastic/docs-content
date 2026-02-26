@@ -4,6 +4,13 @@ applies_to:
   serverless:
     security: all
 navigation_title: Security
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # {{elastic-sec}} reference
