@@ -36,7 +36,7 @@ The examples in this section use Docker commands. You can adapt them for other c
 The {{package-registry}} is available as a Docker image with different tags. Choose the appropriate image based on your update strategy.
 
 ::::{important}
-When choosing a {{package-registry}} image for production air-gapped environments, we recommend using one of the following options:
+When choosing an {{package-registry}} image for production air-gapped environments, we recommend using one of the following options:
 
 * **Versioned images**: Use images that match your {{stack}} version (for example, `docker.elastic.co/package-registry/distribution:{{version.stack}}`), as described in the [{{fleet}} documentation](/reference/fleet/air-gapped.md#air-gapped-diy-epr). This is the safest option for environments where you cannot immediately upgrade your {{stack}} when new versions are released.
 * **Production images**: Use an image like `docker.elastic.co/package-registry/distribution:production` _only_ if you keep your air-gapped {{stack}} up-to-date. If you want to rely on the `production` image for the most recent {{fleet}} packages and prebuilt detection rules, upgrade your {{stack}} as soon as new versions are released. This minimizes the risk of encountering breaking changes between the {{package-registry}} and your {{stack}} version.
