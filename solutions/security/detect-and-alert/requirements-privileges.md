@@ -14,7 +14,7 @@ description: Learn how to configure and enable the Detections feature in Elastic
 
 # Turn on detections [enable-detections-ui]
 
-Before you can create rules, manage alerts, or use other [detection capabilities](/solutions/security/detect-and-alert.md), you need to enable the Detections feature. This page walks you through the required setup for your deployment type and shows you how to turn on detections.
+Before you can create rules, manage alerts, or use other [detection capabilities](/solutions/security/detect-and-alert.md), you need to enable the detections feature. This page walks you through the required setup for your deployment type and shows you how to turn on detections.
 
 :::::::{tab-set}
 

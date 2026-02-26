@@ -24,7 +24,7 @@ This section explains the general process for setting up cross-cluster search in
 
 1. On the local cluster, establish trust and set up a connection to the remote cluster, using one of the following methods. With either method, note the unique name that you give to the remote cluster, because you’ll need to use it throughout this process.
 
-    * [Add remote clusters using API key authentication](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md) — Clusters must be on {{stack}} version 8.14 or later.
+    * [Add remote clusters using API key authentication](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md)
     * [Add remote clusters using TLS certificate authentication](../../../deploy-manage/remote-clusters/remote-clusters-cert.md)
 
 2. On both the local and remote clusters, [create a role for cross-cluster search privileges](../../../deploy-manage/remote-clusters/remote-clusters-cert.md#clusters-privileges-ccs-kibana-cert), and make sure the two roles have *identical* names. Assign each role the following privileges:
@@ -92,7 +92,7 @@ To update a rule’s API key, log into the local cluster as a user with the priv
 
     1. Find **Stack Management** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**.
     2. Use the search box and filters to find the rules you want to update. For example, use the **Type** filter to find rules under the **Security** category.
-    3. Select the rule’s actions menu (**…**), then **Update API key**.
+    3. Select the rule’s actions menu {icon}`boxes_horizontal`, then **Update API key**.
 
         ::::{tip}
         To update multiple rules, select their checkboxes, then click **Selected *x* rules** → **Update API keys**.

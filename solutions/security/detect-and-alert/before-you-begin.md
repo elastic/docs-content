@@ -17,13 +17,13 @@ Before you can create and run detection rules, confirm that your environment mee
 
 These tasks are typically completed once when you first configure detection capabilities:
 
-- [**Turn on detections**](/solutions/security/detect-and-alert/requirements-privileges.md): Enable the Detections feature for your deployment type. On {{serverless-short}}, detections are on by default.
-- [**Detections privileges**](/solutions/security/detect-and-alert/detections-privileges.md): Understand the cluster, index, and {{kib}} privileges required for detection features, and review predefined roles and the authorization model.
-- [**Detection rule concepts**](/solutions/security/detect-and-alert/detection-rule-concepts.md): Learn foundational concepts—data sources, rule authorization, exceptions, and notifications—that apply across all rule types.
+- [Turn on detections](/solutions/security/detect-and-alert/requirements-privileges.md): Enable the Detections feature for your deployment type. On {{serverless-short}}, detections are on by default.
+- [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md): Understand the cluster, index, and {{kib}} privileges required for detection features, and review predefined roles and the authorization model.
+- [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md): Learn foundational concepts that apply across all rule types such as data sources, rule authorization, exceptions, and notifications.
 
 ## Revisit as your environment changes
 
 These tasks may need to be updated over time as you onboard new data sources, add users, or expand your detection coverage:
 
-- **User roles and privileges**: As your team grows or responsibilities shift, review and update role assignments to ensure analysts have the access they need. Refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md).
-- [**Advanced data source configuration**](/solutions/security/detect-and-alert/advanced-data-source-configuration.md): Revisit {{ccs}} setup, data tier exclusions, and index mode settings when you add new clusters, change data retention policies, or onboard data sources that use different index configurations.
+- [User roles and privileges](/solutions/security/detect-and-alert/detections-privileges.md): As your team grows or responsibilities shift, review and update role assignments to ensure analysts have the access they need.
+- [Advanced data source configuration](/solutions/security/detect-and-alert/advanced-data-source-configuration.md): Revisit {{ccs}} setup, data tier exclusions, and index mode settings when you add new clusters, change data retention policies, or onboard data sources that use different index configurations.
