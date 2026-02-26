@@ -521,6 +521,7 @@ toc:
           - file: observability/ai/agent-builder-observability.md
           - file: observability/ai/llm-performance-matrix.md
       - file: observability/observability-serverless-feature-tiers.md
+      - file: observability/apis.md
   - file: security.md
     children:
       - file: security/get-started.md
