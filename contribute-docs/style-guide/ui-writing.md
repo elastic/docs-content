@@ -129,7 +129,7 @@ Use the language in this table when writing about UI components.
 | **Buttons** <br> A button is a UI element that is interactive by definition: when users click it, it responds to it by performing an action. <br> Use "click" and refer to a button by its label.    | ✔️ Do: Click **New**. <br> ❌ Don't: Click the "New" button.  |
 | **Checkbox and radio button** <br> Checkbox is one word. <br> Use "select" and  "clear" over "check" and "uncheck". <br> Avoid naming the component unless it adds clarity (for example in a complex UI).  | ✔️ Do: Select all index checkboxes. <br> ✔️ Do: Select **Logs**. <br> ✔️ Do: Clear **Metrics**.  |
 | **Icon buttons** <br> Include the icon inline to reinforce what the user is interacting with. For the name, use the tooltip text. If the icon doesn't have a name, give it one and make it sentence case.  | ✔️ Do: Click **Apply changes**. <br> ❌ Don't: Click the icon. |
-| **Key** <br> Use "press" followed by key name, or "the _Key_ key" if it adds clarity. For a key combination, use "Modifier+Key".  | ✔️ Do: In the query bar, enter your search criteria and press Enter. <br> ✔️ Do: Press Command+Alt+L to expand and collapse the current scope.  |
+| **Key** <br> Use "press" followed by key name, or "the _Key_ key" if it adds clarity. For a key combination, use "Modifier+Key".  | ✔️ Do: In the query bar, enter your search criteria and press **Enter**. <br> ✔️ Do: Press **Command+Alt+L** to expand and collapse the current scope.  |
 | **Menus** <br> Use arrows (→) to tell the user where to find the command. <br> A menu always has action items.  | Select **Manage index → Add lifecycle policy**.  |
 | **Text field** <br> Use "enter" for the action and code font for user input.   | ✔️ Do: In the **Name** field, enter a unique identifier for this rollup job. <br> ✔️ Do: In **Index pattern**, enter shakes*.   |
 | **Toggle ([Switch in EUI](https://elastic.github.io/eui/#/forms/form-controls#switch))** <br> Refer to the UI element as a "toggle". <br> Name it only if it adds clarity for the reader. If the UI is clear enough, stay minimalist and focus on the action. <br> Use "toggle" as a noun rather than a verb. <br> Prefer using "turn on", "turn off" as a verb over "enable" or "disable".  | ✔️ Do: Turn on **Malware protection**. <br> ✔️ Do: Turn off the **Malware protection** toggle in the **Preferences** window. <br> ❌ Don't: Toggle **Malware protection** in the **Preferences** window.  |
@@ -139,7 +139,7 @@ Use the language in this table when writing about UI components.
 * Don't use the verbs _open_ and/or _close_ when a user interacts with a menu. Use _From the menu,..._ instead.
 * Refer to it as "menu." Don't call it a "dropdown menu" or "dropdown list."
 
-### Icon vs. button
+### Icon versus button
 
 * If there is no text next to an actionable, visual symbol, it's an icon.
 * If there is text next to an actionable visual symbol, it's a button.
@@ -147,10 +147,34 @@ Use the language in this table when writing about UI components.
   button.
 * In the docs, refer to an icon with its symbol. 
 :::{dropdown} Example
-    From the action menu (...), select _Delete job_.
+    From the action menu (...), select **Delete job**.
 :::
   In this example, the (...) represents the action menu icon.
 
+### Select versus click 
+
+To ensure clarity and precision when describing user interactions, choose the verb that matches the type of UI element and the intent of the action.
+
+**Use "select" for choices**
+
+Use "select" when a user is choosing an option, toggling a state, or picking an item from a set, such as a dropdown. This verb emphasizes the choice being made rather than the physical action. 
+
+:::{dropdown} Examples
+  ✔️ **Do**: Select the **Enforce HTTPS checkbox**.
+  ✔️ **Do**: Select the **Logs** tab to view system events.
+  ❌ **Don't**: Select the **Save** button to confirm your changes. 
+:::
+
+**Use "click" for actions** 
+
+Use "click" when a user is initiating a process, performing a command, following a link, or needs to physically click a button or icon. Do not use "click" if the user needs to make a choice from a selection.   
+
+:::{dropdown} Examples
+  ✔️ **Do**: Click **Save** to confirm your changes.
+  ✔️ **Do**: Click the **Help** icon for more information.
+  ❌ **Don't**: From the action menu (...), click the **Delete** button to delete the job. 
+:::
+  
 ### Prepositions
 
 #### At 

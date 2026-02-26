@@ -170,6 +170,7 @@ toc:
               - file: ingest/opentelemetry/edot-sdks/missing-app-telemetry.md
               - file: ingest/opentelemetry/edot-sdks/proxy.md
               - file: ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md
+              - file: ingest/opentelemetry/edot-sdks/trace-context-propagation.md
           - file: ingest/opentelemetry/no-data-in-kibana.md
           - file: ingest/opentelemetry/connectivity.md
           - file: ingest/opentelemetry/429-errors-motlp.md

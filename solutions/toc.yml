@@ -84,6 +84,7 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
+      - file: elasticsearch-solution-project/es-serverless-add-ons.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -446,6 +447,7 @@ toc:
               - file: observability/logs/inspect-log-anomalies.md
           - file: observability/logs/run-pattern-analysis-on-log-data.md
           - file: observability/logs/log-data-sources.md
+          - file: observability/logs/logs-data-retention.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
             children:
@@ -470,7 +472,7 @@ toc:
         - file: observability/streams/management/partitioning.md
         - file: observability/streams/management/schema.md
         - file: observability/streams/management/data-quality.md
-        - file: observability/streams/management/significant-events.md
+        - hidden: observability/streams/management/significant-events.md
         - file: observability/streams/management/advanced.md
         - file: observability/streams/wired-streams.md
       - file: observability/incident-management.md
@@ -519,6 +521,7 @@ toc:
           - file: observability/ai/agent-builder-observability.md
           - file: observability/ai/llm-performance-matrix.md
       - file: observability/observability-serverless-feature-tiers.md
+      - file: observability/apis.md
   - file: security.md
     children:
       - file: security/get-started.md
@@ -688,7 +691,8 @@ toc:
         children:
           - file: security/integrations/aws-config.md
           - file: security/integrations/aws-inspector.md
-          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/aws-sec-hub.md
+          - file: security/integrations/aws-security-hub-cspm.md
           - file: security/integrations/cncf-falco.md
           - file: security/integrations/google-security-command-center.md
           - file: security/integrations/microsoft-defender-for-cloud.md

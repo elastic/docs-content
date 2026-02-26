@@ -33,11 +33,11 @@ Watch these video tutorials to help you get started:
 
 ## How Playground works [playground-how-it-works]
 
-Here’s a simpified overview of how Playground works:
+Here’s a simplified overview of how Playground works:
 
 * User **creates a connection** to LLM provider
 * User **selects a model** to use for generating responses
-* User **define the model’s behavior and tone** with initial instructions
+* User **defines the model’s behavior and tone** with initial instructions
 
     * **Example**: "*You are a friendly assistant for question-answering tasks. Keep responses as clear and concise as possible.*"
 
