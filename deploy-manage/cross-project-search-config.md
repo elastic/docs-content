@@ -68,19 +68,19 @@ When you configure {{cps}}, only compatible projects are available for linking:
 
 Workplace AI projects are not compatible with {{cps}}.
 
-{applies_to}`serverless: preview` {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. During technical preview, {{cps}} linking is supported for Complete-to-Complete project connections.
+{applies_to}`serverless: preview` {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier.
 
-% TODO add licensing/subscription tier details incl Platform+ pack
+% TODO add licensing/subscription tier details incl Serverless+
 
 ## Link projects [cps-link-projects]
 
-To link projects, use the Cloud UI. Open your origin project and use the {{cps}} linking wizard:
+To link projects, use the {{cps}} linking wizard in the Cloud UI:
 
 % TODO revise/expand (copied from other stub)
 
 1. On the home screen, find the project you want to use as the origin project and click **Manage**.
 2. Click **Link projects** on the **{{cps-cap}}** tile. Or click **{{cps-cap}}** in the navigation, then click **Link projects**.
-3. Browse or search for projects to link to the origin project. Only [compatible projects](#cps-compatibility) appear in the project list. You can filter the project list by type, cloud provider, region, and tags (custom or predefined).
+3. Browse or search for projects to link to the origin project. Only [compatible projects](#cps-compatibility) appear in the project list. You can filter the project list by type, cloud provider, region, and tags.
 4. Select the checkbox for each project you want to link. You can link up to 20 projects per origin project.
 
     ::::{note}
@@ -124,14 +124,18 @@ You can't delete a linked project. To delete a project, first unlink it everywhe
 
 ### Manage user access
 
-{{cps-cap}} respects user permissions across projects. When a user runs a {{cps}} from the origin project, results are filtered based on that user's permissions in each linked project (not just the origin). A user only sees results from linked projects where they have the necessary roles.
+{{cps-cap}} respects user permissions across projects. When a user runs a {{cps}} from the origin project, results are filtered based on that user's permissions in each linked project. 
 
-For example, if Project A is linked to Projects B and C, but a user only has access to Projects A and B, that user's cross-project searches will return results from A and B only. Results from Project C are excluded because the user does not have the necessary role assignments on that project.
+% TODO stop conflating nouns: credentials/identity/permissions/role 
 
-As an administrator, make sure that users who need to search across linked projects have the appropriate roles on each project they need to access. Authorization for {{cps}} is evaluated on the linked project side, based on the user's role assignments on that project.
+For example, if Project A is linked to Projects B and C, but a user only has access to Projects A and B, that user's cross-project searches will return results from A and B only. Results from Project C are excluded because the user does not have the necessary credentials.
+
+As an administrator, make sure that users who need to search across linked projects have the appropriate roles and API keys. Authorization for {{cps}} is evaluated on the linked project side.
+
+TODO expand including how to diagnose access troubles
 
 % TODO confirm: "if I create an API key from inside of my project for personal use, do I get CPS results at all?"
-% TODO link to UIAM docs and summarize?
+% TODO link to UIAM docs and summarize effects
 % TODO altering impacts of user role changes 
 
 For details about managing roles and API keys, refer to [Users and roles](/deploy-manage/users-roles.md) and [API keys](/deploy-manage/api-keys.md).
@@ -149,7 +153,9 @@ TODO expand
 To open space settings in {{kib}}, click **Configure Space settings in {{kib}}** in the banner that appears when you link projects. Or click **Manage Space** at the top of the project page. Select the space you want to configure.  
 
 % ::::{important}
-% If you don't adjust the default search scope, all searches, dashboards, visualizations, and alerting rules in the origin project will query data from % **every** linked project.
+% If you don't adjust the default search scope, all searches, dashboards
+% visualizations, and alerting rules in the origin project will query data from 
+% **every** linked project.
 % ::::
 
 % TODO verify steps; fix repetition
@@ -184,13 +190,11 @@ In this architecture, you create a new, empty project and link existing projects
 
 % TODO diagram?
 
-The hub-and-spoke architecture offers the following benefits:
+Using an overview project offers the following benefits:
 
-- **Reduces alert noise:** After you link projects, searches from the origin project query every linked project by default. If you link active projects directly, existing alerting rules will execute against the combined dataset of **all** linked projects, generating false positives.
+- **Reduces alert noise:** After you link projects, searches from the origin project query every linked project by default. If you link active projects directly, existing alerting rules will execute against the combined dataset of **all** linked projects, which might produce false positives and unintended alerts.
 - **Protects ML models:** {{ml-jobs-cap}} and transforms designed for a specific project's data could become inaccurate when data from other projects is included.
-- **Centralizes visibility:** The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting the operational isolation of individual projects.
-
-A project can act as both an origin project and a linked project (the configurations are independent). For most use cases, the hub-and-spoke pattern with a dedicated overview project is the simplest and safest approach.
+- **Centralizes visibility:** The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup (for example, isolated projects stay isolated).
 
 :::{note}
 If your overview project handles high search volumes, monitor its performance. Even if the project doesn't store data, it uses compute resources to run searches.
@@ -208,15 +212,17 @@ Enabling {{cps}} affects several features in the origin project:
 
 % TODO cf original sources
 
-- **Billing and data transfer:** {{cps-cap}} generates network egress traffic. When the origin project queries the linked projects, data transfer occurs between projects. Data transfer fees might apply, especially for cross-region or cross-cloud-provider queries.
+- **Billing and data transfer:** fill in
+
+% Data transfer fees might apply, especially for cross-region or cross-cloud-provider queries.
 
 % TODO link to billing docs
 
-- **Alerting:** By default, alerting rules in the origin project run against the combined dataset of the origin and all linked projects. (This is one reason we recommend a [hub-and-spoke architecture](#cps-arch) with a dedicated overview project, to ensure that the alerting rules on your existing projects are not affected.)
+- **Alerting:** By default, alerting rules in the origin project run against the combined dataset of the origin and all linked projects. (This is one reason we recommend using a dedciated [overview project](#cps-arch).)
 
 % TODO link to alerting impacts when available
 
-- **Dashboards and visualizations:** After you link projects, existing dashboards and visualizations in the origin project will query all linked projects. To limit this scope, refer to [Configure the default search scope](#cps-search-scope).
+- **Dashboards and visualizations:** After you link projects, existing dashboards and visualizations in the origin project will query all linked projects. To limit this scope, refer to [Manage search scope](#cps-search-scope).
 
 % TODO check for repetition 
 
