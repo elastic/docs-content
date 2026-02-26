@@ -168,7 +168,7 @@ For more details about updating prebuilt rules, refer to [Update Elastic prebuil
 
 If you cannot set up a self-hosted {{package-registry}}, you can manually export prebuilt rules from an internet-connected {{elastic-sec}} instance and import them into your air-gapped environment.
 
-This method is useful when you don't have container infrastructure to host a {{package-registry}}, need to transfer a specific subset of rules, or want a simpler one-time transfer without ongoing registry maintenance.
+This method is useful when you don't have container infrastructure to host an {{package-registry}}, need to transfer a specific subset of rules, or want a simpler one-time transfer without ongoing registry maintenance.
 
 ::::{note}
 When using the export import method:
