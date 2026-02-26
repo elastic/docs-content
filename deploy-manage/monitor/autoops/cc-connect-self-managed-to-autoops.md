@@ -20,12 +20,14 @@ The connection process takes about 10 minutes.
 If you have an {{es}} cluster set up for local development or testing, you can connect it to AutoOps using Docker. Refer to [](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
 :::
 
+:::{include} ../_snippets/cc-autoops-all-licenses.md
+:::
+
 ## Prerequisites
 
 Ensure your system meets the following requirements before proceeding:
 
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above).
-* Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an [active self-managed trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 * {applies_to}`eck: ga 3.3` To install {{agent}} using ECK, your ECK operator is on version 3.3.0 and above.
 
@@ -270,6 +272,10 @@ The status shows:
 :::::
 
 If the connection is unsuccessful, an error message is displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors). Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
+
+:::{tip}
+If you're having issues connecting your cluster to AutoOps and sending metrics to {{ecloud}}, run the [AutoOps Connectivity Check](../autoops/autoops-connectivity-check.md) to test your configuration.
+:::
 
 To uninstall the agent, refer to [](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md).
 

@@ -15,7 +15,7 @@ To learn about API principles, authentication, and how to use the OpenAPI specif
 The available APIs are grouped by project type:
 
 - APIs for [Search projects](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/group/endpoint-elasticsearch-projects)
-- APIs for [Observatibility projects](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/group/endpoint-observability-projects)
+- APIs for [Observability projects](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/group/endpoint-observability-projects)
 - APIs for [Security projects](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/group/endpoint-security-projects)
 
 To try the examples in this section, [set up an API key](#general-manage-project-with-api-set-up-api-key) and [create an {{serverless-full}} project](#general-manage-project-with-api-create-a-serverless-elasticsearch-project).

@@ -22,7 +22,7 @@ Using the {{security-app}}, you can tune prebuilt and custom detection rules to 
     ::::
 
 * Disable detection rules that rarely produce actionable alerts because they match expected local behavior, workflows, or policy exceptions.
-* [Clone and modify](/solutions/security/detect-and-alert/manage-detection-rules.md#manage-rules-ui) detection rule queries so they are aligned with local policy exceptions. This reduces noise while retaining actionable alerts.
+* [Clone and modify](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules) detection rule queries so they are aligned with local policy exceptions. This reduces noise while retaining actionable alerts.
 * Clone and modify detection rule risk scores, and use branching logic to map higher risk scores to higher priority workflows.
 * Enable [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for custom query rules to reduce the number of repeated or duplicate alerts.
 
