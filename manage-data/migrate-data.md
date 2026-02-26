@@ -119,7 +119,7 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 | ECE | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECK | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | {{serverless-short}} | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
-| Self-managed | {{serverless-short}} | Not currently supported |
+| Self-managed | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 
 * {applies_to}`serverless: preview 9.3+`
 
