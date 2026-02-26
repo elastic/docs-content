@@ -115,7 +115,7 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 
 | From | To | Supported Methods |
 | --- | --- | --- |
-| ECH | {{serverless-short}} | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md)*, [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| ECH | {{serverless-short}} | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md) {applies_to}`serverless: preview 9.3+`, [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECE | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECK | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | {{serverless-short}} | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
