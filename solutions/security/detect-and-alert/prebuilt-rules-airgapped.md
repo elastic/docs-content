@@ -96,7 +96,7 @@ xpack.fleet.registryUrl: "http://<your-registry-host>:8080"
 xpack.fleet.isAirGapped: true
 ```
 
-* [`xpack.fleet.registryUrl`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings): Points {{kib}} to your self-hosted registry. Replace `<your-registry-host>` with the hostname or IP address of your registry.
+* [`xpack.fleet.registryUrl`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings#fleet-data-visualizer-settings): Points {{kib}} to your self-hosted registry. Replace `<your-registry-host>` with the hostname or IP address of your registry.
 * [`xpack.fleet.isAirGapped`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings#general-fleet-settings-kb): Enables air-gapped mode, which allows {{fleet}} to skip requests or operations that require internet access.
 ::::
 
