@@ -783,3 +783,11 @@ redirects:
   'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
   'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
   'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/agentless/cloud-connector-deployment.md'
+
+# Moved Explore pages (Hosts, Network, Users) into Entity analytics section
+  'solutions/security/explore.md': 'solutions/security/advanced-entity-analytics.md'
+  'solutions/security/explore/hosts-page.md': 'solutions/security/advanced-entity-analytics/hosts-page.md'
+  'solutions/security/explore/network-page.md': 'solutions/security/advanced-entity-analytics/network-page.md'
+  'solutions/security/explore/users-page.md': 'solutions/security/advanced-entity-analytics/users-page.md'
+  'solutions/security/explore/configure-network-map-data.md': 'solutions/security/advanced-entity-analytics/configure-network-map-data.md'
+  'solutions/security/explore/configure-dns-histogram.md': 'solutions/security/advanced-entity-analytics/configure-dns-histogram.md'

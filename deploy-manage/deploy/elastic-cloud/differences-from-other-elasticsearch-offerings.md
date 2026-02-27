@@ -145,7 +145,7 @@ This table compares Security capabilities between {{ech}} deployments and Server
 
 | **Feature** | {{ech}} | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
-| **[Advanced Entity Analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
+| **[Entity analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
 | **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | |
 | **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |
