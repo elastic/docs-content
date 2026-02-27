@@ -127,13 +127,13 @@ If any errors in the logs mention "authorization" or "unauthorized connection", 
 :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
 :::
 
-## Verify AutoOps Agent version meets license requirements
+## Verify {{agent}} version meets license requirements
 
 ```{applies_to}
 eck: ga 3.3.1
 ```
 
-The minimum AutoOps Agent version depends on your license type. If the agent version is below the minimum for your license, the `AutoOpsAgentPolicy` enters `Invalid` phase.
+The minimum required {{agent}} version for the ECK installation method depends on your license type. If the agent version is below the minimum for your license, the `AutoOpsAgentPolicy` resource enters the `Invalid` phase.
 
 | License type | Minimum agent version |
 | --- | --- |
@@ -147,18 +147,18 @@ Run the following command.
 ```shell
 kubectl get autoopsagentpolicy <policy_name> -o jsonpath='{.spec.version}{"\n"}{.status.phase}{"\n"}'
 ```
-If the status shows `Invalid` with a version-related message, the agent version may not meet the minimum for your license type.
+If the status is `Invalid` with a version-related message, {{agent}} does not meet the minimum version requirement for your license type.
 ::::
 
 ::::{step} Check your license type
-Run the following command to check the ECK license level.
+Run the following command to check your cluster's license type.
 ```shell
 kubectl get configmap elastic-licensing -n <ECK_operator_namespace> -o jsonpath='{.data.eck_license_level}'
 ```
 ::::
 
-::::{step} Upgrade the agent if necessary
-If your license type is Basic and your agent version is below 9.2.4, upgrade the AutoOps Agent to version 9.2.4 or later.
+::::{step} Upgrade {{agent}}
+Based on your findings in the previous steps, upgrade {{agent}} to the appropriate version.
 ::::
 
 :::::
