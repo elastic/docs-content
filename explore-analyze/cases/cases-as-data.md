@@ -58,31 +58,40 @@ You can also interact with your case data using [{{esql}} in Discover](../discov
 * Find the total number of open {{observability}} cases in the default space:
 
   ```console
-  FROM .internal.cases.observability-default | STATS count = COUNT(*) BY status | WHERE status  == "open"
+  FROM .internal.cases.observability-default 
+  | STATS count = COUNT(*) BY status 
+  | WHERE status  == "open"
   ```
 
 * Find the total number of in progress Stack Management cases in the default space:
 
   ```console
-  FROM .internal.cases.cases-default | STATS count = COUNT(*) BY status | WHERE status  == "in-progress"
+  FROM .internal.cases.cases-default 
+  | STATS count = COUNT(*) BY status 
+  | WHERE status  == "in-progress"
   ```
 
 * Find the total number of closed {{observability}} cases in the default space:
 
   ```console
-  FROM .internal.cases.observability-default | STATS count = COUNT(*) BY status | WHERE status  == "closed"
+  FROM .internal.cases.observability-default 
+  | STATS count = COUNT(*) BY status 
+  | WHERE status  == "closed"
   ```
 
 * Find Security cases that are open in the default space, and sort them by time, with the most recent at the top:
 
   ```console
-  FROM .internal.cases.securitysolution-default | WHERE status  == "open" | SORT created_at DESC
+  FROM .internal.cases.securitysolution-default 
+  | WHERE status  == "open" 
+  | SORT created_at DESC
   ```
 
 * Find the average time that it takes to close Security cases in the default space:
 
   ```console
-  FROM .internal.cases.securitysolution-default | STATS average_time_to_close = AVG(time_to_resolve)
+  FROM .internal.cases.securitysolution-default 
+  | STATS average_time_to_close = AVG(time_to_resolve)
   ```
 
 ## Case analytics indices names and aliases [case-analytics-indices-names]

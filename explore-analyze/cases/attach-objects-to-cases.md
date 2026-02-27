@@ -25,7 +25,7 @@ In {{elastic-sec}}, you can also attach [events](/solutions/security/investigate
 
 ## Supported object types [supported-object-types]
 
-| Object | Description | Stack solutions | Serverless projects |
+| Object | Description | Stack | Serverless |
 | --- | --- | --- | --- |
 | [Alerts](#add-case-alerts) | Attach alerts to escalate and track detections. | Security, Observability | Security, Observability |
 | [Files](#add-case-files) | Upload screenshots, logs, or other supporting files. | Security, Observability, Stack Management | Security, Observability |
@@ -87,9 +87,9 @@ After adding an observable to a case, you can remove or edit it using the action
 
 ## Add Lens visualizations [cases-lens-visualization]
 
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
+```{applies_to}
+stack: beta
+```
 
 Add Lens visualizations to case descriptions or comments to portray event and alert data through charts and graphs. You can add them from dashboard panels or create visualizations directly in a case. To add a visualization from a dashboard, open a panel's menu, select the action menu {icon}`boxes_horizontal`, then **Add to existing case** or **Add to new case**.
 
