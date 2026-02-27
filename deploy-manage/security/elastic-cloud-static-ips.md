@@ -23,7 +23,7 @@ Suitable usage of ingress static IPs to introduce network controls:
 
 Not suitable usage of ingress static IPs to introduce network controls:
 
-* Traffic over private cloud service provider connections (e.g. AWS Privatelink, GCP Private Service Connect, Azure Private Link)
+* Traffic over private cloud service provider connections (e.g. AWS PrivateLink, GCP Private Service Connect, Azure Private Link)
 * Traffic to the [Cloud Console](http://cloud.elastic.co)
 * Traffic to non {{ecloud}} websites and services hosted by Elastic (e.g. www.elastic.co)
 

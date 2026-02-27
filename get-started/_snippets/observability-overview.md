@@ -10,7 +10,7 @@ New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to unders
 
 ## Use cases [observability-use-cases]
 
-Apply {{observability}} to various scenarios to improve operational awareness and system reliability. 
+Apply {{observability}} to various scenarios to improve operational awareness and system reliability.
 
 :::{dropdown} Use cases
 :open:
@@ -31,7 +31,7 @@ To start your {{observability}} journey, read the [**Get started**](/solutions/o
 
 ## Core concepts [observability-concepts]
 
-At the heart of Elastic {{observability}} are several key components that enable its capabilities. 
+At the heart of Elastic {{observability}} are several key components that enable its capabilities.
 
 :::{dropdown} Concepts
 :open:
@@ -41,8 +41,8 @@ At the heart of Elastic {{observability}} are several key components that enable
   * [**Metrics:**](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) Numerical measurements of system performance and health over time.
   * [**Traces:**](/solutions/observability/apm/traces.md) Representations of end-to-end journeys of requests as they travel through distributed systems.
 * [**OpenTelemetry:**](/solutions/observability/apm/opentelemetry/index.md) {{Observability}} offers first-class, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the {{edot}} (EDOT).
-* [**AIOps and AI Assistant:**](/solutions/observability/observability-ai-assistant.md) Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config {{anomaly-detect}}, pattern analysis, and the ability to surface correlations and root causes.
-* **[Alerting](/solutions/observability/incident-management/alerting.md)**: Allows you to create  rules to detect complex conditions and perform actions. 
+* [**AIOps and AI Assistant:**](/solutions/observability/ai/observability-ai-assistant.md) Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config {{anomaly-detect}}, pattern analysis, and the ability to surface correlations and root causes.
+* **[Alerting](/solutions/observability/incident-management/alerting.md)**: Allows you to create  rules to detect complex conditions and perform actions.
 * **[Cases](/solutions/observability/incident-management/cases.md):** Cases allows teams to stay aware of potential issues and track investigation details, assign tasks, and collaborate on resolutions.
 * [**Service Level Objectives (SLOs):**](/solutions/observability/incident-management/service-level-objectives-slos.md) A framework for defining and monitoring the reliability of a service. Elastic {{observability}} allows for creating and tracking SLOs to ensure you meet your performance targets.
 :::

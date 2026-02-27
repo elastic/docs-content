@@ -1,6 +1,6 @@
 ---
-description: Reference of all built-in tools available in Elastic Agent Builder
 navigation_title: "Built-in tools"
+description: "Reference of all built-in tools available in Elastic Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -14,7 +14,7 @@ products:
 
 <!-- Note: This file contains commented-out tool sections for features on main that are not yet available in released versions. -->
 
-# Elastic Agent Builder built-in tools reference
+# {{agent-builder}} built-in tools reference
 
 This page lists all built-in tools available in {{agent-builder}}. Built-in tools enable core operations for working with {{es}} data across platform, observability, and security use cases out-of-the-box.
 
@@ -189,11 +189,13 @@ The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/b
 `security.alerts`
 :   Searches and analyzes security alerts using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
-<!-- `security.entity_risk_score`
-:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. -->
+$$$agent-builder-security-entity-risk-score-tool$$$
+`security.entity_risk_score`
+:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. {applies_to}`stack: ga 9.4+`
 
-<!-- `security.attack_discovery_search`
-:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs.-->
+$$$agent-builder-security-attack-discovery-search-tool$$$
+`security.attack_discovery_search`
+:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. {applies_to}`stack: ga 9.4+`
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.

@@ -62,7 +62,7 @@ Learn more about [customizing the Alerts table](../detect-and-alert/manage-detec
 To analyze alerts associated with high-risk or business-critical entities, you can filter or group them by entity risk level or asset criticality level.
 
 ::::{note}
-If you change the entity’s criticality level after an alert is generated, that alert document will include the original criticality level and will not reflect the new criticality level.
+Entity risk fields on alert documents denote the risk at the time the alert was generated, not necessarily the current risk. Additionally, if you change the entity's criticality level after an alert is generated, that alert document will include the original criticality level and will not reflect the new criticality level.
 ::::
 
 

@@ -2,6 +2,13 @@
 applies_to:
   stack: ga
   serverless: unavailable
+products:
+  - id: elastic-stack
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 # Upgrade from 7.17 to {{version.stack}}
 

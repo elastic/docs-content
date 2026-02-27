@@ -432,7 +432,7 @@ curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000'
 
 ### List the next set of 10,000 {{agents}} [list-agents-api-next-set]
 ```{applies_to}
-stack: ga 9.1
+stack: ga 9.1+
 ```
 
 Beginning with {{stack}} version 9.1, the previous query response includes a `nextSearchAfter` parameter that you can pass in a subsequent call, to retrieve the next page of 10,000 enrolled agents:
@@ -443,7 +443,7 @@ curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&se
 
 ### List all {{agents}} for a point in time [list-agents-api-point-in-time]
 ```{applies_to}
-stack: ga 9.1
+stack: ga 9.1+
 ```
 
 Beginning with {{stack}} version 9.1, you can also capture a point-in-time ID (`pitId`) parameter from the `Get agents API` response, and use that together with the `nextSearchAfter` parameter to capture the next page of 10,000 enrolled agents for a specific point in time.
@@ -459,3 +459,36 @@ You can then use the returned values in a new request to retrieve the next set o
 ```shell
 curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&searchAfter=<nextSearchAfter>&pitId=<pit id>&pitKeepAlive=5m'
 ```
+
+
+## Manually roll back an {{agent}} upgrade [agent-rollback-api]
+```{applies_to}
+stack: ga 9.3+
+```
+
+The manual rollback feature for {{agent}} gives you the ability to roll back to the previously installed version if the install artifacts are still available on disk--typically seven days after the upgrade. 
+
+To roll back a single agent:
+   :Call `POST /api/fleet/agents/{agentID}/rollback`.
+
+To roll back multiple agents:
+   :Call `POST /api/fleet/agents/bulk_rollback`.
+
+### Limitations for manual rollback [rollback-limitations-api]
+
+These limitations apply for the manual rollback feature: 
+
+* Rollback is limited to the version running _before_ the upgrade. Both the previously and currently running versions must be 9.3.0 or later for this functionality to be available.
+* Data required for the rollback is stored on disk for seven days, which can impact available disk space.
+* Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
+* Manual rollback is not available for system-managed packages such as DEB and RPM.
+* Some data might be re-ingested after rollback.
+
+#### Possible errors [rollback-errors-api]
+
+If no version is available on disk to rollback to, you get an error.
+This situation can happen if:
+
+- the version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions. 
+
+- the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 

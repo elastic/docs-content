@@ -7,6 +7,14 @@ applies_to:
     self: ga
   serverless: ga
 navigation_title: API keys
+products:
+  - id: elastic-stack
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-serverless
 ---
 
 # Elastic API keys

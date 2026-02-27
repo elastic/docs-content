@@ -4,6 +4,13 @@ applies_to:
   stack: preview 9.3
   serverless: preview
 description: Learn about Kibana action steps for automating tasks such as creating cases and managing alerts in workflows.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # {{kib}} action steps
@@ -60,7 +67,7 @@ Use the following parameters in the `with` block to configure the request:
 | Parameter | Required | Description |
 |-----------|----------|-------------|
 | `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, or `DELETE`) |
-| `path` | Yes | The API endpoint path, starting with `/api/` or `/internal/` |
+| `path` | Yes | The API endpoint path, starting with `/api/` |
 | `body` | No | The JSON request body |
 | `query` | No | An object representing URL query string parameters |
 | `headers` | No | Custom HTTP headers to include in the request. `kbn-xsrf` and `Content-Type` are added automatically |
