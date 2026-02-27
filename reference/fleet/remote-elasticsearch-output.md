@@ -21,7 +21,7 @@ A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-
 
 These limitations apply to remote {{es}} output:
 
-* All {{fleet-server}} hosts which are set up for the remote output must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
+* All {{fleet-server}} hosts that are configured for the remote output must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
 * Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not currently supported.
 
@@ -46,7 +46,7 @@ In the **Hosts** field, add the URL that {{agents}} should use to access the rem
 :::{dropdown} Find the remote host address of the remote cluster
 :open:
 1. In the remote cluster, open {{kib}}, and search for **Fleet settings** in the search bar. Select **Fleet/Settings** in the results.
-2. In the **Outputs** section, copy the `Hosts` value of the default {{es}} output. If the value is not visible in full, edit the default  {{es}} output to display the full value.
+2. In the **Outputs** section, copy the `Hosts` value of the default {{es}} output. If the value isn't fully visible, edit the default {{es}} output to display the full value.
 3. In your management cluster, paste the value you copied into the **Hosts** field of the remote output configuration.
 :::
 :::::
@@ -65,7 +65,7 @@ In the **Service Token** field, add a service token to access the remote cluster
 :::
 
 :::{note}
-To prevent unauthorized access, the {{es}} service token is stored as a secret value. While secret storage is recommended, you can choose to override this setting, and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or later. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases).
+To prevent unauthorized access, the {{es}} service token is stored as a secret value. While secret storage is recommended, you can override this setting and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or later. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases).
 :::
 :::::
 
@@ -201,4 +201,4 @@ If you choose not to synchronize integrations automatically, you need to make su
 
 {{fleet-server}} requires connectivity to the remote cluster to generate API keys for {{agents}}. When you use a remote {{es}} output, {{fleet-server}} tests whether it can reach the remote cluster. The result determines whether the remote output is reported as healthy or unhealthy in the **Status** column for the output on the **{{fleet}}** → **Settings** page.
 
-If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests connectivity to all remote {{es}} outputs. If the {{fleet-server}} instances have different network scopes, it's expected that some of them might not be able to reach a certain remote output. In this case, the remote output will show as unhealthy in the UI with an `Unable to connect` error. You can ignore this status as long as the {{fleet-server}} instance that manages the {{agents}} using that remote output has connectivity to the remote cluster.
+If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests connectivity to all remote {{es}} outputs. If the {{fleet-server}} instances have different network scopes, some of them might not be able to reach a certain remote output. In this case, the remote output will display as unhealthy in the UI with an `Unable to connect` error. You can ignore this status as long as the {{fleet-server}} instance that manages the {{agents}} using that remote output has connectivity to the remote cluster.
