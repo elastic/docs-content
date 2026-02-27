@@ -779,3 +779,7 @@ redirects:
   'solutions/security/investigate/security-cases-features.md': 'solutions/security/investigate/security-cases.md'
   'solutions/security/investigate/cases.md': 'solutions/security/investigate/security-cases.md'
   'solutions/observability/incident-management/cases.md': 'solutions/observability/incident-management/observability-cases.md'
+# Related to https://github.com/elastic/docs-content/pull/5251
+  'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
+  'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
+  'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/agentless/cloud-connector-deployment.md'
