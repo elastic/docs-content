@@ -30,26 +30,40 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 
 ### {{kib}} privileges
 
-{{agent-builder}} access control is managed by the `agentBuilder` {{kib}} feature:
+{{agent-builder}} access control is managed by the `agentBuilder` {{kib}} feature. Assign either `Read` or `All` based on what users need to do.
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.2-9.3 }
-- "Read" access to the `agentBuilder` feature: Required to use agents, send chat messages, view tools, and access conversations.
-- "All" access to the `agentBuilder` feature: Required to create, update, or delete custom agents and tools.
-- "Read" access to the "Actions and Connectors" feature: Required to use AI connectors with agents.
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+#### `Read`
+
+Required to use agents, send chat messages, view tools, and access conversations.
+
+Instead of `All`, you can pair `Read` with individual sub-features for more granular control over what users can manage:
+
+- `Manage agents`: Create, update, or delete custom agents.
+- `Manage tools`: Create, update, or delete custom tools.
+
+#### `All`
+
+The broadest access level. Grants everything in `Read`, plus the ability to create, update, or delete custom agents and tools. Includes both management sub-features by default.
 :::
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
-- **Read** access to the `agentBuilder` feature: Required to use agents, send chat messages, view tools, and access conversations.
-- **All** access to the `agentBuilder` feature: Grants base read and write access. It also includes the management sub-features below, so users can create, update, and delete custom agents and tools (full access).
-- **Sub-features** (for granular control when defining custom roles):
-  - **Manage agents**: Required to create, update, or delete custom agents.
-  - **Manage tools**: Required to create, update, or delete custom tools.
-- **Read** access to the "Actions and Connectors" feature: Required to use AI connectors with agents.
+:::{applies-item} { stack: ga 9.2-9.3 }
+#### `Read`
+
+Required to use agents, send chat messages, view tools, and access conversations.
+
+#### `All`
+
+The broadest access level. Grants everything in `Read`, plus the ability to create, update, or delete custom agents and tools.
 :::
 
 ::::
+
+:::{note}
+If the agent uses AI connectors, also grant `Read` access to the {{connectors-feature}} feature.
+:::
 
 Learn more about [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
@@ -102,7 +116,7 @@ POST /_security/role/agent-builder-full
     {
       "application": "kibana-.kibana",
       "privileges": [
-        "feature_agentBuilder.all",
+        "feature_agentBuilder.all", <1>
         "feature_actions.read"
       ],
       "resources": ["space:default"]
@@ -111,23 +125,13 @@ POST /_security/role/agent-builder-full
 }
 ```
 
-:::{tip}
-For read-only access, use `feature_agentBuilder.read` instead of `feature_agentBuilder.all`.
-:::
+1. For read-only access, use `feature_agentBuilder.read` instead of `feature_agentBuilder.all`. [Learn more](#kib-privileges).
 
-::::{applies-switch}
+:::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
 
-:::{applies-item} { stack: ga 9.2-9.3 }
-Granular sub-feature privileges (manage agents / manage tools) are not available in Stack 9.3; use **Read** or **All** only.
+For granular access, pair `feature_agentBuilder.read` with only the sub-feature privileges needed. To learn more, refer to [Kibana privileges](#kib-privileges).
 :::
-
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
-:::{tip}
-For granular access, grant **Read** and add only the sub-features you need. In the role definition, use `feature_agentBuilder.read` plus `feature_agentBuilder.manage_agents` and/or `feature_agentBuilder.manage_tools` (for example, `read` and `manage_agents` only to allow managing agents but not tools, or the reverse).
-:::
-:::
-
-::::
 
 ### Grant access with API keys
 
