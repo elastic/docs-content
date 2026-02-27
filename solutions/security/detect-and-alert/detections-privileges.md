@@ -170,7 +170,7 @@ serverless: ga
 ## Authorization [alerting-auth-model]
 
 ```yaml {applies_to}
-stack: ga 9.0+
+stack: ga
 ```
 
 Detection rules, including all background detection checks and the actions they generate, are authorized using an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) associated with the last user to edit the rule. When a rule is created or modified, an API key is generated that captures a snapshot of that user's privileges. This API key is used to run all background tasks associated with the rule, including detection checks and executing actions.

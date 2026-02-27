@@ -85,7 +85,7 @@ Use bulk editing to update settings on multiple rules simultaneously. Rules that
     * **Index patterns**: Add or delete the index patterns used by all selected rules.
     * **Tags**: Add or delete tags on all selected rules.
     * **Custom highlighted fields**: Add custom highlighted fields on all selected rules. You can choose any fields that are available in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices), or enter field names from other indices. To overwrite a rule's current set of custom highlighted fields, select the **Overwrite all selected rules' custom highlighted fields** option, then click **Save**.
-    * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions, select the option to **Overwrite all selected rules actions**. Keep in mind that rule actions won't run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md); they'll resume after the maintenance window ends.
+    * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) on all selected rules. If you add multiple rule actions, you can specify an action frequency for each of them. To overwrite the frequency of existing rule actions, select the option to **Overwrite all selected rules actions**. Keep in mind that rule actions won't run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md); they'll resume after the maintenance window ends.
     * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule) and look-back times on all selected rules.
     * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.
 
@@ -163,18 +163,17 @@ Delete rules to permanently remove them from your system. This action cannot be 
 
 ## Snooze rule actions [snooze-rule-actions]
 
-Instead of turning rules off to stop alert notifications, you can snooze rule actions for a specified time period. When you snooze rule actions, the rule continues to run on its defined schedule, but won’t perform any actions or send alert notifications.
+Snoozing pauses a rule's actions (notifications, ticket creation, and other integrations) without stopping the rule itself. The rule keeps running on schedule and continues generating alerts; you just won't receive notifications until the snooze period ends.
 
-You can snooze notifications temporarily or indefinitely. When actions are snoozed, you can cancel or change the duration of the snoozed state. You can also schedule and manage recurring downtime for actions.
+Use snoozing for planned maintenance windows, expected alert spikes, or any time you want to silence notifications temporarily while still capturing alerts for later review.
 
-You can snooze rule notifications from the **Installed Rules** tab, the rule details page, or the **Actions** tab when editing a rule.
+You can snooze rule actions from the **Installed Rules** tab, the rule details page, or the **Actions** tab when editing a rule. Snooze options include temporary periods, indefinite snoozing, and recurring schedules.
 
 :::{image} /solutions/images/security-rule-snoozing.png
 :alt: Rules snooze options
 :width: 75%
 :screenshot:
 :::
-
 
 ## Run rules manually [manually-run-rules]
 

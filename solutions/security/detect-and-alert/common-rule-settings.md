@@ -156,16 +156,26 @@ It is recommended to set the `Additional look-back time` to at least 1 minute. T
 
 ## Rule actions [rule-notifications]
 
-Use actions to set up notifications sent through other systems when alerts are generated.
+Use rule actions to set up notifications sent through other systems when alerts are generated. Rule actions let you send Slack messages, create {{jira}} tickets, trigger PagerDuty incidents, and more.
 
 ::::{note}
-To use actions for alert notifications, you need the [appropriate license]({{subscriptions}}). For more information, see [Cases requirements](/solutions/security/investigate/cases-requirements.md).
+To use rule actions for alert notifications, you need the [appropriate license]({{subscriptions}}). For more information, see [Cases requirements](/solutions/security/investigate/cases-requirements.md).
 ::::
 
-::::{tip}
-:applies_to: {stack: preview 9.3+, serverless: preview}
-You can use [workflows](/explore-analyze/workflows.md) as a rule action to automate alert response processes. Workflows can create cases, route notifications, or perform other automated tasks when alerts are generated. To learn how to set up a workflow as a rule action, refer to [](/explore-analyze/workflows/triggers/alert-triggers.md).
-::::
+:::{admonition} Rule actions versus workflows
+:applies_to: `preview 9.3+` :applies_to: `serverless preview`
+You can automate alert responses using either rule actions or [workflows](/explore-analyze/workflows.md). Rule actions are simpler to set up and work well for individual rules with specific notification needs. Workflows offer more flexibility for complex, multi-step processes that you want to standardize across multiple rules.
+
+| Use case | Rule actions | Workflows |
+|----------|--------------|-----------|
+| Send notifications for a specific rule | Yes | Yes |
+| Apply the same response process to multiple rules | Configure separately on each rule | Define once, trigger from any rule |
+| Include complex conditional logic | Basic conditions only | Advanced conditions and branching |
+| Chain multiple actions together | Limited | Yes |
+| Centralized management | No (per-rule configuration) | Yes |
+
+To set up a workflow as a rule action, refer to [Trigger a workflow from an alert](/explore-analyze/workflows/triggers/alert-triggers.md).
+:::
 
 **Connector type**
 :   Determines how notifications are sent. For example, if you select the {{jira}} connector, notifications are sent to your {{jira}} system. You can configure connectors while creating the rule or from the **{{connectors-ui}}** page. For available connector types, refer to [Action and connector types](/deploy-manage/manage-connectors.md).
