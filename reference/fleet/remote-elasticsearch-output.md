@@ -21,7 +21,7 @@ A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-
 
 These limitations apply to remote {{es}} output:
 
-* At least one {{fleet-server}} must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
+* All {{fleet-server}} hosts which are set up for the remote output must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
 * Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not currently supported.
 
@@ -77,7 +77,7 @@ Configure SSL certificate authorities if the remote {{es}} cluster uses certific
 
 :::{applies-item} stack: ga 9.1
 
-Expand the **Authentication** section, then paste the certificate content into the **Server SSL certificate authorities** field.
+Expand the **Authentication** section, and in the **Server SSL certificate authorities** field, enter the path to the CA certificate or paste the certificate content directly.
 
 :::
 
@@ -118,8 +118,8 @@ If your remote {{es}} cluster requires mutual TLS (mTLS) authentication, configu
 
 Expand the **Authentication** section to configure mTLS settings:
 
-- **Client SSL certificate**: Paste the client certificate content that {{agents}} will use to authenticate with the remote cluster.
-- **Client SSL certificate key**: Paste the private key content associated with the client certificate.
+- **Client SSL certificate**: Enter the path to the client certificate that the {{agents}} will use to authenticate with the remote cluster, or paste the certificate content directly.
+- **Client SSL certificate key**: Enter the path to the private key associated with the client certificate, or paste the private key content directly.
 
 :::
 
