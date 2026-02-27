@@ -20,7 +20,7 @@ In {{ech}} deployments and {{serverless-short}} projects, you don't need to set 
 
 ## How certificate fingerprints work [how-fingerprints-work]
 
-Certificate fingerprints and CA certificate files establish trust in different ways during the TLS handshake. Fingerprints require the CA certificate to be in the presented chain whereas using CA files works even when the root CA is not sent by the server.
+Certificate fingerprints and CA certificate files establish trust in different ways during the TLS handshake. Fingerprints require the CA certificate to be in the presented chain, whereas using CA files works even when the server doesn't send the root CA.
 
 ### Fingerprint method
 
@@ -29,10 +29,10 @@ When using `ca_trusted_fingerprint` in the configuration or the `--fleet-server-
 1. The server presents its certificate chain during the TLS handshake.
 2. Before validating the server certificate, the client examines each certificate in the presented chain.
 3. If the client finds a CA certificate whose fingerprint matches the configured fingerprint, it adds that certificate to the in-memory list of trusted CAs.
-4. The TLS handshake continues with normal certificate validation using all configured CAs including the newly added one.
+4. The TLS handshake continues with normal certificate validation using all configured CAs, including the newly added one.
 
 ::::{important}
-The certificate whose fingerprint you configure must be present in the certificate chain sent by the server during the TLS handshake. If the certificate is not in the chain, the fingerprint cannot be matched, and the connection will fail with a `certificate signed by unknown authority` error.
+The certificate whose fingerprint you configure must be present in the certificate chain the server sends during the TLS handshake. If the certificate is not in the chain, the fingerprint cannot be matched, and the connection will fail with a `certificate signed by unknown authority` error.
 ::::
 
 ### CA certificate method
@@ -53,7 +53,7 @@ For a certificate fingerprint to work correctly, the certificate and fingerprint
 
 ### The certificate must be in the server's presented chain [fingerprint-requirements-1]
 
-The certificate must be included in the certificate file that the server presents during the TLS handshake. For {{es}}, this is the file specified in the `xpack.security.http.ssl.certificate` setting. For {{fleet-server}}, this is the certificate specified in the {{fleet-server}} configuration.
+The certificate must be included in the certificate file that the server presents during the TLS handshake. For {{es}}, this is the file specified in the `xpack.security.http.ssl.certificate` setting. For {{fleet-server}}, this is the certificate specified in its configuration.
 
 Certificates that exist only in the server's certificate authorities file cannot be used 
 for fingerprints because they are not sent during the TLS handshake.
@@ -87,8 +87,8 @@ The fingerprint must be a HEX-encoded SHA-256 hash with colons removed.
 ## Choosing which certificate to use [choosing-certificate]
 
 Before generating a fingerprint, you need to identify which certificate from your certificate 
-chain to use. You must use a CA certificate from the certificate file that the server presents 
-during the TLS handshake, and not from the server's certificate authorities file.
+chain to use. You must use a CA certificate from the certificate file the server presents 
+during the TLS handshake, not from the server's certificate authorities file.
 
 ### Understanding your certificate chain
 
@@ -106,7 +106,7 @@ xpack.security.http.ssl.certificate_authorities: ["certs/root-ca.pem"]
 ```
 
 :::{note}
-This example shows Elasticsearch configuration settings. If you're connecting to Fleet Server, the 
+This example shows {{es}} configuration settings. If you're connecting to {{fleet-server}}, the 
 configuration will use different setting names, but the principle is the same.
 :::
 
@@ -128,7 +128,7 @@ Based on this server configuration, the following table shows which certificates
 | Intermediate CA 2 | ✅ **Works** | In the server's presented certificate file and has `CA:TRUE` |
 | Server certificate | ❌ **Fails** | Not a CA certificate (`CA:FALSE`) |
 
-**Key takeaway**: You need to use a CA certificate from the certificate file that the server presents during the TLS handshake. You cannot use the root CA if it's only in the server's certificate authorities file, and you cannot use the server certificate itself.
+**Key takeaway**: You need to use a CA certificate from the certificate file that the server presents during the TLS handshake. You cannot use the root CA if it's only in the server's certificate authorities file, nor can you use the server certificate itself.
 
 ## Generate a certificate fingerprint [generate-fingerprint]
 

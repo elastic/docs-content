@@ -117,7 +117,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
     3. In the **Hosts** field, specify the {{es}} URLs where {{agent}}s will send data. For example, [https://192.0.2.0:9200](https://192.0.2.0:9200).
     4. Specify either a CA certificate or a CA fingerprint to connect securely to {{es}}:
 
-        * If you have a valid HEX encoded SHA-256 CA trusted fingerprint, specify it in the **Elasticsearch CA trusted fingerprint** field. The fingerprint must be for a CA certificate that is present in the certificate chain sent by {{es}} during the TLS handshake. For more information, refer to [Using certificate fingerprints](/reference/fleet/certificate-fingerprints.md).
+        * If you have a valid HEX-encoded SHA-256 CA trusted fingerprint, specify it in the **Elasticsearch CA trusted fingerprint** field. The fingerprint must be for a CA certificate that's present in the certificate chain {{es}} sends during the TLS handshake. For more information, refer to [Using certificate fingerprints](/reference/fleet/certificate-fingerprints.md).
         * Otherwise, specify the certificate authorities to use to connect to {{es}}.
         
           You can specify the path to one or more CA certificates (if the files are available), or embed the certificate content directly. If you specify file paths, the certificates must be available on the hosts running the {{agent}}s.
