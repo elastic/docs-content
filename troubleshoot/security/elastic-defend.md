@@ -18,10 +18,7 @@ products:
 This topic covers common troubleshooting issues when using {{elastic-defend}}'s [endpoint management tools](../../solutions/security/manage-elastic-defend.md).
 
 
-## Endpoints [ts-endpoints]
-
-:::::{dropdown} Unhealthy {{agent}} status
-:name: ts-unhealthy-agent
+## Unhealthy {{agent}} status [ts-unhealthy-agent]
 
 In some cases, an `Unhealthy` {{agent}} status may be caused by a failure in the {{elastic-defend}} integration policy. In this situation, the integration and any failing features are flagged on the agent details page in {{fleet}}. Expand each section and subsection to display individual responses from the agent.
 
@@ -46,11 +43,7 @@ If the {{elastic-defend}} integration policy is not the cause of the `Unhealthy`
 ::::
 
 
-:::::
-
-
-:::::{dropdown} Disabled to avoid potential system deadlock (Linux)
-:name: linux-deadlock
+## Disabled to avoid potential system deadlock (Linux) [linux-deadlock]
 
 If you have an `Unhealthy` {{agent}} status with the message `Disabled due to potential system deadlock`, that means malware protection was disabled on the {{elastic-defend}} integration policy due to errors while monitoring a Linux host.
 
@@ -73,11 +66,7 @@ To resolve the potential system deadlock error:
     Once you save the policy, malware protection is re-enabled.
 
 
-:::::
-
-
-:::::{dropdown} Required transform failed
-:name: ts-transform-failed
+## Required transform failed [ts-transform-failed]
 
 If you encounter a `“Required transform failed”` notice on the Endpoints page, you can usually resolve the issue by restarting the transform. Refer to [Transforming data](../../explore-analyze/transforms.md) for more information about transforms.
 
@@ -103,11 +92,8 @@ To restart a transform that’s not running:
 4. On the confirmation message that displays, click **Start** to restart the transform.
 5. The transform’s status changes to `started`. If it doesn’t change, refresh the page.
 
-:::::
 
-
-:::::{dropdown} {{agent}} and Endpoint connection issues
-:name: ts-agent-connection
+## {{agent}} and Endpoint connection issues [ts-agent-connection]
 
 After {{agent}} installs Endpoint, Endpoint connects to {{agent}} over a local relay connection to report its health status and receive policy updates and response action requests. If that connection cannot be established, the {{elastic-defend}} integration will cause {{agent}} to be in an `Unhealthy` status, and Endpoint won’t operate properly.
 
@@ -169,11 +155,7 @@ To debug and resolve the issue, follow these steps:
     * `ping -4 localhost` (Windows)
 
 
-:::::
-
-
-::::{dropdown} {{elastic-defend}} deployment issues
-:name: defend-deployment
+## {{elastic-defend}} deployment issues [defend-deployment]
 
 After deploying {{elastic-defend}}, you might encounter warnings or errors in the endpoint’s **Policy status** in {{fleet}} if your mobile device management (MDM) is misconfigured or certain permissions for {{elastic-endpoint}} aren’t granted. The following sections explain issues that can cause warnings or failures in the endpoint’s policy status.
 
@@ -241,12 +223,8 @@ sudo /Library/Elastic/Endpoint/elastic-endpoint test install
 
 If the command output doesn’t contain a message about enabling Full Disk Access, the approval was successful.
 
-::::
 
-
-::::{dropdown} Disable {{elastic-defend}}'s self-healing feature on Windows
-:name: disable-self-healing
-
+## Disable {{elastic-defend}}'s self-healing feature on Windows [disable-self-healing]
 
 ### Volume Snapshot Service issues [self-healing-vss-issues]
 
@@ -265,4 +243,42 @@ There are some known compatibility issues between {{elastic-defend}}'s self-heal
 
 There are no known workarounds for this issue other than to turn off the self-healing feature.
 
+## Failed to download user artifacts [ts-download-user-artifacts]
+
+This problem can be identified if `download_user_artifacts` (Download User Artifacts) fails in {{elastic-endpoint}}'s policy response.
+
+When {{elastic-endpoint}} is unable to download user artifacts (such as {{elastic-endpoint}} exceptions or trusted applications), it fails to apply the policy because without the right exceptions in place, {{elastic-endpoint}} could have undesired behavior.
+
+{{elastic-endpoint}} caches artifacts locally and keeps trying to download them when necessary, so this problem often resolves itself. If it doesn't, the most common causes are network connection issues or TLS/SSL certificate validation errors. Run the following command for diagnostic information:
+
+* `sudo /opt/Elastic/Endpoint/elastic-endpoint test output` (Linux)
+* `sudo /Library/Elastic/Endpoint/elastic-endpoint test output` (macOS)
+* `c:\Program Files\Elastic\Endpoint\elastic-endpoint.exe test output` (Windows)
+
+If network connectivity is the problem and the output doesn't clarify the issue, consider using a tool like `curl` for further diagnosis. If incorrect proxy information is displayed, review the proxy configuration, noting that you can override this with {{elastic-defend}} [advanced settings](/reference/security/defend-advanced-settings.md). For certificate issues, check the {{fleet-server}} configuration and explore using one of the `advanced.artifacts.user.*` {{elastic-defend}} advanced settings.
+
+If those steps don't surface the problem, it can occasionally help to make a small edit to the failing artifact(s) — for example, adding an item — to refresh the data that {{agent}} is trying to download.
+
+## Protection artifacts are out of date [ts-global-artifacts-out-of-date]
+
+This problem can be identified if `download_global_artifacts` (Download Global Artifacts) fails in {{elastic-endpoint}}'s policy response with a message like `Global artifacts snapshot {version} does not match target snapshot: {date}`.
+
+This means artifact snapshots are enabled, but the artifacts currently in use don't yet match the expected snapshot. This is typically due to propagation delays on the Elastic Global Artifacts CDN (or self-hosted mirror). {{elastic-endpoint}} should fetch the requested artifacts once they're available.
+
+For troubleshooting, run:
+
+* `sudo /opt/Elastic/Endpoint/elastic-endpoint test output` (Linux)
+* `sudo /Library/Elastic/Endpoint/elastic-endpoint test output` (macOS)
+* `c:\Program Files\Elastic\Endpoint\elastic-endpoint.exe test output` (Windows)
+
+::::{note}
+The version value `latest` is a special label that means "no snapshot — use the most recent artifacts". This status can appear whenever a new snapshot is set in policy — for example, during a transition from `latest` to `YYYY-MM-DD`, or from one `YYYY-MM-DD` date to another.
 ::::
+
+## Failed to connect to driver on Windows [ts-connect-driver-windows]
+
+This problem can be identified if `connect_kernel` (Connect Kernel) fails on Windows.
+
+This often happens because the {{elastic-endpoint}} service started before the driver. It should auto-resolve in a few seconds.
+
+Rarely, the driver service might be in a delete-pending state due to an installation issue. This can be caused by a local administrator's failed attempt to stop or delete the `ElasticEndpointDriver` service. Rebooting the system resolves the issue.
