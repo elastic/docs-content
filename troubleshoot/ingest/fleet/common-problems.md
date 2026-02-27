@@ -34,7 +34,7 @@ We have collected the most common known problems and listed them here. If your p
 
 * [Retrieve the {{agent}} version](#trb-retrieve-agent-version)
 * [Check the {{agent}} status](#trb-check-agent-status)
-* [Collect {{agent}} diagnostics bundle](/troubleshoot/ingest/fleet/diagnostic.md)
+* [Collect {{agent}} diagnostics bundle](/troubleshoot/ingest/fleet/diagnostics.md)
 * [Some problems occur so early that insufficient logging is available](#not-installing-no-logs-in-terminal)
 * [{{agent}} is cited as `Healthy` but still has set up problems sending data to {{es}}](#agent-healthy-but-no-data-in-es)
 * [{{agent}} is stuck in status `Updating`](#fleet-agent-stuck-on-updating)

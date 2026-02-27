@@ -29,4 +29,4 @@ If your symptoms are not covered by these guides, review the open issues in thes
 | [elastic/package-registry](https://github.com/elastic/package-registry/issues) | {{package-registry}} |
 | [elastic/docs-content](https://github.com/elastic/docs-content/issues) | Documentation issues |
 
-Otherwise, [contact us](/troubleshoot/index.md##contact-us) sharing [related diagnostics](/troubleshoot/ingest/fleet/diagnostic.md). Your feedback is valuable to us.
+Otherwise, [contact us](/troubleshoot/index.md##contact-us) sharing [related diagnostics](/troubleshoot/ingest/fleet/diagnostics.md). Your feedback is valuable to us.
