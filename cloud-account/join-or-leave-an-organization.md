@@ -3,13 +3,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-invite-users.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-organization.html
 applies_to:
-  serverless: all
+  serverless: ga
   deployment:
-    ess: all
+    ess: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless
 ---
+
+% EDIT ME!
 
 # Join or leave an organization
 

@@ -3,11 +3,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-billing.html
 applies_to:
   deployment:
-    self:
-    ece:
-    eck:
-    ess: all
-  serverless: all
+    self: ga
+    ece: ga
+    eck: ga
+    ess: ga
+  serverless: ga
 products:
   - id: cloud-hosted
 ---

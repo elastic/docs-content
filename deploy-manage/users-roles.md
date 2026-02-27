@@ -3,8 +3,8 @@ navigation_title: Users and roles
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/project-settings-access.html
 applies_to:
-  stack: all
-  serverless: all
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
 ---

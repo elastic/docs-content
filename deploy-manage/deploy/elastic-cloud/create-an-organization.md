@@ -13,27 +13,22 @@ products:
   - id: cloud-serverless
 ---
 
-# Sign up and create an organization
+# Sign up
 
-
-To sign up:
+To get started with {{ecloud}}, sign up for an account:
 
 1. Go to the [{{ecloud}} Sign Up](https://cloud.elastic.co/registration?page=docs&placement=docs-body) page.
 2. Choose one of the available sign up methods. You can register with your email address and a password, use a Google or Microsoft account, or [subscribe from a Marketplace](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
-:::{note}
-* You can only belong to one {{ecloud}} organization at a time. If you want to create or join another organization, you must [leave the previous one](/cloud-account/join-or-leave-an-organization.md#ec-leave-organization) or use a different email address.
-* An email address can’t be used for more than one {{ecloud}} account. To make the email address available for a new account, you can [remove it from your existing account](/cloud-account/update-your-email-address.md#sign-up-existing).
-:::
-
 When you first sign up, you create an organization and start with a trial license.
 
-This organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization. For more details on how to manage your organization, refer to [](/deploy-manage/cloud-organization.md).
-
+An organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization. A user can belong to multiple organizations, or be the owner of multiple organizations. For more details on how to manage your organizations, refer to [](/deploy-manage/cloud-organization.md).
 
 ## Trial information [general-sign-up-trial-what-is-included-in-my-trial]
 
-Your free 14-day trial includes:
+When you create an organization, you start with a free 14-day trial. During this trial, you have access to the following:
+
+% do we want to tell them that they have unlimited trials by creating multiple organizations?
 
 **One hosted deployment**
 
@@ -49,7 +44,7 @@ For more information, check the [{{ech}} documentation](cloud-hosted.md).
 * [Observability](../../../solutions/observability.md)
 * [Security](../../../solutions/security.md)
 
-When you create a project, you select the project type applicable to your use case, so only the relevant and impactful applications and features are easily accessible to you.
+When you create a project, you select the project type applicable to your use case, so the most relevant applications and features are surfaced for you from the start.
 
 For more information, check the [{{serverless-short}} documentation](serverless.md).
 
@@ -81,7 +76,6 @@ To monitor charges, anticipate future costs, and adjust your usage, check your [
 When your trial expires, the deployment and projects that you created during the trial period are suspended until you subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md). When you subscribe, you are able to resume your deployment and {{serverless-short}} projects, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, {{serverless-short}} projects, and ingested data are permanently deleted.
 
 If you’re interested in learning more ways to subscribe to {{ecloud}}, don’t hesitate to [contact us](https://www.elastic.co/contact).
-
 
 ## How do I get help? [ec_how_do_i_get_help]
 
