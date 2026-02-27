@@ -369,7 +369,6 @@ If you run `GET logs/_search`:
 * documents from the `logs` index in project 1 are returned
 * the `logs` index in project 2 is not accessible and is excluded from the results
 
-Using {{cps}} does not grant additional permissions beyond those already defined in each project.
 
 ## Supported APIs [cps-supported-apis]
 
