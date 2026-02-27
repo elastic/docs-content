@@ -346,7 +346,7 @@ This section gives you a high-level overview of how security works in {{cps}}.
 In {{cps-init}}, access to a project’s data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
 
 ::::{note}
-{{cps-cap}} is available only to Cloud users authenticated through [Kibana SSO](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md) and universal API keys used for programmatic access. {{es}} API keys are project-scoped and cannot be used to access linked projects through {{cps-init}}.
+{{cps-cap}} is available only to Cloud users authenticated through [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md) and universal API keys used for programmatic access. {{es}} API keys are project-scoped and cannot be used to access linked projects through {{cps-init}}.
 ::::
 <!-- Link to universal API keys. -->
 
