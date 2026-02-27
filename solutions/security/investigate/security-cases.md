@@ -58,5 +58,5 @@ Attach [threat intelligence indicators](/solutions/security/investigate/indicato
 Attach [Timelines](/solutions/security/investigate/timeline.md) to cases to preserve your investigation context and share it with your team. When you link a Timeline, other analysts can see the exact queries, filters, and events you examined, making it easier to collaborate, hand off investigations, or document your evidence trail.
 
 ::::{tip}
-To insert a Timeline link in the case description, click the Timeline icon (![Timeline icon](/solutions/images/security-add-timeline-button.png "title =20x20")).
+To insert a Timeline link in the case description, click the Timeline icon {icon}`timeline`.
 :::: 
