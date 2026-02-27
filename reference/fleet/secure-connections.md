@@ -2,8 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secure-connections.html
 applies_to:
-  stack: ga
-  serverless: unavailable
+  deployment: 
+    self: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -20,7 +20,6 @@ For a summary of flow by which TLS is established between components using eithe
 ::::{tip}
 [{{ecloud}}](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body) provides secure, encrypted connections out of the box!
 ::::
-
 
 
 ## Prerequisites [prereqs]
@@ -278,6 +277,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
 
 ## Configure SSL/TLS using {{kib}} [fleet-server-ssl-ui-settings]
+
 ```{applies_to}
   stack: ga 9.1
 ```

@@ -3,7 +3,7 @@ navigation_title: Certificate fingerprints
 description: Use certificate fingerprints to secure Elastic Agent connections to Fleet Server and Elasticsearch without CA certificate files.
 applies_to:
   stack: ga
-  serverless: unavailable
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -12,6 +12,11 @@ products:
 # Using certificate fingerprints [certificate-fingerprints]
 
 Certificate fingerprints provide an alternative to using certificate authority (CA) files when securing connections between {{agent}}, {{fleet-server}}, and {{es}}.
+
+:::{note}
+:applies_to: { serverless: ga, ess: ga }
+In {{ech}} deployments and {{serverless-short}} projects, you don't need to set certificate authorities or certificate fingerprints because Elastic always uses trusted certificates.
+:::
 
 ## How certificate fingerprints work [how-fingerprints-work]
 
