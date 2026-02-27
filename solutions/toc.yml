@@ -447,6 +447,7 @@ toc:
               - file: observability/logs/inspect-log-anomalies.md
           - file: observability/logs/run-pattern-analysis-on-log-data.md
           - file: observability/logs/log-data-sources.md
+          - file: observability/logs/logs-data-retention.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
             children:
@@ -520,6 +521,7 @@ toc:
           - file: observability/ai/agent-builder-observability.md
           - file: observability/ai/llm-performance-matrix.md
       - file: observability/observability-serverless-feature-tiers.md
+      - file: observability/apis.md
   - file: security.md
     children:
       - file: security/get-started.md
@@ -537,10 +539,6 @@ toc:
               - file: security/get-started/automatic-migration.md
               - file: security/get-started/automatic-import.md
               - file: security/get-started/content-connectors.md
-              - file: security/get-started/agentless-integrations.md
-                children:
-                  - file: security/get-started/cloud-connector-deployment.md
-                  - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
             children:
               - file: security/get-started/spaces-defend-faq.md
