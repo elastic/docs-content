@@ -736,3 +736,7 @@ redirects:
     anchors:
       'load-prebuilt-rules': 'load-prebuilt-rules'
 
+# Related to https://github.com/elastic/docs-content/pull/5251
+  'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
+  'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
+  'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/agentless/cloud-connector-deployment.md'
