@@ -272,7 +272,7 @@ For troubleshooting, run:
 * `c:\Program Files\Elastic\Endpoint\elastic-endpoint.exe test output` (Windows)
 
 ::::{note}
-The version value `latest` is a special label that means "no snapshot — use the most recent artifacts". This status can appear whenever a new snapshot is set in policy — for example, during a transition from `latest` to `YYYY-MM-DD`, or from one `YYYY-MM-DD` date to another.
+The version value `latest` is a special label that means "no snapshot — use the most recent artifacts." This status can appear whenever a new snapshot is set in policy — for example, during a transition from `latest` to `YYYY-MM-DD`, or from one `YYYY-MM-DD` date to another.
 ::::
 
 ## Failed to connect to driver on Windows [ts-connect-driver-windows]
