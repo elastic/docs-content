@@ -54,9 +54,9 @@ $$$eck-no-clusters$$$**I went through the wizard with {{ECK}} (ECK) as my instal
 :   Refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-eck-no-clusters.md) to diagnose and resolve common issues.
 
 $$$invalid-phase-license-change$$$**My `AutoOpsAgentPolicy` resource entered the `Invalid` phase after a license change.** {applies_to}`eck: ga 3.3`
-:   The minimum required {{agent}} version for the ECK installation method depends on your license type. Enterprise licenses support agent versions 9.2.1 and later, and Basic licenses require 9.2.4 or later. If your license is downgraded from Enterprise to Basic and your agent version is between 9.2.1 and 9.2.3, the policy will fail validation and enter the `Invalid` phase.
+:   The [minimum required {{agent}} version](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for the ECK installation method depends on your license type. Enterprise licenses require agent versions 9.2.1 and later, and Basic licenses require versions 9.2.4 or later. If your license is downgraded from Enterprise to Basic and your agent version is between 9.2.1 and 9.2.3, the policy will fail validation and enter the `Invalid` phase.
 
-    To resolve this, upgrade the AutoOps Agent to version 9.2.4 or later. Refer to the [prerequisites](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for the full version requirements.
+    To resolve this issue, upgrade {{agent}}.
 
 ## Run the AutoOps Connectivity Check
 

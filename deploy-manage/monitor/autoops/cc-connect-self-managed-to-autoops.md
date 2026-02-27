@@ -30,13 +30,13 @@ Ensure your system meets the following requirements before proceeding:
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 * {applies_to}`eck: ga 3.3` To install {{agent}} using ECK, your ECK operator is on version 3.3.0 and above.
-* {applies_to}`eck: ga 3.3.1` The AutoOps Agent version meets the minimum for your license type:
+* {applies_to}`eck: ga 3.3.1` The instance of {{agent}} you install meets the version requirements for your license type:
   * **Basic license**: 9.2.4 or later.
   * **Enterprise license**: 9.2.1 or later.
 
 :::{important}
 :applies_to: { eck: ga 3.3.1 }
-If you are running an Enterprise license with an AutoOps Agent version between 9.2.1 and 9.2.3, and your license is later downgraded to Basic, the `AutoOpsAgentPolicy` will enter an `Invalid` phase. To resolve this, upgrade the AutoOps Agent to version 9.2.4 or later.
+If your ECK-managed cluster's license is downgraded, you must upgrade {{agent}} accordingly to avoid your `AutoOpsAgentPolicy` resource becoming invalid.
 :::
 
 ## Connect to AutoOps [connect-to-autoops]
