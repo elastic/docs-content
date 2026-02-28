@@ -155,7 +155,7 @@ The Assets section allows you to manage the following features:
 
 ### Cases [_cases]
 
-Open and track security issues. Refer to [Cases](/solutions/security/investigate/cases.md) to learn more.
+Open and track security issues. Refer to [Cases](/solutions/security/investigate/security-cases.md) to learn more.
 
 
 ### Entity analytics
