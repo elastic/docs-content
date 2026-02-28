@@ -159,7 +159,7 @@ It is recommended to set the `Additional look-back time` to at least 1 minute. T
 Use rule actions to set up notifications sent through other systems when alerts are generated. Rule actions let you send Slack messages, create {{jira}} tickets, trigger PagerDuty incidents, and more.
 
 ::::{note}
-To use rule actions for alert notifications, you need the [appropriate license]({{subscriptions}}). For more information, see [Cases requirements](/solutions/security/investigate/cases-requirements.md).
+To use rule actions for alert notifications, you need the [appropriate license]({{subscriptions}}). For more information, see [Control access to cases](/explore-analyze/cases/control-case-access.md).
 ::::
 
 :::{admonition} Rule actions versus workflows
@@ -218,7 +218,7 @@ Host isolation involves quarantining a host from the network to prevent further 
 You can use [mustache syntax](http://mustache.github.io/) to add variables to notification messages. The action frequency you select determines the available variables.
 
 ::::{note}
-Refer to [Action frequency: Summary of alerts](/explore-analyze/alerts-cases/alerts/rule-action-variables.md#alert-summary-action-variables) to learn about additional variables that can be passed if the rule's action frequency is **Summary of alerts**.
+Refer to [Action frequency: Summary of alerts](/explore-analyze/alerting/alerts/rule-action-variables.md#alert-summary-action-variables) to learn about additional variables that can be passed if the rule's action frequency is **Summary of alerts**.
 ::::
 
 ### Variables for all rules [all-rule-variables]
