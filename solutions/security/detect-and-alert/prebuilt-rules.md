@@ -57,7 +57,7 @@ Each prebuilt rule queries specific index patterns or a data view, which determi
 To help you set up the right data sources, rule details pages include:
 
 - **Related integrations**: [{{product.integrations}}](https://docs.elastic.co/en/integrations) that can provide compatible data. You don't need to install all listed integrations. Installing any of the integrations that matches your environment is typically sufficient. Some rules also work with data from legacy beats (such as {{filebeat}} or {{winlogbeat}}) without requiring a Fleet integration. This field also displays each integration's installation status and includes links for installing and configuring the listed integrations.
-- **Required fields**: Data fields the rule expects to find. This is informational—rules will still run if fields are missing, but may not generate expected alerts.
+- **Required fields**: Data fields the rule expects to find. This is informational; rules will still run if fields are missing, but may not generate expected alerts.
 - **Setup guide**: Step-by-step guidance for configuring the rule's data requirements.
 
 :::{image} /solutions/images/security-rule-details-prerequisites.png
@@ -65,7 +65,17 @@ To help you set up the right data sources, rule details pages include:
 :screenshot:
 :::
 
-You can also check rules' related integrations in the **Installed Rules** and **Rule Monitoring** tables. Select the **integrations** badge to display the related integrations in a popup.
+You can also check rules' related integrations in the **Installed Rules** and **Rule Monitoring** tables. Select the **integrations** badge to display the related integrations in a popup. The badge shows how many of the rule's related integrations are currently installed and enabled — for example, `1/2` means one of two related integrations is installed and actively collecting data. An integration is counted as enabled only if it has been added to an agent policy and that policy is deployed to at least one agent. Installing an integration package without adding it to a policy does not increment the enabled count.
+
+:::{admonition} Requirements for viewing related integration status
+To view related integration status in the Rules table, your role needs at least `Read` privileges for the following features under `Management`
+
+- `Integrations`
+- `Fleet`
+- `Saved Objects Management` 
+
+Without these privileges, the integrations badge may not appear or may not reflect accurate installation status.
+:::
 
 :::{image} /solutions/images/security-rules-table-related-integrations.png
 :alt: Rules table with related integrations popup
