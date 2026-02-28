@@ -701,3 +701,6 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/5033
   'solutions/observability/observability-ai-assistant.md': 'solutions/observability/ai/observability-ai-assistant.md'
   'solutions/observability/llm-performance-matrix.md': 'solutions/observability/ai/llm-performance-matrix.md'
+
+# Related to https://github.com/elastic/docs-content/pull/5222
+  'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'
