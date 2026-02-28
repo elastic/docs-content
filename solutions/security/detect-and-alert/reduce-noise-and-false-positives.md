@@ -66,7 +66,7 @@ Acts on: **notifications, after alerts are created and stored**
 
 *"Don't page anyone right now. I'll review later."*
 
-Temporarily pause the rule's notification actions (emails, Slack messages, webhooks) without affecting rule execution or alert creation. Alerts generated during a snooze period are stored normally and visible in the Alerts UI. Snoozing expires automatically or can be canceled manually. For space-wide pausing, use a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+Temporarily pause the rule's notification actions (emails, Slack messages, webhooks) without affecting rule execution or alert creation. Alerts generated during a snooze period are stored normally and visible in the Alerts UI. Snoozing expires automatically or can be canceled manually. For space-wide pausing, use a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
 Refer to [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) for detailed guidance.
 
