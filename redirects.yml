@@ -736,6 +736,11 @@ redirects:
     anchors:
       'load-prebuilt-rules': 'load-prebuilt-rules'
 
+  # Deleted — content consolidated into manage-detection-alerts and cases pages
+  'solutions/security/detect-and-alert/add-detection-alerts-to-cases.md':
+    to: 'solutions/security/detect-and-alert/manage-detection-alerts.md'
+    anchors:
+      '': 'security-add-alerts-to-cases'
 
 # Related to cases and alerting documentation restructuring
   # Main pages

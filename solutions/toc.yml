@@ -616,7 +616,6 @@ toc:
             children:
               - file: security/detect-and-alert/visualize-detection-alerts.md
               - file: security/detect-and-alert/view-detection-alert-details.md
-              - file: security/detect-and-alert/add-detection-alerts-to-cases.md
               - file: security/detect-and-alert/query-alert-indices.md
       - file: security/configure-elastic-defend.md
         children:

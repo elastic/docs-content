@@ -163,6 +163,11 @@ Even though suppressed events don't generate their own alerts, you can still acc
 * Alerts table— select **Investigate in timeline** in the **Actions** column.
 * Alert details flyout— select **Take action > Investigate in timeline**.
 
+The events visible in Timeline depend on the rule type:
+
+* **Custom query rules**: Timeline shows all source events that were suppressed, including the additional events grouped under the alert. This is unique to custom query rules due to how query-based suppression works.
+* **All other rule types**: Timeline shows only the events tied to the generated alert, not the additional events counted in the suppression total. This is expected behavior.
+
 
 ## Impact of closing suppressed alerts [security-alert-suppression-impact-close-alerts]
 
@@ -182,6 +187,7 @@ Some rule types limit the number of alerts that can be suppressed. Custom query 
 | Threshold, event correlation, {{esql}}, and {{ml}} | Equal to the rule's **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) (default: `100`) |
 | Indicator match and new terms | Five times the rule's **Max alerts per run** setting (default: `500`) |
 
+Suppressed alerts count toward this maximum, even if they are not individually created as alert documents. Additionally, the [`xpack.alerting.rules.run.alerts.max`](kibana://reference/configuration-reference/alerting-settings.md#alert-settings) {{kib}} setting acts as a system-level ceiling and can further limit the total number of alerts per rule execution.
 
 ## Bulk apply or remove alert suppression [security-alert-suppression-bulk-apply]
 

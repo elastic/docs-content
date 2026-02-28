@@ -156,7 +156,7 @@ When using grid view, you can view alert-rendered reason statements and event re
 
 From the Alerts table or the alert details flyout, you can:
 
-* [Add detection alerts to cases](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md)
+* [Add detection alerts to cases](#security-add-alerts-to-cases)
 * [Change an alert’s status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status)
 * [Add a rule exception from an alert](/solutions/security/detect-and-alert/manage-detection-alerts.md#add-exception-from-alerts)
 * [Apply and filter alert tags](/solutions/security/detect-and-alert/manage-detection-alerts.md#apply-alert-tags)
@@ -170,6 +170,9 @@ From the Alerts table or the alert details flyout, you can:
 * [Visually analyze an alert’s process relationships](/solutions/security/investigate/visual-event-analyzer.md)
 * [Add notes to alerts](/solutions/security/investigate/notes.md#notes-alerts-events)
 
+### Add alerts to cases [security-add-alerts-to-cases]
+
+From the Alerts table, you can add one or more alerts to a case. For detailed instructions, refer to [Attach objects to cases](/explore-analyze/cases/attach-objects-to-cases.md#add-case-alerts).
 
 ### Change an alert’s status [detection-alert-status]
 

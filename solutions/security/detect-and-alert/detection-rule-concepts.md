@@ -114,9 +114,6 @@ If a user without the required privileges (such as index read access) updates a 
 **Exceptions**
 :   Conditions that prevent a rule from generating alerts, even when query criteria are met. Used to exclude trusted activity.
 
-**Exception lists**
-:   Collections of exceptions that can be shared across multiple rules.
-
 **Index patterns**
 :   Wildcards (like `logs-*`) that match one or more {{es}} indices.
 
