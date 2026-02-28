@@ -29,11 +29,38 @@ description: Create detection rules that trigger on machine learning anomaly det
 * You need a count-based threshold. Use a [threshold rule](/solutions/security/detect-and-alert/threshold.md) instead.
 * You need to compare events against threat intelligence. Use an [indicator match rule](/solutions/security/detect-and-alert/indicator-match.md) instead.
 
-### Requirements
+## Requirements
 
 {{ml-cap}} rules require the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), and you must have the [`machine_learning_admin`](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-ml-admin) role in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}. You also need at least one {{ml}} {{anomaly-job}} active or configured to start.
 
 For an overview of using {{ml}} with {{elastic-sec}}, refer to [{{anomaly-detect-cap}}](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
+
+## Manage {{ml}} jobs for detection rules
+
+{{ml-cap}} rules depend on their associated {{ml}} jobs running continuously. If a job stops, the rule cannot evaluate anomaly results and won't generate alerts. You can manage job status in two ways: from the {{ml}} jobs setting UI or the rule's details page.
+
+### ML job settings interface
+
+{{ml-cap}} jobs created for {{elastic-sec}} detection rules are managed separately from jobs you create in the {{ml-app}} app:
+
+1. Find **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the settings menu in the upper-right corner of the page, then select **ML job settings**.
+
+From there you can view, start, and stop all {{ml}} jobs associated with your detection rules.
+
+::::{note}
+{{ml-cap}} jobs created through {{elastic-sec}} detection rules do not appear in the standard {{ml-app}} job management UI. Use the {{rules-ui}} page settings menu to manage them.
+::::
+
+### Rule's details page
+
+You can also check and control job status for a specific rule:
+
+1. Find **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select the rule name in the Rules table.
+2. In the **Definition** section of the rule's details page, check whether the required {{ml}} jobs are running.
+3. Use the toggles to start or stop each job.
+
+If a required {{ml}} job isn't running, an error indicator appears in the **Last response** column of the Rules table. Select the indicator to see which jobs are affected.
 
 <!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Configuring effective {{ml}} rules [craft-ml]
