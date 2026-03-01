@@ -33,7 +33,7 @@ Rule and action tasks can run late or at an inconsistent schedule. This is typic
 
 You can address such issues by tweaking the [Task Manager settings](kibana://reference/configuration-reference/task-manager-settings.md) or scaling the deployment to better suit your use case.
 
-For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/alerts-cases/alerts/alerting-troubleshooting.md).
+For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/alerting/alerts/alerting-troubleshooting.md).
 
 ::::
 

@@ -10,15 +10,70 @@ products:
 Review the changes, fixes, and more to {{serverless-full}}.
 
 
-## February 23, 2026 [serverless-changelog-02172026]
+## February 23, 2026 [serverless-changelog-02232026]
 
-### Features and enhancements [serverless-changelog-02172026-features-enhancements]
+### Features and enhancements [serverless-changelog-02232026-features-enhancements]
 
-Adds four new Microsoft Azure [regions](/deploy-manage/deploy/elastic-cloud/regions.md) for {{serverless-full}}: 
-* East US 2 (`eastus2`) located in Virginia
-* Germany West Central (`germanywestcentral`) located in Frankfurt
-* Southeast Asia (`southeastasia`) located in Singapore
-* Spain Central (`spaincentral`) located in Madrid
+* Adds four new Microsoft Azure [regions](/deploy-manage/deploy/elastic-cloud/regions.md) for {{serverless-full}}:
+  * East US 2 (`eastus2`) located in Virginia
+  * Germany West Central (`germanywestcentral`) located in Frankfurt
+  * Southeast Asia (`southeastasia`) located in Singapore
+  * Spain Central (`spaincentral`) located in Madrid
+* Shows warnings in the UI when an integration is deprecated, including badges, callout messages, and tooltip icons [#251860]({{kib-pull}}251860)
+* Allows integration rollback even when not all integration policies have been upgraded [#253646]({{kib-pull}}253646)
+* Redesigns the {{esql}} editor with a new menu for query history, help, and starring, and repositions the date picker, run button, and keyboard shortcuts [#251223]({{kib-pull}}251223)
+* Adds the ability to acknowledge and unacknowledge alerts directly from the alerts table, with audit logging for workflow status transitions [#252945]({{kib-pull}}252945)
+* Adds SLO and Service entity attachments to Agent Builder, enabling entity-grounded conversations with automatic context fetching [#252390]({{kib-pull}}252390)
+* Adds high-level rule execution info logging to the **Execution events** tab, showing matched events, alerts created, and suppressed alert counts [#253992]({{kib-pull}}253992)
+* Moves rule summary, definition, and schedule into a dedicated **Overview** tab on the rule details page, and surfaces alerts, exceptions, results, and events at the top of the page [#251662]({{kib-pull}}251662)
+* Adds support for fetching entity relationships in the **Entity Graph API**, including ownership, supervision, dependency, and access patterns [#251178]({{kib-pull}}251178)
+* Enables Splunk v2 dashboard parsing in Automatic Migrations [#253970]({{kib-pull}}253970)
+* Adds a **Show entity relationships** action to entity node popovers in the graph visualization [#252803]({{kib-pull}}252803)
+* Adds a dynamic default connector fallback in **GenAI Settings** that automatically selects a preferred connector when no default is configured [#252861]({{kib-pull}}252861)
+* Replaces custom agent icons with the standard EUI `productAgent` icon across all solutions [#252526]({{kib-pull}}252526)
+* Adds a network direction processor to Streams that calculates traffic direction from source and destination IP addresses [#250894]({{kib-pull}}250894)
+* Improves condition filtering in Streams data enrichment with match-rate badges and the ability to filter simulation results by condition [#251129]({{kib-pull}}251129)
+* Improves the **Inference Endpoints** management page by adding a view to group endpoints by model, and makes this the default view [#252984]({{kib-pull}}252984)
+* Displays a warning callout on the **Rules** page when the gap auto-fill scheduler encounters errors, with a link to the scheduler logs [#250393]({{kib-pull}}250393)
+* Migrates Agent Builder from a flyout to the sidebar API for a more consistent experience [#252918]({{kib-pull}}252918)
+* Adds pre-execution workflows to Agent Builder, enabling agents to run one or more workflows before each execution to modify prompts or cancel the agent run [#252452]({{kib-pull}}252452)
+* Adds a Slack data source for Workplace AI with message search and send capabilities [#252972]({{kib-pull}}252972)
+* Supports multi-dimension breakdowns in Lens series layers, allowing up to five dimensions in the **Discover** dimension dropdown [#251731]({{kib-pull}}251731)
+* Adds a `get_traces` tool to the Observability AI agent for retrieving distributed trace samples, including transactions, spans, errors, and correlated logs [#250952]({{kib-pull}}250952)
+* Adds host infrastructure metrics and service correlation to Alert AI Insights, improving root cause analysis for both APM and infrastructure alerts [#252973]({{kib-pull}}252973)
+* Adds a `get_service_topology` tool to the Observability AI agent for retrieving service dependencies with latency, throughput, and error rate metrics [#251770]({{kib-pull}}251770)
+* Adds OpenTelemetry entity support to the APM **Infrastructure** tab for Kubernetes pods, Kubernetes containers, and Docker containers [#252188]({{kib-pull}}252188)
+* Reduces output tokens for the `get_anomaly_detection_jobs` tool by lowering default limits and adding filtering parameters for anomaly score, job group, and influencer [#251415]({{kib-pull}}251415)
+* Adds support for ECS-formatted error documents in the APM service details **Errors** tab, properly displaying `error.message` and `error.type` fields [#254138]({{kib-pull}}254138)
+
+### Fixes [serverless-changelog-02232026-fixes]
+
+* Fixes a bug with PagerDuty where setting the **Custom details** field caused rules to fail [#253683]({{kib-pull}}253683)
+* Fixes config panel scrolling in the Lens editor so that all configuration options are accessible when content exceeds the visible area [#253247]({{kib-pull}}253247)
+* Fixes overly restrictive filter `meta.value` validation that rejected valid phrase and range filter values [#253537]({{kib-pull}}253537)
+* Fixes an issue where an agent that was rolled back after an upgrade could not be upgraded again in the {{fleet}} UI [#253850]({{kib-pull}}253850)
+* Fixes incorrect {{esql}} validation of the `TS` (time series) command that was wrongly applying `FROM` command rules [#253635]({{kib-pull}}253635)
+* Fixes the Synthetics monitor toggle state leaking between monitors in the details flyout when switching between different monitors [#253314]({{kib-pull}}253314)
+* Speeds up bulk rule deletion, significantly reducing the time to delete large numbers of prebuilt rules [#253116]({{kib-pull}}253116)
+* Fixes Comprehensive File Timeline template filters to combine with AND instead of OR [#251242]({{kib-pull}}251242)
+* Adds an optional `region` field to the Amazon Bedrock connector, fixing SigV4 request signing for custom endpoint domains [#252960]({{kib-pull}}252960)
+* Fixes rule details **Overview** tab responsiveness, preventing overflow of MITRE ATT&CK fields on narrow viewports [#252890]({{kib-pull}}252890)
+* Fixes the legacy `rules/prepackaged` endpoints from returning 500 errors on a Basic license when rules include {{ml}} rules [#253574]({{kib-pull}}253574)
+* Fixes **Today** and **This week** time filters for Log Rate Analysis and Log Pattern Analysis embeddables on dashboards [#252925]({{kib-pull}}252925)
+* Fixes autocomplete not working in the embedded console [#253306]({{kib-pull}}253306)
+* Fixes an error in the Streams AI pipeline suggestions when generated grok patterns contain empty strings [#251113]({{kib-pull}}251113)
+* Fixes the refresh button in the Streams app query bar not triggering a data refetch [#253295]({{kib-pull}}253295)
+* Fixes ML inference pipeline operations failing due to system-managed date fields introduced in Elasticsearch 9.2 [#252579]({{kib-pull}}252579)
+* Includes external reference IDs in the attached documents check when selecting cases [#253107]({{kib-pull}}253107)
+* Fixes Beats tutorial authentication instructions in {{serverless-full}} to show the correct API key-based configuration instead of unsupported `cloud.id`/`cloud.auth` instructions [#253164]({{kib-pull}}253164)
+* Fixes a bug in Vega where `runtime_mappings` defined in `data[].url.body` were ignored or overridden [#253560]({{kib-pull}}253560)
+* Adds parameter validation to the **Entity store install API**, including KQL filter validation, index pattern checks, and minimum frequency enforcement [#252366]({{kib-pull}}252366)
+* Fixes execution tree rendering where steps after a large `foreach` loop were hidden or overlapped after collapsing and re-expanding the loop [#253576]({{kib-pull}}253576)
+* Fixes scrollbar colors in Safari when the macOS appearance setting is the opposite of the selected {{kib}} color mode [#253484]({{kib-pull}}253484)
+
+
+
+
 
 ## February 16, 2026 [serverless-changelog-02162026]
 
