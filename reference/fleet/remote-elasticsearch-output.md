@@ -195,7 +195,7 @@ After creating the output, update an {{agent}} policy to use it and send data to
 
 The remote {{es}} output is now configured for the remote cluster.
 
-If you choose not to synchronize integrations automatically, you need to make sure that for any integrations that are [added to your {{agent}} policy](/reference/fleet/add-integration-to-policy.md), the integration assets are also installed on the remote {{es}} cluster. For detailed steps on this process, refer to [Install and uninstall {{agent}} integration assets](/reference/fleet/install-uninstall-integration-assets.md).
+If you choose not to synchronize integrations automatically, you need to ensure that for any integrations [added to your {{agent}} policy](/reference/fleet/add-integration-to-policy.md), you also install the integration assets on the remote {{es}} cluster. For detailed steps on this process, refer to [Install and uninstall {{agent}} integration assets](/reference/fleet/install-uninstall-integration-assets.md).
 
 ## Remote output health status [remote-output-health-status]
 
