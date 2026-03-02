@@ -42,6 +42,10 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 :::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
 :::
 
+:::{include} /deploy-manage/monitor/_snippets/cc-autoops-all-licenses.md
+:::
+
+
 ### Stack monitoring
 
 ```{applies_to}

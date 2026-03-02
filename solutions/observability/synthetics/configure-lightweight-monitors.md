@@ -382,7 +382,7 @@ $$$monitor-maintenanceWindows$$$
 **`maintenance_windows`**
 :   Type: [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)  
 
-    A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+    A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
     **Examples**:
 
