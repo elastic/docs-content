@@ -308,6 +308,10 @@ FROM logs
 
 You can use the `_project_routing` API to create and manage named project routing expressions.
 
+::::{note}
+Named project routing expressions are project-specific. An expression can be used only in the project where it was created.
+::::
+
 The following request creates a named expression called `origin-only`:
 
 ```console
