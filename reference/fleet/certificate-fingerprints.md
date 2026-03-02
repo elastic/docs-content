@@ -200,7 +200,7 @@ sudo ./elastic-agent install \
 
 1. In {{kib}}, go to **{{fleet}} > Settings**.
 2. Under **Outputs**, edit your {{es}} output.
-3. In the **Elasticsearch CA trusted fingerprint** field, enter the fingerprint of a CA certificate that's present in the certificate chain sent by {{es}}.
+3. In the **Elasticsearch CA trusted fingerprint** field, enter any CA certificate's fingerprint that's present in the certificate chain sent by {{es}}.
 
 ::::{note}
 Refer to [Choosing which certificate to use](#choosing-certificate) to determine which certificate from your chain is appropriate for the fingerprint.
