@@ -22,8 +22,6 @@ In this tutorial, you'll learn how to:
 - Route logs to different data streams based on severity using reroute processors
 - Query and filter structured log data
 
-**Audience:** Developers, data engineers, and platform operators who work with Elasticsearch APIs and want fine-grained control over log parsing and routing.
-
 ::::{tip}
 **Prefer a UI-based approach?** [Streams](/solutions/observability/streams/streams.md) provides a centralized Kibana UI for field extraction and log routing without requiring direct API calls. Streams supports [dissect and grok processors](/solutions/observability/streams/management/extract.md) for field extraction and [partitioning](/solutions/observability/streams/management/partitioning.md) for routing data into child streams. Refer to [Choose your approach](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-choose-approach) to decide which method is right for you.
 ::::
