@@ -14,7 +14,7 @@ description: Learn how to install and update Elastic prebuilt detection rules in
 
 {{kib}} downloads Elastic prebuilt rules from the {{package-registry}}. In air-gapped environments without internet access, you can use one of the following methods to install and update prebuilt rules:
 
-* **[Use a self-hosted {{package-registry}}](#install-prebuilt-rules-airgapped)**: Host your own {{package-registry}} to provide rules to your air-gapped environment. This is the recommended approach for ongoing rule management and updates.
+* **[Use a self-hosted {{package-registry}}](#install-prebuilt-rules-self-hosted-epr)**: Host your own {{package-registry}} to provide rules to your air-gapped environment. This is the recommended approach for ongoing rule management and updates.
 * **[Manually transfer prebuilt rules](#import-export-airgapped)**: Export rules from an internet-connected {{elastic-sec}} instance and import them into your air-gapped environment. This is a simpler approach for one-time transfers or when container infrastructure isn't available.
 
 ::::{note}
