@@ -17,7 +17,11 @@ description: Learn how to install and update Elastic prebuilt detection rules in
 * **[Use a self-hosted {{package-registry}}](#install-prebuilt-rules-airgapped)**: Host your own {{package-registry}} to provide rules to your air-gapped environment. This is the recommended approach for ongoing rule management and updates.
 * **[Manually transfer prebuilt rules](#import-export-airgapped)**: Export rules from an internet-connected {{elastic-sec}} instance and import them into your air-gapped environment. This is a simpler approach for one-time transfers or when container infrastructure isn't available.
 
-## Install prebuilt rules from your self-hosted registry [install-prebuilt-rules-airgapped]
+::::{note}
+A set of prebundled detection rules that you can install without a {{package-registry}} are included when [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md#general-fleet-settings-kb) is set to `true`. However, to receive rule updates beyond whats bundled with your {{kib}} version, use one of the methods described on this page.
+::::
+
+## Install prebuilt rules from your self-hosted registry [install-prebuilt-rules-self-hosted-epr]
 
 This method requires hosting your own {{package-registry}} to provide prebuilt rules to your air-gapped {{kib}} instance. After setting up your registry, you can install and update prebuilt rules the same way as in a connected environment.
 
@@ -63,7 +67,7 @@ When choosing an {{package-registry}} image for production air-gapped environmen
     docker save -o package-registry.tar docker.elastic.co/package-registry/distribution:<image-tag>
     ```
 
-    Replace `<image-tag>` with your chosen tag (for example, `{{version.stack}}` or `production`).
+    Replace `<image-tag>` with your chosen tag (for example, `9.3.0` or `production`).
 
 3. Transfer the image file to your air-gapped environment using your organization's approved file transfer method.
 
@@ -96,8 +100,8 @@ xpack.fleet.registryUrl: "http://<your-registry-host>:8080"
 xpack.fleet.isAirGapped: true
 ```
 
-* [`xpack.fleet.registryUrl`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings#fleet-data-visualizer-settings): Points {{kib}} to your self-hosted registry. Replace `<your-registry-host>` with the hostname or IP address of your registry.
-* [`xpack.fleet.isAirGapped`](https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings#general-fleet-settings-kb): Enables air-gapped mode, which allows {{fleet}} to skip requests or operations that require internet access.
+* [`xpack.fleet.registryUrl`](kibana://reference/configuration-reference/fleet-settings.md#fleet-data-visualizer-settings): Points {{kib}} to your self-hosted registry. Replace `<your-registry-host>` with the hostname or IP address of your registry.
+* [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md#general-fleet-settings-kb): Enables air-gapped mode, which allows {{fleet}} to skip requests or operations that require internet access.
 ::::
 
 :::::
@@ -118,12 +122,12 @@ After your self-hosted {{package-registry}} is running and {{kib}} is configured
 
 For more details about enabling installed rules, refer to [Install and enable Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules).
 
-## Update prebuilt rules in an air-gapped environment [update-prebuilt-rules-airgapped]
+## Update prebuilt rules using your self-hosted registry [update-prebuilt-rules-self-hosted-registry]
 
 To update your prebuilt rules, first update your self-hosted {{package-registry}} with a newer distribution image, then install the rule updates in {{elastic-sec}}.
 
 ::::{important}
-Elastic releases prebuilt rule updates continuously. To receive the latest updates in an air-gapped environment, we recommend updating your self-hosted {{package-registry}} at least monthly.
+Elastic releases prebuilt rule updates continuously. To receive the latest updates in an air-gapped environment, we recommend updating your self-hosted {{package-registry}} at least monthly. Prebuilt rule updates are version-specific. Updating your {{package-registry}} provides rule updates designed for your current {{stack}} version, not rules designed for newer versions. To receive rules designed for a newer version, you must upgrade your entire {{stack}}.
 ::::
 
 :::::{stepper}
