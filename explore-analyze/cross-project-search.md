@@ -276,6 +276,106 @@ Refer to [the examples section](#cps-examples) for more.
 Also link to the ES|QL CPS tutorial when it's available for more ES|QL examples.
 -->
 
+##### Using named project routing expressions
+
+You can define named project routing expressions and reference them in the `project_routing` parameter of any {{cps}}-enabled endpoint that supports project routing.
+
+Named expressions enable you to assign a reusable name to a routing expression. This makes complex routing rules easier to reference and reuse across multiple requests.
+
+To reference a named project routing expression in a `project_routing` parameter, prefix its name with the `@` character.
+
+For example, the following `_search` API request and ES|QL query search the `logs` resource only on projects that match the `@custom-expression` routing rule.
+
+**API request**
+
+```console
+GET logs/_search
+{
+"project_routing": "@custom-expression",
+"query": { ... }
+}
+```
+
+**ES|QL query**
+
+```console
+SET project_routing="@custom-expression";
+FROM logs 
+| STATS COUNT(*)
+```
+
+###### Creating and managing named project routing expressions
+
+You can use the `_project_routing` API to create and manage named project routing expressions.
+
+::::{note}
+Named project routing expressions are project-specific. An expression can be used only in the project where it was created.
+::::
+
+The following request creates a named expression called `origin-only`:
+
+```console
+PUT _project_routing/origin-only
+{
+    "expression" : “_alias:origin"
+}
+```
+
+<!--
+The following request creates a named expression called `aws-us-only`:
+
+```console
+PUT _project_routing/aws-us-only
+{
+    "expression" : "_csp:aws AND _region:us*"
+}
+```
+-->
+
+You can also create multiple named expressions in a single request:
+
+```console
+PUT _project_routing
+{
+"origin-only": { “expression”: "_alias:origin" },
+"linked-security": { “expression”: "_alias:*sec*" }
+}
+```
+
+<!--
+```console
+PUT _project_routing
+{
+   "aws-us-only": { “expression”: "_csp:aws AND _region:us*" },
+   "aws-eu-only": { “expression”: "_csp:aws AND _region:eu*" }
+}
+```
+-->
+
+The GET `_project_routing` endpoint retrieves information about named expressions.
+
+To retrieve all named expressions:
+
+```console
+GET _project_routing
+```
+
+To retrieve a specific named expression:
+
+```console
+GET _project_routing/origin-only
+```
+
+To delete a named expression:
+
+```console
+DELETE _project_routing/origin-only
+```
+
+::::{note}
+When using the `_project_routing` API to create, retrieve, or delete expressions, do not prefix the expression name with `@`. The `@` prefix is required only when referencing a named expression in the `project_routing` parameter of API endpoints that support it.
+::::
+
 #### Queries
 
 You can also use project tags within a search query. In this case, tags are treated as query-time metadata fields, not as routing criteria.
