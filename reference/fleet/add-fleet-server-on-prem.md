@@ -166,7 +166,7 @@ Follow these steps when deploying {{fleet-server}} behind a load balancer/revers
     * (Recommended) Configure the load balancer with TLS pass through.
 
     ::::{note}
-    :applies_to: stack: ga 9.4.0+
+    :applies_to: stack: ga 9.4.0+, 9.3.2, 9.2.7, 8.19.13
     Starting with {{stack}} version 9.4, you can use the {{fleet-server}} `GET /api/status` API endpoint to determine instance health from the load balancer.
     ::::
 
