@@ -10,7 +10,11 @@ products:
 
 # Load balancers [ece-load-balancers]
 
-[{{ece}} architecture](./ece-architecture.md) is designed to be used in conjunction with at least one load balancer. A load balancer is not included with {{ece}}, so you need to provide one yourself and place it in front of the {{ece}} proxies.
+[{{ece}} (ECE) architecture](./ece-architecture.md) is designed to be used in conjunction with at least one load balancer. ECE does not include a built-in load balancer, so you must provision and configure one in front of the ECE proxies.
+
+:::{note}
+Provisioning and configuring the load balancer is the customer’s responsibility and is outside the scope of this documentation. Refer to your load balancer provider’s documentation and support resources for configuration guidance.
+:::
 
 Use the following recommendations when configuring your load balancer:
 
