@@ -340,34 +340,30 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.3+
-
-    ```sh
-    USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-    root       1  0.0  0.0   1936   452 ?        Ss   23:10   0:00 /usr/bin/tini -- /usr/local/bin/docker-entrypoint -c /etc/elastic-agent/agent.yml -e
-    root       9  0.9  1.3 2488368 135920 ?      Sl   23:10   0:01 elastic-agent container -c /etc/elastic-agent/agent.yml -e
-    root      27  0.9  1.9 2255804 203128 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
-    root      44  0.3  1.8 2116148 187432 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
-    root      64  0.3  1.8 2263868 188892 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
-    root      76  0.4  1.8 2190136 190972 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
-    root     100  1.2  2.0 2256316 207692 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
-    ```
-
+:::{applies-item} { stack: ga 9.3+ }
+```sh
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root       1  0.0  0.0   1936   452 ?        Ss   23:10   0:00 /usr/bin/tini -- /usr/local/bin/docker-entrypoint -c /etc/elastic-agent/agent.yml -e
+root       9  0.9  1.3 2488368 135920 ?      Sl   23:10   0:01 elastic-agent container -c /etc/elastic-agent/agent.yml -e
+root      27  0.9  1.9 2255804 203128 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
+root      44  0.3  1.8 2116148 187432 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
+root      64  0.3  1.8 2263868 188892 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector metricbeat -E
+root      76  0.4  1.8 2190136 190972 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
+root     100  1.2  2.0 2256316 207692 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
+```
 :::
 
-:::{applies_to} stack: ga 9.0-9.2
-
-    ```sh
-    USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-    root       1  0.0  0.0   1936   452 ?        Ss   23:10   0:00 /usr/bin/tini -- /usr/local/bin/docker-entrypoint -c /etc/elastic-agent/agent.yml -e
-    root       9  0.9  1.3 2488368 135920 ?      Sl   23:10   0:01 elastic-agent container -c /etc/elastic-agent/agent.yml -e
-    root      27  0.9  1.9 2255804 203128 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
-    root      44  0.3  1.8 2116148 187432 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
-    root      64  0.3  1.8 2263868 188892 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
-    root      76  0.4  1.8 2190136 190972 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
-    root     100  1.2  2.0 2256316 207692 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
-    ```
-
+:::{applies_to} { stack: ga 9.0-9.2 }
+```sh
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root       1  0.0  0.0   1936   452 ?        Ss   23:10   0:00 /usr/bin/tini -- /usr/local/bin/docker-entrypoint -c /etc/elastic-agent/agent.yml -e
+root       9  0.9  1.3 2488368 135920 ?      Sl   23:10   0:01 elastic-agent container -c /etc/elastic-agent/agent.yml -e
+root      27  0.9  1.9 2255804 203128 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
+root      44  0.3  1.8 2116148 187432 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
+root      64  0.3  1.8 2263868 188892 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat metricbeat -E
+root      76  0.4  1.8 2190136 190972 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
+root     100  1.2  2.0 2256316 207692 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
+```
 :::
 
 ::::
