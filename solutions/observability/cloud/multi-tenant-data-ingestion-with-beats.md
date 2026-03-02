@@ -16,7 +16,9 @@ In this guide, you'll configure {{filebeat}} to ingest logs from Azure Event Hub
 
 By the end, you'll have a working pipeline that collects logs from an Event Hub in T2 using credentials stored in T1, and forwards them to {{es}}.
 
-<!-- TODO: Add image showing multi-tenant architecture diagram with T1 and T2 tenants, Event Hubs, and Storage Account -->
+:::{image} /solutions/images/observability-azure-beats-multi-tenant-overview.png
+:alt: Diagram for a multi-tenant setup using Beats
+:::
 
 ## Before you begin
 
@@ -78,7 +80,10 @@ az login --tenant bbbbbbbb-2222-2222-2222-222222222222
 az ad sp create --id cccccccc-3333-3333-3333-333333333333
 ```
 
-<!-- TODO: Add screenshot of Azure Portal showing multi-tenant app registration -->
+:::{image} /solutions/images/observability-azure-beats-multi-tenant-app-registration.png
+:alt: Azure Portal showing multi-tenant app registration
+:::
+
 ::::
 
 ::::{step} Create an Event Hubs namespace and hub in T2
@@ -208,7 +213,6 @@ To confirm the pipeline is working end to end:
 2. Check that {{filebeat}} receives the message and forwards it to {{es}}.
 3. In {{kib}}, navigate to **Discover** and verify the event appears in your index.
 
-<!-- TODO: Add screenshot showing message sent to Event Hub and received successfully -->
 ::::
 :::::
 
