@@ -59,10 +59,10 @@ You have several options for installing the {{es}} Debian package:
     sudo apt-get install apt-transport-https
     ```
 
-2. Save the repository definition to  `/etc/apt/sources.list.d/elastic-9.x.list`:
+2. Save the repository definition to  `/etc/apt/sources.list.d/elastic-{{version.stack}}.list`:
 
-    ```sh
-    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
+    ```sh subs=true
+    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/{{version.stack}}/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-{{version.stack}}.list
     ```
 
 3. Install the {{es}} Debian package:
@@ -87,11 +87,11 @@ These instructions do not use `add-apt-repository` for several reasons:
 :::{warning}
 If two entries exist for the same {{es}} repository, you will see an error like this during `apt-get update`:
 
-```text
-Duplicate sources.list entry https://artifacts.elastic.co/packages/9.x/apt/ ...
+```text subs=true
+Duplicate sources.list entry https://artifacts.elastic.co/packages/{{version.stack}}/apt/ ...
 ```
 
-Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
+Examine `/etc/apt/sources.list.d/elasticsearch-{{version.stack}}.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
 :::
 
 :::{include} _snippets/skip-set-kernel-params.md

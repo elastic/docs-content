@@ -65,8 +65,8 @@ For RedHat based distributions, create a file called `elasticsearch.repo` in the
 
 ```ini subs=true
 [elasticsearch]
-name={{es}} repository for 9.x packages
-baseurl=https://artifacts.elastic.co/packages/9.x/yum
+name={{es}} repository for {{version.stack}} packages
+baseurl=https://artifacts.elastic.co/packages/{{version.stack}}/yum
 gpgcheck=1
 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=0
@@ -80,8 +80,8 @@ For openSUSE based distributions, create a file called `elasticsearch.repo` in t
 
 ```ini subs=true
 [elasticsearch]
-name={{es}} repository for 9.x packages
-baseurl=https://artifacts.elastic.co/packages/9.x/yum
+name={{es}} repository for {{version.stack}} packages
+baseurl=https://artifacts.elastic.co/packages/{{version.stack}}/yum
 gpgcheck=1
 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=0
