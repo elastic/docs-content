@@ -31,7 +31,7 @@ The following method involves sending the metrics to the production cluster, whi
 
 To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 
-1. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is is disabled (`false`).
+1. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is disabled (`false`).
 
     ::::{note}
     You can specify this setting in either the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node or across the cluster as a dynamic cluster setting. If {{stack-security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.

@@ -143,7 +143,7 @@ To use a param in a lightweight monitor that is created in the Synthetics UI, wr
 
 To use a param in a browser monitor that is created in the Synthetics UI, add `params.` before the name of the param (for example, `params.my_url`).
 
-:::{image} /solutions/images/observability-synthetics-params-secrets-kibana-use-lightweight.png
+:::{image} /solutions/images/serverless-synthetics-params-secrets-kibana-use-browser.png
 :alt: Use a param in a lightweight monitor created in the Synthetics UI
 :screenshot:
 :::

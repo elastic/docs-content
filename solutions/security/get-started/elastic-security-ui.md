@@ -118,6 +118,17 @@ Expand this section to access the following pages:
 
 View and manage alerts to monitor activity within your network. Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
+### Workflows
+```yaml {applies_to}
+stack: preview 9.3+
+serverless: preview
+```
+
+:::{admonition} Requirements
+To access this section, turn on the Elastic Workflows (`workflows:ui:enabled`) [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings).
+:::
+
+Create and manage workflows that automate tasks such as incident response, case creation, and notification routing. Refer to [](/explore-analyze/workflows.md) for more information.
 
 ### Attack discovery
 
@@ -144,7 +155,7 @@ The Assets section allows you to manage the following features:
 
 ### Cases [_cases]
 
-Open and track security issues. Refer to [Cases](/solutions/security/investigate/cases.md) to learn more.
+Open and track security issues. Refer to [Cases](/solutions/security/investigate/security-cases.md) to learn more.
 
 
 ### Entity analytics
