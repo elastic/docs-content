@@ -366,7 +366,6 @@ To retrieve a specific named expression:
 GET _project_routing/origin-only
 ```
 
-You can delete a named expression by a DELETE API request.
 To delete a named expression:
 
 ```console
