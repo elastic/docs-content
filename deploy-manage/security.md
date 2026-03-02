@@ -42,10 +42,6 @@ serverless: all
 :::{include} /deploy-manage/_snippets/ecloud-security.md
 :::
 
-::::{note}
-Serverless projects are fully managed and secured by Elastic, and do not have any configurable Security features at the project level.
-::::
-
 ## Securing your orchestrator
 ```yaml {applies_to}
 deployment:

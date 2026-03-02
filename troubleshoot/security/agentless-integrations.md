@@ -17,5 +17,5 @@ products:
 
 # Troubleshoot agentless integrations [agentless-integration-troubleshoot]
 
-:::{include} /solutions/security/get-started/_snippets/agentless-integrations-faq.md
+:::{include} /manage-data/ingest/_snippets/agentless-integrations-faq.md
 :::
