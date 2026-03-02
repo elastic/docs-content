@@ -294,7 +294,7 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
     ```
     :::
 
-    :::{applies_to} { stack: ga 9.0-9.2 }
+    :::{applies-item} { stack: ga 9.0-9.2 }
     ```sh
     USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
     elastic+           1  0.0  0.0   1936   416 ?        Ss   21:04   0:00 /usr/bin/tini -- /usr/local/bin/docker-entrypoint -c /etc/elastic-agent/agent.yml -e
@@ -361,7 +361,7 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
     ```
     :::
 
-    :::{applies_to} { stack: ga 9.0-9.2 }
+    :::{applies-item} { stack: ga 9.0-9.2 }
     ```sh
     USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
     root       1  0.0  0.0   1936   452 ?        Ss   23:10   0:00 /usr/bin/tini -- /usr/local/bin/docker-entrypoint -c /etc/elastic-agent/agent.yml -e
