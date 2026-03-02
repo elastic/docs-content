@@ -29,13 +29,13 @@ Some of the resources, such as saved objects and API keys, may no longer be avai
 
 The following debugging tools are available:
 
-* {{kib}} versions 7.10 and above have a [Test connector](../../explore-analyze/alerts-cases/alerts/testing-connectors.md) UI.
+* {{kib}} versions 7.10 and above have a [Test connector](../../explore-analyze/alerting/alerts/testing-connectors.md) UI.
 * {{kib}} versions 7.11 and above include improved Webhook error messages, better overall debug logging for actions and connectors, and Task Manager [diagnostics endpoints](task-manager.md#task-manager-diagnosing-root-cause).
 
 
 ## Using rules and connectors list for the current state and finding issues [alerting-managment-detail]
 
-**{{rules-ui}}** in **{{stack-manage-app}}** lists the rules available in the space you’re currently in. When you click a rule name, you are navigated to the [details page](../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#rule-details) for the rule, where you can see currently active alerts. The start date on this page indicates when a rule is triggered, and for what alerts. In addition, the duration of the condition indicates how long the instance is active.
+**{{rules-ui}}** in **{{stack-manage-app}}** lists the rules available in the space you’re currently in. When you click a rule name, you are navigated to the [details page](../../explore-analyze/alerting/alerts/create-manage-rules.md#rule-details) for the rule, where you can see currently active alerts. The start date on this page indicates when a rule is triggered, and for what alerts. In addition, the duration of the condition indicates how long the instance is active.
 
 :::{image} /troubleshoot/images/kibana-rule-details-alerts-inactive.png
 :alt: Alerting management details
@@ -182,9 +182,9 @@ Investigating the underlying task can help you gauge whether the problem you’r
 
 In addition to the above methods, refer to the following approaches and common issues:
 
-* [Alerting common issues](../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md)
-* [Querying event log index](../../explore-analyze/alerts-cases/alerts/event-log-index.md)
-* [Testing connectors using {{connectors-ui}} UI and the `kbn-action` tool](../../explore-analyze/alerts-cases/alerts/testing-connectors.md)
+* [Alerting common issues](../../explore-analyze/alerting/alerts/alerting-common-issues.md)
+* [Querying event log index](../../explore-analyze/alerting/alerts/event-log-index.md)
+* [Testing connectors using {{connectors-ui}} UI and the `kbn-action` tool](../../explore-analyze/alerting/alerts/testing-connectors.md)
 
 
 ### Temporarily throttle all tasks [alerting-kibana-throttle]
@@ -197,7 +197,7 @@ xpack.task_manager.poll_interval: 1h
 ```
 
 ::::{warning}
-This approach should be used only temporarily as a last resort to restore function to {{kib}} when it is unresponsive and attempts to identify and [snooze or disable](../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#controlling-rules) slow-running rules have not fixed the situation. It severely throttles all background tasks, not just those relating to {{alert-features}}. The task manager will run only one task at a time and will look for more work each hour.
+This approach should be used only temporarily as a last resort to restore function to {{kib}} when it is unresponsive and attempts to identify and [snooze or disable](../../explore-analyze/alerting/alerts/create-manage-rules.md#controlling-rules) slow-running rules have not fixed the situation. It severely throttles all background tasks, not just those relating to {{alert-features}}. The task manager will run only one task at a time and will look for more work each hour.
 
 ::::
 
