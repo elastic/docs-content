@@ -23,7 +23,7 @@ In this tutorial, learn how to:
 - Query and filter structured log data
 
 ::::{tip}
-**Prefer a UI-based approach?** [Streams](/solutions/observability/streams/streams.md) provides a centralized Kibana UI for field extraction and log routing without requiring direct API calls. Streams supports [dissect and grok processors](/solutions/observability/streams/management/extract.md) for field extraction and [partitioning](/solutions/observability/streams/management/partitioning.md) for routing data into child streams.
+**Prefer a UI-based approach?** [Streams](/solutions/observability/streams/streams.md) provides a centralized Kibana UI for field extraction and log routing without requiring direct API calls. Streams supports [dissect and grok processors](/solutions/observability/streams/management/extract.md) for extracting fields extraction along with many other processors to filter, transform, and enrich your data.
 ::::
 
 ## Before you begin [observability-parse-log-data-before-you-begin]
