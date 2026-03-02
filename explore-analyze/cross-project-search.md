@@ -284,7 +284,7 @@ Named expressions enable you to assign a reusable name to a routing expression. 
 
 To reference a named project routing expression in a `project_routing` parameter, prefix its name with the `@` character.
 
-For example, the following API request and ES|QL query search the `logs` resource only on projects that match the `@custom-expression` routing rule.
+For example, the following `_search` API request and ES|QL query search the `logs` resource only on projects that match the `@custom-expression` routing rule.
 
 **API request**
 
