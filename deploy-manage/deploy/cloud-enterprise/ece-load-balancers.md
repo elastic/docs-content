@@ -12,13 +12,20 @@ products:
 
 [{{ece}} architecture](./ece-architecture.md) is designed to be used in conjunction with at least one load balancer. A load balancer is not included with {{ece}}, so you need to provide one yourself and place it in front of the {{ece}} proxies.
 
+## Recommendation [ece-load-balancer-recommendation]
+
 Use the following recommendations when configuring your load balancer:
 
 * **High availability**: The exact number of load balancers depends on the utilization rate for your clusters. In a highly available installation, use at least two load balancers for each availability zone in your installation.
 * **Inbound ports**: Load balancers require that inbound traffic is open on the ports used by {{es}}, {{kib}}, and the transport client.
 * **X-found-cluster**: The ECE proxy uses the header `X-found-cluster` to route traffic to the correct cluster via the cluster UUID (Universally Unique Identifier). If the load balancer rewrites a URL, make sure the HTTP header `X-Found-Cluster` gets added. For example: `X-found-cluster: d59109b8d542c5c4845679e597810796`.
 * **Deployment traffic and Admin traffic**: Create separate load balancers for deployment traffic ({{es}} and {{kib}} traffic) and admin traffic (Cloud UI Console and Admin API). This separation allows you to migrate to a large installation topology without reconfiguring or creating an additional load balancer.
-* **Load balancing algorithm**: Select a load balancing algorithm that will balance traffic evenly across all proxies. Proxies are constantly updated with internal routing information on how to direct requests to clusters on allocators hosting their nodes across zones. Proxies prefer cluster nodes in their local zone and route requests primarily to nodes in their own zone. In case of doubt, consult your load balancer provider.
+* **Load balancing algorithm**: Select an algorithm that distributes traffic evenly across all proxies, such as Round Robin or another comparable method. Proxies are constantly updated with internal routing information on how to direct requests to clusters on allocators hosting their nodes across zones. Proxies prefer cluster nodes in their local zone and route requests primarily to nodes in their own zone. 
+
+:::{note}
+Configuring the load balancer is a customer-managed prerequisite. If you have specific configuration questions, we recommend consulting your load balancer provider.
+:::
+
 * **Network**: Use a network that is fast enough from a latency and throughput perspective to be considered local for the {{es}} clustering requirement. There shouldn't be a major advantage in "preferring local" from a load balancer perspective (rather than a proxy perspective), and it might lead to potential hot spotting on specific proxies, so it should be avoided.
 * **TCP timeout**: Use the default (or required) TCP timeout value from the cloud provider. Do not set a custom timeout on the load balancer.
 

@@ -321,8 +321,12 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
+    # See https://www.elastic.co/docs/deploy-manage/deploy/self-managed/system-config-tcpretries
     net.ipv4.tcp_retries2=5
+    # Other keepalive relevant settings
+    net.ipv4.tcp_keepalive_time=180
+    net.ipv4.tcp_keepalive_intvl=60
+    net.ipv4.tcp_keepalive_probes=20　
     # Make sure the host doesn't swap too early
     vm.swappiness=1
     EOF
