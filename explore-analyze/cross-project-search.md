@@ -106,9 +106,15 @@ You can use qualified search expressions and project routing expressions togethe
 The distinction between qualified and unqualified search expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied in {{cps}}.
 When you use an **unqualified** expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
 
+Project routing expressions do not affect the behavior of the `ignore_unavailable` or `allow_no_indices` settings.
+
 ::::{important}
-The way that missing resources are interpreted differs between qualified and unqualified expressions, refer to the [Qualified expression behavior](#behavior-qualified) and [Unqualified expression behavior](#behavior-unqualified) sections for a detailed explanation.
+The way that missing resources are interpreted differs between unqualified and qualified expressions, refer to the [Unqualified expression behavior](#behavior-unqualified) and [Default (non-CPS) and qualified expression behavior](#behavior-default-qualified) sections for a detailed explanation.
 ::::
+
+##### Default (non-CPS) and qualified expression behavior [behavior-default-qualified]
+
+The following describes the standard {{es}} behavior:
 
 `ignore_unavailable` defaults to `false`.
 When set to `false`, the request returns an error if it targets a missing resource (such as an index or data stream).
@@ -129,9 +135,9 @@ For example, if no indices match `logs*`, the following request returns an empty
 GET logs*/_search
 ```
 
-##### Qualified expression behavior [behavior-qualified]
-
 When you use a **qualified search expression**, the default behavior of `ignore_unavailable` and `allow_no_indices` outlined above applies independently to each qualified project.
+
+The next section explains how this behavior differs when using unqualified search expressions in {{cps-init}}.
 
 ##### Unqualified expression behavior [behavior-unqualified]
 
@@ -190,10 +196,11 @@ Because the request explicitly targets `project2` for the `metrics` index using 
 
 Refer to [the examples section](#cps-examples) for more.
 
-<!--
-### System and hidden indices
-TODO
--->
+### Dot-prefixed and system indices
+
+Indices with names that start with a dot (`.`) but are not system indices behave the same as other non-system indices in {{cps-init}}. They are resolved across the origin project and all linked projects according to the unqualified and qualified expression rules.
+
+System indices are not accessible through {{cps}} or local search.
 
 ## Tags
 
@@ -270,6 +277,106 @@ Refer to [the examples section](#cps-examples) for more.
 Also link to the ES|QL CPS tutorial when it's available for more ES|QL examples.
 -->
 
+##### Using named project routing expressions
+
+You can define named project routing expressions and reference them in the `project_routing` parameter of any {{cps}}-enabled endpoint that supports project routing.
+
+Named expressions enable you to assign a reusable name to a routing expression. This makes complex routing rules easier to reference and reuse across multiple requests.
+
+To reference a named project routing expression in a `project_routing` parameter, prefix its name with the `@` character.
+
+For example, the following `_search` API request and ES|QL query search the `logs` resource only on projects that match the `@custom-expression` routing rule.
+
+**API request**
+
+```console
+GET logs/_search
+{
+"project_routing": "@custom-expression",
+"query": { ... }
+}
+```
+
+**ES|QL query**
+
+```console
+SET project_routing="@custom-expression";
+FROM logs 
+| STATS COUNT(*)
+```
+
+###### Creating and managing named project routing expressions
+
+You can use the `_project_routing` API to create and manage named project routing expressions.
+
+::::{note}
+Named project routing expressions are project-specific. An expression can be used only in the project where it was created.
+::::
+
+The following request creates a named expression called `origin-only`:
+
+```console
+PUT _project_routing/origin-only
+{
+    "expression" : “_alias:origin"
+}
+```
+
+<!--
+The following request creates a named expression called `aws-us-only`:
+
+```console
+PUT _project_routing/aws-us-only
+{
+    "expression" : "_csp:aws AND _region:us*"
+}
+```
+-->
+
+You can also create multiple named expressions in a single request:
+
+```console
+PUT _project_routing
+{
+"origin-only": { “expression”: "_alias:origin" },
+"linked-security": { “expression”: "_alias:*sec*" }
+}
+```
+
+<!--
+```console
+PUT _project_routing
+{
+   "aws-us-only": { “expression”: "_csp:aws AND _region:us*" },
+   "aws-eu-only": { “expression”: "_csp:aws AND _region:eu*" }
+}
+```
+-->
+
+The GET `_project_routing` endpoint retrieves information about named expressions.
+
+To retrieve all named expressions:
+
+```console
+GET _project_routing
+```
+
+To retrieve a specific named expression:
+
+```console
+GET _project_routing/origin-only
+```
+
+To delete a named expression:
+
+```console
+DELETE _project_routing/origin-only
+```
+
+::::{note}
+When using the `_project_routing` API to create, retrieve, or delete expressions, do not prefix the expression name with `@`. The `@` prefix is required only when referencing a named expression in the `project_routing` parameter of API endpoints that support it.
+::::
+
 #### Queries
 
 You can also use project tags within a search query. In this case, tags are treated as query-time metadata fields, not as routing criteria.
@@ -331,27 +438,52 @@ FROM logs* METADATA _project._alias | STATS COUNT(*) by _project._alias
 Include a link to the ES|QL CPS tutorial.
 -->
 
-<!--
 ## Security
 
-A high-level overview
--->
+This section gives you a high-level overview of how security works in {{cps}}.
+<!-- Refer to the [CPS Security]() section to learn in greater detail. -->
+
+In {{cps-init}}, access to a project’s data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
+
+::::{note}
+{{cps-cap}} is not available when performing programmatic searches using {{es}} API keys, since they're project-scoped and they return results from the local project only.
+::::
+<!-- Link to universal API keys. -->
+
+Access control operates in two stages:
+
+* Authentication verifies the identity associated with a request (for example, a Cloud user or API key) and retrieves that identity’s role assignments in each project.
+* Authorization evaluates those roles to determine which actions and resources the request can access within each project.
+
+For example, if you have a viewer role in project 1, an admin role in project 2, and a custom role in project 3, you can access all three projects through {{cps}}. Each project enforces the permissions associated with the role you have in that project.
+
+When a {{cps}} query targets a linked project that you have access to, authorization checks are performed locally in that project to determine whether you have the required privileges to access the requested resources.
+
+**Example**
+You have read access to the `logs` index in project 1, but no access to the `logs` index in project 2.
+If you run `GET logs/_search`:
+
+* documents from the `logs` index in project 1 are returned
+* the `logs` index in project 2 is not accessible and is excluded from the results
+
 
 ## Supported APIs [cps-supported-apis]
 
 The following APIs support {{cps}}:
 
 * [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)
-* [CAT count](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-cat-count)
+* [Count](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-count) and [CAT count](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-cat-count)
+* [ES|QL query](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-esql-queryv) and [ES|QL async query](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-esql-async-query)
 * [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
 * [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
 * [Multi search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
 * [Multi search template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template)
 * PIT (point in time) [close](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-close-point-in-time), [open](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-open-point-in-time)
-* [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-reindex)
+* [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-reindex)
 * [Resolve Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index)
 * [SQL](https://www.elastic.co/docs/api/doc/elasticsearch/v9/group/endpoint-sql)
 * [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* [Search a vector tile](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-search-mvt)
 * Search scroll [clear](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-clear-scroll), [run](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
 
