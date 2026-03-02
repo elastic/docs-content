@@ -59,7 +59,7 @@ On the **SLOs Settings** page, you can perform operations on your remote cluster
 :   TBD
 
 **Add to dashboard**
-:   TBD
+:   Add the remote SLO onto a local dashboard.
 
 **Create new alert rule**
 :   TBD
