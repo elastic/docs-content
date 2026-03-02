@@ -352,6 +352,7 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
     root      76  0.4  1.8 2190136 190972 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
     root     100  1.2  2.0 2256316 207692 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/elastic-otel-collector filebeat -E se
     ```
+
 :::
 
 :::{applies_to} stack: ga 9.0-9.2
@@ -366,6 +367,7 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
     root      76  0.4  1.8 2190136 190972 ?      Sl   23:10   0:00 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
     root     100  1.2  2.0 2256316 207692 ?      Sl   23:10   0:01 /usr/share/elastic-agent/data/elastic-agent-d99b09/components/agentbeat filebeat -E se
     ```
+
 :::
 
 ::::
