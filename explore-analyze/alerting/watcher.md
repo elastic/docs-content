@@ -17,7 +17,7 @@ products:
 # {{watcher}}
 
 ::::{tip}
-{{kib}} Alerting provides a set of built-in actions and alerts that are integrated with applications such as APM, Metrics, Security, and Uptime. You can use {{kib}} Alerting to detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. For more information, refer to [Alerts and Cases](../alerts-cases.md).
+{{kib}} Alerting provides a set of built-in actions and alerts that are integrated with applications such as APM, Metrics, Security, and Uptime. You can use {{kib}} Alerting to detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. For more information, refer to [Alerting](../alerting.md).
 ::::
 
 You can use {{watcher}} to watch for changes or anomalies in your data and perform the necessary actions in response. For example, you might want to:
@@ -64,6 +64,6 @@ To restore your defined watches, restore the `watcher` feature state from a snap
 
 ### Exporting watches using the {{watcher}} API
 
-As an alternative, you can export watch definitions using the `/_watcher/_query/watches` API, as described in [Listing watches](/explore-analyze/alerts-cases/watcher/managing-watches.md#listing-watches).
+As an alternative, you can export watch definitions using the `/_watcher/_query/watches` API, as described in [Listing watches](/explore-analyze/alerting/watcher/managing-watches.md#listing-watches).
 
 This approach allows you to retrieve watch definitions in JSON format and is useful for inspection, migration between clusters, or storing watches in version control systems. Using the API, you can also filter and export only specific watches instead of all defined watches.
