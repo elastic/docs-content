@@ -88,5 +88,6 @@ Some prebuilt rules serve special purposes: [Endpoint protection rules](/solutio
 After installing prebuilt rules:
 
 * **Keep rules current**: Elastic regularly updates prebuilt rules to detect new threats. Refer to [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md) to learn how to apply updates.
+* **Air-gapped environments**: If your deployment doesn't have internet access, refer to [Prebuilt rules in air-gapped environments](/solutions/security/detect-and-alert/prebuilt-rules-airgapped.md).
 * **Customize rules**: Adapt prebuilt rules to your environment by editing them directly (Enterprise) or duplicating and modifying copies. Refer to [Customize Elastic prebuilt rules](/solutions/security/detect-and-alert/customize-prebuilt-rules.md).
 * **Build custom rules**: Create detection logic tailored to your infrastructure. Refer to [Author rules](/solutions/security/detect-and-alert/author-rules.md).

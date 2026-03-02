@@ -578,6 +578,7 @@ toc:
             children:
               - file: security/detect-and-alert/install-prebuilt-rules.md
               - file: security/detect-and-alert/update-prebuilt-rules.md
+              - file: security/detect-and-alert/prebuilt-rules-airgapped.md
               - file: security/detect-and-alert/customize-prebuilt-rules.md
               - file: security/detect-and-alert/mitre-attack-coverage.md
           - file: security/detect-and-alert/author-rules.md
