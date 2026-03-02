@@ -43,7 +43,6 @@ Federated views allow you to view SLOs from remote {{es}} clusters alongside the
 
 - {{es}} Cross-Cluster Search (CCS) must be configured between the overview cluster and remote clusters.
 - Remote clusters must be running {{kib}} with the SLO feature and have SLOs created.
-- The remote cluster's `kibanaUrl` should be set in the SLO summary documents for full functionality (edit/clone/delete links).
 
 On the **SLOs Settings** page, you can perform operations on your remote clusters by clicking the three dots menu on the remote cluster:
 
