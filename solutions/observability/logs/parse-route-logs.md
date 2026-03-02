@@ -926,7 +926,6 @@ In this tutorial, you learned how to:
 - **Try Streams for a UI-based workflow:** Use the [Streams](/solutions/observability/streams/streams.md) UI in Kibana to extract fields and route logs without writing API calls. The [Processing tab](/solutions/observability/streams/management/extract.md) supports dissect and grok processors with live data preview, and the [Partitioning tab](/solutions/observability/streams/management/partitioning.md) lets you route data into child streams.
 - **Explore additional processors:** Add more processors to your ingest pipeline, such as the [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) for complex unstructured logs or the [date processor](elasticsearch://reference/enrich-processor/date-processor.md) for nonstandard timestamp formats.
 - **Filter and visualize your data:** Use [Discover](/explore-analyze/discover.md) to explore your parsed log data, or build dashboards to visualize trends across log levels, hosts, and time ranges.
-- **Manage data retention:** Configure [data stream lifecycle](/manage-data/lifecycle/data-stream-lifecycle.md) policies to control how long your logs are retained in each data stream.
 
 
 ## Related pages [observability-parse-log-data-related-pages]
