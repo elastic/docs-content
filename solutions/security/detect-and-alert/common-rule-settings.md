@@ -13,7 +13,7 @@ description: Reference for all detection rule settings including basic, advanced
 
 All detection rules share a common set of settings for describing the rule, controlling its schedule, configuring actions, and setting up response actions. These settings apply regardless of the [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) you select.
 
-For rule-type-specific settings (query definitions, index patterns, {{ml}} jobs, and so on), refer to [Using the rule builder](/solutions/security/detect-and-alert/using-the-rule-builder.md).
+For rule-type-specific settings (query definitions, index patterns, {{ml}} jobs, and so on), refer to [](/solutions/security/detect-and-alert/rule-types.md).
 
 ## Basic settings [rule-ui-basic-params]
 
