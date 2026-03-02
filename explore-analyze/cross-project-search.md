@@ -352,7 +352,7 @@ PUT _project_routing
 ```
 -->
 
-The GET `_project_routing` endpoint retrieves information on any named expression.
+The GET `_project_routing` endpoint retrieves information about named expressions.
 
 To retrieve all named expressions:
 
