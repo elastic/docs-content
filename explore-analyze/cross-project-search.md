@@ -196,10 +196,11 @@ Because the request explicitly targets `project2` for the `metrics` index using 
 
 Refer to [the examples section](#cps-examples) for more.
 
-<!--
-### System and hidden indices
-TODO
--->
+### Dot-prefixed and system indices
+
+Indices with names that start with a dot (`.`) but are not system indices behave the same as other non-system indices in {{cps-init}}. They are resolved across the origin project and all linked projects according to the unqualified and qualified expression rules.
+
+System indices are not accessible through {{cps}} or local search.
 
 ## Tags
 
@@ -276,6 +277,106 @@ Refer to [the examples section](#cps-examples) for more.
 Also link to the ES|QL CPS tutorial when it's available for more ES|QL examples.
 -->
 
+##### Using named project routing expressions
+
+You can define named project routing expressions and reference them in the `project_routing` parameter of any {{cps}}-enabled endpoint that supports project routing.
+
+Named expressions enable you to assign a reusable name to a routing expression. This makes complex routing rules easier to reference and reuse across multiple requests.
+
+To reference a named project routing expression in a `project_routing` parameter, prefix its name with the `@` character.
+
+For example, the following `_search` API request and ES|QL query search the `logs` resource only on projects that match the `@custom-expression` routing rule.
+
+**API request**
+
+```console
+GET logs/_search
+{
+"project_routing": "@custom-expression",
+"query": { ... }
+}
+```
+
+**ES|QL query**
+
+```console
+SET project_routing="@custom-expression";
+FROM logs 
+| STATS COUNT(*)
+```
+
+###### Creating and managing named project routing expressions
+
+You can use the `_project_routing` API to create and manage named project routing expressions.
+
+::::{note}
+Named project routing expressions are project-specific. An expression can be used only in the project where it was created.
+::::
+
+The following request creates a named expression called `origin-only`:
+
+```console
+PUT _project_routing/origin-only
+{
+    "expression" : “_alias:origin"
+}
+```
+
+<!--
+The following request creates a named expression called `aws-us-only`:
+
+```console
+PUT _project_routing/aws-us-only
+{
+    "expression" : "_csp:aws AND _region:us*"
+}
+```
+-->
+
+You can also create multiple named expressions in a single request:
+
+```console
+PUT _project_routing
+{
+"origin-only": { “expression”: "_alias:origin" },
+"linked-security": { “expression”: "_alias:*sec*" }
+}
+```
+
+<!--
+```console
+PUT _project_routing
+{
+   "aws-us-only": { “expression”: "_csp:aws AND _region:us*" },
+   "aws-eu-only": { “expression”: "_csp:aws AND _region:eu*" }
+}
+```
+-->
+
+The GET `_project_routing` endpoint retrieves information about named expressions.
+
+To retrieve all named expressions:
+
+```console
+GET _project_routing
+```
+
+To retrieve a specific named expression:
+
+```console
+GET _project_routing/origin-only
+```
+
+To delete a named expression:
+
+```console
+DELETE _project_routing/origin-only
+```
+
+::::{note}
+When using the `_project_routing` API to create, retrieve, or delete expressions, do not prefix the expression name with `@`. The `@` prefix is required only when referencing a named expression in the `project_routing` parameter of API endpoints that support it.
+::::
+
 #### Queries
 
 You can also use project tags within a search query. In this case, tags are treated as query-time metadata fields, not as routing criteria.
@@ -337,11 +438,34 @@ FROM logs* METADATA _project._alias | STATS COUNT(*) by _project._alias
 Include a link to the ES|QL CPS tutorial.
 -->
 
-<!--
 ## Security
 
-A high-level overview
--->
+This section gives you a high-level overview of how security works in {{cps}}.
+<!-- Refer to the [CPS Security]() section to learn in greater detail. -->
+
+In {{cps-init}}, access to a project’s data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
+
+::::{note}
+{{cps-cap}} is not available when performing programmatic searches using {{es}} API keys, since they're project-scoped and they return results from the local project only.
+::::
+<!-- Link to universal API keys. -->
+
+Access control operates in two stages:
+
+* Authentication verifies the identity associated with a request (for example, a Cloud user or API key) and retrieves that identity’s role assignments in each project.
+* Authorization evaluates those roles to determine which actions and resources the request can access within each project.
+
+For example, if you have a viewer role in project 1, an admin role in project 2, and a custom role in project 3, you can access all three projects through {{cps}}. Each project enforces the permissions associated with the role you have in that project.
+
+When a {{cps}} query targets a linked project that you have access to, authorization checks are performed locally in that project to determine whether you have the required privileges to access the requested resources.
+
+**Example**
+You have read access to the `logs` index in project 1, but no access to the `logs` index in project 2.
+If you run `GET logs/_search`:
+
+* documents from the `logs` index in project 1 are returned
+* the `logs` index in project 2 is not accessible and is excluded from the results
+
 
 ## Supported APIs [cps-supported-apis]
 
