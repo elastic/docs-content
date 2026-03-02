@@ -23,7 +23,7 @@ This page is about {{kib}} connectors that integrate with services like generati
 
 ## Required permissions [_required_permissions_2]
 
-Access to connectors is granted based on your privileges to alerting-enabled features. For more information, go to [Security](../explore-analyze/alerts-cases/alerts/alerting-setup.md#alerting-security).
+Access to connectors is granted based on your privileges to alerting-enabled features. For more information, go to [Security](../explore-analyze/alerting/alerts/alerting-setup.md#alerting-security).
 
 ## Connector networking configuration [_connector_networking_configuration]
 
@@ -91,6 +91,6 @@ If a connector is missing sensitive information after the import, a **Fix** butt
 
 ## Monitoring connectors [monitoring-connectors]
 
-You can query the [Event log index](/explore-analyze/alerts-cases/alerts/event-log-index.md) to gather information on connector successes and failures.
+You can query the [Event log index](/explore-analyze/alerting/alerts/event-log-index.md) to gather information on connector successes and failures.
 
 If you're using {{stack}}, then you can also use the [Task Manager health API](/deploy-manage/monitor/kibana-task-manager-health-monitoring.md) to monitor connector performance. However, if connectors fail to run, they will report as successful to Task Manager. The failure stats will not accurately depict connector failures.

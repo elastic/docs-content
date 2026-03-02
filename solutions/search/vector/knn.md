@@ -137,6 +137,10 @@ For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW g
 
 {applies_to}`stack: ga 9.2` In addition to search-time parameters, HNSW and DiskBBQ expose index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
 
+::::{tip}
+When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md) with dense vector embeddings, you can also configure `index_options` directly on the field. See [Optimizing vector storage with `index_options`](../semantic-search/semantic-search-semantic-text.md#semantic-text-index-options) for examples.
+::::
+
 ```console
 PUT image-index
 {
@@ -161,10 +165,24 @@ PUT image-index
 
 To gather results, the kNN API first finds a `num_candidates` number of approximate neighbors per shard, computes similarity to the query vector, selects the top `k` per shard, and merges them into the global top `k` nearest neighbors.
 
+For HNSW indices, `num_candidates` is the main search-time speed/accuracy control:
+
 * Increase `num_candidates` to improve recall and accuracy (at the cost of higher latency).
 * Decrease `num_candidates` for faster queries (with a potential accuracy trade-off).
 
-Choosing `num_candidates` is the primary knob for optimizing the latency/recall trade-off in {{es}} vector similarity search.
+For DiskBBQ (`bbq_disk`) indices, you can also use `visit_percentage` to control the total percentage of vectors visited during search. `visit_percentage` accepts values from `0` to `100`, including decimal values such as `0.5` (half a percent):
+
+* A good starting value is `3` (3%).
+* Increase `visit_percentage` to improve recall and accuracy (at the cost of higher latency).
+* Decrease `visit_percentage` for faster queries (with a potential accuracy trade-off).
+
+When a search targets both HNSW and DiskBBQ indices, use `visit_percentage` with `num_candidates` to tune performance and recall across both index types.
+
+When [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) is involved, `rescore_vector` is an additional speed/accuracy tuning tool. It reranks a larger candidate set using original vectors after approximate retrieval.
+
+* Increase `rescore_vector.oversample` to improve accuracy (at the cost of higher latency).
+* Decrease `rescore_vector.oversample` for faster queries (with a potential accuracy trade-off).
+* For detailed behavior and usage guidance, see [Oversampling and rescoring for quantized vectors](#dense-vector-knn-search-rescoring).
 
 ### Approximate kNN using byte vectors [approximate-knn-using-byte-vectors]
 
