@@ -8,30 +8,52 @@ applies_to:
 products:
   - id: observability
   - id: cloud-serverless
+type: tutorial
+description: Learn how to extract structured fields from unstructured log data using ingest pipelines and route logs to different data streams using reroute processors.
 ---
 
 # Parse and route logs [observability-parse-log-data]
 
-::::{note}
+In this tutorial, you'll learn how to:
 
-**For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines that parse and route logs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+- Extract structured fields like `@timestamp`, `log.level`, and `host.ip` from unstructured log messages using dissect processors
+- Create and test ingest pipelines using the simulate pipeline API
+- Configure data streams with index templates
+- Route logs to different data streams based on severity using reroute processors
+- Query and filter structured log data
 
+**Audience:** Developers, data engineers, and platform operators who work with Elasticsearch APIs and want fine-grained control over log parsing and routing.
+
+::::{tip}
+**Prefer a UI-based approach?** [Streams](/solutions/observability/streams/streams.md) provides a centralized Kibana UI for field extraction and log routing without requiring direct API calls. Streams supports [dissect and grok processors](/solutions/observability/streams/management/extract.md) for field extraction and [partitioning](/solutions/observability/streams/management/partitioning.md) for routing data into child streams. Refer to [Choose your approach](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-choose-approach) to decide which method is right for you.
 ::::
 
+## Before you begin [observability-parse-log-data-before-you-begin]
 
-If your log data is unstructured or semi-structured, you can parse it and break it into meaningful fields. You can use those fields to explore and analyze your data. For example, you can find logs within a specific timestamp range or filter logs by log level to focus on potential issues.
+- Access to an Elastic deployment with **Observability** enabled. For Observability serverless projects, the **Admin** role or higher is required to create ingest pipelines. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+- Familiarity with [Elastic Dev Tools Console](/explore-analyze/find-and-organize/find-apps-and-objects.md) for running API commands.
+- Basic understanding of [data streams](/manage-data/data-store/data-streams.md) and the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 
-After parsing, you can use the structured fields to further organize your logs by configuring a reroute processor to send specific logs to different target data streams.
+## Choose your approach [observability-parse-log-data-choose-approach]
 
-Refer to the following sections for more on parsing and organizing your log data:
+Elastic provides two ways to parse and route logs: the Elasticsearch ingest pipeline APIs covered in this tutorial, and the [Streams](/solutions/observability/streams/streams.md) UI in Kibana. The following table can help you decide which approach fits your use case:
 
-* [Extract structured fields](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields): Extract structured fields like timestamps, log levels, or IP addresses to make querying and filtering your data easier.
-* [Reroute log data to specific data streams](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-reroute-log-data-to-specific-data-streams): Route data from the generic data stream to a target data stream for more granular control over data retention, permissions, and processing.
+| | **Ingest pipeline APIs (this tutorial)** | **Streams UI** |
+|---|---|---|
+| **Best for** | Automation, CI/CD pipelines, infrastructure-as-code workflows | Interactive exploration, quick setup, visual configuration |
+| **Field extraction** | [Dissect](elasticsearch://reference/enrich-processor/dissect-processor.md) and [grok](elasticsearch://reference/enrich-processor/grok-processor.md) processors in ingest pipelines | [Dissect](/solutions/observability/streams/management/extract/dissect.md) and [grok](/solutions/observability/streams/management/extract/grok.md) processors with live preview and AI-generated patterns |
+| **Log routing** | [Reroute processor](elasticsearch://reference/enrich-processor/reroute-processor.md) with conditional logic | [Partitioning](/solutions/observability/streams/management/partitioning.md) tab with manual or AI-suggested routing |
+| **Configuration** | JSON-based API calls | Form-based UI or YAML editor |
+| **Preview and testing** | [Simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) | Built-in data preview with end-to-end simulation |
 
 
 ## Extract structured fields [observability-parse-log-data-extract-structured-fields]
 
 Make your logs more useful by extracting structured fields from your unstructured log data. Extracting structured fields makes it easier to search, analyze, and filter your log data.
+
+::::{note}
+You can also extract fields using the Streams UI instead of writing API calls. The Streams [Processing tab](/solutions/observability/streams/management/extract.md) provides [dissect](/solutions/observability/streams/management/extract/dissect.md) and [grok](/solutions/observability/streams/management/extract/grok.md) processors with live data preview and optional [AI-generated patterns](/solutions/observability/streams/management/extract.md#streams-generate-pipeline-suggestions).
+::::
 
 Follow the steps below to see how the following unstructured log data is indexed by default:
 
@@ -755,6 +777,10 @@ You’ll get the following results only showing logs in the range you’ve set:
 
 By default, an ingest pipeline sends your log data to a single data stream. To simplify log data management, use a [reroute processor](elasticsearch://reference/enrich-processor/reroute-processor.md) to route data from the generic data stream to a target data stream. For example, you might want to send high-severity logs to a specific data stream to help with categorization.
 
+::::{note}
+You can also route logs using the Streams UI instead of configuring a reroute processor directly. The Streams [Partitioning tab](/solutions/observability/streams/management/partitioning.md) lets you route data into child streams using field-based conditions or [AI-suggested partitions](/solutions/observability/streams/management/partitioning.md#streams-AI-partitioning), with no API calls required. Partitioning is available for [wired streams](/solutions/observability/streams/wired-streams.md).
+::::
+
 This section shows you how to use a reroute processor to send the high-severity logs (`WARN` or `ERROR`) from the following example logs to a specific data stream and keep the regular logs (`DEBUG` and `INFO`) in the default data stream:
 
 ```txt
@@ -882,3 +908,33 @@ Your should see similar results to the following showing that the high-severity 
   }
 }
 ```
+
+
+## Summary [observability-parse-log-data-summary]
+
+In this tutorial, you learned how to:
+
+- Use a dissect processor in an ingest pipeline to extract structured fields (`@timestamp`, `log.level`, `host.ip`) from unstructured log messages
+- Test pipelines with the simulate pipeline API before indexing data
+- Configure data streams with index templates and component templates
+- Query structured fields using term queries, CIDR notation, and range queries
+- Route high-severity logs to a dedicated data stream using a reroute processor
+
+
+## Next steps [observability-parse-log-data-next-steps]
+
+- **Try Streams for a UI-based workflow:** Use the [Streams](/solutions/observability/streams/streams.md) UI in Kibana to extract fields and route logs without writing API calls. The [Processing tab](/solutions/observability/streams/management/extract.md) supports dissect and grok processors with live data preview, and the [Partitioning tab](/solutions/observability/streams/management/partitioning.md) lets you route data into child streams.
+- **Explore additional processors:** Add more processors to your ingest pipeline, such as the [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) for complex unstructured logs or the [date processor](elasticsearch://reference/enrich-processor/date-processor.md) for nonstandard timestamp formats.
+- **Filter and visualize your data:** Use [Discover](/explore-analyze/discover.md) to explore your parsed log data, or build dashboards to visualize trends across log levels, hosts, and time ranges.
+- **Manage data retention:** Configure [data stream lifecycle](/manage-data/lifecycle/data-stream-lifecycle.md) policies to control how long your logs are retained in each data stream.
+
+
+## Related pages [observability-parse-log-data-related-pages]
+
+- [Streams](/solutions/observability/streams/streams.md)
+- [Process documents in Streams](/solutions/observability/streams/management/extract.md)
+- [Partition data into child streams](/solutions/observability/streams/management/partitioning.md)
+- [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
+- [Dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md)
+- [Reroute processor](elasticsearch://reference/enrich-processor/reroute-processor.md)
+- [Data streams](/manage-data/data-store/data-streams.md)
