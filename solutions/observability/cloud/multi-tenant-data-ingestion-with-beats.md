@@ -1,96 +1,118 @@
-In this document, we examine how to ingest logs from Azure services using Beats.
+---
+type: how-to
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
+description: >
+  Ingest Azure Event Hub logs using Filebeat in a multi-tenant setup where
+  credentials reside in one Microsoft Entra ID tenant and resources in another.
+---
 
-We specifically address a multi-tenant scenario where credentials are stored within tenant T1, while the actual log events reside in a separate tenant, T2.
+# Ingest multi-tenant Azure Event Hub logs with Filebeat
 
-## Overview
+In this guide, you'll configure {{filebeat}} to ingest logs from Azure Event Hubs in a multi-tenant scenario where authentication credentials are stored in one Microsoft Entra ID tenant (T1) and the Event Hub resources live in a separate tenant (T2).
 
-We’ll set up a multi-tenant app registration and client secret in T1, provision it in T2, and then grant the enterprise app in T2 the necessary permissions to access Event Hubs and the Storage Account.
+By the end, you'll have a working pipeline that collects logs from an Event Hub in T2 using credentials stored in T1, and forwards them to {{es}}.
 
 <!-- TODO: Add image showing multi-tenant architecture diagram with T1 and T2 tenants, Event Hubs, and Storage Account -->
 
-## Workflow
+## Before you begin
 
-### Set up a multi-tenant app registration and client secret in T1
+Make sure you have the following:
 
-* Create an application  
-  * Related HTTPS documentation: [Create application \- Microsoft Graph v1.0](https://learn.microsoft.com/en-us/graph/api/application-post-applications?view=graph-rest-1.0&tabs=http) 
+- **Two Azure tenants**: A credential tenant (T1) and a resource tenant (T2).
+- **Azure CLI**: [Installed and configured](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
+- **{{filebeat}}**: [Installed](https://www.elastic.co/docs/reference/beats/filebeat/setting-up-running) on the host where you'll run the data collection.
+- **An Elastic deployment**: Either an [Elastic Cloud](https://cloud.elastic.co) deployment or a self-managed {{es}} cluster to send data to.
+- **Sufficient Azure permissions**: The ability to create app registrations in T1, and to create service principals and assign roles in T2.
+
+## Set up multi-tenant log ingestion
+
+:::::{stepper}
+::::{step} Create a multi-tenant app registration in T1
+
+Log in to the credential tenant (T1) and create a multi-tenant application:
 
 ```shell
-# log into the T1 tenant
-$ az login --tenant aaaaaaaa-1111-1111-1111-111111111111 # T1
+az login --tenant aaaaaaaa-1111-1111-1111-111111111111
+```
 
-
-$ az ad app create \
+```shell
+az ad app create \
   --display-name "My Multi-Tenant App" \
   --sign-in-audience AzureADMultipleOrgs
 ```
 
-<!-- TODO: Add screenshot of Azure Portal showing multi-tenant app registration -->
-
-* Reset the application’s password  
-  * [application: addPassword \- Microsoft Graph v1.0](https://learn.microsoft.com/en-us/graph/api/application-addpassword?view=graph-rest-1.0&tabs=http)
+Then reset the application password to generate a client secret:
 
 ```shell
-$ az ad app credential reset \
+az ad app credential reset \
   --id cccccccc-3333-3333-3333-333333333333 \
   --append \
   --display-name "Production Secret" \
   --years 1
+```
+
+Save the `password` value from the output — you'll need it for the {{filebeat}} configuration.
+
+```json
 {
   "appId": "cccccccc-3333-3333-3333-333333333333",
   "password": "<redacted>",
   "tenant": "aaaaaaaa-1111-1111-1111-111111111111"
 }
 ```
+::::
 
-### Provision enterprise app in T2
+::::{step} Provision the enterprise app in T2
 
-```shell
-$ az login --tenant bbbbbbbb-2222-2222-2222-222222222222 # T2
-```
-
-* Create Service Principal  
-  * [Create serviceprincipal \- Microsoft Graph v1.0](https://learn.microsoft.com/en-us/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http)
+Log in to the resource tenant (T2) and create a service principal for the app you registered in T1:
 
 ```shell
-$ az ad sp create --id cccccccc-3333-3333-3333-333333333333
+az login --tenant bbbbbbbb-2222-2222-2222-222222222222
 ```
 
-### Event Hubs and the Storage Account
+```shell
+az ad sp create --id cccccccc-3333-3333-3333-333333333333
+```
 
-First, we need to create an Event Hubs namespace and a Storage Account.
+<!-- TODO: Add screenshot of Azure Portal showing multi-tenant app registration -->
+::::
 
-* [Resource Groups \- Create Or Update \- REST API (Azure Resource Management) | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/resources/resource-groups/create-or-update)
+::::{step} Create an Event Hubs namespace and hub in T2
+
+Set environment variables for the resources you'll create:
 
 ```shell
 export RESOURCE_GROUP="contoso-multi-tenant-demo"
 export AZURE_LOCATION="eastus2"
 export AZURE_EVENTHUB_NAMESPACE="contoso-multi-tenant-demo"
 export AZURE_STORAGE_ACCOUNT_NAME="contosomultitenantdemo"
-
-# Create a brand new resource group to host the resources
-$ az group create --name $RESOURCE_GROUP --location $AZURE_LOCATION
 ```
 
-#### Event Hubs namespace
-
-Next, we need to create the Event Hubs’ namespace and hub
-
-* [Namespaces \- Create Or Update \- REST API (Azure Event Hubs) | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/eventhub/namespaces/create-or-update?view=rest-eventhub-2024-01-01&tabs=HTTP)  
-* [Create Event Hub | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/eventhub/create-event-hub)
+Create a resource group:
 
 ```shell
+az group create --name $RESOURCE_GROUP --location $AZURE_LOCATION
+```
 
-# Create an event hubs namespace
-$ az eventhubs namespace create \
+Create the Event Hubs namespace:
+
+```shell
+az eventhubs namespace create \
   --name $AZURE_EVENTHUB_NAMESPACE \
   --resource-group $RESOURCE_GROUP \
   --location $AZURE_LOCATION \
   --sku Basic \
   --capacity 1
+```
 
-# Create the event hub
-$ az eventhubs eventhub create \
+Create the event hub:
+
+```shell
+az eventhubs eventhub create \
   --name logs \
   --namespace-name $AZURE_EVENTHUB_NAMESPACE \
   --resource-group $RESOURCE_GROUP \
@@ -98,80 +120,63 @@ $ az eventhubs eventhub create \
   --retention-time-in-hours 1 \
   --cleanup-policy Delete
 ```
+::::
 
-#### Storage Account
+::::{step} Create a storage account in T2
 
-Then, we create the storage account.
-
-* [Create an Azure Storage account using the REST APIs | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storagerp/storage-sample-create-account)  
-* [Storage Accounts \- Create \- REST API (Azure Storage Account) | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storagerp/storage-accounts/create?view=rest-storagerp-2023-05-01&tabs=HTTP) 
+Create a storage account for {{filebeat}} to use for checkpointing:
 
 ```shell
-# Create a storage account
-$ az storage account create \
+az storage account create \
   --name $AZURE_STORAGE_ACCOUNT_NAME \
   --resource-group $RESOURCE_GROUP \
   --location $AZURE_LOCATION \
   --sku Standard_LRS \
   --kind StorageV2
 ```
+::::
 
-### Assign roles to the application
+::::{step} Assign roles to the application
 
-Let’s grant the permission to receive messages from the event hub and read/write blobs to the storage account.
-
-* [Assign Azure roles using the REST API \- Azure RBAC | Microsoft Learn](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-rest)  
-* [Role Assignments \- Create \- REST API (Azure Authorization) | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/authorization/role-assignments/create?view=rest-authorization-2022-04-01&tabs=HTTP) 
+Grant the multi-tenant application permission to receive messages from the Event Hub and read/write blobs in the storage account:
 
 ```shell
-# Assign the "Azure Event Hubs Data Receiver" to the multi-tenant application.
-$ az role assignment create \
+az role assignment create \
   --role "Azure Event Hubs Data Receiver" \
   --assignee cccccccc-3333-3333-3333-333333333333 \
   --scope /subscriptions/eeeeeeee-5555-5555-5555-555555555555/resourceGroups/contoso-multi-tenant-demo/providers/Microsoft.EventHub/namespaces/contoso-multi-tenant-demo
+```
 
-# Assign the "Storage Blob Data Contributor" role
-$ az role assignment create \
+```shell
+az role assignment create \
   --role "Storage Blob Data Contributor" \
   --assignee cccccccc-3333-3333-3333-333333333333 \
   --scope /subscriptions/eeeeeeee-5555-5555-5555-555555555555/resourceGroups/contoso-multi-tenant-demo/providers/Microsoft.Storage/storageAccounts/contosomultitenantdemo
 ```
+::::
 
-### Collect logs using Filebeat
+::::{step} Configure and run Filebeat
 
-Here’s the Filebeat config file to access resources on T2 (or any other tenant) using the credentials on T1.
+Create a {{filebeat}} configuration file that uses the T1 credentials to access T2 resources. For a full list of available options, refer to the [Azure Event Hub input reference](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-azure-eventhub).
 
-* [Azure eventhub input | Beats](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-azure-eventhub)
-
-```
-# x-pack/filebeat/filebeat.yml
+```yaml
 filebeat.inputs:
 - type: azure-eventhub
   enabled: true
 
-  # The authentication type to use when connecting to Azure Event Hubs.
-  #
-  # Supported values are:
-  # - connection_string (default)
-  # - client_secret
-  # 
   # Available starting from Filebeat 8.19.10, 9.1.10, 9.2.4, or later.
   auth_type: client_secret
-  
-  # Entra ID (Azure AD tenant) and application (client) credentials.
-  tenant_id: bbbbbbbb-2222-2222-2222-222222222222          # t2
-  client_id: cccccccc-3333-3333-3333-333333333333          # t1
-  client_secret: ${AZURE_CLIENT_SECRET}                    # t1
 
-  # Event Hub configuration.  
+  tenant_id: bbbbbbbb-2222-2222-2222-222222222222          # T2
+  client_id: cccccccc-3333-3333-3333-333333333333          # T1
+  client_secret: ${AZURE_CLIENT_SECRET}                    # T1
+
   eventhub: logs
-  eventhub_namespace: contoso-multi-tenant-demo.servicebus.windows.net  # t2
+  eventhub_namespace: contoso-multi-tenant-demo.servicebus.windows.net  # T2
   consumer_group: $Default
-  
-  # Storage account information for checkpointing.
-  storage_account: contosomultitenantdemo # t2
 
-  # processor settings
+  storage_account: contosomultitenantdemo # T2
+
   processor_version: v2
   migrate_checkpoint: true
   processor_update_interval: 10s
@@ -180,12 +185,10 @@ filebeat.inputs:
   partition_receive_count: 100
 ```
 
-Here’s an example of how to run Filebeat.
-
-* [Filebeat command reference | Beats](https://www.elastic.co/docs/reference/beats/filebeat/command-line-options#run-command) 
+Run {{filebeat}}:
 
 ```shell
-$ filebeat -e -v -d "*" \
+filebeat -e -v -d "*" \
   --strict.perms=false \
   --path.home . \
   -E cloud.id=<redacted> \
@@ -193,15 +196,33 @@ $ filebeat -e -v -d "*" \
   -E gc_percent=100 \
   -E setup.ilm.enabled=false \
   -E setup.template.enabled=false \
-  -E output.elasticsearch.allow_older_versions=true 
+  -E output.elasticsearch.allow_older_versions=true
 ```
+::::
 
-### Verify the setup
+::::{step} Verify the setup
 
 To confirm the pipeline is working end to end:
 
-1. Send a test message to the event hub in T2.
-    * [Send event | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/eventhub/send-event)
-2. Check that Filebeat receives and forwards the message to Elasticsearch.
+1. Send a test message to the event hub in T2. Refer to the [Microsoft Send Event API](https://learn.microsoft.com/en-us/rest/api/eventhub/send-event) for details.
+2. Check that {{filebeat}} receives the message and forwards it to {{es}}.
+3. In {{kib}}, navigate to **Discover** and verify the event appears in your index.
 
 <!-- TODO: Add screenshot showing message sent to Event Hub and received successfully -->
+::::
+:::::
+
+## Next steps
+
+- Configure [additional {{filebeat}} settings](https://www.elastic.co/docs/reference/beats/filebeat/configuring-howto-filebeat) to parse and enrich your Azure logs.
+- Set up [dashboards in {{kib}}](https://www.elastic.co/docs/solutions/observability) to visualize your ingested data.
+- Explore the [Azure Event Hub integration](https://www.elastic.co/docs/reference/integrations/azure/eventhub) for an {{agent}}-based alternative.
+
+## Related pages
+
+- [Azure Event Hub input reference](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-azure-eventhub)
+- [Monitor Microsoft Azure with {{beats}}](monitor-microsoft-azure-with-beats.md)
+- [Monitor Microsoft Azure with {{agent}}](monitor-microsoft-azure-with-elastic-agent.md)
+- [Azure Logs integration](https://www.elastic.co/docs/reference/integrations/azure)
+- [Set up and run {{filebeat}}](https://www.elastic.co/docs/reference/beats/filebeat/setting-up-running)
+- [{{filebeat}} command reference](https://www.elastic.co/docs/reference/beats/filebeat/command-line-options)
