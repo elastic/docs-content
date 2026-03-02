@@ -59,7 +59,7 @@ You have several options for installing the {{es}} Debian package:
     sudo apt-get install apt-transport-https
     ```
 
-2. Save the repository definition to  `/etc/apt/sources.list.d/elastic-{{version.stack}}.list`:
+2. Save the repository definition to  {subs=true}`/etc/apt/sources.list.d/elastic-{{version.stack}}.list`:
 
     ```sh subs=true
     echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/{{version.stack}}/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-{{version.stack}}.list
@@ -91,7 +91,7 @@ If two entries exist for the same {{es}} repository, you will see an error like 
 Duplicate sources.list entry https://artifacts.elastic.co/packages/{{version.stack}}/apt/ ...
 ```
 
-Examine `/etc/apt/sources.list.d/elasticsearch-{{version.stack}}.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
+Examine {subs=true}`/etc/apt/sources.list.d/elasticsearch-{{version.stack}}.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
 :::
 
 :::{include} _snippets/skip-set-kernel-params.md
