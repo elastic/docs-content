@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ece: all
-navigation_title: Deploy an orchestrator
+navigation_title: Install an orchestrator
 products:
   - id: cloud-enterprise
 ---
