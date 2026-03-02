@@ -477,11 +477,11 @@ stack: ga 9.4
 
 If your query vector already exists in Elasticsearch, use the `lookup` query vector builder to fetch that vector directly from a document at search time.
 
-Use `lookup` when you want query-by-example workflows, such as:
+Use `lookup` when you want to:
 
-* "Find items similar to this item" recommendations
-* Related-content retrieval from a seed document
-* Avoiding an extra client round-trip to fetch a vector before searching
+- Find similar items for recommendations
+- Retrieve related content from a seed document
+- Avoid an extra client round-trip to fetch a vector before searching
 
 The lookup source must reference a `dense_vector` field that contains a single vector value. As with any kNN search, the looked-up vector must be compatible with the target kNN field (same dimensions and same embedding model semantics).
 
@@ -505,7 +505,7 @@ The lookup source must reference a `dense_vector` field that contains a single v
 (...)
 ```
 
-1. The task to perform. In this case, it is `lookup`.
+1. Use the `lookup` query vector builder to retrieve the vector from an existing document.
 2. The ID of the source document that contains the vector to use for search.
 3. The name of the index that stores the source document.
 4. The vector field path in the source document. It must reference a `dense_vector` field containing a single vector value.
