@@ -68,7 +68,7 @@ To help you set up the right data sources, rule details pages include:
 You can also check rules' related integrations in the **Installed Rules** and **Rule Monitoring** tables. Select the **integrations** badge to display the related integrations in a popup. The badge shows how many of the rule's related integrations are currently installed and enabled — for example, `1/2` means one of two related integrations is installed and actively collecting data. An integration is counted as enabled only if it has been added to an agent policy and that policy is deployed to at least one agent. Installing an integration package without adding it to a policy does not increment the enabled count.
 
 :::{admonition} Requirements for viewing related integration status
-To view related integration status in the Rules table, your role needs at least `Read` privileges for the following features under `Management`
+To view related integration status in the Rules table, your role needs at least `Read` privileges for the following features under `Management`:
 
 - `Integrations`
 - `Fleet`
