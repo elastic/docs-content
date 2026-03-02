@@ -520,7 +520,7 @@ data:image/png;base64,{{value}}
 For example:
 ![Data view editing to load base64 encoded PNG data](/explore-analyze/images/kibana-data_view_format_url_image_base64.png "")
 
-The above configuration will render a PNG file in discover to appear like this:
+This configuration renders a PNG file in Discover as follows:
 ![Sample output of PNG loading in Discover](/explore-analyze/images/kibana-discover-render_base64_image.png "")
 
 When the formatter type is **Audio**, the `{{value}}` template string specifies the name of an audio file at the specified URI.
