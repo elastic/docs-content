@@ -511,7 +511,7 @@ The `{{value}}` template string URL-encodes the contents of the field. When a fi
 
 When the formatter type is **Image**, the `{{value}}` template string specifies the name of an image at the specified URI.
 
-You can render base64 images from data within a document by using the following **URL Template**:
+You can render base64 images from data within a document by using the following **URL template**:
 
 ```text
 data:image/png;base64,{{value}}
