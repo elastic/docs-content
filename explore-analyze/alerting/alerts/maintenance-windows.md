@@ -67,7 +67,7 @@ If you turn on **Filter alerts**, you can use KQL to filter the alerts affected 
 ::::{note}
 
 * {applies_to}`stack: removed 9.2` {applies_to}`serverless: removed` You can select only a single category when you turn on filters.
-* Some rules are not affected by maintenance window filters because their alerts do not contain requisite data. In particular, [{{stack-monitor-app}}](../../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md), [tracking containment](../../../explore-analyze/alerts-cases/alerts/geo-alerting.md), [{{anomaly-jobs}} health](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md), and [transform health](../../../explore-analyze/transforms/transform-alerts.md) rules are not affected by the filters.
+* Some rules are not affected by maintenance window filters because their alerts do not contain requisite data. In particular, [{{stack-monitor-app}}](../../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md), [tracking containment](geo-alerting.md), [{{anomaly-jobs}} health](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md), and [transform health](../../../explore-analyze/transforms/transform-alerts.md) rules are not affected by the filters.
 
 ::::
 
@@ -78,4 +78,4 @@ A maintenance window can have any one of the following statuses:
 * `Finished`: It ended and does not have a repeat schedule.
 * `Archived`: It is archived. In a future release, archived maintenance windows will be queued for deletion.
 
-When you [view alert details](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#rule-details) in {{kib}}, each alert shows unique identifiers for maintenance windows that affected it.
+When you [view alert details](create-manage-rules.md#rule-details) in {{kib}}, each alert shows unique identifiers for maintenance windows that affected it.
