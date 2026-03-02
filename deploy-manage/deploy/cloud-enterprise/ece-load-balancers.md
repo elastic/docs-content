@@ -23,7 +23,7 @@ Use the following recommendations when configuring your load balancer:
 * **Load balancing algorithm**: Select an algorithm that distributes traffic evenly across all proxies, such as Round Robin or another comparable method. Proxies are constantly updated with internal routing information on how to direct requests to clusters on allocators hosting their nodes across zones. Proxies prefer cluster nodes in their local zone and route requests primarily to nodes in their own zone. 
 
 :::{note}
-Configuring the load balancer is a customer-managed prerequisite. If you have specific configuration questions, we recommend consulting your load balancer provider.
+Load balancer configuration falls outside the scope of this documentation page and is a customer-managed prerequisite. Consult your load balancer provider for configuration details or applicable support resources.
 :::
 
 * **Network**: Use a network that is fast enough from a latency and throughput perspective to be considered local for the {{es}} clustering requirement. There shouldn't be a major advantage in "preferring local" from a load balancer perspective (rather than a proxy perspective), and it might lead to potential hot spotting on specific proxies, so it should be avoided.
