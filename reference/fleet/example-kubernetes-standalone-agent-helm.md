@@ -354,7 +354,7 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
     ```
 :::
 
-:::{applies_to}`stack: ga 9.0-9.2`
+:::{applies_to} stack: ga 9.0-9.2
 
     ```sh
     USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
