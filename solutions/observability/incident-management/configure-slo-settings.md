@@ -49,18 +49,24 @@ On the **SLOs Settings** page, you can perform operations on your remote cluster
 **Details**
 :   Opens a new panel that displays details of the remote instance.
 
-**Edit**, **Clone**, **Delete**
-:   TBD 
+**Edit**
+:   Opens the SLO in edit mode on the remote cluster. You are redirected to the remote {{kib}} instance to modify the SLO definition.
+
+**Clone**
+:   Opens the clone SLO flow on the remote cluster. You are redirected to the remote {{kib}} instance to create a copy of the SLO.
+
+**Delete**
+:   Opens the delete confirmation on the remote cluster. You are redirected to the remote {{kib}} instance to remove the SLO.
 
 **Manage burn rate rules**
-:   TBD
+:   Opens burn rate rules management for this SLO on the remote cluster. You are redirected to the remote {{kib}} instance to view, create, or edit burn rate alert rules.
 
 **Reset**
-:   TBD
+:   Resets the SLO's error budget or rolling window on the remote cluster. You are redirected to the remote {{kib}} instance to complete this action.
 
 **Add to dashboard**
-:   Add the remote SLO onto a local dashboard.
+:   Adds the remote SLO as a panel to a dashboard in your local {{kib}} instance. The SLO continues to display data from the remote cluster.
 
 **Create new alert rule**
-:   TBD
+:   Disabled for remote SLOs. To create burn rate or other alert rules for a remote SLO, use **Manage burn rate rules** to open the remote {{kib}} instance and create the rule there.
 
