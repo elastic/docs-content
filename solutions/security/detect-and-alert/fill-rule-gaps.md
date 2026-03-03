@@ -82,13 +82,13 @@ The Gaps table has the following columns:
 
 | Column | Description |
 |---|---|
-| **Status** | The current state of the gap: `Filled`, `Partially filled`, or `Unfilled`. |
-| **Detected at** | When the gap was first discovered. |
-| **Manual fill tasks** | The status of the manual run filling the gap. For details, refer to the [Manual runs table](/solutions/security/detect-and-alert/manage-detection-rules.md#manual-runs-table). |
-| **Event time covered** | How much progress the manual run has made filling the gap. |
-| **Range** | When the gap started and ended. |
-| **Total gap duration** | How long the gap lasted. |
-| **Actions** | Available actions: **Fill gap** (starts a manual run) or **Fill remaining gap** (fills the leftover portion of a partially filled gap). |
+| Status | The current state of the gap: `Filled`, `Partially filled`, or `Unfilled`. |
+| Detected at | When the gap was first discovered. |
+| Manual fill tasks | The status of the manual run filling the gap. For details, refer to the [Manual runs table](/solutions/security/detect-and-alert/manage-detection-rules.md#manual-runs-table). |
+| Event time covered | How much progress the manual run has made filling the gap. |
+| Range | When the gap started and ended. |
+| Total gap duration | How long the gap lasted. |
+| Actions | Available actions: **Fill gap** (starts a manual run) or **Fill remaining gap** (fills the leftover portion of a partially filled gap). |
 
 ::::{note}
 If you stop a manual run before it finishes filling a gap, the gap's status changes to `Partially filled`. To fill the remaining gap, select **Fill remaining gap** or [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) the rule over the gap's time frame.
