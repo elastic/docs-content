@@ -14,7 +14,13 @@ When your data is split across projects to organize ownership, use cases, or env
 
 {{cps-cap}} relies on linking projects within your {{ecloud}} organization. After you link projects together, searches from the origin project automatically run across all linked projects.
 
-This overview explains how {{cps}} works, including project linking, search expressions, tags, and project routing.
+This overview explains how {{cps}} works, including project linking and security.
+For details on how search, tags, and project routing work in {{cps-init}}, refer to the following pages:
+
+* [Link projects for {{cps}}](/explore-analyze/cross-project-search/cross-project-search-link-projects.md): step-by-step instructions for linking projects in the {{ecloud}} UI.
+* [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md): learn how search expressions, search options, and index resolution work.
+* [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md): learn about predefined and custom project tags and how to use them in queries.
+* [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): learn how to route searches to specific projects based on tag values.
 
 ## {{cps-cap}} as the default behavior for linked projects
 
@@ -22,7 +28,7 @@ Projects are intended to act as logical namespaces for data, not hard boundaries
 
 Because of this, after you link additional projects to your current (_origin_) project, all searches from the origin project query every linked project by default.
 Searches are designed to run across projects automatically, providing the same experience for querying, analysis, and insights across projects as within a single project.
-Restricting search scope is always possible, but it requires explicitly scoping the search request using [qualified expressions](#search-expressions) or [routing parameters](#project-routing).
+Restricting search scope is always possible, but it requires explicitly scoping the search request using [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [routing parameters](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
 ## Project linking
 
@@ -34,7 +40,7 @@ The **origin project** is the project you are currently working in and from whic
 After you link projects, searches that you run from the origin project are no longer local to the origin project by default.
 **Any search initiated on the origin project automatically runs across the origin project and all its linked projects ({{cps}}).**
 
-When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the query scope by using [project routing expressions](#project-routing) or [qualified index expressions](#search-expressions).
+When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the query scope by using [project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) or [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions).
 
 Project linking is not bidirectional. Searches initiated from a linked project do not run against the origin project.
 
@@ -47,7 +53,7 @@ The project alias is derived from the project name and can be modified.
 
 The **project ID** uniquely identifies a project and is system-generated.
 
-The **project alias** is a human-readable identifier derived from the project’s connection alias. If you want to change the project alias, you must update the connection alias of the linked project.
+The **project alias** is a human-readable identifier derived from the project's connection alias. If you want to change the project alias, you must update the connection alias of the linked project.
 <!-- Link to the page that explains how to update the Connection alias. -->
 
 While both the project ID and project alias uniquely identify a project, {{cps}} uses project aliases in index expressions. Project aliases are intended to be user-friendly and descriptive, making search expressions easier to read and maintain.
@@ -55,395 +61,14 @@ While both the project ID and project alias uniquely identify a project, {{cps}}
 #### Referencing the origin project
 
 In addition to using a project alias, {{cps-init}} provides a reserved identifier, `_origin`, that always refers to the origin project of the search.
-You can use `_origin` in search expressions to explicitly target the origin project, without having to reference its specific project alias. Refer to [Qualified and unqualified search expressions](#search-expressions) for detailed examples and to learn more.
-
-## Search in {{cps-init}}
-
-This section explains how search works in {{cps-init}}, including:
-
-* the {{cps-init}} search model
-* **unqualified search expressions** (for example, `logs` and `logs*`), **qualified search expressions** (expressions with a project alias prefix, for example `project1:logs`) and how they control search scope
-* how search options such as `ignore_unavailable` and `allow_no_indices` behave in {{cps-init}}
-* common edge cases and examples involving mixed qualified and unqualified expressions
-
-### {{cps-init}} search model
-
-With {{cps-init}}, searches are resolved across all linked projects by default—not just the origin project.
-You explicitly need to limit the scope of your search to override this behavior. Refer to the [Unqualified and qualified search expressions](#search-expressions) section to learn more.
-When you refer to a resource (such an index, a data stream, or an alias) by a name, {{cps-init}} resolves that name across the origin project and all of its linked projects.
-This means that when you run a search from the origin project and refer to a searchable resource such as `logs`, the search is executed against all resources named `logs` across the origin project and its linked projects, for example:
-
-```console
-GET logs/_search
-```
-
-For each linked project, the search runs only if a resource named `logs` exists.
-If a linked project does not have a `logs` resource, that project is skipped and the search continues without returning an error. No error is returned as long as at least one project has the `logs` resource.
-
-### Unqualified and qualified search expressions [search-expressions]
-
-{{cps-cap}} supports two types of search expressions: unqualified and qualified. The type of search expression determines where a search request runs and how errors are handled.
-
-* **Unqualified search expressions** follow the {{cps}} model and represent the default, native behavior in {{cps-init}}. An unqualified search expression does not include a project alias prefix. In this case, the search runs against the origin project and all its linked projects.
-* **Qualified search expressions** explicitly override the default behavior, enabling you to precisely control which projects a search runs on and how errors are handled. It includes additional qualifiers, such as project alias prefixes, that explicitly control the scope of the search.
-
-For example, the following qualified search expression request searches only the origin project:
-
-```console
-GET _origin:logs/_search
-```
-
-For additional examples of qualified search expressions, refer to the [examples section](#cps-examples).
-
-::::{tip}
-[Project routing expressions](#project-routing) provide an additional way for you to control which projects the query is routed to, but they serve a different purpose than qualified search expressions.
-While qualified search expressions control scope by explicitly naming projects by their project aliases in the index expression, project routing expressions enable you to route the query to projects dynamically based on other project metadata.
-You can use qualified search expressions and project routing expressions together, depending on whether you want to scope searches by explicitly identifying projects or by selecting projects based on shared attributes.
-::::
-
-#### `ignore_unavailable` and `allow_no_indices`
-
-The distinction between qualified and unqualified search expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied in {{cps}}.
-When you use an **unqualified** expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
-
-Project routing expressions do not affect the behavior of the `ignore_unavailable` or `allow_no_indices` settings.
-
-::::{important}
-The way that missing resources are interpreted differs between unqualified and qualified expressions, refer to the [Unqualified expression behavior](#behavior-unqualified) and [Default (non-CPS) and qualified expression behavior](#behavior-default-qualified) sections for a detailed explanation.
-::::
-
-##### Default (non-CPS) and qualified expression behavior [behavior-default-qualified]
-
-The following describes the standard {{es}} behavior:
-
-`ignore_unavailable` defaults to `false`.
-When set to `false`, the request returns an error if it targets a missing resource (such as an index or data stream).
-When set to `true`, missing resources are ignored and the request returns an empty result instead of an error.
-For example, if the `logs` index does not exist, the following request returns an error because the default value is `false`:
-
-```console
-GET logs/_search
-```
-
-`allow_no_indices` defaults to `true`.
-When set to `true`, the request succeeds and returns an empty result if it targets a missing resource.
-When set to `false`, the request returns an error if any wildcard expression, index alias, or `_all` value does not resolve to an existing resource.
-
-For example, if no indices match `logs*`, the following request returns an empty result because the default value is `true`:
-
-```console
-GET logs*/_search
-```
-
-When you use a **qualified search expression**, the default behavior of `ignore_unavailable` and `allow_no_indices` outlined above applies independently to each qualified project.
-
-The next section explains how this behavior differs when using unqualified search expressions in {{cps-init}}.
-
-##### Unqualified expression behavior [behavior-unqualified]
-
-When you use an **unqualified search expression**, the behavior is different:
-
-* As long as the targeted resources exist in at least one of the searched projects, the request succeeds, even if `ignore_unavailable` or `allow_no_indices` are set to false.
-* The request returns an error only if:
-  * the targeted resources are missing from all searched projects, or
-  * a search expression explicitly targets a specific project and the resource is missing from that project.
-
-##### Examples
-
-You have two projects linked to your `origin` project: `project1` and `project2`.
-Resources:
-
-* `origin` has a `logs` index
-* `project1` has a `metrics` index
-* `project2` has a `books` index
-
-**The following request succeeds**, even with `ignore_unavailable=false`:
-
-```console
-GET logs,metrics/_search?ignore_unavailable=false
-```
-
-Although `logs` is not present in `project2` and `metrics` is not present in `origin`, each index exists in at least one searched project, so the request succeeds.
-
-If the projects have the following resources, however:
-
-* `origin` has a `metrics` index
-* `project1` has a `metrics` index
-* `project2` has a `books` index
-
-**The following request returns an error**:
-
-```console
-GET logs,metrics/_search?ignore_unavailable=false
-```
-
-In this case, the `logs` index does not exist in any of the searched projects, so the request fails.
-
-In the next example, the request combines qualified and unqualified index expressions.
-Resources:
-
-* `origin` has a `logs` index
-* `project1` has a `metrics` index
-* `project2` has a `books` index
-
-**The following request returns an error**:
-
-```console
-GET logs,project2:metrics/_search?ignore_unavailable=false
-```
-
-Because the request explicitly targets `project2` for the `metrics` index using a qualified expression and `ignore_unavailable` is set to `false`, the entire request returns an error, even though the `logs` index exists in one of the projects.
-
-Refer to [the examples section](#cps-examples) for more.
-
-### Dot-prefixed and system indices
-
-Indices with names that start with a dot (`.`) but are not system indices behave the same as other non-system indices in {{cps-init}}. They are resolved across the origin project and all linked projects according to the unqualified and qualified expression rules.
-
-System indices are not accessible through {{cps}} or local search.
-
-## Tags
-
-You can assign [tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) to projects and use them to control {{cps}} behavior.
-
-{{cps-init}} supports two kinds of project tags:
-
-* Predefined tags, which are provided by Elastic and describe built-in project metadata.
-* Custom tags, which you define and manage to organize projects according to your own needs. These tags are managed in the {{ecloud}} UI.
-
-Only custom tags can be added, modified, or removed. Predefined tags are always available and cannot be changed.
-
-With tags, you can:
-
-* route API calls to specific projects based on tag values
-* include tag values in search or ES|QL results to identify which project each document came from
-* filter and aggregate results using tags
-
-The following tags are predefined:
-
-* `_alias`: the project alias
-* `_csp`: the cloud service provider
-* `_id`: the project identifier
-* `_organization`: the organization identifier
-* `_region`: the Cloud region where the project is located
-* `_type`: the project type (Observability, Search, Security)
-
-Predefined tags always start with an underscore `_`.
-
-### Using tags in {{cps-init}}
-
-There are two ways to use tags in {{cps-init}}:
-
-* project routing
-* queries
-
-#### Project routing [project-routing]
-
-Project routing enables you to limit a search to a subset of projects, including the origin project and linked projects, based on tag values.
-
-When you use project routing, the routing decision is made before the search request is performed.
-Based on the specified tags, {{cps-init}} determines which projects the query is sent to, and the search is performed only on those projects.
-
-The `project_routing` parameter is available on all {{cps-init}}-enabled endpoints. Refer to the [](#cps-supported-apis) for a full list of endpoints.
-
-For example, the following API request searches the `logs` resource only on projects that have the `_alias:my_search_project` tag.
-
-```console
-GET logs/_search 
-{
-  "project_routing": "_alias:my_search_project"
-}
-```
-
-::::{important}
-Currently, project routing only supports using the `_alias` tag.
-::::
-
-<!--
-Project routing supports prefix and suffix wildcards, boolean logic and groupings of terms. The tag syntax matches the Lucene syntax notation, including in ES|QL.
-For example:
-
-```console
-GET logs/_search
-{
-  project_routing="(_region:us-* AND _csp:aws) OR _csp:gcp"
-}
-```
--->
-
-Refer to [the examples section](#cps-examples) for more.
-
-<!--
-Also link to the ES|QL CPS tutorial when it's available for more ES|QL examples.
--->
-
-##### Using named project routing expressions
-
-You can define named project routing expressions and reference them in the `project_routing` parameter of any {{cps}}-enabled endpoint that supports project routing.
-
-Named expressions enable you to assign a reusable name to a routing expression. This makes complex routing rules easier to reference and reuse across multiple requests.
-
-To reference a named project routing expression in a `project_routing` parameter, prefix its name with the `@` character.
-
-For example, the following `_search` API request and ES|QL query search the `logs` resource only on projects that match the `@custom-expression` routing rule.
-
-**API request**
-
-```console
-GET logs/_search
-{
-"project_routing": "@custom-expression",
-"query": { ... }
-}
-```
-
-**ES|QL query**
-
-```console
-SET project_routing="@custom-expression";
-FROM logs 
-| STATS COUNT(*)
-```
-
-###### Creating and managing named project routing expressions
-
-You can use the `_project_routing` API to create and manage named project routing expressions.
-
-::::{note}
-Named project routing expressions are project-specific. An expression can be used only in the project where it was created.
-::::
-
-The following request creates a named expression called `origin-only`:
-
-```console
-PUT _project_routing/origin-only
-{
-    "expression" : “_alias:origin"
-}
-```
-
-<!--
-The following request creates a named expression called `aws-us-only`:
-
-```console
-PUT _project_routing/aws-us-only
-{
-    "expression" : "_csp:aws AND _region:us*"
-}
-```
--->
-
-You can also create multiple named expressions in a single request:
-
-```console
-PUT _project_routing
-{
-"origin-only": { “expression”: "_alias:origin" },
-"linked-security": { “expression”: "_alias:*sec*" }
-}
-```
-
-<!--
-```console
-PUT _project_routing
-{
-   "aws-us-only": { “expression”: "_csp:aws AND _region:us*" },
-   "aws-eu-only": { “expression”: "_csp:aws AND _region:eu*" }
-}
-```
--->
-
-The GET `_project_routing` endpoint retrieves information about named expressions.
-
-To retrieve all named expressions:
-
-```console
-GET _project_routing
-```
-
-To retrieve a specific named expression:
-
-```console
-GET _project_routing/origin-only
-```
-
-To delete a named expression:
-
-```console
-DELETE _project_routing/origin-only
-```
-
-::::{note}
-When using the `_project_routing` API to create, retrieve, or delete expressions, do not prefix the expression name with `@`. The `@` prefix is required only when referencing a named expression in the `project_routing` parameter of API endpoints that support it.
-::::
-
-#### Queries
-
-You can also use project tags within a search query. In this case, tags are treated as query-time metadata fields, not as routing criteria.
-You can explicitly request project tags to be included in search results. For both `_search` and ES|QL, you must request one or more tags to include them in the response.
-
-::::{note}
-The `_project.` prefix is required when using tags in search or ES|QL queries to disambiguate project metadata from Lucene fields.
-It is optional when using tags for project routing.
-::::
-
-For example, with the `_search` endpoint:
-
-```console
-GET logs/_search
-{
-  "fields": ["*", "_project.mytag", "_project._region"]
-}
-```
-
-For example, with ES|QL:
-
-```console
-GET /_query
-{
-  "query": "FROM logs METADATA _project._csp, _project._region | ..."
-}
-```
-
-In both cases, the returned documents include the requested project metadata, which lets you identify which project each document originated from.
-
-You can also use project tags in queries to filter, sort, or aggregate search results.
-Unlike project routing, using tags inside a query does not affect which projects the query is sent to. It only affects which results are returned. The routing decision has already been made before the query is performed. 
-
-For example, the following request aggregates results by cloud service provider:
-
-```console
-GET foo/_search
-{
- "query": { ... }
- "aggs": {
-    "myagg": {
-      "terms": {
-        "field": "_project._csp"
-      }
-    }
-  }
-}
-```
-
-When you use project tags in ES|QL, you must explicitly include them in the METADATA clause.
-This is required not only to return tag values in the results, but also to use them in the query for filtering, sorting, or aggregation.
-
-For example, the following ES|QL query counts documents per project alias:
-
-```console
-FROM logs* METADATA _project._alias | STATS COUNT(*) by _project._alias
-```
-<!--
-Include a link to the ES|QL CPS tutorial.
--->
+You can use `_origin` in search expressions to explicitly target the origin project, without having to reference its specific project alias. Refer to [Qualified and unqualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) for detailed examples and to learn more.
 
 ## Security
 
 This section gives you a high-level overview of how security works in {{cps}}.
 <!-- Refer to the [CPS Security]() section to learn in greater detail. -->
 
-In {{cps-init}}, access to a project’s data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
+In {{cps-init}}, access to a project's data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
 
 ::::{note}
 {{cps-cap}} is not available when performing programmatic searches using {{es}} API keys, since they're project-scoped and they return results from the local project only.
@@ -452,7 +77,7 @@ In {{cps-init}}, access to a project’s data is determined by the [roles](/depl
 
 Access control operates in two stages:
 
-* Authentication verifies the identity associated with a request (for example, a Cloud user or API key) and retrieves that identity’s role assignments in each project.
+* Authentication verifies the identity associated with a request (for example, a Cloud user or API key) and retrieves that identity's role assignments in each project.
 * Authorization evaluates those roles to determine which actions and resources the request can access within each project.
 
 For example, if you have a viewer role in project 1, an admin role in project 2, and a custom role in project 3, you can access all three projects through {{cps}}. Each project enforces the permissions associated with the role you have in that project.
