@@ -5,6 +5,7 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+navigation_title: Reading indices from older versions
 ---
 
 # Reading indices from older {{es}} versions [archive-indices]

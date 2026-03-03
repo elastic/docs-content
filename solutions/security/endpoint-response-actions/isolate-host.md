@@ -39,11 +39,6 @@ Isolated hosts, however, can still send data to {{elastic-sec}}. You can also cr
 
 You can isolate a host from a detection alert’s details flyout, from the Endpoints page, or from the endpoint response console. Once a host is successfully isolated, an `Isolated` status displays next to the `Agent status` field, which you can view on the alert details flyout or Endpoints list table.
 
-::::{tip}
-If the request fails, verify that the {{agent}} and your endpoint are both online before trying again.
-::::
-
-
 All actions executed on a host are tracked in the host’s response actions history, which you can access from the Endpoints page. Refer to [](/solutions/security/endpoint-response-actions/isolate-host.md#view-host-isolation-details) for more information.
 
 

@@ -27,7 +27,7 @@ There are several special prebuilt rules you need to know about:
 * [**Endpoint protection rules**](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md): Automatically create alerts based on {{elastic-defend}}'s threat monitoring and prevention.
 * [**External Alerts**](detection-rules://rules/promotions/external_alerts.md): Automatically creates an alert for all incoming third-party system alerts (for example, Suricata alerts).
 
-If you want to receive notifications via external systems, such as Slack or email, when alerts are created, use the {{kib}} [Alerting and Actions](/explore-analyze/alerts-cases.md) framework.
+If you want to receive notifications via external systems, such as Slack or email, when alerts are created, use the {{kib}} [Alerting and Actions](/explore-analyze/alerting.md) framework.
 
 ::::{note}
 To use {{kib}} Alerting for detection alert notifications in the {{stack}}, you need the [appropriate license](https://www.elastic.co/subscriptions).
@@ -39,7 +39,7 @@ After rules have started running, you can monitor their executions to verify the
 You can create and manage rules and alerts via the UI or the [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api).
 
 ::::{important}
-To make sure you can access Detections and manage rules, see [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md).
+To make sure you can access Detections and manage rules, see [](/solutions/security/detect-and-alert/detections-privileges.md).
 
 ::::
 
@@ -77,7 +77,7 @@ In addition, the following support restrictions are in place:
 
 ## Detections configuration and index privilege prerequisites [detections-permissions]
 
-[Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) provides detailed information on all the permissions required to initiate and use the Detections feature.
+[](/solutions/security/detect-and-alert/detections-requirements.md) provides detailed information on all the permissions required to initiate and use the Detections feature.
 
 ## Resolve UI error messages [_resolve_ui_error_messages]
 
@@ -85,10 +85,10 @@ Depending on your privileges and whether detection system indices have already b
 
 * **`Let’s set up your detection engine`**
 
-    If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) for a list of all the requirements.
+    If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
 
     ::::{note}
-    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.encryptedSavedObjects.encryptionKey`](/solutions/security/detect-and-alert.md#detections-permissions) setting has not been added to the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For more information, refer to [Configure self-managed {{stack}} deployments](/solutions/security/detect-and-alert/detections-requirements.md#detections-on-prem-requirements).
+    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.encryptedSavedObjects.encryptionKey`](/solutions/security/detect-and-alert.md#detections-permissions) setting has not been added to the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For more information, refer to [](/solutions/security/detect-and-alert/detections-requirements.md) for self-managed {{stack}} deployments.
     ::::
 
 * **`Detection engine permissions required`**
@@ -96,7 +96,7 @@ Depending on your privileges and whether detection system indices have already b
     If you get this message, you do not have the [required privileges](/solutions/security/detect-and-alert.md#detections-permissions) to view the **Detections** feature, and you should contact your {{kib}} administrator.
 
     ::::{note}
-    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.security.enabled`](/solutions/security/detect-and-alert.md#detections-permissions) setting is not enabled in the `elasticsearch.yml` file. For more information, refer to [Configure self-managed {{stack}} deployments](/solutions/security/detect-and-alert/detections-requirements.md#detections-on-prem-requirements).
+    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.security.enabled`](/solutions/security/detect-and-alert.md#detections-permissions) setting is not enabled in the `elasticsearch.yml` file. For more information, refer to [](/solutions/security/detect-and-alert/detections-requirements.md) for self-managed {{stack}} deployments.
     ::::
 
 

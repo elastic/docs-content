@@ -9,7 +9,7 @@ products:
   - id: security
 ---
 
-# Quickstart: Detect and respond to threats with SIEM
+# Get started with Elastic Security SIEM: Detect and respond to threats
 
 In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM features to detect, investigate, and respond to threats. 
 
@@ -19,7 +19,7 @@ In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM 
 * If you're using the recommended integration in this guide, {{elastic-defend}}, then: 
   * Ensure you have the minimum [system requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) to install {{elastic-defend}}. 
   * Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). At the least, you need `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
-* We recommend `manage` and `write` access to manage rules and alerts. Refer to [Detection requirements](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) for the required cluster, index, and space privileges. 
+* We recommend `manage` and `write` access to manage rules and alerts. Refer to [](/solutions/security/detect-and-alert/detections-privileges.md) for the required cluster, index, and space privileges. 
 
 ## Add data using {{elastic-defend}}
 
@@ -179,7 +179,7 @@ Once you've had a chance to install detection rules and check out alerts, we rec
 
 * View and analyze data with out-of-the-box [dashboards](/solutions/security/dashboards.md). 
 * Learn how to reduce your mean time to respond with [Attack Discovery](/solutions/security/ai/attack-discovery.md), an AI threat hunting feature that leverages large language models (LLMs) to analyze alerts in your environment, identify threats, and show how they correspond to the MITRE ATT&CK matrix.
-* Learn how to use [Cases](/solutions/security/investigate/cases.md) to track investigation details.  
+* Learn how to use [Cases](/solutions/security/investigate/security-cases.md) to track investigation details.  
 * Download the "Guide to high-volume data sources for SIEM" [white paper](https://www.elastic.co/campaigns/guide-to-high-volume-data-sources-for-siem?elektra=organic&storm=CLP&rogue=siem-gic). 
 * Check out [Elastic Security Labs](https://www.elastic.co/security-labs) for the latest on threat research.  
 * Learn how to manage your [data lifecycle](/manage-data/lifecycle.md), including how long data is retained, and how to transition indices through data tiers according to your performance needs and retention policies.

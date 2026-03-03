@@ -14,10 +14,6 @@ $$$install-reporting-packages$$$
 
 $$$set-reporting-server-host$$$
 
-$$$csv-limitations$$$
-
-$$$embed-code$$$
-
 $$$grant-user-access-basic$$$
 
 $$$grant-user-access-external-provider$$$
@@ -31,7 +27,7 @@ $$$reporting-roles-user-api$$$
 $$$securing-reporting$$$
 
 
-{{kib}} provides you with several options to share **Discover** sessions, dashboards, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the {icon}`share` **Share** and {icon}`download` **Export** menus in the toolbar.
+{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the toolbar.
 
 ## Permissions
 
@@ -53,8 +49,6 @@ When sharing an object with unsaved changes, you get a temporary link that might
 To access the object shared with the link, users need to authenticate.
 
 Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
-
-![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
 
 
 ## Export as a file [manually-generate-reports]
@@ -154,8 +148,11 @@ Create and share JSON files for workpads.
 
 
 ## Embed outside of {{kib}} [_embed_outside_of_kib]
+```{applies_to}
+serverless: unavailable
+```
 
-* {applies_to}`stack: beta` {applies_to}`serverless: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
+* {applies_to}`stack: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
 * **Embed code** — Embed fully interactive dashboards as an iframe on web pages.
 
 ::::{note}
@@ -166,10 +163,10 @@ For {{ech}} deployments, {{kib}} instances require a minimum of 2GB RAM to gener
 
 
 
-## Share workpads on a website [add-workpad-website]
+### Share workpads on a website [add-workpad-website]
 ```{applies_to}
 stack: beta
-serverless: beta
+serverless: unavailable
 ```
 
 Create and securely share static **Canvas** workpads on a website. To customize the behavior of the workpad on your website, you can choose to autoplay the pages or hide the workpad toolbar.
@@ -188,7 +185,11 @@ Create and securely share static **Canvas** workpads on a website. To customize 
 5. To change the settings, click the settings icon, then choose the settings you want to use.
 
 
-## Embed code [embed-code]
+### Embed code [embed-code]
+```{applies_to}
+stack: ga
+serverless: unavailable
+```
 
 Display your dashboards on an internal company website or personal web page with an iframe. To embed other {{kib}} objects, manually create the HTML code.
 

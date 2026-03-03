@@ -13,17 +13,17 @@ This documentation site includes docs for:
 - {{ech}}
 - {{serverless-full}}
 
-Refer to [versioning and availability](/get-started/versioning-availability.md) to learn more.
+Refer to [Versioning and availability](/get-started/versioning-availability.md) to learn more.
 
 This documentation is [**cumulative**](how-to/cumulative-docs/index.md): a new set of docs is not published for every minor release. Instead, each page stays valid over time and incorporates version-specific changes.
 
 :::{tip}
-To learn more about the new docs UX, read [how to use the documentation](/get-started/howto-use-the-docs.md).
+To learn more about the new docs UX, read [How to use the documentation](/get-started/howto-use-the-docs.md).
 :::
 
 ## Contribute to `elastic.co/docs` (Markdown)
 
-|System|What it covers|Published at|Format|How to contribute
+|System|What it covers|Published to|Format|How to contribute
 |----|----|----|----|----|----|
 |Main docs|Guides, troubleshooting, release notes, etc.|[elastic.co/docs](https://www.elastic.co/docs)|Markdown|- [On the web](on-the-web.md) (quick edits) <br> - [Locally](locally.md) (complex changes) <br> - [Syntax guide](syntax-quick-reference.md)|
 |API references|Elastic REST APIs|[elastic.co/docs/api](https://www.elastic.co/docs/api/)|[OpenAPI](https://swagger.io/specification/)|[Contribute to API docs](api-docs/index.md)|
@@ -39,8 +39,8 @@ To learn more about the new docs UX, read [how to use the documentation](/get-st
 
 |System|What it covers|Published at|Format/toolchain|How to contribute
 |----|----|----|----|----|----|
-|`elastic.co/guide` (Asciidoc)|Elastic docs & API references for 8.x and earlier|[elastic.co/guide](https://www.elastic.co/guide/index.html)|Asciidoc|[Contribute to the Asciidoc docs](./asciidoc-guide.md)|
+|`elastic.co/guide` (Asciidoc)|Elastic docs and API references for 8.x and earlier|[elastic.co/guide](https://www.elastic.co/guide/index.html)|Asciidoc|[Contribute to the Asciidoc docs](./asciidoc-guide.md)|
 
 :::{note}
-If you need to update documentation in both the MarkDown and Asciidoc systems, you'll need two separate PRs. Refer to [Updating docs in both systems](asciidoc-guide.md#updating-docs-in-both-systems).
+If you need to update documentation in both the Markdown and Asciidoc systems, you'll need two separate PRs. Refer to [Updating docs in both systems](asciidoc-guide.md#updating-docs-in-both-systems).
 :::

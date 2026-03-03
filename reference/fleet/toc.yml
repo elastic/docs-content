@@ -60,6 +60,7 @@ toc:
   - file: secure.md
     children:
       - file: secure-connections.md
+      - file: certificate-fingerprints.md
       - file: certificates-rotation.md
       - file: mutual-tls.md
       - file: tls-overview.md
@@ -85,6 +86,7 @@ toc:
           - file: agent-health-status.md
           - file: filter-agent-list-by-tags.md
           - file: enrollment-handling-containerized-agent.md
+          - file: remove-agent-elevated-privileges.md
       - file: agent-policy.md
         children:
           - file: create-policy-no-ui.md

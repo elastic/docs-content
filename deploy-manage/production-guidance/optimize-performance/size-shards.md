@@ -31,7 +31,7 @@ To avoid either of these states, implement the following guidelines:
 
 ### Shard distribution guidelines
 
-To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability.
+{{es}} uses its [desired balance allocator](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#shards-rebalancing-heuristics) to distribute shards across nodes based off heuristics for data stream writes, shard counts, and disk usage. Shard counts may end up unevenly distributed in order to evenly spread the node work. An [unbalanced cluster](/troubleshoot/elasticsearch/troubleshooting-unbalanced-cluster.md) may lead to performance degradation and instability, such as [watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md). Poorly specified [sharding strategies](#create-a-sharding-strategy) may cause [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
 
 While {{es}} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
 
@@ -390,13 +390,20 @@ This calculation may differ from the [Count API’s](https://www.elastic.co/docs
 
 This limit is much higher than the [recommended maximum document count](#shard-size-recommendation) of approximately 200M documents per shard.
 
-If you encounter this problem, try to mitigate it by using the [Force Merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to merge away some deleted docs. For example:
+If you encounter this problem, try to mitigate it if possible during off-peak hours by using the [Force Merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to expunge away some deleted documents. For example:
 
 ```console
 POST my-index-000001/_forcemerge?only_expunge_deletes=true
 ```
 
-This will launch an asynchronous task which can be monitored via the [Task Management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks).
+This will launch an asynchronous task which can be monitored via the [Task Management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks). The `only_expunge_deletes=true` parameter can reduce the total doc count only if a meaningful portion of the shard is deleted documents. If `docs.count` is already close to the limit, expunging deletes may not be sufficient—plan to split or reindex into more shards.
+
 
 It may also be helpful to [delete unneeded documents](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query), or to [split](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split) or [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) the index into one with a larger number of shards.
 
+To prevent this issue, roll over or re-shard before shards approach the recommended per-shard document count (for example, via {{ilm}} rollover thresholds or a sharding strategy that keeps documents per shard well below the Lucene limit).
+
+To check whether a shard is approaching the limit, run:
+```console
+GET my-index-000001/_stats?level=shards&filter_path=indices.*.shards.*.routing,indices.*.shards.*.docs
+```

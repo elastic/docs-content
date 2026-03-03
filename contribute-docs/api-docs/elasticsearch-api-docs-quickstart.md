@@ -107,7 +107,6 @@ You should try to fix all linter warnings and not just errors. Fixing errors alo
 ::::{step} Preview your changes
 Generate a preview of how your docs will appear:
 ```shell
-npm install -g bump-cli
 bump preview output/openapi/elasticsearch-openapi-docs-final.json # Preview Elasticsearch API docs
 bump preview output/openapi/elasticsearch-serverless-openapi-docs-final.json # Preview Elasticsearch serverless API docs
 ```

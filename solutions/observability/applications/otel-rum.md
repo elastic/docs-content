@@ -148,12 +148,12 @@ To define the resource, you need the following dependencies:
 
 - `@opentelemetry/resources`: This package provides information about the SDK to be placed in the resource. This information helps {{kib}} identify the service type and the SDK that generated the telemetry.
 - `@opentelemetry/resources`: This package helps you to define and work with resources because a Resource is not a plain object and has some properties (like immutability) and constraints.
-- `@opentelemetry/browser-detector`: Detectors help you to define a resource by querying the runtime and environment and resolving some attributes. In this case, the browser detector resolves the language, brands, and mobile attributes of the browser namespace.
+- `@opentelemetry/opentelemetry-browser-detector`: Detectors help you to define a resource by querying the runtime and environment and resolving some attributes. In this case, the browser detector resolves the language, brands, and mobile attributes of the browser namespace.
 
 To install the dependencies, run the following command:
 
 ```bash
-npm install @opentelemetry/core @opentelemetry/resources @opentelemetry/browser-detector
+npm install @opentelemetry/core @opentelemetry/resources @opentelemetry/opentelemetry-browser-detector
 ```
 
 After the dependencies are installed, define the resource for your instrumentation with the following code:
@@ -367,7 +367,7 @@ To install all the dependencies needed for the complete setup, run the following
 npm install @opentelemetry/api\
       @opentelemetry/core\
       @opentelemetry/resources\
-      @opentelemetry/browser-detector\
+      @opentelemetry/opentelemetry-browser-detector\
       @opentelemetry/sdk-trace-base\
       @opentelemetry/sdk-trace-web\
       @opentelemetry/context-zone\

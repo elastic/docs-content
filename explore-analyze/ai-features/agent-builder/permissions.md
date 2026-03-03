@@ -1,20 +1,24 @@
 ---
-applies_to:
-  stack: preview 9.2
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
 navigation_title: "Permissions"
+description: "Learn how to configure security roles, API keys, and privileges for Agent Builder."
+applies_to:
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Permissions and access control in {{agent-builder}}
 
 Use this page to learn how to configure security roles and API keys for {{agent-builder}}. Understanding these privileges helps you control who can use agents, which tools they can access, and what data they can query.
 
-:::{important}
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
-:::
+::::{admonition}
+This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
 
 ## Required privileges
 
@@ -47,7 +51,7 @@ Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsea
 Tools execute queries against {{es}} indices as the current user. Required privileges depend on which indices the tools access:
 
 - `read`: Required for tools that query data.
-- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](tools/index-search-tools.md), which may use index exploration capabilities internally.
+- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](tools/index-search-tools.md), which might use index exploration capabilities internally.
 
 Learn more about [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 

@@ -1,45 +1,54 @@
 ---
 navigation_title: "Chat"
+description: "Learn how to chat with AI agents in Agent Builder, inspect reasoning steps, and manage conversation history through the UI or API."
 applies_to:
-  stack: preview 9.2
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
-# {{agent-builder}}: Agent Chat
+# Chat with {{agent-builder}} agents
 
 **Agent Chat** is the chat interface for natural language conversations with your [agents](agent-builder-agents.md).
 
 The chat GUI and programmatic interfaces enable real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 
-<!-- 
+
 :::{note}
-TODO: Uncomment once page is live.
 The chat UI is available in both standalone and flyout modes. For more information, refer to [Chat UI modes](standalone-and-flyout-modes.md).
 ::: 
--->
+
 
 ## Get started
 
 :::{tip}
-Refer to the [getting started](get-started.md) guide to enable the feature and ingest some data.
+Refer to the [getting started](get-started.md) guide if you need to enable the feature and ingest some data.
 :::
 
-Once the feature is enabled, find **Agents** in the navigation menu to begin chatting.
+Find **Agents** in the navigation menu to begin chatting.
 You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 This takes you to the chat GUI:
 
 :::{image} images/agent-builder-chat-UI-get-started.png
 :screenshot:
-:alt: The main Agent Chat GUI showing the chat window, message input box, and agent selection panel
+:alt: Annotated screenshot of the Agent Chat GUI with numbered callouts highlighting the chat input (1), agent selector (2), model selector (3), conversations panel (4), and more actions menu (5)
 :::
+
+1. [Chat input area](#start-a-chat-and-select-an-agent)
+2. [Agent selector](#select-a-different-agent)
+3. [Model selector](#select-a-different-model)
+4. [Conversation history](#find-conversation-history)
+5. [Key actions menu](#access-key-actions)
 
 ## Agent Chat GUI
 
-### Chat and select agent
+### Start a chat and select an agent
 
 Use the text input area to chat with an agent in real time. By default, you chat with the built-in Elastic AI Agent.
 

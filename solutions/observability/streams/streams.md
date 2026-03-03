@@ -2,6 +2,15 @@
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Streams
@@ -28,14 +37,14 @@ stack: preview 9.2
 serverless: preview
 ```
 
-Wired streams send data directly to a single endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
+Wired streams send data directly to an endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
 
 Wired streams:
 - Allow you to organize streams in a parent-child hierarchy.
 - Let child streams automatically inherit mappings, lifecycle settings, and processors.
 - Send configuration changes through the hierarchy to keep streams consistent.
 
-For more information, refer to [sending data to wired streams](./wired-streams.md).
+For more information, refer to [Wired streams](./wired-streams.md).
 
 ## Managed components [streams-managed-components]
 When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api), {{es}}-level components like templates and pipelines are created for the stream. These components are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream through the Streams UI or API, continue doing so whenever possible.
@@ -70,6 +79,20 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 :::
 
 ::::
+
+## Manage Streams visibility [streams-space-privileges]
+```{applies_to}
+stack: ga 9.3+
+serverless: ga
+```
+
+You can set Streams visibility on a space-by-space basis by defining users' access to specific spaces. Refer to [Define access to a space](../../../deploy-manage/manage-spaces.md#spaces-control-user-access) for more information.
+
+Space settings only affect visibility. Set permissions to manage and edit Streams at the {{es}} level. Refer to [Required permissions](#streams-required-permissions) for more information.
+
+% :::{note}
+% Creating [significant events](./management/significant-events.md) requires access to the `default` space.
+% :::
 
 ## Access Streams [streams-access]
 

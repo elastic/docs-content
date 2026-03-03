@@ -12,7 +12,7 @@ products:
 
 Elastic Rerank is a state-of-the-art cross-encoder reranking model trained by Elastic that helps you improve search relevance with a few simple API calls. Elastic Rerank is Elastic’s first semantic reranking model and is available out-of-the-box in supporting Elastic deployments using the {{es}} Inference API.
 
-Use Elastic Rerank to improve existing search applications including:
+Use Elastic Rerank to improve existing search-powered applications including:
 
 * Traditional BM25 scoring
 * Hybrid semantic search

@@ -50,7 +50,7 @@ This section explains the general process for setting up cross-cluster search in
 
         ::::{important}
         * This step ensures that the privileges to read remote indices are applied from the user to the rule itself. When a user creates a new rule or saves edits to an existing rule, their current privileges are saved to the rule’s API key. If that user’s privileges change in the future, the rule’s API key will not update until you manually update it. Refer to [Update a rule’s API key](#update-api-key) for details.
-        * This user must also have the [appropriate privileges](detections-requirements.md#enable-detections-ui) to manage and preview rules.
+        * This user must also have the [appropriate privileges](detections-privileges.md) to manage and preview rules.
 
         ::::
 
@@ -77,7 +77,7 @@ This section explains the general process for setting up cross-cluster search in
 
 ## Update a rule’s API key [update-api-key]
 
-Each detection rule has its own [API key](../../../explore-analyze/alerts-cases/alerts/alerting-setup.md#alerting-authorization), which determines the data and actions the rule is allowed to access. When a user creates a new rule or changes an existing rule, their current privileges are saved to the rule’s API key. If that user’s privileges change in the future, the rule **does not** automatically update with the user’s latest privileges — you must update the rule’s API key if you want to update its privileges.
+Each detection rule has its own [API key](../../../explore-analyze/alerting/alerts/alerting-setup.md#alerting-authorization), which determines the data and actions the rule is allowed to access. When a user creates a new rule or changes an existing rule, their current privileges are saved to the rule’s API key. If that user’s privileges change in the future, the rule **does not** automatically update with the user’s latest privileges — you must update the rule’s API key if you want to update its privileges.
 
 ::::{important}
 A rule’s API key is different from the API key you might have created for [authentication between local and remote clusters](#set-up-ccs-rules).

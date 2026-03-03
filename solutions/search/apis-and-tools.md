@@ -62,6 +62,26 @@ These tools are documented in the **Explore & Analyze** section:
 | [Grok Debugger](/explore-analyze/query-filter/tools/grok-debugger.md) | Build and debug grok patterns before you use them in your data processing pipelines. |
 | [Painless Lab](/explore-analyze/scripting/painless-lab.md) | Test and debug Painless scripts in real-time. |
 
+## Generative AI tools
+
+The following generative AI tools are available as part of the {{es}} solution and serverless project type. They enable you to build AI-powered search applications on top of the core {{es}} features, including retrieval augmented generation (RAG) systems and agentic workflows.
+
+### Agent Builder
+```{applies_to}
+stack: preview =9.2, ga 9.3
+serverless: ga
+```
+
+[Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure, including an [MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md).
+
+### Playground
+```{applies_to}
+stack: beta
+elasticsearch: beta
+```
+
+[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also useful for testing and debugging your {{es}} queries using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
+
 ### Search UI
 
 [Elastic Search UI](./site-or-app/search-ui.md) is a library of JavaScript and React tools for building search experiences, optimized for use with {{es}}.
@@ -72,16 +92,4 @@ Check out the {{es}} Labs [blog](https://www.elastic.co/search-labs) to learn ho
 The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearch-labs) contains hands-on Python notebooks and sample apps to help you get started with these advanced search features.
 :::
 
-## Generative AI tools
 
-### Agent Builder
-
-[Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
-
-### Playground
-
-[Playground](rag/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
-
-### Model Context Protocol (MCP)
-
-The [Model Context Protocol (MCP)](mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
