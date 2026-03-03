@@ -76,7 +76,7 @@ To add a trusted application:
             ::::
 
             ::::{note}
-            Entries relying solely on a process hash can be brittle as application updates may change the hash and render the entry ineffective. A more robust approach involves using a combination of `Path` and `Signature`.
+            If you use only a hash to identify a trusted application, the entry may stop working when the application is updated, since updates often change the hash. For a more reliable match, combine `Path` and `Signature` conditions instead.
             ::::
 
     3. `Operator`: Select an operator to define the condition:
