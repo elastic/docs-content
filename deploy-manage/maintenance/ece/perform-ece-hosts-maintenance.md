@@ -21,6 +21,8 @@ You can perform these maintenance actions on the hosts in your ECE installation 
 
 ## Overview
 
+Which method you choose depends on how invasive your host maintenance needs to be. If your host maintenance could affect ECE, use the destructive method that first deletes the host from your installation. These methods include a step that moves any hosted {{es}} clusters and {{kib}} instances off the affected hosts and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
+
 ### Single or multiple hosts maintenance
 
 * [By disabling the container services (nondestructive)](#ece-perform-host-maintenance-container-engine-disable):
@@ -32,13 +34,13 @@ You can perform these maintenance actions on the hosts in your ECE installation 
 
 * [By shutting down all the ECE hosts](#ece-perform-host-maintenance-entire-platform)
 
-Which method you choose depends on how invasive your host maintenance needs to be. If your host maintenance could affect ECE, use the destructive method that first deletes the host from your installation. These methods include a step that moves any hosted {{es}} clusters and {{kib}} instances off the affected hosts and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
+## Single or multiple hosts maintenance
 
-## By disabling the container services (nondestructive) [ece-perform-host-maintenance-container-engine-disable]
+### By disabling the container services (nondestructive) [ece-perform-host-maintenance-container-engine-disable]
 
 The way that you disable container services differs based on the platform you used to deploy your ECE hosts.
 
-### For Docker-based installations: disable the Docker service [ece-perform-host-maintenance-docker-disable]
+#### For Docker-based installations: disable the Docker service [ece-perform-host-maintenance-docker-disable]
 
 This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Docker daemon. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
@@ -84,7 +86,7 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, it is fully functional again and can be used as before.
 
-### For Podman-based installations: disable the Podman-related services [ece-perform-host-maintenance-podman-disable]
+#### For Podman-based installations: disable the Podman-related services [ece-perform-host-maintenance-podman-disable]
 
 This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Podman related services. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
@@ -152,7 +154,7 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, it is fully functional again and can be used as before.
 
-## By deleting the host (destructive) [ece-perform-host-maintenance-delete-runner]
+### By deleting the host (destructive) [ece-perform-host-maintenance-delete-runner]
 
 This method lets you perform potentially destructive maintenance actions on hosts. It works by deleting the associated host, which removes the host from your {{ece}} installation. To add the host to your ECE installation again after host maintenance is complete, you must reinstall ECE.
 
@@ -172,24 +174,29 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, the host is part of your ECE installation again and can be used as before.
 
-## By shutting down the host (less destructive) [ece-perform-host-maintenance-shutdown-host]
+### Entire ECE installation maintenance
 
-This method lets you perform potentially destructive maintenance actions on hosts. It works by temporarily shutting down an ECE host, e.g. for data center moves or planned power outages. It is offered as an non-guaranteed and less destructive alternative to fully [deleting a host](#ece-perform-host-maintenance-delete-runner) from your ECE installation.
+#### By shutting down all the ECE hosts [ece-perform-host-maintenance-entire-platform]
 
-To shut down the host:
+This method lets you temporarily shut down all ECE hosts of the entire ECE platform, e.g. for data center moves or planned power outages. It is offered as an non-guaranteed and less destructive alternative to fully rebuilding your ECE infrastructure.
 
-1. Disable traffic from load balancers.
-2. Shut down all allocators:
-   1. [Enable maintenance mode](enable-maintenance-mode.md) on the allocator.
-   2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available clusters and ensures that other clusters without high availability remain available.
-      ::::{important}
-      Do not skip this step or you will affect the availability of clusters with nodes on the allocator. You are in the process of removing the host from your installation and whatever ECE artifacts are stored on it will be lost.
-      ::::
+To shutdown all ECE hosts:
 
-3. Shut down all non-director hosts.
-4. Shut down directors.
+1. [Stop routing requests](/deploy-manage/maintenance/start-stop-routing-requests.md) on all non system deployments to avoid unnecessary incoming traffic during your shutdown.
+2. Make sure all {{es}} clusters of all deployments are healthy.
+3. [Take a successful snapshot](https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/create-snapshots) on each deployment, including [system deployment](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md).
+4. Disable traffic from load balancers.
+5. Shut down all allocators.
+6. Shut down all non-director hosts.
+7. Shut down directors.
 
-After performing maintenance, start up the host:
+:::{admonition} Guidance on deployment terminating
+* Do not terminate [system deployments](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md), as it can cause issues and you may lose access to the Cloud UI.
+* As a generic best practice, we do not recommend you terminating the deployments you have for your workload, as it deletes all your deployment resources, and you will need to restore the data from snapshot backup later. 
+:::
+
+
+After performing maintenance, start up the ECE hosts:
 
 1. Start all directors.
 2. Verify that there is a healthy Zookeeper quorum (at least one `zk_server_state leader`, and `zk_followers` + `zk_synced_followers` should match the number of Zookeeper followers):
@@ -200,3 +207,5 @@ After performing maintenance, start up the host:
 
 3. Start all remaining hosts.
 4. Re-enable traffic from load balancers.
+5. [Re-enable routing requests](/deploy-manage/maintenance/start-stop-routing-requests.md) based on deployment priority.
+
