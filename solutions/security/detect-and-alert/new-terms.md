@@ -83,7 +83,7 @@ The following settings are specific to new terms rules. For settings shared acro
 **Index patterns or {{data-source}}**
 :   The {{es}} indices or {{data-source}} the rule searches.
 
-**Custom query**
+**Query**
 :   The KQL or Lucene query used to filter events before evaluating new terms. Only matching documents are checked for new field values.
 
 **Fields**
