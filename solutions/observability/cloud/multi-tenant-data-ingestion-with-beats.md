@@ -164,7 +164,7 @@ az role assignment create \
 
 Create a {{filebeat}} configuration file that uses the T1 credentials to access T2 resources. For a full list of available options, refer to the [Azure Event Hub input reference](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-azure-eventhub).
 
-```yaml
+```yaml callouts=false
 filebeat.inputs:
 - type: azure-eventhub
   enabled: true
