@@ -100,7 +100,7 @@ The following settings are specific to custom query rules. For settings shared a
 :   Import a query from a saved Timeline to use as the rule's detection logic. The imported query populates the **Custom query** field.
 
 **Suppress alerts by** (optional)
-:   Reduce repeated or duplicate alerts by grouping them on one or more fields. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
+:   Reduce alert fatigue by consolidating multiple instances of the same event into a single alert. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
 
 **Required fields** (optional)
 :   An informational list of fields the rule needs to function. This does not affect rule execution. It helps other users understand the rule's data dependencies.
