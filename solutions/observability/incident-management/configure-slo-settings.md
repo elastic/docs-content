@@ -32,17 +32,18 @@ On the **SLOs Settings** page, you can configure the following controls:
 :::
 
 :::{note}
-The SLOs settings are specific to your {{kib}} space.
+The SLOs settings are specific to your {{kib}} [space](/deploy-manage/manage-spaces.md).
 :::
 
 ## Configure SLOs for federated views[observability-configure-slo-settings-federated-view] 
 
 Federated views allow you to view SLOs from remote {{es}} clusters alongside the local SLOs on the SLO listing page of your {{kib}} instance. This enables a centralized overview cluster where you can monitor SLOs across your entire fleet within the same {{kib}} space.
 
-### Prerequisites[observability-federated-view-prerequisites]
-
-- {{es}} Cross-Cluster Search (CCS) must be configured between the overview cluster and remote clusters.
-- Remote clusters must be running {{kib}} with the SLO feature and have SLOs created.
+:::{important}
+Before configuring SLOs, ensure that:
+- {{es}} Cross-Cluster Search (CCS) is properly set up between the overview cluster and the remote clusters.
+- The remote clusters are running {{kib}} with the SLO feature enabled and have SLOs created.
+:::
 
 On the **SLOs Settings** page, you can perform operations on your remote clusters by clicking the three dots menu on the remote cluster:
 
