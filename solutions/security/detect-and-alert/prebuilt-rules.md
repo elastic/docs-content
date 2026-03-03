@@ -19,6 +19,9 @@ Elastic maintains a library of prebuilt detection rules mapped to the MITRE ATT&
 **[Update prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md)**
 :   Apply Elastic's rule updates to keep your detection coverage current. Explains how to review updates, handle modified rules, and resolve conflicts (Enterprise only).
 
+**[Prebuilt rules in air-gapped environments](/solutions/security/detect-and-alert/prebuilt-rules-airgapped.md)**
+:   Install and update prebuilt rules in air-gapped environments without internet access.
+
 **[Customize prebuilt rules](/solutions/security/detect-and-alert/customize-prebuilt-rules.md)**
 :   Adapt prebuilt rules to your environment. Edit rules directly (Enterprise), duplicate and modify copies (all subscriptions), add exceptions, configure actions, or revert to the original Elastic version.
 
