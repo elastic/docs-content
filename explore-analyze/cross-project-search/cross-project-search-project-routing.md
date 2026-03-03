@@ -57,10 +57,11 @@ Named expressions enable you to assign a reusable name to a routing expression. 
 
 To reference a named project routing expression in a `project_routing` parameter, prefix its name with the `@` character.
 
-For example, the following `_search` API request and ES|QL query search the `logs` resource only on projects that match the `@custom-expression` routing rule.
+For example, the following [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-search) request and [ES|QL query](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-esql-query) search the `logs` resource only on projects that match the `@custom-expression` routing rule.
 
-**API request**
+::::{tab-set}
 
+:::{tab-item} API request
 ```console
 GET logs/_search
 {
@@ -68,14 +69,17 @@ GET logs/_search
 "query": { ... }
 }
 ```
+:::
 
-**ES|QL query**
-
+:::{tab-item} ES|QL
 ```console
 SET project_routing="@custom-expression";
 FROM logs 
 | STATS COUNT(*)
 ```
+:::
+
+::::
 
 ### Creating and managing named project routing expressions
 
