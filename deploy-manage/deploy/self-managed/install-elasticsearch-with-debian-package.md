@@ -59,26 +59,12 @@ You have several options for installing the {{es}} Debian package:
     sudo apt-get install apt-transport-https
     ```
 
-2. Save the repository definition to  `/etc/apt/sources.list.d/elastic-<SPECIFIC.VERSION.NUMBER>.list`:
-
-    ::::{tab-set}
-
-    :::{tab-item} Latest
-    To download the latest {{es}} package, enter:
+2. Save the repository definition to  `/etc/apt/sources.list.d/elastic-9.x.list`:
 
     ```sh subs=true
     echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/{{version.stack}}/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-{{version.stack}}.list
     ```
-    :::
 
-    :::{tab-item} Specific version
-    To download the a specific version of the {{es}} package, replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
-    ```sh subs=true
-    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/<SPECIFIC.VERSION.NUMBER>/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-<SPECIFIC.VERSION.NUMBER>.list
-    ```
-    :::
-
-    ::::
 
 3. Install the {{es}} Debian package:
 
