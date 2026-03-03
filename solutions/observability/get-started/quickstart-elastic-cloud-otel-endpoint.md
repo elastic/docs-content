@@ -5,8 +5,7 @@ mapped_pages:
 applies_to:
   serverless: ga
   deployment:
-    ess: preview
-    self: unavailable
+    ess:
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
@@ -23,8 +22,8 @@ The {{motlp}} is designed for the following use cases:
 Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to your Serverless project or {{ech}} cluster.
 
 :::{note}
-:applies_to: ess: preview
-On {{ech}}, the Managed OTLP endpoint requires a deployment version 9.2 or later and might not be available in all {{ech}} regions during the Technical Preview.
+:applies_to: ess:
+On {{ech}}, the Managed OTLP endpoint requires a deployment version 9.0 or later.
 :::
 
 ## Send data to Elastic
@@ -136,34 +135,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ## Troubleshooting
 
-The following sections provide troubleshooting information for the {{motlp}}.
-
-### You don't have a Collector or SDK running
-
-Don't have a collector or SDK running? Spin up an EDOT collector in few steps:
-
-* [Kubernetes Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)
-* [Hosts & VMs Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)
-* [Docker Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)
-
-### Api Key prefix not found
-
-The following error is due to an improperly formatted API key:
-
-```txt
-Exporting failed. Dropping data.
-{"kind": "exporter", "data_type": }
-"Unauthenticated desc = ApiKey prefix not found"
-```
-
-You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK.
-
-### Error: too many requests
-
-If you see HTTP `429 Too Many Requests` errors when sending data through the Elastic Cloud Managed OTLP Endpoint (mOTLP) endpoint, your project might be hitting ingest rate limits.
-
-Refer to the dedicated [429 errors when using the Elastic Cloud Managed OTLP Endpoint](/troubleshoot/ingest/opentelemetry/429-errors-motlp.md) troubleshooting guide for details on causes, rate limits, and solutions.
-
+Refer to the [Troubleshoot EDOT](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
 
 ## Provide feedback
 
