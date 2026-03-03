@@ -7,7 +7,7 @@ products:
 description: Learn how to use project routing to limit cross-project search (CPS) queries to specific projects based on tag values.
 ---
 
-# Project routing in {{cps-init}} [cps-project-routing]
+# Project routing [cps-project-routing]
 
 Project routing enables you to limit a search to a subset of projects, including the origin project and linked projects, based on tag values.
 

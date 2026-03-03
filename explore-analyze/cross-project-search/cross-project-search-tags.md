@@ -7,7 +7,7 @@ products:
 description: Learn about project tags in cross-project search (CPS), including predefined and custom tags, and how to use them in search queries.
 ---
 
-# Tags in {{cps-init}} [cps-tags]
+# Tags [cps-tags]
 
 You can assign [tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) to projects and use them to control {{cps}} behavior.
 
