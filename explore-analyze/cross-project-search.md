@@ -53,8 +53,7 @@ The project alias is derived from the project name and can be modified.
 
 The **project ID** uniquely identifies a project and is system-generated.
 
-The **project alias** is a human-readable identifier derived from the project's connection alias. If you want to change the project alias, you must update the connection alias of the linked project.
-<!-- Link to the page that explains how to update the Connection alias. -->
+The [**project alias**](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-connection-aliases) is a human-readable identifier derived from the project's connection alias. If you want to change the project alias, you must update the connection alias of the linked project.
 
 While both the project ID and project alias uniquely identify a project, {{cps}} uses project aliases in index expressions. Project aliases are intended to be user-friendly and descriptive, making search expressions easier to read and maintain.
 
