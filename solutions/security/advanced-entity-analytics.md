@@ -23,7 +23,7 @@ Entity analytics provides the following key capabilities:
 * {applies_to}`serverless: ga` {applies_to}`stack: preview 9.1-9.2, ga 9.3+`
  [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md)
 
-To learn about how entity analytics can help you manage your hosts, users, and network activity, refer to:
+To learn about how you can explore your host, user, and network data, refer to:
 
 * [](advanced-entity-analytics/hosts-page.md)
 * [](advanced-entity-analytics/network-page.md)

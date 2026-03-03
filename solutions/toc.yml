@@ -727,12 +727,6 @@ toc:
           - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/advanced-entity-analytics.md
         children:
-          - file: security/advanced-entity-analytics/hosts-page.md
-          - file: security/advanced-entity-analytics/network-page.md
-            children:
-              - file: security/advanced-entity-analytics/configure-network-map-data.md
-              - file: security/advanced-entity-analytics/configure-dns-histogram.md
-          - file: security/advanced-entity-analytics/users-page.md
           - file: security/advanced-entity-analytics/overview.md
           - file: security/advanced-entity-analytics/entity-risk-scoring.md
             children:
@@ -753,6 +747,12 @@ toc:
               - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
               - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
               - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
+          - file: security/advanced-entity-analytics/hosts-page.md
+          - file: security/advanced-entity-analytics/network-page.md
+            children:
+              - file: security/advanced-entity-analytics/configure-network-map-data.md
+              - file: security/advanced-entity-analytics/configure-dns-histogram.md
+          - file: security/advanced-entity-analytics/users-page.md
       - file: security/asset-management.md
       - file: security/security-serverless-feature-tiers.md
       - file: security/apis.md

@@ -38,7 +38,7 @@ The following table compares features available in each feature tier:
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md) with custom knowledge support** | ✅ | ❌ | ✅ |
 | **[Attack Discovery](/solutions/security/ai/attack-discovery.md) (AI-powered alert correlation)** | ✅ | ❌ | ✅ |
 | **[Automatic Import](/solutions/security/get-started/automatic-import.md) (AI-powered custom integrations)** | ✅ | ❌ | ❌ |
-| **[Entity analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ❌ | ❌ |
+| **[Entity analytics / UEBA](/solutions/security/advanced-entity-analytics.md)** | ✅ | ❌ | ❌ |
 | **Extended security content** | ✅ | ❌ | ❌ |
 | **Threat intelligence management** | ✅ | ❌ | ❌ |
 | **[Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus)** | ✅ | ❌ | ❌ |
