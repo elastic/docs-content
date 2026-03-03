@@ -12,7 +12,7 @@ type: tutorial
 description: Learn how to extract structured fields from unstructured log data using ingest pipelines and route logs to different data streams using reroute processors.
 ---
 
-# Parse and route logs [observability-parse-log-data]
+# Parse and route logs using ingest pipelines [observability-parse-log-data]
 
 In this tutorial, learn how to:
 
@@ -35,10 +35,6 @@ In this tutorial, learn how to:
 ## Extract structured fields [observability-parse-log-data-extract-structured-fields]
 
 Make your logs more useful by extracting structured fields from your unstructured log data. Extracting structured fields makes it easier to search, analyze, and filter your log data.
-
-::::{note}
-You can also extract fields using the Streams UI instead of writing API calls. The Streams [Processing tab](/solutions/observability/streams/management/extract.md) provides [dissect](/solutions/observability/streams/management/extract/dissect.md) and [grok](/solutions/observability/streams/management/extract/grok.md) processors with live data preview and optional [AI-generated patterns](/solutions/observability/streams/management/extract.md#streams-generate-pipeline-suggestions).
-::::
 
 Follow the steps below to see how the following unstructured log data is indexed by default:
 
@@ -904,9 +900,8 @@ In this tutorial, you learned how to:
 
 ## Next steps [observability-parse-log-data-next-steps]
 
-- **Try Streams for a UI-based workflow:** Use the [Streams](/solutions/observability/streams/streams.md) UI in Kibana to extract fields and route logs without writing API calls. The [Processing tab](/solutions/observability/streams/management/extract.md) supports dissect and grok processors with live data preview, and the [Partitioning tab](/solutions/observability/streams/management/partitioning.md) lets you route data into child streams.
-- **Explore additional processors:** Add more processors to your ingest pipeline, such as the [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) for complex unstructured logs or the [date processor](elasticsearch://reference/enrich-processor/date-processor.md) for nonstandard timestamp formats.
-- **Filter and visualize your data:** Use [Discover](/explore-analyze/discover.md) to explore your parsed log data, or build dashboards to visualize trends across log levels, hosts, and time ranges.
+- **Visualize your data:** Use [Discover](/explore-analyze/discover.md) to explore your parsed log data, or build dashboards to visualize trends across log levels, hosts, and time ranges.
+- **Filter and aggregate your data:** Follow the [Filter and aggregate tutorial](./filter-aggregate-logs.md) to find specific information, gain insight, and monitor your systems more efficiently.
 
 
 ## Related pages [observability-parse-log-data-related-pages]
