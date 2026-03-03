@@ -72,6 +72,9 @@ gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=0
 type=rpm-md
 ```
+
+To install a specific version number, replace {subs}`{{version.stack}}` with the {{es}} version number you want.
+
 ::: 
 
 :::{tab-item} openSUSE distributions
@@ -88,6 +91,8 @@ enabled=0
 autorefresh=1
 type=rpm-md
 ```
+
+To install a specific version number, replace {subs}`{{version.stack}}` with the {{es}} version number you want.
 :::
 :::: 
 
