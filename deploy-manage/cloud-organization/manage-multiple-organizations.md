@@ -60,7 +60,7 @@ You can also create a new organization by clicking on your current organization 
 
 ## Invite users to join additional organizations
 
-Because users are managed at the organization level, you must [invite users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-invite-users) from within the organization that you want them to join. 
+Because users are managed at the organization level, you must [invite users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-invite-users) from within the organization that you want them to join. You can't invite users to join multiple organizations at once.
 
 If a user already has an {{ecloud}} account, then they don't need to sign up again. Instead, they can log in with their selected login method. 
 
@@ -70,7 +70,7 @@ Organizations can have different authentication requirements. For example, one o
 
 ## View your users' organization memberships
 
-You can view the organizations that your users are members of from the **Members** tab of the **Organization** page. You can only view this information for users who belong to the organization that you are currently logged in to.
+You can view the organizations that your users are members of from the **Members** tab of the **Organization** page. This page shows which organizations each member of your current organization belongs to.
 
 To view the organizations:
 
