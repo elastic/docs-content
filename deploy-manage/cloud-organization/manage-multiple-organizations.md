@@ -11,21 +11,19 @@ navigation_title: Manage multiple organizations
 
 # Manage multiple {{ecloud}} organizations
 
-You can create or access multiple organizations from a single {{ecloud}} account. 
-
-You might want to create multiple organizations for reasons such as the following:
+You can create or access multiple organizations from a single {{ecloud}} account. You might want to use multiple organizations for reasons such as the following:
 
 * You want to separate management of your {{ecloud}} resources and settings for different use cases or teams.
 * You want to create a [trial](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial) to evaluate additional {{ecloud}} features or solutions.
 
-Although you can access multiple organizations from the same {{ecloud}} account, each organization is independent. Each organization has its own set of resources, users, settings, and billing and licensing. Because of this, you need to be logged in to the organization you want to manage to make changes to its resources and settings.
+Although you can access multiple organizations from the same {{ecloud}} account, each organization is independent. Each organization has its own set of resources, users, settings, and billing and licensing. Because of this, you need to be logged in to the organization you want to manage to make changes to its resources and settings, or invite users to join it.
 
 You can perform the following tasks to manage multiple organizations:
 
 * [Create a new organization](#create-a-new-organization)
 * [View the organizations you have access to](#view-organizations)
 * [Switch to a different organization](#switch-to-a-different-organization)
-* [Invite users to join your organization](#invite-users-to-join-your-organization)
+* [Invite users to join additional organizations](#invite-users-to-join-additional-organizations)
 * [View your users' organization memberships](#view-your-users-organization-memberships)
 % * [Delete an organization](#delete-an-organization)
 
@@ -58,25 +56,21 @@ You can also create a new organization by clicking on your current organization 
 
 % Can it be done? Do we want to document this?
 
-% tech preview content below
+% tech preview content below - this would probably be split off onto other pages at GA time
 
-## Invite users to join your organization
+## Invite users to join additional organizations
 
-Because users are managed at the organization level, you must invite users from within the organization that you want them to join. 
-
-You can add users to [Learn how to invite users to your organization](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-invite-users).
+Because users are managed at the organization level, you must [invite users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-invite-users) from within the organization that you want them to join. 
 
 If a user already has an {{ecloud}} account, then they don't need to sign up again. Instead, they can log in with their selected login method. 
 
-Different organizations might have different authentication requirements. For example, one organization might enforce SAML SSO, while another organization might enforce email-based authentication. If your organization enforces a specific login method, then the user will need to use that method to log in, and might be prompted to re-authenticate. 
-
-:::{note}
 If your organization uses [SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md), then you don't need to invite users to join the organization. Users are added to the organization automatically when they log in to your identity provider SSO URL.
-:::
+
+Organizations can have different authentication requirements. For example, one organization might enforce SAML SSO, while another organization might enforce email-based authentication. If your organization enforces a specific login method, then the user will need to use that method to log in, and might be prompted to re-authenticate. 
 
 ## View your users' organization memberships
 
-You can view the organizations that your users are members of from the **Members** tab of the **Organization** page.
+You can view the organizations that your users are members of from the **Members** tab of the **Organization** page. You can only view this information for users who belong to the organization that you are currently logged in to.
 
 To view the organizations:
 
