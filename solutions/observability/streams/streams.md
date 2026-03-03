@@ -37,14 +37,14 @@ stack: preview 9.2
 serverless: preview
 ```
 
-Wired streams send data directly to a single endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
+Wired streams send data directly to an endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
 
 Wired streams:
 - Allow you to organize streams in a parent-child hierarchy.
 - Let child streams automatically inherit mappings, lifecycle settings, and processors.
 - Send configuration changes through the hierarchy to keep streams consistent.
 
-For more information, refer to [sending data to wired streams](./wired-streams.md).
+For more information, refer to [Wired streams](./wired-streams.md).
 
 ## Managed components [streams-managed-components]
 When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api), {{es}}-level components like templates and pipelines are created for the stream. These components are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream through the Streams UI or API, continue doing so whenever possible.
