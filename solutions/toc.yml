@@ -381,6 +381,7 @@ toc:
             children:
               - file: observability/cloud/monitor-microsoft-azure-with-elastic-agent.md
               - file: observability/cloud/monitor-microsoft-azure-with-beats.md
+              - file: observability/cloud/multi-tenant-data-ingestion-with-beats.md
               - file: observability/cloud/monitor-microsoft-azure-with-azure-native-isv-service.md
               - file: observability/cloud/monitor-microsoft-azure-openai.md
           - file: observability/cloud/monitor-google-cloud-platform-gcp.md
