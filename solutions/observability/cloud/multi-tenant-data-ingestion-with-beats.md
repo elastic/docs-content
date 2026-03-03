@@ -16,36 +16,7 @@ In this guide, you'll configure {{filebeat}} to ingest logs from Azure Event Hub
 
 By the end, you'll have a working pipeline that collects logs from an Event Hub in T2 using credentials stored in T1, and forwards them to {{es}}.
 
-```mermaid
-flowchart TD
-    subgraph t2["T2"]
-        direction TB
-        enterprise_app["Enterprise application"]
-
-        subgraph subscription["Subscription"]
-            subgraph rg["Resource Group"]
-                event_hub["event hub"]
-                storage_account["storage account"]
-            end
-            spacer1[" "]:::hidden
-            spacer2[" "]:::hidden
-            spacer1 ~~~ spacer2
-        end
-        enterprise_app -- "Azure Event Hubs<br>Data Receiver" --> event_hub
-        enterprise_app -- "Storage Blob Data<br>Contributor" --> storage_account
-    end
-
-    app_reg --> enterprise_app
-
-        subgraph t1["T1"]
-        direction TB
-        app_reg["App registration"]
-        client_secret["Client secret"]
-        app_reg --> client_secret
-    end
-
-    classDef hidden fill:none,stroke:none,color:transparent,width:0px;
-```
+![Multi-tenant architecture overview showing T1 credentials and T2 resources](../../images/observability-azure-beats-multi-tenant-overview.png)
 
 ## Before you begin
 
