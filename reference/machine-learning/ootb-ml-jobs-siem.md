@@ -202,7 +202,7 @@ The following Integrations use {{ml}} to analyze patterns of user and entity beh
 * [Domain Generation Algorithm Detection](integration-docs://reference/dga/index.md)
 * [Lateral Movement Detection](integration-docs://reference/lmd/index.md)
 * [Living off the Land Attack Detection](integration-docs://reference/problemchild/index.md)
-* [Privileged Access Detection](integration-docs://reference/pad/index.md)
+* [Privileged Access Detection](integration-docs://reference/pad.md)
 
 **Domain Generation Algorithm (DGA) Detection**
 
