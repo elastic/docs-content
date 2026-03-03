@@ -323,4 +323,4 @@ stack: ga 9.4+, preview 9.1-9.3
 serverless: ga
 ```
 
-Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerts-cases/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.
+Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerting/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.
