@@ -13,7 +13,7 @@ description: Learn when to use each detection rule type and access detailed guid
 
 {{elastic-sec}} provides several rule types for building detections. Each rule type page covers when to use it, how to write effective queries, real-world examples, and field configuration specific to that type.
 
-| If you want to detect... | Rule type |
+| What you want to detect | Rule type |
 |---|---|
 | A known field value, pattern, or boolean condition | [Custom query](/solutions/security/detect-and-alert/custom-query.md) |
 | An ordered sequence of events or a missing event | [Event correlation (EQL)](/solutions/security/detect-and-alert/eql.md) |

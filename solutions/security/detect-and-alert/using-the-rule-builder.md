@@ -21,8 +21,8 @@ Once the Detections feature is [turned on](/solutions/security/detect-and-alert/
 2. Configure [basic rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params).
 3. Configure [advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) (optional).
 4. Set the [rule's schedule](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule).
-5. Set up [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) (optional).
-6. Set up [response actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-response-action) (optional).
+5. (Optional) Set up [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
+6. (Optional) Set up [response actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-response-action).
 
 ::::{tip}
 * At any step, you can preview the rule before saving it to see what kind of results you can expect.

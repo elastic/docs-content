@@ -125,10 +125,10 @@ With an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} o
 
 | Status | Description | Action required |
 |---|---|---|
-| **Ready for update** | No conflicts. The field can be updated. | None |
-| **No update** | The field isn't being updated by Elastic, but your current value differs from the original. | None (you can still edit the final value if needed) |
-| **Review required** | Elastic auto-resolved a conflict between your changes and the Elastic update. | Review the suggested resolution and accept or edit it. |
-| **Action required** | Elastic couldn't auto-resolve the conflict. | Manually set the field's final value. |
+| Ready for update | No conflicts. The field can be updated. | None |
+| No update | The field isn't being updated by Elastic, but your current value differs from the original. | None (you can still edit the final value if needed) |
+| Review required | Elastic auto-resolved a conflict between your changes and the Elastic update. | Review the suggested resolution and accept or edit it. |
+| Action required | Elastic couldn't auto-resolve the conflict. | Manually set the field's final value. |
 
 
 ## Resolve update conflicts [resolve-reduce-rule-conflicts]

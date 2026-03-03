@@ -20,15 +20,15 @@ description: Compare detection rule types and select the best fit for your threa
 
 Use the following table to select the right rule type. The rows are ordered as a decision flow: start at the top and use the first rule type that fits your detection goal.
 
-| Ask yourself... | Rule type | Description |
+| Ask yourself | Rule type | Description |
 |---|---|---|
-| Is the threat a behavioral deviation I can't define with an exact pattern? | [**{{ml-cap}}**](/solutions/security/detect-and-alert/machine-learning.md) | Relies on {{ml}} anomaly detection jobs to model normal behavior and flag deviations. No query authoring required. |
-| Do I need to compare events against a threat intelligence feed? | [**Indicator match**](/solutions/security/detect-and-alert/indicator-match.md) | Compares source event fields against threat intelligence indices. Alerts are enriched with indicator metadata. |
-| Am I looking for a field value appearing for the first time? | [**New terms**](/solutions/security/detect-and-alert/new-terms.md) | Fires when a value (or combination of up to three values) has never appeared in a configurable history window. Surfaces novel activity. |
-| Does detection require an ordered sequence of events or a missing event? | [**Event correlation (EQL)**](/solutions/security/detect-and-alert/eql.md) | Uses EQL to correlate events by shared fields across time. Detects multi-step attack chains and gaps in expected activity. |
-| Should an alert fire when event volume crosses a threshold? | [**Threshold**](/solutions/security/detect-and-alert/threshold.md) | Fires when the number of matching events grouped by one or more fields meets or exceeds a threshold. Ideal for brute-force and volume-based patterns. |
-| Do I need aggregation, transformation, or computed fields? | [**{{esql}}**](/solutions/security/detect-and-alert/esql.md) | Uses pipe-based {{esql}} queries to aggregate, transform, and filter data before alerting. Each result row becomes an alert. |
-| None of the above? | [**Custom query**](/solutions/security/detect-and-alert/custom-query.md) | Matches events using KQL or Lucene. The most flexible and widely used type for known field values, patterns, or boolean conditions. |
+| Is the threat a behavioral deviation I can't define with an exact pattern? | [{{ml-cap}}](/solutions/security/detect-and-alert/machine-learning.md) | Relies on {{ml}} anomaly detection jobs to model normal behavior and flag deviations. No query authoring required. |
+| Do I need to compare events against a threat intelligence feed? | [Indicator match](/solutions/security/detect-and-alert/indicator-match.md) | Compares source event fields against threat intelligence indices. Alerts are enriched with indicator metadata. |
+| Am I looking for a field value appearing for the first time? | [New terms](/solutions/security/detect-and-alert/new-terms.md) | Fires when a value (or combination of up to three values) has never appeared in a configurable history window. Surfaces novel activity. |
+| Does detection require an ordered sequence of events or a missing event? | [Event correlation (EQL)](/solutions/security/detect-and-alert/eql.md) | Uses EQL to correlate events by shared fields across time. Detects multi-step attack chains and gaps in expected activity. |
+| Should an alert fire when event volume crosses a threshold? | [Threshold](/solutions/security/detect-and-alert/threshold.md) | Fires when the number of matching events grouped by one or more fields meets or exceeds a threshold. Ideal for brute-force and volume-based patterns. |
+| Do I need aggregation, transformation, or computed fields? | [{{esql}}](/solutions/security/detect-and-alert/esql.md) | Uses pipe-based {{esql}} queries to aggregate, transform, and filter data before alerting. Each result row becomes an alert. |
+| None of the above? | [Custom query](/solutions/security/detect-and-alert/custom-query.md) | Matches events using KQL or Lucene. The most flexible and widely used type for known field values, patterns, or boolean conditions. |
 
 <!-- BUILDING BLOCK SECTION - COMMENTED OUT FOR REVIEW
 ## Building block rules and detection chains [about-building-block-rules]

@@ -54,19 +54,24 @@ Use Markdown headings to break the guide into clear sections (for example, **Tri
 
 Effective investigation guides share several characteristics:
 
-**Start with context, not commands.** Open with a one- or two-sentence summary of what the rule detects and why it matters. Analysts who understand the threat make better decisions.
+**Start with context, not commands** 
+:   Open with a one- or two-sentence summary of what the rule detects and why it matters. Analysts who understand the threat make better decisions.
 
-**Structure the guide around a workflow.** Organize content into sequential sections:
+**Structure the guide around a workflow** 
+:   Organize content into sequential sections:
 
-1. **Triage.** Quick checks to confirm whether the alert is a true positive. Include field values to inspect and known false-positive conditions.
-2. **Analysis.** Deeper investigation steps such as Timeline queries, Osquery lookups, and correlated data sources.
-3. **Response.** Recommended actions if the alert is confirmed, including escalation paths and containment steps.
+    1. **Triage**: Quick checks to confirm whether the alert is a true positive. Include field values to inspect and known false-positive conditions.
+    2. **Analysis**: Deeper investigation steps such as Timeline queries, Osquery lookups, and correlated data sources.
+    3. **Response**: Recommended actions if the alert is confirmed, including escalation paths and containment steps.
 
-**Reference alert fields directly.** Use double curly brackets (for example, `{{host.name}}`, `{{user.name}}`) to surface dynamic alert data in Timeline query buttons, making the guide immediately actionable.
+**Reference alert fields directly** 
+:   Use double curly brackets (for example, `{{host.name}}`, `{{user.name}}`) to surface dynamic alert data in Timeline query buttons, making the guide immediately actionable.
 
-**Keep it scannable.** Use bullet lists, bold key terms, and short paragraphs. Analysts read investigation guides under time pressure.
+**Keep it scannable** 
+:   Use bullet lists, bold key terms, and short paragraphs. Analysts read investigation guides under time pressure.
 
-**Link to related resources.** Include links to relevant dashboards, runbooks, or external threat intelligence references so analysts don't have to search for them.
+**Link to related resources** 
+:   Include links to relevant dashboards, runbooks, or external threat intelligence references so analysts don't have to search for them.
 
 ## Timeline query buttons [add-ig-actions-rule]
 
