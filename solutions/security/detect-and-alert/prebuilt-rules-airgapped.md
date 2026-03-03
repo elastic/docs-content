@@ -163,7 +163,7 @@ After updating your registry, install the rule updates in your air-gapped {{elas
     * To update specific rules, select them and click **Update *x* selected rule(s)**.
     * To review changes before updating, click a rule name to open the rule details flyout and compare versions.
 
-For more details about updating prebuilt rules, refer to [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md#update-prebuilt-rules).
+For more details about updating prebuilt rules, refer to [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md).
 ::::
 
 :::::
@@ -216,7 +216,7 @@ For more details on exporting and importing rules, refer to [Export and import r
 ::::{step} Update rules
 :anchor: update-rules-export-import
 
-1. To get rule updates, repeat this export import process after [updating your prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md#update-prebuilt-rules) on the internet-connected instance. 
+1. To get rule updates, repeat this export import process after [updating your prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md) on the internet-connected instance. 
 2. When importing rules, select **Overwrite existing detection rules with conflicting "rule_id"** to update existing rules.
 ::::
 
