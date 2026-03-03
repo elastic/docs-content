@@ -781,6 +781,7 @@ toc:
   - file: kibana-reporting-configuration.md
   - file: cloud-organization.md
     children:
+      - file: cloud-organization/manage-multiple-organizations.md
       - file: cloud-organization/billing.md
         children:
           - file: cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md

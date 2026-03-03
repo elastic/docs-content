@@ -48,7 +48,7 @@ To invite users to your organization:
 
 ## Manage existing users
 
-On the **Members** tab of the **Organization** page, you can view the list of current members, including status and role.
+On the **Members** tab of the **Organization** page, you can view the list of current members, including their status, role, and any other organizations that they are members of.
 
 In the **Actions** column, click the three dots to edit a member’s role, or revoke an invite, or remove a member from your organization.
 
