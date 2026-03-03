@@ -22,7 +22,7 @@ To get started with {{ecloud}}, sign up for an account:
 
 When you first sign up, you create an organization and start with a trial license.
 
-An organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization. A user can belong to multiple organizations, or be the owner of multiple organizations. For more details on how to manage your organizations, refer to [](/deploy-manage/cloud-organization.md).
+An organization is the umbrella for a group of {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization. A user can belong to multiple organizations, or be the owner of multiple organizations. For more details on how to manage your organizations, refer to [](/deploy-manage/cloud-organization.md).
 
 ## Trial information [general-sign-up-trial-what-is-included-in-my-trial]
 
