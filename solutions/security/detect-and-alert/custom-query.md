@@ -13,7 +13,7 @@ description: Create rules using KQL or Lucene queries to detect known field valu
 
 ## Overview
 
-Custom query rules search your {{es}} indices using a KQL or Lucene query and generate an alert whenever one or more documents match. They are the most flexible and widely used rule type in {{elastic-sec}}.
+Custom query rules search your {{es}} indices using a KQL or Lucene query and generate an alert whenever one or more documents match. 
 
 ### When to use a custom query rule
 
