@@ -25,7 +25,7 @@ New terms rules are the right fit when:
 
 New terms rules are **not** the best fit when:
 
-* You are looking for a known bad value. Use a [custom query rule](/solutions/security/detect-and-alert/custom-query.md) instead.
+* You are looking for a known bad value. Use a [indicator match rule](/solutions/security/detect-and-alert/indicator-match.md) instead.
 * You need to detect spikes in volume. Use a [threshold rule](/solutions/security/detect-and-alert/threshold.md) instead.
 * You want statistical {{anomaly-detect}} without defining explicit fields. Use a [{{ml}} rule](/solutions/security/detect-and-alert/machine-learning.md) instead.
 
