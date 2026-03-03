@@ -17,7 +17,7 @@ The `serializer` and `deserializer` parameters have been removed from the {{elas
 
 **Impact:**
 
-API requests that include `serializer` or `deserializer` parameters (in the Create List API request body or Import List Items API query string) will have those parameters silently ignored, and a warning header is returned in the response. Users who relied on custom parsing logic will need to pre-process their list data before import, as only default parsing behavior is now supported.
+API requests that include `serializer` or `deserializer` parameters (in the Create List API request body or Import List Items API query string) will have those parameters silently ignored, and a warning header will be returned in the response. Users who relied on custom parsing logic will need to pre-process their list data before import, as only default parsing behavior is now supported.
 
 For more information, view [#250111]({{kib-pull}}250111).
 :::
