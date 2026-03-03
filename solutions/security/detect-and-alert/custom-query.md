@@ -39,7 +39,7 @@ Custom query rules require at least one {{es}} index pattern or [data view](/sol
 
 ### Query language
 
-Custom query rules accept either **KQL** (Kibana Query Language) or **Lucene** syntax. KQL is the default and is generally easier to read. Use Lucene when you need regular expressions, fuzzy matching, or other features KQL does not support.
+Custom query rules accept either **KQL** (Kibana Query Language) or **Lucene** syntax. KQL is the default selection. Use Lucene when you need regular expressions, fuzzy matching, or other features KQL does not support.
 
 ### Building the query
 
