@@ -64,13 +64,15 @@ You have several options for installing the {{es}} Debian package:
     ::::{tab-set}
 
     :::{tab-item} Latest
+    To download the latest {{es}} package, enter:
+
     ```sh subs=true
     echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/{{version.stack}}/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-{{version.stack}}.list
     ```
     :::
 
     :::{tab-item} Specific version
-    Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+    To download the a specific version of the {{es}} package, replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
     ```sh subs=true
     echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/<SPECIFIC.VERSION.NUMBER>/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-<SPECIFIC.VERSION.NUMBER>.list
     ```
