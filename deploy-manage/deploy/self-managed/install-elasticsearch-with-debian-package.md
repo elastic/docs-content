@@ -62,15 +62,30 @@ You have several options for installing the {{es}} Debian package:
 2. Save the repository definition to  `/etc/apt/sources.list.d/elastic-9.x.list`:
 
     ```sh subs=true
-    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/{{version.stack}}/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-{{version.stack}}.list
+    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
     ```
 
 
 3. Install the {{es}} Debian package:
 
+    ::::{tab-set}
+    :::{tab-item} Latest
+    To install the latest version of {{es}} {{version.stack}} package, enter:
+
     ```sh
     sudo apt-get update && sudo apt-get install elasticsearch
     ```
+    ::: 
+    :::{tab-item} Specific version
+    To install a specific version of the {{es}} package, replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+
+    ```sh
+    sudo apt-get update && sudo apt-get install elasticsearch=<SPECIFIC.VERSION.NUMBER>
+    ```
+
+    ::: 
+    ::::
+
 
 :::{note}
 These instructions do not use `add-apt-repository` for several reasons:
@@ -89,10 +104,10 @@ These instructions do not use `add-apt-repository` for several reasons:
 If two entries exist for the same {{es}} repository, you will see an error like this during `apt-get update`:
 
 ```text subs=true
-Duplicate sources.list entry https://artifacts.elastic.co/packages/{{version.stack}}/apt/ ...
+Duplicate sources.list entry https://artifacts.elastic.co/packages/9.x/apt/ ...
 ```
 
-Examine {subs}`/etc/apt/sources.list.d/elasticsearch-{{version.stack}}.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
+Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
 :::
 
 :::{include} _snippets/skip-set-kernel-params.md

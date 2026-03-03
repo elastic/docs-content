@@ -65,15 +65,14 @@ For RedHat based distributions, create a file called `elasticsearch.repo` in the
 
 ```ini subs=true
 [elasticsearch]
-name={{es}} repository for {{version.stack}} packages
-baseurl=https://artifacts.elastic.co/packages/{{version.stack}}/yum
+name={{es}} repository for 9.x packages
+baseurl=https://artifacts.elastic.co/packages/9.x/yum
 gpgcheck=1
 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=0
 type=rpm-md
 ```
 
-To install a specific version number, replace {subs}`{{version.stack}}` with the {{es}} version number you want.
 
 ::: 
 
@@ -83,8 +82,8 @@ For openSUSE based distributions, create a file called `elasticsearch.repo` in t
 
 ```ini subs=true
 [elasticsearch]
-name={{es}} repository for {{version.stack}} packages
-baseurl=https://artifacts.elastic.co/packages/{{version.stack}}/yum
+name={{es}} repository for 9.x packages
+baseurl=https://artifacts.elastic.co/packages/9.x/yum
 gpgcheck=1
 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=0
@@ -92,7 +91,6 @@ autorefresh=1
 type=rpm-md
 ```
 
-To install a specific version number, replace {subs}`{{version.stack}}` with the {{es}} version number you want.
 :::
 :::: 
 
@@ -102,10 +100,16 @@ To install a specific version number, replace {subs}`{{version.stack}}` with the
 :group:linux-distros
 :::{tab-item} RedHat distributions
 :sync: rhel
-If you use Fedora, or Red Hat Enterprise Linux 8 and later, enter the following command:
+If you use Fedora, or Red Hat Enterprise Linux 8 and later, enter the following command to install the latest version of {{es}} {{version.stack}} package:
 
 ```sh
 sudo dnf install --enablerepo=elasticsearch elasticsearch
+```
+
+If you want to install a specific {{es}} version, replace the `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+
+```sh
+sudo dnf install elasticsearch-<SPECIFIC.VERSION.NUMBER>
 ```
 
 If you use CentOS, or Red Hat Enterprise Linux 7 and earlier, enter the following command:
