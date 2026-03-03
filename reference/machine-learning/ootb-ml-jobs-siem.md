@@ -277,7 +277,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} package to detect anomalous privileged access activity in Windows, Linux and Okta logs. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](integration-docs://reference/pad/index.md).
+To download, refer to the [documentation](integration-docs://reference/pad.md).
 
 | Name                                                            | Description                                                                                          | Supported Integrations                                                                               | Supported OS |
 |-----------------------------------------------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|--------------|
