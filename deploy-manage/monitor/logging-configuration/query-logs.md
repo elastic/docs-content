@@ -44,7 +44,7 @@ The logs are output in JSON format, and include the following fields:
 - `error.type` and `error.message`: Error information fields if the request failed.
 - `user.*`: User information fields if enabled.
 - `http.request.headers.x_opaque_id`: The X-Opaque-Id header value if enabled. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
-- `trace.id`: [Trace ID](ecs://ecs/ecs-tracing#field-trace-id) information.
+- `trace.id`: [Trace ID](ecs://ecs/ecs-tracing.md#field-trace-id) information.
 
 ### Query logging specific fields
 
@@ -65,7 +65,7 @@ In addition to the fields listed above, each query language may include fields s
 
 ### DSL Search specific fields
 
-- `search.total_count`: The “total hits” value, as reported by [the search response](/solutions/search/the-search-api). 
+- `search.total_count`: The “total hits” value, as reported by [the search response](/solutions/search/.md).
 - `search.total_count_partial`:  Set to `true` in case the total count does not reflect the full amount of matches for some reason (like `track_total_hits` limitation). 
 
 ### {{esql}}
