@@ -20,7 +20,7 @@ Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](/refer
 
 If your symptoms are not covered by these guides, review the open issues in these GitHub repositories:
 
-| Repository | To review or report issues about |
+| Repository | Review or report issues about |
 | --- | --- |
 | [elastic/kibana](https://github.com/elastic/kibana/issues) | {{fleet}} and {{integrations}} UI |
 | [elastic/elastic-agent](https://github.com/elastic/elastic-agent/issues) | {{agent}} |
