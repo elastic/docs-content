@@ -61,7 +61,7 @@ You can grant users access to {{agent-builder}} using these methods:
 
 - [Roles](#grant-access-with-roles) to bundle privileges for users.
 - [API keys](#grant-access-with-api-keys) for programmatic access.
-- [spaces](#working-with-spaces) to scope access to specific environments.
+- [Spaces](#working-with-spaces) to scope access to specific environments.
 
 ### Grant access with roles
 
