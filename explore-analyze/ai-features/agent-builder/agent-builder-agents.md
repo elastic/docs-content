@@ -40,6 +40,8 @@ You can also use pre-configured [built-in agents](builtin-agents-reference.md) t
 
 Built-in agents cannot be modified or deleted. To customize one, you can clone it and create a custom agent.
 
+Built-in agents are space-agnostic and are available in all [{{kib}} spaces](/deploy-manage/manage-spaces.md).
+
 For the complete list of built-in agents and their assigned tools, refer to [Built-in agents reference](builtin-agents-reference.md).
 
 ## Custom agents
@@ -49,6 +51,8 @@ Create custom agents tailored to your specific needs by defining custom instruct
 - Agent behavior and personality through custom instructions
 - Available tools and capabilities
 - Visual appearance and organization
+
+Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created.
 
 To learn how to create and manage custom agents, refer to [Custom agents](custom-agents.md).
 

@@ -381,6 +381,7 @@ toc:
             children:
               - file: observability/cloud/monitor-microsoft-azure-with-elastic-agent.md
               - file: observability/cloud/monitor-microsoft-azure-with-beats.md
+              - file: observability/cloud/multi-tenant-data-ingestion-with-beats.md
               - file: observability/cloud/monitor-microsoft-azure-with-azure-native-isv-service.md
               - file: observability/cloud/monitor-microsoft-azure-openai.md
           - file: observability/cloud/monitor-google-cloud-platform-gcp.md
@@ -504,16 +505,13 @@ toc:
                 children:
                   - file: observability/incident-management/triage-slo-burn-rate-breaches.md
                   - file: observability/incident-management/triage-threshold-breaches.md
-          - file: observability/incident-management/cases.md
-            children:
-              - file: observability/incident-management/configure-access-to-cases.md
-              - file: observability/incident-management/create-manage-cases.md
-              - file: observability/incident-management/configure-case-settings.md
+          - file: observability/incident-management/observability-cases.md
           - file: observability/incident-management/service-level-objectives-slos.md
             children:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
               - file: observability/incident-management/create-an-slo.md
               - file: observability/incident-management/slo-management.md
+              - file: observability/incident-management/configure-slo-settings.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/ai/observability-ai.md
         children:
@@ -539,10 +537,6 @@ toc:
               - file: security/get-started/automatic-migration.md
               - file: security/get-started/automatic-import.md
               - file: security/get-started/content-connectors.md
-              - file: security/get-started/agentless-integrations.md
-                children:
-                  - file: security/get-started/cloud-connector-deployment.md
-                  - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
             children:
               - file: security/get-started/spaces-defend-faq.md
@@ -585,6 +579,7 @@ toc:
           - file: security/detect-and-alert/install-manage-elastic-prebuilt-rules.md
             children:
               - file: security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md
+              - file: security/detect-and-alert/prebuilt-rules-airgapped.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
           - file: security/detect-and-alert/rule-exceptions.md
@@ -721,11 +716,7 @@ toc:
               - file: security/investigate/use-placeholder-fields-in-osquery-queries.md
           - file: security/investigate/notes.md
           - file: security/investigate/indicators-of-compromise.md
-          - file: security/investigate/cases.md
-            children:
-              - file: security/investigate/cases-requirements.md
-              - file: security/investigate/open-manage-cases.md
-              - file: security/investigate/configure-case-settings.md
+          - file: security/investigate/security-cases.md
       - file: security/dashboards.md
         children:
           - file: security/dashboards/overview-dashboard.md

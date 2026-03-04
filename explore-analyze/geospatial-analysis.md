@@ -89,7 +89,7 @@ Put machine learning to work for you and find the data that should stand out wit
 
 ## Alerting [geospatial-alerting]
 
-Let your location data drive insights and action with [geographic alerts](alerts-cases/alerts/geo-alerting.md). Commonly referred to as geo-fencing, track moving objects as they enter or exit a boundary to receive notifications through common business systems (email, Slack, Teams, PagerDuty, and more).
+Let your location data drive insights and action with [geographic alerts](alerting/alerts/geo-alerting.md). Commonly referred to as geo-fencing, track moving objects as they enter or exit a boundary to receive notifications through common business systems (email, Slack, Teams, PagerDuty, and more).
 
 Interested in learning more? Follow [step-by-step instructions](visualize/maps/asset-tracking-tutorial.md) for setting up tracking containment alerts to monitor moving vehicles.
 
