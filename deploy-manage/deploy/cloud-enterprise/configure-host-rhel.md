@@ -326,6 +326,9 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     # Other keepalive relevant settings
     net.ipv4.tcp_keepalive_time=180
     net.ipv4.tcp_keepalive_intvl=60
+    # Other network settings
+    net.netfilter.nf_conntrack_tcp_timeout_established=7200
+    net.netfilter.nf_conntrack_max=262140
     # Make sure the host doesn't swap too early
     vm.swappiness=1
     EOF
