@@ -36,7 +36,7 @@ Indicator match rules are the right fit when:
 
 Indicator match rules are **not** the best fit when:
 
-* You are matching against values within the same index. Use a [custom query rule](/solutions/security/detect-and-alert/custom-query.md) instead.
+* You need to join data from multiple sources with transformations, aggregations, or complex filtering. Use an [{{esql}} rule](/solutions/security/detect-and-alert/esql.md) with `LOOKUP JOIN` for more flexible cross-index queries.
 * You need to detect event sequences or ordering. Use an [EQL rule](/solutions/security/detect-and-alert/eql.md) instead.
 * Your indicators are in a flat file rather than an {{es}} index. First [upload them as a value list](#using-value-lists) or import them through the {{ml-app}} {{data-viz}}.
 
