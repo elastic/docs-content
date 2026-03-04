@@ -39,10 +39,10 @@ The Alerts page is your central hub for triaging and investigating detection ale
 
 | Filter method | Description |
 |---------------|-------------|
-| **KQL search** | Enter queries like `kibana.alert.rule.name: "SSH from the Internet"`. Autocomplete is available for `.alerts-security.alerts-*` indices. |
-| **Date/time picker** | Set a specific time range (default: last 24 hours). |
-| **Drop-down controls** | Filter by status, severity, user, host, or [custom fields](#drop-down-filter-controls). |
-| **Additional filters** | Include [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) or show only indicator match rule alerts. |
+| KQL search | Enter queries like `kibana.alert.rule.name: "SSH from the Internet"`. Autocomplete is available for `.alerts-security.alerts-*` indices. |
+| Date/time picker | Set a specific time range (default: last 24 hours). |
+| Drop-down controls | Filter by status, severity, user, host, or [custom fields](#drop-down-filter-controls). |
+| Additional filters | Include [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) or show only indicator match rule alerts. |
 | **Visualization section** | Group and visualize alerts by field. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md). |
 
 ### Inline actions
@@ -111,10 +111,10 @@ Group alerts by up to three fields (rule name, host, user, source IP, or custom 
 
 | Button | Function |
 |--------|----------|
-| **Columns** | Reorder columns |
-| **Sort fields** | Sort by one or more columns |
-| **Fields** | Add or remove fields (including [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md)) |
-| **Full screen** | Expand table to full screen |
+| Columns | Reorder columns |
+| Sort fields | Sort by one or more columns |
+| Fields | Add or remove fields (including [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md)) |
+| Full screen | Expand table to full screen |
 
 :::{image} /solutions/images/security-alert-table-toolbar-buttons.png
 :alt: Alerts table with toolbar buttons highlighted
@@ -125,8 +125,8 @@ Group alerts by up to three fields (rule name, host, user, source IP, or custom 
 
 | Mode | Description |
 |------|-------------|
-| **Grid view** | Traditional table with columns for each field. Click the expand icon in the **Reason** column to see rendered alert details. |
-| **Event rendered view** | Descriptive event flow showing relevant context. |
+| Grid view | Traditional table with columns for each field. Click the expand icon in the **Reason** column to see rendered alert details. |
+| Event rendered view | Descriptive event flow showing relevant context. |
 
 :::{image} /solutions/images/security-event-rendered-view.png
 :alt: Alerts table with the Event rendered view enabled
