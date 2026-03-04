@@ -661,9 +661,13 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
 Use actions to set up notifications sent via other systems when alerts are generated.
 
 ::::{note}
-To use actions for alert notifications, you need the [appropriate license](https://www.elastic.co/subscriptions). For more information, see [Cases requirements](/solutions/security/investigate/cases-requirements.md).
+To use actions for alert notifications, you need the [appropriate license](https://www.elastic.co/subscriptions). For more information, see [Control access to cases](/explore-analyze/cases/control-case-access.md).
 ::::
 
+::::{tip}
+:applies_to: {stack: preview 9.3+, serverless: preview}
+You can use [workflows](/explore-analyze/workflows.md) as a rule action to automate alert response processes. Workflows can create cases, route notifications, or perform other automated tasks when alerts are generated. To learn how to set up a workflow as a rule action, refer to [](/explore-analyze/workflows/triggers/alert-triggers.md).
+:::: 
 
 1. Select a connector type to determine how notifications are sent. For example, if you select the {{jira}} connector, notifications are sent to your {{jira}} system.
 
@@ -720,7 +724,7 @@ You can use [mustache syntax](http://mustache.github.io/) to add variables to no
 The following variables can be passed for all rules:
 
 ::::{note}
-Refer to [Action frequency: Summary of alerts](/explore-analyze/alerts-cases/alerts/rule-action-variables.md#alert-summary-action-variables) to learn about additional variables that can be passed if the rule’s action frequency is **Summary of alerts**.
+Refer to [Action frequency: Summary of alerts](/explore-analyze/alerting/alerts/rule-action-variables.md#alert-summary-action-variables) to learn about additional variables that can be passed if the rule’s action frequency is **Summary of alerts**.
 ::::
 
 
