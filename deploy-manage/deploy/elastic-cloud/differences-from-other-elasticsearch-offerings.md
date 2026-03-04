@@ -132,7 +132,7 @@ This table compares Observability capabilities between {{ech}} deployments and O
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
-| **[Managed OTLP Endpoint](opentelemetry:///reference/motlp.md)** | ✅ | ✅ | |
+| **[Managed OTLP Endpoint](opentelemetry://reference/motlp.md)** | ✅ | ✅ | |
 | **[Metrics monitoring](/solutions/observability/apm/metrics.md)** | ✅ | ✅ | |
 | **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
 | [**Real User Monitoring (RUM)**](/solutions/observability/applications/user-experience.md) | ✅ | **Planned** | Anticipated in a future release |
@@ -171,6 +171,16 @@ To ensure optimal performance in Serverless Elasticsearch projects, follow these
 If you expect that you will have large datasets that exceed the recommended maximum size, consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md), or configuring [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to prevent data streams from growing larger than the maximum size. You should design your indexing and data lifecycle strategy with the size and growth of your data in mind.
 
 These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for more information.
+
+### Index and resource limits [index-and-resource-limits]
+
+{{serverless-full}} applies the following project-level limit to ensure reliable performance and stability.
+
+| Limit | Value | Adjustable |
+| :--- | :--- | :--- |
+| Number of indices per project | 15,000 | Yes |
+
+The index limit is adjustable and can be increased by request, while others are fixed. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
