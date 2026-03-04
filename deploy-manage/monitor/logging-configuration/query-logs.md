@@ -70,7 +70,7 @@ In addition to the fields listed above, each query language may include fields s
 
 ### {{esql}}
 
-- `esql.profile.*.took`: ESQL query profiling metrics, in ns
+- `esql.profile.*.took`: {{esql}} query profiling metrics, in ns
 
 ### Example log entry
 
