@@ -13,7 +13,7 @@ navigation_title: "Cross-project search"
 This page is in progress. See [issue](https://github.com/elastic/docs-content-internal/issues/30) 
 ::::
 
-With {{cps}} ({{cps-init}}), users in your organization can search across multiple {{serverless-full}} projects. This page explains how to configure and manage {{cps}} for your users, including linking projects, managing user access, and configuring search scopes.
+With {{cps}} ({{cps-init}}), users in your organization can search across multiple {{serverless-full}} projects at once, instead of searching each project individually. This page explains how to configure and manage {{cps}} for your users, including linking projects, managing user access, and configuring search scope.
 
 {{cps-cap}} runs across _origin_ and _linked_ projects within your {{ecloud}} organization:
 
@@ -33,12 +33,16 @@ For more information about using {{cps}}, including search expressions, tags, an
 To configure {{cps}}, make sure you meet these prerequisites:
 
 - You must be an organization owner or project administrator.
-- Your origin and linked projects must be compatible, as explained in the next section.
+- Your origin and linked projects must be [compatible](#cps-compatibility).
 - Your projects must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
 
 % subscription/licensing?
 
-## Project availability for linking [cps-compatibility]
+:::{tip}
+Before linking projects, make sure to consider {{cps}} [architecture patterns](#plan-your-architecture).
+:::
+
+## Projects available for linking [cps-compatibility]
 
 ::::{important}
 :applies_to: serverless: preview
@@ -91,7 +95,7 @@ On the origin project's **{{cps-cap}}** page, you can reconfigure {{cps}} as nee
 
 - **Link additional projects:**  Click **Link projects** to add more linked projects, up to the 20-project maximum.
 - **Unlink projects:** Remove connections by [unlinking projects](#cps-unlink-projects).
-- **Open space settings in {{kib}}:**  Click **Manage Space** to set or adjust the default search scope.
+- **Open space settings in {{kib}}:**  Click **Manage Space** to set or adjust the default [search scope](#cps-search-scope).
 
 % TODO move [project ID and alias info](/explore-analyze/cross-project-search.md#project-id-and-aliases) here from E&A
 
@@ -139,12 +143,14 @@ The _search scope_ is the set of searchable resources included in a {{cps}}. The
 
 The search scope is further restricted by the user's or key's permissions.
 
-By default, an unqualified search from an origin project targets the searchable resources in **all** linked projects, plus the searchable resources in the origin project. This default search scope is intentionally broad, to provide the best user experience for searching across linked projects. As an administrator, you can narrow the search scope by [adjusting the default scope for the space](#cps-default-search-scope-space).
+By default, an unqualified search from an origin project targets the searchable resources in **all** linked projects, plus the searchable resources in the origin project. This default search scope is intentionally broad, to provide the best user experience for searching across linked projects. 
+
+Because this broad default could cause unexpected workflow behavior, especially for alerts, it's important to consider the search scope before your users start working with {{cps}}.
 
 The following actions change the search scope:
 
 - **Administrator actions:** 
-  - [Setting the default {{cps}} scope for a space](#cps-default-search-scope-space)
+  - [Setting the default {{cps}} scope for a space](#cps-default-search-scope)
   - Adjusting user permissions based on roles or API keys
 - **User actions:**
   - [Using qualified search expressions](/explore-analyze/cross-project-search.md#search-expressions)
@@ -152,7 +158,7 @@ The following actions change the search scope:
 
 The search scope controls which projects receive the search request, while filtering controls which results are returned by the search.
 
-### Set the default {{cps}} scope for a space [cps-default-search-scope-space]
+### Set the default {{cps}} scope for a space [cps-default-search-scope]
 
 To open space settings in {{kib}}, click **Configure Space settings in {{kib}}** in the banner that appears when you link projects. Or click **Manage Space** at the top of the project page. Select the space you want to configure.  
 
@@ -178,15 +184,17 @@ The default {{cps}} scope is a space setting, not an access control. Even after 
 
 Users can also set the search scope on a per-query basis as needed, using [qualified search expressions](/explore-analyze/cross-project-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search.md#project-routing).
 
-## Architecture recommendations [cps-arch]
+## Plan your architecture
 
-:::{admonition} 🚧 WIP 🚧 
-This section is really just a stub
-:::
+When configuring {{cps}}, consider these architecture options. Each pattern has a different effect on how {{cps}} functions in your organization.
 
-When you set up {{cps}}, consider creating a dedicated **overview project** that can act as an origin project. You can also think of this as a hub-and-spoke pattern.
+### Recommended: Overview project [cps-arch]
 
-In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches and dashboards from the overview project, while your existing projects continue to operate independently. Isolated projects stay isolated and TK
+When you set up {{cps}}, consider creating a dedicated **overview project** that can act as an origin project. You can also think of this as a hub-and-spoke model or a single-pane-of-glass setup.
+
+In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches and dashboards from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other. Using this pattern helps you ensure that existing configurations are preserved (for example, isolated projects stay isolated).
+
+TODO add diagram
 
 % The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup (for example, isolated projects stay isolated).
 
@@ -194,9 +202,14 @@ In this architecture, you create a new, empty project and link existing projects
 % If your overview project handles high search volumes, monitor its performance. Even if the project doesn't store data, it uses compute resources to run searches.
 % :::
 
-### Other architectures
+### Other supported patterns
 
-TODO cover other arch patterns (less recommended)
+The overview project model is strongly recommended and appropriate for most deployments, but {{cps}} supports other linking patterns. These patterns are valid but involve additional risk and require careful configuration.
+
+**Shared data project (N-to-1):** A single project stores data from a shared service (for example, logs). Multiple origin projects link to this central data project. This pattern is often used when several teams need to query the shared data independently. The main risk is that if the shared data project is a large, active project, linking it could affect the search scope and alerting behavior in each origin project. If you're using this pattern, it's especially important to manage [user access](#manage-user-access) and [search scope](#cps-search-scope).
+
+**Data mesh (N-to-N):** Multiple active projects link directly to each other. This pattern is the most complex and involves the highest risk. After you link projects, all searches, dashboards, and alerting rules in each origin project will query data from every linked project by default, which might make workflows unpredictable. Make sure you check alerting rules, which might be applied to data that the rule was never intended to evaluate.
+
 
 ## Feature impacts [cps-feature-impacts]
 
@@ -204,25 +217,27 @@ Enabling {{cps}} affects several features in the origin project:
 
 - **Billing and data transfer:** TODO
 
-- **Alerting:** By default, alerting rules in the origin project run against the combined dataset of the origin and all linked projects. (This is one reason we recommend using a dedciated [overview project](#cps-arch).)
+- **Alerting:** By default, alerting rules in the origin project run against the combined dataset of the origin and all linked projects. This is one reason we recommend using a dedicated [overview project](#cps-arch), to ensure that existing alerting rules are not affected.
+
+% TODO link to alerting impacts doc when available
 
 - **Dashboards and visualizations:** After you link projects, existing dashboards and visualizations in the origin project will query all linked projects. To limit this scope, refer to [Manage search scope](#cps-search-scope).
 
 ## Limitations [cps-limitations]
 
-- {applies_to}`serverless: preview` **New projects only:** During technical preview, only newly created projects can function as origin projects. This is a temporary restriction. 
+- {applies_to}`serverless: preview` **New projects only:** During technical preview, only newly created projects can function as origin projects. This is a temporary restriction.
 - **Maximum of 20 linked projects:** Each origin project can have up to 20 linked projects. A linked project can be associated with any number of origin projects.
-- **Chaining/transitivity not supported:** If Project A links to Project B, and Project B links to Project C, Project A cannot automaticallysearch Project C. Each link is independent.
+- **Chaining/transitivity not supported:** If Project A links to Project B, and Project B links to Project C, Project A cannot automatically search Project C. Each link is independent.
 - **Links are unidirectional:** Searches that run from a linked project do **not** run against the origin project. If you need bidirectional search, link the projects twice, in both directions.
 - **System indices are excluded:** System indices (such as `.security` and `.fleet-*`) are excluded from {{cps}}.
 - **Some APIs are not supported:** `_reindex` (cross-project), `_transform`, and `_fleet_search` are not supported for cross-project use.
-- TODO verify {applies_to}`serverless: preview`**Failure store:** Failure store does not work with {{cps}} in the technical preview.
+- {applies_to}`serverless: preview` **Failure store:** 🚧 TODO
 - **Workplace AI projects:** Workplace AI projects are not compatible with {{cps}}.
-- {applies_to}`serverless: preview` **Project aliases:** During technical preview, you can't edit a project's alias on the **{{cps-cap}}** page.  
+- {applies_to}`serverless: preview` **Project aliases:** During technical preview, you can't edit a project's alias on the **{{cps-cap}}** page.
 
-## Using APIs with {{cps-init}}
+## 🚧 Using APIs with {{cps-init}} [cps-apis]
 
-You can also link and unlink projects using the API. In the linking wizard, click **View API request** on the review step to see the equivalent API call for your current selection.
+You can also link and unlink projects using the {{ecloud}} API. In the linking wizard, click **View API request** on the review step to see the equivalent API call for your current selection.
 
 For information about searching across linked projects using the API, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md#cps-supported-apis).
 
@@ -231,4 +246,4 @@ For information about searching across linked projects using the API, refer to [
 % - Manage access with keys and roles
 %    - Create API keys that span multiple projects
 %    - Make sure users have correct permissions on linked projects (auth happens there)
-% - Licensing / subscription tier requirements (waiting on proposal?)
+% - Licensing / subscription tier requirements
