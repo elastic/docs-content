@@ -100,7 +100,7 @@ type=rpm-md
 :group:linux-distros
 :::{tab-item} RedHat distributions
 :sync: rhel
-If you use Fedora, or Red Hat Enterprise Linux 8 and later, enter the following command to install the latest version of {{es}} {{version.stack}} package:
+If you use Fedora, or Red Hat Enterprise Linux 8 and later, enter the following command to install the latest version of the {{es}} package, which is {{version.stack}}:
 
 ```sh
 sudo dnf install --enablerepo=elasticsearch elasticsearch
@@ -119,13 +119,22 @@ sudo yum install --enablerepo=elasticsearch elasticsearch
 :::
 :::{tab-item} openSUSE distributions
 :sync: suse
-Enter the following command:
+Enter the following command to install the latest version of the {{es}} package, which is {{version.stack}}:
 
 ```sh
 sudo zypper modifyrepo --enable elasticsearch && \
   sudo zypper install elasticsearch; \
   sudo zypper modifyrepo --disable elasticsearch
 ```
+
+If you want to install a specific {{es}} version, replace the `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+
+```sh
+sudo zypper modifyrepo --enable elasticsearch && \
+  sudo zypper install elasticsearch-<SPECIFIC.VERSION.NUMBER>; \
+  sudo zypper modifyrepo --disable elasticsearch
+```
+
 ::: 
 :::: 
 
