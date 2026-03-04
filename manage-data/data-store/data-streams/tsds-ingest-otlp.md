@@ -119,7 +119,7 @@ PUT /_cluster/settings
 Because both `histogram` and `exponential_histogram` support [coerce](elasticsearch://reference/elasticsearch/mapping-reference/coerce.md), changing this setting dynamically does not risk mapping conflicts or ingestion failures.
 
 This setting only applies to metrics ingested using the [{{es}} OTLP endpoint](./tsds-ingest-otlp.md).
-Documents ingested with the _bulk API (e.g. using the {{es}} exporter for the OpenTelemetry Collector) are not affected.
+Documents ingested with the _bulk API (for example using the {{es}} exporter for the OpenTelemetry Collector) are not affected.
 
 ## Limitations
 
