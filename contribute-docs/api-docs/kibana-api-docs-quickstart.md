@@ -112,6 +112,18 @@ The `availability` option is only available at the API/route level. For individu
 :sync: manual
 Edit the YAML files in the appropriate plugin or package directory. Refer to the README alongside each file for specific guidance on adding summaries, descriptions, tags, metadata, links, and examples.
 
+**Always include version and lifecycle information** using the `x-state` field. This powers the version badges and tech preview labels in the API docs.
+
+```yaml
+x-state: Technical Preview; added in 9.2.0
+```
+
+For stable/GA APIs, you can omit the lifecycle status:
+
+```yaml
+x-state: added in 9.0.0
+```
+
 In these README files, you'll also find instructions for generating intermediate bundle files that capture your changes, and that are later used to generate the full API documentation.
 
 The YAML files with the content changes and the intermediate bundle files are the minimum set of files required for creating a pull request. Without the intermediate bundle files, the automation won't pick up the changes and won't generate the full API documentation.
