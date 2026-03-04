@@ -114,7 +114,7 @@ Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
 ### Working with Spaces
 
-{{agent-builder}} respects {{kib}} Spaces when enabled. All conversations, custom agents, and custom tools are scoped to the current Space.
+{{agent-builder}} respects {{kib}} Spaces when enabled. Conversations, custom agents, and custom tools are scoped to the current Space. Built-in agents are space-agnostic and are available in all Spaces.
 
 When configuring roles or API keys, specify the Space in the application privileges resources (e.g., `"resources": ["space:production"]`). Users and API keys cannot access resources in other Spaces.
 
