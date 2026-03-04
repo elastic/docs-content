@@ -11,7 +11,7 @@ products:
   - id: elasticsearch
 ---
 
-# Deploy an {{es}} cluster
+# Install {{es}}
 
 % will be fixed
 
