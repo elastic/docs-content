@@ -6,6 +6,7 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
 description: Link projects in the Cloud UI to enable cross-project search across multiple Serverless projects.
+navigation_title: "Linking projects"
 ---
 
 # Link projects for {{cps}} [link-projects-for-cps]

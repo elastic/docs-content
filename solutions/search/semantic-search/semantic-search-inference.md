@@ -12,7 +12,7 @@ products:
 # Semantic search with the inference API [semantic-search-inference]
 
 
-The instructions in this tutorial shows you how to use the {{infer}} API workflow with various services to perform semantic search on your data.
+The instructions in this tutorial show you how to use the {{infer}} API workflow with various services to perform semantic search on your data.
 
 ::::{important}
 For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](semantic-search-semantic-text.md) end-to-end tutorial.

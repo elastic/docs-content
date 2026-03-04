@@ -53,6 +53,8 @@ Using the dropdown indicating **Bar**, select **Table**.
     - **Split metrics by** (optional): Break metrics into separate columns based on a categorical field, creating a pivot table view.
 3. Optionally, customize individual columns by clicking on any dimension in the layer pane to configure formatting, alignment, coloring, and more.
 
+The table preview updates to show your metrics as columns. If you added row dimensions, each unique value creates a separate row. If you added a **Split metrics by** dimension, metrics are broken into multiple columns by category.
+
 Refer to [](#settings) to find all configuration options for your table.
 ::::
 
