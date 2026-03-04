@@ -3,6 +3,8 @@ navigation_title: How IP filtering rules work in ECE
 applies_to:
   deployment:
     ece: ga
+products:
+  - id: cloud-enterprise
 ---
 
 # IP filtering rules in {{ece}}

@@ -44,7 +44,7 @@ serverless: ga
 
 The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) page allows you to:
 
-- Manage which AI connectors are available in your environment. 
+- Manage which AI connectors are available in your environment.
 - Enable or disable AI Assistant and other AI-powered features in your environment.
 - {applies_to}`stack: ga 9.2+` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
 
@@ -112,7 +112,7 @@ Use these optional features to adjust and act on your conversations with AI Assi
 * Create new custom Quick Prompts by clicking **Add quick prompt**.
 
 :::{tip}
-System Prompts and Quick Prompts can also be [configured](#configure-ai-assistant) from the corresponding tabs on the **Security AI settings** page. 
+System Prompts and Quick Prompts can also be [configured](#configure-ai-assistant) from the corresponding tabs on the **Security AI settings** page.
 :::
 
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
@@ -135,7 +135,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space. 
+Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space.
 
 To share a conversation, do one of the following:
 
@@ -356,7 +356,7 @@ There are several [audit events](kibana://reference/kibana-audit-events.md) rela
 
 ## Configure AI Assistant [configure-ai-assistant]
 
-To adjust general AI Assistant settings from the chat window, click the **Assistant settings menu** button in the upper-right. 
+To adjust general AI Assistant settings from the chat window, click the **Assistant settings menu** button in the upper-right.
 
 ::::{image} /solutions/images/security-ai-assistant-settings-menu.png
 :alt: AI Assistant's settings popover
@@ -377,7 +377,7 @@ It has the following tabs:
 * **Knowledge base:** Provide additional context to AI Assistant. [Learn more](/solutions/security/ai/ai-assistant-knowledge-base.md).
 
 
-To adjust the settings for a specific chat, click the **Conversation settings** button in the upper-right of its chat window. 
+To adjust the settings for a specific chat, click the **Conversation settings** button in the upper-right of its chat window.
 
 ::::{image} /solutions/images/security-ai-assistant-chat-options-menu.png
 :alt: AI Assistant's chat options menu
@@ -395,7 +395,7 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 
 ::::
 
-When you send alert data to AI Assistant, you may want to obfuscate sensitive information before it reaches the LLM provider. 
+When you send alert data to AI Assistant, you may want to obfuscate sensitive information before it reaches the LLM provider.
 
 The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated (replaced by placeholders), so AI Assistant won't have access to their actual values.
 
@@ -439,6 +439,6 @@ In addition to practical advice, AI Assistant can offer conceptual advice, tips,
 * “I need to monitor for unusual file creation patterns that could indicate ransomware activity. How would I construct this query using EQL?”
 
 
-## Learn more 
+## Learn more
 
-The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/ai/observability-ai-assistant.md).

@@ -1,5 +1,7 @@
 ---
 navigation_title: Deprecations
+products:
+  - id: cloud-serverless
 ---
 
 # {{serverless-full}} deprecations [elastic-cloud-serverless-deprecations]
@@ -21,6 +23,20 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 
 ## October 13, 2025 [elastic-cloud-serverless-10132025-deprecations]
 * Filters endpoint exceptions from the detection engine's execution logic. For more information, check [#233289]({{kib-pull}}233289).
+
+## October 7, 2025 [elastic-cloud-serverless-10072025-deprecations]
+
+:::{dropdown} Adds deprecation notice for max_size rollover condition
+
+We have deprecated the `max_size` rollover condition, in favour of `max_primary_shard_size`, when used in `PUT /_ilm/policy/{name}` and `POST /{index}/_rollover` endpoints.
+
+ **Impact:**
+
+ Users can continue to use this condition however a warning will be issued via the response headers and in the server logs.
+ The condition may be removed fully in a later version of {{es}}.
+
+For more information, view [#135765](https://github.com/elastic/elasticsearch/pull/135765).
+:::
 
 ## August 25, 2025 [elastic-cloud-serverless-08252025-deprecations]
 * Changes the `reporting_user` role to leverage reserved {{kib}} privileges. For more information, check [#132766](https://github.com/elastic/elasticsearch/pull/132766)

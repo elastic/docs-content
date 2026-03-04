@@ -76,6 +76,12 @@ Here are the most common ways to increase disk capacity:
 * You can expand the disk space of the existing nodes. This is typically achieved by replacing your nodes with ones with higher capacity.
 * You can add additional data nodes to the data tier that is short of disk space, increasing the overall capacity of that tier and potentially improving performance by distributing data and workload across more resources.
 
+To resize your deployment, follow the recommendations that apply to your deployment type:
+
+:::{include} /troubleshoot/elasticsearch/_snippets/resize-your-deployment.md
+:::
+
+
 When you add another data node, the cluster doesn't recover immediately and it might take some time until shards are relocated to the new node. 
 You can check the progress with the following API call:
 
@@ -84,105 +90,3 @@ GET /_cat/shards?v&h=state,node&s=state
 ```
 
 If in the response the shards' state is `RELOCATING`, it means that shards are still moving. Wait until all shards turn to `STARTED`.
-
-:::::::{applies-switch}
-
-::::::{applies-item} { ess:, ece: }
-
-:::{warning}
-:applies_to: ece:
-In ECE, resizing is limited by your [allocator capacity](/deploy-manage/deploy/cloud-enterprise/ece-manage-capacity.md).
-:::
-
-To increase the disk capacity of the data nodes in your cluster:
-
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or ECE Cloud UI.
-1. On the home page, find your deployment and select **Manage**.
-1. Go to **Actions** > **Edit deployment** and check that autoscaling is enabled. Adjust the **Enable Autoscaling for** dropdown menu as needed and select **Save**.
-1. If autoscaling is successful, the cluster returns to a `healthy` status.
-If the cluster is still out of disk, check if autoscaling has reached its set limits and [update your autoscaling settings](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-update).
-
-You can also add more capacity by adding more nodes to your cluster and targeting the data tier that may be short of disk. For more information, refer to [](/troubleshoot/elasticsearch/add-tier.md).
-
-::::::
-
-::::::{applies-item} { self: }
-To increase the data node capacity in your cluster, you can [add more nodes](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) to the cluster, or increase the disk capacity of existing nodes. Disk expansion procedures depend on your operating system and storage infrastructure and are outside the scope of Elastic support. In practice, this is often achieved by [removing a node from the cluster](https://www.elastic.co/search-labs/blog/elasticsearch-remove-node) and reinstalling it with a larger disk.
-
-::::::
-
-::::::{applies-item}  { eck: }
-To increase the disk capacity of data nodes in your {{eck}} cluster, you can either add more data nodes or increase the storage size of existing nodes.
-
-**Option 1: Add more data nodes**
-
-1. Update the `count` field in your data node NodeSet to add more nodes:
-
-    ```yaml subs=true
-    apiVersion: elasticsearch.k8s.elastic.co/v1
-    kind: Elasticsearch
-    metadata:
-      name: quickstart
-    spec:
-      version: {{version.stack}}
-      nodeSets:
-      - name: data-nodes
-        count: 5  # Increase from previous count
-        config:
-          node.roles: ["data"]
-        volumeClaimTemplates:
-        - metadata:
-            name: elasticsearch-data
-          spec:
-            accessModes:
-            - ReadWriteOnce
-            resources:
-              requests:
-                storage: 100Gi
-    ```
-
-1. Apply the changes:
-
-    ```sh
-    kubectl apply -f your-elasticsearch-manifest.yaml
-    ```
-
-    ECK automatically creates the new nodes and {{es}} will relocate shards to balance the load. You can monitor the progress using:
-
-    ```console
-    GET /_cat/shards?v&h=state,node&s=state
-    ```
-
-**Option 2: Increase storage size of existing nodes**
-
-1. If your storage class supports [volume expansion](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims), you can increase the storage size in the `volumeClaimTemplates`:
-
-    ```yaml subs=true
-    apiVersion: elasticsearch.k8s.elastic.co/v1
-    kind: Elasticsearch
-    metadata:
-      name: quickstart
-    spec:
-      version: {{version.stack}}
-      nodeSets:
-      - name: data-nodes
-        count: 3
-        config:
-          node.roles: ["data"]
-        volumeClaimTemplates:
-        - metadata:
-            name: elasticsearch-data
-          spec:
-            accessModes:
-            - ReadWriteOnce
-            resources:
-              requests:
-                storage: 200Gi  # Increased from previous size
-    ```
-
-1. Apply the changes. If the volume driver supports `ExpandInUsePersistentVolumes`, the filesystem will be resized online without restarting {{es}}. Otherwise, you may need to manually delete the Pods after the resize so they can be recreated with the expanded filesystem.
-
-For more information, refer to [](/deploy-manage/deploy/cloud-on-k8s/update-deployments.md) and [](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md).
-
-::::::
-:::::::

@@ -128,7 +128,8 @@ Index privileges
 :   None
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
+:   - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` At least `Read` for the `Rules, Alerts, and Exceptions` feature and **Manage Exceptions** selected for the `Exceptions` sub-feature
+    - {applies_to}`stack: ga =9.3` `All` for the `Rules, Alerts, and Exceptions` feature
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ## Manage value lists [detections-privileges-manage-value-lists]

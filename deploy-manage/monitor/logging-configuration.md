@@ -1,6 +1,12 @@
 ---
 applies_to:
   stack: all
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 # Logging
 
