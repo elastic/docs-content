@@ -3,7 +3,7 @@ navigation_title: "OTLP/HTTP endpoint"
 applies_to:
   stack: preview 9.2
   deployment:
-    self:
+    self: preview 9.2
 products:
   - id: elasticsearch
 ---
@@ -20,7 +20,7 @@ The endpoint is available under `/_otlp/v1/metrics`.
 :::{important}
 The recommended approach for sending OpenTelemetry Protocol (OTLP) data depends on your deployment:
 
-- **ECH and {{serverless-short}}:** Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry://reference/motlp.md) directly.
+- **ECH and {{serverless-short}}:** Use the [{{motlp}}](opentelemetry://reference/motlp.md) directly.
 - **ECE, ECK, and self-managed:** Use the {{es}} OTLP endpoint described on this page, ideally through an OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
 
 For details on the recommended way to set up OpenTelemetry-based data ingestion, refer to the [EDOT reference architecture](opentelemetry://reference/architecture/index.md).
@@ -118,13 +118,13 @@ PUT /_cluster/settings
 
 Because both `histogram` and `exponential_histogram` support [coerce](elasticsearch://reference/elasticsearch/mapping-reference/coerce.md), changing this setting dynamically does not risk mapping conflicts or ingestion failures.
 
-This setting only applies to metrics ingested using the [Elasticsearch OTLP endpoint](./tsds-ingest-otlp.md).
-Documents ingested with the _bulk API (e.g. using the Elasticsearch exporter for the OpenTelemetry Collector) are not affected.
+This setting only applies to metrics ingested using the [{{es}} OTLP endpoint](./tsds-ingest-otlp.md).
+Documents ingested with the _bulk API (e.g. using the {{es}} exporter for the OpenTelemetry Collector) are not affected.
 
 ## Limitations
 
 * Only the OTLP metrics endpoint (`/_otlp/v1/metrics`) is supported.
   To ingest logs, traces, and profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md),
-  such as the [Elastic Distribution of OpenTelemetry (EDOT) Collector](opentelemetry://reference/edot-collector/index.md).
+  such as the [{{edot}} (EDOT) Collector](opentelemetry://reference/edot-collector/index.md).
 * Histograms are only supported in delta temporality. Set the temporality preference to delta in your SDKs, or use the [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) to avoid cumulative histograms to be dropped.
 * Exemplars are not supported.
