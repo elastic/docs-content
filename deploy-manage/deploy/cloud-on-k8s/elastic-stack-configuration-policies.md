@@ -10,83 +10,128 @@ products:
 
 # {{stack}} configuration policies [k8s-stack-config-policy]
 
+{{stack}} configuration policies in {{eck}} (ECK) provide a centralized, declarative way to manage configuration across multiple {{es}} and {{kib}} clusters. By defining reusable `StackConfigPolicy` resources in Kubernetes, platform administrators can enforce consistent settings, such as cluster configuration, security settings, snapshot policies, ingest pipelines, or index templates, without configuring each cluster individually.
+
+Once applied, the ECK operator continuously reconciles these policies with the targeted {{es}} and {{kib}} resources to ensure that managed settings remain enforced, enabling configuration-as-code practices and simplifying governance, standardization, and large-scale operations across multiple clusters.
+
+This helps keep deployment manifests simpler by moving reusable configuration into `StackConfigPolicy` resources.
+
 ::::{warning}
 We have identified an issue with {{es}} 8.15.1 and 8.15.2 that prevents security role mappings configured via Stack configuration policies to work correctly. Avoid these versions and upgrade to 8.16+ to remedy this issue if you are affected.
 ::::
 
-
 ::::{note}
-This requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses.
+{{stack}} configuration policies on ECK require a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses.
 ::::
 
 ::::{note}
 Component templates created in configuration policies cannot currently be referenced from index templates created through the {{es}} API or {{kib}} UI.
 ::::
 
-Starting from ECK `2.6.1` and {{es}} `8.6.1`, {{stack}} configuration policies allow you to configure the following settings for {{es}}:
-
-* [Cluster Settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting)
-* [Snapshot Repositories](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)
-* [Snapshot Lifecycle Policies](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle)
-* [Ingest pipelines](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline)
-* [Index Lifecycle Policies](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle)
-* [Index templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template)
-* [Components templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template)
-* [Role mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping)
-* [{{es}} Configuration](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) (configuration settings for {{es}} that will go into [`elasticsearch.yml`](/deploy-manage/stack-settings.md)) [ECK 2.11.0]
-* [{{es}} Secure Settings](../../security/secure-settings.md) [ECK 2.11.0]
-* [Secret Mounts](#k8s-stack-config-policy-specifics-secret-mounts) [ECK 2.11.0]
-
-Additionally with ECK `2.11.0` it is possible to configure {{kib}} as well using {{stack}} configuration policies, the following settings can be configured for {{kib}}:
-
-* [{{kib}} Configuration](kibana://reference/configuration-reference/general-settings.md) (configuration settings for {{kib}} that will go into `kibana.yml`)
-* [{{kib}} Secure Settings](../../security/k8s-secure-settings.md)
+## How they work
 
 A policy can be applied to one or more {{es}} clusters or {{kib}} instances in any namespace managed by the ECK operator. Configuration policy settings applied by the ECK operator are immutable through the {{es}} REST API.
 
-With ECK `3.3.0` and later, multiple {{stack}} configuration policies can target the same {{es}} cluster and {{kib}} instance. When multiple policies target the same resource, the policy with the highest `weight` value takes precedence. If multiple policies have the same `weight` value, the operator reports a conflict. 
+With ECK `3.3.0` and later, multiple {{stack}} configuration policies can target the same {{es}} cluster and {{kib}} instance. When multiple policies target the same resource, the policy with the highest `weight` value takes precedence. If multiple policies have the same `weight` value, the operator reports a conflict. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for more information.
 
 ::::{admonition} Scale considerations
-
 While there is no hard limit on how many `StackConfigPolicy` resources can target the same {{es}} cluster or {{kib}} instance, targeting a single resource with more than 100 policies can increase total reconciliation time to several minutes. For optimal performance, combine related settings into fewer policies rather than creating many granular ones.
 
 Additionally, the total size of settings configured through `StackConfigPolicy` resources for a given {{es}} cluster or {{kib}} instance is limited to 1MB due to Kubernetes secret size constraints.
 ::::
 
-
 ## Define {{stack}} configuration policies [k8s-stack-config-policy-definition]
 
-{{stack}} configuration policies can be defined in a `StackConfigPolicy` resource. Each `StackConfigPolicy` must have the following field:
+You can define {{stack}} configuration policies in a `StackConfigPolicy` resource.
 
-* `name` is a unique name used to identify the policy.
+### Mandatory fields
 
-At least one of `spec.elasticsearch` or `spec.kibana` needs to be defined with at least one of its attributes.
+Each `StackConfigPolicy` must define the following fields under `spec`:
 
-* `spec.elasticsearch` describes the settings to configure for {{es}}. Each of the following fields except `clusterSettings` is an associative array where keys are arbitrary names and values are definitions:
+* `name`: A unique name used to identify the policy.
 
-    * `clusterSettings` are dynamic settings that can be set on a running cluster like with the Cluster Update Settings API.
-    * `snapshotRepositories` are snapshot repositories for defining an off-cluster storage location for your snapshots. Check [Specifics for snapshot repositories](#k8s-stack-config-policy-specifics-snap-repo) for more information.
-    * `snapshotLifecyclePolicies` are snapshot lifecycle policies, to automatically take snapshots and control how long they are retained.
-    * `securityRoleMappings` are role mappings, to define which roles are assigned to each user by identifying them through rules.
-    * `ingestPipelines` are ingest pipelines, to perform common transformations on your data before indexing.
-    * `indexLifecyclePolicies` are index lifecycle policies, to automatically manage the index lifecycle.
-    * `indexTemplates.componentTemplates` are component templates that are building blocks for constructing index templates that specify index mappings, settings, and aliases.
-    * `indexTemplates.composableIndexTemplates` are index templates to define settings, mappings, and aliases that can be applied automatically to new indices.
-    * `config` are the settings that go into the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
-    * `secretMounts` are the additional user created secrets that need to be mounted to the {{es}} Pods.
-    * `secureSettings` is a list of Secrets containing Secure Settings to inject into the keystore(s) of the {{es}} cluster(s) to which this policy applies, similar to the [{{es}} Secure Settings](../../security/secure-settings.md).
+* At least one of `elasticsearch` or `kibana`, each defining at least one attribute.
 
-* `spec.kibana` describes the settings to configure for {{kib}}.
+  ::::{note}
+  `spec.elasticsearch` and `spec.kibana` contain the configuration applied to the targeted resources. Each section can include one or more supported configuration fields.
 
-    * `config` are the settings that go into the [`kibana.yml`](/deploy-manage/stack-settings.md) file.
-    * `secureSettings` is a list of Secrets containing Secure Settings to inject into the keystore(s) of the {{kib}} instance(s) to which this policy applies, similar to the [{{kib}} Secure Settings](../../security/k8s-secure-settings.md).
+  For the list of supported settings and their corresponding policy fields, refer to:
+  - [Elasticsearch features supported by {{stack}} configuration policies](#es-settings)
+  - [Kibana features supported by {{stack}} configuration policies](#kib-settings)
+  ::::
+
+### Optional fields
+
+The following fields are optional. They control which {{es}} clusters and {{kib}} instances the policy targets.
+
+* {applies_to}`eck: ga 3.3+` `weight`: An integer that determines the priority of this policy when multiple policies target the same resource. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for details.
+
+* `namespace`: The namespace of the `StackConfigPolicy` resource, used to identify the {{es}} clusters and {{kib}} instances to which the policy applies. If it equals the operator namespace, the policy applies to all namespaces managed by the operator. Otherwise, the policy applies only to the namespace where the policy is defined.
+
+* `resourceSelector`: A [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to identify the {{es}} clusters and {{kib}} instances to which the policy applies in combination with the namespace(s). If `resourceSelector` is not defined, the policy applies to all {{es}} clusters and {{kib}} instances in the namespace(s).
 
 
-The following fields are optional:
+## {{es}} available settings [es-settings]
 
-* {applies_to}`eck: ga 3.3+` `weight` is an integer that determines the priority of this policy when multiple policies target the same resource. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for details.
-* `namespace` is the namespace of the `StackConfigPolicy` resource and used to identify the {{es}} clusters and {{kib}} instances to which the policy applies. If it equals to the operator namespace, the policy applies to all namespaces managed by the operator, otherwise the policy only applies to the namespace of the policy.
-* `resourceSelector` is a [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to identify the {{es}} clusters and {{kib}} instances to which the policy applies in combination with the namespace(s). No `resourceSelector` means all {{es}} clusters and {{kib}} instances in the namespace(s).
+This section describes the different {{es}} settings that can be configured through {{stack}} configuration policies. The syntax of each setting depends on the associated feature and the underlying {{es}} API. For a detailed description with examples of the different syntax types and content expectation refer to [Syntax types](#syntax-types).
+
+The following fields are available under `StackConfigPolicy.spec.elasticsearch`:
+
+| Policy field | Description | Syntax and schema |
+|---|---|---|
+| `config` | Settings that go into `elasticsearch.yml` | Settings map<br>[{{es}} settings reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md) |
+| `clusterSettings` | Dynamic [cluster settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) applied through the cluster settings API | Settings map<br>[Cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) |
+| `secureSettings` | Secure settings for the {{es}} keystore | List of secrets to add<br>[{{es}} secure settings](/deploy-manage/security/k8s-secure-settings.md) |
+| `secretMounts` | Mount Kubernetes secrets into {{es}} pods. | List of secrets to mount<br>[Secret mounts reference](#k8s-stack-config-policy-specifics-secret-mounts) |
+| `snapshotRepositories` | Configure [snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md) for backup and restore | Named resources map<br>[Create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository) |
+| `snapshotLifecyclePolicies` | Configure [snapshot lifecycle policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) to automatically take snapshots and control how long they are retained | Named resources map<br>[SLM API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle) |
+| `ingestPipelines` | Configure [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to perform common transformations on your data before indexing | Named resources map<br>[Ingest pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) |
+| `indexLifecyclePolicies` | Configure [{{ilm}} policies](/manage-data/lifecycle/index-lifecycle-management.md), to automatically manage the index lifecycle  | Named resources map<br>[ILM API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) |
+| `indexTemplates:`<br>  `composableIndexTemplates` | Configure [index templates](/manage-data/data-store/templates.md#index-templates) to define settings, mappings, and aliases that can be applied automatically to new indices | Named resources map<br>[Index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) |
+| `indexTemplates:`<br>  `componentTemplates` | Configure [component templates](/manage-data/data-store/templates.md#component-templates), reusable building-blocks to define settings, mappings, and aliases for new indices | Named resources map<br>[Component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) |
+| `securityRoleMappings` | Configure [role mappings](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) to associate roles to users based on rules | Named resources map<br>[Role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) |
+
+### Specifics for secret mounts [k8s-stack-config-policy-specifics-secret-mounts]
+
+The `secretMounts` field allows users to specify a user created secret and a mountPath to indicate where this secret should be mounted in the {{es}} Pods that are managed by the {{stack}} configuration policy. This can be used to add additional secrets to the {{es}} Pods that may be needed for example for sensitive files required to configure {{es}} security realms.
+
+The referenced secret should be created by the user in the same namespace as the {{stack}} configuration policy. The operator reads this secret and copies it over to the namespace of {{es}} so that it can be mounted by the {{es}} Pods.
+
+Example of configuring secret mounts in the {{stack}} configuration policy:
+
+```yaml
+secretMounts:
+  - secretName: jwks-secret <1>
+    mountPath: "/usr/share/elasticsearch/config/jwks" <2>
+```
+
+1. name of the secret created by the user in the {{stack}} configuration policy namespace.
+2. mount path where the secret must be mounted to inside the {{es}} Pod.
+
+### Specifics for snapshot repositories [k8s-stack-config-policy-specifics-snap-repo]
+
+In order to avoid a conflict between multiple {{es}} clusters writing their snapshots to the same location, ECK automatically:
+
+* sets the `base_path` to `snapshots/<namespace>-<esName>` when it is not provided, for Azure, GCS and S3 repositories
+* appends `<namespace>-<esName>` to `location` for a FS repository
+* appends `<namespace>-<esName>` to `path` for an HDFS repository
+
+## {{kib}} available settings [kib-settings]
+
+The following settings can be configured for {{kib}} under `StackConfigPolicy.spec.elasticsearch`:
+
+| Policy field | Description | Syntax and schema |
+|---|---|---|
+| `config` | Settings that go into `kibana.yml` | Settings map<br>[{{kib}} settings reference](kibana://reference/configuration-reference/general-settings.md) |
+| `secureSettings` | Secure settings for the {{kib}} keystore | List of secrets to add to the keystore<br>[{{kib}} Secure Settings](/deploy-manage/security/k8s-secure-settings.md#k8s-kibana-secure-settings) |
+
+## Examples
+
+### Configuring authentication policies using {{stack}} configuration policy [k8s-stack-config-policy-configuring-authentication-policies]
+
+{{stack}} configuration policy can be used to configure authentication for {{es}} clusters. Check [Managing authentication for multiple stacks using {{stack}} configuration policy](../../users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md) for some examples of the various authentication configurations that can be used.
+
+### Configure a snapshot repository, an {{slm-init}} policy and cluster settings
 
 Example of applying a policy that configures snapshot repository, {{slm-init}} Policies, and cluster settings:
 
@@ -127,7 +172,9 @@ spec:
 ```
 1. {applies_to}`eck: ga 3.3+` Optional: determines priority when multiple policies target the same resource
 
-Another example of configuring role mappings, ingest pipelines, {{ilm-init}} and index templates:
+### Role mappings, ingest pipelines, {{ilm-init}}, and index templates
+
+Another example of configuring role mappings, ingest pipelines, {{ilm-init}}, and index templates:
 
 ```yaml
 apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
@@ -212,7 +259,9 @@ spec:
           version: 1
 ```
 
-Example of configuring {{es}} and {{kib}} using an {{stack}} configuration policy:
+### Configure both {{es}} and {{kib}} through a policy
+
+Example of configuring {{es}} and {{kib}} using an {{stack}} configuration policy. A mixture of `config`, `secureSettings`, and `secretMounts`:
 
 ```yaml
 apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
@@ -258,8 +307,8 @@ spec:
     - secretName: kibana-shared-secret
 ```
 
+TBD: check why this is precisely here:
 Multiple `StackConfigPolicy` resources can target the same {{es}} cluster or {{kib}} instance, with `weight` determining which policy takes precedence. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for more information.
-
 
 ## Monitor {{stack}} configuration policies [k8s-stack-config-policy-monitoring]
 
@@ -316,16 +365,6 @@ Important events are also reported through {{k8s}} events, such as when you don'
 17s    Warning   ReconciliationError stackconfigpolicy/config-test   StackConfigPolicy is an enterprise feature. Enterprise features are disabled
 ```
 
-
-## Specifics for snapshot repositories [k8s-stack-config-policy-specifics-snap-repo]
-
-In order to avoid a conflict between multiple {{es}} clusters writing their snapshots to the same location, ECK automatically:
-
-* sets the `base_path` to `snapshots/<namespace>-<esName>` when it is not provided, for Azure, GCS and S3 repositories
-* appends `<namespace>-<esName>` to `location` for a FS repository
-* appends `<namespace>-<esName>` to `path` for an HDFS repository
-
-
 ## Policy priority and weight [k8s-stack-config-policy-priority-weight]
 ```{applies_to}
 deployment:
@@ -381,22 +420,54 @@ spec:
 
 In this example, clusters labeled with both `env: production` and `tier: critical` have the `production-override-policy` (weight: 100) settings applied, which overwrite the `base-policy` (weight: 0) settings. Other production clusters use only the `base-policy` (weight: 0) settings.
 
+## Syntax types used in configuration policy fields [syntax-types]
 
-## Specifics for secret mounts [k8s-stack-config-policy-specifics-secret-mounts]
+Configuration policy fields use one of the following syntax types, depending on the kind of setting being configured.
 
-ECK `2.11.0` introduces `spec.elasticsearch.secretMounts` as a new field. This field allows users to specify a user created secret and a mountPath to indicate where this secret should be mounted in the {{es}} Pods that are managed by the {{stack}} configuration policy. This field can be used to add additional secrets to the {{es}} Pods that may be needed for example for sensitive files required to configure {{es}} security realms. The secret should be created by the user in the same namespace as the {{stack}} configuration policy. The operator reads this secret and copies it over to the namespace of {{es}} so that it can be mounted by the {{es}} Pods. Example of configuring secret mounts in the {{stack}} configuration policy:
+| Syntax type | Description |
+|---|---|
+| **Settings map** | A map where keys correspond directly to {{es}} or {{kib}} configuration setting names. The structure matches the settings accepted by the corresponding API or configuration file, expressed in YAML instead of JSON. |
+| **Named resources map** | A map where each key is a user-defined logical name and the value contains the resource definition. The resource definition structure matches the payload accepted by the corresponding {{es}} API, expressed in YAML instead of JSON. |
+| **List of resources** | A list of objects where each item defines a resource entry. Each object follows the schema expected by the corresponding configuration mechanism. |
+
+::::{note}
+Configuration definitions that correspond to {{es}} APIs (for example snapshot repositories, ingest pipelines, or index templates) use the same structure as the API request body, represented in YAML rather than JSON.
+::::
+
+### Syntax Examples
+
+**Settings map**: 
+
+```yaml
+clusterSettings:
+  indices.recovery.max_bytes_per_sec: 50mb
+```
+
+**Named resources map**
+
+```yaml
+snapshotRepositories:
+  my-repo:
+    type: fs
+    settings:
+      location: /snapshots
+```
+
+```yaml
+indexTemplates:
+  composableIndexTemplates:
+    my-index-template:
+      # ...
+  componentTemplates:
+    my-component-template:
+      # ...
+```
+
+**List of resources**
 
 ```yaml
 secretMounts:
-  - secretName: jwks-secret <1>
-    mountPath: "/usr/share/elasticsearch/config/jwks" <2>
+  - name: my-secret
+    mountPath: /etc/secrets
 ```
 
-1. name of the secret created by the user in the {{stack}} configuration policy namespace.
-2. mount path where the secret must be mounted to inside the {{es}} Pod.
-
-
-
-## Configuring authentication policies using {{stack}} configuration policy [k8s-stack-config-policy-configuring-authentication-policies]
-
-{{stack}} configuration policy can be used to configure authentication for {{es}} clusters. Check [Managing authentication for multiple stacks using {{stack}} configuration policy](../../users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md) for some examples of the various authentication configurations that can be used.
