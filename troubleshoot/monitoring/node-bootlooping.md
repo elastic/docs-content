@@ -17,9 +17,9 @@ products:
 
 # Troubleshoot node bootlooping [ec-config-change-errors]
 
-When you attempt to apply a configuration change to a deployment, the attempt may fail with an error indicating that the change could not be applied, and deployment resources may be unable to restart. For {{ecloud}} platforms, bootlooping may result, where the deployment resources cycle through a continual reboot process.
+When you try to apply a configuration change to a deployment, an error might appear and resources might not restart. This can result in _bootlooping_, where the deployment resources cycle through a continual reboot process.
 
-* In {{ech}} and {{ece}}, this will induce a deployment warning banner like:
+* In {{ech}} and {{ece}}, a deployment health warning appears:
 
   :::{image} /troubleshoot/images/cloud-ec-ce-configuration-change-failure.png
   :alt: A screen capture of the deployment page showing an error: Latest change to {{es}} configuration failed.
@@ -31,7 +31,7 @@ When you attempt to apply a configuration change to a deployment, the attempt ma
   Plan change failed: Some instances were unable to start properly.
   ```
 
-* In {{eck}}, this will induce a `CrashLoopBackOff` pod state
+* In {{eck}}, a `CrashLoopBackOff` pod state occurs.
 
 To help diagnose these and any other types of issues in your deployments, we recommend [setting up monitoring](/deploy-manage/monitor.md). Then, you can easily view your deployment health and access log files to troubleshoot this configuration failure.
 
@@ -41,10 +41,10 @@ If this occurs, correlating product logs should report `fatal exception while bo
 fatal exception while booting Elasticsearch
 ```
 
-If you’re unable to remediate the failing plan’s root cause, you can attempt to reset the deployment to the latest successful configuration by 
+If you can't determine the root cause, you can try to reset the deployment to the latest successful configuration: 
 
-* For {{ech}} and {{ece}}, [navigating Deployment > Edit > and selecting **Save**](/troubleshoot/monitoring/deployment-health-warnings.md). 
-* For {{eck}}, kubenetes [`apply`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/) the previously working configuration.
+* For {{ech}} and {{ece}}, select **Edit** on the deployment page, then **Save** without making any changes. 
+* For {{eck}}, use [`kubectl apply`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/) to reset.
 
 Following are some frequent causes of a failed configuration change:
 
