@@ -19,10 +19,12 @@ Indicator match rules continuously compare field values in your security event i
 
 Indicator match rules provide a powerful capability to search your security data; however, their queries can consume significant deployment resources. When creating an indicator match rule, limit the time range of the indicator index query to the minimum period necessary for the desired rule coverage. For example, the default indicator index query `@timestamp > "now-30d/d"` searches specified indicator indices for indicators ingested during the past 30 days and rounds the query start time down to the nearest day (resolves to UTC `00:00:00`). Without this limitation, the rule includes all of the indicators in your indicator indices, which may extend the time it takes for the indicator index query to complete.
 
-In addition, the following support restrictions are in place:
+:::{admonition} Support restrictions
+Indicator match rules have two additional constraints:
 
-* Indicator match rules don't support cold or frozen data. Cold or frozen data in indices queried by indicator match rules must be older than the time range queried by the rule. If your data's timestamps are unreliable, you can exclude cold and frozen tier data using a Query DSL filter.
-* Indicator match rules with an additional look-back time value greater than 24 hours are not supported.
+* **Cold and frozen tier data is not supported.** Data in these tiers must be older than the rule's query time range. If your data has unreliable timestamps, exclude cold and frozen tier data using a Query DSL filter.
+* **Look-back time is limited to 24 hours.** Rules with an additional look-back time greater than 24 hours are not supported.
+:::
 
 ### When to use an indicator match rule
 
