@@ -38,7 +38,7 @@ Acts on: **the rule query, before events are evaluated**
 
 Modify the rule query, threshold count, look-back window, or schedule to improve detection precision. Tuning is the only mechanism that improves the underlying signal rather than filtering output. Alerts are still created for events matching the revised logic, and change history requires version tracking. Tuning affects all environments using the rule.
 
-Refer to [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) for detailed guidance.
+Refer to [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) for more guidance.
 
 ### Rule exceptions
 
@@ -48,7 +48,7 @@ Acts on: **alert creation, after the rule evaluates but before the alert is writ
 
 Permanently prevent alert creation for events matching defined field conditions. The rule logic stays unchanged. Exceptions are auditable and removable at any time. They can apply to a single rule or be shared across multiple rules through [shared exception lists](/solutions/security/detect-and-alert/create-manage-shared-exception-lists.md).
 
-Refer to [Rule exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) for detailed guidance.
+Refer to [Rule exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) for more guidance.
 
 ### Alert suppression
 
@@ -58,7 +58,7 @@ Acts on: **alert deduplication, after the first alert is created**
 
 After the first alert fires for a given field value (for example, a specific host or user), suppress subsequent duplicate alerts for a defined time window. Unlike exceptions, suppression is temporary and time-bounded. It acknowledges the signal is real but reduces repetitive noise. Configured per rule, grouped by field value.
 
-Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/alert-suppression.md) for detailed guidance.
+Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/alert-suppression.md) for more guidance.
 
 ### Snooze rule actions
 
@@ -68,7 +68,7 @@ Acts on: **notifications, after alerts are created and stored**
 
 Temporarily pause the rule's notification actions (emails, Slack messages, webhooks) without affecting rule execution or alert creation. Alerts generated during a snooze period are stored normally and visible in the Alerts UI. Snoozing expires automatically or can be canceled manually. For space-wide pausing, use a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
-Refer to [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) for detailed guidance.
+Refer to [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) for more guidance.
 
 ## Key distinctions
 

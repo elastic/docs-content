@@ -14,41 +14,20 @@ description: View, edit, enable, duplicate, and manage detection rules from the 
 
 # Manage detection rules [security-rules-ui-management]
 
-The Rules page allows you to view and manage all prebuilt and custom detection rules.
+After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **Rules** page to manage them. The **Rules** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/requirements-privileges.md). To access the **Rules** page, find **Detection rules (SIEM)** in the navigation menu or by using the global search field.
 
-:::{image} /solutions/images/security-all-rules.png
-:alt: The Rules page
-:screenshot:
-:::
-
-On the Rules page, you can:
-
-* [Sort and filter the rules list](/solutions/security/detect-and-alert/manage-detection-rules.md#sort-filter-rules) and [check rule status](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-status)
-* [Edit](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings), [enable/disable](/solutions/security/detect-and-alert/manage-detection-rules.md#enable-disable-rules), [duplicate](/solutions/security/detect-and-alert/manage-detection-rules.md#duplicate-rules), and [delete](/solutions/security/detect-and-alert/manage-detection-rules.md#delete-rules) rules
-* [Run rules manually](#manually-run-rules) and [fill gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md)
-* [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions)
-* [Export and import rules](/solutions/security/detect-and-alert/manage-detection-rules.md#import-export-rules-ui)
-* [Troubleshoot missing alerts](/troubleshoot/security/detection-rules.md#troubleshoot-signals)
-* Perform actions on multiple rules with [bulk actions](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-actions-reference)
-
-:::{note}
-For information about the role privileges required to manage rules, refer to [Detections prerequisites and requirements](/solutions/security/detect-and-alert/requirements-privileges.md).
-:::
+The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
 
 
 ## Sort and filter the rules list [sort-filter-rules]
 
 To sort the rules list, click any column header. To sort in descending order, click the column header again.
 
-To filter the rules list, enter a search term in the search bar and press **Return**:
+To filter the rules list, enter a search term in the search bar and press **Return**. You can search by:
 
-* Rule name — Enter a word or phrase from a rule’s name.
-* Index pattern — Enter an index pattern (such as `filebeat-*`) to display all rules that use it.
-* MITRE ATT&CK tactic or technique — Enter a MITRE ATT&CK tactic name (such as `Defense Evasion`) or technique number (such as `TA0005`) to display all associated rules.
-
-::::{note}
-Searches for index patterns and MITRE ATT&CK tactics and techniques must match exactly, are case sensitive, and do *not* support wildcards. For example, to find rules using the `filebeat-*` index pattern, the search term `filebeat-*` is valid, but `filebeat` and `file*` are not because they don’t exactly match the index pattern. Likewise, the MITRE ATT&CK tactic `Defense Evasion` is valid, but `Defense`, `defense evasion`, and `Defense*` are not.
-::::
+* **Rule name**: Partial matches work. Enter any word or phrase from a rule's name.
+* **Index pattern**: Exact match required. Enter the full pattern (for example, `filebeat-*` works, but `filebeat` does not).
+* **MITRE ATT&CK tactic or technique**: Exact, case-sensitive match required. Enter the full tactic name (`Defense Evasion`) or technique number (`TA0005`). Partial matches like `Defense` or `defense evasion` do not work.
 
 
 You can also filter the rules list by selecting the **Tags**, **Last response**, **Elastic rules**, **Custom rules**, **Enabled rules**, and **Disabled rules** filters next to the search bar.
@@ -61,9 +40,10 @@ The rules list retains your sorting and filtering settings when you navigate awa
 
 Edit rule settings to modify detection logic, notifications, schedules, and other rule configurations. You can edit a single rule or use bulk actions to update multiple rules at once.
 
-### Requirements
+:::{admonition} Subscription requirements
 * **Custom rules**: You can edit and bulk-modify custom rules with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). 
 * **Prebuilt rules**: You can edit [rule notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) with any subscription or project tier. Editing all other prebuilt rule settings (except **Author** and **License**) or bulk-modifying prebuilt rules requires an [Enterprise subscription](https://www.elastic.co/pricing) or [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+:::
 
 ### Edit a single rule [edit-single-rule]
 
@@ -76,7 +56,7 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 
 ### Bulk edit rule settings [bulk-edit-rules]
 
-Use bulk editing to update settings on multiple rules simultaneously. Rules that can't be modified are automatically skipped—for example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
+Use bulk editing to update settings on multiple rules simultaneously. Rules that can't be modified are automatically skipped, for example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to edit.
@@ -103,7 +83,7 @@ Enable rules to activate them so they run on their defined schedules and generat
 2. In the Rules table, do one of the following:
     * Switch the rule's **Enabled** toggle on or off.
     * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Enable** or **Disable**.
-    * Click on a rule's name to open its details page, then select **All actions** → **Enable** or **Disable**.
+    * Click on a rule's name to open its details page, then select **All actions** > **Enable** or **Disable**.
 
 ### Bulk enable or disable rules
 
@@ -121,7 +101,7 @@ Duplicate rules to create copies that you can modify independently. This is usef
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
     * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Duplicate**.
-    * Click on a rule's name to open its details page, then select **All actions** → **Duplicate**.
+    * Click on a rule's name to open its details page, then select **All actions** > **Duplicate**.
 3. If the rule has exceptions, choose how to handle them:
     * Duplicate the rule and its exceptions (active and expired)
     * Duplicate the rule and active exceptions only
@@ -148,7 +128,7 @@ Delete rules to permanently remove them from your system. This action cannot be 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
     * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Delete**.
-    * Click on a rule's name to open its details page, then select **All actions** → **Delete**.
+    * Click on a rule's name to open its details page, then select **All actions** > **Delete**.
 3. Confirm the deletion.
 
 ### Bulk delete rules
@@ -157,9 +137,6 @@ Delete rules to permanently remove them from your system. This action cannot be 
 2. In the Rules table, select the rules you want to delete.
 3. From the **Bulk actions** menu, select **Delete**.
 4. Confirm the deletion.
-
-
-
 
 ## Snooze rule actions [snooze-rule-actions]
 
@@ -260,8 +237,8 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
 
-    * Export a single rule: Find the rule in the Rules table, then select **All actions** → **Export**. Alternatively, export the rule from its details page (click on the rule name to open its details, then click **All actions** → **Export**).
-    * Export multiple rules: In the Rules table, select the rules you want to export, then click **Bulk actions → Export**.
+    * Export a single rule: Find the rule in the Rules table, then select **All actions** > **Export**. Alternatively, export the rule from its details page (click on the rule name to open its details, then click **All actions** > **Export**).
+    * Export multiple rules: In the Rules table, select the rules you want to export, then click **Bulk actions > Export**.
 
 The rules are exported to an `.ndjson` file.
 

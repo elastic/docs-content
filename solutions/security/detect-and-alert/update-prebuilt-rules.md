@@ -14,6 +14,10 @@ description: Update Elastic Security prebuilt detection rules to stay current wi
 
 Elastic regularly updates prebuilt rules to optimize their performance and ensure they detect the latest threats and techniques. This page explains how to review and apply updates to your installed prebuilt rules.
 
+:::{admonition} Air-gapped environments
+For deployments without internet access, refer to [Prebuilt rules in air-gapped environments](/solutions/security/detect-and-alert/prebuilt-rules-airgapped.md).
+:::
+
 ## Update availability [update-availability]
 
 When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page.

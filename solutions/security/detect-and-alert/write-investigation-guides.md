@@ -98,7 +98,7 @@ Click a query button to load the query in Timeline automatically.
     :screenshot:
     :::
 
-2. Place the cursor where you want the button to appear, then select the Investigate icon (![Investigate icon](/solutions/images/security-ig-investigate-icon.png "title =20x20")) in the toolbar. The **Add investigation query** builder form appears.
+2. Place the cursor where you want the button to appear, then select the investigate icon {icon}`timelineWithArrow` in the toolbar. The **Add investigation query** builder form appears.
 
     :::{image} /solutions/images/security-ig-investigation-query-builder.png
     :alt: Add investigation guide UI
@@ -141,7 +141,7 @@ The following syntax defines a query button in an investigation guide.
 | `relativeFrom`, `relativeTo` | (Optional) The start and end of a relative time range for the query. Times are relative to the alert's creation time, represented as `now` in [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) format. For example, `"relativeFrom": "now-15m", "relativeTo": "now"`. |
 
 ::::{note}
-Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon (![Error icon](/solutions/images/security-ig-error-icon.png "title =20x20")) displays below the Markdown editor if there are any syntax errors.
+Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon {icon}`errorFilled` displays below the Markdown editor if there are any syntax errors.
 ::::
 
 ### Example [ig-timeline-example]
@@ -201,7 +201,7 @@ You can embed Osquery buttons that let analysts run live queries against {{agent
 ### Add an Osquery button [add-osquery-button]
 
 1. Open the **Investigation guide** Markdown editor (in the rule's **Advanced settings**).
-2. In the toolbar, click the **Osquery** button (![Osquery button](/solutions/images/security-osquery-button.png "title =20x20")).
+2. In the toolbar, click the **Osquery** button {icon}`logo_osquery`.
 
     1. Add a descriptive label (for example, `Search for executables`).
     2. Select a saved query or enter a new one.

@@ -17,17 +17,21 @@ description: Step-by-step guide to create detection rules using the Kibana rule 
 
 Once the Detections feature is [turned on](/solutions/security/detect-and-alert/requirements-privileges.md), follow these steps to create a detection rule:
 
+::::{tip}
+At any step, you can preview the rule before saving it to see what kind of results you can expect.
+::::
+
 1. Define the [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#rule-types). The configuration for this step varies depending on the rule type.
 2. Configure [basic rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params).
 3. Configure [advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) (optional).
 4. Set the [rule's schedule](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule).
 5. (Optional) Set up [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
 6. (Optional) Set up [response actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-response-action).
+7. Create and enable the rule, or create the rule without enabling it. 
 
-::::{tip}
-* At any step, you can preview the rule before saving it to see what kind of results you can expect.
-* To ensure rules don't search cold and frozen data when executing, either configure the `excludedDataTiersForRuleExecution` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) (which applies to all rules in a space), or add a [Query DSL filter](/solutions/security/detect-and-alert/set-rule-data-sources.md) to individual rules. These options are only available if you're on the {{stack}}.
-::::
+:::{admonition} Create rules programmatically
+If you prefer to create rules programmatically instead of using the UI, refer to [Using the API](/solutions/security/detect-and-alert/using-the-api.md).
+:::
 
 ## Detection rule requirements
 
@@ -54,8 +58,6 @@ Each rule type has its own configuration and query requirements. Refer to the ap
 
 To understand which type to use, refer to [Select the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md).
 
-## Related pages
+## Next steps
 
-* [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md): All shared rule settings, including severity, risk score, schedule, actions, and notification variables.
-* [Using the API](/solutions/security/detect-and-alert/using-the-api.md): Create and manage rules programmatically.
-* [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md): Enable, export, duplicate, and bulk-edit rules.
+After creating the rule, you can change its settings, enable or disable it, and more. Refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md) for more information.

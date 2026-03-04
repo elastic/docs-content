@@ -62,7 +62,7 @@ After creating a shared exception list, associate it with the rules that should 
 2. Do one of the following:
 
     * Click a shared exception list's name to open its details page, then click **Link rules**.
-    * Find the shared exception list, then from the **More actions** menu (**...**), select **Link rules**.
+    * Find the shared exception list, then from the **More actions** menu {icon}`boxes_horizontal`, select **Link rules**.
 
 3. Click the toggles in the **Link** column to select the rules you want to link.
 

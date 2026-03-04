@@ -113,10 +113,10 @@ From the Rules table, fill gaps for multiple rules using the **Fill gaps** bulk 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the **Rule Monitoring** tab, then do one of the following:
 
-    * Fill rules with unfilled or partially filled gaps: Select the appropriate rules or all rules on the page, then select **Bulk actions** → **Fill gaps**.
+    * Fill rules with unfilled or partially filled gaps: Select the appropriate rules or all rules on the page, then select **Bulk actions** > **Fill gaps**.
     * Only fill rules with unfilled gaps: Filter for rules with unfilled gaps:
-       - {applies_to}`stack: ga 9.3+` Use the **Gap fill status** filter in the Rules table to find rules with the `Unfilled` gap status, then select **Bulk actions** → **Fill gaps**.
-       - {applies_to}`stack: ga 9.1-9.2` In the panel above the table, select the **Only rules with unfilled gaps** filter to show only rules with unfilled gaps (excludes rules with gaps currently being filled). Select the appropriate rules, then select **Bulk actions** → **Fill gaps**.
+       - {applies_to}`stack: ga 9.3+` Use the **Gap fill status** filter in the Rules table to find rules with the `Unfilled` gap status, then select **Bulk actions** > **Fill gaps**.
+       - {applies_to}`stack: ga 9.1-9.2` In the panel above the table, select the **Only rules with unfilled gaps** filter to show only rules with unfilled gaps (excludes rules with gaps currently being filled). Select the appropriate rules, then select **Bulk actions** > **Fill gaps**.
 
 3. Specify when to start and end the manual run that fills the gaps.
 4. Select **Schedule gap fills**. The rule runs over unfilled gaps in the selected time range.

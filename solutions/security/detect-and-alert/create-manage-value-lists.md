@@ -16,9 +16,9 @@ description: Create and manage value lists to define exceptions for detection ru
 
 Value lists hold multiple values of the same {{es}} [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md), such as IP addresses or keywords. Use them to [define exceptions](add-manage-exceptions.md) with the `is in list` and `is not in list` operators so that a rule skips alerts for any matching value. You can also use a value list as the [indicator match index](indicator-match.md#using-value-lists) when creating an indicator match rule.
 
-::::{note}
+:::{admonition} Endpoint rule exceptions
 Value lists cannot be used to define endpoint rule exceptions.
-::::
+:::
 
 ## Prerequisites
 
@@ -82,14 +82,8 @@ Threshold rules only support exceptions that use small value lists. If a value l
     ::::
 
 2. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-3. Click **Manage value lists**. The **Manage value lists** window opens.
-
-    :::{image} /solutions/images/security-upload-lists-ui.png
-    :alt: Manage value lists flyout
-    :screenshot:
-    :::
-
-4. Select the list type (**Keywords**, **IP addresses**, **IP ranges**, or **Text**) from the **Type of value list** drop-down.
+3. Click **Manage value lists**.
+4. From the window, select the list type (**Keywords**, **IP addresses**, **IP ranges**, or **Text**) from the **Type of value list** drop-down.
 5. Drag or select the `csv` or `txt` file that contains the values.
 6. Click **Import value list**.
 
@@ -103,22 +97,17 @@ If you import a file with a name that already exists, a new list is not created.
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. In the **Value lists** table, click the value list you want to edit.
-4. Do any of the following:
 
-    * **Filter items in the list**: Use the KQL search bar to find values in the list. Depending on your list's type, you can filter by the `keyword`, `ip_range`, `ip`, or `text` fields. For example, to filter by Gmail addresses in a value list of the `keyword` type, enter `keyword:*gmail.com` into the search bar.
+### Value list editor actions
 
-        You can also filter by the `updated_by` field (for example, `updated_by:testuser`), or the `updated at` field (for example, `updated_at < now`).
+| Action | How to do it |
+|--------|--------------|
+| Filter items | Use the KQL search bar. Filter by `keyword`, `ip_range`, `ip`, or `text` depending on list type (for example, `keyword:*gmail.com`). You can also filter by `updated_by` or `updated_at`. |
+| Add individual item | Click **Create list item** > _enter value_ > **Add list item** |
+| Bulk upload items | Drag or select a `.csv` or `.txt` file > **Upload** |
+| Edit a value | Click the edit icon {icon}`pencil` > _make changes_ > click the save icon {icon}`check` |
+| Remove a value | Click the remove value icon {icon}`trash` |
 
-    * **Add individual items to the list**: Click **Create list item**, enter a value, then click **Add list item**.
-    * **Bulk upload list items**: Drag or select the `csv` or `txt` file that contains the values that you want to add, then click **Upload**.
-    * **Edit a value**: In the Value column, go to the value you want to edit and click the **Edit** button (![Edit button from Manage value lists window](/solutions/images/security-edit-value-list-item.png "title =20x20")). When you're done editing, click the **Save** button (![Save button from Manage value lists window](/solutions/images/security-save-value-list-item-changes.png "title =30x30")) to save your changes. Click the **Cancel** button (![Cancel button from Manage value lists window](/solutions/images/security-cancel-value-list-item-changes.png "title =30x30")) to revert your changes.
-    * **Remove a value**: Click the **Remove value** button (![Remove value list button from Manage value lists window](/solutions/images/security-remove-value-list-item.png "title =20x20")) to delete a value from the list.
-
-
-:::{image} /solutions/images/security-edit-value-lists.png
-:alt: Manage items in a value lists
-:screenshot:
-:::
 
 ::::{tip}
 You can also edit value lists while creating and managing exceptions that use value lists.
@@ -130,13 +119,8 @@ You can also edit value lists while creating and managing exceptions that use va
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. From the **Value lists** table, you can:
 
-    1. Click the **Export value list** button (![Export button from Manage value lists window](/solutions/images/security-export-value-list.png "title =20x20")) to export the value list.
-    2. Click the **Remove value list** button (![Remove button from Manage value lists window](/solutions/images/security-remove-value-list.png "title =20x20")) to delete the value list.
-
-        :::{image} /solutions/images/security-manage-value-list.png
-        :alt: Import value list flyout with action buttons highlighted
-        :screenshot:
-        :::
+    - Click the **Export value list** icon {icon}`export` to export the value list.
+    - Click the **Remove value list** icon {icon}`trash` to delete the value list.
 
 ## Configure upload limits [adv-list-settings]
 

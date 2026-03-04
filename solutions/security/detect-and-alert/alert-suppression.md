@@ -147,7 +147,7 @@ Closing a suppressed alert can affect suppression behavior. Refer to [Impact of 
 
 ### Alert details flyout
 
-Open the **Insights** → **Correlations** section to see suppression details.
+Open the **Insights** > **Correlations** section to see suppression details.
 
 :::{image} /solutions/images/security-suppressed-alerts-details.png
 :alt: Suppressed alerts in the Correlations section within the alert details flyout

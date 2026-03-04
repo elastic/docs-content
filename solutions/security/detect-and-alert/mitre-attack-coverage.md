@@ -23,7 +23,7 @@ How you use this page depends on your goal:
 
 ## Access the page [access-mitre-page]
 
-Find **Detection rules (SIEM)** in the navigation menu or look for "Detection rules (SIEM)" using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **MITRE ATT&CK coverage**.
+Find **Detection rules (SIEM)** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **MITRE ATT&CK coverage**.
 
 :::{image} /solutions/images/security-rules-coverage.png
 :alt: MITRE ATT&CK coverage page

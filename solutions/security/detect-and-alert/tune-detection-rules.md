@@ -79,7 +79,7 @@ Another useful technique is to assign lower risk scores to rules triggered by au
 2. Add an exception to the original prebuilt rule that excludes the relevant user or process name (`user.name is <user-name>` or `process.name is "process-name"`).
 3. Edit the duplicated rule as follows:
 
-    * Lower the `Risk score` (**Edit rule settings** → **About** tab).
+    * Lower the `Risk score` (**Edit rule settings** > **About** tab).
     * Add an exception so the rule only matches the user or process name excluded in original prebuilt rules. (`user.name is not <user-name>` or `process.name is not <process-name>`).
 
         :::{image} /solutions/images/security-process-specific-exception.png

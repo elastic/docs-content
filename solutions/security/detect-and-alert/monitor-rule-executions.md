@@ -14,13 +14,17 @@ description: Monitor Elastic Security detection rule executions, view execution 
 
 # Monitor rule executions [alerts-ui-monitor]
 
-After enabling detection rules, you'll want to verify they're running successfully and generating the expected alerts. This page explains how to check rule status, review execution history, and identify performance issues.
+Detection rules only protect your environment when they run reliably. This page helps you confirm rules are running and troubleshoot when they're not.
 
-Start by checking the [rule execution status](#rule-status) in the Rules table to see if rules are succeeding, failing, or returning warnings. For a broader view across all your rules, use the [Rule Monitoring tab](#rule-monitoring-tab). To dig into a specific rule's history, open its [Execution results](#rule-execution-logs) tab.
-
-If you notice gaps where rules didn't run, refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md). To test rules or cover specific time ranges, you can [run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules). For a high-level dashboard view, see the [Detection rule monitoring dashboard](../dashboards/detection-rule-monitoring-dashboard.md).
-
-If rules aren't creating expected alerts, refer to [Troubleshoot missing alerts](../../../troubleshoot/security/detection-rules.md#troubleshoot-signals).
+| You want to | Where to go |
+|-----------|-------------|
+| Check if a rule succeeded, failed, or has warnings | [Rule execution status](#rule-status) (Rules table) |
+| Compare status across all rules | [Rule Monitoring tab](#rule-monitoring-tab) |
+| Review a specific rule's run history | [Execution results](#rule-execution-logs) (rule details page) |
+| Fill gaps from missed rule runs | [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) |
+| Run a rule manually for a specific time range | [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) |
+| View rule performance metrics in a dashboard | [Detection rule monitoring dashboard](../dashboards/detection-rule-monitoring-dashboard.md) |
+| Investigate missing alerts | [Troubleshoot missing alerts](../../../troubleshoot/security/detection-rules.md#troubleshoot-signals) |
 
 
 ## Rule execution status [rule-status]
@@ -95,7 +99,7 @@ Use these controls to filter what's included in the logs table:
 * The date and time picker sets the time range of rule executions included in the table. This is separate from the global date and time picker at the top of the rule details page.
 * The **Source event time range** button toggles the display of data pertaining to the time range of manual runs.
 * The **Show metrics columns** toggle includes more or less data in the table, pertaining to the timing of each rule execution.
-* The **Actions** column allows you to show alerts generated from a given rule execution. Select the filter icon (![Filter icon](/solutions/images/security-filter-icon.png "title =20x20")) to create a global search filter based on the rule execution's ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by selecting **Restore previous filters** in the notification.
+* The **Actions** column allows you to show alerts generated from a given rule execution. Select the filter icon {icon}`filterInCircle` to create a global search filter based on the rule execution's ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by selecting **Restore previous filters** in the notification.
 
 ### Gaps table
 

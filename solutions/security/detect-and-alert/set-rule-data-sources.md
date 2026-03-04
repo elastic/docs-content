@@ -98,8 +98,9 @@ Exclude cold and frozen-tier documents:
 
 To apply a filter, paste the Query DSL into the **Custom query** filter bar when creating or editing a rule.
 
-## Related pages
+## More data source configuration options
 
-* [Advanced data source configuration](/solutions/security/detect-and-alert/advanced-data-source-configuration.md): Deployment-level settings that affect data sources, including {{ccs}} and logsdb index mode.
-* [Update default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices): Change the space-level default index patterns inherited by all rules.
-* [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md): Shared rule settings including timestamp override, which controls which timestamp field the rule uses when querying data.
+This page covers per-rule data source settings. For broader configuration options:
+
+* **Change the defaults all rules inherit**: Modify the space-level [`securitySolution:defaultIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) setting to update the index patterns that new rules use by default.
+* **Configure deployment-level data source settings**: Refer to [Advanced data source configuration](/solutions/security/detect-and-alert/advanced-data-source-configuration.md) for {{ccs}} setup and logsdb index mode compatibility.

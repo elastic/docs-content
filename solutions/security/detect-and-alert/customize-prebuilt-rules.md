@@ -31,10 +31,6 @@ For {{serverless-short}}, Security Analytics Essentials corresponds to Basic–P
 
 ## Edit prebuilt rules directly [edit-prebuilt-rules]
 
-::::{admonition} Requirements
-This feature requires an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}.
-::::
-
 With an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, you can edit most prebuilt rule settings directly (except **Author** and **License**).
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -61,7 +57,7 @@ After saving changes to a prebuilt rule, modified fields are marked with the **M
 
 If you can't edit prebuilt rules directly, or if you want to preserve the original rule while creating a customized version, duplicate the rule first.
 
-::::{note}
+:::{important}
 Duplicated rules are entirely separate from the original prebuilt rule. They don't receive Elastic updates when the prebuilt rule is updated.
 ::::
 
@@ -69,22 +65,19 @@ Duplicated rules are entirely separate from the original prebuilt rule. They don
 2. In the **Rules** table, select the **Elastic rules** filter.
 3. Do one of the following:
     * Duplicate a single rule: Select the **All actions** menu {icon}`boxes_horizontal` on the rule, then select **Duplicate**.
-    * Duplicate multiple rules: Select one or more rules (or select **Select all *x* rules**), then select **Bulk actions** → **Duplicate**.
+    * Duplicate multiple rules: Select one or more rules (or select **Select all *x* rules**), then select **Bulk actions** > **Duplicate**.
 4. If the rule has exceptions, select how to handle them:
     * Duplicate the rule and its exceptions (active and expired)
     * Duplicate the rule and active exceptions only
     * Duplicate only the rule
+
+    :::{admonition} Exceptions of duplicated rules
+    If you duplicate a rule and its exceptions, copies of the exceptions are created and added to the duplicated rule's [default rule list](/solutions/security/detect-and-alert/rule-exceptions.md). If the original rule used exceptions from a shared exception list, the duplicated rule references the same shared exception list.
+    :::
+
 5. Select **Duplicate**.
 
-::::{note}
-If you duplicate a rule and its exceptions, copies of the exceptions are created and added to the duplicated rule's [default rule list](/solutions/security/detect-and-alert/rule-exceptions.md). If the original rule used exceptions from a shared exception list, the duplicated rule references the same shared exception list.
-::::
-
-After duplicating, you can:
-
-* Modify the duplicated rule's settings as needed.
-* Turn off the original prebuilt rule if you don't want both rules running.
-* Delete the original prebuilt rule if you no longer need it.
+After duplicating a rule, modify the new rule's settings as needed. If you don't want both rules running, turn off or delete the original prebuilt rule.
 
 
 ## Add exceptions without duplicating [add-exceptions-prebuilt]
@@ -95,7 +88,7 @@ All subscriptions allow you to add exceptions to prebuilt rules without duplicat
 2. Go to the **Rule exceptions** tab.
 3. Select **Add rule exception** and configure the exception conditions.
 
-For detailed guidance, refer to [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md).
+For more guidance, refer to [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md).
 
 
 ## Configure rule actions without duplicating [configure-actions-prebuilt]
@@ -107,7 +100,7 @@ All subscriptions allow you to configure rule actions (notifications) on prebuil
 3. Go to the **Actions** tab and configure the desired actions.
 4. Select **Save changes**.
 
-For detailed guidance, refer to [Rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
+For more guidance, refer to [Rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
 
 
 ## Revert to Elastic version [revert-prebuilt-rules]

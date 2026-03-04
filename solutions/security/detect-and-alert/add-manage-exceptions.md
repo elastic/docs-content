@@ -66,7 +66,7 @@ You can add exceptions from several places in the UI:
     :screenshot:
     :::
 
-* **Alerts table**: Find **Alerts** in the navigation menu, go to the alert, click the **More Actions** menu (**...**), and select **Add rule exception**.
+* **Alerts table**: Find **Alerts** in the navigation menu, go to the alert, click the **More Actions** menu {icon}`boxes_horizontal`, and select **Add rule exception**.
 * **Alert details flyout**: Click **View details** on an alert, then click **Take action > Add rule exception**.
 * **Shared Exception Lists page**: Find **Shared exception lists** in the navigation menu, click **Create shared exception list** > **Create exception item**.
 
@@ -175,7 +175,7 @@ When using ES|QL, you can append new fields with commands such as [`EVAL`](https
 You can add Endpoint exceptions from the following places:
 
 * **Rule details page**: Find **Detection rules (SIEM)** in the navigation menu, select an [endpoint protection rule](../manage-elastic-defend/endpoint-protection-rules.md), scroll to the **Endpoint exceptions** tab, and click **Add endpoint exception**.
-* **Alerts table**: Find **Alerts** in the navigation menu, go to an {{elastic-endpoint}} alert, click the **More actions** menu (**...**), and select **Add Endpoint exception**.
+* **Alerts table**: Find **Alerts** in the navigation menu, go to an {{elastic-endpoint}} alert, click the **More actions** menu {icon}`boxes_horizontal`, and select **Add Endpoint exception**.
 * **Shared Exception Lists page**: Find **Shared exception lists** in the navigation menu, expand the **Endpoint Security Exception List** (or click its name), and click **Add endpoint exception**.
 
     ::::{note}
@@ -191,7 +191,7 @@ The **Add Endpoint Exception** flyout opens.
 
 1. Modify the conditions as needed. The same [operators](#detection-rule-exceptions) apply, with these differences:
 
-    * Fields with conflicts are marked with a warning icon (![Field conflict warning icon](/solutions/images/security-field-warning-icon.png "title =20x20")). For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
+    * Fields with conflicts are marked with a warning icon {icon}`warning`. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
     * Unlike detection rule exceptions, Elastic Endpoint exceptions do not require escaping special characters.
 
 2. (Optional) Add a comment to the exception.
@@ -266,7 +266,7 @@ Creates an exception that excludes all LFC-signed trusted processes:
 
 To view a rule's exceptions:
 
-1. Open the rule's details page. To do this, find **Detection rules (SIEM)** in the navigation menu or look for "Detection rules (SIEM)" using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for the rule that you want to examine, then click the rule's name to open its details.
+1. Open the rule's details page. To do this, find **Detection rules (SIEM)** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for the rule that you want to examine, then click the rule's name to open its details.
 2. Scroll down and select the **Rule exceptions** or **Endpoint exceptions** tab. All exceptions that belong to the rule will display in a list.
 
     From the list, you can filter, edit, and delete exceptions. You can also toggle between **Active exceptions** and **Expired exceptions**.

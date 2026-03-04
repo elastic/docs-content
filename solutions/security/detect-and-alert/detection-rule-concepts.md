@@ -26,7 +26,7 @@ A detection rule consists of three parts:
 These three parts work together when a rule runs:
 
 1. At each scheduled interval, the rule runs its query against your data sources.
-2. The rule creates alerts for events that match the query (unless exceptions [exceptions](#exceptions-concept) apply).
+2. The rule creates alerts for events that match the query (unless [exceptions](#exceptions-concept) apply).
 3. Configured rule actions notify your team or trigger external integrations.
 
 Behind the scenes, rules execute using the [authorization](#rule-authorization-concept) of the user who last edited them.

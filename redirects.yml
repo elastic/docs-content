@@ -740,7 +740,7 @@ redirects:
   'solutions/security/detect-and-alert/add-detection-alerts-to-cases.md':
     to: 'solutions/security/detect-and-alert/manage-detection-alerts.md'
     anchors:
-      '': 'security-add-alerts-to-cases'
+      '': 'alert-actions'
 
 # Related to cases and alerting documentation restructuring
   # Main pages

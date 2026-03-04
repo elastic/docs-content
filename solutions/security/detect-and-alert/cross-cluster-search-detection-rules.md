@@ -95,5 +95,5 @@ To update a rule’s API key, log into the local cluster as a user with the priv
     3. Select the rule’s actions menu {icon}`boxes_horizontal`, then **Update API key**.
 
         ::::{tip}
-        To update multiple rules, select their checkboxes, then click **Selected *x* rules** → **Update API keys**.
+        To update multiple rules, select their checkboxes, then click **Selected *x* rules** > **Update API keys**.
         ::::
