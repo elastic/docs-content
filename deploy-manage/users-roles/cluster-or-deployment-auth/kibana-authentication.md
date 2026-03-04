@@ -443,4 +443,4 @@ To make this iframe leverage anonymous access automatically, you will need to mo
 ::::
 
 
-For more information, refer to [Embed code](../../../explore-analyze/report-and-share.md#embed-code).
+- For more information, refer to [Embed code](../../../explore-analyze/report-and-share.md#embed-code).
