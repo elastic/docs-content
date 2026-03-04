@@ -17,7 +17,7 @@ The following query types are supported:
 - `eql`: Logs every query operation performed on the cluster using EQL.
 - `sql`: Logs every query operation performed on the cluster using SQL.
 
-By default, the logging is turned off. To enable the logging, set the `elasticsearch.actionlog.enabled` property to `true` in the `elasticsearch.yml` configuration file or using the [settings API](elasticsearch://api/doc/elasticsearch/operation/operation-cluster-put-settings):
+By default, the logging is turned off. To enable the logging, set the `elasticsearch.actionlog.enabled` property to `true` in the `elasticsearch.yml` configuration file or using the [settings API]({{es-apis}}operation/operation-cluster-put-settings):
 
 ```yaml
 elasticsearch.actionlog.enabled: true
@@ -44,7 +44,7 @@ The logs are output in JSON format, and include the following fields:
 - `error.type` and `error.message`: Error information fields if the request failed.
 - `user.*`: User information fields if enabled.
 - `http.request.headers.x_opaque_id`: The X-Opaque-Id header value if enabled. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
-- `trace.id`: [Trace ID](elasticsearch://reference/ecs/ecs-tracing#field-trace-id) information.
+- `trace.id`: [Trace ID](ecs://ecs/ecs-tracing#field-trace-id) information.
 
 ### Query logging specific fields
 
@@ -52,7 +52,7 @@ The logs are output in JSON format, and include the following fields:
 - `elasticsearch.querylog.took`: How long (in nanoseconds) the request took to complete.
 - `elasticsearch.querylog.took_millis`: How long (in milliseconds) the request took to complete.
 - `elasticsearch.querylog.timed_out`: Boolean specifying whether the query timed out.
-- `elasticsearch.querylog.query`: The query text (depends on the module, could be string or JSON).
+- `elasticsearch.querylog.query`: The query text (depending on the query language, could be string or JSON).
 - `elasticsearch.querylog.indices`: Array containing the indices that were requested. These may not be fully resolved. May contain wildcards and index expressions, and it is not guaranteed these resolve to any specific index or exist at all. Note that for some queries (like {{esql}}) indices are part of the query text and will not be available as separate field. 
 - `elasticsearch.querylog.result_count`: The number of results actually returned by the request. There is a maximum of 10000 hits returned per DSL request, and there may be other caps on the returned result size. 
 - `elasticsearch.querylog.is_system`: If system index logging is enabled, indicates whether the request was performed only on a system indices.
@@ -65,7 +65,7 @@ In addition to the fields listed above, each query language may include fields s
 
 ### DSL Search specific fields
 
-- `search.total_count`: The “total hits” value, as reported by [the search response](elasticsearch://solutions/search/the-search-api). 
+- `search.total_count`: The “total hits” value, as reported by [the search response](/solutions/search/the-search-api). 
 - `search.total_count_partial`:  Set to `true` in case the total count does not reflect the full amount of matches for some reason (like `track_total_hits` limitation). 
 
 ### {{esql}}
