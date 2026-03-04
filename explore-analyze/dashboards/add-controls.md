@@ -15,9 +15,14 @@ products:
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
 
-**Pinned** controls appear in the dashboard's sticky header and apply to the whole dashboard. 
+**Pinned** control
+:   Appear in the dashboard's sticky header and apply to the whole dashboard. 
 
-**Unpinned** controls live in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. See [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
+**Unpinned** control 
+:   Live in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
+
+**Universally chained** control
+:   A change in one control will impact all other controls on the dashboard, regardless of their positioning in the grid, including pinned controls. The only exception to this is controls within a collapsible section. These controls will only chain with other controls in their section.
 
 ## Requirements [add-controls-requirements]
 
@@ -63,7 +68,6 @@ You can add a control in two ways:
 
 1. Open or create a new dashboard.
 2. Add a control.
-
        
     {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
     - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. 
@@ -89,6 +93,10 @@ You can add a control in two ways:
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     * **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
     * **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
+    For pinned controls, the settings **Minimum width** and **Expand width to fit available space** are available by clicking the     Settings {icon}`gear` on the control.
+
 
 7. Specify the additional settings:
 
