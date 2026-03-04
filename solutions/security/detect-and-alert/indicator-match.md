@@ -22,8 +22,8 @@ Indicator match rules provide a powerful capability to search your security data
 :::{admonition} Support restrictions
 Indicator match rules have two additional constraints:
 
-* **Cold and frozen tier data is not supported.** Data in these tiers must be older than the rule's query time range. If your data has unreliable timestamps, exclude cold and frozen tier data using a Query DSL filter.
-* **Look-back time is limited to 24 hours.** Rules with an additional look-back time greater than 24 hours are not supported.
+* **Cold and frozen tier data is not supported** - Data in these tiers must be older than the rule's query time range. If your data has unreliable timestamps, exclude cold and frozen tier data using a Query DSL filter.
+* **Look-back time is limited to 24 hours** - Rules with an additional look-back time greater than 24 hours are not supported.
 :::
 
 ### When to use an indicator match rule
