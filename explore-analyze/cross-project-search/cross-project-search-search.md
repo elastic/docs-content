@@ -5,9 +5,10 @@ applies_to:
 products:
   - id: elasticsearch
 description: Learn how search expressions, search options, and index resolution work in cross-project search (CPS).
+navigation_title: "Search"
 ---
 
-# Search in {{cps-init}} [cps-search]
+# How search works in {{cps-init}} [cps-search]
 
 This page explains how search works in {{cps-init}}, including:
 

@@ -5,9 +5,10 @@ applies_to:
 products:
   - id: elasticsearch
 description: Learn how to use project routing to limit cross-project search (CPS) queries to specific projects based on tag values.
+navigation_title: "Project routing"
 ---
 
-# Project routing [cps-project-routing]
+# Using project routing to limit search scope [cps-project-routing]
 
 Project routing enables you to limit a search to a subset of projects, including the origin project and linked projects, based on tag values.
 
