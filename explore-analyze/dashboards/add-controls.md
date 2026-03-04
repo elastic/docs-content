@@ -11,7 +11,13 @@ products:
 
 # Add filter controls [add-controls]
 
-**Controls** are interactive options that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters across all relevant panels in a dashboard to focus on specific data segments without writing filtering queries.
+**Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
+
+**Pinned** controls appear in the dashboard's sticky header and apply to the whole dashboard. 
+
+**Unpinned** controls live in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. See [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
 
 ## Requirements [add-controls-requirements]
 
@@ -38,17 +44,38 @@ There are three types of controls:
 * [**Time slider**](#add-time-slider-controls) — Adds a time range slider that allows to filter the data within a specified range of time, advance the time range backward and forward by a unit that you can define, and animate your change in data over the specified time range.
   For example, you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, and the global time filter is **Last 7 days**. When you add the time slider, you can select the previous and next buttons to advance the time range backward or forward, and select the play button to watch how the data changes over the last 7 days.
 
-  ![Time slider control for the the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
+  ![Time slider control for the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
 
 ## Create and add Options list and Range slider controls [create-and-add-options-list-and-range-slider-controls]
 
 To add interactive Options list and Range slider controls, create the controls, then add them to your dashboard.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`
+You can add a control in two ways: 
+
+- Add the control to the sticky header. The control is pinned and applies to the whole dashboard.
+  
+  In **Edit** mode, select **Add** > **Controls** > **Control**. 
+
+- Add the control as a panel that you can place anywhere.
+  
+  In **Edit** mode, select **Add new panel** > **Controls**  If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to top** or **Unpin**.
+
 1. Open or create a new dashboard.
 2. Add a control.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
-    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
+       
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
+    - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. 
+    - Add as free panel: Select **Add panel** > **Controls**, then place the control on the dashboard.
+    
+    {applies_to}`serverless:` {applies_to}`stack: ga 9.2-9.3` 
+    
+    In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
+    
+    {applies_to}`stack: ga 9.0-9.1` 
+    
+    In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
 3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the **Control**.
 4. In the **Field** list, select the field you want to filter on.
@@ -83,7 +110,11 @@ To add interactive Options list and Range slider controls, create the controls, 
     * For Range sliders, set the step size. The step size determines the slider's number of steps. The smaller a slider's step size, the more steps it has.
 
 8. Select **Save**. The control can now be used.
-9. Consider the position of the control if you have several controls active on the dashboard. Controls are applied from left to right, which can change the options available depending on their position when the [Chain controls](#configure-controls-settings) setting is enabled.
+9. Consider control order when you have several controls.
+
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Controls are chained by default: each control narrows the options available in subsequent controls based on position. 
+   {applies_to}`stack: ga 9.0-9.3` Controls are applied from left to right; when the [Chain controls](#configure-controls-settings) setting is enabled, their position changes the options available in the next control.
+
 10. Save the dashboard.
 
 ## Add variable controls [add-variable-control]
@@ -92,20 +123,18 @@ stack: preview 9.0
 serverless: preview
 ```
 
-:::{note}
-:applies_to: stack: ga 9.0-9.1
 In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
-:::
 
 You can bind controls to your {{esql}} visualizations in dashboards. When creating an {{esql}} visualization, the autocomplete suggestions prompt control insertion for field values, field names, function configuration, and function names. {{esql}} controls act as variables in your {{esql}} visualization queries.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
+When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it.
+
 This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
 
-:::{note}
 Only **Options lists** are supported for {{esql}}-based controls. Options can be:
 - values or fields that can be static or defined by a query
-- functions {applies_to}`stack: ga 9.1`
-:::
+- {applies_to}`stack: ga 9.1` functions 
 
 :::{include} ../_snippets/variable-control-procedure.md
 :::
@@ -211,6 +240,9 @@ serverless: preview
 
 You can add one interactive time slider control to a dashboard.
 
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+The time slider can only be added as a pinned control (to the sticky header). It is not available as a free panel.
+
 1. Open or create a new dashboard.
 2. Add a time slider control.
 
@@ -223,6 +255,9 @@ You can add one interactive time slider control to a dashboard.
 ## Configure the controls settings [configure-controls-settings]
 
 Several settings apply to all controls that are part of a dashboard.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+Controls are always chained: each control narrows the options available in subsequent controls. The **Control settings** flyout no longer has a **Chain controls** toggle. **Auto apply filters** is a dashboard-level setting: when it is disabled, users apply pending control selections using the unified search **Apply** button.
 
 1. Configure the control settings.
 
@@ -240,8 +275,9 @@ Several settings apply to all controls that are part of a dashboard.
     * **Selections** settings:
 
         * **Validate user selections** — When selected, any selected option that results in no data is ignored.
-        * **Chain controls** — When selected, controls are applied sequentially from left to right, and line by line. Any selected options in one control narrows the available options in the next control.
-        * **Apply selections automatically** — The dashboard is updated dynamically when options are selected in controls. When this option is disabled, users first need to **Apply** their control selection before they are applied to the dashboard.
+        * {applies_to}`stack: ga 9.0-9.3` **Chain controls** — When selected, controls are applied sequentially from left to right, and line by line. Any selected options in one control narrows the available options in the next control.
+        * {applies_to}`stack: ga 9.0-9.3` **Apply selections automatically** — The dashboard is updated dynamically when options are selected in controls. When this option is disabled, users first need to **Apply** their control selection before they are applied to the dashboard.
+        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Auto apply filters** — When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, users must click the unified search **Apply** button to apply pending control selections.
 
     * To remove all controls from the dashboard, select **Delete all**.
 
@@ -259,6 +295,9 @@ Change the settings for Options list and Range slider controls.
 ## Delete controls [remove-controls]
 
 Delete controls from your dashboard.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+To remove a control from view without deleting it, use **Unpin** from the control's panel menu; the control moves into the dashboard body. To remove it from the dashboard entirely, use **Delete** from the panel menu.
 
 1. Hover over the control you want to delete, then select ![The Remove control icon that removes the control from the dashboard](/explore-analyze/images/kibana-dashboard_controlsRemoveControl_8.3.0.png "").
 2. In the **Delete control?** window, select **Delete**.
