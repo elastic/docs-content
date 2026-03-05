@@ -69,7 +69,7 @@ Each index has a [mapping](/manage-data/data-store/mapping.md) that defines fiel
 
 When working with indices, you typically make decisions that focus on:
 
-* **Naming and aliases**: Use clear index naming patterns and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
+* **Naming and aliases**: Use clear naming patterns for your indices and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
 * **Mapping strategy**: Use dynamic mapping for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping.md) for production use cases where field control and query behavior matter.
 * **Index or data stream**: Use a regular index when you need frequent updates or deletes. Use a [data stream](/manage-data/data-store/data-streams.md) for append-only timestamped data such as logs, events, and metrics.
 
