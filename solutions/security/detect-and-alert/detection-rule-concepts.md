@@ -77,7 +77,7 @@ You can configure rule actions to run for every alert, at scheduled intervals, o
 
 ```{applies_to}
 stack: ga
-```
+serverless: ga
 
 Rules run in the background using the privileges of the user who last edited them. When you create or modify a rule, {{elastic-sec}} generates an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of your current privileges. The rule uses this API key to:
 
