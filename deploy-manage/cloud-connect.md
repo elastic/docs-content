@@ -25,6 +25,9 @@ AutoOps can be connected to clusters on {{es}} version 7.17 and later.
 
 Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md). 
 
+:::{include} /deploy-manage/monitor/_snippets/cc-autoops-all-licenses.md
+:::
+
 ## Elastic {{infer-cap}} Service (EIS)
 
 [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) enables you to add AI-powered search and assistance to your {{es}} deployment without running models yourself.
@@ -51,12 +54,7 @@ Find answers to your questions about Cloud Connect.
 * [Are more services going to be available with Cloud Connect?](#cc-more-services)
 
 $$$cc-additional-payment$$$ **Does Cloud Connect require additional payment?** 
-:   Each cloud connected service has its own licensing and payment requirements. 
-
-    - :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-
-    - :::{include} /deploy-manage/_snippets/eis-cc-payment-faq.md
-::: 
+:   :::{include} /deploy-manage/_snippets/cc-license-and-payment.md
 
 $$$cc-ech$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?**
 :   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
