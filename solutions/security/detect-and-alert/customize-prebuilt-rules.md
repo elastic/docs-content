@@ -12,7 +12,7 @@ description: Customize Elastic Security prebuilt detection rules by editing dire
 
 # Customize Elastic prebuilt rules [customize-prebuilt-rules]
 
-Prebuilt rules provide a starting point for threat detection, but you may need to adapt them to your environment. This page explains how to customize prebuilt rules based on your subscription level.
+Prebuilt rules provide a starting point for threat detection, but you might need to adapt them to your environment. This page explains how to customize prebuilt rules based on your subscription level.
 
 ## What you can customize by subscription [customize-subscription-capabilities]
 
@@ -26,12 +26,14 @@ Your subscription determines how you can customize prebuilt rules:
 | Edit prebuilt rules directly | — | ✓ |
 | Revert to Elastic version | — | ✓ |
 
+:::{note}
 For {{serverless-short}}, Security Analytics Essentials corresponds to Basic–Platinum, and Security Analytics Complete corresponds to Enterprise.
+:::
 
 
 ## Edit prebuilt rules directly [edit-prebuilt-rules]
 
-With an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, you can edit most prebuilt rule settings directly (except **Author** and **License**).
+With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, you can edit most prebuilt rule settings directly (except **Author** and **License**).
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, find the prebuilt rule you want to edit.
@@ -49,7 +51,7 @@ After saving changes to a prebuilt rule, modified fields are marked with the **M
 
 ### Considerations for editing prebuilt rules
 
-* **Updates may cause conflicts**: When Elastic releases an update that changes the same fields you modified, you need to resolve the conflict. Refer to [Resolve update conflicts](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts).
+* **Updates might cause conflicts**: When Elastic releases an update that changes the same fields you modified, you need to resolve the conflict. Refer to [Resolve update conflicts](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts).
 * **Revert if needed**: You can restore the original Elastic version at any time. Refer to [Revert to Elastic version](#revert-prebuilt-rules).
 
 
@@ -80,28 +82,14 @@ Duplicated rules are entirely separate from the original prebuilt rule. They don
 After duplicating a rule, modify the new rule's settings as needed. If you don't want both rules running, turn off or delete the original prebuilt rule.
 
 
-## Add exceptions without duplicating [add-exceptions-prebuilt]
+## Add exceptions [add-exceptions-prebuilt]
 
-All subscriptions allow you to add exceptions to prebuilt rules without duplicating them. Exceptions prevent rules from generating alerts for specific conditions.
-
-1. Open the prebuilt rule's details page.
-2. Go to the **Rule exceptions** tab.
-3. Select **Add rule exception** and configure the exception conditions.
-
-For more guidance, refer to [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md).
+All subscriptions allow you to add exceptions to prebuilt rules. Exceptions prevent rules from generating alerts for specific conditions. For more guidance, refer to [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md).
 
 
-## Configure rule actions without duplicating [configure-actions-prebuilt]
+## Configure rule actions [configure-actions-prebuilt]
 
-All subscriptions allow you to configure rule actions (notifications) on prebuilt rules without duplicating them.
-
-1. Find **Detection rules (SIEM)** in the navigation menu.
-2. Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Edit rule settings**.
-3. Go to the **Actions** tab and configure the desired actions.
-4. Select **Save changes**.
-
-For more guidance, refer to [Rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
-
+All subscriptions allow you to configure rule actions (notifications) on prebuilt rules. For more guidance, refer to [Rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
 
 ## Revert to Elastic version [revert-prebuilt-rules]
 

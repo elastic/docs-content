@@ -14,7 +14,7 @@ description: Modify detection rule queries, thresholds, and schedules to improve
 
 # Tune detection rules [security-tune-detection-signals]
 
-Tuning means modifying a rule's query, threshold, or schedule so it only matches events that are genuinely suspicious. Use tuning when the rule itself is too broad and catches normal behavior in any environment, not just yours.
+Tuning means modifying a rule's query, threshold, or schedule so it only matches events that are genuinely suspicious. Use tuning when the rule itself is too broad and catches normal behavior in any environment, not only yours.
 
 If a rule is correctly written but fires on known-safe activity specific to your environment, use [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) instead. If you're unsure which approach fits your situation, refer to [Reduce noise and false positives](/solutions/security/detect-and-alert/reduce-noise-and-false-positives.md) to compare all available mechanisms.
 

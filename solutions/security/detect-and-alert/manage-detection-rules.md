@@ -14,7 +14,7 @@ description: View, edit, enable, duplicate, and manage detection rules from the 
 
 # Manage detection rules [security-rules-ui-management]
 
-After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **Rules** page to manage them. The **Rules** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/requirements-privileges.md). To access the **Rules** page, find **Detection rules (SIEM)** in the navigation menu or by using the global search field.
+After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **Rules** page to manage them. The **Rules** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/requirements-privileges.md). To open the **Rules** page, find **Detection rules (SIEM)** in the navigation menu or by using the global search field.
 
 The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
 
@@ -41,8 +41,8 @@ The rules list retains your sorting and filtering settings when you navigate awa
 Edit rule settings to modify detection logic, notifications, schedules, and other rule configurations. You can edit a single rule or use bulk actions to update multiple rules at once.
 
 :::{admonition} Subscription requirements
-* **Custom rules**: You can edit and bulk-modify custom rules with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). 
-* **Prebuilt rules**: You can edit [rule notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) with any subscription or project tier. Editing all other prebuilt rule settings (except **Author** and **License**) or bulk-modifying prebuilt rules requires an [Enterprise subscription](https://www.elastic.co/pricing) or [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* **Custom rules**: You can edit and bulk-modify custom rules with any {{stack}} subscription or {{serverless-short}} project tier. 
+* **Prebuilt rules**: You can edit [rule notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) with any subscription or project tier. Editing all other prebuilt rule settings (except **Author** and **License**) or bulk-modifying prebuilt rules requires an Enterprise subscription or Security Analytics Complete project.
 :::
 
 ### Edit a single rule [edit-single-rule]
@@ -140,7 +140,7 @@ Delete rules to permanently remove them from your system. This action cannot be 
 
 ## Snooze rule actions [snooze-rule-actions]
 
-Snoozing pauses a rule's actions (notifications, ticket creation, and other integrations) without stopping the rule itself. The rule keeps running on schedule and continues generating alerts; you just won't receive notifications until the snooze period ends.
+Snoozing pauses a rule's actions (notifications, ticket creation, and other integrations) without stopping the rule itself. The rule keeps running on schedule and continues generating alerts, but notifications are suppressed until the snooze period ends.
 
 Use snoozing for planned maintenance windows, expected alert spikes, or any time you want to silence notifications temporarily while still capturing alerts for later review.
 
@@ -212,7 +212,7 @@ The Manual runs table (found on a rule's **Execution results** tab) tracks manua
 ## Export and import rules [import-export-rules-ui]
 
 ::::{admonition} Requirements
-* You can export and import custom rules and prebuilt rules (modified and unmodified) with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* You can export and import custom rules and prebuilt rules (modified and unmodified) with any {{stack}} subscription or {{serverless-short}} project feature tier.
 * At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/requirements-privileges.md) to learn more about the required privileges for managing rules.
 ::::
 

@@ -91,7 +91,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
     ::::
 
 **False positive examples** (optional)
-:   List of common scenarios that may produce false-positive alerts.
+:   List of common scenarios that might produce false-positive alerts.
 
 **Indicator prefix override** (indicator match rules only)
 :   Define the location of indicator data within the structure of indicator documents. When the indicator match rule executes, it queries specified indicator indices and references this setting to locate fields with indicator data. This data is used to enrich indicator match alerts with metadata about matched threat indicators. The default value for this setting is `threat.indicator`.

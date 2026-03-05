@@ -22,9 +22,9 @@ For deployments without internet access, refer to [Prebuilt rules in air-gapped 
 
 When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page.
 
-::::{note}
+:::{admonition} Automatic updates
 On {{stack}}, automatic updates are supported for the current {{elastic-sec}} version and the latest three previous minor releases. For example, if you're on version 9.0, you can use the Rules UI to update prebuilt rules until version 9.4 is released. After that, you can still manually download and install updates, but must upgrade {{elastic-sec}} to receive automatic updates again.
-::::
+:::
 
 ## Review updates [review-updates]
 
@@ -49,7 +49,7 @@ All subscriptions can preview incoming updates by selecting the **Elastic update
 ::::{dropdown} Additional options with Enterprise subscription
 :name: enterprise-review-options
 
-With an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, you also have access to:
+With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, you also have access to:
 
 * **Compare different versions**: Use the **Diff view** drop-down menu to compare different versions of a rule field. For example, compare changes you made to the current version with changes from the incoming Elastic update.
 
@@ -80,7 +80,7 @@ If you've customized prebuilt rules and want to preserve your changes when apply
 ::::{dropdown} Enterprise / Security Analytics Complete
 :name: enterprise-modified-rules
 
-With an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, {{elastic-sec}} attempts to merge your changes with the Elastic update. If conflicts arise:
+With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, {{elastic-sec}} attempts to merge your changes with the Elastic update. If conflicts arise:
 
 * **Auto-resolved conflicts**: {{elastic-sec}} suggests a resolution for your review. The field displays a `Review required` status.
 * **Unresolved conflicts**: You must manually select how to resolve the conflict. The field displays an `Action required` status.
@@ -96,7 +96,7 @@ Use the **Modified/Unmodified** drop-down menu in the **Rule Updates** tab to fi
 ::::{dropdown} Basic–Platinum / Security Analytics Essentials
 :name: basic-modified-rules
 
-With a [Basic–Platinum subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Essentials project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, updates overwrite your modifications with the Elastic version. To preserve your changes:
+With a Basic–Platinum subscription on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, updates overwrite your modifications with the Elastic version. To preserve your changes:
 
 1. [Duplicate the rule](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules) before updating.
 2. Apply the update to the original prebuilt rule.
@@ -125,7 +125,7 @@ Use the search bar and **Tags** filter to find specific rules. For example, filt
 
 ## Field update statuses [rule-field-update-statuses]
 
-With an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}, you can [edit prebuilt rules directly](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#edit-prebuilt-rules). When you update a rule you've customized, each field displays a status indicating whether conflicts exist between your changes and the incoming Elastic update:
+With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, you can [edit prebuilt rules directly](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#edit-prebuilt-rules). When you update a rule you've customized, each field displays a status indicating whether conflicts exist between your changes and the incoming Elastic update:
 
 | Status | Description | Action required |
 |---|---|---|
@@ -137,7 +137,7 @@ With an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} o
 
 ## Resolve update conflicts [resolve-reduce-rule-conflicts]
 
-When you [edit prebuilt rules directly](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#edit-prebuilt-rules) (available with an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}}), conflicts can arise if Elastic updates the same fields you modified. Keeping prebuilt rules up to date helps minimize the frequency and complexity of these conflicts.
+When you [edit prebuilt rules directly](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#edit-prebuilt-rules) (available with an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}), conflicts can arise if Elastic updates the same fields you modified. Keeping prebuilt rules up to date helps minimize the frequency and complexity of these conflicts.
 
 ### Auto-resolved conflicts
 
