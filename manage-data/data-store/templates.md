@@ -40,9 +40,131 @@ An **index template** is used to configure an index when it is created. [Mapping
 
 You can create and manage index templates on the **Index management** page in {{kib}} or by using the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API. 
 
-For the {{kib}} steps and a walk-through example, refer to [Manage index templates](/manage-data/data-store/index-management.md#index-management-manage-index-templates).
+:::::{tab-set}
+:group: template
 
-Using the API, the following request creates an index template that is *composed of* the two component templates shown in the [component templates](#component-templates) example.
+::::{tab-item} Kibana
+:sync: kibana
+In this tutorial, you'll create an index template and use it to configure two new indices.
+
+#### Step 1. Add a name and index pattern
+
+1. In the **Index Templates** view, open the **Create template** wizard.
+
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_create_wizard.png
+    :alt: Create wizard
+    :screenshot:
+    :::
+
+2. In the **Name** field, enter `my-index-template`.
+3. Set **Index pattern** to `my-index-*` so the template matches any index with that index pattern.
+4. Leave **Data Stream**, **Priority**, **Version**, and **_meta field** blank or as-is.
+
+#### Step 2. Add settings, mappings, and aliases
+
+When creating an index template, you can define settings, mappings, and aliases directly in the template or include them through one or more component templates.
+
+A [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) is a type of [template](/manage-data/data-store/templates.md) used as a building block for constructing index templates. {{kib}} displays badges indicating whether a component template contains mappings (**M**), index settings (**S**), aliases (**A**), or a combination of the three.
+
+1. Add component templates to your index template.
+
+    Component templates are optional. For this tutorial, do not add any component templates.
+
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_component_template.png
+    :alt: Component templates page
+    :screenshot:
+    :::
+
+2. Define index settings directly in the index template. When used in conjunction with component templates, settings defined directly in the index template override any conflicting settings from the associated component templates.
+
+    This step is optional. For this tutorial, leave this section blank.
+3. Define mappings directly in the index template. When used in conjunction with component templates, these mappings override any conflicting definitions from the associated component templates.
+
+    Define a mapping that contains an [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md) field named `geo` with a child [`geo_point`](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) field named `coordinates`:
+
+    :::{image} /manage-data/images/elasticsearch-reference-management-index-templates-mappings.png
+    :alt: Mapped fields page
+    :screenshot:
+    :::
+
+    Alternatively, you can click the **Load JSON** link and define the mapping as JSON:
+
+    ```js
+    {
+      "properties": {
+        "geo": {
+          "properties": {
+            "coordinates": {
+              "type": "geo_point"
+            }
+          }
+        }
+      }
+    }
+    ```
+
+    You can create additional mapping configurations in the **Dynamic templates** and **Advanced options** tabs. For this tutorial, do not create any additional mappings.
+
+4. Define an alias named `my-index`:
+
+    ```js
+    {
+      "my-index": {}
+    }
+    ```
+
+5. On the review page, check the summary. If everything looks right, click **Create template**.
+
+#### Step 3. Create new indices
+
+You're now ready to create new indices using your index template.
+
+1. Index the following documents to create two indices: `my-index-000001` and `my-index-000002`.
+
+    ```console
+    POST /my-index-000001/_doc
+    {
+      "@timestamp": "2019-05-18T15:57:27.541Z",
+      "ip": "225.44.217.191",
+      "extension": "jpg",
+      "response": "200",
+      "geo": {
+        "coordinates": {
+          "lat": 38.53146222,
+          "lon": -121.7864906
+        }
+      },
+      "url": "https://media-for-the-masses.theacademyofperformingartsandscience.org/uploads/charles-fullerton.jpg"
+    }
+
+    POST /my-index-000002/_doc
+    {
+      "@timestamp": "2019-05-20T03:44:20.844Z",
+      "ip": "198.247.165.49",
+      "extension": "php",
+      "response": "200",
+      "geo": {
+        "coordinates": {
+          "lat": 37.13189556,
+          "lon": -76.4929875
+        }
+      },
+      "memory": 241720,
+      "url": "https://theacademyofperformingartsandscience.org/people/type:astronauts/name:laurel-b-clark/profile"
+    }
+    ```
+
+2. Use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to view the configurations for the new indices. The indices were configured using the index template you created earlier.
+
+    ```console
+    GET /my-index-000001,my-index-000002
+    ```
+
+::::
+
+::::{tab-item} API
+:sync: api
+The following request creates an index template that is *composed of* the two component templates shown in the [component templates](#component-templates) example.
 
 ```console
 PUT _index_template/template_1
@@ -78,6 +200,9 @@ PUT _index_template/template_1
   }
 }
 ```
+::::
+
+:::::
 
 :::{tip}
 The following features can be useful when you're setting up index templates:
@@ -111,9 +236,28 @@ If you use {{fleet}} or {{agent}}, assign your index templates a priority lower 
 
 A **component template** is a reusable building block that defines mappings, settings, and aliases. Component templates are not applied directly to indices, but referenced by index templates and used when determining the final configuration of an index.
 
-You can create and manage component templates on the **Index management** page in {{kib}} or by using the [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API. For the {{kib}} steps, refer to [Manage component templates](/manage-data/data-store/index-management.md#index-management-manage-component-templates).
+You can create and manage component templates on the **Index management** page in {{kib}} or by using the [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API.
 
-Using the API, the following request creates the two component templates used in the previous index template example:
+:::::{tab-set}
+:group: template
+
+::::{tab-item} Kibana
+:sync: kibana
+Create, edit, clone, and delete your component templates in the **Component Templates** view.
+
+:::{image} /manage-data/images/serverless-management-component-templates.png
+:alt: Component templates
+:screenshot:
+:::
+
+* To show details and perform operations, click the template name.
+* To create new component templates, use the **Create component template** wizard.
+::::
+
+::::{tab-item} API
+:sync: api
+You can create and manage component templates using the [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API.
+The following request creates the two component templates used in the previous index template example:
 
 ```console
 PUT _component_template/component_template1
@@ -147,3 +291,6 @@ PUT _component_template/runtime_component_template
 ```
 
 1. This component template adds a [runtime field](mapping/map-runtime-field.md) named `day_of_week` to the mappings when a new index matches the template.
+::::
+
+:::::
