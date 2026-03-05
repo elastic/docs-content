@@ -110,6 +110,68 @@ The anomaly score ranges from 0 to 100, where higher scores indicate stronger de
 ::::
 END CRAFT LAYER -->
 
+## Annotated examples [ml-examples]
+
+The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how {{ml}} rules are defined. Each example is followed by a field-by-field breakdown.
+
+### Single {{ml}} job [ml-example-single-job]
+
+This rule monitors a rare-process {{ml}} job for anomalies on Linux hosts.
+
+```json
+{
+  "type": "machine_learning",
+  "name": "Anomalous process execution on Linux",
+  "description": "Alerts when a machine learning job detects a rare process execution on a Linux host.",
+  "machine_learning_job_id": "v3_linux_anomalous_process_all_hosts",
+  "anomaly_threshold": 75,
+  "severity": "low",
+  "risk_score": 21,
+  "interval": "15m",
+  "from": "now-16m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `type` | `"machine_learning"` | Identifies this as a {{ml}} rule. No `query`, `language`, or `index` fields are used. |
+| `machine_learning_job_id` | `"v3_linux_anomalous_process_all_hosts"` | The ID of the {{anomaly-job}} to monitor. Accepts a single string or an array of strings for multiple jobs. If the job is not running, it starts automatically when the rule is enabled. |
+| `anomaly_threshold` | `75` | Minimum anomaly score (0-100) required to trigger an alert. A score of 75 surfaces only strong deviations. Lower values (25-50) cast a wider net; higher values (75-100) produce fewer, higher-confidence alerts. |
+| `interval` / `from` | `"15m"` / `"now-16m"` | {{ml-cap}} rules often use a longer interval than query-based rules because anomaly results are produced on the job's bucket-span schedule rather than in real time. |
+
+### Multiple {{ml}} jobs with alert suppression [ml-example-multi-job]
+
+This rule monitors several login-related {{ml}} jobs and suppresses repeated alerts by user.
+
+```json
+{
+  "type": "machine_learning",
+  "name": "Unusual login activity detected",
+  "description": "Alerts when any login-related ML job detects anomalous authentication behavior.",
+  "machine_learning_job_id": [
+    "auth_high_count_logon_events",
+    "auth_rare_source_ip_for_a_user",
+    "auth_high_count_logon_fails"
+  ],
+  "anomaly_threshold": 50,
+  "severity": "medium",
+  "risk_score": 47,
+  "alert_suppression": {
+    "group_by": ["user.name"],
+    "duration": { "value": 1, "unit": "h" },
+    "missing_fields_strategy": "suppress"
+  },
+  "interval": "15m",
+  "from": "now-16m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `machine_learning_job_id` | `["auth_high_count_logon_events", ...]` | An array of job IDs. The rule monitors all three jobs and fires when any one produces an anomaly exceeding the threshold. |
+| `alert_suppression.group_by` | `["user.name"]` | Groups anomaly alerts by user to reduce noise when the same user triggers multiple jobs or repeated anomalies. Only anomaly-result fields (including influencer fields configured in the {{ml}} job) are available for suppression. |
+| `alert_suppression.duration` | `{ "value": 1, "unit": "h" }` | Suppression window of 1 hour. Accepted units are `s` (seconds), `m` (minutes), and `h` (hours). |
+
 ## {{ml-cap}} field reference [ml-fields]
 
 The following settings are specific to {{ml}} rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).

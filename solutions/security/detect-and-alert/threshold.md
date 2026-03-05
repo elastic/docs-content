@@ -76,6 +76,71 @@ Keep this in mind when configuring severity overrides, risk score overrides, or 
 ::::
 END CRAFT LAYER -->
 
+## Annotated examples [threshold-examples]
+
+The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how threshold rules are defined. Each example is followed by a field-by-field breakdown.
+
+### Brute-force detection with group by [threshold-example-brute-force]
+
+This rule alerts when a single source IP generates 100 or more failed login attempts within a single rule execution window.
+
+```json
+{
+  "type": "threshold",
+  "language": "kuery",
+  "name": "Brute-force login attempts by source IP",
+  "description": "Alerts when a source IP produces 100 or more failed logins.",
+  "query": "event.category: \"authentication\" and event.outcome: \"failure\"",
+  "threshold": {
+    "field": ["source.ip"],
+    "value": 100
+  },
+  "index": ["filebeat-*", "logs-system.*", "winlogbeat-*"],
+  "severity": "high",
+  "risk_score": 73,
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `type` | `"threshold"` | Identifies this as a threshold rule. |
+| `query` | `event.category: "authentication" and event.outcome: "failure"` | A KQL filter that selects the events to count. Only failed authentication events are counted against the threshold. Uses `"kuery"` or `"lucene"`, the same query languages available in custom query rules. |
+| `threshold.field` | `["source.ip"]` | Groups events by source IP. Each unique IP is evaluated independently against the threshold. Accepts up to 5 fields, or an empty array `[]` to count all matching events together without grouping. |
+| `threshold.value` | `100` | The minimum event count required to generate an alert. Each source IP must produce at least 100 failed logins in a single rule execution window. Must be at least `1`. |
+
+### Port scan detection with cardinality constraint [threshold-example-cardinality]
+
+This rule alerts when a source IP connects to many unique destination ports, indicating potential port scanning. The cardinality constraint ensures alerts fire only for connections across multiple ports, filtering out repeated connections to the same port.
+
+```json
+{
+  "type": "threshold",
+  "language": "kuery",
+  "name": "Possible port scan detected",
+  "description": "Alerts when a source IP connects to 25 or more unique destination ports.",
+  "query": "event.category: \"network\" and event.type: \"connection\"",
+  "threshold": {
+    "field": ["source.ip"],
+    "value": 50,
+    "cardinality": [
+      { "field": "destination.port", "value": 25 }
+    ]
+  },
+  "index": ["packetbeat-*", "logs-endpoint.events.*"],
+  "severity": "medium",
+  "risk_score": 47,
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `threshold.cardinality` | `[{ "field": "destination.port", "value": 25 }]` | Adds a cardinality constraint. An alert fires only for source IPs that connect to at least 25 unique destination ports across 50 or more events. This filters out high-volume but benign repeated connections to the same port. |
+| `threshold.field` + `threshold.value` | `["source.ip"]` / `50` | Groups by source IP and requires at least 50 matching events. Both the event count and the cardinality constraint must be met for an alert to fire. |
+
 ## Threshold field reference [threshold-fields]
 
 The following settings are specific to threshold rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).

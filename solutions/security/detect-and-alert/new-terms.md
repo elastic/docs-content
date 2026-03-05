@@ -76,6 +76,64 @@ The **History Window Size** determines how far back the rule looks to decide whe
 ::::
 END CRAFT LAYER -->
 
+## Annotated examples [new-terms-examples]
+
+The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how new terms rules are defined. Each example is followed by a field-by-field breakdown.
+
+### Single-field detection: first-seen process [new-terms-example-single]
+
+This rule detects a process executable that has never appeared during the past 30 days.
+
+```json
+{
+  "type": "new_terms",
+  "language": "kuery",
+  "name": "First time seen process executable",
+  "description": "Detects a process executable that has not appeared in the last 30 days.",
+  "query": "event.category: \"process\" and event.type: \"start\"",
+  "new_terms_fields": ["process.executable"],
+  "history_window_start": "now-30d",
+  "index": ["logs-endpoint.events.*"],
+  "severity": "medium",
+  "risk_score": 47,
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `type` | `"new_terms"` | Identifies this as a new terms rule. |
+| `query` | `event.category: "process" and event.type: "start"` | A KQL filter applied before evaluating new terms. Only process-start events are checked for new values. Uses `"kuery"` or `"lucene"`, the same query languages available in custom query rules. |
+| `new_terms_fields` | `["process.executable"]` | The field to monitor for new values. An alert fires when a `process.executable` value appears that was never seen in the history window. Accepts 1-3 fields. |
+| `history_window_start` | `"now-30d"` | Looks back 30 days to build the baseline of known values. A term is considered new only if it does not appear anywhere in this window. Supports relative dates such as `now-7d` or `now-90d`. Avoid absolute dates because they cause the query range to grow over time. |
+
+### Multi-field detection: new user-host pair [new-terms-example-multi]
+
+This rule detects a user logging in to a host they have never accessed during the past 14 days.
+
+```json
+{
+  "type": "new_terms",
+  "language": "kuery",
+  "name": "First time user login to host",
+  "description": "Detects a user and host combination that has not appeared together in the last 14 days.",
+  "query": "event.category: \"authentication\" and event.outcome: \"success\"",
+  "new_terms_fields": ["user.name", "host.name"],
+  "history_window_start": "now-14d",
+  "index": ["filebeat-*", "logs-system.*", "winlogbeat-*"],
+  "severity": "medium",
+  "risk_score": 47,
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `new_terms_fields` | `["user.name", "host.name"]` | Monitors the combination of user and host. An alert fires when a `user.name` + `host.name` pair appears that has never been seen together in the history window, even if both values are individually known. Accepts up to 3 fields. |
+| `history_window_start` | `"now-14d"` | A 14-day window balances baseline coverage against resource usage. Shorter windows (1-7 days) may generate more false positives from infrequent but known combinations. |
+
 ## New terms field reference [new-terms-fields]
 
 The following settings are specific to new terms rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
