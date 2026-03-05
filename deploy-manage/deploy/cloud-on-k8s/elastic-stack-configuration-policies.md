@@ -58,7 +58,7 @@ spec:
     clusterSettings:
       indices.recovery.max_bytes_per_sec: "100mb"
 ```
-1. Because this policy is created in the operator namespace (`elastic-system`), it applies to all {{es}} clusters managed by the operator that are labeled `env=production`, across all namespaces.
+1. Because this policy is created in the operator namespace (`elastic-system`), it applies to all {{es}} clusters labeled `env=production` across all namespaces managed by the operator.
 
 For more advanced, feature-specific configurations, refer to [Examples](#examples).
 
