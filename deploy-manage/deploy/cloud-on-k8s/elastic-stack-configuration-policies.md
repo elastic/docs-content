@@ -28,7 +28,7 @@ We have identified an issue with {{es}} 8.15.1 and 8.15.2 that prevents security
 Component templates created in configuration policies cannot currently be referenced from index templates created through the {{es}} API or {{kib}} UI.
 ::::
 
-## How they work
+## How {{stack}} configuration policies work
 
 A policy can be applied to one or more {{es}} clusters or {{kib}} instances in any namespace managed by the ECK operator. Configuration policy settings applied by the ECK operator are immutable through the {{es}} REST API.
 
@@ -71,9 +71,9 @@ The following fields are optional. They control which {{es}} clusters and {{kib}
 * `resourceSelector`: A [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to identify the {{es}} clusters and {{kib}} instances to which the policy applies in combination with the namespace(s). If `resourceSelector` is not defined, the policy applies to all {{es}} clusters and {{kib}} instances in the namespace(s).
 
 
-## {{es}} available settings [es-settings]
+## {{es}} settings [es-settings]
 
-This section describes the different {{es}} settings that can be configured through {{stack}} configuration policies. The syntax of each setting depends on the associated feature and the underlying {{es}} API. For a detailed description with examples of the different syntax types and content expectation refer to [Syntax types](#syntax-types).
+This section describes the different {{es}} settings that can be configured through {{stack}} configuration policies. The syntax of each setting depends on the associated feature and the underlying {{es}} API. For a detailed description with examples of the different syntax types and their expected structure, refer to [Syntax types](#syntax-types).
 
 The following fields are available under `StackConfigPolicy.spec.elasticsearch`:
 
@@ -93,11 +93,11 @@ The following fields are available under `StackConfigPolicy.spec.elasticsearch`:
 
 ### Specifics for secret mounts [k8s-stack-config-policy-specifics-secret-mounts]
 
-The `secretMounts` field allows users to specify a user created secret and a mountPath to indicate where this secret should be mounted in the {{es}} Pods that are managed by the {{stack}} configuration policy. This can be used to add additional secrets to the {{es}} Pods that may be needed for example for sensitive files required to configure {{es}} security realms.
+The `secretMounts` field allows users to specify a user created secret and a `mountPath` to indicate where this secret should be mounted in the {{es}} Pods that are managed by the {{stack}} configuration policy. This can be used to add additional secrets to the {{es}} Pods that might be needed, for example for sensitive files required to configure [{{es}} authentication realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md).
 
 The referenced secret should be created by the user in the same namespace as the {{stack}} configuration policy. The operator reads this secret and copies it over to the namespace of {{es}} so that it can be mounted by the {{es}} Pods.
 
-Example of configuring secret mounts in the {{stack}} configuration policy:
+The following is an example of configuring secret mounts in the {{stack}} configuration policy:
 
 ```yaml
 secretMounts:
@@ -105,18 +105,18 @@ secretMounts:
     mountPath: "/usr/share/elasticsearch/config/jwks" <2>
 ```
 
-1. name of the secret created by the user in the {{stack}} configuration policy namespace.
-2. mount path where the secret must be mounted to inside the {{es}} Pod.
+1. The name of the secret created by the user in the {{stack}} configuration policy namespace.
+2. The mount path where the secret must be mounted to inside the {{es}} Pod.
 
 ### Specifics for snapshot repositories [k8s-stack-config-policy-specifics-snap-repo]
 
-In order to avoid a conflict between multiple {{es}} clusters writing their snapshots to the same location, ECK automatically:
+To avoid a conflict between multiple {{es}} clusters writing their snapshots to the same location, ECK automatically does the following:
 
-* sets the `base_path` to `snapshots/<namespace>-<esName>` when it is not provided, for Azure, GCS and S3 repositories
-* appends `<namespace>-<esName>` to `location` for a FS repository
-* appends `<namespace>-<esName>` to `path` for an HDFS repository
+* **Azure, GCS, and S3 repositories**: sets the `base_path` to `snapshots/<namespace>-<esName>` when it is not provided
+* **FS repositories**: appends `<namespace>-<esName>` to `location`
+* **HDFS repositories**: appends `<namespace>-<esName>` to `path`
 
-## {{kib}} available settings [kib-settings]
+## {{kib}} settings [kib-settings]
 
 The following settings can be configured for {{kib}} under `StackConfigPolicy.spec.elasticsearch`:
 
@@ -129,7 +129,7 @@ The following settings can be configured for {{kib}} under `StackConfigPolicy.sp
 
 ### Configuring authentication policies using {{stack}} configuration policy [k8s-stack-config-policy-configuring-authentication-policies]
 
-{{stack}} configuration policy can be used to configure authentication for {{es}} clusters. Check [Managing authentication for multiple stacks using {{stack}} configuration policy](../../users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md) for some examples of the various authentication configurations that can be used.
+An {{stack}} configuration policy can be used to configure authentication for {{es}} clusters. Refer to [](../../users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md) for some examples of the various authentication configurations that can be used.
 
 ### Configure a snapshot repository, an {{slm-init}} policy and cluster settings
 
@@ -307,7 +307,7 @@ spec:
     - secretName: kibana-shared-secret
 ```
 
-TBD: check why this is precisely here:
+% TBD: check why this is precisely here:
 Multiple `StackConfigPolicy` resources can target the same {{es}} cluster or {{kib}} instance, with `weight` determining which policy takes precedence. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for more information.
 
 ## Monitor {{stack}} configuration policies [k8s-stack-config-policy-monitoring]
@@ -434,9 +434,9 @@ Configuration policy fields use one of the following syntax types, depending on 
 Configuration definitions that correspond to {{es}} APIs (for example snapshot repositories, ingest pipelines, or index templates) use the same structure as the API request body, represented in YAML rather than JSON.
 ::::
 
-### Syntax Examples
+### Syntax examples
 
-**Settings map**: 
+**Settings map**
 
 ```yaml
 clusterSettings:
