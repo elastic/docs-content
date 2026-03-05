@@ -24,7 +24,7 @@ To extract a timestamp field using the date processor:
 1. Set the **Source Field** to the field containing the timestamp.
 1. Set the **Format** field to one of the accepted date formats (ISO8602, UNIX, UNIX_MS, or TAI64N) or use a Java time pattern. Refer to the [example formats](#streams-date-examples) for more information.
 
-This functionality uses the {{es}} [Date processor](elasticsearch://reference/enrich-processor/date-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Date processor](elasticsearch://reference/enrich-processor/date-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
 
 ## Example formats [streams-date-examples]
 
@@ -59,3 +59,27 @@ You can set the following optional fields for the date processor in the **Advanc
 | Timezone | The timezone to use when parsing the date. Supports template snippets. Defaults to `UTC`. |
 | Locale | The locale to use when parsing the date, relevant when parsing month names or weekdays. Supports template snippets. Defaults to `ENGLISH`. |
 | Output format | The format to use when writing the date to `target_field`. Must be a valid Java time pattern. Defaults to `yyyy-MM-dd'T'HH:mm:ss.SSSXXX`. |
+
+## YAML reference [streams-date-yaml-reference]
+
+In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the date processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `from` | string | Yes | Source field containing the date string. |
+| `formats` | string[] | Yes | Date formats to try, in order (for example, `ISO8601`, `UNIX`, or a Java time pattern). |
+| `to` | string | No | Target field for the parsed date. Defaults to `@timestamp`. |
+| `output_format` | string | No | Format for the output date string. Must be a valid Java time pattern. |
+| `timezone` | string | No | Timezone to use when parsing. Defaults to `UTC`. |
+| `locale` | string | No | Locale to use when parsing month names or weekdays. |
+
+```yaml
+- action: date
+  from: attributes.timestamp
+  formats:
+    - "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    - "yyyy-MM-dd HH:mm:ss"
+  to: attributes.parsed_time
+  output_format: "yyyy-MM-dd"
+  timezone: "America/New_York"
+```

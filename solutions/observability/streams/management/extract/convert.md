@@ -28,4 +28,26 @@ To convert a field to a different data type:
 If you add a **Convert** processor inside a condition group (a **WHERE** block), you must set a **Target field**.
 ::::
 
-This functionality uses the {{es}} [Convert processor](elasticsearch://reference/enrich-processor/convert-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Convert processor](elasticsearch://reference/enrich-processor/convert-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+
+## YAML reference [streams-convert-yaml-reference]
+
+In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the convert processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `from` | string | Yes | Source field containing the value to convert. |
+| `type` | string | Yes | Target data type: `integer`, `long`, `double`, `boolean`, or `string`. |
+| `to` | string | No | Target field for the converted value. Defaults to the source field. |
+| `ignore_missing` | boolean | No | When `true`, skip this processor if the source field is missing. |
+
+:::{note}
+When using `convert` inside a condition (`where` block), you must set a `to` field that is different from `from`.
+:::
+
+```yaml
+- action: convert
+  from: attributes.status_code
+  type: integer
+  to: attributes.status_code_int
+```
