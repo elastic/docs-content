@@ -15,7 +15,7 @@ Before creating detection rules, familiarize yourself with the foundational conc
 
 ## How detection rules work
 
-A detection rule consists of three parts:
+At a high level, a detection rule can be broken down into three parts:
 
 | Part | Purpose |
 |------|---------|
