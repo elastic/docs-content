@@ -105,7 +105,9 @@ To turn on wired streams:
 
 ## Ship data to streams [streams-wired-streams-ship]
 
-To send data to wired streams, configure your shippers to send data to the appropriate wired streams endpoint. To do this, complete the following configurations for your shipper:
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` You can send data to wired streams using the {{observability}} quickstart flows. When adding data from the **Add Data** page, select **Wired Streams** as the ingestion mode and the generated commands will include all necessary routing configuration. For more information, refer to [Get started with Elastic {{observability}}](/solutions/observability/get-started.md).
+
+To manually configure your shippers to send data to the appropriate wired streams endpoint, complete the following configurations for your shipper:
 
 :::::{tab-set}
 
