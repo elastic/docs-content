@@ -14,7 +14,7 @@ products:
 
 # Install and manage Elastic prebuilt rules [security-prebuilt-rules-management]
 
-Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](detection-rules://index.md), keep them updated, and make sure they have the data needed to run successfully.
+Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](detection-rules://index.md), keep them updated, and make sure they have the data needed to run successfully. You can also [browse the full prebuilt rule catalog](/solutions/security/detect-and-alert/prebuilt-rule-catalog.md) to see all available rules organized by MITRE ATT&CK tactic.
 
 * [Install and enable Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules)
 * [Prebuilt rule tags](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#prebuilt-rule-tags)

@@ -1,0 +1,127 @@
+name: Sync Detection Rules to CSV
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (skip PR creation)'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-rules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/scripts/sync-detection-rules/requirements.txt
+
+      - name: Sync detection rules
+        id: sync
+        run: |
+          OUTPUT=$(python .github/scripts/sync-detection-rules/sync_rules.py --verbose)
+          echo "$OUTPUT"
+
+          CSV_PATHS=""
+          ADD_PATHS=""
+          while IFS= read -r line; do
+            path="${line#OUTPUT_CSV_PATH=}"
+            echo "Found CSV: ${path}"
+            if [ -n "$CSV_PATHS" ]; then
+              CSV_PATHS="${CSV_PATHS}\n${path}"
+              ADD_PATHS="${ADD_PATHS}
+          ${path}"
+            else
+              CSV_PATHS="${path}"
+              ADD_PATHS="${path}"
+            fi
+          done < <(echo "$OUTPUT" | grep '^OUTPUT_CSV_PATH=')
+
+          echo "csv_paths<<EOF" >> "$GITHUB_OUTPUT"
+          echo -e "$CSV_PATHS" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+          echo "add_paths<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$ADD_PATHS" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Create Pull Request
+        if: github.event.inputs.dry_run != 'true'
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        with:
+          token: ${{ github.token }}
+          base: main
+          branch: automated/detection-rules-sync
+          delete-branch: true
+          title: "Update prebuilt detection rule catalog CSVs"
+          commit-message: |
+            Update prebuilt detection rule catalog CSVs
+
+            Generated: ${{ github.run_id }}
+            Workflow run: ${{ github.run_number }}
+          body: |
+            ## Summary
+
+            This PR updates the prebuilt detection rule catalog CSV files
+            with the latest rules from
+            [elastic/detection-rules](https://github.com/elastic/detection-rules).
+
+            ### Next Steps
+
+            - [ ] Review the CSV changes
+            - [ ] Verify rule counts look reasonable
+            - [ ] Merge when ready
+
+            ---
+
+            Automated update from [sync-detection-rules workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          add-paths: |
+            ${{ steps.sync.outputs.add_paths }}
+
+      - name: Upload CSV artifacts
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: detection-rule-csvs-${{ github.run_number }}
+          path: |
+            ${{ steps.sync.outputs.add_paths }}
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Generate job summary
+        if: always()
+        env:
+          CSV_PATHS: ${{ steps.sync.outputs.csv_paths }}
+        run: |
+          echo "## Detection Rules Sync Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Dry Run:** ${{ github.event.inputs.dry_run }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo -e "$CSV_PATHS" | while IFS= read -r csv_path; do
+            [ -z "$csv_path" ] && continue
+            if [ -f "$csv_path" ]; then
+              row_count=$(($(wc -l < "$csv_path") - 1))
+              echo "- **${csv_path}**: ${row_count} rules" >> $GITHUB_STEP_SUMMARY
+            fi
+          done

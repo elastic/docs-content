@@ -578,6 +578,7 @@ toc:
               - file: security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md
           - file: security/detect-and-alert/install-manage-elastic-prebuilt-rules.md
             children:
+              - file: security/detect-and-alert/prebuilt-rule-catalog.md
               - file: security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md
               - file: security/detect-and-alert/prebuilt-rules-airgapped.md
           - file: security/detect-and-alert/manage-detection-rules.md
