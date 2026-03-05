@@ -13,7 +13,11 @@ navigation_title: "Cross-project search"
 This page is in progress. See [issue](https://github.com/elastic/docs-content-internal/issues/30) 
 ::::
 
-With {{cps}} ({{cps-init}}), users in your organization can search across multiple {{serverless-full}} projects at once, instead of searching each project individually. This page explains how to configure and manage {{cps}} for your users, including linking projects, managing user access, and configuring search scope.
+With {{cps}} ({{cps-init}}), users in your organization can search across multiple {{serverless-full}} projects at once, instead of searching each project individually.
+
+This page explains how to configure and manage {{cps}} for your users, including linking projects, managing user access, and configuring search scope.
+
+### {{cps-cap}} concepts
 
 {{cps-cap}} runs across _origin_ and _linked_ projects within your {{ecloud}} organization:
 
@@ -153,8 +157,8 @@ The following actions change the search scope:
   - [Setting the default {{cps}} scope for a space](#cps-default-search-scope)
   - Adjusting user permissions based on roles or API keys
 - **User actions:**
-  - [Using qualified search expressions](/explore-analyze/cross-project-search.md#search-expressions)
-  - [Using project routing](/explore-analyze/cross-project-search.md#project-routing)
+  - [Using qualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)
+  - [Using project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)
 
 The search scope controls which projects receive the search request, while filtering controls which results are returned by the search.
 
@@ -182,7 +186,7 @@ The default {{cps}} scope is a space setting, not an access control. Even after 
 % The {{cps}} scope is a setting, not a security control. It determines the default search scope, but it does not restrict access to data in linked projects.
 % ::::
 
-Users can also set the search scope on a per-query basis as needed, using [qualified search expressions](/explore-analyze/cross-project-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search.md#project-routing).
+Users can also set the search scope on a per-query basis as needed, using [qualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
 ## Plan your architecture
 
