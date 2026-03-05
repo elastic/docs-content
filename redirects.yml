@@ -783,3 +783,6 @@ redirects:
   'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
   'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
   'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/agentless/cloud-connector-deployment.md'
+  
+# Related to https://github.com/elastic/docs-content/pull/5222
+  'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'
