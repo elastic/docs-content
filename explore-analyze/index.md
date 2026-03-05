@@ -3,7 +3,6 @@ navigation_title: Explore and analyze
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-explore-your-data.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html#visualize-and-analyze
-  - https://www.elastic.co/guide/en/kibana/current/get-started.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html
 applies_to:
   stack: ga
@@ -107,7 +106,13 @@ You can set up alerts to monitor your data continuously. Alerts notify you when 
 
 ## Bringing it all together
 
-Elasticsearch's features integrate seamlessly, offering an end-to-end solution for exploring, analyzing, and acting on data. If you want to explore any of the listed features in greater depth, refer to their respective documentation pages and check the provided hands-on examples and tutorials.
+Elasticsearch's features integrate seamlessly, offering an end-to-end solution for exploring, analyzing, and acting on data.
+
+:::{tip}
+New to {{kib}}? **[Learn data exploration and visualization](learn-kibana-data-exploration.md)** walks you through {{kib}}'s core analyst features — Discover, Lens, and Dashboards — using your own system logs and {{esql}}.
+:::
+
+If you want to explore any of the listed features in greater depth, refer to their respective documentation pages and check the provided hands-on examples and tutorials.
 
 If you'd like to explore some features but don't have data ready yet, some sample data sets are available in {{kib}} for you to install and play with.
 
