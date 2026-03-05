@@ -27,6 +27,94 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.4.0 [elastic-security-9.4.0-release-notes]
+
+% ::::{NOTE}
+% ::::
+
+
+### Features and enhancements [elastic-security-9.4.0-features-enhancements]
+* Adds info-level log messages for key rule execution events to the **Execution events** tab, improving rule execution monitoring for end users [#253992]({{kib-pull}}253992).
+* Adds an **Add to chat** button to rule details, rule editing, and alert flyout pages, allowing you to attach detection rules to AI Agent for exploration-style analysis [#253043]({{kib-pull}}253043).
+* Adds the ability to duplicate packs and saved queries in Osquery [#252517]({{kib-pull}}252517).
+* Adds a workflow action to the alerts table, allowing you to run workflows directly from alert entries [#252405]({{kib-pull}}252405).
+* Adds an Entity Analytics skill to AI Agent for answering risk score questions [#252400]({{kib-pull}}252400).
+* Adds support for migrating Splunk v2 (JSON format) dashboards in Automatic Migration [#251199]({{kib-pull}}251199), [#253970]({{kib-pull}}253970).
+* Filters cloud connectors by account type and provider in the existing connection selector [#250107]({{kib-pull}}250107).
+* Adds an advanced setting that allows you to filter detection rule searches by `data_stream.namespace` [#247733]({{kib-pull}}247733).
+* Adds AI-assisted detection rule creation [#247674]({{kib-pull}}247674).
+* Removes the Technical Preview label from the public Attack Discovery and Attack Discovery Schedules API documentation [#246788]({{kib-pull}}246788).
+* Adds granular rule exception permissions as a subfeature of the **Rules, Alerts, and Exceptions** feature privilege [#245722]({{kib-pull}}245722).
+* Adds an option to view entity relationships from entity node popovers in the graph visualization [#252803]({{kib-pull}}252803).
+* Allows user and host details flyouts to open while observed data is loading [#252657]({{kib-pull}}252657).
+* Introduces shared, policy-driven anonymization infrastructure for {{kib}} AI features [#252616]({{kib-pull}}252616).
+* Adds a new **Overview** tab to the rule details page [#251662]({{kib-pull}}251662).
+* Updates the `fast-xml-parser` package dependency to version 5.3.4 [#251644]({{kib-pull}}251644).
+* Adds API support for fetching entity relationships from the entity store [#251178]({{kib-pull}}251178).
+* Excludes QRadar building-block rules from Automatic Migration eligibility and improves the XML upload experience [#250558]({{kib-pull}}250558).
+* Improves Attack Discovery hallucination detection by automatically rejecting discoveries that reference non-existent alert IDs [#247965]({{kib-pull}}247965).
+* Prepares the privileged user monitoring entity source CRUD APIs for general availability [#246978]({{kib-pull}}246978).
+* Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
+* Adds a `region` field to the Amazon Bedrock connector [#252960]({{kib-pull}}252960), [#252956]({{kib-pull}}252956).
+* Improves Automatic Migration performance by reducing the number of {{es}} calls when updating field mappings [#252431]({{kib-pull}}252431).
+* Adds support for data view timestamp overrides in Timeline [#251827]({{kib-pull}}251827).
+* Removes the unused `serializer` and `deserializer` parameters from the lists plugin API [#250111]({{kib-pull}}250111).
+
+
+### Fixes [elastic-security-9.4.0-fixes]
+* Fixes an issue where the visual event analyzer preview could fetch data before the data view was ready [#255400]({{kib-pull}}255400).
+* Fixes an issue where the visual event analyzer could use cached query results from a different set of indices [#255396]({{kib-pull}}255396).
+* Fixes an issue where {{esql}} rule source document retrieval didn't exclude cold and frozen data tiers [#255341]({{kib-pull}}255341).
+* Fixes an issue where the visual event analyzer didn't display when the new data view picker feature flag was disabled [#255182]({{kib-pull}}255182).
+* Enables the `defaultModel` configuration for the Azure OpenAI connector to support Azure API Management (APIM) endpoints [#253577]({{kib-pull}}253577).
+* Fixes an issue where the legacy `rules/prepackaged` API endpoints returned 500 errors on Basic licenses when {{ml}} rules were present [#253574]({{kib-pull}}253574).
+* Standardizes and persists the rows-per-page preference across Osquery tabs [#253499]({{kib-pull}}253499).
+* Improves the performance of bulk rule deletion [#253116]({{kib-pull}}253116).
+* Fixes layout responsiveness on the rule details **Overview** tab [#252890]({{kib-pull}}252890).
+* Fixes an Automatic Migration issue where failed rules appeared in non-failed status filters [#252263]({{kib-pull}}252263).
+* Fixes an issue where expanding or collapsing a section in the alert details flyout incorrectly reset the state of other sections [#251999]({{kib-pull}}251999).
+* Fixes accessibility issues in the Security AI Assistant confirm delete modal [#251962]({{kib-pull}}251962).
+* Replaces a deprecated icon in the UI [#251930]({{kib-pull}}251930).
+* Adds optional field indicators to the OpenAI connector configuration [#251857]({{kib-pull}}251857).
+* Fixes an accessibility issue with a missing label in the Security AI Assistant flyout [#251656]({{kib-pull}}251656).
+* Fixes the `spaceId` handling in Agent Builder security tools [#251513]({{kib-pull}}251513).
+* Fixes an issue where detection rules APIs didn't properly validate endpoint response actions [#251352]({{kib-pull}}251352).
+* Fixes an issue where Comprehensive File Timeline template filters combined with OR instead of AND [#251242]({{kib-pull}}251242).
+* Fixes an issue in the Security AI Assistant where the **Add connector** button was incorrectly enabled for users with read-only connector privileges [#250921]({{kib-pull}}250921).
+* Fixes an issue in privileged user monitoring where updating an index failed due to an invalid API payload [#250758]({{kib-pull}}250758).
+* Fixes the ARIA announcement for the **Add exception list** dialog to provide proper context for screen readers [#250624]({{kib-pull}}250624).
+* Fixes an issue where the privileged user monitoring table didn't refresh alert data when the time range changed [#250618]({{kib-pull}}250618).
+* Fixes an issue where opening a new tab from Timeline incorrectly carried over the Timeline open state as a URL parameter [#250469]({{kib-pull}}250469).
+* Fixes an issue where the `os_types` field was not saved when creating an exception list [#250279]({{kib-pull}}250279).
+* Fixes an issue where backslash characters were removed when typed in exception field values [#250117]({{kib-pull}}250117).
+* Fixes an issue where Attack Discovery schedules and conversations failed due to outdated Elastic Managed LLM connector IDs [#249891]({{kib-pull}}249891).
+* Fixes an issue where the deletion confirmation toast for shared exception lists showed the list ID instead of the list name [#249778]({{kib-pull}}249778).
+* Fixes an issue where deleting notes from the Timelines table didn't immediately update the UI [#249777]({{kib-pull}}249777).
+* Removes the Technical Preview badge from the privileged access detection package in privileged user monitoring [#249500]({{kib-pull}}249500).
+* Fixes an issue where uploading a CSV file for privileged user monitoring displayed an incorrect user count and incorrectly removed the privileged status of some users [#249032]({{kib-pull}}249032).
+* Fixes an incorrect pagination count in the {{elastic-sec}} **Notes** tab that showed "1-0 of 0" when no notes existed [#248481]({{kib-pull}}248481).
+* Hides tabs for generic (unidentified) attack groups in Attack Discovery and displays only the alerts table [#248444]({{kib-pull}}248444).
+* Fixes an issue where Attack Discovery incorrectly classified anonymization configuration errors as system errors [#248439]({{kib-pull}}248439).
+* Improves the stability of the **Add Elastic rules** page by adding pagination to the installation review [#248259]({{kib-pull}}248259).
+* Disables the **Show rule summary** button in the alert details flyout when the user lacks rule read privileges [#248221]({{kib-pull}}248221).
+* Fixes the notes filtering logic to correctly show notes attached to alerts, events, and Timelines [#248110]({{kib-pull}}248110).
+* Fixes an issue where the Security AI Assistant chat completion API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
+* Updates the icon that is shown when alert suppression is not available because of insufficient license [#247964]({{kib-pull}}247964).
+* Fixes an issue where entity user and host names were not escaped in URLs, which resulted in invalid URLs [#247707]({{kib-pull}}247707).
+* Fixes missing tooltip information for status tags on the **Gap fill scheduler logs** flyout [#247695]({{kib-pull}}247695).
+* Fixes an issue where the rule settings pop-up remained open after clicking **Save** when enabling or disabling auto gap fill [#247678]({{kib-pull}}247678).
+* Disables the **Delete selected notes** button for users with read-only Notes permissions and improves the error message [#247617]({{kib-pull}}247617).
+* Fixes the Automatic Migration **Get started** page visibility for users with read-only rule privileges [#247355]({{kib-pull}}247355).
+* Fixes an issue where the `createdBy` field in the notes filter didn't use exact matching [#247351]({{kib-pull}}247351).
+* Fixes an issue where special characters in {{esql}} queries for risk scoring were not handled correctly [#247060]({{kib-pull}}247060).
+* Changes the placement of **Migrations** and **Inventory** items in the {{elastic-sec}} navigation menu [#247002]({{kib-pull}}247002).
+* Fixes an issue where the **Entity summary** section in the entity details flyout showed incorrect vulnerabilities data [#246889]({{kib-pull}}246889).
+* Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
+* Updates Active Directory matchers to use SID-based privileged groups for privileged user monitoring [#246763]({{kib-pull}}246763).
+* Truncates long text in the **Value** column in the value list modal [#246679]({{kib-pull}}246679).
+* Fixes an issue where the visual event analyzer rendered before the data view was ready [#245712]({{kib-pull}}245712).
+* Fixes an issue where the **Threat intelligence** section in the alert details flyout didn't display multiple values [#245449]({{kib-pull}}245449).
+
 ## 9.3.1 [elastic-security-9.3.1-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.1-features-enhancements]
