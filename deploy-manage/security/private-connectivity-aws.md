@@ -33,7 +33,7 @@ To learn how private connection policies impact your deployment or project, refe
 
 ## Requirements
 
-Serverless projects require the Serverless Plus add-on to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus. 
+Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus. 
 
 :::{tip}
 You can opt out by disconnecting all policies from the project.
@@ -345,7 +345,7 @@ Create a new private connection policy.
 9.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. If you specified a VPC filter, then after you associate the filter with a resource, it starts filtering traffic.
     
     :::{note}
-    Serverless projects require the Serverless Plus add-on to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
+    Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
     :::
 10. To automatically attach this private connection policy to new resources of this type, select **Apply by default**.
 11.  Click **Create**.
@@ -357,7 +357,7 @@ The next step is to [associate the policy](#associate-private-connection-policy)
 
 You can associate a private connection policy with your deployment or project from the policy's settings, or from your deployment's or project's settings. 
 
-Serverless projects require the Serverless Plus add-on to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
+Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
 
 #### From a deployment or project
 

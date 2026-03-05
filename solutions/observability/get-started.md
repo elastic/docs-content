@@ -52,7 +52,10 @@ Elastic {{observability}} can collect telemetry data from hosts, containers, and
 2. Select one of these options:
     * **OpenTelemetry: Full {{observability}}**: Collect native OpenTelemetry metrics and logs.
     * **{{product.elastic-agent}}: Logs & Metrics**: Bring data from Elastic integrations.
-3. Follow the instructions for your platform.
+3. {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Select an ingestion mode:
+    * **Classic ingestion**: Ingest Data through standard Elastic data streams.
+    * **Wired Streams**: Route logs through [wired streams](/solutions/observability/streams/wired-streams.md), a managed log hierarchy with centralized data retention and routing. Logs are sent to root log streams, while metrics and traces continue through standard data streams. If you haven't enabled wired streams, you'll be prompted to do so.
+4. Follow the instructions for your platform.
 
 For an overview of the {{product.edot-collector}}, refer to [{{edot}} (EDOT)](opentelemetry://reference/index.md).
 
@@ -66,7 +69,10 @@ Elastic {{observability}} can collect telemetry data from {{k8s}} through the El
 2. Select one of these options:
     * **OpenTelemetry: Full {{observability}}**: Collect native OpenTelemetry metrics and logs.
     * **{{product.elastic-agent}}: Logs & Metrics**: Bring data from Elastic {{integrations}}.
-3. Follow the instructions for your platform.
+3. {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Select an ingestion mode:
+    * **Classic ingestion**: Ingest data through standard Elastic data streams.
+    * **Wired Streams**: Route logs through [wired streams](/solutions/observability/streams/wired-streams.md), a managed log hierarchy with centralized data retention and routing. Logs are sent to root log streams, while metrics and traces continue through standard data streams. If you haven't enabled wired streams, you'll be prompted to do so.
+4. Follow the instructions for your platform.
 
 For an overview of EDOT, refer to [{{edot}} (EDOT)](opentelemetry://reference/index.md).
 

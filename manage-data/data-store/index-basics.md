@@ -19,6 +19,11 @@ This page explains the core parts of an index (_documents_, _metadata fields_, a
 A closely related concept is a [data stream](/manage-data/data-store/data-streams.md), which is optimized for append-only timestamped data and backed by hidden, auto-generated indices.
 :::::
 
+:::{note}
+:applies_to: {"serverless": "ga"}
+In {{serverless-full}}, each project supports up to 15,000 indices. This limit helps ensure reliable performance and stability. If you need a higher limit, you can [request an increase](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#index-and-resource-limits). For index sizing recommendations, refer to [index sizing guidelines](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size).
+:::
+
 ## Index components
 
 Understanding these components helps you design indices that are easier to query, scale, and manage.
