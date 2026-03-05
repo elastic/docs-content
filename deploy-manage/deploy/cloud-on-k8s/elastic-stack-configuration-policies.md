@@ -68,7 +68,7 @@ Each `StackConfigPolicy` must define the following fields under `spec`:
 
 * `name`: A unique name used to identify the policy.
 
-* At least one of `elasticsearch` or `kibana`, each defining at least one attribute.
+* At least one of `elasticsearch` or `kibana`, each defining at least one configuration field.
 
   ::::{note}
   `spec.elasticsearch` and `spec.kibana` contain the configuration applied to the targeted resources. Each section can include one or more supported configuration fields.
@@ -91,7 +91,7 @@ The following fields are optional. They control which {{es}} clusters and {{kib}
 
 ## {{es}} settings [es-settings]
 
-This section describes the {{es}} settings that can be configured through {{stack}} configuration policies. The syntax used for each field depends on the associated feature and the underlying {{es}} API. For an overview of the different syntax types, refer to [Syntax types](#syntax-types).
+This section describes the {{es}} settings that can be configured through {{stack}} configuration policies. The syntax used for each field depends on the type of configuration being defined. For configurations backed by an {{es}} API, the structure follows the format of the corresponding API request. For an overview of the different syntax types, refer to [Syntax types](#syntax-types).
 
 The following fields are available under `StackConfigPolicy.spec.elasticsearch`:
 
@@ -104,7 +104,7 @@ The following fields are available under `StackConfigPolicy.spec.elasticsearch`:
 | `snapshotRepositories` | Configure [snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md) for backup and restore.<br><br>[Specifics for snapshot repositories](#k8s-stack-config-policy-specifics-snap-repo) | [Named resources map](#syntax-types)<br><br>[Create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository) |
 | `snapshotLifecyclePolicies` | Configure [snapshot lifecycle policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) to automatically take snapshots and control how long they are retained. | [Named resources map](#syntax-types)<br><br>[SLM API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle) |
 | `ingestPipelines` | Configure [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to perform common transformations on your data before indexing. | [Named resources map](#syntax-types)<br><br>[Ingest pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) |
-| `indexLifecyclePolicies` | Configure [{{ilm}} policies](/manage-data/lifecycle/index-lifecycle-management.md), to automatically manage the index lifecycle.  | [Named resources map](#syntax-types)<br><br>[ILM API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) |
+| `indexLifecyclePolicies` | Configure [{{ilm}} policies](/manage-data/lifecycle/index-lifecycle-management.md) to automatically manage the index lifecycle.  | [Named resources map](#syntax-types)<br><br>[ILM API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) |
 | `indexTemplates.composableIndexTemplates` | Configure [index templates](/manage-data/data-store/templates.md#index-templates) to define settings, mappings, and aliases that can be applied automatically to new indices.<br><br>[Specifics for index and component templates](#templates-specifics) | [Named resources map](#syntax-types)<br><br>[Index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) |
 | `indexTemplates.componentTemplates` | Configure [component templates](/manage-data/data-store/templates.md#component-templates), reusable building-blocks to define settings, mappings, and aliases for new indices.<br><br>[Specifics for index and component templates](#templates-specifics) | [Named resources map](#syntax-types)<br><br>[Component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) |
 | `securityRoleMappings` | Configure [role mappings](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) to associate roles to users based on rules. | [Named resources map](#syntax-types)<br><br>[Role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) |
@@ -466,7 +466,7 @@ Configuration policy fields use one of the following syntax types, depending on 
 | Syntax type | Description |
 |---|---|
 | **Settings map** | A map where keys correspond directly to {{es}} or {{kib}} configuration setting names. The structure matches the settings accepted by the corresponding API or configuration file, expressed in YAML instead of JSON.<br><br>Used in `config` and `clusterSettings` fields. |
-| **Named resources map** | A map where each key is a user-defined logical name and the value contains the resource definition. The resource definition structure matches the payload accepted by the corresponding {{es}} API, expressed in YAML instead of JSON.<br><br>Used in fields such as `snapshotRepositories`, `snapshotLifecyclePolicies`, `ingestPipelines`, `indexLifecyclePolicies`, `indexTemplates`, and `securityRoleMappings`. |
+| **Named resources map** | A map where each key is a user-defined logical name and the value contains the resource definition. The key represents the resource identifier used in the corresponding {{es}} API request, and the value contains the request payload, expressed in YAML instead of JSON.<br><br>Used in fields such as `snapshotRepositories`, `snapshotLifecyclePolicies`, `ingestPipelines`, `indexLifecyclePolicies`, `indexTemplates`, and `securityRoleMappings`. |
 | **List of resources** | A list of objects where each item defines a resource entry. Each object follows the schema expected by the corresponding configuration mechanism.<br><br>Used in `secureSettings` and `secretMounts` fields.
 
 ### Syntax examples
