@@ -214,7 +214,7 @@ toc:
       - file: deployments/cloud-enterprise/verify-zookeeper-sync-status.md
       - file: deployments/cloud-enterprise/rebuilding-broken-zookeeper-quorum.md
       - file: deployments/cloud-enterprise/deployment-health-warnings.md
-      - file: deployments/cloud-enterprise/node-bootlooping.md
+      - file: monitoring/node-bootlooping.md
       - file: deployments/cloud-enterprise/run-ece-diagnostics-tool.md
       - file: deployments/cloud-enterprise/heap-dumps.md
       - file: deployments/cloud-enterprise/thread-dumps.md
@@ -224,3 +224,4 @@ toc:
       - file: deployments/cloud-on-k8s/troubleshooting-methods.md
       - file: deployments/cloud-on-k8s/run-eck-diagnostics.md
       - file: deployments/cloud-on-k8s/jvm-heap-dumps.md
+      - file: monitoring/node-bootlooping.md
