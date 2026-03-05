@@ -22,7 +22,7 @@ These tasks are typically completed once when you first configure detection capa
 
 ## Revisit as your environment changes
 
-You might need to revisit the following items over time as you onboard new data sources, add users, or expand your detection coverage:
+You might need to revisit the following as you onboard new data sources, add users, or expand your detection coverage:
 
 - [User roles and privileges](/solutions/security/detect-and-alert/detections-privileges.md): As your team grows or responsibilities shift, review and update role assignments to ensure analysts have the access they need.
 - [Advanced data source configuration](/solutions/security/detect-and-alert/advanced-data-source-configuration.md): Revisit {{ccs}} setup, data tier exclusions, and index mode settings when you add new clusters, change data retention policies, or onboard data sources that use different index configurations.
