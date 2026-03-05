@@ -91,7 +91,7 @@ The following fields are optional. They control which {{es}} clusters and {{kib}
 
 ## {{es}} settings [es-settings]
 
-This section describes the different {{es}} settings that can be configured through {{stack}} configuration policies. The syntax of each setting depends on the associated feature and the underlying {{es}} API, when applicable.
+This section describes the {{es}} settings that can be configured through {{stack}} configuration policies. The syntax used for each field depends on the associated feature and the underlying {{es}} API. For an overview of the different syntax types, refer to [Syntax types](#syntax-types).
 
 The following fields are available under `StackConfigPolicy.spec.elasticsearch`:
 
