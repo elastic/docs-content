@@ -74,8 +74,8 @@ Each `StackConfigPolicy` must define the following fields under `spec`:
   `spec.elasticsearch` and `spec.kibana` contain the configuration applied to the targeted resources. Each section can include one or more supported configuration fields.
 
   For the list of supported settings and their corresponding policy fields, refer to:
-  - [Elasticsearch features supported by {{stack}} configuration policies](#es-settings)
-  - [Kibana features supported by {{stack}} configuration policies](#kib-settings)
+  - [Elasticsearch settings supported by {{stack}} configuration policies](#es-settings)
+  - [Kibana settings supported by {{stack}} configuration policies](#kib-settings)
   ::::
 
 ### Optional fields
