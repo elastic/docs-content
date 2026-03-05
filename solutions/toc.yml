@@ -605,7 +605,8 @@ toc:
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
-          - file: security/detect-and-alert/fill-rule-gaps.md
+            children:
+              - file: security/detect-and-alert/fill-rule-gaps.md
           - file: security/detect-and-alert/reduce-noise-and-false-positives.md
             children:
               - file: security/detect-and-alert/tune-detection-rules.md
