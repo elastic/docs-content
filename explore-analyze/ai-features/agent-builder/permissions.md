@@ -145,16 +145,16 @@ Refer to these pages for API key configuration examples:
 
 Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
-### Working with Spaces
+### Working with spaces
 
-{{agent-builder}} respects {{kib}} Spaces when enabled. All conversations, custom agents, and custom tools are scoped to the current Space.
+{{agent-builder}} respects {{kib}} spaces when enabled. Conversations, custom agents, and custom tools are scoped to the current space. Built-in agents are space-agnostic and are available in all spaces.
 
-When configuring roles or API keys, specify the Space in the application privileges resources (e.g., `"resources": ["space:production"]`). Users and API keys cannot access resources in other Spaces.
+When configuring roles or API keys, specify the space in the application privileges resources (for example, `"resources": ["space:production"]`). Users and API keys cannot access resources in other spaces.
 
 Learn how to [Copy your MCP server URL](tools.md#copy-your-mcp-server-url).
 
 :::{important}
-When accessing {{agent-builder}} APIs or the MCP server from a custom Space, include the space name in the URL path: `https://<deployment>/s/<space-name>/api/agent_builder/...`
+When accessing {{agent-builder}} APIs or the MCP server from a custom space, include the space name in the URL path: `https://<deployment>/s/<space-name>/api/agent_builder/...`
 
 The default space uses the standard URL format without `/s/<space-name>`.
 :::

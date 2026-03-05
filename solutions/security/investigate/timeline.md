@@ -170,7 +170,7 @@ When you convert a [Timeline template](/solutions/security/investigate/timeline-
 
 To attach a Timeline to a new or existing case, open it, click **Attach to case** in the upper right corner, then select either **Attach to new case** or **Attach to existing case**.
 
-To learn more about cases, refer to [Cases](/solutions/security/investigate/cases.md).
+To learn more about cases, refer to [Cases](/solutions/security/investigate/security-cases.md).
 
 
 ## Manage existing Timelines [manage-timelines-ui]
