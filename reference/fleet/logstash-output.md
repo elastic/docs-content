@@ -78,7 +78,7 @@ output {
 
 1. Do not modify the events' schema.
 2. The {{es}} server and the port (`9200`) where {{es}} is running.
-3. The `document_id` might be shipped by some specific integrations running on {{agent}}
+3. If the integration running on {{agent}} is sending `_id`, `logstash-output-elasticsearch` plugin sets it to the document ID
 4. The API Key used by {{ls}} to ship data to the destination data streams.
 
 For more information about configuring {{ls}}, refer to [Configuring {{ls}}](logstash://reference/creating-logstash-pipeline.md) and [{{agent}} input plugin](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md).
