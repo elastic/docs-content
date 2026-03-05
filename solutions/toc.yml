@@ -381,6 +381,7 @@ toc:
             children:
               - file: observability/cloud/monitor-microsoft-azure-with-elastic-agent.md
               - file: observability/cloud/monitor-microsoft-azure-with-beats.md
+              - file: observability/cloud/multi-tenant-data-ingestion-with-beats.md
               - file: observability/cloud/monitor-microsoft-azure-with-azure-native-isv-service.md
               - file: observability/cloud/monitor-microsoft-azure-openai.md
           - file: observability/cloud/monitor-google-cloud-platform-gcp.md
@@ -510,6 +511,7 @@ toc:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
               - file: observability/incident-management/create-an-slo.md
               - file: observability/incident-management/slo-management.md
+              - file: observability/incident-management/configure-slo-settings.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/ai/observability-ai.md
         children:
@@ -577,6 +579,7 @@ toc:
           - file: security/detect-and-alert/install-manage-elastic-prebuilt-rules.md
             children:
               - file: security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md
+              - file: security/detect-and-alert/prebuilt-rules-airgapped.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
           - file: security/detect-and-alert/rule-exceptions.md
