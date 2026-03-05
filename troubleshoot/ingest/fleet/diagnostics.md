@@ -25,7 +25,7 @@ For [{{fleet}}-managed {{agent}}](/reference/fleet/install-fleet-managed-elastic
 
 To pull data from the respective applicable locations, refer to:
 
-* [Capture {{kib}} diagnostics](/troubleshoot/kibana/capturing-diagnostics.md) {applies_to}`stack: ga` 
+* [Capture {{kib}} diagnostics](/troubleshoot/kibana/capturing-diagnostics.md)
 * [Collect {{agent}} diagnostics](#agent-diagnostics-collect)
   * [Using the CLI](#agent-diagnostics-cli)
   * [Using the {{fleet}} UI](#agent-diagnostics-ui)
