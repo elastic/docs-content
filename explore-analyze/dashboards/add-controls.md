@@ -22,7 +22,7 @@ products:
 :   Live in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
 
 **Universally chained** control
-:   A change in one control will impact all other controls on the dashboard, regardless of their positioning in the grid, including pinned controls. The only exception to this is controls within a collapsible section. These controls will only chain with other controls in their section.
+:   A change in one control will impact all other controls on the dashboard, regardless of their positioning in the grid, including pinned controls. The only exception to this is controls within a collapsible section. These controls will only chain with other controls in their section. This is the default behaviour of controls. If you want to change this behaviour, turn off the **Use global filters** setting.
 
 ## Requirements [add-controls-requirements]
 
@@ -55,23 +55,12 @@ There are three types of controls:
 
 To add interactive Options list and Range slider controls, create the controls, then add them to your dashboard.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`
-You can add a control in two ways: 
-
-- Add the control to the sticky header. The control is pinned and applies to the whole dashboard.
-  
-  In **Edit** mode, select **Add** > **Controls** > **Control**. 
-
-- Add the control as a panel that you can place anywhere.
-  
-  In **Edit** mode, select **Add new panel** > **Controls**  If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to top** or **Unpin**.
-
 1. Open or create a new dashboard.
 2. Add a control.
        
     {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
-    - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. 
-    - Add as free panel: Select **Add panel** > **Controls**, then place the control on the dashboard.
+    - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. The control is pinned and applies to the whole dashboard.
+    - Add as free panel: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to top** or **Unpin**.
     
     {applies_to}`serverless:` {applies_to}`stack: ga 9.2-9.3` 
     
