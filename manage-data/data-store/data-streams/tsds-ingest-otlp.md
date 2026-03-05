@@ -1,9 +1,10 @@
 ---
 navigation_title: "OTLP/HTTP endpoint"
 applies_to:
-  stack: preview 9.2
   deployment:
     self: preview 9.2
+    ece: preview 9.2
+    eck: preview 9.2
 products:
   - id: elasticsearch
 ---
