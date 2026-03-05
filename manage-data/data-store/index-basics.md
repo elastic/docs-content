@@ -78,7 +78,7 @@ When working with indices, you typically make decisions that focus on:
 * **Mapping strategy**: Use dynamic mapping for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping.md) for production use cases where field control and query behavior matter.
 * **Index or data stream**: Use a regular index when you need frequent updates or deletes. Use a [data stream](/manage-data/data-store/data-streams.md) for append-only timestamped data such as logs, events, and metrics.
 
-## Next steps
+## Learn more
 
 After learning index fundamentals, choose the management path that fits your workflow:
 
