@@ -791,3 +791,6 @@ redirects:
   'solutions/security/explore/users-page.md': 'solutions/security/advanced-entity-analytics/users-page.md'
   'solutions/security/explore/configure-network-map-data.md': 'solutions/security/advanced-entity-analytics/configure-network-map-data.md'
   'solutions/security/explore/configure-dns-histogram.md': 'solutions/security/advanced-entity-analytics/configure-dns-histogram.md'
+  
+# Related to https://github.com/elastic/docs-content/pull/5222
+  'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'
