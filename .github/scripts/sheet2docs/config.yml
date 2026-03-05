@@ -1,6 +1,16 @@
 # Google Sheets to CSV Configuration
 #
-# This file defines which Google Sheet to sync and how to transform the data
+# This file defines which Google Sheet to sync and how to transform the data.
+#
+# Two formats are supported:
+#
+# 1. Legacy (single output) - uses top-level 'columns' and 'output' keys.
+#    This is the current format used below.
+#
+# 2. Multi-output - uses top-level 'outputs' key with a list of output
+#    entries. Each entry can have its own columns, filter, sort, filename,
+#    and directory. An optional 'defaults' key provides shared values.
+#    See the commented-out example at the bottom of this file.
 
 # Google Sheet source
 source:
@@ -21,28 +31,89 @@ source:
 
 # Column configuration
 # Define which columns to include in the CSV and optionally rename them
-columns:
-  - source: "Author"
-  - source: "Name"
-  - source: "ID"
-  - source: "Model Card"
-  - source: "Provider Terms"
-  - source: "Input Modalities"
-  - source: "Output Modalities"
-  - source: "EOL Date"
-  - source: "Data Retention Period (Days)"
-  - source: "Data Used To Train Models?"
-  - source: "Inference Regions"
-  - source: "Release Status"
-  - source: "Stack Version"
+# columns:
+#  - source: "Author"
+#  - source: "Name"
+#  - source: "ID"
+#  - source: "Model Card"
+#  - source: "Provider Terms"
+#  - source: "Input Modalities"
+#  - source: "Output Modalities"
+#  - source: "EOL Date"
+#  - source: "Data Retention Period (Days)"
+#  - source: "Data Used To Train Models?"
+#  - source: "Inference Regions"
+#  - source: "Release Status"
+#  - source: "Stack Version"
 
 # Output configuration
-output:
+#output:
   # Output CSV filename
-  filename: "models.csv"
+#  filename: "models.csv"
 
   # Output directory (relative to repo root)
-  directory: "explore-analyze/elastic-inference"
+#  directory: "explore-analyze/elastic-inference"
 
   # CSV delimiter (default: comma)
-  delimiter: ","
+#  delimiter: ","
+
+
+# ---------------------------------------------------------------------------
+# Multi-output format example (commented out)
+# ---------------------------------------------------------------------------
+# To switch to multi-output mode, remove the 'columns' and 'output' keys
+# above and uncomment the 'defaults' and 'outputs' sections below.
+#
+defaults:
+#   # Shared settings inherited by all outputs (can be overridden per output)
+ directory: "explore-analyze/elastic-inference"
+ delimiter: ","
+ columns:
+     - source: "Author"
+     - source: "Name"
+     - source: "ID"
+     - source: "Model Card"
+     - source: "Provider Terms"
+     - source: "Input Modalities"
+     - source: "Output Modalities"
+     - source: "EOL Date"
+     - source: "Data Retention Period (Days)"
+     - source: "Data Used To Train Models?"
+     - source: "Inference Regions"
+     - source: "Release Status"
+     - source: "Stack Version"
+#
+outputs:
+   # Each entry generates one CSV file.
+#
+   - filename: "chat-models.csv"
+#     # Inherits columns, directory, delimiter from defaults
+     filter:
+       column: "Type"
+       values: ["LLM Chat"]
+     sort:
+       by: "Name"
+       direction: "ascending"
+#
+   - filename: "embedding-models.csv"
+#     # Group multiple Type values into one output
+     filter:
+       column: "Type"
+       values: ["Embedding - Sparse", "Embedding - Dense"]
+     sort:
+       by: "Name"
+       direction: "ascending"
+#
+   - filename: "reranker-models.csv"
+     filter:
+       column: "Type"
+       values: ["Reranker"]
+     sort:
+       by: "Name"
+       direction: "ascending"
+#
+#   - filename: "all-models.csv"
+#     # No filter: includes all rows
+#     sort:
+#       by: "Name"
+#       direction: "ascending"

@@ -190,7 +190,7 @@ Create a new private connection policy.
     :::{tip}
     Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
-11. Under **Connectivity**, select **Privatelink**.
+11. Under **Connectivity**, select **PrivateLink**.
 12. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
     
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
@@ -292,7 +292,7 @@ You can also edit network security policies from your deployment's **Security** 
 
 ### Remove a private connection policy from your deployment [remove-private-connection-policy]
 
-If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
+If you want to remove a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
 #### From your deployment
 
