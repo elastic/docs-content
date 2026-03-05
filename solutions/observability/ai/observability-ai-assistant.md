@@ -58,7 +58,7 @@ The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assist
 
 - Manage which AI connectors are available in your environment.
 - Enable or disable AI Assistant and other AI-powered features in your environment.
-- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for {{observability}} and Search` and the `AI Assistant for Security` appear.
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
 
 ## Your data and the AI Assistant [data-information]
 
