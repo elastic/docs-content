@@ -515,7 +515,9 @@ When writing your query, consider the following:
 * When configuring alert suppression on a non-aggregating query, we recommend sorting results by ascending `@timestamp` order. Doing so ensures that alerts are properly suppressed, especially if the number of alerts generated is higher than the **Max alerts per run** value. 
 
     ::::{note}
-    If your query uses the [`MV_EXPAND`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-mv_expand) command, add a tiebreaker field such as `_index` to your `SORT` command (for example, `SORT @timestamp ASC, _index ASC`). `MV_EXPAND` can produce multiple rows with identical timestamps, and without a tiebreaker, the sort order of those rows is undefined, which can lead to inconsistent alert suppression results.
+    {{esql}} query results are primarily sorted by timestamp. However, when two or more rows share the same timestamp, another field is needed to determine their order. A tiebreaker field provides this secondary sort criteria and ensures that rows are sorted in ascending, lexicographic order.
+
+    For instance, if your query uses the [`MV_EXPAND`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-mv_expand) command (for example, `SORT @timestamp ASC, _index ASC`), multiple rows with identical timestamps will be produced. Without a tiebreaker field, the sort order of those rows is undefined, which can lead to inconsistent alert suppression results.
     ::::
 
 
