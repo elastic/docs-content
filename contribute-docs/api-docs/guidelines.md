@@ -619,20 +619,20 @@ Default values only work on optional properties and appear in parameter document
 
 Linting your API docs helps ensure consistency, correctness, and adherence to best practices. It catches common issues like missing descriptions, inconsistent naming, and formatting errors.
 
-::::{tab-set}
+:::::{tab-set}
 :group: implementations
 ::::{tab-item} Elasticsearch
 :sync: elasticsearch
 
-The [Elasticsearch API specification](https://github.com/elastic/elasticsearch-specification/tree/main/docs/linters) uses the following linters with custom rules:
+Run this command to lint your OpenAPI files:
 
-- **Spectral**: Configuration in `.spectral.yaml`
-- **Redocly**: Configuration in `redocly.yaml`
+```bash
+make lint-docs
+```
 
-Refer to [the Elasticsearch quickstart](elasticsearch-api-docs-quickstart.md) to learn how to run the linter locally.
+Refer to [the Elasticsearch quickstart](elasticsearch-api-docs-quickstart.md) to learn more about the linting workflow.
 
 ::::
-
 ::::{tab-item} Kibana
 :sync: kibana
 
@@ -644,7 +644,7 @@ node ../scripts/validate_oas_docs.js
 
 You can limit the scope of APIs that the linter checks by using `--path` or `--only` options. For details and examples, add `--help`.
 
-Refer to [the Kibana quickstart](kibana-api-docs-quickstart.md) to learn more about the linting workflow.
+Refer to [the Kibana quickstart](kibana-api-docs-quickstart.md) to learn more about the workflow.
 
 ::::
-::::
+:::::
