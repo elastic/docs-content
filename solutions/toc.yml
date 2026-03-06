@@ -569,7 +569,7 @@ toc:
         children:
           - file: security/detect-and-alert/before-you-begin.md
             children:
-              - file: security/detect-and-alert/requirements-privileges.md
+              - file: security/detect-and-alert/turn-on-detections.md
               - file: security/detect-and-alert/detections-privileges.md
               - file: security/detect-and-alert/detection-rule-concepts.md
               - file: security/detect-and-alert/advanced-data-source-configuration.md

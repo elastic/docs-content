@@ -51,7 +51,7 @@ This section explains the general process for setting up cross-cluster search in
 
         ::::{important}
         * This step ensures that the privileges to read remote indices are applied from the user to the rule itself. When a user creates a new rule or saves edits to an existing rule, their current privileges are saved to the rule’s API key. If that user’s privileges change in the future, the rule’s API key will not update until you manually update it. Refer to [Update a rule’s API key](#update-api-key) for details.
-        * This user must also have the [appropriate privileges](requirements-privileges.md) to manage and preview rules.
+        * This user must also have the [appropriate privileges](turn-on-detections.md) to manage and preview rules.
 
         ::::
 

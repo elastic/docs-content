@@ -15,7 +15,7 @@ description: Step-by-step guide to create detection rules using the Kibana rule 
 
 # Create a detection rule using the UI [security-rules-create]
 
-Once the Detections feature is [turned on](/solutions/security/detect-and-alert/requirements-privileges.md), follow these steps to create a detection rule:
+Once the Detections feature is [turned on](/solutions/security/detect-and-alert/turn-on-detections.md), follow these steps to create a detection rule:
 
 ::::{tip}
 At any step, you can preview the rule before saving it to see what kind of results you can expect.
@@ -38,7 +38,7 @@ If you prefer to create rules programmatically instead of using the UI, refer to
 To create detection rules, you must have:
 
 * At least `Read` access to {{data-source}}s, which requires the `Data View {{manage-app}}` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
-* The required privileges to preview rules, manage rules, and manage alerts. Refer to [](/solutions/security/detect-and-alert/requirements-privileges.md) for more details.
+* The required privileges to preview rules, manage rules, and manage alerts. Refer to [](/solutions/security/detect-and-alert/turn-on-detections.md) for more details.
 
 ::::{note}
 Additional configuration is required for detection rules using {{ccs}}. Refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/advanced-data-source-configuration.md).
