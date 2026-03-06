@@ -50,7 +50,7 @@ This takes you to the chat GUI:
 
 ### Start a chat and select an agent
 
-Use the text input area to chat with an agent in real time. By default, you chat with the built-in Elastic AI Agent.
+Use the text input area to chat with an agent in real time. Check the agent selector to see which agent is active. To switch agents, refer to [Select a different agent](#select-a-different-agent).
 
 :::{image} images/agent-builder-chat-input.png
 :screenshot:
