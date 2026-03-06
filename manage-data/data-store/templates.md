@@ -99,7 +99,9 @@ The following features can be useful when you're setting up index templates:
 * `$.logs`
 * `$.logs.*`
 * `logs.otel`
+* `logs.otel.*`
 * `logs.ecs`
+* `logs.ecs.*`
 
 [{{agent}}](/reference/fleet/index.md) uses these templates to create data streams. Index templates created by {{fleet}} integrations use similar overlapping index patterns and have a priority up to `200`.
 
