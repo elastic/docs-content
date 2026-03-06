@@ -1,6 +1,7 @@
 project: 'Explore and analyze'
 toc:
   - file: index.md
+  - file: learn-kibana-data-exploration.md
   - file: query-filter.md
     children:
       - file: query-filter/languages.md
