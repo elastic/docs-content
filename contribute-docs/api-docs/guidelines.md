@@ -1,10 +1,18 @@
+---
+navigation_title: Core guidelines
+description: "Write clear API summaries and descriptions, document parameters and enums, add examples, and link to related content."
+applies_to:
+  stack:
+  serverless:
+---
+
 # Add core content
 
 This page covers the core guidelines for excellent API docs. Learn how to write clear summaries and descriptions, create helpful examples, and add useful links.
 
 ## Write summaries and descriptions
 
-Most objects in your Open API specification accept both concise summaries and detailed descriptions to help users understand their purpose and usage.
+Most objects in your OpenAPI specification accept both concise summaries and detailed descriptions to help users understand their purpose and usage.
 
 ### Write summaries
 
@@ -12,9 +20,9 @@ Clear, single-sentence summaries help users understand the components of your AP
 
 Here are some principles for writing effective summaries:
 
-- **Be concise:** Keep summaries short (between 5-45 characters) because they appear in different contexts where space is limited
+- **Be concise:** Keep API operation summaries short (between 5-45 characters) because they appear in different contexts where space is limited
 - **Start with a verb:** Use action words like "Get", "Update", "Delete", "Create"
-- **Use simple verbs:** Use simple verbs (Get, Update, Delete) rather than verbose alternatives (Retrieve, Return, List)
+- **Use basic verbs:** Use basic verbs (Get, Update, Delete) rather than verbose alternatives (Retrieve, Return, List)
 - **Include articles:** "Delete a space", "Delete spaces", "Delete all spaces"
 - **Use sentence case:** Capitalize only the first word and proper nouns
 
@@ -77,10 +85,10 @@ Here are some principles for effective descriptions:
 - **Reference related operations:** [Link](#add-links) to complementary APIs or prerequisite steps
 - **Provide usage guidance:** How should users typically use this parameter or operation?
 - **Document constraints:** What are the valid values, formats, or limitations?
-- **Explain data relationships:** For list parameters, clarify how multiple values are handled (comma-separated, arrays, etc.)
-- **Document special formats:** Include expected formats for timestamps (ISO-8601), patterns for wildcards, etc.
+- **Explain data relationships:** For list parameters, clarify how multiple values are handled (comma-separated, arrays, and so on)
+- **Document special formats:** Include expected formats for timestamps (ISO-8601) and patterns for wildcards
 - **Ensure comprehensive coverage:** Ensure all parameters, tags, and information sections include clear descriptions
-- **Use inclusive language:** Avoid problematic terminology (blacklist, whitelist, execute, kill, etc.) and use inclusive language throughout
+- **Use inclusive language:** Avoid problematic terminology (such as blacklist, whitelist, execute, kill) and use inclusive language throughout
 
 #### Description examples
 
@@ -364,7 +372,7 @@ Here are some principles for effective examples:
 
 #### Generated examples
 
-If you don't provide examples, Bump.sh automatically generates them from your API schema. Because it's hard to randomly generate meaningful examples, this has been disabled for Elasticsearch APIs.
+If you don't provide examples, Bump.sh automatically generates them from your API schema. Because it's hard to randomly generate meaningful examples, this has been turned off for Elasticsearch APIs.
 
 It's preferable to include curated examples in your OpenAPI document with a realistic combination of property values. You can provide more than one example object in the examples field, so consider adding examples that reflect the most common use cases.
 
@@ -611,17 +619,32 @@ Default values only work on optional properties and appear in parameter document
 
 Linting your API docs helps ensure consistency, correctness, and adherence to best practices. It catches common issues like missing descriptions, inconsistent naming, and formatting errors.
 
-::::{tab-set}
+:::::{tab-set}
 :group: implementations
 ::::{tab-item} Elasticsearch
 :sync: elasticsearch
 
-The [Elasticsearch API specification](https://github.com/elastic/elasticsearch-specification/tree/main/docs/linters) uses the following linters with custom rules:
+Run this command to lint your OpenAPI files:
 
-- **Spectral**: Configuration in `.spectral.yaml`
-- **Redocly**: Configuration in `redocly.yaml`
+```bash
+make lint-docs
+```
 
-Refer to [the quickstarts](quickstart.md) to learn how to run the linter locally.
+Refer to [the Elasticsearch quickstart](elasticsearch-api-docs-quickstart.md) to learn more about the linting workflow.
 
 ::::
+::::{tab-item} Kibana
+:sync: kibana
+
+Run this command from the `oas_docs` directory to lint your OpenAPI files:
+
+```bash
+node ../scripts/validate_oas_docs.js
+```
+
+You can limit the scope of APIs that the linter checks by using `--path` or `--only` options. For details and examples, add `--help`.
+
+Refer to [the Kibana quickstart](kibana-api-docs-quickstart.md) to learn more about the workflow.
+
 ::::
+:::::
