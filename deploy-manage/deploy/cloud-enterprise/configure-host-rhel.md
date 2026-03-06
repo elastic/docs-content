@@ -321,12 +321,25 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
+    # See https://www.elastic.co/docs/deploy-manage/deploy/self-managed/system-config-tcpretries
     net.ipv4.tcp_retries2=5
+    net.netfilter.nf_conntrack_tcp_timeout_established=7200
+    net.netfilter.nf_conntrack_max=262140
     # Make sure the host doesn't swap too early
     vm.swappiness=1
     EOF
     ```
+
+    :::{note}
+    There are network settings, such as `net.ipv4.tcp_keepalive_time` and `net.ipv4.tcp_keepalive_intvl`, are overriden by {{es}} on a per-connection basis. Review [{{es}} networking settings](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/networking-settings) for more guidance. 
+    
+    Furthermore, you can reduce the default TCP keepalive parameters to ensure proactive detection of stale network sessions and prevent silent connection drops by cloud infrastructure firewalls, thereby maintaining the availability and responsiveness of the proxy layer.
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
+
+
 
 27. Apply the new sysctl settings
 
