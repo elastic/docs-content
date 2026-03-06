@@ -70,46 +70,70 @@ To add interactive Options list and Range slider controls, create the controls, 
     
     In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
-3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the **Control**.
+3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the Control.
 4. In the **Field** list, select the field you want to filter on.
 5. Under **Control type**, select whether the control should be an **Options list** or a **Range slider**.
    ::::{tip}
    Range sliders are for Number type fields only.
    ::::
 
-6. Define how you want the control to appear:
+6. Define how you want the control to appear.
 
+   For **Options lists**:
+
+   ::::{applies-switch}
+   :::{applies-item} stack: ga 9.4
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
-    * **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
-    * **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
+    - **Selections**:
+      Select multiple values to filter with the control, or only one.
+    - **Additional settings**:
 
-    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
-    For pinned controls, the settings **Minimum width** and **Expand width to fit available space** are available by clicking the     Settings {icon}`gear` on the control.
+      - **Use global filters**: 
+      - **Validate user selections**: Highlight control selections that result in no data.
+      - **Ignore timeout for results**: Wait to display results until the list is complete.
 
+   :::
+   :::{applies-item} stack: ga 9.0-9.3+
+    - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
+    - **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
+    - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
 
-7. Specify the additional settings:
+    - **Selections**:
+      Select multiple values to filter with the control, or only one.
 
-    * For Options lists:
+    - **Additional settings**:
 
-        * Define whether users can select multiple values to filter with the control, or only one.
-        * For Options list controls on *string* and *IP address* type fields, you can define how the control’s embedded search should behave:
+      - **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
 
-            * **Prefix**: Show options that *start with* the entered value.
-            * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
-            * **Exact**: Show options that are an *exact* match with the entered value.
+      For Options list controls on *string* and *IP address* type fields, you can define how the control’s embedded search should behave:
 
-              ::::{tip}
-              The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
-              ::::
+      * **Prefix**: Show options that *start with* the entered value.
+      * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
+      * **Exact**: Show options that are an *exact* match with the entered value.
 
-        * **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
+      The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
+    :::
 
+    ::::
+
+    For **Range sliders**:
+
+    ::::{applies-switch}
+
+    :::{applies-item} stack: ga 9.4
+    Content for Serverless
+    :::
+
+    :::{applies-item} stack: ga 9.0-9.3+
     * For Range sliders, set the step size. The step size determines the slider's number of steps. The smaller a slider's step size, the more steps it has.
+    :::
+    ::::
 
 8. Select **Save**. The control can now be used.
 9. Consider control order when you have several controls.
 
-   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Controls are chained by default: each control narrows the options available in subsequent controls based on position. 
+   {applies_to}`stack: ga 9.4` Controls are chained by default: each control narrows the options available in subsequent controls based on position. 
+
    {applies_to}`stack: ga 9.0-9.3` Controls are applied from left to right; when the [Chain controls](#configure-controls-settings) setting is enabled, their position changes the options available in the next control.
 
 10. Save the dashboard.
