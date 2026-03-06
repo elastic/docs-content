@@ -702,6 +702,9 @@ redirects:
   'solutions/observability/observability-ai-assistant.md': 'solutions/observability/ai/observability-ai-assistant.md'
   'solutions/observability/llm-performance-matrix.md': 'solutions/observability/ai/llm-performance-matrix.md'
 
+# Related to https://github.com/elastic/docs-content/pull/5244
+  'manage-data/migrate.md': 'manage-data/migrate-data.md'
+
 # Related to cases and alerting documentation restructuring
   # Main pages
   'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'

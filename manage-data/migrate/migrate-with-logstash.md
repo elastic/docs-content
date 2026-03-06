@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate Elastic Cloud Hosted data to Serverless with Logstash
+navigation_title: Migrate data using Logstash
 applies_to:
   serverless:
   deployment:
@@ -10,7 +10,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Migrate {{ech}} data to {{serverless-full}} with {{ls}} [migrate-with-ls]
+# Migrate {{es}} data using {{ls}} [migrate-with-ls]
 
 [{{ls}}](logstash://reference/index.md) is a data collection engine that uses a large ecosystem of [plugins](logstash-docs-md://lsr/index.md) to collect, process, and forward data from a variety of sources to a variety of destinations. Here we focus on using the [Elasticsearch input](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md) plugin to read from your {{ech}} deployment, and the [Elasticsearch output](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md) plugin to write to your {{{serverless-full}} project.
 
@@ -30,7 +30,7 @@ The Elasticsearch input plugin offers [additional configuration options](#additi
 - API keys in {{ls}} format for authentication with both deployments
 
 :::{important} 
-Kibana assets much be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
+Kibana assets much be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually. Refer to [Migration options](/manage-data/migrate-data.md#migration-options) for details about migrating different types of {{es}} data.
 Templates, data stream definitions, and ILM policies, must be in place _before_ you start data migration. 
 
 Visual components, such dashboard and visualizations, can be migrated after you have migrated the data.
