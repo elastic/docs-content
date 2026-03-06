@@ -84,21 +84,3 @@ To enable detections in multiple spaces, visit the **Rules** page in each space.
 ::::::
 
 :::::::
-
-## Start detecting threats
-
-With detections enabled, you're ready to create rules and start responding to threats. Do the following:
-
-- **Add detection rules**
-   - [Install Elastic prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md): Get started quickly with hundreds of rules that detect common threats
-   - [Create custom rules](/solutions/security/detect-and-alert/using-the-rule-builder.md): Write rules tailored to your environment
-   - [Configure {{anomaly-detect}} rules](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md): Use {{ml}} to detect unusual behavior
-
-- **Respond to and manage alerts**
-   - [Manage detection alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): Triage, investigate, and resolve alerts
-   - [Set up alert notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications): Send alerts to external systems like Slack, email, or ticketing tools
-   - [Tune rules to reduce noise](/solutions/security/detect-and-alert/tune-detection-rules.md): Add exceptions and adjust rules to minimize false positives
-
-::::{tip}
-For a complete walkthrough, check out [Quickstart: Detect and respond to threats with SIEM](/solutions/security/get-started/get-started-detect-with-siem.md).
-::::
