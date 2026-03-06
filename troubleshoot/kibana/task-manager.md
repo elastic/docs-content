@@ -10,58 +10,59 @@ products:
 
 # Troubleshoot {{kib}} Task Manager [task-manager-troubleshooting]
 
-
-Task Manager is used by a wide range of services in {{kib}}, such as [Alerting](../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md), Actions, Reporting, and Telemetry. Unexpected behavior in these services might be a downstream issue originating in Task Manager.
-
-This page describes how to resolve common problems you might encounter with Task Manager. If your problem isn’t described here, review open issues in the following GitHub repositories:
-
-* [{{kib}}](https://github.com/elastic/kibana/issues) ([Task Manager issues](https://github.com/elastic/kibana/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature%3ATask+Manager%22))
-
-Have a question? Contact us in the [discuss forum](https://discuss.elastic.co/).
-
-
-### Tasks with small schedule intervals run late [task-manager-health-scheduled-tasks-small-schedule-interval-run-late]
-
-**Problem**:
-
-Tasks are scheduled to run every 2 seconds, but seem to be running late.
-
-**Solution**:
-
-Task Manager polls for tasks at the cadence specified by the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which is 3 seconds by default. This means that a task could run late if it uses a schedule that is smaller than this setting.
-
-You can adjust the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.  However, this will add additional load to both {{kib}} and {{es}} instances in the cluster, as they will perform more queries.
-
-
-### Tasks run late [task-manager-health-tasks-run-late]
-
-**Problem**:
-
-The most common symptom of an underlying problem in Task Manager is that tasks appear to run late. For instance, recurring tasks might run at an inconsistent cadence, or long after their scheduled time.
-
-**Solution**:
-
-By default, {{kib}} polls for tasks at a rate of 10 tasks every 3 seconds.
-
-If many tasks are scheduled to run at the same time, pending tasks will queue in {{es}}. Each {{kib}} instance then polls for pending tasks at a rate of up to 10 tasks at a time, at 3 second intervals. It is possible for pending tasks in the queue to exceed this capacity and run late as a result.
-
-This type of delay is known as *drift*.The root cause for drift depends on the specific usage, and there are no hard and fast rules for addressing drift.
-
-For example:
-
-* If drift is caused by **an excess of concurrent tasks** relative to the available capacity of {{kib}} instances in the cluster, expand the throughput of the cluster.
-* If drift is caused by **long running tasks** that overrun their scheduled cadence,  reconfigure the tasks in question.
-
-Refer to [Diagnose a root cause for drift](#task-manager-diagnosing-root-cause) for step-by-step instructions on identifying the correct resolution.
-
-*Drift* is often addressed by adjusting the scaling the deployment to better suit your usage. For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage//production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
-
-## Diagnose a root cause for drift [task-manager-diagnosing-root-cause]
-
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
+{{kib}} instances do not form a cluster. Instead, a {{kib}} instance manages its state by syncing it down to {{es}} under the [`kibana` feature state](/deploy-manage/tools/snapshot-and-restore.md#feature-state). This is why {{kib}} [will become unavailable](/troubleshoot/kibana/error-server-not-ready.md) if {{es}} or {{kib}}-specific underlying indices are unavailable. Part of this synced state includes {{kib}}'s [Task Manager](/deploy-manage/distributed-architecture/kibana-tasks-management.md).
+
+The Task Manager is used by a wide range of services in {{kib}}, such as [Alerting](/deploy-manage/production-guidance/kibana-alerting-production-considerations.md), Actions, [Reporting](/explore-analyze/report-and-share.md), and Telemetry. Unexpected behavior in these services might be an upstream issue originating in Task Manager which can be checked from the [{{kib}} server status](/troubleshoot/kibana/access.md).
+
+
+This page describes how to troubleshoot the Task Manager health and resolve common problems you might encounter. If your problem isn’t described here, review open issues in the [elastic/{{kib}}](https://github.com/elastic/kibana/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature%3ATask+Manager%22) GitHub repository or share a [{{kib}} diagnostic](/troubleshoot/kibana/capturing-diagnostics.md) when you [contact us](/troubleshoot/index.md#contact-us).
+
+## Triage Task Manager health [task-manager-health-check]
+
+The following steps demonstrate a typical investigation flow. It assumes the [Task Manager Health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health) is saved locally as `task_manager_health.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor. It does not require that the `taskManager` plugin flagged as unhealthy under the [{{kib}} server status](/troubleshoot/kibana/access.md).
+
+1. Check the overall status.
+
+  ```shell
+  cat kibana_task_manager_health.json | jq -rc '{ overall: .status }'
+  ```
+
+2. Check the sub-sections' statuses.
+
+  ```shell
+  cat kibana_task_manager_health.json | jq -r '{ capacity:. stats.capacity_estimation.status, config: .stats.configuration.status, runtime: .stats.runtime.status, workload: .stats.workload.status }'
+  ```
+
+  Possible health statuses are `OK`, `Warning` or `Error`.
+
+3. It is possible for sub-sections to report healthy but the Task Manager to still report high `load` or `drift`.
+
+  ```shell
+  cat kibana_task_manager_health.json | jq '.stats.runtime.value|{drift, load}'
+  ```
+
+For most performance issues, these subsections will report obvious health issues using their status. You can confirm the subsection status’s roll-up from its own child data: 
+
+| Section | Description |
+| --- | --- |
+| [Configuration](#task-manager-health-evaluate-the-configuration) | This section summarizes the current configuration of Task Manager.  This includes dynamic configurations that change over time, such as `poll_interval` and `max_workers`, which can adjust in reaction to changing load on the system. |
+| [Workload](#task-manager-health-evaluate-the-workload) | This section summarizes the work load across the cluster, including the tasks in the system, their types, and current status. |
+| [Runtime](#task-manager-health-evaluate-the-runtime) | This section tracks execution performance of Task Manager, tracking task *drift*, worker *load*, and execution stats broken down by type, including duration and execution results. |
+| [Capacity Estimation](#task-manager-health-evaluate-the-capacity-estimation) | This section provides a rough estimate about the sufficiency of its capacity. As the name suggests, these are estimates based on historical data and should not be used as predictions. Use these estimations when following the Task Manager [Scaling guidance](/deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance). |
+
+
+::::{important}
+Some tasks (such as [connectors](/deploy-manage/manage-connectors.md)) will incorrectly report their status as successful even if the task failed. The runtime and workload block will return data about success and failures and will not take this into consideration.
+
+To get a better sense of action failures, refer to the [Event log index](/explore-analyze/alerts-cases/alerts/event-log-index.md) for more accurate context into failures and successes.
+::::
+
+
+## Diagnose a root cause for drift [task-manager-diagnosing-root-cause]
 
 The following guide helps you identify a root cause for *drift* by making sense of the output from the [Health monitoring](../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md) endpoint.
 
@@ -918,21 +919,43 @@ You can infer from these estimates that the capacity in the current system is in
 
 For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
+## Diagnose a root cause for late runs [task-manager-health-run-late]
 
-### Inline scripts are disabled in {{es}} [task-manager-cannot-operate-when-inline-scripts-are-disabled]
+### Tasks with small schedule intervals run late [task-manager-health-scheduled-tasks-small-schedule-interval-run-late]
 
 **Problem**:
 
-Tasks are not running, and the server logs contain the following error message:
-
-```txt
-[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in Elasticsearch
-```
+Tasks are scheduled to run every 2 seconds, but seem to be running late.
 
 **Solution**:
 
-Inline scripts are a hard requirement for Task Manager to function. To enable inline scripting, see the Elasticsearch documentation for [configuring allowed script types setting](../../explore-analyze/scripting/modules-scripting-security.md#allowed-script-types-setting).
+Task Manager polls for tasks at the cadence specified by the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which is 3 seconds by default. This means that a task could run late if it uses a schedule that is smaller than this setting.
 
+You can adjust the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.  However, this will add additional load to both {{kib}} and {{es}} instances in the cluster, as they will perform more queries.
+
+
+### Tasks run late [task-manager-health-tasks-run-late]
+
+**Problem**:
+
+The most common symptom of an underlying problem in Task Manager is that tasks appear to run late. For instance, recurring tasks might run at an inconsistent cadence, or long after their scheduled time.
+
+**Solution**:
+
+By default, {{kib}} polls for tasks at a rate of 10 tasks every 3 seconds.
+
+If many tasks are scheduled to run at the same time, pending tasks will queue in {{es}}. Each {{kib}} instance then polls for pending tasks at a rate of up to 10 tasks at a time, at 3 second intervals. It is possible for pending tasks in the queue to exceed this capacity and run late as a result.
+
+This type of delay is known as *drift*.The root cause for drift depends on the specific usage, and there are no hard and fast rules for addressing drift.
+
+For example:
+
+* If drift is caused by **an excess of concurrent tasks** relative to the available capacity of {{kib}} instances in the cluster, expand the throughput of the cluster.
+* If drift is caused by **long running tasks** that overrun their scheduled cadence,  reconfigure the tasks in question.
+
+Refer to [Diagnose a root cause for drift](#task-manager-diagnosing-root-cause) for step-by-step instructions on identifying the correct resolution.
+
+*Drift* is often addressed by adjusting the scaling the deployment to better suit your usage. For details on scaling Task Manager, refer to [Scaling guidance](../../deploy-manage//production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 ### What do I do if the Task’s `runAt` is in the past? [task-runat-is-in-the-past]
 
@@ -949,6 +972,24 @@ server log [12:41:33.672] [info][plugins][taskManager][taskManager] TaskManager 
 ```
 
 If you see that message and no other errors that relate to Task Manager, it’s most likely that Task Manager is running fine and has simply not had the chance to pick the task up yet. If, on the other hand, the runAt is severely overdue, then it’s worth looking for other Task Manager or alerting-related errors, as something else may have gone wrong. It’s worth looking at the status field, as it might have failed, which would explain why it hasn’t been picked up or it might be running which means the task might simply be a very long running one.
+
+
+## Frequently asked questions [task-manager-health-faq]
+
+### Inline scripts are disabled in {{es}} [task-manager-cannot-operate-when-inline-scripts-are-disabled]
+
+**Problem**:
+
+Tasks are not running, and the server logs contain the following error message:
+
+```txt
+[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in Elasticsearch
+```
+
+**Solution**:
+
+Inline scripts are a hard requirement for Task Manager to function. To enable inline scripting, see the Elasticsearch documentation for [configuring allowed script types setting](../../explore-analyze/scripting/modules-scripting-security.md#allowed-script-types-setting).
+
 
 
 ### What do I do if the Task is marked as failed? [task-marked-failed]
