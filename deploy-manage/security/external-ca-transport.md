@@ -12,12 +12,12 @@ navigation_title: External CA for TLS
 
 By default, {{es}} uses _mutual_ transport layer security (mutual TLS or mTLS) to secure node-to-node transport connections. Mutual TLS means that data is encrypted in transit, ensuring confidentiality and integrity, and also that both nodes in a connection must present a valid certificate to the other node when establishing the connection. Each node requires that certificates be issued by a trusted certificate authority (CA), ensuring that only authorized nodes can connect. Configure trusted certificate authorities using settings in the [`xpack.security.transport.ssl.*`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) namespace, such as `xpack.security.transport.ssl.certificate_authorities` and `xpack.security.transport.ssl.truststore.path`.
 
-{{es}} comes with a built-in tool called [`elasticsearch-certutil`](/deploy-manage/security/set-up-basic-security.md), which you can use to create and manage a dedicated certificate authority for each of your clusters, and to issue TLS certificates from this certificate authority. If you prefer not to use `elasticsearch-certutil`, then you must obtain the certificates from another certificate authority using standard TLS tools. Any certificate authority that is not managed using `elasticsearch-certutil` is referred to as an "external certificate authority" or "external CA".
+{{es}} comes with a built-in tool called [`elasticsearch-certutil`](/deploy-manage/security/set-up-basic-security.md), which you can use to create and manage a dedicated certificate authority for each of your clusters, and to issue TLS certificates from this certificate authority. If you prefer not to use `elasticsearch-certutil`, then you must obtain the certificates from another certificate authority using standard TLS tools. Any certificate authority that is not managed using `elasticsearch-certutil` is referred to as an "external certificate authority" or "external CA."
 
 This page explains the requirements and best practices to ensure that certificates generated using an external CA work correctly and protect your cluster properly.
 
 ::::{note}
-The TLS security model identifies each CA by its root certificate. Different CA root certificates are considered to be different CAs in this model. In contrast, if there is a team in your organization who is responsible for issuing TLS certificates, then you might consider this team to be a single entity known to you as "the certificate authority". This team manages many different root certificates, and therefore many different CAs according to the TLS security model.
+The TLS security model identifies each CA by its root certificate. Different CA root certificates are considered to be different CAs in this model. In contrast, if there is a team in your organization who is responsible for issuing TLS certificates, then you might consider this team to be a single entity known to you as "the certificate authority." This team manages many different root certificates, and therefore many different CAs according to the TLS security model.
 
 This documentation follows the TLS convention and considers distinct CA root certificates to be distinct certificate authorities, even if they are all managed by the same team.
 ::::
@@ -40,7 +40,7 @@ Mutual TLS considers all certificates issued by the same CA to be equally truste
 
 Transport certificates have different security requirements than [HTTP certificates](/deploy-manage/security/secure-cluster-communications.md#encrypt-http-communication). HTTP server certificates don't require the `clientAuth` value in their Extended Key Usage extension because they are used solely for server authentication, regardless of whether mTLS is enabled. HTTP connections typically don't use mTLS because HTTP has its own authentication mechanisms.
 
-HTTP certificates can come from public or organization-wide certificate authorities, while transport certificates should use a dedicated, cluster-specific, private CA. In most cases, you should not use the same certificate for both HTTP and transport connections.
+HTTP certificates can come from public or organization-wide certificate authorities, while transport certificates should use a dedicated, cluster-specific, private CA. Do not use the same certificate for both HTTP and transport connections.
 
 ## Turning off mTLS for transport connections [turn-off-mtls]
 
