@@ -22,7 +22,7 @@ The advanced settings control the behavior of the {{security-app}}, such as:
 * Whether the news feed is displayed on the [Overview dashboard](/solutions/security/dashboards/overview-dashboard.md)
 * The default time interval used to filter {{elastic-sec}} pages
 * The default {{elastic-sec}} pages refresh time
-* Which IP reputation links appear on [IP detail](/solutions/security/explore/network-page.md) pages
+* Which IP reputation links appear on [IP detail](/solutions/security/advanced-entity-analytics/network-page.md) pages
 * Whether cross-cluster search (CCS) privilege warnings are displayed
 * Whether related integrations are displayed on the Rules page tables
 * The options provided in the alert tag menu
