@@ -135,10 +135,6 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
     # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
     net.ipv4.tcp_retries2=5
-    # Other keepalive relevant settings
-    net.ipv4.tcp_keepalive_time=180
-    net.ipv4.tcp_keepalive_intvl=60
-    # Other network settings
     net.netfilter.nf_conntrack_tcp_timeout_established=7200
     net.netfilter.nf_conntrack_max=262140
     # Make sure the host doesn't swap too early
@@ -149,6 +145,15 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     ::::{important}
     The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than {{es}} clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
+
+    :::{note}
+    There are network settings, such as `net.ipv4.tcp_keepalive_time` and `net.ipv4.tcp_keepalive_intvl`, are overriden by {{es}} on a per-connection basis. Review [{{es}} networking settings](/reference/elasticsearch/configuration-reference/networking-settings.md) for more guidance. 
+    
+    Furthermore, you can reduce the default TCP keepalive parameters to ensure proactive detection of stale network sessions and prevent silent connection drops by cloud infrastructure firewalls, thereby maintaining the availability and responsiveness of the proxy layer.
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
 
 
     1. Apply the settings:
