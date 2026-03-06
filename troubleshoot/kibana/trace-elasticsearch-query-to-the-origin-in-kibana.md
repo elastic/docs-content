@@ -41,7 +41,7 @@ logging:
 
 The `execution_context` debug logs now also include the {{kib}} **space ID** in a `space` field.
 
-Now, you can see the request to {{es}} has been initiated by the `[Logs] Unique Visitor Heatmap` visualization embedded in the `[Logs] Web Traffic` dashboard, and which space it was executed from.
+Now, you can view the request to {{es}} has been initiated by the `[Logs] Unique Visitor Heatmap` visualization embedded in the `[Logs] Web Traffic` dashboard, and which space it was executed from.
 
 ```text
 [DEBUG][execution_context] stored the execution context: {
