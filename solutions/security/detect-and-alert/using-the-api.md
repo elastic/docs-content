@@ -17,6 +17,12 @@ You can create and manage detection rules programmatically instead of using the 
 If you prefer to use the UI for creating rules, refer to [Using the UI](/solutions/security/detect-and-alert/using-the-rule-builder.md).
 :::
 
+::::{important}
+
+Rules run in the background using the privileges of the user who last edited them. When you create or modify a rule, {{elastic-sec}} generates an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of your current privileges. If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the right privileges to either modify the rule or update the API key. To learn more, refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept).
+
+::::
+
 ## API reference
 
 The detection APIs are part of the {{kib}} API. Use the appropriate reference for your deployment type:
