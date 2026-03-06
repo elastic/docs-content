@@ -89,7 +89,14 @@ Rules run in the background using the privileges of the user who last edited the
 This means rules continue running with their editor's privileges, even when that user is not logged in.
 
 ::::{important}
-If a user without the required privileges (such as index read access) updates a rule, the rule stops functioning. Ensure that only users with appropriate access edit rules. For required privileges, refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md).
+Ensure that only users with [appropriate access](/solutions/security/detect-and-alert/detections-privileges.md) edit rules.
+
+If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the required privileges (such as access to manage rules) must do one of the following:
+
+- **Edit and save the rule**: This regenerates the API key with the current user's privileges
+- **Update the API key directly**: This allows for the rule configuration to remain unchanged.
+
+Either action rebinds the rule to a user who has the necessary access.
 ::::
 
 ## Key terms quick reference
