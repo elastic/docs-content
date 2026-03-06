@@ -99,5 +99,5 @@ These four mechanisms are not mutually exclusive. A well-tuned ruleset typically
 | Planned maintenance window tonight. Legitimate admin activity will trigger alerts, but no one should be paged. | Snooze rule actions for 4 hours. Alerts are created and stored. Notifications are paused. Review them in the morning. | Snooze actions |
 
 ::::{note}
-Order of application matters. Tuning and exceptions are evaluated before an alert is created. Suppression deduplicates after creation. Snoozing acts after suppression, only on notifications. Applying them in the wrong conceptual order leads to gaps. For example, using suppression to handle what should be an exception means the first alert is still stored and may page someone, and the suppression window may expire before the condition is resolved.
+Order of application matters. Tuning and exceptions are evaluated before an alert is created. Suppression groups multiple matching events into a single alert based on specified field values, reducing alert volume without losing coverage. Snoozing acts after suppression, only on notifications. Applying them in the wrong conceptual order leads to gaps. For example, using suppression to handle what should be an exception means the first alert is still stored and may page someone, and the suppression window may expire before the condition is resolved.
 ::::
