@@ -39,14 +39,18 @@ logging:
       appenders: [console]
 ```
 
-Now, you can see the request to {{es}} has been initiated by the `[Logs] Unique Visitor Heatmap` visualization embedded in the `[Logs] Web Traffic` dashboard. You can navigate to the provided URL to change some parameters of the visualization.
+The `execution_context` debug logs now also include the {{kib}} **space ID** in a `space` field.
+
+Now, you can see the request to {{es}} has been initiated by the `[Logs] Unique Visitor Heatmap` visualization embedded in the `[Logs] Web Traffic` dashboard, and which space it was executed from.
 
 ```text
 [DEBUG][execution_context] stored the execution context: {
+  "space": "default",
   "type": "application",
   "name": "dashboard",
   "id": "edf84fe0-e1a0-11e7-b6d5-4dc382ef7f5b",
-  "description": "[Logs] Web Traffic","url":"/view/edf84fe0-e1a0-11e7-b6d5-4dc382ef7f5b"
+  "description": "[Logs] Web Traffic",
+  "url": "/view/edf84fe0-e1a0-11e7-b6d5-4dc382ef7f5b",
   "child": {
     "type": "visualization",
     "name": "Vega",
@@ -56,4 +60,31 @@ Now, you can see the request to {{es}} has been initiated by the `[Logs] Unique 
   },
 }
 ```
+
+## How to find the space for a slow query
+
+Use this flow when you can see a slow query in {{es}} slow logs, and want to identify which {{kib}} space it came from.
+
+1. Enable {{es}} [search slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md#enable-slow-log).
+2. Find the `x-opaque-id` value in the slow log entry (often in `elasticsearch.slowlog.id`).
+3. Enable `execution_context` debug logging in {{kib}} (example above).
+4. Match the slow log entry to an `execution_context` debug entry by the context chain (`type` / `name` / `id`) first, then narrow it down by time, and finally read the `space` field.
+
+### ES|QL: parse `elasticsearch.slowlog.id` into context columns
+
+If slow logs are shipped into {{es}}, you can use {{esql}} to extract the request ID and the context chain (adjust the index pattern as needed):
+
+```esql
+FROM logs-*
+| WHERE fileset.name == "slowlog" AND elasticsearch.slowlog.id LIKE "*;kibana:*"
+| DISSECT elasticsearch.slowlog.id """%{request_id};kibana:%{root_type}:%{root_name}:%{root_id};%{child_type}:%{child_name}:%{child_id}"""
+| KEEP @timestamp, request_id, root_type, root_name, root_id, child_type, child_name, child_id
+| SORT @timestamp DESC
+```
+
+## Related links
+
+- [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md)
+- [{{kib}} logging](/deploy-manage/monitor/logging-configuration/kibana-logging.md)
+- [Set global log levels for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md)
 
