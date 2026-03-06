@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Monitor Elastic Security detection rule executions, view execution logs, check rule status, and troubleshoot performance issues using the Rule Monitoring tab.
+description: Monitor Elastic Security detection rule executions, view execution logs, check rule status, and identify and help troubleshoot performance issues using the Rule Monitoring tab.
 ---
 
 # Monitor rule executions [alerts-ui-monitor]
