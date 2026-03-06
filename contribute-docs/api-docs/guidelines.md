@@ -85,10 +85,10 @@ Here are some principles for effective descriptions:
 - **Reference related operations:** [Link](#add-links) to complementary APIs or prerequisite steps
 - **Provide usage guidance:** How should users typically use this parameter or operation?
 - **Document constraints:** What are the valid values, formats, or limitations?
-- **Explain data relationships:** For list parameters, clarify how multiple values are handled (comma-separated, arrays, etc.)
-- **Document special formats:** Include expected formats for timestamps (ISO-8601), patterns for wildcards, etc.
+- **Explain data relationships:** For list parameters, clarify how multiple values are handled (comma-separated, arrays, and so on)
+- **Document special formats:** Include expected formats for timestamps (ISO-8601) and patterns for wildcards
 - **Ensure comprehensive coverage:** Ensure all parameters, tags, and information sections include clear descriptions
-- **Use inclusive language:** Avoid problematic terminology (blacklist, whitelist, execute, kill, etc.) and use inclusive language throughout
+- **Use inclusive language:** Avoid problematic terminology (such as blacklist, whitelist, execute, kill) and use inclusive language throughout
 
 #### Description examples
 
