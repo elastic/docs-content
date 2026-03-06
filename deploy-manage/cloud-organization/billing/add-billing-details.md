@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-details.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ess: ga
+  serverless: ga
 products:
   - id: cloud-hosted
 ---
