@@ -305,7 +305,7 @@ When you are happy with the layout, select **Save** in the toolbar.
 
 ::::::
 
-Your dashboard now combines multiple panel types (metric, bar chart, line chart) built with Lens, and you've seen how inline editing and interactive filtering make the dashboard both customizable and explorable. To learn more, refer to [Dashboards](dashboards.md), [Lens](visualize/lens.md), and [Panels and visualizations](visualize.md).
+Your dashboard now combines multiple panel types (metric, bar chart, line chart) built with Lens, and you've seen how inline editing and interactive filtering make the dashboard both customizable and interactive. To learn more, refer to [Dashboards](dashboards.md), [Lens](visualize/lens.md), and [Panels and visualizations](visualize.md).
 
 ## Step 4: Share the dashboard [share-the-dashboard]
 
