@@ -96,11 +96,11 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 
 ### Try it: Create an index template [_try_it_create_an_index_template]
 
-* [](docs-content/manage-data/data-store/templates.md#index-templates)
+* [Learn more about index templates](/manage-data/data-store/templates.md#index-templates)
 
 ## Manage component templates [index-management-manage-component-templates]
 
-* [](docs-content/manage-data/data-store/templates.md#component-templates)
+* [Learn more about component templates](/manage-data/data-store/templates.md#component-templates)
 
 ## Manage enrich policies [manage-enrich-policies]
 
