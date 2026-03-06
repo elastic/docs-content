@@ -20,7 +20,7 @@ At a high level, a detection rule can be broken down into three parts:
 | Part | Purpose |
 |------|---------|
 | Query | Specifies the threat behavior or pattern to detect. The query searches your [data sources](#data-sources-concept) using syntax that varies by [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) (KQL, EQL, {{ml}} anomaly scores, or threat indicator matches). |
-| Schedule | Controls when and how often the rule checks for matching events. Rules execute at intervals you define (for example, every 5 minutes) and look back over a configurable time window. |
+| Schedule | Controls how often the rule runs and how far back it searches. The interval you set determines both. For example, a rule with a 5-minute interval runs every 5 minutes and searches the last 5 minutes of data each time. An optional look-back setting extends the search window to help catch late-arriving events. |
 | Rule actions | Specifies what happens when the rule detects a match. You can [send notifications](#notifications-concept), create tickets, or trigger integrations with external systems. |
 
 These three parts work together when a rule runs:
