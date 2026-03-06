@@ -36,8 +36,8 @@ This table provides a comparison of features and capabilities included in {{ech}
 | Allowed users | All | All | U.S. federal, state, and local agencies; tribal groups |
 | IPv6 support at the edge | No | Yes | Yes |
 | [Bring Your Own Key (BYOK)](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) | Yes | No | No |
-| [Support policy](https://www.elastic.co/support/welcome) | Global coverage | Available for purchase by U.S. persons on U.S. soil for support only.  [Support Services Policy](https://www.elastic.co/support_policy/govcloud) | Available for purchase by U.S. persons on U.S. soil for all engineering and support. [Support Services Policy](https://www.elastic.co/support_policy/govcloud) |
-| [{{kib}} connectors](kibana://reference/connectors-kibana.md) | All connector types | TBD | TBD |
+| [Support policy](https://www.elastic.co/support/welcome) | Global coverage | Global coverage or optional U.S. persons on U.S. soil support available | U.S. persons on U.S. soil support |
+| [{{kib}} connectors](kibana://reference/connectors-kibana.md) | All connector types | Email, Index, Webhook, Gen-AI, Bedrock, Gemini, Inference, Slack, Slack-API, PagerDuty | Email, Index, Webhook, Gen-AI, Bedrock, Gemini, Inference, Slack, Slack-API, PagerDuty |
 | [Cross-cluster search](/explore-analyze/cross-cluster-search.md) and [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Yes | Yes | Yes |
 | [Private connectivity](/deploy-manage/security/private-connectivity.md) | Yes | Yes | No |
 | [AutoOps](/deploy-manage/monitor/autoops.md) | Yes | No | No |
