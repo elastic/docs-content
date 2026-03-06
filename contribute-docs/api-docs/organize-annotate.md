@@ -1,5 +1,9 @@
 ---
 navigation_title: Organize and annotate docs
+description: "Learn how to group Elastic APIs with tags and annotate them with lifecycle status, permissions, and version information."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Organize and annotate your API docs
@@ -14,7 +18,7 @@ This page explains how to organize your API documentation and add technical meta
 
 For guidance on writing effective API content like summaries, descriptions, and examples, see [Core guidelines](./guidelines.md).
 
-## Add Open API document info
+## Add OpenAPI document info
 
 The published OpenAPI documents must have the following metadata in the [`info` object](https://spec.openapis.org/oas/latest#info-object):
 
@@ -29,7 +33,7 @@ The published OpenAPI documents must have the following metadata in the [`info` 
 
 ## Add OpenAPI specification version
 
-You must specify the version number of the OpenAPI specification that the OpenAPI document uses. This value is not related to the API `version` string in the [document info](#add-open-api-document-info).
+You must specify the version number of the OpenAPI specification that the OpenAPI document uses. This value is not related to the API `version` string in the [document info](#add-openapi-document-info).
 
 [Bump.sh](https://bump.sh/openapi "https://bump.sh/openapi") supports all versions from Swagger 2.0 to OpenAPI 3.1.
 

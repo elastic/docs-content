@@ -1,5 +1,9 @@
 ---
 navigation_title: Elasticsearch API docs
+description: "Set up a local Elasticsearch API docs workflow, from environment setup to generating and previewing your changes."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Contribute to Elasticsearch API docs locally
@@ -66,7 +70,7 @@ This command runs multiple steps in sequence:
 2. Generates the schema JSON (`generate`)
 3. Transforms to OpenAPI format for language clients (`transform-to-openapi`)
 4. Filters for serverless (`filter-for-serverless`)
-5. Lints the language clients OpenAPIdocs (`lint-docs`)
+5. Lints the language clients OpenAPI docs (`lint-docs`)
 
 :::{note}
 Some of the linter errors at this stage may be false alarms, and are fixed by path consolidation and overlays. You'll need to run `make lint` later against the docs-specific OpenAPI files.

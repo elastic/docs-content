@@ -1,3 +1,11 @@
+---
+navigation_title: How API docs work
+description: "Understand how Elastic API documentation is generated, from source files to OpenAPI documents and published HTML."
+applies_to:
+  stack:
+  serverless:
+---
+
 # How Elastic API docs work
 
 This page explains at a high-level how API docs work at Elastic today, with context on how this differs from our previous approaches and where we're heading. Use this page to understand the core primitives and workflows that apply across all Elastic teams, so you can contribute effectively.
@@ -25,7 +33,7 @@ This evolution seeks to elevate documentation to being a first-class citizen in 
 
 ## High-level process
 
-All Elastic API docs follows this general pattern:
+All Elastic API docs follow this general pattern:
 
 :::{image} images/api-docs-general-pipeline.png
 :alt: High-level API docs workflow pipeline diagram, showing the flow from source files to OpenAPI documents and published documentation.

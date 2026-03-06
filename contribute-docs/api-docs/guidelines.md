@@ -1,10 +1,18 @@
+---
+navigation_title: Core guidelines
+description: "Write clear API summaries and descriptions, document parameters and enums, add examples, and link to related content."
+applies_to:
+  stack:
+  serverless:
+---
+
 # Add core content
 
 This page covers the core guidelines for excellent API docs. Learn how to write clear summaries and descriptions, create helpful examples, and add useful links.
 
 ## Write summaries and descriptions
 
-Most objects in your Open API specification accept both concise summaries and detailed descriptions to help users understand their purpose and usage.
+Most objects in your OpenAPI specification accept both concise summaries and detailed descriptions to help users understand their purpose and usage.
 
 ### Write summaries
 
@@ -12,7 +20,7 @@ Clear, single-sentence summaries help users understand the components of your AP
 
 Here are some principles for writing effective summaries:
 
-- **Be concise:** Keep summaries short (between 5-45 characters) because they appear in different contexts where space is limited
+- **Be concise:** Keep API operation summaries short (between 5-45 characters) because they appear in different contexts where space is limited
 - **Start with a verb:** Use action words like "Get", "Update", "Delete", "Create"
 - **Use simple verbs:** Use simple verbs (Get, Update, Delete) rather than verbose alternatives (Retrieve, Return, List)
 - **Include articles:** "Delete a space", "Delete spaces", "Delete all spaces"
@@ -621,7 +629,22 @@ The [Elasticsearch API specification](https://github.com/elastic/elasticsearch-s
 - **Spectral**: Configuration in `.spectral.yaml`
 - **Redocly**: Configuration in `redocly.yaml`
 
-Refer to [the quickstarts](quickstart.md) to learn how to run the linter locally.
+Refer to [the Elasticsearch quickstart](elasticsearch-api-docs-quickstart.md) to learn how to run the linter locally.
+
+::::
+
+::::{tab-item} Kibana
+:sync: kibana
+
+Run this command from the `oas_docs` directory to lint your OpenAPI files:
+
+```bash
+node ../scripts/validate_oas_docs.js
+```
+
+You can limit the scope of APIs that the linter checks by using `--path` or `--only` options. For details and examples, add `--help`.
+
+Refer to [the Kibana quickstart](kibana-api-docs-quickstart.md) to learn more about the linting workflow.
 
 ::::
 ::::

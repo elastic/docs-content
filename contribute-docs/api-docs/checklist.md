@@ -1,5 +1,9 @@
 ---
 navigation_title: Checklist
+description: "Verify your API docs contribution is complete and consistent using this checklist of structure, content, and quality criteria."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # API docs checklist
@@ -7,7 +11,7 @@ navigation_title: Checklist
 Use this checklist to verify the quality, completeness, and consistency of your API docs contributions.
 
 ## Structure, organization, and metadata
-- Include required [OpenAPI document info](./organize-annotate.md#add-open-api-document-info)
+- Include required [OpenAPI document info](./organize-annotate.md#add-openapi-document-info)
 - Include [OpenAPI specification version](./organize-annotate.md#add-openapi-specification-version)
 - Define unique [operation identifiers](./organize-annotate.md#add-operation-identifiers) using camelCase
 - Use consistent [tags](./organize-annotate.md#group-apis-with-tags) to group related operations
@@ -17,7 +21,7 @@ Use this checklist to verify the quality, completeness, and consistency of your 
 
 ## Content quality and completeness
 
-- Write clear [summaries](./guidelines.md#write-summaries) (between 5-45 characters)
+- Write clear [API operation summaries](./guidelines.md#write-summaries) (between 5-45 characters)
 - Write detailed [descriptions](./guidelines.md#write-descriptions) for operations, parameters, properties, tags etc.
 - Document all [parameters](./guidelines.md#document-parameters) and explain how changing defaults affects behavior
 - Provide descriptions for non-obvious [enum values](./guidelines.md#document-enum-values)
