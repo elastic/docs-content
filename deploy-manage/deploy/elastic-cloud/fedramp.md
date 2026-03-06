@@ -9,7 +9,11 @@ products:
 
 # Elastic FedRAMP authorized Cloud offerings
 
-Elastic users can take advantage of the FedRAMP authorized Cloud offerings to host sensitive data in a secure environment that meets their regulatory and compliance requirements. {{fedramp-mod}} deployments are available to all users who have a Platinum or Enterprise license. {{fedramp-high}} deployments are available to United States federal, state, and local agencies as well as tribal groups that have an Enterprise license. All FedRAMP deployments are hosted on AWS GovCloud (U.S.).
+Elastic users can take advantage of the FedRAMP authorized Cloud offerings to host sensitive data in a secure environment that meets their regulatory and compliance requirements.
+
+{{fedramp-mod}} deployments are available to all users who have a Platinum or Enterprise license. {{fedramp-high}} deployments are available to United States federal, state, and local agencies as well as tribal groups that have an Enterprise license.
+
+All FedRAMP deployments are hosted on AWS GovCloud (U.S.).
 
 Learn about the Elastic FedRAMP offerings:
 
@@ -32,7 +36,7 @@ This table provides a comparison of features and capabilities included in {{ech}
 | Allowed users | All | All | U.S. federal, state, and local agencies; tribal groups |
 | IPv6 support at the edge | No | Yes | Yes |
 | [Bring Your Own Key (BYOK)](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) | Yes | No | No |
-| [Support policy](https://www.elastic.co/support/welcome) | Global coverage | Global coverage | U.S. persons on U.S. soil |
+| [Support policy](https://www.elastic.co/support/welcome) | Global coverage | U.S. persons on U.S. soil | U.S. persons on U.S. soil |
 | [{{kib}} connectors](kibana://reference/connectors-kibana.md) | All connector types | TBD | TBD |
 | [Cross-cluster search](/explore-analyze/cross-cluster-search.md) and [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Yes | Yes | Yes |
 | [Private connectivity](/deploy-manage/security/private-connectivity.md) | Yes | Yes | No |
@@ -66,7 +70,7 @@ $$$who-can-use-fedramp$$$**Who can use FedRAMP?**
     
 $$$where-is-fedramp-hosted$$$**Where is FedRAMP hosted?**
 
-    {{fedramp-mod}} and {{fedramp-high}} {{ecloud}} deployments are hosted on [AWS GovCloud (US)](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/whatis.html) in the `us-gov-east-1` region.
+:    {{fedramp-mod}} and {{fedramp-high}} {{ecloud}} deployments are hosted on [AWS GovCloud (US)](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/whatis.html) in the `us-gov-east-1` region.
 
 
 ## Limitations [ec-fedramp-limitations]
