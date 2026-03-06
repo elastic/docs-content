@@ -631,6 +631,20 @@ make lint-docs
 ```
 
 Refer to [the Elasticsearch quickstart](elasticsearch-api-docs-quickstart.md) to learn more about the linting workflow.
+::::
+
+::::{tab-item} Kibana
+:sync: kibana
+
+Run this command from the `oas_docs` directory to lint your OpenAPI files:
+
+```bash
+node ../scripts/validate_oas_docs.js
+```
+
+You can limit the scope of APIs that the linter checks by using `--path` or `--only` options. For details and examples, add `--help`.
+
+Refer to [the Kibana quickstart](kibana-api-docs-quickstart.md) to learn more about the linting workflow.
 
 ::::
 ::::{tab-item} Kibana
