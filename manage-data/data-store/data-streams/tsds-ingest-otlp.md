@@ -2,9 +2,9 @@
 navigation_title: "OTLP/HTTP endpoint"
 applies_to:
   deployment:
-    self: preview 9.2
-    ece: preview 9.2
-    eck: preview 9.2
+    self:
+    ece:
+    eck:
 products:
   - id: elasticsearch
 ---
@@ -15,6 +15,10 @@ In addition to the ingestion of metrics data through the bulk API,
 {{es}} offers an alternative way to ingest data through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
 
 The endpoint is available under `/_otlp/v1/metrics`.
+
+## Prerequisites
+
+You need {{stack}} 9.2 or later (the OTLP endpoint is available on ECE, ECK, and self-managed deployments that run this stack version).
 
 ## Overview and deployment options
 
