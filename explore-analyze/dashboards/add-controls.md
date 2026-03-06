@@ -267,7 +267,7 @@ serverless: preview
 You can add one interactive time slider control to a dashboard.
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
-The time slider can only be added as a pinned control (to the sticky header). It is not available as a free panel.
+The time slider can only be added as a pinned control to the header. It is not available as a free panel.
 
 1. Open or create a new dashboard.
 2. Add a time slider control.
@@ -280,10 +280,22 @@ The time slider can only be added as a pinned control (to the sticky header). It
 
 ## Configure the controls settings [configure-controls-settings]
 
-Several settings apply to all controls that are part of a dashboard.
+::::{applies-switch}
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
-Controls are always chained: each control narrows the options available in subsequent controls. The **Control settings** flyout no longer has a **Chain controls** toggle. **Auto apply filters** is a dashboard-level setting: when it is disabled, users apply pending control selections using the unified search **Apply** button.
+:::{applies-item} stack: ga 9.4
+Controls are always chained. Each control narrows the options available in subsequent controls. 
+
+For pinned controls, you can click the Settings {icon}`gear` icon on control to customize the display settings:
+
+- **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
+
+- **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
+
+**Auto apply filters**. When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, users must click the unified search **Apply** button to apply pending control selections.
+
+:::
+
+:::{applies-item} stack: ga 9.0-9.3+
 
 1. Configure the control settings.
 
@@ -303,12 +315,14 @@ Controls are always chained: each control narrows the options available in subse
         * **Validate user selections** — When selected, any selected option that results in no data is ignored.
         * {applies_to}`stack: ga 9.0-9.3` **Chain controls** — When selected, controls are applied sequentially from left to right, and line by line. Any selected options in one control narrows the available options in the next control.
         * {applies_to}`stack: ga 9.0-9.3` **Apply selections automatically** — The dashboard is updated dynamically when options are selected in controls. When this option is disabled, users first need to **Apply** their control selection before they are applied to the dashboard.
-        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Auto apply filters** — When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, users must click the unified search **Apply** button to apply pending control selections.
 
     * To remove all controls from the dashboard, select **Delete all**.
 
 3. Select **Save** to apply the changes.
 
+:::
+
+::::
 
 ## Edit Options list and Range slider control settings [edit-controls]
 
@@ -316,7 +330,6 @@ Change the settings for Options list and Range slider controls.
 
 1. Hover over the control you want to edit, then select ![The Edit control icon that opens the Edit control flyout](/explore-analyze/images/kibana-dashboard_controlsEditControl_8.3.0.png "").
 2. In the **Edit control** flyout, change the options, then select **Save and close**.
-
 
 ## Delete controls [remove-controls]
 
