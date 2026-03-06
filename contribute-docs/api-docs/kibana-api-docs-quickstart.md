@@ -30,7 +30,7 @@ Some teams, including Security and Observability, work with hand-edited YAML fil
 :::
 ::::
 
- For more details, see the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
+ For more details, refer to the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
 
 ## Quickstart
 
@@ -100,7 +100,7 @@ options: {
 The `availability` option includes two fields:
 
 - **`stability`**: Indicates the lifecycle state of the API
-  - `'experimental'` → Technical preview; may change or be removed in future versions
+  - `'experimental'` → Technical preview; can change or be removed in future versions
   - `'stable'` (default) → Generally available (GA); stable for production use
 - **`since`**: The version when the API was first added (e.g., `'9.2.0'`)
 

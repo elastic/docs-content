@@ -22,7 +22,7 @@ Here are some principles for writing effective summaries:
 
 - **Be concise:** Keep API operation summaries short (between 5-45 characters) because they appear in different contexts where space is limited
 - **Start with a verb:** Use action words like "Get", "Update", "Delete", "Create"
-- **Use simple verbs:** Use simple verbs (Get, Update, Delete) rather than verbose alternatives (Retrieve, Return, List)
+- **Use basic verbs:** Use basic verbs (Get, Update, Delete) rather than verbose alternatives (Retrieve, Return, List)
 - **Include articles:** "Delete a space", "Delete spaces", "Delete all spaces"
 - **Use sentence case:** Capitalize only the first word and proper nouns
 
@@ -372,7 +372,7 @@ Here are some principles for effective examples:
 
 #### Generated examples
 
-If you don't provide examples, Bump.sh automatically generates them from your API schema. Because it's hard to randomly generate meaningful examples, this has been disabled for Elasticsearch APIs.
+If you don't provide examples, Bump.sh automatically generates them from your API schema. Because it's hard to randomly generate meaningful examples, this has been turned off for Elasticsearch APIs.
 
 It's preferable to include curated examples in your OpenAPI document with a realistic combination of property values. You can provide more than one example object in the examples field, so consider adding examples that reflect the most common use cases.
 
