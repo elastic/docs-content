@@ -63,7 +63,7 @@ Switch between tabs to view alert data in different formats:
 
 **Table tab**
 
-Shows alert fields as name-value pairs. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1.0` Click {icon}`pin` next to a field to pin it to the top.
+Shows alert fields as name-value pairs. {applies_to}`stack: ga 9.1.0` Click {icon}`pin` next to a field to pin it to the top.
 
 Click {icon}`gear` **Table settings** for additional options:
 

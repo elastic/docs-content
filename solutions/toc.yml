@@ -569,13 +569,14 @@ toc:
         children:
           - file: security/detect-and-alert/before-you-begin.md
             children:
-              - file: security/detect-and-alert/requirements-privileges.md
+              - file: security/detect-and-alert/turn-on-detections.md
               - file: security/detect-and-alert/detections-privileges.md
               - file: security/detect-and-alert/detection-rule-concepts.md
               - file: security/detect-and-alert/advanced-data-source-configuration.md
                 children:
                   - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
                   - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
+          - file: security/detect-and-alert/mitre-attack-coverage.md
           - file: security/detect-and-alert/prebuilt-rules.md
             children:
               - file: security/detect-and-alert/prebuilt-rule-catalog.md
@@ -583,7 +584,6 @@ toc:
               - file: security/detect-and-alert/update-prebuilt-rules.md
               - file: security/detect-and-alert/prebuilt-rules-airgapped.md
               - file: security/detect-and-alert/customize-prebuilt-rules.md
-              - file: security/detect-and-alert/mitre-attack-coverage.md
           - file: security/detect-and-alert/author-rules.md
             children:
               - file: security/detect-and-alert/choose-the-right-rule-type.md
@@ -591,13 +591,13 @@ toc:
                   - file: security/detect-and-alert/about-building-block-rules.md
               - file: security/detect-and-alert/rule-types.md
                 children:
-                  - file: security/detect-and-alert/eql.md
-                  - file: security/detect-and-alert/custom-query.md
-                  - file: security/detect-and-alert/threshold.md
-                  - file: security/detect-and-alert/indicator-match.md
-                  - file: security/detect-and-alert/new-terms.md
                   - file: security/detect-and-alert/esql.md
+                  - file: security/detect-and-alert/custom-query.md
+                  - file: security/detect-and-alert/eql.md
+                  - file: security/detect-and-alert/indicator-match.md
+                  - file: security/detect-and-alert/threshold.md
                   - file: security/detect-and-alert/machine-learning.md
+                  - file: security/detect-and-alert/new-terms.md
               - file: security/detect-and-alert/using-the-rule-builder.md
               - file: security/detect-and-alert/using-the-api.md
               - file: security/detect-and-alert/common-rule-settings.md
@@ -606,7 +606,8 @@ toc:
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
-          - file: security/detect-and-alert/fill-rule-gaps.md
+            children:
+              - file: security/detect-and-alert/fill-rule-gaps.md
           - file: security/detect-and-alert/reduce-noise-and-false-positives.md
             children:
               - file: security/detect-and-alert/tune-detection-rules.md

@@ -704,7 +704,7 @@ redirects:
 
 # Related to Detect & Alert section restructure (issue #1210)
   # Renamed files
-  'solutions/security/detect-and-alert/detections-requirements.md': 'solutions/security/detect-and-alert/requirements-privileges.md'
+  'solutions/security/detect-and-alert/detections-requirements.md': 'solutions/security/detect-and-alert/detections-privileges.md'
   'solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md': 'solutions/security/detect-and-alert/install-prebuilt-rules.md'
   'solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md': 'solutions/security/detect-and-alert/update-prebuilt-rules.md'
   'solutions/security/detect-and-alert/mitre-attandckr-coverage.md': 'solutions/security/detect-and-alert/mitre-attack-coverage.md'
@@ -834,3 +834,6 @@ redirects:
   
 # Related to https://github.com/elastic/docs-content/pull/5222
   'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'
+
+# Renamed for SEO - URL now matches page title
+  'solutions/security/detect-and-alert/requirements-privileges.md': 'solutions/security/detect-and-alert/turn-on-detections.md'

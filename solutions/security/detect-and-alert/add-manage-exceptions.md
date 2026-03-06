@@ -18,7 +18,7 @@ Exceptions prevent a rule from generating alerts when specific conditions are me
 
 ## Prerequisites [exceptions-requirements]
 
-To use exceptions, your role must have the appropriate access. To learn how to access other detection features, refer to [](/solutions/security/detect-and-alert/requirements-privileges.md).
+To use exceptions, your role must have the appropriate access. To learn how to access other detection features, refer to [](/solutions/security/detect-and-alert/turn-on-detections.md).
 
 ### Exception privileges
 

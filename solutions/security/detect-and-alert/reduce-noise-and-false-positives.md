@@ -64,7 +64,7 @@ Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/alert-
 
 Acts on: **notifications, after alerts are created and stored**
 
-*"Don't page anyone right now. I'll review later."*
+*"Don't notify anyone right now. I'll review later."*
 
 Temporarily pause the rule's notification actions (emails, Slack messages, webhooks) without affecting rule execution or alert creation. Alerts generated during a snooze period are stored normally and visible in the Alerts UI. Snoozing expires automatically or can be canceled manually. For space-wide pausing, use a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
@@ -75,14 +75,16 @@ Refer to [Snooze rule actions](/solutions/security/detect-and-alert/manage-detec
 |  | Tuning logic | Rule exceptions | Alert suppression | Snooze rule actions |
 |---|---|---|---|---|
 | Rule still runs | Yes | Yes | Yes | Yes |
-| Alert written to index | Modified | No | First only | Yes |
+| Alert written to index | Fewer or different alerts | No | First only | Yes |
 | Analyst notified | For matches | No | First only | No |
 | Alert visible in UI | For matches | No | First only | Yes, all alerts |
-| Time-bounded | No | No, permanent | Yes, configurable window | Yes, configurable duration |
+| Time-bounded | No | Yes | Yes, configurable window | Yes, configurable duration |
 | Can span multiple rules | No | Yes, shared lists | No | No |
 
 ::::{important}
-Exceptions and suppression have different forensic implications. Exceptions permanently prevent alert records from being created. If you later need to investigate whether a specific event occurred, the alert data won't be there. Suppression writes the first alert but drops subsequent ones. For high-value assets or regulated environments, prefer suppression over exceptions so there's always at least one alert record for any real detection event. Reserve exceptions for activity that is definitively never relevant.
+Exceptions and suppression have different forensic implications. Exceptions permanently prevent alert records from being created. If you later need to investigate whether a specific event occurred, the alert data won't be there. 
+
+Suppression still creates an alert but groups subsequent matches into it instead of creating separate alerts. Use suppression when you need at least one alert record for audit or forensic purposes. Reserve exceptions for activity that is definitively never relevant.
 ::::
 
 ## Using them together [using-them-together]
@@ -99,5 +101,5 @@ These four mechanisms are not mutually exclusive. A well-tuned ruleset typically
 | Planned maintenance window tonight. Legitimate admin activity will trigger alerts, but no one should be paged. | Snooze rule actions for 4 hours. Alerts are created and stored. Notifications are paused. Review them in the morning. | Snooze actions |
 
 ::::{note}
-Order of application matters. Tuning and exceptions are evaluated before an alert is created. Suppression deduplicates after creation. Snoozing acts after suppression, only on notifications. Applying them in the wrong conceptual order leads to gaps. For example, using suppression to handle what should be an exception means the first alert is still stored and may page someone, and the suppression window may expire before the condition is resolved.
+Order of application matters. Tuning and exceptions are evaluated before an alert is created. Suppression groups multiple matching events into a single alert based on specified field values, reducing alert volume without losing coverage. Snoozing acts after suppression, only on notifications. Applying them in the wrong conceptual order leads to gaps. For example, using suppression to handle what should be an exception means the first alert is still stored and may page someone, and the suppression window may expire before the condition is resolved.
 ::::

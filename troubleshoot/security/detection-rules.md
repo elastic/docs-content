@@ -30,7 +30,7 @@ Depending on your privileges and whether detection system indices have already b
 If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Detections prerequisites and requirements](../../solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
 
 :::{note}
-For **self-managed** {{stack}} deployments only, this message may be displayed when the `xpack.encryptedSavedObjects.encryptionKey` setting has not been added to the `kibana.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/requirements-privileges.md).
+For **self-managed** {{stack}} deployments only, this message may be displayed when the `xpack.encryptedSavedObjects.encryptionKey` setting has not been added to the `kibana.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/turn-on-detections.md).
 :::
 
 ::::
@@ -41,7 +41,7 @@ For **self-managed** {{stack}} deployments only, this message may be displayed w
 If you get this message, you do not have the required privileges to view the **Detections** feature, and you should contact your {{kib}} administrator.
 
 :::{note}
-For **self-managed** {{stack}} deployments only, this message may be displayed when the `xpack.security.enabled` setting is not enabled in the `elasticsearch.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/requirements-privileges.md).
+For **self-managed** {{stack}} deployments only, this message may be displayed when the `xpack.security.enabled` setting is not enabled in the `elasticsearch.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/turn-on-detections.md).
 :::
 
 ::::

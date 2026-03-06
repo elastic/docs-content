@@ -15,12 +15,12 @@ Before creating detection rules, familiarize yourself with the foundational conc
 
 ## How detection rules work
 
-A detection rule consists of three parts:
+At a high level, a detection rule can be broken down into three parts:
 
 | Part | Purpose |
 |------|---------|
 | Query | Specifies the threat behavior or pattern to detect. The query searches your [data sources](#data-sources-concept) using syntax that varies by [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) (KQL, EQL, {{ml}} anomaly scores, or threat indicator matches). |
-| Schedule | Controls when and how often the rule checks for matching events. Rules execute at intervals you define (for example, every 5 minutes) and look back over a configurable time window. |
+| Schedule | Controls how often the rule runs and how far back it searches. The interval you set determines both. For example, a rule with a 5-minute interval runs every 5 minutes and searches the last 5 minutes of data each time. An optional look-back setting extends the search window to help catch late-arriving events. |
 | Rule actions | Specifies what happens when the rule detects a match. You can [send notifications](#notifications-concept), create tickets, or trigger integrations with external systems. |
 
 These three parts work together when a rule runs:
@@ -89,7 +89,14 @@ Rules run in the background using the privileges of the user who last edited the
 This means rules continue running with their editor's privileges, even when that user is not logged in.
 
 ::::{important}
-If a user without the required privileges (such as index read access) updates a rule, the rule stops functioning. Ensure that only users with appropriate access edit rules. For required privileges, refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md).
+Ensure that only users with the [appropriate access](/solutions/security/detect-and-alert/detections-privileges.md) edit rules.
+
+If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the required privileges (such as access to manage rules) must do one of the following:
+
+- **Edit and save the rule**: This regenerates the API key with the current user's privileges
+- **Update the API key directly**: This allows for the rule configuration to remain unchanged.
+
+Either action rebinds the rule to a user who has the necessary access.
 ::::
 
 ## Key terms quick reference

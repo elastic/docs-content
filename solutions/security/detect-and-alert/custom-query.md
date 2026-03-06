@@ -83,6 +83,94 @@ event.action:"Process Create (rule: ProcessCreate)" and process.name:"vssadmin.e
 ::::
 END CRAFT LAYER -->
 
+## Annotated examples [custom-query-examples]
+
+The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how custom query rules are defined. Each example is followed by a field-by-field breakdown.
+
+### Basic KQL query [custom-query-example-kql]
+
+This rule detects SSH logins by `root` or `admin` users, which may indicate unauthorized access or a policy violation.
+
+```json
+{
+  "type": "query",
+  "language": "kuery",
+  "name": "SSH login by privileged user",
+  "description": "Detects SSH login events by root or admin users.",
+  "query": "event.category: \"authentication\" and event.action: \"ssh_login\" and (user.name: \"root\" or user.name: \"admin\")",
+  "index": ["filebeat-*", "logs-system.*"],
+  "severity": "high",
+  "risk_score": 73,
+  "tags": ["SSH", "Authentication", "Privilege Escalation"],
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `type` | `"query"` | Identifies this as a custom query rule. |
+| `language` | `"kuery"` | Uses KQL syntax. The other accepted value is `"lucene"`. |
+| `query` | `event.category: "authentication" and ...` | Matches authentication events where the `event.action` is `ssh_login` and the user is `root` or `admin`. The `and`/`or` operators combine conditions in KQL. |
+| `index` | `["filebeat-*", "logs-system.*"]` | Searches Filebeat and Elastic Agent system integration indices. Must match the indices where SSH events are ingested. |
+| `severity` / `risk_score` | `"high"` / `73` | Reflects the security impact. Root SSH logins are high-severity in most environments. |
+| `interval` / `from` | `"5m"` / `"now-6m"` | Runs every 5 minutes and looks back 6 minutes, creating a 1-minute overlap so short ingestion delays don't cause missed events. |
+
+### Lucene query with regular expressions [custom-query-example-lucene]
+
+This rule detects PowerShell execution with Base64-encoded commands, a technique commonly used to obfuscate malicious scripts. The regular expression requires Lucene syntax because KQL does not support regex matching.
+
+```json
+{
+  "type": "query",
+  "language": "lucene",
+  "name": "Suspicious PowerShell encoded command",
+  "description": "Detects PowerShell invocations that use the -EncodedCommand parameter.",
+  "query": "process.name:powershell.exe AND process.args:/.*\\-(e|ec|en|enc|enco|encod|encode|encoded|encodedc|encodedco|encodedcom|encodedcomm|encodedcomma|encodedcomman|encodedcommand) .+/",
+  "index": ["winlogbeat-*", "logs-endpoint.events.*"],
+  "severity": "medium",
+  "risk_score": 47,
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `language` | `"lucene"` | Required for the `/.../` regex syntax in the `query`. KQL does not support regular expressions. |
+| `query` | `process.name:powershell.exe AND process.args:/.../` | Uses a Lucene regex to match any truncation of the `-EncodedCommand` flag (PowerShell allows partial parameter names). The `AND` operator is uppercase in Lucene, unlike KQL's lowercase `and`. |
+| `index` | `["winlogbeat-*", "logs-endpoint.events.*"]` | Covers Windows event logs (Winlogbeat) and Elastic Defend endpoint events. |
+
+### KQL query with alert suppression [custom-query-example-suppression]
+
+This rule detects failed login attempts and uses [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) to group repeated failures by user and host, reducing alert noise during brute-force attacks.
+
+```json
+{
+  "type": "query",
+  "language": "kuery",
+  "name": "Repeated failed login attempts",
+  "description": "Detects failed authentication events grouped by user and host.",
+  "query": "event.category: \"authentication\" and event.outcome: \"failure\"",
+  "index": ["filebeat-*", "logs-system.*", "winlogbeat-*"],
+  "severity": "medium",
+  "risk_score": 47,
+  "interval": "5m",
+  "from": "now-6m",
+  "alert_suppression": {
+    "group_by": ["user.name", "host.name"],
+    "duration": { "value": 5, "unit": "m" },
+    "missing_fields_strategy": "suppress"
+  }
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `alert_suppression.group_by` | `["user.name", "host.name"]` | Groups matching events by user and host. All events with the same `user.name` and `host.name` within the suppression window produce a single alert instead of one per event. Accepts up to 3 fields. |
+| `alert_suppression.duration` | `{ "value": 5, "unit": "m" }` | Sets the suppression window to 5 minutes. Accepted units are `s` (seconds), `m` (minutes), and `h` (hours). |
+| `alert_suppression.missing_fields_strategy` | `"suppress"` | When a suppression field is missing from a document, the event is still suppressed into a single alert. Use `"doNotSuppress"` to create individual alerts for documents missing the field. |
+
 ## Custom query field reference [custom-query-fields]
 
 The following settings are specific to custom query rules. For settings shared across all rule types (severity, risk score, schedule, actions, and so on), refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
@@ -91,7 +179,7 @@ The following settings are specific to custom query rules. For settings shared a
 :   The {{es}} indices or data view the rule queries when searching for events. Index patterns are prepopulated with the indices configured in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) advanced setting. Alternatively, select a data view from the drop-down to use its associated index patterns and [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md).
 
 **Custom query**
-:   The KQL or Lucene query that defines the main detection logic. Other fields such as filters, exceptions or alert suppression can be used to narrow the scope of the query and define the final query used to search events.
+:   The KQL or Lucene query that defines the main detection logic. Other fields such as filters or exceptions can be used to narrow the scope of the query.
 
 **Saved query** (optional)
 :   A {{kib}} saved query to use as the rule's detection logic. When loaded dynamically, the rule inherits changes to the saved query automatically. When loaded as a one-time copy, the query is embedded in the rule and can be edited independently.

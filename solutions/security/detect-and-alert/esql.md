@@ -103,6 +103,57 @@ When configuring an {{esql}} rule's **Custom highlighted fields** (in [advanced 
 ::::
 END CRAFT LAYER -->
 
+## Annotated examples [esql-examples]
+
+The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how {{esql}} rules are defined. Each example is followed by a field-by-field breakdown.
+
+### Aggregating query [esql-example-aggregating]
+
+This rule counts failed login attempts per user and alerts when any user exceeds 20 failures within the query window.
+
+```json
+{
+  "type": "esql",
+  "language": "esql",
+  "name": "High failed login count per user",
+  "description": "Detects users with more than 20 failed login attempts in the query window.",
+  "query": "FROM logs-* | WHERE event.category == \"authentication\" AND event.outcome == \"failure\" | STATS failed_count = COUNT(*) BY user.name | WHERE failed_count > 20",
+  "severity": "high",
+  "risk_score": 73,
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `type` / `language` | `"esql"` / `"esql"` | Both must be `"esql"`. |
+| `query` | `FROM logs-* \| WHERE ... \| STATS ... BY ... \| WHERE ...` | An aggregating query pipeline. `FROM` specifies the source indices (replacing a separate `index` field). `STATS...BY` groups failed logins by `user.name` and counts them. The final `WHERE` filters to users exceeding 20 failures. Each result row becomes an alert containing only the `BY` fields and computed values. |
+| No `index` field | — | {{esql}} rules specify source indices in the `FROM` command rather than in a separate `index` field. |
+
+### Non-aggregating query with deduplication [esql-example-non-aggregating]
+
+This rule detects process-start events with suspicious encoded arguments and uses `METADATA` to enable alert deduplication across rule executions.
+
+```json
+{
+  "type": "esql",
+  "language": "esql",
+  "name": "Process execution with encoded arguments",
+  "description": "Detects process start events where the command line contains encoded content.",
+  "query": "FROM logs-endpoint.events.* METADATA _id, _index, _version | WHERE event.category == \"process\" AND event.type == \"start\" AND process.command_line LIKE \"*-encoded*\" | LIMIT 100",
+  "severity": "medium",
+  "risk_score": 47,
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `query` | `FROM ... METADATA _id, _index, _version \| WHERE ... \| LIMIT 100` | A non-aggregating query. `METADATA _id, _index, _version` after `FROM` enables alert deduplication so the same source event does not generate duplicate alerts across rule executions. Without it, repeated matches produce repeated alerts. |
+| `LIMIT` | `100` | Caps the number of results per execution. Interacts with the **Max alerts per run** setting, and the rule uses the lower of the two values. |
+
 ## {{esql}} field reference [esql-fields]
 
 The following settings are specific to {{esql}} rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).

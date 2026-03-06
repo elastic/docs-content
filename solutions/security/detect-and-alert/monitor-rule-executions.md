@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Monitor Elastic Security detection rule executions, view execution logs, check rule status, and troubleshoot performance issues using the Rule Monitoring tab.
+description: Monitor Elastic Security detection rule executions, view execution logs, check rule status, and identify and help troubleshoot performance issues using the Rule Monitoring tab.
 ---
 
 # Monitor rule executions [alerts-ui-monitor]
@@ -74,7 +74,7 @@ From the **Execution results** tab on a rule's details page, you can access the 
 
 ### Execution log table [execution-log-table]
 
-Each detection rule execution is logged, including the execution type, success or failure status, any warning or error messages, how long it took to search for data, create alerts, and complete. This can help you troubleshoot a rule if it isn't behaving as expected (for example, if it isn't creating alerts or takes a long time to run).
+Each detection rule execution is logged, including the execution type, success or failure status, any warning or error messages, how long it took to search for data, create alerts, and complete. This can help you identify and troubleshoot a rule if it isn't behaving as expected (for example, if it isn't creating alerts or takes a long time to run).
 
 :::{image} /solutions/images/security-rule-execution-logs.png
 :alt: Execution log table on the rule execution results tab

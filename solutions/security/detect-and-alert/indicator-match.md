@@ -88,6 +88,97 @@ The default indicator index query `@timestamp > "now-30d/d"` limits matches to i
 ::::
 END CRAFT LAYER -->
 
+## Annotated examples [indicator-match-examples]
+
+The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how indicator match rules are defined. Each example is followed by a field-by-field breakdown.
+
+### IP-based indicator match [indicator-match-example-ip]
+
+This rule matches outbound network connections against a threat intelligence feed of known malicious IP addresses.
+
+```json
+{
+  "type": "threat_match",
+  "language": "kuery",
+  "name": "Network connection to known malicious IP",
+  "description": "Matches outbound network events against a threat intelligence feed of malicious IPs.",
+  "query": "event.category: \"network\" and network.direction: \"egress\"",
+  "index": ["packetbeat-*", "filebeat-*", "logs-endpoint.events.*"],
+  "threat_index": ["filebeat-threatintel-*"],
+  "threat_query": "@timestamp >= \"now-30d\"",
+  "threat_mapping": [
+    {
+      "entries": [
+        {
+          "field": "destination.ip",
+          "type": "mapping",
+          "value": "threat.indicator.ip"
+        }
+      ]
+    }
+  ],
+  "threat_indicator_path": "threat.indicator",
+  "severity": "critical",
+  "risk_score": 99,
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `type` | `"threat_match"` | Identifies this as an indicator match rule. |
+| `query` | `event.category: "network" and network.direction: "egress"` | Filters source events to outbound network connections. Only these events are compared against indicators. Uses `"kuery"` or `"lucene"`, the same query languages available in custom query rules. |
+| `threat_index` | `["filebeat-threatintel-*"]` | The index patterns containing threat intelligence indicators. |
+| `threat_query` | `@timestamp >= "now-30d"` | Limits indicator matches to indicators ingested in the past 30 days. Shorter windows reduce stale matches but may miss long-lived indicators. Longer windows increase coverage at the cost of execution time. |
+| `threat_mapping` | `[{ "entries": [{ "field": ..., "type": "mapping", "value": ... }] }]` | Maps `destination.ip` from source events to `threat.indicator.ip` in the indicator index. When values match, an alert is generated and enriched with indicator metadata. |
+| `threat_indicator_path` | `"threat.indicator"` | The field path prefix for indicator data in the indicator index. Defaults to `threat.indicator`. Override when your indicator data uses a different field structure. |
+
+### File hash match with AND logic and performance tuning [indicator-match-example-hash]
+
+This rule matches file creation events against threat intelligence by both SHA-256 hash and file name, requiring both fields to match. Performance tuning fields control parallelism and batch size.
+
+```json
+{
+  "type": "threat_match",
+  "language": "kuery",
+  "name": "Known malware file hash detected",
+  "description": "Matches file creation events against threat intelligence by SHA-256 hash and file name.",
+  "query": "event.category: \"file\" and event.type: \"creation\"",
+  "index": ["logs-endpoint.events.*", "winlogbeat-*"],
+  "threat_index": ["filebeat-threatintel-*"],
+  "threat_query": "@timestamp >= \"now-30d\"",
+  "threat_mapping": [
+    {
+      "entries": [
+        {
+          "field": "file.hash.sha256",
+          "type": "mapping",
+          "value": "threat.indicator.file.hash.sha256"
+        },
+        {
+          "field": "file.name",
+          "type": "mapping",
+          "value": "threat.indicator.file.name"
+        }
+      ]
+    }
+  ],
+  "concurrent_searches": 5,
+  "items_per_search": 500,
+  "severity": "critical",
+  "risk_score": 99,
+  "interval": "5m",
+  "from": "now-6m"
+}
+```
+
+| Field | Value | Purpose |
+|---|---|---|
+| `threat_mapping[0].entries` | Two entries in one object | Multiple entries within a single `entries` object are combined with AND logic, so both the SHA-256 hash and file name must match. Separate `entries` objects (sibling array items) use OR logic. |
+| `concurrent_searches` | `5` | The number of indicator searches to run in parallel. Increasing this value can speed up rule execution for large indicator indices at the cost of higher resource usage. |
+| `items_per_search` | `500` | The number of indicators to include in each search request. Larger batches reduce the total number of searches but increase per-search memory usage. |
+
 ## Indicator match field reference [indicator-match-fields]
 
 The following settings are specific to indicator match rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
@@ -108,7 +199,12 @@ The following settings are specific to indicator match rules. For settings share
 :   Threat mapping conditions that compare values in source event fields with values in indicator fields. Configure:
 
     * **Field**: A field from your source event indices.
-    * **MATCHES / DOES NOT MATCH**: {applies_to}`stack: ga 9.2` Whether the values should match or not match. At least one `MATCHES` entry is required.
+    * {applies_to}`stack: ga 9.2` **MATCHES / DOES NOT MATCH**: Whether the values should match or not match. At least one `MATCHES` entry is required.
+
+       :::{note}
+       Define matching (`MATCHES`) conditions first, then narrow down your results by adding `DOES NOT MATCH` conditions to exclude field values you want to ignore. Mapping entries that only use `DOES NOT MATCH` are not supported. At least one entry must have a `MATCHES` condition.
+       :::
+
     * **Indicator index field**: A field from your threat indicator index.
 
     Multiple mapping entries can be combined with `AND` and `OR` clauses. Only single-value fields are supported.

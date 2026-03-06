@@ -19,7 +19,7 @@ Learn about the access requirements for detection features, including:
 - **Predefined {{serverless-full}}  roles**: {{serverless-short}} roles with detection privileges
 - **Authorization model**: How rules inherit privileges from their last editor via API keys
 
-For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/requirements-privileges.md).
+For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md).
 
 ## About index privileges
 

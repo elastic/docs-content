@@ -14,7 +14,7 @@ description: View, edit, enable, duplicate, and manage detection rules from the 
 
 # Manage detection rules [security-rules-ui-management]
 
-After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **Rules** page to manage them. The **Rules** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/requirements-privileges.md). To open the **Rules** page, find **Detection rules (SIEM)** in the navigation menu or by using the global search field.
+After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **Rules** page to manage them. The **Rules** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/turn-on-detections.md). To open the **Rules** page, find **Detection rules (SIEM)** in the navigation menu or by using the global search field.
 
 The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
 
@@ -213,7 +213,7 @@ The Manual runs table (found on a rule's **Execution results** tab) tracks manua
 
 ::::{admonition} Requirements
 * You can export and import custom rules and prebuilt rules (modified and unmodified) with any {{stack}} subscription or {{serverless-short}} project feature tier.
-* At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/requirements-privileges.md) to learn more about the required privileges for managing rules.
+* At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md) to learn more about the required privileges for managing rules.
 ::::
 
 You can export custom detection rules to an `.ndjson` file, which you can then import into another {{elastic-sec}} environment.
