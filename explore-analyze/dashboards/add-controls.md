@@ -174,8 +174,6 @@ You can then insert it in any other {{esql}} visualization queries by typing the
 You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the dashboard's toolbar. 
 :::
 
-![Editing {{esql}} controls from a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte42dfaa404bfc2d6/67d2e31e2e4dc59da190d78f/dashboard-esql-controls.gif)
-
 :::{include} ../_snippets/variable-control-examples.md
 :::
 
