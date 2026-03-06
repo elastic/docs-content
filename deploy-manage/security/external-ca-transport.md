@@ -32,8 +32,12 @@ Certificates used for transport mTLS must either have no Extended Key Usage (EKU
 
 Obtain your transport certificates from a certificate authority that only issues certificates to {{es}} nodes permitted to connect to your cluster. Do not use a public certificate authority or an organization-wide private certificate authority, because these issue certificates to entities beyond your authorized cluster nodes. Use a dedicated certificate authority for each {{es}} cluster.
 
+::::{note}
+Mutual TLS considers all certificates issued by the same CA to be equally trusted, and therefore requires you to create a different CA for each trust domain. Each {{es}} cluster should be a separate trust domain.
+::::
+
 ::::{warning}
-Mutual TLS considers all certificates issued by the same CA to be equally trusted, and therefore requires you to create a different CA for each trust domain. Any holder of both a private key and a corresponding certificate issued by your cluster's transport CA will be permitted to open transport connections with your cluster. A malicious actor who obtains access to these things might be able to invoke system-internal APIs, including APIs that read or modify cluster data. To mitigate this risk, each cluster's transport CA must issue only transport certificates for that cluster. Do not use a cluster's transport CA to issue transport certificates for other clusters, and do not use it to issue certificates for any other purpose.
+Any holder of both a private key and a corresponding certificate issued by your cluster's transport CA will be permitted to open transport connections with your cluster. A malicious actor who obtains access to these things might be able to invoke system-internal APIs, including APIs that read or modify cluster data. To mitigate this risk, do not use a cluster's transport CA to issue transport certificates for other clusters, and do not use it to issue certificates for any other purpose.
 ::::
 
 ### Transport certificates vs. HTTP certificates
