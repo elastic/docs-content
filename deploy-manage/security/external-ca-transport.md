@@ -19,7 +19,7 @@ This page explains the requirements and best practices to ensure that certificat
 ::::{note}
 The TLS security model identifies each CA by its root certificate. Different CA root certificates are considered to be different CAs in this model. In contrast, if there is a team in your organization who is responsible for issuing TLS certificates, then you might consider this team to be a single entity known to you as "the certificate authority." This team manages many different root certificates, and therefore many different CAs according to the TLS security model.
 
-This documentation follows the TLS convention and considers distinct CA root certificates to be distinct certificate authorities, even if they are all managed by the same team.
+This documentation follows the TLS convention and considers distinct CA root certificates to be distinct CAs, even if they are all managed by the same team.
 ::::
 
 ::::{warning}
