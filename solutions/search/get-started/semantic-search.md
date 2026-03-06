@@ -31,7 +31,7 @@ To learn about role-based access control, check out [](/deploy-manage/users-role
 
 When you create vectors (or _vectorize_ your data), you convert complex and nuanced documents into multidimensional numerical representations.
 You can choose from many different vector embedding models. Some are extremely hardware efficient and can be run with less computational power. Others have a greater understanding of the context, can answer questions, and lead a threaded conversation.
-The examples in this guide use the default Learned Sparse Encoder ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) model, which provides great relevance across domains without the need for additional fine tuning.
+The examples in this guide use the Learned Sparse Encoder ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) model, which provides great relevance across domains without the need for additional fine tuning.
 
 The way that you store vectors has a significant impact on the performance and accuracy of search results.
 They must be stored in specialized data structures designed to ensure efficient similarity search and speedy vector distance calculations.
@@ -66,14 +66,15 @@ PUT /semantic-index/_mapping
 {
   "properties": {
     "content": {
-      "type": "semantic_text"
+      "type": "semantic_text",
+      "inference_id": ".elser-2-elastic"
     }
   }
 }
 ```
 
 When you use `semantic_text` fields, the type of vector is determined by the vector embedding model.
-In this case, the default ELSER model will be used to create sparse vectors.
+In this case, the ELSER model will be used to create sparse vectors.
 
 For a deeper dive, check out [Mapping embeddings to Elasticsearch field types: semantic_text, dense_vector, sparse_vector](https://www.elastic.co/search-labs/blog/mapping-embeddings-to-elasticsearch-field-types).
 ::::
