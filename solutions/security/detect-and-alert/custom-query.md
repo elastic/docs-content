@@ -179,7 +179,7 @@ The following settings are specific to custom query rules. For settings shared a
 :   The {{es}} indices or data view the rule queries when searching for events. Index patterns are prepopulated with the indices configured in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) advanced setting. Alternatively, select a data view from the drop-down to use its associated index patterns and [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md).
 
 **Custom query**
-:   The KQL or Lucene query that defines the main detection logic. Other fields such as filters, exceptions or alert suppression can be used to narrow the scope of the query and define the final query used to search events.
+:   The KQL or Lucene query that defines the main detection logic. Other fields such as filters or exceptions can be used to narrow the scope of the query.
 
 **Saved query** (optional)
 :   A {{kib}} saved query to use as the rule's detection logic. When loaded dynamically, the rule inherits changes to the saved query automatically. When loaded as a one-time copy, the query is embedded in the rule and can be edited independently.
