@@ -147,7 +147,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     ::::
 
     :::{note}
-    There are network settings, such as `net.ipv4.tcp_keepalive_time` and `net.ipv4.tcp_keepalive_intvl`, are overriden by {{es}} on a per-connection basis. Review [{{es}} networking settings](/reference/elasticsearch/configuration-reference/networking-settings.md) for more guidance. 
+    There are network settings, such as `net.ipv4.tcp_keepalive_time` and `net.ipv4.tcp_keepalive_intvl`, are overriden by {{es}} on a per-connection basis. Review [{{es}} networking settings](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/networking-settings) for more guidance. 
     
     Furthermore, you can reduce the default TCP keepalive parameters to ensure proactive detection of stale network sessions and prevent silent connection drops by cloud infrastructure firewalls, thereby maintaining the availability and responsiveness of the proxy layer.
     * `net.ipv4.tcp_keepalive_time`
