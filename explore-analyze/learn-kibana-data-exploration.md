@@ -64,7 +64,7 @@ Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasti
 :::::{step} Open Discover and switch to {{esql}}
 
 1. From the navigation menu, go to **Discover**.
-2. Select {icon}`editorCodeBlock` **{{esql}}** from the application menu.
+2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
 **Result:** The query bar changes to an {{esql}} editor where you can write piped queries.
 :::::
@@ -345,7 +345,7 @@ This back-and-forth workflow is especially useful when investigating anomalies: 
 You've completed the core workflow, from sample data to a shareable dashboard. Here are some directions to explore next:
 
 **Bring in your own data**
-: The same workflow applies to any data in {{es}}. Use [{{agent}}](/reference/fleet/install-elastic-agents.md) or [Beats](/reference/beats.md) to ingest your own logs, metrics, or traces. Refer to [Ingest data](/manage-data/ingest.md) for an overview of all ingestion options.
+: The same workflow applies to any data in {{es}}. Use [{{agent}}](/reference/fleet/install-elastic-agents.md) to ingest your own logs, metrics, or traces. Refer to [Ingest data](/manage-data/ingest.md) for an overview of all ingestion options.
 
 **Deepen your {{esql}} knowledge**
 : {{esql}} supports advanced operations like `ENRICH`, `LOOKUP JOIN`, `DISSECT`, and `GROK`, and more to transform your data on the fly. Refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) and [Use {{esql}} in {{kib}}](query-filter/languages/esql-kibana.md).
