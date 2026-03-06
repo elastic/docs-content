@@ -589,6 +589,11 @@ toc:
               - file: security/detect-and-alert/create-manage-shared-exception-lists.md
           - file: security/detect-and-alert/about-building-block-rules.md
           - file: security/detect-and-alert/mitre-attandckr-coverage.md
+          - file: security/detect-and-alert/detection-alert-concepts.md
+            children:
+              - file: security/detect-and-alert/alert-storage-and-schema.md
+              - file: security/detect-and-alert/how-alerts-are-generated.md
+              - file: security/detect-and-alert/detection-vs-external-alerts.md
           - file: security/detect-and-alert/manage-detection-alerts.md
             children:
               - file: security/detect-and-alert/visualize-detection-alerts.md
