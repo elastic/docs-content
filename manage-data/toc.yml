@@ -71,6 +71,7 @@ toc:
           - file: data-store/templates/ignore-missing-component-templates.md
           - hidden: data-store/templates/index-template-management.md
       - file: data-store/aliases.md
+      - file: data-store/index-management.md
       - file: data-store/manage-data-from-the-command-line.md
   - file: ingest.md
     children:
