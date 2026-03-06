@@ -89,7 +89,7 @@ Rules run in the background using the privileges of the user who last edited the
 This means rules continue running with their editor's privileges, even when that user is not logged in.
 
 ::::{important}
-Ensure that only users with [appropriate access](/solutions/security/detect-and-alert/detections-privileges.md) edit rules.
+Ensure that only users with the [appropriate access](/solutions/security/detect-and-alert/detections-privileges.md) edit rules.
 
 If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the required privileges (such as access to manage rules) must do one of the following:
 

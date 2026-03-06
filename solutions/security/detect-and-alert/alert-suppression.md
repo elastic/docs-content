@@ -56,14 +56,14 @@ When configuring the rule (the **Define rule** step for a new rule, or the **Def
 :::{dropdown} For all rule types except threshold rules
 In **Suppress alerts by**, enter one or more field names to group alerts by. Events with the same values for these fields are grouped together.
 
-* {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` You can enter up to 5 fields.
+* {applies_to}`stack: ga 9.2+` You can enter up to 5 fields.
 * {applies_to}`stack: ga 9.0-9.1` You can enter up to 3 fields.
 
 For {{esql}} rules, fields created in the {{esql}} query (for example, with the `EVAL` command) are available to select in **Suppress alerts by**.
 :::
 
 :::{dropdown} For threshold rules only
-In **Group by**, enter up to 3 field names to group events by, or leave the setting empty to group all qualifying events together.
+In **Group by**, enter up to 5 field names to group events by, or leave the setting empty to group all qualifying events together.
 :::
 
 :::{tip}

@@ -199,7 +199,12 @@ The following settings are specific to indicator match rules. For settings share
 :   Threat mapping conditions that compare values in source event fields with values in indicator fields. Configure:
 
     * **Field**: A field from your source event indices.
-    * **MATCHES / DOES NOT MATCH**: {applies_to}`stack: ga 9.2` Whether the values should match or not match. At least one `MATCHES` entry is required.
+    * {applies_to}`stack: ga 9.2` **MATCHES / DOES NOT MATCH**: Whether the values should match or not match. At least one `MATCHES` entry is required.
+
+       :::{note}
+       Define matching (`MATCHES`) conditions first, then narrow down your results by adding `DOES NOT MATCH` conditions to exclude field values you want to ignore. Mapping entries that only use `DOES NOT MATCH` are not supported. At least one entry must have a `MATCHES` condition.
+       :::
+
     * **Indicator index field**: A field from your threat indicator index.
 
     Multiple mapping entries can be combined with `AND` and `OR` clauses. Only single-value fields are supported.
