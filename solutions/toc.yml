@@ -758,6 +758,5 @@ toc:
                   - file: security/advanced-entity-analytics/configure-network-map-data.md
                   - file: security/advanced-entity-analytics/configure-dns-histogram.md
               - file: security/advanced-entity-analytics/users-page.md
-      - file: security/asset-management.md
       - file: security/security-serverless-feature-tiers.md
       - file: security/apis.md
