@@ -52,9 +52,6 @@ You can also create a new organization by clicking on your current organization 
 :::{include} _snippets/switch-orgs.md
 :::
 
-% ## Delete an organization
-
-% Can it be done? Do we want to document this?
 
 % tech preview content below - this would probably be split off onto other pages at GA time
 
