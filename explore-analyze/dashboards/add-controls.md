@@ -13,12 +13,10 @@ products:
 
 **Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
-
-**Pinned** control
+{applies_to}`stack: ga 9.4` **Pinned** control
 :   Appear in the dashboard's sticky header and apply to the whole dashboard. 
 
-**Unpinned** control 
+{applies_to}`stack: ga 9.4` **Unpinned** control 
 :   Live in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
 
 **Universally chained** control
@@ -58,11 +56,11 @@ To add interactive Options list and Range slider controls, create the controls, 
 1. Open or create a new dashboard.
 2. Add a control.
        
-    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
+    {applies_to}`stack: ga 9.4` 
     - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. The control is pinned and applies to the whole dashboard.
     - Add as free panel: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to top** or **Unpin**.
     
-    {applies_to}`serverless:` {applies_to}`stack: ga 9.2-9.3` 
+    {applies_to}`stack: ga 9.2-9.3` 
     
     In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
     
@@ -88,7 +86,7 @@ To add interactive Options list and Range slider controls, create the controls, 
       Select multiple values to filter with the control, or only one.
     - **Additional settings**:
 
-      - **Use global filters**: 
+      - **Use global filters**: A panel-level setting that applies to each individual control. It is enabled by default.
       - **Validate user selections**: Highlight control selections that result in no data.
       - **Ignore timeout for results**: Wait to display results until the list is complete.
 
@@ -121,11 +119,20 @@ To add interactive Options list and Range slider controls, create the controls, 
     ::::{applies-switch}
 
     :::{applies-item} stack: ga 9.4
-    Content for Serverless
+    - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
+    - **Step size**: Determine the slider's number of steps. The smaller a slider's step size, the more steps it has.
+    - **Additional settings**:
+      - **Use global filters**: A panel-level setting that applies to each individual control. It is enabled by default.
+      - **Validate user selections**: Highlight control selections that result in no data.
+
     :::
 
     :::{applies-item} stack: ga 9.0-9.3+
-    * For Range sliders, set the step size. The step size determines the slider's number of steps. The smaller a slider's step size, the more steps it has.
+    - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
+    - **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
+    - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
+    - **Step size**: Determine the slider's number of steps. The smaller a slider's step size, the more steps it has.
+
     :::
     ::::
 
