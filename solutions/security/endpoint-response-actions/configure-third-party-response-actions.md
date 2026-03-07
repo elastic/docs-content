@@ -83,7 +83,7 @@ Expand a section below for your endpoint security system:
 
     4. Click **Save**.
 
-4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** (Optional) Create [detection rules](/solutions/security/detect-and-alert/create-detection-rule.md) to generate {{elastic-sec}} alerts based on CrowdStrike events and data. The [CrowdStrike integration docs](https://docs.elastic.co/en/integrations/crowdstrike) list the available ingested logs and fields you can use to build a rule query.
+4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** (Optional) Create [detection rules](/solutions/security/detect-and-alert/using-the-rule-builder.md) to generate {{elastic-sec}} alerts based on CrowdStrike events and data. The [CrowdStrike integration docs](https://docs.elastic.co/en/integrations/crowdstrike) list the available ingested logs and fields you can use to build a rule query.
 
     This gives you visibility into CrowdStrike without needing to leave {{elastic-sec}}. You can perform supported endpoint response actions directly from alerts that a rule creates, by using the **Take action** menu in the alert details flyout.
 ::::
@@ -140,7 +140,7 @@ Expand a section below for your endpoint security system:
     4. (Optional) If necessary, adjust the default values populated for the other configuration parameters.
     5. Click **Save**.
 
-4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** Create [detection rules](/solutions/security/detect-and-alert/create-detection-rule.md) to generate {{elastic-sec}} alerts based on Microsoft Defender for Endpoint events and data.
+4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** Create [detection rules](/solutions/security/detect-and-alert/using-the-rule-builder.md) to generate {{elastic-sec}} alerts based on Microsoft Defender for Endpoint events and data.
 
     This gives you visibility into Microsoft Defender hosts without needing to leave {{elastic-sec}}. You can perform supported endpoint response actions directly from alerts that a rule creates, by using the **Take action** menu in the alert details flyout.
 
@@ -194,7 +194,7 @@ Expand a section below for your endpoint security system:
 
     4. Click **Save**.
 
-4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** Create [detection rules](/solutions/security/detect-and-alert/create-detection-rule.md#create-custom-rule) to generate {{elastic-sec}} alerts based on SentinelOne events and data.
+4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** Create [detection rules](/solutions/security/detect-and-alert/custom-query.md) to generate {{elastic-sec}} alerts based on SentinelOne events and data.
 
     This gives you visibility into SentinelOne without needing to leave {{elastic-sec}}. You can perform supported endpoint response actions directly from alerts that a rule creates, by using the **Take action** menu in the alert details flyout.
 
