@@ -1,0 +1,94 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "AWS S3 Bucket Policy Added to Allow Public Access" prebuilt detection rule.
+---
+
+# AWS S3 Bucket Policy Added to Allow Public Access
+
+## Triage and analysis
+
+### Investigating AWS S3 Bucket Policy Added to Allow Public Access
+
+This rule detects modifications to Amazon S3 bucket policies using the `PutBucketPolicy` API where both `Effect=Allow`
+and `Principal:"*"` are present. This effectively grants permissions to all AWS identities, including unauthenticated users.  
+Such exposure can result in sensitive data leaks, ransomware staging, or unauthorized data collection.  
+
+This rule focuses on policy-based exposure rather than ACL-based or block-public-access configurations.  
+It will still trigger if a bucket policy includes both `Effect=Allow` and `Effect=Deny` statements that contain `Principal:"*"`. Those cases should be reviewed to confirm whether the `Deny` statement restricts access sufficiently.
+
+#### Possible investigation steps
+
+- **Identify the Actor**
+  - Review `aws.cloudtrail.user_identity.arn`, `aws.cloudtrail.user_identity.type`, and `aws.cloudtrail.user_identity.access_key_id` to identify who made the change.
+  - Validate whether this user or role is authorized to modify S3 bucket policies.
+  - Examine `source.ip`, `source.geo`, and `user_agent.original` to identify unusual sources or tools (e.g., CLI or SDK-based activity).
+
+- **Analyze the Bucket Policy Content**
+  - Extract the full JSON from `aws.cloudtrail.request_parameters`.
+  - Look for `Effect=Allow` statements paired with `Principal:"*"`.
+  - Identify what permissions were granted — for example:
+    - `s3:GetObject` (read access to all objects)
+    - `s3:PutObject` or `s3:*` (read/write access)
+  - Check if the policy also contains any `Effect=Deny` statements targeting `Principal:"*"`.  
+    If present, determine whether these statements fully restrict public access, if so this alert can be closed.
+
+- **Assess the Impact and Scope**
+  - Review `aws.cloudtrail.resources.arn` to confirm which bucket was affected.
+  - Determine if the bucket contains sensitive, regulated, or internal data.
+  - Check for `PutPublicAccessBlock` or `DeleteBucketPolicy` events in close proximity, as attackers often disable protections first.
+
+- **Correlate with Related Activity**
+  - Review CloudTrail for `GetObject` or `ListBucket` events following the policy change to identify possible data access.
+  - Look for policy changes across multiple buckets by the same actor, suggesting scripted or automated misuse.
+
+- **Validate Intent**
+  - Contact the bucket owner or application owner to determine whether this change was part of a legitimate operation (e.g., website hosting or public dataset publishing).
+  - Review change management logs or ticketing systems for documented approval.
+
+### False positive analysis
+
+- **Intended Public Access**
+  - Buckets used for static websites, documentation hosting, or public datasets may legitimately contain `Principal:"*"`.
+  - Verify such use cases are covered by organizational policies and hardened with least-privilege permissions (e.g., read-only).
+
+- **Effect=Deny Condition**
+  - This rule does not currently exclude cases where `Principal:"*"` appears under both `Effect=Allow` and `Effect=Deny`.
+  - Analysts should review the bucket policy JSON to confirm whether `Deny` statements restrict the same resources.
+  - If access remains blocked to unauthorized entities, the alert can be dismissed as a false positive.
+
+- **Automation or Pipeline Behavior**
+  - Some automated pipelines or templates (e.g., Terraform, CloudFormation) create temporary policies with `Principal:"*"` for bootstrap access.  
+    Review timing, user agent, and role identity for expected automation patterns.
+
+### Response and remediation
+
+- **Containment**
+  - If exposure is unauthorized, immediately remove the public access policy using:
+    - `aws s3api delete-bucket-policy` or restore from version control.
+  - Re-enable Block Public Access at the account and bucket levels.
+
+- **Investigation and Scoping**
+  - Review CloudTrail and S3 access logs to identify whether external IPs accessed bucket objects after the policy change.
+  - Search for similar policy updates across other buckets in the same account or region.
+  - Validate AWS Config history for baseline deviations and determine how long the bucket was publicly exposed.
+
+- **Recovery and Hardening**
+  - Reinstate the intended bucket policy from backups or version control.
+  - Implement AWS Config rules:
+    - `s3-bucket-public-read-prohibited`
+    - `s3-bucket-public-write-prohibited`
+  - Restrict `s3:PutBucketPolicy` permissions to trusted administrative roles.
+  - Apply service control policies (SCPs) that prevent policies containing `Principal:"*"` unless explicitly approved.
+  - Enable continuous monitoring through AWS Security Hub or GuardDuty for any new public exposure events.
+
+### Additional information
+  - **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/)** 
+  - **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)** 
+  - **Security Best Practices:** [AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/).
+

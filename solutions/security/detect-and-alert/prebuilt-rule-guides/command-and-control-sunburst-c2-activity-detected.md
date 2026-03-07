@@ -1,0 +1,63 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "SUNBURST Command and Control Activity" prebuilt detection rule.
+---
+
+# SUNBURST Command and Control Activity
+
+## Triage and analysis
+
+### Investigating SUNBURST Command and Control Activity
+
+SUNBURST is a trojanized version of a digitally signed SolarWinds Orion plugin called SolarWinds.Orion.Core.BusinessLayer.dll. The plugin contains a backdoor that communicates via HTTP to third-party servers. After an initial dormant period of up to two weeks, SUNBURST may retrieve and execute commands that instruct the backdoor to transfer files, execute files, profile the system, reboot the system, and disable system services. The malware's network traffic attempts to blend in with legitimate SolarWinds activity by imitating the Orion Improvement Program (OIP) protocol, and the malware stores persistent state data within legitimate plugin configuration files. The backdoor uses multiple obfuscated blocklists to identify processes, services, and drivers associated with forensic and anti-virus tools.
+
+More details on SUNBURST can be found on the [Mandiant Report](https://www.mandiant.com/resources/sunburst-additional-technical-details).
+
+This rule identifies suspicious network connections that attempt to blend in with legitimate SolarWinds activity by imitating the Orion Improvement Program (OIP) protocol behavior.
+
+> **Note**:
+> This investigation guide uses the [Osquery Markdown Plugin](https://www.elastic.co/guide/en/security/current/invest-guide-run-osquery.html) introduced in Elastic Stack version 8.5.0. Older Elastic Stack versions will display unrendered Markdown in this guide.
+
+#### Possible investigation steps
+
+- Investigate the process execution chain (parent process tree) for unknown processes. Examine their executable files for prevalence, whether they are located in expected locations, and if they are signed with valid digital signatures.
+- Examine the host for derived artifacts that indicate suspicious activities:
+  - Analyze the executable involved using a private sandboxed analysis system.
+  - Observe and collect information about the following activities in both the sandbox and the alert subject host:
+    - Attempts to contact external domains and addresses.
+      - Use the Elastic Defend network events to determine domains and addresses contacted by the subject process by filtering by the process' `process.entity_id`.
+      - Examine the DNS cache for suspicious or anomalous entries.
+        - $osquery_0
+    - Use the Elastic Defend registry events to examine registry keys accessed, modified, or created by the related processes in the process tree.
+    - Examine the host services for suspicious or anomalous entries.
+      - $osquery_1
+      - $osquery_2
+      - $osquery_3
+  - Retrieve the files' SHA-256 hash values using the PowerShell `Get-FileHash` cmdlet and search for the existence and reputation of the hashes in resources like VirusTotal, Hybrid-Analysis, CISCO Talos, Any.run, etc.
+- Investigate potentially compromised accounts. Analysts can do this by searching for login events (for example, 4624) to the target host after the registry modification.
+
+### False positive analysis
+
+- This activity should not happen legitimately. The security team should address any potential benign true positive (B-TP), as this configuration can put the environment at risk.
+
+### Response and remediation
+
+- Initiate the incident response process based on the outcome of the triage.
+- Isolate the involved host to prevent further post-compromise behavior.
+- If the triage identified malware, search the environment for additional compromised hosts.
+  - Implement temporary network rules, procedures, and segmentation to contain the malware.
+  - Stop suspicious processes.
+  - Immediately block the identified indicators of compromise (IoCs).
+  - Inspect the affected systems for additional malware backdoors like reverse shells, reverse proxies, or droppers that attackers could use to reinfect the system.
+- Remove and block malicious artifacts identified during triage.
+- Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
+- Reimage the host operating system and restore compromised files to clean versions.
+- Upgrade SolarWinds systems to the latest version to eradicate the chance of reinfection by abusing the same vector.
+- Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
+

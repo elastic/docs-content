@@ -1,0 +1,103 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "PowerShell Suspicious Script with Screenshot Capabilities" prebuilt detection rule.
+---
+
+# PowerShell Suspicious Script with Screenshot Capabilities
+
+## Triage and analysis
+
+> **Disclaimer**:
+> This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
+
+### Investigating PowerShell Suspicious Script with Screenshot Capabilities
+
+This rule identifies PowerShell scripts that includes screenshot collection logic using `CopyFromScreen` together with bitmap classes. This pattern is commonly used to capture the interactive desktop and may indicate collection of sensitive on-screen data (for example, application content, authentication prompts, or remote session activity).
+
+Prioritize alerts on endpoints used for privileged administration or sensitive workflows, and alerts tied to accounts that do not typically run interactive PowerShell automation.
+
+#### Key alert fields to review
+
+- `user.name`, `user.domain`, `user.id`: Account execution context for correlation, prioritization, and scoping.
+- `host.name`, `host.id`: Host execution context for correlation, prioritization, and scoping.
+- `powershell.file.script_block_text`: Script block content that matched the detection logic.
+- `powershell.file.script_block_id`, `powershell.sequence`, `powershell.total`: Script block metadata to pivot to other fragments or reconstruct full script content when split across multiple events.
+- `file.path`, `file.directory`, `file.name`: File-origin context when the script block is sourced from an on-disk file.
+- `powershell.file.script_block_length`: Script block length (size) context.
+
+#### Possible investigation steps
+
+- Establish alert scope and execution context:
+  - Identify the affected system using `host.name` and `host.id`. Determine if the host is expected to have an interactive desktop session for the associated user at the time of the alert.
+  - Identify the initiating account using `user.name`, `user.domain`, and `user.id`. Assess whether the account is a typical interactive user for the host and whether the activity aligns with the user role.
+  - Review the alert time (`@timestamp`) and determine whether the timing aligns with normal business operations for the user and host.
+
+- Review and interpret the script block content:
+  - Examine `powershell.file.script_block_text` to understand what is being captured:
+    - Identify whether the capture targets the full screen or a specific region (for example, use of coordinates and dimensions passed into `CopyFromScreen`).
+    - Identify whether capture is repeated (for example, loops, timers, repeated invocations) which may indicate ongoing collection.
+    - Identify any logic that targets specific monitors, window bounds, or desktop layout.
+  - Determine how captured images are handled:
+    - Look for references indicating local image creation or saving (for example, image format usage such as PNG/JPEG/BMP, file extensions, or save routines).
+    - Look for encoding/staging behavior (for example, Base64 conversion, compression, or in-memory serialization) that could facilitate transfer.
+    - Note any referenced paths, filenames, or remote destinations embedded in the script, and capture unique strings for scoping and hunting.
+
+- Reconstruct full script logic when split across events:
+  - Use `powershell.file.script_block_id` to collect all related fragments.
+  - Order fragments using `powershell.sequence` and validate completeness using `powershell.total`.
+  - Re-review the reconstructed script for supporting capabilities beyond capture (for example, environment checks, staging, cleanup, or transfer logic).
+  - Use `powershell.file.script_block_length` to help identify unusually large or complex script blocks that may warrant deeper review.
+
+- Identify script source and provenance:
+  - If `file.path`, `file.directory`, or `file.name` are present, treat the script as file-backed:
+    - Validate whether the location is expected for administrative or support scripts in your environment.
+    - Collect the referenced file for review and compare it to known-good versions or approved repositories where applicable.
+  - If file fields are not present, treat the activity as potentially inline or dynamically generated:
+    - Pay close attention to download, decode, or dynamic compilation patterns visible in `powershell.file.script_block_text`.
+
+- Scope for related PowerShell activity using available pivots:
+  - On the same `host.id` and `user.id`, review surrounding script blocks near the alert time to identify related actions (for example, staging, transfer preparation, or artifact cleanup).
+  - Search for similar `powershell.file.script_block_text` patterns across other hosts to determine prevalence and potential lateral spread.
+  - If `file.name` or `file.path` are present, search for additional execution of the same script file across the environment.
+
+- Correlate with adjacent telemetry to determine initiation and outcomes:
+  - Using `host.id`, `host.name`, `user.id`, and the alert time window, correlate with available endpoint and security telemetry to identify:
+    - How PowerShell was initiated (interactive use vs. application-driven execution) and whether there is an unusual execution chain.
+    - Evidence of screenshot artifacts being written, moved, archived, or deleted, especially in locations referenced in `powershell.file.script_block_text`.
+    - Any outbound communication or data movement that could indicate transfer of captured images or related content.
+
+- Assess potential impact:
+  - Determine whether the host and user context suggests access to sensitive information that could have been exposed via screenshots.
+  - If screenshot artifacts are identified, preserve copies and metadata for exposure assessment and downstream response actions.
+
+### False positive analysis
+
+- Legitimate scenarios may include authorized troubleshooting, remote support workflows, UI testing, or automation that captures screenshots.
+- Validate benign explanations by confirming that the involved `user.name`/`user.id` and `host.name`/`host.id` align with expected operational ownership and that the script content in `powershell.file.script_block_text` matches known, approved implementations.
+- File-backed scripts with stable, approved locations (`file.path`/`file.name`) and consistent content are more likely to be benign. Inline or frequently changing script content, especially with staging or transfer logic, should be treated as higher risk even if screenshot capture is a documented capability.
+
+### Response and remediation
+
+- If the activity is confirmed malicious or remains suspicious after triage:
+  - Contain the affected host to limit further collection and potential data transfer.
+  - Preserve evidence:
+    - Export and retain all related script block fragments for the same `powershell.file.script_block_id` and reconstruct the full script using `powershell.sequence` and `powershell.total`.
+    - Collect any file-backed script referenced by `file.path`/`file.name`, along with any identified screenshot output paths from `powershell.file.script_block_text`.
+  - Scope and eradicate:
+    - Hunt for the same screenshot capture indicators across the environment using distinctive strings from `powershell.file.script_block_text`, as well as the involved `user.id` and `file.name` (if present).
+    - Review correlated telemetry for signs of staging or transfer and identify any additional affected hosts or accounts.
+  - Credential and access hygiene:
+    - If screenshots may have captured credentials or privileged activity, follow your incident response process for credential reset and access review for the involved account(s).
+    - Review access to sensitive systems from the affected host and user context during the relevant time window.
+
+- If the activity is confirmed benign:
+  - Document the legitimate business process, script ownership, and expected execution scope (approved users, hosts, and typical timing).
+  - Ensure the script source is controlled (when `file.path`/`file.name` are present) and that execution is limited to authorized accounts and systems.
+  - Continue monitoring for deviations in script content or execution context using the same pivots (`host.id`, `user.id`, and distinctive content in `powershell.file.script_block_text`).
+

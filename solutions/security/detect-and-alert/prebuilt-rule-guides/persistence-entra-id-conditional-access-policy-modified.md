@@ -1,0 +1,62 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "Entra ID Conditional Access Policy (CAP) Modified" prebuilt detection rule.
+---
+
+# Entra ID Conditional Access Policy (CAP) Modified
+
+## Triage and analysis
+
+## Investigation Guide: Microsoft Entra ID Conditional Access Policy (CAP) Modified
+
+Azure Conditional Access Policies (CAPs) are critical for enforcing secure access requirements such as multi-factor authentication (MFA), restricting specific users or groups, and managing sign-in conditions. Modifying these policies can be a technique for weakening an organization’s defenses and maintaining persistence after initial access.
+
+This rule detects a successful update to a Conditional Access Policy in Microsoft Entra ID (formerly Azure AD).
+
+### Possible Investigation Steps
+
+- **Identify the user who modified the policy:**
+  - Check the value of `azure.auditlogs.properties.initiated_by.user.userPrincipalName` to determine the identity that made the change.
+  - Investigate their recent activity to determine if this change was expected or authorized.
+
+- **Review the modified policy name:**
+  - Look at `azure.auditlogs.properties.target_resources.*.display_name` to find the name of the affected policy.
+  - Determine whether this policy is related to critical controls (e.g., requiring MFA for admins).
+
+- **Analyze the policy change:**
+  - Compare the `old_value` and `new_value` fields under `azure.auditlogs.properties.target_resources.*.modified_properties.*`.
+  - Look for security-reducing changes, such as:
+    - Removing users/groups from enforcement.
+    - Disabling MFA or risk-based conditions.
+    - Introducing exclusions that reduce the policy’s coverage.
+
+- **Correlate with other activity:**
+  - Pivot on `azure.auditlogs.properties.activity_datetime` to identify if any suspicious sign-ins occurred after the policy was modified.
+  - Check for related authentication logs, particularly from the same IP address (`azure.auditlogs.properties.initiated_by.user.ipAddress`).
+
+- **Assess the user's legitimacy:**
+  - Review the initiator’s Azure role, group memberships, and whether their account was recently elevated or compromised.
+  - Investigate whether this user has a history of modifying policies or if this is anomalous.
+
+### Validation & False Positive Considerations
+
+- **Authorized administrative changes:** Some organizations routinely update CAPs as part of policy tuning or role-based access reviews.
+- **Security reviews or automation:** Scripts, CI/CD processes, or third-party compliance tools may programmatically update CAPs.
+- **Employee lifecycle events:** Policy changes during employee onboarding/offboarding may include updates to access policies.
+
+If any of these cases apply and align with the activity's context, consider tuning the rule or adding exceptions for expected patterns.
+
+### Response & Remediation
+
+- Revert unauthorized or insecure changes to the Conditional Access Policy immediately.
+- Temporarily increase monitoring of CAP modifications and sign-in attempts.
+- Lock or reset the credentials of the user account that made the change if compromise is suspected.
+- Conduct a broader access review of conditional access policies and privileged user activity.
+- Implement stricter change management and alerting around CAP changes.
+

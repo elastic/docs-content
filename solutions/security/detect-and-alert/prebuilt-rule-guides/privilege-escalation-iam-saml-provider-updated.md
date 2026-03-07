@@ -1,0 +1,85 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "AWS IAM SAML Provider Updated" prebuilt detection rule.
+---
+
+# AWS IAM SAML Provider Updated
+
+## Triage and analysis
+
+### Investigating AWS IAM SAML Provider Updated
+
+AWS IAM SAML providers enable federated authentication between AWS and external identity providers (IdPs), 
+allowing users from trusted domains to access AWS resources without separate credentials. 
+Updating a SAML provider can modify the trust relationship — including the signing certificate or metadata document — 
+and, if abused, may allow an attacker to redirect authentication flows or gain access through a malicious or compromised IdP.
+
+This rule detects successful `UpdateSAMLProvider` API calls that do not originate from AWS Single Sign-On (SSO), 
+as normal SSO operations are filtered out. These changes can be significant because a single unauthorized update 
+can affect all federated authentication in the account.
+
+### Possible investigation steps
+
+- **Validate the actor and context**
+  - Review `aws.cloudtrail.user_identity.arn`, `user.name`, and `user_agent.original` to determine who performed the update.
+  - Confirm if the actor is part of an authorized identity management or platform engineering group.
+  - Review `source.ip` and `cloud.region` fields for unexpected geolocations, IP ranges, or service origins.
+
+- **Assess the scope of the modification**
+  - Parse the `aws.cloudtrail.request_parameters` for updates to `SAMLMetadataDocument` or `Certificate` attributes.
+  - Compare the new metadata with previous versions (available via AWS CLI or AWS Config) to detect unauthorized IdP URLs, 
+    certificates, or assertion endpoints.
+  - Identify whether the change replaced a valid trusted certificate with an unknown or self-signed one.
+
+- **Correlate related IAM and authentication events**
+  - Look for preceding `CreateSAMLProvider` or `DeleteSAMLProvider` activity, as attackers may replace existing trust entities.
+  - Search for follow-up logins (`AssumeRoleWithSAML`) or STS tokens issued shortly after the update — this could indicate 
+    immediate exploitation of the new configuration.
+  - Check for concurrent changes to IAM roles associated with SAML federated access.
+
+- **Confirm authorization**
+  - Coordinate with your identity management team to confirm whether the SAML provider update aligns with 
+    planned IdP maintenance or certificate rotation.
+
+### False positive analysis
+
+- **Planned SSO certificate rotation**
+  - Most legitimate SAML provider updates occur during routine certificate renewals by authorized IdP admins. 
+    Validate that the update timing aligns with planned identity provider operations.
+- **Automated infrastructure processes**
+  - CI/CD or configuration-as-code pipelines may automatically update SAML metadata as part of deployment. 
+    Verify whether this activity matches known automation patterns.
+- **Third-party IdP integrations**
+  - Some integrated SaaS applications update SAML providers programmatically. Confirm the vendor and the originating credentials before closing as benign.
+
+### Response and remediation
+
+- **Immediate review and containment**
+  - Retrieve the current SAML provider configuration using the AWS CLI (`aws iam get-saml-provider`) 
+    and compare it with the previous known-good state.
+  - If unauthorized changes are confirmed, restore the previous configuration or delete the compromised provider.
+  - Temporarily disable federated login access for affected roles or accounts until validation is complete.
+
+- **Investigation and scoping**
+  - Review CloudTrail logs for related IAM configuration changes, including `CreateRole`, `AttachRolePolicy`, or 
+    `UpdateAssumeRolePolicy` events that may expand federated trust scope.
+  - Identify any `AssumeRoleWithSAML` or `GetFederationToken` events following the update, indicating possible exploitation.
+  - Cross-check logs from your external IdP to verify if unauthorized assertions or logins were attempted post-update.
+
+- **Recovery and hardening**
+  - Limit permissions to modify SAML providers (`iam:UpdateSAMLProvider`) to a dedicated identity management role.
+  - Enforce change control documentation and peer review for all federation configuration changes.
+  - Enable AWS Config to monitor and record SAML provider resource configuration history.
+
+### Additional information
+- **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/)** 
+- **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)** 
+- **Security Best Practices:** [AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/).
+
+

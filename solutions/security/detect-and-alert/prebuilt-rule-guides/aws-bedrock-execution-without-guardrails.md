@@ -1,0 +1,45 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "AWS Bedrock Invocations without Guardrails Detected by a Single User Over a Session" prebuilt detection rule.
+---
+
+# AWS Bedrock Invocations without Guardrails Detected by a Single User Over a Session
+
+## Triage and analysis
+
+### Investigating AWS Bedrock Invocations without Guardrails Detected by a Single User Over a Session
+
+Using Amazon Bedrock Guardrails during model invocation is critical for ensuring the safe, reliable, and ethical use of AI models.
+Guardrails help manage risks associated with AI usage and ensure the output aligns with desired policies and standards.
+
+#### Possible investigation steps
+
+- Identify the user account that caused multiple model violations over a session without desired guardrail configuration and whether it should perform this kind of action.
+- Investigate the user activity that might indicate a potential brute force attack.
+- Investigate other alerts associated with the user account during the past 48 hours.
+- Consider the time of day. If the user is a human (not a program or script), did the activity take place during a normal time of day?
+- Examine the account's prompts and responses in the last 24 hours.
+- If you suspect the account has been compromised, scope potentially compromised assets by tracking Amazon Bedrock model access, prompts generated, and responses to the prompts by the account in the last 24 hours.
+
+### False positive analysis
+
+- Verify the user account that caused multiple policy violations by a single user over session, is not testing any new model deployments or updated compliance policies in Amazon Bedrock guardrails.
+
+### Response and remediation
+
+- Initiate the incident response process based on the outcome of the triage.
+- Disable or limit the account during the investigation and response.
+- Identify the possible impact of the incident and prioritize accordingly; the following actions can help you gain context:
+    - Identify the account role in the cloud environment.
+    - Identify if the attacker is moving laterally and compromising other Amazon Bedrock Services.
+    - Identify any regulatory or legal ramifications related to this activity.
+- Review the permissions assigned to the implicated user group or role behind these requests to ensure they are authorized and expected to access bedrock and ensure that the least privilege principle is being followed.
+- Determine the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
+- Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
+

@@ -1,0 +1,85 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "AWS Management Console Root Login" prebuilt detection rule.
+---
+
+# AWS Management Console Root Login
+
+## Triage and analysis
+
+### Investigating AWS Management Console Root Login
+
+The AWS root user is the original identity with unrestricted privileges over every resource in the account. Because it bypasses IAM boundaries and carries irreversible privileges, any successful root console login should be treated as a critical security event. AWS explicitly recommends locking away the root credentials and only using them for a small number of account-level administrative tasks (for example, closing an account, modifying support plans, or restoring MFA). See [Tasks that require the root user](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root).
+
+This rule detects a successful AWS Management Console login by the root user (`ConsoleLogin` events with `userIdentity.type: Root` and `event.outcome: Success`).
+
+#### Possible investigation steps
+
+- **Confirm legitimacy.**  
+  Contact the designated root credential custodian or account owner to verify whether this login was expected and approved. Root access should only occur under documented change-control conditions.
+
+- **Review contextual event details.**  
+  Examine the CloudTrail fields in the alert:
+  - `source.ip` – does it match known corporate IPs or expected admin VPNs?  
+  - `user_agent.original` – browser or automation?  
+  - `geo fields` – consistent with normal operations?  
+  - `@timestamp` – within a planned maintenance window?
+
+- **Check for prior or subsequent root activity.**  
+  Query CloudTrail for the last 30–90 days for any other root logins or root-initiated API calls. Multiple or recent root logins can indicate credential misuse.
+
+- **Correlate follow-on actions.**  
+  Look for risky API calls immediately after the login, such as:
+  - `CreateUser`, `CreateAccessKey`, `AttachRolePolicy`, `PutBucketPolicy`, `UpdateAssumeRolePolicy`, `DeleteTrail`, or `StopLogging`.  
+  These actions may indicate persistence or cover-up attempts.
+
+- **Cross-account verification.**  
+  If the root user is federated through AWS Organizations or linked accounts, confirm no simultaneous logins occurred elsewhere.
+
+### False positive analysis
+
+- **Planned administrative actions.**  
+  Some rare maintenance tasks require root credentials (for example, payment method updates). If the login aligns with documented change control and was performed using MFA by the approved owner, the alert can be closed as benign.
+- **Third-party managed account scenarios.**  
+  Managed service providers may log in as root during onboarding or support activities. Confirm via ticketing or contractual documentation.
+
+### Response and remediation
+
+**Immediate verification and containment**
+- If the login was not authorized or cannot be confirmed quickly:  
+  - Reset the root password using the AWS Management Console.  
+  - Rotate or remove any root access keys (root keys should normally not exist).  
+  - Ensure MFA is enabled and enforced on the root account.  
+  - Notify your security operations or cloud governance team.
+
+**Evidence preservation**
+- Export the alert’s CloudTrail record and all subsequent events for 1 hour after the login.  
+  Store them in a restricted, immutable S3 evidence bucket.  
+- Retain related GuardDuty findings, AWS Config history, and CloudTrail logs for the same period.
+
+**Scope and investigation**
+- Review additional events under the same `source.ip` to detect resource creation, IAM changes, or billing actions.  
+- Inspect newly created users, roles, or keys since the login time to identify potential persistence mechanisms.  
+- Check for any disabled or deleted CloudTrail trails, Security Hub findings suppression, or logging configuration changes.
+
+**Recovery and hardening**
+- Confirm MFA is working and only the authorized owner can access the root credentials.  
+- Store root credentials in an offline vault under dual-custody control.  
+- Enable organization-wide CloudTrail, GuardDuty, and Security Hub across all regions.  
+- Implement policy and automation to alert on any future `userIdentity.type: Root` logins in real time.  
+- Conduct a short post-incident review to update root-access procedures and reinforce least-privilege IAM practices.
+
+### Additional information
+
+- **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/tree/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks):** See “Account Compromise” and “Credential Compromise” playbooks for containment and recovery procedures.  
+- **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs):** Reference “Account Access Investigation” for evidence handling and credential rotation steps.  
+- **AWS Documentation:** [Tasks that require the root user](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root).  
+- **Security Best Practices:** [AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/).  
+
+

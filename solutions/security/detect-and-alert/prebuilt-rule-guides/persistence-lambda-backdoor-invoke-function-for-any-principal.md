@@ -1,0 +1,67 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "AWS Lambda Function Policy Updated to Allow Public Invocation" prebuilt detection rule.
+---
+
+# AWS Lambda Function Policy Updated to Allow Public Invocation
+
+## Triage and analysis
+
+### Investigating AWS Lambda Function Policy Updated to Allow Public Invocation
+
+AWS Lambda policies control who can invoke a function. When the `Principal` is set to `*`, the function becomes publicly invokable by any AWS account. Adversaries may modify Lambda permissions to create a stealthy execution backdoor or to maintain persistence inside an AWS environment. This activity is uncommon in most production environments and should receive careful scrutiny when detected.
+
+### Possible investigation steps
+
+**Identify the actor**
+- Identify the actor who made the change by reviewing `aws.cloudtrail.user_identity.arn` and access key ID. Determine whether this principal typically administers Lambda functions.
+
+**Review request details**
+- Review request details in `aws.cloudtrail.request_parameters` to understand the exact permission added:
+  - Confirm that the `Principal` is set to `"*"`.
+  - Note the `Action` (`lambda:InvokeFunction`) and any `SourceArn` restrictions (sometimes present, often missing in malicious cases).
+
+**Analyze source context**
+- Check the source of the request using `source.ip`, geo information, and user agent. Unexpected networks, automation tools, or CLI usage may indicate credential compromise.
+
+**Correlate timing and related events**
+- Evaluate timing and sequence by correlating `@timestamp` with other events. Look for surrounding actions such as:
+  - Creation or update of Lambda function code.
+  - Publishing new Lambda layers.
+  - Changes to roles attached to the function.
+
+**Assess function sensitivity and impact**
+- Assess the function’s role and data sensitivity. Determine whether public invocation could:
+  - Enable unmonitored code execution,
+  - Trigger access to internal resources via the function’s IAM role,
+  - Be chained with persistence or privilege escalation behavior.
+
+**Validate operational intent**
+- Validate the operational context. Confirm with the function owner whether the permission change was intentional, part of a deployment, or unexpected.
+
+### False positive analysis
+
+- Public invocation may be intentional for certain workloads (e.g., webhook handlers, openly accessible compute functions). Compare the event with documentation, IaC templates, or the deployment pipeline.
+- Some teams may regularly modify permissions during testing or refactoring; check whether this aligns with existing workflows.
+- Evaluate whether the function already had permissive invocation policies and whether the update is part of expected configuration drift.
+
+### Response and remediation
+
+- Remove unauthorized public invocation permissions immediately by reverting the Lambda function policy to the approved baseline.
+- Investigate for follow-on activity: execution of the function, updates to code, modifications to IAM roles, or API calls issued using the function's role.
+- Rotate or disable credentials associated with the identity that issued the `AddPermission` call if compromise is suspected.
+- Enable or refine monitoring for Lambda policy updates, layer additions, and code changes to detect future unauthorized modifications.
+- Conduct a security review of the Lambda function and any downstream resources it can access to ensure no misuse has occurred.
+- Work with the application team to enforce least-privilege invocation policies and deploy guardrails (e.g., SCPs, IAM Conditions, or automated compliance checks) preventing public invocation unless explicitly authorized.
+
+### Additional information
+- **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/)** 
+- **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)** 
+- **[AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/)**
+

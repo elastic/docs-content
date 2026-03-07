@@ -1,0 +1,94 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "PowerShell Script with Token Impersonation Capabilities" prebuilt detection rule.
+---
+
+# PowerShell Script with Token Impersonation Capabilities
+
+## Triage and analysis
+
+> **Disclaimer**:
+> This guide was created by humans with the assistance of generative AI. While its contents have been manually curated to include the most valuable information, always validate assumptions and adjust procedures to match your internal runbooks and incident triage and response policies.
+
+### Investigating PowerShell Script with Token Impersonation Capabilities
+
+This rule Detects PowerShell scripts that includes token manipulation and impersonation primitives. Such functionality can be used to execute follow-on actions under a different security context, including elevated or alternate user tokens. The primary investigation goals are to (1) reconstruct and understand the script intent, (2) validate whether the activity is authorized, and (3) identify any resulting privileged execution on the host.
+
+#### Key alert fields to review
+
+- `user.name`, `user.domain`, `user.id`: Account execution context for correlation, prioritization, and scoping.
+- `host.name`, `host.id`: Host execution context for correlation, prioritization, and scoping.
+- `powershell.file.script_block_text`: Script block content that matched the detection logic.
+- `powershell.file.script_block_id`, `powershell.sequence`, `powershell.total`: Script block metadata to pivot to other fragments or reconstruct full script content when split across multiple events.
+- `file.path`, `file.directory`, `file.name`: File-origin context when the script block is sourced from an on-disk file.
+- `powershell.file.script_block_length`: Script block length (size) context.
+
+#### Possible investigation steps
+
+- Preserve and reconstruct the full script block content:
+  - Capture `powershell.file.script_block_text` from the alert for analysis and evidence retention.
+  - If the script is logged in multiple fragments, pivot on `powershell.file.script_block_id` and reassemble in order using `powershell.sequence`. Use `powershell.total` to confirm you have the complete set of fragments.
+  - Use `powershell.file.script_block_length` to help gauge completeness and identify unusually large blocks that may contain reusable libraries or modules.
+
+- Identify which token technique is present and what outcome the script is attempting:
+  - Review the reconstructed content for indicators of:
+    - Token duplication and impersonation (for example: `DuplicateToken`, `DuplicateTokenEx`, `SetThreadToken`, `ImpersonateLoggedOnUser`, `NtImpersonateThread`).
+    - Named pipe impersonation (`ImpersonateNamedPipeClient`).
+    - Privilege enablement (`AdjustTokenPrivileges` with `SeDebugPrivilege`).
+    - Token-based process creation (for example: `CreateProcessWithTokenW`, `CreateProcessAsUserW`, `CreateProcessAsUserA`) and related extended startup attributes (`STARTUPINFOEX`, `UpdateProcThreadAttribute`).
+    - Higher-level wrappers commonly associated with token manipulation (for example: `Invoke-TokenManipulation`).
+  - Determine whether the script only defines helper functions/types versus actively invoking them. Content that both defines and calls token APIs within the same execution window is higher risk.
+  - Note any embedded targeting details in the script content (for example: intended user context, target process identifiers, or follow-on payload references), and preserve them for scoping and hunting.
+
+- Validate execution context and expectedness:
+  - Use `host.name` and `host.id` to understand where the activity occurred and whether the system role typically requires privileged PowerShell usage.
+  - Use `user.name`, `user.domain`, and `user.id` to identify the executing account and determine whether this user is expected to run scripts that manipulate access tokens on this host.
+  - Prioritize alerts involving unexpected users, unusual hosts (for example, servers with limited admin access), or repeated/recurrent script blocks indicating persistence or automation.
+
+- Assess script provenance when file context is present:
+  - If `file.path` is populated, determine whether the script came from a known module or an on-disk script file, and whether the location and naming are consistent with approved tooling.
+  - If only `file.directory` and `file.name` are populated, use them to pivot to related script blocks and identify other executions from the same origin.
+  - If the origin appears unfamiliar or user-writable, treat the artifact as suspicious and prioritize collecting the referenced file (and any adjacent module content) for deeper analysis.
+
+- Correlate with surrounding host activity to determine impact:
+  - Pivot on `host.name` and the alert `@timestamp` into adjacent telemetry to identify the PowerShell host process and its initiating parent/source (interactive session, remote management, scheduled execution, or another process).
+  - Look for follow-on activity shortly after the alert time that would indicate successful impersonation or privilege escalation, such as:
+    - New process execution under a different user context than `user.name`.
+    - Privileged actions that require elevated rights (for example, service/task changes, registry modifications, or access to protected resources).
+  - If multiple script blocks occur close together for the same `user.id` and `host.id`, review them as a single activity chain to understand staging, execution, and any post-escalation behavior.
+
+- Scope and hunt for related activity:
+  - Search for additional occurrences of distinctive substrings from `powershell.file.script_block_text` (function names, API names, unique strings) across other users and hosts to identify reuse.
+  - Review whether the same `user.id` is associated with similar script blocks on other `host.id` values, which can indicate broad automation or a compromised account used across systems.
+  - If `file.path` is present, check for the same path and file name across the environment, and identify unexpected hosts where the artifact appears.
+
+### False positive analysis
+
+- Legitimate administrative automation may use token impersonation to run tasks under alternate credentials, perform controlled privilege transitions, or integrate with management workflows.
+- Development and troubleshooting scripts may contain token API references as reusable helpers without being used for malicious outcomes.
+
+To reduce false positives, focus on provenance and behavior: scripts from known, approved sources and executed by expected administrative identities on expected hosts are more likely benign, while ad-hoc or newly introduced scripts, unfamiliar file origins, and follow-on privileged execution increase concern.
+
+### Response and remediation
+
+- If the activity is unauthorized or suspicious:
+  - Contain the host to prevent further privileged execution and limit lateral movement according to your incident response procedures.
+  - Preserve evidence: the reconstructed script block content, associated `powershell.file.script_block_id` fragments, and any referenced on-disk artifacts from `file.path` (or `file.directory`/`file.name`).
+  - Investigate and remediate outcomes of token impersonation, including processes started under unexpected security contexts and any privileged system changes occurring after the alert time.
+
+- Reduce attacker access and recurrence:
+  - Review the executing account identified in `user.id`; reset credentials and invalidate active sessions as appropriate.
+  - Review privileged access assignments for the involved accounts and hosts, and remove unauthorized privilege grants where identified.
+  - If the script enabled sensitive privileges (for example, `SeDebugPrivilege`), assess for additional post-exploitation activity that could leverage enhanced access to protected processes and resources.
+
+- Eradicate and recover:
+  - Remove unauthorized scripts/modules and any secondary artifacts or persistence mechanisms discovered during investigation.
+  - Monitor for repeat executions by hunting for the same token manipulation indicators observed in `powershell.file.script_block_text` across the environment.
+  - Ensure PowerShell script block logging is enabled and retained on systems where PowerShell is permitted so future activity can be reconstructed and scoped effectively.
+

@@ -1,0 +1,49 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "Potential notify_on_release Container Escape Detected via Defend for Containers" prebuilt detection rule.
+---
+
+# Potential notify_on_release Container Escape Detected via Defend for Containers
+
+## Setup
+
+## Triage and analysis
+
+> **Disclaimer**:
+> This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
+
+### Investigating Potential notify_on_release Container Escape Detected via Defend for Containers
+
+In containerized environments, the `notify_on_release` file in cgroups can trigger host-level commands when a cgroup becomes empty. Adversaries exploit this by modifying the file from privileged containers, potentially executing unauthorized commands on the host. The detection rule monitors changes to `notify_on_release` files, flagging suspicious modifications indicative of privilege escalation attempts.
+
+### Possible investigation steps
+
+- Identify the container from which the modification attempt originated by examining the associated metadata, such as container ID or name, to understand the context of the alert.
+- Check the privileges and capabilities assigned to the container, specifically looking for SYS_ADMIN capabilities, which could allow modification of cgroup settings.
+- Investigate the release_agent file associated with the cgroup to determine if any unauthorized or suspicious commands are configured to execute upon cgroup release.
+- Review recent activity logs and command history within the container to identify any anomalous behavior or commands that could indicate an attempt to exploit the notify_on_release mechanism.
+- Assess the potential impact on the host system by determining if any unauthorized commands have been executed as a result of the modification, and evaluate the need for containment or remediation actions.
+
+### False positive analysis
+
+- Routine maintenance tasks in containerized environments may involve legitimate modifications to the notify_on_release file. Users should verify if such changes align with scheduled maintenance activities.
+- Automated container orchestration tools might modify cgroup settings, including the notify_on_release file, as part of their normal operations. Users can create exceptions for known orchestration tools by identifying their specific process IDs or user accounts.
+- Some containerized applications may require modifications to cgroup settings for performance tuning or resource management. Users should document these applications and exclude their expected behavior from triggering alerts.
+- Development and testing environments often involve frequent changes to container configurations, including cgroup files. Users can reduce noise by applying the rule only to production environments or by setting up separate monitoring profiles for non-production systems.
+- If a specific container consistently triggers alerts without malicious intent, users can whitelist the container by its unique identifier or image name, ensuring that only unexpected changes are flagged.
+
+### Response and remediation
+
+- Immediately isolate the affected container to prevent further unauthorized actions. This can be done by stopping the container or disconnecting it from the network.
+- Review and revoke any unnecessary privileges or capabilities, such as SYS_ADMIN, from the container to minimize the risk of exploitation.
+- Inspect the release_agent file associated with the cgroup to identify any unauthorized commands or scripts that may have been set for execution.
+- Remove or reset any malicious or unauthorized entries in the release_agent file to prevent further execution of host-level commands.
+- Conduct a thorough audit of the host system for any signs of compromise or unauthorized access, focusing on logs and system changes around the time of the alert.
+- Patch and update the container runtime and host operating system to address any known vulnerabilities that could facilitate container escapes.
+- Enhance monitoring and alerting for similar activities by ensuring that all cgroup modifications are logged and reviewed regularly, and consider implementing additional security controls such as AppArmor or SELinux to restrict container capabilities.

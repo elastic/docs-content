@@ -1,0 +1,48 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "Entra ID High Risk Sign-in" prebuilt detection rule.
+---
+
+# Entra ID High Risk Sign-in
+
+## Triage and analysis
+
+### Investigating Entra ID High Risk Sign-in
+
+This rule detects high-risk sign-ins in Microsoft Entra ID as identified by Identity Protection. These sign-ins are flagged with a risk level of `high` during the authentication process, indicating a strong likelihood of compromise based on Microsoft’s machine learning and heuristics. This alert is valuable for identifying accounts under active attack or compromise using valid credentials.
+
+### Possible investigation steps
+
+- Review the `azure.signinlogs.properties.user_id` and associated identity fields to determine the impacted user.
+- Inspect the `risk_level_during_signin` field and confirm it is set to `high`. If `risk_level_aggregated` is also present and high, this suggests sustained risk across multiple sign-ins.
+- Check `source.ip`, `source.geo.country_name`, and `source.as.organization.name` to evaluate the origin of the sign-in attempt. Flag unexpected geolocations or ASNs (e.g., anonymizers or residential ISPs).
+- Review the `device_detail` fields such as `operating_system` and `browser` for new or unrecognized devices.
+- Validate the `client_app_used` (e.g., legacy protocols, desktop clients) and `app_display_name` (e.g., Office 365 Exchange Online) to assess if risky legacy methods were involved.
+- Examine `applied_conditional_access_policies` to verify if MFA or blocking policies were triggered or bypassed.
+- Check `authentication_details.authentication_method` to see if multi-factor authentication was satisfied (e.g., "Mobile app notification").
+- Correlate this activity with other alerts or sign-ins from the same account within the last 24–48 hours.
+- Contact the user to confirm if the sign-in was expected. If not, treat the account as compromised and proceed with containment.
+
+### False positive analysis
+
+- Risky sign-ins may be triggered during legitimate travel, VPN use, or remote work scenarios from unusual locations.
+- In some cases, users switching devices or networks rapidly may trigger high-risk scores.
+- Automated scanners or penetration tests using known credentials may mimic high-risk login behavior.
+- Confirm whether the risk was remediated automatically by Microsoft Identity Protection before proceeding with escalations.
+
+### Response and remediation
+
+- If compromise is suspected, immediately disable the user account and revoke active sessions and tokens.
+- Initiate credential reset and ensure multi-factor authentication is enforced.
+- Review audit logs and sign-in history for the account to assess lateral movement or data access post sign-in.
+- Inspect activity on services such as Exchange, SharePoint, or Azure resources to understand the impact.
+- Determine if the attacker leveraged other accounts or escalated privileges.
+- Use the incident findings to refine conditional access policies, such as enforcing MFA for high-risk sign-ins or blocking legacy protocols.
+- Review and tighten policies that allow sign-ins from high-risk geographies or unknown devices.
+

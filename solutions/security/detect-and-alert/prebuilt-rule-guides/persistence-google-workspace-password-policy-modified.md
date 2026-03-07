@@ -1,0 +1,68 @@
+---
+applies_to:
+  stack: ga all
+  serverless:
+    security: ga all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Investigation guide for the "Google Workspace Password Policy Modified" prebuilt detection rule.
+---
+
+# Google Workspace Password Policy Modified
+
+## Triage and analysis
+
+### Investigating Google Workspace Password Policy Modified
+
+Google Workspace administrators manage password policies to enforce password requirements for an organization's compliance needs. Administrators have the capability to set restrictions on password length, reset frequency, reuse capability, expiration, and much more. Google Workspace also allows multi-factor authentication (MFA) and 2-step verification (2SV) for authentication.
+
+Threat actors might rely on weak password policies or restrictions to attempt credential access by using password stuffing or spraying techniques for cloud-based user accounts. Administrators might introduce increased risk to credential access from a third-party by weakening the password restrictions for an organization.
+
+This rule detects when a Google Workspace password policy is modified to decrease password complexity or to adjust the reuse and reset frequency.
+
+#### Possible investigation steps
+
+- Identify associated user account(s) by reviewing the `user.name` or `source.user.email` fields in the alert.
+- Identify the password setting that was created or adjusted by reviewing `google_workspace.admin.setting.name` field.
+- Check if a password setting was enabled or disabled by reviewing the `google_workspace.admin.new_value` and `google_workspace.admin.old_value` fields.
+- After identifying the involved user, verify administrative privileges are scoped properly to change.
+- Filter `event.dataset` for `google_workspace.login` and aggregate by `user.name`, `event.action`.
+  - The `google_workspace.login.challenge_method` field can be used to identify the challenge method used for failed and successful logins.
+
+### False positive analysis
+
+- After identifying the user account that updated the password policy, verify whether the action was intentional.
+- Verify whether the user should have administrative privileges in Google Workspace to modify password policies.
+- Review organizational units or groups the role may have been added to and ensure the new privileges align properly.
+
+### Response and remediation
+
+- Initiate the incident response process based on the outcome of the triage.
+- Consider resetting passwords for potentially affected users.
+- Disable or limit the account during the investigation and response.
+- Identify the possible impact of the incident and prioritize accordingly; the following actions can help you gain context:
+    - Identify the account role in the cloud environment.
+    - Assess the criticality of affected services and servers.
+    - Work with your IT team to identify and minimize the impact on users.
+    - Identify if the attacker is moving laterally and compromising other accounts, servers, or services.
+    - Identify any regulatory or legal ramifications related to this activity.
+- Investigate credential exposure on systems compromised or used by the attacker to ensure all compromised accounts are identified. Reset passwords or delete API keys as needed to revoke the attacker's access to the environment. Work with your IT teams to minimize the impact on business operations during these actions.
+- Reactivate multi-factor authentication for the user.
+- Review the permissions assigned to the implicated user to ensure that the least privilege principle is being followed.
+- Implement security best practices [outlined](https://support.google.com/a/answer/7587183) by Google.
+- Determine the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
+- Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
+
+## Setup
+
+The Google Workspace Fleet integration, the Filebeat module, or data that's similarly structured is required for this rule.
+
+### Important Information Regarding Google Workspace Event Lag Times
+- As per Google's documentation, Google Workspace administrators might observe lag times ranging from several minutes to 3 days between the event occurrence time and the event being visible in the Google Workspace admin/audit logs.
+- This rule is configured to run every 10 minutes with a lookback time of 130 minutes.
+- To reduce the risk of false negatives, consider reducing the interval that the Google Workspace (formerly G Suite) Filebeat module polls Google's reporting API for new events.
+- By default, `var.interval` is set to 2 hours (2h). Consider changing this interval to a lower value, such as 10 minutes (10m).
+- See the following references for further information:
+  - https://support.google.com/a/answer/7061566
+  - https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-google_workspace.html
