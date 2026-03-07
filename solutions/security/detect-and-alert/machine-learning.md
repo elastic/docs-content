@@ -186,4 +186,4 @@ The following settings are specific to {{ml}} rules. For settings shared across 
 :   Reduce repeated or duplicate alerts by grouping them on one or more fields. Only anomaly fields are available for suppression because {{ml}} alerts do not contain source event fields. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
 
 **Related integrations** (optional)
-:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rules.md#rule-prerequisites).
+:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/about-prebuilt-rules.md#rule-prerequisites).

@@ -194,4 +194,4 @@ The following settings are specific to custom query rules. For settings shared a
 :   An informational list of fields the rule needs to function. This does not affect rule execution. It helps other users understand the rule's data dependencies.
 
 **Related integrations** (optional)
-:   Associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rules.md#rule-prerequisites).
+:   Associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/about-prebuilt-rules.md#rule-prerequisites).

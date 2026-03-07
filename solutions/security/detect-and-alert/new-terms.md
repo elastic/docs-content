@@ -157,4 +157,4 @@ The following settings are specific to new terms rules. For settings shared acro
 :   An informational list of fields the rule needs to function. This does not affect rule execution.
 
 **Related integrations** (optional)
-:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rules.md#rule-prerequisites).
+:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/about-prebuilt-rules.md#rule-prerequisites).

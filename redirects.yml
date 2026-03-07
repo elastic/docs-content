@@ -736,6 +736,11 @@ redirects:
     anchors:
       'load-prebuilt-rules': 'load-prebuilt-rules'
 
+  # About prebuilt rules page created
+  # Content moved from prebuilt-rules.md to about-prebuilt-rules.md:
+  # #prebuilt-rule-tags, #rule-prerequisites
+  # Cross-file anchor redirects not supported; internal links updated.
+
   # Deleted — content consolidated into manage-detection-alerts and cases pages
   'solutions/security/detect-and-alert/add-detection-alerts-to-cases.md':
     to: 'solutions/security/detect-and-alert/manage-detection-alerts.md'
