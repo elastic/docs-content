@@ -56,10 +56,6 @@ You should run `make setup` every time you begin work on a contribution, because
 ::::{step} Make your docs changes
 Edit the relevant TypeScript files in the `specification` directory. Use JSDoc comments to describe your API interfaces, following the [guidelines](./guidelines.md). Add or update summaries, descriptions, tags, metadata, links, and examples as needed.
 
-:::{important}
-If you're adding a new API, you must first create a REST API specification file in the [`specification/_json_spec`](https://github.com/elastic/elasticsearch-specification/tree/main/specification/_json_spec) directory.
-:::
-
 ::::{step} Format, generate and validate your changes
 ```shell
 make contrib
@@ -90,7 +86,7 @@ The `transform-to-openapi` command (run by `make contrib`) is used for client li
 
 ::::{step} Apply overlays
 
-[OpenAPI overlays](https://github.com/OAI/Overlay-Specification?tab=readme-ov-file#overlay-specification) are used to handle publisher-specific requirements or work around rendering limitations. For example, they sort the list of tags alphabetically and apply `x-model` extensions to abbreviate deeply nested/recursive schema objects.
+[OpenAPI overlays](https://github.com/OAI/Overlay-Specification?tab=readme-ov-file#overlay-specification) are used to handle publisher-specific requirements or work around rendering limitations. For example, they sort the list of tags alphabetically and apply `x-model` extensions to abbreviate deeply nested and recursive schema objects.
 
 ```shell
 make overlay-docs
