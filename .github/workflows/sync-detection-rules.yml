@@ -1,4 +1,4 @@
-name: Sync Detection Rules
+name: Sync Detection Rules to CSV
 
 on:
   schedule:
@@ -7,13 +7,14 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Dry run (skip push to main)'
+        description: 'Dry run (skip PR creation)'
         required: false
         default: false
         type: boolean
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   sync-rules:
@@ -37,37 +38,79 @@ jobs:
       - name: Sync detection rules
         id: sync
         run: |
-          python .github/scripts/sync-detection-rules/sync_rules.py --verbose
+          OUTPUT=$(python .github/scripts/sync-detection-rules/sync_rules.py --verbose)
+          echo "$OUTPUT"
 
-      - name: Commit and push changes
+          CSV_PATHS=""
+          ADD_PATHS=""
+          while IFS= read -r line; do
+            path="${line#OUTPUT_CSV_PATH=}"
+            echo "Found CSV: ${path}"
+            if [ -n "$CSV_PATHS" ]; then
+              CSV_PATHS="${CSV_PATHS}\n${path}"
+              ADD_PATHS="${ADD_PATHS}
+          ${path}"
+            else
+              CSV_PATHS="${path}"
+              ADD_PATHS="${path}"
+            fi
+          done < <(echo "$OUTPUT" | grep '^OUTPUT_CSV_PATH=')
+
+          echo "csv_paths<<EOF" >> "$GITHUB_OUTPUT"
+          echo -e "$CSV_PATHS" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+          echo "add_paths<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$ADD_PATHS" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Create Pull Request
         if: github.event.inputs.dry_run != 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add solutions/security/detect-and-alert/prebuilt-rule-catalog/
-          git add solutions/security/detect-and-alert/prebuilt-rule-guides/
-          git add solutions/toc.yml
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
-          git commit -m "Update prebuilt detection rules (catalog, guides, TOC)
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        with:
+          token: ${{ github.token }}
+          base: main
+          branch: automated/detection-rules-sync
+          delete-branch: true
+          title: "Update prebuilt detection rule catalog CSVs"
+          commit-message: |
+            Update prebuilt detection rule catalog CSVs
 
-          Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          git push origin main
+            Generated: ${{ github.run_id }}
+            Workflow run: ${{ github.run_number }}
+          body: |
+            ## Summary
 
-      - name: Upload artifacts
+            This PR updates the prebuilt detection rule catalog CSV files
+            with the latest rules from
+            [elastic/detection-rules](https://github.com/elastic/detection-rules).
+
+            ### Next Steps
+
+            - [ ] Review the CSV changes
+            - [ ] Verify rule counts look reasonable
+            - [ ] Merge when ready
+
+            ---
+
+            Automated update from [sync-detection-rules workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          add-paths: |
+            ${{ steps.sync.outputs.add_paths }}
+
+      - name: Upload CSV artifacts
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: detection-rules-sync-${{ github.run_number }}
+          name: detection-rule-csvs-${{ github.run_number }}
           path: |
-            solutions/security/detect-and-alert/prebuilt-rule-catalog/*.csv
+            ${{ steps.sync.outputs.add_paths }}
           retention-days: 30
           if-no-files-found: warn
 
       - name: Generate job summary
         if: always()
+        env:
+          CSV_PATHS: ${{ steps.sync.outputs.csv_paths }}
         run: |
           echo "## Detection Rules Sync Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -75,14 +118,10 @@ jobs:
           echo "**Dry Run:** ${{ github.event.inputs.dry_run }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          echo "### CSV files" >> $GITHUB_STEP_SUMMARY
-          for csv_path in solutions/security/detect-and-alert/prebuilt-rule-catalog/*.csv; do
-            [ -f "$csv_path" ] || continue
-            row_count=$(($(wc -l < "$csv_path") - 1))
-            echo "- **${csv_path}**: ${row_count} rules" >> $GITHUB_STEP_SUMMARY
+          echo -e "$CSV_PATHS" | while IFS= read -r csv_path; do
+            [ -z "$csv_path" ] && continue
+            if [ -f "$csv_path" ]; then
+              row_count=$(($(wc -l < "$csv_path") - 1))
+              echo "- **${csv_path}**: ${row_count} rules" >> $GITHUB_STEP_SUMMARY
+            fi
           done
-
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Investigation guides" >> $GITHUB_STEP_SUMMARY
-          guide_count=$(find solutions/security/detect-and-alert/prebuilt-rule-guides -name '*.md' 2>/dev/null | wc -l)
-          echo "- **Total guide pages**: ${guide_count}" >> $GITHUB_STEP_SUMMARY
