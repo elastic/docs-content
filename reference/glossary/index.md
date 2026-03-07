@@ -259,7 +259,7 @@ $$$glossary-epr$$$ Elastic Package Registry (EPR)
 :   A service hosted by Elastic that stores Elastic package definitions in a central location. See the [EPR GitHub repository](https://github.com/elastic/package-registry).
 
 $$$glossary-elastic-security-indices$$$ {{elastic-sec}} indices
-:   Indices containing host and network source events (such as `packetbeat-*`, `log-*`, and `winlogbeat-*`). When you [create a new rule in {{elastic-sec}}](/solutions/security/detect-and-alert/create-detection-rule.md), the default index pattern corresponds to the values defined in the `securitySolution:defaultIndex` advanced setting.
+:   Indices containing host and network source events (such as `packetbeat-*`, `log-*`, and `winlogbeat-*`). When you [create a new rule in {{elastic-sec}}](/solutions/security/detect-and-alert/using-the-rule-builder.md), the default index pattern corresponds to the values defined in the `securitySolution:defaultIndex` advanced setting.
 
 $$$glossary-elastic-stack$$$ {{stack}}
 :   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data.
@@ -425,7 +425,7 @@ $$$glossary-indexer$$$ indexer
 :   A {{ls}} instance that is tasked with interfacing with an {{es}} cluster in order to index [event](/reference/glossary/index.md#glossary-event) data.
 
 $$$glossary-indicator-index$$$ indicator index
-:   Indices containing suspect field values in {{elastic-sec}}. [Indicator match rules](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule) use these indices to compare their field values with source event values contained in [{{elastic-sec}} indices](/reference/glossary/index.md#glossary-elastic-security-indices).
+:   Indices containing suspect field values in {{elastic-sec}}. [Indicator match rules](/solutions/security/detect-and-alert/indicator-match.md) use these indices to compare their field values with source event values contained in [{{elastic-sec}} indices](/reference/glossary/index.md#glossary-elastic-security-indices).
 
 $$$glossary-inference-aggregation$$$ inference aggregation
 :   A pipeline aggregation that references a [trained model](/reference/glossary/index.md#glossary-trained-model) in an aggregation to infer on the results field of the parent bucket aggregation. It enables you to use supervised {{ml}} at search time.
