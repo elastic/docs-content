@@ -55,7 +55,7 @@ TACTIC_ORDER = [
     "Impact",
 ]
 
-CSV_COLUMNS = ["Name", "Description", "Technique", "Rule Type", "Severity", "Source"]
+CSV_COLUMNS = ["Name", "Technique", "Rule Type", "Severity", "Source"]
 
 
 def tactic_to_filename(tactic: str) -> str:
@@ -179,7 +179,6 @@ def write_csv_file(filepath: str, rows: List[Dict], verbose: bool = False):
             )
             writer.writerow([
                 r["name"],
-                r["description"],
                 r["techniques"],
                 r["rule_type"],
                 r["severity"],
