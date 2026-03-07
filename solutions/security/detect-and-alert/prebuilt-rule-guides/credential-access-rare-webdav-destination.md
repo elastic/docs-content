@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Rare Connection to WebDAV Target" prebuilt detection rule.
+description: 'Investigation guide for the "Rare Connection to WebDAV Target" prebuilt detection rule.'
 ---
 
 # Rare Connection to WebDAV Target

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS STS Role Assumption by Service" prebuilt detection rule.
+description: 'Investigation guide for the "AWS STS Role Assumption by Service" prebuilt detection rule.'
 ---
 
 # AWS STS Role Assumption by Service
@@ -54,4 +54,3 @@ This rule identifies instances where AWS STS (Security Token Service) is used to
 ### Additional Information
 
 For more information on managing and securing AWS STS, refer to the [AWS STS documentation](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html) and AWS security best practices.
-

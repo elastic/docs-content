@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious MS Office Child Process" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious MS Office Child Process" prebuilt detection rule.'
 ---
 
 # Suspicious MS Office Child Process
@@ -57,4 +57,3 @@ This rule looks for suspicious processes spawned by MS Office programs. This is 
     - Remove emails from the sender from mailboxes.
     - Consider improvements to the security awareness program.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution of COM object via Xwizard" prebuilt detection rule.
+description: 'Investigation guide for the "Execution of COM object via Xwizard" prebuilt detection rule.'
 ---
 
 # Execution of COM object via Xwizard

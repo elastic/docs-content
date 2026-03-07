@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Okta User Auth Events with Same Device Token Hash Behind a Proxy" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Okta User Auth Events with Same Device Token Hash Behind a Proxy" prebuilt detection rule.'
 ---
 
 # Multiple Okta User Auth Events with Same Device Token Hash Behind a Proxy
@@ -52,4 +52,3 @@ This rule detects when Okta user authentication events are reported for multiple
         - Reset passwords and reset MFA for the user.
 - If this is a false positive, consider adding the `okta.debug_context.debug_data.dt_hash` field to the `exceptions` list in the rule.
     - This will prevent future occurrences of this event for this device from triggering the rule.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Outbound Scheduled Task Activity via PowerShell" prebuilt detection rule.
+description: 'Investigation guide for the "Outbound Scheduled Task Activity via PowerShell" prebuilt detection rule.'
 ---
 
 # Outbound Scheduled Task Activity via PowerShell

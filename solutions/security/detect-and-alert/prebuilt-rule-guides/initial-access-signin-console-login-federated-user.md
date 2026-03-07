@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Sign-In Console Login with Federated User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Sign-In Console Login with Federated User" prebuilt detection rule.'
 ---
 
 # AWS Sign-In Console Login with Federated User
@@ -55,4 +55,3 @@ Federated users in AWS are granted temporary credentials to access resources, of
   - Ensure IdP policy enforces MFA for AWS app access; re-verify role trust and least-privilege policies.
 - Implement or enforce multi-factor authentication (MFA) for all federated user accounts to enhance security and prevent similar incidents in the future.
 - Review and update IAM policies and roles associated with federated users to ensure they follow the principle of least privilege.
-

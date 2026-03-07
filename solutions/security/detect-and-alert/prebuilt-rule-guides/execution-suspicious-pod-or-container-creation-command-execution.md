@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Pod or Container Creation with Suspicious Command-Line" prebuilt detection rule.
+description: 'Investigation guide for the "Pod or Container Creation with Suspicious Command-Line" prebuilt detection rule.'
 ---
 
 # Pod or Container Creation with Suspicious Command-Line
@@ -41,4 +41,3 @@ This rule flags pods or containers started via orchestration or runtime tools th
 - Rebuild compromised nodes or redeploy workloads with known-good images, rotate cluster secrets and SSH keys, and validate baseline integrity with file hashes and admission scans before returning to service.
 - Escalate to incident response if the actor is unverified or commands touched /etc/shadow or /etc/sudoers, used privileged containers or hostPath to access the host, or opened external connections or listening ports on the node.
 - Harden by enforcing admission controls to deny pods that start /bin/sh or /bin/bash as PID 1, block privileged/hostNetwork/hostPID/hostPath, apply per-namespace egress policies, and restrict RBAC so only approved admins can run kubectl run --restart=Never or docker/nerdctl run.
-

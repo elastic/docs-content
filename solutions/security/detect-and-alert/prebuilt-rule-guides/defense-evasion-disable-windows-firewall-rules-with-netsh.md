@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Disable Windows Firewall Rules via Netsh" prebuilt detection rule.
+description: 'Investigation guide for the "Disable Windows Firewall Rules via Netsh" prebuilt detection rule.'
 ---
 
 # Disable Windows Firewall Rules via Netsh
@@ -40,4 +40,3 @@ This rule identifies patterns related to disabling the Windows firewall or its r
 - Review the privileges assigned to the involved users to ensure that the least privilege principle is being followed.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

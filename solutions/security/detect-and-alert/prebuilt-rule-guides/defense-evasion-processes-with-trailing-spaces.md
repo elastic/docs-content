@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Processes with Trailing Spaces" prebuilt detection rule.
+description: 'Investigation guide for the "Processes with Trailing Spaces" prebuilt detection rule.'
 ---
 
 # Processes with Trailing Spaces
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects execution of binaries whose names end with a space, a Unix-sty
 - Reinstall or restore the legitimate binary from trusted packages or gold images, verify checksums and code signing, update scripts to use absolute paths and trimmed variables, and rotate credentials if the lookalike was a trojan of ssh, curl, or ps.
 - Escalate to incident response if the spaced executable resides in system directories (/bin, /usr/bin, /usr/local/bin), runs as root or via sudo, repeatedly respawns after removal, or opens external network connections.
 - Harden by enabling file integrity monitoring for filenames with trailing whitespace or Unicode confusables, removing user-writable directories from global PATH and enforcing write protections, configuring cron/launchd with sanitized PATH, and applying noexec or sticky-bit policies on shared temp directories.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious System Commands Executed by Previously Unknown Executable" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious System Commands Executed by Previously Unknown Executable" prebuilt detection rule.'
 ---
 
 # Suspicious System Commands Executed by Previously Unknown Executable

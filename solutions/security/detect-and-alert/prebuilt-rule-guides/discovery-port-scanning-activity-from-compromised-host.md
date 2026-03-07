@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Port Scanning Activity from Compromised Host" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Port Scanning Activity from Compromised Host" prebuilt detection rule.'
 ---
 
 # Potential Port Scanning Activity from Compromised Host
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Port scanning is a reconnaissance method used by attackers to identify open port
 - Change all credentials associated with the compromised host and any potentially affected systems to prevent unauthorized access.
 - Monitor the network for any further signs of scanning activity or other suspicious behavior from other hosts, indicating potential additional compromises.
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems are affected.
-

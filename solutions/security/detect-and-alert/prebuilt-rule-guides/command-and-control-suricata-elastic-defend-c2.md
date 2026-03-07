@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suricata and Elastic Defend Network Correlation" prebuilt detection rule.
+description: 'Investigation guide for the "Suricata and Elastic Defend Network Correlation" prebuilt detection rule.'
 ---
 
 # Suricata and Elastic Defend Network Correlation
@@ -36,4 +36,3 @@ description: Investigation guide for the "Suricata and Elastic Defend Network Co
 - Conduct a thorough review of the system's configuration files to identify unauthorized changes.
 - Reset credentials for any accounts associated with the source machine.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional systems are affected.
-

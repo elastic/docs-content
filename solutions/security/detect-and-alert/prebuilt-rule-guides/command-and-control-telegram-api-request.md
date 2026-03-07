@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Linux Telegram API Request" prebuilt detection rule.
+description: 'Investigation guide for the "Linux Telegram API Request" prebuilt detection rule.'
 ---
 
 # Linux Telegram API Request
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -44,4 +44,3 @@ Telegram's API allows applications to interact with its messaging platform, ofte
 - Reset credentials and review access permissions for any accounts that were active on the affected system to prevent unauthorized access.
 - Update and patch the affected system to the latest security standards to mitigate vulnerabilities that could be exploited in similar attacks.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional systems are affected.
-

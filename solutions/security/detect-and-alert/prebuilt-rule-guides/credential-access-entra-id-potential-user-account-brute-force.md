@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Identity User Brute Force Attempted" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Identity User Brute Force Attempted" prebuilt detection rule.'
 ---
 
 # M365 Identity User Brute Force Attempted
@@ -42,4 +42,3 @@ Identifies brute-force authentication activity targeting Microsoft 365 user acco
 - Rotate passwords for all targeted accounts and audit for password reuse.
 - Enforce or verify MFA is enabled for all user accounts.
 - Consider deploying account lockout or progressive delay mechanisms if not already enabled.
-

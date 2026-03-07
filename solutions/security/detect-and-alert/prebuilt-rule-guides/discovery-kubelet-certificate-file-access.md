@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubelet Certificate File Access Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Kubelet Certificate File Access Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Kubelet Certificate File Access Detected via Defend for Containers
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This detection flags an interactive process inside a Linux container opening fil
 - Review Kubernetes API server audit logs for activity using the node identity around the access time (cluster-wide discovery, secret reads, token reviews, exec into other pods) and revoke/rotate any exposed service account tokens or secrets accessed during the window.  
 - Escalate to the Kubernetes platform/on-call security team immediately if the files include a kubelet client key, if the pod was privileged or had host mounts, or if API audit logs show node credential use from unexpected sources or unusual resource enumeration.  
 - Harden the cluster by enforcing policies that block hostPath access to `/var/lib/kubelet` and privileged pods (Pod Security Admission/Gatekeeper/Kyverno), limiting interactive exec/attach via RBAC, and monitoring for subsequent access attempts to kubelet PKI paths and related credential exfiltration tooling.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Detection Alert on a Process Exhibiting CPU Spike" prebuilt detection rule.
+description: 'Investigation guide for the "Detection Alert on a Process Exhibiting CPU Spike" prebuilt detection rule.'
 ---
 
 # Detection Alert on a Process Exhibiting CPU Spike

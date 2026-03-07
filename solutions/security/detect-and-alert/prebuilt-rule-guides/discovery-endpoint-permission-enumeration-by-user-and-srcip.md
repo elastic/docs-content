@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Potential Endpoint Permission Enumeration Attempt Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Potential Endpoint Permission Enumeration Attempt Detected" prebuilt detection rule.'
 ---
 
 # Kubernetes Potential Endpoint Permission Enumeration Attempt Detected
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -40,4 +40,3 @@ Detects a single Kubernetes identity from one IP issuing a burst of API calls ac
 - Validate impact and recover by reviewing what endpoints returned successful data during the burst (especially secrets, configmaps, nodes, pods, and RBAC objects), rotating any exposed application secrets, and restarting affected workloads after credential updates.  
 - Escalate immediately to incident response if the same identity subsequently creates/patches RBAC bindings, deploys privileged pods/daemonsets, performs exec/port-forward, or accesses secret data across multiple namespaces.  
 - Harden by enforcing least-privilege RBAC for humans and service accounts, segmenting API access with network controls (private endpoint/VPN allowlists), and enabling short-lived tokens with regular rotation plus alerting on repeated mixed allow/deny probing across many resources.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in Number of Connections Made to a Destination IP" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in Number of Connections Made to a Destination IP" prebuilt detection rule.'
 ---
 
 # Spike in Number of Connections Made to a Destination IP

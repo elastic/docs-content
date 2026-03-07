@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Program Files Directory Masquerading" prebuilt detection rule.
+description: 'Investigation guide for the "Program Files Directory Masquerading" prebuilt detection rule.'
 ---
 
 # Program Files Directory Masquerading

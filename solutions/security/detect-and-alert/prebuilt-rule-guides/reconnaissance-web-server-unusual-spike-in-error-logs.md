@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Spike in Web Server Error Logs" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Spike in Web Server Error Logs" prebuilt detection rule.'
 ---
 
 # Potential Spike in Web Server Error Logs
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This detection flags spikes of web server error responses across HTTP/TLS and co
 - Escalate to Incident Response if the same client shifts from errors to successful access on sensitive endpoints (200/302 to /admin, /login, or API keys), if you observe file writes under the webroot or suspicious child processes, or if multiple unrelated clients show the same pattern across regions.
 - Recover service by redeploying known-good builds, re-enabling health checks, running smoke tests against top routes, and restoring normal WAF/CDN policies while keeping a temporary blocklist for the offending IPs.
 - Harden long term by tuning WAF/CDN to auto-throttle bursty 404/403/500 patterns, disabling TRACE/OPTIONS where unused, minimizing verbose error pages, and ensuring logs capture the true client IP via X-Forwarded-For or True-Client-IP headers.
-

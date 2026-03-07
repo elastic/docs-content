@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Emond Rules Creation or Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Emond Rules Creation or Modification" prebuilt detection rule.'
 ---
 
 # Emond Rules Creation or Modification

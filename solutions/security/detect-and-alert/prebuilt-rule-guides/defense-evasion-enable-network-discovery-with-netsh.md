@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Enable Host Network Discovery via Netsh" prebuilt detection rule.
+description: 'Investigation guide for the "Enable Host Network Discovery via Netsh" prebuilt detection rule.'
 ---
 
 # Enable Host Network Discovery via Netsh
@@ -41,4 +41,3 @@ Attackers can enable Network Discovery on the Windows firewall to find other sys
 - Review the privileges assigned to the involved users to ensure that the least privilege principle is being followed.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

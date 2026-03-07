@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Tainted Kernel Module Load" prebuilt detection rule.
+description: 'Investigation guide for the "Tainted Kernel Module Load" prebuilt detection rule.'
 ---
 
 # Tainted Kernel Module Load

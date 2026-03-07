@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google Workspace Suspended User Account Renewed" prebuilt detection rule.
+description: 'Investigation guide for the "Google Workspace Suspended User Account Renewed" prebuilt detection rule.'
 ---
 
 # Google Workspace Suspended User Account Renewed

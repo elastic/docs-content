@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Modification of Safari Settings via Defaults Command" prebuilt detection rule.
+description: 'Investigation guide for the "Modification of Safari Settings via Defaults Command" prebuilt detection rule.'
 ---
 
 # Modification of Safari Settings via Defaults Command

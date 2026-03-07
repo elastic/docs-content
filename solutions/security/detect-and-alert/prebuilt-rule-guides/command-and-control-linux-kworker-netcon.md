@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network Activity Detected via Kworker" prebuilt detection rule.
+description: 'Investigation guide for the "Network Activity Detected via Kworker" prebuilt detection rule.'
 ---
 
 # Network Activity Detected via Kworker

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "ESXI Discovery via Grep" prebuilt detection rule.
+description: 'Investigation guide for the "ESXI Discovery via Grep" prebuilt detection rule.'
 ---
 
 # ESXI Discovery via Grep

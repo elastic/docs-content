@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID User Sign-in Brute Force Attempted" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID User Sign-in Brute Force Attempted" prebuilt detection rule.'
 ---
 
 # Entra ID User Sign-in Brute Force Attempted
@@ -45,4 +45,3 @@ This rule detects brute-force authentication activity in Entra ID sign-in logs. 
 - Confirm MFA and Conditional Access are enforced for all user types.
 - Audit targeted accounts for credential reuse across services.
 - Implement account lockout or throttling for failed sign-in attempts where possible.
-

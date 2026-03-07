@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Suspicious Script with Clipboard Retrieval Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Suspicious Script with Clipboard Retrieval Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Suspicious Script with Clipboard Retrieval Capabilities
@@ -70,4 +70,3 @@ This alert indicates PowerShell script block content associated with clipboard a
   - Remove or remediate the execution source (malicious scripts or unauthorized automation) and investigate for persistence mechanisms that could re-run the clipboard collection.
   - Expand scoping by hunting for the same clipboard retrieval patterns in `powershell.file.script_block_text`, and for reuse of the same `file.name`/`file.path` across other hosts.
   - Capture lessons learned and update monitoring and access controls to reduce future abuse of PowerShell-based collection techniques while preserving required operational use cases.
-

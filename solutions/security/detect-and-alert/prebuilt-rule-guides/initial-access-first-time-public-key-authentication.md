@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Successful SSH Authentication from Unusual SSH Public Key" prebuilt detection rule.
+description: 'Investigation guide for the "Successful SSH Authentication from Unusual SSH Public Key" prebuilt detection rule.'
 ---
 
 # Successful SSH Authentication from Unusual SSH Public Key
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ SSH public key authentication is a secure method for accessing Linux systems, re
 - Notify the security team and relevant stakeholders about the incident for awareness and further investigation.
 - Implement additional monitoring on the affected system and related network segments to detect any further suspicious activities or attempts to regain access.
 - Review and update access control policies and SSH key management practices to prevent similar incidents in the future, ensuring that only authorized keys are allowed and regularly audited.
-

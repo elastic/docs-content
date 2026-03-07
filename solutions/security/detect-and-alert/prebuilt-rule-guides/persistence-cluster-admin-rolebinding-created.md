@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Cluster-Admin Role Binding Created" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Cluster-Admin Role Binding Created" prebuilt detection rule.'
 ---
 
 # Kubernetes Cluster-Admin Role Binding Created
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags when someone creates a RoleBinding or ClusterRoleBinding that as
 - Recover by restoring RBAC and critical cluster resources from GitOps or known-good backups, then re-apply least-privilege roles and validate access with `kubectl auth can-i` for impacted identities and namespaces.  
 - Escalate to incident response leadership immediately if the binding targets a service account, an external identity not in the admin group, or if there is evidence of secret access, privileged workload creation, or persistence mechanisms (e.g., new webhooks or DaemonSets).  
 - Harden by enforcing RBAC via GitOps-only change control, restricting `cluster-admin` binding creation with admission policy (ValidatingAdmissionPolicy/Kyverno/OPA Gatekeeper), requiring MFA and short-lived tokens for admins, and alerting on any creation or modification of cluster-wide RBAC bindings.
-

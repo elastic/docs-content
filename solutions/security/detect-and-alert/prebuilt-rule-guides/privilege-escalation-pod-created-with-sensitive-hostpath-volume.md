@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Pod Created with a Sensitive hostPath Volume" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Pod Created with a Sensitive hostPath Volume" prebuilt detection rule.'
 ---
 
 # Kubernetes Pod Created with a Sensitive hostPath Volume

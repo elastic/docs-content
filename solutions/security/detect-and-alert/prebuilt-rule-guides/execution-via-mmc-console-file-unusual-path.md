@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Microsoft Management Console File from Unusual Path" prebuilt detection rule.
+description: 'Investigation guide for the "Microsoft Management Console File from Unusual Path" prebuilt detection rule.'
 ---
 
 # Microsoft Management Console File from Unusual Path

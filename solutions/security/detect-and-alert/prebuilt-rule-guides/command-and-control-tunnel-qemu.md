@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Traffic Tunneling using QEMU" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Traffic Tunneling using QEMU" prebuilt detection rule.'
 ---
 
 # Potential Traffic Tunneling using QEMU

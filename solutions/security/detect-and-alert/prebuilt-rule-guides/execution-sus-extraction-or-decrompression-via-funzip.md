@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Content Extracted or Decompressed via Funzip" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Content Extracted or Decompressed via Funzip" prebuilt detection rule.'
 ---
 
 # Suspicious Content Extracted or Decompressed via Funzip

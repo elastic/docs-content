@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Forbidden Request from Unusual User Agent" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Forbidden Request from Unusual User Agent" prebuilt detection rule.'
 ---
 
 # Kubernetes Forbidden Request from Unusual User Agent
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Kubernetes, a container orchestration platform, manages applications across clus
 - Implement stricter access controls and user agent validation to prevent non-standard user agents from interacting with the Kubernetes API unless explicitly allowed.
 - Escalate the incident to the security operations team for further investigation and to determine if additional containment or remediation actions are necessary.
 - Enhance monitoring and alerting for similar activities by tuning detection systems to recognize patterns associated with this type of threat, ensuring rapid response to future incidents.
-

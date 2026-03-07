@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Federated Identity Credential Issuer Modified" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Federated Identity Credential Issuer Modified" prebuilt detection rule.'
 ---
 
 # Entra ID Federated Identity Credential Issuer Modified
@@ -43,4 +43,3 @@ This technique provides persistent access to Azure resources with the applicatio
 - Disable the application or service principal if compromise is confirmed.
 - Investigate how the unauthorized change occurred (e.g., compromised admin account, over-privileged service principal).
 - Implement conditional access policies and PIM (Privileged Identity Management) to protect application management operations.
-

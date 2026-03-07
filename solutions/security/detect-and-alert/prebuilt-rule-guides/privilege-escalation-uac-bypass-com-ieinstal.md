@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "UAC Bypass Attempt via Elevated COM Internet Explorer Add-On Installer" prebuilt detection rule.
+description: 'Investigation guide for the "UAC Bypass Attempt via Elevated COM Internet Explorer Add-On Installer" prebuilt detection rule.'
 ---
 
 # UAC Bypass Attempt via Elevated COM Internet Explorer Add-On Installer

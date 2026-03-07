@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network Connection via MsXsl" prebuilt detection rule.
+description: 'Investigation guide for the "Network Connection via MsXsl" prebuilt detection rule.'
 ---
 
 # Network Connection via MsXsl

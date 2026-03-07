@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "New GitHub Owner Added" prebuilt detection rule.
+description: 'Investigation guide for the "New GitHub Owner Added" prebuilt detection rule.'
 ---
 
 # New GitHub Owner Added

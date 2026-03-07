@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Instance Metadata Service (IMDS) API Request" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Instance Metadata Service (IMDS) API Request" prebuilt detection rule.'
 ---
 
 # Unusual Instance Metadata Service (IMDS) API Request

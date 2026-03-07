@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Parent Process Detected with Suspicious Windows Process(es)" prebuilt detection rule.
+description: 'Investigation guide for the "Parent Process Detected with Suspicious Windows Process(es)" prebuilt detection rule.'
 ---
 
 # Parent Process Detected with Suspicious Windows Process(es)

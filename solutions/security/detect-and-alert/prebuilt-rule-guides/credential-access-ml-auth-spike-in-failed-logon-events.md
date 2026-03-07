@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in Failed Logon Events" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in Failed Logon Events" prebuilt detection rule.'
 ---
 
 # Spike in Failed Logon Events
@@ -41,4 +41,3 @@ This rule uses a machine learning job to detect a substantial spike in failed au
 - Assess whether the asset should be exposed to the internet, and take action to reduce your attack surface.
   - If the asset needs to be exposed to the internet, restrict access to remote login services to specific IPs.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

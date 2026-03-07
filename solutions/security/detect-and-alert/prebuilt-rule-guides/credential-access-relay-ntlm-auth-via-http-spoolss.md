@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Local NTLM Relay via HTTP" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Local NTLM Relay via HTTP" prebuilt detection rule.'
 ---
 
 # Potential Local NTLM Relay via HTTP

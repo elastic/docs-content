@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Execution via SSH Backdoor" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Execution via SSH Backdoor" prebuilt detection rule.'
 ---
 
 # Potential Execution via SSH Backdoor

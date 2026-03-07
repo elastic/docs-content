@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Machine Learning Detected a Suspicious Windows Event with a Low Malicious Probability Score" prebuilt detection rule.
+description: 'Investigation guide for the "Machine Learning Detected a Suspicious Windows Event with a Low Malicious Probability Score" prebuilt detection rule.'
 ---
 
 # Machine Learning Detected a Suspicious Windows Event with a Low Malicious Probability Score

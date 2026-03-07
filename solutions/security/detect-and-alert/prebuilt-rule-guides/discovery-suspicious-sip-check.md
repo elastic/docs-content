@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious SIP Check by macOS Application" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious SIP Check by macOS Application" prebuilt detection rule.'
 ---
 
 # Suspicious SIP Check by macOS Application
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects a macOS application bundle launching `csrutil status` and expl
 - Recover by reinstalling trusted software from known-good sources, rotating credentials used on the host since the first execution, and monitoring for re-creation of persistence files or repeated `csrutil status` checks from application bundles.  
 - Escalate to incident response if the app is unsigned/notarization-failed, originates from a mounted volume or user Downloads, or if post-check activity includes attempts to modify security settings, write to persistence locations, or launch interpreters like `bash`, `zsh`, `python`, or `osascript`.  
 - Harden by enforcing only notarized/signed app execution (Gatekeeper/MDM restrictions), blocking untrusted apps from removable/mounted volumes, and deploying detections for app-bundled execution of `csrutil` and subsequent persistence creation.
-

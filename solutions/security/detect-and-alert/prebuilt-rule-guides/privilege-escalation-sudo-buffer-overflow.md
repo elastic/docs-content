@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Deprecated - Sudo Heap-Based Buffer Overflow Attempt" prebuilt detection rule.
+description: 'Investigation guide for the "Deprecated - Sudo Heap-Based Buffer Overflow Attempt" prebuilt detection rule.'
 ---
 
 # Deprecated - Sudo Heap-Based Buffer Overflow Attempt

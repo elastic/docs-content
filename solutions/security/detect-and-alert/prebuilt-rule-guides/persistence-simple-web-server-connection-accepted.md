@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Simple HTTP Web Server Connection" prebuilt detection rule.
+description: 'Investigation guide for the "Simple HTTP Web Server Connection" prebuilt detection rule.'
 ---
 
 # Simple HTTP Web Server Connection

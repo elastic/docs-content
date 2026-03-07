@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "First-Time FortiGate Administrator Login" prebuilt detection rule.
+description: 'Investigation guide for the "First-Time FortiGate Administrator Login" prebuilt detection rule.'
 ---
 
 # First-Time FortiGate Administrator Login

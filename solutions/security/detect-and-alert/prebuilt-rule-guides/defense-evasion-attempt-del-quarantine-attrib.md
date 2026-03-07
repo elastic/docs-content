@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Quarantine Attrib Removed by Unsigned or Untrusted Process" prebuilt detection rule.
+description: 'Investigation guide for the "Quarantine Attrib Removed by Unsigned or Untrusted Process" prebuilt detection rule.'
 ---
 
 # Quarantine Attrib Removed by Unsigned or Untrusted Process

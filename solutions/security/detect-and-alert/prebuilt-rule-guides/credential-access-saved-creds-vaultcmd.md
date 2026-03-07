@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Searching for Saved Credentials via VaultCmd" prebuilt detection rule.
+description: 'Investigation guide for the "Searching for Saved Credentials via VaultCmd" prebuilt detection rule.'
 ---
 
 # Searching for Saved Credentials via VaultCmd

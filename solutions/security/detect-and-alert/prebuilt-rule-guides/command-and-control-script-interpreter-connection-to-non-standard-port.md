@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Script Interpreter Connection to Non-Standard Port" prebuilt detection rule.
+description: 'Investigation guide for the "Script Interpreter Connection to Non-Standard Port" prebuilt detection rule.'
 ---
 
 # Script Interpreter Connection to Non-Standard Port
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects a macOS script interpreter launch (Python, Node, or Ruby) quic
 - Reset potentially impacted credentials and revoke active tokens for the initiating user if the script accessed keychain material, SSH keys, browser sessions, or cloud CLIs near the event time.  
 - Restore the endpoint from a known-good snapshot or reimage if the script/payload cannot be confidently eradicated, then validate recovery by confirming no further connections to the same IP:port and no recurrence of the interpreter one-liner.  
 - Escalate to IR leadership and initiate broader scoping if multiple hosts contact the same external IP:port, the destination is confirmed malicious, or persistence/credential theft is detected, and harden by restricting script interpreter execution via MDM, enforcing full disk access controls, and adding egress allow-listing for non-standard ports.
-

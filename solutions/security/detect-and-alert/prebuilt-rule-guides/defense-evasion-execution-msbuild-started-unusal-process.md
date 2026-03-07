@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Microsoft Build Engine Started an Unusual Process" prebuilt detection rule.
+description: 'Investigation guide for the "Microsoft Build Engine Started an Unusual Process" prebuilt detection rule.'
 ---
 
 # Microsoft Build Engine Started an Unusual Process

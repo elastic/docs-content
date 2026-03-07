@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Git Hook Command Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Git Hook Command Execution" prebuilt detection rule.'
 ---
 
 # Git Hook Command Execution

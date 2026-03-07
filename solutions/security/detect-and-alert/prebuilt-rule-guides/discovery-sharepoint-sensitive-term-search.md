@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 SharePoint Search for Sensitive Content" prebuilt detection rule.
+description: 'Investigation guide for the "M365 SharePoint Search for Sensitive Content" prebuilt detection rule.'
 ---
 
 # M365 SharePoint Search for Sensitive Content
@@ -34,4 +34,3 @@ This rule detects search queries in SharePoint or OneDrive that contain sensitiv
 - If the account was compromised, reset credentials and investigate the compromise vector.
 - Review Data Loss Prevention (DLP) policies to ensure sensitive content is properly protected.
 - Consider implementing sensitivity labels and access restrictions on high-value content.
-

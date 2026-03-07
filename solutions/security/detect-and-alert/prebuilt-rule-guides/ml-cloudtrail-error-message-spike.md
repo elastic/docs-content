@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in AWS Error Messages" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in AWS Error Messages" prebuilt detection rule.'
 ---
 
 # Spike in AWS Error Messages
@@ -64,4 +64,3 @@ This rule uses a machine learning job to detect a significant spike in the rate 
 - Take the actions needed to return affected systems, data, or services to their normal operational levels.
 - Identify the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

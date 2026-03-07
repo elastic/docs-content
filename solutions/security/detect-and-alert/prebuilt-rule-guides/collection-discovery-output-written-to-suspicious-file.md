@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Discovery Command Output Written to Suspicious File" prebuilt detection rule.
+description: 'Investigation guide for the "Discovery Command Output Written to Suspicious File" prebuilt detection rule.'
 ---
 
 # Discovery Command Output Written to Suspicious File
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags a macOS discovery utility launched from an interactive shell and
 - Rotate credentials and invalidate active sessions for the logged-in user that ran the command, and audit recent remote access methods (SSH, remote management, VPN) used on the host to ensure the account was not compromised.  
 - Restore the host to a known-good state by reinstalling or reimaging if tampering is suspected, then monitor for re-creation of the same suspicious file paths and repeat discovery-to-file-write behavior from any interactive shell.  
 - Escalate to IR leadership immediately if the staged file contains host/user inventory data and there is evidence of outbound transfer attempts (new external connections, upload utilities like `curl`/`scp`, or rapid archive creation) following the write event.
-

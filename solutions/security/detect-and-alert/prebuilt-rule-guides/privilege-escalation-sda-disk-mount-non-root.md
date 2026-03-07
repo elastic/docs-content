@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Suspicious DebugFS Root Device Access" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Suspicious DebugFS Root Device Access" prebuilt detection rule.'
 ---
 
 # Potential Suspicious DebugFS Root Device Access

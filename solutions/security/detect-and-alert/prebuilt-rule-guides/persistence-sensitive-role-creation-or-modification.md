@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Creation or Modification of Sensitive Role" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Creation or Modification of Sensitive Role" prebuilt detection rule.'
 ---
 
 # Kubernetes Creation or Modification of Sensitive Role
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects allowed create, update, or patch actions on Roles and ClusterR
 - Recover by redeploying RBAC from a controlled pipeline, validating effective permissions for impacted subjects, and monitoring for re-creation of the same role name or re-binding attempts after rollback.  
 - Escalate to platform security/incident response immediately if the role grants wildcard permissions, includes `impersonate`/`escalate`/`bind`, is cluster-scoped, or is bound to non-admin subjects or external identities without an approved change record.  
 - Harden by enforcing RBAC guardrails (OPA Gatekeeper/Kyverno policies blocking wildcard/escalation verbs except for approved groups), restricting who can create/update RBAC objects, and requiring all RBAC changes to flow through code review and signed GitOps automation.
-

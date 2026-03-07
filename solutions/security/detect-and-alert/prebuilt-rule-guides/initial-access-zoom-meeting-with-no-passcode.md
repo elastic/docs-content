@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Zoom Meeting with no Passcode" prebuilt detection rule.
+description: 'Investigation guide for the "Zoom Meeting with no Passcode" prebuilt detection rule.'
 ---
 
 # Zoom Meeting with no Passcode

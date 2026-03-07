@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious StartupItem Plist Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious StartupItem Plist Creation" prebuilt detection rule.'
 ---
 
 # Suspicious StartupItem Plist Creation
@@ -46,4 +46,3 @@ StartupItems are a deprecated macOS persistence mechanism that predates LaunchDa
 - Review other systems in the environment for similar StartupItem creations.
 - Monitor the /Library/StartupItems/ directory for future unauthorized file creation.
 - Consider implementing file integrity monitoring on persistence directories to detect future modifications.
-

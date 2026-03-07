@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Portable Executable Encoded in Powershell Script" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Portable Executable Encoded in Powershell Script" prebuilt detection rule.'
 ---
 
 # Suspicious Portable Executable Encoded in Powershell Script
@@ -80,4 +80,3 @@ This alert indicates PowerShell Script Block Logging captured script content tha
 - Post-incident improvements:
   - Review PowerShell governance for the affected population (script approval processes, least privilege, and monitoring of script block content) to reduce recurrence.
   - Document validated benign patterns and trusted automation paths to streamline future triage and reduce alert fatigue.
-

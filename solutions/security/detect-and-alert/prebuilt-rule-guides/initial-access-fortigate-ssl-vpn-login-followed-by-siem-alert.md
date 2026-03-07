@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "FortiGate SSL VPN Login Followed by SIEM Alert by User" prebuilt detection rule.
+description: 'Investigation guide for the "FortiGate SSL VPN Login Followed by SIEM Alert by User" prebuilt detection rule.'
 ---
 
 # FortiGate SSL VPN Login Followed by SIEM Alert by User
@@ -34,4 +34,3 @@ This rule correlates a FortiGate SSL VPN login with a subsequent security alert 
 - If abuse or compromise is suspected, disable or reset the user’s VPN access and credentials.
 - Investigate the host and process associated with the SIEM alert.
 - Escalate to the security or incident response team if the alert indicates malicious activity.
-

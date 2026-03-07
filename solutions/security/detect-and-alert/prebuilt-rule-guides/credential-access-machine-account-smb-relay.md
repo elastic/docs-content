@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Machine Account Relay Attack via SMB" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Machine Account Relay Attack via SMB" prebuilt detection rule.'
 ---
 
 # Potential Machine Account Relay Attack via SMB
@@ -41,4 +41,3 @@ description: Investigation guide for the "Potential Machine Account Relay Attack
 - Escalate the incident to the SOC or incident response team to coordinate a full investigation, containment, and recovery plan. Ensure stakeholders are kept informed throughout the response.
 - Enhance detection mechanisms by tuning alerts and deploying additional telemetry focused on credential relay patterns, anomalous authentication, and NTLM-related activity.
 - Conduct a structured post-incident review, documenting findings, identifying control gaps, and updating playbooks, configurations, or security policies to reduce the likelihood of similar incidents in the future.
-

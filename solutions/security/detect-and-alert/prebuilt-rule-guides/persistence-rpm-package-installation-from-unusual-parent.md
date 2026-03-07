@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "RPM Package Installed by Unusual Parent Process" prebuilt detection rule.
+description: 'Investigation guide for the "RPM Package Installed by Unusual Parent Process" prebuilt detection rule.'
 ---
 
 # RPM Package Installed by Unusual Parent Process

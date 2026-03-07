@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Rare SMB Connection to the Internet" prebuilt detection rule.
+description: 'Investigation guide for the "Rare SMB Connection to the Internet" prebuilt detection rule.'
 ---
 
 # Rare SMB Connection to the Internet

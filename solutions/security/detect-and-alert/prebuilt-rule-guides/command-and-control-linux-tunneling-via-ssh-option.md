@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Linux Tunneling and/or Port Forwarding via SSH Option" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Linux Tunneling and/or Port Forwarding via SSH Option" prebuilt detection rule.'
 ---
 
 # Potential Linux Tunneling and/or Port Forwarding via SSH Option
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ SSH is a secure protocol used for encrypted communication over networks, often e
 - Implement network segmentation to limit SSH access to only necessary systems and services, reducing the risk of lateral movement.
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems are compromised.
 - Enhance monitoring and logging of SSH activities across the network to detect similar threats in the future, ensuring alerts are promptly reviewed and acted upon.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Newly Observed Elastic Defend Behavior Alert" prebuilt detection rule.
+description: 'Investigation guide for the "Newly Observed Elastic Defend Behavior Alert" prebuilt detection rule.'
 ---
 
 # Newly Observed Elastic Defend Behavior Alert

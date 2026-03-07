@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Privilege Escalation via Service ImagePath Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Privilege Escalation via Service ImagePath Modification" prebuilt detection rule.'
 ---
 
 # Potential Privilege Escalation via Service ImagePath Modification

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Service Account Modified RBAC Objects" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Service Account Modified RBAC Objects" prebuilt detection rule.'
 ---
 
 # Kubernetes Service Account Modified RBAC Objects
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects Kubernetes service accounts performing allowed write actions o
 - Hunt and eradicate persistence by searching for additional recently modified RBAC objects and newly created service accounts in the same namespaces, then remove unauthorized accounts/bindings and scan the implicated container images for backdoors.  
 - Escalate to incident response and cluster administrators immediately if any change grants `cluster-admin`, introduces `*` verbs/resources, or binds a service account to privileged ClusterRoles across namespaces.  
 - Harden going forward by enforcing least-privilege RBAC, enabling admission controls to restrict RBAC modifications to approved identities/namespaces, and using short-lived projected service account tokens with workload identity constraints.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Bash Shell Profile Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Bash Shell Profile Modification" prebuilt detection rule.'
 ---
 
 # Bash Shell Profile Modification

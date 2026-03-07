@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Authorization Plugin Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Authorization Plugin Modification" prebuilt detection rule.'
 ---
 
 # Authorization Plugin Modification

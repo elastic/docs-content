@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GitHub UEBA - Multiple Alerts from a GitHub Account" prebuilt detection rule.
+description: 'Investigation guide for the "GitHub UEBA - Multiple Alerts from a GitHub Account" prebuilt detection rule.'
 ---
 
 # GitHub UEBA - Multiple Alerts from a GitHub Account

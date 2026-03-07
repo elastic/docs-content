@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Sensitive Configuration File Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Sensitive Configuration File Activity" prebuilt detection rule.'
 ---
 
 # Kubernetes Sensitive Configuration File Activity
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Kubernetes relies on configuration files to manage cluster operations, including
 - Implement additional access controls and monitoring on the affected systems to prevent recurrence, such as restricting write permissions to sensitive directories and files.
 - Update and patch the Kubernetes environment and related components to address any vulnerabilities that may have been exploited.
 - Enhance detection capabilities by ensuring that alerts are configured to notify the security team of any future unauthorized changes to critical Kubernetes configuration files.
-

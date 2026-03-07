@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GenAI Process Compiling or Generating Executables" prebuilt detection rule.
+description: 'Investigation guide for the "GenAI Process Compiling or Generating Executables" prebuilt detection rule.'
 ---
 
 # GenAI Process Compiling or Generating Executables
@@ -38,4 +38,3 @@ This rule detects GenAI tools spawning compilers or packaging tools. While devel
 - Investigate the compiled executables to determine if they are malicious.
 - Review audit logs to determine the scope of compilation activity and identify any executables that may have been created.
 - Quarantine any compiled binaries; submit suspicious artifacts to sandbox or malware analysis.
-

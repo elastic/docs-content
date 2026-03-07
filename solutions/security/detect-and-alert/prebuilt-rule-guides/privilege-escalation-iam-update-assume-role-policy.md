@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM Assume Role Policy Update" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM Assume Role Policy Update" prebuilt detection rule.'
 ---
 
 # AWS IAM Assume Role Policy Update
@@ -54,4 +54,3 @@ The role trust policy is a JSON document in which you define the principals you 
 - Implement security best practices [outlined](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/) by AWS.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

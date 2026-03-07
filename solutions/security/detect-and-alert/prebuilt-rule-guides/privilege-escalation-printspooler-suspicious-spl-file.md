@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Print Spooler SPL File Created" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Print Spooler SPL File Created" prebuilt detection rule.'
 ---
 
 # Suspicious Print Spooler SPL File Created
@@ -63,4 +63,3 @@ The Print Spooler service has some known vulnerabilities that attackers can abus
 - Ensure that the machine has the latest security updates and is not running legacy Windows versions.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

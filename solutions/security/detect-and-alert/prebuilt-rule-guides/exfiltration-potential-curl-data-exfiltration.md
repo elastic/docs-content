@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Data Exfiltration Through Curl" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Data Exfiltration Through Curl" prebuilt detection rule.'
 ---
 
 # Potential Data Exfiltration Through Curl
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Curl is a command-line tool used for transferring data with URLs, commonly emplo
 - Notify the security operations team and relevant stakeholders about the incident for awareness and further action.
 - Review and update firewall and network security rules to block unauthorized outbound traffic, especially to suspicious or unknown external servers.
 - Implement enhanced monitoring and logging for curl usage and similar data transfer tools to detect and respond to future exfiltration attempts promptly.
-

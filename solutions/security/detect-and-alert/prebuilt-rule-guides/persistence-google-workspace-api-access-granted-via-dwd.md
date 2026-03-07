@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google Workspace API Access Granted via Domain-Wide Delegation" prebuilt detection rule.
+description: 'Investigation guide for the "Google Workspace API Access Granted via Domain-Wide Delegation" prebuilt detection rule.'
 ---
 
 # Google Workspace API Access Granted via Domain-Wide Delegation

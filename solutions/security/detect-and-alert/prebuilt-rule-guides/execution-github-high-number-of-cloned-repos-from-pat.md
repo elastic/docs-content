@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "High Number of Cloned GitHub Repos From PAT" prebuilt detection rule.
+description: 'Investigation guide for the "High Number of Cloned GitHub Repos From PAT" prebuilt detection rule.'
 ---
 
 # High Number of Cloned GitHub Repos From PAT

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Persistence via Services Registry" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Persistence via Services Registry" prebuilt detection rule.'
 ---
 
 # Unusual Persistence via Services Registry

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempts to Brute Force an Okta User Account" prebuilt detection rule.
+description: 'Investigation guide for the "Attempts to Brute Force an Okta User Account" prebuilt detection rule.'
 ---
 
 # Attempts to Brute Force an Okta User Account

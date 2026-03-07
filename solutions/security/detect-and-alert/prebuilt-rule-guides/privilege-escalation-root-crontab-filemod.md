@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Privilege Escalation via Root Crontab File Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Privilege Escalation via Root Crontab File Modification" prebuilt detection rule.'
 ---
 
 # Privilege Escalation via Root Crontab File Modification

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS VPC Flow Logs Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "AWS VPC Flow Logs Deletion" prebuilt detection rule.'
 ---
 
 # AWS VPC Flow Logs Deletion

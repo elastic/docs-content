@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Anomalous Linux Compiler Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Anomalous Linux Compiler Activity" prebuilt detection rule.'
 ---
 
 # Anomalous Linux Compiler Activity

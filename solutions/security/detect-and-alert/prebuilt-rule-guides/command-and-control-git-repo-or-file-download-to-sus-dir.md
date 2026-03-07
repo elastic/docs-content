@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Git Repository or File Download to Suspicious Directory" prebuilt detection rule.
+description: 'Investigation guide for the "Git Repository or File Download to Suspicious Directory" prebuilt detection rule.'
 ---
 
 # Git Repository or File Download to Suspicious Directory
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Git, wget, and curl are essential tools for managing and transferring files in L
 - Implement network monitoring to detect and block any unauthorized outbound connections to suspicious domains, particularly those related to GitHub or other code repositories.
 - Escalate the incident to the security operations center (SOC) for further analysis and to determine if additional systems may be affected.
 - Update endpoint protection and intrusion detection systems to enhance detection capabilities for similar threats, focusing on the specific indicators of compromise identified in this alert.
-

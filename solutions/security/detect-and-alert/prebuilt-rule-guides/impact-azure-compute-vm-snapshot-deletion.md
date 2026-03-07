@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Compute Snapshot Deletion by Unusual User and Resource Group" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Compute Snapshot Deletion by Unusual User and Resource Group" prebuilt detection rule.'
 ---
 
 # Azure Compute Snapshot Deletion by Unusual User and Resource Group
@@ -48,4 +48,3 @@ Azure disk snapshots provide point-in-time copies of managed disks, serving as c
 - Enable Azure Activity Log alerts to notify security teams immediately when snapshots are deleted.
 - Review backup and disaster recovery procedures to ensure redundant backup mechanisms exist beyond Azure snapshots.
 - Document the incident and update security policies and procedures to prevent similar incidents in the future.
-

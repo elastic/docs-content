@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Service Principal Credentials Created by Unusual User" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Service Principal Credentials Created by Unusual User" prebuilt detection rule.'
 ---
 
 # Entra ID Service Principal Credentials Created by Unusual User
@@ -36,4 +36,3 @@ This is a [New Terms](https://www.elastic.co/guide/en/security/current/rules-ui-
 - Audit Affected Service Principal: Evaluate the permissions granted to the service principal to understand the potential impact of misuse.
 - Review RBAC and Least Privilege: Ensure that only authorized identities have permission to add credentials to service principals. Tighten IAM role definitions if necessary.
 - Enable Just-in-Time or Approval-Based Access: Consider implementing access control policies that require approvals for modifying service principals or adding credentials.
-

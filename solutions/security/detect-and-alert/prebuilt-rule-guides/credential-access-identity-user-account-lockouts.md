@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Identity User Account Lockouts" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Identity User Account Lockouts" prebuilt detection rule.'
 ---
 
 # M365 Identity User Account Lockouts
@@ -44,4 +44,3 @@ This rule uses ESQL aggregations and thus has dynamically generated fields. Corr
 - Block the source IP(s) or ASN temporarily using conditional access or firewall rules.
 - Strengthen lockout and retry delay policies if necessary.
 - Review the originating application(s) involved via `request_types`.
-

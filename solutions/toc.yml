@@ -599,16 +599,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-web-server-potential-command-injection.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/reconnaissance-web-server-unusual-spike-in-error-response-codes.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/reconnaissance-web-server-unusual-user-agents.md
-                  - title: "Resource Development"
-                    children:
-                      - file: security/detect-and-alert/prebuilt-rule-guides/resource-development-ml-linux-anomalous-compiler-activity.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-route-53-domain-transfer-lock-disabled.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-route-53-domain-transferred-to-another-account.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-route-53-hosted-zone-associated-with-a-vpc.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/resource-development-sns-topic-created-by-rare-user.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-automation-webhook-created.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-onedrive-malware-uploaded.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-sharepoint-malware-uploaded.md
                   - title: "Initial Access"
                     children:
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-accepted-default-telnet-port-connection.md
@@ -627,7 +617,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-dpkg-package-installation-from-unusual-parent.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-actor-token-user-impersonation-abuse.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-entra-id-suspicious-signin.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-external-guest-user-invite.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-high-risk-signin.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-risky-user-or-compromised-sign-in.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-illicit-consent-grant-via-registered-application.md
@@ -641,7 +630,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-unusual-ropc-login-attempt.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-graph-single-session-from-multiple-addresses.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-oauth-user-impersonation-scope.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-powershell-signin.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-protection-sign-in-risk-detected.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-protection-user-risk-detected.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-protection-confirmed-compromise.md
@@ -666,13 +654,11 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-gcp-iam-custom-role-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-github-actions-bot-first-push-to-repo.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-github-actions-workflow-injection-blocked.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-object-copied-to-external-drive-with-app-consent.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-google-workspace-suspended-user-renewed.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-suspicious-okta-user-password-reset-or-unlock-attempts.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-unsecure-elasticsearch-node.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-file-upload-followed-by-get-request.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-kubeconfig-file-activity.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-anonymous-request-authorized.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-portal-login-atypical-travel.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-portal-login-impossible-travel.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-entra-id-susp-oauth2-authorization.md
@@ -771,7 +757,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-scripting-osascript-exec-followed-by-netcon.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-applescript-with-admin-privs.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-at-job-creation.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-aws-ec2-lolbin-via-ssm.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-lambda-external-layer-added-to-function.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-ssm-sendcommand-by-rare-user.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-aws-ssm-sendcommand-with-command-parameters.md
@@ -797,19 +782,14 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-delayed-via-ping-lolbas-unsigned.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-pentest-eggshell-remote-admin-tool.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-d4c-k8s-mda-direct-interactive-kubernetes-api-request-by-usual-utilities.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-d4c-k8s-mda-kubernetes-api-activity-by-unusual-utilities.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-direct-interactive-kubernetes-api-request.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-disabling-windows-defender-powershell.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-downloaded-shortcut-files.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-downloaded-url-file.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-dracut-module-creation.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-iex-string-reconstruction.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-ld-so-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-egress-connection-from-entrypoint-in-container.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-missing-events-after-alert.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-potential-evasion-via-encoded-payload.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-powershell-signin.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-enumeration-via-wmiprvse.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-file-creation-mult-extension.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-executable-download-via-wget.md
@@ -836,7 +816,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-unusual-file-transfer-utility-launched.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-right-to-left-override.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-new-terms-cloudformation-createstack.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-d4c-k8s-mda-forbidden-direct-interactive-kubernetes-api-request.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-git-hook-process-execution.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-git-hook-execution.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-git-hook-file-creation.md
@@ -901,13 +880,11 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-via-windows-management-instrumentation-event-subscription.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-via-wmi-stdregprov-run-services.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-suspicious-pod-or-container-creation-command-execution.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-amsi-bypass-powershell.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-remote-code-execution-via-postgresql.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-iexplore-via-com.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-revshell-cmd-via-netcat.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-suspicious-lsass-access-memdump.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-potential-direct-kubelet-access-via-process-args.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-iex-env-vars-reconstruction.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-potential-etherhiding-c2.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-windows-phish-clickfix.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-windows-fakecaptcha-cmd-ps.md
@@ -916,7 +893,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-hex-payload-execution-via-commandline.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-hex-payload-execution-via-utility.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-suspicious-java-netcon-childproc.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-kubeletctl-execution.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-potential-hack-tool-executed.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-posh-malicious-script-agg.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-potential-bruteforce-malware-infection.md
@@ -926,16 +902,7 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-posh-hacktool-authors.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-posh-hacktool-functions.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-high-entropy.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-backtick-var.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-char-arrays.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-concat-dynamic.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-high-number-proportion.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-proportion-special-chars.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-backtick.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-reverse-keyword.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-whitespace-special-proportion.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-string-concat.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-string-format.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-posh-relay-tools.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-reg-service-imagepath-mod.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-process-injection.md
@@ -959,9 +926,7 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-posh-keylogger.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-posh-mailbox.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-posh-minidump.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-index-reversal.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-posh-psreflect.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/collection-posh-compression.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-powershell-clear-logs-script.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-posh-password-policy.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-posh-token-impersonation.md
@@ -998,7 +963,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-webshell-screenconnect-server.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-script-interpreter-connection-to-non-standard-port.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-security-software-wmic.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-d4c-k8s-mda-service-account-token-access-followed-by-kubernetes-api-request.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-cmd-service.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-service-control-spawned-script-int.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-shell-execution-via-apple-scripting.md
@@ -1044,7 +1008,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-apt-solarwinds-backdoor-unusual-child-processes.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-suspicious-executable-running-system-commands.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-windows-cmd-shell-susp-args.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-windows-powershell-susp-args.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-suspicious-image-load-wmi-ms-office.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-suspicious-wmi-script.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-suspicious-zoom-child-process.md
@@ -1055,7 +1018,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-system-shells-via-services.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-via-github-runner-with-runner-tracking-id-tampering-via-env-vars.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-temp-scheduled-task.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-tool-installation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-uac-bypass-com-ieinstal.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-uac-bypass-com-clipup.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-uac-bypass-diskcleanup-hijack.md
@@ -1089,12 +1051,10 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-scripts-archive-file.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-scripts-process-started-via-wmi.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-suspicious-windows-server-update-svc.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-incoming-wmi.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-initial-access-wps-dll-exploit.md
                   - title: "Persistence"
                     children:
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-scheduled-task-creation-winlog.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-dontexpirepasswd-account.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-remote-password-reset.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-group-modification-by-system.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-adding-the-hidden-file-attribute-with-via-attribexe.md
@@ -1115,8 +1075,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-credential-access-authorization-plugin-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-ec2-instance-console-login.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-ec2-network-acl-creation.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-route-table-created.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-ec2-route-table-modified-or-deleted.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-ec2-security-group-configuration-change-detection.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-sts-get-federation-token.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-iam-administratoraccess-policy-attached-to-group.md
@@ -1175,18 +1133,14 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-dynamic-linker-file-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-emond-rules-file-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-suspicious-adrs-token-request.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-application-credential-modification.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-conditional-access-policy-modified.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-graph-eam-addition-or-modification.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-entra-id-external-guest-user-invite.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-service-principal-federated-issuer-modified.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-global-administrator-role-assigned.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-pim-user-added-global-admin.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-mfa-disabled-for-user.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-rt-to-prt-transition-from-user-device.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-privileged-identity-management-role-modified.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-identity-protect-alert-followed-by-device-reg.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-service-principal-created.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-service-principal-credentials-added.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-suspicious-cloud-device-registration.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-entra-id-user-added-as-owner-for-azure-application.md
@@ -1202,7 +1156,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-fortigate-sso-login-followed-by-admin-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-fortigate-super-admin-account-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-gcp-iam-custom-role-creation.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-gcp-iam-service-account-key-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-gcp-service-account-created.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-gcp-key-created-for-service-account.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-git-hook-process-execution.md
@@ -1437,7 +1390,6 @@ toc:
                   - title: "Privilege Escalation"
                     children:
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-ldap-attributes.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-command-system-account.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-group-modification-by-system.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-applescript-with-admin-privs.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-at-job-creation.md
@@ -1515,7 +1467,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-mount-launched-inside-a-privileged-container.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-mount-launched-inside-container.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-unshare-namespace-manipulation.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-parent-process-pid-spoofing.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-endgame-permission-theft-detected.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-endgame-permission-theft-prevented.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-powershell-profiles.md
@@ -1683,7 +1634,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-okta-attempt-to-modify-okta-policy.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-okta-attempt-to-modify-okta-policy-rule.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-unload-endpointsecurity-kext.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-cloudtrail-logging-deleted.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-cloudtrail-logging-evasion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-cloudtrail-logging-suspended.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-cloudwatch-alarm-deletion.md
@@ -1694,15 +1644,11 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-ec2-network-acl-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-ec2-network-acl-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-ec2-security-group-configuration-change-detection.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-ec2-serial-console-access-enabled.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-sts-get-federation-token.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-guardduty-detector-deletion.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-guardduty-member-manipulation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-rds-instance-made-public.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-rds-db-instance-password-modified.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-rds-instance-restored.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-route53-dns-query-resolver-config-deletion.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-s3-bucket-configuration-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-s3-bucket-lifecycle-expiration-added.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-s3-bucket-server-access-logging-disabled.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-sqs-purge-queue.md
@@ -1711,16 +1657,11 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-waf-rule-or-rule-group-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-automation-account-created.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-automation-runbook-deleted.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-storage-blob-container-access-modification.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-storage-blob-permissions-modified.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-security-alert-suppression-rule-created.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-insights-diagnostic-settings-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-event-hub-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-kubernetes-events-deleted.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/impact-resources-resource-group-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-network-frontdoor-firewall-policy-deletion.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-network-firewall-policy-deletion.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-network-watcher-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-base16-or-base32-encoding-or-decoding-activity.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-interpreter-launched-from-decoded-payload.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-boot-file-copy.md
@@ -1763,7 +1704,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-domain-added-to-google-workspace-trusted-domains.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-dracut-module-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-dylib-injection-via-env-vars.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-iex-string-reconstruction.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-ld-so-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-dynamic-linker-file-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-ld-preload-shared-object-modified-inside-a-container.md
@@ -1803,7 +1743,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-gcp-logging-bucket-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-gcp-logging-sink-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-gcp-pub-sub-subscription-deletion.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-gcp-pub-sub-topic-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-gcp-storage-bucket-configuration-modified.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-gcp-storage-bucket-permissions-modified.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-gcp-virtual-private-cloud-network-deleted.md
@@ -1897,13 +1836,11 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-defense-evasion-lanman-nullsessionpipe-modification.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-msoffice-startup-registry.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-ml-suspicious-windows-process-cluster-from-parent-process.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-parent-process-pid-spoofing.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-payload-downloaded-and-piped-to-shell.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-hidden-plist-filename.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-msi-installer-task-startup.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-via-hidden-run-key-valuename.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-port-forwarding-added-registry.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-amsi-bypass-powershell.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-suspicious-comsvcs-imageload.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-credential-dumping-msbuild.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-cmdline-dump-tool.md
@@ -1913,7 +1850,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-disable-apparmor-attempt.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-disable-selinux-attempt.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-execution-suspicious-explorer-winword.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-iex-env-vars-reconstruction.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-msi-repair-via-mshelp-link.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-via-filter-manager.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-windows-filtering-platform.md
@@ -1936,16 +1872,7 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-loginwindow-plist-modification.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/persistence-suspicious-user-mandatory-profile-file.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-high-entropy.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-backtick-var.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-char-arrays.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-concat-dynamic.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-high-number-proportion.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-proportion-special-chars.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-backtick.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-reverse-keyword.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-whitespace-special-proportion.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-string-concat.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-string-format.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-privilege-escalation-privacy-pref-sshd-fulldiskaccess.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-privacy-controls-tcc-database-modification.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-exploit-cve-202238028.md
@@ -1962,7 +1889,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-sccm-scnotification-dll.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-sus-utility-executed-via-tmux-or-screen.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-posh-invoke-ninjacopy.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-obfuscation-index-reversal.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-disable-posh-scriptblocklogging.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-posh-encryption.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-powershell-clear-logs-script.md
@@ -2278,8 +2204,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-sensitive-keys-or-passwords-search-inside-container.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-seenabledelegationprivilege-assigned-to-user.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-regback-sam-security-hives.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-d4c-k8s-mda-service-account-token-access-followed-by-kubernetes-api-request.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-service-account-token-or-cert-read.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-krbrelayup-service-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-ml-auth-spike-in-failed-logon-events.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-ml-auth-spike-in-logon-events.md
@@ -2311,12 +2235,10 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-wireless-creds-dumping.md
                   - title: "Discovery"
                     children:
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-command-system-account.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-ad-explorer-execution.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-adfind-command-activity.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-multiple-discovery-api-calls-via-cli.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-ec2-deprecated-ami-discovery.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-ec2-full-network-packet-capture-detected.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-ec2-multi-region-describe-instances.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-ec2-userdata-request-for-ec2-instance.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-iam-principal-enumeration-via-update-assume-role-policy.md
@@ -2325,12 +2247,7 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-servicequotas-multi-region-service-quota-requests.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-ssm-inventory-reconnaissance.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-new-terms-sts-getcalleridentity.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-storage-blob-container-access-modification.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-d4c-k8s-mda-direct-interactive-kubernetes-api-request-by-usual-utilities.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-d4c-k8s-mda-kubernetes-api-activity-by-unusual-utilities.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-direct-interactive-kubernetes-api-request.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-discovery-output-written-to-suspicious-file.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-dns-enumeration.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-dns-request-for-ip-lookup-service.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-docker-socket-discovery.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-bloodhound-user-agents-detected.md
@@ -2341,16 +2258,13 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-admin-recon.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-privileged-localgroup-membership.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-users-domain-built-in-commands.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-environment-enumeration.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-esxi-software-via-find.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-esxi-software-via-grep.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-external-ip-address-discovery-via-curl.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-post-exploitation-external-ip-lookup.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-d4c-k8s-mda-forbidden-direct-interactive-kubernetes-api-request.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-full-disk-access-check.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-group-policy-object-discovery.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-linux-hping-activity.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-privilege-boundary-enumeration-from-interactive-process.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-kernel-instrumentation-discovery-via-kprobes-and-tracefs.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-kernel-seeking.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-kernel-unpacking.md
@@ -2373,7 +2287,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-polkit-version-discovery.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-potential-direct-kubelet-access-via-process-args.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-active-directory-webservice.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-kubeletctl-execution.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-potential-port-scan-detected.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-ping-sweep-detected.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-potential-network-sweep-detected.md
@@ -2391,8 +2304,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-security-file-access-via-common-utility.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-security-software-wmic.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-security-software-grep.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-service-account-namespace-read.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-d4c-k8s-mda-service-account-token-access-followed-by-kubernetes-api-request.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/ml-cloudtrail-error-message-spike.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/ml-azure-event-failures.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/ml-high-count-network-denies.md
@@ -2413,7 +2324,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-dmidecode-system-discovery.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-files-dir-systeminfo-via-cmd.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-host-public-ip-address-lookup.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-tool-enumeration.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-signal-unusual-discovery-signal-proc-cmdline.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-signal-unusual-discovery-signal-proc-executable.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privileged-access-ml-windows-rare-group-name-by-user.md
@@ -2447,8 +2357,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-role-assumption-by-service.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-role-assumption-by-user.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/privilege-escalation-sts-role-chaining.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-telnet-network-activity-external.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-telnet-network-activity-internal.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-execution-from-tsclient-mup.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-ml-high-mean-rdp-process-args.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-ml-high-mean-rdp-session-duration.md
@@ -2534,17 +2442,13 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-vpn-connection-attempt.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-python-webserver-spawned.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-moving-registry-hive-via-smb.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-incoming-wmi.md
                   - title: "Collection"
                     children:
-                      - file: security/detect-and-alert/prebuilt-rule-guides/collection-cloudtrail-logging-created.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-cloudtrail-logging-updated.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-dynamodb-scan-by-unusual-user.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-ec2-export-task.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-ec2-full-network-packet-capture-detected.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-rds-snapshot-export.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-aws-s3-bucket-enumeration-or-brute-force.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-s3-bucket-policy-added-for-public-access.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-s3-bucket-policy-added-for-external-account-access.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-s3-unauthenticated-bucket-access-by-rare-source.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-sns-rare-protocol-subscription-by-user.md
@@ -2556,7 +2460,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-email-powershell-exchange-mailbox.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-fortigate-config-download.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-gcp-pub-sub-subscription-creation.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/collection-gcp-pub-sub-topic-creation.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/credential-access-genai-process-sensitive-file-access.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-google-drive-ownership-transferred-via-google-workspace.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-google-workspace-custom-gmail-route-created-or-modified.md
@@ -2564,7 +2467,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-linux-clipboard-activity.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-potential-video-recording-or-screenshot-activity.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-exchange-new-inbox-rule.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/collection-exchange-mailbox-access-by-unusual-client-app-id.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-exchange-excessive-mail-items-accessed.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-onedrive-excessive-file-downloads.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-sharepoint-sensitive-term-search.md
@@ -2573,7 +2475,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-pbpaste-execution-via-unusual-parent.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-posh-keylogger.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-posh-mailbox.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/collection-posh-compression.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/collection-posh-webcam-video-capture.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-posh-invoke-sharefinder.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/discovery-posh-suspicious-api-functions.md
@@ -2595,7 +2496,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/execution-scripting-osascript-exec-followed-by-netcon.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-tunnel-vscode.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-aws-cli-endpoint-url-used.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/execution-aws-ec2-lolbin-via-ssm.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-cobalt-strike-beacon.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-common-llm-endpoint.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-encrypted-channel-freesslcert.md
@@ -2739,15 +2639,11 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-ec2-ami-shared-with-separate-account.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-ec2-ebs-snapshot-shared-with-another-account.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-ec2-export-task.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-ec2-full-network-packet-capture-detected.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-rds-snapshot-shared-with-another-account.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-rds-snapshot-export.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-s3-bucket-policy-added-for-public-access.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-s3-bucket-policy-added-for-external-account-access.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-s3-bucket-replicated-to-external-account.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-sns-rare-protocol-subscription-by-user.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-sns-topic-message-publish-by-rare-user.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/discovery-storage-blob-container-access-modification.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-azure-storage-blob-download-azcopy-sas-token.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/command-and-control-common-webservices.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-curl-or-wget-executed-via-lolbin.md
@@ -2806,7 +2702,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-cloudwatch-log-group-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-cloudwatch-log-stream-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-ec2-ebs-snapshot-access-removed.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/impact-ec2-disable-ebs-encryption.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-efs-filesystem-deleted.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-aws-eventbridge-rule-disabled-or-deleted.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-iam-deactivate-mfa-device.md
@@ -2815,7 +2710,6 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-rds-instance-cluster-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-rds-instance-cluster-deletion-protection-disabled.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-rds-snapshot-deleted.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-s3-bucket-configuration-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-aws-s3-bucket-enumeration-or-brute-force.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/defense-evasion-s3-bucket-lifecycle-expiration-added.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-s3-object-encryption-with-external-key.md
@@ -2829,9 +2723,7 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-azure-compute-restore-point-collections-deleted.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-azure-compute-vm-snapshot-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-azure-compute-vm-snapshot-deletions.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/impact-key-vault-modified-by-unusual-user.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-kubernetes-pod-deleted.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/impact-resources-resource-group-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-azure-storage-account-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-azure-storage-account-deletion-multiple.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-deleting-backup-catalogs-with-wbadmin.md
@@ -2841,10 +2733,8 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-security-compliance-user-restricted-from-sending-email.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-alert-from-a-process-with-cpu-spike.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-s3-excessive-object-encryption-with-sse-c.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/impact-gcp-iam-role-deletion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-gcp-service-account-deleted.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-gcp-service-account-disabled.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/impact-gcp-storage-bucket-deleted.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/exfiltration-github-private-repository-turned-public.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-github-repository-deleted.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/impact-google-workspace-admin-role-deletion.md
@@ -2906,6 +2796,7 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/external-alerts.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/google-workspace-alert-center-promotion.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/google-secops-external-alerts.md
+                      - file: security/detect-and-alert/prebuilt-rule-guides/initial-access-object-copied-to-external-drive-with-app-consent.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/multiple-alerts-llm-attack-chain-triage-by-host.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/multiple-alerts-llm-compromised-user-triage.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/endgame-malware-detected.md
@@ -2947,8 +2838,18 @@ toc:
                       - file: security/detect-and-alert/prebuilt-rule-guides/aws-bedrock-multiple-topic-policy-blocks-detected.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/aws-bedrock-multiple-word-policy-blocks-detected.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/apm-403-response-to-a-post.md
-                      - file: security/detect-and-alert/prebuilt-rule-guides/apm-sqlmap-user-agent.md
                       - file: security/detect-and-alert/prebuilt-rule-guides/apm-405-response-method-not-allowed.md
+                      - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-incoming-wmi.md
+                  - title: "Resource Development"
+                    children:
+                      - file: security/detect-and-alert/prebuilt-rule-guides/resource-development-ml-linux-anomalous-compiler-activity.md
+                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-route-53-domain-transfer-lock-disabled.md
+                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-route-53-domain-transferred-to-another-account.md
+                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-route-53-hosted-zone-associated-with-a-vpc.md
+                      - file: security/detect-and-alert/prebuilt-rule-guides/resource-development-sns-topic-created-by-rare-user.md
+                      - file: security/detect-and-alert/prebuilt-rule-guides/persistence-automation-webhook-created.md
+                      - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-onedrive-malware-uploaded.md
+                      - file: security/detect-and-alert/prebuilt-rule-guides/lateral-movement-sharepoint-malware-uploaded.md
               # END AUTO-GENERATED
               - file: security/detect-and-alert/install-prebuilt-rules.md
               - file: security/detect-and-alert/update-prebuilt-rules.md

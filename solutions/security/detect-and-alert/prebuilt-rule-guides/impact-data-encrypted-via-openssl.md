@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Data Encryption via OpenSSL Utility" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Data Encryption via OpenSSL Utility" prebuilt detection rule.'
 ---
 
 # Suspicious Data Encryption via OpenSSL Utility

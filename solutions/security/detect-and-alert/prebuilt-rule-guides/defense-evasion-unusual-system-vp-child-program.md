@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Child Process from a System Virtual Process" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Child Process from a System Virtual Process" prebuilt detection rule.'
 ---
 
 # Unusual Child Process from a System Virtual Process

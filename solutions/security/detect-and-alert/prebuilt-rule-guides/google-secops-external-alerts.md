@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google SecOps External Alerts" prebuilt detection rule.
+description: 'Investigation guide for the "Google SecOps External Alerts" prebuilt detection rule.'
 ---
 
 # Google SecOps External Alerts
@@ -42,4 +42,3 @@ Google SecOps provides a robust framework for monitoring and managing security o
 - Escalate the incident to the security operations center (SOC) or incident response team for further analysis and to determine if additional resources are needed.
 - Document the incident, including all actions taken, and update incident response plans to incorporate lessons learned from this event.
 - Enhance monitoring and detection capabilities by tuning existing alerts and deploying additional rules to detect similar activities in the future.
-

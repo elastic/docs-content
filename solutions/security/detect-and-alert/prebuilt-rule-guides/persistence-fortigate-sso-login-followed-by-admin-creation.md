@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "FortiGate SSO Login Followed by Administrator Account Creation" prebuilt detection rule.
+description: 'Investigation guide for the "FortiGate SSO Login Followed by Administrator Account Creation" prebuilt detection rule.'
 ---
 
 # FortiGate SSO Login Followed by Administrator Account Creation

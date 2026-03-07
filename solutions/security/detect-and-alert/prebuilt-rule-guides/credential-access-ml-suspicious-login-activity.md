@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Login Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Login Activity" prebuilt detection rule.'
 ---
 
 # Unusual Login Activity

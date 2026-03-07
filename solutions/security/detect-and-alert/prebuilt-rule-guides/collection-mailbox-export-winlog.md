@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Exchange Mailbox Export via PowerShell" prebuilt detection rule.
+description: 'Investigation guide for the "Exchange Mailbox Export via PowerShell" prebuilt detection rule.'
 ---
 
 # Exchange Mailbox Export via PowerShell
@@ -79,4 +79,3 @@ This alert indicates PowerShell script block content associated with creation of
   - Apply least-privilege controls for accounts that can initiate mailbox exports and restrict where exports can be written.
   - Limit Exchange administrative actions to approved management hosts and monitored administrative workflows.
   - Enhance monitoring for repeated mailbox export requests, unusual export destinations, and suspicious PowerShell activity associated with the same users and hosts.
-

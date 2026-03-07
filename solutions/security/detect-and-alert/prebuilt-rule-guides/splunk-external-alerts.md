@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Splunk External Alerts" prebuilt detection rule.
+description: 'Investigation guide for the "Splunk External Alerts" prebuilt detection rule.'
 ---
 
 # Splunk External Alerts
@@ -42,4 +42,3 @@ Splunk monitors and analyzes data, often used in security environments to track 
 - Escalate the incident to the security operations center (SOC) for further analysis and to determine if additional systems or data have been affected.
 - Implement enhanced monitoring on Splunk indices to detect any future unauthorized changes or suspicious activities.
 - Document the incident details and response actions taken for future reference and to improve incident response procedures.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in Special Privilege Use Events" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in Special Privilege Use Events" prebuilt detection rule.'
 ---
 
 # Spike in Special Privilege Use Events

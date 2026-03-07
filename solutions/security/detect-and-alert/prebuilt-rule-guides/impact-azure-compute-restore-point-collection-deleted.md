@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Compute Restore Point Collection Deleted by Unusual User" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Compute Restore Point Collection Deleted by Unusual User" prebuilt detection rule.'
 ---
 
 # Azure Compute Restore Point Collection Deleted by Unusual User
@@ -48,4 +48,3 @@ indicate unauthorized activity or a compromised account.
 - Review access controls and permissions for Restore Point Collection management, implementing principle of least privilege where necessary.
 - If ransomware activity is suspected, escalate to the security incident response team and implement broader containment measures, including checking for other indicators of ransomware such as deletion of Recovery Services vaults or backup fabric containers.
 - Document the incident and update detection rules or procedures based on lessons learned.
-

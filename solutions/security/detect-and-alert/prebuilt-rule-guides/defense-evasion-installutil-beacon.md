@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "InstallUtil Process Making Network Connections" prebuilt detection rule.
+description: 'Investigation guide for the "InstallUtil Process Making Network Connections" prebuilt detection rule.'
 ---
 
 # InstallUtil Process Making Network Connections

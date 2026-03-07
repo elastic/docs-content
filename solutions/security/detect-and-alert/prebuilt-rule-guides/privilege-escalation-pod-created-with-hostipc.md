@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Pod Created With HostIPC" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Pod Created With HostIPC" prebuilt detection rule.'
 ---
 
 # Kubernetes Pod Created With HostIPC

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Initial Access via File Upload Followed by GET Request" prebuilt detection rule.
+description: 'Investigation guide for the "Initial Access via File Upload Followed by GET Request" prebuilt detection rule.'
 ---
 
 # Initial Access via File Upload Followed by GET Request
@@ -41,4 +41,3 @@ This rule flags a common initial-access pattern: a multipart/form-data upload th
 - Restore altered application files from known-good backups or redeploy a clean container/VM, rotate database and API credentials stored in config files or environment variables, invalidate active sessions, and only re-enable uploads after confirming execution is blocked in upload directories.
 - Escalate to incident command and privacy/legal if you observe command execution parameters on the uploaded page (?cmd=, ?exec=), shells spawning (/bin/sh, powershell.exe), database dumps, or outbound callbacks from web server processes to external hosts.
 - Harden by storing uploads outside the webroot, denying execution in upload paths (disable PHP/CGI handlers and set noexec permissions), enforcing strict extension/MIME allowlists and AV/sandbox scanning for multipart/form-data, enabling file-integrity alerts on new .php/.jsp in served paths, and deploying WAF rules to block direct requests to uploaded executables.
-

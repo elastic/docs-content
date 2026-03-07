@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Exchange Inbox Phishing Evasion Rule Created" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Exchange Inbox Phishing Evasion Rule Created" prebuilt detection rule.'
 ---
 
 # M365 Exchange Inbox Phishing Evasion Rule Created
@@ -52,5 +52,3 @@ This is a new terms rule that alerts only when the combination of `user.id` and 
 - Strengthen detection:
   - Enable Microsoft Defender for Office 365 Safe Rules.
   - Use mailbox auditing and DLP policies to monitor hidden inbox activity.
-
-

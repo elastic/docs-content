@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "At Job Created or Modified" prebuilt detection rule.
+description: 'Investigation guide for the "At Job Created or Modified" prebuilt detection rule.'
 ---
 
 # At Job Created or Modified

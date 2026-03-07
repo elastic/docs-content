@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Clearing Windows Console History" prebuilt detection rule.
+description: 'Investigation guide for the "Clearing Windows Console History" prebuilt detection rule.'
 ---
 
 # Clearing Windows Console History
@@ -41,4 +41,3 @@ Attackers can try to cover their tracks by clearing PowerShell console history. 
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
   - Ensure that PowerShell auditing policies and log collection are in place to grant future visibility.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Etherhiding C2 via Blockchain Connection" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Etherhiding C2 via Blockchain Connection" prebuilt detection rule.'
 ---
 
 # Potential Etherhiding C2 via Blockchain Connection
@@ -46,4 +46,3 @@ Etherhiding is an advanced command and control technique where threat actors sto
 - Block the identified blockchain API endpoints at the network perimeter if they are not required for legitimate business purposes.
 - Search for similar blockchain API connections across other endpoints to identify potential lateral movement or additional compromised systems.
 - Escalate to the security operations team for comprehensive incident response if the activity confirms an active Etherhiding-based attack.
-

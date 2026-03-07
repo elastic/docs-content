@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell PSReflect Script" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell PSReflect Script" prebuilt detection rule.'
 ---
 
 # PowerShell PSReflect Script
@@ -83,4 +83,3 @@ This rule detects PowerShell scripts consistent with PSReflect-style helpers use
 - If the activity is confirmed benign:
   - Document the legitimate script/tool, expected hosts/users, and the operational purpose to speed up future triage.
   - Where appropriate, improve controls around advanced PowerShell usage (least privilege for scripting accounts, controlled script distribution, code review, and continued logging coverage).
-

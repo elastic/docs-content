@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GCP Pub/Sub Subscription Creation" prebuilt detection rule.
+description: 'Investigation guide for the "GCP Pub/Sub Subscription Creation" prebuilt detection rule.'
 ---
 
 # GCP Pub/Sub Subscription Creation

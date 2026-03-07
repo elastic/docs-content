@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Usage of bpf_probe_write_user Helper" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Usage of bpf_probe_write_user Helper" prebuilt detection rule.'
 ---
 
 # Suspicious Usage of bpf_probe_write_user Helper
@@ -46,4 +46,3 @@ The `bpf_probe_write_user` helper is a function within the eBPF (extended Berkel
 - Implement stricter access controls and monitoring on systems with eBPF capabilities to prevent unauthorized use of the `bpf_probe_write_user` helper.
 - Escalate the incident to the security operations team for further analysis and to determine if additional systems are affected.
 - Update detection mechanisms to include additional indicators of compromise related to eBPF rootkits and similar threats, enhancing future threat detection capabilities.
-

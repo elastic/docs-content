@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Shell Execution via Apple Scripting" prebuilt detection rule.
+description: 'Investigation guide for the "Shell Execution via Apple Scripting" prebuilt detection rule.'
 ---
 
 # Shell Execution via Apple Scripting

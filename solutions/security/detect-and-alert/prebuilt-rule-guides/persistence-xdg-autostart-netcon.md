@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network Connections Initiated Through XDG Autostart Entry" prebuilt detection rule.
+description: 'Investigation guide for the "Network Connections Initiated Through XDG Autostart Entry" prebuilt detection rule.'
 ---
 
 # Network Connections Initiated Through XDG Autostart Entry

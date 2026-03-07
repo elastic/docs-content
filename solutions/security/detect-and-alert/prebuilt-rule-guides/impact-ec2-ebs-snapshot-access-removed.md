@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 EBS Snapshot Access Removed" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 EBS Snapshot Access Removed" prebuilt detection rule.'
 ---
 
 # AWS EC2 EBS Snapshot Access Removed
@@ -76,4 +76,3 @@ If the action was expected, document the change approval and reconcile against i
 - **AWS Documentation**  
   - [EBS Snapshot Permissions](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modifying-snapshot-permissions.html)  
   - [ModifySnapshotAttribute API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifySnapshotAttribute.html)
-

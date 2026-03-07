@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Statistical Model Detected C2 Beaconing Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Statistical Model Detected C2 Beaconing Activity" prebuilt detection rule.'
 ---
 
 # Statistical Model Detected C2 Beaconing Activity

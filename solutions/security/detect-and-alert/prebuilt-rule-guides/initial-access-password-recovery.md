@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Sign-In Root Password Recovery Requested" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Sign-In Root Password Recovery Requested" prebuilt detection rule.'
 ---
 
 # AWS Sign-In Root Password Recovery Requested
@@ -78,5 +78,4 @@ In AWS, a `PasswordRecoveryRequested` event from `signin.amazonaws.com` is only 
 - **AWS Customer Playbook Framework:**  
   See [`Compromised_IAM_Credentials.md`](https://github.com/aws-samples/aws-customer-playbook-framework/blob/a8c7b313636b406a375952ac00b2d68e89a991f2/docs/Compromised_IAM_Credentials.md) for guidance on containment, evidence collection, and recovery validation.  
 - **AWS Documentation:** [AWS account root user best practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html).  
-- **Security Best Practices:** [AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/).  
-
+- **Security Best Practices:** [AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/).

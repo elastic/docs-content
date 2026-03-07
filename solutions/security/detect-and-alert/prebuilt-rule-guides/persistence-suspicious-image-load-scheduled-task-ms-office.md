@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Image Load (taskschd.dll) from MS Office" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Image Load (taskschd.dll) from MS Office" prebuilt detection rule.'
 ---
 
 # Suspicious Image Load (taskschd.dll) from MS Office
@@ -75,4 +75,3 @@ This rule looks for an MS Office process loading `taskschd.dll`, which may indic
     - Remove emails from the sender from mailboxes.
     - Consider improvements to the security awareness program.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GCP Firewall Rule Creation" prebuilt detection rule.
+description: 'Investigation guide for the "GCP Firewall Rule Creation" prebuilt detection rule.'
 ---
 
 # GCP Firewall Rule Creation

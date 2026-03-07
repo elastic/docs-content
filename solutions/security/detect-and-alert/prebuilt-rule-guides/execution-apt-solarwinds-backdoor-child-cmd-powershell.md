@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Command Execution via SolarWinds Process" prebuilt detection rule.
+description: 'Investigation guide for the "Command Execution via SolarWinds Process" prebuilt detection rule.'
 ---
 
 # Command Execution via SolarWinds Process

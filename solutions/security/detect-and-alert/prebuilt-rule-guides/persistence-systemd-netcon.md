@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Network Connection via systemd" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Network Connection via systemd" prebuilt detection rule.'
 ---
 
 # Suspicious Network Connection via systemd

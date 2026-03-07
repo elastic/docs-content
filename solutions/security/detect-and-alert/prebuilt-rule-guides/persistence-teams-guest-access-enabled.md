@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Deprecated - M365 Teams Guest Access Enabled" prebuilt detection rule.
+description: 'Investigation guide for the "Deprecated - M365 Teams Guest Access Enabled" prebuilt detection rule.'
 ---
 
 # Deprecated - M365 Teams Guest Access Enabled

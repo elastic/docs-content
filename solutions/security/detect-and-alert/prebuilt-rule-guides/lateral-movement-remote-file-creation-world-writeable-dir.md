@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote File Creation in World Writeable Directory" prebuilt detection rule.
+description: 'Investigation guide for the "Remote File Creation in World Writeable Directory" prebuilt detection rule.'
 ---
 
 # Remote File Creation in World Writeable Directory
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ In Linux environments, world-writeable directories like `/tmp` and `/var/tmp` ar
 - Reset credentials for compromised or potentially compromised accounts to prevent further unauthorized access.
 - Monitor network traffic for unusual patterns or connections to external IP addresses that may indicate ongoing or additional compromise attempts.
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems have been affected, ensuring a coordinated response.
-

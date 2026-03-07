@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Finder Sync Plugin Registered and Enabled" prebuilt detection rule.
+description: 'Investigation guide for the "Finder Sync Plugin Registered and Enabled" prebuilt detection rule.'
 ---
 
 # Finder Sync Plugin Registered and Enabled

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GitHub Exfiltration via High Number of Repository Clones by User" prebuilt detection rule.
+description: 'Investigation guide for the "GitHub Exfiltration via High Number of Repository Clones by User" prebuilt detection rule.'
 ---
 
 # GitHub Exfiltration via High Number of Repository Clones by User
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags a single user rapidly cloning dozens of repositories, a strong i
 - Rotate repository and organization secrets present in those repos (Actions secrets, PATs, SSH keys, cloud access keys) and invalidate any secrets found in commit history.
 - Recover by restoring only minimal access after owner approval, issuing a new fine-grained PAT with least privilege and expiry, and re-enabling builds while monitoring for further clone bursts.
 - Escalate to incident response leadership and Legal if any private or export-controlled repos were cloned or cloning continues post-revocation, and harden by enforcing org-wide SSO, disallowing classic PATs, IP allowlisting for PAT use, enabling secret scanning with push protection, and alerting on burst git clone patterns from runners and unusual user agents.
-

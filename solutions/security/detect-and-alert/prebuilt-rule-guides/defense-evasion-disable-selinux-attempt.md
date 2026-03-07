@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Disabling of SELinux" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Disabling of SELinux" prebuilt detection rule.'
 ---
 
 # Potential Disabling of SELinux

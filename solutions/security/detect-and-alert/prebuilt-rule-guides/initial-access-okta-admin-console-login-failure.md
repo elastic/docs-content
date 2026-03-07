@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta Admin Console Login Failure" prebuilt detection rule.
+description: 'Investigation guide for the "Okta Admin Console Login Failure" prebuilt detection rule.'
 ---
 
 # Okta Admin Console Login Failure
@@ -41,4 +41,3 @@ Threat actors like ShinyHunters have been observed probing for valid admin crede
 - Review and strengthen MFA requirements for Admin Console access.
 - Consider implementing conditional access policies to restrict Admin Console access to trusted networks.
 - If vishing is suspected, remind users of social engineering awareness and verification procedures.
-

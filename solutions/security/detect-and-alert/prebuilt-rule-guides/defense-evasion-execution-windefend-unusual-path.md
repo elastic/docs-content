@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Microsoft Antimalware Service Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Microsoft Antimalware Service Execution" prebuilt detection rule.'
 ---
 
 # Suspicious Microsoft Antimalware Service Execution

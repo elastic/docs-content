@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Printer User (lp) Shell Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Printer User (lp) Shell Execution" prebuilt detection rule.'
 ---
 
 # Printer User (lp) Shell Execution
@@ -55,4 +55,3 @@ This rule identifies potential exploitation attempts of several vulnerabilities 
 - Perform a thorough antimalware scan to identify any lingering threats or artifacts from the attack.
 - Investigate how the attacker gained initial access and address any weaknesses to prevent future exploitation.
 - Use insights from the incident to improve detection and response times in future incidents (MTTD and MTTR).
-

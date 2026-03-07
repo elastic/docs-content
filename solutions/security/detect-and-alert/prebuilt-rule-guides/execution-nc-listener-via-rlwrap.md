@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Netcat Listener Established via rlwrap" prebuilt detection rule.
+description: 'Investigation guide for the "Netcat Listener Established via rlwrap" prebuilt detection rule.'
 ---
 
 # Netcat Listener Established via rlwrap

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID ADRS Token Request by Microsoft Authentication Broker" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID ADRS Token Request by Microsoft Authentication Broker" prebuilt detection rule.'
 ---
 
 # Entra ID ADRS Token Request by Microsoft Authentication Broker
@@ -40,4 +40,3 @@ Detects suspicious OAuth 2.0 token requests where the Microsoft Authentication B
 - If the user account is compromised, initiate a password reset and enforce multi-factor authentication (MFA) for the user.
 - Review the conditional access policies in place to ensure they are sufficient to prevent unauthorized access to sensitive resources.
 - Consider deactivating any newly registered devices associated with the user account until further investigation is complete.
-

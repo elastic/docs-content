@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Identity Unusual SSO Authentication Errors for User" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Identity Unusual SSO Authentication Errors for User" prebuilt detection rule.'
 ---
 
 # M365 Identity Unusual SSO Authentication Errors for User

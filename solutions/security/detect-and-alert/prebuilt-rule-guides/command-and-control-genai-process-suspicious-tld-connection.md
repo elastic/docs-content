@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GenAI Process Connection to Suspicious Top Level Domain" prebuilt detection rule.
+description: 'Investigation guide for the "GenAI Process Connection to Suspicious Top Level Domain" prebuilt detection rule.'
 ---
 
 # GenAI Process Connection to Suspicious Top Level Domain
@@ -44,4 +44,3 @@ This rule detects GenAI tools connecting to domains with TLDs commonly abused by
 - Investigate the GenAI tool configuration to identify how it was configured and what it was authorized to access.
 - Update security policies to restrict or monitor GenAI tool usage in the environment, especially for network communications.
 - Add detection for secondary indicators (reverse shells, encoded C2 traffic, odd user-agent strings).
-

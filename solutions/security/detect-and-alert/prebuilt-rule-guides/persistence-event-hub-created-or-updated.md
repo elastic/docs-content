@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Event Hub Authorization Rule Created or Updated" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Event Hub Authorization Rule Created or Updated" prebuilt detection rule.'
 ---
 
 # Azure Event Hub Authorization Rule Created or Updated

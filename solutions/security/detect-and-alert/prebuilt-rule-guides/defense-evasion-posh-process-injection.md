@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Process Injection via PowerShell" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Process Injection via PowerShell" prebuilt detection rule.'
 ---
 
 # Potential Process Injection via PowerShell
@@ -80,4 +80,3 @@ This rule Detects PowerShell scripts that references a combination of Win32 APIs
 - If the activity is verified as benign:
   - Document the script purpose, owner, expected execution context (hosts and accounts), and expected script origin (`file.path`/`file.name`).
   - Consider controlled rule tuning using stable, high-confidence identifiers from the verified benign workflow to reduce repeat alerts while maintaining coverage for new or unauthorized variants.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM Deactivation of MFA Device" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM Deactivation of MFA Device" prebuilt detection rule.'
 ---
 
 # AWS IAM Deactivation of MFA Device
@@ -67,5 +67,4 @@ For more information about using MFA in AWS, access the [official documentation]
 - **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/)** 
 - **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)** 
 - **[DeactivateMFADevice API Reference](https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeactivateMFADevice.html)**  
-- **[Managing MFA Devices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html)** 
-
+- **[Managing MFA Devices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html)**

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in host-based traffic" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in host-based traffic" prebuilt detection rule.'
 ---
 
 # Spike in host-based traffic

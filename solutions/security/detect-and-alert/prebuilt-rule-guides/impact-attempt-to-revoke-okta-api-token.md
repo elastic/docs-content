@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempt to Revoke Okta API Token" prebuilt detection rule.
+description: 'Investigation guide for the "Attempt to Revoke Okta API Token" prebuilt detection rule.'
 ---
 
 # Attempt to Revoke Okta API Token
@@ -38,4 +38,3 @@ The rule alerts when attempts are made to revoke an Okta API token. The API toke
 ## Setup
 
 The Okta Fleet integration, Filebeat module, or similarly structured data is required to be compatible with this rule.
-

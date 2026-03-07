@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Credential Manipulation - Prevented - Elastic Endgame" prebuilt detection rule.
+description: 'Investigation guide for the "Credential Manipulation - Prevented - Elastic Endgame" prebuilt detection rule.'
 ---
 
 # Credential Manipulation - Prevented - Elastic Endgame

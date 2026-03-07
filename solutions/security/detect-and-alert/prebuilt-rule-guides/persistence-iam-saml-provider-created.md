@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM SAML Provider Created" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM SAML Provider Created" prebuilt detection rule.'
 ---
 
 # AWS IAM SAML Provider Created
@@ -70,4 +70,3 @@ This rule detects successful `CreateSAMLProvider` API calls. In most environment
 - **[AWS IAM SAML Providers Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)**
 - **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/)**
 - **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)**
-

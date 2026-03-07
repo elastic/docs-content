@@ -13,7 +13,6 @@ jobs:
       enable-vale-linting: true
       continue-on-error: false
       strict: true
-      path-pattern-ignore: 'solutions/security/detect-and-alert/prebuilt-rule-guides/**'
     permissions:
       deployments: write
       id-token: write

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Abnormally Large DNS Response" prebuilt detection rule.
+description: 'Investigation guide for the "Abnormally Large DNS Response" prebuilt detection rule.'
 ---
 
 # Abnormally Large DNS Response
@@ -42,4 +42,3 @@ Detection alerts from this rule indicate possible anomalous activity around larg
 - Maintain backups of your critical systems to aid in quick recovery.
 - Perform routine vulnerability scans of your systems, monitor [CISA advisories](https://us-cert.cisa.gov/ncas/current-activity) and patch identified vulnerabilities.
 - If you observe a true positive, implement a remediation plan and monitor host-based artifacts for additional post-exploitation behavior.
-

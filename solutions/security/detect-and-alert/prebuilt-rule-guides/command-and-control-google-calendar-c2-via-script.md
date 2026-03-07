@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google Calendar C2 via Script Interpreter" prebuilt detection rule.
+description: 'Investigation guide for the "Google Calendar C2 via Script Interpreter" prebuilt detection rule.'
 ---
 
 # Google Calendar C2 via Script Interpreter
@@ -47,4 +47,3 @@ Threat actors increasingly abuse legitimate cloud services to establish covert c
 - Reset the affected user's credentials and enable multi-factor authentication if not already in place.
 - Implement application allowlisting to prevent unauthorized script interpreters from executing.
 - Escalate to the security operations team for further investigation into potential data exfiltration or broader compromise.
-

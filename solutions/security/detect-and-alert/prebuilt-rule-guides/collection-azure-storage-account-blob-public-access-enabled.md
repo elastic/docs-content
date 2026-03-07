@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Storage Account Blob Public Access Enabled" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Storage Account Blob Public Access Enabled" prebuilt detection rule.'
 ---
 
 # Azure Storage Account Blob Public Access Enabled
@@ -44,4 +44,3 @@ Azure Storage Accounts provide cloud storage solutions with various access contr
 - If unauthorized modification is confirmed, disable the compromised user account or service principal and investigate how the credentials were obtained.
 - Implement Azure Policy to prevent enabling public blob access on storage accounts containing sensitive data, using built-in policy definitions for storage account public access restrictions.
 - Consider implementing private endpoints for storage accounts that should never be publicly accessible, ensuring network-level isolation.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "System Binary Moved or Copied" prebuilt detection rule.
+description: 'Investigation guide for the "System Binary Moved or Copied" prebuilt detection rule.'
 ---
 
 # System Binary Moved or Copied

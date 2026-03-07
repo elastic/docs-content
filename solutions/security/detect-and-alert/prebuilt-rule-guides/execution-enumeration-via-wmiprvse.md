@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Enumeration Command Spawned via WMIPrvSE" prebuilt detection rule.
+description: 'Investigation guide for the "Enumeration Command Spawned via WMIPrvSE" prebuilt detection rule.'
 ---
 
 # Enumeration Command Spawned via WMIPrvSE

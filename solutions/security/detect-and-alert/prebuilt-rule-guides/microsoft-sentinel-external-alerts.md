@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Microsoft Sentinel External Alerts" prebuilt detection rule.
+description: 'Investigation guide for the "Microsoft Sentinel External Alerts" prebuilt detection rule.'
 ---
 
 # Microsoft Sentinel External Alerts
 
- Triage and analysis
+Triage and analysis
 
 ## Investigating Microsoft Sentinel External Alerts
 
@@ -41,4 +41,3 @@ Microsoft Sentinel is a cloud-native SIEM tool that aggregates security data for
 - Restore affected systems from clean backups to ensure the integrity and security of the environment.
 - Monitor network traffic and system logs closely for any signs of recurring or related suspicious activities.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional resources are needed.
-

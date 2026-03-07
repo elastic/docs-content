@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Downloaded URL Files" prebuilt detection rule.
+description: 'Investigation guide for the "Downloaded URL Files" prebuilt detection rule.'
 ---
 
 # Downloaded URL Files

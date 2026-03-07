@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "File made Immutable by Chattr" prebuilt detection rule.
+description: 'Investigation guide for the "File made Immutable by Chattr" prebuilt detection rule.'
 ---
 
 # File made Immutable by Chattr

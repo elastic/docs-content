@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Dynamic Linker (ld.so) Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Dynamic Linker (ld.so) Creation" prebuilt detection rule.'
 ---
 
 # Dynamic Linker (ld.so) Creation

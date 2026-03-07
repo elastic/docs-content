@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network Connection to OAST Domain via Script Interpreter" prebuilt detection rule.
+description: 'Investigation guide for the "Network Connection to OAST Domain via Script Interpreter" prebuilt detection rule.'
 ---
 
 # Network Connection to OAST Domain via Script Interpreter
@@ -46,4 +46,3 @@ Out-of-Band Application Security Testing (OAST) services such as interact.sh, bu
 - Conduct a thorough code review of affected applications to identify and remediate the underlying vulnerability.
 - Implement web application firewall rules to detect and block common injection patterns that lead to OAST exploitation.
 - Escalate to the incident response team for further investigation if the activity indicates active exploitation or compromise.
-

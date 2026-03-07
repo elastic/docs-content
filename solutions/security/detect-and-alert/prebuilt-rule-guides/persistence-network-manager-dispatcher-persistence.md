@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "NetworkManager Dispatcher Script Creation" prebuilt detection rule.
+description: 'Investigation guide for the "NetworkManager Dispatcher Script Creation" prebuilt detection rule.'
 ---
 
 # NetworkManager Dispatcher Script Creation

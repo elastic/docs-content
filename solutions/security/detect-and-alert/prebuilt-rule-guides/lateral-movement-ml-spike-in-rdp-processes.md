@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in Number of Processes in an RDP Session" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in Number of Processes in an RDP Session" prebuilt detection rule.'
 ---
 
 # Spike in Number of Processes in an RDP Session

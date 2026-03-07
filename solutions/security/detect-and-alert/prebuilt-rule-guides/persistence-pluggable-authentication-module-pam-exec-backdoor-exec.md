@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Backdoor Execution Through PAM_EXEC" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Backdoor Execution Through PAM_EXEC" prebuilt detection rule.'
 ---
 
 # Potential Backdoor Execution Through PAM_EXEC
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -47,4 +47,3 @@ PAM (Pluggable Authentication Module) is a critical framework in Linux systems f
 - Restore the system from a known good backup if malicious modifications are confirmed, ensuring that the backup is free from tampering.
 - Implement enhanced monitoring on the affected system and similar environments to detect any recurrence of the threat, focusing on SSH session changes and unusual child processes.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to assess the potential impact on other systems within the network.
-

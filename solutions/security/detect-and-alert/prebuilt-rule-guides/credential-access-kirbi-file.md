@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kirbi File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Kirbi File Creation" prebuilt detection rule.'
 ---
 
 # Kirbi File Creation

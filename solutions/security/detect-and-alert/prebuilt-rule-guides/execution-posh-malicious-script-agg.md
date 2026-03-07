@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Malicious PowerShell Based on Alert Correlation" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Malicious PowerShell Based on Alert Correlation" prebuilt detection rule.'
 ---
 
 # Potential Malicious PowerShell Based on Alert Correlation
@@ -82,4 +82,3 @@ Investigation goals:
 - Post-incident:
   - Preserve the recovered script content and the full set of contributing alerts as evidence.
   - Identify and address the initial execution mechanism indicated by the contributing alerts and improve preventative controls and logging coverage to reduce recurrence.
-

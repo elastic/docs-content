@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS STS AssumeRole with New MFA Device" prebuilt detection rule.
+description: 'Investigation guide for the "AWS STS AssumeRole with New MFA Device" prebuilt detection rule.'
 ---
 
 # AWS STS AssumeRole with New MFA Device

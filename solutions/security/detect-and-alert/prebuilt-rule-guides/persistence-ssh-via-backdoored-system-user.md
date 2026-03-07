@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Login via System User" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Login via System User" prebuilt detection rule.'
 ---
 
 # Unusual Login via System User

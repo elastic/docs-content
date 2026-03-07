@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Sudo Token Manipulation via Process Injection" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Sudo Token Manipulation via Process Injection" prebuilt detection rule.'
 ---
 
 # Potential Sudo Token Manipulation via Process Injection

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Full User-Mode Dumps Enabled System-Wide" prebuilt detection rule.
+description: 'Investigation guide for the "Full User-Mode Dumps Enabled System-Wide" prebuilt detection rule.'
 ---
 
 # Full User-Mode Dumps Enabled System-Wide

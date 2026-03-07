@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM Create User via Assumed Role on EC2 Instance" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM Create User via Assumed Role on EC2 Instance" prebuilt detection rule.'
 ---
 
 # AWS IAM Create User via Assumed Role on EC2 Instance
@@ -53,4 +53,3 @@ This rule detects when an AWS Identity and Access Management (IAM) user is creat
 ### Additional Information
 
 For further guidance on managing IAM roles and permissions within AWS environments, refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateUser.html) and AWS best practices for security.
-

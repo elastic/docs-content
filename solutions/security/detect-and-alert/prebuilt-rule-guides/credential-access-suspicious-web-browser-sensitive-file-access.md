@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Web Browser Sensitive File Access" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Web Browser Sensitive File Access" prebuilt detection rule.'
 ---
 
 # Suspicious Web Browser Sensitive File Access

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Exchange Mailbox High-Risk Permission Delegated" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Exchange Mailbox High-Risk Permission Delegated" prebuilt detection rule.'
 ---
 
 # M365 Exchange Mailbox High-Risk Permission Delegated
@@ -58,4 +58,3 @@ If the delegation is determined to be unauthorized or suspicious:
 - Audit audit logs around the delegation for additional attacker actions (e.g., MFA disablement, mailbox rule creation, login from foreign IPs).
 - Review conditional access, role-based access control, and app permissions to reduce the attack surface.
 - Harden delegation policies by requiring approvals, limiting delegation to specific groups, or implementing Just-in-Time (JIT) access for mailboxes.
-

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Remote File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Remote File Creation" prebuilt detection rule.'
 ---
 
 # Unusual Remote File Creation
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Remote file creation tools like SCP, FTP, and SFTP are essential for transferrin
 - Update and patch the affected systems to close any vulnerabilities that may have been exploited by the attacker.
 - Implement stricter access controls and authentication mechanisms for remote file transfer services to prevent unauthorized use.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional systems have been compromised.
-

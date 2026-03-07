@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google Workspace Custom Admin Role Created" prebuilt detection rule.
+description: 'Investigation guide for the "Google Workspace Custom Admin Role Created" prebuilt detection rule.'
 ---
 
 # Google Workspace Custom Admin Role Created

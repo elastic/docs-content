@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Child Execution via Web Server" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Child Execution via Web Server" prebuilt detection rule.'
 ---
 
 # Suspicious Child Execution via Web Server
@@ -63,4 +63,3 @@ This rule detects a web server process spawning script and command line interfac
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Leverage the incident response data and logging to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

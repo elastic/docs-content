@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Manual Memory Dumping via Proc Filesystem" prebuilt detection rule.
+description: 'Investigation guide for the "Manual Memory Dumping via Proc Filesystem" prebuilt detection rule.'
 ---
 
 # Manual Memory Dumping via Proc Filesystem
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ The proc filesystem in Linux is a virtual interface providing detailed insights 
 - Review and enhance system logging and monitoring configurations to ensure comprehensive visibility into process activities, particularly those involving the proc filesystem.
 - Escalate the incident to the security operations center (SOC) or relevant cybersecurity team for further investigation and to determine if the threat is part of a larger attack campaign.
 - Implement additional security controls, such as restricting access to the proc filesystem and employing application whitelisting, to prevent unauthorized memory dumping activities in the future.
-

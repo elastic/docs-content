@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Suspicious Script with Screenshot Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Suspicious Script with Screenshot Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Suspicious Script with Screenshot Capabilities
@@ -100,4 +100,3 @@ Prioritize alerts on endpoints used for privileged administration or sensitive w
   - Document the legitimate business process, script ownership, and expected execution scope (approved users, hosts, and typical timing).
   - Ensure the script source is controlled (when `file.path`/`file.name` are present) and that execution is limited to authorized accounts and systems.
   - Continue monitoring for deviations in script content or execution context using the same pivots (`host.id`, `user.id`, and distinctive content in `powershell.file.script_block_text`).
-

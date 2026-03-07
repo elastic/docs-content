@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Identity OAuth Phishing via First-Party Microsoft Application" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Identity OAuth Phishing via First-Party Microsoft Application" prebuilt detection rule.'
 ---
 
 # M365 Identity OAuth Phishing via First-Party Microsoft Application
@@ -46,4 +46,3 @@ The rule uses split detection logic: developer tools (Azure CLI, VSCode, PowerSh
 - Block or restrict future use of OAuth tokens from unknown apps or IPs via Conditional Access.
 - Check `azure.auditlogs` for device registration events and remove any unauthorized registrations.
 - Educate users about OAuth phishing techniques and the risks of sharing authorization codes.
-

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Password Spraying Attack via SSH" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Password Spraying Attack via SSH" prebuilt detection rule.'
 ---
 
 # Potential Password Spraying Attack via SSH
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -40,4 +40,3 @@ This rule flags bursts of failed SSH logins coming from the same network origin 
 - Before restoring normal access, verify no persistence by checking for changes to /etc/ssh/sshd_config, sudoers, or cron jobs and reviewing /var/log/auth.log and lastlog for anomalies, then re-enable only required accounts.
 - Escalate to incident response if privileged or service accounts were targeted, the spray spanned multiple servers, or there is evidence of sudo activity, file changes under /root or /etc, or a successful login, and preserve auth logs, bash histories, and firewall block artifacts.
 - Harden SSH by disabling PasswordAuthentication, enforcing key-based auth with PAM MFA, setting conservative MaxAuthTries and LoginGraceTime, enabling fail2ban or equivalent bans, and restricting access via AllowUsers/AllowGroups and security group rules.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote Windows Service Installed" prebuilt detection rule.
+description: 'Investigation guide for the "Remote Windows Service Installed" prebuilt detection rule.'
 ---
 
 # Remote Windows Service Installed

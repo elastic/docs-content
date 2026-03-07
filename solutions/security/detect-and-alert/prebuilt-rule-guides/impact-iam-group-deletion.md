@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM Group Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM Group Deletion" prebuilt detection rule.'
 ---
 
 # AWS IAM Group Deletion
@@ -45,4 +45,3 @@ Attackers sometimes remove groups to erase evidence, disrupt operations, or prev
 
 ### Additional information
 [AWS Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/)
-

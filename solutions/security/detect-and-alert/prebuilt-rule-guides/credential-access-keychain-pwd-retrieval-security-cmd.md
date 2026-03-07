@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Keychain Password Retrieval via Command Line" prebuilt detection rule.
+description: 'Investigation guide for the "Keychain Password Retrieval via Command Line" prebuilt detection rule.'
 ---
 
 # Keychain Password Retrieval via Command Line

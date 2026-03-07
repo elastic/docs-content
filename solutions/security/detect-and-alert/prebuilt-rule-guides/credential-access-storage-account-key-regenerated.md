@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Storage Account Key Regenerated" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Storage Account Key Regenerated" prebuilt detection rule.'
 ---
 
 # Azure Storage Account Key Regenerated

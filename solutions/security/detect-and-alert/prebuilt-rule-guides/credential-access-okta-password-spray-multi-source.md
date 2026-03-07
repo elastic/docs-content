@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Okta Password Spray (Multi-Source)" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Okta Password Spray (Multi-Source)" prebuilt detection rule.'
 ---
 
 # Potential Okta Password Spray (Multi-Source)
@@ -36,4 +36,3 @@ This rule identifies coordinated password spray attacks where multiple source IP
 - Enable or strengthen MFA for targeted accounts.
 - Review Okta sign-on policies to add additional friction for suspicious authentication patterns.
 - Consider temporary lockdowns for highly targeted accounts.
-

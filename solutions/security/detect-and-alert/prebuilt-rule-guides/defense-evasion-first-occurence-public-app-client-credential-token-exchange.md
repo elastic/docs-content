@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unauthorized Scope for Public App OAuth2 Token Grant with Client Credentials" prebuilt detection rule.
+description: 'Investigation guide for the "Unauthorized Scope for Public App OAuth2 Token Grant with Client Credentials" prebuilt detection rule.'
 ---
 
 # Unauthorized Scope for Public App OAuth2 Token Grant with Client Credentials

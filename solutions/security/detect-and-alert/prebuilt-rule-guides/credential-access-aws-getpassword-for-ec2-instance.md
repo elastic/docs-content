@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 Unauthorized Admin Credential Fetch via Assumed Role" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 Unauthorized Admin Credential Fetch via Assumed Role" prebuilt detection rule.'
 ---
 
 # AWS EC2 Unauthorized Admin Credential Fetch via Assumed Role
@@ -43,5 +43,3 @@ This is a New Terms rule, which means it will only trigger once for each unique 
 ### Additional Information
 
 Refer to resources like [AWS privilege escalation methods](https://cloud.hacktricks.xyz/pentesting-cloud/aws-security/aws-privilege-escalation/aws-ec2-privesc) and the MITRE ATT&CK technique [T1552.005 - Cloud Instance Metadata API](https://attack.mitre.org/techniques/T1552/005/) for more details on potential vulnerabilities and mitigation strategies.
-
-

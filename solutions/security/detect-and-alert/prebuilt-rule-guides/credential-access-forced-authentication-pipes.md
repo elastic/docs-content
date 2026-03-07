@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Active Directory Forced Authentication from Linux Host - SMB Named Pipes" prebuilt detection rule.
+description: 'Investigation guide for the "Active Directory Forced Authentication from Linux Host - SMB Named Pipes" prebuilt detection rule.'
 ---
 
 # Active Directory Forced Authentication from Linux Host - SMB Named Pipes

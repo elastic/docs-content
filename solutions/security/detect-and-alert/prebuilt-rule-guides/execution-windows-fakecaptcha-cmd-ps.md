@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Fake CAPTCHA Phishing Attack" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Fake CAPTCHA Phishing Attack" prebuilt detection rule.'
 ---
 
 # Potential Fake CAPTCHA Phishing Attack

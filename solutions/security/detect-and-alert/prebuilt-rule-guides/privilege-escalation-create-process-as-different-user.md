@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Process Creation via Secondary Logon" prebuilt detection rule.
+description: 'Investigation guide for the "Process Creation via Secondary Logon" prebuilt detection rule.'
 ---
 
 # Process Creation via Secondary Logon

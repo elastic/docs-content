@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Deprecated - M365 Exchange DLP Policy Deleted" prebuilt detection rule.
+description: 'Investigation guide for the "Deprecated - M365 Exchange DLP Policy Deleted" prebuilt detection rule.'
 ---
 
 # Deprecated - M365 Exchange DLP Policy Deleted

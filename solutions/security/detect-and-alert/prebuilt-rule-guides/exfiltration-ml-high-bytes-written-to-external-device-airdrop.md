@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in Bytes Sent to an External Device via Airdrop" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in Bytes Sent to an External Device via Airdrop" prebuilt detection rule.'
 ---
 
 # Spike in Bytes Sent to an External Device via Airdrop

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Secrets Manager Rapid Secrets Retrieval" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Secrets Manager Rapid Secrets Retrieval" prebuilt detection rule.'
 ---
 
 # AWS Secrets Manager Rapid Secrets Retrieval
@@ -83,4 +83,3 @@ To reduce noise, consider exceptions based on:
   - Rotate IAM access keys or temporary credentials for the impacted identity.
   - Restrict permissions to Secrets Manager following least privilege.
   - Review automation and application behavior to ensure secrets are accessed only when required.
-

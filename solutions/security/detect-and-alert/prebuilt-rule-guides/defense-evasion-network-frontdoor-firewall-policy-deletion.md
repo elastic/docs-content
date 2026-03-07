@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure VNet Firewall Front Door WAF Policy Deleted" prebuilt detection rule.
+description: 'Investigation guide for the "Azure VNet Firewall Front Door WAF Policy Deleted" prebuilt detection rule.'
 ---
 
 # Azure VNet Firewall Front Door WAF Policy Deleted

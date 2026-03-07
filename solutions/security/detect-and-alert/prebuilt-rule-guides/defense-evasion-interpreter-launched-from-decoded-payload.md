@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Base64 Decoded Payload Piped to Interpreter" prebuilt detection rule.
+description: 'Investigation guide for the "Base64 Decoded Payload Piped to Interpreter" prebuilt detection rule.'
 ---
 
 # Base64 Decoded Payload Piped to Interpreter
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Base64 encoding is a method to encode binary data into ASCII text, often used fo
 - Update and patch all software and systems to mitigate vulnerabilities that could be exploited by similar techniques.
 - Implement enhanced monitoring and logging for base64 decoding activities and interpreter executions to detect similar threats in the future.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if broader organizational impacts exist.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Kill Signal" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Kill Signal" prebuilt detection rule.'
 ---
 
 # Unusual Kill Signal
@@ -45,4 +45,3 @@ In Linux environments, kill signals are used to manage process lifecycles. Signa
 - Update and patch the system to the latest security standards to close any vulnerabilities that may have been exploited.
 - Implement enhanced monitoring and logging for unusual kill signals and related activities to detect any future attempts at similar attacks.
 - Escalate the incident to the security operations center (SOC) or relevant cybersecurity team for further investigation and to assess the need for broader organizational response measures.
-

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "High Number of Closed Pull Requests by User" prebuilt detection rule.
+description: 'Investigation guide for the "High Number of Closed Pull Requests by User" prebuilt detection rule.'
 ---
 
 # High Number of Closed Pull Requests by User
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags a single user rapidly closing many pull requests in a short wind
 - Recover repository state by comparing diffs of closed PRs to any newly opened PRs by the same user, reverting unauthorized commits in target branches with git revert, and re-running required status checks before merging.
 - Harden controls by enforcing branch protection rules (require two approvals, restrict who can dismiss reviews, require signed commits), enabling CODEOWNERS for critical paths, and turning off Allow deletions on default and release branches.
 - Prevent recurrence by disabling classic PATs and requiring short-lived fine-grained PATs, revoking unusual OAuth app grants, mandating SSO with hardware-backed MFA, and installing a GitHub App/Action that notifies on PR closures with PR URLs, repos, and branches and requires a reason-coded label per policy.
-

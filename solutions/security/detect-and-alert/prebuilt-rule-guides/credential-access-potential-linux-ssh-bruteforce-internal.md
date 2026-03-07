@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Internal Linux SSH Brute Force Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Internal Linux SSH Brute Force Detected" prebuilt detection rule.'
 ---
 
 # Potential Internal Linux SSH Brute Force Detected
@@ -43,4 +43,3 @@ The rule identifies consecutive internal SSH login failures targeting a user acc
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

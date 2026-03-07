@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Correlated Alerts on Similar User Identities" prebuilt detection rule.
+description: 'Investigation guide for the "Correlated Alerts on Similar User Identities" prebuilt detection rule.'
 ---
 
 # Correlated Alerts on Similar User Identities

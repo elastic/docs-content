@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential LSASS Clone Creation via PssCaptureSnapShot" prebuilt detection rule.
+description: 'Investigation guide for the "Potential LSASS Clone Creation via PssCaptureSnapShot" prebuilt detection rule.'
 ---
 
 # Potential LSASS Clone Creation via PssCaptureSnapShot

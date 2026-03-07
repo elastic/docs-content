@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kernel Module Load from Unusual Location" prebuilt detection rule.
+description: 'Investigation guide for the "Kernel Module Load from Unusual Location" prebuilt detection rule.'
 ---
 
 # Kernel Module Load from Unusual Location

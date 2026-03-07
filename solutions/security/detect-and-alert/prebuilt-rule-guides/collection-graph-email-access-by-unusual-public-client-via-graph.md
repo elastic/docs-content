@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Microsoft Graph Request Email Access by Unusual User and Client" prebuilt detection rule.
+description: 'Investigation guide for the "Microsoft Graph Request Email Access by Unusual User and Client" prebuilt detection rule.'
 ---
 
 # Microsoft Graph Request Email Access by Unusual User and Client
@@ -48,4 +48,3 @@ This rule detects instances where a previously unseen or rare Microsoft Graph ap
 - Review and restrict risky OAuth permissions in Conditional Access and App Governance policies.
 - Add known, trusted app IDs to a detection allowlist to reduce noise in the future.
 - Continue monitoring the app ID for additional usage across the tenant or from suspicious IPs.
-

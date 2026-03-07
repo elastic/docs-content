@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Docker Escape via Nsenter" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Docker Escape via Nsenter" prebuilt detection rule.'
 ---
 
 # Potential Docker Escape via Nsenter

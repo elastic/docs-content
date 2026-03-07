@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Linux init (PID 1) Secret Dump via GDB" prebuilt detection rule.
+description: 'Investigation guide for the "Linux init (PID 1) Secret Dump via GDB" prebuilt detection rule.'
 ---
 
 # Linux init (PID 1) Secret Dump via GDB

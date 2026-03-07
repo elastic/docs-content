@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Root Network Connection via GDB CAP_SYS_PTRACE" prebuilt detection rule.
+description: 'Investigation guide for the "Root Network Connection via GDB CAP_SYS_PTRACE" prebuilt detection rule.'
 ---
 
 # Root Network Connection via GDB CAP_SYS_PTRACE

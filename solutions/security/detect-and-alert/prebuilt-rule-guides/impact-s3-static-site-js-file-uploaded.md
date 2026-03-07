@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS S3 Static Site JavaScript File Uploaded" prebuilt detection rule.
+description: 'Investigation guide for the "AWS S3 Static Site JavaScript File Uploaded" prebuilt detection rule.'
 ---
 
 # AWS S3 Static Site JavaScript File Uploaded
@@ -37,4 +37,3 @@ An S3 `PutObject` action that targets a path like `static/js/` and uploads a `.j
 - **Revoke Access**: If compromise is confirmed, revoke the IAM credentials and disable the user.
 - **Audit IAM Policies**: Ensure that only deployment users can modify static site buckets.
 - **Enable Bucket Versioning**: This can allow for quick rollback and historical review.
-

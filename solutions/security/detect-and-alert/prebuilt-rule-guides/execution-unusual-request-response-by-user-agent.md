@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Unusual Decision by User Agent" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Unusual Decision by User Agent" prebuilt detection rule.'
 ---
 
 # Kubernetes Unusual Decision by User Agent
@@ -45,4 +45,3 @@ Kubernetes orchestrates containerized applications, relying on API requests for 
 - Implement additional monitoring and logging for the affected systems to detect any further anomalies or unauthorized activities promptly.
 - Escalate the incident to the security operations team for a comprehensive investigation and to determine if any data exfiltration or further compromise has occurred.
 - Update and enhance detection rules and alerts to better identify similar anomalies in user agents and response annotations in the future, ensuring quicker response times.
-

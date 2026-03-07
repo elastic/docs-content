@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Modification of Dynamic Linker Preload Shared Object" prebuilt detection rule.
+description: 'Investigation guide for the "Modification of Dynamic Linker Preload Shared Object" prebuilt detection rule.'
 ---
 
 # Modification of Dynamic Linker Preload Shared Object

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google Workspace 2SV Policy Disabled" prebuilt detection rule.
+description: 'Investigation guide for the "Google Workspace 2SV Policy Disabled" prebuilt detection rule.'
 ---
 
 # Google Workspace 2SV Policy Disabled

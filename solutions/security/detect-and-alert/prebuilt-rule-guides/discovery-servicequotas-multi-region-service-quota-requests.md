@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Service Quotas Multi-Region GetServiceQuota Requests" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Service Quotas Multi-Region GetServiceQuota Requests" prebuilt detection rule.'
 ---
 
 # AWS Service Quotas Multi-Region GetServiceQuota Requests
@@ -53,4 +53,3 @@ AWS Service Quotas define usage limits for AWS services and are commonly referen
 - **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/)** 
 - **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)** 
 - **[AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/)**
-

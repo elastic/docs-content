@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Trap Signals Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Trap Signals Execution" prebuilt detection rule.'
 ---
 
 # Trap Signals Execution
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags use of the shell built-in trap to bind commands to POSIX signals
 - Sweep the host and peers for additional trap definitions by grepping for "trap SIG" in login/init paths and service scripts, and record script path, hash, mtime, and owner to confirm scope and support cleanup.
 - Escalate to incident response if the trap executes as root, modifies /etc/sudoers or PAM files, creates setuid files under /usr/bin or /usr/local/bin, or starts a reverse shell to an external IP/port.
 - Harden by restricting write access to /etc/*rc and service scripts, enforcing deployment via signed packages, adding audit rules for changes to /etc/sudoers and /etc/profile.d, blocking shells from egress to untrusted networks, and alerting on traps bound to EXIT/DEBUG or signals that invoke privileged actions.
-

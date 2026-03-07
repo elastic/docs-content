@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Stolen Credentials Used to Login to Okta Account After MFA Reset" prebuilt detection rule.
+description: 'Investigation guide for the "Stolen Credentials Used to Login to Okta Account After MFA Reset" prebuilt detection rule.'
 ---
 
 # Stolen Credentials Used to Login to Okta Account After MFA Reset
@@ -41,4 +41,3 @@ Typically, adversaries initially extract credentials from targeted endpoints thr
 ## Setup
 
 The Okta and Elastic Defend fleet integration structured data is required to be compatible with this rule. Directory services integration in Okta with AD synced is also required for this rule to be effective as it relies on triaging `user.name` from Okta and Elastic Defend events.
-

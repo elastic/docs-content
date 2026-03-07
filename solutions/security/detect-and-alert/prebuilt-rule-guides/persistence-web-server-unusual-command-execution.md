@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Web Server Command Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Web Server Command Execution" prebuilt detection rule.'
 ---
 
 # Unusual Web Server Command Execution
@@ -41,4 +41,3 @@ This rule detects shells invoked by web server processes on Linux to run one-off
 - Recover by restoring web content and application code from known-good backups or images, verifying file ownership and permissions, and restarting the service with monitored command allowlists and file integrity checks.
 - Escalate to full incident response and forensic imaging if any reverse shell artifacts (nc -e sh, bash -i >& /dev/tcp/*), privileged writes (/etc/systemd/system/*.service, /var/spool/cron/*), or sudo execution by the web server user are observed.
 - Harden by disabling risky exec paths (PHP exec/system/shell_exec and unsafe plugins), enforcing noexec,nodev,nosuid mounts on web roots, applying SELinux/AppArmor confinement to web processes, narrowing outbound egress, and deploying WAF/mod_security rules for upload and RCE vectors.
-

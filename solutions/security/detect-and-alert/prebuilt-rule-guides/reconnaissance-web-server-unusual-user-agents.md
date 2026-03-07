@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Web Server Suspicious User Agent Requests" prebuilt detection rule.
+description: 'Investigation guide for the "Web Server Suspicious User Agent Requests" prebuilt detection rule.'
 ---
 
 # Web Server Suspicious User Agent Requests
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags surges of web requests that advertise scanner or brute-force too
 - Recover by verifying no unauthorized changes or data exfiltration occurred, tuning per-IP and per-path rate limits to prevent path-sweeps while preserving legitimate traffic, and reintroducing normal rules only after fixes are deployed and stability is confirmed.
 - Escalate to incident response if sensitive files are successfully downloaded (HTTP 200/206 on /.git, /.env, or backups), any login or account creation succeeds, multiple hosts or environments are targeted, or activity persists after blocking via UA spoofing or rapid IP rotation.
 - Harden long term by enforcing WAF signatures for known scanner UAs and path patterns, denying directory listing and direct access to /.git, /.env, /backup and similar artifacts, requiring MFA/VPN for /admin and management APIs, and deploying auto-ban controls like fail2ban or mod_security.
-

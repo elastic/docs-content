@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Netsh Helper DLL" prebuilt detection rule.
+description: 'Investigation guide for the "Netsh Helper DLL" prebuilt detection rule.'
 ---
 
 # Netsh Helper DLL

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GenAI Process Performing Encoding/Chunking Prior to Network Activity" prebuilt detection rule.
+description: 'Investigation guide for the "GenAI Process Performing Encoding/Chunking Prior to Network Activity" prebuilt detection rule.'
 ---
 
 # GenAI Process Performing Encoding/Chunking Prior to Network Activity
@@ -38,4 +38,3 @@ GenAI processes performing encoding or chunking operations followed by network a
 - Terminate the GenAI process and any spawned encoding/network processes to stop the malicious activity.
 - Review and revoke any API keys, tokens, or credentials that may have been exposed or used by the GenAI tool.
 - Investigate the encoded data and network destination to determine the scope of potential data exfiltration.
-

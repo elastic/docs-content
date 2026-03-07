@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Gatekeeper Override and Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Gatekeeper Override and Execution" prebuilt detection rule.'
 ---
 
 # Gatekeeper Override and Execution
@@ -47,4 +47,3 @@ macOS Gatekeeper uses the quarantine extended attribute (com.apple.quarantine) t
 - Educate users about the risks of bypassing Gatekeeper and removing quarantine attributes from downloaded files.
 - Consider implementing additional controls such as application allowlisting to prevent execution of unauthorized binaries.
 - Escalate to the incident response team if the executed binary is confirmed malicious.
-

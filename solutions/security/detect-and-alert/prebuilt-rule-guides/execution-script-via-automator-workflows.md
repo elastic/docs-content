@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Automator Workflows Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Automator Workflows Execution" prebuilt detection rule.'
 ---
 
 # Suspicious Automator Workflows Execution

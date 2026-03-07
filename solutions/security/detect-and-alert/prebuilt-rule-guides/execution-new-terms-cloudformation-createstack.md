@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "First Time AWS CloudFormation Stack Creation" prebuilt detection rule.
+description: 'Investigation guide for the "First Time AWS CloudFormation Stack Creation" prebuilt detection rule.'
 ---
 
 # First Time AWS CloudFormation Stack Creation

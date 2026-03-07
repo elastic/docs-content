@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "FirstTime Seen Account Performing DCSync" prebuilt detection rule.
+description: 'Investigation guide for the "FirstTime Seen Account Performing DCSync" prebuilt detection rule.'
 ---
 
 # FirstTime Seen Account Performing DCSync
@@ -47,4 +47,3 @@ This rule monitors for when a Windows Event ID 4662 (Operation was performed on 
 - Investigate how the attacker escalated privileges and identify systems they used to conduct lateral movement. Use this information to determine ways the attacker could regain access to the environment.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

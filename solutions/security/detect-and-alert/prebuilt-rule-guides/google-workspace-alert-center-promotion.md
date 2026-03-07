@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Forwarded Google Workspace Security Alert" prebuilt detection rule.
+description: 'Investigation guide for the "Forwarded Google Workspace Security Alert" prebuilt detection rule.'
 ---
 
 # Forwarded Google Workspace Security Alert
@@ -17,4 +17,3 @@ description: Investigation guide for the "Forwarded Google Workspace Security Al
 
 This is a promotion rule for Google Workspace security events, which are alertable events per the vendor.
 Consult vendor documentation on interpreting specific events.
-

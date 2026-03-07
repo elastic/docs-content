@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Automation Runbook Created or Modified" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Automation Runbook Created or Modified" prebuilt detection rule.'
 ---
 
 # Azure Automation Runbook Created or Modified

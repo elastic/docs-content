@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Keylogging Script" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Keylogging Script" prebuilt detection rule.'
 ---
 
 # PowerShell Keylogging Script
@@ -87,4 +87,3 @@ This alert indicates that PowerShell Script Block Logging recorded code referenc
 - If the activity is confirmed benign:
   - Document the legitimate script or tool, expected operators (`user.id`), and expected host scope (`host.id`).
   - Apply narrowly scoped tuning based on stable, repeatable identifiers (for example, specific `file.path` and expected accounts) to reduce recurring noise while maintaining coverage for unauthorized keylogging behavior.
-

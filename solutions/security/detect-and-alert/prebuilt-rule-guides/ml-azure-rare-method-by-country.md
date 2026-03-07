@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Country for an Azure Activity Logs Event" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Country for an Azure Activity Logs Event" prebuilt detection rule.'
 ---
 
 # Unusual Country for an Azure Activity Logs Event
@@ -40,4 +40,3 @@ This alert flags management operations originating from a country not normally a
 - Restore access only after user/business validation, reapply baseline Key Vault access policies and RBAC from infrastructure-as-code, and roll forward patched images or automation to replace any VMs or runbooks created during the incident.
 - Escalate to Security Incident Response if a service principal was created and granted Owner/Contributor or Key Vault Admin, if access policies were modified, if compute/automation was deployed from the unusual country, or if interactive management access succeeded without MFA.
 - Harden by enforcing country-aware Conditional Access for management apps, requiring phishing-resistant MFA for privileged actions, enabling PIM with approval and just-in-time for role changes, restricting SAS with IP/time scopes, and disabling legacy authentication.
-

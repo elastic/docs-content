@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Exchange Mailbox Items Accessed Excessively" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Exchange Mailbox Items Accessed Excessively" prebuilt detection rule.'
 ---
 
 # M365 Exchange Mailbox Items Accessed Excessively
@@ -41,4 +41,3 @@ Identifies an excessive number of Microsoft 365 mailbox items accessed by a user
 - If the user account is compromised, initiate a password reset and enforce multi-factor authentication (MFA) for the user.
 - Review the conditional access policies in place to ensure they are sufficient to prevent unauthorized access to sensitive resources.
 - Examine how the mailbox access was performed. If it was done via a third-party application, review the permissions granted to that application and consider revoking them if they are not necessary.
-

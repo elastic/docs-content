@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kernel Instrumentation Discovery via kprobes and tracefs" prebuilt detection rule.
+description: 'Investigation guide for the "Kernel Instrumentation Discovery via kprobes and tracefs" prebuilt detection rule.'
 ---
 
 # Kernel Instrumentation Discovery via kprobes and tracefs

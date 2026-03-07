@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Web Server Local File Inclusion Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Web Server Local File Inclusion Activity" prebuilt detection rule.'
 ---
 
 # Web Server Local File Inclusion Activity
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule surfaces successful GET requests containing directory traversal or dir
 - Rotate exposed secrets by changing database and API credentials from wp-config.php, connection strings and machine keys from web.config/applicationhost.config, and any tokens in /proc/self/environ, then invalidate active sessions and cache.
 - Escalate to incident leadership and quarantine the host if response bodies contain credential patterns (e.g., "root:x:" from /etc/passwd or XML keys from web.config), if /etc/shadow or windows/system32/config/SAM was requested, or if follow-on POSTs or new .php/.aspx files appear in the webroot.
 - Recover by verifying integrity of /var/www and /inetpub/wwwroot, scanning for webshells and unexpected includes, redeploying a known-good build or container image if tampering is found, and adding WAF normalization to double-decode URLs and 403 traversal attempts.
-

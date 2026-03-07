@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "External User Added to Google Workspace Group" prebuilt detection rule.
+description: 'Investigation guide for the "External User Added to Google Workspace Group" prebuilt detection rule.'
 ---
 
 # External User Added to Google Workspace Group

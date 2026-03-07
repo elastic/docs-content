@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "High Number of Protected Branch Force Pushes by User" prebuilt detection rule.
+description: 'Investigation guide for the "High Number of Protected Branch Force Pushes by User" prebuilt detection rule.'
 ---
 
 # High Number of Protected Branch Force Pushes by User
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags a single user performing many force pushes to protected branches
 - Eradicate unauthorized changes by diffing the pre-override and post-override branch heads, reverting malicious edits, rotating repository secrets referenced in code/workflows, and removing suspicious GitHub Apps installed by the user.
 - Escalate to incident response and legal if any overwritten history includes production release branches or signed tags, if the user denies authorization, or if pushes originated from a new token/App unknown to repo owners.
 - Harden by enforcing rulesets that block force pushes and require linear history on main and release/* branches, enabling CODEOWNERS-required reviews and signed commits, limiting bypass permissions to a small admin group, and using deploy keys or CI bots with short-lived tokens for pushes.
-

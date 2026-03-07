@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "DNS Global Query Block List Modified or Disabled" prebuilt detection rule.
+description: 'Investigation guide for the "DNS Global Query Block List Modified or Disabled" prebuilt detection rule.'
 ---
 
 # DNS Global Query Block List Modified or Disabled

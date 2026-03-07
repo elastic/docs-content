@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Hour for a User to Logon" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Hour for a User to Logon" prebuilt detection rule.'
 ---
 
 # Unusual Hour for a User to Logon
@@ -33,4 +33,3 @@ This rule uses a machine learning job to detect a user logging in at a time of d
 - Initiate the incident response process based on the outcome of the triage.
 - Investigate credential exposure on systems compromised or used by the attacker to ensure all compromised accounts are identified. Reset passwords for these accounts and other potentially compromised credentials, such as email, business systems, and web services.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

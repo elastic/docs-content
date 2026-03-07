@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Local Account TokenFilter Policy Disabled" prebuilt detection rule.
+description: 'Investigation guide for the "Local Account TokenFilter Policy Disabled" prebuilt detection rule.'
 ---
 
 # Local Account TokenFilter Policy Disabled

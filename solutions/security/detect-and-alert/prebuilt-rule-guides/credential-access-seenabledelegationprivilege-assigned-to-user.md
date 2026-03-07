@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Sensitive Privilege SeEnableDelegationPrivilege assigned to a User" prebuilt detection rule.
+description: 'Investigation guide for the "Sensitive Privilege SeEnableDelegationPrivilege assigned to a User" prebuilt detection rule.'
 ---
 
 # Sensitive Privilege SeEnableDelegationPrivilege assigned to a User
@@ -44,4 +44,3 @@ It is critical to control the assignment of this privilege. A user with this pri
 - Review the privileges of the administrator account that performed the action.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Chroot Container Escape via Mount" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Chroot Container Escape via Mount" prebuilt detection rule.'
 ---
 
 # Potential Chroot Container Escape via Mount

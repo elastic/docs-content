@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kerberos Pre-authentication Disabled for User" prebuilt detection rule.
+description: 'Investigation guide for the "Kerberos Pre-authentication Disabled for User" prebuilt detection rule.'
 ---
 
 # Kerberos Pre-authentication Disabled for User
@@ -38,4 +38,3 @@ AS-REP roasting is an attack against Kerberos for user accounts that do not requ
 - Review the privileges assigned to the involved users to ensure that the least privilege principle is being followed.
 - Investigate credential exposure on systems compromised or used by the attacker to ensure all compromised accounts are identified. Reset passwords for these accounts and other potentially compromised credentials, such as email, business systems, and web services.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

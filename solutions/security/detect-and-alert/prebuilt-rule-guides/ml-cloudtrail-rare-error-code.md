@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Rare AWS Error Code" prebuilt detection rule.
+description: 'Investigation guide for the "Rare AWS Error Code" prebuilt detection rule.'
 ---
 
 # Rare AWS Error Code
@@ -66,4 +66,3 @@ Detection alerts from this rule indicate a rare and unusual error code that was 
 - Take the actions needed to return affected systems, data, or services to their normal operational levels.
 - Identify the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

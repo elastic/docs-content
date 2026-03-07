@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Execution with NodeJS" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Execution with NodeJS" prebuilt detection rule.'
 ---
 
 # Suspicious Execution with NodeJS

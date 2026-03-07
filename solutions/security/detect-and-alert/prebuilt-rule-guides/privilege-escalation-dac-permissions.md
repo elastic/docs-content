@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Privilege Escalation via Linux DAC permissions" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Privilege Escalation via Linux DAC permissions" prebuilt detection rule.'
 ---
 
 # Potential Privilege Escalation via Linux DAC permissions

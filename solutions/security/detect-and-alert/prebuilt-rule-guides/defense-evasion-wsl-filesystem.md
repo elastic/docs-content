@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Host File System Changes via Windows Subsystem for Linux" prebuilt detection rule.
+description: 'Investigation guide for the "Host File System Changes via Windows Subsystem for Linux" prebuilt detection rule.'
 ---
 
 # Host File System Changes via Windows Subsystem for Linux

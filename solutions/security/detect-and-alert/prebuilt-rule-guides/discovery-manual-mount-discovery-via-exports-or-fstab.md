@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Manual Mount Discovery via /etc/exports or /etc/fstab" prebuilt detection rule.
+description: 'Investigation guide for the "Manual Mount Discovery via /etc/exports or /etc/fstab" prebuilt detection rule.'
 ---
 
 # Manual Mount Discovery via /etc/exports or /etc/fstab
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ In Linux environments, the `/etc/exports` and `/etc/fstab` files are crucial for
 - Monitor network traffic for any unusual activity originating from the affected system, focusing on connections to external IPs or unexpected internal hosts.
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems have been compromised.
 - Implement enhanced monitoring and logging for access to critical configuration files like `/etc/exports` and `/etc/fstab` to detect similar threats in the future.
-

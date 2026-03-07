@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote Scheduled Task Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Remote Scheduled Task Creation" prebuilt detection rule.'
 ---
 
 # Remote Scheduled Task Creation
@@ -38,4 +38,3 @@ description: Investigation guide for the "Remote Scheduled Task Creation" prebui
 - Isolate the involved host to prevent further post-compromise behavior.
 - Remove scheduled task and any other related artifacts.
 - Review privileged account management and user account management settings. Consider implementing group policy object (GPO) policies to further restrict activity, or configuring settings that only allow administrators to create remote scheduled tasks.
-

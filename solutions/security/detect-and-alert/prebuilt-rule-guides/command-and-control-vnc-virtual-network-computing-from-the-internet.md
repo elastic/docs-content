@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "VNC (Virtual Network Computing) from the Internet" prebuilt detection rule.
+description: 'Investigation guide for the "VNC (Virtual Network Computing) from the Internet" prebuilt detection rule.'
 ---
 
 # VNC (Virtual Network Computing) from the Internet

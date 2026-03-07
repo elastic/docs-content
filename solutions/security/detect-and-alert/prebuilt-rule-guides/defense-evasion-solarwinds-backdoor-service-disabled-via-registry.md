@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SolarWinds Process Disabling Services via Registry" prebuilt detection rule.
+description: 'Investigation guide for the "SolarWinds Process Disabling Services via Registry" prebuilt detection rule.'
 ---
 
 # SolarWinds Process Disabling Services via Registry

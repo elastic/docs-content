@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "FortiGate Administrator Login from Multiple IP Addresses" prebuilt detection rule.
+description: 'Investigation guide for the "FortiGate Administrator Login from Multiple IP Addresses" prebuilt detection rule.'
 ---
 
 # FortiGate Administrator Login from Multiple IP Addresses

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Access Control List Modification via setfacl" prebuilt detection rule.
+description: 'Investigation guide for the "Access Control List Modification via setfacl" prebuilt detection rule.'
 ---
 
 # Access Control List Modification via setfacl

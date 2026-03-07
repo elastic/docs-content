@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential macOS SSH Brute Force Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Potential macOS SSH Brute Force Detected" prebuilt detection rule.'
 ---
 
 # Potential macOS SSH Brute Force Detected

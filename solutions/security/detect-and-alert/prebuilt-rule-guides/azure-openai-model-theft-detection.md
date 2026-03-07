@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Azure OpenAI Model Theft" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Azure OpenAI Model Theft" prebuilt detection rule.'
 ---
 
 # Potential Azure OpenAI Model Theft
@@ -44,4 +44,3 @@ Azure OpenAI models are integral to many applications, providing advanced machin
 - Implement additional monitoring on the affected resources to detect any further suspicious activities, focusing on access patterns and data transfer volumes.
 - Escalate the incident to the organization's incident response team for a comprehensive investigation and to determine if any data exfiltration occurred.
 - Review and update access controls and permissions for Azure OpenAI resources to ensure they adhere to the principle of least privilege, reducing the risk of future unauthorized access.
-

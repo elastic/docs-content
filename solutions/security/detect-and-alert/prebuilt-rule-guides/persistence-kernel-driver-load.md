@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kernel Driver Load" prebuilt detection rule.
+description: 'Investigation guide for the "Kernel Driver Load" prebuilt detection rule.'
 ---
 
 # Kernel Driver Load

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Browser Process Spawned from an Unusual Parent" prebuilt detection rule.
+description: 'Investigation guide for the "Browser Process Spawned from an Unusual Parent" prebuilt detection rule.'
 ---
 
 # Browser Process Spawned from an Unusual Parent

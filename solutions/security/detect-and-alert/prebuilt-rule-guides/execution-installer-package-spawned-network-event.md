@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Installer Package Spawns Network Event" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Installer Package Spawns Network Event" prebuilt detection rule.'
 ---
 
 # Suspicious Installer Package Spawns Network Event

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "BPF Program or Map Load via bpftool" prebuilt detection rule.
+description: 'Investigation guide for the "BPF Program or Map Load via bpftool" prebuilt detection rule.'
 ---
 
 # BPF Program or Map Load via bpftool

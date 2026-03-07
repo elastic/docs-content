@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unsigned DLL Side-Loading from a Suspicious Folder" prebuilt detection rule.
+description: 'Investigation guide for the "Unsigned DLL Side-Loading from a Suspicious Folder" prebuilt detection rule.'
 ---
 
 # Unsigned DLL Side-Loading from a Suspicious Folder

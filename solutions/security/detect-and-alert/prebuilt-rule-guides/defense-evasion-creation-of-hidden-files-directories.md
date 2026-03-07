@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Hidden Files and Directories via Hidden Flag" prebuilt detection rule.
+description: 'Investigation guide for the "Hidden Files and Directories via Hidden Flag" prebuilt detection rule.'
 ---
 
 # Hidden Files and Directories via Hidden Flag

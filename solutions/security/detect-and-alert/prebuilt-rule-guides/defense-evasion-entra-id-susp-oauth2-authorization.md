@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Identity OAuth Flow by First-Party Microsoft App from Multiple IPs" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Identity OAuth Flow by First-Party Microsoft App from Multiple IPs" prebuilt detection rule.'
 ---
 
 # M365 Identity OAuth Flow by First-Party Microsoft App from Multiple IPs
@@ -45,4 +45,3 @@ The rule aggregates events by user, application, and resource, requiring both `O
 - Block the attacker IPs at the perimeter and add to threat intel feeds.
 - Implement Conditional Access policies to restrict OAuth flows for these applications to compliant devices and approved locations.
 - Monitor for follow-on activity like lateral movement, privilege escalation, or data exfiltration via Graph API.
-

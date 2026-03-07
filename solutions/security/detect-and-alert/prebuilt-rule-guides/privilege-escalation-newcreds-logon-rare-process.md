@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "First Time Seen NewCredentials Logon Process" prebuilt detection rule.
+description: 'Investigation guide for the "First Time Seen NewCredentials Logon Process" prebuilt detection rule.'
 ---
 
 # First Time Seen NewCredentials Logon Process

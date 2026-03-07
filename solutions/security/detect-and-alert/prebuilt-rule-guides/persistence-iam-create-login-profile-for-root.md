@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM Login Profile Added for Root" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM Login Profile Added for Root" prebuilt detection rule.'
 ---
 
 # AWS IAM Login Profile Added for Root
@@ -97,4 +97,3 @@ For any potential false positive, verify that:
 - **AWS Documentation**  
   - [CreateLoginProfile API Reference](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateLoginProfile.html)  
   - [Root User Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html)
-

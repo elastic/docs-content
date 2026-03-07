@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "RDP (Remote Desktop Protocol) from the Internet" prebuilt detection rule.
+description: 'Investigation guide for the "RDP (Remote Desktop Protocol) from the Internet" prebuilt detection rule.'
 ---
 
 # RDP (Remote Desktop Protocol) from the Internet

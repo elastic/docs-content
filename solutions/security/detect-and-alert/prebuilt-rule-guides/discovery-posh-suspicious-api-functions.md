@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Suspicious Discovery Related Windows API Functions" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Suspicious Discovery Related Windows API Functions" prebuilt detection rule.'
 ---
 
 # PowerShell Suspicious Discovery Related Windows API Functions
@@ -87,4 +87,3 @@ This rule flags PowerShell script block content that references Windows API func
 - If the activity is determined to be legitimate but unexpected:
   - Identify the script owner and document the business purpose, expected execution scope (hosts/users), and expected cadence.
   - Reduce future noise by baselining approved scripts and execution contexts, and ensure logging and monitoring coverage remains sufficient to investigate future occurrences.
-

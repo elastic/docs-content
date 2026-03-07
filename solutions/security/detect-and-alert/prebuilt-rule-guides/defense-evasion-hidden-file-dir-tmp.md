@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Creation of Hidden Files and Directories via CommandLine" prebuilt detection rule.
+description: 'Investigation guide for the "Creation of Hidden Files and Directories via CommandLine" prebuilt detection rule.'
 ---
 
 # Creation of Hidden Files and Directories via CommandLine

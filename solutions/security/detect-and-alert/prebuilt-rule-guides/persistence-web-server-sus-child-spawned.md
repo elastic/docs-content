@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Process Spawned from Web Server Parent" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Process Spawned from Web Server Parent" prebuilt detection rule.'
 ---
 
 # Unusual Process Spawned from Web Server Parent
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Web servers like Apache, Nginx, and others are crucial for hosting applications 
 - Review user accounts and permissions associated with the web server processes to ensure no unauthorized accounts or privilege escalations have occurred. Reset passwords and revoke unnecessary access.
 - Monitor network traffic from the affected host for any signs of command and control communication, and block any identified malicious IP addresses or domains.
 - Escalate the incident to the security operations center (SOC) or incident response team for further analysis and to determine if additional systems are compromised.
-

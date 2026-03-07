@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution via OpenClaw Agent" prebuilt detection rule.
+description: 'Investigation guide for the "Execution via OpenClaw Agent" prebuilt detection rule.'
 ---
 
 # Execution via OpenClaw Agent
@@ -39,4 +39,3 @@ that execute download-and-execute commands, targeting cryptocurrency wallets and
 - Review and remove any suspicious skills from the OpenClaw configuration.
 - If credentials may have been accessed, rotate affected secrets and API keys.
 - Block known typosquat domains (moltbot.you, clawbot.ai, clawdbot.you) at the network level.
-

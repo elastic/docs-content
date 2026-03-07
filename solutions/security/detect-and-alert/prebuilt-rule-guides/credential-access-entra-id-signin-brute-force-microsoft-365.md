@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Sign-in Brute Force Attempted (Microsoft 365)" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Sign-in Brute Force Attempted (Microsoft 365)" prebuilt detection rule.'
 ---
 
 # Entra ID Sign-in Brute Force Attempted (Microsoft 365)
@@ -46,4 +46,3 @@ Identifies brute-force authentication activity against Microsoft 365 services us
 - Review tenant-wide MFA and conditional access enforcement.
 - Audit targeted accounts for password reuse across systems or tenants.
 - Enable lockout or throttling policies for repeated failed login attempts.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Evasion via Windows Filtering Platform" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Evasion via Windows Filtering Platform" prebuilt detection rule.'
 ---
 
 # Potential Evasion via Windows Filtering Platform

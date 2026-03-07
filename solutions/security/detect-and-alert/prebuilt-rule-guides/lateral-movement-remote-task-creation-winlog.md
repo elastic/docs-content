@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote Scheduled Task Creation via RPC" prebuilt detection rule.
+description: 'Investigation guide for the "Remote Scheduled Task Creation via RPC" prebuilt detection rule.'
 ---
 
 # Remote Scheduled Task Creation via RPC
@@ -39,4 +39,3 @@ description: Investigation guide for the "Remote Scheduled Task Creation via RPC
 - Isolate the involved host to prevent further post-compromise behavior.
 - Remove scheduled task and any other related artifacts.
 - Review privileged account management and user account management settings. Consider implementing group policy object (GPO) policies to further restrict activity, or configuring settings that only allow administrators to create remote scheduled tasks.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential SharpRDP Behavior" prebuilt detection rule.
+description: 'Investigation guide for the "Potential SharpRDP Behavior" prebuilt detection rule.'
 ---
 
 # Potential SharpRDP Behavior

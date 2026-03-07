@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential PowerShell Pass-the-Hash/Relay Script" prebuilt detection rule.
+description: 'Investigation guide for the "Potential PowerShell Pass-the-Hash/Relay Script" prebuilt detection rule.'
 ---
 
 # Potential PowerShell Pass-the-Hash/Relay Script
@@ -78,4 +78,3 @@ This alert indicates PowerShell script block content consistent with low-level N
 - If the activity is confirmed benign:
   - Document the business justification and expected host/account scope, and ensure appropriate approvals are in place.
   - Apply targeted tuning using stable attributes such as known script paths, approved execution accounts, or consistent script content patterns.
-

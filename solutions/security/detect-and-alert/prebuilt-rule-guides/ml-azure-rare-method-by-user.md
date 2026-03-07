@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Azure Activity Logs Event for a User" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Azure Activity Logs Event for a User" prebuilt detection rule.'
 ---
 
 # Unusual Azure Activity Logs Event for a User
@@ -40,4 +40,3 @@ This rule flags an Azure Activity Logs event when a user performs an action they
 - Restore affected configurations to baseline by reapplying IaC templates and verifying Key Vault access policies, storage account firewalls, and NSG rules match approved standards before re-enabling routine operations.
 - Escalate to incident response and notify cloud security leadership if the unusual action involved new role assignments granting elevated rights, access to Key Vault secrets, listing storage account keys, disabling logs, or activity across multiple subscriptions.
 - Implement hardening by enforcing MFA with phishing-resistant methods, enabling risk-based Conditional Access, requiring just-in-time elevation via PIM, restricting management-plane access to approved network locations, and adding alerts for role assignment writes, secret reads, and key listings.
-

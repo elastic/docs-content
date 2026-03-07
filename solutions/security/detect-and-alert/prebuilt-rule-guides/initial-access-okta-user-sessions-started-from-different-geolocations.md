@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta User Sessions Started from Different Geolocations" prebuilt detection rule.
+description: 'Investigation guide for the "Okta User Sessions Started from Different Geolocations" prebuilt detection rule.'
 ---
 
 # Okta User Sessions Started from Different Geolocations
@@ -48,4 +48,3 @@ This rule detects when a specific Okta actor has multiple sessions started from 
     - This will prevent future occurrences of this event for this device from triggering the rule.
     - Alternatively adding `okta.client.ip` or a CIDR range to the `exceptions` list can prevent future occurrences of this event from triggering the rule.
         - This should be done with caution as it may prevent legitimate alerts from being generated.
-

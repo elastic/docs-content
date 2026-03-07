@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Deprecated - M365 Security Compliance User Restricted from Sending Email" prebuilt detection rule.
+description: 'Investigation guide for the "Deprecated - M365 Security Compliance User Restricted from Sending Email" prebuilt detection rule.'
 ---
 
 # Deprecated - M365 Security Compliance User Restricted from Sending Email
@@ -49,4 +49,3 @@ Microsoft 365 enforces email sending limits to prevent abuse and ensure service 
 ## Setup
 
 The Office 365 Logs Fleet integration, Filebeat module, or similarly structured data is required to be compatible with this rule.
-

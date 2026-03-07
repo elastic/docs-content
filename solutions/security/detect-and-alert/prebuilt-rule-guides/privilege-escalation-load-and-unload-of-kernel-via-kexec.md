@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kernel Load or Unload via Kexec Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Kernel Load or Unload via Kexec Detected" prebuilt detection rule.'
 ---
 
 # Kernel Load or Unload via Kexec Detected

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta ThreatInsight Threat Suspected Promotion" prebuilt detection rule.
+description: 'Investigation guide for the "Okta ThreatInsight Threat Suspected Promotion" prebuilt detection rule.'
 ---
 
 # Okta ThreatInsight Threat Suspected Promotion
@@ -17,4 +17,3 @@ description: Investigation guide for the "Okta ThreatInsight Threat Suspected Pr
 
 This is a promotion rule for Okta ThreatInsight suspected threat events, which are alertable events per the vendor.
 Consult vendor documentation on interpreting specific events.
-

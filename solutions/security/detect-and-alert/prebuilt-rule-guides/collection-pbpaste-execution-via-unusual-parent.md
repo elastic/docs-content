@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Pbpaste Execution via Unusual Parent Process" prebuilt detection rule.
+description: 'Investigation guide for the "Pbpaste Execution via Unusual Parent Process" prebuilt detection rule.'
 ---
 
 # Pbpaste Execution via Unusual Parent Process
@@ -45,4 +45,3 @@ The pbpaste utility on macOS retrieves data from the system clipboard, making it
 - Perform a full malware scan on the affected system using endpoint security tools to identify additional indicators of compromise.
 - Review the origin of the parent script or application to understand the initial access vector and prevent reinfection.
 - Escalate to the security operations team if the activity appears to be part of a coordinated campaign affecting multiple endpoints.
-

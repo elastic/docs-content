@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential PowerShell HackTool Script by Function Names" prebuilt detection rule.
+description: 'Investigation guide for the "Potential PowerShell HackTool Script by Function Names" prebuilt detection rule.'
 ---
 
 # Potential PowerShell HackTool Script by Function Names
@@ -83,4 +83,3 @@ This rule identifies PowerShell Script Block Logging events where the captured s
 - If the activity is confirmed benign:
   - Document the justification (owner, purpose, expected hosts/users, and time window) and retain the reconstructed script content for future baselining.
   - Where feasible, limit high-risk PowerShell tooling to controlled administrative hosts and approved accounts to reduce recurrence.
-

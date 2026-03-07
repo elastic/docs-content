@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Activity Reported by Okta User" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Activity Reported by Okta User" prebuilt detection rule.'
 ---
 
 # Suspicious Activity Reported by Okta User

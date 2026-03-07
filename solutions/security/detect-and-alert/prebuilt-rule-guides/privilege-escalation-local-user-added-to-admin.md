@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Admin Group Account Addition" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Admin Group Account Addition" prebuilt detection rule.'
 ---
 
 # Potential Admin Group Account Addition

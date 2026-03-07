@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "New Okta Identity Provider (IdP) Added by Admin" prebuilt detection rule.
+description: 'Investigation guide for the "New Okta Identity Provider (IdP) Added by Admin" prebuilt detection rule.'
 ---
 
 # New Okta Identity Provider (IdP) Added by Admin
@@ -43,4 +43,3 @@ This rule detects the creation of a new Identity Provider (IdP) by a Super Admin
 ## Setup
 
 The Okta Fleet integration, Filebeat module, or similarly structured data is required to be compatible with this rule.
-

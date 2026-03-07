@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Concurrent Sign-in with Suspicious Properties" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Concurrent Sign-in with Suspicious Properties" prebuilt detection rule.'
 ---
 
 # Entra ID Concurrent Sign-in with Suspicious Properties

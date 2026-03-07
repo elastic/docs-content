@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual DNS Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual DNS Activity" prebuilt detection rule.'
 ---
 
 # Unusual DNS Activity

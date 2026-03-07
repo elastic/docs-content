@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Dynamic Linker Discovery via od" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Dynamic Linker Discovery via od" prebuilt detection rule.'
 ---
 
 # Suspicious Dynamic Linker Discovery via od

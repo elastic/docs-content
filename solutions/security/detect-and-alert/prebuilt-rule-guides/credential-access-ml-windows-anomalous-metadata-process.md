@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Windows Process Calling the Metadata Service" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Windows Process Calling the Metadata Service" prebuilt detection rule.'
 ---
 
 # Unusual Windows Process Calling the Metadata Service

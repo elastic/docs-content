@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "FortiGate SOCKS Traffic from an Unusual Process" prebuilt detection rule.
+description: 'Investigation guide for the "FortiGate SOCKS Traffic from an Unusual Process" prebuilt detection rule.'
 ---
 
 # FortiGate SOCKS Traffic from an Unusual Process
@@ -37,4 +37,3 @@ description: Investigation guide for the "FortiGate SOCKS Traffic from an Unusua
 - Reset credentials for any accounts associated with the source machine.
 - Implement network-level controls to block traffic via SOCKS unless authorized.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional systems are affected.
-

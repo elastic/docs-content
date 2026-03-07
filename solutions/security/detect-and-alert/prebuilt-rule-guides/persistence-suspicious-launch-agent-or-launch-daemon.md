@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Persistence via Suspicious Launch Agent or Launch Daemon" prebuilt detection rule.
+description: 'Investigation guide for the "Persistence via Suspicious Launch Agent or Launch Daemon" prebuilt detection rule.'
 ---
 
 # Persistence via Suspicious Launch Agent or Launch Daemon
@@ -48,4 +48,3 @@ LaunchAgents and LaunchDaemons are the standard macOS mechanisms for starting pr
 - If the detection matches patterns of known malware families (RustBucket, Shlayer), perform comprehensive IOC searches and threat hunting.
 - Reset any credentials that may have been accessed while the malicious process was running.
 - Monitor for recreation of similar plist files to detect persistent access or ongoing compromise.
-

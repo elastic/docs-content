@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution of File Written or Modified by Microsoft Office" prebuilt detection rule.
+description: 'Investigation guide for the "Execution of File Written or Modified by Microsoft Office" prebuilt detection rule.'
 ---
 
 # Execution of File Written or Modified by Microsoft Office
@@ -57,4 +57,3 @@ This rule searches for executable files written by MS Office applications execut
     - Remove emails from the sender from mailboxes.
     - Consider improvements to the security awareness program.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

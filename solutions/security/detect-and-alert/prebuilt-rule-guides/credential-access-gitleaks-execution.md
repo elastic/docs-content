@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Secret Scanning via Gitleaks" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Secret Scanning via Gitleaks" prebuilt detection rule.'
 ---
 
 # Potential Secret Scanning via Gitleaks

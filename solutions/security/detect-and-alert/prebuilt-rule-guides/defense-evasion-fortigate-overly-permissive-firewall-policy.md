@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "FortiGate Overly Permissive Firewall Policy Created" prebuilt detection rule.
+description: 'Investigation guide for the "FortiGate Overly Permissive Firewall Policy Created" prebuilt detection rule.'
 ---
 
 # FortiGate Overly Permissive Firewall Policy Created

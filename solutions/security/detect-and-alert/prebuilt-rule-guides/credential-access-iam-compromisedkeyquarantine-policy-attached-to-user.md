@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM CompromisedKeyQuarantine Policy Attached to User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM CompromisedKeyQuarantine Policy Attached to User" prebuilt detection rule.'
 ---
 
 # AWS IAM CompromisedKeyQuarantine Policy Attached to User
@@ -39,4 +39,3 @@ This action is accompanied by a support case which specifies instructions to fol
 ### Additional Information:
 
 For further guidance on managing and securing credentials in AWS environments, refer to the [AWS IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) regarding security best practices and guidance on [Remediating Potentially Compromised AWS Credentials](https://docs.aws.amazon.com/guardduty/latest/ug/compromised-creds.html).
-

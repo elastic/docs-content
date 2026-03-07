@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unsigned DLL Loaded by Svchost" prebuilt detection rule.
+description: 'Investigation guide for the "Unsigned DLL Loaded by Svchost" prebuilt detection rule.'
 ---
 
 # Unsigned DLL Loaded by Svchost

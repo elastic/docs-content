@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Hidden Directory Creation via Unusual Parent" prebuilt detection rule.
+description: 'Investigation guide for the "Hidden Directory Creation via Unusual Parent" prebuilt detection rule.'
 ---
 
 # Hidden Directory Creation via Unusual Parent

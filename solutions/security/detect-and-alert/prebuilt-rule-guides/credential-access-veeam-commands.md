@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Veeam Credential Access Command" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Veeam Credential Access Command" prebuilt detection rule.'
 ---
 
 # Potential Veeam Credential Access Command

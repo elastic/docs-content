@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Root Certificate Installation" prebuilt detection rule.
+description: 'Investigation guide for the "Root Certificate Installation" prebuilt detection rule.'
 ---
 
 # Root Certificate Installation

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Print Spooler Point and Print DLL" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Print Spooler Point and Print DLL" prebuilt detection rule.'
 ---
 
 # Suspicious Print Spooler Point and Print DLL

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure OpenAI Insecure Output Handling" prebuilt detection rule.
+description: 'Investigation guide for the "Azure OpenAI Insecure Output Handling" prebuilt detection rule.'
 ---
 
 # Azure OpenAI Insecure Output Handling
@@ -44,4 +44,3 @@ Azure OpenAI integrates AI capabilities into applications, enabling natural lang
 - Notify the security team and relevant stakeholders about the incident, providing them with detailed findings and any potential impact on data security.
 - If unauthorized access or data leakage is confirmed, follow the organization's incident response plan to notify affected parties and comply with any regulatory requirements.
 - Enhance detection capabilities by integrating anomaly detection tools that can identify unusual patterns in API usage, such as frequent zero-length responses, to prevent similar threats in the future.
-

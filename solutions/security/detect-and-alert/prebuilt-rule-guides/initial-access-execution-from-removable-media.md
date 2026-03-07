@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution from a Removable Media with Network Connection" prebuilt detection rule.
+description: 'Investigation guide for the "Execution from a Removable Media with Network Connection" prebuilt detection rule.'
 ---
 
 # Execution from a Removable Media with Network Connection

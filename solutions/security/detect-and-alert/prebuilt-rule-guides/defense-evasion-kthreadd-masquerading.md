@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Executable Masquerading as Kernel Process" prebuilt detection rule.
+description: 'Investigation guide for the "Executable Masquerading as Kernel Process" prebuilt detection rule.'
 ---
 
 # Executable Masquerading as Kernel Process

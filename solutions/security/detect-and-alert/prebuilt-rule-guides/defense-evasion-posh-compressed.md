@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Suspicious Payload Encoded and Compressed" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Suspicious Payload Encoded and Compressed" prebuilt detection rule.'
 ---
 
 # PowerShell Suspicious Payload Encoded and Compressed
@@ -96,4 +96,3 @@ This rule flags PowerShell script blocks that decode Base64 data and decompress 
 - If benign activity is confirmed:
   - Record the business justification and expected behavior for the script source, including the relevant `file.path` (when present) and the associated `user.id`.
   - Monitor for deviations from the established benign baseline, such as new script sources, new hosts, or materially different `powershell.file.script_block_text` structure or entropy characteristics.
-

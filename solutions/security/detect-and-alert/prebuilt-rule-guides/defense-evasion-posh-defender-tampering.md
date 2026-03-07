@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Script with Windows Defender Tampering Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Script with Windows Defender Tampering Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Script with Windows Defender Tampering Capabilities
@@ -95,4 +95,3 @@ If the activity is unauthorized or suspicious, treat it as a defense evasion att
 - Scope and monitor:
   - Hunt for the same Defender-tampering parameters within `powershell.file.script_block_text` across other hosts and users to identify additional impacted systems.
   - Continue monitoring for recurrence of similar preference changes tied to the same `user.id`, as repeated tampering may indicate persistence or an active intrusion.
-

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Creation of a RoleBinding Referencing a ServiceAccount" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Creation of a RoleBinding Referencing a ServiceAccount" prebuilt detection rule.'
 ---
 
 # Kubernetes Creation of a RoleBinding Referencing a ServiceAccount
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects creation of a RoleBinding or ClusterRoleBinding that grants pe
 - Recover safely by redeploying affected applications with the corrected RBAC, validating that required operations succeed without cluster-admin-equivalent rights, and monitoring for repeated binding creation or follow-on access to secrets, pod exec, or node-level resources.  
 - Escalate to platform security/incident response immediately if the binding references a high-privilege ClusterRole (e.g., cluster-admin), targets a broadly used ServiceAccount, or is followed by suspicious actions such as secret reads, new token requests, or pod exec sessions from the same identity.  
 - Harden by enforcing RBAC guardrails with admission policies that restrict who can create RoleBindings/ClusterRoleBindings and which roles may be referenced, disabling auto-mounting of service account tokens where not needed, and adopting GitOps-only RBAC changes with mandatory review.
-

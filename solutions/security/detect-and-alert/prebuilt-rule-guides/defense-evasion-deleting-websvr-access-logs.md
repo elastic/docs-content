@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "WebServer Access Logs Deleted" prebuilt detection rule.
+description: 'Investigation guide for the "WebServer Access Logs Deleted" prebuilt detection rule.'
 ---
 
 # WebServer Access Logs Deleted

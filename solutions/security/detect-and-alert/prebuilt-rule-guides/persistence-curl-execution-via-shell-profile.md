@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Curl Execution via Shell Profile" prebuilt detection rule.
+description: 'Investigation guide for the "Curl Execution via Shell Profile" prebuilt detection rule.'
 ---
 
 # Curl Execution via Shell Profile
@@ -47,4 +47,3 @@ Shell profile scripts (.zshrc, .bashrc, .bash_profile, .zprofile) execute automa
 - Check other user accounts on the system for similar shell profile modifications.
 - Reset the user's shell profile from a known-good backup or template if available.
 - Monitor for curl execution from shell profiles across the environment to identify additional compromised systems.
-

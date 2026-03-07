@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Machine Learning Detected DGA activity using a known SUNBURST DNS domain" prebuilt detection rule.
+description: 'Investigation guide for the "Machine Learning Detected DGA activity using a known SUNBURST DNS domain" prebuilt detection rule.'
 ---
 
 # Machine Learning Detected DGA activity using a known SUNBURST DNS domain

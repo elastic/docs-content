@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote File Copy to a Hidden Share" prebuilt detection rule.
+description: 'Investigation guide for the "Remote File Copy to a Hidden Share" prebuilt detection rule.'
 ---
 
 # Remote File Copy to a Hidden Share

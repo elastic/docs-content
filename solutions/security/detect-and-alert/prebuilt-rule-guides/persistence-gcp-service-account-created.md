@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GCP Service Account Creation" prebuilt detection rule.
+description: 'Investigation guide for the "GCP Service Account Creation" prebuilt detection rule.'
 ---
 
 # GCP Service Account Creation

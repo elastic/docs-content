@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential SAP NetWeaver Exploitation" prebuilt detection rule.
+description: 'Investigation guide for the "Potential SAP NetWeaver Exploitation" prebuilt detection rule.'
 ---
 
 # Potential SAP NetWeaver Exploitation

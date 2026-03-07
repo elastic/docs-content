@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Elastic Agent Service Terminated" prebuilt detection rule.
+description: 'Investigation guide for the "Elastic Agent Service Terminated" prebuilt detection rule.'
 ---
 
 # Elastic Agent Service Terminated

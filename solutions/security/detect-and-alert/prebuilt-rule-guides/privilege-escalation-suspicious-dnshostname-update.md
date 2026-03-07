@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote Computer Account DnsHostName Update" prebuilt detection rule.
+description: 'Investigation guide for the "Remote Computer Account DnsHostName Update" prebuilt detection rule.'
 ---
 
 # Remote Computer Account DnsHostName Update

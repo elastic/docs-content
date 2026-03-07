@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Actor Token User Impersonation Abuse" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Actor Token User Impersonation Abuse" prebuilt detection rule.'
 ---
 
 # Entra ID Actor Token User Impersonation Abuse
@@ -43,4 +43,3 @@ This rule detects when Microsoft services use actor tokens to perform operations
 - Enable Entra ID Identity Protection to detect and respond to risky service principal behaviors.
 - Review and harden application consent policies to prevent unauthorized service principal registrations.
 - Consider implementing privileged identity management (PIM) for service principal role assignments.
-

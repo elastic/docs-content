@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS STS GetSessionToken Usage" prebuilt detection rule.
+description: 'Investigation guide for the "AWS STS GetSessionToken Usage" prebuilt detection rule.'
 ---
 
 # AWS STS GetSessionToken Usage
@@ -46,4 +46,3 @@ AWS Security Token Service (STS) provides temporary credentials for AWS resource
 
 Use these patterns in combination with related BBRs or detection rules for `AssumeRole` abuse, cross-account access,
 or credential pivoting for more reliable threat detection.
-

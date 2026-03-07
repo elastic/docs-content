@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network-Level Authentication (NLA) Disabled" prebuilt detection rule.
+description: 'Investigation guide for the "Network-Level Authentication (NLA) Disabled" prebuilt detection rule.'
 ---
 
 # Network-Level Authentication (NLA) Disabled

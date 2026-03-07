@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Print Spooler Child Process" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Print Spooler Child Process" prebuilt detection rule.'
 ---
 
 # Unusual Print Spooler Child Process

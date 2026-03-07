@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious ImagePath Service Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious ImagePath Service Creation" prebuilt detection rule.'
 ---
 
 # Suspicious ImagePath Service Creation

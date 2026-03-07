@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Denial of Azure OpenAI ML Service" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Denial of Azure OpenAI ML Service" prebuilt detection rule.'
 ---
 
 # Potential Denial of Azure OpenAI ML Service
@@ -45,4 +45,3 @@ Azure OpenAI ML services enable scalable deployment of machine learning models, 
 - Escalate the incident to the security operations team for further investigation and to determine if the attack is part of a larger threat campaign.
 - Implement additional monitoring and alerting for unusual patterns of requests, focusing on high volume and frequency, to enhance early detection of similar threats.
 - Coordinate with the cloud provider's support team to ensure any necessary infrastructure adjustments or protections are in place to prevent recurrence.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Interactive Shell Spawn Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Interactive Shell Spawn Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Interactive Shell Spawn Detected via Defend for Containers

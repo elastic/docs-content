@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Scheduled Task Update" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Scheduled Task Update" prebuilt detection rule.'
 ---
 
 # Unusual Scheduled Task Update
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -44,4 +44,3 @@ Scheduled tasks in Windows environments automate routine tasks, but adversaries 
 - Conduct a thorough scan of the affected system using updated antivirus or endpoint detection and response (EDR) tools to identify and remove any additional malware or persistence mechanisms.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if the threat has spread to other systems.
 - Implement additional monitoring and alerting for scheduled task modifications across the environment to enhance detection of similar threats in the future.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Halfbaked Command and Control Beacon" prebuilt detection rule.
+description: 'Investigation guide for the "Halfbaked Command and Control Beacon" prebuilt detection rule.'
 ---
 
 # Halfbaked Command and Control Beacon

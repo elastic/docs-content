@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Lambda Layer Added to Existing Function" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Lambda Layer Added to Existing Function" prebuilt detection rule.'
 ---
 
 # AWS Lambda Layer Added to Existing Function
@@ -61,4 +61,3 @@ persistence without altering the function source itself. This detection highligh
 - **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/)** 
 - **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)** 
 - **[AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/)**
-

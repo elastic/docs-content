@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Web Server Potential Remote File Inclusion Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Web Server Potential Remote File Inclusion Activity" prebuilt detection rule.'
 ---
 
 # Web Server Potential Remote File Inclusion Activity
@@ -42,4 +42,3 @@ This rule identifies successful GET requests that pass a remote URL or raw IP in
 - Harden by disabling risky features and enforcing strict input controls: set PHP allow_url_include=Off and allow_url_fopen=Off, apply open_basedir restrictions, implement scheme/domain allowlists for any include/load functionality, and sanitize and normalize user-supplied parameters.
 - Escalate to incident response and preserve disk and memory images if remote content was fetched and executed, a webshell or unknown script is found in the webroot, or the same actor generates successful 200 RFI-style requests across multiple hosts.
 - Enhance monitoring for RFI attempts by tuning WAF rules to alert on suspicious include parameters, enabling detailed web server logging, and setting up alerts for anomalous outbound connections from web servers.
-

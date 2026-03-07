@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potentially Suspicious Process Started via tmux or screen" prebuilt detection rule.
+description: 'Investigation guide for the "Potentially Suspicious Process Started via tmux or screen" prebuilt detection rule.'
 ---
 
 # Potentially Suspicious Process Started via tmux or screen

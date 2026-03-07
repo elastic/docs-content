@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Uncommon Destination Port Connection by Web Server" prebuilt detection rule.
+description: 'Investigation guide for the "Uncommon Destination Port Connection by Web Server" prebuilt detection rule.'
 ---
 
 # Uncommon Destination Port Connection by Web Server
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Web servers, crucial for hosting applications, typically communicate over standa
 - Restore the web server from a known good backup if any unauthorized changes or malware are detected, ensuring that the backup is free from compromise.
 - Implement network segmentation to limit the web server's access to critical systems and data, reducing the potential impact of future incidents.
 - Escalate the incident to the security operations team for further analysis and to determine if additional systems may be affected, ensuring comprehensive threat containment and remediation.
-

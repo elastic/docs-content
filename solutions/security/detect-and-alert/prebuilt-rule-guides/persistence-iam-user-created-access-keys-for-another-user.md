@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM User Created Access Keys For Another User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM User Created Access Keys For Another User" prebuilt detection rule.'
 ---
 
 # AWS IAM User Created Access Keys For Another User
@@ -90,5 +90,4 @@ This rule identifies `CreateAccessKey` API calls where the calling user (`aws.cl
 - **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/):** Reference “Credential Compromise” and “IAM Misuse” procedures for containment and recovery.  
 - **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/):** See “Identity Access Review” and “Unauthorized Access Key Creation” for example response flows.  
 - **AWS Documentation:** [Best practices for managing access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).  
-- **Security Best Practices:** [AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/).  
-
+- **Security Best Practices:** [AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/).

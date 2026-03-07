@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Executable Bit Set for Potential Persistence Script" prebuilt detection rule.
+description: 'Investigation guide for the "Executable Bit Set for Potential Persistence Script" prebuilt detection rule.'
 ---
 
 # Executable Bit Set for Potential Persistence Script

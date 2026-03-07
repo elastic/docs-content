@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential HTTP Downgrade Attack" prebuilt detection rule.
+description: 'Investigation guide for the "Potential HTTP Downgrade Attack" prebuilt detection rule.'
 ---
 
 # Potential HTTP Downgrade Attack
@@ -40,4 +40,3 @@ This detection surfaces HTTP traffic negotiating a protocol version that deviate
 - Redeploy corrected configs and validate end-to-end HTTP/2 with curl --http2 and browser devtools, then confirm normal 2xx/3xx rates and elimination of 421/426/431/505 responses and backend 5xx spikes around previously downgraded traffic.
 - Escalate to Incident Response if downgraded requests show smuggling patterns (simultaneous Content-Length and Transfer-Encoding, mixed-case duplicates, TRACE/PRI methods), hit sensitive paths (/admin, /login, /actuator), or trigger cache anomalies like cross-user content.
 - Harden parsing and caching by normalizing headers at the edge, enforcing a single Content-Length, disabling TRACE, setting strict client_header_buffer_size and large_client_header_buffers, and configuring proxies/backends to reject conflicting CL/TE or ambiguous chunked bodies.
-

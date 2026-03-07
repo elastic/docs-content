@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Process Capability Set via setcap Utility" prebuilt detection rule.
+description: 'Investigation guide for the "Process Capability Set via setcap Utility" prebuilt detection rule.'
 ---
 
 # Process Capability Set via setcap Utility

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Several Failed Protected Branch Force Pushes by User" prebuilt detection rule.
+description: 'Investigation guide for the "Several Failed Protected Branch Force Pushes by User" prebuilt detection rule.'
 ---
 
 # Several Failed Protected Branch Force Pushes by User
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags a single user generating multiple failed force push attempts to 
 - Validate recovery by confirming the protected branch HEAD matches the last known good signed commit SHA, re-running CI for impacted repos, and creating a restore point tag for rapid rollback.
 - Escalate to incident response if any attempts targeted main or release branches, originated from a newly created PAT/SSH key or an unrecognized IP/device, or the user holds repo admin/organization owner rights.
 - Harden long term by enforcing org-wide 2FA/SSO, removing all standing force-push exemptions, requiring CODEOWNERS approvals on protected branches, and enabling audit alerts for branch protection edits and new credential creation.
-

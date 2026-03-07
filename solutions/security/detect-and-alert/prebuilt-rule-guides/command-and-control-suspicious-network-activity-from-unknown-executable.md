@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Network Activity to the Internet by Previously Unknown Executable" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Network Activity to the Internet by Previously Unknown Executable" prebuilt detection rule.'
 ---
 
 # Suspicious Network Activity to the Internet by Previously Unknown Executable
@@ -68,4 +68,3 @@ This rule leverages the new terms rule type to detect previously unknown process
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Leverage the incident response data and logging to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

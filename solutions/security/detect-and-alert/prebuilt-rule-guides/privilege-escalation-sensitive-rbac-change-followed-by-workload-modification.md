@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Sensitive RBAC Change Followed by Workload Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Sensitive RBAC Change Followed by Workload Modification" prebuilt detection rule.'
 ---
 
 # Kubernetes Sensitive RBAC Change Followed by Workload Modification
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects when a user grants or broadens high-risk permissions in a Role
 - For eradication and recovery, redeploy workloads from trusted Git/registry sources, block the suspicious images/digests in admission controls, and verify no persistence remains via CronJobs, DaemonSets, webhook configurations, or additional RBAC bindings.  
 - Escalate to incident response and platform leadership if the RBAC change included wildcard permissions or escalation verbs, if the workload ran privileged/hostNetwork/hostPID, or if sensitive secrets were accessed or exfiltration is suspected.  
 - Harden by enforcing least-privilege RBAC, requiring peer approval for RBAC changes, restricting workload mutations via GitOps-only service accounts, and using admission policies to deny privileged pods, hostPath mounts, and unapproved registries.
-

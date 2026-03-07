@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Linux Backdoor User Account Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Linux Backdoor User Account Creation" prebuilt detection rule.'
 ---
 
 # Potential Linux Backdoor User Account Creation
@@ -57,4 +57,3 @@ This rule identifies the usage of the `usermod` command to set a user's UID to 0
 - Investigate credential exposure on systems compromised or used by the attacker to ensure all compromised accounts are identified. Reset passwords for these accounts and other potentially compromised credentials, such as email, business systems, and web services.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Leverage the incident response data and logging to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Enumeration via Active Directory Web Service" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Enumeration via Active Directory Web Service" prebuilt detection rule.'
 ---
 
 # Potential Enumeration via Active Directory Web Service

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "UAC Bypass via ICMLuaUtil Elevated COM Interface" prebuilt detection rule.
+description: 'Investigation guide for the "UAC Bypass via ICMLuaUtil Elevated COM Interface" prebuilt detection rule.'
 ---
 
 # UAC Bypass via ICMLuaUtil Elevated COM Interface

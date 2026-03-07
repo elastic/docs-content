@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "User Added to the Admin Group" prebuilt detection rule.
+description: 'Investigation guide for the "User Added to the Admin Group" prebuilt detection rule.'
 ---
 
 # User Added to the Admin Group
@@ -27,4 +27,3 @@ To thoroughly investigate the actions that occurred **after a user was elevated 
 $investigate_0
 $investigate_1
 $investigate_2
-

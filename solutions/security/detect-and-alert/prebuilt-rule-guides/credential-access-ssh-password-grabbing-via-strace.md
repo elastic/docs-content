@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential SSH Password Grabbing via strace" prebuilt detection rule.
+description: 'Investigation guide for the "Potential SSH Password Grabbing via strace" prebuilt detection rule.'
 ---
 
 # Potential SSH Password Grabbing via strace
@@ -40,5 +40,3 @@ This detection flags a suspicious sequence where an sshd process stops and a str
 - Force credential hygiene by expiring passwords for users who logged in during the suspected window, rotating SSH host keys in /etc/ssh/ (ssh_host_*), revoking recently added ~/.ssh/authorized_keys entries, and terminating lingering sshd child sessions and SSH agents in /tmp or /run.
 - Escalate to incident response if strace was executed as root or via sudo against /usr/sbin/sshd, if CAP_SYS_PTRACE or ptrace_scope=0 was present, if trace files contain password strings or PAM conversation data, or if similar behavior appears on more than one host.
 - Harden by setting /proc/sys/kernel/yama/ptrace_scope to 1 or 2, enforcing SELinux/AppArmor policies that block ptrace to sshd, disabling PasswordAuthentication or requiring MFA in /etc/ssh/sshd_config, and adding auditd rules to alert on ptrace attaches to /usr/sbin/sshd.
-
-

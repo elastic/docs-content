@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Shell Command-Line History Deletion Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Shell Command-Line History Deletion Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Shell Command-Line History Deletion Detected via Defend for Containers

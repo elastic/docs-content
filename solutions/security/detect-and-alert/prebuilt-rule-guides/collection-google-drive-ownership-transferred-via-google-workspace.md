@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google Drive Ownership Transferred via Google Workspace" prebuilt detection rule.
+description: 'Investigation guide for the "Google Drive Ownership Transferred via Google Workspace" prebuilt detection rule.'
 ---
 
 # Google Drive Ownership Transferred via Google Workspace

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Okta User Authentication Events with Same Device Token Hash" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Okta User Authentication Events with Same Device Token Hash" prebuilt detection rule.'
 ---
 
 # Multiple Okta User Authentication Events with Same Device Token Hash
@@ -55,4 +55,3 @@ This rule detects when a high number of Okta user authentication events are repo
         - Reset passwords and reset MFA for the user.
 - If this is a false positive, consider adding the `okta.debug_context.debug_data.dt_hash` field to the `exceptions` list in the rule.
     - This will prevent future occurrences of this event for this device from triggering the rule.
-

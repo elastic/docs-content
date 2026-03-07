@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "MFA Disabled for Google Workspace Organization" prebuilt detection rule.
+description: 'Investigation guide for the "MFA Disabled for Google Workspace Organization" prebuilt detection rule.'
 ---
 
 # MFA Disabled for Google Workspace Organization

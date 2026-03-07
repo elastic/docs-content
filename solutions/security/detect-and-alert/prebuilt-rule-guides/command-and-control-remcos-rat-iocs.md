@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential REMCOS Trojan Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Potential REMCOS Trojan Execution" prebuilt detection rule.'
 ---
 
 # Potential REMCOS Trojan Execution

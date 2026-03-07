@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Roshal Archive (RAR) or PowerShell File Downloaded from the Internet" prebuilt detection rule.
+description: 'Investigation guide for the "Roshal Archive (RAR) or PowerShell File Downloaded from the Internet" prebuilt detection rule.'
 ---
 
 # Roshal Archive (RAR) or PowerShell File Downloaded from the Internet

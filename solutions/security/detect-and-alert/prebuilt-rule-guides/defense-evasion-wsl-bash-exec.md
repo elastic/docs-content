@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Execution via Windows Subsystem for Linux" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Execution via Windows Subsystem for Linux" prebuilt detection rule.'
 ---
 
 # Suspicious Execution via Windows Subsystem for Linux

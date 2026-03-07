@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Elastic Defend Alerts by Agent" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Elastic Defend Alerts by Agent" prebuilt detection rule.'
 ---
 
 # Multiple Elastic Defend Alerts by Agent

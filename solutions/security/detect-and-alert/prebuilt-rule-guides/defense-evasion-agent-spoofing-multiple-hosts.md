@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Agent Spoofing - Multiple Hosts Using Same Agent" prebuilt detection rule.
+description: 'Investigation guide for the "Agent Spoofing - Multiple Hosts Using Same Agent" prebuilt detection rule.'
 ---
 
 # Agent Spoofing - Multiple Hosts Using Same Agent

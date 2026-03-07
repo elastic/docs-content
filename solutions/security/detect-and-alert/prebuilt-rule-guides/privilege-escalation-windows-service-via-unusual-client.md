@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Windows Service Installed via an Unusual Client" prebuilt detection rule.
+description: 'Investigation guide for the "Windows Service Installed via an Unusual Client" prebuilt detection rule.'
 ---
 
 # Windows Service Installed via an Unusual Client

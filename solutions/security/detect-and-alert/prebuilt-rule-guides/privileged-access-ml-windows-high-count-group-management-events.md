@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in Group Management Events" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in Group Management Events" prebuilt detection rule.'
 ---
 
 # Spike in Group Management Events

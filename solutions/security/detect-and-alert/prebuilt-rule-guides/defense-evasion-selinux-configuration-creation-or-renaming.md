@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SELinux Configuration Creation or Renaming" prebuilt detection rule.
+description: 'Investigation guide for the "SELinux Configuration Creation or Renaming" prebuilt detection rule.'
 ---
 
 # SELinux Configuration Creation or Renaming

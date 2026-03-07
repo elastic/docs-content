@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "TCC Bypass via Mounted APFS Snapshot Access" prebuilt detection rule.
+description: 'Investigation guide for the "TCC Bypass via Mounted APFS Snapshot Access" prebuilt detection rule.'
 ---
 
 # TCC Bypass via Mounted APFS Snapshot Access

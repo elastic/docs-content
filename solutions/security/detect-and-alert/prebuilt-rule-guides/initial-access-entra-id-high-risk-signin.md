@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID High Risk Sign-in" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID High Risk Sign-in" prebuilt detection rule.'
 ---
 
 # Entra ID High Risk Sign-in
@@ -45,4 +45,3 @@ This rule detects high-risk sign-ins in Microsoft Entra ID as identified by Iden
 - Determine if the attacker leveraged other accounts or escalated privileges.
 - Use the incident findings to refine conditional access policies, such as enforcing MFA for high-risk sign-ins or blocking legacy protocols.
 - Review and tighten policies that allow sign-ins from high-risk geographies or unknown devices.
-

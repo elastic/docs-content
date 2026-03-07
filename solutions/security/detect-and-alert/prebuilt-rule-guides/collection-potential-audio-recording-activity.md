@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Linux Audio Recording Activity Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Linux Audio Recording Activity Detected" prebuilt detection rule.'
 ---
 
 # Linux Audio Recording Activity Detected
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags executions of Linux audio-recording tools (arecord, parec, pw-re
 - Verify recovery by confirming no active record nodes in PipeWire/PulseAudio and no further opens on /dev/snd/*, and restart affected user sessions or hosts if audio subsystem settings were altered.
 - Harden by restricting access to /dev/snd/* via udev group membership and AppArmor/SELinux, whitelisting approved desktop apps, and adding detections to flag non-interactive parents launching arecord/ffmpeg or pw-cat -r and creation of large audio files in cache/temp paths.
 - Escalate to incident response and privacy/legal if recording is initiated by a root-owned systemd service or an unknown binary in /tmp, or if audio streaming/exfiltration to external IPs/domains is observed.
-

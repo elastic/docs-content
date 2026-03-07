@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Alerts From Multiple Integrations by Source Address" prebuilt detection rule.
+description: 'Investigation guide for the "Alerts From Multiple Integrations by Source Address" prebuilt detection rule.'
 ---
 
 # Alerts From Multiple Integrations by Source Address

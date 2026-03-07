@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Deprecated - M365 Security Compliance Potential Ransomware Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Deprecated - M365 Security Compliance Potential Ransomware Activity" prebuilt detection rule.'
 ---
 
 # Deprecated - M365 Security Compliance Potential Ransomware Activity
@@ -42,4 +42,3 @@ Microsoft 365's cloud services can be exploited by adversaries to distribute ran
 - Restore any affected files from secure backups, ensuring that the backups are clean and free from ransomware.
 - Review and update access controls and permissions for the affected user and related accounts to minimize the risk of future incidents.
 - Escalate the incident to senior security management and, if necessary, involve legal or compliance teams to assess any regulatory implications.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID OAuth ROPC Grant Login Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID OAuth ROPC Grant Login Detected" prebuilt detection rule.'
 ---
 
 # Entra ID OAuth ROPC Grant Login Detected
@@ -39,4 +39,3 @@ This rule detects unusual login attempts using the Resource Owner Password Crede
 - Investigate the source of the ROPC login attempt, including the application and IP address, to determine if there are any additional indicators of compromise or ongoing malicious activity.
 - Monitor the user account and related resources for any further suspicious activity or unauthorized access attempts, and take appropriate actions to mitigate any risks identified.
 - Educate users about the risks associated with ROPC and encourage them to use more secure authentication methods, such as OAuth 2.0 or OpenID Connect, whenever possible.
-

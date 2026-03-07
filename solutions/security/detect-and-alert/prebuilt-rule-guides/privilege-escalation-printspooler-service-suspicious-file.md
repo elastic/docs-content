@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Deprecated - Suspicious PrintSpooler Service Executable File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Deprecated - Suspicious PrintSpooler Service Executable File Creation" prebuilt detection rule.'
 ---
 
 # Deprecated - Suspicious PrintSpooler Service Executable File Creation

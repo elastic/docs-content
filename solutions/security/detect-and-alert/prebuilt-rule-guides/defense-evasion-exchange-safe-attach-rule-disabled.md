@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Exchange Email Safe Attachment Rule Disabled" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Exchange Email Safe Attachment Rule Disabled" prebuilt detection rule.'
 ---
 
 # M365 Exchange Email Safe Attachment Rule Disabled

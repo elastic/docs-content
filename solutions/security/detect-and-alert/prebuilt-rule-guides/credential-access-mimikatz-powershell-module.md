@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Invoke-Mimikatz PowerShell Script" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Invoke-Mimikatz PowerShell Script" prebuilt detection rule.'
 ---
 
 # Potential Invoke-Mimikatz PowerShell Script
@@ -91,4 +91,3 @@ This alert identifies PowerShell script block content on a Windows host that con
 - If activity is determined to be authorized:
   - Document the business justification, responsible parties, and approved scope (hosts and users).
   - Apply preventive controls to reduce risk of misuse, such as limiting where high-risk tools can run, restricting PowerShell usage to approved accounts and hosts, and enhancing monitoring for future occurrences.
-

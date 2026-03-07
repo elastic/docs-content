@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Telnet Authentication Bypass via User Environment Variable" prebuilt detection rule.
+description: 'Investigation guide for the "Telnet Authentication Bypass via User Environment Variable" prebuilt detection rule.'
 ---
 
 # Telnet Authentication Bypass via User Environment Variable
@@ -58,4 +58,3 @@ forces authentication as a specified user and is indicative of exploitation atte
 - Rotate credentials for any accounts that may have been exposed or accessed.
 - Perform a full system integrity review and antimalware scan.
 - Update hardening, monitoring, and logging policies to improve detection of legacy remote access abuse.
-

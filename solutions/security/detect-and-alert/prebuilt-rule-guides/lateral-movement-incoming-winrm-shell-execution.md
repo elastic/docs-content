@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Incoming Execution via WinRM Remote Shell" prebuilt detection rule.
+description: 'Investigation guide for the "Incoming Execution via WinRM Remote Shell" prebuilt detection rule.'
 ---
 
 # Incoming Execution via WinRM Remote Shell

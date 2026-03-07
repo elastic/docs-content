@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "System Log File Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "System Log File Deletion" prebuilt detection rule.'
 ---
 
 # System Log File Deletion

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Kubectl Masquerading via Unexpected Process" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Kubectl Masquerading via Unexpected Process" prebuilt detection rule.'
 ---
 
 # Potential Kubectl Masquerading via Unexpected Process
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -47,4 +47,3 @@ Kubectl is a command-line tool for interacting with Kubernetes clusters, crucial
 - Restore any altered or deleted Kubernetes resources from backups, ensuring the integrity and availability of the cluster's services.
 - Implement stricter access controls and monitoring on the Kubernetes cluster, such as enforcing the principle of least privilege and enabling audit logging for kubectl commands.
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems or data have been affected.
-

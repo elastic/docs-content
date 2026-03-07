@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GCP Virtual Private Cloud Route Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "GCP Virtual Private Cloud Route Deletion" prebuilt detection rule.'
 ---
 
 # GCP Virtual Private Cloud Route Deletion

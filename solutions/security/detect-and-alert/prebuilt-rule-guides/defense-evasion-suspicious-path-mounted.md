@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Path Mounted" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Path Mounted" prebuilt detection rule.'
 ---
 
 # Suspicious Path Mounted
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ In Linux environments, the mount command integrates filesystems, enabling access
 - Implement stricter access controls and permissions on sensitive directories like /tmp, /var/tmp, /dev/shm, /home, and /root to prevent unauthorized mounting.
 - Escalate the incident to the security operations team for further investigation and to assess the scope of the threat, including potential lateral movement or additional compromised systems.
 - Enhance monitoring and detection capabilities by configuring alerts for unusual mount activities and integrating threat intelligence feeds to identify similar tactics used by adversaries.
-

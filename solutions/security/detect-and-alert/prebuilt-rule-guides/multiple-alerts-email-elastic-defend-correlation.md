@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Elastic Defend and Email Alerts Correlation" prebuilt detection rule.
+description: 'Investigation guide for the "Elastic Defend and Email Alerts Correlation" prebuilt detection rule.'
 ---
 
 # Elastic Defend and Email Alerts Correlation

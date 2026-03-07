@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Application Added to Google Workspace Domain" prebuilt detection rule.
+description: 'Investigation guide for the "Application Added to Google Workspace Domain" prebuilt detection rule.'
 ---
 
 # Application Added to Google Workspace Domain

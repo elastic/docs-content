@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Curl from macOS Application" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Curl from macOS Application" prebuilt detection rule.'
 ---
 
 # Suspicious Curl from macOS Application
@@ -46,4 +46,3 @@ Trojanized macOS applications often use curl to download second-stage payloads f
 - Report the trojanized application to Apple Security and relevant threat intelligence sharing platforms.
 - Review other systems in the environment for the same trojanized application to determine the scope of potential compromise.
 - Investigate the delivery mechanism to understand how the trojanized application was installed and prevent future infections.
-

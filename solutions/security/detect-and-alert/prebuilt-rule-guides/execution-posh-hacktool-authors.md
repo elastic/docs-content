@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential PowerShell HackTool Script by Author" prebuilt detection rule.
+description: 'Investigation guide for the "Potential PowerShell HackTool Script by Author" prebuilt detection rule.'
 ---
 
 # Potential PowerShell HackTool Script by Author
@@ -80,4 +80,3 @@ This rule Detects PowerShell scripts that contains attribution strings commonly 
 - Post-incident hardening:
   - Verify PowerShell logging coverage and retention are sufficient to reconstruct multi-part scripts during future investigations.
   - Use observed handles and extracted observables to perform retrospective searches for earlier executions and related activity patterns in historical script block logs.
-

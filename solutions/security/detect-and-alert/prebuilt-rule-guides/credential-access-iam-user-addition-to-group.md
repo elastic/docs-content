@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM User Addition to Group" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM User Addition to Group" prebuilt detection rule.'
 ---
 
 # AWS IAM User Addition to Group
@@ -55,4 +55,3 @@ This rule detects when an IAM user is added to an IAM group via the `AddUserToGr
 
 ### Additional information
 [AWS Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/)
-

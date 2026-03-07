@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspected Lateral Movement from Compromised Host" prebuilt detection rule.
+description: 'Investigation guide for the "Suspected Lateral Movement from Compromised Host" prebuilt detection rule.'
 ---
 
 # Suspected Lateral Movement from Compromised Host

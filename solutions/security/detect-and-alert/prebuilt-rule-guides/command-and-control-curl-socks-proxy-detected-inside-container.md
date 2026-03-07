@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Curl SOCKS Proxy Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Curl SOCKS Proxy Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Curl SOCKS Proxy Detected via Defend for Containers
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -32,4 +32,3 @@ This detection flags interactive curl invocations inside Linux containers that u
 
 - A developer troubleshooting from an interactive shell inside a container runs curl with -x/--proxy socks5 options to validate egress or reach internal endpoints through an approved proxy (e.g., localhost or an internal host), generating a benign match.
 - Shell profiles or container environment configuration automatically route curl through --preproxy/--socks5-hostname to access internal APIs or artifact mirrors during interactive checks, causing expected activity to be flagged.
-

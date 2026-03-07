@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Binary Executed from Shared Memory Directory" prebuilt detection rule.
+description: 'Investigation guide for the "Binary Executed from Shared Memory Directory" prebuilt detection rule.'
 ---
 
 # Binary Executed from Shared Memory Directory

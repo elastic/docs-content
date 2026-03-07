@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "DNS-over-HTTPS Enabled via Registry" prebuilt detection rule.
+description: 'Investigation guide for the "DNS-over-HTTPS Enabled via Registry" prebuilt detection rule.'
 ---
 
 # DNS-over-HTTPS Enabled via Registry

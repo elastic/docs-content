@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potentially Successful Okta MFA Bombing via Push Notifications" prebuilt detection rule.
+description: 'Investigation guide for the "Potentially Successful Okta MFA Bombing via Push Notifications" prebuilt detection rule.'
 ---
 
 # Potentially Successful Okta MFA Bombing via Push Notifications

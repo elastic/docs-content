@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "dMSA Account Creation by an Unusual User" prebuilt detection rule.
+description: 'Investigation guide for the "dMSA Account Creation by an Unusual User" prebuilt detection rule.'
 ---
 
 # dMSA Account Creation by an Unusual User

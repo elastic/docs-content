@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempt to Reset MFA Factors for an Okta User Account" prebuilt detection rule.
+description: 'Investigation guide for the "Attempt to Reset MFA Factors for an Okta User Account" prebuilt detection rule.'
 ---
 
 # Attempt to Reset MFA Factors for an Okta User Account

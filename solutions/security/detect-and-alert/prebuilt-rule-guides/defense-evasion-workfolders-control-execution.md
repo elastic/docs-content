@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Signed Proxy Execution via MS Work Folders" prebuilt detection rule.
+description: 'Investigation guide for the "Signed Proxy Execution via MS Work Folders" prebuilt detection rule.'
 ---
 
 # Signed Proxy Execution via MS Work Folders
@@ -41,4 +41,3 @@ disk from a separate binary.
 - If no lateral movement was identified during investigation, take the affected host offline if possible and remove the control.exe binary as well as any additional artifacts identified during investigation.
 - Review integrating Windows Information Protection (WIP) to enforce data protection by encrypting the data on PCs using Work Folders.
 - Confirm with the user whether this was expected or not, and reset their password.
-

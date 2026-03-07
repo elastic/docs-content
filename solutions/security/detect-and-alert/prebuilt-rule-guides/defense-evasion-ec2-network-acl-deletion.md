@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 Network Access Control List Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 Network Access Control List Deletion" prebuilt detection rule.'
 ---
 
 # AWS EC2 Network Access Control List Deletion

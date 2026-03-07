@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Curl to Jamf Endpoint" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Curl to Jamf Endpoint" prebuilt detection rule.'
 ---
 
 # Suspicious Curl to Jamf Endpoint
@@ -47,4 +47,3 @@ Jamf Pro is a widely-used enterprise Apple device management platform that contr
 - Implement IP allowlisting or certificate-based authentication for Jamf API access to prevent future unauthorized access.
 - Reset credentials for any user accounts that may have had access to Jamf management credentials.
 - Escalate to the incident response team for comprehensive investigation of potential enterprise-wide compromise.
-

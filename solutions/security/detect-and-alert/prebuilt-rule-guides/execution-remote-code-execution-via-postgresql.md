@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Code Execution via Postgresql" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Code Execution via Postgresql" prebuilt detection rule.'
 ---
 
 # Potential Code Execution via Postgresql

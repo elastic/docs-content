@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in Remote File Transfers" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in Remote File Transfers" prebuilt detection rule.'
 ---
 
 # Spike in Remote File Transfers

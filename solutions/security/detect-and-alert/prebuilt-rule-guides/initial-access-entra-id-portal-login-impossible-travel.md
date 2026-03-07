@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Identity Login from Impossible Travel Location" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Identity Login from Impossible Travel Location" prebuilt detection rule.'
 ---
 
 # M365 Identity Login from Impossible Travel Location
@@ -38,4 +38,3 @@ Microsoft 365's cloud-based services enable global access, but this can be explo
 - Educate users about the risks of accessing corporate resources from unfamiliar locations and the importance of using secure connections (e.g., VPNs) when doing so.
 - Monitor for any subsequent login attempts from the same location or IP address to identify potential patterns of malicious activity.
 - Consider adding exceptions to this rule for the user or source application ID if the login attempts are determined to be legitimate and not a security concern.
-

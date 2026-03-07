@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Direct Kubelet Access via Process Arguments Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Direct Kubelet Access via Process Arguments Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Potential Direct Kubelet Access via Process Arguments Detected via Defend for Containers
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This detection flags an interactive process started inside a Linux container tha
 - Escalate to the platform security/on-call incident commander immediately if the Kubelet request targeted sensitive endpoints like `/exec`, `/run`, `/containerLogs`, or returned successful responses (2xx/3xx) or if similar commands are seen across multiple nodes.  
 - Harden by enforcing Kubelet authentication/authorization (disable anonymous access, require webhook authz, restrict client cert issuance), and implement network controls that prevent pods from reaching node Kubelet ports except from approved node-local agents.  
 - Reduce recurrence by removing shell and HTTP tooling from application images, limiting interactive access (disable `kubectl exec` for non-admins), and tightening RBAC and admission policies to block privileged pods/host networking that increase node API reachability.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Successful SSH Brute Force Attack" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Successful SSH Brute Force Attack" prebuilt detection rule.'
 ---
 
 # Potential Successful SSH Brute Force Attack
@@ -39,4 +39,3 @@ The rule identifies consecutive SSH login failures followed by a successful logi
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

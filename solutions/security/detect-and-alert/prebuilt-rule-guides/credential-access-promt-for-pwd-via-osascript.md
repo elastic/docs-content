@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Prompt for Credentials with Osascript" prebuilt detection rule.
+description: 'Investigation guide for the "Prompt for Credentials with Osascript" prebuilt detection rule.'
 ---
 
 # Prompt for Credentials with Osascript

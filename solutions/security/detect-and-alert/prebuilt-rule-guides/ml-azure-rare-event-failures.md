@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Rare Azure Activity Logs Event Failures" prebuilt detection rule.
+description: 'Investigation guide for the "Rare Azure Activity Logs Event Failures" prebuilt detection rule.'
 ---
 
 # Rare Azure Activity Logs Event Failures
@@ -40,4 +40,3 @@ This rule surfaces statistically rare Azure Activity Logs failures, pointing to 
 - Recover business operations by restoring access only to verified identities through PIM approvals, re-enabling known-good automation accounts/runbooks, and validating that expected management operations succeed without further rare failures on the targeted resources.
 - Escalate to incident response immediately if rare failures are observed across multiple subscriptions or are followed by a successful privileged action (e.g., new Owner or User Access Administrator assignment, app consent grant, or resource lock removal) or originate from an unfamiliar geo/device, triggering tenant-wide containment.
 - Harden going forward by enforcing MFA and Conditional Access (including workload identity policies) for Resource Manager access, restricting service principals to least privilege with certificate-based credentials or workload identity federation, implementing deny assignments/resource locks for crown-jewel resources, and centralizing Activity Logs in SIEM with detections for discovery bursts and denied write attempts.
-

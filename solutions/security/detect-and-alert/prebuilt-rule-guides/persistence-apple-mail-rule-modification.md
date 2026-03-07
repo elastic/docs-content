@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Apple Mail Rule Plist Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Apple Mail Rule Plist Modification" prebuilt detection rule.'
 ---
 
 # Suspicious Apple Mail Rule Plist Modification
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This detects non-Apple Mail processes creating or modifying the SyncedRules.plis
 - Hunt for and eradicate the originator by reviewing recently installed or unsigned apps and user-level agents/daemons that wrote into `~/Library/Mail/**/MailData/`, and reimage the endpoint if additional persistence or tampering is found.  
 - Recover by re-enabling Mail with a clean ruleset, forcing credential/session resets for affected mail accounts, and monitoring for recurrence of `SyncedRules.plist` changes or rule-triggered execution when new mail arrives.  
 - Escalate to incident response immediately if the plist contains rules invoking `sh`, `osascript`, `python`, or a non-Apple executable path, if the modifying process is unsigned/untrusted, or if the referenced script shows network beacons or data access behavior.
-

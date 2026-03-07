@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 Instance Connect SSH Public Key Uploaded" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 Instance Connect SSH Public Key Uploaded" prebuilt detection rule.'
 ---
 
 # AWS EC2 Instance Connect SSH Public Key Uploaded
@@ -46,4 +46,3 @@ For further guidance on managing EC2 instances and securing AWS environments, re
 - [Stratus Red Team - AWS EC2 Instance Connect](https://stratus-red-team.cloud/attack-techniques/AWS/aws.lateral-movement.ec2-instance-connect/)
 - [HackTricks - AWS EC2 Privilege Escalation](https://cloud.hacktricks.xyz/pentesting-cloud/aws-security/aws-privilege-escalation/aws-ec2-privesc)
 - [AWS EC2 Instance Connect API Reference](https://docs.aws.amazon.com/ec2-instance-connect/latest/APIReference/API_SendSSHPublicKey.html)
-

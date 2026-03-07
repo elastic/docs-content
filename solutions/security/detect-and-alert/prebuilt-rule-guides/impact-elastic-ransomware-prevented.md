@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Ransomware - Prevented - Elastic Defend" prebuilt detection rule.
+description: 'Investigation guide for the "Ransomware - Prevented - Elastic Defend" prebuilt detection rule.'
 ---
 
 # Ransomware - Prevented - Elastic Defend
@@ -47,4 +47,3 @@ Initial Assessment and Evidence Preservation: Identify the scope of the infectio
 - Data Restoration: Begin restoring systems from verified clean backups, starting with the most critical business operations. Implement additional security controls and monitoring during the restoration process.
 - Security Posture Strengthening: Update all security systems including firewalls, antivirus, and endpoint protection. Reset all credentials across the organization and implement additional access controls like multi-factor authentication where needed.
 - Post-Incident Activities: Conduct a detailed post-incident analysis to identify how the ransomware entered the environment. Update security policies and incident response plans based on lessons learned, and provide additional security awareness training to staff.
-

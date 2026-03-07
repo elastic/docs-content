@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Denied Service Account Request via Unusual User Agent" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Denied Service Account Request via Unusual User Agent" prebuilt detection rule.'
 ---
 
 # Kubernetes Denied Service Account Request via Unusual User Agent

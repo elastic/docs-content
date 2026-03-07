@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Linux Video Recording or Screenshot Activity Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Linux Video Recording or Screenshot Activity Detected" prebuilt detection rule.'
 ---
 
 # Linux Video Recording or Screenshot Activity Detected
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This alert flags the launch of common Linux screenshot or screen-recording tools
 - Escalate to incident response and privacy/legal if screenshots/recordings contain credentials, customer data, or secrets, if execution originated from privileged users or servers, or if exfiltration is observed via scp/rsync/curl to external hosts.
 - Harden endpoints by uninstalling unneeded screenshot/recording packages, enforcing allowlists and AppArmor/SELinux profiles that block scrot/grim/obs except for approved users, and requiring xdg-desktop-portal/PipeWire screencast prompts for console users only.
 - Improve detection by alerting on these binaries executed by sshd/cron/systemd, repeated saves under ~/Pictures or /tmp, copies in user-writable paths (~/bin, /tmp), and outbound transfers of resulting media files.
-

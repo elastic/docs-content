@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Yum Package Manager Plugin File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Yum Package Manager Plugin File Creation" prebuilt detection rule.'
 ---
 
 # Yum Package Manager Plugin File Creation

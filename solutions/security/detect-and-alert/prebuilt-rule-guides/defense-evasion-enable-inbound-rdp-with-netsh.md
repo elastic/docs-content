@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote Desktop Enabled in Windows Firewall by Netsh" prebuilt detection rule.
+description: 'Investigation guide for the "Remote Desktop Enabled in Windows Firewall by Netsh" prebuilt detection rule.'
 ---
 
 # Remote Desktop Enabled in Windows Firewall by Netsh
@@ -46,4 +46,3 @@ This rule detects the creation of a Windows Firewall inbound rule that would all
 - Review the privileges assigned to the involved users to ensure that the least privilege principle is being followed.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

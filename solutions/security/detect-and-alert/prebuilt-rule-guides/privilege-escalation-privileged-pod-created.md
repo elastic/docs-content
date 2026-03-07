@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Privileged Pod Created" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Privileged Pod Created" prebuilt detection rule.'
 ---
 
 # Kubernetes Privileged Pod Created

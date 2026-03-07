@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID OAuth User Impersonation to Microsoft Graph" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID OAuth User Impersonation to Microsoft Graph" prebuilt detection rule.'
 ---
 
 # Entra ID OAuth User Impersonation to Microsoft Graph
@@ -45,4 +45,3 @@ performed to the original sign-in and Graph events for further context.
 - Review session control policies and conditional access enforcement.
 - Monitor for follow-on activity, such as lateral movement or privilege escalation.
 - Review conditional access policies to ensure they are enforced correctly.
-

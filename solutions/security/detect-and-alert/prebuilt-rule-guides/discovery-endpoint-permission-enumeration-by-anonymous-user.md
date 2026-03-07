@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Potential Endpoint Permission Enumeration Attempt by Anonymous User Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Potential Endpoint Permission Enumeration Attempt by Anonymous User Detected" prebuilt detection rule.'
 ---
 
 # Kubernetes Potential Endpoint Permission Enumeration Attempt by Anonymous User Detected
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This detects a burst of Kubernetes API requests from an unauthenticated identity
 - Recover by re-enabling API access in a controlled manner (private endpoint/VPN, bastion, or mTLS), confirming expected kubectl and controller functionality, and monitoring for renewed bursts of failed requests across many request URIs from unauthenticated identities.  
 - Escalate to the incident response lead and platform security team if any anonymous request succeeded, if the probing repeats from multiple external IPs, or if follow-on activity appears (new privileged RBAC, pod exec, or secret reads) within 24 hours of the enumeration attempt.  
 - Harden by enforcing least-privilege RBAC, enabling and retaining full audit logging for authn/authz failures, applying API server rate limits/WAF rules for repeated 401/403/404 sweeps, and continuously validating that the API endpoint is not publicly reachable.
-

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Service Account Secret Access" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Service Account Secret Access" prebuilt detection rule.'
 ---
 
 # Kubernetes Service Account Secret Access
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Kubernetes service account secrets are crucial for authenticating applications w
 - Implement network segmentation and access controls to limit the exposure of sensitive secrets and reduce the risk of unauthorized access in the future.
 - Enhance monitoring and alerting for unusual access patterns to Kubernetes service account secrets to detect similar threats promptly.
 - Review and update Kubernetes security policies to enforce least privilege access and ensure that service accounts have only the necessary permissions for their intended functions.
-

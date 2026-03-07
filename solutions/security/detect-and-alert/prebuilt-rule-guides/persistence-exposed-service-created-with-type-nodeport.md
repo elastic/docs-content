@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Exposed Service Created With Type NodePort" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Exposed Service Created With Type NodePort" prebuilt detection rule.'
 ---
 
 # Kubernetes Exposed Service Created With Type NodePort

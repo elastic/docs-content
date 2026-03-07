@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Alerts Involving a User" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Alerts Involving a User" prebuilt detection rule.'
 ---
 
 # Multiple Alerts Involving a User

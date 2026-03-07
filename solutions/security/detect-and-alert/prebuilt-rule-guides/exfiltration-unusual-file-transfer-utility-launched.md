@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "File Transfer Utility Launched from Unusual Parent" prebuilt detection rule.
+description: 'Investigation guide for the "File Transfer Utility Launched from Unusual Parent" prebuilt detection rule.'
 ---
 
 # File Transfer Utility Launched from Unusual Parent
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ File transfer utilities like scp, ftp, and rsync are essential for data movement
 - Escalate the incident to the security operations team for a deeper forensic analysis to determine the extent of the breach and identify any additional compromised systems.
 - Implement network monitoring to detect any further attempts of unauthorized file transfers or suspicious activities from the affected system.
 - Update and enhance endpoint detection and response (EDR) solutions to improve detection capabilities for similar threats in the future.
-

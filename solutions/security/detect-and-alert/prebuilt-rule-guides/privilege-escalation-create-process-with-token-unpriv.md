@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Process Created with a Duplicated Token" prebuilt detection rule.
+description: 'Investigation guide for the "Process Created with a Duplicated Token" prebuilt detection rule.'
 ---
 
 # Process Created with a Duplicated Token

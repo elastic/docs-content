@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Command and Scripting Interpreter via Windows Scripts" prebuilt detection rule.
+description: 'Investigation guide for the "Command and Scripting Interpreter via Windows Scripts" prebuilt detection rule.'
 ---
 
 # Command and Scripting Interpreter via Windows Scripts

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Sign-in TeamFiltration User-Agent Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Sign-in TeamFiltration User-Agent Detected" prebuilt detection rule.'
 ---
 
 # Entra ID Sign-in TeamFiltration User-Agent Detected
@@ -51,5 +51,3 @@ The detection is based on TeamFiltration's hardcoded user agent string and/or th
 - If legitimate:
     - Document the source or user (e.g., red team operation, security tool).
     - Add appropriate allowlist conditions for service principal, user, source address or device if policy allows.
-
-

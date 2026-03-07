@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Exim4 Child Process" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Exim4 Child Process" prebuilt detection rule.'
 ---
 
 # Unusual Exim4 Child Process
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Exim4 is a widely used mail transfer agent on Linux systems, responsible for rou
 - Apply security patches and updates to Exim4 and the operating system to mitigate known vulnerabilities that could be exploited by attackers.
 - Monitor the system for any recurrence of unusual Exim4 child processes and adjust logging and alerting to capture detailed information for further analysis.
 - Escalate the incident to the security operations team for a comprehensive investigation and to determine if other systems in the network may be affected.
-

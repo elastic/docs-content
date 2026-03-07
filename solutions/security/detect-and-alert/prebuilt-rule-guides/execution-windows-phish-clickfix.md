@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Execution via FileFix Phishing Attack" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Execution via FileFix Phishing Attack" prebuilt detection rule.'
 ---
 
 # Potential Execution via FileFix Phishing Attack

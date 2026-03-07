@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SIP Provider Modification" prebuilt detection rule.
+description: 'Investigation guide for the "SIP Provider Modification" prebuilt detection rule.'
 ---
 
 # SIP Provider Modification

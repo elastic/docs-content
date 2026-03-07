@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Cobalt Strike Command and Control Beacon" prebuilt detection rule.
+description: 'Investigation guide for the "Cobalt Strike Command and Control Beacon" prebuilt detection rule.'
 ---
 
 # Cobalt Strike Command and Control Beacon

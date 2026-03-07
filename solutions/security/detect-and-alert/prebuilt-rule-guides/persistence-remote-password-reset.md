@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Account Password Reset Remotely" prebuilt detection rule.
+description: 'Investigation guide for the "Account Password Reset Remotely" prebuilt detection rule.'
 ---
 
 # Account Password Reset Remotely
@@ -48,4 +48,3 @@ Remote password resets are crucial for managing user accounts, especially for pr
 
 ## Performance
 This rule may cause medium to high performance impact due to logic scoping all remote Windows logon activity.
-

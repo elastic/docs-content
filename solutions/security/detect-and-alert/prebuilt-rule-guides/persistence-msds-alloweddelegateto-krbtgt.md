@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "KRBTGT Delegation Backdoor" prebuilt detection rule.
+description: 'Investigation guide for the "KRBTGT Delegation Backdoor" prebuilt detection rule.'
 ---
 
 # KRBTGT Delegation Backdoor

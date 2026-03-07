@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Initramfs Unpacking via unmkinitramfs" prebuilt detection rule.
+description: 'Investigation guide for the "Initramfs Unpacking via unmkinitramfs" prebuilt detection rule.'
 ---
 
 # Initramfs Unpacking via unmkinitramfs

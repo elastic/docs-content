@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Elastic Defend Alerts from a Single Process Tree" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Elastic Defend Alerts from a Single Process Tree" prebuilt detection rule.'
 ---
 
 # Multiple Elastic Defend Alerts from a Single Process Tree

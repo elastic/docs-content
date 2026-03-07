@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 SharePoint/OneDrive File Access via PowerShell" prebuilt detection rule.
+description: 'Investigation guide for the "M365 SharePoint/OneDrive File Access via PowerShell" prebuilt detection rule.'
 ---
 
 # M365 SharePoint/OneDrive File Access via PowerShell
@@ -41,4 +41,3 @@ This rule detects file downloads and access from OneDrive or SharePoint using Po
 - Implement conditional access policies to restrict device code authentication flow.
 - Consider blocking public client IDs that are not needed for business operations.
 - Review and audit OAuth application permissions in your tenant.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious APT Package Manager Network Connection" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious APT Package Manager Network Connection" prebuilt detection rule.'
 ---
 
 # Suspicious APT Package Manager Network Connection

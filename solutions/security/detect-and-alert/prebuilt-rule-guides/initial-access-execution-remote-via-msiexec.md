@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Remote File Execution via MSIEXEC" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Remote File Execution via MSIEXEC" prebuilt detection rule.'
 ---
 
 # Potential Remote File Execution via MSIEXEC

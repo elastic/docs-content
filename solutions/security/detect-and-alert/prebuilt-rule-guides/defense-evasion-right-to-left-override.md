@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "File with Right-to-Left Override Character (RTLO) Created/Executed" prebuilt detection rule.
+description: 'Investigation guide for the "File with Right-to-Left Override Character (RTLO) Created/Executed" prebuilt detection rule.'
 ---
 
 # File with Right-to-Left Override Character (RTLO) Created/Executed

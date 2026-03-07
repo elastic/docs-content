@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 Export Task" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 Export Task" prebuilt detection rule.'
 ---
 
 # AWS EC2 Export Task
@@ -54,4 +54,3 @@ The APIs `CreateInstanceExportTask`, `ExportImage`, and `CreateStoreImageTask` a
 - Audit the exported VM/image: review its contents if possible, check whether it has been moved off-account.  
 - Strengthen monitoring: set alerts for subsequent large data transfers from the S3 export location, cross-account sharing of exported images, or anomalous AMI imports.  
 - Update policy: restrict who can perform exports, monitor export actions via AWS Config or CloudTrail, tag and track export tasks and their destinations.
-

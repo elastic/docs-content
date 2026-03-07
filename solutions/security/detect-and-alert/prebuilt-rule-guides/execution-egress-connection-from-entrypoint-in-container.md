@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Egress Connection from Entrypoint in Container" prebuilt detection rule.
+description: 'Investigation guide for the "Egress Connection from Entrypoint in Container" prebuilt detection rule.'
 ---
 
 # Egress Connection from Entrypoint in Container

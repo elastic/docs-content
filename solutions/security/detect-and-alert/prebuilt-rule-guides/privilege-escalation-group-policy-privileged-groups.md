@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Group Policy Abuse for Privilege Addition" prebuilt detection rule.
+description: 'Investigation guide for the "Group Policy Abuse for Privilege Addition" prebuilt detection rule.'
 ---
 
 # Group Policy Abuse for Privilege Addition
@@ -38,4 +38,3 @@ Group Policy Objects (GPOs) can be used to add rights and/or modify Group Member
 - The investigation and containment must be performed in every computer controlled by the GPO, where necessary.
 - Remove the script from the GPO.
 - Check if other GPOs have suspicious scripts attached.
-

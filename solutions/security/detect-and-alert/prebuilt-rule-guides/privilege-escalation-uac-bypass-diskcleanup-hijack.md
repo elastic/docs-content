@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "UAC Bypass via DiskCleanup Scheduled Task Hijack" prebuilt detection rule.
+description: 'Investigation guide for the "UAC Bypass via DiskCleanup Scheduled Task Hijack" prebuilt detection rule.'
 ---
 
 # UAC Bypass via DiskCleanup Scheduled Task Hijack

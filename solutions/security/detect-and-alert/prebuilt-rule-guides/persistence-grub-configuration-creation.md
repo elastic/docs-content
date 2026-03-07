@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GRUB Configuration File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "GRUB Configuration File Creation" prebuilt detection rule.'
 ---
 
 # GRUB Configuration File Creation

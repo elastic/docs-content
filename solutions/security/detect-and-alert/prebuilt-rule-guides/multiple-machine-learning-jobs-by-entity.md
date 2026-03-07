@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Machine Learning Alerts by Influencer Field" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Machine Learning Alerts by Influencer Field" prebuilt detection rule.'
 ---
 
 # Multiple Machine Learning Alerts by Influencer Field

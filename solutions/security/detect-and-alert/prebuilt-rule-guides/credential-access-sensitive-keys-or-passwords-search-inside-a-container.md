@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Sensitive Keys Or Passwords Search Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Sensitive Keys Or Passwords Search Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Sensitive Keys Or Passwords Search Detected via Defend for Containers

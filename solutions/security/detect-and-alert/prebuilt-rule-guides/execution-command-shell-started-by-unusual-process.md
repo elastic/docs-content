@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Parent Process for cmd.exe" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Parent Process for cmd.exe" prebuilt detection rule.'
 ---
 
 # Unusual Parent Process for cmd.exe

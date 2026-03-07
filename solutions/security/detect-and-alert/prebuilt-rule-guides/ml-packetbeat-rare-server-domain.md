@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Network Destination Domain Name" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Network Destination Domain Name" prebuilt detection rule.'
 ---
 
 # Unusual Network Destination Domain Name

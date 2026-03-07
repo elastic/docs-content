@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM AdministratorAccess Policy Attached to Group" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM AdministratorAccess Policy Attached to Group" prebuilt detection rule.'
 ---
 
 # AWS IAM AdministratorAccess Policy Attached to Group
@@ -75,4 +75,3 @@ Adversaries can exploit `iam:AttachGroupPolicy` permissions to escalate privileg
 - **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/): response steps related to IAM policy modification and unauthorized privilege escalation..  
 - **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/): for containment, analysis, and recovery guidance.
 - **AWS Documentation:** [AdministratorAccess Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_administrator).
-

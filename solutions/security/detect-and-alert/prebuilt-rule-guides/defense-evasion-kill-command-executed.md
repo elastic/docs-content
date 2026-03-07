@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kill Command Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Kill Command Execution" prebuilt detection rule.'
 ---
 
 # Kill Command Execution
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -44,4 +44,3 @@ In Linux environments, commands like kill, pkill, and killall are essential for 
 - Conduct a thorough scan of the affected system using updated antivirus or endpoint detection tools to identify and remove any additional malware or persistence mechanisms.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if other systems may be affected.
 - Implement additional monitoring and alerting for similar command executions across the network to enhance detection and response capabilities for future incidents.
-

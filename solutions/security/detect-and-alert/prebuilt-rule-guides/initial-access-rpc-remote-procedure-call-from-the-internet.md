@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "RPC (Remote Procedure Call) from the Internet" prebuilt detection rule.
+description: 'Investigation guide for the "RPC (Remote Procedure Call) from the Internet" prebuilt detection rule.'
 ---
 
 # RPC (Remote Procedure Call) from the Internet

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious File Renamed via SMB" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious File Renamed via SMB" prebuilt detection rule.'
 ---
 
 # Suspicious File Renamed via SMB
@@ -46,4 +46,3 @@ description: Investigation guide for the "Suspicious File Renamed via SMB" prebu
   - Perform data recovery locally or restore the backups from replicated copies (cloud, other servers, etc.).
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

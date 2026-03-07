@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Abuse of Resources by High Token Count and Large Response Sizes" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Abuse of Resources by High Token Count and Large Response Sizes" prebuilt detection rule.'
 ---
 
 # Potential Abuse of Resources by High Token Count and Large Response Sizes
@@ -44,4 +44,3 @@ Bedrock offers a variety of pretrained models from Amazon (such as the Titan ser
 - Review the permissions assigned to the implicated user group or role behind these requests to ensure they are authorized and expected to access bedrock and ensure that the least privilege principle is being followed.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

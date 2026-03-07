@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Successful SSH Authentication from Unusual User" prebuilt detection rule.
+description: 'Investigation guide for the "Successful SSH Authentication from Unusual User" prebuilt detection rule.'
 ---
 
 # Successful SSH Authentication from Unusual User
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ SSH (Secure Shell) is a protocol used to securely access and manage Linux system
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems or accounts have been affected.
 - Implement multi-factor authentication (MFA) for SSH access to enhance security and prevent similar unauthorized access attempts in the future.
 - Update and enhance monitoring rules to detect similar unusual login patterns, ensuring early detection of potential threats.
-

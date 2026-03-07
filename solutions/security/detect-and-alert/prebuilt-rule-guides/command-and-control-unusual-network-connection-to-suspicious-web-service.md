@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Network Connection to Suspicious Web Service" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Network Connection to Suspicious Web Service" prebuilt detection rule.'
 ---
 
 # Unusual Network Connection to Suspicious Web Service
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ In macOS environments, network connections to web services are routine for data 
 - Reset credentials and review access permissions for the affected user accounts to prevent unauthorized access.
 - Monitor the network for any further attempts to connect to the flagged domains and ensure that alerts are configured to notify security teams of any recurrence.
 - Escalate the incident to the security operations center (SOC) or relevant cybersecurity team for further investigation and to determine if the threat is part of a larger attack campaign.
-

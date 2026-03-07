@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Print Spooler File Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Print Spooler File Deletion" prebuilt detection rule.'
 ---
 
 # Suspicious Print Spooler File Deletion

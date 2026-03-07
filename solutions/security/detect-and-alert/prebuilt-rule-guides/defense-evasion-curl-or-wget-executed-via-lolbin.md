@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Curl or Wget Egress Network Connection via LoLBin" prebuilt detection rule.
+description: 'Investigation guide for the "Curl or Wget Egress Network Connection via LoLBin" prebuilt detection rule.'
 ---
 
 # Curl or Wget Egress Network Connection via LoLBin
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This detects outbound connections from curl or wget when they are launched via l
 - Restore the system by reimaging or reinstalling if tampering is suspected, re-enable egress only after validation, verify application functionality, and re-enroll the endpoint with EDR while limiting curl/wget usage to approved service accounts.
 - Escalate to incident response if curl/wget is piped to a shell (e.g., curl https://... | sh), a downloaded binary is made executable and run (chmod +x followed by execution), the destination matches known malicious infrastructure, or torify/torsocks/proxy chaining is used.
 - Harden by mounting /tmp, /var/tmp, and /dev/shm with noexec/nosuid/nodev, enforcing AppArmor/SELinux to restrict curl/wget network access and file writes, constraining GTFOBins from spawning shells, and requiring egress via a proxy allowlist with TLS validation (disallow --insecure/-k).
-

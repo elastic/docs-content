@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Privilege Escalation through Writable Docker Socket" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Privilege Escalation through Writable Docker Socket" prebuilt detection rule.'
 ---
 
 # Potential Privilege Escalation through Writable Docker Socket

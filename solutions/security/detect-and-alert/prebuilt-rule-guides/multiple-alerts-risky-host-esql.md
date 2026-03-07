@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Alerts in Different ATT&CK Tactics by Host" prebuilt detection rule.
+description: 'Investigation guide for the "Alerts in Different ATT&CK Tactics by Host" prebuilt detection rule.'
 ---
 
 # Alerts in Different ATT&CK Tactics by Host

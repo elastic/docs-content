@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "WMI Incoming Lateral Movement" prebuilt detection rule.
+description: 'Investigation guide for the "WMI Incoming Lateral Movement" prebuilt detection rule.'
 ---
 
 # WMI Incoming Lateral Movement

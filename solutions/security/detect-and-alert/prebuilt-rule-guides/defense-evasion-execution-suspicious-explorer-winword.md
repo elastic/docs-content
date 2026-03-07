@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential DLL Side-Loading via Trusted Microsoft Programs" prebuilt detection rule.
+description: 'Investigation guide for the "Potential DLL Side-Loading via Trusted Microsoft Programs" prebuilt detection rule.'
 ---
 
 # Potential DLL Side-Loading via Trusted Microsoft Programs

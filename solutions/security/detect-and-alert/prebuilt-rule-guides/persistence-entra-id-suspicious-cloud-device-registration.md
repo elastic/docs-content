@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Unusual Cloud Device Registration" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Unusual Cloud Device Registration" prebuilt detection rule.'
 ---
 
 # Entra ID Unusual Cloud Device Registration
@@ -53,4 +53,3 @@ This pattern has been observed in OAuth phishing and PRT abuse campaigns where a
 - Disable the user account and initiate password reset and identity verification procedures.
 - Review audit logs and sign-in activity for additional indicators of persistence or access from the rogue device.
 - Tighten conditional access policies to restrict device registration and enforce compliance or hybrid join requirements.
-

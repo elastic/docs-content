@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Service Principal Federated Credential Authentication by Unusual Client" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Service Principal Federated Credential Authentication by Unusual Client" prebuilt detection rule.'
 ---
 
 # Entra ID Service Principal Federated Credential Authentication by Unusual Client

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubectl Permission Discovery" prebuilt detection rule.
+description: 'Investigation guide for the "Kubectl Permission Discovery" prebuilt detection rule.'
 ---
 
 # Kubectl Permission Discovery
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Kubectl is a command-line tool for interacting with Kubernetes clusters, allowin
 - Monitor for any additional suspicious activity or anomalies in the cluster, focusing on access patterns and command executions.
 - Escalate the incident to the security operations team for further analysis and to determine if additional clusters or systems are affected.
 - Update detection and monitoring systems to enhance visibility and alerting for similar permission discovery attempts in the future.
-

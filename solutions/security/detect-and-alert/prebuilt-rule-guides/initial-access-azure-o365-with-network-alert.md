@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 or Entra ID Identity Sign-in from a Suspicious Source" prebuilt detection rule.
+description: 'Investigation guide for the "M365 or Entra ID Identity Sign-in from a Suspicious Source" prebuilt detection rule.'
 ---
 
 # M365 or Entra ID Identity Sign-in from a Suspicious Source

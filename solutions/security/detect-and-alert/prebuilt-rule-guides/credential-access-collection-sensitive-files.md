@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Sensitive Files Compression" prebuilt detection rule.
+description: 'Investigation guide for the "Sensitive Files Compression" prebuilt detection rule.'
 ---
 
 # Sensitive Files Compression

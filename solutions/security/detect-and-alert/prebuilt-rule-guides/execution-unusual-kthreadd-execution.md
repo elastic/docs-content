@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Execution from Kernel Thread (kthreadd) Parent" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Execution from Kernel Thread (kthreadd) Parent" prebuilt detection rule.'
 ---
 
 # Unusual Execution from Kernel Thread (kthreadd) Parent
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ The kernel thread (kthreadd) is a fundamental component in Linux systems respons
 - Escalate the incident to the security operations team for a deeper forensic investigation to determine the root cause and entry point of the threat.
 - Implement additional monitoring on the affected host and similar systems to detect any recurrence of the threat, focusing on the specific indicators identified in the alert.
 - Update and patch the affected system to the latest security standards to mitigate vulnerabilities that may have been exploited by the adversary.
-

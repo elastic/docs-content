@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious TCC Access Granted for User Folders" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious TCC Access Granted for User Folders" prebuilt detection rule.'
 ---
 
 # Suspicious TCC Access Granted for User Folders
@@ -47,4 +47,3 @@ The Transparency, Consent, and Control (TCC) framework is macOS's privacy protec
 - Reset TCC permissions to their default state using tccutil reset or by deleting and recreating the TCC.db database.
 - Review other systems in the environment for similar TCC manipulation activity.
 - Escalate to the incident response team for comprehensive investigation if data theft is suspected.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Okta MFA Bombing via Push Notifications" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Okta MFA Bombing via Push Notifications" prebuilt detection rule.'
 ---
 
 # Potential Okta MFA Bombing via Push Notifications
@@ -44,4 +44,3 @@ This rule detects when a user denies MFA Okta Verify push notifications twice, f
 - Consider enhancing your MFA policy to prevent such incidents in the future.
 - Encourage users to report any unexpected MFA notifications immediately.
 - Review and update your incident response plans and security policies based on the findings from the incident.
-

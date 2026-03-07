@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GitHub Actions Workflow Modification Blocked" prebuilt detection rule.
+description: 'Investigation guide for the "GitHub Actions Workflow Modification Blocked" prebuilt detection rule.'
 ---
 
 # GitHub Actions Workflow Modification Blocked
@@ -41,4 +41,3 @@ This rule detects attempts to push workflow files to a GitHub repository from wi
 - Enable branch protection rules requiring pull request reviews for workflow file changes.
 - Consider implementing CODEOWNERS for `.github/workflows/` directory.
 - Search for indicators of compromise such as unexpected workflow files (e.g., `discussion_*.yaml`, `formatter_*.yml`).
-

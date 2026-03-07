@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Exploitation of an Unquoted Service Path Vulnerability" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Exploitation of an Unquoted Service Path Vulnerability" prebuilt detection rule.'
 ---
 
 # Potential Exploitation of an Unquoted Service Path Vulnerability

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution via GitHub Actions Runner" prebuilt detection rule.
+description: 'Investigation guide for the "Execution via GitHub Actions Runner" prebuilt detection rule.'
 ---
 
 # Execution via GitHub Actions Runner

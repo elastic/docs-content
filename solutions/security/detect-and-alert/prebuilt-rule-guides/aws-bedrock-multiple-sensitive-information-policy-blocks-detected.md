@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual High Denied Sensitive Information Policy Blocks Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual High Denied Sensitive Information Policy Blocks Detected" prebuilt detection rule.'
 ---
 
 # Unusual High Denied Sensitive Information Policy Blocks Detected
@@ -45,4 +45,3 @@ and they can establish thresholds for harmful content categories.
 - Review the permissions assigned to the implicated user group or role behind these requests to ensure they are authorized and expected to access bedrock and ensure that the least privilege principle is being followed.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

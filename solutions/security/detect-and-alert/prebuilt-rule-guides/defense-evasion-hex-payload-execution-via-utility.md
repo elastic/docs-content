@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Hex Payload Execution via Common Utility" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Hex Payload Execution via Common Utility" prebuilt detection rule.'
 ---
 
 # Potential Hex Payload Execution via Common Utility

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 Deprecated AMI Discovery" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 Deprecated AMI Discovery" prebuilt detection rule.'
 ---
 
 # AWS EC2 Deprecated AMI Discovery
@@ -75,4 +75,3 @@ This rule detects when a user queries AWS for deprecated Amazon Machine Images (
 
 - [AWS Documentation: AMI Lifecycle Management](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
 - [AWS Documentation: Deprecated AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html)
-

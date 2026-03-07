@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Persistence via PowerShell profile" prebuilt detection rule.
+description: 'Investigation guide for the "Persistence via PowerShell profile" prebuilt detection rule.'
 ---
 
 # Persistence via PowerShell profile
@@ -63,4 +63,3 @@ This rule identifies the creation or modification of a PowerShell profile. It do
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
   - Consider enabling and collecting PowerShell logs such as transcription, module, and script block logging, to improve visibility into PowerShell activities.
-

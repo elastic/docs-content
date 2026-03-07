@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "First Time Seen Commonly Abused Remote Access Tool Execution" prebuilt detection rule.
+description: 'Investigation guide for the "First Time Seen Commonly Abused Remote Access Tool Execution" prebuilt detection rule.'
 ---
 
 # First Time Seen Commonly Abused Remote Access Tool Execution
@@ -43,4 +43,3 @@ This rule detects when a remote access tool is seen in the environment for the f
 - If an unauthorized third party did the access via social engineering, consider improvements to the security awareness program.
 - Enforce that only tooling approved by the IT policy should be used for remote access purposes and only by authorized staff.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

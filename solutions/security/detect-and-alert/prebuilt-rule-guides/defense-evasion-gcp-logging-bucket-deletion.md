@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GCP Logging Bucket Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "GCP Logging Bucket Deletion" prebuilt detection rule.'
 ---
 
 # GCP Logging Bucket Deletion

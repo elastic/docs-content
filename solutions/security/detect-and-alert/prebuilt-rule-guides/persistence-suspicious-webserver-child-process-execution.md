@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Web Server Child Shell Spawn Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Web Server Child Shell Spawn Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Web Server Child Shell Spawn Detected via Defend for Containers

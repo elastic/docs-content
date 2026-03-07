@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Rare Elastic Defend Behavior Rules by Host" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Rare Elastic Defend Behavior Rules by Host" prebuilt detection rule.'
 ---
 
 # Multiple Rare Elastic Defend Behavior Rules by Host
@@ -37,4 +37,3 @@ This rule correlates Elastic Defend behavior alerts by host and applies a global
 - Isolate the host if triage indicates compromise, then follow standard incident response procedures.
 - Collect and preserve artifacts (process hashes, command lines, files) for further analysis.
 - Escalate to the security team for full investigation and potential containment or eradication actions.
-

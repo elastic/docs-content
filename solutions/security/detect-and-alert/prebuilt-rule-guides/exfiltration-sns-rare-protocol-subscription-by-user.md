@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS SNS Rare Protocol Subscription by User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS SNS Rare Protocol Subscription by User" prebuilt detection rule.'
 ---
 
 # AWS SNS Rare Protocol Subscription by User
@@ -46,5 +46,3 @@ This is a [New Terms](https://www.elastic.co/guide/en/security/current/rules-ui-
 ### Additional Information
 
 For further guidance on managing and securing SNS topics in AWS environments, refer to the [AWS SNS documentation](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) and AWS best practices for security.
-
-

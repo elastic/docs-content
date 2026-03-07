@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Curl or Wget Spawned via Node.js" prebuilt detection rule.
+description: 'Investigation guide for the "Curl or Wget Spawned via Node.js" prebuilt detection rule.'
 ---
 
 # Curl or Wget Spawned via Node.js
@@ -40,4 +40,3 @@ This rule flags Node.js launching curl or wget, directly or via a shell, a commo
 - Escalate to full incident response if output was piped to an interpreter (curl ... | bash or wget ... | sh), if --insecure/-k or self-signed endpoints were used, if unknown external infrastructure was contacted, or if secrets were accessed or exfiltrated.
 - Rebuild and redeploy the workload from a known-good image, remove the malicious child_process code path from the Node.js application, restore validated configs/data, rotate any keys or tokens used by that service, and verify no further curl/wget spawns occur post-recovery.
 - Harden by removing curl/wget from runtime images where not required, enforcing egress allowlists for the service, constraining execution with AppArmor/SELinux/seccomp and least-privilege service accounts, and adding CI/CD checks to block package.json postinstall scripts or code that shells out to downloaders.
-

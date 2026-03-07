@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID MFA TOTP Brute Force Attempted" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID MFA TOTP Brute Force Attempted" prebuilt detection rule.'
 ---
 
 # Entra ID MFA TOTP Brute Force Attempted
@@ -47,4 +47,3 @@ This rule detects brute force attempts against Azure Entra multi-factor authenti
     - Implement additional monitoring to track high-frequency authentication failures across the environment.
     - Audit historical logs for similar patterns involving other accounts to identify broader threats.
     - Provide guidance on the secure use of MFA and the importance of recognizing and reporting suspicious activity.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS S3 Bucket Expiration Lifecycle Configuration Added" prebuilt detection rule.
+description: 'Investigation guide for the "AWS S3 Bucket Expiration Lifecycle Configuration Added" prebuilt detection rule.'
 ---
 
 # AWS S3 Bucket Expiration Lifecycle Configuration Added
@@ -95,4 +95,3 @@ Enable Security Hub and GuardDuty findings for additional anomaly detection on S
 - **AWS Playbooks**  
   - [Data Exposure and Exfiltration Response](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/IRP-PersonalDataBreach.md)  
   - [AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/main)
-

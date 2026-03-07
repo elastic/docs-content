@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID OAuth Flow by Microsoft Authentication Broker to Device Registration Service (DRS)" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID OAuth Flow by Microsoft Authentication Broker to Device Registration Service (DRS)" prebuilt detection rule.'
 ---
 
 # Entra ID OAuth Flow by Microsoft Authentication Broker to Device Registration Service (DRS)
@@ -47,4 +47,3 @@ This rule identifies potential OAuth phishing behavior in Microsoft Entra ID whe
 - Review Conditional Access policies for the Microsoft Authentication Broker (`29d9ed98-a469-4536-ade2-f981bc1d605e`) to ensure enforcement of MFA and device trust.
 - Consider restricting token-based reauthentication from anonymized infrastructure or unusual user agents.
 - Continue monitoring for follow-on activity, such as privilege escalation, token misuse, or lateral movement.
-

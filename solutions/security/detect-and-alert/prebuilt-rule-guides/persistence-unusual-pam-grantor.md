@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Authentication via Unusual PAM Grantor" prebuilt detection rule.
+description: 'Investigation guide for the "Authentication via Unusual PAM Grantor" prebuilt detection rule.'
 ---
 
 # Authentication via Unusual PAM Grantor

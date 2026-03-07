@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS CLI Command with Custom Endpoint URL" prebuilt detection rule.
+description: 'Investigation guide for the "AWS CLI Command with Custom Endpoint URL" prebuilt detection rule.'
 ---
 
 # AWS CLI Command with Custom Endpoint URL

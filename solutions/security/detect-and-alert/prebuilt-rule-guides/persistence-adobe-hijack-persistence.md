@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Deprecated - Adobe Hijack Persistence" prebuilt detection rule.
+description: 'Investigation guide for the "Deprecated - Adobe Hijack Persistence" prebuilt detection rule.'
 ---
 
 # Deprecated - Adobe Hijack Persistence
@@ -59,4 +59,3 @@ Attackers can replace the `RdrCEF.exe` executable with their own to maintain the
 - Investigate credential exposure on systems compromised or used by the attacker to ensure all compromised accounts are identified. Reset passwords for these accounts and other potentially compromised credentials, such as email, business systems, and web services.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

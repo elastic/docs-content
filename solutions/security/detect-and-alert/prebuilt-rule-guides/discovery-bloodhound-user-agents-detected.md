@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Sign-in BloodHound Suite User-Agent Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Sign-in BloodHound Suite User-Agent Detected" prebuilt detection rule.'
 ---
 
 # Entra ID Sign-in BloodHound Suite User-Agent Detected
@@ -59,5 +59,3 @@ This ensures broader detection of credential abuse, token misuse, or unauthorize
 - If legitimate:
     - Document the source (e.g., red team operation, security tool).
     - Add appropriate allowlist conditions for service principal, user, source address or device if policy allows.
-
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Lsass Process Access" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Lsass Process Access" prebuilt detection rule.'
 ---
 
 # Suspicious Lsass Process Access

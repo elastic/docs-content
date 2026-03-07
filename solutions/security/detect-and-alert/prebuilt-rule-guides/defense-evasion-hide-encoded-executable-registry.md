@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Deprecated - Encoded Executable Stored in the Registry" prebuilt detection rule.
+description: 'Investigation guide for the "Deprecated - Encoded Executable Stored in the Registry" prebuilt detection rule.'
 ---
 
 # Deprecated - Encoded Executable Stored in the Registry

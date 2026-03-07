@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Keychain CommandLine Interaction via Unsigned or Untrusted Process" prebuilt detection rule.
+description: 'Investigation guide for the "Keychain CommandLine Interaction via Unsigned or Untrusted Process" prebuilt detection rule.'
 ---
 
 # Keychain CommandLine Interaction via Unsigned or Untrusted Process

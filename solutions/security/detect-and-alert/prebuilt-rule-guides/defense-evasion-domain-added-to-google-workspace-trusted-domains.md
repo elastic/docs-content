@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Domain Added to Google Workspace Trusted Domains" prebuilt detection rule.
+description: 'Investigation guide for the "Domain Added to Google Workspace Trusted Domains" prebuilt detection rule.'
 ---
 
 # Domain Added to Google Workspace Trusted Domains

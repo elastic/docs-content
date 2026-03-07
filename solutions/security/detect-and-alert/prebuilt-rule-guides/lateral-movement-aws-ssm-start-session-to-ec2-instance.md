@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS SSM Session Started to EC2 Instance" prebuilt detection rule.
+description: 'Investigation guide for the "AWS SSM Session Started to EC2 Instance" prebuilt detection rule.'
 ---
 
 # AWS SSM Session Started to EC2 Instance
@@ -45,5 +45,3 @@ This rule detects the first instance of an AWS user or role initiating an SSM se
 ### Additional Information
 
 For more in-depth understanding of managing SSM sessions and security best practices, refer to the [AWS Systems Manager documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_StartSession.html). Additionally, consider the security implications and best practices outlined in [AWS SSM privilege escalation techniques](https://cloud.hacktricks.xyz/pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc).
-
-

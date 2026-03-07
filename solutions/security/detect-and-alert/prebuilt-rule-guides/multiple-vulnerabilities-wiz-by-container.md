@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Vulnerabilities by Asset via Wiz" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Vulnerabilities by Asset via Wiz" prebuilt detection rule.'
 ---
 
 # Multiple Vulnerabilities by Asset via Wiz

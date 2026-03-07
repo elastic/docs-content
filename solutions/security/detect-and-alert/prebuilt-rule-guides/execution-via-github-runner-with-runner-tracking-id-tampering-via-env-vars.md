@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Tampering with RUNNER_TRACKING_ID in GitHub Actions Runners" prebuilt detection rule.
+description: 'Investigation guide for the "Tampering with RUNNER_TRACKING_ID in GitHub Actions Runners" prebuilt detection rule.'
 ---
 
 # Tampering with RUNNER_TRACKING_ID in GitHub Actions Runners

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Sudo Hijacking" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Sudo Hijacking" prebuilt detection rule.'
 ---
 
 # Potential Sudo Hijacking

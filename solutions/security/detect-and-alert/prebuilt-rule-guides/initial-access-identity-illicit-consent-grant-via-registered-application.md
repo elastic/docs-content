@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Identity OAuth Illicit Consent Grant by Rare Client and User" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Identity OAuth Illicit Consent Grant by Rare Client and User" prebuilt detection rule.'
 ---
 
 # M365 Identity OAuth Illicit Consent Grant by Rare Client and User
@@ -60,5 +60,3 @@ This rule identifies a new consent grant to an application using Microsoft 365 a
   - Enable the [Admin consent workflow](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/configure-admin-consent-workflow) to restrict user-granted consent.
   - Audit and reduce overprivileged applications in your environment.
   - Consider using Defender for Cloud Apps OAuth app governance.
-
-

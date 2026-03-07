@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Protection User Alert and Device Registration" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Protection User Alert and Device Registration" prebuilt detection rule.'
 ---
 
 # Entra ID Protection User Alert and Device Registration

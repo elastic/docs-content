@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Cloud Secrets Accessed by Source Address" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Cloud Secrets Accessed by Source Address" prebuilt detection rule.'
 ---
 
 # Multiple Cloud Secrets Accessed by Source Address
@@ -68,4 +68,3 @@ Unexpected cross-cloud secret retrieval is uncommon and typically indicates auto
 - Search for persistence mechanisms** such as newly created keys, roles, or service accounts.
 - Improve monitoring and audit visibility** by ensuring logging is enabled across all cloud environments.
 - Determine root cause** (phishing, malware, token replay, exposed credential, etc.) and close the vector to prevent recurrence.
-

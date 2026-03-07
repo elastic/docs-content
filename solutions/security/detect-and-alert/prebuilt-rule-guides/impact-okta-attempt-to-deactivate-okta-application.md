@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempt to Deactivate an Okta Application" prebuilt detection rule.
+description: 'Investigation guide for the "Attempt to Deactivate an Okta Application" prebuilt detection rule.'
 ---
 
 # Attempt to Deactivate an Okta Application
@@ -41,4 +41,3 @@ This rule detects attempts to deactivate an Okta application. Unauthorized deact
 ## Setup
 
 The Okta Fleet integration, Filebeat module, or similarly structured data is required to be compatible with this rule.
-

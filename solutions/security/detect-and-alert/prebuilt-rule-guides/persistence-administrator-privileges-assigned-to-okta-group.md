@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Administrator Privileges Assigned to an Okta Group" prebuilt detection rule.
+description: 'Investigation guide for the "Administrator Privileges Assigned to an Okta Group" prebuilt detection rule.'
 ---
 
 # Administrator Privileges Assigned to an Okta Group

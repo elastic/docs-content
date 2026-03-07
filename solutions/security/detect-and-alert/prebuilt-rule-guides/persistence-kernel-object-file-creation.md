@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kernel Object File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Kernel Object File Creation" prebuilt detection rule.'
 ---
 
 # Kernel Object File Creation

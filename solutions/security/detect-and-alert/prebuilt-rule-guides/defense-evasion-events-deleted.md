@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Events Deleted" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Events Deleted" prebuilt detection rule.'
 ---
 
 # Kubernetes Events Deleted
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -44,4 +44,3 @@ Kubernetes, a container orchestration platform, logs events to track activities 
 - Escalate the incident to the security operations center (SOC) for a comprehensive analysis of potential breaches and to determine if additional systems or data were affected.
 - Coordinate with the incident response team to conduct a root cause analysis and identify any vulnerabilities or misconfigurations that allowed the event deletion to occur.
 - Update and reinforce security policies and procedures to prevent similar incidents, including enhancing detection capabilities for defense evasion tactics as outlined in MITRE ATT&CK.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS SSM `SendCommand` Execution by Rare User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS SSM `SendCommand` Execution by Rare User" prebuilt detection rule.'
 ---
 
 # AWS SSM `SendCommand` Execution by Rare User
@@ -58,4 +58,3 @@ This rule detects the execution of commands or scripts on EC2 instances using AW
 ### Additional Information
 
 For further details on managing AWS SSM and security best practices for EC2 instances, refer to the [AWS Systems Manager Documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-plugins.html) and AWS best practices.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote File Copy via TeamViewer" prebuilt detection rule.
+description: 'Investigation guide for the "Remote File Copy via TeamViewer" prebuilt detection rule.'
 ---
 
 # Remote File Copy via TeamViewer
@@ -60,4 +60,3 @@ TeamViewer is a remote access and remote control tool used by helpdesks and syst
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Investigate credential exposure on systems compromised or used by the attacker to ensure all compromised accounts are identified. Reset passwords for these accounts and other potentially compromised credentials, such as email, business systems, and web services.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

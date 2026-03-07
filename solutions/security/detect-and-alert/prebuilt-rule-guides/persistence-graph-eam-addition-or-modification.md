@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID External Authentication Methods (EAM) Modified" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID External Authentication Methods (EAM) Modified" prebuilt detection rule.'
 ---
 
 # Entra ID External Authentication Methods (EAM) Modified
@@ -42,4 +42,3 @@ This rule detects suspicious modifications to external authentication methods (E
 - Revoke session tokens associated with the change using Entra ID's portal or Microsoft Graph API, and enforce reauthentication where appropriate.
 - Implement stricter RBAC or conditional access policies to prevent unauthorized EAM changes in the future.
 - Monitor for repeat or similar activity from the same source or identity as part of an ongoing compromise assessment.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "LLM-Based Compromised User Triage by User" prebuilt detection rule.
+description: 'Investigation guide for the "LLM-Based Compromised User Triage by User" prebuilt detection rule.'
 ---
 
 # LLM-Based Compromised User Triage by User
@@ -46,5 +46,3 @@ credential reuse.
 - Check for persistence mechanisms the attacker may have established using the compromised credentials.
 - Audit all actions performed by the user during the alert window for data access or exfiltration.
 - If lateral movement is confirmed, expand investigation to all hosts the user accessed.
-
-

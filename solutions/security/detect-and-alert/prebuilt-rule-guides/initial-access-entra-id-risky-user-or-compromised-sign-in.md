@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID High Risk User Sign-in Heuristic" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID High Risk User Sign-in Heuristic" prebuilt detection rule.'
 ---
 
 # Entra ID High Risk User Sign-in Heuristic

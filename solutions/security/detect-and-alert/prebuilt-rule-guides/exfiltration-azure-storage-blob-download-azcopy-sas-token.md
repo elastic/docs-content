@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Storage Blob Retrieval via AzCopy" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Storage Blob Retrieval via AzCopy" prebuilt detection rule.'
 ---
 
 # Azure Storage Blob Retrieval via AzCopy
@@ -46,4 +46,3 @@ Azure Storage Accounts provide cloud storage services for blobs, files, queues, 
 - Consider implementing Azure Storage firewall rules or private endpoints to restrict access to storage accounts from trusted networks only.
 - Investigate how the SAS token was compromised and remediate the initial access vector to prevent future incidents.
 - Document the incident and update security procedures to prevent similar compromises in the future.
-

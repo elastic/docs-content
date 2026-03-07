@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SSH Authorized Keys File Activity" prebuilt detection rule.
+description: 'Investigation guide for the "SSH Authorized Keys File Activity" prebuilt detection rule.'
 ---
 
 # SSH Authorized Keys File Activity

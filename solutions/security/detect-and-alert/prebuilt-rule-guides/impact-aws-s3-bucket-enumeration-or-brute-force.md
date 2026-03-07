@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS S3 Bucket Enumeration or Brute Force" prebuilt detection rule.
+description: 'Investigation guide for the "AWS S3 Bucket Enumeration or Brute Force" prebuilt detection rule.'
 ---
 
 # AWS S3 Bucket Enumeration or Brute Force
@@ -62,5 +62,4 @@ This rule detects when many failed S3 operations (HTTP 403 AccessDenied) hit a s
 - [AWS S3 billing for error responses](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ErrorCodeBilling.html): see latest AWS docs on which error codes are billed.  
 - [AWS announcement (Aug 2024)](https://aws.amazon.com/about-aws/whats-new/2024/05/amazon-s3-no-charge-http-error-codes/): 403s from outside the account/org are not billed.  
 - [AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/): NIST-aligned template for evidence, containment, eradication, recovery, post-incident. 
-- [AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/): Practical response steps for account and bucket-level abuse.  
-
+- [AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/): Practical response steps for account and bucket-level abuse.

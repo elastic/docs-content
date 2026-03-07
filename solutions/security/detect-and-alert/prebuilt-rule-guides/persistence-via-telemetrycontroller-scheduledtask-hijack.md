@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Persistence via TelemetryController Scheduled Task Hijack" prebuilt detection rule.
+description: 'Investigation guide for the "Persistence via TelemetryController Scheduled Task Hijack" prebuilt detection rule.'
 ---
 
 # Persistence via TelemetryController Scheduled Task Hijack

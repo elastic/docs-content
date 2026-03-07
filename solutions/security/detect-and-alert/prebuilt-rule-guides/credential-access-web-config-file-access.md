@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Web Config File Access" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Web Config File Access" prebuilt detection rule.'
 ---
 
 # Unusual Web Config File Access
@@ -42,4 +42,3 @@ Web.config files are crucial in Windows environments, storing sensitive data lik
 - Escalate the incident to the security operations center (SOC) for further investigation and correlation with other potential indicators of compromise.
 - Review and update firewall rules and access controls to ensure that only authorized users and applications can access sensitive directories containing web.config files.
 - Conduct a post-incident analysis to identify gaps in security controls and enhance detection capabilities for similar threats in the future.
-

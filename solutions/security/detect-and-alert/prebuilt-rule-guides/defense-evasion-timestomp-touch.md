@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Timestomping using Touch Command" prebuilt detection rule.
+description: 'Investigation guide for the "Timestomping using Touch Command" prebuilt detection rule.'
 ---
 
 # Timestomping using Touch Command

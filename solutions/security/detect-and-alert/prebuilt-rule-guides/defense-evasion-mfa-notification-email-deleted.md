@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Exchange MFA Notification Email Deleted or Moved" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Exchange MFA Notification Email Deleted or Moved" prebuilt detection rule.'
 ---
 
 # M365 Exchange MFA Notification Email Deleted or Moved
@@ -40,4 +40,3 @@ This rule detects when emails containing MFA enrollment or security notification
 - Review inbox rules for any malicious forwarding or deletion rules.
 - Check for data exfiltration or other malicious activities during the compromise window.
 - Implement conditional access policies to restrict MFA registration to trusted locations/devices.
-

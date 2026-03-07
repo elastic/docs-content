@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Unauthorized Access via Wildcard Injection Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Unauthorized Access via Wildcard Injection Detected" prebuilt detection rule.'
 ---
 
 # Potential Unauthorized Access via Wildcard Injection Detected

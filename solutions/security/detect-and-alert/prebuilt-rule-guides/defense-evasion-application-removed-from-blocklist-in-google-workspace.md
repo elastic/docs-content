@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Application Removed from Blocklist in Google Workspace" prebuilt detection rule.
+description: 'Investigation guide for the "Application Removed from Blocklist in Google Workspace" prebuilt detection rule.'
 ---
 
 # Application Removed from Blocklist in Google Workspace

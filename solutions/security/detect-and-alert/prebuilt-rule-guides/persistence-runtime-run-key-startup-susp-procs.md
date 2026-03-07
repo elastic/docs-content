@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution of Persistent Suspicious Program" prebuilt detection rule.
+description: 'Investigation guide for the "Execution of Persistent Suspicious Program" prebuilt detection rule.'
 ---
 
 # Execution of Persistent Suspicious Program

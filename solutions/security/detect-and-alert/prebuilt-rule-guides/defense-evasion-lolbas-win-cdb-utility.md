@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution via Windows Command Debugging Utility" prebuilt detection rule.
+description: 'Investigation guide for the "Execution via Windows Command Debugging Utility" prebuilt detection rule.'
 ---
 
 # Execution via Windows Command Debugging Utility

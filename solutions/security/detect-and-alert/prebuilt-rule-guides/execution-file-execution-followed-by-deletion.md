@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "File Creation, Execution and Self-Deletion in Suspicious Directory" prebuilt detection rule.
+description: 'Investigation guide for the "File Creation, Execution and Self-Deletion in Suspicious Directory" prebuilt detection rule.'
 ---
 
 # File Creation, Execution and Self-Deletion in Suspicious Directory

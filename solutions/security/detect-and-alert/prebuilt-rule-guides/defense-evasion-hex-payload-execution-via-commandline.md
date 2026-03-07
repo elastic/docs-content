@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Hex Payload Execution via Command-Line" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Hex Payload Execution via Command-Line" prebuilt detection rule.'
 ---
 
 # Potential Hex Payload Execution via Command-Line
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -44,4 +44,3 @@ In Linux environments, command-line interfaces are pivotal for executing process
 - Restore the system from a known good backup if any critical system files or configurations have been altered.
 - Update and patch the system to close any vulnerabilities that may have been exploited by the adversary.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional systems are affected.
-

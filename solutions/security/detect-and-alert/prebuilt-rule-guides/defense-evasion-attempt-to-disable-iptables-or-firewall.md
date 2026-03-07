@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempt to Disable IPTables or Firewall" prebuilt detection rule.
+description: 'Investigation guide for the "Attempt to Disable IPTables or Firewall" prebuilt detection rule.'
 ---
 
 # Attempt to Disable IPTables or Firewall

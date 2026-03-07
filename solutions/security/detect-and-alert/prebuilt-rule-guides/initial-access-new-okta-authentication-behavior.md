@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "New Okta Authentication Behavior Detected" prebuilt detection rule.
+description: 'Investigation guide for the "New Okta Authentication Behavior Detected" prebuilt detection rule.'
 ---
 
 # New Okta Authentication Behavior Detected
@@ -42,4 +42,3 @@ This rule detects events where Okta behavior detection has identified a new auth
 ## Setup
 
 The Okta Fleet integration, Filebeat module, or similarly structured data is required to be compatible with this rule.
-

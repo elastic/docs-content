@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Masquerading as Svchost" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Masquerading as Svchost" prebuilt detection rule.'
 ---
 
 # Potential Masquerading as Svchost
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ svchost.exe is a legitimate Windows system process responsible for hosting multi
 - Analyze recent network activity from the affected host for potential data exfiltration or commandand-control communication.
 - Escalate the incident to the security operations or incident response team for deeper investigation and forensic analysis.
 - Implement detections to monitor for future attempts of process masquerading, and update security baselines and EDR exclusions accordingly.
-

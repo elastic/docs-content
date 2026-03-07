@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Setcap setuid/setgid Capability Set" prebuilt detection rule.
+description: 'Investigation guide for the "Setcap setuid/setgid Capability Set" prebuilt detection rule.'
 ---
 
 # Setcap setuid/setgid Capability Set
@@ -70,4 +70,3 @@ This rule monitors for the addition of the cap_setuid+ep or cap_setgid+ep capabi
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Leverage the incident response data and logging to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

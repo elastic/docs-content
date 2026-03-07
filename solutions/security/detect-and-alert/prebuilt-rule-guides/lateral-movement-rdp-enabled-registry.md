@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "RDP Enabled via Registry" prebuilt detection rule.
+description: 'Investigation guide for the "RDP Enabled via Registry" prebuilt detection rule.'
 ---
 
 # RDP Enabled via Registry
@@ -46,4 +46,3 @@ This rule detects modification of the fDenyTSConnections registry key to the val
 - Review the privileges assigned to the involved users to ensure that the least privilege principle is being followed.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

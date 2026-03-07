@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Tampering of Shell Command-Line History" prebuilt detection rule.
+description: 'Investigation guide for the "Tampering of Shell Command-Line History" prebuilt detection rule.'
 ---
 
 # Tampering of Shell Command-Line History

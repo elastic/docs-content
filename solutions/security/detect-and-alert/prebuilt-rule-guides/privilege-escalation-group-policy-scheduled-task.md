@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Scheduled Task Execution at Scale via GPO" prebuilt detection rule.
+description: 'Investigation guide for the "Scheduled Task Execution at Scale via GPO" prebuilt detection rule.'
 ---
 
 # Scheduled Task Execution at Scale via GPO
@@ -41,4 +41,3 @@ Group Policy Objects (GPOs) can be used by attackers to execute scheduled tasks 
 - Check if other GPOs have suspicious scheduled tasks attached.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

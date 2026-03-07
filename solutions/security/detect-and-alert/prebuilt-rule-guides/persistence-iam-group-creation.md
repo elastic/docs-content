@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM Group Creation" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM Group Creation" prebuilt detection rule.'
 ---
 
 # AWS IAM Group Creation
@@ -55,4 +55,3 @@ AWS IAM allows organizations to manage user access and permissions securely. Gro
 
 ### Additional information
 [AWS Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/)
-

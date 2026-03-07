@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious pbpaste High Volume Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious pbpaste High Volume Activity" prebuilt detection rule.'
 ---
 
 # Suspicious pbpaste High Volume Activity
@@ -41,4 +41,3 @@ To investigate `pbpaste` activity, focus on determining whether the binary is be
    - **Why:** If the `pbpaste` activity occurs during times when the user is not active, or if the user denies initiating such tasks, it could indicate unauthorized access or a compromised account.
 
 By thoroughly investigating these aspects of `pbpaste` activity, you can determine whether this is part of a legitimate process or a potential security threat that needs to be addressed.
-

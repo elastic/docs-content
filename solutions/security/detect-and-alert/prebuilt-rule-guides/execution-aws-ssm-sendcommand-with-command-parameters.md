@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS SSM `SendCommand` with Run Shell Command Parameters" prebuilt detection rule.
+description: 'Investigation guide for the "AWS SSM `SendCommand` with Run Shell Command Parameters" prebuilt detection rule.'
 ---
 
 # AWS SSM `SendCommand` with Run Shell Command Parameters

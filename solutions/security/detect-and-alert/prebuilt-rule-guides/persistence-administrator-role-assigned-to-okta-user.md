@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta User Assigned Administrator Role" prebuilt detection rule.
+description: 'Investigation guide for the "Okta User Assigned Administrator Role" prebuilt detection rule.'
 ---
 
 # Okta User Assigned Administrator Role
@@ -45,4 +45,3 @@ Okta administrator roles provide elevated permissions to manage users, applicati
 - Review and strengthen privileged access management controls, including requiring approval workflows for administrator role assignments.
 - Consider implementing anomaly detection for administrator role assignments from unusual sources or at unusual times.
 - If broader compromise is suspected, conduct a comprehensive security investigation including forensic analysis of Okta audit logs.
-

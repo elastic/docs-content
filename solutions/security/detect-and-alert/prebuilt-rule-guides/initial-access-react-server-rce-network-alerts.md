@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "React2Shell Network Security Alert" prebuilt detection rule.
+description: 'Investigation guide for the "React2Shell Network Security Alert" prebuilt detection rule.'
 ---
 
 # React2Shell Network Security Alert
@@ -39,4 +39,3 @@ This rule detects exploitation attempts targeting CVE-2025-55182, a critical rem
 - If HTTP 500 or 303 responses with `digest` output were observed, assume successful code execution and investigate for compromise.
 - Review server logs for evidence of command execution (file creation, network connections, process spawning).
 - Implement WAF rules to block requests containing `__proto__` or `constructor:constructor` in POST bodies.
-

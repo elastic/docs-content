@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in Firewall Denies" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in Firewall Denies" prebuilt detection rule.'
 ---
 
 # Spike in Firewall Denies

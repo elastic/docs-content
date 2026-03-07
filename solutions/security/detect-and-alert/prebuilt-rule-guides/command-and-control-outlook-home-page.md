@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Outlook Home Page Registry Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Outlook Home Page Registry Modification" prebuilt detection rule.'
 ---
 
 # Outlook Home Page Registry Modification

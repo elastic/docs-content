@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "File System Debugger Launched Inside a Container" prebuilt detection rule.
+description: 'Investigation guide for the "File System Debugger Launched Inside a Container" prebuilt detection rule.'
 ---
 
 # File System Debugger Launched Inside a Container

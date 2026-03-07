@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Persistence via a Windows Installer" prebuilt detection rule.
+description: 'Investigation guide for the "Persistence via a Windows Installer" prebuilt detection rule.'
 ---
 
 # Persistence via a Windows Installer

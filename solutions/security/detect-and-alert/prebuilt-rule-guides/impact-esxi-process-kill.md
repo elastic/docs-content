@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Termination of ESXI Process" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Termination of ESXI Process" prebuilt detection rule.'
 ---
 
 # Suspicious Termination of ESXI Process

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS SSM Command Document Created by Rare User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS SSM Command Document Created by Rare User" prebuilt detection rule.'
 ---
 
 # AWS SSM Command Document Created by Rare User
@@ -43,4 +43,3 @@ This rule identifies when an AWS Systems Manager (SSM) command document is creat
 ### Additional Information
 
 For further guidance on managing and securing AWS Systems Manager in your environment, refer to the [AWS SSM documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html) and AWS security best practices.
-

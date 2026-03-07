@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Privileged Container Creation with Host Directory Mount" prebuilt detection rule.
+description: 'Investigation guide for the "Privileged Container Creation with Host Directory Mount" prebuilt detection rule.'
 ---
 
 # Privileged Container Creation with Host Directory Mount

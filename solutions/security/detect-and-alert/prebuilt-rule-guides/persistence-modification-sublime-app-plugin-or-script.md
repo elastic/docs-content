@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Sublime Plugin or Application Script Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Sublime Plugin or Application Script Modification" prebuilt detection rule.'
 ---
 
 # Sublime Plugin or Application Script Modification

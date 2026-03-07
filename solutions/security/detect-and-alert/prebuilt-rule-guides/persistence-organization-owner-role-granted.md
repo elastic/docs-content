@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GitHub Owner Role Granted To User" prebuilt detection rule.
+description: 'Investigation guide for the "GitHub Owner Role Granted To User" prebuilt detection rule.'
 ---
 
 # GitHub Owner Role Granted To User

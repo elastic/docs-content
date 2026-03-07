@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GenAI Process Accessing Sensitive Files" prebuilt detection rule.
+description: 'Investigation guide for the "GenAI Process Accessing Sensitive Files" prebuilt detection rule.'
 ---
 
 # GenAI Process Accessing Sensitive Files
@@ -39,4 +39,3 @@ This rule detects GenAI tools accessing credential files, SSH keys, browser data
 - Review, rotate, and revoke any API keys, tokens, or credentials that may have been exposed or used by the GenAI tool.
 - Investigate the document access patterns to determine the scope of potential data exfiltration.
 - Update security policies to restrict or monitor GenAI tool usage in the environment, especially for access to sensitive files.
-

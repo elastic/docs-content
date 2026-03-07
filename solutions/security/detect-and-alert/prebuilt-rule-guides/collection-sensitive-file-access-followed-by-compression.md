@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Sensitive File Access followed by Compression" prebuilt detection rule.
+description: 'Investigation guide for the "Sensitive File Access followed by Compression" prebuilt detection rule.'
 ---
 
 # Sensitive File Access followed by Compression
@@ -46,4 +46,3 @@ Data exfiltration is a critical phase of many attack campaigns where threat acto
 - Perform a forensic analysis of the system to identify the initial access vector and any persistence mechanisms.
 - Review network logs and proxy data to determine if any data was successfully exfiltrated prior to detection.
 - Escalate to the incident response team for further investigation if the activity appears to be part of a coordinated attack campaign.
-

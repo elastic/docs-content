@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Linux Credential Dumping via Proc Filesystem" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Linux Credential Dumping via Proc Filesystem" prebuilt detection rule.'
 ---
 
 # Potential Linux Credential Dumping via Proc Filesystem

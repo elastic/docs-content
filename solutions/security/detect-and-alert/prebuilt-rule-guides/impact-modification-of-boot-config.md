@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Modification of Boot Configuration" prebuilt detection rule.
+description: 'Investigation guide for the "Modification of Boot Configuration" prebuilt detection rule.'
 ---
 
 # Modification of Boot Configuration
@@ -49,4 +49,3 @@ These are common steps in destructive attacks by adversaries leveraging ransomwa
 - If any other destructive action was identified on the host, it is recommended to prioritize the investigation and look for ransomware preparation and execution activities.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

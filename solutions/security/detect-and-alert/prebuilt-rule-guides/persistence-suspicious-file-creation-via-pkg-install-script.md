@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious File Creation via Pkg Install Script" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious File Creation via Pkg Install Script" prebuilt detection rule.'
 ---
 
 # Suspicious File Creation via Pkg Install Script
@@ -47,4 +47,3 @@ macOS installer packages (.pkg) can include pre-install and post-install scripts
 - Report the malicious package to Apple at reportaproblem.apple.com to request notarization revocation.
 - Check other systems that may have installed the same package and remediate accordingly.
 - Review endpoint security policies to prevent future execution of unsigned or revoked installer packages.
-

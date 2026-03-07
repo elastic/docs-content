@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Protection - Risk Detection - User Risk" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Protection - Risk Detection - User Risk" prebuilt detection rule.'
 ---
 
 # Entra ID Protection - Risk Detection - User Risk
@@ -38,4 +38,3 @@ This rule detects user risk detection events via Microsoft Entra ID Protection. 
 - Implement sign-in risk policies in Entra ID Protection to automatically respond to risk events, such as requiring multi-factor authentication or blocking sign-ins from risky locations.
 - Ensure multi-factor authentication is enabled for all user accounts to provide an additional layer of security against compromised accounts.
 - Consider using high risk detections and conditional access evaluations to enforce stricter security measures for accounts or enable access revocation.
-

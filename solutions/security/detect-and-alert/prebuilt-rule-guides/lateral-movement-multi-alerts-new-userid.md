@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Lateral Movement Alerts from a Newly Observed User" prebuilt detection rule.
+description: 'Investigation guide for the "Lateral Movement Alerts from a Newly Observed User" prebuilt detection rule.'
 ---
 
 # Lateral Movement Alerts from a Newly Observed User

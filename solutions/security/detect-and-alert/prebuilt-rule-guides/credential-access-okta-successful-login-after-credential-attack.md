@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta Successful Login After Credential Attack" prebuilt detection rule.
+description: 'Investigation guide for the "Okta Successful Login After Credential Attack" prebuilt detection rule.'
 ---
 
 # Okta Successful Login After Credential Attack
@@ -36,4 +36,3 @@ This rule correlates credential attack alerts with subsequent successful authent
 - Block the source IP at the network perimeter.
 - Review the user's recent activity for signs of lateral movement or data access.
 - Check for persistence mechanisms such as new OAuth apps, API tokens, or enrolled devices.
-

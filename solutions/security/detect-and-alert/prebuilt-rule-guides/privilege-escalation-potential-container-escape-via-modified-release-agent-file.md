@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential release_agent Container Escape Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Potential release_agent Container Escape Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Potential release_agent Container Escape Detected via Defend for Containers

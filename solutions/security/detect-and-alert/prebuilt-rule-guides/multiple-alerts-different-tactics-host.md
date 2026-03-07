@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Alerts in Different ATT&CK Tactics on a Single Host" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Alerts in Different ATT&CK Tactics on a Single Host" prebuilt detection rule.'
 ---
 
 # Multiple Alerts in Different ATT&CK Tactics on a Single Host

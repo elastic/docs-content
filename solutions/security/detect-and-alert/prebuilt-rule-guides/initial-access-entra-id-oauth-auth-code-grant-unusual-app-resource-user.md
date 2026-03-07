@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID OAuth Authorization Code Grant for Unusual User, App, and Resource" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID OAuth Authorization Code Grant for Unusual User, App, and Resource" prebuilt detection rule.'
 ---
 
 # Entra ID OAuth Authorization Code Grant for Unusual User, App, and Resource
@@ -45,4 +45,3 @@ The rule is particularly effective at catching attacks where adversaries use sto
 - Block the source IP if confirmed malicious.
 - Implement Conditional Access policies to restrict OAuth flows for these applications to compliant devices.
 - Educate users about OAuth phishing and the risks of pasting authorization codes.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Local Scheduled Task Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Local Scheduled Task Creation" prebuilt detection rule.'
 ---
 
 # Local Scheduled Task Creation

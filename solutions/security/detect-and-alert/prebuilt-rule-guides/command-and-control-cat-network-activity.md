@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network Activity Detected via cat" prebuilt detection rule.
+description: 'Investigation guide for the "Network Activity Detected via cat" prebuilt detection rule.'
 ---
 
 # Network Activity Detected via cat
@@ -68,4 +68,3 @@ This rule looks for a sequence of a `cat` execution event followed by a network 
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Leverage the incident response data and logging to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

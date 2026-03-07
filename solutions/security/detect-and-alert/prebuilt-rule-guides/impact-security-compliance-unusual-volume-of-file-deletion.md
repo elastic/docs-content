@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Deprecated - M365 Security Compliance Unusual Volume of File Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "Deprecated - M365 Security Compliance Unusual Volume of File Deletion" prebuilt detection rule.'
 ---
 
 # Deprecated - M365 Security Compliance Unusual Volume of File Deletion
@@ -50,4 +50,3 @@ Microsoft 365's cloud environment facilitates file storage and collaboration, bu
 ## Setup
 
 The Office 365 Logs Fleet integration, Filebeat module, or similarly structured data is required to be compatible with this rule.
-

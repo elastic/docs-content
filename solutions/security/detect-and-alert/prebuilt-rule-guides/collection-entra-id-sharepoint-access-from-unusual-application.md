@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Sharepoint or OneDrive Accessed by Unusual Client" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Sharepoint or OneDrive Accessed by Unusual Client" prebuilt detection rule.'
 ---
 
 # Entra ID Sharepoint or OneDrive Accessed by Unusual Client
@@ -50,5 +50,3 @@ This rule identifies when an application accesses SharePoint Online or OneDrive 
   - Enforce device compliance and MFA for application access
 - Tenant-Wide Review: Audit all application consents across the tenant to identify other potentially malicious applications that may have gained access through similar campaigns
 - Monitor for Campaign Patterns: Check if the same malicious application targeted multiple users, indicating an organized phishing campaign. Coordinate with email security teams to identify and block phishing emails used in the campaign.
-
-

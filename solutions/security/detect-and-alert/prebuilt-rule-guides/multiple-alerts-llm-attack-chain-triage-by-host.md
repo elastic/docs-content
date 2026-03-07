@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "LLM-Based Attack Chain Triage by Host" prebuilt detection rule.
+description: 'Investigation guide for the "LLM-Based Attack Chain Triage by Host" prebuilt detection rule.'
 ---
 
 # LLM-Based Attack Chain Triage by Host
@@ -45,4 +45,3 @@ patterns, unusual process chains, suspicious file operations, DNS queries to mal
 - Extract IOCs from command lines (domains, IPs, file hashes, paths) and search across the environment.
 - Terminate suspicious processes and remove any dropped files or persistence mechanisms.
 - If the attack chain shows lateral movement indicators, expand investigation to connected hosts.
-

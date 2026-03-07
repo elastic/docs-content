@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS S3 Bucket Server Access Logging Disabled" prebuilt detection rule.
+description: 'Investigation guide for the "AWS S3 Bucket Server Access Logging Disabled" prebuilt detection rule.'
 ---
 
 # AWS S3 Bucket Server Access Logging Disabled
@@ -67,5 +67,4 @@ Because detailed request logs are central to tracking object access, modificatio
 
 - AWS documentation on [S3 Server Access Logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html)  
 - [AWS Incident Response Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/tree/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks)  
-- [AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)  
-
+- [AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)

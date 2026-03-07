@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Source IP for Okta Privileged Operations Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Source IP for Okta Privileged Operations Detected" prebuilt detection rule.'
 ---
 
 # Unusual Source IP for Okta Privileged Operations Detected

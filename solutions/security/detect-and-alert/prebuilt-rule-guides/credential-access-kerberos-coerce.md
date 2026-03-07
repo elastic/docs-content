@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Kerberos Coercion via DNS-Based SPN Spoofing" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Kerberos Coercion via DNS-Based SPN Spoofing" prebuilt detection rule.'
 ---
 
 # Potential Kerberos Coercion via DNS-Based SPN Spoofing
@@ -38,4 +38,3 @@ description: Investigation guide for the "Potential Kerberos Coercion via DNS-Ba
 - Temporarily isolate involved systems if signs of compromise or lateral movement are detected, especially if the record was successfully resolved and used for coercion.
 - Monitor network traffic for signs of Man-in-the-Middle activity, focusing on unusual DNS queries or redirections.
 - Escalate the incident to the security operations center (SOC) for further investigation and to assess the potential impact on other systems.
-

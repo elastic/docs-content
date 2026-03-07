@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Remote File Extension" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Remote File Extension" prebuilt detection rule.'
 ---
 
 # Unusual Remote File Extension

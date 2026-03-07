@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Suspicious Self-Subject Review via Unusual User Agent" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Suspicious Self-Subject Review via Unusual User Agent" prebuilt detection rule.'
 ---
 
 # Kubernetes Suspicious Self-Subject Review via Unusual User Agent

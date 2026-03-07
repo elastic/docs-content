@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempt to Install Kali Linux via WSL" prebuilt detection rule.
+description: 'Investigation guide for the "Attempt to Install Kali Linux via WSL" prebuilt detection rule.'
 ---
 
 # Attempt to Install Kali Linux via WSL

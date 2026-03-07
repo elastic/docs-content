@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "High Command Line Entropy Detected for Privileged Commands" prebuilt detection rule.
+description: 'Investigation guide for the "High Command Line Entropy Detected for Privileged Commands" prebuilt detection rule.'
 ---
 
 # High Command Line Entropy Detected for Privileged Commands

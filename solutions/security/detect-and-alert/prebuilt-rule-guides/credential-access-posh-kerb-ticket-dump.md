@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Kerberos Ticket Dump" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Kerberos Ticket Dump" prebuilt detection rule.'
 ---
 
 # PowerShell Kerberos Ticket Dump
@@ -83,4 +83,3 @@ This alert identifies PowerShell script block content referencing the LSA Kerber
 - Post-incident hardening:
   - Ensure PowerShell script block logging coverage and retention support reconstruction and historical scoping.
   - Review administrative scripting controls and monitoring for unauthorized use of authentication-package APIs in PowerShell, and align execution permissions with least-privilege practices.
-

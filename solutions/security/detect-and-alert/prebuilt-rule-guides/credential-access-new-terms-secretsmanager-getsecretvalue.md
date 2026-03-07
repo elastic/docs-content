@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "First Time Seen AWS Secret Value Accessed in Secrets Manager" prebuilt detection rule.
+description: 'Investigation guide for the "First Time Seen AWS Secret Value Accessed in Secrets Manager" prebuilt detection rule.'
 ---
 
 # First Time Seen AWS Secret Value Accessed in Secrets Manager
@@ -58,4 +58,3 @@ This rule looks for the retrieval of credentials from Secrets Manager using `Get
 - Take the actions needed to return affected systems, data, or services to their normal operational levels.
 - Identify the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

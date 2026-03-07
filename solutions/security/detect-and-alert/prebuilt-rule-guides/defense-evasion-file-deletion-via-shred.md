@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "File Deletion via Shred" prebuilt detection rule.
+description: 'Investigation guide for the "File Deletion via Shred" prebuilt detection rule.'
 ---
 
 # File Deletion via Shred

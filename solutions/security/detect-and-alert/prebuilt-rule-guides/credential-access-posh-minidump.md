@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell MiniDump Script" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell MiniDump Script" prebuilt detection rule.'
 ---
 
 # PowerShell MiniDump Script
@@ -93,4 +93,3 @@ This alert identifies PowerShell script block content that references MiniDumpWr
 - Preventive and hardening actions:
   - Restrict who can perform diagnostic dumping and where dumps can be written.
   - Maintain and monitor PowerShell script block logging coverage and retention to support script reconstruction and scoping during investigations.
-

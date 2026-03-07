@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "External IP Address Discovery via Curl" prebuilt detection rule.
+description: 'Investigation guide for the "External IP Address Discovery via Curl" prebuilt detection rule.'
 ---
 
 # External IP Address Discovery via Curl
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects macOS processes launching curl (or nscurl) to query common pub
 - Reset exposed credentials and invalidate active sessions if the same parent process also accessed browsers, keychain, SSH keys, or configuration files shortly before/after the lookup, and rotate VPN/API tokens used on the host.  
 - Reimage or restore the endpoint from a known-good snapshot if additional unknown binaries, repeated external-IP lookups, or unexpected outbound connections are observed after cleanup, then validate with a follow-up scan and a clean process baseline.  
 - Escalate to IR leadership immediately if the external-IP lookup is followed by downloads/execution, persistence creation, or connections to newly registered/rare domains, and harden by restricting curl execution for non-admin contexts and tightening macOS app execution controls (Gatekeeper/notarization).
-

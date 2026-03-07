@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Microsoft Graph Request User Impersonation by Unusual Client" prebuilt detection rule.
+description: 'Investigation guide for the "Microsoft Graph Request User Impersonation by Unusual Client" prebuilt detection rule.'
 ---
 
 # Microsoft Graph Request User Impersonation by Unusual Client
@@ -49,4 +49,3 @@ Adversaries frequently exploit legitimate Microsoft or third-party application I
 - Restrict user consent for third-party apps and enforce admin approval workflows.
 - Monitor usage of new or uncommon `app_id` values across your tenant.
 - Provide user education on OAuth phishing tactics and reporting suspicious prompts.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Rapid7 Threat Command CVEs Correlation" prebuilt detection rule.
+description: 'Investigation guide for the "Rapid7 Threat Command CVEs Correlation" prebuilt detection rule.'
 ---
 
 # Rapid7 Threat Command CVEs Correlation
@@ -30,4 +30,3 @@ Additional investigation can be done by reviewing the source of the activity and
 - Investigation can be validated and reviewed based on the data that was matched and by viewing the source of that activity.
 - Consider the history of the vulnerability that was matched. Has it happened before? Is it happening on multiple machines? These kinds of questions can help understand if the activity is related to legitimate behavior.
 - Consider the user and their role within the company: is this something related to their job or work function?
-

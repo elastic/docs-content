@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious AWS S3 Connection via Script Interpreter" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious AWS S3 Connection via Script Interpreter" prebuilt detection rule.'
 ---
 
 # Suspicious AWS S3 Connection via Script Interpreter
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags macOS script interpreters (AppleScript, Node.js, Python) that re
 - Reset and revoke credentials exposed on the host by rotating the user’s passwords/tokens, removing any AWS keys found in environment variables/config files (e.g., CLI config, application secrets), and invalidating active sessions associated with the user or host.
 - Recover by reimaging or restoring the endpoint from a known-good baseline if payload execution or system modification is confirmed, then reintroduce it to the network only after validating no recurring connections to the same S3/CloudFront endpoints.
 - Escalate to incident response and cloud security if multiple hosts show the same destination domain or bucket, the script performs uploads or handles sensitive files, or you identify AWS credentials, data staging, or active command polling indicative of C2 or exfiltration.
-

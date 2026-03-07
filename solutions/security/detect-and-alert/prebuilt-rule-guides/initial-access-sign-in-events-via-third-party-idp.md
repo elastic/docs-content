@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta Sign-In Events via Third-Party IdP" prebuilt detection rule.
+description: 'Investigation guide for the "Okta Sign-In Events via Third-Party IdP" prebuilt detection rule.'
 ---
 
 # Okta Sign-In Events via Third-Party IdP
@@ -50,4 +50,3 @@ Adversaries may attempt to add an unauthorized IdP to an Okta tenant to gain acc
 ## Setup
 
 The Okta Fleet integration, Filebeat module, or similarly structured data is required to be compatible with this rule.
-

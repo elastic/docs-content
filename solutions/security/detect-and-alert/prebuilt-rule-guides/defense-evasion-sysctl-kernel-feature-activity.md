@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Kernel Feature Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Kernel Feature Activity" prebuilt detection rule.'
 ---
 
 # Suspicious Kernel Feature Activity
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Kernel features in Linux systems are critical for maintaining security and stabi
 - Implement additional monitoring and logging for kernel feature modifications to detect similar activities in the future, ensuring alerts are configured for immediate response.
 - Escalate the incident to the security operations center (SOC) or relevant security team for further investigation and correlation with other potential threats across the network.
 - Review and update security policies and configurations to prevent unauthorized kernel modifications, including enforcing stricter access controls and auditing procedures.
-

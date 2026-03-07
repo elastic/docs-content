@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Storage Account Deletions by User" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Storage Account Deletions by User" prebuilt detection rule.'
 ---
 
 # Azure Storage Account Deletions by User
@@ -48,4 +48,3 @@ Azure Storage Accounts are critical infrastructure components that store applica
 - Enable Azure Activity Log alerts to notify security teams immediately when storage accounts are deleted.
 - Escalate the incident to the security operations center (SOC) or incident response team for investigation of potential broader compromise.
 - Document the incident and update security policies, playbooks, and procedures to prevent similar incidents in the future.
-

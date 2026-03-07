@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Shell via Wildcard Injection Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Shell via Wildcard Injection Detected" prebuilt detection rule.'
 ---
 
 # Potential Shell via Wildcard Injection Detected

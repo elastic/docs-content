@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Executable File Download via Wget" prebuilt detection rule.
+description: 'Investigation guide for the "Executable File Download via Wget" prebuilt detection rule.'
 ---
 
 # Executable File Download via Wget
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects wget pulling down a Mach-O executable and writing it into comm
 - Block the observed download URL/domain/IP at egress controls and add allowlisting controls for approved internal distribution sources to reduce future misuse of `wget` for tool transfer.  
 - Escalate to incident response if the staged Mach-O is executed, unsigned/ad-hoc signed, establishes outbound connections to unapproved infrastructure, or the same hash/URL is found on multiple endpoints.  
 - Harden endpoints by restricting `wget` usage where possible, enforcing Gatekeeper/notarization and least-privilege execution, and adding monitoring/controls for executable writes and executions from world-writable directories.
-

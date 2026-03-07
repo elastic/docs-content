@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Microsoft Diagnostics Wizard Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Microsoft Diagnostics Wizard Execution" prebuilt detection rule.'
 ---
 
 # Suspicious Microsoft Diagnostics Wizard Execution

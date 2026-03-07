@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "CyberArk Privileged Access Security Recommended Monitor" prebuilt detection rule.
+description: 'Investigation guide for the "CyberArk Privileged Access Security Recommended Monitor" prebuilt detection rule.'
 ---
 
 # CyberArk Privileged Access Security Recommended Monitor
@@ -19,4 +19,3 @@ The CyberArk Privileged Access Security (PAS) Fleet integration, Filebeat module
 
 This is a promotion rule for CyberArk events, which the vendor recommends should be monitored.
 Consult vendor documentation on interpreting specific events.
-

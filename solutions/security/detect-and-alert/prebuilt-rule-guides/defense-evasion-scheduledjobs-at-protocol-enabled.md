@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Scheduled Tasks AT Command Enabled" prebuilt detection rule.
+description: 'Investigation guide for the "Scheduled Tasks AT Command Enabled" prebuilt detection rule.'
 ---
 
 # Scheduled Tasks AT Command Enabled

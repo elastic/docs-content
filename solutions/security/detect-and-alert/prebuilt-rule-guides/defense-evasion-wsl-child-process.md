@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution via Windows Subsystem for Linux" prebuilt detection rule.
+description: 'Investigation guide for the "Execution via Windows Subsystem for Linux" prebuilt detection rule.'
 ---
 
 # Execution via Windows Subsystem for Linux

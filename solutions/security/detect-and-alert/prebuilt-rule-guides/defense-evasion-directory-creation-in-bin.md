@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Directory Creation in /bin directory" prebuilt detection rule.
+description: 'Investigation guide for the "Directory Creation in /bin directory" prebuilt detection rule.'
 ---
 
 # Directory Creation in /bin directory

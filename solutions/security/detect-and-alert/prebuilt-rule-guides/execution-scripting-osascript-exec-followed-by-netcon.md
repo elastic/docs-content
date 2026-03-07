@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Apple Script Execution followed by Network Connection" prebuilt detection rule.
+description: 'Investigation guide for the "Apple Script Execution followed by Network Connection" prebuilt detection rule.'
 ---
 
 # Apple Script Execution followed by Network Connection

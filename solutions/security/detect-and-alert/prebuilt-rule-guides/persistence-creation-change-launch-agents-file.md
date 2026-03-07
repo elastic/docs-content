@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Launch Service Creation and Immediate Loading" prebuilt detection rule.
+description: 'Investigation guide for the "Launch Service Creation and Immediate Loading" prebuilt detection rule.'
 ---
 
 # Launch Service Creation and Immediate Loading

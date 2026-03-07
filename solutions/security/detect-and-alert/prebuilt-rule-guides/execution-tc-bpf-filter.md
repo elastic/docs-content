@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "BPF filter applied using TC" prebuilt detection rule.
+description: 'Investigation guide for the "BPF filter applied using TC" prebuilt detection rule.'
 ---
 
 # BPF filter applied using TC

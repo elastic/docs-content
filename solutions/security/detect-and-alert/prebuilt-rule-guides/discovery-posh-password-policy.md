@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Script with Password Policy Discovery Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Script with Password Policy Discovery Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Script with Password Policy Discovery Capabilities
@@ -72,4 +72,3 @@ This alert identifies PowerShell script block content consistent with querying A
 - If the activity is confirmed benign:
   - Document the approved use case (expected accounts, hosts, and script locations) to speed future triage.
   - Apply least-privilege controls to limit where and by whom directory policy discovery can be performed while maintaining audit visibility.
-

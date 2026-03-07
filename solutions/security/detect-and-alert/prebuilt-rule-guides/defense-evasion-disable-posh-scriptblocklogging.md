@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Script Block Logging Disabled" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Script Block Logging Disabled" prebuilt detection rule.'
 ---
 
 # PowerShell Script Block Logging Disabled
@@ -84,4 +84,3 @@ This alert indicates a registry modification that set `EnableScriptBlockLogging`
   - Investigate potential account compromise for the associated user and take appropriate actions (credential reset and access review), prioritizing privileged accounts.
   - Hunt for additional endpoints impacted by the same user or process and remediate as needed.
   - Apply least-privilege controls to limit who can modify logging-related registry settings and improve alerting for additional defense impairment behaviors observed during the investigation window.
-

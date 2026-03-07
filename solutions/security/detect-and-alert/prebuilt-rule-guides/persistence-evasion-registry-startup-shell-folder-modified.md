@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Startup Shell Folder Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Startup Shell Folder Modification" prebuilt detection rule.'
 ---
 
 # Suspicious Startup Shell Folder Modification
@@ -62,4 +62,3 @@ Techniques used within malware and by adversaries often leverage the Windows reg
   - Consider improvements to the security awareness program.
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

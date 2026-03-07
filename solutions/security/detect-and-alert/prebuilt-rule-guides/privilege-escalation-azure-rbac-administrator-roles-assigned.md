@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure RBAC Built-In Administrator Roles Assigned" prebuilt detection rule.
+description: 'Investigation guide for the "Azure RBAC Built-In Administrator Roles Assigned" prebuilt detection rule.'
 ---
 
 # Azure RBAC Built-In Administrator Roles Assigned
@@ -53,4 +53,3 @@ This rule identifies when a user is assigned a built-in administrator role in Az
 - Strengthen posture:
   - Require MFA and approval for all privilege escalation actions.
   - Consider enabling JIT (Just-in-Time) access with expiration.
-

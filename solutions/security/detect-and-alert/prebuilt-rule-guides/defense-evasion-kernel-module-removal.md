@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kernel Module Removal" prebuilt detection rule.
+description: 'Investigation guide for the "Kernel Module Removal" prebuilt detection rule.'
 ---
 
 # Kernel Module Removal

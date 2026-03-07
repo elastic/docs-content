@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Compute Snapshot Deletions by User" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Compute Snapshot Deletions by User" prebuilt detection rule.'
 ---
 
 # Azure Compute Snapshot Deletions by User
@@ -52,4 +52,3 @@ Azure disk snapshots are critical backup and recovery resources that enable orga
 - Review and enhance backup strategies to ensure redundant backup mechanisms exist beyond Azure snapshots, including geo-redundant backups and offline copies.
 - Escalate the incident to the security operations center (SOC) or incident response team for investigation of potential ransomware preparation or broader compromise.
 - Document the incident and update security policies, playbooks, and procedures to prevent similar incidents in the future.
-

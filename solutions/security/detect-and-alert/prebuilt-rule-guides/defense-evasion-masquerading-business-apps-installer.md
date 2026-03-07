@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Masquerading as Business App Installer" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Masquerading as Business App Installer" prebuilt detection rule.'
 ---
 
 # Potential Masquerading as Business App Installer

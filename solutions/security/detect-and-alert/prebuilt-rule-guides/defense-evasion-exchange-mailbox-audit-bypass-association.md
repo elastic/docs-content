@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Exchange Mailbox Audit Logging Bypass Added" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Exchange Mailbox Audit Logging Bypass Added" prebuilt detection rule.'
 ---
 
 # M365 Exchange Mailbox Audit Logging Bypass Added

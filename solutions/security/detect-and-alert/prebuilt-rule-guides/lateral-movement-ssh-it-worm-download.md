@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential THC Tool Downloaded" prebuilt detection rule.
+description: 'Investigation guide for the "Potential THC Tool Downloaded" prebuilt detection rule.'
 ---
 
 # Potential THC Tool Downloaded

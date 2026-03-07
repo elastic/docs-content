@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Insecure AWS EC2 VPC Security Group Ingress Rule Added" prebuilt detection rule.
+description: 'Investigation guide for the "Insecure AWS EC2 VPC Security Group Ingress Rule Added" prebuilt detection rule.'
 ---
 
 # Insecure AWS EC2 VPC Security Group Ingress Rule Added
@@ -42,5 +42,3 @@ This rule detects the addition of ingress rules to a VPC security group that all
 ### Additional Information:
 
 For further guidance on managing security group rules and securing AWS environments, refer to the [Amazon VPC Security Groups documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) and AWS best practices for security.
-
-

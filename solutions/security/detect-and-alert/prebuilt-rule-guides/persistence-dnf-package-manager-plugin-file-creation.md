@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "DNF Package Manager Plugin File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "DNF Package Manager Plugin File Creation" prebuilt detection rule.'
 ---
 
 # DNF Package Manager Plugin File Creation

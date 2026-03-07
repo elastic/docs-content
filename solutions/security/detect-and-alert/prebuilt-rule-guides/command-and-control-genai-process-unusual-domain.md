@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GenAI Process Connection to Unusual Domain" prebuilt detection rule.
+description: 'Investigation guide for the "GenAI Process Connection to Unusual Domain" prebuilt detection rule.'
 ---
 
 # GenAI Process Connection to Unusual Domain
@@ -42,4 +42,3 @@ GenAI tools with network access can be weaponized to contact attacker infrastruc
 - Investigate any data that may have been sent to the suspicious domain and assess the potential for data exfiltration.
 - Review and rotate any API keys, tokens, or credentials used by the GenAI tool.
 - Update detection rules to monitor the identified domain across all hosts in the environment.
-

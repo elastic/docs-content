@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Privilege Escalation via GDB CAP_SYS_PTRACE" prebuilt detection rule.
+description: 'Investigation guide for the "Privilege Escalation via GDB CAP_SYS_PTRACE" prebuilt detection rule.'
 ---
 
 # Privilege Escalation via GDB CAP_SYS_PTRACE

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "ScreenConnect Server Spawning Suspicious Processes" prebuilt detection rule.
+description: 'Investigation guide for the "ScreenConnect Server Spawning Suspicious Processes" prebuilt detection rule.'
 ---
 
 # ScreenConnect Server Spawning Suspicious Processes

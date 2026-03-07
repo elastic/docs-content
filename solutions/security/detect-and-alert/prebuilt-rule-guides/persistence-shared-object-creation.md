@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Shared Object Created by Previously Unknown Process" prebuilt detection rule.
+description: 'Investigation guide for the "Shared Object Created by Previously Unknown Process" prebuilt detection rule.'
 ---
 
 # Shared Object Created by Previously Unknown Process
@@ -72,4 +72,3 @@ This rule monitors the creation of shared object files by previously unknown pro
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Leverage the incident response data and logging to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

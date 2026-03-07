@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Privilege Escalation via CAP_SETUID/SETGID Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "Privilege Escalation via CAP_SETUID/SETGID Capabilities" prebuilt detection rule.'
 ---
 
 # Privilege Escalation via CAP_SETUID/SETGID Capabilities

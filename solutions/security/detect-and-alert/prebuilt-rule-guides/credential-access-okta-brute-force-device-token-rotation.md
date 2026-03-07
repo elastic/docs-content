@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Okta Brute Force (Device Token Rotation)" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Okta Brute Force (Device Token Rotation)" prebuilt detection rule.'
 ---
 
 # Potential Okta Brute Force (Device Token Rotation)
@@ -36,4 +36,3 @@ This rule identifies excessive unique device token hashes generated for a single
 - Review and potentially reset MFA for the targeted account.
 - Monitor for any successful authentication that may indicate compromise.
 - Contact the user to verify if they experienced legitimate login issues.
-

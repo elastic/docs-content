@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "ESXI Timestomping using Touch Command" prebuilt detection rule.
+description: 'Investigation guide for the "ESXI Timestomping using Touch Command" prebuilt detection rule.'
 ---
 
 # ESXI Timestomping using Touch Command

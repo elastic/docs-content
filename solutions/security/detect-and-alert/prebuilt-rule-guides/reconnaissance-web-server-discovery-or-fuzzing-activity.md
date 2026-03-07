@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Web Server Discovery or Fuzzing Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Web Server Discovery or Fuzzing Activity" prebuilt detection rule.'
 ---
 
 # Web Server Discovery or Fuzzing Activity
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags a single origin generating a rapid burst of GET requests that pr
 - Review the requested path list to identify any 2xx or 401 hits and remediate exposures such as accessible /.env, /.git, /admin interfaces, backup archives, or installer scripts by removing files, disabling endpoints, and rotating secrets.
 - Escalate to incident response if enumeration persists after blocking, pivots to POSTs or credential attempts, originates from rotating IPs (Tor/VPN/residential), or produces 2xx on sensitive endpoints despite WAF rules.
 - Harden the web tier by enabling per-IP rate limiting and bot challenges, turning off directory listing and default app endpoints, blocking patterns like /.git/, /.env, and /backup.zip at the WAF, and restricting origin access to CDN egress only.
-

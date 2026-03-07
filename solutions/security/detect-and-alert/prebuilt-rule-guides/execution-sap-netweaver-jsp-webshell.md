@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential SAP NetWeaver WebShell Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Potential SAP NetWeaver WebShell Creation" prebuilt detection rule.'
 ---
 
 # Potential SAP NetWeaver WebShell Creation

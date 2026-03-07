@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "FortiGate Administrator Account Creation from Unusual Source" prebuilt detection rule.
+description: 'Investigation guide for the "FortiGate Administrator Account Creation from Unusual Source" prebuilt detection rule.'
 ---
 
 # FortiGate Administrator Account Creation from Unusual Source

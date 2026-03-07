@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Persistence via DirectoryService Plugin Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Persistence via DirectoryService Plugin Modification" prebuilt detection rule.'
 ---
 
 # Persistence via DirectoryService Plugin Modification

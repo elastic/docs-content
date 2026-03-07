@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious HTML File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious HTML File Creation" prebuilt detection rule.'
 ---
 
 # Suspicious HTML File Creation

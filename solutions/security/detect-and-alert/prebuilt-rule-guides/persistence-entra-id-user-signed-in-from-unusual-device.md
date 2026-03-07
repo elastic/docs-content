@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID User Sign-in with Unusual Non-Managed Device" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID User Sign-in with Unusual Non-Managed Device" prebuilt detection rule.'
 ---
 
 # Entra ID User Sign-in with Unusual Non-Managed Device
@@ -40,4 +40,3 @@ This rule detects when a Microsoft Entra ID user signs in from a device that is 
 - Review the conditional access policies in place to ensure they are sufficient to prevent unauthorized access to sensitive resources.
 - Identify the registered Entra ID device by reviewing `azure.signinlogs.properties.device_detail.display_name` and confirm it is expected for the user or organization. If it is not expected, consider removing the device registration.
 - Consider adding exceptions for verified devices that are known to be used by the user to reduce false-positives.
-

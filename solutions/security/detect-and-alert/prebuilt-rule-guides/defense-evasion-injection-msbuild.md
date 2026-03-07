@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Process Injection by the Microsoft Build Engine" prebuilt detection rule.
+description: 'Investigation guide for the "Process Injection by the Microsoft Build Engine" prebuilt detection rule.'
 ---
 
 # Process Injection by the Microsoft Build Engine

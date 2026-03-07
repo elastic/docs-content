@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "File Permission Modification in Writable Directory" prebuilt detection rule.
+description: 'Investigation guide for the "File Permission Modification in Writable Directory" prebuilt detection rule.'
 ---
 
 # File Permission Modification in Writable Directory

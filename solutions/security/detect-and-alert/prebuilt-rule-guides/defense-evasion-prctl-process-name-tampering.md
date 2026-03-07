@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Process Name Stomping with Prctl" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Process Name Stomping with Prctl" prebuilt detection rule.'
 ---
 
 # Potential Process Name Stomping with Prctl

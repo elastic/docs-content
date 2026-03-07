@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Interactive Terminal Spawned via Python" prebuilt detection rule.
+description: 'Investigation guide for the "Interactive Terminal Spawned via Python" prebuilt detection rule.'
 ---
 
 # Interactive Terminal Spawned via Python

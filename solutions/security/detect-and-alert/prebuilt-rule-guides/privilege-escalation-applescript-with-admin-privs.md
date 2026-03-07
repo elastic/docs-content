@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Apple Scripting Execution with Administrator Privileges" prebuilt detection rule.
+description: 'Investigation guide for the "Apple Scripting Execution with Administrator Privileges" prebuilt detection rule.'
 ---
 
 # Apple Scripting Execution with Administrator Privileges

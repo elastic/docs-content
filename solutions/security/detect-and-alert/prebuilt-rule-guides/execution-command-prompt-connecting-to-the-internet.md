@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Command Prompt Network Connection" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Command Prompt Network Connection" prebuilt detection rule.'
 ---
 
 # Suspicious Command Prompt Network Connection
@@ -84,4 +84,3 @@ A benign determination is more likely when the combination of `process.parent.na
 - If the activity is confirmed benign:
   - Document the expected parent process, command-line pattern, and destinations.
   - Consider adding a narrowly scoped exception using stable identifiers and constrained conditions (for example, specific `process.command_line` patterns and known destinations) to reduce recurring noise.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Discovery Signal Alert with Unusual Process Command Line" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Discovery Signal Alert with Unusual Process Command Line" prebuilt detection rule.'
 ---
 
 # Unusual Discovery Signal Alert with Unusual Process Command Line

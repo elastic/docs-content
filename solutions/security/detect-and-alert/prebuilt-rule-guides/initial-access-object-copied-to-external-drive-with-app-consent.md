@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google Workspace Object Copied to External Drive with App Consent" prebuilt detection rule.
+description: 'Investigation guide for the "Google Workspace Object Copied to External Drive with App Consent" prebuilt detection rule.'
 ---
 
 # Google Workspace Object Copied to External Drive with App Consent

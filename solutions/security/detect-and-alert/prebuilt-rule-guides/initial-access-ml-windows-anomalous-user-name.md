@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Windows Username" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Windows Username" prebuilt detection rule.'
 ---
 
 # Unusual Windows Username

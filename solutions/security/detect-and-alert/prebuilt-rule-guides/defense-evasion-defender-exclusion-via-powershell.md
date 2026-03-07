@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Windows Defender Exclusions Added via PowerShell" prebuilt detection rule.
+description: 'Investigation guide for the "Windows Defender Exclusions Added via PowerShell" prebuilt detection rule.'
 ---
 
 # Windows Defender Exclusions Added via PowerShell
@@ -57,4 +57,3 @@ Microsoft Windows Defender is an antivirus product built into Microsoft Windows.
 - Exclusion lists for antimalware capabilities should always be routinely monitored for review.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

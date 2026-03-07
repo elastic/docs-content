@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Linux User Account Credential Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Linux User Account Credential Modification" prebuilt detection rule.'
 ---
 
 # Linux User Account Credential Modification
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ In Linux environments, user account credentials are crucial for system access an
 - Restore any affected user accounts to their previous state using backups or system snapshots, if available.
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems are affected.
 - Implement additional monitoring and alerting for similar command patterns to enhance detection and prevent recurrence of this threat.
-

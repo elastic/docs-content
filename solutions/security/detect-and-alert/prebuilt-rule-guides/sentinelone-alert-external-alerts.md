@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SentinelOne Alert External Alerts" prebuilt detection rule.
+description: 'Investigation guide for the "SentinelOne Alert External Alerts" prebuilt detection rule.'
 ---
 
 # SentinelOne Alert External Alerts
@@ -42,4 +42,3 @@ SentinelOne is a cybersecurity platform that provides endpoint protection by det
 - Conduct a thorough scan of the network to identify any additional endpoints that may have been compromised or are exhibiting similar behavior.
 - Document the incident and escalate to the appropriate security team or management if the threat is part of a larger attack campaign or if additional resources are needed for remediation.
 - Review and update endpoint protection policies and configurations to enhance detection and prevention capabilities against similar threats in the future.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempt to Delete an Okta Policy Rule" prebuilt detection rule.
+description: 'Investigation guide for the "Attempt to Delete an Okta Policy Rule" prebuilt detection rule.'
 ---
 
 # Attempt to Delete an Okta Policy Rule

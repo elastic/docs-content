@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious SeIncreaseBasePriorityPrivilege Use" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious SeIncreaseBasePriorityPrivilege Use" prebuilt detection rule.'
 ---
 
 # Suspicious SeIncreaseBasePriorityPrivilege Use

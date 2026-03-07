@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Active Directory Replication Account Backdoor" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Active Directory Replication Account Backdoor" prebuilt detection rule.'
 ---
 
 # Potential Active Directory Replication Account Backdoor
@@ -62,4 +62,3 @@ Audit Policies >
 DS Access >
 Audit Directory Service Changes (Success,Failure)
 ```
-

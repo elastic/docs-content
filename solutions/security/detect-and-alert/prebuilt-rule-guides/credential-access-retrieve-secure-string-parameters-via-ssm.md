@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Systems Manager SecureString Parameter Request with Decryption Flag" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Systems Manager SecureString Parameter Request with Decryption Flag" prebuilt detection rule.'
 ---
 
 # AWS Systems Manager SecureString Parameter Request with Decryption Flag
@@ -44,4 +44,3 @@ Adversaries may target SecureStrings to retrieve sensitive information such as e
 ### Additional Information
 
 This rule focuses solely on SecureStrings in AWS Systems Manager (SSM) parameters. SecureStrings are encrypted using an AWS Key Management Service (KMS) key. When a user accesses a SecureString parameter, they can specify whether the parameter should be decrypted. If the user specifies that the parameter should be decrypted, the decrypted value is returned in the response.
-

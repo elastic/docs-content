@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Timestomp in Executable Files" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Timestomp in Executable Files" prebuilt detection rule.'
 ---
 
 # Potential Timestomp in Executable Files
@@ -62,4 +62,3 @@ This alert indicates that a process modified the creation timestamp of a file wi
 
 - If the activity is confirmed benign:
   - Document the legitimate software or workflow responsible for the timestamp change, including the expected `process.executable` and target paths, to support consistent triage and future tuning.
-

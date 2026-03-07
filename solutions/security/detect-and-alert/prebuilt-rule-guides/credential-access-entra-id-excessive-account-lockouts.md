@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Excessive Account Lockouts Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Excessive Account Lockouts Detected" prebuilt detection rule.'
 ---
 
 # Entra ID Excessive Account Lockouts Detected
@@ -51,4 +51,3 @@ This rule detects a high number of sign-in failures due to account lockouts (err
 - If legacy auth was used: create CA policy blocking legacy authentication.
 - If MFA wasn't required: review CA policy coverage for gaps.
 - Document affected users for credential reset and monitoring.
-

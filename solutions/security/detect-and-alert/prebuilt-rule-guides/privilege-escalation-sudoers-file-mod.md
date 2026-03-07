@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Sudoers File Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Sudoers File Activity" prebuilt detection rule.'
 ---
 
 # Sudoers File Activity

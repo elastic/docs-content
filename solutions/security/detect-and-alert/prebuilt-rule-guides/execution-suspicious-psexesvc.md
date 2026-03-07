@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Process Execution via Renamed PsExec Executable" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Process Execution via Renamed PsExec Executable" prebuilt detection rule.'
 ---
 
 # Suspicious Process Execution via Renamed PsExec Executable
@@ -41,4 +41,3 @@ This rule identifies instances where the PsExec service component is executed us
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Review the privileges assigned to the user to ensure that the least privilege principle is being followed.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

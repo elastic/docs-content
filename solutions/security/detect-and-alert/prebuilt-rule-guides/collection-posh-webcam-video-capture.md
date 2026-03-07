@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Script with Webcam Video Capture Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Script with Webcam Video Capture Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Script with Webcam Video Capture Capabilities
@@ -77,4 +77,3 @@ This alert indicates PowerShell script block content on a Windows host that refe
 - Post-incident actions:
   - Increase monitoring for similar PowerShell script block content on the scoped hosts and accounts to detect recurrence.
   - Review endpoint hardening and least-privilege controls for camera access and script execution where feasible.
-

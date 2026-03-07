@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SystemKey Access via Command Line" prebuilt detection rule.
+description: 'Investigation guide for the "SystemKey Access via Command Line" prebuilt detection rule.'
 ---
 
 # SystemKey Access via Command Line

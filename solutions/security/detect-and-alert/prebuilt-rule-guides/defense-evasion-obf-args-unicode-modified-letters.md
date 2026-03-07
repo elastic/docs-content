@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Command Obfuscation via Unicode Modifier Letters" prebuilt detection rule.
+description: 'Investigation guide for the "Command Obfuscation via Unicode Modifier Letters" prebuilt detection rule.'
 ---
 
 # Command Obfuscation via Unicode Modifier Letters
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -42,4 +42,3 @@ Adversaries sometimes replace ASCII characters with visually similar Unicode mod
 - Qurantine and submit samples to malware analysis; if confirmed malicious, remove and restore from known good backups.
 - Block and update indicators related to this activity (hashes, exact normalized command patterns, codepoint sequences, IPs/domains).
 - Run global hutning queries for same Unicode patterns, normalized variants, and identical parent/child process chains.
-

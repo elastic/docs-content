@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Sensitive IAM Operations Performed via CloudShell" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Sensitive IAM Operations Performed via CloudShell" prebuilt detection rule.'
 ---
 
 # AWS Sensitive IAM Operations Performed via CloudShell
@@ -61,5 +61,4 @@ This rule detects high-risk IAM operations performed via CloudShell, including c
 ### Additional information
 
 - **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/)**
-- **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)** 
-
+- **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs)**

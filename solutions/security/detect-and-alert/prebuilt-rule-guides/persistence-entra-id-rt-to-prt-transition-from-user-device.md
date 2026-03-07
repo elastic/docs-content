@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID OAuth PRT Issuance to Non-Managed Device Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID OAuth PRT Issuance to Non-Managed Device Detected" prebuilt detection rule.'
 ---
 
 # Entra ID OAuth PRT Issuance to Non-Managed Device Detected
@@ -36,4 +36,3 @@ This rule identifies a sequence where a Microsoft Entra ID authenticates using a
 - Remove or quarantine the suspicious device registration.
 - Require password reset and enforce MFA.
 - Audit and tighten device trust and conditional access configurations.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Office Test Registry Persistence" prebuilt detection rule.
+description: 'Investigation guide for the "Office Test Registry Persistence" prebuilt detection rule.'
 ---
 
 # Office Test Registry Persistence

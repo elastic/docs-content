@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Conditional Access Policy (CAP) Modified" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Conditional Access Policy (CAP) Modified" prebuilt detection rule.'
 ---
 
 # Entra ID Conditional Access Policy (CAP) Modified
@@ -59,4 +59,3 @@ If any of these cases apply and align with the activity's context, consider tuni
 - Lock or reset the credentials of the user account that made the change if compromise is suspected.
 - Conduct a broader access review of conditional access policies and privileged user activity.
 - Implement stricter change management and alerting around CAP changes.
-

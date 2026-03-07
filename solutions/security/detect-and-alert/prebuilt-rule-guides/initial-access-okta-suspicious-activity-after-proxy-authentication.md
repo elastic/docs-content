@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta Alerts Following Unusual Proxy Authentication" prebuilt detection rule.
+description: 'Investigation guide for the "Okta Alerts Following Unusual Proxy Authentication" prebuilt detection rule.'
 ---
 
 # Okta Alerts Following Unusual Proxy Authentication
@@ -37,4 +37,3 @@ By correlating the proxy alert with other Okta alerts using an EQL sequence, thi
 - Review and revoke any OAuth tokens or API keys associated with the account.
 - Block the source proxy IP at the network perimeter if confirmed malicious.
 - Review the user's access to sensitive applications and data during the suspicious session.
-

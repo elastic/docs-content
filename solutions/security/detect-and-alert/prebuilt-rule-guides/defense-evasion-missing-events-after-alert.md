@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Elastic Defend Alert Followed by Telemetry Loss" prebuilt detection rule.
+description: 'Investigation guide for the "Elastic Defend Alert Followed by Telemetry Loss" prebuilt detection rule.'
 ---
 
 # Elastic Defend Alert Followed by Telemetry Loss
@@ -46,4 +46,3 @@ disablement, host shutdown, system crash, or defense evasion behavior.
 - Isolate the host if malicious activity is suspected.
 - Investigate for security control tampering.
 - Perform broader environment hunting for similar patterns.
-

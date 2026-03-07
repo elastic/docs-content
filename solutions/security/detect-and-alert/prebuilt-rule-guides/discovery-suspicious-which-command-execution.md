@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious which Enumeration" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious which Enumeration" prebuilt detection rule.'
 ---
 
 # Suspicious which Enumeration

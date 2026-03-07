@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Protection Alerts for User Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Protection Alerts for User Detected" prebuilt detection rule.'
 ---
 
 # Entra ID Protection Alerts for User Detected
@@ -44,4 +44,3 @@ description: Investigation guide for the "Entra ID Protection Alerts for User De
 - Follow security best practices [outlined](https://docs.microsoft.com/en-us/azure/security/fundamentals/identity-management-best-practices) by Microsoft.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

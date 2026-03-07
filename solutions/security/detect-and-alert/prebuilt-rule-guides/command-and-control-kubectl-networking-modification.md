@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubectl Network Configuration Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Kubectl Network Configuration Modification" prebuilt detection rule.'
 ---
 
 # Kubectl Network Configuration Modification
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Kubectl is a command-line tool for interacting with Kubernetes clusters, allowin
 - Restore any altered network configurations to their original state using backups or configuration management tools.
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems or data have been affected.
 - Implement enhanced monitoring and logging for kubectl activities and network configuration changes to detect and respond to similar threats more effectively in the future.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Persistence via Folder Action Script" prebuilt detection rule.
+description: 'Investigation guide for the "Persistence via Folder Action Script" prebuilt detection rule.'
 ---
 
 # Persistence via Folder Action Script

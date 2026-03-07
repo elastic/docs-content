@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 User Data Retrieval for EC2 Instance" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 User Data Retrieval for EC2 Instance" prebuilt detection rule.'
 ---
 
 # AWS EC2 User Data Retrieval for EC2 Instance
@@ -55,4 +55,3 @@ This rule detects requests to retrieve the `userData` attribute of an EC2 instan
 ### Additional Information
 
 For more details on managing EC2 user data securely, refer to the [AWS EC2 User Data Documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html).
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Process Writing Data to an External Device" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Process Writing Data to an External Device" prebuilt detection rule.'
 ---
 
 # Unusual Process Writing Data to an External Device

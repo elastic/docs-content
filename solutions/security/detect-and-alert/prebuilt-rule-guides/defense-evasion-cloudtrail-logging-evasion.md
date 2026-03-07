@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS CloudTrail Log Evasion" prebuilt detection rule.
+description: 'Investigation guide for the "AWS CloudTrail Log Evasion" prebuilt detection rule.'
 ---
 
 # AWS CloudTrail Log Evasion

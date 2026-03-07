@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Default Cobalt Strike Team Server Certificate" prebuilt detection rule.
+description: 'Investigation guide for the "Default Cobalt Strike Team Server Certificate" prebuilt detection rule.'
 ---
 
 # Default Cobalt Strike Team Server Certificate

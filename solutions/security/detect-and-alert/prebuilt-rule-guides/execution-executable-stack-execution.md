@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Process Started with Executable Stack" prebuilt detection rule.
+description: 'Investigation guide for the "Process Started with Executable Stack" prebuilt detection rule.'
 ---
 
 # Process Started with Executable Stack

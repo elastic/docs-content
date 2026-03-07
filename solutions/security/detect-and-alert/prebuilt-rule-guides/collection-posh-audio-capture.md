@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Suspicious Script with Audio Capture Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Suspicious Script with Audio Capture Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Suspicious Script with Audio Capture Capabilities
@@ -82,4 +82,3 @@ This alert indicates PowerShell script block content associated with microphone 
 - If confirmed benign:
   - Document the business purpose, script owner, and expected execution scope (accounts, hosts, and schedule).
   - If the activity is legitimate but creating operational noise, add rule exceptions with narrowly scoped constraints based on stable attributes (consistent script content patterns, known script file path/name, and expected executing accounts) rather than broadly suppressing audio-related indicators.
-

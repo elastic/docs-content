@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "System and Network Configuration Check" prebuilt detection rule.
+description: 'Investigation guide for the "System and Network Configuration Check" prebuilt detection rule.'
 ---
 
 # System and Network Configuration Check
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags suspicious processes reading macOS SystemConfiguration preferenc
 - Recover by rotating credentials used on the host, reviewing and resetting network settings (DNS, proxy, VPN) if changed, and returning the system to service only after repeated checks show no re-creation of the removed artifacts across a full reboot cycle.  
 - Escalate to incident response immediately if the same process also makes outbound connections, modifies SystemConfiguration plists, or appears on multiple hosts, and initiate enterprise-wide hunting for the file hash and the associated launcher.  
 - Harden by restricting execution from temporary/shared directories, enforcing signed/notarized code where possible, auditing who can read sensitive configuration files, and adding allowlists for known management tools that legitimately access the preferences plist.
-

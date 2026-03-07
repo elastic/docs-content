@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Diagnostic Settings Alert Suppression Rule Created or Modified" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Diagnostic Settings Alert Suppression Rule Created or Modified" prebuilt detection rule.'
 ---
 
 # Azure Diagnostic Settings Alert Suppression Rule Created or Modified

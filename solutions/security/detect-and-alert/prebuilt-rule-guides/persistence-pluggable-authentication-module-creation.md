@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Pluggable Authentication Module or Configuration Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Pluggable Authentication Module or Configuration Creation" prebuilt detection rule.'
 ---
 
 # Pluggable Authentication Module or Configuration Creation

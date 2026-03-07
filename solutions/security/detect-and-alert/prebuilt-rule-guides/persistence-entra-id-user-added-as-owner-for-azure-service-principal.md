@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID User Added as Service Principal Owner" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID User Added as Service Principal Owner" prebuilt detection rule.'
 ---
 
 # Entra ID User Added as Service Principal Owner

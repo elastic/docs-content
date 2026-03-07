@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious .NET Reflection via PowerShell" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious .NET Reflection via PowerShell" prebuilt detection rule.'
 ---
 
 # Suspicious .NET Reflection via PowerShell
@@ -89,4 +89,3 @@ This alert indicates PowerShell script block content attempted to load a .NET as
   - Record the approved use case and expected execution context (host role, user role, and script location).
   - Apply targeted tuning anchored to stable identifiers (for example, specific `file.path` and expected accounts) rather than broadly suppressing assembly load behavior.
   - Review PowerShell governance and monitoring to ensure in-memory loading is limited to approved workflows.
-

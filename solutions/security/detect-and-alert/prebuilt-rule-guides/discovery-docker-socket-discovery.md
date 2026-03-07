@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Docker Socket Enumeration" prebuilt detection rule.
+description: 'Investigation guide for the "Docker Socket Enumeration" prebuilt detection rule.'
 ---
 
 # Docker Socket Enumeration
@@ -46,4 +46,3 @@ Docker sockets facilitate communication between the Docker client and daemon, en
 - Review and restrict permissions on the Docker socket file (/var/run/docker.sock) to limit access to only trusted users and processes.
 - Escalate the incident to the security operations team for further investigation and to determine if additional hosts or systems are affected.
 - Implement enhanced monitoring and logging for Docker socket interactions to detect and respond to similar threats more quickly in the future.
-

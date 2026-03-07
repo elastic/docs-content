@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "New GitHub Personal Access Token (PAT) Added" prebuilt detection rule.
+description: 'Investigation guide for the "New GitHub Personal Access Token (PAT) Added" prebuilt detection rule.'
 ---
 
 # New GitHub Personal Access Token (PAT) Added
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This alert triggers when someone creates and authorizes a new GitHub personal ac
 - Review audit and repository logs for API calls authenticated with this PAT since its creation, block offending source IPs in network controls, and enable GitHub IP allow lists or SSO enforcement to restrict token use to trusted contexts.
 - Escalate to incident response if the PAT has admin or organization owner scopes, was created from an unfamiliar location or device, or was used to clone private repositories or change security settings.
 - Harden going forward by enforcing fine-grained, expiring, SSO-enforced PATs, disabling classic tokens at the organization, requiring approval for new PATs, and migrating automation to GitHub Apps with least-privilege permissions.
-

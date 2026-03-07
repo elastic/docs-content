@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Remote Credential Access via Registry" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Remote Credential Access via Registry" prebuilt detection rule.'
 ---
 
 # Potential Remote Credential Access via Registry
@@ -45,4 +45,3 @@ Attackers can use tools like secretsdump.py or CrackMapExec to dump the registry
 - Reimage the host operating system or restore the compromised files to clean versions.
 - Ensure that the machine has the latest security updates and is not running unsupported Windows versions.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

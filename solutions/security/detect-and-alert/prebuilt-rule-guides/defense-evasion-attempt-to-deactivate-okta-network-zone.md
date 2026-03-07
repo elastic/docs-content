@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempt to Deactivate an Okta Network Zone" prebuilt detection rule.
+description: 'Investigation guide for the "Attempt to Deactivate an Okta Network Zone" prebuilt detection rule.'
 ---
 
 # Attempt to Deactivate an Okta Network Zone

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Storage Account Keys Accessed by Privileged User" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Storage Account Keys Accessed by Privileged User" prebuilt detection rule.'
 ---
 
 # Azure Storage Account Keys Accessed by Privileged User
@@ -47,4 +47,3 @@ Azure Storage Account keys provide full administrative access to storage resourc
 - Review and potentially restrict the assignment of high-privilege roles like Owner and Contributor, following the principle of least privilege.
 - Enable diagnostic logging for all storage accounts to maintain detailed audit trails of access and operations.
 - Consider implementing Privileged Identity Management (PIM) for just-in-time access to high-privilege roles that can list storage keys.
-

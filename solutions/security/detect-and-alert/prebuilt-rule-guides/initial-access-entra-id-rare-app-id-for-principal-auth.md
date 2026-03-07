@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID User Sign-in with Unusual Client" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID User Sign-in with Unusual Client" prebuilt detection rule.'
 ---
 
 # Entra ID User Sign-in with Unusual Client
@@ -50,4 +50,3 @@ This rule identifies rare Azure Entra apps IDs requesting authentication on-beha
 - Restrict the use of legacy authentication protocols by disabling authentication methods listed in `azure.signinlogs.properties.client_app_used`.
 - Regularly audit authentication logs in `azure.signinlogs` to detect abnormal login behavior and ensure early detection of potential attacks.
 - Regularly rotate client credentials and secrets for applications using non-interactive authentication to reduce the risk of credential theft.
-

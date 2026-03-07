@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Linux Clipboard Activity Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Linux Clipboard Activity Detected" prebuilt detection rule.'
 ---
 
 # Linux Clipboard Activity Detected

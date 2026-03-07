@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Named Pipe Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Named Pipe Creation" prebuilt detection rule.'
 ---
 
 # Suspicious Named Pipe Creation
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Named pipes, or FIFOs, are a form of inter-process communication in Linux enviro
 - Restore the system from a known good backup if any unauthorized changes or persistence mechanisms are detected.
 - Implement additional monitoring on the affected system and network to detect any further attempts to create suspicious named pipes or execute unauthorized commands.
 - Escalate the incident to the security operations team for further investigation and to determine if the threat is part of a larger attack campaign.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta FastPass Phishing Detection" prebuilt detection rule.
+description: 'Investigation guide for the "Okta FastPass Phishing Detection" prebuilt detection rule.'
 ---
 
 # Okta FastPass Phishing Detection
@@ -53,4 +53,3 @@ The Okta Fleet integration, Filebeat module, or similarly structured data is req
 This rule requires Okta to have the following turned on:
 
 Okta Identity Engine - select 'Phishing Resistance for FastPass' under Settings > Features in the Admin Console.
-

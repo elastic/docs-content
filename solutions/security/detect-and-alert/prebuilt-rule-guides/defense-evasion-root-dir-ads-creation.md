@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Alternate Data Stream Creation/Execution at Volume Root Directory" prebuilt detection rule.
+description: 'Investigation guide for the "Alternate Data Stream Creation/Execution at Volume Root Directory" prebuilt detection rule.'
 ---
 
 # Alternate Data Stream Creation/Execution at Volume Root Directory

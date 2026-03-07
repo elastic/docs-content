@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network Logon Provider Registry Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Network Logon Provider Registry Modification" prebuilt detection rule.'
 ---
 
 # Network Logon Provider Registry Modification
@@ -65,4 +65,3 @@ This rule identifies the modification of the network logon provider registry. Ad
 - Reimage the host operating system or restore the compromised files to clean versions.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

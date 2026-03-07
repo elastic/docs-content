@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Credentials Searched For Inside A Container" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Credentials Searched For Inside A Container" prebuilt detection rule.'
 ---
 
 # AWS Credentials Searched For Inside A Container

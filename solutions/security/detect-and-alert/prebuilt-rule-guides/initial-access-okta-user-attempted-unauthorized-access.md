@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unauthorized Access to an Okta Application" prebuilt detection rule.
+description: 'Investigation guide for the "Unauthorized Access to an Okta Application" prebuilt detection rule.'
 ---
 
 # Unauthorized Access to an Okta Application

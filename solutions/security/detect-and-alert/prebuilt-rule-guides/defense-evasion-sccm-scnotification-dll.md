@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Windows Session Hijacking via CcmExec" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Windows Session Hijacking via CcmExec" prebuilt detection rule.'
 ---
 
 # Potential Windows Session Hijacking via CcmExec

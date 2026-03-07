@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Spike in Azure Activity Logs Failed Messages" prebuilt detection rule.
+description: 'Investigation guide for the "Spike in Azure Activity Logs Failed Messages" prebuilt detection rule.'
 ---
 
 # Spike in Azure Activity Logs Failed Messages
@@ -41,4 +41,3 @@ This rule flags an unusual surge in failed control‑plane operations recorded i
 - Recover by fixing the misconfiguration or credentials, validating successful test operations (e.g., list and create where permitted) in a non‑production subscription, and then re‑enable automation with least‑privilege scopes while monitoring for a return to normal failure rates.
 - Escalate to the incident response lead if failures include repeated attempts to change role assignments or policy at tenant or management‑group scope, originate from unfamiliar geographies or unapproved IP ranges, spread across multiple subscriptions, or persist more than 15 minutes after containment.
 - Harden by enforcing PIM for privileged roles, enabling Conditional Access for workload identities and administrators (MFA and named locations), implementing secret scanning and rotation for repos and pipelines, exporting Activity Logs to Log Analytics with retention, and alerting on abnormal management‑plane failures per identity.
-

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Web Server Potential Spike in Error Response Codes" prebuilt detection rule.
+description: 'Investigation guide for the "Web Server Potential Spike in Error Response Codes" prebuilt detection rule.'
 ---
 
 # Web Server Potential Spike in Error Response Codes
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects bursts of 5xx errors (500–504) from GET traffic, highlightin
 - Escalate to Security Operations and Incident Response if 5xx spikes persist after blocking or if error pages expose stack traces, credentials, or admin route disclosures, or if traffic originates from multiple global hosting ASNs.
 - Deploy targeted WAF rules for path traversal and injection markers seen in the URLs, enforce per-IP and per-route rate limits, tighten upstream timeouts/circuit breakers, and replace verbose error pages with generic responses that omit stack details.
 - Add bot management and IP reputation blocking at the CDN/edge, lock down unauthenticated access to admin/debug routes, and instrument alerts that trigger on sustained 5xx bursts per client and per route with automatic edge throttling.
-

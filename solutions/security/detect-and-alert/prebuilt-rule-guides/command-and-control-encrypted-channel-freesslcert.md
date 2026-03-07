@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Connection to Commonly Abused Free SSL Certificate Providers" prebuilt detection rule.
+description: 'Investigation guide for the "Connection to Commonly Abused Free SSL Certificate Providers" prebuilt detection rule.'
 ---
 
 # Connection to Commonly Abused Free SSL Certificate Providers

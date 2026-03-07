@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Modification of Environment Variable via Unsigned or Untrusted Parent" prebuilt detection rule.
+description: 'Investigation guide for the "Modification of Environment Variable via Unsigned or Untrusted Parent" prebuilt detection rule.'
 ---
 
 # Modification of Environment Variable via Unsigned or Untrusted Parent

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Impersonation Attempt via Kubectl" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Impersonation Attempt via Kubectl" prebuilt detection rule.'
 ---
 
 # Potential Impersonation Attempt via Kubectl
@@ -45,4 +45,3 @@ Kubectl is a command-line tool for interacting with Kubernetes clusters, allowin
 - Monitor for any further suspicious kubectl activity, especially those involving impersonation arguments, and set up alerts for any similar future attempts.
 - Escalate the incident to the security operations team for a comprehensive review and to determine if additional security measures or incident response actions are required.
 - Implement additional logging and monitoring for kubectl commands and Kubernetes API interactions to enhance detection capabilities for similar threats in the future.
-

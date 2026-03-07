@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Data Exfiltration Through Wget" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Data Exfiltration Through Wget" prebuilt detection rule.'
 ---
 
 # Potential Data Exfiltration Through Wget
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags Linux processes that launch wget with options that upload a loca
 - If the posted content includes credentials, source code, or customer data, rotate affected passwords/keys, invalidate tokens, notify data owners, and restore impacted systems or files from known-good backups.
 - Escalate to incident response and initiate wider containment if the destination domain/IP is not owned by the organization or resolves to an anonymizing/VPS service, if multiple hosts exhibit wget --post-file from non-interactive sessions, or if the uploader executed as root.
 - Harden by enforcing SELinux/AppArmor policies that restrict wget/curl from posting files, requiring egress web proxy allowlists for HTTP POST destinations, adding detections for wget --post-file/--body-file and curl --upload-file/-F, and removing wget from systems where it is unnecessary.
-

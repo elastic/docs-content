@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential LSA Authentication Package Abuse" prebuilt detection rule.
+description: 'Investigation guide for the "Potential LSA Authentication Package Abuse" prebuilt detection rule.'
 ---
 
 # Potential LSA Authentication Package Abuse

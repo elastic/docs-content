@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "High Mean of Process Arguments in an RDP Session" prebuilt detection rule.
+description: 'Investigation guide for the "High Mean of Process Arguments in an RDP Session" prebuilt detection rule.'
 ---
 
 # High Mean of Process Arguments in an RDP Session

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Key Vault Unusual Secret Key Usage" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Key Vault Unusual Secret Key Usage" prebuilt detection rule.'
 ---
 
 # Azure Key Vault Unusual Secret Key Usage
@@ -40,4 +40,3 @@ Azure Key Vault is a cloud service that safeguards encryption keys and secrets l
 - Implement additional monitoring and alerting for the Key Vault to detect any further suspicious activity or unauthorized access attempts.
 - Consider implementing stricter access controls or policies for Key Vaults to limit excessive retrievals and ensure that only authorized users and applications can access sensitive keys and secrets.
 - Educate users and administrators about the risks associated with excessive retrievals from Key Vaults and encourage them to follow best practices for managing keys and secrets in Azure environments.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Excessive AWS S3 Object Encryption with SSE-C" prebuilt detection rule.
+description: 'Investigation guide for the "Excessive AWS S3 Object Encryption with SSE-C" prebuilt detection rule.'
 ---
 
 # Excessive AWS S3 Object Encryption with SSE-C
@@ -64,4 +64,3 @@ This rule identifies a high volume of objects being encrypted using Server-Side 
 **Post-Incident review**:
    - Audit logs for additional activities by the same user or IP.
    - Document findings and apply lessons learned to improve preventive measures.
-

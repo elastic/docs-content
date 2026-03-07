@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "DNS Request for IP Lookup Service via Unsigned Binary" prebuilt detection rule.
+description: 'Investigation guide for the "DNS Request for IP Lookup Service via Unsigned Binary" prebuilt detection rule.'
 ---
 
 # DNS Request for IP Lookup Service via Unsigned Binary
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This detects an unsigned or untrusted process on macOS performing DNS lookups fo
 - Reset compromised credentials and invalidate active sessions for the logged-in user if the process originated from user-writable locations (Downloads, Desktop, /tmp) or if additional discovery/collection behavior is found on the host.  
 - Reimage or restore the endpoint from a known-good state when persistence or tampering is confirmed, then verify Gatekeeper/XProtect status, re-enable security tooling, and monitor for recurrence of the same binary hash or domain pattern.  
 - Escalate to the incident response team if the unsigned binary is newly seen in the environment, appears on multiple hosts, or is followed by connections to rare domains/IPs indicative of staging or command-and-control.
-

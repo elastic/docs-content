@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Credential Access via TruffleHog Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Credential Access via TruffleHog Execution" prebuilt detection rule.'
 ---
 
 # Credential Access via TruffleHog Execution
@@ -41,4 +41,3 @@ This rule flags TruffleHog executed to scan the local filesystem with verified J
 - Restore the workstation or runner from a known-good image if tampering is suspected, re-enroll endpoint protection, reissue required developer or CI credentials with least privilege, and validate normal pulls to internal git and cloud services.
 - Escalate to full incident response if trufflehog ran under a service account, on a build server/CI runner, or if any discovered secret was used to authenticate to external git remotes (e.g., github.com), cloud APIs, or private registries in the same session.
 - Harden by blocking unapproved trufflehog execution via application control, moving approved secret scanning to a locked-down pipeline, enforcing short-lived PATs and key rotation, enabling egress filtering from developer hosts/runners, and deploying fleet-wide detections for "trufflehog --results=verified --json filesystem".
-

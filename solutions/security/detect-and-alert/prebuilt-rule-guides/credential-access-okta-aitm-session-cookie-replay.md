@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta AiTM Session Cookie Replay" prebuilt detection rule.
+description: 'Investigation guide for the "Okta AiTM Session Cookie Replay" prebuilt detection rule.'
 ---
 
 # Okta AiTM Session Cookie Replay
@@ -49,4 +49,3 @@ This is an ES|QL aggregation-based rule. Pivot into raw events using the root se
 - Consider enabling Okta ThreatInsight to automatically block known malicious IPs.
 - Review email security logs for phishing attempts targeting the user around the session start time.
 - Escalate to incident response if sensitive applications (AWS, Salesforce, email) were accessed from the attacker IP.
-

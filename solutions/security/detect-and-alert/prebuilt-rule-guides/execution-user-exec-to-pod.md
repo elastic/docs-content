@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes User Exec into Pod" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes User Exec into Pod" prebuilt detection rule.'
 ---
 
 # Kubernetes User Exec into Pod

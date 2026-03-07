@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Linux Process Hooking via GDB" prebuilt detection rule.
+description: 'Investigation guide for the "Linux Process Hooking via GDB" prebuilt detection rule.'
 ---
 
 # Linux Process Hooking via GDB

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Untrusted DLL Loaded by Azure AD Sync Service" prebuilt detection rule.
+description: 'Investigation guide for the "Untrusted DLL Loaded by Azure AD Sync Service" prebuilt detection rule.'
 ---
 
 # Untrusted DLL Loaded by Azure AD Sync Service

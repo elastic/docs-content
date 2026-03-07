@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Preload Environment Variable Process Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Preload Environment Variable Process Execution" prebuilt detection rule.'
 ---
 
 # Unusual Preload Environment Variable Process Execution

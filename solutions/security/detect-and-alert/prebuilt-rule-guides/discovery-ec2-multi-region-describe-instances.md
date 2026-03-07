@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 Multi-Region DescribeInstances API Calls" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 Multi-Region DescribeInstances API Calls" prebuilt detection rule.'
 ---
 
 # AWS EC2 Multi-Region DescribeInstances API Calls
@@ -78,4 +78,3 @@ Because this rule is a BBR, its detection alone does not usually warrant full in
 ### Additional information
 
 For further information on AWS `DescribeInstances` permissions and best practices, refer to the [AWS DescribeInstances API documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html).
-

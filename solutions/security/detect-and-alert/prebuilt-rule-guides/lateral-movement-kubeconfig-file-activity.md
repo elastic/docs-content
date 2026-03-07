@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubeconfig File Creation or Modification" prebuilt detection rule.
+description: 'Investigation guide for the "Kubeconfig File Creation or Modification" prebuilt detection rule.'
 ---
 
 # Kubeconfig File Creation or Modification
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Kubeconfig files are essential in Kubernetes environments, storing configuration
 - Implement additional monitoring and alerting for any future modifications to kubeconfig files, focusing on processes not typically involved in legitimate changes.
 - Escalate the incident to the security operations team for further investigation and to assess the potential impact on the broader Kubernetes environment.
 - Review and update Kubernetes access policies to ensure they align with best practices for security and least privilege, reducing the risk of unauthorized access.
-

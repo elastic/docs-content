@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Process Spawned by a Parent Process" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Process Spawned by a Parent Process" prebuilt detection rule.'
 ---
 
 # Unusual Process Spawned by a Parent Process

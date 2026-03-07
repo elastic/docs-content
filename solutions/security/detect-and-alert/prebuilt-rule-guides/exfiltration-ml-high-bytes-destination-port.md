@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Data Exfiltration Activity to an Unusual Destination Port" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Data Exfiltration Activity to an Unusual Destination Port" prebuilt detection rule.'
 ---
 
 # Potential Data Exfiltration Activity to an Unusual Destination Port

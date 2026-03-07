@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "System Information Discovery via dmidecode from Parent Shell" prebuilt detection rule.
+description: 'Investigation guide for the "System Information Discovery via dmidecode from Parent Shell" prebuilt detection rule.'
 ---
 
 # System Information Discovery via dmidecode from Parent Shell
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags dmidecode launched from a parent shell, signaling collection of 
 - Recover by validating integrity of /usr/sbin/dmidecode and shell binaries (bash/sh/zsh), restoring from backup if tampering is detected, and re-enable network only after rotating passwords and SSH keys for affected accounts.
 - Escalate to incident response if dmidecode output is compressed/encoded then sent externally (e.g., '/tmp/dmi.txt.gz' piped to curl or scp), if run via sudo by an unexpected user, or observed on multiple hosts in a short window.
 - Harden by restricting dmidecode use to approved scripts via sudoers and AppArmor/SELinux profiles, alerting on shell '-c' hardware inventory commands, auditing writes to /tmp and /var/tmp, and replacing ad-hoc inventory with signed, centrally managed tooling.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "First Time Seen Removable Device" prebuilt detection rule.
+description: 'Investigation guide for the "First Time Seen Removable Device" prebuilt detection rule.'
 ---
 
 # First Time Seen Removable Device

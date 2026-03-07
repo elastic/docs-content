@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Alerts on a Host Exhibiting CPU Spike" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Alerts on a Host Exhibiting CPU Spike" prebuilt detection rule.'
 ---
 
 # Multiple Alerts on a Host Exhibiting CPU Spike

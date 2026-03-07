@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google Workspace Admin Role Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "Google Workspace Admin Role Deletion" prebuilt detection rule.'
 ---
 
 # Google Workspace Admin Role Deletion

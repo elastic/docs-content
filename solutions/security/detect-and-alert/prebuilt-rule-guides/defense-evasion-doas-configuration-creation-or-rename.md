@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Defense Evasion via Doas" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Defense Evasion via Doas" prebuilt detection rule.'
 ---
 
 # Potential Defense Evasion via Doas

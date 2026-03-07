@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 Network Access Control List Creation" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 Network Access Control List Creation" prebuilt detection rule.'
 ---
 
 # AWS EC2 Network Access Control List Creation
@@ -43,5 +43,3 @@ AWS EC2 Network ACLs are stateless firewalls for controlling inbound and outboun
 - Implement additional monitoring and alerting for changes to Network ACLs and other critical AWS resources to enhance detection of similar threats in the future.
 - Escalate the incident to the security operations team or incident response team for further investigation and to determine if additional containment or remediation actions are necessary.
 - Review and update IAM policies and permissions to ensure the principle of least privilege is enforced, reducing the risk of unauthorized changes to network configurations.
-
-

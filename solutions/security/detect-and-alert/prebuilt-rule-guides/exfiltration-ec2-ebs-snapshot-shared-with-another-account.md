@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 EBS Snapshot Shared or Made Public" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 EBS Snapshot Shared or Made Public" prebuilt detection rule.'
 ---
 
 # AWS EC2 EBS Snapshot Shared or Made Public
 
-## Triage and analysis 
+## Triage and analysis
 
 ### Investigating AWS EC2 EBS Snapshot Shared or Made Public
 
@@ -76,5 +76,4 @@ If verified as legitimate, document the event under change management and reconc
 - **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/)**: example framework for developing custom playbooks for snapshot configuration and data protection.  
 - **AWS Documentation**  
   - [EBS Snapshot Permissions](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modifying-snapshot-permissions.html)  
-  - [ModifySnapshotAttribute API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifySnapshotAttribute.html)  
-
+  - [ModifySnapshotAttribute API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifySnapshotAttribute.html)

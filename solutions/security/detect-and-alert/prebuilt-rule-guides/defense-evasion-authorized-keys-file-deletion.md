@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SSH Authorized Keys File Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "SSH Authorized Keys File Deletion" prebuilt detection rule.'
 ---
 
 # SSH Authorized Keys File Deletion
@@ -46,4 +46,3 @@ SSH authorized keys files are crucial for secure, password-less authentication o
 - Implement additional monitoring on the affected system to detect any further unauthorized file deletions or suspicious activities, ensuring that alerts are configured for immediate response.
 - Escalate the incident to the security operations team for further investigation and to determine if the attack is part of a larger campaign targeting the organization.
 - Review and update access controls and permissions on the affected system to ensure that only authorized users and processes can modify critical files like authorized_keys.
-

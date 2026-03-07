@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Modification or Removal of an Okta Application Sign-On Policy" prebuilt detection rule.
+description: 'Investigation guide for the "Modification or Removal of an Okta Application Sign-On Policy" prebuilt detection rule.'
 ---
 
 # Modification or Removal of an Okta Application Sign-On Policy

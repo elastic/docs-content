@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Interactive Shell Launched from System User" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Interactive Shell Launched from System User" prebuilt detection rule.'
 ---
 
 # Unusual Interactive Shell Launched from System User

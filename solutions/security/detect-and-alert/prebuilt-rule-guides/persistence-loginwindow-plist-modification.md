@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Persistence via Login Hook" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Persistence via Login Hook" prebuilt detection rule.'
 ---
 
 # Potential Persistence via Login Hook

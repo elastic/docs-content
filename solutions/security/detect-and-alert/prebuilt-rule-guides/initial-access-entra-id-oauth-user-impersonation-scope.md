@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID OAuth user_impersonation Scope for Unusual User and Client" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID OAuth user_impersonation Scope for Unusual User and Client" prebuilt detection rule.'
 ---
 
 # Entra ID OAuth user_impersonation Scope for Unusual User and Client
@@ -46,4 +46,3 @@ unauthorized access attempts, especially when the user type is `Member` and the 
   - Investigate the source of the sign-in attempt, including the application and IP address, to determine if there are any additional indicators of compromise or ongoing malicious activity.
   - Monitor the user account and related resources for any further suspicious activity or unauthorized access attempts, and take appropriate actions to mitigate any risks identified.
 - Educate users about the risks associated with OAuth user impersonation and encourage them to use more secure authentication methods, such as OAuth 2.0 or OpenID Connect, whenever possible.
-

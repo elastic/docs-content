@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Python Site or User Customize File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Python Site or User Customize File Creation" prebuilt detection rule.'
 ---
 
 # Python Site or User Customize File Creation
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Python's `sitecustomize.py` and `usercustomize.py` are scripts that execute auto
 - Monitor the system and network for any signs of continued unauthorized access or attempts to modify the `sitecustomize.py` and `usercustomize.py` files.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional systems are affected.
 - Implement additional monitoring and alerting for changes to critical Python directories and files to enhance detection of similar threats in the future.
-

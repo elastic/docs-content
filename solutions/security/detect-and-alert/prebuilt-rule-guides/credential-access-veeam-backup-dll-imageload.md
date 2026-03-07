@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Veeam Backup Library Loaded by Unusual Process" prebuilt detection rule.
+description: 'Investigation guide for the "Veeam Backup Library Loaded by Unusual Process" prebuilt detection rule.'
 ---
 
 # Veeam Backup Library Loaded by Unusual Process

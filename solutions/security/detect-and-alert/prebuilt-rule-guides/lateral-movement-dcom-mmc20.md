@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Incoming DCOM Lateral Movement with MMC" prebuilt detection rule.
+description: 'Investigation guide for the "Incoming DCOM Lateral Movement with MMC" prebuilt detection rule.'
 ---
 
 # Incoming DCOM Lateral Movement with MMC

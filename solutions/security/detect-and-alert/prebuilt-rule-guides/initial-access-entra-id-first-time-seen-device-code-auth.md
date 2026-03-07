@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID OAuth Device Code Grant by Unusual User" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID OAuth Device Code Grant by Unusual User" prebuilt detection rule.'
 ---
 
 # Entra ID OAuth Device Code Grant by Unusual User
@@ -67,4 +67,3 @@ This rule detects the first instance of a user authenticating via the **DeviceCo
 - **Review and Adjust Conditional Access Policies**:
   - Limit `DeviceCode` authentication to approved users and applications.
   - Implement stricter geolocation-based authentication restrictions.
-

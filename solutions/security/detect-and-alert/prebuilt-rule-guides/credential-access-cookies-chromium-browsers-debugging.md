@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Cookies Theft via Browser Debugging" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Cookies Theft via Browser Debugging" prebuilt detection rule.'
 ---
 
 # Potential Cookies Theft via Browser Debugging

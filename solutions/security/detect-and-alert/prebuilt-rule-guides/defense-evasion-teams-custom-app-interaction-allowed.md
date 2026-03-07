@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Teams Custom Application Interaction Enabled" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Teams Custom Application Interaction Enabled" prebuilt detection rule.'
 ---
 
 # M365 Teams Custom Application Interaction Enabled

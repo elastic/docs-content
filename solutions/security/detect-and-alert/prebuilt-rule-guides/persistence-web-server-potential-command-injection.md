@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Web Server Potential Command Injection Request" prebuilt detection rule.
+description: 'Investigation guide for the "Web Server Potential Command Injection Request" prebuilt detection rule.'
 ---
 
 # Web Server Potential Command Injection Request
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags web requests whose URLs embed command-execution payloads—inter
 - Rotate credentials and tokens if /etc/passwd, /etc/shadow, or ~/.ssh paths were targeted, rebuild the host or container from a known-good image, patch the application and dependencies, and validate clean startup with outbound traffic restricted to approved destinations.
 - Immediately escalate to the incident commander and legal/privacy if remote command execution is confirmed (evidence: web-server-owned 'bash -c' or 'python -c' executed, curl/wget download-and-execute, or reverse shell to an external IP:port) or if sensitive data exposure is suspected.
 - Harden by enforcing strict input validation, disabling shell/exec functions in the runtime (e.g., PHP disable_functions and no shell-outs in templates), running under least privilege with noexec,nodev /tmp and a read-only webroot, restricting egress by policy, and deploying WAF rules and host sensors to detect these strings and cron/webshell creation.
-

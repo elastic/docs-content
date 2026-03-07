@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Windows Script Interpreter Executing Process via WMI" prebuilt detection rule.
+description: 'Investigation guide for the "Windows Script Interpreter Executing Process via WMI" prebuilt detection rule.'
 ---
 
 # Windows Script Interpreter Executing Process via WMI

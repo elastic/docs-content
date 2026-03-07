@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network Traffic to Rare Destination Country" prebuilt detection rule.
+description: 'Investigation guide for the "Network Traffic to Rare Destination Country" prebuilt detection rule.'
 ---
 
 # Network Traffic to Rare Destination Country

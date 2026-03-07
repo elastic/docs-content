@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Global Administrator Role Assigned" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Global Administrator Role Assigned" prebuilt detection rule.'
 ---
 
 # Entra ID Global Administrator Role Assigned
@@ -44,4 +44,3 @@ Microsoft Entra ID's Global Administrator role grants comprehensive access to ma
 - Implement conditional access policies to restrict Global Administrator role assignments to specific, trusted locations or devices.
 - Review and update role assignment policies to ensure that only a limited number of trusted personnel have the ability to assign Global Administrator roles.
 - Enhance monitoring and alerting mechanisms to detect similar unauthorized role assignments in the future, ensuring timely response to potential threats.
-

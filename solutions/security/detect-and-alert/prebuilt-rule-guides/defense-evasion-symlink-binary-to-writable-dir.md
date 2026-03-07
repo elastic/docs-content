@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "System Binary Symlink to Suspicious Location" prebuilt detection rule.
+description: 'Investigation guide for the "System Binary Symlink to Suspicious Location" prebuilt detection rule.'
 ---
 
 # System Binary Symlink to Suspicious Location
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Symbolic links in Linux create shortcuts to files or directories, allowing flexi
 - Restore affected binaries and system files from a known good backup to ensure no tampered files remain.
 - Monitor the system for any further attempts to create unauthorized symbolic links, using enhanced logging and alerting mechanisms.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional systems are affected.
-

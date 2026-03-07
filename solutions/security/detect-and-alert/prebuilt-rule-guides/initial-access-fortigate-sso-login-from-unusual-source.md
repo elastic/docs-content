@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "FortiGate FortiCloud SSO Login from Unusual Source" prebuilt detection rule.
+description: 'Investigation guide for the "FortiGate FortiCloud SSO Login from Unusual Source" prebuilt detection rule.'
 ---
 
 # FortiGate FortiCloud SSO Login from Unusual Source

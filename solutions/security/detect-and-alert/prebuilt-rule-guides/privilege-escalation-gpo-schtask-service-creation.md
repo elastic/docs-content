@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Creation or Modification of a new GPO Scheduled Task or Service" prebuilt detection rule.
+description: 'Investigation guide for the "Creation or Modification of a new GPO Scheduled Task or Service" prebuilt detection rule.'
 ---
 
 # Creation or Modification of a new GPO Scheduled Task or Service

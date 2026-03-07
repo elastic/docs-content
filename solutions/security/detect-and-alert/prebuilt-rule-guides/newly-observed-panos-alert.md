@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Newly Observed Palo Alto Network Alert" prebuilt detection rule.
+description: 'Investigation guide for the "Newly Observed Palo Alto Network Alert" prebuilt detection rule.'
 ---
 
 # Newly Observed Palo Alto Network Alert

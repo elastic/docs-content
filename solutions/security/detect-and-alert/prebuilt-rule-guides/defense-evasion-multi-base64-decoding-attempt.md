@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multi-Base64 Decoding Attempt from Suspicious Location" prebuilt detection rule.
+description: 'Investigation guide for the "Multi-Base64 Decoding Attempt from Suspicious Location" prebuilt detection rule.'
 ---
 
 # Multi-Base64 Decoding Attempt from Suspicious Location
@@ -52,4 +52,3 @@ Base64 encoding is a common method to encode binary data into ASCII text, often 
 - Implement additional monitoring and alerting for similar suspicious activities, focusing on rapid sequences of base64 decoding commands and unusual directory usage to enhance detection capabilities.
 
 - Review and update access controls and permissions for the directories involved to prevent unauthorized access and execution of potentially harmful scripts or binaries.
-

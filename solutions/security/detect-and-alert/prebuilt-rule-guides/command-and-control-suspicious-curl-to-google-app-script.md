@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Curl to Google App Script Endpoint" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Curl to Google App Script Endpoint" prebuilt detection rule.'
 ---
 
 # Suspicious Curl to Google App Script Endpoint
@@ -47,4 +47,3 @@ Google Apps Script is a cloud-based development platform that allows users to ex
 - Review authentication logs for the affected user account and reset credentials if compromise is suspected.
 - Search for similar activity across the environment to identify additional affected systems.
 - Implement enhanced monitoring for connections to script.google.com from unexpected applications.
-

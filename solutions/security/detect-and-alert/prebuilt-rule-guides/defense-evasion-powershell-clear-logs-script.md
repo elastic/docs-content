@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Script with Log Clear Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Script with Log Clear Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Script with Log Clear Capabilities
@@ -80,4 +80,3 @@ This alert identifies PowerShell script block content associated with clearing W
 - If activity is confirmed benign:
   - Document the authorized workflow (who, what, where, and when), including expected `host.name`, `user.name`, and any associated script identifiers (`file.name`/`file.path`).
   - Maintain monitoring for deviations from the approved pattern (unexpected accounts, hosts, timing, or expanded targeting) to reduce noise without losing coverage.
-

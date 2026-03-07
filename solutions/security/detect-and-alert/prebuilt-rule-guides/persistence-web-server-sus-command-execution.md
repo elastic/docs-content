@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Command Execution from Web Server Parent" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Command Execution from Web Server Parent" prebuilt detection rule.'
 ---
 
 # Unusual Command Execution from Web Server Parent
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -52,4 +52,3 @@ Web servers, such as Apache or Nginx, are crucial for hosting web applications, 
 - Implement additional monitoring and alerting for similar activities, focusing on unusual command executions and web server behavior. Enhance logging and alerting to capture more detailed information about process executions and network connections.
 
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if the attack is part of a larger campaign. Provide them with all relevant data and findings from the initial containment and remediation steps.
-

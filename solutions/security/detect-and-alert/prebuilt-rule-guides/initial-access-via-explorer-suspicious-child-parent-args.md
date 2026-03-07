@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Explorer Child Process" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Explorer Child Process" prebuilt detection rule.'
 ---
 
 # Suspicious Explorer Child Process

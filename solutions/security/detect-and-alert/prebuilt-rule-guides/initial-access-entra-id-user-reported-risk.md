@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID User Reported Suspicious Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID User Reported Suspicious Activity" prebuilt detection rule.'
 ---
 
 # Entra ID User Reported Suspicious Activity
@@ -46,4 +46,3 @@ This rule detects when a user in Microsoft Entra ID reports suspicious activity 
 - If other users report similar behavior around the same time, assess for a broader MFA fatigue campaign or targeted phishing.
 - Consider tuning conditional access policies to require number matching or stronger MFA mechanisms.
 - Educate users on reporting suspicious MFA prompts and following up with IT/security teams promptly.
-

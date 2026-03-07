@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Google Workspace Restrictions for Marketplace Modified to Allow Any App" prebuilt detection rule.
+description: 'Investigation guide for the "Google Workspace Restrictions for Marketplace Modified to Allow Any App" prebuilt detection rule.'
 ---
 
 # Google Workspace Restrictions for Marketplace Modified to Allow Any App

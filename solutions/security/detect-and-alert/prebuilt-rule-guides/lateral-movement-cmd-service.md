@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Service Command Lateral Movement" prebuilt detection rule.
+description: 'Investigation guide for the "Service Command Lateral Movement" prebuilt detection rule.'
 ---
 
 # Service Command Lateral Movement

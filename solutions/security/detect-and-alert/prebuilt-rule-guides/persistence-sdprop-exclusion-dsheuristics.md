@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AdminSDHolder SDProp Exclusion Added" prebuilt detection rule.
+description: 'Investigation guide for the "AdminSDHolder SDProp Exclusion Added" prebuilt detection rule.'
 ---
 
 # AdminSDHolder SDProp Exclusion Added
@@ -47,4 +47,3 @@ This rule matches changes of the dsHeuristics object where the 16th bit is set t
 
 - The change can be reverted by setting the dwAdminSDExMask (16th bit) to 0 in dSHeuristics.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

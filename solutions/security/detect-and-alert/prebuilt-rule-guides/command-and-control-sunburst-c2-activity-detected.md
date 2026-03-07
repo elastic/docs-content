@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SUNBURST Command and Control Activity" prebuilt detection rule.
+description: 'Investigation guide for the "SUNBURST Command and Control Activity" prebuilt detection rule.'
 ---
 
 # SUNBURST Command and Control Activity
@@ -60,4 +60,3 @@ This rule identifies suspicious network connections that attempt to blend in wit
 - Reimage the host operating system and restore compromised files to clean versions.
 - Upgrade SolarWinds systems to the latest version to eradicate the chance of reinfection by abusing the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Process Backgrounded by Unusual Parent" prebuilt detection rule.
+description: 'Investigation guide for the "Process Backgrounded by Unusual Parent" prebuilt detection rule.'
 ---
 
 # Process Backgrounded by Unusual Parent
@@ -45,4 +45,3 @@ In Linux environments, shell processes like bash or zsh can be backgrounded usin
 - Restore the system from a known good backup if any malicious modifications or persistence mechanisms are identified.
 - Update and patch the system to close any vulnerabilities that may have been exploited by the adversary.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional systems are affected.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempt to Clear Logs via Journalctl" prebuilt detection rule.
+description: 'Investigation guide for the "Attempt to Clear Logs via Journalctl" prebuilt detection rule.'
 ---
 
 # Attempt to Clear Logs via Journalctl
@@ -41,4 +41,3 @@ This detection flags attempts to purge systemd journal logs by invoking journalc
 - Harden by enabling remote forwarding (ForwardToSyslog=yes and rsyslog/syslog-ng to SIEM), adding auditd rules to alert on "journalctl --vacuum-*", and tightening sudoers to require MFA and record command I/O for journalctl on critical hosts.
 - Preserve evidence by archiving remaining /var/log/journal entries, journald.conf and its mtime, modified unit files under /etc/systemd/system, and shell/auth logs, and capture a disk snapshot before making further changes.
 - Escalate to incident response if root executed "journalctl --vacuum-time/size/files" outside a documented maintenance window, if Storage=volatile was set or retention reduced below policy, or if the same actor performed vacuums on multiple hosts within 24 hours.
-

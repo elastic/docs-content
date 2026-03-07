@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Curl SOCKS Proxy Activity from Unusual Parent" prebuilt detection rule.
+description: 'Investigation guide for the "Curl SOCKS Proxy Activity from Unusual Parent" prebuilt detection rule.'
 ---
 
 # Curl SOCKS Proxy Activity from Unusual Parent

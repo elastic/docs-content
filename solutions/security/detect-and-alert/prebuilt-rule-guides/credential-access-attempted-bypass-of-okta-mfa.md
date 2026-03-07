@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Attempted Bypass of Okta MFA" prebuilt detection rule.
+description: 'Investigation guide for the "Attempted Bypass of Okta MFA" prebuilt detection rule.'
 ---
 
 # Attempted Bypass of Okta MFA

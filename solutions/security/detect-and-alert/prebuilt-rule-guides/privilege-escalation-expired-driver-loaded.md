@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Expired or Revoked Driver Loaded" prebuilt detection rule.
+description: 'Investigation guide for the "Expired or Revoked Driver Loaded" prebuilt detection rule.'
 ---
 
 # Expired or Revoked Driver Loaded

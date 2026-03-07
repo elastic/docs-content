@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Vault Web Credentials Read" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Vault Web Credentials Read" prebuilt detection rule.'
 ---
 
 # Multiple Vault Web Credentials Read

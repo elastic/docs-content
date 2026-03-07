@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 AMI Shared with Another Account" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 AMI Shared with Another Account" prebuilt detection rule.'
 ---
 
 # AWS EC2 AMI Shared with Another Account
@@ -44,5 +44,3 @@ This rule identifies when an Amazon Machine Image (AMI) is shared with another A
 ### Additional Information
 
 For more information on managing and sharing AMIs, refer to the [Amazon EC2 User Guide on AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) and [Sharing AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-explicit.html). Additionally, explore adversarial techniques related to data exfiltration via AMI sharing as documented by Stratus Red Team [here](https://stratus-red-team.cloud/attack-techniques/AWS/aws.exfiltration.ec2-share-ami/).
-
-

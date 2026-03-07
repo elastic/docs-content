@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "NetSupport Manager Execution from an Unusual Path" prebuilt detection rule.
+description: 'Investigation guide for the "NetSupport Manager Execution from an Unusual Path" prebuilt detection rule.'
 ---
 
 # NetSupport Manager Execution from an Unusual Path

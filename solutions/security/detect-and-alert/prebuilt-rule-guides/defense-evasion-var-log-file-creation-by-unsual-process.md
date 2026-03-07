@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "File Creation in /var/log via Suspicious Process" prebuilt detection rule.
+description: 'Investigation guide for the "File Creation in /var/log via Suspicious Process" prebuilt detection rule.'
 ---
 
 # File Creation in /var/log via Suspicious Process
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ In Linux environments, the `/var/log` directory is crucial for storing system lo
 - Implement stricter permissions on directories like /tmp, /var/tmp, and /dev/shm to prevent unauthorized execution of processes from these locations.
 - Escalate the incident to the security operations team for further analysis and to determine if additional systems are compromised.
 - Update and enhance monitoring rules to detect similar suspicious activities in the future, focusing on process execution from insecure locations and unauthorized file creation in critical directories.
-

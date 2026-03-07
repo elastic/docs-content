@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Threat Intel Email Indicator Match" prebuilt detection rule.
+description: 'Investigation guide for the "Threat Intel Email Indicator Match" prebuilt detection rule.'
 ---
 
 # Threat Intel Email Indicator Match
@@ -58,4 +58,3 @@ This rule is triggered when an email indicator from the Threat Intel Filebeat mo
 - Run a full antimalware scan. This may reveal additional artifacts, persistence mechanisms, or malware components on the system.
 - Determine the initial vector abused by the attacker—e.g., bypassed email filters, spoofed domain, etc.—and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

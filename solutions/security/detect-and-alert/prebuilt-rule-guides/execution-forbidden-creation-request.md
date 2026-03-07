@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Forbidden Creation Request" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Forbidden Creation Request" prebuilt detection rule.'
 ---
 
 # Kubernetes Forbidden Creation Request
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -47,4 +47,3 @@ Kubernetes, a container orchestration platform, manages applications across clus
 - Escalate the incident to the security operations team for further investigation and to determine if there is a broader security incident or breach. Provide them with all relevant logs and findings.
 - Implement additional monitoring and alerting for similar unauthorized creation attempts in the future. This can include setting up alerts for any "forbid" decisions in the audit logs to ensure rapid detection and response.
 - Consider deploying additional security tools or services, such as intrusion detection systems or anomaly detection solutions, to enhance the security posture of the Kubernetes environment and prevent similar threats.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "High Number of Okta User Password Reset or Unlock Attempts" prebuilt detection rule.
+description: 'Investigation guide for the "High Number of Okta User Password Reset or Unlock Attempts" prebuilt detection rule.'
 ---
 
 # High Number of Okta User Password Reset or Unlock Attempts
@@ -39,4 +39,3 @@ This rule is designed to detect a suspiciously high number of password reset or 
 ## Setup
 
 The Okta Fleet integration, Filebeat module, or similarly structured data is required to be compatible with this rule.
-

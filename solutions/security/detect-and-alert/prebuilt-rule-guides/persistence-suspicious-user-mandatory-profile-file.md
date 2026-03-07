@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Persistence via Mandatory User Profile" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Persistence via Mandatory User Profile" prebuilt detection rule.'
 ---
 
 # Potential Persistence via Mandatory User Profile

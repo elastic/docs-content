@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "User account exposed to Kerberoasting" prebuilt detection rule.
+description: 'Investigation guide for the "User account exposed to Kerberoasting" prebuilt detection rule.'
 ---
 
 # User account exposed to Kerberoasting
@@ -44,4 +44,3 @@ Attackers can also perform "Targeted Kerberoasting", which consists of adding fa
 - Isolate the involved hosts to prevent further post-compromise behavior.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

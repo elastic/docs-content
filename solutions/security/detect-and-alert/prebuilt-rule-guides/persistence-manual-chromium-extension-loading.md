@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Manual Loading of a Suspicious Chromium Extension" prebuilt detection rule.
+description: 'Investigation guide for the "Manual Loading of a Suspicious Chromium Extension" prebuilt detection rule.'
 ---
 
 # Manual Loading of a Suspicious Chromium Extension
@@ -47,4 +47,3 @@ Chromium-based browsers support loading extensions from local directories using 
 - Block the malicious extension path or hash in endpoint security policies to prevent reloading.
 - Reset passwords for web accounts that may have been compromised through the malicious extension.
 - Check browser sync settings to ensure the malicious extension doesn't propagate to other devices.
-

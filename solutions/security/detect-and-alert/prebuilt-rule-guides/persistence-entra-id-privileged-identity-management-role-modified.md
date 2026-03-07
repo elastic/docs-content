@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Privileged Identity Management (PIM) Role Modified" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Privileged Identity Management (PIM) Role Modified" prebuilt detection rule.'
 ---
 
 # Entra ID Privileged Identity Management (PIM) Role Modified

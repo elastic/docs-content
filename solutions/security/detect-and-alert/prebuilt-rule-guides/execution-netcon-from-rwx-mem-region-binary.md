@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network Connection from Binary with RWX Memory Region" prebuilt detection rule.
+description: 'Investigation guide for the "Network Connection from Binary with RWX Memory Region" prebuilt detection rule.'
 ---
 
 # Network Connection from Binary with RWX Memory Region

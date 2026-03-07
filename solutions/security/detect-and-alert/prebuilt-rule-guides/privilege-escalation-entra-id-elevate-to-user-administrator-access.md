@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Elevated Access to User Access Administrator" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Elevated Access to User Access Administrator" prebuilt detection rule.'
 ---
 
 # Entra ID Elevated Access to User Access Administrator
@@ -48,5 +48,3 @@ This rule identifies when a user elevates their permissions to the "User Access 
   - Require MFA and approval for all privilege escalation actions.
   - Consider enabling JIT (Just-in-Time) access with expiration.
   - Add alerts for repeated or unusual use of `Microsoft.Authorization/elevateAccess/action`.
-
-

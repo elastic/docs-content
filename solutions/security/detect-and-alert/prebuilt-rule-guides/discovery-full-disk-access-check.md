@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Full Disk Access Permission Check" prebuilt detection rule.
+description: 'Investigation guide for the "Full Disk Access Permission Check" prebuilt detection rule.'
 ---
 
 # Full Disk Access Permission Check
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects suspicious reads of the Time Machine preferences plist that ad
 - Collect and preserve evidence (the binary and its hash, quarantine/xattr info, parent process, relevant unified logs, and a copy of the accessed plist) before cleanup, then run a full endpoint malware scan and validate no additional sensitive files were accessed immediately after the check.  
 - Restore system integrity by updating macOS and security tools, reinstalling or re-imaging if core components were modified, and confirm normal Time Machine configuration after remediation to ensure operational recovery.  
 - Escalate to IR/SECOPS immediately if the process is unsigned/notarization-missing, shows persistence, or makes outbound connections after the plist read, and harden by enforcing MDM controls that restrict FDA grants and block execution of untrusted scripting runtimes where feasible.
-

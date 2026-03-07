@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Command Shell Activity Started via RunDLL32" prebuilt detection rule.
+description: 'Investigation guide for the "Command Shell Activity Started via RunDLL32" prebuilt detection rule.'
 ---
 
 # Command Shell Activity Started via RunDLL32

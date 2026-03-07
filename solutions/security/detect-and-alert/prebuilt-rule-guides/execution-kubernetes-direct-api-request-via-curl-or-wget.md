@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Direct API Request via Curl or Wget" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Direct API Request via Curl or Wget" prebuilt detection rule.'
 ---
 
 # Kubernetes Direct API Request via Curl or Wget
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Kubernetes API endpoints are crucial for managing cluster resources. Adversaries
 - Implement network segmentation and access controls to restrict direct access to Kubernetes API endpoints, ensuring only authorized clients can communicate with the API.
 - Escalate the incident to the security operations team for further investigation and to assess the need for additional security measures or incident response actions.
 - Enhance monitoring and alerting for similar unauthorized access attempts by integrating additional threat intelligence and refining detection capabilities.
-

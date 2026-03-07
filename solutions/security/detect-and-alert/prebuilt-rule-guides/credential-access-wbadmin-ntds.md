@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "NTDS Dump via Wbadmin" prebuilt detection rule.
+description: 'Investigation guide for the "NTDS Dump via Wbadmin" prebuilt detection rule.'
 ---
 
 # NTDS Dump via Wbadmin

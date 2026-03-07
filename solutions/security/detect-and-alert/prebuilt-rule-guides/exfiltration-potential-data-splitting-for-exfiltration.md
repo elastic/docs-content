@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Data Splitting Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Data Splitting Detected" prebuilt detection rule.'
 ---
 
 # Potential Data Splitting Detected

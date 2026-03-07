@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Script Execution via Microsoft HTML Application" prebuilt detection rule.
+description: 'Investigation guide for the "Script Execution via Microsoft HTML Application" prebuilt detection rule.'
 ---
 
 # Script Execution via Microsoft HTML Application

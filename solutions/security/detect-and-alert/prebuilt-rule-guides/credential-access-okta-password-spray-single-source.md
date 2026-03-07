@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Okta Password Spray (Single Source)" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Okta Password Spray (Single Source)" prebuilt detection rule.'
 ---
 
 # Potential Okta Password Spray (Single Source)
@@ -36,4 +36,3 @@ This rule identifies a single source IP attempting authentication against multip
 - Enable or strengthen MFA for targeted accounts.
 - Consider implementing CAPTCHA or additional friction for suspicious authentication patterns.
 - Review Okta sign-on policies to ensure lockout thresholds are appropriately configured.
-

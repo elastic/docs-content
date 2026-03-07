@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Linux Network Configuration Discovery" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Linux Network Configuration Discovery" prebuilt detection rule.'
 ---
 
 # Unusual Linux Network Configuration Discovery

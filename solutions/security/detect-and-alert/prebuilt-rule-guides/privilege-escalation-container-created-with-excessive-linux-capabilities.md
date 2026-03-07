@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Container Created with Excessive Linux Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Container Created with Excessive Linux Capabilities" prebuilt detection rule.'
 ---
 
 # Kubernetes Container Created with Excessive Linux Capabilities

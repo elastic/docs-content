@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Newly Observed Process Exhibiting High CPU Usage" prebuilt detection rule.
+description: 'Investigation guide for the "Newly Observed Process Exhibiting High CPU Usage" prebuilt detection rule.'
 ---
 
 # Newly Observed Process Exhibiting High CPU Usage

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Communication App Child Process" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Communication App Child Process" prebuilt detection rule.'
 ---
 
 # Suspicious Communication App Child Process

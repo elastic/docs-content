@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Windows Server Update Service Spawning Suspicious Processes" prebuilt detection rule.
+description: 'Investigation guide for the "Windows Server Update Service Spawning Suspicious Processes" prebuilt detection rule.'
 ---
 
 # Windows Server Update Service Spawning Suspicious Processes

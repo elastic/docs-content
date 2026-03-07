@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Invoke-NinjaCopy script" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Invoke-NinjaCopy script" prebuilt detection rule.'
 ---
 
 # PowerShell Invoke-NinjaCopy script
@@ -99,4 +99,3 @@ This rule identifies PowerShell script block content referencing `Invoke-NinjaCo
 - Recover and harden:
   - Restore affected systems as needed and validate that no persistence remains.
   - Reduce recurrence by tightening administrative scripting governance for PowerShell (least privilege, controlled script deployment locations, and application control where feasible) and by restricting access to systems that store credential material.
-

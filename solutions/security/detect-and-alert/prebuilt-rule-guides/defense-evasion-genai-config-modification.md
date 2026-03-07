@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Process Modifying GenAI Configuration File" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Process Modifying GenAI Configuration File" prebuilt detection rule.'
 ---
 
 # Unusual Process Modifying GenAI Configuration File
@@ -39,4 +39,3 @@ Configuration files for GenAI tools like Cursor, Claude, Copilot, and Ollama con
 - Review the modified configuration file and revert any unauthorized changes to MCP servers, plugins, or agent settings.
 - If malicious MCP servers were added, block the associated domains at the network level.
 - Review and rotate any API keys or credentials that may have been exposed through the compromised GenAI configuration.
-

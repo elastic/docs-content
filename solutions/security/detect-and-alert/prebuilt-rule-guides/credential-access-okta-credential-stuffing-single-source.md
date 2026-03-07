@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Okta Credential Stuffing (Single Source)" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Okta Credential Stuffing (Single Source)" prebuilt detection rule.'
 ---
 
 # Potential Okta Credential Stuffing (Single Source)
@@ -36,4 +36,3 @@ This rule identifies a single source IP attempting authentication against many u
 - Enable or strengthen MFA for targeted accounts.
 - Review Okta sign-on policies to add additional friction for suspicious authentication patterns.
 - If this is a known legitimate source, consider adding an exception for the IP or ASN.
-

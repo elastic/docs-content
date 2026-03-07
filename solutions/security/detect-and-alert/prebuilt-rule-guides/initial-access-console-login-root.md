@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Management Console Root Login" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Management Console Root Login" prebuilt detection rule.'
 ---
 
 # AWS Management Console Root Login
@@ -80,6 +80,4 @@ This rule detects a successful AWS Management Console login by the root user (`C
 - **[AWS IR Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/tree/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks):** See “Account Compromise” and “Credential Compromise” playbooks for containment and recovery procedures.  
 - **[AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework/tree/a8c7b313636b406a375952ac00b2d68e89a991f2/docs):** Reference “Account Access Investigation” for evidence handling and credential rotation steps.  
 - **AWS Documentation:** [Tasks that require the root user](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root).  
-- **Security Best Practices:** [AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/).  
-
-
+- **Security Best Practices:** [AWS Knowledge Center – Security Best Practices](https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/).

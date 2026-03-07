@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution with Explicit Credentials via Scripting" prebuilt detection rule.
+description: 'Investigation guide for the "Execution with Explicit Credentials via Scripting" prebuilt detection rule.'
 ---
 
 # Execution with Explicit Credentials via Scripting

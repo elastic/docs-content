@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual User Privilege Enumeration via id" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual User Privilege Enumeration via id" prebuilt detection rule.'
 ---
 
 # Unusual User Privilege Enumeration via id

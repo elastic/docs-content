@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Polkit Version Discovery" prebuilt detection rule.
+description: 'Investigation guide for the "Polkit Version Discovery" prebuilt detection rule.'
 ---
 
 # Polkit Version Discovery

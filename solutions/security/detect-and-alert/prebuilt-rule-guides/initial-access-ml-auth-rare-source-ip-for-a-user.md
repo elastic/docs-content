@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Source IP for a User to Logon from" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Source IP for a User to Logon from" prebuilt detection rule.'
 ---
 
 # Unusual Source IP for a User to Logon from

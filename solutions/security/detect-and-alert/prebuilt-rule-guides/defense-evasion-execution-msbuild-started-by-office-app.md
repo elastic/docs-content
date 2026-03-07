@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Microsoft Build Engine Started by an Office Application" prebuilt detection rule.
+description: 'Investigation guide for the "Microsoft Build Engine Started by an Office Application" prebuilt detection rule.'
 ---
 
 # Microsoft Build Engine Started by an Office Application
@@ -60,4 +60,3 @@ This rule looks for the `Msbuild.exe` utility spawned by MS Office programs. Thi
     - Remove emails from the sender from mailboxes.
     - Consider improvements to the security awareness program.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

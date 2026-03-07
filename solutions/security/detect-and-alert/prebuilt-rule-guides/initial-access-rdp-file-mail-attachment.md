@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote Desktop File Opened from Suspicious Path" prebuilt detection rule.
+description: 'Investigation guide for the "Remote Desktop File Opened from Suspicious Path" prebuilt detection rule.'
 ---
 
 # Remote Desktop File Opened from Suspicious Path

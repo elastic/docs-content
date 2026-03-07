@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unknown Execution of Binary with RWX Memory Region" prebuilt detection rule.
+description: 'Investigation guide for the "Unknown Execution of Binary with RWX Memory Region" prebuilt detection rule.'
 ---
 
 # Unknown Execution of Binary with RWX Memory Region

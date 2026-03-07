@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "CyberArk Privileged Access Security Error" prebuilt detection rule.
+description: 'Investigation guide for the "CyberArk Privileged Access Security Error" prebuilt detection rule.'
 ---
 
 # CyberArk Privileged Access Security Error
@@ -19,4 +19,3 @@ The CyberArk Privileged Access Security (PAS) Fleet integration, Filebeat module
 
 This is a promotion rule for CyberArk error events, which are alertable events per the vendor.
 Consult vendor documentation on interpreting specific events.
-

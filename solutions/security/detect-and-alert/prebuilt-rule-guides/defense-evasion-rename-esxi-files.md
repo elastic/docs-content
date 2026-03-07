@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Renaming of ESXI Files" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Renaming of ESXI Files" prebuilt detection rule.'
 ---
 
 # Suspicious Renaming of ESXI Files

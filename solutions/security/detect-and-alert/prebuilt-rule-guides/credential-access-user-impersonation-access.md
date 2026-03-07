@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta User Session Impersonation" prebuilt detection rule.
+description: 'Investigation guide for the "Okta User Session Impersonation" prebuilt detection rule.'
 ---
 
 # Okta User Session Impersonation

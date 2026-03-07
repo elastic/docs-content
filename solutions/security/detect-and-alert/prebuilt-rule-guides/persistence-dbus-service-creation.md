@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "D-Bus Service Created" prebuilt detection rule.
+description: 'Investigation guide for the "D-Bus Service Created" prebuilt detection rule.'
 ---
 
 # D-Bus Service Created

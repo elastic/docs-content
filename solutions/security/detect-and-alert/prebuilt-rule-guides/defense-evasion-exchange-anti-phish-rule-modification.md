@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Exchange Anti-Phish Rule Modification" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Exchange Anti-Phish Rule Modification" prebuilt detection rule.'
 ---
 
 # M365 Exchange Anti-Phish Rule Modification

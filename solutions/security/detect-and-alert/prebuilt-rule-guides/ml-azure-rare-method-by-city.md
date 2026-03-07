@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual City for an Azure Activity Logs Event" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual City for an Azure Activity Logs Event" prebuilt detection rule.'
 ---
 
 # Unusual City for an Azure Activity Logs Event
@@ -41,4 +41,3 @@ This rule highlights Azure Activity Logs activity executed from a city atypical 
 - After containment, verify business justification (travel or new egress) and restore any required resources from ARM/Bicep templates or backups, then re-enable access behind Conditional Access with known egress IPs only.
 - Escalate to Incident Response if the actor performs privileged role grants, Key Vault secret retrieval, Storage key listing, or rapid compute provisioning within the same session, or if sign-in shows impossible travel or missing MFA.
 - Harden by enforcing PIM for Owner/Contributor/User Access Administrator roles, configuring Conditional Access with country allowlists and named egress IP ranges, restricting service principals to certificate-only auth and Private Link on Key Vault/Storage, and enabling continuous geolocation anomaly alerts in Microsoft Sentinel.
-

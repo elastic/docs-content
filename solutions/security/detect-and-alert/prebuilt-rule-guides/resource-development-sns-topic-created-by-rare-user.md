@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS SNS Topic Created by Rare User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS SNS Topic Created by Rare User" prebuilt detection rule.'
 ---
 
 # AWS SNS Topic Created by Rare User
@@ -59,4 +59,3 @@ This is a [New Terms](https://www.elastic.co/guide/en/security/current/rules-ui-
   - Check whether the SNS topic is being used as a notification channel for Lambda, S3, or other AWS services.
 - **Enhance IAM Policy Controls**:
   - Consider enforcing least privilege IAM policies and enabling multi-factor authentication (MFA) where applicable.
-

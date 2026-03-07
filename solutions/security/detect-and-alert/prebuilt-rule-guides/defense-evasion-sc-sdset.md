@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Service DACL Modification via sc.exe" prebuilt detection rule.
+description: 'Investigation guide for the "Service DACL Modification via sc.exe" prebuilt detection rule.'
 ---
 
 # Service DACL Modification via sc.exe

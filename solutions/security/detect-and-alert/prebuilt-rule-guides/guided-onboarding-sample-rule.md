@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "My First Rule" prebuilt detection rule.
+description: 'Investigation guide for the "My First Rule" prebuilt detection rule.'
 ---
 
 # My First Rule
@@ -50,4 +50,3 @@ This alert does not show threat activity. Elastic created this alert to help you
 For normal rules, the Investigation Guide will help analysts investigate alerts.
 
 This alert will show once every 24 hours for each host. It is safe to disable this rule.
-

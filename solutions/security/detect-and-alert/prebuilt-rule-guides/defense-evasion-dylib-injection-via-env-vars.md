@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Dylib Injection via Process Environment Variables" prebuilt detection rule.
+description: 'Investigation guide for the "Dylib Injection via Process Environment Variables" prebuilt detection rule.'
 ---
 
 # Dylib Injection via Process Environment Variables
@@ -47,4 +47,3 @@ Dynamic library injection using DYLD_INSERT_LIBRARIES or LD_PRELOAD environment 
 - Scan the system for additional indicators of compromise, persistence mechanisms, or lateral movement.
 - Reset any credentials that may have been exposed through the injection, particularly if the target application handles sensitive authentication data.
 - Escalate to the incident response team for comprehensive analysis if the injection indicates active compromise.
-

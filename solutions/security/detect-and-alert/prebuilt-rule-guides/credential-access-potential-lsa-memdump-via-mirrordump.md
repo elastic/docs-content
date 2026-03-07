@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Credential Access via DuplicateHandle in LSASS" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Credential Access via DuplicateHandle in LSASS" prebuilt detection rule.'
 ---
 
 # Potential Credential Access via DuplicateHandle in LSASS

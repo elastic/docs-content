@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential PowerShell Obfuscation via High Numeric Character Proportion" prebuilt detection rule.
+description: 'Investigation guide for the "Potential PowerShell Obfuscation via High Numeric Character Proportion" prebuilt detection rule.'
 ---
 
 # Potential PowerShell Obfuscation via High Numeric Character Proportion
@@ -67,4 +67,3 @@ This rule flags long PowerShell script blocks with unusually digit-dense content
 - Investigate potential account compromise for the associated `user.id` by reviewing recent authentication and endpoint activity; take credential and session remediation actions in line with your procedures.
 - Hunt for related activity using `host.id`, `agent.id`, `user.id`, and distinctive script patterns identified during triage to find additional impacted systems.
 - Apply preventive controls based on findings, such as tightening PowerShell usage for affected accounts, improving script provenance controls, and enhancing monitoring for similar obfuscation patterns.
-

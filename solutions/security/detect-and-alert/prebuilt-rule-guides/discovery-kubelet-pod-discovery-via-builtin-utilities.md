@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubelet Pod Discovery Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Kubelet Pod Discovery Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Kubelet Pod Discovery Detected via Defend for Containers

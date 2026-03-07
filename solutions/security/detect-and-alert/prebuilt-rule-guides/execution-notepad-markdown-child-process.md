@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Notepad Markdown RCE Exploitation" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Notepad Markdown RCE Exploitation" prebuilt detection rule.'
 ---
 
 # Potential Notepad Markdown RCE Exploitation
@@ -42,4 +42,3 @@ triggers unintended process execution.
 - Run endpoint malware scans and collect volatile artifacts (running processes, network connections, autoruns).
 - Patch Windows/Notepad to the latest security update level addressing the vulnerability.
 - Hunt for the same parent-child pattern across other hosts to identify additional impacted systems.
-

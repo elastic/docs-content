@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Privileged Docker Container Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Privileged Docker Container Creation" prebuilt detection rule.'
 ---
 
 # Privileged Docker Container Creation

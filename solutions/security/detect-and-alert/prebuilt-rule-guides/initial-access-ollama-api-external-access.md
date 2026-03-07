@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Ollama API Accessed from External Network" prebuilt detection rule.
+description: 'Investigation guide for the "Ollama API Accessed from External Network" prebuilt detection rule.'
 ---
 
 # Ollama API Accessed from External Network
@@ -38,4 +38,3 @@ This rule detects when Ollama accepts connections from external IP addresses. Ol
 - If exploitation is suspected, stop Ollama and audit ~/.ollama/models/ for unauthorized models.
 - Review Ollama and system logs for signs of compromise.
 - Consider running Ollama in a container with network isolation.
-

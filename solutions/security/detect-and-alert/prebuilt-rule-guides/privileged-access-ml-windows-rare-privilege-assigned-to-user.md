@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Privilege Type assigned to a User" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Privilege Type assigned to a User" prebuilt detection rule.'
 ---
 
 # Unusual Privilege Type assigned to a User

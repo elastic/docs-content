@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Kerberos Attack via Bifrost" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Kerberos Attack via Bifrost" prebuilt detection rule.'
 ---
 
 # Potential Kerberos Attack via Bifrost

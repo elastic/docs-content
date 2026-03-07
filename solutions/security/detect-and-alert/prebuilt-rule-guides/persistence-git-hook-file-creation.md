@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Git Hook Created or Modified" prebuilt detection rule.
+description: 'Investigation guide for the "Git Hook Created or Modified" prebuilt detection rule.'
 ---
 
 # Git Hook Created or Modified

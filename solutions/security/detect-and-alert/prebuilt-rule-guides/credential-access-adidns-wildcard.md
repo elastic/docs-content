@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential ADIDNS Poisoning via Wildcard Record Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Potential ADIDNS Poisoning via Wildcard Record Creation" prebuilt detection rule.'
 ---
 
 # Potential ADIDNS Poisoning via Wildcard Record Creation

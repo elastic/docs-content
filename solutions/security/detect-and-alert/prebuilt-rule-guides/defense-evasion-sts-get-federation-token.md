@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS First Occurrence of STS GetFederationToken Request by User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS First Occurrence of STS GetFederationToken Request by User" prebuilt detection rule.'
 ---
 
 # AWS First Occurrence of STS GetFederationToken Request by User

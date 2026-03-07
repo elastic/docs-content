@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Compute Restore Point Collections Deleted" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Compute Restore Point Collections Deleted" prebuilt detection rule.'
 ---
 
 # Azure Compute Restore Point Collections Deleted
@@ -69,4 +69,3 @@ unusual in normal operations and highly suspicious when observed.
     - Unusual access to disaster recovery infrastructure
 - Document the incident thoroughly and conduct a post-incident review to identify gaps in security controls and opportunities for improvement.
 - Consider implementing Azure Resource Locks on critical recovery resources to prevent accidental or malicious deletion.
-

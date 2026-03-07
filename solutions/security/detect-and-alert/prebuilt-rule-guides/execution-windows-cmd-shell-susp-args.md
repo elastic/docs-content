@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Windows Command Shell Arguments" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Windows Command Shell Arguments" prebuilt detection rule.'
 ---
 
 # Suspicious Windows Command Shell Arguments

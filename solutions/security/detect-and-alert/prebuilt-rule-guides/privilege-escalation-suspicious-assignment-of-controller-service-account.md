@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubernetes Suspicious Assignment of Controller Service Account" prebuilt detection rule.
+description: 'Investigation guide for the "Kubernetes Suspicious Assignment of Controller Service Account" prebuilt detection rule.'
 ---
 
 # Kubernetes Suspicious Assignment of Controller Service Account

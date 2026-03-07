@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Modification of AmsiEnable Registry Key" prebuilt detection rule.
+description: 'Investigation guide for the "Modification of AmsiEnable Registry Key" prebuilt detection rule.'
 ---
 
 # Modification of AmsiEnable Registry Key
@@ -60,4 +60,3 @@ This rule monitors the modifications to the Software\Microsoft\Windows Script\Se
 - Delete or set the key to its default value.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

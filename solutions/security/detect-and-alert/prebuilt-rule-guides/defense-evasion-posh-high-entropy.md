@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential PowerShell Obfuscated Script via High Entropy" prebuilt detection rule.
+description: 'Investigation guide for the "Potential PowerShell Obfuscated Script via High Entropy" prebuilt detection rule.'
 ---
 
 # Potential PowerShell Obfuscated Script via High Entropy
@@ -93,4 +93,3 @@ This alert flags a large PowerShell script block with statistical characteristic
 - If benign activity is confirmed:
   - Record the justification and expected behavior (who runs it, where it runs, and expected `file.path` when present).
   - Monitor for deviations from the established baseline, including new `user.id`, new `host.id`, new `file.path`, or significant changes in `powershell.file.script_block_text` structure or entropy characteristics.
-

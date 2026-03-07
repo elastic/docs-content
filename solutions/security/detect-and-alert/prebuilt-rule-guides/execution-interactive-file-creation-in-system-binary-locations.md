@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "System Path File Creation and Execution Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "System Path File Creation and Execution Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # System Path File Creation and Execution Detected via Defend for Containers

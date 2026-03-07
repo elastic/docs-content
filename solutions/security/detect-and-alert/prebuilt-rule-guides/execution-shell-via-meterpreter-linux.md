@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Meterpreter Reverse Shell" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Meterpreter Reverse Shell" prebuilt detection rule.'
 ---
 
 # Potential Meterpreter Reverse Shell

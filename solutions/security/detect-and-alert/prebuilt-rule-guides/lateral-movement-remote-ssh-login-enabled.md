@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote SSH Login Enabled via systemsetup Command" prebuilt detection rule.
+description: 'Investigation guide for the "Remote SSH Login Enabled via systemsetup Command" prebuilt detection rule.'
 ---
 
 # Remote SSH Login Enabled via systemsetup Command

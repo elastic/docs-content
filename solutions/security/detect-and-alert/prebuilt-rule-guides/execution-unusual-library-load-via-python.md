@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Library Load via Python" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Library Load via Python" prebuilt detection rule.'
 ---
 
 # Unusual Library Load via Python
@@ -47,4 +47,3 @@ Python's dynamic library loading capabilities allow code to import and execute s
 - Search for similar library loading patterns across other systems in the environment to identify potential lateral movement.
 - Reset any credentials or tokens that may have been exposed through the compromised Python process.
 - Escalate to the incident response team if APT-level compromise is suspected.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious WMIC XSL Script Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious WMIC XSL Script Execution" prebuilt detection rule.'
 ---
 
 # Suspicious WMIC XSL Script Execution

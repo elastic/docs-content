@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual File Operation by dns.exe" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual File Operation by dns.exe" prebuilt detection rule.'
 ---
 
 # Unusual File Operation by dns.exe
@@ -41,4 +41,3 @@ The rule flags Windows DNS Server (dns.exe) creating, changing, or deleting file
 - Recover by repairing system files with SFC/DISM, restoring affected directories from known-good backups, and restarting the DNS service, then validate zone integrity, AD replication, and client name-resolution.
 - Immediately escalate to incident response if dns.exe wrote an executable or script into NETLOGON or SYSVOL or if a service binary path was changed to point to a newly dropped file, indicating probable domain controller compromise and lateral movement.
 - Harden by applying the latest Windows Server DNS patches, enforcing WDAC/AppLocker to block execution from SYSVOL/NETLOGON and restrict dns.exe writes to the DNS and log directories, and enable auditing on service creation and file writes in System32/NETLOGON/SYSVOL.
-

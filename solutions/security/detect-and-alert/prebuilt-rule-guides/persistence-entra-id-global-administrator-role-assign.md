@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Identity Global Administrator Role Assigned" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Identity Global Administrator Role Assigned" prebuilt detection rule.'
 ---
 
 # M365 Identity Global Administrator Role Assigned
@@ -43,4 +43,3 @@ The Microsoft 365 Global Administrator role grants comprehensive administrative 
 - Notify the appropriate identity and security operations teams to investigate further and begin incident response procedures.
 - Limit the number of Global Administrator accounts and enforce role-based access control (RBAC) using least privilege principles.
 - Consider implementing conditional access policies to limit role assignment actions to specific networks, devices, or user groups.
-

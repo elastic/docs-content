@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Successful Application SSO from Rare Unknown Client Device" prebuilt detection rule.
+description: 'Investigation guide for the "Successful Application SSO from Rare Unknown Client Device" prebuilt detection rule.'
 ---
 
 # Successful Application SSO from Rare Unknown Client Device

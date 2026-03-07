@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Discovery API Calls via CLI from a Single Resource" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Discovery API Calls via CLI from a Single Resource" prebuilt detection rule.'
 ---
 
 # AWS Discovery API Calls via CLI from a Single Resource
@@ -90,5 +90,3 @@ If the activity is unexpected or originates from unrecognized credentials, follo
 - **AWS Playbook Resources**
   - [AWS Incident Response Playbooks](https://github.com/aws-samples/aws-incident-response-playbooks/tree/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks)
   - [AWS Customer Playbook Framework](https://github.com/aws-samples/aws-customer-playbook-framework)
-
-

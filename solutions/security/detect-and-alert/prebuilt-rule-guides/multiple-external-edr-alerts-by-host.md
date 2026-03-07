@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple External EDR Alerts by Host" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple External EDR Alerts by Host" prebuilt detection rule.'
 ---
 
 # Multiple External EDR Alerts by Host

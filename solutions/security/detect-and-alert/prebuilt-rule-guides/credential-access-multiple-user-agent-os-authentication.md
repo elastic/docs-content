@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Okta Multiple OS Names Detected for a Single DT Hash" prebuilt detection rule.
+description: 'Investigation guide for the "Okta Multiple OS Names Detected for a Single DT Hash" prebuilt detection rule.'
 ---
 
 # Okta Multiple OS Names Detected for a Single DT Hash
@@ -39,4 +39,3 @@ same dt_hash. This will help identify the nature of the anomaly.
 - Review and monitor the affected dt_hash for any further suspicious activity.
 - Educate users about the importance of device security and the risks associated with device tokens.
 - Implement additional monitoring for device token tokens and consider using conditional access policies to restrict access based on device compliance status.
-

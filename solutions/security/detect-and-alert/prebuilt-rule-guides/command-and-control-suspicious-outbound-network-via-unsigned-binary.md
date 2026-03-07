@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Outbound Network Connection via Unsigned Binary" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Outbound Network Connection via Unsigned Binary" prebuilt detection rule.'
 ---
 
 # Suspicious Outbound Network Connection via Unsigned Binary
@@ -46,4 +46,3 @@ Unsigned or untrusted binaries making outbound network connections to raw IP add
 - Review other systems in the environment for the same binary hash or similar indicators of compromise.
 - Implement application allowlisting policies to prevent unauthorized unsigned binaries from executing.
 - Escalate to the incident response team for further investigation if the binary is confirmed malicious.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Systemd Shell Execution During Boot" prebuilt detection rule.
+description: 'Investigation guide for the "Systemd Shell Execution During Boot" prebuilt detection rule.'
 ---
 
 # Systemd Shell Execution During Boot

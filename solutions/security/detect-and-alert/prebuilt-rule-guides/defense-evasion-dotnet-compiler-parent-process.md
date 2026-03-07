@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious .NET Code Compilation" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious .NET Code Compilation" prebuilt detection rule.'
 ---
 
 # Suspicious .NET Code Compilation

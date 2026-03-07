@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential AWS S3 Bucket Ransomware Note Uploaded" prebuilt detection rule.
+description: 'Investigation guide for the "Potential AWS S3 Bucket Ransomware Note Uploaded" prebuilt detection rule.'
 ---
 
 # Potential AWS S3 Bucket Ransomware Note Uploaded
@@ -78,5 +78,4 @@ This rule detects a successful `PutObject` to S3 where the object key matches co
 
 - For further guidance on managing S3 bucket security and protecting against ransomware, refer to the [AWS S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) and AWS best practices for security.
 - [AWS IRP—Ransomware](https://github.com/aws-samples/aws-incident-response-playbooks/blob/c151b0dc091755fffd4d662a8f29e2f6794da52c/playbooks/IRP-Ransomware.md) (NIST-aligned template for evidence, containment, eradication, recovery, post-incident). 
-- [AWS Customer Playbook—Ransom Response (S3)](https://github.com/aws-samples/aws-customer-playbook-framework/blob/a8c7b313636b406a375952ac00b2d68e89a991f2/docs/Ransom_Response_S3.md) (bucket-level response steps: public access blocks, temporary deny, versioning/object lock, lifecycle considerations, recovery). 
-
+- [AWS Customer Playbook—Ransom Response (S3)](https://github.com/aws-samples/aws-customer-playbook-framework/blob/a8c7b313636b406a375952ac00b2d68e89a991f2/docs/Ransom_Response_S3.md) (bucket-level response steps: public access blocks, temporary deny, versioning/object lock, lifecycle considerations, recovery).

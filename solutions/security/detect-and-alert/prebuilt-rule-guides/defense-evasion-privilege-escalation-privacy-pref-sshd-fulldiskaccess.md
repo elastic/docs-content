@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Privacy Control Bypass via Localhost Secure Copy" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Privacy Control Bypass via Localhost Secure Copy" prebuilt detection rule.'
 ---
 
 # Potential Privacy Control Bypass via Localhost Secure Copy

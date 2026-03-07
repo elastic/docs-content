@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Illicit Consent Grant via Registered Application" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Illicit Consent Grant via Registered Application" prebuilt detection rule.'
 ---
 
 # Entra ID Illicit Consent Grant via Registered Application
@@ -49,4 +49,3 @@ This is a New Terms rule that will only trigger if the user and client ID have n
 - Block the application via Conditional Access or Defender for Cloud Apps policies.
 - Enable the Admin Consent Workflow in Azure AD to prevent unsanctioned user approvals in the future.
 - Report any malicious applications to Microsoft to protect other tenants.
-

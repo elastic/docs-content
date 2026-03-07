@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual AWS S3 Object Encryption with SSE-C" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual AWS S3 Object Encryption with SSE-C" prebuilt detection rule.'
 ---
 
 # Unusual AWS S3 Object Encryption with SSE-C
@@ -65,4 +65,3 @@ This rule identifies the use of Server-Side Encryption with Customer-Provided Ke
 **Post-Incident review**:
    - Audit logs for additional activities by the same user or IP.
    - Document findings and apply lessons learned to improve preventive measures.
-

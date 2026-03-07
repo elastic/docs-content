@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Control Panel Process with Unusual Arguments" prebuilt detection rule.
+description: 'Investigation guide for the "Control Panel Process with Unusual Arguments" prebuilt detection rule.'
 ---
 
 # Control Panel Process with Unusual Arguments

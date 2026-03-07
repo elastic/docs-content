@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Region Name for Windows Privileged Operations Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Region Name for Windows Privileged Operations Detected" prebuilt detection rule.'
 ---
 
 # Unusual Region Name for Windows Privileged Operations Detected

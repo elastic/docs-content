@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Security File Access via Common Utilities" prebuilt detection rule.
+description: 'Investigation guide for the "Security File Access via Common Utilities" prebuilt detection rule.'
 ---
 
 # Security File Access via Common Utilities

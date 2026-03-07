@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Execution via Electron Child Process Node.js Module" prebuilt detection rule.
+description: 'Investigation guide for the "Execution via Electron Child Process Node.js Module" prebuilt detection rule.'
 ---
 
 # Execution via Electron Child Process Node.js Module

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS IAM Customer-Managed Policy Attached to Role by Rare User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS IAM Customer-Managed Policy Attached to Role by Rare User" prebuilt detection rule.'
 ---
 
 # AWS IAM Customer-Managed Policy Attached to Role by Rare User
@@ -54,4 +54,3 @@ This rule detects when a customer-managed IAM policy is attached to a role by an
 ### Additional Information
 
 For more information on managing IAM policies and roles in AWS environments, refer to the [AWS IAM Documentation](https://docs.aws.amazon.com/IAM/latest/APIReference/API_AttachRolePolicy.html) and AWS security best practices.
-

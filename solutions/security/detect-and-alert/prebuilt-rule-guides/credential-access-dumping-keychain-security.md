@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Dumping of Keychain Content via Security Command" prebuilt detection rule.
+description: 'Investigation guide for the "Dumping of Keychain Content via Security Command" prebuilt detection rule.'
 ---
 
 # Dumping of Keychain Content via Security Command

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote GitHub Actions Runner Registration" prebuilt detection rule.
+description: 'Investigation guide for the "Remote GitHub Actions Runner Registration" prebuilt detection rule.'
 ---
 
 # Remote GitHub Actions Runner Registration

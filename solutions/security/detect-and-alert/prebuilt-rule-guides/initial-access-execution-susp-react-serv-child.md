@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious React Server Child Process" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious React Server Child Process" prebuilt detection rule.'
 ---
 
 # Suspicious React Server Child Process
@@ -42,4 +42,3 @@ This rule flags suspicious shell or system utility processes spawned by a React 
 - Collect forensic artifacts including memory dumps of the Node.js process (if still running), packet captures of the malicious HTTP request, web server access and error logs, application logs from the React/Next.js server, and copies of any files created in /tmp, /var/tmp, or the application directory.
 - Escalate to incident command if the attacker achieved container escape (nsenter usage detected), accessed sensitive data or credentials, established C2 communication to external infrastructure, or if multiple hosts show similar exploitation patterns from the same source.
 - Patch immediately by upgrading React to version 19.0.1+, 19.1.2+, or 19.2.1+, and Next.js to versions 14.3.0-canary.88+, 15.0.5+, 15.1.9+, 15.2.6+, 15.3.6+, 15.4.8+, 15.5.7+, or 16.0.7+ depending on your major version, and deploy WAF rules to block malformed RSC payloads at the application edge.
-

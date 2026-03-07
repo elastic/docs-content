@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Storage Account Deletion by Unusual User" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Storage Account Deletion by Unusual User" prebuilt detection rule.'
 ---
 
 # Azure Storage Account Deletion by Unusual User
@@ -45,4 +45,3 @@ Azure Storage Accounts provide scalable cloud storage for applications and servi
 - Configure Azure Activity Log alerts to notify security teams immediately when storage accounts are deleted.
 - Conduct a full security assessment to identify any other compromised resources or accounts and look for indicators of broader compromise.
 - Document the incident and update security policies and procedures to prevent similar incidents in the future.
-

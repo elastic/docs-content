@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Kerberos Ticket Request" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Kerberos Ticket Request" prebuilt detection rule.'
 ---
 
 # PowerShell Kerberos Ticket Request
@@ -81,4 +81,3 @@ This alert indicates that PowerShell script block content referenced `KerberosRe
   - Document the script owner, purpose, and expected execution context (expected `user.name`, `host.name`, and script location) to speed up future triage.
   - Where possible, move scripts to controlled locations and limit execution to authorized administrative accounts and hosts.
   - Continue monitoring for deviations, such as execution by new accounts, execution from unusual hosts, or expansion to a larger set of targeted services.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 Threat Intelligence Signal" prebuilt detection rule.
+description: 'Investigation guide for the "M365 Threat Intelligence Signal" prebuilt detection rule.'
 ---
 
 # M365 Threat Intelligence Signal
@@ -46,4 +46,3 @@ Microsoft 365 Threat Intelligence leverages audit logs to monitor activities acr
 - Escalate the incident to Microsoft support if necessary, providing detailed information from the audit logs to assist in further investigation and resolution.
 - Implement additional monitoring and alerting for similar threat indicators to enhance detection capabilities and prevent recurrence.
 - Review and update security policies and configurations for Exchange Online, SharePoint Online, and OneDrive for Business to mitigate vulnerabilities exploited by adversaries.
-

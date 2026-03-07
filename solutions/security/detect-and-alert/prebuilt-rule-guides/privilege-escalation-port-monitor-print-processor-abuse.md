@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Port Monitor or Print Processor Registration Abuse" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Port Monitor or Print Processor Registration Abuse" prebuilt detection rule.'
 ---
 
 # Potential Port Monitor or Print Processor Registration Abuse

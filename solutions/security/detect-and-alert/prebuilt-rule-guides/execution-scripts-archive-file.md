@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Windows Script Execution from Archive" prebuilt detection rule.
+description: 'Investigation guide for the "Windows Script Execution from Archive" prebuilt detection rule.'
 ---
 
 # Windows Script Execution from Archive

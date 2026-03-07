@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS Access Token Used from Multiple Addresses" prebuilt detection rule.
+description: 'Investigation guide for the "AWS Access Token Used from Multiple Addresses" prebuilt detection rule.'
 ---
 
 # AWS Access Token Used from Multiple Addresses
@@ -43,4 +43,3 @@ Access tokens are bound to a single user. Usage from multiple IP addresses may i
 - [STS Temporary Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)
 - [Using MFA with Temporary Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 - [AWS Threat Detection Use Cases](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html)
-

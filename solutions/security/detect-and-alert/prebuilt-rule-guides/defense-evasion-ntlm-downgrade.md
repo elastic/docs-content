@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential NetNTLMv1 Downgrade Attack" prebuilt detection rule.
+description: 'Investigation guide for the "Potential NetNTLMv1 Downgrade Attack" prebuilt detection rule.'
 ---
 
 # Potential NetNTLMv1 Downgrade Attack
@@ -38,4 +38,3 @@ description: Investigation guide for the "Potential NetNTLMv1 Downgrade Attack" 
 - Reset passwords for all accounts that have accessed the affected system to mitigate potential credential compromise.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to determine if additional systems are affected.
 - Implement enhanced monitoring on the affected system and similar endpoints to detect any further attempts to disable NLA or other suspicious activities.
-

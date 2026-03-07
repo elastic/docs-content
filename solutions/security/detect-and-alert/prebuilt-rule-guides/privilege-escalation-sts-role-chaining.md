@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS STS Role Chaining" prebuilt detection rule.
+description: 'Investigation guide for the "AWS STS Role Chaining" prebuilt detection rule.'
 ---
 
 # AWS STS Role Chaining
@@ -67,4 +67,3 @@ Role chaining occurs when a role assumed with temporary credentials (`AssumeRole
 ## Setup
 
 The AWS Fleet integration, Filebeat module, or similarly structured data is required to be compatible with this rule.
-

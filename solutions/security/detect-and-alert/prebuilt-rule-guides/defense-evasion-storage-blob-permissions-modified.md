@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Blob Storage Permissions Modified" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Blob Storage Permissions Modified" prebuilt detection rule.'
 ---
 
 # Azure Blob Storage Permissions Modified

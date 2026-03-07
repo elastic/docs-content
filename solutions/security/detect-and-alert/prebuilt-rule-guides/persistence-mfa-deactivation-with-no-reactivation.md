@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "MFA Deactivation with no Re-Activation for Okta User Account" prebuilt detection rule.
+description: 'Investigation guide for the "MFA Deactivation with no Re-Activation for Okta User Account" prebuilt detection rule.'
 ---
 
 # MFA Deactivation with no Re-Activation for Okta User Account
@@ -42,4 +42,3 @@ This rule fires when an Okta user account has MFA deactivated and no subsequent 
 - Encourage users to use complex, unique passwords and consider implementing multi-factor authentication.
 - Check if the compromised account was used to access or alter any sensitive data, applications or systems.
 - Review the client user-agent to determine if it's a known custom application that can be whitelisted.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Script with Encryption/Decryption Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Script with Encryption/Decryption Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Script with Encryption/Decryption Capabilities
@@ -88,4 +88,3 @@ This behavior can be legitimate (protecting configuration values, packaging cont
 
 - If the activity is confirmed benign:
   - Record the expected `file.path` / `file.name`, the responsible `user.id`, and normal execution patterns to support consistent future triage and tuning decisions.
-

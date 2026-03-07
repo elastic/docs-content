@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Reverse Shell via Suspicious Binary" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Reverse Shell via Suspicious Binary" prebuilt detection rule.'
 ---
 
 # Potential Reverse Shell via Suspicious Binary

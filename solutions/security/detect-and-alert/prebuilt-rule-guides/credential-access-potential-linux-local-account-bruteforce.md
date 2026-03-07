@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Linux Local Account Brute Force Detected" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Linux Local Account Brute Force Detected" prebuilt detection rule.'
 ---
 
 # Potential Linux Local Account Brute Force Detected

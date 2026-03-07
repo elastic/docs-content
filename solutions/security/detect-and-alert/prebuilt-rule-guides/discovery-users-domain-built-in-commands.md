@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Enumeration of Users or Groups via Built-in Commands" prebuilt detection rule.
+description: 'Investigation guide for the "Enumeration of Users or Groups via Built-in Commands" prebuilt detection rule.'
 ---
 
 # Enumeration of Users or Groups via Built-in Commands

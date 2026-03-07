@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Remote Install via MsiExec" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Remote Install via MsiExec" prebuilt detection rule.'
 ---
 
 # Potential Remote Install via MsiExec

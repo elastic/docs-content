@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Privilege Escalation via SUID/SGID Proxy Execution" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Privilege Escalation via SUID/SGID Proxy Execution" prebuilt detection rule.'
 ---
 
 # Potential Privilege Escalation via SUID/SGID Proxy Execution
@@ -41,4 +41,3 @@ This rule surfaces executions of well-known SUID/SGID helpers on Linux that run 
 - Escalate to incident command if you observe a SUID helper launching an interactive root shell (/bin/sh -p or bash -p), root-owned droppers in /tmp or /usr/local/bin, or similar events on more than one host or account.
 - Permanently reduce the SUID/SGID attack surface by auditing and removing setuid bits from rarely used binaries (e.g., chfn, chsh, newgrp, ssh-keysign), restricting pkexec via polkit rules to specific callers, and mounting /tmp, /var/tmp, and home directories with nosuid,nodev,noexec.
 - Strengthen monitoring and policy by enabling AppArmor/SELinux confinement for pkexec and mount helpers, adding auditd rules for exec of setuid binaries and writes to /tmp by root, and enforcing least-privilege sudoers by removing broad NOPASSWD entries and requiring MFA for privileged tasks.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID Protection Admin Confirmed Compromise" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID Protection Admin Confirmed Compromise" prebuilt detection rule.'
 ---
 
 # Entra ID Protection Admin Confirmed Compromise
@@ -58,4 +58,3 @@ This rule detects when an administrator has manually confirmed a user or sign-in
 - Review and strengthen identity protection policies and risk-based conditional access rules.
 - Document the incident, including the timeline, scope of compromise, and remediation actions taken.
 - Conduct a post-incident review to identify gaps in security controls and implement improvements to prevent similar incidents.
-

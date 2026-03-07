@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS SNS Topic Message Publish by Rare User" prebuilt detection rule.
+description: 'Investigation guide for the "AWS SNS Topic Message Publish by Rare User" prebuilt detection rule.'
 ---
 
 # AWS SNS Topic Message Publish by Rare User
@@ -74,4 +74,3 @@ This is a [New Terms](https://www.elastic.co/guide/en/security/current/rules-ui-
 For more information on SNS topic management and securing AWS resources, refer to:
 - [AWS SNS Publish API Documentation](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html)
 - [AWS CloudTrail Documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference.html)
-

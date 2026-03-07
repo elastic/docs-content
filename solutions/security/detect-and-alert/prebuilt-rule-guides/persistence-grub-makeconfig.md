@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GRUB Configuration Generation through Built-in Utilities" prebuilt detection rule.
+description: 'Investigation guide for the "GRUB Configuration Generation through Built-in Utilities" prebuilt detection rule.'
 ---
 
 # GRUB Configuration Generation through Built-in Utilities

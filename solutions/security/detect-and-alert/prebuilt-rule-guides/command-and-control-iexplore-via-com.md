@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Command and Control via Internet Explorer" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Command and Control via Internet Explorer" prebuilt detection rule.'
 ---
 
 # Potential Command and Control via Internet Explorer

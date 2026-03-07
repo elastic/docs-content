@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Script with Veeam Credential Access Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Script with Veeam Credential Access Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Script with Veeam Credential Access Capabilities
@@ -98,4 +98,3 @@ This alert indicates PowerShell script content consistent with accessing credent
 
 - Continue monitoring and hunting:
   - Monitor for recurrence of the identified script patterns across hosts and users, and investigate any additional related PowerShell activity discovered during scoping.
-

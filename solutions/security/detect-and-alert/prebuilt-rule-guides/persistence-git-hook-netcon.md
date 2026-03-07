@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Git Hook Egress Network Connection" prebuilt detection rule.
+description: 'Investigation guide for the "Git Hook Egress Network Connection" prebuilt detection rule.'
 ---
 
 # Git Hook Egress Network Connection

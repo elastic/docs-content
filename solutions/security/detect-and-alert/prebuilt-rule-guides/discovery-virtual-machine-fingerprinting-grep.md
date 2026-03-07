@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Virtual Machine Fingerprinting via Grep" prebuilt detection rule.
+description: 'Investigation guide for the "Virtual Machine Fingerprinting via Grep" prebuilt detection rule.'
 ---
 
 # Virtual Machine Fingerprinting via Grep

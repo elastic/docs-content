@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID MFA Disabled for User" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID MFA Disabled for User" prebuilt detection rule.'
 ---
 
 # Entra ID MFA Disabled for User
@@ -54,4 +54,3 @@ This rule identifies the deactivation of MFA for an Entra ID user account. This 
 - Implement security defaults [provided by Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
 - Determine the initial vector abused by the attacker and take action to prevent reinfection via the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GitHub Private Repository Turned Public" prebuilt detection rule.
+description: 'Investigation guide for the "GitHub Private Repository Turned Public" prebuilt detection rule.'
 ---
 
 # GitHub Private Repository Turned Public
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule flags when a previously private repository is made public, a high-risk
 - Restore secure settings from baseline by re-applying branch protection rules, CODEOWNERS, required reviews, signed commits, and protected environments, then re-enable workflows only after reviewing job steps and outputs for any export of code or secrets.
 - Escalate to Security IR and Legal if the actor denies making the change, the repo network graph shows new public forks under unknown accounts, regulated data is present, or external users downloaded source zips or release archives during the public period.
 - Restrict who can change repository visibility to organization owners, enforce SSO and 2FA for maintainers, disable forking of private repositories, limit Actions to trusted runners and verified actions, and enable secret scanning with push protection across the organization.
-

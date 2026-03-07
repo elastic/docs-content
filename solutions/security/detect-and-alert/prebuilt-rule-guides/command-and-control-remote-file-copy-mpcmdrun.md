@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Remote File Download via MpCmdRun" prebuilt detection rule.
+description: 'Investigation guide for the "Remote File Download via MpCmdRun" prebuilt detection rule.'
 ---
 
 # Remote File Download via MpCmdRun
@@ -66,4 +66,3 @@ The `MpCmdRun.exe` is a command-line tool part of Windows Defender and is used t
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

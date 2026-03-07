@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious RDP ActiveX Client Loaded" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious RDP ActiveX Client Loaded" prebuilt detection rule.'
 ---
 
 # Suspicious RDP ActiveX Client Loaded

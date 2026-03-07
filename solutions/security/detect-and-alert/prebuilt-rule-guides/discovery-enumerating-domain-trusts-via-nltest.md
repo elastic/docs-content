@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Enumerating Domain Trusts via NLTEST.EXE" prebuilt detection rule.
+description: 'Investigation guide for the "Enumerating Domain Trusts via NLTEST.EXE" prebuilt detection rule.'
 ---
 
 # Enumerating Domain Trusts via NLTEST.EXE
@@ -41,4 +41,3 @@ This rule identifies the usage of the `nltest.exe` utility to enumerate domain t
 - Determine the initial vector abused by the attacker and take action to prevent reinfection through the same vector.
 - Run a full antimalware scan. This may reveal additional artifacts left in the system, persistence mechanisms, and malware components.
 - Using the incident response data, update logging and audit policies to improve the mean time to detect (MTTD) and the mean time to respond (MTTR).
-

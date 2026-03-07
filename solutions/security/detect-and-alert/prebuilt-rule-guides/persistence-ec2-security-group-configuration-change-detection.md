@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS EC2 Security Group Configuration Change" prebuilt detection rule.
+description: 'Investigation guide for the "AWS EC2 Security Group Configuration Change" prebuilt detection rule.'
 ---
 
 # AWS EC2 Security Group Configuration Change
@@ -58,4 +58,3 @@ This rule identifies any changes to an AWS Security Group, which functions as a 
 ### Additional Information
 
 For more details on managing AWS Security Groups and best practices, refer to the [AWS EC2 Security Groups Documentation](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-security-groups.html) and AWS security best practices.
-

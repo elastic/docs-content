@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "CrowdStrike External Alerts" prebuilt detection rule.
+description: 'Investigation guide for the "CrowdStrike External Alerts" prebuilt detection rule.'
 ---
 
 # CrowdStrike External Alerts
@@ -40,4 +40,3 @@ CrowdStrike Falcon is a cloud-native endpoint protection platform that delivers 
 - Reset credentials for compromised user accounts or escalate to incident response.
 - Review CrowdStrike Falcon policies and detections to fine-tune future alerting and response coverage.
 - Document the findings and update detection logic or exceptions accordingly.
-

@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Perl Outbound Network Connection" prebuilt detection rule.
+description: 'Investigation guide for the "Perl Outbound Network Connection" prebuilt detection rule.'
 ---
 
 # Perl Outbound Network Connection
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule detects Perl starting on macOS and then initiating an outbound connect
 - Reimage or restore the endpoint from a known-good source if integrity cannot be confidently validated, rotate credentials used on the device, and invalidate active sessions/tokens that may have been exposed to the Perl process.  
 - Escalate to IR/forensics immediately if the destination infrastructure is contacted by multiple hosts, the Perl process runs under a privileged context, or you observe repeated beacon-like connections or evidence of persistence beyond a single script execution.  
 - Harden by restricting interpreter execution (Perl, Python, Ruby) via endpoint controls, enforcing outbound allowlisting/proxying for user endpoints, and adding detections for Perl launching network tools or writing executable content into user-writable directories.
-

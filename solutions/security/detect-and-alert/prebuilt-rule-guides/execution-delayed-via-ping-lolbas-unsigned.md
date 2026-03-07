@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Delayed Execution via Ping" prebuilt detection rule.
+description: 'Investigation guide for the "Delayed Execution via Ping" prebuilt detection rule.'
 ---
 
 # Delayed Execution via Ping

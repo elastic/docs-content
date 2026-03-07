@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Mount Launched Inside a Container" prebuilt detection rule.
+description: 'Investigation guide for the "Mount Launched Inside a Container" prebuilt detection rule.'
 ---
 
 # Mount Launched Inside a Container

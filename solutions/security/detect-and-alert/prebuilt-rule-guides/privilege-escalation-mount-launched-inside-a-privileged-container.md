@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Mount Execution Detected via Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Mount Execution Detected via Defend for Containers" prebuilt detection rule.'
 ---
 
 # Mount Execution Detected via Defend for Containers

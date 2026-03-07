@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID OAuth Device Code Grant by Microsoft Authentication Broker" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID OAuth Device Code Grant by Microsoft Authentication Broker" prebuilt detection rule.'
 ---
 
 # Entra ID OAuth Device Code Grant by Microsoft Authentication Broker

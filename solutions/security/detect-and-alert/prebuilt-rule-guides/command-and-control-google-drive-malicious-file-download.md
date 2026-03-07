@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious File Downloaded from Google Drive" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious File Downloaded from Google Drive" prebuilt detection rule.'
 ---
 
 # Suspicious File Downloaded from Google Drive

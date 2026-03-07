@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Persistence via a Hidden Plist Filename" prebuilt detection rule.
+description: 'Investigation guide for the "Persistence via a Hidden Plist Filename" prebuilt detection rule.'
 ---
 
 # Persistence via a Hidden Plist Filename
@@ -47,4 +47,3 @@ LaunchAgents and LaunchDaemons are macOS persistence mechanisms that automatical
 - Check for data exfiltration or command and control communication if the behavior matches known spyware patterns like CloudMensis.
 - Reset credentials that may have been accessed while the persistence mechanism was active.
 - Monitor for recreation of hidden plist files in LaunchAgent and LaunchDaemon directories.
-

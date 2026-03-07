@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Share Enumeration Script" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Share Enumeration Script" prebuilt detection rule.'
 ---
 
 # PowerShell Share Enumeration Script
@@ -95,4 +95,3 @@ This alert indicates PowerShell script block content consistent with Windows net
   - Document the owner, purpose, expected timing, and expected scope (accounts and endpoints) of the share enumeration.
   - If tuning is required, scope it narrowly to stable identifiers present in the alert (for example, specific `user.id` values and known management `host.id` endpoints) and continue to monitor for deviations from the expected pattern.
   - Consider establishing a documented allowlist of approved share inventory scripts and their expected execution locations to reduce future triage time.
-

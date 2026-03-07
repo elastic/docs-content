@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubeconfig File Discovery" prebuilt detection rule.
+description: 'Investigation guide for the "Kubeconfig File Discovery" prebuilt detection rule.'
 ---
 
 # Kubeconfig File Discovery
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -46,4 +46,3 @@ Kubeconfig files are essential in Kubernetes, storing credentials and configurat
 - Implement stricter access controls and permissions for directories containing kubeconfig files, ensuring only authorized personnel have access.
 - Escalate the incident to the security operations team for further investigation and to determine if additional clusters or systems are affected.
 - Enhance monitoring and alerting for suspicious activities related to kubeconfig files, leveraging the MITRE ATT&CK framework to identify potential discovery tactics.
-

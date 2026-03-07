@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual LD_PRELOAD/LD_LIBRARY_PATH Command Line Arguments" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual LD_PRELOAD/LD_LIBRARY_PATH Command Line Arguments" prebuilt detection rule.'
 ---
 
 # Unusual LD_PRELOAD/LD_LIBRARY_PATH Command Line Arguments
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ LD_PRELOAD and LD_LIBRARY_PATH are environment variables in Linux that influence
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems are affected.
 - Implement stricter access controls and monitoring on the affected system to prevent unauthorized changes to environment variables.
 - Update and enhance detection rules to include additional indicators of compromise related to LD_PRELOAD and LD_LIBRARY_PATH misuse, ensuring future attempts are identified promptly.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GitHub Actions Unusual Bot Push to Repository" prebuilt detection rule.
+description: 'Investigation guide for the "GitHub Actions Unusual Bot Push to Repository" prebuilt detection rule.'
 ---
 
 # GitHub Actions Unusual Bot Push to Repository
@@ -45,4 +45,3 @@ to modify repository contents.
 - Rotate any secrets that may have been exposed during the workflow run.
 - Enable branch protection rules to require PR reviews for all changes.
 - Consider restricting GITHUB_TOKEN permissions in workflow files using `permissions:` key.
-

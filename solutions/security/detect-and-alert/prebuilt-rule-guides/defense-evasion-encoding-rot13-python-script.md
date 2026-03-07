@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "ROT Encoded Python Script Execution" prebuilt detection rule.
+description: 'Investigation guide for the "ROT Encoded Python Script Execution" prebuilt detection rule.'
 ---
 
 # ROT Encoded Python Script Execution

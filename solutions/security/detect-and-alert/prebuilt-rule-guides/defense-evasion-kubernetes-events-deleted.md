@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Azure Kubernetes Services (AKS) Kubernetes Events Deleted" prebuilt detection rule.
+description: 'Investigation guide for the "Azure Kubernetes Services (AKS) Kubernetes Events Deleted" prebuilt detection rule.'
 ---
 
 # Azure Kubernetes Services (AKS) Kubernetes Events Deleted

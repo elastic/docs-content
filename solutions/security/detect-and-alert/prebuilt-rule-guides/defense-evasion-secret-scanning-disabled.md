@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "GitHub Secret Scanning Disabled" prebuilt detection rule.
+description: 'Investigation guide for the "GitHub Secret Scanning Disabled" prebuilt detection rule.'
 ---
 
 # GitHub Secret Scanning Disabled
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule triggers when secret scanning is disabled on a repository, signaling a
 - Validate recovery by confirming Secret Scanning and Push Protection are enabled in repository settings, re-running a full secret scan across HEAD, tags, and protected branches, and restoring merges and deployments only after clean results.
 - Escalate to incident response if the actor is unknown or unauthorized, if plaintext secrets appear in commits or workflow logs, or if external authentications use repo-linked credentials within 24 hours of the disable event.
 - Harden by enforcing org-wide policies requiring Secret Scanning and Push Protection for all repositories, adding repository rulesets to require status checks and pull request reviews before merging, and limiting Actions token permissions with protected environments and branch protections.
-

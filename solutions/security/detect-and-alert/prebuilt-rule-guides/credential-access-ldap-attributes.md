@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Access to a Sensitive LDAP Attribute" prebuilt detection rule.
+description: 'Investigation guide for the "Access to a Sensitive LDAP Attribute" prebuilt detection rule.'
 ---
 
 # Access to a Sensitive LDAP Attribute

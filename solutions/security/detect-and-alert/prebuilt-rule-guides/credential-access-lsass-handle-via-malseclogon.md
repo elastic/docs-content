@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious LSASS Access via MalSecLogon" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious LSASS Access via MalSecLogon" prebuilt detection rule.'
 ---
 
 # Suspicious LSASS Access via MalSecLogon

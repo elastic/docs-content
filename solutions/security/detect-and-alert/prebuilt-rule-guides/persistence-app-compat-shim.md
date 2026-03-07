@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Installation of Custom Shim Databases" prebuilt detection rule.
+description: 'Investigation guide for the "Installation of Custom Shim Databases" prebuilt detection rule.'
 ---
 
 # Installation of Custom Shim Databases

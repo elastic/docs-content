@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Script with Token Impersonation Capabilities" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Script with Token Impersonation Capabilities" prebuilt detection rule.'
 ---
 
 # PowerShell Script with Token Impersonation Capabilities
@@ -91,4 +91,3 @@ To reduce false positives, focus on provenance and behavior: scripts from known,
   - Remove unauthorized scripts/modules and any secondary artifacts or persistence mechanisms discovered during investigation.
   - Monitor for repeat executions by hunting for the same token manipulation indicators observed in `powershell.file.script_block_text` across the environment.
   - Ensure PowerShell script block logging is enabled and retained on systems where PowerShell is permitted so future activity can be reconstructed and scoped effectively.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Network Tool Launched Inside A Container" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Network Tool Launched Inside A Container" prebuilt detection rule.'
 ---
 
 # Suspicious Network Tool Launched Inside A Container

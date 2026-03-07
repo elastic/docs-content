@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Network Connection Initiated by Suspicious SSHD Child Process" prebuilt detection rule.
+description: 'Investigation guide for the "Network Connection Initiated by Suspicious SSHD Child Process" prebuilt detection rule.'
 ---
 
 # Network Connection Initiated by Suspicious SSHD Child Process

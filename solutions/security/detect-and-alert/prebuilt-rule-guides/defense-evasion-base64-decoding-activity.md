@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Unusual Base64 Encoding/Decoding Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Unusual Base64 Encoding/Decoding Activity" prebuilt detection rule.'
 ---
 
 # Unusual Base64 Encoding/Decoding Activity
@@ -46,4 +46,3 @@ Base64 encoding is a method to convert binary data into ASCII text, often used f
 - Restore any affected systems or files from a known good backup to ensure the integrity of the system and data.
 - Implement additional monitoring on the affected system and similar environments to detect any recurrence of the suspicious base64 activity.
 - Escalate the incident to the security operations center (SOC) or incident response team for further analysis and to determine if broader organizational impacts exist.
-

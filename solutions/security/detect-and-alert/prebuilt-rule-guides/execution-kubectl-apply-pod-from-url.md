@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kubectl Apply Pod from URL" prebuilt detection rule.
+description: 'Investigation guide for the "Kubectl Apply Pod from URL" prebuilt detection rule.'
 ---
 
 # Kubectl Apply Pod from URL
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Kubectl is a command-line tool for managing Kubernetes clusters, allowing users 
 - Escalate the incident to the security operations team for further investigation and to determine the root cause of the breach. This may involve analyzing logs and network traffic to trace the source of the attack.
 - Implement network policies and role-based access controls (RBAC) to limit the ability to apply configurations from external URLs, ensuring only trusted sources are allowed.
 - Enhance monitoring and alerting for similar activities by integrating with security information and event management (SIEM) systems to detect and respond to future threats promptly.
-

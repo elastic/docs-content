@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Multiple Device Token Hashes for Single Okta Session" prebuilt detection rule.
+description: 'Investigation guide for the "Multiple Device Token Hashes for Single Okta Session" prebuilt detection rule.'
 ---
 
 # Multiple Device Token Hashes for Single Okta Session
@@ -46,4 +46,3 @@ This rule detects when a specific Okta actor has multiple device token hashes fo
         - Reset passwords and reset MFA for the user.
 - Alternatively adding `okta.client.ip` or a CIDR range to the `exceptions` list can prevent future occurrences of this event from triggering the rule.
     - This should be done with caution as it may prevent legitimate alerts from being generated.
-

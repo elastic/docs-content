@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Privileged Escalation via SamAccountName Spoofing" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Privileged Escalation via SamAccountName Spoofing" prebuilt detection rule.'
 ---
 
 # Potential Privileged Escalation via SamAccountName Spoofing

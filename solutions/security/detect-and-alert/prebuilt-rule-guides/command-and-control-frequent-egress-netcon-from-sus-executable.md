@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "High Number of Egress Network Connections from Unusual Executable" prebuilt detection rule.
+description: 'Investigation guide for the "High Number of Egress Network Connections from Unusual Executable" prebuilt detection rule.'
 ---
 
 # High Number of Egress Network Connections from Unusual Executable
@@ -46,4 +46,3 @@ In Linux environments, executables can initiate network connections for legitima
 - Patch and update the affected system to the latest security standards to close any vulnerabilities that may have been exploited.
 - Monitor network traffic for any unusual outbound connections from other systems to detect potential spread or similar threats.
 - Escalate the incident to the security operations center (SOC) or incident response team for further investigation and to ensure comprehensive remediation.
-

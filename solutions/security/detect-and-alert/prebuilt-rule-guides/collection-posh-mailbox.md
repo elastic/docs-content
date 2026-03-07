@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "PowerShell Mailbox Collection Script" prebuilt detection rule.
+description: 'Investigation guide for the "PowerShell Mailbox Collection Script" prebuilt detection rule.'
 ---
 
 # PowerShell Mailbox Collection Script
@@ -82,4 +82,3 @@ This alert indicates PowerShell script block content consistent with programmati
   - Identify any local staging locations or transfer destinations referenced by the script.
 - Coordinate with messaging administrators and relevant stakeholders to support mailbox-level investigation and response actions if sensitive data may have been accessed.
 - Increase monitoring for recurrence by tracking similar script block content, repeated executions by the same user, and reuse of the same script file paths across hosts.
-

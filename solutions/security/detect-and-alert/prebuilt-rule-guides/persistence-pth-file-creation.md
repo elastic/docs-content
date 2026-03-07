@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Python Path File (pth) Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Python Path File (pth) Creation" prebuilt detection rule.'
 ---
 
 # Python Path File (pth) Creation
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Python Path Files (.pth) are used to automatically execute code when the Python 
 - Restore affected systems from a known good backup if malicious activity is confirmed and cannot be fully remediated.
 - Escalate the incident to the security operations team for further investigation and to determine if additional systems are affected.
 - Implement enhanced monitoring and alerting for future unauthorized .pth file modifications to quickly detect similar threats.
-

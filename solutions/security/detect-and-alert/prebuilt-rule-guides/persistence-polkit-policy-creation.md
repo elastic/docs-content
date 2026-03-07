@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Polkit Policy Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Polkit Policy Creation" prebuilt detection rule.'
 ---
 
 # Polkit Policy Creation

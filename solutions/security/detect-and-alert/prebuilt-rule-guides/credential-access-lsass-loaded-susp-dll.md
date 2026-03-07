@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Suspicious Module Loaded by LSASS" prebuilt detection rule.
+description: 'Investigation guide for the "Suspicious Module Loaded by LSASS" prebuilt detection rule.'
 ---
 
 # Suspicious Module Loaded by LSASS

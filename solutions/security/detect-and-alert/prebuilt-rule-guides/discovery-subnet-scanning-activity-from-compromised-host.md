@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Subnet Scanning Activity from Compromised Host" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Subnet Scanning Activity from Compromised Host" prebuilt detection rule.'
 ---
 
 # Potential Subnet Scanning Activity from Compromised Host
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -45,4 +45,3 @@ Subnet scanning is a reconnaissance method used by attackers to map network topo
 - Update and patch the compromised host and any other vulnerable systems identified during the investigation to close security gaps.
 - Monitor network traffic closely for any signs of continued scanning or other suspicious activities from other hosts, indicating potential further compromise.
 - Escalate the incident to the security operations center (SOC) or incident response team for a comprehensive investigation and to determine if additional hosts are affected.
-

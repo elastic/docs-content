@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SSH Key Generated via ssh-keygen" prebuilt detection rule.
+description: 'Investigation guide for the "SSH Key Generated via ssh-keygen" prebuilt detection rule.'
 ---
 
 # SSH Key Generated via ssh-keygen

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential Okta Brute Force (Multi-Source)" prebuilt detection rule.
+description: 'Investigation guide for the "Potential Okta Brute Force (Multi-Source)" prebuilt detection rule.'
 ---
 
 # Potential Okta Brute Force (Multi-Source)
@@ -36,4 +36,3 @@ This rule identifies a single user account receiving failed authentication attem
 - Block attacking IP addresses at the network perimeter.
 - Consider implementing geo-restrictions for the targeted account if dispersed access is not expected.
 - Monitor for any successful authentication that may indicate compromise.
-

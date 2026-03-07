@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Potential JAVA/JNDI Exploitation Attempt" prebuilt detection rule.
+description: 'Investigation guide for the "Potential JAVA/JNDI Exploitation Attempt" prebuilt detection rule.'
 ---
 
 # Potential JAVA/JNDI Exploitation Attempt

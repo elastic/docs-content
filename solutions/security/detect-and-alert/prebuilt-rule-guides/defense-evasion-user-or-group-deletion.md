@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Linux User or Group Deletion" prebuilt detection rule.
+description: 'Investigation guide for the "Linux User or Group Deletion" prebuilt detection rule.'
 ---
 
 # Linux User or Group Deletion
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -41,4 +41,3 @@ This rule surfaces successful deletions of Linux users or groups—activity that
 - Rotate credentials associated with the deleted identity by replacing SSH keys and secrets found in ~/.ssh/authorized_keys and application configs, and invalidate cached tokens and service account credentials that may have been shared.
 - Escalate to incident response if the deleted account was privileged (present in wheel/sudo groups), userdel/groupdel used -r to remove the home/mail spool, or evidence of log tampering exists such as truncated /var/log/auth.log or altered wtmp/btmp/lastlog.
 - Harden by centralizing local account lifecycle in IdM/LDAP, enforcing visudo-managed sudo changes, enabling auditd watches on /usr/sbin/userdel,/usr/sbin/groupdel and writes to /etc/passwd,/etc/group,/etc/shadow, and deploying AIDE to monitor integrity of /etc.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Entra ID OAuth Phishing via First-Party Microsoft Application" prebuilt detection rule.
+description: 'Investigation guide for the "Entra ID OAuth Phishing via First-Party Microsoft Application" prebuilt detection rule.'
 ---
 
 # Entra ID OAuth Phishing via First-Party Microsoft Application
@@ -47,4 +47,3 @@ The rule uses split detection logic: developer tools (Azure CLI, VSCode, PowerSh
 - Check for any devices registered during this session via `azure.auditlogs` and remove unauthorized device registrations.
 - Implement Conditional Access policies to restrict OAuth flows for these applications to compliant devices only.
 - Educate users about OAuth phishing and the risks of pasting authorization codes into websites.
-

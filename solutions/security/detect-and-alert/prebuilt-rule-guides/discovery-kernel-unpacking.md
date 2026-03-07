@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Kernel Unpacking Activity" prebuilt detection rule.
+description: 'Investigation guide for the "Kernel Unpacking Activity" prebuilt detection rule.'
 ---
 
 # Kernel Unpacking Activity

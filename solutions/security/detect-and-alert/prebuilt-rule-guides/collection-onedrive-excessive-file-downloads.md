@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "M365 OneDrive/SharePoint Excessive File Downloads" prebuilt detection rule.
+description: 'Investigation guide for the "M365 OneDrive/SharePoint Excessive File Downloads" prebuilt detection rule.'
 ---
 
 # M365 OneDrive/SharePoint Excessive File Downloads
@@ -50,4 +50,3 @@ This rule leverages ESQL aggregations which limit the field values available in 
 - Monitor for additional signs of compromise, such as unusual email forwarding rules, external sharing of OneDrive files, or privilege escalation attempts.
 - Educate users on OAuth phishing risks and encourage the use of **Microsoft Defender for Office 365 Safe Links** to mitigate credential-based attacks.
 - Enable continuous monitoring for OAuth authentication anomalies using **Microsoft Entra ID sign-in logs** and security tools.
-

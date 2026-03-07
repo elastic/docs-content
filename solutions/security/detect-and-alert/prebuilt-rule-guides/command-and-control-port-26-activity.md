@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SMTP on Port 26/TCP" prebuilt detection rule.
+description: 'Investigation guide for the "SMTP on Port 26/TCP" prebuilt detection rule.'
 ---
 
 # SMTP on Port 26/TCP

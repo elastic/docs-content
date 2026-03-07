@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Loadable Kernel Module Configuration File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Loadable Kernel Module Configuration File Creation" prebuilt detection rule.'
 ---
 
 # Loadable Kernel Module Configuration File Creation

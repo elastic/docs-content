@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "AWS DynamoDB Table Exported to S3" prebuilt detection rule.
+description: 'Investigation guide for the "AWS DynamoDB Table Exported to S3" prebuilt detection rule.'
 ---
 
 # AWS DynamoDB Table Exported to S3
 
- ## Triage and analysis
+## Triage and analysis
 
 ### Investigating AWS DynamoDB Table Exported to S3
 
@@ -38,4 +38,3 @@ This is a New Terms rule that only flags when this behavior is observed for the 
 ### Additional Information
 
 For further guidance on managing and securing DynamoDB in AWS environments, refer to the [AWS DynamoDB documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/security.html) and AWS best practices for security.
-

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Possible FIN7 DGA Command and Control Behavior" prebuilt detection rule.
+description: 'Investigation guide for the "Possible FIN7 DGA Command and Control Behavior" prebuilt detection rule.'
 ---
 
 # Possible FIN7 DGA Command and Control Behavior

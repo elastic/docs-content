@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "SMB (Windows File Sharing) Activity to the Internet" prebuilt detection rule.
+description: 'Investigation guide for the "SMB (Windows File Sharing) Activity to the Internet" prebuilt detection rule.'
 ---
 
 # SMB (Windows File Sharing) Activity to the Internet

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "APT Package Manager Configuration File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "APT Package Manager Configuration File Creation" prebuilt detection rule.'
 ---
 
 # APT Package Manager Configuration File Creation

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Payload Execution via Shell Pipe Detected by Defend for Containers" prebuilt detection rule.
+description: 'Investigation guide for the "Payload Execution via Shell Pipe Detected by Defend for Containers" prebuilt detection rule.'
 ---
 
 # Payload Execution via Shell Pipe Detected by Defend for Containers

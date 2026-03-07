@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "First Occurrence of Okta User Session Started via Proxy" prebuilt detection rule.
+description: 'Investigation guide for the "First Occurrence of Okta User Session Started via Proxy" prebuilt detection rule.'
 ---
 
 # First Occurrence of Okta User Session Started via Proxy
@@ -35,4 +35,3 @@ This rule detects the first occurrence of an Okta user session started via a pro
     - If MFA is already enabled, consider resetting MFA for the user.
 - If the user is not legitimate, consider deactivating the user's account.
 - Conduct a review of Okta policies and ensure they are in accordance with security best practices.
-

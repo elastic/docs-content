@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Investigation guide for the "Docker Release File Creation" prebuilt detection rule.
+description: 'Investigation guide for the "Docker Release File Creation" prebuilt detection rule.'
 ---
 
 # Docker Release File Creation
 
- ## Triage and analysis
+## Triage and analysis
 
 > **Disclaimer**:
 > This investigation guide was created using generative AI technology and has been reviewed to improve its accuracy and relevance. While every effort has been made to ensure its quality, we recommend validating the content and adapting it to suit your specific environment and operational needs.
@@ -47,4 +47,3 @@ In Linux, cgroups manage resources for processes, and the release_agent file can
 - Review and tighten the security configurations of Docker and the host system, including setting appropriate cgroup permissions and limiting container capabilities to the minimum necessary.
 - Monitor for any further attempts to exploit cgroup release mechanisms by setting up alerts for the creation of release_agent and notify_on_release files.
 - Escalate the incident to the security operations team for further analysis and to determine if additional systems may have been affected or if there is a broader security incident underway.
-
