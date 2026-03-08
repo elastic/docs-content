@@ -693,13 +693,13 @@ After ingesting OpenTelemetry RUM data, you can explore it in {{kib}}.
 You can explore OpenTelemetry RUM data in these {{kib}} experiences:
 
 - **{{product.apm}} service inventory**  
-  Browser apps that generate traces appear in the {{product.apm}} service inventory. You can view service details, open distributed traces, and explore end-to-end traces that include browser spans.
+  Browser apps that generate traces appear in the {{product.apm}} service inventory. The names displayed in the list correspond to the [`service.name` resource attribute](#otel-rum-basic-settings) defined when instrumenting the app. You can view service details, open distributed traces, and explore end-to-end traces that include browser spans.
 
 - **Distributed tracing**  
   OpenTelemetry RUM traces are integrated with Elastic distributed tracing. Analyze request flows across browser and backend services in a single trace view.
 
 - **Discover**  
-  RUM events and metrics are indexed in {{es}}. In **Discover** you can inspect raw events, run exploratory queries, apply filters, and verify ingestion. You can also query browser Web Vitals (for example, `browser.web_vital` events) when they are emitted. However, there is no dedicated Web Vitals UI for OpenTelemetry RUM.
+  RUM events and metrics are indexed in {{es}}. In **Discover** you can inspect raw events, run exploratory queries, apply filters, and verify ingestion.
 
 :::{note}
 The **{{user-experience}} (UX)** app shows only Elastic {{product.apm}} RUM data, not OpenTelemetry RUM. Curated RUM dashboards for OpenTelemetry are not available yet.
