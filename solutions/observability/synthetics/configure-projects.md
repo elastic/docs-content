@@ -260,7 +260,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
 :   The [{{kib}} spaces](/deploy-manage/manage-spaces.md) in which the monitor will be visible. Monitors can be visible in multiple spaces simultaneously. Use `'*'` to make the monitor visible in all spaces. The project's default space is always included. 
 
 `throttling` (`boolean` | [`ThrottlingOptions`](https://github.com/elastic/synthetics/blob/v1.3.0/src/common_types.ts#L194-L198))
-:   Control the monitor’s download speeds, upload speeds, and latency to simulate your application’s behavior on slower or laggier networks. Set to `false` to disable throttling altogether.
+:   Control the monitor’s download speeds, upload speeds, and latency to simulate your application’s behavior on slower or laggier networks. Set to `false` to deactivate throttling altogether.
 
 `screenshot` ([`ScreenshotOptions`](https://github.com/elastic/synthetics/blob/v1.3.0/src/common_types.ts#L192))
 :   Control whether or not to capture screenshots. Options include `'on'`, `'off'`, or `'only-on-failure'`.
