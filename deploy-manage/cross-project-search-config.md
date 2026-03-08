@@ -106,6 +106,9 @@ The overview project model is strongly recommended and appropriate for most {{cp
 
 ## Link projects [cps-link-projects]
 
+🚧 TODO: Reconcile with Explore and Analyze pages, recently restructured
+
+
 :::{tip}
 Before linking projects, make sure to consider {{cps}} [architecture patterns](#cps-arch).
 :::
@@ -113,15 +116,16 @@ Before linking projects, make sure to consider {{cps}} [architecture patterns](#
 To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
 
 1. On the home screen, find the project you want to use as the origin project and click **Manage**.
-2. Click **Link projects** on the **{{cps-cap}}** tile, or navigate to **{{cps-cap}}** in the sidebar and click **Link projects**.
-3. Browse or search for projects to link to the origin project. Only [compatible projects](#cps-compatibility) appear in the project list. You can filter by type, cloud provider, region, and tags.
-4. Select the checkbox for each project you want to link. You can link up to 20 projects per origin project.
+    :::{important} `applies_to`: serverless: preview
+    During technical preview, only newly created projects can function as origin projects.
+    :::
+1. Click **Link projects** on the **{{cps-cap}}** tile, or navigate to **{{cps-cap}}** in the sidebar. Click **Link projects** to open the linking wizard.
+1. Browse or search for projects to link to the origin project. Only [compatible projects](#cps-compatibility) appear in the project list. You can filter by type, cloud provider, region, and tags.
+1. Select the checkbox for each project you want to link. You can link up to 20 projects per origin project.
 
-    ::::{note}
     If a project you expected to link to is missing from the list, it might not be [compatible](#cps-compatibility) with the origin project. 
-    ::::
 
-5. Complete the remaining steps in the wizard to review and save your selections. In the last step, you can click **View API request** to see the equivalent API request for linking to the selected projects.
+1. Complete the remaining steps in the wizard to review and save your selections. In the last step, you can click **View API request** to see the equivalent API request for linking to the selected projects.
 
 ::::{important}
 After you link projects, all searches from the origin project query data from **every** linked project by default. This applies immediately to all queries, including those from existing dashboards and alerting rules.
@@ -131,21 +135,21 @@ To limit the search, you can configure a [default {{cps}} scope](#cps-search-sco
 
 ## Manage linked projects [cps-manage-linked-projects]
 
+🚧 TODO: Reconcile with Explore and Analyze pages, recently restructured
+
 On the origin project's **{{cps-cap}}** page, you can reconfigure {{cps}} as needed:
 
 - **Link additional projects:**  Click **Link projects** to add more linked projects, up to the 20-project maximum per origin project.
 - **Unlink projects:** Remove connections by [unlinking projects](#cps-unlink-projects).
-- **Open space settings in {{kib}}:**  Click **Manage Space** to set or adjust the default [search scope](#cps-search-scope).
+- **Open space settings in {{kib}}:**  Click **Manage spaces** to set or adjust the default [search scope](#cps-search-scope) for the space.
 
 % TODO move [project ID and alias info](/explore-analyze/cross-project-search.md#project-id-and-aliases) here from E&A
 
 ### Unlink projects [cps-unlink-projects]
 
-To remove a linked project, select the checkbox next to the project on the **{{cps-cap}}** page and click **Unlink**.
+To remove a linked project from the current {{cps-init}} configuration, navigate to the **{{cps-cap}}** page. Select the checkbox next to the projects you want to disconnect, then click **Unlink**.
 
 After you confirm, searches from the origin project will no longer include data from the unlinked projects.
-
-% TODO confirm multiple unlinking behavior
 
 ::::{important}
 You can't delete a project that's linked to an origin project. To delete a project, first unlink it from every origin project it's linked to, then delete it.
@@ -157,17 +161,14 @@ You can't delete a project that's linked to an origin project. To delete a proje
 
 For example, if Project A is linked to Projects B and C, but a user only has access to Projects A and B, that user's cross-project searches will return results from A and B only. Results from Project C are excluded because the user does not have a role assigned on that project. 
 
-Make sure that users who need to search across linked projects have a role assigned on each project they need to access. Authorization for {{cps}} is evaluated on the linked project, without regard to the origin project.
+### Administrator tasks
 
-If a user's search results seem to be missing data from a linked project, start by checking the user's [role assignment](/deploy-manage/users-roles.md) on that specific linked project.
+- Make sure that users who need to search across linked projects have a role assigned on each project they need to access. Authorization for {{cps}} is evaluated on the linked project, without regard to the origin project.
+- If a user's search results seem to be missing data from a linked project, start by checking the user's [role assignment](/deploy-manage/users-roles.md) on that specific linked project.
 
 % TODO alerting impacts of user role changes 
 
-## Manage search scope [cps-search-scope]
-
-:::{admonition} 🚧 WIP 🚧 
-Work in progress   
-:::
+## 🚧 Manage search scope [cps-search-scope]
 
 ### About search scope   
 
@@ -200,7 +201,7 @@ The search scope controls which projects receive the search request, while _filt
 
 % TODO intro   
 
-To open space settings in {{kib}}, click **Configure Space settings in {{kib}}** in the banner that appears when you link projects. Or click **Manage Space** at the top of the **{{cps-cap}}** page. Select the space you want to configure.  
+To open space settings in {{kib}}, click **Configure Space settings in {{kib}}** in the banner that appears when you link projects. Or click **Manage spaces** at the top of the **{{cps-cap}}** page. Select the space you want to configure.  
 
 % ::::{important}
 % If you don't adjust the default search scope, all searches, dashboards
@@ -208,7 +209,7 @@ To open space settings in {{kib}}, click **Configure Space settings in {{kib}}**
 % **every** linked project.
 % ::::
 
-In the {{cps}} scope settings, choose the default scope for the space:
+Navigate to the **Advanced Settings** page and search for the {{cps}} scope setting. Set the default scope for the space:
    - **All projects:** (default) Searches run across the origin project and all linked projects.
    - **Origin project only:**  Searches run only against the origin project's data.
    - **Specific projects:** Select individual linked projects to include in the default scope.
