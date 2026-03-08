@@ -18,7 +18,7 @@ The endpoint is available under `/_otlp/v1/metrics`.
 
 ## Prerequisites
 
-You need {{stack}} 9.2 or later (the OTLP endpoint is available on ECE, ECK, and self-managed deployments that run this stack version).
+An {{es}} cluster running {{stack}} 9.2 or later. The OTLP endpoint is available on ECE, ECK, and self-managed deployments that run this stack version.
 
 ## Overview and deployment options
 
