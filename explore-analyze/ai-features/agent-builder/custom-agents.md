@@ -20,6 +20,8 @@ Custom agents enable you to create specialized AI assistants tailored to your sp
 Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch.
 :::
 
+Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created. In contrast, built-in agents are available across all spaces.
+
 ## Create a custom agent
 
 Follow these steps to create a new custom agent:

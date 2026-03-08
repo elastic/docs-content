@@ -155,7 +155,7 @@ The Assets section allows you to manage the following features:
 
 ### Cases [_cases]
 
-Open and track security issues. Refer to [Cases](/solutions/security/investigate/cases.md) to learn more.
+Open and track security issues. Refer to [Cases](/solutions/security/investigate/security-cases.md) to learn more.
 
 
 ### Entity analytics
@@ -172,18 +172,16 @@ To access this section, turn on the `securitySolution:enablePrivilegedUserMonito
 Expand this section to access the following pages:
 
 - [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
-- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior. 
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior.
 
 
-### Explore [_explore]
+### Explore [_explore] 
 
-Expand this section to access the following pages:
+* [Hosts](/solutions/security/advanced-entity-analytics/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
 
-* [Hosts](/solutions/security/explore/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
+* [Network](/solutions/security/advanced-entity-analytics/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
 
-* [Network](/solutions/security/explore/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
-
-* [Users](/solutions/security/explore/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
+* [Users](/solutions/security/advanced-entity-analytics/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
 
 
 ### Investigations [security-ui-investigations]
