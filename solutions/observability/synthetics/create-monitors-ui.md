@@ -105,6 +105,7 @@ To use the UI to add a browser monitor:
 6. Click **Advanced options** to see more ways to configure your monitor.
 
     * Use **Data options** to add context to the data coming from your monitors.
+    * Use **Maintenance windows** to prevent alerts from being triggered during scheduled downtime.
     * Use the **Synthetics agent options** to provide fine-tuned configuration for the synthetics agent. Read more about available options in [Use the Synthetics CLI](/solutions/observability/synthetics/cli.md).
     * {applies_to}`stack: ga 9.1+` Use **Spaces** to select which [{{kib}} spaces](/deploy-manage/manage-spaces.md) the monitor will be visible in. You can select multiple spaces or choose to make the monitor visible in all spaces.
 
