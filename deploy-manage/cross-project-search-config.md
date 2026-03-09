@@ -21,11 +21,17 @@ This page explains how to configure and manage {{cps}} for your organization, in
 
 ## {{cps-cap}} concepts
 
+% SNIPPET CANDIDATE: origin/linked definitions
+
 {{cps-cap}} runs across _origin_ and _linked_ projects within your {{ecloud}} organization:
 
 - **Origin project:** The base project where you create links and run cross-project searches. 
 - **Linked projects:** The projects you connect to the origin project. Data in the linked projects becomes searchable from the origin project.
+
+For details about project IDs and aliases (used in search expressions), refer to [Project ID and aliases](/explore-analyze/cross-project-search.md#project-id-and-aliases).
     
+% SNIPPET CANDIDATE: searches run across all linked projects by default
+
 After you link projects, searches from the origin project run across the origin and all linked projects by default. To adjust this, you can [configure the default search scope](#cps-search-scope).
 
 This page describes {{cps}} configuration. For details about _using_ {{cps}}, including search expressions, tags, and project routing, refer to **Explore and Analyze** > [](/explore-analyze/cross-project-search.md).
@@ -44,7 +50,8 @@ To configure {{cps}}, make sure you meet these prerequisites:
 
     {{ecloud}} API keys can access {{ecloud}} resources and {{es}}/{{kib}} endpoints across {{serverless-short}} projects. Other types of API keys don't work with {{cps}} because they can't authenticate across project boundaries. 
     
-% TODO confirm what happens w/ project-scoped API keys; update wrt UIAM docs; subscription/licensing?
+% update wrt UIAM docs (esp links); subscription/licensing?
+% TODO confirm project-scopedAPI keys silently return origin-only results (no error) (ES API in E&A)
 
 ## Projects available for linking [cps-compatibility]
 
@@ -129,6 +136,8 @@ To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
 
 1. Complete the remaining steps in the wizard to review and save your selections. In the last step, you can click **View API request** to see the equivalent API request for linking to the selected projects.
 
+% SNIPPET CANDIDATE: searches run across all linked projects by default
+
 ::::{important}
 After you link projects, all searches from the origin project query data from **every** linked project by default. This applies immediately to all queries, including those from existing dashboards and alerting rules.
 
@@ -144,8 +153,6 @@ On the origin project's **{{cps-cap}}** page, you can reconfigure {{cps}} as nee
 - **Link additional projects:**  Click **Link projects** to add more linked projects, up to the 20-project maximum per origin project.
 - **Unlink projects:** Remove connections by [unlinking projects](#cps-unlink-projects).
 - **Open space settings in {{kib}}:**  Click **Manage spaces** to set or adjust the default [search scope](#cps-search-scope) for the space.
-
-% TODO move [project ID and alias info](/explore-analyze/cross-project-search.md#project-id-and-aliases) here from E&A
 
 ### Unlink projects [cps-unlink-projects]
 
