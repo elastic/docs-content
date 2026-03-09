@@ -65,6 +65,8 @@ Only compatible projects appear in the [{{cps}} linking wizard](#cps-link-projec
 
 Workplace AI projects are not compatible with {{cps}}.
 
+% TODO cf https://github.com/elastic/docs-content/pull/5190
+
 ### Feature tiers  
 
 {{cps-cap}} is available for the following feature tiers:
@@ -184,7 +186,9 @@ Users can also set the search scope on a per-query basis as needed, using [quali
 
 By default, an unqualified search from an origin project targets the searchable resources in **all** linked projects, plus the searchable resources in the origin project. This default search scope is intentionally broad, to provide the best user experience for searching across linked projects. 
 
-Because this broad default could cause unexpected behavior, especially for alerts and dashboards, it's important to consider the search scope before your users start working with {{cps}}.
+:::{important}
+The broad default search scope could cause unexpected behavior, especially for alerts and dashboards. Make sure to consider the search scope and make adjustments _before your users start working with {{cps}}.
+:::
 
 The following actions change the search scope:
 
@@ -214,10 +218,9 @@ Navigate to the **Advanced Settings** page and search for the {{cps}} scope sett
    - **Origin project only:**  Searches run only against the origin project's data.
    - **Specific projects:** Select individual linked projects to include in the default scope.
 
-:::{note}
+::::{note}
 The default {{cps}} scope is a space setting, not an access control. Even after you set a default, users can select their preferred scope and can access data in linked projects outside the default scope.
-:::
-
+::::
 
 ### How search scope works in {{kib}}
 
