@@ -43,6 +43,13 @@ Retests are included in the number of checks.
 
 The **Rule schedule** defines how often to evaluate the condition. Note that checks are queued, and they run as close to the defined value as capacity allows. For example, if a check is scheduled to run every 2 minutes, but the check takes longer than 2 minutes to run, a check will not run until the previous check has finished.
 
+In this example, the conditions will be met any time a `browser` monitor is down `3` of the last `5` times the monitor ran across any locations that match the filter. These conditions will be evaluated every minute, and you will only receive an alert when the conditions are met three times consecutively.
+
+:::{image} /solutions/images/serverless-synthetic-monitor-conditions.png
+:alt: Filters and conditions defining a Synthetics monitor status rule
+:screenshot:
+:::
+
 You can also set **Advanced options** such as:
 
 * **Alert delay**: The number of consecutive runs that must meet the rule conditions before an alert occurs.
@@ -55,13 +62,10 @@ You can also set **Advanced options** such as:
 
    *  **Alert status change threshold**: The minimum number of times an alert must switch states in the look-back window. 
 
-In this example, the conditions will be met any time a `browser` monitor is down `3` of the last `5` times the monitor ran across any locations that match the filter. These conditions will be evaluated every minute, and you will only receive an alert when the conditions are met three times consecutively.
-
-:::{image} /solutions/images/serverless-synthetic-monitor-conditions.png
-:alt: Filters and conditions defining a Synthetics monitor status rule
+:::{image} /solutions/images/serverless-synthetic-monitor-advanced-settings.png
+:alt: Advanced settings when defining a Synthetics monitor status rule
 :screenshot:
 :::
-
 
 ## Action types [observability-monitor-status-alert-action-types]
 
