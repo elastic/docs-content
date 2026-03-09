@@ -114,7 +114,7 @@ The Runtime `status` indicates whether task executions have exceeded any of the 
 ::::{important}
 Some tasks (such as [connectors](../manage-connectors.md)) will incorrectly report their status as successful even if the task failed. The runtime and workload block will return data about success and failures and will not take this into consideration.
 
-To get a better sense of action failures, refer to the [Event log index](../../explore-analyze/alerts-cases/alerts/event-log-index.md) for more accurate context into failures and successes.
+To get a better sense of action failures, refer to the [Event log index](../../explore-analyze/alerting/alerts/event-log-index.md) for more accurate context into failures and successes.
 
 ::::
 
