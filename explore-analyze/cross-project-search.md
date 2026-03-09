@@ -21,6 +21,7 @@ For details on how search, tags, and project routing work in {{cps-init}}, refer
 * [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md): learn how search expressions, search options, and index resolution work.
 * [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md): learn about predefined and custom project tags and how to use them in queries.
 * [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): learn how to route searches to specific projects based on tag values.
+* [Query across serverless projects with {{esql}}](/explore-analyze/cross-project-search/cross-project-search-esql.md): {{esql}}-specific syntax for index resolution, project routing, and accessing project metadata.
 
 ## {{cps-cap}} as the default behavior for linked projects
 
