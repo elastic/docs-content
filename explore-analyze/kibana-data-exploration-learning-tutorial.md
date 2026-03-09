@@ -21,7 +21,7 @@ These features are available across all Elastic solutions and project types, so 
 
 By the end of this tutorial, you'll know how to:
 
-* Search and filter data in **Discover** using {{esql}}
+* Search, filter, and aggregate data in **Discover** using {{esql}}
 * Create visualizations with **Lens**
 * Combine panels into a **Dashboard** and customize the layout
 * Navigate between **Discover**, **Lens**, and **Dashboards** to iterate on your analysis
@@ -76,27 +76,26 @@ Enter the following query, then select {icon}`playFilled` **Run** or **Search**.
 ```esql
 FROM kibana_sample_data_logs <1>
 | KEEP @timestamp, clientip, response, message <2>
+| SORT @timestamp DESC <3>
 ```
 
 1. Reads from the sample web logs index.
 2. Retains only these four fields in the output, discarding everything else.
+3. Orders results by timestamp, most recent first.
 
-For a complete list of commands and functions, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+You can add more {{esql}} commands and functions to control the results of the query. For example, a `| LIMIT` command to cap the number of rows returned (the default is 1,000). Refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) for the full list of commands.
 
 **Result:** The results table displays the most recent web log entries with only the fields you selected. To discover which fields are available, browse the field list in the sidebar.
+
+:::{tip}
+**No results?** The time range filter defaults to the last 15 minutes. Sample data timestamps are relative to when you loaded the dataset, so you may need to select a wider range, such as **Last 90 days**, or more, to see results.
+:::
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-esql-first-query.png
 :alt: Discover showing an ES|QL query with results table and histogram
 :screenshot:
 :::
 
-:::{tip}
-**No results?** The time range filter defaults to the last 15 minutes. Sample data timestamps are relative to when you loaded the dataset, so you may need to select a wider range, such as **Last 90 days**, or more, to see results.
-:::
-
-:::{tip}
-You can add `| SORT @timestamp DESC` to control the order of results, or `| LIMIT 50` to cap the number of rows returned (the default is 1,000). Refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) for the full list of commands.
-:::
 :::::
 
 :::::{step} Inspect individual results and documents
@@ -199,6 +198,52 @@ Before adding more panels, save your dashboard so you don't lose your work:
 
 **Result:** A metric panel appears on the dashboard showing the median response size in a human-readable format (for example, 5.6 KB instead of 5,748), with a background sparkline for context.
 
+:::{dropdown} Optional: add more metrics to build a row
+A dashboard often starts with a row of metrics for key numbers at a glance. Using the same steps, you can create additional metrics such as:
+
+- **Unique visitors**: drag `clientip`. Lens picks **Unique count** for IP fields.
+- **Total requests**: drag `Records`. Lens creates a simple count. To add a trend indicator, drag `Records` again to the **Secondary metric** area and set its **Time shift** to `1d`. Then set **Color mode** to `Dynamic` and **Compare to** to `Primary metric` to show whether traffic is trending up or down. For details, refer to [Show trends in Metric charts](visualize/charts/metric-charts.md#metric-trends).
+- **Unique URLs**: drag `request.keyword`. Lens picks **Unique count**, showing how many distinct pages were requested.
+:::
+
+:::::
+
+:::::{step} Add a line chart of log volume over time
+
+1. Create the visualization:
+
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   - {applies_to}`stack: ga 9.0-9.1` Select **Create visualization**.
+
+2. Once in the Lens editor, switch the visualization type to **Line**.
+
+3. From the **Available fields** list, drag **Records** to the workspace.
+
+   Because the data contains a time field, Lens places **@timestamp** on the horizontal axis and **Count of Records** on the vertical axis automatically.
+
+4. From the **Available fields** list, drag **host.keyword** to the **Breakdown** area. Lens draws one line per host, each in a different color, so you can compare traffic patterns across servers.
+
+5. Add a reference line to give the chart visual context:
+   1. Select the **Add layer** icon {icon}`plus_in_square`, then select **Reference lines**.
+   2. Select the reference line value and enter `80`. This marks a "high traffic" threshold on the chart.
+   3. Set the color to red, then under **Text decoration**, enter a label such as `High traffic` and select **Fill below** to shade the area under the line.
+
+:::{image} /explore-analyze/images/kibana-learning-tutorial-line-chart-lens.png
+:alt: Lens editor showing a line chart of count of records over time with a reference line
+:screenshot:
+:::
+
+6. Select **Save and return**.
+
+Add a panel title:
+
+1. Hover over the panel and select {icon}`gear` **Settings**.
+2. In the **Title** field, enter `Log volume over time per host`, then select **Apply**.
+
+:::{dropdown} Optional: add more time series
+To compare trends, create additional time series. For example, create a **Response size over time per host** panel: drag `bytes` to a new Line panel, then drag `host.keyword` to the **Breakdown** area to see how response sizes vary per host.
+:::
+
 :::::
 
 :::::{step} Add a bar chart of requests by file extension
@@ -224,54 +269,53 @@ Add a panel title:
 
 1. Hover over the panel and select {icon}`gear` **Settings**. The **Settings** flyout appears.
 2. In the **Title** field, enter `Requests by file extension`, then select **Apply**.
+
+**Result:** A bar chart appears on the dashboard showing the most common file extensions by request count.
 :::::
 
-:::::{step} Add a line chart of log volume over time
+:::::{step} Add a table of recent events with {{esql}}
 
-1. Create the visualization:
+You can also add panels powered by {{esql}} queries directly from the dashboard. This is useful when you want to display raw events or run a specific query without going through Discover first.
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
-   - {applies_to}`stack: ga 9.0-9.1` Select **Create visualization**.
+1. Add a new panel:
 
-2. Once in the Lens editor, switch the visualization type to **Line**.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **New panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
+   - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
 
-3. From the **Available fields** list, drag **Records** to the workspace.
+2. Enter the following query and run it:
 
-   Because the data contains a time field, Lens places **@timestamp** on the horizontal axis and **Count of Records** on the vertical axis automatically.
+   ```esql
+   FROM kibana_sample_data_logs
+   | KEEP @timestamp, request, response, bytes <1>
+   | SORT @timestamp DESC <2>
+   | LIMIT 100 <3>
+   ```
 
-4. Add a reference line to give the chart visual context:
-   1. Select the **Add layer** icon {icon}`plus_in_square`, then select **Reference lines**.
-   2. Select the reference line value and enter `150`. This marks a "high traffic" threshold on the chart.
-   3. Set the color to red, then under **Text decoration**, enter a label such as `High traffic` and select **Fill below** to shade the area under the line.
-:::{image} /explore-analyze/images/kibana-learning-tutorial-line-chart-lens.png
-:alt: Lens editor showing a line chart of count of records over time with a reference line
+   1. Selects only the columns you want in the table.
+   2. Shows the most recent events first.
+   3. Caps the table at 100 records.
+
+3. In the visualization type dropdown, select **Table**.
+4. In the styling options, enable **Paginate table** so the panel stays compact on the dashboard while still giving access to all rows.
+
+:::{image} /explore-analyze/images/kibana-learning-tutorial-esql-table.png
+:alt: {{esql}} visualization editor showing a table of recent log events with the query and table configuration
 :screenshot:
 :::
 
-5. Select **Save and return**.
+5. Select **Apply and close**.
 
-Add a panel title:
-
-1. Hover over the panel and select {icon}`gear` **Settings**.
-2. In the **Title** field, enter `Log volume over time`, then select **Apply**.
-
-**Result:** Your dashboard now has four panels: the response code chart from Discover, the metric, the bar chart, and the line chart.
-
-:::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-four-panels.png
-:alt: Dashboard with a response code chart, a metric panel, a bar chart of requests by file extension, and a line chart of log volume over time
-:screenshot:
-:::
+**Result:** Your dashboard now has at least five panels: the response code chart from Discover, the metric, the line chart, the bar chart, and the ES|QL table, plus any additional panels you may have created from the optional suggestions.
 :::::
 
-:::::{step} Keep experimenting
+:::::{step} Expand your dashboard
 
-You now know the core pattern: drag a field, let Lens pick a chart type, then save to the dashboard. Try adding a few more panels on your own. Here are some ideas using the sample web logs data:
+Lens supports many visualization types beyond metrics, lines, bars, and tables. To keep building your dashboard, you can add panels such as:
 
-- **Unique visitors metric:** drag `clientip` to a new Metric panel. Lens automatically selects **Unique count** for IP fields.
-- **Bytes over time:** drag `bytes` to a new panel and switch the visualization type to **Line**. Lens places the timestamp on the horizontal axis.
-- **Recent events table:** add a visualization, switch to **Table**, and drag a few fields of interest (`@timestamp`, `request`, `response`, `bytes`) as columns.
+- A [**pie chart**](visualize/charts/pie-charts.md) of traffic distribution by operating system (`machine.os.keyword`).
+- A [**treemap**](visualize/charts/treemap-charts.md) breaking down requests by geography (`geo.dest`).
 
-None of these require detailed instructions. Each one follows the same drag-and-drop workflow you used for the first three panels.
+Each one follows the same workflow you have used so far: create a visualization, pick a type, drag fields, and save.
 :::::
 
 :::::{step} Customize a panel with inline editing
@@ -312,11 +356,13 @@ Drag panels by their header to reposition them, and drag the corner handles to r
 - **Middle row:** arrange time series charts (line charts) next to each other so trends are easy to compare.
 - **Bottom row:** use wider panels for bar charts or tables that benefit from more horizontal space.
 
-For larger dashboards, you can also group panels into [collapsible sections](dashboards/arrange-panels.md) to keep things organized.
-
 :::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png
 :alt: A polished dashboard with metrics at the top, time series charts in the middle, and a bar chart and table at the bottom
 :screenshot:
+:::
+
+:::{tip}
+For larger dashboards, you can also group panels into [collapsible sections](dashboards/arrange-panels.md) to keep things organized.
 :::
 
 When you are happy with the layout, select **Save** in the toolbar.
@@ -353,7 +399,7 @@ One of {{kib}}'s strengths is how you can move between exploring raw data and vi
 :   Select {icon}`pencil` on any panel to open the inline **Configuration** flyout. For deeper changes, select **Edit in Lens** in the flyout to switch to the full editor, then **Save and return** to go back to the dashboard.
 
 **Add a new visualization directly from a dashboard**
-:   From a dashboard, select **Add** > **Visualization** to open the Lens editor, or **Add** > **ES|QL** to create a chart from an {{esql}} query without going through Discover first.
+:   From a dashboard, select **Add** > **Visualization** to open the Lens editor, or **Add** > **New panel** and then **ES|QL** under **Visualizations** to create a chart from an {{esql}} query without going through Discover first.
 
 :::{tip}
 This back-and-forth workflow is especially useful when investigating anomalies: spot something unusual on a dashboard, jump to Discover to examine the raw events, refine your query, then save an updated visualization back to the dashboard.

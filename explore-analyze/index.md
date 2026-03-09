@@ -109,7 +109,7 @@ You can set up alerts to monitor your data continuously. Alerts notify you when 
 Elasticsearch's features integrate seamlessly, offering an end-to-end solution for exploring, analyzing, and acting on data.
 
 :::{tip}
-New to {{kib}}? **[Learn data exploration and visualization](learn-kibana-data-exploration.md)** walks you through {{kib}}'s core analyst features (Discover, Lens, and Dashboards) using sample web logs data and {{esql}}.
+New to {{kib}}? **[Learn data exploration and visualization](kibana-data-exploration-learning-tutorial.md)** walks you through {{kib}}'s core analyst features (Discover, Lens, and Dashboards) using sample web logs data and {{esql}}.
 :::
 
 If you want to explore any of the listed features in greater depth, refer to their respective documentation pages and check the provided hands-on examples and tutorials.
