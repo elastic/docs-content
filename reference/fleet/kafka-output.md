@@ -39,7 +39,11 @@ outputs:
       round_robin:
         group_events: 1
     topic: 'elastic-agent'
-    headers: []
+    headers:
+    - key: "some-key"
+      value: "some value"
+    - key: "another-key"
+      value: "another value"
     timeout: 30
     broker_timeout: 30
     required_acks: 1
@@ -178,13 +182,13 @@ Use these options to set the Kafka topic for each {{agent}} event.
     For example:
     
     ```yaml
-    topic: '${data_stream.type}'
+    topic: '%{[data_stream.type]}'
     ```
 
     You can also set a custom field. This is useful if you need to construct a more complex or structured topic name. For example, this configuration uses the `fields.kafka_topic` custom field to set the topic for each event:
 
     ```yaml
-    topic: '${fields.kafka_topic}'
+    topic: '%{[fields.log_topic]}'
     ```
     
     To set a dynamic topic value for outputting {{agent}} data to Kafka, you can add the [`add_fields` processor](/reference/fleet/add_fields-processor.md) to the input configuration settings of your standalone {{agent}}.
@@ -195,7 +199,7 @@ Use these options to set the Kafka topic for each {{agent}} event.
     - add_fields:
         target: ''
         fields: 
-          kafka_topic: '${data_stream.type}-${data_stream.dataset}-${data_stream.namespace}' <1>
+          kafka_topic: '%{[data_stream.type]}-%{[data_stream.dataset]}-%{[data_stream.namespace]}' <1>
     ```
     1. Depending on the values of the data stream fields, this generates topic names such as `logs-nginx.access-production` or `metrics-system.cpu-staging` as the value of the custom `kafka_topic` field.
 
