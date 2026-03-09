@@ -31,6 +31,7 @@ toc:
             children:
               - file: search/vector.md
                 children:
+                  - file: search/vector/tune-vector-search.md
                   - file: search/vector/dense-vector.md
                     children:
                       - file: search/vector/knn.md
