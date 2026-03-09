@@ -1,5 +1,9 @@
 ---
 navigation_title: Organize and annotate docs
+description: "Learn how to group Elastic APIs with tags and annotate them with lifecycle status, permissions, and version information."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Organize and annotate your API docs
@@ -14,7 +18,7 @@ This page explains how to organize your API documentation and add technical meta
 
 For guidance on writing effective API content like summaries, descriptions, and examples, see [Core guidelines](./guidelines.md).
 
-## Add Open API document info
+## Add OpenAPI document info
 
 The published OpenAPI documents must have the following metadata in the [`info` object](https://spec.openapis.org/oas/latest#info-object):
 
@@ -29,7 +33,7 @@ The published OpenAPI documents must have the following metadata in the [`info` 
 
 ## Add OpenAPI specification version
 
-You must specify the version number of the OpenAPI specification that the OpenAPI document uses. This value is not related to the API `version` string in the [document info](#add-open-api-document-info).
+You must specify the version number of the OpenAPI specification that the OpenAPI document uses. This value is not related to the API `version` string in the [document info](#add-openapi-document-info).
 
 [Bump.sh](https://bump.sh/openapi "https://bump.sh/openapi") supports all versions from Swagger 2.0 to OpenAPI 3.1.
 
@@ -160,8 +164,8 @@ The extensions properties are implemented as patterned fields that are always pr
 | `x-codeSamples` | Defines code examples and their programming language. [Docs](https://docs.bump.sh/help/specification-support/doc-code-samples/) |
 | `x-displayName` | Overrides tag names at the document level to align with documentation standards. |
 | `x-feedbackLink` | Adds a link for users to send feedback. [Docs](https://docs.bump.sh/help/publish-documentation/feedback/) |
-| `x-model` | Used to abbreviate deeply nested/recursive API sections (e.g., Elasticsearch query DSL). Should include an `externalDocs` link. Currently only applied via overlays. |
-| `x-state` | Indicates lifecycle state (e.g., “Technical preview; added in 9.1.0”). Appears next to the operation/property. |
+| `x-model` | Used to abbreviate deeply nested/recursive API sections (for example, Elasticsearch query DSL). Should include an `externalDocs` link. Currently only applied through overlays. |
+| `x-state` | Indicates lifecycle state (for example, “Technical preview; added in 9.1.0”). Appears next to the operation/property. |
 | `x-topics` | Adds extra pages shown below the introduction. [Docs](https://docs.bump.sh/help/enhance-documentation-content/topics/) |
 
 :::{note}
@@ -305,7 +309,7 @@ class FooRequest {
 This example shows the "later addition" scenario where `laterAddition` was added after the initial API release, requiring a parameter-level availability annotation with a later version than the API-level availability.
 
 :::::{important}
-The `since` field is only available for `stack`. If the API is introduced in multiple major versions (eg: `8.19.0` and `9.1.0`), use the appropriate value in each branch.
+The `since` field is only available for `stack`. If the API is introduced in multiple major versions (for example: `8.19.0` and `9.1.0`), use the appropriate value in each branch.
 :::::
 
 
@@ -335,7 +339,7 @@ class Foo {
 ::::
 
 :::{important}
-Since we now only publish API docs for major versions (v8, v9) and not for minor versions (8.1, 8.2, etc.), always include the full version information in your `x-state` labels. For example: `Technical preview; added in 9.1.0".
+Because we now only publish API docs for major versions (v8, v9) and not for minor versions (8.1, 8.2, and so on), always include the full version information in your `x-state` labels. For example: `Technical preview; added in 9.1.0".
 :::
 
 ## Document required permissions

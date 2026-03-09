@@ -27,6 +27,8 @@ The following table summarizes the key search features available in [{{esql}}](e
 Features are usually available on {{serverless-full}} before stack-versioned deployments.
 :::
 
+% Source of truth: https://github.com/elastic/elasticsearch/blob/main/docs/reference/query-languages/esql/_snippets/lists/search-functions.md?plain=1
+
 | Feature | Description | Available since |
 |---------|-------------|----------------|
 | [Match function/operator](#match-function-and-operator) | Perform basic text searches with `MATCH` function or match operator (`:`) | 8.17 |
@@ -42,6 +44,9 @@ Features are usually available on {{serverless-full}} before stack-versioned dep
 | [RERANK command](#semantic-reranking-with-rerank) | Re-score search results using inference models for improved relevance | 9.2 |
 | [COMPLETION command](#text-generation-with-completion) | Perform arbitrary text generation tasks by calling LLMs | 9.2 |
 | [TEXT_EMBEDDING function](#text_embedding-function) | Generate dense vector embeddings using inference endpoints | 9.3 |
+| [DECAY function](#decay-function) | Calculate a relevance score that decays based on the distance of a field value from a target origin | 9.3 |
+| [SCORE function](#score-function) | Score an expression using full-text functions; returns scores for all resulting documents | 9.3 |
+| [TOP_SNIPPETS function](#top_snippets-function) | Extract the best snippets for a given query string from a text field | 9.3 |
 
 ## How search works in {{esql}}
 
@@ -84,39 +89,51 @@ The following functions provide text-based search capabilities in {{esql}} with 
 {{esql}} offers two syntax options for match, which replicate the functionality of [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) queries in Query DSL.
 
 - Use the compact [operator syntax (:)](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) for simple text matching with default parameters.
-- Use the [MATCH function syntax](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) for more control over the query, such as specifying analyzers, fuzziness, and other parameters.
+- Use the [MATCH function syntax](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) for more control over the query, such as specifying analyzers, fuzziness, and other parameters.
 
 Refer to the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-3-basic-search-operations) for examples of both syntaxes.
 
 ### `MATCH_PHRASE` function
 
-Use the [`MATCH_PHRASE` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match_phrase) to perform a `match_phrase` query on the specified field. This is equivalent to using the [match_phrase query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md) in Query DSL.
+Use the [`MATCH_PHRASE` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match_phrase.md) to perform a `match_phrase` query on the specified field. This is equivalent to using the [match_phrase query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md) in Query DSL.
 
 For exact phrase matching rather than individual word matching, use `MATCH_PHRASE`.
 
 ### `QSTR` function
 
-The [`QSTR` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-qstr) provides the same functionality as the Query DSL's `query_string` query. This enables advanced search patterns with wildcards, boolean logic, and multi-field searches.
+The [`QSTR` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/qstr.md) provides the same functionality as the Query DSL's `query_string` query. This enables advanced search patterns with wildcards, boolean logic, and multi-field searches.
 
 For complete details, refer to the [Query DSL `query_string` docs](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md).
 
 ### `KQL` function
 
-Use the [KQL function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-kql) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your {{esql}} queries.
+Use the [KQL function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/kql.md) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your {{esql}} queries.
 
 For migrating queries from other Kibana interfaces, the `KQL` function preserves existing query syntax and allows gradual migration to {{esql}} without rewriting existing Kibana queries.
 
 ### `KNN` function
 
-The [`KNN` function](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions.md#esql-knn) finds the k nearest vectors to a query vector, as measured by a similarity metric. It performs approximate search on indexed `dense_vector` or `semantic_text` fields.
+The [`KNN` function](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/knn.md) finds the k nearest vectors to a query vector, as measured by a similarity metric. It performs approximate search on indexed `dense_vector` or `semantic_text` fields.
 
 Use `KNN` for vector similarity search use cases, such as finding semantically similar documents or implementing recommendation systems based on vector embeddings.
 
 ### `TEXT_EMBEDDING` function
 
-The [`TEXT_EMBEDDING` function](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions.md#esql-text_embedding) generates dense vector embeddings from text input using a specified inference endpoint.
+The [`TEXT_EMBEDDING` function](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/text_embedding.md) generates dense vector embeddings from text input using a specified inference endpoint.
 
 Use `TEXT_EMBEDDING` to generate query vectors for KNN searches against your vectorized data or for other dense vector based operations.
+
+### `DECAY` function
+
+The [`DECAY` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/decay.md) calculates a relevance score that decays based on the distance of a numeric, spatial, or date field value from a target origin, using configurable decay functions.
+
+### `SCORE` function
+
+The [`SCORE` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/score.md) scores an expression. Only full-text functions will be scored. Returns scores for all resulting documents.
+
+### `TOP_SNIPPETS` function
+
+The [`TOP_SNIPPETS` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/top-snippets.md) extracts the best snippets for a given query string from a text field. It can be used on fields from the text family like [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
 
 ## Advanced search capabilities
 

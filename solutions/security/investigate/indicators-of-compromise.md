@@ -125,7 +125,7 @@ To add indicators to cases:
 2. Select one of the following:
 
     * **Add to existing case**: From the **Select case** dialog box, select the case to which you want to attach the indicator.
-    * **Add to new case**: Configure the case details. Refer to [Open a new case](/solutions/security/investigate/open-manage-cases.md#cases-ui-open) to learn more about opening a new case.
+    * **Add to new case**: Configure the case details. Refer to [Open a new case](/explore-analyze/cases/create-cases.md) to learn more about opening a new case.
 
     The indicator is added to the case as a new comment.
 

@@ -299,7 +299,7 @@ For information on configuring monitors individually, refer to:
 * [Configure lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md) for lightweight monitors
 
 `maintenanceWindows` (`Array<string>`)
-:   A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+:   A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
 ## `proxy` [synthetics-configuration-proxy]
 

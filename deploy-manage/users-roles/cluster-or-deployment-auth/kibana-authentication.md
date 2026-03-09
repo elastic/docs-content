@@ -118,6 +118,13 @@ PKI authentication will not work if {{kib}} is hosted behind a TLS termination r
 
 ::::
 
+::::{warning}
+PKI authentication combined with the Login Selector might not work when using TLS v1.3. When a TLS session is reused, the client does not resend its full certificate chain. If a user loads the Login Selector screen first, it establishes a TLS session before authentication is attempted. When the user then clicks the PKI login button, {{kib}} cannot retrieve the full certificate chain from the resumed session, and the authentication attempt fails.
+
+
+If you need to use PKI authentication with the Login Selector, consider configuring your environment to use TLS v1.2 instead via `server.ssl.supportedProtocols: ['TLSv1.2']`
+::::
+
 
 PKI authentication is a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log into {{kib}} using X.509 client certificates that must be presented while connecting to {{kib}}. The certificates must first be accepted for authentication on the {{kib}} TLS layer, and then they are further validated by an {{es}} PKI realm. The PKI authentication provider relies on the {{es}} [Delegate PKI authentication API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delegate-pki) to exchange X.509 client certificates to access tokens. All subsequent requests to {{es}} APIs on behalf of users will be authenticated using these access tokens.
 
