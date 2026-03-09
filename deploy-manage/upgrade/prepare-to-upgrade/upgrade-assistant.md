@@ -47,3 +47,5 @@ The Upgrade Assistant pulls information about deprecations from the following so
 
 For more information about Upgrade Assistant APIs, refer to [Upgrade Assistant APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-upgrade).
 
+The {{es}} deprecation info API reports cluster, node, and index level settings that will be removed or changed in the next major version. You must address the reported issues before upgrading to the next major version. However, no action is required when upgrading within a major version, such as from {{es}} {{version.stack.base}} to {{version.stack}}. Deprecated features remain fully supported and continue to work in the current version, and when upgrading to a newer minor or patch release in the same major version.
+
