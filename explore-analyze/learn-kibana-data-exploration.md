@@ -76,14 +76,10 @@ Enter the following query, then select {icon}`playFilled` **Run** or **Search**.
 ```esql
 FROM kibana_sample_data_logs <1>
 | KEEP @timestamp, clientip, response, message <2>
-| SORT @timestamp DESC <3>
-| LIMIT 50 <4>
 ```
 
 1. Reads from the sample web logs index.
 2. Retains only these four fields in the output, discarding everything else.
-3. Orders results by timestamp, most recent first.
-4. Returns only the first 50 rows. Without `LIMIT`, {{esql}} returns up to 1,000 rows by default. A smaller limit keeps the result set focused and the response fast while you explore. 
 
 For a complete list of commands and functions, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
@@ -96,6 +92,10 @@ For a complete list of commands and functions, refer to the [{{esql}} reference]
 
 :::{tip}
 **No results?** The time range filter defaults to the last 15 minutes. Sample data timestamps are relative to when you loaded the dataset, so you may need to select a wider range, such as **Last 90 days**, or more, to see results.
+:::
+
+:::{tip}
+You can add `| SORT @timestamp DESC` to control the order of results, or `| LIMIT 50` to cap the number of rows returned (the default is 1,000). Refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) for the full list of commands.
 :::
 :::::
 
@@ -121,15 +121,12 @@ Browsing individual events is useful, but you can also summarize data directly i
 FROM kibana_sample_data_logs
 | WHERE response IS NOT NULL <1>
 | STATS event_count = COUNT(*) BY response <2>
-| SORT event_count DESC <3>
-| LIMIT 50
 ```
 
 1. Excludes rows where the HTTP response code is missing.
 2. Groups rows by response code and counts events in each group.
-3. Puts the most frequent response codes at the top.
 
-**Result:** The table shows the HTTP response codes ranked by frequency. A chart appears above the table to visualize the aggregation, so you can see at a glance how traffic breaks down by status (200, 404, 503, and so on). A four-line query turned thousands of raw log entries into a ranked breakdown with a chart. Notice that the field list in the sidebar now only shows the fields produced by the query (`event_count` and `response`), reflecting the narrower result set.
+**Result:** The table shows the HTTP response codes ranked by frequency. A chart appears above the table to visualize the aggregation, so you can see at a glance how traffic breaks down by status (200, 404, 503, and so on). A three-line query turned thousands of raw log entries into a ranked breakdown with a chart. Notice that the field list in the sidebar now only shows the fields produced by the query (`event_count` and `response`), reflecting the narrower result set.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-esql-aggregation.png
 :alt: Discover showing a STATS aggregation with HTTP response codes ranked by event count
@@ -266,6 +263,17 @@ Add a panel title:
 :::
 :::::
 
+:::::{step} Keep experimenting
+
+You now know the core pattern: drag a field, let Lens pick a chart type, then save to the dashboard. Try adding a few more panels on your own. Here are some ideas using the sample web logs data:
+
+- **Unique visitors metric:** drag `clientip` to a new Metric panel. Lens automatically selects **Unique count** for IP fields.
+- **Bytes over time:** drag `bytes` to a new panel and switch the visualization type to **Line**. Lens places the timestamp on the horizontal axis.
+- **Recent events table:** add a visualization, switch to **Table**, and drag a few fields of interest (`@timestamp`, `request`, `response`, `bytes`) as columns.
+
+None of these require detailed instructions. Each one follows the same drag-and-drop workflow you used for the first three panels.
+:::::
+
 :::::{step} Customize a panel with inline editing
 
 You can fine-tune any Lens panel without leaving the dashboard. Try it on the **Requests by file extension** panel:
@@ -298,14 +306,25 @@ If you know which dimensions your viewers will want to filter by, you can add [c
 
 :::::{step} Arrange and save
 
-Resize and reposition the panels to create a clear layout. Place the metric panel at the top, and arrange the charts below it. For larger dashboards, you can also group panels into [collapsible sections](dashboards/arrange-panels.md) to keep things organized.
+Drag panels by their header to reposition them, and drag the corner handles to resize them. A well-organized layout helps readers find what matters quickly. For example:
+
+- **Top row:** place metric panels side by side for key numbers at a glance.
+- **Middle row:** arrange time series charts (line charts) next to each other so trends are easy to compare.
+- **Bottom row:** use wider panels for bar charts or tables that benefit from more horizontal space.
+
+For larger dashboards, you can also group panels into [collapsible sections](dashboards/arrange-panels.md) to keep things organized.
+
+:::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png
+:alt: A polished dashboard with metrics at the top, time series charts in the middle, and a bar chart and table at the bottom
+:screenshot:
+:::
 
 When you are happy with the layout, select **Save** in the toolbar.
 :::::
 
 ::::::
 
-Your dashboard now combines multiple panel types (metric, bar chart, line chart) built with Lens, and you've seen how inline editing and interactive filtering make the dashboard both customizable and interactive. To learn more, refer to [Dashboards](dashboards.md), [Lens](visualize/lens.md), and [Panels and visualizations](visualize.md).
+Your dashboard now combines multiple panel types built with Lens, and you've seen how inline editing and interactive filtering make the dashboard both customizable and interactive. To learn more, refer to [Dashboards](dashboards.md), [Lens](visualize/lens.md), and [Panels and visualizations](visualize.md).
 
 ## Step 4: Share the dashboard [share-the-dashboard]
 
