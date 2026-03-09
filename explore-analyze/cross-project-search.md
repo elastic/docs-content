@@ -385,6 +385,8 @@ GET /_query
   "include_ccs_metadata":true
 }
 ```
+:::
+
 ::::
 
 The request will return a response similar to this:
@@ -515,6 +517,8 @@ The request will return a response similar to this:
   }
 }
 ```
+:::
+
 ::::
 
 #### Project routing with named project routing expressions
@@ -555,6 +559,8 @@ GET /_query
   "include_ccs_metadata": true,
 }
 ```
+:::
+
 ::::
 
 #### Project routing and qualified expressions
