@@ -39,7 +39,8 @@ For a detailed exploration and examples of setting up composable templates, refe
 
 An **index template** is used to configure an index when it is created. [Mappings](/manage-data/data-store/mapping.md), [settings](elasticsearch://reference/elasticsearch/index-settings/index.md), and [aliases](/manage-data/data-store/aliases.md) specified in the index template are inherited by each created index. These can also be specified in the component templates that the index template is composed of.
 
-You can create and manage index templates in {{kib}} or using the {{es}} API. 
+
+You can create and manage index templates in {{kib}} or using the {{es}} API.
 
 :::::{tab-set}
 :group: template
@@ -227,6 +228,12 @@ The following features can be useful when you're setting up index templates:
 * `synthetics-*-*`
 * `profiling-*`
 * `security_solution-*-*`
+* `$.logs`
+* `$.logs.*`
+* `logs.otel`
+* `logs.otel.*`
+* `logs.ecs`
+* `logs.ecs.*`
 
 [{{agent}}](/reference/fleet/index.md) uses these templates to create data streams. Index templates created by {{fleet}} integrations use similar overlapping index patterns and have a priority up to `200`.
 
