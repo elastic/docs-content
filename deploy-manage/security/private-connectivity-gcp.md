@@ -37,6 +37,16 @@ To learn how private connection policies impact your deployment, refer to [](/de
 
 * Private Service Connect connections are regional. As a result, your Private Service Connect endpoint needs to be created in the same region as your deployment. The endpoint can be accessed from any region after you enable its [Global Access](https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#global-access) feature.
 
+
+## Limitations
+
+% limitations are not applicable to serverless projects
+
+When using GCP Private Service Connect, the following limitations apply:
+
+```{include} _snippets/private-connectivity-limitations-ech.md
+```
+
 ## Private Service Connect URIs [ec-private-service-connect-uris]
 
 Service Attachments are set up by Elastic in all supported GCP regions under the following URIs:

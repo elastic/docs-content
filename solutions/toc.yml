@@ -381,6 +381,7 @@ toc:
             children:
               - file: observability/cloud/monitor-microsoft-azure-with-elastic-agent.md
               - file: observability/cloud/monitor-microsoft-azure-with-beats.md
+              - file: observability/cloud/multi-tenant-data-ingestion-with-beats.md
               - file: observability/cloud/monitor-microsoft-azure-with-azure-native-isv-service.md
               - file: observability/cloud/monitor-microsoft-azure-openai.md
           - file: observability/cloud/monitor-google-cloud-platform-gcp.md
@@ -510,6 +511,7 @@ toc:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
               - file: observability/incident-management/create-an-slo.md
               - file: observability/incident-management/slo-management.md
+              - file: observability/incident-management/configure-slo-settings.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/ai/observability-ai.md
         children:
@@ -577,6 +579,7 @@ toc:
           - file: security/detect-and-alert/install-manage-elastic-prebuilt-rules.md
             children:
               - file: security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md
+              - file: security/detect-and-alert/prebuilt-rules-airgapped.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
           - file: security/detect-and-alert/rule-exceptions.md
@@ -725,14 +728,6 @@ toc:
           - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
           - file: security/dashboards/detection-rule-monitoring-dashboard.md
           - file: security/dashboards/endpoint-detection-response-dashboard.md
-      - file: security/explore.md
-        children:
-          - file: security/explore/hosts-page.md
-          - file: security/explore/network-page.md
-            children:
-              - file: security/explore/configure-network-map-data.md
-              - file: security/explore/configure-dns-histogram.md
-          - file: security/explore/users-page.md
       - file: security/advanced-entity-analytics.md
         children:
           - file: security/advanced-entity-analytics/overview.md
@@ -755,6 +750,14 @@ toc:
               - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
               - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
               - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
+          - file: security/advanced-entity-analytics/explore.md
+            children:
+              - file: security/advanced-entity-analytics/hosts-page.md
+              - file: security/advanced-entity-analytics/network-page.md
+                children:
+                  - file: security/advanced-entity-analytics/configure-network-map-data.md
+                  - file: security/advanced-entity-analytics/configure-dns-histogram.md
+              - file: security/advanced-entity-analytics/users-page.md
       - file: security/asset-management.md
       - file: security/security-serverless-feature-tiers.md
       - file: security/apis.md
