@@ -31,6 +31,7 @@ toc:
             children:
               - file: search/vector.md
                 children:
+                  - file: search/vector/choose-hybrid-reranking-strategy.md
                   - file: search/vector/dense-vector.md
                     children:
                       - file: search/vector/knn.md
@@ -39,6 +40,7 @@ toc:
                   - file: search/vector/dense-versus-sparse-ingest-pipelines.md
               - file: search/semantic-search.md
                 children:
+                  - file: search/semantic-search/choose-semantic-implementation.md
                   - file: search/semantic-search/semantic-search-semantic-text.md
                   - file: search/semantic-search/semantic-search-inference.md
                   - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
