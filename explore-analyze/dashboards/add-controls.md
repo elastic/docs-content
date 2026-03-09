@@ -13,14 +13,10 @@ products:
 
 **Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries.
 
-{applies_to}`stack: ga 9.4` **Pinned** control
-:   Appear in the dashboard's sticky header and apply to the whole dashboard. 
+{applies_to}`stack: ga 9.4` 
+* **Pinned** control: Appears in the dashboard's sticky header and apply to the whole dashboard. 
 
-{applies_to}`stack: ga 9.4` **Unpinned** control 
-:   Live in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
-
-**Universally chained** control
-:   A change in one control will impact all other controls on the dashboard, regardless of their positioning in the grid, including pinned controls. The only exception to this is controls within a collapsible section. These controls will only chain with other controls in their section. This is the default behaviour of controls. If you want to change this behaviour, turn off the **Use global filters** setting.
+* **Unpinned** control: Lives in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
 
 ## Requirements [add-controls-requirements]
 
@@ -139,7 +135,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 8. Select **Save**. The control can now be used.
 9. Consider control order when you have several controls.
 
-   {applies_to}`stack: ga 9.4` Controls are chained by default: each control narrows the options available in subsequent controls based on position. 
+   {applies_to}`stack: ga 9.4` A change in one control will impact all other controls on the dashboard, regardless of their positioning in the grid, including pinned controls. The only exception to this is controls within a collapsible section. These controls will only chain with other controls in their section. To change this default behaviour, turn off the **Use global filters** setting. 
 
    {applies_to}`stack: ga 9.0-9.3` Controls are applied from left to right; when the [Chain controls](#configure-controls-settings) setting is enabled, their position changes the options available in the next control.
 
@@ -283,7 +279,7 @@ The time slider can only be added as a pinned control to the header. It is not a
 ::::{applies-switch}
 
 :::{applies-item} stack: ga 9.4
-Controls are always chained. Each control narrows the options available in subsequent controls. 
+Controls are always chained. Each control narrows the options available in other controls. 
 
 For pinned controls, you can click the Settings {icon}`gear` icon on control to customize the display settings:
 
