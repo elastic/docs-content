@@ -18,7 +18,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Transport client](#ec-restrictions-transport-client)
 * [{{es}} and {{kib}} plugins](#ec-restrictions-plugins)
 * [Watcher](#ec-restrictions-watcher)
-* [Private connectivity and SSO to {{kib}} URLs](#ec-restrictions-network-security-kibana-sso)
+* [Private connectivity](#ec-restrictions-network-security-kibana-sso)
 * [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-network-security-watcher)
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
