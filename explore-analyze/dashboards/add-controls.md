@@ -152,9 +152,9 @@ In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
 You can bind controls to your {{esql}} visualizations in dashboards. When creating an {{esql}} visualization, the autocomplete suggestions prompt control insertion for field values, field names, function configuration, and function names. {{esql}} controls act as variables in your {{esql}} visualization queries.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
-When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it.
+When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
 
-This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
+A control's filter scope depends on where you place it: controls inside a [collapsible section](arrange-panels.md#collapsible-sections) apply only to panels in that section, while controls outside sections or pinned to the dashboard apply to all panels.
 
 Only **Options lists** are supported for {{esql}}-based controls. Options can be:
 - values or fields that can be static or defined by a query
@@ -332,11 +332,12 @@ Change the settings for Options list and Range slider controls.
 Delete controls from your dashboard.
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
-To remove a control from view without deleting it, use **Unpin** from the control's panel menu; the control moves into the dashboard body. To remove it from the dashboard entirely, use **Delete** from the panel menu.
+To remove a control from view without deleting it, use **Unpin** from the control's panel menu; the control moves into the dashboard body. To remove it from the dashboard entirely, click **Remove** from the control's menu.
 
+{applies_to}`stack: ga 9.0+`
 1. Hover over the control you want to delete, then select ![The Remove control icon that removes the control from the dashboard](/explore-analyze/images/kibana-dashboard_controlsRemoveControl_8.3.0.png "").
 2. In the **Delete control?** window, select **Delete**.
 
 :::{note}
-If you delete an variable control that's used in an {{esql}} visualization, the visualization will break. You must edit the visualization query and remove or update the control reference.
+If you delete a variable control that's used in an {{esql}} visualization, the visualization will break. You must edit the visualization query and remove or update the control reference.
 :::
