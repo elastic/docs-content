@@ -363,6 +363,7 @@ The following request searches all indices on projects whose alias starts with "
 ::::{tab-set}
 
 :::{tab-item} _search
+
 ```console
 GET /*/_search
 {
