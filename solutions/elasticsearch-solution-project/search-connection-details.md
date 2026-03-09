@@ -12,14 +12,25 @@ products:
 # Find connection details [search-space-connection-details]
 
 
-To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} endpoint, depending on your deployment type. For secure connections, we recommend using an API key for authentication.
+To connect to your {{es}} deployment, you need your {{es}} endpoint URL. For secure connections, we recommend using an API key for authentication.
 
 The following sections describe how to find your Cloud ID and create API keys in both {{ecloud}} and {{serverless-short}} deployments.
 
 ## Elastic Cloud and self-hosted deployments [_elastic_cloud_and_self_hosted_deployments]
 
+### Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
+
+Standard URLs are the recommended way to connect client applications to your cluster.
+
+1. Go to the {{ecloud}} home page.
+2. In the main menu, select **Manage this deployment**.
+3. Under the **Applications** list, select **Copy endpoint** next to **{{es}}**.
 
 ### Find your Cloud ID [find-cloud-id-cloud-self-managed]
+
+::::{note}
+The Cloud ID is a simplified connection method specifically supported by Beats and {{ls}}. For all other client applications and third-party tools, use the {{es}} endpoint URL.
+::::
 
 1. Go to the {{ecloud}} home page.
 2. In the main menu, select **Manage this deployment**.

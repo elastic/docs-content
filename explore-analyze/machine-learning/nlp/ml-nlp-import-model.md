@@ -40,13 +40,13 @@ Trained models must be in a TorchScript representation for use with {{stack-ml-f
 
     ```
     eland_import_hub_model \
-    --cloud-id <cloud-id> \ <1>
+    --url <url> \ <1>
     -u <username> -p <password> \ <2>
     --hub-model-id elastic/distilbert-base-cased-finetuned-conll03-english \ <3>
     --task-type ner  <4>
     ```
 
-    1. Specify the Elastic Cloud identifier. Alternatively, use `--url`.
+    1. Specify your {{es}} cluster URL.
     2. Provide authentication details to access your cluster. Refer to [Authentication methods](#ml-nlp-authentication) to learn more.
     3. Specify the identifier for the model in the Hugging Face model hub.
     4. Specify the type of NLP task. Supported values are `fill_mask`, `ner`, `question_answering`, `text_classification`, `text_embedding`, `text_expansion`, `text_similarity`, and `zero_shot_classification`.
