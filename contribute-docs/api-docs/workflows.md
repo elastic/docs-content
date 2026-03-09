@@ -1,5 +1,9 @@
 ---
 navigation_title: API docs by product
+description: "Find the correct OpenAPI source repository, spec file, and live documentation link for each Elastic product API."
+applies_to:
+  stack:
+  serverless:
 ---
 # API docs workflows by product
 
