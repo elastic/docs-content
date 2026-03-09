@@ -20,7 +20,6 @@ toc:
             children:
               - file: search/full-text/how-full-text-works.md
               - file: search/full-text/text-analysis-during-search.md
-              - file: search/full-text/search-relevance.md
                 children:
                   - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
                   - file: search/full-text/search-relevance/consistent-scoring.md
