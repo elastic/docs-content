@@ -287,7 +287,7 @@ For pinned controls, you can click the Settings {icon}`gear` icon on control to 
 
 - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
 
-**Auto apply filters**. When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, you must click the unified search **Apply** button to apply pending control selections.
+**Auto apply filters**. When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, you must click the unified search **Apply** button to apply pending control selections. The **Auto apply filters** option is available from the **Dashboard settings** panel. 
 
 :::
 
