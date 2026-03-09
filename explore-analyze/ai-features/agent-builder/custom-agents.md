@@ -107,7 +107,7 @@ From the **Agents** page, you can perform various actions on custom agents:
 :::
 
 :::{note}
-These management options apply only to custom agents and the Elastic AI Agent {applies_to}`stack: ga 9.4+, serverless: ga`. Built-in agents can only be chatted with or cloned, not edited or deleted.
+These management options apply only to custom agents and the Elastic AI Agent {applies_to}`stack: ga 9.4+`. Other built-in agents can only be chatted with or cloned, not edited or deleted.
 :::
 
 ## Best practices for custom agents
