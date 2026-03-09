@@ -13,21 +13,44 @@ products:
 
 # Configure Linux file system monitoring
 
+This page explains the advanced settings which allow you to configure which filesystems {{elastic-defend}} monitors on your Linux hosts.
 
-By default, {{elastic-defend}} monitors specific Linux file system types that Elastic has tested for compatibility. If your network includes nonstandard, proprietary, or otherwise unrecognized Linux file systems, you can configure the integration policy to extend monitoring and protections to those additional file systems. You can also have {{elastic-defend}} ignore unrecognized file system types if they don’t require monitoring or cause unexpected problems.
+By default, {{elastic-defend}} monitors specific Linux filesystem types that Elastic has tested for compatibility, and ignores all others. However, you can define more granular behavior by configuring the advanced settings related to **fanotify**, a Linux feature that monitors file system events:
 
-::::{warning}
-Ignoring file systems can create gaps in your security coverage. Use additional security layers for any file systems ignored by {{elastic-defend}}.
-::::
+* Find **Policies** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* Click a policy’s name.
+* Scroll down and select **Show advanced settings**.
+
+From here, you can change the following settings:
+
+:::{dropdown} View monitored file systems
+{{elastic-defend}} monitors the following file systems by default:
+
+ - ext2
+ - ext3
+ - ext4
+ - overlay
+ - tmpfs
+ - vfat
+ - xfs
+ - btrfs 
+ - zfs
+:::
 
 
-To monitor or ignore additional file systems, configure the following advanced settings related to **fanotify**, a Linux feature that monitors file system events. Find **Policies** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), click a policy’s name, then scroll down and select **Show advanced settings**.
+$$$ignore-unknown-filesystems$$$
+
+`linux.advanced.fanotify.ignore_unknown_filesystems`
+:   Determines whether to ignore unrecognized file systems. Enter one of the following:
+
+    * `true`: (Default) Monitor only Elastic-tested file systems, and ignore all others. You can still monitor or ignore specific file systems with `monitored_filesystems` and `ignored_filesystems`.
+    * `false`: Monitor all filesystems except the ignored-by-default filesystems. You can still ignore specific file systems with `ignored_filesystems`.
 
 ::::{note}
-Even when configured to monitor all file systems (`ignore_unknown_filesystems` is `false`), {{elastic-defend}} will still ignore specific file systems that Elastic has internally identified as incompatible. The following settings apply to any *other* file systems.
+Even when `ignore_unknown_filesystems` is `false`, {{elastic-defend}} still ignores specific file systems unless they're added to `linux.advanced.fanotify.monitored_filesystems`:
 
-:::{dropdown} View incompatible file systems
-{{elastic-defend}} cannot monitor the following incompatible file systems:
+:::{dropdown} View ignored-by-default file systems
+{{elastic-defend}} will not monitor the following file systems unless they are individually added to `linux.advanced.fanotify.monitored_filesystems`:
 
  - cifs
  - lustre
@@ -60,36 +83,7 @@ Even when configured to monitor all file systems (`ignore_unknown_filesystems` i
  - sysfs
  - tracefs
 :::
-
-:::{dropdown} View monitored file systems
-{{elastic-defend}} monitors the following file systems by default:
-
- - ext2
- - ext3
- - ext4
- - overlay
- - tmpfs
- - vfat
- - xfs
- - btrfs 
- - zfs
-:::
-
 ::::
-
-
-$$$ignore-unknown-filesystems$$$
-
-`linux.advanced.fanotify.ignore_unknown_filesystems`
-:   Determines whether to ignore unrecognized file systems. Enter one of the following:
-
-    * `true`: (Default) Monitor only Elastic-tested file systems, and ignore all others. You can still monitor or ignore specific file systems with `monitored_filesystems` and `ignored_filesystems`, respectively.
-    * `false`: Monitor all file systems. You can still ignore specific file systems with `ignored_filesystems`.
-
-    ::::{note}
-    In {{stack}}, if you’ve upgraded from 8.3 or earlier, this value will be `false` for backwards compatibility. If you don’t need to monitor additional file systems, it’s recommended to change `ignore_unknown_filesystems` to `true` after upgrading.
-    ::::
-
 
 $$$monitored-filesystems$$$
 
@@ -109,10 +103,13 @@ $$$monitored-filesystems$$$
 $$$ignored-filesystems$$$
 
 `linux.advanced.fanotify.ignored_filesystems`
-:   Specifies additional file systems to ignore. Enter a comma-separated list of [file system names](/solutions/security/configure-elastic-defend/configure-linux-file-system-monitoring.md#find-file-system-names) as they appear in `/proc/filesystems` (for example: `ext4,tmpfs`).
+:   Specifies additional filesystems to ignore. Enter a comma-separated list of [file system names](/solutions/security/configure-elastic-defend/configure-linux-file-system-monitoring.md#find-file-system-names) as they appear in `/proc/filesystems` (for example: `ext4,tmpfs`).
 
-    Entries in this setting override entries in `monitored_filesystems`.
+    Entries in this setting override entries in `monitored_filesystems` and the `linux.advanced.fanotify.ignore_unknown_filesystems: false` setting.
 
+::::{warning}
+Ignoring filesystems can create gaps in your security coverage. Use additional security layers for ignored filesystems.
+::::
 
 ## Btrfs subvolume monitoring [btrfs-subvolume-monitoring]
 
