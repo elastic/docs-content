@@ -93,9 +93,9 @@ To restart a transform that’s not running:
 5. The transform’s status changes to `started`. If it doesn’t change, refresh the page.
 
 
-## {{agent}} and Endpoint connection issues [ts-agent-connection]
+## {{agent}} and {{elastic-endpoint}} connection issues [ts-agent-connection]
 
-After {{agent}} installs Endpoint, Endpoint connects to {{agent}} over a local relay connection to report its health status and receive policy updates and response action requests. If that connection cannot be established, the {{elastic-defend}} integration will cause {{agent}} to be in an `Unhealthy` status, and Endpoint won’t operate properly.
+After {{agent}} installs {{elastic-endpoint}}, {{elastic-endpoint}} connects to {{agent}} to report its health status and receive policy updates and response action requests. If that connection cannot be established, the {{elastic-defend}} integration will cause {{agent}} to be in an `Unhealthy` status, and {{elastic-endpoint}} won’t operate properly.
 
 
 ### Identify if the issue is happening [_identify_if_the_issue_is_happening]
@@ -108,41 +108,57 @@ You can identify if this issue is happening in the following ways:
     * `sudo /Library/Elastic/Agent/elastic-agent status` (macOS)
     * `c:\Program Files\Elastic\Agent\elastic-agent.exe status` (Windows)
 
-    If the status result for `endpoint-security` says that Endpoint has missed check-ins or `localhost:6788` cannot be bound to, it might indicate this problem is occurring.
+    If the status result for `endpoint-security` says that {{elastic-endpoint}} has missed check-ins, it might indicate this problem is occurring.
 
-* If the problem starts happening right after installing Endpoint, check the value of `fleet.agent.id` in the following file:
+* Run {{elastic-endpoint}}'s status command:
 
-    * `/opt/Elastic/Endpoint/elastic-endpoint.yaml` (Linux)
-    * `/Library/Elastic/Endpoint/elastic-endpoint.yaml` (macOS)
-    * `c:\Program Files\Elastic\Endpoint\elastic-endpoint.yaml` (Windows)
+    * `sudo /opt/Elastic/Endpoint/elastic-endpoint status` (Linux)
+    * `sudo /Library/Elastic/Endpoint/elastic-endpoint status` (macOS)
+    * `c:\Program Files\Elastic\Endpoint\elastic-endpoint.exe status` (Windows)
 
-    If the value of `fleet.agent.id` is `00000000-0000-0000-0000-000000000000`, this indicates this problem is occurring.
+    If the problem starts happening right after installing {{elastic-endpoint}}, the output is:
 
-  ::::{note}
-  If this problem starts happening after Endpoint has already been installed and working properly, then this value will have changed even though the problem is happening.
-  ::::
+    ```shell
+    - elastic-agent
+      - status: (FAILED) Not connected
+    - elastic-endpoint
+      - status: (HEALTHY) Running (no policy)
+    ```
+
+    Otherwise, if {{elastic-endpoint}} has been running correctly for a while, the output is:
+
+    ```shell
+    - elastic-agent
+      - status: (FAILED) Not connected
+    - elastic-endpoint
+      - status: (HEALTHY) Running
+    ```
+
+    Appending `--output full` to the command shows the details of the last policy that {{elastic-endpoint}} was configured with before it lost connection with {{agent}}.
+
+* You can also examine the full policy details by running:
+
+    * `sudo /opt/Elastic/Agent/elastic-agent inspect` (Linux)
+    * `sudo /Library/Elastic/Agent/elastic-agent inspect` (macOS)
+    * `c:\Program Files\Elastic\Agent\elastic-agent.exe inspect` (Windows)
+
+  If the output shows a policy with name `initial`, revision `0`, and IDs `00000000-0000-0000-0000-000000000000`, {{elastic-endpoint}} was not configured since installation. This corresponds to the status `(HEALTHY) Running (no policy)`.
 
 
+### Examine {{elastic-endpoint}} logs [_examine_endpoint_logs]
 
-### Examine Endpoint logs [_examine_endpoint_logs]
+If you’ve confirmed that the issue is happening, you can look at {{elastic-endpoint}} log messages to identify the cause:
 
-If you’ve confirmed that the issue is happening, you can look at Endpoint log messages to identify the cause:
-
-* `Failed to find connection to validate. Is Agent listening on 127.0.0.1:6788?` or `Failed to validate connection. Is Agent running as root/admin?` means that Endpoint is not able to create an initial connection to {{agent}} over port `6788`.
-* `Unable to make GRPC connection in deadline(60s). Fetching connection info again` means that Endpoint’s original connection to {{agent}} over port `6788` worked, but the connection over port `6789` is failing.
-
+* `Unable to retrieve connection info from Agent` means that {{elastic-endpoint}} was not able to connect to {{agent}}.
+* `Failed to create bootstrap` indicates you should check if {{agent}} service is running. 
+* `Agent process is not root/admin or validation failed, disconnecting` means that {{elastic-endpoint}} is not able to create an initial connection to {{agent}} as the process is not trusted.
+* `Agent GRPC connection failed to establish within deadline` means that {{elastic-endpoint}}'s original connection to {{agent}} worked, but the connection over port `6789` is failing.
 
 ### Resolve the issue [_resolve_the_issue]
 
 To debug and resolve the issue, follow these steps:
 
-1. Since 8.7.0, Endpoint diagnostics contain a file named `analysis.txt` that contains information about what may cause this issue. As of 8.11.2, {{agent}} diagnostics automatically include Endpoint diagnostics. For previous versions, you can gather Endpoint diagnostics by running:
-
-    * `sudo /opt/Elastic/Endpoint/elastic-endpoint diagnostics` (Linux)
-    * `sudo /Library/Elastic/Endpoint/elastic-endpoint diagnostics` (macOS)
-    * `c:\Program Files\Elastic\Endpoint\elastic-endpoint.exe diagnostics` (Windows)
-
-2. Make sure nothing else on your device is listening on ports `6788` or `6789` by running:
+1. Make sure nothing else on your device is listening on port `6789` by running:
 
     * `sudo netstat -anp --tcp` (Linux)
     * `sudo netstat -an -f inet` (macOS)
