@@ -287,7 +287,7 @@ For pinned controls, you can click the Settings {icon}`gear` icon on control to 
 
 - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
 
-**Auto apply filters**. When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, users must click the unified search **Apply** button to apply pending control selections.
+**Auto apply filters**. When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, you must click the unified search **Apply** button to apply pending control selections.
 
 :::
 
@@ -309,8 +309,8 @@ For pinned controls, you can click the Settings {icon}`gear` icon on control to 
     * **Selections** settings:
 
         * **Validate user selections** — When selected, any selected option that results in no data is ignored.
-        * {applies_to}`stack: ga 9.0-9.3` **Chain controls** — When selected, controls are applied sequentially from left to right, and line by line. Any selected options in one control narrows the available options in the next control.
-        * {applies_to}`stack: ga 9.0-9.3` **Apply selections automatically** — The dashboard is updated dynamically when options are selected in controls. When this option is disabled, users first need to **Apply** their control selection before they are applied to the dashboard.
+        * **Chain controls** — When selected, controls are applied sequentially from left to right, and line by line. Any selected options in one control narrows the available options in the next control.
+        * **Apply selections automatically** — The dashboard is updated dynamically when options are selected in controls. When this option is disabled, users first need to **Apply** their control selection before they are applied to the dashboard.
 
     * To remove all controls from the dashboard, select **Delete all**.
 
