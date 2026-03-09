@@ -148,24 +148,17 @@ Regular backups are essential when indexing business-critical or auditable data.
 
 ### {{kib}}, MCP, and Agent Builder
 
-- If deploying outside of {{ecloud}}, ensure {{kib}} is configured for High Availability to avoid a single point of failure. Deploying {{kib}} across multiple availability zones also improves resiliency for management and user access.  
-- Ensure telemetry is collected from {{kib}} nodes if MCP server is used. This allows for proper capacity planning if usage is extensive.  
-- For self-deployed clusters, use a proxy in front of multiple {{kib}} nodes to avoid a single point of failure. {{ech}} has a single point of connection that is proxied.
+- If deploying outside of {{ecloud}}, ensure [{{kib}} is configured for High Availability](/deploy-manage/production-guidance/kibana-load-balance-traffic.md) to avoid a single point of failure. Deploying {{kib}} across multiple availability zones also improves resiliency for management and user access.
+- Ensure [monitoring data](/deploy-manage/monitor.md) is collected from {{kib}} nodes if [MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) is used. This allows for proper capacity planning if usage is extensive.
+- For self-deployed clusters, use a proxy in front of multiple {{kib}} nodes to avoid a single point of failure. {{ech}} provides a single connection endpoint that is backed by a highly available proxy layer.
 
 ### Data tiering
 
-A uniform hot tier is strongly recommended for the majority of search use cases. Disk-based vector methods like using DiskBBQ (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets, such as IoT telemetry and financial transaction logs, on lower-cost tiers.
+This architecture uses a single, uniform hot/content data tier, which is recommended for most search and generative AI workloads. Keeping all data on a single tier simplifies operations and helps ensure consistent query latency, especially for vector and hybrid search.
 
-#### How many nodes of each tier do you need?
+{{es}} also supports multi-tier architectures that place data on different tiers based on access patterns and retention requirements. In some scenarios, disk-based vector storage methods such as [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) provide a memory-efficient alternative to HNSW. This approach can support larger datasets, such as IoT telemetry or financial transaction logs, while allowing vector data to be stored efficiently on lower-cost storage tiers.
 
-It depends on:
-
-- The type of data being ingested (such as logs, metrics, traces)  
-- The retention period of searchable data (such as 30 days, 90 days, 1 year)  
-- The amount of data you need to ingest each day  
-- The number of dashboards, queries, query types and how frequent they are run
-
-You can [contact us](https://www.elastic.co/contact) for an estimate and recommended configuration based on your specific scenario.
+For guidance on designing multi-tier architectures and selecting appropriate data tiers for your workload, refer to the [{{es}} documentation on data tiers](/manage-data/lifecycle/data-tiers.md) and the [Hot/Frozen reference architecture](./hotfrozen-high-availability.md). If you need help estimating capacity or choosing a configuration for your scenario, you can also [contact us](https://www.elastic.co/contact).
 
 ## Resources and references
 
