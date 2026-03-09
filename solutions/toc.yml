@@ -49,6 +49,7 @@ toc:
               - file: search/hybrid-semantic-text.md
           - file: search/ranking.md
             children:
+              - file: search/ranking/evaluate-retrieval-quality.md
               - file: search/ranking/semantic-reranking.md
               - file: search/ranking/learning-to-rank-ltr.md
                 children:
