@@ -1,12 +1,16 @@
 ---
 navigation_title: Elasticsearch API docs
+description: "Set up a local Elasticsearch API docs workflow, from environment setup to generating and previewing your changes."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Contribute to Elasticsearch API docs locally
 
 ## Overview
 
-The Elasticsearch APIs are the foundation of the Elastic Stack and the largest API set we maintain. Because the workflow is quite complex, we created this quickstart guide to help you get started.
+The Elasticsearch APIs are the foundation of the Elastic Stack and the largest API set we maintain. Because the workflow is complex, we created this quickstart guide to help you get started.
 
 This is a step-by-step local development workflow. While CI runs these steps automatically on PR branches in the `elasticsearch-specification` repo (see [Makefile](https://github.com/elastic/elasticsearch-specification/blob/main/Makefile)), working locally enables you to validate, preview and debug before submitting your changes. For a complete list of available make targets, run `make help`.
 
@@ -66,10 +70,10 @@ This command runs multiple steps in sequence:
 2. Generates the schema JSON (`generate`)
 3. Transforms to OpenAPI format for language clients (`transform-to-openapi`)
 4. Filters for serverless (`filter-for-serverless`)
-5. Lints the language clients OpenAPIdocs (`lint-docs`)
+5. Lints the language clients OpenAPI docs (`lint-docs`)
 
 :::{note}
-Some of the linter errors at this stage may be false alarms, and are fixed by path consolidation and overlays. You'll need to run `make lint` later against the docs-specific OpenAPI files.
+Some linter errors at this stage can be false alarms, and are fixed by path consolidation and overlays. You'll need to run `make lint` later against the docs-specific OpenAPI files.
 :::
 ::::
 
@@ -100,7 +104,7 @@ Run this command to lint your docs-specific OpenAPI files:
 make lint-docs
 ```
 :::{tip}
-You should try to fix all linter warnings and not just errors. Fixing errors alone will not ensure your docs are complete, i.e. helpful for users.
+You should try to fix all linter warnings and not only errors. Fixing errors alone will not ensure your docs are complete (helpful for users).
 :::
 ::::
 

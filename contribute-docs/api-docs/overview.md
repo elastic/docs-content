@@ -1,3 +1,11 @@
+---
+navigation_title: How API docs work
+description: "Understand how Elastic API documentation is generated, from source files to OpenAPI documents and published HTML."
+applies_to:
+  stack:
+  serverless:
+---
+
 # How Elastic API docs work
 
 This page explains at a high-level how API docs work at Elastic today, with context on how this differs from our previous approaches and where we're heading. Use this page to understand the core primitives and workflows that apply across all Elastic teams, so you can contribute effectively.
@@ -14,9 +22,9 @@ While the implementation details [vary significantly across teams](./workflows.m
 
 ## Context and evolution
 
-This table gives a simple overview of how API docs were produced in the past, how we do it today, and where we're heading.
+This table gives a basic overview of how API docs were produced in the past, how we do it today, and where we're heading.
 
-This evolution seeks to elevate documentation to being a first-class citizen in the API development lifecycle.
+This evolution seeks to elevate documentation to being a top-level citizen in the API development lifecycle.
 
 | Era | Developer tasks | Approach | Publication |
 | --- | --- | --- | --- |
@@ -25,7 +33,7 @@ This evolution seeks to elevate documentation to being a first-class citizen in 
 
 ## High-level process
 
-All Elastic API docs follows this general pattern:
+All Elastic API docs follow this general pattern:
 
 :::{image} images/api-docs-general-pipeline.png
 :alt: High-level API docs workflow pipeline diagram, showing the flow from source files to OpenAPI documents and published documentation.
@@ -44,7 +52,7 @@ All Elastic API docs follows this general pattern:
 
 The Elasticsearch API specification workflow is particularly complex because it combines multiple source files and serves various downstream consumers. 
 
-When adding a new API, Elasticsearch engineers first create a very basic spec in the [elasticsearch repo](https://github.com/elastic/elasticsearch/tree/main/rest-api-spec). Those specs are mirrored, and made more robust and detailed in [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification/tree/main/docs).
+When adding a new API, Elasticsearch engineers first create a basic spec in the [elasticsearch repo](https://github.com/elastic/elasticsearch/tree/main/rest-api-spec). Those specs are mirrored, and made more robust and detailed in [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification/tree/main/docs).
 
 The generated Schema JSON and OpenAPI documents feed into client libraries (and their docs), the Dev Tools Console, and the [Elasticsearch API reference](https://www.elastic.co/docs/api/doc/elasticsearch/) (including the [Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/)). Here's how the pipeline works:
 

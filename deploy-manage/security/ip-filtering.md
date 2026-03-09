@@ -37,7 +37,7 @@ In {{serverless-full}} and {{ech}}, IP filters are a type of [network security p
 To learn how multiple IP filters are processed, and how IP filters and [private connections](/deploy-manage/security/private-connectivity.md) work together in ECH, refer to [](/deploy-manage/security/network-security-policies.md).
 
 :::{note}
-Serverless projects require the Serverless Plus add-on to apply IP filter policies. During the promotional period, applying an IP filter policy to a project opts that project in to Serverless Plus.
+Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply IP filter policies. During the promotional period, applying an IP filter policy to a project opts that project in to Serverless Plus.
 :::
 
 ## ECE
