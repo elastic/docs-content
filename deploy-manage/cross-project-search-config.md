@@ -66,9 +66,9 @@ Only compatible projects appear in the [{{cps}} linking wizard](#cps-link-projec
 
 | Origin project type | Can link to |
 |---|---|
-| {{product.elasticsearch}} | {{product.elasticsearch}} |
-| {{product.observability}} | {{product.observability}}, {{product.security}} |
-| {{product.security}} | {{product.security}}, {{product.observability}} |
+| {{product.elasticsearch}} | {{product.elasticsearch}}<br>{{product.observability}} Complete<br> {{product.security}} Complete |
+| {{product.observability}}<br>(Complete tier only)| {{product.observability}} Complete<br>{{product.security}} Complete |
+| {{product.security}}<br>(Complete tier only)| {{product.security}} Complete |
 
 Workplace AI projects are not compatible with {{cps}}.
 
@@ -125,9 +125,12 @@ Before linking projects, make sure to consider {{cps}} [architecture patterns](#
 To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
 
 1. On the home screen, find the project you want to use as the origin project and click **Manage**.
-    :::{important} `applies_to`: serverless: preview
+
+    :::{important} 
+    :applies_to: serverless: preview
     During technical preview, only newly created projects can function as origin projects.
     :::
+
 1. Click **Link projects** on the **{{cps-cap}}** tile, or navigate to **{{cps-cap}}** in the sidebar. Click **Link projects** to open the linking wizard.
 1. Browse or search for projects to link to the origin project. Only [compatible projects](#cps-compatibility) appear in the project list. You can filter by type, cloud provider, region, and tags.
 1. Select the checkbox for each project you want to link. You can link up to 20 projects per origin project.
@@ -160,7 +163,7 @@ To remove a linked project from the current {{cps-init}} configuration, navigate
 
 After you confirm, searches from the origin project will no longer include data from the unlinked projects.
 
-::::{important}
+::::{note}
 You can't delete a project that's linked to an origin project. To delete a project, first unlink it from every origin project it's linked to, then delete it.
 ::::
 
