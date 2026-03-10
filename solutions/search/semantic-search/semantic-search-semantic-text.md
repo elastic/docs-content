@@ -21,7 +21,7 @@ This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/el
 
 ## Requirements [semantic-text-requirements]
 
-- This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on Elastic Cloud Hosted deployments and Serverless projects. 
+- This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects. 
 ::::{note}
 You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
 ::::
