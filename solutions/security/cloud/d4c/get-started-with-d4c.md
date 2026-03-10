@@ -52,7 +52,7 @@ First, you’ll need to deploy Elastic’s Defend for Containers integration to 
 
 The [default D4C policy](d4c-policies.md#d4c-default-policies) provides threat detection capabilities. It is designed to send process telemetry events (`fork` and `exec`) to {{es}}.
 
-To detect threats using this data, you’ll need active [detection rules](/solutions/security/detect-and-alert.md). You can use Elastic's prebuilt rules that are designed for this data or create [custom rules](/solutions/security/detect-and-alert/create-detection-rule.md).
+To detect threats using this data, you’ll need active [detection rules](/solutions/security/detect-and-alert.md). You can use Elastic's prebuilt rules that are designed for this data or create [custom rules](/solutions/security/detect-and-alert/using-the-rule-builder.md).
 
 To set up threat detection, install and enable Elastic's prebuilt rules that use data ingested by D4C:
 
