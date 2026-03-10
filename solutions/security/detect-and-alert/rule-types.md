@@ -24,5 +24,5 @@ description: Learn when to use each detection rule type and access detailed guid
 | Behavioral anomalies without a fixed pattern | [{{ml-cap}}](/solutions/security/detect-and-alert/machine-learning.md) |
 
 :::{tip}
-Still unsure which rule type fits your use case? Refer to [Select the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) for a decision guide comparing all rule types.
+Still unsure which rule type fits your use case? Refer to [Choose the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) for a decision guide comparing all rule types.
 :::
