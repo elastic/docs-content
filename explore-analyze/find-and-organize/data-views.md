@@ -160,9 +160,9 @@ stack: unavailable
 
 When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form automatically lists indices from all projects in your current [{{cps}} scope](/explore-analyze/cross-project-search.md#cps-in-kibana).
 
-You don't need to opt in or toggle any setting. The index list updates automatically when you change the {{cps}} scope in the [project picker](/explore-analyze/cross-project-search.md#cps-in-kibana). A {{data-source}} with an index pattern like `logs-*` matches indices across the origin project and all linked projects in scope.
+You don't need to opt in or toggle any setting. The index list updates automatically when you change the {{cps}} scope in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search.md#cps-in-kibana). A {{data-source}} with an index pattern like `logs-*` matches indices across the origin project and all linked projects in scope.
 
-To restrict a {{data-source}} to specific projects, adjust the {{cps}} scope in the project picker before creating the {{data-source}}, or use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in your queries.
+To restrict a {{data-source}} to specific projects, adjust the {{cps}} scope in the {{cps-init}} scope selector before creating the {{data-source}}, or use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in your queries.
 
 
 ## Delete a {{data-source}} [delete-data-view]
