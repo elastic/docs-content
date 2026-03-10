@@ -17,7 +17,7 @@ Semantic text simplifies the {{infer}} workflow by providing {{infer}} at ingest
 
 The recommended way to use [semantic search](../semantic-search.md) in the {{stack}} is following the `semantic_text` workflow. When you need more control over indexing and query settings, you can still use the complete {{infer}} workflow (refer to [this tutorial](../../../explore-analyze/elastic-inference/inference-api.md) to review the process).
 
-This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), but you can use any service and their supported models offered by the [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md).
+This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), but you can use any service and model supported by the [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md).
 
 ## Requirements [semantic-text-requirements]
 
