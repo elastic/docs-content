@@ -143,7 +143,7 @@ Access actions from the **More actions** (**…**) menu in the Alerts table, or 
 | [Change status](#detection-alert-status) | Mark as open, acknowledged, or closed |
 | [Add to case](/explore-analyze/cases/attach-objects-to-cases.md) | Attach alert to a new or existing case |
 | [Add rule exception](#add-exception-from-alerts) | Prevent rule from generating similar alerts |
-| [Add endpoint exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) | Prevent endpoint alerts for specific conditions |
+| [Add {{elastic-endpoint}} exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) | Prevent {{elastic-endpoint}} alerts for specific conditions |
 | [Apply alert tags](#apply-alert-tags) | Categorize alerts for filtering |
 | [Assign users](#assign-users-to-alerts) | Assign analysts to investigate |
 | [Investigate in Timeline](#signals-to-timelines) | Open alert in Timeline for analysis |
