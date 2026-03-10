@@ -352,7 +352,7 @@ POST /_query
 
 The requests explicitly target all projects using the `*:` prefix.
 The `my-index` index is evaluated separately in each project.
-The index `my-index` must exist in every project, otherwise the search returns an error.
+The index `my-index` must exist in every project, otherwise [the search returns an error](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions).
 
 ### Project routing examples
 
