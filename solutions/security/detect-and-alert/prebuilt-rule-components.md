@@ -62,11 +62,6 @@ To help you set up the right data sources, rule details pages include:
 **Setup guide**
 :   Step-by-step guidance for configuring the rule's data requirements.
 
-:::{image} /solutions/images/security-rule-details-prerequisites.png
-:alt: Rule details page with Related integrations
-:screenshot:
-:::
-
 ### Check integration status from the {{rules-ui}} table
 
 You can check rules' related integrations in the **Installed Rules** and **Rule Monitoring** tables. Select the **integrations** badge to display the related integrations in a popup. The badge shows how many of the rule's related integrations are currently installed and enabled—for example, `1/2` means one of two related integrations is installed and actively collecting data.
