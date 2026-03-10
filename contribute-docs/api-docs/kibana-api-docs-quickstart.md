@@ -1,5 +1,9 @@
 ---
 navigation_title: Kibana API docs
+description: "Set up a local Kibana API docs workflow, from cloning the repo to linting and previewing merged OpenAPI documentation."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Contribute to Kibana API docs locally
@@ -26,7 +30,7 @@ Some teams, including Security and Observability, work with hand-edited YAML fil
 :::
 ::::
 
- For more details, see the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
+ For more details, refer to the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
 
 ## Quickstart
 
@@ -96,7 +100,7 @@ options: {
 The `availability` option includes two fields:
 
 - **`stability`**: Indicates the lifecycle state of the API
-  - `'experimental'` → Technical preview; may change or be removed in future versions
+  - `'experimental'` → Technical preview; can change or be removed in future versions
   - `'stable'` (default) → Generally available (GA); stable for production use
 - **`since`**: The version when the API was first added (e.g., `'9.2.0'`)
 
@@ -128,7 +132,7 @@ In these README files, you'll also find instructions for generating intermediate
 
 The YAML files with the content changes and the intermediate bundle files are the minimum set of files required for creating a pull request. Without the intermediate bundle files, the automation won't pick up the changes and won't generate the full API documentation.
 
-Review the the [checklist](checklist.md) for best practices.
+Review the [checklist](checklist.md) for best practices.
 
 Once you've made your changes, skip the next two steps and proceed to "Generate docs".
 ::::
