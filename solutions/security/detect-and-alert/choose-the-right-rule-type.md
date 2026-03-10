@@ -59,7 +59,7 @@ For example, you might create three building block rules:
 Each of these individually produces low-confidence alerts. A downstream EQL sequence rule can then query the alert index to detect all three occurring on the same host within a short time window, producing a single high-confidence alert for a likely intrusion chain.
 
 ::::{tip}
-Add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) to building block rules if you want notifications when building block alerts are generated, even though the alerts are hidden from the default Alerts view.
+Add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) to building block rules if you want notifications when building block alerts are generated. The alerts remain hidden from the default Alerts view, but notifications are still sent.
 ::::
 
 ### Viewing building block alerts

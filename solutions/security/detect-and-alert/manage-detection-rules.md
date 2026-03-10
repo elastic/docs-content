@@ -146,7 +146,7 @@ Delete rules to permanently remove them from your system. This action cannot be 
 
 ## Snooze rule actions [snooze-rule-actions]
 
-Snoozing pauses a rule's actions (notifications, ticket creation, and other integrations) without stopping the rule itself. The rule keeps running on schedule and continues generating alerts, but notifications are suppressed until the snooze period ends.
+Snoozing pauses a rule's actions, such as notifications, ticket creation, and other integrations, without stopping the rule itself. The rule keeps running on schedule and continues generating alerts, but notifications are suppressed until the snooze period ends.
 
 Use snoozing for planned maintenance windows, expected alert spikes, or any time you want to silence notifications temporarily while still capturing alerts for later review.
 

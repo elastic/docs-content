@@ -136,7 +136,7 @@ This rule detects PowerShell execution with Base64-encoded commands, a technique
 | Field | Value | Purpose |
 |---|---|---|
 | `language` | `"lucene"` | Required for the `/.../` regex syntax in the `query`. KQL does not support regular expressions. |
-| `query` | `process.name:powershell.exe AND process.args:/.../` | Uses a Lucene regex to match any truncation of the `-EncodedCommand` flag (PowerShell allows partial parameter names). The `AND` operator is uppercase in Lucene, unlike KQL's lowercase `and`. |
+| `query` | `process.name:powershell.exe AND process.args:/.../` | Uses a Lucene regex to match any truncation of the `-EncodedCommand` flag. PowerShell allows partial parameter names, so the regex covers all variants. The `AND` operator is uppercase in Lucene, unlike KQL's lowercase `and`. |
 | `index` | `["winlogbeat-*", "logs-endpoint.events.*"]` | Covers Windows event logs (Winlogbeat) and Elastic Defend endpoint events. |
 
 ### KQL query with alert suppression [custom-query-example-suppression]

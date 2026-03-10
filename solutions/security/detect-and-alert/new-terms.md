@@ -39,7 +39,7 @@ New terms rules require at least one {{es}} index pattern or [{{data-source}}](/
 Select the field whose novelty you want to detect. Fields with moderate cardinality work best:
 
 * **Good candidates:** `source.geo.country_name`, `process.executable`, `dns.question.name`, `user.name`
-* **Poor candidates:** High-cardinality fields like `event.id` or `_id` (nearly every value is unique, so nearly every event triggers an alert).
+* **Poor candidates:** High-cardinality fields like `event.id` or `_id`. Nearly every value is unique, so nearly every event triggers an alert.
 
 ### Multi-field combinations
 

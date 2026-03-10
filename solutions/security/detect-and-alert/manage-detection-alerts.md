@@ -92,7 +92,7 @@ Customize the filter controls above the Alerts table. By default, you can filter
 
 ## Group alerts [group-alerts]
 
-Group alerts by up to three fields (rule name, host, user, source IP, or custom fields). Groups nest in the order you select them.
+Group alerts by up to three fields, such as rule name, host, user, source IP, or custom fields. Groups nest in the order you select them.
 
 :::{image} /solutions/images/security-group-alerts.png
 :alt: Alerts table with Group alerts by drop-down

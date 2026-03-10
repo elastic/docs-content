@@ -39,7 +39,7 @@ Before applying updates, you can examine what's changing in each rule.
 
 3. Select a rule name to open the rule update flyout and review the changes.
 
-All subscriptions can preview incoming updates by selecting the **Elastic update overview** tab (field-by-field view) or the **JSON view** tab (full rule comparison). Both tabs display side-by-side comparisons of the **Current rule** (what you have installed) and the **Elastic update** version (what you can install). Deleted characters are highlighted in red; added characters are highlighted in green.
+All subscriptions can preview incoming updates by selecting the **Elastic update overview** tab for a field-by-field view, or the **JSON view** tab for a full rule comparison. Both tabs display side-by-side comparisons of the **Current rule** and the **Elastic update** version. Deleted characters are highlighted in red; added characters are highlighted in green.
 
 :::{image} /solutions/images/security-prebuilt-rules-update-diff-basic.png
 :alt: Prebuilt rule comparison
@@ -130,7 +130,7 @@ With an Enterprise subscription on {{stack}} or a Security Analytics Complete pr
 | Status | Description | Action required |
 |---|---|---|
 | Ready for update | No conflicts. The field can be updated. | None |
-| No update | The field isn't being updated by Elastic, but your current value differs from the original. | None (you can still edit the final value if needed) |
+| No update | The field isn't being updated by Elastic, but your current value differs from the original. | None. You can still edit the final value if needed. |
 | Review required | Elastic auto-resolved a conflict between your changes and the Elastic update. | Review the suggested resolution and accept or edit it. |
 | Action required | Elastic couldn't auto-resolve the conflict. | Manually set the field's final value. |
 

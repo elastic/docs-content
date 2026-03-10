@@ -93,7 +93,7 @@ Many prebuilt rules include investigation guides—Markdown documents that help 
 2. In the alert details flyout, go to the **Investigation** section on the **Overview** tab.
 3. If the rule has an investigation guide, select **Show investigation guide** to open it in the details panel.
 
-You can also view investigation guides from the rule's details page (find **Detection rules (SIEM)** in the navigation menu, then select the rule name).
+You can also view investigation guides from the rule's details page. Find **Detection rules (SIEM)** in the navigation menu, then select the rule name.
 
 ### What investigation guides include
 
@@ -101,7 +101,7 @@ Prebuilt rule investigation guides typically contain:
 
 - **Context**: Background on the threat or technique the rule detects
 - **Triage steps**: How to determine if the alert is a true positive
-- **Investigation queries**: Pre-built queries to gather additional context (some guides include interactive Timeline buttons)
+- **Investigation queries**: Pre-built queries to gather additional context. Some guides include interactive Timeline buttons.
 - **Response guidance**: Actions to take if the alert is confirmed
 
 ::::{note}

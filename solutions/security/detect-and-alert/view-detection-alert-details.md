@@ -146,7 +146,7 @@ The Insights section is located on the **Overview** tab in the right panel. It o
 
 ### Entities [entities-overview]
 
-The Entities overview provides high-level details about the user and host that are related to the alert. Host and user risk classifications are also available with a Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the Security Analytics Complete [project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+The Entities overview provides high-level details about the user and host that are related to the alert. Host and user risk classifications are also available with a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the Security Analytics Complete [project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 
 #### Expanded entities view [expanded-entities-view]
 

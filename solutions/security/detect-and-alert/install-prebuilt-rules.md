@@ -56,7 +56,7 @@ Rules can only fire if the telemetry they need is actually flowing into your env
 In the Rules table, filter by the `Data Source` tag matching each of your active integrations. This instantly cuts the rule list down to only what's executable in your environment.
 
 :::{tip}
-Reading rule logic backwards (what fields does this rule query?) is one of the fastest ways to learn which log fields matter for detection.
+Reading rule logic backwards to understand which fields the rule queries is one of the fastest ways to learn which log fields matter for detection.
 :::
 :::::::
 
@@ -95,7 +95,7 @@ If you've had a past incident, those tactics and techniques are almost always wo
 After your initial rules have been running for at least two weeks and you have a tuning workflow established, consider these additional actions. They can be done in any order.
 
 :::::{dropdown} Tune with exceptions, not by disabling
-When a rule fires on legitimate activity (a specific admin user, a known scanner, an authorized process), add an [exception](/solutions/security/detect-and-alert/rule-exceptions.md) rather than disabling the rule. Exceptions persist through prebuilt rule updates. Disabling the rule means you lose detection coverage entirely.
+When a rule fires on legitimate activity, such as a specific admin user, a known scanner, or an authorized process, add an [exception](/solutions/security/detect-and-alert/rule-exceptions.md) rather than disabling the rule. Exceptions persist through prebuilt rule updates. Disabling the rule means you lose detection coverage entirely.
 
 For rules that fire legitimately but repeatedly, use [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) to group duplicate alerts within a time window.
 
@@ -147,7 +147,7 @@ Most prebuilt rules don't start running by default. Use **Install and enable** t
 
 3. Do one of the following:
 
-    * Install all available rules: Select **Install all** at the top of the page. (This doesn't enable the rules; you still need to do that manually.)
+    * Install all available rules: Select **Install all** at the top of the page. This installs the rules but doesn't enable them—you still need to enable them manually.
     * Install a single rule: In the rules table, either select **Install** to install a rule without enabling it, or select {icon}`boxes_vertical` , then **Install and enable** to start running the rule once it's installed.
     * Install multiple rules: Select the rules, and then at the top of the page either select **Install *x* selected rule(s)** to install without enabling the rules, or select {icon}`boxes_vertical` > **Install and enable** to install and start running the rules.
 
