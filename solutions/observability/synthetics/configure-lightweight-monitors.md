@@ -351,7 +351,7 @@ $$$monitor-spaces$$$
 {applies_to}`stack: ga 9.1+` **`spaces`**
 :   Type: list of [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
 
-    The [{{kib}} spaces](/deploy-manage/manage-spaces.md) in which the monitor will be visible. Monitors can be visible in multiple spaces simultaneously. Use `'*'` to make the monitor visible in all spaces. The project's default space is always included. Only applies to {{kib}} deployments; not applicable to Serverless.
+    The [{{kib}} spaces](/deploy-manage/manage-spaces.md) in which the monitor will be visible. Monitors can be visible in multiple spaces simultaneously. Use `'*'` to make the monitor visible in all spaces. The project's default space is always included. Only applies to {{stack}} deployments; not applicable to Serverless.
 
     **Examples**:
 
