@@ -30,6 +30,18 @@ For more information on alerting concepts and the types of rules and connectors 
 
 Access to rules is granted based on your {{alert-features}} privileges. For more information, go to [Security](alerting-setup.md#alerting-security).
 
+## {{cps-cap}} scope for rules [cps-scope-for-rules]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), alerting rules query data across linked projects based on the **space-level {{cps}} scope**. You cannot set a {{cps}} scope on individual rules.
+
+When you create or edit a rule, the [project picker](/explore-analyze/cross-project-search.md#cps-in-kibana) in the {{kib}} header shows the current {{cps}} scope but you cannot change it from the rule page. To change which projects a rule queries, update the {{cps}} scope configured for the space.
+<!-- Link to Spaces CPS configuration page when docs-content-internal#30 is published. -->
+
+
 ## Create and edit rules [create-edit-rules]
 
 Some rules must be created within the context of a {{kib}} app like [Metrics](/solutions/observability/infra-and-hosts.md), [**APM**](/solutions/observability/apm/index.md), or [Uptime](/solutions/observability/uptime/index.md), but others are generic. Generic rule types can be created in **{{rules-ui}}** by clicking the **Create rule** button. This will launch a flyout that guides you through selecting a rule type and configuring its conditions and actions.
