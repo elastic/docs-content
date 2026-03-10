@@ -14,7 +14,7 @@ description: Compare detection rule types and select the best fit for your threa
 
 # Choose the right rule type [security-about-rules]
 
-{{elastic-sec}} offers several detection rule types, each designed for a different kind of threat signal. Selecting the right type is the single most important decision when creating a rule, because it determines what the rule can detect, how it performs, and how its alerts behave.
+Unsure which rule type to use? This guide helps you decide. {{elastic-sec}} offers several detection rule types, each designed for a different kind of threat signal. Selecting the right type is important because it determines what the rule can detect, how it performs, and how its alerts behave.
 
 ## Rule type comparison [rule-types]
 
