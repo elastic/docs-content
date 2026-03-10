@@ -91,6 +91,39 @@ If you run `GET logs/_search`:
 * the `logs` index in project 2 is not accessible and is excluded from the results
 
 
+## {{cps-cap}} in {{kib}} [cps-in-kibana]
+
+When {{cps}} is enabled and projects are linked, a **project picker** appears in the {{kib}} header. This picker controls the {{cps}} scope, which determines which linked projects are included in searches performed from the current app.
+
+With the project picker, you can select:
+
+* **This project** — Searches only the origin project.
+* **All projects** — Searches the origin project and all linked projects.
+* **A specific subset** — Searches selected linked projects only, based on a [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
+
+The selected scope applies to all queries in the current app unless overridden, for example by an {{esql}} query that includes a [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) instruction, or by a [saved dashboard scope](/explore-analyze/dashboards/using.md).
+
+Each space can also have a default {{cps}} scope configured by admins. When you open a {{kib}} app, the project picker initializes to the space's default scope.
+<!-- Link to Spaces CPS configuration page when docs-content-internal#30 is published. -->
+
+### {{cps-cap}} availability in {{kib}} apps [cps-availability]
+
+Not all {{kib}} apps support {{cps}}. The following table shows which apps support the project picker and how:
+
+| {{kib}} app | {{cps-init}} support | Details |
+| --- | --- | --- |
+| **Discover** | Full (editable scope) | Change the {{cps}} scope to control which projects are searched. |
+| **Dashboards** | Full (editable scope) | Change the {{cps}} scope from within a dashboard. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md) to restore on load. |
+| **Lens** | Full (editable scope) | Change the {{cps}} scope when building visualizations. |
+| **Maps** | Full (editable scope) | Change the {{cps}} scope. Vector layers and joins source data from linked projects based on the current scope. |
+| **Visualize (Vega only)** | Full (editable scope) | {{cps}} is supported for [Vega visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md) only. Other legacy visualization types do not support {{cps}}. |
+| **Security dashboards** | Full (editable scope) | {{cps}} is available on Security dashboard pages. Other Security solution pages do not support {{cps}}. |
+| **{{rules-ui}} and alerts** | Read-only scope | The project picker shows the current scope but cannot be changed. {{rules-ui}} use the space-level {{cps}} scope at execution time. |
+| **Transforms** | Not supported | [Transforms](/explore-analyze/transforms.md) do not support {{cps}} yet. All transform operations are scoped to the current project. |
+| **{{ml-app}}** | Not supported | N/A |
+| **Canvas** | Not supported | N/A |
+
+
 ## Supported APIs [cps-supported-apis]
 
 The following APIs support {{cps}}:

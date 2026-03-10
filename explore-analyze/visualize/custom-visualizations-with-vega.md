@@ -12,6 +12,11 @@ products:
 
 **Vega** and **Vega-Lite** are both grammars for creating custom visualizations. They are recommended for advanced users who are comfortable writing {{es}} queries manually. **Vega-Lite** is a good starting point for users who are new to both grammars, but they are not compatible.
 
+:::{note}
+:applies_to: {"serverless": "preview", "stack": "unavailable"}
+Vega is the only legacy visualization type that supports [{{cps}}](/explore-analyze/cross-project-search.md). When {{cps}} is enabled and projects are linked, the {{cps}} project picker is available when editing a Vega visualization. You can also define project routing directly in your Vega spec to target specific linked projects. Other legacy visualization types created from the **Visualize** app do not support {{cps}}.
+:::
+
 **Vega** and **Vega-Lite** panels can display one or more data sources, including {{es}}, Elastic Map Service, URL, or static data, and support [{{kib}} extensions](#reference-for-kibana-extensions) that allow you to embed the panels on your dashboard and add interactive tools.
 
 Use **Vega** or **Vega-Lite** when you want to create visualizations with:
