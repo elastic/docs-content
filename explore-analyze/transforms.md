@@ -16,7 +16,7 @@ Transforms enable you to convert existing {{es}} indices into summarized indices
 
 :::{note}
 :applies_to: {"serverless": "preview", "stack": "unavailable"}
-{{cps-cap}} is not yet supported for transforms. All transform operations are scoped to the current project. When {{cps}} support is available for transforms, you will be able to create transforms that operate on data from linked projects.
+Transforms do not yet support {{cps}}. All transform operations run against the current project only. When {{cps}} support becomes available for transforms, you will be able to create transforms that operate on data from linked projects.
 :::
 
 * [Overview](transforms/transform-overview.md)
