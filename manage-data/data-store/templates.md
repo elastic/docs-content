@@ -249,14 +249,14 @@ If you use {{fleet}} or {{agent}}, assign your index templates a priority lower 
 
 A **component template** is a reusable building block that defines mappings, settings, and aliases. Component templates are not applied directly to indices, but referenced by index templates and used when determining the final configuration of an index.
 
-You can create and manage component templates on the **Index management** page in {{kib}} or by using the [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API.
+You can create and manage component templates in {{kib}} or using the {{es}} API.
 
 :::::{tab-set}
 :group: template
 
 ::::{tab-item} Kibana
 :sync: kibana
-Create, edit, clone, and delete your component templates in the **Component Templates** view.
+You can create, edit, clone, and delete your component templates on the **Index management** page in {{kib}}. Go to the **Component Templates** tab.
 
 :::{image} /manage-data/images/serverless-management-component-templates.png
 :alt: Component templates
