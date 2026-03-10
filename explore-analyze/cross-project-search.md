@@ -363,7 +363,6 @@ The following request searches all indices on projects whose alias starts with "
 ::::{tab-set}
 
 :::{tab-item} _search
-
 ```console
 GET /*/_search
 {
@@ -376,8 +375,6 @@ GET /*/_search
 :::
 
 :::{tab-item} ES|QL
-
-:::
 ```console
 GET /_query
 {
@@ -394,7 +391,6 @@ The request will return a response similar to this:
 ::::{tab-set}
 
 :::{tab-item} _search
-
 ```console
 {
   "took": 60,
@@ -457,8 +453,6 @@ The request will return a response similar to this:
 :::
 
 :::{tab-item} ES|QL
-
-:::
 ```console
 {
   "took": 54,
@@ -549,8 +543,6 @@ GET /my*/_search
 :::
 
 :::{tab-item} ES|QL
-
-:::
 ```console
 GET /_query
 {
