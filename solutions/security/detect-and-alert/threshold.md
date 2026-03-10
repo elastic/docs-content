@@ -11,8 +11,6 @@ description: Create threshold rules to alert when the number of matching events 
 
 # Threshold rules [threshold-rule-type]
 
-## Overview
-
 Threshold rules search your {{es}} indices and generate an alert when the number of events matching a query meets or exceeds a specified threshold within a single rule execution. Optionally, events can be grouped by one or more fields so that each unique combination is evaluated independently.
 
 ### When to use a threshold rule
@@ -143,7 +141,7 @@ This rule alerts when a source IP connects to many unique destination ports, ind
 
 ## Threshold field reference [threshold-fields]
 
-The following settings are specific to threshold rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
+The following settings appear in the **Define rule** section when creating a threshold rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **Index patterns or {{data-source}}**
 :   The {{es}} indices or {{data-source}} the rule searches.

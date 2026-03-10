@@ -11,8 +11,6 @@ description: Create rules using KQL or Lucene queries to detect known field valu
 
 # Custom query rules [custom-query-rule-type]
 
-## Overview
-
 Custom query rules search your {{es}} indices using a KQL or Lucene query and generate an alert whenever one or more documents match. 
 
 ### When to use a custom query rule
@@ -173,7 +171,7 @@ This rule detects failed login attempts and uses [alert suppression](/solutions/
 
 ## Custom query field reference [custom-query-fields]
 
-The following settings are specific to custom query rules. For settings shared across all rule types (severity, risk score, schedule, actions, and so on), refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
+The following settings appear in the **Define rule** section when creating a custom query rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **Index patterns or data view**
 :   The {{es}} indices or data view the rule queries when searching for events. Index patterns are prepopulated with the indices configured in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) advanced setting. Alternatively, select a data view from the drop-down to use its associated index patterns and [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md).

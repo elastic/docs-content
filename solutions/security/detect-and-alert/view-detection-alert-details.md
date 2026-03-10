@@ -14,7 +14,7 @@ description: Use the alert details flyout to investigate, manage, and respond to
 
 # View detection alert details [security-view-alert-details]
 
-To learn more about an alert, click **View details** from the Alerts table. This opens the alert details flyout, which helps you understand and manage the alert.
+To learn more about an alert, click the **View details** icon ({icon}`expand`) from the Alerts table. This opens the alert details flyout, which helps you understand and manage the alert.
 
 Use the alert details flyout to begin an investigation, open a case, or plan a response. Click **Take action** at the bottom of the flyout to find more options for interacting with the alert.
 
@@ -54,8 +54,8 @@ The header displays key alert information:
 * **Rule**: The rule that generated the alert
 * **Status**: Current alert status and creation time
 * **Severity and risk score**: Inherited from the rule
-* **Assignees**: Users assigned to the alert (click {icon}`plus_in_circle` to add more)
-* **Notes**: Attached notes (click {icon}`plus_in_circle` to add a note)
+* **Assignees**: Users assigned to the alert (click the **Add** icon {icon}`plus_in_circle` to add more)
+* **Notes**: Attached notes (click the **Add** icon {icon}`plus_in_circle` to add a note)
 
 #### View formats
 

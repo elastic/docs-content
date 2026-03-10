@@ -11,8 +11,6 @@ description: Create detection rules using Event Query Language (EQL) to detect e
 
 # Event correlation (EQL) rules [eql-rule-type]
 
-## Overview
-
 Event correlation rules use [Event Query Language (EQL)](elasticsearch://reference/query-languages/eql/eql-syntax.md) to detect ordered sequences of events, single events with complex conditions, or the absence of expected events. EQL is purpose-built for event-based data and excels at expressing time-ordered relationships that other query languages cannot.
 
 ### When to use an EQL rule
@@ -155,7 +153,7 @@ This rule detects `certutil.exe` being used to download files and demonstrates t
 
 ## EQL field reference [eql-fields]
 
-The following settings are specific to EQL rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
+The following settings appear in the **Define rule** section when creating an EQL rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **Index patterns or {{data-source}}**
 :   The {{es}} indices or {{data-source}} the rule searches when querying for events.

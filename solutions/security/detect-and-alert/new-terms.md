@@ -11,8 +11,6 @@ description: Create detection rules that alert when a field value appears for th
 
 # New terms rules [new-terms-rule-type]
 
-## Overview
-
 New terms rules detect the first appearance of a field value (or combination of field values) within a configurable history window. The rule compares each value it finds during its current execution against a historical baseline, and generates an alert only when the value has never appeared in that baseline period.
 
 ### When to use a new terms rule
@@ -136,7 +134,7 @@ This rule detects a user logging in to a host they have never accessed during th
 
 ## New terms field reference [new-terms-fields]
 
-The following settings are specific to new terms rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
+The following settings appear in the **Define rule** section when creating a new terms rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **Index patterns or {{data-source}}**
 :   The {{es}} indices or {{data-source}} the rule searches.

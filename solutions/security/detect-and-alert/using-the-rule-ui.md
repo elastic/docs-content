@@ -21,7 +21,7 @@ Once the Detections feature is [turned on](/solutions/security/detect-and-alert/
 At any step, you can preview the rule before saving it to see what kind of results you can expect.
 ::::
 
-1. Define the [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#rule-types). The configuration for this step varies depending on the rule type.
+1. Define the [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#rule-types). The configuration for this step varies depending on the rule type. For field descriptions specific to each type, refer to the [Rule types](/solutions/security/detect-and-alert/rule-types.md) section.
 2. Configure [basic rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params).
 3. (Optional) Configure [advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params).
 4. Set the [rule's schedule](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule).

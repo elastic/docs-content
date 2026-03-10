@@ -11,8 +11,6 @@ description: Create detection rules that trigger on machine learning anomaly det
 
 # {{ml-cap}} rules [ml-rule-type]
 
-## Overview
-
 {{ml-cap}} rules generate alerts when a {{ml}} {{anomaly-job}} discovers an anomaly that exceeds a defined score threshold. Unlike other rule types, {{ml}} rules do not require you to write a query. Instead, they rely on {{ml}} jobs that continuously model normal behavior and flag deviations.
 
 ### When to use a {{ml}} rule
@@ -174,7 +172,7 @@ This rule monitors several login-related {{ml}} jobs and suppresses repeated ale
 
 ## {{ml-cap}} field reference [ml-fields]
 
-The following settings are specific to {{ml}} rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
+The following settings appear in the **Define rule** section when creating a {{ml}} rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **{{ml-cap}} jobs**
 :   The {{anomaly-jobs}} whose results the rule evaluates. Select one or more jobs. If a selected job is not active, it starts automatically when the rule is enabled.

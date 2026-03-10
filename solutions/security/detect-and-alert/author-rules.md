@@ -13,7 +13,7 @@ description: Create and configure detection rules tailored to your environment a
 
 # Author rules [rules-ui-create]
 
-Create detection rules tailored to your environment and threat model. Whether you're writing rules from scratch or customizing prebuilt rules, the pages in this section guide you through selecting a rule type, writing rule logic, and configuring settings.
+Create custom detection rules tailored to your environment and threat model. The pages in this section guide you through selecting a rule type, writing rule logic, and configuring settings.
 
 **[Choose the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md)**
 :   Start here if you're not sure which rule type fits your use case. Compares all rule types side by side.

@@ -26,7 +26,7 @@ The Alerts page is your central hub for triaging and investigating detection ale
 
 | Task | How to do it |
 |------|--------------|
-| View alert details | Click **View details** in the Alerts table |
+| View alert details | Click the **View details** icon {icon}`expand` in the Alerts table |
 | Filter by rule | Use KQL: `kibana.alert.rule.name: "Rule Name"` |
 | Filter by time | Use the date/time picker (default: last 24 hours) |
 | Change alert status | Click the **More actions** icon {icon}`boxes_horizontal` > select status, or use bulk selection |
@@ -54,6 +54,7 @@ Hover over any value in the Alerts table to see inline actions. Click the expand
 | Filter for value | Add the value as a filter |
 | Filter out value | Exclude the value |
 | Show top *x* | View most common values |
+| Add to timeline | Add the field value to Timeline for investigation |
 | Copy to clipboard | Copy the value |
 
 :::{image} /solutions/images/security-inline-actions-menu.png

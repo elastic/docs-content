@@ -181,7 +181,7 @@ This rule matches file creation events against threat intelligence by both SHA-2
 
 ## Indicator match field reference [indicator-match-fields]
 
-The following settings are specific to indicator match rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
+The following settings appear in the **Define rule** section when creating an indicator match rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **Source**
 :   The index patterns or {{data-source}} that store your source event documents. Prepopulated with indices from the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) advanced setting.

@@ -11,8 +11,6 @@ description: Create detection rules using Elasticsearch Query Language (ESQL) wi
 
 # {{esql}} rules [esql-rule-type]
 
-## Overview
-
 {{esql}} rules use [{{es}} Query Language ({{esql}})](elasticsearch://reference/query-languages/esql.md) to query source events and aggregate or transform data using a pipeline syntax. Query results are returned as a table where each row becomes an alert. {{esql}} rules combine the flexibility of a full query pipeline with the detection capabilities of {{elastic-sec}}.
 
 ### When to use an {{esql}} rule
@@ -128,8 +126,11 @@ This rule counts failed login attempts per user and alerts when any user exceeds
 | Field | Value | Purpose |
 |---|---|---|
 | `type` / `language` | `"esql"` / `"esql"` | Both must be `"esql"`. |
-| `query` | `FROM logs-* \| WHERE ... \| STATS ... BY ... \| WHERE ...` | An aggregating query pipeline. `FROM` specifies the source indices (replacing a separate `index` field). `STATS...BY` groups failed logins by `user.name` and counts them. The final `WHERE` filters to users exceeding 20 failures. Each result row becomes an alert containing only the `BY` fields and computed values. |
-| No `index` field | — | {{esql}} rules specify source indices in the `FROM` command rather than in a separate `index` field. |
+| `query` | `FROM logs-* \| WHERE ... \| STATS ... BY ... \| WHERE ...` | An aggregating query pipeline. `FROM` specifies the source indices. `STATS...BY` groups failed logins by `user.name` and counts them. The final `WHERE` filters to users exceeding 20 failures. Each result row becomes an alert containing only the `BY` fields and computed values. |
+
+::::{note}
+{{esql}} rules don't use a separate `index` field. Source indices are specified in the `FROM` command within the query.
+::::
 
 ### Non-aggregating query with deduplication [esql-example-non-aggregating]
 
@@ -156,7 +157,7 @@ This rule detects process-start events with suspicious encoded arguments and use
 
 ## {{esql}} field reference [esql-fields]
 
-The following settings are specific to {{esql}} rules. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
+The following settings appear in the **Define rule** section when creating an {{esql}} rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **{{esql}} query**
 :   The [{{esql}} query](elasticsearch://reference/query-languages/esql.md) that defines the detection logic. Can be aggregating (with `STATS...BY`) or non-aggregating. Each row in the query result becomes an alert.
