@@ -18,7 +18,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Transport client](#ec-restrictions-transport-client)
 * [{{es}} and {{kib}} plugins](#ec-restrictions-plugins)
 * [Watcher](#ec-restrictions-watcher)
-* [Private connectivity and SSO to {{kib}} URLs](#ec-restrictions-network-security-kibana-sso)
+* [Private connectivity](#ec-restrictions-network-security-kibana-sso)
 * [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-network-security-watcher)
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
@@ -91,13 +91,15 @@ Changing the default throttle period is not possible. You can specify a throttle
 
 Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](/deploy-manage/deploy/elastic-cloud/tools-apis.md#email-service-limits).
 
-Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#watcher-custom-mail-server)
+Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerting/watcher/enable-watcher.md#watcher-custom-mail-server)
 
 
-## Private connectivity and SSO to {{kib}} URLs [ec-restrictions-network-security-kibana-sso]
+## Private connectivity
 
-Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by private connections. However, you can still SSO into private {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
+$$$ec-restrictions-network-security-kibana-sso$$$
 
+```{include} /deploy-manage/security/_snippets/private-connectivity-limitations-ech.md
+```
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 
@@ -108,7 +110,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 ## {{kib}} [ec-restrictions-kibana]
 
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
-* Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerting/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 * Workflows using the `elasticsearch.bulk` step might mishandle bulk operations in Elastic Cloud Hosted. Bulk action metadata (such as `index`, `create`, `update`, or `delete`) can be interpreted as document data, which might cause unexpected behavior for bulk operations beyond basic indexing. The workaround is to use a generic Elasticsearch request action in the workflow to call the Bulk API directly instead of using the `elasticsearch.bulk` step. For more information, refer to [Generic request actions](https://www.elastic.co/docs/explore-analyze/workflows/steps/elasticsearch#generic-request-actions). This issue is fixed in Serverless deployments.
 
 
