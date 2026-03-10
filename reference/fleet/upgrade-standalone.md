@@ -11,63 +11,129 @@ products:
 
 # Upgrade standalone Elastic Agents [upgrade-standalone]
 
-To upgrade a standalone agent running on an edge node:
+The upgrade method depends on how you installed {{agent}}:
+
+* **TAR/ZIP installations** (macOS, Linux, Windows): Use the `elastic-agent upgrade` command as described in [Upgrade TAR and ZIP installations](#upgrade-standalone-tar-zip).
+* **DEB and RPM installations** (Linux): Use your system's package manager as described in [Upgrade DEB and RPM installations](#upgrade-standalone-deb-rpm).
+
+## Upgrade TAR and ZIP installations [upgrade-standalone-tar-zip]
+
+To upgrade a standalone {{agent}} installed from a TAR or ZIP archive:
 
 1. Make sure the `elastic-agent` service is running.
 2. From the directory where {{agent}} is installed, run the `upgrade` command to upgrade to a new version. Not sure where the agent is installed? Refer to [Installation layout](/reference/fleet/installation-layout.md).
 
-    For example, to upgrade the agent from version 9.1.0 to 9.1.1, you would run:
+    For example, to upgrade the agent to {{version.stack}}:
 
     :::::{tab-set}
-
+    :group: os
     ::::{tab-item} macOS
+    :sync: macos
 
-    ```shell
-    sudo elastic-agent upgrade 9.1.1
+    ```shell subs=true
+    sudo elastic-agent upgrade {{version.stack}}
     ```
 
     ::::
 
     ::::{tab-item} Linux
+    :sync: linux
 
-    ```shell
-    sudo elastic-agent upgrade 9.1.1
+    ```shell subs=true
+    sudo elastic-agent upgrade {{version.stack}}
     ```
 
     ::::
 
     ::::{tab-item} Windows
+    :sync: windows
 
     As an Administrator, run:
 
-    ```shell
-    .\elastic-agent.exe upgrade 9.1.1
-    ```
-
-    ::::
-
-    ::::{tab-item} DEB
-
-    ```shell
-    sudo elastic-agent upgrade 9.1.1
-    ```
-
-    ::::
-
-    ::::{tab-item} RPM
-
-    ```shell
-    sudo elastic-agent upgrade 9.1.1
+    ```shell subs=true
+    .\elastic-agent.exe upgrade {{version.stack}}
     ```
 
     ::::
 
     :::::
 
-
 This command upgrades the binary. Your agent policy should continue to work, but you might need to upgrade it to use new features and capabilities.
 
 For more command-line options, see the help for the [`upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command.
+
+
+## Upgrade DEB and RPM installations [upgrade-standalone-deb-rpm]
+
+::::{note}
+TAR/ZIP installations are recommended over system-managed packages because they can be enrolled and managed in {{fleet}}.
+::::
+
+For {{agent}}s installed using DEB or RPM packages, you must use your system's package manager to upgrade. The `elastic-agent upgrade` command is not supported for system-managed packages.
+
+:::::{tab-set}
+
+::::{tab-item} DEB
+
+1. Download the {{agent}} Debian install package for the release and architecture that you want to upgrade to. For example, to upgrade to {{version.stack}}:
+   
+    For x86_64 (64-bit Intel/AMD):
+
+    ```bash subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    ```
+
+    For ARM64 (aarch64):
+
+    ```bash subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-arm64.deb
+    ```
+
+2. Upgrade {{agent}} to the target release. Replace the filename with the package you downloaded:
+
+    ```bash subs=true
+    sudo dpkg -i elastic-agent-{{version.stack}}-amd64.deb
+    ```
+
+3. Restart the {{agent}} service:
+
+    ```bash
+    sudo systemctl restart elastic-agent
+    ```
+
+::::
+
+::::{tab-item} RPM
+
+1. Download the {{agent}} RPM install package for the release and architecture that you want to upgrade to. For example, to upgrade to {{version.stack}}:
+   
+    For x86_64 (64-bit Intel/AMD):
+
+    ```bash subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-x86_64.rpm
+    ```
+
+    For ARM64 (aarch64):
+
+    ```bash subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-aarch64.rpm
+    ```
+
+2. Upgrade {{agent}} to the target release. Replace the filename with the package you downloaded:
+
+    ```bash subs=true
+    sudo rpm -U elastic-agent-{{version.stack}}-x86_64.rpm
+    ```
+
+3. Restart the {{agent}} service:
+
+    ```bash
+    sudo systemctl restart elastic-agent
+    ```
+
+::::
+
+:::::
 
 ## Upgrading standalone {{agent}} in an air-gapped environment [upgrade-standalone-air-gapped]
 
@@ -96,8 +162,8 @@ In the event of a private GPG key rotation, you can use the following options wi
 
     Example:
 
-    ```yaml
-    ./elastic-agent upgrade 9.1.0 --skip-verify
+    ```yaml subs=true
+    ./elastic-agent upgrade {{version.stack}} --skip-verify
     ```
 
 
@@ -106,8 +172,8 @@ In the event of a private GPG key rotation, you can use the following options wi
 
     Example:
 
-    ```yaml
-    ./elastic-agent upgrade 9.1.0 --pgp-path /home/elastic-agent/GPG-KEY-elasticsearch
+    ```yaml subs=true
+    ./elastic-agent upgrade {{version.stack}} --pgp-path /home/elastic-agent/GPG-KEY-elasticsearch
     ```
 
 
@@ -142,7 +208,10 @@ The manual rollback feature expands the time window for rollbacks, giving you th
 To roll back a recent upgrade to the previously installed version (if it is still available on disk): 
 
 :::::{tab-set}
+:group: os
+
 ::::{tab-item} macOS
+:sync: macos
 
 ```shell
 sudo elastic-agent upgrade --rollback
@@ -150,26 +219,26 @@ sudo elastic-agent upgrade --rollback
 ::::
 
 ::::{tab-item} Linux
+:sync: linux
+
 ```shell
 sudo elastic-agent upgrade --rollback
 ```
 ::::
 
 ::::{tab-item} Windows
+:sync: windows
+
 As an Administrator, run:
 ```shell
 .\elastic-agent.exe upgrade --rollback
 ```
 ::::
-
-::::{tab-item} DEB
-The manual rollback feature is not available for system-managed packages such as DEB and RPM. 
-::::
-
-::::{tab-item} RPM
-The manual rollback feature is not available for system-managed packages such as DEB and RPM. 
-::::
 :::::
+
+:::{note} 
+The manual rollback feature is not available for system-managed packages such as DEB and RPM. 
+:::
 
 
 ### Limitations for manual rollback (standalone agents) [rollback-upgrade-standalone-limitations]
