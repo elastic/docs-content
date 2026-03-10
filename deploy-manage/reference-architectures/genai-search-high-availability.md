@@ -148,7 +148,7 @@ Regular backups are essential when indexing business-critical or auditable data.
 
 ### {{kib}}, MCP, and Agent Builder
 
-- If deploying outside of {{ecloud}}, ensure [{{kib}} is configured for High Availability](/deploy-manage/production-guidance/kibana-load-balance-traffic.md) to avoid a single point of failure. Deploying {{kib}} across multiple availability zones also improves resiliency for management and user access.
+- If deploying outside of {{ecloud}}, ensure [{{kib}} is configured for high availability](/deploy-manage/production-guidance/kibana-load-balance-traffic.md) to avoid a single point of failure. Deploying {{kib}} across multiple availability zones also improves resiliency for management and user access.
 - Ensure [monitoring data](/deploy-manage/monitor.md) is collected from {{kib}} nodes if the [MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) is used. This allows for proper capacity planning if usage is extensive.
 - For self-deployed clusters, use a proxy in front of multiple {{kib}} nodes to avoid a single point of failure. {{ech}} provides a single connection endpoint that is backed by a highly available proxy layer.
 
