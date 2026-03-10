@@ -58,6 +58,9 @@ The logs are output in JSON format, and include the following fields:
 - `elasticsearch.querylog.is_system`: If system index logging is enabled, indicates whether the request was performed only on system indices.
 - `elasticsearch.querylog.has_aggregations`: For a `dsl` search result, this boolean flag specifies whether the result has a non-empty aggregations section. 
 - `elasticsearch.querylog.shards.successful`, `elasticsearch.querylog.shards.skipped`, `elasticsearch.querylog.shards.failed`: How many shards were successful, skipped and failed during the query execution. 
+- `elasticsearch.querylog.is_ccs` - Indicates whether the request was a [{{ccs}}](elasticsearch://reference/elasticsearch/rest-apis/cross-cluster-search.md). 
+- `elasticsearch.querylog.remote_count` - For cross-cluster queries, this field indicates the number of remote clusters involved in the query execution. 
+- `elasticsearch.querylog.is_remote` - For `dsl` queries, indicates whether the query was initiated by a remote cluster.
 
 Additional fields specific to {{es}} environment may be added. 
 
