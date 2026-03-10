@@ -136,7 +136,7 @@ A linked project can be associated with any number of origin projects.
 
 ## {{cps-cap}} examples [cps-examples]
 
-The following examples demonstrate how search requests behave in different cross-project scenarios in {{cps-init}}.
+The following examples demonstrate how search requests behave in different {{cps-init}} scenarios.
 
 ### Unqualified search expressions
 
