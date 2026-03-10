@@ -43,7 +43,7 @@ The Alerts page is your central hub for triaging and investigating detection ale
 | Date/time picker | Set a specific time range (default: last 24 hours). |
 | Drop-down controls | Filter by status, severity, user, host, or [custom fields](#drop-down-filter-controls). |
 | Additional filters | Include [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) or show only indicator match rule alerts. |
-| **Visualization section** | Group and visualize alerts by field. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md). |
+| Visualization section | Group and visualize alerts by field. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md). |
 
 ### Inline actions
 
