@@ -43,7 +43,7 @@ Rules run in the background using the privileges of the user who last edited the
 
 To create detection rules, you must have:
 
-* At least `Read` access to {{data-source}}s, which requires the `Data View {{manage-app}}` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
+* At least `Read` access to {{data-source}}s, which requires the `Data View Management` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 * The required privileges to preview rules, manage rules, and manage alerts. Refer to [](/solutions/security/detect-and-alert/turn-on-detections.md) for more details.
 
 ::::{note}
