@@ -29,9 +29,20 @@ You must have the **Trusted Applications** [privilege](/solutions/security/confi
 ::::
 
 
-Trusted applications create blindspots for {{elastic-defend}}, because the applications are no longer monitored for threats. One avenue attackers use to exploit these blindspots is by DLL (Dynamic Link Library) side-loading, where they leverage processes signed by trusted vendors — such as antivirus software — to execute their malicious DLLs. Such activity appears to originate from the trusted application’s process.
+Trusted applications are blindspots for {{elastic-defend}}, because they are not monitored for threats. One avenue attackers use to exploit these blindspots is by DLL (Dynamic Link Library) side-loading, where they leverage processes signed by trusted vendors — such as antivirus software — to execute malicious DLLs. Such activity appears to originate from the trusted application’s process.
 
-Trusted applications might still generate alerts in some cases, such as if the application’s process events indicate malicious behavior. To reduce false positive alerts, add an [Endpoint alert exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions), which prevents {{elastic-defend}} from generating alerts. To compare trusted applications with other endpoint artifacts, refer to [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md).
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.0-9.1}
+Trusted applications can still generate alerts if the application’s process events indicate malicious behavior. To reduce false positive alerts, add an [Endpoint alert exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions), which prevents {{elastic-defend}} from generating alerts. To compare trusted applications with other endpoint artifacts, refer to [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md).
+:::
+
+:::{applies-item} { stack: ga 9.2.5+, serverless: ga }
+Trusted applications are not monitored for malicious behavior, which improves performance.
+:::
+
+::::
+
 
 Additionally, trusted applications still generate process events for visualizations and other internal use by the {{stack}}. To prevent process events from being written to {{es}}, use an [event filter](/solutions/security/manage-elastic-defend/event-filters.md) to filter out the specific events that you don’t want stored in {{es}}, but be aware that features that depend on these process events may not function correctly.
 
@@ -62,6 +73,10 @@ To add a trusted application:
 
             ::::{tip}
             To find the signer’s name for an application, go to **Discover** and query the process name of the application’s executable (for example, `process.name : "mctray.exe"` for a McAfee security binary). Then, search the results for the `process.code_signature.subject_name` field, which contains the signer’s name (for example, `McAfee, Inc.`).
+            ::::
+
+            ::::{note}
+            If you use only a hash to identify a trusted application, the entry may stop working when the application is updated, since updates often change the hash. For a more reliable match, combine `Path` and `Signature` conditions instead.
             ::::
 
     3. `Operator`: Select an operator to define the condition:

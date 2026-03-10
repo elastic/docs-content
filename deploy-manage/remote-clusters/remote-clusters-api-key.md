@@ -269,36 +269,27 @@ cluster:
 
 ## Strong identity verification [remote-cluster-strong-verification]
 ```{applies_to}
-deployment:
-  stack: preview 9.3
+stack: preview 9.3
 ```
 
-Cross-cluster API keys can be configured with strong identity verification to provide an additional layer of security. To enable this feature, a
-cross-cluster API key is created on the remote cluster with a certificate identity pattern that specifies which certificates are allowed
-to use it. The local cluster must then sign each request with its private key and include a certificate whose subject Distinguished Name
-(DN) matches the pattern. The remote cluster validates both that the certificate is trusted by its configured certificate authorities
-and that the certificate's subject matches the API key's identity pattern.
-
-Each remote cluster alias on the local cluster can have different remote signing configurations.
+::::{include} _snippets/rcs_strong_identity_intro.md
+::::
 
 ### How strong identity verification works [_how_strong_verification_works]
 
-When a local cluster makes a request to a remote cluster using a cross-cluster API key:
-
-1. The local cluster signs the request headers with its configured private key and sends the signature and certificate chain as header
-   in the request to the remote cluster.
-2. The remote cluster verifies that the API key is valid.
-3. If the API key has a certificate identity pattern configured, the remote cluster extracts the Distinguished Name (DN) from the
-   certificate chain's leaf certificate and matches it against the certificate identity pattern.
-4. The remote cluster validates that the provided certificate chain is trusted.
-5. The remote cluster validates the signature and checks that the certificate is not expired.
-
-If any of these validation steps fail, the request is rejected.
+::::{include} _snippets/rcs_strong_identity_how.md
+::::
 
 ### Configure strong identity verification [_configure_strong_verification]
 
 To use strong identity verification, the local and remote clusters must be configured to sign request headers and to verify request
 headers. This can be done through the cluster settings API or `elasticsearch.yaml`.
+
+:::{note}
+The steps in this section describe the configuration for self-managed clusters. The same procedure can be adapted for {{ece}} and {{eck}} with the appropriate platform-specific configuration steps.
+
+For {{ech}}-specific steps to configure strong identity verification, refer to [Strong identity verification on {{ech}}](./ec-remote-cluster-strong-identity.md).
+:::
 
 #### On the local cluster [_certificate_identity_local_cluster]
 
@@ -385,7 +376,7 @@ POST /_security/role/remote-replication
 }
 ```
 
-After creating the local `remote-replication` role, use the [Create or update users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) API to create a user on the local cluster cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
+After creating the local `remote-replication` role, use the [Create or update users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
 
 ```console
 POST /_security/user/cross-cluster-user
