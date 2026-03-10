@@ -200,11 +200,11 @@ The following actions change the scope of {{cps}}es:
 
 The scope controls which projects receive the search request, while _filtering_ controls which results are returned by the search.
 
-### Set the default {{cps-init}} scope for a space in {{kib}} [cps-default-search-scope]
+### Set the default {{cps-init}} scope for a space [cps-default-search-scope]
 
 % TODO intro   
 
-To open space settings in {{kib}}, click **Configure Space settings in {{kib}}** in the banner that appears when you link projects. Or click **Manage spaces** at the top of the **{{cps-cap}}** page. Select the space you want to configure.  
+Space settings are managed in {{kib}}. To open space settings, click **Manage spaces** at the top of the **{{cps-cap}}** page. Select the space you want to configure.  
 
 % ::::{important}
 % If you don't adjust the default search scope, all searches, dashboards
