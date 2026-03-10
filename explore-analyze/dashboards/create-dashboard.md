@@ -46,6 +46,7 @@ Before creating a dashboard, ensure you have:
         * **Sync color palettes across panels** — Applies the same color palette to all panels on the dashboard.
         * **Sync cursor across panels** — When you hover your cursor over a time series chart or a heatmap, the cursor on all other related dashboard charts automatically appears.
         * **Sync tooltips across panels** — When you hover your cursor over a **Lens** chart, the tooltips on all other related dashboard charts automatically appear.
+        * {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard** — Saves the current [{{cps}} scope](/explore-analyze/cross-project-search.md#cps-in-kibana) with the dashboard, so it restores automatically when anyone opens it. Refer to [{{cps-cap}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope) for details.
 
     3. Click **Apply**.
        
