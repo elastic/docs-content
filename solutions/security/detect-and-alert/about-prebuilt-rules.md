@@ -1,5 +1,5 @@
 ---
-navigation_title: About prebuilt rules
+navigation_title: Prebuilt rule components
 applies_to:
   stack: ga all
   serverless:
@@ -10,7 +10,7 @@ products:
 description: Understand prebuilt rule tags, data sources, investigation guides, and how to transition to custom rules.
 ---
 
-# About prebuilt rules [about-prebuilt-rules]
+# Prebuilt rule components [prebuilt-rule-components]
 
 Elastic prebuilt rules are designed to detect common threats across your environment. This page explains how prebuilt rules are organized, what data they need, and how to use the investigation guides that accompany them.
 
