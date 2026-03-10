@@ -152,8 +152,6 @@ Access actions from the **More actions** (**…**) menu in the Alerts table, or 
 | [Isolate host](/solutions/security/endpoint-response-actions/isolate-host.md) | Isolate the alert's host from the network |
 | [Run Osquery](/solutions/security/investigate/run-osquery-from-alerts.md) | Query the host for additional context |
 | [Response actions](/solutions/security/endpoint-response-actions.md) | Execute response actions on the host |
-| [Add notes](/solutions/security/investigate/notes.md#notes-alerts-events) | Attach investigation notes |
-
 
 ### Change alert status [detection-alert-status]
 
