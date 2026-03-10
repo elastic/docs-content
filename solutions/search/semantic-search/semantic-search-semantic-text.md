@@ -60,7 +60,7 @@ PUT semantic-embeddings
 
 ::::::
 
-::::::{tab-item} Using EIS on Cloud Hosted
+::::::{tab-item} Using EIS on {{ech}}
 
 ```{applies_to}
 stack: ga 9.2-9.3
