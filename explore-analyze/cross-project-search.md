@@ -234,7 +234,7 @@ In this example, both the origin project and a linked project contain an index n
 POST /_query
 {
  "query": "FROM my-index",
-  "include_ccs_metadata": true
+  "include_execution_metadata": true
 }
 ```
 The query will return a response similar to this:
@@ -352,7 +352,7 @@ POST /_query
 
 The requests explicitly target all projects using the `*:` prefix.
 The `my-index` index is evaluated separately in each project.
-The search runs only in projects where the `my-index` index exists.
+The index `my-index` must exist in every project, otherwise the search returns an error.
 
 ### Project routing examples
 
@@ -382,7 +382,7 @@ GET /*/_search
 GET /_query
 {
   "query": "SET project_routing=\"_alias:lin*\"; FROM * METADATA _index",
-  "include_ccs_metadata":true
+  "include_execution_metadata":true
 }
 ```
 :::
@@ -556,7 +556,7 @@ GET /_query
 {
   "project_routing": "@origin-only",
   "query": "FROM *",
-  "include_ccs_metadata": true,
+  "nclude_execution_metadata": true,
 }
 ```
 :::
