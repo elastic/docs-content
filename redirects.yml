@@ -738,9 +738,7 @@ redirects:
       'load-prebuilt-rules': 'load-prebuilt-rules'
 
   # About prebuilt rules page renamed to Prebuilt rule components
-  'solutions/security/detect-and-alert/about-prebuilt-rules.md':
-    anchors:
-      'about-prebuilt-rules': 'prebuilt-rule-components'
+  'solutions/security/detect-and-alert/about-prebuilt-rules.md': 'solutions/security/detect-and-alert/prebuilt-rule-components.md'
 
   # Deleted — content consolidated into manage-detection-alerts and cases pages
   'solutions/security/detect-and-alert/add-detection-alerts-to-cases.md':

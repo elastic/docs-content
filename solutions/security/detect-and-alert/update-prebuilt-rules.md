@@ -114,7 +114,7 @@ From the **Rule Updates** tab, do one of the following:
 * **Update multiple rules**: Select the rules and select **Update *x* selected rule(s)**.
 
 ::::{tip}
-Use the search bar and **Tags** filter to find specific rules. For example, filter by `OS: Windows` if your environment only includes Windows endpoints. For more on tag categories, refer to [Prebuilt rule tags](/solutions/security/detect-and-alert/about-prebuilt-rules.md#prebuilt-rule-tags).
+Use the search bar and **Tags** filter to find specific rules. For example, filter by `OS: Windows` if your environment only includes Windows endpoints. For more on tag categories, refer to [Prebuilt rule tags](/solutions/security/detect-and-alert/prebuilt-rule-components.md#prebuilt-rule-tags).
 ::::
 
 :::{image} /solutions/images/security-prebuilt-rules-update.png

@@ -579,7 +579,7 @@ toc:
           - file: security/detect-and-alert/mitre-attack-coverage.md
           - file: security/detect-and-alert/prebuilt-rules.md
             children:
-              - file: security/detect-and-alert/about-prebuilt-rules.md
+              - file: security/detect-and-alert/prebuilt-rule-components.md
               - file: security/detect-and-alert/install-prebuilt-rules.md
               - file: security/detect-and-alert/update-prebuilt-rules.md
               - file: security/detect-and-alert/prebuilt-rules-airgapped.md

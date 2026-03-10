@@ -13,7 +13,7 @@ description: Overview of Elastic's prebuilt detection rules library mapped to MI
 
 Elastic maintains a library of prebuilt detection rules mapped to the MITRE ATT&CK framework. Enabling prebuilt rules is the fastest path to detection coverage and the recommended starting point before building custom rules. You can browse the full [prebuilt rule catalog](detection-rules://index.md) to see what's available.
 
-**[Prebuilt rule components](/solutions/security/detect-and-alert/about-prebuilt-rules.md)**
+**[Prebuilt rule components](/solutions/security/detect-and-alert/prebuilt-rule-components.md)**
 :   Learn how prebuilt rules are organized with tags, what data sources they need, and how to use their investigation guides.
 
 **[Install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md)**

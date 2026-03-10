@@ -36,15 +36,15 @@ The `Use Case` tag category has the following values:
 
 | Use case | Description |
 |----------|-------------|
-| `Active Directory Monitoring` | Detects changes related to Active Directory. |
-| `Asset Visibility` | Detects changes to specified asset types. |
-| `Configuration Audit` | Detects undesirable configuration changes. |
-| `Guided Onboarding` | Example rule, used for {{elastic-sec}}'s guided onboarding tour. |
-| `Identity and Access Audit` | Detects activity related to identity and access management (IAM). |
-| `Log Auditing` | Detects activity on log configurations or storage. |
-| `Network Security Monitoring` | Detects network security configuration activity. |
-| `Threat Detection` | Detects threats. |
-| `Vulnerability` | Detects exploitation of specific vulnerabilities. |
+| `Active Directory Monitoring` | Detects changes to Active Directory objects such as user accounts, groups, and group policies that could indicate privilege escalation or persistence. |
+| `Asset Visibility` | Tracks changes to hosts, devices, and other assets to identify unauthorized modifications or new devices appearing on the network. |
+| `Configuration Audit` | Identifies security-relevant configuration changes that could weaken defenses, such as disabled security controls or modified audit policies. |
+| `Guided Onboarding` | Example rule used for {{elastic-sec}}'s guided onboarding tour. |
+| `Identity and Access Audit` | Monitors identity and access management (IAM) activity such as permission changes, role assignments, and authentication policy modifications. |
+| `Log Auditing` | Detects tampering with log configurations or storage, such as clearing event logs or disabling audit logging, which attackers use to cover their tracks. |
+| `Network Security Monitoring` | Monitors network security configurations such as firewall rules, proxy settings, and DNS changes that could indicate compromise or policy violations. |
+| `Threat Detection` | Identifies malicious behaviors, attack techniques, and indicators of compromise across endpoints, networks, and cloud environments. |
+| `Vulnerability` | Detects active exploitation of known vulnerabilities (CVEs) in your environment. |
 
 
 ## Prebuilt rule data sources [rule-prerequisites]
@@ -81,11 +81,6 @@ To view related integration status in the {{rules-ui}} table, your role needs at
 - {{saved-objects-app}}
 
 Without these privileges, the integrations badge may not appear or may not reflect accurate installation status.
-:::
-
-:::{image} /solutions/images/security-rules-table-related-integrations.png
-:alt: {{rules-ui}} table with related integrations popup
-:screenshot:
 :::
 
 ::::{tip}
