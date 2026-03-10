@@ -20,7 +20,7 @@ The following sections describe how to find your Cloud ID and create API keys in
 
 ### Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
 
-Standard URLs are the recommended way to connect client applications to your cluster.
+Elastic recommends you connect client applications to your cluster using standard URLs.
 
 1. Go to the {{ecloud}} home page.
 2. In the main menu, select **Manage this deployment**.
