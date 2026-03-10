@@ -18,7 +18,7 @@ products:
 These {{anomaly-jobs}} automatically detect file system and network anomalies on your hosts. They appear in the **Anomaly Detection** interface of the {{security-app}} in {{kib}} when you have data that matches their configuration. For more information, refer to [Anomaly detection with machine learning](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 
 ::::{note}
-With version 9.4, the Elastic Stack introduces support for Entity Analytics (EA), adding new fields for proper entity resolution. The machine learning jobs created from this version onward are designed to leverage these fields.
+With version 9.4, the Elastic Stack introduces support for [Entity Analytics (EA)](https://www.elastic.co/docs/solutions/security/advanced-entity-analytics), adding new fields for proper entity resolution. The machine learning jobs created from this version onward are designed to leverage these fields.
 - The impacted ML jobs will include an "_ea" suffix in their names, as outlined below for each module.
 - Previously installed ML jobs and detection rules will continue to run, allowing time to transition to the new Entity Analytics fields.
 - We recommend installing the new ML jobs first and verifying that they are properly set up, collecting data, and generating anomalies before upgrading to the latest detection rules included in 9.4.
