@@ -33,7 +33,7 @@ Refer to [Predefined roles](/solutions/security/detect-and-alert/detections-priv
 
 ::::::{tab-item} {{ecloud}}
 
-The detection engine initializes automatically when a user with [sufficient privileges](/solutions/security/detect-and-alert/detections-privileges.md) visits the **Rules** page. To open the page, find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To activate the detection engine, open the **Rules** page. Find **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). The engine initializes automatically when a user with [sufficient privileges](/solutions/security/detect-and-alert/detections-privileges.md) opens the page.
 
 No additional configuration is required.
 

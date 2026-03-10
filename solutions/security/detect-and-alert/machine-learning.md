@@ -110,7 +110,7 @@ END CRAFT LAYER -->
 
 ## Annotated examples [ml-examples]
 
-The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how {{ml}} rules are defined. Each example is followed by a field-by-field breakdown.
+The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how {{ml}} rules are defined. Each example is followed by a breakdown of the {{ml}}-specific fields. For common fields like `name`, `severity`, and `interval`, refer to the [detections API documentation]({{kib-apis}}group/endpoint-detection-engine-rules-api).
 
 ### Single {{ml}} job [ml-example-single-job]
 

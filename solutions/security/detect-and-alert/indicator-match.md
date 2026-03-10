@@ -90,7 +90,7 @@ END CRAFT LAYER -->
 
 ## Annotated examples [indicator-match-examples]
 
-The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how indicator match rules are defined. Each example is followed by a field-by-field breakdown.
+The following examples use the [detections API](/solutions/security/detect-and-alert/using-the-api.md) request format to show how indicator match rules are defined. Each example is followed by a breakdown of the indicator match-specific fields. For common fields like `name`, `severity`, and `interval`, refer to the [detections API documentation]({{kib-apis}}group/endpoint-detection-engine-rules-api).
 
 ### IP-based indicator match [indicator-match-example-ip]
 
