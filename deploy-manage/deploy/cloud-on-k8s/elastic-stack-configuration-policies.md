@@ -138,7 +138,7 @@ To avoid a conflict between multiple {{es}} clusters writing their snapshots to 
 
 ### Specifics for index and component templates [templates-specifics]
 
-`composableIndexTemplates` and `componentTemplats` must be defined under the `indexTemplates` field:
+`composableIndexTemplates` and `componentTemplates` must be defined under the `indexTemplates` field:
 
 ```yaml
 spec:
@@ -154,7 +154,7 @@ spec:
 
 ## {{kib}} settings [kib-settings]
 
-The following settings can be configured for {{kib}} under `StackConfigPolicy.spec.elasticsearch`:
+The following settings can be configured for {{kib}} under `StackConfigPolicy.spec.kibana`:
 
 | Policy field | Description | Syntax and schema |
 |---|---|---|
@@ -544,9 +544,9 @@ spec:
 spec:
   elasticsearch:
     secretMounts: <1>
-      - name: my-secret
+      - secretName: my-secret
         mountPath: /etc/secrets
-      - name: my-certificate
+      - secretName: my-certificate
         mountPath: /usr/share/elasticsearch/config/my-certificate
 ```
 1. Each list item defines a secret mount entry and references an existing Kubernetes Secret.
