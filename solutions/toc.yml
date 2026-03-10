@@ -598,7 +598,7 @@ toc:
                   - file: security/detect-and-alert/threshold.md
                   - file: security/detect-and-alert/machine-learning.md
                   - file: security/detect-and-alert/new-terms.md
-              - file: security/detect-and-alert/using-the-rule-builder.md
+              - file: security/detect-and-alert/using-the-rule-ui.md
               - file: security/detect-and-alert/using-the-api.md
               - file: security/detect-and-alert/common-rule-settings.md
               - file: security/detect-and-alert/set-rule-data-sources.md

@@ -22,7 +22,6 @@ This page covers tuning guidance for specific rule categories:
 
 * [Tune rules detecting authorized processes](#tune-authorized-processes)
 * [Tune Windows child process and PowerShell rules](#tune-windows-rules)
-* [Tune network rules](#tune-network-rules)
 * [Tune indicator match rules](#tune-indicator-rules)
 
 
@@ -110,6 +109,7 @@ Examples of when these rules may create noise include:
 In these cases, exceptions can be added to the rules using the relevant `process.name`, `user.name`, and `host.name` conditions. Additionally, you can create duplicate rules with lower risk scores.
 
 
+<!-- COMMENTED OUT - REVIEW FOR FUTURE UPDATE
 ## Tune network rules [tune-network-rules]
 
 The definition of normal network behavior varies widely across different organizations. Different networks conform to different security policies, standards, and regulations. When normal network activity triggers alerts, network rules can be disabled or modified. For example:
@@ -118,7 +118,7 @@ The definition of normal network behavior varies widely across different organiz
 * To exclude source network traffic for an entire subnet, add a `source.ip` exception with the relevant CIDR notation (`source.ip is 192.168.0.0/16`).
 * To exclude a destination IP for a specific destination port, add a `destination.ip` exception with the IP address, and a `destination.port` exception with the port number (`destination.ip is 38.160.150.31` and `destination.port is 445`)
 * To exclude a destination subnet for a specific destination port, add a `destination.ip` exception using CIDR notation, and a ‘destination.port’ exception with the port number (`destination.ip is 172.16.0.0/12` and `destination.port is 445`).
-
+-->
 
 ## Tune indicator match rules [tune-indicator-rules]
 

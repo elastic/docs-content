@@ -23,7 +23,7 @@ The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint pr
 |---|---|
 | Set up detection for the first time | [Setup](/solutions/security/detect-and-alert/before-you-begin.md#one-time-setup) → [Install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) |
 | Take over an existing deployment | [MITRE ATT&CK coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) → [Monitor rule executions](/solutions/security/detect-and-alert/monitor-rule-executions.md) |
-| Build coverage for a specific threat | [Choose the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) → [Build it using the UI](/solutions/security/detect-and-alert/using-the-rule-builder.md) |
+| Build coverage for a specific threat | [Choose the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) → [Build it using the UI](/solutions/security/detect-and-alert/using-the-rule-ui.md) |
 | Reduce noise from existing rules | [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) → [Exceptions](/solutions/security/detect-and-alert/rule-exceptions.md), [Suppression](/solutions/security/detect-and-alert/alert-suppression.md), or [Snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) |
 
 ## Detection program lifecycle

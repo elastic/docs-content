@@ -17,7 +17,7 @@ products:
 # Troubleshoot detection rules [ts-detection-rules]
 
 
-This topic covers common troubleshooting issues when creating or managing [detection rules](../../solutions/security/detect-and-alert/using-the-rule-builder.md).
+This topic covers common troubleshooting issues when creating or managing [detection rules](../../solutions/security/detect-and-alert/using-the-rule-ui.md).
 
 
 ## Setup errors [setup-errors-ts]

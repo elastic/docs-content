@@ -40,7 +40,7 @@ With an Enterprise subscription on {{stack}} or a Security Analytics Complete pr
 3. Do one of the following:
     * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Edit rule settings**.
     * Select a rule's name to open its details page, then select **Edit rule settings**.
-4. Modify the [rule's settings](/solutions/security/detect-and-alert/using-the-rule-builder.md).
+4. Modify the [rule's settings](/solutions/security/detect-and-alert/using-the-rule-ui.md).
 5. Select **Save changes**.
 
 ::::{admonition} Tracking modifications

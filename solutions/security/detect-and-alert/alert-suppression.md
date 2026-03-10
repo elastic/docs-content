@@ -46,7 +46,7 @@ Without suppression, a rule creates one alert for every event that matches its c
 
 ## Configure alert suppression [security-alert-suppression-configure-alert-suppression]
 
-You can configure alert suppression when [creating](/solutions/security/detect-and-alert/using-the-rule-builder.md) or editing a rule.
+You can configure alert suppression when [creating](/solutions/security/detect-and-alert/using-the-rule-ui.md) or editing a rule.
 
 ::::::{stepper}
 

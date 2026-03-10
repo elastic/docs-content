@@ -258,7 +258,7 @@ Create an [exception](/solutions/security/detect-and-alert/rule-exceptions.md) t
 :::
 
 ::::{tip}
-For [threshold rule](/solutions/security/detect-and-alert/using-the-rule-builder.md) alerts, Timeline shows all matching events, not only those that crossed the threshold.
+For [threshold rule](/solutions/security/detect-and-alert/using-the-rule-ui.md) alerts, Timeline shows all matching events, not only those that crossed the threshold.
 ::::
 
 If the rule uses a Timeline template, dropzone query values are replaced with the alert's actual field values.

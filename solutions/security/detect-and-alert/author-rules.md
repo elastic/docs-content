@@ -21,7 +21,7 @@ Create detection rules tailored to your environment and threat model. Whether yo
 **[Rule types](/solutions/security/detect-and-alert/rule-types.md)**
 :   Detailed guidance for each rule type, including when to use it and field configuration specific to that type.
 
-**[Using the UI](/solutions/security/detect-and-alert/using-the-rule-builder.md)**
+**[Using the UI](/solutions/security/detect-and-alert/using-the-rule-ui.md)**
 :   Step-by-step workflow for creating rules in the {{elastic-sec}} UI.
 
 **[Using the API](/solutions/security/detect-and-alert/using-the-api.md)**

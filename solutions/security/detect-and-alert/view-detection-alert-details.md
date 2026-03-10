@@ -235,7 +235,7 @@ The expanded Prevalence view displays a table with the following columns:
 
 ## Response [response-overview]
 
-The **Response** section is located on the **Overview** tab in the right panel. It shows [response actions](/solutions/security/detect-and-alert/using-the-rule-builder.md) that were added to the rule associated with the alert. Click **Response** to display the response action’s results in the left panel.
+The **Response** section is located on the **Overview** tab in the right panel. It shows [response actions](/solutions/security/detect-and-alert/using-the-rule-ui.md) that were added to the rule associated with the alert. Click **Response** to display the response action’s results in the left panel.
 
 ## Notes [expanded-notes-view]
 

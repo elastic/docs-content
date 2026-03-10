@@ -14,7 +14,7 @@ description: Create and manage detection rules programmatically using the Securi
 You can create and manage detection rules programmatically instead of using the {{kib}} UI. This is useful for CI/CD pipelines, bulk rule management, rule-as-code workflows, and integrating detection management with external tooling.
 
 :::{admonition} Create rules using the UI
-If you prefer to use the UI for creating rules, refer to [Using the UI](/solutions/security/detect-and-alert/using-the-rule-builder.md).
+If you prefer to use the UI for creating rules, refer to [Using the UI](/solutions/security/detect-and-alert/using-the-rule-ui.md).
 :::
 
 ::::{important}

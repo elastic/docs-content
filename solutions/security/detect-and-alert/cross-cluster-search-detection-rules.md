@@ -55,7 +55,7 @@ This section explains the general process for setting up cross-cluster search in
 
         ::::
 
-    2. As this user, [configure a rule](using-the-rule-builder.md) that searches the remote indices: create or edit a rule, then enter the `<remote_cluster_name>:<index_name>` pattern in the **Source** section.
+    2. As this user, [configure a rule](using-the-rule-ui.md) that searches the remote indices: create or edit a rule, then enter the `<remote_cluster_name>:<index_name>` pattern in the **Source** section.
 
         :::{image} /solutions/images/security-ccs-rule-source.png
         :alt: Rule source configuration
@@ -66,7 +66,7 @@ This section explains the general process for setting up cross-cluster search in
         If the rule’s **Source** uses a data view instead of index patterns, you must define the data view for cross-cluster search separately, using the `<remote_cluster_name>:<index_name>` pattern. Refer to [Use data views with cross-cluster search](../../../explore-analyze/find-and-organize/data-views.md#management-cross-cluster-search) for more on defining a data view.
         ::::
 
-    3. (Optional) [Preview the rule](using-the-rule-builder.md) to test its expected results.
+    3. (Optional) [Preview the rule](using-the-rule-ui.md) to test its expected results.
 
         ::::{important}
         The rule preview uses the current user’s cross-cluster search privileges, while the rule itself runs using the privileges snapshot saved in its API key the moment the key is created. The preview results could be different from the rule’s actual behavior if the user performing the preview has different privileges than what’s saved in the rule’s API key.
