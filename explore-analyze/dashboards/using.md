@@ -70,7 +70,7 @@ You can create filter pills by:
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{data-source}} index. Computed fields created with {{esql}} commands like `EVAL` do not support filtering.
+{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields created with {{esql}} commands like `EVAL` do not support filtering.
 :::
 
 
