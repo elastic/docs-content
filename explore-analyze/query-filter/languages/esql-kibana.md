@@ -241,7 +241,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can use the `SET project_routing` command in your {{esql}} queries to control which projects a query targets. This lets you override the [{{cps}} scope set in the project picker](/explore-analyze/cross-project-search.md#cps-in-kibana) for a specific query.
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can use the `SET project_routing` command in your {{esql}} queries to control which projects a query targets. This lets you override the [{{cps}} scope](/explore-analyze/cross-project-search.md#cps-in-kibana) set in the {{cps-init}} scope selector for a specific query.
 
 Add `SET project_routing` at the beginning of your query, before the source command:
 
@@ -260,7 +260,7 @@ The editor autocompletes two built-in values when you type `SET project_routing`
 You can also use any valid [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), including tag-based expressions and [named project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md#named-project-routing-expressions) prefixed with `@`.
 
 :::{note}
-When you use `SET project_routing` in a visualization panel (for example, in a Lens or Discover panel on a dashboard), the panel displays a **Custom CPS scope** badge to indicate that it uses a different scope than the dashboard or global project picker. Refer to [{{cps-cap}} in {{kib}}](/explore-analyze/cross-project-search.md#cps-in-kibana) for details.
+When you use `SET project_routing` in a visualization panel (for example, in a Lens or Discover panel on a dashboard), the panel displays a **Custom CPS scope** badge to indicate that it uses a different scope than the dashboard or the {{cps-init}} scope selector. Refer to [{{cps-cap}} in {{kib}}](/explore-analyze/cross-project-search.md#cps-in-kibana) for details.
 :::
 
 
