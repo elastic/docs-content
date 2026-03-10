@@ -23,7 +23,7 @@ At any step, you can preview the rule before saving it to see what kind of resul
 
 1. Define the [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#rule-types). The configuration for this step varies depending on the rule type.
 2. Configure [basic rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params).
-3. Configure [advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) (optional).
+3. (Optional) Configure [advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params).
 4. Set the [rule's schedule](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule).
 5. (Optional) Set up [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
 6. (Optional) Set up [response actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-response-action).
@@ -43,11 +43,11 @@ Rules run in the background using the privileges of the user who last edited the
 
 To create detection rules, you must have:
 
-* At least `Read` access to {{data-source}}s, which requires the `Data View {{manage-app}}` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
+* At least `Read` access to {{data-source}}s, which requires the `Data View Management` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 * The required privileges to preview rules, manage rules, and manage alerts. Refer to [](/solutions/security/detect-and-alert/turn-on-detections.md) for more details.
 
 ::::{note}
-Additional configuration is required for detection rules using {{ccs}}. Refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/advanced-data-source-configuration.md).
+Additional configuration is required for detection rules using {{ccs}}. Refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md).
 ::::
 
 ## Rule type guides
