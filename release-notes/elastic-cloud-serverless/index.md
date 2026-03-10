@@ -9,6 +9,98 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+
+
+## March 9, 2026 [serverless-changelog-03092026]
+
+### Features and enhancements [serverless-changelog-03092026-features-enhancements]
+
+* Improves {{esql}} controls to retrieve variable types from query results, preventing query failures when numeric values are stored as keyword fields [#254436]({{kib-pull}}254436)
+* Adds a size gauge to dashboard panels while resizing, showing the current grid dimensions [#255363]({{kib-pull}}255363)
+* Prevents time series index mode from being enabled on non-metrics data stream types in input packages [#251205]({{kib-pull}}251205)
+* Adds autocomplete and validation support for the `MMR` command in the {{esql}} editor [#254014]({{kib-pull}}254014)
+* Defaults to table view in Discover when an index or data view has five or fewer columns [#255292]({{kib-pull}}255292)
+* Enables **Save As** for embedded Discover sessions, returning to the new saved session in Discover after saving [#255323]({{kib-pull}}255323)
+* Consolidates the return navigation for by-reference and by-value Discover embeddable editing to highlight the updated panel on the dashboard [#255816]({{kib-pull}}255816)
+* Adds the ability to run workflows from the alerts table, including single-alert, bulk-selection, and flyout actions [#252405]({{kib-pull}}252405)
+* Adds an **Add to chat** button to rule details, rule editing, and the alerts flyout, allowing users to attach detection rules to the AI Agent for exploration-style analysis [#253043]({{kib-pull}}253043)
+* Adds a security Machine Learning skill to Agent Builder for querying anomaly detection jobs based on natural language prompts [#254908]({{kib-pull}}254908)
+* Updates the Unusual Process for a Windows Host Machine Learning job bucket span from 15 minutes to 2 hours to reduce false positives [#255855]({{kib-pull}}255855)
+* Adds `split` and `sort` processors to Streams for splitting string fields into arrays and sorting array elements [#251681]({{kib-pull}}251681)
+* Adds the ability to dynamically create AI Connectors for Elastic Inference Service preconfigured inference endpoints [#254826]({{kib-pull}}254826)
+* Adds a **Rule Monitoring Overview** panel to the **Rules Monitoring** tab, showing rule execution summaries and gap fill status [#252327]({{kib-pull}}252327)
+* Adds a ServiceNow Search connector and data source for searching across records and knowledge bases, retrieving contents, metadata, and comments [#252430]({{kib-pull}}252430)
+* Adds a Zendesk data source with ticket listing, ticket retrieval, and search capabilities [#254739]({{kib-pull}}254739)
+* Adds a PagerDuty data source with tools for managing incidents, escalation policies, on-call schedules, and more [#255154]({{kib-pull}}255154)
+* Adds a Zoom connector and data source for listing meetings, retrieving participants, accessing recordings, and downloading transcripts [#255174]({{kib-pull}}255174)
+* Adds a Firecrawl data source and connector for scraping, searching, mapping, and crawling web content [#255004]({{kib-pull}}255004)
+* Adds a Google Calendar connector and data source [#252740]({{kib-pull}}252740)
+* Adds a Tavily data source for web search capabilities [#252717]({{kib-pull}}252717)
+* Exposes rule backfill operations (schedule, find, get, and delete) as public API endpoints [#253010]({{kib-pull}}253010)
+* Adds an **Explore traces** button to the Service Map edge popover that opens Discover with a filtered {{esql}} query [#254011]({{kib-pull}}254011)
+* Updates chart axis title and label styling in Lens and dashboards to reduce visual prominence, letting chart data stand out [#254587]({{kib-pull}}254587)
+* Improves the legend UI in Lens XY and Partition charts by showing action icons only on hover [#255616]({{kib-pull}}255616)
+* Ensures browser monitors on private locations explicitly enable network and screenshot data streams for consistent data collection [#255967]({{kib-pull}}255967)
+* Makes the Agent Builder default agent editable and customizable per {{kib}} space [#256333]({{kib-pull}}256333)
+* Adds custom header support for the Azure OpenAI Service in the Inference API [#142969]({{es-pull}}142969)
+* Adds `dense_vector` support for the {{esql}} `SUM` aggregation function [#142129]({{es-pull}}142129)
+* Adds limit pushdown optimization for {{esql}} external data sources [#143515]({{es-pull}}143515)
+* Adds splittable bzip2 support for {{esql}} external data sources [#143534]({{es-pull}}143534)
+* Improves {{esql}} query performance by pruning unused regex extract nodes during optimization [#140982]({{es-pull}}140982)
+* Adds `dense_vector` support for the {{esql}} `COALESCE` function [#142974]({{es-pull}}142974)
+* Supports custom rulesets in the `icu_transform` token filter for user-defined transliterations [#143060]({{es-pull}}143060)
+* Supports nested documents in time-series indices with synthetic ID [#143151]({{es-pull}}143151)
+
+### Fixes [serverless-changelog-03092026-fixes]
+
+* Ensures RPC route validation errors are thrown consistently, preventing schema validation regressions [#255181]({{kib-pull}}255181)
+* Fixes library annotation groups in Lens not syncing across panels after an update [#252640]({{kib-pull}}252640)
+* Fixes the pinned state for {{esql}} and range slider controls when rendered through the control group renderer [#256035]({{kib-pull}}256035)
+* Fixes incorrect installation of integration assets [#254923]({{kib-pull}}254923)
+* Fixes the agent unenroll task in {{fleet}} [#255726]({{kib-pull}}255726)
+* Fixes autocomplete requests piling up without cancellation [#255664]({{kib-pull}}255664)
+* Fixes a potential issue where the analyzer query did not use the correct values when fetching data [#255396]({{kib-pull}}255396)
+* Ensures the data view is ready before fetching data for the analyzer preview [#255400]({{kib-pull}}255400)
+* Fixes {{esql}} `fetchSourceDocuments` missing the data tier exclusion filter [#255341]({{kib-pull}}255341)
+* Adds support for timestamp overrides in Timeline, using the data view's configured timestamp field instead of the default `@timestamp` [#251827]({{kib-pull}}251827)
+* Fixes Automatic Migrations compatibility with Claude 4.6 Opus and Sonnet models by removing assistant prefill messages [#255740]({{kib-pull}}255740)
+* Deprecates the `Enable CCS Warning Privileges` setting in {{kib}} **Advanced Settings** and reduces noisy index pattern access warnings for detection rules [#252183]({{kib-pull}}252183)
+* Fixes accessibility heading levels in Log Rate Analysis, Log Pattern Analysis, and Change Point Detection [#253266]({{kib-pull}}253266)
+* Fixes an issue in Dev Tools Console where closing nested braces broke syntax highlighting for subsequent elements [#255426]({{kib-pull}}255426)
+* Makes long filter matches expandable in the filter UI [#255093]({{kib-pull}}255093)
+* Adds the Elastic Inference Service cost callout to all AI-powered suggestion entry points in Streams [#255588]({{kib-pull}}255588)
+* Fixes an issue in Dev Tools Console where syntax highlighting broke when queries contained accented or non-ASCII characters [#255649]({{kib-pull}}255649)
+* Fixes focus behavior when there are errors in the connector flyout form [#255770]({{kib-pull}}255770)
+* Fixes Search Playground routes to limit the maximum size of arrays [#255881]({{kib-pull}}255881)
+* Fixes {{esql}} tool crashes in Agent Builder when optional parameters are null [#256588]({{kib-pull}}256588)
+* Fixes a 500 error on the APM error group details page caused by a missing required `transaction.sampled` field [#255788]({{kib-pull}}255788)
+* Fixes the `platform.core.search` and `index_search` tools ignoring nested fields when searching for matching documents [#255914]({{kib-pull}}255914)
+* Fixes a crash on the APM service **Metrics** tab caused by a stale controls state format [#254999]({{kib-pull}}254999)
+* Fixes MCP connectors ignoring the proxy and SSL configuration from the actions plugin [#255813]({{kib-pull}}255813)
+* Fixes content connector API key regeneration to display the newly generated key in the deployment UI [#256083]({{kib-pull}}256083)
+* Fixes deanonymization offset drift that caused incorrect entity highlighting positions in chat messages [#256112]({{kib-pull}}256112)
+* Fixes asset details locator parameters in custom dashboards [#256412]({{kib-pull}}256412)
+* Fixes false Liquid template validation errors caused by YAML comments [#256237]({{kib-pull}}256237)
+* Fixes an error on the burn rate alert details page for suppressed alerts [#256435]({{kib-pull}}256435)
+* Fixes the `_source` field in the Index Management mappings editor to use the correct `index.mapping.source.mode` setting instead of the deprecated `_source.mode` [#255122]({{kib-pull}}255122)
+* Adds `any-value` aggregators for {{esql}} `FIRST` and `LAST` functions when the sort field is null-typed or foldable [#143619]({{es-pull}}143619)
+* Adds a circuit breaker for query construction to prevent out-of-memory errors from automaton-based queries [#142150]({{es-pull}}142150)
+* Fixes a missing error handling bug in `ST_SIMPLIFY` [#143480]({{es-pull}}143480)
+* Fixes date fields with `ignore_malformed` to properly ignore object and array values [#143533]({{es-pull}}143533)
+* Fixes incorrect doc-partitioning enablement for count operations in {{esql}} [#143544]({{es-pull}}143544)
+* Fixes {{esql}} `LIMIT` failing after all columns are dropped [#143463]({{es-pull}}143463)
+* Fixes an issue with {{esql}} Lookup Join when loading large text fields [#143627]({{es-pull}}143627)
+* Fixes the {{esql}} `TS` command ignoring aliases in the `BY` clause [#143489]({{es-pull}}143489)
+* Fixes anomaly detection job updates overriding `categorization_examples_limit` with the default value [#140524]({{es-pull}}140524)
+* Fixes CSV-escaped quotes in generated documentation examples [#143449]({{es-pull}}143449)
+* Fixes SQL client parsing of array header values [#143408]({{es-pull}}143408)
+* Fixes {{esql}} t-digest percentile calculations to use the correct merging digest implementation [#143473]({{es-pull}}143473)
+* Improves document parsing performance by reusing previously seen dynamically-created mappers [#143377]({{es-pull}}143377)
+
+
+
+
+
 ## March 2, 2026 [serverless-changelog-03022026]
 
 ### Features and enhancements [serverless-changelog-03022026-features-enhancements]
