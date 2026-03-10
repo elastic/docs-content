@@ -57,4 +57,4 @@ journey('Ensure placeholder is correct', ({ page, params }) => {
 });
 ```
 
-For each journey, you can specify its `schedule`, the `locations` in which it runs, {applies_to}`stack: ga 9.1+` `spaces` ({{kib}} only), and other options. When an option is not set in `monitor.use()`, Synthetics uses the default from the global configuration file. Options set in `monitor.use()` take precedence over the project-level config—for example, `spaces` here overrides the global `monitor.spaces` setting. For more details, refer to [Configure a Synthetics project](/solutions/observability/synthetics/configure-projects.md).
+For each journey, you can specify its `schedule`, the `locations` in which it runs, {applies_to}`stack: ga 9.1+` `spaces` (applies to Stack deployments only), and other options. When an option is not set in `monitor.use()`, Synthetics uses the default from the global configuration file. Options set in `monitor.use()` take precedence over the project-level config—for example, `spaces` here overrides the global `monitor.spaces` setting. For more details, refer to [Configure a Synthetics project](/solutions/observability/synthetics/configure-projects.md).
