@@ -12,10 +12,10 @@ self: ga 9.4
 
 The following query types are supported:
 
-- `dsl`: Logs every search operation performed on the cluster.
-- `esql`: Logs every query operation performed on the cluster using {{esql}}.
-- `eql`: Logs every query operation performed on the cluster using EQL.
-- `sql`: Logs every query operation performed on the cluster using SQL.
+- `dsl`: Logs every search operation performed on using the [Query DSL](/explore-analyze/query-filter/languages/querydsl.md).
+- `esql`: Logs every query operation performed on the cluster using [{{esql}}](/explore-analyze/query-filter/languages/eql-kibana.md).
+- `eql`: Logs every query operation performed on the cluster using [EQL](/explore-analyze/query-filter/languages/eql.md).
+- `sql`: Logs every query operation performed on the cluster using [SQL](/explore-analyze/query-filter/languages/sql.md).
 
 By default, the logging is turned off. To enable the logging, set the `elasticsearch.actionlog.enabled` property to `true` in the `elasticsearch.yml` configuration file or using the [settings API]({{es-apis}}operation/operation-cluster-put-settings):
 
@@ -48,15 +48,15 @@ The logs are output in JSON format, and include the following fields:
 
 ### Query logging specific fields
 
-- `elasticsearch.querylog.type`: The type of operation (`dsl`, `esql`, and so on).
+- `elasticsearch.querylog.type`: The type of operation (`dsl`, `esql`, `sql`, `eql`).
 - `elasticsearch.querylog.took`: How long (in nanoseconds) the request took to complete.
 - `elasticsearch.querylog.took_millis`: How long (in milliseconds) the request took to complete.
 - `elasticsearch.querylog.timed_out`: Boolean specifying whether the query timed out.
 - `elasticsearch.querylog.query`: The query text (depending on the query language, could be string or JSON).
-- `elasticsearch.querylog.indices`: Array containing the indices that were requested. These may not be fully resolved. May contain wildcards and index expressions, and it is not guaranteed these resolve to any specific index or exist at all. Note that for some queries (like {{esql}}) indices are part of the query text and will not be available as separate field. 
-- `elasticsearch.querylog.result_count`: The number of results actually returned by the request. There is a maximum of 10000 hits returned per DSL request, and there may be other caps on the returned result size. 
-- `elasticsearch.querylog.is_system`: If system index logging is enabled, indicates whether the request was performed only on a system indices.
-- `elasticsearch.querylog.has_aggregations`: For a search result, this boolean flag specifies whether the result has a non-empty aggregations section. 
+- `elasticsearch.querylog.indices`: Array containing the indices that were requested. These may not be fully resolved. May contain wildcards and index expressions, and it is not guaranteed these resolve to any specific index or exist at all. Note that for some queries (like {{esql}}) indices are part of the query text and may not be available as a separate field. 
+- `elasticsearch.querylog.result_count`: The number of results actually returned in the response. 
+- `elasticsearch.querylog.is_system`: If system index logging is enabled, indicates whether the request was performed only on system indices.
+- `elasticsearch.querylog.has_aggregations`: For a `dsl` search result, this boolean flag specifies whether the result has a non-empty aggregations section. 
 - `elasticsearch.querylog.shards.successful`, `elasticsearch.querylog.shards.skipped`, `elasticsearch.querylog.shards.failed`: How many shards were successful, skipped and failed during the query execution. 
 
 Additional fields specific to {{es}} environment may be added. 
@@ -70,7 +70,7 @@ In addition to the fields listed above, each query language may include fields s
 
 ### {{esql}}
 
-- `esql.profile.*.took`: {{esql}} query profiling metrics, in ns
+- `esql.profile.*.took`: {{esql}} query profiling metrics, in nanoseconds
 
 ### Example log entry
 
@@ -144,7 +144,7 @@ Example failure entry:
 
 The logs are always emitted on the node that executed the request. These logs can be viewed in the following locations:
 
-- If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). The query logs have the `logger` value of elasticsearch.querylog`.
+- If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). The query logs have the `log.logger` value of elasticsearch.querylog`.
 - From the local {{es}} service logs directory. Slow log files have a suffix of `_querylog.json` , e.g. `mycluster_querylog.json`.
 
 ## When and how to use query logging
