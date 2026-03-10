@@ -47,7 +47,7 @@ To create detection rules, you must have:
 * The required privileges to preview rules, manage rules, and manage alerts. Refer to [](/solutions/security/detect-and-alert/turn-on-detections.md) for more details.
 
 ::::{note}
-Additional configuration is required for detection rules using {{ccs}}. Refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/advanced-data-source-configuration.md).
+Additional configuration is required for detection rules using {{ccs}}. Refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md).
 ::::
 
 ## Rule type guides
