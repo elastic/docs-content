@@ -152,6 +152,19 @@ Once you configure a {{data-source}} to use the {{ccs}} syntax, all searches and
 For more information, refer to [Excluding clusters or indicies from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
 
 
+### Use {{data-sources}} with {{cps}} [management-cross-project-search]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form automatically lists indices from all projects in your current [{{cps}} scope](/explore-analyze/cross-project-search.md#cps-in-kibana).
+
+You don't need to opt in or toggle any setting. The index list updates automatically when you change the {{cps}} scope in the [project picker](/explore-analyze/cross-project-search.md#cps-in-kibana). A {{data-source}} with an index pattern like `logs-*` matches indices across the origin project and all linked projects in scope.
+
+To restrict a {{data-source}} to specific projects, adjust the {{cps}} scope in the project picker before creating the {{data-source}}, or use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in your queries.
+
+
 ## Delete a {{data-source}} [delete-data-view]
 
 When you delete a {{data-source}}, you cannot recover the associated field formatters, runtime fields, source filters, and field popularity data. Deleting a {{data-source}} does not remove any indices or data documents from {{es}}.
