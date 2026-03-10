@@ -1,5 +1,9 @@
 ---
 navigation_title: Kibana API docs
+description: "Set up a local Kibana API docs workflow, from cloning the repo to linting and previewing merged OpenAPI documentation."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Contribute to Kibana API docs locally
@@ -26,7 +30,7 @@ Some teams, including Security and Observability, work with hand-edited YAML fil
 :::
 ::::
 
- For more details, see the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
+ For more details, refer to the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
 
 ## Quickstart
 
@@ -81,6 +85,27 @@ If dependencies are broken or bootstrap fails, run `yarn kbn clean` first. For m
 :sync: code-generated
 Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, request/response schemas, and examples as needed, per the [checklist](checklist.md).
 
+**Always include version and lifecycle information** using the `availability` option in your route definitions. This powers the version badges and tech preview labels that help users understand when an API was introduced and its stability status.
+
+```typescript
+options: {
+  tags: ['example', 'oas-tag:Example APIs'],
+  availability: {
+    stability: 'experimental',  // 'experimental' or 'stable' (default)
+    since: '9.2.0',              // Version when added
+  },
+},
+```
+
+The `availability` option includes two fields:
+
+- **`stability`**: Indicates the lifecycle state of the API
+  - `'experimental'` → Technical preview; can change or be removed in future versions
+  - `'stable'` (default) → Generally available (GA); stable for production use
+- **`since`**: The version when the API was first added (e.g., `'9.2.0'`)
+
+The `availability` option is only available at the API/route level. For individual parameters, you must manually document version and lifecycle information in the parameter's description field.
+
 :::{note}
 **CI will automatically regenerate the OpenAPI files when you push your `.ts` changes.** The next two steps show how to capture the snapshot and add examples locally, which is useful for validating changes before pushing or debugging issues.
 :::
@@ -91,11 +116,23 @@ Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, r
 :sync: manual
 Edit the YAML files in the appropriate plugin or package directory. Refer to the README alongside each file for specific guidance on adding summaries, descriptions, tags, metadata, links, and examples.
 
+**Always include version and lifecycle information** using the `x-state` field. This powers the version badges and tech preview labels in the API docs.
+
+```yaml
+x-state: Technical Preview; added in 9.2.0
+```
+
+For stable/GA APIs, you can omit the lifecycle status:
+
+```yaml
+x-state: added in 9.0.0
+```
+
 In these README files, you'll also find instructions for generating intermediate bundle files that capture your changes, and that are later used to generate the full API documentation.
 
 The YAML files with the content changes and the intermediate bundle files are the minimum set of files required for creating a pull request. Without the intermediate bundle files, the automation won't pick up the changes and won't generate the full API documentation.
 
-Review the the [checklist](checklist.md) for best practices.
+Review the [checklist](checklist.md) for best practices.
 
 Once you've made your changes, skip the next two steps and proceed to "Generate docs".
 ::::

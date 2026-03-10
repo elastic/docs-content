@@ -35,6 +35,15 @@ To learn how private connection policies impact your deployment, refer to [](/de
 
 Private connectivity with Azure Private Link is supported only in Azure regions.
 
+## Limitations
+
+% limitations are not applicable to serverless projects
+
+When using Azure Private Link, the following limitations apply:
+
+```{include} _snippets/private-connectivity-limitations-ech.md
+```
+
 ## Azure Private Link Service aliases [ec-private-link-azure-service-aliases]
 
 Private Link Services are set up by Elastic in all supported Azure regions under the following aliases:
@@ -156,7 +165,7 @@ The Private Link connection will be approved automatically after the private con
     :::{tip}
     Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
-7.  Under **Connectivity**, select **Privatelink**.
+7.  Under **Connectivity**, select **PrivateLink**.
 8.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment, this information will be used to filter traffic.
 
     :::{tip}
@@ -364,7 +373,7 @@ You can also edit network security policies from your deployment's **Security** 
 
 ### Remove a private connection policy from your deployment [remove-private-connection-policy]
 
-If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
+If you want to remove a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
 #### From your deployment
 
