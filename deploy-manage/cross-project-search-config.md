@@ -223,10 +223,11 @@ To open space settings in {{kib}}, click **Configure Space settings in {{kib}}**
 % **every** linked project.
 % ::::
 
-Navigate to the **Advanced Settings** page and search for the {{cps}} scope setting. Set the default scope for the space:
+In the general space settings, find the **{{cps-cap}}** panel and set the default scope for the space:
    - **All projects:** (default) Searches run across the origin project and all linked projects.
-   - **Origin project only:**  Searches run only against the origin project's data.
-   - **Specific projects:** Select individual linked projects to include in the default scope.
+   - **This project:**  Searches run only against the origin project's data.
+
+% (not yet) - **Specific projects:** Select individual linked projects to include in the default scope.
 
 ::::{note}
 The default {{cps}} scope is a space setting, not an access control. Even after you set a default, users can select their preferred scope and can access data in linked projects outside the default scope.
