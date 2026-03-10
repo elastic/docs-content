@@ -47,6 +47,15 @@ You can create and manage index templates in {{kib}} or using the {{es}} API.
 
 ::::{tab-item} Kibana
 :sync: kibana
+
+:::{tip}
+If you use {{es}} {{security-features}}, the following [security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) are required:
+
+* The `manage_index_templates` cluster privilege to manage index templates.
+
+To add these privileges, go to **{{stack-manage-app}} > Security > Roles** or use the [Create or update roles](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) API.
+:::
+
 To create an index template, complete the following steps:
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).

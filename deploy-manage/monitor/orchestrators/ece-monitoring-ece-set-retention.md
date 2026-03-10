@@ -45,7 +45,7 @@ To customize the retention period for the different data streams, [create a new 
 
 1. In {{kib}}, go to **Index Management → Index Templates** and identify the template that applies to the data stream or indices whose retention you want to change. Refer to [Available index templates](#available-templates) for a list of the most common templates.
 
-2. Open the template’s contextual menu and select **Clone** to [create a new template](/manage-data/data-store/index-management.md#index-management-manage-index-templates). When cloning the template:
+2. Open the template’s contextual menu and select **Clone** to [create a new template](/manage-data/data-store/templates.md). When cloning the template:
 
     1. Assign a higher `priority` to the new template so it takes precedence over the default template.
     2. In the **Index settings** section, set `index.lifecycle.name` to the custom {{ilm-init}} policy that has the required retention settings.

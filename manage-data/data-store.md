@@ -36,7 +36,7 @@ Control how {{es}} indexes, maps, and analyzes your data.
 
 Work with your indices and data using the {{kib}} UI or the {{es}} REST API.
 
-* [](/manage-data/data-store/index-management.md): Use {{kib}}'s **Index Management** page to view and manage your indices, data streams, templates, component templates, and enrich policies.
+* [](/manage-data/data-store/perform-index-operations.md): Use {{kib}}'s **Index Management** page to view and manage your indices, data streams, templates, component templates, and enrich policies.
 * [](/manage-data/data-store/manage-data-from-the-command-line.md): Index, update, retrieve, search, and delete documents using curl and the {{es}} REST API.
 
 ::::{tip}

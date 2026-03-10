@@ -12,4 +12,4 @@ products:
 
 # Manage index templates [manage-index-templates]
 
-This page has moved. Refer to [Manage index templates](/manage-data/data-store/index-management.md#index-management-manage-index-templates) for all of the steps to create and manage index templates in {{kib}}.
+This page has moved. Refer to [Manage index templates](/manage-data/data-store/templates.md) for all of the steps to create and manage index templates in {{kib}}.

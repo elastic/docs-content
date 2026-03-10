@@ -82,6 +82,5 @@ When working with indices, you typically make decisions that focus on:
 
 After learning index fundamentals, choose the management path that fits your workflow:
 
-* [](/manage-data/data-store/perform-index-operations.md): Run common index operations from the **Manage index** menu.
-* [](/manage-data/data-store/index-management.md): Navigate the full **Index Management** experience in {{kib}}.
+* [](/manage-data/data-store/perform-index-operations.md): Navigate the **Index Management** experience in {{kib}} and run common index operations.
 * [](/manage-data/data-store/manage-data-from-the-command-line.md): Manage indices and documents with the {{es}} REST API.
