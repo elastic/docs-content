@@ -64,7 +64,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds a Google Cloud Storage data source plugin for {{esql}} [#142563]({{es-pull}}142563)
 * Adds support for the ORC file format in {{esql}} [#142900]({{es-pull}}142900)
 * Makes {{esql}} data source plugins load slowly [#142815]({{es-pull}}142815)
-* Removes snapshot protection from {{esql}} node reduce late materialization [#142834]({{es-pull}}142834)
+* Removes snapshot protection from {{esql}} nodes to reduce late materialization [#142834]({{es-pull}}142834)
 * Adds the `METRICS_INFO` command [#141667]({{es-pull}}141667)
 * Implements median aggregation for T-Digest [#142684]({{es-pull}}142684)
 * Adds API key support to the SQL JDBC driver and CLI [#142021]({{es-pull}}142021)
