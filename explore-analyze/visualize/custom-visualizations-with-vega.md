@@ -14,7 +14,7 @@ products:
 
 :::{note}
 :applies_to: {"serverless": "preview", "stack": "unavailable"}
-Vega is the only legacy visualization type that supports [{{cps}}](/explore-analyze/cross-project-search.md). When {{cps}} is enabled and projects are linked, you can use the {{cps}} project picker when editing a Vega visualization. You can also define [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) directly in your Vega spec to target specific linked projects. Other legacy visualization types created from the **Visualize** app do not support {{cps}}.
+Vega is the only legacy visualization type that supports [{{cps}}](/explore-analyze/cross-project-search.md). When {{cps}} is enabled and projects are linked, you can use the {{cps-init}} scope selector when editing a Vega visualization. You can also define [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) directly in your Vega spec to target specific linked projects. Other legacy visualization types created from the **Visualize** app do not support {{cps}}.
 :::
 
 **Vega** and **Vega-Lite** panels can display one or more data sources, including {{es}}, Elastic Map Service, URL, or static data, and support [{{kib}} extensions](#reference-for-kibana-extensions) that allow you to embed the panels on your dashboard and add interactive tools.
