@@ -39,8 +39,9 @@ To add a collapsible section:
 
 Users viewing the dashboard will find the section in the same state as when you saved the dashboard. If you saved it with the section collapsed, then it will also be collapsed by default for users.
 
-:::{note}
+:::{note} 
 :applies_to: stack: ga 9.4
+
 **Filter controls and sections**: Controls placed inside a collapsible section apply their filters only to panels within that section. Controls placed outside sections, or [pinned to the dashboard header](add-controls.md), have global scope and filter all relevant panels on the dashboard. Refer to [Add filter controls](add-controls.md) for more on pinned and unpinned controls.
 :::
 

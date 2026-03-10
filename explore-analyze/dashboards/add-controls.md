@@ -13,10 +13,9 @@ products:
 
 **Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries.
 
-{applies_to}`stack: ga 9.4` 
-* **Pinned** control: Appears in the dashboard's sticky header and apply to the whole dashboard. 
+* {applies_to}`stack: ga 9.4` **Pinned** control: Appears in the dashboard's sticky header and apply to the whole dashboard. 
 
-* **Unpinned** control: Lives in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
+* {applies_to}`stack: ga 9.4` **Unpinned** control: Lives in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
 
 ## Requirements [add-controls-requirements]
 
@@ -56,13 +55,9 @@ To add interactive Options list and Range slider controls, create the controls, 
     - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. The control is pinned and applies to the whole dashboard.
     - Add as free panel: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to top** or **Unpin**.
     
-    {applies_to}`stack: ga 9.2-9.3` 
+    {applies_to}`stack: ga 9.2-9.3` In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
     
-    In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
-    
-    {applies_to}`stack: ga 9.0-9.1` 
-    
-    In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
+    {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
 3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the Control.
 4. In the **Field** list, select the field you want to filter on.
@@ -262,9 +257,6 @@ serverless: preview
 
 You can add one interactive time slider control to a dashboard.
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
-The time slider can only be added as a pinned control to the header. It is not available as a free panel.
-
 1. Open or create a new dashboard.
 2. Add a time slider control.
 
@@ -273,6 +265,11 @@ The time slider can only be added as a pinned control to the header. It is not a
 
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
 4. Save the dashboard. The control can now be used.
+
+:::{warning}
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+The time slider can only be added as a pinned control to the header. It is not available as a free panel.
+:::
 
 ## Configure the controls settings [configure-controls-settings]
 
@@ -327,17 +324,17 @@ Change the settings for Options list and Range slider controls.
 1. Hover over the control you want to edit, then select ![The Edit control icon that opens the Edit control flyout](/explore-analyze/images/kibana-dashboard_controlsEditControl_8.3.0.png "").
 2. In the **Edit control** flyout, change the options, then select **Save and close**.
 
-## Delete controls [remove-controls]
+## Delete controls from your dashboard[remove-controls]
 
-Delete controls from your dashboard.
-
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+::::{applies-switch}
+:::{applies-item} stack: ga 9.4
 To remove a control from view without deleting it, use **Unpin** from the control's panel menu; the control moves into the dashboard body. To remove it from the dashboard entirely, click **Remove** from the control's menu.
-
-{applies_to}`stack: ga 9.0+`
+:::
+:::{applies-item} stack: ga 9.0+
 1. Hover over the control you want to delete, then select ![The Remove control icon that removes the control from the dashboard](/explore-analyze/images/kibana-dashboard_controlsRemoveControl_8.3.0.png "").
 2. In the **Delete control?** window, select **Delete**.
-
+:::
+::::
 :::{note}
 If you delete a variable control that's used in an {{esql}} visualization, the visualization will break. You must edit the visualization query and remove or update the control reference.
 :::
