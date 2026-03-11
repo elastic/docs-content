@@ -148,7 +148,7 @@ Example failure entry:
 The logs are always emitted on the node that executed the request. These logs can be viewed in the following locations:
 
 - If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). The query logs have the `log.logger` field set to `elasticsearch.querylog`.
-- From the local {{es}} service logs directory. Slow log files have a suffix of `_querylog.json` , e.g. `mycluster_querylog.json`.
+- From the local {{es}} service logs directory. Query log files have a suffix of `_querylog.json` , e.g. `mycluster_querylog.json`.
 
 ## When and how to use query logging
 
