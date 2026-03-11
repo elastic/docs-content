@@ -9,6 +9,16 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## April 14, 2026 [serverless-changelog-04142026]
+
+### Features and enhancements [serverless-changelog-04142026-features-enhancements]
+
+Adds four new [regions](/deploy-manage/deploy/elastic-cloud/regions.md) for {{serverless-full}}:
+  * Azure: Dubai, UAE (`uaenorth`)
+  * AWS: Sydney, Australia (`ap-southeast-2`)
+  * AWS: Central Canada (`ca-central-1`)
+  * GCP: Dammam, Saudi Arabia (`me-central2`)
+
 ## March 2, 2026 [serverless-changelog-03022026]
 
 ### Features and enhancements [serverless-changelog-03022026-features-enhancements]
