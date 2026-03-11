@@ -16,7 +16,7 @@ There are several ways to control which projects a query runs against:
 
 - **[Query all projects](#query-all-projects-default)**: If you just want to query across all linked projects, no special syntax is required. Queries automatically run against the origin and all linked projects by default.
 - **[Use project routing](#use-project-routing)**: Use project routing to limit the scope of your search to specific projects before query execution. Excluded projects are not queried.
-- **[Use search expressions](#use-search-expressions)**: Use search expressions for fine-grained control over which projects and indices are queried, by qualifying index names with a project alias. Search expressions can be used independently or combined with project routing.
+- **[Use index expressions](#use-index-expressions)**: Use index expressions for fine-grained control over which projects and indices are queried, by qualifying index names with a project alias. Search expressions can be used independently or combined with project routing.
 
 ## Before you begin
 
@@ -139,7 +139,7 @@ GET /_query
 
 Both options support referencing a named project routing expression using the `@` prefix.
 Before you can reference a named expression, you must create it using the `_project_routing` API.
-For instructions, refer to [Using named project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md#named-routing-expressions).
+For instructions, refer to [Using named project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md#creating-and-managing-named-project-routing-expressions).
 
 ::::{tab-set}
 
@@ -163,10 +163,12 @@ FROM logs
 
 ::::
 
-## Use search expressions
+## Use index expressions
 
-{{esql}} supports [unqualified and qualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions), which provide fine-grained control over which projects and indices a query runs against.
-Prefix an index name with a project identifier to restrict the query to a specific project and its indices.
+{{esql}} supports two types of [index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions):
+
+- **Unqualified expressions** have no project prefix and search across all projects. Example: `logs*`.
+- **Qualified expressions** include a project alias prefix to target a specific project or set of projects. Example: `project1:logs*`.
 
 ### Restrict to the origin project
 
@@ -192,7 +194,7 @@ FROM linked-project-1:data    <1>
 
 ### Exclude specific projects
 
-Prefix a search expression with `-` to exclude it from the resolved set.
+Prefix an index expression with `-` to exclude it from the resolved set.
 The following example uses `-_origin:*` to exclude all indices from the origin project:
 
 ```esql
@@ -203,7 +205,7 @@ FROM data,-_origin:*    <1>
 1. `data` is resolved across all projects except the origin project.
 
 ::::{note}
-`*:` in {{cps-init}} does not behave like `*:` in cross-cluster search (CCS):
+`*:` in {{cps-init}} does not behave like `*:` in [cross-cluster search (CCS)](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) (which is used to query across clusters in non-serverless deployments):
 
 - In CCS, `*:` targets all remote clusters and excludes the local cluster.
 - In {{cps-init}}, `*:` resolves against all projects including the origin, the same as an unqualified expression.
