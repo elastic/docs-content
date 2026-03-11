@@ -60,7 +60,7 @@ To upgrade a standalone {{agent}} installed from a TAR or ZIP archive:
 
 This command upgrades the binary. Your agent policy should continue to work, but you might need to upgrade it to use new features and capabilities.
 
-For more command-line options, see the help for the [`upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command.
+For more command-line options, check the help for the [`upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command.
 
 
 ## Upgrade DEB and RPM installations [upgrade-standalone-deb-rpm]
