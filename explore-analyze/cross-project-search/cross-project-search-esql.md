@@ -111,7 +111,7 @@ If both options are combined, `SET project_routing` takes precedence.
 
 ### Option 1: Use the `SET` source command
 
-`SET project_routing` embeds project routing directly within the {{esql}} query. You can use this approach wherever you write {{esql}}.
+`SET project_routing` embeds project routing directly within the {{esql}} query. You can use this approach wherever you write {{esql}}. [`SET`](elasticsearch://reference/query-languages/esql/commands/set.md) must appear before other {{esql}} commands. The semicolon after the last parameter separates it from the rest of the query. The order of parameters within `SET` does not matter.
 
 ```esql
 SET project_routing="_alias:my-project";    <1>
@@ -119,7 +119,7 @@ FROM data
 | STATS COUNT(*)
 ```
 
-1. [`SET`](elasticsearch://reference/query-languages/esql/commands/set) must be the first command in the query. If multiple parameters are configured within `SET`, `project_routing` does not need to be listed first. For example, `SET unmapped_fields="LOAD"; project_routing="_alias:my-project";` is valid. The semicolon after the last parameter separates `SET` from the rest of the query.
+1. Routes the query to projects whose alias is `my-project`.
 
 ### Option 2: Pass `project_routing` in the API request body
 
