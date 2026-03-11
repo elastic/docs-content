@@ -81,6 +81,37 @@ FROM my_index*
 
 This is useful when querying [failure stores](../../../manage-data/data-store/data-streams/failure-store.md) or indices with varying field mappings. The {{esql}} editor suggests available values when you type `SET unmapped_fields =` in the query bar.
 
+#### Enable approximate query results [esql-kibana-approximation]
+
+For exploratory analysis on large datasets, you can enable approximate query execution to get faster results. Use the `approximation` setting to trade precision for speed in aggregation queries:
+
+| Value | Behavior |
+|-------|----------|
+| `false` | Default. Returns exact results. |
+| `true` | Allows approximate results with default parameters. |
+| `{ "num_rows": <integer>, "confidence_level": <double> }` | Allows approximate results with custom parameters. |
+
+When using custom parameters:
+
+- `num_rows`: Maximum number of rows to process. Suggested values: `100000` (100K), `500000` (500K), `1000000` (1M).
+- `confidence_level`: Precision level. Suggested values: `0.99` (high precision, 99%), `0.95` (standard, 95%), `0.9` (exploratory, 90%).
+
+For example, to run an approximate aggregation with standard precision:
+
+```esql
+SET approximation = { "num_rows": 500000, "confidence_level": 0.95 };
+FROM kibana_sample_data_logs
+| STATS total_bytes = SUM(bytes) BY geo.dest
+```
+
+Or with the default approximate parameters:
+
+```esql
+SET approximation = true;
+FROM kibana_sample_data_logs
+| STATS count = COUNT(*) BY response.keyword
+```
+
 
 ### Editor tools
 
