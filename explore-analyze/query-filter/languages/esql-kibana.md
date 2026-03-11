@@ -179,7 +179,7 @@ FROM kibana_sample_data_logs
 ```
 
 
-### Timezone [esql-kibana-timezone]
+### Timezone handling [esql-kibana-timezone]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
