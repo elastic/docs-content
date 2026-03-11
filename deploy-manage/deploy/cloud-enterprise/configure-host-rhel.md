@@ -331,7 +331,9 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     ```
 
     :::{note}
-    {{es}} overrides some TCP keepalive settings, including `net.ipv4.tcp_keepalive_time` and `net.ipv4.tcp_keepalive_intvl` on a per-connection basis. For details, refer to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md). 
+    According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
+    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
+    * Values below 300 seconds are used as-is.
     
     For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
     * `net.ipv4.tcp_keepalive_time`
