@@ -215,28 +215,28 @@ For exploratory analysis on large datasets, you can enable approximate query exe
 | Value | Behavior |
 |-------|----------|
 | `false` | Default. Returns exact results. |
-| `true` | Allows approximate results with default parameters. |
-| `{ "num_rows": <integer>, "confidence_level": <double> }` | Allows approximate results with custom parameters. |
+| `true` | Enables approximate results using server defaults: 100,000 sampled rows for queries without grouping, 1,000,000 for queries with a `BY` clause. |
+| `{ "num_rows": <integer>, "confidence_level": <double> }` | Enables approximate results with explicit parameters. |
 
-When using custom parameters:
+When using the map form, the following parameters are available:
 
-- `num_rows`: Maximum number of rows to process. Suggested values: `100000` (100K), `500000` (500K), `1000000` (1M).
-- `confidence_level`: Precision level. Suggested values: `0.99` (high precision, 99%), `0.95` (standard, 95%), `0.9` (exploratory, 90%).
+- `num_rows`: Number of rows to sample. Must be at least `10000`. The default depends on whether the query uses grouping (100,000 without, 1,000,000 with). Suggested values: `100000` (100K), `500000` (500K), `1000000` (1M).
+- `confidence_level`: Confidence level for the confidence intervals returned alongside approximate results. Must be between `0.5` and `0.95`. Suggested values: `0.95` (high precision, 95%), `0.9` (standard, 90%), `0.5` (exploratory, 50%).
 
-For example, to run an approximate aggregation with standard precision:
-
-```esql
-SET approximation = { "num_rows": 500000, "confidence_level": 0.95 };
-FROM kibana_sample_data_logs
-| STATS total_bytes = SUM(bytes) BY geo.dest
-```
-
-Or with the default approximate parameters:
+For example, to enable approximation with server defaults:
 
 ```esql
 SET approximation = true;
 FROM kibana_sample_data_logs
 | STATS count = COUNT(*) BY response.keyword
+```
+
+To control the sample size and confidence level explicitly:
+
+```esql
+SET approximation = { "num_rows": 500000, "confidence_level": 0.95 };
+FROM kibana_sample_data_logs
+| STATS total_bytes = SUM(bytes) BY geo.dest
 ```
 
 
