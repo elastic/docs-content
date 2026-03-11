@@ -139,6 +139,8 @@ Use large language models (LLMs) to analyze alerts in your environment and ident
 
 The Assets section allows you to manage the following features:
 
+
+
 * [{{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md)
 * [Endpoint protection](/solutions/security/manage-elastic-defend.md)
 
@@ -149,8 +151,6 @@ The Assets section allows you to manage the following features:
     * [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md): View and manage host isolation exceptions, which specify IP addresses that can communicate with your hosts even when those hosts are blocked from your network.
     * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md): View and manage the blocklist, which allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
     * [Response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
-
-* [Cloud security](/solutions/security/cloud.md)
 
 
 ### Cases [_cases]

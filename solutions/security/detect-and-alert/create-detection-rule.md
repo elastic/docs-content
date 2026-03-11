@@ -512,7 +512,13 @@ When writing your query, consider the following:
     If the `LIMIT` value and **Max alerts per run** value are different, the rule uses the lower value to determine the maximum number of alerts the rule generates.
 
 * When writing an aggregating query, use the [`STATS...BY`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) command with fields that you want to search and filter for after alerts are created. For example, using the `host.name`, `user.name`, `process.name` fields with the `BY` operator of the `STATS...BY` command returns these fields in alert documents, and allows you to search and filter for them from the Alerts table.
-* When configuring alert suppression on a non-aggregating query, we recommend sorting results by ascending `@timestamp` order. Doing so ensures that alerts are properly suppressed, especially if the number of alerts generated is higher than the **Max alerts per run** value.
+* When configuring alert suppression on a non-aggregating query, we recommend sorting results by ascending `@timestamp` order. Doing so ensures that alerts are properly suppressed, especially if the number of alerts generated is higher than the **Max alerts per run** value. 
+
+    ::::{note}
+    {{esql}} query results are primarily sorted by timestamp. However, when two or more rows share the same timestamp, another field is needed to determine their order. A tiebreaker field provides this secondary sort criteria and ensures that rows are sorted in ascending, lexicographic order.
+
+    For instance, if your query uses the [`MV_EXPAND`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-mv_expand) command (for example, `SORT @timestamp ASC, _index ASC`), multiple rows with identical timestamps will be produced. Without a tiebreaker field, the sort order of those rows is undefined, which can lead to inconsistent alert suppression results.
+    ::::
 
 
 ### {{esql}} rule limitations [esql-rule-limitations]

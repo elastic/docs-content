@@ -256,8 +256,11 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     * Run the [`elastic-synthetics locations` command](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command) with the URL for the Observability project or the {{kib}} URL for the deployment from which to fetch available locations.
     * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
 
+{applies_to}`stack: ga 9.1+` `spaces` (`Array<string>`)
+:   The [{{kib}} spaces](/deploy-manage/manage-spaces.md) in which the monitor will be visible. Monitors can be visible in multiple spaces simultaneously. Use `'*'` to make the monitor visible in all spaces. The project's default space is always included. 
+
 `throttling` (`boolean` | [`ThrottlingOptions`](https://github.com/elastic/synthetics/blob/v1.3.0/src/common_types.ts#L194-L198))
-:   Control the monitor’s download speeds, upload speeds, and latency to simulate your application’s behavior on slower or laggier networks. Set to `false` to disable throttling altogether.
+:   Control the monitor’s download speeds, upload speeds, and latency to simulate your application’s behavior on slower or laggier networks. Set to `false` to deactivate throttling altogether.
 
 `screenshot` ([`ScreenshotOptions`](https://github.com/elastic/synthetics/blob/v1.3.0/src/common_types.ts#L192))
 :   Control whether or not to capture screenshots. Options include `'on'`, `'off'`, or `'only-on-failure'`.
