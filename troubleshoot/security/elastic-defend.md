@@ -275,7 +275,7 @@ When {{elastic-endpoint}} is unable to download user artifacts (such as {{elasti
 * `sudo /Library/Elastic/Endpoint/elastic-endpoint test output` (macOS)
 * `c:\Program Files\Elastic\Endpoint\elastic-endpoint.exe test output` (Windows)
 
-If network connectivity is the problem and the output doesn't clarify the issue, consider using a tool like `curl` for further diagnosis. If incorrect proxy information is displayed, review the proxy configuration, noting that you can override this with {{elastic-defend}} [advanced settings](/reference/security/defend-advanced-settings.md). For certificate issues, check the {{fleet-server}} configuration and explore using one of the `advanced.artifacts.user.*` {{elastic-defend}} advanced settings.
+If network connectivity is the problem and the output doesn't clarify the issue, consider using a tool like `curl` for further diagnosis. If incorrect proxy information is displayed, review the proxy configuration, which you can override from the {{elastic-defend}} [advanced settings](/reference/security/defend-advanced-settings.md). For certificate issues, check the {{fleet-server}} configuration and consider using one of the `advanced.artifacts.user.*` {{elastic-defend}} advanced settings.
 
 If those steps don't surface the problem, it can occasionally help to make a small edit to the failing artifact(s) — for example, adding an item — to refresh the data that {{agent}} is trying to download.
 
