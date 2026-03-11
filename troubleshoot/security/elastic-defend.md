@@ -134,7 +134,11 @@ You can identify if this issue is happening in the following ways:
       - status: (HEALTHY) Running
     ```
 
-    Appending `--output full` to the command shows the details of the last policy that {{elastic-endpoint}} was configured with before it lost connection with {{agent}}.
+    In this case, the {{elastic-endpoint}} service is orphaned — policy changes and response action requests cannot reach it. After a few minutes in this state, {{elastic-endpoint}} notifies the {{stack}}, which changes the {{agent}} status to `Orphaned`.
+
+    :::{tip}
+    Appending `--output full` to the `status` command shows the details of the last policy that {{elastic-endpoint}} was configured with before it lost connection with {{agent}}.
+    :::
 
 * You can also examine the full policy details by running:
 
