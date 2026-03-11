@@ -181,8 +181,8 @@ FROM kibana_sample_data_logs
 
 ## Control query behavior with SET [esql-kibana-set]
 ```{applies_to}
-stack: ga 9.4
-serverless: ga
+stack: preview 9.4
+serverless: preview
 ```
 
 The [`SET`](elasticsearch://reference/query-languages/esql/commands/set.md) directive lets you configure settings that modify the behavior of an {{esql}} query. `SET` directives are placed before the source command.
