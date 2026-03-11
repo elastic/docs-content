@@ -52,6 +52,36 @@ When querying many indices at once without filters, the response might be too la
 ::::
 
 
+### Query directives with SET [esql-kibana-set]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+The [`SET`](elasticsearch://reference/query-languages/esql/commands/set.md) directive lets you configure settings that modify the behavior of an {{esql}} query. `SET` directives are placed before the source command.
+
+For the full syntax and list of available settings, refer to [{{esql}} SET directive](elasticsearch://reference/query-languages/esql/commands/set.md).
+
+#### Control unmapped field behavior [esql-kibana-unmapped-fields]
+
+When querying across indices with different mappings, some fields might not exist in all of them. By default, {{esql}} fails the query when it encounters unmapped fields. Use the `unmapped_fields` setting to change this behavior:
+
+| Value | Behavior |
+|-------|----------|
+| `FAIL` | Default. Fails the query if unmapped fields are present. |
+| `NULLIFY` | Treats unmapped fields as null values. |
+
+For example, to query across indices where the `foo` field might not be mapped everywhere:
+
+```esql
+SET unmapped_fields = "NULLIFY";
+FROM my_index*
+| KEEP field1, field2, foo
+```
+
+This is useful when querying [failure stores](../../../manage-data/data-store/data-streams/failure-store.md) or indices with varying field mappings. The {{esql}} editor suggests available values when you type `SET unmapped_fields =` in the query bar.
+
+
 ### Editor tools
 
 The {{esql}} editor includes several built-in tools to help you write queries efficiently.
