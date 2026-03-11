@@ -29,7 +29,7 @@ Elastic recommends you connect client applications to your cluster using standar
 ### Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
 ::::{note}
-The Cloud ID is a simplified connection method specifically supported by Beats and {{ls}}. For all other client applications and third-party tools, use the {{es}} endpoint URL.
+The Cloud ID is a connection method specifically supported by Beats and {{ls}}. For all other client applications and third-party tools, use the {{es}} endpoint URL.
 ::::
 
 1. Go to the {{ecloud}} home page.
