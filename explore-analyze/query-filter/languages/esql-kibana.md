@@ -147,6 +147,27 @@ For detailed steps to create an enrich policy from the editor, refer to [Enrich 
 To display data within a specified time range, you can use the standard time filter, custom time parameters, or a WHERE command.
 
 
+### Timezone [esql-kibana-timezone]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+{{esql}} queries in {{kib}} use the timezone configured in {{kib}}'s [Advanced Settings](kibana://reference/advanced-settings.md). This timezone applies to date and time functions, time-based filtering, and how timestamps are interpreted and displayed in query results.
+
+To change the timezone used by {{esql}} queries:
+
+1. Go to **Stack Management** → **Advanced Settings** (or **Management** → **Advanced Settings** in {{serverless-short}}).
+2. Search for **Timezone for date formatting** (`dateFormat:tz`).
+3. Set it to **Browser** to use your browser's timezone, or choose a specific timezone such as **UTC** or **America/New_York**.
+
+The timezone applies to {{esql}} queries across {{kib}}, including Discover, dashboards, alerting, and Maps.
+
+:::{note}
+{{esql}} also supports a [`SET time_zone`](elasticsearch://reference/query-languages/esql/commands/set.md) directive that can be used in API requests. However, in the {{kib}} {{esql}} editor, timezone is always controlled by the advanced setting described above. The `SET time_zone` directive is not available in the editor's autocomplete. If you need per-query timezone control, you can use `SET time_zone` through the [Dev Tools Console](../../dev-tools/console.md) or the {{es}} API directly.
+:::
+
+
 ### Standard time filter [_standard_time_filter]
 
 {{kib}} enables the standard [time filter](../filtering.md) when the indices you're querying have a field named `@timestamp`.
