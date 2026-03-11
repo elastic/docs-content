@@ -368,7 +368,7 @@ When you run an {{esql}} query with a [`STATS ... BY`](elasticsearch://reference
 
 ### Group row actions
 
-Right-click on a group row or use the row's context menu to access these actions:
+Each group row has an actions menu ({icon}`boxes_horizontal`) with the following options:
 
 - **Copy to clipboard**: Copy the group value.
 - **Filter in**: Add a `WHERE` clause to the query to keep only this group's value.
