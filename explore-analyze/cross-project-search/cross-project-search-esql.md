@@ -15,12 +15,12 @@ navigation_title: "CPS with ES|QL"
 There are several ways to control which projects a query runs against:
 
 - **[Query all projects](#query-all-projects-default)**: If you just want to query across all linked projects, no special syntax is required. Queries automatically run against the origin and all linked projects by default.
-- **[Use project routing](#use-project-routing)**: Use project routing for project-level filtering before query execution. Excluded projects are not queried.
-- **[Use search expressions](#use-search-expressions)**: Use search expressions for fine-grained control over which projects and indices are queried, by qualifying index names with a project identifier. Search expressions can be used independently or combined with project routing.
+- **[Use project routing](#use-project-routing)**: Use project routing to limit the scope of your search to specific projects before query execution. Excluded projects are not queried.
+- **[Use search expressions](#use-search-expressions)**: Use search expressions for fine-grained control over which projects and indices are queried, by qualifying index names with a project alias. Search expressions can be used independently or combined with project routing.
 
 ## Before you begin
 
-This page covers {{esql}}-specific CPS behavior. Before continuing, make sure you are familiar with the following:
+This page covers {{esql}}-specific {{cps-init}} behavior. Before continuing, make sure you are familiar with the following:
 
 * [{{cps-cap}}](/explore-analyze/cross-project-search.md)
 * [Linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md)
@@ -33,14 +33,16 @@ This page covers {{esql}}-specific CPS behavior. Before continuing, make sure yo
 The default behavior is to query across the origin project and all linked projects automatically.
 The following example queries the `data` index and includes the `_index` metadata field to identify which project each result came from:
 
-```esql
+```console
 GET /_query
 {
-  "query": "FROM data METADATA _index" <1>
+  "query": "FROM data METADATA _index", <1>
+  "include_execution_metadata": true     <2>
 }
 ```
 
 1. `METADATA _index` returns the fully-qualified index name for each document. Documents from linked projects include the project alias prefix, for example `linked-project-1:data`.
+2. Required to include the `_clusters` object in the response. Defaults to `false`.
 
 The response includes:
 - a `_clusters` object showing the status of each participating project
@@ -91,8 +93,8 @@ The response includes:
 
 ## Use project routing
 
-[Project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) is a project-level filter that limits which projects are queried, based on tag values.
-Project routing happens before query execution, so excluded projects receive no requests. This can help reduce cost and latency.
+[Project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) limits the scope of a query to specific projects, based on tag values.
+Project routing happens before query execution, so excluded projects are never queried. This can help reduce cost and latency.
 
 :::{note}
 Project routing expressions use Lucene query syntax. The `:` operator matches a tag value, equivalent to `=` in other query languages. For example, `_alias:my-project` matches projects whose alias is `my-project`.
@@ -117,13 +119,13 @@ FROM data
 | STATS COUNT(*)
 ```
 
-1. `SET project_routing` must appear before other {{esql}} commands. The semicolon separates it from the rest of the query.
+1. [`SET`](elasticsearch://reference/query-languages/esql/commands/set) must be the first command in the query. If multiple parameters are configured within `SET`, `project_routing` does not need to be listed first. For example, `SET unmapped_fields="LOAD"; project_routing="_alias:my-project";` is valid. The semicolon after the last parameter separates `SET` from the rest of the query.
 
 ### Option 2: Pass `project_routing` in the API request body
 
 If you are constructing the full `_query` request, you can pass the `project_routing` field in the request body. This keeps project routing logic separate from the query string:
 
-```json
+```console
 GET /_query
 {
   "query": "FROM data | STATS COUNT(*)",
@@ -142,7 +144,7 @@ For instructions, refer to [Using named project routing expressions](/explore-an
 ::::{tab-set}
 
 :::{tab-item} Request body
-```json
+```console
 GET /_query
 {
   "query": "FROM logs | STATS COUNT(*)",
@@ -231,7 +233,7 @@ Project metadata fields use the `_project.` prefix to distinguish them from docu
 You can use project metadata fields in two ways:
 
 * As columns in returned result rows, to identify which project each document came from.
-* In downstream commands such as `WHERE`, `STATS`, and `KEEP`, to filter, aggregate, or sort results by project.
+* In downstream commands such as `WHERE`, `STATS`, and `KEEP`, to filter, aggregate, or sort results by project. Note: `WHERE` [filters results after all projects are queried](#filter-results-by-project-tag) and does not limit query scope.
 
 Available fields include all predefined tags and any custom tags you have defined.
 You can also use wildcard patterns such as `_project.my-prefix*` or `_project.*`.
@@ -303,7 +305,7 @@ FROM logs* METADATA _project._csp    <1>
 2. All linked projects are queried. Only results from AWS projects are returned.
 
 ::::{important}
-Filtering with `WHERE` on a project tag happens after all projects are queried. To prevent unnecessary queries, use [project routing](#use-project-routing) to select projects before execution.
+Filtering with `WHERE` on a project tag happens after all projects are queried. To optimize a query, use [project routing](#use-project-routing) to select projects before execution.
 ::::
 
 #### Restrict with project routing (pre-query)
@@ -326,19 +328,19 @@ Using a tag in `METADATA` does not route the query. Using project routing does n
 To both restrict queried projects and include tag values in results, specify both:
 
 ```esql
-SET project_routing="_alias:my-project";    <1>
-FROM logs METADATA _project._alias          <2>
+SET project_routing="_alias:*linked*";    <1>
+FROM logs METADATA _project._alias        <2>
 | STATS COUNT(*) BY _project._alias
 ```
 
-1. Routes the query to `my-project` only.
-2. Declares `_project._alias` so it can be used in `STATS`.
+1. Routes the query to projects whose alias matches `*linked*`. Only those projects are queried.
+2. Declares `_project._alias` so it can be used in `STATS`. Results show a count per matched project.
 
 ## Limitations
 
 ### Project routing supports alias only
 
-Currently, project routing in {{esql}} only supports the `_alias` tag.
+Initially, project routing only supports the `_alias` tag.
 Other predefined tags (`_csp`, `_region`, and so on) and custom tags are not yet supported as project routing criteria.
 
 ### LOOKUP JOIN across projects
