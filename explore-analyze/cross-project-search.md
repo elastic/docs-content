@@ -136,15 +136,465 @@ A linked project can be associated with any number of origin projects.
 
 ## {{cps-cap}} examples [cps-examples]
 
-<!--
-Examples to include:
+The following examples demonstrate how search requests behave in different {{cps-init}} scenarios.
 
-* GET logs/_search
-* GET _origin:logs/_search
-* GET *:logs/_search
-* GET *:logs/_search?ignore_unavailable=false
-...
-* have example(s) of resuts
-* more complex project_routing examples
-* qualified search expressions and project_routing
--->
+### Unqualified search expressions
+
+In the following example, an origin project and a linked project both contain an index named `my-index`.
+
+```console
+GET /my-index/_search
+{
+  "size": 2,
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+The request will return a response similar to this:
+
+```console
+
+{
+  "took": 34,
+  "timed_out": false,
+  "num_reduce_phases": 3,
+  "_shards": {
+    "total": 12,
+    "successful": 12,
+    "skipped": 0,
+    "failed": 0
+  },
+  "_clusters": {
+    "total": 2,
+    "successful": 2,
+    "skipped": 0,
+    "running": 0,
+    "partial": 0,
+    "failed": 0,
+    "details": {
+      "_origin": {
+        "status": "successful",
+        "indices": "my-index",
+        "took": 21,
+        "timed_out": false,
+        "_shards": {
+          "total": 6,
+          "successful": 6,
+          "skipped": 0,
+          "failed": 0
+        }
+      },
+      "linked_project": {
+        "status": "successful",
+        "indices": "my-index",
+        "took": 5,
+        "timed_out": false,
+        "_shards": {
+          "total": 6,
+          "successful": 6,
+          "skipped": 0,
+          "failed": 0
+        }
+      }
+    }
+  },
+  "hits": {
+    "total": {
+      "value": 2,
+      "relation": "eq"
+    },
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "linked_project:my-index",
+        "_id": "IH-mupwBMZyy2F9u2IQz",
+        "_score": 1.0,
+        "_source": {
+          "project": "linked"
+        }
+      },
+      {
+        "_index": "my-index",
+        "_id": "u0SnupwBaOrMOsBImb7G",
+        "_score": 1.0,
+        "_source": {
+          "project": "origin"
+        }
+      }
+    ]
+  }
+}
+```
+
+In this example, both the origin project and a linked project contain an index named` my-index`:
+
+```console
+POST /_query
+{
+ "query": "FROM my-index",
+  "include_execution_metadata": true
+}
+```
+The query will return a response similar to this:
+
+```console
+{
+  "took": 39,
+  "is_partial": false,
+  "completion_time_in_millis": 1772659251830,
+  "documents_found": 2,
+  "values_loaded": 4,
+  "start_time_in_millis": 1772659251791,
+  "expiration_time_in_millis": 1773091251753,
+  "columns": [
+    {
+      "name": "project",
+      "type": "text"
+    },
+    {
+      "name": "project.keyword",
+      "type": "keyword"
+    }
+  ],
+  "values": [
+    [
+      "origin",
+      "origin"
+    ],
+    [
+      "linked",
+      "linked"
+    ]
+  ],
+  "_clusters": {
+    "total": 2,
+    "successful": 2,
+    "running": 0,
+    "skipped": 0,
+    "partial": 0,
+    "failed": 0,
+    "details": {
+      "_origin": {
+        "status": "successful",
+        "indices": "my-index",
+        "took": 39,
+        "_shards": {
+          "total": 6,
+          "successful": 6,
+          "skipped": 0,
+          "failed": 0
+        }
+      },
+      "linked_project": {
+        "status": "successful",
+        "indices": "my-index",
+        "took": 23,
+        "_shards": {
+          "total": 6,
+          "successful": 6,
+          "skipped": 0,
+          "failed": 0
+        }
+      }
+    }
+  }
+}
+```
+These requests don’t include a project prefix. The `my-index` index is searched in the origin project and in the linked project.
+
+### Qualified search expressions
+
+Search limited to the `origin` project:
+
+::::{tab-set}
+
+:::{tab-item} _search
+```console
+GET _origin:my-index/_search
+```
+:::
+
+:::{tab-item} ES|QL
+```console
+POST /_query
+{
+  "query": "FROM _origin:my-index | LIMIT 10"
+}
+```
+:::
+
+::::
+
+The requests include the `_origin` prefix. Only the origin project is searched.
+
+Search across all projects using a wildcard expression:
+
+::::{tab-set}
+
+:::{tab-item} _search
+```console
+GET *:my-index/_search
+```
+:::
+
+:::{tab-item} ES|QL
+```console
+POST /_query
+{
+  "query": "FROM *:my-index | LIMIT 10"
+}
+```
+:::
+
+::::
+
+The requests explicitly target all projects using the `*:` prefix.
+The `my-index` index is evaluated separately in each project.
+The index `my-index` must exist in every project, otherwise [the search returns an error](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions).
+
+### Project routing examples
+
+In the following example, there is an origin project and a linked project. The origin project contains one index, `my-index`. The linked project contains two indices: `my-index` and `logs`.
+
+The following request searches all indices on projects whose alias starts with "lin".
+
+::::{tab-set}
+
+:::{tab-item} _search
+```console
+GET /*/_search
+{
+  "project_routing":"_alias:lin*",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+:::
+
+:::{tab-item} ES|QL
+```console
+GET /_query
+{
+  "query": "SET project_routing=\"_alias:lin*\"; FROM * METADATA _index",
+  "include_execution_metadata":true
+}
+```
+:::
+
+::::
+
+The request will return a response similar to this:
+
+::::{tab-set}
+
+:::{tab-item} _search
+```console
+{
+  "took": 60,
+  "timed_out": false,
+  "_shards": {
+    "total": 12,
+    "successful": 12,
+    "skipped": 0,
+    "failed": 0
+  },
+  "_clusters": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "running": 0,
+    "partial": 0,
+    "failed": 0,
+    "details": {
+      "linked_project": {
+        "status": "successful",
+        "indices": "*",
+        "took": 11,
+        "timed_out": false,
+        "_shards": {
+          "total": 12,
+          "successful": 12,
+          "skipped": 0,
+          "failed": 0
+        }
+      }
+    }
+  },
+  "hits": {
+    "total": {
+      "value": 2,
+      "relation": "eq"
+    },
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "linked_project:my-index",
+        "_id": "ytm_v5wB1c8L_6vBSeM6",
+        "_score": 1.0,
+        "_source": {
+          "project": "linked"
+        }
+      },
+      {
+        "_index": "linked_project:logs",
+        "_id": "y9m_v5wB1c8L_6vBW-Mu",
+        "_score": 1.0,
+        "_source": {
+          "project": "linked-logs-data"
+        }
+      }
+    ]
+  }
+}
+```
+:::
+
+:::{tab-item} ES|QL
+```console
+{
+  "took": 54,
+  "is_partial": false,
+  "completion_time_in_millis": 1772740419771,
+  "documents_found": 2,
+  "values_loaded": 6,
+  "start_time_in_millis": 1772740419717,
+  "expiration_time_in_millis": 1773172419734,
+  "columns": [
+    {
+      "name": "project",
+      "type": "text"
+    },
+    {
+      "name": "project.keyword",
+      "type": "keyword"
+    },
+    {
+      "name": "_index",
+      "type": "keyword"
+    }
+  ],
+  "values": [
+    [
+      "linked-logs-data",
+      "linked-logs-data",
+      "linked_project:logs"
+    ],
+    [
+      "linked",
+      "linked",
+      "linked_project:my-index"
+    ]
+  ],
+  "_clusters": {
+    "total": 1,
+    "successful": 1,
+    "running": 0,
+    "skipped": 0,
+    "partial": 0,
+    "failed": 0,
+    "details": {
+      "linked_project": {
+        "status": "successful",
+        "indices": "*",
+        "took": 35,
+        "_shards": {
+          "total": 12,
+          "successful": 12,
+          "skipped": 0,
+          "failed": 0
+        }
+      }
+    }
+  }
+}
+```
+:::
+
+::::
+
+#### Project routing with named project routing expressions
+
+First, create the named expression:
+
+```console
+PUT /_project_routing/origin-only
+{
+  "expression": "_alias:_origin"
+}
+```
+
+Then, query it:
+
+::::{tab-set}
+
+:::{tab-item} _search
+```console
+GET /my*/_search
+{
+  "project_routing": "@origin-only",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+:::
+
+:::{tab-item} ES|QL
+```console
+GET /_query
+{
+  "project_routing": "@origin-only",
+  "query": "FROM *",
+  "nclude_execution_metadata": true,
+}
+```
+:::
+
+::::
+
+#### Project routing and qualified expressions
+
+In the first example, both the project routing rule and the qualified index expression limit the search to the linked project:
+
+```console
+GET /linked_project:my*/_search
+{
+  "project_routing": "_alias:lin*",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+In the next example, the project routing rule and the qualified index expression target different projects which causes a conflict:
+
+```console
+GET /_origin:*,linked_project:*/_search
+{
+  "project_routing": "@origin-only",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+This request returns an error:
+
+```console
+{
+  "error": {
+    "root_cause": [
+      {
+        "type": "no_matching_project_exception",
+        "reason": "No such project: [linked_project] with project routing [@origin-only]"
+      }
+    ],
+    "type": "no_matching_project_exception",
+    "reason": "No such project: [linked_project] with project routing [@origin-only]"
+  },
+  "status": 404
+}
+```
