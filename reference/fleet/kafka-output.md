@@ -208,7 +208,7 @@ Use these options to set the Kafka topic for each {{agent}} event.
 
 ## Partition settings [output-kafka-partition-settings]
 
-The number of partitions created is set automatically by the Kafka broker based on the list of topics. Records are then published to partitions either randomly, in round-robin order, or according to a calculated hash.
+The number of partitions created is set automatically by the Kafka broker based on the list of topics. Records are then published to partitions either randomly, in round-robin order, or according to a calculated hash. Default is hash partitioner
 
 In the following example, after each event is published to a partition, the partitioner selects the next partition in round-robin fashion.
 
