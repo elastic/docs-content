@@ -262,7 +262,7 @@ You can specify these various other options in the `kafka-output` section of the
 `broker_timeout` $$$kafka-broker_timeout-setting$$$
 :   The maximum length of time a Kafka broker waits for the required number of ACKs before timing out (see the `required_acks` setting further in).
 
-    **Default:** `30` (seconds)
+    **Default:** `10` (seconds)
 
 `bulk_flush_frequency` $$$kafka-bulk_flush_frequency-setting$$$
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
