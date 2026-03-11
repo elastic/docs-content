@@ -1,20 +1,20 @@
 ---
-navigation_title: Agent skills
+navigation_title: AI agent skills
 description: Install and use official Elastic agent skills to help AI coding agents work with the Elastic stack more accurately and efficiently.
 applies_to:
   stack: ga
   serverless: ga
 ---
 
-# Agent skills for Elastic [elastic-agent-skills]
+# AI agent skills for Elastic [elastic-agent-skills]
 
 The [elastic/agent-skills](https://github.com/elastic/agent-skills) repository provides official, open-source skill packages that help AI coding agents work with the Elastic stack. Built on the [Agent Skills](https://agentskills.io/) open standard, they give agents like Claude Code, Cursor, GitHub Copilot, and others the specialized knowledge they need to perform Elastic-specific tasks more accurately and efficiently.
 
 Skills cover areas such as interacting with {{es}} APIs, building {{kib}} dashboards, configuring {{fleet}} policies, and working with {{observability}} and {{elastic-sec}} workflows.
 
-## What are agent skills?
+## What are AI agent skills?
 
-Agent skills are a lightweight, open format for extending AI agent capabilities with specialized knowledge. Each skill is a self-contained folder with a `SKILL.md` file containing metadata and instructions. 
+AI agent skills are a lightweight, open format for extending AI agent capabilities with specialized knowledge. Each skill is a self-contained folder with a `SKILL.md` file containing metadata and instructions. 
 
 Agents discover available skills at startup by reading their `name` and `description` fields, then load full instructions on demand when a matching task is detected.
 
@@ -33,7 +33,7 @@ Skills in the [elastic/agent-skills](https://github.com/elastic/agent-skills) re
 
 ## Installation
 
-Follow the instructions below to install agent skills.
+Follow the instructions below to install AI agent skills.
 
 ### npx (recommended)
 
