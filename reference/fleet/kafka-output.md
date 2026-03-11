@@ -188,7 +188,7 @@ Use these options to set the Kafka topic for each {{agent}} event.
     You can also set a custom field. This is useful if you need to construct a more complex or structured topic name. For example, this configuration uses the `fields.kafka_topic` custom field to set the topic for each event:
 
     ```yaml
-    topic: '%{[fields.log_topic]}'
+    topic: '%{[fields.kafka_topic]}'
     ```
     
     To set a dynamic topic value for outputting {{agent}} data to Kafka, you can add the [`add_fields` processor](/reference/fleet/add_fields-processor.md) to the input configuration settings of your standalone {{agent}}.

@@ -150,7 +150,7 @@ Use this option to set the Kafka topic for each {{agent}} event.
     - add_fields:
         target: ''
         fields: 
-          kafka_topic: '${data_stream.type}-${data_stream.dataset}-${data_stream.namespace}' <1>
+          kafka_topic: '%{[data_stream.type]}-%{[data_stream.dataset]}-%{[data_stream.namespace]}' <1>
     ```
     1. Depending on the values of the data stream fields, this generates topic names such as `logs-nginx.access-production` or `metrics-system.cpu-staging` as the value of the custom `kafka_topic` field.
 
