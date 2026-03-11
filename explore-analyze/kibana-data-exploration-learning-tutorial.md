@@ -350,11 +350,11 @@ If you know which dimensions your viewers will want to filter by, you can add [c
 
 :::::{step} Arrange and save
 
-Drag panels by their header to reposition them, and drag the corner handles to resize them. A well-organized layout helps readers find what matters quickly. For example:
+Drag panels by their header to reposition them, and drag the corner handles to resize them. A well-organized layout helps readers find what matters quickly. Aim for a compact, dense layout so the most important information is visible without scrolling:
 
-- **Top row:** place metric panels side by side for key numbers at a glance.
-- **Middle row:** arrange time series charts (line charts) next to each other so trends are easy to compare.
-- **Bottom row:** use wider panels for bar charts or tables that benefit from more horizontal space.
+- **Top row:** place metric panels side by side for key numbers at a glance. Keep them short, about 5 grid rows, so they don't dominate the page.
+- **Middle rows:** arrange time series charts (line charts) and bar charts below the metrics. A moderate height (roughly 10–12 grid rows) gives charts enough room to be readable without wasting space.
+- **Bottom row:** use wider panels for tables that benefit from more horizontal space and can afford a taller height.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png
 :alt: A polished dashboard with metrics at the top, time series charts in the middle, and a bar chart and table at the bottom
