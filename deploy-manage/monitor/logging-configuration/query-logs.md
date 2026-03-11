@@ -6,7 +6,7 @@ self: ga 9.4
 
 ---
 
-# Full query logging [logging]
+# Query logging [logging]
 
 {{es}} allows to log every querying operation performed on the cluster. This supports endpoints like `_search`, `_msearch`, [{{esql}}](/explore-analyze/discover/try-esql.md), [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv), [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) and other APIs that search or query {{es}} indices.
 
