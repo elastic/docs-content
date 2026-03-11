@@ -31,7 +31,7 @@ To learn about role-based access control, check out [](/deploy-manage/users-role
 
 When you create vectors (or _vectorize_ your data), you convert complex and nuanced documents into multidimensional numerical representations.
 You can choose from many different vector embedding models. Some are extremely hardware efficient and can be run with less computational power. Others have a greater understanding of the context, can answer questions, and lead a threaded conversation.
-The examples in this guide use the Learned Sparse Encoder ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) model, which provides great relevance across domains without the need for additional fine tuning.
+The examples in this guide use the Elastic Learned Sparse Encoder ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) model, which provides great relevance across domains without the need for additional fine tuning.
 
 The way that you store vectors has a significant impact on the performance and accuracy of search results.
 They must be stored in specialized data structures designed to ensure efficient similarity search and speedy vector distance calculations.
