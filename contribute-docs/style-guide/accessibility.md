@@ -205,6 +205,7 @@ Here are a few examples of what to avoid:
 * Regional expressions (for example, _G'day!_, _Y'all_, or _eh_)
 * Sports expressions (for example, _touched base_ or _threw a curve ball_)
 * Pop culture references (for example, _Elvis has left the building_ or _Same bat-time, same bat-channel_)
+* Animal-related expressions (for example, _guinea pig_ or _can of worms_)
 
 We're all pretty good at avoiding these, but there's one problematic type of expression that shows up frequently in docs reviews.
 Latin terms and abbreviations are a common source of confusion, particularly for people whose first language does not have Latin roots.
