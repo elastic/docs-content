@@ -36,6 +36,7 @@ Every {{esql}} query starts with a [source command](elasticsearch://reference/qu
 
 - [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) retrieves data from data streams, indices, or aliases.
 - [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) is optimized for querying time series data streams.
+- {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` [`PROMQL`](#esql-kibana-promql) executes [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) expressions against time series data.
 
 You can then chain one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-processing-commands) using pipe (`|`) characters. For example, [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) filters rows and [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) aggregates data:
 
@@ -140,6 +141,44 @@ The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/
 :::
 
 For detailed steps to create an enrich policy from the editor, refer to [Enrich your data](elasticsearch://reference/query-languages/esql/esql-enrich-data.md).
+
+
+#### PROMQL command [esql-kibana-promql]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+The `PROMQL` source command lets you run [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) (Prometheus Query Language) expressions against time series data directly from the {{esql}} editor. It supports PromQL syntax highlighting, autocomplete, and validation.
+
+**Syntax:**
+
+```
+PROMQL [index=<pattern>] [step=<duration>|buckets=<integer>] [start=<time>] [end=<time>] [scrape_interval=<duration>] [column=](<query>)
+```
+
+**Parameters:**
+
+| Parameter | Description |
+|-----------|-------------|
+| `index` | Index pattern to query. Defaults to `*`. |
+| `step` | Query resolution step (for example, `1m`, `5m`, `1h`). Mutually exclusive with `buckets`. |
+| `buckets` | Number of time buckets. Mutually exclusive with `step`. |
+| `start` | Range query start time. Requires `end`. Supports `?_tstart` for the time picker. |
+| `end` | Range query end time. Requires `start`. Supports `?_tend` for the time picker. |
+| `scrape_interval` | Scrape interval for implicit range selector window. |
+
+**Examples:**
+
+```esql
+PROMQL index=metrics step=1m start=?_tstart end=?_tend (sum by (instance) (bytes))
+```
+
+```esql
+PROMQL index=metrics buckets=6 start=?_tstart end=?_tend (avg(cpu_usage))
+```
+
+You can pipe the results of a `PROMQL` command into any {{esql}} processing command. Lens suggests a line chart for `PROMQL` queries when the x-axis uses a date column.
 
 
 ## Filter by time [esql-kibana-time-filter]
