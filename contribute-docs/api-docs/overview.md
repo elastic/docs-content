@@ -17,7 +17,6 @@ The API docs use a different system to the main Elastic docs. Refer to [Contribu
 While the implementation details [vary significantly across teams](./workflows.md), at a high level:
 
 - We use [OpenAPI](https://spec.openapis.org/oas/latest.html) files to generate REST API documentation
-- Our API docs are hosted by [Bump.sh](https://bump.sh/)
 - The published docs live at [elastic.co/docs/api/](https://www.elastic.co/docs/api/)
 
 ## Context and evolution
@@ -28,8 +27,8 @@ This evolution seeks to elevate documentation to being a top-level citizen in th
 
 | Era | Developer tasks | Approach | Publication |
 | --- | --- | --- | --- |
-| **Yesterday (8.x and earlier)** | Code + spec + manual API docs | Manual maintenance | - Hand-written in Asciidoc <br> - Published at [elastic.co/guide](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/rest-apis.html) |
-| **Today (9.0+)** | Code + spec | Docs generated from spec |- Hosted by [Bump.sh](https://www.elastic.co/docs/api/)<br> - Different UX to other [elastic.co/docs](https://www.elastic.co/docs) pages
+| **Yesterday (8.x and earlier)** | Code + spec + manual API docs | Manual maintenance | - Published in multiple guides at [elastic.co/guide](https://www.elastic.co/guide/index.html) |
+| **Today (9.0+)** | Code + spec | Docs generated from spec |- Published at [elastic.co/docs/api/](https://www.elastic.co/docs/api/)<br> |
 
 ## High-level process
 
@@ -46,7 +45,7 @@ All Elastic API docs follow this general pattern:
     - Manual YAML/JSON specifications (Logstash)
     - Generated specifications from service code (Cloud teams)
 2. **OpenAPI documents** are either generated from source files or edited manually. This is the common intermediate format regardless of origin.
-3. **Published documentation** lives at [elastic.co/docs/api/](https://www.elastic.co/docs/api/) and is hosted by Bump.sh.
+3. **Published documentation** lives at [elastic.co/docs/api/](https://www.elastic.co/docs/api/).
 
 ## Example: Elasticsearch
 
@@ -60,10 +59,6 @@ The generated Schema JSON and OpenAPI documents feed into client libraries (and 
 :alt: API docs generation pipeline diagram, showing the flow from TypeScript specifications to JSON schema, OpenAPI transformation, and HTML publishing.
 :width: 750px
 :align: center
-:::
-
-:::{important}
-The Dev Tools and Elasticsearch teams are working together to eventually merge the two specifications into the `elasticsearch` repo.
 :::
 
 ### Input sources
