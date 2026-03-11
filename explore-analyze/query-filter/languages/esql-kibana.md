@@ -215,13 +215,13 @@ For exploratory analysis on large datasets, you can enable approximate query exe
 | Value | Behavior |
 |-------|----------|
 | `false` | Default. Returns exact results. |
-| `true` | Enables approximate results using server defaults: 100,000 sampled rows for queries without grouping, 1,000,000 for queries with a `BY` clause. |
+| `true` | Enables approximate results using server defaults: 100,000 sampled rows for queries without grouping, 1,000,000 for queries with a `BY` clause, and a 90% confidence level. |
 | `{ "num_rows": <integer>, "confidence_level": <double> }` | Enables approximate results with explicit parameters. |
 
 When using the map form, the following parameters are available:
 
 - `num_rows`: Number of rows to sample. Must be at least `10000`. The default depends on whether the query uses grouping (100,000 without, 1,000,000 with). Suggested values: `100000` (100K), `500000` (500K), `1000000` (1M).
-- `confidence_level`: Confidence level for the confidence intervals returned alongside approximate results. Must be between `0.5` and `0.95`. Suggested values: `0.95` (high precision, 95%), `0.9` (standard, 90%), `0.5` (exploratory, 50%).
+- `confidence_level`: Confidence level for the confidence intervals returned alongside approximate results. Defaults to `0.9` (90%). Must be between `0.5` and `0.95`. Suggested values: `0.95` (high precision), `0.9` (standard, default), `0.5` (exploratory).
 
 For example, to enable approximation with server defaults:
 
