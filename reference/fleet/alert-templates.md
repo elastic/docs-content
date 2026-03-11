@@ -23,7 +23,8 @@ Refer to [Elastic subscriptions](https://www.elastic.co/subscriptions) for more 
 In {{kib}}, you can enable out-of-the-box rules pre-configured with reasonable defaults to provide immediate value for managing agents.
 You can use [{{esql}}](/explore-analyze/discover/try-esql.md) to author conditions for each rule.
 
-You can find these rules in **Stack Management** > **Alerts and Insights** > **Rules**.
+Search for **Alerts and Insights** to find available **Rules**. 
+If you don't see out-of-the-box alert rules, check your [Elastic subscriptions](https://www.elastic.co/subscription). 
 
 ### Available alert rules [available-alert-rules]
 
@@ -36,7 +37,7 @@ You can find these rules in **Stack Management** > **Alerts and Insights** > **R
 | [Elastic Agent] High pipeline queue | Checks percentage of pipeline queue. Rows are distinguished by agent ID and component ID. <br> - Condition: Alert on max of `beat.stats.libbeat.pipeline.queue.filled.pct` exceeding 90%  <br>- Default: Disabled|
 | [Elastic Agent] Offline status | Checks for any agents that are offline. <br> - Condition: Alert when agent has been offline for longer than the time set in `inactivity timeout` <br>- Default: Disabled|
 | [Elastic Agent] Output errors | Checks errors per minute from an agent component. Rows are distinguished by agent ID and component ID. <br> - Condition: Alert on 6 or more errors per minute  <br>- Default: Disabled|
-| [Elastic Agent] Unenrolled status | Checks for agents that have been manually unenrolled. <br> - Condition: Alert on agent that has been removed from Fleet and  had its API keys revoked <br>- Default: Disabled|
+| [Elastic Agent] Unenrolled status | Checks for agents that have been manually unenrolled. <br> - Condition: Alert on agent that has been removed from {{fleet}} and whose API keys have been revoked <br>- Default: Disabled|
 | [Elastic Agent] Unhealthy status | Checks agent status. An `unhealthy` status can indicate errors or degraded functionality of the agent. <br> - Condition: Alert on `unhealthy` status <br>- Default: Disabled|
 | [Elastic Agent] Uninstalled status | Checks for agents that have been uninstalled. <br> - Condition: Alert when agents have been uninstalled and removed from the host system <br>- Default: Disabled|
 

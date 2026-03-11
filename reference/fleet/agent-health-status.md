@@ -50,7 +50,9 @@ No. The health monitoring of {{agent}} and its inputs, as reported in {{fleet}},
 
 ::::{applies-switch}
 :::{applies-item} { "stack": "ga 9.2+"}
-Yes. When you install or upgrade {{agent}}, new alert rules are created automatically. You can configure and customize out-of-the-box alerts to get them up and running quickly. 
+Yes, if your [Elastic subscription](https://www.elastic.co/subscriptions) includes the out-of-the-box alerts feature, and the alerts are enabled. 
+
+New alert rules are created automatically when you install or upgrade {{agent}}. You can configure and customize out-of-the-box alerts to get them up and running quickly. 
 Check out [Elastic Agent out-of-the-box alert rules](/reference/fleet/alert-templates.md) for details.
 :::
 :::{applies-item} { "stack": "ga 9.0-9.1" }

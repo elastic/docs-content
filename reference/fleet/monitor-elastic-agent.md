@@ -239,12 +239,12 @@ You may want to store all of the health and status data about your {{agents}} in
 
 To do so, follow the steps in [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md). After the new output is configured, follow the steps to update the {{agent}} policy and make sure that the **Output for agent monitoring** setting is enabled. {{agent}} monitoring data will use the remote {{es}} output that you configured.
 
-## {{agent}} out-of-the-box alert rules
+## {{agent}} out-of-the-box alert rules [agent-out-of-the-box-alert-rules]
 ```{applies_to}
 stack: ga 9.2+
 ```
 
-{{agent}} provides out-of-the-box alert rules to simplify monitoring the health of agents.
+{{agent}} provides [out-of-the-box alert rules](/reference/fleet/alert-templates.md) to simplify monitoring the health of agents.
 Built-in alerts are the best approach for many monitoring use cases, and offer a quicker and easier alternative to manual configuration required in earlier versions.  
 
 ## Enable alerts and ML jobs based on {{fleet}} and {{agent}} status  [fleet-alerting]
