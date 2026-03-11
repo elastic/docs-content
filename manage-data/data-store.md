@@ -20,8 +20,8 @@ This section describes the {{es}} data storage model, from indices as the founda
 Learn about the core storage concepts in {{es}}.
 
 * [](/manage-data/data-store/index-basics.md): Learn about index fundamentals, including index naming and aliases, document structure, metadata fields, and mappings.
-* [](/manage-data/data-store/data-streams.md): Learn when to use data streams for timestamped and append-only time series data, like logs, events, or metrics. You work with one stream name while {{es}} manages multiple backing indices behind the scenes.
 * [](/manage-data/data-store/near-real-time-search.md): Understand how {{es}} makes newly indexed data searchable within seconds of indexing.
+* [](/manage-data/data-store/data-streams.md): Learn when to use data streams for timestamped and append-only time series data, like logs, events, or metrics. You work with one stream name while {{es}} manages multiple backing indices behind the scenes.
 
 ## Configure how data is stored
 

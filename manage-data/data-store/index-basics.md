@@ -11,9 +11,9 @@ products:
 
 # Index basics
 
-An _index_ is the fundamental unit of storage in {{es}}: a collection of documents identified by a unique name or an [alias](/manage-data/data-store/aliases.md). This name is used to target the index in search requests and other operations.
+An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. To store a document, you add it to a specific index. To search, you target one or more indices and {{es}} searches all data within them and returns any matching documents. An index is identified by a unique name or an [alias](/manage-data/data-store/aliases.md).
 
-This page explains the core parts of an index (_documents_, _metadata fields_, and _mappings_) and highlights common design decisions for working with indices.
+This page explains the core parts of an index (_documents_, _metadata fields_, and _mappings_), describes how {{es}} physically stores index data using _shards_, and highlights common design decisions.
 
 :::::{tip}
 A closely related concept is a [data stream](/manage-data/data-store/data-streams.md), which is optimized for append-only timestamped data and backed by hidden, auto-generated indices.
@@ -70,6 +70,26 @@ An indexed document includes both source data and metadata. [Metadata fields](el
 
 Each index has a [mapping](/manage-data/data-store/mapping.md) that defines field types and indexing behavior. Mappings determine how fields are stored, queried, and aggregated.
 
+## How an index stores data
+
+When you create an index, {{es}} doesn't store all its documents in a single location. Instead, it divides the index into one or more _shards_ and distributes those shards across the nodes in your cluster. The primary purpose of shards is to allow an index to scale beyond what a single server could handle. The right number of shards depends on your data volume, query patterns, and cluster topology — there is no single correct answer.
+
+You don't interact with shards directly. When you index or search documents, you target the index by name and {{es}} routes the operation to the appropriate shards. When you search an index, all of its shards are searched and the matching documents are returned.
+
+Each shard is a self-contained instance of [Apache Lucene](https://lucene.apache.org/), the search library that powers {{es}}. A shard holds a subset of the index's documents and can independently handle indexing and search operations. Inside each shard, data is organized into immutable _segments_ that are written as documents are indexed. To learn how segments affect search availability, refer to [Near real-time search](/manage-data/data-store/near-real-time-search.md).
+
+There are two types of shards:
+
+* **Primary shards**: Every document belongs to exactly one primary shard. The number of primary shards is set when the index is created.
+* **Replica shards**: Copies of primary shards that provide redundancy and serve read requests. You can adjust the number of replicas at any time.
+
+By distributing shards across multiple nodes, {{es}} can scale horizontally and continue operating even when individual nodes fail. For a detailed explanation of this distributed model, refer to [Clusters, nodes, and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
+
+:::{note}
+:applies_to: {"serverless": "ga"}
+In {{serverless-full}}, shards, replicas, and nodes are fully managed for you. The platform automatically scales resources based on your workload, so you don't need to configure or monitor these details.
+:::
+
 ## Common index design decisions
 
 When working with indices, you typically make decisions that focus on:
@@ -77,6 +97,7 @@ When working with indices, you typically make decisions that focus on:
 * **Naming and aliases**: Use clear naming patterns for your indices and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
 * **Mapping strategy**: Use dynamic mapping for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping.md) for production use cases where field control and query behavior matter.
 * **Index or data stream**: Use a regular index when you need frequent updates or deletes. Use a [data stream](/manage-data/data-store/data-streams.md) for append-only timestamped data such as logs, events, and metrics.
+* **Shard sizing**: For production workloads, the number and size of shards affect query speed and cluster stability. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for guidelines.
 
 ## Learn more
 
