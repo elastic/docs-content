@@ -17,13 +17,13 @@ The following query types are supported:
 - `eql`: Logs every query operation performed on the cluster using [EQL](/explore-analyze/query-filter/languages/eql.md).
 - `sql`: Logs every query operation performed on the cluster using [SQL](/explore-analyze/query-filter/languages/sql.md).
 
-By default, the logging is turned off. To enable the logging, set the `elasticsearch.actionlog.enabled` property to `true` in the `elasticsearch.yml` configuration file or using the [settings API]({{es-apis}}operation/operation-cluster-put-settings):
+By default, the logging is turned off. To enable the logging, set the `elasticsearch.activitylog.enabled` property to `true` in the `elasticsearch.yml` configuration file or using the [settings API]({{es-apis}}operation/operation-cluster-put-settings):
 
 ```yaml
-elasticsearch.actionlog.enabled: true
+elasticsearch.activitylog.enabled: true
 ```
 
-By default, search (`dsl`) queries that query only system indices are not logged. To enable logging of such queries, use the `elasticsearch.actionlog.search.include.system_indices` setting described below.
+By default, search (`dsl`) queries that query only system indices are not logged. To enable logging of such queries, use the `elasticsearch.activitylog.search.include.system_indices` setting described below.
 
 ## Configuring query logging
 
