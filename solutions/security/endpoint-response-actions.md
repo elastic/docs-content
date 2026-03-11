@@ -165,8 +165,8 @@ Required privilege (in {{stack}}) or custom role privilege (in {{serverless-shor
 Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
 
 ::::{note}
-:applies_to: {"stack": "removed 9.3", "serverless": "removed"}
-The maximum file size that `get-file` can retrieve is `104857600` bytes, or 100 MB.
+:applies_to: stack: ga 9.0-9.2
+The maximum file size that `get-file` can retrieve is `104857600` bytes, or 100 MB. This limitation doesn't apply to {{serverless-short}} projects.
 ::::
 
 ::::{tip}
