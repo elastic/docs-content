@@ -11,7 +11,7 @@ products:
 
 Elastic users can take advantage of the FedRAMP authorized Cloud offerings to host sensitive data in a secure environment that meets their regulatory and compliance requirements.
 
-{{fedramp-mod}} deployments are available to all users who have a Platinum or Enterprise license. {{fedramp-high}} deployments are available to United States federal, state, and local agencies as well as tribal groups that have an Enterprise license.
+{{fedramp-mod}} deployments are available to all users who have a Platinum or Enterprise subscription level. {{fedramp-high}} deployments are available to United States federal, state, and local agencies as well as tribal groups that have an Enterprise subscription level.
 
 All FedRAMP deployments are hosted on AWS GovCloud (U.S.).
 
@@ -61,6 +61,8 @@ There are some limitations to note for using the FedRAMP authorized Cloud offeri
 
 ### TLS
 
+**Applies to:** {{fedramp-mod}}, {{fedramp-high}}
+
 % Copied from https://www.elastic.co/docs/deploy-manage/security/fips-ingest#ingest-limitations-tls
 % I'll single-source this if the finalized content is identical to what we have in the security section.
 
@@ -74,13 +76,17 @@ Only FIPS 140-2 compliant TLS protocols, ciphers, and curve types are allowed to
 Support for encrypted private keys is not available, as the cryptographic modules used for decrypting password protected keys are not FIPS validated. If an output or any other component with an SSL key that is password protected is configured, the components will fail to load the key. When running in FIPS mode, you must provide non-encrypted keys.
 Be sure to enforce security in your FIPS environments through other means, such as strict file permissions and access controls on the key file itself, for example.
 
-### Custom plugins
-
-Custom plugins are currently not supported in {{fedramp-high}} deployments. 
-
 ### {{elastic-defend}}
 
+**Applies to:** {{fedramp-mod}}, {{fedramp-high}}
+
 The {{elastic-defend}} integration that runs on hosts being protected has various features that require data to be sent directly to Elastic-managed cloud services. The data sent is not sourced from within the secure enclave on the host. However, you may still want to adjust the configuration for your {{fedramp-mod}} and {{fedramp-high}} environments. You can use the [advanced setting](/reference/security/defend-advanced-settings.md) `[linux,mac,windows].advanced.allow_cloud_features` to activate or deactivate each {{elastic-defend}} feature individually.
+
+### Custom plugins
+
+**Applies to:** {{fedramp-high}}
+
+Custom plugins are currently not supported in {{fedramp-high}} deployments. 
 
 ## FedRAMP FAQ [ec-fedramp-faq]
 
@@ -92,8 +98,8 @@ Find answers here to some common questions about using the FedRAMP authorized Cl
 $$$who-can-use-fedramp$$$**Who can use FedRAMP?**
 :   The FedRAMP authorized Cloud offerings are intended for users who require their {{ecloud}} services to meet special security and compliance requirements:
 
-    - {{fedramp-mod}} is available to all users having a Platinum or Enterprise license.
-    - {{fedramp-high}} is available to United States federal, state, and local agencies as well as tribal groups. An Enterprise license is required.
+    - {{fedramp-mod}} is available to all users having a Platinum or Enterprise subscription level.
+    - {{fedramp-high}} is available to United States federal, state, and local agencies as well as tribal groups. An Enterprise subscription level is required.
     
 $$$where-is-fedramp-hosted$$$**Where is FedRAMP hosted?**
 
