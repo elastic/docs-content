@@ -135,7 +135,10 @@ When working with indices, you typically make decisions that focus on:
 
 ## Next steps
 
-After learning index fundamentals, choose the management path that fits your workflow:
+Now that you understand index fundamentals, explore these pages for hands-on tasks:
 
-* [](/manage-data/data-store/perform-index-operations.md): Navigate the **Index Management** experience in {{kib}} and run common index operations.
-* [](/manage-data/data-store/manage-data-from-the-command-line.md): Manage indices and documents with the {{es}} REST API.
+* [](/manage-data/data-store/perform-index-operations.md): View, investigate, and perform operations on indices, data streams, and enrich policies in {{kib}}.
+* [](/manage-data/data-store/templates.md): Create and manage index templates and component templates.
+* [](/manage-data/data-store/data-streams/manage-data-stream.md): Create, monitor, and manage data streams and their backing indices.
+* [](/manage-data/ingest/transform-enrich/data-enrichment.md): Set up enrich policies to add data from existing indices to incoming documents.
+* [](/manage-data/data-store/manage-data-from-the-command-line.md): Index, update, retrieve, search, and delete documents using the {{es}} REST API.
