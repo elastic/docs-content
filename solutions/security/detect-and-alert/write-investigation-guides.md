@@ -24,7 +24,7 @@ You author an investigation guide in the **Investigation guide** Markdown editor
 :::
 
 ::::{note}
-You can only author investigation guides for custom rules. Elastic prebuilt rules include their own investigation guides that cannot be edited. To customize a prebuilt rule's guide, duplicate the rule first, then edit the duplicate.
+With an Enterprise subscription on {{stack}} or Security Analytics Complete on {{serverless-short}}, you can edit investigation guides for prebuilt rules directly. Otherwise, duplicate the prebuilt rule first, then edit the duplicate's investigation guide.
 ::::
 
 ## Supported Markdown syntax [ig-markdown-syntax]
@@ -76,6 +76,10 @@ Effective investigation guides share several characteristics:
 ## Timeline query buttons [add-ig-actions-rule]
 
 You can embed interactive query buttons that open pre-populated [Timeline](/solutions/security/investigate/timeline.md) investigations directly from an alert. Each button runs a query using alert field values and hard-coded literals, and displays the number of matching event documents.
+
+::::{note}
+Timeline query buttons require a [Platinum subscription](https://www.elastic.co/pricing) or higher on {{stack}}, or Security Analytics Essentials or higher on {{serverless-short}}.
+::::
 
 :::{image} /solutions/images/security-ig-alert-flyout-invest-tab.png
 :alt: Alert details flyout with interactive investigation guide

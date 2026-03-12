@@ -38,7 +38,6 @@ Indicator match rules are **not** the best fit when:
 
 * You need to join data from multiple sources with transformations, aggregations, or complex filtering. Use an [{{esql}} rule](/solutions/security/detect-and-alert/esql.md) with [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) for more flexible cross-index queries.
 * You need to detect event sequences or ordering. Use an [EQL rule](/solutions/security/detect-and-alert/eql.md) instead.
-* Your indicators are in a flat file rather than an {{es}} index. First [upload them as a value list](#using-value-lists) or import them through the {{ml-app}} {{data-viz}}.
 
 ### Data requirements
 
@@ -179,7 +178,7 @@ This rule matches file creation events against threat intelligence by both SHA-2
 | `concurrent_searches` | `5` | The number of indicator searches to run in parallel. Increasing this value can speed up rule execution for large indicator indices at the cost of higher resource usage. |
 | `items_per_search` | `500` | The number of indicators to include in each search request. Larger batches reduce the total number of searches but increase per-search memory usage. |
 
-## Indicator match field reference [indicator-match-fields]
+## Indicator match rule field reference [indicator-match-fields]
 
 The following settings appear in the **Define rule** section when creating an indicator match rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
@@ -209,11 +208,12 @@ The following settings appear in the **Define rule** section when creating an in
 
     Multiple mapping entries can be combined with `AND` and `OR` clauses. Only single-value fields are supported.
 
+**Indicator prefix override** (optional)
+:   Define the location of indicator data within the structure of indicator documents. When the indicator match rule executes, it queries specified indicator indices and references this setting to locate fields with indicator data. This data is used to enrich indicator match alerts with metadata about matched threat indicators. The default value for this setting is `threat.indicator`.
+
+    ::::{important}
+    If your threat indicator data is at a different location, update this setting accordingly to ensure alert enrichment can still be performed.
+    ::::
+
 **Suppress alerts** (optional)
 :   Reduce repeated or duplicate alerts. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
-
-**Required fields** (optional)
-:   An informational list of fields the rule needs to function. This does not affect rule execution.
-
-**Related integrations** (optional)
-:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).

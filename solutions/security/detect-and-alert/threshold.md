@@ -139,7 +139,7 @@ This rule alerts when a source IP connects to many unique destination ports, ind
 | `threshold.cardinality` | `[{ "field": "destination.port", "value": 25 }]` | Adds a cardinality constraint. An alert fires only for source IPs that connect to at least 25 unique destination ports across 50 or more events. This filters out high-volume but benign repeated connections to the same port. |
 | `threshold.field` + `threshold.value` | `["source.ip"]` / `50` | Groups by source IP and requires at least 50 matching events. Both the event count and the cardinality constraint must be met for an alert to fire. |
 
-## Threshold field reference [threshold-fields]
+## Threshold rule field reference [threshold-fields]
 
 The following settings appear in the **Define rule** section when creating a threshold rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
@@ -150,7 +150,10 @@ The following settings appear in the **Define rule** section when creating a thr
 :   The KQL or Lucene query used to filter events before counting. Only matching documents are evaluated against the threshold.
 
 **Group by** (optional)
-:   One or more fields to group events by. Each unique combination of field values is evaluated independently against the threshold. Nested fields are not supported.
+:   One or more fields to group events by. Each unique combination of field values is evaluated independently against the threshold. 
+
+    {applies_to}`stack: ga 9.0-9.1` You can group by up to 3 fields. 
+    {applies_to}`stack: ga 9.2+` You can group by up to 5 fields. 
 
 **Threshold**
 :   The minimum number of matching events required to generate an alert. If **Group by** is defined, each group must independently meet this count.
@@ -160,9 +163,3 @@ The following settings appear in the **Define rule** section when creating a thr
 
 **Suppress alerts** (optional)
 :   Reduce repeated or duplicate alerts. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
-
-**Required fields** (optional)
-:   An informational list of fields the rule needs to function. This does not affect rule execution.
-
-**Related integrations** (optional)
-:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).

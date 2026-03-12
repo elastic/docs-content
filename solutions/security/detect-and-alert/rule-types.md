@@ -15,13 +15,13 @@ description: Learn when to use each detection rule type and access detailed guid
 
 | What you want to detect | Rule type |
 |---|---|
+| Aggregated, transformed, or computed conditions | [{{esql}}](/solutions/security/detect-and-alert/esql.md) |
 | A known field value, pattern, or boolean condition | [Custom query](/solutions/security/detect-and-alert/custom-query.md) |
 | An ordered sequence of events or a missing event | [Event correlation (EQL)](/solutions/security/detect-and-alert/eql.md) |
-| A field value count exceeding a boundary | [Threshold](/solutions/security/detect-and-alert/threshold.md) |
 | Events matching a known threat indicator | [Indicator match](/solutions/security/detect-and-alert/indicator-match.md) |
-| A field value appearing for the first time | [New terms](/solutions/security/detect-and-alert/new-terms.md) |
-| Aggregated, transformed, or computed conditions | [{{esql}}](/solutions/security/detect-and-alert/esql.md) |
+| A field value count exceeding a boundary | [Threshold](/solutions/security/detect-and-alert/threshold.md) |
 | Behavioral anomalies without a fixed pattern | [{{ml-cap}}](/solutions/security/detect-and-alert/machine-learning.md) |
+| A field value appearing for the first time | [New terms](/solutions/security/detect-and-alert/new-terms.md) |
 
 :::{tip}
 Still unsure which rule type fits your use case? Refer to [Choose the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) for a decision guide comparing all rule types.

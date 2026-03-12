@@ -16,6 +16,10 @@ description: View, edit, enable, duplicate, and manage detection rules from the 
 
 After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **Rules** page to manage them. The **Rules** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/turn-on-detections.md). To open the **Rules** page, find **Detection rules (SIEM)** in the navigation menu or by using the global search field.
 
+::::{note}
+The **Rules** page was renamed to **Detection rules (SIEM)** in versions 9.3.1, 9.2.6, and 8.19.12.
+::::
+
 The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
 
 ::::{important}

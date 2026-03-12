@@ -132,7 +132,7 @@ This rule detects a user logging in to a host they have never accessed during th
 | `new_terms_fields` | `["user.name", "host.name"]` | Monitors the combination of user and host. An alert fires when a `user.name` + `host.name` pair appears that has never been seen together in the history window, even if both values are individually known. Accepts up to 3 fields. |
 | `history_window_start` | `"now-14d"` | A 14-day window balances baseline coverage against resource usage. Shorter windows (1-7 days) may generate more false positives from infrequent but known combinations. |
 
-## New terms field reference [new-terms-fields]
+## New terms rule field reference [new-terms-fields]
 
 The following settings appear in the **Define rule** section when creating a new terms rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
@@ -150,9 +150,3 @@ The following settings appear in the **Define rule** section when creating a new
 
 **Suppress alerts by** (optional)
 :   Reduce repeated or duplicate alerts by grouping them on one or more fields. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
-
-**Required fields** (optional)
-:   An informational list of fields the rule needs to function. This does not affect rule execution.
-
-**Related integrations** (optional)
-:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).

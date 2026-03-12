@@ -79,7 +79,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 :   Select to create a building-block rule. By default, alerts generated from a building-block rule are not displayed in the UI. See [About building block rules](/solutions/security/detect-and-alert/about-building-block-rules.md) for more information.
 
 **Custom highlighted fields** (optional)
-:   Specify highlighted fields for unique alert investigation flows. You can select any fields that are available in the indices you selected for the rule's data source.
+:   Specify highlighted fields for unique alert investigation flows. These fields help analysts quickly access key information when triaging alerts, without needing to search through all available fields. You can select any fields that are available in the indices you selected for the rule's data source.
 
     After you create the rule, you can find all custom highlighted fields in the About section of the rule details page. If the rule has alerts, you can find custom highlighted fields in the [Highlighted fields](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) section of the alert details flyout.
 
@@ -92,13 +92,6 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 
 **False positive examples** (optional)
 :   List of common scenarios that might produce false-positive alerts.
-
-**Indicator prefix override** (indicator match rules only)
-:   Define the location of indicator data within the structure of indicator documents. When the indicator match rule executes, it queries specified indicator indices and references this setting to locate fields with indicator data. This data is used to enrich indicator match alerts with metadata about matched threat indicators. The default value for this setting is `threat.indicator`.
-
-    ::::{important}
-    If your threat indicator data is at a different location, update this setting accordingly to ensure alert enrichment can still be performed.
-    ::::
 
 **Investigation guide** (optional)
 :   Information for analysts investigating alerts created by the rule. You can also add action buttons to [run Osquery](/solutions/security/investigate/run-osquery-from-investigation-guides.md) or [start Timeline investigations](/solutions/security/detect-and-alert/write-investigation-guides.md) using alert data.
@@ -118,6 +111,16 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 
 **Reference URLs** (optional)
 :   References to information that is relevant to the rule. For example, links to background information.
+
+**Related integrations** (optional)
+:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).
+
+**Required fields** (optional)
+:   An informational list of fields the rule needs to function. This does not affect rule execution. It helps other users understand the rule's data dependencies.
+
+    ::::{note}
+    This setting is not available for {{ml}} rules.
+    ::::
 
 **Rule name override** (optional)
 :   Select a source event field to use as the rule name in the UI (Alerts table). This is useful for exposing, at a glance, more information about an alert. For example, if the rule generates alerts from Suricata, selecting `event.action` lets you see what action (Suricata category) caused the event directly in the Alerts table.
@@ -168,7 +171,7 @@ You can automate alert responses using either rule actions or [workflows](/explo
 
 | Use case | Rule actions | Workflows |
 |----------|--------------|-----------|
-| Send notifications for a specific rule | Yes | Yes |
+| Respond to alerts from a specific rule | Yes | Yes |
 | Apply the same response process to multiple rules | Configure separately on each rule | Define once, trigger from any rule |
 | Include complex conditional logic | Basic conditions only | Advanced conditions and branching |
 | Chain multiple actions together | Limited | Yes |
@@ -195,12 +198,6 @@ To set up a workflow as a rule action, refer to [Trigger a workflow from an aler
 
 **Notification message**
 :   Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available [alert notification variables](#rule-action-variables).
-
-::::{important}
-After you activate a rule, you can check if it is executing as expected using the [Monitoring tab](/troubleshoot/security/detection-rules.md) on the {{rules-ui}} page. If you see values in the `Gap` column, you can [Troubleshoot missing alerts](/troubleshoot/security/detection-rules.md#troubleshoot-signals).
-
-When a rule fails to execute, the {{security-app}} tries to rerun it at its next scheduled time.
-::::
 
 ## Response actions [rule-response-action]
 

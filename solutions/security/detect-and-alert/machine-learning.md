@@ -21,7 +21,7 @@ description: Create detection rules that trigger on machine learning anomaly det
 * A {{ml}} job is already active (or you plan to enable one) that models the relevant behavior.
 * You want **adaptive detection** that automatically adjusts to changing baselines without manual threshold tuning.
 
-{{ml}} rules are **not** the best fit when:
+{{ml-cap}} rules are **not** the best fit when:
 
 * You can define the exact pattern you're looking for. Use a [custom query rule](/solutions/security/detect-and-alert/custom-query.md) or [EQL rule](/solutions/security/detect-and-alert/eql.md) instead.
 * You need a count-based threshold. Use a [threshold rule](/solutions/security/detect-and-alert/threshold.md) instead.
@@ -39,15 +39,15 @@ For an overview of using {{ml}} with {{elastic-sec}}, refer to [{{anomaly-detect
 
 ### ML job settings interface
 
-{{ml-cap}} jobs created for {{elastic-sec}} detection rules are managed separately from jobs you create in the {{ml-app}} app:
+{{ml-cap}} jobs associated with {{elastic-sec}} prebuilt rules are managed in a dedicated interface:
 
 1. Find **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the settings menu in the upper-right corner of the page, then select **ML job settings**.
 
-From there you can view, start, and stop all {{ml}} jobs associated with your detection rules.
+From there you can view, start, and stop all {{ml}} jobs associated with prebuilt detection rules.
 
 ::::{note}
-{{ml-cap}} jobs created through {{elastic-sec}} detection rules do not appear in the standard {{ml-app}} job management UI. Use the {{rules-ui}} page settings menu to manage them.
+You can also create custom {{ml}} jobs in the {{ml-app}} app and reference them when creating custom {{ml}} rules. Custom jobs are managed in the {{ml-app}} app, not the {{rules-ui}} page settings menu.
 ::::
 
 ### Rule's details page
@@ -170,7 +170,7 @@ This rule monitors several login-related {{ml}} jobs and suppresses repeated ale
 | `alert_suppression.group_by` | `["user.name"]` | Groups anomaly alerts by user to reduce noise when the same user triggers multiple jobs or repeated anomalies. Only anomaly-result fields (including influencer fields configured in the {{ml}} job) are available for suppression. |
 | `alert_suppression.duration` | `{ "value": 1, "unit": "h" }` | Suppression window of 1 hour. Accepted units are `s` (seconds), `m` (minutes), and `h` (hours). |
 
-## {{ml-cap}} field reference [ml-fields]
+## {{ml-cap}} rule field reference [ml-fields]
 
 The following settings appear in the **Define rule** section when creating a {{ml}} rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
@@ -182,6 +182,3 @@ The following settings appear in the **Define rule** section when creating a {{m
 
 **Suppress alerts by** (optional)
 :   Reduce repeated or duplicate alerts by grouping them on one or more fields. Only anomaly fields are available for suppression because {{ml}} alerts do not contain source event fields. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
-
-**Related integrations** (optional)
-:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).

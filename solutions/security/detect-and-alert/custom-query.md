@@ -169,7 +169,7 @@ This rule detects failed login attempts and uses [alert suppression](/solutions/
 | `alert_suppression.duration` | `{ "value": 5, "unit": "m" }` | Sets the suppression window to 5 minutes. Accepted units are `s` (seconds), `m` (minutes), and `h` (hours). |
 | `alert_suppression.missing_fields_strategy` | `"suppress"` | When a suppression field is missing from a document, the event is still suppressed into a single alert. Use `"doNotSuppress"` to create individual alerts for documents missing the field. |
 
-## Custom query field reference [custom-query-fields]
+## Custom query rule field reference [custom-query-fields]
 
 The following settings appear in the **Define rule** section when creating a custom query rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
@@ -187,9 +187,3 @@ The following settings appear in the **Define rule** section when creating a cus
 
 **Suppress alerts by** (optional)
 :   Reduce alert fatigue by consolidating multiple instances of the same event into a single alert. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
-
-**Required fields** (optional)
-:   An informational list of fields the rule needs to function. This does not affect rule execution. It helps other users understand the rule's data dependencies.
-
-**Related integrations** (optional)
-:   Associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).

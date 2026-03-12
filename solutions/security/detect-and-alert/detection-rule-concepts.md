@@ -19,15 +19,15 @@ At a high level, a detection rule can be broken down into three parts:
 
 | Part | Purpose |
 |------|---------|
-| Query | Specifies the threat behavior or pattern to detect. The query searches your [data sources](#data-sources-concept) using syntax that varies by [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) (KQL, EQL, {{ml}} anomaly scores, or threat indicator matches). |
+| Query | Specifies the threat behavior or pattern to detect. The query searches your [data sources](#data-sources-concept) using syntax that varies by [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) (for example, {{esql}}, KQL, or EQL). |
 | Schedule | Controls how often the rule runs and how far back it searches. The interval you set determines both. For example, a rule with a 5-minute interval runs every 5 minutes and searches the last 5 minutes of data each time. An optional look-back setting extends the search window to help catch late-arriving events. |
-| Rule actions | Specifies what happens when the rule detects a match. You can [send notifications](#notifications-concept), create tickets, or trigger integrations with external systems. |
+| Rule actions | Specifies what happens when the rule detects a match. You can [send notifications](#notifications-concept), create tickets, or trigger actions on external systems. |
 
 These three parts work together when a rule runs:
 
 1. At each scheduled interval, the rule runs its query against your data sources.
 2. The rule creates alerts for events that match the query (unless [exceptions](#exceptions-concept) apply).
-3. Configured rule actions notify your team or trigger external integrations.
+3. Configured rule actions notify your team or trigger actions on external systems.
 
 Behind the scenes, rules execute using the [authorization](#rule-authorization-concept) of the user who last edited them.
 
@@ -38,7 +38,9 @@ A rule's query runs against the data sources you configure. When you create a ru
 * **Index patterns**: Wildcards like `logs-*` or `filebeat-*` that match one or more indices.
 * **{{data-source-cap}}s**: Named references to index patterns that can include [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) for computed values at query time.
 
-{{data-source-cap}}s are useful when you need consistent field definitions across multiple rules or want to add fields without reindexing data. For guidance on configuring rule data sources, refer to [Set rule data sources](/solutions/security/detect-and-alert/set-rule-data-sources.md).
+{{data-source-cap}}s are useful when you need consistent field definitions across multiple rules or want to add fields without reindexing data. {{esql}} rules do not support {{data-source}}s—specify source indices directly in the query's `FROM` command, using index patterns or [aliases](elasticsearch://reference/elasticsearch/index-settings/aliases.md).
+
+For guidance on configuring rule data sources, refer to [Set rule data sources](/solutions/security/detect-and-alert/set-rule-data-sources.md).
 
 ::::{note}
 To use {{data-source}}s in {{stack}}, you must have the [required permissions](/explore-analyze/find-and-organize/data-views.md#data-views-read-only-access). In {{serverless-short}}, you must have the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](../../../deploy-manage/users-roles/cloud-organization/user-roles.md) with the right privileges.
@@ -60,18 +62,30 @@ Exceptions can be scoped to a [single rule](/solutions/security/detect-and-alert
 
 ## Rule actions and notifications [notifications-concept]
 
-Rule actions are automated responses that a rule triggers when it generates alerts. Each action uses a connector to send data to an external service. Common action types include:
+Rule actions are automated responses that a rule triggers when it generates alerts. You can configure rule actions to run for every alert, at scheduled intervals, or only when alerts meet specific conditions (such as high severity). Rule actions are configured in the **Actions** tab of the rule settings. For details, refer to [Rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
+
+
+Rule actions fall into two categories: external and system actions.
+
+### External actions
+
+External actions use connectors to send data to external services:
 
 * Sending notifications (Slack messages, emails, PagerDuty alerts) to inform your team in real time
-
-   :::{note}
-   Notifications are a specific type of action focused on alerting people. They're how rules communicate that something needs attention.
-   :::
-
 * Creating tickets in {{jira}} or {{sn}} for tracking and triage
-* Triggering webhooks or custom integrations for automated workflows
+* Triggering webhooks or custom integrations
 
-You can configure rule actions to run for every alert, at scheduled intervals, or only when alerts meet specific conditions (such as high severity). Rule actions are configured in the **Actions** tab of the rule settings. For details, refer to [Rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
+:::{note}
+Notifications are a type of action that signals something needs attention.
+:::
+
+### System actions
+
+System actions operate within {{kib}}:
+
+* Creating or updating cases automatically
+* Adding entries to indices for tracking or enrichment
+* Triggering [Security workflows](/solutions/security/automate/security-workflows.md) for more complex automation
 
 ## Rule authorization [rule-authorization-concept]
 
@@ -93,8 +107,8 @@ Ensure that only users with the [appropriate access](/solutions/security/detect-
 
 If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the required privileges (such as access to manage rules) must do one of the following:
 
-- **Edit and save the rule**: This regenerates the API key with the current user's privileges
-- **Update the API key directly**: This allows for the rule configuration to remain unchanged.
+- **Edit and save the rule**: This regenerates the API key with the current user's privileges. Refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings) to learn more.
+- **Update the API key directly**: This allows the rule configuration to remain unchanged. Refer to [](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md#update-api-key) to learn more.
 
 Either action rebinds the rule to a user who has the necessary access.
 ::::
@@ -102,7 +116,7 @@ Either action rebinds the rule to a user who has the necessary access.
 ## Key terms quick reference
 
 **Rule actions**
-:   Automated responses a rule triggers when it generates alerts. Rule actions use connectors to send data to external services.
+:   Automated responses a rule triggers when it generates alerts. Rule actions can send data to external services using connectors, or perform operations within {{kib}} such as creating cases or triggering workflows.
 
 **Alerts**
 :   Records created when a rule's query finds matching events. Each alert represents a potential threat for analysts to investigate.
@@ -126,7 +140,7 @@ Either action rebinds the rule to a user who has the necessary access.
 :   Wildcards (like `logs-*`) that match one or more {{es}} indices.
 
 **Notifications**
-:   A type of action that alerts people to something needing attention (Slack messages, emails, PagerDuty alerts).
+:   A type of action that signals something needs attention (Slack messages, emails, PagerDuty alerts).
 
 **Query**
 :   The logic that defines what threat behavior or pattern a rule detects. Syntax varies by rule type.

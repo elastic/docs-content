@@ -22,7 +22,7 @@ The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint pr
 | Your goal | Start here |
 |---|---|
 | Set up detection for the first time | [Setup](/solutions/security/detect-and-alert/before-you-begin.md#one-time-setup) → [Install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) |
-| Take over or managing an existing deployment | [MITRE ATT&CK coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) → [Monitor rule executions](/solutions/security/detect-and-alert/monitor-rule-executions.md) |
+| Take over or manage an existing deployment | [MITRE ATT&CK coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) → [Monitor rule executions](/solutions/security/detect-and-alert/monitor-rule-executions.md) |
 | Build coverage for a specific threat | [Choose the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) → [Build it using the UI](/solutions/security/detect-and-alert/using-the-rule-ui.md) |
 | Reduce noise from existing rules | [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) → [Exceptions](/solutions/security/detect-and-alert/rule-exceptions.md), [Suppression](/solutions/security/detect-and-alert/alert-suppression.md), or [Snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) |
 
@@ -31,7 +31,7 @@ The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint pr
 The following stages represent the suggested path to a functioning detection program. Most deployments move through these stages roughly in order, though the boundaries are not strict: tuning and noise reduction are ongoing rather than a final stage.
 
 1. **Confirm requirements.** Verify infrastructure, privileges, and data availability.
-2. **Assess coverage gaps.** Perform threat modeling and use MITRE ATT&CK coverage to identify priority areas.
+2. **Assess coverage gaps.** Identify which threats matter most to your environment, then use MITRE ATT&CK coverage to find gaps in your detection rules.
 3. **Enable prebuilt rules.** Activate Elastic's maintained rule library for priority tactics.
 4. **Build custom rules.** Fill remaining gaps with rules tailored to your environment.
 5. **Validate before enabling.** Test rule logic against historical data before going live.

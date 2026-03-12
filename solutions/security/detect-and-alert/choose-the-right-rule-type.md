@@ -22,7 +22,7 @@ Use the following table to select the right rule type. The rows are ordered as a
 
 | Ask yourself | Rule type | Description |
 |---|---|---|
-| Is the threat a behavioral deviation I can't define with an exact pattern? | [{{ml-cap}}](/solutions/security/detect-and-alert/machine-learning.md) | Relies on {{ml}} anomaly detection jobs to model normal behavior and flag deviations. No query authoring required. |
+| Is the threat a behavioral deviation I can't define with an exact pattern? | [{{ml-cap}}](/solutions/security/detect-and-alert/machine-learning.md) | Relies on {{ml}} anomaly detection jobs to model normal behavior and flag deviations. No query authoring required, but you must create or select anomaly jobs. |
 | Do I need to compare events against a threat intelligence feed? | [Indicator match](/solutions/security/detect-and-alert/indicator-match.md) | Compares source event fields against threat intelligence indices. Alerts are enriched with indicator metadata. |
 | Am I looking for a field value appearing for the first time? | [New terms](/solutions/security/detect-and-alert/new-terms.md) | Fires when a value (or combination of up to three values) has never appeared in a configurable history window. Surfaces novel activity. |
 | Does detection require an ordered sequence of events or a missing event? | [Event correlation (EQL)](/solutions/security/detect-and-alert/eql.md) | Uses EQL to correlate events by shared fields across time. Detects multi-step attack chains and gaps in expected activity. |

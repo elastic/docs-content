@@ -13,6 +13,47 @@ description: Verify rule logic against historical data, assess alert volume, and
 
 Before enabling a new detection rule in production, validate that it detects what you intend, at a volume your team can handle, without generating excessive false positives. The steps below apply to any [rule type](/solutions/security/detect-and-alert/rule-types.md).
 
+## Preview rules against historical data [validate-historical-data]
+
+Use the rule preview feature to test your rule's query against a historical time range before enabling it. This shows you what the rule would have detected without creating actual alerts.
+
+While [creating or editing a rule](/solutions/security/detect-and-alert/using-the-rule-ui.md) in the UI, use the rule preview. You can select a time range that represents normal activity in your environment. For example, a range of 7 to 14 days captures both weekday and weekend patterns.
+
+When reviewing the rule preview results, look for:
+
+- **Expected true positives.** Does the rule detect the activity it's designed to catch? If you have known-good test data (for example, from red team exercises), confirm those events appear in the results.
+- **Obvious false positives.** Do any results represent legitimate activity? If so, refine the query or plan to add [exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) before enabling the rule.
+- **Missing detections.** If the rule produces no results and you expected it to, check that the required data sources are being ingested and that your index patterns are correct.
+
+::::{tip}
+If the rule uses [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md), use the rule preview to visualize how suppression affects the alert output. This helps you confirm that suppression is grouping events as expected before the rule goes live.
+::::
+
+## Run manual tests [manual-test-run]
+
+For rules that are already enabled, you can [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) them over a specific time range to test behavior against real data. Unlike preview, manual runs create actual alerts and trigger rule actions.
+
+Manual runs are useful when:
+
+- You want to test a rule against a specific incident window where you know what happened.
+- You need to fill a gap in rule coverage after a rule was temporarily not running.
+- You want to verify that a rule change produces the expected results in production.
+
+::::{important}
+Manual runs activate all configured [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) except **Summary of alerts** actions that run at a custom frequency. If you want to test without sending notifications, [snooze the rule's actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) first.
+::::
+
+### Test in a dedicated space
+
+For more isolated testing, create a dedicated [{{kib}} space](/deploy-manage/manage-spaces.md) for rule development. This lets you test rules with manual runs without affecting production alerts or triggering notifications to your team.
+
+1. Create a new space for testing.
+2. Copy or recreate the rule in the test space.
+3. Run manual tests and review alerts without impacting production workflows.
+4. Once validated, recreate or import the rule into your production space.
+
+This approach is especially useful when testing rule changes that might generate high alert volumes or when multiple team members are developing rules simultaneously.
+
 ## Test rules externally with Detection-as-Code [test-rules-dac]
 
 If you manage rules outside of the {{kib}} UI, you can use [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) workflows to test rules before deploying them. The Elastic Security Labs team maintains the [detection-rules](https://github.com/elastic/detection-rules) repo, which provides tooling for developing, testing, and releasing detection rules programmatically.
@@ -25,35 +66,6 @@ DaC workflows let you:
 
 To get started, refer to the [DaC documentation](https://github.com/elastic/detection-rules/blob/main/README.md#detections-as-code-dac). For managing rules through the API, refer to [Using the API](/solutions/security/detect-and-alert/using-the-api.md).
 
-% ## Validate against historical data [validate-historical-data]
-%
-% Use the rule preview feature to test your rule's query against a historical time range before enabling it. This shows you what the rule would have detected without creating actual alerts.
-%
-% 1. While creating or editing a rule, select **Preview** in the rule builder.
-% 2. Select a time range that represents normal activity in your environment. A range of 7 to 14 days captures both weekday and weekend patterns.
-% 3. Review the preview results. Look for:
-%    - **Expected true positives.** Does the rule detect the activity it's designed to catch? If you have known-good test data (for example, from red team exercises), confirm those events appear in the results.
-%    - **Obvious false positives.** Do any results represent legitimate activity? If so, refine the query or plan to add [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) before enabling the rule.
-%    - **Missing detections.** If the rule produces no results and you expected it to, check that the required data sources are being ingested and that your index patterns are correct.
-%
-% ::::{tip}
-% If the rule uses [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md), use the rule preview to visualize how suppression affects the alert output. This helps you confirm that suppression is grouping events as expected before the rule goes live.
-% ::::
-%
-% ## Run a manual test [manual-test-run]
-%
-% For rules that are already enabled, you can [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) them over a specific time range to test behavior against real data. Unlike preview, manual runs create actual alerts and trigger rule actions.
-%
-% Manual runs are useful when:
-%
-% - You want to test a rule against a specific incident window where you know what happened.
-% - You need to fill a gap in rule coverage after a rule was temporarily not running.
-% - You want to verify that a rule change produces the expected results in production.
-%
-% ::::{important}
-% Manual runs activate all configured [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) except **Summary of alerts** actions that run at a custom frequency. If you want to test without sending notifications, [snooze the rule's actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) first.
-% ::::
-%
 % ## Estimate alert volume [estimate-alert-volume]
 %
 % High-volume rules can overwhelm analysts and degrade rule execution performance. Before enabling a rule, estimate its expected alert rate.

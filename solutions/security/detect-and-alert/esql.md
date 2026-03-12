@@ -155,7 +155,7 @@ This rule detects process-start events with suspicious encoded arguments and use
 | `query` | `FROM ... METADATA _id, _index, _version \| WHERE ... \| LIMIT 100` | A non-aggregating query. `METADATA _id, _index, _version` after `FROM` enables alert deduplication so the same source event does not generate duplicate alerts across rule executions. Without it, repeated matches produce repeated alerts. |
 | `LIMIT` | `100` | Caps the number of results per execution. Interacts with the **Max alerts per run** setting, and the rule uses the lower of the two values. |
 
-## {{esql}} field reference [esql-fields]
+## {{esql}} rule field reference [esql-fields]
 
 The following settings appear in the **Define rule** section when creating an {{esql}} rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
@@ -164,9 +164,3 @@ The following settings appear in the **Define rule** section when creating an {{
 
 **Suppress alerts by** (optional)
 :   Reduce repeated or duplicate alerts by grouping them on one or more fields. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
-
-**Required fields** (optional)
-:   An informational list of fields the rule needs to function. This does not affect rule execution.
-
-**Related integrations** (optional)
-:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).

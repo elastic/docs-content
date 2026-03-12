@@ -49,15 +49,15 @@ The `Use Case` tag category has the following values:
 
 ## Prebuilt rule data sources [rule-prerequisites]
 
-Each prebuilt rule queries specific index patterns or a {{data-source}}, which determines the data the rule searches at runtime. You can see a rule's index patterns on its details page under **Definition**.
+Each prebuilt rule queries specific index patterns, which determine the data the rule searches at runtime. You can see a rule's index patterns on its details page under **Definition**.
 
 To help you set up the right data sources, rule details pages include:
 
 **Related integrations**
-:   [{{product.integrations}}](https://docs.elastic.co/en/integrations) that can provide compatible data. You don't need to install all listed integrations—installing any integration that matches your environment is typically sufficient. Some rules also work with data from legacy beats (such as {{filebeat}} or {{winlogbeat}}) without requiring a {{fleet}} integration. This field also displays each integration's installation status and includes links for installing and configuring the listed integrations.
+:   [{{product.integrations}}](https://docs.elastic.co/en/integrations) that can provide compatible data. You don't need to install all listed integrations—installing any integration that matches your environment is typically sufficient. If a rule requires multiple integrations, the setup guide specifies which ones. Some rules also work with data from legacy beats (such as {{filebeat}} or {{winlogbeat}}) without requiring a {{fleet}} integration. This field also displays each integration's installation status and includes links for installing and configuring the listed integrations.
 
 **Required fields**
-:   Data fields the rule expects to find. This is informational; rules run even if fields are missing, but may not generate expected alerts.
+:   Data fields the rule expects to find. Most rules run even if fields are missing, but may not generate expected alerts. EQL rules have stricter validation and might fail if required fields are missing.
 
 **Setup guide**
 :   Step-by-step guidance for configuring the rule's data requirements.
@@ -99,10 +99,10 @@ You can also view investigation guides from the rule's details page. Find **Dete
 
 Prebuilt rule investigation guides typically contain:
 
-- **Context**: Background on the threat or technique the rule detects
-- **Triage steps**: How to determine if the alert is a true positive
+- **Context**: Background on the threat or technique the rule detects.
+- **Triage steps**: How to determine if the alert is a true positive.
 - **Investigation queries**: Pre-built queries to gather additional context. Some guides include interactive Timeline buttons.
-- **Response guidance**: Actions to take if the alert is confirmed
+- **Response guidance**: Actions to take if the alert is confirmed as a true positive.
 
 ::::{note}
 You cannot edit investigation guides for prebuilt rules. To customize a prebuilt rule's guide, [duplicate the rule](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules) first, then edit the duplicate's investigation guide.

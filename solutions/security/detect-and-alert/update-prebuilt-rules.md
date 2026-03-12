@@ -22,8 +22,12 @@ For deployments without internet access, refer to [Prebuilt rules in air-gapped 
 
 When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page.
 
+::::{note}
+The **Rules** page was renamed to **Detection rules (SIEM)** in versions 9.3.1, 9.2.6, and 8.19.12.
+::::
+
 :::{admonition} Automatic updates
-On {{stack}}, automatic updates are supported for the current {{elastic-sec}} version and the latest three previous minor releases. For example, if you're on version 9.0, you can use the Rules UI to update prebuilt rules until version 9.4 is released. After that, you can still manually download and install updates, but must upgrade {{elastic-sec}} to receive automatic updates again.
+On {{stack}}, automatic updates are supported for the current {{elastic-sec}} version and the two previous minor releases. For example, if you're on version 9.0, you can use the Rules UI to update prebuilt rules until version 9.3 is released. After that, you can still manually download and install updates, but must upgrade {{elastic-sec}} to receive automatic updates again.
 :::
 
 ## Review updates [review-updates]
@@ -96,9 +100,9 @@ Use the **Modified/Unmodified** drop-down menu in the **Rule Updates** tab to fi
 ::::{dropdown} Basic–Platinum / Security Analytics Essentials
 :name: basic-modified-rules
 
-With a Basic–Platinum subscription on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, updates overwrite your modifications with the Elastic version. To preserve your changes:
+With a Basic–Platinum subscription on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, you cannot edit prebuilt rules directly. If you previously had an Enterprise subscription and modified prebuilt rules before downgrading, updates will overwrite those modifications with the Elastic version. To preserve your changes before updating:
 
-1. [Duplicate the rule](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules) before updating.
+1. [Duplicate the rule](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules).
 2. Apply the update to the original prebuilt rule.
 3. Continue using your duplicated rule with your customizations.
 

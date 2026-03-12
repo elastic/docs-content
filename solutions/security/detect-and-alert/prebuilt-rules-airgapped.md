@@ -131,7 +131,7 @@ For more details about enabling installed rules, refer to [Install and enable El
 To update your prebuilt rules, first update your self-hosted {{package-registry}} with a newer distribution image, then install the rule updates in {{elastic-sec}}.
 
 ::::{important}
-Elastic releases prebuilt rule updates continuously. To receive the latest updates in an air-gapped environment, we recommend updating your self-hosted {{package-registry}} at least monthly. Prebuilt rule updates are version-specific. Updating your {{package-registry}} provides rule updates designed for your current {{stack}} version, not rules designed for newer versions. To receive rules designed for a newer version, you must upgrade your entire {{stack}}.
+Elastic releases prebuilt rule updates biweekly. To receive the latest updates in an air-gapped environment, we recommend updating your self-hosted {{package-registry}} at least monthly. Prebuilt rule updates are version-specific. Updating your {{package-registry}} provides rule updates designed for your current {{stack}} version, not rules designed for newer versions. To receive rules designed for a newer version, you must upgrade your entire {{stack}}.
 ::::
 
 :::::{stepper}

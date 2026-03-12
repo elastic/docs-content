@@ -151,7 +151,7 @@ This rule detects `certutil.exe` being used to download files and demonstrates t
 | `tiebreaker_field` | `"event.sequence"` | A secondary sort field for events that share the same timestamp. Ensures deterministic event ordering in sequence queries. |
 | `timestamp_field` | `"@timestamp"` | The field used for ordering events in sequences. Defaults to `@timestamp`. Different from the `timestamp_override` advanced setting, which controls the query time range. |
 
-## EQL field reference [eql-fields]
+## EQL rule field reference [eql-fields]
 
 The following settings appear in the **Define rule** section when creating an EQL rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
@@ -170,9 +170,3 @@ The following settings appear in the **Define rule** section when creating an EQ
 
 **Suppress alerts by** (optional)
 :   Reduce repeated or duplicate alerts by grouping them on one or more fields. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
-
-**Required fields** (optional)
-:   An informational list of fields the rule needs to function. This does not affect rule execution.
-
-**Related integrations** (optional)
-:   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).

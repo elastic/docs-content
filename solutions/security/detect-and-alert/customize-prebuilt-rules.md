@@ -52,7 +52,7 @@ After saving changes to a prebuilt rule, modified fields are marked with the **M
 ### Considerations for editing prebuilt rules
 
 * **Updates might cause conflicts**: When Elastic releases an update that changes the same fields you modified, you need to resolve the conflict. Refer to [Resolve update conflicts](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts).
-* **Revert if needed**: You can restore the original Elastic version at any time. Refer to [Revert to Elastic version](#revert-prebuilt-rules).
+* **Revert if needed**: You can restore the original Elastic version if it's still available in your system. The revert option is hidden when the original version is missing. Keep your prebuilt rules updated to ensure this option remains available. Refer to [Revert to Elastic version](#revert-prebuilt-rules).
 
 
 ## Duplicate and modify prebuilt rules [duplicate-prebuilt-rules]
