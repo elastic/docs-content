@@ -31,7 +31,7 @@ The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint pr
 The following stages represent the suggested path to a functioning detection program. Most deployments move through these stages roughly in order, though the boundaries are not strict: tuning and noise reduction are ongoing rather than a final stage.
 
 1. **Confirm requirements.** Verify infrastructure, privileges, and data availability.
-2. **Assess coverage gaps.** Use MITRE ATT&CK coverage to identify priority areas.
+2. **Assess coverage gaps.** Perform threat modeling and use MITRE ATT&CK coverage to identify priority areas.
 3. **Enable prebuilt rules.** Activate Elastic's maintained rule library for priority tactics.
 4. **Build custom rules.** Fill remaining gaps with rules tailored to your environment.
 5. **Validate before enabling.** Test rule logic against historical data before going live.
