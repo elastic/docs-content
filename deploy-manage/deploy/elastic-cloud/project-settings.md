@@ -143,6 +143,7 @@ For a full feature comparison, upgrading instructions, and more, refer to [{{obs
 Project tags are custom metadata key-value pairs that allow you to categorize and organize your projects.
 
 While each project is automatically categorized by attributes such as its project type, cloud service provider, and region, you can add your own tags to further categorize your projects. 
+In {{serverless-short}}, you can also use custom tags in {{cps}} project routing expressions. For details, refer to [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
 For example, you might tag a project with the following types of metadata:
 
@@ -227,6 +228,7 @@ GET /api/v1/serverless/projects/elasticsearch?tag[env]=staging&tag[dept]=support
 Connection aliases for your projects enable you to have predictable, human-readable URLs that can be shared easily.
 The connection alias must be unique for each region, across all accounts.
 New projects are assigned a default alias derived from the project name.
+In {{serverless-short}}, the connection alias is used as the project alias for qualified search expressions in {{cps}}. For details, refer to [Project ID and aliases](/explore-analyze/cross-project-search.md#project-id-and-aliases).
 
 ### Update a connection alias for a project
 
