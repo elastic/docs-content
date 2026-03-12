@@ -36,11 +36,8 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), alerting rules query data across linked projects based on the **space-level {{cps}} scope**. You cannot set a space's {{cps}} scope on individual rules.
-
-When you create or edit a rule, the [{{cps-init}} scope selector](/explore-analyze/cross-project-search.md#cps-in-kibana) in the {{kib}} header shows the current {{cps}} scope but you cannot change it from the rule page. To change which projects a rule queries, update the {{cps}} scope configured for the space.
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), alerting rules query data across linked projects based on the **space-level {{cps}} scope**. You cannot set a {{cps}} scope on individual rules. However, you can define [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) directly in a rule query to target specific linked projects.
 <!-- Link to Spaces CPS configuration page when docs-content-internal#30 is published. -->
-
 
 ## Create and edit rules [create-edit-rules]
 
