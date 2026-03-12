@@ -185,9 +185,11 @@ stack: ga 9.4
 serverless: ga
 ```
 
-When you run {{esql}} queries in Discover, dashboards, alerting, or Maps, {{kib}} automatically applies the timezone from {{kib}}'s [Advanced Settings](kibana://reference/advanced-settings.md) to date and time functions and time-based filtering.
+{{esql}} queries use a timezone for date and time functions and time-based filtering. There are two ways to control it:
 
-To change the timezone:
+**{{kib}} advanced setting (default)**
+
+When you run {{esql}} queries in Discover, dashboards, alerting, or Maps, {{kib}} automatically uses the timezone from the **Time zone** (`dateFormat:tz`) [advanced setting](kibana://reference/advanced-settings.md). To change it:
 
 1. Go to **Stack Management** → **Advanced Settings** (or **Management** → **Advanced Settings** in {{serverless-short}}).
 2. Search for **Time zone** (`dateFormat:tz`).
@@ -195,9 +197,17 @@ To change the timezone:
 
 Some {{kib}} features that run {{esql}} queries independently, such as Security detection rules and the machine learning Data Visualizer, do not use this setting and default to UTC.
 
-:::{note}
-{{esql}} also supports a [`SET time_zone`](elasticsearch://reference/query-languages/esql/commands/set.md) directive. While the editor does not suggest it in autocomplete, you can type it manually in a query. When present, `SET time_zone` overrides the timezone from the advanced setting for that query. You can also use `SET time_zone` through the [Dev Tools Console](../tools/console.md) or the {{es}} API directly.
-:::
+**Per-query override with SET**
+
+To use a different timezone for a specific query, add a [`SET time_zone`](elasticsearch://reference/query-languages/esql/commands/set.md) directive before the source command. When present, it overrides the advanced setting for that query:
+
+```esql
+SET time_zone = "America/New_York";
+FROM kibana_sample_data_logs
+| STATS count = COUNT(*) BY BUCKET(@timestamp, 1 hour)
+```
+
+The editor does not suggest `SET time_zone` in autocomplete, but you can type it manually. You can also use it through the [Dev Tools Console](../tools/console.md) or the {{es}} API directly. For more information about the `SET` directive, refer to [Control query behavior with SET](#esql-kibana-set).
 
 
 ## Use variables and controls [add-variable-control]
