@@ -38,7 +38,7 @@ Data is routed to APM using the same hostname `<<apm-id>>.<<your-domain>>`, but 
 * `<<deployment-id>>.apm.<<your-domain>>` as an alternate endpoint for APM
 * `<<deployment-id>>.fleet.<<your-domain>>` is the *only* way of routing data to Fleet Server
 
-If you enable [Universal Profiling](/solutions/observability/infra-and-hosts/universal-profiling) another two endpoints are introduced:
+If you enable [Universal Profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) another two endpoints are introduced:
 
 * `<<deployment-id>>.profiling.<<your-domain>>`
 * `<<deployment-id>>.symbols.<<your-domain>>`
