@@ -38,4 +38,4 @@ The following stages represent the suggested path to a functioning detection pro
 6. **Monitor rule health.** Confirm rules are executing correctly and generating alerts.
 7. **Reduce noise.** Tune, add exceptions, suppress, or snooze as needed.
 
-A minimal viable detection program (prebuilt rules enabled for your highest-priority tactics, running correctly, with noise managed to an actionable level) is a meaningful outcome at any stage of this workflow. You do not need to complete every stage before your detection program delivers value.
+A minimal viable detection program (prebuilt rules enabled for your highest-priority tactics and techniques, running correctly, with noise managed to an actionable level) is a meaningful outcome at any stage of this workflow. You do not need to complete every stage before your detection program delivers value.
