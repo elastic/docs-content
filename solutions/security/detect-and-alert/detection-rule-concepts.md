@@ -38,7 +38,7 @@ A rule's query runs against the data sources you configure. When you create a ru
 * **Index patterns**: Wildcards like `logs-*` or `filebeat-*` that match one or more indices.
 * **{{data-source-cap}}s**: Named references to index patterns that can include [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) for computed values at query time.
 
-{{data-source-cap}}s are useful when you need consistent field definitions across multiple rules or want to add fields without reindexing data. {{esql}} rules do not support {{data-source}}s—specify source indices directly in the query's `FROM` command, using index patterns or [aliases](elasticsearch://reference/elasticsearch/index-settings/aliases.md).
+{{data-source-cap}}s are useful when you need consistent field definitions across multiple rules or want to add fields without reindexing data. {{esql}} rules do not support {{data-source}}s—specify source indices directly in the query's `FROM` command, using index patterns or [aliases](/manage-data/data-store/aliases.md).
 
 For guidance on configuring rule data sources, refer to [Set rule data sources](/solutions/security/detect-and-alert/set-rule-data-sources.md).
 
@@ -85,7 +85,7 @@ System actions operate within {{kib}}:
 
 * Creating or updating cases automatically
 * Adding entries to indices for tracking or enrichment
-* Triggering [Security workflows](/solutions/security/automate/security-workflows.md) for more complex automation
+* Triggering [workflows](/explore-analyze/workflows.md) for more complex automation
 
 ## Rule authorization [rule-authorization-concept]
 

@@ -79,7 +79,7 @@ For most environments, this combination brings the list from 1,000+ rules down t
 :::::::
 
 :::::::{step} Pick 2–3 MITRE tactics relevant to your environment
-Don't try to cover the full ATT&CK matrix from day one. Anchor your first wave around the techniques that matter most given your environment, data sources, and any past incidents. Common starting choices include Execution, Persistence, Credential Access, Initial Access, and Defense Evasion.
+Don't try to cover the full MITRE ATT&CK matrix from day one. Anchor your first wave around the techniques that matter most given your environment, data sources, and any past incidents. Common starting choices include Execution, Persistence, Credential Access, Initial Access, and Defense Evasion.
 
 Use the [MITRE ATT&CK coverage view](/solutions/security/detect-and-alert/mitre-attack-coverage.md) to visualize where your enabled rules provide coverage and where gaps remain.
 

@@ -42,7 +42,7 @@ Configure these settings in the **About rule** pane.
     :::
 
     ::::{note}
-    For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the `Group by` fields) will contain data. Overrides are not supported for event correlation rules.
+    For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the **Group by** fields) will contain data. Overrides are not supported for event correlation rules.
     ::::
 
 **Default risk score**
@@ -62,7 +62,7 @@ Configure these settings in the **About rule** pane.
     :::
 
     ::::{note}
-    For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the `Group by` fields) will contain data.
+    For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the **Group by** fields) will contain data.
     ::::
 
 **Tags** (optional)
@@ -107,7 +107,7 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 ::::
 
 **MITRE ATT&CK threats** (optional)
-:   Add relevant [MITRE](https://attack.mitre.org/) framework tactics, techniques, and subtechniques.
+:   Add relevant [MITRE ATT&CK](https://attack.mitre.org/) tactics, techniques, and subtechniques.
 
 **Reference URLs** (optional)
 :   References to information that is relevant to the rule. For example, links to background information.
@@ -126,7 +126,7 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 :   Select a source event field to use as the rule name in the UI (Alerts table). This is useful for exposing, at a glance, more information about an alert. For example, if the rule generates alerts from Suricata, selecting `event.action` lets you see what action (Suricata category) caused the event directly in the Alerts table.
 
     ::::{note}
-    For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the `Group by` fields) will contain data.
+    For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the **Group by** fields) will contain data.
     ::::
 
 **Setup guide** (optional)
