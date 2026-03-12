@@ -9,7 +9,7 @@ description: "Overview of Kibana alerting v2 — an ES|QL-based alerting framewo
 
 # Kibana alerting v2 [alerting-overview-v2]
 
-Kibana alerting v2 is a redesigned alerting framework built on [ES|QL](/explore-analyze/query-filter/languages/esql.md). Rules evaluate source data on a configurable schedule using ES|QL queries and produce immutable alert event documents. You control exactly what data each alert carries by writing the query that computes it.
+Kibana alerting v2 is a redesigned alerting framework built on [ES|QL](elasticsearch://reference/query-languages/esql.md). Rules evaluate source data on a configurable schedule using ES|QL queries and produce immutable alert event documents. You control exactly what data each alert carries by writing the query that computes it.
 
 Kibana alerting v2 runs alongside [Kibana alerting v1](/explore-analyze/alerting/kibana-alerting-v1.md). There is no forced migration. You can adopt Kibana alerting v2 at your own pace and run both systems in parallel.
 

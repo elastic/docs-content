@@ -5,7 +5,7 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Understand alert episodes — the full lifecycle arc from first breach to recovery — including states, identity, and status tracking."
+description: "Understand Kibana alerting v2 alert episodes — the full lifecycle arc from first breach to recovery — including states, identity, and status tracking."
 ---
 
 # Kibana alerting v2 alert episode details [alert-episode-details-v2]

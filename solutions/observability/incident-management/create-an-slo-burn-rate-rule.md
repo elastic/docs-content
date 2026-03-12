@@ -395,10 +395,10 @@ From **Discover**, you can create a rule to periodically check when data goes ab
 
     The **Create rule** form is pre-filled with the latest query sent to {{es}}.
 
-3. [Configure your query](../alerting/kibana-alerting-v1/rule-type-es-query-v1.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
+3. [Configure your query](/explore-analyze/alerting/kibana-alerting-v1/rule-type-es-query-v1.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
 4. Click **Save**.
 
-For more about this and other rules provided in {{alert-features}}, go to [Alerting](../alerting/kibana-alerting-v1.md).
+For more about this and other rules provided in {{alert-features}}, go to [Alerting](/explore-analyze/alerting/kibana-alerting-v1.md).
 
 
 ## What’s next? [_whats_next_4]

@@ -17,7 +17,7 @@ Before creating Kibana alerting v2 rules, review the following prerequisites and
 To use Kibana alerting v2, you need:
 
 - **{{stack}} 9.4 or later.**
-- **ES|QL knowledge.** Kibana alerting v2 rules are defined using ES|QL queries. Familiarity with ES|QL syntax, aggregations, and the `STATS`, `WHERE`, `EVAL`, and `KEEP` commands is essential. Refer to the [ES|QL reference](/explore-analyze/query-filter/languages/esql.md) for details.
+- **ES|QL knowledge.** Kibana alerting v2 rules are defined using ES|QL queries. Familiarity with ES|QL syntax, aggregations, and the `STATS`, `WHERE`, `EVAL`, and `KEEP` commands is essential. Refer to the [ES|QL reference](elasticsearch://reference/query-languages/esql.md) for details.
 - **Data indexed in {{es}}.** Your source data (logs, metrics, traces, or alert events from other rules) must be indexed and accessible from the cluster where you create rules.
 - **Appropriate privileges.** You need Kibana privileges to create and manage rules, notification policies, and workflows. Refer to [Alerting privileges](before-you-begin/alerting-privileges.md) for details.
 

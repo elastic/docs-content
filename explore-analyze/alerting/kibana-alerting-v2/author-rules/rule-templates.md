@@ -4,7 +4,7 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Start with pre-configured rule templates for common monitoring patterns and install pre-built detection rules."
+description: "Start with pre-configured Kibana alerting v2 rule templates for common monitoring patterns and install pre-built detection rules."
 ---
 
 % Content will be updated when template UI is implemented.
