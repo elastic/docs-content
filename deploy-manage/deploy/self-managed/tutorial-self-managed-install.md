@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elastic-stack/current/installing-stack-demo-self.html
 navigation_title: Install a self-managed {{stack}}
 applies_to:
   deployment:
