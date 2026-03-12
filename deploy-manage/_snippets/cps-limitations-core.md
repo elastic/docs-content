@@ -6,7 +6,7 @@
 - **Unavailable APIs:** `_transform` and `_fleet_search` requests do not support {{cps-init}}.
 - **Workplace AI projects:** Workplace AI projects are not compatible with {{cps}}.
 - {applies_to}`serverless: preview` **New projects only:** During technical preview, only newly created projects can function as origin projects.
-- {applies_to}`serverless: preview` **ML and transforms:** ML anomaly detection jobs and transforms are not supported in the technical preview. They continue to run on origin project data only.
+- {applies_to}`serverless: preview` **ML and transforms:** ML {{anomaly-jobs}} and transforms are not supported in the technical preview. They continue to run on origin project data only.
 - {applies_to}`serverless: preview` **Failure store:** 🚧 TODO
 
 % - {applies_to}`serverless: preview` **Project aliases:** During technical preview, you can't edit a project's alias on the **{{cps-cap}}** page.

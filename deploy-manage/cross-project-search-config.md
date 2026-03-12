@@ -44,7 +44,7 @@ To configure {{cps}}, make sure you meet these prerequisites:
 - For programmatic access, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), **not** project-scoped API keys. {{ecloud}} API keys can authenticate across project boundaries. Project-scoped API keys (such as {{es}} API keys) can't search across project boundaries, so they return origin-only results.
 
 % update wrt UIAM docs (esp links); subscription/licensing?
-% TODO confirm project-scopedAPI keys silently return origin-only results (no error) (ES API in E&A)
+% TODO confirm project-scoped API keys silently return origin-only results (no error) (ES API in E&A)
 
 ## Projects available for linking [cps-compatibility]
 
