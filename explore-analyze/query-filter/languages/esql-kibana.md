@@ -239,6 +239,20 @@ FROM kibana_sample_data_logs
 | STATS total_bytes = SUM(bytes) BY geo.dest
 ```
 
+### Control query timezone [esql-kibana-set-timezone]
+
+By default, {{kib}} applies the timezone from the **Time zone** (`dateFormat:tz`) advanced setting to {{esql}} queries. To override this for a specific query, use the `time_zone` setting:
+
+```esql
+SET time_zone = "America/New_York";
+FROM kibana_sample_data_logs
+| STATS count = COUNT(*) BY BUCKET(@timestamp, 1 hour)
+```
+
+When present, `SET time_zone` overrides the advanced setting for that query. The editor does not suggest `time_zone` in autocomplete, but you can type it manually.
+
+For more details on how {{kib}} handles timezones for {{esql}} queries, refer to [Timezone handling](#esql-kibana-timezone).
+
 
 ## Use variables and controls [add-variable-control]
 
