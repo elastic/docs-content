@@ -208,7 +208,7 @@ Use these options to set the Kafka topic for each {{agent}} event.
 
 ## Partition settings [output-kafka-partition-settings]
 
-The number of partitions created is set automatically by the Kafka broker based on the list of topics. Records are then published to partitions either randomly, in round-robin order, or according to a calculated hash. Default is hash partitioner
+The number of partitions created is set automatically by the Kafka broker based on the list of topics. Records are then published to partitions either randomly, in round-robin order, or according to a calculated hash. The default is hash partitioner.
 
 In the following example, after each event is published to a partition, the partitioner selects the next partition in round-robin fashion.
 
@@ -219,16 +219,16 @@ In the following example, after each event is published to a partition, the part
 ```
 
 `random.group_events` $$$kafka-random.group-events-setting$$$
-:   Sets the number of events to be published to the same partition, before the partitioner selects a new partition by random. The default value is 1 meaning after each event a new partition is picked randomly.
+:   (int) Sets the number of events to be published to the same partition, before the partitioner selects a new partition by random. The default value is 1 meaning after each event a new partition is picked randomly.
 
 `round_robin.group_events` $$$kafka-round_robin.group_events-setting$$$
-:   Sets the number of events to be published to the same partition, before the partitioner selects the next partition. The default value is 1 meaning after each event the next partition will be selected.
+:   (int) Sets the number of events to be published to the same partition, before the partitioner selects the next partition. The default value is 1 meaning after each event the next partition will be selected.
 
 `hash.hash` $$$kafka-hash.hash-setting$$$
-:   List of fields used to compute the partitioning hash value from. If no field is configured, the events key value will be used.
+:   ([]string) List of fields used to compute the partitioning hash value from. If no field is configured, the events key value will be used.
 
 `hash.random` $$$kafka-hash.random-setting$$$
-:   Randomly distribute events if no hash or key value can be computed.
+:   (bool) Randomly distribute events if no hash or key value can be computed. The default value is true.
 
 
 ## Header settings [output-kafka-header-settings]

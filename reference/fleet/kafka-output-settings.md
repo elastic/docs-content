@@ -191,7 +191,7 @@ You can enable compression to reduce the volume of Kafka output.
 Configure timeout and buffer size values for the Kafka brokers.
 
 **Broker timeout** $$$kafka-output-broker-timeout$$$
-:   The maximum length of time a Kafka broker waits for the required number of ACKs before timing out (see the `ACK reliability` setting further in). The default is 30 seconds.
+:   The maximum length of time a Kafka broker waits for the required number of ACKs before timing out (see the `ACK reliability` setting further in). The default is 10 seconds.
 
 **Broker reachability timeout** $$$kafka-output-broker-reachability-timeout$$$
 :   The maximum length of time that an {{agent}} waits for a response from a Kafka broker before timing out. The default is 30 seconds.
