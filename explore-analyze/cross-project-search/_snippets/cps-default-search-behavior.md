@@ -1,0 +1,3 @@
+After you link projects, searches from the origin project run across the origin and all linked projects by default.
+Searches are designed to run across projects automatically, providing the same experience for querying, analysis, and insights across projects as within a single project.
+Restricting search scope is always possible, but it requires explicitly scoping the search request using [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions), the `_origin` identifier, or [routing parameters](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
