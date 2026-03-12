@@ -80,13 +80,6 @@ If you’re installing the risk scoring engine for the first time:
 :::::
 
 
-
-:::{image} /solutions/images/security-turn-on-risk-engine.png
-:alt: Turn on entity risk scoring
-:screenshot:
-:::
-
-
 ## Upgrade to the latest risk engine [upgrade-risk-engine]
 ```yaml {applies_to}
 stack:
