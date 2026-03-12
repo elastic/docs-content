@@ -20,6 +20,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](d
 * [Prebuilt rule tags](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#prebuilt-rule-tags)
 * [Select and duplicate all prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#select-all-prebuilt-rules)
 * [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules)
+* [Prebuilt rules in air-gapped environments](/solutions/security/detect-and-alert/prebuilt-rules-airgapped.md)
 * [Confirm rule prerequisites](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites)
 
 ::::{note}

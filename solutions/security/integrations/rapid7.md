@@ -9,7 +9,7 @@ products:
 ---
 
 
-# Rapid7
+# Rapid7 InsightVM
 This page explains how to make data from the Rapid7 InsightVM integration (Rapid7) appear in the following places within {{elastic-sec}}:
 
 - **Findings page**: Data appears on the [Vulnerabilities](/solutions/security/cloud/findings-page-3.md) tab.

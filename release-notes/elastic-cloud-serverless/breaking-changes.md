@@ -6,6 +6,22 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+## March 2, 2026 [elastic-cloud-serverless-03022026-breaking]
+
+:::{dropdown} Removes serializer and deserializer parameters from the {{elastic-sec}} Lists API
+
+The `serializer` and `deserializer` parameters have been removed from the {{elastic-sec}} Lists API. These parameters previously allowed custom parsing logic for value list items:
+
+- `serializer` — Determined how uploaded list item values were parsed using regex patterns.
+- `deserializer` — Determined how retrieved list item values were presented using Handlebars expressions.
+
+**Impact:**
+
+API requests that include `serializer` or `deserializer` parameters (in the Create List API request body or Import List Items API query string) will have those parameters silently ignored, and a warning header will be returned in the response. Users who relied on custom parsing logic will need to pre-process their list data before import, as only default parsing behavior is now supported.
+
+For more information, view [#250111]({{kib-pull}}250111).
+:::
+
 ## October 27, 2025 [serverless-changelog-10272025-breaking]
 
 :::{dropdown} Implement native synthetic source for normalized keywords
