@@ -69,7 +69,7 @@ In addition to the fields listed above, each query language may include fields s
 ### DSL Search specific fields
 
 - `search.total_count`: The “total hits” value, as reported by [the search response](/solutions/search/the-search-api.md). 
-- `search.total_count_partial`:  Set to `true` in case the total count does not reflect the full amount of matches for some reason (like `track_total_hits` limitation). 
+- `search.total_count_partial`:  Set to `true` in case the total count does not reflect the full number of matches for some reason (like [`track_total_hits` limitation](/solutions/search/the-search-api.md#track-total-hits)). 
 
 ### {{esql}}
 
@@ -77,7 +77,7 @@ In addition to the fields listed above, each query language may include fields s
 
 ### Example log entry
 
-```js
+```json
 {
   "@timestamp": "2026-03-04T19:40:34.736Z",
   "log.level": "INFO",
@@ -89,18 +89,20 @@ In addition to the fields listed above, each query language may include fields s
   "elasticsearch.querylog.result_count": 3,
   "elasticsearch.querylog.search.total_count": 3,
   "elasticsearch.querylog.shards.successful": 1,
-  "elasticsearch.querylog.took": 1000000,
+  "elasticsearch.querylog.took": 1985208,
   "elasticsearch.querylog.took_millis": 1,
   "elasticsearch.querylog.type": "dsl",
-  "event.duration": 1000000,
+  "elasticsearch.task.id": 29848,
+  "event.duration": 1985208,
   "event.outcome": "success",
-  "http.request.headers.x_opaque_id": "opaque-1772653234",
+  "http.request.headers.x_opaque_id": "opaque-1773275310",
+  "trace.id": "0af7651916cd43dd8448eb211c80319c",
   "user.name": "elastic",
   "user.realm": "reserved",
   "ecs.version": "1.2.0",
   "service.name": "ES_ECS",
   "event.dataset": "elasticsearch.querylog",
-  "process.thread.name": "elasticsearch[node-1][search][T#3]",
+  "process.thread.name": "elasticsearch[node-1][search][T#14]",
   "log.logger": "elasticsearch.querylog",
   "elasticsearch.cluster.uuid": "gjYgb-uQQAuLmDoKlQInZw",
   "elasticsearch.node.id": "juurGSfgRYGwTP2ttZbtOQ",
@@ -111,7 +113,7 @@ In addition to the fields listed above, each query language may include fields s
 
 Example failure entry:
 
-```js
+```json
 {
   "@timestamp": "2026-03-04T19:40:35.271Z",
   "log.level": "INFO",
