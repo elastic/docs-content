@@ -41,13 +41,13 @@ To create a new case:
 
    ::::
 
-2. (Optional) Select a [template](configure-case-settings.md#case-templates) to pre-fill field values.
+2. (Optional) Select a [template](/explore-analyze/cases/configure-case-settings.md#case-templates) to pre-fill field values.
 
 3. Enter a name, severity, and description. If you do not assign your case a severity level, it will be assigned **Low** by default. The description supports [Markdown](https://www.markdownguide.org/cheat-sheet).
 
-4. (Optional) Add a category, [assignees](control-case-access.md), and tags.
+4. (Optional) Add a category, [assignees](/explore-analyze/cases/control-case-access.md), and tags.
 
-5. (Optional) Fill in any [custom fields](configure-case-settings.md#case-custom-fields) in the **Additional fields** section.
+5. (Optional) Fill in any [custom fields](/explore-analyze/cases/configure-case-settings.md#case-custom-fields) in the **Additional fields** section.
 
 6. Configure sync and extraction options:
    * **Sync alert status** syncs alert statuses with the case status (on by default).
@@ -57,11 +57,11 @@ To create a new case:
       Auto-extracting observables is only available in {{sec-serverless}} and {{elastic-sec}} 9.2+.
       :::
 
-7. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system.
+7. (Optional) Select a [connector](/explore-analyze/cases/configure-case-settings.md#case-connectors) to send the case to an external system.
 
 8. Select **Create case**. If you've selected a connector for the case, the case is automatically pushed to the third-party system it's connected to.
 
-After creating a case, you can [attach objects](attach-objects-to-cases.md) like alerts, files, observables, and visualizations to provide context and supporting evidence. You can also [set up email notifications](#add-case-notifications) so users are alerted when they're assigned to a case.
+After creating a case, you can [attach objects](/explore-analyze/cases/attach-objects-to-cases.md) like alerts, files, observables, and visualizations to provide context and supporting evidence. You can also [set up email notifications](#add-case-notifications) so users are alerted when they're assigned to a case.
 
 ## Set up email notifications [add-case-notifications]
 

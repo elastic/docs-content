@@ -47,12 +47,12 @@ The various profiles listed show details such as the active solution and data so
 
 Select the data you want to explore, and then specify the time range in which to view that data.
 
-1. Find **Discover** in the navigation menu or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Discover** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that contains the data you want to explore.
    ::::{tip}
-   By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
+   By default, {{kib}} requires a [{{data-source}}](/explore-analyze/find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](/manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
-   You can also [use {{esql}}](try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
+   You can also [use {{esql}}](/explore-analyze/discover/try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
@@ -61,7 +61,7 @@ Select the data you want to explore, and then specify the time range in which to
    :width: 300px
    :::
 
-3. If needed, adjust the [time range](../query-filter/filtering.md), for example by setting it to the **Last 7 days**.
+3. If needed, adjust the [time range](/explore-analyze/query-filter/filtering.md), for example by setting it to the **Last 7 days**.
     The range selection is based on the default time field in your data view. If you are using the sample data, this value was set when the data view was created. If you are using your own data view, and it does not have a time field, the range selection is not available.
 
 
@@ -97,19 +97,19 @@ You can later filter the data that shows in the chart and in the table by specif
    When you add fields to the table, the **Summary** column is replaced.
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
-4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md) for more information.
+4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](/explore-analyze/discover/document-explorer.md) for more information.
 5. **Save** your changes to be able to open the same view later on and explore your data further.
 
 
 ### Add a field to your {{data-source}} [add-field-in-discover]
 
-What happens if you forgot to define an important value as a separate field? Or, what if you want to combine two fields and treat them as one? This is where [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) come into play. You can add a runtime field to your {{data-source}} from inside of **Discover**, and then use that field for analysis and visualizations the same way you do with other fields.
+What happens if you forgot to define an important value as a separate field? Or, what if you want to combine two fields and treat them as one? This is where [runtime fields](/manage-data/data-store/mapping/runtime-fields.md) come into play. You can add a runtime field to your {{data-source}} from inside of **Discover**, and then use that field for analysis and visualizations the same way you do with other fields.
 
 1. In the sidebar, select **Add a field**.
 2. Select the **Type** of the new field.
 3. **Name** the field. Name it in a way that corresponds to the way other fields of the data view are named. You can set a custom label and description for the field to make it more recognizable in your data view.
 4. Define the value that you want the field to show. By default, the field value is retrieved from the source data if it already contains a field with the same name. You can customize this with the following options:
-   - **Set value**: Define a script that will determine the value to show for the field. For more information on adding fields and Painless scripting language examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
+   - **Set value**: Define a script that will determine the value to show for the field. For more information on adding fields and Painless scripting language examples, refer to [Explore your data with runtime fields](/explore-analyze/find-and-organize/data-views.md#runtime-fields).
    - **Set format**: Set your preferred format for displaying the value. Changing the format can affect the value and prevent highlighting in Discover.
 
 5. In the advanced settings, you can adjust the field popularity to make it appear higher or lower in the fields list. By default, Discover orders popular fields from most selected to least selected.
@@ -148,7 +148,7 @@ In the following example, we’re adding 2 fields: A simple "Hello world" field,
 
 ### Visualize aggregated fields [_visualize_aggregated_fields]
 
-If a field can be [aggregated](../query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
+If a field can be [aggregated](/explore-analyze/query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
 
 1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
 
@@ -171,7 +171,7 @@ For geo point fields (![Geo point field icon](/explore-analyze/images/kibana-geo
 
 Use the in-table search to find and highlight specific values beyond what's currently visible on your screen.
 
-The in-table search looks for all matching values in all results and pages currently loaded in the table. The number of results loaded depends on the [Sample size](document-explorer.md#document-explorer-sample-size). If you load more results, the search automatically updates and reflects the new number of matching values, if any more are found.
+The in-table search looks for all matching values in all results and pages currently loaded in the table. The number of results loaded depends on the [Sample size](/explore-analyze/discover/document-explorer.md#document-explorer-sample-size). If you load more results, the search automatically updates and reflects the new number of matching values, if any more are found.
 
 ```{tip}
 You can navigate between results with your keyboard by pressing "Enter" to go to the next result, and "Shift + Enter" to go to the previous result.
@@ -251,7 +251,7 @@ One of the unique capabilities of **Discover** is the ability to combine free te
 Free text searches that don't specify a field may not return expected results depending on how the [`index.query.default_field` index setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-query-default-field) is configured for the indices matching the current data view.
 :::
 
-To search particular fields and build more complex queries, use the [Kibana Query language](../query-filter/languages/kql.md). As you type, KQL prompts you with the fields you can search and the operators you can use to build a structured query.
+To search particular fields and build more complex queries, use the [Kibana Query language](/explore-analyze/query-filter/languages/kql.md). As you type, KQL prompts you with the fields you can search and the operators you can use to build a structured query.
 
 For example, search the ecommerce sample data for documents where the country matches US:
 
@@ -280,7 +280,7 @@ For example, exclude results from the ecommerce sample data view where day of we
 
 #### Filter pill actions
 
-:::{include} ../_snippets/global-filters.md
+:::{include} /explore-analyze/_snippets/global-filters.md
 :::
 
 
@@ -288,7 +288,7 @@ For example, exclude results from the ecommerce sample data view where day of we
 
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
-You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](try-esql.md#revert-to-classic-mode) at any time.
+You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](/explore-analyze/discover/try-esql.md#revert-to-classic-mode) at any time.
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
 
 In ES|QL mode, the **Documents** tab is named **Results**.
@@ -300,7 +300,7 @@ Partial results appear when an {{esql}} query:
 - {applies_to}`stack: ga 9.3+` is canceled.
 :::
 
-Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
+Learn more about how to use ES|QL queries in [Using ES|QL](/explore-analyze/discover/try-esql.md).
 
 ### Cancel a running query [cancel-query-in-discover]
 
@@ -321,7 +321,7 @@ Select the **Cancel** button that appears while the query executes. **Discover**
 This behavior applies to all query types (KQL, Lucene, and {{esql}}).
 
 :::{tip}
-For long-running queries, you can also [send the query to the background](background-search.md) instead of canceling it, allowing it to complete while you continue working.
+For long-running queries, you can also [send the query to the background](/explore-analyze/discover/background-search.md) instead of canceling it, allowing it to complete while you continue working.
 :::
 
 ### Run multiple explorations with tabs
@@ -359,7 +359,7 @@ To keep all of your tabs for later, you can [Save your Discover session](#save-d
 
 ### Inspect your Discover queries
 
-:::{include} ../_snippets/inspect-request.md
+:::{include} /explore-analyze/_snippets/inspect-request.md
 :::
 
 ### Run long-running queries in the background
@@ -377,13 +377,13 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 
 1. In the application menu, click **Save**.
 2. Give your session a title and a description.
-3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
+3. Optionally store [tags](/explore-analyze/find-and-organize/tags.md) and the time range with the session.
 4. Click **Save**.
 
 
 ### Share your Discover session [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](/explore-analyze/report-and-share.md).
 
 
 ## Generate alerts [alert-from-Discover]
@@ -395,7 +395,7 @@ From **Discover**, you can create a rule to periodically check when data goes ab
 
     The **Create rule** form is pre-filled with the latest query sent to {{es}}.
 
-3. [Configure your query](/explore-analyze/alerting/kibana-alerting-v1/rule-type-es-query-v1.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
+3. [Configure your query](/explore-analyze/alerting/kibana-alerting-v1/rule-type-es-query-v1.md) and [select a connector type](/deploy-manage/manage-connectors.md).
 4. Click **Save**.
 
 For more about this and other rules provided in {{alert-features}}, go to [Alerting](/explore-analyze/alerting/kibana-alerting-v1.md).
@@ -403,8 +403,8 @@ For more about this and other rules provided in {{alert-features}}, go to [Alert
 
 ## What’s next? [_whats_next_4]
 
-* [Search for relevance](discover-search-for-relevance.md).
-* [Configure the chart and document table](document-explorer.md) to better meet your needs.
+* [Search for relevance](/explore-analyze/discover/discover-search-for-relevance.md).
+* [Configure the chart and document table](/explore-analyze/discover/document-explorer.md) to better meet your needs.
 
 
 ## Troubleshooting [_troubleshooting]

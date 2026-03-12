@@ -93,7 +93,7 @@ After running a query, the editor's footer displays statistics about the last ru
 | {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open [Quick search](#esql-kibana-quick-search) |
 
 :::{tip}
-You can find the list of shortcuts directly from the editor. Look for the ![keyboard](../../images/keyboard.svg "keyboard =2%") icon.
+You can find the list of shortcuts directly from the editor. Look for the ![keyboard](/explore-analyze/images/keyboard.svg "keyboard =2%") icon.
 :::
 
 
@@ -103,11 +103,11 @@ serverless: preview
 stack: preview 9.3+
 ```
 
-You can use the **Quick search** functionality of the {{esql}} editor to translate a free-text or KQL search into a functioning {{esql}} query with a `WHERE KQL()` clause. This can be useful if you're getting started with {{esql}} or are familiar with [KQL](kql.md).
+You can use the **Quick search** functionality of the {{esql}} editor to translate a free-text or KQL search into a functioning {{esql}} query with a `WHERE KQL()` clause. This can be useful if you're getting started with {{esql}} or are familiar with [KQL](/explore-analyze/query-filter/languages/kql.md).
 
 1. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open the **Quick search** bar.
 2. Select the data sources to search.
-3. Type the text you want to search for as free text or using [KQL](kql.md) syntax.
+3. Type the text you want to search for as free text or using [KQL](/explore-analyze/query-filter/languages/kql.md) syntax.
 4. Submit your search by pressing **Enter**. The editor generates a new {{esql}} query that overwrites the current query and runs it. It includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. The editor saves previously run queries in the query history if you need to restore them. 
 
    The **Quick search** bar closes automatically when you press **Enter**, start typing in the editor or click outside of it.
@@ -149,12 +149,12 @@ To display data within a specified time range, you can use the standard time fil
 
 ### Standard time filter [_standard_time_filter]
 
-{{kib}} enables the standard [time filter](../filtering.md) when the indices you're querying have a field named `@timestamp`.
+{{kib}} enables the standard [time filter](/explore-analyze/query-filter/filtering.md) when the indices you're querying have a field named `@timestamp`.
 
 
 ### Custom time parameters [_custom_time_parameters]
 
-If your indices do not have a field named `@timestamp`, you can use the `?_tstart` and `?_tend` parameters to specify a time range. These parameters work with any timestamp field and automatically sync with the [time filter](../filtering.md).
+If your indices do not have a field named `@timestamp`, you can use the `?_tstart` and `?_tend` parameters to specify a time range. These parameters work with any timestamp field and automatically sync with the [time filter](/explore-analyze/query-filter/filtering.md).
 
 ```esql
 FROM my_index
@@ -187,10 +187,10 @@ They're available for:
 * [Discover queries](/explore-analyze/discover/try-esql.md#add-variable-control) {applies_to}`stack: ga 9.2`
 * [{{esql}} visualizations in dashboards](/explore-analyze/dashboards/add-controls.md#add-variable-control)
 
-:::{include} ../../_snippets/variable-control-procedure.md
+:::{include} /explore-analyze/_snippets/variable-control-procedure.md
 :::
 
-:::{include} ../../_snippets/variable-control-examples.md
+:::{include} /explore-analyze/_snippets/variable-control-examples.md
 :::
 
 % Link from the product
@@ -200,7 +200,7 @@ stack: preview 9.3
 serverless: preview
 ```
 
-:::{include} ../../_snippets/multi-value-esql-controls.md
+:::{include} /explore-analyze/_snippets/multi-value-esql-controls.md
 :::
 
 

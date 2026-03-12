@@ -16,7 +16,7 @@ To automatically generate PDF and CSV reports, generate a POST URL, then submit 
 :applies_to: {stack: ga 9.1, serverless: unavailable}
 Report generation requests are authenticated by API keys instead of session cookies. There are several key differences between the authentication methods. API keys capture your role privileges, whereas session cookie are based on your user credentials. API keys are also longer-lived, compared to session cookies, which have a shorter lifespan.
 
-If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
+If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure roles and users for remote clusters](/deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
 :::
 
 ## Create a POST URL [create-a-post-url]
@@ -51,7 +51,7 @@ To create the POST URL for CSV reports:
 
 ## Use Watcher [use-watcher]
 
-To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
+To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](/explore-analyze/alerting/watcher/actions-email.md#configuring-email).
 
 For example, the following watch generates a PDF report and emails the report every hour:
 
@@ -89,11 +89,11 @@ PUT _watcher/watch/error_report
 }
 ```
 
-1. Configure at least one email account to enable Watcher to send email. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
+1. Configure at least one email account to enable Watcher to send email. For more information, refer to [Configuring email accounts](/explore-analyze/alerting/watcher/actions-email.md#configuring-email).
 2. An example POST URL. You can copy and paste the URL for any report.
 3. Optional, default is `40`.
 4. Optional, default is `15s`.
-5. User credentials for a user with permission to access {{kib}} and the {{report-features}}. For more information, refer to [Configure reporting](../report-and-share.md).
+5. User credentials for a user with permission to access {{kib}} and the {{report-features}}. For more information, refer to [Configure reporting](/explore-analyze/report-and-share.md).
 
 
 ::::{note}
@@ -101,7 +101,7 @@ PUT _watcher/watch/error_report
 
 The report generation URL might contain date-math expressions that cause the watch to fail with a `parse_exception`. To avoid a failed watch, remove curly braces `{`  `}` from date-math expressions and URL-encode characters. For example, `...(range:(%27@timestamp%27:(gte:now-15m%2Fd,lte:now%2Fd))))...`
 
-For more information about configuring watches, refer to [How Watcher works](../alerting/watcher/how-watcher-works.md).
+For more information about configuring watches, refer to [How Watcher works](/explore-analyze/alerting/watcher/how-watcher-works.md).
 
 ::::
 
@@ -188,7 +188,7 @@ Save time by setting up a recurring task that automatically generates reports an
 ### Prerequisites [scheduled-reports-reqs]
 
 * {applies_to}`serverless: unavailable` To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
-* To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
+* To use the scheduled reports feature, your role needs [access to reporting](/deploy-manage/kibana-reporting-configuration.md#grant-user-access).
 * (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
