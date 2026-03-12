@@ -37,8 +37,8 @@ The way that you store vectors has a significant impact on the performance and a
 They must be stored in specialized data structures designed to ensure efficient similarity search and speedy vector distance calculations.
 This guide uses the [semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md), which provides sensible defaults and automation.
 
-:::::{stepper}
-::::{step} Create an index
+::::::{stepper}
+:::::{step} Create an index
 An index is a collection of documents uniquely identified by a name or an alias.
 You can follow the guided index workflow:
 
@@ -53,33 +53,73 @@ Alternatively, run the following API request in [Console](/explore-analyze/query
 PUT /semantic-index
 ```
 
-:::{tip}
+::::{tip}
 For an introduction to the concept of indices, check out [](/manage-data/data-store/index-basics.md).
-:::
 ::::
-::::{step} Create a semantic_text field mapping
+:::::
+:::::{step} Create a semantic_text field mapping
 Each index has mappings that define how data is stored and indexed, like a schema in a relational database.
 The following example creates a mapping for a single field ("content"):
+
+::::{applies-switch}
+
+:::{applies-item} { serverless: ga, stack: ga 9.4+ }
 
 ```console
 PUT /semantic-index/_mapping
 {
   "properties": {
     "content": {
-      "type": "semantic_text",
-      "inference_id": ".elser-2-elastic"
+      "type": "semantic_text" <1>
     }
   }
 }
 ```
 
-When you use `semantic_text` fields, the type of vector is determined by the vector embedding model.
-In this case, the ELSER model will be used to create sparse vectors.
+1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used. On {{serverless-short}} and {{stack}} 9.4+, the default {{infer}} endpoint is `.jina-embeddings-v5-text-small`, which generates dense vectors.
 
-For a deeper dive, check out [Mapping embeddings to Elasticsearch field types: semantic_text, dense_vector, sparse_vector](https://www.elastic.co/search-labs/blog/mapping-embeddings-to-elasticsearch-field-types).
+:::
+
+:::{applies-item} stack: ga 9.3
+
+```console
+PUT /semantic-index/_mapping
+{
+  "properties": {
+    "content": {
+      "type": "semantic_text" <1>
+    }
+  }
+}
+```
+
+1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used. On {{stack}} 9.3, the default {{infer}} endpoint is `.elser-2-elastic`, which generates sparse vectors.
+
+:::
+
+:::{applies-item} stack: ga 9.0-9.2
+
+```console
+PUT /semantic-index/_mapping
+{
+  "properties": {
+    "content": {
+      "type": "semantic_text" <1>
+    }
+  }
+}
+```
+
+1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used. On {{stack}} 9.0–9.2, the default {{infer}} endpoint is `.elser-2-elasticsearch`, which generates sparse vectors.
+
+:::
+
 ::::
 
-::::{step} Add documents
+For a deeper dive into different vector types, refer to [Mapping embeddings to Elasticsearch field types: semantic_text, dense_vector, sparse_vector](https://www.elastic.co/search-labs/blog/mapping-embeddings-to-elasticsearch-field-types).
+:::::
+
+:::::{step} Add documents
 
 You can use the Elasticsearch bulk API to ingest an array of documents:
 
@@ -103,21 +143,21 @@ Each chunk of text is then transformed into a sparse vector by using the ELSER m
 ![Semantic search chunking](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt9bbe5e260012b15d/67ffffc8165067d96124b586/animated-gif-semantic-search-chunking.gif)
 
 The vectors are stored in {{es}} and are ready to be used for semantic search.
-::::
-::::{step} Explore the data
+:::::
+:::::{step} Explore the data
 
 To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or the global search field.
 
 In **Discover**, you can click the expand icon {icon}`expand` to show details about documents in the table:
 
-:::{image} /solutions/images/serverless-discover-semantic.png
+::::{image} /solutions/images/serverless-discover-semantic.png
 :screenshot:
 :alt: Discover table view with document expanded
-:::
+::::
 
 For more tips, check out [](/explore-analyze/discover/discover-get-started.md).
-::::
 :::::
+::::::
 
 ## Test semantic search
 
