@@ -1,10 +1,18 @@
+---
+navigation_title: Core guidelines
+description: "Write clear API summaries and descriptions, document parameters and enums, add examples, and link to related content."
+applies_to:
+  stack:
+  serverless:
+---
+
 # Add core content
 
 This page covers the core guidelines for excellent API docs. Learn how to write clear summaries and descriptions, create helpful examples, and add useful links.
 
 ## Write summaries and descriptions
 
-Most objects in your Open API specification accept both concise summaries and detailed descriptions to help users understand their purpose and usage.
+Most objects in your OpenAPI specification accept both concise summaries and detailed descriptions to help users understand their purpose and usage.
 
 ### Write summaries
 
@@ -12,9 +20,9 @@ Clear, single-sentence summaries help users understand the components of your AP
 
 Here are some principles for writing effective summaries:
 
-- **Be concise:** Keep summaries short (between 5-45 characters) because they appear in different contexts where space is limited
+- **Be concise:** Keep API operation summaries short (between 5-45 characters) because they appear in different contexts where space is limited
 - **Start with a verb:** Use action words like "Get", "Update", "Delete", "Create"
-- **Use simple verbs:** Use simple verbs (Get, Update, Delete) rather than verbose alternatives (Retrieve, Return, List)
+- **Use basic verbs:** Use basic verbs (Get, Update, Delete) rather than verbose alternatives (Retrieve, Return, List)
 - **Include articles:** "Delete a space", "Delete spaces", "Delete all spaces"
 - **Use sentence case:** Capitalize only the first word and proper nouns
 
@@ -60,8 +68,6 @@ class GetIndexRequest {
 
 ### Write descriptions
 
->  **"Documentation can be added almost everywhere using a `description` field".** -  [OpenAPI Specification docs](https://learn.openapis.org/specification/docs.html#providing-long-descriptions-in-yaml)
-
 Most OpenAPI objects accept a `description` field. For best results, add descriptions wherever possible.
 
 Elastic APIs are generally complex, and summaries alone are not enough to explain their purpose and usage.
@@ -71,16 +77,16 @@ They are essential for transforming machine-readable information into nicely for
 
 Here are some principles for effective descriptions:
 
-- **Explain purpose and impact:** What does this operation/parameter do and why would users need it?
+- **Explain purpose and impact:** What does this operation or parameter do and why would users need it?
 - **Provide context:** What are the prerequisites or related concepts users should know?
 - **Use formatting:** Use paragraph breaks, lists, and other formatting options to make descriptions readable
 - **Reference related operations:** [Link](#add-links) to complementary APIs or prerequisite steps
 - **Provide usage guidance:** How should users typically use this parameter or operation?
 - **Document constraints:** What are the valid values, formats, or limitations?
-- **Explain data relationships:** For list parameters, clarify how multiple values are handled (comma-separated, arrays, etc.)
-- **Document special formats:** Include expected formats for timestamps (ISO-8601), patterns for wildcards, etc.
+- **Explain data relationships:** For list parameters, clarify how multiple values are handled (comma-separated, arrays, and so on)
+- **Document special formats:** Include expected formats for timestamps (ISO-8601) and patterns for wildcards
 - **Ensure comprehensive coverage:** Ensure all parameters, tags, and information sections include clear descriptions
-- **Use inclusive language:** Avoid problematic terminology (blacklist, whitelist, execute, kill, etc.) and use inclusive language throughout
+- **Use inclusive language:** Avoid problematic terminology and use inclusive language throughout. Refer to [](/contribute-docs/style-guide/word-choice.md)
 
 #### Description examples
 
@@ -255,7 +261,7 @@ paths:
 :::{tab-item} Elasticsearch
 :sync: elasticsearch
 
-For endpoints that can accept optional parameters, define multiple paths in the `urls` array:
+For endpoints that can accept optional parameters, add multiple paths in the `urls` array and define them in `path_parts`:
 
 ```ts
 urls: [
@@ -268,11 +274,17 @@ urls: [
     methods: ["POST"]
   }
 ]
+path_parts: {
+  /**
+   * A unique identifier for the document...
+   */
+  id?: Id
+  /**
+   * The name of the data stream or index to target...
+   */
+  index: IndexName
+}
 ```
-
-**Notes:**
-- The `make transform-to-openapi` output shows these two paths as separate entities
-- The `make transform-to-openapi-for-docs` output contains only the most complex variation of the paths (and mentions the others in its description)
 :::
 
 ::::
@@ -364,11 +376,11 @@ Here are some principles for effective examples:
 
 #### Generated examples
 
-If you don't provide examples, Bump.sh automatically generates them from your API schema. Because it's hard to randomly generate meaningful examples, this has been disabled for Elasticsearch APIs.
+In some cases examples are automatically generated as part of the publishing process.
+It's preferable to include curated examples in your OpenAPI document with a realistic combination of property values.
+You can provide more than one example object in the examples field, so consider adding examples that reflect the most common use cases.
 
-It's preferable to include curated examples in your OpenAPI document with a realistic combination of property values. You can provide more than one example object in the examples field, so consider adding examples that reflect the most common use cases.
-
-Bump.sh also generates a single curl example for each API. To override that generated example and optionally provide an equivalent Console or language-specific example, use the `x-codeSamples` extension described in [Custom code examples in Bump.sh](https://docs.bump.sh/help/specification-support/doc-code-samples).
+To override generated `curl` examples and optionally provide an equivalent Console or language-specific example, use the `x-codeSamples` extension described in [Custom code examples in Bump.sh](https://docs.bump.sh/help/specification-support/doc-code-samples).
 
 :::{tip}
 When you use validation tools to check your API specification, examples are helpful for ensuring that you haven't missed things like nullable data types.
@@ -387,7 +399,7 @@ Learn more:
 :::{tab-item} OpenAPI
 :sync: openapi
 
-The OpenAPI specification supports examples in several ways:
+The OpenAPI specification supports examples in several ways, which vary across OpenAPI versions.
 
 **Individual parameter examples** can be defined directly in specifications:
 
@@ -467,7 +479,7 @@ Links help users navigate between related APIs and find additional context in na
 
 Here are some principles for effective linking:
 
-- **Link to prerequisite concepts:** Connect APIs to foundational concepts users need to understand first
+- **Link to prerequisite concepts:** Connect APIs to foundational concepts users need to understand
 - **Reference related operations:** Point to complementary APIs that users typically need together
 - **Provide narrative context:** Link to guides that explain when and how to use the API effectively
 - **Use descriptive link text:** Choose meaningful labels that indicate what users will find
@@ -475,10 +487,10 @@ Here are some principles for effective linking:
 
 ### Examples
 
-::::{tab-set}
+:::::{tab-set}
 :group: implementations
 
-:::{tab-item} OpenAPI
+::::{tab-item} OpenAPI
 :sync: openapi
 
 Use the `externalDocs` field to link to narrative guides in the main Elastic documentation:
@@ -493,7 +505,9 @@ paths:
         description: Try the hands-on Query DSL tutorial
         url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
 ```
-
+:::{note}
+You can have only one URL within `externalDocs`. For multiple links, use inline markdown in descriptions.
+:::
 **Related operation links** can be referenced in descriptions using standard markdown:
 
 ```yaml
@@ -505,9 +519,9 @@ paths:
         Creates a new index with optional settings and mappings.
         See also: [Delete Index](delete-index) and [Update Index Sets](update-index-settings).
 ```
-:::
+::::
 
-:::{tab-item} Elasticsearch
+::::{tab-item} Elasticsearch
 :sync: elasticsearch
 
 **External documentation links** use the `@ext_doc_id` annotation to connect to narrative guides. This is transformed into an OpenAPI `externalDocs` field in the [compilation process](./overview.md#example-elasticsearch):
@@ -538,15 +552,15 @@ export interface CreateIndexRequest extends RequestBase {
 Both annotations require corresponding entries in [`specification/_doc_ids/table.csv`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_doc_ids/table.csv):
 
 :::{note}
-Each endpoint can only have one `@ext_doc_id`. For multiple links, use inline markdown in descriptions.
+Each endpoint can have only one `@ext_doc_id`. For multiple links, use inline markdown in descriptions.
 :::
-:::
-
 ::::
+
+:::::
 
 ## Set default values
 
-Default values can only be applied to optional parameters or properties in OpenAPI specifications using the `default` field. It's important to explain how changing these defaults affects the behavior of the API in the parameter description.
+Default values can be applied to optional parameters or properties in OpenAPI specifications using the `default` field. It's important to explain how changing these defaults affects the behavior of the API in the parameter description.
 
 ### Examples
 
@@ -600,9 +614,11 @@ class Foo {
 }
 ```
 
+<!--
+TBD: The meaning of this note is unclear
 :::{note}
 Default values only work on optional properties and appear in parameter documentation without affecting client behavior.
-:::
+::: -->
 :::
 
 ::::
@@ -611,17 +627,31 @@ Default values only work on optional properties and appear in parameter document
 
 Linting your API docs helps ensure consistency, correctness, and adherence to best practices. It catches common issues like missing descriptions, inconsistent naming, and formatting errors.
 
-::::{tab-set}
+:::::{tab-set}
 :group: implementations
 ::::{tab-item} Elasticsearch
 :sync: elasticsearch
 
-The [Elasticsearch API specification](https://github.com/elastic/elasticsearch-specification/tree/main/docs/linters) uses the following linters with custom rules:
+Run this command to lint your OpenAPI files:
 
-- **Spectral**: Configuration in `.spectral.yaml`
-- **Redocly**: Configuration in `redocly.yaml`
+```bash
+make lint-docs
+```
 
-Refer to [the quickstarts](quickstart.md) to learn how to run the linter locally.
+Refer to [the Elasticsearch quickstart](elasticsearch-api-docs-quickstart.md) to learn more about the linting workflow.
+::::
+::::{tab-item} Kibana
+:sync: kibana
+
+Run this command from the `oas_docs` directory to lint your OpenAPI files:
+
+```bash
+node ../scripts/validate_oas_docs.js
+```
+
+You can limit the scope of APIs that the linter checks by using `--path` or `--only` options. For details and examples, add `--help`.
+
+Refer to [the Kibana quickstart](kibana-api-docs-quickstart.md) to learn more about the workflow.
 
 ::::
-::::
+:::::
