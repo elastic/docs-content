@@ -32,7 +32,7 @@ The following information reflects our strategic goals, plans and objectives and
 | **Cloud providers** | AWS, Azure, GCP  | AWS, Azure, GCP |
 | **Upgrades** | User-controlled timing | Automatically performed by Elastic |
 | **User management** | Elastic Cloud-managed and deployment-local users | Elastic Cloud-managed users only. Serverless users are managed at the organization level with SAML authentication support. |
-| **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
+| **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic. Customers may request restoration via [Support](https://support.elastic.co/knowledge/94022085). |
 | **Solutions** | Full {{stack}} per deployment | Single solution per project |
 | **Cross-origin resource sharing (CORS)** | Supported | Not available. Browser-based applications must route requests through a backend proxy server. |
 
