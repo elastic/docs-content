@@ -18,18 +18,13 @@ Prebuilt rules provide a starting point for threat detection, but you might need
 
 Your subscription determines how you can customize prebuilt rules:
 
-| Capability | Basic–Platinum | Enterprise |
-|---|:---:|:---:|
-| Add exceptions to rules | ✓ | ✓ |
-| Configure rule actions | ✓ | ✓ |
-| Duplicate and modify copies | ✓ | ✓ |
-| Edit prebuilt rules directly | — | ✓ |
-| Revert to Elastic version | — | ✓ |
-
-:::{note}
-For {{serverless-short}}, Security Analytics Essentials corresponds to Basic–Platinum, and Security Analytics Complete corresponds to Enterprise.
-:::
-
+| Capability | {{stack}} Basic–Platinum | {{stack}} Enterprise | {{serverless-short}} Essentials | {{serverless-short}} Complete |
+|---|:---:|:---:|:---:|:---:|
+| Add exceptions to rules | ✓ | ✓ | ✓ | ✓ |
+| Configure rule actions | ✓ | ✓ | ✓ | ✓ |
+| Duplicate and modify copies | ✓ | ✓ | ✓ | ✓ |
+| Edit prebuilt rules directly | — | ✓ | — | ✓ |
+| Revert to Elastic version | — | ✓ | — | ✓ |
 
 ## Edit prebuilt rules directly [edit-prebuilt-rules]
 

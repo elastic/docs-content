@@ -25,22 +25,18 @@ For deployments without internet access, refer to [Prebuilt rules in air-gapped 
 
 Your subscription determines which prebuilt rule features are available:
 
-| Capability | Basic–Platinum | Enterprise |
-|---|:---:|:---:|
-| Install and enable rules | ✓ | ✓ |
-| View prerequisites and tags | ✓ | ✓ |
-| Add exceptions | ✓ | ✓ |
-| Configure rule actions | ✓ | ✓ |
-| Update rules (accept Elastic version) | ✓ | ✓ |
-| Duplicate and customize | ✓ | ✓ |
-| Edit prebuilt rules directly | — | ✓ |
-| Review field-level update changes | — | ✓ |
-| Resolve update conflicts | — | ✓ |
-| Revert to Elastic version | — | ✓ (9.1+) |
-
-:::{note}
-For {{serverless-short}}, Security Analytics Essentials corresponds to Basic–Platinum, and Security Analytics Complete corresponds to Enterprise.
-:::
+| Capability | {{stack}} Basic–Platinum | {{stack}} Enterprise | {{serverless-short}} Essentials | {{serverless-short}} Complete |
+|---|:---:|:---:|:---:|:---:|
+| Install and enable rules | ✓ | ✓ | ✓ | ✓ |
+| View prerequisites and tags | ✓ | ✓ | ✓ | ✓ |
+| Add exceptions | ✓ | ✓ | ✓ | ✓ |
+| Configure rule actions | ✓ | ✓ | ✓ | ✓ |
+| Update rules (accept Elastic version) | ✓ | ✓ | ✓ | ✓ |
+| Duplicate and customize | ✓ | ✓ | ✓ | ✓ |
+| Edit prebuilt rules directly | — | ✓ | — | ✓ |
+| Review field-level update changes | — | ✓ | — | ✓ |
+| Resolve update conflicts | — | ✓ | — | ✓ |
+| Revert to Elastic version | — | ✓ (9.1+) | — | ✓ |
 
 ## Choosing which rules to enable [choosing-rules-to-enable]
 
