@@ -96,7 +96,7 @@ When you snooze a rule, the rule checks continue to run on a schedule but the al
 
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
-To temporarily suppress notifications for *all* rules, create a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
+To temporarily suppress notifications for *all* rules, create a [maintenance window](/explore-analyze/alerting/kibana-alerting-v1/maintenance-windows-v1.md).
 
 
 ## Import and export rules [observability-create-manage-rules-import-and-export-rules]

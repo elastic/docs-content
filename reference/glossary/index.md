@@ -658,7 +658,7 @@ $$$glossary-rule$$$ rule
 :   A set of [conditions](/reference/glossary/index.md#glossary-condition), schedules, and [actions](/reference/glossary/index.md#glossary-action) that enable notifications. See [{{rules-ui}}](/reference/glossary/index.md#glossary-rules).
 
 $$$glossary-rules$$$ Rules
-:   A comprehensive view of all your alerting rules. Enables you to access and manage rules for all {{kib}} apps from one place. See [{{rules-ui}}](/explore-analyze/alerting.md).
+:   A comprehensive view of all your alerting rules. Enables you to access and manage rules for all {{kib}} apps from one place. See [{{rules-ui}}](/explore-analyze/alerting-overview.md).
 
 $$$glossary-runner$$$ runner
 :   A local control agent that runs on all hosts, used to deploy local containers based on role definitions. Ensures that containers assigned to it exist and are able to run, and creates or recreates the containers if necessary.
@@ -733,7 +733,7 @@ $$$glossary-split$$$ split
 :   Adds more [primary shards](/reference/glossary/index.md#glossary-primary-shard) to an [index](/reference/glossary/index.md#glossary-index).
 
 $$$glossary-stack-alert$$$ stack rule
-:   The general purpose rule types {{kib}} provides out of the box. Refer to [Stack rules](/explore-analyze/alerting/alerts/rule-types.md#stack-rules).
+:   The general purpose rule types {{kib}} provides out of the box. Refer to [Stack rules](/explore-analyze/alerting/kibana-alerting-v1/rule-types-v1.md#stack-rules).
 
 $$$glossary-standalone$$$ standalone
 :   This mode allows manual configuration and management of {{agent}}s locally on the systems where they are installed. See [Install standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md).

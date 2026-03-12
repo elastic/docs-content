@@ -703,10 +703,14 @@ redirects:
   'solutions/observability/llm-performance-matrix.md': 'solutions/observability/ai/llm-performance-matrix.md'
 
 # Related to cases and alerting documentation restructuring
+  # V2 alerting redirects (v2-alerting → kibana-alerting-v2)
+  'explore-analyze/alerting/v2-alerting.md': 'explore-analyze/alerting/kibana-alerting-v2.md'
+
   # Main pages
-  'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'
+  'explore-analyze/alerts-cases.md': 'explore-analyze/alerting-overview.md'
+  'explore-analyze/alerting.md': 'explore-analyze/alerting-overview.md'
   'explore-analyze/alerts-cases/cases.md': 'explore-analyze/cases.md'
-  'explore-analyze/alerts-cases/alerts.md': 'explore-analyze/alerting/alerts.md'
+  'explore-analyze/alerts-cases/alerts.md': 'explore-analyze/alerting/kibana-alerting-v1.md'
   'explore-analyze/alerts-cases/watcher.md': 'explore-analyze/alerting/watcher.md'
   
   # Cases redirects
@@ -719,22 +723,40 @@ redirects:
   'explore-analyze/cases/configure-case-access.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/cases/find-share-cases.md': 'explore-analyze/cases/search-share-cases.md'
   
-  # Alerts redirects
-  'explore-analyze/alerts-cases/alerts/alerting-getting-started.md': 'explore-analyze/alerting/alerts/alerting-getting-started.md'
-  'explore-analyze/alerts-cases/alerts/alerting-setup.md': 'explore-analyze/alerting/alerts/alerting-setup.md'
-  'explore-analyze/alerts-cases/alerts/create-manage-rules.md': 'explore-analyze/alerting/alerts/create-manage-rules.md'
-  'explore-analyze/alerts-cases/alerts/view-alerts.md': 'explore-analyze/alerting/alerts/view-alerts.md'
-  'explore-analyze/alerts-cases/alerts/rule-types.md': 'explore-analyze/alerting/alerts/rule-types.md'
-  'explore-analyze/alerts-cases/alerts/rule-type-index-threshold.md': 'explore-analyze/alerting/alerts/rule-type-index-threshold.md'
-  'explore-analyze/alerts-cases/alerts/rule-type-es-query.md': 'explore-analyze/alerting/alerts/rule-type-es-query.md'
-  'explore-analyze/alerts-cases/alerts/geo-alerting.md': 'explore-analyze/alerting/alerts/geo-alerting.md'
-  'explore-analyze/alerts-cases/alerts/rule-action-variables.md': 'explore-analyze/alerting/alerts/rule-action-variables.md'
-  'explore-analyze/alerts-cases/alerts/notifications-domain-allowlist.md': 'explore-analyze/alerting/alerts/notifications-domain-allowlist.md'
-  'explore-analyze/alerts-cases/alerts/alerting-troubleshooting.md': 'explore-analyze/alerting/alerts/alerting-troubleshooting.md'
-  'explore-analyze/alerts-cases/alerts/alerting-common-issues.md': 'explore-analyze/alerting/alerts/alerting-common-issues.md'
-  'explore-analyze/alerts-cases/alerts/event-log-index.md': 'explore-analyze/alerting/alerts/event-log-index.md'
-  'explore-analyze/alerts-cases/alerts/testing-connectors.md': 'explore-analyze/alerting/alerts/testing-connectors.md'
-  'explore-analyze/alerts-cases/alerts/maintenance-windows.md': 'explore-analyze/alerting/alerts/maintenance-windows.md'
+  # Alerts redirects (alerts-cases → kibana-alerting-v1)
+  'explore-analyze/alerts-cases/alerts/alerting-getting-started.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-getting-started-v1.md'
+  'explore-analyze/alerts-cases/alerts/alerting-setup.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-setup-v1.md'
+  'explore-analyze/alerts-cases/alerts/create-manage-rules.md': 'explore-analyze/alerting/kibana-alerting-v1/create-manage-rules-v1.md'
+  'explore-analyze/alerts-cases/alerts/view-alerts.md': 'explore-analyze/alerting/kibana-alerting-v1/view-alerts-v1.md'
+  'explore-analyze/alerts-cases/alerts/rule-types.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-types-v1.md'
+  'explore-analyze/alerts-cases/alerts/rule-type-index-threshold.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-type-index-threshold-v1.md'
+  'explore-analyze/alerts-cases/alerts/rule-type-es-query.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-type-es-query-v1.md'
+  'explore-analyze/alerts-cases/alerts/geo-alerting.md': 'explore-analyze/alerting/kibana-alerting-v1/geo-alerting-v1.md'
+  'explore-analyze/alerts-cases/alerts/rule-action-variables.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-action-variables-v1.md'
+  'explore-analyze/alerts-cases/alerts/notifications-domain-allowlist.md': 'explore-analyze/alerting/kibana-alerting-v1/notifications-domain-allowlist-v1.md'
+  'explore-analyze/alerts-cases/alerts/alerting-troubleshooting.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-troubleshooting-v1.md'
+  'explore-analyze/alerts-cases/alerts/alerting-common-issues.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-common-issues-v1.md'
+  'explore-analyze/alerts-cases/alerts/event-log-index.md': 'explore-analyze/alerting/kibana-alerting-v1/event-log-index-v1.md'
+  'explore-analyze/alerts-cases/alerts/testing-connectors.md': 'explore-analyze/alerting/kibana-alerting-v1/testing-connectors-v1.md'
+  'explore-analyze/alerts-cases/alerts/maintenance-windows.md': 'explore-analyze/alerting/kibana-alerting-v1/maintenance-windows-v1.md'
+
+  # Alerts redirects (alerting/alerts → alerting/kibana-alerting-v1)
+  'explore-analyze/alerting/alerts.md': 'explore-analyze/alerting/kibana-alerting-v1.md'
+  'explore-analyze/alerting/alerts/alerting-getting-started.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-getting-started-v1.md'
+  'explore-analyze/alerting/alerts/alerting-setup.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-setup-v1.md'
+  'explore-analyze/alerting/alerts/create-manage-rules.md': 'explore-analyze/alerting/kibana-alerting-v1/create-manage-rules-v1.md'
+  'explore-analyze/alerting/alerts/view-alerts.md': 'explore-analyze/alerting/kibana-alerting-v1/view-alerts-v1.md'
+  'explore-analyze/alerting/alerts/rule-types.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-types-v1.md'
+  'explore-analyze/alerting/alerts/rule-type-index-threshold.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-type-index-threshold-v1.md'
+  'explore-analyze/alerting/alerts/rule-type-es-query.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-type-es-query-v1.md'
+  'explore-analyze/alerting/alerts/geo-alerting.md': 'explore-analyze/alerting/kibana-alerting-v1/geo-alerting-v1.md'
+  'explore-analyze/alerting/alerts/rule-action-variables.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-action-variables-v1.md'
+  'explore-analyze/alerting/alerts/notifications-domain-allowlist.md': 'explore-analyze/alerting/kibana-alerting-v1/notifications-domain-allowlist-v1.md'
+  'explore-analyze/alerting/alerts/alerting-troubleshooting.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-troubleshooting-v1.md'
+  'explore-analyze/alerting/alerts/alerting-common-issues.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-common-issues-v1.md'
+  'explore-analyze/alerting/alerts/event-log-index.md': 'explore-analyze/alerting/kibana-alerting-v1/event-log-index-v1.md'
+  'explore-analyze/alerting/alerts/testing-connectors.md': 'explore-analyze/alerting/kibana-alerting-v1/testing-connectors-v1.md'
+  'explore-analyze/alerting/alerts/maintenance-windows.md': 'explore-analyze/alerting/kibana-alerting-v1/maintenance-windows-v1.md'
   
   # Watcher redirects
   'explore-analyze/alerts-cases/watcher/watcher-getting-started.md': 'explore-analyze/alerting/watcher/watcher-getting-started.md'
