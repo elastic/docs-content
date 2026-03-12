@@ -11,12 +11,16 @@ products:
 
 # Index basics
 
-An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. To store a document, you add it to a specific index. To search, you target one or more indices and {{es}} searches all data within them and returns any matching documents. An index is identified by a unique name or an [alias](/manage-data/data-store/aliases.md).
+An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. Behind the scenes, {{es}} divides each index into _shards_ and distributes them across the nodes in your cluster. This allows it to scale horizontally to handle large volumes of data. Replica shards provide fault tolerance, keeping your data available even when individual nodes fail.
+
+To store a document, you add it to a specific index. To search, you target one or more indices and {{es}} searches all data within them and returns any matching documents. An index is identified by a unique name or an [alias](/manage-data/data-store/aliases.md).
+
+You can store many independent datasets side by side, each in its own index, and search them individually or together.
 
 This page explains the core parts of an index (_documents_, _metadata fields_, and _mappings_), describes how {{es}} physically stores index data using _shards_, and highlights common design decisions.
 
 :::::{tip}
-A closely related concept is a [data stream](/manage-data/data-store/data-streams.md), which is optimized for append-only timestamped data and backed by hidden, auto-generated indices.
+A closely related concept is a [data stream](/manage-data/data-store/data-streams.md), which is optimized for append-only timestamped data and backed by hidden, auto-generated indices. Data streams manage rolling indices automatically, backed by hidden, auto-generated indices.
 :::::
 
 :::{note}
@@ -92,11 +96,13 @@ In {{serverless-full}}, shards, replicas, and nodes are fully managed for you. T
 
 ## Common index design decisions
 
+Mappings control how fields are indexed, templates standardize configuration across indices, aliases decouple queries from physical index names, and lifecycle policies automate retention and tiering over time.
+
 When working with indices, you typically make decisions that focus on:
 
 * **Naming and aliases**: Use clear naming patterns for your indices and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
 * **Mapping strategy**: Use dynamic mapping for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping.md) for production use cases where field control and query behavior matter.
-* **Index or data stream**: Use a regular index when you need frequent updates or deletes. Use a [data stream](/manage-data/data-store/data-streams.md) for append-only timestamped data such as logs, events, and metrics.
+* **Index or data stream**: Use a regular index when you need frequent updates or deletes. For append-only timestamped data such as logs, events, and metrics, use a [data stream](/manage-data/data-store/data-streams.md) instead, since data streams manage rolling indices automatically.
 * **Shard sizing**: For production workloads, the number and size of shards affect query speed and cluster stability. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for guidelines.
 
 ## Learn more
