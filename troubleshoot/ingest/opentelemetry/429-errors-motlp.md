@@ -22,7 +22,7 @@ This issue can occur in both {{serverless-full}} and {{ech}} (ECH) environments.
 
 ## Symptoms
 
-You might see log messages similar to the following in your EDOT Collector output or SDK logs:
+You might notice log messages similar to the following in your EDOT Collector output or SDK logs:
 
 ```json
 {
@@ -31,7 +31,7 @@ You might see log messages similar to the following in your EDOT Collector outpu
 }
 ```
 
-In some cases, you may also see warnings or backpressure metrics increase in your Collector’s internal telemetry (for example, queue length or failed send count).
+Sometimes, you might also notice warnings or backpressure metrics increase in your Collector’s internal telemetry. For example, queue length or failed send count.
 
 ## Causes
 
@@ -42,12 +42,14 @@ A 429 status means that the rate of requests sent to the Managed OTLP endpoint h
 
     The specific limits depend on your environment:
 
-    | Deployment type | Rate limit | Burst limit |
-    |-----------------|------------|-------------|
-    | Serverless      | 15 MB/s    | 30 MB/s     |
-    | ECH             | Depends on deployment size and available {{es}} capacity | Depends on deployment size and available {{es}} capacity |
+   
+    | Deployment type | Rate limit | Burst limit | Dynamic scaling |
+    |----------------|------------|-------------|-----------------|
+    | Serverless | 30 MB/s | 60 MB/s | Not available |
+    | ECH | 1 MB/s (initial) | 2 MB/s (initial) | Yes |
 
-    Exact limits depend on your subscription tier.
+    For the {{serverless-full}} trial, the rate limit is reduced to 15 MB/s and the burst limit is 30 MB/s.
+
     Refer to the [Rate limiting section](opentelemetry://reference/motlp.md#rate-limiting) in the mOTLP reference documentation for details.
 
 * In {{ech}}, the {{es}} capacity for your deployment might be underscaled for the current ingest rate.
