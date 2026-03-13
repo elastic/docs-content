@@ -52,4 +52,6 @@ Some dashboards are created and managed by the system, and are identified as `ma
 
 ## Agent skills
 
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+
 - [Kibana dashboards](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards).

@@ -35,5 +35,7 @@ Watcher is not available in {{serverless-full}}.
 
 ## Agent skills
 
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+
 - [Kibana alerting rules](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-alerting-rules).
 - [Kibana connectors](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors).

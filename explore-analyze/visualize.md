@@ -47,4 +47,6 @@ Legacy panel types only appear in the **Add panel** dashboard menu if you alread
 
 ## Agent skills
 
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+
 - [Kibana Vega](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega).

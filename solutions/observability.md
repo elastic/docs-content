@@ -34,6 +34,8 @@ Browse the latest [{{observability}} release notes](/release-notes/elastic-obser
 
 ## Agent skills
 
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+
 - [Observability manage SLOs](https://github.com/elastic/agent-skills/tree/main/skills/observability/manage-slos).
 - [Observability service health](https://github.com/elastic/agent-skills/tree/main/skills/observability/service-health).
 - [Observability logs search](https://github.com/elastic/agent-skills/tree/main/skills/observability/logs-search).

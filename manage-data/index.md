@@ -48,4 +48,6 @@ If you move to new infrastructure, there are several options for moving existing
 
 ## Agent skills
 
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+
 - [Elasticsearch ingest](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-ingest).

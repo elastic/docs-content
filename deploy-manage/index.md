@@ -77,6 +77,8 @@ You can [upgrade your Elastic environment](/deploy-manage/upgrade.md) to gain ac
 
 ## Agent skills
 
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+
 - [Cloud setup](https://github.com/elastic/agent-skills/tree/main/skills/cloud/setup).
 - [Cloud access management](https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management).
 - [Cloud create project](https://github.com/elastic/agent-skills/tree/main/skills/cloud/create-project).
