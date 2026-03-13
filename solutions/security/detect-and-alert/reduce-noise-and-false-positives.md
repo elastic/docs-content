@@ -64,9 +64,9 @@ Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/alert-
 
 Acts on: **notifications, after alerts are created and stored**
 
-*"Don't notify anyone right now. I'll review later."*
+*"Don't trigger any actions right now. I'll review later."*
 
-Temporarily pause the rule's notification actions (emails, Slack messages, webhooks) without affecting rule execution or alert creation. Alerts generated during a snooze period are stored normally and visible in the Alerts UI. Snoozing expires automatically or can be canceled manually. For space-wide pausing, use a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
+Temporarily pause all of a rule's actions—including notifications (emails, Slack messages, webhooks), ticket creation, and other automated responses—without affecting rule execution or alert creation. Alerts generated during a snooze period are stored normally and visible in the Alerts UI. Snoozing expires automatically or can be canceled manually. For space-wide pausing, use a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
 Refer to [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) for more guidance.
 
@@ -76,13 +76,17 @@ Refer to [Snooze rule actions](/solutions/security/detect-and-alert/manage-detec
 |---|---|---|---|---|
 | Rule still runs | Yes | Yes | Yes | Yes |
 | Alert written to index | Fewer or different alerts | No | First only | Yes |
-| Analyst notified | For matches | No | First only | No |
+| Actions triggered | For matches | No | First only | No |
 | Alert visible in UI | For matches | No | First only | Yes, all alerts |
 | Time-bounded | No | Yes | Yes, configurable window | Yes, configurable duration |
 | Can span multiple rules | No | Yes, shared lists | No | No |
 
+::::{tip}
+You can also control action frequency without modifying alerts. When configuring [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications), you can choose to run actions for each alert, as a summary at custom intervals, or only when specific conditions are met. This provides another way to reduce action noise while still creating all alert records.
+::::
+
 ::::{important}
-Exceptions and suppression have different forensic implications. Exceptions permanently prevent alert records from being created. If you later need to investigate whether a specific event occurred, the alert data won't be there. 
+Exceptions and suppression have different forensic implications. Exceptions permanently prevent alert records from being created. If you later need to investigate whether a specific event occurred, the alert data won't be there—though the original events are still available in source logs if retained.
 
 Suppression still creates an alert but groups subsequent matches into it instead of creating separate alerts. Use suppression when you need at least one alert record for audit or forensic purposes. Reserve exceptions for activity that is definitively never relevant.
 ::::
