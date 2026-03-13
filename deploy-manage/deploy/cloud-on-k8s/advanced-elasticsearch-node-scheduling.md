@@ -337,7 +337,7 @@ Refer to the next section or to the [{{es}} sample resource in the ECK source re
 
 The following example demonstrates how to use the `topology.kubernetes.io/zone` node labels to spread a NodeSet across the availability zones of a Kubernetes cluster.
 
-Note that by default ECK creates a `k8s_node_name` attribute with the name of the Kubernetes node running the Pod, and configures {{es}} to use this attribute. This ensures that {{es}} allocates primary and replica shards to Pods running on different Kubernetes nodes and never to Pods that are scheduled onto the same Kubernetes node. To preserve this behavior while making {{es}} aware of the availability zone, include the `k8s_node_name` attribute in the comma-separated `cluster.routing.allocation.awareness.attributes` list.
+By default ECK creates a `k8s_node_name` attribute with the name of the Kubernetes node running the Pod, and configures {{es}} to use this attribute. This ensures that {{es}} allocates primary and replica shards to Pods running on different Kubernetes nodes and never to Pods that are scheduled onto the same Kubernetes node. To preserve this behavior while making {{es}} aware of the availability zone, include the `k8s_node_name` attribute in the comma-separated `cluster.routing.allocation.awareness.attributes` list.
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
