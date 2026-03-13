@@ -21,15 +21,15 @@ The Kafka output sends events to Apache Kafka.
 * Kafka 3.6+ introduces stricter timestamp validation with the introduction of two new broker/topic-level properties: [log.message.timestamp.before.max.ms](https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html#message-timestamp-before-max-ms) and
 [log.message.timestamp.after.max.ms](https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html#message-timestamp-after-max-ms).
 
- These properties limit the time difference between the message timestamp (from {{agent}}) and the Kafka broker receive time.
- Messages can be rejected if the values are exceeded and `log.message.timestamp.type=CreateTime` is set.
+  These properties limit the time difference between the message timestamp (from {{agent}}) and the Kafka broker receive time.
+  Messages can be rejected if the values are exceeded and `log.message.timestamp.type=CreateTime` is set.
 
- These checks are ignored if `log.message.timestamp.type=LogAppendTime` is set.
+  These checks are ignored if `log.message.timestamp.type=LogAppendTime` is set.
 
 * For Kafka version 0.10.0.0+ the message creation timestamp is set by {{agent}} and equals the initial timestamp of the event. This behavior affects the retention policy in Kafka. For example, if an {{agent}} event was created 2 weeks ago, the retention policy is set to 7 days and the message from {{agent}} arrives to Kafka today, it is immediately discarded because the timestamp value is before the last 7 days.
 
- You can change this behavior by setting timestamps on message arrival instead.
- The message is not discarded but kept for 7 more days. Set `log.message.timestamp.type` to `LogAppendTime` (default `CreateTime`) in the Kafka configuration.
+  You can change this behavior by setting timestamps on message arrival instead.
+  The message is not discarded but kept for 7 more days. Set `log.message.timestamp.type` to `LogAppendTime` (default `CreateTime`) in the Kafka configuration.
 :::
 
 This example configures a Kafka output called `kafka-output` in the {{agent}} `elastic-agent.yml` file, with settings as described further in:
