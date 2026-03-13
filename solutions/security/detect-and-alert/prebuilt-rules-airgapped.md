@@ -14,12 +14,16 @@ description: Learn how to install and update Elastic prebuilt detection rules in
 
 {{kib}} downloads Elastic prebuilt rules from the {{package-registry}}. In air-gapped environments without internet access, you can use one of the following methods to install and update prebuilt rules:
 
-* **[Use a self-hosted {{package-registry}}](#install-prebuilt-rules-self-hosted-epr)**: Host your own {{package-registry}} to provide rules to your air-gapped environment. This is the recommended approach for ongoing rule management and updates.
-* **[Manually transfer prebuilt rules](#import-export-airgapped)**: Export rules from an internet-connected {{elastic-sec}} instance and import them into your air-gapped environment. This is a simpler approach for one-time transfers or when container infrastructure isn't available.
+* [Use a self-hosted {{package-registry}}](#install-prebuilt-rules-self-hosted-epr): Host your own {{package-registry}} to provide rules to your air-gapped environment. This is the recommended approach for ongoing rule management and updates.
+* [Manually transfer prebuilt rules](#import-export-airgapped): Export rules from an internet-connected {{elastic-sec}} instance and import them into your air-gapped environment. This is a simpler approach for one-time transfers or when container infrastructure isn't available.
 
 ::::{note}
 A set of prebundled detection rules that you can install without a {{package-registry}} are included when [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md#general-fleet-settings-kb) is set to `true`. However, to receive rule updates beyond whats bundled with your {{kib}} version, use one of the methods described on this page.
 ::::
+
+:::{admonition} Air-gapped deployment setup
+For an overview of air-gapped deployment prerequisites, refer to [Air-gapped install](/deploy-manage/deploy/self-managed/air-gapped-install.md).
+:::
 
 ## Install prebuilt rules from your self-hosted registry [install-prebuilt-rules-self-hosted-epr]
 
@@ -118,16 +122,16 @@ After your self-hosted {{package-registry}} is running and {{kib}} is configured
 
     * To install all available rules, click **Install all**.
     * To install specific rules, select them and click **Install *x* selected rule(s)**.
-    * To install and immediately enable rules, click the options menu (![Vertical boxes button](/solutions/images/security-boxesVertical.svg "")) and select **Install and enable**.
+    * To install and immediately enable rules, click the options menu {icon}`boxes_vertical` and select **Install and enable**.
 
-For more details about enabling installed rules, refer to [Install and enable Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules).
+For more details about enabling installed rules, refer to [Install and enable Elastic prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md#load-prebuilt-rules).
 
 ## Update prebuilt rules using your self-hosted registry [update-prebuilt-rules-self-hosted-registry]
 
 To update your prebuilt rules, first update your self-hosted {{package-registry}} with a newer distribution image, then install the rule updates in {{elastic-sec}}.
 
 ::::{important}
-Elastic releases prebuilt rule updates continuously. To receive the latest updates in an air-gapped environment, we recommend updating your self-hosted {{package-registry}} at least monthly. Prebuilt rule updates are version-specific. Updating your {{package-registry}} provides rule updates designed for your current {{stack}} version, not rules designed for newer versions. To receive rules designed for a newer version, you must upgrade your entire {{stack}}.
+Elastic releases prebuilt rule updates biweekly. To receive the latest updates in an air-gapped environment, we recommend updating your self-hosted {{package-registry}} at least monthly. Prebuilt rule updates are version-specific. Updating your {{package-registry}} provides rule updates designed for your current {{stack}} version, not rules designed for newer versions. To receive rules designed for a newer version, you must upgrade your entire {{stack}}.
 ::::
 
 :::::{stepper}
@@ -163,7 +167,7 @@ After updating your registry, install the rule updates in your air-gapped {{elas
     * To update specific rules, select them and click **Update *x* selected rule(s)**.
     * To review changes before updating, click a rule name to open the rule details flyout and compare versions.
 
-For more details about updating prebuilt rules, refer to [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules).
+For more details about updating prebuilt rules, refer to [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md).
 ::::
 
 :::::
@@ -188,13 +192,13 @@ For more details on exporting and importing rules, refer to [Export and import r
 ::::{step} Export rules from an internet-connected instance
 :anchor: export-rules-airgapped
 
-1. On an internet-connected {{elastic-sec}} instance, [install the prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) you need.
+1. On an internet-connected {{elastic-sec}} instance, [install the prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md#load-prebuilt-rules) you need.
 
 2. Export the prebuilt rules:
 
     1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
     2. Select the rules you want to export, or click **Select all** to select all rules.
-    3. Click **Bulk actions** → **Export**.
+    3. Click **Bulk actions** > **Export**.
 
 3. Transfer the exported `.ndjson` file to your air-gapped environment using your organization's approved file transfer method.
 ::::
@@ -216,15 +220,16 @@ For more details on exporting and importing rules, refer to [Export and import r
 ::::{step} Update rules
 :anchor: update-rules-export-import
 
-1. To get rule updates, repeat this export import process after [updating your prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules) on the internet-connected instance. 
+1. To get rule updates, repeat this export import process after [updating your prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md) on the internet-connected instance. 
 2. When importing rules, select **Overwrite existing detection rules with conflicting "rule_id"** to update existing rules.
 ::::
 
 :::::
 
-## Related documentation [prebuilt-rules-airgapped-related]
+## Next steps [prebuilt-rules-airgapped-related]
 
-* [Run {{agents}} in an air-gapped environment](/reference/fleet/air-gapped.md): Guidance for setting up {{fleet}} and integrations in air-gapped environments.
-* [Air gapped install](/deploy-manage/deploy/self-managed/air-gapped-install.md): An overview of air-gapped setup for the entire {{stack}}.
-* [Configure offline endpoints and air-gapped environments](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md): How to set up {{elastic-endpoint}} artifact updates in air-gapped environments.
+After setting up prebuilt rules, you may need to configure other {{stack}} components for your air-gapped environment:
+
+* **{{fleet}} and integrations**: If your rules depend on data from {{agent}} integrations, refer to [Run {{agents}} in an air-gapped environment](/reference/fleet/air-gapped.md) for guidance on configuring {{fleet}} without internet access.
+* **{{elastic-endpoint}} artifacts**: If you use {{elastic-defend}}, refer to [Configure offline endpoints and air-gapped environments](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md) for endpoint protection updates.
 
