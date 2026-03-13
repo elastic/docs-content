@@ -5,8 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-organizations.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ess: ga
+  serverless: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless
@@ -56,7 +56,7 @@ In the **Actions** column, click the three dots to edit a member’s role, or re
 
 ## Manage users through the {{ecloud}} API [ec-api-organizations]
 
-You can also manage members of your organization using the [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/).
+You can also manage members of your organization using the [{{ecloud}} API]({{cloud-apis}}).
 
 :::{dropdown} Get information about your organization
 
@@ -87,6 +87,60 @@ curl -XPOST \
 ```
 
 1. One or more email addresses to invite to the organization
+
+When creating an invitation, you can define the user's roles and grant access to resources in the API request body:
+
+```sh
+curl -XPOST \
+-H 'Content-Type: application/json' \
+-H "Authorization: ApiKey $EC_API_KEY" \
+"https://api.elastic-cloud.com/api/v1/organizations/$ORGANIZATION_ID/invitations" \
+-d '
+{
+  "emails": [
+    "test@test.com"
+  ],
+  "role_assignments": {
+    "deployment": [
+      {
+        "role_id": "deployment-admin",
+        "organization_id": "ORG_ID_PLACEHOLDER",
+        "all": true
+      }
+    ],
+    "project": {
+      "elasticsearch": [
+        {
+          "role_id": "elasticsearch-viewer", <1>
+          "organization_id": "ORG_ID_PLACEHOLDER",
+          "all": false,
+          "project_ids": [
+            "ES_PROJECT_ID_PLACEHOLDER"
+          ],
+          "application_roles": [
+            "logs_viewer"
+          ] <2>
+        }
+      ],
+      "observability": [
+        {
+          "role_id": "observability-editor",
+          "organization_id": "ORG_ID_PLACEHOLDER",
+          "all": false,
+          "project_ids": [
+            "OBS_PROJECT_ID_PLACEHOLDER"
+          ],
+          "application_roles": [
+          ] <3>
+        }
+      ]
+    }
+  }
+}'
+```
+1. When granting a custom serverless role, you need to grant the relevant `viewer` role ID for the project type.
+2. [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) for the user in this {{serverless-short}} project. 
+3. Pass an empty `application_roles` array to only grant the user {{ecloud}} Console access to the relevant resources. [Learn more about access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
 :::
 
 :::{dropdown} View pending invitations to your organization
@@ -99,6 +153,7 @@ curl -XGET \
 -H "Authorization: ApiKey $EC_API_KEY" \
 "https://api.elastic-cloud.com/api/v1/organizations/$ORGANIZATION_ID/invitations"
 ```
+:::
 
 :::{dropdown} View members in your organization
 
