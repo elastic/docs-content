@@ -107,14 +107,32 @@ service,service-001,extreme_impact
 
 To import a file:
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+1. Find the **Entity Analytics** management page in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Go to the **Asset Criticality** tab.
+3. Select or drag the file you want to import.
+
+    ::::{note}
+    The file validation step highlights any lines that don't follow the required file structure. The asset criticality levels for those entities won't be assigned. We recommend that you fix any invalid lines and re-upload the file.
+    ::::
+
+4. Click **Assign**.
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
 1. Find **Entity Store** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select or drag and drop the file you want to import.
+2. Select or drag the file you want to import.
 
     ::::{note}
     The file validation step highlights any lines that don’t follow the required file structure. The asset criticality levels for those entities won’t be assigned. We recommend that you fix any invalid lines and re-upload the file.
     ::::
 
 3. Click **Assign**.
+:::
+
+::::
 
 This process overwrites any previously assigned asset criticality levels for the entities included in the imported file. The newly assigned or updated asset criticality levels are immediately visible within all asset criticality workflows.
 

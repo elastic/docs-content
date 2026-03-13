@@ -38,10 +38,23 @@ When the entity store is enabled, the following resources are generated for each
 
 ## Enable entity store [enable-entity-store]
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+The entity store is automatically enabled when you turn on the risk scoring engine. To enable both:
+
+1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Turn the toggle on.
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
 To enable the entity store:
 
 1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. On the **Entity Store** page, turn the toggle on.
+2. Turn the toggle on.
+:::
+
+::::
 
 Once you enable the entity store, the **Entities** section appears on the following pages:
 
@@ -61,10 +74,33 @@ Clearing entity store data permanently deletes persisted user, host, and service
 
 To clear entity data:
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Click **Clear Entity Data**.
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
 1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. On the **Entity Store** page, select **Clear**.
+2. Click **Clear Entity Data**.
+:::
+
+::::
 
 
 ## Verify engine status
 
-Once the entity store is enabled, the **Entity Store** page displays the **Engine Status** tab, where you can verify which engines are installed and their statuses. This tab shows a list of installed resources for each installed entity. Click the resource link to navigate to the resource page and view more information.
+Once the entity store is enabled, you can verify which engines are installed and their statuses from the **Engine Status** tab. This tab shows a list of installed resources for each installed entity. Click the resource link to navigate to the resource page and view more information.
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+To access the **Engine Status** tab, find **Entity Analytics** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
+To access the **Engine Status** tab, find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+:::
+
+::::
