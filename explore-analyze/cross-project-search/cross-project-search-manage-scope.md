@@ -22,7 +22,9 @@ With the {{cps-init}} scope selector, you can select:
 * **This project**: Searches only the origin project.
 * **All projects**: Searches the origin project and all linked projects.
 
+:::{tip}
 The scope selector also lists the aliases of all [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), which is useful when you need to reference them in queries or index patterns.
+:::
 
 The scope selector is not available in every app. Some apps display it as read-only, and others do not show it at all. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
 
