@@ -29,6 +29,10 @@ To create an SLO, find **SLOs** in the main menu or use the [global search field
 
 From here, complete the following steps:
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/manage-slos
+:::
+
 1. [Define your service-level indicator (SLI)](/solutions/observability/incident-management/create-an-slo.md#define-sli).
 2. [Set your objectives](/solutions/observability/incident-management/create-an-slo.md#set-slo).
 3. [Describe your SLO](/solutions/observability/incident-management/create-an-slo.md#slo-describe).
