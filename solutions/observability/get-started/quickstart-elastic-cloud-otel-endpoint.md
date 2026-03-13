@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless: ga
   deployment:
-    ess:
+    ech:
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
@@ -22,7 +22,7 @@ The {{motlp}} is designed for the following use cases:
 Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to your Serverless project or {{ech}} cluster.
 
 :::{note}
-:applies_to: ess:
+:applies_to: ech:
 On {{ech}}, the Managed OTLP endpoint requires a deployment version 9.0 or later.
 :::
 
@@ -45,7 +45,7 @@ To retrieve your {{motlp}} endpoint address and API key, follow these steps:
 Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
 :::
 
-:::{applies-item} ess: preview
+:::{applies-item} ech: preview
 1. Log in to the Elastic Cloud Console.
 2. Find your deployment on the home page or on the **Hosted deployments** page, and then select **Manage**.
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
