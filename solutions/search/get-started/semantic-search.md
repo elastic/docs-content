@@ -31,14 +31,20 @@ To learn about role-based access control, check out [](/deploy-manage/users-role
 
 When you create vectors (or _vectorize_ your data), you convert complex and nuanced documents into multidimensional numerical representations.
 You can choose from many different vector embedding models. Some are extremely hardware efficient and can be run with less computational power. Others have a greater understanding of the context, can answer questions, and lead a threaded conversation.
-The examples in this guide use the default Learned Sparse Encoder ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) model, which provides great relevance across domains without the need for additional fine tuning.
+
+:::{note}
+The examples in this guide use the default models for `semantic_text`, which varies by deployment type and version:
+ 
+- On {{serverless-short}} and {{stack}} 9.4+, the default is `.jina-embeddings-v5-text-small`, a dense vector model. 
+- On earlier {{stack}} versions, the default is [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), a sparse vector model. 
+:::
 
 The way that you store vectors has a significant impact on the performance and accuracy of search results.
 They must be stored in specialized data structures designed to ensure efficient similarity search and speedy vector distance calculations.
 This guide uses the [semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md), which provides sensible defaults and automation.
 
-:::::{stepper}
-::::{step} Create an index
+::::::{stepper}
+:::::{step} Create an index
 An index is a collection of documents uniquely identified by a name or an alias.
 You can follow the guided index workflow:
 
@@ -53,32 +59,77 @@ Alternatively, run the following API request in [Console](/explore-analyze/query
 PUT /semantic-index
 ```
 
-:::{tip}
+::::{tip}
 For an introduction to the concept of indices, check out [](/manage-data/data-store/index-basics.md).
-:::
 ::::
-::::{step} Create a semantic_text field mapping
+:::::
+:::::{step} Create a semantic_text field mapping
 Each index has mappings that define how data is stored and indexed, like a schema in a relational database.
 The following example creates a mapping for a single field ("content"):
+
+::::{applies-switch}
+
+:::{applies-item} { serverless: ga, stack: ga 9.4+ }
 
 ```console
 PUT /semantic-index/_mapping
 {
   "properties": {
     "content": {
-      "type": "semantic_text"
+      "type": "semantic_text" <1>
     }
   }
 }
 ```
 
-When you use `semantic_text` fields, the type of vector is determined by the vector embedding model.
-In this case, the default ELSER model will be used to create sparse vectors.
+1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used. On {{serverless-short}} and {{stack}} 9.4+, the default {{infer}} endpoint is `.jina-embeddings-v5-text-small`, which generates dense vectors.
 
-For a deeper dive, check out [Mapping embeddings to Elasticsearch field types: semantic_text, dense_vector, sparse_vector](https://www.elastic.co/search-labs/blog/mapping-embeddings-to-elasticsearch-field-types).
+:::
+
+:::{applies-item} stack: ga 9.3
+
+```console
+PUT /semantic-index/_mapping
+{
+  "properties": {
+    "content": {
+      "type": "semantic_text" <1>
+    }
+  }
+}
+```
+
+1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used. On {{stack}} 9.3, the default {{infer}} endpoint is `.elser-2-elastic`, which generates sparse vectors.
+
+:::
+
+:::{applies-item} stack: ga 9.0-9.2
+
+```console
+PUT /semantic-index/_mapping
+{
+  "properties": {
+    "content": {
+      "type": "semantic_text" <1>
+    }
+  }
+}
+```
+
+1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used. On {{stack}} 9.0–9.2, the default {{infer}} endpoint is `.elser-2-elasticsearch`, which generates sparse vectors.
+
+:::
+
 ::::
 
-::::{step} Add documents
+::::{important}
+Relying on the default {{infer}} endpoint is convenient for getting started, but for production environments, we recommend explicitly specifying the `inference_id`. The default endpoint can change across versions and deployment types, which can lead to indices with mixed embedding models and cause ranking issues in multi-index searches. For details, refer to [Potential issues when mixing embedding models across indices](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md).
+::::
+
+For a deeper dive into different vector types, refer to [Mapping embeddings to Elasticsearch field types: semantic_text, dense_vector, sparse_vector](https://www.elastic.co/search-labs/blog/mapping-embeddings-to-elasticsearch-field-types).
+:::::
+
+:::::{step} Add documents
 
 You can use the Elasticsearch bulk API to ingest an array of documents:
 
@@ -93,30 +144,30 @@ POST /_bulk?pretty
 ```
 
 The bulk ingestion might take longer than the default request timeout.
-If it times out, wait for the ELSER model to load (typically 1-5 minutes) then retry it.
+If it times out, wait for the model to load (typically 1-5 minutes) then retry it.
 You can check the model state by going to the **{{models-app}}** page from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 First, the content is divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched.
-Each chunk of text is then transformed into a sparse vector by using the ELSER model's text expansion techniques.
+Each chunk of text is then transformed into a vector representation by using the {{ml}} model.
 
 ![Semantic search chunking](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt9bbe5e260012b15d/67ffffc8165067d96124b586/animated-gif-semantic-search-chunking.gif)
 
 The vectors are stored in {{es}} and are ready to be used for semantic search.
-::::
-::::{step} Explore the data
+:::::
+:::::{step} Explore the data
 
 To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or the global search field.
 
 In **Discover**, you can click the expand icon {icon}`expand` to show details about documents in the table:
 
-:::{image} /solutions/images/serverless-discover-semantic.png
+::::{image} /solutions/images/serverless-discover-semantic.png
 :screenshot:
 :alt: Discover table view with document expanded
-:::
+::::
 
 For more tips, check out [](/explore-analyze/discover/discover-get-started.md).
-::::
 :::::
+::::::
 
 ## Test semantic search
 
