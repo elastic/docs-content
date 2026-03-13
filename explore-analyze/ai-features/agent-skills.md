@@ -4,13 +4,10 @@ description: Install and use official Elastic agent skills to help AI coding age
 applies_to:
   stack: ga
   serverless: ga
+  product: preview
 ---
 
 # AI agent skills for Elastic [elastic-agent-skills]
-
-```{applies_to}
-product: preview
-```
 
 The [elastic/agent-skills](https://github.com/elastic/agent-skills) repository provides official, open-source skill packages that help AI coding agents work with the Elastic stack. Built on the [Agent Skills](https://agentskills.io/) open standard, they give agents like Claude Code, Cursor, GitHub Copilot, and others the specialized knowledge they need to perform Elastic-specific tasks more accurately and efficiently.
 
