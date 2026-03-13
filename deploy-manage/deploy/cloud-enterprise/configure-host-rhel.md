@@ -335,7 +335,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo systemctl restart NetworkManager
     ```
 
-28. As a sudoers user, adjust the system limits. Add the following configuration values to the `/etc/security/limits.conf` file.
+28. As a sudoers user, adjust the system limits. Add the following configuration values to the `/etc/security/limits.conf` file. These settings apply to host-level processes and interactive user sessions (for example, SSH).
 
     ```text
     *                soft    nofile         1024000
@@ -353,14 +353,35 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     root             soft    memlock        unlimited
     ```
 
-29. Restart the podman service by running this command:
+    ::::{important}
+    The `/etc/security/limits.conf` settings are PAM-based and do not apply to processes running inside Podman containers. To ensure the same limits are enforced inside containers, you must also configure the Podman default ulimits as described in the next step.
+    ::::
+
+
+29. Configure the default container ulimits. Open the `/etc/containers/containers.conf` file and add the following under the `[containers]` section. If the file does not exist, copy it from `/usr/share/containers/containers.conf` first. These settings ensure that all containers created by Podman inherit the correct resource limits.
+
+    ```text
+    [containers]
+    default_ulimits = [
+      "nofile=1024000:1024000",
+      "memlock=-1:-1",
+      "nproc=-1:-1",
+    ]
+    ```
+
+    ::::{note}
+    If the `[containers]` section already exists in the file, merge the `default_ulimits` setting into it rather than creating a duplicate section.
+    ::::
+
+
+30. Restart the podman service by running this command:
 
     ```sh
     sudo systemctl daemon-reload
     sudo systemctl restart podman
     ```
 
-30. Reboot the RHEL host.
+31. Reboot the RHEL host.
 
     ```sh
     sudo reboot
