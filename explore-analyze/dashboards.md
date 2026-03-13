@@ -16,13 +16,6 @@ products:
 
 A dashboard is composed of one or more **panels** that you arrange to tell your data story. Each panel can display visualizations such as charts, tables, metrics, and maps, static annotations like text or images, or specialized views for {{ml}} or {{observability}} data.
 
-## Agent skills
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
-A skill is available to help AI agents create and manage Kibana dashboards.
-:::
-
 ![Example dashboard](/explore-analyze/images/kibana-dashboard-overview.png "")
 
 ## Get started with dashboards [get-started-with-dashboards]
@@ -56,3 +49,7 @@ Once you understand the basics, explore these common tasks:
 ## About managed dashboards [managed-dashboards]
 
 Some dashboards are created and managed by the system, and are identified as `managed` in your list of dashboards. This generally happens when you set up an integration to add data. You can't edit managed dashboards directly, but you can [duplicate](dashboards/duplicate-dashboards.md) them and edit the duplicates.
+
+## Agent skills
+
+- [Kibana dashboards](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards).

@@ -19,28 +19,6 @@ products:
 :::{include} ../get-started/_snippets/observability-overview.md
 :::
 
-## Agent skills
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/manage-slos
-A skill is available to help AI agents create and manage service-level objectives.
-:::
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/service-health
-A skill is available to help AI agents assess service health using APM and related signals.
-:::
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/logs-search
-A skill is available to help AI agents investigate Observability logs with ES|QL.
-:::
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/llm-obs
-A skill is available to help AI agents monitor LLM and agentic application behavior.
-:::
-
 ## Related reference [_reference_documentation]
 
 The {{observability}} reference documentation is available in the [Elastic reference documentation](/reference/observability/index.md).
@@ -53,3 +31,10 @@ You can also browse reference documentation for the following components:
 - [Elastic APM agents](/reference/apm-agents/index.md)
 
 Browse the latest [{{observability}} release notes](/release-notes/elastic-observability/index.md) for more information on new features, enhancements, and fixes.
+
+## Agent skills
+
+- [Observability manage SLOs](https://github.com/elastic/agent-skills/tree/main/skills/observability/manage-slos).
+- [Observability service health](https://github.com/elastic/agent-skills/tree/main/skills/observability/service-health).
+- [Observability logs search](https://github.com/elastic/agent-skills/tree/main/skills/observability/logs-search).
+- [Observability LLM observability](https://github.com/elastic/agent-skills/tree/main/skills/observability/llm-obs).

@@ -20,13 +20,6 @@ Use this section to understand search techniques, query methods, ranking strateg
 Using the {{es}} solution or serverless project type? The [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) covers additional UI tools included with these options.
 ::::
 
-## Agent skills
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql
-A skill is available to help AI agents run ES|QL queries for search and analysis workflows.
-:::
-
 ## What you can build
 
 Use {{es}} search capabilities for use cases such as:
@@ -65,3 +58,7 @@ To dive more deeply into the building blocks of {{es}} clusters, including nodes
 
 * [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
 * [{{es}} API documentation]({{es-apis}})
+
+## Agent skills
+
+- [Elasticsearch ES|QL](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql).

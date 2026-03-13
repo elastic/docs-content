@@ -14,13 +14,6 @@ products:
 
 Whether you're looking to build a fast and relevant search solution, monitor business-critical applications and infrastructure, monitor endpoint security data, or one of the [many other use cases Elastic supports](/get-started/introduction.md), you need to understand how to ingest and manage data stored in {{es}}.
 
-## Agent skills
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-ingest
-A skill is available to help AI agents ingest and transform data into Elasticsearch.
-:::
-
 ## Learn how data is stored
 
 % Topic: Learning about Elastic data store primitives
@@ -52,3 +45,7 @@ Strategies for managing data depend on the type of data and how you're using it.
 If you move to new infrastructure, there are several options for moving existing data between {{es}} clusters.
 
 **Learn more in [Migrate your {{es}} data](/manage-data/migrate.md).**
+
+## Agent skills
+
+- [Elasticsearch ingest](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-ingest).

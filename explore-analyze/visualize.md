@@ -14,13 +14,6 @@ products:
 
 Use one of the editors to create visualizations of your data. Each editor offers various capabilities.
 
-## Agent skills
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
-A skill is available to help AI agents build Vega and Vega-Lite visualizations in Kibana.
-:::
-
 $$$panels-editors$$$
 
 | **Content** | **Panel type** | **Description** |
@@ -51,3 +44,7 @@ $$$panels-editors$$$
 :::{note}
 Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
 :::
+
+## Agent skills
+
+- [Kibana Vega](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega).
