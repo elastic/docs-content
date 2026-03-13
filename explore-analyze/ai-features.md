@@ -23,6 +23,13 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 - To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
 - Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
 
+## Agent skills
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/agent-builder
+A skill is available to help AI agents create and manage Agent Builder agents and tools.
+:::
+
 ## AI-powered features on the Elastic platform
 
 The following AI-powered features are available across the Elastic platform. These are core {{es}} capabilities that you can use regardless of your chosen solution or project type.

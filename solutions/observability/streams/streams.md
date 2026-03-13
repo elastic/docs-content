@@ -17,6 +17,13 @@ products:
 
 Streams provides a single, centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying {{es}} components.
 
+## Agent skills
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/streams
+A skill is available to help AI agents inspect and manage Kibana Streams.
+:::
+
 ## Classic versus wired streams [streams-classic-vs-wired]
 
 Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ in configuration, inheritance, and field mapping.

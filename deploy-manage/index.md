@@ -26,6 +26,58 @@ This section focuses on deploying and managing the core components of the {{stac
 To get started quickly, you can set up a [local development and testing environment](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md), or sign up for a [Serverless](https://cloud.elastic.co/serverless-registration) or [Hosted](https://cloud.elastic.co/registration) trial in {{ecloud}}.
 :::
 
+## Agent skills
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/setup
+A skill is available to help AI agents configure Elastic Cloud authentication and defaults.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
+A skill is available to help AI agents manage Elastic Cloud access, roles, and API keys.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/create-project
+A skill is available to help AI agents create Elastic Cloud Serverless projects.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/manage-project
+A skill is available to help AI agents perform day-2 management of Serverless projects.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/network-security
+A skill is available to help AI agents manage Serverless network security and traffic filters.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authn
+A skill is available to help AI agents configure and troubleshoot Elasticsearch authentication.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authz
+A skill is available to help AI agents manage Elasticsearch authorization and RBAC.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-audit
+A skill is available to help AI agents enable and analyze Elasticsearch audit logging.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-security-troubleshooting
+A skill is available to help AI agents troubleshoot Elasticsearch security issues.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-audit
+A skill is available to help AI agents enable and tune Kibana audit logging.
+:::
+
 ## Design and deploy
 
 Learn how to design and deploy a production-ready Elastic environment.

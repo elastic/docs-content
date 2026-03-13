@@ -14,6 +14,13 @@ products:
 
 Use one of the editors to create visualizations of your data. Each editor offers various capabilities.
 
+## Agent skills
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
+A skill is available to help AI agents build Vega and Vega-Lite visualizations in Kibana.
+:::
+
 $$$panels-editors$$$
 
 | **Content** | **Panel type** | **Description** |

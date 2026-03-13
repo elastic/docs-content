@@ -21,6 +21,28 @@ description: Elastic Security combines threat detection analytics, cloud native 
 :::{include} ../get-started/_snippets/security-overview.md
 :::
 
+## Agent skills
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/alert-triage
+A skill is available to help AI agents triage Elastic Security alerts.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
+A skill is available to help AI agents create and manage Elastic Security cases.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management
+A skill is available to help AI agents create, tune, and manage detection rules.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/generate-security-sample-data
+A skill is available to help AI agents generate sample security data for demos and testing.
+:::
+
 ## Related reference
 
 * [{{elastic-sec}} reference documentation](/reference/security/index.md) 

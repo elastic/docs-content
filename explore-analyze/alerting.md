@@ -14,6 +14,18 @@ products:
 
 Alerting tools in Elasticsearch and Kibana provide functionality to monitor data and notify you about significant changes or events in real time. This page provides an overview of how the key components work.
 
+## Agent skills
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-alerting-rules
+A skill is available to help AI agents create and manage Kibana alerting rules.
+:::
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors
+A skill is available to help AI agents create and manage Kibana connectors.
+:::
+
 ## Alerts
 
 Alerts are notifications generated when specific conditions are met. These notifications are sent to you through channels that you previously set such as email, Slack, webhooks, PagerDuty, and so on. 
