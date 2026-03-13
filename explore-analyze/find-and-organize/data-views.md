@@ -158,7 +158,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form lists indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search.md#cps-in-kibana). This applies when you create a {{data-source}} from within a {{cps}}-enabled app such as Discover, Dashboards, Lens, or Maps. The index list updates automatically when you change the {{cps}} scope.
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form lists indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). This applies when you create a {{data-source}} from within a {{cps}}-enabled app such as Discover, Dashboards, Lens, or Maps. The index list updates automatically when you change the {{cps}} scope.
 
 An index pattern like `logs-*` matches indices across the origin project and all linked projects in scope.
 
