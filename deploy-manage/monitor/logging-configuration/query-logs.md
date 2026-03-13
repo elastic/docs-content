@@ -15,7 +15,7 @@ applies_to:
 The following query types are supported:
 
 - `dsl`: Logs every search operation performed on using the [Query DSL](/explore-analyze/query-filter/languages/querydsl.md).
-- `esql`: Logs every query operation performed on the cluster using [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md).
+- `esql`: Logs every query operation performed on the cluster using [{{esql}}](elasticsearch://reference/query-languages/esql.md).
 - `eql`: Logs every query operation performed on the cluster using [EQL](/explore-analyze/query-filter/languages/eql.md).
 - `sql`: Logs every query operation performed on the cluster using [SQL](/explore-analyze/query-filter/languages/sql.md).
 
