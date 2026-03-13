@@ -18,6 +18,8 @@ This section covers the following topics:
 * [StatefulSets orchestration](#k8s-statefulsets)
 * [Limitations](#k8s-orchestration-limitations)
 * [Advanced control during rolling upgrades](#k8s-advanced-upgrade-control)
+* [Cluster Rolling Restart](#cluster-rolling-restart)
+* [Restart allocation delay](#restart-allocation-delay)
 
 ## NodeSets overview [k8s-nodesets]
 
@@ -195,3 +197,81 @@ For a complete list of available predicates, their meaning, and example usage, r
 * These predicates might change in the future. We will be adding, removing, and renaming these over time, so be careful in adding these to any automation.
 * Also, make sure you remove them after use by running `kublectl annotate elasticsearch.elasticsearch.k8s.elastic.co/elasticsearch-sample eck.k8s.elastic.co/disable-upgrade-predicates-`
 ::::
+
+## Cluster Rolling Restart [cluster-rolling-restart]
+
+```{applies_to}
+eck: ga 3.4.0
+```
+
+You can trigger a graceful rolling restart of an {{es}} cluster without changing the cluster spec (version, image, or pod template). The operator reuses the same rolling upgrade path: it uses the Elasticsearch node shutdown API, respects the same [ECK upgrade predicates](cloud-on-k8s://reference/upgrade-predicates.md), and restarts one node at a time.
+
+### Annotations
+
+Set these annotations on the `Elasticsearch` resource metadata:
+
+| Annotation | Description |
+|------------|-------------|
+| `eck.k8s.elastic.co/restart-trigger` | **Required to trigger.** Set or change this value (for example to a timestamp) to start a rolling restart. The value is propagated to pod annotations and is visible in Elasticsearch's node shutdown API as the shutdown reason. |
+
+You can also set the [`eck.k8s.elastic.co/restart-allocation-delay`](#restart-allocation-delay) annotation to control the shard allocation delay during the restart.
+
+To trigger another rolling restart later, update the `restart-trigger` value (for example to a new timestamp). Removing the annotation does **not** trigger a new restart; the operator retains the last trigger value on the pod template. Removing the annotation also does **not** cancel an in-progress rolling restart—pods not yet restarted will still be restarted with the previous trigger value. The operator may emit an admission webhook warning (non-blocking) when you remove the annotation. Re-applying the same `restart-trigger` value (for example after removing it and setting it again) may not trigger a new rolling restart if all pods already have that value; the operator may emit an admission webhook warning when the value is unchanged.
+
+### Example
+
+```yaml subs=true
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: my-cluster
+  annotations:
+    eck.k8s.elastic.co/restart-trigger: "2026-01-14T12:00:00Z"
+spec:
+  version: {{version.stack}}
+  nodeSets:
+    - name: default
+      count: 3
+      config:
+        node.roles: ["master", "data", "ingest", "ml"]
+        node.store.allow_mmap: false
+```
+
+Progress is visible in the Elasticsearch resource status under **In Progress Operations** → **Upgrade**, with node-level messages such as "Deleting pod for rolling restart".
+
+## Restart allocation delay [restart-allocation-delay]
+
+```{applies_to}
+eck: ga 3.4.0
+```
+
+The `eck.k8s.elastic.co/restart-allocation-delay` annotation controls the `allocation_delay` parameter passed to the {{es}} [node shutdown API](elasticsearch://reference/elasticsearch/rest-apis/node-lifecycle-apis.md) when nodes are taken offline. Any value set on this annotation is used during both **upgrades** and **custom triggered [rolling restarts](#cluster-rolling-restart)**.
+
+Set this annotation on the `Elasticsearch` resource metadata:
+
+| Annotation | Description |
+|------------|-------------|
+| `eck.k8s.elastic.co/restart-allocation-delay` | Optional. A duration string (for example `"5m"`, `"20m"`) that tells {{es}} how long to wait before reallocating shards from a node that is shutting down. If unset, the {{es}} default is used. Invalid or negative values are logged and ignored. |
+
+By default, when a node begins shutting down, {{es}} waits a short period before it starts moving shards to other nodes. Setting a longer `allocation_delay` avoids unnecessary shard movements during planned restarts where the node is expected to return quickly. Setting a shorter value causes {{es}} to start rebalancing sooner, which can be useful if the restart is expected to take a long time.
+
+### Example
+
+```yaml subs=true
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: my-cluster
+  annotations:
+    eck.k8s.elastic.co/restart-allocation-delay: "20m"
+spec:
+  version: {{version.stack}}
+  nodeSets:
+    - name: default
+      count: 3
+      config:
+        node.roles: ["master", "data", "ingest", "ml"]
+        node.store.allow_mmap: false
+```
+
+In this example the 20-minute delay applies whenever ECK restarts a node, whether the restart is part of a version upgrade, a spec change, or a manually triggered rolling restart via `eck.k8s.elastic.co/restart-trigger`.
