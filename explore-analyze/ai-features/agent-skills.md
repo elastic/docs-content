@@ -37,7 +37,7 @@ Skills in the [elastic/agent-skills](https://github.com/elastic/agent-skills) re
 
 ## Installation
 
-Follow the instructions below to install AI agent skills.
+You can install Elastic skills using the `skills` CLI with `npx`, or by cloning the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository and running the bundled installer script. The `npx` method requires `Node.js` with `npx` available in your environment.
 
 ### npx (recommended)
 
@@ -53,7 +53,7 @@ Install a specific skill by name:
 npx skills add elastic/agent-skills --skill elasticsearch-esql
 ```
 
-Or use the `@` shorthand:
+Or use the `@` shorthand to specify the skill directly as `repo@skill` (equivalent to `--skill`):
 
 ```bash
 npx skills add elastic/agent-skills@elasticsearch-esql
@@ -121,9 +121,11 @@ The following AI coding agents are compatible with the Agent Skills format:
 | GitHub Copilot | `.agents/skills` |
 | Gemini CLI | `.agents/skills` |
 
-## Keep skills up to date
+## Updating skills
 
 Skills are copied into your project or home directory at install time. When the repository is updated with new instructions, bug fixes, or additional resources, those changes are not automatically synced to your local copies.
+
+The update process depends on how the skills were installed (`npx` or a local clone).
 
 ### Using npx
 
