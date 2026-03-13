@@ -305,7 +305,7 @@ spec:
 Enable `zoneAwareness` on **all** NodeSets in a cluster for the best results. If some NodeSets are accidentally left without `zoneAwareness`, the operator applies safeguards to keep the cluster consistent:
 
 * All NodeSets in the cluster still receive the `ZONE` environment variable and {{es}} zone configuration (`node.attr.zone`, `cluster.routing.allocation.awareness.attributes`) so that shard allocation awareness works cluster-wide.
-* Non-zoneAware NodeSets receive a required node affinity ensuring that the topology key exists for nodes that carry the topology label, but they do not receive topology spread constraints and may not be evenly distributed across zones.
+* Non-zoneAware NodeSets receive a required node affinity ensuring that the topology key exists for nodes that carry the topology label, but they do not receive topology spread constraints and migth not be evenly distributed across zones.
 
 ::::{important}
 Adding `zoneAwareness` to any NodeSet triggers a one-time rolling restart of **all** NodeSets in the cluster, because zone-related {{es}} configuration and environment variables are applied cluster-wide. To avoid unnecessary restarts, enable `zoneAwareness` on every NodeSet at the same time.
