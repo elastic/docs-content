@@ -45,7 +45,7 @@ The following configuration options are available:
 - `elasticsearch.activitylog.enabled`: Enables or disables query logging. Set to `true` to enable. Defaults to `false`.
 - `elasticsearch.activitylog.threshold`: Sets the request duration threshold (in milliseconds) for logging events. If greater than 0, only requests with durations equal to or greater than the threshold are logged. The default is 0.
 - `elasticsearch.activitylog.include.user`: Enables or disables logging of user information. Set to `false` to disable. Defaults to `true`.
-- `elasticsearch.activitylog.search.include.system_indices`: Enables or disables logging of queries performed on system indices for the dsl search module. The default is not logging system indices. 
+- `elasticsearch.activitylog.search.include.system_indices`: Controls whether `dsl` queries targeting system indices are included in the logs. Set to `true` to include them. Defaults to `false`.
 
 ## What is included in the log
 
