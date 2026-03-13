@@ -19,7 +19,11 @@ The following query types are supported:
 - `eql`: Logs every query operation performed on the cluster using [EQL](/explore-analyze/query-filter/languages/eql.md).
 - `sql`: Logs every query operation performed on the cluster using [SQL](/explore-analyze/query-filter/languages/sql.md).
 
-By default, the logging is turned off. To enable the logging, set the `elasticsearch.activitylog.enabled` property to `true` in the `elasticsearch.yml` configuration file or using the [settings API]({{es-apis}}operation/operation-cluster-put-settings):
+## Enable query logging
+
+By default, query logging is turned off. To enable logging, set the `elasticsearch.activitylog.enabled` property to `true` in the `elasticsearch.yml` configuration file.
+
+Alternatively, use the [settings API]({{es-apis}}operation/operation-cluster-put-settings):
 
 ```yaml
 elasticsearch.activitylog.enabled: true
