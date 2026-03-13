@@ -1,9 +1,9 @@
 ---
-
+description: Log every search operation on an Elasticsearch cluster including Query DSL, ES|QL, EQL, and SQL query types, with configurable duration thresholds and per-field output control.
 applies_to:
   deployment:
-self: ga 9.4
-
+    self: ga 9.4
+    serverless: unavailable
 ---
 
 # Query logging [logging]
