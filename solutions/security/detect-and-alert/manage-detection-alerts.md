@@ -20,10 +20,6 @@ The Alerts page is your central hub for triaging and investigating detection ale
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/alert-triage
 :::
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
-:::
-
 :::{image} /solutions/images/security-alert-page.png
 :alt: Alerts page overview
 :screenshot:

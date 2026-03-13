@@ -15,15 +15,7 @@ description: Step-by-step guide to create detection rules using the Kibana rule 
 
 # Create a detection rule using the UI [security-rules-create]
 
-Once the Detections feature is [turned on](/solutions/security/detect-and-alert/turn-on-detections.md), follow these steps to create a detection rule:
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management
-:::
-
-::::{tip}
-At any step, you can preview the rule before saving it to see what kind of results you can expect.
-::::
+Once the Detections feature is [turned on](/solutions/security/detect-and-alert/turn-on-detections.md), follow these steps to create a detection rule. At any step, you can preview the rule before saving it to see what kind of results you can expect.
 
 1. Define the [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#rule-types). The configuration for this step varies depending on the rule type. For field descriptions specific to each type, refer to the [Rule types](/solutions/security/detect-and-alert/rule-types.md) section.
 2. Configure [basic rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params).
@@ -32,6 +24,10 @@ At any step, you can preview the rule before saving it to see what kind of resul
 5. (Optional) Set up [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications).
 6. (Optional) Set up [response actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-response-action).
 7. Create and enable the rule, or create the rule without enabling it. 
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management
+:::
 
 :::{admonition} Create rules programmatically
 If you prefer to create rules programmatically instead of using the UI, refer to [Using the API](/solutions/security/detect-and-alert/using-the-api.md).
