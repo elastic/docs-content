@@ -9,11 +9,11 @@ products:
   - id: elastic-agent
 ---
 
-::::{note}
-If you plan to use {{ls}} to modify {{agent}} output data before it’s sent to Kafka, refer to our [guidance](#kafka-output-settings-ls-warning) for doing so, further in on this page.
-::::
-
 # Kafka output settings [kafka-output-settings]
+
+:::{note}
+If you plan to use {{ls}} to modify {{agent}} output data before it’s sent to Kafka, refer to our [guidance](#kafka-output-settings-ls-warning) for doing so, further in on this page.
+:::
 
 Specify these settings to send data over a secure connection to Kafka. In the {{fleet}} [Output settings](/reference/fleet/fleet-settings.md#output-settings), make sure that the Kafka output type is selected.
 
