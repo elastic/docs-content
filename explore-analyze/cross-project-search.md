@@ -97,8 +97,8 @@ When {{cps}} is enabled and projects are linked, a **{{cps-cap}}** ({{cps-init}}
 
 With the {{cps-init}} scope selector, you can select:
 
-* **This project** — Searches only the origin project.
-* **All projects** — Searches the origin project and all linked projects.
+* **This project**: Searches only the origin project.
+* **All projects**: Searches the origin project and all linked projects.
 
 The scope selector also lists the aliases of all linked projects, which is useful when you need to reference them in [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) at the query level. For example, you can target a specific subset of projects by using `SET project_routing` in an {{esql}} query, or by using qualified expressions like `project_alias:logs-*` in an index pattern. These query-level options let you narrow the scope beyond what the selector offers.
 
