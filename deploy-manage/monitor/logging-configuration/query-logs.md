@@ -8,7 +8,7 @@ applies_to:
 
 # Query logging [logging]
 
-{{es}} allows to log every querying operation performed on the cluster. This supports endpoints like `_search`, `_msearch`, [{{esql}}](/explore-analyze/discover/try-esql.md), [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv), [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) and other APIs that search or query {{es}} indices.
+{{es}} can log every querying operation performed on the cluster. This supports [DSL searches](/explore-analyze/query-filter/languages/querydsl.md), [{{esql}}](/explore-analyze/discover/try-esql.md), [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv), [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) and other APIs that search or query {{es}} indices.
 
 ## Supported query types
 
@@ -31,6 +31,13 @@ elasticsearch.activitylog.enabled: true
 
 By default, search (`dsl`) queries that query only system indices are not logged. To enable logging of such queries, use the `elasticsearch.activitylog.search.include.system_indices` setting described below.
 
+## Finding the logs [finding-query-logs]
+
+Query logs are always emitted on the node that executed the request. These logs can be viewed in the following locations:
+
+- If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). The query logs have the `log.logger` field set to `elasticsearch.querylog`.
+- From the local {{es}} service logs directory. Query log files have a suffix of `_querylog.json`. For example: `mycluster_querylog.json`.
+
 ## Configuring query logging
 
 The following configuration options are available:
@@ -51,6 +58,12 @@ The logs are output in JSON format, and include the following fields:
 - `user.*`: User information fields if enabled.
 - `http.request.headers.x_opaque_id`: The X-Opaque-Id header value if enabled. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
 - `trace.id`: [Trace ID](ecs://reference/ecs-tracing.md#field-trace-id) information.
+- `elasticsearch.task.id`: The task ID of the request.
+- `elasticsearch.node.id`: The node ID of the request.
+- `elasticsearch.parent.task.id`: The task ID of the parent task, if this request is a child of another request.
+- `elasticsearch.parent.node.id`: The node ID of the parent task, if this request is a child of another request.
+
+Using the parent task and node IDs, it is possible to correlate the log entries for queries that were initiated by other queries. 
 
 ### Query logging specific fields
 
@@ -59,13 +72,13 @@ The logs are output in JSON format, and include the following fields:
 - `elasticsearch.querylog.took_millis`: How long (in milliseconds) the request took to complete.
 - `elasticsearch.querylog.timed_out`: Boolean specifying whether the query timed out.
 - `elasticsearch.querylog.query`: The query text (depending on the query language, could be string or JSON).
-- `elasticsearch.querylog.indices`: Array containing the indices that were requested. These may not be fully resolved. May contain wildcards and index expressions, and it is not guaranteed these resolve to any specific index or exist at all. Note that for some queries (like {{esql}}) indices are part of the query text and may not be available as a separate field. 
+- `elasticsearch.querylog.indices`: Array containing the indices that were requested. These may not be fully resolved. May contain wildcards and index expressions, and it is not guaranteed these resolve to any specific index or exist at all. Not supported for `sql` queries.
 - `elasticsearch.querylog.result_count`: The number of results actually returned in the response. 
 - `elasticsearch.querylog.is_system`: If system index logging is enabled, indicates whether the request was performed only on system indices.
 - `elasticsearch.querylog.has_aggregations`: For a `dsl` search result, this boolean flag specifies whether the result has a non-empty aggregations section. 
 - `elasticsearch.querylog.shards.successful`, `elasticsearch.querylog.shards.skipped`, `elasticsearch.querylog.shards.failed`: How many shards were successful, skipped and failed during the query execution. 
-- `elasticsearch.querylog.is_ccs` - Indicates whether the request was a [{{ccs}}](/explore-analyze/cross-cluster-search.md). 
 - `elasticsearch.querylog.remote_count` - For cross-cluster queries, this field indicates the number of remote clusters involved in the query execution. 
+- `elasticsearch.querylog.remotes` - For cross-cluster queries, this field enumerates other clusters involved in the query execution.
 - `elasticsearch.querylog.is_remote` - For `dsl` queries, indicates whether the query was initiated by a remote cluster.
 
 Additional fields specific to {{es}} environment may be added. 
@@ -83,9 +96,11 @@ In addition to the fields listed above, each query language may include fields s
 
 ### Example log entry
 
+Query DSL:
+
 ```json
 {
-  "@timestamp": "2026-03-04T19:40:34.736Z",
+  "@timestamp": "2026-03-13T01:01:57.391Z",
   "log.level": "INFO",
   "auth.type": "REALM",
   "elasticsearch.querylog.indices": [
@@ -95,20 +110,20 @@ In addition to the fields listed above, each query language may include fields s
   "elasticsearch.querylog.result_count": 3,
   "elasticsearch.querylog.search.total_count": 3,
   "elasticsearch.querylog.shards.successful": 1,
-  "elasticsearch.querylog.took": 1985208,
-  "elasticsearch.querylog.took_millis": 1,
+  "elasticsearch.querylog.took": 2465042,
+  "elasticsearch.querylog.took_millis": 2,
   "elasticsearch.querylog.type": "dsl",
-  "elasticsearch.task.id": 29848,
-  "event.duration": 1985208,
+  "elasticsearch.task.id": 4839,
+  "event.duration": 2465042,
   "event.outcome": "success",
-  "http.request.headers.x_opaque_id": "opaque-1773275310",
+  "http.request.headers.x_opaque_id": "opaque-1773363717",
   "trace.id": "0af7651916cd43dd8448eb211c80319c",
   "user.name": "elastic",
   "user.realm": "reserved",
   "ecs.version": "1.2.0",
   "service.name": "ES_ECS",
   "event.dataset": "elasticsearch.querylog",
-  "process.thread.name": "elasticsearch[node-1][search][T#14]",
+  "process.thread.name": "elasticsearch[node-1][search][T#6]",
   "log.logger": "elasticsearch.querylog",
   "elasticsearch.cluster.uuid": "gjYgb-uQQAuLmDoKlQInZw",
   "elasticsearch.node.id": "juurGSfgRYGwTP2ttZbtOQ",
@@ -117,8 +132,55 @@ In addition to the fields listed above, each query language may include fields s
 }
 ```
 
-Example failure entry:
+Cross-cluster query:
+```json
+{
+  "@timestamp": "2026-03-13T01:01:58.266Z",
+  "log.level": "INFO",
+  "auth.type": "REALM",
+  "elasticsearch.querylog.clusters.successful": 2,
+  "elasticsearch.querylog.clusters.total": 2,
+  "elasticsearch.querylog.esql.profile.analysis.took": 388084,
+  "elasticsearch.querylog.esql.profile.dependency_resolution.took": 3376250,
+  "elasticsearch.querylog.esql.profile.parsing.took": 466125,
+  "elasticsearch.querylog.esql.profile.planning.took": 4836167,
+  "elasticsearch.querylog.esql.profile.preanalysis.took": 20334,
+  "elasticsearch.querylog.esql.profile.query.took": 16403208,
+  "elasticsearch.querylog.indices": [
+    "remote2:query_log_test_index",
+    "remote1:query_log_test_index"
+  ],
+  "elasticsearch.querylog.query": "FROM *:query_log_test_index | LIMIT 10",
+  "elasticsearch.querylog.remote_count": 2,
+  "elasticsearch.querylog.remotes": [
+    "remote2",
+    "remote1"
+  ],
+  "elasticsearch.querylog.result_count": 2,
+  "elasticsearch.querylog.shards.successful": 2,
+  "elasticsearch.querylog.took": 16403208,
+  "elasticsearch.querylog.took_millis": 16,
+  "elasticsearch.querylog.type": "esql",
+  "elasticsearch.task.id": 4923,
+  "event.duration": 16403208,
+  "event.outcome": "success",
+  "http.request.headers.x_opaque_id": "opaque-1773363717",
+  "trace.id": "0af7651916cd43dd8448eb211c80319c",
+  "user.name": "elastic",
+  "user.realm": "reserved",
+  "ecs.version": "1.2.0",
+  "service.name": "ES_ECS",
+  "event.dataset": "elasticsearch.querylog",
+  "process.thread.name": "elasticsearch[node-1][esql_worker][T#11]",
+  "log.logger": "elasticsearch.querylog",
+  "elasticsearch.cluster.uuid": "gjYgb-uQQAuLmDoKlQInZw",
+  "elasticsearch.node.id": "juurGSfgRYGwTP2ttZbtOQ",
+  "elasticsearch.node.name": "node-1",
+  "elasticsearch.cluster.name": "querying"
+}
+```
 
+Example query failure:
 ```json
 {
   "@timestamp": "2026-03-04T19:40:35.271Z",
@@ -151,16 +213,9 @@ Example failure entry:
 }
 ```
 
-## Finding the logs [finding-query-logs]
-
-Query logs are always emitted on the node that executed the request. These logs can be viewed in the following locations:
-
-- If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). The query logs have the `log.logger` field set to `elasticsearch.querylog`.
-- From the local {{es}} service logs directory. Query log files have a suffix of `_querylog.json` . For example: `mycluster_querylog.json`.
-
 ## When and how to use query logging
 
-While query logging is designed to have as little impact on the performance of your cluster as possible, it will necessarily consume resources needed to create and store the logs. Thus, it is advised to enable query logging only when necessary for troubleshooting or monitoring purposes, and to disable it after the investigation is complete. It is also recommended to set the threshold to avoid logging very quick queries that are of little consequence for cluster performance. 
+While query logging is designed to have as little impact on the performance of your cluster as possible, it will necessarily consume resources needed to create and store the logs. Thus, it is advised to enable query logging only when necessary for troubleshooting or monitoring purposes, and to disable it after the investigation is complete. It is also recommended to set the threshold to avoid logging very quick queries that are of little consequence for the cluster performance. 
 
 Query logging uses an asynchronous logging mechanism that does not block query execution. As a result, if there are too many incoming queries and the logging system can not store all the logs fast enough, some log entries may be lost. If that is a problem, consider increasing the thresholds to only log the most impactful queries. 
 
