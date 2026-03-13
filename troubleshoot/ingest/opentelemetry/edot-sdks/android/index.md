@@ -155,7 +155,15 @@ For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint
 
 ### Local testing deployment
 
-You can quickly launch a local [EDOT Collector](elastic-agent://reference/edot-collector/index.md) service and use it as your export endpoint for testing by running the EDOT Collector launcher from the [Demo application](https://github.com/elastic/android-agent-demo/tree/main/edot-collector).
+You can use [start-local](https://github.com/elastic/start-local/) to quickly spin up {{es}}, {{kib}}, and the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) locally with a single command:
+
+```bash
+curl -fsSL https://elastic.co/start-local | sh -s -- --edot
+```
+
+This creates an `elastic-start-local` folder and starts all three services. Once it finishes, the EDOT Collector endpoint will be available at `http://localhost:4318`, which you can use as your export endpoint for testing.
+
+For more information, refer to the [start-local repository](https://github.com/elastic/start-local/).
 
 ## Create an API key [create-api-key]
 

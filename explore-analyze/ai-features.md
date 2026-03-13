@@ -159,3 +159,7 @@ serverless: ga
 ```
 
 [Entity summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-summary), available in the entity details flyout, uses AI to generate a summary of a user's or host's security context. It aggregates information such as risk scores, asset criticality, vulnerabilities, and {{ml}} anomalies to provide a consolidated view of the entity's security posture. The summary helps you prioritize investigations and identify recommended next steps.
+
+## AI agent skills
+
+[AI agent skills for Elastic](/explore-analyze/ai-features/agent-skills.md) provides official, open-source skill packages that help AI coding agents perform Elastic-specific tasks. Skills are built on the Agent Skills open standard, and include guidance for tasks like working with {{es}} APIs, {{kib}} workflows, and {{observability}} and {{elastic-sec}} use cases.

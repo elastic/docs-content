@@ -22,16 +22,6 @@ Follow these steps to contribute to Elasticsearch API docs locally:
 
 :::::{stepper}
 
-::::{step} Prepare your environment
-
-Run this command to set up your Node.js environment:
-
-```shell
-nvm use
-```
-If you don't have Node.js installed, refer to the [setup guide](https://github.com/elastic/elasticsearch-specification/tree/main?tab=readme-ov-file#prepare-the-environment).
-::::
-
 ::::{step} Clone the specification repo
 ```shell
 git clone https://github.com/elastic/elasticsearch-specification.git
@@ -40,6 +30,16 @@ cd elasticsearch-specification
 :::{warning}
 You must [create PRs from a branch](https://github.com/elastic/elasticsearch-specification/blob/main/CONTRIBUTING.md#send-your-pull-request-from-a-branch) in the `elasticsearch-specification` repo, not a fork.
 :::
+::::
+
+::::{step} Prepare your environment
+
+Run this command to set up your Node.js environment:
+
+```shell
+nvm use
+```
+If you don't have Node.js installed, refer to the [setup guide](https://github.com/elastic/elasticsearch-specification/tree/main?tab=readme-ov-file#prepare-the-environment).
 ::::
 
 ::::{step} Install dependencies
@@ -55,11 +55,7 @@ You should run `make setup` every time you begin work on a contribution, because
 
 ::::{step} Make your docs changes
 Edit the relevant TypeScript files in the `specification` directory. Use JSDoc comments to describe your API interfaces, following the [guidelines](./guidelines.md). Add or update summaries, descriptions, tags, metadata, links, and examples as needed.
-
-:::{important}
-If you're adding a new API, you must first create a REST API specification file in the [`specification/_json_spec`](https://github.com/elastic/elasticsearch-specification/tree/main/specification/_json_spec) directory.
-:::
-
+::::
 ::::{step} Format, generate and validate your changes
 ```shell
 make contrib
@@ -90,7 +86,7 @@ The `transform-to-openapi` command (run by `make contrib`) is used for client li
 
 ::::{step} Apply overlays
 
-[OpenAPI overlays](https://github.com/OAI/Overlay-Specification?tab=readme-ov-file#overlay-specification) are used to handle publisher-specific requirements or work around rendering limitations. For example, they sort the list of tags alphabetically and apply `x-model` extensions to abbreviate deeply nested/recursive schema objects.
+[OpenAPI overlays](https://github.com/OAI/Overlay-Specification?tab=readme-ov-file#overlay-specification) are used to handle publisher-specific requirements or work around rendering limitations. For example, they sort the list of tags alphabetically and apply `x-model` extensions to abbreviate deeply nested and recursive schema objects.
 
 ```shell
 make overlay-docs
@@ -109,12 +105,19 @@ You should try to fix all linter warnings and not only errors. Fixing errors alo
 ::::
 
 ::::{step} Preview your changes
-Generate a preview of how your docs will appear:
+
+Install [`bump-cli`](https://www.npmjs.com/package/bump-cli):
+
+```bash
+npm install -g bump-cli
+```
+
+Run these commands to generate short-lived previews:
+
 ```shell
 bump preview output/openapi/elasticsearch-openapi-docs-final.json # Preview Elasticsearch API docs
 bump preview output/openapi/elasticsearch-serverless-openapi-docs-final.json # Preview Elasticsearch serverless API docs
 ```
-This creates a temporary URL to preview your changes and share with others.
 ::::
 
 ::::{step} Open a pull request
