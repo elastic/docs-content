@@ -2,9 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-account-security-mfa.html
 applies_to:
-  serverless: all
+  serverless: ga
   deployment:
-    ess: all
+    ess: ga
 products:
   - id: cloud-hosted
 ---
