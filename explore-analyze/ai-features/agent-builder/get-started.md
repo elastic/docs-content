@@ -89,7 +89,7 @@ If you're not ready to add your own data, you can:
 
 ::::{step} Start a conversation
 
-The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. {{agent-builder}} includes a default agent named `Elastic AI Agent` with access to all built-in tools, so you can begin chatting immediately.
+The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. A default agent is available to chat with immediately.
 
 Learn more in [Agent Chat](chat.md).
 
