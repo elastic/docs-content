@@ -135,7 +135,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ## Troubleshooting
 
-Refer to [429 errors when using the mOTLP endpoint](/troubleshoot/ingest/opentelemetry/429-errors-motlp.md) for troubleshooting information for the {{motlp}}.
+Refer to the [Troubleshoot EDOT](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
 
 ## Provide feedback
 

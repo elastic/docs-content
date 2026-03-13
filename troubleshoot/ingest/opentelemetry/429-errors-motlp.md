@@ -40,16 +40,7 @@ A 429 status means that the rate of requests sent to the Managed OTLP endpoint h
 * Your telemetry pipeline is sending data faster than the allowed ingest rate.
 * Bursts of telemetry data exceed the short-term burst limit, even if your sustained rate is within limits.
 
-    The specific limits depend on your environment:
-
-   
-    | Deployment type | Rate limit | Burst limit | Dynamic scaling |
-    |----------------|------------|-------------|-----------------|
-    | Serverless | 30 MB/s | 60 MB/s | Not available |
-    | ECH | 1 MB/s (initial) | 2 MB/s (initial) | Yes |
-
-    For the {{serverless-full}} trial, the rate limit is reduced to 15 MB/s and the burst limit is 30 MB/s.
-
+    Exact limits vary by deployment type, subscription, and current configuration.
     Refer to the [Rate limiting section](opentelemetry://reference/motlp.md#rate-limiting) in the mOTLP reference documentation for details.
 
 * In {{ech}}, the {{es}} capacity for your deployment might be underscaled for the current ingest rate.
