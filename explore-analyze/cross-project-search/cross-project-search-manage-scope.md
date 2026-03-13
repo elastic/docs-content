@@ -47,9 +47,9 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 
 | App | {{cps-init}} scope selector | Query-level overrides |
 | --- | --- | --- |
-| **Discover** | Editable | {{esql}} `SET project_routing` |
+| **Discover** | Editable | {{esql}} [`SET project_routing`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-cps) and [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) in `FROM` |
 | **Dashboards** | Editable | Per-panel overrides via {{esql}} or Maps layer routing. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope). |
-| **Lens** | Editable | {{esql}} `SET project_routing` |
+| **Lens** | Editable | {{esql}} [`SET project_routing`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-cps) and [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) in `FROM` |
 | **Maps** | Editable | Layer-level [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) for vector layers and joins |
 | **Visualize (Vega only)** | Editable | Project routing in Vega specs |
 | **{{rules-ui}} and alerts** | Read-only | None. Rules use the [space-level {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). |
