@@ -245,7 +245,7 @@ Progress is visible in the Elasticsearch resource status under **In Progress Ope
 eck: ga 3.4.0
 ```
 
-The `eck.k8s.elastic.co/restart-allocation-delay` annotation controls the `allocation_delay` parameter passed to the {{es}} [node shutdown API](elasticsearch://reference/elasticsearch/rest-apis/node-lifecycle-apis.md) when nodes are taken offline. Any value set on this annotation is used during both **upgrades** and **custom triggered [rolling restarts](#cluster-rolling-restart)**.
+The `eck.k8s.elastic.co/restart-allocation-delay` annotation controls the `allocation_delay` parameter passed to the {{es}} node shutdown API when nodes are taken offline. Any value set on this annotation is used during both **upgrades** and **custom triggered [rolling restarts](#cluster-rolling-restart)**.
 
 Set this annotation on the `Elasticsearch` resource metadata:
 
