@@ -186,6 +186,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes gap while loading data [#238879]({{kib-pull}}238879).
 * Fixes **Dataset Quality** flyout rendering [#237840]({{kib-pull}}237840).
 
+## 9.2.7 [elastic-observability-9.2.7-release-notes]
+
+
+### Fixes [elastic-observability-9.2.7-fixes]
+* Fixes error on burn rate alert details page for suppressed alerts [#256435]({{kib-pull}}256435).
+* Fixes `Missing required fields (transaction.sampled) in event` error [#255788]({{kib-pull}}255788).
+* Fixes alerts wildcard queries on keyword fields [#255225]({{kib-pull}}255225).
+* Fixes alert visibility and filters for grouped SLOs on details page [#254601]({{kib-pull}}254601).
 
 ## 9.2.6 [elastic-observability-9.2.6-release-notes]
 
