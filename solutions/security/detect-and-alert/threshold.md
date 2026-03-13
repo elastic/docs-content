@@ -152,8 +152,9 @@ The following settings appear in the **Define rule** section when creating a thr
 **Group by** (optional)
 :   One or more fields to group events by. Each unique combination of field values is evaluated independently against the threshold. 
 
-    {applies_to}`stack: ga 9.0-9.1` You can group by up to 3 fields. 
-    {applies_to}`stack: ga 9.2+` You can group by up to 5 fields. 
+    {applies_to}`stack: ga 9.0-9.1` You can specify up to 3 fields. 
+
+    {applies_to}`stack: ga 9.2+` You can specify up to 5 fields. 
 
 **Threshold**
 :   The minimum number of matching events required to generate an alert. If **Group by** is defined, each group must independently meet this count.
