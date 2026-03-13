@@ -264,7 +264,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can control which projects a dashboard queries by using the [{{cps-init}} scope selector](/explore-analyze/cross-project-search.md#cps-in-kibana) in the {{kib}} header.
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can control which projects a dashboard queries by using the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header.
 
 ### Store a {{cps}} scope with a dashboard [dashboard-store-cps-scope]
 

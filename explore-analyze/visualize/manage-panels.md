@@ -114,7 +114,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When a panel uses a [{{cps}} scope](/explore-analyze/cross-project-search.md#cps-in-kibana) that differs from the dashboard's scope, it displays a **Custom CPS scope** badge. Click the badge to view the scope details and open the panel configuration.
+When a panel uses a [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) that differs from the dashboard's scope, it displays a **Custom CPS scope** badge. Click the badge to view the scope details and open the panel configuration.
 
 For more information, refer to [Panels with a custom {{cps}} scope](/explore-analyze/dashboards/using.md#dashboard-panel-cps-badge).
 
