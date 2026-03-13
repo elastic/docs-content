@@ -237,7 +237,7 @@ spec:
         node.store.allow_mmap: false
 ```
 
-Progress is visible in the Elasticsearch resource status under **In Progress Operations** → **Upgrade**, with node-level messages such as "Deleting pod for rolling restart".
+Progress is visible in the {{es}} resource status under **In Progress Operations** → **Upgrade**, with node-level messages such as "Deleting pod for rolling restart".
 
 ## Restart allocation delay [restart-allocation-delay]
 
