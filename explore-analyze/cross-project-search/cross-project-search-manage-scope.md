@@ -52,7 +52,7 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | **Lens** | Editable | {{esql}} [`SET project_routing`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-cps) and [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) in `FROM` |
 | **Maps** | Editable | Layer-level [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) for vector layers and joins |
 | **Visualize (Vega only)** | Editable | Project routing in Vega specs |
-| **{{rules-ui}} and alerts** | Read-only | None. Rules use the [space-level {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). |
-| **Transforms** | Not available | Not available. All operations are scoped to the current project. |
-| **{{ml-app}}** | Not available | Not available |
-| **Canvas** | Not available | Not available |
+| **Security dashboards** | Editable | Same as Dashboards |
+| **{{rules-ui}} and alerts** | Read-only | {{esql}} rules support [`SET project_routing`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-cps). Other rules use the [space-level {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). |
+
+The header's {{cps-init}} scope selector is not available in other apps, including Transforms, {{ml-app}}, Canvas, and object listing pages.
