@@ -17,17 +17,15 @@ The {{esql}} editor lets you write, run, and manage [{{esql}}](elasticsearch://r
 
 The {{esql}} editor is available in the following areas of {{kib}}:
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql
-:::
-
 - [**Discover**](/explore-analyze/discover/try-esql.md): Explore and analyze your data using {{esql}} queries, visualize results, and save your findings to dashboards.
 - [**Dashboards**](/explore-analyze/dashboards.md): Create {{esql}}-powered visualization panels and interactive controls.
 - [**Alerting**](/explore-analyze/alerting/alerts/rule-type-es-query.md): Create alerting rules based on {{esql}} queries.
 - [**{{elastic-sec}} solution**](/solutions/security/esql-for-security.md): Use {{esql}} for threat hunting, detection rules, and investigation workflows.
 
-:::{tip}
 Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql
 :::
 
 
