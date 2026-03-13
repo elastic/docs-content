@@ -1,196 +1,244 @@
 ---
-navigation_title: Latency threshold
+navigation_title: "ES|QL"
 mapped_pages:
-  - https://www.elastic.co/guide/en/observability/current/apm-latency-threshold-rule.html
-  - https://www.elastic.co/guide/en/serverless/current/observability-create-latency-threshold-alert-rule.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
+  - https://www.elastic.co/guide/en/kibana/current/esql.html
+description: Overview of the ES|QL editor in Kibana, including query structure, editor tools, time filtering, variables, and query management.
 applies_to:
   stack: ga
   serverless: ga
 products:
-  - id: observability
-  - id: cloud-serverless
+  - id: elasticsearch
 ---
 
-# Create a latency threshold rule [observability-create-latency-threshold-alert-rule]
+# Use ES|QL in the {{kib}} UI [esql-kibana]
 
+The {{esql}} editor lets you write, run, and manage [{{esql}}](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) queries across {{kib}}. Use it to query and aggregate your data, create visualizations, and set up alerts.
+
+The {{esql}} editor is available in the following areas of {{kib}}:
+
+- [**Discover**](/explore-analyze/discover/try-esql.md): Explore and analyze your data using {{esql}} queries, visualize results, and save your findings to dashboards.
+- [**Dashboards**](/explore-analyze/dashboards.md): Create {{esql}}-powered visualization panels and interactive controls.
+- [**Alerting**](/explore-analyze/alerting/kibana-alerting-v1/rule-type-es-query-v1.md): Create alerting rules based on {{esql}} queries.
+- [**{{elastic-sec}} solution**](/solutions/security/esql-for-security.md): Use {{esql}} for threat hunting, detection rules, and investigation workflows.
+
+:::{tip}
+Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+:::
+
+
+## Write queries with the {{esql}} editor [esql-kibana-get-started]
+
+
+### Query structure [esql-kibana-query-bar]
+
+Every {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands) that retrieves data:
+
+- [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) retrieves data from data streams, indices, or aliases.
+- [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) is optimized for querying time series data streams.
+
+You can then chain one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-processing-commands) using pipe (`|`) characters. For example, [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) filters rows and [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) aggregates data:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE response.keyword == "200"
+| STATS total_bytes = SUM(bytes) BY geo.dest
+```
+
+When querying many indices at once without filters, the response might be too large. If you encounter a content length error, use [`DROP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-drop) or [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) to limit the number of fields returned.
 
 ::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to create latency threshold rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
+{{esql}} keywords are case-insensitive. `FROM`, `from`, and `From` are all equivalent.
 ::::
 
 
-You can create a latency threshold rule to alert you when the latency of a specific transaction type in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name. Add actions to raise alerts via services or third-party integrations e.g. mail, Slack, Jira.
+### Editor tools
 
-:::{image} /solutions/images/serverless-alerts-create-rule-apm-latency-threshold.png
-:alt: Create rule for APM latency threshold alert
-:screenshot:
+The {{esql}} editor includes several built-in tools to help you write queries efficiently.
+
+#### Autocomplete and in-app help
+
+{{esql}} features in-app help, inline suggestions, and an autocomplete menu so you can get started faster and don't have to leave the application to check syntax.
+
+![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
+
+#### Query formatting [_make_your_query_readable]
+
+For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
+
+:::{image} /explore-analyze/images/esql-line-breakdown.gif
+:alt: Automatic line breaks and indentation for ES|QL queries
+:width: 75%
 :::
 
-::::{tip}
-These steps show how to use the **Alerts** UI. You can also create a latency threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create threshold rule** and then **Latency**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
+#### Warnings [_warnings]
 
-::::
+A query might result in warnings, for example when querying an unsupported field type. When that happens, the query bar displays a warning symbol. To see the detailed warning, expand the query bar, and select **warnings**.
 
+#### Query statistics
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
 
-To create your latency threshold rule:
+After running a query, the editor's footer displays statistics about the last run, including the number of documents processed. These statistics are available in **Discover** and in **{{esql}} visualizations** in dashboards.
 
-1. In Observability UI, go to **Alerts**.
-2. Select **Manage Rules** from the **Alerts** page, and select **Create rule**.
-3. Enter a **Name** for your rule, and any optional **Tags** for more granular reporting (leave blank if unsure).
-4. Select the **Latency threshold** rule type from the APM use case.
-5. Select the appropriate **Service**, **Type**, **Environment** and **Name** (or leave **ALL** to include all options). Alternatively, you can select **Use KQL Filter** and enter a KQL expression to limit the scope of your rule.
-6. Define the threshold and period:
+#### Keyboard shortcuts
 
-    * **When**: Choose between `Average`, `95th percentile`, or `99th percentile`.
-    * **Is Above**: Enter a time in milliseconds (defaults to 1500ms).
-    * **For the last**: Define the period to be assessed in (defaults to last 5 minutes).
+| Mac                | Windows/Linux       | Description                 |
+|--------------------|---------------------|-----------------------------|
+| {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
+| {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment a line |
+| {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`stack: ga 9.4+` |
+| {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open [Quick search](#esql-kibana-quick-search) |
 
-7. Choose how to **Group alerts by**. Every unique value will create an alert.
-8. Define the interval to check the rule (for example, check every 1 minute).
-9. (Optional) Set up **Actions**.
-10. **Save** your rule.
-
-
-## Add actions [observability-create-latency-threshold-alert-rule-add-actions]
-
-You can extend your rules with actions that interact with third-party systems, write to logs or indices, or send user notifications. You can add an action to a rule at any time. You can create rules without adding actions, and you can also define multiple actions for a single rule.
-
-To add actions to rules, you must first create a connector for that service (for example, an email or external incident management system), which you can then use for different rules, each with their own action frequency.
-
-:::::{dropdown} Connector types
-Connectors provide a central place to store connection information for services and integrations with third party systems. The following connectors are available when defining actions for alerting rules:
-
-* [Cases](kibana://reference/connectors-kibana/cases-action-type.md)
-* [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
-* [Email](kibana://reference/connectors-kibana/email-action-type.md)
-* [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md)
-* [Index](kibana://reference/connectors-kibana/index-action-type.md)
-* [Jira](kibana://reference/connectors-kibana/jira-action-type.md)
-* [Microsoft Teams](kibana://reference/connectors-kibana/teams-action-type.md)
-* [Observability AI Assistant](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md)
-* [{{opsgenie}}](kibana://reference/connectors-kibana/opsgenie-action-type.md)
-* [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md)
-* [Server log](kibana://reference/connectors-kibana/server-log-action-type.md)
-* [{{sn-itom}}](kibana://reference/connectors-kibana/servicenow-itom-action-type.md)
-* [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md)
-* [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
-* [Slack](kibana://reference/connectors-kibana/slack-action-type.md)
-* [{{swimlane}}](kibana://reference/connectors-kibana/swimlane-action-type.md)
-* [Torq](kibana://reference/connectors-kibana/torq-action-type.md)
-* [{{webhook}}](kibana://reference/connectors-kibana/webhook-action-type.md)
-* [xMatters](kibana://reference/connectors-kibana/xmatters-action-type.md)
-
-::::{note}
-Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
-
-::::
-
-
-For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
-
-:::::
-
-
-:::::{dropdown} Action frequency
-After you select a connector, you must set the action frequency. You can choose to create a **Summary of alerts** on each check interval or on a custom interval. For example, you can send email notifications that summarize the new, ongoing, and recovered alerts every twelve hours.
-
-Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run. For example, you can send an email only when the alert status changes to critical.
-
-:::{image} /solutions/images/serverless-alert-action-frequency.png
-:alt: Configure when a rule is triggered
-:screenshot:
+:::{tip}
+You can find the list of shortcuts directly from the editor. Look for the ![keyboard](/explore-analyze/images/keyboard.svg "keyboard =2%") icon.
 :::
 
-With the **Run when** menu you can choose if an action runs when the threshold for an alert is reached, or when the alert is recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the rule is triggered and also when it recovers.
 
-:::{image} /solutions/images/serverless-alert-apm-action-frequency-recovered.png
-:alt: Choose between threshold met or recovered
-:screenshot:
+### Free-text quick search [esql-kibana-quick-search]
+```{applies_to}
+serverless: preview
+stack: preview 9.3+
+```
+
+You can use the **Quick search** functionality of the {{esql}} editor to translate a free-text or KQL search into a functioning {{esql}} query with a `WHERE KQL()` clause. This can be useful if you're getting started with {{esql}} or are familiar with [KQL](/explore-analyze/query-filter/languages/kql.md).
+
+1. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open the **Quick search** bar.
+2. Select the data sources to search.
+3. Type the text you want to search for as free text or using [KQL](/explore-analyze/query-filter/languages/kql.md) syntax.
+4. Submit your search by pressing **Enter**. The editor generates a new {{esql}} query that overwrites the current query and runs it. It includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. The editor saves previously run queries in the query history if you need to restore them. 
+
+   The **Quick search** bar closes automatically when you press **Enter**, start typing in the editor or click outside of it.
+
+5. Refine your query with any other {{esql}} command or function that you need.
+
+![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc8165d27051bdac3/6997303fcf7e250008e681d8/esql-quick-search.gif "=60%")
+
+
+### Commands with additional editor support
+
+Some {{esql}} commands have dedicated editor features beyond autocomplete, such as in-editor index or policy creation.
+
+#### LOOKUP JOIN command and lookup indices
+
+The {{esql}} editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
+
+{applies_to}`stack: ga 9.2.0` Remote lookup joins are supported in [cross-cluster queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md). The lookup index must exist on _all_ remote clusters being queried, because each cluster uses its local lookup index data.
+
+In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/try-esql.md#discover-esql-lookup-join).
+
+
+#### ENRICH command and enrich policies [esql-kibana-enrich]
+
+The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich) command enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](elasticsearch://reference/query-languages/esql/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, autocomplete suggests it. If not, select **Click to create** to create one.
+
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
+:alt: esql kibana enrich autocomplete
+:width: 50%
 :::
 
-:::::
+For detailed steps to create an enrich policy from the editor, refer to [Enrich your data](elasticsearch://reference/query-languages/esql/esql-enrich-data.md).
 
 
-:::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+## Filter by time [esql-kibana-time-filter]
 
-:::{image} /solutions/images/serverless-action-variables-popup.png
-:alt: Action variables list
-:screenshot:
+To display data within a specified time range, you can use the standard time filter, custom time parameters, or a WHERE command.
+
+
+### Standard time filter [_standard_time_filter]
+
+{{kib}} enables the standard [time filter](/explore-analyze/query-filter/filtering.md) when the indices you're querying have a field named `@timestamp`.
+
+
+### Custom time parameters [_custom_time_parameters]
+
+If your indices do not have a field named `@timestamp`, you can use the `?_tstart` and `?_tend` parameters to specify a time range. These parameters work with any timestamp field and automatically sync with the [time filter](/explore-analyze/query-filter/filtering.md).
+
+```esql
+FROM my_index
+| WHERE custom_timestamp >= ?_tstart AND custom_timestamp < ?_tend
+```
+
+You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/bucket.md) function to create auto-incrementing time buckets in {{esql}} visualizations. For example:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS average_bytes = AVG(bytes) BY BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+```
+
+
+### Time ranges with WHERE [_where_command]
+
+You can also limit the time range using the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command and the [`NOW`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions/now.md) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE timestamp > NOW() - 15minutes
+```
+
+
+## Use variables and controls [add-variable-control]
+
+{{esql}} variables help you add interactive controls to your queries and make them more dynamic.
+
+They're available for:
+* [Discover queries](/explore-analyze/discover/try-esql.md#add-variable-control) {applies_to}`stack: ga 9.2`
+* [{{esql}} visualizations in dashboards](/explore-analyze/dashboards/add-controls.md#add-variable-control)
+
+:::{include} /explore-analyze/_snippets/variable-control-procedure.md
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
+:::{include} /explore-analyze/_snippets/variable-control-examples.md
+:::
 
-`context.alertDetailsUrl`
-:   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.
+% Link from the product
+### Multi-value variable controls [esql-multi-values-controls]
+```{applies_to}
+stack: preview 9.3
+serverless: preview
+```
 
-`context.environment`
-:   The transaction type the alert is created for.
-
-`context.grouping` {applies_to}`stack: ga 9.1`
-:   The object containing groups that are reporting data.
-
-`context.interval`
-:   The length and unit of time period where the alert conditions were met.
-
-`context.reason`
-:   A concise description of the reason for the alert.
-
-`context.serviceName`
-:   The service the alert is created for.
-
-`context.threshold`
-:   Any trigger value above this value will cause the alert to fire.
-
-`context.transactionName`
-:   The transaction name the alert is created for.
-
-`context.transactionType`
-:   The transaction type the alert is created for.
-
-`context.triggerValue`
-:   The value that breached the threshold and triggered the alert.
-
-`context.viewInAppUrl`
-:   Link to the alert source.
-
-:::::
+:::{include} /explore-analyze/_snippets/multi-value-esql-controls.md
+:::
 
 
+## Manage queries
 
-## Example [create-latency-transaction-rate-threshold-example]
+The {{esql}} editor keeps track of your queries so you can reuse and organize them.
 
-The latency threshold alert triggers when the latency of a specific transaction type in a service exceeds a defined threshold.
+![ES|QL editor query history and starred queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt2d3183eafde13ca0/699889744357070008f66a99/query_history_starred.gif "=60%")
 
-Before continuing, identify the service name, environment name, and transaction type that you’d like to create a latency threshold rule for.
+### Query history [esql-kibana-query-history]
 
-This guide will create an alert for an error group ID based on the following criteria:
+You can reuse your recent {{esql}} queries in the query bar. In the query bar, select **Show recent queries**.
 
-* Service: `{your_service.name}`
-* Transaction: `{your_transaction.name}`
-* Environment: `{your_service.environment}`
-* Average latency is above 1500ms for last 5 minutes
-* Group alerts by `service.name` and `service.environment`
-* Check every 1 minute
-* Send the alert via email to the site reliability team
+You can then: 
+- scroll through your most recent queries
+- {applies_to}`stack: ga 9.2` search for specific queries of your history
 
-From any page in **Applications**, select **Alerts and rules** → **Create threshold rule** → **Latency threshold**. Change the name of the alert (if you wish), but do not edit the tags.
+:::{note}
+The maximum number of queries in the history depends on the version you're using:
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` The query history can keep up to 50 KB of queries, which represents about 200 large queries, or about 300 short queries.
+- {applies_to}`stack: ga 9.0-9.1` The query history keeps your 20 most recent queries.
+:::
 
-Based on the criteria above, define the following rule details:
+### Starred queries [esql-kibana-starred-queries]
 
-* **Service**: `{your_service.name}`
-* **Type**: `{your_transaction.name}`
-* **Environment**: `{your_service.environment}`
-* **When:** `Average`
-* **Is above:** `1500ms`
-* **For the last:** `5 minutes`
-* **Group alerts by:** `service.name` `service.environment`
-* **Check every:** `1 minute`
+From the query history, you can mark some queries as favorite to find and access them faster later.
 
-Next, select the **Email** connector and click **Create a connector**. Fill out the required details: sender, host, port, etc., and select **Save**.
+In the query bar, select **Show recent queries**.
 
-A default message is provided as a starting point for your alert. You can use the Mustache template syntax (`{{variable}}`) to pass additional alert values at the time a condition is detected to an action. A list of available variables can be accessed by selecting the add variable button.
+From the **Recent** tab, you can star any queries you want.
 
-Select **Save**. The alert has been created and is now active!
+In the **Starred** tab, find all the queries you have previously starred.
+
+
+## Related pages
+
+- [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators.
+- [Using {{esql}} in Discover](/explore-analyze/discover/try-esql.md): Hands-on tutorial and Discover-specific features like result tables, visualizations, and lookup indices.
+- [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
+- [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
+- [Dashboard controls](/explore-analyze/dashboards/add-controls.md): Add {{esql}}-powered controls to dashboards.

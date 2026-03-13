@@ -126,7 +126,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/kibana-alerting-v1/rule-action-variables-v1.md).
 
 `context.checkedAt`
 :   Timestamp of the monitor run.
@@ -278,7 +278,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/kibana-alerting-v1/rule-action-variables-v1.md).
 
 `context.agingCommonNameAndDate`
 :   The common names and expiration date/time of the detected certs.

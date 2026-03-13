@@ -255,7 +255,7 @@ stack: ga 9.0-9.1
 For versions 9.2.0 and later, {{agent}} includes out-of-the-box alert rules for the most common health checks. Check out [Elastic Agent built-in alerts](/reference/fleet/alert-templates.md). 
 :::
 
-You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerting.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
+You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerting-overview.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
 
 This functionality allows you to effectively track an agent’s status, and identify scenarios where it has gone offline, is experiencing health issues, or is facing challenges related to input or output.
 
