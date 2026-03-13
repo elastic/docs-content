@@ -22,18 +22,20 @@ There are two types of template:
 
 Together, index templates and their referenced component templates form what is known as *composable templates*.
 
+:::{tip}
+For a detailed exploration and examples of setting up composable templates, refer to the Elastic blog [Index templating in Elasticsearch: How to use composable templates](https://www.elastic.co/search-labs/blog/index-composable-templates).
+:::
+
+## Precedence and resolution rules
+
 The following conditions apply to using templates:
 
-* Composable index templates take precedence over any [legacy templates](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-templates-v1.html), which were deprecated in {{es}} 7.8. If no composable template matches a given index, a legacy template may still match and be applied.
+* Composable index templates take precedence over any [legacy templates](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-templates-v1.html), which were deprecated in {{es}} 7.8. If no composable template matches a given index, a legacy template might still match and be applied.
 * If an index is created with explicit settings and also matches an index template, the settings from the [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request take precedence over settings specified in the index template and its component templates.
 * Settings specified in the index template itself take precedence over the settings in its component templates.
 * When you specify multiple component templates in the `composed_of` field of an index template, the component templates are merged in the order specified, which means that later component templates override earlier component templates.
 * If a new data stream or index matches more than one index template, the index template with the highest priority is used.
 * When you create an index template, be careful to avoid [naming pattern collisions](#avoid-index-pattern-collisions) with built-in {{es}} index templates.
-
-:::{tip}
-For a detailed exploration and examples of setting up composable templates, refer to the Elastic blog [Index templating in Elasticsearch: How to use composable templates](https://www.elastic.co/search-labs/blog/index-composable-templates).
-:::
 
 ## Index templates [index-templates]
 
@@ -65,7 +67,7 @@ To create an index template, complete the following steps:
 
 1. On the **Logistics** page:
     1. Specify a name for the template.
-    1. Specify a pattern to match the indices you want to manage with the lifecycle policy. For example, `my-index-*`.
+    1. Specify a pattern to match the indices you want to manage with the lifecycle policy. For example, `my-index-*`. Be careful to [avoid naming pattern collisions](#avoid-index-pattern-collisions) with built-in {{es}} index templates.
     1. If you're storing continuously generated, append-only data, you can opt to create [data streams](/manage-data/data-store/data-streams.md) instead of indices for more efficient storage.
 
         :::{note}
@@ -185,7 +187,7 @@ The following request creates an index template that is *composed of* the two co
 ```console
 PUT _index_template/template_1
 {
-  "index_patterns": ["te*", "bar*"],
+  "index_patterns": ["te*", "bar*"], <1>
   "template": {
     "settings": {
       "number_of_shards": 1
@@ -216,6 +218,8 @@ PUT _index_template/template_1
   }
 }
 ```
+
+1. Choose patterns that [avoid collisions](#avoid-index-pattern-collisions) with built-in {{es}} index templates.
 ::::
 
 :::::
@@ -256,7 +260,7 @@ If you use {{fleet}} or {{agent}}, assign your index templates a priority lower 
 
 ## Component templates [component-templates]
 
-A **component template** is a reusable building block that defines mappings, settings, and aliases. Component templates are not applied directly to indices, but referenced by index templates and used when determining the final configuration of an index.
+A **component template** is a reusable building block that defines [mappings](/manage-data/data-store/mapping.md), [settings](elasticsearch://reference/elasticsearch/index-settings/index.md), and [aliases](/manage-data/data-store/aliases.md). Component templates are not applied directly to indices, but referenced by [index templates](#index-templates) and used when determining the final configuration of an index.
 
 You can create and manage component templates in {{kib}} or using the {{es}} API.
 
