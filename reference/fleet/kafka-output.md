@@ -228,7 +228,7 @@ In the following example, after each event is published to a partition, the part
 :   ([]string) List of fields used to compute the partitioning hash value from. If no field is configured, the events key value will be used.
 
 `hash.random` $$$kafka-hash.random-setting$$$
-:   (bool) Randomly distribute events if no hash or key value can be computed. The default value is true.
+:   (bool) Randomly distribute events if no hash or key value can be computed. The default value is `true`.
 
 
 ## Header settings [output-kafka-header-settings]
