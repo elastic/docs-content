@@ -62,6 +62,48 @@ While both the project ID and project alias uniquely identify a project, {{cps}}
 In addition to using a project alias, {{cps-init}} provides a reserved identifier, `_origin`, that always refers to the origin project of the search.
 You can use `_origin` in search expressions to explicitly target the origin project, without having to reference its specific project alias. Refer to [Qualified and unqualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) for detailed examples and to learn more.
 
+## Excluding indices and projects
+
+When you use a wildcard to include a broad set of projects or indices, you can explicitly exclude one or more of them by prefixing a pattern with a dash (`-`).
+Exclusion always requires an inclusion pattern first: you must include projects or indices before you can exclude from that set.
+
+### How exclusion works
+
+Exclusion follows these rules:
+
+* A leading `-` on either the project or the index part of an expression signals exclusion.
+For example, `-linked-project-1:*` and `linked-project-1:-*` are functionally equivalent.
+Both exclude all indices on the `linked-project-1` project.
+You cannot prefix both the project and the index with a dash in the same expression.
+* An exclusion pattern only affects patterns that appear **before** it in the expression.
+Patterns listed **after** the exclusion are not affected by it (for example, in `*,-*,my-index`, the exclusion `-*` removes everything matched by the first `*`, but `my-index` comes after the exclusion and is still included).
+* You can use multiple exclusion patterns in a single expression.
+
+### Exclusion examples
+
+The following examples assume an origin project with two linked projects: `linked-project-1` and `linked-project-2`.
+
+`*,-*`
+:   Matches all indices across all projects, then excludes all of them. The result is an empty scope.
+
+`-my-index`
+:   Excludes the `my-index` index across all projects. Because there is no preceding inclusion pattern, this effectively removes `my-index` from the default search scope.
+
+`*,-linked-project-1:*`
+:   Searches everything across all projects, then excludes all indices on the `linked-project-1` project. The search runs on the origin project and `linked-project-2` only.
+
+`*,-linked-project-1:my-index`
+:   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. All other indices on `linked-project-1` and all indices on the origin project and `linked-project-2` are still included.
+
+`*,-*,my-index`
+:   Matches all indices, then excludes all indices. Because the exclusion only affects patterns before it, the `my-index` pattern that follows is unaffected and `my-index` is still included in the search.
+
+`*,-my-index*,-logs`
+:   Searches everything, then applies two exclusion patterns. Indices matching `my-index*` and the `logs` index are excluded from the results.
+
+`-linked-project-1:*` and `linked-project-1:-*`
+:   These two expressions are functionally equivalent. In both cases, all indices on the `linked-project-1` project are excluded. You can place the dash on either the project or the index part of the expression.
+
 ## Security
 
 This section gives you a high-level overview of how security works in {{cps}}.
