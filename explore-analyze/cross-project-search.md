@@ -21,6 +21,7 @@ For details on how search, tags, and project routing work in {{cps-init}}, refer
 * [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md): learn how search expressions, search options, and index resolution work.
 * [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md): learn about predefined and custom project tags and how to use them in queries.
 * [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): learn how to route searches to specific projects based on tag values.
+* [Manage {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): learn how to control {{cps}} scope using the scope selector, query-level overrides, and space defaults.
 
 ## {{cps-cap}} as the default behavior for linked projects
 
@@ -90,36 +91,6 @@ If you run `GET logs/_search`:
 * documents from the `logs` index in project 1 are returned
 * the `logs` index in project 2 is not accessible and is excluded from the results
 
-
-## {{cps-cap}} in {{kib}} [cps-in-kibana]
-
-When {{cps}} is enabled and projects are linked, a **{{cps-cap}}** ({{cps-init}}) **scope selector** appears in the {{kib}} header. It controls which linked projects your searches include.
-
-With the {{cps-init}} scope selector, you can select:
-
-* **This project**: Searches only the origin project.
-* **All projects**: Searches the origin project and all linked projects.
-
-The scope selector also lists the aliases of all linked projects, which is useful when you need to reference them in [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) at the query level. For example, you can target a specific subset of projects by using `SET project_routing` in an {{esql}} query, or by using qualified expressions like `project_alias:logs-*` in an index pattern. These query-level options let you narrow the scope beyond what the selector offers.
-
-Admins can also configure a [default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). The {{cps-init}} scope selector uses this default when you start a new session. When you change the scope during a session, your selection is preserved as you navigate between apps.
-
-### {{cps-cap}} availability in {{kib}} apps [cps-availability]
-
-Not all {{kib}} apps support {{cps}}. The following table shows which apps support the {{cps-init}} scope selector and how:
-
-| {{kib}} app | {{cps-init}} support | Details |
-| --- | --- | --- |
-| **Discover** | Full (editable scope) | Change the {{cps}} scope to control which projects are searched. |
-| **Dashboards** | Full (editable scope) | Change the {{cps}} scope from within a dashboard. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md) to restore on load. |
-| **Lens** | Full (editable scope) | Change the {{cps}} scope when building visualizations. |
-| **Maps** | Full (editable scope) | Change the {{cps}} scope. Vector layers and joins source data from linked projects based on the current scope. |
-| **Visualize (Vega only)** | Full (editable scope) | {{cps}} is supported for [Vega visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md) only. Other legacy visualization types do not support {{cps}}. |
-| **Security dashboards** | Full (editable scope) | {{cps}} is available on Security dashboard pages. Other Security solution pages do not support {{cps}}. |
-| **{{rules-ui}} and alerts** | Read-only scope | The {{cps-init}} scope selector shows the current scope, but you cannot change it from this page. {{rules-ui}} use the space-level {{cps}} scope at execution time. |
-| **Transforms** | Not supported | [Transforms](/explore-analyze/transforms.md) do not support {{cps}} yet. All transform operations are scoped to the current project. |
-| **{{ml-app}}** | Not supported | N/A |
-| **Canvas** | Not supported | N/A |
 
 
 ## Supported APIs [cps-supported-apis]
