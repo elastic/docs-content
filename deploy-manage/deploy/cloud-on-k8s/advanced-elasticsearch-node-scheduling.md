@@ -208,12 +208,12 @@ Distributing {{es}} nodes and shard replicas across failure domains (typically c
 
 {applies_to}`eck: ga 3.4`
 
-The `zoneAwareness` field on NodeSets is the recommended way to set up availability zone awareness. Instead of manually configuring topology spread constraints, downward node labels, environment variables, and {{es}} allocation awareness settings yourself, you add a single `zoneAwareness` declaration and ECK handles the rest.
+The `zoneAwareness` field on NodeSets is the recommended way to set up availability zone awareness. Instead of manually configuring topology spread constraints, downward node labels, environment variables, and {{es}} allocation awareness settings yourself, you add a single `zoneAwareness` field and ECK handles the rest.
 
 When `zoneAwareness` is set on a NodeSet, the operator automatically:
 
 * Injects a `TopologySpreadConstraint` with `maxSkew: 1` and `whenUnsatisfiable: DoNotSchedule` to evenly spread pods across zones.
-* Exposes the Kubernetes node's zone as a `ZONE` environment variable inside each pod using [downward node labels](https://github.com/elastic/cloud-on-k8s/blob/main/docs/operating-eck/downward-api.asciidoc).
+* Exposes the Kubernetes node's zone as a `ZONE` environment variable inside each pod using [downward node labels](https://kubernetes.io/docs/concepts/workloads/pods/downward-api).
 * Sets `node.attr.zone` and `cluster.routing.allocation.awareness.attributes: k8s_node_name,zone` in the {{es}} configuration.
 * When `zones` are specified, injects a required node affinity rule to restrict pod placement to those zones.
 
@@ -321,6 +321,7 @@ Adding `zoneAwareness` to any NodeSet triggers a one-time rolling restart of **a
 For ECK versions before 3.4.0, or for advanced use cases not covered by the `zoneAwareness` field, you can manually configure availability zone awareness. The following section describes how to manually configure availability zone awareness.
 
 #### Exposing Kubernetes node topology labels in Pods [k8s-availability-zone-awareness-downward-api]
+
 :::{note}
 Starting with Kubernetes 1.35 and later, the `PodTopologyLabelsAdmission` feature is enabled by default. As a result, the labels `topology.kubernetes.io/region` and `topology.kubernetes.io/zone` from the node are automatically propagated as labels on Pods. This means that you can skip using the `eck.k8s.elastic.co/downward-node-labels` annotation and avoid making additional configuration changes to expose these topology labels in your Pods. In this situation, you can skip the first two steps described below. Additionally, in this scenario, node labels appear as Pod labels rather than annotations.
 :::
@@ -466,7 +467,6 @@ In this example, we configure two groups of {{es}} nodes:
 ::::{note}
 This example uses [Local Persistent Volumes](https://kubernetes.io/docs/concepts/storage/volumes/#local) for both groups, but can be adapted to use high-performance volumes for `hot` {{es}} nodes and high-storage volumes for `warm` {{es}} nodes.
 ::::
-
 
 Finally, set up [Index Lifecycle Management](/manage-data/lifecycle/index-lifecycle-management.md) policies on your indices, [optimizing for hot-warm architectures](https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management).
 
