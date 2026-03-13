@@ -207,7 +207,7 @@ FROM kibana_sample_data_logs
 | STATS count = COUNT(*) BY BUCKET(@timestamp, 1 hour)
 ```
 
-The editor does not suggest `SET time_zone` in autocomplete, but you can type it manually. You can also use it through the [Dev Tools Console](../tools/console.md) or the {{es}} API directly. For more information about the `SET` directive, refer to [Control query behavior with SET](#esql-kibana-set).
+The editor does not suggest `SET time_zone` in autocomplete, but you can type it manually. You can also use it through the [Dev Tools Console](../tools/console.md) or the {{es}} API directly. For more information about using the `SET` directive in {{kib}}, refer to [Control query behavior with SET](#esql-kibana-set).
 
 
 ## Control query behavior with SET [esql-kibana-set]
@@ -216,11 +216,15 @@ stack: preview 9.4
 serverless: preview
 ```
 
-The [`SET`](elasticsearch://reference/query-languages/esql/commands/set.md) directive lets you configure settings that modify the behavior of an {{esql}} query. `SET` directives are placed before the source command.
+The `SET` directive lets you configure settings that modify the behavior of an {{esql}} query. `SET` directives are placed before the source command.
 
 For the full syntax and list of available settings, refer to [{{esql}} SET directive](elasticsearch://reference/query-languages/esql/commands/set.md).
 
 ### Control unmapped field behavior [esql-kibana-unmapped-fields]
+```{applies_to}
+stack: preview 9.4
+serverless: unavailable
+```
 
 When querying across indices with different mappings, some fields might not exist in all of them. By default, {{esql}} fails the query when it encounters unmapped fields. Use the `unmapped_fields` setting to change this behavior:
 
@@ -240,6 +244,10 @@ FROM my_index*
 This is useful when querying [failure stores](../../../manage-data/data-store/data-streams/failure-store.md) or indices with varying field mappings. The {{esql}} editor suggests available values when you type `SET unmapped_fields =` in the query bar.
 
 ### Enable approximate query results [esql-kibana-approximation]
+```{applies_to}
+stack: preview 9.4
+serverless: unavailable
+```
 
 For exploratory analysis on large datasets, you can enable approximate query execution to get faster results. Use the `approximation` setting to trade precision for speed in aggregation queries:
 
