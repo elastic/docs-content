@@ -195,7 +195,6 @@ When you run {{esql}} queries in Discover, dashboards, alerting, or Maps, {{kib}
 2. Search for **Time zone** (`dateFormat:tz`).
 3. Set it to **Browser** to use your browser's timezone, or choose a specific timezone such as **UTC** or **America/New_York**.
 
-Some {{kib}} features that run {{esql}} queries independently, such as Security detection rules and the machine learning Data Visualizer, do not use this setting and default to UTC.
 
 **Per-query override with SET**
 
