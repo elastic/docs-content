@@ -49,7 +49,14 @@ The following configuration options are available:
 
 ## What is included in the log
 
-The logs are output in JSON format, and include the following fields:
+Each query log entry is a JSON object with fields from two sources:
+
+- Standard [Elastic Common Schema (ECS)](ecs://reference/index.md) fields present in every entry.
+- Query-specific fields under the `elasticsearch.querylog.*` namespace with details about the operation.
+
+### Standard fields
+
+These fields are present in every log entry regardless of query type.
 
 - `@timestamp`: The timestamp of the log entry.
 - `event.outcome`: Whether the request was successful (`success`) or not (`failure`).
