@@ -118,4 +118,9 @@ Rules and connectors are isolated to the {{kib}} space in which they were create
 
 ## {{ccs-cap}} [alerting-ccs-setup]
 
+```{applies_to}
+serverless: unavailable
+stack: ga
+```
+
 If you want to use alerting rules with {{ccs}}, you must configure privileges for {{ccs-init}} and {{kib}}. Refer to [Remote clusters](../../../deploy-manage/remote-clusters.md).
