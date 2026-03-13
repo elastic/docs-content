@@ -335,6 +335,54 @@ When you save your edits, the control is updated for your query.
 :::
 
 
+## Explore STATS results in a grouped view [esql-discover-grouped-stats]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+When you run an {{esql}} query with a [`STATS ... BY`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) command that groups results by a single field, **Discover** can display results in a grouped view. Instead of a flat table, results are organized by group, with each row representing one value of the `BY` field alongside its aggregated metrics.
+
+% TODO: Add a screenshot of the grouped view. Uncomment the image directive below and replace the path when the screenshot is available.
+% :::{image} /explore-analyze/images/discover-esql-grouped-view.png
+% :alt: Grouped view of STATS results in Discover showing expandable rows
+% :screenshot:
+% :::
+
+### Use the grouped view
+
+1. Run an {{esql}} query with `STATS ... BY <field>`. For example:
+
+   ```esql
+   FROM kibana_sample_data_logs
+   | STATS count = COUNT(*), avg_bytes = AVG(bytes) BY geo.dest
+   ```
+
+2. The **Group by** button appears in the table toolbar with a {icon}`flask` badge indicating this is a technical preview feature. It lists the available grouping field.
+
+3. Select a field from the **Group by** list. Results are reorganized into groups.
+
+4. Expand any group row to view the underlying documents for that group.
+
+5. To return to the standard flat table, open the **Group by** menu and select **none**.
+
+### Group row actions
+
+Each group row has an actions menu ({icon}`boxes_horizontal`) with the following options:
+
+- **Copy to clipboard**: Copy the group value.
+- **Filter in**: Add a `WHERE` clause to the query to keep only this group's value.
+- **Filter out**: Add a `WHERE` clause to exclude this group's value.
+- **Open in new tab**: Open a new Discover tab with a query filtered to show documents for the selected group.
+
+:::{note}
+The grouped view is available when:
+
+- The query uses `STATS ... BY` with a single `BY` field.
+- The `BY` field does not use grouping functions such as `BUCKET`.
+:::
+
+
 ## Refine an {{esql}} query by interacting with the results table
 
 Certain interactions with the results table of your {{esql}} query in Discover apply additional filters to your query. When hovering over a value cell, contextual options appear: 
