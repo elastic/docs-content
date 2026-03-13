@@ -69,23 +69,19 @@ Rule actions fall into two categories: external and system actions.
 
 ### External actions
 
-External actions use connectors to send data to external services:
+External actions use connectors to:
 
-* Sending notifications (Slack messages, emails, PagerDuty alerts) to inform your team in real time
-* Creating tickets in {{jira}} or {{sn}} for tracking and triage
-* Triggering webhooks or custom integrations
-
-:::{note}
-Notifications are a type of action that signals something needs attention.
-:::
+* Send notifications (Slack messages, emails, PagerDuty alerts) to inform your team in real time
+* Create tickets in {{jira}} or {{sn}} for tracking and triage
+* Trigger webhooks or custom integrations
 
 ### System actions
 
-System actions operate within {{kib}}:
+System actions operate within {{kib}} to:
 
-* Creating or updating cases automatically
-* Adding entries to indices for tracking or enrichment
-* Triggering [workflows](/explore-analyze/workflows.md) for more complex automation
+* Create or update cases automatically
+* Add entries to indices for tracking or enrichment
+* Trigger [workflows](/explore-analyze/workflows.md) for more complex automation
 
 ## Rule authorization [rule-authorization-concept]
 
