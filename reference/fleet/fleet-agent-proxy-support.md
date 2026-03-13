@@ -21,6 +21,12 @@ Support is available in {{agent}} and {{fleet}} for connections through HTTP Con
 Some environments require users to authenticate with the proxy. There are no explicit settings for proxy authentication in {{agent}} or {{fleet}}, except the ability to pass credentials in the URL or as keys/tokens in headers, as described later.
 ::::
 
+When {{agent}} connects through a proxy server, DNS resolution of the target endpoint hostnames (such as {{fleet-server}}, {{es}}, and artifact download sources) is performed by the proxy server, not by the {{agent}} host. This applies to both HTTP Connect and SOCKS5 proxies. Make sure that your proxy server can resolve the hostnames of all endpoints that the {{agent}} needs to reach.
+
+::::{tip}
+For the {{ls}} output with a SOCKS5 proxy, you can override this behavior and resolve hostnames locally on the {{agent}} host by setting `proxy_use_local_resolver` to `true`. Refer to [{{ls}} output settings](/reference/fleet/logstash-output.md) for details. This option is not available for other connection types.
+::::
+
 Refer to [When to configure proxy settings](/reference/fleet/elastic-agent-proxy-config.md) for more detail, or jump into one of the following guides:
 
 * [Proxy server connectivity using default host variables](/reference/fleet/host-proxy-env-vars.md)
