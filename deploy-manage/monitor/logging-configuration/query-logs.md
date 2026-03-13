@@ -29,7 +29,7 @@ Alternatively, use the [settings API]({{es-apis}}operation/operation-cluster-put
 elasticsearch.activitylog.enabled: true
 ```
 
-By default, search (`dsl`) queries that query only system indices are not logged. To enable logging of such queries, use the `elasticsearch.activitylog.search.include.system_indices` setting described below.
+`dsl` type queries that query only system indices are not logged by default. To enable logging these queries, use the `elasticsearch.activitylog.search.include.system_indices` setting described in [](#configure-query-logging).
 
 ## Finding the logs [finding-query-logs]
 
