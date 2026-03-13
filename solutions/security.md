@@ -31,13 +31,13 @@ Browse the latest [{{elastic-sec}} release notes](https://www.elastic.co/docs/re
 
 ## Agent skills
 
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::
-
 The following agentic skills are available to help AI agents with this topic:
 
 - [Security alert triage](https://github.com/elastic/agent-skills/tree/main/skills/security/alert-triage).
 - [Security case management](https://github.com/elastic/agent-skills/tree/main/skills/security/case-management).
 - [Security detection rule management](https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management).
 - [Security generate security sample data](https://github.com/elastic/agent-skills/tree/main/skills/security/generate-security-sample-data).
+
+:::{tip}
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+:::

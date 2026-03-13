@@ -162,10 +162,10 @@ serverless: ga
 
 ## Agent skills
 
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::
-
 The following agentic skills are available to help AI agents with this topic:
 
 - [Kibana Agent Builder](https://github.com/elastic/agent-skills/tree/main/skills/kibana/agent-builder).
+
+:::{tip}
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+:::

@@ -77,10 +77,6 @@ You can [upgrade your Elastic environment](/deploy-manage/upgrade.md) to gain ac
 
 ## Agent skills
 
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::
-
 The following agentic skills are available to help AI agents with this topic:
 
 - [Cloud setup](https://github.com/elastic/agent-skills/tree/main/skills/cloud/setup).
@@ -93,4 +89,8 @@ The following agentic skills are available to help AI agents with this topic:
 - [Elasticsearch audit](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-audit).
 - [Elasticsearch security troubleshooting](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-security-troubleshooting).
 - [Kibana audit](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-audit).
+
+:::{tip}
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+:::
 

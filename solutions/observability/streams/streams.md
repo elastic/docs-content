@@ -123,10 +123,10 @@ Interact with and configure your streams in the following ways:
 
 ## Agent skills
 
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::
-
 The following agentic skills are available to help AI agents with this topic:
 
 - [Kibana streams](https://github.com/elastic/agent-skills/tree/main/skills/kibana/streams).
+
+:::{tip}
+To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
+:::
