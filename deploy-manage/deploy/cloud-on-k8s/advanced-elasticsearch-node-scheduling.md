@@ -208,12 +208,12 @@ Distributing {{es}} nodes and shard replicas across failure domains (typically c
 
 {applies_to}`eck: ga 3.4`
 
-The `zoneAwareness` field on NodeSets is the recommended way to configure availability zone awareness. It replaces the manual wiring of topology spread constraints, downward node labels, environment variables, and {{es}} allocation awareness settings with a concise declaration.
+The `zoneAwareness` field on NodeSets is the recommended way to set up availability zone awareness. Instead of manually configuring topology spread constraints, downward node labels, environment variables, and {{es}} allocation awareness settings yourself, you add a single `zoneAwareness` declaration and ECK handles the rest.
 
 When `zoneAwareness` is set on a NodeSet, the operator automatically:
 
 * Injects a `TopologySpreadConstraint` with `maxSkew: 1` and `whenUnsatisfiable: DoNotSchedule` to evenly spread pods across zones.
-* Configures [downward node labels](https://github.com/elastic/cloud-on-k8s/blob/main/docs/operating-eck/downward-api.asciidoc) and a `ZONE` environment variable so each pod knows its zone.
+* Exposes the Kubernetes node's zone as a `ZONE` environment variable inside each pod using [downward node labels](https://github.com/elastic/cloud-on-k8s/blob/main/docs/operating-eck/downward-api.asciidoc).
 * Sets `node.attr.zone` and `cluster.routing.allocation.awareness.attributes: k8s_node_name,zone` in the {{es}} configuration.
 * When `zones` are specified, injects a required node affinity rule to restrict pod placement to those zones.
 
@@ -301,13 +301,13 @@ spec:
 
 #### Mixed NodeSets with and without zone awareness
 
-You can enable `zoneAwareness` on some NodeSets but not others. When at least one NodeSet has `zoneAwareness` enabled:
+Enable `zoneAwareness` on **all** NodeSets in a cluster for the best results. If some NodeSets are accidentally left without `zoneAwareness`, the operator applies safeguards to keep the cluster consistent:
 
-* All NodeSets in the cluster receive the `ZONE` environment variable and {{es}} zone configuration (`node.attr.zone`, `cluster.routing.allocation.awareness.attributes`) for cluster-wide shard allocation consistency.
-* Non-zoneAware NodeSets receive a node affinity guard to prefer scheduling on nodes that carry the topology label, but they do not receive topology spread constraints.
+* All NodeSets in the cluster still receive the `ZONE` environment variable and {{es}} zone configuration (`node.attr.zone`, `cluster.routing.allocation.awareness.attributes`) so that shard allocation awareness works cluster-wide.
+* Non-zoneAware NodeSets receive a node affinity preference for nodes that carry the topology label, but they do not receive topology spread constraints and may not be evenly distributed across zones.
 
 ::::{important}
-Adding `zoneAwareness` to any NodeSet triggers a one-time rolling restart of **all** NodeSets in the cluster, because zone-related {{es}} configuration and environment variables are applied cluster-wide.
+Adding `zoneAwareness` to any NodeSet triggers a one-time rolling restart of **all** NodeSets in the cluster, because zone-related {{es}} configuration and environment variables are applied cluster-wide. To avoid unnecessary restarts, enable `zoneAwareness` on every NodeSet at the same time.
 ::::
 
 #### Validation rules
@@ -318,7 +318,7 @@ Adding `zoneAwareness` to any NodeSet triggers a one-time rolling restart of **a
 
 ### Manual zone awareness configuration [k8s-zone-awareness-manual]
 
-For ECK versions before 3.4.0, or for advanced use cases not covered by the `zoneAwareness` field, you can manually configure availability zone awareness. This approach requires coordinating settings across multiple configuration surfaces.
+For ECK versions before 3.4.0, or for advanced use cases not covered by the `zoneAwareness` field, you can manually configure availability zone awareness. The following section describes how to manually configure availability zone awareness.
 
 #### Exposing Kubernetes node topology labels in Pods [k8s-availability-zone-awareness-downward-api]
 :::{note}
