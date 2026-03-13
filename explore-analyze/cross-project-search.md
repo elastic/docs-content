@@ -103,8 +103,7 @@ With the {{cps-init}} scope selector, you can select:
 
 The selected scope applies to all queries in the current app unless you override it, for example with an {{esql}} query that includes a [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) instruction, or with a [saved dashboard scope](/explore-analyze/dashboards/using.md).
 
-Admins can also configure a default {{cps}} scope for each space. When you open a {{kib}} app, the {{cps-init}} scope selector uses the space's default scope.
-<!-- Link to Spaces CPS configuration page when docs-content-internal#30 is published. -->
+Admins can also configure a [default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). When you open a {{kib}} app, the {{cps-init}} scope selector uses the space's default scope.
 
 ### {{cps-cap}} availability in {{kib}} apps [cps-availability]
 
