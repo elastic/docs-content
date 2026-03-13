@@ -27,6 +27,28 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.3.2 [elastic-security-9.3.2-release-notes]
+
+### Features and enhancements [elastic-security-9.3.2-features-enhancements]
+
+* Adds a callout and badge to the visual event analyzer in the alert details flyout to indicate when cold and frozen data tiers are excluded from analyzer queries [#257015]({{kib-pull}}257015).
+* Adds an advanced setting to exclude cold and frozen data tiers from prevalence queries in the alert details flyout, improving load performance [#257011]({{kib-pull}}257011).
+* Improves the reliability of {{elastic-defend}}'s malware-on-write detection.
+
+### Fixes [elastic-security-9.3.2-fixes]
+
+* Fixes an issue where the alert details flyout persisted after navigating away from {{elastic-sec}} [#256001]({{kib-pull}}256001).
+* Fixes an issue where the visual event analyzer preview could fetch data with incorrect indices before the {{data-source}} was fully loaded [#255400]({{kib-pull}}255400).
+* Fixes an issue where visual event analyzer queries could return cached results for incorrect indices [#255396]({{kib-pull}}255396).
+* Fixes an issue where {{esql}} rule execution did not apply data tier exclusion filters to the source document enrichment query, potentially querying excluded cold and frozen tiers [#255341]({{kib-pull}}255341).
+* Fixes an issue where the visual event analyzer did not display in the alert details flyout in certain {{data-source}} configurations [#255182]({{kib-pull}}255182).
+* Fixes out-of-memory crashes and {{kib}} restarts caused by the gap auto-fill scheduler creating excessively large saved objects for rules with short intervals and long gaps [#254788]({{kib-pull}}254788).
+* Fixes an issue where the legacy `rules/prepackaged` endpoints returned 500 errors on Basic licenses when processing prebuilt rule packages that include {{ml}} rules [#253574]({{kib-pull}}253574).
+* Adds support for timestamp overrides to Timeline at the {{data-source}} level, allowing Timeline to use the {{data-source}}'s configured timestamp field instead of `@timestamp` [#251827]({{kib-pull}}251827).
+* Fixes an issue that would cause hotfix builds of {{elastic-defend}} to incorrectly report their version in Windows Security Center. For example, version 9.3.0+build202602051825 would show as 9.3.1.
+* Improves {{elastic-defend}} Linux trusted application handling by using Quark's trusted PID queue APIs for more consistent trusted PID synchronization.
+
+
 ## 9.3.1 [elastic-security-9.3.1-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.1-features-enhancements]
