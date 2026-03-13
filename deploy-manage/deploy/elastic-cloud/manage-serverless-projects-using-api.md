@@ -12,10 +12,6 @@ On this page, you can find examples of how to create and manage serverless proje
 
 To learn about API principles, authentication, and how to use the OpenAPI specification, refer to the [Elastic Cloud Serverless API](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/) documentation.
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/create-project
-:::
-
 The available APIs are grouped by project type:
 
 - APIs for [Search projects](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/group/endpoint-elasticsearch-projects)
@@ -34,6 +30,10 @@ export API_KEY="YOUR_GENERATED_API_KEY"
 ```
 
 ## Create an {{serverless-full}} project [general-manage-project-with-api-create-a-serverless-elasticsearch-project]
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/create-project
+:::
 
 ```bash
 curl -H "Authorization: ApiKey $API_KEY" \

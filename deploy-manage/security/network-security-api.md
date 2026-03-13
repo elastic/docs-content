@@ -18,11 +18,11 @@ navigation_title: Through the API
 
 This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful API, or {{serverless-full}} RESTful API or to manage different types of network security policies and rules. 
 
-We cover the following examples:
-
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/network-security
 :::
+
+We cover the following examples:
 
 * [Create an IP filter policy or IP filtering rule set](#create-ip-filter-policy)
 

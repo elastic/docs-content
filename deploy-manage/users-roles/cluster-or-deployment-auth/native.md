@@ -19,11 +19,8 @@ The easiest way to manage and authenticate users is with the internal `native` r
 
 In self-managed {{es}} clusters, you can also reset passwords for users in the native realm [using the command line](#reset-pw-cmd-line).
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authn
-:::
 
-:::{{tip}}
+:::{tip}
 This topic describes using the native realm at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}.
 
 You can also manage and authenticate users natively at the following levels:
@@ -32,6 +29,9 @@ You can also manage and authenticate users natively at the following levels:
 * For an [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization/manage-users.md).
 :::
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authz
+:::
 
 ## Configure a native realm [native-realm-configuration]
 
