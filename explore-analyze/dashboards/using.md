@@ -256,3 +256,31 @@ When sharing a dashboard with a link while a panel is in maximized view, the gen
 :::{image} /explore-analyze/images/kibana-dashboard-panel-maximized.png
 :alt: A maximized panel in a dashboard
 :::
+
+
+## {{cps-cap}} scope [dashboard-cps-scope]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can control which projects a dashboard queries by using the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header.
+
+### Store a {{cps}} scope with a dashboard [dashboard-store-cps-scope]
+
+By default, dashboards use the {{cps}} scope currently set in the {{cps-init}} scope selector. You can save a specific {{cps}} scope with the dashboard so that it restores automatically whenever anyone opens it.
+
+To store a {{cps}} scope:
+
+* **From the settings flyout** (in editing mode): Enable **Store CPS scope with dashboard**. The dashboard saves the {{cps}} scope that is currently active.
+* **From the save modal**: Enable **Store project routing with dashboard**. The dashboard applies the saved {{cps}} scope each time it loads.
+
+When you disable this option (the default), the dashboard uses whatever {{cps}} scope the viewer has set in the {{cps-init}} scope selector.
+
+### Panels with a custom {{cps}} scope [dashboard-panel-cps-badge]
+
+Individual visualization panels can use a {{cps}} scope that differs from the dashboard's scope. This happens when a panel's {{esql}} query includes a [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) instruction, or when a Maps panel has layers with specific [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
+
+When a panel uses a custom {{cps}} scope, it displays a **Custom CPS scope** badge with a {{cps}} icon. Click the badge to view the specific scope and open the panel configuration to edit it.
+
+Panels with a custom {{cps}} scope ignore changes to both the {{cps-init}} scope selector and the dashboard-level {{cps}} scope. This applies to **Lens**, **Discover** saved searches, **Vega**, and **Maps** panels.
