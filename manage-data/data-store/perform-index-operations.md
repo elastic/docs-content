@@ -18,6 +18,10 @@ Elastic's Index Management features are an easy, convenient way to manage your c
 
 The **{{index-manage-app}}** page in {{kib}} lets you view, investigate, and [perform operations](/manage-data/data-store/index-operations-reference.md) on your indices, [data streams](/manage-data/data-store/data-streams.md), [index templates](/manage-data/data-store/templates.md), [component templates](/manage-data/data-store/templates.md#component-templates), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md).
 
+:::{tip}
+All operations available on the **{{index-manage-app}}** page can also be performed using the {{es}} REST API. Refer to [Manage data from the command line](/manage-data/data-store/manage-data-from-the-command-line.md) for examples, or browse the [{{es}} index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) directly.
+:::
+
 ## Required permissions [required-permissions]
 ```{applies_to}
 stack: ga

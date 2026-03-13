@@ -51,3 +51,11 @@ Work with your indices and data using the {{kib}} UI or the {{es}} REST API.
 :::{tip}
 If you manage append-only timestamped data with data streams, refer to [Data lifecycle](/manage-data/lifecycle.md) for strategies to manage retention, tiering, and performance as your data grows.
 :::
+
+## What's next
+
+Once your data is stored, you can:
+
+* [Ingest](/manage-data/ingest.md): Set up production ingestion workflows using pipelines, agents, and Logstash.
+* [Query and filter your data](/explore-analyze/query-filter.md): Search, filter, and aggregate your data using full-text queries, ES|QL, and more.
+* [Data lifecycle](/manage-data/lifecycle.md): Plan retention, tiering, and performance strategies as your data grows.
