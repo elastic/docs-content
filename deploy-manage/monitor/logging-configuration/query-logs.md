@@ -29,7 +29,7 @@ Alternatively, use the [settings API]({{es-apis}}operation/operation-cluster-put
 elasticsearch.activitylog.enabled: true
 ```
 
-`dsl` type queries that query only system indices are not logged by default. To enable logging these queries, use the `elasticsearch.activitylog.search.include.system_indices` setting described in [](#configure-query-logging).
+`dsl` type queries that query only system indices are not logged by default. To enable logging these queries, use the `elasticsearch.activitylog.search.include.system_indices` setting described in [the configuration section](#configure-query-logging).
 
 ## Finding the logs [finding-query-logs]
 
@@ -38,7 +38,7 @@ Query logs are always emitted on the node that executed the request. These logs 
 - If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). The query logs have the `log.logger` field set to `elasticsearch.querylog`.
 - From the local {{es}} service logs directory. Query log files have a suffix of `_querylog.json`. For example: `mycluster_querylog.json`.
 
-## Configure query logging
+## Configure query logging  [configure-query-logging]
 
 The following configuration options are available:
 
@@ -56,7 +56,7 @@ Each query log entry is a JSON object with fields from two sources:
 
 ### Standard fields
 
-These fields are present in every log entry regardless of query type.
+These fields are present regardless of query type. Note that some fields may be present only in specific circumstances, see field descriptions below.
 
 - `@timestamp`: The timestamp of the log entry.
 - `event.outcome`: Whether the request was successful (`success`) or not (`failure`).
@@ -64,7 +64,7 @@ These fields are present in every log entry regardless of query type.
 - `error.type` and `error.message`: Error information fields if the request failed.
 - `user.*`: User information fields if enabled.
 - `http.request.headers.x_opaque_id`: The X-Opaque-Id header value if enabled. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
-- `trace.id`: [Trace ID](ecs://reference/ecs-tracing.md#field-trace-id) information.
+- `trace.id`: [Trace ID](ecs://reference/ecs-tracing.md#field-trace-id) information, if provided by the client.
 - `elasticsearch.task.id`: The task ID of the request.
 - `elasticsearch.node.id`: The node ID of the request.
 - `elasticsearch.parent.task.id`: The task ID of the parent task, if this request is a child of another request.
@@ -73,6 +73,8 @@ These fields are present in every log entry regardless of query type.
 Using the parent task and node IDs, it is possible to correlate the log entries for queries that were initiated by other queries. 
 
 ### Query logging specific fields
+
+These fields are specific to query logging and common for all query languages.
 
 - `elasticsearch.querylog.type`: The type of operation (`dsl`, `esql`, `sql`, `eql`).
 - `elasticsearch.querylog.took`: How long (in nanoseconds) the request took to complete.
@@ -90,14 +92,14 @@ Using the parent task and node IDs, it is possible to correlate the log entries 
 
 Additional fields specific to {{es}} environment may be added. 
 
-In addition to the fields listed above, each query language may include fields specific to it, prefixed with `elasticsearch.querylog.`
+In addition to the fields listed above, each query language may include fields specific to it, prefixed with `elasticsearch.querylog.`.
 
-### DSL Search specific fields
+### Fields specific to Query DSL (`dsl`)
 
 - `search.total_count`: The “total hits” value, as reported by [the search response](/solutions/search/the-search-api.md). 
 - `search.total_count_partial`:  Set to `true` in case the total count does not reflect the full number of matches for some reason (like [`track_total_hits` limitation](/solutions/search/the-search-api.md#track-total-hits)). 
 
-### {{esql}}
+### Fields specific to {{esql}}
 
 - `esql.profile.*.took`: {{esql}} query profiling metrics, in nanoseconds
 
