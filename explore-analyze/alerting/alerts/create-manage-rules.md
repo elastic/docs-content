@@ -42,7 +42,8 @@ When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have
 Anomaly detection rules don't support {{cps}} .
 :::
 
-<!-- Link to Spaces CPS configuration page when docs-content-internal#30 is published. -->
+When you create or edit a rule, the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header shows the current {{cps}} scope but you cannot change it from the rule page. To change which projects a rule queries, update the [{{cps}} scope configured for the space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
+
 ## Create and edit rules [create-edit-rules]
 
 Some rules must be created within the context of a {{kib}} app like [Metrics](/solutions/observability/infra-and-hosts.md), [**APM**](/solutions/observability/apm/index.md), or [Uptime](/solutions/observability/uptime/index.md), but others are generic. Generic rule types can be created in **{{rules-ui}}** by clicking the **Create rule** button. This will launch a flyout that guides you through selecting a rule type and configuring its conditions and actions.
