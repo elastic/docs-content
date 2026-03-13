@@ -172,6 +172,10 @@ To restrict a {{data-source}} to specific projects, you can:
 * **Use [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)** in the index pattern to target specific projects, for example `project_alpha:logs-*,project_beta:logs-*`. To search only the origin project, use `_origin:logs-*`.
 * **Use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)** in your queries to narrow scope at query time.
 
+   :::{note}
+   {{ml}} rules don't support {{cps}}. {{ml}} rules search data in the origin project only.
+   :::
+
 
 ## Delete a {{data-source}} [delete-data-view]
 

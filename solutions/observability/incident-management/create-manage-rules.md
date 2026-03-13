@@ -36,7 +36,7 @@ When you open a rule to create or edit it, the [{{cps-init}} scope selector](/ex
 For {{esql}} rules, you can use [`SET project_routing`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-cps) in the rule query to target specific linked projects, overriding the space-level scope.
 
 :::{note}
-Anomaly detection rules don't support {{cps}}.
+{{ml}} rules don't support {{cps}}. {{ml}} rules search data in the origin project only.
 :::
 
 ## Observability rules [observability-create-manage-rules-observability-rules]
