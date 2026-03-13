@@ -27,9 +27,10 @@ Note:
 You can update the instance configuration for Elasticsearch data tiers directly from the Elastic Cloud console. This allows you to change the instance configuration for Hot, Warm, Cold, or Frozen tiers without modifying other resources.
 
 1. On the deployment overview page, next to your current hardware profile name, click **Edit**.
+
 2. In the hardware profile flyout, select the instance configuration for each data tier you want to update. The configuration screen summarizes the changes for the tier-specific instance configurations as part of your deployment.
 
-Note: Only instance types available in the deployment's regions are shown. Stateless resources (e.g., master nodes, ML nodes, Kibana) cannot be modified, but the plan preview will still show their related updates.
+Note: Only instance types available in the deployment's regions are shown. Stateless resources (For example: master nodes, ML nodes, Kibana) cannot be modified, but the plan preview will still show their related updates.
 
 3. After reviewing the changes, click **Update**.
 4. A confirmation dialog will appear showing all changes that will happen. Review the plan and click **Confirm** to apply the update.
