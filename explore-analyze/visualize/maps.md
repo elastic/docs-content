@@ -70,7 +70,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search.md#cps-in-kibana) to control which projects your map queries.
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) to control which projects your map queries.
 
 [Vector layers](/explore-analyze/visualize/maps/vector-layer.md) and joins pull data from linked projects based on the current {{cps}} scope. When you change the scope in the {{cps-init}} scope selector, all layers update to reflect the new set of projects.
 
