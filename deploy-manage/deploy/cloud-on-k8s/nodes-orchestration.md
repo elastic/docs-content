@@ -212,7 +212,7 @@ Set these annotations on the `Elasticsearch` resource metadata:
 
 | Annotation | Description |
 |------------|-------------|
-| `eck.k8s.elastic.co/restart-trigger` | **Required to trigger.** Set or change this value (for example to a timestamp) to start a rolling restart. The value is propagated to pod annotations and is visible in Elasticsearch's node shutdown API as the shutdown reason. |
+| `eck.k8s.elastic.co/restart-trigger` | **Required to trigger.** Set or change this value (for example to a timestamp) to start a rolling restart. The value is propagated to pod annotations and is visible in the {{es}} node shutdown API response as the shutdown reason. |
 
 You can also set the [`eck.k8s.elastic.co/restart-allocation-delay`](#restart-allocation-delay) annotation to control the shard allocation delay during the restart.
 
