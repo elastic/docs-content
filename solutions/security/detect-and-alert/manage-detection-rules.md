@@ -52,7 +52,7 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 
 :::{admonition} Subscription requirements
 * **Custom rules**: You can edit and bulk-modify custom rules with any {{stack}} subscription or {{serverless-short}} project tier. 
-* **Prebuilt rules**: You can edit [rule notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) with any subscription or project tier. Editing all other prebuilt rule settings (except **Author** and **License**) or bulk-modifying prebuilt rules requires an Enterprise subscription or Security Analytics Complete project.
+* **Prebuilt rules**: You can edit [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) with any subscription or project tier. Editing all other prebuilt rule settings (except **Author** and **License**) or bulk-modifying prebuilt rules requires an Enterprise subscription or Security Analytics Complete project.
 :::
 
 ### Edit a single rule [edit-single-rule]
