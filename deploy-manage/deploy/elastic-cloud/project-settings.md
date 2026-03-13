@@ -14,7 +14,7 @@ Project settings are configurations that apply to your entire project, managed f
 
 - **[Search AI Lake settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention.
 - **[Project features and add-ons](#project-features-add-ons)**: Select feature tiers and enable add-ons for your project type.
-- **[Project tags](#project-tags)**: Add custom metadata to categorize and organize your projects.
+- **[Project tags](#project-tags)**: Add custom tags to categorize and organize your projects alongside predefined tags.
 - **[Connection aliases](#elasticsearch-manage-project-connection-aliases)**: Use predictable, human-readable URLs for your projects that you can share easily.
 
 To manage these settings:
@@ -140,37 +140,53 @@ For a full feature comparison, upgrading instructions, and more, refer to [{{obs
 
 ## Project tags
 
-Project tags are custom metadata key-value pairs that allow you to categorize and organize your projects.
+Project tags are metadata key-value pairs that help you to categorize and organize your projects.
 
-While each project is automatically categorized by attributes such as its project type, cloud service provider, and region, you can add your own tags to further categorize your projects. 
+* **Predefined tags** are attributes that Elastic assigns automatically to each project, such as project type, cloud service provider, and region. 
+* **Custom tags** are key-value pairs that you define in the {{ecloud}} console or using the API to further categorize and organize your projects.
 
-For example, you might tag a project with the following types of metadata:
+### Predefined tags
 
-* The team or department that uses it: `dept:finance`, `dept:marketing`, `dept:engineering`
+Predefined tags are attributes that Elastic assigns automatically to each project. The following predefined tags are available:
+
+* `_alias`: the project alias
+* `_csp`: the cloud service provider
+* `_id`: the project identifier
+* `_organization`: the organization identifier
+* `_region`: the Cloud region where the project is located
+* `_type`: the project type (Observability, Search, or Security)
+
+Predefined tags always start with an underscore `_`.
+
+### Custom tags
+
+You can add custom tags for any piece of metadata that might help you to categorize and organize your projects. For example, you might add custom tags to add the following metadata:
+
+* The team or department that uses the project: `dept:finance`, `dept:marketing`, `dept:engineering`
 * The environment type: `env:dev`, `env:staging`, or `env:prod`
 
-### Create project tags
+#### Create custom tags
 
 1. In {{ecloud}}, select your project from the **Serverless projects** panel and click **Manage**.
 2. From the **Overview** page for your project, in the **Tags** section, click **{icon}`plus_in_circle` Add tags**.
-3. Add a key and value for your tag, and then click **Add**.
+3. Add a key and value for your custom tag, and then click **Add**.
 4. When you're finished creating tags, click **Save**.
 
-To remove a tag from a project, reopen the tag management drawer by clicking **{icon}`plus_in_circle`  Add tags**.
+To remove a custom tag from a project, reopen the tag management drawer by clicking **{icon}`plus_in_circle`  Add tags**.
 
-### Project tags using the {{serverless-full}} API
+#### Custom tags using the {{serverless-full}} API
 
-You can also manage your project tags through the [{{serverless-full}} API]({{cloud-serverless-apis}}).
+You can also manage your custom tags through the [{{serverless-full}} API]({{cloud-serverless-apis}}).
 
-#### Add tags
+##### Add custom tags
 
-You can manage project tags using the `POST` or `PATCH` project endpoints for your project type:
+You can manage custom tags using the `POST` or `PATCH` project endpoints for your project type:
 
 * {{es}}: [POST]({{cloud-serverless-apis}}/operation/operation-createelasticsearchproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchelasticsearchproject)
 * Observability: [POST]({{cloud-serverless-apis}}/operation/operation-createobservabilityproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchobservabilityproject)
 * Security: [POST]({{cloud-serverless-apis}}/operation/operation-createsecurityproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchsecurityproject)
 
-Project tags are passed as key-value pairs in the `metadata.tags` property of the request body:
+Custom tags are passed as key-value pairs in the `metadata.tags` property of the request body:
 
 ```console
 PATCH /api/v1/serverless/projects/elasticsearch/1234 <1>
@@ -186,9 +202,9 @@ PATCH /api/v1/serverless/projects/elasticsearch/1234 <1>
 ```
 1. `/api/v1/serverless/projects/{project-type}/{project-id}`
 
-#### Remove tags
+##### Remove custom tags
 
-To remove a value for a tag, pass a `null` value for that tag:
+To remove a custom tag, pass a `null` value for that tag:
 
 ```console
 PATCH /api/v1/serverless/projects/elasticsearch/1234 <1>
@@ -204,9 +220,9 @@ PATCH /api/v1/serverless/projects/elasticsearch/1234 <1>
 ```
 1. `/api/v1/serverless/projects/{project-type}/{project-id}`
 
-#### Query by tag
+### Query by tag
 
-After you've added tags to your project, you can query your projects by their tags by adding the desired tags as query parameters:
+You can query your projects by their predefined or custom tags by adding the desired tags as query parameters:
 
 * [{{es}}]({{cloud-serverless-apis}}/operation/operation-listelasticsearchprojects)
 * [Observability]({{cloud-serverless-apis}}/operation/operation-listobservabilityprojects)
@@ -220,6 +236,12 @@ For example, to query for all {{es}} projects that are staging environments belo
 
 ```console
 GET /api/v1/serverless/projects/elasticsearch?tag[env]=staging&tag[dept]=support_eng
+```
+
+To query for all Observability projects that are hosted on GCP:
+
+```console
+GET /api/v1/serverless/projects/observability?tag[_csp]=gcp
 ```
 
 ## Connection aliases [elasticsearch-manage-project-connection-aliases]
