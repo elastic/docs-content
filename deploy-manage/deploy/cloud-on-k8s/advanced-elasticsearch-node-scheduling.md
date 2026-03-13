@@ -362,7 +362,7 @@ spec:
           - name: ZONE
             valueFrom:
               fieldRef:
-                fieldPath: metadata.annotations[‘topology.kubernetes.io/zone’]
+                fieldPath: metadata.annotations['topology.kubernetes.io/zone']
         topologySpreadConstraints:
           - maxSkew: 1
             topologyKey: topology.kubernetes.io/zone
