@@ -158,11 +158,21 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form automatically lists indices from all projects in your current [{{cps}} scope](/explore-analyze/cross-project-search.md#cps-in-kibana).
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form lists indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search.md#cps-in-kibana). This applies when you create a {{data-source}} from within a {{cps}}-enabled app such as Discover, Dashboards, Lens, or Maps. The index list updates automatically when you change the {{cps}} scope.
 
-You don't need to opt in or toggle any setting. The index list updates automatically when you change the {{cps}} scope in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search.md#cps-in-kibana). A {{data-source}} with an index pattern like `logs-*` matches indices across the origin project and all linked projects in scope.
+An index pattern like `logs-*` matches indices across the origin project and all linked projects in scope.
 
-To restrict a {{data-source}} to specific projects, adjust the {{cps}} scope in the {{cps-init}} scope selector before creating the {{data-source}}, or use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in your queries.
+:::{note}
+When you create a {{data-source}} from **Stack Management > Data Views**, the {{cps}} scope selector is not available and only indices from the current project are listed.
+:::
+
+To restrict a {{data-source}} to specific projects, you can:
+
+* **Adjust the {{cps}} scope** in the {{cps-init}} scope selector before creating the {{data-source}}.
+* **Use qualified expressions** in the index pattern to target specific projects, for example `project_alpha:logs-*,project_beta:logs-*`. To search only the origin project, use `_origin:logs-*`.
+* **Use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)** in your queries to narrow scope at query time.
+
+For details about qualified expressions, refer to [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions).
 
 
 ## Delete a {{data-source}} [delete-data-view]
