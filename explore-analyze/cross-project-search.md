@@ -99,9 +99,8 @@ With the {{cps-init}} scope selector, you can select:
 
 * **This project** — Searches only the origin project.
 * **All projects** — Searches the origin project and all linked projects.
-* **A specific subset** — Searches selected linked projects only, based on a [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
-The selected scope applies to all queries in the current app unless you override it, for example with an {{esql}} query that includes a [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) instruction, or with a [saved dashboard scope](/explore-analyze/dashboards/using.md).
+The scope selector also lists the aliases of all linked projects, which is useful when you need to reference them in [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) at the query level. For example, you can target a specific subset of projects by using `SET project_routing` in an {{esql}} query, or by using qualified expressions like `project_alias:logs-*` in an index pattern. These query-level options let you narrow the scope beyond what the selector offers.
 
 Admins can also configure a [default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). The {{cps-init}} scope selector uses this default when you start a new session. When you change the scope during a session, your selection is preserved as you navigate between apps.
 
