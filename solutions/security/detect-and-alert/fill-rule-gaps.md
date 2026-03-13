@@ -149,7 +149,7 @@ The **Auto gap fill status** field (in the panel above the Rules table) shows wh
 
 ### Monitor automatic gap fill
 
-Details about the automatic gap fill job and scheduled tasks are captured in the gap fill scheduler logs. Access the logs by selecting **Gap fill scheduler** in the **Auto gap fill settings** section.
+Details about the automatic gap fill job and scheduled tasks are captured in the gap fill scheduler logs. Access the logs by selecting **Gap fill scheduler** in the **Auto gap fill settings** section (above the Rules table).
 
 In the scheduler logs table, expand rows to learn more about gaps discovered and tasks scheduled each time the job ran. Key details include:
 
