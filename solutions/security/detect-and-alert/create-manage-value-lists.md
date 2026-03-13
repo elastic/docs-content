@@ -33,7 +33,7 @@ You can create value lists with the following types:
 | Keywords | Keyword strings. Many [ECS fields](ecs://reference/ecs-field-reference.md) are keywords. | `svchost.exe`, `admin@example.com` |
 | IP addresses | Single IP addresses. | `192.168.1.5` |
 | IP ranges | IP ranges in CIDR or dash notation. | `10.0.0.0/8`, `127.0.0.1-127.0.0.4` |
-| **Text** | Free-form text strings. | `error: unauthorized access` |
+| Text | Free-form text strings. | `error: unauthorized access` |
 
 ### IP format reference [ip-value-list-formats]
 
