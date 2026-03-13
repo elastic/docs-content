@@ -24,6 +24,8 @@ With the {{cps-init}} scope selector, you can select:
 
 The scope selector also lists the aliases of all [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), which is useful when you need to reference them in queries or index patterns.
 
+The scope selector is not available in every app. Some apps display it as read-only, and others do not show it at all. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
+
 When you change the scope during a session, your selection is preserved as you navigate between apps. Admins can configure a [default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which is used when you start a new session.
 
 ## Override {{cps}} scope at the query level [cps-query-overrides]
