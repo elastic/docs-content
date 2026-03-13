@@ -32,7 +32,7 @@ When you change the scope during a session, your selection is preserved as you n
 
 ## Override {{cps}} scope at the query level [cps-query-overrides]
 
-In apps where you write queries, you can define a different {{cps}} scope than the one set in the header's scope selector. This is useful when you want a specific query or dashboard panel to search a different set of projects.
+In apps where you write queries, you can define a different {{cps}} scope than the one set in the header's scope selector or the [space-level default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). This is useful when you want a specific query or dashboard panel to search a different set of projects.
 
 There are two main mechanisms:
 
