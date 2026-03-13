@@ -332,7 +332,8 @@ To both restrict queried projects and include tag values in results, specify bot
 ```esql
 SET project_routing="_alias:*linked*";    <1>
 FROM logs METADATA _project._alias        <2>
-| STATS COUNT(*) BY _project._alias```
+| STATS COUNT(*) BY _project._alias
+```
 
 1. Routes the query to projects whose alias matches `*linked*`. Only those projects are queried.
 2. Declares `_project._alias` so it can be used in `STATS`. Results show a count per matched project.
