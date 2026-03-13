@@ -149,7 +149,7 @@ cluster_*:logstash-*,-cluster_one:*
 
 Once you configure a {{data-source}} to use the {{ccs}} syntax, all searches and aggregations using that {{data-source}} in {{kib}} take advantage of {{ccs}}.
 
-For more information, refer to [Excluding clusters or indicies from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
+For more information, refer to [Excluding clusters or indices from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
 
 
 ### Use {{data-sources}} with {{cps}} [management-cross-project-search]
