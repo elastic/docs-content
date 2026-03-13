@@ -204,7 +204,7 @@ For a complete list of available predicates, their meaning, and example usage, r
 eck: ga 3.4.0
 ```
 
-You can trigger a graceful rolling restart of an {{es}} cluster without changing the cluster spec (version, image, or pod template). The operator reuses the same rolling upgrade path: it uses the Elasticsearch node shutdown API, respects the same [ECK upgrade predicates](cloud-on-k8s://reference/upgrade-predicates.md), and restarts one node at a time.
+You can trigger a graceful rolling restart of an {{es}} cluster without changing the cluster spec (version, image, or pod template). The operator reuses the same rolling upgrade path: it uses the {{es}} node shutdown API, respects the same [ECK upgrade predicates](cloud-on-k8s://reference/upgrade-predicates.md), and restarts one node at a time.
 
 ### Annotations
 
