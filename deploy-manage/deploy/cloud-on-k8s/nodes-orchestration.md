@@ -274,4 +274,4 @@ spec:
         node.store.allow_mmap: false
 ```
 
-In this example the 20-minute delay applies whenever ECK restarts a node, whether the restart is part of a version upgrade, a spec change, or a manually triggered rolling restart via `eck.k8s.elastic.co/restart-trigger`.
+In this example the 20-minute delay applies whenever ECK restarts a node, whether the restart is part of a version upgrade, a spec change, or a manually triggered rolling restart intiated by `eck.k8s.elastic.co/restart-trigger`.
