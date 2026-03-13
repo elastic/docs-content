@@ -9,8 +9,6 @@ products:
   - id: observability
 ---
 
-
-
 # Create a log threshold rule [logs-threshold-alert]
 
 
@@ -19,6 +17,16 @@ products:
 :screenshot:
 :::
 
+## Requirements
+
+To create log threshold rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` The **Admin** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The defaults are `logs-*-*`, `logs-*`, and `filebeat-*`. You cannot override these indices on a per-rule basis.
 
 ## Fields and comparators [fields-comparators-logs]
 
