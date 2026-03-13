@@ -45,12 +45,3 @@ $$$panels-editors$$$
 Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
 :::
 
-## Agent skills
-
-The following agentic skills are available to help AI agents with this topic:
-
-- [Kibana Vega](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega).
-
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::

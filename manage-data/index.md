@@ -45,13 +45,3 @@ Strategies for managing data depend on the type of data and how you're using it.
 If you move to new infrastructure, there are several options for moving existing data between {{es}} clusters.
 
 **Learn more in [Migrate your {{es}} data](/manage-data/migrate.md).**
-
-## Agent skills
-
-The following agentic skills are available to help AI agents with this topic:
-
-- [Elasticsearch ingest](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-ingest).
-
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::

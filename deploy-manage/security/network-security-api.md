@@ -20,6 +20,10 @@ This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful
 
 We cover the following examples:
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/network-security
+:::
+
 * [Create an IP filter policy or IP filtering rule set](#create-ip-filter-policy)
 
   * [Ingress](#ip-filter-policy-ingress)

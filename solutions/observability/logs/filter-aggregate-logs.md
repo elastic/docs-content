@@ -16,6 +16,10 @@ Filter and aggregate your log data to find specific information, gain insight, a
 
 This guide shows you how to:
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/logs-search
+:::
+
 * [Filter logs](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter): Narrow down your log data by applying specific criteria.
 * [Aggregate logs](/solutions/observability/logs/filter-aggregate-logs.md#logs-aggregate): Analyze and summarize data to find patterns and gain insight.
 

@@ -15,6 +15,10 @@ products:
 
 The Alerts page displays all detection alerts. From the Alerts page, you can filter alerts, view alerting trends, change the status of alerts, add alerts to cases, and start investigating and analyzing alerts.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/alert-triage
+:::
+
 :::{image} /solutions/images/security-alert-page.png
 :alt: Alerts page overview
 :screenshot:

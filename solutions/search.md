@@ -59,12 +59,3 @@ To dive more deeply into the building blocks of {{es}} clusters, including nodes
 * [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
 * [{{es}} API documentation]({{es-apis}})
 
-## Agent skills
-
-The following agentic skills are available to help AI agents with this topic:
-
-- [Elasticsearch ES|QL](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql).
-
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::

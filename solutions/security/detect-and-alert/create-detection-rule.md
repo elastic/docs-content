@@ -22,6 +22,10 @@ Once the Detections feature is [turned on](/solutions/security/detect-and-alert/
 5. Set up rule actions (optional).
 6. Set up response actions (optional).
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management
+:::
+
 ::::{tip}
 * At any step, you can [preview the rule](/solutions/security/detect-and-alert/create-detection-rule.md#preview-rules) before saving it to see what kind of results you can expect.
 * To ensure rules don’t search cold and frozen data when executing, either configure the `excludedDataTiersForRuleExecution` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) (which applies to all rules in a space), or add a [Query DSL filter](/solutions/security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md) to individual rules. These options are only available if you're on the {{stack}}.

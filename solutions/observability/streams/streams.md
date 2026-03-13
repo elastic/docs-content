@@ -17,6 +17,10 @@ products:
 
 Streams provides a single, centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying {{es}} components.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/streams
+:::
+
 ## Classic versus wired streams [streams-classic-vs-wired]
 
 Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ in configuration, inheritance, and field mapping.
@@ -121,12 +125,3 @@ Interact with and configure your streams in the following ways:
 - [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
 - [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
 
-## Agent skills
-
-The following agentic skills are available to help AI agents with this topic:
-
-- [Kibana streams](https://github.com/elastic/agent-skills/tree/main/skills/kibana/streams).
-
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::

@@ -19,6 +19,10 @@ Only **Organization owners** can create and manage API keys. An API key is not t
 
 You can have multiple API keys for different purposes, and you can revoke them when you no longer need them.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/setup
+:::
+
 ::::{note}
 These keys provides access to the API that enables you to manage your deployments. It does not provide access to {{es}}. To access {{es}} with an API key, create a key [in {{kib}}](elasticsearch-api-keys.md) or [using the {{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
 ::::

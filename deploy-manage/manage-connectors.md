@@ -16,6 +16,10 @@ Connectors serve as a central place to store connection information for both Ela
 
 You can find the **{{connectors-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors
+:::
+
 ::::{note}
 This page is about {{kib}} connectors that integrate with services like generative AI model providers. If you’re looking for content connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
 

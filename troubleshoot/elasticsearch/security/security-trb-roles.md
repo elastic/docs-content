@@ -18,6 +18,10 @@ products:
 
 **Resolution:**
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-security-troubleshooting
+:::
+
 1. Verify that the role names associated with the users match the roles defined in the `roles.yml` file. You can use the `elasticsearch-users` tool to list all the users. Any unknown roles are marked with `*`.
 
     ```shell

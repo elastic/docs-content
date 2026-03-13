@@ -75,22 +75,3 @@ Monitor the performance of your Elastic environment, administer your organizatio
 
 You can [upgrade your Elastic environment](/deploy-manage/upgrade.md) to gain access to the latest features. Learn how to upgrade your cluster or deployment to the latest {{stack}} version, or upgrade your {{ece}} orchestrator or {{eck}} operator to the latest version.
 
-## Agent skills
-
-The following agentic skills are available to help AI agents with this topic:
-
-- [Cloud setup](https://github.com/elastic/agent-skills/tree/main/skills/cloud/setup).
-- [Cloud access management](https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management).
-- [Cloud create project](https://github.com/elastic/agent-skills/tree/main/skills/cloud/create-project).
-- [Cloud manage project](https://github.com/elastic/agent-skills/tree/main/skills/cloud/manage-project).
-- [Cloud network security](https://github.com/elastic/agent-skills/tree/main/skills/cloud/network-security).
-- [Elasticsearch authentication](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authn).
-- [Elasticsearch authorization](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authz).
-- [Elasticsearch audit](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-audit).
-- [Elasticsearch security troubleshooting](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-security-troubleshooting).
-- [Kibana audit](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-audit).
-
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::
-

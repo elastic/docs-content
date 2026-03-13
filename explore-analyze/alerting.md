@@ -33,13 +33,3 @@ For most use cases, you should use Kibana Alerts instead of Watcher. Kibana Aler
 Watcher is not available in {{serverless-full}}.
 :::
 
-## Agent skills
-
-The following agentic skills are available to help AI agents with this topic:
-
-- [Kibana alerting rules](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-alerting-rules).
-- [Kibana connectors](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors).
-
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::

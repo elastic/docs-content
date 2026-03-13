@@ -13,6 +13,10 @@ products:
 
 In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM features to detect, investigate, and respond to threats. 
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/generate-security-sample-data
+:::
+
 ## Prerequisites 
 
 * You can follow this guide using any deployment. To get up and running quickly, we recommend [{{sec-serverless}}](/solutions/security/get-started.md#create-sec-serverless-project) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). For a complete list of deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 

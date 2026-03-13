@@ -15,6 +15,10 @@ products:
 
 The Rules page allows you to view and manage all prebuilt and custom detection rules.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management
+:::
+
 :::{image} /solutions/images/security-all-rules.png
 :alt: The Rules page
 :screenshot:

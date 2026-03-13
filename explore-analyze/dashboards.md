@@ -50,12 +50,3 @@ Once you understand the basics, explore these common tasks:
 
 Some dashboards are created and managed by the system, and are identified as `managed` in your list of dashboards. This generally happens when you set up an integration to add data. You can't edit managed dashboards directly, but you can [duplicate](dashboards/duplicate-dashboards.md) them and edit the duplicates.
 
-## Agent skills
-
-The following agentic skills are available to help AI agents with this topic:
-
-- [Kibana dashboards](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards).
-
-:::{tip}
-To learn more about Elastic agent skills, refer to the [documentation](/explore-analyze/ai-features/agent-skills).
-:::

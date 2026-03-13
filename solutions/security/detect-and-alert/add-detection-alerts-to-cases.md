@@ -15,6 +15,10 @@ products:
 
 From the Alerts table, you can attach one or more alerts to a [new case](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md#signals-to-new-cases) or [an existing one](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md#signals-to-existing-cases). Alerts from any rule type can be added to a case.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
+:::
+
 ::::{note}
 * After you add an alert to a case, you can remove it from the case activity under the alert summary or by using the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
 * Each case can have a maximum of 1,000 alerts.
