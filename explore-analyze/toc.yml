@@ -189,6 +189,7 @@ toc:
       - hidden: cross-project-search/cross-project-search-search.md
       - hidden: cross-project-search/cross-project-search-tags.md
       - hidden: cross-project-search/cross-project-search-project-routing.md
+      - hidden: cross-project-search/cross-project-search-manage-scope.md
   - file: ai-features.md
     children:
       - file: ai-features/elastic-agent-builder.md
