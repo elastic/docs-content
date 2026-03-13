@@ -10,7 +10,7 @@ products:
 
 # The Elasticsearch data store [elasticsearch-intro-what-is-es]
 
-[{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable document store, and vector database built on [Apache Lucene](https://lucene.apache.org/). It stores data as JSON documents, organized into _indices_. You interact with an index through its unique name or [alias](/manage-data/data-store/aliases.md). Each index holds a dataset with its own structure, defined by a _mapping_ that specifies the fields and their types.
+[{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable document store, and vector database built on [Apache Lucene](https://lucene.apache.org/). It stores data as JSON documents, organized into _indices_. You interact with an index through its unique name or logical references such as an [alias](/manage-data/data-store/aliases.md). Each index holds a dataset with its own schema, defined by a _mapping_ that specifies the fields and their types.
 
 You can store many independent datasets side by side — each in its own index or [data stream](/manage-data/data-store/data-streams.md) — and search them individually or together.
 
