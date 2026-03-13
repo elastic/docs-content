@@ -150,7 +150,7 @@ Use this option to set the Kafka topic for each {{agent}} event.
     - add_fields:
         target: ''
         fields: 
-          kafka_topic: '${data_stream.type}-${data_stream.dataset}-${data_stream.namespace}' <1>
+          kafka_topic: '%{[data_stream.type]}-%{[data_stream.dataset]}-%{[data_stream.namespace]}' <1>
     ```
     1. Depending on the values of the data stream fields, this generates topic names such as `logs-nginx.access-production` or `metrics-system.cpu-staging` as the value of the custom `kafka_topic` field.
 
@@ -191,7 +191,7 @@ You can enable compression to reduce the volume of Kafka output.
 Configure timeout and buffer size values for the Kafka brokers.
 
 **Broker timeout** $$$kafka-output-broker-timeout$$$
-:   The maximum length of time a Kafka broker waits for the required number of ACKs before timing out (see the `ACK reliability` setting further in). The default is 30 seconds.
+:   The maximum length of time a Kafka broker waits for the required number of ACKs before timing out (see the `ACK reliability` setting further in). The default is 10 seconds.
 
 **Broker reachability timeout** $$$kafka-output-broker-reachability-timeout$$$
 :   The maximum length of time that an {{agent}} waits for a response from a Kafka broker before timing out. The default is 30 seconds.
