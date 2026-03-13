@@ -223,7 +223,7 @@ For the full syntax and list of available settings, refer to [{{esql}} SET direc
 ### Control unmapped field behavior [esql-kibana-unmapped-fields]
 ```{applies_to}
 stack: preview 9.4
-serverless: unavailable
+serverless: preview
 ```
 
 When querying across indices with different mappings, some fields might not exist in all of them. By default, {{esql}} fails the query when it encounters unmapped fields. Use the `unmapped_fields` setting to change this behavior:
@@ -243,54 +243,6 @@ FROM my_index*
 
 This is useful when querying [failure stores](../../../manage-data/data-store/data-streams/failure-store.md) or indices with varying field mappings. The {{esql}} editor suggests available values when you type `SET unmapped_fields =` in the query bar.
 
-### Enable approximate query results [esql-kibana-approximation]
-```{applies_to}
-stack: preview 9.4
-serverless: unavailable
-```
-
-For exploratory analysis on large datasets, you can enable approximate query execution to get faster results. Use the `approximation` setting to trade precision for speed in aggregation queries:
-
-| Value | Behavior |
-|-------|----------|
-| `false` | Default. Returns exact results. |
-| `true` | Enables approximate results using server defaults: 100,000 sampled rows for queries without grouping, 1,000,000 for queries with a `BY` clause, and a 90% confidence level. |
-| `{ "num_rows": <integer>, "confidence_level": <double> }` | Enables approximate results with explicit parameters. |
-
-When using the map form, the following parameters are available:
-
-- `num_rows`: Number of rows to sample. Must be at least `10000`. The default depends on whether the query uses grouping (100,000 without, 1,000,000 with). Suggested values: `100000` (100K), `500000` (500K), `1000000` (1M).
-- `confidence_level`: Confidence level for the confidence intervals returned alongside approximate results. Defaults to `0.9` (90%). Must be between `0.5` and `0.95`. Suggested values: `0.95` (high precision), `0.9` (standard, default), `0.5` (exploratory).
-
-For example, to enable approximation with server defaults:
-
-```esql
-SET approximation = true;
-FROM kibana_sample_data_logs
-| STATS count = COUNT(*) BY response.keyword
-```
-
-To control the sample size and confidence level explicitly:
-
-```esql
-SET approximation = { "num_rows": 500000, "confidence_level": 0.95 };
-FROM kibana_sample_data_logs
-| STATS total_bytes = SUM(bytes) BY geo.dest
-```
-
-### Control query timezone [esql-kibana-set-timezone]
-
-By default, {{kib}} applies the timezone from the **Time zone** (`dateFormat:tz`) advanced setting to {{esql}} queries. To override this for a specific query, use the `time_zone` setting:
-
-```esql
-SET time_zone = "America/New_York";
-FROM kibana_sample_data_logs
-| STATS count = COUNT(*) BY BUCKET(@timestamp, 1 hour)
-```
-
-When present, `SET time_zone` overrides the advanced setting for that query. The editor does not suggest `time_zone` in autocomplete, but you can type it manually.
-
-For more details on how {{kib}} handles timezones for {{esql}} queries, refer to [Timezone handling](#esql-kibana-timezone).
 
 
 ## Use variables and controls [add-variable-control]
