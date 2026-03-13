@@ -14,11 +14,6 @@ products:
 
 Transforms enable you to convert existing {{es}} indices into summarized indices, which provide opportunities for new insights and analytics. For example, you can use transforms to pivot your data into entity-centric indices that summarize the behavior of users or sessions or other entities in your data. Or you can use transforms to find the latest document among all the documents that have a certain unique key.
 
-:::{note}
-:applies_to: {"serverless": "preview", "stack": "unavailable"}
-Transforms do not yet support {{cps}}. All transform operations run against the current project only. When {{cps}} support becomes available for transforms, you will be able to create transforms that operate on data from linked projects.
-:::
-
 * [Overview](transforms/transform-overview.md)
 * [Setup](transforms/transform-setup.md)
 * [When to use transforms](transforms/transform-usage.md)
