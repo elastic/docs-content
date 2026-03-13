@@ -63,6 +63,16 @@ You can interact with some panel visualizations to explore specific data more in
 :alt: Browsing a chart creates a filter dynamically
 :::
 
+You can create filter pills by:
+
+- **Clicking on chart elements**, such as data points, bars, or slices.
+- **Using legend actions**: hover over a legend item and select **Filter In** or **Filter Out** to filter the dashboard by a specific series.
+
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields created with {{esql}} commands like `EVAL` do not support filtering.
+:::
+
 
 #### Add pills using the filter editor [_add_pills_using_the_filter_editor]
 

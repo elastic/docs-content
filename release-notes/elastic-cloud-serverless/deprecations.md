@@ -11,6 +11,9 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+# March 9, 2026 [elastic-cloud-serverless-03092026-deprecations]
+* Deprecated `Enable CCS Warning Privileges` in {{kib}} advanced settings. For more information, refer to [#252183]({{kib-pull}}252183).
+
 ## February 2, 2026 [elastic-cloud-serverless-02022026-deprecations]
 * Removes the URL limit from {{kib}} and deprecates the `storeInSessionStorage` setting. For more information, refer to [#242972]({{kib-pull}}242972).
 * Removes the `--stats` flag on `build_api_docs`. For more information, refer to [#249305]({{kib-pull}}249305).
