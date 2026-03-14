@@ -42,14 +42,14 @@ Install the model by running the `eland_import_model_hub` command in the Docker 
 ```shell
 docker run -it --rm docker.elastic.co/eland/eland \
     eland_import_hub_model \
-      --cloud-id $CLOUD_ID \
+      --url <url> \
       -u <username> -p <password> \
       --hub-model-id sentence-transformers/msmarco-MiniLM-L-12-v3 \
       --task-type text_embedding \
       --start
 ```
 
-You need to provide an administrator username and password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. To find your Cloud ID based on your deployment type, refer to [this page](/solutions/elasticsearch-solution-project/search-connection-details.md).
+You need to provide an administrator username and password, and replace `<url>` with your {{es}} cluster URL.
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
