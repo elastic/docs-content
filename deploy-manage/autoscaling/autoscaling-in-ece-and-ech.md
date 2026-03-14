@@ -114,7 +114,7 @@ To enable or disable autoscaling on a deployment:
 :::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-4. Under the deployment's name in the navigation menu, select **Edit**.
+4. From the navigation menu, select **Edit**.
 5. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
 6. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
 
@@ -129,7 +129,7 @@ Each autoscaling setting is configured with a default value. You can adjust thes
 :::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-3. Under the deployment's name in the navigation menu, select **Edit**.
+3. From the navigation menu, select **Edit**.
 4. To update a data tier:
 
     1. Use the dropdown box to set the **Maximum size per zone** to the largest amount of resources that should be allocated to the data tier automatically. The resources will not scale above this value.
