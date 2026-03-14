@@ -32,9 +32,8 @@ If you're using {{ech}}, then you can also manage users and control access [at t
 
 To invite users to your organization:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From a deployment or project on the home page, select **Manage**.
-3. From the lower navigation menu, select **Organization**.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Organization** > **Members**.
 4. On the **Members** page, click **Invite members**.
 5. Enter the email addresses of the users you want to invite in the textbox.
 
