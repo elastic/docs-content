@@ -110,7 +110,7 @@ Detection rules allow you to monitor your environment by searching for source ev
 :::
     
 ::::{tip}
-{{elastic-sec}} regularly updates prebuilt rules to ensure they detect the latest threats. However, you must manually update these rules to the latest version. To learn how to do this, refer to [Update prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules).  To learn how to view and manage all detection rules, refer to [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md). 
+{{elastic-sec}} regularly updates prebuilt rules to ensure they detect the latest threats. However, you must manually update these rules to the latest version. To learn how to do this, refer to [Update prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md).  To learn how to view and manage all detection rules, refer to [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md). 
 ::::
 
 :::

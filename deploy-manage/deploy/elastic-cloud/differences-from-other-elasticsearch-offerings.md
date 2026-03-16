@@ -32,7 +32,7 @@ The following information reflects our strategic goals, plans and objectives and
 | **Cloud providers** | AWS, Azure, GCP  | AWS, Azure, GCP |
 | **Upgrades** | User-controlled timing | Automatically performed by Elastic |
 | **User management** | Elastic Cloud-managed and deployment-local users | Elastic Cloud-managed users only. Serverless users are managed at the organization level with SAML authentication support. |
-| **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
+| **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic.<br><br>In case of data loss or corruption, you can request an emergency restore by [contacting Support](/troubleshoot/index.md#contact-us). |
 | **Solutions** | Full {{stack}} per deployment | Single solution per project |
 | **Cross-origin resource sharing (CORS)** | Supported | Not available. Browser-based applications must route requests through a backend proxy server. |
 
@@ -145,7 +145,7 @@ This table compares Security capabilities between {{ech}} deployments and Server
 
 | **Feature** | {{ech}} | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
-| **[Advanced Entity Analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
+| **[Entity analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
 | **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | |
 | **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |

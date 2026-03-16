@@ -35,6 +35,15 @@ To learn how private connection policies impact your deployment, refer to [](/de
 
 Private connectivity with Azure Private Link is supported only in Azure regions.
 
+## Limitations
+
+% limitations are not applicable to serverless projects
+
+When using Azure Private Link, the following limitations apply:
+
+```{include} _snippets/private-connectivity-limitations-ech.md
+```
+
 ## Azure Private Link Service aliases [ec-private-link-azure-service-aliases]
 
 Private Link Services are set up by Elastic in all supported Azure regions under the following aliases:

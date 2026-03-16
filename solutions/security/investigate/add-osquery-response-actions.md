@@ -42,7 +42,7 @@ You can add Osquery Response Actions to new or existing custom query rules. Quer
 
 1. Choose one of the following:
 
-    * **New rule**: When you are on the last step of [custom query rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-custom-rule) creation, go to the Response Actions section and click the **Osquery** icon.
+    * **New rule**: When you are on the last step of [custom query rule](/solutions/security/detect-and-alert/custom-query.md) creation, go to the Response Actions section and click the **Osquery** icon.
     * **Existing rule**: Edit the rule’s settings, then go to the **Actions** tab. In the tab, click the **Osquery** icon under the Response Actions section.
 
         ::::{note}
