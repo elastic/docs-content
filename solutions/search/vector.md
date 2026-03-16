@@ -3,6 +3,13 @@ navigation_title: Vector search
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 # Vector search in {{es}}
 

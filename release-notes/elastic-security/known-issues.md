@@ -1,5 +1,12 @@
 ---
 navigation_title: Known issues
+products:
+  - id: security
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # {{elastic-sec}} known issues [elastic-security-known-issues]

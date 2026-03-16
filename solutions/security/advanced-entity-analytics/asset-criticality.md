@@ -44,7 +44,7 @@ If you assign asset criticality using the file import feature, risk scores are *
 
 You can view, assign, change, or unassign asset criticality from the following places in the {{elastic-sec}} app:
 
-* The [host details page](../explore/hosts-page.md#host-details-page) and [user details page](../explore/users-page.md#user-details-page):
+* The [host details page](/solutions/security/advanced-entity-analytics/hosts-page.md#host-details-page) and [user details page](/solutions/security/advanced-entity-analytics/users-page.md#user-details-page):
 
     :::{image} /solutions/images/security-assign-asset-criticality-host-details.png
     :alt: Assign asset criticality from the host details page

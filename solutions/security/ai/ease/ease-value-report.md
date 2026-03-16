@@ -4,6 +4,13 @@ applies_to:
   serverless:
     security: preview
   stack: preview 9.3
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Value report

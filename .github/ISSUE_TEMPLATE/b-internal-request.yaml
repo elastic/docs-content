@@ -60,12 +60,13 @@ body:
       description: Some requests may be tied to the Elastic Stack release schedule. Some, like Serverless requests, may not. Please select an option.
       options:
         - 'N/A'
-        - '8.17'
-        - '8.18'
         - '8.19'
         - '9.0'
         - '9.1'
         - '9.2'
+        - '9.3'
+        - '9.4'
+        - '9.5'        
       default: 0
     validations:
       required: true

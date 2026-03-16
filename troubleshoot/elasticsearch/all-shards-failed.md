@@ -2,6 +2,8 @@
 applies_to:
   stack:
 navigation_title: "Error: All shards failed"
+products:
+  - id: elasticsearch
 ---
 
 # Fix error: All shards failed [all-shards-failed]

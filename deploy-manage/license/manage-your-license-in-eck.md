@@ -125,7 +125,37 @@ Once the new license is confirmed, you may safely delete the old license secret.
 
 ## Get usage data [k8s-get-usage-data]
 
-The operator periodically writes the total amount of Elastic resources under management to a configmap named `elastic-licensing`, which is in the same namespace as the operator. Here is an example of retrieving the data:
+ECK automatically tracks the memory capacity of all managed {{stack}} deployments and reports this information as Enterprise Resource Units (ERUs). This data is stored in a ConfigMap called `elastic-licensing` in the operator's namespace and is updated every **2 minutes**.
+
+### What counts toward usage
+
+ECK monitors the following managed resource types:
+
+* {{es}}
+* {{kib}}
+* {{apm-server}}
+* Enterprise Search
+* {{ls}} (counted for informational purposes only; billable consumption depends on your license terms on a per-customer basis, refer to the [Self Managed Subscription Agreement](https://www.elastic.co/agreements/global/self-managed))
+
+For each resource, ECK determines the memory capacity per node and multiplies it by the number of replicas to calculate the total memory for that resource type. The sum across all resource types is the **total managed memory**.
+
+Other resource types managed by ECK (such as {{agent}}, {{beats}}, or Elastic Maps Server) are **not** counted towards usage.
+
+### How memory is determined
+
+ECK does not measure actual runtime memory consumption. Instead, it reads the **configured memory capacity** from the resource specifications. For each managed resource, ECK uses the following priority order:
+
+1. **Container memory limit** — If a `resources.limits.memory` value is set on the application container in the pod template, that value is used.
+2. **Application-specific environment variable** — If no container memory limit is set, ECK falls back to application-specific environment variables where applicable:
+   * {{es}}: the `-Xmx` value from `ES_JAVA_OPTS`, doubled to account for non-heap memory
+   * {{kib}}: the `--max-old-space-size` value from `NODE_OPTIONS`
+   * Enterprise Search: the `-Xmx` value from `JAVA_OPTS`, doubled to account for non-heap memory
+   * {{ls}}: the `-Xmx` value from `LS_JAVA_OPTS`, doubled to account for non-heap memory
+3. **Default value** — If neither of the above is set, ECK uses a [built-in default](../deploy/cloud-on-k8s/manage-compute-resources.md#k8s-default-behavior) for each resource type.
+
+### Retrieving usage data
+
+The operator periodically writes the total amount of Elastic resources under management to the `elastic-licensing` ConfigMap, which is in the same namespace as the operator. Here is an example of retrieving the data:
 
 ```shell
 > kubectl -n elastic-system get configmap elastic-licensing -o json | jq .data
@@ -176,9 +206,5 @@ elastic_licensing_memory_gibibytes_logstash{license_level="enterprise"} 2
 # TYPE elastic_licensing_memory_gibibytes_total gauge
 elastic_licensing_memory_gibibytes_total{license_level="enterprise"} 25.5
 ```
-
-::::{note}
-Logstash resources managed by ECK will be counted towards ERU usage for informational purposes. Billable consumption depends on license terms on a per customer basis (See [Self Managed Subscription Agreement](https://www.elastic.co/agreements/global/self-managed))
-::::
 
 
