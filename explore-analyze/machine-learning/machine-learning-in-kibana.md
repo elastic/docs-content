@@ -16,6 +16,7 @@ As data sets increase in size and complexity, the human effort required to inspe
 {{kib}} includes a free **{{data-viz}}** to learn more about your data. In particular, if your data is stored in {{es}} and contains a time field, you can use the **{{data-viz}}** to identify possible fields for {{anomaly-detect}}.
 
 ::::{tip}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
 Use the **Zoom in** and **Zoom out** buttons next to the date picker to quickly narrow or widen the time range when exploring your data.
 ::::
 

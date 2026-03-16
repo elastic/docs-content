@@ -17,6 +17,7 @@ products:
 AIOps Labs is a part of {{ml-app}} in {{kib}} which provides features that use advanced statistical methods to help you interpret your data and its behavior.
 
 ::::{tip}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
 Each AIOps tool includes a date picker to control the time range for your analysis. Use the **Zoom in** and **Zoom out** buttons next to the date picker to quickly narrow or widen the time range.
 ::::
 
