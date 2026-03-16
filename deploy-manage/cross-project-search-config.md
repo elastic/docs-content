@@ -13,9 +13,9 @@ With {{cps}} ({{cps-init}}), users in your organization can search across multip
 
 This section explains how to set up and manage {{cps}} for your organization, including linking projects, managing user access, and refining scope.
 
-* [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
-* [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): manage user access across linked projects and configure the default {{cps}} scope per space.
-* [Impacts and limitations](/deploy-manage/cross-project-search-config/cps-config-impacts-and-limitations.md): understand how {{cps}} affects alerting, dashboards, and other features, and review current limitations.
+* [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
+* [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects and configure the default {{cps}} scope per space.
+* [Impacts and limitations](/deploy-manage/cross-project-search-config/cps-config-impacts-and-limitations.md): Understand how {{cps}} affects alerting, dashboards, and other features, and review current limitations.
 
 For end-user search workflows, syntax, and examples, refer to [](/explore-analyze/cross-project-search.md) in **Explore and analyze**.
 
