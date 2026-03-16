@@ -40,7 +40,11 @@ Key passwords are not currently supported.
 
 
 ::::{important}
-When you run {{agent}} with the {{elastic-defend}} integration, the [TLS certificates](https://en.wikipedia.org/wiki/X.509) used to connect to {{fleet-server}} and {{es}} need to be generated using [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)). For a full list of available algorithms to use when configuring TLS or mTLS, see [Configure SSL/TLS for standalone {{agents}}](/reference/fleet/elastic-agent-ssl-configuration.md). These settings are available for both standalone and {{fleet}}-managed {{agent}}.
+When you run {{agent}} with the {{elastic-defend}} integration, note the following TLS certificate requirements. For a full list of available algorithms to use when configuring TLS or mTLS, refer to [Configure SSL/TLS for standalone {{agents}}](/reference/fleet/elastic-agent-ssl-configuration.md). These settings are available for both standalone and {{fleet}}-managed {{agent}}.
+
+* {applies_to}`stack: ga 9.1+` The [TLS certificates](https://en.wikipedia.org/wiki/X.509) used to connect to {{fleet-server}} and {{es}} can use either [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) or Elliptic Curve (EC) keys.
+
+* {applies_to}`stack: ga =9.0` The [TLS certificates](https://en.wikipedia.org/wiki/X.509) used to connect to {{fleet-server}} and {{es}} need to be generated using [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)).
 ::::
 
 
