@@ -52,7 +52,7 @@ Every workflow execution is either a **test run** or a **production run**. Under
 | | Test run {icon}`flask` | Production run {icon}`play` |
 |---|---|---|
 | **Purpose** | Try out a workflow or individual step while authoring | Run an enabled workflow for real |
-| **How to start** | Click **Run** {icon}`play` in the workflow editor. | Click **Run** from the workflow list, or let a scheduled trigger fire. |
+| **How to start** | Click **Run** {icon}`play` in the workflow editor. | Click **Run** from the workflow list, or let a configured trigger fire. |
 | **Scope** | Entire workflow or a single step | Entire workflow |
 | **Execution history** | Saved with a flask ({icon}`flask`) badge so you can filter for test runs. Step-level test runs are not saved in history. | Saved without a badge. Filter the executions list by **production** to see only these runs. |
 | **Template context** | `execution.isTestRun` resolves to `true`. | `execution.isTestRun` resolves to `false`. |
