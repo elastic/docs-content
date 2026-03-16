@@ -259,7 +259,7 @@ $$$glossary-epr$$$ Elastic Package Registry (EPR)
 :   A service hosted by Elastic that stores Elastic package definitions in a central location. See the [EPR GitHub repository](https://github.com/elastic/package-registry).
 
 $$$glossary-elastic-security-indices$$$ {{elastic-sec}} indices
-:   Indices containing host and network source events (such as `packetbeat-*`, `log-*`, and `winlogbeat-*`). When you [create a new rule in {{elastic-sec}}](/solutions/security/detect-and-alert/create-detection-rule.md), the default index pattern corresponds to the values defined in the `securitySolution:defaultIndex` advanced setting.
+:   Indices containing host and network source events (such as `packetbeat-*`, `log-*`, and `winlogbeat-*`). When you [create a new rule in {{elastic-sec}}](/solutions/security/detect-and-alert/using-the-rule-ui.md), the default index pattern corresponds to the values defined in the `securitySolution:defaultIndex` advanced setting.
 
 $$$glossary-elastic-stack$$$ {{stack}}
 :   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data.
@@ -425,7 +425,7 @@ $$$glossary-indexer$$$ indexer
 :   A {{ls}} instance that is tasked with interfacing with an {{es}} cluster in order to index [event](/reference/glossary/index.md#glossary-event) data.
 
 $$$glossary-indicator-index$$$ indicator index
-:   Indices containing suspect field values in {{elastic-sec}}. [Indicator match rules](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule) use these indices to compare their field values with source event values contained in [{{elastic-sec}} indices](/reference/glossary/index.md#glossary-elastic-security-indices).
+:   Indices containing suspect field values in {{elastic-sec}}. [Indicator match rules](/solutions/security/detect-and-alert/indicator-match.md) use these indices to compare their field values with source event values contained in [{{elastic-sec}} indices](/reference/glossary/index.md#glossary-elastic-security-indices).
 
 $$$glossary-inference-aggregation$$$ inference aggregation
 :   A pipeline aggregation that references a [trained model](/reference/glossary/index.md#glossary-trained-model) in an aggregation to infer on the results field of the parent bucket aggregation. It enables you to use supervised {{ml}} at search time.
@@ -658,7 +658,7 @@ $$$glossary-rule$$$ rule
 :   A set of [conditions](/reference/glossary/index.md#glossary-condition), schedules, and [actions](/reference/glossary/index.md#glossary-action) that enable notifications. See [{{rules-ui}}](/reference/glossary/index.md#glossary-rules).
 
 $$$glossary-rules$$$ Rules
-:   A comprehensive view of all your alerting rules. Enables you to access and manage rules for all {{kib}} apps from one place. See [{{rules-ui}}](/explore-analyze/alerts-cases.md).
+:   A comprehensive view of all your alerting rules. Enables you to access and manage rules for all {{kib}} apps from one place. See [{{rules-ui}}](/explore-analyze/alerting.md).
 
 $$$glossary-runner$$$ runner
 :   A local control agent that runs on all hosts, used to deploy local containers based on role definitions. Ensures that containers assigned to it exist and are able to run, and creates or recreates the containers if necessary.
@@ -733,7 +733,7 @@ $$$glossary-split$$$ split
 :   Adds more [primary shards](/reference/glossary/index.md#glossary-primary-shard) to an [index](/reference/glossary/index.md#glossary-index).
 
 $$$glossary-stack-alert$$$ stack rule
-:   The general purpose rule types {{kib}} provides out of the box. Refer to [Stack rules](/explore-analyze/alerts-cases/alerts/rule-types.md#stack-rules).
+:   The general purpose rule types {{kib}} provides out of the box. Refer to [Stack rules](/explore-analyze/alerting/alerts/rule-types.md#stack-rules).
 
 $$$glossary-standalone$$$ standalone
 :   This mode allows manual configuration and management of {{agent}}s locally on the systems where they are installed. See [Install standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md).
@@ -826,7 +826,7 @@ $$$glossary-warm-tier$$$ warm tier
 :   [Data tier](/reference/glossary/index.md#glossary-data-tier) that contains [nodes](/reference/glossary/index.md#glossary-node) that hold time series data that is accessed less frequently and rarely needs to be updated. See [Data tiers](/manage-data/lifecycle/data-tiers.md).
 
 $$$glossary-watcher$$$ Watcher
-:   The original suite of alerting features. See [Watcher](/explore-analyze/alerts-cases/watcher.md).
+:   The original suite of alerting features. See [Watcher](/explore-analyze/alerting/watcher.md).
 
 $$$glossary-wms$$$ Web Map Service (WMS)
 :   A layer type in the **Maps** application. Add a WMS source to provide authoritative geographic context to your map. See the [OpenGIS Web Map Service](https://www.ogc.org/standards/wms).
