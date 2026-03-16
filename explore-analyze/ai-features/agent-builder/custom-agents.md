@@ -24,6 +24,8 @@ Custom agents are space-aware: they are only available in the [{{kib}} space](/d
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/agent-builder
+
+Use this skill to create, test, and manage Agent Builder agents and custom tools in Kibana.
 :::
 
 ## Create a custom agent

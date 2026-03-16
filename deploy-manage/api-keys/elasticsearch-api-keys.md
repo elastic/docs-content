@@ -21,6 +21,8 @@ To manage API keys in {{kib}}, go to the **API keys** management page in the nav
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authn
+
+Use this skill to authenticate to Elasticsearch with realms, credentials, and API keys.
 :::
 
 

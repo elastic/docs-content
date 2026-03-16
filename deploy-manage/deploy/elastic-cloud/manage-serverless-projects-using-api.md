@@ -33,6 +33,8 @@ export API_KEY="YOUR_GENERATED_API_KEY"
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/create-project
+
+Use this skill to create Elastic Cloud Serverless projects and bootstrap project credentials.
 :::
 
 ```bash
@@ -76,6 +78,8 @@ export PROJECT_ID=cace8e65457043698ed3d99da2f053f6
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/manage-project
+
+Use this skill to manage existing Serverless projects, including updates, credential resets, and lifecycle operations.
 :::
 
 The following examples show how to interact with the APIs, covering common operations such as:

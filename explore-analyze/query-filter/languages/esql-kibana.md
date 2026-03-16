@@ -26,6 +26,8 @@ Find the complete list of supported commands, functions, and operators in the [{
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql
+
+Use this skill to write and run ES|QL queries for exploration, aggregation, and analysis.
 :::
 
 

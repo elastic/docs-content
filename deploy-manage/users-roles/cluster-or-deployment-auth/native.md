@@ -31,6 +31,8 @@ You can also manage and authenticate users natively at the following levels:
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authz
+
+Use this skill to manage Elasticsearch roles, users, role mappings, and fine-grained access controls.
 :::
 
 ## Configure a native realm [native-realm-configuration]

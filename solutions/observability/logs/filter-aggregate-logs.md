@@ -18,6 +18,8 @@ This guide shows you how to:
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/observability/logs-search
+
+Use this skill to search and filter Observability logs with ES|QL during investigations.
 :::
 
 * [Filter logs](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter): Narrow down your log data by applying specific criteria.

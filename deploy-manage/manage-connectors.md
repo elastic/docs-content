@@ -20,6 +20,8 @@ You can find the **{{connectors-ui}}** management page in the navigation menu or
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors
+
+Use this skill to create and manage Kibana connectors for third-party integrations.
 :::
 
 ## Required permissions [_required_permissions_2]

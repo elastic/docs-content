@@ -27,6 +27,8 @@ Once the Detections feature is [turned on](/solutions/security/detect-and-alert/
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management
+
+Use this skill to create, tune, and manage Elastic Security detection rules.
 :::
 
 :::{admonition} Create rules programmatically

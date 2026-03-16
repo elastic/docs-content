@@ -20,6 +20,8 @@ This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/network-security
+
+Use this skill to configure Serverless traffic filters, IP allowlists, and AWS PrivateLink policies.
 :::
 
 We cover the following examples:

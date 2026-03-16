@@ -12,6 +12,8 @@ Use the information in this section to troubleshoot common problems and find ans
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-security-troubleshooting
+
+Use this skill to diagnose and resolve Elasticsearch security errors, authorization failures, and TLS issues.
 :::
 
 * [](security/security-trb-settings.md)

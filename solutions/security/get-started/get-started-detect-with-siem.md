@@ -15,6 +15,8 @@ In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM 
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/generate-security-sample-data
+
+Use this skill to generate sample security telemetry and alerts for demos and testing.
 :::
 
 ## Prerequisites 

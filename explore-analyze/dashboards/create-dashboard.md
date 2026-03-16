@@ -15,6 +15,8 @@ Create a new dashboard in {{product.kibana}} to start visualizing and monitoring
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
+
+Use this skill to create and manage Kibana dashboards and Lens visualizations.
 :::
 
 ## Requirements [create-dashboard-requirements]

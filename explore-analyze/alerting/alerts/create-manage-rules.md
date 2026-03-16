@@ -28,6 +28,8 @@ For more information on alerting concepts and the types of rules and connectors 
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-alerting-rules
+
+Use this skill to create and manage Kibana alerting rules, including lifecycle actions.
 :::
 
 ## Required permissions [_required_permissions]

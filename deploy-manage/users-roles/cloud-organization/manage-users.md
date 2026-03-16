@@ -22,6 +22,8 @@ Alternatively, [configure {{ecloud}} SAML SSO](../../../deploy-manage/users-role
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
+
+Use this skill to invite users, assign project roles, and manage Elastic Cloud API key access.
 :::
 
 ::::{note}

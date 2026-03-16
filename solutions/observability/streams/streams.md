@@ -19,6 +19,8 @@ Streams provides a single, centralized UI within {{kib}} that streamlines common
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/streams
+
+Use this skill to inspect and manage Kibana Streams configuration, status, and synchronization.
 :::
 
 ## Classic versus wired streams [streams-classic-vs-wired]

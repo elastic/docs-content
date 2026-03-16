@@ -31,6 +31,8 @@ From here, complete the following steps:
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/observability/manage-slos
+
+Use this skill to create and manage SLOs and error budgets in Elastic Observability.
 :::
 
 1. [Define your service-level indicator (SLI)](/solutions/observability/incident-management/create-an-slo.md#define-sli).

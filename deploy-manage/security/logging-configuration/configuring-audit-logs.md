@@ -23,6 +23,8 @@ When auditing security events, a single client request might generate multiple a
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-audit
+
+Use this skill to enable, configure, and analyze Elasticsearch security audit logs.
 :::
 
 {{es}} configuration options include:
@@ -43,6 +45,8 @@ For a complete description of event details and format, refer to the following r
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-audit
+
+Use this skill to configure Kibana audit logging and correlate Kibana and Elasticsearch audit events.
 :::
 
 To control the logs that are outputted by {{kib}}, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.

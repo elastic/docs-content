@@ -18,6 +18,8 @@ After you [install prebuilt rules](/solutions/security/detect-and-alert/install-
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management
+
+Use this skill to create, tune, and manage Elastic Security detection rules.
 :::
 
 ::::{note}

@@ -19,6 +19,8 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/observability/llm-obs
+
+Use this skill to monitor LLM and agentic AI applications for performance, quality, and cost.
 :::
 
 - Metrics and logs ingestion for LLM APIs (via [Elastic integrations](integration-docs://reference/index.md))
