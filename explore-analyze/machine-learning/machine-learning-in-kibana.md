@@ -13,7 +13,12 @@ products:
 
 As data sets increase in size and complexity, the human effort required to inspect dashboards or maintain rules for spotting infrastructure problems, cyber attacks, or business issues becomes impractical. Elastic {{ml-features}} such as {{anomaly-detect}} and {{oldetection}} make it easier to notice suspicious activities with minimal human interference.
 
-{{kib}} includes a free **{{data-viz}}** to learn more about your data. In particular, if your data is stored in {{es}} and contains a time field, you can use the **{{data-viz}}** to identify possible fields for {{anomaly-detect}}:
+{{kib}} includes a free **{{data-viz}}** to learn more about your data. In particular, if your data is stored in {{es}} and contains a time field, you can use the **{{data-viz}}** to identify possible fields for {{anomaly-detect}}.
+
+::::{tip}
+Use the **Zoom in** and **Zoom out** buttons next to the date picker to quickly narrow or widen the time range when exploring your data.
+::::
+
 
 :::{image} /explore-analyze/images/kibana-ml-data-visualizer-sample.png
 :alt: {{data-viz}} for sample flight data

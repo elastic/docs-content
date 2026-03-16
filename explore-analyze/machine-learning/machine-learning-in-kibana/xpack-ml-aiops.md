@@ -16,6 +16,10 @@ products:
 
 AIOps Labs is a part of {{ml-app}} in {{kib}} which provides features that use advanced statistical methods to help you interpret your data and its behavior.
 
+::::{tip}
+Each AIOps tool includes a date picker to control the time range for your analysis. Use the **Zoom in** and **Zoom out** buttons next to the date picker to quickly narrow or widen the time range.
+::::
+
 ## Log rate analysis [log-rate-analysis]
 
 Log rate analysis uses advanced statistical methods to identify reasons for increases or decreases in log rates and displays the statistically significant data in a tabular format. It makes it easy to find and investigate causes of unusual spikes or drops by using the analysis workflow view. Examine the histogram chart of the log rates for a given {{data-source}}, and find the reason behind a particular change possibly in millions of log events across multiple fields and values.

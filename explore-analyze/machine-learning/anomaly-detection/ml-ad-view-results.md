@@ -19,6 +19,10 @@ Depending on the capacity of your machine, you might need to wait a few seconds 
 
 There are two tools for examining the results from {{anomaly-jobs}} in {{kib}}: the **Anomaly Explorer** and the **Single Metric Viewer**.
 
+::::{tip}
+Use the date picker to adjust the time range for your results. You can use the **Zoom in** and **Zoom out** buttons next to the date picker to quickly narrow or widen the time range.
+::::
+
 ## Bucket results [ml-ad-bucket-results]
 
 When you view your {{ml}} results, each bucket has an anomaly score. This score is a statistically aggregated and normalized view of the combined anomalousness of all the record results in the bucket.
