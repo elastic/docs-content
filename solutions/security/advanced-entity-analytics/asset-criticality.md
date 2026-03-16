@@ -115,7 +115,7 @@ To import a file:
 3. Select or drag the file you want to import.
 
     ::::{note}
-    The file validation step highlights any lines that don't follow the required file structure. The asset criticality levels for those entities won't be assigned. We recommend that you fix any invalid lines and re-upload the file.
+    The file validation step highlights any lines that don't follow the required file structure. The asset criticality levels for those entities won't be assigned. To resolve this, fix any invalid lines and re-upload the file.
     ::::
 
 4. Click **Assign**.
