@@ -13,10 +13,6 @@ In addition to the ingestion of metrics data through the bulk API,
 
 The endpoint is available under `/_prometheus/api/v1/write`.
 
-## Prerequisites
-
-An {{es}} cluster with the Prometheus plugin enabled. This feature is currently in preview.
-
 ## Overview
 
 The Prometheus remote write endpoint allows you to send metrics data directly from Prometheus or any Prometheus remote write-compatible client to {{es}}.
