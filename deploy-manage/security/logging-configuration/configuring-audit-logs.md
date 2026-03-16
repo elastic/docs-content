@@ -21,6 +21,10 @@ When auditing security events, a single client request might generate multiple a
 
 ### {{es}} auditing configuration
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-audit
+:::
+
 {{es}} configuration options include:
 
   * [{{es}} audited events settings](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md#event-audit-settings): Use include and exclude filters to control the types of events that get logged.
@@ -36,6 +40,10 @@ For a complete description of event details and format, refer to the following r
   * [{{es}} log entry output format](./logfile-audit-output.md#audit-log-entry-format)
 
 ### {{kib}} auditing configuration
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-audit
+:::
 
 To control the logs that are outputted by {{kib}}, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
 
