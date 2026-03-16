@@ -64,17 +64,17 @@ You can use `_origin` in search expressions to explicitly target the origin proj
 
 ## Excluding indices and projects
 
-When you use a wildcard to include a broad set of projects or indices, you can explicitly exclude one or more of them by prefixing a pattern with a dash (`-`).
-Exclusion always requires an inclusion pattern first: you must include projects or indices before you can exclude from that set.
+You can exclude specific indices or projects from a {{cps}} search by prefixing a pattern with a dash (`-`).
+This enables you start with a broad search scope and narrow it down by removing specific indices or projects from the results.
 
 ### How exclusion works
 
 Exclusion follows these rules:
 
-* A leading `-` on either the project or the index part of an expression signals exclusion.
-For example, `-linked-project-1:*` and `linked-project-1:-*` are functionally equivalent.
-Both exclude all indices on the `linked-project-1` project.
-You cannot prefix both the project and the index with a dash in the same expression.
+* A leading `-` on a pattern signals exclusion. The dash can be placed on the index part or on the project part of an expression, each with different requirements.
+Placing the dash on the **index** part (for example, `linked-project-1:-my-index` or `linked-project-1:-*`) works for any index pattern and can be used on its own.
+Placing the dash on the **project** part (for example, `*,-linked-project-1:*`) requires a preceding inclusion pattern and only works when the index part is the `*` wildcard. For example, `*,-linked-project-1:*` is valid, but `*,-linked-project-1:my-index` is not.
+You cannot prefix both the project and the index with a dash in the same expression (for example, `-linked-project-1:-*` is invalid).
 * An exclusion pattern only affects patterns that appear **before** it in the expression.
 Patterns listed **after** the exclusion are not affected by it (for example, in `*,-*,my-index`, the exclusion `-*` removes everything matched by the first `*`, but `my-index` comes after the exclusion and is still included).
 * You can use multiple exclusion patterns in a single expression.
@@ -86,13 +86,10 @@ The following examples assume an origin project with two linked projects: `linke
 `*,-*`
 :   Matches all indices across all projects, then excludes all of them. The result is an empty scope.
 
-`-my-index`
-:   Excludes the `my-index` index across all projects. Because there is no preceding inclusion pattern, this effectively removes `my-index` from the default search scope.
-
 `*,-linked-project-1:*`
 :   Searches everything across all projects, then excludes all indices on the `linked-project-1` project. The search runs on the origin project and `linked-project-2` only.
 
-`*,-linked-project-1:my-index`
+`*,linked-project-1:-my-index`
 :   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. All other indices on `linked-project-1` and all indices on the origin project and `linked-project-2` are still included.
 
 `*,-*,my-index`
@@ -101,13 +98,12 @@ The following examples assume an origin project with two linked projects: `linke
 `*,-my-index*,-logs`
 :   Searches everything, then applies two exclusion patterns. Indices matching `my-index*` and the `logs` index are excluded from the results.
 
-`-linked-project-1:*` and `linked-project-1:-*`
-:   These two expressions are functionally equivalent. In both cases, all indices on the `linked-project-1` project are excluded. You can place the dash on either the project or the index part of the expression.
+`*,-linked-project-1:*` and `linked-project-1:-*`
+:   These two expressions are functionally equivalent. In both cases, all indices on the `linked-project-1` project are excluded. The first form (`-linked-project-1:*`) requires a preceding inclusion pattern such as `*`, while the second form (`linked-project-1:-*`) can be used on its own.
 
 ## Security
 
 This section gives you a high-level overview of how security works in {{cps}}.
-<!-- Refer to the [CPS Security]() section to learn in greater detail. -->
 
 In {{cps-init}}, access to a project's data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
 
