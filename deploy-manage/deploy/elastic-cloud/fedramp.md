@@ -45,7 +45,7 @@ This table provides a comparison of features and capabilities included in {{ech}
 | [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) | Yes | No | No |
 | [Managed OTLP Endpoint (mOTLP)](opentelemetry://reference/motlp.md) | Yes | No | No |
 | [Custom bundles and plugins](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No |
-| [Elastic AI Assistant for Observability and Search](/solutions/observability/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
+| [Elastic AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
 | [Attack Discovery](/solutions/security/ai/attack-discovery.md) | Yes | Yes | TBD |
 | [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No |
 
