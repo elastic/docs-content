@@ -72,7 +72,7 @@ The node capacity you choose is per data center. The reason for this is that the
 
 ## Sharding [ec_sharding]
 
-You can review your {{es}} shard activity from the {{ecloud}} Console. When viewing a hosted deployment's details, on the **{{es}}** > **Shards and instances** page, you can hover over each part of the shard visualization for specific numbers.
+You can review your {{es}} shard activity from the {{ecloud}} Console. When viewing a hosted deployment's details, on the **{{es}}** > **Shards and instances** page you can hover over each part of the shard visualization for specific numbers.
 
 :::{image} /deploy-manage/images/cloud-ec-shard-activity.gif
 :alt: Shard activity
