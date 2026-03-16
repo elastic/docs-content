@@ -3,6 +3,13 @@ applies_to:
   stack: preview 9.3
   serverless: preview
 description: Learn how to use variables, constants, and the Liquid templating engine to create dynamic workflows.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Templating engine [workflows-templating]
@@ -179,6 +186,10 @@ message: |
   Created: {{user.created_at | date: "%Y-%m-%d"}}
 ```
 
+:::{note}
+Workflows supports all available LiquidJS [filters](https://liquidjs.com/filters/overview.html).
+:::
+
 ### Preserve array and object types [workflows-preserve-types]
 
 When passing arrays or objects between steps, use the type-preserving syntax (`${{ }}`) to avoid stringification:
@@ -194,10 +205,11 @@ steps:
           type: "tags"
 
   - name: create_document
-    type: elasticsearch.index
+    type: elasticsearch.request
     with:
-      index: "reports"
-      document:
+      method: POST
+      path: /reports/_doc
+      body:
         # Preserves the array type, doesn't stringify it
         tags: "${{steps.get_tags.output.hits.hits[0]._source.tags}}"
 ```

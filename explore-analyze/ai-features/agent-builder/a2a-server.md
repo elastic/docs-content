@@ -1,5 +1,6 @@
 ---
 navigation_title: "A2A server"
+description: "Learn how to interact with Agent Builder agents from external clients using A2A protocol endpoints and API key authentication."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
@@ -14,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Agent-to-Agent (A2A) server
+# Agent-to-Agent (A2A) server in {{agent-builder}}
 
 The [**Agent-to-Agent (A2A) server**](https://github.com/a2aproject/A2A) enables external A2A clients to communicate with {{agent-builder}} agents.
 
@@ -22,7 +23,7 @@ The [**Agent-to-Agent (A2A) server**](https://github.com/a2aproject/A2A) enables
 Streaming operations are not currently supported. Refer to [Limitations and known issues](limitations-known-issues.md#a2a-streaming-not-supported) for more information.
 :::
 
-## Agent cards endpoint
+## Retrieve agent metadata (GET)
 
 Returns metadata for a specific agent. The `agentId` is a path parameter that corresponds to your agent IDs:
 
@@ -30,7 +31,7 @@ Returns metadata for a specific agent. The `agentId` is a path parameter that co
 GET /api/agent_builder/a2a/{agentId}.json
 ```
 
-## A2A protocol endpoint
+## Execute A2A protocol (POST)
 
 Interact with agents following the A2A protocol specification:
 

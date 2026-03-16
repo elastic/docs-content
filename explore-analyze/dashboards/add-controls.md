@@ -11,7 +11,11 @@ products:
 
 # Add filter controls [add-controls]
 
-**Controls** are interactive options that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters across all relevant panels in a dashboard to focus on specific data segments without writing filtering queries.
+**Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries.
+
+* {applies_to}`stack: ga 9.4` **Pinned** control: Appears in the dashboard's sticky header and apply to the whole dashboard. 
+
+* {applies_to}`stack: ga 9.4` **Unpinned** control: Lives in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
 
 ## Requirements [add-controls-requirements]
 
@@ -38,7 +42,7 @@ There are three types of controls:
 * [**Time slider**](#add-time-slider-controls) — Adds a time range slider that allows to filter the data within a specified range of time, advance the time range backward and forward by a unit that you can define, and animate your change in data over the specified time range.
   For example, you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, and the global time filter is **Last 7 days**. When you add the time slider, you can select the previous and next buttons to advance the time range backward or forward, and select the play button to watch how the data changes over the last 7 days.
 
-  ![Time slider control for the the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
+  ![Time slider control for the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
 
 ## Create and add Options list and Range slider controls [create-and-add-options-list-and-range-slider-controls]
 
@@ -46,59 +50,91 @@ To add interactive Options list and Range slider controls, create the controls, 
 
 1. Open or create a new dashboard.
 2. Add a control.
+       
+    {applies_to}`stack: ga 9.4` 
+    - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. The control is pinned and applies to the whole dashboard.
+    - Add as free panel: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to top** or **Unpin**.
+    
+    {applies_to}`stack: ga 9.2-9.3` In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
+    
+    {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
-    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
-
-3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the **Control**.
+3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the Control.
 4. In the **Field** list, select the field you want to filter on.
 5. Under **Control type**, select whether the control should be an **Options list** or a **Range slider**.
    ::::{tip}
    Range sliders are for Number type fields only.
    ::::
 
-6. Define how you want the control to appear:
+6. Define how you want the control to appear.
 
+   For **Options lists**:
+
+   ::::{applies-switch}
+   :::{applies-item} stack: ga 9.4
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
-    * **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
-    * **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
+    - **Selections**:
+      Select multiple values to filter with the control, or only one.
+    - **Additional settings**:
 
-7. Specify the additional settings:
+      - **Use global filters**: A panel-level setting that applies to each individual control. It is enabled by default.
+      - **Validate user selections**: Highlight control selections that result in no data.
+      - **Ignore timeout for results**: Wait to display results until the list is complete.
 
-    * For Options lists:
+   :::
+   :::{applies-item} stack: ga 9.0-9.3+
+    - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
+    - **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
+    - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
 
-        * Define whether users can select multiple values to filter with the control, or only one.
-        * For Options list controls on *string* and *IP address* type fields, you can define how the control’s embedded search should behave:
+    - **Selections**:
+      Select multiple values to filter with the control, or only one.
 
-            * **Prefix**: Show options that *start with* the entered value.
-            * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
-            * **Exact**: Show options that are an *exact* match with the entered value.
+    - **Additional settings**:
 
-              ::::{tip}
-              The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
-              ::::
+      - **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
 
-        * **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
+      For Options list controls on *string* and *IP address* type fields, you can define how the control’s embedded search should behave:
 
-    * For Range sliders, set the step size. The step size determines the slider's number of steps. The smaller a slider's step size, the more steps it has.
+      * **Prefix**: Show options that *start with* the entered value.
+      * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
+      * **Exact**: Show options that are an *exact* match with the entered value.
 
-8. Select **Save and close**. The control can now be used.
-9. Consider the position of the control if you have several controls active on the dashboard. Controls are applied from left to right, which can change the options available depending on their position when the [Chain controls](#configure-controls-settings) setting is enabled.
+      The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
+    :::
+
+    ::::
+
+    For **Range sliders**:
+
+    ::::{applies-switch}
+
+    :::{applies-item} stack: ga 9.4
+    - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
+    - **Step size**: Determine the slider's number of steps. The smaller a slider's step size, the more steps it has.
+    - **Additional settings**:
+      - **Use global filters**: A panel-level setting that applies to each individual control. It is enabled by default.
+      - **Validate user selections**: Highlight control selections that result in no data.
+
+    :::
+
+    :::{applies-item} stack: ga 9.0-9.3+
+    - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
+    - **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
+    - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
+    - **Step size**: Determine the slider's number of steps. The smaller a slider's step size, the more steps it has.
+
+    :::
+    ::::
+
+8. Select **Save**. The control can now be used.
+9. Consider control order when you have several controls.
+
+   {applies_to}`stack: ga 9.4` A change in one control will impact all other controls on the dashboard, regardless of their positioning in the grid, including pinned controls. The only exception to this is controls within a collapsible section. These controls will only chain with other controls in their section. To change this default behaviour, turn off the **Use global filters** setting. 
+
+   {applies_to}`stack: ga 9.0-9.3` Controls are applied from left to right; when the [Chain controls](#configure-controls-settings) setting is enabled, their position changes the options available in the next control.
+
 10. Save the dashboard.
-
-## Add time slider controls [add-time-slider-controls]
-
-You can add one interactive time slider control to a dashboard.
-
-1. Open or create a new dashboard.
-2. Add a time slider control.
-
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
-    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
-
-3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
-4. Save the dashboard. The control can now be used.
-
 
 ## Add variable controls [add-variable-control]
 ```{applies_to}
@@ -106,20 +142,18 @@ stack: preview 9.0
 serverless: preview
 ```
 
-:::{note}
-:applies_to: stack: ga 9.0-9.1
 In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
-:::
 
 You can bind controls to your {{esql}} visualizations in dashboards. When creating an {{esql}} visualization, the autocomplete suggestions prompt control insertion for field values, field names, function configuration, and function names. {{esql}} controls act as variables in your {{esql}} visualization queries.
 
-This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
+When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
 
-:::{note}
+A control's filter scope depends on where you place it: controls inside a [collapsible section](arrange-panels.md#collapsible-sections) apply only to panels in that section, while controls outside sections or pinned to the dashboard apply to all panels.
+
 Only **Options lists** are supported for {{esql}}-based controls. Options can be:
 - values or fields that can be static or defined by a query
-- functions {applies_to}`stack: ga 9.1`
-:::
+- {applies_to}`stack: ga 9.1` functions 
 
 :::{include} ../_snippets/variable-control-procedure.md
 :::
@@ -130,8 +164,6 @@ You can then insert it in any other {{esql}} visualization queries by typing the
 :::{tip}
 You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the dashboard's toolbar. 
 :::
-
-![Editing {{esql}} controls from a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte42dfaa404bfc2d6/67d2e31e2e4dc59da190d78f/dashboard-esql-controls.gif)
 
 :::{include} ../_snippets/variable-control-examples.md
 :::
@@ -212,7 +244,6 @@ To chain variable controls, you reference one control's variable in another cont
 When you select a value in a parent control, the child control's query reruns automatically. If the currently selected value in the child control is no longer available in the new result set, it is marked as invalid or incompatible.
 :::
 
-
 ### Import a Discover query along with its controls into a dashboard
 ```{applies_to}
 stack: preview 9.2
@@ -222,9 +253,42 @@ serverless: preview
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
 :::
 
+## Add time slider controls [add-time-slider-controls]
+
+You can add one interactive time slider control to a dashboard.
+
+1. Open or create a new dashboard.
+2. Add a time slider control.
+
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
+
+3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
+4. Save the dashboard. The control can now be used.
+
+:::{warning}
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+The time slider can only be added as a pinned control to the header. It is not available as a free panel.
+:::
+
 ## Configure the controls settings [configure-controls-settings]
 
-Several settings apply to all controls that are part of a dashboard.
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.4
+Controls are always chained. Each control narrows the options available in other controls. 
+
+For pinned controls, you can click the Settings {icon}`gear` icon on control to customize the display settings:
+
+- **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
+
+- **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
+
+**Auto apply filters**. When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, you must click the unified search **Apply** button to apply pending control selections. The **Auto apply filters** option is available from the **Dashboard settings** panel. 
+
+:::
+
+:::{applies-item} stack: ga 9.0-9.3+
 
 1. Configure the control settings.
 
@@ -247,8 +311,11 @@ Several settings apply to all controls that are part of a dashboard.
 
     * To remove all controls from the dashboard, select **Delete all**.
 
-3. Select **Save and close** to apply the changes.
+3. Select **Save** to apply the changes.
 
+:::
+
+::::
 
 ## Edit Options list and Range slider control settings [edit-controls]
 
@@ -257,14 +324,17 @@ Change the settings for Options list and Range slider controls.
 1. Hover over the control you want to edit, then select ![The Edit control icon that opens the Edit control flyout](/explore-analyze/images/kibana-dashboard_controlsEditControl_8.3.0.png "").
 2. In the **Edit control** flyout, change the options, then select **Save and close**.
 
+## Delete controls from your dashboard[remove-controls]
 
-## Delete controls [remove-controls]
-
-Delete controls from your dashboard.
-
+::::{applies-switch}
+:::{applies-item} stack: ga 9.4
+To remove a control from view without deleting it, use **Unpin** from the control's panel menu; the control moves into the dashboard body. To remove it from the dashboard entirely, click **Remove** from the control's menu.
+:::
+:::{applies-item} stack: ga 9.0+
 1. Hover over the control you want to delete, then select ![The Remove control icon that removes the control from the dashboard](/explore-analyze/images/kibana-dashboard_controlsRemoveControl_8.3.0.png "").
 2. In the **Delete control?** window, select **Delete**.
-
+:::
+::::
 :::{note}
-If you delete an variable control that's used in an {{esql}} visualization, the visualization will break. You must edit the visualization query and remove or update the control reference.
+If you delete a variable control that's used in an {{esql}} visualization, the visualization will break. You must edit the visualization query and remove or update the control reference.
 :::

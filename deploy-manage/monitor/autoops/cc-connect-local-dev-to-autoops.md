@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-    self: ga 7.17
+    self:
 navigation_title: Connect your local development cluster
 products:
   - id: cloud-kubernetes
@@ -17,6 +17,7 @@ If you have an {{es}} cluster set up for local development or testing, you can c
 Ensure your system meets the following requirements before proceeding:
 
 * You have set up [{{es}} for local development](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
+* Your local development cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above).
 * You have installed [Docker Desktop](https://www.docker.com/products/docker-desktop).
 * You have an {{ecloud}} account with the [Organization owner role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles).
 

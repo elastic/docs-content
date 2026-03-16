@@ -1,6 +1,6 @@
 ---
-description: Learn how to get started with Elastic Agent Builder
 navigation_title: "Get started"
+description: "Learn how to enable Elastic Agent Builder, ingest data, and start chatting with AI agents."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -71,7 +71,7 @@ To learn about required privileges for {{agent-builder}}, refer to [Permissions 
 
 :::::
 
-::::{step} Ingest some data
+::::{step} Ingest data into Elasticsearch
 
 Before you begin with agents, you need some data in {{es}}. Otherwise, you will be chatting to the underlying LLM without any retrieval-augmented context.
 
@@ -82,15 +82,14 @@ For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 If you're not ready to add your own data, you can:
 - Use the Elastic [sample data](/manage-data/ingest/sample-data.md).
 - Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-).  (This requires your [{{es}} URL and an API key](/solutions/elasticsearch-solution-project/search-connection-details.md)).
-
-% TODO: we can link to a an agent builder tutorial if we add one in the docs
+- Follow the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md), which includes sample book data and walks you through creating custom tools and agents programmatically.
 :::
 
 ::::
 
-::::{step} Begin chatting
+::::{step} Start a conversation
 
-The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. {{agent-builder}} includes a default agent named `Elastic AI Agent` with access to all built-in tools, so you can begin chatting immediately.
+The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. A default agent is available to chat with immediately.
 
 Learn more in [Agent Chat](chat.md).
 
@@ -105,6 +104,8 @@ On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured m
 ::::{step} Begin building agents and tools
 
 Once you've tested [built-in agents](builtin-agents-reference.md) with [built-in Elastic tools](tools.md), you can begin [building your own agents](custom-agents.md#create-a-new-agent) with custom instructions and [creating your own tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to assign them.
+
+To build agents and tools programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
 
 ::::
 

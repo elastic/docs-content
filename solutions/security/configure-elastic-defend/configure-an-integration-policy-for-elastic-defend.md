@@ -28,6 +28,20 @@ To configure an integration policy:
 In addition to configuring an {{elastic-defend}} policy through the {{elastic-sec}} UI, you can create and customize an {{elastic-defend}} policy [through the API](/solutions/security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md).
 ::::
 
+## How {{elastic-defend}} protections work [understand-endpoint-protections]
+
+{{elastic-defend}} is an endpoint security solution with multiple layers of protections that work in tandem to detect and stop threats. This differs from traditional antivirus software, which typically relies on a single layer of pre-execution file scanning.
+
+{{elastic-defend}}'s protection layers include:
+
+* **Pre-execution protections**: Some layers, like [malware protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection), operate before execution — as soon as a threat is introduced to the file system, it's scanned and can be blocked before it ever runs.
+
+* **Post-execution protections**: Most layers operate after a threat launches or executes. These include [memory threat protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection) and [malicious behavior protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#behavior-protection), which monitor running processes for suspicious activity and in-memory threats that can evade traditional file-based detection.
+
+This layered approach means that even if a threat bypasses one protection layer, other layers can still detect and stop it once it runs. In a realistic attack scenario, {{elastic-defend}} comprehensively detects and stops the attack in its tracks, even when malicious activity begins after a user interacts with a threat.
+
+
+## Configure policy settings [configure-policy-settings]
 
 To configure an integration policy:
 
@@ -257,6 +271,30 @@ By default, each {{kib}} instance includes a Device Control dashboard. When at l
 :::{important} 
 To collect device control data, {{elastic-defend}} must be updated to at least version 9.2.0. Until you update it to this version, the device control dashboard will not appear and device control events will not be ingested. Device control blocking will still work. 
 :::
+
+### Access levels for Windows devices
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Device control supports the following USB storage access levels:
+
+* **Allow all**
+* **Read only**
+* **Block execute**
+* **Block all**
+
+These access levels apply fully to native Windows volumes (USB mass storage devices), such as USB flash drives and external hard drives. However, Windows Portable Devices, such as smartphones and digital cameras, use a transfer protocol that doesn't support granular access control. For these devices, device control maps access levels as follows:
+
+| Configured access level | Behavior for Windows Portable Devices |
+|-------------------------|---------------------------------------|
+| Allow all               | Allow all                             |
+| Read only               | Block all                             |
+| Block execute           | Block all                             |
+| Block all               | Block all                             |
+
+This means that if you want to allow any access to Windows Portable Devices, you must select **Allow all**. The **Read only** and **Block execute** options block these devices entirely to maintain security when granular control isn't possible.
 
 ## Event collection [event-collection]
 

@@ -346,6 +346,28 @@ $$$monitor-private_locations$$$
 
     ::::
 
+$$$monitor-spaces$$$
+
+{applies_to}`stack: ga 9.1+` **`spaces`**
+:   Type: list of [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+
+    The [{{kib}} spaces](/deploy-manage/manage-spaces.md) in which the monitor will be visible. Monitors can be visible in multiple spaces simultaneously. Use `'*'` to make the monitor visible in all spaces. The project's default space is always included. Only applies to {{stack}} deployments; not applicable to Serverless.
+
+    **Examples**:
+
+    ```yaml
+    spaces:
+      - default
+      - team-ops
+    ```
+
+    To make the monitor visible in all spaces:
+
+    ```yaml
+    spaces:
+      - '*'
+    ```
+
 $$$monitor-fields$$$
 
 **`fields`**
@@ -382,7 +404,7 @@ $$$monitor-maintenanceWindows$$$
 **`maintenance_windows`**
 :   Type: [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)  
 
-    A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+    A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
     **Examples**:
 

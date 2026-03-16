@@ -1,9 +1,9 @@
 ---
 applies_to:
   serverless:
+navigation_title: Search AI Lake view
 products:
   - id: cloud-serverless
-navigation_title: Search AI Lake view
 ---
 
 # Search AI Lake view in AutoOps for {{serverless-short}}
@@ -35,11 +35,12 @@ Use the following features to explore this view:
 
 :::{image} /deploy-manage/images/search-ai-lake-breakdown-table.png
 :screenshot:
-:alt: Screenshot showing an expanded row in the table in the bottom half of the Search AI Lake page
+:alt: Screenshot showing an expanded row in the table on the bottom half of the Search AI Lake page
 :::
 
 Each row of the table represents a single index or data stream, providing the following information:
-* the **aggregated ingest rate** for the selected time period
+* the **average ingest rate** for the selected time period
+* the **total ingested data** for the selected time period
 * the **latest recorded storage retained value** during that period
 * the timestamp of the **latest update** for these usage metrics
 

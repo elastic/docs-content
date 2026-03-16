@@ -2,7 +2,14 @@
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how to get started creating Elastic workflows. 
+description: Learn how to get started creating Elastic workflows.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Get started with workflows [workflows-get-started]
@@ -310,7 +317,7 @@ triggers:
 
 This workflow introduces several fundamental concepts:
 
-* **Action steps**: Built-in steps that interact with {{es}} and {{kib}} APIs.
+* **Action steps**: Built-in steps that interact with {{es}} APIs.
 * **Data flow**: How information moves from step to step using outputs and template variables.
 * **Constants**: Reusable values that make workflows maintainable.
 * **Template syntax**: The `{{ }}` notation for dynamic values.
