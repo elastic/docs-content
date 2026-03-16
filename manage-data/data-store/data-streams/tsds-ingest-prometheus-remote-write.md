@@ -55,7 +55,7 @@ remote_write:
 To send data using [Grafana Alloy](https://grafana.com/docs/alloy/latest/),
 use the `prometheus.remote_write` component:
 
-```alloy
+```hcl
 prometheus.remote_write "elasticsearch" {
   endpoint {
     url = "https://<es_endpoint>/_prometheus/api/v1/write"
