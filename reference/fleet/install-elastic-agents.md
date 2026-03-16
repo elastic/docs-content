@@ -11,9 +11,6 @@ products:
 
 # Install Elastic Agents [elastic-agent-installation]
 
-::::{admonition} Restrictions
-:class: important
-
 Note the following restrictions when installing {{agent}} on your system:
 
 * You can install only a single {{agent}} per host. Due to the fact that the {{agent}} may read data sources that are only accessible by a superuser, {{agent}} will therefore also need to be executed with superuser permissions.
@@ -21,18 +18,15 @@ Note the following restrictions when installing {{agent}} on your system:
 * Running {{agent}} commands using the Windows PowerShell ISE is not supported.
 * See also the [resource requirements](#elastic-agent-installation-resource-requirements) described on this page.
 
+::::{note}
+{{agent}} requires a writable file system to operate. It needs to write configuration files, logs, and other runtime data during installation and normal operation. If you're running {{agent}} in a containerized environment with a read-only root file system, you must provide a writable location for the agent to use. For more information, refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
 ::::
-
-
-
 
 ::::{admonition} New FIPS compatible install packages
 :applies_to: stack: preview 9.1
 
 FIPS compatible binaries for {{agent}}, {{fleet}}, and other ingest tools are available for download. Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product [download page](https://www.elastic.co/downloads). Get more details about FIPS compatibility for {{agent}}, {{fleet}} and other ingest tools in [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
-
 ::::
-
 
 You have a few options for installing and managing an {{agent}}:
 
@@ -94,7 +88,9 @@ When you set up {{agent}}, you might not yet have all input configuration detail
 
 The basic {{agent}} flavor is installed by default using the `elastic-agent install` command with an agent package: `.zip`, .`tar.gz`, `.deb`, `.rpm`, or `.msi`. This flavor includes only the following components:
 
-* `agentbeat` - used to implement all [{{beats}}](beats://reference/index.md)-based integrations.
+* Component for implementing all [{{beats}}](beats://reference/index.md)-based integrations:
+  * {applies_to}`stack: ga 9.3+` `elastic-otel-collector`
+  * {applies_to}`stack: ga 9.0-9.2` `agentbeat`
 * `endpoint-security` - used to implement [{{elastic-defend}}](../../solutions/security/configure-elastic-defend.md).
 * `pf-host-agent` - used to collect profiling data from hosts as part of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 

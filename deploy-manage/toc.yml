@@ -280,6 +280,7 @@ toc:
               - file: deploy/self-managed/local-development-installation-quickstart.md
               - file: deploy/self-managed/important-system-configuration.md
                 children:
+                  - file: deploy/self-managed/elasticsearch-service-user.md
                   - file: deploy/self-managed/setting-system-settings.md
                   - file: deploy/self-managed/setup-configuration-memory.md
                   - file: deploy/self-managed/file-descriptors.md
@@ -314,6 +315,10 @@ toc:
           - file: deploy/self-managed/access-kibana.md
           - file: deploy/self-managed/air-gapped-install.md
           - file: deploy/self-managed/tools-apis.md
+          - file: deploy/self-managed/tutorials.md
+            children:
+              - file: deploy/self-managed/tutorial-self-managed-install.md
+              - file: deploy/self-managed/tutorial-self-managed-secure.md
   - file: distributed-architecture.md
     children:
       - file: distributed-architecture/clusters-nodes-shards.md
@@ -555,9 +560,6 @@ toc:
               - file: users-roles/cloud-enterprise-orchestrator/saml.md
           - file: users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md
       - file: users-roles/serverless-custom-roles.md
-        children:
-          - title: "Control access at the document and field level"
-            crosslink: docs-content://deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
       - file: users-roles/cluster-or-deployment-auth.md
         children:
           - file: users-roles/cluster-or-deployment-auth/quickstart.md
@@ -648,6 +650,7 @@ toc:
           - file: remote-clusters/ec-remote-cluster-ece.md
           - file: remote-clusters/ec-remote-cluster-self-managed.md
           - file: remote-clusters/ec-enable-ccs-for-eck.md
+          - file: remote-clusters/ec-remote-cluster-strong-identity.md
           - file: remote-clusters/ec-edit-remove-trusted-environment.md
           - file: remote-clusters/ec-migrate-ccs.md
       - file: remote-clusters/ece-enable-ccs.md
@@ -679,6 +682,7 @@ toc:
             children:
               - file: monitor/autoops/access-autoops-for-serverless.md
               - file: monitor/autoops/search-tier-view-autoops-serverless.md
+              - file: monitor/autoops/indexing-tier-view-autoops-serverless.md
               - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children: 
@@ -689,6 +693,7 @@ toc:
               - file: monitor/autoops/cc-manage-users.md
               - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
                 children:
+                  - file: monitor/autoops/autoops-connectivity-check.md
                   - file: monitor/autoops/autoops-sm-troubleshoot-firewalls.md
                   - file: monitor/autoops/autoops-sm-troubleshoot-eck-no-clusters.md
           - file: monitor/autoops/ec-autoops-regions.md

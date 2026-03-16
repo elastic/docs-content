@@ -28,7 +28,7 @@ The following table compares features available in each feature tier:
 
 | **Feature Name** | **Security Analytics Complete** | **Security Analytics Essentials** | **EASE** |
 | :--- | :---: | :---: | :---: |
-| **[Cases](/solutions/security/investigate/cases.md) (collect and share information)** | ✅ | ✅ | ✅ |
+| **[Cases](/solutions/security/investigate/security-cases.md) (collect and share information)** | ✅ | ✅ | ✅ |
 | **[Native integrations](https://www.elastic.co/docs/reference/integrations) with third-party SIEM and EDR platforms** | ✅ | ✅ | ✅ |
 | **Out of the box [dashboards](/solutions/security/dashboards.md)** | ✅ | ✅ | ❌ |
 | **Prebuilt and custom [detection rules](/solutions/security/detect-and-alert.md)** | ✅ | ✅ | ❌ |
@@ -41,6 +41,7 @@ The following table compares features available in each feature tier:
 | **[Entity analytics / UEBA](/solutions/security/advanced-entity-analytics.md)** | ✅ | ❌ | ❌ |
 | **Extended security content** | ✅ | ❌ | ❌ |
 | **Threat intelligence management** | ✅ | ❌ | ❌ |
+| **[Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus)** | ✅ | ❌ | ❌ |
 
 
 ## Add-on options
@@ -67,6 +68,7 @@ Both the **Security Analytics Complete** and **Security Analytics Essentials** f
 
 % commenting this out until it gets reintroduced in 9.3 | **Drift protection for containers** | ✅ | ❌ |
 
+The [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) is automatically included with the **Security Analytics Complete** feature tier at no additional charge.
 
 ## Upgrade to a higher feature tier [sec-subscription-upgrade]
 

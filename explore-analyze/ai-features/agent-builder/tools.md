@@ -1,5 +1,6 @@
 ---
 navigation_title: "Tools"
+description: "Learn how Agent Builder tools enable agents to search data and perform actions in Elasticsearch. Explore built-in tools, custom tool definitions, and MCP integration."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -47,7 +48,7 @@ You can extend the built-in tool catalog with your own custom tool definitions. 
 
 ## Manage tools
 
-You can view, organize, and manage tools from the **Tools** page in Kibana or programmatically using the [Tools API](kibana-api.md#tools).
+You can view, organize, and manage tools from the **Tools** page in Kibana or programmatically using the [Tools API](kibana-api.md#tools-apis).
 
 The Tools page lists each tool by ID and description. Use the search bar or filter by labels to find specific tools. Built-in tools are marked with a lock icon (🔒).
 
@@ -70,7 +71,7 @@ Built-in tools cannot be modified or deleted.
 
 ## Tools API
 
-For a quick overview of how to work programmatically with tools, refer to [Tools API](kibana-api.md#tools).
+For a quick overview of how to work programmatically with tools, refer to [Tools API](kibana-api.md#tools-apis).
 
 ### API reference
 

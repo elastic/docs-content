@@ -6,6 +6,13 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Configure audit logging [audit-logging-configuration]
@@ -13,6 +20,10 @@ applies_to:
 When auditing security events, a single client request might generate multiple audit events across multiple cluster nodes, potentially leading to a high volume of log data and I/O operations. To maintain clarity and ensure logs remain actionable, {{es}} and {{kib}} provide configuration mechanisms to control what events are logged and which can be ignored.
 
 ### {{es}} auditing configuration
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-audit
+:::
 
 {{es}} configuration options include:
 
@@ -29,6 +40,10 @@ For a complete description of event details and format, refer to the following r
   * [{{es}} log entry output format](./logfile-audit-output.md#audit-log-entry-format)
 
 ### {{kib}} auditing configuration
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-audit
+:::
 
 To control the logs that are outputted by {{kib}}, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
 

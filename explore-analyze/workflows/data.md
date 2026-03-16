@@ -3,6 +3,13 @@ applies_to:
   stack: preview 9.3
   serverless: preview
 description: Learn how data flows through workflows, use dynamic templating, and handle errors gracefully.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Data and error handling [workflows-data]
@@ -57,7 +64,7 @@ steps:
 In this example:
 
 1. The `find_user_by_id` step searches an index for a document.
-2. The `create_case_for_user` step uses the output of the first step to enrich a new [{{elastic-sec}} case](../../solutions/security/investigate/cases.md).
+2. The `create_case_for_user` step uses the output of the first step to enrich a new [{{elastic-sec}} case](../../solutions/security/investigate/security-cases.md).
 3. The `description` field accesses `steps.find_user_by_id.output.hits.hits[0]._source.user.fullName` to dynamically include the user's full name in the case description.
 
 ## Error handling [workflows-error-handling]

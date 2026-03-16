@@ -1,5 +1,6 @@
 ---
 navigation_title: "Agents"
+description: "Learn how Agent Builder agents use tools to solve problems. Compare built-in and custom agents and understand the iterative reasoning loop."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# {{agent-builder}}: Agents
+# {{agent-builder}} agents overview
 
 Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
 
@@ -25,19 +26,21 @@ When you ask a question to an agent, it analyzes your request to define a specif
 The process of tool selection, execution, and analysis consumes tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md).
 :::
 
-{{agent-builder}} includes a default agent (named `Elastic AI Agent`) with access to all built-in tools. You can [create custom agents](custom-agents.md) with custom instructions and selected tools to address specific use cases or workflows.
+{{agent-builder}} includes a default agent named `Elastic AI Agent`. You can [create custom agents](custom-agents.md) with custom instructions and selected tools to address specific use cases or workflows.
 
 You can also use pre-configured [built-in agents](builtin-agents-reference.md) that are specialized for common use cases.
 
 ## Built-in agents
 
-{{agent-builder}} includes pre-configured built-in agents optimized for common use cases:
+{{agent-builder}} includes pre-configured built-in agents optimized for common use cases.
 
-- **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent with access to all platform core tools
+- **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent
 - **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
 - **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
 
 Built-in agents cannot be modified or deleted. To customize one, you can clone it and create a custom agent.
+
+Built-in agents are space-agnostic and are available in all [{{kib}} spaces](/deploy-manage/manage-spaces.md).
 
 For the complete list of built-in agents and their assigned tools, refer to [Built-in agents reference](builtin-agents-reference.md).
 
@@ -49,9 +52,11 @@ Create custom agents tailored to your specific needs by defining custom instruct
 - Available tools and capabilities
 - Visual appearance and organization
 
+Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created.
+
 To learn how to create and manage custom agents, refer to [Custom agents](custom-agents.md).
 
-## Manage agents
+## Managing agents in the UI
 
 The **Agents** page provides a centralized view of all your agents. From this page you can:
 
@@ -79,7 +84,7 @@ The Agents API enables programmatic management of both built-in and custom agent
 
 ### Quick overview
 
-For an overview, refer to [Agents API](kibana-api.md#agents).
+For an overview, refer to [Agents API](kibana-api.md#agents-apis).
 
 ### API reference
 

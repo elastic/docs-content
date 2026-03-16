@@ -3,6 +3,9 @@ navigation_title: Add plugins and extensions
 applies_to:
   deployment:
     ece:
+products:
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # Add plugins and extensions in {{ece}} [ece-adding-plugins]

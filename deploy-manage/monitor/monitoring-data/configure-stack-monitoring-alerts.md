@@ -15,7 +15,7 @@ products:
 
 # Stack monitoring alerts [kibana-alerts]
 
-The {{stack}} {{monitor-features}} provide [Alerting rules](../../../explore-analyze/alerts-cases/alerts.md) out-of-the box to notify you of potential issues in the {{stack}}. These rules are preconfigured based on the best practices recommended by Elastic. However, you can tailor them to meet your specific needs.
+The {{stack}} {{monitor-features}} provide [Alerting rules](../../../explore-analyze/alerting/alerts.md) out-of-the box to notify you of potential issues in the {{stack}}. These rules are preconfigured based on the best practices recommended by Elastic. However, you can tailor them to meet your specific needs.
 
 :::{image} /deploy-manage/images/kibana-monitoring-kibana-alerting-notification.png
 :alt: {{kib}} alerting notifications in {{stack-monitor-app}}

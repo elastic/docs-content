@@ -1,9 +1,9 @@
 ---
 applies_to:
   serverless:
+navigation_title: For {{serverless-full}}
 products:
   - id: cloud-serverless
-navigation_title: For {{serverless-full}}
 ---
 
 # AutoOps for {{serverless-full}}
@@ -75,7 +75,6 @@ Let’s say you ingest 1TB of data into your Observability project.
 
 The following features are coming soon to AutoOps for {{serverless-short}}:
 
-* An **Indexing tier** view, which will show you how indexing performance influences your use of ingest VCUs.
 * A **Machine learning tier** view, which will provide insight into your machine learning jobs and inference performance, as well as token usage.
 * Visibility into other billing dimensions such as data transfer out of {{ecloud}} and the various Observability and Security add-ons.
 
@@ -84,7 +83,8 @@ The following features are coming soon to AutoOps for {{serverless-short}}:
 In this section, you'll find the following information:
 
 * How to [access AutoOps in your {{serverless-short}} project](access-autoops-for-serverless.md).
-* How to use the [Search tier view](search-tier-view-autoops-serverless.md) to see the impact of search performance on your use of search VCUs.
+* How to use the [Search Tier view](search-tier-view-autoops-serverless.md) to observe the impact of search performance on your use of search VCUs.
+* How to use the [Indexing Tier view](indexing-tier-view-autoops-serverless.md) to observe how indexing performance influences your use of ingest VCUs.
 * How to use the [Search AI Lake view](search-ai-lake-view-autoops-serverless.md) to drill down into your storage-related usage.
 
 :::{tip}

@@ -2,7 +2,14 @@
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how to monitor Elastic workflows executions and troubleshoot errors. 
+description: Learn how to monitor Elastic workflows executions and troubleshoot errors.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Monitor and troubleshoot workflows [workflows-monitor-troubleshoot]

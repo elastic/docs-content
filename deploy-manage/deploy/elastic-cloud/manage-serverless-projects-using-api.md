@@ -15,7 +15,7 @@ To learn about API principles, authentication, and how to use the OpenAPI specif
 The available APIs are grouped by project type:
 
 - APIs for [Search projects](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/group/endpoint-elasticsearch-projects)
-- APIs for [Observatibility projects](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/group/endpoint-observability-projects)
+- APIs for [Observability projects](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/group/endpoint-observability-projects)
 - APIs for [Security projects](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/group/endpoint-security-projects)
 
 To try the examples in this section, [set up an API key](#general-manage-project-with-api-set-up-api-key) and [create an {{serverless-full}} project](#general-manage-project-with-api-create-a-serverless-elasticsearch-project).
@@ -30,6 +30,10 @@ export API_KEY="YOUR_GENERATED_API_KEY"
 ```
 
 ## Create an {{serverless-full}} project [general-manage-project-with-api-create-a-serverless-elasticsearch-project]
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/create-project
+:::
 
 ```bash
 curl -H "Authorization: ApiKey $API_KEY" \
@@ -69,6 +73,10 @@ export PROJECT_ID=cace8e65457043698ed3d99da2f053f6
 ```
 
 ## API examples
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/manage-project
+:::
 
 The following examples show how to interact with the APIs, covering common operations such as:
 
