@@ -60,7 +60,7 @@ Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may 
 When sending monitoring and logging data to a deployment, an ILM policy is pre-configured to control data retention. To view or edit the policies, Go to the **Index Lifecycle Policies** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{important}
-The [index lifecycle policy (ILM)](/manage-data/lifecycle/index-lifecycle-management.md) name that monitoring indices use is `elastic-cloud-logs`. By default, this policy does not include a [delete phase](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md). To manage storage effectively, we recommend adding a delete phase with a retention period tailored to your requirements.
+On Elastic Cloud Hosted deployments, the [index lifecycle policy (ILM)](/manage-data/lifecycle/index-lifecycle-management.md) name that monitoring indices use is `elastic-cloud-logs`. By default, this policy does not include a [delete phase](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md), which means logs can grow infinitely and cause potential disk storage issue in the future. To manage storage effectively, we recommend adding a delete phase with a retention period tailored to your requirements.
 :::
 
 ## Enable logging and monitoring [enable-logging-and-monitoring-steps]
