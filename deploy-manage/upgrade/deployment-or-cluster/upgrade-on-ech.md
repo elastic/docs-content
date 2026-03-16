@@ -66,6 +66,11 @@ Security realm settings
     1. On the **Update security realm settings** window, edit the settings.
     2. Click **Update settings**. If the security realm settings are located in `user_settings_override`, contact support to help you upgrade.
 
+## Archived settings [archived-settings]
+
+:::{include} _snippets/archived-settings-post.md
+:::
+
 ## Next steps
 
 Once you've successfully upgraded on {{ech}}, [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md), such as {{ls}}, {{agents}}, or {{beats}}.

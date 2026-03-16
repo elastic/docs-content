@@ -6,6 +6,22 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+## March 2, 2026 [elastic-cloud-serverless-03022026-breaking]
+
+:::{dropdown} Removes serializer and deserializer parameters from the {{elastic-sec}} Lists API
+
+The `serializer` and `deserializer` parameters have been removed from the {{elastic-sec}} Lists API. These parameters previously allowed custom parsing logic for value list items:
+
+- `serializer` — Determined how uploaded list item values were parsed using regex patterns.
+- `deserializer` — Determined how retrieved list item values were presented using Handlebars expressions.
+
+**Impact:**
+
+API requests that include `serializer` or `deserializer` parameters (in the Create List API request body or Import List Items API query string) will have those parameters silently ignored, and a warning header will be returned in the response. Users who relied on custom parsing logic will need to pre-process their list data before import, as only default parsing behavior is now supported.
+
+For more information, view [#250111]({{kib-pull}}250111).
+:::
+
 ## October 27, 2025 [serverless-changelog-10272025-breaking]
 
 :::{dropdown} Implement native synthetic source for normalized keywords
@@ -35,6 +51,26 @@ Callers should check the `is_partial` flag returned in the response to determine
 If returning partial results is not desired, this option can be overridden per request via an `allow_partial_results` parameter in the query URL or globally via the cluster setting `esql.query.allow_partial_results`.
 
 For more information, view [#125060](https://github.com/elastic/elasticsearch/pull/125060).
+:::
+
+:::{dropdown} Enable exclude_source_vectors by default for new indices
+
+The `exclude_source_vectors` setting is now enabled by default for newly created indices.
+This means that vector fields (for example, `dense_vector`) are no longer stored in the `_source` field by default, although they remain fully accessible through search and retrieval operations.
+Instead of being persisted in `_source`, vectors are now rehydrated on demand from the underlying
+index structures when needed.
+This reduces index size and improves performance for typical vector search workloads where the original vector values do not need to be part of the `_source`.
+If your use case requires vector fields to be stored in `_source`, you can disable this behavior by
+setting `exclude_source_vectors: false` at index creation time.
+  
+**Impact:**
+
+Vector fields will no longer be stored in `_source` by default for new indices.
+Applications or tools that expect to see vector fields in `_source` (for raw document inspection)
+may need to be updated or configured to explicitly retain vectors using `exclude_source_vectors: false`.
+Retrieval of vector fields via search or the `_source` API remains fully supported.
+
+For more information, view [#131907](https://github.com/elastic/elasticsearch/pull/131907).
 :::
 
 :::{dropdown} Don't enable norms for fields of type text when the index mode is LogsDB or TSDB

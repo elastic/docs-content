@@ -1,20 +1,24 @@
 ---
-applies_to:
-  stack: preview 9.2
-  serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
 navigation_title: "Permissions"
+description: "Learn how to configure security roles, API keys, and privileges for Agent Builder."
+applies_to:
+  stack: preview =9.2, ga 9.3+
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Permissions and access control in {{agent-builder}}
 
 Use this page to learn how to configure security roles and API keys for {{agent-builder}}. Understanding these privileges helps you control who can use agents, which tools they can access, and what data they can query.
 
-:::{important}
-{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
-:::
+::::{admonition}
+This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
 
 ## Required privileges
 
@@ -26,11 +30,40 @@ Use this page to learn how to configure security roles and API keys for {{agent-
 
 ### {{kib}} privileges
 
-{{agent-builder}} access control is managed by the `agentBuilder` {{kib}} feature:
+{{agent-builder}} access control is managed by the `agentBuilder` {{kib}} feature. Assign either `Read` or `All` based on what users need to do.
 
-- "Read" access to the `agentBuilder` feature: Required to use agents, send chat messages, view tools, and access conversations.
-- "All" access to the `agentBuilder` feature: Required to create, update, or delete custom agents and tools.
-- "Read" access to the "Actions and Connectors" feature: Required to use AI connectors with agents. 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+#### `Read`
+
+Required to use agents, send chat messages, view tools, and access conversations.
+
+Instead of `All`, you can pair `Read` with individual sub-features for more granular control over what users can manage:
+
+- `Manage agents`: Create, update, or delete custom agents.
+- `Manage tools`: Create, update, or delete custom tools.
+
+#### `All`
+
+The broadest access level. Grants everything in `Read`, plus the ability to create, update, or delete custom agents and tools. Includes both management sub-features by default.
+:::
+
+:::{applies-item} { stack: ga 9.2-9.3 }
+#### `Read`
+
+Required to use agents, send chat messages, view tools, and access conversations.
+
+#### `All`
+
+The broadest access level. Grants everything in `Read`, plus the ability to create, update, or delete custom agents and tools.
+:::
+
+::::
+
+:::{note}
+If the agent uses AI connectors, also grant `Read` access to the {{connectors-feature}} feature.
+:::
 
 Learn more about [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
@@ -47,7 +80,7 @@ Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsea
 Tools execute queries against {{es}} indices as the current user. Required privileges depend on which indices the tools access:
 
 - `read`: Required for tools that query data.
-- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](tools/index-search-tools.md), which may use index exploration capabilities internally.
+- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](tools/index-search-tools.md), which might use index exploration capabilities internally.
 
 Learn more about [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
@@ -83,7 +116,7 @@ POST /_security/role/agent-builder-full
     {
       "application": "kibana-.kibana",
       "privileges": [
-        "feature_agentBuilder.all",
+        "feature_agentBuilder.all", <1>
         "feature_actions.read"
       ],
       "resources": ["space:default"]
@@ -92,8 +125,12 @@ POST /_security/role/agent-builder-full
 }
 ```
 
-:::{tip}
-For read-only access, use `feature_agentBuilder.read` instead of `feature_agentBuilder.all`.
+1. For read-only access, use `feature_agentBuilder.read` instead of `feature_agentBuilder.all`. [Learn more](#kib-privileges).
+
+:::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+
+For granular access, pair `feature_agentBuilder.read` with only the sub-feature privileges needed. To learn more, refer to [Kibana privileges](#kib-privileges).
 :::
 
 ### Grant access with API keys
@@ -108,16 +145,16 @@ Refer to these pages for API key configuration examples:
 
 Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
-### Working with Spaces
+### Working with spaces
 
-{{agent-builder}} respects {{kib}} Spaces when enabled. All conversations, custom agents, and custom tools are scoped to the current Space.
+{{agent-builder}} respects {{kib}} spaces when enabled. Conversations, custom agents, and custom tools are scoped to the current space. Built-in agents are space-agnostic and are available in all spaces. The default Elastic AI Agent is an exception {applies_to}`stack: ga 9.4+`: it is a standard persisted agent that is space-aware and automatically created per space.
 
-When configuring roles or API keys, specify the Space in the application privileges resources (e.g., `"resources": ["space:production"]`). Users and API keys cannot access resources in other Spaces.
+When configuring roles or API keys, specify the space in the application privileges resources (for example, `"resources": ["space:production"]`). Users and API keys cannot access resources in other spaces.
 
 Learn how to [Copy your MCP server URL](tools.md#copy-your-mcp-server-url).
 
 :::{important}
-When accessing {{agent-builder}} APIs or the MCP server from a custom Space, include the space name in the URL path: `https://<deployment>/s/<space-name>/api/agent_builder/...`
+When accessing {{agent-builder}} APIs or the MCP server from a custom space, include the space name in the URL path: `https://<deployment>/s/<space-name>/api/agent_builder/...`
 
 The default space uses the standard URL format without `/s/<space-name>`.
 :::

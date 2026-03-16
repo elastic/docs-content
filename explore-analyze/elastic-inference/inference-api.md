@@ -66,6 +66,20 @@ To add a new {{infer}} endpoint using the UI:
 
 If your {{infer}} endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to dynamically adjust resource usage based on the current demand.
 
+### Creating custom EIS endpoints [create-custom-eis]
+
+Your deployment includes [Default {{infer}} endpoints](#default-enpoints) which are preconfigured and ready to use. In most cases, you should use these default endpoints.
+
+However, you may choose to manually create a **custom Elastic Inference Service (EIS)** endpoint if you need to instantiate a specific model version or configuration that is not covered by the defaults.
+
+To create a custom EIS endpoint:
+
+1. In the **Service** dropdown, select **Elastic Inference Service**.
+2. In the **Settings** section, enter the specific **Model ID**. For a complete list of valid Model IDs and their corresponding task types, refer to the [Elastic {{infer-cap}} Service supported models](eis.md#supported-models).
+3. (Optional) Under **More options**, set the **Maximum Input Tokens**. This limits the number of tokens processed per request. If left blank, the model's default limit is used.
+4. Expand **Additional settings** and select the **Task type** that corresponds to your model.
+5. Select **Save**.
+
 ## Adaptive allocations [adaptive-allocations]
 
 Adaptive allocations allow {{infer}} services to dynamically adjust the number of model allocations based on the current load.
@@ -101,7 +115,7 @@ Each chunk will include the text subpassage and the corresponding embedding gene
 
 By default, documents are split into sentences and grouped in sections up to 250 words with 1 sentence overlap so that each chunk shares a sentence with the previous chunk. Overlapping ensures continuity and prevents vital contextual information in the input text from being lost by a hard break.
 
-{{es}} uses the [ICU4J](https://unicode-org.github.io/icu-docs/) library to detect word and sentence boundaries for chunking. [Word boundaries](https://unicode-org.github.io/icu/userguide/boundaryanalysis/#word-boundary) are identified by following a series of rules, not just the presence of a whitespace character. For written languages that do use whitespace such as Chinese or Japanese dictionary lookups are used to detect word boundaries.
+{{es}} uses the [ICU4J](https://unicode-org.github.io/icu-docs/) library to detect word and sentence boundaries for chunking. [Word boundaries](https://unicode-org.github.io/icu/userguide/boundaryanalysis/#word-boundary) are identified by following a series of rules, which include detecting the presence of a whitespace character. For written languages that do not use whitespace, such as Chinese or Japanese, dictionary lookups are used to detect word boundaries.
 
 ### Chunking strategies
 

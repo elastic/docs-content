@@ -294,8 +294,6 @@ $$$azure-resubscribe-flow$$$How can I resubscribe to an {{ecloud}} Azure subscri
     3. Click **Resubscribe**. A new window should appear.
     4. Choose the subscription you want to resubscribe to and confirm.
 
-    If you are in a subscribed state and want to switch to a different subscription, or if you encounter any issues during this process, contact support@elastic.co for assistance.
-
 $$$azure-integration-billing-elastic-costs$$$Why can’t I see Elastic resources costs in Azure Cost Explorer?
 :   The costs associated with Elastic resources (deployments) are reported under unassigned in the Azure Portal. Refer to [Understand your Azure external services charges](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/understand-azure-marketplace-charges) in the Microsoft Documentation to understand Elastic resources/deployments costs. For granular Elastic resources costs, refer to [Monitor and analyze your account usage](../../cloud-organization/billing/monitor-analyze-usage.md).
 

@@ -23,6 +23,10 @@ Watch [this video](https://www.youtube.com/watch?v=Q5ODJ5nIKAM) for a walkthroug
 
 ## Detect hot spotting [detect]
 
+To check for hot spotting you can investigate both active utilization levels and historical node statistics.
+
+### Active [detect-active]
+
 Hot spotting most commonly surfaces as significantly elevated resource utilization (of `disk.percent`, `heap.percent`, or `cpu`) among a subset of nodes as reported via [cat nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes). Individual spikes aren’t necessarily problematic, but if utilization repeatedly spikes or consistently remains high over time (for example longer than 30 seconds), the resource may be experiencing problematic hot spotting.
 
 For example, let’s show case two separate plausible issues using cat nodes:
@@ -42,6 +46,38 @@ node_3 -      hirstmv             25                90  10
 
 Here we see two significantly unique utilizations: where the master node is at `cpu: 95` and a hot node is at `disk.used_percent: 90%`. This would indicate hot spotting was occurring on these two nodes, and not necessarily from the same root cause.
 
+### Historical [detect-historical]
+
+A secondary method to notice hot spotting build up is to poll the [node statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) for index-related performance metrics.
+
+```console
+GET _nodes/stats?pretty=true&filter_path=nodes.*.name,nodes.*.roles,nodes.*.indices
+```
+
+This request returns node operational metrics such as `query`, `refresh`, and `index`. It allows you to gauge:
+
+* the total events attempted per node 
+* the node's average processing time per event type
+
+These metrics accumulate during the uptime for each individual node. To help view the output, you can parse the response using a third-party tool such as [JQ](https://jqlang.github.io/jq/):
+
+```bash
+cat nodes_stats.json | jq -rc '.nodes[]|.name as $n|.roles as $r|.indices|to_entries[]|.key as $m|.value|select(.total and .total_time_in_millis)|select(.total>0)|{node:$n, roles:$r, metric:$m, total:.total, avg_millis:(.total_time_in_millis?/.total|round)}'
+```
+
+The results indicate that multiple major operations are non-performant across nodes, suggesting that the cluster is likely under-provisioned. If a particular operation type or node stands out, it likely indicates [shard distribution issues](#causes-shards) which you might compare against [indices stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats).
+
+```console
+GET /_stats?level=shards&human&expand_wildcards=all&ignore_unavailable=true
+```
+
+These metrics accumulate from the history for each individual shard. You can parse this response with a tool like JQ to compare with earlier performance:
+
+```bash
+cat indices_stats.json | jq -rc '.indices|to_entries[]|.key as $i|.value.shards[]|to_entries[]|.key as $sh|.value|.routing.primary as $p|.routing.node[:4] as $n|to_entries[]|.key as $m|.value|select(.total and .total_time_in_millis)|select(.total>0)|{index:$i, shard:$sh, primary:$p, node:$n, metric:$m, total:.total, avg_millis:(.total_time_in_millis/.total|round)}'
+```
+
+
 
 ## Causes [causes]
 
@@ -50,9 +86,12 @@ Historically, clusters experience hot spotting mainly as an effect of hardware, 
 
 ### Hardware [causes-hardware]
 
-Here are some common improper hardware setups which may contribute to hot spotting:
+Here are some common improper hardware setups which might contribute to hot spotting:
 
-* Resources are allocated non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications.
+* Resources are allocated non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications. To check this, use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
+  ```console
+  GET _cat/nodes?v=true&s=name&h=name,role,disk.total,heap.max,allocated_processors
+  ```
 * Resources are consumed by another service on the host, including other {{es}} nodes. Refer to our [dedicated host](../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#dedicated-host) recommendation.
 * Resources experience different network or disk throughputs. For example, if one node’s I/O is lower than its peers. Refer to [Use faster hardware](../../deploy-manage/production-guidance/optimize-performance/indexing-speed.md#indexing-use-faster-hardware) for more information.
 * A JVM that has been configured with a heap larger than 31GB. Refer to [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) for more information.
@@ -146,36 +185,4 @@ cat shard_stats.json | jq -rc 'sort_by(-.avg_indexing)[]' | head
 
 ### Task loads [causes-tasks]
 
-Shard distribution problems will most-likely surface as task load as seen above in the [cat thread pool](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool) example. It is also possible for tasks to hot spot a node either due to individual qualitative expensiveness or overall quantitative traffic loads.
-
-For example, if [cat thread pool](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool) reported a high queue on the `warmer` [thread pool](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md), you would look-up the effected node’s [hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads). Let’s say it reported `warmer` threads at `100% cpu` related to `GlobalOrdinalsBuilder`. This would let you know to inspect [field data’s global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md).
-
-Alternatively, let’s say [cat nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) shows a hot spotted master node and [cat thread pool](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool) shows general queuing across nodes. This would suggest the master node is overwhelmed. To resolve this, first ensure [hardware high availability](../../deploy-manage/production-guidance/availability-and-resilience/resilience-in-small-clusters.md) setup and then look to ephemeral causes. In this example, [the nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) reports multiple threads in `other` which indicates they’re waiting on or blocked by either garbage collection or I/O.
-
-For either of these example situations, a good way to confirm the problematic tasks is to look at longest running non-continuous (designated `[c]`) tasks via [cat task management](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-tasks). This can be supplemented checking longest running cluster sync tasks via [cat pending tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-pending-tasks). Using a third example,
-
-```console
-GET _cat/tasks?v&s=time:desc&h=type,action,running_time,node,cancellable
-```
-
-This could return:
-
-```console-result
-type   action                running_time  node    cancellable
-direct indices:data/read/eql 10m           node_1  true
-...
-```
-
-This surfaces a problematic [EQL query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search). We can gain further insight on it via [the task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks),
-
-```console
-GET _tasks?human&detailed
-```
-
-Its response contains a `description` that reports this query:
-
-```eql
-indices[winlogbeat-*,logs-window*], sequence by winlog.computer_name with maxspan=1m\n\n[authentication where host.os.type == "windows" and event.action:"logged-in" and\n event.outcome == "success" and process.name == "svchost.exe" ] by winlog.event_data.TargetLogonId
-```
-
-This lets you know which indices to check (`winlogbeat-*,logs-window*`), as well as the [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) request body. Most likely this is [SIEM related](/solutions/security.md). You can combine this with [audit logging](../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) as needed to trace the request source.
+Shard distribution problems will most-likely surface as task load, as seen above in the [cat thread pool](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool) example. It is also possible for tasks to hot spot a node due either to individual qualitative expensiveness or to overall quantitative traffic loads, which will surface in [backlogged tasks](/troubleshoot/elasticsearch/task-queue-backlog.md).

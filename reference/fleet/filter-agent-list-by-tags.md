@@ -49,10 +49,10 @@ To manage tags in {{fleet}}:
 
     | To… | Do this… |
     | --- | --- |
-    | Create a new tag | Type the tag name and click **Create new tag…**. Notice the tag name hasa check mark to show that the tag has been added to the selected agents. |
-    | Rename a tag | Hover over the tag name and click the ellipsis button. Type a new name and press Enter.The tag will be renamed in all agents that use it, even agents that are notselected. |
-    | Delete a tag | Hover over the tag name and click the ellipsis button. Click **Delete tag**.The tag will be deleted from all agents, even agents that are not selected. |
-    | Add or remove a tag from an agent | Click the tag name to add or clear the check mark. In the **Tags** column,notice that the tags are added or removed. The menu only showstags that are common to all selected agents. |
+    | Create a new tag | Type the tag name and click **Create new tag…**. Notice the tag name has a check mark to show that the tag has been added to the selected agents. |
+    | Rename a tag | Hover over the tag name and click the ellipsis button. Type a new name and press Enter. The tag will be renamed in all agents that use it, even agents that are not selected. |
+    | Delete a tag | Hover over the tag name and click the ellipsis button. Click **Delete tag**. The tag will be deleted from all agents, even agents that are not selected. |
+    | Add or remove a tag from an agent | Click the tag name to add or clear the check mark. In the **Tags** column, notice that the tags are added or removed. The menu only shows tags that are common to all selected agents. |
 
 
 

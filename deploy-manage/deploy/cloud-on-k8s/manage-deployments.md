@@ -3,6 +3,16 @@ navigation_title: Manage deployments
 applies_to:
   deployment:
     eck: all
+products:
+  - id: cloud-kubernetes
+  - id: elasticsearch
+  - id: kibana
+  - id: elastic-agent
+  - id: fleet
+  - id: logstash
+  - id: beats
+  - id: apm
+  - id: elastic-stack
 ---
 # Manage deployments in {{eck}}
 

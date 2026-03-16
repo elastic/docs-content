@@ -93,6 +93,8 @@ On the **Stack Monitoring** page, you’ll see cluster alerts that require your 
 :screenshot:
 :::
 
+The {{integrations-server}} monitoring component is available only on {{ech}} and {{ece}}.
+
 If you encounter problems, refer to [](/deploy-manage/monitor/monitoring-data/monitor-troubleshooting.md).
 
 :::{tip}

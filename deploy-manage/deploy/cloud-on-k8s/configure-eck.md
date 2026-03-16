@@ -62,7 +62,7 @@ helm upgrade elastic-operator elastic/eck-operator --set config.caValidity=43800
 
 If you installed ECK using the manifests and the commands listed in [Deploy ECK](./install-using-yaml-manifest-quickstart.md), you can configure it by editing the `eck.yaml` key of the `elastic-operator` ConfigMap. Add, remove or update any configuration setting there and the operator will restart automatically to apply the new changes unless the `--disable-config-watch` flag is set.
 
-You can update the ConfigMap directly using the command `kubectl edit configmap elastic-operator -n elastic-operator` or modify the installation manifests and reapply them with `kubectl apply -f <your-manifest-file.yaml>`.
+You can update the ConfigMap directly using the command `kubectl edit configmap elastic-operator -n elastic-system` or modify the installation manifests and reapply them with `kubectl apply -f <your-manifest-file.yaml>`.
 
 The following shows the default `elastic-operator` ConfigMap, for reference purposes. Refer to [ECK configuration flags](cloud-on-k8s://reference/eck-configuration-flags.md) for a complete list of available settings.
 
@@ -164,7 +164,7 @@ This section provides a low-level overview of alternative configuration methods,
 
 To pass configuration options as environment variables, convert the flag name to upper case and replace any dashes (`-`) with underscores (`_`). For example, the `log-verbosity` flag can be set by an environment variable named `LOG_VERBOSITY`.
 
-If you use a combination of all or some of the these methods, the descending order of precedence in case of a conflict is as follows:
+If you use a combination of all or some of these methods, the descending order of precedence in case of a conflict is as follows:
 
 * Flag
 * Environment variable

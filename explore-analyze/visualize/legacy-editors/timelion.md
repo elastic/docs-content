@@ -2,6 +2,12 @@
 applies_to:
   stack: deprecated 7.10
   serverless: unavailable
+products:
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
   
 # Timelion [timelion]
