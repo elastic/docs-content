@@ -71,10 +71,10 @@ If you’re installing the risk scoring engine for the first time:
 ::::{applies-item} { stack: ga 9.0-9.3 }
 1. Find **Entity risk score** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Turn the toggle on.
-3. {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Choose whether to retain [residual risk scores](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#residual-risk-score).
+3. {applies_to}`stack: ga 9.2+` Choose whether to retain [residual risk scores](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#residual-risk-score).
 4. Optionally, specify a date and time range for the calculation.
 5. Choose whether to include `Closed` alerts in risk scoring calculations.
-6. {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` Optionally, filter out alerts by defining conditions for the entity types or attributes that you want to exclude from the calculation. For example, if you don't want to calculate risk scores for users with a **Low impact** asset criticality level, enter `not user.asset.criticality: "low_impact"`.
+6. {applies_to}`stack: ga 9.3+` Optionally, filter out alerts by defining conditions for the entity types or attributes that you want to exclude from the calculation. For example, if you don't want to calculate risk scores for users with a **Low impact** asset criticality level, enter `not user.asset.criticality: "low_impact"`.
 ::::
 
 :::::
