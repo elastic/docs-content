@@ -4,6 +4,13 @@ applies_to:
   stack: ga
   serverless: ga
 description: Instructions and best practices for building tables with {{kib}} Lens in Elastic.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Build tables with {{kib}} [build-tables-with-kibana]
@@ -18,6 +25,9 @@ You can create tables in {{kib}} using [**Lens**](../lens.md).
 ![A table visualization in {{kib}}](/explore-analyze/images/table-charts.png)
 
 ## Build a table
+
+:::{include} ../../_snippets/lens-prerequisites.md
+:::
 
 To build a table:
 
@@ -42,6 +52,8 @@ Using the dropdown indicating **Bar**, select **Table**.
     - **Rows** (optional): Fields that create the rows of your table. Each unique value becomes a row. You can use functions like **Top values**, **Date histogram**, **Intervals**, or **Filters** to organize your rows. You can add multiple fields as rows to create hierarchical groupings and break down the data more granularly.
     - **Split metrics by** (optional): Break metrics into separate columns based on a categorical field, creating a pivot table view.
 3. Optionally, customize individual columns by clicking on any dimension in the layer pane to configure formatting, alignment, coloring, and more.
+
+The table preview updates to show your metrics as columns. If you added row dimensions, each unique value creates a separate row. If you added a **Split metrics by** dimension, metrics are broken into multiple columns by category.
 
 Refer to [](#settings) to find all configuration options for your table.
 ::::
@@ -69,7 +81,7 @@ Refer to [](#settings) for a complete list of options.
 
 ::::{step} Save the table
 - If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and offers you to add the visualization to a dashboard and to the Visualize library.
+- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
 ::::
 
 :::::
@@ -150,15 +162,18 @@ Customize your table to display exactly the information you need, formatted the 
 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
+        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each row represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
         - **Number of values**: How many top values to display
-        - **Rank by**: Which metric to use for ranking
-        - **Rank direction**: Ascending or descending order
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
       - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
+        - **Field**: Select the date field to use for the time-based grouping.
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
       - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
+        - **Field**: Select the numeric field to create intervals from.
         :::{dropdown} How does interval granularity work?
         Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
         
@@ -185,15 +200,18 @@ Customize your table to display exactly the information you need, formatted the 
 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
+        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each column group represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
         - **Number of values**: How many top values to display
-        - **Rank by**: Which metric to use for ranking
-        - **Rank direction**: Ascending or descending order
+        :::{include} ../../_snippets/lens-rank-by-options.md
+        :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
       - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
+        - **Field**: Select the date field to use for the time-based grouping.
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
       - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
+        - **Field**: Select the numeric field to create intervals from.
         :::{dropdown} How does interval granularity work?
         Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
         

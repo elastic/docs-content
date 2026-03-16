@@ -36,6 +36,9 @@ If network security policies are applied to the remote cluster, the remote clust
 :::{include} _snippets/apikeys-intro.md
 :::
 
+:::{note}
+To configure strong identity verification together with API key authentication for remote cluster connections, refer to [](./ec-remote-cluster-strong-identity.md). Follow the steps there in addition to the procedure described in this section.
+:::
 
 ### Prerequisites and limitations [ec_prerequisites_and_limitations]
 

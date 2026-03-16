@@ -3,6 +3,14 @@ applies_to:
   stack: ga
   serverless: ga
 navigation_title: Elastic Inference
+products:
+  - id: elasticsearch
+  - id: machine-learning
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Elastic {{infer-cap}}

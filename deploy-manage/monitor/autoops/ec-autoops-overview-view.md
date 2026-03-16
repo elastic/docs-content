@@ -3,7 +3,7 @@ navigation_title: Overview
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-overview-view.html
 applies_to:
-  stack: ga 7.17
+  stack:
 products:
   - id: cloud-hosted
   - id: cloud-kubernetes

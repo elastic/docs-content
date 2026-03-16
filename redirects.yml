@@ -1,5 +1,6 @@
 redirects:
   # related to https://github.com/elastic/docs-content/pull/4251
+  'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'
   'solutions/elasticsearch-solution-project/full-text/create-update-synonyms-api-example.md': 'solutions/search/full-text/create-update-synonyms-api-example.md'
   'solutions/search/query-rules-ui.md': 'solutions/elasticsearch-solution-project/query-rules-ui.md'
@@ -536,7 +537,7 @@ redirects:
   'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3461
-  'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
+  'manage-data/data-store/data-streams/time-series-data-stream-tsds.md':
     to: 'manage-data/data-store/data-streams/time-series-data-stream-tsds.md'
     anchors:
       'when-to-use-tsds': 'when-to-use-tsds'
@@ -552,7 +553,7 @@ redirects:
       'time-bound-indices':
       'dimension-based-routing':
       'tsds-accepted-time-range':
-      
+
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
 
@@ -563,9 +564,9 @@ redirects:
   'solutions/security/cloud/integration-tenablevm.md': 'solutions/security/integrations/tenablevm.md'
   'solutions/security/cloud/integration-rapid7.md': 'solutions/security/integrations/rapid7.md'
   'solutions/security/cloud/integration-qualys.md': 'solutions/security/integrations/qualys.md'
-  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/integrations/aws-security-hub.md'
+  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/integrations/aws-security-hub-cspm.md'
   'solutions/security/cloud/aws-config-integration.md': 'solutions/security/integrations/aws-config.md'
-  
+
 # Deduplicate canvas function reference
   'reference/data-analysis/kibana/canvas-functions.md': 'explore-analyze/visualize/canvas/canvas-function-reference.md'
   'reference/data-analysis/kibana/tinymath-functions.md': 'explore-analyze/visualize/canvas/canvas-tinymath-functions.md'
@@ -610,7 +611,7 @@ redirects:
 
 # Related to https://github.com/elastic/docs-team/issues/104
   'solutions/observability/get-started/what-is-elastic-observability': 'solutions/observability.md'
-  'solutions/security/get-started/create-security-project.md': 
+  'solutions/security/get-started/create-security-project.md':
     to: 'solutions/security/get-started.md'
     anchors:
       'create-sec-serverless-project':
@@ -634,7 +635,7 @@ redirects:
 # Related to https://github.com/elastic/docs-content/issues/2662
   'solutions/security/cloud/integrations/aws-config.md': 'solutions/security/integrations/aws-config.md'
   'solutions/security/cloud/integrations/aws-inspector.md': 'solutions/security/integrations/aws-inspector.md'
-  'solutions/security/cloud/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub.md'
+  'solutions/security/cloud/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub-cspm.md'
   'solutions/security/cloud/integrations/cncf-falco.md': 'solutions/security/integrations/cncf-falco.md'
   'solutions/security/cloud/integrations/google-security-command-center.md': 'solutions/security/integrations/google-security-command-center.md'
   'solutions/security/cloud/integrations/ingest-third-party-cloud-security-data.md': 'solutions/security/integrations/ingest-third-party-security-data.md'
@@ -648,11 +649,13 @@ redirects:
 
   # Move CCS feature docs to explore-analyze
   'solutions/search/cross-cluster-search.md': 'explore-analyze/cross-cluster-search.md'
+  # Rename AWS Security Hub integration's name to AWS Security Hub CSPM
+  'solutions/security/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub-cspm.md'
   'solutions/search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
 
   # Related to https://github.com/elastic/docs-content/pull/4438
   'explore-analyze/ai-features/ai-agent-or-ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md'
-  
+
   # Related to agent builder restructure - moved agent builder docs to explore-analyze/
   'solutions/search/elastic-agent-builder.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
   'solutions/search/agent-builder/tools/esql-tools.md': 'explore-analyze/ai-features/agent-builder/tools/esql-tools.md'
@@ -694,3 +697,147 @@ redirects:
       - to: 'explore-analyze/visualize/charts/metric-charts.md'
         anchors:
           'metric-trends': 'build-metric-charts-with-kibana'
+
+# Related to https://github.com/elastic/docs-content/pull/5033
+  'solutions/observability/observability-ai-assistant.md': 'solutions/observability/ai/observability-ai-assistant.md'
+  'solutions/observability/llm-performance-matrix.md': 'solutions/observability/ai/llm-performance-matrix.md'
+
+# Related to Detect & Alert section restructure (issue #1210)
+  # Renamed files
+  'solutions/security/detect-and-alert/detections-requirements.md': 'solutions/security/detect-and-alert/detections-privileges.md'
+  'solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md': 'solutions/security/detect-and-alert/install-prebuilt-rules.md'
+  'solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md': 'solutions/security/detect-and-alert/update-prebuilt-rules.md'
+  'solutions/security/detect-and-alert/mitre-attandckr-coverage.md': 'solutions/security/detect-and-alert/mitre-attack-coverage.md'
+  'solutions/security/detect-and-alert/about-detection-rules.md': 'solutions/security/detect-and-alert/choose-the-right-rule-type.md'
+  'solutions/security/detect-and-alert/create-detection-rule.md': 'solutions/security/detect-and-alert/using-the-rule-ui.md'
+  'solutions/security/detect-and-alert/using-the-rule-builder.md': 'solutions/security/detect-and-alert/using-the-rule-ui.md'
+  'solutions/security/detect-and-alert/launch-timeline-from-investigation-guides.md': 'solutions/security/detect-and-alert/write-investigation-guides.md'
+  'solutions/security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md': 'solutions/security/detect-and-alert/set-rule-data-sources.md'
+  'solutions/security/detect-and-alert/suppress-detection-alerts.md': 'solutions/security/detect-and-alert/alert-suppression.md'
+  'solutions/security/detect-and-alert/reduce-notifications-alerts.md':
+    to: 'solutions/security/detect-and-alert/manage-detection-rules.md'
+    anchors:
+      '': 'snooze-rule-actions'
+  'solutions/security/detect-and-alert/snooze-rule-actions.md':
+    to: 'solutions/security/detect-and-alert/manage-detection-rules.md'
+    anchors:
+      '': 'snooze-rule-actions'
+  'solutions/security/detect-and-alert/reference.md': 'solutions/security/detect-and-alert/common-rule-settings.md'
+  'solutions/security/detect-and-alert/detections-reference.md': 'solutions/security/detect-and-alert/common-rule-settings.md'
+  'solutions/security/detect-and-alert/rule-settings-reference.md': 'solutions/security/detect-and-alert/common-rule-settings.md'
+  'solutions/security/detect-and-alert/custom-rules.md': 'solutions/security/detect-and-alert/author-rules.md'
+
+  # Prebuilt rules restructure
+  # Note: Cross-file anchor redirects are not supported. Old links to 
+  # install-manage-prebuilt-rules.md#prebuilt-rule-tags, #rule-prerequisites, 
+  # and #select-all-prebuilt-rules will land on install-prebuilt-rules.md.
+  # Internal links have been updated to point to the correct new locations.
+  'solutions/security/detect-and-alert/install-manage-prebuilt-rules.md':
+    to: 'solutions/security/detect-and-alert/install-prebuilt-rules.md'
+    anchors:
+      'load-prebuilt-rules': 'load-prebuilt-rules'
+
+  # About prebuilt rules page renamed to Prebuilt rule components
+  'solutions/security/detect-and-alert/about-prebuilt-rules.md': 'solutions/security/detect-and-alert/prebuilt-rule-components.md'
+
+  # Deleted — content consolidated into manage-detection-alerts and cases pages
+  'solutions/security/detect-and-alert/add-detection-alerts-to-cases.md':
+    to: 'solutions/security/detect-and-alert/manage-detection-alerts.md'
+    anchors:
+      '': 'alert-actions'
+
+# Related to cases and alerting documentation restructuring
+  # Main pages
+  'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'
+  'explore-analyze/alerts-cases/cases.md': 'explore-analyze/cases.md'
+  'explore-analyze/alerts-cases/alerts.md': 'explore-analyze/alerting/alerts.md'
+  'explore-analyze/alerts-cases/watcher.md': 'explore-analyze/alerting/watcher.md'
+  
+  # Cases redirects
+  'explore-analyze/alerts-cases/cases/setup-cases.md': 'explore-analyze/cases/control-case-access.md'
+  'explore-analyze/alerts-cases/cases/manage-cases.md': 'explore-analyze/cases/manage-cases.md'
+  'explore-analyze/alerts-cases/cases/manage-cases-settings.md': 'explore-analyze/cases/configure-case-settings.md'
+  'explore-analyze/cases/manage-cases-settings.md': 'explore-analyze/cases/configure-case-settings.md'
+  'explore-analyze/alerts-cases/cases/cases-as-data.md': 'explore-analyze/cases/cases-as-data.md'
+  'explore-analyze/cases/setup-cases.md': 'explore-analyze/cases/control-case-access.md'
+  'explore-analyze/cases/configure-case-access.md': 'explore-analyze/cases/control-case-access.md'
+  'explore-analyze/cases/find-share-cases.md': 'explore-analyze/cases/search-share-cases.md'
+  
+  # Alerts redirects
+  'explore-analyze/alerts-cases/alerts/alerting-getting-started.md': 'explore-analyze/alerting/alerts/alerting-getting-started.md'
+  'explore-analyze/alerts-cases/alerts/alerting-setup.md': 'explore-analyze/alerting/alerts/alerting-setup.md'
+  'explore-analyze/alerts-cases/alerts/create-manage-rules.md': 'explore-analyze/alerting/alerts/create-manage-rules.md'
+  'explore-analyze/alerts-cases/alerts/view-alerts.md': 'explore-analyze/alerting/alerts/view-alerts.md'
+  'explore-analyze/alerts-cases/alerts/rule-types.md': 'explore-analyze/alerting/alerts/rule-types.md'
+  'explore-analyze/alerts-cases/alerts/rule-type-index-threshold.md': 'explore-analyze/alerting/alerts/rule-type-index-threshold.md'
+  'explore-analyze/alerts-cases/alerts/rule-type-es-query.md': 'explore-analyze/alerting/alerts/rule-type-es-query.md'
+  'explore-analyze/alerts-cases/alerts/geo-alerting.md': 'explore-analyze/alerting/alerts/geo-alerting.md'
+  'explore-analyze/alerts-cases/alerts/rule-action-variables.md': 'explore-analyze/alerting/alerts/rule-action-variables.md'
+  'explore-analyze/alerts-cases/alerts/notifications-domain-allowlist.md': 'explore-analyze/alerting/alerts/notifications-domain-allowlist.md'
+  'explore-analyze/alerts-cases/alerts/alerting-troubleshooting.md': 'explore-analyze/alerting/alerts/alerting-troubleshooting.md'
+  'explore-analyze/alerts-cases/alerts/alerting-common-issues.md': 'explore-analyze/alerting/alerts/alerting-common-issues.md'
+  'explore-analyze/alerts-cases/alerts/event-log-index.md': 'explore-analyze/alerting/alerts/event-log-index.md'
+  'explore-analyze/alerts-cases/alerts/testing-connectors.md': 'explore-analyze/alerting/alerts/testing-connectors.md'
+  'explore-analyze/alerts-cases/alerts/maintenance-windows.md': 'explore-analyze/alerting/alerts/maintenance-windows.md'
+  
+  # Watcher redirects
+  'explore-analyze/alerts-cases/watcher/watcher-getting-started.md': 'explore-analyze/alerting/watcher/watcher-getting-started.md'
+  'explore-analyze/alerts-cases/watcher/how-watcher-works.md': 'explore-analyze/alerting/watcher/how-watcher-works.md'
+  'explore-analyze/alerts-cases/watcher/enable-watcher.md': 'explore-analyze/alerting/watcher/enable-watcher.md'
+  'explore-analyze/alerts-cases/watcher/encrypting-data.md': 'explore-analyze/alerting/watcher/encrypting-data.md'
+  'explore-analyze/alerts-cases/watcher/managing-watches.md': 'explore-analyze/alerting/watcher/managing-watches.md'
+  'explore-analyze/alerts-cases/watcher/watcher-ui.md': 'explore-analyze/alerting/watcher/watcher-ui.md'
+  'explore-analyze/alerts-cases/watcher/example-watches.md': 'explore-analyze/alerting/watcher/example-watches.md'
+  'explore-analyze/alerts-cases/watcher/watch-cluster-status.md': 'explore-analyze/alerting/watcher/watch-cluster-status.md'
+  'explore-analyze/alerts-cases/watcher/watcher-limitations.md': 'explore-analyze/alerting/watcher/watcher-limitations.md'
+  'explore-analyze/alerts-cases/watcher/schedule-types.md': 'explore-analyze/alerting/watcher/schedule-types.md'
+  'explore-analyze/alerts-cases/watcher/trigger.md': 'explore-analyze/alerting/watcher/trigger.md'
+  'explore-analyze/alerts-cases/watcher/trigger-schedule.md': 'explore-analyze/alerting/watcher/trigger-schedule.md'
+  'explore-analyze/alerts-cases/watcher/input.md': 'explore-analyze/alerting/watcher/input.md'
+  'explore-analyze/alerts-cases/watcher/input-simple.md': 'explore-analyze/alerting/watcher/input-simple.md'
+  'explore-analyze/alerts-cases/watcher/input-search.md': 'explore-analyze/alerting/watcher/input-search.md'
+  'explore-analyze/alerts-cases/watcher/input-http.md': 'explore-analyze/alerting/watcher/input-http.md'
+  'explore-analyze/alerts-cases/watcher/input-chain.md': 'explore-analyze/alerting/watcher/input-chain.md'
+  'explore-analyze/alerts-cases/watcher/condition.md': 'explore-analyze/alerting/watcher/condition.md'
+  'explore-analyze/alerts-cases/watcher/condition-always.md': 'explore-analyze/alerting/watcher/condition-always.md'
+  'explore-analyze/alerts-cases/watcher/condition-never.md': 'explore-analyze/alerting/watcher/condition-never.md'
+  'explore-analyze/alerts-cases/watcher/condition-compare.md': 'explore-analyze/alerting/watcher/condition-compare.md'
+  'explore-analyze/alerts-cases/watcher/condition-array-compare.md': 'explore-analyze/alerting/watcher/condition-array-compare.md'
+  'explore-analyze/alerts-cases/watcher/condition-script.md': 'explore-analyze/alerting/watcher/condition-script.md'
+  'explore-analyze/alerts-cases/watcher/actions.md': 'explore-analyze/alerting/watcher/actions.md'
+  'explore-analyze/alerts-cases/watcher/action-conditions.md': 'explore-analyze/alerting/watcher/action-conditions.md'
+  'explore-analyze/alerts-cases/watcher/action-foreach.md': 'explore-analyze/alerting/watcher/action-foreach.md'
+  'explore-analyze/alerts-cases/watcher/actions-email.md': 'explore-analyze/alerting/watcher/actions-email.md'
+  'explore-analyze/alerts-cases/watcher/actions-webhook.md': 'explore-analyze/alerting/watcher/actions-webhook.md'
+  'explore-analyze/alerts-cases/watcher/actions-index.md': 'explore-analyze/alerting/watcher/actions-index.md'
+  'explore-analyze/alerts-cases/watcher/actions-logging.md': 'explore-analyze/alerting/watcher/actions-logging.md'
+  'explore-analyze/alerts-cases/watcher/actions-slack.md': 'explore-analyze/alerting/watcher/actions-slack.md'
+  'explore-analyze/alerts-cases/watcher/actions-pagerduty.md': 'explore-analyze/alerting/watcher/actions-pagerduty.md'
+  'explore-analyze/alerts-cases/watcher/actions-jira.md': 'explore-analyze/alerting/watcher/actions-jira.md'
+  'explore-analyze/alerts-cases/watcher/transform.md': 'explore-analyze/alerting/watcher/transform.md'
+  'explore-analyze/alerts-cases/watcher/transform-search.md': 'explore-analyze/alerting/watcher/transform-search.md'
+  'explore-analyze/alerts-cases/watcher/transform-script.md': 'explore-analyze/alerting/watcher/transform-script.md'
+  'explore-analyze/alerts-cases/watcher/transform-chain.md': 'explore-analyze/alerting/watcher/transform-chain.md'
+  'explore-analyze/alerts-cases/watcher/throttling.md': 'explore-analyze/alerting/watcher/throttling.md'
+  'explore-analyze/alerts-cases/watcher/execute-watch.md': 'explore-analyze/alerting/watcher/execute-watch.md'
+  'solutions/security/investigate/security-cases-features.md': 'solutions/security/investigate/security-cases.md'
+  'solutions/security/investigate/cases.md': 'solutions/security/investigate/security-cases.md'
+  'solutions/observability/incident-management/cases.md': 'solutions/observability/incident-management/observability-cases.md'
+# Related to https://github.com/elastic/docs-content/pull/5251
+  'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
+  'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
+  'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/agentless/cloud-connector-deployment.md'
+
+# Moved Explore pages (Hosts, Network, Users) into Entity analytics section
+  'solutions/security/explore.md': 'solutions/security/advanced-entity-analytics.md'
+  'solutions/security/explore/hosts-page.md': 'solutions/security/advanced-entity-analytics/hosts-page.md'
+  'solutions/security/explore/network-page.md': 'solutions/security/advanced-entity-analytics/network-page.md'
+  'solutions/security/explore/users-page.md': 'solutions/security/advanced-entity-analytics/users-page.md'
+  'solutions/security/explore/configure-network-map-data.md': 'solutions/security/advanced-entity-analytics/configure-network-map-data.md'
+  'solutions/security/explore/configure-dns-histogram.md': 'solutions/security/advanced-entity-analytics/configure-dns-histogram.md'
+  
+# Related to https://github.com/elastic/docs-content/pull/5222
+  'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'
+
+# Renamed for SEO - URL now matches page title
+  'solutions/security/detect-and-alert/requirements-privileges.md': 'solutions/security/detect-and-alert/turn-on-detections.md'

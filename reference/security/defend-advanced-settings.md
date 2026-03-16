@@ -3,6 +3,14 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: elastic-agent
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # {{elastic-defend}} advanced settings

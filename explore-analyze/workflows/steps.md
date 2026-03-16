@@ -3,6 +3,13 @@ applies_to:
   stack: preview 9.3
   serverless: preview
 description: Learn about workflow steps, the building blocks that define how workflows operate and produce outcomes.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Steps
@@ -51,6 +58,8 @@ AI steps introduce reasoning and language understanding into workflows. Use AI s
 * Send prompts to an AI connector using the `ai.prompt` step
 * Call a built-in or custom Elastic AI agent using the `ai.agent` step
 * Integrate with LLM providers such as OpenAI and Gemini
+
+Refer to [](/explore-analyze/workflows/steps/ai-steps.md) for more information.
 
 ### {{agent-builder}} integration
 

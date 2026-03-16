@@ -141,7 +141,7 @@ If an individual task is causing a [thread pool `queue`](#diagnose-task-queue-th
 
 This problem can surface due to a number of possible causes:
 
-* Creating new  tasks or modifying scheduled tasks which either run frequently or are broad in their effect, such as [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) policies or [rules](/explore-analyze/alerts-cases.md)
+* Creating new  tasks or modifying scheduled tasks which either run frequently or are broad in their effect, such as [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) policies or [rules](/explore-analyze/alerting.md)
 * Performing traffic load testing
 * Doing extended look-backs, especially across [data tiers](/manage-data/lifecycle/data-tiers.md)
 * [Searching](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search) or performing [bulk updates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to a high number of indices in a single request
@@ -150,11 +150,6 @@ This problem can surface due to a number of possible causes:
 ### Cancel stuck tasks [resolve-task-queue-backlog-stuck-tasks] 
 
 If an active task’s [hot thread](#diagnose-task-queue-hot-thread) shows no progress, consider [canceling the task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks#task-cancellation) if it's flagged as `cancellable`.
-
-If you consistently encounter `cancellable` tasks running longer than expected, you might consider reviewing:
-
-* setting a [`search.default_search_timeout`](/solutions/search/the-search-api.md#search-timeout)
-* ensuring [scroll requests are cleared](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#clear-scroll) in a timely manner
 
 For example, you can use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-tasks-list) to identify and cancel searches that consume excessive CPU time.
 

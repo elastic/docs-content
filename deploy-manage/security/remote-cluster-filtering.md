@@ -6,6 +6,10 @@ applies_to:
 navigation_title: "Remote cluster filters"
 sub:
   policy-type: "Private connection"
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # Remote cluster filtering
