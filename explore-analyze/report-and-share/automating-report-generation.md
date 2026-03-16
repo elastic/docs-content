@@ -51,7 +51,7 @@ To create the POST URL for CSV reports:
 
 ## Use Watcher [use-watcher]
 
-To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerts-cases/watcher/actions-email.md#configuring-email).
+To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
 
 For example, the following watch generates a PDF report and emails the report every hour:
 
@@ -89,7 +89,7 @@ PUT _watcher/watch/error_report
 }
 ```
 
-1. Configure at least one email account to enable Watcher to send email. For more information, refer to [Configuring email accounts](../alerts-cases/watcher/actions-email.md#configuring-email).
+1. Configure at least one email account to enable Watcher to send email. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
 2. An example POST URL. You can copy and paste the URL for any report.
 3. Optional, default is `40`.
 4. Optional, default is `15s`.
@@ -101,7 +101,7 @@ PUT _watcher/watch/error_report
 
 The report generation URL might contain date-math expressions that cause the watch to fail with a `parse_exception`. To avoid a failed watch, remove curly braces `{`  `}` from date-math expressions and URL-encode characters. For example, `...(range:(%27@timestamp%27:(gte:now-15m%2Fd,lte:now%2Fd))))...`
 
-For more information about configuring watches, refer to [How Watcher works](../alerts-cases/watcher/how-watcher-works.md).
+For more information about configuring watches, refer to [How Watcher works](../alerting/watcher/how-watcher-works.md).
 
 ::::
 
@@ -226,7 +226,7 @@ Save time by setting up a recurring task that automatically generates reports an
         notifications.connectors.default.email: my-email
      ```
 
-* (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerts-cases/alerts/notifications-domain-allowlist.md).
+* (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerting/alerts/notifications-domain-allowlist.md).
 
 ### Create a schedule [create-scheduled-report]
 
@@ -253,7 +253,7 @@ Save time by setting up a recurring task that automatically generates reports an
     * **Message**: Keep the default email message, or enter your own. To format and structure your message text, use Markdown.
 
        ::::{note} 
-       In the subject and message, you can also use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to dynamically pass values from data sources when the email is generated. Enhancing the values passed by Mustache variables is also supported. Refer to [](../../explore-analyze/alerts-cases/alerts/rule-action-variables.md#enhance-mustache-variables) to learn more. 
+       In the subject and message, you can also use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to dynamically pass values from data sources when the email is generated. Enhancing the values passed by Mustache variables is also supported. Refer to [](../../explore-analyze/alerting/alerts/rule-action-variables.md#enhance-mustache-variables) to learn more. 
        ::::
 
 6. Click **Schedule exports** to save the schedule. 

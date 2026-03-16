@@ -12,18 +12,19 @@ products:
 
 # Connectors [connector-management]
 
+This page is about {{kib}} connectors that integrate with services like generative AI model providers or trigger actions in third-party systems. If you’re looking for content connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
+
 Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{connectors-ui}}** provides a central location to view and manage all connectors in the current space. 
 
 You can find the **{{connectors-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-::::{note}
-This page is about {{kib}} connectors that integrate with services like generative AI model providers. If you’re looking for content connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
-
-::::
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors
+:::
 
 ## Required permissions [_required_permissions_2]
 
-Access to connectors is granted based on your privileges to alerting-enabled features. For more information, go to [Security](../explore-analyze/alerts-cases/alerts/alerting-setup.md#alerting-security).
+Access to connectors is granted based on your privileges to alerting-enabled features. For more information, go to [Security](../explore-analyze/alerting/alerts/alerting-setup.md#alerting-security).
 
 ## Connector networking configuration [_connector_networking_configuration]
 
@@ -91,6 +92,6 @@ If a connector is missing sensitive information after the import, a **Fix** butt
 
 ## Monitoring connectors [monitoring-connectors]
 
-You can query the [Event log index](/explore-analyze/alerts-cases/alerts/event-log-index.md) to gather information on connector successes and failures.
+You can query the [Event log index](/explore-analyze/alerting/alerts/event-log-index.md) to gather information on connector successes and failures.
 
 If you're using {{stack}}, then you can also use the [Task Manager health API](/deploy-manage/monitor/kibana-task-manager-health-monitoring.md) to monitor connector performance. However, if connectors fail to run, they will report as successful to Task Manager. The failure stats will not accurately depict connector failures.

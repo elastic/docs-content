@@ -19,11 +19,13 @@ The {{esql}} editor is available in the following areas of {{kib}}:
 
 - [**Discover**](/explore-analyze/discover/try-esql.md): Explore and analyze your data using {{esql}} queries, visualize results, and save your findings to dashboards.
 - [**Dashboards**](/explore-analyze/dashboards.md): Create {{esql}}-powered visualization panels and interactive controls.
-- [**Alerting**](/explore-analyze/alerts-cases/alerts/rule-type-es-query.md): Create alerting rules based on {{esql}} queries.
+- [**Alerting**](/explore-analyze/alerting/alerts/rule-type-es-query.md): Create alerting rules based on {{esql}} queries.
 - [**{{elastic-sec}} solution**](/solutions/security/esql-for-security.md): Use {{esql}} for threat hunting, detection rules, and investigation workflows.
 
-:::{tip}
 Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql
 :::
 
 
@@ -161,7 +163,7 @@ FROM my_index
 | WHERE custom_timestamp >= ?_tstart AND custom_timestamp < ?_tend
 ```
 
-You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions.md#esql-bucket) function to create auto-incrementing time buckets in {{esql}} visualizations. For example:
+You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/bucket.md) function to create auto-incrementing time buckets in {{esql}} visualizations. For example:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -171,7 +173,7 @@ FROM kibana_sample_data_logs
 
 ### Time ranges with WHERE [_where_command]
 
-You can also limit the time range using the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command and the [`NOW`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-now) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
+You can also limit the time range using the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command and the [`NOW`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions/now.md) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
 
 ```esql
 FROM kibana_sample_data_logs
