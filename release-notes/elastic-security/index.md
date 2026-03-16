@@ -45,7 +45,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes out-of-memory crashes and {{kib}} restarts caused by the gap auto-fill scheduler creating excessively large saved objects for rules with short intervals and long gaps [#254788]({{kib-pull}}254788).
 * Fixes an issue where the legacy `rules/prepackaged` endpoints returned 500 errors on Basic licenses when processing prebuilt rule packages that include {{ml}} rules [#253574]({{kib-pull}}253574).
 * Adds support for timestamp overrides to Timeline at the {{data-source}} level, allowing Timeline to use the {{data-source}}'s configured timestamp field instead of `@timestamp` [#251827]({{kib-pull}}251827).
-* Fixes an issue that would cause hotfix builds of {{elastic-defend}} to incorrectly report their version in Windows Security Center. For example, version 9.3.0+build202602051825 would show as 9.3.1.
+* Fixes an issue that would cause hotfix builds of {{elastic-defend}} to incorrectly report their version in Windows Security Center. 
 * Improves {{elastic-defend}} Linux trusted application handling by using Quark's trusted PID queue APIs for more consistent trusted PID synchronization.
 
 
