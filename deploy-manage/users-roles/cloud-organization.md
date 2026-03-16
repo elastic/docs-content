@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ess: ga
+  serverless: ga
 products:
   - id: cloud-hosted
 ---
@@ -29,7 +29,7 @@ If you're using {{ech}}, then you can also manage users and control access [at t
 ## Should I use organization-level or deployment-level SSO? [organization-deployment-sso] 
 
 ```{applies_to}
-ess: all
+ess: ga
 ```
 
 :::{include} _snippets/org-vs-deploy-sso.md

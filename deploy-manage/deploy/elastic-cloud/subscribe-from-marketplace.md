@@ -11,6 +11,8 @@ products:
 
 # Subscribe from a marketplace [ec-marketplaces]
 
+% updates todo
+
 You can subscribe to {{ecloud}} from a marketplace. Your subscription gets billed together with other services that you’re already using, and can contribute towards your spend commitment with cloud providers.
 
 Trial availability and duration can vary depending on the marketplace.

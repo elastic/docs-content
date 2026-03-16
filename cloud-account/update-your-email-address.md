@@ -2,9 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-update-email-address.html
 applies_to:
-  serverless: all
+  serverless: ga
   deployment:
-    ess: all
+    ess: ga
 products:
   - id: cloud-hosted
 ---
@@ -13,7 +13,7 @@ products:
 
 Each {{ecloud}} account has a primary email associated with it. By default, the primary email address is used to sign up for {{ecloud}} and to log in. If needed, you can change this primary email address.
 
-Your email address is used to uniquely identify you. It can’t be used for more than one {{ecloud}} account, whether that account is a trial account, a standard {{ecloud}} account, or a subscription account through a marketplace. An {{ecloud}} account can belong to only one organization at a time.
+Your email address is used to uniquely identify you. It can’t be used for more than one {{ecloud}} account, whether that account is a trial account, a standard {{ecloud}} account, or a subscription account through a marketplace. However, a single {{ecloud}} account can belong to [multiple organizations](/cloud-account/switch-organizations.md).
  
 ## Change your email address (native sign-in)
 
@@ -39,12 +39,15 @@ If your organization is associated with [Azure Marketplace](../deploy-manage/dep
 
 ## Sign up using an existing email address [sign-up-existing]
 
+% is this still needed at all?
+
 In some situations, you might want to create a new {{ecloud}} account using an email address that is already associated with an existing account. To sign up to {{ecloud}} using an email address associated with another {{ecloud}} account, you must remove the email address from your previous account and replace it with a new address.
+
+:::{note}
+You don't need to follow this procedure if you want to [join an additional organization](/cloud-account/join-or-leave-an-organization.md) or [create a new organization](/deploy-manage/cloud-organization/manage-multiple-organizations.md#create-a-new-organization). One account can belong to and own multiple organizations.
+:::
 
 1. Use your current email address (for example, `my.preferred.address@foobar.com`) to log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Follow the steps from one of the procedures on this page to update that email address to another email address, such as `my.alternate.address@gmail.com`.
 
-You can now use the email address from step 1 to do the following:
-
-* [Sign up for a new account](/deploy-manage/deploy/elastic-cloud/create-an-organization.md).
-* [Join an existing organization](/cloud-account/join-or-leave-an-organization.md).
+You can now use the email address from step 1 to [sign up for a new account](/deploy-manage/deploy/elastic-cloud/create-an-organization.md).
