@@ -83,23 +83,23 @@ Patterns listed **after** the exclusion are not affected by it (for example, in 
 
 The following examples assume an origin project with two linked projects: `linked-project-1` and `linked-project-2`.
 
-`*,-*`
-:   Matches all indices across all projects, then excludes all of them. The result is an empty scope.
-
 `*,-linked-project-1:*`
 :   Searches everything across all projects, then excludes all indices on the `linked-project-1` project. The search runs on the origin project and `linked-project-2` only.
 
 `*,linked-project-1:-my-index`
 :   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. All other indices on `linked-project-1` and all indices on the origin project and `linked-project-2` are still included.
 
-`*,-*,my-index`
-:   Matches all indices, then excludes all indices. Because the exclusion only affects patterns before it, the `my-index` pattern that follows is unaffected and `my-index` is still included in the search.
-
 `*,-my-index*,-logs`
 :   Searches everything, then applies two exclusion patterns. Indices matching `my-index*` and the `logs` index are excluded from the results.
 
-`*,-linked-project-1:*` and `linked-project-1:-*`
-:   These two expressions are functionally equivalent. In both cases, all indices on the `linked-project-1` project are excluded. The first form (`-linked-project-1:*`) requires a preceding inclusion pattern such as `*`, while the second form (`linked-project-1:-*`) can be used on its own.
+`*:linked-project-1:-*`
+:   Excludes all indices on the `linked-project-1` project. This is functionally equivalent to `*,-linked-project-1:*`.
+
+`*,-*`
+:   Matches all indices across all projects, then excludes all of them. The result is an empty scope.
+
+`*,-*,my-index`
+:   Matches all indices, then excludes all indices. Because the exclusion only affects patterns before it, the `my-index` pattern that follows is unaffected and `my-index` is still included in the search.
 
 ## Security
 
