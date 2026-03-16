@@ -454,4 +454,14 @@ Some {{ml}} features, like natural language processing (NLP), require you to dep
 
 ## {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
 
-Detailed install and configuration instructions are available in the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md).
+Installing the AI Assistant knowledge base content (Elastic documentation and Security Labs) requires network access to the artifact repository at `https://kibana-knowledge-base-artifacts.elastic.co`.
+
+In environments where outbound traffic must go through an HTTP proxy, you can configure {{kib}} to reach the artifact repository through the proxy by adding the following to `kibana.yml`:
+
+```yaml
+xpack.productDocBase.artifactRepositoryProxyUrl: "https://my-proxy-host:port"
+```
+
+{applies_to}`stack: ga 9.4+` The `xpack.productDocBase.artifactRepositoryProxyUrl` setting accepts HTTP and HTTPS URLs.
+
+For fully air-gapped environments where no external network access is available, refer to the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for instructions on deploying a local artifact repository.
