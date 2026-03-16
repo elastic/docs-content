@@ -42,7 +42,7 @@ The editor layout is composed of the following elements:
 | **Validation logs** | Shows validation successes and failures. Some common validation errors include: <br> - Invalid YAML syntax because of incorrect indentation or formatting <br> - Missing a required field or property (for example, `name`, `type`) <br> - The step type is unknown or doesn't match a valid action <br> - Invalid template syntax because of malformed template expression.|
 
 :::{tip}
-When viewing step output in the executions panel, click the **Copy** icon next to a step name to copy its full output path to your clipboard. For example, clicking copy on a step named `check_if_newer` copies `steps.check_if_newer.output.conditionResult`, which you can paste directly into your workflow YAML to reference that step's output.
+When viewing step output in the executions panel, click the **Copy** icon next to a step name to copy its full output path to your clipboard. For example, clicking **Copy** on a step named `check_if_newer` copies `steps.check_if_newer.output.conditionResult`, which you can paste directly into your workflow YAML to reference that step's output.
 :::
 
 ## Test runs and production runs [workflows-test-vs-production-runs]
