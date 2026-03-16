@@ -11,11 +11,11 @@ products:
 
 # Index basics
 
-An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. Behind the scenes, {{es}} divides each index into _shards_ and distributes them across the nodes in your cluster. This allows it to scale horizontally to handle large volumes of data. Replica shards provide fault tolerance, keeping your data available even when individual nodes fail.
+An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. You can store many independent datasets side by side. 
 
-To store a document, you add it to a specific index. To search, you target one or more indices and {{es}} searches all data within them and returns any matching documents. You can target your data by index name, through an [alias](/manage-data/data-store/aliases.md) that points to one or more indices or through a [data stream](/manage-data/data-store/data-streams.md) that routes requests to the appropriate backing indices.
+Behind the scenes, {{es}} divides each index into _shards_ and distributes them across the nodes in your cluster. The horizontal scaling of your _primary_ shard into _replicas_ shards across other nodes allows your index to handle large volumes of traffic. Replica shards provide fault tolerance, keeping your data available even when an individual node's response fails.
 
-You can store many independent datasets side by side, each in its own index, and search them individually or together.
+To store a document, you add it to a specific index. To search, you target one or more indices and {{es}} searches all data within them and returns any matching documents. You can target your data by index name, through an [alias](/manage-data/data-store/aliases.md) that points to one or more indices or through a [data stream](/manage-data/data-store/data-streams.md) that routes requests to the appropriate backing indices. While you interact with a data stream as a single named resource, the data stream a logical layer that organizes multiple backing indices where your data is physically stored.
 
 This page explains the core parts of an index (_documents_, _metadata fields_, and _mappings_), describes how {{es}} physically stores index data using _shards_, and highlights common design decisions.
 
@@ -32,25 +32,25 @@ In {{serverless-full}}:
 
 An index is made up of the following components:
 
-* [**Documents**](#elasticsearch-intro-documents-fields): The JSON objects that hold your data. Understanding their structure is essential for indexing data correctly.
-* [**Metadata fields**](#elasticsearch-intro-documents-fields-data-metadata): System-managed fields like `_index` and `_id` that appear in query results and API responses.
+* [**Documents**](#elasticsearch-intro-documents-fields): The JSON objects that hold your data, including system-managed metadata fields like `_index` and `_id`.
 * [**Mappings**](#elasticsearch-intro-documents-fields-mappings): Field-level definitions that control how data is indexed and queried. Understanding field types helps you write effective queries and avoid indexing problems.
+* [**Settings**](#index-settings): Index-level configuration such as shard count, replica count, and refresh interval that controls storage and performance behavior.
 
 ### Documents [elasticsearch-intro-documents-fields]
 
-{{es}} serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can create or have {{es}} auto-generate.
+{{es}} serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can create or have {{es}} auto-generate. An indexed document includes both document fields you define and system-managed metadata.
 
 A simple {{es}} document might look like this:
 
 ```js
 {
-  "_index": "my-first-elasticsearch-index",
-  "_id": "DyFpo5EBxE8fzbb95DOa",
-  "_version": 1,
+  "_index": "my-first-elasticsearch-index", <1>
+  "_id": "DyFpo5EBxE8fzbb95DOa", <1>
+  "_version": 1, <1>
   "_seq_no": 0,
   "_primary_term": 1,
   "found": true,
-  "_source": {
+  "_source": { <2>
     "email": "john@smith.com",
     "first_name": "John",
     "last_name": "Smith",
@@ -66,33 +66,12 @@ A simple {{es}} document might look like this:
   }
 }
 ```
-
-### Metadata fields [elasticsearch-intro-documents-fields-data-metadata]
-
-An indexed document includes both document fields you define and system-managed metadata. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are fields that describe the document and how {{es}} stores it. In {{es}}, metadata fields are prefixed with an underscore. For example:
-
-* `_index`: The name of the index where the document is stored.
-* `_id`: The document's ID. IDs must be unique per index.
-
-For example, an API response includes these metadata fields alongside the document body:
-
-```js
-{
-  "_index": "my-first-elasticsearch-index", <1>
-  "_id": "DyFpo5EBxE8fzbb95DOa", <1>
-  "_version": 1, <1>
-  "_source": { <2>
-    "email": "john@smith.com",
-    "first_name": "John"
-  }
-}
-```
-1. These metadata fields describe the document.
-2. The `_source` field contains the original document body as submitted.
+1. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system-managed fields prefixed with an underscore. `_index` identifies which index stores the document and `_id` is the document's unique identifier within that index.
+2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you define and control through [mappings](#elasticsearch-intro-documents-fields-mappings).
 
 ### Mappings and data types [elasticsearch-intro-documents-fields-mappings]
 
-Each index has a [mapping](/manage-data/data-store/mapping.md) that defines field types and indexing behavior. A mapping defines the [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
+Each index has a [mapping](/manage-data/data-store/mapping.md) that defines field data types and how field values are analyzed and stored. A mapping defines the [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
 
 For example, the following mapping defines field types for a few common data types:
 ```js
@@ -106,13 +85,25 @@ For example, the following mapping defines field types for a few common data typ
 }
 ```
 
+### Settings [index-settings]
+
+Each index has settings that control its storage and performance behavior. Settings are specified at index creation, either directly in the [create index request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be updated dynamically on a live index.
+
+Common settings include:
+
+* `index.number_of_shards`: The number of primary shards. Fixed at creation.
+* `index.number_of_replicas`: The number of replica copies per primary shard. Can be changed at any time.
+* `index.refresh_interval`: How often new data becomes searchable. Defaults to `1s`.
+
+For the full list of available settings, refer to [Index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md).
+
 ## How an index stores data
 
-When you create an index, {{es}} doesn't store all its documents in a single location. Instead, it divides the index into one or more _shards_ and distributes those shards across the nodes in your cluster. The primary purpose of shards is to allow an index to scale beyond what a single server could handle. The right number of shards depends on your data volume, query patterns, and cluster topology — there is no single correct answer.
+When you create an index, {{es}} doesn't store all its documents in a single location. Instead, it divides the index into one or more _shards_ and distributes those shards across the nodes in your cluster. Each shard is a self-contained [Apache Lucene](https://lucene.apache.org/) index with practical limits on how much data it can efficiently manage, so splitting data across multiple shards keeps individual shards performant. Distributing those shards across cluster nodes adds horizontal scaling and redundancy. The right number of shards depends on your data volume, query patterns, and cluster topology — there is no single correct answer. Refer to [shard sizing and distribution recommendations](/deploy-manage/production-guidance/optimize-performance/size-shards.md#sizing-shard-guidelines) for more information and best practices.
 
 You don't interact with shards directly when indexing or searching. Instead, you target the index by name and {{es}} routes the operation to the appropriate shards. However, the number and size of shards you configure affects performance and stability. Refer to [Common index design decisions](#common-index-design-decisions) for more information.
 
-Each shard is a self-contained instance of [Apache Lucene](https://lucene.apache.org/), the search library that powers {{es}}. A shard holds a subset of the index's documents and can independently handle indexing and search operations. Inside each shard, data is organized into immutable _segments_ that are written as documents are indexed. To learn how segments affect search availability, refer to [Near real-time search](/manage-data/data-store/near-real-time-search.md).
+A shard holds a subset of the index's documents and can independently handle indexing and search operations. Inside each shard, data is organized into immutable _segments_ that are written as documents are indexed. To learn how segments affect search availability, refer to [Near real-time search](/manage-data/data-store/near-real-time-search.md).
 
 There are two types of shards:
 
@@ -120,6 +111,7 @@ There are two types of shards:
 * **Replica shards**: Copies of primary shards that provide redundancy and serve read requests. You can adjust the number of replicas at any time using the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) setting.
 
 By distributing shards across multiple nodes, {{es}} can scale horizontally and continue operating even when individual nodes fail. For a detailed explanation of this distributed model, refer to [Clusters, nodes, and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
+To learn how {{es}} coordinates reads and writes across primary and replica shards, refer to [Reading and writing documents](/deploy-manage/distributed-architecture/reading-and-writing-documents.md).
 
 
 ## Common index design decisions
