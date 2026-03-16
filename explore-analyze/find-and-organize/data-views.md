@@ -152,35 +152,6 @@ Once you configure a {{data-source}} to use the {{ccs}} syntax, all searches and
 For more information, refer to [Excluding clusters or indicies from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
 
 
-### Use {{data-sources}} with {{cps}} [management-cross-project-search]
-```{applies_to}
-serverless: preview
-stack: unavailable
-```
-
-If your projects are configured for [{{cps}}](../../explore-analyze/cross-project-search.md), you can create a {{data-source}} that targets specific projects by using qualified expressions.
-
-Use this syntax:
-
-```ts
-<project_alias>:<target>
-```
-
-To query `logs-*` across two linked projects:
-
-```ts
-project_alpha:logs-*,project_beta:logs-*
-```
-
-To search only the origin project:
-
-```ts
-_origin:logs-*
-```
-
-For details about qualified expressions and project routing, refer to [Search in {{cps-init}}](../../explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) and [Project routing in {{cps-init}}](../../explore-analyze/cross-project-search/cross-project-search-project-routing.md).
-
-
 ## Delete a {{data-source}} [delete-data-view]
 
 When you delete a {{data-source}}, you cannot recover the associated field formatters, runtime fields, source filters, and field popularity data. Deleting a {{data-source}} does not remove any indices or data documents from {{es}}.
