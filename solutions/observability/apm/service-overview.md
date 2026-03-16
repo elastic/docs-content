@@ -17,8 +17,6 @@ Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) b
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/observability/service-health
-
-Use this skill to assess APM service health using latency, error rate, throughput, and dependencies.
 :::
 
 * Service details like service version, runtime version, framework, and APM agent name and version

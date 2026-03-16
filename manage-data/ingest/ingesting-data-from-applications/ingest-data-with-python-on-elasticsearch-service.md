@@ -20,9 +20,7 @@ This guide tells you how to get started with:
 If you are a Python application programmer who is new to the Elastic Stack, this content can help you get started more easily.
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-file-ingest
-
-Use this skill to ingest and transform CSV, JSON, Parquet, and NDJSON files into Elasticsearch.
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-ingest
 :::
 
 *Time required: 45 minutes*

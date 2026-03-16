@@ -23,8 +23,6 @@ Beyond the [core case functionality](/explore-analyze/cases.md), {{elastic-sec}}
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
-
-Use this skill to create and manage SOC cases, notes, and alert-to-case workflows.
 :::
 
 ## View case metrics [cases-view-metrics]

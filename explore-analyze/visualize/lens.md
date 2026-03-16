@@ -21,8 +21,6 @@ Once you select a {{data-source}}, you can build many types of visualizations by
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
-
-Use this skill to create and manage Kibana dashboards and Lens visualizations.
 :::
 
 With Lens, you can create the following visualization types:

@@ -28,8 +28,6 @@ These grammars have some limitations: they do not support tables, and can’t ru
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
-
-Use this skill to build Vega and Vega-Lite visualizations with Elasticsearch data in Kibana.
 :::
 
 :::{image} /explore-analyze/images/kibana-vega.png

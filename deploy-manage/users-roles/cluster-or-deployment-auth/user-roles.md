@@ -14,8 +14,6 @@ After a user is [authenticated](user-authentication.md), {{stack}} needs to dete
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authz
-
-Use this skill to manage Elasticsearch roles, users, role mappings, and fine-grained access controls.
 :::
 
 :::{tip}

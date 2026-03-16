@@ -18,8 +18,6 @@ The Alerts page is your central hub for triaging and investigating detection ale
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/alert-triage
-
-Use this skill to triage Elastic Security alerts, gather context, and classify threats.
 :::
 
 :::{image} /solutions/images/security-alert-page.png
