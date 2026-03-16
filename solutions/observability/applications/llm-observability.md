@@ -17,14 +17,14 @@ While LLMs hold incredible transformative potential, they also bring complex cha
 To keep your LLM-powered applications reliable, efficient, cost-effective, and easy to troubleshoot, Elastic provides a powerful LLM observability framework including key metrics, logs, and traces, along with pre-configured, out-of-the-box dashboards that deliver deep insights into model prompts and responses, performance, usage, and costs.
 Elastic’s end-to-end LLM observability is delivered through the following methods:
 
+- Metrics and logs ingestion for LLM APIs (via [Elastic integrations](integration-docs://reference/index.md))
+- APM tracing for LLM Models (via [instrumentation](opentelemetry://reference/index.md))
+
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/observability/llm-obs
 
 Use this skill to monitor LLM and agentic AI applications for performance, quality, and cost.
 :::
-
-- Metrics and logs ingestion for LLM APIs (via [Elastic integrations](integration-docs://reference/index.md))
-- APM tracing for LLM Models (via [instrumentation](opentelemetry://reference/index.md))
 
 ## LLM and agentic AI platform observability with Elastic integrations
 
