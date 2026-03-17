@@ -16,7 +16,7 @@ description: Find privilege requirements, predefined roles, and the authorizatio
 Learn about the access requirements for detection features, including:
 
 - **Privilege requirements**: Cluster, index, and {{kib}} privileges that your role needs to enable detections, manage rules, view and edit alerts, and more
-- **Predefined {{serverless-full}}  roles**: {{serverless-short}} roles with detection privileges
+- **Predefined {{serverless-full}} roles**: {{serverless-short}} roles with detection privileges
 - **Authorization model**: How rules inherit privileges from their last editor via API keys
 
 For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md).
@@ -56,7 +56,7 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `All` for the `Rules and Exceptions` feature and `All` for the `Alerts` feature 
+:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `All` for the `Rules and Exceptions` feature and `All` for the `Alerts` feature
     - {applies_to}`stack: ga =9.3` {applies_to}`serverless: ga` `All` for the `Rules, Alerts, and Exceptions` feature
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
@@ -93,7 +93,7 @@ Index privileges
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ::::{note}
-To manage rules with actions and connectors, you need additional privileges for the `Actions and Connectors` feature (`Management`> `Actions and Connectors`):
+To manage rules with actions and connectors, you need additional privileges for the `Actions and Connectors` feature (`Management` > `Actions and Connectors`):
 
 - `All`: Provides full access to rule actions and connectors.
 - `Read`: Allows you to edit rule actions and use existing connectors, but you cannot create new connectors.
@@ -103,12 +103,7 @@ To import rules with actions, you need at least `Read` privileges. To overwrite 
 
 ## Manage alerts
 
-Controls who can view and update detection alerts (for example, on the **Alerts** page, alert details flyout, rule details **Alerts** tab, **Alerts** tab in cases, and entity analytics).
-
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Alerts** feature (Security > Alerts):
-
-- `Read`: View alerts, open the alert details flyout, see alert tables, and view alert data in entity analytics (for example, risk contributions). No status changes, assignees, tags, or bulk actions.
-- `All`:** Everything you get with `Read`, plus: change alert statuses (open/closed/acknowledged), set assignees, add tags, and use bulk actions on alerts.
+Allows you to manage alerts.
 
 Cluster privileges
 :   None
@@ -122,7 +117,12 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Set the **Alerts** feature (Security > Alerts): **Read** to view alerts, flyouts, and tables (no status, assignee, tag, or bulk actions); **All** for everything in Read plus status changes, assignees, tags, and bulk actions. Alerts access can be granted independently from **Rules**—you can have Alerts read or edit without Rules access, or Rules access without Alerts access.
+:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Set the **Alerts** feature to **Read** to view alerts, flyouts, and tables (no status, assignee, tag, or bulk actions) Set it to **All** for everything in Read, plus status changes, assignees, tags, and bulk actions. 
+
+   ::::{note}
+   You can give a role access  to alerts only, rules only, or both, whichever fits your needs.
+   ::::
+
     - {applies_to}`stack: ga 9.3` `All` for the `Rules, Alerts, and Exceptions` feature
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
@@ -161,7 +161,7 @@ Index privileges
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ::::{important}
-To create the `.lists` and `.items` data streams in your space, visit the **Rules** page for each appropriate space. 
+To create the `.lists` and `.items` data streams in your space, visit the **Rules** page for each appropriate space.
 ::::
 
 

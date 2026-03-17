@@ -36,7 +36,7 @@ To install or run the risk scoring engine, you need the following:
 | Install the risk engine | `manage_index_templates`<br> `manage_transform`<br> `manage_ingest_pipelines` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 | Run the risk engine | `manage_transform` | N/A | **Read** for the **Security** feature |
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` To view alert-based risk contributions in entity details (for example, the **Alerts** category in the [entity risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary)), you need at least **Read** for the **Alerts** feature (**Read** lets you view alerts, flyouts, and tables; **All** lets you view and also change status, set assignees, add tags, and use bulk actions.). See [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#manage-alerts).
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` To view alert-based risk contributions in entity details (for example, the **Alerts** category in the [entity risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary)), you need at least **Read** for the **Alerts** feature (**Read** lets you view alerts, flyouts, and tables; **All** lets you view and also change status, set assignees, add tags, and use bulk actions). See [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#manage-alerts).
 
 
 ### Predefined roles [ers_roles]
