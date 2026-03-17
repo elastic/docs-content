@@ -16,9 +16,9 @@ products:
 
 Depending on your {{kib}} setup, to display and interact with data on the **Network** page’s map you might need to:
 
-* [Create {{kib}} data views](/solutions/security/explore/configure-network-map-data.md#kibana-index-pattern)
-* [Add geographical IP data to events](/solutions/security/explore/configure-network-map-data.md#geoip-data)
-* [Map your internal network](/solutions/security/explore/configure-network-map-data.md#private-network)
+* [Create {{kib}} data views](/solutions/security/advanced-entity-analytics/configure-network-map-data.md#kibana-index-pattern)
+* [Add geographical IP data to events](/solutions/security/advanced-entity-analytics/configure-network-map-data.md#geoip-data)
+* [Map your internal network](/solutions/security/advanced-entity-analytics/configure-network-map-data.md#private-network)
 
 ::::{note}
 To see source and destination connections lines on the map, you must configure `source.geo` and `destination.geo` ECS fields for your indices.
