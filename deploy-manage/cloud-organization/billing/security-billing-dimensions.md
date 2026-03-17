@@ -27,12 +27,12 @@ Your monthly bill is based on the capabilities you use. When you use Security An
 
 ## Endpoint Protection [security-billing-endpoint-protection]
 
-Endpoint Protection is an *optional* add-on to Security Analytics that provides endpoint protection and threat prevention. Endpoint Protection is available in two tiers of selected features to enable common endpoint security operations:
+Endpoint Protection is included with Security Analytics at no additional cost, providing endpoint protection and threat prevention for all your endpoints. Endpoint Protection is available in two tiers of selected features to enable common endpoint security operations:
 
 * **Endpoint Protection Essentials** — Includes robust protection against malware, ransomware, and other malicious behaviors.
 * **Endpoint Protection Complete** — Adds endpoint response actions and advanced policy management.
 
-You pay based on the number of protected endpoints configured with the {{elastic-defend}} integration. Logs, events, and alerts from these endpoints are billed using the **Ingest** and **Retention** pricing. If you're using {{elastic-defend}} solely for data collection (without Endpoint Essentials or Complete add-ons), endpoints do not count towards billing. In this case, you're only billed for data ingestion and retention, and you can configure event collection and telemetry in the policy without enabling protections. 
+Endpoint Protection is enabled by default for all {{sec-serverless}} projects without any additional per-endpoint charge. Logs, events, and alerts from protected endpoints are billed using the **Ingest** and **Retention** pricing. You can configure event collection and telemetry in the policy to control your data volume. 
 
 ## Cloud Protection [security-billing-cloud-protection]
 
