@@ -75,7 +75,7 @@ For most deployments, we recommend creating a dedicated **overview project** tha
 
 In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches and dashboards from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other. 
 
-TODO add diagram
+![Overview project architecture for cross-project search](images/serverless-cross-project-search-arch.svg)
 
 The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup (for example, isolated projects stay isolated).
 
