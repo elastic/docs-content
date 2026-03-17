@@ -26,6 +26,30 @@ Agent Builder features a built-in [Threat Hunting agent](/explore-analyze/ai-fea
 
 By default it includes the [platform core tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#platform-core-tools) and [security tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#security-tools). You can [clone the agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) to create a version with access to additional built-in or custom tools. To learn more about the available tools, refer to [](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
 
+## Attach a detection rule to the AI Agent
+
+```{applies_to}
+stack: ga 9.4
+serverless:
+  security: ga
+```
+
+You can attach a detection rule to the AI Agent so you can ask questions about it, get suggestions for improving rule fields, or request an appropriate investigation guide—without copying and pasting rule content between the UI and the chat.
+
+Use **Add to chat** to attach the current rule to the AI Agent from any of these places:
+
+- **Rule details**: Open a rule from the [Detection rules (SIEM)](/solutions/security/detect-and-alert/manage-detection-rules.md) list, then use **Add to chat** on the rule details page.
+- **Rule editing**: While [editing a rule](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-single-rule), use **Add to chat** to send the rule you are editing to the agent.
+- **Rule creation**: While [creating a rule](/solutions/security/detect-and-alert/using-the-rule-ui.md), use **Add to chat** to send the rule you are building to the agent.
+- **Alerts flyout**: Open an alert and expand the rule summary in the flyout, then use **Add to chat** to attach that rule to the agent.
+- **Alerts table rule flyout**: From the alerts table, open the rule flyout for an alert and use **Add to chat**.
+
+The agent uses the attached rule as context and can help with detection intent, query logic, MITRE ATT&CK coverage, timing and scheduling, rule metadata quality, and investigation guide suggestions.
+
+:::{note}
+The agent only has access to the fields defined in the rule. It does not retrieve [exception lists](/solutions/security/detect-and-alert/add-manage-exceptions.md); rules reference exceptions by ID only.
+:::
+
 ## Use Agent Builder and Workflows together
 
 [Workflows](/explore-analyze/workflows.md) is an automation engine built into the Elastic platform. You can define workflows declaratively in YAML to create deterministic, event-driven automation, without building custom integrations or switching context from your Elastic environment. Combined with Agent Builder, Workflows enable you to:

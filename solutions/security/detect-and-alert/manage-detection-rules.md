@@ -68,6 +68,11 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 3. The **Edit rule settings** view opens, where you can modify the [rule's settings](/solutions/security/detect-and-alert/using-the-rule-ui.md). To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon {icon}`bell`.
 4. Click **Save changes**.
 
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+From the rule details page or the **Edit rule settings** view, you can use **Add to chat** to attach the rule to the AI Agent for analysis and suggestions. Refer to [Attach a detection rule to the AI Agent](/solutions/security/ai/agent-builder/agent-builder.md#attach-a-detection-rule-to-the-ai-agent).
+:::
+
 ### Bulk edit rule settings [bulk-edit-rules]
 
 Use bulk editing to update settings on multiple rules simultaneously. Rules that can't be modified are automatically skipped, for example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
