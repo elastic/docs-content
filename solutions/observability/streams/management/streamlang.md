@@ -20,7 +20,7 @@ You can write Streamlang directly using the [YAML editing mode](./extract.md#str
 
 ## Structure [streams-streamlang-structure]
 
-A Streamlang configuration is a YAML document with a single top-level `steps` array. Each step is either a processor (an `action` block) or a [condition block](#streams-streamlang-condition-blocks):
+A Streamlang configuration is a YAML document with a single top-level `steps` array. Each step is either a [processor](#streams-streamlang-processors) (an `action` block) or a [`condition` block](#streams-streamlang-condition-blocks):
 
 ```yaml
 steps:
@@ -50,7 +50,7 @@ All processors support the following common options:
 | --- | --- | --- |
 | `description` | string | A human-readable description of the processor. |
 | `ignore_failure` | boolean | When `true`, document processing continues even if this processor fails. |
-| `where` | [condition](#streams-streamlang-conditions) | A condition that must be met for the processor to run. |
+| `where` | [condition](#streams-streamlang-conditions) | A condition that the processor must meet to run. |
 
 The following table lists all available processors. Refer to the individual processor pages for YAML parameters and examples.
 
@@ -168,7 +168,7 @@ where:
 
 ## Condition blocks [streams-streamlang-condition-blocks]
 
-Condition blocks group processors that should only run when a condition is met. Use a `condition` step with nested `steps`:
+Condition blocks group processors that should only run when they meet a condition. Use a `condition` step with nested `steps`:
 
 ```yaml
 steps:
@@ -215,4 +215,4 @@ For [wired streams](../wired-streams.md), fields must follow OTel-compatible nam
 
 The following special fields are allowed without a namespace prefix: `@timestamp`, `observed_timestamp`, `trace_id`, `span_id`, `severity_text`, `severity_number`, `event_name`, `body`, and `body.text`.
 
-System-managed fields like `stream.name` are reserved and processors cannot modify them.
+Streams reserves system-managed fields like `stream.name` and processors cannot modify them.
