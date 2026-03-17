@@ -66,7 +66,7 @@ Acts on: **notifications, after alerts are created and stored**
 
 *"Don't trigger any actions right now. I'll review later."*
 
-Temporarily pause all of a rule's actions—including notifications (emails, Slack messages, webhooks), ticket creation, and other automated responses—without affecting rule execution or alert creation. Alerts generated during a snooze period are stored normally and visible in the Alerts UI. Snoozing expires automatically or can be canceled manually. For space-wide pausing, use a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
+Temporarily pause all of a rule's actions—including notifications (emails, Slack messages, webhooks), ticket creation, and other automated responses—without affecting rule execution or alert creation. Alerts generated during a snooze period are stored normally and visible in the Alerts UI. Snoozing expires automatically or can be canceled manually. For space-wide pausing, use a [maintenance window](/explore-analyze/alerting/kibana-alerting-v1/maintenance-windows-v1.md).
 
 Refer to [Snooze rule actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) for more guidance.
 

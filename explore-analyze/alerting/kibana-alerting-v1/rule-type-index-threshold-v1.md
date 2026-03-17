@@ -63,7 +63,7 @@ You can further refine the conditions under which actions run by specifying that
 
 ## Add action variables [action-variables-index-threshold]
 
-The following action variables are specific to the index threshold rule. You can also specify [variables common to all rules](rule-action-variables.md).
+The following action variables are specific to the index threshold rule. You can also specify [variables common to all rules](rule-action-variables-v1.md).
 
 `context.conditions`
 :   A description of the threshold condition. Example: `count greater than 4`

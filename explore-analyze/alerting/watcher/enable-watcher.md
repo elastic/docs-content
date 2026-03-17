@@ -10,7 +10,7 @@ products:
 # Enable Watcher [enable-watcher]
 
 ::::{note}
-If you are looking for Kibana alerting, check [Alerting](../../../explore-analyze/alerting.md).
+If you are looking for Kibana alerting, check [Alerting](../../../explore-analyze/alerting-overview.md).
 ::::
 
 Watcher can be enabled when configuring your cluster. You can run Alerting on a separate cluster from the cluster whose data you are actually watching.
@@ -23,7 +23,7 @@ To enable Watcher on a cluster, you may first need to perform one or several of 
 
 * To receive default Elasticsearch Watcher alerts (cluster status, nodes changed, version mismatch), you need to have monitoring enabled to send to the Admin email address specified in Kibana. To enable this, go to **Advanced Settings > Admin email**.
 
-To learn more about Kibana alerting and how to use it, check [Alerting and Actions](../../../explore-analyze/alerting.md).
+To learn more about Kibana alerting and how to use it, check [Alerting and Actions](../../../explore-analyze/alerting-overview.md).
 
 ## Send alerts by email [watcher-allowlist]
 

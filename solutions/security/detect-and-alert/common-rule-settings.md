@@ -215,7 +215,7 @@ Host isolation involves quarantining a host from the network to prevent further 
 You can use [mustache syntax](http://mustache.github.io/) to add variables to notification messages. The action frequency you select determines the available variables.
 
 ::::{note}
-Refer to [Action frequency: Summary of alerts](/explore-analyze/alerting/alerts/rule-action-variables.md#alert-summary-action-variables) to learn about additional variables that can be passed if the rule's action frequency is **Summary of alerts**.
+Refer to [Action frequency: Summary of alerts](/explore-analyze/alerting/kibana-alerting-v1/rule-action-variables-v1.md#alert-summary-action-variables) to learn about additional variables that can be passed if the rule's action frequency is **Summary of alerts**.
 ::::
 
 ### Variables for all rules [all-rule-variables]

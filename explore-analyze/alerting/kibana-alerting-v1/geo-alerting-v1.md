@@ -59,7 +59,7 @@ You can pass rule values to an action to provide contextual details. To view the
 :screenshot:
 :::
 
-The following action variables are specific to the tracking containment rule. You can also specify [variables common to all rules](rule-action-variables.md).
+The following action variables are specific to the tracking containment rule. You can also specify [variables common to all rules](rule-action-variables-v1.md).
 
 `context.containingBoundaryId`
 :   The identifier for the boundary containing the entity. This value is not set for recovered alerts.
