@@ -11,7 +11,7 @@ products:
 
 # View and manage alerts in {{kib}} [view-alerts]
 
-When the conditions of a rule are met, it creates an alert. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [Alerting](../alerts.md).
+When the conditions of a rule are met, it creates an alert. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [Alerting](../kibana-alerting-v1.md).
 
 Manage alerts from the following places:
 
@@ -51,7 +51,7 @@ Alternatively, view those alerts in the [{{security-app}}](../../../solutions/se
 
 To get more information about a specific alert, click the action menu icon {icon}`boxes_vertical` and select **View alert details** in either **{{stack-manage-app}} > Alerts** or **{{rules-ui}}**. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, there is information such as the expected and actual threshold values and a summarized reason for the alert.
 
-If an alert is affected by a maintenance window, the alert details include its identifier. For more information about their impact on alert notifications, refer to [Maintenance windows](maintenance-windows.md).
+If an alert is affected by a maintenance window, the alert details include its identifier. For more information about their impact on alert notifications, refer to [Maintenance windows](maintenance-windows-v1.md).
 
 ## Alert statuses [alert-status]
 

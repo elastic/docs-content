@@ -39,7 +39,7 @@ Actions run long after the status of a rule changes, sending a notification of t
 
 Rules and actions run as background tasks by each {{kib}} instance at a default rate of ten tasks every three seconds. When diagnosing issues related to alerting, focus on the tasks that begin with `alerting:` and `actions:`.
 
-Alerting tasks always begin with `alerting:`. For example, the `alerting:.index-threshold` tasks back the [index threshold stack rule](rule-type-index-threshold.md). Action tasks always begin with `actions:`. For example, the `actions:.index` tasks back the [index action](kibana://reference/connectors-kibana/index-action-type.md).
+Alerting tasks always begin with `alerting:`. For example, the `alerting:.index-threshold` tasks back the [index threshold stack rule](rule-type-index-threshold-v1.md). Action tasks always begin with `actions:`. For example, the `actions:.index` tasks back the [index action](kibana://reference/connectors-kibana/index-action-type.md).
 
 For more details on monitoring and diagnosing tasks in Task Manager, refer to [Health monitoring](../../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md).
 
