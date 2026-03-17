@@ -94,7 +94,7 @@ Additional fields specific to {{es}} environment may be added.
 
 In addition to the fields listed above, each query language may include fields specific to it, prefixed with `elasticsearch.querylog.`.
 
-### Fields specific to Query DSL (`dsl`)
+### Fields specific to Query DSL
 
 - `search.total_count`: The “total hits” value, as reported by [the search response](/solutions/search/the-search-api.md). 
 - `search.total_count_partial`:  Set to `true` in case the total count does not reflect the full number of matches for some reason (like [`track_total_hits` limitation](/solutions/search/the-search-api.md#track-total-hits)). 
