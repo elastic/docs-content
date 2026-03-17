@@ -21,6 +21,7 @@ We have collected the most common known problems and listed them here. If your p
 * [{{agent}} enrollment fails on the host with `x509: certificate signed by unknown authority` message](#agent-enrollment-certs)
 * [{{agent}} enrollment fails on the host with `x509: cannot validate certificate for x.x.x.x because it doesn't contain any IP SANs` message](#es-enrollment-certs)
 * [{{agent}} enrollment fails on the host with `Client.Timeout exceeded` message](#agent-enrollment-timeout)
+* [{{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message](#agent-enrollment-dialing)
 * [{{agent}} fails to enroll with {{fleet-server}} running on localhost](#mac-file-sharing)
 * [{{agent}} hangs while unenrolling](#agent-hangs-while-unenrolling)
 * [{{agent}} is automatically unenrolled after failed check-ins with 401 errors](#agent-auto-unenroll-401) (Deprecated 9.1)
@@ -132,6 +133,26 @@ To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance.
 ```txt
 fail to enroll: fail to execute request to Fleet Server:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
+
+### {{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message
+
+{{Agent}} may fail to install on a Windows environment due to port conflicts and file locks
+
+```txt
+Restart attempt 2 failed: 'rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified.
+```
+
+1. **Resolve Port Conflicts**
+   - Check for any processes using port 6789 or 6790 with:
+     ```bash
+     netstat -ano | findstr :6789
+     netstat -ano | findstr :6790
+     ```
+    This will return the PID of the APP concerned then you can identify it via
+    ```bash
+    tasklist /fi "pid eq xxxx"
+     ```
+   - If a conflict is found, update the `elastic-agent.yml` to bind on a different port using `agent.grpc.port`, such as 6790.
 
 Here are several steps to help you troubleshoot the problem.
 
