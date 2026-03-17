@@ -23,7 +23,7 @@ Alerting enables you to define *rules*, which detect complex conditions within d
 :::
 
 ::::{important}
-To make sure you can access alerting and actions, see the [setup and prerequisites](alerting-setup.md#alerting-prerequisites) section.
+To make sure you can access alerting and actions, see the [setup and prerequisites](alerting-setup-v1.md#alerting-prerequisites) section.
 
 ::::
 
