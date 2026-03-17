@@ -63,7 +63,9 @@ The scope controls which projects receive the search request, while _filtering_ 
 
 You can adjust the broad {{cps-init}} default by setting a narrower {{cps}} scope for each space. This setting determines the _default_ search scope for all users in that space. Users can override the default by setting scope on a per-query basis. 
 
-Space settings are managed in {{kib}}. To open space settings, click **Manage spaces** at the top of the **{{cps-cap}}** page. Select the space you want to configure.  
+Space settings are managed in {{kib}}. 
+
+1. To open space settings, click **Manage spaces** at the top of the **{{cps-cap}}** page. Select the space you want to configure.  
 
 % ::::{important}
 % If you don't adjust the default search scope, all searches, dashboards
@@ -71,9 +73,11 @@ Space settings are managed in {{kib}}. To open space settings, click **Manage sp
 % **every** linked project.
 % ::::
 
-In the general space settings, find the **{{cps-cap}}** panel and set the default scope for the space:
+2. In the general space settings, find the **{{cps-cap}}** panel and set the default scope for the space:
    - **All projects:** (default) Searches run across the origin project and all linked projects.
    - **This project:**  Searches run only against the origin project's data.
+
+3. Click **Apply changes** to save the scope setting.
 
 % (not yet) - **Specific projects:** Select individual linked projects to include in the default scope.
 
