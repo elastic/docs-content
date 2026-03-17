@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Understand how logsdb index mode affects alerts, rule actions, and runtime fields in Elastic Security.
 ---
 
 # Using logsdb index mode with Elastic Security [detections-logsdb-index-mode-impact]
