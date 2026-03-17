@@ -232,6 +232,7 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
       - file: ai-features/manage-access-to-ai-assistant.md
+      - file: ai-features/agent-skills.md
       - file: ai-features/llm-guides/llm-connectors.md
         children:
           - file: ai-features/llm-guides/connect-to-azure-openai.md

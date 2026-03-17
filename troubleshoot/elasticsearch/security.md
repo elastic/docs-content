@@ -10,6 +10,10 @@ products:
 
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-security-troubleshooting
+:::
+
 * [](security/security-trb-settings.md)
 * [](security/security-trb-roles.md)
 * [](security/security-trb-extraargs.md)
