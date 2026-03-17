@@ -134,7 +134,7 @@ To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance.
 fail to enroll: fail to execute request to Fleet Server:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
 
-### {{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message
+### {{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message [agent-enrollment-dialing]
 
 {{Agent}} may fail to install on a Windows environment due to port conflicts and file locks
 
