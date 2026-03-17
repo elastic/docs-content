@@ -11,7 +11,6 @@ products:
 # Cross-cluster search [modules-cross-cluster-search]
 
 **{{ccs-cap}}** lets you run a single search request against one or more remote clusters. For example, you can use a {{ccs}} to filter and analyze log data stored on clusters in different data centers.
-For {{serverless-full}} projects, use [{{cps-cap}}](/explore-analyze/cross-project-search.md) instead of {{ccs}}.
 
 
 ## Supported APIs [ccs-supported-apis]
