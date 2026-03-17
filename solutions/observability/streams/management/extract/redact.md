@@ -43,6 +43,5 @@ In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the redact pr
 - action: redact
   from: body.message
   patterns:
-    - "%{IP:client_ip}"
-    - "%{EMAILADDRESS:email}"
+    - "%{IP:ip_address}"
 ```

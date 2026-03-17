@@ -36,6 +36,6 @@ In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the math proc
 
 ```yaml
 - action: math
-  expression: "attributes.bytes / attributes.duration"
-  to: attributes.throughput
+  expression: "attributes.duration_ms / 1000"
+  to: attributes.duration_s
 ```

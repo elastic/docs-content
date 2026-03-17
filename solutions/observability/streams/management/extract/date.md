@@ -69,17 +69,13 @@ In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the date proc
 | `from` | string | Yes | Source field containing the date string. |
 | `formats` | string[] | Yes | Date formats to try, in order (for example, `ISO8601`, `UNIX`, or a Java time pattern). |
 | `to` | string | No | Target field for the parsed date. Defaults to `@timestamp`. |
-| `output_format` | string | No | Format for the output date string. Must be a valid Java time pattern. |
 | `timezone` | string | No | Timezone to use when parsing. Defaults to `UTC`. |
-| `locale` | string | No | Locale to use when parsing month names or weekdays. |
+| `locale` | string | No | Locale to use when parsing month names or weekdays. Defaults to `ENGLISH` |
+| `output_format` | string | No | Format for the output date string. Must be a valid Java time pattern. |
 
 ```yaml
 - action: date
   from: attributes.timestamp
   formats:
-    - "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-    - "yyyy-MM-dd HH:mm:ss"
-  to: attributes.parsed_time
-  output_format: "yyyy-MM-dd"
-  timezone: "America/New_York"
+    - ISO8601
 ```

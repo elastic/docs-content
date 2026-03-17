@@ -37,5 +37,4 @@ In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the lowercase
 ```yaml
 - action: lowercase
   from: attributes.method
-  to: attributes.method_lower
 ```

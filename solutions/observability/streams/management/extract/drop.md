@@ -35,10 +35,6 @@ In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the drop docu
 
 The `drop_document` processor has no additional parameters beyond the common options. Use a `where` [condition](../streamlang.md#streams-streamlang-conditions) to specify when documents should be dropped.
 
-:::{warning}
-If no condition is set, the default `always` condition drops every document.
-:::
-
 ```yaml
 - action: drop_document
   where:

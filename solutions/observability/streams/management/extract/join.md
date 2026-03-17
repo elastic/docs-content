@@ -39,8 +39,8 @@ In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the join proc
 ```yaml
 - action: join
   from:
-    - attributes.first_name
     - attributes.last_name
-  delimiter: " "
+    - attributes.first_name
+  delimiter: ","
   to: attributes.full_name
 ```

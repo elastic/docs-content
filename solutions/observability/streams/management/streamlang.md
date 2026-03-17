@@ -14,13 +14,13 @@ products:
 ---
 # Streamlang reference [streams-streamlang-reference]
 
-Streamlang is a JSON DSL for defining stream processing and routing logic. You can write Streamlang directly using the [YAML editing mode](./extract.md#streams-editing-yaml-mode) in the **Processing** tab, or use the [interactive mode](./extract.md#streams-editing-interactive-mode) which generates Streamlang behind the scenes.
+Streamlang is a JSON DSL for defining stream processing and routing logic. Streamlang provides a consistent processing interface that can be transpiled to multiple execution targets, including {{es}} ingest pipelines and ES|QL. This allows processing to run at ingest time or query time without rewriting rules.
 
-Streamlang provides a consistent processing interface that can be transpiled to multiple execution targets, including {{es}} ingest pipelines and ES|QL. This allows processing to run at ingest time or query time without rewriting rules.
+You can write Streamlang directly using the [YAML editing mode](./extract.md#streams-editing-yaml-mode) in the **Processing** tab, or use the [interactive mode](./extract.md#streams-editing-interactive-mode) which generates Streamlang behind the scenes.
 
 ## Structure [streams-streamlang-structure]
 
-A Streamlang configuration is a YAML document with a single top-level `steps` array. Each step is either a processor (an `action` block) or a [condition block](#streams-streamlang-condition-blocks) (a `condition` block with nested steps):
+A Streamlang configuration is a YAML document with a single top-level `steps` array. Each step is either a processor (an `action` block) or a [condition block](#streams-streamlang-condition-blocks):
 
 ```yaml
 steps:
@@ -38,7 +38,7 @@ steps:
           # nested processor
 ```
 
-Steps run in order. Each processor transforms the document, and the result is passed to the next step.
+Steps run in order. Each processor transforms the document, and passes the result to the next step.
 
 ## Processors [streams-streamlang-processors]
 
@@ -78,7 +78,7 @@ The following table lists all available processors. Refer to the individual proc
 
 ## Conditions [streams-streamlang-conditions]
 
-Conditions are Boolean expressions used to control when processors run and how data is routed. They appear in `where` clauses on processors, in [condition blocks](#streams-streamlang-condition-blocks), and in stream [partitioning](./partitioning.md).
+Conditions are Boolean expressions that control when processors run and how data is routed. They appear in `where` clauses on processors, in [condition blocks](#streams-streamlang-condition-blocks), and in stream [partitioning](./partitioning.md).
 
 ### Comparison operators [streams-streamlang-comparison-operators]
 
@@ -183,7 +183,7 @@ steps:
           from: attributes.debug_info
 ```
 
-Condition blocks can be nested for complex logic:
+You can nest condition blocks for complex logic:
 
 ```yaml
 steps:
@@ -215,70 +215,4 @@ For [wired streams](../wired-streams.md), fields must follow OTel-compatible nam
 
 The following special fields are allowed without a namespace prefix: `@timestamp`, `observed_timestamp`, `trace_id`, `span_id`, `severity_text`, `severity_number`, `event_name`, `body`, and `body.text`.
 
-System-managed fields like `stream.name` are reserved and cannot be modified by processors.
-
-## Examples [streams-streamlang-examples]
-
-### Parse and enrich web server logs [streams-streamlang-example-webserver]
-
-```yaml
-steps:
-  - action: grok
-    from: body.message
-    patterns:
-      - "%{IP:attributes.client_ip} - %{DATA:attributes.user} \\[%{HTTPDATE:attributes.timestamp}\\] \"%{WORD:attributes.method} %{URIPATHPARAM:attributes.path} HTTP/%{NUMBER:attributes.http_version}\" %{NUMBER:attributes.status} %{NUMBER:attributes.bytes}"
-  - action: date
-    from: attributes.timestamp
-    formats:
-      - "dd/MMM/yyyy:HH:mm:ss Z"
-  - action: convert
-    from: attributes.status
-    type: integer
-  - action: convert
-    from: attributes.bytes
-    type: long
-  - action: remove
-    from: attributes.timestamp
-    ignore_missing: true
-```
-
-### Conditionally tag and drop documents [streams-streamlang-example-conditional]
-
-```yaml
-steps:
-  - condition:
-      field: attributes.level
-      eq: DEBUG
-      steps:
-        - action: drop_document
-  - condition:
-      and:
-        - field: attributes.level
-          eq: ERROR
-        - field: attributes.service
-          eq: payments
-      steps:
-        - action: append
-          to: attributes.tags
-          value:
-            - critical
-            - pager
-        - action: set
-          to: attributes.priority
-          value: 1
-```
-
-### Redact sensitive data [streams-streamlang-example-redact]
-
-```yaml
-steps:
-  - action: redact
-    from: body.message
-    patterns:
-      - "%{EMAILADDRESS:email}"
-      - "%{IP:ip_address}"
-  - action: replace
-    from: attributes.auth_header
-    pattern: "Bearer .+"
-    replacement: "Bearer [REDACTED]"
-```
+System-managed fields like `stream.name` are reserved and processors cannot modify them.

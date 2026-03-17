@@ -48,6 +48,6 @@ When using `convert` inside a condition (`where` block), you must set a `to` fie
 ```yaml
 - action: convert
   from: attributes.status_code
-  type: integer
+  type: string
   to: attributes.status_code_int
 ```
