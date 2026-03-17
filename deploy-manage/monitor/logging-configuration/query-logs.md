@@ -103,7 +103,7 @@ In addition to the fields listed above, each query language may include fields s
 
 - `esql.profile.*.took`: {{esql}} query profiling metrics, in nanoseconds
 
-### Example log entry
+## Example log entry
 
 Query DSL:
 
