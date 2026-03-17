@@ -18,10 +18,10 @@ This overview explains how {{cps}} works, including project linking and security
 For prerequisites, compatibility requirements, architecture planning, and scope defaults, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md) in **Deploy and manage**.
 For details on how search, tags, and project routing work in {{cps-init}}, refer to the following pages:
 
-* [Link projects for {{cps}}](/explore-analyze/cross-project-search/cross-project-search-link-projects.md): step-by-step instructions for linking projects in the {{ecloud}} UI.
-* [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md): learn how search expressions, search options, and index resolution work.
-* [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md): learn about predefined and custom project tags and how to use them in queries.
-* [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): learn how to route searches to specific projects based on tag values.
+* [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md): Learn how search expressions, search options, and index resolution work.
+* [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md): Learn about predefined and custom project tags and how to use them in queries.
+* [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): Learn how to route searches to specific projects based on tag values.
+
 
 ## {{cps-cap}} as the default behavior for linked projects
 
@@ -45,7 +45,7 @@ When you search from an origin project, the query runs against its linked projec
 ::::{include} /deploy-manage/_snippets/cps-bidirectional-note.md
 ::::
 
-You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/explore-analyze/cross-project-search/cross-project-search-link-projects.md).
+You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md).
 
 ### Project ID and aliases
 
