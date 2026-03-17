@@ -26,7 +26,7 @@ Manage alerts from the following places:
 :::
 
 ::::{note}
-You must have the appropriate {{kib}} {{alert-features}} and index privileges to view alerts. Refer to [Alerting security requirements](alerting-setup.md#alerting-security).
+You must have the appropriate {{kib}} {{alert-features}} and index privileges to view alerts. Refer to [Alerting security requirements](alerting-setup-v1.md#alerting-security).
 
 ::::
 
@@ -58,14 +58,14 @@ If an alert is affected by a maintenance window, the alert details include its i
 There are four common alert statuses:
 
 `active`
-:   The conditions for the rule are met. If the rule has [actions](create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. 
+:   The conditions for the rule are met. If the rule has [actions](create-manage-rules-v1.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. 
 
 `flapping`
 
-:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they are suppressed. Refer to [Alert flapping](create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
+:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they are suppressed. Refer to [Alert flapping](create-manage-rules-v1.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
 
 `recovered`
-:   The conditions for the rule are no longer met. If the rule has [recovery actions](create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
+:   The conditions for the rule are no longer met. If the rule has [recovery actions](create-manage-rules-v1.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
 
 
     An active alert changes to recovered if the conditions for the rule that generated it are no longer met. 
@@ -102,7 +102,7 @@ You can only mute individual alerts. To mute an alert, find the **Alerts** manag
 
 To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
 
-To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
+To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules-v1.md#controlling-rules).
 ::::
 
 ## Apply and filter alert tags [tag-alerts]

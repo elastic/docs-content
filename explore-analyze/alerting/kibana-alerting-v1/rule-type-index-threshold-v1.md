@@ -132,7 +132,7 @@ In this example, you will use the {{kib}} [sample weblog data set](/explore-anal
        :screenshot:
        :::
 
-        The unique action variables that you can use in the notification are listed in [Add action variables](#action-variables-index-threshold). For more information, refer to [Actions](create-manage-rules.md#defining-rules-actions-details) and [*Connectors*](../../../deploy-manage/manage-connectors.md).
+        The unique action variables that you can use in the notification are listed in [Add action variables](#action-variables-index-threshold). For more information, refer to [Actions](create-manage-rules-v1.md#defining-rules-actions-details) and [*Connectors*](../../../deploy-manage/manage-connectors.md).
 
     9. Save the rule.
 

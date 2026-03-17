@@ -154,7 +154,7 @@ Elasticsearch query rule '{{rule.name}}' is active:
 - Link: {{context.link}}
 ```
 
-Rules use rule action variables and Mustache templates to pass contextual details into the alert notifications. There is a set of [variables common to all rules](create-manage-rules.md#defining-rules-actions-variables) and a set that is specific to this rule. To view the list of variables in {{kib}}, click the "add rule variable" button. For example:
+Rules use rule action variables and Mustache templates to pass contextual details into the alert notifications. There is a set of [variables common to all rules](create-manage-rules-v1.md#defining-rules-actions-variables) and a set that is specific to this rule. To view the list of variables in {{kib}}, click the "add rule variable" button. For example:
 
 :::{image} /explore-analyze/images/kibana-es-query-rule-action-variables.png
 :alt: Passing rule values to an action
