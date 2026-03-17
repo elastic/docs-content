@@ -81,7 +81,7 @@ Define the relevant secure settings in each node’s keystore before starting th
 The following list contains the available S3 client settings. Those that must be stored in the keystore are marked as "secure" and are **reloadable**; the other settings belong in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
 
 `region`
-:   Specifies the region to use. When set, determines the signing region and regional endpoint to use, unless the endpoint is overridden via the `endpoint` setting. If not set, {{es}} will attempt to determine the region automatically using the AWS SDK.
+:   Specifies the region to use. When set, determines the region to use to sign requests made to the service. Also controls the regional endpoint to which {{es}} sends requests, unless you specify a particular endpoint using the `endpoint` setting. If not set, {{es}} will attempt to determine the region automatically using the AWS SDK. {{es}} must use the correct signing region because this value is required by the S3 protocol. If you are using an [S3-compatible service](#repository-s3-compatible-services) then it is unlikely the AWS SDK will be able to determine the correct region name automatically, so you must set it manually. Your service's region name is under the control of your service administrator and need not refer to a real AWS region, but the value to which you configure this setting must match the region name your service expects.
 
 `access_key` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   An S3 access key. If set, the `secret_key` setting must also be specified. If unset, the client will use the instance or container role instead.
