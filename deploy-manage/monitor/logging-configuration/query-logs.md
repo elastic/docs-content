@@ -21,13 +21,12 @@ The following query types are supported:
 
 ## Enable query logging
 
-By default, query logging is turned off. To enable logging, set the `elasticsearch.activitylog.enabled` property to `true` in the `elasticsearch.yml` configuration file.
-
-Alternatively, use the [settings API]({{es-apis}}operation/operation-cluster-put-settings):
+By default, query logging is turned off. To enable logging, set the `elasticsearch.activitylog.enabled` property to `true` in the `elasticsearch.yml` configuration file:
 
 ```yaml
 elasticsearch.activitylog.enabled: true
 ```
+Alternatively, use the [cluster settings API]({{es-apis}}operation/operation-cluster-put-settings).
 
 `dsl` type queries that query only system indices are not logged by default. To enable logging these queries, use the `elasticsearch.activitylog.search.include.system_indices` setting described in [the configuration section](#configure-query-logging).
 
@@ -56,7 +55,7 @@ Each query log entry is a JSON object with fields from two sources:
 
 ### Standard fields
 
-These fields are present regardless of query type. Note that some fields may be present only in specific circumstances, see field descriptions below.
+These fields are present regardless of query type. Some fields may be present only in specific circumstances, see field descriptions below.
 
 - `@timestamp`: The timestamp of the log entry.
 - `event.outcome`: Whether the request was successful (`success`) or not (`failure`).
@@ -105,7 +104,7 @@ In addition to the fields listed above, each query language may include fields s
 
 ## Example log entry
 
-Query DSL:
+### Query DSL
 
 ```json
 {
@@ -141,7 +140,7 @@ Query DSL:
 }
 ```
 
-Cross-cluster query:
+### Cross-cluster query
 ```json
 {
   "@timestamp": "2026-03-13T01:01:58.266Z",
@@ -189,7 +188,7 @@ Cross-cluster query:
 }
 ```
 
-Example query failure:
+### Example query failure
 ```json
 {
   "@timestamp": "2026-03-04T19:40:35.271Z",
