@@ -33,6 +33,10 @@ From here, complete the following steps:
 2. [Set your objectives](/solutions/observability/incident-management/create-an-slo.md#set-slo).
 3. [Describe your SLO](/solutions/observability/incident-management/create-an-slo.md#slo-describe).
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/manage-slos
+:::
+
 ::::{note}
 **For Elastic Stack**, the cluster must include one or more nodes with both `ingest` and `transform` [roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles). The roles can exist on the same node or be distributed across separate nodes. On {{ech}} deployments, this is handled by the hot nodes, which serve as both `ingest` and `transform` nodes.
 
