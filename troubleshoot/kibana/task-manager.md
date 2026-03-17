@@ -54,7 +54,7 @@ For most performance issues, the subsections indicate explicit health issues thr
 ::::{important}
 Some tasks (such as [connector](/deploy-manage/manage-connectors.md) tasks) can incorrectly report their status as successful even when the task failed. The runtime and workload block return data about successes and failures and don't take this into consideration.
 
-To get a better sense of action failures, refer to the [Event log index](/explore-analyze/alerting/alerts/event-log-index.md) for more accurate context about failures and successes.
+To get a better sense of action failures, refer to the [Event log index](/explore-analyze/alerting/kibana-alerting-v1/event-log-index-v1.md) for more accurate context about failures and successes.
 ::::
 
 

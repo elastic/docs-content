@@ -10,7 +10,7 @@ products:
 
 # Rule types [rule-types]
 
-A rule is a set of [conditions](../alerts.md#rules-conditions), [schedules](../alerts.md#rules-schedule), and [actions](../alerts.md#rules-actions ) that enable notifications. {{kib}} provides rules built into the {{stack}} and rules registered by one of the {{kib}} apps. You can create most rules types in [{{stack-manage-app}} > {{rules-ui}}](create-manage-rules.md). Security rules must be defined in the Security app. For more information, refer to the documentation about [creating a detection rule](../../../solutions/security/detect-and-alert/using-the-rule-ui.md).
+A rule is a set of [conditions](../kibana-alerting-v1.md#rules-conditions), [schedules](../kibana-alerting-v1.md#rules-schedule), and [actions](../kibana-alerting-v1.md#rules-actions ) that enable notifications. {{kib}} provides rules built into the {{stack}} and rules registered by one of the {{kib}} apps. You can create most rules types in [{{stack-manage-app}} > {{rules-ui}}](create-manage-rules-v1.md). Security rules must be defined in the Security app. For more information, refer to the documentation about [creating a detection rule](../../../solutions/security/detect-and-alert/using-the-rule-ui.md).
 
 ::::{note}
 Some rule types are subscription features, while others are free features. For a comparison of the Elastic subscription levels, see [the subscription page](https://www.elastic.co/subscriptions).
@@ -19,14 +19,14 @@ Some rule types are subscription features, while others are free features. For a
 
 ## Stack rules [stack-rules]
 
-[Stack rules](create-manage-rules.md) are built into {{kib}}. To access the **Stack Rules** feature and create and edit rules, users require the `all` privilege. See [feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) for more information.
+[Stack rules](create-manage-rules-v1.md) are built into {{kib}}. To access the **Stack Rules** feature and create and edit rules, users require the `all` privilege. See [feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) for more information.
 
 |     |     |
 | --- | --- |
-| [{{es}} query](rule-type-es-query.md) | Run a user-configured {{es}} query, compare the number of matches to a configured threshold, and schedule actions to run when the threshold condition is met. |
-| [Index threshold](rule-type-index-threshold.md) | Aggregate field values from documents using {{es}} queries, compare them to threshold values, and schedule actions to run when the thresholds are met. |
+| [{{es}} query](rule-type-es-query-v1.md) | Run a user-configured {{es}} query, compare the number of matches to a configured threshold, and schedule actions to run when the threshold condition is met. |
+| [Index threshold](rule-type-index-threshold-v1.md) | Aggregate field values from documents using {{es}} queries, compare them to threshold values, and schedule actions to run when the thresholds are met. |
 | [Transform rules](../../transforms/transform-alerts.md) | {applies_to}`stack: beta` {applies_to}`serverless: beta` Run scheduled checks on a {{ctransform}} to check its health. If a {{ctransform}} meets the conditions, an alert is created and the associated action is triggered. |
-| [Tracking containment](geo-alerting.md) | Run an {{es}} query to determine if any documents are currently contained in any boundaries from a specified boundary index and generate alerts when a rule’s conditions are met. |
+| [Tracking containment](geo-alerting-v1.md) | Run an {{es}} query to determine if any documents are currently contained in any boundaries from a specified boundary index and generate alerts when a rule’s conditions are met. |
 
 ## {{observability}} rules [observability-rules]
 

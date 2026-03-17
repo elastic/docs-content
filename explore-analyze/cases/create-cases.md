@@ -71,7 +71,7 @@ Set up email notifications to alert users when they're assigned to a case, so th
 
 :::{tab-item} {{ecloud}}
 
-Add the email domains to the [notifications domain allowlist](/explore-analyze/alerting/alerts.md).
+Add the email domains to the [notifications domain allowlist](/explore-analyze/alerting/kibana-alerting-v1.md).
 
 You do not need to configure an email connector or update {{kib}} user settings—the preconfigured Elastic-Cloud-SMTP connector is used by default.
 

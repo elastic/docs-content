@@ -27,7 +27,7 @@ Some of the resources, such as saved objects and API keys, may no longer be avai
 
 The following debugging tools are available:
 
-* {{kib}} versions 7.10 and above have a [Test connector](testing-connectors.md) UI.
+* {{kib}} versions 7.10 and above have a [Test connector](testing-connectors-v1.md) UI.
 * {{kib}} versions 7.11 and above include improved Webhook error messages, better overall debug logging for actions and connectors, and Task Manager [diagnostics endpoints](../../../troubleshoot/kibana/task-manager.md#task-manager-diagnosing-root-cause).
 
 ## Using rules and connectors list for the current state and finding issues [alerting-managment-detail]
@@ -174,9 +174,9 @@ Investigating the underlying task can help you gauge whether the problem you’r
 
 In addition to the above methods, refer to the following approaches and common issues:
 
-* [Alerting common issues](alerting-common-issues.md)
-* [Querying event log index](event-log-index.md)
-* [Testing connectors using {{connectors-ui}} UI and the `kbn-action` tool](testing-connectors.md)
+* [Alerting common issues](alerting-common-issues-v1.md)
+* [Querying event log index](event-log-index-v1.md)
+* [Testing connectors using {{connectors-ui}} UI and the `kbn-action` tool](testing-connectors-v1.md)
 
 ### Temporarily throttle all tasks [alerting-kibana-throttle]
 
