@@ -122,7 +122,7 @@ When vector quantization is enabled, {{es}} stores both the original `float32` v
 
 ### Generating vector embeddings
 
-- If generating embeddings on Elastic ML nodes, capacity can be [autoscaled](/deploy-manage/autoscaling.md) using {{ech}} (ECH) or {{eck}} on-prem.
+- If you'll be generating embeddings on Elastic ML nodes, capacity can be [autoscaled](/deploy-manage/autoscaling.md) using {{ech}} (ECH) or {{eck}} on-prem.
 - Elastic provides [world class vector models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md) from Jina AI that can be used for NLP embeddings, and a re-ranker that can be either self-hosted on ML nodes or used through [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md).
 - Embeddings can also be generated with [Elastic’s {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) from many external model providers or internally or externally hosted foundation models.
 
