@@ -602,7 +602,7 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
    cd fleet-install-files
    ```
 
-8. In the terminal, run the `ifconfig` command and copy the value for the host inet IP address. You'll need this value later.
+8. In the terminal, run the `ifconfig` command and copy the value shown for the host IP address. You'll need this value later.
 
 9. In your web browser, open {{kib}} **Management -> Fleet**, click **Add Fleet Server**, and select the **Advanced** tab.
 
