@@ -149,6 +149,8 @@ For example, you might tag a project with the following types of metadata:
 * The team or department that uses it: `dept:finance`, `dept:marketing`, `dept:engineering`
 * The environment type: `env:dev`, `env:staging`, or `env:prod`
 
+{applies_to}`serverless: preview` You can also use tags in {{cps}} project routing expressions. For details, refer to [](/explore-analyze/cross-project-search/cross-project-search-tags.md).
+
 ### Create project tags
 
 1. In {{ecloud}}, select your project from the **Serverless projects** panel and click **Manage**.

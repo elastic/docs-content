@@ -28,6 +28,10 @@ Remote clusters are especially useful in two cases:
 :::{include} ./remote-clusters/_snippets/terminology.md
 :::
 
+::::{note}
+Remote clusters are not available in {{serverless-full}}. To search across more surfaces in {{serverless-short}}, use [{{cps}}](/explore-analyze/cross-project-search.md).
+::::
+
 ## Security models and connection modes
 
 When configuring remote clusters, you can choose between two security models and two connection modes. Both security models are compatible with either connection mode.
