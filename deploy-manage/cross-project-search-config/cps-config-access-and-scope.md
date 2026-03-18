@@ -9,7 +9,9 @@ navigation_title: "Access and scope"
 
 # Manage access and scope for {{cps}} [cps-access-and-scope]
 
-This page explains how user permissions and scope affect {{cps}}es.
+This page explains how user permissions and scope affect {{cps}} ({{cps-init}}) behavior. 
+
+For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cross-project-search-config.md). For information about _using_ {{cps-init}}, refer to [](/explore-analyze/cross-project-search.md).
 
 ## Manage user access [manage-user-access]
 
@@ -45,7 +47,7 @@ Users can also set the scope on a per-query basis as needed, using [qualified se
 By default, an unqualified search from an origin project targets the searchable resources in **all** linked projects, plus the searchable resources in the origin project. This default scope is intentionally broad, to provide the best user experience for searching across linked projects. 
 
 :::{important}
-The broad default {{cps-init}} scope could cause unexpected behavior, especially for alerts and dashboards. Make sure to test the scope and make adjustments _before_ your users start working with {{cps}}.
+The broad default {{cps-init}} scope can cause unexpected behavior, especially for alerts and dashboards that operate on the new combined dataset of the origin and all linked projects. Make sure to consider the search scope, including the [default {{cps-init}} scope for the space](#cps-default-search-scope), _before_ your users start working with {{cps}}.
 :::
 
 The following actions change the scope of {{cps}}es:
@@ -61,7 +63,7 @@ The scope controls which projects receive the search request, while _filtering_ 
 
 ### Set the default {{cps-init}} scope for a space [cps-default-search-scope]
 
-You can adjust the broad {{cps-init}} default by setting a narrower {{cps}} scope for each space. This setting determines the _default_ search scope for all users in that space. Users can override the default by setting scope on a per-query basis. 
+You can adjust the broad {{cps-init}} default by setting a narrower {{cps}} scope for each space. This setting determines the _default_ search scope for all users in that space. Users can override the default by setting their preferred scope when searching, filtering, or running queries. 
 
 Space settings are managed in {{kib}}. 
 
