@@ -35,7 +35,7 @@ The GenAI search – high availability architecture is intended for organization
 
 {{es}} supports multiple vector search execution models and optimizations, allowing this architecture to balance recall, latency, and cost based on workload requirements.
 
-- [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) is Elastic’s patented quantization technology that dramatically reduces vector memory footprint while preserving high recall, enabling large-scale in-memory vector search at lower cost.
+- [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) is Elastic’s quantization technology that dramatically reduces vector memory footprint while preserving high recall, enabling large-scale in-memory vector search at lower cost.
 - [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) extends BBQ by efficiently paging vector data from disk, providing predictable performance even when the full vector working set does not fit in memory and enabling cost-efficient scaling for very large datasets.
 - [HNSW](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-hnsw) is used where maximum recall and lowest tail latency are required and sufficient memory is available to keep vector indexes resident in RAM.  
 - [ACORN](https://www.elastic.co/search-labs/blog/elasticsearch-9-1-bbq-acorn-vector-search) further optimizes filtered vector search by reducing unnecessary graph traversals, making it especially effective for high-selectivity queries common in security, observability, and multi-tenant environments.
@@ -55,7 +55,7 @@ Below is a multi-availability-zone deployment designed for continuous availabili
 :::
 
 :::::{important}
-This architecture employs a single uniform hot/content data tier, as most search and generative AI workloads require very low latency across the full corpus, regardless of data age. However, disk-based vector storage methods such as [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets, such as IoT telemetry and financial transaction logs, on lower-cost tiers.
+This architecture employs a single uniform hot/content data tier, as most search and generative AI workloads require very low latency across the full corpus, regardless of data age. However, disk-based vector storage methods such as [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) (Elastic’s [advanced evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) offer a memory-efficient alternative to HNSW that can support larger datasets, such as IoT telemetry and financial transaction logs, on lower-cost tiers.
 :::::
 
 The physical deployment architecture for GenAI applications is built around a resilient {{es}} cluster deployed across three availability zones (AZ). For production-grade deployments, two AZs are the minimum, with three AZs strongly recommended to maximize high availability and fault tolerance. In {{ecloud}}, shards are automatically distributed across zones, ensuring that primaries and replicas never reside in the same AZ. 
@@ -101,7 +101,7 @@ For the full list of currently available instance configurations, refer to:
 
 ### Storage and memory
 
-Approximate nearest-neighbor (ANN) algorithms are dominated by irregular, latency-bound memory access rather than arithmetic. As a result, all vector distance computations occur in off-heap RAM and CPU. To make large-scale in-memory vector search feasible, {{es}} supports [many quantization techniques](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for up to a 32x reduction in vector footprint in RAM, and defaults to HNSW with [Better Binary Quantization](https://www.elastic.co/search-labs/blog/better-binary-quantization-lucene-elasticsearch). BBQ is Elastic’s patented approach for maximizing recall with a low vector memory footprint.
+Approximate nearest-neighbor (ANN) algorithms are dominated by irregular, latency-bound memory access rather than arithmetic. As a result, all vector distance computations occur in off-heap RAM and CPU. To make large-scale in-memory vector search feasible, {{es}} supports [many quantization techniques](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for up to a 32x reduction in vector footprint in RAM, and defaults to HNSW with [Better Binary Quantization (BBQ)](https://www.elastic.co/search-labs/blog/better-binary-quantization-lucene-elasticsearch). BBQ is Elastic’s memory-efficient approach for maximizing recall with a low vector memory footprint.
 
 To increase off-heap memory available for vector search, you have the following options:
 
@@ -170,7 +170,7 @@ Regular backups are essential when indexing business-critical or auditable data.
 
 This architecture uses a single, uniform hot/content data tier, which is recommended for most search and generative AI workloads. Keeping all data on a single tier simplifies operations and helps ensure consistent query latency, especially for vector and hybrid search.
 
-{{es}} also supports multi-tier architectures that place data on different tiers based on access patterns and retention requirements. In some scenarios, disk-based vector storage methods such as [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) (Elastic’s [patented evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) provide a memory-efficient alternative to HNSW. This approach can support larger datasets, such as IoT telemetry or financial transaction logs, while allowing vector data to be stored efficiently on lower-cost storage tiers.
+{{es}} also supports multi-tier architectures that place data on different tiers based on access patterns and retention requirements. In some scenarios, disk-based vector storage methods such as [DiskBBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-disk) (Elastic’s [advanced evolution of IVF](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) provide a memory-efficient alternative to HNSW. This approach can support larger datasets, such as IoT telemetry or financial transaction logs, while allowing vector data to be stored efficiently on lower-cost storage tiers.
 
 For guidance on designing multi-tier architectures and selecting appropriate data tiers for your workload, refer to the [{{es}} documentation on data tiers](/manage-data/lifecycle/data-tiers.md) and the [Hot/Frozen reference architecture](./hotfrozen-high-availability.md). If you need help estimating capacity or choosing a configuration for your scenario, you can also [contact us](https://www.elastic.co/contact).
 
