@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elastic-stack/current/install-stack-demo-secure.html
 navigation_title: Secure a self-managed {{stack}}
 applies_to:
   deployment:

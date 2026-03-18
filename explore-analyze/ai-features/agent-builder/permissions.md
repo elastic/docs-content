@@ -147,7 +147,7 @@ Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
 ### Working with spaces
 
-{{agent-builder}} respects {{kib}} spaces when enabled. Conversations, custom agents, and custom tools are scoped to the current space. Built-in agents are space-agnostic and are available in all spaces.
+{{agent-builder}} respects {{kib}} spaces when enabled. Conversations, custom agents, and custom tools are scoped to the current space. Built-in agents are space-agnostic and are available in all spaces. The default Elastic AI Agent is an exception {applies_to}`stack: ga 9.4+`: it is a standard persisted agent that is space-aware and automatically created per space.
 
 When configuring roles or API keys, specify the space in the application privileges resources (for example, `"resources": ["space:production"]`). Users and API keys cannot access resources in other spaces.
 
