@@ -61,7 +61,7 @@ $$$autoops-deployment-types$$$**Is AutoOps available in all deployment types?**
 ::: 
 
 $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects?**
-:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure and GCP.
+:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure.
 
 $$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
 :   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
