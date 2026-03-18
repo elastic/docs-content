@@ -127,8 +127,8 @@ You can change these settings, which affect the news feed displayed on the {{ela
 
 ## Enable graph visualization
 ```{applies_to}
-stack: preview 9.1
-serverless: preview
+stack: removed 9.4, preview 9.1-9.3
+serverless: removed
 ```
 Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
 
