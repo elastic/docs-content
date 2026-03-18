@@ -17,7 +17,6 @@ Information about outstanding payments, statements, and billing invoices is avai
 
 To check your billing history:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From a deployment or project on the home page, select **Manage**.
-3. From the lower navigation menu, select **Billing and Subscription**.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Billing > History**.
 4. On the **History** page, select the invoice number for a detailed PDF.
