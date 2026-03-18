@@ -140,7 +140,7 @@ Updating dense or sparse vector data can be more resource-intensive than updatin
 ### Hybrid Retrieval
 
 - Over-fetch on both retrieval paths. Increase size, use RRF with a larger `rank_window_size`, and raise `num_candidates` on kNN so ANN does not miss critical neighbors. Then trim results to find the best recall vs. latency balance.
-- Keep `minimum_should_match` loose, and rely on proper analyzers and multi-fields (text, .keyword, shingles/ngrams). Hybrid cannot recover documents BM25 never retrieves. 
+- Keep `minimum_should_match` loose, and rely on proper analyzers and multi-fields (text, .keyword, shingles/ngrams). Hybrid search cannot recover documents BM25 never retrieves. 
 - The easiest framework for executing hybrid search on Elastic is [retrievers](/solutions/search/retrievers-overview.md) or [{{esql}} FORK and FUSE](/solutions/search/esql-for-search.md#fork-and-fuse).
 
 ### Multi-AZ deployment
