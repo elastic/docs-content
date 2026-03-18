@@ -13,14 +13,6 @@ products:
 
 # Create an error count threshold rule [observability-create-error-count-threshold-alert-rule]
 
-
-::::{note}
-
-For Observability serverless projects, the **Editor** role or higher is required to create error count threshold rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
-
 Create an error count threshold rule to alert you when the number of errors in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name.
 
 :::{image} /solutions/images/serverless-alerts-create-rule-error-count.png
@@ -28,11 +20,20 @@ Create an error count threshold rule to alert you when the number of errors in a
 :screenshot:
 :::
 
-::::{tip}
-These steps show how to use the **Alerts** UI. You can also create an error count threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create error count rule**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
+## Requirements
 
-::::
+To create log threshold rules, you need the following:
 
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` the **Editor** role or higher is required to create error count threshold rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The defaults are `logs-apm*`, `apm-*`, and `logs-*.otel-*`. You cannot override these indices on a per-rule basis.
+
+## Create an anomaly rule
+
+The steps in this section show how to use the **Alerts** UI. You can also create an error count threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create error count rule**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
 To create your error count threshold rule:
 
