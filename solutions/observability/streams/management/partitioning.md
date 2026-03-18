@@ -65,7 +65,7 @@ To manually configure when to send data to child streams:
 1. Under **Stream name**, give your stream a name based on the condition.
 1. Select **Save** to create the child stream.
 
-Under **Condition**, you can also set the field you want to use for the condition, the comparator, and the value of the field. Turning on the **Syntax editor** lets you manually enter the conditions in a YAML editor. For more on conditions, refer to [Streamlang condtions](./streamlang.md#streams-streamlang-conditions)
+Under **Condition**, you can also set the field you want to use for the condition, the comparator, and the value of the field. Turning on the **Syntax editor** lets you manually enter the conditions in a YAML editor. For more on conditions, refer to [Streamlang conditions](./streamlang.md#streams-streamlang-conditions).
 
 ## Create partitions using AI suggestions [streams-AI-partitioning]
 
