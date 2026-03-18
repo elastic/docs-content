@@ -140,7 +140,7 @@ To begin, use RPM to install {{es}} on the first host. This initial {{es}} insta
 
 Before moving ahead to configure additional {{es}} nodes, you need to update the {{es}} configuration on this first node so that other hosts are able to connect to it. This is done by updating the settings in the `elasticsearch.yml` file. For details about all available settings refer to [Configure {{es}}](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 
-1. In a terminal, run the `ifconfig` command and copy the value for the host inet IP address (for example, `10.128.0.84`). You need this value later.
+1. In a terminal, run the `ifconfig` command and copy the value shown for the host IP address (for example, `10.128.0.84`). You need this value later.
 
 2. Open the {{es}} configuration file in a text editor, such as `vim`:
 
@@ -307,7 +307,7 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
 
 11. Answer the `Do you want to continue` prompt with `yes` (`y`). The new {{es}} node is reconfigured.
 
-12. In a terminal, run `ifconfig` and copy the value for the host inet IP address. You need this value later.
+12. In a terminal, run `ifconfig` and copy the value shown for the host IP address. You need this value later.
 
 13. Open the second {{es}} instance configuration file in a text editor:
 
@@ -456,7 +456,7 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
 
 10. Before starting the {{kib}} service, update the configuration so that {{kib}} listens on its own host IP address. This is done by updating the settings in the `kibana.yml` file. For details about all available settings refer to [{{kib}} configuration reference](kibana://reference/configuration-reference.md).
 
-11. In a terminal, run the `ifconfig` command and copy the value for the host inet IP address.
+11. In a terminal, run the `ifconfig` command and copy the value shown for the host IP address.
 
 12. Open the {{kib}} configuration file for editing:
 
@@ -464,7 +464,7 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
     sudo vim /etc/kibana/kibana.yml
     ```
 
-13. Uncomment the line `#server.host: localhost` and replace the default address with the inet value that you copied from the `ifconfig` command. For example:
+13. Uncomment the line `#server.host: localhost` and replace the default address with the host IP address that you copied from the `ifconfig` command. For example:
 
     ```yaml
     server.host: 10.128.0.28 <1>
@@ -543,7 +543,7 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}, which mana
    cd fleet-install-files
    ```
 
-4. In the terminal, run `ifconfig` and copy the value for the host inet IP address (for example, `10.128.0.84`). You need this value later.
+4. In the terminal, run `ifconfig` and copy the value shown for the host IP address (for example, `10.128.0.84`). You need this value later.
 
 5. Back to your web browser, open the {{kib}} menu and go to **Management -> Fleet**. {{fleet}} opens with a message that you need to add a {{fleet-server}}.
 
@@ -553,7 +553,7 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}, which mana
 
 8. Specify a name for your {{fleet-server}} host, for example `Fleet Server`.
 
-9. Specify the host URL that {{agent}}s need to use to reach the {{fleet-server}}, for example: `https://10.128.0.203:8220`. This is the inet value that you copied from the `ifconfig` output.
+9. Specify the host URL that {{agent}}s need to use to reach the {{fleet-server}}, for example: `https://10.128.0.203:8220`. This is the host IP address that you copied from the `ifconfig` output.
 
    Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](/reference/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
 
