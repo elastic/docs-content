@@ -104,7 +104,9 @@ $$$deployment-types$$$ **Which deployment types can be connected to AutoOps thro
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
 
 $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?**
-:   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, when using the ECK installation method, make sure your instance of {{agent}} meets the [version requirements](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for your license type. In general, we recommend keeping {{agent}} upgraded to the latest version so you can access new features and fixes.
+:   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, there are two things to keep in mind:
+* In general, {{agent}} can ship data from connected clusters on any [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above). But we recommend keeping {{agent}} upgraded to the latest version for optimum performance and access to new features and fixes.
+* When using the ECK installation method, make sure your instance of {{agent}} meets the [version requirements](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for your license type.  
 
 $$$trial-ending$$$ **I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?**
 :   After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
