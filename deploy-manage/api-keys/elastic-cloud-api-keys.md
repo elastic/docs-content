@@ -29,10 +29,10 @@ These keys provides access to the API that enables you to manage your deployment
 
 ## Create an API key [ec-api-keys]
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Go to your avatar in the upper right corner and choose **Organization**.
-3. On the **API keys** tab of the **Organization** page, click **Create API key**.
-4. On the **Create API key** flyout, you can configure your new key by adding a name, set expiration, or assign [roles](../users-roles/cloud-organization/user-roles.md).
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Organization > API keys**.
+3. Click **Create API key**.
+4. In the **Create API key** flyout, you can configure your new key by adding a name, set expiration, or assign [roles](../users-roles/cloud-organization/user-roles.md).
 
     By default, API keys expire after three months. You can set the expiration to a different preset value or to a specific date, up to one year. If you need the key to work indefinitely, you can also set its expiration to Never. In this case, the key won’t expire.
     Each organization can have up to 500 active API keys.
@@ -54,9 +54,7 @@ Authorization: ApiKey $EC_API_KEY
 
 ## Revoke an API key [ec_revoke_an_api_key]
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Go to your avatar in the upper right corner and choose **Organization**.
-
-    The keys currently associated with your organization are listed under the API keys tab of the **Organization** page.
-
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Organization > API keys**.
 3. Find the key you want to revoke, and click the trash icon under **Actions**.
+4. Click **Revoke API key**.
