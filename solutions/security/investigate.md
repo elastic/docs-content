@@ -34,14 +34,14 @@ Together, these tools let you move from a single alert to a complete picture of 
 
 ## How investigation tools work together [investigation-workflow]
 
-Investigation typically follows a progression from initial triage to documented resolution:
+Investigation typically progresses from initial triage to documented resolution:
 
 1. **Triage the alert.** The detection engine generates an alert. You open it to review the alert details, severity, and affected entities. [Attack discovery](/solutions/security/ai/attack-discovery.md) can help you prioritize by identifying coordinated attacks that span multiple alerts.
 2. **Explore context in Timeline.** Add the alert to a Timeline and query related events using KQL, EQL, or {{esql}}. Correlate data across hosts, users, and network activity to understand the broader event sequence.
 3. **Dive into forensic detail.** Use the visual event analyzer to inspect the process tree that led to the alert, or use Session View to review full Linux sessions, including terminal output and user activity.
 4. **Interrogate the live environment.** Run Osquery against affected hosts to check running processes, open ports, installed software, and other OS-level context that helps confirm or rule out compromise.
 5. **Cross-reference threat intelligence.** Check indicators of compromise to learn whether observed artifacts (IPs, domains, file hashes) match known threats.
-6. **Document and collaborate.** Attach your findings to Notes on alerts and events, and organize everything in a Case. Cases integrate with external ticketing systems like Jira and ServiceNow for cross-team coordination.
+6. **Document and collaborate.** Attach your findings to Notes on alerts and events, and organize everything in a case. Cases integrate with external ticketing systems like Jira and ServiceNow for cross-team coordination.
 
 [Chatting with AI](/explore-analyze/ai-features/ai-chat-experiences.md) can accelerate any stage of this workflow by helping you interpret alert data, generate queries, and suggest next steps.
 
@@ -51,19 +51,19 @@ Investigation typically follows a progression from initial triage to documented 
 
 [Timeline](/solutions/security/investigate/timeline.md) is the central workspace for investigations and threat hunting. You can add alerts from multiple indices, drag fields from tables and histograms across the {{security-app}}, and build complex queries using KQL, EQL, or {{esql}}. Use the **Correlation** tab to write EQL sequence queries that reveal ordered attack patterns across event categories, or use the **{{esql}}** tab for flexible, pipe-based data exploration.
 
-You can also create [Timeline templates](/solutions/security/investigate/timeline-templates.md) and attach them to detection rules so that alerts automatically open with the right filters applied.
+You can also create [Timeline templates](/solutions/security/investigate/timeline-templates.md) and attach them to detection rules so alerts automatically open with the right filters.
 
 ### Attack discovery [investigation-attack-discovery]
 
-[Attack discovery](/solutions/security/ai/attack-discovery.md) uses large language models to analyze alerts in your environment and identify threats spanning multiple alerts. Each discovery describes relationships among alerts, maps them to the MITRE ATT&CK matrix, identifies involved users and hosts, and suggests which threat actor might be responsible. Use Attack discovery to cut through alert fatigue, prioritize the incidents that matter most, and reduce your mean time to respond.
+[Attack discovery](/solutions/security/ai/attack-discovery.md) uses large language models to analyze alerts in your environment and identify threats spanning multiple alerts. Each discovery describes relationships among alerts, maps them to the MITRE ATT&CK matrix, identifies involved users and hosts, and suggests which threat actor might be responsible. Use Attack discovery to reduce alert fatigue, prioritize the incidents that matter most, and shorten your mean time to respond.
 
 ### Visual event analyzer [investigation-visual-analyzer]
 
-The [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md) displays a graphical, process-based timeline of the events that led up to an alert and the events that followed it. Each node represents a process, and you can expand the tree to examine child processes, associated alerts, and related events. This is particularly useful for understanding lateral movement, privilege escalation, and multi-stage attacks.
+The [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md) displays a graphical, process-based timeline of events that preceded an alert and events that followed it. Each node represents a process, and you can expand the tree to examine child processes, associated alerts, and related events. This is particularly useful for understanding lateral movement, privilege escalation, and multi-stage attacks.
 
 ### Session View [investigation-session-view]
 
-[Session View](/solutions/security/investigate/session-view.md) presents Linux process data in a terminal-inspired, tree-like display organized by parentage and execution time. It shows interactive and non-interactive processes, user information (including privilege escalation), process and network alerts in context, and captured terminal output. 
+[Session View](/solutions/security/investigate/session-view.md) presents Linux process data in a terminal-inspired, tree-like display organized by parentage and execution time. It shows interactive and non-interactive processes, user information (including privilege escalation), process and network alerts in context, and captured terminal output.
 
 ### Osquery [investigation-osquery]
 
@@ -83,7 +83,7 @@ The [Indicators](/solutions/security/investigate/indicators-of-compromise.md) pa
 
 ## Related capabilities [investigation-related]
 
-Several other {{elastic-sec}} features complement the investigation tools described on this page:
+Several other {{elastic-sec}} features complement these investigation tools:
 
 * [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) helps you interpret alerts, generate queries, and get contextual guidance throughout your investigation.
 * [Entity analytics](/solutions/security/advanced-entity-analytics.md) provides risk scores and behavioral anomaly detection for hosts, users, and services, giving you additional context when evaluating the significance of an alert.
