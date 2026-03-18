@@ -26,7 +26,7 @@ It should take between one and two hours to complete these steps.
 
 * [Prerequisites and assumptions](#install-stack-self-prereqs)
 * [{{stack}} overview](#install-stack-self-overview)
-* [Security overview](#install-stack-self-security-overview)
+* [Security overview](#security-overview)
 * [Step 1: Set up the first {{es}} node](#install-stack-self-elasticsearch-first)
 * [Step 2: Configure the first {{es}} node for connectivity](#install-stack-self-elasticsearch-config)
 * [Step 3: Start {{es}}](#install-stack-self-elasticsearch-start)
@@ -45,7 +45,7 @@ To get started, you need the following:
 * A set of virtual or physical hosts on which to install each stack component.
 * On each host, a super user account with `sudo` privileges.
 
-The examples in this guide use RPM Package Manager (RPM) packages to install the {{stack}} {{stack.version}} components on hosts running Red Hat Enterprise Linux 8. The steps for other install methods and operating systems are similar, and can be found in the documentation linked from each section. The packages to install are:
+The examples in this guide use RPM Package Manager (RPM) packages to install the {{stack}} {{version.stack}} components on hosts running Red Hat Enterprise Linux 8. The steps for other install methods and operating systems are similar, and can be found in the documentation linked from each section. The packages to install are:
 
 * [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm)
 * [https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm)
