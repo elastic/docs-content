@@ -13,7 +13,7 @@ products:
 
 # GenAI Search - High Availability
 
-This reference architecture represents a production-grade, high-availability GenAI search architecture built on {{es}}. It is intended to show physical deployment architecture, logical integration points, and highlight important best practices for enabling a retrieval layer for grounding generative AI responses.
+This reference architecture illustrates a production-grade, highly available GenAI search solution built on {{es}}. It shows the physical deployment model, logical integration points, and key best practices for implementing a retrieval layer that grounds generative AI responses.
 
 {{es}} can combine [lexical search](/solutions/search/full-text.md), [dense vector search](/solutions/search/vector/dense-vector.md), [sparse vector search](/solutions/search/vector/sparse-vector.md), temporal and geospatial filtering, and hybrid ranking techniques. These capabilities form the foundation for [Retrieval Augmented Generation (RAG)](/solutions/search/rag.md), [agentic workflows](/explore-analyze/ai-features/elastic-agent-builder.md), and AI-assisted applications.
 
@@ -80,10 +80,10 @@ For GenAI search workloads in {{ech}}, use **Vector Search Optimized** profiles 
 
 | Type | {{aws}} | Azure | GCP | Physical |
 | :---- | :---- | :---- | :---- | :---- |
-| hot/content | `r6gd`, `c8gd` | `lsv3`, `fsv2` | `n2d.64x8x11`, `n2.68x32x45` | 16-32 vCPU, 64-256 GB RAM, 0.5-6 TB NVMe SSD |
-| ml | `m5dn` | `fsv2` | `n2.68x16x45` | 16-32 vCPU, 64+ GB RAM, 256 GB+ SSD |
-| master | `c8gd` | `fsv2` | `n2.68x32x45` | 4 vCPU, 16 GB RAM, 256 GB SSD |
-| kibana | `c8gd` | `fsv2` | `n2.68x32x45` | 8-16 vCPU, 8-16 GB RAM, 256 GB SSD |
+| hot/content | `r6gd`, `c8gd` | `lsv3`, `fsv2` | `N2d`, `N2` | 16-32 vCPU, 64-256 GB RAM, 0.5-6 TB NVMe SSD |
+| ml | `m5dn` | `fsv2` | `N2` | 16-32 vCPU, 64+ GB RAM, 256 GB+ SSD |
+| master | `c8gd` | `fsv2` | `N2` | 4 vCPU, 16 GB RAM, 256 GB SSD |
+| kibana | `c8gd` | `fsv2` | `N2` | 8-16 vCPU, 8-16 GB RAM, 256 GB SSD |
 
 These recommendations provide a practical baseline, but available instance families evolve over time as newer provider hardware becomes available. For additional guidance on selecting {{ecloud}} hardware profiles for specific workloads, refer to:
 
