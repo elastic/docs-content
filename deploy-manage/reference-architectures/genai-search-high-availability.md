@@ -118,7 +118,7 @@ When vector quantization is enabled, {{es}} stores both the original `float32` v
 
 - To learn about sizing formulas refer to [Ensure data nodes have enough memory](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md#_ensure_data_nodes_have_enough_memory). Use the formulas to calculate the disk needs. 
 - For HNSW, the amount of RAM configured must match the amount required by the vector index storage. 
-- For DiskBBQ, you can provision as little as 5% of disk storage as RAM, as DiskBBQ swaps to disk effectively, but query performance will improve significantly with more data you can fit into RAM.
+- For DiskBBQ, you can provision as little as 5% of disk storage as RAM, as DiskBBQ swaps to disk effectively. However, query performance improves significantly when more RAM is provisioned for vector search, especially for large volumes of data.
 
 ### Generating vector embeddings
 
