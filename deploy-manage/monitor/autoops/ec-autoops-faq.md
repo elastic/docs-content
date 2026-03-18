@@ -35,6 +35,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Does shipping metrics data to {{ecloud}} incur additional costs?](#autoops-metrics-cost)
 * [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
 * [Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?](#maintenance)
+* [I connected my cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?](#trial-ending)
 * [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
 
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
@@ -104,6 +105,11 @@ $$$deployment-types$$$ **Which deployment types can be connected to AutoOps thro
 
 $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, when using the ECK installation method, make sure your instance of {{agent}} meets the [version requirements](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for your license type. In general, we recommend keeping {{agent}} upgraded to the latest version so you can access new features and fixes.
+
+$$$trial-ending$$$ **I connected my cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?**
+:   After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
+* You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md).
+* {{agent}} is running and shipping metrics to {{ecloud}}.
 
 $$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   Support eligibility is determined by the license of your connected cluster:
