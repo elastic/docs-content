@@ -841,3 +841,6 @@ redirects:
 
 # Renamed for SEO - URL now matches page title
   'solutions/security/detect-and-alert/requirements-privileges.md': 'solutions/security/detect-and-alert/turn-on-detections.md'
+
+# Related to https://github.com/elastic/docs-content/pull/5245
+  'explore-analyze/cross-project-search/cross-project-search-link-projects.md': 'deploy-manage/cross-project-search-config/cps-config-link-and-manage.md'

@@ -9,9 +9,9 @@ navigation_title: "Link and manage projects"
 
 # Link and manage projects for {{cps}} [cps-link-and-manage]
 
-This page explains how to link {{serverless-full}} projects for {{cps}}, manage your linked projects, and unlink projects you no longer need to search across.
+This page explains how to link {{serverless-full}} projects for {{cps}} ({{cps-init}}), manage your linked projects, and unlink projects you no longer need to search across.
 
-For an overview and prerequisites, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md#cps-prerequisites).
+For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cross-project-search-config.md). For information about _using_ {{cps-init}}, refer to [](/explore-analyze/cross-project-search.md).
 
 ## Link projects [cps-link-projects]
 
@@ -26,7 +26,7 @@ Before linking projects, review the [architecture patterns](/deploy-manage/cross
 ::::{important}
 After you link projects, all searches from the origin project query data from **every** linked project by default. This applies immediately to all queries, including those from existing dashboards and alerting rules.
 
-To limit searches, you can configure a [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space. Users can override the default by setting scope on a per-query basis.
+To limit searches, you can configure a [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space. Users can override the default by setting scope when searching, filtering, or running queries.
 ::::
 
 ## Manage linked projects [cps-manage-linked-projects]
