@@ -29,6 +29,18 @@ When reviewing the rule preview results, look for:
 If the rule uses [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md), use the rule preview to visualize how suppression affects the alert output. This helps you confirm that suppression is grouping events as expected before the rule goes live.
 ::::
 
+## Validate using AI [validate-using-ai]
+
+Elastic's AI chat experiences can review your rule's logic and suggest improvements. You can use AI to check whether a query is too broad, identify likely false positive patterns, verify MITRE ATT&CK alignment, or evaluate scheduling and suppression settings.
+
+With [AI Assistant](/solutions/security/ai/ai-assistant.md), you can describe a rule or paste its query into a chat and ask validation-related questions such as:
+
+- "Does this query match more broadly than intended? What legitimate activity could it catch?"
+- "What MITRE ATT&CK techniques does this rule cover, and are there gaps?"
+- "Is a 5-minute scheduling interval appropriate for this data source, or would a longer interval reduce noise without missing threats?"
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: security: ga` With [Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md), you can [attach a detection rule directly to a chat](/solutions/security/ai/agent-builder/agent-builder.md#attach-a-detection-rule-to-the-ai-agent) so the agent has the full rule definition as context. This removes the need to copy and paste rule content and gives the agent access to all rule fields when answering your questions.
+
 ## Run manual tests [manual-test-run]
 
 For rules that are already enabled, you can [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) them over a specific time range to test behavior against real data. Unlike preview, manual runs create actual alerts and trigger rule actions.
