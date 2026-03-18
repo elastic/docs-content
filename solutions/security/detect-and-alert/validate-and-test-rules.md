@@ -39,7 +39,7 @@ With [AI Assistant](/solutions/security/ai/ai-assistant.md), you can describe a 
 - "What MITRE ATT&CK techniques does this rule cover, and are there gaps?"
 - "Is a 5-minute scheduling interval appropriate for this data source, or would a longer interval reduce noise without missing threats?"
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: security: ga` With [Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md), you can [attach a detection rule directly to a chat](/solutions/security/ai/agent-builder/agent-builder.md#attach-a-detection-rule-to-the-ai-agent) so the agent has the full rule definition as context. This removes the need to copy and paste rule content and gives the agent access to all rule fields when answering your questions.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: security: ga` With [Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md), you can [attach a detection rule to the agent](/solutions/security/ai/agent-builder/agent-builder.md#attach-a-detection-rule-to-the-ai-agent) to provide the full rule definition as context. This removes the need to copy and paste and gives the agent access to all rule fields when answering your questions.
 
 ## Run manual tests [manual-test-run]
 
