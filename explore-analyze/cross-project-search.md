@@ -64,7 +64,7 @@ You can use `_origin` in search expressions to explicitly target the origin proj
 
 ## Excluding indices and projects
 
-You can exclude specific indices or projects from a {{cps}} search by prefixing a pattern with a dash (`-`).
+You can exclude specific indices or projects from a {{cps}} by prefixing a pattern with a dash (`-`).
 This enables you start with a broad search scope and narrow it down by removing specific indices or projects from the results.
 
 ### How exclusion works
@@ -90,9 +90,9 @@ The following examples assume an origin project with two linked projects: `linke
 :   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. All other indices on `linked-project-1` and all indices on the origin project and `linked-project-2` are still included.
 
 `*,-my-index*,-logs`
-:   Searches everything, then applies two exclusion patterns. Indices matching `my-index*` and the `logs` index are excluded from the results.
+:   Searches everything, then applies two exclusion patterns. Indices matching `my-index*` and the `logs` index are excluded from the results from all projects.
 
-`*:linked-project-1:-*`
+`*,linked-project-1:-*`
 :   Excludes all indices on the `linked-project-1` project. This is functionally equivalent to `*,-linked-project-1:*`.
 
 `*,-*`
