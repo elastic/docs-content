@@ -70,18 +70,32 @@ In addition, the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-
 
 The following recommendations assist with clusters that are self-deployed on-prem or self-deployed in a cloud provider. With {{ech}}, you can deploy clusters in {{aws}}, Azure, or Google Cloud. Available hardware types and configurations vary across providers, but each offers instance families that meet the performance needs of search and generative AI applications. 
 
-For details, refer to our documentation on [{{ech}} hardware](cloud://reference/cloud-hosted/hardware.md) for {{aws}}, Azure, and GCP. The "Physical" column in the table below provides guidance when self-deploying {{es}} in your own data center, based on equivalent CPU, RAM, and storage profiles.
+For details, refer to our documentation on [{{ech}} hardware](cloud://reference/cloud-hosted/hardware.md) for {{aws}}, Azure, and GCP. The "Physical" column in the table below provides approximate per-node guidance when self-deploying {{es}} in your own data center, based on equivalent CPU, RAM, and storage profiles.
 
 Elastic has performance-tested hardware profiles across the major cloud providers to identify the optimal balance for each node type. Significantly deviating from these tested ratios may appear to reduce costs, but typically leads to degraded performance, query latency spikes, or search scalability.
 
 Dedicated ML nodes are needed when {{infer}} is performed within the cluster, such as running [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) or [custom transformer models](/explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md) locally. These nodes should be dedicated and provisioned with sufficient memory to load models into RAM. When {{infer}} is offloaded to an LLM or embedding model external to the cluster (for example, [Elastic {{infer-cap}} Service](kibana://reference/connectors-kibana/elastic-managed-llm.md), Azure OpenAI, Anthropic, or Bedrock), dedicated ML nodes are not required.
 
+For GenAI search workloads in {{ech}}, use **Vector Search Optimized** profiles as the primary reference, and consider **CPU Optimized** profiles for workloads with higher CPU and disk requirements.
+
 | Type | {{aws}} | Azure | GCP | Physical |
 | :---- | :---- | :---- | :---- | :---- |
-| hot | c6gd | f32sv2 | N2 | 16-32 vCPU, 64-256 GB RAM, 2-6 TB NVMe SSD |
-| ml | m6gd | f16sv2 | N2 | 16-32 vCPU, 64 GB RAM, 256 GB SSD |
-| master | c5d | f16sv2 | N2 | 4 vCPU, 16 GB RAM, 256 GB SSD |
-| kibana | c6gd | f16sv2 | N2 | 8-16 vCPU, 8 GB RAM, 256 GB SSD |
+| hot/content | `r6gd`, `c8gd` | `lsv3`, `fsv2` | `n2d.64x8x11`, `n2.68x32x45` | 16-32 vCPU, 64-256 GB RAM, 0.5-6 TB NVMe SSD |
+| ml | `m5dn` | `fsv2` | `n2.68x16x45` | 16-32 vCPU, 64+ GB RAM, 256 GB+ SSD |
+| master | `c8gd` | `fsv2` | `n2.68x32x45` | 4 vCPU, 16 GB RAM, 256 GB SSD |
+| kibana | `c8gd` | `fsv2` | `n2.68x32x45` | 8-16 vCPU, 8-16 GB RAM, 256 GB SSD |
+
+These recommendations provide a practical baseline, but available instance families evolve over time as newer provider hardware becomes available. For additional guidance on selecting {{ecloud}} hardware profiles for specific workloads, refer to:
+
+- [Selecting the right configuration for you on {{aws}}](cloud://reference/cloud-hosted/ec_selecting_the_right_configuration_for_you.md)
+- [Selecting the right configuration for you on Azure](cloud://reference/cloud-hosted/ec-azure-configuration-choose.md)
+- [Selecting the right configuration for you on GCP](cloud://reference/cloud-hosted/ec-gcp-configuration-choose.md)
+
+For the full list of currently available instance configurations, refer to:
+
+- [{{aws}} default instances](cloud://reference/cloud-hosted/aws-default.md)
+- [Azure default instances](cloud://reference/cloud-hosted/azure-default.md)
+- [GCP default instances](cloud://reference/cloud-hosted/gcp-default-provider.md)
 
 ## Vector search considerations
 
