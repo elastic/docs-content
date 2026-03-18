@@ -159,7 +159,7 @@ stack: ga 9.3+
 - Users who prefer working with code
 - Advanced configurations with complex or deeply nested conditions
 
-Refer to the [Streamlang reference](./streamlang.md) for the complete syntax, including all available processors, condition operators, and examples.
+Refer to the [Streamlang reference](./streamlang.md) for the complete syntax, condition operators, and examples.
 
 
 ### Preview changes [streams-preview-changes]

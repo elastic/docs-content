@@ -78,7 +78,7 @@ The following table lists all available processors. Refer to the individual proc
 
 ## Conditions [streams-streamlang-conditions]
 
-Conditions are Boolean expressions that control when processors run and how wired streams route data into partitions. They appear in `where` clauses on processors, in [condition blocks](#streams-streamlang-condition-blocks), and in stream [partitioning](./partitioning.md).
+Conditions are Boolean expressions that control when processors run and how wired streams route data into partitions. They appear in `where` clauses on processors, in [condition blocks](#streams-streamlang-condition-blocks), and in stream [partitioning](#streams-streamlang-partition-conditions).
 
 ### Comparison operators [streams-streamlang-comparison-operators]
 
@@ -166,6 +166,19 @@ where:
 | `always: {}` | Always evaluates to `true`. |
 | `never: {}` | Always evaluates to `false`. |
 
+### Partition conditions [streams-streamlang-partition-conditions]
+
+When [partitioning data into child streams](./partitioning.md), conditions use operators to define how to route documents to a child stream.
+
+For example, the following routes documents where `attributes.filepath` equals `Linux.log`:
+
+```yaml
+field: attributes.filepath
+eq: Linux.log
+```
+
+To enter conditions in YAML format when configuring a partition, turn on the **Syntax editor** under **Condition** in the **Partitioning** tab.
+
 ## Condition blocks [streams-streamlang-condition-blocks]
 
 Condition blocks group processors that run only when they meet a condition. Use a `condition` step with nested `steps`:
@@ -203,16 +216,3 @@ steps:
                 to: attributes.alert_level
                 value: critical
 ```
-
-## Field naming [streams-streamlang-field-naming]
-
-For [wired streams](../wired-streams.md), fields must follow OTel-compatible namespacing. Custom fields must use one of these prefixes:
-
-- `attributes.*`
-- `body.structured.*`
-- `resource.attributes.*`
-- `scope.attributes.*`
-
-The following special fields do not require a namespace prefix: `@timestamp`, `observed_timestamp`, `trace_id`, `span_id`, `severity_text`, `severity_number`, `event_name`, `body`, and `body.text`.
-
-Streams reserves system-managed fields like `stream.name`, and processors cannot modify them.
