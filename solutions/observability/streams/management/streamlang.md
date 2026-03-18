@@ -97,19 +97,6 @@ Each comparison condition specifies a `field` and an operator with a value:
 | `endsWith` | Field value ends with the string | `".log"` |
 | `includes` | Multivalue field includes the value | `"admin"` |
 
-### Partition conditions [streams-streamlang-partition-conditions]
-
-When [partitioning data into child streams](./partitioning.md), conditions use operators to define how to route documents to a child stream.
-
-For example, the following routes documents where `attributes.filepath` equals `Linux.log`:
-
-```yaml
-field: attributes.filepath
-eq: Linux.log
-```
-
-To enter conditions in YAML format when configuring a partition, turn on the **Syntax editor** under **Condition** in the **Partitioning** tab.
-
 ### Range conditions [streams-streamlang-range-conditions]
 
 Use `range` to match values within a numeric range. You can combine any of `gt`, `gte`, `lt`, and `lte`:
@@ -172,6 +159,19 @@ where:
 | --- | --- |
 | `always: {}` | Always evaluates to `true`. |
 | `never: {}` | Always evaluates to `false`. |
+
+## Partition conditions [streams-streamlang-partition-conditions]
+
+When [partitioning data into child streams](./partitioning.md), conditions use the previous operators to define how to route documents to a child stream.
+
+For example, the following routes documents where `attributes.filepath` equals `Linux.log`:
+
+```yaml
+field: attributes.filepath
+eq: Linux.log
+```
+
+To enter conditions in YAML format when configuring a partition, turn on the **Syntax editor** under **Condition** in the **Partitioning** tab.
 
 ## Condition blocks [streams-streamlang-condition-blocks]
 
