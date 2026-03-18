@@ -9,7 +9,7 @@ navigation_title: "Access and scope"
 
 # Manage access and scope for {{cps}} [cps-access-and-scope]
 
-This page explains how user permissions and scope affect {{cps}} searches.
+This page explains how user permissions and scope affect {{cps}}es.
 
 ## Manage user access [manage-user-access]
 
