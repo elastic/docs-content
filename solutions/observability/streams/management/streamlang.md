@@ -14,13 +14,13 @@ products:
 ---
 # Streamlang reference [streams-streamlang-reference]
 
-Streamlang is a JSON DSL for defining stream processing and routing logic. Streamlang provides a consistent processing interface that can be transpiled to multiple execution targets, including {{es}} ingest pipelines and ES|QL. This allows processing to run at ingest time or query time without rewriting rules.
+Streamlang is a JSON domain-specific languague (DSL) for defining stream processing and routing logic. Streamlang provides a consistent processing interface that can be transpiled to multiple execution targets, including {{es}} ingest pipelines and ES|QL. This allows processing to run at ingest time or query time without rewriting rules.
 
 You can write Streamlang directly using the [YAML editing mode](./extract.md#streams-editing-yaml-mode) in the **Processing** tab, or use the [interactive mode](./extract.md#streams-editing-interactive-mode) which generates Streamlang behind the scenes.
 
 ## Structure [streams-streamlang-structure]
 
-A Streamlang configuration is a YAML document with a single top-level `steps` array. Each step is either a [processor](#streams-streamlang-processors) (an `action` block) or a [`condition` block](#streams-streamlang-condition-blocks):
+A Streamlang configuration is a YAML document with a single top-level `steps` array. Each step is either an [`action` block (processor)](#streams-streamlang-processors) or a [`condition` block](#streams-streamlang-condition-blocks):
 
 ```yaml
 steps:
@@ -61,7 +61,7 @@ The following table lists all available processors. Refer to the individual proc
 | [`convert`](./extract/convert.md) | Converts a field value to a different data type. |
 | [`date`](./extract/date.md) | Parses date strings into timestamps. |
 | [`dissect`](./extract/dissect.md) | Parses structured text using delimiter-based patterns. |
-| [`drop_document`](./extract/drop.md) | Prevents a document from being indexed based on a condition. |
+| [`drop_document`](./extract/drop.md) | Prevents indexing of a document from based on a condition. |
 | [`grok`](./extract/grok.md) | Parses unstructured text using predefined or custom patterns. |
 | [`join`](./extract/join.md) | Concatenates the values of multiple fields with a delimiter. |
 | [`lowercase`](./extract/lowercase.md) | Converts a string field to lowercase. |
@@ -78,7 +78,7 @@ The following table lists all available processors. Refer to the individual proc
 
 ## Conditions [streams-streamlang-conditions]
 
-Conditions are Boolean expressions that control when processors run and how data is routed. They appear in `where` clauses on processors, in [condition blocks](#streams-streamlang-condition-blocks), and in stream [partitioning](./partitioning.md).
+Conditions are Boolean expressions that control when processors run and how wired streams route data into partitions. They appear in `where` clauses on processors, in [condition blocks](#streams-streamlang-condition-blocks), and in stream [partitioning](./partitioning.md).
 
 ### Comparison operators [streams-streamlang-comparison-operators]
 
@@ -168,7 +168,7 @@ where:
 
 ## Condition blocks [streams-streamlang-condition-blocks]
 
-Condition blocks group processors that should only run when they meet a condition. Use a `condition` step with nested `steps`:
+Condition blocks group processors that run only when they meet a condition. Use a `condition` step with nested `steps`:
 
 ```yaml
 steps:
@@ -213,6 +213,6 @@ For [wired streams](../wired-streams.md), fields must follow OTel-compatible nam
 - `resource.attributes.*`
 - `scope.attributes.*`
 
-The following special fields are allowed without a namespace prefix: `@timestamp`, `observed_timestamp`, `trace_id`, `span_id`, `severity_text`, `severity_number`, `event_name`, `body`, and `body.text`.
+The following special fields do not require a namespace prefix: `@timestamp`, `observed_timestamp`, `trace_id`, `span_id`, `severity_text`, `severity_number`, `event_name`, `body`, and `body.text`.
 
-Streams reserves system-managed fields like `stream.name` and processors cannot modify them.
+Streams reserves system-managed fields like `stream.name`, and processors cannot modify them.
