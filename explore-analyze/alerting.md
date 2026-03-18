@@ -32,3 +32,4 @@ For most use cases, you should use Kibana Alerts instead of Watcher. Kibana Aler
 
 Watcher is not available in {{serverless-full}}.
 :::
+
