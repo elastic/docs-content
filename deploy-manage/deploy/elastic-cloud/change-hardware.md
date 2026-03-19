@@ -19,8 +19,8 @@ This document explains how to modify the instance configurations used by specifi
 When a deployment is created, each {{es}} tier and stateless resource (e.g., Kibana) gets an instance configuration assigned to it, based on the hardware profile used. The combination of instance configurations defined within each hardware profile is designed to provide the best possible outcome for each use case. Therefore, it is generally not advisable to use instance configurations that are not specified in the hardware profile, except in specific situations in which we may need to migrate an {{es}} tier or stateless resource to a different hardware type. An example of such a scenario is when a cloud provider stops supporting a hardware type in a specific region.
 
 Note:
-- Elastic Cloud console (UI): You can only update instance configurations for Elasticsearch data tiers (Hot, Warm, Cold, Frozen). Stateless resources are shown in the plan preview but cannot be modified.
-- API: You can update instance configurations for both Elasticsearch data tiers and stateless resources.
+- {{ecloud}} console (UI): You can only update instance configurations for {{es}} data tiers (hot, warm, cold, and frozen). Stateless resources are shown in the plan preview but cannot be modified.
+- API: You can update instance configurations for both {{es}} data tiers and stateless resources.
 
 ## Migrate to a different instance configuration for data tiers using the Elastic Cloud Console [ec_migrate_to_a_different_instance_configuration_using_the_elastic_cloud_console]
 
