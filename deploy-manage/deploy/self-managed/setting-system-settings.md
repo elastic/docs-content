@@ -1,4 +1,5 @@
 ---
+navigation_title: Configuration methods
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-system-settings.html
 applies_to:
@@ -8,9 +9,13 @@ products:
   - id: elasticsearch
 ---
 
-# Configure system settings [setting-system-settings]
+# System settings configuration methods [setting-system-settings]
 
-Where to configure systems settings depends on which package you have used to install {{es}}, and which operating system you are using.
+This page describes **where and how** to apply operating system limits and environment variables for {{es}}, depending on your installation package and `init` system.
+
+For **which** limits and values you must set (such as file descriptors, threads, memory lock, virtual memory, and so on), see [Important system configuration](important-system-configuration.md) and the pages linked from there.
+
+Where to configure system settings depends on which package you have used to install {{es}}, and which operating system you are running.
 
 When using the `.zip` or `.tar.gz` packages, system settings can be configured:
 
@@ -22,30 +27,39 @@ When using the RPM or Debian packages, most system settings are set in the [syst
 
 ## `ulimit` [ulimit]
 
-On Linux systems, `ulimit` can be used to change resource limits on a temporary basis. Limits usually need to be set as `root` before switching to the user that will run {{es}}. For example, to set the number of open file handles (`ulimit -n`) to 65,535, you can do the following:
+On Linux systems, you can use `ulimit` to change resource limits on a temporary basis. Limits usually need to be set as `root` before switching to the user that will run {{es}}.
+
+Common options for `ulimit` include:
+
+* `-n` — maximum number of open file descriptors
+* `-u` — maximum number of processes available to a single user
+* `-l` — maximum size of memory that may be locked into RAM
+* `-a` — show all current soft resource limits (use this to verify what is in effect)
+
+For the full list of options, run `help ulimit` in Bash.
+
+Use the option and value required for your setting (see the pages under [Important system configuration](important-system-configuration.md)). For example:
 
 ```sh
 sudo su  <1>
-ulimit -n 65535 <2>
+ulimit -n <value> <2>
 su elasticsearch <3>
 ```
 
 1. Become `root`.
-2. Change the max number of open files.
-3. Become the `elasticsearch` user in order to start {{es}}.
-
+2. Change the limit for this session (the `-n` option is shown as an example; substitute the option and value you need).
+3. Become the user that will run {{es}} (for example `elasticsearch`) before starting the process.
 
 The new limit is only applied during the current session.
-
-You can consult all currently applied limits with `ulimit -a`.
 
 
 ## `/etc/security/limits.conf` [limits.conf]
 
-On Linux systems, persistent limits can be set for a particular user by editing the `/etc/security/limits.conf` file. To set the maximum number of open files for the `elasticsearch` user to 65,535, add the following line to the `limits.conf` file:
+On Linux systems, persistent limits can be set for a particular user by editing the `/etc/security/limits.conf` file. Add lines for the `elasticsearch` user (or the account that runs {{es}}) with the limit type and value your deployment requires. The exact limit name depends on what you are configuring. For example, you can configure `nofile` (open files), `nproc` (processes), or `memlock` (locked memory). Replace `<limit>` and `<value>` accordingly:
 
-```sh
-elasticsearch  -  nofile  65535
+```text
+elasticsearch  soft  <limit>  <value>
+elasticsearch  hard  <limit>  <value>
 ```
 
 This change will only take effect the next time the `elasticsearch` user opens a new session.
@@ -74,6 +88,8 @@ When using the RPM or Debian packages, environment variables can be specified in
 
 However, system limits need to be specified via [systemd](#systemd).
 
+Use the topic pages under [Important system configuration](important-system-configuration.md) to determine which environment variables or JVM options you need (for example `ES_JAVA_OPTS`, `ES_TMPDIR`, or paths set in `jvm.options`).
+
 
 ## Systemd configuration [systemd]
 
@@ -81,17 +97,19 @@ When using the RPM or Debian packages on systems that use [systemd](https://en.w
 
 The systemd service file (`/usr/lib/systemd/system/elasticsearch.service`) contains the limits that are applied by default.
 
-To override them, add a file called `/etc/systemd/system/elasticsearch.service.d/override.conf` (alternatively, you may run `sudo systemctl edit elasticsearch` which opens the file automatically inside your default editor). Set any changes in this file, such as:
+To override them, add a file called `/etc/systemd/system/elasticsearch.service.d/override.conf` (alternatively, you may run `sudo systemctl edit elasticsearch` which opens the file automatically inside your default editor). Set any changes in this file. For example, for resource limits and environment variables, include:
 
 ```ini
 [Service]
-LimitMEMLOCK=infinity
+LimitNOFILE=<value>
+LimitMEMLOCK=<value>
+Environment="ES_TMPDIR=/path/to/tmp"
 ```
+
+Replace the directives with those required for your deployment.
 
 Once finished, run the following command to reload units:
 
 ```sh
 sudo systemctl daemon-reload
 ```
-
-

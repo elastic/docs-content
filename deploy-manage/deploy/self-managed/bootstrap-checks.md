@@ -64,16 +64,16 @@ $$$bootstrap-checks-file-descriptor$$$
 
 File descriptors are a Unix construct for tracking open "files". In Unix though, [everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file). For example, "files" could be a physical file, a virtual file (e.g., `/proc/loadavg`), or network sockets. {{es}} requires lots of file descriptors (e.g., every shard is composed of multiple segments and other files, plus connections to other nodes, etc.). This bootstrap check is enforced on OS X and Linux.
 
-To pass the file descriptor check, you might have to configure [file descriptors](file-descriptors.md).
+To pass the file descriptor check, you might have to configure [file descriptors](/deploy-manage/deploy/self-managed/file-descriptors.md). For how to apply limits on the host, see [System settings configuration methods](/deploy-manage/deploy/self-managed/setting-system-settings.md).
 :::
 
 :::{dropdown} Memory lock check
 
 $$$bootstrap-checks-memory-lock$$$
 
-When the JVM does a major garbage collection it touches every page of the heap. If any of those pages are swapped out to disk they will have to be swapped back in to memory. That causes lots of disk thrashing that {{es}} would much rather use to service requests. There are several ways to configure a system to disallow swapping. One way is by requesting the JVM to lock the heap in memory through `mlockall` (Unix) or virtual lock (Windows). This is done via the {{es}} setting [`bootstrap.memory_lock`](setup-configuration-memory.md#bootstrap-memory_lock). However, there are cases where this setting can be passed to {{es}} but {{es}} is not able to lock the heap (e.g., if the `elasticsearch` user does not have `memlock unlimited`). The memory lock check verifies that **if** the `bootstrap.memory_lock` setting is enabled, that the JVM was successfully able to lock the heap.
+When the JVM does a major garbage collection it touches every page of the heap. If any of those pages are swapped out to disk they will have to be swapped back in to memory. That causes lots of disk thrashing that {{es}} would much rather use to service requests. There are several ways to configure a system to disallow swapping. One way is by requesting the JVM to lock the heap in memory through `mlockall` (Unix) or virtual lock (Windows). This is done via the {{es}} setting [`bootstrap.memory_lock`](/deploy-manage/deploy/self-managed/setup-configuration-memory.md#bootstrap-memory_lock). However, there are cases where this setting can be passed to {{es}} but {{es}} is not able to lock the heap (e.g., if the `elasticsearch` user does not have `memlock unlimited`). The memory lock check verifies that **if** the `bootstrap.memory_lock` setting is enabled, that the JVM was successfully able to lock the heap.
 
-To pass the memory lock check, you might have to configure [`bootstrap.memory_lock`](setup-configuration-memory.md#bootstrap-memory_lock).
+To pass the memory lock check, you might have to configure [`bootstrap.memory_lock`](/deploy-manage/deploy/self-managed/setup-configuration-memory.md#bootstrap-memory_lock). For how to apply memory lock limits on the host, see [System settings configuration methods](/deploy-manage/deploy/self-managed/setting-system-settings.md).
 :::
 
 :::{dropdown} Maximum number of threads check
@@ -82,7 +82,7 @@ $$$max-number-threads-check$$$
 
 {{es}} executes requests by breaking the request down into stages and handing those stages off to different thread pool executors. There are different [thread pool executors](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md) for a variety of tasks within {{es}}. Thus, {{es}} needs the ability to create a lot of threads. The maximum number of threads check ensures that the {{es}} process has the rights to create enough threads under normal use. This check is enforced only on Linux.
 
-If you are on Linux, to pass the maximum number of threads check, you must configure your system to allow the {{es}} process the ability to create at least 4096 threads. This can be done via `/etc/security/limits.conf` using the `nproc` setting (note that you might have to increase the limits for the `root` user too).
+If you are on Linux, to pass the maximum number of threads check, you must configure your system to allow the {{es}} process the ability to create at least 4096 threads. This can be done via `/etc/security/limits.conf` using the `nproc` setting (note that you might have to increase the limits for the `root` user too). For how to apply limits, see [System settings configuration methods](/deploy-manage/deploy/self-managed/setting-system-settings.md).
 :::
 
 :::{dropdown} Max file size check
