@@ -61,7 +61,7 @@ $$$autoops-deployment-types$$$**Is AutoOps available in all deployment types?**
 ::: 
 
 $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects?**
-:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure.
+:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you might not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure.
 
 $$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
 :   AutoOps is designed as a cloud service that needs an internet connection to send metrics to {{ecloud}}. However, you can make specific configuration choices to securely use it in your air-gapped environment:
@@ -134,7 +134,7 @@ $$$macos-install$$$ **Can I use macOS to install {{agent}} to connect my ECE, EC
 :   No, macOS is not a supported platform for installing {{agent}} and connecting an ECE, ECK, or self-managed cluster to AutoOps. Refer to [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) for a list of supported platforms. You can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
 
 $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?**
-:   You may need to define an IP address if your organization’s settings will block the agent from sending out data. 
+:   You might need to define an IP address if your organization’s settings will block the agent from sending out data. 
 
     To enable IP ranges, {{ecloud}} offers a selection of static IP addresses. All traffic directed to {{ecloud}} deployments, whether originating from the public internet, your private cloud network through the public internet, or your on-premise network through the public internet utilizes Ingress Static IPs as the network destination. 
 
