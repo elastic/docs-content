@@ -35,7 +35,7 @@ Using the {{ecloud}} console, you can change the instance configuration for {{es
 3. After reviewing the changes, click **Update**.
 4. A confirmation dialog will appear showing all changes that will happen. Review the plan and click **Confirm** to apply the update.
 
-Note: If your instance configuration selection matches an existing hardware profile, that hardware profile is automatically selected. Otherwise, your hardware profile is labeled Custom in the console. 
+    If your instance configuration selection matches an existing hardware profile, that hardware profile is automatically selected. Otherwise, your hardware profile is labeled as `custom` in the console. 
 
 ## Migrate to a different instance configuration using the API [ec_migrate_to_a_different_instance_configuration_using_the_api]
 
