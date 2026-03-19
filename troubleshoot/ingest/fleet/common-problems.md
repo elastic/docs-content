@@ -132,6 +132,7 @@ To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance.
 ```txt
 fail to enroll: fail to execute request to Fleet Server:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
+
 Here are several steps to help you troubleshoot the problem.
 
 1. Check for networking problems. From the host, run the `ping` command to confirm that it can reach the {{fleet-server}} instance.
