@@ -12,6 +12,8 @@ Headings provide a clear structure to your documentation, making it easier to sc
 
 Use headings in order, maintaining [W3C standards](https://www.w3.org/standards/). Accurately reflect the content that follows each heading. Avoid vague headings like "Introduction" or "Overview", and use specific headings like "Introduction to using Elasticsearch". Make heading text unique, especially for headings higher in the hierarchy.
 
+Avoid "stacking" headings. Every heading should be followed by at least one paragraph of introductory or body text before the next heading appears. This provides context to the reader and improves the "snippet" preview in search results.
+
 ### H1: Primary page title
 
 The H1 is the main title of the page and should clearly state the primary topic or purpose. Search engines give significant weight to the H1. There should be only one H1 per page, and each H1 should be unique. When headings are not unique, search engines struggle to understand the differences between thematically related pages.

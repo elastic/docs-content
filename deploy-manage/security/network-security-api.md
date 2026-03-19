@@ -18,6 +18,10 @@ navigation_title: Through the API
 
 This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful API, or {{serverless-full}} RESTful API or to manage different types of network security policies and rules. 
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/network-security
+:::
+
 We cover the following examples:
 
 * [Create an IP filter policy or IP filtering rule set](#create-ip-filter-policy)
@@ -42,7 +46,7 @@ Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{eclo
 :::
 
 :::{note}
-Serverless projects require the Serverless Plus add-on to apply network security policies. During the promotional period, applying a network security policy to a project opts that project in to Serverless Plus.
+Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply network security policies. During the promotional period, applying a network security policy to a project opts that project in to Serverless Plus.
 :::
 
 ## API reference

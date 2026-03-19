@@ -27,6 +27,52 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.3.2 [elastic-security-9.3.2-release-notes]
+
+### Features and enhancements [elastic-security-9.3.2-features-enhancements]
+
+* Adds a callout and badge to the visual event analyzer in the alert details flyout to indicate when cold and frozen data tiers are excluded from analyzer queries [#257015]({{kib-pull}}257015).
+* Adds an advanced setting to exclude cold and frozen data tiers from prevalence queries in the alert details flyout, improving load performance [#257011]({{kib-pull}}257011).
+* Improves the reliability of {{elastic-defend}}'s malware-on-write detection.
+
+### Fixes [elastic-security-9.3.2-fixes]
+
+* Fixes an issue where the alert details flyout persisted after navigating away from {{elastic-sec}} [#256001]({{kib-pull}}256001).
+* Fixes an issue where the visual event analyzer preview could fetch data with incorrect indices before the {{data-source}} was fully loaded [#255400]({{kib-pull}}255400).
+* Fixes an issue where visual event analyzer queries could return cached results for incorrect indices [#255396]({{kib-pull}}255396).
+* Fixes an issue where {{esql}} rule execution did not apply data tier exclusion filters to the source document enrichment query, potentially querying excluded cold and frozen tiers [#255341]({{kib-pull}}255341).
+* Fixes an issue where the visual event analyzer did not display in the alert details flyout in certain {{data-source}} configurations [#255182]({{kib-pull}}255182).
+* Fixes out-of-memory crashes and {{kib}} restarts caused by the gap auto-fill scheduler creating excessively large saved objects for rules with short intervals and long gaps [#254788]({{kib-pull}}254788).
+* Fixes an issue where the legacy `rules/prepackaged` endpoints returned 500 errors on Basic licenses when processing prebuilt rule packages that include {{ml}} rules [#253574]({{kib-pull}}253574).
+* Adds support for timestamp overrides to Timeline at the {{data-source}} level, allowing Timeline to use the {{data-source}}'s configured timestamp field instead of `@timestamp` [#251827]({{kib-pull}}251827).
+* Fixes an issue that would cause hotfix builds of {{elastic-defend}} to incorrectly report their version in Windows Security Center. 
+* Improves {{elastic-defend}} Linux trusted application handling by using Quark's trusted PID queue APIs for more consistent trusted PID synchronization.
+
+
+## 9.3.1 [elastic-security-9.3.1-release-notes]
+
+### Features and enhancements [elastic-security-9.3.1-features-enhancements]
+* Allows user and host details flyouts to open while observed data is loading [#252657]({{kib-pull}}252657).
+* Adds a new **Overview** tab to the rule details page [#251662]({{kib-pull}}251662).
+* Adds a `region` field to the Amazon Bedrock connector [#252960]({{kib-pull}}252960), [#252956]({{kib-pull}}252956).
+* Improves Automatic Migration performance by reducing the number of {{es}} calls when updating field mappings [#252431]({{kib-pull}}252431).
+* Updates the `fast-xml-parser` package dependency to version 5.3.4 [#251644]({{kib-pull}}251644).
+
+### Fixes [elastic-security-9.3.1-fixes]
+* Improves the performance of bulk rule deletion [#253116]({{kib-pull}}253116).
+* Fixes an Automatic Migration issue where failed rules appeared in non-failed status filters [#252263]({{kib-pull}}252263).
+* Fixes accessibility issues in the Security AI Assistant confirm delete modal [#251962]({{kib-pull}}251962).
+* Replaces a deprecated icon in the UI [#251930]({{kib-pull}}251930).
+* Adds optional field indicators to the OpenAI connector configuration [#251857]({{kib-pull}}251857).
+* Fixes an accessibility issue with a missing label in the Security AI Assistant flyout [#251656]({{kib-pull}}251656).
+* Fixes the `spaceId` handling in Agent Builder security tools [#251513]({{kib-pull}}251513).
+* Fixes an issue where detection rules APIs didn't properly validate endpoint response actions [#251352]({{kib-pull}}251352).
+* Fixes an issue in the Security AI Assistant where the **Add connector** button was incorrectly grayed out for users with permission to create connectors [#250921]({{kib-pull}}250921).
+* Fixes an issue where the privileged user monitoring table didn't refresh alert data when the time range changed [#250618]({{kib-pull}}250618).
+* Fixes a DNS parsing bug in Linux versions of {{elastic-defend}} that could result in crashes.
+* Fixes a bug in version 9.3.0 of {{elastic-defend}} that resulted in the Windows Security Center status page showing an error.
+
+
 ## 9.3.0 [elastic-security-9.3.0-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.0-features-enhancements]
@@ -88,6 +134,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves {{elastic-defend}} visibility into image load events in mixed-architecture scenarios, such as during .NET library loading when the library and main executable might use different architectures. This only applies to Windows 10, version 1709 and later.
 * Refactors {{elastic-defend}} Windows file scanning behavior to reduce the risk of file sharing conflicts with other applications and improve the reliability of malware-on-write and event enrichments that rely on file contents such as code signatures and imphashes.
 * Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
+* Further reduces {{elastic-defend}} behavioral protection CPU usage for trusted applications.
 
 
 ### Fixes [elastic-security-9.3.0-fixes]
@@ -161,6 +208,43 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * For {{elastic-defend}} on Linux, reduces the occurrence of policy failures related to malware protection system deadlock avoidance.
 * Improves {{elastic-defend}} on Linux to better handle fanotify events from different mount namespaces.
 * Fixes a bug in {{elastic-defend}} Linux event collection where some long-running processes were not enriched.
+
+
+## 9.2.7 [elastic-security-9.2.7-release-notes]
+
+### Features and enhancements [elastic-security-9.2.7-features-enhancements]
+* Adds a callout and badge to the visual event analyzer in the alert details flyout to indicate when cold and frozen data tiers are excluded from analyzer queries [#257015]({{kib-pull}}257015).
+* Adds an advanced setting to exclude cold and frozen data tiers from prevalence queries in the alert details flyout, improving load performance [#257011]({{kib-pull}}257011).
+* Improves the reliability of {{elastic-defend}}'s malware-on-write detection.
+
+### Fixes [elastic-security-9.2.7-fixes]
+* Fixes an issue where the alert details flyout persisted after navigating away from {{elastic-sec}} [#256001]({{kib-pull}}256001).
+* Fixes an issue where the visual event analyzer preview could fetch data with incorrect indices before the {{data-source}} was fully loaded [#255400]({{kib-pull}}255400).
+* Fixes an issue where visual event analyzer queries could return cached results for incorrect indices [#255396]({{kib-pull}}255396).
+* Fixes an issue where the visual event analyzer did not display in the alert details flyout in certain {{data-source}} configurations [#255182]({{kib-pull}}255182).
+* Enables the `defaultModel` setting for the Azure OpenAI connector to support APIM endpoints [#253577]({{kib-pull}}253577).
+* Fixes an issue where the legacy `rules/prepackaged` endpoints returned 500 errors on Basic licenses when processing prebuilt rule packages that include {{ml}} rules [#253574]({{kib-pull}}253574).
+* Adds support for timestamp overrides to Timeline at the {{data-source}} level, allowing Timeline to use the {{data-source}}'s configured timestamp field instead of `@timestamp` [#251827]({{kib-pull}}251827).
+* Fixes an issue that would cause hotfix builds of {{elastic-defend}} to incorrectly report their version in Windows Security Center.
+
+
+## 9.2.6 [elastic-security-9.2.6-release-notes]
+
+### Features and enhancements [elastic-security-9.2.6-features-enhancements]
+* Adds a new **Overview** tab to the rule details page [#251662]({{kib-pull}}251662).
+* Adds a `region` field to the Amazon Bedrock connector [#252960]({{kib-pull}}252960), [#252956]({{kib-pull}}252956).
+* Improves Automatic Migration performance by reducing the number of {{es}} calls when updating field mappings [#252431]({{kib-pull}}252431).
+* Updates the `fast-xml-parser` package dependency to version 5.3.4 [#251644]({{kib-pull}}251644).
+
+### Fixes [elastic-security-9.2.6-fixes]
+* Improves the performance of bulk rule deletion [#253116]({{kib-pull}}253116).
+* Fixes accessibility issues in the Security AI Assistant confirm delete modal [#251962]({{kib-pull}}251962).
+* Adds optional field indicators to the OpenAI connector configuration [#251857]({{kib-pull}}251857).
+* Fixes an accessibility issue with a missing label in the Security AI Assistant flyout [#251656]({{kib-pull}}251656).
+* Fixes an issue where detection rules APIs didn't properly validate endpoint response actions [#251352]({{kib-pull}}251352).
+* Fixes an issue where the `os_types` field was not saved when creating an exception list [#250279]({{kib-pull}}250279).
+* Fixes a DNS parsing bug in Linux versions of {{elastic-defend}} that could result in crashes.
+
 
 ## 9.2.5 [elastic-security-9.2.5-release-notes]
 
