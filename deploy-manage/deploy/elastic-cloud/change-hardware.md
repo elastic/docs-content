@@ -24,7 +24,7 @@ Note:
 
 ## Migrate to a different instance configuration for data tiers using the Elastic Cloud Console [ec_migrate_to_a_different_instance_configuration_using_the_elastic_cloud_console]
 
-You can update the instance configuration for Elasticsearch data tiers directly from the Elastic Cloud console. This allows you to change the instance configuration for Hot, Warm, Cold, or Frozen tiers without modifying other resources.
+Using the {{ecloud}} console, you can change the instance configuration for {{es}} hot, warm, cold, or frozen data tiers without modifying other resources.
 
 1. On the deployment overview page, next to your current hardware profile name, click **Edit**.
 
