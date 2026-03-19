@@ -64,7 +64,13 @@ $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects
 :   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure.
 
 $$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
-:   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
+:   AutoOps is designed as a cloud service that needs an internet connection to send metrics to {{ecloud}}. However, you can make specific configuration choices to securely use it in your air-gapped environment:
+
+    * **Exclude metrics**: AutoOps only collects [operational metrics](#extracted-info) from your cluster, not the underlying data. You can also choose to [disable the collection of certain types of metrics](../autoops/autoops-disable-metrics-collection.md) by AutoOps.  
+    * **Minimize network exposure**: AutoOps does not require broad internet access. You can choose to only [give access to the required port and URLs](../autoops/cc-connect-self-managed-to-autoops.md#firewall-allowlist).  
+    * **Inspect gathered data**: You can use the [`autoops_es_debug.yml` configuration file](#data-viewing-config) to view a sample of the data gathered from your cluster before it is sent to {{ecloud}}.
+
+    A locally deployable version of AutoOps is planned for a future release.
 
 $$$autoops-license$$$**How is AutoOps licensed?**
 :   AutoOps is available for free across all subscription levels and license types in {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, and self-managed clusters. It does not consume ECUs.
