@@ -111,6 +111,10 @@ If you're managing an {{stack}} deployment, then you can also assign roles and d
 
 When a role is assigned to *All Spaces*, you can’t remove its access from the space settings. You must instead edit the role to give it more granular access to individual spaces.
 
+:::{note}
+:applies_to: serverless: preview
+If your organization uses [{{cps}}](/explore-analyze/cross-project-search.md) ({{cps-init}}) in {{serverless-full}}, you can set the {{cps-init}} scope for a space. This setting determines the default scope for cross-project searches: origin only, or origin + all linked projects. For details, refer to [Set the default {{cps-init}} scope for a space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
+:::
 
 ## Move saved objects between spaces [spaces-moving-objects]
 
