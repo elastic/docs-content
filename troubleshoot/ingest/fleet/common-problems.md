@@ -153,7 +153,7 @@ Here are several steps to help you troubleshoot the problem.
 
 ### {{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message [agent-enrollment-dialing]
 
-{{Agent}} may fail to install on a Windows environment due to port conflicts and file locks
+{{agent}} might fail to install in a Windows environment due to port conflicts and file locks, returning this error:
 
 ```txt
 Restart attempt 2 failed: 'rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified.
