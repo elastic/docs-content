@@ -53,7 +53,9 @@ This change will only take effect the next time the `elasticsearch` user opens a
 ::::{admonition} Ubuntu and limits.conf
 :class: note
 
-In some Ubuntu versions, processes started by `init.d` might ignore the `limits.conf` file. To ensure the file is applied, check `/etc/pam.d/su` and make sure the following line is uncommented:
+In some Ubuntu versions, the limits defined in `/etc/security/limits.conf` might not be applied when starting processes from a shell.
+
+To ensure that the configured limits are applied, verify that the PAM module `pam_limits.so` is enabled and that the following line is present and uncommented in `/etc/pam.d/su`:
 
 ```sh
 session    required   pam_limits.so
