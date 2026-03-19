@@ -125,7 +125,6 @@ This error occurs when you use self-signed certificates with {{es}} using IP as 
 
 You will also need to set `ssl.verification_mode: none` in the Output settings in {{fleet}} and {{integrations}} UI.
 
-
 ### {{agent}} enrollment fails on the host with `Client.Timeout exceeded` message [agent-enrollment-timeout]
 
 To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance. If the agent cannot connect, you get failures similar to these:
@@ -133,6 +132,24 @@ To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance.
 ```txt
 fail to enroll: fail to execute request to Fleet Server:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
+Here are several steps to help you troubleshoot the problem.
+
+1. Check for networking problems. From the host, run the `ping` command to confirm that it can reach the {{fleet-server}} instance.
+2. Additionally, `curl` the `/status` API of {{fleet-server}}:
+
+    ```shell
+    curl -f http://<fleet-server-url>:8220/api/status
+    ```
+
+3. Verify that you have specified the correct {{kib}} {{fleet}} settings URL and port for your environment.
+
+    By default, HTTPS protocol and port 8220 is expected by {{fleet-server}} to communicate with {{es}} unless you have explicitly set it otherwise.
+
+4. Check that you specified a valid enrollment key during enrollment. To do this:
+
+    1. In {{fleet}}, select **Enrollment tokens**.
+    2. To view the secret, click the eyeball icon. The secret should match the string that you used to enroll {{agent}} on your host.
+    3. If the secret doesn’t match, create a new enrollment token and use this token when you run the `elastic-agent enroll` command.
 
 ### {{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message [agent-enrollment-dialing]
 
@@ -153,26 +170,6 @@ Restart attempt 2 failed: 'rpc error: code = Unavailable desc = connection error
     tasklist /fi "pid eq xxxx"
      ```
    - If a conflict is found, update the `elastic-agent.yml` to bind on a different port using `agent.grpc.port`, such as 6790.
-
-Here are several steps to help you troubleshoot the problem.
-
-1. Check for networking problems. From the host, run the `ping` command to confirm that it can reach the {{fleet-server}} instance.
-2. Additionally, `curl` the `/status` API of {{fleet-server}}:
-
-    ```shell
-    curl -f http://<fleet-server-url>:8220/api/status
-    ```
-
-3. Verify that you have specified the correct {{kib}} {{fleet}} settings URL and port for your environment.
-
-    By default, HTTPS protocol and port 8220 is expected by {{fleet-server}} to communicate with {{es}} unless you have explicitly set it otherwise.
-
-4. Check that you specified a valid enrollment key during enrollment. To do this:
-
-    1. In {{fleet}}, select **Enrollment tokens**.
-    2. To view the secret, click the eyeball icon. The secret should match the string that you used to enroll {{agent}} on your host.
-    3. If the secret doesn’t match, create a new enrollment token and use this token when you run the `elastic-agent enroll` command.
-
 
 ### {{agent}} fails to enroll with {{fleet-server}} running on localhost [mac-file-sharing]
 
