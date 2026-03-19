@@ -76,6 +76,7 @@ Use the following parameters in the `with` block to configure the request:
 | `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, or `DELETE`) |
 | `headers` | No | An object with key-value pairs for HTTP headers |
 | `body` | No | The request body (typically a JSON object) |
+| `fetcher` | No | Allows you to override certificate validation |
 
 ::::{admonition} Known limitation
 The native `http` action does not have access to a centralized secret store for managing authentication credentials. If your endpoint requires authentication, you must include the credentials directly in the `headers` block.
@@ -88,6 +89,22 @@ steps:
     with:
       url: "https://api.thirdparty.com/v1/data"
       method: "GET"
+      headers:
+        Authorization: "Bearer my-secret-api-token"
+```
+:::
+::::
+
+:::{dropdown} Click to show how to disable the certificate validation usefull when dealing with self signed certs
+```yaml
+steps:
+  - name: call_secure_api
+    type: http
+    with:
+      url: "https://api.thirdparty.com/v1/data"
+      method: "GET"
+      fetcher:
+        skip_ssl_verification: true
       headers:
         Authorization: "Bearer my-secret-api-token"
 ```
