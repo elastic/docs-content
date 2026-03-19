@@ -160,17 +160,22 @@ Here are several steps to help you troubleshoot the problem.
 Restart attempt 2 failed: 'rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified.
 ```
 
-1. **Resolve Port Conflicts**
-   - Check for any processes using port 6789 or 6790 with:
-     ```bash
-     netstat -ano | findstr :6789
-     netstat -ano | findstr :6790
-     ```
-    This will return the PID of the APP concerned then you can identify it via
-    ```bash
-    tasklist /fi "pid eq xxxx"
-     ```
-   - If a conflict is found, update the `elastic-agent.yml` to bind on a different port using `agent.grpc.port`, such as 6790.
+To resolve port conflicts:
+
+1. Check for any processes that are using port 6789 or 6790:
+
+   ```bash
+   netstat -ano | findstr :6789
+   netstat -ano | findstr :6790
+   ```
+   
+   This will return the process ID (PID) of the application that's using the specified port. You can then identify the application using its PID:
+   
+   ```bash
+   tasklist /fi "pid eq <APP-PID>"
+   ```
+
+2. In case of a port conflict, update `agent.grpc.port` in the `elastic-agent.yml` file to bind the agent to a different port (for example, 6790).
 
 ### {{agent}} fails to enroll with {{fleet-server}} running on localhost [mac-file-sharing]
 
