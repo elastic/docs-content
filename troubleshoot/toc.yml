@@ -158,7 +158,6 @@ toc:
           - file: ingest/opentelemetry/edot-sdks/index.md
             children:
               - file: ingest/opentelemetry/edot-sdks/android/index.md
-              - file: ingest/opentelemetry/edot-sdks/browser/index.md
               - file: ingest/opentelemetry/edot-sdks/dotnet/index.md
               - file: ingest/opentelemetry/edot-sdks/ios/index.md
               - file: ingest/opentelemetry/edot-sdks/java/index.md
