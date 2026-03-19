@@ -218,4 +218,4 @@ For example, if you have both a `text` field and a `semantic_text` field, you ca
 A [hybrid search](/solutions/search/hybrid-semantic-text.md) provides comprehensive search capabilities to find relevant information based on both the raw text and its underlying meaning.
 
 To learn about more options, such as vector and keyword search, go to [](/solutions/search/search-approaches.md).
-For a summary of the AI-powered search use cases, go to [](/solutions/search/ai-search/ai-search.md).
+For a summary of vector search use cases, go to [](/solutions/search/vector.md).

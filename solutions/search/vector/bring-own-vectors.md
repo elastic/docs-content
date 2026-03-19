@@ -33,7 +33,7 @@ In this guide, you’ll use documents that already include dense vector embeddin
 
 ::::{tip}
 This is an advanced use case that uses the `dense_vector` field type. Refer to [](/solutions/search/semantic-search.md) for an overview of your options for semantic search with {{es}}.
-To learn about the differences between semantic search and vector search, go to [](/solutions/search/ai-search/ai-search.md).
+To learn about the differences between semantic search and vector search, go to [](/solutions/search/vector.md).
 ::::
 
 :::::{stepper}

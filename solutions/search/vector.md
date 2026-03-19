@@ -13,45 +13,116 @@ products:
 ---
 # Vector search in {{es}}
 
+Sometimes [full-text search](full-text.md) alone isn't enough. {{ml-cap}} techniques help users find data based on intent and contextual meaning, not just keywords. Vector search is the foundation for these capabilities in {{es}}.
+
+Vector search uses {{ml}} models to convert content into numerical representations called _vector embeddings_. These embeddings capture meaning and relationships, enabling {{es}} to retrieve results based on similarity rather than exact term matches.
+
 :::{tip}
-Looking for a minimal configuration approach? The `semantic_text` field type provides an abstraction over vector search implementations with sensible defaults and automatic model management. It's the recommended way to start with {{es}} vector search. [Learn more about semantic_text](semantic-search/semantic-search-semantic-text.md).
+New to vector search? Start with the `semantic_text` workflow, which provides an easy-to-use abstraction over vector search with sensible defaults and automatic model management. Learn more [in this hands-on tutorial](semantic-search/semantic-search-semantic-text.md).
 :::
 
-Vector search in {{es}} uses vector embeddings to power modern, AI-driven search experiences. With vectorized content, Elasticsearch retrieves results based on meaning and similarity, not just keywords or exact term matches.
+## How it works
 
-Vector search is a core component of most [semantic search](semantic-search.md) workflows, but it can also be used independently for similarity matching use cases. Learn more about the broader benefits in the [AI-powered search overview](ai-search/ai-search.md).
+To understand the core concepts behind vector search, including vectors, embeddings, similarity, and the difference between dense and sparse approaches, refer to [How vector search works](vector/how-vector-search-works.md).
 
-This guide focuses on the more manual technical implementations of vector search, outside of the higher-level `semantic_text` workflow.  
-The right approach depends on your requirements, data type, and use case.
+## Use cases
 
-## Vector queries and field types in {{es}} [vector-queries-and-field-types]
+Vector search enables a wide range of applications:
 
-Here’s a quick reference for the main **vector field types** and **query types** you can use:
+- **Natural language search**: Let users search in everyday language and get results based on meaning, not just keywords. 
+- **Retrieval Augmented Generation (RAG)**: Retrieve relevant documents from {{es}} and feed them into a large language model (LLM) to generate grounded, context-aware answers.
+- **Question answering**: Match natural language questions to the most relevant answers in your data. 
+- **Content recommendations**: Suggest related articles, products, or media based on vector similarity. 
+- **Large-scale information retrieval**: Search across millions or billions of documents efficiently.
+- **Product discovery**: Help users find products that match their intent, even when they don't use exact product terms. 
+- **Workplace document search**: Search internal knowledge bases, wikis, and documents by meaning rather than exact keywords. 
+- **Image and multimedia similarity**: Find visually or semantically similar images, audio, or video by comparing their vector representations.
 
-| Vector type     | Field type      | Query type      | Primary use case                                            |
-| --------------- | --------------- | --------------- | ----------------------------------------------------------- |
-| Dense vectors   | `dense_vector`  | `knn`           | Semantic similarity with your own embeddings model          |
-| Sparse vectors  | `sparse_vector` | `sparse_vector` | Semantic term expansion using the ELSER model               |
-| Sparse or dense | `semantic_text` | `semantic`      | Managed semantic search, agnostic to implementation details |
+## Which workflow should I use?
 
-## Dense vector search in {{es}}
+{{es}} offers several ways to implement vector search. Your choice depends on how much control you need and what type of content you are searching.
 
-Dense vector search uses neural embeddings to capture semantic meaning. It translates content into fixed-length numeric vectors, where similar items cluster close together in vector space. This makes dense vectors ideal for:
+### Semantic search workflows
 
-- Finding semantically similar documents  
-- Matching user questions with answers  
-- Image and multimedia similarity search  
-- Content-based recommendations  
+Semantic search workflows are managed and require minimal configuration. They handle embedding generation and model management for you. Choose semantic search when:
 
-[Learn more about dense vector search in {{es}}](vector/dense-vector.md).
+- You want to get started quickly with natural language search
+- You prefer Elastic to manage models and indexing defaults
+- Your use case is text-based and fits common patterns (document search, RAG, question answering)
 
-## Sparse vector search with ELSER
+Explore these guides:
 
-Sparse vector search relies on the **ELSER model** to expand content with semantically related terms. This approach combines semantic understanding with explainability, making it a strong fit for:
+- [Semantic search](semantic-search.md)
+- [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md)
+- [Semantic search with the {{infer}} API](semantic-search/semantic-search-inference.md)
+- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md)
 
-- Enhanced keyword search  
-- Use cases requiring explainable results  
-- Domain-specific search  
-- Large-scale deployments
+### Direct vector search
 
-[Learn more about sparse vector search with ELSER](vector/sparse-vector.md).
+Direct vector search uses the `dense_vector` and `sparse_vector` field types. Choose this when:
+
+- You already have pre-computed embeddings or generate them outside {{es}}
+- You need to search non-text content (images, audio) with embeddings from external models
+- You require fine-grained control over indexing, quantization, or query parameters
+
+Explore these guides:
+
+- [Dense vector search](vector/dense-vector.md)
+- [Sparse vector search](vector/sparse-vector.md)
+- [Bring your own dense vectors](vector/bring-own-vectors.md)
+
+:::{tip}
+You can combine vector search with full-text search for [hybrid search](hybrid-search.md) that leverages both meaning-based and keyword-based matching.
+:::
+
+## Resources
+
+Resources are grouped by implementation path. Start here for a quick win, or jump to the workflow that matches how much control you need.
+
+### Start here
+
+- [Get started with semantic search](get-started/semantic-search.md): Set up hybrid search using `semantic_text` with dense vector embeddings. The recommended starting point.
+- [How vector search works](vector/how-vector-search-works.md): Core concepts: vectors, embeddings, dimensions, similarity, dense vs. sparse vectors, and quantization.
+
+### Managed workflows
+
+Use `semantic_text`, the {{infer-cap}} APIs, or ELSER for semantic search with managed embedding generation and model deployment.
+
+- [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md): Implement semantic search with automatic embedding generation and model management.
+- [Hybrid search with `semantic_text`](hybrid-semantic-text.md): Combine vector search with full-text search using reciprocal rank fusion.
+- [Semantic search with the {{infer}} API](semantic-search/semantic-search-inference.md): Configure {{infer}} endpoints for more control over embedding generation.
+- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md): Deploy the ELSER sparse vector model and build a semantic search pipeline.
+
+### Manual implementation
+
+Work directly with `dense_vector` and `sparse_vector` field types when you need more control over indexing, quantization, and query parameters.
+
+- [Bring your own dense vectors to {{es}}](vector/bring-own-vectors.md): Store and search pre-computed dense vectors using the `dense_vector` field type.
+- [Dense vector search in {{es}}](vector/dense-vector.md): How dense vectors capture semantic meaning using neural embeddings, and how to use them in {{es}}.
+- [Sparse vector search in {{es}}](vector/sparse-vector.md): How ELSER generates sparse vectors for explainable, term-based semantic matching.
+- [Tutorial: Dense and sparse workflows using ingest pipelines](vector/dense-versus-sparse-ingest-pipelines.md): A side-by-side walkthrough of dense and sparse vector ingest pipelines.
+
+### Querying and pipelines
+
+Build multi-stage retrieval and improve result ranking.
+
+- [kNN search in {{es}}](vector/knn.md): Run approximate and exact k-nearest neighbor searches, with filtering, multi-kNN, and nested vector support.
+- [Retrievers](retrievers-overview.md): Compose multi-stage retrieval pipelines that combine different search strategies in a single request.
+- [Semantic reranking](ranking/semantic-reranking.md): Rerank search results using a cross-encoder model to improve relevance after initial retrieval.
+
+### Models and infrastructure
+
+Learn about the models and services that power vector search in {{es}}.
+
+- [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): Elastic's built-in sparse vector model for semantic search with explainable, term-based matching.
+- [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md): A multilingual dense embedding model that can be deployed directly in {{es}}.
+- [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md): A managed service for running {{ml}} models for embedding generation and other NLP tasks.
+- [Search and compare text](/explore-analyze/machine-learning/nlp/ml-nlp-search-compare.md): Use deployed NLP models to search and compare text at query time.
+- [Text embedding and semantic search](/explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md): Deploy a text embedding model and use it for vector search, from model setup to query.
+- [Using Cohere with {{es}}](semantic-search/cohere-es.md): Generate embeddings and perform semantic search using Cohere's models.
+
+### Optimization
+
+Tune vector search for production performance.
+
+- [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Optimize vector search performance by tuning quantization, HNSW parameters, memory, and recall tradeoffs.
