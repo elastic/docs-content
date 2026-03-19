@@ -395,7 +395,7 @@ Applies to: {{stack}} 9.x
 
 **Details**
 
-Due to a bug in how Elasticsearch processes empty `keyword` fields encoded with SMILE, Symbolizer is erroring out when trying to store symbols for private exectaubles.
+Due to a bug in how Elasticsearch processes empty `keyword` fields encoded with SMILE, Symbolizer fails to store symbols for private executables.
 Elasticsearch versions affected: 9.1.4+
 Fixed in the following Elasticsearch releases:
 
