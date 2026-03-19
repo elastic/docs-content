@@ -30,7 +30,7 @@ Using the {{ecloud}} console, you can change the instance configuration for {{es
 
 2. In the hardware profile flyout, select the instance configuration for each data tier you want to update. The configuration screen summarizes the changes for the tier-specific instance configurations as part of your deployment.
 
-Note: Only instance types available in the deployment's regions are shown. Stateless resources (For example: master nodes, ML nodes, Kibana) cannot be modified, but the plan preview will still show their related updates.
+    Only instance types available in the deployment's regions are shown. Stateless resources (For example: master nodes, ML nodes, Kibana) cannot be modified, but the plan preview will still show their related updates.
 
 3. After reviewing the changes, click **Update**.
 4. A confirmation dialog will appear showing all changes that will happen. Review the plan and click **Confirm** to apply the update.
