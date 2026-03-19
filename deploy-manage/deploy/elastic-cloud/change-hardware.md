@@ -26,7 +26,7 @@ Note:
 
 Using the {{ecloud}} console, you can change the instance configuration for {{es}} hot, warm, cold, or frozen data tiers without modifying other resources.
 
-1. On the deployment overview page, next to your current hardware profile name, click **Edit**.
+1. On the deployment overview page, find your current hardware profile and click **Edit**.
 
 2. In the hardware profile flyout, select the instance configuration for each data tier you want to update. The configuration screen summarizes the changes for the tier-specific instance configurations as part of your deployment.
 
