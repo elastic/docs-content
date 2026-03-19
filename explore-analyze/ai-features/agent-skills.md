@@ -112,6 +112,7 @@ The following AI coding agents are compatible with the Agent Skills format:
 | Cursor | `.agents/skills` |
 | Codex | `.agents/skills` |
 | OpenCode | `.agents/skills` |
+| Pi | `.pi/agent/skills` |
 | Windsurf | `.windsurf/skills` |
 | Roo | `.roo/skills` |
 | Cline | `.agents/skills` |

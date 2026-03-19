@@ -17,12 +17,11 @@ When configured, any email notifications are sent to users who are members of th
 
 To configure email notifications for your {{ecloud}} billing:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From a deployment or project on the home page, select **Manage**.
-3. From the lower navigation menu, select **Billing and subscription**.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Billing**.
 4. Follow the steps in [Configure budget emails](#configure-budget-emails) to set up the email notifications you'd like to receive.
 
-Note that [Credit consumption emails](#configure-credit-consumption-emails) are also shown on the **Billing and subscription** page, but these notifications are not configurable.
+Note that [Credit consumption emails](#configure-credit-consumption-emails) are also shown on the **Billing** page, but these notifications are not configurable.
 
 ## Configure budget emails [configure-budget-emails]
 
