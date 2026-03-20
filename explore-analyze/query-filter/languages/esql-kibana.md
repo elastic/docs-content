@@ -185,28 +185,15 @@ stack: ga 9.4
 serverless: ga
 ```
 
-{{esql}} queries use a timezone for date and time functions and time-based filtering. There are two ways to control it:
-
-**{{kib}} advanced setting (default)**
-
-When you run {{esql}} queries in Discover, dashboards, alerting, or Maps, {{kib}} automatically uses the timezone from the **Time zone** (`dateFormat:tz`) [advanced setting](kibana://reference/advanced-settings.md). To change it:
+{{esql}} queries use a timezone for date and time functions and time-based filtering. When you run {{esql}} queries in Discover, dashboards, alerting, or Maps, {{kib}} automatically uses the timezone from the **Time zone** (`dateFormat:tz`) [advanced setting](kibana://reference/advanced-settings.md). To change it:
 
 1. Go to **Stack Management** → **Advanced Settings** (or **Management** → **Advanced Settings** in {{serverless-short}}).
 2. Search for **Time zone** (`dateFormat:tz`).
 3. Set it to **Browser** to use your browser's timezone, or choose a specific timezone such as **UTC** or **America/New_York**.
 
-
-**Per-query override with SET**
-
-To use a different timezone for a specific query, add a [`SET time_zone`](elasticsearch://reference/query-languages/esql/commands/set.md) directive before the source command. When present, it overrides the advanced setting for that query:
-
-```esql
-SET time_zone = "America/New_York";
-FROM kibana_sample_data_logs
-| STATS count = COUNT(*) BY BUCKET(@timestamp, 1 hour)
-```
-
-The editor does not suggest `SET time_zone` in autocomplete, but you can type it manually. You can also use it through the [Dev Tools Console](../tools/console.md) or the [{{es}} API directly](https://www.elastic.co/docs/api/doc/elasticsearch/).
+:::{warning}
+Avoid using the {{esql}} [`SET time_zone`](elasticsearch://reference/query-languages/esql/commands/set.md) directive in {{kib}} apps. `SET time_zone` changes how dates are computed by {{es}}, but {{kib}} still displays timestamps following the timezone defined in its `dateFormat:tz` advanced setting, which can produce confusing results.
+:::
 
 
 
