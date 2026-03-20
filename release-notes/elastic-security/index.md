@@ -261,10 +261,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where {{elastic-defend}} on Windows could log a warning about "Quarantine directory failed validation due to ACL or file attribute change" for empty removable media drives such as optical drives.
 * Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-endpoint}} uninstallation or upgrade.
 
-:::{include} _snippets/9.3.0/index.md
-:::
-
-
 ## 9.2.4 [elastic-security-9.2.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.2.4-features-enhancements]

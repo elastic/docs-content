@@ -100,11 +100,6 @@ Migrate data from the old reindexed index to the new data stream, then delete th
 * **Event log retention**: Event log data has a default retention of 90 days. If you don't need historical data, you can skip the reindex step and simply delete the old index and its aliases.
 :::
 
-:::
-:::{include} _snippets/9.3.0/known-issues.md
-:::
-
-
 :::{dropdown} Intermittent blue screen due to conflict with Windows ODX in {{elastic-defend}}
 Applies to: 8.19.8, 8.19.9, 9.1.8, 9.1.9, 9.2.2, and 9.2.3
 

@@ -60,9 +60,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes query sync on save and adds debounce for preview chart [#249833]({{kib-pull}}249833).
 * Fixes editing feature of significant event queries [#249716]({{kib-pull}}249716).
 
-<!-- :::{include} _snippets/9.3.0/index.md
-::: -->
-
 ## 9.3.0 [elastic-observability-9.3.0-release-notes]
 
 ### Features and enhancements [elastic-observability-9.3.0-features-enhancements]
@@ -242,8 +239,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds more granular control over how alerts behave when data stops being reported for metric threshold rules [#247669]({{kib-pull}}247669).
 * Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
 *
-:::{include} _snippets/9.3.0/index.md
-:::
 
 ## 9.2.4 [elastic-observability-9.2.4-release-notes]
 
