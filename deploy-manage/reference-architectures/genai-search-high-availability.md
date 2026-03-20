@@ -101,7 +101,7 @@ For the full list of currently available instance configurations, refer to:
 
 ### Storage and memory
 
-Approximate nearest-neighbor (ANN) algorithms are dominated by irregular, latency-bound memory access rather than arithmetic. As a result, all vector distance computations occur in off-heap RAM and CPU. To make large-scale in-memory vector search feasible, {{es}} supports [many quantization techniques](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for up to a 32x reduction in vector footprint in RAM, and defaults to HNSW with [Better Binary Quantization (BBQ)](https://www.elastic.co/search-labs/blog/better-binary-quantization-lucene-elasticsearch). BBQ is Elastic’s memory-efficient approach for maximizing recall with a low vector memory footprint.
+Approximate nearest-neighbor (ANN) algorithms are dominated by latency-bound memory access patterns, meaning performance is typically limited by data in memory rather than raw vector computation. As a result, all vector distance computations occur in off-heap RAM and CPU. To make large-scale in-memory vector search feasible, {{es}} supports [many quantization techniques](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for up to a 32x reduction in vector footprint in RAM, and defaults to HNSW with [Better Binary Quantization (BBQ)](https://www.elastic.co/search-labs/blog/better-binary-quantization-lucene-elasticsearch). BBQ is Elastic’s memory-efficient approach for maximizing recall with a low vector memory footprint.
 
 To increase off-heap memory available for vector search, you have the following options:
 
