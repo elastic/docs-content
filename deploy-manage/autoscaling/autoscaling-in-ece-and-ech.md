@@ -78,7 +78,7 @@ On a highly available deployment, autoscaling events are always applied to insta
 ## Notifications[ec-autoscaling-notifications]
 In the event that a data tier or machine learning node scales up to its maximum possible size, you’ll receive an email, and a notice also appears on the deployment overview page prompting you to adjust your autoscaling settings to ensure optimal performance.
 
-In {{ece}} deployments, a warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../../explore-analyze/alerts-cases/watcher.md).
+In {{ece}} deployments, a warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../../explore-analyze/alerting/watcher.md).
 
 ## Restrictions and limitations[ec-autoscaling-restrictions]
 
@@ -114,7 +114,7 @@ To enable or disable autoscaling on a deployment:
 :::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-4. Under the deployment's name in the navigation menu, select **Edit**.
+4. From the navigation menu, select **Edit**.
 5. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
 6. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
 
@@ -129,7 +129,7 @@ Each autoscaling setting is configured with a default value. You can adjust thes
 :::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-3. Under the deployment's name in the navigation menu, select **Edit**.
+3. From the navigation menu, select **Edit**.
 4. To update a data tier:
 
     1. Use the dropdown box to set the **Maximum size per zone** to the largest amount of resources that should be allocated to the data tier automatically. The resources will not scale above this value.
@@ -249,9 +249,9 @@ Although autoscaling can scale some tiers by CPU, the primary measurement of tie
 
 Run this example API request to create a deployment with autoscaling:
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ece}}
+:::{applies-item} ece:
 
 ```sh
 curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
@@ -455,7 +455,7 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
 
 :::
 
-:::{tab-item} {{ech}}
+:::{applies-item} ess:
 
 ```sh
 curl -XPOST \

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/mutual-tls.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -51,6 +54,12 @@ When you run {{agent}} with the {{elastic-defend}} integration, the [TLS certifi
 
 
 ## On-premise deployments [mutual-tls-on-premise]
+
+```{applies_to}
+deployment:
+  self: ga
+  ece: ga
+```
 
 :::{image} images/mutual-tls-on-prem.png
 :alt: Diagram of mutual TLS on premise deployment model
@@ -130,6 +139,12 @@ ssl.key: /path/to/cert_key
 
 ## {{fleet-server}} on {{ecloud}} [mutual-tls-cloud]
 
+```{applies_to}
+serverless: ga
+deployment:
+  ess: ga
+```
+
 In this deployment model, all traffic ingress into {{ecloud}} has its TLS connection terminated at the {{ecloud}} boundary. Since this termination is not handled on a per-tenant basis, a client-specific certificate can NOT be used at this point.
 
 :::{image} images/mutual-tls-cloud.png
@@ -140,6 +155,12 @@ We currently don’t support mTLS in this deployment model. An alternate deploym
 
 
 ## {{fleet-server}} on {{ecloud}} using a proxy [mutual-tls-cloud-proxy]
+
+```{applies_to}
+deployment:
+  ess: ga
+serverless: ga
+```
 
 In this scenario, where you have access to the proxy, you can configure mTLS between the agent and your proxy.
 
@@ -161,6 +182,11 @@ During {{agent}} installation on premise use the following options:
 
 
 ## {{fleet-server}} on-premise and {{ech}} [mutual-tls-on-premise-hosted-es]
+
+```{applies_to}
+deployment:
+  ess: ga
+```
 
 In some scenarios you may want to deploy {{fleet-server}} on your own premises. In this case, you’re able to provide your own certificates and certificate authority to enable mTLS between {{fleet-server}} and {{agent}}.
 

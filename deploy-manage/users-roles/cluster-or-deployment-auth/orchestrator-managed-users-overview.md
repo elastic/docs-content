@@ -5,6 +5,12 @@ applies_to:
     ece:
     eck:
 navigation_title: Orchestrator-managed users
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Orchestrator-managed users

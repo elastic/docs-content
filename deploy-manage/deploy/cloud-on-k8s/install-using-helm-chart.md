@@ -9,7 +9,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Install using a Helm chart [k8s-install-helm]
+# Install ECK using a Helm chart [k8s-install-helm]
 
 Starting from ECK 1.3.0, a Helm chart is available to install ECK. It is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
 

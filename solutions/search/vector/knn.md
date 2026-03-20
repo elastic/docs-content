@@ -137,6 +137,10 @@ For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW g
 
 {applies_to}`stack: ga 9.2` In addition to search-time parameters, HNSW and DiskBBQ expose index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
 
+::::{tip}
+When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md) with dense vector embeddings, you can also configure `index_options` directly on the field. See [Optimizing vector storage with `index_options`](../semantic-search/semantic-search-semantic-text.md#semantic-text-index-options) for examples.
+::::
+
 ```console
 PUT image-index
 {
@@ -161,10 +165,24 @@ PUT image-index
 
 To gather results, the kNN API first finds a `num_candidates` number of approximate neighbors per shard, computes similarity to the query vector, selects the top `k` per shard, and merges them into the global top `k` nearest neighbors.
 
+For HNSW indices, `num_candidates` is the main search-time speed/accuracy control:
+
 * Increase `num_candidates` to improve recall and accuracy (at the cost of higher latency).
 * Decrease `num_candidates` for faster queries (with a potential accuracy trade-off).
 
-Choosing `num_candidates` is the primary knob for optimizing the latency/recall trade-off in {{es}} vector similarity search.
+For DiskBBQ (`bbq_disk`) indices, you can also use `visit_percentage` to control the total percentage of vectors visited during search. `visit_percentage` accepts values from `0` to `100`, including decimal values such as `0.5` (half a percent):
+
+* A good starting value is `3` (3%).
+* Increase `visit_percentage` to improve recall and accuracy (at the cost of higher latency).
+* Decrease `visit_percentage` for faster queries (with a potential accuracy trade-off).
+
+When a search targets both HNSW and DiskBBQ indices, use `visit_percentage` with `num_candidates` to tune performance and recall across both index types.
+
+When [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) is involved, `rescore_vector` is an additional speed/accuracy tuning tool. It reranks a larger candidate set using original vectors after approximate retrieval.
+
+* Increase `rescore_vector.oversample` to improve accuracy (at the cost of higher latency).
+* Decrease `rescore_vector.oversample` for faster queries (with a potential accuracy trade-off).
+* For detailed behavior and usage guidance, see [Oversampling and rescoring for quantized vectors](#dense-vector-knn-search-rescoring).
 
 ### Approximate kNN using byte vectors [approximate-knn-using-byte-vectors]
 
@@ -446,11 +464,52 @@ Reference the deployed text embedding model or the model deployment in the `quer
 (...)
 ```
 
-1. The {{nlp}} task to perform. It must be `text_embedding`.
+1. The task to perform. In this case, it is `text_embedding`.
 2. The ID of the text embedding model used to generate the query’s dense vector. Use the same model that produced the document embeddings in the target index. You can also provide the `deployment_id` as the `model_id` value.
 3. The query string from which the model generates the dense vector representation.
 
 For more information on how to deploy a trained model and use it to create text embeddings, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
+
+### Use `lookup` to build the query vector [knn-query-vector-lookup]
+```{applies_to}
+stack: ga 9.4
+```
+
+If your query vector already exists in Elasticsearch, use the `lookup` query vector builder to fetch that vector directly from a document at search time.
+
+Use `lookup` when you want to:
+
+- Find similar items for recommendations
+- Retrieve related content from a seed document
+- Avoid an extra client round-trip to fetch a vector before searching
+
+The lookup source must reference a `dense_vector` field that contains a single vector value. As with any kNN search, the looked-up vector must be compatible with the target kNN field (same dimensions and same embedding model semantics).
+
+```js
+(...)
+{
+  "knn": {
+    "field": "product-vector",
+    "k": 10,
+    "num_candidates": 100,
+    "query_vector_builder": {
+      "lookup": { <1>
+        "id": "product-123", <2>
+        "index": "seed-products", <3>
+        "path": "product-vector", <4>
+        "routing": "tenant-a" <5>
+      }
+    }
+  }
+}
+(...)
+```
+
+1. Use the `lookup` query vector builder to retrieve the vector from an existing document.
+2. The ID of the source document that contains the vector to use for search.
+3. The name of the index that stores the source document.
+4. The vector field path in the source document. It must reference a `dense_vector` field containing a single vector value.
+5. Optional routing value used to retrieve the source document.
 
 ### Search multiple kNN fields [_search_multiple_knn_fields]
 
@@ -1202,7 +1261,7 @@ All quantization introduces some accuracy loss, and higher compression generally
 
 #### The `rescore_vector` option
 ```{applies_to}
-stack: preview 9.0, ga 9.1
+stack: preview =9.0, ga 9.1+
 ```
 
 Use `rescore_vector` to automatically perform reranking. When you specify an `oversample` value, approximate kNN will:
@@ -1292,7 +1351,7 @@ POST /my-index/_search
 ```
 
 1. The number of results to return, note its only 10 and we will oversample by 2x, gathering 20 nearest neighbors.
-2. The number of results to return from the KNN search. This will do an approximate KNN search with 50 candidates per HNSW graph and use the quantized vectors, returning the 20 most similar vectors according to the quantized score. Additionally, since this is the top-level `knn` object, the global top 20 results will from all shards will be gathered before rescoring. Combining with `rescore`, this is oversampling by `2x`, meaning gathering 20 nearest neighbors according to quantized scoring and rescoring with higher fidelity float vectors.
+2. The number of results to return from the KNN search. This will do an approximate KNN search with 50 candidates per HNSW graph and use the quantized vectors, returning the 20 most similar vectors according to the quantized score. Additionally, because this is the top-level `knn` object, the global top 20 results from all shards will be gathered before rescoring. Combining with `rescore`, this is oversampling by `2x`, meaning gathering 20 nearest neighbors according to quantized scoring and rescoring with higher fidelity float vectors.
 3. The number of results to rescore, if you want to rescore all results, set this to the same value as `k`
 4. The script to rescore the results. Script score will interact directly with the originally provided float32 vector.
 5. The weight of the original query, here we simply throw away the original score

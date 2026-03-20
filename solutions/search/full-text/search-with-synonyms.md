@@ -108,7 +108,7 @@ The UI supports the same synonym rule formats as the file-based approach. Change
 
 ### Method 2: REST API [synonyms-store-synonyms-api]
 
-You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets. For examples of how to 
+You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows you to dynamically define and modify synonyms sets. For examples of how to 
 create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.

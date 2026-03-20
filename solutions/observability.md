@@ -1,5 +1,5 @@
 ---
-navigation_title: Observability
+navigation_title: Observability solution
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html
   - https://www.elastic.co/guide/en/observability/current/index.html
@@ -14,7 +14,7 @@ products:
   - id: edot-collector
 ---
 
-# Elastic Observability overview
+# Elastic Observability solution overview
 
 :::{include} ../get-started/_snippets/observability-overview.md
 :::
@@ -31,3 +31,4 @@ You can also browse reference documentation for the following components:
 - [Elastic APM agents](/reference/apm-agents/index.md)
 
 Browse the latest [{{observability}} release notes](/release-notes/elastic-observability/index.md) for more information on new features, enhancements, and fixes.
+

@@ -63,9 +63,9 @@ The way that you configure your {{stack}} settings is determined by your deploym
 * If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart in self managed clusters and ECH and ECE deployments. If the required secure settings are not yet in place, the nodes might fail to start. Adding secure settings does not trigger a restart.
 :::
 
-:::::{tab-set}
+:::::{applies-switch}
 
-::::{tab-item} ECH and ECE
+::::{applies-item} { ess:, ece: }
 
 For {{ech}} and {{ece}} deployments, you edit {{stack}} settings through the {{ecloud}} Console or ECE Cloud UI. These settings are internally mapped to the appropriate YAML configuration files, such as `elasticsearch.yml` and `kibana.yml`, and they affect all users of that cluster.
 
@@ -73,9 +73,9 @@ For {{ech}} and {{ece}} deployments, you edit {{stack}} settings through the {{e
 
 :::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
 :::
-4. Under the deployment's name in the navigation menu, select **Edit**.
-5. Look for the **Manage user settings and extensions** and **Edit user settings** links for each deployment, and select the one corresponding to the component you want to update, such as {{es}} or {{kib}}.
-6. Apply the necessary settings in the **Users Settings** tab of the editor and select **Back** when finished.
+4. From the deployment's navigation menu, select **Edit**.
+5. Find the **Manage user settings and extensions** and **Edit user settings** links for each deployment, and select the one corresponding to the component you want to update, such as {{es}} or {{kib}}.
+6. Apply the necessary settings in the flyout and select **Back**.
 7. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.
 
 For further details and examples, refer to the resource for your deployment type: 
@@ -85,7 +85,7 @@ For further details and examples, refer to the resource for your deployment type
 
 ::::
 
-::::{tab-item} ECK
+::::{applies-item} eck:
 
 Stack settings are defined as part of your resource specification.
 
@@ -101,7 +101,7 @@ Stack settings are defined as part of your resource specification.
 
 ::::
 
-::::{tab-item} Self managed
+::::{applies-item} self:
 
 The method and location where you can update your {{stack}} settings depends on the component and installation method.
 

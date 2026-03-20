@@ -2,6 +2,9 @@
 navigation_title: "{{es}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -94,6 +97,8 @@ The `elasticsearch` output type supports the following settings, grouped by cate
 
 `proxy_url` $$$output-elasticsearch-proxy_url-setting$$$
 :   (string) The URL of the proxy to use when connecting to the {{es}} servers. The value may be either a complete URL or a `host[:port]`, in which case the `http` scheme is assumed. If a value is not specified through the configuration file then proxy environment variables are used. See the [Go documentation](https://golang.org/pkg/net/http/#ProxyFromEnvironment) for more information about the environment variables.
+
+    When using a proxy, hostnames are resolved on the proxy server, and not on the {{agent}} host.
 
 
 ## Authentication settings [output-elasticsearch-authentication-settings]

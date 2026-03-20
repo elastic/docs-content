@@ -4,7 +4,7 @@ If a change is released in Serverless and will be released in a future version o
 ---
 applies_to:
   serverless: ga
-  stack: ga 9.2
+  stack: ga 9.2+
 ---
 ```
 
@@ -18,4 +18,4 @@ Because these changes need to be published as soon as the feature is released in
 * After the {{stack}} version is released, the same badges will render with the version number without any changes to the badge value in the source.
 
     {applies_to}`serverless: ga`
-    {applies_to}`stack: ga 9.0`
+    {applies_to}`stack: ga 9.2+`

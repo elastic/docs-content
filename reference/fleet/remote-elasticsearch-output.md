@@ -5,10 +5,7 @@ mapped_pages:
 description: Remote ES output allows you to send agent data to a remote cluster, keeping data separate and independent from the deployment where you use Fleet.
 applies_to:
   stack: ga
-  deployment:
-    ess: ga
-    ece: ga
-    self: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -20,43 +17,42 @@ Remote {{es}} outputs allow you to send {{agent}} data to a remote {{es}} cluste
 
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your management {{es}} cluster.
 
-## Limitations
+## Limitations [remote-output-limitations]
 
 These limitations apply to remote {{es}} output:
 
+* All {{fleet-server}} hosts that are configured for the remote output must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
 * Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not currently supported.
 
-## Configuration [remote-output-config]
+## Configure the remote output [remote-output-config]
 
 To configure a remote {{es}} cluster for your {{agent}} data:
 
-:::::{stepper}
+::::::{stepper}
 
-::::{step}
-In your management {{es}} cluster, open {{kib}}, and search for **Fleet settings** in the search bar. Select **Fleet/Settings** in the results.
-::::
+:::::{step} Create a new remote output
 
-::::{step}
-In the **Outputs** section, select **Add output**.
-::::
+1. In your management {{es}} cluster, open {{kib}}, and search for **Fleet settings** in the search bar. Select **Fleet/Settings** in the results.
+2. In the **Outputs** section, select **Add output**.
+3. In the **Add new output** flyout, provide a name for the output.
+4. Select **Remote Elasticsearch** as the output type.
+:::::
 
-::::{step}
-In the **Add new output** flyout, provide a name for the output, and select **Remote Elasticsearch** as the output type.
-::::
+:::::{step} Add remote cluster host URL
 
-::::{step}
-In the **Hosts** field, add the URL that {{agent}}s should use to access the remote {{es}} cluster.
+In the **Hosts** field, add the URL that {{agents}} should use to access the remote {{es}} cluster.
 
 :::{dropdown} Find the remote host address of the remote cluster
 :open:
 1. In the remote cluster, open {{kib}}, and search for **Fleet settings** in the search bar. Select **Fleet/Settings** in the results.
-2. In the **Outputs** section, copy the `Hosts` value of the default {{es}} output. If the value is not visible in full, edit the default  {{es}} output to display the full value.
+2. In the **Outputs** section, copy the `Hosts` value of the default {{es}} output. If the value isn't fully visible, edit the default {{es}} output to display the full value.
 3. In your management cluster, paste the value you copied into the **Hosts** field of the remote output configuration.
 :::
-::::
+:::::
 
-::::{step}
+:::::{step} Configure service token authentication
+
 In the **Service Token** field, add a service token to access the remote cluster.
 
 :::{dropdown} Create a service token to access the remote cluster
@@ -69,44 +65,127 @@ In the **Service Token** field, add a service token to access the remote cluster
 :::
 
 :::{note}
-To prevent unauthorized access, the {{es}} Service Token is stored as a secret value. While secret storage is recommended, you can choose to override this setting, and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or higher. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases).
+To prevent unauthorized access, the {{es}} service token is stored as a secret value. While secret storage is recommended, you can override this setting and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or later. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases).
 :::
-::::
+:::::
 
-::::{step}
-Choose whether integrations should be automatically synchronized on the remote {{es}} cluster. To configure this feature, refer to [Automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md).
+:::::{step} Configure SSL certificate authorities (optional)
 
-:::{note}
-Automatic integrations synchronization is available only for certain subscription levels. For more information, check **Fleet Multi-Cluster support** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
+Configure SSL certificate authorities if the remote {{es}} cluster uses certificates that are not publicly trusted. The certificate authority (CA) is used to sign the remote {{es}} cluster's SSL certificate. This allows {{fleet-server}} to validate the remote cluster's certificate.
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.1
+
+Expand the **Authentication** section, and in the **Server SSL certificate authorities** field, enter the path to the CA certificate or paste the certificate content directly.
+
 :::
-::::
 
-::::{step}
-Choose whether the remote output should be the default for agent integrations or for agent monitoring data. When set as the default, {{agents}} use this output to send data if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).
-::::
+:::{applies-item} stack: ga =9.0
 
-::::{step}
-Select the [performance tuning settings](/reference/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) to optimize {{agent}}s for throughput, scale, or latency, or leave the default `balanced` setting.
-::::
+Add the SSL certificate authorities in the **Advanced YAML configuration** section. For example:
 
-::::{step}
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.2`
-Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). Using this feature requires additional steps. For more details, refer to [Ship data to streams > {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
-::::
+```yaml
+ssl:
+  certificate_authorities: ["/path/to/ca.pem"]
+```
 
-::::{step}
-Add any [advanced YAML configuration settings](/reference/fleet/es-output-settings.md#es-output-settings-yaml-config) that you’d like for the remote output.
-::::
+Alternatively, you can embed the CA certificate directly in the YAML configuration:
 
-::::{step}
-Click **Save and apply settings**.
+```yaml
+ssl:
+  certificate_authorities:
+  - |
+    -----BEGIN CERTIFICATE-----
+    MIIDSjCCAjKgAwIBAgIQRK+wgNajJ7qJMDmGLvhAazANBgkqhkiG9w0BAQUFADA/
+    ...
+    -----END CERTIFICATE-----
+```
+
+:::
+
 ::::
 
 :::::
 
-## Using the remote {{es}} output
+:::::{step} Configure mutual TLS (optional)
 
-After the output is created, you can update an {{agent}} policy to use the new output, and send data to the remote {{es}} cluster:
+If your remote {{es}} cluster requires mutual TLS (mTLS) authentication, configure the client certificate and key.
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.1
+
+Expand the **Authentication** section to configure mTLS settings:
+
+- **Client SSL certificate**: Enter the path to the client certificate that the {{agents}} will use to authenticate with the remote cluster, or paste the certificate content directly.
+- **Client SSL certificate key**: Enter the path to the private key associated with the client certificate, or paste the private key content directly.
+
+:::
+
+:::{applies-item} stack: ga =9.0
+
+Add the client certificate settings in the **Advanced YAML configuration** section. For example:
+
+```yaml
+ssl:
+  certificate: "/path/to/client-cert.pem"
+  key: "/path/to/client-cert.key"
+```
+
+Alternatively, you can embed the certificate and key directly in the YAML configuration:
+
+```yaml
+ssl:
+  certificate: |
+    -----BEGIN CERTIFICATE-----
+    MIIDCjCCAfKgAwIBAgITJ706Mu2wJlKckpIvkWxEHvEyijANBgkqhkiG9w0BAQsF
+    ...
+    -----END CERTIFICATE-----
+  key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDXHufGPycpCOfI
+    ...
+    -----END PRIVATE KEY-----
+```
+
+:::
+
+::::
+
+For more information about TLS configuration options, refer to [One-way and mutual TLS certifications flow → Output SSL options](/reference/fleet/tls-overview.md#output-ssl-options).
+:::::
+
+:::::{step} Configure output preferences
+
+1. {applies_to}`stack: ga 9.1` Choose whether integrations should be automatically synchronized on the remote {{es}} cluster. To configure this feature, refer to [Automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md).
+
+   :::{note}
+   Automatic integrations synchronization is available only for certain subscription levels. For more information, check **Fleet Multi-Cluster support** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
+   :::
+
+2. Choose whether the remote output should be the default for agent integrations or for agent monitoring data. When set as the default, {{agents}} use this output to send data if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).
+
+3. Select the [performance tuning settings](/reference/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) to optimize {{agent}}s for throughput, scale, or latency, or leave the default `balanced` setting.
+
+4. {applies_to}`stack: preview 9.2` Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). Using this feature requires additional steps. For more details, refer to [Ship data to streams → {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
+:::::
+
+:::::{step} Configure advanced settings (optional)
+
+Add any [advanced YAML configuration settings](/reference/fleet/es-output-settings.md#es-output-settings-yaml-config) that you'd like for the remote output.
+:::::
+
+:::::{step} Save the output configuration
+
+Click **Save and apply settings**.
+:::::
+
+::::::
+
+## Use the remote {{es}} output [remote-output-usage]
+
+After creating the output, update an {{agent}} policy to use it and send data to the remote {{es}} cluster:
 
 1. In the management cluster, go to **{{fleet}}**, then open the **Agent policies** tab.
 2. Click the agent policy you want to update, then click **Settings**.
@@ -116,10 +195,10 @@ After the output is created, you can update an {{agent}} policy to use the new o
 
 The remote {{es}} output is now configured for the remote cluster.
 
-If you choose not to synchronize integrations automatically, you need to make sure that for any integrations that are [added to your {{agent}} policy](/reference/fleet/add-integration-to-policy.md), the integration assets are also installed on the remote {{es}} cluster. For detailed steps on this process, refer to [Install and uninstall {{agent}} integration assets](/reference/fleet/install-uninstall-integration-assets.md).
+If you choose not to synchronize integrations automatically, you need to ensure that for any integrations [added to your {{agent}} policy](/reference/fleet/add-integration-to-policy.md), you also install the integration assets on the remote {{es}} cluster. For detailed steps on this process, refer to [Install and uninstall {{agent}} integration assets](/reference/fleet/install-uninstall-integration-assets.md).
 
-::::{note}
-When you use a remote {{es}} output, {{fleet-server}} performs a test to ensure connectivity to the remote cluster. The result of that connectivity test is used to report whether the remote output is healthy or unhealthy, and is displayed on the **{{fleet}}** → **Settings** → **Outputs** page, in the **Status** column.
+## Remote output health status [remote-output-health-status]
 
-In some cases, the remote {{es}} output used for {{agent}} data can be reached by the {{agent}}s but not by {{fleet-server}}. In those cases, you can ignore the resulting unhealthy state of the output and the associated `Unable to connect` error on the UI.
-::::
+{{fleet-server}} requires connectivity to the remote cluster to generate API keys for {{agents}}. When you use a remote {{es}} output, {{fleet-server}} tests whether it can reach the remote cluster. The result determines whether the remote output is reported as healthy or unhealthy in the **Status** column for the output on the **{{fleet}}** → **Settings** page.
+
+If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests connectivity to all remote {{es}} outputs. If the {{fleet-server}} instances have different network scopes, some of them might not be able to reach a certain remote output. In this case, the remote output will display as unhealthy in the UI with an `Unable to connect` error. You can ignore this status as long as the {{fleet-server}} instance that manages the {{agents}} using that remote output has connectivity to the remote cluster.

@@ -19,8 +19,8 @@ The simplest way is to add one or more of our sample data sets. These data sets 
 
 If you have no data, you will be prompted to install these packages when running {{kib}} for the first time.
 
-You can also access and install them from the **Integrations** page. Go to **Integrations** and search for **Sample Data**. On the **Sample Data** page, expand the **Other sample data sets** section and add the type of data you want.
-<br>
+You can also access and install them from the **Integrations** page. Go to **Integrations** and search for **Sample data**. On the **Sample data** page, expand the **Other sample data sets** section and add the type of data you want.
+
 :::{image} /manage-data/images/sample-data-sets.png
 :alt: Sample data sets
 :screenshot:
@@ -42,11 +42,4 @@ Make sure to execute `node scripts/makelogs` *after* {{es}} is up and running.
 
 ## Upload a file
 
-You can also upload your own sample data using the **Upload a file** option on the **Integrations** page.
-
-Go to **Integrations** and search for **Upload a file**. On the **Upload file** page, select or drag and drop a file to add your data.
-<br>
-:::{image} /manage-data/images/sample-upload-a-file.png
-:alt: Upload a sample data file
-:screenshot:
-:::
+You can also upload your own sample data using the **Upload a file** option on the **Integrations** page. For detailed instructions, refer to [Upload data files](/manage-data/ingest/upload-data-files.md).

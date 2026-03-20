@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnostic.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -118,7 +113,7 @@ The following are common errors that you might encounter when running the diagno
 
     This indicates that you accidentally downloaded the source code file instead of `diagnostics-X.X.X-dist.zip` from the releases page.
 
-* `Could not retrieve the Elasticsearch version due to a system or network error - unable to continue.`
+* `Could not retrieve the {{es}} version due to a system or network error - unable to continue.`
 
     This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the dianostic batch or shell file.
 

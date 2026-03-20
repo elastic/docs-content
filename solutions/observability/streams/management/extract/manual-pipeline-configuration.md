@@ -1,12 +1,21 @@
 ---
 applies_to:
   serverless: ga
-  stack: preview 9.1, ga 9.2
+  stack: preview =9.1, ga 9.2+
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 # Manual pipeline configuration [streams-manual-pipeline-configuration]
 
 :::{note}
-The manual pipeline configuration processor is only available on [classic streams](../../streams.md#streams-classic-vs-wired).
+The **manual pipeline configuration** processor is only available on [classic streams](../../streams.md#streams-classic-vs-wired).
 :::
 
 The **Manual pipeline configuration** lets you create a JSON-encoded array of ingest pipeline processors.This is helpful if you want to add more advanced processing that isn't currently available as part of the UI-based processors.

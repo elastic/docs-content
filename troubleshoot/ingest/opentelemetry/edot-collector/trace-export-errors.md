@@ -30,14 +30,14 @@ These errors indicate the Collector is overwhelmed and unable to export data fas
 This issue typically occurs when the `sending_queue` configuration or the Elasticsearch cluster scaling is misaligned with the incoming telemetry volume.  
 
 :::{important}
-{applies_to}`stack: ga 9.0, deprecated 9.3`
+{applies_to}`stack: ga 9.0-9.2, deprecated 9.3+`
 The sending queue is turned off by default. Verify that `enabled: true` is explicitly set — otherwise any queue configuration will be ignored.
 :::
 
 Common contributing factors include:
 
 * Underscaled Elasticsearch cluster is the most frequent cause of persistent export failures. If Elasticsearch cannot index data fast enough, the Collector’s queue fills up.
-* {applies_to}`stack: ga 9.0, deprecated 9.3` `sending_queue.block_on_overflow` is turned off (defaults to `false`), which can lead to data drops.
+* {applies_to}`stack: ga 9.0-9.2, deprecated 9.3+` `sending_queue.block_on_overflow` is turned off (defaults to `false`), which can lead to data drops.
 * Sending queue is enabled but `num_consumers` is too low to keep up with the incoming data volume.
 * Sending queue size (`queue_size`) is too small for the traffic load.
 * Both internal and sending queue batching are disabled, increasing processing overhead.
@@ -52,7 +52,7 @@ Increasing the `timeout` value (for example from 30s to 90s) doesn't help if the
 The resolution approach depends on your {{stack}} version and Collector configuration.
 
 ### When the sending queue is not enabled by default
-{applies_to}`stack: ga 9.0, deprecated 9.3`
+{applies_to}`stack: ga 9.0-9.2, deprecated 9.3+`
 
 Enable the sending queue and block on overflow to prevent data drops:
 

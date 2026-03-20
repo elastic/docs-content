@@ -2,6 +2,9 @@
 navigation_title: Managed integrations content
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/managed-integrations-content.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

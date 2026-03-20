@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-navigation_title: AI Assistant
+navigation_title: AI Assistant for Security
 ---
 
 # Elastic AI Assistant for Security
@@ -44,9 +44,9 @@ serverless: ga
 
 The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) page allows you to:
 
-- Manage which AI connectors are available in your environment. 
+- Manage which AI connectors are available in your environment.
 - Enable or disable AI Assistant and other AI-powered features in your environment.
-- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
+- {applies_to}`stack: ga 9.2+` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
 
 
 
@@ -69,7 +69,7 @@ While AI Assistant is compatible with many different models, refer to the [Large
 
 ::::
 
-### Elastic Managed LLM [elastic-managed-llm-security-ai-assistant]
+### Elastic Managed LLMs [elastic-managed-llm-security-ai-assistant]
 
 :::{include} ../../_snippets/elastic-managed-llm.md
 :::
@@ -100,19 +100,19 @@ Each user’s chat history (up to the 99 most recent conversations) and custom Q
 Use these optional features to adjust and act on your conversations with AI Assistant:
 
 * Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…**.
-* {applies_to}`stack: ga 9.1` Select a *prompt tile* to start your conversation with a predefined goal or topic. Prompt tiles help you begin structured tasks or investigations into common {{elastic-sec}} workflows. The available prompt tiles include:
+* {applies_to}`stack: ga 9.1+` Select a *prompt tile* to start your conversation with a predefined goal or topic. Prompt tiles help you begin structured tasks or investigations into common {{elastic-sec}} workflows. The available prompt tiles include:
 
    * **Alerts**: Quickly identify and prioritize the most important alerts from the last 24 hours.
    * **Research**: Get a summary of the latest {{elastic-sec}} Labs research articles.
    * **Query**: Generate {{esql}} queries based on a specific goal or requirement.
    * **Suggest**: Explore the types of questions you can ask AI Assistant about {{elastic-sec}}.
 
-* {applies_to}`stack: removed 9.1` Select a default *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}. The default Quick Prompts' availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert.
+* {applies_to}`stack: removed 9.1+` Select a default *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}. The default Quick Prompts' availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert.
 
 * Create new custom Quick Prompts by clicking **Add quick prompt**.
 
 :::{tip}
-System Prompts and Quick Prompts can also be [configured](#configure-ai-assistant) from the corresponding tabs on the **Security AI settings** page. 
+System Prompts and Quick Prompts can also be [configured](#configure-ai-assistant) from the corresponding tabs on the **Security AI settings** page.
 :::
 
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
@@ -135,7 +135,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space. 
+Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space.
 
 To share a conversation, do one of the following:
 
@@ -356,7 +356,7 @@ There are several [audit events](kibana://reference/kibana-audit-events.md) rela
 
 ## Configure AI Assistant [configure-ai-assistant]
 
-To adjust general AI Assistant settings from the chat window, click the **Assistant settings menu** button in the upper-right. 
+To adjust general AI Assistant settings from the chat window, click the **Assistant settings menu** button in the upper-right.
 
 ::::{image} /solutions/images/security-ai-assistant-settings-menu.png
 :alt: AI Assistant's settings popover
@@ -377,7 +377,7 @@ It has the following tabs:
 * **Knowledge base:** Provide additional context to AI Assistant. [Learn more](/solutions/security/ai/ai-assistant-knowledge-base.md).
 
 
-To adjust the settings for a specific chat, click the **Conversation settings** button in the upper-right of its chat window. 
+To adjust the settings for a specific chat, click the **Conversation settings** button in the upper-right of its chat window.
 
 ::::{image} /solutions/images/security-ai-assistant-chat-options-menu.png
 :alt: AI Assistant's chat options menu
@@ -395,7 +395,7 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 
 ::::
 
-When you send alert data to AI Assistant, you may want to obfuscate sensitive information before it reaches the LLM provider. 
+When you send alert data to AI Assistant, you may want to obfuscate sensitive information before it reaches the LLM provider.
 
 The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated (replaced by placeholders), so AI Assistant won't have access to their actual values.
 
@@ -439,6 +439,6 @@ In addition to practical advice, AI Assistant can offer conceptual advice, tips,
 * “I need to monitor for unusual file creation patterns that could indicate ransomware activity. How would I construct this query using EQL?”
 
 
-## Learn more 
+## Learn more
 
-The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/ai/observability-ai-assistant.md).

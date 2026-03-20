@@ -1,3 +1,8 @@
+<!--
+This snippet is in use in the following locations:
+- ece-remote-cluster-other-ece.md
+- ec-remote-cluster-ece.md
+-->
 Before configuring the local deployment, retrieve the CA certificate of the remote ECE proxy. To find this certificate:
 
 1. In the remote ECE environment, go to **Platform > Settings > TLS certificates**.

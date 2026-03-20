@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -10,11 +13,13 @@ products:
 
 {{fleet-server}} is a component that connects {{agent}}s to {{fleet}}. It supports many {{agent}} connections and serves as a control plane for updating agent policies, collecting status information, and coordinating actions across {{agent}}s. It also provides a scalable architecture. As the size of your agent deployment grows, you can deploy additional {{fleet-server}}s to manage the increased workload.
 
-:::{note}
+:::{admonition} On-premises {{fleet-server}}
+:applies_to: serverless: unavailable
+
 On-premises {{fleet-server}} is not currently available for use in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment. We recommend using the hosted {{fleet-server}} that is included and configured automatically in {{serverless-short}} {{observability}} and Security projects.
 :::
 
-The following diagram shows how {{agent}}s communicate with {{fleet-server}} to retrieve agent policies:
+This diagram shows how {{agent}}s communicate with {{fleet-server}} to retrieve agent policies. 
 
 :::{image} images/fleet-server-agent-policies-diagram.png
 :alt: {{fleet-server}} Cloud deployment model
@@ -28,11 +33,17 @@ The following diagram shows how {{agent}}s communicate with {{fleet-server}} to 
 6. When a policy is updated, {{fleet-server}} retrieves the updated policy from {{es}} and sends it to the connected {{agent}}s.
 7. To communicate with {{fleet}} about the status of {{agent}}s and the policy rollout, {{fleet-server}} writes updates to {{fleet}} indices.
 
-::::{admonition} Does {{fleet-server}} run inside of {{agent}}?
+:::{admonition} {{agent}} initiates the connection
+{{agent}} always initiates the connection to {{fleet-server}} using an HTTP long polling request to retrieve its configuration. 
+
+* There is no inbound connection from the Fleet Server to the Elastic Agent.
+  The Elastic Agent is the client, initiating the communication over HTTP(S).
+* This model supports firewall-friendly architecture and reduces attack surface, as only outbound connections from the Agent need to be allowed.
+::: 
+
+**Does {{fleet-server}} run inside of {{agent}}?**
 
 {{fleet-server}} is a subprocess that runs inside a deployed {{agent}}. This means the deployment steps are similar to any {{agent}}, except that you enroll the agent in a special {{fleet-server}} policy. Typically—especially in large-scale deployments—this agent is dedicated to running {{fleet-server}} as an {{agent}} communication host and is not configured for data collection.
-
-::::
 
 
 ## Service account [fleet-security-account]
@@ -62,5 +73,9 @@ To learn more about deploying and scaling {{fleet-server}}, refer to:
 
 
 ## {{fleet-server}} secrets configuration [fleet-server-secrets-config]
+
+```{applies_to}
+serverless: unavailable
+```
 
 Secrets used to configure {{fleet-server}} can either be directly specified in configuration or provided through secret files. Refer to [{{fleet-server}} secrets](/reference/fleet/fleet-server-secrets.md) for more information.
