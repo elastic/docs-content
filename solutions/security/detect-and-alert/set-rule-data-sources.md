@@ -43,7 +43,7 @@ Cold data tiers store time series data that's accessed infrequently and rarely u
 
 * **Retention in hot tier**: Keep data in the hot tier ({{ilm}} hot phase) for at least 24 hours. {{ilm-cap}} policies that move ingested data from the hot phase to another phase (for example, cold or frozen) in less than 24 hours may cause performance issues or rule execution errors.
 * **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't have replicas by default, shard unavailability can cause partial rule run failures. Shard unavailability may also be encountered during or after {{stack}} upgrades. If this happens, you can [manually rerun rules](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) over the affected time period once the shards are available.
-* **Timestamp override**: {{es}} seeks to preserve the event's source-designated timestamp in its `@timestamp` field and separately reports its `event.ingested` date field for ingest pipeline completeion as [noted here](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed). {{es}} will attempt to pre-filter out indices based off not hosting data within the rule execution's desired look back date range. If the data source timestamp incorrectly reports a future date, {{es}} will not be able to pre-filter out indices from searching. This will cause extra performance costs for not changing resulting alerts. Therefore, [prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules.md) default apply a [timestamp override](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) to use `event.ingested` whenever available. Your custom rules should apply a similar override. See [Delayed timestamps](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed) to manually set `event.ingested` if it is not already applying to your indexing data.
+* **Timestamp override**: {{es}} seeks to preserve the event's source-designated timestamp in its `@timestamp` field and separately reports its `event.ingested` date field for ingest pipeline completion as [noted here](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed). {{es}} will attempt to pre-filter out indices based off not hosting data within the rule execution's desired look back date range. If the data source timestamp incorrectly reports a future date, {{es}} will not be able to pre-filter out indices from searching. This will cause extra performance costs for not changing resulting alerts. Therefore, [prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules.md) default apply a [timestamp override](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) to use `event.ingested` whenever available. Your custom rules should apply a similar override. See [Delayed timestamps](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed) to manually set `event.ingested` if it is not already applying to your indexing data.
 
 
 ### Limitations
@@ -60,7 +60,7 @@ You have two options for excluding cold and frozen data from rules:
    * `data_views:fields_excluded_data_tiers`: This applies to all [Data views](/explore-analyze/find-and-organize/data-views.md) when loading {{es}}'s [Field capabilities API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps).
    * `securitySolution:excludedDataTiersForRuleExecution`: This applies to all [Security rule types](/solutions/security/detect-and-alert/rule-types.md) except [{{ml}} rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md).
 
-* **Per-rule Query DSL filter (individual rules)**: Add a DSL [boolean query](/reference/query-languages/query-dsl/query-dsl-bool-query.md) to the rule that ignores cold or frozen documents at pre-filter query time. This gives you per-rule control and is described below.
+* **Per-rule Query DSL filter (individual rules)**: Add a DSL [boolean query](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) to the rule that ignores cold or frozen documents at pre-filter query time. This gives you per-rule control and is described below.
 
    ::::{important}
    * Per-rule Query DSL filters are not supported for [{{esql}} rules](/solutions/security/detect-and-alert/esql.md) nor [{{ml}} rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md).
@@ -69,7 +69,7 @@ You have two options for excluding cold and frozen data from rules:
 
 ### Sample Query DSL filters [query-dsl-filter-examples]
 
-The {{es}} search pre-filter requires the DSL apply from a [boolean query](/reference/query-languages/query-dsl/query-dsl-bool-query.md) and cannot apply by way of a [query string query](/reference/query-languages/query-dsl/query-dsl-query-string-query.md).
+The {{es}} search pre-filter requires the DSL apply from a [boolean query](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) and cannot apply by way of a [query string query](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md).
 
 Exclude frozen-tier documents:
 
