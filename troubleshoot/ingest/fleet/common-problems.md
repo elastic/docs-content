@@ -12,20 +12,7 @@ products:
 
 # Common problems with {{fleet}} and {{agent}} [fleet-troubleshooting]
 
-We have collected the most common known problems and listed them here. If your problem is not described here, review the open issues in these GitHub repositories:
-
-| Repository | To review or report issues about |
-| --- | --- |
-| [elastic/kibana](https://github.com/elastic/kibana/issues) | {{fleet}} and {{integrations}} UI |
-| [elastic/elastic-agent](https://github.com/elastic/elastic-agent/issues) | {{agent}} |
-| [elastic/beats](https://github.com/elastic/beats/issues) | {{beats}} shippers |
-| [elastic/fleet-server](https://github.com/elastic/fleet-server/issues) | {{fleet-server}} |
-| [elastic/package-registry](https://github.com/elastic/package-registry/issues) | {{package-registry}} |
-| [elastic/docs-content](https://github.com/elastic/docs-content/issues) | Documentation issues |
-
-Have a question? Read our [FAQ](frequently-asked-questions.md), or contact us in the [discuss forum](https://discuss.elastic.co/). Your feedback is valuable to us.
-
-Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](/reference/fleet/debug-standalone-agents.md).
+We have collected the most common known problems and listed them here. If your problem is not described here, [escalate as needed](/troubleshoot/ingest/fleet/fleet-elastic-agent.md#troubleshooting-intro-escalate).
 
 
 ## Troubleshooting contents [troubleshooting-contents]
@@ -34,6 +21,7 @@ Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](/refer
 * [{{agent}} enrollment fails on the host with `x509: certificate signed by unknown authority` message](#agent-enrollment-certs)
 * [{{agent}} enrollment fails on the host with `x509: cannot validate certificate for x.x.x.x because it doesn't contain any IP SANs` message](#es-enrollment-certs)
 * [{{agent}} enrollment fails on the host with `Client.Timeout exceeded` message](#agent-enrollment-timeout)
+* [{{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message](#agent-enrollment-dialing)
 * [{{agent}} fails to enroll with {{fleet-server}} running on localhost](#mac-file-sharing)
 * [{{agent}} hangs while unenrolling](#agent-hangs-while-unenrolling)
 * [{{agent}} is automatically unenrolled after failed check-ins with 401 errors](#agent-auto-unenroll-401) (Deprecated 9.1)
@@ -43,11 +31,11 @@ Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](/refer
 
 ---
 
-**Elastic Agent diagnostics and status**
+**Elastic Agent status**
 
 * [Retrieve the {{agent}} version](#trb-retrieve-agent-version)
 * [Check the {{agent}} status](#trb-check-agent-status)
-* [Collect {{agent}} diagnostics bundle](#trb-collect-agent-diagnostics)
+* [Capture {{agent}} diagnostics](/troubleshoot/ingest/fleet/diagnostics.md)
 * [Some problems occur so early that insufficient logging is available](#not-installing-no-logs-in-terminal)
 * [{{agent}} is cited as `Healthy` but still has set up problems sending data to {{es}}](#agent-healthy-but-no-data-in-es)
 * [{{agent}} is stuck in status `Updating`](#fleet-agent-stuck-on-updating)
@@ -137,7 +125,6 @@ This error occurs when you use self-signed certificates with {{es}} using IP as 
 
 You will also need to set `ssl.verification_mode: none` in the Output settings in {{fleet}} and {{integrations}} UI.
 
-
 ### {{agent}} enrollment fails on the host with `Client.Timeout exceeded` message [agent-enrollment-timeout]
 
 To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance. If the agent cannot connect, you get failures similar to these:
@@ -165,6 +152,30 @@ Here are several steps to help you troubleshoot the problem.
     2. To view the secret, click the eyeball icon. The secret should match the string that you used to enroll {{agent}} on your host.
     3. If the secret doesn’t match, create a new enrollment token and use this token when you run the `elastic-agent enroll` command.
 
+### {{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message [agent-enrollment-dialing]
+
+{{agent}} might fail to install in a Windows environment due to port conflicts and file locks, returning this error:
+
+```txt
+Restart attempt 2 failed: 'rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified.
+```
+
+To resolve port conflicts:
+
+1. Check for any processes that are using port 6789 or 6790:
+
+   ```bash
+   netstat -ano | findstr :6789
+   netstat -ano | findstr :6790
+   ```
+   
+   This will return the process ID (PID) of the application that's using the specified port. You can then identify the application using its PID:
+   
+   ```bash
+   tasklist /fi "pid eq <APP-PID>"
+   ```
+
+2. In case of a port conflict, update `agent.grpc.port` in the `elastic-agent.yml` file to bind the agent to a different port (for example, 6790).
 
 ### {{agent}} fails to enroll with {{fleet-server}} running on localhost [mac-file-sharing]
 
@@ -358,7 +369,7 @@ del .\elastic-endpoint.exe
 
 ---
 
-## Elastic Agent diagnostics and status
+## Elastic Agent status
 
 ### Retrieve the {{agent}} version [trb-retrieve-agent-version]
 
@@ -404,62 +415,6 @@ If {{agent}} is running, but you do not get what you expect, here are some items
         ::::{important}
         The **{{ecloud}} agent policy** is created only in {{ecloud}} deployments and, by default, does not include the collection of logs of metrics.
         ::::
-
-
-### Collect {{agent}} diagnostics bundle [trb-collect-agent-diagnostics]
-
-The {{agent}} diagnostics bundle collects the following information:
-
-1. {{agent}} versions numbers
-2. {{beats}} (and other process) version numbers and process metadata
-3. Local configuration, elastic-agent policy, and the configuration that is rendered and passed to {{beats}} and other processes
-4. {{agent}}'s local log files
-5. {{agent}} and {{beats}} pprof profiles
-
-::::{important}
-- {{agent}} attempts to automatically redact credentials and API keys when creating diagnostics. Review the contents of the archive before sharing to ensure that there are no credentials in plain text.
-
-- The ZIP archive containing diagnostics information includes the raw events of documents sent to the {{agent}} output. By default, it will log only the failing events as `warn`. When the `debug` logging level is enabled, all events are logged. Review the contents of the archive before sharing to ensure that no sensitive information is included.
-
-- Note that the diagnostics bundle is intended for debugging purposes only. 
-Its structure can change between releases.
-::::
-
-**Get the diagnostics bundle using the CLI**
-
-Run the [`diagnostics` command](/reference/fleet/agent-command-reference.md#elastic-agent-diagnostics-command) to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases:
-
-```shell
-elastic-agent diagnostics
-```
-
-If you want to omit the raw events from the diagnostic, add the flag `--exclude-events`.
-
-**Get the diagnostics bundle through {{fleet}}**
-
-{{fleet}} provides the ability to remotely generate and gather an {{agent}}'s diagnostics bundle. An agent can gather and upload diagnostics if it is online in a `Healthy` or `Unhealthy` state. The diagnostics are sent to {{fleet-server}} which in turn adds it into {{es}}. Therefore, this works even with {{agents}} that are not using the {{es}} output. To download the diagnostics bundle for local viewing:
-
-1. In {{fleet}}, open the **Agents** tab.
-2. In the **Host** column, click the agent’s name.
-3. Select the **Diagnostics** tab and click the **Request diagnostics .zip** button.
-
-    :::{image} /troubleshoot/images/fleet-collect-agent-diagnostics1.png
-    :alt: Collect agent diagnostics under agent details
-    :screenshot:
-    :::
-
-4. In the **Request Diagnostics** pop-up, select **Collect additional CPU metrics** if you’d like detailed CPU data.
-
-    :::{image} /troubleshoot/images/fleet-collect-agent-diagnostics2.png
-    :alt: Collect agent diagnostics confirmation pop-up
-    :screenshot:
-    :::
-
-5. Click the **Request diagnostics** button.
-
-When available, the new diagnostic bundle will be listed on this page, as well as any in-progress or previously collected bundles for the {{agent}}.
-
-Note that the bundles are stored in {{es}} and are removed automatically after 7 days. You can also delete any previously created bundle by clicking the `trash can` icon.
 
 
 ### Some problems occur so early that insufficient logging is available [not-installing-no-logs-in-terminal]

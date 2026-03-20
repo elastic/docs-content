@@ -47,13 +47,15 @@ Depending on your deployment type, AutoOps has been rolled out across various [r
 :::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
 :::
 
-AutoOps is currently not available for air-gapped environments because it's a cloud service and you need an internet connection to send metrics to {{ecloud}}. However, we plan to offer a locally deployable version in the future.
+Currently, you can make [specific configuration choices](/deploy-manage/monitor/autoops/ec-autoops-faq.md#autoops-air-gapped) to securely use AutoOps in air-gapped environments, but a locally deployable version is planned for a future release.
 
 ## How AutoOps is licensed
 
-For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.
-:::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-:::
+AutoOps is available for free across all subscription levels in {{ech}} deployments and {{serverless-short}} projects.
+
+New: AutoOps is now also available for free across all [self-managed license types](https://www.elastic.co/subscriptions) in ECE, ECK, and self-managed clusters. 
+
+Using AutoOps does not consume ECUs.
 
 ## How long AutoOps retains data [ec_autoops_retention_period]
 

@@ -30,7 +30,6 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 :subsections:
 :type: deprecation
 :config: /changelog.yml
-:product: security
 :::
 
 ## 9.3.0 [elastic-security-9.3.0-deprecations]

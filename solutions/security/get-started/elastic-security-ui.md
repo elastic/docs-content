@@ -111,7 +111,7 @@ Expand this section to access the following pages:
 
 * [Shared Exception Lists](/solutions/security/detect-and-alert/rule-exceptions.md#shared-exception-list-intro): View and manage rule exceptions and shared exception lists.
 
-* [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attandckr-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
+* [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
 
 
 ### Alerts [_alerts]
@@ -139,6 +139,8 @@ Use large language models (LLMs) to analyze alerts in your environment and ident
 
 The Assets section allows you to manage the following features:
 
+
+
 * [{{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md)
 * [Endpoint protection](/solutions/security/manage-elastic-defend.md)
 
@@ -150,12 +152,10 @@ The Assets section allows you to manage the following features:
     * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md): View and manage the blocklist, which allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
     * [Response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
 
-* [Cloud security](/solutions/security/cloud.md)
-
 
 ### Cases [_cases]
 
-Open and track security issues. Refer to [Cases](/solutions/security/investigate/cases.md) to learn more.
+Open and track security issues. Refer to [Cases](/solutions/security/investigate/security-cases.md) to learn more.
 
 
 ### Entity analytics
@@ -172,18 +172,16 @@ To access this section, turn on the `securitySolution:enablePrivilegedUserMonito
 Expand this section to access the following pages:
 
 - [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
-- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior. 
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior.
 
 
-### Explore [_explore]
+### Explore [_explore] 
 
-Expand this section to access the following pages:
+* [Hosts](/solutions/security/advanced-entity-analytics/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
 
-* [Hosts](/solutions/security/explore/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
+* [Network](/solutions/security/advanced-entity-analytics/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
 
-* [Network](/solutions/security/explore/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
-
-* [Users](/solutions/security/explore/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
+* [Users](/solutions/security/advanced-entity-analytics/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
 
 
 ### Investigations [security-ui-investigations]

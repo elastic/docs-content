@@ -20,7 +20,6 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [What does AutoOps do?](#what-is-autoops)
 * [Is AutoOps available in all deployment types?](#autoops-deployment-types)
 * [Why can't I see AutoOps in some deployments and projects?](#cant-see-autoops)
-* [Can I use AutoOps if my environment is air-gapped?](#autoops-air-gapped)
 * [How is AutoOps licensed?](#autoops-license)
 * [Does AutoOps monitor the entire {{stack}}?](#autoops-monitoring)
 * [Can AutoOps automatically resolve issues?](#autoops-issue-resolution)
@@ -28,15 +27,18 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [How long does Elastic retain AutoOps data?](#autoops-data-retention)
 * [Where are AutoOps metrics stored, and does AutoOps affect customer ECU usage?](#autoops-metrics-storage)
 * [Has AutoOps replaced Stack Monitoring?](#autoops-vs-stack-monitoring)
+* [How do I provide feedback about AutoOps?](#feedback)
 
 **Questions about AutoOps for ECE, ECK, or self-managed clusters**
 * [Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?](#additional-payment)
 * [Does shipping metrics data to {{ecloud}} incur additional costs?](#autoops-metrics-cost)
 * [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
+* [Can I use AutoOps if my environment is air-gapped?](#autoops-air-gapped)
 * [Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?](#maintenance)
+* [I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?](#trial-ending)
+* [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
 
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
-* [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
 * [Can I use macOS to set up AutoOps for my ECE, ECK, or self-managed clusters?](#macos-install)
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
 * [Do I have to install {{agent}} separately for each node in my cluster?](#agent-nodes)
@@ -58,15 +60,10 @@ $$$autoops-deployment-types$$$**Is AutoOps available in all deployment types?**
 ::: 
 
 $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects?**
-:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure and GCP.
-
-$$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
-:   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
+:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you might not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure.
 
 $$$autoops-license$$$**How is AutoOps licensed?**
-:   For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.
-    :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-    ::: 
+:   AutoOps is available for free across all subscription levels and license types in {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, and self-managed clusters. It does not consume ECUs.
 
 $$$autoops-monitoring$$$**Does AutoOps monitor the entire {{stack}}?**
 :   AutoOps is currently limited to {{es}} (not {{kib}}, Logstash, or Beats).
@@ -86,11 +83,13 @@ $$$autoops-metrics-storage$$$**Where are AutoOps metrics stored, and does AutoOp
 $$$autoops-vs-stack-monitoring$$$**Has AutoOps replaced Stack Monitoring?**
 :   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, not logs. Read more in [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 
+$$$feedback$$$**How do I provide feedback about AutoOps?**
+:   We value your feedback. Help us improve by posting in our [Slack community](https://elasticstack.slack.com/) or the [Monitoring category](https://discuss.elastic.co/c/elastic-stack/monitoring/103) in the Elastic Discuss forum.
+
 ## Questions about AutoOps for ECE, ECK, or self-managed clusters
 
 $$$additional-payment$$$ **Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?**
-:   :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-::: 
+:   In ECE, ECK, and self-managed clusters, AutoOps is available for free across all [self-managed license types](https://www.elastic.co/subscriptions) through [Cloud Connect](/deploy-manage/cloud-connect.md). This does not consume ECUs.
 
 $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur additional costs?**
 :   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs are determined by your agreement with that CSP. 
@@ -100,20 +99,37 @@ $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur addi
 $$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
 
+$$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
+:   AutoOps is designed as a cloud service that needs an internet connection to send metrics to {{ecloud}}. However, you can make specific configuration choices to securely use it in your air-gapped environment:
+
+    * **Exclude metrics**: AutoOps only collects [operational metrics](#extracted-info) from your cluster, not the underlying data. You can also choose to [disable the collection of certain types of metrics](../autoops/autoops-disable-metrics-collection.md) by AutoOps.  
+    * **Minimize network exposure**: AutoOps does not require broad internet access. You can choose to only [give access to the required port and URLs](../autoops/cc-connect-self-managed-to-autoops.md#firewall-allowlist).  
+    * **Inspect gathered data**: You can use the [`autoops_es_debug.yml` configuration file](#data-viewing-config) to view a sample of the data gathered from your cluster before it is sent to {{ecloud}}.
+
+    A locally deployable version of AutoOps is planned for a future release.
+
 $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?**
-:   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, we recommend keeping {{agent}} upgraded to the latest version so you can access new features and fixes. 
+:   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, there are two things to keep in mind:
+* In general, {{agent}} can ship data from connected clusters on any [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above). But we recommend keeping {{agent}} upgraded to the latest version for optimum performance and access to new features and fixes.
+* When using the ECK installation method, make sure your instance of {{agent}} meets the [version requirements](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for your license type.  
+
+$$$trial-ending$$$ **I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?**
+:   After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
+* You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md).
+* {{agent}} is running and shipping metrics to {{ecloud}}.
+
+$$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
+:   Support eligibility is determined by the license of your connected cluster:
+* Platinum and Enterprise licenses: Eligible for [Elastic support](https://support.elastic.co/).
+* Free and open (Basic) licenses: Eligible for community-based support through the [Elastic Stack Community on Slack](https://elasticstack.slack.com/) or the [Monitoring category](https://discuss.elastic.co/c/elastic-stack/monitoring/103) in the Elastic Discuss forum.
 
 ### Setting up AutoOps for ECE, ECK, or self-managed clusters
-
-$$$cc-autoops-ech$$$ **Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?**
-:   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
-:::
 
 $$$macos-install$$$ **Can I use macOS to install {{agent}} to connect my ECE, ECK, or self-managed cluster to AutoOps?**
 :   No, macOS is not a supported platform for installing {{agent}} and connecting an ECE, ECK, or self-managed cluster to AutoOps. Refer to [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) for a list of supported platforms. You can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
 
 $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?**
-:   You may need to define an IP address if your organization’s settings will block the agent from sending out data. 
+:   You might need to define an IP address if your organization’s settings will block the agent from sending out data. 
 
     To enable IP ranges, {{ecloud}} offers a selection of static IP addresses. All traffic directed to {{ecloud}} deployments, whether originating from the public internet, your private cloud network through the public internet, or your on-premise network through the public internet utilizes Ingress Static IPs as the network destination. 
 
