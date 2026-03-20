@@ -34,9 +34,9 @@ serverless:
   security: ga
 ```
 
-You can attach a detection rule to the AI Agent so you can ask questions about it, get suggestions for improving rule fields, or request an appropriate investigation guide—without copying and pasting rule content between the UI and the chat.
+You can pass a detection rule to the AI Agent so you can ask questions about it, get suggestions for improving rule fields, or request an appropriate investigation guide, without copying and pasting rule content between the UI and the chat.
 
-Use **Add to chat** to attach the current rule to the AI Agent from any of these places:
+Use **Add to chat** to provide the current rule to the AI Agent from any of these places:
 
 - **Rule details**: Open a rule from the [Detection rules (SIEM)](/solutions/security/detect-and-alert/manage-detection-rules.md) list, then use **Add to chat** on the rule details page.
 - **Rule editing**: While [editing a rule](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-single-rule), use **Add to chat** to send the rule you are editing to the agent.

@@ -70,7 +70,7 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-From the rule details page or the **Edit rule settings** view, you can use **Add to chat** to attach the rule to the AI Agent for analysis and suggestions. Refer to [Attach a detection rule to the AI Agent](/solutions/security/ai/agent-builder/agent-builder.md#attach-a-detection-rule-to-the-ai-agent).
+From the rule details page or the **Edit rule settings** view, you can use **Add to chat** to pass the rule to the AI Agent for analysis and suggestions. Refer to [Attach a detection rule to the AI Agent](/solutions/security/ai/agent-builder/agent-builder.md#attach-a-detection-rule-to-the-ai-agent).
 :::
 
 ### Bulk edit rule settings [bulk-edit-rules]
