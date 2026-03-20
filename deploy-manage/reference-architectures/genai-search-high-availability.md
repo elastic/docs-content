@@ -22,7 +22,8 @@ This reference architecture illustrates a production-grade, highly available Gen
 The GenAI search – high availability architecture is intended for organizations that:
 
 - Require high-performance, low-latency information retrieval across large and diverse datasets, supporting {{nlp}} workloads and returning highly relevant results at scale.
-- Need lexical, vector, semantic, temporal, hybrid, or multimodal search (including text, code, images, video, and geospatial retrieval).  
+- Need lexical, vector, semantic, temporal, or hybrid search. 
+- Need multimodal retrieval, including text, code, images, video, and geospatial data.  
 - Employ generative AI applications such as assistants, agents, and agentic workflows using Retrieval Augmented Generation (RAG) and/or the Model Context Protocol (MCP), where grounding generative models in the most relevant documents is essential. 
 - Integrate with foundation models (such as Azure OpenAI, Anthropic, and Amazon Bedrock) and apply re-ranking techniques to optimize relevance.
 - Depend on advanced search features such as faceting, filtering, highlighting, personalization, and metadata-aware retrieval.  
