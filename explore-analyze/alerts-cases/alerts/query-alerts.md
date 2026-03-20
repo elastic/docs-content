@@ -7,65 +7,61 @@ products:
   - id: kibana
 ---
 
-# Query your alerts [query-your-alerts]
+# Query alert indices [query-alert-indices-kibana]
 
-This page explains how to query your alerts, which you might use when building rule queries, custom dashboards, or visualizations. It also breaks down the components of alert index and alias names, lists the alert indices and aliases that you can query for each rule type, and provides sample queries for common use cases. 
+This page explains how you should query alert indices when building rule queries, custom dashboards, or visualizations. It also lists index names and aliases by rule type and includes sample {{es}} queries for common cases. For field definitions shared by alert documents, review the [Alert schema](/reference/security/fields-and-object-schemas/alert-schema.md). For {{elastic-sec}} detection alerts only, see [Query alert indices](/solutions/security/detect-and-alert/query-alert-indices.md).
 
-::::{note} 
-On **self-managed** {{stack}} deployments and {{ech}}, alerts are stored in {{es}} indices. On {{serverless-short}}, they are stored in [data streams](../../../manage-data/data-store/data-streams.md).
+::::{important}
+
+System indices, such as the alert indices, contain important configuration and internal data; do not change their mappings. Changes can lead to rule execution and alert indexing failures. Use [runtime fields](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) at query time instead, which allow you to derive fields from existing alert documents without altering the index mapping.
+
 ::::
 
-## Understand the index name structure
 
-Alert index names are divided into five parts. They begin with the `.internal.alerts-` prefix, and then include the `context`, `dataset`, `space-id`, and `version number` parts. For example:
+## Alert index aliases [_alert_index_aliases]
 
-```shell
-    .internal.alerts-{{context}}.{{dataset}}-{{space-id}}-{{version-number}}
-```
-
-Here is the alert index name of a sample {{es}} Query rule:
+We recommend querying index aliases rather than backing indices directly. Alias names begin with the `.alerts-` prefix, then include the `context`, `dataset`, and `space-id` parts:
 
 ```shell
-    .internal.alerts-stack.alerts-default-000001
+.alerts-{{context}}.{{dataset}}-{{space-id}}
 ```
 
-Each part of the index name is explained in more detail below:
-
-* `.internal.alerts-` prefix: All alert index names start with this prefix.
-
-* `context`: Identifies the product group that the rule type belongs to, such as {{stack-manage-app}}, {{observability}} and {{elastic-sec}}.
-
-* `dataset`: The "alert" for the alert indices.
-
-* `space-id`: The ID of the space that the index was created for. 
-
-    ::::{note} 
-    {{elastic-sec}} rules are space-specific. All the other rules use the default space in the index name.
-    ::::
-
-* `version-number`: Identifies the version of index. Version numbers start at 000001 and are incremented by 1 when the index rolls over.
-
-## Understand the index alias name structure
-
-Alert indices also have aliases, which are automatically created. Alias names begin with the `.alerts-` prefix, and then include the `context`, `dataset`, and `space-id` parts. For example:
+For example, the alias for a sample {{es}} Query rule is:
 
 ```shell
-    .alerts-{{context}}.{{dataset}}-{{space-id}}
+.alerts-stack.alerts-default
 ```
 
-Here is the alert index alias of a sample {{es}} Query rule:
+To search across alerts from all contexts, use the `.alerts-*` pattern. You can narrow queries to a specific alias when you know the rule type (see the [table below](#_index_names_and_aliases_for_rule_types)).
 
-```shell
-    .alerts-stack.alerts-default
-```
-
-::::{note} 
-{{elastic-sec}} rules are space-specific. All the other rules use the default space in the alias name.
+::::{note}
+{{elastic-sec}} rules are space-specific, and the space ID appears in the alias (for example, `.alerts-security.alerts-{{your-space-id}}`). All other rule types use the default space in the alias name.
 ::::
 
-## Index names and aliases for rule types
 
-The following table lists the index names and aliases that are associated with each rule type.
+## Alert indices [_alert_indices]
+
+For additional context, alert events are stored in hidden {{es}} indices on **self-managed** {{stack}} deployments and {{ech}}. On {{serverless-short}}, they are stored in [data streams](../../../manage-data/data-store/data-streams.md). We do not recommend querying these indices directly.
+
+The naming convention for backing indices is:
+
+```shell
+.internal.alerts-{{context}}.{{dataset}}-{{space-id}}-{{version-number}}
+```
+
+`version-number` identifies the index generation; it starts at `000001` and increments by 1 when the index rolls over.
+
+Each part of the name:
+
+* **`.internal.alerts-` prefix:** Present on all alert backing index names.
+* **`context`:** The product group for the rule type (for example {{stack-manage-app}}, {{observability}}, or {{elastic-sec}}).
+* **`dataset`:** The `alerts` dataset segment in the index name.
+* **`space-id`:** The {{kib}} space the index was created for. {{elastic-sec}} rules are space-specific; other rules use the default space in the index name.
+
+
+## Index names and aliases for rule types [_index_names_and_aliases_for_rule_types]
+
+The following table lists the index names and aliases associated with each rule type.
 
 | Index name and alias                                                                                                                                                                                                          | Rule type                                                                                                                                                                                                                                                                                                                                                                                                      |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -77,16 +73,16 @@ The following table lists the index names and aliases that are associated with e
 | <br> `ml.observability.uptime`<br><br> **Index name:**<br> `.internal.alerts-stack.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-stack.alerts-default`                                                             | <br> **SYNTHETICS AND UPTIME**<br><br> Synthetics monitor status,<br> Synthetics TLS certificate <br> <br> <br> <br>                                                                                                                                                                                                                                                                                       |
 | <br> `ml.observability.metrics`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.metrics.alerts-default-000001` <br><br> **Alias:** <br> `.alerts-ml.observability.metrics.alerts-default`                    | <br> **INFRASTRUCTURE** <br><br>Metric threshold, <br>Inventory<br><br><br><br><br>                                                                                                                                                                                                                                                                                                                        |
 | <br> `ml.observability.threshold`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.threshold.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.observability.threshold.alerts-default`                | <br> **OBSERVABILITY**<br><br> Custom Threshold <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                       |
-| <br> `ml.observability.slo`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.logs.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.observability.logs.alerts-default`                                | <br> **SLOs**<br><br> SLO burn rate <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                   |
-| <br> `ml.observability.logs`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.slo.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.observability.slo.alerts-default`                                 | <br> **LOGS**<br><br> Log Threshold <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                   |
+| <br> `ml.observability.slo`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.slo.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.observability.slo.alerts-default`                                | <br> **SLOs**<br><br> SLO burn rate <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                   |
+| <br> `ml.observability.logs`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.logs.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.observability.logs.alerts-default`                                 | <br> **LOGS**<br><br> Log Threshold <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                   |
 | <br> `ml.dataset.quality`<br><br> **Index name:**<br> `.internal.alerts-ml.dataset.quality.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.dataset.quality.alerts-default`                                        | <br> Degraded docs <br><br><br><br><br><br> <br>                                                                                                                                                                                                                                                                                                                                                           |
 | <br> `ml.streams`<br><br> **Index name:**<br> `.internal.alerts-ml.streams.alerts-default-000001`<br><br>**Alias:**<br>`.alerts-ml.streams.alerts-default`                                                                  | <br> **STREAMS** <br><br> ES\|QL Rule <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                 |
 | <br> `security.attack.discovery`<br><br> **Index name:**<br> `.internal.alerts-security.attack.discovery.alerts-{{your-space-id}}-000001`<br><br>**Alias:**<br>`.alerts-security.attack.discovery.alerts-{{your-space-id}}` | <br> **SECURITY** <br><br> Attack Discovery Schedule <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                  |
 | <br> `security`<br><br> **Index name:**<br> `.internal.alerts-security.alerts-{{your-space-id}}-000001`<br><br>**Alias:**<br>`.alerts-security.alerts-{{your-space-id}}`                                                    | <br> **SECURITY** <br><br> All the other security rules <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                               |
 
-## Sample queries
+## Sample queries [_sample_queries]
 
-Search for alerts by querying the `.internal.alerts-*` index pattern or the `.alerts-*` index alias. Sample queries for common use cases are provided in the following sections.
+The examples below use the `.internal.alerts-*` index pattern or the `.alerts-*` alias pattern. Prefer aliases for production queries when possible.
 
 ### Get all the alerts
 
@@ -110,9 +106,9 @@ The following sample request retrieves index mappings for a sample {{es}} rule:
 GET /.internal.alerts-stack.alerts-default-000001/_mapping
 ```
 
-If you wanted to use the alias instead, you would modify the request like so:
+If you want to use the alias instead, use:
 
-```
+```shell
 GET /.alerts-stack.alerts-default/_mapping
 ```
 
@@ -148,7 +144,7 @@ GET /.internal.alerts-*/_search
 
 ### Query alerts generated by a specific rule
 
-The following sample request searches for alerts generated by a rule with the UUID `0cc8ed92-cbe6-42bd-800b-19ba5134ffd2`. 
+The following sample request searches for alerts generated by a rule with the UUID `0cc8ed92-cbe6-42bd-800b-19ba5134ffd2`.
 
 ```json
 GET /.internal.alerts-*/_search
