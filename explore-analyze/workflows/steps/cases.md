@@ -15,21 +15,19 @@ products:
 
 # Cases workflow steps
 
-Use this reference when you build workflows that call Cases with `cases.*` step types. Each section matches one registered step: status, category, inputs, outputs, optional config, and error documentation.
+Use this reference when you build workflows that call Cases with `cases.*` step types. Steps are grouped by what they do (for example, finding cases versus updating one field). Expand a group in the on-page table of contents, then open the step you need.
 
-## Cases - Create case (`cases.createCase`)
+## Create, find, and load cases
 
-**Status:** Active
+Create a case, load one by id, search the case list, or find cases that look like an existing case.
 
-**Category:** {{kib}}
+### Cases - Create case
 
-Creates a new case with the specified attributes.
+**Step type:** `cases.createCase`
 
-This step creates a new case in the cases system. You can specify title, description, tags, assignees, severity, category, connector configuration, sync settings, and custom fields. The step returns the complete created case object. The step type string is `cases.createCase`. Documentation for generic {{kib}} actions also shows `kibana.createCaseDefaultSpace`; confirm which type string your deployment lists in the workflow editor.
+This step creates a new case in the cases system. You can specify title, description, tags, assignees, severity, category, connector configuration, sync settings, and custom fields. The step returns the complete created case object. Documentation for generic {{kib}} actions also shows `kibana.createCaseDefaultSpace`; confirm which type string your deployment lists in the workflow editor.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -43,79 +41,63 @@ This step creates a new case in the cases system. You can specify title, descrip
 | `settings` | object | No | _None_ | `syncAlerts: true` | Case settings such as `syncAlerts` and observable extraction flags. |
 | `customFields` | array of objects | No | _None_ | `[{ key: "...", type: "text", value: "..." }]` | Each object has `key`, `type` (`text` or `toggle`), and `value`. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Later `cases.*` steps, expressions | Full case response (Cases API shape). |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after creation. |
 | `connector-id` | string | No | _None_ | Selects a connector; the server resolves connector fields into the created case. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Cases - Get case by ID
 
-## Cases - Get case by ID (`cases.getCase`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Retrieves a case using its unique identifier.
+**Step type:** `cases.getCase`
 
 This step retrieves a complete case object from the cases system using its ID. You can optionally include comments and attachments in the response.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
 | `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
 | `include_comments` | boolean | No | `false` | `true` | Include comments when `true`. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps, expressions | Full case response. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | _None._ | — | — | — | This step has no step-level config schema in code. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Find cases
 
-## Find cases (`cases.findCases`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Searches and filters cases.
+**Step type:** `cases.findCases`
 
 This step searches cases and returns matching results, including pagination metadata and case status counters.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -137,7 +119,7 @@ This step searches cases and returns matching results, including pagination meta
 | `tags` | string or array of strings | No | _None_ | `["investigation"]` | Filter by tags. |
 | `to` | string | No | _None_ | `"2025-12-31"` | End of time range. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
@@ -149,33 +131,25 @@ This step searches cases and returns matching results, including pagination meta
 | `per_page` | integer | Pagination | Page size used. |
 | `total` | integer | Pagination | Total hits. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | _None._ | — | — | — | This step has no step-level config schema in code. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Find similar cases
 
-## Find similar cases (`cases.findSimilarCases`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Finds cases similar to the provided case ID.
+**Step type:** `cases.findSimilarCases`
 
 This step returns cases similar to the given case, based on shared observables, with pagination metadata.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -183,7 +157,7 @@ This step returns cases similar to the given case, based on shared observables, 
 | `page` | integer | No | `1` | `1` | Page number (positive). |
 | `perPage` | integer | No | `20` | `20` | Page size; maximum `100`. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
@@ -192,33 +166,29 @@ This step returns cases similar to the given case, based on shared observables, 
 | `per_page` | integer | Pagination | Page size used. |
 | `total` | integer | Pagination | Total hits. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | _None._ | — | — | — | This step has no step-level config schema in code. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+## Update case content
 
-## Cases - Update case (`cases.updateCase`)
+Apply broad edits to one case or batch the same pattern across many cases.
 
-**Status:** Active
+### Cases - Update case
 
-**Category:** {{kib}}
-
-Updates a case with the provided fields.
+**Step type:** `cases.updateCase`
 
 This step updates a case using the provided fields. If a version is provided, it is used directly. Otherwise, the step fetches the case to resolve the latest version before updating.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -226,39 +196,31 @@ This step updates a case using the provided fields. If a version is provided, it
 | `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
 | `updates` | object | Yes | _None_ | `status: "in-progress", severity: "high"` | At least one updatable field. Allowed keys include `title`, `description`, `status`, `severity`, `tags`, `category`, `settings`, `assignees`, `connector`, and `customFields` (Cases bulk update schema, without `id` or `version`). |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Updated case response. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after update. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Update cases
 
-## Update cases (`cases.updateCases`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Updates multiple cases in one step.
+**Step type:** `cases.updateCases`
 
 This step updates multiple cases at once. Each case can provide a version directly or let the step fetch the latest version before applying updates.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -277,78 +239,68 @@ cases:
       title: "Use provided version"
 ```
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `cases` | array of objects | Downstream steps | Updated case objects (up to 100). |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes cases after update. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+## Comments
 
-## Cases - Add comment (`cases.addComment`)
+### Cases - Add comment
 
-**Status:** Active
-
-**Category:** {{kib}}
-
-Adds a user comment to a case.
+**Step type:** `cases.addComment`
 
 This step appends a new user comment to the selected case.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
 | `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
 | `comment` | string | Yes | _None_ | `"Investigating now."` | Maximum length 30,000 characters. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Case after comment is added. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after the comment is added. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+## Update one field at a time
 
-## Set case severity (`cases.setSeverity`)
+These steps change a single attribute (or replace the full tag list) without sending a full `updates` object.
 
-**Status:** Active
+### Set case severity
 
-**Category:** {{kib}}
-
-Sets severity for an existing case.
+**Step type:** `cases.setSeverity`
 
 This step sets only the severity field of an existing case. If version is not provided, the latest case version is resolved automatically.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -356,39 +308,31 @@ This step sets only the severity field of an existing case. If version is not pr
 | `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
 | `severity` | string (enum) | Yes | _None_ | `"high"` | Case severity. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Updated case. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after the change. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Set case status
 
-## Set case status (`cases.setStatus`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Sets status for an existing case.
+**Step type:** `cases.setStatus`
 
 This step sets only the status field of an existing case. If version is not provided, the latest case version is resolved automatically.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -396,116 +340,223 @@ This step sets only the status field of an existing case. If version is not prov
 | `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
 | `status` | string (enum) | Yes | _None_ | `"in-progress"` | Case status. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Updated case. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after the change. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Set case title
 
-## Close case (`cases.closeCase`)
+**Step type:** `cases.setTitle`
 
-**Status:** Active
+This step sets only the title field of an existing case. If version is not provided, the latest case version is resolved automatically.
 
-**Category:** {{kib}}
+#### Input (`with` block)
 
-Closes an existing case.
+| Field | Type | Required | Default | Example | Notes |
+|-------|------|----------|---------|---------|-------|
+| `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
+| `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
+| `title` | string | Yes | _None_ | `"Updated incident title"` | Non-empty title. |
+
+#### Output
+
+| Field | Type | Used by | Notes |
+|-------|------|---------|-------|
+| `case` | object | Downstream steps | Updated case. |
+
+#### Config
+
+| Field | Type | Required | Default | Notes |
+|-------|------|----------|---------|-------|
+| `push-case` | boolean | No | `false` | When `true`, pushes the case after the change. |
+
+#### Error states
+
+| Error | Condition | Notes |
+|-------|-----------|-------|
+| _No error states documented. Verify with developer before publishing._ | | |
+
+### Set case description
+
+**Step type:** `cases.setDescription`
+
+This step sets only the description field of an existing case. If version is not provided, the latest case version is resolved automatically.
+
+#### Input (`with` block)
+
+| Field | Type | Required | Default | Example | Notes |
+|-------|------|----------|---------|---------|-------|
+| `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
+| `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
+| `description` | string | Yes | _None_ | `"Updated findings."` | Non-empty description. |
+
+#### Output
+
+| Field | Type | Used by | Notes |
+|-------|------|---------|-------|
+| `case` | object | Downstream steps | Updated case. |
+
+#### Config
+
+| Field | Type | Required | Default | Notes |
+|-------|------|----------|---------|-------|
+| `push-case` | boolean | No | `false` | When `true`, pushes the case after the change. |
+
+#### Error states
+
+| Error | Condition | Notes |
+|-------|-----------|-------|
+| _No error states documented. Verify with developer before publishing._ | | |
+
+### Add case category
+
+**Step type:** `cases.setCategory`
+
+This step sets the category field on an existing case.
+
+#### Input (`with` block)
+
+| Field | Type | Required | Default | Example | Notes |
+|-------|------|----------|---------|---------|-------|
+| `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
+| `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
+| `category` | string | Yes | _None_ | `"Malware"` | Non-empty category value. |
+
+#### Output
+
+| Field | Type | Used by | Notes |
+|-------|------|---------|-------|
+| `case` | object | Downstream steps | Updated case. |
+
+#### Config
+
+| Field | Type | Required | Default | Notes |
+|-------|------|----------|---------|-------|
+| `push-case` | boolean | No | `false` | When `true`, pushes the case after the change. |
+
+#### Error states
+
+| Error | Condition | Notes |
+|-------|-----------|-------|
+| _No error states documented. Verify with developer before publishing._ | | |
+
+### Add case tag
+
+**Step type:** `cases.addTags`
+
+This step sets the full tags array on an existing case. Provide all tags that should remain on the case.
+
+#### Input (`with` block)
+
+| Field | Type | Required | Default | Example | Notes |
+|-------|------|----------|---------|---------|-------|
+| `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
+| `tags` | array of strings | Yes | _None_ | `["investigation", "high-priority"]` | Complete tag list to store on the case. |
+
+#### Output
+
+| Field | Type | Used by | Notes |
+|-------|------|---------|-------|
+| `case` | object | Downstream steps | Updated case. |
+
+#### Config
+
+| Field | Type | Required | Default | Notes |
+|-------|------|----------|---------|-------|
+| `push-case` | boolean | No | `false` | When `true`, pushes the case after tags are updated. |
+
+#### Error states
+
+| Error | Condition | Notes |
+|-------|-----------|-------|
+| _No error states documented. Verify with developer before publishing._ | | |
+
+## Close or delete cases
+
+### Close case
+
+**Step type:** `cases.closeCase`
 
 This step closes an existing case by setting its status to `closed`. If version is not provided, the latest case version is resolved automatically.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
 | `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
 | `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Closed case. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after close. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Delete cases
 
-## Delete cases (`cases.deleteCases`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Deletes one or more cases.
+**Step type:** `cases.deleteCases`
 
 This step deletes the provided cases, including their comments and user action history.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
 | `case_ids` | array of strings | Yes | _None_ | `["id-1", "id-2"]` | Between 1 and 100 ids. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case_ids` | array of strings | Auditing, follow-up steps | Ids that were deleted. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | _None._ | — | — | — | This step has no step-level config schema in code. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+## Assignees
 
-## Assign case (`cases.assignCase`)
+### Assign case
 
-**Status:** Active
-
-**Category:** {{kib}}
-
-Sets assignees for an existing case.
+**Step type:** `cases.assignCase`
 
 This step sets the assignees array on an existing case. The provided assignees become the full source of truth for assignment.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -513,39 +564,31 @@ This step sets the assignees array on an existing case. The provided assignees b
 | `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
 | `assignees` | array of objects | Yes | _None_ | `[{ uid: "user-123" }]` | Up to 10 objects with `uid`. This value replaces the full assignee list on the case. |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Updated case. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after assignment. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Unassign case
 
-## Unassign case (`cases.unassignCase`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Removes assignees from an existing case.
+**Step type:** `cases.unassignCase`
 
 This step removes the given assignees from an existing case. Use `assignees: null` to clear every assignee, or pass `uid` objects to remove specific users.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -553,39 +596,35 @@ This step removes the given assignees from an existing case. Use `assignees: nul
 | `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
 | `assignees` | array of objects or null | Yes | _None_ | `null` | Use `null` to clear all assignees, or pass objects with `uid` to remove specific users (up to 10 per schema). |
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Updated case. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after the change. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+## Attach alerts, events, or observables
 
-## Add alerts to case (`cases.addAlerts`)
+Link alerts or events from indices, or add observables derived from investigation data.
 
-**Status:** Active
+### Add alerts to case
 
-**Category:** {{kib}}
-
-Adds one or more alerts as case attachments.
+**Step type:** `cases.addAlerts`
 
 This step adds alert attachments to an existing case. Each alert requires an `alertId` and source `index`; rule metadata is optional.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -603,39 +642,31 @@ alerts:
       name: "Suspicious process"
 ```
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Case after alerts are attached. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after attachments are added. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Add events to case
 
-## Add events to case (`cases.addEvents`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Adds one or more events as case attachments.
+**Step type:** `cases.addEvents`
 
 This step adds event attachments to an existing case. Each event requires an `eventId` and source `index`.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -650,39 +681,31 @@ events:
     index: ".ds-logs-*"
 ```
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Case after events are attached. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after attachments are added. |
 
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
 | _No error states documented. Verify with developer before publishing._ | | |
 
----
+### Add observables to case
 
-## Add observables to case (`cases.addObservables`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Adds one or more observables to a case.
+**Step type:** `cases.addObservables`
 
 This step adds observables to an existing case using `typeKey`, `value`, and optional description fields.
 
----
-
-### Input (`with` block)
+#### Input (`with` block)
 
 | Field | Type | Required | Default | Example | Notes |
 |-------|------|----------|---------|---------|-------|
@@ -698,178 +721,19 @@ observables:
     description: "Source IP"
 ```
 
-### Output
+#### Output
 
 | Field | Type | Used by | Notes |
 |-------|------|---------|-------|
 | `case` | object | Downstream steps | Updated case. |
 
-### Config
+#### Config
 
 | Field | Type | Required | Default | Notes |
 |-------|------|----------|---------|-------|
 | `push-case` | boolean | No | `false` | When `true`, pushes the case after observables are added. |
 
-### Error states
-
-| Error | Condition | Notes |
-|-------|-----------|-------|
-| _No error states documented. Verify with developer before publishing._ | | |
-
----
-
-## Add case tag (`cases.addTags`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Sets tags for an existing case.
-
-This step sets the full tags array on an existing case. Provide all tags that should remain on the case.
-
----
-
-### Input (`with` block)
-
-| Field | Type | Required | Default | Example | Notes |
-|-------|------|----------|---------|---------|-------|
-| `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
-| `tags` | array of strings | Yes | _None_ | `["investigation", "high-priority"]` | Complete tag list to store on the case. |
-
-### Output
-
-| Field | Type | Used by | Notes |
-|-------|------|---------|-------|
-| `case` | object | Downstream steps | Updated case. |
-
-### Config
-
-| Field | Type | Required | Default | Notes |
-|-------|------|----------|---------|-------|
-| `push-case` | boolean | No | `false` | When `true`, pushes the case after tags are updated. |
-
-### Error states
-
-| Error | Condition | Notes |
-|-------|-----------|-------|
-| _No error states documented. Verify with developer before publishing._ | | |
-
----
-
-## Add case category (`cases.setCategory`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Sets category for an existing case.
-
-This step sets the category field on an existing case.
-
----
-
-### Input (`with` block)
-
-| Field | Type | Required | Default | Example | Notes |
-|-------|------|----------|---------|---------|-------|
-| `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
-| `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
-| `category` | string | Yes | _None_ | `"Malware"` | Non-empty category value. |
-
-### Output
-
-| Field | Type | Used by | Notes |
-|-------|------|---------|-------|
-| `case` | object | Downstream steps | Updated case. |
-
-### Config
-
-| Field | Type | Required | Default | Notes |
-|-------|------|----------|---------|-------|
-| `push-case` | boolean | No | `false` | When `true`, pushes the case after the change. |
-
-### Error states
-
-| Error | Condition | Notes |
-|-------|-----------|-------|
-| _No error states documented. Verify with developer before publishing._ | | |
-
----
-
-## Set case description (`cases.setDescription`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Sets description for an existing case.
-
-This step sets only the description field of an existing case. If version is not provided, the latest case version is resolved automatically.
-
----
-
-### Input (`with` block)
-
-| Field | Type | Required | Default | Example | Notes |
-|-------|------|----------|---------|---------|-------|
-| `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
-| `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
-| `description` | string | Yes | _None_ | `"Updated findings."` | Non-empty description. |
-
-### Output
-
-| Field | Type | Used by | Notes |
-|-------|------|---------|-------|
-| `case` | object | Downstream steps | Updated case. |
-
-### Config
-
-| Field | Type | Required | Default | Notes |
-|-------|------|----------|---------|-------|
-| `push-case` | boolean | No | `false` | When `true`, pushes the case after the change. |
-
-### Error states
-
-| Error | Condition | Notes |
-|-------|-----------|-------|
-| _No error states documented. Verify with developer before publishing._ | | |
-
----
-
-## Set case title (`cases.setTitle`)
-
-**Status:** Active
-
-**Category:** {{kib}}
-
-Sets title for an existing case.
-
-This step sets only the title field of an existing case. If version is not provided, the latest case version is resolved automatically.
-
----
-
-### Input (`with` block)
-
-| Field | Type | Required | Default | Example | Notes |
-|-------|------|----------|---------|---------|-------|
-| `case_id` | string | Yes | _None_ | `"abc-123-def-456"` | Target case id. |
-| `version` | string | No | _None_ | `"WzQ3LDFd"` | Optimistic concurrency; omit to resolve automatically. |
-| `title` | string | Yes | _None_ | `"Updated incident title"` | Non-empty title. |
-
-### Output
-
-| Field | Type | Used by | Notes |
-|-------|------|---------|-------|
-| `case` | object | Downstream steps | Updated case. |
-
-### Config
-
-| Field | Type | Required | Default | Notes |
-|-------|------|----------|---------|-------|
-| `push-case` | boolean | No | `false` | When `true`, pushes the case after the change. |
-
-### Error states
+#### Error states
 
 | Error | Condition | Notes |
 |-------|-----------|-------|
