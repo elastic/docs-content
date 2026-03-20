@@ -206,7 +206,7 @@ FROM kibana_sample_data_logs
 | STATS count = COUNT(*) BY BUCKET(@timestamp, 1 hour)
 ```
 
-The editor does not suggest `SET time_zone` in autocomplete, but you can type it manually. You can also use it through the [Dev Tools Console](../tools/console.md) or the {{es}} API directly.
+The editor does not suggest `SET time_zone` in autocomplete, but you can type it manually. You can also use it through the [Dev Tools Console](../tools/console.md) or the [{{es}} API directly](https://www.elastic.co/docs/api/doc/elasticsearch/).
 
 
 
