@@ -15,37 +15,37 @@ When your data is split across projects to organize ownership, use cases, or env
 {{cps-cap}} relies on linking projects within your {{ecloud}} organization. After you link projects together, searches from the origin project automatically run across all linked projects.
 
 This overview explains how {{cps}} works, including project linking and security.
+For prerequisites, compatibility requirements, architecture planning, and scope defaults, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md) in **Deploy and manage**.
 For details on how search, tags, and project routing work in {{cps-init}}, refer to the following pages:
 
-* [Link projects for {{cps}}](/explore-analyze/cross-project-search/cross-project-search-link-projects.md): step-by-step instructions for linking projects in the {{ecloud}} UI.
-* [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md): learn how search expressions, search options, and index resolution work.
-* [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md): learn about predefined and custom project tags and how to use them in queries.
-* [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): learn how to route searches to specific projects based on tag values.
+* [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md): Learn how search expressions, search options, and index resolution work.
+* [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md): Learn about predefined and custom project tags and how to use them in queries.
+* [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): Learn how to route searches to specific projects based on tag values.
 * [Manage {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): learn how to control {{cps}} scope using the scope selector, query-level overrides, and space defaults.
 
 ## {{cps-cap}} as the default behavior for linked projects
 
 Projects are intended to act as logical namespaces for data, not hard boundaries for querying it. You can split data into projects to organize ownership, use cases, or environments, while still expecting to search and analyze that data from a single place.
 
-Because of this, after you link additional projects to your current (_origin_) project, all searches from the origin project query every linked project by default.
-Searches are designed to run across projects automatically, providing the same experience for querying, analysis, and insights across projects as within a single project.
-Restricting search scope is always possible, but it requires explicitly scoping the search request using [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [routing parameters](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
+::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
+::::
 
 ## Project linking
 
-In {{serverless-short}}, projects can be linked together. The project from which links are created is called the origin project, and the connected projects are referred to as linked projects.
+In {{serverless-short}}, projects can be linked together.
 
-The **origin project** is the project you are currently working in and from which you run cross-project searches.
-**Linked projects** are other projects that are connected to the origin project and whose data can be searched from it.
+::::{include} /deploy-manage/_snippets/cps-origin-linked-definitions.md
+::::
 
 After you link projects, searches that you run from the origin project are no longer local to the origin project by default.
 **Any search initiated on the origin project automatically runs across the origin project and all its linked projects ({{cps}}).**
 
 When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the query scope by using [project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) or [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions).
 
-Project linking is not bidirectional. Searches initiated from a linked project do not run against the origin project.
+::::{include} /deploy-manage/_snippets/cps-bidirectional-note.md
+::::
 
-You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/explore-analyze/cross-project-search/cross-project-search-link-projects.md).
+You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md).
 
 ### Project ID and aliases
 
@@ -63,10 +63,48 @@ While both the project ID and project alias uniquely identify a project, {{cps}}
 In addition to using a project alias, {{cps-init}} provides a reserved identifier, `_origin`, that always refers to the origin project of the search.
 You can use `_origin` in search expressions to explicitly target the origin project, without having to reference its specific project alias. Refer to [Qualified and unqualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) for detailed examples and to learn more.
 
+## Excluding indices and projects
+
+You can exclude specific indices or projects from a {{cps}} by prefixing a pattern with a dash (`-`).
+This enables you start with a broad search scope and narrow it down by removing specific indices or projects from the results.
+
+### How exclusion works
+
+Exclusion follows these rules:
+
+* A leading `-` on a pattern signals exclusion. The dash can be placed on the index part or on the project part of an expression, each with different requirements.
+Placing the dash on the **index** part (for example, `linked-project-1:-my-index` or `linked-project-1:-*`) works for any index pattern and can be used on its own.
+Placing the dash on the **project** part (for example, `*,-linked-project-1:*`) requires a preceding inclusion pattern and only works when the index part is the `*` wildcard. For example, `*,-linked-project-1:*` is valid, but `*,-linked-project-1:my-index` is not.
+You cannot prefix both the project and the index with a dash in the same expression (for example, `-linked-project-1:-*` is invalid).
+* An exclusion pattern only affects patterns that appear **before** it in the expression.
+Patterns listed **after** the exclusion are not affected by it (for example, in `*,-*,my-index`, the exclusion `-*` removes everything matched by the first `*`, but `my-index` comes after the exclusion and is still included).
+* You can use multiple exclusion patterns in a single expression.
+
+### Exclusion examples
+
+The following examples assume an origin project with two linked projects: `linked-project-1` and `linked-project-2`.
+
+`*,-linked-project-1:*`
+:   Searches everything across all projects, then excludes all indices on the `linked-project-1` project. The search runs on the origin project and `linked-project-2` only.
+
+`*,linked-project-1:-my-index`
+:   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. All other indices on `linked-project-1` and all indices on the origin project and `linked-project-2` are still included.
+
+`*,-my-index*,-logs`
+:   Searches everything, then applies two exclusion patterns. Indices matching `my-index*` and the `logs` index are excluded from the results from all projects.
+
+`*,linked-project-1:-*`
+:   Excludes all indices on the `linked-project-1` project. This is functionally equivalent to `*,-linked-project-1:*`.
+
+`*,-*`
+:   Matches all indices across all projects, then excludes all of them. The result is an empty scope.
+
+`*,-*,my-index`
+:   Matches all indices, then excludes all indices. Because the exclusion only affects patterns before it, the `my-index` pattern that follows is unaffected and `my-index` is still included in the search.
+
 ## Security
 
 This section gives you a high-level overview of how security works in {{cps}}.
-<!-- Refer to the [CPS Security]() section to learn in greater detail. -->
 
 In {{cps-init}}, access to a project's data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
 
@@ -131,10 +169,10 @@ The following APIs support {{cps}}:
 
 ## Limitations
 
-### Maximum of 20 linked projects per origin project
+::::{include} /deploy-manage/_snippets/cps-limitations-core.md
+::::
 
-Currently, each origin project can have up to 20 linked projects.
-A linked project can be associated with any number of origin projects.
+For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md) in **Deploy and manage**.
 
 ## {{cps-cap}} examples [cps-examples]
 
@@ -550,7 +588,7 @@ GET /_query
 {
   "project_routing": "@origin-only",
   "query": "FROM *",
-  "nclude_execution_metadata": true,
+  "include_execution_metadata": true
 }
 ```
 :::
