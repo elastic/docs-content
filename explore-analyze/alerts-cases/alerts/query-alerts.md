@@ -32,7 +32,7 @@ For example, the alias for a sample {{es}} Query rule is:
 .alerts-stack.alerts-default
 ```
 
-To search across alerts from all contexts, use the `.alerts-*` pattern. You can narrow queries to a specific alias when you know the rule type (see the [table below](#_index_names_and_aliases_for_rule_types)).
+To search across alerts from all contexts, use the `.alerts-*` pattern. You can narrow queries to a specific alias when you know the rule type (see the [tables below](#_index_names_and_aliases_for_rule_types)).
 
 ::::{note}
 {{elastic-sec}} rules are space-specific, and the space ID appears in the alias (for example, `.alerts-security.alerts-{{your-space-id}}`). All other rule types use the default space in the alias name.
@@ -61,24 +61,61 @@ Each part of the name:
 
 ## Index names and aliases for rule types [_index_names_and_aliases_for_rule_types]
 
-The following table lists the index names and aliases associated with each rule type.
+The two tables below use the same **Context** values so you can match a rule type to both the recommended **alias** (for queries) and an **example backing index** (for debugging or mapping checks). Default {{kib}} space uses the `alerts-default` segment in names; {{elastic-sec}} uses your space ID instead—see [Alert index aliases](#_alert_index_aliases) and [Alert indices](#_alert_indices).
 
-| Index name and alias                                                                                                                                                                                                          | Rule type                                                                                                                                                                                                                                                                                                                                                                                                      |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <br> `default` <br><br> **Index name:** <br> `.internal.alerts-default.alerts-default-000001` <br><br> **Alias:**<br>`.alerts-default.alerts-default` <br><br><br><br><br><br><br><br><br><br>                              | <br> **STACK MONITORING** <br><br> CCR read exceptions, <br> Cluster health, <br>CPU Usage, <br> Disk Usage, <br> Elasticsearch version mismatch, <br> Kibana version mismatch, <br> License expiration, <br> Logstash version mismatch, <br> Memory Usage (JVM), <br> Missing monitoring data, <br> Nodes changed, <br> Shard size, <br> Thread pool search rejections, <br> Thread pool write rejections |
-| `stack` <br><br> **Index name:**<br> `.internal.alerts-stack.alerts-default-000001` <br><br> **Alias:**<br> `.alerts-stack.alerts-default`                                                                                  | **STACK ALERTS** <br><br> Elasticsearch query, <br> Index threshold, <br> Degraded docs, <br> Tracking containment, <br> Transform health                                                                                                                                                                                                                                                                  |
-| <br> `Observability.apm` <br><br> **Index name:** <br> `.internal.alerts-observability.apm.alerts-default-000001` <br><br> **Alias:**<br> `.alerts-observability.apm.alerts-default`                                        | <br> **APM AND USER EXPERIENCE** <br><br> APM Anomaly, <br> Error count threshold, <br> Failed transaction rate threshold,<br> Latency threshold <br><br> <br>                                                                                                                                                                                                                                             |
-| <br> `ml.anomaly-detection-health` <br><br>**Index name:**<br>`.internal.alerts-ml.anomaly-detection-health.alerts-default-000001`<br><br> **Alias:**<br>`.alerts-ml.anomaly-detection-health.alerts-default`               | <br> **MACHINE LEARNING** <br> <br> Anomaly detection jobs health <br><br><br> <br><br>                                                                                                                                                                                                                                                                                                                    |
-| <br> `ml.anomaly-detection` <br><br> **Index name:**<br> `.internal.alerts-ml.anomaly-detection.alerts-default-000001`<br><br>**Alias:**<br>`.alerts-ml.anomaly-detection.alerts-default`                                   | **MACHINE LEARNING** <br><br> Anomaly detection <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                       |
-| <br> `ml.observability.uptime`<br><br> **Index name:**<br> `.internal.alerts-stack.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-stack.alerts-default`                                                             | <br> **SYNTHETICS AND UPTIME**<br><br> Synthetics monitor status,<br> Synthetics TLS certificate <br> <br> <br> <br>                                                                                                                                                                                                                                                                                       |
-| <br> `ml.observability.metrics`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.metrics.alerts-default-000001` <br><br> **Alias:** <br> `.alerts-ml.observability.metrics.alerts-default`                    | <br> **INFRASTRUCTURE** <br><br>Metric threshold, <br>Inventory<br><br><br><br><br>                                                                                                                                                                                                                                                                                                                        |
-| <br> `ml.observability.threshold`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.threshold.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.observability.threshold.alerts-default`                | <br> **OBSERVABILITY**<br><br> Custom Threshold <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                       |
-| <br> `ml.observability.slo`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.slo.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.observability.slo.alerts-default`                                | <br> **SLOs**<br><br> SLO burn rate <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                   |
-| <br> `ml.observability.logs`<br><br> **Index name:**<br> `.internal.alerts-ml.observability.logs.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.observability.logs.alerts-default`                                 | <br> **LOGS**<br><br> Log Threshold <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                   |
-| <br> `ml.dataset.quality`<br><br> **Index name:**<br> `.internal.alerts-ml.dataset.quality.alerts-default-000001`<br><br> **Alias:**<br> `.alerts-ml.dataset.quality.alerts-default`                                        | <br> Degraded docs <br><br><br><br><br><br> <br>                                                                                                                                                                                                                                                                                                                                                           |
-| <br> `ml.streams`<br><br> **Index name:**<br> `.internal.alerts-ml.streams.alerts-default-000001`<br><br>**Alias:**<br>`.alerts-ml.streams.alerts-default`                                                                  | <br> **STREAMS** <br><br> ES\|QL Rule <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                 |
-| <br> `security.attack.discovery`<br><br> **Index name:**<br> `.internal.alerts-security.attack.discovery.alerts-{{your-space-id}}-000001`<br><br>**Alias:**<br>`.alerts-security.attack.discovery.alerts-{{your-space-id}}` | <br> **SECURITY** <br><br> Attack Discovery Schedule <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                  |
-| <br> `security`<br><br> **Index name:**<br> `.internal.alerts-security.alerts-{{your-space-id}}-000001`<br><br>**Alias:**<br>`.alerts-security.alerts-{{your-space-id}}`                                                    | <br> **SECURITY** <br><br> All the other security rules <br><br><br><br><br>                                                                                                                                                                                                                                                                                                                               |
+**Columns in the first table**
+
+* **Context**: {{kib}}'s internal name for which alert index registration a rule type uses. For most rows, it's the same substring that appears after `.alerts-` in the alias (for example, `stack` in `.alerts-stack.alerts-default`). There is one exception: Synthetics and Uptime rules are registered under `ml.observability.uptime` but still write to the **`stack`** path (same alias and backing index as Stack rules).
+* **Area**: The product or feature area those rules belong to (Stack monitoring, {{observability}}, {{elastic-sec}}, and so on). Use it when you are looking up indexes by what you are working on in the UI, not by the technical `context` string.
+* **Index alias**: The name to use in searches and API calls. Prefer aliases over backing indices.
+* **Rule types**: The rule types whose alerts are stored under that context.
+
+**Columns in the second table**
+
+* **Context**: Same **Context** value as the row in the first table.
+* **Example backing index**: A typical first-generation backing index name (for example, suffix `-000001`). After rollover, the numeric suffix increases. Do not rely on a specific generation in automation; use the alias or a wildcard pattern when possible.
+
+### Rule types and index aliases
+
+| Context | Area | Index alias | Rule types |
+| :--- | :--- | :--- | :--- |
+| `default` | Stack monitoring | `.alerts-default.alerts-default` | CCR read exceptions; Cluster health; CPU usage; Disk usage; Elasticsearch version mismatch; Kibana version mismatch; License expiration; Logstash version mismatch; Memory usage (JVM); Missing monitoring data; Nodes changed; Shard size; Thread pool search rejections; Thread pool write rejections |
+| `stack` | Stack rules | `.alerts-stack.alerts-default` | Elasticsearch query; Index threshold; Degraded docs; Tracking containment; Transform health |
+| `Observability.apm` | APM | `.alerts-observability.apm.alerts-default` | APM Anomaly; Error count threshold; Failed transaction rate threshold; Latency threshold |
+| `ml.anomaly-detection-health` | {{ml-app}} | `.alerts-ml.anomaly-detection-health.alerts-default` | Anomaly detection jobs health |
+| `ml.anomaly-detection` | {{ml-app}} | `.alerts-ml.anomaly-detection.alerts-default` | Anomaly detection |
+| `ml.observability.uptime` | Synthetics and Uptime | `.alerts-stack.alerts-default` (same alias as **Stack rules**) | Synthetics monitor status; Synthetics TLS certificate |
+| `ml.observability.metrics` | Infrastructure | `.alerts-ml.observability.metrics.alerts-default` | Metric threshold; Inventory |
+| `ml.observability.threshold` | {{observability}} | `.alerts-ml.observability.threshold.alerts-default` | Custom threshold |
+| `ml.observability.slo` | SLOs | `.alerts-ml.observability.slo.alerts-default` | SLO burn rate |
+| `ml.observability.logs` | Logs | `.alerts-ml.observability.logs.alerts-default` | Log threshold |
+| `ml.dataset.quality` | Data set quality | `.alerts-ml.dataset.quality.alerts-default` | Degraded docs |
+| `ml.streams` | Streams | `.alerts-ml.streams.alerts-default` | ES\|QL Rule |
+| `security.attack.discovery` | {{elastic-sec}} | `.alerts-security.attack.discovery.alerts-{{your-space-id}}` | Attack Discovery Schedule |
+| `security` | {{elastic-sec}} | `.alerts-security.alerts-{{your-space-id}}` | All other security detection rules |
+
+### Example backing indices (first generation)
+
+| Context | Example backing index |
+| :--- | :--- |
+| `default` | `.internal.alerts-default.alerts-default-000001` |
+| `stack` | `.internal.alerts-stack.alerts-default-000001` |
+| `Observability.apm` | `.internal.alerts-observability.apm.alerts-default-000001` |
+| `ml.anomaly-detection-health` | `.internal.alerts-ml.anomaly-detection-health.alerts-default-000001` |
+| `ml.anomaly-detection` | `.internal.alerts-ml.anomaly-detection.alerts-default-000001` |
+| `ml.observability.uptime` | `.internal.alerts-stack.alerts-default-000001` (same backing index as **`stack`**) |
+| `ml.observability.metrics` | `.internal.alerts-ml.observability.metrics.alerts-default-000001` |
+| `ml.observability.threshold` | `.internal.alerts-ml.observability.threshold.alerts-default-000001` |
+| `ml.observability.slo` | `.internal.alerts-ml.observability.slo.alerts-default-000001` |
+| `ml.observability.logs` | `.internal.alerts-ml.observability.logs.alerts-default-000001` |
+| `ml.dataset.quality` | `.internal.alerts-ml.dataset.quality.alerts-default-000001` |
+| `ml.streams` | `.internal.alerts-ml.streams.alerts-default-000001` |
+| `security.attack.discovery` | `.internal.alerts-security.attack.discovery.alerts-{{your-space-id}}-000001` |
+| `security` | `.internal.alerts-security.alerts-{{your-space-id}}-000001` |
+
+:::{note}
+For {{elastic-sec}}, replace `{{your-space-id}}` with your {{kib}} space ID. Synthetics and Uptime alerts use the **stack** backing index and alias as Stack rules, not a separate `ml.observability.uptime` index name.
+:::
 
 ## Sample queries [_sample_queries]
 
