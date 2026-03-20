@@ -55,7 +55,7 @@ Each part of the name:
 
 * **`.internal.alerts-` prefix:** Present on all alert backing index names.
 * **`context`:** The product group for the rule type (for example {{stack-manage-app}}, {{observability}}, or {{elastic-sec}}).
-* **`dataset`:** The `alerts` dataset segment in the index name.
+* **`dataset`:** It will always be `.alert` for alert indices.
 * **`space-id`:** The {{kib}} space the index was created for. {{elastic-sec}} rules are space-specific; other rules use the default space in the index name.
 
 
