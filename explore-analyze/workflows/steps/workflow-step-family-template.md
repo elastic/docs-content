@@ -13,10 +13,10 @@ products:
   - id: elastic-stack
 ---
 
-# Template — Workflow step family reference
+# Template: Workflow step family reference
 
 ::::{note}
-This page is an **authoring template**. Duplicate its structure when you add documentation for a new workflow step family under [](/explore-analyze/workflows/steps/). Replace placeholder text and remove this note in the published page.
+This page is an **authoring template**. Duplicate its structure when you add a new workflow step family page under `explore-analyze/workflows/steps/`. See [](/explore-analyze/workflows/steps.md) for how workflow steps are organized in the docs. Replace placeholder text and remove this note in the published page.
 
 The live reference for Cases steps is [](/explore-analyze/workflows/steps/cases.md).
 ::::
