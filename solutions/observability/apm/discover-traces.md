@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: preview 9.2
+  stack: preview 9.2+
   serverless: preview
 description: Explore trace data in Discover using the traces profile.
 products:
@@ -40,7 +40,7 @@ The traces experience is available in:
 
 * **{{data-source-cap}} mode**: Select a {{data-source}} that matches a `traces-*` index pattern from the **Discover** main page.
 
-* **{{esql}} mode**: Select **Try {{esql}}** and use the `FROM` command to query your trace data:
+* **{{esql}} mode**: Select **{{esql}}** and use the `FROM` command to query your trace data:
 
     ```esql
     FROM traces-*
@@ -71,7 +71,7 @@ In {{esql}} mode, **Discover** displays three summary charts above the results:
 
 ### Trace document overview [trace-document-overview]
 
-Select any row to open the document detail panel. The **Overview** tab shows the key attributes of the selected trace document:
+Select {icon}`expand` in any row to open the document detail panel. The **Overview** tab shows the key attributes of the selected trace document:
 
 - **Span ID** and **Span name**: Identify the specific operation.
 - **Trace ID**: Links all documents that belong to the same trace.
@@ -107,7 +107,7 @@ The **Trace** section shows a condensed waterfall of the trace the selected docu
 
 Select **Expand trace timeline** to open the full-screen waterfall view.
 
-### Expanded trace timeline [expanded-trace-timeline]
+#### Expanded trace timeline [expanded-trace-timeline]
 
 The expanded trace timeline shows all spans and transactions in a trace in a full-screen waterfall view. A color-coded legend identifies which service each span belongs to. Failed spans are highlighted to help you quickly locate errors.
 
