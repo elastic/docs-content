@@ -46,7 +46,7 @@ serverless:
   security: preview
 ```
 
-[Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) is a {{sec-serverless}} project type that provides AI-powered tools to augment your existing SIEM and EDR/XDR platforms. EASE combines Attack Discovery, AI Assistant, and agentless data ingestion in a serverless deployment that you can start using in minutes. It's designed for teams that want to get value from AI-driven security operations quickly, without managing infrastructure. EASE also offers a [Value report](/solutions/security/ai/ease/ease-value-report.md) that summarizes key security metrics and helps you measure the impact of your AI-powered SOC.
+[Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) is an {{sec-serverless}} project type that provides AI-powered tools to augment your existing SIEM and EDR/XDR platforms. EASE combines Attack Discovery, AI Assistant, and agentless data ingestion in a serverless deployment that you can start using in minutes. It's designed for teams that want to get value from AI-driven security operations quickly, without managing infrastructure. EASE also offers a [Value report](/solutions/security/ai/ease/ease-value-report.md) that summarizes key security metrics and helps you measure the impact of your AI-powered SOC.
 
 ## AI-powered workflow tools [ai-workflow-tools]
 
