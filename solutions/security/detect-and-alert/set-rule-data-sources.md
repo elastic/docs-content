@@ -42,27 +42,34 @@ Cold data tiers store time series data that's accessed infrequently and rarely u
 ### Best practices
 
 * **Retention in hot tier**: Keep data in the hot tier ({{ilm}} hot phase) for at least 24 hours. {{ilm-cap}} policies that move ingested data from the hot phase to another phase (for example, cold or frozen) in less than 24 hours may cause performance issues or rule execution errors.
-* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't have replicas by default, shard unavailability can cause partial rule run failures. Shard unavailability may also be encountered during or after {{stack}} upgrades. If this happens, you can manually rerun rules over the affected time period once the shards are available.
+* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't have replicas by default, shard unavailability can cause partial rule run failures. Shard unavailability may also be encountered during or after {{stack}} upgrades. If this happens, you can [manually rerun rules](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) over the affected time period once the shards are available.
+* **Timestamp override**: {{es}} seeks to preserve the event's source-designated timestamp in its `@timestamp` field and separately reports its `event.ingested` date field for ingest pipeline completeion as [noted here](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed). {{es}} will attempt to pre-filter out indices based off not hosting data within the rule execution's desired look back date range. If the data source timestamp incorrectly reports a future date, {{es}} will not be able to pre-filter out indices from searching. This will cause extra performance costs for not changing resulting alerts. Therefore, [prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules.md) default apply a [timestamp override](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) to use `event.ingested` whenever available. Your custom rules should apply a similar override. See [Delayed timestamps](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed) to manually set `event.ingested` if it is not already applying to your indexing data.
+
 
 ### Limitations
 
-* To avoid rule failures, do not modify {{ilm}} policies for {{elastic-sec}}-controlled indices, such as alert and list indices.
-* Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least 24 hours before moving to cold or frozen tiers.
+* To avoid rule failures and UI loading errors, do not modify [{{ilm}} policies](/manage-data/lifecycle/index-lifecycle-management.md) for {{elastic-sec}}-controlled indices, such as [alert indices](/solutions/security/detect-and-alert/query-alert-indices.md) and [list indices](/solutions/security/detect-and-alert/create-manage-value-lists.md).
+* Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least 24 hours before moving to cold or frozen [data tiers](../../../manage-data/lifecycle/data-tiers.md).
 
 ### Exclusion options
 
 You have two options for excluding cold and frozen data from rules:
 
-* **Space-level setting (all rules)**: Configure the `excludedDataTiersForRuleExecution` [advanced setting](../get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) to exclude cold or frozen data from all rules in a {{kib}} space. This does not apply to {{ml}} rules. Only available on {{stack}}.
+* **Space-level setting (all rules)**: Configure [advanced settings](../get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) to exclude `data_cold` or `data_frozen` data from all rules in a {{kib}} space. Only available on {{stack}}.
 
-* **Per-rule Query DSL filter (individual rules)**: Add a Query DSL filter to the rule that ignores cold or frozen documents at query time. This gives you per-rule control and is described below.
+   * `data_views:fields_excluded_data_tiers`: This applies to all [Data views](/explore-analyze/find-and-organize/data-views.md) when loading {{es}}'s [Field capabilities API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps).
+   * `securitySolution:excludedDataTiersForRuleExecution`: This applies to all [Security rule types](/solutions/security/detect-and-alert/rule-types.md) except [{{ml}} rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md).
 
-::::{important}
-* Per-rule Query DSL filters are not supported for {{esql}} and {{ml}} rules.
-* Even with this filter applied, indicator match and event correlation rules may still fail if a frozen or cold shard that matches the rule's index pattern is unavailable during rule execution. If failures occur, modify the rule's index patterns to only match indices containing hot-tier data.
-::::
+* **Per-rule Query DSL filter (individual rules)**: Add a DSL [boolean query](/reference/query-languages/query-dsl/query-dsl-bool-query.md) to the rule that ignores cold or frozen documents at pre-filter query time. This gives you per-rule control and is described below.
+
+   ::::{important}
+   * Per-rule Query DSL filters are not supported for [{{esql}} rules](/solutions/security/detect-and-alert/esql.md) nor [{{ml}} rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md).
+   * Even with this filter applied, indicator match and event correlation rules may still fail if a frozen or cold shard that matches the rule's index pattern is unavailable during rule execution. If failures occur, modify the rule's index patterns to only match indices containing hot-tier data.
+   ::::
 
 ### Sample Query DSL filters [query-dsl-filter-examples]
+
+The {{es}} search pre-filter requires the DSL apply from a [boolean query](/reference/query-languages/query-dsl/query-dsl-bool-query.md) and cannot apply by way of a [query string query](/reference/query-languages/query-dsl/query-dsl-query-string-query.md).
 
 Exclude frozen-tier documents:
 
