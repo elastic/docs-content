@@ -44,7 +44,7 @@ Together, these approaches allow the architecture to be tuned precisely for diff
 
 ## Architecture
 
-The following architecture describes a multi-availability-zone deployment designed for continuous availability, fault tolerance, and predictable performance under sustained query and ingestion load. It applies to both time-series and non-time-series use cases and supports a broad set of GenAI patterns including assistants, autonomous agents, observability copilots for SRE’s, and SOC analysis platforms.
+The following architecture describes a multi-availability-zone deployment designed for continuous availability, fault tolerance, and predictable performance under sustained query and ingestion load. It applies to both time-series and non-time-series use cases and supports a broad set of GenAI patterns including assistants, autonomous agents, observability copilots for SREs, and SOC analysis platforms.
 
 :::{image} /deploy-manage/images/genai-search-ha-logical-diagram.png
 :alt: GenAI Search high availability logical diagram
