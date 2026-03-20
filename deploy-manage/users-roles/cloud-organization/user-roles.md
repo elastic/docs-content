@@ -28,11 +28,10 @@ On this page, you'll learn the following:
 
 To edit the roles assigned to a user:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From a deployment or project on the home page, select **Manage**.
-3. From the lower navigation menu, select **Organization**.
-4. Find the user on the **Members** tab of the **Organization** page. Click the member name to view their roles.
-5. Click **Edit roles** to change the user's roles.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Organization** > **Members**.
+4. Select the user on the **Members** tab of the **Organization** page.
+5. Click **Edit** to change the user's roles.
 
 ## Types of roles
 

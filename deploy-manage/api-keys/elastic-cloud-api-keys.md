@@ -22,6 +22,10 @@ Only **Organization owners** can create and manage API keys. An API key is not t
 
 You can have multiple API keys for different purposes, and you can revoke them when you no longer need them. Each organization can have up to 500 active API keys.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
+:::
+
 :::{admonition} {{es}} and {{kib}} API access 
 :applies_to: ech:
 
@@ -90,11 +94,8 @@ curl -XPOST \
 
 ## Revoke an API key [ec_revoke_an_api_key]
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Go to your avatar in the upper right corner and choose **Organization**.
-
-    The keys currently associated with your organization are listed under the API keys tab of the **Organization** page.
-
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Organization > API keys**.
 3. Find the key you want to revoke, and click the trash icon under **Actions**.
    
 ## API key expiration [expiration]

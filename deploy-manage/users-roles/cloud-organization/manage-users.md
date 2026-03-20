@@ -20,6 +20,10 @@ You can invite users to join your organization to allow them to interact with al
 
 Alternatively, [configure {{ecloud}} SAML SSO](../../../deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) to enable your organization members to join the {{ecloud}} organization automatically.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
+:::
+
 ::::{note}
 Users can only belong to one organization at a time. If a user that you want to invite already belongs to a different organization, that user first needs to leave their current organization, or to use a different email address. Check [Join an organization from an existing {{ecloud}} account](/cloud-account/join-or-leave-an-organization.md).
 ::::
@@ -32,9 +36,8 @@ If you're using {{ech}}, then you can also manage users and control access [at t
 
 To invite users to your organization:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From a deployment or project on the home page, select **Manage**.
-3. From the lower navigation menu, select **Organization**.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Organization** > **Members**.
 4. On the **Members** page, click **Invite members**.
 5. Enter the email addresses of the users you want to invite in the textbox.
 
