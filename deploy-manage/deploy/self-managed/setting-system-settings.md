@@ -15,9 +15,11 @@ This page describes **where and how** to apply operating system limits and envir
 
 For **which** limits and values you must set (such as file descriptors, threads, memory lock, virtual memory, and so on), see [Important system configuration](important-system-configuration.md) and the pages linked from there.
 
-Where to configure system settings depends on which package you have used to install {{es}}, and which operating system you are running.
+Where to configure system settings depends on how {{es}} is installed and started, and which operating system you are using:
 
-When using the `.zip` or `.tar.gz` packages, system settings can be configured:
+* When using the `.zip` or `.tar.gz` packages, {{es}} is typically started manually from a shell. In this case, system limits can be configured using `/etc/security/limits.conf` or by setting them directly in the shell using `ulimit` before starting {{es}}.
+
+* When using `.deb` or `.rpm` packages, Elasticsearch runs as a system service managed by systemd. In this case, system limits must be configured in the service definition (for example, using `LimitNOFILE` in a systemd override file).
 
 * Temporarily with [`ulimit`](#ulimit).
 * Permanently in [`/etc/security/limits.conf`](#limits.conf).
