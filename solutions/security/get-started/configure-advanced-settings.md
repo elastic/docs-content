@@ -22,7 +22,7 @@ The advanced settings control the behavior of the {{security-app}}, such as:
 * Whether the news feed is displayed on the [Overview dashboard](/solutions/security/dashboards/overview-dashboard.md)
 * The default time interval used to filter {{elastic-sec}} pages
 * The default {{elastic-sec}} pages refresh time
-* Which IP reputation links appear on [IP detail](/solutions/security/explore/network-page.md) pages
+* Which IP reputation links appear on [IP detail](/solutions/security/advanced-entity-analytics/network-page.md) pages
 * Whether cross-cluster search (CCS) privilege warnings are displayed
 * Whether related integrations are displayed on the Rules page tables
 * The options provided in the alert tag menu
@@ -93,7 +93,7 @@ The `securitySolution:defaultThreatIndex` advanced setting specifies threat inte
 You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti_*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
 
 ::::{important}
-Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) for more information.
+Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) for more information.
 ::::
 
 
@@ -127,8 +127,8 @@ You can change these settings, which affect the news feed displayed on the {{ela
 
 ## Enable graph visualization
 ```{applies_to}
-stack: preview 9.1
-serverless: preview
+stack: removed 9.4, preview 9.1-9.3
+serverless: removed
 ```
 Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
 
@@ -210,7 +210,7 @@ If you’ve ensured that your detection rules have the required privileges acros
 stack: ga 9.2
 ```
 
-To control whether alert suppression continues after you close a supressed alert during an [active suppression window](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
+To control whether alert suppression continues after you close a supressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
 ## Show/hide related integrations in Rules page tables [show-related-integrations]
 
@@ -238,7 +238,7 @@ To ensure the rules in your {{kib}} space exclude query results from cold and fr
 This setting does not apply to {{ml}} rules because {{ml}} anomalies are not stored in cold or frozen data tiers.
 
 ::::{tip}
-To only exclude cold and frozen data from specific rules, add a [Query DSL filter](/solutions/security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md) to the rules you want affected.
+To only exclude cold and frozen data from specific rules, add a [Query DSL filter](/solutions/security/detect-and-alert/set-rule-data-sources.md) to the rules you want affected.
 
 ::::
 
@@ -250,8 +250,8 @@ Even when the `excludedDataTiersForRuleExecution` advanced setting is enabled, i
 
 ## Access privileged user monitoring
 ```yaml {applies_to}
-stack: ga 9.1
-serverless: ga
+stack: removed 9.3, ga 9.1
+serverless: removed
 ```
 
 The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.

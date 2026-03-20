@@ -2,6 +2,9 @@
 navigation_title: Log threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-threshold-alert.html
+applies_to:
+  stack: ga
+  serverless: unavailable 
 products:
   - id: observability
 ---
@@ -154,7 +157,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.

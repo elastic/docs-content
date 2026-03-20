@@ -146,24 +146,26 @@ A standardized set of attributes is specified in [Browser resource semantic conv
 
 To define the resource, you need the following dependencies:
 
+- `@opentelemetry/resources`: This package provides information about the SDK to be placed in the resource. This information helps {{kib}} identify the service type and the SDK that generated the telemetry.
 - `@opentelemetry/resources`: This package helps you to define and work with resources because a Resource is not a plain object and has some properties (like immutability) and constraints.
-- `@opentelemetry/browser-detector`: Detectors help you to define a resource by querying the runtime and environment and resolving some attributes. In this case, the browser detector resolves the language, brands, and mobile attributes of the browser namespace.
+- `@opentelemetry/opentelemetry-browser-detector`: Detectors help you to define a resource by querying the runtime and environment and resolving some attributes. In this case, the browser detector resolves the language, brands, and mobile attributes of the browser namespace.
 
 To install the dependencies, run the following command:
 
 ```bash
-npm install @opentelemetry/resources @opentelemetry/browser-detector
+npm install @opentelemetry/core @opentelemetry/resources @opentelemetry/opentelemetry-browser-detector
 ```
 
 After the dependencies are installed, define the resource for your instrumentation with the following code:
 
 :::{dropdown} Resource definition
 ```javascript
+import { SDK_INFO } from '@opentelemetry/core';
 import { resourceFromAttributes, detectResources } from '@opentelemetry/resources';
 import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
 
 const detectedResources = detectResources({ detectors: [browserDetector] });
-let resource = resourceFromAttributes(OTEL_RESOURCE_ATTRIBUTES);
+let resource = resourceFromAttributes({ ...OTEL_RESOURCE_ATTRIBUTES, ...SDK_INFO});
 resource = resource.merge(detectedResources);
 ```
 :::
@@ -365,7 +367,7 @@ To install all the dependencies needed for the complete setup, run the following
 npm install @opentelemetry/api\
       @opentelemetry/core\
       @opentelemetry/resources\
-      @opentelemetry/browser-detector\
+      @opentelemetry/opentelemetry-browser-detector\
       @opentelemetry/sdk-trace-base\
       @opentelemetry/sdk-trace-web\
       @opentelemetry/context-zone\
@@ -387,7 +389,7 @@ After the dependencies are installed, you can wrap the setup in a function with 
 ```javascript
 // file: telemetry.js
 import { diag, DiagConsoleLogger, trace, metrics } from '@opentelemetry/api';
-import { diagLogLevelFromString } from '@opentelemetry/core';
+import { diagLogLevelFromString, SDK_INFO } from '@opentelemetry/core';
 import { resourceFromAttributes, detectResources } from '@opentelemetry/resources';
 import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
@@ -422,8 +424,9 @@ export function initOpenTelemetry(config) {
   diag.info('OTEL bootstrap', config);
 
   // Resource definition
+  const resourceAttributes = { ...config.resourceAttributes, ...SDK_INFO };
   const detectedResources = detectResources({ detectors: [browserDetector] });
-  const resource = resourceFromAttributes(config.resourceAttributes)
+  const resource = resourceFromAttributes(resourceAttributes)
                               .merge(detectedResources);
 
   // Trace signal setup
@@ -680,6 +683,35 @@ connect-src collector.example.com:4318/v1/traces
 ### Cross-origin resource sharing (CORS)
 
 If your website and the configured endpoint have a different origin, your browser might block the export requests. If you followed the instructions in the [OTLP endpoint](#before-you-begin) section, you already set up the necessary CORS headers. Otherwise you need to configure special headers for CORS in the receiving endpoint.
+
+## Explore your data in {{kib}}
+
+After ingesting OpenTelemetry RUM data, you can explore it in {{kib}}.
+
+### Available views
+
+You can explore OpenTelemetry RUM data in these {{kib}} experiences:
+
+- **{{product.apm}} service inventory**  
+  Browser apps that generate traces appear in the {{product.apm}} service inventory. The names displayed in the list correspond to the [`service.name` resource attribute](#otel-rum-basic-settings) defined when instrumenting the app. You can view service details, open distributed traces, and explore end-to-end traces that include browser spans.
+
+- **Distributed tracing**  
+  OpenTelemetry RUM traces are integrated with Elastic distributed tracing. Analyze request flows across browser and backend services in a single trace view.
+
+- **Discover**  
+  RUM events and metrics are indexed in {{es}}. In **Discover** you can inspect raw events, run exploratory queries, apply filters, and verify ingestion.
+
+:::{note}
+The **{{user-experience}} (UX)** app shows only Elastic {{product.apm}} RUM data, not OpenTelemetry RUM. Curated RUM dashboards for OpenTelemetry are not available yet.
+:::
+
+### Confirm that ingestion is working
+
+To verify that OpenTelemetry RUM data is reaching Elastic:
+
+1. Open the **Service Inventory**. To do so, find `Services` or `Applications` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) or go to **{{observability}} → Applications → Service Inventory**.
+2. Look for your browser application in the **Service Inventory**.
+3. Open **Discover** and filter for recent events from your browser application to verify that data is indexed.
 
 ## Known limitations
 

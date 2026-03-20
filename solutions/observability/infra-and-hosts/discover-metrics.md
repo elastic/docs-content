@@ -40,7 +40,7 @@ For more on assigning Kibana privileges, refer to the [Kibana privileges documen
 To visualize your metrics data as charts, its data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
 :::
 
-The dedicated metrics view is only available in ES|QL mode. From the **Discover** main page, select **Try ES|QL** to open ES|QL mode.
+The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
 Use the `TS` command to select the data source. For example, the following query returns all of your metrics data:
 
@@ -97,4 +97,4 @@ For each metric chart, you can perform the following actions:
 * **Inspect** ({icon}`inspect`): Show details about the query request and response.
 * **View details** ({icon}`eye`): Get additional information about the metric like metric type, dimensions, and ES|QL query.
 * **Copy to dashboard** ({icon}`app_dashboard`): Save the metric chart to an existing or new [dashboard](/explore-analyze/dashboards.md).
-* **Add to case** ({icon}`app_cases`): Add the metric chart to a [case](/solutions/observability/incident-management/cases.md).
+* **Add to case** ({icon}`app_cases`): Add the metric chart to a [case](/solutions/observability/incident-management/observability-cases.md).

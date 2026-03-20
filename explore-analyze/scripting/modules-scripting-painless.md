@@ -15,7 +15,7 @@ products:
 This introduction is designed for users new to Painless scripting. If you're already familiar with Painless, refer to the [Painless language specification](elasticsearch://reference/scripting-languages/painless/painless-language-specification.md) for syntax details and advanced features.
 :::
 
-Painless is a secure, performant, and flexible scripting language designed specifically for {{es}}. As the default scripting language for {{es}}, Painless lets you safely customize search behavior, data processing, and operations workflows across your {[stack]} deployments.
+Painless is a secure, performant, and flexible scripting language designed specifically for {{es}}. As the default scripting language for {{es}}, Painless lets you safely customize search behavior, data processing, and operations workflows across your {{stack}} deployments.
 
 ## What is Painless?
 
@@ -79,10 +79,12 @@ You can use Painless in multiple contexts throughout {{es}}:
 * [**Search queries**](/solutions/search.md)**:** for custom scoring and script fields  
 * [**Runtime fields**](/manage-data/data-store/mapping/runtime-fields.md)**:** for dynamic field creation  
 * [**Update API:**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update) for document modification  
-* [**Watcher**](/explore-analyze/alerts-cases/watcher.md)**:** for alert conditions and actions
+* [**Watcher**](/explore-analyze/alerting/watcher.md)**:** for alert conditions and actions
 
 ## Start scripting
 
 Write your first Painless script by trying out our [guide](/explore-analyze/scripting/modules-scripting-using.md) or jump into one of our [tutorials](/explore-analyze/scripting/common-script-uses.md) for real-world examples using sample data.
 
 For complete syntax and language features, refer to the [Painless language specification](elasticsearch://reference/scripting-languages/painless/painless-language-specification.md).
+
+Once you get started, refer to [Debug Painless scripts in {{es}}](/explore-analyze/scripting/painless-debugging.md) for helpful tips about how to resolve common scripting errors.

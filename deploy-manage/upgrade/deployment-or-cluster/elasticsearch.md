@@ -206,18 +206,20 @@ To upgrade a cluster:
 
 ## Rolling upgrades considerations [rolling-upgrades]
 
-During a rolling upgrade, the cluster continues to operate normally. However, any new functionality is disabled or operates in a backward compatible mode until all nodes in the cluster are upgraded. New functionality becomes operational once the upgrade is complete and all nodes are running the new version. Once that has happened, there’s no way to return to operating in a backward compatible mode. Nodes running the previous version will not be allowed to join the fully-updated cluster.
+During a rolling upgrade, the cluster continues to operate normally. New functionality is either inactive or operates in a backward-compatible mode until the last old-version node leaves the cluster. New functionality becomes operational when all nodes in the cluster are running the new version.
 
-In the unlikely case of a network malfunction during the upgrade process that isolates all remaining old nodes from the cluster, you must take the old nodes offline and upgrade them to enable them to join the cluster.
+Usually, the old-version nodes only leave the cluster when you shut them down to upgrade them. In this case, the last old-version node leaves the cluster when there are no more nodes to upgrade. However, it is possible that an old-version node might leave the cluster before you shut it down. For example, a node might leave the cluster if it loses its network connection with the elected master node, or if it fails to respond to health checks.
 
-If you stop half or more of the master-eligible nodes all at once during the upgrade the cluster will become unavailable. You must upgrade and restart all of the stopped master-eligible nodes to allow the cluster to re-form. It might also be necessary to upgrade all other nodes running the old version to enable them to join the re-formed cluster.
+If all the remaining old-version nodes unexpectedly leave the cluster during an upgrade, the cluster will consider itself to be fully-upgraded, automatically activate new functionality, and leave its backward-compatible mode. Once that has happened, there is no way to return the cluster to a state that is compatible with the old-version nodes. Nodes running the earlier version will not be able to join this fully-upgraded cluster. To bring these nodes back into the cluster, upgrade them. {{es}} maintains the data in the data paths of the older nodes and will recover the cluster to health using this data after the nodes are fully upgraded.
 
-Similarly, if you run a testing/development environment with a single master node it should be upgraded last. Restarting a single master node forces the cluster to be reformed. The new cluster will initially only have the upgraded master node and will thus reject the older nodes when they re-join the cluster. Nodes that have already been upgraded will successfully re-join the upgraded master.
+If you stop half or more of the master-eligible nodes all at once during the upgrade, the cluster will become unavailable. You must restart all the stopped master-eligible nodes to allow the cluster to re-form. If the re-formed cluster comprises only upgraded nodes, then the cluster will consider itself to be fully-upgraded, automatically activate new functionality, and leave its backward-compatible mode. In this case, upgrade all other nodes running the old version to enable them to join the re-formed cluster. Upgrade the master-eligible nodes last to make it less likely that this occurs.
 
+In a testing or development environment with only one or two master-eligible nodes, you cannot avoid stopping half or more of the master-eligible nodes, so the cluster will always become unavailable at some point during the upgrade. When you restart the master-eligible nodes after this unavailability, the cluster will re-form with a single upgraded node, which is therefore fully-upgraded and will reject older nodes' attempts to re-join the cluster. Upgrade the master-eligible nodes last to avoid these rejections.
 
 ## Archived settings [archived-settings]
 
-If you upgrade an {{es}} cluster that uses deprecated cluster or index settings that are not used in the target version, they are archived. We recommend you remove any archived settings after upgrading. For more information, refer to [Archived settings](../../../deploy-manage/upgrade/deployment-or-cluster/archived-settings.md).
+:::{include} _snippets/archived-settings-post.md
+:::
 
 ## Next steps
 

@@ -1,3 +1,10 @@
+<!--
+This snippet is in use in the following locations:
+- self-remote-cluster-eck.md
+- eck-remote-clusters-to-other-eck.md
+- ece-enable-ccs-for-eck.md
+- ec-enable-ccs-for-eck.md
+-->
 The certificate authority (CA) used by ECK to issue certificates for the remote cluster server interface is stored in the `ca.crt` key of the secret named `<cluster_name>-es-transport-certs-public`.
 
 If the external connections reach the {{es}} Pods on port `9443` without any intermediate TLS termination, you need to retrieve this CA because it is required in the local cluster configuration to establish trust.

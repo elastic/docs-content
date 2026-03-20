@@ -19,6 +19,11 @@ An index is a fundamental unit of storage in {{es}}. It is a collection of docum
 A closely related concept is a [data stream](/manage-data/data-store/data-streams.md). This index abstraction is optimized for append-only timestamped data, and is made up of hidden, auto-generated backing indices. If you’re working with timestamped data, we recommend the [Elastic Observability](/solutions/observability/get-started.md) solution for additional tools and optimized content.
 ::::
 
+:::{note}
+:applies_to: {"serverless": "ga"}
+In {{serverless-full}}, each project supports up to 15,000 indices. This limit helps ensure reliable performance and stability. If you need a higher limit, you can [request an increase](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#index-and-resource-limits). For index sizing recommendations, refer to [index sizing guidelines](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size).
+:::
+
 ## Index components
 
 An index is made up of the following components.
@@ -89,11 +94,9 @@ To add these privileges, go to **Stack Management > Security > Roles** or use th
 
 Investigate your indices and perform operations from the **Indices** view.
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{applies-item} serverless:
 
 :::{image} /manage-data/images/serverless-index-management-indices.png
 :alt: Index Management indices
@@ -113,7 +116,7 @@ Investigate your indices and perform operations from the **Indices** view.
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
 ::::
 
-::::{tab-item} {{stack}}
+::::{applies-item} stack:
 :sync: stack
 
 :::{image} /manage-data/images/elasticsearch-reference-management_index_labels.png
@@ -328,10 +331,6 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 * To create new policies, use the **Create enrich policy** wizard.
 
 You must execute a new enrich policy before you can use it with an enrich processor or {{esql}} query. When executed, an enrich policy uses enrich data from the policy's source indices to create a streamlined system index called the enrich index. The policy uses this index to match and enrich incoming documents.
-
-When creating an enrich policy, the UI walks you through the configuration setup and selecting the fields. Before you can use the policy with an enrich processor or {{esql}} query, you must execute the policy.
-
-When executed, an enrich policy uses enrich data from the policy’s source indices to create a streamlined system index called the enrich index. The policy uses this index to match and enrich incoming documents.
 
 Check out these examples:
 

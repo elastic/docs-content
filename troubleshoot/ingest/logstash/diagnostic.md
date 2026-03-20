@@ -1,12 +1,7 @@
 ---
 navigation_title: Diagnostics
 applies_to:
-  stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  stack: ga 9.0+
 products:
   - id: logstash
 ---

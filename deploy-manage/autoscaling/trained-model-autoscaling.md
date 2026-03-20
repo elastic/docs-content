@@ -114,9 +114,9 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 #### Adaptive resources enabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -128,7 +128,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
@@ -141,11 +141,11 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 ::::
 
 #### Adaptive resources disabled
-
-::::{tab-set}
-
-:::{tab-item} ECH, ECE
-
+```{applies_to}
+deployment:
+  ess:
+  ece:
+```
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
 | Low | 2 if available, otherwise 1, statically | 1 | 2 if available |
@@ -154,9 +154,6 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 \* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
-:::
-
-::::
 
 ### Search optimized
 
@@ -164,9 +161,9 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 #### Adaptive resources enabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -178,13 +175,13 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
 | Low | 0 to 1 dynamically | 2 | 0 to 16 dynamically |
-| Medium | 0 to 2 dynamically for Search and Observatibility<br> 1 to 2 dynamically for Security | 4 | 0 to 256 dynamically for Search and Observatibility<br> 8 to 256 dynamically for Security |
-| High | 0 to 32 dynamically for Search and Observatibility<br> 1 to 128 dynamically for Security<br> | 8 | 0 to 4096 dynamically for Search<br> 0 to 1024 dynamically for Observability<br>8 to 1014 dynamically for Security |
+| Medium | 0 to 2 dynamically for Search and Observability<br> 1 to 2 dynamically for Security | 4 | 0 to 256 dynamically for Search and Observability<br> 8 to 256 dynamically for Security |
+| High | 0 to 32 dynamically for Search and Observability<br> 1 to 128 dynamically for Security<br> | 8 | 0 to 4096 dynamically for Search<br> 0 to 1024 dynamically for Observability<br>8 to 1014 dynamically for Security |
 
 :::
 
@@ -192,9 +189,9 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 #### Adaptive resources disabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |

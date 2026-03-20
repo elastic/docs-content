@@ -33,9 +33,9 @@ To create the POST URL for PDF reports:
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
 2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report. From the toolbar, do one of the following:
 
-    * {applies_to}`stack: ga 9.0` If you are using **Dashboard** or **Visualize Library**, click **Share > Export**, select the PDF or PNG option, then click **Copy POST URL**.
-    * {applies_to}`stack: ga 9.0` If you are using **Canvas**, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
-    * {applies_to}`stack: ga 9.1` Click the **Export** icon, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
+    * {applies_to}`stack: ga 9.1+` Click the **Export** icon, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
+    * {applies_to}`stack: ga =9.0` If you are using **Dashboard** or **Visualize Library**, click **Share > Export**, select the PDF or PNG option, then click **Copy POST URL**.
+    * {applies_to}`stack: ga =9.0` If you are using **Canvas**, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
 
 ### CSV reports [csv-post-url]
 
@@ -45,13 +45,13 @@ To create the POST URL for CSV reports:
 2. Open the saved Discover session you want to share.
 3. In the toolbar, do one of the following:
   
-   * {applies_to}`stack: ga 9.0` Click **Share > Export > Copy POST URL**.
-   * {applies_to}`stack: ga 9.1` Click the **Export** icon, then **CSV**. In the export flyout, copy the POST URL.
+   * {applies_to}`stack: ga 9.1+` Click the **Export** icon, then **CSV**. In the export flyout, copy the POST URL.  
+   * {applies_to}`stack: ga =9.0` Click **Share > Export > Copy POST URL**.
 
 
 ## Use Watcher [use-watcher]
 
-To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerts-cases/watcher/actions-email.md#configuring-email).
+To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
 
 For example, the following watch generates a PDF report and emails the report every hour:
 
@@ -89,7 +89,7 @@ PUT _watcher/watch/error_report
 }
 ```
 
-1. Configure at least one email account to enable Watcher to send email. For more information, refer to [Configuring email accounts](../alerts-cases/watcher/actions-email.md#configuring-email).
+1. Configure at least one email account to enable Watcher to send email. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
 2. An example POST URL. You can copy and paste the URL for any report.
 3. Optional, default is `40`.
 4. Optional, default is `15s`.
@@ -101,7 +101,7 @@ PUT _watcher/watch/error_report
 
 The report generation URL might contain date-math expressions that cause the watch to fail with a `parse_exception`. To avoid a failed watch, remove curly braces `{`  `}` from date-math expressions and URL-encode characters. For example, `...(range:(%27@timestamp%27:(gte:now-15m%2Fd,lte:now%2Fd))))...`
 
-For more information about configuring watches, refer to [How Watcher works](../alerts-cases/watcher/how-watcher-works.md).
+For more information about configuring watches, refer to [How Watcher works](../alerting/watcher/how-watcher-works.md).
 
 ::::
 
@@ -179,8 +179,8 @@ In earlier {{kib}} versions, you could use the `&sync` parameter to append to re
 ## Schedule and share reports [schedule-report-generation]
 
 ```{applies_to}
-stack: preview 9.1
-serverless: preview
+stack: ga 9.3+, preview 9.1-9.2
+serverless: ga
 ```
 
 Save time by setting up a recurring task that automatically generates reports and shares them on a schedule that you choose. 
@@ -226,7 +226,7 @@ Save time by setting up a recurring task that automatically generates reports an
         notifications.connectors.default.email: my-email
      ```
 
-* (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerts-cases/alerts/notifications-domain-allowlist.md).
+* (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerting/alerts/notifications-domain-allowlist.md).
 
 ### Create a schedule [create-scheduled-report]
 
@@ -245,7 +245,7 @@ Save time by setting up a recurring task that automatically generates reports an
    If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only send reports to yourself. 
    ::::
 
-   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3`: (Optional) Enter additional details for email notifications:
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+`: (Optional) Enter additional details for email notifications:
 
     * **Cc**: Enter one or more email addresses. Recipients will get a copy of the report, be included on all replies, and have view access to all other recipients' addresses.
     * **Bcc**: Enter one or more email addresses. Recipients will get a copy of the report, but won't be included on all replies and won't have view access to the other recipients' addresses.
@@ -253,19 +253,33 @@ Save time by setting up a recurring task that automatically generates reports an
     * **Message**: Keep the default email message, or enter your own. To format and structure your message text, use Markdown.
 
        ::::{note} 
-       In the subject and message, you can also use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to dynamically pass values from data sources when the email is generated. Enhancing the values passed by Mustache variables is also supported. Refer to [](../../explore-analyze/alerts-cases/alerts/rule-action-variables.md#enhance-mustache-variables) to learn more. 
+       In the subject and message, you can also use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to dynamically pass values from data sources when the email is generated. Enhancing the values passed by Mustache variables is also supported. Refer to [](../../explore-analyze/alerting/alerts/rule-action-variables.md#enhance-mustache-variables) to learn more. 
        ::::
 
 6. Click **Schedule exports** to save the schedule. 
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
-### Stop scheduled reports [stop-scheduled-reports]
+{applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
 
-To stop a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page: 
+### Manage schedules [manage-report-schedules]
 
-- **Disable schedule**: {applies_to}`stack: ga 9.1` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
-- **Delete schedule**: {applies_to}`stack: ga 9.3` Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
+To manage a schedule, you can take the following actions from the **Schedules** tab on the **Reporting** page:
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.3+
+- **Disable schedule**: Permanently turn off a schedule but keep a record of it on the **Reporting** page.
+- **Enable schedule**: Restart a disabled schedule.
+- **Edit schedule config**: Modify an existing schedule.
+- **Delete schedule**: Permanently stop a schedule and remove its record from the **Reporting** page. You can't recover a deleted schedule.
+:::
+
+:::{applies-item} stack: ga 9.1-9.2
+- **Disable schedule**: Permanently turn off a schedule but keep a record of it on the **Reporting** page. To restart the schedule, you must create a new one.
+:::
+
+::::
 
 ### Scheduled reports limitations [scheduled-reports-limitations]
 

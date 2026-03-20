@@ -1,12 +1,9 @@
 ---
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 navigation_title: "Error: All shards failed"
+products:
+  - id: elasticsearch
 ---
 
 # Fix error: All shards failed [all-shards-failed]

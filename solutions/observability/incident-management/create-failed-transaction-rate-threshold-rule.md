@@ -3,6 +3,9 @@ navigation_title: Failed transaction rate threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-failed-transaction-rate-threshold-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-failed-transaction-rate-threshold-alert-rule.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -114,7 +117,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.

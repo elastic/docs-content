@@ -18,7 +18,7 @@ Full-text search, also known as lexical search, is a technique for fast, efficie
 
 Built on decades of information retrieval research, full-text search delivers reliable results that scale predictably as your data grows. Because it runs efficiently on CPUs, {{es}}'s full-text search requires minimal computational resources compared to GPU-intensive vector operations.
 
-You can combine full-text search with [semantic search using vectors](semantic-search.md) to build modern hybrid search applications. While vector search may require additional GPU resources, the full-text component remains cost-effective by leveraging existing CPU infrastructure.
+You can combine full-text search with [semantic search using vectors](semantic-search.md) to build modern hybrid search-powered applications. While vector search may require additional GPU resources, the full-text component remains cost-effective by leveraging existing CPU infrastructure.
 
 ## Getting started [full-text-search-getting-started]
 

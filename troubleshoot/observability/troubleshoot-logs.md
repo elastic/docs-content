@@ -27,9 +27,9 @@ This section provides possible solutions for errors you might encounter while on
 
 ### User does not have permissions to create API key [logs-troubleshooting-insufficient-priv]
 
-:::::{tab-set}
+:::::{applies-switch}
 
-::::{tab-item} {{serverless-short}}
+::::{applies-item} serverless:
 When adding a new data using the guided instructions in your project (**Add data** → **Collect and analyze logs** → **Stream log files**), if you don’t have the required privileges to create an API key, you’ll see the following error message:
 
 :::{note}
@@ -45,7 +45,7 @@ You need to either:
 * Get an API key from an administrator and manually add the API to the {{agent}} configuration. See [Configure the {{agent}}](/solutions/observability/logs/stream-any-log-file.md#logs-stream-agent-config) for more on manually updating the configuration and adding the API key.
 ::::
 
-::::{tab-item} {{stack}}
+::::{applies-item} stack:
 If you don’t have the required privileges to create an API key, you’ll see the following error message:
 
 ```plaintext

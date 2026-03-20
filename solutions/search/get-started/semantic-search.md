@@ -132,7 +132,7 @@ For an overview of their features and use cases, check out [](/explore-analyze/q
 The [Elasticsearch Query Language](elasticsearch://reference/query-languages/esql.md) (ES|QL) is designed to be easy to read and write.
 It enables you to query your data directly in **Discover**, so it's a good one to start with.
 
-Go to **Discover** and select **Try ES|QL** from the application menu bar.
+Go to **Discover** and select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 ::::
 ::::{step} Choose a vector comparison method
 You can search data that is stored in `semantic_text` fields by using a specific subset of queries, including `knn`, `match`, `semantic`, and `sparse_vector`.

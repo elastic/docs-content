@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-saml.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -16,6 +11,12 @@ products:
 # Common SAML issues [trb-security-saml]
 
 Some of the common SAML problems are shown below with tips on how to resolve these issues.
+
+:::{note}
+This topic describes troubleshooting SAML SSO at the deployment or cluster level, for the purposes of authenticating with a {{kib}} instance. To learn about SAML SSO, for your organization or orchestrator, refer to the following topics:
+* [Elastic Cloud SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md)
+* [{{ece}} SAML](/deploy-manage/users-roles/cloud-enterprise-orchestrator/saml.md) and [SSO](/deploy-manage/users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md)
+:::
 
 1. **Symptoms:**
 

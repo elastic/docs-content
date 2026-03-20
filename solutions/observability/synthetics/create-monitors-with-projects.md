@@ -62,59 +62,11 @@ Start by creating your first Synthetics project. Run the command below to create
 npx @elastic/synthetics init synthetic-project-test
 ```
 
-Then, follow the prompts on screen to set up the correct default variables for your Synthetics project. When complete, set the `SYNTHETICS_API_KEY` environment variable in your terminal, which is used to connect to your Observability project:
+Then, follow the prompts on screen to set up the correct default variables for your Synthetics project. When complete, set the `SYNTHETICS_API_KEY` environment variable in your terminal, which is used to connect to your Observability environment:
 
-::::{tab-set}
-:group: stack-serverless
+1. Generate an API key:
 
-:::{tab-item} Elastic Stack
-:sync: stack
-
-1. To generate an API key:
-
-    1. Go to **Synthetics** in your Observability project.
-    2. Click **Settings**.
-    3. Switch to the **Project API Keys** tab.
-    4. Click **Generate Project API key**.
-
-        ::::{important}
-        To generate a Project API key, you must be logged in as a user with [Editor](/solutions/observability/synthetics/grant-access-to-secured-resources.md) access.
-
-        ::::
-
-        :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
-        :alt: Project API Keys tab in Synthetics settings
-        :screenshot:
-        :::
-
-        ::::{note}
-        To use an API key to push to Elastic’s global managed testing infrastructure, the *Elastic managed locations enabled* toggle must be on when generating the API key. If the *Elastic managed locations enabled* toggle is disabled, an administrator has restricted access to Elastic’s global managed testing infrastructure.
-
-        ::::
-
-2. Set the `SYNTHETICS_API_KEY` environment variable in your terminal. You will most likely want to set this permanently. This is done differently in [Powershell](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.2#saving-changes-to-environment-variables) and [Bash](https://unix.stackexchange.com/a/117470).
-
-Then, take a look at key files and directories inside your Synthetics project:
-
-* `journeys` is where you’ll add `.ts` and `.js` files defining your browser monitors. When you create a new Synthetics project, this directory will contain files defining sample monitors.
-* `lightweight` is where you’ll add `.yaml` files defining your lightweight monitors. When you create a new Synthetics project, this directory will contain a file defining sample monitors.
-* `synthetics.config.ts` contains settings for your Synthetics project. When you create a new Synthetics project, it will contain some basic configuration options that you can customize later.
-
-    ::::{note}
-    The `synthetics.config.ts` in the sample Synthetics project uses a location on Elastic’s global managed testing infrastructure. Administrators can restrict access to Elastic’s global managed testing infrastructure. When you attempt to [`push` the sample monitors](/solutions/observability/synthetics/create-monitors-with-projects.md#synthetics-get-started-project-test-and-connect-to-your-observability-project), if you see an error stating that you don’t have permission to use Elastic managed global locations, refer to the [troubleshooting guide](/troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-no-locations) for guidance.
-
-    ::::
-
-* `package.json` contains NPM settings for your Synthetics project. Learn more in the [NPM documentation](https://docs.npmjs.com/about-packages-and-modules).
-* `.github` contains sample workflow files to use with GitHub Actions.
-:::
-
-:::{tab-item} Serverless
-:sync: serverless
-
-1. To generate an API key:
-
-    1. Go to **Synthetics** in your Observability project.
+    1. Go to the **Synthetics** app in {{kib}}.
     2. Click **Settings**.
     3. Switch to the **Project API Keys** tab.
     4. Click **Generate Project API key**.
@@ -150,9 +102,6 @@ Then, take a look at key files and directories inside your Synthetics project:
 * `package.json` contains NPM settings for your Synthetics project. Learn more in the [NPM documentation](https://docs.npmjs.com/about-packages-and-modules).
 * `.github` contains sample workflow files to use with GitHub Actions.
 
-:::
-
-::::
 
 ## Examine sample monitors [synthetics-get-started-project-examine-sample-monitors]
 
@@ -196,11 +145,9 @@ For more details on writing journeys and configuring browser monitors, refer to 
 
 ## Test and connect to your Observability project or Elastic Stack deployment[synthetics-get-started-project-test-and-connect-to-your-observability-project]
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} Elastic Stack
-:sync: stack
+::::{applies-item} stack:
 
 While inside the project directory you can do two things with the `npx @elastic/synthetics` command:
 
@@ -227,8 +174,7 @@ To list available {{private-location}}s, run the [`elastic-synthetics locations`
 
 ::::
 
-::::{tab-item} Serverless
-:sync: serverless
+::::{applies-item} serverless:
 
 While inside the Synthetics project directory you can do two things with the `npx @elastic/synthetics` command:
 

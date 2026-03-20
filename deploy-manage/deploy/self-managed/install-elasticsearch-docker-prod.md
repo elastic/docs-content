@@ -3,6 +3,10 @@ applies_to:
   deployment:
     self:
 navigation_title: Production settings
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: elastic-stack
 ---
 
 # Using the Docker images in production [docker-prod-prerequisites]
@@ -233,9 +237,9 @@ You should use a volume bound to `/usr/share/elasticsearch/data` for the followi
 3. It allows the use of advanced [Docker volume plugins](https://docs.docker.com/engine/extend/plugins/#volume-plugins).
 
 
-## Avoid using `loop-lvm` mode [_avoid_using_loop_lvm_mode]
+## Use the `overlay2` storage driver
 
-If you are using the devicemapper storage driver, do not use the default `loop-lvm` mode. Configure docker-engine to use [direct-lvm](https://docs.docker.com/engine/userguide/storagedriver/device-mapper-driver/#configure-docker-with-devicemapper).
+We recommend you configure docker-engine to use the [`overlay2`](https://docs.docker.com/engine/storage/drivers/overlayfs-driver/) storage driver for your workloads.
 
 
 ## Centralize your logs [_centralize_your_logs]

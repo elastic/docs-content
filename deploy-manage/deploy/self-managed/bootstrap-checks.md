@@ -109,7 +109,7 @@ $$$bootstrap-checks-max-map-count$$$
 
 In addition to [unlimited address space](#max-size-virtual-memory-check), to use `mmap` effectively, {{es}} also requires the ability to create many memory-mapped areas. The maximum map count check checks that the kernel allows a process to have at least 262,144 memory-mapped areas and is enforced on Linux only.
 
-To pass the maximum map count check, you must configure `vm.max_map_count` via `sysctl` to be at least `262144`.
+To pass the maximum map count check, you must configure `vm.max_map_count` via `sysctl` to be at least `262144`. The recommended value is `1048576`.
 
 Alternatively, the maximum map count check is only needed if you are using `mmapfs` or `hybridfs` as the [store type](elasticsearch://reference/elasticsearch/index-settings/store.md) for your indices. If you [do not allow](elasticsearch://reference/elasticsearch/index-settings/store.md#allow-mmap) the use of `mmap` then this bootstrap check will not be enforced.
 :::
@@ -187,7 +187,7 @@ $$$bootstrap-checks-xpack-encrypt-sensitive-data$$$
 
 If you use {{watcher}} and have chosen to encrypt sensitive data (by setting `xpack.watcher.encrypt_sensitive_data` to `true`), you must also place a key in the secure settings store.
 
-To pass this bootstrap check, you must set the `xpack.watcher.encryption_key` on each node in the cluster. For more information, see [Encrypting sensitive data in Watcher](../../../explore-analyze/alerts-cases/watcher/encrypting-data.md).
+To pass this bootstrap check, you must set the `xpack.watcher.encryption_key` on each node in the cluster. For more information, see [Encrypting sensitive data in Watcher](../../../explore-analyze/alerting/watcher/encrypting-data.md).
 :::
 
 :::{dropdown} PKI realm check

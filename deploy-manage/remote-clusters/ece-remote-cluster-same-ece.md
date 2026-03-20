@@ -8,6 +8,8 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
+  local_type_generic: deployment
+  remote_type_generic: deployment
   remote_type: Elastic Cloud Enterprise
 ---
 
@@ -46,7 +48,7 @@ If network security filters are applied to the remote cluster, the remote cluste
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-### Add the cross-cluster API key to the keystore of the local deployment [ece_add_the_cross_cluster_api_key_to_the_keystore_of_the_local_deployment]
+### Add the cross-cluster API key to the keystore of the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::
@@ -155,7 +157,7 @@ This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remot
 :::
 
 ::::{note}
-If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
+If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
 ::::
 
 ### Using the {{es}} API [ece_using_the_elasticsearch_api]

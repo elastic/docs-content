@@ -4,6 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/docker.html
 products:
   - id: kibana
+sub:
+  image: kibana
 ---
 
 

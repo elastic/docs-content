@@ -13,6 +13,10 @@ products:
 
 Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data that meets your specific monitoring and analysis needs.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
+:::
+
 ## Requirements [create-dashboard-requirements]
 
 Before creating a dashboard, ensure you have:
@@ -51,4 +55,20 @@ Before creating a dashboard, ensure you have:
        
        ![Change and apply dashboard settings](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt4a6e9807f1fac9f8/6750ee9cef6d5a250c229e50/dashboard-settings-8.17.0.gif "title =50%")
 
-6. Click **Save**  to save the dashboard.
+
+6. Save the dashboard.
+
+    {applies_to}`serverless:` {applies_to}`stack: ga 9.3+` When you save the dashboard for the first time, you can manage dashboard permissions.
+
+    :::{image} /explore-analyze/images/save-as-new-dashboard.png
+    :screenshot:
+    :width: 400px
+    :::
+
+    When you create a dashboard, you become its owner and control who can access it. You can share your dashboard with one of the following permissions:
+    - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
+    - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
+
+    :::{include} ../_snippets/dashboard-ownership.md
+    :::
+

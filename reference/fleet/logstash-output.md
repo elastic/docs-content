@@ -2,6 +2,9 @@
 navigation_title: "{{ls}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/logstash-output.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -30,7 +33,7 @@ To receive the events in {{ls}}, you also need to create a {{ls}} configuration 
 
 Be aware that the structure of the documents sent from {{agent}} to {{ls}} must not be modified by the pipeline. We recommend that the pipeline doesn’t edit or remove the fields and their contents. Editing the structure of the documents coming from {{agent}} can prevent the {{es}} ingest pipelines associated to the integrations in use to work correctly. We cannot guarantee that the {{es}} ingest pipelines associated to the integrations using {{agent}} can work with missing or modified fields.
 
-The following {{ls}} pipeline definition example configures a pipeline that listens on port `5044` for incoming {{agent}} connections and routes received events to {{es}}.
+This {{ls}} pipeline definition example configures a pipeline that listens on port `5044` for incoming {{agent}} connections and routes received events to {{es}}.
 
 ```yaml
 input {
@@ -46,22 +49,37 @@ input {
 }
 
 output {
-  elasticsearch {
-    hosts => ["http://localhost:9200"] <2>
-    # cloud_id => "..."
-    data_stream => "true"
-    api_key => "<api_key>" <3>
-    data_stream => true
-    ssl_enabled => true
-    ssl_certificate_authorities => "<elasticsearch_ca_path>"
+
+  if [@metadata][_id] { 
+    elasticsearch {
+      hosts => ["http://localhost:9200"] <2>
+      # cloud_id => "..."
+      document_id => "%{[@metadata][_id]}" <3>
+      api_key => "<api_key>" <4>
+      data_stream => true
+      ssl_enabled => true
+      ssl_certificate_authorities => "<elasticsearch_ca_path>"
+      manage_template => false
+    }
+  } else {
+    elasticsearch {
+      hosts => ["http://localhost:9200"]
+      # cloud_id => "..."
+      api_key => "<api_key>"
+      data_stream => true
+      ssl_enabled => true
+      ssl_certificate_authorities => "<elasticsearch_ca_path>"
+      manage_template => false
+    }
   }
+
 }
 ```
 
 1. Do not modify the events' schema.
 2. The {{es}} server and the port (`9200`) where {{es}} is running.
-3. The API Key used by {{ls}} to ship data to the destination data streams.
-
+3. If the integration running on {{agent}} is sending `_id`, `logstash-output-elasticsearch` plugin sets it to the document ID
+4. The API Key used by {{ls}} to ship data to the destination data streams.
 
 For more information about configuring {{ls}}, refer to [Configuring {{ls}}](logstash://reference/creating-logstash-pipeline.md) and [{{agent}} input plugin](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md).
 

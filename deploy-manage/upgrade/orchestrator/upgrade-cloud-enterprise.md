@@ -65,7 +65,8 @@ Before starting the upgrade process, check which of the following recommendation
 
 
 * We strongly recommend that you routinely update your ECE installation to the most current version so that any bugs and security issues are fixed promptly. If you need to upgrade but are currently experiencing any issues with your platform, note that as long as ZooKeeper is running and healthy you should be able to upgrade (you can use the [get runners API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-runners) to easily verify the health of the runners on the [ECE allocators](../../../deploy-manage/deploy/cloud-enterprise/ece-architecture.md#ece-architecture-allocators)). That is, healthy system deployments are not required in order to perform an upgrade successfully.
-* Before upgrading to {{ece}} 4.0, refer to the [lists of removals](cloud://release-notes/cloud-enterprise/breaking-changes.md) to find out about features and API endpoints that are no longer supported.
+* Review the [known issues](cloud://release-notes/cloud-enterprise/known-issues.md) to find out about limitations and known problems, to ensure a smoother upgrade experience.
+* Review the [lists of removals](cloud://release-notes/cloud-enterprise/breaking-changes.md) to find out about features and API endpoints that are no longer supported.
 * We strongly recommend that you do not attempt to perform certain actions during the upgrade process, such as:
 
     * Creating or changing {{es}} clusters and {{kib}} instances
@@ -78,14 +79,14 @@ Before starting the upgrade process, check which of the following recommendation
 
 Before starting the upgrade process, verify that your setup meets the following requirements:
 
-- XFS with quotas enabled on all allocators. You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly. To enable XFS quotas, modify the entry for the XFS volume in the `/etc/fstab file` to add pquota and `prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
+- **XFS with quotas enabled on all allocators.** You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly. To enable XFS quotas, modify the entry for the XFS volume in the `/etc/fstab file` to add pquota and `prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
 
 - **Supported Docker / Podman version**.  Make sure that you’re running a supported Docker or Podman version for the version of ECE that you are going to upgrade to. An overview of compatible versions can be found in the [support matrix](https://www.elastic.co/support/matrix#matrix_os&#elastic-cloud-enterprise) and install instructions are available under [Installing {{ece}}](../../../deploy-manage/deploy/cloud-enterprise/install.md).
 - **Required user, roles and groups**. To run the script to upgrade {{ece}}, log in as the user used to run {{ece}} (by default called `elastic` with UID/GID 1000). Initiate the upgrade process by running the `elastic-cloud-enterprise.sh` script with the upgrade action on a single host. The host that the script is run on must be a host that holds the director role. You do not need to run the script on additional hosts.
 - **Available disk space**. Each host in the {{ece}} installation must have at least 5 GB of disk space available to ensure that the upgrade process can complete successfully.
 - **Proxies and load balancing**. To avoid any downtime for {{ece}}, the installation must include more than one proxy and must use a load balancer as recommended. If only a single proxy is configured or if the installation is not using a load balancer, some downtime is expected when the containers on the proxies are upgraded. Each container upgrade typically takes five to ten seconds, times the number of containers on a typical host.
 - **For *offline* or *air-gapped* installations**. Additional steps are required to upgrade {{ece}}. After downloading the installation script for the new version, pull and load the required container images and push them to a private Docker registry. To learn more about pulling and loading Docker images, check Install [ECE offline](../../../deploy-manage/deploy/cloud-enterprise/air-gapped-install.md).
-- Check the security cluster’s zone count. Due to internal limitations in ECE, the built-in security cluster cannot be scaled to two zones during the ECE upgrade procedure. If the zone count is set to 2 zones, scale the cluster to 3 or 1 zone(s) before upgrading ECE.
+- **Check the security cluster’s zone count.** Due to internal limitations in ECE, the built-in security cluster cannot be scaled to two zones during the ECE upgrade procedure. If the zone count is set to 2 zones, scale the cluster to 3 or 1 zone(s) before upgrading ECE.
 - **[Verify if you can upgrade directly](#ece-upgrade-version-matrix)**. When upgrading to ECE 4.0 or a higher version:
   - You need to first upgrade to ECE 3.8.0 or later. Refer to the [ECE version 3.8.0 upgrade instructions](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-upgrade.html) for details.
 
@@ -95,7 +96,7 @@ Before starting the upgrade process, verify that your setup meets the following 
 
   - Ensure that your system deployments are at their [expected versions](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md). Since ECE 3.6.1, the upgrade process automatically upgrades system deployments to the required version. If the {{ece}} platform was upgraded successfully and yet one or more system deployments were not upgraded to [their expected version](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md) during the very last phase of the {{ece}} upgrade, you can re-run the `elastic-cloud-enterprise.sh upgrade --cloud-enterprise-version <your target version>` command to retry system deployment upgrade only.
   - Check that your deployments are running on {{stack}} version 8.0.0 or above.
-- Before running the upgrade command, ensure that you include the same installation flags that were used during the initial setup. Some deployment configurations, such as those using Podman or SELinux, require specific flags to be passed again during the upgrade. Failure to do so may result in compatibility errors.
+- **Before running the upgrade command, ensure that you include the same installation flags that were used during the initial setup.** Some deployment configurations, such as those using Podman or SELinux, require specific flags to be passed again during the upgrade. Failure to do so may result in compatibility errors.
 
 ## Certificate rotation [ece-upgrade-certificates]
 

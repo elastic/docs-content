@@ -63,7 +63,7 @@ The `machine_learning_admin` and `machine_learning_user` built-in roles give acc
 ### {{kib}} security [kib-security]
 
 ::::{important}
-Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also grant the role the equivalent feature privileges to certain types of {{kib}} saved objects, namely index patterns, dashboards, saved searches, and visualizations as well as {{ml}} job, trained model and module saved objects.
+Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also grant the role the equivalent feature privileges to certain types of {{kib}} saved objects, namely data views, dashboards, discover sessions, and visualizations as well as {{ml}} job, trained model and module saved objects.
 ::::
 
 #### Feature visibility in Spaces [kib-visibility-spaces]

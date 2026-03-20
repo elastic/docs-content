@@ -9,11 +9,16 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Filter, triage, and take actions on detection alerts from the Alerts page.
 ---
 
 # Manage detection alerts [security-alerts-manage]
 
-The Alerts page displays all detection alerts. From the Alerts page, you can filter alerts, view alerting trends, change the status of alerts, add alerts to cases, and start investigating and analyzing alerts.
+The Alerts page is your central hub for triaging and investigating detection alerts. Filter alerts to focus on what matters, change statuses to track progress, and take actions to investigate or respond.
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/alert-triage
+:::
 
 :::{image} /solutions/images/security-alert-page.png
 :alt: Alerts page overview
@@ -21,306 +26,271 @@ The Alerts page displays all detection alerts. From the Alerts page, you can fil
 :::
 
 
-## View and filter detection alerts [detection-view-and-filter-alerts]
+## Quick reference [quick-reference]
 
-The Alerts page offers various ways for you to organize and triage detection alerts as you investigate suspicious events. You can:
-
-* View an alert’s details. Click the **View details** button from the Alerts table to open the alert details flyout. Learn more at [View detection alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md).
-
-    :::{image} /solutions/images/security-view-alert-details.png
-    :alt: View details button
-    :screenshot:
-    :::
-
-* View the rule that created an alert. Click a name in the **Rule** column to open the rule’s details.
-* View the details of the entity associated with the alert. In the Alerts table, click an entity name to open the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout).
-* Filter for a specific rule in the KQL bar (for example, `kibana.alert.rule.name :"SSH (Secure Shell) from the Internet"`). KQL autocomplete is available for `.alerts-security.alerts-*` indices.
-* Use the date and time filter to define a specific time range. By default, this filter is set to search the last 24 hours.
-* Use the drop-down filter controls to filter alerts by up to four fields. By default, you can filter alerts by **Status**, **Severity**, **User**, and **Host**, and you can [edit the controls](/solutions/security/detect-and-alert/manage-detection-alerts.md#drop-down-filter-controls) to use other fields.
-* Visualize and group alerts by specific fields in the visualization section. Use the buttons on the left to select a view type (**Summary**, **Trend**, **Counts**, or **Treemap**), and use the menus on the right to select the ECS fields used for grouping alerts. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md) for more on each view type.
-* Hover over a value to display available [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions). Click the expand icon for more options, including **Show top _x_** and **Copy to Clipboard**. The available options vary based on the type of data.
-
-    :::{image} /solutions/images/security-inline-actions-menu.png
-    :alt: Inline additional actions menu
-    :screenshot:
-    :::
-
-* Filter alert results to include building block alerts or to only show alerts from indicator match rules by selecting the **Additional filters** drop-down. By default, [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) are excluded from the Overview and Alerts pages. You can choose to include building block alerts on the Alerts page, which expands the number of alerts.
-
-    ::::{note}
-    When updating alert results to include building block alerts, the Security app searches the `.alerts-security.alerts-<Kibana space>` index for the `kibana.alert.building_block_type` field. When looking for alerts created from indicator match rules, the app searches the same index for `kibana.alert.rule.type:'threat_match'`.
-    ::::
+| Task | How to do it |
+|------|--------------|
+| View alert details | Click the **View details** icon {icon}`expand` in the Alerts table |
+| Filter by rule | Use KQL: `kibana.alert.rule.name: "Rule Name"` |
+| Filter by time | Use the date/time picker (default: last 24 hours) |
+| Change alert status | Click the **More actions** icon {icon}`boxes_horizontal` > select status, or use bulk selection |
+| Add to case | Click the **More actions** icon {icon}`boxes_horizontal` > **Add to case** |
+| Investigate in Timeline | Click **Investigate in timeline** icon {icon}`timeline` |
+| Add exception | Click the **More actions** icon {icon}`boxes_horizontal` > **Add exception** |
 
 
-    :::{image} /solutions/images/security-additional-filters.png
-    :alt: Alerts table with Additional filters menu highlighted
-    :screenshot:
-    :::
+## Filter alerts [detection-view-and-filter-alerts]
 
-* View detection alerts generated by a specific rule. Go to **Rules** → **Detection rules (SIEM)**, then select a rule name in the table. The rule details page displays a comprehensive view of the rule’s settings, and the Alerts table under the Trend histogram displays the alerts associated with the rule, including alerts from any previous or deleted revision of that rule.
+| Filter method | Description |
+|---------------|-------------|
+| KQL search | Enter queries like `kibana.alert.rule.name: "SSH from the Internet"`. Autocomplete is available for `.alerts-security.alerts-*` indices. |
+| Date/time picker | Set a specific time range (default: last 24 hours). |
+| Drop-down controls | Filter by status, severity, user, host, or [custom fields](#drop-down-filter-controls). |
+| Additional filters | Include [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) or show only indicator match rule alerts. |
+| Visualization section | Group and visualize alerts by field. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md). |
+
+### Inline actions
+
+Hover over any value in the Alerts table to see inline actions. Click the expand icon for more options:
+
+| Action | Description |
+|--------|-------------|
+| Filter for value | Add the value as a filter |
+| Filter out value | Exclude the value |
+| Show top *x* | View most common values |
+| Add to timeline | Add the field value to Timeline for investigation |
+| Copy to clipboard | Copy the value |
+
+:::{image} /solutions/images/security-inline-actions-menu.png
+:alt: Inline additional actions menu
+:screenshot:
+:::
+
+### View rule-specific alerts
+
+Go to **Rules** > **Detection rules (SIEM)**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
 
 
 ## Edit drop-down filter controls [drop-down-filter-controls]
 
-By default, the drop-down controls on the Alerts page filter alerts by **Status**, **Severity**, **User**, and **Host**. You can edit them to filter by different fields, as well as remove, add, and reorder them if you prefer a different order.
+Customize the filter controls above the Alerts table. By default, you can filter by **Status**, **Severity**, **User**, and **Host**.
 
 :::{image} /solutions/images/security-alert-page-dropdown-controls.png
 :alt: Alerts page with drop-down controls highlighted
 :screenshot:
 :::
 
+| Action | How to do it |
+|--------|--------------|
+| Edit controls | Click {icon}`boxes_horizontal` next to controls > **Edit Controls** |
+| Reorder | Drag controls by their handle |
+| Remove | Hover over control > click **Remove control** |
+| Add | Click **Add Controls** (maximum 4) |
+| Save changes | Click **Save pending changes** |
+
 ::::{note}
-* You can have a maximum of four controls on the Alerts page.
-* You can’t remove the **Status** control.
-* If you make any changes to the controls, you *must* save the pending changes for them to persist.
-* Saved changes are stored in your browser’s local storage, not your [user profile](/deploy-manage/users-roles/cluster-or-deployment-auth/user-profiles.md). If you clear your browser’s storage or log into your user profile from a different browser, you will lose your customizations.
-
+- The **Status** control cannot be removed.
+- Changes are saved in your browser's local storage, not your user profile.
 ::::
-
-
-1. Click the three-dot icon next to the controls (![More actions](/solutions/images/security-three-dot-icon-blue.png "title =20x20")), then select **Edit Controls**.
-2. Do any of the following:
-
-    * To reorder controls, click and drag a control by its handle (![Reorder](/solutions/images/security-handle-icon.png "title =20x20")).
-    * To remove a control, hover over it and select **Remove control** (![Remove](/solutions/images/security-red-x-icon.png "title =20x20")).
-    * To edit a control, hover over it and select **Edit control** (![Edit](/solutions/images/security-pencil-icon.png "title =20x20")).
-    * To add a new control, click **Add Controls** (![Add](/solutions/images/security-add-icon-blue.png "title =20x20")). If you already have four controls, you must first remove one to make room for the new one.
-
-3. If you’re editing or adding a control, do the following in the configuration flyout that opens:
-
-    1. In the **Field** list, select the field for the filter. The **Control type** is automatically applied to the field you selected.
-    2. Enter a **Label** to identify the control.
-    3. Click **Save and close**.
-
-4. Click **Save pending changes** (![Save](/solutions/images/security-save-icon-blue.png "title =20x20")).
 
 
 ## Group alerts [group-alerts]
 
-You can group alerts by rule name, user name, host name, source IP address, or any other field. Select **Group alerts by**, then select an option or **Custom field** to specify a different field.
-
-Select up to three fields for grouping alerts. The groups will nest in the order you selected them, and the nesting order is displayed above the table next to **Group alerts by**.
+Group alerts by up to three fields, such as rule name, host, user, source IP, or custom fields. Groups nest in the order you select them.
 
 :::{image} /solutions/images/security-group-alerts.png
 :alt: Alerts table with Group alerts by drop-down
 :screenshot:
 :::
 
-Each group displays information such as the alerts' severity and how many users, hosts, and alerts are in the group. The information displayed varies depending on the selected fields.
-
-To interact with grouped alerts:
-
-* Select the **Take actions** menu to perform a bulk action on all alerts in a group, such as [changing their status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
-* Click a group’s name or the expand icon (![Grouped alerts expand](/solutions/images/security-expand-icon-vertical-right.png "title =20x20")) to display alerts within that group. You can filter and customize this view like any other alerts table.
-
-    :::{image} /solutions/images/security-group-alerts-expand.png
-    :alt: Expanded alert group with alerts table
-    :screenshot:
-    :::
-
+| Action | How to do it |
+|--------|--------------|
+| Group alerts | Click **Group alerts by** > select field(s) |
+| Expand a group | Click the group name or expand icon |
+| Bulk action on group | Click **Take actions** menu on the group row |
 
 
 ## Customize the Alerts table [customize-the-alerts-table]
 
-Use the toolbar buttons in the upper-left of the Alerts table to customize the columns you want displayed:
+### Toolbar options
 
-* **Columns**: Reorder the columns.
-* **Sort fields _x_**: Sort the table by one or more columns.
-* **Fields**: Select the fields to display in the table. You can also add [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) to detection alerts and display them in the Alerts table.
-
-Click the **Full screen** button in the upper-right to view the table in full-screen mode.
+| Button | Function |
+|--------|----------|
+| Columns | Reorder columns |
+| Sort fields | Sort by one or more columns |
+| Fields | Add or remove fields (including [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md)) |
+| Full screen | Expand table to full screen |
 
 :::{image} /solutions/images/security-alert-table-toolbar-buttons.png
 :alt: Alerts table with toolbar buttons highlighted
 :screenshot:
 :::
 
-Use the view options drop-down in the upper-right of the Alerts table to control how alerts are displayed:
+### View modes
 
-* **Grid view**: Displays alerts in a traditional table view with columns for each field
-* **Event rendered view**: Display alerts in a descriptive event flow that includes relevant details and context about the event.
+| Mode | Description |
+|------|-------------|
+| Grid view | Traditional table with columns for each field. Click the expand icon in the **Reason** column to see rendered alert details. |
+| Event rendered view | Descriptive event flow showing relevant context. |
 
 :::{image} /solutions/images/security-event-rendered-view.png
 :alt: Alerts table with the Event rendered view enabled
 :screenshot:
 :::
 
-::::{tip}
-When using grid view, you can view alert-rendered reason statements and event renderings for specific alerts by clicking the expand icon in the **Reason** column. Some events do not have event renderings.
-::::
-
-
 
 ## Take actions on an alert [alert-actions]
 
-From the Alerts table or the alert details flyout, you can:
+Access actions from the **More actions** (**…**) menu in the Alerts table, or from **Take action** in the alert details flyout.
 
-* [Add detection alerts to cases](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md)
-* [Change an alert’s status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status)
-* [Add a rule exception from an alert](/solutions/security/detect-and-alert/manage-detection-alerts.md#add-exception-from-alerts)
-* [Apply and filter alert tags](/solutions/security/detect-and-alert/manage-detection-alerts.md#apply-alert-tags)
-* [Assign users to alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#assign-users-to-alerts)
-* [Filter assigned alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#filter-assigned-alerts)
-* [Add an endpoint exception from an alert](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions)
-* [Isolate an alert’s host](/solutions/security/endpoint-response-actions/isolate-host.md)
-* [Perform response actions on an alert’s host](/solutions/security/endpoint-response-actions.md) (Alert details flyout only)
-* [Run Osquery against an alert](/solutions/security/investigate/run-osquery-from-alerts.md)
-* [View alerts in Timeline](/solutions/security/detect-and-alert/manage-detection-alerts.md#signals-to-timelines)
-* [Visually analyze an alert’s process relationships](/solutions/security/investigate/visual-event-analyzer.md)
-* [Add notes to alerts](/solutions/security/investigate/notes.md#notes-alerts-events)
+| Action | Description |
+|--------|-------------|
+| [Change status](#detection-alert-status) | Mark as open, acknowledged, or closed |
+| [Add to case](/explore-analyze/cases/attach-objects-to-cases.md) | Attach alert to a new or existing case |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Run a workflow from an alert](#run-workflow-from-alert) | Run an Elastic workflow for on-demand response or investigation |
+| [Add rule exception](#add-exception-from-alerts) | Prevent rule from generating similar alerts |
+| [Add {{elastic-endpoint}} exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) | Prevent {{elastic-endpoint}} alerts for specific conditions |
+| [Apply alert tags](#apply-alert-tags) | Categorize alerts for filtering |
+| [Assign users](#assign-users-to-alerts) | Assign analysts to investigate |
+| [Investigate in Timeline](#signals-to-timelines) | Open alert in Timeline for analysis |
+| [Analyze process tree](/solutions/security/investigate/visual-event-analyzer.md) | Visualize process relationships |
+| [Isolate host](/solutions/security/endpoint-response-actions/isolate-host.md) | Isolate the alert's host from the network |
+| [Run Osquery](/solutions/security/investigate/run-osquery-from-alerts.md) | Query the host for additional context |
+| [Response actions](/solutions/security/endpoint-response-actions.md) | Execute response actions on the host |
 
+### Change alert status [detection-alert-status]
 
-### Change an alert’s status [detection-alert-status]
+Alert statuses track investigation progress:
 
-You can set an alert’s status to indicate whether it needs to be investigated (**Open**), is under active investigation (**Acknowledged**), or has been resolved (**Closed**). By default, the Alerts page displays open alerts. To filter alerts that are **Acknowledged** or **Closed**, use the **Status** drop-down filter at the top of the Alerts page.
+| Status | Meaning |
+|--------|---------|
+| Open | Needs investigation (default view) |
+| Acknowledged | Under active investigation |
+| Closed | Resolved |
 
-To change an alert’s status, do one of the following:
+**To change status:**
 
-* In the Alerts table, click **More actions** (**…**) in the alert’s row, then select a status.
-* In the Alerts table, select the alerts you want to change, click **Selected *x* alerts** at the upper-left above the table, and then select a status.
+| Scope | How to do it |
+|-------|--------------|
+| Single alert | **More actions** icon {icon}`boxes_horizontal` > select status |
+| Multiple alerts | Select alerts > **Selected *x* alerts** > select status |
+| Grouped alerts | **Take actions** menu on group row > select status |
+| From flyout | **Take action** > select status |
 
-    :::{image} /solutions/images/security-alert-change-status.png
-    :alt: Bulk action menu with multiple alerts selected
-    :screenshot:
-    :::
+:::{image} /solutions/images/security-alert-change-status.png
+:alt: Bulk action menu with multiple alerts selected
+:screenshot:
+:::
 
-* To bulk-change the status of [grouped alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#group-alerts), select the **Take actions** menu for the group, then select a status.
-
-    ::::{warning}
-    This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-    ::::
-* In an alert’s details flyout, click **Take action** and select a status.
-
-#### Set an alert's closing reason
+#### Closing reasons
 ```yaml {applies_to}
 stack: ga 9.2
 serverless: ga
 ```
 
-You can specify a reason for closing an alert by selecting one of the following options:
+When closing alerts, you can specify a reason:
 
-* **Close without reason**: Close the alert without specifying a reason.
-* **Duplicate**: The alert is a duplicate of another alert.
-* **False positive**: The alert was triggered by normal activity and doesn't indicate a security issue.
-* **True positive**: The alert represents a real security incident that has been resolved.
-* **Benign positive**: The alert correctly identified the activity, but the activity is acceptable or not actionable.
-* **Other**: Any other reason not covered by the predefined categories.
+| Reason | Use when |
+|--------|----------|
+| Close without reason | No specific categorization needed |
+| Duplicate | Alert duplicates another alert |
+| False positive | Normal activity, not a security issue |
+| True positive | Real incident that's been resolved |
+| Benign positive | Real activity but acceptable/not actionable |
+| Other | Other reasons |
 
-When you select a closing reason, the alert document is populated with a new field called `kibana.alert.workflow_reason`. You can use this field to filter and sort alerts on the **Alerts** page. If you later reopen the alert, the field is removed from the document.
+The closing reason is stored in `kibana.alert.workflow_reason` and can be used for filtering. Reopening an alert removes this field.
 
-### Apply and filter alert tags [apply-alert-tags]
+### Run a workflow from an alert [run-workflow-from-alert]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
 
-Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `False Positive` alert tag to label a group of alerts as false positives. Then, search for them by entering the `kibana.alert.workflow_tags : "False Positive"` query into the KQL bar. Alternatively, use the Alert table’s [drop-down filters](/solutions/security/detect-and-alert/manage-detection-alerts.md#drop-down-filter-controls) to filter for tagged alerts.
+You can run an [Elastic workflow](/explore-analyze/workflows.md) directly from an alert to trigger an on-demand response or investigation. To use this feature, make sure you meet the [workflows prerequisites](/explore-analyze/workflows/get-started.md#workflows-prerequisites).
+
+To run a workflow on an individual alert, do one of the following:
+
+* In the Alerts table, click **More actions** ({icon}`boxes_vertical`) in an alert's row, then click **Run workflow**. Use the search bar to select a workflow, then click **Run workflow**.
+* In an alert's details flyout, click **Take action → Run workflow**. Use the search bar to select a workflow, then click **Run workflow**.
 
 ::::{note}
-You can manage alert tag options by updating the `securitySolution:alertTags` advanced setting. Refer to [Manage alert tag options](/solutions/security/get-started/configure-advanced-settings.md#manage-alert-tags) for more information.
+You can select only enabled workflows.
 ::::
 
+To run a workflow on multiple alerts, select the alerts, then click **Selected *x* alerts** at the upper-left above the table. Click **Run workflow**, select a workflow, then click **Run workflow**.
 
-::::{tip}
-To display alert tags in the Alerts table, click **Fields** and add the `kibana.alert.workflow_tags` field.
-::::
+### Apply alert tags [apply-alert-tags]
 
+Tags help organize alerts into filterable categories.
 
-To apply or remove alert tags on individual alerts, do one of the following:
-
-* In the Alerts table, click **More actions** (**…**) in an alert’s row, then click **Apply alert tags**. Select or unselect tags, then click **Apply tags**.
-* In an alert’s details flyout, click **Take action → Apply alert tags**. Select or unselect tags, then click **Apply tags**.
-
-To apply or remove alert tags on multiple alerts, select the alerts you want to change, then click **Selected *x* alerts** at the upper-left above the table. Click **Apply alert tags**, select or unselect tags, then click **Apply tags**.
-
-:::{image} /solutions/images/security-bulk-apply-alert-tag.png
-:alt: Bulk action menu with multiple alerts selected
-:screenshot:
-:::
+| Task | How to do it |
+|------|--------------|
+| Tag single alert | **More actions** icon {icon}`boxes_horizontal` > **Apply alert tags** |
+| Tag multiple alerts | Select alerts > **Selected *x* alerts** > **Apply alert tags** |
+| Tag from flyout | **Take action** > **Apply alert tags** |
+| Filter by tag | KQL: `kibana.alert.workflow_tags: "False Positive"` |
+| Show tags column | **Fields** > add `kibana.alert.workflow_tags` |
+| Manage tag options | [Configure `securitySolution:alertTags`](/solutions/security/get-started/configure-advanced-settings.md#manage-alert-tags) |
 
 
 ### Assign users to alerts [assign-users-to-alerts]
 
-Assign users to alerts that you want them to investigate, and manage alert assignees throughout an alert’s lifecycle.
+Assign analysts to alerts they should investigate.
 
 ::::{important}
-Users are not notified when they’ve been assigned to, or unassigned from, alerts.
+Users are not notified when assigned or unassigned.
 ::::
 
-
-| Action | Instructions |
-| --- | --- |
-| Assign users to an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…**) in an alert’s row, then click **Assign alert**. Select users, then click **Apply**.<br> - **Alert details flyout**: Click **Take action → Assign alert**. Alternatively, click the **Assign alert** icon at the top of the alert details flyout, select users, then click **Apply**.<br> |
-| Unassign all users from an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…**) in an alert’s row, then click **Unassign alert**.<br> - **Alert details flyout**: Click **Take action → Unassign alert**.<br> |
-| Assign users to multiple alerts | From the Alerts table, select the alerts you want to change. Click **Selected *x* alerts** at the upper-left above the table, then click **Assign alert**. Select users, then click **Apply**.<br><br> **Note**: Users assigned to some of the selected alerts will be displayed as unassigned in the selection list. Selecting said users will assign them to all alerts they haven’t been assigned to yet.<br><br> |
-| Unassign users from multiple alerts | From the Alerts table, select the alerts you want to change and click **Selected *x* alerts** at the upper-left above the table. Click **Unassign alert** to remove users from the alert. |
-
-Show users that have been assigned to alerts by adding the **Assignees** column to the Alerts table (**Fields** → `kibana.alert.workflow_assignee_ids`). Up to four assigned users can appear in the **Assignees** column. If an alert is assigned to five or more users, a number appears instead.
+| Task | How to do it |
+|------|--------------|
+| Assign to single alert | **More actions** icon {icon}`boxes_horizontal` > **Assign alert** > select users |
+| Assign to multiple alerts | Select alerts > **Selected *x* alerts** > **Assign alert** |
+| Assign from flyout | **Take action** > **Assign alert**, or click the assign icon at top |
+| Unassign all users | **More actions** icon {icon}`boxes_horizontal` > **Unassign alert** |
+| Show assignees column | **Fields** > add `kibana.alert.workflow_assignee_ids` |
+| Filter by assignee | Click **Assignees** filter above table |
 
 :::{image} /solutions/images/security-alert-assigned-alerts.png
 :alt: Alert assignees in the Alerts table
 :screenshot:
 :::
 
-Assigned users are automatically displayed in the alert details flyout. Up to two assigned users can be shown in the flyout. If an alert is assigned to three or more users, a numbered badge displays instead.
 
-:::{image} /solutions/images/security-alert-flyout-assignees.png
-:alt: Alert assignees in the alert details flyout
+### Add rule exception [add-exception-from-alerts]
+
+Create an [exception](/solutions/security/detect-and-alert/rule-exceptions.md) to prevent a rule from generating similar alerts.
+
+| Location | How to do it |
+|----------|--------------|
+| Alerts table | **More actions** icon {icon}`boxes_horizontal` > **Add exception** |
+| Alert details flyout | **Take action** > **Add rule exception** |
+
+
+### Investigate in Timeline [signals-to-timelines]
+
+| Scope | How to do it |
+|-------|--------------|
+| Single alert | Click **Investigate in timeline** button in table, or **Take action** > **Investigate in timeline** |
+| Multiple alerts | Select alerts (up to 2,000) > **Selected *x* alerts** > **Investigate in timeline** |
+
+:::{image} /solutions/images/security-timeline-button.png
+:alt: Investigate in timeline button
 :screenshot:
 :::
-
-
-### Filter assigned alerts [filter-assigned-alerts]
-
-Click the **Assignees** filter above the Alerts table, then select the users you want to filter by.
-
-:::{image} /solutions/images/security-alert-filter-assigned-alerts.png
-:alt: Filtering assigned alerts
-:screenshot:
-:::
-
-
-### Add a rule exception from an alert [add-exception-from-alerts]
-
-You can add exceptions to the rule that generated an alert directly from the Alerts table. Exceptions prevent a rule from generating alerts even when its criteria are met.
-
-To add an exception, click the **More actions** menu (**…**) in the Alerts table, then select **Add exception**. Alternatively, select **Take action** → **Add rule exception** in the alert details flyout.
-
-For information about exceptions and how to use them, refer to [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md).
-
-
-### View alerts in Timeline [signals-to-timelines]
-
-* To view a single alert in Timeline, click the **Investigate in timeline** button in the Alerts table. Alternatively, select **Take action** → **Investigate in timeline** in the alert details flyout.
-
-    :::{image} /solutions/images/security-timeline-button.png
-    :alt: Investigate in timeline button
-    :screenshot:
-    :::
-
-* To view multiple alerts in Timeline (up to 2,000), select the checkboxes next to the alerts, then click **Selected *x* alerts** → **Investigate in timeline**.
-
-    :::{image} /solutions/images/security-bulk-add-alerts-to-timeline.png
-    :alt: Bulk add alerts to timeline button
-    :::
-
 
 ::::{tip}
-When you send an alert generated by a [threshold rule](/solutions/security/detect-and-alert/create-detection-rule.md) to Timeline, all matching events are listed in the Timeline, even ones that did not reach the threshold value. For example, if you have an alert generated by a threshold rule that detects 10 failed login attempts, when you send that alert to Timeline, all failed login attempts detected by the rule are listed.
+For [threshold rule](/solutions/security/detect-and-alert/using-the-rule-ui.md) alerts, Timeline shows all matching events, not only those that crossed the threshold.
 ::::
 
+If the rule uses a Timeline template, dropzone query values are replaced with the alert's actual field values.
 
-Suppose the rule that generated the alert uses a Timeline template. In this case, when you investigate the alert in Timeline, the dropzone query values defined in the template are replaced with their corresponding alert values.
-
-**Example**
-
-This Timeline template uses the `host.name: "{host.name}"` dropzone filter in the rule. When alerts generated by the rule are investigated in Timeline, the `{host.name}` value is replaced with the alert’s `host.name` value. If the alerts’s `host.name` value is `Windows-ArsenalFC`, the Timeline dropzone query is `host.name: "Windows-ArsenalFC"`.
-
-::::{note}
-Refer to [Timeline](/solutions/security/investigate/timeline.md) for information on creating Timelines and Timeline templates. For information on how to add Timeline templates to rules, refer to [Create a detection rule](/solutions/security/detect-and-alert/create-detection-rule.md).
-::::
 
 ## Clean up alerts [clean-up-alerts-sec]
 
 ```{applies_to}
-stack: preview 9.1 
-serverless: preview
+stack: ga 9.4+, preview 9.1-9.3
+serverless: ga
 ```
 
-Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerts-cases/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.
+Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerting/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.

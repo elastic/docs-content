@@ -61,6 +61,8 @@ curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{versio
 tar xzvf apm-server-{{version.stack}}-linux-x86_64.tar.gz
 ```
 
+For more information, refer to [modifying the `nofile` ulimit](#modify-nofile-ulimit).
+
 $$$apm-mac$$$
 **Mac:**
 
@@ -927,3 +929,77 @@ It’s possible to embed your APM Server configuration in a custom image. Here i
 FROM docker.elastic.co/apm/apm-server:9.0.0
 COPY --chmod=0644 --chown=1000:1000 apm-server.yml /usr/share/apm-server/apm-server.yml
 ```
+
+#### Modify the `nofile` ulimit in Docker containers [ulimit-on-docker]
+
+You can set the `nofile` ulimit from the command line using `--ulimit=soft:hard`. For details, refer to [Set ulimits in container (--ulimit)](https://docs.docker.com/reference/cli/docker/container/run/#ulimit) in the Docker documentation.
+
+```sh
+docker run -d \
+  -p 8200:8200 \
+  --name=apm-server \
+  --user=apm-server \
+  --volume="$(pwd)/apm-server.docker.yml:/usr/share/apm-server/apm-server.yml:ro" \
+  docker.elastic.co/apm/apm-server:9.0.0 \
+  --strict.perms=false -e \
+  --ulimit=524287:524287 \
+  -E output.elasticsearch.hosts=["elasticsearch:9200"] <1> <2>
+```
+
+1. Replace with your {{es}} hosts and ports.
+2. If you're using {{ech}}, replace the `-E output.elasticsearch.hosts` line with the Cloud ID and Elastic password as shown in the example above.
+
+
+## Modify the `nofile` ulimit [modify-nofile-ulimit]
+
+When running APM Server as a standalone binary, it inherits the `nofile` limit from the user running the process. On most systems, this limit is set to `1024`, which is too low for high-throughput scenarios or when using tail-based sampling.
+
+To choose an appropriate limit, take the following into consideration:
+
+- A limit of 1024 is typically sufficient for low-throughput use cases.
+- There is no performance downside to not setting a limit.
+- The main contributor to open files is the number of incoming connections.
+- Tail-based sampling is file-based, and increases the number of open files proportionally to throughput and sampling policies.
+
+### Set the limit for your user
+
+To configure the limit for your user:
+
+1. Determine which user runs the APM Server process:
+
+```sh
+whoami
+```
+
+2. Edit `/etc/security/limits.conf` with root privileges:
+
+```sh
+sudo nano /etc/security/limits.conf
+```
+
+Add the following lines to set soft and hard limits for your user:
+
+```text
+apm-server soft nofile 524287 <1>
+apm-server hard nofile 524287 <1>
+```
+
+1. Replace `apm-server` with the username you run APM Server process with.
+
+### Update the limit for a running process
+
+To modify the `nofile` limit of a running APM Server process:
+
+1. Get the process ID (PID):
+
+```sh
+pgrep -f apm-server
+```
+
+2. Apply the new limits:
+
+```sh
+prlimit --pid PID --nofile=524287:524287 <1>
+```
+1. Replace `PID` with your APM Server process ID.
+

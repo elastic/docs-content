@@ -20,7 +20,8 @@ Your monthly bill is based on the capabilities you use. When you use Security An
 * **Ingest** — Measured by the number of GB of log/event/info data that you send to your Security project over the course of a month.
 * **Retention** — Measured by the total amount of ingested data stored in your Security project.
 
-Data volumes for ingest and retention are based on the fully enriched normalized data size at the end of the ingest pipeline, before {{es}} compression is performed, and will be higher than the volumes traditionally reported by {{es}} index size. In addition, these volumes might be larger than those reported by cloud provider proxy logs for data going into {{es}}. This allows you to have flexibility in choosing your preferred ingest architecture for enrichment, whether it’s through {{agent}}, {{ls}}, OpenTelemetry, or collectors — with no impact on the cost.
+:::{include} _snippets/note-data-volumes-ingest-retention.md
+:::
 
 [Create a serverless estimate](https://cloud.elastic.co/pricing/serverless?s=security) or refer to the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security) for more details.
 
@@ -71,7 +72,6 @@ Logs, events, alerts, and configuration data ingested into your security project
 
 For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
 
+## Elastic Managed LLMs
 
-## Elastic Managed LLM
-
-The default [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) enables you to leverage AI-powered search as a service without deploying a model in your serverless project. It's configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using the default LLM will use tokens and incur related token-based add-on billing for your serverless project.
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.

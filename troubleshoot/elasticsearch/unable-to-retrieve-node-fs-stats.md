@@ -1,12 +1,12 @@
 ---
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  serverless:
 navigation_title: "Error: Unable to retrieve node fs stats"
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # Fix error: Unable to retrieve node fs stats [unable-to-retrieve-node-fs-stats]

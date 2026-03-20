@@ -9,18 +9,16 @@ Security feature availability varies by deployment type, with each feature havin
 
 Select your deployment type below to see what's available and how implementation responsibilities are distributed:
 
-::::{tab-set}
-:group: deployment-type
+::::{applies-switch}
 
-:::{tab-item} ECH
-:sync: cloud-hosted
+:::{applies-item} ess:
 
 | Category | Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
 | **Communication** | TLS (HTTP layer) | Fully managed | Automatically configured by Elastic |
 | | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
 | **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
-| | Private connectivity and VPC filtering | Configurable | [Establish a secure VPC connection](/deploy-manage/security/private-connectivity.md) |
+| | Private connectivity and VPC filtering | Configurable | [](/deploy-manage/security/private-connectivity.md) |
 | | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | Managed | You can [bring your own encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) |
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
@@ -29,15 +27,14 @@ Select your deployment type below to see what's available and how implementation
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
 | **Communication** | TLS (HTTP layer) | Fully managed | Automatically configured by Elastic |
 | | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
 | **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
-| | Private connectivity and VPC filtering | N/A |  |
+| | Private connectivity and VPC filtering | Configurable | [](/deploy-manage/security/private-connectivity.md) (AWS PrivateLink only) |
 | | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | Fully managed | Automatically encrypted by Elastic |
 | | Secure settings | N/A |  |
@@ -46,8 +43,7 @@ Select your deployment type below to see what's available and how implementation
 
 :::
 
-:::{tab-item} ECE
-:sync: ece
+:::{applies-item} ece:
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
@@ -63,8 +59,7 @@ Select your deployment type below to see what's available and how implementation
 
 :::
 
-:::{tab-item} ECK
-:sync: eck
+:::{applies-item} eck:
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
@@ -81,8 +76,7 @@ Select your deployment type below to see what's available and how implementation
 :::
 
 
-:::{tab-item} Self-managed
-:sync: self-managed
+:::{applies-item} self:
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
