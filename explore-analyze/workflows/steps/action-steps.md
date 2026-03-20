@@ -39,6 +39,12 @@ Refer to [](/explore-analyze/workflows/steps/elasticsearch.md) for more informat
 
 Refer to [](/explore-analyze/workflows/steps/kibana.md) for more information.
 
+## Cases
+
+Cases actions provide named `cases.*` workflow steps for creating and updating cases, attaching alerts and events, managing assignees, and searching or deleting cases. Use them when you need structured case lifecycle automation beyond generic {{kib}} HTTP actions.
+
+Refer to [](/explore-analyze/workflows/steps/cases.md) for more information.
+
 ## External systems and apps
 
 External actions allow your workflows to communicate with third-party systems using [connectors](kibana:/reference/connectors-kibana.md). Use external actions to:

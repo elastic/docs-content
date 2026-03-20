@@ -25,7 +25,7 @@ Action steps carry out operations in internal or external systems. They produce 
 * Interact with Elastic features across solutions, including common operations like:
   * Querying data from {{es}} or data streams
   * Indexing new documents or updating existing fields
-  * Closing or updating cases
+  * [Closing or updating cases](/explore-analyze/workflows/steps/cases.md)
   * Enriching alerts with additional context
   * Modifying dashboards or saved objects
 * Trigger actions in external systems using APIs, integrations, or service connectors

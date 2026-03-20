@@ -17,6 +17,8 @@ products:
 
 {{kib}} actions are built-in steps that allow your workflows to interact with {{kib}} APIs. You can automate tasks such as creating cases, updating alerts, or interacting with other {{kib}} features.
 
+For **case lifecycle automation** with dedicated `cases.*` step types (attachments, assignees, bulk updates, and case search), refer to [Cases workflow steps](/explore-analyze/workflows/steps/cases.md).
+
 All {{kib}} actions are automatically authenticated using the permissions or API key of the user executing the workflow.
 
 There are two ways to use {{kib}} actions:
