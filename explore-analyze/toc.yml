@@ -452,7 +452,8 @@ toc:
               - file: workflows/steps/action-steps.md
                 children:
                   - file: workflows/steps/elasticsearch.md
-                  - file: workflows/steps/kibana.md                  
+                  - file: workflows/steps/kibana.md
+                  - file: workflows/steps/cases.md
                   - file: workflows/steps/external-systems-apps.md
               - file: workflows/steps/flow-control-steps.md
                 children:

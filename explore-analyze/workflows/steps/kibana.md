@@ -30,6 +30,8 @@ Named actions provide a simplified, high-level interface for common {{kib}} oper
 
 To view the available named actions, click **Actions menu** and select **{{kib}}**. For operations that are not available as a named action, use the [generic request action](#generic-request-actions).
 
+For **Cases** steps registered as `cases.*` (for example `cases.createCase`, `cases.addComment`), see [Cases workflow steps](cases.md). Those steps complement OpenAPI-generated `kibana.*` actions such as `kibana.createCaseDefaultSpace`; the label in your workflow editor may show either pattern depending on how the action is exposed.
+
 The following example demonstrates a common use case.
 
 ### Example: Create a case

@@ -37,7 +37,7 @@ Refer to [](/explore-analyze/workflows/steps/elasticsearch.md) for more informat
 * Manage alerts
 * Interact with saved objects and other {{kib}} features
 
-Refer to [](/explore-analyze/workflows/steps/kibana.md) for more information.
+Refer to [](/explore-analyze/workflows/steps/kibana.md) for more information. For **Cases** steps that use `cases.*` type strings, refer to [](/explore-analyze/workflows/steps/cases.md).
 
 ## External systems and apps
 
