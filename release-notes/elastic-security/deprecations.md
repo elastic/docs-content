@@ -26,7 +26,6 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 :::{changelog} /releases/security
 :subsections:
 :type: deprecation
-:config: /changelog.yml
 :::
 
 

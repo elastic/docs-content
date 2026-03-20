@@ -26,7 +26,6 @@ Known issues are significant defects or limitations that may impact your impleme
 :::{changelog} /releases/security
 :subsections:
 :type: known-issue
-:config: /changelog.yml
 :::
 
 :::{dropdown} Details about gap fills aren't properly updated

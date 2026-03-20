@@ -26,7 +26,6 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 :::{changelog} /releases/security
 :subsections:
 :type: breaking-change
-:config: /changelog.yml
 :::
 
 ## 9.3.2 [elastic-security-932-breaking-changes]

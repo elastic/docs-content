@@ -26,7 +26,6 @@ Review the deprecated functionality for Elastic {{observability}}. While depreca
 :::{changelog} /releases/observability
 :subsections:
 :type: deprecation
-:config: /changelog.yml
 :::
 
 ## 9.0.1 [elastic-observability-9.0.1-deprecations]
