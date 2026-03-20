@@ -31,7 +31,7 @@ With the {{cps-init}} scope selector, you can select:
 The scope selector also lists the aliases of all [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), which is useful when you need to reference them in queries or index patterns.
 :::
 
-The scope selector is not editable in every app. Some apps display it as read-only, and others show it as unavailable. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
+The scope selector is not editable in every app. Some apps display it as **read-only**, meaning the app uses the space default scope but you cannot change it. Other apps show it as **unavailable**, meaning the app searches only the local project. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
 
 When you change the scope during a session, your selection is preserved as you navigate between apps. Admins can configure a [default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which is used when you start a new session.
 
@@ -42,7 +42,7 @@ In apps where you write queries, you can define a different {{cps}} scope than t
 There are two main mechanisms:
 
 * **[Project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)**: Use a `project_routing` parameter to limit which projects a query runs against. In {{esql}}, use [`SET project_routing`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-cps) at the beginning of your query. Project routing is evaluated before query execution, so excluded projects are never queried.
-* **[Qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)**: Prefix an index name with a project alias to target a specific project, for example `my_project:logs-*`. Use `_origin:logs-*` to target only the current project. Qualified expressions work in index patterns and query source commands.
+* **[Qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)**: Prefix an index name with a project alias to target a specific project, for example `my_project:logs-*`. Qualified expressions work in index patterns and query source commands.
 
 For example, to search only a specific linked project from Discover, start your {{esql}} query with:
 
