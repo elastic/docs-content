@@ -95,7 +95,7 @@ steps:
 :::
 ::::
 
-:::{dropdown} Click to show how to disable the certificate validation usefull when dealing with self signed certs
+:::{dropdown} Click to show how to disable the certificate validation, which is useful when dealing with self-signed certs
 ```yaml
 steps:
   - name: call_secure_api
