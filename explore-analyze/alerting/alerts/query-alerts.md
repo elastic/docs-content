@@ -9,7 +9,8 @@ products:
 
 # Query alert indices [query-alert-indices-kibana]
 
-This page explains how you should query alert indices when building rule queries, custom dashboards, or visualizations. It also lists index names and aliases by rule type and includes sample {{es}} queries for common cases. For field definitions shared by alert documents, review the [Alert schema](/reference/security/fields-and-object-schemas/alert-schema.md). For {{elastic-sec}} detection alerts only, see [Query alert indices](/solutions/security/detect-and-alert/query-alert-indices.md).
+This page explains how you should query alert indices when building rule queries, custom dashboards, or visualizations. It also lists index names and aliases by rule type and includes sample {{es}} queries for common cases. 
+
 
 ::::{important}
 
@@ -61,7 +62,7 @@ Each part of the name:
 
 ## Index names and aliases for rule types [_index_names_and_aliases_for_rule_types]
 
-The two tables below use the same **Context** values so you can match a rule type to both the recommended **alias** (for queries) and an **example backing index** (for debugging or mapping checks). Default {{kib}} space uses the `alerts-default` segment in names; {{elastic-sec}} uses your space ID instead—see [Alert index aliases](#_alert_index_aliases) and [Alert indices](#_alert_indices).
+The two tables below use the same context values so you can match a rule type to both the recommended alias (for queries) and an example backing index (for debugging or mapping checks). Default {{kib}} space uses the `alerts-default` segment in names; {{elastic-sec}} uses your space ID instead—see [Alert index aliases](#_alert_index_aliases) and [Alert indices](#_alert_indices).
 
 **Columns in the first table**
 
