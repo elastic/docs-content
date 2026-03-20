@@ -13,7 +13,7 @@ products:
 
 {{es}} uses a number of thread pools for different types of operations. It is important that it is able to create new threads whenever needed. Make sure that the number of threads that the {{es}} user can create is at least `4096`.
 
-To apply this limit, use the [system settings configuration methods](setting-system-settings.md) for your install type. For example, use the `ulimit` and `/etc/security/limits.conf` method for `.zip` and `.tar.gz` archives (use the process limit appropriate for your OS, such as `nproc` in `limits.conf`).
+To apply this limit, use the [system settings configuration methods](setting-system-settings.md) for your install type. For example, using `ulimit` and editing `/etc/security/limits.conf` for `.tar.gz` archives, or through`systemd` overrides when you need to change defaults on package-based installations.
 
 The package distributions when run as services under `systemd` will configure the number of threads for the {{es}} process automatically. No additional configuration is required.
 

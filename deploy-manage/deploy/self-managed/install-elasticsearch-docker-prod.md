@@ -131,7 +131,7 @@ You can also run an {{es}} container using both a custom UID and GID. You must e
 
 ## Increase ulimits for nofile and nproc [_increase_ulimits_for_nofile_and_nproc]
 
-Increased ulimits for [open files](/deploy-manage/deploy/self-managed/file-descriptors.md) and [user process limits](/deploy-manage/deploy/self-managed/max-number-of-threads.md) must be available for the {{es}} containers. For how to set limits on the host, see [System settings configuration methods](/deploy-manage/deploy/self-managed/setting-system-settings.md). Verify the [init system](https://github.com/moby/moby/tree/ea4d1243953e6b652082305a9c3cda8656edab26/contrib/init) for the Docker daemon sets them to acceptable values.
+Increased ulimits for [open files](/deploy-manage/deploy/self-managed/file-descriptors.md) and [user process limits](/deploy-manage/deploy/self-managed/max-number-of-threads.md) must be available for the {{es}} containers. Verify the [init system](https://github.com/moby/moby/tree/ea4d1243953e6b652082305a9c3cda8656edab26/contrib/init) for the Docker daemon sets them to acceptable values.
 
 To check the Docker daemon defaults for ulimits, run:
 

@@ -44,13 +44,15 @@ Use the option and value required for your setting (see the pages under [Importa
 
 ```sh
 sudo su  <1>
-ulimit -n <value> <2>
-su elasticsearch <3>
+ulimit -n 65535 <2>
+ulimit -u 4096 <3>
+su elasticsearch <4>
 ```
 
 1. Become `root`.
-2. Change the limit for this session (the `-n` option is shown as an example; substitute the option and value you need).
-3. Become the user that will run {{es}} (for example `elasticsearch`) before starting the process.
+2. Set the [open file descriptor limit](/deploy-manage/deploy/self-managed/file-descriptors.md) for this session.
+3. Set the [maximum number of threads](/deploy-manage/deploy/self-managed/max-number-of-threads.md) for this session.
+4. Become the user that will run {{es}} (for example `elasticsearch`) before starting the process.
 
 The new limit is only applied during the current session.
 
@@ -59,9 +61,8 @@ The new limit is only applied during the current session.
 
 On Linux systems, persistent limits can be set for a particular user by editing the `/etc/security/limits.conf` file. Add lines for the `elasticsearch` user (or the account that runs {{es}}) with the limit type and value your deployment requires. The exact limit name depends on what you are configuring. For example, you can configure `nofile` (open files), `nproc` (processes), or `memlock` (locked memory). Replace `<limit>` and `<value>` accordingly:
 
-```text
-elasticsearch  soft  <limit>  <value>
-elasticsearch  hard  <limit>  <value>
+```sh
+elasticsearch  -  nofile  65535
 ```
 
 This change will only take effect the next time the `elasticsearch` user opens a new session.
@@ -103,9 +104,7 @@ To override them, add a file called `/etc/systemd/system/elasticsearch.service.d
 
 ```ini
 [Service]
-LimitNOFILE=<value>
-LimitMEMLOCK=<value>
-Environment="ES_TMPDIR=/path/to/tmp"
+LimitMEMLOCK=infinity
 ```
 
 Replace the directives with those required for your deployment.
