@@ -64,7 +64,7 @@ In self-managed deployments, [shard allocation awareness](/deploy-manage/distrib
 
 All data nodes host both primary and replica shards, with replicas contributing both to redundancy and to query throughput. High-performance SSD-backed storage is recommended, along with memory-rich nodes to support vector indexes, hybrid lexical and vector search, and high concurrent load. {{ml-cap}} nodes are also distributed across zones to support optional embedding generation using self-hosted models such as Elastic’s Jina text embedding models. 
 
-In addition, the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is provided as part of {{ecloud}}, which uses GPU’s for high speed vector embedding generation. Finally, snapshots are stored externally for disaster recovery, with Snapshot Lifecycle {{manage-app}} ({{slm-init}}) handling automation.
+In addition, the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is provided as part of {{ecloud}}, which uses GPUs for high speed vector embedding generation. Finally, snapshots are stored externally for disaster recovery, with Snapshot Lifecycle {{manage-app}} ({{slm-init}}) handling automation.
 
 ## Recommended hardware specifications
 
