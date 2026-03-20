@@ -42,8 +42,8 @@ Cold data tiers store time series data that's accessed infrequently and rarely u
 ### Best practices
 
 * **Retention in hot tier**: Keep data in the hot tier ({{ilm}} hot phase) for at least 24 hours. {{ilm-cap}} policies that move ingested data from the hot phase to another phase (for example, cold or frozen) in less than 24 hours may cause performance issues or rule execution errors.
-* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't have replicas by default, shard unavailability can cause partial rule run failures. Shard unavailability may also be encountered during or after {{stack}} upgrades. If this happens, you can [manually rerun rules](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) over the affected time period once the shards are available.
-* **Timestamp override**: {{es}} seeks to preserve the event's source-designated timestamp in its `@timestamp` field and separately reports its `event.ingested` date field for ingest pipeline completion as [noted here](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed). {{es}} will attempt to pre-filter out indices based off not hosting data within the rule execution's desired look back date range. If the data source timestamp incorrectly reports a future date, {{es}} will not be able to pre-filter out indices from searching. This will cause extra performance costs for not changing resulting alerts. Therefore, [prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules.md) default apply a [timestamp override](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) to use `event.ingested` whenever available. Your custom rules should apply a similar override. See [Delayed timestamps](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed) to manually set `event.ingested` if it is not already applying to your indexing data.
+* **Replicas for mission-critical data**: Use replicas when data must stay highly available. Frozen tiers don't include replicas by default, so a missing shard can make a rule run only partly succeed. The same can happen during or after a {{stack}} upgrade. When shards are healthy again, [manually rerun rules](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) for the time window that was affected.
+* **Timestamp override**: `@timestamp` holds the event time; `event.ingested` records when ingest finished ([ingest timing](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed)). {{es}} tries to skip indices outside the rule's lookback. If `@timestamp` is wrong or in the future, those skips don't work—the rule searches extra indices without changing alerts. [Prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules.md) therefore use a [timestamp override](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) to prefer `event.ingested` when it exists; do the same for custom rules where it makes sense. If your pipeline doesn't set `event.ingested`, see [Delayed timestamps](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed).
 
 
 ### Limitations
@@ -55,10 +55,10 @@ Cold data tiers store time series data that's accessed infrequently and rarely u
 
 You have two options for excluding cold and frozen data from rules:
 
-* **Space-level setting (all rules)**: Configure [advanced settings](../get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) to exclude `data_cold` or `data_frozen` data from all rules in a {{kib}} space. Only available on {{stack}}.
+* **Space-level setting (all rules)**: On {{stack}}, use [advanced settings](../get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) in the {{kib}} space to exclude `data_cold` or `data_frozen`. Two settings apply in different places; configure one or both:
 
-   * `data_views:fields_excluded_data_tiers`: This applies to all [Data views](/explore-analyze/find-and-organize/data-views.md) when loading {{es}}'s [Field capabilities API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps).
-   * `securitySolution:excludedDataTiersForRuleExecution`: This applies to all [Security rule types](/solutions/security/detect-and-alert/rule-types.md) except [{{ml}} rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md).
+   * **`data_views:fields_excluded_data_tiers`**: For all [Data views](/explore-analyze/find-and-organize/data-views.md), excludes those tiers when {{es}} serves the [field capabilities API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps) (field lists and related UI behavior).
+   * **`securitySolution:excludedDataTiersForRuleExecution`**: For [Security rule types](/solutions/security/detect-and-alert/rule-types.md), excludes those tiers during rule execution (not used by [{{ml}} rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md)).
 
 * **Per-rule Query DSL filter (individual rules)**: Add a DSL [boolean query](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) to the rule that ignores cold or frozen documents at pre-filter query time. This gives you per-rule control and is described below.
 
@@ -69,9 +69,9 @@ You have two options for excluding cold and frozen data from rules:
 
 ### Sample Query DSL filters [query-dsl-filter-examples]
 
-The {{es}} search pre-filter requires the DSL apply from a [boolean query](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) and cannot apply by way of a [query string query](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md).
+The {{es}} search pre-filter accepts only [boolean query](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) DSL. A [query string query](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md) does not work for this pre-filter.
 
-Exclude frozen-tier documents:
+The snippets below match that requirement: each is a `bool` query whose `must_not` clause contains a `terms` filter on `_tier`, so cold- or frozen-tier documents are excluded during the pre-filter—change `_tier` if you need a different mix. This first snippet excludes only the frozen tier:
 
 ```console
 {
@@ -87,7 +87,7 @@ Exclude frozen-tier documents:
 }
 ```
 
-Exclude cold and frozen-tier documents:
+This snippet excludes both cold and frozen tiers:
 
 ```console
 {
