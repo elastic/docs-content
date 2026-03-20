@@ -13,9 +13,9 @@ products:
 ---
 # Vector search in {{es}}
 
-Sometimes [full-text search](full-text.md) alone isn't enough. {{ml-cap}} techniques help users find data based on intent and contextual meaning, not just keywords. Vector search is the foundation for these capabilities in {{es}}.
+Sometimes [full-text search](full-text.md) alone isn't enough. {{ml-cap}} techniques help you find data based on intent and contextual meaning, not just keywords. Vector search is the foundation for these capabilities in {{es}}.
 
-Vector search uses {{ml}} models to convert content into numerical representations called _vector embeddings_. These embeddings capture meaning and relationships, enabling {{es}} to retrieve results based on similarity rather than exact term matches.
+Vector search uses {{ml}} models to convert content into numerical representations called [vector embeddings](vector/how-vector-search-works.md#vectors-and-embeddings). These embeddings capture meaning and relationships, enabling {{es}} to retrieve results based on similarity rather than exact term matches.
 
 :::{tip}
 New to vector search? Start with the `semantic_text` workflow, which provides an easy-to-use abstraction over vector search with sensible defaults and automatic model management. Learn more [in this hands-on tutorial](semantic-search/semantic-search-semantic-text.md).
@@ -38,6 +38,10 @@ Vector search enables a wide range of applications:
 - **Workplace document search**: Search internal knowledge bases, wikis, and documents by meaning rather than exact keywords. 
 - **Image and multimedia similarity**: Find visually or semantically similar images, audio, or video by comparing their vector representations.
 
+:::{tip}
+You can combine vector search with full-text search for [hybrid search](hybrid-search.md) that leverages both meaning-based and keyword-based matching.
+:::
+
 ## Which workflow should I use?
 
 {{es}} offers several ways to implement vector search. Your choice depends on how much control you need and what type of content you are searching.
@@ -50,13 +54,6 @@ Semantic search workflows are managed and require minimal configuration. They ha
 - You prefer Elastic to manage models and indexing defaults
 - Your use case is text-based and fits common patterns (document search, RAG, question answering)
 
-Explore these guides:
-
-- [Semantic search](semantic-search.md)
-- [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md)
-- [Semantic search with the {{infer}} API](semantic-search/semantic-search-inference.md)
-- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md)
-
 ### Direct vector search
 
 Direct vector search uses the `dense_vector` and `sparse_vector` field types. Choose this when:
@@ -65,19 +62,9 @@ Direct vector search uses the `dense_vector` and `sparse_vector` field types. Ch
 - You need to search non-text content (images, audio) with embeddings from external models
 - You require fine-grained control over indexing, quantization, or query parameters
 
-Explore these guides:
-
-- [Dense vector search](vector/dense-vector.md)
-- [Sparse vector search](vector/sparse-vector.md)
-- [Bring your own dense vectors](vector/bring-own-vectors.md)
-
-:::{tip}
-You can combine vector search with full-text search for [hybrid search](hybrid-search.md) that leverages both meaning-based and keyword-based matching.
-:::
-
 ## Resources
 
-Resources are grouped by implementation path. Start here for a quick win, or jump to the workflow that matches how much control you need.
+Resources are grouped by implementation path. Try out our tutorials in [Start here](#start-here) for a quick win, or jump to the workflow that matches how much control you need.
 
 ### Start here
 
