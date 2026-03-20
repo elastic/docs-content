@@ -152,6 +152,9 @@ $$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure i
     | HTTP |  Basic cluster information from the `/` endpoint <br><br> License information from the `/_license` endpoint | **443**: standard HTTPS port | Uses an {{ecloud}} API key which is limited for use with Cloud Connect only. |
     | OTLP over HTTP | Operational information | **443**: standard HTTPS port | Uses an AutoOps token which is functionally equivalent to an API key. |
 
+    :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
+    :::
+
 $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
 :   Yes. AutoOps {{agent}} comes bundled with the `autoops_es_debug.yaml` configuration file, which you can use to export and view a sample of the data gathered from your cluster and sent to Elastic Cloud.
 

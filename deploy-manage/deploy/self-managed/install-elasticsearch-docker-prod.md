@@ -11,9 +11,9 @@ The following requirements and recommendations apply when running {{es}} in Dock
 
 The following requirements and recommendations apply when running {{es}} in Docker in production.
 
-## Set `vm.max_map_count` to at least `262144` [_set_vm_max_map_count_to_at_least_262144]
+## Set `vm.max_map_count` [_set_vm_max_map_count]
 
-The `vm.max_map_count` kernel setting must be set to at least `262144` for production use.
+The `vm.max_map_count` kernel setting must be set to `1048576`.
 
 How you set `vm.max_map_count` depends on your platform.
 
@@ -23,13 +23,13 @@ To view the current value for the `vm.max_map_count` setting, run:
 
 ```sh
 grep vm.max_map_count /etc/sysctl.conf
-vm.max_map_count=262144
+vm.max_map_count=1048576
 ```
 
 To apply the setting on a live system, run:
 
 ```sh
-sysctl -w vm.max_map_count=262144
+sysctl -w vm.max_map_count=1048576
 ```
 
 To permanently change the value for the `vm.max_map_count` setting, update the value in `/etc/sysctl.conf`.
@@ -48,7 +48,7 @@ The `vm.max_map_count` setting must be set within the xhyve virtual machine:
 2. Press enter and use `sysctl` to configure `vm.max_map_count`:
 
     ```sh
-    sysctl -w vm.max_map_count=262144
+    sysctl -w vm.max_map_count=1048576
     ```
 
 3. To exit the `screen` session, type `Ctrl a d`.
@@ -60,7 +60,7 @@ The `vm.max_map_count` setting must be set via docker-machine:
 
 ```sh
 docker-machine ssh
-sudo sysctl -w vm.max_map_count=262144
+sudo sysctl -w vm.max_map_count=1048576
 ```
 :::
 
@@ -74,14 +74,14 @@ To manually set it every time you reboot, you must run the following commands in
 
 ```sh
 wsl -d docker-desktop -u root
-sysctl -w vm.max_map_count=262144
+sysctl -w vm.max_map_count=1048576
 ```
 
 If you are on these versions of WSL and you do not want to have to run those commands every time you restart Docker, you can globally change every WSL distribution with this setting by modifying your %USERPROFILE%\.wslconfig as follows:
 
 ```text
 [wsl2]
-kernelCommandLine = "sysctl.vm.max_map_count=262144"
+kernelCommandLine = "sysctl.vm.max_map_count=1048576"
 ```
 
 This will cause all WSL2 VMs to have that setting assigned when they start.
@@ -96,7 +96,7 @@ vi /etc/sysctl.conf
 and appending a line which reads:
 
 ```text
-vm.max_map_count = 262144
+vm.max_map_count = 1048576
 ```
 :::
 

@@ -215,10 +215,15 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
 
 :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
-* **Metrics storage location**: Select where to store your metrics data from the list of available AWS regions:
+* $$$storage-location$$$**Storage location**: Select where to store your metrics data.\
+ In the **Cloud provider** field, select **Amazon Web Services**. In the **Region** field, select from the list of available AWS regions:
   
   :::{include} ../_snippets/autoops-cc-regions.md
   :::
+
+$$$firewall-allowlist$$$
+:::{include} ../_snippets/autoops-allowlist-port-and-urls.md
+:::
 
 ### Install agent
 
