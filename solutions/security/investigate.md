@@ -17,7 +17,7 @@ description: Use Elastic Security investigation tools to triage alerts, trace th
 
 When {{elastic-sec}}'s [detection engine](/solutions/security/detect-and-alert.md) creates an alert, you need to understand what happened: the threat's scope, root cause, and impact. {{elastic-sec}} provides a range of tools for this purpose, from an interactive event workspace and forensic visualizers to live host interrogation and collaborative case management.
 
-Together, these tools let you move from a single alert to a complete picture of an incident without leaving {{kib}}. You can correlate events across data sources in [Timeline](/solutions/security/investigate/timeline.md), trace process execution chains with the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md), inspect running hosts with [Osquery](/solutions/security/investigate/osquery.md), and document findings in [Cases](/solutions/security/investigate/security-cases.md) and [Notes](/solutions/security/investigate/notes.md). [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) can help you interpret alerts, generate queries, and suggest next steps throughout your investigations.
+Together, these tools let you move from a single alert to a complete picture of an incident without leaving {{kib}}. You can correlate events across data sources in [Timeline](/solutions/security/investigate/timeline.md), trace process execution chains with the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md), inspect running hosts with [Osquery](/solutions/security/investigate/osquery.md), and document findings in [cases](/solutions/security/investigate/security-cases.md) and [notes](/solutions/security/investigate/notes.md). [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) can help you interpret alerts, generate queries, and suggest next steps throughout your investigations.
 
 ## Where to start [investigation-where-to-start]
 
@@ -41,7 +41,7 @@ Investigation typically progresses from initial triage to documented resolution:
 3. **Dive into forensic detail.** Use the visual event analyzer to inspect the process tree that led to the alert, or use Session View to review full Linux sessions, including terminal output and user activity.
 4. **Interrogate the live environment.** Run Osquery against affected hosts to check running processes, open ports, installed software, and other OS-level context that helps confirm or rule out compromise.
 5. **Cross-reference threat intelligence.** Check indicators of compromise to learn whether observed artifacts (IPs, domains, file hashes) match known threats.
-6. **Document and collaborate.** Attach your findings to Notes on alerts and events, and organize everything in a case. Cases integrate with external ticketing systems like Jira and ServiceNow for cross-team coordination.
+6. **Document and collaborate.** Attach your findings to notes on alerts and events, and organize everything in a case. Cases integrate with external ticketing systems like Jira and ServiceNow for cross-team coordination.
 
 [Chatting with AI](/explore-analyze/ai-features/ai-chat-experiences.md) can accelerate any stage of this workflow by helping you interpret alert data, generate queries, and suggest next steps.
 
