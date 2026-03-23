@@ -28,7 +28,7 @@ Use full-text search when:
 - Your corpus is structured or semi-structured, such as documentation, product catalogs, or support tickets
 - You need predictable, explainable relevance scores
 
-Full-text search may not perform well when users express the same idea in many different ways, or when queries are conversational and meaning matters more than term overlap.
+Full-text search might not perform well when users express the same idea in many different ways, or when queries are conversational and meaning matters more than term overlap.
 
 For more information, refer to [Full-text search](/solutions/search/full-text.md).
 
@@ -43,7 +43,7 @@ Use semantic search when:
 - You want to match across languages without a translation layer
 - You are building a RAG pipeline that needs conceptually relevant context
 
-Semantic search requires generating embeddings at index time and query time, which adds memory and inference costs compared to full-text search. It can also underperform for queries that depend on exact-match precision, such as specific product codes or usernames.
+Semantic search requires generating embeddings at index time and query time, which adds memory and inference costs compared to full-text search. It can also perform poorly for queries that depend on exact-match precision, such as specific product codes or usernames.
 
 For more information, refer to [Semantic search](/solutions/search/semantic-search.md).
 
