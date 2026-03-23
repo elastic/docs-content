@@ -50,7 +50,7 @@ Before creating a dashboard, ensure you have:
         * **Sync color palettes across panels** — Applies the same color palette to all panels on the dashboard.
         * **Sync cursor across panels** — When you hover your cursor over a time series chart or a heatmap, the cursor on all other related dashboard charts automatically appears.
         * **Sync tooltips across panels** — When you hover your cursor over a **Lens** chart, the tooltips on all other related dashboard charts automatically appear.
-        * {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard** — Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard, so it restores automatically when anyone opens it. Refer to [{{cps-cap}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope) for details.
+        * {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard** — Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard. Refer to [Store a {{cps}} scope with a dashboard](#dashboard-store-cps-scope) for details.
 
     3. Click **Apply**.
        
@@ -72,4 +72,19 @@ Before creating a dashboard, ensure you have:
 
     :::{include} ../_snippets/dashboard-ownership.md
     :::
+
+## Store a {{cps}} scope with a dashboard [dashboard-store-cps-scope]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), dashboards use the {{cps}} scope set in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) by default. You can save a specific {{cps}} scope with the dashboard so that it is restored automatically whenever anyone opens it.
+
+To store a {{cps}} scope:
+
+* **From the settings flyout** (in editing mode): Turn on **Store CPS scope with dashboard**. The dashboard saves the {{cps}} scope that is currently active.
+* **From the save modal**: Turn on **Store CPS scope with dashboard**. The dashboard saves the {{cps}} scope that is currently active.
+
+When this option is turned off (the default), the dashboard uses whatever {{cps}} scope the viewer has set in the {{cps-init}} scope selector.
 
