@@ -59,6 +59,8 @@ Before creating a dashboard, ensure you have:
 
 6. Save the dashboard.
 
+    {applies_to}`serverless: preview` {applies_to}`stack: unavailable` In the save modal, you can turn on **Store CPS scope with dashboard** to save the current [{{cps}} scope](#dashboard-store-cps-scope) with the dashboard.
+
     {applies_to}`serverless:` {applies_to}`stack: ga 9.3+` When you save the dashboard for the first time, you can manage dashboard permissions.
 
     :::{image} /explore-analyze/images/save-as-new-dashboard.png
