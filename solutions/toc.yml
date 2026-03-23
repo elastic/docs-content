@@ -35,6 +35,7 @@ toc:
                     children:
                       - file: search/vector/knn.md
                       - file: search/vector/bring-own-vectors.md
+                      - file: search/vector/query-vector-builders.md
                   - file: search/vector/sparse-vector.md
                   - file: search/vector/dense-versus-sparse-ingest-pipelines.md
               - file: search/semantic-search.md

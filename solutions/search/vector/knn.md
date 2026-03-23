@@ -429,7 +429,7 @@ The `knn` option can also be used with [`aggregations`](../../../explore-analyze
 ### Perform semantic search [knn-semantic-search]
 
 :::{tip}
-Looking for a minimal configuration approach? The `semantic_text` field type abstracts these vector search implementations with sensible defaults and automatic model management. It's the recommended approach for most users. [Learn more about semantic_text](../semantic-search/semantic-search-semantic-text.md).
+Looking for a minimal configuration approach? The `semantic_text` field type abstracts these vector search implementations with sensible defaults and automatic model management. It’s the recommended approach for most users. [Learn more about semantic_text](../semantic-search/semantic-search-semantic-text.md).
 :::
 
 kNN search enables you to perform semantic search by using a previously deployed [text embedding model](../../../explore-analyze/machine-learning/nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding). Instead of literal matching on search terms, semantic search retrieves results based on the intent and the contextual meaning of a search query.
@@ -469,6 +469,8 @@ Reference the deployed text embedding model or the model deployment in the `quer
 3. The query string from which the model generates the dense vector representation.
 
 For more information on how to deploy a trained model and use it to create text embeddings, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
+
+For all available query vector builders, including the new [`embedding`](query-vector-builders.md#embedding-query-vector-builder) builder for multimodal inputs and the [`lookup`](query-vector-builders.md#lookup-query-vector-builder) builder for retrieving stored vectors, refer to [Query vector builders](query-vector-builders.md).
 
 ### Use `lookup` to build the query vector [knn-query-vector-lookup]
 ```{applies_to}
@@ -510,6 +512,8 @@ The lookup source must reference a `dense_vector` field that contains a single v
 3. The name of the index that stores the source document.
 4. The vector field path in the source document. It must reference a `dense_vector` field containing a single vector value.
 5. Optional routing value used to retrieve the source document.
+
+For full reference documentation on all query vector builders, see [Query vector builders](query-vector-builders.md).
 
 ### Search multiple kNN fields [_search_multiple_knn_fields]
 
