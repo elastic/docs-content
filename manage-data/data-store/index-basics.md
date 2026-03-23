@@ -13,9 +13,9 @@ products:
 
 An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. You can store many independent datasets side by side. 
 
-Behind the scenes, {{es}} divides each index into _shards_ and distributes them across the nodes in your cluster. The horizontal scaling of your _primary_ shard into _replicas_ shards across other nodes allows your index to handle large volumes of traffic. Replica shards provide fault tolerance, keeping your data available even when an individual node's response fails.
+Behind the scenes, {{es}} divides each index into _shards_ and distributes them across the nodes in your cluster. The horizontal scaling of your _primary_ shard into _replica_ shards across other nodes allows your index to handle large volumes of traffic efficiently. Replica shards provide fault tolerance, keeping your data available even when an individual node's response fails.
 
-To store a document, you add it to a specific index. To search, you target one or more indices and {{es}} searches all data within them and returns any matching documents. You can target your data by index name, through an [alias](/manage-data/data-store/aliases.md) that points to one or more indices or through a [data stream](/manage-data/data-store/data-streams.md) that routes requests to the appropriate backing indices. While you interact with a data stream as a single named resource, the data stream a logical layer that organizes multiple backing indices where your data is physically stored.
+To store a document, you add it to a specific index. To search, you target one or more indices. {{es}} searches all data within them and returns any matching documents. You can target your data by index name, through an [alias](/manage-data/data-store/aliases.md) that points to one or more indices, or through a [data stream](/manage-data/data-store/data-streams.md) that routes requests to the appropriate backing indices. You interact with a data stream as a single named resource; it serves as a logical layer that organizes the multiple backing indices where your data is physically stored.
 
 This page explains the core parts of an index (_documents_, _metadata fields_, and _mappings_), describes how {{es}} physically stores index data using _shards_, and highlights common design decisions.
 
@@ -38,7 +38,7 @@ An index is made up of the following components:
 
 ### Documents [elasticsearch-intro-documents-fields]
 
-{{es}} serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can create or have {{es}} auto-generate. An indexed document includes both document fields you define and system-managed metadata.
+{{es}} serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can specify explicitly or have {{es}} auto-generate. An indexed document includes both document fields you define and system-managed metadata.
 
 A simple {{es}} document might look like this:
 
@@ -67,11 +67,11 @@ A simple {{es}} document might look like this:
 }
 ```
 1. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system-managed fields prefixed with an underscore. `_index` identifies which index stores the document and `_id` is the document's unique identifier within that index.
-2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you define and control through [mappings](#elasticsearch-intro-documents-fields-mappings).
+2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested.
 
 ### Mappings and data types [elasticsearch-intro-documents-fields-mappings]
 
-Each index has a [mapping](/manage-data/data-store/mapping.md) that defines field data types and how field values are analyzed and stored. A mapping defines the [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
+Each index has a [mapping](/manage-data/data-store/mapping.md) that defines the [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
 
 For example, the following mapping defines field types for a few common data types:
 ```js
@@ -87,7 +87,7 @@ For example, the following mapping defines field types for a few common data typ
 
 ### Settings [index-settings]
 
-Each index has settings that control its storage and performance behavior. Settings are specified at index creation, either directly in the [create index request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be updated dynamically on a live index.
+Each index has settings that control its storage and performance behavior. Settings are configured when the index is created, either directly in the [create index request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be updated dynamically on a live index.
 
 Common settings include:
 
@@ -116,13 +116,13 @@ To learn how {{es}} coordinates reads and writes across primary and replica shar
 
 ## Common index design decisions
 
-Mappings control how fields are indexed, templates standardize configuration across indices, aliases decouple queries from physical index names, and lifecycle policies automate retention and tiering over time.
+Setting up your {{es}} indices involves making some design decisions about the index components: Mappings control how the index fields are created for different data types, templates standardize the configuration of settings across indices, aliases decouple queries from the index names, and lifecycle policies automate how the data is stored over time.
 
 When working with indices, you typically make decisions that focus on:
 
 * **Naming and aliases**: Use clear naming patterns for your indices and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
 * **Mapping strategy**: Use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping/explicit-mapping.md) for production use cases. Choosing the right [field type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) upfront matters because it controls what queries and aggregations are available, and [changing a field type later requires reindexing](/manage-data/data-store/mapping/update-mappings-examples.md).
-* **Index or data stream**: Use a regular index when you need frequent updates or deletes. For append-only timestamped data such as logs, events, and metrics, use a [data stream](/manage-data/data-store/data-streams.md) instead, since data streams manage rolling indices automatically.
+* **Index or data stream**: Use a regular index when you need frequent updates or deletes. For append-only, time series data such as logs, events, and metrics, use a [data stream](/manage-data/data-store/data-streams.md) instead, since data streams manage rolling indices automatically.
 * **Shard sizing**: For production workloads, the number and size of shards affect query speed and cluster stability. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for guidelines.
 
 ## Next steps

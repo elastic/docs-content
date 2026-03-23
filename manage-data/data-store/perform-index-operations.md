@@ -14,7 +14,7 @@ products:
 
 $$$manage-indices$$$
 
-Elastic's Index Management features are an easy, convenient way to manage your cluster’s indices, data streams, templates, and enrich policies in {{kib}}. Practicing good index management ensures your data is stored correctly and in the most cost-effective way possible.
+Practicing good index management ensures your data is stored efficiently and cost-effectively. {{kib}}'s index management features offer a convenient way to view and [perform operations on](/manage-data/data-store/index-operations-reference.md) your cluster’s indices, [data streams](/manage-data/data-store/data-streams.md), [index and component templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md). 
 
 The **{{index-manage-app}}** page in {{kib}} lets you view, investigate, and [perform operations](/manage-data/data-store/index-operations-reference.md) on your indices, [data streams](/manage-data/data-store/data-streams.md), [index templates](/manage-data/data-store/templates.md), [component templates](/manage-data/data-store/templates.md#component-templates), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md).
 
