@@ -48,12 +48,7 @@ Learn how to build full-text search queries using {{es}}'s query languages:
 
 * [Full-text queries using Query DSL](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md)
 * [Full-text search functions in {{esql}}](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md)
-
-**Proximity and ordering searches**
-
-The [intervals query](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) lets you search for terms based on their order and proximity in the text. This is useful when you need to find phrases where terms must appear in a specific order or within a limited distance of each other.
-
-* [Use the intervals query](full-text/intervals-query-tutorial.md) — A hands-on tutorial with sample data, runnable examples, and an advanced use case for prefix-based proximity search.
+* [Intervals query tutorial](full-text/intervals-query-tutorial.md) — Learn how to search by term proximity and order
 
 **Advanced topics**
 

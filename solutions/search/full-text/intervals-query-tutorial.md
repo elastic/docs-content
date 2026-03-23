@@ -1,4 +1,6 @@
 ---
+navigation_title: "Intervals query"
+description: "Learn how to use the Elasticsearch intervals query for proximity and order-sensitive full-text searches."
 applies_to:
   stack: ga
   serverless: ga
@@ -6,75 +8,73 @@ products:
   - id: elasticsearch
 ---
 
-# Use the intervals query [intervals-query-tutorial]
+# Search by term proximity and order with the intervals query [intervals-query-tutorial]
 
-The [intervals query](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) returns documents based on the **order and proximity** of matching terms. Unlike the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md), it lets you define flexible rules about how terms appear relative to each other — allowing gaps, enforcing ordering, and combining multiple term sequences.
+The [intervals query](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) finds documents based on the **order and proximity** of matching terms.
+Unlike the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md), it lets you define flexible rules about how terms relate to each other — allowing gaps between terms, enforcing ordering, and combining multiple term patterns.
 
-Use this tutorial to learn how to:
+By the end of this tutorial, you can:
 
-* Index sample data and run a basic intervals query
-* Perform ordered proximity searches using `all_of` with `any_of`
-* Narrow results further using the `prefix` rule
+* Run a basic ordered proximity search using `all_of` with `match`
+* Combine `all_of` and `any_of` rules for flexible matching
+* Use the `prefix` rule to match term variants by their leading characters
+* Apply a `filter` rule to exclude unwanted terms from proximity matches
 
 ::::{tip}
 The code examples use [Console](../../../explore-analyze/query-filter/tools/console.md) syntax.
 You can [convert examples into other programming languages](../../../explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
 ::::
 
-## Requirements [intervals-query-tutorial-requirements]
+## Before you begin [intervals-query-tutorial-prereqs]
 
 You can follow these steps with any {{es}} deployment.
 Refer to [Choosing your deployment type](../../../deploy-manage/deploy.md) for deployment options.
 
-## Create an index [intervals-query-tutorial-create-index]
+## Step 1: Create an index and add sample data [intervals-query-tutorial-setup]
 
-Create a `products` index:
+Create a `books` index and add several sample documents:
 
 ```console
-PUT /products
+PUT /books
 ```
 
-## Add sample documents [intervals-query-tutorial-index-data]
-
-Index several product descriptions to use as sample data:
-
 ```console
-POST /products/_bulk?refresh=wait_for
+POST /books/_bulk?refresh=wait_for
 {"index":{"_id":"1"}}
-{"description":"fast full text search for developers"}
+{"title":"Elasticsearch in Action","synopsis":"A practical guide to full text search with Elasticsearch. Covers queries, filters, and performance tuning."}
 {"index":{"_id":"2"}}
-{"description":"full text search with machine learning"}
+{"title":"Search Fundamentals","synopsis":"Learn the basics of full text search including tokenization, analyzers, and relevance scoring."}
 {"index":{"_id":"3"}}
-{"description":"machine learning performance optimization"}
+{"title":"Faster Elasticsearch","synopsis":"Tips for fast and efficient search at scale. Covers caching, faster queries, and cluster optimization."}
 {"index":{"_id":"4"}}
-{"description":"developer tools for fast search"}
+{"title":"Machine Learning for Search","synopsis":"Apply machine learning to improve search relevance. Covers learning to rank and query classification."}
 {"index":{"_id":"5"}}
-{"description":"high performance machine learning platform"}
+{"title":"Advanced Text Processing","synopsis":"Deep dive into text analysis and search pipelines. Full coverage of custom analyzers and token filters."}
 ```
 
 The [`standard` analyzer](elasticsearch://reference/text-analysis/analyzer-reference/standard-analyzer.md) is used by default for `text` fields.
 It lowercases and tokenizes the text, so each word becomes a searchable term at a specific position.
-For example, document 1 produces the tokens `fast`(0), `full`(1), `text`(2), `search`(3), `for`(4), `developers`(5).
 
-To learn more about how text is analyzed and indexed, refer to [Text analysis during search](text-analysis-during-search.md).
+To learn more, refer to [Text analysis](../../../manage-data/data-store/text-analysis.md).
 
-## Basic ordered proximity search [intervals-query-tutorial-basic-example]
+## Step 2: Run a basic ordered proximity search [intervals-query-tutorial-basic-example]
 
-Find products where `full text` appears immediately before `search`:
+Use `all_of` with `ordered: true` to find books where `full text` appears immediately before `search`, with no gaps allowed:
 
 ```console
-GET /products/_search
+GET /books/_search
 {
   "query": {
     "intervals": {
-      "description": {
+      "synopsis": {
         "all_of": {
           "ordered": true, <1>
+          "max_gaps": 0, <2>
           "intervals": [
             {
               "match": {
                 "query": "full text",
-                "max_gaps": 0, <2>
+                "max_gaps": 0,
                 "ordered": true
               }
             },
@@ -91,8 +91,8 @@ GET /products/_search
 }
 ```
 
-1. `ordered: true` on `all_of` enforces that `full text` must appear before `search`.
-2. `max_gaps: 0` on the inner `match` requires `full` and `text` to be adjacent with no words in between.
+1. `ordered: true` requires the first interval (`full text`) to appear before the second (`search`).
+2. `max_gaps: 0` on `all_of` requires both intervals to be adjacent — no words between `text` and `search`.
 
 ::::{dropdown} Example response
 ```console-result
@@ -107,14 +107,16 @@ GET /products/_search
         "_id": "1",
         "_score": 0.5,
         "_source": {
-          "description": "fast full text search for developers"
+          "title": "Elasticsearch in Action",
+          "synopsis": "A practical guide to full text search with Elasticsearch. Covers queries, filters, and performance tuning."
         }
       },
       {
         "_id": "2",
         "_score": 0.5,
         "_source": {
-          "description": "full text search with machine learning"
+          "title": "Search Fundamentals",
+          "synopsis": "Learn the basics of full text search including tokenization, analyzers, and relevance scoring."
         }
       }
     ]
@@ -123,33 +125,34 @@ GET /products/_search
 ```
 ::::
 
-Documents 1 and 2 match because both contain `full text search` in that exact order with no gaps.
-Documents 3, 4, and 5 don't contain `full text` followed immediately by `search`.
+Documents 1 and 2 match because both contain `full text search` as three contiguous, ordered terms.
+The other documents don't contain the phrase `full text search`.
 
-## Combining multiple intervals rules [intervals-query-tutorial-any-of-example]
+## Step 3: Combine rules with `any_of` [intervals-query-tutorial-any-of-example]
 
-Find products that describe `machine learning` near either `search` or `performance`, in any order and within two positions:
+Use `any_of` inside `all_of` to match alternative terms.
+This query finds books where `search` appears within two positions of either `machine learning` or `text`, in any order:
 
 ```console
-GET /products/_search
+GET /books/_search
 {
   "query": {
     "intervals": {
-      "description": {
+      "synopsis": {
         "all_of": {
           "ordered": false, <1>
           "max_gaps": 2, <2>
           "intervals": [
             {
               "match": {
-                "query": "machine learning"
+                "query": "search"
               }
             },
             {
               "any_of": { <3>
                 "intervals": [
-                  { "match": { "query": "search" } },
-                  { "match": { "query": "performance" } }
+                  { "match": { "query": "machine learning" } },
+                  { "match": { "query": "text" } }
                 ]
               }
             }
@@ -161,38 +164,49 @@ GET /products/_search
 }
 ```
 
-1. `ordered: false` allows `machine learning` and the other term to appear in either order.
-2. `max_gaps: 2` limits the number of unmatched positions between the two intervals to two.
-3. `any_of` matches whichever alternative appears in the text.
+1. `ordered: false` allows the intervals to appear in any order.
+2. `max_gaps: 2` allows up to two unmatched positions between the intervals.
+3. `any_of` matches either `machine learning` or `text`.
 
 ::::{dropdown} Example response
 ```console-result
 {
   "hits": {
     "total": {
-      "value": 3,
+      "value": 4,
       "relation": "eq"
     },
     "hits": [
       {
-        "_id": "2",
+        "_id": "1",
         "_score": 0.5,
         "_source": {
-          "description": "full text search with machine learning"
+          "title": "Elasticsearch in Action",
+          "synopsis": "A practical guide to full text search with Elasticsearch. Covers queries, filters, and performance tuning."
         }
       },
       {
-        "_id": "3",
+        "_id": "2",
         "_score": 0.5,
         "_source": {
-          "description": "machine learning performance optimization"
+          "title": "Search Fundamentals",
+          "synopsis": "Learn the basics of full text search including tokenization, analyzers, and relevance scoring."
+        }
+      },
+      {
+        "_id": "4",
+        "_score": 0.5,
+        "_source": {
+          "title": "Machine Learning for Search",
+          "synopsis": "Apply machine learning to improve search relevance. Covers learning to rank and query classification."
         }
       },
       {
         "_id": "5",
         "_score": 0.5,
         "_source": {
-          "description": "high performance machine learning platform"
+          "title": "Advanced Text Processing",
+          "synopsis": "Deep dive into text analysis and search pipelines. Full coverage of custom analyzers and token filters."
         }
       }
     ]
@@ -201,26 +215,26 @@ GET /products/_search
 ```
 ::::
 
-Document 2 matches because `search` and `machine learning` are within two positions of each other (`with` is the only word between them).
-Documents 3 and 5 match because `performance` immediately precedes `machine learning` in both.
-Documents 1 and 4 don't contain `machine learning`.
+Documents 1 and 2 match because `text` appears immediately before `search` (zero gaps).
+Document 4 matches because `search` appears two positions after `machine learning` (`to` and `improve` are the intervening tokens).
+Document 5 matches because `text` and `search` are two positions apart (`analysis` and `and` are between them).
+Document 3 doesn't match because its synopsis contains neither `text` nor `machine learning` near `search`.
 
-## Advanced use case: Searching for terms by prefix [intervals-query-tutorial-prefix-example]
+## Step 4: Match term variants with `prefix` [intervals-query-tutorial-prefix-example]
 
-The `prefix` rule matches any term that starts with a given set of characters, letting you broaden an interval without enumerating every possible form.
-Use it when the exact term varies but the leading characters are consistent.
+The `prefix` rule matches any term that starts with a given set of characters, so you can match term variants without listing every form.
 
-Find products that mention something starting with `fast` near `search`:
+Find books where any term starting with `fast` appears within three positions of `search`:
 
 ```console
-GET /products/_search
+GET /books/_search
 {
   "query": {
     "intervals": {
-      "description": {
+      "synopsis": {
         "all_of": {
           "ordered": false,
-          "max_gaps": 2,
+          "max_gaps": 3,
           "intervals": [
             {
               "prefix": { <1>
@@ -240,11 +254,69 @@ GET /products/_search
 }
 ```
 
-1. The `prefix` rule expands to match any term beginning with `fast`, such as `fast`, `faster`, or `fastest`.
+1. The `prefix` rule matches any indexed term beginning with `fast`, including `fast`, `faster`, and `fastest`.
 
 ::::{warning}
-The `prefix` rule can expand to match many terms depending on your data. To avoid errors caused by exceeding the `indices.query.bool.max_clause_count` [search setting](/reference/elasticsearch/configuration-reference/search-settings.md), use the [`index-prefixes`](/reference/elasticsearch/mapping-reference/index-prefixes.md) option in your field mapping, or keep prefix patterns specific enough to limit expansion.
+The `prefix` rule can expand to match many terms depending on your data.
+To avoid errors from exceeding the `indices.query.bool.max_clause_count` [search setting](/reference/elasticsearch/configuration-reference/search-settings.md), use the [`index-prefixes`](/reference/elasticsearch/mapping-reference/index-prefixes.md) mapping option or keep prefix patterns specific enough to limit expansion.
 ::::
+
+::::{dropdown} Example response
+```console-result
+{
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
+    },
+    "hits": [
+      {
+        "_id": "3",
+        "_score": 0.5,
+        "_source": {
+          "title": "Faster Elasticsearch",
+          "synopsis": "Tips for fast and efficient search at scale. Covers caching, faster queries, and cluster optimization."
+        }
+      }
+    ]
+  }
+}
+```
+::::
+
+Document 3 matches because `fast` appears two positions before `search` (`and efficient` are the intervening tokens).
+A regular `match` for `fast` would also find this document, but the `prefix` rule additionally catches variants like `faster` in the same document — ensuring the query works even if the data uses different word forms.
+
+## Step 5: Exclude terms with a filter [intervals-query-tutorial-filter-example]
+
+Use the `filter` rule to exclude unwanted terms from a proximity match.
+This query finds books where `search` appears near `text`, but only when `analysis` does not appear between them:
+
+```console
+GET /books/_search
+{
+  "query": {
+    "intervals": {
+      "synopsis": {
+        "match": {
+          "query": "text search",
+          "max_gaps": 5,
+          "ordered": false,
+          "filter": { <1>
+            "not_containing": {
+              "match": {
+                "query": "analysis"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+1. The `not_containing` filter excludes intervals where `analysis` appears between `text` and `search`.
 
 ::::{dropdown} Example response
 ```console-result
@@ -259,14 +331,16 @@ The `prefix` rule can expand to match many terms depending on your data. To avoi
         "_id": "1",
         "_score": 0.5,
         "_source": {
-          "description": "fast full text search for developers"
+          "title": "Elasticsearch in Action",
+          "synopsis": "A practical guide to full text search with Elasticsearch. Covers queries, filters, and performance tuning."
         }
       },
       {
-        "_id": "4",
+        "_id": "2",
         "_score": 0.5,
         "_source": {
-          "description": "developer tools for fast search"
+          "title": "Search Fundamentals",
+          "synopsis": "Learn the basics of full text search including tokenization, analyzers, and relevance scoring."
         }
       }
     ]
@@ -275,19 +349,29 @@ The `prefix` rule can expand to match many terms depending on your data. To avoi
 ```
 ::::
 
-Documents 1 and 4 match because both contain a term starting with `fast` within two positions of `search`.
+Documents 1 and 2 match because both contain `text` near `search` without `analysis` between them.
+Document 5 also contains `text` near `search` (and matched in [Step 3](#intervals-query-tutorial-any-of-example)), but `analysis` appears between them (the tokens `text`, `analysis`, `and`, `search` are contiguous), so the filter excludes it.
 
 ## Clean up [intervals-query-tutorial-cleanup]
 
-Delete the `products` index when you're done:
+Delete the `books` index:
 
 ```console
-DELETE /products
+DELETE /books
 ```
+
+## Summary [intervals-query-tutorial-summary]
+
+In this tutorial, you learned how to:
+
+* Search for ordered, contiguous phrases with `all_of` and `max_gaps`
+* Match alternative terms using `any_of`
+* Broaden interval matching to term variants using the `prefix` rule
+* Exclude unwanted terms from proximity matches using a `filter` rule
 
 ## Next steps [intervals-query-tutorial-next-steps]
 
-* Refer to the full [intervals query reference](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) for all available rules and parameters, including `filter`, `fuzzy`, `wildcard`, and `regexp` rules.
+* Refer to the full [intervals query reference](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) for all available rules and parameters, including `fuzzy`, `wildcard`, `regexp`, and `range` rules.
 * Learn how [text analysis](../../../manage-data/data-store/text-analysis.md) affects how terms are stored and matched.
-* Explore [full-text queries](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md) for other proximity and matching options.
+* Explore [full-text queries](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md) for other matching options.
 * Use the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md) for strict phrase matching without gaps.
