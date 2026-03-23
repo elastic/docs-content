@@ -24,4 +24,4 @@ The [`nginxreceiver`](https://github.com/open-telemetry/opentelemetry-collector-
 
     If the endpoint returns data, you are ready to set up {{agent}}.
 
-For more details, refer to [Configuring NGINX for Metric Collection](https://docs.nginx.com/nginx-amplify/nginx-amplify-agent/configuring-metric-collection/#metrics-from-stub_status).
+For more details, refer to [Enable NGINX Open Source Metrics](https://docs.nginx.com/nginx-one-console/nginx-configs/metrics/enable-metrics#enable-nginx-open-source-metrics).
