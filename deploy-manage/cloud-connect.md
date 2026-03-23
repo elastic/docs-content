@@ -49,16 +49,11 @@ Learn how to set up and use [](/explore-analyze/elastic-inference/connect-self-m
 Find answers to your questions about Cloud Connect.
 
 * [Does Cloud Connect require additional payment?](#cc-additional-payment)
-* [Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?](#cc-ech)
 * [Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to EIS?](#cc-ech-eis)
 * [Are more services going to be available with Cloud Connect?](#cc-more-services)
 
 $$$cc-additional-payment$$$ **Does Cloud Connect require additional payment?** 
 :   :::{include} /deploy-manage/_snippets/cc-license-and-payment.md
-
-$$$cc-ech$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?**
-:   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
-:::
 
 $$$cc-ech-eis$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to EIS?**
 :   For {{ech}} deployments with an Enterprise license, EIS is set up and enabled automatically.
