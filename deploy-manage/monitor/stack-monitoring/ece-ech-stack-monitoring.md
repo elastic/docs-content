@@ -79,7 +79,7 @@ To enable monitoring on your deployment:
 :::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-3. Under the deployment's name in the navigation menu, select **Logs and metrics**.
+3. From the navigation menu, select **Logs and metrics**.
 4. Under **Ship to a deployment**, select **Enable**.
 5. Choose where to send your logs and metrics. Select **Save**.
 

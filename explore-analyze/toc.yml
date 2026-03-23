@@ -1,6 +1,7 @@
 project: 'Explore and analyze'
 toc:
   - file: index.md
+  - file: kibana-data-exploration-learning-tutorial.md
   - file: query-filter.md
     children:
       - file: query-filter/languages.md
@@ -182,12 +183,11 @@ toc:
   - file: cross-cluster-search.md
     children:
       - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
-  - hidden: cross-project-search.md
+  - file: cross-project-search.md
     children:
-      - hidden: cross-project-search/cross-project-search-link-projects.md
-      - hidden: cross-project-search/cross-project-search-search.md
-      - hidden: cross-project-search/cross-project-search-tags.md
-      - hidden: cross-project-search/cross-project-search-project-routing.md
+      - file: cross-project-search/cross-project-search-search.md
+      - file: cross-project-search/cross-project-search-tags.md
+      - file: cross-project-search/cross-project-search-project-routing.md
   - file: ai-features.md
     children:
       - file: ai-features/elastic-agent-builder.md
@@ -231,6 +231,7 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
       - file: ai-features/manage-access-to-ai-assistant.md
+      - file: ai-features/agent-skills.md
       - file: ai-features/llm-guides/llm-connectors.md
         children:
           - file: ai-features/llm-guides/connect-to-azure-openai.md

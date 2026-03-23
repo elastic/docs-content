@@ -10,18 +10,12 @@ applies_to:
 
 The API docs workflow is complex, with many interdependent components. Don't hesitate to ask for help if you get stuck or have questions.
 
-If you're not sure who owns a specific API, check out the [API docs workflows table](./workflows.md) to find the right team.
-
 ## Report issues
 
 ### API docs issues
 
-When you find a bug or gap in the API docs:
-
-- If you're comfortable making the change, open a PR in the [relevant repo](./workflows.md)
-- Alternatively, open an issue in either:
-   -  [elastic/docs-content](https://www.github.com/elastic/docs-content/issues) (public repo)
-   - [elastic/docs-content-internal](https://www.github.com/elastic/docs-content-internal/issues) (Elastic employees only)
+When you find a bug or gap in the API docs open a PR in the [relevant repo](./workflows.md) if you're comfortable making the change.
+Alternatively, open an issue in [elastic/docs-content](https://www.github.com/elastic/docs-content/issues).
 
 ### Contribution guide issues
 
