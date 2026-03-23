@@ -33,10 +33,7 @@ When you create vectors (or _vectorize_ your data), you convert complex and nuan
 You can choose from many different vector embedding models. Some are extremely hardware efficient and can be run with less computational power. Others have a greater understanding of the context, can answer questions, and lead a threaded conversation.
 
 :::{note}
-The examples in this guide use the default models for `semantic_text`, which varies by deployment type and version:
- 
-- On {{serverless-short}} and {{stack}} 9.4+, the default is `.jina-embeddings-v5-text-small`, a dense vector model. 
-- On earlier {{stack}} versions, the default is [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), a sparse vector model. 
+The examples in this guide use the default models for `semantic_text`, which varies by deployment type and version.
 :::
 
 The way that you store vectors has a significant impact on the performance and accuracy of search results.
@@ -67,10 +64,6 @@ For an introduction to the concept of indices, check out [](/manage-data/data-st
 Each index has mappings that define how data is stored and indexed, like a schema in a relational database.
 The following example creates a mapping for a single field ("content"):
 
-::::{applies-switch}
-
-:::{applies-item} { serverless: ga, stack: ga 9.4+ }
-
 ```console
 PUT /semantic-index/_mapping
 {
@@ -82,45 +75,7 @@ PUT /semantic-index/_mapping
 }
 ```
 
-1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used. On {{serverless-short}} and {{stack}} 9.4+, the default {{infer}} endpoint is `.jina-embeddings-v5-text-small`, which generates dense vectors.
-
-:::
-
-:::{applies-item} stack: ga 9.3
-
-```console
-PUT /semantic-index/_mapping
-{
-  "properties": {
-    "content": {
-      "type": "semantic_text" <1>
-    }
-  }
-}
-```
-
-1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used. On {{stack}} 9.3, the default {{infer}} endpoint is `.elser-2-elastic`, which generates sparse vectors.
-
-:::
-
-:::{applies-item} stack: ga 9.0-9.2
-
-```console
-PUT /semantic-index/_mapping
-{
-  "properties": {
-    "content": {
-      "type": "semantic_text" <1>
-    }
-  }
-}
-```
-
-1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used. On {{stack}} 9.0–9.2, the default {{infer}} endpoint is `.elser-2-elasticsearch`, which generates sparse vectors.
-
-:::
-
-::::
+1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used.
 
 ::::{important}
 Relying on the default {{infer}} endpoint is convenient for getting started, but for production environments, we recommend explicitly specifying the `inference_id`. The default endpoint can change across versions and deployment types, which can lead to indices with mixed embedding models and cause ranking issues in multi-index searches. For details, refer to [Potential issues when mixing embedding models across indices](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md).

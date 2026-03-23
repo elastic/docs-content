@@ -35,12 +35,7 @@ You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-
 
 :::::::{tab-set}
 
-::::::{tab-item} Using EIS on Serverless
-
-```{applies_to}
-serverless: ga
-stack: ga 9.4
-```
+::::::{tab-item} Using EIS
 
 ```console
 PUT semantic-embeddings
@@ -56,33 +51,7 @@ PUT semantic-embeddings
 ```
 
 1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default `.jina-embeddings-v5-text-small` endpoint is used.
-
-::::::
-
-::::::{tab-item} Using EIS on {{ech}}
-
-```{applies_to}
-stack: ga 9.2-9.3
-```
-
-```console
-PUT semantic-embeddings
-{
-  "mappings": {
-    "properties": {
-      "content": { <1>
-        "type": "semantic_text", <2>
-        "inference_id": ".elser-v2-elastic" <3>
-      }
-    }
-  }
-}
-```
-
-1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field.
-3. The `.elser-v2-elastic` preconfigured {{infer}} endpoint is used. This {{infer}} endpoint uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) with the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) model.
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default {{infer}} endpoint is used.
 
 ::::::
 
