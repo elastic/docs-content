@@ -141,6 +141,7 @@ subs:
   package-registry:   "Elastic Package Registry"
   artifact-registry:   "Elastic Artifact Registry"
   aws:   "AWS"
+  gcp:   "GCP"
   stack:   "Elastic Stack"
   es:   "Elasticsearch"
   kib:   "Kibana"

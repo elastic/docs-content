@@ -12,7 +12,7 @@ products:
 
 # Configure AutoOps {{agent}} with a custom SSL certificate 
 
-{{agent}} might not recognize your SSL certificate if it is signed by a custom or internal Certificate Authority (CA). In this case, {{agent}} will fail to connect your ECE, ECK, or self-managed cluster to AutoOps and you might encounter an error like the following:
+{{agent}} might not recognize your SSL certificate if it is signed by a custom or internal Certificate Authority (CA). In this case, {{agent}} will fail to connect your ECE, ECK, or self-managed cluster to AutoOps and you might encounter an [error](../autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors) like the following:
 
 ```sh
 ... x509: certificate signed by unknown authority ...
