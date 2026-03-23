@@ -65,7 +65,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
         :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
 
         Threshold
-        :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
+        :   :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, `is between`, or `is not between`). The value calculated by the aggregation is compared to this threshold.  When using `is between`, comparison is inclusive of both operators (`max` >= `value` >= `min`), exclusive when using `is not between` (`max` > `value` > `min`).
 
     * {applies_to}`stack: ga 9.2` If you use {{esql}}, specify a time field and how to group alerts. 
 
