@@ -18,7 +18,7 @@ If multiple rows in the table apply, see [Using them together](#using-them-toget
 
 | Your situation | Use this | What it does |
 |---|---|---|
-| The {{esql}} query matches too much normal traffic (too many breaching rows) | [Author and tune the rule](../author-rules.md) | Narrows the query, `WHERE` clause, schedule, or lookback so evaluations only surface what matters |
+| The {{esql}} query matches too much normal traffic (too many breaching rows) | [Author and tune the rule](author-rules.md) | Narrows the query, `WHERE` clause, schedule, or lookback so evaluations only surface what matters |
 | Short spikes or flapping metrics open alerts before they should | [Activation thresholds](reduce-noise/activation-thresholds.md) | Requires consecutive breaches or a minimum duration before an episode becomes **active** |
 | The alert recovers and reopens too often (flapping) | [Recovery thresholds](reduce-noise/recovery-thresholds.md) | Requires sustained clear conditions before an episode leaves **recovering** |
 | The query returns no rows and **no_data** or recovery behavior is misleading | [No-data handling](reduce-noise/no-data-handling.md) | Configures how empty results are interpreted so gaps do not look like false recoveries or false alerts |
@@ -40,7 +40,7 @@ Acts on: **the {{esql}} query and rule schedule, before interpretation as breach
 
 **Problem:** The detector fires on the wrong things.
 
-Refine the base query, alert `WHERE` clause, schedule, and lookback. This is the only option that improves the underlying signal. Other tools filter or route what the rule already emits. See [Author rules](../author-rules.md).
+Refine the base query, alert `WHERE` clause, schedule, and lookback. This is the only option that improves the underlying signal. Other tools filter or route what the rule already emits. See [Author rules](author-rules.md).
 
 ### Activation and recovery thresholds
 
@@ -56,7 +56,7 @@ Acts on: **evaluations that return zero rows**
 
 **Problem:** Data stopped arriving, or empty results should not imply recovery or a **no_data** storm.
 
-Configure how the rule treats empty results. See [No-data handling](reduce-noise/no-data-handling.md) and [No-data handling (rule settings)](../author-rules/rule-settings/no-data-handling.md).
+Configure how the rule treats empty results. See [No-data handling](reduce-noise/no-data-handling.md) and [No-data handling (rule settings)](author-rules/rule-settings/no-data-handling.md).
 
 ### Notification matchers and grouping
 

@@ -800,7 +800,10 @@ redirects:
   'explore-analyze/alerting/alerts/event-log-index.md': 'explore-analyze/alerting/kibana-alerting-v1/event-log-index-v1.md'
   'explore-analyze/alerting/alerts/testing-connectors.md': 'explore-analyze/alerting/kibana-alerting-v1/testing-connectors-v1.md'
   'explore-analyze/alerting/alerts/maintenance-windows.md': 'explore-analyze/alerting/kibana-alerting-v1/maintenance-windows-v1.md'
-  
+
+  # Mistaken path under alerting/ (author rules live under kibana-alerting-v2/)
+  'explore-analyze/alerting/author-rules.md': 'explore-analyze/alerting/kibana-alerting-v2/author-rules.md'
+
   # Watcher redirects
   'explore-analyze/alerts-cases/watcher/watcher-getting-started.md': 'explore-analyze/alerting/watcher/watcher-getting-started.md'
   'explore-analyze/alerts-cases/watcher/how-watcher-works.md': 'explore-analyze/alerting/watcher/how-watcher-works.md'
