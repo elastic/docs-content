@@ -243,7 +243,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can add `SET project_routing` at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can add [`SET project_routing`](elasticsearch://reference/query-languages/esql/commands/set) at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
 
 ```esql
 SET project_routing = "_alias:my_other_project";
