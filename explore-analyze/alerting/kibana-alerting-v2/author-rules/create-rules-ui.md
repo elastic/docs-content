@@ -49,7 +49,7 @@ When the rule is in alert mode, additional settings are available:
 - **Alert delay** (activation threshold) — require the condition to be met a specified number of consecutive times or for a minimum duration before an alert becomes active.
 - **Recovery conditions** — define how recovery is detected.
 - **No-data handling** — configure behavior when the query returns no results.
-- **Notification policies** — link one or more notification policies to route alerts to workflow destinations.
+- **Notification policies** — policies are global; scoping uses **rule labels** and matchers on the policy side, not links from this form. Configure policies under **Notification Policies** (see [Notification policies](rule-settings/notification-policies.md)).
 - **Tags** — add free-form tags for filtering and organization.
 - **Investigation guide** — attach a runbook or investigation guide to the rule.
 
@@ -60,6 +60,7 @@ Before saving, click **Preview** to evaluate the query against recent data. The 
 - How many rows the query returns.
 - How many alert events would be generated.
 - Sample alert event documents.
+- A **Lens-powered bar chart histogram** of matching row counts over time, for both **evaluation** previews and **recovery** previews (when recovery logic applies).
 
 ## Save the rule
 

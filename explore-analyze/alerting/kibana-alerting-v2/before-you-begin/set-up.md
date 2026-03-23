@@ -29,10 +29,21 @@ Kibana alerting v2 depends on the following {{kib}} plugins, which are enabled b
 
 Kibana alerting v2 automatically creates and manages the following data streams:
 
-- **`.alerts-events-*`** — stores signal and alert event documents produced by rule evaluations. This is an append-only data stream.
-- **`.alerts-actions`** — stores alert action records (acknowledge, snooze, deactivate, fire, suppress) used by the dispatcher for suppression tracking and audit.
+- **`.rule-events`** — stores signal and alert event documents produced by rule evaluations. This is an append-only data stream.
+- **`.alert-actions`** — stores alert action records (acknowledge, snooze, deactivate, fire, suppress) used by the dispatcher for suppression tracking and audit.
 
 No manual index configuration is required. The system creates these data streams with the appropriate mappings when the first rule executes.
+
+## {{kib}} advanced settings
+
+Optional Task Manager settings control how API keys for notification policies are invalidated after policy updates or deletes:
+
+| Setting | Default | Purpose |
+|---|---|---|
+| `xpack.alerting.invalidateApiKeysTask.interval` | `5m` | How often the background invalidation task runs |
+| `xpack.alerting.invalidateApiKeysTask.removalDelay` | `1h` | Delay before removing old API key material after invalidation |
+
+Adjust these only when directed by operations or support; incorrect values can affect dispatch reliability or key rotation timing.
 
 ## Verify the installation
 
@@ -41,4 +52,4 @@ To verify that Kibana alerting v2 is working:
 1. Navigate to **Management > Alerts and Insights > Rules V2**.
 2. Confirm that the rules list page loads.
 3. Click **Create rule** to confirm the rule form opens.
-4. Optionally, create a test rule with a simple ES|QL query and verify that alert events appear in Discover by querying the `.alerts-events-*` index.
+4. Optionally, create a test rule with a simple ES|QL query and verify that alert events appear in Discover by querying the **`.rule-events`** data stream.

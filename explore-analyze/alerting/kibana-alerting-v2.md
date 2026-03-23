@@ -63,7 +63,7 @@ You can switch a rule between modes at any time. Switching from alert to detect 
 
 The Kibana alerting v2 pipeline has three main components:
 
-1. **Rule executor** — Runs on a configurable schedule via Task Manager. Builds and executes the ES|QL query, writes signal or alert event documents to the `.alerts-events-*` data stream, and computes state transitions for alert-mode rules.
+1. **Rule executor** — Runs on a configurable schedule via Task Manager. Builds and executes the ES|QL query, writes signal or alert event documents to the `.rule-events` data stream, and computes state transitions for alert-mode rules.
 
 2. **Director** — Embedded in the rule executor. Manages episode state transitions using configurable strategies (basic transitions or count/timeframe-gated transitions).
 

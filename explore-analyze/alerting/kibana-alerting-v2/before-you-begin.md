@@ -36,6 +36,6 @@ If you are coming from Kibana alerting v1, note these differences:
 Kibana alerting v2 runs alongside Kibana alerting v1. Both systems are fully operational:
 
 - You access Kibana alerting v2 rules and Kibana alerting v1 rules from the same **Rules** navigation entry, in separate tabs.
-- Each system writes to its own indices. Kibana alerting v2 alert events go to `.alerts-events-*`; Kibana alerting v1 alerts go to `.alerts-*`.
+- Each system writes to its own indices. Kibana alerting v2 alert events go to `.rule-events`; Kibana alerting v1 alerts go to `.alerts-*`.
 - There is no automatic migration. You can copy rules from Kibana alerting v1 to Kibana alerting v2 manually when you are ready.
 - You can create rules on alerts that correlate across both systems by querying both alert indices.

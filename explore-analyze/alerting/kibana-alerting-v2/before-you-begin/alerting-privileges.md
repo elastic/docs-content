@@ -35,11 +35,11 @@ To create and manage notification policies, you need:
 To view and take actions on alerts (acknowledge, snooze, tag, assign), you need:
 
 - **{{kib}} feature privilege**: `Rules V2` with at least read access.
-- **{{es}} index privileges**: Read access to `.alerts-events-*` for viewing alerts. Write access to `.alerts-actions` for taking alert actions.
+- **{{es}} index privileges**: Read access to `.rule-events` for viewing alerts. Write access to `.alert-actions` for taking alert actions.
 
 ### Discover and dashboard access
 
-Because Kibana alerting v2 alert events are stored in standard {{es}} indices, any user with read access to `.alerts-events-*` can query them in Discover and use them in dashboards. No additional {{kib}} privileges are required beyond the standard Discover feature access.
+Because Kibana alerting v2 alert events are stored in standard {{es}} indices, any user with read access to `.rule-events` can query them in Discover and use them in dashboards. No additional {{kib}} privileges are required beyond the standard Discover feature access.
 
 ## Space boundaries
 
