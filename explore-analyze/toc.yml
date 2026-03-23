@@ -188,6 +188,7 @@ toc:
       - file: cross-project-search/cross-project-search-search.md
       - file: cross-project-search/cross-project-search-tags.md
       - file: cross-project-search/cross-project-search-project-routing.md
+      - file: cross-project-search/cross-project-search-manage-scope.md
   - file: ai-features.md
     children:
       - file: ai-features/elastic-agent-builder.md
@@ -366,6 +367,7 @@ toc:
           - file: alerting/alerts/alerting-setup.md
           - file: alerting/alerts/create-manage-rules.md
           - file: alerting/alerts/view-alerts.md
+          - file: alerting/alerts/query-alerts.md
           - file: alerting/alerts/rule-types.md
             children:
               - file: alerting/alerts/rule-type-index-threshold.md

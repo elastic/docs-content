@@ -181,6 +181,24 @@ FROM kibana_sample_data_logs
 ```
 
 
+### Timezone handling [esql-kibana-timezone]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+{{esql}} queries use a timezone for date and time functions and time-based filtering. When you run {{esql}} queries in Discover, dashboards, alerting, or Maps, {{kib}} automatically uses the timezone from the **Time zone** (`dateFormat:tz`) [advanced setting](kibana://reference/advanced-settings.md). To change it:
+
+1. Go to **Stack Management** → **Advanced Settings** (or **Management** → **Advanced Settings** in {{serverless-short}}).
+2. Search for **Time zone** (`dateFormat:tz`).
+3. Set it to **Browser** to use your browser's timezone, or choose a specific timezone such as **UTC** or **America/New_York**.
+
+:::{warning}
+Avoid using the {{esql}} [`SET time_zone`](elasticsearch://reference/query-languages/esql/commands/set.md) directive in {{kib}} apps. `SET time_zone` changes how dates are computed by {{es}}, but {{kib}} still displays timestamps following the timezone defined in its `dateFormat:tz` advanced setting, which can produce confusing results.
+:::
+
+
+
 ## Use variables and controls [add-variable-control]
 
 {{esql}} variables help you add interactive controls to your queries and make them more dynamic.
@@ -235,6 +253,29 @@ In the query bar, select **Show recent queries**.
 From the **Recent** tab, you can star any queries you want.
 
 In the **Starred** tab, find all the queries you have previously starred.
+
+
+## Search across projects with `SET project_routing` [esql-kibana-cps]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can add [`SET project_routing`](elasticsearch://reference/query-languages/esql/commands/set.md) at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
+
+```esql
+SET project_routing = "_alias:my_other_project";
+FROM logs-*
+| WHERE log.level == "error"
+| STATS count = COUNT(*) BY service.name
+```
+
+The editor autocompletes two built-in values when you type `SET project_routing`:
+
+- `_alias:_origin` — Search only the current (origin) project.
+- `_alias:*` — Search all linked projects.
+
+You can use any valid [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), including tag-based and named expressions. For more details on query-level overrides, refer to [Managing {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-query-overrides).
 
 
 ## Related pages

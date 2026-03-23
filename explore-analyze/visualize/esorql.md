@@ -76,6 +76,16 @@ The chart configuration resets or follows automatic suggestions when:
 - {applies_to}`stack: ga 9.2+` You create a new chart and haven't edited the visualization's options yet.
 - The query changes significantly and no longer returns compatible columns.
 
+### Query data from multiple projects [esql-viz-cps]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), your {{esql}} visualization queries data based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana).
+
+To target specific projects from within the query, add [`SET project_routing`](elasticsearch://reference/query-languages/esql/commands/set.md) at the beginning of your {{esql}} query. When you do this, the visualization panel displays a **Custom CPS scope** badge on the dashboard, indicating that it uses a different scope than the {{cps-init}} scope selector. Refer to [View data from multiple projects](/explore-analyze/dashboards/using.md#dashboard-cps-scope) for details.
+
 ## Create an alert from your {{esql}} visualization
 ```{applies_to}
 stack: ga 9.1
