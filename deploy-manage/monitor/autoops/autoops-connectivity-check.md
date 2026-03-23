@@ -106,7 +106,7 @@ After the tool has finished running all the checks, it presents one of the follo
 | SUCCESS | The connection to {{ecloud}} or {{es}} worked perfectly. | No action needed. Continue the steps in the installation wizard. |
 | FAIL: 'curl' required | The script cannot run because the curl tool is missing. | Install curl using your system’s package manager (`sudo apt install curl`). |
 | FAIL: DNS resolution | Your computer cannot find the address for {{ecloud}}. | Check your internet connection or verify DNS settings. |
-| FAIL: Connection timeout | A firewall is likely blocking the request on port 443. | Open port 443 for outbound traffic to {{ecloud}}. |
+| FAIL: Connection timeout | A firewall is likely blocking the request on port {port-number}. | Open port {port-number} for outbound traffic to {{ecloud}}. |
 | FAIL: SSL handshake | The secure connection was blocked, often by "SSL Inspection." | Allowlist the Elastic URLs to bypass inspection. |
 | FAIL: 401 Unauthorized | The username, password, or API key provided is incorrect. | Double-check your credentials for typos and then re-run the tool. |
 | FAIL: 403 Forbidden | Your account connects but lacks the required permissions. | Update the user role in {{kib}} to include monitor privileges. |
