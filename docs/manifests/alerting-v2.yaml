@@ -1,0 +1,746 @@
+# docs/manifests/alerting-v2.yaml
+#
+# Maps alerting v2 documentation pages to their Kibana implementation PRs
+# and codebase locations. Used by Docs Patrol External and the workflow
+# docs skill to detect changes that require documentation updates.
+#
+# Owner: docs team (@nastasha-solomon)
+# Last updated: 2026-03-23
+# Docs PR: https://github.com/elastic/docs-content/pull/5528
+
+feature: alerting-v2
+feature_label: Kibana Alerting v2
+status: in-progress
+doc_set:
+  serverless: preview
+  stack: ga  # v1 content; v2 stack availability TBD (since 9.4)
+
+# NOTE — index rename chain:
+#   Original (247464):  .alerts-events       .alerts-actions
+#   After 254901:       .alerting-events      .alerting-actions
+#   After 258651:       .rule-events          .alert-actions   ← current / final
+# Every page that references index names must use the final names (.rule-events, .alert-actions).
+# ESQL views also renamed in 258651: $.alerting-episodes → $.alert-episodes,
+#   $.alerting-events → $.rule-events, $.alerting-actions → $.alert-actions.
+
+# Implementation PRs — add new entries as features ship
+implementation_prs:
+
+  # --- Foundational ---
+
+  - url: https://github.com/elastic/kibana/pull/247464
+    title: "[ResponseOps][Alerting] Alerting v2"
+    summary: >
+      Foundational v2 alerting framework — core rule engine, scheduling and execution
+      architecture, ES|QL-native rule evaluation, alert lifecycle management, dispatcher,
+      notification policies CRUD and UI, rule authoring UI (standalone and embedded in
+      Discover), rule management UI, APM instrumentation, and InversifyJS DI wiring.
+      This is an umbrella PR covering ~50 sub-PRs across engine, UI, and infrastructure.
+    author: cnasikas
+
+  # --- Index renames (two-step; see chain note above) ---
+
+  - url: https://github.com/elastic/kibana/pull/254901
+    title: "[ResponseOps][AlertingV2] Rename indexes for alert events and actions"
+    summary: >
+      First rename: `.alerts-events` → `.alerting-events`, `.alerts-actions` → `.alerting-actions`.
+      Superseded by PR #258651, which performs the second (final) rename.
+      Retained in the manifest because some doc files were drafted against these intermediate names.
+    author: adcoelho
+
+  - url: https://github.com/elastic/kibana/pull/258651
+    title: "[Alerting V2] Rename indices and ESQL views"
+    summary: >
+      Second (final) rename: `.alerting-events` → `.rule-events`, `.alerting-actions` → `.alert-actions`.
+      Also renames ES|QL views: `$.alerting-episodes` → `$.alert-episodes`,
+      `$.alerting-events` → `$.rule-events`, `$.alerting-actions` → `$.alert-actions`.
+      All doc pages that reference index or view names must be updated to these final values.
+      Supersedes PR #254901.
+    author: adcoelho
+
+  # --- Alert actions and episodes ---
+
+  - url: https://github.com/elastic/kibana/pull/258353
+    title: "[Alerting V2] bulk get alert actions"
+    summary: >
+      Adds `POST /internal/alerting/v2/alerts/action/_bulk_get` for retrieving action records
+      for multiple episode IDs in one request. Required to display per-episode status in the
+      alert episodes table UI.
+    author: adcoelho
+
+  - url: https://github.com/elastic/kibana/pull/258643
+    title: "[Alerting V2] Remove 'untag' alert action"
+    summary: >
+      Removes the `untag` action type from the alert actions schema. Tags are now managed
+      exclusively via the `tag` action. The bulk-get query now returns the last `tag` action
+      per episode. Affects alert-actions.md (action type table) and any UI docs listing
+      available alert actions.
+    author: adcoelho
+
+  - url: https://github.com/elastic/kibana/pull/257347
+    title: "[Alerting V2] Update the alert episodes view query."
+    summary: >
+      Updates the ES|QL view query for alert episodes to include episode duration.
+      Surfaces the Duration column in the alert list UI and alert episode detail view.
+    author: adcoelho
+
+  - url: https://github.com/elastic/kibana/pull/256527
+    title: "Store 'unmatched' action for unmatched alert episodes"
+    summary: >
+      Fixes a dispatcher bug where alert episodes matching no notification policy were
+      silently dropped and re-fetched every run. Now persists them with
+      `action_type: 'unmatched'` and reason `'no matching notification policy'`,
+      and adds `unmatched` to the fetch query's INLINE STATS filter.
+      Affects dispatcher pipeline docs, notification policy evaluation docs, and the
+      alert actions field reference.
+    author: kdelemme
+
+  # --- Notification policies ---
+
+  - url: https://github.com/elastic/kibana/pull/256940
+    title: "Make notification policies global with optional rule-label scoping"
+    summary: >
+      Decouples notification policies from rules. Policies are now global — all NPs are
+      evaluated for every alert episode by default. Rules no longer reference specific policies
+      via `notification_policies: [{ ref: policyId }]`. An optional `rule_labels` field on
+      the NP scopes it to rules whose `metadata.labels` match. The dispatcher fetches all
+      NPs every tick via `findAllDecrypted()`. The Step 6 matcher now uses two-phase matching:
+      first rule-label scoping (empty `ruleLabels` = catch-all), then KQL episode evaluation.
+      Affects notification policy schema docs, create/manage how-to, and dispatcher pipeline docs.
+    author: kdelemme
+
+  - url: https://github.com/elastic/kibana/pull/258010
+    title: "Add dynamic workflow selection to notification policy form"
+    summary: >
+      Replaces hardcoded workflow options in the NP form with dynamic search via the
+      `/api/workflows/search` API. Users can now search and select real workflows when
+      creating or editing a notification policy. Affects create/manage NP how-to docs.
+    author: kdelemme
+
+  - url: https://github.com/elastic/kibana/pull/258917
+    title: "[Alerting v2] Replace custom matcher input with KQL QueryStringInput"
+    summary: >
+      Replaces the custom `MatcherInput` with KQL's `QueryStringInput`, adding syntax
+      highlighting, autocomplete, and validation. Defines a typed `MatcherContext` schema
+      with field descriptors (`MATCHER_CONTEXT_FIELDS`) so the input auto-suggests valid
+      field names: `episode_status`, `rule.name`, `rule.labels`, and `data.*` fields.
+      Affects any doc describing the notification policy matcher field.
+    author: kdelemme
+
+  - url: https://github.com/elastic/kibana/pull/258862
+    title: "[Alerting v2] Add bulk actions for notification policies"
+    summary: >
+      Adds bulk enable, disable, snooze, and delete actions to the notification policies
+      list page, including confirmation modals for destructive operations.
+      Affects create/manage NP how-to and any NP management reference.
+    author: kdelemme
+
+  - url: https://github.com/elastic/kibana/pull/257377
+    title: "[Alerting V2] mark np api keys for invalidation"
+    summary: >
+      Introduces a saved object type for pending API key invalidations. When a notification
+      policy is updated, the old API key is marked for invalidation and a new one is created.
+      When deleted, the API key is marked for invalidation. Related to PR #258094 which
+      schedules the actual invalidation task.
+    author: adcoelho
+
+  - url: https://github.com/elastic/kibana/pull/258094
+    title: "[Alerting V2] Schedule task for notification policies API key invalidation"
+    summary: >
+      Introduces a recurring Task Manager task (`alerts_invalidate_api_keys`) that
+      invalidates API keys marked for removal. Configurable via:
+        `xpack.alerting.invalidateApiKeysTask.interval` (default: `5m`)
+        `xpack.alerting.invalidateApiKeysTask.removalDelay` (default: `1h`)
+      Affects setup/configuration docs and production considerations.
+    author: adcoelho
+
+  # --- Rule authoring UI ---
+
+  - url: https://github.com/elastic/kibana/pull/255734
+    title: "[Alerting V2] [UI] Add no-data handling feature to rule form"
+    summary: >
+      Adds the No-data handling control block to the v2 rule form. Controls are visible
+      for `kind=alert` only; hidden for `kind=signal`. Adds `noData.behavior` and related
+      fields to the rule schema. Affects rule-settings/no-data-handling.md and
+      author-rules/create-rules-ui.md.
+    author: yiannisnikolopoulos
+
+  - url: https://github.com/elastic/kibana/pull/257324
+    title: "[Alerting v2] rule form - preview chart"
+    summary: >
+      Adds a Lens-powered bar chart histogram to the rule preview panels (evaluation and
+      recovery), showing the count of matching rows over time. Affects create-rules-ui.md
+      and any doc describing the rule form preview experience.
+    author: dominiqueclarke
+
+  # --- Rule management UI ---
+
+  - url: https://github.com/elastic/kibana/pull/256692
+    title: "[Alerting v2] Rule Details Page"
+    summary: >
+      Implements the v2 rule details page: header with rule name, kind (Detect/Alert)
+      badge, enabled/disabled state, tags, rule conditions (ES|QL base query and alert
+      condition section), and rule-level actions. Affects manage-rules/view-manage-rules.md.
+    author: yiannisnikolopoulos
+
+  - url: https://github.com/elastic/kibana/pull/258341
+    title: "[Alerting v2] rule list bulk enable disable delete select all"
+    summary: >
+      Adds bulk operations (enable, disable, delete) and select-all to the v2 rules list.
+      Affects manage-rules/view-manage-rules.md.
+    author: dominiqueclarke
+
+  # --- Observability integration ---
+
+  - url: https://github.com/elastic/kibana/pull/257638
+    title: "[ResponseOps][RnA] Minimal alerting episodes o11y page"
+    summary: >
+      Introduces a minimal alerting episodes page in Observability at
+      `/app/observability/alerts_v2`. Creates `@kbn/alerting-v2-episodes-ui` package
+      with reusable components, ES|QL-based data fetching, pagination, and an episode
+      status badge. No corresponding doc page exists yet — flagged as a docs gap.
+    author: umbopepato
+
+  # --- Rule execution history ---
+
+  - url: https://github.com/elastic/kibana/pull/254990
+    title: "[AlertingV2] Rule execution history and status"
+    summary: >
+      Adds event log integration to Task Manager to record rule execution outcomes
+      (success, failure, cancelled) in `.kibana-event-log*`. No corresponding doc
+      page exists yet — flagged as a docs gap.
+    author: doakalexi
+
+
+entries:
+
+  # ---------------------------------------------------------------------------
+  # Top-level navigation and overview pages
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-overview-main
+    content_type: conceptual
+    docs_file: explore-analyze/alerting-overview.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/
+      - x-pack/platform/plugins/shared/alerting/public/
+    doc_set:
+      serverless: preview
+      stack: ga
+    notes: >
+      Top-level alerting landing page. Covers all three alerting systems (v1, v2, Watcher).
+      Review when any system changes significantly or when v2 reaches GA on stack.
+
+  - id: alerting-landing
+    content_type: conceptual
+    docs_file: explore-analyze/alerting.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/
+    doc_set:
+      serverless: preview
+      stack: ga
+    notes: >
+      Section landing page / TOC for the alerting area. Review if the IA changes
+      (new v2 sections added, v1 deprecated, Watcher removed).
+
+  - id: alerting-choose-system
+    content_type: conceptual
+    docs_file: explore-analyze/alerting/choose-an-alerting-system.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/
+    doc_set:
+      serverless: preview
+    notes: >
+      Comparison guide: v1 vs v2 vs Watcher. Needs review when feature parity between
+      v1 and v2 changes, when v2 reaches GA, or when v1 deprecation is announced.
+      This page will need significant revision at each of those milestones.
+
+  # ---------------------------------------------------------------------------
+  # Kibana alerting v1 (existing, reorganized under new IA)
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-v1
+    content_type: conceptual
+    docs_file: explore-analyze/alerting/kibana-alerting-v1/
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs: []
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/
+      - x-pack/platform/plugins/shared/alerting/public/
+    doc_set:
+      serverless: ga
+      stack: ga
+    notes: >
+      Existing v1 alerting docs, reorganized under the new alerting IA. Content largely
+      stable. Review if v1 feature set changes or if v1 deprecation is announced.
+      Covers: getting started, setup, create/manage rules, rule types, action variables,
+      event log, maintenance windows, notifications allowlist, troubleshooting.
+
+  # ---------------------------------------------------------------------------
+  # Kibana alerting v2 — overview
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-v2-overview
+    content_type: conceptual
+    docs_file: explore-analyze/alerting/kibana-alerting-v2.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/
+      - x-pack/platform/plugins/shared/alerting/public/
+    doc_set:
+      serverless: preview
+    notes: >
+      V2 alerting section landing page and conceptual overview. Review on major v2
+      architectural changes or when new top-level v2 capabilities ship.
+
+  # ---------------------------------------------------------------------------
+  # Kibana alerting v2 — before you begin
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-v2-before-you-begin
+    content_type: conceptual
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/before-you-begin/
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/server/feature.ts
+      - x-pack/platform/plugins/shared/alerting/server/routes/
+    doc_set:
+      serverless: preview
+    notes: >
+      Covers privileges (alerting-privileges.md) and setup (set-up.md).
+      See alerting-v2-set-up for the setup page entry, which tracks additional PRs
+      for the index renames and new API key invalidation task config.
+
+  - id: alerting-v2-set-up
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/before-you-begin/set-up.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/254901
+      - https://github.com/elastic/kibana/pull/258651
+      - https://github.com/elastic/kibana/pull/258094
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/server/data_streams/
+      - x-pack/platform/plugins/shared/alerting/server/index.ts
+      - x-pack/platform/plugins/shared/alerting/server/task_manager/
+    doc_set:
+      serverless: preview
+    notes: >
+      Documents index configuration, plugin dependencies, and verification steps.
+      High-priority for updates on three counts:
+      • Index rename chain — final names are `.rule-events` and `.alert-actions`
+        (see chain note at top of file). The current draft uses `.alerts-events-*` and
+        `.alerts-actions`; these must be updated.
+      • PR #258094 — adds a new Task Manager task for API key invalidation with two
+        configurable Kibana settings to document:
+          `xpack.alerting.invalidateApiKeysTask.interval` (default: `5m`)
+          `xpack.alerting.invalidateApiKeysTask.removalDelay` (default: `1h`)
+      • Review the "Verify the installation" step if the navigation path
+        (`Management > Alerts and Insights > Rules V2`) changes.
+
+  # ---------------------------------------------------------------------------
+  # Kibana alerting v2 — author rules
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-v2-author-rules
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/255734
+      - https://github.com/elastic/kibana/pull/257324
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/rules/
+      - x-pack/platform/plugins/shared/alerting/server/rules_client/
+      - x-pack/platform/plugins/shared/alerting/public/pages/rules/
+      - packages/kbn-alerting-v2-rule-form/
+    doc_set:
+      serverless: preview
+    notes: >
+      How-to content for creating and configuring v2 rules. Covers: create via UI,
+      Discover flyout, YAML; rule types; rule templates; rules on alerts; set data sources;
+      production considerations; and the full rule-settings subtree.
+      • PR #255734 — no-data handling UI now live in the rule form (kind=alert only);
+        no-data-handling.md needs to reflect the form controls and the `noData.behavior` field.
+      • PR #257324 — preview chart added to rule form (Lens histogram showing matching
+        row counts over time for evaluation and recovery previews). create-rules-ui.md
+        should describe this panel.
+      See separate entries for notification-policies pages, which track additional PRs.
+
+  - id: alerting-v2-notification-policies
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/256527
+      - https://github.com/elastic/kibana/pull/256940
+      - https://github.com/elastic/kibana/pull/258010
+      - https://github.com/elastic/kibana/pull/258917
+      - https://github.com/elastic/kibana/pull/258862
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/server/notification_policy/
+      - x-pack/platform/plugins/shared/alerting/public/pages/notification_policies/
+    doc_set:
+      serverless: preview
+    notes: >
+      Overview page for notification policies. Several significant implementation changes
+      affect the conceptual description of what NPs are and how they work:
+      • PR #256940 — NPs are now global, not rule-scoped. The concept page must drop any
+        description of rules referencing specific NPs by ID. Scoping is now done via
+        `rule_labels` on the NP itself.
+      • PR #256527 — describes what happens when no NP matches an episode (`unmatched`).
+      • PR #258917 — matcher is now a KQL field with autocomplete; the context schema
+        (`episode_status`, `rule.name`, `rule.labels`, `data.*`) is worth documenting here.
+      • PR #258862 — bulk enable/disable/snooze/delete now available in the NP list UI.
+      • PR #258010 — workflow selection is dynamic (search-based); update any description
+        of the workflow field in the NP form.
+
+  - id: alerting-v2-create-notification-policies
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/create-manage-notification-policies.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/256940
+      - https://github.com/elastic/kibana/pull/258010
+      - https://github.com/elastic/kibana/pull/258862
+      - https://github.com/elastic/kibana/pull/257377
+      - https://github.com/elastic/kibana/pull/258094
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/server/notification_policy/
+      - x-pack/platform/plugins/shared/alerting/public/pages/notification_policies/
+    doc_set:
+      serverless: preview
+    notes: >
+      CRUD how-to for notification policies.
+      • PR #256940 — schema change: remove any reference to `notification_policies` on rules.
+        Add documentation for the new `rule_labels` field (scoping NPs to specific rules).
+      • PR #258010 — workflow selector is now a dynamic search field, not a static dropdown.
+      • PR #258862 — document bulk actions (enable, disable, snooze, delete) from the list page.
+      • PR #257377 and #258094 — API keys are automatically managed; when a NP is updated or
+        deleted, the old key is marked for invalidation. May be worth a note in an API key
+        section or production guidance callout.
+
+  - id: alerting-v2-notification-policies-eval
+    content_type: conceptual
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/how-notification-policies-are-evaluated.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/256527
+      - https://github.com/elastic/kibana/pull/256940
+      - https://github.com/elastic/kibana/pull/258917
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/server/dispatcher/
+      - x-pack/platform/plugins/shared/alerting/server/dispatcher/steps/store_actions_step.ts
+      - x-pack/platform/plugins/shared/alerting/server/dispatcher/steps/evaluate_matchers_step.ts
+    doc_set:
+      serverless: preview
+    notes: >
+      Documents the 10-step dispatcher pipeline. Three PRs change the pipeline logic:
+      • PR #256940 — Step 4 now fetches ALL notification policies via `findAllDecrypted()`,
+        not just those referenced by rules. Step 6 (evaluate matchers) now uses two-phase
+        matching: (1) check `rule_labels` scoping (empty = catch-all), then (2) evaluate
+        the KQL episode matcher. Update the step descriptions accordingly.
+      • PR #256527 — Step 10 outcomes table is missing `unmatched` (episodes with no matching
+        NP). Add: `unmatched` / "Episode did not match any notification policy".
+      • PR #258917 — matcher is a KQL expression evaluated in-process. The `MatcherContext`
+        schema now has named fields with autocomplete: `episode_status`, `rule.name`,
+        `rule.labels`, `data.*`. Update Step 6 to reflect the available matcher fields.
+
+  # ---------------------------------------------------------------------------
+  # Kibana alerting v2 — manage alerts
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-v2-manage-alerts
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/alerts/
+      - x-pack/platform/plugins/shared/alerting/public/pages/alerts/
+    doc_set:
+      serverless: preview
+    notes: >
+      How-to content for managing and triaging alerts. See per-file entries below
+      for view-alerts, explore-alerts-discover, investigate-respond/alert-actions,
+      and investigate-respond/alert-episode-details, which each carry additional PR dependencies.
+
+  - id: alerting-v2-view-alerts
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/view-alerts.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/258353
+      - https://github.com/elastic/kibana/pull/257347
+      - https://github.com/elastic/kibana/pull/258643
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/public/pages/alerts/
+      - x-pack/platform/plugins/shared/alerting/server/routes/alerts/bulk_get_alert_actions.ts
+    doc_set:
+      serverless: preview
+    notes: >
+      Alert inbox UI: columns, quick filters, search, timeline chart, pagination.
+      • PR #257347 — adds the Duration column to the alert list (via episode view query update).
+      • PR #258353 — bulk-get alert actions populates per-episode status in alert list rows.
+      • PR #258643 — `untag` is removed from available alert actions; update the "Alert actions"
+        section to remove any reference to untagging.
+
+  - id: alerting-v2-explore-alerts-discover
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/explore-alerts-discover.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/254901
+      - https://github.com/elastic/kibana/pull/258651
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/
+      - x-pack/platform/plugins/shared/alerting/public/
+    doc_set:
+      serverless: preview
+    notes: >
+      How to query alerting data in Discover. References alerting index/view names — must
+      use final values from PR #258651: `.rule-events`, `.alert-actions`, `$.alert-episodes`,
+      `$.rule-events`. The current draft uses older names and needs updating.
+
+  - id: alerting-v2-investigate-respond
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/258353
+      - https://github.com/elastic/kibana/pull/258643
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/public/pages/alerts/
+      - x-pack/platform/plugins/shared/alerting/server/routes/alerts/
+    doc_set:
+      serverless: preview
+    notes: >
+      Section landing for the investigate and respond subtree. See child page entries
+      for the more specifically-mapped alert-actions and alert-episode-details pages.
+
+  - id: alerting-v2-alert-actions
+    content_type: reference
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond/alert-actions.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/258353
+      - https://github.com/elastic/kibana/pull/258643
+      - https://github.com/elastic/kibana/pull/256527
+      - https://github.com/elastic/kibana/pull/254901
+      - https://github.com/elastic/kibana/pull/258651
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/server/routes/alerts/bulk_get_alert_actions.ts
+      - x-pack/platform/plugins/shared/alerting/server/dispatcher/steps/store_actions_step.ts
+      - x-pack/platform/plugins/shared/alerting/common/alerts/
+    doc_set:
+      serverless: preview
+    notes: >
+      Reference page for all alert actions and the `.alerts-actions` index schema.
+      This page needs four distinct updates:
+      • PR #258643 — remove `untag` from the action type table and the "Available actions"
+        section; tags are managed only via the `tag` action type.
+      • PR #256527 — add `action_type: unmatched` with reason `no matching notification policy`
+        to the "Alert actions fields" table; the current page omits this type.
+      • PR #258651 — update index name throughout: `.alerts-actions` → `.alert-actions`
+        (final name after second rename). Also update any ESQL view references.
+      • PR #258353 — the bulk-get API (`_bulk_get`) is described implicitly here; verify
+        accuracy of the API reference once the route stabilises.
+
+  - id: alerting-v2-episode-details
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond/alert-episode-details.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/258353
+      - https://github.com/elastic/kibana/pull/257347
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/public/pages/alerts/
+      - x-pack/platform/plugins/shared/alerting/server/routes/alerts/bulk_get_alert_actions.ts
+    doc_set:
+      serverless: preview
+    notes: >
+      Alert episode detail flyout / page.
+      • PR #258353 — bulk-get alert actions enables the episode status display in this view.
+      • PR #257347 — episode duration surfaces in the episode detail panel from the updated view query.
+
+  # ---------------------------------------------------------------------------
+  # Kibana alerting v2 — manage rules
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-v2-manage-rules
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-rules/
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/256692
+      - https://github.com/elastic/kibana/pull/258341
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/public/pages/rules/
+      - x-pack/platform/plugins/shared/alerting/server/rules_client/
+    doc_set:
+      serverless: preview
+    notes: >
+      How-to content for the rule management UI: view, edit, clone, enable/disable,
+      delete, and snooze rules. Two post-foundation features need documentation:
+      • PR #256692 — rule details page: shows rule name, kind badge (Detect/Alert),
+        enabled/disabled state, tags, ES|QL base query, and alert conditions.
+        view-manage-rules.md should describe navigation to this page and what's visible.
+      • PR #258341 — bulk enable, disable, and delete from the rules list with select-all.
+        Add a bulk operations section to view-manage-rules.md.
+
+  # ---------------------------------------------------------------------------
+  # Kibana alerting v2 — reduce noise
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-v2-reduce-noise
+    content_type: conceptual
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/reduce-noise/
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/255734
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/rules/
+      - x-pack/platform/plugins/shared/alerting/server/dispatcher/
+    doc_set:
+      serverless: preview
+    notes: >
+      Covers all noise-reduction mechanisms. Several pages reference index names that
+      must be updated to final values (see chain note at top of file): `.rule-events`,
+      `.alert-actions`. PR #255734 adds the no-data handling UI to the rule form
+      (kind=alert only) — no-data-handling.md in this directory should reflect the
+      form controls and `noData.behavior` field values.
+      See alerting-v2-deactivate-alerts for the deactivate page, which also tracks #256527.
+
+  - id: alerting-v2-deactivate-alerts
+    content_type: procedural
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/reduce-noise/deactivate-alerts.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/256527
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/server/dispatcher/steps/store_actions_step.ts
+      - x-pack/platform/plugins/shared/alerting/common/alerts/
+    doc_set:
+      serverless: preview
+    notes: >
+      How to deactivate (and reactivate) alert episodes. PR #256527 changes dispatcher
+      behavior: episodes that are deactivated and also unmatched by any NP now receive
+      an `unmatched` action record in addition to the deactivation. Review if this page
+      describes what happens to deactivated episodes in the dispatcher pipeline.
+
+  # ---------------------------------------------------------------------------
+  # Kibana alerting v2 — alert event field reference
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-v2-event-field-ref
+    content_type: reference
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/alert-event-field-reference.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/257347
+      - https://github.com/elastic/kibana/pull/256527
+      - https://github.com/elastic/kibana/pull/254901
+      - https://github.com/elastic/kibana/pull/258651
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/common/alert_event/
+      - x-pack/platform/plugins/shared/alerting/server/data_streams/
+    doc_set:
+      serverless: preview
+    notes: >
+      Field reference for alert event documents and the alert actions index schema.
+      High-priority page — several PRs require updates:
+      • PR #258651 (final rename) — update ALL index and view name references:
+          `.alerts-events-*`  → `.rule-events`
+          `.alerts-actions`   → `.alert-actions`
+          `$.alerting-episodes` → `$.alert-episodes`
+        The page description, body text, and index mapping section all use old names.
+      • PR #256527 — add `action_type: unmatched` with reason
+        `no matching notification policy` to the "Alert actions fields" table.
+      • PR #257347 — verify whether a duration field is added to the alert event document
+        schema (the PR adds duration to the episodes view query, not necessarily the raw event).
+      This page should be reviewed before every preview release cycle.
+
+  # ---------------------------------------------------------------------------
+  # Features without doc pages yet (implementation has shipped, docs are gaps)
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-v2-o11y-episodes
+    content_type: procedural
+    docs_file: TBD  # No page exists yet
+    docs_pr: ~
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/257638
+    watch_paths:
+      - packages/kbn-alerting-v2-episodes-ui/
+      - x-pack/solutions/observability/plugins/observability/public/pages/alerts_v2/
+    doc_set:
+      serverless: preview
+    notes: >
+      PR #257638 introduces an alerting episodes page in Observability at
+      `/app/observability/alerts_v2`. The page uses `@kbn/alerting-v2-episodes-ui`
+      for ES|QL-based data fetching, pagination, and episode status badges.
+      A doc page under solutions/observability/ is needed. Coordinate with the
+      Observability docs team to determine scope and placement.
+
+  - id: alerting-v2-rule-execution-history
+    content_type: reference
+    docs_file: TBD  # No page exists yet
+    docs_pr: ~
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/254990
+    watch_paths:
+      - x-pack/platform/plugins/shared/task_manager/server/task_events.ts
+    doc_set:
+      serverless: preview
+    notes: >
+      PR #254990 adds event log entries to Task Manager for rule execution outcomes
+      (success, failure, cancelled) in `.kibana-event-log*`. This enables a rule
+      execution history view. No doc page exists yet — determine if this should live
+      under manage-rules/ or be a standalone reference page. Coordinate with the
+      ResponseOps team on planned UI surface before writing the doc.
+
+  # ---------------------------------------------------------------------------
+  # Watcher (existing, reorganized under alerting IA)
+  # ---------------------------------------------------------------------------
+
+  - id: alerting-watcher
+    content_type: reference
+    docs_file: explore-analyze/alerting/watcher/
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs: []
+    watch_paths:
+      - x-pack/plugin/watcher/
+    doc_set:
+      stack: ga
+    notes: >
+      Existing Watcher docs (watcher.md and enable-watcher.md), now surfaced under
+      the alerting IA alongside v1 and v2. Content stable. Review only if Watcher
+      receives significant changes, which is unlikely given its maintenance-mode status.
