@@ -273,7 +273,7 @@ By default, dashboards use the {{cps}} scope currently set in the {{cps-init}} s
 To store a {{cps}} scope:
 
 * **From the settings flyout** (in editing mode): Enable **Store CPS scope with dashboard**. The dashboard saves the {{cps}} scope that is currently active.
-* **From the save modal**: Enable **Store project routing with dashboard**. The dashboard applies the saved {{cps}} scope each time it loads.
+* **From the save modal**: Enable **Store CPS scope with dashboard**. The dashboard applies the saved {{cps}} scope each time it loads.
 
 When you disable this option (the default), the dashboard uses whatever {{cps}} scope the viewer has set in the {{cps-init}} scope selector.
 
