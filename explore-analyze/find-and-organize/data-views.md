@@ -158,7 +158,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form previews matching indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). The {{data-source}} itself does not store the scope. When you query the {{data-source}}, results come from whichever linked projects the active {{cps}} scope includes at that time.
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), the {{data-source}} creation form previews matching indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). The {{data-source}} itself does not store the scope. When you query the {{data-source}}, results come from whichever linked projects the active {{cps}} scope includes at that time.
 
 To restrict a {{data-source}} to specific projects regardless of the active scope, you can:
 

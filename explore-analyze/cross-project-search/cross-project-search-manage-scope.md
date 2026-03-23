@@ -28,7 +28,7 @@ With the {{cps-init}} scope selector, you can select:
 * **All projects**: Searches the origin project and all linked projects.
 
 :::{tip}
-The scope selector also lists the aliases of all [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), which is useful when you need to reference them in queries or index patterns.
+The scope selector also lists the aliases of all [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), which is useful when you need to reference them in queries or index patterns.
 :::
 
 The scope selector is not editable in every app. Some apps display it as **read-only**, meaning the app uses the space default scope but you cannot change it. Other apps show it as **unavailable**, meaning the app searches only the local project. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
