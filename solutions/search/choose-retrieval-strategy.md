@@ -5,6 +5,13 @@ applies_to:
   stack: ga
   serverless:
     elasticsearch: ga
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Choose a retrieval strategy
