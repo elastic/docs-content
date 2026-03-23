@@ -243,17 +243,13 @@ serverless: preview
 stack: unavailable
 ```
 
-A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled.
+A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled. To check and control which projects are queried, use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. You can change this scope at any time during your session, and all panels update accordingly.
 
-To check which projects the dashboard queries, look at the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. It shows whether the dashboard queries **This project** only or **All projects**. You can change this scope during your session, and all panels on the dashboard update accordingly.
+In some cases, the scope behaves differently:
 
-Some dashboards are configured to restore a specific {{cps}} scope each time they are opened. You can still change the scope during your session. To learn how to configure this, refer to [Store a {{cps}} scope with a dashboard](/explore-analyze/dashboards/create-dashboard.md#dashboard-store-cps-scope).
-
-#### Panels with a custom {{cps}} scope [dashboard-panel-cps-badge]
-
-Some panels query a fixed set of projects regardless of the {{cps-init}} scope selector. This happens when the panel's creator used [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in the panel's query. These panels display a **Custom CPS scope** badge and are not affected when you change the dashboard's scope.
-
-Select the badge to view which projects the panel queries.
+* **The dashboard restores a saved scope on open.** Some dashboards are [configured to store a {{cps}} scope](/explore-analyze/dashboards/create-dashboard.md#dashboard-store-cps-scope). When you open them, the {{cps-init}} scope selector is set to the stored scope. You can still change it during your session.
+(dashboard-panel-cps-badge)=
+* **A panel has a Custom CPS scope badge.** This means the panel uses [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) to query a fixed set of projects. It is not affected when you change the dashboard's scope. Select the badge to view which projects the panel queries.
 
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]
