@@ -243,11 +243,11 @@ serverless: preview
 stack: unavailable
 ```
 
-A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled. Which projects are included depends on how the dashboard was set up by its creator.
+A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled.
 
-To check the current scope, look at the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. It shows whether the dashboard queries **This project** only or **All projects**. You can change this scope during your session, and all panels on the dashboard update accordingly.
+To check which projects the dashboard queries, look at the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. It shows whether the dashboard queries **This project** only or **All projects**. You can change this scope during your session, and all panels on the dashboard update accordingly.
 
-Some dashboards restore a specific {{cps}} scope each time you open them. You can still change the scope during your session. To learn how creators configure this, refer to [Store a {{cps}} scope with a dashboard](/explore-analyze/dashboards/create-dashboard.md#dashboard-store-cps-scope).
+Some dashboards are configured to restore a specific {{cps}} scope each time they are opened. You can still change the scope during your session. To learn how to configure this, refer to [Store a {{cps}} scope with a dashboard](/explore-analyze/dashboards/create-dashboard.md#dashboard-store-cps-scope).
 
 #### Panels with a custom {{cps}} scope [dashboard-panel-cps-badge]
 
