@@ -368,6 +368,7 @@ toc:
           - file: alerting/kibana-alerting-v1/alerting-setup-v1.md
           - file: alerting/kibana-alerting-v1/create-manage-rules-v1.md
           - file: alerting/kibana-alerting-v1/view-alerts-v1.md
+          - file: alerting/kibana-alerting-v1/query-alerts-v1.md
           - file: alerting/kibana-alerting-v1/rule-types-v1.md
             children:
               - file: alerting/kibana-alerting-v1/rule-type-index-threshold-v1.md

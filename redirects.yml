@@ -763,11 +763,12 @@ redirects:
   'explore-analyze/cases/configure-case-access.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/cases/find-share-cases.md': 'explore-analyze/cases/search-share-cases.md'
   
-  # Alerts redirects (alerts-cases → alerting/alerts → alerting/kibana-alerting-v1)
+  # Alerts redirects (alerts-cases → alerting/kibana-alerting-v1)
   'explore-analyze/alerts-cases/alerts/alerting-getting-started.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-getting-started-v1.md'
   'explore-analyze/alerts-cases/alerts/alerting-setup.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-setup-v1.md'
   'explore-analyze/alerts-cases/alerts/create-manage-rules.md': 'explore-analyze/alerting/kibana-alerting-v1/create-manage-rules-v1.md'
   'explore-analyze/alerts-cases/alerts/view-alerts.md': 'explore-analyze/alerting/kibana-alerting-v1/view-alerts-v1.md'
+  'explore-analyze/alerts-cases/alerts/query-alerts.md': 'explore-analyze/alerting/kibana-alerting-v1/query-alerts-v1.md'
   'explore-analyze/alerts-cases/alerts/rule-types.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-types-v1.md'
   'explore-analyze/alerts-cases/alerts/rule-type-index-threshold.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-type-index-threshold-v1.md'
   'explore-analyze/alerts-cases/alerts/rule-type-es-query.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-type-es-query-v1.md'
@@ -787,6 +788,7 @@ redirects:
   'explore-analyze/alerting/alerts/alerting-setup.md': 'explore-analyze/alerting/kibana-alerting-v1/alerting-setup-v1.md'
   'explore-analyze/alerting/alerts/create-manage-rules.md': 'explore-analyze/alerting/kibana-alerting-v1/create-manage-rules-v1.md'
   'explore-analyze/alerting/alerts/view-alerts.md': 'explore-analyze/alerting/kibana-alerting-v1/view-alerts-v1.md'
+  'explore-analyze/alerting/alerts/query-alerts.md': 'explore-analyze/alerting/kibana-alerting-v1/query-alerts-v1.md'
   'explore-analyze/alerting/alerts/rule-types.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-types-v1.md'
   'explore-analyze/alerting/alerts/rule-type-index-threshold.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-type-index-threshold-v1.md'
   'explore-analyze/alerting/alerts/rule-type-es-query.md': 'explore-analyze/alerting/kibana-alerting-v1/rule-type-es-query-v1.md'
