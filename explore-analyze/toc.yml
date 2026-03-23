@@ -1,6 +1,7 @@
 project: 'Explore and analyze'
 toc:
   - file: index.md
+  - file: kibana-data-exploration-learning-tutorial.md
   - file: query-filter.md
     children:
       - file: query-filter/languages.md
@@ -231,6 +232,7 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
       - file: ai-features/manage-access-to-ai-assistant.md
+      - file: ai-features/agent-skills.md
       - file: ai-features/llm-guides/llm-connectors.md
         children:
           - file: ai-features/llm-guides/connect-to-azure-openai.md
@@ -365,6 +367,7 @@ toc:
           - file: alerting/alerts/alerting-setup.md
           - file: alerting/alerts/create-manage-rules.md
           - file: alerting/alerts/view-alerts.md
+          - file: alerting/alerts/query-alerts.md
           - file: alerting/alerts/rule-types.md
             children:
               - file: alerting/alerts/rule-type-index-threshold.md
