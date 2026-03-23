@@ -118,6 +118,6 @@ When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled, a panel dis
 
 Panels with this badge are not affected by changes to the {{cps-init}} scope selector or the dashboard-level {{cps}} scope. This applies to **Lens**, **Discover** saved searches, **Vega**, and **Maps** panels.
 
-Click the badge to view the scope details, or click **Edit** in the popover to change the panel's query.
+Select the badge to view the scope details, or select **Edit** in the popover to change the panel's query.
 
 

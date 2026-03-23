@@ -253,7 +253,7 @@ Some dashboards are configured to restore a specific {{cps}} scope each time the
 
 Some panels query a fixed set of projects regardless of the {{cps-init}} scope selector. This happens when the panel's creator used [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in the panel's query. These panels display a **Custom CPS scope** badge and are not affected when you change the dashboard's scope.
 
-Click the badge to view which projects the panel queries.
+Select the badge to view which projects the panel queries.
 
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]
