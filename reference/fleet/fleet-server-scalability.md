@@ -27,7 +27,7 @@ deployment:
 First modify your {{fleet}} deployment settings in {{ecloud}}:
 
 1. Log in to {{ecloud}} and find your deployment.
-2. Select **Manage**, then under the deployment's name in the navigation menu, click **Edit**.
+2. Select **Manage**, then in the navigation menu, click **Edit**.
 3. Under {{integrations-server}}:
 
     * Modify the compute resources available to the server to accommodate a higher scale of {{agent}}s

@@ -9,15 +9,17 @@ navigation_title: "Cross-project search"
 
 # Configure {{cps}} [configure-cross-project-search]
 
-With {{cps}} ({{cps-init}}), users in your organization can search across multiple {{serverless-full}} projects at once, instead of searching each project individually. When your data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all the data from a single place.
+With {{cps}} ({{cps-init}}), users in your organization can search across multiple {{serverless-full}} projects at once, instead of searching each project individually. When your data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all the data from a single place. 
+
+{{cps-cap}} is the {{serverless-short}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md), without requiring an understanding of deployment architecture. Permissions stay consistent across projects, and you can always adjust scope and access as needed.
 
 This section explains how to set up and manage {{cps}} for your organization, including linking projects, managing user access, and refining scope.
 
-* [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
-* [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): manage user access across linked projects and configure the default {{cps}} scope per space.
-* [Impacts and limitations](/deploy-manage/cross-project-search-config/cps-config-impacts-and-limitations.md): understand how {{cps}} affects alerting, dashboards, and other features, and review current limitations.
+* [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
+* [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects and configure the default {{cps}} scope per space.
+* [Impacts and limitations](/deploy-manage/cross-project-search-config/cps-config-impacts-and-limitations.md): Understand how {{cps}} affects alerting, dashboards, and other features, and review current limitations.
 
-For end-user search workflows, syntax, and examples, refer to [](/explore-analyze/cross-project-search.md) in **Explore and analyze**.
+These topics cover {{CPS}} configuration and management. For information on _using_ {{cps}}, including syntax and examples, refer to [](/explore-analyze/cross-project-search.md) in **Explore and analyze**.
 
 :::{note}
 {{cps-cap}} is available for {{serverless-full}} projects only. For other deployment types, refer to [{{ccs}}](/explore-analyze/cross-cluster-search.md).
@@ -73,7 +75,7 @@ For most deployments, we recommend creating a dedicated **overview project** tha
 
 In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches and dashboards from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other. 
 
-TODO add diagram
+![Overview project architecture for cross-project search](images/serverless-cross-project-search-arch.svg)
 
 The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup (for example, isolated projects stay isolated).
 

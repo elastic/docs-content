@@ -158,23 +158,12 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form lists indices from linked projects based on the current [{{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-search-scope). This applies when you create a {{data-source}} from within a {{cps}}-enabled app such as Discover, Dashboards, Lens, or Maps. The index list updates automatically when you change the {{cps}} scope.
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form previews matching indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). The {{data-source}} itself does not store the scope. When you query the {{data-source}}, results come from whichever linked projects the active {{cps}} scope includes at that time.
 
-An index pattern like `logs-*` matches indices across the origin project and all linked projects in scope.
+To restrict a {{data-source}} to specific projects regardless of the active scope, you can:
 
-:::{note}
-When you create a {{data-source}} from **Stack Management > Data Views**, the {{cps}} scope selector is not available and only indices from the current project are listed.
-:::
-
-To restrict a {{data-source}} to specific projects, you can:
-
-* **Adjust the {{cps}} scope** in the {{cps-init}} scope selector before creating the {{data-source}}.
 * **Use [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)** in the index pattern to target specific projects, for example `project_alpha:logs-*,project_beta:logs-*`. To search only the origin project, use `_origin:logs-*`.
 * **Use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)** in your queries to narrow scope at query time.
-
-   :::{note}
-   {{ml-cap}} rules don't support {{cps}}. {{ml-cap}} rules search data in the origin project only.
-   :::
 
 
 ## Delete a {{data-source}} [delete-data-view]

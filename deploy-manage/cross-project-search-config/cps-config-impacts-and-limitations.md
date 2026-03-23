@@ -9,7 +9,9 @@ navigation_title: "Impacts and limitations"
 
 # {{cps-cap}} impacts and limitations [cps-impacts-and-limitations]
 
-This page explains how setting up {{cps}} affects features in the origin project, and lists overall limitations of {{cps}}.
+This page explains how setting up {{cps}} ({{cps-init}}) affects features in the origin project, and lists overall limitations of {{cps-init}}.
+
+For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cross-project-search-config.md). For information about _using_ {{cps-init}}, refer to [](/explore-analyze/cross-project-search.md).
 
 ## Feature impacts [cps-feature-impacts]
 
@@ -22,7 +24,7 @@ This page explains how setting up {{cps}} affects features in the origin project
 
 - **Dashboards and visualizations:** Existing dashboards and visualizations in the origin project will query all linked projects by default. To control this, set the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual dashboard panels.
 
-- **User permissions:** {{cps}} results are filtered by each user's role assignments across projects. Users with different roles will see different results from the same query. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access).
+- **User permissions:** {{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles will see different results from the same query. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access).
 
 ## Limitations [cps-limitations]
 

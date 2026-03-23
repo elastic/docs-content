@@ -16,6 +16,10 @@ description: Filter, triage, and take actions on detection alerts from the Alert
 
 The Alerts page is your central hub for triaging and investigating detection alerts. Filter alerts to focus on what matters, change statuses to track progress, and take actions to investigate or respond.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/alert-triage
+:::
+
 :::{image} /solutions/images/security-alert-page.png
 :alt: Alerts page overview
 :screenshot:

@@ -26,6 +26,10 @@ You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rul
 
 For more information on alerting concepts and the types of rules and connectors available, go to [Alerting](../alerts.md).
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-alerting-rules
+:::
+
 ## Required permissions [_required_permissions]
 
 Access to rules is granted based on your {{alert-features}} privileges. For more information, go to [Security](alerting-setup.md#alerting-security).
