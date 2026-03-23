@@ -21,16 +21,11 @@ This reference architecture illustrates a production-grade, highly available Gen
 
 The GenAI search – high availability architecture is intended for organizations that:
 
-- Require high-performance, low-latency information retrieval across large and diverse datasets, supporting {{nlp}} workloads and returning highly relevant results at scale.
-- Need lexical, vector, semantic, temporal, or hybrid search. 
-- Need multimodal retrieval, including text, code, images, video, and geospatial data.  
-- Employ generative AI applications such as assistants, agents, and agentic workflows using Retrieval Augmented Generation (RAG) and/or the Model Context Protocol (MCP), where grounding generative models in the most relevant documents is essential. 
-- Integrate with foundation models (such as Azure OpenAI, Anthropic, and Amazon Bedrock) and apply re-ranking techniques to optimize relevance.
-- Depend on advanced search features such as faceting, filtering, highlighting, personalization, and metadata-aware retrieval.  
-- Operate in secure or multi-tenant environments where document and field level security and tenant-aware index design ensure compliance without sacrificing performance.  
-- Use {{es}} as a short- and long-term memory system for LLM agents, enabling session recall, personalization, and optimized token usage through techniques like time-decayed scoring or `constant_keyword` partitioning.  
-- Power observability copilots and SOC assistants that summarize alerts, logs, and metrics in plain language, correlate across incidents, and accelerate root cause analysis with semantically grounded responses.
-- Integrate with common large language model (LLM) development frameworks, including LlamaIndex, LangChain, and LangSmith.
+- Require high-performance, low-latency retrieval across large, diverse datasets with highly relevant results at scale.
+- Need lexical, vector, semantic, temporal, hybrid, or multimodal search across text, code, images, video, and geospatial content.
+- Power assistants, agents, and agentic workflows using RAG and MCP, where grounding models in the most relevant information is essential. RAG in Elastic is explicitly built around retrieving relevant context, and MCP is an open standard for connecting AI applications to external data and tools.
+- Integrate with foundation models and LLM frameworks, while improving relevance with re-ranking, filtering, faceting, highlighting, personalization, and metadata-aware retrieval.
+- Support secure multi-tenant deployments, agent memory, and domain copilots such as observability and SOC assistants.
 
 ## Vector search optimization
 
