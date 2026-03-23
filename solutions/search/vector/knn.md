@@ -434,86 +434,19 @@ Looking for a minimal configuration approach? The `semantic_text` field type abs
 
 kNN search enables you to perform semantic search by using a previously deployed [text embedding model](../../../explore-analyze/machine-learning/nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding). Instead of literal matching on search terms, semantic search retrieves results based on the intent and the contextual meaning of a search query.
 
-Under the hood, the text embedding NLP model converts your input query string (provided as `model_text`) into a dense vector. The query vector is compared against an index containing dense vectors created with the same text embedding {{ml}} model. The search results are semantically similar as learned by the model.
-
-::::{important}
-To perform semantic search:
-
-* You need an index that contains dense vector representations of the input data to search against.
-* You must use the same text embedding model for search that you used to create the document vectors.
-* The text embedding NLP model deployment must be started.
-::::
-
-Reference the deployed text embedding model or the model deployment in the `query_vector_builder` object, and provide the search string as `model_text`:
-
-```js
-(...)
-{
-  "knn": {
-    "field": "dense-vector-field",
-    "k": 10,
-    "num_candidates": 100,
-    "query_vector_builder": {
-      "text_embedding": { <1>
-        "model_id": "my-text-embedding-model", <2>
-        "model_text": "The opposite of blue" <3>
-      }
-    }
-  }
-}
-(...)
-```
-
-1. The task to perform. In this case, it is `text_embedding`.
-2. The ID of the text embedding model used to generate the query’s dense vector. Use the same model that produced the document embeddings in the target index. You can also provide the `deployment_id` as the `model_id` value.
-3. The query string from which the model generates the dense vector representation.
+To perform semantic search, use the `query_vector_builder` object with the `text_embedding` builder to generate a query vector at search time from a deployed ML model. For multimodal inputs (text and images), use the `embedding` builder with an inference service. For details, examples, and all available options, refer to [Query vector builders](query-vector-builders.md).
 
 For more information on how to deploy a trained model and use it to create text embeddings, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
 
-For all available query vector builders, including the new [`embedding`](query-vector-builders.md#embedding-query-vector-builder) builder for multimodal inputs and the [`lookup`](query-vector-builders.md#lookup-query-vector-builder) builder for retrieving stored vectors, refer to [Query vector builders](query-vector-builders.md).
+### Use a query vector builder [knn-query-vector-builders]
 
-### Use `lookup` to build the query vector [knn-query-vector-lookup]
-```{applies_to}
-stack: ga 9.4
-```
+Instead of providing a pre-computed `query_vector`, you can use a `query_vector_builder` to generate the query vector at search time. {{es}} supports three query vector builders:
 
-If your query vector already exists in Elasticsearch, use the `lookup` query vector builder to fetch that vector directly from a document at search time.
+- `text_embedding` — generates a vector from text using a deployed {{es}} ML model
+- `embedding` — generates a vector from text or images using an inference service {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+- `lookup` — retrieves a vector stored in an existing {{es}} document {applies_to}`stack: ga 9.4`
 
-Use `lookup` when you want to:
-
-- Find similar items for recommendations
-- Retrieve related content from a seed document
-- Avoid an extra client round-trip to fetch a vector before searching
-
-The lookup source must reference a `dense_vector` field that contains a single vector value. As with any kNN search, the looked-up vector must be compatible with the target kNN field (same dimensions and same embedding model semantics).
-
-```js
-(...)
-{
-  "knn": {
-    "field": "product-vector",
-    "k": 10,
-    "num_candidates": 100,
-    "query_vector_builder": {
-      "lookup": { <1>
-        "id": "product-123", <2>
-        "index": "seed-products", <3>
-        "path": "product-vector", <4>
-        "routing": "tenant-a" <5>
-      }
-    }
-  }
-}
-(...)
-```
-
-1. Use the `lookup` query vector builder to retrieve the vector from an existing document.
-2. The ID of the source document that contains the vector to use for search.
-3. The name of the index that stores the source document.
-4. The vector field path in the source document. It must reference a `dense_vector` field containing a single vector value.
-5. Optional routing value used to retrieve the source document.
-
-For full reference documentation on all query vector builders, see [Query vector builders](query-vector-builders.md).
+For full reference documentation, parameters, and examples for each builder, refer to [Query vector builders](query-vector-builders.md).
 
 ### Search multiple kNN fields [_search_multiple_knn_fields]
 
