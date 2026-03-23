@@ -17,7 +17,7 @@ Behind the scenes, {{es}} divides each index into _shards_ and distributes them 
 
 To store a document, you add it to a specific index. To search, you target one or more indices. {{es}} searches all data within them and returns any matching documents. You can target your data by index name, through an [alias](/manage-data/data-store/aliases.md) that points to one or more indices, or through a [data stream](/manage-data/data-store/data-streams.md) that routes requests to the appropriate backing indices. You interact with a data stream as a single named resource; it serves as a logical layer that organizes the multiple backing indices where your data is physically stored.
 
-This page explains the core parts of an index (_documents_, _metadata fields_, and _mappings_), describes how {{es}} physically stores index data using _shards_, and highlights common design decisions.
+This page explains the core parts of an index (_documents_, _mappings_, and _settings_), describes how {{es}} physically stores index data using _shards_, and highlights common design decisions.
 
 :::{note}
 :applies_to: {"serverless": "ga"}
@@ -116,7 +116,7 @@ To learn how {{es}} coordinates reads and writes across primary and replica shar
 
 ## Common index design decisions
 
-Setting up your {{es}} indices involves making some design decisions about the index components: Mappings control how the index fields are created for different data types, templates standardize the configuration of settings across indices, aliases decouple queries from the index names, and lifecycle policies automate how the data is stored over time.
+Setting up your {{es}} indices involves making some design decisions about the index components: mappings control how the index fields are created for different data types, templates standardize the configuration of settings across indices, aliases decouple queries from the index names, and lifecycle policies automate how the data is stored over time.
 
 When working with indices, you typically make decisions that focus on:
 
@@ -124,6 +124,8 @@ When working with indices, you typically make decisions that focus on:
 * **Mapping strategy**: Use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping/explicit-mapping.md) for production use cases. Choosing the right [field type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) upfront matters because it controls what queries and aggregations are available, and [changing a field type later requires reindexing](/manage-data/data-store/mapping/update-mappings-examples.md).
 * **Index or data stream**: Use a regular index when you need frequent updates or deletes. For append-only, time series data such as logs, events, and metrics, use a [data stream](/manage-data/data-store/data-streams.md) instead, since data streams manage rolling indices automatically.
 * **Shard sizing**: For production workloads, the number and size of shards affect query speed and cluster stability. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for guidelines.
+* **Data lifecycle**: Decide how long to keep data, when to move it to cheaper tiers, and when to delete it. Refer to [Data lifecycle](/manage-data/lifecycle.md) for more information.
+
 
 ## Next steps
 

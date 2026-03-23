@@ -34,7 +34,7 @@ Both use the same foundational concepts such as documents, mappings, templates, 
 
 ## Configure how data is stored
 
-How you structure and manage your indices affects query performance, storage efficiency, and how easily your cluster scales. {{es}} provides tools to control field mappings, standardize index configurations, simplify and automate access logic, and manage data retention over time:
+How your indices are structured and managed affects query performance, storage efficiency, and how easily your cluster scales. {{es}} provides tools to control document field types, manage unstructured text, standardize index configurations, and to simplify and automate access logic:
 
 * [](/manage-data/data-store/mapping.md): Define how documents and their fields are stored and indexed. Choose between dynamic mapping for automatic field detection and explicit mapping for full control over field types and indexing behavior.
 * [](/manage-data/data-store/text-analysis.md): Configure how unstructured text is converted into a structured format optimized for full-text search, including tokenization, normalization, and custom analyzers.
@@ -50,7 +50,7 @@ Work with your indices and data using the {{kib}} UI or the {{es}} REST API.
 
 ## What's next
 
-Once your data is stored, you can:
+After you configure how your data is stored, you can:
 
 * [Ingest](/manage-data/ingest.md): Set up production ingestion workflows using pipelines, agents, and Logstash.
 * [Query and filter your data](/explore-analyze/query-filter.md): Search, filter, and aggregate your data using full-text queries, ES|QL, and more.
