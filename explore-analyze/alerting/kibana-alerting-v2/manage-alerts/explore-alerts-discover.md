@@ -5,92 +5,108 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Query Kibana alerting v2 alert events in Discover using ES|QL for trend analysis, operational reporting, and ad hoc investigation."
+description: "Query Kibana alerting v2 alert events in Discover with ES|QL for trend analysis, operational reporting, and on-demand investigation."
 ---
 
-# Explore Kibana alerting v2 alerts and signals in Discover [explore-alerts-discover-v2]
+# Explore {{kib}} alerting v2 alerts and signals in Discover [explore-alerts-discover-v2]
 
-Because Kibana alerting v2 alert events are stored as queryable data in standard {{es}} indices, you can explore them in Discover using ES|QL.
+**What this page is for:** {{kib}} alerting v2 stores rule output in **`.rule-events`** and user or system actions in **`.alert-actions`**. Both are ordinary {{es}} data you query with **{{esql}}** in **Discover**. **When you land here**, use the examples to **investigate** what rules produced (recent rows, status mix, hourly volume), **drill into** one rule or one alert series, **track** breach trends over days, and **support operational metrics** such as mean time to acknowledge (MTTA) from acknowledgment rows.
+
+**How to use it:** Open Discover, choose **{{esql}}**, paste a query, then adjust time ranges and placeholders (`YOUR_RULE_ID`, `YOUR_GROUP_HASH`) to match your environment. Save views, export results, or reuse clauses in dashboards and reports.
+
+The examples below follow that workflow: they start with **broad** views of **`.rule-events`**, move to **narrow** filters (single rule, single `group_hash`), add a **daily breach trend**, then switch to **`.alert-actions`** for acknowledgment history.
 
 ## Query alert events
 
-Run ES|QL in Discover against the **`.rule-events`** data stream to analyze signal and alert documents written by rule executions.
+These queries target **`.rule-events`**: signal and alert documents from rule evaluations. Use them before the **alert actions** section when you care about rule output and episode fields, not action audit rows.
 
 ### Example: Recent alert and signal events
 
-**What it does:** Returns the most recent rows from `.rule-events`, with timestamps, rule id, breach/recovery/no-data **status**, whether the row is a **signal** or **alert**, and current **episode** state.
-
-**Why use it:** Start here for ad hoc investigation—see what your rules produced today without aggregating, so you can spot spikes, wrong rules, or unexpected episode states in raw order.
+This example shows a **non-aggregated** sample of the newest documents in **`.rule-events`**: one row per evaluation output, with core fields so you can scan what happened in roughly the **last day**. The results are capped at **100** rows so the query stays responsive in Discover.
 
 ```esql
+// ═══════════════════════════════════════════════════════════════
+// LATEST ROWS — Sample across rules (raw timeline)
+// Why: See what ran recently without aggregating; spot spikes or odd episode state
+// ═══════════════════════════════════════════════════════════════
 FROM .rule-events
-| WHERE @timestamp > NOW() - 1 day
-| KEEP @timestamp, rule.id, status, type, episode.status
+| WHERE @timestamp > NOW() - 1 day                            // Rolling last 24 hours
+| KEEP @timestamp, rule.id, status, type, episode.status       // When, rule id, status, signal or alert type, episode state
 | SORT @timestamp DESC
-| LIMIT 100
+| LIMIT 100                                                     // Cap rows for a quick scan
 ```
 
 ### Example: Event counts by status
 
-**What it does:** Counts how many events fall into each **status** value (`breached`, `recovered`, `no_data`, and so on) over the last seven days.
-
-**Why use it:** Understand the mix of breach vs recovery vs no-data at a glance—useful for health checks, reporting, and seeing whether no-data dominates (query or data-source issues).
+This example **aggregates** all events from the **last seven days** and counts how many documents fall into each **`status`** value (for example `breached`, `recovered`, or `no_data`). Use it to see whether the stream is mostly healthy transitions or dominated by a single status.
 
 ```esql
+// ═══════════════════════════════════════════════════════════════
+// STATUS MIX — How many events per status over the week
+// Why: Health check; see if no_data dominates (data or query issues)
+// ═══════════════════════════════════════════════════════════════
 FROM .rule-events
 | WHERE @timestamp > NOW() - 7 days
-| STATS event_count = COUNT(*) BY status
+| STATS event_count = COUNT(*) BY status                        // One bucket per status value
 | SORT event_count DESC
 ```
 
 ### Example: Hourly event volume
 
-**What it does:** Buckets events by hour with `DATE_TRUNC` and counts events per hour for the last 24 hours.
-
-**Why use it:** Spot time-of-day patterns, rule schedule effects, or incident windows—compare quiet hours vs bursts without picking a single rule yet.
+This example buckets events by **clock hour** over the **last 24 hours** using `DATE_TRUNC` and counts events per hour. It highlights **when** volume rises or falls, which helps correlate activity with rule schedules, deployments, or incidents.
 
 ```esql
+// ═══════════════════════════════════════════════════════════════
+// THROUGHPUT — Event counts per clock hour
+// Why: Compare quiet versus busy windows; correlate with schedules or incidents
+// ═══════════════════════════════════════════════════════════════
 FROM .rule-events
 | WHERE @timestamp > NOW() - 24 hours
-| STATS c = COUNT(*) BY hour = DATE_TRUNC(1 hour, @timestamp)
+| STATS c = COUNT(*) BY hour = DATE_TRUNC(1 hour, @timestamp)  // Bucket by hour
 | SORT hour ASC
 ```
 
 ### Example: Events for a specific rule
 
-**What it does:** Filters to one **rule id**, keeps time, **group_hash**, status, type, and the **data** payload from your ES|QL rule output.
-
-**Why use it:** Drill into a single rule you care about—validate field shapes in `data`, follow one rule’s volume, or share a reproducible slice with another engineer (replace `YOUR_RULE_ID` with the real id).
+This example filters **`.rule-events`** to a **single rule** by **`rule.id`**. Replace **`YOUR_RULE_ID`** with the id from the rule’s details or API. It keeps **`data`**, which holds the fields your {{esql}} rule selected—useful for validating field names and shapes. The window is **seven days**.
 
 ```esql
+// ═══════════════════════════════════════════════════════════════
+// SINGLE RULE — All events for one rule id (replace YOUR_RULE_ID)
+// Why: Validate the data field payload; isolate volume for one definition
+// ═══════════════════════════════════════════════════════════════
 FROM .rule-events
-| WHERE rule.id == "YOUR_RULE_ID"
+| WHERE rule.id == "YOUR_RULE_ID"                              // Narrow to one rule
   AND @timestamp > NOW() - 7 days
-| KEEP @timestamp, group_hash, status, type, data
+| KEEP @timestamp, group_hash, status, type, data              // Series key and query output fields
 | SORT @timestamp DESC
 ```
 
 ### Example: Group hash series for an episode
 
-**What it does:** Selects all events for one **group_hash** (one alert series) and keeps time, status, and **episode** identifiers and state, sorted oldest to newest.
-
-**Why use it:** Reconstruct the timeline for a single series—how an episode opened, changed state, and recovered—using the same key the executor uses for grouping.
+This example follows **one alert series** (`group_hash`) over **seven days**, sorted **oldest to newest**, so you can read the timeline for that series. Replace **`YOUR_GROUP_HASH`** with the value from an event or the rule details. **Episode** fields show how state changed across evaluations.
 
 ```esql
+// ═══════════════════════════════════════════════════════════════
+// ONE SERIES — Timeline for a single group_hash (replace YOUR_GROUP_HASH)
+// Why: Replay how an episode progressed (same key the executor uses to group)
+// ═══════════════════════════════════════════════════════════════
 FROM .rule-events
 | WHERE group_hash == "YOUR_GROUP_HASH"
   AND @timestamp > NOW() - 7 days
-| KEEP @timestamp, status, episode.id, episode.status
+| KEEP @timestamp, status, episode.id, episode.status          // Chronological episode story
 | SORT @timestamp ASC
 ```
 
 ### Example: Breached rows trend
 
-**What it does:** Counts only rows where **status** is `breached`, aggregated by calendar day for the last week.
-
-**Why use it:** Track whether breach volume is trending up or down day over day—useful for capacity, noisy rules, or validating a change after a deployment.
+This example counts only rows where **`status`** is **`breached`** (the condition was met for that evaluation), then totals **breaches per calendar day** for the **last week**. It is suited to **trend** questions (getting louder or quieter over days), not to total signal volume.
 
 ```esql
+// ═══════════════════════════════════════════════════════════════
+// BREACH TREND — Daily breach counts (condition met rows only)
+// Why: Day-over-day trend; noisy rules; validate a change after deploy
+// ═══════════════════════════════════════════════════════════════
 FROM .rule-events
 | WHERE status == "breached" AND @timestamp > NOW() - 7 days
 | STATS breaches = COUNT(*) BY day = DATE_TRUNC(1 day, @timestamp)
@@ -99,15 +115,17 @@ FROM .rule-events
 
 ## Query alert actions (for example, MTTA)
 
-Operational metrics such as **mean time to acknowledge (MTTA)** use action documents in **`.alert-actions`**.
+Earlier on this page, the **`.rule-events`** examples covered **what the rule wrote**; this section covers **what people did** to alerts. Operational metrics such as **mean time to acknowledge (MTTA)** build on action documents in **`.alert-actions`** (for example acknowledgments), often combined with episode or `fire` timestamps in a separate step.
 
 ### Example: Acknowledgment events for MTTA-style analysis
 
-**What it does:** Reads **`.alert-actions`** and returns rows where **action.type** is `acknowledge`, with time, episode, and rule identifiers.
-
-**Why use it:** Acknowledgments are the usual anchor for MTTA-style metrics; from here you can join or compare against `fire` actions or episode start times in your own aggregations to match your org’s definition of “time to acknowledge.”
+This example reads **`.alert-actions`** (not **`.rule-events`**) and returns rows where **`action.type`** is **`acknowledge`**, limited to **30 days** of history. It is a typical **starting point** for MTTA: you still need timestamps for “start” (for example first `fire` or episode start) and your own definition of acknowledge time, which may require a second query or aggregation.
 
 ```esql
+// ═══════════════════════════════════════════════════════════════
+// ACKNOWLEDGMENTS — Rows users acknowledged (MTTA anchor)
+// Why: Pair with fire or episode start in a follow-up query for your organization's MTTA definition
+// ═══════════════════════════════════════════════════════════════
 FROM .alert-actions
 | WHERE action.type == "acknowledge"
   AND @timestamp > NOW() - 30 days

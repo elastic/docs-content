@@ -5,9 +5,23 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "View, filter, and manage Kibana alerting v2 rules from the rules list."
+description: "Navigate Kibana alerting v2 rule management: rules list and details, bulk actions, snooze, and disabling rules."
 ---
 
-# Manage Kibana alerting v2 rules [manage-rules-v2]
+# Manage {{kib}} alerting v2 rules [manage-rules-v2]
 
-View, filter, and manage your Kibana alerting v2 rules from a single entry point.
+Use this section after rules exist in your space: find rules in the **Rules V2** list, open a rule to inspect configuration and execution history, run bulk operations, and change whether rules run or notify. **Managing rules** is separate from **authoring** definitions—refer to [Author rules](author-rules.md) to create or edit the {{esql}} query, schedule, and mode.
+
+**Where to work in {{kib}}:** **Management** → **Alerts and Insights** → **Rules V2**.
+
+## In this section
+
+| Page | Use it to |
+|---|---|
+| [View and manage rules](manage-rules/view-manage-rules.md) | Use the rules list (columns, filters, search, bulk enable, disable, delete) and open **rule details** for a single rule. |
+| [Snooze and disable rules](manage-rules/snooze-disable-rules.md) | Temporarily suppress notifications (including per-series snooze) or **disable** a rule so it stops executing. |
+
+## Related
+
+- [Author rules](author-rules.md) — Create rules, set detect or alert mode, and edit query and schedule.
+- [Manage alerts](manage-alerts.md) — Triage and respond to alerts produced by rules.

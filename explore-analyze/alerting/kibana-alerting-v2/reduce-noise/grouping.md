@@ -5,9 +5,9 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Batch related Kibana alerting v2 alerts into fewer notifications using notification policy grouping by host, service, or custom fields."
+description: "Batch related Kibana alerting v2 alert episodes into fewer notifications using notification policy grouping by host, service, or custom fields."
 ---
 
-# Kibana alerting v2 notification grouping [reduce-noise-grouping-v2]
+# {{kib}} alerting v2 notification grouping [reduce-noise-grouping-v2]
 
-Notification policy grouping batches related alerts into a single notification, reducing the number of messages sent without losing context.
+**Notification grouping** on a notification policy batches related **alert episodes** into fewer messages, reducing notification count without dropping evaluation results.

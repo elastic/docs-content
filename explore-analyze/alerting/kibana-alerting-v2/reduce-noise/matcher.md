@@ -5,9 +5,9 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Route only matching Kibana alerting v2 alerts to notification destinations using KQL matcher conditions on notification policies."
+description: "Route only matching Kibana alerting v2 alert episodes to notification destinations using KQL matcher conditions on notification policies."
 ---
 
-# Kibana alerting v2 notification matchers [matcher-v2]
+# {{kib}} alerting v2 notification matchers [matcher-v2]
 
-Notification policy matchers are KQL expressions that determine which alerts a policy applies to. Only alerts matching the condition are routed to the policy's workflow destinations.
+**Notification policy matchers** are KQL expressions that determine which **alert episodes** a policy applies to. Only **episodes** that match the condition (after **rule_labels** scoping) are routed to the policy's workflow destinations.
