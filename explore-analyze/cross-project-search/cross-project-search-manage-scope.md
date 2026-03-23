@@ -68,6 +68,7 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | **{{ml-app}} Data Visualizer** | Not available | ES\|QL |
 | **Streams** | Not available | ES\|QL |
 | **Agent Builder** | Not available | ES\|QL |
+| **Timeline, the alerts flyout, and related threat hunting workflows** | Not available | TBD |
 
 The header's {{cps-init}} scope selector is not available in other apps, including Transforms, Canvas, and object listing pages.
 
