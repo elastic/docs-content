@@ -21,7 +21,7 @@ For details on how search, tags, and project routing work in {{cps-init}}, refer
 * [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md): Learn how search expressions, search options, and index resolution work.
 * [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md): Learn about predefined and custom project tags and how to use them in queries.
 * [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): Learn how to route searches to specific projects based on tag values.
-
+* [Manage {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): learn how to control {{cps}} scope using the scope selector, query-level overrides, and space defaults.
 
 ## {{cps-cap}} as the default behavior for linked projects
 
@@ -128,6 +128,7 @@ If you run `GET logs/_search`:
 
 * documents from the `logs` index in project 1 are returned
 * the `logs` index in project 2 is not accessible and is excluded from the results
+
 
 
 ## Supported APIs [cps-supported-apis]

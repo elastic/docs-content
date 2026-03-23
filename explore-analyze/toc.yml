@@ -188,6 +188,7 @@ toc:
       - file: cross-project-search/cross-project-search-search.md
       - file: cross-project-search/cross-project-search-tags.md
       - file: cross-project-search/cross-project-search-project-routing.md
+      - file: cross-project-search/cross-project-search-manage-scope.md
   - file: ai-features.md
     children:
       - file: ai-features/elastic-agent-builder.md
