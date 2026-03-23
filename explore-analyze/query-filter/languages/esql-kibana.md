@@ -237,6 +237,29 @@ From the **Recent** tab, you can star any queries you want.
 In the **Starred** tab, find all the queries you have previously starred.
 
 
+## Search across projects with `SET project_routing` [esql-kibana-cps]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can add [`SET project_routing`](elasticsearch://reference/query-languages/esql/commands/set) at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
+
+```esql
+SET project_routing = "_alias:my_other_project";
+FROM logs-*
+| WHERE log.level == "error"
+| STATS count = COUNT(*) BY service.name
+```
+
+The editor autocompletes two built-in values when you type `SET project_routing`:
+
+- `_alias:_origin` — Search only the current (origin) project.
+- `_alias:*` — Search all linked projects.
+
+You can use any valid [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), including tag-based and named expressions. For more details on query-level overrides, refer to [Managing {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-query-overrides).
+
+
 ## Related pages
 
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators.
