@@ -149,7 +149,21 @@ cluster_*:logstash-*,-cluster_one:*
 
 Once you configure a {{data-source}} to use the {{ccs}} syntax, all searches and aggregations using that {{data-source}} in {{kib}} take advantage of {{ccs}}.
 
-For more information, refer to [Excluding clusters or indicies from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
+For more information, refer to [Excluding clusters or indices from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
+
+
+### Use {{data-sources}} with {{cps}} [management-cross-project-search]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), the {{data-source}} creation form previews matching indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). The {{data-source}} itself does not store the scope. When you query the {{data-source}}, results come from whichever linked projects the active {{cps}} scope includes at that time.
+
+To restrict a {{data-source}} to specific projects regardless of the active scope, you can:
+
+* **Use [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)** in the index pattern to target specific projects, for example `project_alpha:logs-*,project_beta:logs-*`. To search only the origin project, use `_origin:logs-*`.
+* **Use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)** in your queries to narrow scope at query time.
 
 
 ## Delete a {{data-source}} [delete-data-view]
