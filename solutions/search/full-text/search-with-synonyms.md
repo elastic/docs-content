@@ -198,6 +198,19 @@ An index with invalid synonym rules cannot be reopened, making it inoperable whe
 * A node restart occurs (which reopens the node assigned shards)
 ::::
 
+::::{warning}
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+
+{{es}} applies a real memory circuit breaker check when building the synonyms map to prevent out-of-memory errors. The circuit breaker triggers when JVM heap memory usage exceeds 95%.
+
+When the circuit breaker is triggered, behavior depends on the filter's `lenient` parameter:
+
+* If `lenient` is `true`, an empty synonyms map is used and the event is logged in the {{es}} logs.
+* If `lenient` is `false` (the default), the affected index enters a red state.
+
+In ECH and self-managed deployments, the circuit breaker limit is configurable using the [`indices.breaker.total.limit`](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) cluster setting. In serverless, circuit breaker limits are not configurable.
+::::
+
 ## Step 3: Test your analyzer [synonyms-test-analyzer]
 
 You can test an analyzer configuration without modifying your index settings. Use the [analyze API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) to test your analyzer chain:
