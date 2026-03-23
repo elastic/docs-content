@@ -13,7 +13,7 @@ The request **Inspector** is available in **Discover** and for all **Dashboards*
       - For {{ccs}} queries, it shows the remote clusters that were searched.
       - {applies_to}`serverless: preview` {applies_to}`stack: unavailable` For [{{cps}}](/explore-analyze/cross-project-search.md) queries, it shows the [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md) that were searched, identified by their project alias.
 
-      This tab is not available for {{esql}} queries and Vega visualizations.
+      This tab is not available for Vega visualizations.
       
     * **Request**: Provides a full view of the visualization's request, which you can copy or **Open in Console** to refine, if needed.
     * **Response**: Provides a full view of the response returned by the request.
