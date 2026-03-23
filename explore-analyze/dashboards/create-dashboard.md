@@ -57,23 +57,24 @@ Before creating a dashboard, ensure you have:
        ![Change and apply dashboard settings](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt4a6e9807f1fac9f8/6750ee9cef6d5a250c229e50/dashboard-settings-8.17.0.gif "title =50%")
 
 
-6. Save the dashboard.
+6. Save the dashboard. When saving, you can configure the following options:
 
-    {applies_to}`serverless: preview` {applies_to}`stack: unavailable` In the save modal, you can turn on **Store CPS scope with dashboard** to save the current [{{cps}} scope](#dashboard-store-cps-scope) with the dashboard.
-
-    {applies_to}`serverless:` {applies_to}`stack: ga 9.3+` When you save the dashboard for the first time, you can manage dashboard permissions.
+    - **Title** and **Description**: Give the dashboard a meaningful name and description so you and others can find it later.
+    - **Tags**: Add [tags](../find-and-organize/tags.md) to organize and categorize the dashboard.
+    - **Store time with dashboard**: Saves the current time filter with the dashboard.
+    - {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard**: Saves the current [{{cps}} scope](#dashboard-store-cps-scope) with the dashboard so it restores automatically when opened.
+    - {applies_to}`serverless:` {applies_to}`stack: ga 9.3+` **Permissions**: Control who can access the dashboard. You can share with one of the following permissions:
+      - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
+      - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it.
+    
+      :::{include} ../_snippets/dashboard-ownership.md
+      :::
 
     :::{image} /explore-analyze/images/save-as-new-dashboard.png
     :screenshot:
     :width: 400px
     :::
 
-    When you create a dashboard, you become its owner and control who can access it. You can share your dashboard with one of the following permissions:
-    - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
-    - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
-
-    :::{include} ../_snippets/dashboard-ownership.md
-    :::
 
 ## Store a {{cps}} scope with a dashboard [dashboard-store-cps-scope]
 ```{applies_to}
@@ -86,7 +87,7 @@ When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have
 To store a {{cps}} scope:
 
 * **From the settings flyout** (in editing mode): Turn on **Store CPS scope with dashboard**. The dashboard saves the {{cps}} scope that is currently active.
-* **From the save modal**: Turn on **Store CPS scope with dashboard**. The dashboard saves the {{cps}} scope that is currently active.
+* **When saving**: Turn on **Store CPS scope with dashboard**. The dashboard saves the {{cps}} scope that is currently active.
 
 When this option is turned off (the default), the dashboard uses whatever {{cps}} scope the viewer has set in the {{cps-init}} scope selector.
 
