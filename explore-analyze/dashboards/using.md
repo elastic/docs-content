@@ -237,6 +237,24 @@ When viewing a dashboard with read-only permissions, certain visualization panel
 3. Select **Cancel** to exit the **Configuration** flyout.
 
 
+### View data from multiple projects [dashboard-cps-scope]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled. Which projects are included depends on how the dashboard was set up by its creator.
+
+To check the current scope, look at the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. It shows whether the dashboard queries **This project** only or **All projects**. You can change this scope during your session, and all panels on the dashboard update accordingly.
+
+Some dashboards restore a specific {{cps}} scope each time you open them. You can still change the scope during your session. To learn how creators configure this, refer to [Store a {{cps}} scope with a dashboard](/explore-analyze/dashboards/create-dashboard.md#dashboard-store-cps-scope).
+
+#### Panels with a custom {{cps}} scope [dashboard-panel-cps-badge]
+
+Some panels query a fixed set of projects regardless of the {{cps-init}} scope selector. This happens when the panel's creator used [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in the panel's query. These panels display a **Custom CPS scope** badge and are not affected when you change the dashboard's scope.
+
+Click the badge to view which projects the panel queries.
+
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]
 
@@ -256,20 +274,3 @@ When sharing a dashboard with a link while a panel is in maximized view, the gen
 :::{image} /explore-analyze/images/kibana-dashboard-panel-maximized.png
 :alt: A maximized panel in a dashboard
 :::
-
-
-## {{cps-cap}} scope [dashboard-cps-scope]
-```{applies_to}
-serverless: preview
-stack: unavailable
-```
-
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can control which projects a dashboard queries by using the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. Changing the scope updates all panels on the dashboard.
-
-If a dashboard was saved with a specific {{cps}} scope, that scope is restored automatically when you open it. You can still change the scope during your session using the {{cps-init}} scope selector. For details on how dashboard creators store a {{cps}} scope, refer to [Create a dashboard](/explore-analyze/dashboards/create-dashboard.md#dashboard-store-cps-scope).
-
-### Panels with a custom {{cps}} scope [dashboard-panel-cps-badge]
-
-Some panels may use a {{cps}} scope that differs from the dashboard's scope. When that is the case, the panel displays a **Custom CPS scope** badge. These panels are not affected when you change the {{cps-init}} scope selector or the dashboard-level scope.
-
-Click the badge to view which projects the panel queries.
