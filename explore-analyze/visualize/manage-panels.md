@@ -108,16 +108,4 @@ To make changes to the panel, use the panel menu options.
         If you want to use the panel later, make sure that you save the panel to the **Visualize Library**.
 
 
-## Custom {{cps}} scope badge [panel-cps-badge]
-```{applies_to}
-serverless: preview
-stack: unavailable
-```
-
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled, a panel displays a **Custom CPS scope** badge if its query targets specific projects that differ from the dashboard's {{cps}} scope. This happens when a panel's {{esql}} query includes a [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) instruction, or when a Maps panel has layers with specific [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
-
-Panels with this badge are not affected by changes to the {{cps-init}} scope selector or the dashboard-level {{cps}} scope. This applies to **Lens**, **Discover** saved searches, **Vega**, and **Maps** panels.
-
-Select the badge to view the scope details, or select **Edit** in the popover to change the panel's query.
-
 
