@@ -23,6 +23,7 @@ The [`_search` endpoint](../../../solutions/search/querying-for-search.md) accep
 Query DSL supports a wide range of search techniques, including the following:
 
 * [**Full-text search**](/solutions/search/full-text.md): Search text that has been analyzed and indexed to support phrase or proximity queries, fuzzy matches, and more.
+  * Use the [intervals query](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) to search for terms based on their order and proximity. Refer to [Use the intervals query](/solutions/search/full-text/intervals-query-tutorial.md) for a hands-on example.
 * [**Keyword search**](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md): Search for exact matches using `keyword` fields.
 * [**Semantic search**](/solutions/search/semantic-search/semantic-search-semantic-text.md): Search `semantic_text` fields using dense or sparse vector search on embeddings generated in your {{es}} cluster.
 * [**Vector search**](/solutions/search/vector/knn.md): Search for similar dense vectors using the kNN algorithm for embeddings generated outside of {{es}}.
