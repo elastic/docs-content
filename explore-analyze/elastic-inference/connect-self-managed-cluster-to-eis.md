@@ -93,7 +93,7 @@ PUT /semantic-search-eis
 }
 ```
 
-1. Because you already enabled EIS, the `semantic_text` field type uses EIS through the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-and-preconfigured-endpoints).
+1. Because you already enabled EIS, the `semantic_text` field type uses EIS through the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints).
 
 ::::::
 

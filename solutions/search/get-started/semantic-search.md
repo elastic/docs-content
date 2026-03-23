@@ -33,7 +33,7 @@ When you create vectors (or _vectorize_ your data), you convert complex and nuan
 You can choose from many different vector embedding models. Some are extremely hardware efficient and can be run with less computational power. Others have a greater understanding of the context, can answer questions, and lead a threaded conversation.
 
 :::{note}
-The examples in this guide use the default models for `semantic_text`, which varies by deployment type and version.
+The examples in this guide use the [default models](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) for `semantic_text`, which varies by deployment type and version.
 :::
 
 The way that you store vectors has a significant impact on the performance and accuracy of search results.
@@ -75,10 +75,10 @@ PUT /semantic-index/_mapping
 }
 ```
 
-1. Because the `inference_id` parameter is not specified, the default {{infer}} endpoint is used.
+1. Because the `inference_id` parameter is not specified, the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used.
 
 ::::{important}
-Relying on the default {{infer}} endpoint is convenient for getting started, but for production environments, we recommend explicitly specifying the `inference_id`. The default endpoint can change across versions and deployment types, which can lead to indices with mixed embedding models and cause ranking issues in multi-index searches. For details, refer to [Potential issues when mixing embedding models across indices](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md).
+Relying on the default {{infer}} endpoint is convenient for getting started, but for production environments, we recommend explicitly specifying the `inference_id`. The default endpoint can change across versions and deployment types, which can lead to indices with mixed embedding models and cause ranking issues in multi-index searches. For details, refer to [Potential issues when mixing embedding models across indices](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoint-considerations).
 ::::
 
 For a deeper dive into different vector types, refer to [Mapping embeddings to Elasticsearch field types: semantic_text, dense_vector, sparse_vector](https://www.elastic.co/search-labs/blog/mapping-embeddings-to-elasticsearch-field-types).
