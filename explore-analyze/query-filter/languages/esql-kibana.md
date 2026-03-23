@@ -243,9 +243,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can use the `SET project_routing` command in your {{esql}} queries to control which projects a query targets. This lets you override the [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) set in the {{cps-init}} scope selector for a specific query.
-
-Add `SET project_routing` at the beginning of your query, before the source command:
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md), you can add `SET project_routing` at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
 
 ```esql
 SET project_routing = "_alias:my_other_project";
@@ -257,13 +255,9 @@ FROM logs-*
 The editor autocompletes two built-in values when you type `SET project_routing`:
 
 - `_alias:_origin` — Search only the current (origin) project.
-- `_alias:*` — Search all [linked projects](/explore-analyze/cross-project-search/cross-project-search-link-projects.md).
+- `_alias:*` — Search all linked projects.
 
-You can also use any valid [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), including tag-based expressions and [named project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md#named-project-routing-expressions) prefixed with `@`.
-
-:::{note}
-When you use `SET project_routing` in a visualization panel (for example, in a Lens or Discover panel on a dashboard), the panel displays a **Custom CPS scope** badge to indicate that it uses a different scope than the dashboard or the {{cps-init}} scope selector. Refer to [{{cps-cap}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) for details.
-:::
+You can use any valid [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), including tag-based and named expressions. For more details on query-level overrides, refer to [Managing {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-query-overrides).
 
 
 ## Related pages
