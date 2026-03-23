@@ -237,7 +237,7 @@ From the **Recent** tab, you can star any queries you want.
 In the **Starred** tab, find all the queries you have previously starred.
 
 
-## Search across linked projects with `SET project_routing` [esql-kibana-cps]
+## Search across projects with `SET project_routing` [esql-kibana-cps]
 ```{applies_to}
 serverless: preview
 stack: unavailable
