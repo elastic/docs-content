@@ -47,14 +47,14 @@ When viewing step output in the executions panel, click the **Copy** icon next t
 
 ## Test runs and production runs [workflows-test-vs-production-runs]
 
-Every workflow execution is either a **test run** or a **production run**. Understanding the difference helps you iterate safely during development without affecting real processes.
+Every workflow execution is either a test run or a production run. Understanding the difference helps you iterate safely during development without affecting real processes.
 
 | | Test run {icon}`flask` | Production run {icon}`play` |
 |---|---|---|
 | **Purpose** | Try out a workflow or individual step while authoring | Run an enabled workflow for real |
 | **How to start** | Click **Run** {icon}`play` in the workflow editor. | Click **Run** from the workflow list, or let a configured trigger fire. |
 | **Scope** | Entire workflow or a single step | Entire workflow |
-| **Execution history** | Saved with a flask ({icon}`flask`) badge so you can filter for test runs. Step-level test runs are not saved in history. | Saved without a badge. Filter the executions list by **production** to see only these runs. |
+| **Execution history** | Saved with a flask ({icon}`flask`) badge so you can filter for test runs. Step-level test runs are not saved in history. ![Alt text](/explore-analyze/images/workflows-test-runs.png "=700x600") | Saved without a badge. Filter the executions list by **production** to see only these runs. ![Alt text](/explore-analyze/images/workflows-filter-prod-runs.png "=700x600") |
 | **Template context** | `execution.isTestRun` resolves to `true`. | `execution.isTestRun` resolves to `false`. |
 
-You can use the `execution.isTestRun` context variable in your workflow YAML to change behavior during testing. For example, you could skip sending a real notification during a test run.
+You can use the `execution.isTestRun` context variable in your workflow YAML to change behavior during testing. For example, you can choose to skip sending a real notification during a test run.
