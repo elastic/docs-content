@@ -44,7 +44,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events_ea.json)
 
@@ -59,7 +59,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events.json)
 
@@ -78,7 +78,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events_for_a_source_ip_ea.json)
 
@@ -93,7 +93,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events_for_a_source_ip.json)
 
@@ -112,7 +112,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_fails_ea.json)
 
@@ -127,7 +127,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_fails.json)
 
@@ -146,7 +146,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_hour_for_a_user_ea.json)
 
@@ -161,7 +161,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_hour_for_a_user.json)
 
@@ -180,7 +180,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_source_ip_for_a_user_ea.json)
 
@@ -195,7 +195,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_source_ip_for_a_user.json)
 
@@ -214,7 +214,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_user_ea.json)
 
@@ -229,7 +229,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_user.json)
 
@@ -248,7 +248,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/suspicious_login_activity_ea.json)
 
@@ -263,7 +263,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/suspicious_login_activity.json)
 
@@ -695,7 +695,7 @@ To access the host traffic anomalies dashboard in Kibana, go to: `Security -> Da
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [System](integration-docs://reference/system/index.md)
 
-    **Supported OS:** windows, linux, macOS
+    **Supported OS:** Windows, Linux, macOS
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/high_count_events_for_a_host_name_ea.json)
 
@@ -710,7 +710,7 @@ To access the host traffic anomalies dashboard in Kibana, go to: `Security -> Da
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [System](integration-docs://reference/system/index.md)
 
-    **Supported OS:** windows, linux, macOS
+    **Supported OS:** Windows, Linux, macOS
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/high_count_events_for_a_host_name.json)
 
@@ -729,7 +729,7 @@ To access the host traffic anomalies dashboard in Kibana, go to: `Security -> Da
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [System](integration-docs://reference/system/index.md)
 
-    **Supported OS:** windows, linux, macOS
+    **Supported OS:** Windows, Linux, macOS
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/low_count_events_for_a_host_name_ea.json)
 
@@ -744,7 +744,7 @@ To access the host traffic anomalies dashboard in Kibana, go to: `Security -> Da
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [System](integration-docs://reference/system/index.md)
 
-    **Supported OS:** windows, linux, macOS
+    **Supported OS:** Windows, Linux, macOS
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/low_count_events_for_a_host_name.json)
 
@@ -770,7 +770,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_network_activity_ea.json)
 
@@ -785,7 +785,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_network_activity.json)
 
@@ -804,7 +804,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_network_port_activity_ea.json)
 
@@ -819,7 +819,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_network_port_activity.json)
 
@@ -838,7 +838,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_process_all_hosts_ea.json)
 
@@ -853,7 +853,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_process_all_hosts.json)
 
@@ -872,7 +872,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_user_name_ea.json)
 
@@ -887,7 +887,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_user_name.json)
 
@@ -906,7 +906,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_network_configuration_discovery_ea.json)
 
@@ -921,7 +921,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_network_configuration_discovery.json)
 
@@ -940,7 +940,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_network_connection_discovery_ea.json)
 
@@ -955,7 +955,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_network_connection_discovery.json)
 
@@ -974,7 +974,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_metadata_process_ea.json)
 
@@ -989,7 +989,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_metadata_process.json)
 
@@ -1008,7 +1008,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_metadata_user_ea.json)
 
@@ -1023,7 +1023,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_metadata_user.json)
 
@@ -1042,7 +1042,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_sudo_user_ea.json)
 
@@ -1057,7 +1057,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_sudo_user.json)
 
@@ -1076,7 +1076,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_user_compiler_ea.json)
 
@@ -1091,7 +1091,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_user_compiler.json)
 
@@ -1110,7 +1110,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_information_discovery_ea.json)
 
@@ -1125,7 +1125,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_information_discovery.json)
 
@@ -1144,7 +1144,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_process_discovery_ea.json)
 
@@ -1159,7 +1159,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_process_discovery.json)
 
@@ -1178,7 +1178,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_user_discovery_ea.json)
 
@@ -1193,7 +1193,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_user_discovery.json)
 
@@ -1212,7 +1212,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_rare_process_by_host_linux_ea.json)
 
@@ -1227,7 +1227,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_rare_process_by_host_linux.json)
 
@@ -1251,7 +1251,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux, macOS
+    **Supported OS:** Windows, Linux, macOS
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/high_count_by_destination_country.json)
 
@@ -1262,7 +1262,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux, macOS
+    **Supported OS:** Windows, Linux, macOS
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/high_count_network_denies.json)
 
@@ -1273,7 +1273,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux, macOS
+    **Supported OS:** Windows, Linux, macOS
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/high_count_network_events.json)
 
@@ -1284,7 +1284,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux, macOS
+    **Supported OS:** Windows, Linux, macOS
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/rare_destination_country.json)
 
@@ -1306,7 +1306,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_dns_tunneling_ea.json)
 
@@ -1321,7 +1321,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_dns_tunneling.json)
 
@@ -1340,7 +1340,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_dns_question_ea.json)
 
@@ -1355,7 +1355,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_dns_question.json)
 
@@ -1374,7 +1374,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_server_domain_ea.json)
 
@@ -1389,7 +1389,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_server_domain.json)
 
@@ -1408,7 +1408,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_urls_ea.json)
 
@@ -1423,7 +1423,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_urls.json)
 
@@ -1442,7 +1442,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_user_agent_ea.json)
 
@@ -1457,7 +1457,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_user_agent.json)
 
@@ -1485,7 +1485,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_rare_process_by_host_windows_ea.json)
 
@@ -1500,7 +1500,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_rare_process_by_host_windows.json)
 
@@ -1519,7 +1519,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_network_activity_ea.json)
 
@@ -1534,7 +1534,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_network_activity.json)
 
@@ -1553,7 +1553,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_path_activity_ea.json)
 
@@ -1568,7 +1568,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_path_activity.json)
 
@@ -1587,7 +1587,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_process_all_hosts_ea.json)
 
@@ -1602,7 +1602,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_process_all_hosts.json)
 
@@ -1621,7 +1621,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_process_creation_ea.json)
 
@@ -1636,7 +1636,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_process_creation.json)
 
@@ -1655,7 +1655,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_script_ea.json)
 
@@ -1670,7 +1670,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_script.json)
 
@@ -1689,7 +1689,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_service_ea.json)
 
@@ -1704,7 +1704,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_service.json)
 
@@ -1723,7 +1723,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_user_name_ea.json)
 
@@ -1738,7 +1738,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_user_name.json)
 
@@ -1757,7 +1757,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_metadata_process_ea.json)
 
@@ -1772,7 +1772,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_metadata_process.json)
 
@@ -1791,7 +1791,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_metadata_user_ea.json)
 
@@ -1806,7 +1806,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_metadata_user.json)
 
@@ -1825,7 +1825,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_runas_event_ea.json)
 
@@ -1840,7 +1840,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_runas_event.json)
 
@@ -1859,7 +1859,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_type10_remote_login_ea.json)
 
@@ -1874,7 +1874,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_type10_remote_login.json)
 
@@ -1893,7 +1893,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_script_ea.json)
 
@@ -1908,7 +1908,7 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_script.json)
 
@@ -1946,7 +1946,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -1957,7 +1957,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -1972,7 +1972,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -1983,7 +1983,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -1998,7 +1998,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2009,7 +2009,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2024,7 +2024,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2035,7 +2035,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2050,7 +2050,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2061,7 +2061,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2076,7 +2076,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2087,7 +2087,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2137,7 +2137,7 @@ To download, refer to the [documentation](integration-docs://reference/dga/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2148,7 +2148,7 @@ To download, refer to the [documentation](integration-docs://reference/dga/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2172,7 +2172,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2183,7 +2183,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2198,7 +2198,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2209,7 +2209,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2224,7 +2224,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2235,7 +2235,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2250,7 +2250,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2261,7 +2261,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows, linux
+    **Supported OS:** Windows, Linux
 
 :::
 
@@ -2276,7 +2276,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2287,7 +2287,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2302,7 +2302,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2313,7 +2313,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2328,7 +2328,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2339,7 +2339,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2354,7 +2354,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2365,7 +2365,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2380,7 +2380,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2391,7 +2391,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2406,7 +2406,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2417,7 +2417,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2432,7 +2432,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2443,7 +2443,7 @@ To download, refer to the [documentation](integration-docs://reference/lmd/index
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2467,7 +2467,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2478,7 +2478,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2493,7 +2493,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2504,7 +2504,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2519,7 +2519,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2530,7 +2530,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2545,7 +2545,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2556,7 +2556,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2571,7 +2571,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2582,7 +2582,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2597,7 +2597,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2608,7 +2608,7 @@ To download, refer to the [documentation](integration-docs://reference/problemch
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 :::
 
@@ -2633,84 +2633,84 @@ To download, refer to the [documentation](integration-docs://reference/pad.md).
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 `pad_windows_high_count_special_privilege_use_events_ea`
 :   Detects unusually high special privilege use events initiated by a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 `pad_windows_high_count_group_management_events_ea`
 :   Detects unusually high security group management events initiated by a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 `pad_windows_high_count_user_account_management_events_ea`
 :   Detects unusually high security user account management events initiated by a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 `pad_windows_rare_privilege_assigned_to_user_ea`
 :   Detects an unusual privilege type assigned to a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 `pad_windows_rare_group_name_by_user_ea`
 :   Detects an unusual group name accessed by a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 `pad_windows_rare_device_by_user_ea`
 :   Detects an unusual device accessed by a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 `pad_windows_rare_source_ip_by_user_ea`
 :   Detects an unusual source IP address accessed by a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 `pad_windows_rare_region_name_by_user_ea`
 :   Detects an unusual region name for a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** windows
+    **Supported OS:** Windows
 
 `pad_linux_high_count_privileged_process_events_by_user_ea`
 :   Detects a spike in privileged commands executed by a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
 `pad_linux_rare_process_executed_by_user_ea`
 :   Detects a rare process executed by a user.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
 `pad_linux_high_median_process_command_line_entropy_by_user_ea`
 :   Detects process command lines executed by a user with an abnormally high median entropy value.
 
     **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
-    **Supported OS:** linux
+    **Supported OS:** Linux
 
 `pad_okta_spike_in_group_membership_changes_ea`
 :   Detects spike in group membership change events by a user.
