@@ -53,7 +53,6 @@ The section covers the following tasks:
     - [Install ECE](./cloud-enterprise/install.md)
     - [Air gapped installations](./cloud-enterprise/air-gapped-install.md)
     - [Configure ECE](./cloud-enterprise/configure.md)
-    - [Tutorials](./cloud-enterprise/tutorials.md)
 
 * [Work with deployments](./cloud-enterprise/working-with-deployments.md)
   - Use [](./cloud-enterprise/deployment-templates.md) to [](./cloud-enterprise/create-deployment.md)
@@ -61,6 +60,7 @@ The section covers the following tasks:
   - [Connect your applications to {{es}}](./cloud-enterprise/connect-elasticsearch.md)
 
 * Learn about [](./cloud-enterprise/tools-apis.md) that you can use with ECE
+* [End-to-end tutorials](/deploy-manage/deploy/cloud-enterprise/tutorials.md): Follow scenario-based guides that combine infrastructure and ECE configuration from start to finish.
 
 Other sections of the documentation provide guidance on additional important tasks related to ECE:
 
