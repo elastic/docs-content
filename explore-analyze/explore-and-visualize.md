@@ -11,6 +11,8 @@ description: >
 type: overview
 ---
 
+<!-- Overview page created for the v2 navigation -->
+
 # Explore and visualize your data
 
 The {{es}} platform provides tools to explore, visualize, and monitor your data. They are available across all Elastic solutions and project types.
