@@ -174,4 +174,3 @@ serverless: ga
 | Manage exceptions and value lists | Threat Intelligence Analyst, Tier 3 Analyst, Detections Eng, SOC Manager, Endpoint Policy Manager, Platform Engineer, Editor |
 | View exceptions and value lists (read only) | Tier 1 Analyst, Tier 2 Analyst, Viewer, Endpoint Operations Analyst |
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` With the **Alerts** feature, you can grant alert access independently from rule management: **Read** for viewing alerts (flyouts, tables on the **Alerts** page, **Rule details**, **Cases**, **Entity Analytics** (including risk contributions), **Attack Discovery**); **All** for viewing plus updating status, assignees, tags, and bulk actions. Custom roles can have Alerts without Rules access, or Rules without Alerts access. Prebuilt role mappings may be updated in a later release.
