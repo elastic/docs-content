@@ -17,13 +17,17 @@ Learn about the access requirements for detection features, including:
 
 - **Privilege requirements**: Cluster, index, and {{kib}} privileges that your role needs to enable detections, manage rules, view and edit alerts, and more
 - **Predefined {{serverless-full}} roles**: {{serverless-short}} roles with detection privileges
-- **Authorization model**: How rules inherit privileges from their last editor via API keys
+- **Authorization model**: How rules inherit privileges from their last editor using API keys
 
 For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md).
 
 :::{important}
 Rules run in the background using the privileges of the user who last edited them. Ensure that only users with the appropriate access edit them. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
 :::
+
+::::{note} Independent alerts and rules access
+You can give a role access to alerts only, rules only, or both, whichever fits your needs.
+::::
 
 ## About index privileges
 
@@ -117,20 +121,9 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Set the **Alerts** feature to **Read** to view alerts, flyouts, and tables (no status, assignee, tag, or bulk actions) Set it to **All** for everything in Read, plus status changes, assignees, tags, and bulk actions. 
-
-   ::::{note}
-   You can give a role access  to alerts only, rules only, or both, whichever fits your needs.
-   ::::
-
-    - {applies_to}`stack: ga 9.3` `All` for the `Rules, Alerts, and Exceptions` feature
+:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `Read` for `Alerts` to view alerts, open alert flyouts, and view alert tables on pages and dashboards with alert-related flows. To do everything that `Read` provides, plus changing alert status, setting assignees, setting tags, and bulk actions on alerts, set `Alerts` to `All`.  
+    - {applies_to}`stack: ga 9.3` `All` for the `Rules, Alerts, and Exceptions` feature to view alert management flows
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
-
-::::{note}
-Alerts are managed through {{es}} index privileges. {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Alerts** feature: **Read** lets you view alerts, open flyouts, and see alert tables (including in entity analytics); **All** adds the ability to change status, set assignees, add tags, and use bulk actions. {applies_to}`stack: ga =9.3` To view alert management flows, you need at least `Read` for the `Rules, Alerts, and Exceptions` feature.
-
-Before a user can be assigned to a case, they must log into {{kib}} at least once to create a user profile.
-::::
 
 ## Manage exceptions
 
@@ -181,4 +174,4 @@ serverless: ga
 | Manage exceptions and value lists | Threat Intelligence Analyst, Tier 3 Analyst, Detections Eng, SOC Manager, Endpoint Policy Manager, Platform Engineer, Editor |
 | View exceptions and value lists (read only) | Tier 1 Analyst, Tier 2 Analyst, Viewer, Endpoint Operations Analyst |
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` With the **Alerts** feature, you can grant alert access independently from rule management: **Read** for viewing alerts (flyouts, tables, entity analytics); **All** for viewing plus updating status, assignees, tags, and bulk actions. Custom roles can have Alerts without Rules access, or Rules without Alerts access. Prebuilt role mappings may be updated in a later release.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` With the **Alerts** feature, you can grant alert access independently from rule management: **Read** for viewing alerts (flyouts, tables on the **Alerts** page, **Rule details**, **Cases**, **Entity Analytics** (including risk contributions), **Attack Discovery**); **All** for viewing plus updating status, assignees, tags, and bulk actions. Custom roles can have Alerts without Rules access, or Rules without Alerts access. Prebuilt role mappings may be updated in a later release.

@@ -30,7 +30,11 @@ To use Attack Discovery, your role needs specific privileges.
 
 Ensure your role has:
 
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature, at least `Read` for the **Security > Rules** {{kib}} feature, and at least `Read` for the **Security > Alerts** {{kib}} feature. Attack Discovery analyzes detection alerts; **Read** for Alerts lets you view them (flyouts, tables); **All** adds the ability to change status, assignees, tags, and use bulk actions.
+* Minimum [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
+
+  - `All` for **Attack discovery**
+  - At least `Read` for **Rules**
+  - At least `Read` for **Alerts**
 
 * The appropriate [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
 
