@@ -25,7 +25,7 @@ For instructions on turning on the detections feature, refer to [Turn on detecti
 Rules run in the background using the privileges of the user who last edited them. Ensure that only users with the appropriate access edit them. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
 :::
 
-::::{note} Independent alerts and rules access
+::::{admonition} Independent alerts and rules access
 You can give a role access to alerts only, rules only, or both, depending on your needs.
 ::::
 
