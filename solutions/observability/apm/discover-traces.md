@@ -100,10 +100,6 @@ Select **Open in Discover** to open a filtered view of all similar spans.
 
 The **Trace summary** section shows a condensed waterfall of the trace the selected document belongs to. Each row represents a span or transaction, positioned on a timeline to show when it started and how long it took.
 
-:::{note}
-{applies_to}`stack: preview 9.1-9.3` In Elastic Stack 9.1–9.3, this section is labeled **Trace**.
-:::
-
 :::::{applies-switch}
 
 :::{applies-item} {"stack": "preview 9.4+", "serverless": "preview"}
@@ -128,12 +124,13 @@ Select **Expand trace timeline** to open the expanded waterfall view.
 
 The expanded trace timeline shows all spans and transactions in a trace in a dedicated flyout waterfall view. A color-coded legend identifies which service each span belongs to. Failed spans are highlighted to help you quickly locate errors.
 
+:::{tip}
 ```{applies_to}
 stack: preview 9.4+
 serverless: preview
 ```
-
 Toggle **Show critical path** to highlight the sequence of spans that determined the trace's total duration.
+:::
 
 :::::{applies-switch}
 
