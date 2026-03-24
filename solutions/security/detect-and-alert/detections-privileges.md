@@ -26,7 +26,7 @@ Rules run in the background using the privileges of the user who last edited the
 :::
 
 ::::{note} Independent alerts and rules access
-You can give a role access to alerts only, rules only, or both, whichever fits your needs.
+You can give a role access to alerts only, rules only, or both, depending on your needs.
 ::::
 
 ## About index privileges
