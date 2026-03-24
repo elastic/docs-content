@@ -163,7 +163,7 @@ When testing scripts with the execute API in a {{cps}} environment:
 * Only a single index is accepted. Wildcards and [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) are not supported.
 * Requests to linked projects are subject to the same [security model](/explore-analyze/cross-project-search.md#security) as other {{cps}} requests.
 
-For full details, refer to the [{{product.painless}} execute API reference](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md).
+For details, refer to the [{{product.painless}} execute API reference](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md).
 
 <!--
 ### {{cps-cap}} specific APIs
