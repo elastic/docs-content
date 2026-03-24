@@ -44,6 +44,6 @@ In practice, you add the {{elastic-defend}} integration from the **Integrations*
 After installing and configuring {{elastic-defend}}, you can:
 
 - [Manage endpoints, policies, and exceptions](/solutions/security/manage-elastic-defend.md) to tune protection for your environment.
+- Read [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) to understand different {{elastic-endpoint}} configuration settings.
 - [Set up endpoint response actions](/solutions/security/endpoint-response-actions.md) to isolate hosts, run commands, or take other actions on protected endpoints.
-- [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) if you encounter performance or compatibility issues.
 - [Troubleshoot {{elastic-defend}}](/troubleshoot/security/elastic-defend.md) if you run into installation, connectivity, or policy issues.

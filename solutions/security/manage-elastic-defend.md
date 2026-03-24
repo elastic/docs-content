@@ -27,7 +27,7 @@ After deploying {{elastic-defend}}, you can manage your protected endpoints, tun
 | Reduce false positives from known software | [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) → [Event filters](/solutions/security/manage-elastic-defend/event-filters.md) |
 | Suppress false positive {{elastic-endpoint}} alerts | [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) |
 | Block known malicious applications | [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) |
-| Fix performance or compatibility issues | [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) |
+| Understand different {{elastic-endpoint}} configuration settings | [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) |
 | Diagnose problems with {{elastic-defend}} | [Automatic troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md) → [Troubleshoot {{elastic-defend}}](/troubleshoot/security/elastic-defend.md) |
 
 ## Endpoints and policies
