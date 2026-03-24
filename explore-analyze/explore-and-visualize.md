@@ -58,7 +58,7 @@ Every chart, table, map, or metric on a dashboard is a **panel**. [Panels and vi
 
 - **Lens**: drag-and-drop editor for charts, tables, metrics, and more. Lens also supports an {{esql}} query mode for building visualizations directly from queries.
 - **Maps**: geospatial data visualization
-- **Canvas**: pixel-perfect presentations
+- **Canvas**: dynamic, multi-page presentations combining live data with custom styling, images, and text
 - **Vega**: fully custom visualizations
 
 You can also add context with text, images, and link panels.
@@ -70,7 +70,7 @@ You can also add context with text, images, and link panels.
 As your collection grows, these tools help you keep everything organized:
 
 - [{{data-sources-cap}}](find-and-organize/data-views.md): define which {{es}} indices a visualization or Discover session queries
-- [Tags](find-and-organize/tags.md) and spaces: group related content by team, project, or domain
+- [Tags](find-and-organize/tags.md) and [spaces](/deploy-manage/manage-spaces.md): group related content by team, project, or domain
 - [Saved objects](find-and-organize/saved-objects.md): manage and export your dashboards, visualizations, and saved searches
 
 [Learn more about finding and organizing content →](find-and-organize.md)
