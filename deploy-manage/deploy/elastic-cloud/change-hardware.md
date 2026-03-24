@@ -16,12 +16,28 @@ This document explains how to modify the instance configurations used by specifi
 
 {{stack}} deployments run on virtual hardware defined by instance configurations. For more details, refer to [Hardware profiles](./ec-change-hardware-profile.md#ec-hardware-profile) and [Instance configurations](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) documents.
 
-When a deployment is created, each {{es}} tier and stateless resource (e.g., Kibana) gets an instance configuration assigned to it, based on the hardware profile used. The combination of instance configurations defined within each hardware profile is designed to provide the best possible outcome for each use case. Therefore, it is not advisable to use instance configurations that are not specified on the hardware profile, except in specific situations in which we may need to migrate an {{es}} tier or stateless resource to a different hardware type. An example of such a scenario is when a cloud provider stops supporting a hardware type in a specific region.
+When a deployment is created, each {{es}} tier and stateless resource (e.g., Kibana) gets an instance configuration assigned to it, based on the hardware profile used. The combination of instance configurations defined within each hardware profile is designed to provide the best possible outcome for each use case. Therefore, it is generally not advisable to use instance configurations that are not specified in the hardware profile, except in specific situations in which we may need to migrate an {{es}} tier or stateless resource to a different hardware type. An example of such a scenario is when a cloud provider stops supporting a hardware type in a specific region.
 
+Note:
+- {{ecloud}} console (UI): You can only update instance configurations for {{es}} data tiers (hot, warm, cold, and frozen). Stateless resources are shown in the plan preview but cannot be modified.
+- API: You can update instance configurations for both {{es}} data tiers and stateless resources.
+
+## Migrate to a different instance configuration for data tiers using the Elastic Cloud Console [ec_migrate_to_a_different_instance_configuration_using_the_elastic_cloud_console]
+
+Using the {{ecloud}} console, you can change the instance configuration for {{es}} hot, warm, cold, or frozen data tiers without modifying other resources.
+
+1. On the deployment overview page, find your current hardware profile and click **Edit**.
+
+2. In the hardware profile flyout, select the instance configuration for each data tier you want to update. The configuration screen summarizes the changes for the tier-specific instance configurations as part of your deployment.
+
+    Only instance types available in the deployment's regions are shown. Stateless resources (For example: master nodes, ML nodes, Kibana) cannot be modified, but the plan preview will still show their related updates.
+
+3. After reviewing the changes, click **Update**.
+4. A confirmation dialog will appear showing all changes that will happen. Review the plan and click **Confirm** to apply the update.
+
+    If your instance configuration selection matches an existing hardware profile, that hardware profile is automatically selected. Otherwise, your hardware profile is labeled as `custom` in the console. 
 
 ## Migrate to a different instance configuration using the API [ec_migrate_to_a_different_instance_configuration_using_the_api]
-
-Hardware profile migrations are possible to perform through the {{ecloud}} console, however, migrating a specific tier or resource to a different instance configuration can only be achieved through the API.
 
 Prerequisites:
 
