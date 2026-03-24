@@ -83,7 +83,7 @@ These capabilities form a shared foundation across all Elastic solutions:
 - **{{elastic-sec}}**: specialized views for detection alerts, investigation timelines, and threat intelligence, built on the same dashboard and visualization infrastructure.
 - **{{es}} projects**: search analytics, relevance tuning, and content exploration.
 
-What you learn here applies to every solution and project type.
+These tools and workflows apply to every solution and project type.
 
 ## Next steps
 
