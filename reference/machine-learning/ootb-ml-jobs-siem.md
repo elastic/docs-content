@@ -409,14 +409,14 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 :::{applies-item} {stack: ga 9.4+, serverless: ga}
 
-`azure_activitylogs_rare_event_action_for_a_username_ea`
+`azure_activitylogs_rare_event_action_for_a_user_email_ea`
 :   Looks for Azure activity event actions that, while not inherently suspicious or atypical, are sourcing from a unique user identifier context that does not normally call the method. This can be the result of compromised credentials or keys as someone uses a valid account to persist, move laterally, or exfil data.
 
     **Supported integrations:** [Azure Activity Logs](integration-docs://reference/azure/activitylogs.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_for_a_username_ea.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_for_a_user_email_ea.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_for_a_username_ea.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_for_a_user_email_ea.json)
 
 :::
 
@@ -483,14 +483,14 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 :::{applies-item} {stack: ga 9.4+, serverless: ga}
 
-`rare_method_for_a_username_ea`
+`rare_method_for_a_user_id_ea`
 :   Looks for AWS API calls that, while not inherently suspicious or atypical, are sourcing from a user context that does not normally call the method. This can be the result of compromised credentials or keys as someone uses a valid account to persist, move laterally, or exfil data.
 
     **Supported integrations:** [AWS](integration-docs://reference/aws/cloudtrail.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_cloudtrail/ml/rare_method_for_a_username_ea.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_cloudtrail/ml/rare_method_for_a_user_id_ea.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_cloudtrail/ml/datafeed_rare_method_for_a_username_ea.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_cloudtrail/ml/datafeed_rare_method_for_a_user_id_ea.json)
 
 :::
 
@@ -651,14 +651,14 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
 :::{applies-item} {stack: ga 9.4+, serverless: ga}
 
-`gcp_audit_rare_method_for_a_client_user_email_ea`
+`gcp_audit_rare_method_for_a_user_email_ea`
 :   Looks for GCP actions that, while not inherently suspicious or atypical, are sourcing from a user context that does not normally call the method. This can be the result of compromised credentials or keys as someone uses a valid account to persist, move laterally, or exfil data.
 
     **Supported integrations:** [GCP Audit](integration-docs://reference/gcp/audit.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_method_for_a_client_user_email_ea.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_method_for_a_user_email_ea.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_method_for_a_client_user_email_ea.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_method_for_a_user_email_ea.json)
 
 :::
 
