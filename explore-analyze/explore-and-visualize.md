@@ -18,8 +18,8 @@ The {{es}} platform provides tools to explore, visualize, and monitor your data.
 The typical workflow progresses through three stages:
 
 1. **Explore** your data interactively with Discover.
-2. **Visualize** patterns by building panels with Lens and other editors.
-3. **Compose dashboards** that your team can use for ongoing monitoring and decision-making.
+2. **Compose a dashboard** for your team to use for ongoing monitoring and decision-making.
+3. **Fill it with panels and visualizations** built with Lens and other editors.
 
 ## Start exploring with Discover
 
