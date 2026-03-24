@@ -300,7 +300,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `azure_activitylogs_high_distinct_count_event_action_on_failure`
 :   Looks for a spike in the rate of an error message, which might indicate an impending service failure or potentially be byproducts of attempted or successful persistence, privilege escalation, defense evasion, discovery, lateral movement, or collection activity by a threat actor.
@@ -330,7 +330,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `azure_activitylogs_rare_event_action_on_failure`
 :   Looks for unusual Azure activity event actions on failure. Rare and unusual errors might simply indicate an impending service failure but they can also be byproducts of attempted or successful persistence, privilege escalation, defense evasion, discovery, lateral movement, or collection activity by a threat actor.
@@ -360,7 +360,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `azure_activitylogs_rare_event_action_for_a_city`
 :   Looks for Azure activity event actions that, while not inherently suspicious or atypical, are sourcing from a geolocation (city) that is unexpected. This can be the result of compromised credentials or keys.
@@ -390,7 +390,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `azure_activitylogs_rare_event_action_for_a_country`
 :   Looks for Azure activity event actions that, while not inherently suspicious or atypical, are sourcing from a geolocation (country) that is unexpected. This can be the result of compromised credentials or keys.
@@ -420,7 +420,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `azure_activitylogs_rare_event_action_for_a_username`
 :   Looks for Azure activity event actions that, while not inherently suspicious or atypical, are sourcing from a user context that does not normally call the method. This can be the result of compromised credentials or keys as someone uses a valid account to persist, move laterally, or exfil data.
@@ -542,7 +542,7 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `gcp_audit_high_distinct_count_error_message`
 :   Looks for a spike in the rate of an action where the event outcome is a failure. Spikes might indicate an impending service failure but could also be byproducts of attempted or successful persistence, privilege escalation, defense evasion, discovery, lateral movement, or collection activity by a threat actor.
@@ -572,7 +572,7 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `gcp_audit_rare_error_code`
 :   Looks for unusual errors. Rare and unusual errors might indicate an impending service failure but they can also be byproducts of attempted or successful persistence, privilege escalation, defense evasion, discovery, lateral movement, or collection activity by a threat actor.
@@ -602,7 +602,7 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `gcp_audit_rare_method_for_a_city`
 :   Looks for GCP actions that, while not inherently suspicious or atypical, are sourcing from a geolocation (city) that is unexpected. This can be the result of compromised credentials or keys.
@@ -632,7 +632,7 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `gcp_audit_rare_method_for_a_country`
 :   Looks for GCP actions calls that, while not inherently suspicious or atypical, are sourcing from a geolocation (country) that is unexpected. This can be the result of compromised credentials or keys.
@@ -662,7 +662,7 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
 :::
 
-:::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga =9.3}
 
 `gcp_audit_rare_method_for_a_client_user_email`
 :   Looks for GCP actions that, while not inherently suspicious or atypical, are sourcing from a user context that does not normally call the method. This can be the result of compromised credentials or keys as someone uses a valid account to persist, move laterally, or exfil data.
