@@ -22,7 +22,7 @@ This configuration provides:
 - No changes required to ECE host networking or container configuration
 
 ::::{note}
-In this architecture (IPv6 ingress to IPv4 targets), [AWS client IP preservation](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#client-ip-preservation) at the IP level is not available, so the original client address is propagated using Proxy Protocol v2.
+In this architecture (IPv6 ingress to IPv4 targets), [AWS client IP preservation](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#client-ip-preservation) at the IP level is not available, so the original client address is propagated using [Proxy Protocol v2](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#proxy-protocol).
 ::::
 
 ## Architecture
