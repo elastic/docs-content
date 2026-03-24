@@ -22,6 +22,8 @@ Use the following recommendations when configuring your load balancer:
 * **Network**: Use a network that is fast enough from a latency and throughput perspective to be considered local for the {{es}} clustering requirement. There shouldn't be a major advantage in "preferring local" from a load balancer perspective (rather than a proxy perspective), and it might lead to potential hot spotting on specific proxies, so it should be avoided.
 * **TCP timeout**: Use the default (or required) TCP timeout value from the cloud provider. Do not set a custom timeout on the load balancer.
 
+For a complete implementation example on {{aws}}, including IPv6 support and Proxy Protocol v2 for client IP address propagation, refer to [Set up IPv6 at the edge for ECE on AWS](./ece-ipv6-aws-setup.md).
+
 ## Port and mode configuration [ece-load-balancer-ports]
 
 The following table describes the supported load balancer modes for each type of traffic and associated ports. TLS termination occurs at the ECE proxy for all ports.
@@ -39,7 +41,7 @@ The following table describes the supported load balancer modes for each type of
 The ECE proxy must be able to determine the real client IP address for [IP filtering](/deploy-manage/security/ip-filtering-ece.md) and [request logging](/deploy-manage/monitor/orchestrators/ece-proxy-log-fields.md). The mechanism depends on the load balancer mode:
 
 * **`X-Forwarded-For` header** (HTTP/L7 mode): Configure the load balancer to strip inbound `X-Forwarded-For` headers and replace them with the client source IP. This prevents clients from spoofing their IP addresses. Elastic Cloud Enterprise uses `X-Forwarded-For` for logging client IP addresses and, if you have implemented IP filtering, for traffic management.
-* **Proxy Protocol v2** (TCP/L4 mode): The load balancer prepends client connection metadata that the ECE proxy reads directly. Enable Proxy Protocol v2 on both the load balancer and the ECE proxy configuration.
+* **Proxy Protocol v2** (TCP/L4 mode): The load balancer prepends client connection metadata that the ECE proxy reads directly. Enable Proxy Protocol v2 on both the load balancer and the ECE proxy configuration. For a configuration example on AWS, refer to [Set up IPv6 at the edge for ECE on AWS](./ece-ipv6-aws-setup.md).
 * **Direct source IP preservation**: If the load balancer forwards connections transparently without modifying the source IP, no additional configuration is needed.
 
 If you use TCP mode for ports 9200/9243, make sure one of these mechanisms is in place. Without real client IP information, IP filtering cannot function correctly and proxy logs will only show the load balancer's IP address.

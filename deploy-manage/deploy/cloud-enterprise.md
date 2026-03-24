@@ -53,6 +53,7 @@ The section covers the following tasks:
     - [Install ECE](./cloud-enterprise/install.md)
     - [Air gapped installations](./cloud-enterprise/air-gapped-install.md)
     - [Configure ECE](./cloud-enterprise/configure.md)
+    - [Tutorials](./cloud-enterprise/tutorials.md)
 
 * [Work with deployments](./cloud-enterprise/working-with-deployments.md)
   - Use [](./cloud-enterprise/deployment-templates.md) to [](./cloud-enterprise/create-deployment.md)

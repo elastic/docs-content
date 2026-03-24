@@ -37,6 +37,8 @@ This section provides step-by-step guidance on:
   * [Configure endpoint URLs](./change-endpoint-urls.md)
   * [Manage {{stack}} versions](./manage-elastic-stack-versions.md)
 
+* [ECE tutorials](./tutorials.md)
+
 ## Additional topics
 
 After deploying the ECE platform, you may need to configure custom proxy certificates, manage snapshot repositories, or perform maintenance operations, among other tasks. Refer to the following sections for more details:
