@@ -61,9 +61,9 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_high_count_logon_events.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_high_count_logon_events.json)
 
 :::
 
@@ -95,9 +95,9 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events_for_a_source_ip.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events_for_a_source_ip.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_high_count_logon_events_for_a_source_ip.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_high_count_logon_events_for_a_source_ip.json)
 
 :::
 
@@ -129,9 +129,9 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_fails.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_fails.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_high_count_logon_fails.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_high_count_logon_fails.json)
 
 :::
 
@@ -163,9 +163,9 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_hour_for_a_user.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_hour_for_a_user.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_rare_hour_for_a_user.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_rare_hour_for_a_user.json)
 
 :::
 
@@ -197,9 +197,9 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_source_ip_for_a_user.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_source_ip_for_a_user.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_rare_source_ip_for_a_user.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_rare_source_ip_for_a_user.json)
 
 :::
 
@@ -231,9 +231,9 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_user.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_user.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_rare_user.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_rare_user.json)
 
 :::
 
@@ -265,9 +265,9 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/suspicious_login_activity.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/suspicious_login_activity.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_suspicious_login_activity.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_suspicious_login_activity.json)
 
 :::
 
@@ -307,9 +307,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Azure Activity Logs](integration-docs://reference/azure/activitylogs.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_high_distinct_count_event_action_on_failure.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_high_distinct_count_event_action_on_failure.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_high_distinct_count_event_action_on_failure.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_high_distinct_count_event_action_on_failure.json)
 
 :::
 
@@ -337,9 +337,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Azure Activity Logs](integration-docs://reference/azure/activitylogs.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_on_failure.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_on_failure.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_on_failure.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_on_failure.json)
 
 :::
 
@@ -367,9 +367,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Azure Activity Logs](integration-docs://reference/azure/activitylogs.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_for_a_city.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_for_a_city.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_for_a_city.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_for_a_city.json)
 
 :::
 
@@ -397,9 +397,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Azure Activity Logs](integration-docs://reference/azure/activitylogs.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_for_a_country.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_for_a_country.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_for_a_country.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_for_a_country.json)
 
 :::
 
@@ -427,9 +427,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [Azure Activity Logs](integration-docs://reference/azure/activitylogs.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_for_a_username.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/azure_activitylogs_rare_event_action_for_a_username.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_for_a_username.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_azure_activitylogs/ml/datafeed_azure_activitylogs_rare_event_action_for_a_username.json)
 
 :::
 
@@ -501,9 +501,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported integrations:** [AWS](integration-docs://reference/aws/cloudtrail.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_cloudtrail/ml/rare_method_for_a_username.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_cloudtrail/ml/rare_method_for_a_username.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_cloudtrail/ml/datafeed_rare_method_for_a_username.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_cloudtrail/ml/datafeed_rare_method_for_a_username.json)
 
 :::
 
@@ -549,9 +549,9 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
     **Supported integrations:** [GCP Audit](integration-docs://reference/gcp/audit.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_high_distinct_count_error_message.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_high_distinct_count_error_message.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_high_distinct_count_error_message.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_high_distinct_count_error_message.json)
 
 :::
 
@@ -579,9 +579,9 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
     **Supported integrations:** [GCP Audit](integration-docs://reference/gcp/audit.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_error_code.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_error_code.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_error_code.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_error_code.json)
 
 :::
 
@@ -609,9 +609,9 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
     **Supported integrations:** [GCP Audit](integration-docs://reference/gcp/audit.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_method_for_a_city.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_method_for_a_city.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_method_for_a_city.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_method_for_a_city.json)
 
 :::
 
@@ -639,9 +639,9 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
     **Supported integrations:** [GCP Audit](integration-docs://reference/gcp/audit.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_method_for_a_country.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_method_for_a_country.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_method_for_a_country.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_method_for_a_country.json)
 
 :::
 
@@ -669,9 +669,9 @@ Entity Analytics {{ml-jobs}} require GCP Audit integration version `2.47.2` or l
 
     **Supported integrations:** [GCP Audit](integration-docs://reference/gcp/audit.md)
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_method_for_a_client_user_email.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/gcp_audit_rare_method_for_a_client_user_email.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_method_for_a_client_user_email.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_gcp_audit/ml/datafeed_gcp_audit_rare_method_for_a_client_user_email.json)
 
 :::
 
@@ -712,9 +712,9 @@ To access the host traffic anomalies dashboard in Kibana, go to: `Security -> Da
 
     **Supported OS:** windows, linux, macOS
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/high_count_events_for_a_host_name.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/high_count_events_for_a_host_name.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/datafeed_high_count_events_for_a_host_name.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/datafeed_high_count_events_for_a_host_name.json)
 
 :::
 
@@ -746,9 +746,9 @@ To access the host traffic anomalies dashboard in Kibana, go to: `Security -> Da
 
     **Supported OS:** windows, linux, macOS
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/low_count_events_for_a_host_name.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/low_count_events_for_a_host_name.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/datafeed_low_count_events_for_a_host_name.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/datafeed_low_count_events_for_a_host_name.json)
 
 :::
 
@@ -787,9 +787,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_network_activity.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_network_activity.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_anomalous_network_activity.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_anomalous_network_activity.json)
 
 :::
 
@@ -821,9 +821,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_network_port_activity.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_network_port_activity.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_anomalous_network_port_activity.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_anomalous_network_port_activity.json)
 
 :::
 
@@ -855,9 +855,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_process_all_hosts.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_process_all_hosts.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_anomalous_process_all_hosts.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_anomalous_process_all_hosts.json)
 
 :::
 
@@ -889,9 +889,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_user_name.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_user_name.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_anomalous_user_name.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_anomalous_user_name.json)
 
 :::
 
@@ -923,9 +923,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_network_configuration_discovery.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_network_configuration_discovery.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_network_configuration_discovery.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_network_configuration_discovery.json)
 
 :::
 
@@ -957,9 +957,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_network_connection_discovery.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_network_connection_discovery.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_network_connection_discovery.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_network_connection_discovery.json)
 
 :::
 
@@ -991,9 +991,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_metadata_process.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_metadata_process.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_rare_metadata_process.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_rare_metadata_process.json)
 
 :::
 
@@ -1025,9 +1025,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_metadata_user.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_metadata_user.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_rare_metadata_user.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_rare_metadata_user.json)
 
 :::
 
@@ -1059,9 +1059,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_sudo_user.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_sudo_user.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_rare_sudo_user.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_rare_sudo_user.json)
 
 :::
 
@@ -1093,9 +1093,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_user_compiler.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_rare_user_compiler.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_rare_user_compiler.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_rare_user_compiler.json)
 
 :::
 
@@ -1127,9 +1127,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_information_discovery.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_information_discovery.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_system_information_discovery.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_system_information_discovery.json)
 
 :::
 
@@ -1161,9 +1161,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_process_discovery.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_process_discovery.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_system_process_discovery.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_system_process_discovery.json)
 
 :::
 
@@ -1195,9 +1195,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_user_discovery.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_user_discovery.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_system_user_discovery.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_system_user_discovery.json)
 
 :::
 
@@ -1229,9 +1229,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_rare_process_by_host_linux.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/v3_rare_process_by_host_linux.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_rare_process_by_host_linux.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_rare_process_by_host_linux.json)
 
 :::
 
@@ -1323,9 +1323,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_dns_tunneling.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_dns_tunneling.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling.json)
 
 :::
 
@@ -1357,9 +1357,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_dns_question.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_dns_question.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question.json)
 
 :::
 
@@ -1391,9 +1391,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_server_domain.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_server_domain.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_server_domain.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_server_domain.json)
 
 :::
 
@@ -1425,9 +1425,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_urls.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_urls.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_urls.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_urls.json)
 
 :::
 
@@ -1459,9 +1459,9 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
     **Supported OS:** windows, linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_user_agent.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_user_agent.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_user_agent.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_user_agent.json)
 
 :::
 
@@ -1502,9 +1502,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_rare_process_by_host_windows.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_rare_process_by_host_windows.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_rare_process_by_host_windows.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_rare_process_by_host_windows.json)
 
 :::
 
@@ -1536,9 +1536,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_network_activity.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_network_activity.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_network_activity.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_network_activity.json)
 
 :::
 
@@ -1570,9 +1570,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_path_activity.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_path_activity.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_path_activity.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_path_activity.json)
 
 :::
 
@@ -1604,9 +1604,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_process_all_hosts.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_process_all_hosts.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_process_all_hosts.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_process_all_hosts.json)
 
 :::
 
@@ -1638,9 +1638,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_process_creation.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_process_creation.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_process_creation.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_process_creation.json)
 
 :::
 
@@ -1672,9 +1672,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_script.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_script.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_script.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_script.json)
 
 :::
 
@@ -1706,9 +1706,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_service.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_service.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_service.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_service.json)
 
 :::
 
@@ -1740,9 +1740,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_user_name.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_anomalous_user_name.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_user_name.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_anomalous_user_name.json)
 
 :::
 
@@ -1774,9 +1774,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_metadata_process.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_metadata_process.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_metadata_process.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_metadata_process.json)
 
 :::
 
@@ -1808,9 +1808,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_metadata_user.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_metadata_user.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_metadata_user.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_metadata_user.json)
 
 :::
 
@@ -1842,9 +1842,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_runas_event.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_runas_event.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_user_runas_event.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_user_runas_event.json)
 
 :::
 
@@ -1876,9 +1876,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_type10_remote_login.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_type10_remote_login.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_user_type10_remote_login.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_user_type10_remote_login.json)
 
 :::
 
@@ -1910,9 +1910,9 @@ If there are additional requirements such as installing the Windows System Monit
 
     **Supported OS:** windows
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_script.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_script.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_script.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_script.json)
 
 :::
 
