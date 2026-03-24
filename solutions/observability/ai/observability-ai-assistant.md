@@ -484,7 +484,7 @@ You can make the official Elastic documentation available to the AI Assistant, w
 Enable this feature from the **Settings** tab in AI Assistant Settings by using the "Install Elastic Documentation" action.
 
 ::::{important}
-For air-gapped environments or environments where outbound traffic must go through an HTTP proxy, installing product documentation requires special configuration. See the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
+For air-gapped environments or environments where outbound traffic must go through an HTTP proxy, installing product documentation requires special configuration. Refer to the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
 ::::
 
 ## Anonymization [obs-ai-anonymization]
