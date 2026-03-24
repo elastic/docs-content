@@ -45,7 +45,7 @@ Ensure your role has:
 
 :::
 
-:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.3"}
 
 Ensure your role has:
 

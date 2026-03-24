@@ -27,7 +27,7 @@ To use this feature, you need:
 | Action | Index Privileges | Kibana Privileges |
 | ------ | ---------------- | ----------------- |
 | Enable the privileged user monitoring feature | N/A | **All** for the **Security** feature |
-| View the Privileged user monitoring dashboard | `Read` for the following indices:<br> - `.entity_analytics.monitoring.users-<space-id>`<br> - `risk-score.risk-score-*`<br> - `.alerts-security.alerts-<space-id>`<br> -  `.ml-anomalies-shared`<br> - Security data view indices | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Read** for the **Security** feature and at least **Read** for the **Alerts** feature (to view detection alert data on the dashboard). **Alerts** **Read** lets you view alerts; **All** lets you view and also change status, set assignees, add tags, and use bulk actions. See [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#manage-alerts).<br><br>{applies_to}`stack: ga =9.3` **Read** for the **Security** feature |
+| View the Privileged user monitoring dashboard | `Read` for the following indices:<br> - `.entity_analytics.monitoring.users-<space-id>`<br> - `risk-score.risk-score-*`<br> - `.alerts-security.alerts-<space-id>`<br> -  `.ml-anomalies-shared`<br> - Security data view indices | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Read** for the **Security** feature and at least **Read** for the **Alerts** feature to view detection alert data on the dashboard. <br><br>{applies_to}`stack: ga =9.3` **Read** for the **Security** feature |
 
 ## Predefined roles [privmon_roles]
 ```yaml {applies_to}
