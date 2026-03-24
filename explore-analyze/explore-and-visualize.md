@@ -56,11 +56,10 @@ Dashboards are the primary way teams monitor deployment health, security posture
 
 Every chart, table, map, or metric on a dashboard is a **panel**. [Panels and visualizations](visualize.md) are the building blocks you use to represent your data visually.
 
-- **Lens**: drag-and-drop editor for charts, tables, metrics, and more
+- **Lens**: drag-and-drop editor for charts, tables, metrics, and more. Lens also supports an {{esql}} query mode for building visualizations directly from queries.
 - **Maps**: geospatial data visualization
 - **Canvas**: pixel-perfect presentations
 - **Vega**: fully custom visualizations
-- **{{esql}}**: query-driven charts
 
 You can also add context with text, images, and link panels.
 
