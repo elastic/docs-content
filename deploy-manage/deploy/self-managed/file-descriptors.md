@@ -17,7 +17,7 @@ This is only relevant for Linux and macOS and can be safely ignored if running {
 
 {{es}} uses a lot of file descriptors or file handles. Running out of file descriptors can be disastrous and will most probably lead to data loss. Make sure to increase the limit on the number of open files descriptors for the user running {{es}} to 65,535 or higher.
 
-Apply this limit using the [system settings configuration methods](setting-system-settings.md) for your install type. For example using `ulimit` and editing `/etc/security/limits.conf` for `.tar.gz` archives, or through`systemd` overrides when you need to change defaults on package-based installations.
+Apply this limit using the [system settings configuration methods](setting-system-settings.md) for your install type. For example using `ulimit` and editing `/etc/security/limits.conf` for `.tar.gz` archives, or through `systemd` overrides when you need to change defaults on package-based installations.
 
 On macOS, you must also pass the JVM option `-XX:-MaxFDLimit` to {{es}} in order for it to make use of the higher file descriptor limit.
 

@@ -46,13 +46,15 @@ Use the option and value required for your setting (see the pages under [Importa
 sudo su  <1>
 ulimit -n 65535 <2>
 ulimit -u 4096 <3>
-su elasticsearch <4>
+ulimit -l unlimited <4>
+su elasticsearch <5>
 ```
 
 1. Become `root`.
 2. Set the [open file descriptor limit](/deploy-manage/deploy/self-managed/file-descriptors.md) for this session.
 3. Set the [maximum number of threads](/deploy-manage/deploy/self-managed/max-number-of-threads.md) for this session.
-4. Become the user that will run {{es}} (for example `elasticsearch`) before starting the process.
+4. Allow [memory locking](/deploy-manage/deploy/self-managed/setup-configuration-memory.md#bootstrap-memory_lock) for this session.
+5. Become the user that will run {{es}} (for example `elasticsearch`) before starting the process.
 
 The new limit is only applied during the current session.
 
@@ -63,6 +65,8 @@ On Linux systems, persistent limits can be set for a particular user by editing 
 
 ```sh
 elasticsearch  -  nofile  65535
+elasticsearch  -  nproc  4096
+elasticsearch  -  memlock  unlimited
 ```
 
 This change will only take effect the next time the `elasticsearch` user opens a new session.
@@ -104,6 +108,9 @@ To override them, add a file called `/etc/systemd/system/elasticsearch.service.d
 
 ```ini
 [Service]
+Environment="MY_VAR=my-value"
+LimitNOFILE=65535
+LimitNPROC=4096
 LimitMEMLOCK=infinity
 ```
 
