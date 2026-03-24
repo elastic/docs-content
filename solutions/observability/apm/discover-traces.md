@@ -1,8 +1,8 @@
 ---
 applies_to:
-  stack: preview 9.2+
+  stack: preview 9.1+
   serverless: preview
-description: Explore trace data in Discover using the traces profile.
+description: Explore trace data in Discover.
 products:
   - id: observability
 ---
@@ -10,10 +10,10 @@ products:
 # Explore traces in Discover [explore-traces-discover]
 
 :::{important}
-This functionality is experimental and not supported. It may change or be removed at anytime.
+This functionality is experimental. It may change or be removed at anytime.
 :::
 
-**Discover** offers a dedicated experience for exploring trace data. When **Discover** detects data in `traces-*` indices, it automatically selects relevant fields and enables features that help you investigate distributed traces more effectively. The traces experience includes a pre-selected set of trace fields in the data grid, a structured overview of each document's key attributes, latency comparisons for similar spans, and a waterfall visualization of the full trace timeline.
+**Discover** offers a dedicated experience for exploring trace data. When **Discover** detects data in `traces-*` indices, it automatically enables features that help you investigate distributed traces more effectively. The traces experience includes a pre-selected set of trace fields in the data grid, a structured overview of each document's key attributes, latency comparisons for similar spans, and a waterfall visualization of the full trace timeline.
 
 If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](/explore-analyze/discover.md).
 
@@ -26,7 +26,7 @@ If you're just getting started with **Discover** and want to learn its main prin
 
 ### Data recognition [traces-data-recognition]
 
-By default, data stored in `traces-*` indices is recognized as trace data and triggers the **Discover** experience described on this page.
+Data stored in `traces-*` indices is automatically recognized as trace data and triggers the **Discover** experience described on this page.
 
 ### Required {{kib}} privileges [traces-kibana-privileges]
 
@@ -40,7 +40,7 @@ The traces experience is available in:
 
 * **{{data-source-cap}} mode**: Select a {{data-source}} that matches a `traces-*` index pattern from the **Discover** main page.
 
-* **{{esql}} mode**: Select **{{esql}}** and use the `FROM` command to query your trace data:
+* **{{esql}} mode**: Switch to **{{esql}}** mode and use the `FROM` command to query your trace data:
 
     ```esql
     FROM traces-*
@@ -54,7 +54,7 @@ The traces experience is available in:
 
 ## Traces-specific features [traces-specific-features]
 
-When **Discover** recognizes trace data, it pre-selects a set of relevant fields as columns in the data grid: `service.name`, `transaction.name`, `span.name`, `transaction.duration.us`, `span.duration.us`, and `event.outcome`.
+When **Discover** recognizes trace data, it pre-selects a set of relevant fields as columns in the data grid: `service.name`, `transaction.name`, `span.name`, `transaction.duration.us`, `span.duration.us`, and `event.outcome`. You can [reorder or resize these columns](/explore-analyze/discover/document-explorer.md#document-explorer-columns), or add new ones, using the standard **Discover** column controls.
 
 ### Overview charts ({{esql}}) [traces-overview-charts]
 
@@ -96,25 +96,62 @@ The **Similar spans** section shows a latency chart for spans with the same type
 
 Select **Open in Discover** to open a filtered view of all similar spans.
 
-### Trace waterfall [trace-waterfall]
+### Trace summary [trace-waterfall]
 
-The **Trace** section shows a condensed waterfall of the trace the selected document belongs to. Each row represents a span or transaction, positioned on a timeline to show when it started and how long it took.
+The **Trace summary** section shows a condensed waterfall of the trace the selected document belongs to. Each row represents a span or transaction, positioned on a timeline to show when it started and how long it took.
 
+:::{note}
+{applies_to}`stack: preview 9.1-9.3` In Elastic Stack 9.1–9.3, this section is labeled **Trace**.
+:::
+
+:::::{applies-switch}
+
+:::{applies-item} {"stack": "preview 9.4+", "serverless": "preview"}
+:::{image} /solutions/images/discover-traces-document-trace-serverless.png
+:alt: The Trace summary section in the document detail panel showing a condensed waterfall with spans and links to expand the trace timeline and open in Discover.
+:screenshot:
+:::
+:::
+
+:::{applies-item} {"stack": "preview 9.1-9.3"}
 :::{image} /solutions/images/discover-traces-document-trace.png
 :alt: The Trace section in the document detail panel showing a mini waterfall with spans and a link to expand the full trace timeline.
 :screenshot:
 :::
+:::
 
-Select **Expand trace timeline** to open the full-screen waterfall view.
+:::::
+
+Select **Expand trace timeline** to open the expanded waterfall view.
 
 #### Expanded trace timeline [expanded-trace-timeline]
 
-The expanded trace timeline shows all spans and transactions in a trace in a full-screen waterfall view. A color-coded legend identifies which service each span belongs to. Failed spans are highlighted to help you quickly locate errors.
+The expanded trace timeline shows all spans and transactions in a trace in a dedicated flyout waterfall view. A color-coded legend identifies which service each span belongs to. Failed spans are highlighted to help you quickly locate errors.
 
+```{applies_to}
+stack: preview 9.4+
+serverless: preview
+```
+
+Toggle **Show critical path** to highlight the sequence of spans that determined the trace's total duration.
+
+:::::{applies-switch}
+
+:::{applies-item} {"stack": "preview 9.4+", "serverless": "preview"}
+:::{image} /solutions/images/discover-traces-timeline-serverless.png
+:alt: The expanded trace timeline showing a waterfall visualization with spans from multiple services, a Show critical path toggle, service legend, and failure badges.
+:screenshot:
+:::
+:::
+
+:::{applies-item} {"stack": "preview 9.1-9.3"}
 :::{image} /solutions/images/discover-traces-timeline.png
 :alt: The expanded trace timeline showing a waterfall visualization with spans from multiple services, including duration labels and failure badges.
 :screenshot:
 :::
+:::
+
+:::::
 
 ### Logs [traces-logs]
 
