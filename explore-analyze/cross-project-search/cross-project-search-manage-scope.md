@@ -67,8 +67,9 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | **{{ml-app}} Data Visualizer** | Not available | ES\|QL |
 | **{{rules-ui}} and alerts** | Read-only | ES\|QL rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.|
 | **Streams** | Not available | ES\|QL |
-| **Timeline, the alerts flyout, and related threat hunting workflows** | Not available | TBD |
+| **Timeline** | Not available | Searches the local project only when {{cps}} is enabled.In Timeline's **ES\|QL** tab, you can use `SET project_routing` in the rule query to target specific linked projects and override the space-level scope. |
 | **Vega** | Editable | Project routing in Vega specs |
+| **Agent Builder** | Not available | ES\|QL |
 
 The header's {{cps-init}} scope selector is not available in other apps, including Transforms, Canvas, and object listing pages.
 
