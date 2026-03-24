@@ -13,11 +13,11 @@ type: overview
 
 # Share, alert, and automate
 
-Seeing something in your data is only the first step. What matters is what happens next: sharing a report with stakeholders, getting notified when a critical threshold is crossed, automatically triaging an alert, or coordinating a response across your team. The Elasticsearch platform provides a progression of tools that take you from insight to action, and they work together across every Elastic solution and project type.
+Seeing something in your data is only the first step. What matters is what happens next: sharing a report with stakeholders, getting notified when a critical threshold is crossed, automatically triaging an alert, or coordinating a response across your team. The {{es}} platform provides a progression of tools that take you from insight to action, and they work together across every Elastic solution and project type.
 
 ## Distribute insights with reporting and sharing
 
-[Reporting and sharing](report-and-share.md) lets you export and distribute dashboards, Discover sessions, and visualizations so that insights reach the people who need them — even those who don't log into Kibana.
+[Reporting and sharing](report-and-share.md) lets you export and distribute dashboards, Discover sessions, and visualizations so that insights reach the people who need them — even those who don't log into {{kib}}.
 
 Generate reports on demand or [schedule them automatically](report-and-share/automating-report-generation.md) for recurring delivery. Export dashboards as PDF or PNG snapshots for executive reviews, or generate CSV files for teams that work in spreadsheets. You can also share direct links to live dashboards, giving collaborators real-time access to filtered views of the data.
 
@@ -25,7 +25,7 @@ Generate reports on demand or [schedule them automatically](report-and-share/aut
 
 ## Get notified when it matters with alerting
 
-[Alerting](alerting.md) monitors your Elasticsearch data continuously and notifies you when specific conditions are met — so you don't have to watch dashboards around the clock.
+[Alerting](alerting.md) monitors your {{es}} data continuously and notifies you when specific conditions are met — so you don't have to watch dashboards around the clock.
 
 :::{image} /explore-analyze/images/kibana-create-threshold-alert-created.png
 :alt: Creating a threshold alert rule in Kibana
@@ -42,7 +42,7 @@ Elastic solutions extend this foundation with domain-specific rules. Security de
 
 [Workflows](workflows.md) turn manual, repetitive processes into automated sequences that run reliably every time. They bridge the gap between detecting a problem and resolving it.
 
-A workflow is a defined sequence of steps — triggered by an alert, a schedule, or a manual action — that can query Elasticsearch, call external APIs, branch on conditions, and loop over collections. For example, when a security alert fires, a workflow can enrich it with threat intelligence, create a case, notify the on-call analyst, and isolate the affected host — all without human intervention.
+A workflow is a defined sequence of steps — triggered by an alert, a schedule, or a manual action — that can query {{es}}, call external APIs, branch on conditions, and loop over collections. For example, when a security alert fires, a workflow can enrich it with threat intelligence, create a case, notify the on-call analyst, and isolate the affected host — all without human intervention.
 
 Workflows address common operational challenges: alert fatigue from too many notifications, understaffed teams that can't keep up with manual triage, and tool fragmentation that forces context-switching between systems.
 
@@ -57,7 +57,7 @@ Workflows address common operational challenges: alert fatigue from too many not
 :screenshot:
 :::
 
-Attach alerts, files, and visualizations to a case to build a record of your investigation. Assign team members, add comments, and push updates to external systems like Jira or ServiceNow to keep your existing workflows intact. Cases are available in Elastic Security, Observability, and Stack Management.
+Attach alerts, files, and visualizations to a case to build a record of your investigation. Assign team members, add comments, and push updates to external systems like Jira or ServiceNow to keep your existing workflows intact. Cases are available in {{elastic-sec}}, Observability, and Stack Management.
 
 [Learn more about cases →](cases.md)
 
