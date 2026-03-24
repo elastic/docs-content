@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: cloud-enterprise
 ---
-# Tutorials
+# {{ece}} tutorials
 
 This section provides scenario-based tutorials for {{ece}} (ECE). These tutorials combine infrastructure and ECE configuration tasks to help you implement specific deployment patterns end to end.
 
