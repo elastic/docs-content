@@ -151,6 +151,20 @@ The following APIs support {{cps}}:
 * Search scroll [clear](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-clear-scroll), [run](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
 
+### {{product.painless}} execute API [cps-painless-execute]
+
+The [{{product.painless}} execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md) (`POST _scripts/painless/_execute`) does not search across linked projects. Unlike the search APIs listed above, the execute API resolves index names against the **origin project only**.
+
+When testing scripts with the execute API in a {{cps}} environment:
+
+* To target a specific linked project, prefix the index with the project alias: `projectAlias:myindex`.
+* To explicitly target the origin project, use `_origin:myindex`.
+    * An unqualified index name like `logs` is equivalent to `_origin:logs` — it targets the origin project only.
+* Only a single index is accepted. Wildcards and [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) are not supported.
+* Requests to linked projects are subject to the same [security model](/explore-analyze/cross-project-search.md#security) as other {{cps}} requests.
+
+For full details, refer to the [{{product.painless}} execute API reference](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md).
+
 <!--
 ### {{cps-cap}} specific APIs
 
