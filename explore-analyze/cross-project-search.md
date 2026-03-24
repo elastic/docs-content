@@ -151,7 +151,7 @@ The following APIs support {{cps}}:
 * Search scroll [clear](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-clear-scroll), [run](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
 
-### {{product.painless}} execute API [cps-painless-execute]
+### {{product.painless}} scripting [cps-painless-scripting]
 
 The [{{product.painless}} execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md) (`POST _scripts/painless/_execute`) does not search across linked projects. Unlike the search APIs listed above, the execute API resolves index names against the **origin project only**.
 
