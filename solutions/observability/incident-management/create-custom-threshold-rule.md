@@ -107,13 +107,17 @@ When you select multiple groupings, the group name is separated by commas.
 
 For example, if you group alerts by the `host.name` and `host.architecture` fields, and there are two hosts (`Host A` and `Host B`) and two architectures (`Architecture A` and `Architecture B`), the composite aggregation forms multiple groups.
 
-If the `Host A, Architecture A` group matches the rule conditions, but the `Host B, Architecture B` group doesn’t, one alert is triggered for `Host A, Architecture A`.
+If the `Host A, Architecture A` group matches the rule conditions, but the `Host B, Architecture B` group doesn’t, one alert triggers for `Host A, Architecture A`.
 
-If you select one field—for example, `host.name`—and `Host A` matches the conditions but `Host B` doesn’t, one alert is triggered for `Host A`. If both groups match the conditions, alerts are triggered for both groups.
+If you select one field—for example, `host.name`—and `Host A` matches the conditions but `Host B` doesn’t, one alert triggers for `Host A`. If both groups match the conditions, alerts trigger for both groups.
 
 
 ## Trigger "no data" alerts (optional) [observability-create-custom-threshold-alert-rule-trigger-no-data-alerts-optional]
 
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.0+
 Optionally configure the rule to trigger an alert when:
 
 * there is no data, or
@@ -121,15 +125,33 @@ Optionally configure the rule to trigger an alert when:
 
 To do this, select **Alert me if there’s no data**.
 
-The behavior of the alert depends on whether any **group alerts by** fields are specified:
+The behavior of the alert depends on any active **group alerts by** fields:
 
-* **No "group alerts by" fields**: (Default) A "no data" alert is triggered if the condition fails to report data over the expected time period, or the rule fails to query {{es}}. This alert means that something is wrong and there is not enough data to evaluate the related threshold.
-* **Has "group alerts by" fields**: If a previously detected group stops reporting data, a "no data" alert is triggered for the missing group.
+* **No "group alerts by" fields**: (Default) A "no data" alert triggers if the condition fails to report data over the expected time period, or the rule fails to query {{es}}. This alert means that something is wrong and there is not enough data to evaluate the related threshold.
+* **Has "group alerts by" fields**: If a previously detected group stops reporting data, a "no data" alert triggers for the missing group.
 
-    For example, consider a scenario where `host.name` is the **group alerts by** field for CPU usage above 80%. The first time the rule runs, two hosts report data: `host-1` and `host-2`. The second time the rule runs, `host-1` does not report any data, so a "no data" alert is triggered for `host-1`. When the rule runs again, if `host-1` starts reporting data again, there are a couple possible scenarios:
+    For example, consider a scenario where `host.name` is the **group alerts by** field for CPU usage above 80%. The first time the rule runs, two hosts report data: `host-1` and `host-2`. The second time the rule runs, `host-1` does not report any data, so a "no data" alert triggers for `host-1`. When the rule runs again, if `host-1` starts reporting data again, there are a couple possible scenarios:
 
-    * If `host-1` reports data for CPU usage and it is above the threshold of 80%, no new alert is triggered. Instead the existing alert changes from "no data" to a triggered alert that breaches the threshold. Keep in mind that no notifications are sent in this case because there is still an ongoing issue.
-    * If `host-1` reports CPU usage below the threshold of 80%, the alert status is changed to recovered.
+    * If `host-1` reports data for CPU usage and it is above the threshold of 80%, no new alert triggers. Instead the existing alert changes from "no data" to a triggered alert that breaches the threshold. Keep in mind that no notifications are sent in this case because the issue persists.
+    * If `host-1` reports CPU usage below the threshold of 80%, the alert status changes to `recovered`.
+:::
+
+:::{applies-item} {serverless: ga, stack: ga}
+
+If there is no data, you have the following options to control the alert behavior:
+
+
+- **Recover active alerts**: Recover active alerts when data is missing; no new alerts are created.
+- **Alert me about the missing data**
+  - If **Group alerts by** is used: Trigger a “no data” alert when a previously detected group stops reporting data; not recommended for dynamically scaling infrastructures that start and stop nodes automatically.
+  - If **Group alerts by** is not used: Trigger a “no data” alert when no data is returned during rule execution, or when the rule fails to query {{es}}.
+- **Do nothing**: Keep active alerts unchanged and do not create new alerts for missing data.
+
+:::
+
+::::
+
+
 
 
 ::::{note}
