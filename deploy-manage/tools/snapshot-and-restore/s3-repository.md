@@ -76,10 +76,9 @@ bin/elasticsearch-keystore remove s3.client.default.secret_key
 bin/elasticsearch-keystore remove s3.client.default.session_token
 ```
 
-Define the relevant secure settings in each node's keystore before starting the node. The secure settings described here are all [reloadable](../../security/secure-settings.md#reloadable-secure-settings) so you may update the keystore contents on each node while the node is running and then call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to apply the updated settings to the nodes in the cluster. After this API completes, {{es}} will use the updated setting values for all future snapshot operations, but ongoing operations may continue to use older setting values.
+Define the relevant secure settings in each node’s keystore before starting the node. The secure settings described here are all [reloadable](../../security/secure-settings.md#reloadable-secure-settings) so you may update the keystore contents on each node while the node is running and then call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to apply the updated settings to the nodes in the cluster. After this API completes, {{es}} will use the updated setting values for all future snapshot operations, but ongoing operations may continue to use older setting values.
 
-Available client settings include authentication credentials (`access_key`, `secret_key`, `session_token`), the AWS `region` and `endpoint`, proxy configuration, and connection tuning options such as `read_timeout`, `max_connections`, and `max_retries`.
-
+S3 client settings cover authentication, region and endpoint selection, proxy/network configuration, and connection or retry tuning.
 For a complete list of all S3 client settings, refer to [S3 repository client settings](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-client-settings).
 
 
@@ -98,8 +97,7 @@ PUT _snapshot/my_s3_repository
 }
 ```
 
-Available repository settings include the target `bucket`, `base_path`, `chunk_size`, `compress`, `storage_class`, `server_side_encryption`, throughput throttling (`max_restore_bytes_per_sec`, `max_snapshot_bytes_per_sec`), and multipart upload tuning.
-
+Available repository settings define storage placement, snapshot data handling, storage and encryption behavior, throughput limits, and multipart upload tuning.
 For a complete list of all S3 repository settings, refer to [S3 repository settings](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-repository-settings).
 
 

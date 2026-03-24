@@ -80,8 +80,7 @@ In progress snapshot or restore jobs will not be preempted by a **reload** of th
 
 ## Client settings [repository-azure-client-settings]
 
-Available client settings include the Azure `account` name, authentication credentials (`key` or `sas_token`), `endpoint_suffix`, `timeout`, `max_retries`, and proxy configuration.
-
+You can configure Azure client settings for authentication, service connectivity, request handling, and network proxy behavior.
 For a complete list of all Azure client settings, refer to [Azure repository client settings](elasticsearch://reference/elasticsearch/configuration-reference/azure-repository-settings.md#repository-azure-client-settings).
 
 ::::{admonition} Obtaining credentials from the environment
@@ -105,8 +104,7 @@ The Azure SDK has several other mechanisms to automatically obtain credentials f
 
 The Azure repository supports a number of settings to customize how data is stored, which may be specified when creating the repository.
 
-Available repository settings include the target `container`, `base_path`, `chunk_size`, `compress`, throughput throttling (`max_restore_bytes_per_sec`, `max_snapshot_bytes_per_sec`), `location_mode`, and batch delete tuning.
-
+Repository settings cover storage location, data layout, transfer behavior, throughput limits, and cleanup tuning.
 For a complete list of all Azure repository settings, refer to [Azure repository settings](elasticsearch://reference/elasticsearch/configuration-reference/azure-repository-settings.md#repository-azure-repository-settings).
 
 
@@ -137,4 +135,4 @@ The Azure repository type works with all Standard storage accounts
 
 ## Linearizable register implementation [repository-azure-linearizable-registers]
 
-The linearizable register implementation for Azure repositories is based on Azure's support for strongly consistent leases. Each lease may only be held by a single node at any time. The node presents its lease when performing a read or write operation on a protected blob. Lease-protected operations fail if the lease is invalid or expired. To perform a compare-and-exchange operation on a register, {{es}} first obtains a lease on the blob, then reads the blob contents under the lease, and finally uploads the updated blob under the same lease. This process ensures that the read and write operations happen atomically.
+The linearizable register implementation for Azure repositories is based on Azure’s support for strongly consistent leases. Each lease may only be held by a single node at any time. The node presents its lease when performing a read or write operation on a protected blob. Lease-protected operations fail if the lease is invalid or expired. To perform a compare-and-exchange operation on a register, {{es}} first obtains a lease on the blob, then reads the blob contents under the lease, and finally uploads the updated blob under the same lease. This process ensures that the read and write operations happen atomically.

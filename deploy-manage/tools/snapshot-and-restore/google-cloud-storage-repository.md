@@ -107,7 +107,7 @@ Snapshot or restore jobs that are in progress are not preempted by a **reload** 
 
 The client used to connect to Google Cloud Storage has a number of settings available. Client setting names are of the form `gcs.client.CLIENT_NAME.SETTING_NAME` and are specified inside [`elasticsearch.yml`](/deploy-manage/stack-settings.md). The default client name looked up by a `gcs` repository is called `default`, but can be customized with the repository setting `client`.
 
-Available client settings include `credentials_file`, `endpoint`, `connect_timeout`, `read_timeout`, `application_name`, `project_id`, and proxy configuration.
+You can configure the GCS client for authentication and project scoping, custom endpoints, HTTP timeouts, how the client identifies itself to Google Cloud, and proxy behavior.
 
 For a complete list of all GCS client settings, refer to [GCS repository client settings](elasticsearch://reference/elasticsearch/configuration-reference/gcs-repository-settings.md#repository-gcs-client-settings).
 
@@ -127,8 +127,7 @@ PUT _snapshot/my_gcs_repository
 }
 ```
 
-Available repository settings include the target `bucket`, `base_path`, `chunk_size`, `compress`, and throughput throttling (`max_restore_bytes_per_sec`, `max_snapshot_bytes_per_sec`).
-
+Available repository settings cover storage location, data layout, snapshot transfer characteristics, and throughput limits.
 For a complete list of all GCS repository settings, refer to [GCS repository settings](elasticsearch://reference/elasticsearch/configuration-reference/gcs-repository-settings.md#repository-gcs-repository-settings).
 
 ### Recommended bucket permission [repository-gcs-bucket-permission]
