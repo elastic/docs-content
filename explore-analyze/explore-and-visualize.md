@@ -17,12 +17,12 @@ You've ingested data into Elasticsearch. Now it's time to make sense of it. Whet
 
 The journey typically follows a natural progression: start by exploring your data interactively, then build visualizations to surface patterns, and finally compose dashboards that you and your team can use for ongoing monitoring and decision-making.
 
-## Discover: start with exploration
+## Start exploring with Discover
 
 [Discover](discover.md) is where most analysis begins. It gives you direct access to the documents in your Elasticsearch indices, letting you search, filter, and examine your data in real time.
 
-:::{image} /explore-analyze/images/explore-analyze-discover.png
-:alt: The Discover interface showing document exploration
+:::{image} /explore-analyze/images/kibana-esql-full-query.png
+:alt: Discover in ES|QL mode showing a query with filtered results and a visualization
 :screenshot:
 :::
 
@@ -30,12 +30,12 @@ Use Discover when you need to investigate a specific issue, understand what data
 
 [Learn more about Discover →](discover.md)
 
-## Dashboards: compose views for monitoring and sharing
+## Compose views for monitoring and sharing with dashboards
 
 [Dashboards](dashboards.md) bring multiple visualizations together into a single, interactive view. A dashboard can combine charts, metrics, maps, and text to tell a complete data story — and anyone on your team can use filters, time controls, and drilldowns to explore the data further without needing to build anything from scratch.
 
-:::{image} /explore-analyze/images/kibana-dashboard-overview.png
-:alt: A dashboard combining multiple visualization panels
+:::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png
+:alt: A dashboard with metrics, time series charts, a bar chart, and a table
 :screenshot:
 :::
 
@@ -43,7 +43,7 @@ Dashboards are the primary way teams monitor ongoing activity: deployment health
 
 [Learn more about dashboards →](dashboards.md)
 
-## Panels and visualizations: the building blocks
+## Build with panels and visualizations
 
 Every chart, table, map, or metric on a dashboard is a **panel**. [Panels and visualizations](visualize.md) are the building blocks you use to represent your data visually.
 
@@ -53,7 +53,7 @@ The primary editor is **Lens**, which provides a drag-and-drop interface for bui
 
 ## Find and organize your content
 
-As your collection of dashboards, visualizations, and saved searches grows, [data views](find-and-organize/data-views.md), [tags](find-and-organize/tags.md), and [saved objects](find-and-organize/saved-objects.md) help you keep everything organized and easy to find. Data views define which Elasticsearch indices a visualization or Discover session queries, while tags and spaces let you group related content by team, project, or domain.
+As your collection of dashboards, visualizations, and saved searches grows, [data views](find-and-organize/data-views.md), [tags](find-and-organize/tags.md), and [saved objects](find-and-organize/saved-objects.md) help you keep everything organized and efficient to find. Data views define which Elasticsearch indices a visualization or Discover session queries, while tags and spaces let you group related content by team, project, or domain.
 
 [Learn more about finding and organizing content →](find-and-organize.md)
 

@@ -15,7 +15,7 @@ type: overview
 
 Seeing something in your data is only the first step. What matters is what happens next: sharing a report with stakeholders, getting notified when a critical threshold is crossed, automatically triaging an alert, or coordinating a response across your team. The Elasticsearch platform provides a progression of tools that take you from insight to action, and they work together across every Elastic solution and project type.
 
-## Reporting and sharing: distribute what you see
+## Distribute insights with reporting and sharing
 
 [Reporting and sharing](report-and-share.md) lets you export and distribute dashboards, Discover sessions, and visualizations so that insights reach the people who need them — even those who don't log into Kibana.
 
@@ -23,7 +23,7 @@ Generate reports on demand or [schedule them automatically](report-and-share/aut
 
 [Learn more about reporting and sharing →](report-and-share.md)
 
-## Alerting: know when it matters
+## Get notified when it matters with alerting
 
 [Alerting](alerting.md) monitors your Elasticsearch data continuously and notifies you when specific conditions are met — so you don't have to watch dashboards around the clock.
 
@@ -38,9 +38,9 @@ Elastic solutions extend this foundation with domain-specific rules. Security de
 
 [Learn more about alerting →](alerting.md)
 
-## Workflows: automate multi-step responses
+## Automate multi-step responses with workflows
 
-[Workflows](workflows.md) turn manual, repetitive processes into automated sequences that execute reliably every time. They bridge the gap between detecting a problem and resolving it.
+[Workflows](workflows.md) turn manual, repetitive processes into automated sequences that run reliably every time. They bridge the gap between detecting a problem and resolving it.
 
 A workflow is a defined sequence of steps — triggered by an alert, a schedule, or a manual action — that can query Elasticsearch, call external APIs, branch on conditions, and loop over collections. For example, when a security alert fires, a workflow can enrich it with threat intelligence, create a case, notify the on-call analyst, and isolate the affected host — all without human intervention.
 
@@ -48,7 +48,7 @@ Workflows address common operational challenges: alert fatigue from too many not
 
 [Learn more about workflows →](workflows.md)
 
-## Cases: track and coordinate response
+## Track and coordinate response with cases
 
 [Cases](cases.md) provide a central place to track incidents, document findings, and coordinate response efforts. Whether you're a security analyst triaging threats or an SRE responding to an outage, cases bring together alerts, evidence, and team communication in one place.
 
