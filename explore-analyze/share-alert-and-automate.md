@@ -6,8 +6,8 @@ products:
   - id: kibana
   - id: cloud-serverless
 description: >
-  Share reports, set up alerts to detect important changes, automate responses
-  with workflows, and track incidents with cases.
+  Use Kibana to share reports, set up alerts to detect important changes,
+  automate responses with workflows, and track incidents with cases.
 type: overview
 ---
 

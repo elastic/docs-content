@@ -6,8 +6,8 @@ products:
   - id: kibana
   - id: cloud-serverless
 description: >
-  Explore your Elasticsearch data, build visualizations, and compose dashboards
-  to monitor trends and share insights across your organization.
+  Use Kibana to explore your Elasticsearch data, build visualizations, and
+  compose dashboards to monitor trends and share insights across your organization.
 type: overview
 ---
 
