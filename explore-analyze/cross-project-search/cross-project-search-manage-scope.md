@@ -12,15 +12,15 @@ description: Learn how to manage cross-project search scope from your project ap
 
 # Managing {{cps}} scope in your project apps [cps-manage-scope]
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and projects are linked, searches run across all linked projects by default. {{kib}} provides several ways to narrow or change this scope:
+When [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md) is enabled and projects are linked, searches initiated from your project's apps run across all linked projects by default. {{kib}} provides several ways to narrow or change this scope:
 
 * **Space default**: Admins [configure a default scope per space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which applies when you start a new session.
-* **Session scope**: Use the header's scope selector to change which projects are searched during your session.
+* **Session scope**: Use the [{{cps-init}} scope selector](#cps-in-kibana) in the project's header to change which projects are searched during your session.
 * **Query-level override**: Use project routing or qualified index expressions in individual queries to target specific projects.
 
 ## {{cps-cap}} scope selector [cps-in-kibana]
 
-A **{{cps-cap}}** ({{cps-init}}) **scope selector** appears in the header of your project. It controls which linked projects your searches include.
+The **{{cps-cap}} ({{cps-init}}) scope** selector in your project's header lets you control which linked projects your searches include.
 
 With the {{cps-init}} scope selector, you can select:
 
@@ -31,7 +31,7 @@ With the {{cps-init}} scope selector, you can select:
 The scope selector also lists the aliases of all [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), which is useful when you need to reference them in queries or index patterns.
 :::
 
-The scope selector is not editable in every app. Some apps display it as **read-only**, meaning the app uses the space default scope but you cannot change it. Other apps show it as **unavailable**, meaning the app searches only the local project. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
+The scope selector is not editable in every app. Some apps display it as **read-only**, meaning the app uses the space default scope but you cannot change it. Other apps show it as **unavailable**, meaning the app searches only the current project. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
 
 When you change the scope during a session, your selection is preserved as you navigate between apps. Admins can configure a [default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which is used when you start a new session.
 
@@ -58,17 +58,17 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 
 | App | {{cps-init}} scope selector | Query-level overrides |
 | --- | --- | --- |
-| **Discover** | Editable | ES\|QL |
+| **Agent Builder** | Not available | ES\|QL |
 | **Dashboards** | Editable | Per-panel overrides using ES\|QL visualizations or Maps layer routing. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope). |
+| **Dev Tools / Console** | Not available | Full CPS through raw API requests, including ES\|QL |
+| **Discover** | Editable | ES\|QL |
 | **Lens visualizations** | Editable | ES\|QL visualizations [^cps-badge] |
 | **Maps** | Editable | Layer-level [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) for vector layers and joins |
-| **Vega** | Editable | Project routing in Vega specs |
-| **{{rules-ui}} and alerts** | Read-only | ES\|QL rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.|
-| **Dev Tools / Console** | Not available | Full CPS through raw API requests, including ES\|QL |
 | **{{ml-app}} Data Visualizer** | Not available | ES\|QL |
+| **{{rules-ui}} and alerts** | Read-only | ES\|QL rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.|
 | **Streams** | Not available | ES\|QL |
-| **Agent Builder** | Not available | ES\|QL |
 | **Timeline, the alerts flyout, and related threat hunting workflows** | Not available | TBD |
+| **Vega** | Editable | Project routing in Vega specs |
 
 The header's {{cps-init}} scope selector is not available in other apps, including Transforms, Canvas, and object listing pages.
 
