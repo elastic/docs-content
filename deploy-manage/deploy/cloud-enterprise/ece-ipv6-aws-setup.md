@@ -1,18 +1,33 @@
-# Setting up IPv6 at the Edge for ECE on AWS
+---
+navigation_title: Proxy Protocol v2 for IPv6 ingress on AWS
+applies_to:
+  deployment:
+    ece: ga 4.2
+products:
+  - id: cloud-enterprise
+---
 
-This guide explains how to enable IPv6 ingress traffic for Elastic Cloud Enterprise (ECE) on AWS using a dual-stack Network Load Balancer (NLB) with Proxy Protocol v2 for client IP preservation.
+# Setting up IPv6 at the edge for ECE on AWS
+
+This guide explains how to enable IPv6 ingress traffic for {{ece}} (ECE) on AWS using a dual-stack Network Load Balancer (NLB) with Proxy Protocol v2 for [client IP propagation](./ece-load-balancers.md#ece-client-ip-preservation).
 
 ## Overview
 
-"IPv6 at the edge" refers to accepting IPv6 traffic at the network boundary (the load balancer) while the internal ECE infrastructure continues to use IPv4. This allows IPv6 clients to connect to your Elasticsearch and Kibana deployments without requiring changes to ECE internal networking.
+"IPv6 at the edge" refers to accepting IPv6 traffic at the network boundary (the load balancer) while the internal ECE infrastructure continues to use IPv4. This allows IPv6 clients to connect to your {{es}} and {{kib}} deployments without requiring changes to ECE internal networking.
 
 This configuration provides:
 
 - IPv4 and IPv6 ingress traffic support using a dual-stack NLB
-- Client IP preservation (including IPv6 addresses) using Proxy Protocol v2
+- Client IP propagation (including IPv6 addresses) using Proxy Protocol v2
 - No changes required to ECE host networking or container configuration
 
+::::{note}
+In this architecture (IPv6 ingress to IPv4 targets), [AWS client IP preservation](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#client-ip-preservation) at the IP level is not available, so the original client address is propagated using Proxy Protocol v2.
+::::
+
 ## Architecture
+
+Traffic flows bidirectionally through the NLB. Client requests enter over IPv4/IPv6 on port 443 and are forwarded to ECE proxies on port 9243 with Proxy Protocol v2 metadata. This makes the original client IP available to ECE.
 
 ```
                     ┌─────────────────────────────────────────┐
@@ -39,6 +54,8 @@ This configuration provides:
                     └─────────────────────────────────────────┘
 ```
 
+Response traffic returns through the same established NLB connection path.
+
 ## AWS Infrastructure Requirements
 
 Before configuring ECE for IPv6 at the edge, ensure your AWS environment has the following components:
@@ -58,7 +75,7 @@ For detailed ECE host requirements, refer to [Prepare your environment](docs-con
 
 ## Step 1: Create the Dual-Stack NLB
 
-Create an NLB with Proxy Protocol v2 enabled to preserve client IP addresses.
+Create an NLB with Proxy Protocol v2 enabled to propagate client IP metadata.
 
 ### Using AWS CLI
 
@@ -154,7 +171,7 @@ bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh)
 
 | Flag | Description |
 |------|-------------|
-| `--proxy-protocol-version 2` | Configures the ECE proxy to parse Proxy Protocol v2 headers. Required for client IP preservation. |
+| `--proxy-protocol-version 2` | Configures the ECE proxy to parse Proxy Protocol v2 headers. Required for client IP propagation. |
 | `--proxy-protocol-lenient` | Allows connections with or without Proxy Protocol headers. **Required** because NLB health checks do not send Proxy Protocol headers. |
 
 Use these flags on **all nodes** with the `proxy` role.
@@ -167,6 +184,7 @@ For existing ECE installations, you must update the proxy container configuratio
 
 - Admin access to the ECE API
 - The current proxy container configuration (to preserve existing environment variables)
+- `jq` installed on the host where you run the commands
 
 **Step 1: Get the current proxy container configuration**
 
@@ -181,7 +199,14 @@ curl -k -u "admin:$ADMIN_PASSWORD" \
 
 **Step 2: Update the proxy container configuration**
 
-Modify the `env` array to include the Proxy Protocol settings. You must include **all existing environment variables** plus the new ones, as this operation replaces the entire `env` array. Eg:
+Modify the `env` array to include the following Proxy Protocol settings:
+
+| Environment Variable | Value | Description |
+|---------------------|-------|-------------|
+| `CLOUD_HTTP_PROXY_PROTO_VERSION` | `2` | Configures the proxy to parse Proxy Protocol v2 headers |
+| `CLOUD_HTTP_PROXY_PROTO_LENIENT` | `true` | Allows connections with or without Proxy Protocol headers (required for NLB health checks) |
+
+You must include **all existing environment variables** plus the new ones, as this operation replaces the entire `env` array. For example:
 
 ```bash
 curl -k -u "admin:$ADMIN_PASSWORD" \
@@ -208,21 +233,29 @@ curl -k -u "admin:$ADMIN_PASSWORD" \
   }'
 ```
 
-| Environment Variable | Value | Description |
-|---------------------|-------|-------------|
-| `CLOUD_HTTP_PROXY_PROTO_VERSION` | `2` | Configures the proxy to parse Proxy Protocol v2 headers |
-| `CLOUD_HTTP_PROXY_PROTO_LENIENT` | `true` | Allows connections with or without Proxy Protocol headers (required for NLB health checks) |
 
-**Step 3: Restart the proxy containers**
+**Step 3: Recreate the proxy containers one by one**
 
-The configuration change takes effect after the proxy container is recreated. On each proxy host, remove the container to trigger automatic recreation:
+The configuration change takes effect after the proxy container is recreated. On each proxy host, remove the container to trigger automatic creation:
 
 ```bash
 # On each ECE host with the proxy role
 sudo podman rm -f frc-proxies-proxyv2
 ```
 
-The runner will automatically recreate the proxy container with the updated configuration within 30-60 seconds.
+The runner usually recreates the proxy container within 30-60 seconds. You can verify that the container has been recreated and is running with:
+
+```bash
+sudo podman ps -a | grep frc-proxies-proxyv2
+```
+
+If no output is returned, wait a few seconds and run the command again.
+
+::::{important}
+Do not remove the next proxy container until the previous one has been recreated and is running. Removing all proxy containers at once can cause a permanent service outage if the updated container set is invalid.
+
+If the container is not recreated or does not reach a running state, stop here and [contact Elastic Support](/troubleshoot/index.md#contact-us).
+::::
 
 **Step 4: Verify the configuration**
 
@@ -241,10 +274,12 @@ CLOUD_HTTP_PROXY_PROTO_LENIENT=true
 
 ## Troubleshooting
 
+Use the following table to identify common issues and fixes.
+
 | Issue | Solution |
 |-------|----------|
 | **Health checks failing** | Ensure `--proxy-protocol-lenient` was used. Health checks must use TCP protocol, not HTTP. |
-| **Client IPs not preserved** | Verify Proxy Protocol v2 is enabled on the target group and `CLOUD_HTTP_PROXY_PROTO_VERSION=2` is set in the proxy container. |
+| **Client IPs not propagated** | Verify Proxy Protocol v2 is enabled on the target group and `CLOUD_HTTP_PROXY_PROTO_VERSION=2` is set in the proxy container. |
 | **IPv6 connections failing** | Check NLB has `IpAddressType: dualstack`, security groups allow `::/0`, and route tables have IPv6 routes to the IGW. |
 | **Connection timeouts** | Verify target health, security group rules for ports 443 and 9243, and that the proxy container is running. |
 
@@ -252,5 +287,6 @@ CLOUD_HTTP_PROXY_PROTO_LENIENT=true
 
 ## Related Documentation
 
-- [ECE Load balancers](docs-content://deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md)
-- [Networking prerequisites](docs-content://deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md)
+- [ECE Load balancers](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md)
+- [Networking prerequisites](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md)
+- [Install ECE](/deploy-manage/deploy/cloud-enterprise/install.md)
