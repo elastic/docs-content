@@ -21,6 +21,8 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
 
 Welcome to Elastic fundamentals. This section helps you understand our platform, learn core concepts, and explore deployment options.
 
+TEST
+
 :::{tip}
 If you are using a [free 14-day {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and need guidance on building a proof of concept, refer to [Evaluate Elastic during a trial](/get-started/evaluate-elastic.md).
 :::
