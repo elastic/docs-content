@@ -35,10 +35,7 @@ You can create an anomaly rule to alert you when either the latency, throughput,
 :screenshot:
 :::
 
-::::{tip}
 These steps show how to use the **Alerts** UI. You can also create an anomaly rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create anomaly rule**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
-
-::::
 
 To create your anomaly rule:
 

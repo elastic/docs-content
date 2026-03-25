@@ -13,14 +13,6 @@ products:
 
 # Create a failed transaction rate threshold rule [observability-create-failed-transaction-rate-threshold-alert-rule]
 
-
-::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to create failed transaction rate threshold rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
-
 You can create a failed transaction rate threshold rule to alert you when the rate of transaction errors in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name. Add actions to raise alerts via services or third-party integrations e.g. mail, Slack, Jira.
 
 :::{image} /solutions/images/serverless-alerts-create-rule-failed-transaction-rate.png
@@ -28,11 +20,20 @@ You can create a failed transaction rate threshold rule to alert you when the ra
 :screenshot:
 :::
 
-::::{tip}
+## Requirements
+
+To create failed transaction rate threshold rules, you need the following:
+
+- {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions) and permissions to run machine learning jobs.
+- {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the Metrics indices from APM indices settings (when `xpack.apm.searchAggregatedTransactions` is different from never) or Transaction indices from APM indices settings. The default index patterns are `metrics-apm*`, `apm-*`, and `metrics-*.otel-*`. You cannot override these indices on a per-rule basis.
+
+## Create a failed transaction rate threshold rule
+
 These steps show how to use the **Alerts** UI. You can also create a failed transaction rate threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create threshold rule** and then **Failed transaction rate**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
-
-::::
-
 
 To create your failed transaction rate threshold rule:
 
