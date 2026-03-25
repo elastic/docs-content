@@ -140,36 +140,10 @@ PUT _snapshot/my_fs_backup
 :::::::
 ## Repository settings [filesystem-repository-settings]
 
-`chunk_size`
-:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum size of files in snapshots. In snapshots, files larger than this are broken down into chunks of this size or smaller. Defaults to `null` (unlimited file size).
+The `fs` repository type supports a number of settings to customize how data is stored, which may be specified when creating the repository.
 
-`compress`
-:   (Optional, Boolean) If `true`, metadata files, such as index mappings and settings, are compressed in snapshots. Data files are not compressed. Defaults to `true`.
-
-`location`
-:   (Required, string) Location of the shared filesystem used to store and retrieve snapshots. This location must be registered in the `path.repo` setting on all master and data nodes in the cluster. Unlike `path.repo`, this setting supports only a single file path.
-
-`max_number_of_snapshots`
-:   (Optional, integer) Maximum number of snapshots the repository can contain. Defaults to `Integer.MAX_VALUE`, which is `2`^`31`^`-1` or `2147483647`.
-
-`max_restore_bytes_per_sec`
-:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
-
-`max_snapshot_bytes_per_sec`
-:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
-
-`readonly`
-:   (Optional, Boolean) If `true`, the repository is read-only. The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.
-
-    Only a cluster with write access can create snapshots in the repository. All other clusters connected to the repository should have the `readonly` parameter set to `true`.
-
-    If `false`, the cluster can write to the repository and create snapshots in it. Defaults to `false`.
-
-    ::::{important}
-    If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository. Having multiple clusters write to the repository at the same time risks corrupting the contents of the repository.
-
-    ::::
-
+Repository settings cover storage placement, snapshot data layout and compression, throughput limits, read-only mode, and the maximum number of snapshots.
+For a complete list of all shared file system repository settings, refer to [Shared file system repository settings](elasticsearch://reference/elasticsearch/configuration-reference/fs-repository-settings.md#repository-fs-repository-settings).
 
 
 ## Troubleshooting a shared file system repository [_troubleshooting_a_shared_file_system_repository]
