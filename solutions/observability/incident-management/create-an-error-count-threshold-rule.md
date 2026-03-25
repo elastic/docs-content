@@ -29,7 +29,7 @@ To create log threshold rules, you need the following:
 
 ### Indices used by this rule
 
-This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The defaults are `logs-apm*`, `apm-*`, and `logs-*.otel-*`. You cannot override these indices on a per-rule basis.
+This rule queries the error indices from the APM indices settings. The defaults are `logs-apm*`, `apm-*`, and `logs-*.otel-*`. You cannot override these indices on a per-rule basis.
 
 ## Create an anomaly rule
 

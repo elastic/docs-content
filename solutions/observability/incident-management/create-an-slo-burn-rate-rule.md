@@ -33,7 +33,7 @@ To create SLO burn rate rules, you need the following:
 
 ### Indices used by this rule
 
-This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The default are `.slo-observability.sli*` and `.slo-observability.summary*`. You cannot override these indices on a per-rule basis.
+This rule queries the SLO Observability SLI and summary indices. The default are `.slo-observability.sli*` and `.slo-observability.summary*`. You cannot override these indices on a per-rule basis.
 
 ## Create SLO burn rate rules
 

@@ -30,7 +30,7 @@ To create metric threshold rules, you need the following:
 
 ### Indices used by this rule
 
-This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The defaults are `metrics-*` and `metricbeat-*`. You cannot override these indices on a per-rule basis.
+This rule queries the metrics indices from the [Infrastructure and Metrics Explorer settings](/solutions/observability/infra-and-hosts/configure-settings.md). The default are `metrics-*` and `metricbeat-*`. You cannot override these indices on a per-rule basis.
 
 ## Metric conditions [metrics-conditions]
 

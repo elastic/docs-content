@@ -26,7 +26,7 @@ To create synthetic monitor status rules, you need the following:
 
 ### Indices used by this rule
 
-This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The default is `synthetics-*`. You cannot override these indices on a per-rule basis.
+This rule queries the Synthetics indices. The default is `synthetics-*`. You cannot override these indices on a per-rule basis.
 
 ## Filters [observability-monitor-status-alert-filters]
 
