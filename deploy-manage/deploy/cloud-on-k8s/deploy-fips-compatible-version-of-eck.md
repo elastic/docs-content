@@ -17,7 +17,11 @@ For the ECK operator, adherence to FIPS 140-2 is ensured by:
 * Using FIPS approved / NIST recommended cryptographic algorithms.
 * Compiling the operator using the [BoringCrypto](https://github.com/golang/go/blob/dev.boringcrypto/README.boringcrypto.md) library for various cryptographic primitives.
 
-## FIPS compliant installation using Helm [k8s_fips_compliant_installation_using_helm]
+::::{warning}
+Due to a build configuration issue, FIPS-enabled ECK operator images published since version 2.9.0 use the standard Go cryptography library instead of BoringCrypto and **do not meet FIPS 140-2 requirements**. A fix is in progress.
+::::
+
+## FIPS compatible installation using Helm [k8s_fips_compliant_installation_using_helm]
 
 Set `image.fips=true` to install a FIPS-enabled version of the ECK Operator. Refer to [Install ECK using the Helm chart](../../../deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md) for full Helm installation instructions.
 
@@ -27,7 +31,7 @@ helm install elastic-operator elastic/eck-operator \
   --set=image.fips=true
 ```
 
-## FIPS compliant installation using manifests [k8s_fips_compliant_installation_using_manifests]
+## FIPS compatible installation using manifests [k8s_fips_compliant_installation_using_manifests]
 
 The `StatefulSet` definition within the yaml installation manifest will need to be patched prior to installation to append `-fips` to the `spec.template.spec.containers[*].image` to install a FIPS-enabled version of the ECK Operator. Refer to [Install ECK using the YAML manifests](../../../deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md) for full manifest installation instructions.
 
