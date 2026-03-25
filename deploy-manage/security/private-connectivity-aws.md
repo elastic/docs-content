@@ -67,10 +67,6 @@ If Elastic and your VPC overlap in two AZs or less, you can create subnets and V
 ::::
 
 ## Limitations
-```{applies_to}
-deployment:
-  ess: ga
-```
 
 When using AWS PrivateLink, the following limitations apply:
 
