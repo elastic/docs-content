@@ -136,7 +136,7 @@ The behavior of the alert depends on any active **group alerts by** fields:
     * If `host-1` reports CPU usage below the threshold of 80%, the alert status changes to `recovered`.
 :::
 
-:::{applies-item} {serverless: ga, stack: ga}
+:::{applies-item} {serverless: ga, stack: ga 9.4+}
 
 If there is no data, you have the following options to control the alert behavior:
 
