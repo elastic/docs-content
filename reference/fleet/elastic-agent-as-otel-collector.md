@@ -10,7 +10,7 @@ products:
 
 # {{agent}} as an OpenTelemetry Collector [elastic-agent-otel-collector]
 
-Starting with version 9.3, {{agent}} runs on the [Elastic Distribution of OpenTelemetry (EDOT) Collector](elastic-agent://reference/edot-collector/index.md) internally. Rather than managing separate {{beats}} sub-processes, the agent now runs data collection inside an embedded OpenTelemetry (OTel) Collector process, leveraging the extensibility and interoperability of the OTel ecosystem. This new architecture brings OTel capabilities while maintaining compatibility with existing {{beats}}-based workflows and integrations.
+Starting with version 9.3, {{agent}} runs the [Elastic Distribution of OpenTelemetry (EDOT) Collector](elastic-agent://reference/edot-collector/index.md). Rather than managing separate {{beats}} sub-processes, the agent collects data through an embedded OpenTelemetry (OTel) Collector process, leveraging the extensibility and interoperability of the OTel ecosystem. This architecture brings OTel capabilities while maintaining compatibility with existing {{beats}}-based workflows and integrations.
 
 This transition is incremental: in 9.3, agent self-monitoring uses the OTel runtime by default, while data collection inputs will be migrated to run as OTel receivers over subsequent releases. Existing integrations and agent configurations continue to work without disruption.
 
@@ -36,7 +36,7 @@ In {{agent}} 9.3 and later, the component that implements {{beats}}-based integr
 
 ## Beat receivers [beat-receivers]
 
-A _Beat receiver_ is a Beat input and its associated processors, wrapped to run as an OTel receiver inside the EDOT Collector. Beat receivers produce the exact same data, formatted according to the [Elastic Common Schema](ecs://reference/index.md) (ECS), as current Beat inputs — they do not output data in the OTLP schema.
+A _Beat receiver_ is a Beat input and its associated processors, wrapped to run as an OTel receiver inside the EDOT Collector. Beat receivers produce the exact same data, formatted according to the [Elastic Common Schema](ecs://reference/index.md) (ECS), as current Beat inputs. Beat receivers don't output data in the OTLP schema.
 
 When Beat receivers are enabled, {{agent}} automatically translates the relevant parts of its standalone or {{fleet}}-generated `elastic-agent.yml` file into an OTel Collector configuration. 
 
