@@ -367,6 +367,7 @@ toc:
           - file: alerting/alerts/alerting-setup.md
           - file: alerting/alerts/create-manage-rules.md
           - file: alerting/alerts/view-alerts.md
+          - file: alerting/alerts/query-alerts.md
           - file: alerting/alerts/rule-types.md
             children:
               - file: alerting/alerts/rule-type-index-threshold.md
@@ -469,3 +470,5 @@ toc:
       - hidden: workflows/use-cases.md
       - file: workflows/templates.md
   - file: numeral-formatting.md
+  - hidden: explore-and-visualize.md
+  - hidden: share-alert-and-automate.md
