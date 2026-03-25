@@ -58,7 +58,7 @@ The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assist
 
 - Manage which AI connectors are available in your environment.
 - Enable or disable AI Assistant and other AI-powered features in your environment.
-- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for {{observability}} and Search` and the `AI Assistant for Security` appear.
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
 
 ## Your data and the AI Assistant [data-information]
 
@@ -484,7 +484,7 @@ You can make the official Elastic documentation available to the AI Assistant, w
 Enable this feature from the **Settings** tab in AI Assistant Settings by using the "Install Elastic Documentation" action.
 
 ::::{important}
-For air-gapped environments, installing product documentation requires special configuration. See the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
+For air-gapped environments or environments where outbound traffic must go through an HTTP proxy, installing product documentation requires special configuration. Refer to the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
 ::::
 
 ## Anonymization [obs-ai-anonymization]

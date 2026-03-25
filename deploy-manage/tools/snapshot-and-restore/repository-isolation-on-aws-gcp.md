@@ -35,8 +35,3 @@ If you no longer need access to the snapshot of another deployment, you can remo
 If the repository is still in use (for example by mounted searchable snapshots), it can’t be removed. Remove any indices stored in this repository first.
 ::::
 
-
-:::{image} /deploy-manage/images/cloud-ec-elasticsearch-snapshots-of-other-deployments-aws-gcp.png
-:alt: View of the old snapshot repository in the Cloud UI
-:::
-
