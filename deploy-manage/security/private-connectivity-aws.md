@@ -66,9 +66,12 @@ If Elastic and your VPC overlap in two AZs or less, you can create subnets and V
 :::
 ::::
 
-### Transport client
+## Limitations
 
-Transport client is not supported over PrivateLink connections.
+When using AWS PrivateLink, the following limitations apply:
+
+```{include} _snippets/private-connectivity-limitations-ech.md
+```
 
 ## PrivateLink service names and aliases [ec-private-link-service-names-aliases]
 
