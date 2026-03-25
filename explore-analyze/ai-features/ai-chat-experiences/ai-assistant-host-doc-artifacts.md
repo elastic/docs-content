@@ -85,7 +85,7 @@ Choose the tab that matches your setup and follow the steps to stage the ZIP fil
 
 ::::{tab-item} S3-compatible bucket
 
-### Host using an S3-compatible bucket [host-using-s3]
+### Host using an S3-compatible bucket
 
 When {{kib}} can’t use Elastic’s public artifact host, hosting product documentation on an S3-compatible bucket is a common choice. You mirror the published ZIP files on an S3-compatible bucket that {{kib}} can reach over HTTPS inside your environment.
 
@@ -131,7 +131,7 @@ Unlike a CDN, such a bucket can expose S3’s listing API natively, so {{kib}} c
 
 ::::{tab-item} CDN
 
-Unlike an [S3-compatible bucket](#host-using-s3), a CDN can’t expose S3’s listing API natively. Instead, you must rebuild the same behavior with static files. This requires you to publish the ZIP artifacts and an XML file that mimics S3’s listing, configure the CDN so that folder URL returns the XML, then point {{kib}} at that HTTPS base URL. 
+Unlike the S3-compatible bucket flow in the previous tab, a CDN can’t expose S3’s listing API natively. Instead, you must rebuild the same behavior with static files. This requires you to publish the ZIP artifacts and an XML file that mimics S3’s listing, configure the CDN so that folder URL returns the XML, then point {{kib}} at that HTTPS base URL. 
 
 1. **Get the four product documentation ZIP files for your {{kib}} version.**
 
