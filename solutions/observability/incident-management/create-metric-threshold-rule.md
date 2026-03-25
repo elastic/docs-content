@@ -32,7 +32,6 @@ To create metric threshold rules, you need the following:
 
 This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The default is `metrics-*`, `metricbeat-*`. You cannot override these indices on a per-rule basis.
 
-
 ## Metric conditions [metrics-conditions]
 
 Conditions for each rule can be applied to specific metrics that you select. You can select the aggregation type (refer to [Aggregation options](aggregation-options.md)), the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. To help you determine which thresholds are meaningful to you, the preview charts provide a visualization.

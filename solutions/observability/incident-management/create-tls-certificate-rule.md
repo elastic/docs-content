@@ -27,6 +27,17 @@ There are two types of TLS certificate rule:
 
 Within the Synthetics UI, create a **TLS certificate** rule to receive notifications based on errors and outages.
 
+### Requirements
+
+To create Synthetics TLS certificate rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+#### Indices used by this rule
+
+This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The default is `synthetics-*`. You cannot override these indices on a per-rule basis.
+
 
 ### Filters [tls-rule-synthetics-filters]
 
