@@ -68,7 +68,7 @@ At the mirror’s repository root, {{kib}} reads a bucket-style listing, then do
 These settings tell {{kib}} which repository root to call:
 
 * **`xpack.productDocBase.artifactRepositoryUrl`**: The base address {{kib}} uses to read the file listing and download the documentation ZIPs. You set this in `kibana.yml` (or your deployment’s equivalent).
-* **`xpack.productDocBase.artifactRepositoryProxyUrl`**: Only needed when {{kib}} has to go through an HTTP or HTTPS proxy to reach the mirror.
+* {applies_to}`self: ga 9.4+`**`xpack.productDocBase.artifactRepositoryProxyUrl`**: Only needed when {{kib}} has to go through an HTTP or HTTPS proxy to reach the mirror.
 
 For defaults, allowed values, and more details, refer to [Knowledge base artifact settings for AI Assistants](kibana://reference/configuration-reference/ai-assistant-settings.md).
 
@@ -147,7 +147,7 @@ Unlike the S3-compatible bucket flow in the previous tab, a CDN can’t expose S
 
 3. **Create the listing file {{kib}} uses to discover the ZIP file names.**
 
-   Copy the template below and set each `<Key>` to match your artifact file names and {{kib}} version. For {{kib}} 9.1, replace every `9.0` in the keys with `9.1`.
+   Copy the template below and set each `<Key>` to match your artifact file names and {{kib}} version. For example, for {{kib}} 9.1, replace every `9.0` in the keys with `9.1`.
 
    ```xml
    <ListBucketResult>
