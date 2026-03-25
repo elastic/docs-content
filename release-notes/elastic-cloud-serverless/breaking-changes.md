@@ -6,7 +6,7 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
-## March 9, 2026 [elastic-cloud-serverless-03092026-breaking]
+## March 18, 2026 [elastic-cloud-serverless-03182026-breaking]
 
 :::{dropdown} The `_source` field mode is now saved to the template index settings
 
