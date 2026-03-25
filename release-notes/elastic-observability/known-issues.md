@@ -391,7 +391,7 @@ batch:
 
 ::::{dropdown} Profiling Symbolizer unable to store symbols for private executables
 
-Applies to: {{stack}} 9.x
+Applies to: {{stack}} 9.1
 
 **Details**
 
