@@ -46,7 +46,7 @@ In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the remove pr
 Removes a field and all nested fields matching a prefix.
 
 :::{note}
-The `where` clause is not supported on `remove_by_prefix`. You cannot use this processor cannot inside condition blocks.
+The `where` clause is not supported on `remove_by_prefix`. You cannot use this processor inside condition blocks.
 :::
 
 | Parameter | Type | Required | Description |

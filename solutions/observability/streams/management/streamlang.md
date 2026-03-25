@@ -16,7 +16,7 @@ products:
 
 Streamlang is a YAML domain-specific language (DSL) for defining stream processing and routing logic. Streamlang provides a consistent processing interface that can be transpiled to multiple execution targets, including {{es}} ingest pipelines and ES|QL. This allows processing to run at ingest time or query time without rewriting rules.
 
-You can write Streamlang directly using the [YAML editing mode](./extract.md#streams-editing-yaml-mode) in the **Processing** tab, or use the [interactive mode](./extract.md#streams-editing-interactive-mode) which generates Streamlang behind the scenes.
+You can write Streamlang directly using the [YAML editing mode](./extract.md#streams-editing-yaml-mode) in the **Processing** tab or the [interactive mode](./extract.md#streams-editing-interactive-mode) which generates Streamlang behind the scenes.
 
 ## Structure [streams-streamlang-structure]
 
@@ -38,11 +38,11 @@ steps:
           # nested processor
 ```
 
-Steps run in order. Each processor transforms the document, and passes the result to the next step.
+Steps run in order. Each processor transforms input documents, and passes results to the next step.
 
 ## Processors [streams-streamlang-processors]
 
-Processors are the building blocks of a Streamlang configuration. Each processor has an `action` field that specifies the type of operation to perform.
+Processors are the building blocks of a Streamlang configuration. Each processor has an `action` field that specifies an operation to perform.
 
 All processors support the following common options:
 
@@ -125,7 +125,7 @@ where:
   exists: false
 ```
 
-### Logical operators [streams-streamlang-logical-operators]
+### Logical operator conditions [streams-streamlang-logical-operators]
 
 Combine conditions using `and`, `or`, and `not`:
 
@@ -175,7 +175,7 @@ To enter conditions in YAML format when configuring a partition, turn on the **S
 
 ## Condition blocks [streams-streamlang-condition-blocks]
 
-Condition blocks group processors that run only when they meet a condition. Use a `condition` step with nested `steps`:
+Condition blocks group processors so that they run only when they meet a condition. Use a `condition` step with nested `steps`:
 
 ```yaml
 steps:
