@@ -154,4 +154,4 @@ While local (open-weight) LLMs offer greater privacy and control, they generally
 Local LLMs in air-gapped environments have specific installation and configuration instructions for deploying ELSER and configuring product documentation. Refer to the following links for more information:
 
 - [Deploy ELSER in an air-gapped environment](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#air-gapped-install)
-- [Configure product documentation for air-gapped-environments](kibana://reference/configuration-reference/ai-assistant-settings.md#configuring-product-doc-for-airgap)
+- [Configure your mirror (product documentation)](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md#configuring-product-doc-isolated-restricted-airgap)
