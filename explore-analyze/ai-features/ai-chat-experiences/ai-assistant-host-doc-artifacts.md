@@ -1,7 +1,6 @@
 ---
 navigation_title: "Host product documentation for AI assistant"
 applies_to:
-  stack: ga
   self: ga
 products:
   - id: kibana
