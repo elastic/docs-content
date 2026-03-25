@@ -186,6 +186,7 @@ toc:
                       - file: observability/apm/metrics-ui.md
                       - file: observability/apm/infrastructure.md
                       - file: observability/apm/logs.md
+                  - file: observability/apm/discover-traces.md
                   - file: observability/apm/filter-search-data.md
                     children:
                       - file: observability/apm/filter-data.md
