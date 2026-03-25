@@ -164,7 +164,7 @@ where:
 
 When [partitioning data into child streams](./partitioning.md), conditions use the previous operators to define how to route documents to a child stream.
 
-For example, the following routes documents where `attributes.filepath` equals `Linux.log`:
+For example, the following routes documents to a child stream when `attributes.filepath` equals `Linux.log`:
 
 ```yaml
 field: attributes.filepath
