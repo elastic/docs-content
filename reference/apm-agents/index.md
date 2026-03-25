@@ -12,7 +12,7 @@ products:
 
 This section contains reference information for APM Agents features, including:
 
-* [APM .NET agent](apm-agent-dotnet://reference/index.md)
+* [APM .NET agent](apm-agent-dotnet://reference/index2.md)
 * [APM Go agent](apm-agent-go://reference/index.md)
 * [APM Java agent](apm-agent-java://reference/index.md)
 * [APM Node.js agent](apm-agent-nodejs://reference/index.md)
