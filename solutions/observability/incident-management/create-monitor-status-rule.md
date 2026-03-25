@@ -17,6 +17,17 @@ Within the Synthetics UI, create a **Monitor Status** rule to receive notificati
 1. To access this page, go to **Synthetics** → **Overview**.
 2. At the top of the page, click **Alerts** → **Monitor status rule** → **Create status rule**.
 
+## Requirements
+
+To create log threshold rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The defaults is `synthetics-*`. You cannot override these indices on a per-rule basis.
+
 ## Filters [observability-monitor-status-alert-filters]
 
 The **Filter by** section controls the scope of the rule. The rule will only check monitors that match the filters defined in this section. In this example, the rule will only alert on `browser` monitors located in `Asia/Pacific - Japan`.
