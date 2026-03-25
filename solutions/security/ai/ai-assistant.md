@@ -29,7 +29,7 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 ::::{admonition} Requirements
 * {applies_to}`stack: ga` An [Enterprise subscription](https://www.elastic.co/pricing).
 * {applies_to}`serverless: ga` An {{sec-serverless}} project with the [EASE or Security Analytics Complete feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
-* To use AI Assistant, the **Elastic AI Assistant: All** Security [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), the **Actions and Connectors: Read** management [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and the **Monitor** Elasticsearch [Cluster privilege](/reference/elasticsearch/security-privileges.md#privileges-list-cluster).
+* To use AI Assistant, the **Elastic AI Assistant: All** Security [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), the **Actions and Connectors: Read** management [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and the **Monitor** Elasticsearch [Cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster).
 * To set up AI Assistant, the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * An [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which AI Assistant uses to generate responses.
 * A [machine learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
