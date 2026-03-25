@@ -19,6 +19,16 @@ Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead
 
 Within the {{uptime-app}}, create an **Uptime duration anomaly** rule to receive notifications based on the response durations for all of the geographic locations of each monitor. When a monitor runs for an unusual amount of time, at a particular time, an anomaly is recorded and highlighted on the [Monitor duration](/solutions/observability/uptime/inspect-duration-anomalies.md) chart.
 
+## Requirements
+
+To create uptime duration anomaly rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` The **User** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the ML anomalies indices and the index patterns specified in the uptime settings. The defaults are `.ml-anomalies-*` and `heartbeat-*` (may include `synthetics-*`). You cannot override these indices on a per-rule basis.
 
 ## Conditions [duration-alert-conditions]
 
