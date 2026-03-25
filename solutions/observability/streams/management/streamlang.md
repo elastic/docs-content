@@ -14,7 +14,7 @@ products:
 ---
 # Streamlang [streams-streamlang-overview]
 
-Streamlang is a YAML domain-specific language (DSL) for defining stream processing and routing logic. Streamlang provides a consistent processing interface that can be transpiled to multiple execution targets, including {{es}} ingest pipelines and ES|QL. This allows processing to run at ingest time or query time without rewriting rules.
+Streamlang is a YAML domain-specific language (DSL) for defining stream processing and routing logic. Streamlang provides a consistent processing interface that can be converted to multiple execution targets, including {{es}} ingest pipelines and ES|QL. This allows processing to run at ingest time or query time without rewriting rules.
 
 You can write Streamlang directly using the [YAML editing mode](./extract.md#streams-editing-yaml-mode) in the **Processing** tab or the [interactive mode](./extract.md#streams-editing-interactive-mode) which generates Streamlang behind the scenes.
 
@@ -125,7 +125,7 @@ where:
   exists: false
 ```
 
-### Logical operator conditions [streams-streamlang-logical-operators]
+### Logical conditions [streams-streamlang-logical-operators]
 
 Combine conditions using `and`, `or`, and `not`:
 
