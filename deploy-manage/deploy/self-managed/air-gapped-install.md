@@ -462,4 +462,4 @@ Installing the AI Assistant knowledge base content (Elastic documentation and Se
 xpack.productDocBase.artifactRepositoryProxyUrl: "https://my-proxy-host:port"
 ```
 
-For fully air-gapped environments where no external network access is available, refer to the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for instructions on deploying a local artifact repository.
+For fully air-gapped environments where no external network access is available, refer to [Host product documentation artifacts for Elastic AI assistant](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md) for how to mirror and host the artifacts, and to the [{{kib}} AI Assistants settings](kibana://reference/configuration-reference/ai-assistant-settings.md) reference for configuration fields.

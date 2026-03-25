@@ -85,6 +85,8 @@ Choose the tab that matches your setup and follow the steps to stage the ZIP fil
 
 ::::{tab-item} S3-compatible bucket
 
+### Host using an S3-compatible bucket [host-using-s3]
+
 When {{kib}} can’t use Elastic’s public artifact host, hosting product documentation on an S3-compatible bucket is a common choice. You mirror the published ZIP files on an S3-compatible bucket that {{kib}} can reach over HTTPS inside your environment.
 
 Unlike a CDN, such a bucket can expose S3’s listing API natively, so {{kib}} can read the bucket listing and download the ZIP files without a hand-maintained XML listing file. The following steps cover getting the artifacts, uploading them to your bucket, pointing {{kib}} at the repository URL, and completing setup.
@@ -186,7 +188,7 @@ Unlike an [S3-compatible bucket](#host-using-s3), a CDN can’t expose S3’s li
 
 5. **Restart {{kib}} so the configuration change takes effect.**
 
-   [Stop and restart](/deploy-manage/maintenance/start-stop-services/start-stop-kibana.md){{kib}}. The new `artifactRepositoryUrl` value in your `kibana.yml` isn't applied until {{kib}} fully restarts.
+   [Stop and restart](/deploy-manage/maintenance/start-stop-services/start-stop-kibana.md) {{kib}}. The new `artifactRepositoryUrl` value in your `kibana.yml` isn't applied until {{kib}} fully restarts.
 
 6. **Install product documentation in the AI assistant UI.**
 
