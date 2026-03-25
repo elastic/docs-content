@@ -15,23 +15,27 @@ products:
 
 % Stateful only for the important admonition below?
 
-::::{important}
-
-**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-**For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
-
-::::
-
-
 Create an SLO burn rate rule to get alerts when the burn rate is too high over a defined threshold for two different lookback periods: a long period and a short period that is 1/12th of the long period. For example, if your long lookback period is one hour, your short lookback period is five minutes.
 
-Choose which SLO to monitor and then define multiple burn rate windows with appropriate severity. For each period, the burn rate is computed as the error rate divided by the error budget. When the burn rates for both periods surpass the threshold, an alert is triggered. Add actions to raise alerts via services or third-party integrations e.g. mail, Slack, Jira.
+Choose which SLO to monitor and then define multiple burn rate windows with appropriate severity. For each period, the burn rate is computed as the error rate divided by the error budget. When the burn rates for both periods surpass the threshold, an alert is triggered. Add actions to raise alerts through services or third-party integrations for example, mail, Slack, Jira.
 
 :::{image} /solutions/images/serverless-slo-alerts-create-rule.png
 :alt: Create rule for failed transaction rate threshold
 :screenshot:
 :::
+
+## Requirements
+
+To create SLO burn rate rules, you need the following:
+
+- {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+- {applies_to}`serverless: ga` The **Editor** role or higher is required to create SLOs for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The default are `.slo-observability.sli*` and `.slo-observability.summary*`. You cannot override these indices on a per-rule basis.
+
+## Create SLO burn rate rules
 
 ::::{tip}
 These steps show how to use the **Alerts** UI. You can also create an SLO burn rate rule directly from **Observability** → **SLOs**. Click the more options icon (![More options](/solutions/images/serverless-boxesVertical.svg "")) to the right of the SLO you want to add a burn rate rule for, and select **![Bell](/solutions/images/serverless-bell.svg "") Create new alert rule** from the menu.
