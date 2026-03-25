@@ -20,6 +20,8 @@ Learn how to explore your {{product.elasticsearch}} data using **Discover**. Thi
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
   * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
+  * **[Traces exploration](/solutions/observability/apm/discover-traces.md)**
+  {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
 % LINK/PAGE TBD  * **Traces exploration**
 % * Security:
 % LINK/PAGE TBD  * **Security data exploration**
