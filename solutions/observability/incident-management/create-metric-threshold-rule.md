@@ -19,6 +19,7 @@ Additionally, each rule can be defined using multiple conditions that combine me
 When you create this rule on the **Metrics Explorer** page, the rule is automatically populated with the same parameters as the page. If you’ve chosen a **graph per** value, your rule is preconfigured to monitor and notify about each individual graph displayed on the page.
 
 You can also create a rule based on a single graph. On the **Metrics Explorer** page, click **Alerts and rules** → **Create alert**. The condition and filter sections of the threshold rule are automatically populated.
+::::
 
 ## Requirements
 
@@ -30,7 +31,7 @@ To create metric threshold rules, you need the following:
 ### Indices used by this rule
 
 This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The default is `metrics-*`, `metricbeat-*`. You cannot override these indices on a per-rule basis.
-::::
+
 
 ## Metric conditions [metrics-conditions]
 
