@@ -80,7 +80,7 @@ The following table lists all available processors. Refer to the individual proc
 
 Conditions are Boolean expressions that control when processors run and how wired streams route data into partitions. They appear in `where` clauses on processors, in [condition blocks](#streams-streamlang-condition-blocks), and in stream [partitioning](#streams-streamlang-partition-conditions).
 
-### Comparison operators [streams-streamlang-comparison-operators]
+### Comparison conditions [streams-streamlang-comparison-operators]
 
 Each comparison condition specifies a `field` and an operator with a value:
 
