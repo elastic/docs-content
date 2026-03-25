@@ -14,7 +14,7 @@ The index and component template forms in **Index Management** previously saved 
 
 **Impact:**
 
-Template JSON differs: the `_source` mode setting (`stored`/`synthetic`) appears in the index settings, not in mappings. Options that were previously ignored when saved from the UI can now take effect for indices that match the template. Automation that only reads `mappings._source.mode` should read `settings.index.mapping.source.mode` instead. Open and save the template in the UI to automatically migrate the field.
+The template's JSON structure has changed: the `_source` mode setting (`stored`/`synthetic`) appears in the index settings, not in mappings. Options that were previously ignored when saved from the UI can now take effect for indices that match the template. Automation that only reads `mappings._source.mode` should read `settings.index.mapping.source.mode` instead. Open and save the template in the UI to automatically migrate the field.
 
 For more information, view [#255122]({{kib-pull}}255122).
 :::
