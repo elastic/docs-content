@@ -465,12 +465,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "type": "referenceLines",
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-      "lines": [
+      "thresholds": [
         {
+          "operation": "static_value",
           "value": 0.10,
-          "label": "Maximum acceptable error rate",
-          "color": "#cc5642",
-          "style": "dashed"
+          "format": { "type": "percent" },
+          "label": "Maximum acceptable error rate"
         }
       ]
     }

@@ -344,10 +344,11 @@ When creating or editing a visualization, you can adjust the following settings.
          "y": [
            {
              "operation": "moving_average",
-             "field": "machine.ram",
-             "label": "Moving average of machine.ram",
+             "of": { "operation": "average", "field": "machine.ram", "format": { "type": "bytes" }, "filter": { "query": "" } },
+             "label": "Moving average of RAM",
              "format": { "type": "bytes" },
-             "filter": { "query": "" }
+             "filter": { "query": "" },
+             "color": { "type": "static", "color": "#6092c0" }
            }
          ],
          "breakdown_by": {

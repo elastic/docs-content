@@ -149,17 +149,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "query": { "query": "" },
   "metrics": [
     {
+      "type": "primary",
       "operation": "count",
       "label": "Page views",
       "format": { "type": "number", "decimals": 0, "compact": true },
-      "filter": { "query": "" }
+      "filter": { "query": "" },
+      "alignments": { "labels": "left", "value": "right" },
+      "icon": { "name": "empty" }
     },
     {
+      "type": "secondary",
       "operation": "formula",
       "formula": "count(shift='''1w''')",
       "label": "Compared to previous week",
       "format": { "type": "number", "decimals": 0, "compact": true },
       "filter": { "query": "" },
+      "alignments": { "value": "right" },
       "color": { "type": "static", "color": "#6092c0" }
     }
   ]
@@ -214,10 +219,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "filters": [],
   "query": { "query": "" },
   "metrics": [{
+    "type": "primary",
     "operation": "sum",
     "field": "bytes",
     "format": { "type": "bytes" },
-    "filter": { "query": "" }
+    "filter": { "query": "" },
+    "alignments": { "labels": "left", "value": "right" },
+    "icon": { "name": "empty" }
   }],
   "breakdown_by": {
     "operation": "terms",
@@ -365,19 +373,24 @@ The following examples show various configuration options that you can use for b
       "query": { "query": "" },
       "metrics": [
         {
+          "type": "primary",
           "operation": "formula",
           "formula": "count(kql='''response >= 200 and response < 300''') / count()",
           "label": "Successful requests (2xx)",
           "format": { "type": "percent", "decimals": 1 },
           "filter": { "query": "" },
+          "alignments": { "labels": "left", "value": "right" },
+          "icon": { "name": "empty" },
           "color": { "type": "static", "color": "#209280" }
         },
         {
+          "type": "secondary",
           "operation": "formula",
           "formula": "0.95",
           "label": "Target:",
           "format": { "type": "percent", "decimals": 0 },
           "filter": { "query": "" },
+          "alignments": { "value": "right" },
           "color": { "type": "static", "color": "#6092c0" }
         }
       ]
@@ -420,19 +433,24 @@ The following examples show various configuration options that you can use for b
       "query": { "query": "" },
       "metrics": [
         {
+          "type": "primary",
           "operation": "formula",
           "formula": "count(kql='''response >= 200 and response < 300''') / count()",
           "label": "Successful requests (2xx)",
           "format": { "type": "percent", "decimals": 1 },
           "filter": { "query": "" },
+          "alignments": { "labels": "left", "value": "right" },
+          "icon": { "name": "empty" },
           "color": { "type": "static", "color": "#209280" }
         },
         {
+          "type": "secondary",
           "operation": "formula",
           "formula": "0.95",
           "label": "Target:",
           "format": { "type": "percent", "decimals": 0 },
           "filter": { "query": "" },
+          "alignments": { "value": "right" },
           "color": { "type": "static", "color": "#6092c0" }
         }
       ],
@@ -477,17 +495,22 @@ The following examples show various configuration options that you can use for b
       "query": { "query": "" },
       "metrics": [
         {
+          "type": "primary",
           "operation": "count",
           "label": "Page views",
           "format": { "type": "number", "decimals": 0, "compact": true },
-          "filter": { "query": "" }
+          "filter": { "query": "" },
+          "alignments": { "labels": "left", "value": "right" },
+          "icon": { "name": "empty" }
         },
         {
+          "type": "secondary",
           "operation": "formula",
           "formula": "count(shift='''1w''')",
           "label": "Compared to previous week",
           "format": { "type": "number", "decimals": 0, "compact": true },
           "filter": { "query": "" },
+          "alignments": { "value": "right" },
           "color": { "type": "static", "color": "#6092c0" }
         }
       ]
