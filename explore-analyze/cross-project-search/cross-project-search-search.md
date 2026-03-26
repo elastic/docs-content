@@ -70,8 +70,8 @@ The way that missing resources are interpreted differs between unqualified and q
 The following describes the standard {{es}} behavior:
 
 `ignore_unavailable` defaults to `false`.
-When set to `false`, the request returns an error if it targets a missing resource (such as an index or data stream).
-When set to `true`, missing resources are ignored and the request returns an empty result instead of an error.
+When set to `false`, the request returns an error if it targets a concrete (non-wildcard) index, alias, or data stream that is missing, closed, or otherwise unavailable.
+When set to `true`, unavailable concrete targets are silently ignored.
 For example, if the `logs` index does not exist, the following request returns an error because the default value is `false`:
 
 ```console
