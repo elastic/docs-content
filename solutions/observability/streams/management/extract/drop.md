@@ -27,4 +27,17 @@ To configure a condition for dropping documents:
   The default is the `always` condition. Not setting a specific condition results in every document that matches the drop condition getting dropped from indexing.
   :::
 
-This functionality uses the {{es}} [Drop processor](elasticsearch://reference/enrich-processor/drop-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Drop processor](elasticsearch://reference/enrich-processor/drop-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+
+## YAML reference [streams-drop-yaml-reference]
+
+In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the drop document processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+
+The `drop_document` processor has no additional parameters beyond the common options. Use a `where` [condition](../streamlang.md#streams-streamlang-conditions) to specify when documents should be dropped.
+
+```yaml
+- action: drop_document
+  where:
+    field: attributes.path
+    eq: "/health"
+```
