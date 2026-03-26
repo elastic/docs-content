@@ -82,7 +82,7 @@ This tutorial results in a secure-by-default environment, but not every connecti
 * {{kib}} connects to {{es}} using the enrollment flow from the initial {{es}} setup.
 * HTTPS for browser-to-{{kib}} communication is **not configured** in this tutorial, although it is strongly recommended for production environments. {{kib}} HTTPS is covered in [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
 * {{fleet-server}} is installed using the Quick Start flow, which uses a self-signed certificate for its HTTPS endpoint.
-* {{agent}} enrolls using that Quick Start flow, so the generated install command includes the `--insecure` flag to allow a connection to a {{fleet-server}} endpoint that uses a self-signed certificate.
+* {{agent}} enrolls using that Quick Start flow, which requires the install command to include the `--insecure` flag.
 
 If you plan to use certificates signed by your organization's certificate authority or by a public CA, complete this tutorial until {{kib}} is installed (Step 7), and then continue with [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) before installing {{fleet-server}} and {{agent}}.
 
