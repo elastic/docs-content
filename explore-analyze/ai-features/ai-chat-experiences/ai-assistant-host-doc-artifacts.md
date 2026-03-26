@@ -12,21 +12,21 @@ description: Host AI assistant knowledge base artifacts via S3-compatible storag
 
 # Host a knowledge base artifact repo for AI assistants [host-knowledge-base-artifact-repo-for-ai-assistants]
 
-When {{kib}} can't use Elastic’s [public artifact URL](https://kibana-knowledge-base-artifacts.elastic.co/), which is common for deployments in air-gapped or restricted networks, you must deploy the knowledge base artifact repository manually.
+When {{kib}} can't use Elastic’s [public artifact URL](https://kibana-knowledge-base-artifacts.elastic.co/), which is common for deployments in air-gapped or restricted networks, you must deploy the knowledge base artifact repository manually. You do that by mirroring Elastic’s versioned knowledge base artifact ZIP files to infrastructure that {{kib}} can reach.
 
-Deploying the artifact repository manually requires you to mirror Elastic’s versioned ZIP bundles to infrastructure that {{kib}} can reach, then install knowledge base content from the AI assistant UI.
+This page walks you through hosting those ZIP files, configuring the repository URL in {{kib}}, and installing knowledge base content from the AI assistant so assistants can use Elastic product documentation without reaching Elastic’s public artifact host.
 
 ## Choose a hosting option [choose-a-hosting-option-for-knowledge-base-artifacts]
 
-Use this list to figure out the best deployment and hosting option for your environment, then go to the [Deploy the repository](#deploy-the-knowledge-base-artifact-repository) section for detailed steps.
+Use this list to figure out the best deployment and hosting setup for your environment, then go to the [Deploy the repository](#deploy-the-knowledge-base-artifact-repository) section for detailed steps.
 
-* **S3-compatible bucket**: You store the bundles in an S3-compatible bucket over HTTPS and the bucket exposes a normal object listing at the repository root, so {{kib}} can discover the ZIPs without you maintaining a separate listing XML file (unlike the CDN option).
-* **CDN**: You serve the bundles through a CDN and publish S3-style listing XML yourself, served as the folder’s default document or directory index.
-* **Local files on the {{kib}} host**: The bundles exist only as files on the {{kib}} host and you configure a `file://` repository URL. Requires {{kib}} 9.1 or later.
+* **S3-compatible bucket**: You store the artifact ZIP files in an S3-compatible bucket over HTTPS and the bucket exposes a normal object listing at the repository root, so {{kib}} can discover the ZIPs without you maintaining a separate listing XML file (unlike the CDN option).
+* **CDN**: You serve the ZIP files through a CDN and publish S3-style listing XML yourself, served as the folder’s default document or directory index.
+* **Local files on the {{kib}} host**: The ZIP files exist only on the {{kib}} host filesystem and you configure a `file://` repository URL. Requires {{kib}} 9.1 or later.
 
 ## Deploy the repository [deploy-the-knowledge-base-artifact-repository]
 
-Open the tab that matches your deployment and hosting setup, then complete the steps in that tab.
+Choose the tab that matches your deployment and hosting setup:
 
 :::::::{tab-set}
 
@@ -44,36 +44,36 @@ An S3-compatible bucket can expose a listing comparable to Elastic’s public bu
 Check which stack version you’re running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
 :::
 
-Elastic publishes four knowledge base artifact bundles for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
+Elastic publishes knowledge base artifact ZIP files for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
 
 ```yaml
 kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
 ```
 
-For example, when {{kib}} is 9.0, the four ZIP files are:
+For example, when {{kib}} is 9.0, the ZIP files are:
 
 * `kb-product-doc-elasticsearch-9.0.zip`
 * `kb-product-doc-kibana-9.0.zip`
 * `kb-product-doc-observability-9.0.zip`
 * `kb-product-doc-security-9.0.zip`
 
-Download all four from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same bundles if you’re fully offline.
+Download the ZIP files from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same ZIP files if you’re fully offline.
 
 ::::
 
-::::{step} Upload the artifacts to your bucket
+::::{step} Upload the ZIP files to your bucket
 
-Configure the bucket root so its listing matches `https://kibana-knowledge-base-artifacts.elastic.co/` and lists all four ZIPs. Over HTTPS, use S3-style listing from a compatible bucket.
+Configure the bucket root so its listing matches `https://kibana-knowledge-base-artifacts.elastic.co/` and lists all ZIPs. Over HTTPS, use S3-style listing from a compatible bucket.
 
 :::{important}
-For S3-compatible storage, a single HTTPS repository root must expose the bucket’s list response (the same S3-style listing {{kib}} would get from `ListObjects`-style APIs) and the four object keys at that same root. **Do not** rely on a separate path for the ZIPs. Object key names must match the bundle file names from the previous step so each listing entry resolves to a downloadable ZIP.
+For S3-compatible storage, a single HTTPS repository root must expose the bucket’s list response (the same S3-style listing {{kib}} would get from `ListObjects`-style APIs) and the object keys at that same root. **Do not** rely on a separate path for the ZIPs. Object key names must match the ZIP file names from the previous step so each listing entry resolves to a downloadable file.
 :::
 
 ::::
 
 ::::{step} Set the repository URL in {{kib}}
 
-In `kibana.yml`, set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to the bucket root’s HTTPS URL (the base that serves both the listing and the four ZIPs). **Do not** point it at a subdirectory of that root.
+In `kibana.yml`, set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to the bucket root’s HTTPS URL (the base that serves both the listing and the ZIPs). **Do not** point it at a subdirectory of that root.
 
 ```yaml
 # Replace with your bucket’s HTTPS base URL (repository root only)
@@ -115,26 +115,26 @@ Deploying with a CDN matches the S3 flow, except you must publish a bucket-listi
 Check which stack version you’re running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
 :::
 
-Elastic publishes four knowledge base artifact bundles for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
+Elastic publishes knowledge base artifact ZIP files for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
 
 ```yaml
 kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
 ```
 
-For example, when {{kib}} is 9.0, the four ZIP files are:
+For example, when {{kib}} is 9.0, the ZIP files are:
 
 * `kb-product-doc-elasticsearch-9.0.zip`
 * `kb-product-doc-kibana-9.0.zip`
 * `kb-product-doc-observability-9.0.zip`
 * `kb-product-doc-security-9.0.zip`
 
-Download all four from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same bundles if you’re fully offline.
+Download the ZIP files from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same ZIP files if you’re fully offline.
 
 ::::
 
-::::{step} Upload the artifacts to the CDN
+::::{step} Upload the ZIP files to the CDN
 
-Put all four ZIP files in one folder on the CDN origin (or backing storage) so they share a single HTTPS base path. You add the listing XML in the next step and wire the CDN to serve it as that folder’s index.
+Put all ZIP files in one folder on the CDN origin (or backing storage) so they share a single HTTPS base path. You add the listing XML in the next step and wire the CDN to serve it as that folder’s index.
 
 ::::
 
@@ -217,7 +217,7 @@ When {{kib}} can’t reach Elastic’s public host over HTTPS but can read local
 Check which stack version you’re running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
 :::
 
-Put the four version-matched bundles in one directory on the {{kib}} host. File names use this pattern:
+Put the version-matched ZIP files in one directory on the {{kib}} host. File names use this pattern:
 
 ```yaml
 kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
@@ -230,7 +230,7 @@ For example, when {{kib}} is 9.0:
 * `kb-product-doc-observability-9.0.zip`
 * `kb-product-doc-security-9.0.zip`
 
-Download all four from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same bundles if you’re fully offline.
+Download the ZIP files from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same ZIP files if you’re fully offline.
 
 ::::
 
@@ -239,7 +239,7 @@ Download all four from [kibana-knowledge-base-artifacts.elastic.co](https://kiba
 Set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to the `file://` URL of that directory.
 
 :::{important}
-With a `file://` repository, the directory must sit on the {{kib}} host, or on storage mounted there. It must also be readable by the user that runs {{kib}}. Use the `file://` URL of the folder that directly contains the four ZIPs. **Do not** point at a parent directory. File names must stay exactly as in the previous step, or {{kib}} won’t pick up the bundles.
+With a `file://` repository, the directory must sit on the {{kib}} host, or on storage mounted there. It must also be readable by the user that runs {{kib}}. Use the `file://` URL of the folder that directly contains the ZIPs. **Do not** point at a parent directory. File names must stay exactly as in the previous step, or {{kib}} won’t pick up the ZIP files.
 :::
 
 ::::
