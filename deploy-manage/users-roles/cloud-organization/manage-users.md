@@ -46,11 +46,21 @@ To invite users to your organization:
 
     Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation before it expires. If the invite has expired, an admin can resend the invitation.
 
+## Invite users to join additional organizations [invite-additional-orgs]
+
+:::{include} _snippets/invite-additional-orgs.md
+:::
+
 ## Manage existing users
 
 On the **Members** tab of the **Organization** page, you can view the list of current members, including their status, role, and any other organizations that they are members of.
 
 In the **Actions** column, click the three dots to edit a member’s role, or revoke an invite, or remove a member from your organization.
+
+## View your users' organization memberships
+
+:::{include} _snippets/view-org-memberships.md
+:::
 
 ## Manage users through the {{ecloud}} API [ec-api-organizations]
 

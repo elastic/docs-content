@@ -25,7 +25,7 @@ You can perform the following tasks to manage multiple organizations:
 * [Create a new organization](#create-a-new-organization)
 * [View the organizations you have access to](#view-organizations)
 * [Switch to a different organization](#switch-to-a-different-organization)
-% * [Delete an organization](#delete-an-organization)
+* [Invite users to join additional organizations](#invite-users-to-join-additional-organizations)
 
 :::{include} _snippets/view-orgs.md
 :::
@@ -51,6 +51,12 @@ You can also create a new organization by clicking on your current organization 
 :::{include} _snippets/switch-orgs.md
 :::
 
-% ## Delete an organization
+## Invite users to join additional organizations [invite-additional-orgs]
 
-% Can it be done? Do we want to document this?
+:::{include} _snippets/invite-additional-orgs.md
+:::
+
+## View your users' organization memberships
+
+:::{include} _snippets/view-users-org-memberships.md
+:::
