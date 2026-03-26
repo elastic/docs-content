@@ -110,10 +110,7 @@ To create a stacked bar chart:
 ![Bar chart with stacking](../../images/stacked-bar-chart.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -172,10 +169,7 @@ To create an unstacked bar chart:
 ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -361,10 +355,7 @@ The following examples show various configuration options that you can use for b
 ![Stacked bar chart showing traffic per week broken down per region](/explore-analyze/images/weekly-website-traffic-per-region.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -424,10 +415,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Bar chart with reference line showing traffic per week broken down per region](/explore-analyze/images/request-error-rate-per-host.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \

@@ -98,10 +98,7 @@ Use stacking to show how categories contribute to a total over time.
 4. Optionally, in the **Breakdown** settings, you can set **Rank by** to specify the dimension the top values are ranked by.
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -161,10 +158,7 @@ You can also compute the relative change using a formula, for example:
 ::::
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -308,10 +302,7 @@ When creating or editing a visualization, you can adjust the following settings.
    ![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
 
    :::{dropdown} Create this chart using the API
-   ```{applies_to}
-   stack: preview 9.4
-   serverless: preview
-   ```
+   :applies_to: { stack: preview 9.4, serverless: preview }
 
    ```bash
    curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -367,10 +358,7 @@ When creating or editing a visualization, you can adjust the following settings.
    ![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
 
    :::{dropdown} Create this chart using the API
-   ```{applies_to}
-   stack: preview 9.4
-   serverless: preview
-   ```
+   :applies_to: { stack: preview 9.4, serverless: preview }
 
    ```bash
    curl -X POST "${KIBANA_URL}/api/visualizations" \

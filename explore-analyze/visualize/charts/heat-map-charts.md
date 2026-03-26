@@ -88,10 +88,7 @@ You can configure custom color ranges on the **Cell value** dimension to emphasi
 ![Example Lens heat map chart showing error rates per day for various errors](/explore-analyze/images/heat-map-chart-example-server-errors.png)
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -257,10 +254,7 @@ The following examples show various configuration options for building impactful
 ![Heat map showing request volume by hour and day](/explore-analyze/images/heat-map-example-request-volume.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -306,10 +300,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Heat map showing sales performance by product and region](/explore-analyze/images/heat-map-example-sales-performance.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \

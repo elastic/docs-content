@@ -92,10 +92,7 @@ Use a gauge to track progress toward a specific target, such as monthly sales go
 ![Example Lens gauge chart showing yearly sales goal](/explore-analyze/images/gauge-chart-scenario-goal.png "=75%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -146,10 +143,7 @@ This example shows a gauge with server response time and color-coded health indi
 ![Example Lens gauge chart showing average response time in milliseconds](/explore-analyze/images/gauge-chart-scenario-thresholds.png "=50%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -196,10 +190,7 @@ Instead of entering fixed static values, you can use fields from your data to se
 This approach is useful when bounds or targets vary by category, time period, or user. You can also use formulas to define dynamic bounds or goals. Refer to [Lens formulas](/explore-analyze/visualize/lens.md#lens-formulas) for more details.
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -341,10 +332,7 @@ The following examples show various configuration options for building impactful
 ![Example Lens gauge chart showing average CPU usage in percent](/explore-analyze/images/gauge-chart-example-cpu.png "=50%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -392,10 +380,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Example Lens gauge chart showing disk space utilization in percent](/explore-analyze/images/gauge-chart-example-disk-space.png "=50%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \

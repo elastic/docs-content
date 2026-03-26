@@ -95,10 +95,7 @@ This example uses the **Kibana Sample Data eCommerce** data set. If you haven't 
 ![Waffle chart showing revenue progress toward a sales target](/explore-analyze/images/waffle-scenario-completion.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -224,10 +221,7 @@ The following examples show various configuration options for building impactful
 ![Waffle chart showing response status breakdown](/explore-analyze/images/waffle-example-response-status.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -268,10 +262,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Waffle chart showing OS distribution](/explore-analyze/images/waffle-example-os.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \

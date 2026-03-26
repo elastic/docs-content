@@ -134,10 +134,7 @@ To add trend indicators to your metric visualization:
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -204,10 +201,7 @@ You can combine progress bars with secondary metrics to show both progress towar
 ::::
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -361,10 +355,7 @@ The following examples show various configuration options that you can use for b
     ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
 
     :::{dropdown} Create this chart using the API
-    ```{applies_to}
-    stack: preview 9.4
-    serverless: preview
-    ```
+    :applies_to: { stack: preview 9.4, serverless: preview }
 
     ```bash
     curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -419,10 +410,7 @@ The following examples show various configuration options that you can use for b
     ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate-top-countries.png "=70%")
 
     :::{dropdown} Create this chart using the API
-    ```{applies_to}
-    stack: preview 9.4
-    serverless: preview
-    ```
+    :applies_to: { stack: preview 9.4, serverless: preview }
 
     ```bash
     curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -483,10 +471,7 @@ The following examples show various configuration options that you can use for b
     ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
 
     :::{dropdown} Create this chart using the API
-    ```{applies_to}
-    stack: preview 9.4
-    serverless: preview
-    ```
+    :applies_to: { stack: preview 9.4, serverless: preview }
 
     ```bash
     curl -X POST "${KIBANA_URL}/api/visualizations" \

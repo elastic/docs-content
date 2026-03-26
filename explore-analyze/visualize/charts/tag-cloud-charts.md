@@ -151,10 +151,7 @@ The following examples show various configuration options for building impactful
 ![Tag cloud showing popular request URLs](/explore-analyze/images/tag-cloud-example-urls.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -194,10 +191,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Tag cloud showing most popular flight destinations](/explore-analyze/images/tag-cloud-example-destinations.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \

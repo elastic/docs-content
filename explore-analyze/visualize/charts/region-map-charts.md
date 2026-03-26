@@ -130,10 +130,7 @@ The following examples show various configuration options for building impactful
 ![Region map showing website traffic by destination country](/explore-analyze/images/region-map-example-traffic.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -172,10 +169,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Region map showing customer distribution by country](/explore-analyze/images/region-map-example-customers.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -215,10 +209,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Region map showing average ticket price by destination country](/explore-analyze/images/region-map-example-ticket-price.png "=70%")
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \

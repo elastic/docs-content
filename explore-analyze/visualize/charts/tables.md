@@ -104,10 +104,7 @@ For example, you could show visits per date in rows, split by the top 3 hours of
 ![Example of a table in Lens using the Split metrics by functionality](../../images/lens-table-breakdown-by-example.png)
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -165,10 +162,7 @@ To add a formula to a table:
 Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for formula examples, including time-shifting comparisons and mathematical operations, and the {icon}`documentation` **Formula reference** available from Lens.
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -348,10 +342,7 @@ The following examples show various configuration options you can use for buildi
     ![Table showing top pages by unique visitors](../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png "=70%")
 
     :::{dropdown} Create this chart using the API
-    ```{applies_to}
-    stack: preview 9.4
-    serverless: preview
-    ```
+    :applies_to: { stack: preview 9.4, serverless: preview }
 
     ```bash
     curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -397,10 +388,7 @@ The following examples show various configuration options you can use for buildi
     ![Table showing customers over time by continent](../../images/kibana-lens_table_over_time.png "=70%")
 
     :::{dropdown} Create this chart using the API
-    ```{applies_to}
-    stack: preview 9.4
-    serverless: preview
-    ```
+    :applies_to: { stack: preview 9.4, serverless: preview }
 
     ```bash
     curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -455,10 +443,7 @@ The following examples show various configuration options you can use for buildi
       * **Color by value**: Dynamic coloring to highlight ranges with higher byte transfers
 
     :::{dropdown} Create this chart using the API
-    ```{applies_to}
-    stack: preview 9.4
-    serverless: preview
-    ```
+    :applies_to: { stack: preview 9.4, serverless: preview }
 
     ```bash
     curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -512,10 +497,7 @@ The following examples show various configuration options you can use for buildi
          * **Text alignment**: `Right`
 
     :::{dropdown} Create this chart using the API
-    ```{applies_to}
-    stack: preview 9.4
-    serverless: preview
-    ```
+    :applies_to: { stack: preview 9.4, serverless: preview }
 
     ```bash
     curl -X POST "${KIBANA_URL}/api/visualizations" \
