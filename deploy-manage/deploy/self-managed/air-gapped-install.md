@@ -456,10 +456,10 @@ Some {{ml}} features, like natural language processing (NLP), require you to dep
 
 Installing the AI Assistant knowledge base content (Elastic documentation and Security Labs) requires network access to the artifact repository at `https://kibana-knowledge-base-artifacts.elastic.co`.
 
-{applies_to}`stack: ga 9.4` In environments where outbound traffic must go through an HTTP proxy, you can configure {{kib}} to reach the artifact repository through the proxy by adding the following to `kibana.yml`:
+{applies_to}`self: ga 9.4` In environments where outbound traffic must go through an HTTP proxy, you can configure {{kib}} to reach the artifact repository through the proxy by adding the following to `kibana.yml`:
 
 ```yaml
 xpack.productDocBase.artifactRepositoryProxyUrl: "https://my-proxy-host:port"
 ```
 
-For fully air-gapped environments where no external network access is available, refer to [Host product documentation artifacts for Elastic AI assistant](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md) for how to mirror and host the artifacts, and to the [{{kib}} AI Assistants settings](kibana://reference/configuration-reference/ai-assistant-settings.md) reference for configuration fields.
+For fully air-gapped environments where no external network access is available, refer to [Host a knowledge base artifact repo for AI assistants](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md) for how to manually deploy the knowledge base artifact repository or use a `file://` path for {{kib}}, and to the [{{kib}} AI Assistants settings](kibana://reference/configuration-reference/ai-assistant-settings.md) reference for configuration fields.

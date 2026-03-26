@@ -1,5 +1,5 @@
 ---
-navigation_title: "Host product documentation for AI assistant"
+navigation_title: "Knowledge base artifact repo for AI assistants"
 applies_to:
   self: ga
 products:
@@ -7,207 +7,260 @@ products:
   - id: security
   - id: observability
   - id: elasticsearch
-description: Mirror Elastic product documentation ZIP files on infrastructure Kibana can reach so Kibana can install them for the AI assistant when the public artifact repository is unavailable or blocked.
+description: Host AI assistant knowledge base artifacts via S3-compatible storage, CDN, or local paths when Kibana cannot reach Elastic’s public URL, then set the repository URL and install from the assistant UI.
 ---
 
-# Host product documentation artifacts for Elastic AI assistant [host-product-documentation-artifacts-ai-assistant]
+# Host a knowledge base artifact repo for AI assistants [host-knowledge-base-artifact-repo-for-ai-assistants]
 
-Elastic packages product documentation for AI assistant as versioned ZIP files. When {{kib}} can reach Elastic’s public repository at [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/), {{kib}} downloads those ZIP files from that public host and you install product documentation using the AI assistant UI.
+When {{kib}} can't use Elastic’s [public artifact URL](https://kibana-knowledge-base-artifacts.elastic.co/), which is common for deployments in air-gapped or restricted networks, you must deploy the knowledge base artifact repository manually.
 
-When {{kib}} can't reach that repository, you still use the same published ZIP files but host them as a documentation mirror on infrastructure that your deployment can reach. This is a common scenario for deployments on isolated, restricted, or air-gapped networks. 
+Deploying the artifact repository manually requires you to mirror Elastic’s versioned ZIP bundles to infrastructure that {{kib}} can reach, then install knowledge base content from the AI assistant UI.
 
-The sections that follow cover how to prepare a documentation mirror, configure hosting, and install product documentation for the AI assistant.
+## Choose a hosting option [choose-a-hosting-option-for-knowledge-base-artifacts]
 
-## Prepare to host your documentation mirror [prepare-to-host-your-documentation-mirror]
+Use this list to figure out the best deployment and hosting option for your environment, then go to the [Deploy the repository](#deploy-the-knowledge-base-artifact-repository) section for detailed steps.
 
-A documentation mirror is your own copy of Elastic’s published product-documentation bundles. It includes the versioned ZIP files for your {{stack}} and the bucket-style listing {{kib}} uses to discover those file names. Typically, you would create a mirror when {{kib}} can't reach Elastic’s public host to download documentation because the deployment is on an isolated, restricted, or air-gapped network.
+* **S3-compatible bucket**: You store the bundles in an S3-compatible bucket over HTTPS and the bucket exposes a normal object listing at the repository root, so {{kib}} can discover the ZIPs without you maintaining a separate listing XML file (unlike the CDN option).
+* **CDN**: You serve the bundles through a CDN and publish S3-style listing XML yourself, served as the folder’s default document or directory index.
+* **Local files on the {{kib}} host**: The bundles exist only as files on the {{kib}} host and you configure a `file://` repository URL. Requires {{kib}} 9.1 or later.
 
-Before setting up a documentation mirror, review this section to understand the documentation files you need, mirror layout requirements and hosting options, and {{kib}} settings that control the mirror URL.
+## Deploy the repository [deploy-the-knowledge-base-artifact-repository]
+
+Open the tab that matches your deployment and hosting setup, then complete the steps in that tab.
+
+:::::::{tab-set}
+
+::::::{tab-item} S3-compatible bucket
+
+### Deploy using an S3-compatible bucket
+
+An S3-compatible bucket can expose a listing comparable to Elastic’s public bucket, so {{kib}} can read the index and fetch the ZIP files without maintaining listing XML manually.
 
 :::::{stepper}
 
-::::{step} Get product documentation ZIP files for your {{kib}} version
+::::{step} Get the product documentation ZIP files for your {{kib}} version
 
-1. **Identify the documentation ZIP version and file names for your {{kib}} release.**
+:::{tip}
+Check which stack version you’re running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
+:::
 
-   Check which stack version you are running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it does not match your {{kib}} release, or the file names differ from what Elastic publishes for that release, mirroring will not work.
+Elastic publishes four knowledge base artifact bundles for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
 
-   Elastic publishes four documentation bundles for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
+```yaml
+kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
+```
 
-   ```yaml
-   kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
-   ```
+For example, when {{kib}} is 9.0, the four ZIP files are:
 
-   For example, when {{kib}} is 9.0, the four ZIP files are:
+* `kb-product-doc-elasticsearch-9.0.zip`
+* `kb-product-doc-kibana-9.0.zip`
+* `kb-product-doc-observability-9.0.zip`
+* `kb-product-doc-security-9.0.zip`
 
-   * `kb-product-doc-elasticsearch-9.0.zip`
-   * `kb-product-doc-kibana-9.0.zip`
-   * `kb-product-doc-observability-9.0.zip`
-   * `kb-product-doc-security-9.0.zip`
-
-2. **Download or copy the documentation ZIP files.**
-
-   Download all four from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already mirrored them if you are fully offline.
+Download all four from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same bundles if you’re fully offline.
 
 ::::
 
-::::{step} Understand mirror layout requirements and hosting options
+::::{step} Upload the artifacts to your bucket
 
-At the mirror’s repository root, {{kib}} reads a bucket-style listing, then downloads each ZIP from that same URL. Before you connect {{kib}} to the mirror in the next step, confirm the layout {{kib}} expects, then choose how you will host it:
+Configure the bucket root so its listing matches `https://kibana-knowledge-base-artifacts.elastic.co/` and lists all four ZIPs. Over HTTPS, use S3-style listing from a compatible bucket.
 
-* **Repository layout**: Keep the bucket-style listing and the four ZIP files under one repository root, matching Elastic’s public host. {{kib}} uses that single base URL for both the listing and the downloads. Don't use a custom layout or modify the file names. If you do this, {{kib}} won't be able to find and download the ZIP files. 
-* **Hosting**: Choose an S3-compatible bucket or a CDN with a listing file.
-
-   {applies_to}`self: ga 9.1+` You also have the option to host the documentation as local files on the {{kib}} host.
+:::{important}
+For S3-compatible storage, a single HTTPS repository root must expose the bucket’s list response (the same S3-style listing {{kib}} would get from `ListObjects`-style APIs) and the four object keys at that same root. **Do not** rely on a separate path for the ZIPs. Object key names must match the bundle file names from the previous step so each listing entry resolves to a downloadable ZIP.
+:::
 
 ::::
 
-::::{step} Know which {{kib}} settings control the mirror URL
+::::{step} Set the repository URL in {{kib}}
 
-These settings tell {{kib}} which repository root to call:
+In `kibana.yml`, set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to the bucket root’s HTTPS URL (the base that serves both the listing and the four ZIPs). **Do not** point it at a subdirectory of that root.
 
-* **`xpack.productDocBase.artifactRepositoryUrl`**: The base address {{kib}} uses to read the file listing and download the documentation ZIPs. You set this in `kibana.yml` (or your deployment’s equivalent).
-* {applies_to}`self: ga 9.4+`**`xpack.productDocBase.artifactRepositoryProxyUrl`**: Only needed when {{kib}} has to go through an HTTP or HTTPS proxy to reach the mirror.
+```yaml
+# Replace with your bucket’s HTTPS base URL (repository root only)
+xpack.productDocBase.artifactRepositoryUrl: "<MY_CUSTOM_REPOSITORY_URL>"
+```
 
-For defaults, allowed values, and more details, refer to [Knowledge base artifact settings for AI Assistants](kibana://reference/configuration-reference/ai-assistant-settings.md).
+::::
+
+::::{step} Restart {{kib}}
+
+[Stop and restart](/deploy-manage/maintenance/start-stop-services/start-stop-kibana.md) {{kib}}. The new `artifactRepositoryUrl` value isn’t applied until {{kib}} fully restarts.
+
+::::
+
+::::{step} Install knowledge base content from the AI assistant UI
+
+The steps to install knowledge base content depend on the assistant that you use:
+
+* **AI Assistant for Security**: Refer to [Give AI Assistant access to Elastic’s product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
+* **AI Assistant for Observability and Search**: Refer to [Add Elastic documentation](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-product-documentation).
 
 ::::
 
 :::::
 
-## Configure your documentation mirror [configuring-product-doc-isolated-restricted-airgap]
+::::::
 
-Choose the tab that matches your setup and follow the steps to stage the ZIP files, point {{kib}} at your mirror, and complete the setup configuration.
+::::::{tab-item} CDN
 
+### Deploy to a CDN
 
-:::::{tab-set}
+Deploying with a CDN matches the S3 flow, except you must publish a bucket-listing XML file and configure the CDN to serve it as the folder’s directory index (default document).
 
-::::{tab-item} S3-compatible bucket
+:::::{stepper}
 
-### Host using an S3-compatible bucket
+::::{step} Get the product documentation ZIP files for your {{kib}} version
 
-When {{kib}} can’t use Elastic’s public artifact host, hosting product documentation on an S3-compatible bucket is a common choice. You mirror the published ZIP files on an S3-compatible bucket that {{kib}} can reach over HTTPS inside your environment.
+:::{tip}
+Check which stack version you’re running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
+:::
 
-Unlike a CDN, such a bucket can expose S3’s listing API natively, so {{kib}} can read the bucket listing and download the ZIP files without a hand-maintained XML listing file. The following steps cover getting the artifacts, uploading them to your bucket, pointing {{kib}} at the repository URL, and completing setup.
+Elastic publishes four knowledge base artifact bundles for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
 
-1. **Get the four product documentation ZIP files for your {{kib}} version.**
+```yaml
+kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
+```
 
-   Download them from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) if your network can reach that host. If it can't, get the same files from another system or mirror and transfer them to your environment.
+For example, when {{kib}} is 9.0, the four ZIP files are:
 
-   {{kib}} only installs documentation when the ZIP file names and version segment match Elastic’s published artifacts for your stack. Without those files, the install can't succeed.
+* `kb-product-doc-elasticsearch-9.0.zip`
+* `kb-product-doc-kibana-9.0.zip`
+* `kb-product-doc-observability-9.0.zip`
+* `kb-product-doc-security-9.0.zip`
 
-2. **Upload the ZIP files to your bucket and expose a listing.**
-
-   Upload the four files to the bucket. Configure the bucket so its root exposes a listing comparable to Elastic’s public bucket, with your ZIP files visible in that index or listing view.
-
-   {{kib}} reads that listing to discover the exact ZIP file names before it downloads them.
-
-3. **Tell {{kib}} where to download the artifacts.**
-
-   In `kibana.yml`, set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to the HTTPS base URL of the bucket you used in step 2. Use the base URL for the top of the mirror, which will be the same place the listing and the four ZIP files appear together. _Do not_ use a longer URL that points into a subfolder under that mirror.
-
-   For example:
-
-   ```yaml
-   # Replace with your bucket’s HTTPS base URL (no extra path after the repository root)
-   xpack.productDocBase.artifactRepositoryUrl: "<MY_CUSTOM_REPOSITORY_URL>"
-   ```
-
-   {{kib}} calls that single address to read the bucket listing and download the ZIP files; the wrong base URL breaks listing discovery or downloads.
-
-4. **Restart {{kib}} so the configuration change takes effect.**
-
-   [Stop and restart](/deploy-manage/maintenance/start-stop-services/start-stop-kibana.md)  {{kib}}. The new `artifactRepositoryUrl` value in your `kibana.yml` isn't applied until {{kib}} fully restarts.
-
-5. **Install product documentation in the AI assistant UI.**
-
-   The steps depend on which assistant you use:
-
-   * **AI Assistant for Security**: Product documentation is available when you enable Knowledge Base. Refer to [Give AI Assistant access to Elastic’s product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs) to learn more.
-   * **AI Assistant for Observability and Search**: On the **Settings** tab of AI Assistant Settings, use **Install Elastic Documentation**. Refer to [Add Elastic documentation](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-product-documentation) to learn more.
+Download all four from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same bundles if you’re fully offline.
 
 ::::
 
-::::{tab-item} CDN
+::::{step} Upload the artifacts to the CDN
 
-Unlike the S3-compatible bucket flow in the previous tab, a CDN can’t expose S3’s listing API natively. Instead, you must rebuild the same behavior with static files. This requires you to publish the ZIP artifacts and an XML file that mimics S3’s listing, configure the CDN so that folder URL returns the XML, then point {{kib}} at that HTTPS base URL. 
-
-1. **Get the four product documentation ZIP files for your {{kib}} version.**
-
-   Download them from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) if your network can reach that host. If it can't, get the same files from another system or mirror and transfer them into your environment.
-
-   {{kib}} only installs documentation when the ZIP file names and version segment match Elastic’s published artifacts for your stack. Without those files, the install can't succeed.
-
-2. **Stage the ZIP files on your CDN origin.**
-
-   Upload all four files to one folder on the CDN origin or on the storage your CDN pulls from so they share a single base path. In the next step, you add a listing file to this same folder. Later you set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to that folder’s HTTPS URL.
-
-   One folder under one HTTPS base URL lets {{kib}} request the listing and fetch each ZIP from the same base URL, which matches how the S3-compatible flow works.
-
-3. **Create the listing file {{kib}} uses to discover the ZIP file names.**
-
-   Copy the template below and set each `<Key>` to match your artifact file names and {{kib}} version. For example, for {{kib}} 9.1, replace every `9.0` in the keys with `9.1`.
-
-   ```xml
-   <ListBucketResult>
-       <Name>kibana-ai-assistant-kb-artifacts</Name>
-       <IsTruncated>false</IsTruncated>
-       <Contents>
-           <Key>kb-product-doc-elasticsearch-9.0.zip</Key>
-       </Contents>
-       <Contents>
-           <Key>kb-product-doc-kibana-9.0.zip</Key>
-       </Contents>
-       <Contents>
-           <Key>kb-product-doc-observability-9.0.zip</Key>
-       </Contents>
-       <Contents>
-           <Key>kb-product-doc-security-9.0.zip</Key>
-       </Contents>
-   </ListBucketResult>
-   ```
-
-   Put the XML file in the **same folder** as the four ZIP files. Configure the CDN so a request to the folder’s HTTPS URL returns this XML as the **directory index** (your provider may call this a default document or index file). The exact control varies by CDN.
-
-   A CDN does not implement S3’s listing API, so this XML stands in for the listing a bucket would return. {{kib}} requests that listing from the folder base URL, then downloads each ZIP by name from the same origin. The keys in the XML must match the files you uploaded, and the CDN must serve the XML at that URL.
-
-4. **Tell {{kib}} where to download the artifacts from your CDN mirror.**
-
-   In `kibana.yml`, set `xpack.productDocBase.artifactRepositoryUrl` to the HTTPS base URL of the folder from step 2. It will be the same URL whose index serves the XML from step 3. Do not add an extra path segment beyond that folder.
-
-   For example:
-
-   ```yaml
-   # Replace with your CDN folder’s HTTPS base URL (no extra path beyond the repository root)
-   xpack.productDocBase.artifactRepositoryUrl: "<MY_CUSTOM_REPOSITORY_URL>"
-   ```
-
-   {{kib}} must use one base URL for both the listing response and the ZIP downloads; a deeper path breaks that contract.
-
-
-5. **Restart {{kib}} so the configuration change takes effect.**
-
-   [Stop and restart](/deploy-manage/maintenance/start-stop-services/start-stop-kibana.md) {{kib}}. The new `artifactRepositoryUrl` value in your `kibana.yml` isn't applied until {{kib}} fully restarts.
-
-6. **Install product documentation in the AI assistant UI.**
-
-   The steps depend on which assistant you use:
-
-   * **AI Assistant for Security**: Product documentation is available when you enable Knowledge Base. Refer to [Give AI Assistant access to Elastic’s product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs) to learn more.
-   * **AI Assistant for Observability and Search**: On the **Settings** tab of AI Assistant Settings, use **Install Elastic Documentation**. Refer to [Add Elastic documentation](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-product-documentation) to learn more.
+Put all four ZIP files in one folder on the CDN origin (or backing storage) so they share a single HTTPS base path. You add the listing XML in the next step and wire the CDN to serve it as that folder’s index.
 
 ::::
 
-::::{tab-item} Local files on the {{kib}} host
+::::{step} Create and upload the bucket listing
+
+Copy the template, set each `<Key>` to your real file names and minor version (for {{kib}} 9.1, replace `9.0` in the example with `9.1` everywhere in the keys).
+
+```xml
+<ListBucketResult>
+    <Name>kibana-ai-assistant-kb-artifacts</Name>
+    <IsTruncated>false</IsTruncated>
+    <Contents>
+        <Key>kb-product-doc-elasticsearch-9.0.zip</Key>
+    </Contents>
+    <Contents>
+        <Key>kb-product-doc-kibana-9.0.zip</Key>
+    </Contents>
+    <Contents>
+        <Key>kb-product-doc-observability-9.0.zip</Key>
+    </Contents>
+    <Contents>
+        <Key>kb-product-doc-security-9.0.zip</Key>
+    </Contents>
+</ListBucketResult>
+```
+
+Place the XML in the same folder as the ZIP files. Configure the CDN so a request to that folder’s base URL returns this XML (often as the index or default document).
+
+:::{important}
+On a CDN, each `<Key>` must match a real ZIP file name in that origin folder, and the XML must be what clients get when they request the folder URL (default document or directory index). {{kib}} reads that listing from the same HTTPS base path it uses to download the ZIPs, so don’t split the listing and the ZIP files across different URLs or path roots.
+:::
+
+::::
+
+::::{step} Set the repository URL in {{kib}}
+
+Set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to that folder’s HTTPS base URL (the URL whose index serves the XML). Don’t append an extra path past that root.
+
+```yaml
+# Replace with your CDN folder’s HTTPS base URL (repository root only)
+xpack.productDocBase.artifactRepositoryUrl: "<MY_CUSTOM_REPOSITORY_URL>"
+```
+
+::::
+
+::::{step} Restart {{kib}}
+
+[Stop and restart](/deploy-manage/maintenance/start-stop-services/start-stop-kibana.md) {{kib}}.
+
+::::
+
+::::{step} Install knowledge base content from the AI assistant UI
+
+The steps to install knowledge base content depend on the assistant that you use:
+
+* **AI Assistant for Security**: Refer to [Give AI Assistant access to Elastic’s product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
+* **AI Assistant for Observability and Search**: Refer to [Add Elastic documentation](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-product-documentation).
+
+::::
+
+:::::
+
+::::::
+
+::::::{tab-item} Local files on the {{kib}} host
+
+### Use a local path on the {{kib}} host
 
 ```{applies_to}
 self: ga 9.1+
 ```
 
-You can install product documentation by placing Elastic’s published ZIP files in a directory on the {{kib}} host that {{kib}} can read. {{kib}} uses those files to install the product documentation that AI assistant relies on when answering questions about Elastic products.
+When {{kib}} can’t reach Elastic’s public host over HTTPS but can read local disk, you can point `artifactRepositoryUrl` at a directory on the {{kib}} host using a `file://` URI.
 
-To set this up, configure [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) as a `file://` URL and place the ZIP files in that directory.
+:::::{stepper}
+
+::::{step} Get the product documentation ZIP files for your {{kib}} version
+
+:::{tip}
+Check which stack version you’re running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
+:::
+
+Put the four version-matched bundles in one directory on the {{kib}} host. File names use this pattern:
+
+```yaml
+kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
+```
+
+For example, when {{kib}} is 9.0:
+
+* `kb-product-doc-elasticsearch-9.0.zip`
+* `kb-product-doc-kibana-9.0.zip`
+* `kb-product-doc-observability-9.0.zip`
+* `kb-product-doc-security-9.0.zip`
+
+Download all four from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same bundles if you’re fully offline.
+
+::::
+
+::::{step} Set the repository URL in {{kib}}
+
+Set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to the `file://` URL of that directory.
+
+:::{important}
+With a `file://` repository, the directory must sit on the {{kib}} host, or on storage mounted there. It must also be readable by the user that runs {{kib}}. Use the `file://` URL of the folder that directly contains the four ZIPs. **Do not** point at a parent directory. File names must stay exactly as in the previous step, or {{kib}} won’t pick up the bundles.
+:::
+
+::::
+
+::::{step} Restart {{kib}}
+
+[Stop and restart](/deploy-manage/maintenance/start-stop-services/start-stop-kibana.md) {{kib}}.
+
+::::
+
+::::{step} Install knowledge base content from the AI assistant UI
+
+The steps to install knowledge base content depend on the assistant that you use:
+
+* **AI Assistant for Security**: Refer to [Give AI Assistant access to Elastic’s product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
+* **AI Assistant for Observability and Search**: Refer to [Add Elastic documentation](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-product-documentation).
 
 ::::
 
 :::::
+
+::::::
+
+:::::::

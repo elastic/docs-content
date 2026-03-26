@@ -842,10 +842,3 @@ redirects:
 
 # Renamed for SEO - URL now matches page title
   'solutions/security/detect-and-alert/requirements-privileges.md': 'solutions/security/detect-and-alert/turn-on-detections.md'
-
-# Product documentation mirror page — section headings renamed; preserve deep links
-  'explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md':
-    to: 'explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md'
-    anchors:
-      'before-you-begin': 'prepare-to-host-your-documentation-mirror'
-      'plan-documentation-mirror': 'prepare-to-host-your-documentation-mirror'
