@@ -85,9 +85,18 @@ These fields are specific to query logging and common for all query languages.
 - `elasticsearch.querylog.is_system`: If system index logging is enabled, indicates whether the request was performed only on system indices.
 - `elasticsearch.querylog.has_aggregations`: For a `dsl` search result, this boolean flag specifies whether the result has a non-empty aggregations section. 
 - `elasticsearch.querylog.shards.successful`, `elasticsearch.querylog.shards.skipped`, `elasticsearch.querylog.shards.failed`: How many shards were successful, skipped and failed during the query execution. 
-- `elasticsearch.querylog.remote_count` - For cross-cluster queries, this field indicates the number of remote clusters involved in the query execution. 
-- `elasticsearch.querylog.remotes` - For cross-cluster queries, this field enumerates other clusters involved in the query execution.
-- `elasticsearch.querylog.is_remote` - For `dsl` queries, indicates whether the query was initiated by a remote cluster.
+
+#### Cross-cluster query fields
+
+When the query is cross-cluster, the following fields are available:
+
+- `elasticsearch.querylog.clusters.total` - Indicates the total number of clusters involved in the query execution. Note that this field does not include the origin cluster if no indices from it were involved in the query.
+- `elasticsearch.querylog.clusters.remote_count` - Indicates the number of remotes – clusters that are not the origin of the query – involved in the query execution. 
+- `elasticsearch.querylog.clusters.successful` - Indicates the number of successful clusters involved in the query execution.
+- `elasticsearch.querylog.clusters.failed` - Indicates the number of failed clusters involved in the query execution. Only set if there were any failed clusters.
+- `elasticsearch.querylog.clusters.partial` - Indicates the number of partially successful clusters involved in the query execution. Only set if there were any partially successful clusters.
+- `elasticsearch.querylog.clusters.remotes` - Enumerates other clusters or projects involved in the query execution.
+- `elasticsearch.querylog.is_remote` - For `dsl` queries, indicates whether the query was initiated by another cluster.
 
 Additional fields specific to {{es}} environment may be added. 
 
@@ -96,7 +105,7 @@ In addition to the fields listed above, each query language may include fields s
 ### Fields specific to Query DSL
 
 - `search.total_count`: The “total hits” value, as reported by [the search response](/solutions/search/the-search-api.md). 
-- `search.total_count_partial`:  Set to `true` in case the total count does not reflect the full number of matches for some reason (like [`track_total_hits` limitation](/solutions/search/the-search-api.md#track-total-hits)). 
+- `search.total_count_partial`: Set to `true` in case the total count does not reflect the full number of matches for some reason (like [`track_total_hits` limitation](/solutions/search/the-search-api.md#track-total-hits)). 
 
 ### Fields specific to {{esql}}
 
@@ -143,36 +152,37 @@ In addition to the fields listed above, each query language may include fields s
 ### Cross-cluster query
 ```json
 {
-  "@timestamp": "2026-03-13T01:01:58.266Z",
+  "@timestamp": "2026-03-23T16:59:53.538Z",
   "log.level": "INFO",
   "auth.type": "REALM",
-  "elasticsearch.querylog.clusters.successful": 2,
-  "elasticsearch.querylog.clusters.total": 2,
-  "elasticsearch.querylog.esql.profile.analysis.took": 388084,
-  "elasticsearch.querylog.esql.profile.dependency_resolution.took": 3376250,
-  "elasticsearch.querylog.esql.profile.parsing.took": 466125,
-  "elasticsearch.querylog.esql.profile.planning.took": 4836167,
-  "elasticsearch.querylog.esql.profile.preanalysis.took": 20334,
-  "elasticsearch.querylog.esql.profile.query.took": 16403208,
-  "elasticsearch.querylog.indices": [
-    "remote2:query_log_test_index",
-    "remote1:query_log_test_index"
-  ],
-  "elasticsearch.querylog.query": "FROM *:query_log_test_index | LIMIT 10",
-  "elasticsearch.querylog.remote_count": 2,
-  "elasticsearch.querylog.remotes": [
+  "elasticsearch.querylog.clusters.remote_count": 2,
+  "elasticsearch.querylog.clusters.remotes": [
     "remote2",
     "remote1"
   ],
-  "elasticsearch.querylog.result_count": 2,
-  "elasticsearch.querylog.shards.successful": 2,
-  "elasticsearch.querylog.took": 16403208,
-  "elasticsearch.querylog.took_millis": 16,
+  "elasticsearch.querylog.clusters.successful": 3,
+  "elasticsearch.querylog.clusters.total": 3,
+  "elasticsearch.querylog.esql.profile.analysis.took": 1121750,
+  "elasticsearch.querylog.esql.profile.dependency_resolution.took": 5040750,
+  "elasticsearch.querylog.esql.profile.parsing.took": 989417,
+  "elasticsearch.querylog.esql.profile.planning.took": 8038459,
+  "elasticsearch.querylog.esql.profile.preanalysis.took": 30417,
+  "elasticsearch.querylog.esql.profile.query.took": 40847750,
+  "elasticsearch.querylog.indices": [
+    "query_log_test_index",
+    "remote2:query_log_test_index",
+    "remote1:query_log_test_index"
+  ],
+  "elasticsearch.querylog.query": "FROM query_log_test_index,*:query_log_test_index | LIMIT 11",
+  "elasticsearch.querylog.result_count": 5,
+  "elasticsearch.querylog.shards.successful": 3,
+  "elasticsearch.querylog.took": 40847750,
+  "elasticsearch.querylog.took_millis": 40,
   "elasticsearch.querylog.type": "esql",
-  "elasticsearch.task.id": 4923,
-  "event.duration": 16403208,
+  "elasticsearch.task.id": 7215,
+  "event.duration": 40847750,
   "event.outcome": "success",
-  "http.request.headers.x_opaque_id": "opaque-1773363717",
+  "http.request.headers.x_opaque_id": "opaque-1774285192",
   "trace.id": "0af7651916cd43dd8448eb211c80319c",
   "user.name": "elastic",
   "user.realm": "reserved",
@@ -186,6 +196,7 @@ In addition to the fields listed above, each query language may include fields s
   "elasticsearch.node.name": "node-1",
   "elasticsearch.cluster.name": "querying"
 }
+
 ```
 
 ### Example query failure
