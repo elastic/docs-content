@@ -42,7 +42,7 @@ The `Elastic AI Assistant: All` role privilege allows you to use AI Assistant an
 
 When you enable Knowledge Base, AI Assistant automatically gains access to Elastic's product documentation. This improves its answers to questions related to Elastic products and features.
 
-In air-gapped environments or environments where outbound traffic must go through an HTTP proxy, this requires additional configuration. Refer to the [Knowledge base artifact settings for AI Assistants](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions on configuring a proxy or deploying a local artifact repository. Once you complete the instructions on that page, AI Assistant will automatically gain access to Elastic's documentation as soon as you start a new conversation.
+In air-gapped environments or environments where outbound traffic must go through an HTTP proxy, [additional configuration](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md) is required. After completing this, AI Assistant automatically gains access to Elastic's documentation as soon as you start a new conversation.
 
 ## Enable Knowledge Base [enable-knowledge-base]
 
