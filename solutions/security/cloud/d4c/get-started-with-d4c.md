@@ -14,8 +14,8 @@ products:
 This page describes how to set up Defend for Containers (D4C) for Kubernetes.
 
 ::::{admonition} Requirements
-* {{stack}} version 9.3 or higher.
-* Kubernetes node operating systems must have Linux kernels 5.10.16 or higher.
+* {{stack}} version 9.3 or later.
+* Kubernetes node operating systems must have Linux kernels 5.10.16 or later.
 * The following kernel options must be enabled: BPF-LSM (`CONFIG_BPF_LSM=y`), Security path hooks (`CONFIG_SECURITY_PATH=y`), BTF support (`CONFIG_DEBUG_INFO_BTF=y`)
 * LSM boot parameter `bpf` must be included in the LSM list
 ::::
