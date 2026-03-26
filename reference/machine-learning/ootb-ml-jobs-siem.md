@@ -27,6 +27,10 @@ In {{stack}} 9.4, [Entity Analytics](/solutions/security/advanced-entity-analyti
 * We recommend that you install the `_ea` {{ml-jobs}} and verify they are collecting data and generating anomalies before upgrading to the latest detection rules included in 9.4.
 ::::
 
+## Data requirements
+
+To use these anomaly detection jobs, install and configure one of the supported integrations listed in each job's table. No additional configuration is required beyond the integration's standard setup. For installation instructions, refer to each integration's documentation.
+
 ## Security: Authentication [security-authentication]
 
 Detect anomalous activity in your ECS-compatible authentication logs.
