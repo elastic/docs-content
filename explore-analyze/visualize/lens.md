@@ -31,6 +31,7 @@ With Lens, you can create the following visualization types:
 | [Bar](/explore-analyze/visualize/charts/bar-charts.md) | Compare values across discrete categories or show distributions with histogram buckets. |
 | [Line](/explore-analyze/visualize/charts/line-charts.md) | Show how a metric changes over time or another continuous dimension. |
 | [Area](/explore-analyze/visualize/charts/area-charts.md) | Show change over time while emphasizing volume or stacked proportions. |
+| [Time series](/explore-analyze/visualize/charts/time-series-charts.md) | Build and optimize time-based visualizations with line, area, or bar charts. |
 | **Partition charts** | **Divide a total into segments to show how parts relate to the whole.** |
 | [Pie](/explore-analyze/visualize/charts/pie-charts.md) | Show how parts make up a whole with a small number of slices. |
 | [Treemap](/explore-analyze/visualize/charts/treemap-charts.md) | Show hierarchical proportions across nested categories. |

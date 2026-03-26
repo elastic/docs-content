@@ -283,6 +283,7 @@ toc:
           - file: visualize/charts/heat-map-charts.md
           - file: visualize/charts/gauge-charts.md
           - file: visualize/charts/line-charts.md
+          - file: visualize/charts/time-series-charts.md
           - file: visualize/charts/metric-charts.md
           - file: visualize/charts/mosaic-charts.md
           - file: visualize/charts/pie-charts.md
