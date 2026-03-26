@@ -57,6 +57,11 @@ On the **Members** tab of the **Organization** page, you can view the list of cu
 
 In the **Actions** column, click the three dots to edit a member’s role, or revoke an invite, or remove a member from your organization.
 
+### Reconcile alternative email addresses
+
+:::{include} /deploy-manage/users-roles/cloud-organization/_snippets/reconcile-email.md
+:::
+
 ## View your users' organization memberships
 
 :::{include} _snippets/view-org-memberships.md

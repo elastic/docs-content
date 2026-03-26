@@ -56,6 +56,11 @@ You can also create a new organization by clicking on your current organization 
 :::{include} _snippets/invite-additional-orgs.md
 :::
 
+## Reconcile alternative email addresses
+
+:::{include} /deploy-manage/users-roles/cloud-organization/_snippets/reconcile-email.md
+:::
+
 ## View your users' organization memberships
 
 :::{include} _snippets/view-users-org-memberships.md
