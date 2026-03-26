@@ -164,10 +164,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "filter": { "query": "" },
     "color": {
       "type": "dynamic",
-      "palette": "status",
+      "range": "absolute",
       "steps": [
-        { "color": "#209280", "gte": 0, "lt": 5000 },
-        { "color": "#d6bf57", "gte": 5000, "lt": 8000 },
+        { "color": "#209280", "gte": 0, "lt": 6000 },
+        { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
         { "color": "#cc5642", "gte": 8000 }
       ]
     }
@@ -344,11 +344,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "filter": { "query": "" },
     "color": {
       "type": "dynamic",
-      "palette": "status",
+      "range": "absolute",
       "steps": [
-        { "color": "#209280", "gte": 0, "lt": 50 },
-        { "color": "#d6bf57", "gte": 50, "lt": 75 },
-        { "color": "#cc5642", "gte": 75 }
+        { "color": "#209280", "gte": 0, "lt": 6000 },
+        { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
+        { "color": "#cc5642", "gte": 8000 }
       ]
     }
   }
@@ -392,11 +392,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "filter": { "query": "" },
     "color": {
       "type": "dynamic",
-      "palette": "status",
+      "range": "absolute",
       "steps": [
-        { "color": "#209280", "gte": 0, "lt": 60 },
-        { "color": "#d6bf57", "gte": 60, "lt": 80 },
-        { "color": "#cc5642", "gte": 80 }
+        { "color": "#209280", "gte": 0, "lt": 6000 },
+        { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
+        { "color": "#cc5642", "gte": 8000 }
       ]
     }
   }
