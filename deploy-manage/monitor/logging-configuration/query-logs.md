@@ -46,7 +46,7 @@ The following configuration options are available:
 - `elasticsearch.activitylog.include.user`: Enables or disables logging of user information. Set to `false` to disable. Defaults to `true`.
 - `elasticsearch.activitylog.search.include.system_indices`: Controls whether `dsl` queries targeting system indices are included in the logs. Set to `true` to include them. Defaults to `false`.
 
-## What is included in the log
+## Log field reference
 
 Each query log entry is a JSON object with fields from two sources:
 
