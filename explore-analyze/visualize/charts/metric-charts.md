@@ -133,7 +133,7 @@ To add trend indicators to your metric visualization:
 
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
-:::{dropdown} Create this chart using the API
+::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
@@ -152,12 +152,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "operation": "count",
       "label": "Page views",
       "format": { "type": "number", "decimals": 0, "compact": true },
-      "filter": { "query": "" },
-      "time_scale": null
+      "filter": { "query": "" }
     },
     {
       "operation": "formula",
-      "formula": "count(shift='1w')",
+      "formula": "count(shift='''1w''')",
       "label": "Compared to previous week",
       "format": { "type": "number", "decimals": 0, "compact": true },
       "filter": { "query": "" },
@@ -168,7 +167,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 ```
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+::::
 
 ### Show progress by setting a maximum value [metric-progress]
 
@@ -200,7 +199,7 @@ The metric visualization now shows a progress bar indicating how close the curre
 You can combine progress bars with secondary metrics to show both progress toward a goal and trends over time. To do this, add both a maximum value and a secondary metric to your visualization.
 ::::
 
-:::{dropdown} Create this chart using the API
+::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
@@ -218,22 +217,18 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "operation": "sum",
     "field": "bytes",
     "format": { "type": "bytes" },
-    "filter": { "query": "" },
-    "time_scale": null
+    "filter": { "query": "" }
   }],
   "breakdown_by": {
     "operation": "terms",
     "fields": ["machine.os.keyword"],
-    "size": 5,
-    "format": null,
-    "color": null,
-    "collapse_by": null
+    "size": 5
   }
 }'
 ```
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+::::
 
 ## Metric chart settings [settings]
 
@@ -371,11 +366,11 @@ The following examples show various configuration options that you can use for b
       "metrics": [
         {
           "operation": "formula",
-          "formula": "count(kql='response >= 200 and response < 300') / count()",
+          "formula": "count(kql='''response >= 200 and response < 300''') / count()",
           "label": "Successful requests (2xx)",
           "format": { "type": "percent", "decimals": 1 },
           "filter": { "query": "" },
-          "color": { "type": "dynamic", "range": "percentage", "steps": [{"color": "#cc5642", "gte": 0, "lt": 75}, {"color": "#d6bf57", "gte": 75, "lt": 95}, {"color": "#209280", "gte": 95}] }
+          "color": { "type": "static", "color": "#209280" }
         },
         {
           "operation": "formula",
@@ -426,11 +421,11 @@ The following examples show various configuration options that you can use for b
       "metrics": [
         {
           "operation": "formula",
-          "formula": "count(kql='response >= 200 and response < 300') / count()",
+          "formula": "count(kql='''response >= 200 and response < 300''') / count()",
           "label": "Successful requests (2xx)",
           "format": { "type": "percent", "decimals": 1 },
           "filter": { "query": "" },
-          "color": { "type": "dynamic", "range": "percentage", "steps": [{"color": "#cc5642", "gte": 0, "lt": 75}, {"color": "#d6bf57", "gte": 75, "lt": 95}, {"color": "#209280", "gte": 95}] }
+          "color": { "type": "static", "color": "#209280" }
         },
         {
           "operation": "formula",
@@ -444,11 +439,7 @@ The following examples show various configuration options that you can use for b
       "breakdown_by": {
         "operation": "terms",
         "fields": ["geo.dest"],
-        "size": 10,
-        "rank_by": { "type": "custom", "operation": "count", "field": "response.keyword", "direction": "desc" },
-        "format": null,
-        "color": null,
-        "collapse_by": null
+        "size": 10
       }
     }'
     ```
@@ -489,12 +480,11 @@ The following examples show various configuration options that you can use for b
           "operation": "count",
           "label": "Page views",
           "format": { "type": "number", "decimals": 0, "compact": true },
-          "filter": { "query": "" },
-          "time_scale": null
+          "filter": { "query": "" }
         },
         {
           "operation": "formula",
-          "formula": "count(shift='1w')",
+          "formula": "count(shift='''1w''')",
           "label": "Compared to previous week",
           "format": { "type": "number", "decimals": 0, "compact": true },
           "filter": { "query": "" },

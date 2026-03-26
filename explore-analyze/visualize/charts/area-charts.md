@@ -108,21 +108,25 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "xy",
   "title": "Stacked area by agent",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
   "layers": [
     {
       "type": "area_stacked",
-      "x_axis": {
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
         "operation": "date_histogram",
-        "field": "timestamp",
-        "interval": "auto"
+        "field": "timestamp"
       },
-      "y_axis": [
+      "y": [
         {
           "operation": "count",
-          "label": "Count"
+          "format": { "type": "number" },
+          "filter": { "query": "" }
         }
       ],
       "breakdown_by": {
@@ -168,38 +172,45 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "xy",
   "title": "Current vs previous period - bytes",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
   "layers": [
     {
       "type": "area",
-      "x_axis": {
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
         "operation": "date_histogram",
-        "field": "timestamp",
-        "interval": "auto"
+        "field": "timestamp"
       },
-      "y_axis": [
+      "y": [
         {
           "operation": "average",
           "field": "bytes",
-          "label": "Current period"
+          "label": "Current period",
+          "format": { "type": "number" },
+          "filter": { "query": "" }
         }
       ]
     },
     {
       "type": "area",
-      "x_axis": {
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
         "operation": "date_histogram",
-        "field": "timestamp",
-        "interval": "auto"
+        "field": "timestamp"
       },
-      "y_axis": [
+      "y": [
         {
           "operation": "average",
           "field": "bytes",
           "label": "Previous week",
-          "time_shift": "1w"
+          "time_shift": "1w",
+          "format": { "type": "number" },
+          "filter": { "query": "" }
         }
       ]
     }
@@ -312,21 +323,26 @@ When creating or editing a visualization, you can adjust the following settings.
      -d '{
      "type": "xy",
      "title": "Traffic by geographic region",
-     "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
      "filters": [],
      "query": { "query": "" },
+     "legend": { "visibility": "auto" },
+     "fitting": { "type": "none" },
+     "axis": {},
+     "decorations": {},
      "layers": [
        {
          "type": "area_stacked",
-         "x_axis": {
+         "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+         "x": {
            "operation": "date_histogram",
-           "field": "timestamp",
-           "interval": "auto"
+           "field": "timestamp"
          },
-         "y_axis": [
+         "y": [
            {
              "operation": "count",
-             "label": "Records"
+             "label": "Records",
+             "format": { "type": "number" },
+             "filter": { "query": "" }
            }
          ],
          "breakdown_by": {
@@ -368,29 +384,34 @@ When creating or editing a visualization, you can adjust the following settings.
      -d '{
      "type": "xy",
      "title": "Response code over time",
-     "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
      "filters": [],
      "query": { "query": "" },
+     "legend": { "visibility": "auto" },
+     "fitting": { "type": "none" },
+     "axis": {},
+     "decorations": {},
      "layers": [
        {
          "type": "area_percentage",
-         "x_axis": {
+         "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+         "x": {
            "operation": "date_histogram",
-           "field": "timestamp",
-           "interval": "auto"
+           "field": "timestamp"
          },
-         "y_axis": [
+         "y": [
            {
              "operation": "count",
-             "label": "Count of records"
+             "label": "Count of records",
+             "format": { "type": "number" },
+             "filter": { "query": "" }
            }
          ],
          "breakdown_by": {
            "operation": "filters",
            "filters": [
-             { "label": "Success/Redirection", "query": "response.keyword >= 200 and response.keyword < 400" },
-             { "label": "Client Error", "query": "response.keyword >= 400 and response.keyword < 500" },
-             { "label": "Server Error", "query": "response.keyword >= 500" }
+             { "filter": { "query": "response.keyword >= 200 and response.keyword < 400" }, "label": "Success/Redirection" },
+             { "filter": { "query": "response.keyword >= 400 and response.keyword < 500" }, "label": "Client Error" },
+             { "filter": { "query": "response.keyword >= 500" }, "label": "Server Error" }
            ]
          }
        }

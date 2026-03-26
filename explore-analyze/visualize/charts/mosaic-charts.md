@@ -218,23 +218,30 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "x_axis": {
-    "operation": "terms",
-    "fields": ["machine.os.keyword"],
-    "size": 5
-  },
-  "y_axis": {
-    "operation": "filters",
-    "filters": [
-      { "label": "Success (2xx/3xx)", "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
-      { "label": "Client errors (4xx)", "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
-      { "label": "Server errors (5xx)", "query": "response.keyword >= \"500\"" }
-    ]
-  },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
   "metric": {
     "operation": "count",
-    "label": "Count"
-  }
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["machine.os.keyword"],
+      "size": 5
+    }
+  ],
+  "group_breakdown_by": [
+    {
+      "operation": "filters",
+      "filters": [
+        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success (2xx/3xx)" },
+        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client errors (4xx)" },
+        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server errors (5xx)" }
+      ]
+    }
+  ]
 }'
 ```
 
@@ -265,20 +272,27 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
   "query": { "query": "" },
-  "x_axis": {
-    "operation": "terms",
-    "fields": ["geoip.continent_name"],
-    "size": 5
-  },
-  "y_axis": {
-    "operation": "terms",
-    "fields": ["category.keyword"],
-    "size": 5
-  },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
   "metric": {
     "operation": "count",
-    "label": "Count"
-  }
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["geoip.continent_name"],
+      "size": 5
+    }
+  ],
+  "group_breakdown_by": [
+    {
+      "operation": "terms",
+      "fields": ["category.keyword"],
+      "size": 5
+    }
+  ]
 }'
 ```
 

@@ -101,19 +101,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "x_axis": {
+  "legend": { "size": "auto" },
+  "axis": { "x": {}, "y": {} },
+  "cells": {},
+  "x": {
     "operation": "date_histogram",
-    "field": "timestamp",
-    "interval": "1d"
+    "field": "timestamp"
   },
-  "y_axis": {
+  "y": {
     "operation": "terms",
     "fields": ["response.keyword"],
     "size": 10
   },
-  "cell_value": {
+  "metric": {
     "operation": "count",
-    "label": "Count"
+    "format": { "type": "number" },
+    "filter": { "query": "" }
   }
 }'
 ```
@@ -267,20 +270,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "x_axis": {
+  "legend": { "size": "auto" },
+  "axis": { "x": {}, "y": {} },
+  "cells": {},
+  "x": {
     "operation": "date_histogram",
-    "field": "timestamp",
-    "interval": "1d"
+    "field": "timestamp"
   },
-  "y_axis": {
+  "y": {
     "operation": "terms",
     "fields": ["hour_of_day"],
-    "size": 24,
-    "rank_by": { "type": "alphabetical", "direction": "desc" }
+    "size": 24
   },
-  "cell_value": {
+  "metric": {
     "operation": "count",
-    "label": "Count"
+    "format": { "type": "number" },
+    "filter": { "query": "" }
   }
 }'
 ```
@@ -313,20 +318,25 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
   "query": { "query": "" },
-  "x_axis": {
+  "legend": { "size": "auto" },
+  "axis": { "x": {}, "y": {} },
+  "cells": {},
+  "x": {
     "operation": "terms",
     "fields": ["geoip.city_name"],
     "size": 10
   },
-  "y_axis": {
+  "y": {
     "operation": "terms",
     "fields": ["category.keyword"],
     "size": 5
   },
-  "cell_value": {
+  "metric": {
     "operation": "sum",
     "field": "taxful_total_price",
-    "label": "Revenue"
+    "label": "Revenue",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
   }
 }'
 ```

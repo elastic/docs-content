@@ -120,21 +120,25 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "xy",
   "title": "Stacked bar chart",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
   "layers": [
     {
       "type": "bar_stacked",
-      "x_axis": {
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
         "operation": "date_histogram",
-        "field": "timestamp",
-        "interval": "auto"
+        "field": "timestamp"
       },
-      "y_axis": [
+      "y": [
         {
           "operation": "count",
-          "label": "Count"
+          "format": { "type": "number" },
+          "filter": { "query": "" }
         }
       ],
       "breakdown_by": {
@@ -179,21 +183,25 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "xy",
   "title": "Unstacked bar chart",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
   "layers": [
     {
       "type": "bar",
-      "x_axis": {
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
         "operation": "date_histogram",
-        "field": "timestamp",
-        "interval": "auto"
+        "field": "timestamp"
       },
-      "y_axis": [
+      "y": [
         {
           "operation": "count",
-          "label": "Count"
+          "format": { "type": "number" },
+          "filter": { "query": "" }
         }
       ],
       "breakdown_by": {
@@ -365,22 +373,26 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "xy",
   "title": "Weekly website traffic per region",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
   "layers": [
     {
       "type": "bar_stacked",
-      "x_axis": {
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
         "operation": "date_histogram",
-        "field": "timestamp",
-        "interval": "1w"
+        "field": "timestamp"
       },
-      "y_axis": [
+      "y": [
         {
           "operation": "count",
           "label": "Page Views",
-          "format": { "type": "number" }
+          "format": { "type": "number" },
+          "filter": { "query": "" }
         }
       ],
       "breakdown_by": {
@@ -425,29 +437,34 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "xy",
   "title": "Request error rate per host",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
   "layers": [
     {
       "type": "bar_horizontal",
-      "x_axis": {
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
         "operation": "terms",
         "fields": ["host.keyword"],
-        "size": 4,
-        "rank_by": { "type": "alphabetical", "direction": "asc" }
+        "size": 4
       },
-      "y_axis": [
+      "y": [
         {
           "operation": "formula",
           "formula": "count(kql='response > \"300\"') / count()",
           "label": "Error Rate %",
-          "format": { "type": "percent" }
+          "format": { "type": "percent" },
+          "filter": { "query": "" }
         }
       ]
     },
     {
       "type": "referenceLines",
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "lines": [
         {
           "value": 0.10,

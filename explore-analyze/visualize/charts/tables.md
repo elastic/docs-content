@@ -117,24 +117,26 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "density": { "mode": "default" },
   "rows": [
     {
       "operation": "date_histogram",
-      "field": "timestamp",
-      "interval": "1d"
+      "field": "timestamp"
     }
   ],
   "metrics": [
     {
       "operation": "count",
-      "label": "Visits"
+      "label": "Visits",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     }
   ],
-  "split_by": {
+  "split_metrics_by": [{
     "operation": "terms",
     "fields": ["hour_of_day"],
     "size": 3
-  }
+  }]
 }'
 ```
 
@@ -175,23 +177,26 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
   "query": { "query": "" },
+  "density": { "mode": "default" },
   "rows": [
     {
       "operation": "date_histogram",
-      "field": "order_date",
-      "interval": "1w"
+      "field": "order_date"
     }
   ],
   "metrics": [
     {
       "operation": "count",
-      "label": "Orders this week"
+      "label": "Orders this week",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     },
     {
       "operation": "formula",
       "formula": "count() / count(shift='1w') - 1",
       "label": "Change from last week",
-      "format": { "type": "percent", "decimals": 2 }
+      "format": { "type": "percent", "decimals": 2 },
+      "filter": { "query": "" }
     }
   ]
 }'
@@ -355,6 +360,7 @@ The following examples show various configuration options you can use for buildi
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "filters": [],
       "query": { "query": "" },
+      "density": { "mode": "default" },
       "rows": [
         {
           "operation": "terms",
@@ -367,7 +373,8 @@ The following examples show various configuration options you can use for buildi
           "operation": "unique_count",
           "field": "clientip",
           "label": "Unique visitors",
-          "format": { "type": "number" }
+          "format": { "type": "number" },
+          "filter": { "query": "" }
         }
       ]
     }'
@@ -401,11 +408,11 @@ The following examples show various configuration options you can use for buildi
       "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
       "filters": [],
       "query": { "query": "" },
+      "density": { "mode": "default" },
       "rows": [
         {
           "operation": "date_histogram",
           "field": "order_date",
-          "interval": "1d",
           "label": "Sales per day"
         }
       ],
@@ -413,14 +420,16 @@ The following examples show various configuration options you can use for buildi
         {
           "operation": "unique_count",
           "field": "customer_id",
-          "label": "Unique customers"
+          "label": "Unique customers",
+          "format": { "type": "number" },
+          "filter": { "query": "" }
         }
       ],
-      "split_by": {
+      "split_metrics_by": [{
         "operation": "terms",
         "fields": ["geoip.continent_name"],
         "size": 3
-      }
+      }]
     }'
     ```
 
@@ -456,13 +465,14 @@ The following examples show various configuration options you can use for buildi
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "filters": [],
       "query": { "query": "" },
+      "density": { "mode": "default" },
       "rows": [
         {
-          "operation": "intervals",
+          "operation": "range",
           "field": "bytes",
           "ranges": [
-            { "from": 0, "to": 10240, "label": "Below 10KB" },
-            { "from": 10240, "label": "Above 10KB" }
+            { "lte": 10240 },
+            { "gt": 10240 }
           ],
           "label": "File size"
         }
@@ -472,7 +482,8 @@ The following examples show various configuration options you can use for buildi
           "operation": "sum",
           "field": "bytes",
           "label": "Total bytes transferred",
-          "format": { "type": "bytes" }
+          "format": { "type": "bytes" },
+          "filter": { "query": "" }
         }
       ]
     }'
@@ -510,24 +521,27 @@ The following examples show various configuration options you can use for buildi
       "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
       "filters": [],
       "query": { "query": "" },
+      "density": { "mode": "default" },
       "rows": [
         {
           "operation": "date_histogram",
           "field": "order_date",
-          "interval": "1w",
           "label": "Week"
         }
       ],
       "metrics": [
         {
           "operation": "count",
-          "label": "Orders this week"
+          "label": "Orders this week",
+          "format": { "type": "number" },
+          "filter": { "query": "" }
         },
         {
           "operation": "formula",
           "formula": "count() / count(shift='1w') - 1",
           "label": "Change from last week",
-          "format": { "type": "percent", "decimals": 2 }
+          "format": { "type": "percent", "decimals": 2 },
+          "filter": { "query": "" }
         }
       ]
     }'

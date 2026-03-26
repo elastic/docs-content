@@ -108,18 +108,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
   "metrics": [
     {
       "operation": "sum",
       "field": "taxful_total_price",
       "label": "Revenue earned",
-      "color": "#209280"
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     },
     {
       "operation": "formula",
       "formula": "500000 - sum(taxful_total_price)",
       "label": "Remaining to goal",
-      "color": "#d3dae6"
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     }
   ]
 }'
@@ -234,18 +238,25 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "group_by": {
-    "operation": "filters",
-    "filters": [
-      { "label": "Success (2xx/3xx)", "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
-      { "label": "Client errors (4xx)", "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
-      { "label": "Server errors (5xx)", "query": "response.keyword >= \"500\"" }
-    ]
-  },
-  "metric": {
-    "operation": "count",
-    "label": "Count"
-  }
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "filters",
+      "filters": [
+        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success (2xx/3xx)" },
+        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client errors (4xx)" },
+        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server errors (5xx)" }
+      ]
+    }
+  ]
 }'
 ```
 
@@ -275,15 +286,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "group_by": {
-    "operation": "terms",
-    "fields": ["machine.os.keyword"],
-    "size": 5
-  },
-  "metric": {
-    "operation": "count",
-    "label": "Count"
-  }
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["machine.os.keyword"],
+      "size": 5
+    }
+  ]
 }'
 ```
 

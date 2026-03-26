@@ -184,18 +184,24 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "absolute" },
+  "metrics": [
+    {
+      "operation": "sum",
+      "field": "bytes",
+      "label": "Total bytes",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
   "group_by": [
     {
       "operation": "terms",
       "fields": ["extension.keyword"],
       "size": 6
     }
-  ],
-  "metric": {
-    "operation": "sum",
-    "field": "bytes",
-    "label": "Total bytes"
-  }
+  ]
 }'
 ```
 
@@ -226,6 +232,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "absolute" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Flights",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
   "group_by": [
     {
       "operation": "terms",
@@ -237,11 +253,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "fields": ["DestCountry"],
       "size": 5
     }
-  ],
-  "metric": {
-    "operation": "count",
-    "label": "Flights"
-  }
+  ]
 }'
 ```
 
@@ -276,6 +288,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "absolute" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
   "group_by": [
     {
       "operation": "terms",
@@ -285,16 +307,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "filters",
       "filters": [
-        { "label": "Success (2xx/3xx)", "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
-        { "label": "Client errors (4xx)", "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
-        { "label": "Server errors (5xx)", "query": "response.keyword >= \"500\"" }
+        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success (2xx/3xx)" },
+        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client errors (4xx)" },
+        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server errors (5xx)" }
       ]
     }
-  ],
-  "metric": {
-    "operation": "count",
-    "label": "Count"
-  }
+  ]
 }'
 ```
 

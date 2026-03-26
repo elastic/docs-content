@@ -143,14 +143,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "region_key": {
+  "metric": {
+    "operation": "count",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "region": {
     "operation": "terms",
     "fields": ["geo.dest"],
     "size": 50
-  },
-  "metric": {
-    "operation": "count",
-    "label": "Count"
   }
 }'
 ```
@@ -182,15 +183,17 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
   "query": { "query": "" },
-  "region_key": {
-    "operation": "terms",
-    "fields": ["geoip.country_iso_code"],
-    "size": 50
-  },
   "metric": {
     "operation": "unique_count",
     "field": "customer_id",
-    "label": "Unique customers"
+    "label": "Unique customers",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["geoip.country_iso_code"],
+    "size": 50
   }
 }'
 ```
@@ -222,15 +225,17 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "region_key": {
-    "operation": "terms",
-    "fields": ["DestCountry"],
-    "size": 50
-  },
   "metric": {
     "operation": "average",
     "field": "AvgTicketPrice",
-    "label": "Average ticket price"
+    "label": "Average ticket price",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["DestCountry"],
+    "size": 50
   }
 }'
 ```

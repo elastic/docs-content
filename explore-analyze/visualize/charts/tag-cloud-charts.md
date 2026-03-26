@@ -164,14 +164,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "tags": {
+  "metric": {
+    "operation": "count",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "tag_by": {
     "operation": "terms",
     "fields": ["request.keyword"],
     "size": 30
-  },
-  "metric": {
-    "operation": "count",
-    "label": "Count"
   }
 }'
 ```
@@ -204,14 +205,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "tags": {
+  "metric": {
+    "operation": "count",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "tag_by": {
     "operation": "terms",
     "fields": ["DestCityName"],
     "size": 30
-  },
-  "metric": {
-    "operation": "count",
-    "label": "Count"
   }
 }'
 ```

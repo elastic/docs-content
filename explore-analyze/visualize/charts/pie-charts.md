@@ -102,17 +102,20 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "slice_by": [
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
     {
       "operation": "terms",
       "fields": ["geo.dest"],
       "size": 5
-    }
-  ],
-  "metrics": [
-    {
-      "operation": "count",
-      "label": "Count"
     }
   ]
 }'
@@ -174,20 +177,28 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
   "metrics": [
     {
       "operation": "sum",
       "field": "bytes",
-      "label": "Bandwidth"
+      "label": "Bandwidth",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     },
     {
       "operation": "sum",
       "field": "machine.ram",
-      "label": "Memory usage"
+      "label": "Memory usage",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     },
     {
       "operation": "count",
-      "label": "Request count"
+      "label": "Request count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     }
   ]
 }'
@@ -236,18 +247,21 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "slice_by": [
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
     {
       "operation": "terms",
       "fields": ["host.keyword"],
       "size": 3,
-      "other_bucket": true
-    }
-  ],
-  "metrics": [
-    {
-      "operation": "count",
-      "label": "Count"
+      "other_bucket": { "include_documents_without_field": true }
     }
   ]
 }'
@@ -399,26 +413,36 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
   "metrics": [
     {
       "operation": "formula",
       "formula": "count(kql='referer : *elastic*')",
-      "label": "Elastic website"
+      "label": "Elastic website",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *twitter*')",
-      "label": "Twitter/X"
+      "label": "Twitter/X",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *facebook*')",
-      "label": "Facebook"
+      "label": "Facebook",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *nytimes*')",
-      "label": "NY Times"
+      "label": "NY Times",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
     }
   ]
 }'
@@ -451,18 +475,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
   "query": { "query": "" },
-  "slice_by": [
-    {
-      "operation": "terms",
-      "fields": ["category.keyword"],
-      "size": 6
-    }
-  ],
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
   "metrics": [
     {
       "operation": "sum",
       "field": "taxful_total_price",
-      "label": "Revenue"
+      "label": "Revenue",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["category.keyword"],
+      "size": 6
     }
   ]
 }'
@@ -499,20 +527,24 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
-  "slice_by": [
-    {
-      "operation": "filters",
-      "filters": [
-        { "label": "Client Error", "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
-        { "label": "Server Error", "query": "response.keyword >= \"500\"" },
-        { "label": "Success", "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }
-      ]
-    }
-  ],
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
   "metrics": [
     {
       "operation": "count",
-      "label": "Count of records"
+      "label": "Count of records",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "filters",
+      "filters": [
+        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client Error" },
+        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server Error" },
+        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success" }
+      ]
     }
   ]
 }'
