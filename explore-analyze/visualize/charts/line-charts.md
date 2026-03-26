@@ -97,10 +97,7 @@ You can also compute the relative change by defining the axis data with a [formu
 ::::
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -162,10 +159,7 @@ Use reference lines to indicate important thresholds, such as SLOs or alert limi
 2. Use the **Text decoration** setting to provide a name, for example, `Target` or `SLO`, choose a color, and optionally a band.
 
 :::{dropdown} Create this chart using the API
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:applies_to: { stack: preview 9.4, serverless: preview }
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -316,10 +310,7 @@ When creating or editing a visualization, you can adjust the following settings.
    ![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
 
    :::{dropdown} Create this chart using the API
-   ```{applies_to}
-   stack: preview 9.4
-   serverless: preview
-   ```
+   :applies_to: { stack: preview 9.4, serverless: preview }
 
    ```bash
    curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -376,10 +367,7 @@ When creating or editing a visualization, you can adjust the following settings.
    ![Unique IPs throughout the day](../../images/kibana-lens-unique-ip-throughout-day.png "=70%")
 
    :::{dropdown} Create this chart using the API
-   ```{applies_to}
-   stack: preview 9.4
-   serverless: preview
-   ```
+   :applies_to: { stack: preview 9.4, serverless: preview }
 
    ```bash
    curl -X POST "${KIBANA_URL}/api/visualizations" \
