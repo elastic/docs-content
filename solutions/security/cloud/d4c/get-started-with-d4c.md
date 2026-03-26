@@ -14,11 +14,11 @@ products:
 This page describes how to set up Defend for Containers (D4C) for Kubernetes.
 
 ::::{admonition} Requirements
-* Kubernetes node operating systems must have Linux kernels 5.10.16 or higher.
 * {{stack}} version 9.3 or higher.
-
+* Kubernetes node operating systems must have Linux kernels 5.10.16 or higher.
+* The following kernel options must be enabled: BPF-LSM (`CONFIG_BPF_LSM=y`), Security path hooks (`CONFIG_SECURITY_PATH=y`), BTF support (`CONFIG_DEBUG_INFO_BTF=y`)
+* LSM boot parameter `bpf` must be included in the LSM list
 ::::
-
 
 
 ## Initial setup [_initial_setup]
@@ -41,11 +41,10 @@ First, you’ll need to deploy Elastic’s Defend for Containers integration to 
     #    - BPF # (Since Linux 5.8) allows loading of BPF programs, create most map types, load BTF, iterate programs and maps.
     #    - PERFMON # (Since Linux 5.8) allows attaching of BPF programs used for performance metrics and observability operations.
     #    - SYS_RESOURCE # Allow use of special resources or raising of resource limits. Used by 'Defend for Containers' to modify 'rlimit_memlock'
-    #    - SYS_ADMIN # Required if using Defend for Containers on Azure Kubernetes Service (AKS)
     ```
 
 10. From the directory where you saved the manifest, run the command `kubectl apply -f elastic-agent-managed-kubernetes.yml`.
-11. Wait for the **Confirm agent enrollment** dialogue to show that data has started flowing from your newly-installed agent, then click **Close**.
+11. Wait for the **Confirm agent enrollment** dialogue to show that data has started flowing from your newly installed agent, then click **Close**.
 
 
 ## Get started with threat detection [d4c-get-started-threat]

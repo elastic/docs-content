@@ -34,17 +34,24 @@ D4C for Kubernetes uses a flexible policy language to restrict container workloa
 
 ## Support matrix [_support_matrix] 
 
-|  | EKS 1.24-1.27 (AL2022) | GKE 1.24-1.27 (COS) |
-| --- | --- | --- |
-| Process event exports | ✓ | ✓ |
-| Network event exports | ✓ | ✓ |
-| File event exports | ✓ | ✓ |
-| File blocking | ✓ | ✓ |
-| Process blocking | ✓ | ✓ |
-| Network blocking | ✗ | ✗ |
-| Drift prevention | ✓ | ✓ |
-| Mount point awareness | ✓ | ✓ |
+The integration runs on **Linux** (x86_64 architecture) and requires **Kubernetes 1.24+** with **containerd** or **CRI-O** as the container runtime interface (CRI).
 
+### Managed Kubernetes clusters [_managed_kubernetes_clusters] 
+
+|  |  EKS (AL2, AL2023) | GKE (COS, Ubuntu) | AKS (AzureLinux3) |
+| --- | --- | --- | --- |
+| Process event exports | ✓ | ✓ | ✓ |
+| Network event exports | ✗ | ✗ | ✗ |
+| File event exports | ✓ | ✓ | ✓ |
+| File blocking | ✓ | ✓ | ✓ |
+| Process blocking | ✓ | ✓ | ✓ |
+| Network blocking | ✗ | ✗ | ✗ | 
+| Drift prevention | ✓ | ✓ | ✓ |
+| Mount point awareness | ✓ | ✓ | ✓ |
+
+### Self-managed Kubernetes clusters [_self_managed_kubernetes_clusters] 
+
+The integration works on self-managed Kubernetes clusters if the node operating system and kernel comply with the requirements below. See [Get started with Defend for Containers for Kubernetes](get-started-with-d4c.md) for more details.
 
 ## How D4C for Kubernetes works [_how_cwp_for_kubernetes_works] 
 
