@@ -27,7 +27,7 @@ First, you create an index and store your data in two forms: plain text and vect
 
 ## Prerequisites [semantic-search-quickstart-prerequisites]
 
-- A running {{es}} cluster. Refer to [Choosing your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for an overview of how you can run {{es}}. For the fastest way to follow this quickstart, we recommend [creating a serverless project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) (includes a free {{serverless-short}} trial), or using a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
+A running {{es}} cluster. Refer to [Choosing your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for an overview of how you can run {{es}}. For the fastest way to follow this quickstart, we recommend [creating a serverless project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) (includes a free {{serverless-short}} trial), or using a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
 ## Get the data in [semantic-search-quickstart-getting-data-in]
 
@@ -238,7 +238,7 @@ Documents that score well on either side appear in the final merged list.
 
 ## Next steps
 
-- [Semantic search](../semantic-search.md) - Learn how to compare semantic search workflows and choose one for your scenario (for example `semantic_text`, the {{infer}} API, or deploying models directly in {{es}}).
+- [Semantic search](../semantic-search.md) - Compare different semantic search workflows and choose one for your scenario (for example `semantic_text`, the {{infer}} API, or deploying models directly in {{es}}).
 - [Vector search](../vector.md) - Learn more about dense and sparse vectors, embeddings, and similarity search.
 - [Ranking and reranking](../ranking.md) - Learn more about multi-stage retrieval, rescoring, and reranking for better relevance.
 - [Build your search queries](../querying-for-search.md) - Learn more about Query DSL, {{esql}}, retrievers, and the Search API.
