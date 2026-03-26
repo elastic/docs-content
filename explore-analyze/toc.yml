@@ -470,3 +470,5 @@ toc:
       - hidden: workflows/use-cases.md
       - file: workflows/templates.md
   - file: numeral-formatting.md
+  - hidden: explore-and-visualize.md
+  - hidden: share-alert-and-automate.md

@@ -217,7 +217,7 @@ You can embed Osquery buttons that let analysts run live queries against {{agent
     3. Expand the **Advanced** section to set a timeout period for the query and view or set [mapped ECS fields](/solutions/security/investigate/osquery.md#osquery-map-fields) included in the results (optional).
 
         ::::{note}
-        Overwriting the query's default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
+        Overwriting the query's default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
         ::::
 
         :::{image} /solutions/images/security-setup-osquery-investigation-guide.png
