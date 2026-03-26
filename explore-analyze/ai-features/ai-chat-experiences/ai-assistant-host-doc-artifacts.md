@@ -7,7 +7,7 @@ products:
   - id: security
   - id: observability
   - id: elasticsearch
-description: Host AI assistant knowledge base artifacts via S3-compatible storage, CDN, or local paths when Kibana cannot reach Elastic’s public URL, then set the repository URL and install from the assistant UI.
+description: Host AI assistant knowledge base artifacts using S3-compatible storage, CDN, or local paths when Kibana cannot reach Elastic’s public URL, then set the repository URL and install from the assistant UI.
 ---
 
 # Host a knowledge base artifact repo for AI assistants [host-knowledge-base-artifact-repo-for-ai-assistants]
@@ -22,7 +22,7 @@ Use this list to figure out the best deployment and hosting setup for your envir
 
 * **S3-compatible bucket**: You store the artifact ZIP files in an S3-compatible bucket over HTTPS and the bucket exposes a normal object listing at the repository root, so {{kib}} can discover the ZIPs without you maintaining a separate listing XML file (unlike the CDN option).
 * **CDN**: You serve the ZIP files through a CDN and publish S3-style listing XML yourself, served as the folder’s default document or directory index.
-* {applies_to}`self: ga 9.1+` **Local files on the {{kib}} host**: The ZIP files exist only on the {{kib}} host filesystem and you configure a `file://` repository URL.
+* **Local files on the {{kib}} host**  {applies_to}`stack: 9.1+`:: The ZIP files exist only on the {{kib}} host filesystem and you configure a `file://` repository URL.
 
 ## Deploy the repository [deploy-the-knowledge-base-artifact-repository]
 
