@@ -51,7 +51,7 @@ The integration runs on **Linux** (x86_64 architecture) and requires **Kubernete
 
 ### Self-managed Kubernetes clusters [_self_managed_kubernetes_clusters] 
 
-The integration works on self-managed Kubernetes clusters if the node operating system and kernel comply with the requirements below. See [Get started with Defend for Containers for Kubernetes](get-started-with-d4c.md) for more details.
+The integration works on self-managed Kubernetes clusters if the node, operating system, and kernel comply with these requirements. Refer to [Get started with Defend for Containers for Kubernetes](get-started-with-d4c.md) for more details.
 
 ## How D4C for Kubernetes works [_how_cwp_for_kubernetes_works] 
 
