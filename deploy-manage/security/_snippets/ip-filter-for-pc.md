@@ -1,4 +1,4 @@
-When a private connection is applied to a deployment or project, you can't use SSO to log in to {{kib}} endpoints that are protected by private connections from the {{ecloud}} console. Then the connection to the {{kib}} public URL is still available.
+When a private connection is applied to a deployment or project, you can't use SSO to log in to {{kib}} endpoints that are protected by private connections from the {{ecloud}} console. The connection to the {{kib}} public URL is still available.
 
 As a workaround, you can add an IP filter for ingress traffic with the public IP address or addresses of the hosts that will use SSO through the {{ecloud}} console. You should scope your IP filter to the narrowest possible range: the egress IPs of your corporate VPN gateway, NAT gateway, or specific client machines.
 
