@@ -268,7 +268,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
 
 ## Step 4: Set up a second {{es}} node [install-stack-self-elasticsearch-second]
 
-To set up a second {{es}} node, you start by installing the {{es}} RPM package, but then follow a different configuration flow so that the node joins the existing cluster instead of creating a new one.
+To set up a second {{es}} node, you start by installing the {{es}} RPM package, but then follow a different configuration flow so that the node joins the existing cluster instead of creating a new one. You can find additional details in [Reconfigure a node to join an existing cluster](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster).
 
 1. Log in to the host where you'd like to set up your second {{es}} instance.
 
@@ -319,14 +319,10 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
    ```
 
    :::{important}
-   Don't start the {{es}} service yet! There are a few more configuration steps to do before starting.
+   Don't start the {{es}} service yet. Complete the remaining configuration steps first.
    :::
 
 1. To enable the new {{es}} node to connect to the cluster, create an enrollment token from any node that is already part of the cluster.
-
-   :::{important}
-   Be sure to run these configuration steps before starting the {{es}} service. You can find additional details about these steps in [Reconfigure a node to join an existing cluster](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster).
-   :::
 
    Return to your terminal shell on the first {{es}} node and generate a node enrollment token:
 
@@ -365,7 +361,7 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
    sudo vim /etc/elasticsearch/elasticsearch.yml
    ```
 
-   Notice that, as a result of having run the `elasticsearch-reconfigure-node` tool, certain settings have been updated. For example:
+   Because of running the `elasticsearch-reconfigure-node` tool, certain settings have been updated. For example:
 
    * The `transport.host: 0.0.0.0` and `http.host: 0.0.0.0` settings are already uncommented.
    * The `discovery_seed.hosts` setting has the host IP address of the first {{es}} node. As you add each new {{es}} node to the cluster, the `discovery_seed.hosts` setting contains an array of the IP addresses and port numbers to connect to each {{es}} node that was previously added to the cluster.
@@ -616,7 +612,7 @@ For more details about {{kib}} configuration, refer to the [{{kib}} configuratio
    :::{important}
    In production environments, consider storing this setting in the {{kib}} keystore instead of `kibana.yml`. For guidance, refer to [{{kib}} secure settings](/deploy-manage/security/secure-settings.md).
 
-   Do not rotate encryption keys without planning, or existing encrypted saved objects can become unreadable. For guidance on rotation, refer to [Encryption key rotation](/deploy-manage/security/secure-saved-objects.md#encryption-key-rotation).
+   Rotate encryption keys only as part of a planned process. This helps ensure existing encrypted saved objects remain readable. For guidance on rotation, refer to [Encryption key rotation](/deploy-manage/security/secure-saved-objects.md#encryption-key-rotation).
    :::
 
 1. Save your changes and close the editor.
@@ -678,9 +674,9 @@ In this section, you start {{kib}} for the first time and complete enrollment wi
 
 1. Click **Log in**.
 
-{{kib}} is now fully set up and communicating with your {{es}} cluster!
+{{kib}} is now fully set up and communicating with your {{es}} cluster.
 
-:::{admonition} Important! Stop here if you plan to use your own TLS/SSL certificates
+:::{admonition} Important: Stop here if you plan to use your own TLS/SSL certificates
 This tutorial already uses the {{es}} [automatic security setup](/deploy-manage/security/self-auto-setup.md), which configures security for {{es}} by default, including TLS for both the transport and HTTP layers.
 
 If you plan to use certificates signed by your organization's certificate authority or by a public CA instead, stop here after installing {{kib}} and continue with [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md). That tutorial is the right place to replace or adjust the default certificate configuration before installing {{fleet-server}} and {{agent}}.
@@ -752,7 +748,7 @@ Before proceeding, confirm the following prerequisites:
 
 1. For now, ignore the **Continue enrolling Elastic Agent** option and close the flyout.
 
-{{fleet-server}} is now fully set up!
+{{fleet-server}} is now fully set up.
 
 ## Step 9: Install {{agent}} [install-stack-self-elastic-agent]
 
@@ -857,7 +853,7 @@ The System integration assets (including dashboards) are installed automatically
 
 ![Sample Kibana dashboard](/deploy-manage/images/install-stack-metrics-dashboard.png)
 
-Congratulations! You've successfully set up a three-node {{es}} cluster, with {{kib}}, {{fleet-server}}, and {{agent}}.
+You've successfully set up a three-node {{es}} cluster, with {{kib}}, {{fleet-server}}, and {{agent}}.
 
 ## Next steps [install-stack-self-next-steps]
 
