@@ -170,6 +170,41 @@ The following examples show various configuration options for building impactful
 
 ![Treemap showing bytes per file extension](/explore-analyze/images/treemap-example-bytes-per-extension.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "treemap",
+  "title": "Bytes per file extension",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["extension.keyword"],
+      "size": 6
+    }
+  ],
+  "metric": {
+    "operation": "sum",
+    "field": "bytes",
+    "label": "Total bytes"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Flights by carrier and destination country**
 :   Show how flight volume is distributed across airlines and their destination countries, using two hierarchy levels:
 
@@ -179,6 +214,45 @@ The following examples show various configuration options for building impactful
     * **Metric**: Count
 
 ![Treemap showing flights by carrier and destination country](/explore-analyze/images/treemap-example-flights-carrier.png "=70%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "treemap",
+  "title": "Flights by carrier and destination country",
+  "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["Carrier"],
+      "size": 5
+    },
+    {
+      "operation": "terms",
+      "fields": ["DestCountry"],
+      "size": 5
+    }
+  ],
+  "metric": {
+    "operation": "count",
+    "label": "Flights"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 **Response status per host**
 :   See which hosts handle the most traffic and how their response status breaks down:
@@ -193,3 +267,45 @@ The following examples show various configuration options for building impactful
     * **Color**: Gradient (`#ffc7db`)
 
 ![Treemap showing response status per host](/explore-analyze/images/treemap-example-response-per-host.png "=70%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "treemap",
+  "title": "Response status per host",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["host.keyword"],
+      "size": 3
+    },
+    {
+      "operation": "filters",
+      "filters": [
+        { "label": "Success (2xx/3xx)", "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+        { "label": "Client errors (4xx)", "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+        { "label": "Server errors (5xx)", "query": "response.keyword >= \"500\"" }
+      ]
+    }
+  ],
+  "metric": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

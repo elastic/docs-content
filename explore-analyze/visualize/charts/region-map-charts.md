@@ -129,6 +129,38 @@ The following examples show various configuration options for building impactful
 
 ![Region map showing website traffic by destination country](/explore-analyze/images/region-map-example-traffic.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "region_map",
+  "title": "Website traffic by destination country",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "region_key": {
+    "operation": "terms",
+    "fields": ["geo.dest"],
+    "size": 50
+  },
+  "metric": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Customer distribution by country**
 :   Show where your customers are located around the world:
 
@@ -139,6 +171,39 @@ The following examples show various configuration options for building impactful
 
 ![Region map showing customer distribution by country](/explore-analyze/images/region-map-example-customers.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "region_map",
+  "title": "Customer distribution by country",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "region_key": {
+    "operation": "terms",
+    "fields": ["geoip.country_iso_code"],
+    "size": 50
+  },
+  "metric": {
+    "operation": "unique_count",
+    "field": "customer_id",
+    "label": "Unique customers"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Average ticket price by destination country**
 :   Compare average flight ticket prices across destination countries:
 
@@ -148,3 +213,36 @@ The following examples show various configuration options for building impactful
     * **Metric**: Average of `AvgTicketPrice`
 
 ![Region map showing average ticket price by destination country](/explore-analyze/images/region-map-example-ticket-price.png "=70%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "region_map",
+  "title": "Average ticket price by destination country",
+  "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "region_key": {
+    "operation": "terms",
+    "fields": ["DestCountry"],
+    "size": 50
+  },
+  "metric": {
+    "operation": "average",
+    "field": "AvgTicketPrice",
+    "label": "Average ticket price"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

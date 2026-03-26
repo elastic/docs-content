@@ -109,6 +109,50 @@ To create a stacked bar chart:
 
 ![Bar chart with stacking](../../images/stacked-bar-chart.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Stacked bar chart",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "layers": [
+    {
+      "type": "bar_stacked",
+      "x_axis": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "interval": "auto"
+      },
+      "y_axis": [
+        {
+          "operation": "count",
+          "label": "Count"
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "size": 5
+      }
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Create unstacked (side-by-side) bar charts [grouped-bars]
 
 Unstacked bar charts display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
@@ -126,6 +170,50 @@ To create an unstacked bar chart:
 4. Add a dimension to **Break down by** to split each bar into different bars that show next to each other, recognizable with varying colors.
 
 ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "=70%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Unstacked bar chart",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "layers": [
+    {
+      "type": "bar",
+      "x_axis": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "interval": "auto"
+      },
+      "y_axis": [
+        {
+          "operation": "count",
+          "label": "Count"
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "size": 5
+      }
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ## Bar chart settings [settings]
 
@@ -272,6 +360,51 @@ The following examples show various configuration options that you can use for b
 
 ![Stacked bar chart showing traffic per week broken down per region](/explore-analyze/images/weekly-website-traffic-per-region.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Weekly website traffic per region",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "layers": [
+    {
+      "type": "bar_stacked",
+      "x_axis": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "interval": "1w"
+      },
+      "y_axis": [
+        {
+          "operation": "count",
+          "label": "Page Views",
+          "format": { "type": "number" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "size": 9
+      }
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Request error rate per host (with threshold)**
 :   Monitor error rates across hosts with a target threshold line:
 
@@ -289,3 +422,56 @@ The following examples show various configuration options that you can use for b
     * **Layout**: Horizontal orientation (for better service name readability)
 
 ![Bar chart with reference line showing traffic per week broken down per region](/explore-analyze/images/request-error-rate-per-host.png "=70%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Request error rate per host",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "layers": [
+    {
+      "type": "bar_horizontal",
+      "x_axis": {
+        "operation": "terms",
+        "fields": ["host.keyword"],
+        "size": 4,
+        "rank_by": { "type": "alphabetical", "direction": "asc" }
+      },
+      "y_axis": [
+        {
+          "operation": "formula",
+          "formula": "count(kql='"'"'response > \"300\"'"'"') / count()",
+          "label": "Error Rate %",
+          "format": { "type": "percent" }
+        }
+      ]
+    },
+    {
+      "type": "referenceLines",
+      "lines": [
+        {
+          "value": 0.10,
+          "label": "Maximum acceptable error rate",
+          "color": "#cc5642",
+          "style": "dashed"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

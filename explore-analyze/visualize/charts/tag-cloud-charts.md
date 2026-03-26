@@ -150,6 +150,38 @@ The following examples show various configuration options for building impactful
 
 ![Tag cloud showing popular request URLs](/explore-analyze/images/tag-cloud-example-urls.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "tag_cloud",
+  "title": "Popular request URLs",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "tags": {
+    "operation": "terms",
+    "fields": ["request.keyword"],
+    "size": 30
+  },
+  "metric": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Most popular flight destinations**
 :   Show which cities receive the most flights, with larger tags indicating higher traffic:
 
@@ -160,3 +192,35 @@ The following examples show various configuration options for building impactful
     * **Color**: Gradient
 
 ![Tag cloud showing most popular flight destinations](/explore-analyze/images/tag-cloud-example-destinations.png "=70%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "tag_cloud",
+  "title": "Most popular flight destinations",
+  "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "tags": {
+    "operation": "terms",
+    "fields": ["DestCityName"],
+    "size": 30
+  },
+  "metric": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

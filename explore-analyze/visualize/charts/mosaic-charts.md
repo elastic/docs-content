@@ -204,6 +204,46 @@ The following examples show various configuration options for building impactful
 
 ![Mosaic chart showing response status by operating system](/explore-analyze/images/mosaic-example-response-by-os.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "mosaic",
+  "title": "Response status by operating system",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "x_axis": {
+    "operation": "terms",
+    "fields": ["machine.os.keyword"],
+    "size": 5
+  },
+  "y_axis": {
+    "operation": "filters",
+    "filters": [
+      { "label": "Success (2xx/3xx)", "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+      { "label": "Client errors (4xx)", "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+      { "label": "Server errors (5xx)", "query": "response.keyword >= \"500\"" }
+    ]
+  },
+  "metric": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Product categories by continent**
 :   Show how product preferences vary across regions:
 
@@ -213,3 +253,40 @@ The following examples show various configuration options for building impactful
     * **Metric**: Count
 
 ![Mosaic chart showing product categories by continent](/explore-analyze/images/mosaic-example-category-by-continent.png "=70%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "mosaic",
+  "title": "Product categories by continent",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "x_axis": {
+    "operation": "terms",
+    "fields": ["geoip.continent_name"],
+    "size": 5
+  },
+  "y_axis": {
+    "operation": "terms",
+    "fields": ["category.keyword"],
+    "size": 5
+  },
+  "metric": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

@@ -91,6 +91,38 @@ Use a gauge to track progress toward a specific target, such as monthly sales go
 
 ![Example Lens gauge chart showing yearly sales goal](/explore-analyze/images/gauge-chart-scenario-goal.png "=75%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",
+  "title": "Yearly sales goal",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "metric": {
+    "operation": "sum",
+    "field": "taxful_total_price",
+    "label": "Revenue",
+    "format": { "type": "number", "decimals": 0, "compact": true }
+  },
+  "minimum": 0,
+  "maximum": 100000,
+  "goal": 100000
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Configure color bands for thresholds [color-bands]
 
 Color bands help users quickly understand whether a value is within acceptable ranges.
@@ -113,6 +145,46 @@ This example shows a gauge with server response time and color-coded health indi
 
 ![Example Lens gauge chart showing average response time in milliseconds](/explore-analyze/images/gauge-chart-scenario-thresholds.png "=50%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",
+  "title": "Server response time",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metric": {
+    "operation": "average",
+    "field": "bytes",
+    "label": "Avg response bytes",
+    "format": { "type": "number", "decimals": 0 },
+    "color": {
+      "type": "dynamic",
+      "palette": "status",
+      "steps": [
+        { "color": "#209280", "gte": 0, "lt": 5000 },
+        { "color": "#d6bf57", "gte": 5000, "lt": 8000 },
+        { "color": "#cc5642", "gte": 8000 }
+      ]
+    }
+  },
+  "minimum": 0,
+  "maximum": 10000
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Use dynamic bounds and goals [dynamic-bounds]
 
 Instead of entering fixed static values, you can use fields from your data to set the minimum, maximum, or goal dynamically using aggregations.
@@ -122,6 +194,46 @@ Instead of entering fixed static values, you can use fields from your data to se
 3. Optionally, do the same for **Minimum value** (for example, `Min(baseline)`) or **Goal** (for example, `Average(target)`).
 
 This approach is useful when bounds or targets vary by category, time period, or user. You can also use formulas to define dynamic bounds or goals. Refer to [Lens formulas](/explore-analyze/visualize/lens.md#lens-formulas) for more details.
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",
+  "title": "Bytes vs quota",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metric": {
+    "operation": "sum",
+    "field": "bytes",
+    "label": "Total bytes",
+    "format": { "type": "bytes" }
+  },
+  "minimum": 0,
+  "maximum": {
+    "operation": "formula",
+    "formula": "sum(bytes) * 1.5",
+    "label": "Dynamic max"
+  },
+  "goal": {
+    "operation": "formula",
+    "formula": "sum(bytes) * 1.2",
+    "label": "Target"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ## Gauge chart settings [gauge-chart-settings]
 
@@ -228,6 +340,46 @@ The following examples show various configuration options for building impactful
 
 ![Example Lens gauge chart showing average CPU usage in percent](/explore-analyze/images/gauge-chart-example-cpu.png "=50%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",
+  "title": "CPU usage",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metric": {
+    "operation": "average",
+    "field": "bytes",
+    "label": "Avg CPU %",
+    "format": { "type": "percent" },
+    "color": {
+      "type": "dynamic",
+      "palette": "status",
+      "steps": [
+        { "color": "#209280", "gte": 0, "lt": 50 },
+        { "color": "#d6bf57", "gte": 50, "lt": 75 },
+        { "color": "#cc5642", "gte": 75 }
+      ]
+    }
+  },
+  "minimum": 0,
+  "maximum": 100
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Disk space utilization**
 :   Display disk space usage as a percentage of capacity:
 
@@ -238,3 +390,43 @@ The following examples show various configuration options for building impactful
     * **Color bands**: 0-60% (green), 60-80% (yellow), 80-100% (red)
 
 ![Example Lens gauge chart showing disk space utilization in percent](/explore-analyze/images/gauge-chart-example-disk-space.png "=50%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",
+  "title": "Disk space utilization",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metric": {
+    "operation": "formula",
+    "formula": "sum(bytes) / 1000000 * 100",
+    "label": "Disk usage %",
+    "format": { "type": "percent" },
+    "color": {
+      "type": "dynamic",
+      "palette": "status",
+      "steps": [
+        { "color": "#209280", "gte": 0, "lt": 60 },
+        { "color": "#d6bf57", "gte": 60, "lt": 80 },
+        { "color": "#cc5642", "gte": 80 }
+      ]
+    }
+  },
+  "minimum": 0,
+  "maximum": 100
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

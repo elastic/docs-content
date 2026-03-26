@@ -133,6 +133,46 @@ To add trend indicators to your metric visualization:
 
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "metric",
+  "title": "Weekly page views",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Page views",
+      "format": { "type": "number", "decimals": 0, "compact": true },
+      "filter": { "query": "" },
+      "time_scale": null
+    },
+    {
+      "operation": "formula",
+      "formula": "count(shift='"'"'1w'"'"')",
+      "label": "Compared to previous week",
+      "format": { "type": "number", "decimals": 0, "compact": true },
+      "filter": { "query": "" },
+      "color": { "type": "static", "color": "#6092c0" }
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Show progress by setting a maximum value [metric-progress]
 
 When creating **Metric** visualizations with numeric data, you can specify a maximum value to show progress toward a goal or capacity limit. When combined with the **Bar** background chart option, this displays a progress bar that visually represents how close your current metric is to reaching the maximum value.
@@ -162,6 +202,44 @@ The metric visualization now shows a progress bar indicating how close the curre
 ::::{tip}
 You can combine progress bars with secondary metrics to show both progress toward a goal and trends over time. To do this, add both a maximum value and a secondary metric to your visualization.
 ::::
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "metric",
+  "title": "Storage used",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metrics": [{
+    "operation": "sum",
+    "field": "bytes",
+    "format": { "type": "bytes" },
+    "filter": { "query": "" },
+    "time_scale": null
+  }],
+  "breakdown_by": {
+    "operation": "terms",
+    "fields": ["machine.os.keyword"],
+    "size": 5,
+    "format": null,
+    "color": null,
+    "collapse_by": null
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ## Metric chart settings [settings]
 
@@ -282,6 +360,47 @@ The following examples show various configuration options that you can use for b
 
     ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
 
+    :::{dropdown} Create this chart using the API
+    ```{applies_to}
+    stack: preview 9.4
+    serverless: preview
+    ```
+
+    ```bash
+    curl -X POST "${KIBANA_URL}/api/visualizations" \
+      -H "Authorization: ApiKey ${API_KEY}" \
+      -H "kbn-xsrf: true" \
+      -H "Content-Type: application/json" \
+      -d '{
+      "type": "metric",
+      "title": "Successful requests (2xx)",
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "filters": [],
+      "query": { "query": "" },
+      "metrics": [
+        {
+          "operation": "formula",
+          "formula": "count(kql='"'"'response >= 200 and response < 300'"'"') / count()",
+          "label": "Successful requests (2xx)",
+          "format": { "type": "percent", "decimals": 1 },
+          "filter": { "query": "" },
+          "color": { "type": "dynamic", "range": "percentage", "steps": [{"color": "#cc5642", "gte": 0, "lt": 75}, {"color": "#d6bf57", "gte": 75, "lt": 95}, {"color": "#209280", "gte": 95}] }
+        },
+        {
+          "operation": "formula",
+          "formula": "0.95",
+          "label": "Target:",
+          "format": { "type": "percent", "decimals": 0 },
+          "filter": { "query": "" },
+          "color": { "type": "static", "color": "#6092c0" }
+        }
+      ]
+    }'
+    ```
+
+    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+    :::
+
 **Ratio of successful requests per origin**
 :   This example builds on the previous one to display the percentage of successful requests for the 10 countries with the most incoming requests on a monitoring dashboard:
 
@@ -299,6 +418,56 @@ The following examples show various configuration options that you can use for b
 
     ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate-top-countries.png "=70%")
 
+    :::{dropdown} Create this chart using the API
+    ```{applies_to}
+    stack: preview 9.4
+    serverless: preview
+    ```
+
+    ```bash
+    curl -X POST "${KIBANA_URL}/api/visualizations" \
+      -H "Authorization: ApiKey ${API_KEY}" \
+      -H "kbn-xsrf: true" \
+      -H "Content-Type: application/json" \
+      -d '{
+      "type": "metric",
+      "title": "Successful requests (2xx)",
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "filters": [],
+      "query": { "query": "" },
+      "metrics": [
+        {
+          "operation": "formula",
+          "formula": "count(kql='"'"'response >= 200 and response < 300'"'"') / count()",
+          "label": "Successful requests (2xx)",
+          "format": { "type": "percent", "decimals": 1 },
+          "filter": { "query": "" },
+          "color": { "type": "dynamic", "range": "percentage", "steps": [{"color": "#cc5642", "gte": 0, "lt": 75}, {"color": "#d6bf57", "gte": 75, "lt": 95}, {"color": "#209280", "gte": 95}] }
+        },
+        {
+          "operation": "formula",
+          "formula": "0.95",
+          "label": "Target:",
+          "format": { "type": "percent", "decimals": 0 },
+          "filter": { "query": "" },
+          "color": { "type": "static", "color": "#6092c0" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "size": 10,
+        "rank_by": { "type": "custom", "operation": "count", "field": "response.keyword", "direction": "desc" },
+        "format": null,
+        "color": null,
+        "collapse_by": null
+      }
+    }'
+    ```
+
+    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+    :::
+
 **Website traffic with trend**
 :   Monitor current traffic and show whether it's increasing or decreasing compared to the previous period:
 
@@ -312,3 +481,43 @@ The following examples show various configuration options that you can use for b
       * **Color palette**: Green for increases (more traffic is positive)
 
     ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
+
+    :::{dropdown} Create this chart using the API
+    ```{applies_to}
+    stack: preview 9.4
+    serverless: preview
+    ```
+
+    ```bash
+    curl -X POST "${KIBANA_URL}/api/visualizations" \
+      -H "Authorization: ApiKey ${API_KEY}" \
+      -H "kbn-xsrf: true" \
+      -H "Content-Type: application/json" \
+      -d '{
+      "type": "metric",
+      "title": "Weekly page views",
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "filters": [],
+      "query": { "query": "" },
+      "metrics": [
+        {
+          "operation": "count",
+          "label": "Page views",
+          "format": { "type": "number", "decimals": 0, "compact": true },
+          "filter": { "query": "" },
+          "time_scale": null
+        },
+        {
+          "operation": "formula",
+          "formula": "count(shift='"'"'1w'"'"')",
+          "label": "Compared to previous week",
+          "format": { "type": "number", "decimals": 0, "compact": true },
+          "filter": { "query": "" },
+          "color": { "type": "static", "color": "#6092c0" }
+        }
+      ]
+    }'
+    ```
+
+    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+    :::

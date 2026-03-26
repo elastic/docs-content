@@ -97,6 +97,50 @@ Use stacking to show how categories contribute to a total over time.
 
 4. Optionally, in the **Breakdown** settings, you can set **Rank by** to specify the dimension the top values are ranked by.
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Stacked area by agent",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "layers": [
+    {
+      "type": "area_stacked",
+      "x_axis": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "interval": "auto"
+      },
+      "y_axis": [
+        {
+          "operation": "count",
+          "label": "Count"
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["agent.keyword"],
+        "size": 5
+      }
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Compare current versus previous period with time shift [area-timeshift]
 
 In Area charts, you can enable time shift to compare different periods and identify deltas.
@@ -112,9 +156,65 @@ In Area charts, you can enable time shift to compare different periods and ident
 4. Optionally, customize the appearance of the layer to adjust how it looks on the chart. When you duplicate a layer, {{kib}} automatically assigns a different **Series color** to the new layer. You can for example change this color, or adjust the layer's name and axis position. This name is used for the chart's legend.
 
 ::::{tip}
-You can also compute the relative change using a formula, for example:  
+You can also compute the relative change using a formula, for example:
 `(average(bytes) - average(bytes, shift='1w')) / average(bytes, shift='1w')`
-:::: 
+::::
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Current vs previous period - bytes",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "layers": [
+    {
+      "type": "area",
+      "x_axis": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "interval": "auto"
+      },
+      "y_axis": [
+        {
+          "operation": "average",
+          "field": "bytes",
+          "label": "Current period"
+        }
+      ]
+    },
+    {
+      "type": "area",
+      "x_axis": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "interval": "auto"
+      },
+      "y_axis": [
+        {
+          "operation": "average",
+          "field": "bytes",
+          "label": "Previous week",
+          "time_shift": "1w"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ## Area chart settings [area-chart-settings]
 
@@ -207,6 +307,50 @@ When creating or editing a visualization, you can adjust the following settings.
    
    ![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
 
+   :::{dropdown} Create this chart using the API
+   ```{applies_to}
+   stack: preview 9.4
+   serverless: preview
+   ```
+
+   ```bash
+   curl -X POST "${KIBANA_URL}/api/visualizations" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+     "type": "xy",
+     "title": "Traffic by geographic region",
+     "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+     "filters": [],
+     "query": { "query": "" },
+     "layers": [
+       {
+         "type": "area_stacked",
+         "x_axis": {
+           "operation": "date_histogram",
+           "field": "timestamp",
+           "interval": "auto"
+         },
+         "y_axis": [
+           {
+             "operation": "count",
+             "label": "Records"
+           }
+         ],
+         "breakdown_by": {
+           "operation": "terms",
+           "fields": ["geo.dest"],
+           "size": 5
+         }
+       }
+     ]
+   }'
+   ```
+
+   For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+   :::
+
 **Response code over time with annotations**
 
 :   Visualizing HTTP response codes over time, highlighting the proportion of success, client error, and server error responses, with annotations for key events: 
@@ -221,6 +365,53 @@ When creating or editing a visualization, you can adjust the following settings.
     * **Annotation Query**: `tags:error AND tags:security`
 
    ![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
+
+   :::{dropdown} Create this chart using the API
+   ```{applies_to}
+   stack: preview 9.4
+   serverless: preview
+   ```
+
+   ```bash
+   curl -X POST "${KIBANA_URL}/api/visualizations" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+     "type": "xy",
+     "title": "Response code over time",
+     "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+     "filters": [],
+     "query": { "query": "" },
+     "layers": [
+       {
+         "type": "area_percentage",
+         "x_axis": {
+           "operation": "date_histogram",
+           "field": "timestamp",
+           "interval": "auto"
+         },
+         "y_axis": [
+           {
+             "operation": "count",
+             "label": "Count of records"
+           }
+         ],
+         "breakdown_by": {
+           "operation": "filters",
+           "filters": [
+             { "label": "Success/Redirection", "query": "response.keyword >= 200 and response.keyword < 400" },
+             { "label": "Client Error", "query": "response.keyword >= 400 and response.keyword < 500" },
+             { "label": "Server Error", "query": "response.keyword >= 500" }
+           ]
+         }
+       }
+     ]
+   }'
+   ```
+
+   For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+   :::
 
 
 

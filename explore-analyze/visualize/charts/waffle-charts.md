@@ -94,6 +94,43 @@ This example uses the **Kibana Sample Data eCommerce** data set. If you haven't 
 
 ![Waffle chart showing revenue progress toward a sales target](/explore-analyze/images/waffle-scenario-completion.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "waffle",
+  "title": "Revenue progress toward sales target",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "metrics": [
+    {
+      "operation": "sum",
+      "field": "taxful_total_price",
+      "label": "Revenue earned",
+      "color": "#209280"
+    },
+    {
+      "operation": "formula",
+      "formula": "500000 - sum(taxful_total_price)",
+      "label": "Remaining to goal",
+      "color": "#d3dae6"
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ## Waffle chart settings [waffle-chart-settings]
 
 Customize your waffle chart to display exactly the information you need, formatted the way you want.
@@ -186,6 +223,41 @@ The following examples show various configuration options for building impactful
 
 ![Waffle chart showing response status breakdown](/explore-analyze/images/waffle-example-response-status.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "waffle",
+  "title": "Response status breakdown",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "group_by": {
+    "operation": "filters",
+    "filters": [
+      { "label": "Success (2xx/3xx)", "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+      { "label": "Client errors (4xx)", "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+      { "label": "Server errors (5xx)", "query": "response.keyword >= \"500\"" }
+    ]
+  },
+  "metric": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **OS distribution**
 :   Show the distribution of operating systems used by your website visitors:
 
@@ -194,3 +266,35 @@ The following examples show various configuration options for building impactful
     * **Metric**: Count
 
 ![Waffle chart showing OS distribution](/explore-analyze/images/waffle-example-os.png "=70%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "waffle",
+  "title": "OS distribution",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "group_by": {
+    "operation": "terms",
+    "fields": ["machine.os.keyword"],
+    "size": 5
+  },
+  "metric": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

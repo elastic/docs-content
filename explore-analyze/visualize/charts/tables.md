@@ -103,6 +103,47 @@ For example, you could show visits per date in rows, split by the top 3 hours of
 
 ![Example of a table in Lens using the Split metrics by functionality](../../images/lens-table-breakdown-by-example.png)
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Pivot table - visits by date split by hour",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "rows": [
+    {
+      "operation": "date_histogram",
+      "field": "timestamp",
+      "interval": "1d"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Visits"
+    }
+  ],
+  "split_by": {
+    "operation": "terms",
+    "fields": ["hour_of_day"],
+    "size": 3
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 Refer to [Analyze the data in a table](../../dashboards/create-dashboard-of-panels-with-ecommerce-data.md#view-customers-over-time-by-continents) for a detailed example.
 
 ### Use formulas in tables
@@ -122,6 +163,48 @@ To add a formula to a table:
 4. Customize the column name and formatting.
 
 Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for formula examples, including time-shifting comparisons and mathematical operations, and the {icon}`documentation` **Formula reference** available from Lens.
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Table with formula column",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "rows": [
+    {
+      "operation": "date_histogram",
+      "field": "order_date",
+      "interval": "1w"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Orders this week"
+    },
+    {
+      "operation": "formula",
+      "formula": "count() / count(shift='"'"'1w'"'"') - 1",
+      "label": "Change from last week",
+      "format": { "type": "percent", "decimals": 2 }
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ### Use emojis in tables [esql-table-emojis]
 
@@ -264,6 +347,44 @@ The following examples show various configuration options you can use for buildi
 
     ![Table showing top pages by unique visitors](../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png "=70%")
 
+    :::{dropdown} Create this chart using the API
+    ```{applies_to}
+    stack: preview 9.4
+    serverless: preview
+    ```
+
+    ```bash
+    curl -X POST "${KIBANA_URL}/api/visualizations" \
+      -H "Authorization: ApiKey ${API_KEY}" \
+      -H "kbn-xsrf: true" \
+      -H "Content-Type: application/json" \
+      -d '{
+      "type": "data_table",
+      "title": "Top pages by unique visitors",
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "filters": [],
+      "query": { "query": "" },
+      "rows": [
+        {
+          "operation": "terms",
+          "fields": ["request.keyword"],
+          "size": 5
+        }
+      ],
+      "metrics": [
+        {
+          "operation": "unique_count",
+          "field": "clientip",
+          "label": "Unique visitors",
+          "format": { "type": "number" }
+        }
+      ]
+    }'
+    ```
+
+    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+    :::
+
 **Sales by date and continent (pivot table)**
 :   Create a pivot table showing customer counts across different continents over time:
 
@@ -274,6 +395,49 @@ The following examples show various configuration options you can use for buildi
     * **Split metrics by**: `geoip.continent_name` field using **Top values** set to `3`
 
     ![Table showing customers over time by continent](../../images/kibana-lens_table_over_time.png "=70%")
+
+    :::{dropdown} Create this chart using the API
+    ```{applies_to}
+    stack: preview 9.4
+    serverless: preview
+    ```
+
+    ```bash
+    curl -X POST "${KIBANA_URL}/api/visualizations" \
+      -H "Authorization: ApiKey ${API_KEY}" \
+      -H "kbn-xsrf: true" \
+      -H "Content-Type: application/json" \
+      -d '{
+      "type": "data_table",
+      "title": "Sales by date and continent",
+      "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+      "filters": [],
+      "query": { "query": "" },
+      "rows": [
+        {
+          "operation": "date_histogram",
+          "field": "order_date",
+          "interval": "1d",
+          "label": "Sales per day"
+        }
+      ],
+      "metrics": [
+        {
+          "operation": "unique_count",
+          "field": "customer_id",
+          "label": "Unique customers"
+        }
+      ],
+      "split_by": {
+        "operation": "terms",
+        "fields": ["geoip.continent_name"],
+        "size": 3
+      }
+    }'
+    ```
+
+    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+    :::
 
 **Document comparison with custom ranges**
 :   Compare metrics across custom-defined ranges:
@@ -287,8 +451,50 @@ The following examples show various configuration options you can use for buildi
       * **Name**: `Total bytes transferred`
       * **Value format**: `Bytes`
       * **Text alignment**: `Right`
-    * **Additional styling**: 
+    * **Additional styling**:
       * **Color by value**: Dynamic coloring to highlight ranges with higher byte transfers
+
+    :::{dropdown} Create this chart using the API
+    ```{applies_to}
+    stack: preview 9.4
+    serverless: preview
+    ```
+
+    ```bash
+    curl -X POST "${KIBANA_URL}/api/visualizations" \
+      -H "Authorization: ApiKey ${API_KEY}" \
+      -H "kbn-xsrf: true" \
+      -H "Content-Type: application/json" \
+      -d '{
+      "type": "data_table",
+      "title": "Document comparison with custom ranges",
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "filters": [],
+      "query": { "query": "" },
+      "rows": [
+        {
+          "operation": "intervals",
+          "field": "bytes",
+          "ranges": [
+            { "from": 0, "to": 10240, "label": "Below 10KB" },
+            { "from": 10240, "label": "Above 10KB" }
+          ],
+          "label": "File size"
+        }
+      ],
+      "metrics": [
+        {
+          "operation": "sum",
+          "field": "bytes",
+          "label": "Total bytes transferred",
+          "format": { "type": "bytes" }
+        }
+      ]
+    }'
+    ```
+
+    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+    :::
 
 **Weekly sales with percentage change**
 :   Show week-over-week sales trends with calculated percentage changes:
@@ -304,3 +510,46 @@ The following examples show various configuration options you can use for buildi
          * **Value format**: `Percent`, 2 decimals
          * **Color by value**: Dynamic (green for positive growth, red for negative)
          * **Text alignment**: `Right`
+
+    :::{dropdown} Create this chart using the API
+    ```{applies_to}
+    stack: preview 9.4
+    serverless: preview
+    ```
+
+    ```bash
+    curl -X POST "${KIBANA_URL}/api/visualizations" \
+      -H "Authorization: ApiKey ${API_KEY}" \
+      -H "kbn-xsrf: true" \
+      -H "Content-Type: application/json" \
+      -d '{
+      "type": "data_table",
+      "title": "Weekly sales with percentage change",
+      "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+      "filters": [],
+      "query": { "query": "" },
+      "rows": [
+        {
+          "operation": "date_histogram",
+          "field": "order_date",
+          "interval": "1w",
+          "label": "Week"
+        }
+      ],
+      "metrics": [
+        {
+          "operation": "count",
+          "label": "Orders this week"
+        },
+        {
+          "operation": "formula",
+          "formula": "count() / count(shift='"'"'1w'"'"') - 1",
+          "label": "Change from last week",
+          "format": { "type": "percent", "decimals": 2 }
+        }
+      ]
+    }'
+    ```
+
+    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+    :::

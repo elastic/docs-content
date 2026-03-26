@@ -87,6 +87,43 @@ You can configure custom color ranges on the **Cell value** dimension to emphasi
 
 ![Example Lens heat map chart showing error rates per day for various errors](/explore-analyze/images/heat-map-chart-example-server-errors.png)
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "heatmap",
+  "title": "Error rates per day",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "x_axis": {
+    "operation": "date_histogram",
+    "field": "timestamp",
+    "interval": "1d"
+  },
+  "y_axis": {
+    "operation": "terms",
+    "fields": ["response.keyword"],
+    "size": 10
+  },
+  "cell_value": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ## Heat map chart settings [heat-map-chart-settings]
 
 Customize your heat map chart to display exactly the information you need, formatted the way you want.
@@ -219,6 +256,44 @@ The following examples show various configuration options for building impactful
 
 ![Heat map showing request volume by hour and day](/explore-analyze/images/heat-map-example-request-volume.png "=70%")
 
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "heatmap",
+  "title": "Request volume by day and hour",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "x_axis": {
+    "operation": "date_histogram",
+    "field": "timestamp",
+    "interval": "1d"
+  },
+  "y_axis": {
+    "operation": "terms",
+    "fields": ["hour_of_day"],
+    "size": 24,
+    "rank_by": { "type": "alphabetical", "direction": "desc" }
+  },
+  "cell_value": {
+    "operation": "count",
+    "label": "Count"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Sales performance by product and region**
 :   Compare product sales across geographic regions:
 
@@ -229,3 +304,41 @@ The following examples show various configuration options for building impactful
     * **Color palette**: Positive (sequential)
 
 ![Heat map showing sales performance by product and region](/explore-analyze/images/heat-map-example-sales-performance.png "=70%")
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "heatmap",
+  "title": "Sales performance by product and region",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "x_axis": {
+    "operation": "terms",
+    "fields": ["geoip.city_name"],
+    "size": 10
+  },
+  "y_axis": {
+    "operation": "terms",
+    "fields": ["category.keyword"],
+    "size": 5
+  },
+  "cell_value": {
+    "operation": "sum",
+    "field": "taxful_total_price",
+    "label": "Revenue"
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

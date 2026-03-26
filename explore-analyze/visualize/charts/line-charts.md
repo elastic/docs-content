@@ -90,9 +90,65 @@ In line charts, you can enable time shift to compare the current value with a pr
 4. Optionally, customize the appearance of the layer to adjust how it looks on the chart. When you duplicate a layer, {{kib}} automatically assigns a different **Series color** to the new layer. You can for example change this color, or adjust the layer's name and axis position. This name is used for the chart's legend.
 
 ::::{tip}
-You can also compute the relative change by defining the axis data with a [formula](/explore-analyze/visualize/lens.md#lens-formulas), for example:  
+You can also compute the relative change by defining the axis data with a [formula](/explore-analyze/visualize/lens.md#lens-formulas), for example:
 `(average(bytes) - average(bytes, shift='1w')) / average(bytes, shift='1w')`
-:::: 
+::::
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Current vs previous period - bytes",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "layers": [
+    {
+      "type": "line",
+      "x_axis": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "interval": "auto"
+      },
+      "y_axis": [
+        {
+          "operation": "average",
+          "field": "bytes",
+          "label": "Current period"
+        }
+      ]
+    },
+    {
+      "type": "line",
+      "x_axis": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "interval": "auto"
+      },
+      "y_axis": [
+        {
+          "operation": "average",
+          "field": "bytes",
+          "label": "Previous week",
+          "time_shift": "1w"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ### Highlight thresholds with reference lines [line-reference-lines]
 
@@ -102,6 +158,57 @@ Use reference lines to indicate important thresholds, such as SLOs or alert limi
 
 1. In the chart settings, add a static value reference line to mark your target or threshold visually.
 2. Use the **Text decoration** setting to provide a name, for example, `Target` or `SLO`, choose a color, and optionally a band.
+
+:::{dropdown} Create this chart using the API
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Bytes with SLO reference line",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "layers": [
+    {
+      "type": "line",
+      "x_axis": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "interval": "auto"
+      },
+      "y_axis": [
+        {
+          "operation": "average",
+          "field": "bytes",
+          "label": "Average bytes"
+        }
+      ]
+    },
+    {
+      "type": "referenceLines",
+      "lines": [
+        {
+          "value": 6000,
+          "label": "SLO Target",
+          "color": "#cc5642",
+          "style": "dashed"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ## Line chart settings [settings]
 
@@ -202,6 +309,52 @@ When creating or editing a visualization, you can adjust the following settings.
 
    ![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
 
+   :::{dropdown} Create this chart using the API
+   ```{applies_to}
+   stack: preview 9.4
+   serverless: preview
+   ```
+
+   ```bash
+   curl -X POST "${KIBANA_URL}/api/visualizations" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+     "type": "xy",
+     "title": "Average RAM per host",
+     "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+     "filters": [],
+     "query": { "query": "" },
+     "layers": [
+       {
+         "type": "line",
+         "x_axis": {
+           "operation": "date_histogram",
+           "field": "timestamp",
+           "interval": "1h"
+         },
+         "y_axis": [
+           {
+             "operation": "moving_average",
+             "field": "machine.ram",
+             "label": "Moving average of machine.ram",
+             "format": { "type": "bytes" }
+           }
+         ],
+         "breakdown_by": {
+           "operation": "terms",
+           "fields": ["host.keyword"],
+           "size": 4
+         }
+       }
+     ]
+   }'
+   ```
+
+   For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+   :::
+
 **Unique IPs over time**
 :   Visualizing unique IP sessions throughout the day:
 
@@ -215,6 +368,47 @@ When creating or editing a visualization, you can adjust the following settings.
 4. Save your chart.
 
    ![Unique IPs throughout the day](../../images/kibana-lens-unique-ip-throughout-day.png "=70%")
+
+   :::{dropdown} Create this chart using the API
+   ```{applies_to}
+   stack: preview 9.4
+   serverless: preview
+   ```
+
+   ```bash
+   curl -X POST "${KIBANA_URL}/api/visualizations" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+     "type": "xy",
+     "title": "Unique IPs over time",
+     "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+     "filters": [],
+     "query": { "query": "" },
+     "layers": [
+       {
+         "type": "line",
+         "x_axis": {
+           "operation": "date_histogram",
+           "field": "timestamp",
+           "interval": "1h"
+         },
+         "y_axis": [
+           {
+             "operation": "unique_count",
+             "field": "host.keyword",
+             "label": "Unique hosts",
+             "format": { "type": "number", "decimals": 0 }
+           }
+         ]
+       }
+     ]
+   }'
+   ```
+
+   For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+   :::
 
 ---
 
