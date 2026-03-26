@@ -182,31 +182,31 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
    node.name: instance-1
    ```
 
-1. Configure {{es}} to listen for connections from other nodes in the cluster.
+1. Configure networking settings.
 
-   By default, {{es}} listens for transport traffic on `localhost`, which prevents other {{es}} instances from joining the cluster. To allow communication between nodes, you need to bind the transport interface to a non-loopback address.
+   1. Uncomment the line `#transport.host: 0.0.0.0` to accept connections on all available network interfaces.
 
-   Uncomment the line `#transport.host: 0.0.0.0`, to accept connections on all available network interfaces:
+      By default, {{es}} listens for transport traffic on `localhost`, which prevents other {{es}} instances from joining the cluster. To allow communication between nodes, you need to bind the transport interface to a non-loopback address.
 
-   ```yaml
-   transport.host: 0.0.0.0 <1>
-   ```
-   1. If you want {{es}} to listen only on a specific interface, set this to the host IP address instead.
+      ```yaml
+      transport.host: 0.0.0.0 <1>
+      ```
+      1. If you want {{es}} to listen only on a specific interface, set this to the host IP address instead.
 
-1. Make sure `http.host` is configured.
+   1. Make sure `http.host` is configured.
 
-   {{es}} should already be configured to listen on all network interfaces for HTTP traffic as part of the automatic setup.
+      {{es}} should already be configured to listen on all network interfaces for HTTP traffic as part of the automatic setup.
 
-   Verify that this setting is present in your configuration file. If it is not, add it:
+      Verify that this setting is present in your configuration file. If it is not, add it:
 
-   ```yaml
-   http.host: 0.0.0.0 <1>
-   ```
-   1. If you want {{es}} to listen only on a specific interface, set this to the host IP address instead.
+      ```yaml
+      http.host: 0.0.0.0 <1>
+      ```
+      1. If you want {{es}} to listen only on a specific interface, set this to the host IP address instead.
 
-   :::{tip}
-   For more advanced configurations, including using `network.host` to configure both HTTP and transport interfaces at once, refer to the [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) documentation.
-   :::
+      :::{tip}
+      As an alternative to setting `transport.host` and `http.host` separately, you can use `network.host` to configure both interfaces at once. For details, refer to the [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) documentation.
+      :::
 
 1. Save your changes and close the editor.
 
@@ -384,27 +384,18 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
    node.name: instance-2
    ```
 
-1. (Optional) Adjust the network settings.
+1. (Optional) Review networking settings.
 
-   After running `elasticsearch-reconfigure-node`, {{es}} is already configured to listen on all network interfaces for both transport and HTTP traffic (`0.0.0.0`).
-
-   You can verify this in your configuration file:
+   After running `elasticsearch-reconfigure-node`, {{es}} is already configured to use non-loopback addresses for transport and HTTP traffic, so no changes are usually required. You can verify this in your configuration file:
 
    ```yaml
    transport.host: 0.0.0.0
    http.host: 0.0.0.0
    ```
 
-   If you want {{es}} to listen only on a specific interface, you can set these values to the host IP address instead, or comment them out and use `network.host` instead:
-
-   ```yaml
-   transport.host: 203.0.113.132
-   http.host: 203.0.113.132
-   ```
-
-   :::{tip}
-   This is the same adjustment described for the first node. Restricting the binding address can be useful in production environments.
-   :::
+   ::::{note}
+   If you make changes to the networking settings, ensure that the networking configuration is consistent across all nodes. For example, use the same approach to binding (specific IP addresses or `0.0.0.0`) and the same settings (`transport.host`, `http.host`, or `network.host`) across all nodes. For details, refer to the [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) documentation.
+   ::::
 
 1. Save your changes and close the editor.
 
