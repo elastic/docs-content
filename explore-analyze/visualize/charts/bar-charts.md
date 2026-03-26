@@ -452,7 +452,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "y_axis": [
         {
           "operation": "formula",
-          "formula": "count(kql='"'"'response > \"300\"'"'"') / count()",
+          "formula": "count(kql='response > \"300\"') / count()",
           "label": "Error Rate %",
           "format": { "type": "percent" }
         }
