@@ -22,7 +22,7 @@ Use this list to figure out the best deployment and hosting setup for your envir
 
 * **S3-compatible bucket**: You store the artifact ZIP files in an S3-compatible bucket over HTTPS and the bucket exposes a normal object listing at the repository root, so {{kib}} can discover the ZIPs without you maintaining a separate listing XML file (unlike the CDN option).
 * **CDN**: You serve the ZIP files through a CDN and publish S3-style listing XML yourself, served as the folder’s default document or directory index.
-* **Local files on the {{kib}} host**: The ZIP files exist only on the {{kib}} host filesystem and you configure a `file://` repository URL. Requires {{kib}} 9.1 or later.
+* {applies_to}`self: ga 9.1+` **Local files on the {{kib}} host**: The ZIP files exist only on the {{kib}} host filesystem and you configure a `file://` repository URL.
 
 ## Deploy the repository [deploy-the-knowledge-base-artifact-repository]
 
@@ -31,10 +31,6 @@ Choose the tab that matches your deployment and hosting setup:
 :::::::{tab-set}
 
 ::::::{tab-item} S3-compatible bucket
-
-### Deploy using an S3-compatible bucket
-
-An S3-compatible bucket can expose a listing comparable to Elastic’s public bucket, so {{kib}} can read the index and fetch the ZIP files without maintaining listing XML manually.
 
 :::::{stepper}
 
@@ -102,10 +98,6 @@ The steps to install knowledge base content depend on the assistant that you use
 ::::::
 
 ::::::{tab-item} CDN
-
-### Deploy to a CDN
-
-Deploying with a CDN matches the S3 flow, except you must publish a bucket-listing XML file and configure the CDN to serve it as the folder’s directory index (default document).
 
 :::::{stepper}
 
@@ -201,13 +193,9 @@ The steps to install knowledge base content depend on the assistant that you use
 
 ::::::{tab-item} Local files on the {{kib}} host
 
-### Use a local path on the {{kib}} host
-
 ```{applies_to}
 self: ga 9.1+
 ```
-
-When {{kib}} can’t reach Elastic’s public host over HTTPS but can read local disk, you can point `artifactRepositoryUrl` at a directory on the {{kib}} host using a `file://` URI.
 
 :::::{stepper}
 
