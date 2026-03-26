@@ -157,7 +157,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     },
     {
       "operation": "formula",
-      "formula": "count(shift='"'"'1w'"'"')",
+      "formula": "count(shift='1w')",
       "label": "Compared to previous week",
       "format": { "type": "number", "decimals": 0, "compact": true },
       "filter": { "query": "" },
@@ -371,7 +371,7 @@ The following examples show various configuration options that you can use for b
       "metrics": [
         {
           "operation": "formula",
-          "formula": "count(kql='"'"'response >= 200 and response < 300'"'"') / count()",
+          "formula": "count(kql='response >= 200 and response < 300') / count()",
           "label": "Successful requests (2xx)",
           "format": { "type": "percent", "decimals": 1 },
           "filter": { "query": "" },
@@ -426,7 +426,7 @@ The following examples show various configuration options that you can use for b
       "metrics": [
         {
           "operation": "formula",
-          "formula": "count(kql='"'"'response >= 200 and response < 300'"'"') / count()",
+          "formula": "count(kql='response >= 200 and response < 300') / count()",
           "label": "Successful requests (2xx)",
           "format": { "type": "percent", "decimals": 1 },
           "filter": { "query": "" },
@@ -494,7 +494,7 @@ The following examples show various configuration options that you can use for b
         },
         {
           "operation": "formula",
-          "formula": "count(shift='"'"'1w'"'"')",
+          "formula": "count(shift='1w')",
           "label": "Compared to previous week",
           "format": { "type": "number", "decimals": 0, "compact": true },
           "filter": { "query": "" },

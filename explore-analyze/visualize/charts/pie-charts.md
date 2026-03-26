@@ -402,22 +402,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "metrics": [
     {
       "operation": "formula",
-      "formula": "count(kql='"'"'referer : *elastic*'"'"')",
+      "formula": "count(kql='referer : *elastic*')",
       "label": "Elastic website"
     },
     {
       "operation": "formula",
-      "formula": "count(kql='"'"'referer : *twitter*'"'"')",
+      "formula": "count(kql='referer : *twitter*')",
       "label": "Twitter/X"
     },
     {
       "operation": "formula",
-      "formula": "count(kql='"'"'referer : *facebook*'"'"')",
+      "formula": "count(kql='referer : *facebook*')",
       "label": "Facebook"
     },
     {
       "operation": "formula",
-      "formula": "count(kql='"'"'referer : *nytimes*'"'"')",
+      "formula": "count(kql='referer : *nytimes*')",
       "label": "NY Times"
     }
   ]

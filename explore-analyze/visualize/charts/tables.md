@@ -189,7 +189,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     },
     {
       "operation": "formula",
-      "formula": "count() / count(shift='"'"'1w'"'"') - 1",
+      "formula": "count() / count(shift='1w') - 1",
       "label": "Change from last week",
       "format": { "type": "percent", "decimals": 2 }
     }
@@ -525,7 +525,7 @@ The following examples show various configuration options you can use for buildi
         },
         {
           "operation": "formula",
-          "formula": "count() / count(shift='"'"'1w'"'"') - 1",
+          "formula": "count() / count(shift='1w') - 1",
           "label": "Change from last week",
           "format": { "type": "percent", "decimals": 2 }
         }
