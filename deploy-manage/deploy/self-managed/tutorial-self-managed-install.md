@@ -602,7 +602,7 @@ For more details about {{kib}} configuration, refer to the [{{kib}} configuratio
    ```
    1. If you want {{kib}} to listen on all available network interfaces, you can use `0.0.0.0` instead.
 
-1. Add `xpack.encryptedSavedObjects.encryptionKey` setting with the value returned by the `kibana-encryption-keys generate` command:
+1. Add the `xpack.encryptedSavedObjects.encryptionKey` setting with the value returned by the `kibana-encryption-keys generate` command:
 
    ```yaml
    xpack.encryptedSavedObjects.encryptionKey: "min-32-byte-long-strong-encryption-key" <1>
@@ -693,7 +693,7 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}. {{fleet-se
 ::::{note}
 This tutorial uses the **Quick Start** installation flow, which generates a self-signed certificate for the {{fleet-server}} by default. For more details about **Quick Start** and **Advanced** setup options, refer to [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md).
 
-If you want to use custom SSL/TLS certificates, follow the [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) instead of continuing with these steps.
+If you want to use custom SSL/TLS certificates, follow [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) instead of continuing with these steps.
 ::::
 
 Before proceeding, confirm the following prerequisites:
@@ -718,9 +718,9 @@ Before proceeding, confirm the following prerequisites:
 
 1. Obtain the host IP address for your {{fleet-server}} host (for example, by running `ifconfig`). You need this value later.
 
-1. Back to your web browser, open the {{kib}} menu and go to **Management -> Fleet**. {{fleet}} opens with a message that you need to add a {{fleet-server}}.
+1. Return to your web browser. Open the {{kib}} menu and go to **Management -> Fleet**. {{fleet}} opens with a message that you need to add a {{fleet-server}}.
 
-1. Click **Add Fleet Server**. The **Add a Fleet Server** flyout opens.
+1. Click **Add Fleet Server**. The **Add a Fleet Server** flyout shows up.
 
 1. In the flyout, select the **Quick Start** tab.
 
@@ -738,11 +738,11 @@ Before proceeding, confirm the following prerequisites:
     - Download the {{fleet-server}} package from the {{artifact-registry}}
     - Unpack the package archive
     - Change into the directory containing the install binaries
-    - Install {{fleet-server}}.
+    - Install {{fleet-server}}
     
     If you'd like to learn about the install command options, refer to [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
 
-1. At the prompt, enter `Y` to install {{agent}} and run it as a service. Wait for the installation to complete.
+1. When prompted, enter `Y` to install {{agent}} and run it as a service. Wait for the installation to complete.
 
 1. In the {{kib}} **Add a Fleet Server** flyout, wait for confirmation that {{fleet-server}} has connected.
 
@@ -778,7 +778,7 @@ You can install only one {{agent}} per host.
 
 1. Open the **Settings** tab and review the **Fleet Server hosts** and **Outputs** URLs. Ensure the URLs and IP addresses are valid for reaching {{fleet-server}} and the {{es}} cluster, and that they use the HTTPS protocol.
 
-1. Reopen the **Agents** tab and select **Add agent**. The **Add agent** flyout opens.
+1. Reopen the **Agents** tab and select **Add agent**. The **Add agent** flyout shows up.
 
 1. In the flyout, choose a policy name, for example `Demo Agent Policy`.
 
@@ -804,7 +804,7 @@ You can install only one {{agent}} per host.
     If you want to set up secure communications using custom SSL certificates, refer to [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
     :::
 
-    The result should be like the following:
+    The result should look like the following:
 
     ```shell
     sudo ./elastic-agent install --url=https://203.0.113.203:8220 --enrollment-token=VWCobFhKd0JuUnppVYQxX0VKV5E6UmU3BGk0ck9RM2HzbWEmcS4Bc1YUUM== --insecure
@@ -816,7 +816,7 @@ You can install only one {{agent}} per host.
     - Change into the directory containing the install binaries.
     - Install {{agent}}.
 
-1. At the prompt, enter `Y` to install {{agent}} and run it as a service. Wait for the installation to complete:
+1. When prompted, enter `Y` to install {{agent}} and run it as a service. Wait for the installation to complete:
 
     ```text
     Elastic Agent has been successfully installed.
