@@ -45,7 +45,7 @@ The package to use for monitoring.
 The host to use for metrics retrieval. If not defined, the host will be set as the default one: `<pod-ip>:<container-port>`.
 
 
-### `co.elastic.hints/data_stream` [_co_elastic_hintsdata_stream]
+### `co.elastic.hints/data_streams` [_co_elastic_hintsdata_streams]
 
 The list of data streams to enable. If not specified, the integration’s default data streams are used. To find the defaults, refer to the [Elastic integrations documentation](integration-docs://reference/index.md).
 
@@ -116,7 +116,7 @@ will look like:
 
 ```yaml
 co.elastic.hints/processors.rename.fields.0.from: "a.g"
-co.elastic.hints/processors.rename.fields.1.to: "e.d"
+co.elastic.hints/processors.rename.fields.0.to: "e.d"
 co.elastic.hints/processors.rename.fail_on_error: 'true'
 ```
 
@@ -159,10 +159,10 @@ When a pod has multiple containers, the settings are shared unless you put the c
 ```yaml
 annotations:
   co.elastic.hints/processors.decode_json_fields.fields: "message"
-	co.elastic.hints/processors.decode_json_fields.add_error_key: true
-	co.elastic.hints/processors.decode_json_fields.overwrite_keys: true
-	co.elastic.hints/processors.decode_json_fields.target: "team"
-	co.elastic.hints.sidecar/stream: "stderr"
+  co.elastic.hints/processors.decode_json_fields.add_error_key: true
+  co.elastic.hints/processors.decode_json_fields.overwrite_keys: true
+  co.elastic.hints/processors.decode_json_fields.target: "team"
+  co.elastic.hints.sidecar/stream: "stderr"
 ```
 
 

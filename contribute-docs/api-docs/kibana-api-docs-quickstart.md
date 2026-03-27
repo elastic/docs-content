@@ -38,7 +38,7 @@ Follow these steps to contribute to Kibana API docs locally:
 
 ::::::::{stepper}
 
-::::{step} Fork and clone the repository
+::::{step} Clone the repository
 
 1. [Fork the Kibana repository](https://github.com/elastic/kibana/fork) to your GitHub account.
 2. Clone your fork locally:
@@ -46,11 +46,6 @@ Follow these steps to contribute to Kibana API docs locally:
     ```bash
     git clone https://github.com/YOUR_USERNAME/kibana.git
     cd kibana
-    ```
-3. Add the upstream repository as a remote:
-
-    ```bash
-    git remote add upstream https://github.com/elastic/kibana.git
     ```
 ::::
 
@@ -91,8 +86,8 @@ Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, r
 options: {
   tags: ['example', 'oas-tag:Example APIs'],
   availability: {
-    stability: 'experimental',  // 'experimental' or 'stable' (default)
-    since: '9.2.0',              // Version when added
+    stability: 'experimental',
+    since: '9.2.0',
   },
 },
 ```
@@ -102,9 +97,10 @@ The `availability` option includes two fields:
 - **`stability`**: Indicates the lifecycle state of the API
   - `'experimental'` → Technical preview; can change or be removed in future versions
   - `'stable'` (default) → Generally available (GA); stable for production use
-- **`since`**: The version when the API was first added (e.g., `'9.2.0'`)
+- **`since`**: The version when the API was first added (for example, `'9.2.0'`)
 
-The `availability` option is only available at the API/route level. For individual parameters, you must manually document version and lifecycle information in the parameter's description field.
+The `availability` option is only available at the API (route) level. 
+For individual parameters, you must manually document version and lifecycle information in the parameter's description field.
 
 :::{note}
 **CI will automatically regenerate the OpenAPI files when you push your `.ts` changes.** The next two steps show how to capture the snapshot and add examples locally, which is useful for validating changes before pushing or debugging issues.
@@ -134,14 +130,14 @@ The YAML files with the content changes and the intermediate bundle files are th
 
 Review the [checklist](checklist.md) for best practices.
 
-Once you've made your changes, skip the next two steps and proceed to "Generate docs".
+Once you've made your changes, skip the next two steps and proceed to generate the documentation.
 ::::
 
 ::::::
 
 ::::::{step} Add examples to your routes
 
-Beyond schema definitions, providing concrete request and response examples significantly improves API documentation usability.
+Concrete request and response examples significantly improve API documentation usability.
 
 ::::{dropdown} Inline TypeScript examples
 
@@ -174,7 +170,7 @@ For code-generated APIs, you can add examples directly in your route definitions
 ::::
 ::::{dropdown} YAML examples
 
-**For code-generated APIs**, reference a YAML file in your route definition:
+For code-generated APIs, you can reference a YAML file in your route definition:
 
 ```typescript
 import path from 'node:path';
@@ -199,7 +195,7 @@ const oasOperationObject = () => path.join(__dirname, 'foo.examples.yaml');
 })
 ```
 
-**For manual YAML**, add examples directly in your YAML files in the appropriate plugin or package directory.
+For manually-maintained OpenAPI documents, add examples directly in your YAML files in the appropriate plugin or package directory.
 
 **Example YAML structure:**
 
@@ -248,7 +244,7 @@ x-codeSamples: # Optionally add examples in multiple languages. At a minimum, ad
 
 ::::::
 
-::::::{step} (optional) Capture code-generated output
+::::::{step} Optional: Capture code-generated output
 
 :::::{tab-set}
 :group: kibana-workflow
@@ -266,8 +262,8 @@ This step captures the OpenAPI specification that {{kib}} generates at runtime f
 - `bundle.serverless.json`
 
 **Prerequisites:**
-- [Docker](https://docs.docker.com/get-docker/) must be running
-- If you're an Elastician, ensure you're logged into Docker with your Elastic account
+
+- [Docker](https://docs.docker.com/get-docker/) must be running.
 
 To capture all the documented API paths, copy the command from [`capture_oas_snapshot.sh`](https://github.com/elastic/kibana/blob/main/.buildkite/scripts/steps/checks/capture_oas_snapshot.sh). For example:
 
@@ -299,7 +295,7 @@ node scripts/capture_oas_snapshot --update --include-path /api/your/specific/pat
 ::::{tab-item} Manual YAML
 :sync: manual
 
-This step is not applicable for Manual YAML. Your YAML files are used directly. Skip to the next step.
+This step is not applicable for manually-maintained OpenAPI documents. Your YAML files are used directly. Skip to the next step.
 ::::
 
 :::::
@@ -341,16 +337,17 @@ When you open a pull request to submit API documentation changes, this linter ru
 
 ::::{step} Preview the API docs
 
-1. Ensure [`bump-cli`](https://www.npmjs.com/package/bump-cli) is installed and up to date:
+Install [`bump-cli`](https://www.npmjs.com/package/bump-cli):
 
-    ```bash
-    npm install -g bump-cli
-    ```
-2. Run this command to generate a short-lived URL preview hosted on Bump.sh:
+```bash
+npm install -g bump-cli
+```
 
-    ```bash
-    make api-docs-preview
-    ```
+Run this command to generate short-lived previews:
+
+```bash
+make api-docs-preview
+```
 
 ::::
 
