@@ -238,7 +238,7 @@ With a `file://` repository, the directory must sit on the {{kib}} host, or on s
 
 ::::
 
-::::{step} Install knowledge base content from the AI assistant UI
+::::{step} Install knowledge base content from the AI Assistant UI
 
 The steps to install knowledge base content depend on the assistant that you use:
 
