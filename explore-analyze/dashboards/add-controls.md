@@ -68,7 +68,7 @@ To add interactive Options list and Range slider controls, create the controls, 
     :::
     ::::
 
-3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the Control.
+3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the control.
 4. In the **Field** list, select the field you want to filter on.
 5. Under **Control type**, select whether the control should be an **Options list** or a **Range slider**.
    ::::{tip}
@@ -163,11 +163,11 @@ stack: preview 9.0
 serverless: preview
 ```
 
-In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
+{applies_to}`stack: ga 9.0-9.1` In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
 
 You can bind controls to your {{esql}} visualizations in dashboards. When creating an {{esql}} visualization, the autocomplete suggestions prompt control insertion for field values, field names, function configuration, and function names. {{esql}} controls act as variables in your {{esql}} visualization queries.
 
-{applies_to}`serverless: ga, stack: ga 9.4` When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users. A control's filter scope depends on where you place it: controls inside a [collapsible section](arrange-panels.md#collapsible-sections) apply only to panels in that section, while controls outside sections or pinned to the dashboard apply to all panels.
+{applies_to}`serverless: ga, stack: ga 9.4` When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
 
 Only **Options lists** are supported for {{esql}}-based controls. Options can be:
 - values or fields that can be static or defined by a query
@@ -300,6 +300,8 @@ The time slider can only be added as a pinned control to the header. It is not a
 ::::{applies-switch}
 
 :::{applies-item} serverless: ga, stack: ga 9.4
+Controls are always chained: a change in one control narrows the options available in all other controls on the dashboard. The exception is controls inside a [collapsible section](arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting.
+
 Per-control settings such as label, selections, search options, and additional settings are configured when you [create or edit a control](#create-and-add-options-list-and-range-slider-controls).
 
 For pinned controls, click the Settings {icon}`gear` icon on the control to customize its display:
@@ -344,8 +346,20 @@ For pinned controls, click the Settings {icon}`gear` icon on the control to cust
 
 Change the settings for Options list and Range slider controls.
 
+::::{applies-switch}
+:::{applies-item} serverless: ga, stack: ga 9.4
+1. Open the control's panel menu and select **Edit**.
+2. In the **Edit control** flyout, change the options, then select **Save**.
+:::
+:::{applies-item} stack: ga 9.0-9.3
 1. Hover over the control you want to edit, then select ![The Edit control icon that opens the Edit control flyout](/explore-analyze/images/kibana-dashboard_controlsEditControl_8.3.0.png "").
-2. In the **Edit control** flyout, change the options, then select **Save and close**.
+2. In the **Edit control** flyout, change the options, then select **Save**.
+:::
+::::
+
+:::{tip}
+To reset a control's current selections without editing its settings, hover over the control and click the **Clear** {icon}`eraser` icon.
+:::
 
 ## Delete controls from your dashboard[remove-controls]
 
