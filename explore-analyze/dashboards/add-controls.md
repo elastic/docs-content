@@ -52,7 +52,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 2. Add a control.
 
     ::::{applies-switch}
-    :::{applies-item} stack: ga 9.4
+    :::{applies-item} serverless: ga, stack: ga 9.4
     - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. The control is pinned and applies to the whole dashboard.
     - Add as free panel: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to top** or **Unpin**.
     :::
