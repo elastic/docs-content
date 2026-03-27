@@ -1,7 +1,7 @@
 ---
 navigation_title: "Knowledge base artifact repo for AI Assistant"
 applies_to:
-  self: ga
+  self: ga 9.1+
 products:
   - id: kibana
   - id: security
