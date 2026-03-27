@@ -80,7 +80,8 @@ The process of setting up the private connection with Azure Private link is spli
 | 2. [Create a DNS record pointing to the private endpoint](#ec-private-link-azure-dns). |  |
 |  | 3. [Create a private connection policy](#ec-azure-allow-traffic-from-link-id). |
 |  | 4. [Associate the Azure private connection policy with your deployments](#associate-private-connection-policy). |
-|  | 5. [Interact with your deployments over Private Link](#ec-azure-access-the-deployment-over-private-link). |
+|  | 5. **Optional**: [Add an IP filter to allow traffic to {{kib}}](#optional-add-an-ip-filter-to-allow-traffic-to-kib). | 
+|  | 6. [Interact with your deployments over Private Link](#ec-azure-access-the-deployment-over-private-link). |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
@@ -158,15 +159,15 @@ The Private Link connection will be approved automatically after the private con
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Select **Private connection**.
-5. Select the resource type that the private connection will be applied to. Currently, only hosted deployments are supported.
-6.  Select the cloud provider and region for the private connection. 
-   
+3. Select **Private connection**.
+4. Select the resource type that the private connection will be applied to. Currently, only hosted deployments are supported.
+5.  Select the cloud provider and region for the private connection. 
+    
     :::{tip}
     Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
-7.  Under **Connectivity**, select **PrivateLink**.
-8.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment, this information will be used to filter traffic.
+6.  Under **Connectivity**, select **PrivateLink**.
+7.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment, this information will be used to filter traffic.
 
     :::{tip}
     You can apply multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
@@ -174,7 +175,7 @@ The Private Link connection will be approved automatically after the private con
     [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
 
-9.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. After you associate the filter with a deployment, it starts filtering traffic.
+8.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. After you associate the filter with a deployment, it starts filtering traffic.
     
     :::{tip}
     Associating the private connection policy with deployments is optional. After the private connection policy is created, private connectivity is established.
@@ -185,9 +186,9 @@ The Private Link connection will be approved automatically after the private con
     * Filter traffic to your deployment.
     :::
 
-10. To automatically attach this private connection policy to new deployments, select **Apply by default**.
-11.  Click **Create**.
-12. Optional: You can [claim your Private Endpoint resource name and ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
+9. To automatically attach this private connection policy to new deployments, select **Apply by default**.
+10.  Click **Create**.
+11. Optional: You can [claim your Private Endpoint resource name and ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
 
 Creating the policy approves the Private Link connection.
 
@@ -280,9 +281,14 @@ Associating the policy with your deployments allows you to do the following:
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit.
-6. Under **Apply to resources**, associate the policy with one or more deployments.
-7. Click **Update** to save your changes.
+3. Find the policy you want to edit.
+4. Under **Apply to resources**, associate the policy with one or more deployments.
+5. Click **Update** to save your changes.
+
+## Optional: Add an IP filter to allow traffic to {{kib}}
+
+:::{include} _snippets/ip-filter-for-pc.md
+:::
 
 ## Access the deployment over a Private Link [ec-azure-access-the-deployment-over-private-link]
 
@@ -329,7 +335,7 @@ To access the deployment:
     }
     ```
 
-### Azure Pivate Link and Fleet
+### Azure Private Link and Fleet
 
 :::{include} _snippets/private-connection-fleet.md
 :::
@@ -364,8 +370,8 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 
 :::{include} _snippets/network-security-page.md
 :::
-1. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
-2. Click **Update** to save your changes.
+3. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
+4. Click **Update** to save your changes.
 
 :::{tip}
 You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
@@ -387,9 +393,9 @@ If you want to remove a specific policy from a deployment, or delete the policy,
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
-6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
-7. Click **Update** to save your changes.
+3. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
+4. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
+5. Click **Update** to save your changes.
 
 ### Delete a private connection policy [delete-private-connection-policy]
 
@@ -399,4 +405,4 @@ To delete a policy:
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the policy you want to edit, then click the **Delete** button. The icon is inactive if there are deployments associated with the policy.
+3. Find the policy you want to edit, then click the **Delete** button. The icon is inactive if there are deployments associated with the policy.
