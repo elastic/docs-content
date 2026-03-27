@@ -37,7 +37,9 @@ Use the following methods to perform maintenance on one or more ECE hosts while 
 
 ### Entire ECE installation maintenance
 
-* [By shutting down all the ECE hosts](#ece-perform-host-maintenance-entire-platform)
+Use this method when the maintenance activity requires shutting down the entire ECE platform.
+
+* [Shut down all ECE hosts](#ece-perform-host-maintenance-entire-platform)
 
 ## Single or multiple hosts maintenance
 
