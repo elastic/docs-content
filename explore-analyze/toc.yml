@@ -471,4 +471,4 @@ toc:
       - file: workflows/templates.md
   - file: numeral-formatting.md
   - hidden: explore-and-visualize.md
-  - hidden: share-alert-and-automate.md
+  - hidden: track-and-respond.md
