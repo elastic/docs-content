@@ -26,7 +26,7 @@ Which method you choose depends on the impact of the maintenance on ECE services
 
 If your host maintenance could disrupt ECE, use the method that deletes the host from your installation. All described methods include a step that vacates the affected hosts by moving all {{stack}} instances off them and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
 
-### Single or multiple hosts maintenance
+**Individual hosts maintenance**
 
 Use the following methods to perform maintenance on one or more ECE hosts while keeping the rest of the platform running.
 
