@@ -44,7 +44,7 @@ For {{ece}} (ECE), {{eck}} (ECK), and self-managed clusters, you need to [connec
 :::
 
 :::{note}
-AutoOps is a cloud service but you can make certain [configuration choices](/deploy-manage/monitor/autoops/ec-autoops-faq.md#autoops-air-gapped) to securely use it in your air-gapped environment. A locally deployable version will be available in a future release.
+AutoOps is a cloud service, but you can make certain [configuration choices](/deploy-manage/monitor/autoops/ec-autoops-faq.md#autoops-air-gapped) to securely use it in your air-gapped environment. A locally deployable version will be available in a future release.
 :::
 
 #### Stack Monitoring [sm-setup]
