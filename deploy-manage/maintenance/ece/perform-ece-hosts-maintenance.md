@@ -183,7 +183,7 @@ After the host shows a green status in the Cloud UI, the host is part of your EC
 
 ### Entire ECE installation maintenance
 
-#### By shutting down all the ECE hosts [ece-perform-host-maintenance-entire-platform]
+#### Shut down all ECE hosts [ece-perform-host-maintenance-entire-platform]
 
 This method lets you temporarily shut down all ECE hosts of the entire ECE platform, for example, for data center moves or planned power outages. It is offered as an non-guaranteed and less destructive alternative to fully rebuilding your ECE infrastructure.
 
