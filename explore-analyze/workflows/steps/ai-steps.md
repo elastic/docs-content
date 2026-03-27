@@ -38,7 +38,7 @@ Use the following parameters in the `with` block to configure the step:
 |-----------|------|----------|-------------|
 | `prompt` | string | Yes | The prompt text to send to the AI connector. Can include template variables to reference data from previous steps, inputs, or constants. |
 | `connectorId` | string | No | The ID or name of the AI connector to use. If omitted, uses the [default AI connector](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#the-genai-settings-page). |
-| `outputSchema` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the AI connector returns structured data matching the schema. |
+| `schema` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the AI connector returns structured data matching the schema. |
 | `temperature` | number | No | Controls randomness in the AI response. Accepts values from `0` to `1` (for example, `0.3`). Lower values produce more deterministic responses; higher values produce more random responses. |
 
 ### Output structure
@@ -46,7 +46,7 @@ Use the following parameters in the `with` block to configure the step:
 The `ai.prompt` step produces output in the following structure:
 
 ```yaml
-content: <response>  # String or structured object if outputSchema is provided
+content: <response>  # String or structured object if schema is provided
 response_metadata: <metadata>  # Optional metadata from the connector
 ```
 
@@ -67,7 +67,7 @@ steps:
 
 ### Example: Structured output with schema
 
-This example uses `outputSchema` to return a structured response with specific fields and types.
+This example uses `schema` to return a structured response with specific fields and types.
 
 ```yaml
 steps:
@@ -76,7 +76,7 @@ steps:
     with:
       prompt: "Analyze this alert and categorize it: {{ event | json }}"
       connectorId: "security-analysis-connector"
-      outputSchema:
+      schema:
         type: object
         properties:
           severity:

@@ -42,7 +42,7 @@ This section applies to Linux and MacOS only. On Windows, the JVM manages most o
 
 {{es}} requires several kernel-level resource limits, such as open file descriptors, max threads, and memory lock, to be raised above their defaults. The kernel enforces these limits per process based on the user that spawned it, so they must be configured for the `elasticsearch` user. The [important system configuration](/deploy-manage/deploy/self-managed/important-system-configuration.md) section covers each limit and its required value.
 
-For instructions on applying these limits using `ulimit`, `/etc/security/limits.conf`, or `systemd`, refer to [Configure system settings](/deploy-manage/deploy/self-managed/setting-system-settings.md).
+For instructions on applying these limits using `ulimit`, `/etc/security/limits.conf`, or `systemd`, refer to [](/deploy-manage/deploy/self-managed/setting-system-settings.md).
 
 ## File and directory ownership and permissions
 
