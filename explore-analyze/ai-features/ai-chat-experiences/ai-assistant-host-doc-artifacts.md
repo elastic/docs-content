@@ -1,5 +1,5 @@
 ---
-navigation_title: "Knowledge base artifact repo for AI assistants"
+navigation_title: "Knowledge base artifact repo for AI Assistant"
 applies_to:
   self: ga
 products:
@@ -7,14 +7,14 @@ products:
   - id: security
   - id: observability
   - id: elasticsearch
-description: Host AI assistant knowledge base artifacts using S3-compatible storage, CDN, or local paths when Kibana cannot reach Elastic’s public URL, then set the repository URL and install from the assistant UI.
+description: Host AI Assistant knowledge base artifacts using S3-compatible storage, CDN, or local paths when Kibana cannot reach Elastic’s public URL, then set the repository URL and install from the assistant UI.
 ---
 
-# Host a knowledge base artifact repo for AI assistants [host-knowledge-base-artifact-repo-for-ai-assistants]
+# Host a knowledge base artifact repo for AI Assistant [host-knowledge-base-artifact-repo-for-ai-assistant]
 
 When {{kib}} can't use Elastic’s [public artifact URL](https://kibana-knowledge-base-artifacts.elastic.co/), which is common for deployments in air-gapped or restricted networks, you must deploy the knowledge base artifact repository manually. You do that by mirroring Elastic’s versioned knowledge base artifact ZIP files to infrastructure that {{kib}} can reach.
 
-This page walks you through hosting those ZIP files, configuring the repository URL in {{kib}}, and installing knowledge base content from the AI assistant so assistants can use Elastic product documentation without reaching Elastic’s public artifact host.
+This page walks you through hosting those ZIP files, configuring the repository URL in {{kib}}, and installing knowledge base content from the AI Assistant so assistants can use Elastic product documentation without reaching Elastic’s public artifact host.
 
 ## Choose a hosting option [choose-a-hosting-option-for-knowledge-base-artifacts]
 
@@ -37,7 +37,7 @@ Choose the tab that matches your deployment and hosting setup:
 ::::{step} Get the product documentation ZIP files for your {{kib}} version
 
 :::{tip}
-Check which stack version you’re running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
+Check which stack version you’re running (for example, 9.1). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
 :::
 
 Elastic publishes knowledge base artifact ZIP files for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
@@ -46,12 +46,12 @@ Elastic publishes knowledge base artifact ZIP files for each minor version, one 
 kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
 ```
 
-For example, when {{kib}} is 9.0, the ZIP files are:
+For example, when {{kib}} is 9.1, the ZIP files are:
 
-* `kb-product-doc-elasticsearch-9.0.zip`
-* `kb-product-doc-kibana-9.0.zip`
-* `kb-product-doc-observability-9.0.zip`
-* `kb-product-doc-security-9.0.zip`
+* `kb-product-doc-elasticsearch-9.1.zip`
+* `kb-product-doc-kibana-9.1.zip`
+* `kb-product-doc-observability-9.1.zip`
+* `kb-product-doc-security-9.1.zip`
 
 Download the ZIP files from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same ZIP files if you’re fully offline.
 
@@ -84,7 +84,7 @@ xpack.productDocBase.artifactRepositoryUrl: "<MY_CUSTOM_REPOSITORY_URL>"
 
 ::::
 
-::::{step} Install knowledge base content from the AI assistant UI
+::::{step} Install knowledge base content from the AI Assistant UI
 
 The steps to install knowledge base content depend on the assistant that you use:
 
@@ -104,7 +104,7 @@ The steps to install knowledge base content depend on the assistant that you use
 ::::{step} Get the product documentation ZIP files for your {{kib}} version
 
 :::{tip}
-Check which stack version you’re running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
+Check which stack version you’re running (for example, 9.1). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
 :::
 
 Elastic publishes knowledge base artifact ZIP files for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
@@ -113,12 +113,12 @@ Elastic publishes knowledge base artifact ZIP files for each minor version, one 
 kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
 ```
 
-For example, when {{kib}} is 9.0, the ZIP files are:
+For example, when {{kib}} is 9.1, the ZIP files are:
 
-* `kb-product-doc-elasticsearch-9.0.zip`
-* `kb-product-doc-kibana-9.0.zip`
-* `kb-product-doc-observability-9.0.zip`
-* `kb-product-doc-security-9.0.zip`
+* `kb-product-doc-elasticsearch-9.1.zip`
+* `kb-product-doc-kibana-9.1.zip`
+* `kb-product-doc-observability-9.1.zip`
+* `kb-product-doc-security-9.1.zip`
 
 Download the ZIP files from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same ZIP files if you’re fully offline.
 
@@ -132,23 +132,23 @@ Put all ZIP files in one folder on the CDN origin (or backing storage) so they s
 
 ::::{step} Create and upload the bucket listing
 
-Copy the template, set each `<Key>` to your real file names and minor version (for {{kib}} 9.1, replace `9.0` in the example with `9.1` everywhere in the keys).
+Copy the template, set each `<Key>` to your real file names and minor version (for example, if {{kib}} is 9.2, replace `9.1` in the example with `9.2` everywhere in the keys).
 
 ```xml
 <ListBucketResult>
     <Name>kibana-ai-assistant-kb-artifacts</Name>
     <IsTruncated>false</IsTruncated>
     <Contents>
-        <Key>kb-product-doc-elasticsearch-9.0.zip</Key>
+        <Key>kb-product-doc-elasticsearch-9.1.zip</Key>
     </Contents>
     <Contents>
-        <Key>kb-product-doc-kibana-9.0.zip</Key>
+        <Key>kb-product-doc-kibana-9.1.zip</Key>
     </Contents>
     <Contents>
-        <Key>kb-product-doc-observability-9.0.zip</Key>
+        <Key>kb-product-doc-observability-9.1.zip</Key>
     </Contents>
     <Contents>
-        <Key>kb-product-doc-security-9.0.zip</Key>
+        <Key>kb-product-doc-security-9.1.zip</Key>
     </Contents>
 </ListBucketResult>
 ```
@@ -178,7 +178,7 @@ xpack.productDocBase.artifactRepositoryUrl: "<MY_CUSTOM_REPOSITORY_URL>"
 
 ::::
 
-::::{step} Install knowledge base content from the AI assistant UI
+::::{step} Install knowledge base content from the AI Assistant UI
 
 The steps to install knowledge base content depend on the assistant that you use:
 
@@ -202,7 +202,7 @@ self: ga 9.1+
 ::::{step} Get the product documentation ZIP files for your {{kib}} version
 
 :::{tip}
-Check which stack version you’re running (for example, 9.0). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
+Check which stack version you’re running (for example, 9.1). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
 :::
 
 Put the version-matched ZIP files in one directory on the {{kib}} host. File names use this pattern:
@@ -211,12 +211,12 @@ Put the version-matched ZIP files in one directory on the {{kib}} host. File nam
 kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
 ```
 
-For example, when {{kib}} is 9.0:
+For example, when {{kib}} is 9.1:
 
-* `kb-product-doc-elasticsearch-9.0.zip`
-* `kb-product-doc-kibana-9.0.zip`
-* `kb-product-doc-observability-9.0.zip`
-* `kb-product-doc-security-9.0.zip`
+* `kb-product-doc-elasticsearch-9.1.zip`
+* `kb-product-doc-kibana-9.1.zip`
+* `kb-product-doc-observability-9.1.zip`
+* `kb-product-doc-security-9.1.zip`
 
 Download the ZIP files from [kibana-knowledge-base-artifacts.elastic.co](https://kibana-knowledge-base-artifacts.elastic.co/) when you can reach that host, or copy them from another trusted source that already hosts the same ZIP files if you’re fully offline.
 
