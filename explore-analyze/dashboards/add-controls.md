@@ -56,7 +56,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 2. Add a control.
 
     ::::{applies-switch}
-    :::{applies-item} serverless: ga, stack: ga 9.4
+    :::{applies-item} { serverless: ga, stack: ga 9.4 }
     - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. The control is pinned and applies to the whole dashboard.
     - Add as free panel: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to Dashboard** or **Unpin**.
     :::
@@ -80,7 +80,7 @@ To add interactive Options list and Range slider controls, create the controls, 
    For **Options lists**:
 
    ::::{applies-switch}
-   :::{applies-item} serverless: ga, stack: ga 9.4
+   :::{applies-item} { serverless: ga, stack: ga 9.4 }
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Selections**:
       Select multiple values to filter with the control, or only one.
@@ -125,7 +125,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 
     ::::{applies-switch}
 
-    :::{applies-item} serverless: ga, stack: ga 9.4
+    :::{applies-item} { serverless: ga, stack: ga 9.4 }
     - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Step size**: Determine the slider's number of steps. The smaller a slider's step size, the more steps it has.
     - **Additional settings**:
@@ -147,7 +147,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 8. Consider control order when you have several controls.
 
     ::::{applies-switch}
-    :::{applies-item} serverless: ga, stack: ga 9.4
+    :::{applies-item} { serverless: ga, stack: ga 9.4 }
     A change in one control will impact all other controls on the dashboard, regardless of their positioning in the grid, including pinned controls. The only exception to this is controls within a collapsible section. These controls will only chain with other controls in their section. To change this default behaviour, turn off the **Use global filters** setting.
     :::
     :::{applies-item} stack: ga 9.0-9.3
@@ -167,7 +167,7 @@ serverless: preview
 
 You can bind controls to your {{esql}} visualizations in dashboards. When creating an {{esql}} visualization, the autocomplete suggestions prompt control insertion for field values, field names, function configuration, and function names. {{esql}} controls act as variables in your {{esql}} visualization queries.
 
-{applies_to}`serverless: ga, stack: ga 9.4` When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
+{applies_to}`{ serverless: ga, stack: ga 9.4 }` When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
 
 Only **Options lists** are supported for {{esql}}-based controls. Options can be:
 - values or fields that can be static or defined by a query
@@ -279,7 +279,7 @@ You can add one interactive time slider control to a dashboard.
 2. Add a time slider control.
 
     ::::{applies-switch}
-    :::{applies-item} serverless: ga, stack: ga 9.2
+    :::{applies-item} { serverless: ga, stack: ga 9.2 }
     In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
     :::
     :::{applies-item} stack: ga 9.0-9.1
@@ -299,7 +299,7 @@ The time slider can only be added as a pinned control to the header. It is not a
 
 ::::{applies-switch}
 
-:::{applies-item} serverless: ga, stack: ga 9.4
+:::{applies-item} { serverless: ga, stack: ga 9.4 }
 Controls are always chained: a change in one control narrows the options available in all other controls on the dashboard. The exception is controls inside a [collapsible section](arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting.
 
 Per-control settings such as label, selections, search options, and additional settings are configured when you [create or edit a control](#create-and-add-options-list-and-range-slider-controls).
@@ -347,7 +347,7 @@ For pinned controls, click the Settings {icon}`gear` icon on the control to cust
 Change the settings for Options list and Range slider controls.
 
 ::::{applies-switch}
-:::{applies-item} serverless: ga, stack: ga 9.4
+:::{applies-item} { serverless: ga, stack: ga 9.4 }
 1. Open the control's panel menu and select **Edit**.
 2. In the **Edit control** flyout, change the options, then select **Save**.
 :::
@@ -364,7 +364,7 @@ To reset a control's current selections without editing its settings, hover over
 ## Delete controls from your dashboard[remove-controls]
 
 ::::{applies-switch}
-:::{applies-item} serverless: ga, stack: ga 9.4
+:::{applies-item} { serverless: ga, stack: ga 9.4 }
 To remove a control from view without deleting it, use **Unpin** from the control's panel menu; the control moves into the dashboard body. To remove it from the dashboard entirely, click **Remove** from the control's menu.
 :::
 :::{applies-item} stack: ga 9.0+
