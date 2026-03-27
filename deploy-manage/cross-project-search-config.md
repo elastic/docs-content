@@ -19,7 +19,7 @@ This section explains how to set up and manage {{cps}} for your organization, in
 * [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects and configure the default {{cps}} scope per space.
 * [Impacts and limitations](/deploy-manage/cross-project-search-config/cps-config-impacts-and-limitations.md): Understand how {{cps}} affects alerting, dashboards, and other features, and review current limitations.
 
-These topics cover {{CPS}} configuration and management. For information on _using_ {{cps}}, including syntax and examples, refer to [](/explore-analyze/cross-project-search.md) in **Explore and analyze**.
+These topics cover {{CPS}} configuration and management. For information on _using_ {{cps}}, including syntax and examples, refer to [](/explore-analyze/cross-project-search.md).
 
 :::{note}
 {{cps-cap}} is available for {{serverless-full}} projects only. For other deployment types, refer to [{{ccs}}](/explore-analyze/cross-cluster-search.md).
