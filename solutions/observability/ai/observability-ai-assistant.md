@@ -399,13 +399,17 @@ When you open a support case or report an issue, include conversation data from 
 To export conversation data:
 
 1. Open an AI Assistant chat.
-2. Open the **Conversation actions** ({icon}`boxes_vertical`) menu.
+2. Open the **Conversation actions** ({icon}`boxes_vertical`) menu. Conversation actions become available only after the first successful interaction with the AI Assistant.
 3. If **Export as JSON** is available, select it and save the downloaded file.
 4. If **Export as JSON** is not available, use your browser's developer tools:
    1. Open the **Network** tab.
    2. Refresh the chat or navigate to the conversation.
    3. Find the request to the Observability AI Assistant conversations API (for example, a request path that includes `api/observability_ai_assistant/conversations/`).
    4. Copy the JSON response body and save it as a `.json` file.
+
+:::{note}
+If something fails or the expected API call is missing, record the full HAR file by following the steps in [Generating a browser HAR file for Kibana troubleshooting](https://www.elastic.co/blog/generating-browser-har-file-kibana-troubleshooting).
+:::
 
 The exported JSON file can include:
 
