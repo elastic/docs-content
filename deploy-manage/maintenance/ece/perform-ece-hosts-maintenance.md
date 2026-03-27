@@ -29,6 +29,8 @@ If your host maintenance could disrupt ECE, use the method that deletes the host
 
 ### Single or multiple hosts maintenance
 
+Use the following methods to perform maintenance on one or more ECE hosts while keeping the rest of the platform running.
+
 * [By disabling the container services (nondestructive)](#ece-perform-host-maintenance-container-engine-disable):
   * [For Docker-based installations: disable the Docker service](#ece-perform-host-maintenance-docker-disable)
   * [For Podman-based installations: disable the Podman-related services](#ece-perform-host-maintenance-podman-disable) 
