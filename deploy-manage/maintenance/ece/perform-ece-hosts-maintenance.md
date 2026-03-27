@@ -35,7 +35,7 @@ Use the following methods to perform maintenance on one or more ECE hosts while 
   * [For Podman-based installations: disable the Podman-related services](#ece-perform-host-maintenance-podman-disable) 
 * [Remove and reinstall the host (destructive)](#ece-perform-host-maintenance-delete-runner)
 
-### Entire ECE installation maintenance
+**Entire ECE installation maintenance**
 
 Use this method when the maintenance activity requires shutting down the entire ECE platform.
 
