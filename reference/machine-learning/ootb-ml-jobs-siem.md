@@ -17,6 +17,9 @@ products:
 
 These {{anomaly-jobs}} automatically detect file system and network anomalies on your hosts. They appear in the **Anomaly Detection** interface of the {{security-app}} in {{kib}} when you have data that matches their configuration. For more information, refer to [Anomaly detection with machine learning](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 
+## Data requirements
+
+To use these anomaly detection jobs, install and configure one of the supported integrations listed in each job's table. No additional configuration is required beyond the integration's standard setup. For installation instructions, refer to each integration's documentation.
 
 ## Security: Authentication [security-authentication]
 
