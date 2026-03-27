@@ -199,7 +199,7 @@ initContainers:
     - name: elastic-agent-state <1>
       mountPath: /usr/share/elastic-agent/state
 ```
-1. If you are integrating this init container into {{eck}} manifests, verify the `volume` name defined in the Pod spec, which is usually `elastic-data` rather than `elastic-agent-state`.
+1. If you are integrating this init container into {{eck}} managed resources, verify the `volume` name defined at the Pod spec, which is typically `agent-data` rather than `elastic-agent-state`.
 
 ::::{note}
 The {{agent}} can load multiple configuration files from `{path.config}/inputs.d`  and finally produce a unified one (refer to [*Configure standalone {{agent}}s*](/reference/fleet/configure-standalone-elastic-agents.md)). Users have the ability to manually mount their own templates under `/usr/share/elastic-agent/state/inputs.d` **if they want to skip enabling initContainers section**.
