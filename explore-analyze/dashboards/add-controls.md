@@ -13,9 +13,13 @@ products:
 
 **Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries.
 
-* {applies_to}`stack: ga 9.4` **Pinned** control: Appears in the dashboard's sticky header and apply to the whole dashboard. 
+:::{note}
+:applies_to: serverless: ga, stack: ga 9.4
 
-* {applies_to}`stack: ga 9.4` **Unpinned** control: Lives in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
+Controls can be **pinned** or **unpinned**:
+- **Pinned**: Appears in the dashboard's sticky header and applies to the whole dashboard.
+- **Unpinned**: Lives in the dashboard body. When placed inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
+:::
 
 ## Requirements [add-controls-requirements]
 
@@ -54,7 +58,7 @@ To add interactive Options list and Range slider controls, create the controls, 
     ::::{applies-switch}
     :::{applies-item} serverless: ga, stack: ga 9.4
     - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. The control is pinned and applies to the whole dashboard.
-    - Add as free panel: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to top** or **Unpin**.
+    - Add as free panel: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to Dashboard** or **Unpin**.
     :::
     :::{applies-item} stack: ga 9.2-9.3
     In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
@@ -80,6 +84,13 @@ To add interactive Options list and Range slider controls, create the controls, 
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Selections**:
       Select multiple values to filter with the control, or only one.
+    - **Searching** (for Options list controls on *string* and *IP address* type fields):
+
+      * **Prefix**: Show options that *start with* the entered value.
+      * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
+      * **Exact**: Show options that are an *exact* match with the entered value.
+
+      The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
     - **Additional settings**:
 
       - **Use global filters**: A panel-level setting that applies to each individual control. It is enabled by default.
@@ -87,7 +98,7 @@ To add interactive Options list and Range slider controls, create the controls, 
       - **Ignore timeout for results**: Wait to display results until the list is complete.
 
    :::
-   :::{applies-item} stack: ga 9.0-9.3+
+   :::{applies-item} stack: ga 9.0-9.3
     - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
     - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
@@ -123,7 +134,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 
     :::
 
-    :::{applies-item} stack: ga 9.0-9.3+
+    :::{applies-item} stack: ga 9.0-9.3
     - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
     - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
@@ -132,14 +143,19 @@ To add interactive Options list and Range slider controls, create the controls, 
     :::
     ::::
 
-8. Select **Save**. The control can now be used.
-9. Consider control order when you have several controls.
+7. Select **Save**. The control can now be used.
+8. Consider control order when you have several controls.
 
-   {applies_to}`stack: ga 9.4` A change in one control will impact all other controls on the dashboard, regardless of their positioning in the grid, including pinned controls. The only exception to this is controls within a collapsible section. These controls will only chain with other controls in their section. To change this default behaviour, turn off the **Use global filters** setting. 
+    ::::{applies-switch}
+    :::{applies-item} serverless: ga, stack: ga 9.4
+    A change in one control will impact all other controls on the dashboard, regardless of their positioning in the grid, including pinned controls. The only exception to this is controls within a collapsible section. These controls will only chain with other controls in their section. To change this default behaviour, turn off the **Use global filters** setting.
+    :::
+    :::{applies-item} stack: ga 9.0-9.3
+    Controls are applied from left to right; when the [Chain controls](#configure-controls-settings) setting is enabled, their position changes the options available in the next control.
+    :::
+    ::::
 
-   {applies_to}`stack: ga 9.0-9.3` Controls are applied from left to right; when the [Chain controls](#configure-controls-settings) setting is enabled, their position changes the options available in the next control.
-
-10. Save the dashboard.
+9. Save the dashboard.
 
 ## Add variable controls [add-variable-control]
 ```{applies_to}
@@ -151,10 +167,7 @@ In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
 
 You can bind controls to your {{esql}} visualizations in dashboards. When creating an {{esql}} visualization, the autocomplete suggestions prompt control insertion for field values, field names, function configuration, and function names. {{esql}} controls act as variables in your {{esql}} visualization queries.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` 
-When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
-
-A control's filter scope depends on where you place it: controls inside a [collapsible section](arrange-panels.md#collapsible-sections) apply only to panels in that section, while controls outside sections or pinned to the dashboard apply to all panels.
+{applies_to}`serverless: ga, stack: ga 9.4` When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users. A control's filter scope depends on where you place it: controls inside a [collapsible section](arrange-panels.md#collapsible-sections) apply only to panels in that section, while controls outside sections or pinned to the dashboard apply to all panels.
 
 Only **Options lists** are supported for {{esql}}-based controls. Options can be:
 - values or fields that can be static or defined by a query
@@ -265,14 +278,20 @@ You can add one interactive time slider control to a dashboard.
 1. Open or create a new dashboard.
 2. Add a time slider control.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
-    * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
+    ::::{applies-switch}
+    :::{applies-item} serverless: ga, stack: ga 9.2
+    In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    :::
+    :::{applies-item} stack: ga 9.0-9.1
+    In **Edit** mode, select **Controls** > **Add time slider control**.
+    :::
+    ::::
 
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
 4. Save the dashboard. The control can now be used.
 
 :::{warning}
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:applies_to: serverless: ga, stack: ga 9.4
 The time slider can only be added as a pinned control to the header. It is not available as a free panel.
 :::
 
@@ -281,23 +300,22 @@ The time slider can only be added as a pinned control to the header. It is not a
 ::::{applies-switch}
 
 :::{applies-item} serverless: ga, stack: ga 9.4
-Controls are always chained. Each control narrows the options available in other controls. 
+Per-control settings such as label, selections, search options, and additional settings are configured when you [create or edit a control](#create-and-add-options-list-and-range-slider-controls).
 
-For pinned controls, you can click the Settings {icon}`gear` icon on control to customize the display settings:
+For pinned controls, click the Settings {icon}`gear` icon on the control to customize its display:
 
-- **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
-
+- **Minimum width**: Specify how much horizontal space the control should occupy. The final width can vary depending on the other controls and their own width setting.
 - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
 
-**Auto apply filters**. When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, you must click the unified search **Apply** button to apply pending control selections. The **Auto apply filters** option is available from the **Dashboard settings** panel. 
+**Auto apply filters**: When enabled (default), the dashboard updates as soon as options are selected in controls. When disabled, you must click the unified search **Apply** button to apply pending control selections. This option is available from the **Dashboard settings** panel.
 
 :::
 
-:::{applies-item} stack: ga 9.0-9.3+
+:::{applies-item} stack: ga 9.0-9.3
 
 1. Configure the control settings.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
+    * {applies_to}`stack: ga 9.2-9.3` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
     * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Settings**.
 
 2. On the **Control settings** flyout, configure the following settings:
