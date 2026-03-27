@@ -33,7 +33,7 @@ Use the following methods to perform maintenance on one or more ECE hosts while 
 * [Disable services and restart the host (nondestructive)](#ece-perform-host-maintenance-container-engine-disable):
   * [For Docker-based installations: disable the Docker service](#ece-perform-host-maintenance-docker-disable)
   * [For Podman-based installations: disable the Podman-related services](#ece-perform-host-maintenance-podman-disable) 
-* [By deleting the host (destructive)](#ece-perform-host-maintenance-delete-runner)
+* [Remove and reinstall the host (destructive)](#ece-perform-host-maintenance-delete-runner)
 
 ### Entire ECE installation maintenance
 
