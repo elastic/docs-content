@@ -80,7 +80,7 @@ These commands:
 - Update `changelog.yml` with the new entry.
 - Update `manifest.yml` with the new version.
 
-If you need to make subsequent edits to your PR, save your changes, then re-run the `elastic-package build` command from the package's root folder (not the integrations root folder) before your push your commits. This ensures the `packages/{package}/docs/README.md` file is updated with your new changes.
+If you need to make subsequent edits to your PR, save your changes, then re-run the `elastic-package build` command from the package's root folder (not the integrations root folder) before you push your commits. This ensures the `packages/{package}/docs/README.md` file is updated with your new changes.
 
 ::::
 
@@ -118,7 +118,7 @@ If your changes don't appear on the docs site after following these steps:
 
 3. **Check the integration-docs repository**: Look at recent automated update PRs in the integration-docs repository. If they're failing, your changes won't be pulled until the issues are resolved.
 
-4. **Check version compatibility**: Look to see if the integration's `manifest.yml` specifies a {{kib}} version that hasn't been released yet. For example, if `^9.3.0` before 9.3 is released, the docs won't appear until that version is live.
+4. **Check version compatibility**: Check if the integration's `manifest.yml` specifies a {{kib}} version that hasn't been released yet. For example, if `^9.3.0` before 9.3 is released, the docs won't appear until that version is live.
 
 ### The edit helper check is missing
 
