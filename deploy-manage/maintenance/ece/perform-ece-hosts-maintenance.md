@@ -17,7 +17,6 @@ These steps show how you can safely perform maintenance on hosts in your ECE ins
 * To enable new features, such as encryption of data at rest
 * To meet updated installation prerequisites
 
-You can perform these maintenance actions on the hosts in your ECE installation using one of these methods:
 
 ## Overview
 
