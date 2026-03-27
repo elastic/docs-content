@@ -76,7 +76,7 @@ To add interactive Options list and Range slider controls, create the controls, 
    For **Options lists**:
 
    ::::{applies-switch}
-   :::{applies-item} stack: ga 9.4
+   :::{applies-item} serverless: ga, stack: ga 9.4
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Selections**:
       Select multiple values to filter with the control, or only one.
@@ -114,7 +114,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 
     ::::{applies-switch}
 
-    :::{applies-item} stack: ga 9.4
+    :::{applies-item} serverless: ga, stack: ga 9.4
     - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Step size**: Determine the slider's number of steps. The smaller a slider's step size, the more steps it has.
     - **Additional settings**:
@@ -280,7 +280,7 @@ The time slider can only be added as a pinned control to the header. It is not a
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.4
+:::{applies-item} serverless: ga, stack: ga 9.4
 Controls are always chained. Each control narrows the options available in other controls. 
 
 For pinned controls, you can click the Settings {icon}`gear` icon on control to customize the display settings:
@@ -332,7 +332,7 @@ Change the settings for Options list and Range slider controls.
 ## Delete controls from your dashboard[remove-controls]
 
 ::::{applies-switch}
-:::{applies-item} stack: ga 9.4
+:::{applies-item} serverless: ga, stack: ga 9.4
 To remove a control from view without deleting it, use **Unpin** from the control's panel menu; the control moves into the dashboard body. To remove it from the dashboard entirely, click **Remove** from the control's menu.
 :::
 :::{applies-item} stack: ga 9.0+
