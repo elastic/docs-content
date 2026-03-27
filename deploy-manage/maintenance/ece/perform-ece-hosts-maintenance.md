@@ -161,7 +161,7 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, it is fully functional again and can be used as before.
 
-### By deleting the host (destructive) [ece-perform-host-maintenance-delete-runner]
+### Remove and reinstall the host (destructive) [ece-perform-host-maintenance-delete-runner]
 
 This method lets you perform potentially destructive maintenance actions on hosts. It works by deleting the associated host, which removes the host from your {{ece}} installation. To add the host to your ECE installation again after host maintenance is complete, you must reinstall ECE.
 
