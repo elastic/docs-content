@@ -21,7 +21,7 @@ When a {{cps}} query reaches a linked project, the system verifies the user's id
 
 For example, if a user has read access to the `logs` index in Project B but not in Project C, a {{cps}} for `logs` returns documents from Project B and silently excludes Project C.
 
-For the full security model, including how authentication and authorization work across projects, refer to [Security](/explore-analyze/cross-project-search.md#security) in **Explore and analyze**.
+For the full security model, including how authentication and authorization work across projects, refer to [{{cps-init}} security](/explore-analyze/cross-project-search.md#security).
 
 ### Administrator tasks
 

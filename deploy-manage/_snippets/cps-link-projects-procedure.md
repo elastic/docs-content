@@ -6,7 +6,7 @@ To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
 
 1. Click **Link projects**. Browse or search for projects to link to the origin project. Only compatible projects appear in the project list. You can filter by type, cloud provider, region, and tags.
 
-1. Select the checkbox for each project you want to link. You can link up to 20 projects per origin project.
+1. Select the checkbox for each project you want to link. You can link up to 20 projects to each origin project.
 
     If a project you expected to link to is missing from the list, it might not be compatible with the origin project.
 

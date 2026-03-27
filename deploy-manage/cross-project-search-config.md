@@ -35,14 +35,14 @@ These topics cover {{CPS}} configuration and management. For information on _usi
 
 To adjust the default scope, you can [configure the default CPS scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space.
 
-For details about project IDs and aliases (used in search expressions), refer to [Project ID and aliases](/explore-analyze/cross-project-search.md#project-id-and-aliases).
+For details about project IDs and aliases (used in search expressions), refer to [Project IDs and aliases](/explore-analyze/cross-project-search.md#project-id-and-aliases).
 
 ## Before you begin [cps-prerequisites]
 
 To configure {{cps}}, make sure you meet these prerequisites:
 
 - You must be an organization owner or project administrator.
-- Your origin and linked projects must be [compatible](#cps-compatibility).
+- Your origin and linked projects must meet certain [requirements](#cps-compatibility).
 - For programmatic access, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), **not** project-scoped API keys. {{ecloud}} API keys can authenticate across project boundaries. Project-scoped API keys (such as {{es}} API keys) can't search across project boundaries, so they return origin-only results.
 
 % update wrt UIAM docs (esp links); subscription/licensing?
@@ -50,9 +50,9 @@ To configure {{cps}}, make sure you meet these prerequisites:
 
 ## Projects available for linking [cps-compatibility]
 
-::::{important}
+::::{important} - Origin projects must be new
 :applies_to: serverless: preview
-**Origin projects must be new**: During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be _linked_ to an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
+During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be _linked_ to an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
 ::::
 
 You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects, with the following requirements and limitations:

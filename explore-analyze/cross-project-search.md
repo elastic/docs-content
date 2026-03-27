@@ -172,7 +172,7 @@ The following APIs support {{cps}}:
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
 
-For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md) in **Deploy and manage**.
+For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md)*.
 
 ## {{cps-cap}} examples [cps-examples]
 
