@@ -195,7 +195,7 @@ To shutdown all ECE hosts:
 
 1. [Stop routing requests](/deploy-manage/maintenance/start-stop-routing-requests.md) on all non system deployments to avoid unnecessary incoming traffic during your shutdown.
 2. Make sure all {{es}} clusters of all deployments are healthy.
-3. [Take a successful snapshot](https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/create-snapshots) on each deployment, including [system deployment](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md).
+3. [Take a successful snapshot](https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/create-snapshots) on each deployment, including [system deployments](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md).
 4. Disable traffic from load balancers.
 5. Shut down all allocators.
 6. Shut down all non-director hosts.
