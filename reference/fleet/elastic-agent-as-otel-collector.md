@@ -155,15 +155,16 @@ A standalone hybrid {{agent}} can enroll into {{fleet}} in the field if an in-pl
 
 ## Frequently asked questions [faq]
 
-### Does the data collected by a hybrid agent go through ingest pipelines? [faq-ingest-pipelines]
+:::{dropdown} Does the data collected by a hybrid agent go through ingest pipelines?
 
 It depends on which receiver collected the data.
 
 Data collected by a Beat receiver is written by the {{es}} exporter. As with traditional {{agent}} and {{beats}}, this data is processed by ingest pipelines, schematized, and stored in the appropriate data stream.
 
 Data collected by an OTel-native receiver follows OpenTelemetry semantic conventions. When this data arrives at the Elastic cluster, it bypasses ingest pipelines and is stored directly in an OTel-specific data stream.
+:::
 
-### Can you configure Beat receivers in a standalone EDOT Collector? [faq-beat-receivers-edot]
+:::{dropdown} Can you configure Beat receivers in a standalone EDOT Collector?
 
 Yes. To configure Beat receivers in a standalone [EDOT Collector](elastic-agent://reference/edot-collector/index.md), provide a standard OTel Collector configuration and configure Beat receivers manually as `filebeatreceiver` or `metricbeatreceiver`. For example:
 
@@ -189,19 +190,24 @@ receivers:
                     - cpu
                   module: system
 ```
+:::
 
-### What are the differences between hybrid {{agent}}, EDOT Collector, and a third-party OpenTelemetry Collector? [faq-collector-differences]
+:::{dropdown} What are the differences between hybrid {{agent}}, EDOT Collector, and a third-party OpenTelemetry Collector?
 
 The main difference is management support. Hybrid {{agent}} can be managed by {{fleet}}. The EDOT Collector does not support {{fleet}} enrollment or central management. Some features, such as {{elastic-defend}}, are only available under {{fleet}} management and cannot be used with the EDOT Collector alone. Refer to the [collector type comparison](#collector-comparison) table for a full breakdown.
+:::
 
-### What is the future of {{agent}} in standalone mode? [faq-standalone-future]
+:::{dropdown} What is the future of {{agent}} in standalone mode?
 
 Standalone {{agent}} use cases can now be addressed using the EDOT Collector. A practical advantage of the standalone {{agent}} today is that it can be upgraded to {{fleet}}-managed in the field without having to reinstall it.
+:::
 
-### Can data collected with third-party OTel Collectors trigger the automatic installation of relevant assets? [faq-content-packages]
+:::{dropdown} Can data collected with third-party OTel Collectors trigger the automatic installation of relevant assets?
 
 The automatic asset installation from OTel content packages currently works only for data ingested by an EDOT Collector or a hybrid {{agent}}. Data ingested with a third-party OpenTelemetry Collector does not trigger automatic asset installation.
+:::
 
-### Will there be a separate operating system support matrix? [faq-os-support]
+:::{dropdown} Will there be a separate operating system support matrix?
 
 No, the [Elastic system support matrix](https://www.elastic.co/support/matrix) does not change. Where Elastic does not provide {{agent}} support for a specific operating system, you can deploy a third-party OpenTelemetry Collector supported by that vendor and send data to Elastic. For example, Red Hat provides an OTel Collector for OpenShift that can be configured to send data to Elastic. The same configuration can also be used with the EDOT Collector on operating systems that Elastic supports.
+:::
