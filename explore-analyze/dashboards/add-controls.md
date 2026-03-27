@@ -50,14 +50,19 @@ To add interactive Options list and Range slider controls, create the controls, 
 
 1. Open or create a new dashboard.
 2. Add a control.
-       
-    {applies_to}`stack: ga 9.4` 
+
+    ::::{applies-switch}
+    :::{applies-item} stack: ga 9.4
     - Add as pinned control: In **Edit** mode, select **Add** > **Controls** > **Control**. The control is pinned and applies to the whole dashboard.
     - Add as free panel: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place a control inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels in that section. To move a control between the header and the dashboard body, open the control's panel menu and select **Pin to top** or **Unpin**.
-    
-    {applies_to}`stack: ga 9.2-9.3` In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
-    
-    {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
+    :::
+    :::{applies-item} stack: ga 9.2-9.3
+    In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
+    :::
+    :::{applies-item} stack: ga 9.0-9.1
+    In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
+    :::
+    ::::
 
 3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the Control.
 4. In the **Field** list, select the field you want to filter on.
