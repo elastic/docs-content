@@ -17,7 +17,7 @@ Controls can be **pinned** to the dashboard header, where they apply to all pane
 
 :::{note}
 :applies_to: stack: ga 9.0-9.3
-Up until version 9.3, controls are always pinned to the dashboard header.
+Up until version 9.3, controls are always pinned to the dashboard header and some settings such as chaining and validation apply to all controls at once. Refer to [Configure the controls settings](#configure-controls-settings) to manage these shared settings.
 :::
 
 ## Requirements [add-controls-requirements]
