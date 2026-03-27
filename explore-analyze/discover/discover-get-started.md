@@ -20,6 +20,8 @@ Learn how to explore your {{product.elasticsearch}} data using **Discover**. Thi
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
   * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
+  * **[Traces exploration](/solutions/observability/apm/discover-traces.md)**
+  {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
 % LINK/PAGE TBD  * **Traces exploration**
 % * Security:
 % LINK/PAGE TBD  * **Security data exploration**
@@ -395,10 +397,10 @@ From **Discover**, you can create a rule to periodically check when data goes ab
 
     The **Create rule** form is pre-filled with the latest query sent to {{es}}.
 
-3. [Configure your query](../alerts-cases/alerts/rule-type-es-query.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
+3. [Configure your query](../alerting/alerts/rule-type-es-query.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
 4. Click **Save**.
 
-For more about this and other rules provided in {{alert-features}}, go to [Alerting](../alerts-cases/alerts.md).
+For more about this and other rules provided in {{alert-features}}, go to [Alerting](../alerting/alerts.md).
 
 
 ## What’s next? [_whats_next_4]

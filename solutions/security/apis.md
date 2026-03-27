@@ -4,6 +4,14 @@ applies_to:
   serverless:
     security: all
 navigation_title: APIs
+products:
+  - id: security
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # {{elastic-sec}} APIs
@@ -12,6 +20,7 @@ You can use these APIs to interface with {{elastic-sec}} features:
 
 
 * [AI Assistant API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-ai-assistant-api): Interact with and manage Elastic AI Assistant.
+* [Attack discovery API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-attack-discovery-api): Generate and manage Attack discoveries.
 * [Cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases): Open and manage cases.
 * [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api): Manage detection rules, rule exceptions for individual rules, and alerts.
 * [Endpoint exceptions API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-endpoint-exceptions-api): Manage detection rule endpoint exceptions.

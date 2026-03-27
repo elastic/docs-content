@@ -1,5 +1,7 @@
 ---
 navigation_title: Deprecations
+products:
+  - id: cloud-serverless
 ---
 
 # {{serverless-full}} deprecations [elastic-cloud-serverless-deprecations]
@@ -8,6 +10,9 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % ## Next release date Month Day, Year [elastic-cloud-serverless-releasedate-deprecations]
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
+
+## March 9, 2026 [elastic-cloud-serverless-03092026-deprecations]
+* Deprecated `Enable CCS Warning Privileges` in {{kib}} advanced settings. For more information, refer to [#252183]({{kib-pull}}252183).
 
 ## February 2, 2026 [elastic-cloud-serverless-02022026-deprecations]
 * Removes the URL limit from {{kib}} and deprecates the `storeInSessionStorage` setting. For more information, refer to [#242972]({{kib-pull}}242972).
@@ -21,6 +26,20 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 
 ## October 13, 2025 [elastic-cloud-serverless-10132025-deprecations]
 * Filters endpoint exceptions from the detection engine's execution logic. For more information, check [#233289]({{kib-pull}}233289).
+
+## October 7, 2025 [elastic-cloud-serverless-10072025-deprecations]
+
+:::{dropdown} Adds deprecation notice for max_size rollover condition
+
+We have deprecated the `max_size` rollover condition, in favour of `max_primary_shard_size`, when used in `PUT /_ilm/policy/{name}` and `POST /{index}/_rollover` endpoints.
+
+ **Impact:**
+
+ Users can continue to use this condition however a warning will be issued via the response headers and in the server logs.
+ The condition may be removed fully in a later version of {{es}}.
+
+For more information, view [#135765](https://github.com/elastic/elasticsearch/pull/135765).
+:::
 
 ## August 25, 2025 [elastic-cloud-serverless-08252025-deprecations]
 * Changes the `reporting_user` role to leverage reserved {{kib}} privileges. For more information, check [#132766](https://github.com/elastic/elasticsearch/pull/132766)

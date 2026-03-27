@@ -49,7 +49,7 @@ Do **not** use [section-level](https://elastic.github.io/docs-builder/syntax/app
 
 Use [section annotations](https://elastic.github.io/docs-builder/syntax/applies#section-level) on the next line after a heading when the entire content between that heading and the next [heading](https://elastic.github.io/docs-builder/syntax/headings) of the same or higher level is version or product-specific.
 
-For example, on the [Observability AI Assistant](https://www.elastic.co/docs/solutions/observability/observability-ai-assistant#choose-the-knowledge-base-language-model) page, all the content in this section is only applicable to Elastic Stack versions 9.1.0 and later.
+For example, on the [Observability AI Assistant](https://www.elastic.co/docs/solutions/observability/ai/observability-ai-assistant#choose-the-knowledge-base-language-model) page, all the content in this section is only applicable to Elastic Stack versions 9.1.0 and later.
 
 ::::{image} ./images/heading-correct.png
 :screenshot:

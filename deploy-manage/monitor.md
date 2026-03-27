@@ -42,6 +42,10 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 :::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
 :::
 
+:::{include} /deploy-manage/monitor/_snippets/cc-autoops-all-licenses.md
+:::
+
+
 ### Stack monitoring
 
 ```{applies_to}
@@ -51,7 +55,11 @@ stack:
 :::{include} /deploy-manage/monitor/_snippets/stack-monitoring-def.md
 :::
 
-In {{ece}} and {{ech}}, Elastic manages the installation and configuration of the monitoring agent for you, simplifying the stack monitoring setup process.
+In {{ece}} and {{ech}}, Elastic manages the installation and configuration of the monitoring agent for you, simplifying the stack monitoring setup process. To enable it, refer to [](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
+
+For self-managed, refer to enablement options under [](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
+
+In {{eck}}, the operator manages the installation once enabled. For more information, refer to [](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md).
 
 :::{include} /deploy-manage/monitor/_snippets/stack-monitoring-prod.md
 :::
@@ -64,7 +72,7 @@ deployment:
   ess:
 ```
 
-{{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployment and resolving health issues when they arise:
+{{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployments and resolving health issues when they arise:
 
 * [Cluster health information](/deploy-manage/monitor/cloud-health-perf.md#ec-es-cluster-health), including [health warnings](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-warnings)
 * A [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md)

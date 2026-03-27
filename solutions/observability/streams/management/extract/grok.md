@@ -2,6 +2,15 @@
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 # Grok processor [streams-grok-processor]
 
@@ -61,3 +70,23 @@ To add a generated grok pattern:
 
 :::{include} ../../../../_snippets/streams-suggestions.md
 :::
+
+## YAML reference [streams-grok-yaml-reference]
+
+In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the grok processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `from` | string | Yes | Source field to parse. |
+| `patterns` | string[] | Yes | One or more grok patterns, tried in order. |
+| `pattern_definitions` | object | No | Custom pattern definitions as key-value pairs. |
+| `ignore_missing` | boolean | No | When `true`, skip this processor if the source field is missing. |
+
+```yaml
+- action: grok
+  from: body.message
+  patterns:
+    - "%{IP:attributes.client_ip} %{WORD:attributes.method} %{URIPATHPARAM:attributes.path}"
+  pattern_definitions:
+    MY_PATTERN: "%{YEAR}-%{MONTHNUM}-%{MONTHDAY}"
+```

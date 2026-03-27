@@ -1,5 +1,7 @@
 ---
 navigation_title: Clients
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot {{es}} clients

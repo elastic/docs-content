@@ -6,6 +6,10 @@ applies_to:
 navigation_title: "Remote cluster filters"
 sub:
   policy-type: "Private connection"
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # Remote cluster filtering
@@ -53,22 +57,22 @@ Remote cluster filters are presented in {{ecloud}} as a type of Private Connecti
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Select **Create** > **Private connection**.
-5. Select the cloud provider and region for the remote cluster filter. 
-   
+3. Select **Create** > **Private connection**.
+4. Select the cloud provider and region for the remote cluster filter. 
+    
     :::{note}
     Network security policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 
-6. Under **Connectivity**, select **Remote cluster**.
-7. Add a meaningful name and description for the filter.
-8. In the **Organization ID** and **{{es}} ID** fields, enter the organization or cluster ID of the {{ecloud}} deployments from which you want to allow traffic. Provide one or both values; traffic is allowed if it matches either ID. To add multiple rules to the filter, use the plus (`+`) button.
+5. Under **Connectivity**, select **Remote cluster**.
+6. Add a meaningful name and description for the filter.
+7. In the **Organization ID** and **{{es}} ID** fields, enter the organization or cluster ID of the {{ecloud}} deployments from which you want to allow traffic. Provide one or both values; traffic is allowed if it matches either ID. To add multiple rules to the filter, use the plus (`+`) button.
 
     ::::{tip}
     You can find the organization ID on the organization page in the top-right menu, and the {{es}} cluster ID of a deployment by selecting **Copy cluster ID** on the deployment management page.
     ::::
 
-9.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments. After you associate the filter with a deployment, it will allow remote cluster traffic coming from the organization or {{es}} IDs defined in the rules.
+8.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments. After you associate the filter with a deployment, it will allow remote cluster traffic coming from the organization or {{es}} IDs defined in the rules.
 
     :::{note}
     You can apply multiple policies to a single deployment. For {{ech}} deployments, you can apply both IP filter policies and private connection policies. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
@@ -76,8 +80,8 @@ Remote cluster filters are presented in {{ecloud}} as a type of Private Connecti
     [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
 
-8.  To automatically attach this filter to new deployments, select **Apply by default**.
-9.   Click **Create**.
+9.  To automatically attach this filter to new deployments, select **Apply by default**.
+10.   Click **Create**.
 ::::
 
 ::::{applies-item} ece:
@@ -123,9 +127,9 @@ After you've created the network security policy or rule set, you'll need to ass
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit.
-6. Under **Apply to resources**, associate the policy with one or more deployments.
-7. Click **Update** to save your changes.
+3. Find the policy you want to edit.
+4. Under **Apply to resources**, associate the policy with one or more deployments.
+5. Click **Update** to save your changes.
 ::::::
 
 ::::::{applies-item} ece:
@@ -157,9 +161,9 @@ You can remove associations from your deployments directly from the policy setti
 #### From the network security policy settings
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the remote cluster policy you want to edit, then select the **Edit** {icon}`pencil` button.
-5. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
-6. Click **Update** to save your changes.
+3. Find the remote cluster policy you want to edit, then select the **Edit** {icon}`pencil` button.
+4. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
+5. Click **Update** to save your changes.
 
 
 ::::::
@@ -183,8 +187,8 @@ You can edit a remote cluster filter policy name or change the list of allowed O
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the remote cluster policy you want to edit, then select the **Edit** {icon}`pencil` button.
-5. Select **Update** to save your changes.
+3. Find the remote cluster policy you want to edit, then select the **Edit** {icon}`pencil` button.
+4. Select **Update** to save your changes.
 ::::::
 
 ::::::{applies-item} ece:
@@ -210,7 +214,7 @@ To delete a filter:
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the rule set you want to edit, then select the **Delete** {icon}`trash` button. The icon is inactive if there are deployments associated with the filter.
+3. Find the rule set you want to edit, then select the **Delete** {icon}`trash` button. The icon is inactive if there are deployments associated with the filter.
 ::::::
 
 ::::::{applies-item} ece:

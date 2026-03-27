@@ -2,6 +2,13 @@
 navigation_title: "{{kib}} authentication"
 applies_to:
   stack: all
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: elastic-stack
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Authentication in {{kib}} [kibana-authentication]
@@ -109,6 +116,13 @@ Switching to the token authentication provider from the basic one will make {{ki
 ::::{important}
 PKI authentication will not work if {{kib}} is hosted behind a TLS termination reverse proxy. In this configuration, {{kib}} does not have direct access to the client certificates and cannot authenticate the user.
 
+::::
+
+::::{warning}
+PKI authentication combined with the Login Selector might not work when using TLS v1.3. When a TLS session is reused, the client does not resend its full certificate chain. If a user loads the Login Selector screen first, it establishes a TLS session before authentication is attempted. When the user then clicks the PKI login button, {{kib}} cannot retrieve the full certificate chain from the resumed session, and the authentication attempt fails.
+
+
+If you need to use PKI authentication with the Login Selector, consider configuring your environment to use TLS v1.2 instead via `server.ssl.supportedProtocols: ['TLSv1.2']`
 ::::
 
 

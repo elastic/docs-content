@@ -9,29 +9,20 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Modify detection rule queries, thresholds, and schedules to improve detection precision.
 ---
 
 # Tune detection rules [security-tune-detection-signals]
 
-Using the {{security-app}}, you can tune prebuilt and custom detection rules to optimize alert generation. To reduce noise, you can:
+Tuning means modifying a rule's query, threshold, or schedule so it only matches events that are genuinely suspicious. Use tuning when the rule itself is too broad and catches normal behavior in any environment, not only yours.
 
-* Add [exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) to detection rules.
+If a rule is correctly written but fires on known-safe activity specific to your environment, use [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) instead. If you're unsure which approach fits your situation, refer to [Reduce noise and false positives](/solutions/security/detect-and-alert/reduce-noise-and-false-positives.md) to compare all available mechanisms.
 
-    ::::{tip}
-    Using exceptions is recommended as this ensure excluded source event values persist even after prebuilt rules are updated.
-    ::::
+This page covers tuning guidance for specific rule categories:
 
-* Disable detection rules that rarely produce actionable alerts because they match expected local behavior, workflows, or policy exceptions.
-* [Clone and modify](/solutions/security/detect-and-alert/manage-detection-rules.md#manage-rules-ui) detection rule queries so they are aligned with local policy exceptions. This reduces noise while retaining actionable alerts.
-* Clone and modify detection rule risk scores, and use branching logic to map higher risk scores to higher priority workflows.
-* Enable [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for custom query rules to reduce the number of repeated or duplicate alerts.
-
-For details about tuning rules for specific categories:
-
-* [Tune rules detecting authorized processes](/solutions/security/detect-and-alert/tune-detection-rules.md#tune-authorized-processes)
-* [Tune Windows child process and PowerShell rules](/solutions/security/detect-and-alert/tune-detection-rules.md#tune-windows-rules)
-* [Tune network rules](/solutions/security/detect-and-alert/tune-detection-rules.md#tune-network-rules)
-* [Tune indicator match rules](/solutions/security/detect-and-alert/tune-detection-rules.md#tune-indicator-rules)
+* [Tune rules detecting authorized processes](#tune-authorized-processes)
+* [Tune Windows child process and PowerShell rules](#tune-windows-rules)
+* [Tune indicator match rules](#tune-indicator-rules)
 
 
 ## Filter out uncommon application alerts [filter-rule-process]
@@ -87,7 +78,7 @@ Another useful technique is to assign lower risk scores to rules triggered by au
 2. Add an exception to the original prebuilt rule that excludes the relevant user or process name (`user.name is <user-name>` or `process.name is "process-name"`).
 3. Edit the duplicated rule as follows:
 
-    * Lower the `Risk score` (**Edit rule settings** → **About** tab).
+    * Lower the `Risk score` (**Edit rule settings** > **About** tab).
     * Add an exception so the rule only matches the user or process name excluded in original prebuilt rules. (`user.name is not <user-name>` or `process.name is not <process-name>`).
 
         :::{image} /solutions/images/security-process-specific-exception.png
@@ -118,6 +109,7 @@ Examples of when these rules may create noise include:
 In these cases, exceptions can be added to the rules using the relevant `process.name`, `user.name`, and `host.name` conditions. Additionally, you can create duplicate rules with lower risk scores.
 
 
+<!-- COMMENTED OUT - REVIEW FOR FUTURE UPDATE
 ## Tune network rules [tune-network-rules]
 
 The definition of normal network behavior varies widely across different organizations. Different networks conform to different security policies, standards, and regulations. When normal network activity triggers alerts, network rules can be disabled or modified. For example:
@@ -126,7 +118,7 @@ The definition of normal network behavior varies widely across different organiz
 * To exclude source network traffic for an entire subnet, add a `source.ip` exception with the relevant CIDR notation (`source.ip is 192.168.0.0/16`).
 * To exclude a destination IP for a specific destination port, add a `destination.ip` exception with the IP address, and a `destination.port` exception with the port number (`destination.ip is 38.160.150.31` and `destination.port is 445`)
 * To exclude a destination subnet for a specific destination port, add a `destination.ip` exception using CIDR notation, and a ‘destination.port’ exception with the port number (`destination.ip is 172.16.0.0/12` and `destination.port is 445`).
-
+-->
 
 ## Tune indicator match rules [tune-indicator-rules]
 
@@ -137,7 +129,7 @@ Take the following steps to tune indicator match rules:
 * Avoid cluster performance issues by scheduling your rule to run in one-hour intervals or longer. For example, avoid scheduling an indicator match rule to check for indicators every five minutes.
 
 ::::{note}
-{{elastic-sec}} provides limited support for indicator match rules. Visit [support limitations](/solutions/security/detect-and-alert.md#support-indicator-rules) for more information.
+{{elastic-sec}} provides limited support for indicator match rules. Visit [Indicator match rules](/solutions/security/detect-and-alert/indicator-match.md) for more information.
 ::::
 
 

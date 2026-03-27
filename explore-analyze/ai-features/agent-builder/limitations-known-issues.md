@@ -1,5 +1,6 @@
 ---
 navigation_title: "Limitations"
+description: "Find limitations and known issues for Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -43,7 +44,7 @@ For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations 
 
 ## Known issues
 
-### Incompatible LLMs
+### Troubleshoot incompatible LLMs
 
 The following errors suggest your selected model may not be compatible with {{agent-builder}}:
 

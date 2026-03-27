@@ -1,6 +1,6 @@
 ---
-navigation_title: "Agents and Elastic Workflows"
-description: "Learn how to invoke AI agents directly within Elastic Workflows."
+navigation_title: "Call agents from workflows"
+description: "Learn how to invoke AI agents in Elastic Workflows using the `ai.agent` or `kibana.request` steps to add reasoning to your automated tasks."
 applies_to:
   stack: preview 9.3+
   serverless: preview
@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Work with AI agents in Elastic Workflows
+# Call {{agent-builder}} agents from Elastic Workflows
 
 Elastic Workflows and {{agent-builder}} allow you to combine deterministic automation with conversational reasoning. By invoking an AI agent directly within a workflow execution, you can treat the agent as a "reasoning engine" that summarizes data, classifies events, or makes decisions before passing the results to the next step in your automation.
 
@@ -45,6 +45,7 @@ Follow these steps to invoke an `ai.agent` as a step within a workflow.
 2.  Add a new step with the type `ai.agent`.
 3.  Configure the **`agent_id`** parameter with the unique identifier of the target agent.
 4.  Configure the **`message`** parameter with your natural language prompt.
+5.  Optionally, configure the **`schema`** parameter with a JSON Schema object to receive structured output from the agent instead of free-text.
 
 ### Example: Analyze flight delays
 The following example demonstrates a workflow that searches for flight delays and uses the **Elastic AI Agent** to summarize the impact. To follow along with this example ensure that the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
@@ -85,6 +86,16 @@ steps:
 ```
 1. **agent_id**: The ID of the agent you want to call (must exist in Agent Builder).
 2. **message**: The prompt sent to the agent. You can use template variables (like `{{ steps.step_name.output }}`) to inject data dynamically.
+
+### Parameters
+
+Use the following parameters in the `with` block to configure the step:
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `agent_id` | string | Yes | The unique identifier of the target agent (must exist in {{agent-builder}}). |
+| `message` | string | Yes | The natural language prompt to send to the agent. Can include template variables to reference data from previous steps. |
+| `schema` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the agent returns structured data matching the schema instead of free-text. |
 
 
 ## Use `kibana.request` step

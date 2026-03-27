@@ -2,6 +2,15 @@
 applies_to:
   serverless: preview
   stack: preview 9.2
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Partition data into child streams [streams-partitioning]
@@ -9,12 +18,12 @@ applies_to:
 The **Partitioning** tab and the ability to route data into child streams is only available on [wired streams](../wired-streams.md).
 :::
 
-For [wired streams](../wired-streams.md), the `/logs` endpoint acts as the entry point for all your log data.
+For [wired streams](../wired-streams.md), the wired streams endpoints act as the entry point for all your log data.
 
-Once you've sent your data to the `/logs` endpoint, open the stream and use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
+Once you've sent your data to a wired streams endpoint, open the stream and use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
 
-- Route application logs to a `logs.myapp` child stream.
-- Route system logs to a `logs.system` child stream.
+- Route application logs to a `logs.otel.myapp` child stream.
+- Route system logs to a `logs.otel.system` child stream.
 
 For more on when to partition your data and how granular your partitioning should be, refer to [Partitioning recommendations](#streams-partitioning-recommendations).
 
@@ -41,8 +50,8 @@ For example, suppose you have a noisy firewall and a quiet custom application se
 
 ```bash
 logs
-- logs.firewall [7d]
-- logs.custom-app [30d]
+- logs.otel.firewall [7d]
+- logs.otel.custom-app [30d]
 ```
 
 ## Create partitions manually [streams-manual-partitioning]
@@ -50,9 +59,13 @@ logs
 To manually configure when to send data to child streams:
 
 1. Select **Create partition manually**.
-1. From the **Data preview**, filter data based on fields or attributes by hovering over the field and selecting the {icon}`plus_in_circle` icon. This creates a **Condition** for your stream.
+1. From the **Data preview**, filter data based on fields or attributes by hovering over the field and selecting:
+  - {icon}`plus_in_circle` to add routing conditions that equal the field.
+  - {icon}`minus_in_circle`to add routing conditions that do not equal the field.
 1. Under **Stream name**, give your stream a name based on the condition.
 1. Select **Save** to create the child stream.
+
+Under **Condition**, you can also set the field you want to use for the condition, the comparator, and the value of the field. Turning on the **Syntax editor** lets you manually enter the conditions in a YAML editor. For more on conditions, refer to [Streamlang conditions](./streamlang.md#streams-streamlang-conditions).
 
 ## Create partitions using AI suggestions [streams-AI-partitioning]
 

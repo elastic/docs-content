@@ -50,20 +50,39 @@ jobs:
 
       # The auth action sets GOOGLE_APPLICATION_CREDENTIALS automatically
       - name: Run sync script
+        id: run-sync
         env:
           GOOGLE_SHEET_URL: ${{ secrets.GOOGLE_SHEET_URL }}
         run: |
-          python .github/scripts/sheet2docs/sync_sheet.py --config .github/scripts/sheet2docs/config.yml --verbose
+          # Run the script and capture output; extract OUTPUT_CSV_PATH lines
+          OUTPUT=$(python .github/scripts/sheet2docs/sync_sheet.py \
+            --config .github/scripts/sheet2docs/config.yml --verbose)
+          echo "$OUTPUT"
 
-      - name: Get output path from config
-        id: get-output-path
-        run: |
-          CONFIG_FILE=".github/scripts/sheet2docs/config.yml"
-          OUTPUT_DIR=$(yq '.output.directory // "."' "$CONFIG_FILE")
-          OUTPUT_FILE=$(yq '.output.filename' "$CONFIG_FILE")
-          OUTPUT_PATH="${OUTPUT_DIR}/${OUTPUT_FILE}"
-          echo "csv_path=${OUTPUT_PATH}" >> "$GITHUB_OUTPUT"
-          echo "Output path: ${OUTPUT_PATH}"
+          # Collect all generated CSV paths (one per OUTPUT_CSV_PATH= line)
+          CSV_PATHS=""
+          ADD_PATHS=""
+          while IFS= read -r line; do
+            path="${line#OUTPUT_CSV_PATH=}"
+            echo "Found CSV: ${path}"
+            if [ -n "$CSV_PATHS" ]; then
+              CSV_PATHS="${CSV_PATHS}\n${path}"
+              ADD_PATHS="${ADD_PATHS}
+          ${path}"
+            else
+              CSV_PATHS="${path}"
+              ADD_PATHS="${path}"
+            fi
+          done < <(echo "$OUTPUT" | grep '^OUTPUT_CSV_PATH=')
+
+          # Write outputs for subsequent steps
+          echo "csv_paths<<EOF" >> "$GITHUB_OUTPUT"
+          echo -e "$CSV_PATHS" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+          echo "add_paths<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$ADD_PATHS" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
       - name: Create Pull Request
         if: github.event.inputs.dry_run != 'true'
@@ -82,7 +101,7 @@ jobs:
           body: |
             ## Summary
 
-            This PR updates the CSV file with the latest data from Google Sheets.
+            This PR updates CSV files with the latest data from Google Sheets.
 
             ### Changes
 
@@ -98,21 +117,22 @@ jobs:
 
             🤖 Automated update from [sync-sheets workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           add-paths: |
-            ${{ steps.get-output-path.outputs.csv_path }}
+            ${{ steps.run-sync.outputs.add_paths }}
 
-      - name: Upload CSV artifact
+      - name: Upload CSV artifacts
         if: always()
         uses: actions/upload-artifact@v6
         with:
           name: generated-csv-${{ github.run_number }}
-          path: ${{ steps.get-output-path.outputs.csv_path }}
+          path: |
+            ${{ steps.run-sync.outputs.add_paths }}
           retention-days: 30
           if-no-files-found: warn
 
       - name: Generate job summary
         if: always()
         env:
-          CSV_PATH: ${{ steps.get-output-path.outputs.csv_path }}
+          CSV_PATHS: ${{ steps.run-sync.outputs.csv_paths }}
         run: |
           echo "## Sync Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -120,20 +140,25 @@ jobs:
           echo "**Dry Run:** ${{ github.event.inputs.dry_run }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          if [ -f "$CSV_PATH" ]; then
-            echo "### Generated Files" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-            ls -lh "$CSV_PATH" >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
+          # Iterate over all generated CSV paths
+          echo -e "$CSV_PATHS" | while IFS= read -r csv_path; do
+            [ -z "$csv_path" ] && continue
+            if [ -f "$csv_path" ]; then
+              echo "### ${csv_path}" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              ls -lh "$csv_path" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
 
-            # Show first few rows as preview
-            echo "### Preview (first 5 rows)" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`csv" >> $GITHUB_STEP_SUMMARY
-            head -n 6 "$CSV_PATH" >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "⚠️ No CSV file found" >> $GITHUB_STEP_SUMMARY
-          fi
+              # Show first few rows as preview
+              echo "**Preview (first 5 rows):**" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`csv" >> $GITHUB_STEP_SUMMARY
+              head -n 6 "$csv_path" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "⚠️ CSV file not found: ${csv_path}" >> $GITHUB_STEP_SUMMARY
+            fi
+          done

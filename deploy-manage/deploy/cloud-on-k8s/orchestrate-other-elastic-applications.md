@@ -1,3 +1,14 @@
+---
+products:
+  - id: cloud-kubernetes
+  - id: elastic-agent
+  - id: fleet
+  - id: logstash
+  - id: beats
+  - id: apm
+  - id: elastic-stack
+---
+
 # Orchestrate other Elastic applications
 
 This section explains how to deploy and configure various {{stack}} applications within {{eck}} (ECK).
