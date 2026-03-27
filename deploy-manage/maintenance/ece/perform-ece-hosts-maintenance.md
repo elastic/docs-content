@@ -43,7 +43,7 @@ Use this method when the maintenance activity requires shutting down the entire 
 
 ## Single or multiple hosts maintenance
 
-### By disabling the container services (nondestructive) [ece-perform-host-maintenance-container-engine-disable]
+### Disable services and restart the host (nondestructive) [ece-perform-host-maintenance-container-engine-disable]
 
 The way that you disable container services differs based on the platform you used to deploy your ECE hosts.
 
