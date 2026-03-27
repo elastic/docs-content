@@ -21,7 +21,11 @@ You can perform these maintenance actions on the hosts in your ECE installation 
 
 ## Overview
 
-Which method you choose depends on how invasive your host maintenance needs to be. If your host maintenance could affect ECE, use the destructive method that first deletes the host from your installation. These methods include a step that moves any hosted {{es}} clusters and {{kib}} instances off the affected hosts and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
+This section describes the available methods for performing host maintenance in ECE.
+
+Which method you choose depends on the impact of the maintenance on ECE services running on the host. Low-risk changes such as OS patching might only require stopping container services and restarting the host. More disruptive changes, such as hardware replacements or major operating system upgrades, are typically safer to perform by removing and reinstalling the host.
+
+If your host maintenance could disrupt ECE, use the method that deletes the host from your installation. All described methods include a step that vacates the affected hosts by moving all {{stack}} instances off them and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
 
 ### Single or multiple hosts maintenance
 
