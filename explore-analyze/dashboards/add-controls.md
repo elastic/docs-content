@@ -11,7 +11,9 @@ products:
 
 # Add filter controls [add-controls]
 
-**Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries. Controls can be **pinned** to the dashboard header, where they apply to all panels, or **unpinned** and placed anywhere in the dashboard body. When an unpinned control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
+**Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries.
+
+Controls can be **pinned** to the dashboard header, where they apply to all panels, or **unpinned** and placed anywhere in the dashboard body. When an unpinned control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
 
 :::{note}
 :applies_to: stack: ga 9.0-9.3
