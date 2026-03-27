@@ -14,7 +14,7 @@ products:
 **Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries.
 
 :::{note}
-:applies_to: serverless: ga, stack: ga 9.4
+:applies_to: { serverless: ga, stack: ga 9.4 }
 
 Controls can be **pinned** or **unpinned**:
 - **Pinned**: Appears in the dashboard's sticky header and applies to the whole dashboard.
@@ -291,7 +291,7 @@ You can add one interactive time slider control to a dashboard.
 4. Save the dashboard. The control can now be used.
 
 :::{warning}
-:applies_to: serverless: ga, stack: ga 9.4
+:applies_to: { serverless: ga, stack: ga 9.4 }
 The time slider can only be added as a pinned control to the header. It is not available as a free panel.
 :::
 
