@@ -18,7 +18,7 @@ You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 * **Contextual insights**: Embedded assistance throughout Elastic UIs that explains errors and messages with suggested remediation steps.
 * **Chat interface**: A conversational experience where you can ask questions and receive answers about your data. The assistant uses function calling to request, analyze, and visualize information based on your needs.
 
-The AI Assistant integrates with your large language model (LLM) provider through our [supported {{stack}} connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md). Refer to the [{{obs-ai-assistant}} LLM performance matrix](./llm-performance-matrix.md) for supported third-party LLM providers and their performance ratings.
+The AI Assistant integrates with large language model (LLM) providers using [connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md). Refer to the [LLM performance matrix for {{observability}}](./llm-performance-matrix.md) to find performance information for various models and use cases.
 
 ## Use cases
 
@@ -484,7 +484,7 @@ You can make the official Elastic documentation available to the AI Assistant, w
 Enable this feature from the **Settings** tab in AI Assistant Settings by using the "Install Elastic Documentation" action.
 
 ::::{important}
-For air-gapped environments, installing product documentation requires special configuration. See the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
+For air-gapped environments or environments where outbound traffic must go through an HTTP proxy, installing product documentation requires special configuration. Refer to the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
 ::::
 
 ## Anonymization [obs-ai-anonymization]
