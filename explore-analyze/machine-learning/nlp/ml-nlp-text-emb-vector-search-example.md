@@ -43,13 +43,13 @@ Install the model by running the `eland_import_model_hub` command in the Docker 
 docker run -it --rm docker.elastic.co/eland/eland \
     eland_import_hub_model \
       --url <url> \
-      -u <username> -p <password> \
+      --es-api-key <api-key> \
       --hub-model-id sentence-transformers/msmarco-MiniLM-L-12-v3 \
       --task-type text_embedding \
       --start
 ```
 
-You need to provide an administrator username and password, and replace `<url>` with your {{es}} cluster URL.
+You need to provide an API key for authentication, and replace `<url>` with your {{es}} cluster URL.
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
