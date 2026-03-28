@@ -20,4 +20,4 @@ The following guides describe how to set up self-managed LLMs for {{elastic-sec}
 
 **Self-managed LLMs for {{observability}}:**
 
-- {applies_to}`stack: ga 9.2+` For production, test, or air-gapped environments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md).
+- {applies_to}`stack: ga 9.2+` For production, test, or air-gapped environments, you can connect to [vLLM](/explore-analyze/ai-features/llm-guides/connect-to-vLLM.md) or [LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md).
