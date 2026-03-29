@@ -41,11 +41,11 @@ For details about project IDs and aliases (used in search expressions), refer to
 
 ## Before you begin [cps-prerequisites]
 
-To configure {{cps}}, make sure you meet these prerequisites:
+Before you configure {{cps}}, review these prerequisites and best practices:
 
-- You must be an organization owner or project administrator.
+- You must be an organization owner or project administrator, for both the origin project and all the projects you want to link to.
 - Your origin and linked projects must meet certain [requirements](#cps-compatibility).
-- For programmatic access, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), **not** project-scoped API keys. {{ecloud}} API keys can authenticate across project boundaries. Project-scoped API keys (such as {{es}} API keys) can't search across project boundaries, so they return origin-only results.
+- Consider the [architecture patterns](#cps-arch) and choose the right linking topology for your organization.
 
 
 ## Projects available for linking [cps-compatibility]
@@ -106,6 +106,8 @@ After reviewing the architecture patterns, you can configure {{cps-init}} scope 
 ## Using APIs with {{cps-init}} [cps-apis]
 
 You can also link and unlink projects using the {{ecloud}} API. In the linking wizard, click **View API request** on the review step to see the equivalent API call for your current selection.
+
+For programmatic access to {{cps-init}}, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), **not** project-scoped API keys. {{ecloud}} API keys can authenticate across project boundaries. Project-scoped API keys (such as {{es}} API keys) can't search across project boundaries, so they return origin-only results.
 
 For information about searching across linked projects using APIs, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md#cps-supported-apis).
 
