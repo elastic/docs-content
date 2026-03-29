@@ -73,15 +73,11 @@ When configuring {{cps}}, consider how the {{cps-init}} architecture (or linking
 
 For most deployments, we recommend creating a dedicated **overview project** that can act as an origin project. You can also think of this as a hub-and-spoke model.
 
-In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches and dashboards from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other. 
+In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other. 
 
 ![Overview project architecture for cross-project search](images/serverless-cross-project-search-arch.svg)
 
-The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup (for example, isolated projects stay isolated).
-
-:::{note}
-If your overview project handles high search volumes, monitor its performance. Even if the project doesn't store data, it uses compute resources to coordinate searches across linked projects.
-:::
+The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup.
 
 ### Other supported patterns
 
