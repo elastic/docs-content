@@ -59,11 +59,11 @@ The following actions change the scope of {{cps}}es:
   - Using [qualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)
   - Using [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)
 
-The scope controls which projects receive the search request, while _filtering_ controls which results are returned by the search.
+The scope controls which projects receive the search request, while [querying and filtering](/explore-analyze/query-filter) determine which results are returned by the search.
 
 ### Set the default {{cps-init}} scope for a space [cps-default-search-scope]
 
-You can adjust the broad {{cps-init}} default by setting a narrower {{cps}} scope for each space. This setting determines the _default_ search scope for all users in that space. Users can override the default by setting their preferred scope when searching, filtering, or running queries. 
+You can adjust the broad {{cps-init}} default by setting a narrower {{cps}} scope for each space. This setting determines the _default_ search scope for the space. Users can override the default by setting their preferred scope when searching, filtering, or running queries. 
 
 Space settings are managed in {{kib}}. 
 
