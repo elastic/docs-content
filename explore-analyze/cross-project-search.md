@@ -47,7 +47,7 @@ When you search from an origin project, the query runs against its linked projec
 
 You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md).
 
-### Project ID and aliases
+### Project IDs and aliases [cps-ids-and-aliases]
 
 Each project has a unique project ID and a project alias.
 The project alias is derived from the project name and can be modified.

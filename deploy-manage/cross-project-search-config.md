@@ -35,7 +35,7 @@ These topics cover {{CPS}} configuration and management. For information on _usi
 
 To adjust the default scope, you can [configure the default CPS scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space.
 
-For details about project IDs and aliases (used in search expressions), refer to [Project ID and aliases](/explore-analyze/cross-project-search.md#project-id-and-aliases).
+For details about project IDs and aliases (used in search expressions), refer to [Project IDs and aliases](/explore-analyze/cross-project-search.md#cps-ids-and-aliases).
 
 ## Before you begin [cps-prerequisites]
 
