@@ -111,7 +111,6 @@ In {{cps-init}}, access to a project's data is determined by the [roles](/deploy
 ::::{note}
 {{cps-cap}} is not available when performing programmatic searches using {{es}} API keys, since they're project-scoped and they return results from the local project only.
 ::::
-<!-- Link to universal API keys. -->
 
 Access control operates in two stages:
 
@@ -128,7 +127,6 @@ If you run `GET logs/_search`:
 
 * documents from the `logs` index in project 1 are returned
 * the `logs` index in project 2 is not accessible and is excluded from the results
-
 
 ## Supported APIs [cps-supported-apis]
 
@@ -150,21 +148,17 @@ The following APIs support {{cps}}:
 * Search scroll [clear](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-clear-scroll), [run](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
 
-<!--
 ### {{cps-cap}} specific APIs
 
 **Project routing**: `_project_routing`
 
-* [PUT](TODO)
-* [GET](TODO)
-* [DELETE](TODO)
+* [Create or update project routing expressions](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-create-many-routing)
+* [Get a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-get-routing)
+* [Delete a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-delete-routing)
 
 **Project tags**: `_project/tags`
 
-* [PUT](TODO)
-* [GET](TODO)
-* [DELETE](TODO)
--->
+* [Get tags](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags)
 
 ## Limitations
 
