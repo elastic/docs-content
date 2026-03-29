@@ -41,7 +41,7 @@ For details about project IDs and aliases (used in search expressions), refer to
 
 To configure {{cps}}, make sure you meet these prerequisites:
 
-- You must be an organization owner or project administrator.
+- You must be an organization owner or project administrator, for both the origin project and all the projects you want to link to.
 - Your origin and linked projects must be [compatible](#cps-compatibility).
 - For programmatic access, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), **not** project-scoped API keys. {{ecloud}} API keys can authenticate across project boundaries. Project-scoped API keys (such as {{es}} API keys) can't search across project boundaries, so they return origin-only results.
 
@@ -52,16 +52,12 @@ To configure {{cps}}, make sure you meet these prerequisites:
 
 ::::{important}
 :applies_to: serverless: preview
-**Origin projects must be new**: During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be _linked_ to an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
+**Origin projects must be new**: During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be _linked_ from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
 ::::
 
-You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects, with the following requirements and limitations:
+You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects. {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
-- {{es}} projects require the **Serverless Plus** add-on.
-- {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
-- Workplace AI projects are not compatible with {{cps}}.
-
-Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects).
+Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects). If you don't see a project you expected to link to, it might not be compatible with the origin project, or you might not have the necessary [permissions](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access) on the linked project.
 
 % TODO cf https://github.com/elastic/docs-content/pull/5190
 

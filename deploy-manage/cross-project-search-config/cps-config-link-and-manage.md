@@ -16,12 +16,19 @@ For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cr
 ## Link projects [cps-link-projects]
 
 :::{tip}
-Before linking projects, review the [architecture patterns](/deploy-manage/cross-project-search-config.md#cps-arch) to choose the right linking topology for your organization.
+Before linking projects, review the [architecture patterns](/deploy-manage/cross-project-search-config.md#cps-arch) to choose the right linking topology for your organization. For best results, also make sure to adjust the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space.
 :::
 
 ::::{include} /deploy-manage/_snippets/cps-link-projects-procedure.md
 ::::
 
+### How linking works
+
+In {{cps-init}}, project links work as follows:
+
+- Searches that run from a linked project do **not** run against the origin project. If you need bidirectional search, link the projects twice, in both directions.
+- Linking projects is not transitive. If Project A links to Project B, and Project B links to Project C, Project A cannot automatically search Project C. Each link is independent.
+- System indices (such as `.security` and `.fleet-*`) are excluded from {{cps}} by design.
 
 ::::{important}
 After you link projects, all searches from the origin project query data from **every** linked project by default. This applies immediately to all queries, including those from existing dashboards and alerting rules.
