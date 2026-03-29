@@ -6,7 +6,7 @@ type: overview
 products:
   - id: cloud-serverless
   - id: kibana
-navigation_title: "Manage CPS scope"
+navigation_title: "CPS scope in project apps"
 description: Learn how to manage cross-project search scope from your project apps using the scope selector, query-level overrides, and space defaults.
 ---
 
@@ -14,13 +14,13 @@ description: Learn how to manage cross-project search scope from your project ap
 
 When [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md) is enabled and projects are linked, searches initiated from your project's apps run across all linked projects by default. {{kib}} provides several ways to narrow or change this scope:
 
-* **Space default**: Admins [configure a default scope per space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which applies when you start a new session.
+* **Space default**: Admins [configure a default scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which applies when you start a new session.
 * **Session scope**: Use the [{{cps-init}} scope selector](#cps-in-kibana) in the project's header to change which projects are searched during your session.
 * **Query-level override**: Use project routing or qualified index expressions in individual queries to target specific projects.
 
 ## {{cps-cap}} scope selector [cps-in-kibana]
 
-The **{{cps-cap}} ({{cps-init}}) scope** selector in your project's header lets you control which linked projects your searches include.
+The **{{cps-cap}} ({{cps-init}}) scope** selector ({icon}`cross_project_search`) in your project's header lets you control which linked projects your searches include.
 
 With the {{cps-init}} scope selector, you can select:
 
@@ -62,7 +62,7 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | **Dashboards** | Editable | Per-panel overrides using ES\|QL visualizations or Maps layer routing. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope). |
 | **Dev Tools / Console** | Not available | Full {{cps-init}} through raw API requests, including ES\|QL. The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) resolves index names differently. |
 | **Discover** | Editable | ES\|QL |
-| **Lens visualizations** | Editable | ES\|QL visualizations [^cps-badge] |
+| **Lens visualizations** | Editable | ES\|QL visualizations[^cps-badge] |
 | **Maps** | Editable | Layer-level [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) for vector layers and joins |
 | **{{ml-app}} Data Visualizer** | Not available | ES\|QL |
 | **{{rules-ui}} and alerts** | Read-only | ES\|QL rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.|

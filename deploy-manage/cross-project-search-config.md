@@ -11,15 +11,13 @@ navigation_title: "Cross-project search"
 
 With {{cps}} ({{cps-init}}), users in your organization can search across multiple {{serverless-full}} projects at once, instead of searching each project individually. When your data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all the data from a single place. 
 
-{{cps-cap}} is the {{serverless-short}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md), without requiring an understanding of deployment architecture. Permissions stay consistent across projects, and you can always adjust scope and access as needed.
+{{cps-cap}} is the {{serverless-short}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements:
 
-This section explains how to set up and manage {{cps}} for your organization, including linking projects, managing user access, and refining scope.
+* Setting up cross-project search doesn't require an understanding of your deployment architecture or complex security configurations.
+* Permissions stay consistent across projects, and you can always adjust scope and access as needed. 
+* Search is performed across projects by default, reducing the need to refactor your queries as you link additional projects.
 
-* [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
-* [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects and configure the default {{cps}} scope per space.
-* [Impacts and limitations](/deploy-manage/cross-project-search-config/cps-config-impacts-and-limitations.md): Understand how {{cps}} affects alerting, dashboards, and other features, and review current limitations.
-
-These topics cover {{CPS}} configuration and management. For information on _using_ {{cps}}, including syntax and examples, refer to [](/explore-analyze/cross-project-search.md) in **Explore and analyze**.
+This section explains how to set up and manage {{cps}} for your organization, including linking projects, managing user access, and refining scope. For information on using {{cps}}, including syntax and examples, refer to [](/explore-analyze/cross-project-search.md).
 
 :::{note}
 {{cps-cap}} is available for {{serverless-full}} projects only. For other deployment types, refer to [{{ccs}}](/explore-analyze/cross-cluster-search.md).
@@ -30,29 +28,31 @@ These topics cover {{CPS}} configuration and management. For information on _usi
 ::::{include} /deploy-manage/_snippets/cps-origin-linked-definitions.md
 ::::
 
+### Projects and search scope
+
+Projects are intended to act as logical namespaces for data, not hard boundaries for querying it. You can split data into projects to organize ownership, use cases, or environments, while still expecting to search and analyze that data from a single place.
+
 ::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
 ::::
 
-To adjust the default scope, you can [configure the default CPS scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space.
+You can also adjust the search scope by [configure the {{cps-init}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). You can set this space-level default before or after you link projects. 
 
-For details about project IDs and aliases (used in search expressions), refer to [Project ID and aliases](/explore-analyze/cross-project-search.md#project-id-and-aliases).
+For details about project IDs and aliases (used in search expressions), refer to [Project IDs and aliases](/explore-analyze/cross-project-search.md#project-id-and-aliases).
 
 ## Before you begin [cps-prerequisites]
 
-To configure {{cps}}, make sure you meet these prerequisites:
+Before you configure {{cps}}, review these prerequisites and best practices:
 
-- You must be an organization owner or project administrator.
-- Your origin and linked projects must be [compatible](#cps-compatibility).
-- For programmatic access, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), **not** project-scoped API keys. {{ecloud}} API keys can authenticate across project boundaries. Project-scoped API keys (such as {{es}} API keys) can't search across project boundaries, so they return origin-only results.
+- You must be an organization owner or project administrator, for both the origin project and all the projects you want to link to.
+- Your origin and linked projects must meet certain [requirements](#cps-compatibility).
+- Consider the [architecture patterns](#cps-arch) and choose the right linking topology for your organization.
 
-% update wrt UIAM docs (esp links); subscription/licensing?
-% TODO confirm project-scoped API keys silently return origin-only results (no error) (ES API in E&A)
 
 ## Projects available for linking [cps-compatibility]
 
-::::{important}
+::::{important} - Origin projects must be new
 :applies_to: serverless: preview
-**Origin projects must be new**: During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be _linked_ to an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
+During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be linked to an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
 ::::
 
 You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects, with the following requirements and limitations:
@@ -73,15 +73,11 @@ When configuring {{cps}}, consider how the {{cps-init}} architecture (or linking
 
 For most deployments, we recommend creating a dedicated **overview project** that can act as an origin project. You can also think of this as a hub-and-spoke model.
 
-In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches and dashboards from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other. 
+In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other. 
 
 ![Overview project architecture for cross-project search](images/serverless-cross-project-search-arch.svg)
 
-The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup (for example, isolated projects stay isolated).
-
-:::{note}
-If your overview project handles high search volumes, monitor its performance. Even if the project doesn't store data, it uses compute resources to coordinate searches across linked projects.
-:::
+The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup.
 
 ### Other supported patterns
 
@@ -95,10 +91,19 @@ The overview project model is strongly recommended and appropriate for most {{cp
 
     The N-to-N pattern is the most complex and involves the highest risk. After you link projects, all searches, dashboards, and alerting rules in each origin project will query data from every linked project by default, which might make workflows unpredictable. Make sure you check alerting rules, which might be applied to data that the rule was never intended to evaluate.
 
+## Configure {{cps-init}}
+
+After reviewing the architecture patterns, you can configure {{cps-init}} scope and manage linked projects:
+
+* [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
+* [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects and configure the default {{cps}} scope per space.
+* [Impacts and limitations](/deploy-manage/cross-project-search-config/cps-config-impacts-and-limitations.md): Understand how {{cps}} affects alerting, dashboards, and other features, and review current limitations.
 
 ## Using APIs with {{cps-init}} [cps-apis]
 
 You can also link and unlink projects using the {{ecloud}} API. In the linking wizard, click **View API request** on the review step to see the equivalent API call for your current selection.
+
+For programmatic access to {{cps-init}}, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), **not** project-scoped API keys. {{ecloud}} API keys can authenticate across project boundaries. Project-scoped API keys (such as {{es}} API keys) can't search across project boundaries, so they return origin-only results.
 
 For information about searching across linked projects using APIs, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md#cps-supported-apis).
 

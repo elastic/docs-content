@@ -1,1 +1,0 @@
-Project linking is not bidirectional. Searches initiated from a linked project do **not** run against the origin project. If you need bidirectional search, link the projects twice, in both directions.

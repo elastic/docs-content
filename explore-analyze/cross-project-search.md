@@ -42,8 +42,7 @@ After you link projects, searches that you run from the origin project are no lo
 
 When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the query scope by using [project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) or [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions).
 
-::::{include} /deploy-manage/_snippets/cps-bidirectional-note.md
-::::
+Project linking is not bidirectional. Searches initiated from a linked project do **not** run against the origin project. If you need bidirectional search, link the projects twice, in both directions.
 
 You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md).
 
@@ -186,7 +185,7 @@ For additional information, refer to the [{{product.painless}} execute API refer
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
 
-For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md) in **Deploy and manage**.
+For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md).
 
 ## {{cps-cap}} examples [cps-examples]
 
