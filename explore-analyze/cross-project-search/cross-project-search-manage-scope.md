@@ -60,7 +60,7 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | --- | --- | --- |
 | **Agent Builder** | Not available | ES\|QL |
 | **Dashboards** | Editable | Per-panel overrides using ES\|QL visualizations or Maps layer routing. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope). |
-| **Dev Tools / Console** | Not available | Full CPS through raw API requests, including ES\|QL |
+| **Dev Tools / Console** | Not available | Full {{cps-init}} through raw API requests, including ES\|QL. The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) resolves index names differently. |
 | **Discover** | Editable | ES\|QL |
 | **Lens visualizations** | Editable | ES\|QL visualizations[^cps-badge] |
 | **Maps** | Editable | Layer-level [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) for vector layers and joins |

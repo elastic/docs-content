@@ -26,6 +26,8 @@ For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cr
 
 - **User permissions:** {{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles will see different results from the same query. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access).
 
+- **{{product.painless}} scripting:** The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-execute) does not search across linked projects. It resolves index names against the origin project only. You can target a linked project by prefixing the index with the project alias (for example, `projectAlias:myindex`).
+
 ## Limitations [cps-limitations]
 
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
