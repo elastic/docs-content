@@ -414,29 +414,38 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
    If {{es}} does not start successfully, check the {{es}} log file at `/var/log/elasticsearch/<cluster-name>.log` to learn more. For example, if your cluster name is `elasticsearch-demo`, the log file is `/var/log/elasticsearch/elasticsearch-demo.log`.
    :::
 
-1. (Optional) To monitor the second {{es}} node as it starts up and joins the cluster, open a new terminal into the second node and `tail` the {{es}} log file:
+1. (Optional) To monitor the startup and cluster join process of the second {{es}} node, open a new terminal into the node and `tail` the {{es}} log file:
 
     ```shell
     sudo tail -f /var/log/elasticsearch/elasticsearch-demo.log <1>
     ```
     1. If needed, replace `elasticsearch-demo` with your cluster name.
 
-    Notice in the log file some helpful diagnostics, such as:
-     - `Security is enabled`
-     - `Profiling is enabled`
-     - `using discovery type [multi-node]`
-     - `initialized`
-     - `starting...`
-
-    After a minute or so, the log should show a message like:
+    In the log output, you should see entries similar to the following as the node initializes, starts transport, and waits to join the cluster:
 
     ```text
-    [<hostname2>] master node changed {previous [], current [<hostname1>...]}
+    [<instance-2>] Security is enabled
+    [<instance-2>] Profiling is enabled
+    [<instance-2>] using discovery type [multi-node] and seed hosts providers [settings]
+    [<instance-2>] initialized
+    [<instance-2>] starting ...
+    [<instance-2>] publish_address {<node-ip>:9300}, bound_addresses {[::]:9300}
+    [<instance-2>] master not discovered or elected yet ...
     ```
 
-    where `hostname1` is your first {{es}} instance node, and `hostname2` is your second {{es}} instance node.
-    
-    The message indicates that the second {{es}} node has successfully contacted the initial {{es}} node and joined the cluster.
+    After a minute or so, the log should include a message similar to:
+
+    ```text
+    [<instance-2>] master node changed {previous [], current [<instance-1>...]}
+    ```
+
+    Here, `instance-2` is the {{es}} node you are starting, and `instance-1` represents the node that becomes the elected master. Shortly after that, you should also see:
+
+    ```text
+    [<instance-2>] started {<instance-2>}...
+    ```
+
+    These messages indicate that the second {{es}} node initialized successfully, detected the elected master, and joined the cluster.
 
 1. As a final check, verify that the new node is reachable and responding, and that it appears in the cluster. In the following commands, replace `$ELASTIC_PASSWORD` with the same `elastic` superuser password that you used on the first {{es}} node.
 
