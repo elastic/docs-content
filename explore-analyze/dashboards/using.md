@@ -63,6 +63,16 @@ You can interact with some panel visualizations to explore specific data more in
 :alt: Browsing a chart creates a filter dynamically
 :::
 
+You can create filter pills by:
+
+- **Clicking on chart elements**, such as data points, bars, or slices.
+- **Using legend actions**: hover over a legend item and select **Filter In** or **Filter Out** to filter the dashboard by a specific series.
+
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields created with {{esql}} commands like `EVAL` do not support filtering.
+:::
+
 
 #### Add pills using the filter editor [_add_pills_using_the_filter_editor]
 
@@ -139,6 +149,11 @@ Filter the data with one or more options that you select.
 
 4. To clear the selections, click ![The icon to clear all selected options in the Options list](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 5. To display only the options you selected in the dropdown, click ![The icon to display only the options you have selected in the Options list](/explore-analyze/images/kibana-dashboard_showOnlySelectedOptions_8.3.0.png "").
+
+:::{tip}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+For *IP address* type fields, you can use CIDR notation (for example, `192.168.1.0/24`) to filter by IP ranges.
+:::
 
 :::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList.png
 :alt: Options list control
