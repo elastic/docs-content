@@ -18,7 +18,7 @@ For general **Discover** concepts and features, refer to [](/explore-analyze/dis
 
 :::{image} /solutions/images/security-discover-profile.png
 :screenshot:
-:alt: Discover with the Security solution defult data view selected.
+:alt: Discover with the Security solution default data view selected.
 :::
 
 ## Access the Security Discover experience
