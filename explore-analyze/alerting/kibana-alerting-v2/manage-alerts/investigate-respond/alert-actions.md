@@ -5,7 +5,7 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Actions you can take on Kibana alerting v2 alerts: acknowledge, snooze, deactivate, assign, tag, resolve, and add to cases."
+description: "Actions you can take on Kibana alerting v2 alerts, including acknowledge, snooze, deactivate, assign, tag, resolve, and add to cases."
 ---
 
 # Kibana alerting v2 alert actions [alert-actions-v2]
@@ -14,7 +14,7 @@ Alert actions are operations you perform on Kibana alerting v2 alerts to manage 
 
 ## Where action records are stored
 
-When you take an action on an alert, {{kib}} records it in the **`.alert-actions`** data stream. You can query these documents in Discover (ES|QL) for auditing, reporting, and metrics such as mean time to acknowledge (MTTA).
+When you take an action on an alert, {{kib}} records it in the `.alert-actions` data stream. You can query these documents in Discover (ES|QL) for auditing, reporting, and metrics such as mean time to acknowledge (MTTA).
 
 ## Action types
 
@@ -28,17 +28,17 @@ The `action.type` field identifies what happened. Common values include:
 | `deactivate` | Alert or episode deactivated |
 | `suppress` | Suppression applied |
 | `assign` | Assignment changed |
-| `tag` | Tag applied to the alert (**recorded** action) |
+| `tag` | Tag applied to the alert (recorded action) |
 | `resolve` | Episode or alert resolved |
 | `unmatched` | No notification policy matched the episode, so no workflow ran for it under those policies |
 
-The **`untag`** action type is not used; tagging is recorded with the **`tag`** action type.
+The `untag` action type is not used. Tagging is recorded with the `tag` action type.
 
 ## Available actions in the UI
 
 From the alert and episode views you can:
 
-- **Acknowledge**, **snooze**, **deactivate**, **assign**, **resolve**, and **add to cases** as described in the triage workflow.
-- **Tag** alerts for organization. Tagging is persisted as a **`tag`** action in **`.alert-actions`**, consistent with bulk-get and query behavior for recorded actions.
+- Acknowledge, snooze, deactivate, assign, resolve, and add to cases as described in the triage workflow.
+- Tag alerts for organization. Tagging is persisted as a `tag` action in `.alert-actions`, consistent with bulk-get and query behavior for recorded actions.
 
-For field-level detail on action documents, see [Alert event field reference](../../alert-event-field-reference.md).
+For field-level detail on action documents, refer to [Rule event and action field reference](../../alert-event-field-reference.md).

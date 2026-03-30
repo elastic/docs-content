@@ -5,7 +5,7 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Guidance for running Kibana alerting v2 rules in production — scheduling, query performance, and data retention."
+description: "Guidance for running Kibana alerting v2 rules in production, including scheduling, query performance, and data retention."
 ---
 
 % TODO: Content will be updated after performance testing is complete.

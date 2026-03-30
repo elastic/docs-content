@@ -1,61 +1,79 @@
 ---
-navigation_title: Event field reference
+navigation_title: Field reference for alerting v2 rule and action data
 applies_to:
   stack:
     since: "9.4"
 products:
   - id: kibana
-description: "Field reference for Kibana alerting v2 documents in .rule-events: shared fields for all events, episode fields only when type is alert, and .alert-actions."
+description: "Fields in the {{kib}} alerting v2 `.rule-events` data stream for signals and alerts, episode fields on lifecycle alerts, and action records in `.alert-actions`."
 ---
 
-# Kibana alerting v2 alert event field reference [alert-event-field-reference-v2]
+# {{kib}} alerting v2 rule event and action field reference [alert-event-field-reference-v2]
 
-{{kib}} alerting v2 writes one document per rule evaluation output to the **`.rule-events`** data stream. This page lists the fields stored in those documents.
+This page is the field reference for {{kib}} alerting v2 data written to {{es}}. It covers names, types, required fields, and valid values. Use it when you author {{esql}} in Discover, build dashboards or reports, or integrate automation against alert and signal documents.
 
-**Signal vs alert:** When **`type`** is **`signal`**, only the [fields shared by all events](#fields-for-all-events) are populated. When **`type`** is **`alert`**, the document includes the same fields plus **`episode.*`** ([episode fields](#episode-fields-only-when-type-is-alert)). The **`episode`** object is the **only** extra field group on alert events compared to signal events. For the authoritative mapping and enums, see the Kibana resource definition ([`alert_events.ts`](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/alerting_v2/server/resources/alert_events.ts)).
+:::{important}
+The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle. Do not change mappings or index settings for these stream yourself.
+:::
 
-## Fields for all events
+## Rule events index
 
-These fields appear on both **`signal`** and **`alert`** documents.
+All rules write their signal and alert events to the **rule events index**, implemented as the **`.rule-events`** data stream. Each document has a `type` of `signal` or `alert`.
+
+- **`signal`:** Point-in-time facts you query or chain into other rules. For example, rows a follow-on rule reads from `.rule-events` to build a rule on alert data. These documents do not include `episode.*` fields.
+- **`alert`:** Lifecycle-tracked episodes in the alert UI: inbox, episode details, and triage. For example, a breach that stays open as an episode until the condition clears. These documents include `episode.*` fields.
+
+Both kinds share the same [base fields](#fields-on-every-signal-and-alert-document). Only `alert` documents add [`episode.*`](#episode-fields-for-alerts-with-lifecycle-tracking) fields.
+
+### Signal and alert document fields
+
+The following table lists each top-level field that appears on both `signal` and `alert` documents in **`.rule-events`**. [Episode fields for alerts with lifecycle tracking](#episode-fields-for-alerts-with-lifecycle-tracking) lists additional fields for `alert` rows only.
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `@timestamp` | `date` | Yes | When this document was written to **`.rule-events`**. |
+| `@timestamp` | `date` | Yes | When this document was written to `.rule-events`. |
 | `scheduled_timestamp` | `date` | No | Scheduled execution time for this rule run. |
 | `rule.id` | `keyword` | Yes | Rule identifier. |
 | `rule.version` | `long` | Yes | Rule version at the time this event was emitted. |
 | `group_hash` | `keyword` | Yes | Series identity key for grouped evaluations. |
-| `data` | `flattened` | Yes | Payload from the ES\|QL query output (shape depends on your rule). |
+| `data` | `flattened` | Yes | Payload from the {{esql}} query output. Shape depends on your rule. |
 | `status` | `keyword` | Yes | One of: `breached`, `recovered`, `no_data`. |
-| `source` | `keyword` | Yes | Origin of this event (product-specific identifier). |
-| `type` | `keyword` | Yes | `signal` (detect mode) or `alert` (alert mode with lifecycle). |
+| `source` | `keyword` | Yes | Origin of this event. Product-specific identifier. |
+| `type` | `keyword` | Yes | `signal` or `alert`. Application field on each rule event document written by {{kib}}. |
 
-## Episode fields (only when `type` is `alert`)
 
-Present only when **`type`** is **`alert`**. Omit **`episode`** on **`signal`** events.
+:::{admonition} Fields not stored as a dedicated column
+There is no top-level or nested `duration` field on **`.rule-events`** documents. For triage or reporting, derive duration from [{{esql}} views](manage-alerts/explore-alerts-discover.md), the alert UI, or your own queries over timestamps and episode identifiers.
+:::
+
+### Episode fields for alerts with lifecycle tracking
+
+The table below describes `episode.*` fields on documents in **`.rule-events`** where `type` is `alert`, when {{kib}} is managing that alert’s lifecycle in the alert inbox and related views. `signal` documents do not include an `episode` section.
 
 | Field | Type | Description |
 |---|---|---|
 | `episode.id` | `keyword` | Episode identifier for this series. |
 | `episode.status` | `keyword` | One of: `inactive`, `pending`, `active`, `recovering`. |
-| `episode.status_count` | `long` | Count of consecutive evaluations in the current **`episode.status`**. Set when status is **`pending`** or **`recovering`**; not used for **`inactive`** or **`active`** in the stored mapping. |
+| `episode.status_count` | `long` | Count of consecutive evaluations in the current `episode.status`. This field is only set when `episode.status` is `pending` or `recovering`. |
 
-There is **no** top-level or nested **`duration`** field on raw **`.rule-events`** documents in this schema. Duration for triage or reporting may come from [ES\|QL views](manage-alerts/explore-alerts-discover.md), the alert UI, or your own queries over timestamps and episode identifiers.
+## Alert actions index
 
-## Mapping notes (`.rule-events`)
+When a user or the system records an action on an alert episode, {{kib}} writes a document to the **alert actions index**, implemented as the **`.alert-actions`** data stream. Each document is one action. The `action.type` field records what happened, for example acknowledge, snooze, tag, fire, or unmatched.
 
-- The data stream uses **`dynamic: false`**: only the mapped paths above are indexed at the top level. Rely on **`data`** (flattened) for arbitrary ES\|QL output; treat paths under **`data`** as defined by your rule until you confirm them in Discover or dashboards.
-- The stream is versioned and managed by {{kib}} (including ILM). Do not change mappings on managed backing indices.
+Use **`.alert-actions`** for triage history, metrics such as MTTA, and auditing. This stream does not store what your rule query returned on each run. That output exists only in **`.rule-events`**.
 
-## Alert action records (`.alert-actions`)
+### Alert action document fields
 
-User and system **alert actions** (for example acknowledge, snooze, tag) are stored in the **`.alert-actions`** data stream. Use these documents for auditing, MTTA-style metrics, and action history.
+The following table lists fields on each document in **`.alert-actions`**.
 
 | Field | Type | Description |
 |---|---|---|
 | `@timestamp` | `date` | When the action was recorded |
 | `episode.id` | `keyword` | Target episode |
 | `rule.id` | `keyword` | Rule that owns the episode |
-| `action.type` | `keyword` | Action type, for example `acknowledge`, `snooze`, `tag`, `fire`, **`unmatched`** |
+| `action.type` | `keyword` | The action type, for example: <br>- **`acknowledge`:** User acknowledged the alert.<br>- **`snooze`:** Notifications snoozed for a period.<br>- **`tag`:** Tag applied to the alert.<br>- **`fire`:** Notification or escalation fired for the episode.<br>- **`unmatched`:** No notification policy matched the episode, so no workflow ran for it under those policies. <br><br> For the full set of action types and UI behavior, refer to [Alert actions](manage-alerts/investigate-respond/alert-actions.md). |
 
-The **`unmatched`** value indicates that no notification policy matched the episode, so no workflow ran for it under those policies. Other action types reflect user or system operations (see [Alert actions](manage-alerts/investigate-respond/alert-actions.md)).
+## Related documentation
+
+- [Explore {{kib}} alerting v2 alerts and signals in Discover](manage-alerts/explore-alerts-discover.md): How rule event documents map to rows in Discover, how Detect and Alert mode relate to `type`, and how multiple rules share the `.rule-events` stream.
+- [Where query output appears in each document](manage-alerts/explore-alerts-discover.md#where-query-output-appears-in-each-document): Top-level fields versus the `data` field when you query in Discover.

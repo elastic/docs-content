@@ -10,7 +10,7 @@ description: "Navigate Kibana alerting v2 rule management: rules list and detail
 
 # Manage {{kib}} alerting v2 rules [manage-rules-v2]
 
-Use this section after rules exist in your space: find rules in the **Rules V2** list, open a rule to inspect configuration and execution history, run bulk operations, and change whether rules run or notify. **Managing rules** is separate from **authoring** definitions—refer to [Author rules](author-rules.md) to create or edit the {{esql}} query, schedule, and mode.
+Use this section after rules exist in your space: find rules in the **Rules V2** list, open a rule to inspect configuration and execution history, run bulk operations, and change whether rules run or notify. **Managing rules** is separate from **authoring** definitions. Refer to [Author rules](author-rules.md) to create or edit the {{esql}} query, schedule, and mode.
 
 **Where to work in {{kib}}:** **Management** → **Alerts and Insights** → **Rules V2**.
 
@@ -23,5 +23,5 @@ Use this section after rules exist in your space: find rules in the **Rules V2**
 
 ## Related
 
-- [Author rules](author-rules.md) — Create rules, set detect or alert mode, and edit query and schedule.
-- [Manage alerts](manage-alerts.md) — Triage and respond to alerts produced by rules.
+- [Author rules](author-rules.md): Create rules, set detect or alert mode, and edit query and schedule.
+- [Manage alerts](manage-alerts.md): Triage and respond to alerts produced by rules.

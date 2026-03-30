@@ -32,7 +32,7 @@ Configure activation using count, timeframe, or both:
 | `pending_timeframe` | Minimum duration the condition must persist |
 | `pending_operator` | How to combine count and timeframe (`AND` or `OR`) |
 
-Each **timeframe** value must be between **5 seconds** and **365 days** (the same bounds as schedule and lookback durations).
+Each timeframe value must be between 5 seconds and 365 days (the same bounds as schedule and lookback durations).
 
 ## Recovery thresholds
 
@@ -42,4 +42,4 @@ Each **timeframe** value must be between **5 seconds** and **365 days** (the sam
 | `recovering_timeframe` | Minimum duration for recovery |
 | `recovering_operator` | How to combine count and timeframe (`AND` or `OR`) |
 
-**Timeframe** fields use the same **5 seconds** to **365 days** bounds as activation timeframes.
+Timeframe fields use the same 5 seconds to 365 days bounds as activation timeframes.

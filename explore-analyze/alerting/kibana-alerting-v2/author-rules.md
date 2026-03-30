@@ -5,19 +5,19 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Create Kibana alerting v2 rules using ES|QL queries — from the UI, Discover, or YAML — in detect or alert mode."
+description: "Create Kibana alerting v2 rules using ES|QL queries from the UI, Discover, or YAML in detect or alert mode."
 ---
 
 # Author Kibana alerting v2 rules [author-rules-v2]
 
-A Kibana alerting v2 rule defines what to look for in your data. It evaluates source data — logs, metrics, traces, or alert events from other rules — on a configurable schedule using an ES|QL query and produces alert event documents when conditions are met.
+A Kibana alerting v2 rule defines what to look for in your data. It evaluates source data such as logs, metrics, traces, or alert events from other rules on a configurable schedule using an ES|QL query and produces alert event documents when conditions are met.
 
 ## Rule modes
 
 Every rule operates in one of two modes:
 
-- **Detect mode** (`kind: signal`) — produces signal events for exploration and analysis. No lifecycle tracking, no notifications. Use detect mode for broad monitoring without noise.
-- **Alert mode** (`kind: alert`) — produces alert events with full lifecycle management. Alerts transition through episode states (`inactive` → `pending` → `active` → `recovering` → `inactive`), trigger notification policies, and support triage actions. Use alert mode when conditions require human response.
+- **Detect mode** (`kind: signal`): produces signal events for exploration and analysis. No lifecycle tracking, no notifications. Use detect mode for broad monitoring without noise.
+- **Alert mode** (`kind: alert`): produces alert events with full lifecycle management. Alerts transition through episode states (`inactive` → `pending` → `active` → `recovering` → `inactive`), trigger notification policies, and support triage actions. Use alert mode when conditions require human response.
 
 You can switch between modes at any time from the rule list or rule details page.
 
@@ -25,9 +25,9 @@ You can switch between modes at any time from the rule list or rule details page
 
 You can create rules in three ways:
 
-- **[From the UI](author-rules/create-rules-ui.md)** — use the rule creation form with interactive controls and YAML mode toggle. Preview results before saving.
-- **[From Discover](author-rules/create-rules-discover.md)** — convert an ES|QL query you've built in Discover directly into a rule. The query pre-populates the rule definition.
-- **[With YAML](author-rules/create-rules-yaml.md)** — define rules as YAML documents for infrastructure-as-code workflows, version control, and bulk provisioning.
+- **[From the UI](author-rules/create-rules-ui.md)**: use the rule creation form with interactive controls and YAML mode toggle. Preview results before saving.
+- **[From Discover](author-rules/create-rules-discover.md)**: convert an ES|QL query you've built in Discover directly into a rule. The query pre-populates the rule definition.
+- **[With YAML](author-rules/create-rules-yaml.md)**: define rules as YAML documents for infrastructure-as-code workflows, version control, and bulk provisioning.
 
 ## What a rule contains
 
