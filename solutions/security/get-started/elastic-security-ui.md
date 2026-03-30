@@ -218,6 +218,16 @@ Manage {{ml}} jobs and settings. Refer to [{{ml-cap}} docs](/explore-analyze/mac
 
 Quickly add security integrations that can ingest data and monitor your hosts.
 
+### SIEM Readiness [security-ui-siem-readiness]
+
+```yaml {applies_to}
+stack: preview 9.4
+serverless:
+  security: preview
+```
+
+Assess your security data posture across four dimensions — coverage, quality, continuity, and retention — and take guided actions to close gaps. Refer to [SIEM Readiness](/solutions/security/get-started/siem-readiness.md) for more information.
+
 ### Developer tools [security-ui-dev-tools]
 
 Use additional API and analysis tools to interact with your data.
