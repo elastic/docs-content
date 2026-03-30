@@ -84,7 +84,9 @@ This tutorial results in a secure-by-default environment, but not every connecti
 * {{fleet-server}} is installed using the Quick Start flow, which uses a self-signed certificate for its HTTPS endpoint.
 * {{agent}} enrolls using that Quick Start flow, which requires the install command to include the `--insecure` flag.
 
+::::{note}
 If you plan to use certificates signed by your organization's certificate authority or by a public CA, complete this tutorial until {{kib}} is installed (Step 7), and then continue with [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) before installing {{fleet-server}} and {{agent}}.
+::::
 
 ## Step 1: Set up the first {{es}} node [install-stack-self-elasticsearch-first]
 
@@ -108,7 +110,7 @@ For installation steps for other supported methods, refer to [Install {{es}}](/d
    cd elastic-install-files
    ```
 
-1. Download the {{es}} RPM and checksum file from the {{artifact-registry}}.
+1. Download the {{es}} RPM and checksum file from the {{artifact-registry}}:
 
    ```shell subs=true
    curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm
@@ -141,13 +143,13 @@ For installation steps for other supported methods, refer to [Install {{es}}](/d
 
    The {{es}} install process enables [certain security features](/deploy-manage/security/self-auto-setup.md) by default, including the following:
 
-   * Authentication and authorization, including the built-in `elastic` superuser account.
+   * Authentication and authorization, including the [built-in](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) `elastic` superuser account.
    * TLS certificates and keys for the transport and HTTP layers, stored in `/etc/elasticsearch/certs` and configured automatically for use by {{es}}.
    * The transport interface is bound to the loopback interface (`localhost`), preventing other nodes from joining the cluster, while the HTTP interface listens on all network interfaces (`http.host: 0.0.0.0`).
 
 1. Copy the terminal output from the install command to a local file. In particular, you need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to run as a service, which you use in the next step.
 
-1. Run the following two commands to enable {{es}} to run as a service using `systemd`. This enables {{es}} to start automatically when the host system reboots. For more details, refer to [Running {{es}} with `systemd`](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#running-systemd).
+1. Run the following two commands to enable {{es}} to run as a service using `systemd`. This enables {{es}} to start automatically when the host system reboots. For more details, refer to [Running {{es}} with `systemd`](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#running-systemd):
 
    ```shell
    sudo systemctl daemon-reload
@@ -186,7 +188,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
 
    1. Uncomment the line `#transport.host: 0.0.0.0` to accept connections on all available network interfaces.
 
-      By default, {{es}} listens for transport traffic on `localhost`, which prevents other {{es}} instances from joining the cluster. To allow communication between nodes, you need to bind the transport interface to a non-loopback address.
+      By default, {{es}} listens for transport traffic on `localhost`, which prevents other {{es}} instances from joining the cluster. To allow communication between nodes, you need to bind the transport interface to a non-loopback address:
 
       ```yaml
       transport.host: 0.0.0.0 <1>
@@ -228,7 +230,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
    If {{es}} does not start successfully, check the {{es}} log file at `/var/log/elasticsearch/<cluster-name>.log` to learn more. For example, if your cluster name is `elasticsearch-demo`, the log file is `/var/log/elasticsearch/elasticsearch-demo.log`.
    :::
 
-1. Make sure that {{es}} is running properly.
+1. Make sure that {{es}} is running properly:
 
    ```shell
    sudo curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200
@@ -238,21 +240,16 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
 
    If all is well, the command returns a response like this:
 
-   ```json
+   ```json subs=true
    {
-     "name" : "Cp9oae6",
+     "name" : "instance-1",
      "cluster_name" : "elasticsearch-demo",
-     "cluster_uuid" : "AT69_C_DTp-1qgIJlatQqA",
+     "cluster_uuid" : "<cluster-uuid>",
      "version" : {
-       "number" : "{version_qualified}",
-       "build_type" : "{build_type}",
-       "build_hash" : "f27399d",
+       "number" : "{{version.stack}}",
        "build_flavor" : "default",
-       "build_date" : "2016-03-30T09:51:41.449Z",
-       "build_snapshot" : false,
-       "lucene_version" : "{lucene_version}",
-       "minimum_wire_compatibility_version" : "1.2.3",
-       "minimum_index_compatibility_version" : "1.2.3"
+       "build_type" : "rpm",
+       "build_snapshot" : false
      },
      "tagline" : "You Know, for Search"
    }
@@ -431,54 +428,49 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
 
 1. As a final check, verify that the new node is reachable and responding, and that it appears in the cluster. In the following commands, replace `$ELASTIC_PASSWORD` with the same `elastic` superuser password that you used on the first {{es}} node.
 
-    To confirm that {{es}} is running properly on the new node, run:
+    1. To confirm that {{es}} is running properly on the new node, run:
 
-    ```shell
-    sudo curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200 <1>
-    ```
-    1. For a more complete check, replace `localhost` with the IP address of the new node to verify that it is reachable over the network.
-    
-    Response example:
+        ```shell
+        sudo curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200 <1>
+        ```
+        1. For a more complete check, replace `localhost` with the IP address of the new node to verify that it is reachable over the network.
 
-    ```json
-    {
-      "name" : "Cp9oae6",
-      "cluster_name" : "elasticsearch-demo",
-      "cluster_uuid" : "AT69_C_DTp-1qgIJlatQqA",
-      "version" : {
-        "number" : "{version_qualified}",
-        "build_type" : "{build_type}",
-        "build_hash" : "f27399d",
-        "build_flavor" : "default",
-        "build_date" : "2016-03-30T09:51:41.449Z",
-        "build_snapshot" : false,
-        "lucene_version" : "{lucene_version}",
-        "minimum_wire_compatibility_version" : "1.2.3",
-        "minimum_index_compatibility_version" : "1.2.3"
-      },
-      "tagline" : "You Know, for Search"
-    }
-    ```
+        Response example:
 
-    To confirm that the node has joined the cluster, run the following command on any {{es}} node:
+        ```json subs=true
+        {
+            "name" : "instance-2",
+            "cluster_name" : "elasticsearch-demo",
+            "cluster_uuid" : "<cluster-uuid>",
+            "version" : {
+            "number" : "{{version.stack}}",
+            "build_flavor" : "default",
+            "build_type" : "rpm",
+            "build_snapshot" : false
+            },
+            "tagline" : "You Know, for Search"
+        }
+        ```
 
-    ```shell
-    sudo curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200/_cat/nodes?v <1>
-    ```
-    1. You can replace `localhost` with the IP address of any of the nodes.
+    1. To confirm that the node has joined the cluster, run the following command on any {{es}} node:
 
-    The output should include the new node together with the existing node or nodes in the cluster, for example:
+        ```shell
+        sudo curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200/_cat/nodes?v <1>
+        ```
+        1. You can replace `localhost` with the IP address of any of the nodes.
 
-    ```shell
-    203.0.113.25 46 97 18 0.21 0.23 0.10 cdfhilmrstw - instance-2
-    203.0.113.21 31 96  1 0.04 0.03 0.01 cdfhilmrstw * instance-1
-    ```
+        The output should include the new node together with the existing node or nodes in the cluster, for example:
+
+        ```shell
+        203.0.113.25 46 97 18 0.21 0.23 0.10 cdfhilmrstw - instance-2
+        203.0.113.21 31 96  1 0.04 0.03 0.01 cdfhilmrstw * instance-1
+        ```
 
 ## Step 5: Set up additional {{es}} nodes [install-stack-self-elasticsearch-third]
 
-To set up additional {{es}} nodes, repeat the process from [Step 4: Set up a second {{es}} node](#install-stack-self-elasticsearch-second) for each new node that you add to the cluster.
+To set up additional {{es}} nodes, repeat the process from [Step 4: Set up a second {{es}} node](#install-stack-self-elasticsearch-second) for each new node that you add to the cluster. As a recommended best practice, create a new enrollment token for each new node that you add.
 
-As a recommended best practice, create a new enrollment token for each new node that you add.
+For [production workloads](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md), you should run at least three {{es}} nodes so the cluster can tolerate the loss of any single node. For guidance, refer to [Resilience in small clusters](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-small-clusters.md).
 
 ## Step 6: Consolidate {{es}} configuration [install-stack-self-elasticsearch-consolidate]
 
@@ -531,7 +523,7 @@ For installation steps using other supported methods, refer to [Install {{kib}}]
    cd kibana-install-files
    ```
 
-1. Download the {{kib}} RPM and checksum file from the Elastic website.
+1. Download the {{kib}} RPM and checksum file from the Elastic website:
 
    ```shell subs=true
    curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm
@@ -563,7 +555,7 @@ For installation steps using other supported methods, refer to [Install {{kib}}]
    sudo rpm --install kibana-{{version.stack}}-x86_64.rpm
    ```
 
-1. Run the following two commands to enable {{kib}} to run as a service using `systemd`, enabling {{kib}} to start automatically when the host system reboots.
+1. Run the following two commands to enable {{kib}} to run as a service using `systemd`, enabling {{kib}} to start automatically when the host system reboots:
 
    ```shell
    sudo systemctl daemon-reload
@@ -631,7 +623,7 @@ In this section, you start {{kib}} for the first time and complete enrollment wi
 
     If you need to, you can stop the service by running `sudo systemctl stop kibana.service`.
 
-1. Run the `status` command to get details about the {{kib}} service.
+1. Run the `status` command to get details about the {{kib}} service:
 
     ```shell
     sudo systemctl status kibana
@@ -653,6 +645,12 @@ In this section, you start {{kib}} for the first time and complete enrollment wi
 1. Open a web browser to the external IP address of the {{kib}} host machine, for example: `http://<kibana-host-address>:5601`.
 
     It can take a minute or two for {{kib}} to start up, so refresh the page if you don't see a prompt right away.
+
+    :::{note}
+    The automatic setup used in this tutorial does not configure TLS certificates for browser access to {{kib}}, which is highly recommended for production environments.
+
+    To configure HTTPS for {{kib}}, refer to [Encrypt traffic between your browser and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-browser). Alternatively, this is also covered in [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
+    :::
 
 1. When {{kib}} starts, you're prompted for an enrollment token. You must generate this token in {{es}}:
 
@@ -682,8 +680,6 @@ This tutorial already uses the {{es}} [automatic security setup](/deploy-manage/
 If you plan to use certificates signed by your organization's certificate authority or by a public CA instead, stop here after installing {{kib}} and continue with [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md). That tutorial is the right place to replace or adjust the default certificate configuration before installing {{fleet-server}} and {{agent}}.
 
 Following that path avoids installing {{fleet-server}} and {{agent}} with the certificate setup from this tutorial and then needing to reinstall the components after changing the security configuration.
-
-Note also that the automatic setup used here does not configure HTTPS for browser access to {{kib}}, which is highly recommended for production environments.
 :::
 
 ## Step 8: Install {{fleet-server}} [install-stack-self-fleet-server]
@@ -698,7 +694,7 @@ If you want to use custom SSL/TLS certificates, follow [Tutorial 2: Customize ce
 
 Before proceeding, confirm the following prerequisites:
 
-* If you're not using the built-in `elastic` superuser, ensure your {{kib}} user has **All** privileges for **{{fleet}}** and **{{integrations}}**.
+* If you're not using the [built-in](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) `elastic` superuser, ensure your {{kib}} user has **All** privileges for **{{fleet}}** and **{{integrations}}**.
 * {{agent}} hosts have direct network connectivity to both the {{fleet-server}} and the {{es}} cluster.
 * The {{kib}} host can connect to `https://epr.elastic.co` on port `443` to download integration packages.
 
