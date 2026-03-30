@@ -8,16 +8,16 @@ applies_to:
 
 # Query logging [logging]
 
-{{es}} can log every querying operation performed on the cluster. This supports [DSL searches](/explore-analyze/query-filter/languages/querydsl.md), [{{esql}}](/explore-analyze/discover/try-esql.md), [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv), [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) and other APIs that search or query {{es}} indices.
+{{es}} can log every querying operation performed on the cluster. This supports [DSL searches](elasticsearch://reference/query-languages/querydsl.md), [{{esql}}](elasticsearch://reference/query-languages/esql.md), [SQL](elasticsearch://reference/query-languages/sql.md), [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) and other APIs that search or query {{es}} indices.
 
 ## Supported query types
 
 The following query types are supported:
 
-- `dsl`: Logs every search operation performed on the cluster using [Query DSL](/explore-analyze/query-filter/languages/querydsl.md).
+- `dsl`: Logs every search operation performed on the cluster using [Query DSL](elasticsearch://reference/query-languages/querydsl.md).
 - `esql`: Logs every query operation performed on the cluster using [{{esql}}](elasticsearch://reference/query-languages/esql.md).
-- `eql`: Logs every query operation performed on the cluster using [EQL](/explore-analyze/query-filter/languages/eql.md).
-- `sql`: Logs every query operation performed on the cluster using [SQL](/explore-analyze/query-filter/languages/sql.md).
+- `eql`: Logs every query operation performed on the cluster using [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md).
+- `sql`: Logs every query operation performed on the cluster using [SQL](elasticsearch://reference/query-languages/sql.md).
 
 ## Enable query logging
 
