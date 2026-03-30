@@ -54,8 +54,8 @@ For the full list of supported operating systems and platforms, refer to the [El
 
 The packages needed by this tutorial are:
 
-* [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm)
-* [https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm)
+* [elasticsearch-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm)
+* [kibana-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm)
 * [https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz)
 
 :::{note}
@@ -102,7 +102,7 @@ For installation steps for other supported methods, refer to [Install {{es}}](/d
    mkdir elastic-install-files
    ```
 
-1. Change into the new directory:
+1. Navigate to the new directory:
 
    ```shell
    cd elastic-install-files
@@ -676,7 +676,7 @@ In this section, you start {{kib}} for the first time and complete enrollment wi
 
 {{kib}} is now fully set up and communicating with your {{es}} cluster.
 
-:::{admonition} Important: Stop here if you plan to use your own TLS/SSL certificates
+:::{warning} - Stop here if you plan to use your own TLS/SSL certificates
 This tutorial already uses the {{es}} [automatic security setup](/deploy-manage/security/self-auto-setup.md), which configures security for {{es}} by default, including TLS for both the transport and HTTP layers.
 
 If you plan to use certificates signed by your organization's certificate authority or by a public CA instead, stop here after installing {{kib}} and continue with [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md). That tutorial is the right place to replace or adjust the default certificate configuration before installing {{fleet-server}} and {{agent}}.
