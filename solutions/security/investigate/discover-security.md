@@ -11,20 +11,26 @@ products:
 
 # Explore Security data in Discover
 
-**Discover** provides a Security-specific experience for exploring alert and event data. When the Security profile is active, Discover adds color-coded row indicators, security-focused default columns, and a contextual overview tab in the document flyout that surfaces key alert and event context.
+**Discover** provides a Security-specific experience for exploring alert and event data. When the Security experience is active, Discover adds color-coded row indicators, security-focused default columns, and a contextual overview tab in the document flyout that surfaces key alert and event context.
 
 For general **Discover** concepts and features, refer to [](/explore-analyze/discover.md).
 
+
+:::{image} /solutions/images/security-discover-profile.png
+:screenshot:
+:alt: Discover with the Security solution defult data view selected.
+:::
+
 ## Access the Security Discover experience
 
-How the Security profile activates depends on your deployment type:
+How the Security experience activates depends on your deployment type:
 
-- {applies_to}`security: ga` The Security profile activates automatically when you open **Discover** from your {{sec-serverless}} project.
-- {applies_to}`stack: ga` The Security profile activates when you open **Discover** from the {{elastic-sec}} [solution view](/deploy-manage/manage-spaces.md).
+- {applies_to}`security: ga` The Security experience activates automatically when you open **Discover** from your {{sec-serverless}} project.
+- {applies_to}`stack: ga` The Security experience activates when you open **Discover** from the {{elastic-sec}} [solution view](/deploy-manage/manage-spaces.md).
 
 ## Security-specific Discover features
 
-With the Security profile active, **Discover** adds the following features to help you triage and investigate alerts and events.
+With the Security experience active, **Discover** adds the following features to help you triage and investigate alerts and events.
 
 ### Row indicators
 
