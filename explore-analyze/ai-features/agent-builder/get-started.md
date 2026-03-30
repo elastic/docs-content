@@ -29,9 +29,14 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 
 :::{applies-item} { "serverless": "ga", "elasticsearch" }
 
-{{agent-builder}} is enabled by default in serverless {{es}} projects.
+{{agent-builder}} is enabled by default in serverless {{es}} projects. You can access it from multiple entry points in the UI:
 
-Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- Select the **Agent Builder** card on the {{es}} home page.
+- Click **Agents** in the navigation menu.
+- Click the **AI Agent** button in the top-right header to start a conversation from any page.
+- Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
+
+You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
@@ -55,11 +60,15 @@ Once enabled, find **Agents** in the navigation menu to begin using the feature,
 
 On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
 
-- **{{es}} solution view**: {{agent-builder}} is enabled by default and appears in the side navigation. It replaces Search Assistant.
-- **{{product.observability}} and {{product.security}} solution views**: You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+- **{{es}} solution view**: {{agent-builder}} is enabled by default, replacing Search Assistant. You can access it from multiple entry points:
+    - Select the **Agent Builder** card on the {{es}} home page.
+    - Click **Agents** in the navigation menu.
+    - Click the **AI Agent** button in the top-right header to start a conversation from any page.
+    - Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
+- **{{product.observability}} and {{product.security}} solution views**: You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature. Once enabled, find **Agents** in the navigation menu.
 - **Classic view**: {{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 
-Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
@@ -80,7 +89,7 @@ For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 
 :::{tip}
 If you're not ready to add your own data, you can:
-- Use the Elastic [sample data](/manage-data/ingest/sample-data.md).
+- From the {{kib}} home page, select **Add data** to upload a file, load [sample data](/manage-data/ingest/sample-data.md), or create an empty index.
 - Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-).  (This requires your [{{es}} URL and an API key](/solutions/elasticsearch-solution-project/search-connection-details.md)).
 - Follow the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md), which includes sample book data and walks you through creating custom tools and agents programmatically.
 :::
