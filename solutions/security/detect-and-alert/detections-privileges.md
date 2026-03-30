@@ -25,13 +25,16 @@ For instructions on turning on the detections feature, refer to [Turn on detecti
 Rules run in the background using the privileges of the user who last edited them. Ensure that only users with the appropriate access edit them. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
 :::
 
-::::{admonition} Independent alerts and rules access
-You can give a role access to alerts only, rules only, or both, depending on your needs.
-::::
-
 ## About index privileges
 
-When creating custom roles for detection features, you'll need to grant access to system indices that include your space ID (`<space-id>`). For example, the default space uses `.alerts-security.alerts-default`. Refer to the following details to understand which system indices your role might require access to. 
+When creating custom roles for detection features, you'll need to grant access to system indices that include your space ID (`<space-id>`). For example, the default space uses `.alerts-security.alerts-default`. Refer to the following details to understand which system indices your role might require access to.
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` You can give a role access to alerts only, rules only, or both.
+
+:::{admonition} Role access to rules and alerts in 9.4
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+Starting in {{stack}} 9.4, new custom roles require explicit **Rules and Exceptions** and **Alerts** privileges. Earlier releases sometimes granted alert-related access indirectly through broader **Security** privileges or the **Rules, Alerts, and Exceptions** feature. Review custom roles after an upgrade to confirm each role still has the intended access to alerts.
+:::
 
 :::::{tab-set}
 
