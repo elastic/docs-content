@@ -41,10 +41,10 @@ Query logs are always emitted on the node that executed the request. These logs 
 
 The following configuration options are available:
 
-- `elasticsearch.activitylog.enabled`: Enables or disables query logging. Set to `true` to enable. Defaults to `false`.
-- `elasticsearch.activitylog.threshold`: Sets the request duration threshold (in milliseconds) for logging events. If greater than 0, only requests with durations equal to or greater than the threshold are logged. The default is 0.
-- `elasticsearch.activitylog.include.user`: Enables or disables logging of user information. Set to `false` to disable. Defaults to `true`.
-- `elasticsearch.activitylog.search.include.system_indices`: Controls whether `dsl` queries targeting system indices are included in the logs. Set to `true` to include them. Defaults to `false`.
+- `elasticsearch.querylog.enabled`: Enables or disables query logging. Set to `true` to enable. Defaults to `false`.
+- `elasticsearch.querylog.threshold`: Sets the request duration threshold (in milliseconds) for logging events. If greater than 0, only requests with durations equal to or greater than the threshold are logged. The default is 0.
+- `elasticsearch.querylog.include.user`: Enables or disables logging of user information. Set to `false` to disable. Defaults to `true`.
+- `elasticsearch.querylog.search.include.system_indices`: Controls whether `dsl` queries targeting system indices are included in the logs. Set to `true` to include them. Defaults to `false`.
 
 ## Log field reference
 
