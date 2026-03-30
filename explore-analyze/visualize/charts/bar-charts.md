@@ -113,6 +113,8 @@ To create a stacked bar chart:
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a stacked bar chart that counts log entries over time and breaks them down by destination country.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -129,7 +131,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "decorations": {},
   "layers": [
     {
-      "type": "bar_stacked",
+      "type": "bar_stacked",                                                      <1>
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "x": {
         "operation": "date_histogram",
@@ -142,7 +144,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           "filter": { "query": "" }
         }
       ],
-      "breakdown_by": {
+      "breakdown_by": {                                                            <2>
         "operation": "terms",
         "fields": ["geo.dest"],
         "size": 5
@@ -151,6 +153,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ]
 }'
 ```
+
+1. `bar_stacked` renders bars with colored segments stacked on top of each other, showing both the total and the contribution of each category.
+2. `breakdown_by` splits each bar into segments by the top 5 destination countries.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -176,6 +181,8 @@ To create an unstacked bar chart:
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates an unstacked bar chart where each breakdown category renders as a separate bar placed side by side, making it easy to compare individual values.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -192,7 +199,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "decorations": {},
   "layers": [
     {
-      "type": "bar",
+      "type": "bar",                                                               <1>
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "x": {
         "operation": "date_histogram",
@@ -205,7 +212,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           "filter": { "query": "" }
         }
       ],
-      "breakdown_by": {
+      "breakdown_by": {                                                            <2>
         "operation": "terms",
         "fields": ["geo.dest"],
         "size": 5
@@ -214,6 +221,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ]
 }'
 ```
+
+1. `bar` (instead of `bar_stacked`) places each category's bar side by side for direct comparison.
+2. `breakdown_by` creates a separate bar for each of the top 5 destination countries within every time bucket.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -377,6 +387,8 @@ The following examples show various configuration options that you can use for b
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a stacked bar chart that tracks page views over time with a custom metric label and breaks them down by the top 9 destination regions.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -402,7 +414,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "y": [
         {
           "operation": "count",
-          "label": "Page Views",
+          "label": "Page Views",                                                   <1>
           "format": { "type": "number" },
           "filter": { "query": "" }
         }
@@ -410,12 +422,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "breakdown_by": {
         "operation": "terms",
         "fields": ["geo.dest"],
-        "size": 9
+        "size": 9                                                                  <2>
       }
     }
   ]
 }'
 ```
+
+1. `label` overrides the default axis label so the vertical axis reads "Page Views" instead of "Count".
+2. `size: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -441,6 +456,8 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a horizontal bar chart with a formula-based metric and a reference line layer that marks the acceptable error threshold.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -457,7 +474,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "decorations": {},
   "layers": [
     {
-      "type": "bar_horizontal",
+      "type": "bar_horizontal",                                                    <1>
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "x": {
         "operation": "terms",
@@ -466,7 +483,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       },
       "y": [
         {
-          "operation": "formula",
+          "operation": "formula",                                                  <2>
           "formula": "count(kql='response > \"300\"') / count()",
           "label": "Error Rate %",
           "format": { "type": "percent" },
@@ -475,7 +492,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       ]
     },
     {
-      "type": "referenceLines",
+      "type": "referenceLines",                                                    <3>
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "thresholds": [
         {
@@ -489,6 +506,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ]
 }'
 ```
+
+1. `bar_horizontal` renders bars horizontally, giving more room for long host names.
+2. `formula` computes the error rate as the ratio of responses above 300 to total requests, formatted as a percentage.
+3. A `referenceLines` layer draws a threshold line at 10% so hosts exceeding it are immediately visible.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
