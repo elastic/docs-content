@@ -40,7 +40,7 @@ The {{cps-init}} _scope_ is the set of searchable resources included in a {{cps}
 - Origin project + a set of linked projects, as defined by project routing
 - Origin project only
 
-The scope is further restricted by the user's or key's permissions. 
+The scope is further restricted by the user's or API key's permissions. 
 
 Users can also set the scope on a per-query basis as needed, using [qualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
