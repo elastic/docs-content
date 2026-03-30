@@ -44,7 +44,7 @@ The following configuration options are available:
 - `elasticsearch.querylog.enabled`: Enables or disables query logging. Set to `true` to enable. Defaults to `false`.
 - `elasticsearch.querylog.threshold`: Sets the request duration threshold (in milliseconds) for logging events. If greater than 0, only requests with durations equal to or greater than the threshold are logged. The default is 0.
 - `elasticsearch.querylog.include.user`: Enables or disables logging of user information. Set to `false` to disable. Defaults to `true`.
-- `elasticsearch.querylog.search.include.system_indices`: Controls whether `dsl` queries targeting system indices are included in the logs. Set to `true` to include them. Defaults to `false`.
+- `elasticsearch.querylog.include.system_indices`: Controls whether queries targeting only system indices are included in the logs. Set to `true` to include them. Defaults to `false`.
 
 ## Log field reference
 
@@ -76,7 +76,7 @@ Using parent task and node IDs, you can correlate the log entries of queries ini
 These fields are specific to query logging and common for all query languages.
 
 - `elasticsearch.querylog.type`: The type of operation (`dsl`, `esql`, `sql`, `eql`).
-- `elasticsearch.querylog.took`: How long (in nanoseconds) the request took to complete.
+- `elasticsearch.querylog.took`: How long (in nanoseconds) the request took to complete (this is the same as `event.duration`, for convenience).
 - `elasticsearch.querylog.took_millis`: How long (in milliseconds) the request took to complete.
 - `elasticsearch.querylog.timed_out`: Boolean specifying whether the query timed out.
 - `elasticsearch.querylog.query`: The query text (depending on the query language, could be string or JSON).
@@ -98,7 +98,7 @@ When the query is cross-cluster, the following fields are available:
 - `elasticsearch.querylog.clusters.remotes` - Enumerates other clusters or projects involved in the query execution.
 - `elasticsearch.querylog.is_remote` - For `dsl` queries, indicates whether the query was initiated by another cluster.
 
-Additional fields specific to {{es}} environment may be added. 
+Additional fields specific to {{es}} environment may be added. See below for the examples of full query log entries. 
 
 In addition to the fields listed above, each query language may include fields specific to it, prefixed with `elasticsearch.querylog.`.
 
