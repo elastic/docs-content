@@ -46,7 +46,7 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
     When you edit the query and run it again, the visualization configuration persists as long as it is compatible with the query changes. Refer to [](#chart-config-persist) for more details.
     :::
 
-4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](../dashboards/add-controls.md#add-variable-control).
+4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](../dashboards/add-variable-controls.md).
 5. Select **Apply and close** to save the visualization to the dashboard.
 
 ### Customize the appearance of your {{esql}} visualization

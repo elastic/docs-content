@@ -6,7 +6,7 @@
 
     * The type of the control. 
       * For controls with **Static values**, enter available controls manually or select them from the dropdown list. 
-      * For controls with **Values from a query**, write an {{esql}} query to populate the list of options. This option is useful for dynamically retrieving control values or perform advanced actions such as [defining chaining controls](/explore-analyze/dashboards/add-controls.md#chain-variable-controls).
+      * For controls with **Values from a query**, write an {{esql}} query to populate the list of options. This option is useful for dynamically retrieving control values or perform advanced actions such as [defining chaining controls](/explore-analyze/dashboards/add-variable-controls.md#chain-variable-controls).
         :::{tip} - Only display values available for the selected time range
         By linking the control to the global time range, the control only shows values that exist within the time range selected in the dashboard or Discover session. You can do that by specifying `WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart` in the control's query, or [custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters) if your indices don't have a `@timestamp` field.
         :::

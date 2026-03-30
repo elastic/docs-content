@@ -261,7 +261,11 @@ toc:
         children:
           - file: dashboards/create-dashboard.md
           - file: dashboards/open-dashboard.md
-          - file: dashboards/add-controls.md
+          - file: dashboards/dashboard-controls.md
+            children:
+              - file: dashboards/add-controls.md
+              - file: dashboards/add-variable-controls.md
+              - file: dashboards/dashboard-control-settings.md
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md

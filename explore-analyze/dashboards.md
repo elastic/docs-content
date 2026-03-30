@@ -36,7 +36,7 @@ Once you understand the basics, explore these common tasks:
 **Build and customize dashboards**
 - [Build dashboards](dashboards/building.md): Learn the fundamentals of creating and configuring dashboards.
 - [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content.
-- [Add filter controls](dashboards/add-controls.md): Enable interactive filtering with options lists, range sliders, and time sliders.
+- [Dashboard controls](dashboards/dashboard-controls.md): Enable interactive filtering with options lists, range sliders, time sliders, and ES|QL variable controls.
 - [Add drilldowns](dashboards/drilldowns.md): Create interactive navigation between dashboards or to external URLs.
 - [Organize dashboard panels](dashboards/arrange-panels.md): Arrange panels using collapsible sections, resizing, and positioning.
 

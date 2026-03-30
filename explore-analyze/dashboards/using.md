@@ -130,7 +130,7 @@ To edit it, click the filter. You can then adjust and apply the updated **Time r
 
 ### Use available controls [_use_available_controls]
 
-Dashboard authors can [add various types of additional controls](add-controls.md) to help you filter the data that you want to visualize.
+Dashboard authors can [add various types of additional controls](dashboard-controls.md) to help you filter the data that you want to visualize.
 
 
 #### Filter the data with Options list controls [filter-the-data-with-options-list-controls]

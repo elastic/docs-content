@@ -37,7 +37,7 @@ Managed dashboards created by integrations can't be edited directly, but you can
 
     * Adjust the dashboard’s settings
     * [Add, remove, move, or edit panels](../visualize.md#panels-editors)
-    * [Change the available controls](add-controls.md)
+    * [Change the available controls](dashboard-controls.md)
 
 6. **Save** the dashboard.
 

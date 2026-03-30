@@ -842,3 +842,18 @@ redirects:
 
 # Renamed for SEO - URL now matches page title
   'solutions/security/detect-and-alert/requirements-privileges.md': 'solutions/security/detect-and-alert/turn-on-detections.md'
+
+# Split add-controls.md into multiple pages with clear content types
+  'explore-analyze/dashboards/add-controls.md':
+    many:
+      - to: 'explore-analyze/dashboards/add-variable-controls.md'
+        anchors:
+          'add-variable-control':
+          'esql-multi-values-controls': 'esql-multi-values-controls'
+          'chain-variable-controls': 'chain-variable-controls'
+      - to: 'explore-analyze/dashboards/dashboard-control-settings.md'
+        anchors:
+          'configure-controls-settings': 'configure-controls-settings'
+      - to: 'explore-analyze/dashboards/dashboard-controls.md'
+        anchors:
+          'control-types': 'control-types'
