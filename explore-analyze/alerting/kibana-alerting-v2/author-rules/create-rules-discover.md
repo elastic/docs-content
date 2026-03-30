@@ -17,7 +17,7 @@ Create Kibana alerting v2 rules directly from Discover. When you build an ES|QL 
 1. Open **Discover** and switch to ES|QL mode.
 2. Write and run an ES|QL query that returns the data you want to monitor.
 3. Review the results to confirm the query captures the pattern you want to alert on.
-4. Click **Create rule** (or **Alerts > Create rule**) from the Discover toolbar.
+4. Open the **Rules** menu on the Discover toolbar and choose **Create v2 ES|QL rule** (wording may vary slightly by release). Legacy rule types from solutions or plugins appear under **Create v1 rules** when your deployment exposes them.
 5. The rule creation form opens with the ES|QL query pre-populated in the evaluation field.
 6. Configure the remaining rule settings:
    - **Name** and **description**.

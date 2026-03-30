@@ -89,7 +89,7 @@ This example follows **one alert series** (`group_hash`) over **seven days**, so
 ```esql
 // ═══════════════════════════════════════════════════════════════
 // ONE SERIES — Timeline for a single group_hash (replace YOUR_GROUP_HASH)
-// Why: Replay how an episode progressed (same key the executor uses to group)
+// Why: Replay how an episode progressed (same series key as in the rule and alert UI)
 // ═══════════════════════════════════════════════════════════════
 FROM .rule-events
 | WHERE group_hash == "YOUR_GROUP_HASH"

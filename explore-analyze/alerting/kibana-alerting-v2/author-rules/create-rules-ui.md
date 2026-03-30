@@ -8,8 +8,6 @@ products:
 description: "Create Kibana alerting v2 rules using the interactive rule creation form with query editor, preview, and YAML toggle."
 ---
 
-% TODO: Content will be updated when the rule creation UI is implemented.
-
 # Create Kibana alerting v2 rules in the UI [create-rules-ui-v2]
 
 Create Kibana alerting v2 rules using the interactive rule creation form. The form provides a guided experience for configuring all rule settings, with the option to toggle between interactive and YAML modes.

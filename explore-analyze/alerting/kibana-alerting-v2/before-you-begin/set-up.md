@@ -5,7 +5,7 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Enable and configure Kibana alerting v2, including plugin dependencies, index configuration, and verification steps."
+description: "Enable Kibana alerting v2, data streams created for alert events and actions, optional API key cleanup settings, and verification steps."
 ---
 
 # Set up Kibana alerting v2 [alerting-set-up-v2]
@@ -14,36 +14,27 @@ Kibana alerting v2 is available in {{stack}} 9.4 and later. This page explains h
 
 ## Enable Kibana alerting v2
 
-Kibana alerting v2 is enabled by default in 9.4. When enabled, a **Rules V2** tab appears in the rules management area under **Management > Alerts and Insights > Rules V2**.
-
-## Required plugins
-
-Kibana alerting v2 depends on the following {{kib}} plugins, which are enabled by default:
-
-- **Task Manager** — schedules and executes rule evaluations.
-- **Encrypted Saved Objects** — stores API keys securely for rule and notification policy execution.
-- **ES|QL** — provides query execution for rule evaluation.
-- **Spaces** — enforces space-level isolation for rules and policies.
+Kibana alerting v2 is available in 9.4 and later. When it is enabled for your deployment, use **Management > Alerts and Insights > Rules V2** to open the v2 rules list and author rules. If you do not see **Rules V2**, ask your administrator whether alerting v2 is enabled in your environment.
 
 ## Index configuration
 
 Kibana alerting v2 automatically creates and manages the following data streams:
 
 - **`.rule-events`** — stores signal and alert event documents produced by rule evaluations. This is an append-only data stream.
-- **`.alert-actions`** — stores alert action records (acknowledge, snooze, deactivate, fire, suppress) used by the dispatcher for suppression tracking and audit.
+- **`.alert-actions`** — stores alert action records (acknowledge, snooze, deactivate, fire, suppress) for suppression tracking and audit.
 
 No manual index configuration is required. The system creates these data streams with the appropriate mappings when the first rule executes.
 
 ## {{kib}} advanced settings
 
-Optional Task Manager settings control how API keys for notification policies are invalidated after policy updates or deletes:
+Optional `kibana.yml` settings control how often {{kib}} cleans up API keys for notification policies after a policy is updated or deleted:
 
 | Setting | Default | Purpose |
 |---|---|---|
-| `xpack.alerting.invalidateApiKeysTask.interval` | `5m` | How often the background invalidation task runs |
-| `xpack.alerting.invalidateApiKeysTask.removalDelay` | `1h` | Delay before removing old API key material after invalidation |
+| `xpack.alerting.invalidateApiKeysTask.interval` | `5m` | How often {{kib}} processes keys that are marked for invalidation |
+| `xpack.alerting.invalidateApiKeysTask.removalDelay` | `1h` | How long to wait after invalidation before old key material can be removed |
 
-Adjust these only when directed by operations or support; incorrect values can affect dispatch reliability or key rotation timing.
+Change these only when your operations team or Elastic Support recommends it; aggressive values can affect how reliably workflows run after policy changes.
 
 ## Verify the installation
 

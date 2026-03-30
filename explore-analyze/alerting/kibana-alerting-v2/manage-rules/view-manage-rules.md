@@ -31,7 +31,7 @@ Exact columns can vary by release; use column controls if your build exposes the
 
 ### Filters and search
 
-Use the search field and filters (for example by tag, status, or space) to narrow the list. Search matches rule metadata such as name and description depending on implementation.
+Use the search field and filters (for example by tag, status, or space) to narrow the list. Search matches rule metadata such as name and description.
 
 ### Open rule details
 

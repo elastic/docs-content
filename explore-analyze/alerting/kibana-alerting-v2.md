@@ -4,7 +4,7 @@ applies_to:
     since: "9.4"
 products:
   - id: kibana
-description: "Overview of Kibana alerting v2 — an ES|QL-based alerting framework with immutable alert events, notification policies, and alert lifecycle tracking."
+description: "Overview of Kibana alerting v2: an ES|QL-based alerting framework with immutable alert events, notification policies, and alert lifecycle tracking."
 ---
 
 # Kibana alerting v2 [alerting-overview-v2]
@@ -59,15 +59,16 @@ Every rule operates in one of two modes:
 
 You can switch a rule between modes at any time. Switching from alert to detect stops lifecycle tracking and notifications but continues producing signal events.
 
-## Architecture
+## What happens when a rule runs
 
-The Kibana alerting v2 pipeline has three main components:
+From your perspective, a rule does the following on each run:
 
-1. **Rule executor** — Runs on a configurable schedule via Task Manager. Builds and executes the ES|QL query, writes signal or alert event documents to the `.rule-events` data stream, and computes state transitions for alert-mode rules.
+- It evaluates your ES|QL query over the lookback window you configured.
+- It appends new rows to the **`.rule-events`** data stream: signal rows in detect mode, or signal and alert rows with episode fields in alert mode.
+- In alert mode, it updates episode lifecycle (for example **pending**, **active**, **recovering**) according to your activation, recovery, and no-data settings.
+- When an episode is ready for notifications, **notification policies** decide whether and how it is routed to workflows. Policies apply **after** lifecycle and thresholds; a short delay between “episode ready” and “notification sent” is normal when many policies or episodes are in play.
 
-2. **Director** — Embedded in the rule executor. Manages episode state transitions using configurable strategies (basic transitions or count/timeframe-gated transitions).
-
-3. **Dispatcher** — An asynchronous component that polls for new alert episodes and processes them through a 10-step pipeline: fetch episodes, apply suppressions, evaluate notification policy matchers, build notification groups, apply throttling, dispatch to workflow destinations, and record outcomes.
+You can inspect raw history in Discover on **`.rule-events`** at any time, independent of whether notifications were sent.
 
 ## What you can do with Kibana alerting v2
 

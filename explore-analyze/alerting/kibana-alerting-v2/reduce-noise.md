@@ -10,7 +10,7 @@ description: "Select the right Kibana alerting v2 feature to reduce noise: thres
 
 # Reduce {{kib}} alerting v2 noise and false positives [reduce-noise-v2]
 
-{{kib}} alerting v2 offers many ways to reduce noise, each applied at a different stage—from the {{esql}} query and lifecycle thresholds through notification policies, throttling, and manual controls. Selecting the wrong lever wastes effort and can hide real problems. This page helps you **match a situation to a mechanism** and explains **how mechanisms fit in the pipeline** so you can combine them deliberately.
+{{kib}} alerting v2 offers many ways to reduce noise, each applied at a different stage—from the {{esql}} query and lifecycle thresholds through notification policies, throttling, and manual controls. Selecting the wrong lever wastes effort and can hide real problems. This page helps you **match a situation to a mechanism** and explains **how mechanisms combine in order** so you can use them deliberately.
 
 If multiple rows in the table apply, see [Using them together](#using-them-together).
 
@@ -32,7 +32,7 @@ If multiple rows in the table apply, see [Using them together](#using-them-toget
 
 ## How each mechanism works
 
-Mechanisms are listed in **rough pipeline order**: from what happens during rule evaluation and lifecycle, through notification policy processing, to operator controls.
+Mechanisms are listed in **rough order**: from what happens during rule evaluation and lifecycle, through notification policy processing, to operator controls.
 
 ### Author and tune the rule
 
@@ -130,5 +130,5 @@ These options stack. A common pattern is: **tune the query** for precision, add 
 | Database change window this evening | Open a {{maint-windows-cap}} or **snooze** the series | {{maint-windows-cap}}, snooze |
 
 ::::{note}
-**Order of application matters.** Thresholds and no-data behavior affect **lifecycle state** before notification policies run. Matchers and throttling apply when the **dispatcher** processes episodes. Snooze and {{maint-windows-cap}} affect **whether notifications send**, not whether `.rule-events` documents are written—check Discover if raw history is needed.
+**Order of application matters.** Thresholds and no-data behavior affect **lifecycle state** before notification policies run. Matchers and throttling apply when **notification policies** are evaluated for each episode. Snooze and {{maint-windows-cap}} affect **whether notifications send**, not whether `.rule-events` documents are written—check Discover if raw history is needed.
 ::::
