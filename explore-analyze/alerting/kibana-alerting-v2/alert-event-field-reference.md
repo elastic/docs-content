@@ -71,6 +71,7 @@ The table lists fields available in the alert action documents.
 | `episode.id` | `keyword` | Target episode |
 | `rule.id` | `keyword` | Rule that owns the episode |
 | `action.type` | `keyword` | The action type, for example: <br>- `acknowledge`: User acknowledged the alert.<br>- `snooze`: Notifications snoozed for a period.<br>- `tag`: Tag applied to the alert.<br>- `fire`: Notification or escalation fired for the episode.<br>- `unmatched`: No notification policy matched the episode, so no workflow ran for it under those policies. <br><br> For the full set of action types and UI behavior, refer to [Alert actions](manage-alerts/investigate-respond/alert-actions.md). |
+| `episode.status_count` | `long` | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`.<br>For example, if the episode stays `pending` for three rule evaluations in a row, the value is `3`. |
 
 ## Related documentation
 
