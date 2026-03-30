@@ -68,7 +68,7 @@ To learn more about installing {{fleet-server}}, refer to the [{{fleet-server}} 
 
 Air-gapped setup of the APM server is possible in two ways:
 
-* By setting up one of the {{agent}} deployments with an APM integration, as described in [Switch a self-installation to the APM integration](/solutions/observability/apm/switch-self-installation-to-apm-integration.md). See [air gapped installation guidance for {{agent}}](#air-gapped-elastic-agent).
+* By setting up one of the {{agent}} deployments with an APM integration, as described in [Switch a self-installation to the APM integration](/solutions/observability/apm/switch-self-installation-to-apm-integration.md). See [air-gapped installation guidance for {{agent}}](#air-gapped-elastic-agent).
 * Or, by installing a standalone Elastic APM Server, as described in the [APM configuration documentation](/solutions/observability/apm/apm-server/configure.md).
 
 
@@ -454,12 +454,4 @@ Some {{ml}} features, like natural language processing (NLP), require you to dep
 
 ## {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
 
-Installing the AI Assistant knowledge base content (Elastic documentation and Security Labs) requires network access to the artifact repository at `https://kibana-knowledge-base-artifacts.elastic.co`.
-
-{applies_to}`stack: ga 9.4` In environments where outbound traffic must go through an HTTP proxy, you can configure {{kib}} to reach the artifact repository through the proxy by adding the following to `kibana.yml`:
-
-```yaml
-xpack.productDocBase.artifactRepositoryProxyUrl: "https://my-proxy-host:port"
-```
-
-For fully air-gapped environments where no external network access is available, refer to the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for instructions on deploying a local artifact repository.
+Installing the AI Assistant knowledge base content (Elastic documentation and Security Labs) requires network access to the artifact repository at `https://kibana-knowledge-base-artifacts.elastic.co/`. If you don't have access, which is common for deployments in air-gapped or restricted networks, you must deploy the knowledge base artifact repository manually. For details, refer to [Host a knowledge base artifact repo for AI assistants](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).
