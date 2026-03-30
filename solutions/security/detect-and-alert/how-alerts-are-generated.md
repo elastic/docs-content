@@ -26,7 +26,7 @@ The {{kib}} alerting framework triggers the rule at its configured interval (for
 The engine determines the time window to search based on the rule's schedule and look-back setting. If previous executions were missed, catch-up windows are calculated automatically.
 ::::
 ::::{step} Query runs
-The rule's query runs against the configured source indices. The query mechanism varies by [rule type](/solutions/security/detect-and-alert/about-detection-rules.md):
+The rule's query runs against the configured source indices. The query mechanism varies by [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md):
 
 | Rule type | Query mechanism |
 |-----------|-----------------|
@@ -66,7 +66,7 @@ When a rule execution reaches this limit, it stops creating alerts for that run 
 * Narrowing the rule's query to reduce matches
 * Increasing the `max_signals` value
 * Adding [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) to filter out known-benign activity
-* Enabling [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md) to group similar alerts
+* Enabling [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) to group similar alerts
 
 ::::{note}
 Suppressed alerts count toward the max alerts limit. However, because suppression groups multiple events into a single alert, it effectively allows the rule to cover more events within the same limit.
@@ -101,7 +101,7 @@ Building block alerts have `kibana.alert.building_block_type` set to `default`. 
 
 ### Suppressed alerts [suppressed-alerts]
 
-When [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md) is configured, the rule groups matching events by specified fields and creates one alert per group instead of one alert per event. The alert includes:
+When [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) is configured, the rule groups matching events by specified fields and creates one alert per group instead of one alert per event. The alert includes:
 
 * `kibana.alert.suppression.docs_count`: the number of events grouped into this alert
 * `kibana.alert.suppression.terms.field`: the fields used for grouping

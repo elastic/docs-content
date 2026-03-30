@@ -47,7 +47,7 @@ stack: ga
 
 Alert indices use an {{ilm}} ({{ilm-init}}) policy that rolls over after 30 days or when the primary shard reaches 50 GB. There is no delete phase by default, which means alerts accumulate indefinitely unless you add one.
 
-To manage alert index size, you can add a delete phase to the {{ilm-init}} policy attached to the alert indices. For example, you could configure the policy to delete alert indices that are older than 180 days. You can also reduce the rate of alert creation by narrowing rule queries, adding [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md), or enabling [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md).
+To manage alert index size, you can add a delete phase to the {{ilm-init}} policy attached to the alert indices. For example, you could configure the policy to delete alert indices that are older than 180 days. You can also reduce the rate of alert creation by narrowing rule queries, adding [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md), or enabling [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
 
 
 ## Legacy index alias [legacy-index-alias]
@@ -119,7 +119,7 @@ The detection engine adds `kibana.alert.*` fields that describe the alert itself
 | `kibana.alert.reason` | keyword | Human-readable explanation of why the alert was created |
 | `kibana.alert.status` | keyword | System status: `active` or `recovered` |
 | `kibana.alert.building_block_type` | keyword | Present on [building block alerts](/solutions/security/detect-and-alert/how-alerts-are-generated.md#building-block-alerts) |
-| `kibana.alert.suppression.docs_count` | long | Number of suppressed events (when [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md) is active) |
+| `kibana.alert.suppression.docs_count` | long | Number of suppressed events (when [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) is active) |
 | `kibana.alert.suppression.terms.field` | keyword | Fields used for suppression grouping |
 | `kibana.alert.suppression.terms.value` | keyword | Values in the suppression fields |
 | `kibana.alert.suppression.start` | date | Start of the suppression time window |
