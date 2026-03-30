@@ -1,8 +1,7 @@
 ---
 navigation_title: How notification policies are evaluated
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "How Kibana alerting v2 notification policies match alert episodes, apply throttling and suppression, and produce dispatch outcomes."

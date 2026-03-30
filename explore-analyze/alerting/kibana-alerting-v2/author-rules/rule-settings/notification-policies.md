@@ -1,8 +1,7 @@
 ---
 navigation_title: Notification policies
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Notification policies control how and when Kibana alerting v2 alerts reach people and systems, including matching, grouping, throttling, and routing."

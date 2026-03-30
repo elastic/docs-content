@@ -1,8 +1,7 @@
 ---
 navigation_title: Author rules
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Create Kibana alerting v2 rules using ES|QL queries from the UI, Discover, or YAML in detect or alert mode."

@@ -1,8 +1,7 @@
 ---
 navigation_title: Alerting workflows
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Workflows are automated task sequences used as notification policy destinations and direct rule links in Kibana alerting v2."

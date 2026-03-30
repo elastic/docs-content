@@ -1,8 +1,7 @@
 ---
 navigation_title: Alert actions
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Actions you can take on Kibana alerting v2 alerts, including acknowledge, snooze, deactivate, assign, tag, resolve, and add to cases."

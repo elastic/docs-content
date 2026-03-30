@@ -1,8 +1,7 @@
 ---
 navigation_title: Using YAML
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Define Kibana alerting v2 rules in YAML for version control and infrastructure-as-code workflows, with full field reference."

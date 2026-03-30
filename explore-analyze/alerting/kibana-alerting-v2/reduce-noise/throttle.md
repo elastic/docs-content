@@ -1,8 +1,7 @@
 ---
 navigation_title: Throttling
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Limit Kibana alerting v2 notification frequency by setting a minimum interval between notifications for the same group."

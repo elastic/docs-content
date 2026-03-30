@@ -1,8 +1,7 @@
 ---
 navigation_title: View alerts
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Filter, sort, and search Kibana alerting v2 alerts in the alert inbox using quick filters, severity, tags, and custom fields."

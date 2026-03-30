@@ -1,8 +1,7 @@
 ---
 navigation_title: Recovery thresholds
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Require sustained recovery before a Kibana alerting v2 alert episode returns to inactive, preventing rapid toggling between active and recovered."

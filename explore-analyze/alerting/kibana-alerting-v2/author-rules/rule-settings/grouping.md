@@ -1,8 +1,7 @@
 ---
 navigation_title: Rule grouping
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Split Kibana alerting v2 alert event generation by fields like host or service so each entity has independent lifecycle tracking."

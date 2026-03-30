@@ -1,8 +1,7 @@
 ---
 navigation_title: Explore alerts and signals in Discover
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Query Kibana alerting v2 alert events in Discover with ES|QL for trend analysis, operational reporting, and on-demand investigation."

@@ -1,8 +1,7 @@
 ---
 navigation_title: Snooze and disable rules
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Temporarily suppress notifications with per-series snooze or stop rule execution by disabling a Kibana alerting v2 rule."

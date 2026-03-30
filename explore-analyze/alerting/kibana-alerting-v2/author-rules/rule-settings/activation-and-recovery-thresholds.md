@@ -1,8 +1,7 @@
 ---
 navigation_title: Activation and recovery thresholds
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Control when Kibana alerting v2 alerts transition between lifecycle states using consecutive-breach and duration-based thresholds."

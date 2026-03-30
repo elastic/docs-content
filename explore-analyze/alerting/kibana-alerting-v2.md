@@ -1,7 +1,6 @@
 ---
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Overview of Kibana alerting v2: an ES|QL-based alerting framework with immutable alert events, notification policies, and alert lifecycle tracking."

@@ -1,8 +1,7 @@
 ---
 navigation_title: Schedule and lookback
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Configure how often a Kibana alerting v2 rule runs and how far back it looks when evaluating data."

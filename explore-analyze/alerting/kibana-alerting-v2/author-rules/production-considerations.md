@@ -1,8 +1,7 @@
 ---
 navigation_title: Production considerations
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Guidance for running Kibana alerting v2 rules in production, including scheduling, query performance, and data retention."

@@ -1,8 +1,7 @@
 ---
-navigation_title: Field reference for alerting v2 rule and action data
+navigation_title: Fields for rule events and actions
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Fields in the {{kib}} alerting v2 `.rule-events` data stream for signals and alerts, episode fields on lifecycle alerts, and action records in `.alert-actions`."
@@ -23,7 +22,7 @@ All rules write their signal and alert events to the **rule events index**, impl
 - **`signal`:** Point-in-time facts you query or chain into other rules. For example, rows a follow-on rule reads from `.rule-events` to build a rule on alert data. These documents do not include `episode.*` fields.
 - **`alert`:** Lifecycle-tracked episodes in the alert UI: inbox, episode details, and triage. For example, a breach that stays open as an episode until the condition clears. These documents include `episode.*` fields.
 
-Both kinds share the same [base fields](#fields-on-every-signal-and-alert-document). Only `alert` documents add [`episode.*`](#episode-fields-for-alerts-with-lifecycle-tracking) fields.
+Both kinds share the same [base fields](#signal-and-alert-document-fields). Only `alert` documents add [`episode.*`](#episode-fields-for-alerts-with-lifecycle-tracking) fields.
 
 ### Signal and alert document fields
 

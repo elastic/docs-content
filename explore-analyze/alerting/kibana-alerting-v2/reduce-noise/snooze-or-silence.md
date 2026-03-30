@@ -1,8 +1,7 @@
 ---
 navigation_title: Snooze or silence
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Temporarily suppress Kibana alerting v2 notifications using per-series snooze, attribute-based silence, or per-episode acknowledgment."

@@ -1,8 +1,7 @@
 ---
 navigation_title: Alerting setup
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Enable Kibana alerting v2, data streams created for alert events and actions, optional API key cleanup settings, and verification steps."

@@ -1,8 +1,7 @@
 ---
 navigation_title: Alert episode details
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Understand Kibana alerting v2 alert episodes across the full lifecycle from first breach to recovery, including states, identity, and status tracking."

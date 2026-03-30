@@ -1,8 +1,7 @@
 ---
 navigation_title: Matchers
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Route only matching Kibana alerting v2 alert episodes to notification destinations using KQL matcher conditions on notification policies."

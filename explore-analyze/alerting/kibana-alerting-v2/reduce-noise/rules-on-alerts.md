@@ -1,8 +1,7 @@
 ---
 navigation_title: Rules on alerts
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Replace many individual Kibana alerting v2 notifications with a single meaningful one using rules that correlate across alert event data."

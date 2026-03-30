@@ -1,8 +1,7 @@
 ---
 navigation_title: Manage rules
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Navigate Kibana alerting v2 rule management: rules list and details, bulk actions, snooze, and disabling rules."

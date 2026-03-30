@@ -1,8 +1,7 @@
 ---
 navigation_title: Deactivate alerts
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Stop lifecycle processing and notifications for a Kibana alerting v2 alert episode while the rule continues detecting new episodes."

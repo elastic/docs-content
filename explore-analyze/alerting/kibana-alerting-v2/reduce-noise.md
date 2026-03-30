@@ -1,8 +1,7 @@
 ---
 navigation_title: Reduce noise and false positives
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Select the right Kibana alerting v2 feature to reduce noise: thresholds, no-data handling, notification policies, throttling, snooze, rules on alerts, and more."

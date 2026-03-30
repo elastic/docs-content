@@ -1,8 +1,7 @@
 ---
 navigation_title: Create and manage notification policies
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Create, configure, and manage Kibana alerting v2 notification policies, including matching conditions, grouping, throttling, destinations, and snooze."

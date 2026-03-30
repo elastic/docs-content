@@ -1,8 +1,7 @@
 ---
 navigation_title: Set rule data sources
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Configure Kibana alerting v2 rule data sources using ES|QL FROM commands, including index patterns, cross-cluster search, and alert indices."

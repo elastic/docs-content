@@ -1,8 +1,7 @@
 ---
 navigation_title: Investigate and respond
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Use the Kibana alerting v2 alert flyout and detail pages to investigate alert context, review the timeline, and take action."

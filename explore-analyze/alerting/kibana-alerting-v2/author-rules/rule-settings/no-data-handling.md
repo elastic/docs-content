@@ -1,8 +1,7 @@
 ---
 navigation_title: No-data handling
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Configure Kibana alerting v2 rule behavior when the query returns no results: record no-data, carry forward status, or treat as recovery."

@@ -1,8 +1,7 @@
 ---
 navigation_title: Manage alerts
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "View, triage, and respond to alerts produced by Kibana alerting v2 rules using the alert inbox."

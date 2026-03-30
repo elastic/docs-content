@@ -1,7 +1,6 @@
 ---
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Start with pre-configured Kibana alerting v2 rule templates for common monitoring patterns and install pre-built detection rules."

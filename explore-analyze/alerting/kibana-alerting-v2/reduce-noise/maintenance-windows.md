@@ -1,8 +1,7 @@
 ---
 navigation_title: Maintenance windows
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Schedule periods during which Kibana alerting v2 notifications are paused for planned deployments or recurring maintenance."

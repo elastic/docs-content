@@ -1,8 +1,7 @@
 ---
 navigation_title: Before you begin
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Prerequisites and setup steps to review before creating Kibana alerting v2 rules."

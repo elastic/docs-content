@@ -1,8 +1,7 @@
 ---
 navigation_title: No-data handling
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Prevent false recoveries and false alerts when data sources stop reporting by configuring Kibana alerting v2 no-data behavior."

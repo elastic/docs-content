@@ -1,8 +1,7 @@
 ---
 navigation_title: Activation thresholds
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Require consecutive breaches or a minimum duration before a Kibana alerting v2 alert episode becomes active, filtering out transient spikes."

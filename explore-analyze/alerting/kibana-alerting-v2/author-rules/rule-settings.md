@@ -1,8 +1,7 @@
 ---
 navigation_title: Rule settings
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Overview of Kibana alerting v2 rule settings: schedule, thresholds, no-data handling, grouping, notification policies, and workflows."

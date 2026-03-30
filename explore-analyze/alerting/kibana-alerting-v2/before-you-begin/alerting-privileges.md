@@ -1,8 +1,7 @@
 ---
 navigation_title: Alerting privileges
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Required privileges for creating and managing Kibana alerting v2 rules, notification policies, and alert actions."

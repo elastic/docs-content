@@ -1,8 +1,7 @@
 ---
 navigation_title: Rules on alerts
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Write Kibana alerting v2 rules that query alert events for correlation, escalation, and noise reduction across multiple rules."

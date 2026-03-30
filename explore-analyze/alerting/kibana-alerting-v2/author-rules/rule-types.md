@@ -1,8 +1,7 @@
 ---
 navigation_title: Rule types
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "ES|QL query patterns for Kibana alerting v2 rules: threshold, change detection, ratio, no-data, event rate, percentile, SLO burn rate, and more."

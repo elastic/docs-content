@@ -1,8 +1,7 @@
 ---
 navigation_title: Using the UI
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Create Kibana alerting v2 rules using the interactive rule creation form with query editor, preview, and YAML toggle."

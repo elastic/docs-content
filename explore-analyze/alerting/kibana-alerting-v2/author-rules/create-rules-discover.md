@@ -1,8 +1,7 @@
 ---
 navigation_title: Using Discover
 applies_to:
-  stack:
-    since: "9.4"
+  serverless: preview
 products:
   - id: kibana
 description: "Convert an ES|QL query from Discover into a Kibana alerting v2 rule with the query pre-populated."
