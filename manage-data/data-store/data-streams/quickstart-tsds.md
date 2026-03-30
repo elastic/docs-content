@@ -316,8 +316,9 @@ This quickstart introduced the basics of time series data streams. To learn more
 * [](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
 * [](/manage-data/data-store/data-streams/set-up-tsds.md)
 
-If you're working with OpenTelemetry (OTLP) data, refer to the OTLP documentation:
+If you're working with OpenTelemetry (OTLP) or Prometheus data, refer to:
 * [](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
+* [](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
 * [](/solutions/observability/get-started/opentelemetry/quickstart/index.md)
 
 For more information about the APIs used in this quickstart, review the {{es}} API reference documentation:

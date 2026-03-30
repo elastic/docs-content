@@ -307,6 +307,18 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     SETTINGS
     ```
 
+    :::{note}
+    According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
+    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
+    * Values below 300 seconds are used as-is.
+    
+    For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
+
+
     1. Ensure settings in /etc/sysctl.d/*.conf are applied on boot
 
         ```sh

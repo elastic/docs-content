@@ -13,7 +13,7 @@ type: overview
 
 <!-- Overview page created for the v2 navigation -->
 
-# Share, alert, and act
+# Track and respond
 
 The {{es}} platform provides tools to share insights, get notified about important changes, and track incidents. These tools work together across every Elastic solution and project type.
 
