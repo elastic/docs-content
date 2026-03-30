@@ -173,6 +173,7 @@ serverless: ga
 | --- | --- |
 | Manage rules | Threat Intelligence Analyst, Tier 3 Analyst, Detections Eng, SOC Manager, Endpoint Policy Manager, Platform Engineer, Editor |
 | View rules (read only) | Tier 1 Analyst, Tier 2 Analyst, Viewer, Endpoint Operations Analyst |
+| View alerts and entity risk scoring (read only) | Viewer, Editor, Tier 1 Analyst, Tier 2 Analyst, Tier 3 Analyst, Threat Intelligence Analyst, Rule author, SOC Manager, Detections Eng, Platform Engineer, Endpoint Operations Analyst, Endpoint Policy Manager |
 | Manage alerts | All roles except Viewer |
 | Manage exceptions and value lists | Threat Intelligence Analyst, Tier 3 Analyst, Detections Eng, SOC Manager, Endpoint Policy Manager, Platform Engineer, Editor |
 | View exceptions and value lists (read only) | Tier 1 Analyst, Tier 2 Analyst, Viewer, Endpoint Operations Analyst |
