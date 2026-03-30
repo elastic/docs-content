@@ -46,7 +46,7 @@ Project linking is not bidirectional. Searches initiated from a linked project d
 
 You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/explore-analyze/cross-project-search/cross-project-search-link-projects.md).
 
-### Project ID and aliases
+### Project IDs and aliases
 
 Each project has a unique project ID and a project alias.
 The project alias is derived from the project name and can be modified.
@@ -62,17 +62,54 @@ While both the project ID and project alias uniquely identify a project, {{cps}}
 In addition to using a project alias, {{cps-init}} provides a reserved identifier, `_origin`, that always refers to the origin project of the search.
 You can use `_origin` in search expressions to explicitly target the origin project, without having to reference its specific project alias. Refer to [Qualified and unqualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) for detailed examples and to learn more.
 
+## Excluding indices and projects
+
+You can exclude specific indices or projects from a {{cps}} by prefixing a pattern with a dash (`-`).
+This enables you start with a broad search scope and narrow it down by removing specific indices or projects from the results.
+
+### How exclusion works
+
+Exclusion follows these rules:
+
+* A leading `-` on a pattern signals exclusion. The dash can be placed on the index part or on the project part of an expression, each with different requirements.
+Placing the dash on the **index** part (for example, `linked-project-1:-my-index` or `linked-project-1:-*`) works for any index pattern and can be used on its own.
+Placing the dash on the **project** part (for example, `*,-linked-project-1:*`) requires a preceding inclusion pattern and only works when the index part is the `*` wildcard. For example, `*,-linked-project-1:*` is valid, but `*,-linked-project-1:my-index` is not.
+You cannot prefix both the project and the index with a dash in the same expression (for example, `-linked-project-1:-*` is invalid).
+* An exclusion pattern only affects patterns that appear **before** it in the expression.
+Patterns listed **after** the exclusion are not affected by it (for example, in `*,-*,my-index`, the exclusion `-*` removes everything matched by the first `*`, but `my-index` comes after the exclusion and is still included).
+* You can use multiple exclusion patterns in a single expression.
+
+### Exclusion examples
+
+The following examples assume an origin project with two linked projects: `linked-project-1` and `linked-project-2`.
+
+`*,-linked-project-1:*`
+:   Searches everything across all projects, then excludes all indices on the `linked-project-1` project. The search runs on the origin project and `linked-project-2` only.
+
+`*,linked-project-1:-my-index`
+:   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. All other indices on `linked-project-1` and all indices on the origin project and `linked-project-2` are still included.
+
+`*,-my-index*,-logs`
+:   Searches everything, then applies two exclusion patterns. Indices matching `my-index*` and the `logs` index are excluded from the results from all projects.
+
+`*,linked-project-1:-*`
+:   Excludes all indices on the `linked-project-1` project. This is functionally equivalent to `*,-linked-project-1:*`.
+
+`*,-*`
+:   Matches all indices across all projects, then excludes all of them. The result is an empty scope.
+
+`*,-*,my-index`
+:   Matches all indices, then excludes all indices. Because the exclusion only affects patterns before it, the `my-index` pattern that follows is unaffected and `my-index` is still included in the search.
+
 ## Security
 
 This section gives you a high-level overview of how security works in {{cps}}.
-<!-- Refer to the [CPS Security]() section to learn in greater detail. -->
 
 In {{cps-init}}, access to a project's data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
 
 ::::{note}
 {{cps-cap}} is not available when performing programmatic searches using {{es}} API keys, since they're project-scoped and they return results from the local project only.
 ::::
-<!-- Link to universal API keys. -->
 
 Access control operates in two stages:
 
@@ -89,7 +126,6 @@ If you run `GET logs/_search`:
 
 * documents from the `logs` index in project 1 are returned
 * the `logs` index in project 2 is not accessible and is excluded from the results
-
 
 ## Supported APIs [cps-supported-apis]
 
@@ -111,21 +147,17 @@ The following APIs support {{cps}}:
 * Search scroll [clear](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-clear-scroll), [run](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
 
-<!--
 ### {{cps-cap}} specific APIs
 
 **Project routing**: `_project_routing`
 
-* [PUT](TODO)
-* [GET](TODO)
-* [DELETE](TODO)
+* [Create or update project routing expressions](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-create-many-routing)
+* [Get a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-get-routing)
+* [Delete a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-delete-routing)
 
 **Project tags**: `_project/tags`
 
-* [PUT](TODO)
-* [GET](TODO)
-* [DELETE](TODO)
--->
+* [Get tags](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags)
 
 ## Limitations
 
