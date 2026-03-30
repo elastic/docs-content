@@ -734,6 +734,7 @@ toc:
           - file: security/integrations/wiz.md
       - file: security/investigate.md
         children:
+          - file: security/investigate/discover-security.md
           - file: security/investigate/timeline.md
             children:
               - file: security/investigate/timeline-templates.md
