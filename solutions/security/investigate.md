@@ -24,6 +24,7 @@ Together, these tools let you move from a single alert to a complete picture of 
 | Your goal | Start here |
 |---|---|
 | Investigate an alert or hunt for threats | [Timeline](/solutions/security/investigate/timeline.md) |
+| Explore security alerts and events in Discover | [Explore Security data in Discover](/solutions/security/investigate/discover-security.md) |
 | Trace a process to its root cause | [Visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md) |
 | Review a Linux session for suspicious activity | [Session View](/solutions/security/investigate/session-view.md) |
 | Audit live host state during an incident | [Osquery](/solutions/security/investigate/osquery.md) → [Run live queries from alerts](/solutions/security/investigate/run-osquery-from-alerts.md) |
