@@ -10,17 +10,16 @@ products:
 
 # Perform ECE hosts maintenance [ece-perform-host-maintenance]
 
-These steps show how you can safely perform maintenance on hosts in your ECE installation. Host maintenance refers to actions that are not part of taking care of {{ece}} itself and that you might need to perform for a number of different reasons, including:
+This page describes how to safely perform maintenance on hosts in your ECE installation. Host maintenance refers to actions that are not part of taking care of {{ece}} itself and that you might need to perform for a number of different reasons, including:
 
 * To apply urgent operating system patches or hot fixes
 * To perform regularly scheduled software or hardware upgrades
 * To enable new features, such as encryption of data at rest
 * To meet updated installation prerequisites
 
-
 ## Overview
 
-This section describes the available methods for performing host maintenance in ECE.
+This section outlines the available methods for performing host maintenance in ECE.
 
 Which method you choose depends on the impact of the maintenance on ECE services running on the host. Low-risk changes such as OS patching might only require stopping container services and restarting the host. More disruptive changes, such as hardware replacements or major operating system upgrades, are typically safer to perform by removing and reinstalling the host.
 
@@ -30,7 +29,7 @@ If your host maintenance could disrupt ECE, use the method that deletes the host
 
 Use the following methods to perform maintenance on one or more ECE hosts while keeping the rest of the platform running.
 
-* [Disable services and restart the host (nondestructive)](#ece-perform-host-maintenance-container-engine-disable):
+* [Disable services and restart the host (nondestructive)](#ece-perform-host-maintenance-container-engine-disable)
   * [For Docker-based installations: disable the Docker service](#ece-perform-host-maintenance-docker-disable)
   * [For Podman-based installations: disable the Podman-related services](#ece-perform-host-maintenance-podman-disable) 
 * [Remove and reinstall the host (destructive)](#ece-perform-host-maintenance-delete-runner)
@@ -183,11 +182,11 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, the host is part of your ECE installation again and can be used as before.
 
-### Entire ECE installation maintenance
+## Entire ECE installation maintenance
 
 The following method is used when maintenance requires stopping the entire ECE installation.
 
-#### Shut down all ECE hosts [ece-perform-host-maintenance-entire-platform]
+### Shut down all ECE hosts [ece-perform-host-maintenance-entire-platform]
 
 This method lets you temporarily shut down all ECE hosts of the entire ECE platform, for example, for data center moves or planned power outages. It is offered as an non-guaranteed and less destructive alternative to fully rebuilding your ECE infrastructure.
 
