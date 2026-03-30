@@ -69,7 +69,7 @@ These fields are present regardless of query type. Some fields may be present on
 - `elasticsearch.parent.task.id`: The task ID of the parent task, if this request is a child of another request.
 - `elasticsearch.parent.node.id`: The node ID of the parent task, if this request is a child of another request.
 
-Using the parent task and node IDs, it is possible to correlate the log entries for queries that were initiated by other queries. 
+Using parent task and node IDs, you can correlate the log entries of queries initiated by other queries.
 
 ### Query logging specific fields
 
@@ -90,11 +90,11 @@ These fields are specific to query logging and common for all query languages.
 
 When the query is cross-cluster, the following fields are available:
 
-- `elasticsearch.querylog.clusters.total` - Indicates the total number of clusters involved in the query execution. Note that this field does not include the origin cluster if no indices from it were involved in the query.
-- `elasticsearch.querylog.clusters.remote_count` - Indicates the number of remotes – clusters that are not the origin of the query – involved in the query execution. 
-- `elasticsearch.querylog.clusters.successful` - Indicates the number of successful clusters involved in the query execution.
-- `elasticsearch.querylog.clusters.failed` - Indicates the number of failed clusters involved in the query execution. Only set if there were any failed clusters.
-- `elasticsearch.querylog.clusters.partial` - Indicates the number of partially successful clusters involved in the query execution. Only set if there were any partially successful clusters.
+- `elasticsearch.querylog.clusters.total` - Indicates the total number of clusters involved in the query execution. Note that this field does not include the local cluster if no indices from it were involved in the query.
+- `elasticsearch.querylog.clusters.remote_count` - Indicates the number of remote clusters involved in the query execution. 
+- `elasticsearch.querylog.clusters.successful` - Indicates the number of clusters involved where the query execution was successful.
+- `elasticsearch.querylog.clusters.failed` - Indicates the number of clusters involved in which the query execution failed. Only set if there were any failed clusters.
+- `elasticsearch.querylog.clusters.partial` - Indicates the number of clusters involved in which the query execution was partially successful. Only set if there were any partially successful clusters.
 - `elasticsearch.querylog.clusters.remotes` - Enumerates other clusters or projects involved in the query execution.
 - `elasticsearch.querylog.is_remote` - For `dsl` queries, indicates whether the query was initiated by another cluster.
 
