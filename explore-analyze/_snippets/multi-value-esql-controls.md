@@ -3,7 +3,7 @@ You can create controls that let users select multiple values. To do that:
 1. Add the [`MV_CONTAINS`](elasticsearch://reference/query-languages/esql/functions-operators/mv-functions/mv_contains.md) function to your query, and [create a variable](#add-variable-control) as one of its parameters. For example:
 
     ```esql
-    FROM logs-* | WHERE MV_CONTAINS(?values, field)
+    FROM logs-* | WHERE MV_CONTAINS(field, ?values)
     ```
 
     :::{note}
