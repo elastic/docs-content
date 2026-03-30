@@ -90,13 +90,15 @@ You can configure custom color ranges on the **Cell value** dimension to emphasi
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a heat map with time on the horizontal axis and response codes on the vertical axis, making it easy to spot days with elevated error rates.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "heatmap",
+  "type": "heatmap",                                                               <1>
   "title": "Error rates per day",
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
@@ -105,12 +107,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": { "x": {}, "y": {} },
   "cells": {},
   "x": {
-    "operation": "date_histogram",
+    "operation": "date_histogram",                                                 <2>
     "field": "timestamp"
   },
   "y": {
     "operation": "terms",
-    "fields": ["response.keyword"],
+    "fields": ["response.keyword"],                                                <3>
     "size": 10
   },
   "metric": {
@@ -120,6 +122,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   }
 }'
 ```
+
+1. `heatmap` renders a two-dimensional grid where cell color intensity represents the metric value.
+2. `date_histogram` on the horizontal axis creates one column per time bucket.
+3. `response.keyword` on the vertical axis creates one row per HTTP status code, so each cell shows the count for a specific status on a specific day.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -259,6 +265,8 @@ The following examples show various configuration options for building impactful
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example builds a day-by-hour traffic grid using a runtime field (`hour_of_day`) on the vertical axis to reveal peak activity patterns across the week.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -279,8 +287,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   },
   "y": {
     "operation": "terms",
-    "fields": ["hour_of_day"],
-    "size": 24
+    "fields": ["hour_of_day"],                                                     <1>
+    "size": 24                                                                     <2>
   },
   "metric": {
     "operation": "count",
@@ -289,6 +297,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   }
 }'
 ```
+
+1. `hour_of_day` is a runtime field that extracts the hour (0--23) from `@timestamp`, creating one row per hour.
+2. `size: 24` ensures all 24 hours appear on the vertical axis, giving a complete picture of daily activity.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -307,6 +318,8 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example uses two `terms` dimensions (city and product category) to create a category-vs-region grid, with cell color representing total revenue.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -323,23 +336,27 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "cells": {},
   "x": {
     "operation": "terms",
-    "fields": ["geoip.city_name"],
+    "fields": ["geoip.city_name"],                                                 <1>
     "size": 10
   },
   "y": {
     "operation": "terms",
-    "fields": ["category.keyword"],
+    "fields": ["category.keyword"],                                                <2>
     "size": 5
   },
   "metric": {
     "operation": "sum",
-    "field": "taxful_total_price",
+    "field": "taxful_total_price",                                                 <3>
     "label": "Revenue",
     "format": { "type": "number" },
     "filter": { "query": "" }
   }
 }'
 ```
+
+1. Cities on the horizontal axis create one column per location, making it easy to scan geographic performance.
+2. Product categories on the vertical axis form the rows, so each cell shows revenue for one category in one city.
+3. `sum` of `taxful_total_price` colors cells by total revenue rather than document count.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

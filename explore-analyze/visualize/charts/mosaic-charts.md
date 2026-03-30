@@ -207,13 +207,15 @@ The following examples show various configuration options for building impactful
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a mosaic chart where column widths represent OS popularity and the colored rows within each column show the proportion of success, client error, and server error responses.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "mosaic",
+  "type": "mosaic",                                                                <1>
   "title": "Response status by operating system",
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
@@ -228,13 +230,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["machine.os.keyword"],
+      "fields": ["machine.os.keyword"],                                            <2>
       "size": 5
     }
   ],
   "group_breakdown_by": [
     {
-      "operation": "filters",
+      "operation": "filters",                                                      <3>
       "filters": [
         { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success (2xx/3xx)" },
         { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client errors (4xx)" },
@@ -244,6 +246,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ]
 }'
 ```
+
+1. `mosaic` renders a grid where both column width and row height encode proportions, making it easy to compare distributions across two dimensions.
+2. `group_by` defines the horizontal axis (columns). Each OS gets a column whose width reflects its share of total traffic.
+3. `group_breakdown_by` with `filters` defines the vertical axis (rows), splitting each column into response status categories using KQL queries.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -260,6 +266,8 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses `terms` on both axes to compare product category preferences across continents, revealing how shopping behavior varies by region.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -282,19 +290,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["geoip.continent_name"],
+      "fields": ["geoip.continent_name"],                                          <1>
       "size": 5
     }
   ],
   "group_breakdown_by": [
     {
       "operation": "terms",
-      "fields": ["category.keyword"],
+      "fields": ["category.keyword"],                                              <2>
       "size": 5
     }
   ]
 }'
 ```
+
+1. `geoip.continent_name` on the horizontal axis creates one column per continent, with width proportional to order volume.
+2. `category.keyword` on the vertical axis splits each column by product category, so you can compare category proportions across regions.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

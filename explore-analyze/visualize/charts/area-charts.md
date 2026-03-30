@@ -100,6 +100,8 @@ Use stacking to show how categories contribute to a total over time.
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+Send the following request to create a stacked area chart that shows record counts broken down by agent.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -116,7 +118,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "decorations": {},
   "layers": [
     {
-      "type": "area_stacked",
+      "type": "area_stacked",                                                                          <1>
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "x": {
         "operation": "date_histogram",
@@ -129,7 +131,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           "filter": { "query": "" }
         }
       ],
-      "breakdown_by": {
+      "breakdown_by": {                                                                                <2>
         "operation": "terms",
         "fields": ["agent.keyword"],
         "size": 5
@@ -138,6 +140,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ]
 }'
 ```
+
+1. The `area_stacked` layer type renders stacked areas so each category's contribution is visible.
+2. Breaks down the count by the top 5 values of `agent.keyword`.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -164,6 +169,8 @@ You can also compute the relative change using a formula, for example:
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+Send the following request to create two area layers that compare the current average bytes against the previous week.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -180,7 +187,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "decorations": {},
   "layers": [
     {
-      "type": "area",
+      "type": "area",                                                                                  <1>
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "x": {
         "operation": "date_histogram",
@@ -197,7 +204,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       ]
     },
     {
-      "type": "area",
+      "type": "area",                                                                                  <2>
       "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
       "x": {
         "operation": "date_histogram",
@@ -208,7 +215,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           "operation": "average",
           "field": "bytes",
           "label": "Previous week",
-          "time_shift": "1w",
+          "time_shift": "1w",                                                                          <3>
           "format": { "type": "number" },
           "filter": { "query": "" }
         }
@@ -217,6 +224,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ]
 }'
 ```
+
+1. First `area` layer shows the current period average bytes.
+2. Second `area` layer provides the comparison baseline.
+3. The `time_shift` of `1w` offsets this layer by one week.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -310,53 +321,58 @@ When creating or editing a visualization, you can adjust the following settings.
    - **Vertical axis**: `records`
    - **Breakdown**: `geo.dest`
    
-   ![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
+![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
 
-   :::{dropdown} Create this chart using the API
-   :applies_to: { stack: preview 9.4, serverless: preview }
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
 
-   ```bash
-   curl -X POST "${KIBANA_URL}/api/visualizations" \
-     -H "Authorization: ApiKey ${API_KEY}" \
-     -H "kbn-xsrf: true" \
-     -H "Content-Type: application/json" \
-     -d '{
-     "type": "xy",
-     "title": "Traffic by geographic region",
-     "filters": [],
-     "query": { "query": "" },
-     "legend": { "visibility": "auto" },
-     "fitting": { "type": "none" },
-     "axis": {},
-     "decorations": {},
-     "layers": [
-       {
-         "type": "area_stacked",
-         "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-         "x": {
-           "operation": "date_histogram",
-           "field": "timestamp"
-         },
-         "y": [
-           {
-             "operation": "count",
-             "label": "Records",
-             "format": { "type": "number" },
-             "filter": { "query": "" }
-           }
-         ],
-         "breakdown_by": {
-           "operation": "terms",
-           "fields": ["geo.dest"],
-           "size": 5
-         }
-       }
-     ]
-   }'
-   ```
+Send the following request to create a stacked area chart that shows record counts broken down by geographic destination.
 
-   For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-   :::
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Traffic by geographic region",
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
+  "layers": [
+    {
+      "type": "area_stacked",                                                                          <1>
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp"
+      },
+      "y": [
+        {
+          "operation": "count",
+          "label": "Records",
+          "format": { "type": "number" },
+          "filter": { "query": "" }
+        }
+      ],
+      "breakdown_by": {                                                                                <2>
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "size": 5
+      }
+    }
+  ]
+}'
+```
+
+1. Uses `area_stacked` to show each region's contribution to the total traffic.
+2. Breaks down the count by the top 5 geographic destinations.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::
 
 **Response code over time with annotations**
 
@@ -371,56 +387,61 @@ When creating or editing a visualization, you can adjust the following settings.
   * **Stacking**: `Percentage` to show the distribution relative to the total count at each point in time.
     * **Annotation Query**: `tags:error AND tags:security`
 
-   ![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
+![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
 
-   :::{dropdown} Create this chart using the API
-   :applies_to: { stack: preview 9.4, serverless: preview }
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
 
-   ```bash
-   curl -X POST "${KIBANA_URL}/api/visualizations" \
-     -H "Authorization: ApiKey ${API_KEY}" \
-     -H "kbn-xsrf: true" \
-     -H "Content-Type: application/json" \
-     -d '{
-     "type": "xy",
-     "title": "Response code over time",
-     "filters": [],
-     "query": { "query": "" },
-     "legend": { "visibility": "auto" },
-     "fitting": { "type": "none" },
-     "axis": {},
-     "decorations": {},
-     "layers": [
-       {
-         "type": "area_percentage",
-         "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-         "x": {
-           "operation": "date_histogram",
-           "field": "timestamp"
-         },
-         "y": [
-           {
-             "operation": "count",
-             "label": "Count of records",
-             "format": { "type": "number" },
-             "filter": { "query": "" }
-           }
-         ],
-         "breakdown_by": {
-           "operation": "filters",
-           "filters": [
-             { "filter": { "query": "response.keyword >= 200 and response.keyword < 400" }, "label": "Success/Redirection" },
-             { "filter": { "query": "response.keyword >= 400 and response.keyword < 500" }, "label": "Client Error" },
-             { "filter": { "query": "response.keyword >= 500" }, "label": "Server Error" }
-           ]
-         }
-       }
-     ]
-   }'
-   ```
+Send the following request to create a percentage area chart that shows the distribution of HTTP response codes over time.
 
-   For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-   :::
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Response code over time",
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
+  "layers": [
+    {
+      "type": "area_percentage",                                                                       <1>
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp"
+      },
+      "y": [
+        {
+          "operation": "count",
+          "label": "Count of records",
+          "format": { "type": "number" },
+          "filter": { "query": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "filters",                                                                        <2>
+        "filters": [
+          { "filter": { "query": "response.keyword >= 200 and response.keyword < 400" }, "label": "Success/Redirection" },
+          { "filter": { "query": "response.keyword >= 400 and response.keyword < 500" }, "label": "Client Error" },
+          { "filter": { "query": "response.keyword >= 500" }, "label": "Server Error" }
+        ]
+      }
+    }
+  ]
+}'
+```
+
+1. The `area_percentage` layer type normalizes each timestamp to 100% to emphasize shares.
+2. Uses `filters` to create named categories based on HTTP response code ranges.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::
 
 
 

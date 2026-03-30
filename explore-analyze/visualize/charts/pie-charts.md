@@ -91,19 +91,21 @@ Donut charts are pie charts with a hollow center. The empty space can provide a 
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a pie chart sliced by the top 5 destination countries, with values shown as percentages. The donut hole size is controlled in the Lens UI style settings.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "pie",
+  "type": "pie",                                                                   <1>
   "title": "Donut chart by destination",
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
   "query": { "query": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
+  "value_display": { "mode": "percentage" },                                       <2>
   "metrics": [
     {
       "operation": "count",
@@ -115,11 +117,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["geo.dest"],
-      "size": 5
+      "size": 5                                                                    <3>
     }
   ]
 }'
 ```
+
+1. `pie` creates a pie or donut chart. The donut hole size is an appearance setting you can adjust in the Lens editor.
+2. `percentage` displays each slice's share of the total rather than its raw count.
+3. `size: 5` limits the chart to the top 5 destination countries, keeping the pie readable.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -166,6 +172,8 @@ The {{kib}} sample data sets don't include multiple comparable numeric fields. T
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example uses multiple metrics mode (no `group_by`) so each slice represents a distinct aggregation rather than values from a single field.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -179,11 +187,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "query": { "query": "" },
   "legend": { "size": "auto" },
   "value_display": { "mode": "percentage" },
-  "metrics": [
+  "metrics": [                                                                     <1>
     {
       "operation": "sum",
       "field": "bytes",
-      "label": "Bandwidth",
+      "label": "Bandwidth",                                                        <2>
       "format": { "type": "number" },
       "filter": { "query": "" }
     },
@@ -203,6 +211,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ]
 }'
 ```
+
+1. Three entries in `metrics` without a `group_by` activates multiple-metrics mode, where each metric becomes its own slice.
+2. Each `label` provides the legend text for that slice (for example, "Bandwidth", "Memory usage", "Request count").
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -236,6 +247,8 @@ The resulting chart shows the 3 most common hosts, with all remaining hosts comb
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example shows the top 3 hosts as individual slices and groups all remaining hosts into an "Other" slice using the `other_bucket` option.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -260,12 +273,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["host.keyword"],
-      "size": 3,
-      "other_bucket": { "include_documents_without_field": true }
+      "size": 3,                                                                   <1>
+      "other_bucket": { "include_documents_without_field": true }                  <2>
     }
   ]
 }'
 ```
+
+1. `size: 3` limits the chart to the top 3 hosts by count.
+2. `other_bucket` groups every remaining host into a single "Other" slice, including documents that lack the field entirely.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -402,6 +418,8 @@ The following examples show various configuration options for building impactful
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example uses formula-based metrics to count visits from specific referrer domains, producing one slice per traffic source without a `group_by` dimension.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -417,8 +435,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "value_display": { "mode": "percentage" },
   "metrics": [
     {
-      "operation": "formula",
-      "formula": "count(kql='referer : *elastic*')",
+      "operation": "formula",                                                      <1>
+      "formula": "count(kql='referer : *elastic*')",                               <2>
       "label": "Elastic website",
       "format": { "type": "number" },
       "filter": { "query": "" }
@@ -448,6 +466,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
+1. `formula` lets each metric apply its own KQL filter, creating slices that represent custom-defined categories.
+2. The `kql` parameter inside `count()` filters documents to only those whose `referer` field matches the given pattern.
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
 
@@ -464,6 +485,8 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a pie chart that sums revenue per product category from the eCommerce sample data, showing each category's share of total revenue.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -479,7 +502,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "value_display": { "mode": "percentage" },
   "metrics": [
     {
-      "operation": "sum",
+      "operation": "sum",                                                          <1>
       "field": "taxful_total_price",
       "label": "Revenue",
       "format": { "type": "number" },
@@ -489,12 +512,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["category.keyword"],
+      "fields": ["category.keyword"],                                              <2>
       "size": 6
     }
   ]
 }'
 ```
+
+1. `sum` on `taxful_total_price` sizes each slice by total revenue rather than document count.
+2. `category.keyword` splits the pie by product category, with each of the top 6 categories becoming its own slice.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -515,6 +541,8 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses the `filters` grouping operation to define custom slices based on HTTP response code ranges, rather than relying on field values directly.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -539,7 +567,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ],
   "group_by": [
     {
-      "operation": "filters",
+      "operation": "filters",                                                      <1>
       "filters": [
         { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client Error" },
         { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server Error" },
@@ -549,6 +577,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ]
 }'
 ```
+
+1. `filters` creates one slice per KQL query, letting you define arbitrary categories such as "Client Error" (4xx), "Server Error" (5xx), and "Success" (2xx/3xx).
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

@@ -106,13 +106,15 @@ For example, you could show visits per date in rows, split by the top 3 hours of
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+Send the following request to create a pivot table that shows visit counts by date, split into columns by the top 3 hours of the day.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "data_table",
+  "type": "data_table",                                                                                <1>
   "title": "Pivot table - visits by date split by hour",
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
@@ -132,13 +134,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "filter": { "query": "" }
     }
   ],
-  "split_metrics_by": [{
+  "split_metrics_by": [{                                                                               <2>
     "operation": "terms",
     "fields": ["hour_of_day"],
     "size": 3
   }]
 }'
 ```
+
+1. Sets the visualization type to `data_table`.
+2. The `split_metrics_by` dimension creates separate columns for the top 3 hours of the day, producing a pivot table layout.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -166,6 +171,8 @@ Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for formula exampl
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+Send the following request to create a table with a count column and a formula column that calculates the week-over-week change.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -186,14 +193,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ],
   "metrics": [
     {
-      "operation": "count",
+      "operation": "count",                                                                            <1>
       "label": "Orders this week",
       "format": { "type": "number" },
       "filter": { "query": "" }
     },
     {
-      "operation": "formula",
-      "formula": "count() / count(shift='1w') - 1",
+      "operation": "formula",                                                                          <2>
+      "formula": "count() / count(shift='1w') - 1",                                                   <3>
       "label": "Change from last week",
       "format": { "type": "percent", "decimals": 2 },
       "filter": { "query": "" }
@@ -201,6 +208,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ]
 }'
 ```
+
+1. First metric column counts records for the current period.
+2. Second metric uses a `formula` operation for a calculated column.
+3. The formula divides the current count by the time-shifted count and subtracts 1 to produce a percentage change.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -344,44 +355,49 @@ The following examples show various configuration options you can use for buildi
       * **Value format**: `Number`
       * **Text alignment**: `Right`
 
-    ![Table showing top pages by unique visitors](../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png "=70%")
+![Table showing top pages by unique visitors](../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png "=70%")
 
-    :::{dropdown} Create this chart using the API
-    :applies_to: { stack: preview 9.4, serverless: preview }
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
 
-    ```bash
-    curl -X POST "${KIBANA_URL}/api/visualizations" \
-      -H "Authorization: ApiKey ${API_KEY}" \
-      -H "kbn-xsrf: true" \
-      -H "Content-Type: application/json" \
-      -d '{
-      "type": "data_table",
-      "title": "Top pages by unique visitors",
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-      "filters": [],
-      "query": { "query": "" },
-      "density": { "mode": "default" },
-      "rows": [
-        {
-          "operation": "terms",
-          "fields": ["request.keyword"],
-          "size": 5
-        }
-      ],
-      "metrics": [
-        {
-          "operation": "unique_count",
-          "field": "clientip",
-          "label": "Unique visitors",
-          "format": { "type": "number" },
-          "filter": { "query": "" }
-        }
-      ]
-    }'
-    ```
+Send the following request to create a table that displays the top 5 request pages ranked by unique visitor count.
 
-    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-    :::
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Top pages by unique visitors",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "density": { "mode": "default" },
+  "rows": [
+    {
+      "operation": "terms",                                                                            <1>
+      "fields": ["request.keyword"],
+      "size": 5
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "unique_count",                                                                     <2>
+      "field": "clientip",
+      "label": "Unique visitors",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ]
+}'
+```
+
+1. Uses `terms` on `request.keyword` to create one row per top page, limited to 5.
+2. Counts unique values of `clientip` to measure distinct visitors per page.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::
 
 **Sales by date and continent (pivot table)**
 :   Create a pivot table showing customer counts across different continents over time:
@@ -392,49 +408,55 @@ The following examples show various configuration options you can use for buildi
     * **Metrics**: `customer_id` field using **Unique count** function
     * **Split metrics by**: `geoip.continent_name` field using **Top values** set to `3`
 
-    ![Table showing customers over time by continent](../../images/kibana-lens_table_over_time.png "=70%")
+![Table showing customers over time by continent](../../images/kibana-lens_table_over_time.png "=70%")
 
-    :::{dropdown} Create this chart using the API
-    :applies_to: { stack: preview 9.4, serverless: preview }
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
 
-    ```bash
-    curl -X POST "${KIBANA_URL}/api/visualizations" \
-      -H "Authorization: ApiKey ${API_KEY}" \
-      -H "kbn-xsrf: true" \
-      -H "Content-Type: application/json" \
-      -d '{
-      "type": "data_table",
-      "title": "Sales by date and continent",
-      "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
-      "filters": [],
-      "query": { "query": "" },
-      "density": { "mode": "default" },
-      "rows": [
-        {
-          "operation": "date_histogram",
-          "field": "order_date",
-          "label": "Sales per day"
-        }
-      ],
-      "metrics": [
-        {
-          "operation": "unique_count",
-          "field": "customer_id",
-          "label": "Unique customers",
-          "format": { "type": "number" },
-          "filter": { "query": "" }
-        }
-      ],
-      "split_metrics_by": [{
-        "operation": "terms",
-        "fields": ["geoip.continent_name"],
-        "size": 3
-      }]
-    }'
-    ```
+Send the following request to create a pivot table that shows unique customer counts per day, split into columns by the top 3 continents.
 
-    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-    :::
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Sales by date and continent",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "density": { "mode": "default" },
+  "rows": [
+    {
+      "operation": "date_histogram",                                                                   <1>
+      "field": "order_date",
+      "label": "Sales per day"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "unique_count",                                                                     <2>
+      "field": "customer_id",
+      "label": "Unique customers",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "split_metrics_by": [{                                                                               <3>
+    "operation": "terms",
+    "fields": ["geoip.continent_name"],
+    "size": 3
+  }]
+}'
+```
+
+1. Groups rows by `order_date` using a date histogram.
+2. Counts unique `customer_id` values as the table metric.
+3. Splits the metric into separate columns for the top 3 continents.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::
 
 **Document comparison with custom ranges**
 :   Compare metrics across custom-defined ranges:
@@ -451,46 +473,52 @@ The following examples show various configuration options you can use for buildi
     * **Additional styling**:
       * **Color by value**: Dynamic coloring to highlight ranges with higher byte transfers
 
-    :::{dropdown} Create this chart using the API
-    :applies_to: { stack: preview 9.4, serverless: preview }
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
 
-    ```bash
-    curl -X POST "${KIBANA_URL}/api/visualizations" \
-      -H "Authorization: ApiKey ${API_KEY}" \
-      -H "kbn-xsrf: true" \
-      -H "Content-Type: application/json" \
-      -d '{
-      "type": "data_table",
-      "title": "Document comparison with custom ranges",
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-      "filters": [],
-      "query": { "query": "" },
-      "density": { "mode": "default" },
-      "rows": [
-        {
-          "operation": "range",
-          "field": "bytes",
-          "ranges": [
-            { "lte": 10240 },
-            { "gt": 10240 }
-          ],
-          "label": "File size"
-        }
+Send the following request to create a table that compares total bytes transferred across custom-defined file size ranges.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Document comparison with custom ranges",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "density": { "mode": "default" },
+  "rows": [
+    {
+      "operation": "range",                                                                            <1>
+      "field": "bytes",
+      "ranges": [
+        { "lte": 10240 },                                                                             <2>
+        { "gt": 10240 }
       ],
-      "metrics": [
-        {
-          "operation": "sum",
-          "field": "bytes",
-          "label": "Total bytes transferred",
-          "format": { "type": "bytes" },
-          "filter": { "query": "" }
-        }
-      ]
-    }'
-    ```
+      "label": "File size"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "sum",                                                                              <3>
+      "field": "bytes",
+      "label": "Total bytes transferred",
+      "format": { "type": "bytes" },
+      "filter": { "query": "" }
+    }
+  ]
+}'
+```
 
-    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-    :::
+1. Uses a `range` operation to create custom row buckets from the `bytes` field.
+2. Defines two ranges: documents up to 10 KB and documents above 10 KB.
+3. Sums the `bytes` field within each range to show total bytes transferred.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::
 
 **Weekly sales with percentage change**
 :   Show week-over-week sales trends with calculated percentage changes:
@@ -507,45 +535,51 @@ The following examples show various configuration options you can use for buildi
          * **Color by value**: Dynamic (green for positive growth, red for negative)
          * **Text alignment**: `Right`
 
-    :::{dropdown} Create this chart using the API
-    :applies_to: { stack: preview 9.4, serverless: preview }
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
 
-    ```bash
-    curl -X POST "${KIBANA_URL}/api/visualizations" \
-      -H "Authorization: ApiKey ${API_KEY}" \
-      -H "kbn-xsrf: true" \
-      -H "Content-Type: application/json" \
-      -d '{
-      "type": "data_table",
-      "title": "Weekly sales with percentage change",
-      "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
-      "filters": [],
-      "query": { "query": "" },
-      "density": { "mode": "default" },
-      "rows": [
-        {
-          "operation": "date_histogram",
-          "field": "order_date",
-          "label": "Week"
-        }
-      ],
-      "metrics": [
-        {
-          "operation": "count",
-          "label": "Orders this week",
-          "format": { "type": "number" },
-          "filter": { "query": "" }
-        },
-        {
-          "operation": "formula",
-          "formula": "count() / count(shift='1w') - 1",
-          "label": "Change from last week",
-          "format": { "type": "percent", "decimals": 2 },
-          "filter": { "query": "" }
-        }
-      ]
-    }'
-    ```
+Send the following request to create a table that shows weekly order counts alongside a formula-based percentage change column.
 
-    For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-    :::
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Weekly sales with percentage change",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "density": { "mode": "default" },
+  "rows": [
+    {
+      "operation": "date_histogram",                                                                   <1>
+      "field": "order_date",
+      "label": "Week"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Orders this week",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    },
+    {
+      "operation": "formula",                                                                          <2>
+      "formula": "count() / count(shift='1w') - 1",                                                   <3>
+      "label": "Change from last week",
+      "format": { "type": "percent", "decimals": 2 },
+      "filter": { "query": "" }
+    }
+  ]
+}'
+```
+
+1. Groups rows by `order_date` with a date histogram to produce weekly buckets.
+2. Uses a `formula` metric to compute a calculated column.
+3. Divides the current week's count by the previous week's count and subtracts 1 to get the percentage change.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::

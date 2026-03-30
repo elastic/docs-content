@@ -153,13 +153,15 @@ The following examples show various configuration options for building impactful
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a tag cloud of the 30 most frequently requested URLs, where tag size reflects how often each URL was accessed.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "tag_cloud",
+  "type": "tag_cloud",                                                             <1>
   "title": "Popular request URLs",
   "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
@@ -171,11 +173,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   },
   "tag_by": {
     "operation": "terms",
-    "fields": ["request.keyword"],
-    "size": 30
+    "fields": ["request.keyword"],                                                 <2>
+    "size": 30                                                                     <3>
   }
 }'
 ```
+
+1. `tag_cloud` renders text labels with font size proportional to the metric value.
+2. `request.keyword` provides the text for each tag, showing the full URL path.
+3. `size: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -194,6 +200,8 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a tag cloud of destination city names from the flights sample data, with the most popular destinations appearing in larger text.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -206,17 +214,20 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "filters": [],
   "query": { "query": "" },
   "metric": {
-    "operation": "count",
+    "operation": "count",                                                          <1>
     "format": { "type": "number" },
     "filter": { "query": "" }
   },
   "tag_by": {
     "operation": "terms",
-    "fields": ["DestCityName"],
+    "fields": ["DestCityName"],                                                    <2>
     "size": 30
   }
 }'
 ```
+
+1. `count` sizes each tag by the number of flights to that destination. You could use `sum` or `average` on a numeric field for a different perspective (for example, total revenue per city).
+2. `DestCityName` provides human-readable city names as tag labels, making the cloud immediately meaningful.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
