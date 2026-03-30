@@ -56,7 +56,7 @@ The packages needed by this tutorial are:
 
 * [elasticsearch-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm)
 * [kibana-{{version.stack}}-x86_64.rpm](https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm)
-* [https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz)
+* [elastic-agent-{{version.stack}}-linux-x86_64.tar.gz](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz)
 
 :::{note}
 For {{agent}} and {{fleet-server}} (both of which use the elastic-agent-{{version.stack}}-linux-x86_64.tar.gz package) we recommend using TAR/ZIP packages over RPM/DEB system packages, since only the former support upgrading using {{fleet}}.
@@ -73,6 +73,18 @@ Before starting, take a moment to familiarize yourself with the {{stack}} compon
 ![Overview of the Elastic Stack components](/deploy-manage/images/stack-install-final-state.png)
 
 To learn more about the {{stack}} and how each of these components are related, refer to [An overview of the {{stack}}](/get-started/the-stack.md).
+
+The examples in this tutorial use the following host addresses:
+
+| Component | Example host name | Example IP address |
+| --- | --- | --- |
+| {{es}} node 1 | `instance-1` | `203.0.113.21` |
+| {{es}} node 2 | `instance-2` | `203.0.113.22` |
+| {{es}} node 3 | `instance-3` | `203.0.113.23` |
+| {{kib}} | `kibana-host` | `203.0.113.31` |
+| {{fleet-server}} | `fleet-server-host` | `203.0.113.41` |
+
+These are documentation-only example addresses. Replace them with the values from your environment.
 
 ## Security overview [security-overview]
 
@@ -462,7 +474,7 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
         The output should include the new node together with the existing node or nodes in the cluster, for example:
 
         ```shell
-        203.0.113.25 46 97 18 0.21 0.23 0.10 cdfhilmrstw - instance-2
+        203.0.113.22 46 97 18 0.21 0.23 0.10 cdfhilmrstw - instance-2
         203.0.113.21 31 96  1 0.04 0.03 0.01 cdfhilmrstw * instance-1
         ```
 
@@ -484,9 +496,9 @@ Once you have added all your {{es}} nodes to the cluster, you need to consolidat
 
    ```yaml
    discovery.seed_hosts:
-     - 203.0.113.84:9300
-     - 203.0.113.132:9300
-     - 203.0.113.156:9300
+     - 203.0.113.21:9300
+     - 203.0.113.22:9300
+     - 203.0.113.23:9300
    ```
 
    ::::{note}
@@ -590,7 +602,7 @@ For more details about {{kib}} configuration, refer to the [{{kib}} configuratio
 1. Uncomment the line `#server.host: localhost` and replace the default address with the host IP address that you copied. For example:
 
    ```yaml
-   server.host: 203.0.113.28 <1>
+   server.host: 203.0.113.31 <1>
    ```
    1. If you want {{kib}} to listen on all available network interfaces, you can use `0.0.0.0` instead.
 
@@ -636,13 +648,13 @@ In this section, you start {{kib}} for the first time and complete enrollment wi
     For example:
     ```text
     Kibana has not been configured.
-    Go to http://203.0.113.28:5601/?code=<code> to get started. <1>
+    Go to http://203.0.113.31:5601/?code=<code> to get started. <1>
     ```
     1. If the URL shows `0.0.0.0`, use the host IP address when connecting to {{kib}} in the next step.
 
     Make note of the verification code.
 
-1. Open a web browser to the external IP address of the {{kib}} host machine, for example: `http://<kibana-host-address>:5601`.
+1. Open a web browser to the external IP address of the {{kib}} host machine, for example: `http://203.0.113.31:5601`.
 
     It can take a minute or two for {{kib}} to start up, so refresh the page if you don't see a prompt right away.
 
@@ -722,7 +734,7 @@ Before proceeding, confirm the following prerequisites:
 
 1. Specify a name for your {{fleet-server}} host, for example `Fleet Server`.
 
-1. Specify the host URL that {{agent}}s need to use to reach the {{fleet-server}}, for example: `https://203.0.113.203:8220`. This is the {{fleet-server}} host IP address that you copied earlier.
+1. Specify the host URL that {{agent}}s need to use to reach the {{fleet-server}}, for example: `https://203.0.113.41:8220`. This is the {{fleet-server}} host IP address that you copied earlier.
 
    Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](/reference/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
 
@@ -803,7 +815,7 @@ You can install only one {{agent}} per host.
     The result should look like the following:
 
     ```shell
-    sudo ./elastic-agent install --url=https://203.0.113.203:8220 --enrollment-token=VWCobFhKd0JuUnppVYQxX0VKV5E6UmU3BGk0ck9RM2HzbWEmcS4Bc1YUUM== --insecure
+    sudo ./elastic-agent install --url=https://203.0.113.41:8220 --enrollment-token=VWCobFhKd0JuUnppVYQxX0VKV5E6UmU3BGk0ck9RM2HzbWEmcS4Bc1YUUM== --insecure
     ```
 
 1. Run the commands one-by-one in the terminal on your {{agent}} host. The commands do the following:
