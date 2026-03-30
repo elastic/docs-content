@@ -656,6 +656,7 @@ toc:
         children:
           - file: security/manage-elastic-defend/endpoints.md
           - file: security/manage-elastic-defend/policies.md
+          - hidden: security/manage-elastic-defend/elastic-endpoint-exceptions.md
           - file: security/manage-elastic-defend/trusted-applications.md
           - file: security/manage-elastic-defend/trusted-devices.md
           - file: security/manage-elastic-defend/event-filters.md
