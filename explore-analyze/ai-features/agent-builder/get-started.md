@@ -89,7 +89,7 @@ If you're not ready to add your own data, you can:
 
 ::::{step} Start a conversation
 
-The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. A default agent is available to chat with immediately.
+The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. The default `Elastic AI Agent` is ready to use immediately.
 
 Learn more in [Agent Chat](chat.md).
 
@@ -103,7 +103,7 @@ On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured m
 
 ::::{step} Begin building agents and tools
 
-Once you've tested [built-in agents](builtin-agents-reference.md) with [built-in Elastic tools](tools.md), you can begin [building your own agents](custom-agents.md#create-a-new-agent) with custom instructions and [creating your own tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to assign them.
+Once you've tested [built-in agents](builtin-agents-reference.md) with [built-in Elastic tools](tools.md), you can begin [building your own agents](custom-agents.md#create-a-new-agent) with custom instructions and [creating your own tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to assign them. You can also clone the default `Elastic AI Agent` as a starting point for a custom agent.
 
 To build agents and tools programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
 
