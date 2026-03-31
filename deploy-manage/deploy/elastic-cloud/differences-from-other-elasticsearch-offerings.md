@@ -50,7 +50,7 @@ $$$elasticsearch-differences-serverless-feature-categories$$$
 $$$elasticsearch-differences-serverless-features-replaced$$$
 $$$elasticsearch-differences-serverless-feature-planned$$$
 
-### Core platform identity and access
+### Core platform capabilities
 
 This table compares core identity, access, and platform capabilities between {{ech}} deployments and Serverless projects:
 
