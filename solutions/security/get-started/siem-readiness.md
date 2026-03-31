@@ -69,7 +69,7 @@ It checks your indices for [Elastic Common Schema (ECS)](ecs://reference/ecs-eve
 - **Incompatible fields**: The number of fields with mapping issues
 - **Affected indices**: How many indices in the category have issues
 
-Expand a category to view individual indices with their incompatible field count, the time since the last check, and their status. Click **View Data quality** to open the [Data Quality dashboard](solutions/security/dashboards/data-quality-dashboard.md) to continue your investigation and remediation process.
+Expand a category to view individual indices with their incompatible field count, the time since the last check, and their status. Click **View Data quality** to open the [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md) to continue your investigation and remediation process.
 
 :::{image} /solutions/images/security-siem-readiness-4-data-quality.png
 :alt: The SIEM Readiness page's Coverage tab's Data coverage table
