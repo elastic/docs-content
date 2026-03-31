@@ -69,6 +69,17 @@ Each monitor type also has additional configuration options that are specific to
 
 The `tcp` and `http` monitor types both support SSL/TLS and some proxy settings.
 
+### Supported SSL options for lightweight monitors [synthetics-lightweight-supported-ssl-options]
+
+For lightweight monitors managed by Synthetics, only the following `ssl` settings are supported:
+
+* `ssl.certificate_authorities`
+* `ssl.certificate`
+* `ssl.key`
+* `ssl.key_passphrase`
+* `ssl.verification_mode`
+* `ssl.supported_protocols`
+
 ### Common options [synthetics-lightweight-common-options]
 
 You can specify the following options when defining a synthetic monitor in any location. These options are the same for all monitors. Each monitor type has additional configuration options that are specific to that monitor type.
@@ -346,6 +357,28 @@ $$$monitor-private_locations$$$
 
     ::::
 
+$$$monitor-spaces$$$
+
+{applies_to}`stack: ga 9.1+` **`spaces`**
+:   Type: list of [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+
+    The [{{kib}} spaces](/deploy-manage/manage-spaces.md) in which the monitor will be visible. Monitors can be visible in multiple spaces simultaneously. Use `'*'` to make the monitor visible in all spaces. The project's default space is always included. Only applies to {{stack}} deployments; not applicable to Serverless.
+
+    **Examples**:
+
+    ```yaml
+    spaces:
+      - default
+      - team-ops
+    ```
+
+    To make the monitor visible in all spaces:
+
+    ```yaml
+    spaces:
+      - '*'
+    ```
+
 $$$monitor-fields$$$
 
 **`fields`**
@@ -451,9 +484,9 @@ $$$monitor-http-password$$$
 $$$monitor-http-ssl$$$
 
 **`ssl`**
-:   Type: [SSL](beats://reference/heartbeat/configuration-ssl.md)
+:   Type: object
 
-    The TLS/SSL connection settings for use with the HTTPS endpoint. If you don’t specify settings, the system defaults are used.
+    The TLS/SSL connection settings for use with the HTTPS endpoint. If you don’t specify settings, the system defaults are used. For supported `ssl` keys, refer to [Supported SSL options for lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-supported-ssl-options).
 
     **Example**:
 
@@ -465,7 +498,7 @@ $$$monitor-http-ssl$$$
       schedule: '@every 5s'
       ssl:
         certificate_authorities: ['/etc/ca.crt']
-        supported_protocols: ["TLSv1.0", "TLSv1.1", "TLSv1.2"]
+        supported_protocols: ["TLSv1.2", "TLSv1.3"]
     ```
 
 $$$monitor-http-headers$$$
@@ -667,7 +700,7 @@ $$$monitor-tcp-hosts$$$
 
     **Required**. The host to ping. The value can be:
 
-    * **A hostname and port, such as `localhost:12345`.** Synthetics connects to the port on the specified host. If the monitor is [configured to use SSL](beats://reference/heartbeat/configuration-ssl.md), Synthetics establishes an SSL/TLS-based connection. Otherwise, it establishes a TCP connection.
+    * **A hostname and port, such as `localhost:12345`.** Synthetics connects to the port on the specified host. If the monitor is configured to use SSL, Synthetics establishes an SSL/TLS-based connection. Otherwise, it establishes a TCP connection.
     * **A full URL using the syntax `scheme://<host>:[port]`**, where:
         * `scheme` is one of `tcp`, `plain`, `ssl` or `tls`. If `tcp` or `plain` is specified, Synthetics establishes a TCP connection even if the monitor is configured to use SSL. If `tls` or `ssl` is specified, Synthetics establishes an SSL connection. However, if the monitor is not configured to use SSL, the system defaults are used (currently not supported on Windows).
         * `host` is the hostname.
@@ -730,19 +763,19 @@ $$$monitor-tcp-proxy_use_local_resolver$$$
 $$$monitor-tcp-ssl$$$
 
 **`ssl`**
-:   Type: [SSL](beats://reference/heartbeat/configuration-ssl.md)
+:   Type: object
 
-    The TLS/SSL connection settings. If the monitor is [configured to use SSL](beats://reference/heartbeat/configuration-ssl.md), it will attempt an SSL handshake. If `check` is not configured, the monitor will only check to see if it can establish an SSL/TLS connection. This check can fail either at TCP level or during certificate validation.
+    The TLS/SSL connection settings. If the monitor is configured to use SSL, it will attempt an SSL handshake. If `check` is not configured, the monitor will only check to see if it can establish an SSL/TLS connection. This check can fail either at TCP level or during certificate validation.
+
+    For supported `ssl` keys, refer to [Supported SSL options for lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-supported-ssl-options).
 
     **Example**:
 
     ```yaml
     ssl:
       certificate_authorities: ['/etc/ca.crt']
-      supported_protocols: ["TLSv1.0", "TLSv1.1", "TLSv1.2"]
+      supported_protocols: ["TLSv1.2", "TLSv1.3"]
     ```
-
-    Also see [Configure SSL](beats://reference/heartbeat/configuration-ssl.md) for a full description of the `ssl` options.
 
 ### Data types reference [synthetics-lightweight-data-types]
 

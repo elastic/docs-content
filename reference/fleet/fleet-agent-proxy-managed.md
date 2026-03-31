@@ -19,6 +19,9 @@ This page describes where a proxy server is allowed in your deployment and how t
 
 {{fleet}} central management enables you to define your proxy servers and then configure an output or the {{fleet-server}} to be reachable through any of these proxies. This also enables you to modify the proxy server details if needed without having to re-install {{agents}}.
 
+::::{important}
+When you use a proxy, the proxy server performs DNS resolution of target hostnames ({{fleet-server}}, {{es}}, and download sources), not the {{agent}} host. Ensure that the proxy server can resolve the hostnames of all configured endpoints. For more information, refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
+::::
 :::{image} images/agent-proxy-server-managed-deployment.png
 :alt: Image showing connections between {{fleet}} managed {{agent}}
 :::

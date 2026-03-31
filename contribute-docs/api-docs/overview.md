@@ -17,7 +17,6 @@ The API docs use a different system to the main Elastic docs. Refer to [Contribu
 While the implementation details [vary significantly across teams](./workflows.md), at a high level:
 
 - We use [OpenAPI](https://spec.openapis.org/oas/latest.html) files to generate REST API documentation
-- Our API docs are hosted by [Bump.sh](https://bump.sh/)
 - The published docs live at [elastic.co/docs/api/](https://www.elastic.co/docs/api/)
 
 ## Context and evolution
@@ -28,17 +27,22 @@ This evolution seeks to elevate documentation to being a top-level citizen in th
 
 | Era | Developer tasks | Approach | Publication |
 | --- | --- | --- | --- |
-| **Yesterday (8.x and earlier)** | Code + spec + manual API docs | Manual maintenance | - Hand-written in Asciidoc <br> - Published at [elastic.co/guide](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/rest-apis.html) |
-| **Today (9.0+)** | Code + spec | Docs generated from spec |- Hosted by [Bump.sh](https://www.elastic.co/docs/api/)<br> - Different UX to other [elastic.co/docs](https://www.elastic.co/docs) pages
+| **Yesterday (8.x and earlier)** | Code + spec + manual API docs | Manual maintenance | - Published in multiple guides at [elastic.co/guide](https://www.elastic.co/guide/index.html) |
+| **Today (9.0+)** | Code + spec | Docs generated from spec |- Published at [elastic.co/docs/api/](https://www.elastic.co/docs/api/)<br> |
 
 ## High-level process
 
 All Elastic API docs follow this general pattern:
 
-:::{image} images/api-docs-general-pipeline.png
-:alt: High-level API docs workflow pipeline diagram, showing the flow from source files to OpenAPI documents and published documentation.
-:width: 490px
-:::
+```mermaid 
+flowchart TD
+    A[Source files] --> B[OpenAPI documents]
+    B --> C[Published documentation]
+    
+    style A fill:#fff2cc
+    style B fill:#e1d5e7
+    style C fill:#dae8fc
+```
 
 1. **Source files** can be:
     - TypeScript definitions with JSDoc comments (Elasticsearch)
@@ -46,7 +50,7 @@ All Elastic API docs follow this general pattern:
     - Manual YAML/JSON specifications (Logstash)
     - Generated specifications from service code (Cloud teams)
 2. **OpenAPI documents** are either generated from source files or edited manually. This is the common intermediate format regardless of origin.
-3. **Published documentation** lives at [elastic.co/docs/api/](https://www.elastic.co/docs/api/) and is hosted by Bump.sh.
+3. **Published documentation** lives at [elastic.co/docs/api/](https://www.elastic.co/docs/api/).
 
 ## Example: Elasticsearch
 
@@ -56,15 +60,28 @@ When adding a new API, Elasticsearch engineers first create a basic spec in the 
 
 The generated Schema JSON and OpenAPI documents feed into client libraries (and their docs), the Dev Tools Console, and the [Elasticsearch API reference](https://www.elastic.co/docs/api/doc/elasticsearch/) (including the [Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/)). Here's how the pipeline works:
 
-:::{image} images/es-api-docs-pipeline.png
-:alt: API docs generation pipeline diagram, showing the flow from TypeScript specifications to JSON schema, OpenAPI transformation, and HTML publishing.
-:width: 750px
-:align: center
-:::
-
-:::{important}
-The Dev Tools and Elasticsearch teams are working together to eventually merge the two specifications into the `elasticsearch` repo.
-:::
+```mermaid
+flowchart TD
+    A[TypeScript API definitions] -->|compiled| B[Schema JSON]
+    G[YAML example files] --> B
+    G -->|auto-translated| P[Programming language examples] --> B
+    B -->|converted| C1[OpenAPI for docs]
+    B -->|converted| C2[OpenAPI for Dev Tools Console]
+    H[Overlays] -->|applied| C1
+    C1 -->|published| E["HTML published by Bump.sh"]
+    B -->|generated| D[Client libraries]
+    B -->|generated| F[REST API spec]
+    
+    style A fill:#fff2cc
+    style F fill:#fff2cc
+    style G fill:#fff2cc
+    style B fill:#d5e8d4
+    style C1 fill:#e1d5e7
+    style C2 fill:#e1d5e7
+    style H fill:#fff2cc
+    style D fill:#dae8fc
+    style E fill:#dae8fc
+```
 
 ### Input sources
 

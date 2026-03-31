@@ -49,7 +49,8 @@ When restoring data from a snapshot, keep the following in mind:
 - You can only restore an existing index if it’s closed and the index in the snapshot has the same number of primary shards.
 - You can’t restore an existing open index. This includes backing indices for a data stream.
 - The restore operation automatically opens restored indices, including backing indices.
-- You can restore only a specific backing index from a data stream. However, the restore operation doesn’t add the restored backing index to any existing data stream.
+- You can restore only a specific backing index from a data stream. However, the restore operation doesn’t add the restored backing index to any existing data stream. 
+- If you need to add the restored index to a data stream, you can use the [modify data streams](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-modify-data-stream) API with the `add_backing_index` action. Proceed with caution, as adding backing indices manually can result in unexpected data stream behavior.
 
 ## Get a list of available snapshots
 
