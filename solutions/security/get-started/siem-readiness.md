@@ -12,7 +12,7 @@ products:
 
 # Assess your SIEM data posture with SIEM Readiness [siem-readiness]
 
-SIEM Readiness gives you a centralized view of your security data health across four dimensions: coverage, quality, continuity, and retention. Rather than checking multiple dashboards individually, you can use SIEM Readiness to quickly identify gaps in your SIEM configuration and take guided actions to close them.
+SIEM Readiness gives you a centralized view of your security data health across four pillars: coverage, quality, continuity, and retention. Rather than checking multiple dashboards individually, you can use SIEM Readiness to quickly identify gaps in your SIEM configuration and take guided actions to close them.
 
 You can find SIEM Readiness in the **Launchpad** section of the {{security-app}} navigation menu, alongside **Get started** and **Value report**.
 
