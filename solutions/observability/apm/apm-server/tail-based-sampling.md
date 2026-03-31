@@ -84,7 +84,7 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 
 ### TTL [sampling-tail-ttl-ref]
 
-Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases storage space requirements. Should be at least 2 * Interval (`apm-server.sampling.tail.interval`).
+Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases storage space requirements. Should be at least 2 * Interval (`apm-server.sampling.tail.interval`). If the TTL expires before a sampling decision is made, the trace event is silently dropped and never indexed.
 
 Default: `30m` (30 minutes). (duration)
 
@@ -125,7 +125,7 @@ A value of `0GB` (or equivalent) does not set a concrete limit, but rather allow
 
 If this is not desired, a concrete `GB` value can be set for the maximum amount of disk used for tail-based sampling.
 
-If the configured storage limit is insufficient, it logs "configured limit reached". When the storage limit is reached, the event will be indexed or discarded based on the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) configuration.
+If the configured storage limit is insufficient, it logs "configured limit reached". When the storage limit is reached, the event will be indexed or discarded based on the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) configuration. By default (`discard_on_write_failure: false`), the event bypasses tail-based sampling and is indexed immediately to the standard APM data streams (`traces-apm-*` for transactions and spans).
 
 Default: `0GB`. (text)
 
