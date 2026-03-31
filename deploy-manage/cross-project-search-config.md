@@ -43,7 +43,7 @@ For details about project IDs and aliases (used in search expressions), refer to
 
 Before you configure {{cps}}, review these prerequisites and best practices:
 
-- You must be an organization owner or project administrator, for both the origin project and all the projects you want to link to.
+- You must be an organization owner, or a project administrator for both the origin project and all the projects you want to link to.
 - Your origin and linked projects must meet certain [requirements](#cps-compatibility).
 - Consider the [architecture patterns](#cps-arch) and choose the right linking topology for your organization.
 
@@ -55,7 +55,7 @@ Before you configure {{cps}}, review these prerequisites and best practices:
 During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be linked from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
 ::::
 
-You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects. {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
+You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same {{ecloud}} organization. {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
 Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects). If a project you expected to link to is missing from the list, it might not be meet the requirements, or you might not have the necessary [permissions](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access) on the linked project.
 
