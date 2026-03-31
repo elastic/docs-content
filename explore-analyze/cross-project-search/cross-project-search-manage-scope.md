@@ -75,7 +75,7 @@ The header's {{cps-init}} scope selector is not available in other apps, includi
 
 ### {{cps-cap}} availability in {{elastic-sec}} apps [cps-availability-security]
 
-{{elastic-sec}} apps have limited {{cps-init}} support. Within Timeline, the **{{esql}}** tab supports `SET project_routing`. All other tabs remain scoped to the local project. Features on the **Explore** page, threat-hunting workflows, the alert details flyout, and entity store features also remain scoped to the local project.
+{{elastic-sec}} apps have limited {{cps-init}} support. Within Timeline, only the **{{esql}}** tab supports `SET project_routing`; all other Timeline tabs search the local project only. Other Security features. including the **Explore** page, threat-hunting workflows, the alert details flyout, and entity store, also remain scoped to the local project.
 
 ## Related pages
 
