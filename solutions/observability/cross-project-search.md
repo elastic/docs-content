@@ -22,11 +22,10 @@ For full details on {{cps-init}} concepts, configuration, and search syntax, ref
 
 ## {{observability}} app compatibility [obs-cps-compatibility]
 
-At technical preview, the {{cps-init}} scope selector is not available in any {{observability}} app. Most apps remain scoped to the local project. Only Rules (Custom Threshold, SLO Burn Rate) show the scope selector in read-only mode.
+The following table shows how each {{observability}} app behaves with {{cps-init}} at technical preview. The **CCS in {{ech}}** column shows the baseline cross-cluster search support in {{ech}}, which {{cps-init}} in {{serverless-short}} is intended to mirror.
 
-This differs from cross-cluster search (CCS) support in {{ech}}, where most {{observability}} apps support remote data access. {{cps-init}} in {{serverless-short}} is intended to reach CCS parity as additional apps are enabled.
-
-For the full scope selector and query-level override details for each {{observability}} app, refer to [{{cps-cap}} availability in {{observability}} apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability-observability).
+::::{include} /solutions/_snippets/cps-obs-compatibility.md
+::::
 
 :::{note}
 In {{serverless-short}}, {{observability}} apps do not expose index configuration settings the way {{ech}} does. For example, APM index settings are not available in the Serverless UI. {{cps-init}} in Serverless is configured at the project level through the Cloud UI, not within individual app settings. Refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md) for setup instructions.
@@ -38,7 +37,7 @@ The **{{cps-init}} scope** selector ({icon}`cross_project_search`) appears in th
 
 In {{observability}} apps, the scope selector is not available. This means:
 
-* {{observability}} apps operate in their default scope, scoped to the local project.
+* {{observability}} apps operate in their default scope, which varies by app (refer to [{{cps-cap}} availability in {{observability}} apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability-observability)).
 * The scope you select in platform apps like Discover does not carry over to {{observability}} apps.
 * You may notice different data volumes when switching between Discover (which shows cross-project data by default) and an {{observability}} app scoped to the local project, for the same index pattern. This is expected behavior.
 
@@ -50,11 +49,11 @@ When {{cps-init}} is enabled, Discover operates in "flat world" mode and shows d
 
 % DOCS NOTE — CONDITIONAL: Include the following subsection only if APM/Infra CPS work (observability-dev#5328, observability-dev#5374) has NOT shipped. Remove it when that work lands.
 
-**Discover to APM and Infrastructure**
+**Discover to {{product.apm}} and Infrastructure**
 
-"Open in APM" and "Open in Infra" links in the Discover document flyout may not resolve correctly for documents from linked projects. Because APM and Infrastructure are scoped to the local project, clicking a link for a remote document may fail to load the expected data. If a remote service shares the same name as a local service, the local service may open instead.
+**Open in {{product.apm}}** and **Open in Infra** links in the Discover document flyout may not resolve correctly for documents from linked projects. Because {{product.apm}} and Infrastructure are scoped to the local project, clicking a link for a remote document may fail to load the expected data. If a remote service shares the same name as a local service, the local service may open instead.
 
-This will be addressed in a future update when {{cps-init}} is enabled in APM and Infrastructure.
+A future update will address this when {{cps-init}} is enabled in APM and Infrastructure.
 
 **Discover to Streams**
 
@@ -86,7 +85,8 @@ FROM logs-* METADATA _index
 
 ## Known issues and limitations [obs-cps-known-issues]
 
-For known issues and limitations specific to {{observability}} apps, refer to [{{cps-cap}} impacts and limitations](/deploy-manage/cross-project-search-config/cps-config-impacts-and-limitations.md#obs-cps-impacts).
+::::{include} /solutions/_snippets/cps-obs-limitations.md
+::::
 
 ## What's next [obs-cps-whats-next]
 

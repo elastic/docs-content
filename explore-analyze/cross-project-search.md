@@ -180,7 +180,7 @@ For additional information, refer to the [{{product.painless}} execute API refer
 * [DELETE](TODO)
 -->
 
-## Limitations
+## Limitations [cps-limitations]
 
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
