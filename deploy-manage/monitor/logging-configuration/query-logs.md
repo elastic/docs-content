@@ -21,14 +21,14 @@ The following query types are supported:
 
 ## Enable query logging
 
-By default, query logging is turned off. To enable logging, set the `elasticsearch.activitylog.enabled` property to `true` in the `elasticsearch.yml` configuration file:
+By default, query logging is turned off. To enable logging, set the `elasticsearch.querylog.enabled` property to `true` in the `elasticsearch.yml` configuration file:
 
 ```yaml
-elasticsearch.activitylog.enabled: true
+elasticsearch.querylog.enabled: true
 ```
 Alternatively, use the [cluster settings API]({{es-apis}}operation/operation-cluster-put-settings).
 
-`dsl` type queries that query only system indices are not logged by default. To enable logging these queries, use the `elasticsearch.activitylog.search.include.system_indices` setting described in [the configuration section](#configure-query-logging).
+Queries that query only system indices are not logged by default. To enable logging these queries, use the `elasticsearch.querylog.include.system_indices` setting described in [the configuration section](#configure-query-logging).
 
 ## Finding the logs [finding-query-logs]
 
@@ -104,8 +104,8 @@ In addition to the fields listed above, each query language may include fields s
 
 ### Fields specific to Query DSL
 
-- `search.total_count`: The “total hits” value, as reported by [the search response](/solutions/search/the-search-api.md). 
-- `search.total_count_partial`: Set to `true` in case the total count does not reflect the full number of matches for some reason (like [`track_total_hits` limitation](/solutions/search/the-search-api.md#track-total-hits)). 
+- `dsl.total_count`: The “total hits” value, as reported by [the search response](/solutions/search/the-search-api.md). 
+- `dsl.total_count_partial`: Set to `true` in case the total count does not reflect the full number of matches for some reason (like [`track_total_hits` limitation](/solutions/search/the-search-api.md#track-total-hits)). 
 
 ### Fields specific to {{esql}}
 
