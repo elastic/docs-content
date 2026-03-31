@@ -113,4 +113,5 @@ You can use the {{esql}} [`TS` command](elasticsearch://reference/query-language
 * Try the [quickstart](/manage-data/data-store/data-streams/quickstart-tsds.md) for a hands-on introduction
 * [Set up a time series data stream](/manage-data/data-store/data-streams/set-up-tsds.md)
 * [Ingest data using the OpenTelemetry Protocol (OTLP)](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
+* [Ingest data using Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
 * Learn about [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to reduce storage footprint

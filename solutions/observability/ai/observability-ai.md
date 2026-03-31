@@ -12,7 +12,7 @@ Use {{observability}} built-in AI tools to enhance workflows, answer questions, 
 
 - [Agent Builder for {{observability}}](agent-builder-observability.md)
 - [AI Assistant](observability-ai-assistant.md)
-- [LLM performance matrix](llm-performance-matrix.md)
+- [LLM performance matrix](llm-performance-matrix.md): Tested LLM performance ratings for {{observability}} AI chat use cases, applicable to both AI Assistant and Agent Builder.
 
 Refer to [AI-powered features](/explore-analyze/ai-features.md) for an overview of all Elastic AI features.
 
