@@ -35,7 +35,7 @@ The Coverage pillar answers: *Are the data sources your detection rules need act
 
 #### Data rule coverage [siem-readiness-data-rule-coverage]
 
-Data rule coverage shows how many of your active detection rules have the required integrations installed. Rules that are active but missing their required data source can't run properly.
+The **Coverage** tab's **Data rule coverage** table shows how many of your active detection rules have the required integrations installed. Rules that are active but missing their required data source can't run properly.
 
 You can switch between two views:
 
@@ -50,7 +50,7 @@ You can switch between two views:
 
 #### Data coverage [siem-readiness-data-coverage]
 
-Data coverage shows which log categories are sending data to {{elastic-sec}} and which aren't. 
+The **Coverage** tab's **Data coverage** table shows which log categories are sending data to {{elastic-sec}} and which aren't. 
 
 Each category displays a coverage status (**Has data** or **Missing data**) and links to view related integrations. If a category has missing data, you can click **View integrations** to review integrations that can help close the gap.
 
@@ -103,7 +103,7 @@ It checks whether your indices comply with retention best practices based on Fed
 - **Status**: **Healthy** or **Actions required**
 - **Data streams**: The number of data streams and indices in the category
 
-Expand a category to view individual indices with their current retention periods, the recommended baseline retention, and compliance status. Click **View ILM policy** to open the relevant index lifecycle management policy and update the retention period.
+Expand a category to view individual indices with their current retention periods, the recommended baseline retention, and compliance status. Click **View ILM policies** to open the relevant index lifecycle management policy and update the retention period.
 
 :::{image} /solutions/images/security-siem-readiness-6-retention.png
 :alt: The SIEM Readiness page's Continuity tab
