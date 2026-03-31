@@ -392,6 +392,36 @@ To duplicate a conversation:
 
 The owner of a conversation can archive it by selecting **Archive** from the **Conversation actions** ({icon}`boxes_vertical`) menu. Once archived, a conversation can't be continued or edited unless it is unarchived. Unarchive a conversation by selecting **Unarchive** from the **Conversation actions** ({icon}`boxes_vertical`) menu.
 
+#### Export conversations for support cases [obs-ai-export-conversations]
+
+When you open a support case or report an issue, include conversation data from {{obs-ai-assistant}} so Elastic can review the full context.
+
+To export conversation data:
+
+1. Open an AI Assistant chat.
+2. Open the **Conversation actions** ({icon}`boxes_vertical`) menu. Conversation actions become available only after the first successful interaction with the AI Assistant.
+3. If **Export as JSON** is available, select it and save the downloaded file.
+4. If **Export as JSON** is not available, use your browser's developer tools:
+   1. Open the **Network** tab.
+   2. Refresh the chat or navigate to the conversation.
+   3. Find the request to the Observability AI Assistant conversations API (for example, a request path that includes `api/observability_ai_assistant/conversations/`).
+   4. Copy the JSON response body and save it as a `.json` file.
+
+:::{note}
+If something fails or the expected API call is missing, record the full HAR file by following the steps in [Generating a browser HAR file for Kibana troubleshooting](https://www.elastic.co/blog/generating-browser-har-file-kibana-troubleshooting).
+:::
+
+The exported JSON file can include:
+
+* Conversation messages
+* Timestamps and user metadata
+* Function calls and function responses
+* Conversation-level metadata
+
+::::{tip}
+Include the exported JSON file when you open support cases or report issues to help the support team understand what happened in your conversation.
+::::
+
 ### Use contextual prompts [obs-ai-prompts]
 
 AI Assistant contextual prompts throughout {{observability}} provide the following information:
@@ -576,6 +606,8 @@ Anonymization has the following limitations:
 
 
 ## Known issues [obs-ai-known-issues]
+
+For troubleshooting steps to capture AI Assistant conversation data for support, refer to [Export conversations for support cases](#obs-ai-export-conversations).
 
 ### Token limits [obs-ai-token-limits]
 
