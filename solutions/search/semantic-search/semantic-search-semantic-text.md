@@ -7,21 +7,27 @@ applies_to:
   serverless:
 products:
   - id: elasticsearch
+type: tutorial
+description: Learn how to set up semantic search using the semantic_text field type, from creating an index mapping to ingesting data and running queries.
 ---
 
 # Semantic search with `semantic_text` [semantic-search-semantic-text]
 
-This tutorial shows you how to use the semantic text feature to perform semantic search on your data.
+This tutorial walks you through setting up semantic search using the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type. By the end, you will be able to:
 
-Semantic text simplifies the {{infer}} workflow by providing {{infer}} at ingestion time and sensible default values automatically. You don’t need to define model related settings and parameters, or create {{infer}} ingest pipelines.
+- Create an index mapping with a `semantic_text` field
+- Ingest documents that are automatically converted to vector embeddings
+- Query your data using semantic search with both Query DSL and {{esql}}
 
-The recommended way to use [semantic search](../semantic-search.md) in the {{stack}} is following the `semantic_text` workflow. When you need more control over indexing and query settings, you can still use the complete {{infer}} workflow (refer to [this tutorial](../../../explore-analyze/elastic-inference/inference-api.md) to review the process).
+The `semantic_text` field type simplifies the {{infer}} workflow by providing {{infer}} at ingestion time with sensible defaults. You don’t need to define model-related settings and parameters, or create {{infer}} ingest pipelines.
+
+We recommend using the `semantic_text` workflow for [semantic search](../semantic-search.md) in the {{stack}}. When you need more control over indexing and query settings, you can use the complete {{infer}} workflow instead (refer to the [Inference API documentation](../../../explore-analyze/elastic-inference/inference-api.md) for details).
 
 This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), but you can use any service and model supported by the [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md).
 
-## Requirements [semantic-text-requirements]
+## Before you begin [semantic-text-requirements]
 
-- This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects. 
+- This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects.
 ::::{note}
 You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
 ::::
@@ -29,7 +35,7 @@ You can also use [EIS for self-managed clusters](/explore-analyze/elastic-infere
 
 ## Create the index mapping [semantic-text-index-mapping]
 
-The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type to index the output of the used inference endpoint.
+Create a destination index with a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. This field stores the vector embeddings that the inference endpoint generates from your input text.
 
 You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) or on your own ML-nodes. The following examples show you both scenarios.
 
@@ -83,55 +89,6 @@ PUT semantic-embeddings
 For large-scale deployments using dense vector embeddings, you can significantly reduce memory usage by configuring quantization strategies like BBQ. For advanced configuration, refer to [Optimizing vector storage](vector-storage-for-semantic-search.md).
 :::
 
-<!-- We possibly want to replace this with a programmatic _bulk API call
-
-## Load data [semantic-text-load-data]
-
-In this step, you load the data that you later use to create embeddings from it.
-
-Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
-
-Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names**, assign `id` to the first column and `content` to the second. Click **Apply**, then **Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents. -->
-
-
-<!-- Removing reindexing step
-## Reindex the data [semantic-text-reindex-data]
-
-Create the embeddings from the text by reindexing the data from the `test-data` index to the `semantic-embeddings` index. The data in the `content` field will be reindexed into the `content` semantic text field of the destination index. The reindexed data will be processed by the {{infer}} endpoint associated with the `content` semantic text field.
-
-::::{note}
-This step uses the reindex API to simulate data ingestion. If you are working with data that has already been indexed, rather than using the test-data set, reindexing is required to ensure that the data is processed by the {{infer}} endpoint and the necessary embeddings are generated.
-
-::::
-
-```console
-POST _reindex?wait_for_completion=false
-{
-  "source": {
-    "index": "test-data",
-    "size": 10 <1>
-  },
-  "dest": {
-    "index": "semantic-embeddings"
-  }
-}
-```
-
-1. The default batch size for reindexing is 1000. Reducing size to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
-
-The call returns a task ID to monitor the progress:
-
-```console
-GET _tasks/<task_id>
-```
-
-Reindexing large datasets can take a long time. You can test this workflow using only a subset of the dataset. Do this by cancelling the reindexing process, and only generating embeddings for the subset that was reindexed. The following API request will cancel the reindexing task:
-
-```console
-POST _tasks/<task_id>/_cancel
-```
-
--->
 
 ::::{note}
 If you're using web crawlers or connectors to generate indices, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you'll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling semantic search on the updated data.
@@ -139,7 +96,7 @@ If you're using web crawlers or connectors to generate indices, you have to [upd
 
 ## Ingest data [semantic-text-load-data]
 
-Now, add some data to your index. Because you mapped the `content` field as `semantic_text`, {{es}} automatically intercepts the text during ingestion, sends it to the inference endpoint, and stores the resulting vector embeddings alongside your document.
+With your index mapping in place, add some data. Because you mapped the `content` field as `semantic_text`, {{es}} automatically intercepts the text during ingestion, sends it to the {{infer}} endpoint, and stores the resulting vector embeddings alongside your document.
 
 Use the [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to ingest a few sample documents:
 
@@ -153,9 +110,11 @@ POST _bulk
 { "content": "Tune cluster performance by monitoring thread pools and refresh interval." }
 ```
 
-## Semantic search [semantic-text-semantic-search]
+The response returns `"errors": false` and an `items` array with a `"result": "created"` entry for each document. If you see errors, check that your index mapping and inference endpoint are configured correctly.
 
-With your data ingested and automatically embedded, you can instantly query it using semantic search. Choose between [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax to execute the query.
+## Run a semantic search query [semantic-text-semantic-search]
+
+With your data ingested and automatically embedded, you can query it using semantic search. Choose between [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax.
 
 ::::{tab-set}
 :group: query-type
@@ -199,14 +158,15 @@ POST /_query?format=txt
   """
 }
 ```
-1. The `METADATA _score` clause is used to return the score of each document
-2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) is used on the `content` field for standard keyword matching
-3. Sorts by descending score to display the most relevant results first
-4. Limits the results to 1000 documents
+1. The `METADATA _score` clause returns the relevance score of each document.
+2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) detects the `semantic_text` field and performs semantic search on `content`.
+3. Sorts by descending score to display the most relevant results first.
+4. Limits the results to 1000 documents.
 
 :::
 ::::
 
+Both queries return the documents ranked by semantic relevance. The documents about running and muscle soreness score highest because they are semantically closest to the query, while the document about cluster performance scores lower.
 
 ## Further examples and reading [semantic-text-further-examples]
 
