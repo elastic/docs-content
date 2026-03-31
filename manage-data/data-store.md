@@ -8,13 +8,15 @@ products:
   - id: elasticsearch
 ---
 
-# The Elasticsearch data store [elasticsearch-intro-what-is-es]
+# The {{es}} data store [elasticsearch-intro-what-is-es]
 
-[{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable document store, and vector database built on [Apache Lucene](https://lucene.apache.org/). It stores data as JSON documents, organized into _indices_. You can interact with an index using its unique name or through a logical reference such as an [alias](/manage-data/data-store/aliases.md). Each index holds a dataset with its own schema, defined by a [mapping](elasticsearch://reference/elasticsearch/mapping-reference/index.md) that specifies the fields and their types.
+[{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable document store, and vector database built on [Apache Lucene](https://lucene.apache.org/). It stores data as JSON documents, organized into _indices_. You can interact with an [index](/manage-data/data-store/index-basics.md) using its unique name or through a logical reference such as an [alias](/manage-data/data-store/aliases.md). Each index holds a dataset with its own schema, defined by a [mapping](elasticsearch://reference/elasticsearch/mapping-reference/index.md) that specifies the fields and their types.
 
 You can store many independent datasets side by side — each in its own index or [data stream](/manage-data/data-store/data-streams.md) — and search them individually or together.
 
-As your data grows, how you structure, size, and manage your indices directly affects query performance, storage costs, and operational complexity. This section covers the core storage concepts, how to configure data structure and behavior, and how to manage your indices and documents.
+As your data grows, how you structure, size, and manage your indices directly affects query performance, storage costs, and operational complexity. This section covers the core storage concepts, how to configure data structure and behavior, and how to manage your indices and documents. 
+
+For production architecture guidance, including resilience, scaling, and performance optimization, refer to [](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 :::{tip}
 You can index a document using the [Index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-index) API. For production ingestion workflows and related concepts such as pipelines, agents, and Logstash, refer to [Ingest: Bring your data to Elastic](/manage-data/ingest.md).
@@ -50,13 +52,9 @@ Work with your indices and data using the {{kib}} UI or the {{es}} REST API.
 
 ## What's next
 
-After you configure how your data is stored, you can:
+After you understand how your data is stored, explore these topics to move to practical data workflows and growth planning:
 
-* [Ingest](/manage-data/ingest.md): Set up production ingestion workflows using pipelines, agents, and Logstash.
-* [Query and filter your data](/explore-analyze/query-filter.md): Search, filter, and aggregate your data using full-text queries, ES|QL, and more.
-* [Data lifecycle](/manage-data/lifecycle.md): Plan retention, tiering, and performance strategies as your data grows.
-
-:::{admonition} Autoscaling
-:applies_to: { serverless: ga, ess:, ece:, eck: }
-Alongside lifecycle management, consider how your cluster handles growth. On {{serverless-full}}, autoscaling is fully managed and automatic. On {{ech}}, {{ece}}, and {{eck}}, you can configure autoscaling policies to adjust resources based on demand. Learn more about [autoscaling](/deploy-manage/autoscaling.md).
-:::
+* [Ingest](/manage-data/ingest.md): Explore ingestion options, from sample data and manual uploads to automated pipelines and API-driven workflows.
+* [Query and filter your data](/explore-analyze/query-filter.md): Search, filter, aggregate data, and learn about search approaches and query languages.
+* [Data lifecycle](/manage-data/lifecycle.md): Plan data retention, storage tiers, and roll over as your data grows.
+* [Scaling considerations](/deploy-manage/production-guidance/scaling-considerations.md): Learn how to evaluate workload growth and scale your deployment effectively.
