@@ -67,12 +67,15 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | **{{ml-app}} Data Visualizer** | Not available | ES\|QL |
 | **{{rules-ui}} and alerts** | Read-only | ES\|QL rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.|
 | **Streams** | Not available | ES\|QL |
-| **Timeline** | Not available | The **ES\|QL** supports `SET project_routing`.  |
 | **Vega** | Editable | Project routing in Vega specs |
 
 The header's {{cps-init}} scope selector is not available in other apps, including Transforms, Canvas, and object listing pages.
 
 [^cps-badge]: When a visualization panel uses a query-level override, it displays a **Custom CPS scope** badge on dashboards to indicate that it uses a different scope than the {{cps-init}} scope selector.
+
+### {{cps-cap}} availability in {{elastic-sec}} apps [cps-availability-security]
+
+{{elastic-sec}} apps have limited {{cps-init}} support. Within Timeline, the **{{esql}}** tab supports `SET project_routing`. All other tabs remain scoped to the local project. Features on the **Explore** page, threat-hunting workflows, the alert details flyout, and entity store features also remain scoped to the local project.
 
 ## Related pages
 
