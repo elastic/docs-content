@@ -126,7 +126,7 @@ stack: ga
 If you want to use alerting rules with {{ccs}}, you must configure privileges for {{ccs-init}} and {{kib}}. Refer to [Remote clusters](../../../deploy-manage/remote-clusters.md).
 
 
-## {{cps-cap}} scope [kibana-alerting-cps-scope]
+## {{cps-cap}} [kibana-alerting-cps]
 
 ```{applies_to}
 serverless: preview

@@ -9,5 +9,5 @@ description: Learn how detection rules work with cross-project search to query d
 
 # {{cps-cap}} and detection rules [sec-rules-cross-project-search]
 
-:::{include} _snippets/acps-sec-obs-rules.md
+:::{include} /solutions/_snippets/cps-sec-obs-rules.md
 :::
