@@ -73,6 +73,10 @@ The header's {{cps-init}} scope selector is not available in other apps, includi
 
 [^cps-badge]: When a visualization panel uses a query-level override, it displays a **Custom CPS scope** badge on dashboards to indicate that it uses a different scope than the {{cps-init}} scope selector.
 
+### {{cps-cap}} availability in {{elastic-sec}} apps [cps-availability-security]
+
+{{elastic-sec}} apps have limited {{cps-init}} support. Within Timeline, only the **{{esql}}** tab supports `SET project_routing`; all other Timeline tabs search the local project only. Other Security features. including the **Explore** page, threat-hunting workflows, the alert details flyout, and entity store, also remain scoped to the local project.
+
 ## Related pages
 
 * [{{cps-cap}} overview](/explore-analyze/cross-project-search.md)

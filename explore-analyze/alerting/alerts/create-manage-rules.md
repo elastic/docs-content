@@ -47,7 +47,7 @@ When you open a rule to create or edit it, the [{{cps-init}} scope selector](/de
 For {{esql}} rules, you can use [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in the rule query to target specific linked projects, overriding the space-level scope. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.
 
 :::{note}
-{{ml}} rules don't support {{cps}}. {{ml}} rules search data in the origin project only.
+{{ml-cap}} rules don't support {{cps}}; they search data in the origin project only. Other features also have limited or no {{cps}} support. For details, refer to [{{cps-cap}} availability by app](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
 :::
 
 ## Create and edit rules [create-edit-rules]
