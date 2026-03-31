@@ -26,7 +26,7 @@ IT ops and software reliability engineers (SREs) can use this tab to quickly fin
 ::::{tip}
 **Why is the infrastructure tab empty?**
 
-If there is no data in the Application UI’s infrastructure tab for a selected service, you can read more about why this happens and how to fix it in the [troubleshooting docs](/troubleshoot/observability/apm/common-problems.md#troubleshooting-apm-infra-data.md).
+If there is no data in the Application UI’s infrastructure tab for a selected service, you can read more about why this happens and how to fix it in the [troubleshooting docs](/troubleshoot/observability/apm/common-problems.md#troubleshooting-apm-infra-data).
 
 ::::
 
