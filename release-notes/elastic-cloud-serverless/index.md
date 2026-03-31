@@ -14,7 +14,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 ### Features and enhancements [serverless-changelog-03312026-features-enhancements]
 
 * Allows {{ecloud}} API keys to authenticate directly against {{es}} and {{kib}} APIs on {{serverless-short}} projects. By selecting **Cloud, Elasticsearch, and Kibana** API access when creating a key, a single credential can manage both organization resources and data operations such as queries, ingestion, and alerting. Refer to [](/deploy-manage/api-keys/elastic-cloud-api-keys.md) for details.
-* Allows you to restrict {{ecloud}} user access to the {{ecloud}} console only for {{serverless-short}} projects. You can elect **Cloud console** access when assigning a role to a user if they don't need to access the {{serverless-short}} project directly. When assigning roles [using the {{ecloud}} API](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations), you can pass an empty `application_roles` array to disable project-level access. Refer to [](/deploy-manage/users-roles/cloud-organization/user-roles#access) for details.
+* Allows you to restrict {{ecloud}} user access to the {{ecloud}} console only for {{serverless-short}} projects. You can elect **Cloud console** access when assigning a role to a user if they don't need to access the {{serverless-short}} project directly. When assigning roles [using the {{ecloud}} API](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations), you can pass an empty `application_roles` array to disable project-level access. Refer to [](/deploy-manage/users-roles/cloud-organization/user-roles.md#access) for details.
 
 ## March 23, 2026 [serverless-changelog-03232026]
 
