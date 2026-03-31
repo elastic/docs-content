@@ -125,7 +125,7 @@ In addition to the fields listed above, each query language may include fields s
   ],
   "elasticsearch.querylog.query": "{\"size\":10,\"query\":{\"match_all\":{\"boost\":1.0}}}",
   "elasticsearch.querylog.result_count": 3,
-  "elasticsearch.querylog.search.total_count": 3,
+  "elasticsearch.querylog.dsl.total_count": 3,
   "elasticsearch.querylog.shards.successful": 1,
   "elasticsearch.querylog.took": 2465042,
   "elasticsearch.querylog.took_millis": 2,
