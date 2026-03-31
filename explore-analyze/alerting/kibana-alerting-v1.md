@@ -10,9 +10,10 @@ products:
   - id: kibana
   - id: cloud-serverless
   - id: cloud-hosted
+description: "Overview of Kibana alerting v1 — define rules with conditions, schedules, and actions to detect issues and send notifications through built-in connectors."
 ---
 
-# Alerts
+# Kibana alerting v1 [alerting-overview-v1]
 
 ## {{rules-ui}} [rules]
 
@@ -83,7 +84,7 @@ If you are not using alert summaries, actions are triggered per alert and a rule
 * Minute 2: X123 and Y456 > 0.9. *Two emails* are sent, one for X123 and one for Y456.
 * Minute 3: X123, Y456, Z789 > 0.9. *Three emails* are sent, one for each of X123, Y456, Z789.
 
-In this example, three emails are sent for server X123 in the span of 3 minutes for the same rule. Often, it’s desirable to suppress these re-notifications. If you set the action frequency to `On custom action intervals` with an interval of 5 minutes, you reduce noise by getting emails only every 5 minutes for servers that continue to exceed the threshold:
+In this example, three emails are sent for server X123 in the span of 3 minutes for the same rule. Often, it's desirable to suppress these re-notifications. If you set the action frequency to `On custom action intervals` with an interval of 5 minutes, you reduce noise by getting emails only every 5 minutes for servers that continue to exceed the threshold:
 
 * Minute 1: server X123 > 0.9. *One email* will be sent for server X123.
 * Minute 2: X123 and Y456 > 0.9. *One email* will be sent for Y456.
@@ -102,7 +103,7 @@ You can pass rule values to an action at the time a condition is detected. To vi
 :screenshot:
 :::
 
-For more information about common action variables, refer to [Rule actions variables](alerts/rule-action-variables.md)
+For more information about common action variables, refer to [Rule action variables](kibana-alerting-v1/rule-action-variables-v1.md)
 
 ### Alerts [rules-alerts]
 
@@ -119,7 +120,7 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 :screenshot:
 :::
 
-1. Any time a rule’s conditions are met, an alert is created. This example checks for servers with average CPU > 0.9. Three servers meet the condition, so three alerts are created.
+1. Any time a rule's conditions are met, an alert is created. This example checks for servers with average CPU > 0.9. Three servers meet the condition, so three alerts are created.
 2. Alerts create actions according to the action frequency, as long as they are not muted or throttled. When actions are created, its properties are filled with actual values. In this example, three actions are created when the threshold is met, and the template string `{{server}}` is replaced with the appropriate server name for each alert.
 3. {{kib}} runs the actions, sending notifications by using a third party integration like an email service.
 4. If the third party integration has connection parameters or credentials, {{kib}} fetches these from the appropriate connector.

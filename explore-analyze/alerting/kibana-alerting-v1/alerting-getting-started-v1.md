@@ -16,14 +16,14 @@ products:
 
 # Getting started with alerting [alerting-getting-started]
 
-Alerting enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](rule-types.md#stack-rules) for you to use.
+Alerting enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting-v1.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](rule-types-v1.md#stack-rules) for you to use.
 
 :::{image} /explore-analyze/images/kibana-alerting-overview.png
 :alt: {{rules-ui}} UI
 :::
 
 ::::{important}
-To make sure you can access alerting and actions, see the [setup and prerequisites](alerting-setup.md#alerting-prerequisites) section.
+To make sure you can access alerting and actions, see the [setup and prerequisites](alerting-setup-v1.md#alerting-prerequisites) section.
 
 ::::
 
@@ -31,7 +31,7 @@ Alerting works by running checks on a schedule to detect conditions defined by a
 
 ## Rules [_rules]
 
-A rule specifies a background task that runs on the {{kib}} server to check for specific conditions. {{kib}} provides two types of rules: stack rules that are built into {{kib}} and the rules that are registered by {{kib}} apps. For more information, refer to [*Rule types*](rule-types.md).
+A rule specifies a background task that runs on the {{kib}} server to check for specific conditions. {{kib}} provides two types of rules: stack rules that are built into {{kib}} and the rules that are registered by {{kib}} apps. For more information, refer to [*Rule types*](rule-types-v1.md).
 
 A rule consists of three main parts:
 
@@ -57,9 +57,9 @@ Under the hood, {{kib}} rules detect conditions by running a JavaScript function
 
 These conditions are packaged and exposed as *rule types*. A rule type hides the underlying details of the condition, and exposes a set of parameters to control the details of the conditions to detect.
 
-For example, an [index threshold rule type](rule-type-index-threshold.md) lets you specify the index to query, an aggregation field, and a time window, but the details of the underlying {{es}} query are hidden.
+For example, an [index threshold rule type](rule-type-index-threshold-v1.md) lets you specify the index to query, an aggregation field, and a time window, but the details of the underlying {{es}} query are hidden.
 
-See [*Rule types*](rule-types.md) for the rules provided by {{kib}} and how they express their conditions.
+See [*Rule types*](rule-types-v1.md) for the rules provided by {{kib}} and how they express their conditions.
 
 ### Schedule [alerting-concepts-scheduling]
 

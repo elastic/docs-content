@@ -11,7 +11,7 @@ products:
 
 # View and manage alerts in {{kib}} [view-alerts]
 
-When the conditions of a rule are met, it creates an alert. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [Alerting](../alerts.md).
+When the conditions of a rule are met, it creates an alert. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [Alerting](../kibana-alerting-v1.md).
 
 Manage alerts from the following places:
 
@@ -26,7 +26,7 @@ Manage alerts from the following places:
 :::
 
 ::::{note}
-You must have the appropriate {{kib}} {{alert-features}} and index privileges to view alerts. Refer to [Alerting security requirements](alerting-setup.md#alerting-security).
+You must have the appropriate {{kib}} {{alert-features}} and index privileges to view alerts. Refer to [Alerting security requirements](alerting-setup-v1.md#alerting-security).
 
 ::::
 
@@ -51,21 +51,21 @@ Alternatively, view those alerts in the [{{security-app}}](../../../solutions/se
 
 To get more information about a specific alert, click the action menu icon {icon}`boxes_vertical` and select **View alert details** in either **{{stack-manage-app}} > Alerts** or **{{rules-ui}}**. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, there is information such as the expected and actual threshold values and a summarized reason for the alert.
 
-If an alert is affected by a maintenance window, the alert details include its identifier. For more information about their impact on alert notifications, refer to [Maintenance windows](maintenance-windows.md).
+If an alert is affected by a maintenance window, the alert details include its identifier. For more information about their impact on alert notifications, refer to [Maintenance windows](maintenance-windows-v1.md).
 
 ## Alert statuses [alert-status]
 
 There are four common alert statuses:
 
 `active`
-:   The conditions for the rule are met. If the rule has [actions](create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. 
+:   The conditions for the rule are met. If the rule has [actions](create-manage-rules-v1.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. 
 
 `flapping`
 
-:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they are suppressed. Refer to [Alert flapping](create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
+:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they are suppressed. Refer to [Alert flapping](create-manage-rules-v1.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
 
 `recovered`
-:   The conditions for the rule are no longer met. If the rule has [recovery actions](create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
+:   The conditions for the rule are no longer met. If the rule has [recovery actions](create-manage-rules-v1.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
 
 
     An active alert changes to recovered if the conditions for the rule that generated it are no longer met. 
@@ -102,7 +102,7 @@ You can only mute individual alerts. To mute an alert, find the **Alerts** manag
 
 To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
 
-To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
+To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules-v1.md#controlling-rules).
 ::::
 
 ## Apply and filter alert tags [tag-alerts]

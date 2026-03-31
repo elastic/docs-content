@@ -432,7 +432,7 @@ You've completed the core workflow, from sample data to a shareable dashboard. H
 : The sample web logs data includes `geo.src` and `geo.dest` fields. [Maps](visualize/maps.md) lets you visualize this data on interactive maps and add them to dashboards.
 
 **Set up alerts**
-: Don't wait for problems to show up on a dashboard. [Create alerting rules](alerting/alerts/alerting-getting-started.md) to get notified when your data crosses a threshold.
+: Don't wait for problems to show up on a dashboard. [Create alerting rules](alerting/kibana-alerting-v1/alerting-getting-started-v1.md) to get notified when your data crosses a threshold.
 
 **Try machine learning**
 : Use {{ml}} to [detect anomalies](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md) in time-series data, forecast trends, or categorize log messages. The sample data sets include pre-configured {{anomaly-jobs}} you can experiment with.

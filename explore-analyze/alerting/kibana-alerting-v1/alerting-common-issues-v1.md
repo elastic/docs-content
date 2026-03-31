@@ -39,7 +39,7 @@ Actions run long after the status of a rule changes, sending a notification of t
 
 Rules and actions run as background tasks by each {{kib}} instance at a default rate of ten tasks every three seconds. When diagnosing issues related to alerting, focus on the tasks that begin with `alerting:` and `actions:`.
 
-Alerting tasks always begin with `alerting:`. For example, the `alerting:.index-threshold` tasks back the [index threshold stack rule](rule-type-index-threshold.md). Action tasks always begin with `actions:`. For example, the `actions:.index` tasks back the [index action](kibana://reference/connectors-kibana/index-action-type.md).
+Alerting tasks always begin with `alerting:`. For example, the `alerting:.index-threshold` tasks back the [index threshold stack rule](rule-type-index-threshold-v1.md). Action tasks always begin with `actions:`. For example, the `actions:.index` tasks back the [index action](kibana://reference/connectors-kibana/index-action-type.md).
 
 For more details on monitoring and diagnosing tasks in Task Manager, refer to [Health monitoring](../../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md).
 
@@ -72,7 +72,7 @@ By default, rules have a `5m` timeout. Rules that run longer than this timeout a
 [2022-03-28T13:14:04.062-04:00][WARN ][plugins.taskManager] Cancelling task alerting:.index-threshold "a6ea0070-aec0-11ec-9985-dd576a3fe205" as it expired at 2022-03-28T17:14:03.980Z after running for 05m 10s (with timeout set at 5m).
 ```
 
-and in the [details page](create-manage-rules.md#rule-details):
+and in the [details page](create-manage-rules-v1.md#rule-details):
 
 :::{image} /explore-analyze/images/kibana-rule-details-timeout-error.png
 :alt: Rule details page with timeout error
@@ -81,7 +81,7 @@ and in the [details page](create-manage-rules.md#rule-details):
 
 If you want your rules to run longer, update the `xpack.alerting.rules.run.timeout` configuration in your [Alerting settings](kibana://reference/configuration-reference/alerting-settings.md#alert-settings). You can also target a specific rule type by using `xpack.alerting.rules.run.ruleTypeOverrides`.
 
-Rules that consistently run longer than their [check interval](create-manage-rules.md#create-edit-rules) may produce unexpected results. If the average run duration, visible on the [details page](create-manage-rules.md#rule-details), is greater than the check interval, consider increasing the check interval.
+Rules that consistently run longer than their [check interval](create-manage-rules-v1.md#create-edit-rules) may produce unexpected results. If the average run duration, visible on the [details page](create-manage-rules-v1.md#rule-details), is greater than the check interval, consider increasing the check interval.
 
 To get all long-running rules, you can query for a list of rule ids, bucketed by their run times:
 
@@ -262,4 +262,4 @@ Alerting rules that were created or edited in 8.2 stop running after you upgrade
 
 **Solution**:
 
-Upgrade to 8.3.2 or later releases to avoid the problem. To fix failing rules, go to **{{stack-manage-app}} > {{rules-ui}}** and multi-select the rules. Choose **Manage rules > Update API Keys** to generate new API keys. For more details about API key authorization, refer to [API keys](alerting-setup.md#alerting-authorization).
+Upgrade to 8.3.2 or later releases to avoid the problem. To fix failing rules, go to **{{stack-manage-app}} > {{rules-ui}}** and multi-select the rules. Choose **Manage rules > Update API Keys** to generate new API keys. For more details about API key authorization, refer to [API keys](alerting-setup-v1.md#alerting-authorization).

@@ -11,7 +11,7 @@ products:
 
 # Create and manage alerting rules with {{kib}} [create-and-manage-rules]
 
-The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
+The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting-v1.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
 
 You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rules** in {{kib}} or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -24,7 +24,7 @@ You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rul
 * Drill down to [rule details](#rule-details)
 * Configure rule settings
 
-For more information on alerting concepts and the types of rules and connectors available, go to [Alerting](../alerts.md).
+For more information on alerting concepts and the types of rules and connectors available, go to [Alerting](../kibana-alerting-v1.md).
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-alerting-rules
@@ -32,7 +32,7 @@ For more information on alerting concepts and the types of rules and connectors 
 
 ## Required permissions [_required_permissions]
 
-Access to rules is granted based on your {{alert-features}} privileges. For more information, go to [Security](alerting-setup.md#alerting-security).
+Access to rules is granted based on your {{alert-features}} privileges. For more information, go to [Security](alerting-setup-v1.md#alerting-security).
 
 ## Create and edit rules [create-edit-rules]
 
@@ -57,11 +57,11 @@ Each rule type provides its own way of defining the conditions to detect, but an
 
 All rules must have a check interval, which defines how often to evaluate the rule conditions. Checks are queued; they run as close to the defined value as capacity allows.
 
-For details on what types of rules are available and how to configure them, refer to [*Rule types*](rule-types.md).
+For details on what types of rules are available and how to configure them, refer to [*Rule types*](rule-types-v1.md).
 
 ### Alert flapping [defining-rules-flapping-details]
 
-You can modify the criteria for changing an alert's status to [`flapping`](view-alerts.md#alert-status) by configuring the **Alert flapping detection** settings, which are turned on by default. When configuring flapping settings, you must set a look back window and threshold for alert status changes. For example, you can specify that alerts with at least 6 status changes in the last 10 runs are `flapping`.   
+You can modify the criteria for changing an alert's status to [`flapping`](view-alerts-v1.md#alert-status) by configuring the **Alert flapping detection** settings, which are turned on by default. When configuring flapping settings, you must set a look back window and threshold for alert status changes. For example, you can specify that alerts with at least 6 status changes in the last 10 runs are `flapping`.   
 
 {applies_to}`stack: ga 9.3+` You can modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (find the **Rules** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)), click **Settings**, then go to the **Alert flapping detection** settings.
 
@@ -125,7 +125,7 @@ You can pass rule values to an action at the time a condition is detected. To vi
 :screenshot:
 :::
 
-For more information about common action variables, refer to [*Rule action variables*](rule-action-variables.md).
+For more information about common action variables, refer to [*Rule action variables*](rule-action-variables-v1.md).
 
 ## Snooze and disable rules [controlling-rules]
 
@@ -141,7 +141,7 @@ When you snooze a rule, the rule checks continue to run on a schedule but alerts
 
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
-{applies_to}`stack: preview` {applies_to}`serverless: preview` To temporarily suppress notifications for rules, you can also create a [maintenance window](maintenance-windows.md).
+{applies_to}`stack: preview` {applies_to}`serverless: preview` To temporarily suppress notifications for rules, you can also create a [maintenance window](maintenance-windows-v1.md).
 
 ## View rule details [rule-details]
 
@@ -163,7 +163,7 @@ Click the rule name to access a rule details page:
 :screenshot:
 :::
 
-In this example, the rule detects when a site serves more than a threshold number of bytes in a 24 hour period. Four sites are above the threshold. These are called alerts - occurrences of the condition being detected - and the alert name, status, time of detection, and duration of the condition are shown in this view. Alerts come and go from the list depending on whether the rule conditions are met. For more information about alerts, go to [*View alerts*](view-alerts.md).
+In this example, the rule detects when a site serves more than a threshold number of bytes in a 24 hour period. Four sites are above the threshold. These are called alerts - occurrences of the condition being detected - and the alert name, status, time of detection, and duration of the condition are shown in this view. Alerts come and go from the list depending on whether the rule conditions are met. For more information about alerts, go to [*View alerts*](view-alerts-v1.md).
 
 If there are rule actions that failed to run successfully, you can see the details on the **History** tab. In the **Message** column, click the warning or expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") or click the number in the **Errored actions** column to open the **Errored Actions** panel. In this example, the action failed because the [`xpack.actions.email.domain_allowlist`](kibana://reference/configuration-reference/alerting-settings.md#action-config-email-domain-allowlist) setting was updated and the action’s email recipient is no longer included in the allowlist:
 

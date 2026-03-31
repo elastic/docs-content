@@ -29,7 +29,7 @@ The {{es}} platform provides tools to share insights, get notified about importa
 
 ## Get notified when it matters with alerting
 
-[Alerting](alerting.md) monitors your {{es}} data continuously and notifies you when specific conditions are met, so you don't have to watch dashboards around the clock.
+[Alerting](alerting-overview.md) monitors your {{es}} data continuously and notifies you when specific conditions are met, so you don't have to watch dashboards around the clock.
 
 :::{image} /explore-analyze/images/kibana-create-threshold-alert-created.png
 :alt: Creating a threshold alert rule in Kibana
@@ -48,7 +48,7 @@ Elastic solutions extend this foundation with domain-specific rules. Security de
 
 Alerts can also trigger [workflows](/explore-analyze/workflows.md) to automate multi-step responses, such as enriching an alert with context, creating a case, or notifying the on-call team.
 
-[Learn more about alerting →](alerting.md)
+[Learn more about alerting →](alerting-overview.md)
 
 ## Track and coordinate response with cases
 
@@ -81,5 +81,5 @@ For more complex scenarios, [workflows](/explore-analyze/workflows.md) can autom
 ## Next steps
 
 - **[Automatically generate reports](report-and-share/automating-report-generation.md)**: Set up recurring report delivery for your dashboards.
-- **[Getting started with alerting](alerting/alerts/alerting-getting-started.md)**: Create your first alert rule and configure notification channels.
+- **[Getting started with alerting](alerting/kibana-alerting-v1/alerting-getting-started-v1.md)**: Create your first alert rule and configure notification channels.
 - **[Create a case](cases/create-cases.md)**: Start tracking an incident and attach relevant alerts and evidence.
