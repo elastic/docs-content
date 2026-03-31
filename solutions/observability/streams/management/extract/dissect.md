@@ -61,3 +61,20 @@ To add a generated dissect pattern:
 
 :::{include} ../../../../_snippets/streams-suggestions.md
 :::
+
+## YAML reference [streams-dissect-yaml-reference]
+
+In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the dissect processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `from` | string | Yes | Source field to parse. |
+| `pattern` | string | Yes | Dissect pattern with `%{field}` placeholders. |
+| `append_separator` | string | No | Separator used when concatenating target fields. |
+| `ignore_missing` | boolean | No | When `true`, skip this processor if the source field is missing. |
+
+```yaml
+- action: dissect
+  from: body.message
+  pattern: "%{attributes.timestamp} %{attributes.level} %{attributes.message}"
+```

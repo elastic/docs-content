@@ -22,22 +22,12 @@ navigation_title: Create and manage rules
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use.
 
+::::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
 
-## {{cps-cap}} scope for rules [observability-cps-scope-for-rules]
-```{applies_to}
-serverless: preview
-stack: unavailable
-```
+All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** > **Alerts and insights** > **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
+::::
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), alerting rules query data across linked projects based on the **space-level {{cps}} scope**. You cannot set a {{cps}} scope on individual rules.
-
-When you open a rule to create or edit it, the [{{cps-init}} scope selector](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-search-scope) in the header shows the current {{cps}} scope but is read-only. To change which projects rules query, update the [{{cps}} scope configured for the space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
-
-For {{esql}} rules, you can use [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in the rule query to target specific linked projects, overriding the space-level scope. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.
-
-:::{note}
-{{ml-cap}} rules don't support {{cps}}. {{ml-cap}} rules search data in the origin project only.
-:::
 
 ## Observability rules [observability-create-manage-rules-observability-rules]
 
@@ -143,3 +133,13 @@ You can modify the criteria for changing an alert's status to [flapping state](v
 {applies_to}`stack: ga 9.3+` You can modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (find the **Rules** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)), click **Settings**, then go to the **Alert flapping detection** settings.
 
 {applies_to}`stack: ga 9.0-9.2` You can only modify global flapping settings for your entire {{kib}} space or {{serverless-short}} project.
+
+## {{cps-cap}} scope for rules [observability-cps-scope-for-rules]
+
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+:::{include} /solutions/_snippets/cps-sec-obs-rules.md
+:::

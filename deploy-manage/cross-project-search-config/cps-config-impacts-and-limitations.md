@@ -15,18 +15,16 @@ For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cr
 
 ## Feature impacts [cps-feature-impacts]
 
-% TODO billing: {{cps-init}} generates network egress when the origin project queries linked projects. Data transfer fees may apply, especially for cross-region or cross-cloud-provider queries.
-% TODO link to billing docs (D3B) when available. Exact billing SKU may still be TBD.
+% TODO billing, subscriptions, licensing
+% TODO compare to alerting impacts doc
 
-- **Alerting:** By default, alerting rules in the origin project run against the **combined dataset** of the origin and all linked projects. Alerting rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing alerting rules on data projects are not affected.
-
-% TODO link to alerting impacts doc when available
+- **Alerts:** By default, rules in the origin project run against the **combined dataset** of the origin and all linked projects. Rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing rules on data projects are not affected. Make sure to also consider the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual rules.
 
 - **Dashboards and visualizations:** Existing dashboards and visualizations in the origin project will query all linked projects by default. To control this, set the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual dashboard panels.
 
 - **User permissions:** {{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles will see different results from the same query. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access).
 
-- **{{product.painless}} scripting:** The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-execute) does not search across linked projects. It resolves index names against the origin project only. You can target a linked project by prefixing the index with the project alias (for example, `projectAlias:myindex`).
+- **{{product.painless}} scripting:** The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) does not search across linked projects. It resolves index names against the origin project only. You can target a linked project by prefixing the index with the project alias (for example, `projectAlias:myindex`).
 
 ## Limitations [cps-limitations]
 

@@ -46,7 +46,7 @@ Project linking is not bidirectional. Searches initiated from a linked project d
 
 You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md).
 
-### Project ID and aliases
+### Project IDs and aliases
 
 Each project has a unique project ID and a project alias.
 The project alias is derived from the project name and can be modified.
@@ -110,7 +110,6 @@ In {{cps-init}}, access to a project's data is determined by the [roles](/deploy
 ::::{note}
 {{cps-cap}} is not available when performing programmatic searches using {{es}} API keys, since they're project-scoped and they return results from the local project only.
 ::::
-<!-- Link to universal API keys. -->
 
 Access control operates in two stages:
 
@@ -127,8 +126,6 @@ If you run `GET logs/_search`:
 
 * documents from the `logs` index in project 1 are returned
 * the `logs` index in project 2 is not accessible and is excluded from the results
-
-
 
 ## Supported APIs [cps-supported-apis]
 
@@ -164,21 +161,17 @@ When testing scripts with the execute API in a {{cps}} environment:
 
 For additional information, refer to the [{{product.painless}} execute API reference](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md).
 
-<!--
 ### {{cps-cap}} specific APIs
 
 **Project routing**: `_project_routing`
 
-* [PUT](TODO)
-* [GET](TODO)
-* [DELETE](TODO)
+* [Create or update project routing expressions](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-create-many-routing)
+* [Get a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-get-routing)
+* [Delete a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-delete-routing)
 
 **Project tags**: `_project/tags`
 
-* [PUT](TODO)
-* [GET](TODO)
-* [DELETE](TODO)
--->
+* [Get tags](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags)
 
 ## Limitations [cps-limitations]
 

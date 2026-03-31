@@ -15,6 +15,13 @@ The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of 
 
 You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rules** in {{kib}} or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+::::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+
+All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** > **Alerts and insights** > **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
+::::
+
+
 ![Rules page navigation](/explore-analyze/images/kibana-stack-management-rules.png "")
 
 **{{rules-ui}}** provides a central place to:
@@ -47,7 +54,7 @@ When you open a rule to create or edit it, the [{{cps-init}} scope selector](/de
 For {{esql}} rules, you can use [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in the rule query to target specific linked projects, overriding the space-level scope. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.
 
 :::{note}
-{{ml}} rules don't support {{cps}}. {{ml}} rules search data in the origin project only.
+{{ml-cap}} rules don't support {{cps}}; they search data in the origin project only. Other features also have limited or no {{cps}} support. For details, refer to [{{cps-cap}} availability by app](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
 :::
 
 ## Create and edit rules [create-edit-rules]

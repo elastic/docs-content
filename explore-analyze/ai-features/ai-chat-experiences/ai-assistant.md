@@ -40,6 +40,8 @@ To learn more about configuring LLM connectors, refer to:
 
 - [Enable LLM access](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
 
+If {{kib}} cannot reach Elastic's public artifact URL for product documentation (common in air-gapped deployments), mirror the knowledge base artifacts to infrastructure {{kib}} can access. Refer to [Host a knowledge base artifact repo for AI Assistant](ai-assistant-host-doc-artifacts.md) for the full procedure.
+
 ## Prompt best practices [rag-for-esql]
 Elastic AI Assistant allows you to take full advantage of the Elastic platform to improve your operations. It can help you write an ES|QL query for a particular use case, or answer general questions about how to use the platform. Its ability to assist you depends on the specificity and detail of your questions. The more context and detail you provide, the more tailored and useful its responses will be.
 
