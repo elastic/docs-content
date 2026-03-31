@@ -1,4 +1,4 @@
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), alerting rules query data across linked projects based on the **space-level {{cps}} scope**. You cannot set a {{cps}} scope on individual rules.
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), rules query data across linked projects based on the **space-level {{cps}} scope**. You cannot set a {{cps}} scope on individual rules.
 
 When you open a rule to create or edit it, the [{{cps-init}} scope selector](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-search-scope) in the header shows the current {{cps}} scope but is read-only. To change which projects rules query, update the [{{cps}} scope configured for the space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
 
