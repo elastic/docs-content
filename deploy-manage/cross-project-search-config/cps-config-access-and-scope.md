@@ -84,7 +84,7 @@ Space settings are managed in {{kib}}.
 % (not yet) - **Specific projects:** Select individual linked projects to include in the default scope.
 
 ::::{note}
-The default {{cps}} scope is a space setting, not an access control. You can also [manage user access](#manage-user-access).
+The default {{cps}} scope is a space setting, not an access control. Users can still set the scope at the query level. You can also [manage user access](#manage-user-access).
 ::::
 
 ### How {{cps-init}} scope works in {{kib}}

@@ -46,7 +46,7 @@ Project linking is not bidirectional. Searches initiated from a linked project d
 
 You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md).
 
-### Project ID and aliases
+### Project IDs and aliases
 
 Each project has a unique project ID and a project alias.
 The project alias is derived from the project name and can be modified.
