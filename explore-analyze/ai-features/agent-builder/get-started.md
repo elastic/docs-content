@@ -82,17 +82,25 @@ To learn about required privileges for {{agent-builder}}, refer to [Permissions 
 
 ::::{step} Ingest data into Elasticsearch
 
-Before you begin with agents, you need some data in {{es}}. Otherwise, you will be chatting to the underlying LLM without any retrieval-augmented context.
+If you already have data in {{es}}, skip ahead to [start a conversation](#start-a-conversation).
 
-To learn about adding data for search use cases, go to [](/solutions/search/ingest-for-search.md).
-For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
+If you need to add data first, choose the path that fits:
 
-:::{tip}
-If you're not ready to add your own data, you can:
-- From the {{kib}} home page, select **Add data** to upload a file, load [sample data](/manage-data/ingest/sample-data.md), or create an empty index.
-- Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-).  (This requires your [{{es}} URL and an API key](/solutions/elasticsearch-solution-project/search-connection-details.md)).
-- Follow the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md), which includes sample book data and walks you through creating custom tools and agents programmatically.
-:::
+### Use sample data
+
+If you're not ready to add your own data, you can:
+
+- Load [sample data](/manage-data/ingest/sample-data.md) in {{kib}}.
+- Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-). (This requires your [{{es}} URL and an API key](/solutions/elasticsearch-solution-project/search-connection-details.md)).
+- Follow the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md), which includes sample book data.
+
+### Bring your own data
+
+If you have data you want agents to work with:
+
+- [Upload a file](/manage-data/ingest/upload-data-files.md) through {{kib}}.
+- For search-specific guidance, refer to [](/solutions/search/ingest-for-search.md).
+- For a broader overview, refer to [](/manage-data/ingest.md).
 
 ::::
 
