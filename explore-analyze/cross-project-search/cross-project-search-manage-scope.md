@@ -77,18 +77,8 @@ The header's {{cps-init}} scope selector is not available in other apps, includi
 
 {{observability}} apps have limited {{cps-init}} support at technical preview. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the local project.
 
-| {{observability}} app | {{cps-init}} scope selector | Query-level overrides |
-| --- | --- | --- |
-| **APM** (Service Inventory, Traces, Dependencies) | Not available | None |
-| **Infrastructure** (Inventory, Hosts) | Not available | None |
-| **Observability AI Assistant** | Not available | None |
-| **Observability Overview** (Hosts, Log Events, Service Inventory) | Not available | None |
-| **{{rules-ui}}** (Custom Threshold, SLO Burn Rate) | Read-only | ES\|QL rules support `SET project_routing`. For non-ES\|QL rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects. |
-| **SLOs** | Not available | None |
-| **Streams** | Not available | ES\|QL |
-| **Synthetics** (monitors, TLS Certificates) | Not available | None |
-
-% DOCS NOTE — CONDITIONAL: If APM/Infra CPS enablement (observability-dev#5328, observability-dev#5374) ships before tech preview goes GA, update the APM and Infrastructure rows: scope selector to "Editable" and query-level overrides to "ES|QL".
+::::{include} /solutions/_snippets/cps-obs-compatibility.md
+::::
 
 For additional details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 
