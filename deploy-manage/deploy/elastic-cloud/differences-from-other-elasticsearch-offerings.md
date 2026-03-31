@@ -50,19 +50,19 @@ $$$elasticsearch-differences-serverless-feature-categories$$$
 $$$elasticsearch-differences-serverless-features-replaced$$$
 $$$elasticsearch-differences-serverless-feature-planned$$$
 
-### Core platform capabilities
+### Core platform identity and access
 
-This table compares the core platform capabilities between {{ech}} deployments and Serverless projects:
+This table compares core identity, access, and platform capabilities between {{ech}} deployments and Serverless projects:
 
 | **Feature**  | {{ech}} | Serverless projects| Notes  |
 |----------|----------------------|--------------------|--------|
 | **Audit logging** | ✅ | **Planned** | Anticipated in a future release |
-| **Authentication realms** | ✅ | ✅ | Managed at organization level in Serverless; deployment level in Hosted |
+| **Authentication and SSO** | Deployment-level [authentication realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) and organization-level [SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) | Organization-level [user management](/deploy-manage/users-roles/cloud-organization/manage-users.md) and [SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) | Serverless does not provide deployment-level realm configuration. |
 | **BYO-Key for encryption at rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
-| **Custom roles** | ✅ | ✅ |  |
+| **Custom roles** | ✅ | ✅ | Managed through [{{ecloud}} roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) and [{{serverless-short}} custom roles](/deploy-manage/users-roles/serverless-custom-roles.md). |
 | **Deployment health monitoring** | AutoOps or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
@@ -70,6 +70,9 @@ This table compares the core platform capabilities between {{ech}} deployments a
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
 | **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering, private connectivity (VPCs, PrivateLink) | Private connectivity for Serverless projects is currently supported in AWS regions only. Requires the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus). |
+| **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | Available across {{ech}} and Serverless using deployment/project and cloud API key types. |
+| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | Only API key-based authentication is supported at the project level. User authentication, including SAML SSO, is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
+| **Role-based access control** | ✅ | ✅ | In Serverless, RBAC is managed at organization level with optional project custom roles. |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
@@ -147,15 +150,12 @@ This table compares Security capabilities between {{ech}} deployments and Server
 |---------|---------------------|------------------------------|------------------|
 | **[Entity analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
-| **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | |
 | **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |
 | [**Defend for Containers integration**](https://www.elastic.co/guide/en/security/8.18/d4c-overview.html) | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **[Endpoint security](/solutions/security/configure-elastic-defend.md)** | ✅ | ✅ | |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
-| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | Only API key-based authentication is supported at the project level. User authentication, including SAML SSO, is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
-| **Role-based access control** | ✅ | Limited | Core RBAC functionality supported |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
 ## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
