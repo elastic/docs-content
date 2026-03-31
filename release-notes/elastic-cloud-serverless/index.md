@@ -9,7 +9,172 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## March 23, 2026 [serverless-changelog-03232026]
 
+### Features and enhancements [serverless-changelog-03232026-features-enhancements]
+
+* Makes filter pills collapsible in Dashboards and Discover when at least one filter pill appears beneath the search bar [#255887]({{kib-pull}}255887)
+* Migrates integration inputs and variables on package upgrade when a `migrate_from` field is defined [#242934]({{kib-pull}}242934)
+* Resolves and merges multiple integration configuration templates listed in `template_paths` into a single configuration in {{fleet}} [#257730]({{kib-pull}}257730)
+* Improves {{esql}} document highlighting so multiple occurrences of the same field are highlighted [#258764]({{kib-pull}}258764)
+* Registers a background maintainer that links user entities sharing the same `user.email`, with namespace-based priority for entity resolution [#257479]({{kib-pull}}257479)
+* Ensures that the `location` field is used to set provider config fields in the correct location [#250838]({{kib-pull}}250838)
+* Adds import and export functionality for workflows, enabling the sharing of workflow definitions across {{kib}} instances [#257976]({{kib-pull}}257976)
+
+### Fixes [serverless-changelog-03232026-fixes]
+
+* Fixes the Webhook connector's `accessTokenUrl` validation [#258290]({{kib-pull}}258290)
+* Fixes connector handling so additional fields are included correctly for integrations that use them [#257625]({{kib-pull}}257625)
+* Improves the screen reader announcement when you enter full-screen mode on a dashboard [#258230]({{kib-pull}}258230)
+* Fixes a bug where editing a by-reference Lens visualization from a dashboard saved changes, but the panel reverted visually until you refreshed the page [#256984]({{kib-pull}}256984)
+* Adjusts dashboard scroll-on-drop so the viewport does not jump when you only move a panel slightly [#258445]({{kib-pull}}258445)
+* Fixes incorrect screen reader announcements for filter options in Index Management component templates [#256948]({{kib-pull}}256948)
+* Announces when bulk actions become available or hidden in the index management tables [#257089]({{kib-pull}}257089)
+* Displays the current configuration in the **Retention** column in the Index Management data view list when `prefer_ilm` is set for a data stream [#254609]({{kib-pull}}254609)
+* Fixes a browser console error when opening the data frame analytics jobs list [#258591]({{kib-pull}}258591)
+* Fixes Canvas failing to load embeddables when a `savedObjectId` is present without library references [#257779]({{kib-pull}}257779)
+* Cancels in-flight {{esql}} requests in the metrics experience when you change or clear a breakdown dimension [#258473]({{kib-pull}}258473)
+* Validates workflow inputs on the server before execution so API, child workflow, and agent paths cannot run with invalid or missing inputs [#254546]({{kib-pull}}254546)
+
+## March 18, 2026 [serverless-changelog-03182026]
+
+### Features and enhancements [serverless-changelog-03182026-features-enhancements]
+
+* Improves Lens data table performance for large datasets [#256234]({{kib-pull}}256234)
+* Allows you to drag opened collapsible sections, improving the dashboard layout [#257191]({{kib-pull}}257191)
+* Pauses automatic integration upgrades when a new version introduces deprecations until you accept or decline the upgrade [#255273]({{kib-pull}}255273)
+* Adds support for installing integrations that declare content package dependencies in {{fleet}} [#256700]({{kib-pull}}256700)
+* Adds UI warnings to distinguish between packages that will be deprecated in a future version from packages that are already deprecated [#257937]({{kib-pull}}257937)
+* Adds a tab selector to Discover session panels in Dashboards, letting you choose which Discover tab 
+to display, with improved warning messages when a tab or data view can't be retrieved [#252311]({{kib-pull}}252311)
+* Enables the {{esql}} `MMR` command in the editor [#257208]({{kib-pull}}257208)
+* Adds a new **Discover session** button in the new panel options of a dashboard to embed a Discover by-value session directly. [#256293]({{kib-pull}}256293)
+* Enables PromQL in the {{esql}} editor [#257619]({{kib-pull}}257619)
+* Restores recently closed tab groups [#253365]({{kib-pull}}253365)
+* Improves {{esql}} pretty printing by measuring editor width so long lines wrap more naturally [#257440]({{kib-pull}}257440)
+* Adds backend APIs to reset Synthetics monitor Fleet/service resources [#256696]({{kib-pull}}256696)
+* Lets you configure a custom timeout for browser monitors on private locations [#252156]({{kib-pull}}252156)
+* Updates the agent system prompt to pass attachment time ranges into tool calls when you are in the UI [#256343]({{kib-pull}}256343)
+* Extends the alert on no data options for the metric threshold rule to the custom threshold rule [#251976]({{kib-pull}}251976)
+* Adds tooltips to metric type badges in the Metrics experience flyout [#257053]({{kib-pull}}257053)
+* Enables monitoring of `METRICS_INFO` search requests in APM by tagging them with a dedicated execution context label on the {{kib}} server [#256439]({{kib-pull}}256439)
+* Adds a synthetics monitor attachment for the AI Agent [#256540]({{kib-pull}}256540)
+* Adds a `get_logs` tool and a `log_search` skill for iterative log investigation in Agent Builder [#256206]({{kib-pull}}256206)
+* Adds the foundational layer for the Entity Analytics Lead Generation feature [#255272]({{kib-pull}}255272)
+* Allows you to define custom closing reasons for alerts [#253127]({{kib-pull}}253127)
+* Adds server-side infrastructure and APIs so scheduled Osquery pack query results surface in live query history [#256270]({{kib-pull}}256270)
+* Adds a unified history table for Osquery with live and scheduled query results, cursor-based pagination, source filtering, a date range picker, and scheduled execution detail routing [#256917]({{kib-pull}}256917)
+* Adds scheduled Osquery execution detail pages and APIs for per-agent results and integrations [#257118]({{kib-pull}}257118)
+* Adds support for GCP cloud connector reusability [#253093]({{kib-pull}}253093)
+* Syncs Osquery history filters with URL query parameters so the state survives reloads and back navigation [#257895]({{kib-pull}}257895)
+* Replaces the legacy `EuiDataGrid` results table in the Osquery plugin with `UnifiedDataTable` (behind a feature flag) [#257627]({{kib-pull}}257627)
+* Adds UI for managing data anonymization profiles in Gen AI settings [#256246]({{kib-pull}}256246)
+* Injects `METADATA _id` into {{esql}} detection rule queries when it is missing [#254703]({{kib-pull}}254703)
+* Validates Indicator match rules' `threat_index` parameter the same way as `index`, skipping execution with a partial failure when no threat indices exist [#256353]({{kib-pull}}256353)
+* Defaults the semantic text mappings UI to the Jina v5 inference endpoint when it is available [#257464]({{kib-pull}}257464)
+* Expands Agent Builder to offer the full {{kib}} connector catalog instead of a limited set [#257924]({{kib-pull}}257924)
+* Clarifies session expiry messaging to distinguish idle timeout from maximum session lifespan [#252779]({{kib-pull}}252779)
+* Routes AIOps and Data Visualizer pages and embeddables for cross-project search [#256244]({{kib-pull}}256244)
+* Adds a cross-project search warning to the anomaly detection jobs list [#256713]({{kib-pull}}256713)
+* Adds user-created skills in Agent Builder [#252221]({{kib-pull}}252221)
+* Adds a Figma data source and connector for Workplace AI [#255322]({{kib-pull}}255322)
+* Adds an Amazon S3 connector and data source to list buckets, list objects, and download files [#253753]({{kib-pull}}253753)
+* Adds a new `list` legend layout for horizontal legends (top and bottom), offering a more 
+space-efficient alternative to the grid layout, also making this layout the default for XY charts [#257092]({{kib-pull}}257092)
+* Improves Lens metric trend badge styling with separate background and text color palettes [#256255]({{kib-pull}}256255)
+* Releases the {{esql}} `MMR` command on the {{es}} engine for use outside snapshot builds [#143867]({{es-pull}}143867)
+* Splits large Parquet files into one {{esql}} external read split per row group for better parallelism [#144018]({{es-pull}}144018)
+* Enables parallel parsing for large CSV and NDJSON external files [#143997]({{es-pull}}143997)
+* Prunes unused columns in {{esql}} external data source plans [#143903]({{es-pull}}143903)
+* Adds `FormatReadContext` to consolidate `FormatReader` API [#143928]({{es-pull}}143928)
+* Adds a `LIMIT BY` command to the parser [#144102]({{es-pull}}144102)
+* Adds memory accounting to `GroupedLimitOperator` [#143941]({{es-pull}}143941)
+* Replaces page-count-based backpressure in `AsyncExternalSourceBuffer` with byte-based backpressure [#144218]({{es-pull}}144218)
+* Improves Parquet type mapping for {{esql}} external sources [#144059]({{es-pull}}144059)
+* Pushes stats to an external source using metadata [#143940]({{es-pull}}143940)
+* Registers TSV as a dedicated {{esql}} external format that defaults to tab delimiters [#143906]({{es-pull}}143906)
+* Adds remote views detection for cross-cluster search [#143384]({{es-pull}}143384)
+* Adds `dense_vector` equality and inequality support in {{esql}} [#140005]({{es-pull}}140005)
+* Adds indexing pressure tracking to OTLP endpoints [#144009]({{es-pull}}144009)
+* Improves aggregate counter downsampling by recording first values per bucket and preserving reset boundaries [#143381]({{es-pull}}143381)
+* Adds a `to_exponential_histogram` conversion function in {{esql}} [#143868]({{es-pull}}143868)
+* Implements `EXPLAIN` for local data node plans [#142748]({{es-pull}}142748)
+* Implements `first_over_time` and `last_over_time` for T-Digest values in {{esql}} [#143832]({{es-pull}}143832)
+* Validates the `TOP_SNIPPETS` query argument is foldable [#142763]({{es-pull}}142763)
+* Adds configurable bracket-based multi-value support for CSV reader [#143890]({{es-pull}}143890)
+* Enhances CSV schema inference and parsing [#144050]({{es-pull}}144050)
+* Adds reasoning-related request fields to the inference chat completion API for supported models [#143242]({{es-pull}}143242)
+* Adds linked-project memory and data size totals to the internal serverless autoscaling metrics response
+* Makes `to` and `from` optional in {{esql}} `TBUCKET` when the {{kib}} timestamp filter is present [#144057]({{es-pull}}144057)
+* Optimizes Painless scripts that call `.contains` on constant lists by hoisting values into a static set [#143311]({{es-pull}}143311)
+* Supports target bucket count in `TBUCKET` with explicit from/to date range [#142747]({{es-pull}}142747)
+* Upgrades the DiskBBQ vector index for faster filtered search and additional quantization options [#143760]({{es-pull}}143760)
+* Upgrades {{es}} to Apache Lucene v10.4 [#141882]({{es-pull}}141882)
+* Adds physical planning on the lookup node [#143707]({{es-pull}}143707)
+
+### Fixes [serverless-changelog-03182026-fixes]
+
+* Fixes a discrepancy between tracked alerts and alerts in task state [#257235]({{kib-pull}}257235)
+* Handles reporting content stream errors so large CSV exports do not surface as unhandled exceptions [#252982]({{kib-pull}}252982)
+* Reverts the default borderless style for horizontal **Links** panels so existing dashboards keep visible borders unless you disable them [#256354]({{kib-pull}}256354)
+* Fixes dashboard panel highlight animations rendering behind the dashboard viewport [#256327]({{kib-pull}}256327)
+* Runs Canvas **Embeddable** expressions through embeddable transforms in the Canvas API so saved configurations match the embeddable pipeline [#252191]({{kib-pull}}252191)
+* Fixes dashboards incorrectly adding access control metadata when the UI session had no user profile [#255065]({{kib-pull}}255065)
+* Fixes Canvas **Add from library** using each embeddable type's `onAdd` handler instead of a hardcoded `{ savedObjectId }` shape [#257261]({{kib-pull}}257261)
+* Fixes {{esql}} control panels not receiving dashboard focus while editing, which could leave flyouts in a broken state [#257263]({{kib-pull}}257263)
+* Fixes dashboard panels stuck loading after an embeddable error [#257188]({{kib-pull}}257188)
+* Improves error handling and test coverage for the {{fleet}} debug API [#258115]({{kib-pull}}258115)
+* Improves the accessible name for the **Index mode** control in the **Create index** modal [#256392]({{kib-pull}}256392)
+* Fixes an issue where autocompleting an opening brace `{` or bracket `[` in the Console request body incorrectly wrapped the suggestion in double quotes [#256286]({{kib-pull}}256286)
+* Fixes the Dev Tools Console losing syntax highlighting on later requests when a previous request body was indented [#257539]({{kib-pull}}257539)
+* Suggests an {{esql}} query from an available remote index when no local data exists [#257340]({{kib-pull}}257340)
+* Removes `spaceId` from Synthetics monitor package policy identifiers and stores package policy IDs as saved object references [#251018]({{kib-pull}}251018)
+* Prevents APM URL crashes when invalid `rangeFrom` or `rangeTo` values are supplied [#256887]({{kib-pull}}256887)
+* Prevents APM waterfall views from crashing when span documents omit optional `span.composite` fields [#257368]({{kib-pull}}257368)
+* Fixes custom threshold rules not evaluating wildcard filters because the data view was omitted from evaluation [#256979]({{kib-pull}}256979)
+* Prevents APM service view transaction pages from crashing for mobile services [#257447]({{kib-pull}}257447)
+* Fixes deleting wired child streams when the parent still has query stream children [#257626]({{kib-pull}}257626)
+* Clears the flyout state in {{elastic-sec}} when you navigate away so flyouts do not reopen on return [#256001]({{kib-pull}}256001)
+* Aligns EQL sequence rule shell alerts when the same field appears in dot notation and nested object notation [#254830]({{kib-pull}}254830)
+* Updates tutorial **Run in Console** actions to use the empty button style [#256455]({{kib-pull}}256455)
+* Prevents the **Add field** button in the index mappings editor from overwriting an existing field when the name matches [#256728]({{kib-pull}}256728)
+* Restricts semantic text inference creation to compatible task types at the flyout [#256586]({{kib-pull}}256586)
+* Fixes Agent Builder relevance search to respect whether fields are searchable when mappings set `index: false` [#257993]({{kib-pull}}257993)
+* Removes the deprecated `exact_fuzzy` option from the Query Rules UI [#258278]({{kib-pull}}258278)
+* Fixes the space selector briefly showing **No spaces match** while spaces are still loading [#255654]({{kib-pull}}255654)
+* Fixes stack monitoring shard legends when node aggregations are missing [#257854]({{kib-pull}}257854)
+* Fixes stack monitoring {{es}} nodes sorting for CPU usage when metrics are returned as strings [#257852]({{kib-pull}}257852)
+* Improves screen reader announcements for data frame analytics flyouts opened from Stack Management [#256409]({{kib-pull}}256409)
+* Fixes Discover field statistics not refreshing saved searches when dashboard filters change [#257241]({{kib-pull}}257241)
+* Fixes the anomaly detection Single Metric Viewer rules flyout showing stale job data after you add or delete a rule [#257196]({{kib-pull}}257196)
+* Stops persisting default suggestion titles when you create {{esql}} charts inline on a dashboard [#256475]({{kib-pull}}256475)
+* Fixes Liquid template validation incorrectly accepting variables used before assignment in workflows [#255337]({{kib-pull}}255337)
+* Adds support for native YAML arrays in workflow `foreach` steps [#256298]({{kib-pull}}256298)
+* Fixes workflow editor validation falsely flagging valid `item` and `index` references in `data.map` steps [#257703]({{kib-pull}}257703)
+* Fixes SLO **View in app** URLs and a nullish-coalescing bug in SLO redirects [#257910]({{kib-pull}}257910)
+* Fixes the Data Set Quality table layout at 200% zoom [#257097]({{kib-pull}}257097)
+* Returns a clear error in the response console when malware protection is turned off and a scan is requested [#255597]({{kib-pull}}255597)
+* Fixes a null pointer exception when validating multimodal chat completion requests in the Inference API [#144107]({{es-pull}}144107)
+* Stops `aggregate_metric_double` deprecation warnings from leaking into unrelated REST responses during cluster state application [#144040]({{es-pull}}144040)
+* Fixes missing `boost` support for `QUERY_STRING` in {{esql}} [#143938]({{es-pull}}143938)
+* Fixes missing `zero_terms_query` support for `MATCH` in {{esql}} [#143668]({{es-pull}}143668)
+* Evaluates `ReferenceAttributes` to potentially `FieldAttributes` for full-text functions restriction [#143893]({{es-pull}}143893)
+* Fixes {{esql}} `FORK` optimizations when `unmapped_fields` is set to `nullify` [#143030]({{es-pull}}143030)
+* Fixes {{esql}} `STATS` with `WHERE` under `unmapped_fields` nullify and load modes [#144029]({{es-pull}}144029)
+* Prevents incorrect nullification of grouping aliases inside {{esql}} aggregates [#141340]({{es-pull}}141340)
+* Fixes a `ClassCastException` in the {{esql}} `DECAY` scoring function when processing non-double numeric values [#144118]({{es-pull}}144118)
+* Fixes {{esql}} time series queries that combine `STATS` dimensions with `LIMIT 0` [#144031]({{es-pull}}144031)
+* Fixes field caps synthesizing incorrect object parents for dotted subfields when `subobjects` is `false`, avoiding false {{esql}} mapping conflicts [#144183]({{es-pull}}144183)
+* Prevents GPU-assisted merges from failing with `ClassCastException` when the store wraps the underlying directory [#143531]({{es-pull}}143531)
+* Fixes equality checks for empty `HistogramUnionState` instances used in percentile aggregations [#143990]({{es-pull}}143990)
+* Fixes the unified highlighter when phrases span multiple values in array fields [#143440]({{es-pull}}143440)
+* Fixes an issue where dynamic templating was overridden by the automatic `dense_vector` mapping [#143733]({{es-pull}}143733)
+* Uses a `SearchExecutionContext` copy for each Percolator execution [#142765]({{es-pull}}142765)
+* Clarifies an index not found error when a project pattern is used
+* Fixes exclusion handling for cross-project search
+* Verifies that the `TS` command works in a cross-project search environment
+* Verifies that the `*:concrete_index` expression is resolved on every project
+* Verifies that qualified expressions match the origin project
 
 ## March 9, 2026 [serverless-changelog-03092026]
 
@@ -96,10 +261,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes SQL client parsing errors for array header values [#143408]({{es-pull}}143408)
 * Fixes {{esql}} t-digest percentile calculations to use the correct merging digest implementation [#143473]({{es-pull}}143473)
 * Improves document parsing performance by reusing previously seen dynamically-created mappers [#143377]({{es-pull}}143377)
-
-
-
-
 
 ## March 2, 2026 [serverless-changelog-03022026]
 

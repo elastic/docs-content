@@ -42,12 +42,11 @@ After you link projects, searches that you run from the origin project are no lo
 
 When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the query scope by using [project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) or [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions).
 
-::::{include} /deploy-manage/_snippets/cps-bidirectional-note.md
-::::
+Project linking is not bidirectional. Searches initiated from a linked project do **not** run against the origin project. If you need bidirectional search, link the projects twice, in both directions.
 
 You can link projects by using the {{ecloud}} UI. For step-by-step instructions, refer to [Link projects for {{cps}}](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md).
 
-### Project ID and aliases
+### Project IDs and aliases
 
 Each project has a unique project ID and a project alias.
 The project alias is derived from the project name and can be modified.
@@ -151,6 +150,20 @@ The following APIs support {{cps}}:
 * Search scroll [clear](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-clear-scroll), [run](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
 
+### {{product.painless}} scripting [cps-painless-scripting]
+
+The [{{product.painless}} execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md) (`POST _scripts/painless/_execute`) does not search across linked projects. Unlike the search APIs listed above, the execute API resolves index names against the **origin project only**.
+
+When testing scripts with the execute API in a {{cps}} environment:
+
+* To target a specific linked project, prefix the index with the project alias: `projectAlias:myindex`.
+* To explicitly target the origin project, use `_origin:myindex`.
+    * An unqualified index name like `logs` is equivalent to `_origin:logs` — it targets the origin project only.
+* Only a single index is accepted. Wildcards and [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) are not supported.
+* Requests to linked projects are subject to the same [security model](/explore-analyze/cross-project-search.md#security) as other {{cps}} requests.
+
+For additional information, refer to the [{{product.painless}} execute API reference](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md).
+
 <!--
 ### {{cps-cap}} specific APIs
 
@@ -172,7 +185,7 @@ The following APIs support {{cps}}:
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
 
-For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md) in **Deploy and manage**.
+For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md).
 
 ## {{cps-cap}} examples [cps-examples]
 
