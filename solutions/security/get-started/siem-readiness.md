@@ -61,7 +61,7 @@ Each category displays a coverage status (**Has data** or **Missing data**) and 
 
 The Quality pillar answers: *Are your logs ECS-compatible?* Schema errors can prevent rules, dashboards, and correlations from working correctly.
 
-Quality checks your data sources for [Elastic Common Schema (ECS)](/manage-data/data-store/map-custom-data-to-ecs.md) compatibility issues and missing fields. Results are grouped by log category (such as Endpoint, Identity, Network, Cloud, and Application / SaaS), and each category shows:
+Quality checks your data sources for [Elastic Common Schema (ECS)](ecs://reference/ecs-event.md) compatibility issues and missing fields. Results are grouped by log category (such as Endpoint, Identity, Network, Cloud, and Application / SaaS), and each category shows:
 
 - **Status**: **Healthy** or **Actions required**
 - **Incompatible fields**: The number of fields with mapping issues
