@@ -44,7 +44,7 @@ If no data shows up in {{es}}, first make sure that your {{product.apm}} compone
 ::::::{tab-item} {{fleet}}-managed
 **Is {{agent}} healthy?**
 
-In {{kib}} open **{{fleet}}** and find the host that is running the {{product.apm}} integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](/reference/fleet/monitor-elastic-agent.md) to learn more.
+In {{kib}} open **{{fleet}}** and find the host that is running the {{product.apm}} integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. Refer to [Monitor {{agent}}s](/reference/fleet/monitor-elastic-agent.md) to learn more.
 
 **Is {{apm-server}} happy?**
 
@@ -59,11 +59,11 @@ If no requests are logged, confirm that:
 1. SSL isn’t [misconfigured](#apm-ssl-client-fails).
 2. The host is correct. For example, if you’re using Docker, ensure a bind to the right interface (for example, set `apm-server.host = 0.0.0.0:8200` to match any IP) and set the `SERVER_URL` setting in the {{apm-agent}} accordingly.
 
-If you see requests coming through the {{apm-server}} but they are not accepted (a response code other than `202`), see [{{apm-server}} response codes](apm-server-response-codes.md) to narrow down the possible causes.
+If you see requests coming through the {{apm-server}} but they are not accepted (a response code other than `202`), refer to [{{apm-server}} response codes](apm-server-response-codes.md) to narrow down the possible causes.
 
 **Instrumentation gaps**
 
-{{product.apm}} agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Reference the relevant [{{apm-agent}} documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
+{{product.apm}} agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Refer to the [{{apm-agent}} documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 ::::::
 
 ::::::{tab-item} {{apm-server}} binary
@@ -80,7 +80,7 @@ To see if the agent can connect to the {{apm-server}}, send requests to the inst
 
 If no requests are logged, it might be that SSL is [misconfigured](#apm-ssl-client-fails) or that the host is wrong. Particularly, if you are using Docker, ensure to bind to the right interface (for example, set `apm-server.host = 0.0.0.0:8200` to match any IP) and set the `SERVER_URL` setting in the agent accordingly.
 
-If you see requests coming through the {{apm-server}} but they are not accepted (response code other than `202`), see [{{apm-server}} response codes](apm-server-response-codes.md) to narrow down the possible causes.
+If you see requests coming through the {{apm-server}} but they are not accepted (response code other than `202`), refer to [{{apm-server}} response codes](apm-server-response-codes.md) to narrow down the possible causes.
 
 Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 
@@ -103,7 +103,7 @@ stack: ga
 
 ### SSL client fails to connect [apm-ssl-client-fails]
 
-The target host might be unreachable or the certificate may not be valid. To fix this problem:
+The target host might be unreachable or the certificate might not be valid. To fix this problem:
 
 1. Make sure that the {{apm-server}} process on the target host is running and you can connect to it. Try to ping the target host to verify that you can reach it from the host running {{apm-server}}. Then use either `nc` or `telnet` to make sure that the port is available. For example:
 
@@ -113,7 +113,7 @@ The target host might be unreachable or the certificate may not be valid. To fix
     ```
 
 2. Verify that the certificate is valid and that the hostname and IP match.
-3. Use OpenSSL to test connectivity to the target server and diagnose problems. See the [OpenSSL documentation](https://www.openssl.org/docs/manmaster/man1/openssl-s_client.md) for more info.
+3. Use OpenSSL to test connectivity to the target server and diagnose problems. Refer to the [OpenSSL documentation](https://www.openssl.org/docs/manmaster/man1/openssl-s_client.md) for more info.
 
 
 ### x509: cannot validate certificate for <IP address> because it doesn’t contain any IP SANs [apm-cannot-validate-certificate]
@@ -147,7 +147,7 @@ stack: ga
 
 I/O Timeouts can occur when your timeout settings across the stack are not configured correctly, especially when using a load balancer.
 
-You may see an error like the one below in the {{apm-agent}} logs, and/or a similar error on the {{apm-server}} side:
+You might see an error like the one below in the {{apm-agent}} logs, and/or a similar error on the {{apm-server}} side:
 
 ```txt
 [ElasticAPM] {{apm-server}} responded with an error:
@@ -212,7 +212,7 @@ If you feel like you’d be losing valuable information by following this naming
 
 After ensuring you’ve correctly named your transactions, you might still see errors in the Applications UI related to transaction group limit reached:
 
-`The number of transaction groups has been reached. Current {{apm-server}} capacity for handling unique transaction groups has been reached. There are at least X transactions missing in this list. Please decrease the number of transaction groups in your service or increase the memory allocated to {{apm-server}}.`
+`The number of transaction groups has been reached. Current {{apm-server}} capacity for handling unique transaction groups has been reached. There are at least X transactions missing in this list. Decrease the number of transaction groups in your service or increase the memory allocated to {{apm-server}}.`
 
 You will see this warning if an agent is creating too many transaction groups. This could indicate incorrect instrumentation which will have to be fixed in your application. Alternatively you can increase the memory of the {{apm-server}}.
 
@@ -222,11 +222,11 @@ You will see this warning if your results have more than `1000` unique transacti
 
 **More information**
 
-While this can happen with any {{apm-agent}}, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](apm-agent-rum-js://reference/custom-transaction-name.md).
+While this can happen with any {{apm-agent}}, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, refer to [custom initial page load transaction names](apm-agent-rum-js://reference/custom-transaction-name.md).
 
-The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](apm-agent-rum-js://reference/agent-api.md#observe) for more information.
+The RUM agent can also set the `transaction.name` when observing for transaction events. Refer to [`apm.observe()`](apm-agent-rum-js://reference/agent-api.md#observe) for more information.
 
-If your problem is occurring in a different {{apm-agent}}, the tips above still apply. See the relevant [Agent API documentation](/reference/apm-agents/index.md) to adjust how you’re naming your transactions.
+If your problem is occurring in a different {{apm-agent}}, the tips above still apply. Refer to the relevant [Agent API documentation](/reference/apm-agents/index.md) to adjust how you’re naming your transactions.
 
 
 ## Unknown route [troubleshooting-unknown-route]
@@ -248,9 +248,9 @@ To resolve this, you’ll need to head over to the relevant [{{product.apm}} age
 stack: ga
 ```
 
-In {{es}}, index templates are used to define settings and mappings that determine how fields should be analyzed. The recommended index templates for {{product.apm}} come from the built-in {{es}} apm-data plugin. These templates, by default, enable and disable indexing on certain fields.
+In {{es}}, index templates are used to define settings and mappings that determine how fields should be analyzed. The recommended index templates for {{product.apm}} come from the built-in {{es}} apm-data plugin. These templates, by default, specify which fields are indexed and which are not.
 
-As an example, some {{product.apm}} agents store cookie values in `http.request.cookies`. Since `http.request` has disabled dynamic indexing, and `http.request.cookies` is not declared in a custom mapping, the values in `http.request.cookies` are not indexed and thus not searchable.
+As an example, some {{product.apm}} agents store cookie values in `http.request.cookies`. Since dynamic indexing is turned off for `http.request`, and `http.request.cookies` is not declared in a custom mapping, the values in `http.request.cookies` are not indexed and therefore not searchable.
 
 **Ensure a {{product.apm}} {{data-source}} exists** As a first step, you should ensure the correct {{data-source}} exists. In {{kib}}, go to **{{stack-manage-app}}** > **{{data-sources-caps}}**. You should see the {{product.apm}} {{data-source}}—the default is `traces-apm*,apm-*,logs-apm*,apm-*,metrics-apm*,apm-*`. If you don’t, the {{data-source}} doesn’t exist. To fix this, navigate to the Applications UI in {{kib}} and select **Add data**. In the {{product.apm}} tutorial, click **Load {{kib}} objects** to create the {{product.apm}} {{data-source}}.
 
@@ -267,7 +267,7 @@ stack: ga
 
 If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](apm-agent-rum-js://reference/distributed-tracing.md).
 
-This setting is necessary, for example, for cross-origin requests. If you have a basic web application that provides data via an API on `localhost:4000`, and serves HTML from `localhost:4001`, you’d need to set `distributedTracingOrigins: ['https://localhost:4000']` to ensure the origin is monitored as a part of distributed tracing. In other words, `distributedTracingOrigins` is consulted prior to the {{apm-agent}} adding the distributed tracing `traceparent` header to each request.
+This setting is necessary, for example, for cross-origin requests. If you have a basic web application that provides data using an API on `localhost:4000`, and serves HTML from `localhost:4001`, you’d need to set `distributedTracingOrigins: ['https://localhost:4000']` to ensure the origin is monitored as a part of distributed tracing. In other words, `distributedTracingOrigins` is consulted prior to the {{apm-agent}} adding the distributed tracing `traceparent` header to each request.
 
 
 ## No data shown in the infrastructure tab [troubleshooting-apm-infra-data]
@@ -279,7 +279,7 @@ If you don’t see any data in the **Infrastructure** tab for a selected service
 
 ### OTel-instrumented services
 
-For services instrumented with OpenTelemetry, the **Infrastructure** tab exclusively looks for OTel-observed hosts, pods, and containers. If the tab is empty, confirm that the underlying infrastructure is also being observed with OTel (for example, using the EDOT Collector with host metrics enabled). Infrastructure observed only by {{agent}} or {{metricbeat}} will not appear for OTel-instrumented services.
+For services instrumented with OpenTelemetry, the **Infrastructure** tab exclusively looks for OTel-observed hosts, pods, and containers. If the tab is empty, confirm that the underlying infrastructure is also being observed with OTel (for example, using the EDOT Collector with host metrics enabled). Infrastructure observed only by {{agent}} or {{metricbeat}} doesn't appear for OTel-instrumented services.
 
 ### {{product.apm}}-instrumented services
 
