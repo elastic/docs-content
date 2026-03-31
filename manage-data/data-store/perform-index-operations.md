@@ -14,24 +14,25 @@ products:
 
 $$$manage-indices$$$
 
-Practicing good index management ensures your data is stored efficiently and cost-effectively. {{kib}}'s index management features offer a convenient way to view and [perform operations on](/manage-data/data-store/index-operations-reference.md) your cluster’s [indices](/manage-data/data-store/index-basics.md), [data streams](/manage-data/data-store/data-streams.md), [index and component templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md).
+Practicing good index management ensures your data is stored efficiently and cost-effectively. In {{kib}}, the **{{index-manage-app}}** page is where you manage storage resources across your cluster, including [indices](/manage-data/data-store/index-basics.md), [data streams](/manage-data/data-store/data-streams.md), [index and component templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md). Index-specific actions are covered in [Index operations reference](/manage-data/data-store/index-operations-reference.md).
 
 :::{tip}
 All operations available on the **{{index-manage-app}}** page can also be performed using the {{es}} REST API. Refer to [Manage data from the command line](/manage-data/data-store/manage-data-from-the-command-line.md) for examples, or browse the [{{es}} index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) directly.
 :::
 
 ## Required permissions [required-permissions]
-```{applies_to}
-stack: ga
-```
 
-If you use {{es}} {{security-features}}, the following [security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) are required:
+The following [security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) are required to manage indices in {{kib}}:
 
 * The `monitor` cluster privilege to access {{kib}}'s **{{index-manage-app}}** features.
 * The `view_index_metadata` and `manage` index privileges to view a data stream or index's data.
 * The `manage_index_templates` cluster privilege to manage index templates.
 
-To add these privileges, go to **{{stack-manage-app}} > Security > Roles** or use the [Create or update roles](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) API.
+{applies_to}`stack: ga` To add these privileges, go to **{{stack-manage-app}} > Security > Roles** or use the [Create or update roles](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) API.
+
+
+{applies_to}`serverless: ga` In {{serverless-full}}, permissions are managed through project custom roles instead of **{{stack-manage-app}} > Security > Roles**. To grant access to **{{index-manage-app}}**, configure the required {{es}} and {{kib}} privileges in a custom role. For step-by-step guidance, refer to [{{serverless-short}} project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
+
 
 ## Navigate the Index Management page
 
