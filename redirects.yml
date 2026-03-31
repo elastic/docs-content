@@ -768,6 +768,7 @@ redirects:
   'explore-analyze/alerts-cases/alerts/alerting-setup.md': 'explore-analyze/alerting/alerts/alerting-setup.md'
   'explore-analyze/alerts-cases/alerts/create-manage-rules.md': 'explore-analyze/alerting/alerts/create-manage-rules.md'
   'explore-analyze/alerts-cases/alerts/view-alerts.md': 'explore-analyze/alerting/alerts/view-alerts.md'
+  'explore-analyze/alerts-cases/alerts/query-alerts.md': 'explore-analyze/alerting/alerts/query-alerts.md'
   'explore-analyze/alerts-cases/alerts/rule-types.md': 'explore-analyze/alerting/alerts/rule-types.md'
   'explore-analyze/alerts-cases/alerts/rule-type-index-threshold.md': 'explore-analyze/alerting/alerts/rule-type-index-threshold.md'
   'explore-analyze/alerts-cases/alerts/rule-type-es-query.md': 'explore-analyze/alerting/alerts/rule-type-es-query.md'

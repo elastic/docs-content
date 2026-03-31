@@ -222,6 +222,14 @@ By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tabl
 The `securitySolution:alertTags` field determines which options display in the alert tag menu. The default alert tag options are `Duplicate`, `False Positive`, and `Further investigation required`. You can update the alert tag menu by editing these options or adding more. To learn more about using alert tags, refer to [Apply and filter alert tags](/solutions/security/detect-and-alert/manage-detection-alerts.md#apply-alert-tags).
 
 
+## Add custom alert closing reasons [custom-alert-closing-reasons]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
+
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 ```yaml {applies_to}
 stack: removed 9.1

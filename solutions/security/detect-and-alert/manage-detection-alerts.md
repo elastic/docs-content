@@ -199,6 +199,11 @@ When closing alerts, you can specify a reason:
 | Benign positive | Real activity but acceptable/not actionable |
 | Other | Other reasons |
 
+::::{tip}
+:applies_to: {stack: ga 9.4+, serverless: ga}
+You can add your own closing reason options by updating the `securitySolution:alertCloseReasons` advanced setting. Refer to [Add custom alert closing reasons](/solutions/security/get-started/configure-advanced-settings.md#custom-alert-closing-reasons) for more information.
+::::
+
 The closing reason is stored in `kibana.alert.workflow_reason` and can be used for filtering. Reopening an alert removes this field.
 
 ### Run a workflow from an alert [run-workflow-from-alert]

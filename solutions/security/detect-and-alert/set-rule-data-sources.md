@@ -28,7 +28,7 @@ Common reasons to override the defaults:
 * **Use a {{data-source}}**: Instead of specifying index patterns directly, you can select a {{data-source}} from the drop-down. The rule then uses the {{data-source}}'s index patterns and any [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) defined on it, which can be useful for enrichment or field normalization.
 
 ::::{tip}
-For indicator match rules, the **Indicator index patterns** field controls which threat intelligence indices the rule queries separately from the main source index patterns. By default, this uses the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md) setting (`logs-ti_*`).
+For indicator match rules, the **Indicator index patterns** field controls which threat intelligence indices the rule queries separately from the main source index patterns. By default, this uses the `securitySolution:defaultThreatIndex` advanced setting (`logs-ti_*`).
 ::::
 
 ::::{note}
@@ -42,29 +42,35 @@ Cold data tiers store time series data that's accessed infrequently and rarely u
 ### Best practices
 
 * **Retention in hot tier**: Keep data in the hot tier ({{ilm}} hot phase) for at least 24 hours. {{ilm-cap}} policies that move ingested data from the hot phase to another phase (for example, cold or frozen) in less than 24 hours may cause performance issues or rule execution errors.
-* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't have replicas by default, shard unavailability can cause partial rule run failures. Shard unavailability may also be encountered during or after {{stack}} upgrades. If this happens, you can manually rerun rules over the affected time period once the shards are available.
+* **Replicas for mission-critical data**: Use replicas when data must stay highly available. Frozen tiers don't include replicas by default, so a missing shard can cause a partial rule run failure. The same can happen during or after a {{stack}} upgrade. When shards are healthy again, [manually rerun rules](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) for the time window that was affected.
+* **Timestamp override**: `@timestamp` holds the event time; `event.ingested` records when ingest finished. {{es}} tries to skip indices outside the rule's lookback. If `@timestamp` is wrong or in the future, those skips don't work—the rule searches extra indices without changing alerts. Elastic prebuilt rules apply a [timestamp override](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) to prefer `event.ingested` when it exists; do the same for custom rules where it makes sense. For pipeline delays and setting `event.ingested`, see [Troubleshoot ingest pipelines](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-symptoms-delayed).
 
 ### Limitations
 
-* To avoid rule failures, do not modify {{ilm}} policies for {{elastic-sec}}-controlled indices, such as alert and list indices.
-* Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least 24 hours before moving to cold or frozen tiers.
+* To avoid rule failures and UI loading errors, do not modify [{{ilm}} policies](/manage-data/lifecycle/index-lifecycle-management.md) for {{elastic-sec}}-controlled indices, such as alert indices and list indices.
+* Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least 24 hours before moving to cold or frozen data tiers.
 
 ### Exclusion options
 
 You have two options for excluding cold and frozen data from rules:
 
-* **Space-level setting (all rules)**: Configure the `excludedDataTiersForRuleExecution` [advanced setting](../get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) to exclude cold or frozen data from all rules in a {{kib}} space. This does not apply to {{ml}} rules. Only available on {{stack}}.
+* **Space-level setting (all rules)**: On {{stack}}, use [advanced settings](../get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) in the {{kib}} space to exclude `data_cold` or `data_frozen`. Two settings apply in different places; configure one or both:
 
-* **Per-rule Query DSL filter (individual rules)**: Add a Query DSL filter to the rule that ignores cold or frozen documents at query time. This gives you per-rule control and is described below.
+   * **`data_views:fields_excluded_data_tiers`**: For all [Data views](/explore-analyze/find-and-organize/data-views.md), excludes those tiers when {{es}} resolves field lists for the UI.
+   * **`securitySolution:excludedDataTiersForRuleExecution`**: For [Security rule types](/solutions/security/detect-and-alert/rule-types.md), excludes those tiers during rule execution (not used by {{ml}} rules).
 
-::::{important}
-* Per-rule Query DSL filters are not supported for {{esql}} and {{ml}} rules.
-* Even with this filter applied, indicator match and event correlation rules may still fail if a frozen or cold shard that matches the rule's index pattern is unavailable during rule execution. If failures occur, modify the rule's index patterns to only match indices containing hot-tier data.
-::::
+* **Per-rule Query DSL filter (individual rules)**: Add a boolean query in the Query DSL to the rule so it ignores cold or frozen documents at pre-filter query time. This gives you per-rule control and is described below.
+
+   ::::{important}
+   * Per-rule Query DSL filters are not supported for [{{esql}} rules](/solutions/security/detect-and-alert/esql.md) or [{{ml}} rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md).
+   * Even with this filter applied, indicator match and event correlation rules may still fail if a frozen or cold shard that matches the rule's index pattern is unavailable during rule execution. If failures occur, modify the rule's index patterns to only match indices containing hot-tier data.
+   ::::
 
 ### Sample Query DSL filters [query-dsl-filter-examples]
 
-Exclude frozen-tier documents:
+The {{es}} search pre-filter accepts only [boolean query](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) DSL. A [query string query](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md) does not work for this pre-filter.
+
+The snippets below match that requirement: each is a `bool` query whose `must_not` clause contains a `terms` filter on `_tier`, so cold or frozen-tier documents are excluded during the pre-filter. Change `_tier` if you need a different mix. This first snippet excludes only the frozen tier:
 
 ```console
 {
@@ -80,7 +86,7 @@ Exclude frozen-tier documents:
 }
 ```
 
-Exclude cold and frozen-tier documents:
+This snippet excludes both cold and frozen tiers:
 
 ```console
 {
@@ -102,5 +108,5 @@ To apply a filter, paste the Query DSL into the **Custom query** filter bar when
 
 This page covers per-rule data source settings. For broader configuration options:
 
-* **Change the defaults all rules inherit**: Modify the space-level [`securitySolution:defaultIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) setting to update the index patterns that new rules use by default.
+* **Change the defaults that all rules inherit**: Modify the space-level `securitySolution:defaultIndex` setting (see [Per-rule index patterns](#per-rule-index-patterns)) to update the index patterns that new rules use by default.
 * **Configure deployment-level data source settings**: Refer to [Advanced data source configuration](/solutions/security/detect-and-alert/advanced-data-source-configuration.md) for {{ccs}} setup and logsdb index mode compatibility.

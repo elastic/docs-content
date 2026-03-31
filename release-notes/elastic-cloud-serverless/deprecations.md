@@ -11,7 +11,7 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
-# March 9, 2026 [elastic-cloud-serverless-03092026-deprecations]
+## March 9, 2026 [elastic-cloud-serverless-03092026-deprecations]
 * Deprecated `Enable CCS Warning Privileges` in {{kib}} advanced settings. For more information, refer to [#252183]({{kib-pull}}252183).
 
 ## February 2, 2026 [elastic-cloud-serverless-02022026-deprecations]
