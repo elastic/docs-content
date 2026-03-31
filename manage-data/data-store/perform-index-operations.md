@@ -14,7 +14,7 @@ products:
 
 $$$manage-indices$$$
 
-Practicing good index management ensures your data is stored efficiently and cost-effectively. {{kib}}'s index management features offer a convenient way to view and [perform operations on](/manage-data/data-store/index-operations-reference.md) your cluster’s indices, [data streams](/manage-data/data-store/data-streams.md), [index and component templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md).
+Practicing good index management ensures your data is stored efficiently and cost-effectively. {{kib}}'s index management features offer a convenient way to view and [perform operations on](/manage-data/data-store/index-operations-reference.md) your cluster’s [indices](/manage-data/data-store/index-basics.md), [data streams](/manage-data/data-store/data-streams.md), [index and component templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md).
 
 :::{tip}
 All operations available on the **{{index-manage-app}}** page can also be performed using the {{es}} REST API. Refer to [Manage data from the command line](/manage-data/data-store/manage-data-from-the-command-line.md) for examples, or browse the [{{es}} index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) directly.

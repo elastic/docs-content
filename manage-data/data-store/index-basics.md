@@ -9,22 +9,22 @@ products:
   - id: cloud-serverless
 ---
 
-# Index basics
+# Index fundamentals
 
 An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. You can store many independent datasets side by side. 
 
-Behind the scenes, {{es}} divides each index into _shards_ and distributes them across the nodes in your cluster. The horizontal scaling of your _primary_ shard into _replica_ shards across other nodes allows your index to handle large volumes of traffic efficiently. Replica shards provide fault tolerance, keeping your data available even when an individual node's response fails.
+To store a document, you add it to a specific index. To search, you target one or more indices. {{es}} searches all data within them and returns any matching documents. You can target your data by index name, through an [alias](/manage-data/data-store/aliases.md) that points to one or more indices, or through a [data stream](/manage-data/data-store/data-streams.md) that routes requests to the appropriate backing indices.
 
-To store a document, you add it to a specific index. To search, you target one or more indices. {{es}} searches all data within them and returns any matching documents. You can target your data by index name, through an [alias](/manage-data/data-store/aliases.md) that points to one or more indices, or through a [data stream](/manage-data/data-store/data-streams.md) that routes requests to the appropriate backing indices. You interact with a data stream as a single named resource; it serves as a logical layer that organizes the multiple backing indices where your data is physically stored.
+Behind the scenes, {{es}} divides each index into _shards_ and distributes them across the nodes in your cluster. The horizontal scaling of your _primary_ shard into _replica_ shards across other nodes allows your index to handle large volumes of traffic efficiently. Replica shards provide fault tolerance, keeping your data available even when an individual node's response fails.
 
 This page explains the core parts of an index (_documents_, _mappings_, and _settings_), describes how {{es}} physically stores index data using _shards_, and highlights common design decisions.
 
-:::{note}
+:::{admonition} Indices in {{serverless-full}}
 :applies_to: {"serverless": "ga"}
 
 In {{serverless-full}}:
 * Shards, replicas, and nodes are fully managed for you. The platform automatically scales resources based on your workload, so you don't need to configure or monitor these details. The shard-related content on this page explains how {{es}} works under the hood.
-* Each project supports up to 15,000 indices. This limit helps ensure reliable performance and stability. If you need a higher limit, you can [request an increase](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#index-and-resource-limits). For index sizing recommendations, refer to [index sizing guidelines](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size).
+* Each project supports up to 15,000 total indices. This limit helps ensure reliable performance and stability. If you need a higher limit, you can [request an increase](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#index-and-resource-limits). For index sizing recommendations, refer to [index sizing guidelines](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size).
 
 :::
 
@@ -33,7 +33,7 @@ In {{serverless-full}}:
 An index is made up of the following components:
 
 * [**Documents**](#elasticsearch-intro-documents-fields): The JSON objects that hold your data, including system-managed metadata fields like `_index` and `_id`.
-* [**Mappings**](#elasticsearch-intro-documents-fields-mappings): Field-level definitions that control how data is indexed and queried. Understanding field types helps you write effective queries and avoid indexing problems.
+* [**Mappings**](#elasticsearch-intro-documents-fields-mappings): Definitions that specify field data types, and control how data is indexed and queried. Understanding field data types helps you write effective queries and avoid indexing problems.
 * [**Settings**](#index-settings): Index-level configuration such as shard count, replica count, and refresh interval that controls storage and performance behavior.
 
 ### Documents [elasticsearch-intro-documents-fields]
@@ -42,7 +42,7 @@ An index is made up of the following components:
 
 A simple {{es}} document might look like this:
 
-```js
+```json
 {
   "_index": "my-first-elasticsearch-index", <1>
   "_id": "DyFpo5EBxE8fzbb95DOa", <1>
@@ -74,7 +74,7 @@ A simple {{es}} document might look like this:
 Each index has a [mapping](/manage-data/data-store/mapping.md) that defines the [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
 
 For example, the following mapping defines field types for a few common data types:
-```js
+```json
 {
   "properties": {
     "email":      { "type": "keyword" },
@@ -110,7 +110,7 @@ There are two types of shards:
 * **Primary shards**: Every document belongs to exactly one primary shard. The number of primary shards is fixed at index creation, either through an [index template](/manage-data/data-store/templates.md) or the [`index.number_of_shards`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-number-of-shards) setting in the create index request.
 * **Replica shards**: Copies of primary shards that provide redundancy and serve read requests. You can adjust the number of replicas at any time using the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) setting.
 
-By distributing shards across multiple nodes, {{es}} can scale horizontally and continue operating even when individual nodes fail. For a detailed explanation of this distributed model, refer to [Clusters, nodes, and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
+By distributing shards across multiple nodes, {{es}} can scale horizontally and continue operating even when individual nodes fail. For a detailed explanation of this distributed model, refer to [](/deploy-manage/distributed-architecture.md).
 To learn how {{es}} coordinates reads and writes across primary and replica shards, refer to [Reading and writing documents](/deploy-manage/distributed-architecture/reading-and-writing-documents.md).
 
 
@@ -121,7 +121,7 @@ Setting up your {{es}} indices involves making some design decisions about the i
 When working with indices, you typically make decisions that focus on:
 
 * **Naming and aliases**: Use clear naming patterns for your indices and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
-* **Mapping strategy**: Use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping/explicit-mapping.md) for production use cases. Choosing the right [field type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) upfront matters because it controls what queries and aggregations are available, and [changing a field type later requires reindexing](/manage-data/data-store/mapping/update-mappings-examples.md).
+* **Mapping strategy**: Use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping/explicit-mapping.md) for production use cases. Choosing the right [field type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) up front matters because it controls what queries and aggregations are available, and [changing a field type later requires reindexing](/manage-data/data-store/mapping/update-mappings-examples.md).
 * **Index or data stream**: Use a regular index when you need frequent updates or deletes. For append-only, time series data such as logs, events, and metrics, use a [data stream](/manage-data/data-store/data-streams.md) instead, since data streams manage rolling indices automatically.
 * **Shard sizing**: For production workloads, the number and size of shards affect query speed and cluster stability. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for guidelines.
 * **Data lifecycle**: Decide how long to keep data, when to move it to cheaper tiers, and when to delete it. Refer to [Data lifecycle](/manage-data/lifecycle.md) for more information.
