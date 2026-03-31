@@ -238,6 +238,14 @@ While query logging is designed to have as little impact on the performance of y
 
 Query logging uses an asynchronous logging mechanism that does not block query execution. As a result, if there are too many incoming queries and the logging system can not store all the logs fast enough, some log entries may be lost. If that is a problem, consider increasing the thresholds to only log the most impactful queries. 
 
+### Migrating from other logging solutions
+
+Query logging provides functionality that supersedes the functionality of [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) and [ESQL query logging](elasticsearch://reference/query-languages/esql/esql-query-log.md). Thus, we recommend migrating from using those features to query logging, which provides more comprehensive and robust logging. Migrating to query logging is as simple as [enabling query logging](#configure-query-logging), setting the thresholds (for slow logs), and disabling the old logging, and then switching to use [the new logs](#finding-query-logs). The format of the logs is still JSON, though there may be slight differences in the field names - please refer to the documentation and examples above for details. The following differences exist between the old logging and new query logging:
+- Only query operations are presently supported, and not indexing operations, unlike slow logs.
+- There is no option to enable logging per-index.  
+- Only one threshold level is supported, there is no multi-level logging depending on multiple thresholds.
+
+
 ## Learn more [_learn_more]
 
 To learn about other ways to optimize your search requests, refer to [tune for search speed](/deploy-manage/production-guidance/optimize-performance/search-speed.md).
