@@ -20,11 +20,11 @@ You can find SIEM Readiness in the **Launchpad** section of the {{security-app}}
 :alt: The SIEM Readiness page open to the Coverage tab
 :screenshot:
 :::
-
+<!--
 ## Requirements [siem-readiness-requirements]
 
 [TODO: Confirm RBAC requirements. Likely needs specific Kibana privileges. Update this section with exact role/privilege requirements once confirmed.]
-
+-->
 ## The four pillars [siem-readiness-pillars]
 
 SIEM Readiness organizes your data health assessment into four pillars. Each one appears as a summary card at the top of the page showing its current status: **Healthy** or **Actions required**. Select any pillar's tab to view its details.
