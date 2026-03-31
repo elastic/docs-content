@@ -48,7 +48,7 @@ To get started, you need the following:
 * A set of virtual or physical hosts on which to install each stack component.
 * On each host, a user account with `sudo` privileges, and `curl` installed.
 
-The examples in this guide use RPM Package Manager (RPM) packages to install the {{stack}} {{version.stack}} components on hosts running Red Hat Enterprise Linux or a compatible distribution such as Rocky Linux.
+The examples in this guide use RPM Package Manager (RPM) packages to install the {{stack}} {{version.stack}} components on hosts running Red Hat Enterprise Linux or a compatible distribution such as Rocky Linux. For instructions on other installation methods, refer to [Install {{es}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
 
 For the full list of supported operating systems and platforms, refer to the [Elastic Support Matrix](https://www.elastic.co/support/matrix).
 
@@ -261,7 +261,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
        "number" : "{{version.stack}}",
        "build_flavor" : "default",
        "build_type" : "rpm",
-       "build_snapshot" : false
+       ...
      },
      "tagline" : "You Know, for Search"
    }
@@ -467,7 +467,7 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
             "number" : "{{version.stack}}",
             "build_flavor" : "default",
             "build_type" : "rpm",
-            "build_snapshot" : false
+            ...
             },
             "tagline" : "You Know, for Search"
         }
