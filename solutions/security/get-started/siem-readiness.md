@@ -2,9 +2,9 @@
 navigation_title: SIEM Readiness
 description: Use SIEM Readiness to assess your security data posture across four dimensions — coverage, quality, continuity, and retention — and take guided actions to close gaps.
 applies_to:
-  stack: preview 9.4
+  stack: beta 9.4
   serverless:
-    security: preview
+    security: beta
 products:
   - id: security
   - id: cloud-serverless
@@ -16,7 +16,10 @@ SIEM Readiness gives you a centralized view of your security data health across 
 
 You can find SIEM Readiness in the **Launchpad** section of the {{security-app}} navigation menu, alongside **Get started** and **Value report**.
 
-[Screenshot suggestion: Full SIEM Readiness page showing the four pillar summary cards at the top, with the Coverage tab active. Capture the summary bar that shows each pillar's status (Healthy or Actions required).]
+:::{image} /solutions/images/security-siem-readiness-1.png
+:alt: The SIEM Readiness page open to the Coverage tab
+:screenshot:
+:::
 
 ## Requirements [siem-readiness-requirements]
 

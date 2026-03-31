@@ -221,12 +221,12 @@ Quickly add security integrations that can ingest data and monitor your hosts.
 ### SIEM Readiness [security-ui-siem-readiness]
 
 ```yaml {applies_to}
-stack: preview 9.4
+stack: beta 9.4
 serverless:
-  security: preview
+  security: beta
 ```
 
-Assess your security data posture across four dimensions — coverage, quality, continuity, and retention — and take guided actions to close gaps. Refer to [SIEM Readiness](/solutions/security/get-started/siem-readiness.md) for more information.
+Assess your security data posture across four dimensions: coverage, quality, continuity, and retention. Take guided actions to close gaps. Refer to [SIEM Readiness](/solutions/security/get-started/siem-readiness.md) for more information.
 
 ### Developer tools [security-ui-dev-tools]
 
