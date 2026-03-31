@@ -1,6 +1,6 @@
 ---
 navigation_title: SIEM Readiness
-description: Use SIEM Readiness to assess your deployment across four dimensions—coverage, quality, continuity, and retention—and take guided actions to close gaps.
+description: Use SIEM Readiness to assess your security data posture across four dimensions — coverage, quality, continuity, and retention — and take guided actions to close gaps.
 applies_to:
   stack: preview 9.4
   serverless:
@@ -90,7 +90,7 @@ Expand a category to see individual pipelines with their ingestion counts, faile
 
 The Retention pillar answers: *Do your index lifecycle policies meet recommended retention periods?*
 
-Retention checks whether your indices comply with recommended baselines. In 9.4, these baselines are based on FedRAMP requirements. Each log category shows:
+Retention checks whether your indices comply with recommended baselines. In 9.4, these baselines are based on Federal Risk and Authorization Management Program (FedRAMP) requirements. Each log category shows:
 
 - **Status**: **Healthy** or **Actions required**
 - **Indices**: The number of indices in the category
