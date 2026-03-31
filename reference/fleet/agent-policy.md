@@ -64,6 +64,7 @@ Hosted policies display a lock icon in the {{fleet}} UI, and actions are restric
 | [Configure secret values in a policy](#agent-policy-secret-values) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Set the maximum CPU usage](#agent-policy-limit-cpu) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Set the {{agent}} log level](#agent-policy-log-level) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Configure log file rotation and retention](#agent-policy-log-file-rotation-retention) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Change the {{agent}} binary download location](#agent-binary-download-settings) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Set the {{agent}} host name format](#fleet-agent-hostname-format-settings) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Set an unenrollment timeout for inactive agents](#fleet-agent-unenrollment-timeout) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
@@ -367,6 +368,30 @@ You can also set the log level for an individual agent:
    - {applies_to}`stack: ga =9.0` On the agent's **Logs** tab.
 
 3. Set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
+
+
+## Configure log file rotation and retention [agent-policy-log-file-rotation-retention]
+
+You can configure log file rotation and retention settings for {{agents}} enrolled in the selected policy. These settings control how {{agents}} manage their log files, including file size limits, the number of files to keep, and time-based rotation intervals.
+
+To configure log file rotation and retention:
+
+1. In {{fleet}}, click **Agent policies**. Select the name of the policy you want to edit.
+2. Click the **Settings** tab and scroll to **Advanced settings**.
+3. Configure the file logging settings as needed:
+
+::::{note}
+The fields are empty by default. When left empty, the values are set by {{agent}}. The default {{agent}} values are shown in the following table for reference.
+::::
+
+| Setting | Description |
+| ------- | ----------- |
+| **Agent logging to files** | When enabled, agents enrolled in the policy write logs to rotating files. |
+| **Agent logging file size limit** | The maximum size limit of a log file in bytes. When the limit is reached, a new log file is generated automatically.<br><br>Agent default value: `10485760` (10 MB) |
+| **Agent logging number of files** | The number of rotated log files to keep on disk. When this limit is reached, the oldest files are deleted first during log rotation. The value must be an integer between `2` and `1024`.<br><br>Agent default value: `7`|
+| **Agent logging file rotation interval** | Enables log file rotation on time intervals in addition to size-based rotation. Specify a duration string such as `1s`, `1m`, `1h`, or `24h`. Time intervals of `1m`, `1h`, `24h`, `7*24h`, `30*24h`, and `365*24h` are boundary-aligned with minutes, hours, days, weeks, months, and years as reported by the local system clock. All other intervals are calculated from the Unix epoch.<br><br>Agent default value: `0` (Deactivated) |
+
+4. Save your changes.
 
 
 ## Change the {{agent}} binary download location [agent-binary-download-settings]
