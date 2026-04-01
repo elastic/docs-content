@@ -21,6 +21,10 @@ When a {{cps}} query reaches a linked project, the system verifies the user's id
 
 For example, if a user has read access to the `logs` index in Project B but not in Project C, a {{cps}} for `logs` returns documents from Project B and silently excludes Project C.
 
+For additional information, refer to [{{cps-init}} security](/explore-analyze/cross-project-search.md#security).
+
+% TODO ^^ snippetize from E&A
+
 ### Administrator tasks
 
 - Make sure that users who need to search across linked projects have a [role assigned](/deploy-manage/users-roles.md) on each linked project they need to access. Authorization is evaluated on the linked project, without regard to the origin project.
