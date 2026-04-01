@@ -92,10 +92,10 @@ The flyout provides detailed information about the selected query:
 - **Task ID** and **query type** badge
 - **Start time** and **Run time**
 - **Indices**: the number of indices the query targets
-- **Trace ID**: when available, a link that opens Discover with the `trace.id` pre-filtered around the query start time, useful for correlating with other observability data
+- **Trace ID**: when available, a link that opens Discover with `trace.id` pre-filtered and a time range starting 10 minutes before the query began
 - **Source**: the originating {{kib}} application (such as Discover or Dashboard), when available
 - **Query**: the full query text, displayed in a syntax-highlighted code block
-- **Opaque ID**: the raw `X-Opaque-Id` header value, when present. Source is derived from this header, but the full value is shown here for advanced troubleshooting.
+- **Opaque ID**: the raw `X-Opaque-Id` header value, when present. The **Source** field above is derived from this header.
 
 Use the navigation controls at the top of the flyout to browse through queries without returning to the list.
 
