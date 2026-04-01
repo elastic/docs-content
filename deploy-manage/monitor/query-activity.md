@@ -11,11 +11,11 @@ products:
 
 # Query activity
 
-When your cluster slows down, identifying which queries are consuming resources typically requires correlating task APIs and slow logs — a time-consuming process.
+When your cluster slows down, identifying which queries are consuming resources typically requires correlating task APIs and slow logs, which can be time-consuming.
 The **Query activity** page in {{kib}} gives you a real-time view of all search work running in your {{es}} cluster, so you can quickly find long-running or resource-intensive queries, trace them back to their source, and cancel them when needed.
 
 Query activity surfaces search tasks from all query languages, including ES|QL, DSL, EQL, SQL, and multi-search requests.
-It shows only what is currently running — for historical query data, use [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) or [AutoOps](/deploy-manage/monitor/autoops.md).
+It shows only what is currently running. For historical query data, use [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) or [AutoOps](/deploy-manage/monitor/autoops.md).
 
 :::{image} /deploy-manage/images/query-activity.png
 :alt: The Query activity page showing a list of running queries with their task ID, query type, source, start time, and run time
