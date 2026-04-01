@@ -13,7 +13,7 @@ products:
 
 # Infrastructure [observability-apm-infrastructure]
 
-The **Infrastructure** tab provides information about the containers, pods, and hosts that the selected service is linked to. The data sources and navigation behavior depend on whether the service is instrumented with [Elastic {{product.apm}}](#elastic-apm-instrumented-services) or [OpenTelemetry (OTel)](#otel-instrumented-services).
+The **Infrastructure** tab provides information about the containers, pods, and hosts that the selected service is linked to. The data sources and navigation behavior depend on whether the service is instrumented with [Elastic {{product.apm}}](#elastic-productapm-instrumented-services) or [OpenTelemetry (OTel)](#otel-instrumented-services).
 
 IT ops and software reliability engineers (SREs) can use this tab to quickly find a service’s underlying infrastructure resources when debugging a problem. Knowing what infrastructure is related to a service allows you to remediate issues by restarting, killing hanging instances, changing configuration, rolling back deployments, scaling up, scaling out, and so on.
 
