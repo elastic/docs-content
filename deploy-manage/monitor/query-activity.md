@@ -1,4 +1,5 @@
 ---
+type: how-to
 applies_to:
   stack: preview 9.4
   serverless: unavailable
