@@ -53,7 +53,7 @@ PUT semantic-embeddings
 }
 ```
 
-1. The `semantic_text` field with the `semantic_text` field type to create and store vector embeddings. Under the hood, it uses an {{infer}} endpoint to generate the embeddings. If you don’t specify the `inference_id` parameter (as in the example above), the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used.
+1. The `semantic_text` field with the `semantic_text` field type to create and store vector embeddings. The [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used.
 2. The `content` field with the `text` field type to store plain text. This field is used for keyword search.
 3. Values indexed into `content` are copied to `semantic_text` and processed by the default {{infer}} endpoint.
 
