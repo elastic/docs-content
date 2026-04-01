@@ -155,7 +155,7 @@ Run a search using the [Search API]({{es-apis}}operation/operation-search).
 The JSON body defines a hybrid query, where an RRF retriever combines two standard retrievers running [match queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) on `content` and `semantic_text` fields.
 
 ::::{note}
-An [RRF retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/rrf-retriever.md) returns top documents based on the RRF formula, combining two or more child retrievers. This enables hybrid search by combining results from both keyword-based and semantic queries into a single ranked list.
+An [RRF retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/rrf-retriever.md) returns top documents based on the RRF formula. This enables hybrid search by combining results from both keyword-based and semantic queries into a single ranked list.
 ::::
 
 ```console
