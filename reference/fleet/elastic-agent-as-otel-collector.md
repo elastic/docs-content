@@ -10,9 +10,9 @@ products:
 
 # {{agent}} as an OpenTelemetry Collector [elastic-agent-otel-collector]
 
-Starting with version 9.3, {{agent}} runs the [Elastic Distribution of OpenTelemetry (EDOT) Collector](elastic-agent://reference/edot-collector/index.md). Rather than managing separate {{beats}} sub-processes, the agent collects data through an embedded OpenTelemetry (OTel) Collector process, leveraging the extensibility and interoperability of the OTel ecosystem. This architecture brings OTel capabilities while maintaining compatibility with existing {{beats}}-based workflows and integrations.
+Starting with version 9.2, {{agent}} runs the [Elastic Distribution of OpenTelemetry (EDOT) Collector](elastic-agent://reference/edot-collector/index.md). Rather than managing separate {{beats}} sub-processes, the agent collects data through an embedded OpenTelemetry (OTel) Collector process, leveraging the extensibility and interoperability of the OTel ecosystem. This architecture brings OTel capabilities while maintaining compatibility with existing {{beats}}-based workflows and integrations.
 
-This transition is incremental: in 9.3, agent self-monitoring uses the OTel runtime by default, while data collection inputs will be migrated to run as OTel receivers over subsequent releases. Existing integrations and agent configurations continue to work without disruption.
+This transition is incremental: in 9.2, agent self-monitoring uses the OTel runtime by default, while data collection inputs will be migrated to run as OTel receivers over subsequent releases. Existing integrations and agent configurations continue to work without disruption.
 
 ## Architecture overview [architecture-overview]
 
@@ -24,7 +24,7 @@ With the new {{agent}} OTel Collector architecture:
 * Instead of running as individual {{beats}} processes, Beat inputs can run inside the EDOT Collector as [Beat receivers](#beat-receivers).
 * {{agent}} leverages OTel receivers and pipelines to ingest, process, and export telemetry data in a unified, standard manner within a single OTel Collector process, reducing the agent's footprint.
 * OTel-native receivers and pipelines run in the same Collector alongside Beat receivers.
-* Backward compatibility is preserved: existing {{beats}}-based integrations continue to work through Beat receivers without configuration changes.
+* Backward compatibility is preserved: existing {{beats}}-based integrations continue to work through Beat receivers without configuration changes or changes to the collected data.
 
 :::{image} images/elastic-agent-otel-architecture.png
 :alt: Diagram showing data ingestion with Beat receivers and OTel receivers as part of an OTel Collector
@@ -107,14 +107,15 @@ receivers:
             - https://example.com
 
 exporters:
-  debug/default:
-    verbosity: detailed
+  elasticsearch/default:
+    endpoints: [127.0.0.1:9200]
+    api_key: "your-api-key”
 
 service:
   pipelines:
     metrics/httpcheck-6d24bb0d-5349-4714-a7ea-2088abcb928b:
       receivers: [httpcheck/httpcheck-6d24bb0d-5349-4714-a7ea-2088abcb928b]
-      exporters: [debug/default]
+      exporters: [elasticsearch/default]
 ```
 
 ## OpenTelemetry integrations [otel-integrations]
