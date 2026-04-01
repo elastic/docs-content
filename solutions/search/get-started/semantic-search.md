@@ -72,7 +72,7 @@ PUT semantic-embeddings
 ::::
 ::::{step} Index documents
 
-Index sample documents with the [bulk API]({{es-apis}}operation/operation-bulk). You only need to provide the content to the `content` field. The `copy_to` field populates `semantic_text` and triggers embedding generation.
+Index documents with the [bulk API]({{es-apis}}operation/operation-bulk). You only need to provide the content to the `content` field. The `copy_to` field populates `semantic_text` and triggers embedding generation.
 
 ```console
 POST _bulk
