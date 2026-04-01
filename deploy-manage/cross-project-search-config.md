@@ -57,7 +57,7 @@ During technical preview, only newly created projects can be origin projects for
 
 You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same {{ecloud}} organization. {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
-Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects). If a project you expected to link to is missing from the list, it might not be meet the requirements, or you might not have the necessary [permissions](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access) on the linked project.
+Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects). If a project you expected to link to is missing from the list, it might not meet the requirements, or you might not have the necessary [permissions](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access) on the linked project.
 
 % TODO cf https://github.com/elastic/docs-content/pull/5190
 

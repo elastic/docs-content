@@ -4,16 +4,18 @@ applies_to:
   serverless: preview
 products:
   - id: cloud-serverless
-navigation_title: "Impacts and limitations"
+navigation_title: "Feature impacts and limitations"
 ---
 
-# {{cps-cap}} impacts and limitations [cps-impacts-and-limitations]
+# {{cps-cap}} feature impacts and limitations [cps-impacts-and-limitations]
 
 This page explains how setting up {{cps}} ({{cps-init}}) affects features in the origin project, and lists overall limitations of {{cps-init}}.
 
 For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cross-project-search-config.md). For information about _using_ {{cps-init}}, refer to [](/explore-analyze/cross-project-search.md).
 
 ## Feature impacts [cps-feature-impacts]
+
+When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project. Review these impacts before you set up {{cps-init}}.
 
 % TODO billing, subscriptions, licensing
 % TODO compare to alerting impacts doc
