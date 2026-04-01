@@ -51,9 +51,9 @@ To limit searches, you can configure a [default {{cps}} scope](/deploy-manage/cr
 
 On the origin project's **{{cps-cap}}** page, you can reconfigure {{cps}} as needed:
 
-- **Link additional projects:**  Click **Link projects** to add more linked projects, up to the 20-project maximum per origin project.
+- **Link additional projects:**  Click **Link projects** to add more linked projects, up to the 20-project maximum for the origin project.
 - **Unlink projects:** Remove connections by [unlinking projects](#cps-unlink-projects).
-- **Open space settings in {{kib}}:**  Click **Manage spaces** to set or adjust the default [{{cps-init}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-search-scope) for the space.
+- **Open space settings in {{kib}}:**  Click **Manage spaces** to set or adjust the default [{{cps-init}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space.
 
 ## Unlink projects [cps-unlink-projects]
 

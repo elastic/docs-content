@@ -66,6 +66,7 @@ The following actions change the scope of {{cps}}es:
   - Setting the [default {{cps}} scope for a space](#cps-default-search-scope)
   - Adjusting [user permissions](#manage-user-access) using roles or API keys (for example, creating {{ecloud}} API keys that span multiple projects)
 - **User actions:**
+  - Using the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the project header
   - Using [qualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)
   - Using [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)
 

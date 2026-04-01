@@ -97,17 +97,7 @@ The overview project model is strongly recommended and appropriate for most {{cp
 After reviewing the architecture patterns, you can configure {{cps-init}} scope and manage linked projects:
 
 * [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
-* [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects and configure the default {{cps}} scope per space.
-* [Impacts and limitations](#cps-feature-impacts): Understand how {{cps}} affects alerting, dashboards, and other features, and review current limitations.
-
-## Using {{cps-init}} 
-
-After you configure {{cps}} and link projects, users can start searching across linked projects from the origin project. For search syntax, scope controls, and examples, refer to the following pages:
-
-* [{{cps-cap}} overview](/explore-analyze/cross-project-search.md): Default search behavior, security model, supported APIs, and examples.
-* [Manage {{cps-init}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Control which projects are searched from Discover, Dashboards, and other {{kib}} apps.
-
-For information about API key requirements for {{cps-init}}, refer to [Programmatic access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-programmatic-access).
+* [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects, configure the default {{cps}} scope for each space, and review programmatic access requirements.
 
 ### Feature impacts [cps-feature-impacts]
 
@@ -130,6 +120,14 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
+
+
+## Using {{cps-init}} 
+
+After you configure {{cps}} and link projects, users can start searching across linked projects from the origin project. For search syntax, scope controls, and examples, refer to the following pages:
+
+* [{{cps-cap}} overview](/explore-analyze/cross-project-search.md): Default search behavior, security model, supported APIs, and examples.
+* [Manage {{cps-init}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Control which projects are searched from Discover, Dashboards, and other {{kib}} apps.
 
 
 % Parking lot
