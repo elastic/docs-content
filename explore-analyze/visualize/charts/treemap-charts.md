@@ -203,7 +203,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["extension.keyword"],
-      "size": 6                                                                    <3>
+      "limit": 6                                                                    <3>
     }
   ]
 }'
@@ -256,12 +256,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["Carrier"],                                                       <1>
-      "size": 5
+      "limit": 5
     },
     {
       "operation": "terms",
       "fields": ["DestCountry"],                                                   <2>
-      "size": 5
+      "limit": 5
     }
   ]
 }'
@@ -317,7 +317,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["host.keyword"],                                                  <1>
-      "size": 3
+      "limit": 3
     },
     {
       "operation": "filters",                                                      <2>

@@ -134,7 +134,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "breakdown_by": {                                                                                <2>
         "operation": "terms",
         "fields": ["agent.keyword"],
-        "size": 5
+        "limit": 5
       }
     }
   ]
@@ -365,7 +365,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "breakdown_by": {                                                                                <2>
         "operation": "terms",
         "fields": ["geo.dest"],
-        "size": 5
+        "limit": 5
       }
     }
   ]

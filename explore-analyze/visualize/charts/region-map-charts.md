@@ -155,7 +155,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "region": {
     "operation": "terms",
     "fields": ["geo.dest"],                                                        <2>
-    "size": 50                                                                     <3>
+    "limit": 50                                                                     <3>
   }
 }'
 ```
@@ -203,7 +203,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "region": {
     "operation": "terms",
     "fields": ["geoip.country_iso_code"],                                          <2>
-    "size": 50
+    "limit": 50
   }
 }'
 ```
@@ -250,7 +250,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "region": {
     "operation": "terms",
     "fields": ["DestCountry"],                                                     <2>
-    "size": 50
+    "limit": 50
   }
 }'
 ```
