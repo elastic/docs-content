@@ -41,6 +41,10 @@ To open **Query activity**, go to **{{stack-manage-app}} → Cluster performance
 The **Query activity** page lists all in-flight search tasks in your cluster.
 The list does not auto-refresh. Select **Refresh** to update the data. The time of the last refresh is displayed next to the button.
 
+:::{tip}
+Searches that users [send to the background](/explore-analyze/discover/background-search.md) from Discover or Dashboards also appear on this page as **Async search** queries. Background search lets users queue their own Discover and Dashboards long-running searches and return to view results later, while Query activity gives administrators cluster-wide visibility to monitor and manage all running queries.
+:::
+
 The table displays the following columns:
 
 **Task ID**
@@ -50,8 +54,7 @@ The table displays the following columns:
 :   The query language used: ES|QL, DSL, EQL, SQL, MSearch, Async search, or Other.
 
 **Source**
-:   The {{kib}} saved object that originated the query, such as a dashboard or a Discover session.
-    Select the source link to open the originating saved object in a new tab.
+:   The {{kib}} application that originated the query, such as Discover or Dashboard. This value is extracted from the `X-Opaque-Id` header set by {{kib}}.
     If the source can't be determined, *Not available* is displayed.
     For more information about tracing queries, refer to [Trace an Elasticsearch query to its origin in Kibana](docs-content://troubleshoot/kibana/trace-elasticsearch-query-to-the-origin-in-kibana.md).
 
@@ -70,8 +73,8 @@ You can narrow down the list of running queries using several filters:
 
 - **Search bar**: Enter any text to match against table contents, including task IDs.
 - **Run time**: Set a minimum run time threshold to surface only queries that have been running longer than a specific duration.
-- **Query type**: Filter by one or more query languages (ES|QL, DSL, EQL, SQL, and others).
-- **Source**: Filter by one or more originating {{kib}} applications (Discover, Dashboard, and others).
+- **Query type**: Filter by one or more query languages. The available options depend on the types of queries currently running.
+- **Source**: Filter by one or more originating applications. The available options depend on the sources of queries currently running.
 
 ## Inspect query details
 
@@ -89,7 +92,7 @@ The flyout provides detailed information about the selected query:
 - **Start time** and **Run time**
 - **Indices**: the number of indices the query targets
 - **Trace ID**: when available, a link that opens Discover with the `trace.id` pre-filtered around the query start time
-- **Source**: a link to the originating {{kib}} saved object
+- **Source**: the originating {{kib}} application, when available
 - **Query**: the full query text, displayed in a syntax-highlighted code block
 - **Opaque ID**: the `X-Opaque-Id` header value, when present
 
@@ -106,7 +109,7 @@ You can cancel a running query from the table or from the query details flyout.
     Canceling a query is irreversible. The query stops running and any partial results are discarded.
     :::
 
-3. After confirmation, the UI displays a "Cancelling the query..." status until {{es}} confirms the task has stopped.
+3. After confirmation, the UI displays a cancellation status until {{es}} confirms the task has stopped.
 
 A toast notification confirms when the cancel request has been submitted.
 
