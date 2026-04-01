@@ -1,6 +1,6 @@
 ---
 navigation_title: Vector search
-description: An introduction to semantic search in Elasticsearch.
+description: An introduction to vector search in Elasticsearch.
 applies_to:
   serverless: all
   stack: all
