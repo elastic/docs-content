@@ -105,4 +105,4 @@ When processing a search request, {{kib}} applies the most specific scope settin
 2. **Session scope:** The scope set by the user using the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the project header. This selection persists as the user navigates between apps, and resets to the space default when a new session starts.
 3. **Space default (least specific):** The [default {{cps}} scope](#cps-default-search-scope) configured for the space. If no default is explicitly configured, the space default is **All projects** (origin project and all linked projects).
 
-For details on which {{kib}} apps support the scope selector and query-level overrides, refer to [{{cps-cap}} availability by app](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
+For more information, refer to [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
