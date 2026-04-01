@@ -12,7 +12,6 @@ products:
 
 # Query activity
 
-When your cluster slows down, identifying which queries are consuming resources typically requires correlating task APIs and slow logs, which can be time-consuming.
 The **Query activity** page in {{kib}} gives you a real-time view of all search work running in your {{es}} cluster, so you can quickly find long-running or resource-intensive queries, trace them back to their source, and cancel them when needed.
 
 Query activity surfaces search tasks from all query languages, including ES|QL, DSL, EQL, SQL, and multi-search requests.
@@ -67,7 +66,7 @@ The table displays the following columns:
 :   How long the query has been running.
 
 **Actions**
-:   A cancel button to request cancellation of the query. This button is only available if you have the required privileges.
+:   A cancel button to request cancellation of the query. This button is only available if you have the [required privileges](#prerequisites).
 
 ### Filter the query list
 
@@ -81,7 +80,6 @@ You can narrow down the list of running queries using several filters:
 ## Inspect query details
 
 Select a task ID from the table to open the **Query details** flyout.
-The flyout provides detailed information about the selected query:
 
 % TODO: replace with a final screenshot before GA
 :::{image} /deploy-manage/images/query-activity-flyout.png
@@ -89,6 +87,8 @@ The flyout provides detailed information about the selected query:
 :screenshot:
 :width: 66%
 :::
+
+The flyout provides detailed information about the selected query:
 
 - **Task ID** and **query type** badge
 - **Start time** and **Run time**

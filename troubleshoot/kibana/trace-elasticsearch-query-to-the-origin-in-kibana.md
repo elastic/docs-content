@@ -17,7 +17,7 @@ products:
 Sometimes the {{es}} server might be slowed down by the execution of an expensive query. Such queries are logged to {{es}}'s [search slow log](/deploy-manage/monitor/logging-configuration/slow-logs.md#enable-slow-log) file. But there is a problem: it's impossible to say what triggered a slow search request—a {{kib}} instance or a user accessing an {{es}} endpoint directly. To simplify the investigation of such cases, the search slow log file includes the `x-opaque-id` header, which might provide additional information about a request if it originated from {{kib}}.
 
 :::{tip}
-You can also use the [Query activity](/deploy-manage/monitor/query-activity.md) page in {{kib}} to view all currently running queries, inspect their details including source and `X-Opaque-Id`, and cancel long-running queries directly from the UI.
+You can also use the [Query activity](/deploy-manage/monitor/query-activity.md) page in {{kib}} to view all currently running queries, inspect details such as source and `X-Opaque-Id`, and cancel long-running queries directly from the UI.
 :::
 
 ::::{warning}
