@@ -11,10 +11,11 @@ products:
 
 # Query activity
 
-The **Query activity** page in {{kib}} provides real-time visibility into queries currently running in your {{es}} cluster.
-Use it to identify long-running or resource-intensive queries, inspect their details, trace them back to their source, and cancel them when needed.
+When your cluster slows down, identifying which queries are consuming resources typically requires correlating task APIs and slow logs — a time-consuming process.
+The **Query activity** page in {{kib}} gives you a real-time view of all search work running in your {{es}} cluster, so you can quickly find long-running or resource-intensive queries, trace them back to their source, and cancel them when needed.
 
 Query activity surfaces search tasks from all query languages, including ES|QL, DSL, EQL, SQL, and multi-search requests.
+It shows only what is currently running — for historical query data, use [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) or [AutoOps](/deploy-manage/monitor/autoops.md).
 
 :::{image} /deploy-manage/images/query-activity.png
 :alt: The Query activity page showing a list of running queries with their task ID, query type, source, start time, and run time
@@ -91,10 +92,10 @@ The flyout provides detailed information about the selected query:
 - **Task ID** and **query type** badge
 - **Start time** and **Run time**
 - **Indices**: the number of indices the query targets
-- **Trace ID**: when available, a link that opens Discover with the `trace.id` pre-filtered around the query start time
-- **Source**: the originating {{kib}} application, when available
+- **Trace ID**: when available, a link that opens Discover with the `trace.id` pre-filtered around the query start time, useful for correlating with other observability data
+- **Source**: the originating {{kib}} application (such as Discover or Dashboard), when available
 - **Query**: the full query text, displayed in a syntax-highlighted code block
-- **Opaque ID**: the `X-Opaque-Id` header value, when present
+- **Opaque ID**: the raw `X-Opaque-Id` header value, when present. Source is derived from this header, but the full value is shown here for advanced troubleshooting.
 
 Use the navigation controls at the top of the flyout to browse through queries without returning to the list.
 
