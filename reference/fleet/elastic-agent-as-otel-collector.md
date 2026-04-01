@@ -1,7 +1,7 @@
 ---
 navigation_title: Elastic Agent as an OTel Collector
 applies_to:
-  stack: ga 9.3+
+  stack: ga 9.2+
   serverless: ga
 products:
   - id: fleet
@@ -31,7 +31,9 @@ With the new {{agent}} OTel Collector architecture:
 :::
 
 :::{note}
-In {{agent}} 9.3 and later, the component that implements {{beats}}-based integrations is named `elastic-otel-collector`. For more information, refer to [{{agent}} installation flavors](/reference/fleet/install-elastic-agents.md#elastic-agent-installation-flavors).
+:applies_to: stack: ga 9.3+
+
+The component that implements {{beats}}-based integrations is named `elastic-otel-collector`. For more information, refer to [{{agent}} installation flavors](/reference/fleet/install-elastic-agents.md#elastic-agent-installation-flavors).
 :::
 
 ## Beat receivers [beat-receivers]
@@ -52,9 +54,17 @@ The data path works as follows:
 :alt: Diagram showing data ingestion with a Beat receiver
 :::
 
+:::{note}
+Output support for Beat receivers varies by {{agent}} version. Refer to [Configuration compatibility](#beat-receivers-compatibility) for details.
+:::
+
 ### Configuration compatibility [beat-receivers-compatibility]
 
-The introduction of Beat receivers does not require configuration changes. Upgrading to 9.3 changes the internal runtime of {{agent}} to use Beat receivers by default, but inputs and outputs remain consistent for integration data.
+The introduction of Beat receivers does not require configuration changes. Inputs and outputs remain consistent for integration data. The migration to Beat receivers is rolling out incrementally across {{agent}} versions:
+
+* {applies_to}`stack: ga 9.2+` Agent self-monitoring data (metrics and logs) uses Beat receivers by default with the {{es}} output.
+* {applies_to}`stack: ga 9.3+` Some metrics inputs use Beat receivers by default with the {{es}} output. For a list of the migrated inputs, refer to the [{{agent}} 9.3.0 release notes](elastic-agent://release-notes/index.md#elastic-agent-9.3.0-features-enhancements).
+* {applies_to}`stack: ga 9.4+` All metrics inputs use Beat receivers by default, with support for the {{es}}, {{ls}}, and Kafka outputs.
 
 **{{fleet}}-managed agents:** The same {{beats}}-based integration packages continue to work. These packages configure the relevant Beat receivers automatically. Assets such as dashboards, alerts, and ingest pipelines remain unchanged.
 
@@ -109,7 +119,7 @@ receivers:
 exporters:
   elasticsearch/default:
     endpoints: [127.0.0.1:9200]
-    api_key: "your-api-key”
+    api_key: "your-api-key"
 
 service:
   pipelines:
