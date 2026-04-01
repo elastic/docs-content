@@ -263,12 +263,14 @@ For more information, refer to the [Docker daemon configuration overview](https:
     After=multi-user.target
 
     [Service]
-    Environment="DOCKER_OPTS=-H unix:///run/docker.sock --data-root /mnt/data/docker --storage-driver=overlay2 --bip=172.17.42.1/16 --raw-logs --log-opt max-size=500m --log-opt max-file=10 --icc=false"
+    Environment="DOCKER_OPTS=-H unix:///run/docker.sock --data-root /mnt/data/docker --storage-driver=overlay2 --bip=172.17.42.1/16 --raw-logs --log-opt max-size=500m --log-opt max-file=10 --icc=false" <1>
     ExecStart=
     ExecStart=/usr/bin/dockerd $DOCKER_OPTS
     ```
+    1. You can adjust `--log-opt max-size` and `--log-opt max-file` to configure container log rotation settings for the Docker daemon.
+
     ::::{tip}
-    You can adjust `--log-opt max-size` and `--log-opt max-file` to configure container log rotation settings for the Docker daemon.
+    Alternatively, you can use `sudo systemctl edit docker` to create a systemd override file. This command automatically creates the appropriate directory and opens an editor for you to define the override configuration.
     ::::
 
     ::::{note}
