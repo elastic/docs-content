@@ -64,3 +64,9 @@ After you confirm, searches from the origin project will no longer include data 
 ::::{note}
 You can't delete a project that's linked to an origin project. To delete a linked project, first unlink it from every origin project it's connected to, then delete it.
 ::::
+
+## Link and unlink projects using APIs [cps-link-api]
+
+You can also link and unlink projects programmatically using the {{ecloud}} API. In the linking wizard, click **View API request** in the review step to see the equivalent API call for your current selection.
+
+For information about API key requirements for {{cps-init}}, refer to [Programmatic access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-programmatic-access).

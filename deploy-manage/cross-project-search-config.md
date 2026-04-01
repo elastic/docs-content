@@ -15,7 +15,7 @@ With {{cps}} ({{cps-init}}), users in your organization can search across multip
 
 * Setting up cross-project search doesn't require an understanding of your deployment architecture or complex security configurations.
 * Permissions stay consistent across projects, and you can always adjust scope and access as needed. 
-* Search is performed across projects by default, reducing the need to refactor your queries as you link additional projects.
+* Searches are performed across projects by default, reducing the need to refactor your queries as you link additional projects.
 
 This section explains how to set up and manage {{cps}} for your organization, including linking projects, managing user access, and refining scope. For information on using {{cps}}, including syntax and examples, refer to [](/explore-analyze/cross-project-search.md).
 
@@ -35,7 +35,7 @@ Projects are intended to act as logical namespaces for data, not hard boundaries
 ::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
 ::::
 
-You can also adjust the search scope by [configure the {{cps-init}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). You can set this space-level default before or after you link projects. 
+You can also adjust the search scope by [configuring the {{cps-init}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). You can set this space-level default before or after you link projects. 
 
 For details about project IDs and aliases (used in search expressions), refer to [Project IDs and aliases](/explore-analyze/cross-project-search.md#project-ids-and-aliases).
 
@@ -43,19 +43,24 @@ For details about project IDs and aliases (used in search expressions), refer to
 
 Before you configure {{cps}}, review these prerequisites and best practices:
 
-- You must be an organization owner, or a project administrator for both the origin project and all the projects you want to link to.
+- You must be an organization owner or project administrator:
+  - **Organization owners** can link any projects within the organization.
+  - **Project administrators** must have admin access on both the origin project and each linked project.
 - Your origin and linked projects must meet certain [requirements](#cps-compatibility).
 - Consider the [architecture patterns](#cps-arch) and choose the right linking topology for your organization.
 
-
-## Projects available for linking [cps-compatibility]
+### Projects available for linking [cps-compatibility]
 
 ::::{important} - Origin projects must be new
 :applies_to: serverless: preview
 During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be linked from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
 ::::
 
-You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same {{ecloud}} organization. {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
+To be available for linking, projects must meet the following requirements:
+
+- The origin project and all linked projects must be in the same {{ecloud}} organization. 
+- You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same organization.
+- {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
 Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects). If a project you expected to link to is missing from the list, it might not meet the requirements, or you might not have the necessary [permissions](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access) on the linked project.
 
@@ -95,13 +100,14 @@ After reviewing the architecture patterns, you can configure {{cps-init}} scope 
 * [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects and configure the default {{cps}} scope per space.
 * [Impacts and limitations](/deploy-manage/cross-project-search-config/cps-config-impacts-and-limitations.md): Understand how {{cps}} affects alerting, dashboards, and other features, and review current limitations.
 
-## Using APIs with {{cps-init}} [cps-apis]
+## Using {{cps-init}} 
 
-You can also link and unlink projects using the {{ecloud}} API. In the linking wizard, click **View API request** on the review step to see the equivalent API call for your current selection.
+After you configure {{cps}} and link projects, users can start searching across linked projects from the origin project. For search syntax, scope controls, and examples, refer to the following pages:
 
-For programmatic access to {{cps-init}}, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), **not** project-scoped API keys. {{ecloud}} API keys can authenticate across project boundaries. Project-scoped API keys (such as {{es}} API keys) can't search across project boundaries, so they return origin-only results.
+* [{{cps-cap}} overview](/explore-analyze/cross-project-search.md): Default search behavior, security model, supported APIs, and examples.
+* [Manage {{cps-init}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Control which projects are searched from Discover, Dashboards, and other {{kib}} apps.
 
-For information about searching across linked projects using APIs, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md#cps-supported-apis).
+For information about API key requirements for {{cps-init}}, refer to [Programmatic access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-programmatic-access).
 
 % Parking lot
 % - Tag management / custom tags
