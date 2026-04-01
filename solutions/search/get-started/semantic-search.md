@@ -27,7 +27,7 @@ First, you create an index and store your data in two forms: plain text and vect
 
 ## Prerequisites [semantic-search-quickstart-prerequisites]
 
-A running {{es}} cluster. Refer to [Choosing your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for an overview of how you can run {{es}}. For the fastest way to follow this quickstart, we recommend [creating a serverless project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) (includes a free {{serverless-short}} trial), or using a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
+A running {{es}} cluster. For the fastest way to follow this quickstart, [create a serverless project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) which includes a free {{serverless-short}} trial.
 
 ## Get the data in [semantic-search-quickstart-getting-data-in]
 
