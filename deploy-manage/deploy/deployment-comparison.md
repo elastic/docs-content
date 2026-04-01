@@ -20,7 +20,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
 |-------------------|-------------|--------------------------------|-------------------------|
 | [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
-| [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Not available. {{serverless-short}} authenticates users through organization-level access in {{ecloud}}. |
+| [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Not available. {{serverless-short}} manages authentication only at the [{{ecloud}} organization level](/deploy-manage/users-roles/cloud-organization.md). |
 | [Custom roles](/deploy-manage/users-roles.md) | Available | Available | Available |
 | [Audit logging](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) | Available | Available | No |
 
