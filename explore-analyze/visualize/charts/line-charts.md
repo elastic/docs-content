@@ -368,7 +368,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "breakdown_by": {                                                                                <3>
         "operation": "terms",
         "fields": ["host.keyword"],
-        "size": 4
+        "limit": 4
       }
     }
   ]

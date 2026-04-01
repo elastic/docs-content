@@ -137,7 +137,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "split_metrics_by": [{                                                                               <2>
     "operation": "terms",
     "fields": ["hour_of_day"],
-    "size": 3
+    "limit": 3
   }]
 }'
 ```
@@ -378,7 +378,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",                                                                            <1>
       "fields": ["request.keyword"],
-      "size": 5
+      "limit": 5
     }
   ],
   "metrics": [
@@ -446,7 +446,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "split_metrics_by": [{                                                                               <3>
     "operation": "terms",
     "fields": ["geoip.continent_name"],
-    "size": 3
+    "limit": 3
   }]
 }'
 ```

@@ -146,7 +146,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "breakdown_by": {                                                            <2>
         "operation": "terms",
         "fields": ["geo.dest"],
-        "size": 5
+        "limit": 5
       }
     }
   ]
@@ -214,7 +214,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "breakdown_by": {                                                            <2>
         "operation": "terms",
         "fields": ["geo.dest"],
-        "size": 5
+        "limit": 5
       }
     }
   ]
@@ -410,7 +410,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "breakdown_by": {
         "operation": "terms",
         "fields": ["geo.dest"],
-        "size": 9                                                                  <2>
+        "limit": 9                                                                  <2>
       }
     }
   ]
@@ -467,7 +467,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "x": {
         "operation": "terms",
         "fields": ["host.keyword"],
-        "size": 4
+        "limit": 4
       },
       "y": [
         {

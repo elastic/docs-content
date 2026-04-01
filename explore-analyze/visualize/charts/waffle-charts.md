@@ -312,7 +312,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["machine.os.keyword"],                                            <2>
-      "size": 5
+      "limit": 5
     }
   ]
 }'

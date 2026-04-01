@@ -174,7 +174,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "tag_by": {
     "operation": "terms",
     "fields": ["request.keyword"],                                                 <2>
-    "size": 30                                                                     <3>
+    "limit": 30                                                                     <3>
   }
 }'
 ```
@@ -221,7 +221,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "tag_by": {
     "operation": "terms",
     "fields": ["DestCityName"],                                                    <2>
-    "size": 30
+    "limit": 30
   }
 }'
 ```

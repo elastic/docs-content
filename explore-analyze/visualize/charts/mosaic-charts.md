@@ -231,7 +231,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["machine.os.keyword"],                                            <2>
-      "size": 5
+      "limit": 5
     }
   ],
   "group_breakdown_by": [
@@ -291,14 +291,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["geoip.continent_name"],                                          <1>
-      "size": 5
+      "limit": 5
     }
   ],
   "group_breakdown_by": [
     {
       "operation": "terms",
       "fields": ["category.keyword"],                                              <2>
-      "size": 5
+      "limit": 5
     }
   ]
 }'

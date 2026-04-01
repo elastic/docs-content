@@ -113,7 +113,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "y": {
     "operation": "terms",
     "fields": ["response.keyword"],                                                <3>
-    "size": 10
+    "limit": 10
   },
   "metric": {
     "operation": "count",
@@ -288,7 +288,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "y": {
     "operation": "terms",
     "fields": ["hour_of_day"],                                                     <1>
-    "size": 24                                                                     <2>
+    "limit": 24                                                                     <2>
   },
   "metric": {
     "operation": "count",
@@ -337,12 +337,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "x": {
     "operation": "terms",
     "fields": ["geoip.city_name"],                                                 <1>
-    "size": 10
+    "limit": 10
   },
   "y": {
     "operation": "terms",
     "fields": ["category.keyword"],                                                <2>
-    "size": 5
+    "limit": 5
   },
   "metric": {
     "operation": "sum",

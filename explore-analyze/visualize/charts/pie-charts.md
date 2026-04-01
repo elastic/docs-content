@@ -117,7 +117,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["geo.dest"],
-      "size": 5                                                                    <3>
+      "limit": 5                                                                    <3>
     }
   ]
 }'
@@ -273,7 +273,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["host.keyword"],
-      "size": 3,                                                                   <1>
+      "limit": 3,                                                                   <1>
       "other_bucket": { "include_documents_without_field": true }                  <2>
     }
   ]
@@ -513,7 +513,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["category.keyword"],                                              <2>
-      "size": 6
+      "limit": 6
     }
   ]
 }'

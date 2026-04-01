@@ -154,7 +154,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "label": "Page views",
       "format": { "type": "number", "decimals": 0, "compact": true },
       "filter": { "query": "" },
-      "alignments": { "labels": "left", "value": "right" },
+      "labels": { "alignment": "left" }, "value": { "alignment": "right" },
       "icon": { "name": "empty" }
     },
     {
@@ -164,7 +164,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "label": "Compared to previous week",
       "format": { "type": "number", "decimals": 0, "compact": true },
       "filter": { "query": "" },
-      "alignments": { "value": "right" },
+      "value": { "alignment": "right" },
       "color": { "type": "static", "color": "#6092c0" }
     }
   ]
@@ -224,13 +224,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "field": "bytes",
     "format": { "type": "bytes" },
     "filter": { "query": "" },
-    "alignments": { "labels": "left", "value": "right" },
+    "labels": { "alignment": "left" }, "value": { "alignment": "right" },
     "icon": { "name": "empty" }
   }],
   "breakdown_by": {
     "operation": "terms",
     "fields": ["machine.os.keyword"],
-    "size": 5
+    "limit": 5
   }
 }'
 ```
@@ -381,7 +381,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "label": "Successful requests (2xx)",
       "format": { "type": "percent", "decimals": 1 },                             <2>
       "filter": { "query": "" },
-      "alignments": { "labels": "left", "value": "right" },
+      "labels": { "alignment": "left" }, "value": { "alignment": "right" },
       "icon": { "name": "empty" },
       "color": { "type": "static", "color": "#209280" }
     },
@@ -392,7 +392,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "label": "Target:",
       "format": { "type": "percent", "decimals": 0 },
       "filter": { "query": "" },
-      "alignments": { "value": "right" },
+      "value": { "alignment": "right" },
       "color": { "type": "static", "color": "#6092c0" }
     }
   ]
@@ -447,7 +447,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "label": "Successful requests (2xx)",
       "format": { "type": "percent", "decimals": 1 },
       "filter": { "query": "" },
-      "alignments": { "labels": "left", "value": "right" },
+      "labels": { "alignment": "left" }, "value": { "alignment": "right" },
       "icon": { "name": "empty" },
       "color": { "type": "static", "color": "#209280" }
     },
@@ -458,14 +458,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "label": "Target:",
       "format": { "type": "percent", "decimals": 0 },
       "filter": { "query": "" },
-      "alignments": { "value": "right" },
+      "value": { "alignment": "right" },
       "color": { "type": "static", "color": "#6092c0" }
     }
   ],
   "breakdown_by": {                                                         <1>
     "operation": "terms",
     "fields": ["geo.dest"],
-    "size": 10                                                              <2>
+    "limit": 10                                                              <2>
   }
 }'
 ```
@@ -513,7 +513,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "label": "Page views",
       "format": { "type": "number", "decimals": 0, "compact": true },      <1>
       "filter": { "query": "" },
-      "alignments": { "labels": "left", "value": "right" },
+      "labels": { "alignment": "left" }, "value": { "alignment": "right" },
       "icon": { "name": "empty" }
     },
     {
@@ -523,7 +523,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "label": "Compared to previous week",
       "format": { "type": "number", "decimals": 0, "compact": true },
       "filter": { "query": "" },
-      "alignments": { "value": "right" },
+      "value": { "alignment": "right" },
       "color": { "type": "static", "color": "#6092c0" }
     }
   ]
