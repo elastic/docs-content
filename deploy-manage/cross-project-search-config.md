@@ -96,10 +96,12 @@ The overview project model is strongly recommended and appropriate for most {{cp
 
 After reviewing the architecture patterns, you can configure {{cps-init}} scope and manage linked projects:
 
-* [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
-* [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects, configure the default {{cps}} scope for each space, and review programmatic access requirements.
+- [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
+- [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects, configure the default {{cps}} scope for each space, and review programmatic access requirements.
 
-### Feature impacts [cps-feature-impacts]
+Make sure to also review the [feature impacts](#cps-feature-impacts) and [limitations](#cps-limitations) of {{cps-init}}.
+
+## Feature impacts [cps-feature-impacts]
 
 When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project.
 
@@ -114,13 +116,12 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 - **{{product.painless}} scripting:** The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) does not search across linked projects. It resolves index names against the origin project only. You can target a linked project by prefixing the index with the project alias (for example, `projectAlias:myindex`).
 
-### Limitations [cps-limitations]
+## Limitations [cps-limitations]
 
 {{cps-cap}} has the following limitations:
 
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
-
 
 ## Using {{cps-init}} 
 
