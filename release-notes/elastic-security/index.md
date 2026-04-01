@@ -101,8 +101,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes Cloud Security Posture regressions to ensure AWS, GCP, and Azure cloud providers are all supported [#242592]({{kib-pull}}242592).
 * Upgrades the Osquery schema to v5.19.0 and the ECS schema to v9.2.0 [#246005]({{kib-pull}}246005).
 * For Osquery live queries, improves {{agent}} selection by evaluating the Osquery component health status rather than solely relying on overall {{agent}} status. This allows you to run queries on {{agents}} where the Osquery integration is functional even when other {{agent}} components are degraded [#239304]({{kib-pull}}239304).
-* Allows submitting live Osquery queries with more than 10,000 {{agents}} [#239536]({{kib-pull}}239536).
-* Allows loading Osquery live query action results for queries that targeted many {{agents}}, which previously failed when the request URL grew too large [#239527]({{kib-pull}}239527).
+* Allows you to submit live Osquery queries to more than 10,000 {{agents}} [#239536]({{kib-pull}}239536).
+* Allows you to load Osquery live query action results for queries that targeted many {{agents}}, which previously failed when the request URL grew too large [#239527]({{kib-pull}}239527).
 * Improves the performance of the Osquery **Status** tab when displaying results for queries with more than 10,000 {{agents}} [#240082]({{kib-pull}}240082).
 * Adds a file download relative URI to response actions that provide file output [#237713]({{kib-pull}}237713).
 * Adds a free-text input option to the `runscript` response action for providing input to the selected script [#239436]({{kib-pull}}239436).
