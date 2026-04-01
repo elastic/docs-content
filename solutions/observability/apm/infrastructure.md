@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-infrastructure.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-infrastructure.html
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: beta
+  serverless: beta
 products:
   - id: observability
   - id: apm
@@ -13,13 +13,7 @@ products:
 
 # Infrastructure [observability-apm-infrastructure]
 
-::::{important}
-
-The Applications UI Infrastructure functionality is in beta and is subject to change. The design and code is less mature than official generally available features and is being provided as-is with no warranties.
-
-::::
-
-The **Infrastructure** tab provides information about the containers, pods, and hosts that the selected service is linked to. The data sources and navigation behavior depend on whether the service is instrumented with Elastic {{product.apm}} or OpenTelemetry (OTel).
+The **Infrastructure** tab provides information about the containers, pods, and hosts that the selected service is linked to. The data sources and navigation behavior depend on whether the service is instrumented with [Elastic {{product.apm}}](#elastic-apm-instrumented-services) or [OpenTelemetry (OTel)](#otel-instrumented-services).
 
 IT ops and software reliability engineers (SREs) can use this tab to quickly find a service’s underlying infrastructure resources when debugging a problem. Knowing what infrastructure is related to a service allows you to remediate issues by restarting, killing hanging instances, changing configuration, rolling back deployments, scaling up, scaling out, and so on.
 
@@ -27,7 +21,6 @@ IT ops and software reliability engineers (SREs) can use this tab to quickly fin
 **Why is the infrastructure tab empty?**
 
 If there is no data in the Application UI’s infrastructure tab for a selected service, you can read more about why this happens and how to fix it in the [troubleshooting docs](/troubleshoot/observability/apm/common-problems.md#troubleshooting-apm-infra-data).
-
 ::::
 
 ## Elastic {{product.apm}}-instrumented services
