@@ -1,6 +1,7 @@
 ---
 applies_to:
   stack: preview 9.4
+  serverless: unavailable
 navigation_title: Query activity
 description: Monitor and manage long-running queries in your Elasticsearch cluster using the Query activity page in Kibana.
 products:
@@ -117,6 +118,6 @@ This filters out fast-completing queries so you can focus on the ones that are m
 To change this threshold:
 
 1. Go to **{{stack-manage-app}} → Advanced Settings**.
-2. Search for `running_queries:minRunningTime`.
+2. Search for `query_activity:minRunningTime`.
 3. Enter a new value in milliseconds.
 4. Select **Save changes**.
