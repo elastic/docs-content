@@ -13,7 +13,7 @@ products:
 
 # Infrastructure [observability-apm-infrastructure]
 
-The **Infrastructure** tab provides information about the containers, pods, and hosts that the selected service is linked to. The data sources and navigation behavior depend on whether the service is instrumented with [Elastic {{product.apm}}](#elastic-productapm-instrumented-services) or [OpenTelemetry (OTel)](#otel-instrumented-services).
+The **Infrastructure** tab provides information about the containers, pods, and hosts that the selected service is linked to. The data sources and navigation behavior depend on whether the service is instrumented with [Elastic {{product.apm}}](#observability-apm-infrastructure-elastic-apm) or [OpenTelemetry (OTel)](#observability-apm-infrastructure-otel).
 
 IT ops and software reliability engineers (SREs) can use this tab to quickly find a service’s underlying infrastructure resources when debugging a problem. Knowing what infrastructure is related to a service allows you to remediate issues by restarting, killing hanging instances, changing configuration, rolling back deployments, scaling up, scaling out, and so on.
 
@@ -23,7 +23,7 @@ IT ops and software reliability engineers (SREs) can use this tab to quickly fin
 If there is no data in the Application UI’s infrastructure tab for a selected service, you can read more about why this happens and how to fix it in the [troubleshooting docs](/troubleshoot/observability/apm/common-problems.md#troubleshooting-apm-infra-data).
 ::::
 
-## Elastic {{product.apm}}-instrumented services
+## Elastic {{product.apm}}-instrumented services [observability-apm-infrastructure-elastic-apm]
 
 For services instrumented with Elastic {{product.apm}}, the tab uses the following data sources:
 
@@ -36,7 +36,7 @@ For services instrumented with Elastic {{product.apm}}, the tab uses the followi
 :screenshot:
 :::
 
-## OTel-instrumented services
+## OTel-instrumented services [observability-apm-infrastructure-otel]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
