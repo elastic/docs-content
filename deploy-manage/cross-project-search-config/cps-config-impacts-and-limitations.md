@@ -30,5 +30,7 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ## Limitations [cps-limitations]
 
+{{cps-cap}} has the following limitations:
+
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
