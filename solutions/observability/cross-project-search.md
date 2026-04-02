@@ -33,7 +33,7 @@ In {{serverless-short}}, {{observability}} apps do not expose index configuratio
 
 ## {{cps-cap}} scope selector in {{observability}} apps [obs-cps-scope-selector]
 
-The **{{cps-init}} scope** selector ({icon}`cross_project_search`) found in the project header for platform apps like Discover, Dashboards, and Lens, allows you to search "This project" or "All projects."
+The **{{cps-init}} scope** selector ({icon}`cross_project_search`) in the project header for platform apps like Discover, Dashboards, and Lens, lets you search **This project** or **All projects**.
 
 In {{observability}} apps, the scope selector is not available. This means:
 
@@ -51,9 +51,9 @@ When {{cps-init}} is enabled, Discover operates in "flat world" mode and shows d
 
 ### Discover to {{product.apm}} and Infrastructure
 
-**Open in {{product.apm}}** and **Open in Infra** links in the Discover document flyout may not resolve correctly for documents from linked projects. Because {{product.apm}} and Infrastructure are scoped to the local project, clicking a link for a remote document may fail to load the expected data. If a remote service shares the same name as a local service, the local service may open instead.
+**Open in {{product.apm}}** and **Open in Infra** links in the Discover document flyout may not resolve correctly for documents from linked projects. Because {{product.apm}} and Infrastructure are scoped to the local project, following a link for a remote document may fail to load the expected data. If a remote service shares the same name as a local service, the local service may open instead.
 
-A future update will address this when {{cps-init}} is enabled in APM and Infrastructure.
+This will be resolved when {{cps-init}} is enabled in APM and Infrastructure.
 
 ### Discover to Streams
 
@@ -98,7 +98,7 @@ APM-specific rules (APM anomaly, error count threshold, failed transaction rate 
 
 Tracking: [kibana#257714](https://github.com/elastic/kibana/issues/257714)
 
-### Only local SLOs are visible [obs-cps-slo-remote]
+### SLO visibility [obs-cps-slo-remote]
 
 Only local SLOs are visible, even when connected to a remote project.
 
@@ -112,7 +112,7 @@ The following Discover flyout links do not work correctly for documents from lin
 
 * Trace document flyout transaction name links ([kibana#256211](https://github.com/elastic/kibana/issues/256211))
 * Span links from linked projects ([kibana#256190](https://github.com/elastic/kibana/issues/256190))
-* "Explain this log entry" for linked project logs ([kibana#256168](https://github.com/elastic/kibana/issues/256168))
+* **Explain this log entry** for linked project logs ([kibana#256168](https://github.com/elastic/kibana/issues/256168))
 * Log flyout stream links ([kibana#256075](https://github.com/elastic/kibana/issues/256075))
 * Trace flyout charts don't respect project selector ([kibana#256072](https://github.com/elastic/kibana/issues/256072))
 
