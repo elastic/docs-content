@@ -122,7 +122,7 @@ For each finding, evaluate three signals to determine whether it warrants a case
 
 **Signal 3—Entity risk** (if entity analytics is enabled): What are the risk scores and [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) levels for the involved users and hosts? A finding involving a critical-risk entity on a high-value asset deserves more attention than one involving an unknown entity with no prior activity.
 
-Use these signals together to assign an overall confidence level:
+Use these signals together to assign an overall confidence level, then take appropriate action:
 
 
 | Confidence   | Signals                                                                                                                         | Recommended action                  |
@@ -131,6 +131,16 @@ Use these signals together to assign an overall confidence level:
 | **Moderate** | Some corroboration but mixed signals (for example, diverse alerts but noisy rules, or low alert diversity but high entity risk) | Investigate further before deciding |
 | **Low**      | Single alert or single rule + high rule frequency + low or unknown entity risk                                                  | Acknowledge and move on             |
 
+#### Simplified confidence matrix [confidence-matrix]
+
+Combine your three signal scores to estimate confidence:
+
+| Alert diversity | Rule frequency | Entity risk | Confidence |
+|---|---|---|---|
+| High | Infrequent | Critical or High | **High** |
+| Medium | Moderate | Moderate | **Moderate** |
+| Low | Moderate | Low or Unknown | **Low** |
+| Any | Very frequent | Any | **Low** |
 
 :::{dropdown} Full confidence scoring matrix
 
@@ -138,67 +148,42 @@ The following tables provide a detailed scoring rubric for each signal. If you'd
 
 #### Signal 1: Alert diversity [signal-alert-diversity]
 
-
-| Alerts | Distinct rules | MITRE tactics | Score  |
-| ------ | -------------- | ------------- | ------ |
-| 1      | 1              | Any           | Low    |
-| 2-3    | 1              | Any           | Low    |
-| 2-3    | 2+             | Any           | Medium |
-| 4+     | 2+             | 2+            | High   |
-| 5+     | 3+             | 3+            | High   |
-
+| Alerts | Distinct rules | MITRE tactics | Score |
+|---|---|---|---|
+| 1 | 1 | Any | Low |
+| 2-3 | 1 | Any | Low |
+| 2-3 | 2+ | Any | Medium |
+| 4+ | 2+ | 2+ | High |
+| 5+ | 3+ | 3+ | High |
 
 #### Signal 2: Rule frequency [signal-rule-frequency]
 
 Assess how often the associated rules fire in your environment. Rules that fire frequently across many hosts are more likely to produce noise.
 
-
-| Weekly fires | Hosts affected | Adjustment                                          |
-| ------------ | -------------- | --------------------------------------------------- |
-| Fewer than 5 | Fewer than 3   | Increases confidence (high-signal detection)        |
-| 5-20         | 3-10           | Neutral                                             |
-| 20-50        | 10+            | Decreases confidence (noisy detection)              |
-| 50+          | Any            | Strongly decreases confidence (likely needs tuning) |
-
+| Weekly fires | Hosts affected | Frequency label | Confidence impact |
+|---|---|---|---|
+| Fewer than 5 | Fewer than 3 | Infrequent | Increases confidence |
+| 5-20 | 3-10 | Moderate | Neutral |
+| 20-50 | 10+ | Frequent | Decreases confidence |
+| 50+ | Any | Very frequent | Strongly decreases confidence |
 
 #### Signal 3: Entity risk [signal-entity-risk]
 
 If [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) is enabled, check the risk level and [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) for entities involved in the finding.
 
-
-| Entity risk level          | Asset criticality      | Adjustment                      |
-| -------------------------- | ---------------------- | ------------------------------- |
-| Critical (greater than 90) | Extreme impact         | Strongly increases confidence   |
-| Critical (greater than 90) | Any                    | Strongly increases confidence   |
-| High (70-90)               | High or extreme impact | Increases confidence            |
-| High (70-90)               | Low or medium impact   | Moderately increases confidence |
-| Moderate (40-70)           | Any                    | Neutral                         |
-| Low (20-40)                | Any                    | Decreases confidence            |
-| Unknown (less than 20)     | Any                    | Neutral (no signal either way)  |
-
+| Entity risk level | Asset criticality | Adjustment |
+|---|---|---|
+| Critical (greater than 90) | Extreme impact | Strongly increases confidence |
+| Critical (greater than 90) | Any | Strongly increases confidence |
+| High (70-90) | High or extreme impact | Increases confidence |
+| High (70-90) | Low or medium impact | Moderately increases confidence |
+| Moderate (40-70) | Any | Neutral |
+| Low (20-40) | Any | Decreases confidence |
+| Unknown (less than 20) | Any | Neutral (no signal either way) |
 
 :::{tip}
 On Stack 9.3+, the risk scoring engine includes privileged user status as an additional risk input. If a user entity in the finding has privileged status, treat this as equivalent to high-impact asset criticality.
 :::
-
-#### Overall confidence matrix [confidence-matrix]
-
-Combine your three signal scores:
-
-
-| Alert diversity | Rule frequency     | Entity risk        | Overall confidence |
-| --------------- | ------------------ | ------------------ | ------------------ |
-| High            | Increases          | Strongly increases | **High**           |
-| High            | Neutral            | Increases          | **High**           |
-| High            | Decreases          | Strongly increases | **High**           |
-| Medium          | Increases          | Increases          | **High**           |
-| Medium          | Neutral            | Neutral            | **Moderate**       |
-| Medium          | Decreases          | Increases          | **Moderate**       |
-| Low             | Increases          | Strongly increases | **Moderate**       |
-| Low             | Neutral            | Neutral            | **Low**            |
-| Low             | Decreases          | Any                | **Low**            |
-| Any             | Strongly decreases | Any                | **Low**            |
-
 
 :::
 
@@ -344,10 +329,6 @@ POST /api/attack_discovery/_bulk
 
 ::::
 :::::
-
-:::{tip}
-Don't create cases for low-confidence findings. Creating cases for noise degrades trust in Attack Discovery and wastes analyst time on false leads.
-:::
 
 ## Next steps [next-steps]
 
