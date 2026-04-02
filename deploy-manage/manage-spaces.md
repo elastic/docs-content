@@ -136,7 +136,7 @@ serverless: preview
 
 If your organization uses [{{cps}}](/explore-analyze/cross-project-search.md) ({{cps-init}}) in {{serverless-full}}, you can set the {{cps-init}} scope for each space. This setting determines the default scope for cross-project searches: origin only, or origin + all linked projects. 
 
-For best results, set the default {{cps-init}} scope for each space **before** your users start searching with CPS. Refer to [Set the default {{cps-init}} scope for a space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
+For best results, set the default {{cps-init}} scope for each space **before** you link projects. Refer to [Set the default {{cps-init}} scope for a space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
 
 ## Make API calls to a space [spaces-api-requests]
 
