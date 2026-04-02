@@ -75,7 +75,7 @@ For each finding, note the following key signals:
 Run the following ES|QL query in [**Discover**](/explore-analyze/query-filter/languages/esql-kibana.md) to retrieve open findings from both scheduled and on-demand discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
 
 ```esql
-FROM .alerts-security.attack.discovery.alerts-default, .adhoc.alerts-security.attack.discovery.alerts-default
+FROM .alerts-security.attack.discovery.alerts-default, .adhoc.alerts-security.attack.discovery.alerts-default METADATA _id
 | WHERE kibana.alert.workflow_status == "open"
   AND @timestamp >= NOW() - 1 day
 | KEEP @timestamp, _id,
@@ -254,7 +254,7 @@ Use the **Status** filter on the **Alerts** page to check how often these rules 
 Query the security alerts index using the alert IDs from the discovery. Replace the alert IDs with the actual values from the finding's `alert_ids` field:
 
 ```esql
-FROM .alerts-security.alerts-default
+FROM .alerts-security.alerts-default METADATA _id
 | WHERE _id IN ("alert-id-1", "alert-id-2", "alert-id-3", "alert-id-4")
 | KEEP @timestamp, _id, kibana.alert.rule.name, kibana.alert.severity,
        host.name, user.name, kibana.alert.rule.rule_id
