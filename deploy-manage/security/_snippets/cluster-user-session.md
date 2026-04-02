@@ -1,0 +1,1 @@
+[Manage {{kib}} sessions](/deploy-manage/security/kibana-session-management.md) to control the timeout and lifespan of logged-in sessions to {{kib}}, as well as the number of concurrent sessions each user can have.

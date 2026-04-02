@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Dynamic templates [dynamic-templates]
@@ -17,7 +19,7 @@ Dynamic templates allow you greater control over how {{es}} maps your data beyon
 
 Use the `{{name}}` and `{{dynamic_type}}` [template variables](#template-variables) in the mapping specification as placeholders.
 
-::::{important} 
+::::{important}
 Dynamic field mappings are only added when a field contains a concrete value. {{es}} doesn’t add a dynamic field mapping when the field contains `null` or an empty array. If the `null_value` option is used in a `dynamic_template`, it will only be applied after the first document with a concrete value for the field has been indexed.
 ::::
 
@@ -48,7 +50,7 @@ If a provided mapping contains an invalid mapping snippet, a validation error is
 * If no `match_mapping_type` has been specified but the template is valid for at least one predefined mapping type, the mapping snippet is considered valid. However, a validation error is returned at index time if a field matching the template is indexed as a different type. For example, configuring a dynamic template with no `match_mapping_type` is considered valid as string type, but if a field matching the dynamic template is indexed as a long, a validation error is returned at index time. It is recommended to configure the `match_mapping_type` to the expected JSON type or configure the desired `type` in the mapping snippet.
 * If the `{{name}}` placeholder is used in the mapping snippet, validation is skipped when updating the dynamic template. This is because the field name is unknown at that time. Instead, validation occurs when the template is applied at index time.
 
-Templates are processed in order — the first matching template wins. When putting new dynamic templates through the [update mapping](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) API, all existing templates are overwritten. This allows for dynamic templates to be reordered or deleted after they were initially added.
+Templates are processed in order — the first matching template wins. When putting new dynamic templates through the [update mapping](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) API, all existing templates are overwritten. This allows for dynamic templates to be reordered or deleted after they were initially added.
 
 
 ## Mapping runtime fields in a dynamic template [dynamic-mapping-runtime-fields]
@@ -89,7 +91,7 @@ The `match_mapping_type` parameter matches fields by the data type detected by t
 
 Because JSON doesn’t distinguish a `long` from an `integer` or a `double` from a `float`, any parsed floating point number is considered a `double` JSON data type, while any parsed `integer` number is considered a `long`.
 
-::::{note} 
+::::{note}
 With dynamic mappings, {{es}} will always choose the wider data type. The one exception is `float`, which requires less storage space than `double` and is precise enough for most applications. Runtime fields do not support `float`, which is why `"dynamic":"runtime"` uses `double`.
 ::::
 
@@ -174,7 +176,7 @@ PUT my-index-000001/_doc/1
 ```
 
 1. The `my_integer` field is mapped as an `integer`.
-2. The `my_string` field is mapped as a `text`, with a `keyword` [multi-field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md).
+2. The `my_string` field is mapped as a `text`, with a `keyword` [multi-field](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md).
 3. The `my_boolean` field is mapped as a `keyword`.
 4. The `field.count` field is mapped as a `long`.
 
@@ -191,7 +193,7 @@ The `match_pattern` parameter adjusts the behavior of the `match` parameter to s
   "match": "^profit_\d+$"
 ```
 
-The following example matches all `string` fields whose name starts with `long_` (except for those which end with `_text`) and maps them as `long` fields:
+The following example matches all `string` fields whose name starts with `long_` (except for those that end with `_text`) and maps them as `long` fields:
 
 ```console
 PUT my-index-000001
@@ -245,7 +247,7 @@ PUT my-index-000001
   }
 }
 
-PUT my-index/_doc/1
+PUT my-index-000001/_doc/1
 {
   "one_ip":   "will not match", <1>
   "ip_two":   "will not match", <2>
@@ -263,7 +265,7 @@ PUT my-index/_doc/1
 
 ## `path_match` and `path_unmatch` [path-match-unmatch]
 
-The `path_match` and `path_unmatch` parameters work in the same way as `match` and `unmatch`, but operate on the full dotted path to the field, not just the final name, e.g. `some_object.*.some_field`.
+The `path_match` and `path_unmatch` parameters work in the same way as `match` and `unmatch`, but operate on the full dotted path to the field, not just the final name, for example, `some_object.*.some_field`.
 
 This example copies the values of any fields in the `name` object to the top-level `full_name` field, except for the `middle` field:
 
@@ -340,7 +342,7 @@ PUT my-index-000001/_doc/2
 }
 ```
 
-Note that the `path_match` and `path_unmatch` parameters match on object paths in addition to leaf fields. As an example, indexing the following document will result in an error because the `path_match` setting also matches the object field `name.title`, which can’t be mapped as text:
+The `path_match` and `path_unmatch` parameters match on object paths in addition to leaf fields. As an example, indexing the following document will result in an error because the `path_match` setting also matches the object field `name.title`, which can't be mapped as text:
 
 ```console
 PUT my-index-000001/_doc/2
@@ -359,7 +361,7 @@ PUT my-index-000001/_doc/2
 
 ## Template variables [template-variables]
 
-The `{{name}}` and `{{dynamic_type}}` placeholders are replaced in the `mapping` with the field name and detected dynamic type. The following example sets all string fields to use an [`analyzer`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/analyzer.md) with the same name as the field, and disables [`doc_values`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/doc-values.md) for all non-string fields:
+The `{{name}}` and `{{dynamic_type}}` placeholders are replaced in the `mapping` with the field name and detected dynamic type. The following example sets all string fields to use an [`analyzer`](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) with the same name as the field, and disables [`doc_values`](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) for all non-string fields:
 
 ```console
 PUT my-index-000001

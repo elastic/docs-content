@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-pipeline-search-inference.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-pipeline-search-inference.html
+products:
+  - id: elasticsearch
 ---
 
 # {{infer-cap}} processing [ingest-pipeline-search-inference]
@@ -23,7 +25,7 @@ This feature is not available at all Elastic subscription levels. Refer to the E
 
 ### ELSER text expansion [ingest-pipeline-search-inference-elser]
 
-Using Elastic’s [ELSER machine learning model](../nlp/ml-nlp-elser.md) you can easily incorporate text expansion for your queries. This works by using ELSER to provide semantic enrichments to your documents upon ingestion, combined with the power of [Elastic Search Application templates](../../../solutions/search/search-applications.md) to provide automated text expansion at query time.
+Using Elastic's [ELSER machine learning model](../nlp/ml-nlp-elser.md) you can incorporate text expansion for your queries. This works by using ELSER to provide semantic enrichments to your documents upon ingestion, combined with the power of [Elastic Search Application templates](/solutions/elasticsearch-solution-project/search-applications.md) to provide automated text expansion at query time.
 
 ### Named entity recognition (NER) [ingest-pipeline-search-inference-ner]
 
@@ -35,7 +37,7 @@ Most commonly used to detect entities such as People, Places, and Organization i
 
 ### Text embedding [ingest-pipeline-search-inference-text-embedding]
 
-Analyzing a text field using a [Text embedding](../nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding) model will generate a [dense vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) representation of the text. This array of numeric values encodes the semantic *meaning* of the text. Using the same model with a user’s search query will produce a vector that can then be used to search, ranking results based on vector similarity - semantic similarity - as opposed to traditional word or text similarity.
+Analyzing a text field using a [Text embedding](../nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding) model will generate a [dense vector](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) representation of the text. This array of numeric values encodes the semantic *meaning* of the text. Using the same model with a user’s search query will produce a vector that can then be used to search, ranking results based on vector similarity - semantic similarity - as opposed to traditional word or text similarity.
 
 A common use case is a user searching FAQs, or a support agent searching a knowledge base, where semantically similar content may be indexed with little similarity in phrasing.
 
@@ -45,7 +47,7 @@ A common use case is a user searching FAQs, or a support agent searching a knowl
 
 The diagram below shows how documents are processed during ingestion.
 
-:::{image} ../../../images/elasticsearch-reference-document-enrichment-diagram.png
+:::{image} /explore-analyze/images/elasticsearch-reference-document-enrichment-diagram.png
 :alt: ML inference pipeline diagram
 :::
 
@@ -62,7 +64,7 @@ This feature is intended to make it easier to use your ML trained models. First,
 Trained models must be available in the current [Kibana Space](../../../deploy-manage/manage-spaces.md) and running in order to use them. By default, models should be available in all Kibana Spaces that have the **Analytics** > **Machine Learning** feature enabled. To manage your trained models, use the Kibana UI and navigate to **Stack Management → Machine Learning → Trained Models**. Spaces can be controlled in the **spaces** column. To stop or start a model, go to the **Machine Learning** tab in the **Analytics** menu of Kibana and click **Trained Models** in the **Model Management** section.
 
 ::::{note}
-The `monitor_ml` [Elasticsearch cluster privilege](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) is required to manage ML models and ML {{infer}} pipelines which use those models.
+The `monitor_ml` [Elasticsearch cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md) is required to manage ML models and ML {{infer}} pipelines which use those models.
 
 ::::
 
@@ -74,9 +76,9 @@ If you only see the `search-default-ingestion` pipeline, you will need to click 
 
 Once your index-specific ML {{infer}} pipeline is ready, you can add {{infer}} processors that use your ML trained models. To add an {{infer}} processor to the ML {{infer}} pipeline, click the **Add Inference Pipeline** button in the **Machine Learning Inference Pipelines** card.
 
-:::{image} ../../../images/elasticsearch-reference-document-enrichment-add-inference-pipeline.png
+:::{image} /explore-analyze/images/elasticsearch-reference-document-enrichment-add-inference-pipeline.png
 :alt: Add Inference Pipeline
-:class: screenshot
+:screenshot:
 :::
 
 Here, you’ll be able to:
@@ -104,7 +106,7 @@ Here, you’ll be able to:
 
 Inference processors added to your index-specific ML {{infer}} pipelines are normal Elasticsearch pipelines. Once created, each processor will have options to **View in Stack Management** and **Delete Pipeline**. Deleting an {{infer}} processor from within the **Content** UI deletes the pipeline and also removes its reference from your index-specific ML {{infer}} pipeline.
 
-These pipelines can also be viewed, edited, and deleted in Kibana via **Stack Management → Ingest Pipelines**, just like all other Elasticsearch ingest pipelines. You may also use the [Ingest pipeline APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). If you delete any of these pipelines outside of the **Content** UI in Kibana, make sure to edit the ML {{infer}} pipelines that reference them.
+These pipelines can also be viewed, edited, and deleted in Kibana from the **Ingest Pipelines** management page, just like all other Elasticsearch ingest pipelines. You may also use the [Ingest pipeline APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). If you delete any of these pipelines outside of the **Content** UI in Kibana, make sure to edit the ML {{infer}} pipelines that reference them.
 
 ## Test your ML {{infer}} pipeline [ingest-pipeline-search-inference-test-inference-pipeline]
 

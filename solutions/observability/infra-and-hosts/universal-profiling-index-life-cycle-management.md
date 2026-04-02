@@ -1,7 +1,12 @@
 ---
-navigation_title: "Index lifecycle management"
+navigation_title: Index lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-index-lifecycle-management.html
+applies_to:
+  stack: ga
+  serverless: unavailable
+products:
+  - id: observability
 ---
 
 
@@ -26,11 +31,11 @@ The following table lists the default thresholds for rollover and delete:
 | after 30 days or 50 GB | after 30 days | after 60 days |
 
 ::::{note}
-The [rollover condition blocks phase transitions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md#_rollover_condition_blocks_phase_transition) which means that indices are kept 30 days **after** rollover on the hot tier.
+The [rollover condition blocks phase transitions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md#_rollover_condition_blocks_phase_transition) which means that indices are kept 30 days **after** rollover on the hot tier.
 ::::
 
 
-To view the Universal Profiling index lifecycle policy in {{kib}}, navigate to **{{stack-manage-app}}** → **Index Lifecycle Management**, and search for `profiling`.
+To view the Universal Profiling index lifecycle policy in {{kib}}, open **Index Lifecycle Management** from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and search for `profiling`.
 
 ::::{tip}
 Default {{ilm-init}} policies can change between minor versions. This is not considered a breaking change as index management should continually improve and adapt to new features.
@@ -45,14 +50,14 @@ Complete the following steps to configure a custom index lifecycle policy.
 
 ### Step 1: Create an index lifecycle policy [profiling-ilm-custom-policy-create-policy]
 
-1. To open **Index Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Index Lifecycle Policies** management page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 3. Name your new policy, for example `custom-profiling-policy`.
 4. Customize the policy to your liking.
 5. Click **Save policy**.
 
 ::::{tip}
-See [Manage the index lifecycle](../../../manage-data/lifecycle/index-lifecycle-management.md) to learn more about {{ilm-init}} policies.
+See [Manage the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md) to learn more about {{ilm-init}} policies.
 ::::
 
 
@@ -82,9 +87,9 @@ To apply a custom {{ilm-init}} policy, you must name the component template `pro
 
     If it does, click **Create component template**.
 
-    :::{image} ../../../images/observability-profiling-create-component-template.png
+    :::{image} /solutions/images/observability-profiling-create-component-template.png
     :alt: Create component template
-    :class: screenshot
+    :screenshot:
     :::
 
 

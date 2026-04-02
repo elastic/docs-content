@@ -1,16 +1,18 @@
 ---
-navigation_title: "Semantic search with the {{infer}} API"
+navigation_title: Semantic search with the {{infer}} API
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-inference.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Semantic search with the inference API [semantic-search-inference]
 
 
-The instructions in this tutorial shows you how to use the {{infer}} API workflow with various services to perform semantic search on your data.
+The instructions in this tutorial show you how to use the {{infer}} API workflow with various services to perform semantic search on your data.
 
 ::::{important}
 For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](semantic-search-semantic-text.md) end-to-end tutorial.
@@ -28,7 +30,8 @@ The following examples use the:
 * `amazon.titan-embed-text-v1` model for [Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html)
 * `ops-text-embedding-zh-001` model for [AlibabaCloud AI](https://help.aliyun.com/zh/open-search/search-platform/developer-reference/text-embedding-api-details)
 
-You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API. For a list of recommended models available on HuggingFace, refer to [the supported model list](../inference-api/huggingface-inference-integration.md#inference-example-hugging-face-supported-models).
+You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API.
+For a list of recommended models available on HuggingFace, refer to the supported model list in the [API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-hugging-face).
 
 Click the name of the service you want to use on any of the widgets below to review the corresponding instructions.
 
@@ -36,36 +39,44 @@ Click the name of the service you want to use on any of the widgets below to rev
 ## Requirements [infer-service-requirements]
 
 :::::::{tab-set}
+:group: service
 
 ::::::{tab-item} Cohere
+:sync: cohere
 A [Cohere account](https://cohere.com/) is required to use the {{infer}} API with the Cohere service.
 ::::::
 
 ::::::{tab-item} ELSER
+:sync: elser
 ELSER is a model trained by Elastic. If you have an {{es}} deployment, there is no further requirement for using the {{infer}} API with the `elasticsearch` service.
 ::::::
 
 ::::::{tab-item} HuggingFace
+:sync: huggingface
 A [HuggingFace account](https://huggingface.co/) is required to use the {{infer}} API with the HuggingFace service.
 ::::::
 
 ::::::{tab-item} OpenAI
+:sync: openai
 An [OpenAI account](https://openai.com/) is required to use the {{infer}} API with the OpenAI service.
 ::::::
 
 ::::::{tab-item} Azure OpenAI
+:sync: azure-openai
 * An [Azure subscription](https://azure.microsoft.com/free/cognitive-services?azure-portal=true)
 * Access granted to Azure OpenAI in the desired Azure subscription. You can apply for access to Azure OpenAI by completing the form at [https://aka.ms/oai/access](https://aka.ms/oai/access).
 * An embedding model deployed in [Azure OpenAI Studio](https://oai.azure.com/).
 ::::::
 
 ::::::{tab-item} Azure AI Studio
+:sync: azure-ai-studio
 * An [Azure subscription](https://azure.microsoft.com/free/cognitive-services?azure-portal=true)
 * Access to [Azure AI Studio](https://ai.azure.com/)
 * A deployed [embeddings](https://ai.azure.com/explore/models?selectedTask=embeddings) or [chat completion](https://ai.azure.com/explore/models?selectedTask=chat-completion) model.
 ::::::
 
 ::::::{tab-item} Google Vertex AI
+:sync: google-vertex-ai
 * A [Google Cloud account](https://console.cloud.google.com/)
 * A project in Google Cloud
 * The Vertex AI API enabled in your project
@@ -74,16 +85,19 @@ An [OpenAI account](https://openai.com/) is required to use the {{infer}} API wi
 ::::::
 
 ::::::{tab-item} Mistral
+:sync: mistral
 * A Mistral Account on [La Plateforme](https://console.mistral.ai/)
 * An API key generated for your account
 ::::::
 
 ::::::{tab-item} Amazon Bedrock
+:sync: amazon-bedrock
 * An AWS Account with [Amazon Bedrock](https://aws.amazon.com/bedrock/) access
 * A pair of access and secret keys used to access Amazon Bedrock
 ::::::
 
 ::::::{tab-item} AlibabaCloud AI Search
+:sync: alibabacloud-ai-search
 * An AlibabaCloud Account with [AlibabaCloud](https://console.aliyun.com) access
 * An API key generated for your account from the [API keys section](https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key)
 ::::::
@@ -95,8 +109,10 @@ An [OpenAI account](https://openai.com/) is required to use the {{infer}} API wi
 Create an {{infer}} endpoint by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put):
 
 :::::::{tab-set}
+:group: service
 
 ::::::{tab-item} Cohere
+:sync: cohere
 ```console
 PUT _inference/text_embedding/cohere_embeddings <1>
 {
@@ -120,11 +136,13 @@ When using this model the recommended similarity measure to use in the `dense_ve
 ::::::
 
 ::::::{tab-item} ELSER
+:sync: elser
 ```console
 PUT _inference/sparse_embedding/elser_embeddings <1>
 {
-  "service": "elasticsearch",
+  "service": "elastic",
   "service_settings": {
+    "model_id": "elser_model_2",
     "num_allocations": 1,
     "num_threads": 1
   }
@@ -143,6 +161,7 @@ You might see a 502 bad gateway error in the response when using the {{kib}} Con
 ::::::
 
 ::::::{tab-item} HuggingFace
+:sync: huggingface
 First, you need to create a new {{infer}} endpoint on [the Hugging Face endpoint page](https://ui.endpoints.huggingface.co/) to get an endpoint URL. Select the model `all-mpnet-base-v2` on the new endpoint creation page, then select the `Sentence Embeddings` task under the Advanced configuration section. Create the endpoint. Copy the URL after the endpoint initialization has been finished, you need the URL in the following {{infer}} API call.
 
 ```console
@@ -162,6 +181,7 @@ PUT _inference/text_embedding/hugging_face_embeddings <1>
 ::::::
 
 ::::::{tab-item} OpenAI
+:sync: openai
 ```console
 PUT _inference/text_embedding/openai_embeddings <1>
 {
@@ -184,6 +204,7 @@ When using this model the recommended similarity measure to use in the `dense_ve
 ::::::
 
 ::::::{tab-item} Azure OpenAI
+:sync: azure-openai
 ```console
 PUT _inference/text_embedding/azure_openai_embeddings <1>
 {
@@ -209,6 +230,7 @@ It may take a few minutes for your model’s deployment to become available afte
 ::::::
 
 ::::::{tab-item} Azure AI Studio
+:sync: azure-ai-studio
 ```console
 PUT _inference/text_embedding/azure_ai_studio_embeddings <1>
 {
@@ -235,6 +257,7 @@ It may take a few minutes for your model’s deployment to become available afte
 ::::::
 
 ::::::{tab-item} Google Vertex AI
+:sync: google-vertex-ai
 ```console
 PUT _inference/text_embedding/google_vertex_ai_embeddings <1>
 {
@@ -256,6 +279,7 @@ PUT _inference/text_embedding/google_vertex_ai_embeddings <1>
 ::::::
 
 ::::::{tab-item} Mistral
+:sync: mistral
 ```console
 PUT _inference/text_embedding/mistral_embeddings <1>
 {
@@ -273,6 +297,7 @@ PUT _inference/text_embedding/mistral_embeddings <1>
 ::::::
 
 ::::::{tab-item} Amazon Bedrock
+:sync: amazon-bedrock
 ```console
 PUT _inference/text_embedding/amazon_bedrock_embeddings <1>
 {
@@ -296,6 +321,7 @@ PUT _inference/text_embedding/amazon_bedrock_embeddings <1>
 ::::::
 
 ::::::{tab-item} AlibabaCloud AI Search
+:sync: alibabacloud-ai-search
 ```console
 PUT _inference/text_embedding/alibabacloud_ai_search_embeddings <1>
 {
@@ -320,11 +346,13 @@ PUT _inference/text_embedding/alibabacloud_ai_search_embeddings <1>
 
 ## Create the index mapping [infer-service-mappings]
 
-The mapping of the destination index - the index that contains the embeddings that the model will create based on your input text - must be created. The destination index must have a field with the [`dense_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) field type for most models and the [`sparse_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) field type for the sparse vector models like in the case of the `elasticsearch` service to index the output of the used model.
+The mapping of the destination index - the index that contains the embeddings that the model will create based on your input text - must be created. The destination index must have a field with the [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) field type for most models and the [`sparse_vector`](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) field type for the sparse vector models like in the case of the `elasticsearch` service to index the output of the used model.
 
 :::::::{tab-set}
+:group: service
 
 ::::::{tab-item} Cohere
+:sync: cohere
 ```console
 PUT cohere-embeddings
 {
@@ -351,6 +379,7 @@ PUT cohere-embeddings
 ::::::
 
 ::::::{tab-item} ELSER
+:sync: elser
 ```console
 PUT elser-embeddings
 {
@@ -374,6 +403,7 @@ PUT elser-embeddings
 ::::::
 
 ::::::{tab-item} HuggingFace
+:sync: huggingface
 ```console
 PUT hugging-face-embeddings
 {
@@ -400,6 +430,7 @@ PUT hugging-face-embeddings
 ::::::
 
 ::::::{tab-item} OpenAI
+:sync: openai
 ```console
 PUT openai-embeddings
 {
@@ -428,6 +459,7 @@ PUT openai-embeddings
 ::::::
 
 ::::::{tab-item} Azure OpenAI
+:sync: azure-openai
 ```console
 PUT azure-openai-embeddings
 {
@@ -456,6 +488,7 @@ PUT azure-openai-embeddings
 ::::::
 
 ::::::{tab-item} Azure AI Studio
+:sync: azure-ai-studio
 ```console
 PUT azure-ai-studio-embeddings
 {
@@ -484,6 +517,7 @@ PUT azure-ai-studio-embeddings
 ::::::
 
 ::::::{tab-item} Google Vertex AI
+:sync: google-vertex-ai
 ```console
 PUT google-vertex-ai-embeddings
 {
@@ -512,6 +546,7 @@ PUT google-vertex-ai-embeddings
 ::::::
 
 ::::::{tab-item} Mistral
+:sync: mistral
 ```console
 PUT mistral-embeddings
 {
@@ -540,6 +575,7 @@ PUT mistral-embeddings
 ::::::
 
 ::::::{tab-item} Amazon Bedrock
+:sync: amazon-bedrock
 ```console
 PUT amazon-bedrock-embeddings
 {
@@ -568,6 +604,7 @@ PUT amazon-bedrock-embeddings
 ::::::
 
 ::::::{tab-item} AlibabaCloud AI Search
+:sync: alibabacloud-ai-search
 ```console
 PUT alibabacloud-ai-search-embeddings
 {
@@ -597,11 +634,13 @@ PUT alibabacloud-ai-search-embeddings
 
 ## Create an ingest pipeline with an inference processor [infer-service-inference-ingest-pipeline]
 
-Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) and use the model you created above to infer against the data that is being ingested in the pipeline.
+Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) and use the model you created above to infer against the data that is being ingested in the pipeline.
 
 :::::::{tab-set}
+:group: service
 
 ::::::{tab-item} Cohere
+:sync: cohere
 ```console
 PUT _ingest/pipeline/cohere_embeddings_pipeline
 {
@@ -624,6 +663,7 @@ PUT _ingest/pipeline/cohere_embeddings_pipeline
 ::::::
 
 ::::::{tab-item} ELSER
+:sync: elser
 ```console
 PUT _ingest/pipeline/elser_embeddings_pipeline
 {
@@ -646,6 +686,7 @@ PUT _ingest/pipeline/elser_embeddings_pipeline
 ::::::
 
 ::::::{tab-item} HuggingFace
+:sync: huggingface
 ```console
 PUT _ingest/pipeline/hugging_face_embeddings_pipeline
 {
@@ -668,6 +709,7 @@ PUT _ingest/pipeline/hugging_face_embeddings_pipeline
 ::::::
 
 ::::::{tab-item} OpenAI
+:sync: openai
 ```console
 PUT _ingest/pipeline/openai_embeddings_pipeline
 {
@@ -690,6 +732,7 @@ PUT _ingest/pipeline/openai_embeddings_pipeline
 ::::::
 
 ::::::{tab-item} Azure OpenAI
+:sync: azure-openai
 ```console
 PUT _ingest/pipeline/azure_openai_embeddings_pipeline
 {
@@ -712,6 +755,7 @@ PUT _ingest/pipeline/azure_openai_embeddings_pipeline
 ::::::
 
 ::::::{tab-item} Azure AI Studio
+:sync: azure-ai-studio
 ```console
 PUT _ingest/pipeline/azure_ai_studio_embeddings_pipeline
 {
@@ -734,6 +778,7 @@ PUT _ingest/pipeline/azure_ai_studio_embeddings_pipeline
 ::::::
 
 ::::::{tab-item} Google Vertex AI
+:sync: google-vertex-ai
 ```console
 PUT _ingest/pipeline/google_vertex_ai_embeddings_pipeline
 {
@@ -756,6 +801,7 @@ PUT _ingest/pipeline/google_vertex_ai_embeddings_pipeline
 ::::::
 
 ::::::{tab-item} Mistral
+:sync: mistral
 ```console
 PUT _ingest/pipeline/mistral_embeddings_pipeline
 {
@@ -778,6 +824,7 @@ PUT _ingest/pipeline/mistral_embeddings_pipeline
 ::::::
 
 ::::::{tab-item} Amazon Bedrock
+:sync: amazon-bedrock
 ```console
 PUT _ingest/pipeline/amazon_bedrock_embeddings_pipeline
 {
@@ -800,6 +847,7 @@ PUT _ingest/pipeline/amazon_bedrock_embeddings_pipeline
 ::::::
 
 ::::::{tab-item} AlibabaCloud AI Search
+:sync: alibabacloud-ai-search
 ```console
 PUT _ingest/pipeline/alibabacloud_ai_search_embeddings_pipeline
 {
@@ -829,7 +877,7 @@ In this step, you load the data that you later use in the {{infer}} ingest pipel
 
 Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
 
-Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names**, assign `id` to the first column and `content` to the second. Click **Apply**, then **Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ## Ingest the data through the {{infer}} ingest pipeline [reindexing-data-infer]
@@ -837,8 +885,10 @@ Download the file and upload it to your cluster using the [Data Visualizer](../.
 Create embeddings from the text by reindexing the data through the {{infer}} pipeline that uses your chosen model. This step uses the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to simulate data ingestion through a pipeline.
 
 :::::::{tab-set}
+:group: service
 
 ::::::{tab-item} Cohere
+:sync: cohere
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -862,6 +912,7 @@ The [rate limit of your Cohere account](https://dashboard.cohere.com/billing) ma
 ::::::
 
 ::::::{tab-item} ELSER
+:sync: elser
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -880,6 +931,7 @@ POST _reindex?wait_for_completion=false
 ::::::
 
 ::::::{tab-item} HuggingFace
+:sync: huggingface
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -898,6 +950,7 @@ POST _reindex?wait_for_completion=false
 ::::::
 
 ::::::{tab-item} OpenAI
+:sync: openai
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -921,6 +974,7 @@ The [rate limit of your OpenAI account](https://platform.openai.com/account/limi
 ::::::
 
 ::::::{tab-item} Azure OpenAI
+:sync: azure-openai
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -944,6 +998,7 @@ The [rate limit of your Azure OpenAI account](https://learn.microsoft.com/en-us/
 ::::::
 
 ::::::{tab-item} Azure AI Studio
+:sync: azure-ai-studio
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -967,6 +1022,7 @@ Your Azure AI Studio model deployment may have rate limits in place that might a
 ::::::
 
 ::::::{tab-item} Google Vertex AI
+:sync: google-vertex-ai
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -985,6 +1041,7 @@ POST _reindex?wait_for_completion=false
 ::::::
 
 ::::::{tab-item} Mistral
+:sync: mistral
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -1003,6 +1060,7 @@ POST _reindex?wait_for_completion=false
 ::::::
 
 ::::::{tab-item} Amazon Bedrock
+:sync: amazon-bedrock
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -1021,6 +1079,7 @@ POST _reindex?wait_for_completion=false
 ::::::
 
 ::::::{tab-item} AlibabaCloud AI Search
+:sync: alibabacloud-ai-search
 ```console
 POST _reindex?wait_for_completion=false
 {
@@ -1062,8 +1121,10 @@ If you cancelled the reindexing process, you run the query only a part of the da
 
 
 :::::::{tab-set}
+:group: service
 
 ::::::{tab-item} Cohere
+:sync: cohere
 ```console
 GET cohere-embeddings/_search
 {
@@ -1131,6 +1192,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ::::::
 
 ::::::{tab-item} ELSER
+:sync: elser
 ```console
 GET elser-embeddings/_search
 {
@@ -1185,6 +1247,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ::::::
 
 ::::::{tab-item} HuggingFace
+:sync: huggingface
 ```console
 GET hugging-face-embeddings/_search
 {
@@ -1252,6 +1315,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ::::::
 
 ::::::{tab-item} OpenAI
+:sync: openai
 ```console
 GET openai-embeddings/_search
 {
@@ -1310,6 +1374,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ::::::
 
 ::::::{tab-item} Azure OpenAI
+:sync: azure-openai
 ```console
 GET azure-openai-embeddings/_search
 {
@@ -1368,6 +1433,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ::::::
 
 ::::::{tab-item} Azure AI Studio
+:sync: azure-ai-studio
 ```console
 GET azure-ai-studio-embeddings/_search
 {
@@ -1426,6 +1492,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ::::::
 
 ::::::{tab-item} Google Vertex AI
+:sync: google-vertex-ai
 ```console
 GET google-vertex-ai-embeddings/_search
 {
@@ -1484,6 +1551,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ::::::
 
 ::::::{tab-item} Mistral
+:sync: mistral
 ```console
 GET mistral-embeddings/_search
 {
@@ -1542,6 +1610,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ::::::
 
 ::::::{tab-item} Amazon Bedrock
+:sync: amazon-bedrock
 ```console
 GET amazon-bedrock-embeddings/_search
 {
@@ -1600,6 +1669,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ::::::
 
 ::::::{tab-item} AlibabaCloud AI Search
+:sync: alibabacloud-ai-search
 ```console
 GET alibabacloud-ai-search-embeddings/_search
 {

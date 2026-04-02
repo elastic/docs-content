@@ -1,16 +1,23 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/rule-monitoring-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-rule-monitoring-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Detection rule monitoring dashboard
 
 The Detection rule monitoring dashboard provides visualizations to help you monitor the overall health and performance of {{elastic-sec}}'s detection rules. Consult this dashboard for a high-level view of whether your rules are running successfully and how long they’re taking to run, search data, and create alerts.
 
-:::{image} ../../../images/security-rule-monitoring-overview.png
+:::{image} /solutions/images/security-rule-monitoring-overview.png
 :alt: Overview of Detection rule monitoring dashboard
-:class: screenshot
+:screenshot:
 :::
 
 ::::{admonition} Requirements
@@ -32,6 +39,7 @@ The dashboard also includes data from all {{kib}} spaces. To display data only f
 The following visualizations are included:
 
 * **Rule KPIs (key performance indicators)**: The total number of rules enabled, how many times they collectively ran, and their response statuses.
+* **Rule gap histogram**: The number of rules with unfilled gaps, filled gaps, and gaps that are being filled within the selected time range. Click the gap status labels—for example, **Rules with unfilled gaps**—to filter the histogram by the status you select.
 * **Executions by rule type**: Rule executions over time, broken down by rule type.
 * **Executions by status**: Rule executions over time, broken down by status.
 * **Total rule execution duration**: How long rules take to run, from start to finish.
@@ -43,7 +51,7 @@ The following visualizations are included:
 
 ## Visualization panel actions [rule-visualization-actions]
 
-Open a panel’s options menu (![Options menu](../../../images/security-three-dot-icon.png "")) customize the panel or use its data for further analysis and investigation:
+Open a panel’s options menu (![Options menu](/solutions/images/security-three-dot-icon.png "title =20x20")) customize the panel or use its data for further analysis and investigation:
 
 * **Edit panel settings**: Customize the panel’s display settings. Options vary by visualization type.
 * **Inspect**: Examine the panel’s underlying data and queries.

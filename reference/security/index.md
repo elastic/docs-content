@@ -1,10 +1,25 @@
-# Security
+---
+applies_to:
+  stack: all
+  serverless:
+    security: all
+navigation_title: Security
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+---
 
-This section of the documentation contains reference information for [{{elastic-sec}}](/solutions/security.md) features, including:
+# {{elastic-sec}} reference
 
-* Prebuilt rules
-* Downloadable rule updates
-* Prebuilt jobs
-* Fields and object schemas
+This section contains reference information for {{elastic-sec}} features, including:
 
-You can use [APIs](/solutions/security/apis.md) to interface with {{elastic-sec}} features.
+* [Fields and object schemas](/reference/security/fields-and-object-schemas/index.md)
+* [Endpoint command reference](/reference/security/endpoint-command-reference.md)
+* [Prebuilt detection rules reference](detection-rules://index.md)
+
+To learn more about Security features and how to get started, refer to [{{elastic-sec}}](/solutions/security.md).
+To interface with {{elastic-sec}} features, you can use these [APIs](/solutions/security/apis.md).

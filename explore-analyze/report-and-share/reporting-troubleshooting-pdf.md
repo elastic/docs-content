@@ -1,10 +1,12 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "PDF/PNG"
+navigation_title: PDF/PNG
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting-pdf.html
+applies_to:
+  stack: ga
+  serverless: unavailable
+products:
+  - id: kibana
 ---
 
 
@@ -15,7 +17,7 @@ mapped_pages:
 ::::{note}
 We recommend using PNG/PDF reports to export moderate amounts of data only. The feature enables a high-level export capability, but it’s not intended for bulk export. If you need to export several pages of image data, consider using multiple report jobs to export a small number of pages at a time. If the screenshot of exported dashboard contains a large number of pixels, consider splitting the large dashboard into smaller artifacts to use less memory and CPU resources.
 
-For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](../../deploy-manage/deploy/self-managed/install-with-docker.md) or using [Elastic Cloud](https://cloud.elastic.co).
+For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](../../deploy-manage/deploy/self-managed/install-kibana-with-docker.md) or using [Elastic Cloud](https://cloud.elastic.co).
 
 ::::
 
@@ -56,7 +58,7 @@ There is currently a known limitation with the data table visualization that onl
 
 ## Connection refused errors [reporting-troubleshooting-pdf-connection-refused]
 
-If PDF or PNG reports are not working due to a "connection refused" or "unable to connect" type of error, ensure that the `kibana.yml` file uses the setting of `server.host: 0.0.0.0`. Also verify that no firewall rules or other routing rules prevent local services from accessing this address. Find out more at [Set the `server.host` for the headless browser](../report-and-share.md#set-reporting-server-host).
+If PDF or PNG reports are not working due to a "connection refused" or "unable to connect" type of error, ensure that the [`kibana.yml`](/deploy-manage/stack-settings.md) file uses the setting of `server.host: 0.0.0.0`. Also verify that no firewall rules or other routing rules prevent local services from accessing this address. Find out more at [Set the `server.host` for the headless browser](../report-and-share.md#set-reporting-server-host).
 
 
 ## File permissions [reporting-troubleshooting-file-permissions]

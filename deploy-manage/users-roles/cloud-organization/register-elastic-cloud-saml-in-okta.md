@@ -1,11 +1,13 @@
 ---
+navigation_title: Okta
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso-okta.html
-navigation_title: Okta
 applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - id: cloud-hosted
 ---
 
 # Register {{ecloud}} SAML in Okta [ec-saml-sso-okta]

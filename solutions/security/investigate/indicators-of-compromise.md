@@ -1,7 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/indicators-of-compromise.html
   - https://www.elastic.co/guide/en/serverless/current/security-indicators-of-compromise.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Indicators of compromise
@@ -10,19 +17,19 @@ The Indicators page collects data from enabled threat intelligence feeds and pro
 
 ::::{admonition} Requirements
 * In {{stack}}, the Indicators page is an [Enterprise subscription](https://www.elastic.co/pricing) feature.
-* In serverless, the Indicators page requires the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md)
+* In serverless, the Indicators page requires the Security Analytics Complete [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md)
 * You must have *one* of the following installed on the hosts you want to monitor:
 
-    * **{{agent}}** - Install a [{{fleet}}-managed {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md) and ensure the agent’s status is `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
-    * **{{filebeat}}** - Install [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-installation-configuration.md) version 8.x or later. Earlier {{filebeat}} versions are incompatible with ECS and will prevent indicator data from displaying in the Indicators table.
+    * **{{agent}}** - Install a [{{fleet}}-managed {{agent}}](/reference/fleet/install-fleet-managed-elastic-agent.md) and ensure the agent’s status is `Healthy`. Refer to [](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
+    * **{{filebeat}}** - Install [{{filebeat}}](beats://reference/filebeat/filebeat-installation-configuration.md) version 8.x or later. Earlier {{filebeat}} versions are incompatible with ECS and will prevent indicator data from displaying in the Indicators table.
 
 
 ::::
 
 
-:::{image} ../../../images/security-indicators-table.png
+:::{image} /solutions/images/security-indicators-table.png
 :alt: Shows the Indicators page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -52,9 +59,9 @@ Install a threat intelligence integration to add indicators to the Indicators pa
 
 After you add indicators to the Indicators page, you can [examine](#examine-indicator-details), search, filter, and take action on indicator data. Indicators also appear in the Trend view, which shows the total values in the legend.
 
-:::{image} ../../../images/security-interact-with-indicators-table.gif
+:::{image} /solutions/images/security-interact-with-indicators-table.gif
 :alt: interact with indicators table
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -71,9 +78,9 @@ Learn more about an indicator by clicking **View details**, then opening the Ind
 * **Table**: The indicator data in table format.
 * **JSON**: The indicator data in JSON format.
 
-    :::{image} ../../../images/security-indicator-details-flyout.png
+    :::{image} /solutions/images/security-indicator-details-flyout.png
     :alt: Shows the Indicator details flyout
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -82,9 +89,9 @@ Learn more about an indicator by clicking **View details**, then opening the Ind
 
 Investigate an indicator in [Timeline](/solutions/security/investigate/timeline.md) to identify and predict related events in your environment. You can add an indicator to Timeline from the Indicators table or the Indicator details flyout.
 
-:::{image} ../../../images/security-indicator-query-timeline.png
+:::{image} /solutions/images/security-indicator-query-timeline.png
 :alt: Shows the results of an indicator being investigated in Timeline
-:class: screenshot
+:screenshot:
 :::
 
 When you add an indicator to Timeline, a new Timeline opens with an auto-generated KQL query. The query contains the indicator field-value pair that you selected plus the field-value pair of the automatically mapped source event. By default, the query’s time range is set to seven days before and after the indicator’s `timestamp`.
@@ -96,9 +103,9 @@ The following image shows a file hash indictor being investigated in Timeline. T
 
 `threat.indicator.file.hash.sha256 : 116dd9071887611c19c24aedde270285a4cf97157b846e6343407cf3bcec115a`
 
-:::{image} ../../../images/security-indicator-in-timeline.png
+:::{image} /solutions/images/security-indicator-in-timeline.png
 :alt: Shows the results of an indicator being investigated in Timeline
-:class: screenshot
+:screenshot:
 :::
 
 The auto-generated query contains the indicator field-value pair (mentioned previously) and the auto-mapped source event field-value pair, which is:
@@ -114,18 +121,18 @@ Attaching indicators to cases provides more context and available actions for yo
 
 To add indicators to cases:
 
-1. From the Indicators table, click the **More actions** (**…​​**) menu. Alternatively, open an indicator’s details, then select **Take action**.
+1. From the Indicators table, click the **More actions** (**…**) menu. Alternatively, open an indicator’s details, then select **Take action**.
 2. Select one of the following:
 
     * **Add to existing case**: From the **Select case** dialog box, select the case to which you want to attach the indicator.
-    * **Add to new case**: Configure the case details. Refer to [Open a new case](/solutions/security/investigate/open-manage-cases.md#cases-ui-open) to learn more about opening a new case.
+    * **Add to new case**: Configure the case details. Refer to [Open a new case](/explore-analyze/cases/create-cases.md) to learn more about opening a new case.
 
     The indicator is added to the case as a new comment.
 
 
-:::{image} ../../../images/security-indicator-added-to-case.png
+:::{image} /solutions/images/security-indicator-added-to-case.png
 :alt: An indicator attached to a case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -150,11 +157,11 @@ When you attach an indicator to a case, the indicator is added as a new comment 
 
 ### Remove indicators from cases [delete-indicator-from-case]
 
-To remove an indicator attached to a case, click the **More actions** (**…​​**) menu → **Delete attachment** in the case comment.
+To remove an indicator attached to a case, click the **More actions** (**…**) menu → **Delete attachment** in the case comment.
 
-:::{image} ../../../images/security-remove-indicator.png
+:::{image} /solutions/images/security-remove-indicator.png
 :alt: Removing an indicator from a case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -162,7 +169,7 @@ To remove an indicator attached to a case, click the **More actions** (**…​�
 
 Add indicator values to the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md) to prevent selected applications from running on your hosts. You can use MD5, SHA-1, or SHA-256 hash values from `file` type indicators.
 
-You can add indicator values to the blocklist from the Indicators table or the Indicator details flyout. From the Indicators table, select the **More actions** (**…​​**) menu → **Add blocklist entry**.  Alternatively, open an indicator’s details, then select the **Take action** menu → **Add blocklist entry**.
+You can add indicator values to the blocklist from the Indicators table or the Indicator details flyout. From the Indicators table, select the **More actions** (**…**) menu → **Add blocklist entry**.  Alternatively, open an indicator’s details, then select the **Take action** menu → **Add blocklist entry**.
 
 ::::{note}
 Refer to [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) for more information about blocklist entries.

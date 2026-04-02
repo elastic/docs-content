@@ -1,21 +1,26 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-metric-anomalies.html
   - https://www.elastic.co/guide/en/serverless/current/observability-detect-metric-anomalies.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Detect metric anomalies [observability-detect-metric-anomalies]
 
-::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to create {{ml}} jobs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
-
 You can create {{ml}} jobs to detect and inspect memory usage and network traffic anomalies for hosts and Kubernetes pods.
 
 You can model system memory usage, along with inbound and outbound network traffic across hosts or pods. You can detect unusual increases in memory usage and unusually high inbound or outbound traffic across hosts or pods.
+
+## Prerequisites
+To create ML jobs to detect metric anomalies, you need to meet the following requirements:
+
+* **For Observability serverless projects**, the **Editor** role or higher is required to create {{ml}} jobs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+* Metric anomaly detection isn't available for OpenTelemetry hosts.
 
 
 ## Enable {{ml}} jobs for hosts or Kubernetes pods [ml-jobs-hosts]
@@ -24,11 +29,9 @@ Create a {{ml}} job to detect anomalous memory usage and network traffic automat
 
 After creating {{ml}} jobs, you cannot change the settings. You can recreate these jobs later. However, you will remove any previously detected anomalies.
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 1. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the **Anomaly detection** link at the top of the page.
@@ -53,8 +56,7 @@ After creating {{ml}} jobs, you cannot change the settings. You can recreate the
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. In your {{obs-serverless}} project, go to **Infrastructure** → **Infrastructure inventory** and click the **Anomaly detection** link at the top of the page.
 2. Under **Hosts** or **Kubernetes Pods**, click **Enable** to create a {{ml}} job.
@@ -69,9 +71,9 @@ After creating {{ml}} jobs, you cannot change the settings. You can recreate the
 ::::
 
 
-:::{image} ../../../images/serverless-metrics-ml-jobs.png
+:::{image} /solutions/images/serverless-metrics-ml-jobs.png
 :alt: Infrastructure {{ml-app}} anomalies
-:class: screenshot
+:screenshot:
 :::
 
 The **Anomalies** table displays a list of each single metric {{anomaly-detect}} job for the specific host or Kubernetes pod. By default, anomaly jobs are sorted by time to show the most recent job.
@@ -81,7 +83,7 @@ Along with each anomaly job and the node name, detected anomalies with a severit
 To drill down and analyze the metric anomaly, select **Actions → Open in Anomaly Explorer** to view the Anomaly Explorer. You can also select **Actions** → **Show in Inventory** to view the host or Kubernetes pods Inventory page, filtered by the specific metric.
 
 ::::{note}
-These predefined {{anomaly-jobs}} use [custom rules](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-rules). To update the rules in the Anomaly Explorer, select **Actions** → **Configure rules**. The changes only take effect for new results. If you want to apply the changes to existing results, clone and rerun the job.
+These predefined {{anomaly-jobs}} use [custom rules](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-rules). To update the rules in the Anomaly Explorer, select **Actions** → **Configure rules**. The changes only take effect for new results. If you want to apply the changes to existing results, clone and rerun the job.
 
 ::::
 
@@ -91,7 +93,7 @@ These predefined {{anomaly-jobs}} use [custom rules](https://www.elastic.co/guid
 
 On the **Infrastructure inventory** page, click **Show history** to view the metric values within the selected time frame. Detected anomalies with an anomaly score equal to 50 or higher are highlighted in red. To examine the detected anomalies, use the Anomaly Explorer.
 
-:::{image} ../../../images/serverless-metrics-history-chart.png
+:::{image} /solutions/images/serverless-metrics-history-chart.png
 :alt: History
-:class: screenshot
+:screenshot:
 :::

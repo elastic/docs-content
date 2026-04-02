@@ -1,10 +1,18 @@
 ---
-navigation_title: "Diagnostics"
+navigation_title: Diagnostics
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-take-eck-dump.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Run eck-diagnostics [k8s-take-eck-dump]
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 `eck-diagnostics` is a stand-alone command line tool to create a diagnostic archive to help troubleshoot issues with ECK.
 

@@ -1,7 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/policies-page-ov.html
   - https://www.elastic.co/guide/en/serverless/current/security-policies-page.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Policies
@@ -15,7 +22,7 @@ You must have the **{{elastic-defend}} Policy Management** [privilege](/solution
 
 Click on an integration policy’s name to configure its settings. For more information on configuring an integration policy, refer to [](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md).
 
-:::{image} ../../../images/security-policy-list.png
+:::{image} /solutions/images/security-policy-list.png
 :alt: policy list
-:class: screenshot
+:screenshot:
 :::

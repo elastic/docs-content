@@ -1,19 +1,21 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: SUSE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-onprem.html
-navigation_title: SUSE
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-The following instructions show you how to prepare your hosts on SLES 12 SP5 or 15.
+The following instructions explain how to prepare your hosts on SUSE Linux Enterprise Server 12 SP5 (SLES 12) or 15 (SLES 15).
 
 * [Install Docker](#ece-install-docker-sles12)
-* [Set up XFS on SLES](#ece-xfs-setup-sles12)
+* [Set up XFS quotas](#ece-xfs-setup-sles12)
 * [Update the configurations settings](#ece-update-config-sles)
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-sles12)
 
@@ -24,11 +26,9 @@ If you want to install {{ece}} (ECE) on your own hosts, the steps for preparing 
 
 Regardless of which approach you take, the steps in this section need to be performed on every host that you want to use with ECE.
 
+## Install Docker on SLES [ece-install-docker-sles12]
 
-## Install Docker [ece-install-docker-sles12]
-
-::::{important}
-Make sure to use a combination of Linux distribution and Docker version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
 
@@ -85,11 +85,11 @@ Make sure to use a combination of Linux distribution and Docker version that is 
 
 
 
-## Set up XFS on SLES [ece-xfs-setup-sles12]
+## Set up XFS quotas [ece-xfs-setup-sles12]
 
-XFS is required to support disk space quotas for Elasticsearch data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 12 and 15, you need to set up an XFS file system and have quotas enabled.
+XFS is required to support disk space quotas for {{es}} data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 12 and 15, you need to set up an XFS file system and have quotas enabled.
 
-Disk space quotas set a limit on the amount of disk space an Elasticsearch cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
+Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
 ::::{note}
 Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, nor is it provided as part of supporting ECE.
@@ -156,7 +156,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
     # Required by Elasticsearch
-    vm.max_map_count=262144
+    vm.max_map_count=1048576
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
@@ -168,7 +168,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     ```
 
     ::::{important}
-    The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than Elasticsearch clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
+    The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than {{es}} clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
 
 
@@ -181,7 +181,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 4. Adjust the system limits.
 
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the Elastic Cloud hosted offering and should be used for ECE as well.
+    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for ECE as well.
 
     ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
@@ -306,6 +306,18 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     net.netfilter.nf_conntrack_max=262140
     SETTINGS
     ```
+
+    :::{note}
+    According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
+    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
+    * Values below 300 seconds are used as-is.
+    
+    For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
+
 
     1. Ensure settings in /etc/sysctl.d/*.conf are applied on boot
 

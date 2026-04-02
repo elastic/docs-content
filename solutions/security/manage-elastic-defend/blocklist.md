@@ -1,7 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/blocklist.html
   - https://www.elastic.co/guide/en/serverless/current/security-blocklist.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Blocklist
@@ -67,9 +74,9 @@ By default, a blocklist entry is recognized globally across all hosts running {{
 
 The **Blocklist** page displays all the blocklist entries that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
 
-:::{image} ../../../images/security-blocklist.png
+:::{image} /solutions/images/security-blocklist.png
 :alt: blocklist
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -79,7 +86,7 @@ You can individually modify each blocklist entry. You can also change the polici
 
 To edit a blocklist entry:
 
-1. Click the actions menu (**…​**) for the blocklist entry you want to edit, then select **Edit blocklist**.
+1. Click the actions menu (**…**) for the blocklist entry you want to edit, then select **Edit blocklist**.
 2. Modify details as needed.
 3. Click **Save**.
 
@@ -90,5 +97,5 @@ You can delete a blocklist entry, which removes it entirely from all {{elastic-d
 
 To delete a blocklist entry:
 
-1. Click the actions menu (**…​**) for the blocklist entry you want to delete, then select **Delete blocklist**.
+1. Click the actions menu (**…**) for the blocklist entry you want to delete, then select **Delete blocklist**.
 2. On the dialog that opens, verify that you are removing the correct blocklist entry, then click **Delete**. A confirmation message displays.

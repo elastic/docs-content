@@ -2,9 +2,13 @@
 navigation_title: Diagnostics
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnostic.html
+applies_to:
+  stack:
+products:
+  - id: elasticsearch
 ---
 
-# Capture diagnostics [diagnostic]
+# Capture {{es}} diagnostics [diagnostic]
 
 
 The {{es}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of cluster statistics and most settings. It works against all {{es}} versions.
@@ -13,12 +17,10 @@ This information can be used to troubleshoot problems with your cluster. For exa
 
 You can generate diagnostic information using this tool before you contact [Elastic Support](https://support.elastic.co) or [Elastic Discuss](https://discuss.elastic.co) to minimize turnaround time.
 
-See this [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
+Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
 
-::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-
-::::
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 
 
@@ -31,7 +33,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 The Support Diagnostic tool is included as a sub-library in some Elastic deployments:
 
-* {{ece}}: Located under **{{ece}}** > **Deployment*** > ***Operations*** > ***Prepare Bundle** > **{{es}}**.
+* {{ece}}: Located under **{{ece}}** > **Deployment** > **Operations** > **Prepare Bundle** > **{{es}}**.
 * {{eck}}: Run as [`eck-diagnostics`](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md).
 
 You can also directly download the `diagnostics-X.X.X-dist.zip` file for the latest Support Diagnostic release from [the `support-diagnostic` repo](https://github.com/elastic/support-diagnostics/releases/latest).
@@ -66,16 +68,16 @@ To capture an {{es}} diagnostic:
     **Windows**
 
     ```sh
-    sudo .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
+    .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
     ```
 
     ::::{tip}
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
-    * `local` (default, recommended): Polls the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md), gathers operating system info, and captures cluster and GC logs.
+    * `local` (default, recommended): Polls the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md), gathers operating system info, and captures cluster and GC logs.
     * `remote`: Establishes an ssh session to the applicable target server to pull the same information as `local`.
-    * `api`: Polls the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md). All other data must be collected manually.
+    * `api`: Polls the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md). All other data must be collected manually.
 
     ::::
 
@@ -111,7 +113,7 @@ The following are common errors that you might encounter when running the diagno
 
     This indicates that you accidentally downloaded the source code file instead of `diagnostics-X.X.X-dist.zip` from the releases page.
 
-* `Could not retrieve the Elasticsearch version due to a system or network error - unable to continue.`
+* `Could not retrieve the {{es}} version due to a system or network error - unable to continue.`
 
     This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the dianostic batch or shell file.
 

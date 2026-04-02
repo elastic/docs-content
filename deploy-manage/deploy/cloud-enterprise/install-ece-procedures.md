@@ -3,11 +3,13 @@ navigation_title: Installation procedures
 applies_to:
   deployment:
     ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # ECE installation procedures
 
-Choose the guide for the Elastic Cloud Enterprise [deployment scenario](/deploy-manage/deploy/cloud-enterprise/identify-deployment-scenario.md) that best fits your business needs:
+Choose the guide for the {{ece}} [deployment scenario](/deploy-manage/deploy/cloud-enterprise/identify-deployment-scenario.md) that best fits your business needs:
 
 * [Deploy a small installation](deploy-small-installation.md): For development, test, and small-scale use cases.
 * [Deploy a medium installation](deploy-medium-installation.md): For many production setups.

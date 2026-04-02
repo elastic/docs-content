@@ -1,12 +1,13 @@
 ---
+navigation_title: Osquery manager integration
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-osquery-integration.html
-
-navigation_title: "Osquery manager integration"
-
 applies_to:
   stack: preview all
-  serverless: preview all
+  serverless:
+    security: preview all
+products:
+  - id: kibana
 ---
 
 # Manage the integration [manage-osquery-integration]
@@ -14,11 +15,11 @@ applies_to:
 
 ## System requirements [_system_requirements]
 
-* [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [{{agents}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
+* [{{fleet}}](/reference/fleet/index.md) is enabled on your cluster, and one or more [{{agents}}](/reference/fleet/install-elastic-agents.md) is enrolled.
 * The [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager) integration has been added and configured for an agent policy through {{fleet}}. This integration supports x64 architecture on Windows, MacOS, and Linux platforms, and ARM64 architecture on Linux.
 
 ::::{note}
-* The original [Filebeat Osquery module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-osquery.md) and the [Osquery](https://docs.elastic.co/en/integrations/osquery) integration collect logs from self-managed Osquery deployments. The **Osquery Manager** integration manages Osquery deployments and supports running and scheduling queries from {{kib}}.
+* The original [Filebeat Osquery module](beats://reference/filebeat/filebeat-module-osquery.md) and the [Osquery](https://docs.elastic.co/en/integrations/osquery) integration collect logs from self-managed Osquery deployments. The **Osquery Manager** integration manages Osquery deployments and supports running and scheduling queries from {{kib}}.
 * **Osquery Manager** cannot be integrated with an {{agent}} in standalone mode.
 
 ::::
@@ -27,7 +28,7 @@ applies_to:
 
 ## Customize Osquery sub-feature privileges [_customize_osquery_sub_feature_privileges]
 
-Depending on your [subscription level](https://www.elastic.co/pricing) or  [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can further customize the sub-feature privileges for **Osquery Manager**. These include options to grant specific access for running live queries, running saved queries, saving queries, and scheduling packs. For example, you can create roles for users who can only run live or saved queries, but who cannot save or schedule queries. This is useful for teams who need in-depth and detailed control.
+Depending on your [subscription level](https://www.elastic.co/pricing) or  [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can further customize the sub-feature privileges for **Osquery Manager**. These include options to grant specific access for running live queries, running saved queries, saving queries, and scheduling packs. For example, you can create roles for users who can only run live or saved queries, but who cannot save or schedule queries. This is useful for teams who need in-depth and detailed control.
 
 
 ## Customize Osquery configuration [osquery-custom-config]
@@ -93,12 +94,12 @@ For each agent policy where you want to allow `curl` table queries, edit the Osq
 
 ## Upgrade Osquery versions [_upgrade_osquery_versions]
 
-The [Osquery version](https://github.com/osquery/osquery/releases) available on an {{agent}} is associated to the version of Osquery Beat on the Agent. To get the latest version of Osquery Beat, [upgrade your {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md).
+The [Osquery version](https://github.com/osquery/osquery/releases) available on an {{agent}} is associated to the version of Osquery Beat on the Agent. To get the latest version of Osquery Beat, [upgrade your {{agent}}](/reference/fleet/upgrade-elastic-agent.md).
 
 
 ## Debug issues [_debug_issues]
 
-If you encounter issues with **Osquery Manager**, find the relevant logs for {{elastic-agent}} and Osquerybeat in the agent directory. Refer to the [Fleet Installation layout](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/installation-layout.md) to find the log file location for your OS.
+If you encounter issues with **Osquery Manager**, find the relevant logs for {{agent}} and Osquerybeat in the agent directory. Refer to the [Fleet Installation layout](/reference/fleet/installation-layout.md) to find the log file location for your OS.
 
 ```ts
 ../data/elastic-agent-*/logs/elastic-agent-json.log-*

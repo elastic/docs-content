@@ -1,21 +1,58 @@
 ---
+navigation_title: Customize built-in {{ilm-init}} policies
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/example-using-index-lifecycle-policy.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
-# Tutorial: Customize built-in policies
+# Customize built-in {{ilm-init}} policies in {{es}}
 
-{{es}} includes the following built-in {{ilm-init}} policies:
+
+{{es}} includes several built-in {{ilm}} ({{ilm-init}}) policies to help manage your logs and metrics efficiently. This tutorial shows you how to safely duplicate and customize these policies to optimize [rollover](/manage-data/lifecycle/index-lifecycle-management/rollover.md) and other [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), control resource usage across hot and warm [data tiers](/manage-data/lifecycle/data-tiers.md), and enforce retention rules for your indices.
+
+Follow these steps to create a customized copy of a built-in {{ilm-init}} policy. You should never edit managed policies directly, because updates to {{es}} or Elastic integrations might overwrite those changes. Instead, you can duplicate a built-in policy, modify the duplicate, and assign it to your index or component templates.
+
+While this tutorial uses [{{agent}}](/reference/fleet/index.md) and its built-in `logs@lifecycle` policy as an example, the same process can be applied to any built-in policies. Common examples include:
 
 * `logs@lifecycle`
+* `logs-otel@lifecycle`
 * `metrics@lifecycle`
+* `metrics-otel@lifecycle`
 * `synthetics@lifecycle`
+* `traces@lifecycle`
+* `traces-otel@lifecycle`
 
-{{agent}} uses these policies to manage backing indices for its data streams. This tutorial shows you how to use {{kib}}’s **Index Lifecycle Policies** to customize these policies based on your application’s performance, resilience, and retention requirements.
+Customizing an {{ilm-init}} policy is useful when you have specific data retention or rollover requirements. For example, large log or metrics data streams might need different retention periods than the built-in defaults.
 
+:::{important}
+:applies_to: stack: ga 9.3+
+
+In {{stack}} 9.3 and later, the deprecated `logs`, `metrics`, and `synthetics` {{ilm-init}} policies are replaced by functionally equivalent `{type}@lifecycle` policies to align with the naming conventions for other stack-managed assets.
+
+If both the deprecated {{ilm-init}} policy and its `{type}@lifecycle` replacement haven’t been modified, {{fleet}} automatically migrates component templates that still reference the deprecated {{ilm-init}} policy.
+
+If either managed {{ilm-init}} policy has been modified, you need to migrate the customizations manually. Follow this tutorial to create a self-managed {{ilm-init}} policy with your custom settings, and reference it from the relevant `{type}@custom` component template.
+:::
+
+This tutorial covers customizing the way ingested logging data is managed. Rather than use the default lifecycle settings from the built-in `logs@lifecycle` {{ilm-init}} policy, you can use the **Index Lifecycle Policies** feature in {{kib}} to tailor a new policy based on your application’s specific performance, resilience, and retention requirements. You can adapt the same steps for any policy that manages your data streams.
+
+The process involves three main steps:
+ 1. [Create a duplicate of the `logs@lifecycle` policy](#example-using-index-lifecycle-policy-duplicate-ilm-policy).
+ 2. [Modify the new policy to suit your requirements](#ilm-ex-modify-policy).
+ 3. [Apply the new policy to your log data using a `logs@custom` component template](#example-using-index-lifecycle-policy-apply-policy).
+
+Once applied, your customized policy will govern any new indices created after the change. Existing indices will continue to use their current lifecycle policy until they roll over. If you want the policy to take effect immediately, you can manually [roll over](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) the data stream.
+
+:::{tip}
+* If you're using [Elastic integrations](https://docs.elastic.co/en/integrations) and are not yet familiar with which data streams are associated with them, refer to [](/manage-data/lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md).
+
+* If you're looking for a more advanced use case, such as customizing an ILM policy for a selected set of data streams in one or more integrations or namespaces, check the set of tutorials in [](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.
+
+    These tutorials go into greater depth about creating and using `@custom` component templates. For example, the tutorial [Apply an ILM policy to all data streams generated from {{fleet}} integrations across all namespaces](/reference/fleet/data-streams-scenario1.md) shows how to create and use the `logs@custom` and `metrics@custom` component templates to customize {{ilm-init}} policies associated with data streams in integrations.
+:::
 
 ## Scenario [example-using-index-lifecycle-policy-scenario]
 
@@ -40,14 +77,14 @@ To complete this tutorial, you’ll need:
 
     * {{ech}}: Elastic Stack deployments on {{ecloud}} include a hot tier by default. To add a warm tier, edit your deployment and click **Add capacity** for the warm data tier.
 
-        :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-ess-add-warm-data-tier.png
+        :::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-ess-add-warm-data-tier.png
         :alt: Add a warm data tier to your deployment
-        :class: screenshot
+        :screenshot:
         :::
 
     * Self-managed cluster: Assign `data_hot` and `data_warm` roles to nodes as described in [*Data tiers*](../data-tiers.md).
 
-        For example, include the `data_warm` node role in the `elasticsearch.yml` file of each node in the warm tier:
+        For example, include the `data_warm` node role in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file of each node in the warm tier:
 
         ```yaml
         node.roles: [ data_warm ]
@@ -69,7 +106,7 @@ You should never edit managed policies directly. Changes to managed policies mig
 
 To save the `logs@lifecycle` policy as a new policy in {{kib}}:
 
-1. Open the menu and go to **Stack Management** > **Index Lifecycle Policies**.
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Toggle **Include managed system policies**.
 3. Select the `logs@lifecycle` policy.
 4. On the **Edit policy logs** page, toggle **Save as new policy**, and then provide a new name for the policy, for example, `logs-custom`.
@@ -78,9 +115,9 @@ The `logs@lifecycle` policy uses the recommended rollover defaults: Start writin
 
 To view or change the rollover settings, click **Advanced settings** for the hot phase. Then disable **Use recommended defaults** to display the rollover settings.
 
-:::{image} ../../../images/elasticsearch-reference-tutorial-ilm-hotphaserollover-default.png
+:::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-hotphaserollover-default.png
 :alt: View rollover defaults
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -94,23 +131,23 @@ The default `logs@lifecycle` policy is designed to prevent the creation of many 
     2. Enable **Set replicas** and change **Number of replicas** to **1**.
     3. Enable **Force merge data** and set **Number of segments** to **1**.
 
-    :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-modify-default-warm-phase-rollover.png
+    :::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-modify-default-warm-phase-rollover.png
     :alt: Add a warm phase with custom settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. In the warm phase, click the trash icon to enable the delete phase.
 
-    :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-enable-delete-phase.png
+    :::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-enable-delete-phase.png
     :alt: Enable the delete phase
-    :class: screenshot
+    :screenshot:
     :::
 
     In the delete phase, set **Move data into phase when** to **90 days old**. This deletes indices 90 days after rollover.
 
-    :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-delete-rollover.png
+    :::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-delete-rollover.png
     :alt: Add a delete phase
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Click **Save as new policy**.
@@ -125,7 +162,24 @@ Copies of managed {{ilm-init}} policies are also marked as **Managed**. You can 
 
 To apply your new {{ilm-init}} policy to the `logs` index template, create or edit the `logs@custom` component template.
 
-A `*@custom` component template allows you to customize the mappings and settings of managed index templates, without having to override managed index templates or component templates. This type of component template is automatically picked up by the index template. [Learn more](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
+
+:::::{admonition} Using @custom component templates
+A `@custom` component template allows you to customize the mappings and settings of the managed index templates, without having to override them or their main component templates.
+
+Many {{es}} managed index templates include one or more `@custom` component templates. A `@custom` component template must first be created before it can be used, and its name must exactly match the name specified in the managed index template in order to be applied automatically to indices as they're created.
+
+For example, if you're ingesting OpenTelemetry (OTel) logs, any OTel log data streams and their backing indices are configured by the `logs-otel@template` managed index template. That index template automatically applies settings defined in the `logs@custom` and the `logs-otel@custom` template when they exist.
+
+Go to **Index Management > Index Templates** and select any managed index to view the `@custom` component templates associated with it. 
+
+:::{image} /manage-data/images/elasticsearch-reference-tutorial-custom-policies-otel-template.png
+:alt: A screenshot showing the logs@custom and logs-otel@custom component templates associated with the logs-otel@template index template.
+:::
+:::::
+
+:::{tip}
+If you want your {{ilm-init}} changes to apply only to specific indices, you can create a custom index template directly instead of modifying the custom component template. Use the **Index management** page in {{kib}} or the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to create a new template.
+:::
 
 1. Click on the **Component Template** tab and click **Create component template**.
 2. Under **Logistics**, name the component template `logs@custom`.

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Logstash [k8s-logstash]
@@ -16,7 +18,7 @@ This section describes how to configure and deploy {{ls}} with ECK.
     * [Logstash configuration](configuration-logstash.md#k8s-logstash-configuring-logstash)
     * [Configuring Logstash pipelines](configuration-logstash.md#k8s-logstash-pipelines)
     * [Defining data volumes for Logstash](configuration-logstash.md#k8s-logstash-volumes)
-    * [Using Elasticsearch in Logstash pipelines](configuration-logstash.md#k8s-logstash-pipelines-es)
+    * [Using {{es}} in Logstash pipelines](configuration-logstash.md#k8s-logstash-pipelines-es)
     * [Expose services](configuration-logstash.md#k8s-logstash-expose-services)
 
 * [Securing Logstash API](securing-logstash-api.md)

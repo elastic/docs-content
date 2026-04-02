@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Explore your data with runtime fields [runtime-examples]
@@ -94,7 +96,7 @@ The mapping contains two fields: `@timestamp` and `message`.
 
 If you want to retrieve results that include `clientip`, you can add that field as a runtime field in the mapping. The following runtime script defines a [grok pattern](../../../explore-analyze/scripting/grok.md) that extracts structured fields out of a single text field within a document. A grok pattern is like a regular expression that supports aliased expressions that you can reuse.
 
-The script matches on the `%{{COMMONAPACHELOG}}` log pattern, which understands the structure of Apache logs. If the pattern matches (`clientip != null`), the script emits the value of the matching IP address. If the pattern doesn’t match, the script just returns the field value without crashing.
+The script matches on the `%{{COMMONAPACHELOG}}` log pattern, which understands the structure of Apache logs. If the pattern matches (`clientip != null`), the script emits the value of the matching IP address. If the pattern doesn't match, the script returns the field value without crashing.
 
 ```console
 PUT my-index-000001/_mappings
@@ -114,7 +116,7 @@ PUT my-index-000001/_mappings
 1. This condition ensures that the script doesn’t crash even if the pattern of the message doesn’t match.
 
 
-Alternatively, you can define the same runtime field but in the context of a search request. The runtime definition and the script are exactly the same as the one defined previously in the index mapping. Just copy that definition into the search request under the `runtime_mappings` section and include a query that matches on the runtime field. This query returns the same results as if you defined a search query for the `http.clientip` runtime field in your index mappings, but only in the context of this specific search:
+Alternatively, you can define the same runtime field but in the context of a search request. The runtime definition and the script are exactly the same as the one defined previously in the index mapping. Copy that definition into the search request under the `runtime_mappings` section and include a query that matches on the runtime field. This query returns the same results as if you defined a search query for the `http.clientip` runtime field in your index mappings, but only in the context of this specific search:
 
 ```console
 GET my-index-000001/_search
@@ -238,7 +240,7 @@ If the script didn’t include this condition, the query would fail on any shard
 
 ### Search for documents in a specific range [runtime-examples-grok-range]
 
-You can also run a [range query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) that operates on the `timestamp` field. The following query returns any documents where the `timestamp` is greater than or equal to `2020-04-30T14:31:27-05:00`:
+You can also run a [range query](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) that operates on the `timestamp` field. The following query returns any documents where the `timestamp` is greater than or equal to `2020-04-30T14:31:27-05:00`:
 
 ```console
 GET my-index-000001/_search
@@ -292,7 +294,7 @@ The response includes the document where the log format doesn’t match, but the
 
 ## Define a runtime field with a dissect pattern [runtime-examples-dissect]
 
-If you don’t need the power of regular expressions, you can use [dissect patterns](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) instead of grok patterns. Dissect patterns match on fixed delimiters but are typically faster than grok.
+If you don’t need the power of regular expressions, you can use [dissect patterns](elasticsearch://reference/enrich-processor/dissect-processor.md) instead of grok patterns. Dissect patterns match on fixed delimiters but are typically faster than grok.
 
 You can use dissect to achieve the same results as parsing the Apache logs with a [grok pattern](#runtime-examples-grok). Instead of matching on a log pattern, you include the parts of the string that you want to discard. Paying special attention to the parts of the string you want to discard will help build successful dissect patterns.
 

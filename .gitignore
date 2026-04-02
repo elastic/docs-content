@@ -1,3 +1,18 @@
 # docs-builder default output
 .artifacts
 .DS_store
+
+# Jetbrains files
+.idea
+*.iml
+
+# Add LLM/AI related files
+AGENTS.md
+.github/copilot-instructions.md
+.github/instructions/
+CLAUDE.md
+GEMINI.md
+.cursor
+
+# VS code settings
+.vscode

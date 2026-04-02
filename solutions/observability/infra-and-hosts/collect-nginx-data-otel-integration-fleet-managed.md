@@ -1,0 +1,123 @@
+---
+navigation_title: Collect NGINX data with OpenTelemetry integrations (Fleet-managed)
+description: Collect NGINX logs and metrics with a Fleet-managed Elastic Agent using Elastic's Nginx integration and NGINX OpenTelemetry Input Package.
+applies_to:
+  stack: preview 9.2+
+  serverless: preview
+products:
+  - id: fleet
+  - id: elastic-agent
+---
+
+# Collect NGINX data with OpenTelemetry integrations ({{fleet}}-managed)
+
+Learn how to monitor your NGINX server by collecting logs and metrics with a {{fleet}}-managed {{agent}} on Linux.
+
+You'll use {{kib}} and {{fleet}} to create an [agent policy that combines both ECS-based integrations and OpenTelemetry input packages](/reference/fleet/otel-integrations.md#otel-integrations-hybrid-policies) and apply it to your {{fleet}}-managed {{agent}}.
+
+You'll collect:
+
+- NGINX logs with Elastic's [Nginx integration](https://www.elastic.co/docs/reference/integrations/nginx), based on the [Elastic Common Schema](ecs://reference/index.md) (ECS)
+- NGINX metrics with Elastic's [NGINX OpenTelemetry Input Package](https://www.elastic.co/docs/reference/integrations/nginx_otel_input), which uses the [`nginxreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nginxreceiver) OpenTelemetry (OTel) Collector receiver
+
+::::{include} ../../../reference/fleet/_snippets/otel-input-packages-default-mode-note.md
+::::
+
+## Prerequisites [collect-nginx-data-fleet-managed-prereqs]
+
+::::{include} _snippets/collect-nginx-data-prerequisites.md
+::::
+
+## Configure the NGINX status endpoint [collect-nginx-data-fleet-managed-status-endpoint]
+
+::::{include} _snippets/collect-nginx-data-status-endpoint.md
+::::
+
+## Configure the agent policy [collect-nginx-data-fleet-managed-policy]
+
+:::::{stepper}
+
+::::{step} Create an agent policy and enroll an agent
+
+1. In {{kib}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Go to **Agent policies**, then [create an agent policy](/reference/fleet/agent-policy.md#create-a-policy) (for example, `nginx-telemetry`), or select an existing policy you want to use to collect NGINX telemetry.
+3. Add an {{agent}} running version 9.2 or later to the policy.
+
+   For detailed steps, refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md).
+
+::::
+
+::::{step} Configure log collection with the Nginx integration
+
+1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for "nginx", then select the **Nginx** integration.
+3. Select **Add Nginx**, then configure the integration. Log collection from NGINX instances is enabled by default.
+
+   1. Confirm the **Paths** fields for access and error logs match your NGINX configuration.
+   2. Turn off **Collect metrics from Nginx instances**. In this tutorial, you’ll use the OpenTelemetry input package for metrics collection.
+
+4. In the **Where to add this integration?** section, select **Existing hosts**.
+5. Select the agent policy to which you want to add the integration (for example, `nginx-telemetry`).
+6. Select **Save and continue**.
+
+For more details, refer to [Add an integration to an {{agent}} policy](/reference/fleet/add-integration-to-policy.md).
+
+::::
+
+::::{step} Configure metrics collection with the NGINX OpenTelemetry input package
+
+1. In {{kib}}, go to **Integrations**.
+2. Select **Display beta integrations** (the NGINX OpenTelemetry packages are in technical preview).
+3. Search for "nginx", then select **NGINX OpenTelemetry Input Package**.
+4. Select **Add NGINX OpenTelemetry Input Package**, then configure the integration. **NGINX OpenTelemetry Input** is enabled by default.
+
+   1. Select **Change defaults**, then expand **Advanced options**.
+   2. Set the data stream type to **Metrics**.
+   3. Set **endpoint** to your NGINX `stub_status` URL (for example, `http://localhost:80/status`).
+
+5. In the **Where to add this integration?** section, select **Existing hosts**.
+6. Select the agent policy you used for the NGINX log collection (for example, `nginx-telemetry`).
+7. Select **Save and continue**.
+
+:::{note}
+The NGINX OpenTelemetry Assets content package is installed automatically when data is ingested through the NGINX OpenTelemetry Input Package. You can find it in the **Installed integrations** list and use it to visualize OTel-based metrics.
+:::
+
+::::
+
+:::::
+
+## Validate your data [collect-nginx-data-fleet-managed-validate]
+
+After you apply the policy changes, validate that both the ECS-based logs and the OTel-based metrics are flowing in.
+
+:::::{stepper}
+
+::::{step} Validate the log collection
+
+1. In {{kib}}, go to **Discover**, then filter the results using the KQL search bar.
+2. Search for NGINX data stream datasets such as `nginx.access` and `nginx.error`, or enter:
+
+   ```text
+   data_stream.dataset : "nginx.access" or "nginx.error"
+   ```
+
+3. Go to **Dashboards**, then select **[Logs Nginx] Access and error logs** to view the dashboard installed by the Nginx integration.
+
+::::
+
+::::{step} Validate the metrics collection
+
+Go to **Dashboards**, then select **[Metrics Nginx OTEL] Overview** to view the dashboard for visualizing OTel-based metrics.
+
+This dashboard is provided by the NGINX OpenTelemetry Assets content package, installed automatically when data is ingested through the NGINX OpenTelemetry Input Package.
+
+::::
+
+:::::
+
+## Related pages [collect-nginx-data-fleet-managed-related]
+
+- [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md)
+- [Collect NGINX data with OpenTelemetry integrations (standalone)](/solutions/observability/infra-and-hosts/collect-nginx-data-otel-integration-standalone.md)
+- [Elastic integrations](integration-docs://reference/index.md)

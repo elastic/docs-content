@@ -1,7 +1,12 @@
 ---
-navigation_title: "Kinesis data streams"
+navigation_title: Kinesis data streams
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-kinesis.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 
@@ -50,9 +55,9 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
     1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent** flyout. If you accidentally close the popup or the flyout doesn’t open, go to **{{fleet}} → Agents**, then click **Add agent** to access the flyout.
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}.
 
-9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
+9. When incoming data is confirmed—after a minute or two—click **View assets** to access the dashboards.
 
-For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](/reference/fleet/index.md).
 
 ::::
 
@@ -60,16 +65,16 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 :::::
 
 
-{{agent}} is currently the preferred way to add Kinesis data stream metrics. For other ways, refer to [Adding data to {{es}}](../../../manage-data/ingest.md).
+{{agent}} is currently the preferred way to add Kinesis data stream metrics. For other ways, refer to [Adding data to {{es}}](/manage-data/ingest.md).
 
 
 ## Dashboards [dashboard-kinesis]
 
 {{kib}} provides a full data analytics platform with out-of-the-box dashboards that you can clone and enhance to satisfy your custom visualization use cases. For example, to see an overview of your Kinesis data streams in {{kib}}, go to the **Dashboard** app and navigate to the **[Metrics AWS] Kinesis Overview** dashboard.
 
-:::{image} ../../../images/observability-kinesis-dashboard.png
+:::{image} /solutions/images/observability-kinesis-dashboard.png
 :alt: Screenshot showing the Kinesis overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

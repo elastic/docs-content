@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/kuery-query.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/kuery-query.html
+products:
+  - id: kibana
 ---
 
 # KQL [kuery-query]
@@ -30,7 +32,7 @@ Combine free text search with field-based search using KQL. Type a search term t
 
 
 
-## Filter for documents where a field exists [_filter_for_documents_where_a_field_exists] 
+## Filter for documents where a field exists [_filter_for_documents_where_a_field_exists]
 
 To filter documents for which an indexed value exists for a given field, use the `*` operator. For example, to filter for documents where the `http.request.method` field exists, use the following syntax:
 
@@ -41,7 +43,7 @@ http.request.method: *
 This checks for any indexed value, including an empty string.
 
 
-## Filter for documents that match  a value [_filter_for_documents_that_match_a_value] 
+## Filter for documents that match  a value [_filter_for_documents_that_match_a_value]
 
 Use KQL to filter for documents that match a specific number, text, date, or boolean value. For example, to filter for documents where the `http.request.method` is GET, use the following query:
 
@@ -81,7 +83,7 @@ You must escape following characters:
 ```
 
 
-## Filter for documents within a range [_filter_for_documents_within_a_range] 
+## Filter for documents within a range [_filter_for_documents_within_a_range]
 
 To search documents that contain terms within a provided range, use KQL’s range syntax. For example, to search for all documents for which `http.response.bytes` is less than 10000, use the following syntax:
 
@@ -89,11 +91,17 @@ To search documents that contain terms within a provided range, use KQL’s rang
 http.response.bytes < 10000
 ```
 
-To search for an inclusive range, combine multiple range queries. For example, to search for documents where `http.response.bytes` is greater than 10000 but less than or equal to 20000, use the following syntax:
+To search for an inclusive range, combine multiple range conditions. For example, to search for documents where `http.response.bytes` is greater than 10000 but less than or equal to 20000, use the following syntax:
 
 ```yaml
 http.response.bytes > 10000 and http.response.bytes <= 20000
 ```
+
+:::{note}
+When using range queries with multiple conditions on multi-value fields, each condition is evaluated independently against all values in the array. 
+
+For example, the query `number > 300 AND number < 400` will match a document with `"number": [500, 10]` because 500 satisfies the first condition and 10 satisfies the second condition. If you need all conditions to be satisfied by the same value, consider using [Query DSL](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) instead, which will only match documents where at least one value falls entirely within the specified range.
+:::
 
 You can also use range syntax for string values, IP addresses, and timestamps. For example, to search for documents earlier than two weeks ago, use the following syntax:
 
@@ -101,10 +109,10 @@ You can also use range syntax for string values, IP addresses, and timestamps. F
 @timestamp < now-2w
 ```
 
-For more examples on acceptable date formats, refer to [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math).
+For more examples on acceptable date formats, refer to [Date Math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math).
 
 
-## Filter for documents using wildcards [_filter_for_documents_using_wildcards] 
+## Filter for documents using wildcards [_filter_for_documents_using_wildcards]
 
 To search for documents matching a pattern, use the wildcard syntax. For example, to find documents where `http.response.status_code` begins with a 4, use the following syntax:
 
@@ -112,15 +120,15 @@ To search for documents matching a pattern, use the wildcard syntax. For example
 http.response.status_code: 4*
 ```
 
-By default, leading wildcards are not allowed for performance reasons. You can modify this with the [`query:allowLeadingWildcards`](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.
+By default, leading wildcards are not allowed for performance reasons. You can modify this with the [`query:allowLeadingWildcards`](kibana://reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.
 
-::::{note} 
+::::{note}
 Only `*` is currently supported. This matches zero or more characters.
 ::::
 
 
 
-## Negating a query [_negating_a_query] 
+## Negating a query [_negating_a_query]
 
 To negate or exclude a set of documents, use the `not` keyword (not case-sensitive). For example, to filter documents where the `http.request.method` is **not** GET, use the following query:
 
@@ -129,7 +137,7 @@ NOT http.request.method: GET
 ```
 
 
-## Combining multiple queries [_combining_multiple_queries] 
+## Combining multiple queries [_combining_multiple_queries]
 
 To combine multiple queries, use the `and`/`or` keywords (not case-sensitive). For example, to find documents where the `http.request.method` is GET **or** the `http.response.status_code` is 400, use the following query:
 
@@ -157,7 +165,7 @@ http.request.method: (GET OR POST OR DELETE)
 ```
 
 
-## Matching multiple fields [_matching_multiple_fields] 
+## Matching multiple fields [_matching_multiple_fields]
 
 Wildcards can also be used to query multiple fields. For example, to search for documents where any sub-field of `datastream` contains “logs”, use the following:
 
@@ -165,15 +173,15 @@ Wildcards can also be used to query multiple fields. For example, to search for 
 datastream.*: logs
 ```
 
-::::{note} 
+::::{note}
 When using wildcards to query multiple fields, errors might occur if the fields are of different types. For example, if `datastream.*` matches both numeric and string fields, the above query will result in an error because numeric fields cannot be queried for string values.
 ::::
 
 
 
-## Querying nested fields [_querying_nested_fields] 
+## Querying nested fields [_querying_nested_fields]
 
-Querying [nested fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/nested.md) requires a special syntax. Consider the following document, where `user` is a nested field:
+Querying [nested fields](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) requires a special syntax. Consider the following document, where `user` is a nested field:
 
 ```yaml
 {

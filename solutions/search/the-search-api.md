@@ -1,7 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data-the-search-api.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 # The `_search` API [search-your-data]
 
@@ -18,7 +22,7 @@ You can use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/o
 
 ## Run a search [run-an-es-search]
 
-The following request searches `my-index-000001` using a [`match`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-match-query.md) query. This query matches documents with a `user.id` value of `kimchy`.
+The following request searches `my-index-000001` using a [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) query. This query matches documents with a `user.id` value of `kimchy`.
 
 ```console
 GET /my-index-000001/_search
@@ -87,10 +91,10 @@ You can use the following options to customize your searches.
 
 **Query DSL**<br> [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md) supports a variety of query types you can mix and match to get the results you want. Query types include:
 
-* [Boolean](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md) and other [compound queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/compound-queries.md), which let you combine queries and match results based on multiple criteria
-* [Term-level queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/term-level-queries.md) for filtering and finding exact matches
-* [Full text queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/full-text-queries.md), which are commonly used in search engines
-* [Geo](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/geo-queries.md) and [spatial queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/shape-queries.md)
+* [Boolean](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) and other [compound queries](elasticsearch://reference/query-languages/query-dsl/compound-queries.md), which let you combine queries and match results based on multiple criteria
+* [Term-level queries](elasticsearch://reference/query-languages/query-dsl/term-level-queries.md) for filtering and finding exact matches
+* [Full text queries](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md), which are commonly used in search engines
+* [Geo](elasticsearch://reference/query-languages/query-dsl/geo-queries.md) and [spatial queries](elasticsearch://reference/query-languages/query-dsl/shape-queries.md)
 
 **Aggregations**<br> You can use [search aggregations](../../explore-analyze/query-filter/aggregations.md) to get statistics and other analytics for your search results. Aggregations help you answer questions like:
 
@@ -98,17 +102,17 @@ You can use the following options to customize your searches.
 * What are the top IP addresses hit by users on my network?
 * What is the total transaction revenue by customer?
 
-**Search multiple data streams and indices**<br> You can use comma-separated values and grep-like index patterns to search several data streams and indices in the same request. You can even boost search results from specific indices. See [Search multiple data streams and indices using a query](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/search-multiple-data-streams-indices.md).
+**Search multiple data streams and indices**<br> You can use comma-separated values and grep-like index patterns to search several data streams and indices in the same request. You can even boost search results from specific indices. See [Search multiple data streams and indices using a query](elasticsearch://reference/elasticsearch/rest-apis/search-multiple-data-streams-indices.md).
 
-**Paginate search results**<br> By default, searches return only the top 10 matching hits. To retrieve more or fewer documents, see [Paginate search results](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/paginate-search-results.md).
+**Paginate search results**<br> By default, searches return only the top 10 matching hits. To retrieve more or fewer documents, see [Paginate search results](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md).
 
-**Retrieve selected fields**<br> The search response’s `hits.hits` property includes the full document [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) for each hit. To retrieve only a subset of the `_source` or other fields, see [Retrieve selected fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md).
+**Retrieve selected fields**<br> The search response’s `hits.hits` property includes the full document [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) for each hit. To retrieve only a subset of the `_source` or other fields, see [Retrieve selected fields](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md).
 
-**Sort search results**<br> By default, search hits are sorted by `_score`, a [relevance score](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores) that measures how well each document matches the query. To customize the calculation of these scores, use the [`script_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md) query. To sort search hits by other field values, see [Sort search results](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/sort-search-results.md).
+**Sort search results**<br> By default, search hits are sorted by `_score`, a [relevance score](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores) that measures how well each document matches the query. To customize the calculation of these scores, use the [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query. To sort search hits by other field values, see [Sort search results](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md).
 
 **Run an async search**<br> {{es}} searches are designed to run on large volumes of data quickly, often returning results in milliseconds. For this reason, searches are *synchronous* by default. The search request waits for complete results before returning a response.
 
-However, complete results can take longer for searches across large data sets or [multiple clusters](cross-cluster-search.md).
+However, complete results can take longer for searches across large data sets or [multiple clusters](/explore-analyze/cross-cluster-search.md).
 
 To avoid long waits, you can run an *asynchronous*, or *async*, search instead. An [async search](async-search-api.md) lets you retrieve partial results for a long-running search now and get complete results later.
 
@@ -119,7 +123,7 @@ Instead of indexing your data and then searching it, you can define [runtime fie
 
 For example, the following query defines a runtime field called `day_of_week`. The included script calculates the day of the week based on the value of the `@timestamp` field, and uses `emit` to return the calculated value.
 
-The query also includes a [terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) that operates on `day_of_week`.
+The query also includes a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) that operates on `day_of_week`.
 
 ```console
 GET /my-index-000001/_search
@@ -168,24 +172,38 @@ The response includes an aggregation based on the `day_of_week` runtime field. U
 
 ## Search timeout [search-timeout]
 
-By default, search requests don’t time out. The request waits for complete results from each shard before returning a response.
+By default, search requests do not time out. The request waits for complete results from every shard before returning a response.
 
-While [async search](async-search-api.md) is designed for long-running searches, you can also use the `timeout` parameter to specify a duration you’d like to wait on each shard to complete. Each shard collects hits within the specified time period. If collection isn’t finished when the period ends, {{es}} uses only the hits accumulated up to that point. The overall latency of a search request depends on the number of shards needed for the search and the number of concurrent shard requests.
+You can set a [`timeout` value](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to apply per shard, starting when the query phase begins on that shard. It does not enforce an overall search-level timeout for other parts of the [read model](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model). The timeout value is exceeded on a shard, it returns partial results and the search response is marked with `"timed_out": true`:
 
-```console
-GET /my-index-000001/_search
+
+```json
 {
-  "timeout": "2s",
-  "query": {
-    "match": {
-      "user.id": "kimchy"
-    }
+ "took" : 11,
+  "timed_out" : true,
+  "_shards" : {
+    "total" : 40,
+    "successful" : 40,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 98393, // possibly incomplete value
+      "relation" : "eq"
+    },
+    // ... 
   }
 }
 ```
 
-To set a cluster-wide default timeout for all search requests, configure `search.default_search_timeout` using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). This global timeout duration is used if no `timeout` argument is passed in the request. If the global search timeout expires before the search request finishes, the request is cancelled using [task cancellation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks). The `search.default_search_timeout` setting defaults to `-1` (no timeout).
+If a particular search request should error out instead of returning partial results, consider setting the [`default_allow_partial_results` setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to `false`.
 
+You can set a fallback cluster-wide default timeout for all search requests by configuring the `search.default_search_timeout` cluster setting. In this case, the request will be cancelled using the [task cancellation API]({{es-apis}}/operation/operation-tasks-cancel).
+
+:::{note}
+The `search.default_search_timeout` setting's resolution sensitivity is determined by the `thread_pool.estimated_time_interval` setting, which defaults to `200ms`. This means the minimum meaningful impact threshold for `search.default_search_timeout` would also be `200ms`. Elastic recommends against overriding this expert setting as it has far reaching impact.
+:::
 
 ## Search cancellation [global-search-cancellation]
 
@@ -341,7 +359,7 @@ GET /_search?q=user.id:elkbee&size=0&terminate_after=1
 ```
 
 ::::{note}
-`terminate_after` is always applied **after** the [`post_filter`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/filter-search-results.md#post-filter) and stops the query as well as the aggregation executions when enough hits have been collected on the shard. Though the doc count on aggregations may not reflect the `hits.total` in the response since aggregations are applied **before** the post filtering.
+`terminate_after` is always applied **after** the [`post_filter`](elasticsearch://reference/elasticsearch/rest-apis/filter-search-results.md#post-filter) and stops the query as well as the aggregation executions when enough hits have been collected on the shard. Though the doc count on aggregations may not reflect the `hits.total` in the response since aggregations are applied **before** the post filtering.
 ::::
 
 
@@ -370,3 +388,38 @@ The response will not contain any hits as the `size` was set to `0`. The `hits.t
 ```
 
 The `took` time in the response contains the milliseconds that this request took for processing, beginning quickly after the node received the query, up until all search related work is done and before the above JSON is returned to the client. This means it includes the time spent waiting in thread pools, executing a distributed search across the whole cluster and gathering all the results.
+
+`_shards.failed` indicates how many shards did not successfully return results for the search request. `_shards.failures` is returned only when shard failures occur and contains an array of objects with details such as the index name, shard number, node ID, and the reason for the failure.
+
+```console-result
+"_shards": {
+  "total": 5,
+  "successful": 1,
+  "skipped": 0,
+  "failed": 4,
+  "failures": [
+    {
+      "shard": 0,
+      "index": "<index_name>",
+      "node": "<node_id>",
+      "reason": {
+        "type": "node_not_connected_exception",
+        "reason": "[<node_name>][<ip>:<port>] Node not connected"
+      }
+    },
+    {
+      "shard": 1,
+      "index": "<index_name>",
+      "node": null,
+      "reason": {
+        "type": "no_shard_available_action_exception",
+        "index_uuid": "<index_uuid>",
+        "shard": "1",
+        "index": "<index_name>"
+      }
+    }
+  ]
+}
+```
+
+Shard failures are deduplicated by `index` and `exception`. If the same exception occurs multiple times on the same index, it is reported only once in `_shards.failures`, even if multiple shards failed. As a result, the number of entries in `_shards.failures` can be lower than the value in `_shards.failed`.

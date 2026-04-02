@@ -1,9 +1,11 @@
 ---
-mapped_urls:
-  -  https://www.elastic.co/guide/en/cloud-enterprise/current/ece-uninstall.html
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-uninstall.html
 applies_to:
   deployment:
-    ece: 
+    ece:
+products:
+  - id: cloud-enterprise
 ---
 
 # Uninstall {{ece}} [ece-uninstall]
@@ -35,7 +37,7 @@ You can remove {{ece}} by removing all containers on the host:
 
 If you plan to reinstall {{ece}} on the host, make sure you [delete the host](../maintenance/ece/delete-ece-hosts.md) from the Cloud UI first. Reinstallation can fail if the host is still associated with your old {{ece}} installation.
 
-::::{warning} 
+::::{warning}
 During installation, the system generates secrets that are placed into the `/mnt/data/elastic/bootstrap-state/bootstrap-secrets.json` secrets file, unless you passed in a different path with the `--host-storage-path` parameter. Keep the information in the `bootstrap-secrets.json` file secure by removing it from its default location and placing it into a secure storage location.
 ::::
 

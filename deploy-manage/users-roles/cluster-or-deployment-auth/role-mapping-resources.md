@@ -1,13 +1,11 @@
 ---
-mapped_urls:
+navigation_title: Role mapping properties
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/role-mapping-resources.html
-navigation_title: "Role mapping properties"
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
+products:
+  - id: elasticsearch
 ---
 
 # Role mapping resource properties [role-mapping-resources]
@@ -38,7 +36,9 @@ A role mapping resource has the following properties:
     `except`
     :   (object) A single rule as an object. Only valid as a child of an `all` rule. If its child is `false`, the `except` is `true`.
 
-## Field rules [mapping-roles-rule-field] 
+
+
+## Field rules [mapping-roles-rule-field]
 
 The `field` rule is the primary building block for a role mapping expression. It takes a single object as its value and that object must contain a single member with key *F* and value *V*. The field rule looks up the value of *F* within the user object and then tests whether the user value *matches* the provided value *V*.
 
@@ -48,12 +48,13 @@ The value specified in the field rule can be one of the following types:
 | --- | --- | --- |
 | Simple String | Exactly matches the provided value. | `"esadmin"` |
 | Wildcard String | Matches the provided value using a wildcard. | `"*,dc=example,dc=com"` |
-| Regular Expression | Matches the provided value using a                       [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md). | `"/.*-admin[0-9]*/"` |
+| Regular Expression | Matches the provided value using a                       [Lucene regexp](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md). | `"/.*-admin[0-9]*/"` |
 | Number | Matches an equivalent numerical value. | `7` |
 | Null | Matches a null or missing value. | `null` |
 | Array | Tests each element in the array in                      accordance with the above definitions.                      If *any* of elements match, the match is successful. | `["admin", "operator"]` |
 
-### User fields [_user_fields] 
+
+### User fields [_user_fields]
 
 The *user object* against which rules are evaluated has the following fields:
 

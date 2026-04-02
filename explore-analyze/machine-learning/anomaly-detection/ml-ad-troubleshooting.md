@@ -1,10 +1,12 @@
 ---
+navigation_title: Troubleshooting and FAQ
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-troubleshooting.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Troubleshooting and FAQ"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-troubleshooting.html
+products:
+  - id: machine-learning
 ---
 
 # Troubleshooting and FAQ [ml-ad-troubleshooting]
@@ -67,7 +69,7 @@ It’s an online model and updated continuously. Old parts of the model are prun
 There is a set of benchmarks to monitor the performance of the {{anomaly-detect}} algorithms and to ensure no regression occurs as the methods are continuously developed and refined. They are called "data scenarios" and consist of 3 things:
 
 * a dataset (stored as an {{es}} snapshot),
-* a {{ml}} config ({{anomaly-detect}}, dfanalysis, {{transform}}, or {{infer}}),
+* a {{ml}} config ({{anomaly-detect}}, dfanalysis, transform, or {{infer}}),
 * an arbitrary set of static assertions (bucket counts, anomaly scores, accuracy value, and so on).
 
 Performance metrics are collected from each and every scenario run and they are persisted in an Elastic Cloud cluster. This information is then used to track the performance over time, across the different builds, mainly to detect any regressions in the performance (both result quality and compute time).

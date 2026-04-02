@@ -1,40 +1,54 @@
 ---
-mapped_urls:
+navigation_title: "{{ece}}"
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-repositories.html
-navigation_title: "Elastic Cloud Enterprise"
 applies_to:
   deployment:
-    ece: 
+    ece:
+products:
+  - id: cloud-enterprise
 ---
 
-# Manage snapshot repositories in Elastic Cloud Enterprise [ece-manage-repositories]
+# Manage snapshot repositories in {{ece}} [ece-manage-repositories]
 
-Snapshots enable you to back up and restore Elasticsearch indices, protecting data from accidental deletion and supporting migration between clusters. In Elastic Cloud Enterprise (ECE), snapshot repositories are managed at the platform level and can be assigned to individual deployments.
+Snapshots enable you to back up and restore {{es}} indices, protecting data from accidental deletion and supporting migration between clusters. In {{ece}} (ECE), snapshot repositories are managed at the platform level and can be assigned to individual deployments.
 
 When a repository is assigned to a deployment, a snapshot is taken every 30 minutes by default. The snapshot interval can be adjusted per deployment.
 
+::::{note}
+This section focuses on configuring snapshot repositories at the ECE platform level. These repositories are assigned to deployments and are used by the ECE platform to automatically manage snapshots through the `found-snapshots` repository.
+
+In addition to platform-managed repositories, you can also configure snapshot repositories directly at the deployment level. This approach is useful when you need deployment-specific snapshots that are independent of the ECE-managed automation.
+
+To register snapshot repositories in ECE directly at the deployment level, follow the guides written for {{ech}}, which are also applicable to ECE deployments:
+
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
+* [Azure Blob Storage](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
+* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
+::::
+
 ## Supported repository types
 
-Elastic Cloud Enterprise installations support the following {{es}} snapshot repository types:
+{{ece}} installations support the following {{es}} snapshot repository types:
 
 * AWS S3
 * Azure Blob Storage
 * Google Cloud Storage
-* Minio S3
+* MinIO S3
 
 ::::{note}
-No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by {{es}}.
+No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
 ::::
 
 
-For more details about how snapshots are used with Elasticsearch, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
+For more details about how snapshots are used with {{es}}, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
 
 * [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)
 * [Microsoft Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
 * [Google Cloud Storage documentation](https://cloud.google.com/storage/docs/)
 
 ::::{tip}
-If you are installing ECE without internet access (commonly called an offline or air-gapped installation), you will need to use an on-premise storage service.  We suggest that you use [Minio](https://www.minio.io/). For our installation notes, check [Snapshotting to Minio On-Premise Storage](minio-on-premise-repository.md).
+If you are installing ECE without internet access (commonly called an offline or air-gapped installation), you will need to use an on-premise storage service.  We suggest that you use [MinIO](https://www.minio.io/). For our installation notes, check [Snapshotting to MinIO On-Premise Storage](minio-on-premise-repository.md).
 ::::
 
 
@@ -42,14 +56,14 @@ If you are installing ECE without internet access (commonly called an offline or
 
 The following guides provide instructions on adding a snapshot repository in ECE for all supported types:
 
-* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md) 
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
-* [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
+* [MinIO](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 ## Edit snapshot repository configurations [ece_edit_snapshot_repository_configurations]
 
-To edit a snapshot repository configuration from your Elastic Cloud Enterprise installation:
+To edit a snapshot repository configuration from your {{ece}} installation:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Repositories**.
@@ -59,9 +73,9 @@ To edit a snapshot repository configuration from your Elastic Cloud Enterprise i
 
 ## Delete snapshot repository configurations [ece_delete_snapshot_repository_configurations]
 
-Deleting a snapshot repository configuration does not remove the snapshot repository itself from S3. Only the configuration that enables Elastic Cloud Enterprise to access the repository is removed. Existing snapshots are also retained and need to be deleted separately if you no longer need them.
+Deleting a snapshot repository configuration does not remove the snapshot repository itself from S3. Only the configuration that enables {{ece}} to access the repository is removed. Existing snapshots are also retained and need to be deleted separately if you no longer need them.
 
-To delete a snapshot repository configuration from your Elastic Cloud Enterprise installation:
+To delete a snapshot repository configuration from your {{ece}} installation:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Repositories**.
@@ -69,7 +83,7 @@ To delete a snapshot repository configuration from your Elastic Cloud Enterprise
 4. Run the following command against the repository name:
 
     ```sh
-    curl -s -XDELETE -u USER:PASSWORD https://COORDINATOR_HOST:12443/api/v1/platform/configuration/snapshots/repositories/REPOSITORY_NAME
+    curl -s -XDELETE -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/snapshots/repositories/REPOSITORY_NAME
     ```
 
     ::::{note}
@@ -78,14 +92,14 @@ To delete a snapshot repository configuration from your Elastic Cloud Enterprise
 
 
 
-## Manage Elasticsearch cluster repositories [ece-manage-repositories-clusters]
+## Manage {{es}} cluster repositories [ece-manage-repositories-clusters]
 
-You might need to update existing Elasticsearch clusters to use a different snapshot repository for one of the following reasons:
+You might need to update existing {{es}} clusters to use a different snapshot repository for one of the following reasons:
 
-* If you do not want all snapshots for a specific Elasticsearch cluster to go into the same bucket as your other clusters, you can add a new snapshot repository configuration with separate permissions and then change your Elasticsearch cluster to use the new repository.
-* If you created an Elasticsearch cluster with no snapshot repository configured, you can add a repository later on. Elastic Cloud Enterprise will start taking snapshots of the cluster automatically.
+* If you do not want all snapshots for a specific {{es}} cluster to go into the same bucket as your other clusters, you can add a new snapshot repository configuration with separate permissions and then change your {{es}} cluster to use the new repository.
+* If you created an {{es}} cluster with no snapshot repository configured, you can add a repository later on. {{ece}} will start taking snapshots of the cluster automatically.
 
-To change the snapshot repository for an existing Elasticsearch cluster:
+To change the snapshot repository for an existing {{es}} cluster:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Optional: If you need to use a repository that is not yet listed, add a snapshot repository configuration first.

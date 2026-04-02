@@ -1,19 +1,33 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-system-deployment-versions.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-system-deployment-versions.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Default system deployment versions [ece-system-deployment-versions]
 
-When installing or upgrading {{ece}}, its associated system deployments run by default on the Elastic Stack versions listed in the following table.
+When installing or upgrading {{ece}}, its associated system deployments run by default on the {{stack}} versions listed in the following table.
 
 Note that since version 2.7.0, system deployments are automatically upgraded when upgrading {{ece}}. Don’t attempt to upgrade system deployments manually. Instead, follow the [ECE upgrade instructions](../../upgrade/orchestrator/upgrade-cloud-enterprise.md).
 
 | {{ece}} version | Admin cluster | Logging & Metrics cluster | Security cluster |
 | --- | --- | --- | --- |
+| 4.1.0 | 8.19.11 | 8.19.11 | 8.19.11 |
+| 4.0.3 | 8.18.8 | 8.18.8 | 8.18.8 |
+| 4.0.2 | 8.18.8 | 8.18.8 | 8.18.8 |
+| 4.0.1 | 8.18.2 | 8.18.2 | 8.18.2 |
+| 4.0.0 | 8.18.0 | 8.18.0 | 8.18.0 |
+| 3.8.4 | 8.19.11 | 8.19.11 | 8.19.11 |
+| 3.8.3 | 8.17.10 | 8.17.10 | 8.17.10 |
+| 3.8.2 | 8.17.10 | 8.17.10 | 8.17.10 |
+| 3.8.1 | 8.17.4 | 8.17.4 | 8.17.4 |
+| 3.8.0 | 8.17.4 | 8.17.4 | 8.17.4 |
+| 3.7.3 | 7.17.24 | 7.17.24 | 8.15.2 |
+| 3.7.2 | 7.17.22 | 7.17.22 | 8.13.4 |
 | 3.7.1 | 7.17.20 | 7.17.20 | 8.13.2 |
 | 3.6.2 | 7.17.15 | 7.17.15 | 8.11.1 |
 | 3.6.1 | 7.17.13 | 7.17.13 | 8.9.2 |

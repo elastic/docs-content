@@ -2,16 +2,23 @@
 navigation_title: Searches
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-dev-tools-troubleshooting.html
+applies_to:
+  stack:
+  serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Troubleshoot searches [troubleshooting-searches]
 
-When you query your data, Elasticsearch may return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
+When you query your data, {{es}} might return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
 
 
 ## Ensure the data stream, index, or alias exists [troubleshooting-searches-exists]
 
-Elasticsearch returns an `index_not_found_exception` when the data stream, index or alias you try to query does not exist. This can happen when you misspell the name or when the data has been indexed to a different data stream or index.
+{{es}} returns an `index_not_found_exception` when the data stream, index or alias you try to query does not exist. This can happen when you misspell the name or when the data has been indexed to a different data stream or index.
 
 Use the [exists API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-exists) to check whether a data stream, index, or alias exists:
 
@@ -113,7 +120,7 @@ To change the mapping of an existing field, refer to [Changing the mapping of a 
 
 ## Check the field’s values [troubleshooting-check-field-values]
 
-Use the [`exists` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-exists-query.md) to check whether there are documents that return a value for a field. Check that `count` in the response is not 0.
+Use the [`exists` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-exists-query.md) to check whether there are documents that return a value for a field. Check that `count` in the response is not 0.
 
 ```console
 GET /my-index-000001/_count
@@ -126,7 +133,7 @@ GET /my-index-000001/_count
 }
 ```
 
-If the field is aggregatable, you can use [aggregations](../../explore-analyze/query-filter/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) to retrieve the field’s most common values:
+If the field is aggregatable, you can use [aggregations](../../explore-analyze/query-filter/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) to retrieve the field’s most common values:
 
 ```console
 GET /my-index-000001/_search?filter_path=aggregations
@@ -143,7 +150,7 @@ GET /my-index-000001/_search?filter_path=aggregations
 }
 ```
 
-For numeric fields, you can use the [stats aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-stats-aggregation.md) to get an idea of the field’s value distribution:
+For numeric fields, you can use the [stats aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-stats-aggregation.md) to get an idea of the field’s value distribution:
 
 ```console
 GET my-index-000001/_search?filter_path=aggregations
@@ -172,9 +179,9 @@ GET my-index-000001/_search?sort=@timestamp:desc&size=1
 
 ## Validate, explain, and profile queries [troubleshooting-searches-validate-explain-profile]
 
-When a query returns unexpected results, Elasticsearch offers several tools to investigate why.
+When a query returns unexpected results, {{es}} offers several tools to investigate why.
 
-The [validate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-validate-query) enables you to validate a query. Use the `rewrite` parameter to return the Lucene query an Elasticsearch query is rewritten into:
+The [validate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-validate-query) enables you to validate a query. Use the `rewrite` parameter to return the Lucene query an {{es}} query is rewritten into:
 
 ```console
 GET /my-index-000001/_validate/query?rewrite=true
@@ -201,7 +208,7 @@ GET /my-index-000001/_explain/0
 }
 ```
 
-The [profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html) provides detailed timing information about a search request. For a visual representation of the results, use the [Search Profiler](../../explore-analyze/query-filter/tools/search-profiler.md) in {{kib}}.
+The [profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md) provides detailed timing information about a search request. For a visual representation of the results, use the [Search Profiler](../../explore-analyze/query-filter/tools/search-profiler.md) in {{kib}}.
 
 ::::{note}
 To troubleshoot queries in {{kib}}, select **Inspect** in the toolbar. Next, select **Request**. You can now copy the query {{kib}} sent to {{es}} for further analysis in Console.
@@ -211,7 +218,7 @@ To troubleshoot queries in {{kib}}, select **Inspect** in the toolbar. Next, sel
 
 ## Check index settings [troubleshooting-searches-settings]
 
-[Index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md) can influence search results. For example, the `index.query.default_field` setting, which determines the field that is queried when a query specifies no explicit field. Use the [get index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) to retrieve the settings for an index:
+[Index settings](elasticsearch://reference/elasticsearch/index-settings/index.md) can influence search results. For example, the `index.query.default_field` setting, which determines the field that is queried when a query specifies no explicit field. Use the [get index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) to retrieve the settings for an index:
 
 ```console
 GET /my-index-000001/_settings
@@ -223,8 +230,11 @@ For static settings, you need to create a new index with the correct settings. N
 
 
 ## Find slow queries [troubleshooting-slow-searches]
+```{applies_to}
+stack:
+```
 
-[Slow logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/slow-log.md) can help pinpoint slow performing search requests. Enabling [audit logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the `elasticsearch.yml` configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
+[Slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) can help pinpoint slow performing search requests. Enabling [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
 
 ```yaml
 xpack.security.audit.enabled: true

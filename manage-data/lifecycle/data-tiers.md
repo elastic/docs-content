@@ -1,16 +1,26 @@
 ---
-mapped_urls:
+navigation_title: Data tiers
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-disable-data-tier.html
   - https://www.elastic.co/guide/en/cloud/current/ec-disable-data-tier.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
-# Data tiers
+# {{es}} data tiers: hot, warm, cold, and frozen storage explained
 
-A *data tier* is a collection of [nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md) within a cluster that share the same [data node role](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles), and a hardware profile that’s appropriately sized for the role. Elastic recommends that nodes in the same tier share the same hardware profile to avoid [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
+{{es}} organizes data into storage tiers to balance performance, cost, and accessibility. Each tier—from hot for frequently accessed data to frozen for rarely queried datasets—has specific hardware and storage characteristics. This guide explains how to configure, manage, and automate data placement across tiers for both time series and general content data.
+
+Each *data tier* is a collection of [nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) in an {{es}} cluster that share the same [data node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles), and a hardware profile that’s appropriately sized for the role. Elastic recommends that nodes in the same tier share the same hardware profile to avoid [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
+
+:::{admonition} Serverless manages data storage for you
+By abstracting cluster management tasks, {{serverless-full}} adjusts data storage and scaling based on your workload. Certain [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md) allow you to customize how your data is stored and calibrate the performance of your data.
+:::
 
 ## Available data tiers [available-tier]
 
@@ -24,11 +34,11 @@ The data tiers that you use, and the way that you use them, depends on the data�
 
 * [Hot tier](/manage-data/lifecycle/data-tiers.md#hot-tier) nodes handle the indexing load for time series data, such as logs or metrics. They hold your most recent, most-frequently-accessed data.
 * [Warm tier](/manage-data/lifecycle/data-tiers.md#warm-tier) nodes hold time series data that is accessed less-frequently and rarely needs to be updated.
-* [Cold tier](/manage-data/lifecycle/data-tiers.md#cold-tier) nodes hold time series data that is accessed infrequently and not normally updated. To save space, you can keep [fully mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) of [{{search-snaps}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) on the cold tier. These fully mounted indices eliminate the need for replicas, reducing required disk space by approximately 50% compared to the regular indices.
-* [Frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier) nodes hold time series data that is accessed rarely and never updated. The frozen tier stores [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) of [{{search-snaps}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) exclusively. This extends the storage capacity even further — by up to 20 times compared to the warm tier.
+* [Cold tier](/manage-data/lifecycle/data-tiers.md#cold-tier) nodes hold time series data that is accessed infrequently and not normally updated. To save space, you can keep [fully mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) of [{{search-snaps}}](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) on the cold tier. These fully mounted indices eliminate the need for replicas, reducing required disk space by approximately 50% compared to the regular indices.
+* [Frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier) nodes hold time series data that is accessed rarely and never updated. The frozen tier stores [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) of [{{search-snaps}}](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) exclusively. This extends the storage capacity even further — by up to 20 times compared to the warm tier.
 
 ::::{tip}
-The performance of an {{es}} node is often limited by the performance of the underlying storage and hardware profile. For example hardware profiles, refer to Elastic Cloud’s [instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/hardware.md). Review our recommendations for optimizing your storage for [indexing](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#indexing-use-faster-hardware) and [search](/deploy-manage/production-guidance/optimize-performance/search-speed.md#search-use-faster-hardware).
+The performance of an {{es}} node is often limited by the performance of the underlying storage and hardware profile. For example hardware profiles, refer to Elastic Cloud’s [instance configurations](cloud://reference/cloud-hosted/hardware.md). Review our recommendations for optimizing your storage for [indexing](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#indexing-use-faster-hardware) and [search](/deploy-manage/production-guidance/optimize-performance/search-speed.md#search-use-faster-hardware).
 ::::
 
 ::::{important}
@@ -48,7 +58,7 @@ Learn more about each data tier, including when and how it should be used.
 
 Data stored in the content tier is generally a collection of items such as a product catalog or article archive. Unlike time series data, the value of the content remains relatively constant over time, so it doesn’t make sense to move it to a tier with different performance characteristics as it ages. Content data typically has long data retention requirements, and you want to be able to retrieve items quickly regardless of how old they are.
 
-Content tier nodes are usually optimized for query performance—​they prioritize processing power over IO throughput so they can process complex searches and aggregations and return results quickly. While they are also responsible for indexing, content data is generally not ingested at as high a rate as time series data such as logs and metrics. From a resiliency perspective the indices in this tier should be configured to use one or more replicas.
+Content tier nodes are usually optimized for query performance—they prioritize processing power over IO throughput so they can process complex searches and aggregations and return results quickly. While they are also responsible for indexing, content data is generally not ingested at as high a rate as time series data such as logs and metrics. From a resiliency perspective the indices in this tier should be configured to use one or more replicas.
 
 The content tier is required and is often deployed within the same node grouping as the hot tier. System indices and other indices that aren’t part of a data stream are automatically allocated to the content tier.
 
@@ -69,7 +79,7 @@ Time series data can move to the warm tier once it is being queried less frequen
 
 When you no longer need to search time series data regularly, it can move from the warm tier to the cold tier. While still searchable, this tier is typically optimized for lower storage costs rather than search speed.
 
-For better storage savings, you can keep [fully mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) of [{{search-snaps}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) on the cold tier. Unlike regular indices, these fully mounted indices don’t require replicas for reliability. In the event of a failure, they can recover data from the underlying snapshot instead. This potentially halves the local storage needed for the data. A snapshot repository is required to use fully mounted indices in the cold tier. Fully mounted indices are read-only.
+For better storage savings, you can keep [fully mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) of [{{search-snaps}}](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) on the cold tier. Unlike regular indices, these fully mounted indices don’t require replicas for reliability. In the event of a failure, they can recover data from the underlying snapshot instead. This potentially halves the local storage needed for the data. A snapshot repository is required to use fully mounted indices in the cold tier. Fully mounted indices are read-only.
 
 Alternatively, you can use the cold tier to store regular indices with replicas instead of using {{search-snaps}}. This lets you store older data on less expensive hardware but doesn’t reduce required disk space compared to the warm tier.
 
@@ -78,7 +88,7 @@ Alternatively, you can use the cold tier to store regular indices with replicas 
 
 Once data is no longer being queried, or being queried rarely, it may move from the cold tier to the frozen tier where it stays for the rest of its life.
 
-The frozen tier requires a snapshot repository. The frozen tier uses [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) to store and load data from a snapshot repository. This reduces local storage and operating costs while still letting you search frozen data. Because {{es}} must sometimes fetch frozen data from the snapshot repository, searches on the frozen tier are typically slower than on the cold tier.
+We recommend you use [dedicated nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-frozen-node) in the frozen tier. The frozen tier requires a snapshot repository and uses [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) to store and load data from the snapshot repository. This reduces local storage and operating costs while still letting you search frozen data. Because {{es}} must sometimes fetch frozen data from the snapshot repository, searches on the frozen tier are typically slower than on the cold tier.
 
 ## Configure data tiers [configure-data-tiers]
 
@@ -96,16 +106,17 @@ To add a warm, cold, or frozen tier when you create a deployment:
 2. Click **+ Add capacity** for any data tiers to add.
 3. Click **Create deployment** at the bottom of the page to save your changes.
 
-:::{image} ../../images/elasticsearch-reference-ess-advanced-config-data-tiers.png
+:::{image} /manage-data/images/elasticsearch-reference-ess-advanced-config-data-tiers.png
 :alt: {{ecloud}}'s deployment Advanced configuration page
-:class: screenshot
+:screenshot:
 :::
 
 To add a data tier to an existing deployment:
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or the {{ece}} admin console.
-2. On the **Deployments** page, select your deployment.
-3. In your deployment menu, select **Edit**.
+:::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
+:::
+
+3. From the navigation menu, select **Edit**.
 4. Click **+ Add capacity** for any data tiers to add.
 5. Click **Save** at the bottom of the page to save your changes.
 
@@ -115,9 +126,9 @@ To add a data tier to an existing deployment:
 Disabling a data tier, attempting to scale nodes down in size, reducing availability zones, or reverting an [autoscaling](/deploy-manage/autoscaling.md) change can all result in cluster instability, cluster inaccessibility, and even data corruption or loss in extreme cases.
 
 To avoid this, especially for [production environments](/deploy-manage/production-guidance.md), and in addition to making configuration changes to your indices and ILM as described on this page:
-* Review the disk size, CPU, JVM memory pressure, and other [performance metrics](/deploy-manage/monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md) of your deployment **before** attempting to perform the scaling down action. 
+* Review the disk size, CPU, JVM memory pressure, and other [performance metrics](/deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) of your deployment **before** attempting to perform the scaling down action.
 * Make sure that you have enough resources and [availability zones](/deploy-manage/production-guidance/availability-and-resilience.md) to handle your workloads after scaling down.
-* Check that your [deployment hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) (for {{ech}}) or [deployment template](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) (for {{ece}}) is correct for your business use case. For example, if you need to scale due to CPU pressure increases and are using a *Storage Optimized* hardware profile, consider switching to a *CPU Optimized* configuration instead. 
+* Check that your [deployment hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) (for {{ech}}) or [deployment template](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) (for {{ece}}) is correct for your business use case. For example, if you need to scale due to CPU pressure increases and are using a *Storage Optimized* hardware profile, consider switching to a *CPU Optimized* configuration instead.
 
 Read [https://www.elastic.co/cloud/shared-responsibility](https://www.elastic.co/cloud/shared-responsibility) for additional details.
 If in doubt, reach out to Support.
@@ -128,16 +139,16 @@ The process of disabling a data tier depends on whether we are dealing with [sea
 The hot and warm tiers store regular indices, while the frozen tier stores searchable snapshots. However, the cold tier can store either regular indices or searchable snapshots. To check if a cold tier contains searchable snapshots perform the following request:
 
 ```sh
-# cold data tier searchable snapshot indices 
+# cold data tier searchable snapshot indices
 GET /_cat/indices/restored-*
 
-# frozen data tier searchable snapshot indices 
+# frozen data tier searchable snapshot indices
 GET /_cat/indices/partial-*
 ```
 
 ##### Non-searchable snapshot data tier [ece-disable-non-searchable-snapshot-data-tier]
 
-{{ech}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (e.g., hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
+{{ech}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (for example, hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
 
 To learn more about ILM, or shard allocation filtering, check the following documentation:
 
@@ -149,18 +160,18 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
 1. Determine which nodes will be removed from the cluster.
 
-    :::::{tab-set}
+    :::::{applies-switch}
 
-    ::::{tab-item} {{ech}}
+    ::::{applies-item} ess:
 
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. From the **Deployments** page, select your deployment.
+    2. From the **Hosted deployments** page, select your deployment.
 
-        On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+        On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
     3. Filter the list of instances by the Data tier you want to disable.
 
-        :::{image} ../../images/cloud-ec-ce-remove-tier-filter-instances.png
+        :::{image} /manage-data/images/cloud-ec-ce-remove-tier-filter-instances.png
         :alt: A screenshot showing a filtered instance list
         :::
 
@@ -168,7 +179,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     ::::
 
-    ::::{tab-item} Elastic Cloud Enterprise
+    ::::{applies-item} ece:
     1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
     2. From the **Deployments** page, select your deployment.
 
@@ -176,7 +187,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     3. Filter the list of instances by the Data tier you want to disable.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-filter-instances.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filter-instances.png
         :alt: A screenshot showing a filtered instance list
         :::
 
@@ -197,9 +208,9 @@ To make sure that all data can be migrated from the data tier you want to disabl
     GET /_cat/shards
     ```
 
-    Parse the output, looking for shards allocated to the nodes to be removed from the cluster. Note that `Instance #2` is shown as `instance-0000000002` in the output.
+    Parse the output, looking for shards allocated to the nodes to be removed from the cluster. `Instance #2` is shown as `instance-0000000002` in the output.
 
-    :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-filtered-cat-shards.png
+    :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filtered-cat-shards.png
     :alt: A screenshot showing a filtered shard list
     :::
 
@@ -347,7 +358,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
         In the example we have a list of 4 indices, which need to be moved away from the frozen tier.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-filter-snapshot-indices.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filter-snapshot-indices.png
         :alt: A screenshot showing a snapshot indices list
         :::
 
@@ -375,14 +386,14 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
     In the example we are removing the alias for the `frozen-index-1` index.
 
-    :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-remove-alias.png
+    :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-remove-alias.png
     :alt: A screenshot showing the process of removing a searchable snapshot indice alias
     :::
 
 5. Restore indices from the searchable snapshots.
 
     1. Follow the steps to [specify the data tier based allocation inclusion rules](/manage-data/lifecycle/data-tiers.md#update-data-tier-allocation-rules).
-    2. Remove the associated ILM policy (set it to `null`). If you want to apply a different ILM policy, follow the steps to [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#switch-lifecycle-policies).
+    2. Remove the associated ILM policy (set it to `null`). If you want to apply a different ILM policy, follow the steps to [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
     3. If needed, specify the alias for rollover, otherwise set it to `null`.
     4. Optionally, specify the desired number of replica shards.
 
@@ -403,14 +414,14 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
         In the example we are restoring `frozen-index-1` from the snapshot in `found-snapshots` (default snapshot repository) and placing it in the warm tier.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-restore-snapshot.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-restore-snapshot.png
         :alt: A screenshot showing the process of restoring a searchable snapshot to a regular index
         :::
 
 6. Repeat steps 4 and 5 until all snapshots are restored to regular indices.
 7. Once all snapshots are restored, use `GET _cat/indices/<index-pattern>?v=true` to check that the restored indices are `green` and are correctly reflecting the expected `doc` and `store.size` counts.
 
-    If you are using data stream, you may need to use `GET _data_stream/<data-stream-name>` to get the list of the backing indices, and then specify them by using `GET _cat/indices/<backing-index-name>?v=true` to check.
+    If you are using data stream, you may need to use `GET _data_stream/<data-stream-name>` to get the list of the backing indices, and then specify them by using `GET _cat/indices/<backing-index-name>?v=true` to check. When you restore the backing indices of a data stream, some [considerations](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#considerations) apply, and you might need to manually add the restored indices into your data stream or recreate your data stream.
 
 8. Once your data has completed restoration from searchable snapshots to the target data tier, `DELETE` searchable snapshot indices using the prefix from step 2.
 
@@ -420,13 +431,13 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
 9. Delete the searchable snapshots by following these steps:
 
-    1. Open Kibana and navigate to Management > Data > Snapshot and Restore > Snapshots (or go to `<kibana-endpoint>/app/management/data/snapshot_restore/snapshots`)
+    1. Open Kibana, go to the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and go to the **Snapshots** tab. (Alternatively, go to `<kibana-endpoint>/app/management/data/snapshot_restore/snapshots`.)
     2. Search for `*<ilm-policy-name>*`
     3. Bulk select the snapshots and delete them
 
         In the example we are deleting the snapshots associated with the `policy_with_frozen_phase`.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-remove-snapshots.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-remove-snapshots.png
         :alt: A screenshot showing the process of deleting snapshots
         :::
 
@@ -440,7 +451,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
 ### Self-managed deployments [configure-data-tiers-on-premise]
 
-For self-managed deployments, each node’s [data role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) is configured in `elasticsearch.yml`. For example, the highest-performance nodes in a cluster might be assigned to both the hot and content tiers:
+For self-managed deployments, each node’s [data role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) is configured in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). For example, the highest-performance nodes in a cluster might be assigned to both the hot and content tiers:
 
 ```yaml
 node.roles: ["data_hot", "data_content"]
@@ -452,7 +463,7 @@ We recommend you use [dedicated nodes](/deploy-manage/distributed-architecture/c
 
 ## Data tier index allocation [data-tier-allocation]
 
-The [`index.routing.allocation.include._tier_preference`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) setting determines which tier the index should be allocated to.
+The [`index.routing.allocation.include._tier_preference`](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) setting determines which tier the index should be allocated to.
 
 When you create an index, by default {{es}} sets the `_tier_preference` to `data_content` to automatically allocate the index shards to the content tier.
 
@@ -460,14 +471,14 @@ When {{es}} creates an index as part of a [data stream](/manage-data/data-store/
 
 At the time of index creation, you can override the default setting by explicitly setting the preferred value in one of two ways:
 
-* Using an [index template](/manage-data/data-store/templates.md). Refer to [Automate rollover with ILM](/manage-data/lifecycle/index-lifecycle-management.md) for details.
+* Using an [index template](/manage-data/data-store/templates.md). Refer to [](/manage-data/lifecycle/index-lifecycle-management.md) for details.
 * Within the [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request body.
 
 You can override this setting after index creation by [updating the index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to the preferred value.
 
-This setting also accepts multiple tiers in order of preference. This prevents indices from remaining unallocated if no nodes are available in the preferred tier. For example, when {{ilm}} migrates an index to the cold phase, it sets the index `_tier_preference` to `data_cold,data_warm,data_hot`.
+This setting also accepts multiple tiers in order of preference. This prevents indices from remaining unallocated if there are no nodes in the cluster for the preferred tier. For example, when {{ilm}} migrates an index to the cold phase, it sets the index `_tier_preference` to `data_cold,data_warm,data_hot`.
 
-To remove the data tier preference setting, set the `_tier_preference` value to `null`. This allows the index to allocate to any data node within the cluster. Setting the `_tier_preference` to `null` does not restore the default value. Note that, in the case of managed indices, a [migrate](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action might apply a new value in its place.
+To remove the data tier preference setting, set the `_tier_preference` value to `null`. This allows the index to allocate to any data node within the cluster. Setting the `_tier_preference` to `null` does not restore the default value. In the case of managed indices, a [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action might apply a new value in its place.
 
 ### Determine the current data tier preference [data-tier-allocation-value]
 
@@ -486,4 +497,33 @@ This setting will not unallocate a currently allocated shard, but might prevent 
 
 ### Automatic data tier migration [data-tier-migration]
 
-{{ilm-init}} automatically transitions managed indices through the available data tiers using the [migrate](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action. By default, this action is automatically injected in every phase. You can explicitly specify the migrate action with `"enabled": false` to [disable automatic migration](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-disable-migrate-ex), for example, if you’re using the [allocate action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) to manually specify allocation rules.
+{{ilm-init}} automatically transitions managed indices through the available data tiers using the [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action. By default, this action is automatically injected in every phase.
+
+### Disable data tier allocation [data-tier-allocation]
+You can explicitly disable data allocation for  data tier migration in an ILM policy with the following setting:
+```sh
+    "migrate": {
+      "enabled": false
+    }
+```
+
+For example:
+
+```sh
+ "cold": {
+        "min_age": "15m",
+        "actions": {
+          "set_priority": {
+            "priority": 0
+          },
+          "migrate": {
+            "enabled": false
+          }
+        }
+      },
+```
+
+Defining the `migrate` action with `"enabled": false` for a data tier [disables automatic {{ilm-init}} shard migration](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-disable-migrate-ex). This is useful if, for example, you’re using the [allocate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) to manually specify allocation rules.
+
+#### Important Note:
+Do not disable automatic {{ilm-init}} migration without manually defining {{ilm-init}} allocation rules. If data migration is disabled without allocation rules defined, this can prevent data from moving to the specified data tier, even though the data has successfully moved through the {{ilm-init}} policy with a status of `complete`.

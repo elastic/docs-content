@@ -1,12 +1,15 @@
 ---
+navigation_title: Resources
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-resources.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-resources.html
+products:
+  - id: machine-learning
 ---
 
-# Resources [ml-dfa-resources]
+# Resources for data frame analytics [ml-dfa-resources]
 
 This section contains further resources for using {{dfanalytics}}.
 

@@ -2,10 +2,13 @@
 applies_to:
   deployment:
     ece: all
+navigation_title: Install an orchestrator
+products:
+  - id: cloud-enterprise
 ---
-# Deploy an orchestrator
+# Install an {{ece}} orchestrator
 
-Elastic Cloud Enterprise (ECE) provides a centralized platform that allows organizations to run Elasticsearch, Kibana, and other Elastic Stack components across multiple machines, whether in a private or public cloud, virtual machines, or your own premises.
+{{ece}} (ECE) provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines, whether in a private or public cloud, virtual machines, or your own premises.
 
 ::::{note}
 This section focuses on deploying the ECE orchestrator. If you want to deploy {{es}}, {{kib}} or other {{stack}} applications on ECE, refer to [](./working-with-deployments.md).
@@ -52,5 +55,5 @@ To start orchestrating your {{es}} clusters, refer to [](./working-with-deployme
 The following tasks are only needed on certain circumstances:
 
 * [Migrate ECE to Podman hosts](./migrate-ece-to-podman-hosts.md)
-* [Migrate ECE on Podman hosts to SELinux enforce](./migrate-ece-on-podman-hosts-to-selinux-enforce.md)
+* [Migrate ECE on Podman hosts to SELinux enforce](./../../security/secure-your-elastic-cloud-enterprise-installation/migrate-ece-on-podman-hosts-to-selinux-enforce.md)
 * [Change allocator disconnect timeout](./change-allocator-disconnect-timeout.md)

@@ -1,10 +1,12 @@
 ---
+navigation_title: Text embedding and semantic search
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Text embedding and semantic search"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
+products:
+  - id: machine-learning
 ---
 
 # Text embedding and semantic search [ml-nlp-text-emb-vector-search-example]
@@ -19,13 +21,13 @@ You can find [this example as a Jupyter notebook](https://github.com/elastic/ela
 
 To follow along the process on this page, you must have:
 
-* an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
+* a {{serverless-short}} project or an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
 * The [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated.
 * [Docker](https://docs.docker.com/get-docker/) installed.
 
 ## Deploy a text embedding model [ex-te-vs-deploy]
 
-You can use the [Eland client](https://www.elastic.co/guide/en/elasticsearch/client/eland/current) to install the {{nlp}} model. Use the prebuilt Docker image to run the Eland install model commands. Pull the latest image with:
+You can use the [Eland client](eland://reference/index.md) to install the {{nlp}} model. Use the prebuilt Docker image to run the Eland install model commands. Pull the latest image with:
 
 ```shell
 docker pull docker.elastic.co/eland/eland
@@ -40,29 +42,29 @@ Install the model by running the `eland_import_model_hub` command in the Docker 
 ```shell
 docker run -it --rm docker.elastic.co/eland/eland \
     eland_import_hub_model \
-      --cloud-id $CLOUD_ID \
-      -u <username> -p <password> \
+      --url <url> \
+      --es-api-key <api-key> \
       --hub-model-id sentence-transformers/msmarco-MiniLM-L-12-v3 \
       --task-type text_embedding \
       --start
 ```
 
-You need to provide an administrator username and password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the **Deployments** page on your Cloud website.
+You need to provide an API key for authentication, and replace `<url>` with your {{es}} cluster URL.
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
-Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
+Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API]({{kib-apis}}group/endpoint-ml).
 
 ## Test the text embedding model [ex-text-emb-test]
 
 Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Models** by selecting the **Test model** action for the respective model.
 
-:::{image} ../../../images/machine-learning-ml-nlp-text-emb-test.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-text-emb-test.png
 :alt: Test trained model UI
-:class: screenshot
+:screenshot:
 :::
 
-::::{dropdown} **Test the model by using the _infer API**
+::::{dropdown} Test the model by using the _infer API
 You can also evaluate your models by using the [_infer API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
 
 ```js
@@ -105,16 +107,16 @@ The data set `msmarco-passagetest2019-top1000` is a subset of the MS MARCO Passa
 
 Upload the file by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
 
-:::{image} ../../../images/machine-learning-ml-nlp-text-emb-data.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-text-emb-data.png
 :alt: Importing the data
-:class: screenshot
+:screenshot:
 :::
 
 ## Add the text embedding model to an {{infer}} ingest pipeline [ex-text-emb-ingest]
 
-Process the initial data with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
+Process the initial data with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
 
-Now create an ingest pipeline either in the [{{stack-manage-app}} UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
+Now create an ingest pipeline either from the [Ingest Pipelines](ml-nlp-inference.md#ml-nlp-inference-processor) management page in {{kib}} or by using the API:
 
 ```js
 PUT _ingest/pipeline/text-embeddings
@@ -197,9 +199,9 @@ GET _tasks/<task_id>
 
 You can also open the model stat UI to follow the progress.
 
-:::{image} ../../../images/machine-learning-ml-nlp-text-emb-reindex.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-text-emb-reindex.png
 :alt: Model status UI
-:class: screenshot
+:screenshot:
 :::
 
 After the reindexing is finished, the documents in the new index contain the {{infer}} results – the vector embeddings.

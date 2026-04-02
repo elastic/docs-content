@@ -1,20 +1,28 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
+navigation_title: Configure advanced settings
 ---
 
-# Configure advanced settings [security-advanced-settings]
+# Configure advanced settings for {{elastic-sec}} [security-advanced-settings]
 
-The advanced settings determine:
+The advanced settings control the behavior of the {{security-app}}, such as:
 
 * Which indices {{elastic-sec}} uses to retrieve data
 * {{ml-cap}} anomaly score display threshold
 * The navigation menu style used throughout the {{security-app}}
-* Whether the news feed is displayed on the [*Overview dashboard*](/solutions/security/dashboards/overview-dashboard.md)
+* Whether the news feed is displayed on the [Overview dashboard](/solutions/security/dashboards/overview-dashboard.md)
 * The default time interval used to filter {{elastic-sec}} pages
 * The default {{elastic-sec}} pages refresh time
-* Which IP reputation links appear on [IP detail](/solutions/security/explore/network-page.md) pages
+* Which IP reputation links appear on [IP detail](/solutions/security/advanced-entity-analytics/network-page.md) pages
 * Whether cross-cluster search (CCS) privilege warnings are displayed
 * Whether related integrations are displayed on the Rules page tables
 * The options provided in the alert tag menu
@@ -34,11 +42,11 @@ Modifying advanced settings can affect Kibana performance and cause problems tha
 
 ## Access advanced settings [security-advanced-settings-access-advanced-settings]
 
-To access advanced settings, go to **Stack Management** → **Advanced Settings**, then scroll down to **Security Solution** settings.
+To access advanced settings, go to **Stack Management** → **Advanced Settings** in {{stack}} or **Project Settings** → **Stack Management** → **Advanced Settings** in {{serverless-short}}, then scroll down to **Security Solution** settings.
 
-:::{image} ../../../images/security-solution-advanced-settings.png
+:::{image} /solutions/images/security-solution-advanced-settings.png
 :alt: solution advanced settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -61,7 +69,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 ::::
 
 
-All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/index.md) and [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
+All of the default index patterns match [{{beats}}](beats://reference/index.md) and [{{agent}}](/reference/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
 You can add or remove any indices and index patterns as required. In {{serverless-short}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}}, there is no limit. For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 
@@ -71,7 +79,7 @@ If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cl
 
 
 ::::{important}
-{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [*Elastic Security ECS field reference*](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
+{{elastic-sec}} requires [ECS-compliant data](ecs://reference/index.md). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [Elastic Security ECS field reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
 ::::
 
 
@@ -82,10 +90,10 @@ The `securitySolution:defaultThreatIndex` advanced setting specifies threat inte
 
 
 
-You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
+You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti_*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
 
 ::::{important}
-Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) for more information.
+Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) for more information.
 ::::
 
 
@@ -117,6 +125,28 @@ You can change these settings, which affect the news feed displayed on the {{ela
 * `securitySolution:enableNewsFeed`: Enables the security news feed on the Security **Overview** page.
 * `securitySolution:newsFeedUrl`: The URL from which the security news feed content is retrieved.
 
+## Enable graph visualization
+```{applies_to}
+stack: removed 9.4, preview 9.1-9.3
+serverless: removed
+```
+Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
+
+## Enable asset inventory
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+
+Turn on the `securitySolution:enableAssetInventory` setting to enable the Asset Inventory in your environment.
+
+## Enable cloud connector deployment
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+
+Turn on the `securitySolution:enableCloudConnector` setting to enable Cloud Connector deployment for Elastic's CSPM and Asset Inventory integrations.
 
 ## Exclude cold and frozen tier data from analyzer queries [exclude-cold-frozen-tiers]
 
@@ -125,12 +155,12 @@ Including data from cold and frozen [data tiers](/manage-data/lifecycle/data-tie
 
 ## Access the event analyzer and Session View from the event or alert details flyout [visualizations-in-flyout]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
+```{applies_to}
+stack: removed 9.1
+serverless: removed
+```
 
-
-The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** [tab](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-visualizations-view) on the alert or event details flyout. This setting is turned off by default.
+The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** [tab](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-visualizations-view) on the alert or event details flyout.
 
 
 ## Change the default search interval and data refresh time [_change_the_default_search_interval_and_data_refresh_time]
@@ -141,7 +171,7 @@ These settings determine the default time interval and refresh rate {{elastic-se
 * `securitySolution:refreshIntervalDefaults`: Default refresh rate
 
 ::::{note}
-Refer to [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md) for information about the syntax. The UI [time filter](/explore-analyze/query-filter/filtering.md) overrides the default values.
+Refer to [Date Math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md) for information about the syntax. The UI [time filter](/explore-analyze/query-filter/filtering.md) overrides the default values.
 ::::
 
 
@@ -174,6 +204,13 @@ Each time a detection rule runs using a remote cross-cluster search (CCS) index 
 
 If you’ve ensured that your detection rules have the required privileges across your remote indices, you can use the `securitySolution:enableCcsWarning` setting to disable this warning and reduce noise.
 
+## Configure alert suppression window behavior [suppression-window-behavior]
+
+```yaml {applies_to}
+stack: ga 9.2
+```
+
+To control whether alert suppression continues after you close a supressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
 ## Show/hide related integrations in Rules page tables [show-related-integrations]
 
@@ -185,19 +222,31 @@ By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tabl
 The `securitySolution:alertTags` field determines which options display in the alert tag menu. The default alert tag options are `Duplicate`, `False Positive`, and `Further investigation required`. You can update the alert tag menu by editing these options or adding more. To learn more about using alert tags, refer to [Apply and filter alert tags](/solutions/security/detect-and-alert/manage-detection-alerts.md#apply-alert-tags).
 
 
-## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
+## Add custom alert closing reasons [custom-alert-closing-reasons]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
 
-The `securitySolution:maxUnassociatedNotes` field determines the maximum number of [notes](/solutions/security/investigate/notes.md) that you can attach to alerts and events. The maximum limit and default value is 1000.
+The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
+
+## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
+```yaml {applies_to}
+stack: removed 9.1
+serverless: removed
+```
+
+The `securitySolution:maxUnassociatedNotes` field determines the maximum number of [notes](/solutions/security/investigate/notes.md) that you can attach to alerts and events. The maximum limit and default value is 10000.
 
 
 ## Exclude cold and frozen data from rules [exclude-cold-frozen-data-rule-executions]
 
-To ensure the rules in your {{kib}} space exclude query results from cold and frozen tiers when executing, specify cold and frozen [data tiers](/manage-data/lifecycle/data-tiers.md) in the `excludedDataTiersForRuleExecution` field. Multiple data tiers must be separated by commas, for example: `data_frozen`, `data_cold`. This setting is turned off by default; turning it on can improve rule performance and reduce execution time.
+To ensure the rules in your {{kib}} space exclude query results from cold and frozen tiers when executing, specify cold and frozen [data tiers](/manage-data/lifecycle/data-tiers.md) in the `excludedDataTiersForRuleExecution` field. Multiple data tiers must be separated by commas, for example: `data_frozen`, `data_cold`. This setting is turned off by default; turning it on can improve rule performance and reduce execution time.
 
 This setting does not apply to {{ml}} rules because {{ml}} anomalies are not stored in cold or frozen data tiers.
 
 ::::{tip}
-To only exclude cold and frozen data from specific rules, add a [Query DSL filter](/solutions/security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md) to the rules you want affected.
+To only exclude cold and frozen data from specific rules, add a [Query DSL filter](/solutions/security/detect-and-alert/set-rule-data-sources.md) to the rules you want affected.
 
 ::::
 
@@ -205,3 +254,19 @@ To only exclude cold and frozen data from specific rules, add a [Query DSL filte
 ::::{important}
 Even when the `excludedDataTiersForRuleExecution` advanced setting is enabled, indicator match, event correlation, and {{esql}} rules may still fail if a frozen or cold shard that matches the rule’s specified index pattern is unavailable during rule executions. If failures occur, we recommend modifying the rule’s index patterns to only match indices containing hot tier data.
 ::::
+
+
+## Access privileged user monitoring
+```yaml {applies_to}
+stack: removed 9.3, ga 9.1
+serverless: removed
+```
+
+The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
+
+## Turn off {{esql}}-based risk scoring
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+By default, [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) calculations are based on {{esql}} queries. Turn off `securitySolution:enableEsqlRiskScoring` to use scripted metrics instead.

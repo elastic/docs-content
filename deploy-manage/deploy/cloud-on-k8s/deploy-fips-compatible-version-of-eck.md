@@ -1,11 +1,13 @@
 ---
 navigation_title: FIPS compatibility
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-fips.html
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_installation.html
 applies_to:
   deployment:
     eck: all
-mapped_urls:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-fips.html
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_installation.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Deploy a FIPS compatible version of ECK [k8s-fips]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/vega.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/vega.html
+products:
+  - id: kibana
 ---
 
 # Custom visualizations with Vega [vega]
@@ -24,9 +26,13 @@ Use **Vega** or **Vega-Lite** when you want to create visualizations with:
 
 These grammars have some limitations: they do not support tables, and can’t run queries conditionally.
 
-:::{image} ../../images/kibana-vega.png
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
+:::
+
+:::{image} /explore-analyze/images/kibana-vega.png
 :alt: Vega UI
-:class: screenshot
+:screenshot:
 :::
 
 Both **Vega** and **Vega-Lite** use JSON, but {{kib}} has made this simpler to type by integrating [HJSON](https://hjson.github.io/). HJSON supports the following:
@@ -116,7 +122,7 @@ POST kibana_sample_data_ecommerce/_search
 }
 ```
 
-Add the [terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md), then click **Click to send request**:
+Add the [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md), then click **Click to send request**:
 
 ```js
 POST kibana_sample_data_ecommerce/_search
@@ -222,16 +228,16 @@ To generate the data, **Vega-Lite** uses the `source_0` and `data_0`. `source_0`
 2. From the **View** dropdown, select **Vega debug**.
 3. From the dropdown, select **source_0**.
 
-   :::{image} ../../images/kibana-vega_lite_tutorial_4.png
+   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_4.png
    :alt: Table for data_0 with columns key
-   :class: screenshot
+   :screenshot:
    :::
 
 4. To compare to the visually encoded data, select **data_0** from the dropdown.
 
-   :::{image} ../../images/kibana-vega_lite_tutorial_5.png
+   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_5.png
    :alt: Table for data_0 where the key is NaN instead of a string
-   :class: screenshot
+   :screenshot:
    :::
 
    **key** is unable to convert because the property is category (`Men's Clothing`, `Women's Clothing`, etc.) instead of a timestamp.
@@ -260,9 +266,9 @@ In the **Vega-Lite** spec, add the `encoding` block:
 1. Click **Inspect**, then select **Vega Debug** from the **View** dropdown.
 2. From the dropdown, select **data_0**.
 
-   :::{image} ../../images/kibana-vega_lite_tutorial_6.png
+   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_6.png
    :alt: Table for data_0 showing that the column time_buckets.buckets.key is undefined
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -286,9 +292,9 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 1. Click **Inspect**, then select **Vega Debug** from the **View** dropdown.
 2. From the dropdown, select **data_0**.
 
-   :::{image} ../../images/kibana-vega_lite_tutorial_7.png
+   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_7.png
    :alt: Table showing data_0 with multiple pages of results
-   :class: screenshot
+   :screenshot:
    :::
 
     Vega-Lite displays **undefined** values because there are duplicate names.
@@ -410,9 +416,9 @@ Add a `selection` block inside `mark: point`:
 
 Move your cursor around the stacked area chart. The points are able to indicate the nearest point.
 
-:::{image} ../../images/kibana-vega_lite_tutorial_2.png
+:::{image} /explore-analyze/images/kibana-vega_lite_tutorial_2.png
 :alt: Vega-Lite tutorial selection enabled
-:class: screenshot
+:screenshot:
 :::
 
 The selection is controlled by a signal. To view the signal, click **Inspect** in the toolbar.
@@ -662,9 +668,9 @@ Add the `key` and `doc_count` fields as the X- and Y-axis values, then click **U
   ]
 ```
 
-:::{image} ../../images/kibana-vega_tutorial_3.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_3.png
 :alt: vega tutorial 3
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -752,9 +758,9 @@ To make the area chart interactive, locate the `marks` block, then update the `p
 
 To allow users to filter based on a time range, add a drag interaction, which requires additional signals and a rectangle overlay.
 
-:::{image} ../../images/kibana-vega_tutorial_4.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_4.png
 :alt: vega tutorial 4
-:class: screenshot
+:screenshot:
 :::
 
 In the **Vega** spec, add a `signal` to track the X position of the cursor:
@@ -1121,10 +1127,10 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 * Automatic sizing
 * Default theme to match {{kib}}
 * Writing {{es}} queries using the time range and filters from dashboards
-* [preview] Using the Elastic Map Service in Vega maps
+* {applies_to}`stack: preview` {applies_to}`serverless: preview` Using the Elastic Map Service in Vega maps
 * Additional tooltip styling
 * Advanced setting to enable URL loading from any domain
-* Debugging support using the {{kib}} inspector or browser console
+* Debugging support using the {{kib}} inspector
 * (Vega only) Expression functions which can update the time range and dashboard filters
 
 
@@ -1163,7 +1169,7 @@ padding: {
 To learn more, read about [Vega autosize](https://vega.github.io/vega/docs/specification/#autosize) and [Vega-Lite autosize](https://vega.github.io/vega-lite/docs/size.html).
 
 ::::{note}
-Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite/docs/size.html#limitations) which can affect the height and width of your visualization, but these limitations do not exist in Vega. If you need full control, convert your spec to Vega using the [browser console](#vega-browser-debugging-console) `VEGA_DEBUG.vega_spec` output. To disable these warnings, you can [add extra options to your spec](#vega-additional-configuration-options).
+Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite/docs/size.html#limitations) which can affect the height and width of your visualization, but these limitations do not exist in Vega.
 ::::
 
 
@@ -1318,8 +1324,12 @@ The `"%timefilter%"` can also be used to specify a single min or max value. The 
 
 
 #### Access Elastic Map Service files [vega-esmfiles]
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
-[preview] Access the Elastic Map Service files via the same mechanism:
+Access the Elastic Map Service files using the same mechanism:
 
 ```yaml
 url: {
@@ -1341,8 +1351,12 @@ format: {property: "features"}
 
 
 ### Vega with a Map [vega-with-a-map]
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
-[preview] To enable **Maps**, the graph must specify `type=map` in the host configuration:
+To enable **Maps**, the graph must specify `type=map` in the host configuration:
 
 ```yaml
 {
@@ -1388,7 +1402,7 @@ format: {property: "features"}
 
 The visualization automatically injects a `"projection"`, which you can use to calculate the position of all geo-aware marks. Additionally, you can use `latitude`, `longitude`, and `zoom` signals. These signals can be used in the graph, or can be updated to modify the position of the map.
 
-[preview] You can use the **Vega** [data](https://vega.github.io/vega/docs/data/) element to access [Elastic Maps Service (EMS)](https://www.elastic.co/elastic-maps-service) vector shapes of administrative boundaries in your Vega map by setting `url.data` to `emsFile`:
+{applies_to}`stack: preview` {applies_to}`serverless: preview` You can use the **Vega** [data](https://vega.github.io/vega/docs/data/) element to access [Elastic Maps Service (EMS)](https://www.elastic.co/elastic-maps-service) vector shapes of administrative boundaries in your Vega map by setting `url.data` to `emsFile`:
 
 ```yaml
   "data": [
@@ -1437,7 +1451,7 @@ The visualization automatically injects a `"projection"`, which you can use to c
 
 ##### Enable URL loading from any domain [vega-url-loading]
 
-**Vega** can load data from any URL. To enable, set `vis_type_vega.enableExternalUrls: true` in `kibana.yml`, then restart {{kib}}.
+**Vega** can load data from any URL. To enable, set `vis_type_vega.enableExternalUrls: true` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
 
 The files that the external URLs load must allow [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). The remote URL must include `Access-Control-Allow-Origin`, which allows requests from the {{kib}} URL.
 
@@ -1453,9 +1467,9 @@ Use the contextual **Inspect** tool to gain insights into different elements.
 
 **Vega** uses the [{{es}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
 
-:::{image} ../../images/kibana-vega_tutorial_inspect_requests.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_requests.png
 :alt: vega tutorial inspect requests
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -1465,33 +1479,24 @@ With the **Vega debug** view, you can inspect the **Data sets** and **Signal Val
 
 The runtime data is read from the [runtime scope](https://vega.github.io/vega/docs/api/debugging/#scope).
 
-:::{image} ../../images/kibana-vega_tutorial_inspect_data_sets.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_data_sets.png
 :alt: vega tutorial inspect data sets
-:class: screenshot
+:screenshot:
 :::
 
-To debug more complex specs, access to the `view` variable.  For more information, refer to the [Vega browser debugging process](#vega-browser-debugging-console).
+To debug more complex specs, copy the Vega spec from the **Spec** tab and use the [online Vega Editor](https://vega.github.io/editor/) to debug it.
 
 
 ##### Asking for help with a Vega spec [asking-for-help-with-a-vega-spec]
 
 Because of the dynamic nature of the data in {{es}}, it is hard to help you with **Vega** specs unless you can share a dataset. To do this, click **Inspect**, select the **Vega debug** view, then select **Spec**.
 
-:::{image} ../../images/kibana-vega_tutorial_getting_help.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_getting_help.png
 :alt: vega tutorial getting help
-:class: screenshot
+:screenshot:
 :::
 
 To copy the response, click **Copy to clipboard**. Paste the copied data to [gist.github.com](https://gist.github.com/), possibly with a .json extension. Use the [raw] button, and share that when asking for help.
-
-
-#### Browser debugging console [vega-browser-debugging-console]
-
-[preview] Use browser debugging tools (for example, F12 or Ctrl+Shift+J in Chrome) to inspect the `VEGA_DEBUG` variable:
-
-* `view` — Access to the Vega View object. See [Vega Debugging Guide](https://vega.github.io/vega/docs/api/debugging/) on how to inspect data and signals at runtime. For Vega-Lite, `VEGA_DEBUG.view.data('source_0')` gets the pre-transformed data, and `VEGA_DEBUG.view.data('data_0')` gets the encoded data. For Vega, it uses the data name as defined in your Vega spec.
-* `vega_spec` — Vega JSON graph specification after some modifications by {{kib}}. In case of Vega-Lite, this is the output of the Vega-Lite compiler.
-* `vegalite_spec` — If this is a Vega-Lite graph, JSON specification of the graph before Vega-Lite compilation.
 
 
 #### (Vega only) Expression functions which can update the time range and dashboard filters [vega-expression-functions]

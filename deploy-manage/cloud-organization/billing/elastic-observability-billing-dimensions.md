@@ -1,30 +1,34 @@
 ---
-navigation_title: "Elastic for Observability"
+navigation_title: Observability projects
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-billing.html
 applies_to:
   serverless: all
+products:
+  - id: cloud-serverless
 ---
 
-# Elastic for Observability billing dimensions [observability-billing]
+# {{obs-serverless}} billing dimensions [observability-billing]
 
-{{obs-serverless}} projects provide you with all the capabilities of Elastic Observability to monitor critical applications. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption-based.
+{{obs-serverless}} projects provide you with all the capabilities of Elastic Observability to monitor critical applications. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption-based. {{obs-serverless}} projects are available in the following tiers of carefully selected features to enable common observability operations:
+
+* **Observability Logs Essentials**: Includes everything you need to store and analyze logs at scale.
+* **Observability Complete**: Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.
 
 Your monthly bill is based on the capabilities you use. When you use {{obs-serverless}}, your bill is calculated based on data volume, which has these components:
 
 * **Ingest** — Measured by the number of GB of log/event/info data that you send to your Observability project over the course of a month.
 * **Retention** — Measured by the total amount of ingested data stored in your Observability project.
 
-Ingest and retention metering is based on the uncompressed, normalized, fully enriched data volume you ingest into your Serverless project. This allows you flexibility and consistency when choosing your preferred ingest architecture for enrichment, whether through {{agent}}, {{ls}}, OpenTelemetry, or collectors—without the need to consider possible impacts on the cost.
+:::{include} _snippets/note-data-volumes-ingest-retention.md
+:::
 
-::::{note}
-One consequence of this metering method is that the absolute volume of data reported in your usage statement can be much larger than the "raw" data size or the compressed data size "on the wire." Your monthly bill will transparently display exactly how much data has been ingested, including valuable metadata added by your data shipper, and contextual enrichment performed by your ingest processing. Please note that we took the cost of metadata and enrichment into consideration while determining our Serverless per GB prices to help make {{obs-serverless}} a cost-effective service.
-::::
-
-
+Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability) for more details about {{obs-serverless}} billing dimensions and rates, or you can create a [Serverless estimate](https://cloud.elastic.co/pricing/serverless?s=observability).
 
 ## Synthetics [synthetics-billing]
 
-[Synthetic monitoring](../../../solutions/observability/apps/synthetic-monitoring.md) is an optional add-on to Observability Serverless projects that allows you to periodically check the status of your services and applications. In addition to the core ingest and retention dimensions, there is a charge to execute synthetic monitors on our testing infrastructure. Browser (journey) based tests are charged per-test-run, and ping (lightweight) tests have an all-you-can-use model per location used.
+[Synthetic monitoring](/solutions/observability/synthetics/index.md) is an optional add-on to Observability Serverless projects that allows you to periodically check the status of your services and applications as a part of the "Observability Complete" feature tier. In addition to the core ingest and retention dimensions, there is a charge to execute synthetic monitors on our testing infrastructure. Browser (journey) based tests are charged per-test-run, and ping (lightweight) tests have an all-you-can-use model per location used.
 
-Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability) for more details about {{obs-serverless}} billing dimensions and rates.
+## Elastic Managed LLMs
+
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Observability Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.

@@ -1,16 +1,19 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfanalytics.html
+  - https://www.elastic.co/guide/en/kibana/current/xpack-ml-dfanalytics.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfanalytics.html
-  - https://www.elastic.co/guide/en/kibana/current/xpack-ml-dfanalytics.html
+products:
+  - id: machine-learning
+  - id: kibana
 ---
 
 # Data frame analytics [ml-dfanalytics]
 
 ::::{important}
-Using {{dfanalytics}} requires source data to be structured as a two dimensional "tabular" data structure, in other words a {{dataframe}}. [{{transforms-cap}}](../transforms.md) enable you to create {{dataframes}} which can be used as the source for {{dfanalytics}}.
+Using {{dfanalytics}} requires source data to be structured as a two dimensional "tabular" data structure, in other words a {{dataframe}}. [Transforms](../transforms.md) enable you to create {{dataframes}} which can be used as the source for {{dfanalytics}}.
 ::::
 
 {{dfanalytics-cap}} enable you to perform different analyses of your data and annotate it with the results. Consult [Setup and security](setting-up-machine-learning.md) to learn more about the license and the security privileges that are required to use {{dfanalytics}}.

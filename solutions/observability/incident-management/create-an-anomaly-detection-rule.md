@@ -1,7 +1,12 @@
 ---
-navigation_title: "Anomaly detection"
+navigation_title: Anomaly detection
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-aiops-generate-anomaly-alerts.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: cloud-serverless
 ---
 
 
@@ -9,14 +14,14 @@ mapped_pages:
 # Create an anomaly detection rule [observability-aiops-generate-anomaly-alerts]
 
 
-::::{note} 
+::::{note}
 
-The **Editor** role or higher is required to create anomaly detection rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+The **Editor** role or higher is required to create anomaly detection rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
 
-::::{important} 
+::::{important}
 **Anomaly detection alerting is in beta**
 
 The Anomaly detection alerting functionality is in beta and is subject to change. The design and code is less mature than official generally available features and is being provided as-is with no warranties.
@@ -29,37 +34,45 @@ Create an anomaly detection rule to check for anomalies in one or more anomaly d
 To create an anomaly detection rule:
 
 1. In your {{obs-serverless}} project, go to **Machine learning** → **Jobs**.
-2. In the list of anomaly detection jobs, find the job you want to check for anomalies. Haven’t created a job yet? [Create one now](../../../explore-analyze/machine-learning/anomaly-detection.md).
+2. In the list of anomaly detection jobs, find the job you want to check for anomalies. Haven’t created a job yet? [Create one now](/explore-analyze/machine-learning/anomaly-detection.md).
 3. From the **Actions** menu next to the job, select **Create alert rule**.
 4. Specify a name and optional tags for the rule. You can use these tags later to filter alerts.
-5. Verify that the correct job is selected and configure the alert details:
+5. Verify that the correct job is selected or select a new one.
+6. Select a type of machine learning result:
 
-    :::{image} ../../../images/serverless-anomaly-detection-alert.png
-    :alt: Anomaly detection alert settings
-    :class: screenshot
-    :::
-
-6. For the result type:
-
-    | Choose…​ | To generate an alert based on…​ |
+    | Choose… | To generate an alert based on… |
     | --- | --- |
     | **Bucket** | How unusual the anomaly was within the bucket of time |
     | **Record** | What individual anomalies are present in a time range |
     | **Influencer** | The most unusual entities in a time range |
 
 7. Adjust the **Severity** to match the anomaly score that will trigger the action. The anomaly score indicates the significance of a given anomaly compared to previous anomalies. The default severity threshold is 75, which means every anomaly with an anomaly score of 75 or higher will trigger the associated action.
-8. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results if you want to be notified earlier about a potential anomaly even if it might be a false positive.
-9. (Optional) Expand and change **Advanced settings**:
+8. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule looks for, add an **Anomaly filter**. This feature uses KQL and is only available for the Record and Influencer result types.
+
+    In the **Anomaly filter** field, enter a KQL query that specifies fields or conditions to alert on. You can set up the following conditions:
+
+    * One or more partitioning or influencers fields in the anomaly results match the specified conditions
+    * The actual or typical scores in the anomalies match specified conditions
+
+    For example, say you've set up alerting for an anomaly detection job that has `partition_field = "response.keyword"` as the detector. If you were only interested in being alerted on `response.keyword = 404`, enter `partition_field_value: "404"` into the **Anomaly filter** field. When the rule runs, it will only alert on anomalies with `partition_field_value: "404"`.
+
+    ::::{note}
+    When you edit the KQL query, suggested filter-by fields appear. To compare actual and typical values for any fields, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
+    ::::
+
+9. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results to get notified earlier about potential anomalies, even if they might be false positives. Don't include interim results if you want to get notified only about anomalies of fully processed buckets.
+
+10. (Optional) Expand and change **Advanced settings**:
 
     | Setting | Description |
     | --- | --- |
     | **Lookback interval** | The interval used to query previous anomalies during each condition check. Setting the lookback interval lower than the default value might result in missed anomalies. |
     | **Number of latest buckets** | The number of buckets to check to obtain the highest anomaly from all the anomalies that are found during the Lookback interval. An alert is created based on the anomaly with the highest anomaly score from the most anomalous bucket. |
 
-10. (Optional) Under **Check the rule condition with an interval**, specify an interval, then click **Test** to check the rule condition with the interval specified. The button is grayed out if the datafeed is not started. To test the rule, start the data feed.
-11. (Optional) If you want to change how often the condition is evaluated, adjust the **Check every** setting.
-12. (Optional) Set up **Actions**.
-13. **Save** your rule.
+11. (Optional) Under **Check the rule condition with an interval**, specify an interval, then click **Test** to check the rule condition with the interval specified. The button is grayed out if the datafeed is not started. To test the rule, start the data feed.
+12. (Optional) If you want to change how often the condition is evaluated, adjust the **Check every** setting.
+13. (Optional) Set up **Actions**.
+14. **Save** your rule.
 
 ::::{note}
 Anomaly detection rules are defined as part of a job. Alerts generated by these rules do not appear on the **Alerts** page.
@@ -77,25 +90,25 @@ To add actions to rules, you must first create a connector for that service (for
 :::::{dropdown} Connector types
 Connectors provide a central place to store connection information for services and integrations with third party systems. The following connectors are available when defining actions for alerting rules:
 
-* [Cases](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md)
-* [D3 Security](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/d3security-action-type.md)
-* [Email](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md)
-* [{{ibm-r}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md)
-* [Index](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/index-action-type.md)
-* [Jira](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md)
-* [Microsoft Teams](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/teams-action-type.md)
-* [Observability AI Assistant](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md)
-* [{{opsgenie}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/opsgenie-action-type.md)
-* [PagerDuty](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pagerduty-action-type.md)
-* [Server log](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/server-log-action-type.md)
-* [{{sn-itom}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-itom-action-type.md)
-* [{{sn-itsm}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md)
-* [{{sn-sir}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md)
-* [Slack](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md)
-* [{{swimlane}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md)
-* [Torq](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/torq-action-type.md)
-* [{{webhook}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/webhook-action-type.md)
-* [xMatters](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/xmatters-action-type.md)
+* [Cases](kibana://reference/connectors-kibana/cases-action-type.md)
+* [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
+* [Email](kibana://reference/connectors-kibana/email-action-type.md)
+* [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md)
+* [Index](kibana://reference/connectors-kibana/index-action-type.md)
+* [Jira](kibana://reference/connectors-kibana/jira-action-type.md)
+* [Microsoft Teams](kibana://reference/connectors-kibana/teams-action-type.md)
+* [Observability AI Assistant](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md)
+* [{{opsgenie}}](kibana://reference/connectors-kibana/opsgenie-action-type.md)
+* [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md)
+* [Server log](kibana://reference/connectors-kibana/server-log-action-type.md)
+* [{{sn-itom}}](kibana://reference/connectors-kibana/servicenow-itom-action-type.md)
+* [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md)
+* [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+* [Slack](kibana://reference/connectors-kibana/slack-action-type.md)
+* [{{swimlane}}](kibana://reference/connectors-kibana/swimlane-action-type.md)
+* [Torq](kibana://reference/connectors-kibana/torq-action-type.md)
+* [{{webhook}}](kibana://reference/connectors-kibana/webhook-action-type.md)
+* [xMatters](kibana://reference/connectors-kibana/xmatters-action-type.md)
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -103,7 +116,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -113,30 +126,30 @@ After you select a connector, you must set the action frequency. You can choose 
 
 Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run. For example, you can send an email only when alert status changes to critical.
 
-:::{image} ../../../images/serverless-alert-action-frequency.png
+:::{image} /solutions/images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the the anomaly score matched the condition or was recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the anomaly score was matched and also when it recovers.
 
-:::{image} ../../../images/serverless-alert-anomaly-action-frequency-recovered.png
+:::{image} /solutions/images/serverless-alert-anomaly-action-frequency-recovered.png
 :alt: Choose between anomaly score matched condition or recovered
-:class: screenshot
+:screenshot:
 :::
 
 :::::
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.anomalyExplorerUrl`
 :   URL to open in the Anomaly Explorer.

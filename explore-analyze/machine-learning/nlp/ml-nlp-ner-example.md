@@ -1,10 +1,12 @@
 ---
+navigation_title: Named entity recognition
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-ner-example.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Named entity recognition"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-ner-example.html
+products:
+  - id: machine-learning
 ---
 
 # Named entity recognition [ml-nlp-ner-example]
@@ -15,13 +17,13 @@ You can use these instructions to deploy a [named entity recognition (NER)](ml-n
 
 To follow along the process on this page, you must have:
 
-* an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
+* a {{serverless-short}} project or an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
 * The [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated.
 * [Docker](https://docs.docker.com/get-docker/) installed.
 
 ## Deploy a NER model [ex-ner-deploy]
 
-You can use the [Eland client](https://www.elastic.co/guide/en/elasticsearch/client/eland/current) to install the {{nlp}} model. Use the prebuilt Docker image to run the Eland install model commands. Pull the latest image with:
+You can use the [Eland client](eland://reference/index.md) to install the {{nlp}} model. Use the prebuilt Docker image to run the Eland install model commands. Pull the latest image with:
 
 ```shell
 docker pull docker.elastic.co/eland/eland
@@ -36,29 +38,29 @@ Install the model by running the `eland_import_model_hub` command in the Docker 
 ```shell
 docker run -it --rm docker.elastic.co/eland/eland \
     eland_import_hub_model \
-      --cloud-id $CLOUD_ID \
-      -u <username> -p <password> \
+      --url <url> \
+      --es-api-key <api-key> \
       --hub-model-id elastic/distilbert-base-uncased-finetuned-conll03-english \
       --task-type ner \
       --start
 ```
 
-You need to provide an administrator username and its password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the **Deployments** page on your Cloud website.
+You need to provide an API key for authentication, and replace `<url>` with your {{es}} cluster URL.
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
-Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
+Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API]({{kib-apis}}group/endpoint-ml).
 
 ## Test the NER model [ex-ner-test]
 
 Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Models** by selecting the **Test model** action for the respective model.
 
-:::{image} ../../../images/machine-learning-ml-nlp-ner-test.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-ner-test.png
 :alt: Test trained model UI
-:class: screenshot
+:screenshot:
 :::
 
-::::{dropdown} **Test the model by using the _infer API**
+::::{dropdown} Test the model by using the _infer API
 You can also evaluate your models by using the [_infer API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
 
 ```js
@@ -113,9 +115,9 @@ Using the example text "Elastic is headquartered in Mountain View, California.",
 
 ## Add the NER model to an {{infer}} ingest pipeline [ex-ner-ingest]
 
-You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Give the new index the name `les-miserables` when uploading the file.
+You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Give the new index the name `les-miserables` when uploading the file.
 
-Now create an ingest pipeline either in the [Stack management UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
+Now create an ingest pipeline either from the [Ingest Pipelines](ml-nlp-inference.md#ml-nlp-inference-processor) management page in {{kib}} or by using the API:
 
 ```js
 PUT _ingest/pipeline/ner
@@ -248,7 +250,7 @@ Optionally, adjust the time selector to cover the data points in the {{data-sour
 
 Update and save the visualization.
 
-:::{image} ../../../images/machine-learning-ml-nlp-tag-cloud.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-tag-cloud.png
 :alt: Tag cloud created from Les Misérables
-:class: screenshot
+:screenshot:
 :::

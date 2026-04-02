@@ -1,7 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/session-view.html
   - https://www.elastic.co/guide/en/serverless/current/security-session-view.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Session View [security-session-view]
@@ -9,7 +16,7 @@ mapped_urls:
 Session View is an investigation tool that allows you to examine Linux process data organized in a tree-like structure according to the Linux logical event model, with processes organized by parentage and time of execution. It displays events in a highly readable format that is inspired by the terminal. This makes it a powerful tool for monitoring and investigating session activity on your Linux infrastructure and understanding user and service behavior.
 
 ::::{admonition} Requirements
-Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ::::
 
@@ -36,18 +43,22 @@ Session View uses process data collected by the {{elastic-defend}} integration, 
 5. If you want to include file and network alerts in Session View, check the boxes for **Network** and **File** events.
 6. If you want to enable terminal output capture, turn on the **Capture terminal output** toggle.
 
-Session View can only display data that was collected by {{elastic-defend}} when **Collect session data** was enabled. When this setting is enabled, {{elastic-defend}} includes additional process context data in captured process, file, and network events. For more information about the additional fields collected when this setting is enabled, refer to the [Linux event model RFC](https://github.com/elastic/ecs/blob/main/rfcs/text/0030-linux-event-model.md).
+Session View can only display data that was collected by {{elastic-defend}} when **Collect session data** was enabled. When this setting is on, {{elastic-defend}} includes additional process context data in captured process, file, and network events. For more information about the additional fields collected when this setting is on, refer to the [Linux event model RFC](https://github.com/elastic/ecs/blob/main/rfcs/text/0030-linux-event-model.md).
 
 
 ## Open Session View [open-session-view]
 
-Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout and the **Kubernetes** dashboard. Events and sessions that you can investigate in Session View have a rectangular **Open Session View** button in the **Actions** column. For example:
+Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout.
+
+{applies_to}`stack: beta 9.3+` {applies_to}`serverless: beta` Data also appears on the the **Kubernetes** dashboard. 
+ 
+Events and sessions that you can investigate in Session View have a rectangular **Open Session View** button in the **Actions** column. For example:
 
 * On the Alerts page, scroll down to view the Alerts table. Look for alerts that have the **Open Session View** button in the **Actions** column:
 
-    :::{image} ../../../images/security-session-view-action-icon-detail.png
+    :::{image} /solutions/images/security-session-view-action-icon-detail.png
     :alt: Detail of the Open Session View button
-    :class: screenshot
+    :screenshot:
     :::
 
 * On the Hosts page (**Explore** → **Hosts**), select the **Sessions** or the **Events** tab. From either of these tabs, click the **Open Session View** button for an event or session.
@@ -57,9 +68,9 @@ Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pag
 
 The Session View UI has the following features:
 
-:::{image} ../../../images/security-session-view-terminal-labeled.png
+:::{image} /solutions/images/security-session-view-terminal-labeled.png
 :alt: Detail of Session view with labeled UI elements
-:class: screenshot
+:screenshot:
 :::
 
 1. The **Close Session** and **Full screen** buttons.
@@ -74,25 +85,25 @@ The Session View UI has the following features:
 
 Session View includes additional badges not pictured above:
 
-* The alert badge for multiple alerts appears when a single event causes alerts of multiple types (![Gear icon](../../../images/security-sess-view-process-alert-icon.png "") for `process` alerts, ![Page icon](../../../images/security-sess-view-file-alert-icon.png "") for `file` alerts, and ![Page icon](../../../images/security-sess-view-network-alert-icon.png "") for `network` alerts):
+* The alert badge for multiple alerts appears when a single event causes alerts of multiple types (![Gear icon](/solutions/images/security-sess-view-process-alert-icon.png "title =20x20") for `process` alerts, ![Page icon](/solutions/images/security-sess-view-file-alert-icon.png "title =20x20") for `file` alerts, and ![Page icon](/solutions/images/security-sess-view-network-alert-icon.png "title =20x20") for `network` alerts):
 
-    :::{image} ../../../images/security-session-view-alert-types-badge.png
+    :::{image} /solutions/images/security-session-view-alert-types-badge.png
     :alt: The alert badge for a command with all three alert types
-    :class: screenshot
+    :screenshot:
     :::
 
 * The **Exec user change** badge highlights exec user changes, such as when a user escalates to root:
 
-    :::{image} ../../../images/security-session-view-exec-user-change-badge.png
+    :::{image} /solutions/images/security-session-view-exec-user-change-badge.png
     :alt: The Exec user change badge
-    :class: screenshot
+    :screenshot:
     :::
 
 * The **Output** badge appears next to commands that generated terminal output. Click it to view that command’s output in terminal output view.
 
-    :::{image} ../../../images/security-session-view-output-badge.png
+    :::{image} /solutions/images/security-session-view-output-badge.png
     :alt: The Output badge
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -121,9 +132,9 @@ You can configure several additional settings by clicking **Advanced settings** 
 * `linux.advanced.tty_io.max_kilobytes_per_event`: The maximum number of kilobytes of output to send to {{es}} as a single event. Default: 512 KB. Additional data is captured as a new event.
 * `linux.advanced.tty_io.max_event_interval_seconds`: The maximum interval (in seconds) during which output is batched. Default: 30 seconds. Output will be sent to {{es}} at this interval (unless it first exceeds the `max_kilobytes_per_event` value, in which case it might be sent sooner).
 
-:::{image} ../../../images/security-session-view-output-viewer.png
+:::{image} /solutions/images/security-session-view-output-viewer.png
 :alt: Terminal output view
-:class: screenshot
+:screenshot:
 :::
 
 1. Search bar. Use to find and highlight search terms within the current session. The left and right arrows allow you to navigate through search results.

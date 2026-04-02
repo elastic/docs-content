@@ -1,28 +1,35 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/ls-multi.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elastic-agent
+  - id: logstash
 ---
 
 # Elastic Agent to Logstash for routing to multiple Elasticsearch clusters and additional destinations [ls-multi]
 
-:::{image} ../../../images/ingest-ea-ls-multi.png
+:::{image} /manage-data/images/ingest-ea-ls-multi.png
 :alt: Image showing {{agent}} collecting and routing data to multiple destinations
 :::
 
 Ingest model
-:   {{agent}} to {{ls}} to {{es}} clusters and/or additional destinations
+:   {{agent}} to {{ls}} to {{es}} clusters and additional destinations
 
 Use when
 :   Data collected by {{agent}} needs to be routed to different {{es}} clusters or non-{{es}} destinations depending on the content
 
 Example
-:   Let’s take an example of a Windows workstation, for which we are collecting different types of logs using the System and Windows integrations. These logs need to be sent to different {{es}} clusters and to S3 for backup and a mechanism to send it to other destinations such as different SIEM solutions. In addition, the {{es}} destination is derived based on the type of datastream and an organization identifier.
+:   Let’s take an example of a Windows workstation, for which we are collecting different types of logs using the System and Windows integrations. These logs need to be sent to different {{es}} clusters and to S3 for backup and a mechanism to send it to other destinations such as different SIEM solutions. In addition, the {{es}} destination is derived based on the type of data stream and an organization identifier.
 
-    In such use cases, agents send the data to {{ls}} as a routing mechanism to different destinations. Note that the System and Windows integrations must be installed on all {{es}} clusters to which the data is routed.
+    In such use cases, agents send the data to {{ls}} as a routing mechanism to different destinations. The System and Windows integrations must be installed on all {{es}} clusters to which the data is routed.
 
 
-Sample config
-:   ```ruby
+## Sample config: Sending data to both {{ech}} and {{es-serverless}}
+
+```ruby
 input {
   elastic_agent {
     port => 5044
@@ -38,12 +45,12 @@ filter {
 output {
   if [@metadata][tenant] == "tenant01" {
     elasticsearch {
-      cloud_id => "<cloud id>"
+      hosts => "ELASTICSEARCH_ENDPOINT_URL"         # Use the `hosts` option with the Elasticsearch endpoint URL to send data to Elasticsearch Serverless
       api_key => "<api key>"
     }
   } else if [@metadata][tenant] == "tenant02" {
     elasticsearch {
-      cloud_id => "<cloud id>"
+      cloud_id => "<cloud id>"         # Use `cloud_id` to send data to Elastic Cloud Hosted
       api_key => "<api key>"
     }
   }
@@ -51,21 +58,20 @@ output {
 ```
 
 
-
 ## Resources [multi-resources]
 
 Info on configuring {{agent}}:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 Info on {{ls}} and {{ls}} outputs:
 
-* [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
-* [{{ls}} output plugins](asciidocalypse://docs/logstash/docs/reference/output-plugins.md)
+* [{{ls}} Reference](logstash://reference/index.md)
+* [{{ls}} {{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
+* [{{ls}} output plugins](logstash-docs-md://lsr/output-plugins.md)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 

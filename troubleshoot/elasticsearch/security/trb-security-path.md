@@ -2,6 +2,11 @@
 navigation_title: Configuration file locations
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-path.html
+applies_to:
+  deployment:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Diagnose configuration file location issues [trb-security-path]

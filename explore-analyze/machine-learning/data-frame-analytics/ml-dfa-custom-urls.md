@@ -1,25 +1,27 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-custom-urls.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-custom-urls.html
+products:
+  - id: machine-learning
 ---
 
 # Adding custom URLs to data frame analytics jobs [ml-dfa-custom-urls]
 
 You can optionally attach one or more custom URLs to your {{dfanalytics-jobs}}. These links can direct you to dashboards, the **Discover** app, or external websites. For example, you can define a custom URL that provides a way for users to drill down to the source data from a {{regression}} job. You can create a custom URL during job creation under **Additional settings** in the **Job details** step. Alternatively, you can edit or add new custom URLs in the job list by clicking **Edit** in the **Actions** menu.
 
-:::{image} ../../../images/machine-learning-ml-dfa-custom-url.png
+:::{image} /explore-analyze/images/machine-learning-ml-dfa-custom-url.png
 :alt: Creating a custom URL during job creation
-:class: screenshot
+:screenshot:
 :::
 
 When you create or edit an {{dfanalytics-job}} in {{kib}}, it simplifies the creation of the custom URLs for {{kib}} dashboards and the **Discover** app and it enables you to test your URLs. For example:
 
-:::{image} ../../../images/machine-learning-ml-dfa-custom-url-edit.png
+:::{image} /explore-analyze/images/machine-learning-ml-dfa-custom-url-edit.png
 :alt: Add a custom URL in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 For each custom URL, you must supply a label. You can also optionally supply a time range. When you link to **Discover** or a {{kib}} dashboard, you’ll have additional options for specifying the pertinent {{data-source}} or dashboard name and query entities.

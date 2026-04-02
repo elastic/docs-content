@@ -1,0 +1,18 @@
+name: "Label new issues with needs-team"
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  add-needs-triage-label:
+    name: Add `needs-team` label
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add the needs-team label
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: |
+            needs-team
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

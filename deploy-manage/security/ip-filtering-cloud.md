@@ -1,0 +1,166 @@
+---
+navigation_title: In ECH or Serverless
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-ip.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-ip.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-ip.html
+applies_to:
+  deployment:
+    ess: ga
+  serverless: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-serverless
+sub:
+  policy-type: "IP filter"
+---
+
+# Manage IP filters in ECH or Serverless
+
+Filtering network traffic, by IP address or CIDR block, is one of the security layers available in {{ece}} and {{ech}}. It allows you to limit how your deployments can be accessed. IP filters are a type of [network security policy](/deploy-manage/security/network-security-policies.md).
+
+There are types of filters are available for filtering by IP address or CIDR block:
+
+* **Ingress or inbound IP filters**: These restrict access to your deployments from a set of IP addresses or CIDR blocks. These filters are available through the UI.
+* **Egress or outbound IP filters**: These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is currently only available through the [Traffic Filtering API](/deploy-manage/security/network-security-api.md). {applies_to}`ess: beta` {applies_to}`serverless: unavailable` 
+
+Follow the step described here to set up ingress or inbound IP filters through the {{ecloud}} Console.
+
+To learn how IP filters work together, and alongside [private connection policies](private-connectivity.md), refer to [](/deploy-manage/security/network-security-policies.md).
+
+To learn how to manage IP filters using the Traffic Filtering API, refer to [](/deploy-manage/security/network-security-api.md).
+
+:::{note}
+To learn how to create IP filters for {{ece}} deployments, refer to [](ip-filtering-ece.md).
+
+To learn how to create IP filters for self-managed clusters or {{eck}} deployments, refer to [](ip-filtering-basic.md).
+:::
+
+## Requirements
+
+Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply IP filter policies. During the promotional period, applying an IP filter policy to a project opts that project in to Serverless Plus. 
+
+:::{tip}
+You can opt out by disconnecting all policies from the project.
+:::
+
+## Apply an IP filter to a deployment or project
+
+To apply an IP filter to a deployment or project, you must first create an IP filter policy (referred to as "IP filter") at the organization or platform level, and then apply it to your deployment.
+
+### Step 1: Create an IP filter
+
+You can combine multiple IP address and CIDR block traffic sources into a single IP filter, so we recommend that you group sources according to what they allow, and make sure to label them accordingly. Because multiple IP filters can be applied to a deployment, you can be as granular in your IP filter policies as you require.
+
+To create an IP filter:
+
+:::{include} _snippets/network-security-page.md
+::: 
+3. Select **Create policy** > **IP filter**.
+4. Select the resource type that the IP filter will be applied to: either hosted deployments or serverless projects.
+5. Select the cloud provider and region for the IP filter. 
+6. Add a meaningful name and description for the IP filter.
+7. Under **Access control**, select whether the IP filter should be applied to ingress or egress traffic. Currently, only ingress traffic filters are supported.
+8. Add one or more allowed sources using IPv4, or a range of addresses with CIDR.
+9.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the  IP filter with a deployment or project, it starts filtering traffic.
+10.  To automatically attach this IP filter to new deployments or projects, select **Apply to future resources by default**.
+11.  Click **Create**.
+
+### Step 2: Associate an IP filter with a deployment or project
+
+You can associate an IP filter with your deployment or project from the IP filter's settings, or from your deployment or project's settings. After you associate the IP filter with a deployment or project, it starts filtering traffic.
+
+Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply IP filters. During the promotional period, applying an IP filter to a project opts that project in to Serverless Plus.
+
+:::{tip}
+You can apply multiple policies to a single deployment or project. For {{ech}} deployments and {{serverless-short}} projects, you can apply both IP filter policies and private connection policies. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+
+[Learn more about how network security policies affect your deployment or project](network-security-policies.md).
+:::
+
+#### From a deployment or project
+
+::::{applies-switch}
+:::{applies-item} serverless:
+1. Find your project on the home page or on the **Serverless projects** page, then select **Manage** to access its settings menus.
+
+    On the **Serverless projects** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+3. From the navigation menu, select **Network security**.
+4. Select **Apply policies** > **IP filter**.
+6. Choose the IP filter you want to apply and select **Apply**.
+:::
+:::{applies-item} ess:
+1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
+
+    On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. From the navigation menu, select **Access and Security** > **Security**.
+3. Under **Network security**, select **Apply policies** > **IP filter**.
+4. Choose the IP filter you want to apply and select **Apply**.
+:::
+::::
+
+#### From the IP filter settings
+
+:::{include} _snippets/network-security-page.md
+:::
+3. Find the IP filter you want to edit and click the **Edit** {icon}`pencil` icon.
+4. Under **Apply to resources**, associate the IP filter with one or more deployments or projects.
+5. Save your changes.
+
+## Remove an IP filter from your deployment or project [remove-filter-deployment]
+
+If you want to a specific IP filter from a deployment or project, or delete the IP filter, you’ll need to disconnect it from any associated deployments or projects first. You can do this from the IP filter's settings, or from your deployment or project's settings. To remove an association through the UI:
+
+#### From your deployment or project
+
+::::{applies-switch}
+
+:::{applies-item} serverless:
+1. Find your project on the home page or on the **Serverless projects** page, then select **Manage** to access its settings menus.
+
+    On the **Serverless projects** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. From the navigation menu, select **Network security**.
+3. On the **Network security** page, find the IP filter that you want to disconnect. 
+4. Under **Actions**, click the **Delete** icon.
+:::
+:::{applies-item} ess:
+
+1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
+
+    On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. From the navigation menu, select **Access and Security** > **Security**.
+3. Under **Network security**, find the IP filter that you want to disconnect. 
+4. Under **Actions**, click the **Delete** icon.
+:::
+::::
+
+#### From the IP filter settings
+
+:::{include} _snippets/network-security-page.md
+:::
+3. Find the IP filter you want to edit, then click the **Edit** {icon}`pencil` icon.
+4. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
+5. Click **Update** to save your changes.
+
+## Edit an IP filter
+
+You can edit an IP filter's name or description, change the allowed traffic sources, and change the associated resources, and more.
+
+:::{include} _snippets/network-security-page.md
+:::
+3. Find the IP filter you want to edit, then click the **Edit** {icon}`pencil` icon.
+4. Click **Update** to save your changes.
+
+:::{tip}
+You can also edit IP filters from your deployment's **Security** page or your project's **Network security** page.
+:::
+
+## Delete an IP filter
+
+If you need to remove an IP filter, you must first remove any associations with deployments.
+
+To delete an IP filter:
+
+:::{include} _snippets/network-security-page.md
+:::
+3. Find the IP filter you want to delete, then click the **Delete** {icon}`trash` icon. The icon is inactive if there are deployments or projects associated with the IP filter.

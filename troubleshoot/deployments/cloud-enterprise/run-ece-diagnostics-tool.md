@@ -1,7 +1,12 @@
 ---
-navigation_title: "Diagnostics"
+navigation_title: Diagnostics
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-run-ece-diagnostics.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Run ECE diagnostics tool [ece-run-ece-diagnostics]
@@ -78,3 +83,5 @@ Finished creating file: /tmp/ecediag-192.168.44.10-20220506-084902.tar.gz (total
 
 At that point, you’re ready to upload the `.tar.gz` file to Elastic Support.
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::

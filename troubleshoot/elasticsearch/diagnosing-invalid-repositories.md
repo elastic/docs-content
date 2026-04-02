@@ -2,6 +2,10 @@
 navigation_title: Invalid repositories
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-invalid-repositories.html
+applies_to:
+  stack:
+products:
+  - id: elasticsearch
 ---
 
 # Diagnose invalid repositories [diagnosing-invalid-repositories]

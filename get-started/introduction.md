@@ -1,67 +1,53 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
+navigation_title: Solutions
+products:
+  - id: elasticsearch
+applies_to:
+  stack:
+  serverless:
+navigation_title: Solutions
 ---
 
-# {{es}} and {{kib}} [introduction]
+# Solutions overview [introduction]
 
-## What is {{es}}?
+Elastic offers three major search-powered solutions: {{es}}, Elastic {{observability}}, and {{elastic-sec}}—all built on an open source, extensible [platform](/get-started/the-stack.md).
+Whether you're building a search experience, monitoring your infrastructure, or securing your environment, there is a solution that is right for your business needs.
 
-[{{es}}](https://github.com/elastic/elasticsearch) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene. It’s optimized for speed and relevance on production-scale workloads. Use {{es}} to search, index, store, and analyze data of all shapes and sizes in near real time.
+| Your need | Recommended solution | Best for |
+|-----------|-------------------|----------|
+| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/search.md)<br>• [Get started](/solutions/search/get-started.md)| Developers, architects, data engineers |
+| Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
+| Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
 
-You can deploy {{es}} as a standalone service to build custom search and analytics solutions or deploy it together with other Elastic products, using various [deployment options](./deployment-options.md).
+:::{note}
+The core [{{es}} search capabilities](/solutions/search.md) are available across all deployment types, solutions, and project types. The [{{es}} solution](/solutions/elasticsearch-solution-project.md) adds UI tools on top of these capabilities to help you build search-powered applications faster.
+:::
 
-Explore the full list of [{{es}} features](https://www.elastic.co/elasticsearch/features) on the product webpage.
+:::{tip}
+Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
+:::
 
-To learn more about the internals of the data store, refer to [](/manage-data/data-store.md).
+Each of our solutions is available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.
 
-::::{tip}
-Want to get started quickly with the {{es}} API? Check out our hands-on [quick start tutorials](/solutions/search/api-quickstarts.md) and [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
-::::
+If you're new to Elastic, you can find quickstarts and introductory steps for each solution within [](/solutions/index.md).
 
-## What is {{kib}}?
+<!--
+## {{es}}
 
-[{{kib}}](https://github.com/elastic/kibana) is the graphical user interface for {{es}}. It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the Elastic Stack.
+## Elastic {{observability}}
 
-Together, {{es}} and {{kib}} form the core of the [Elastic Stack](the-stack.md).
+:::{include} _snippets/observability-overview.md
+:::
 
-They power all Elastic solutions and use cases:
-
-- [Observability](/solutions/observability.md)
-- [Security](/solutions/security.md)
-- [Search](/solutions/search.md)
-
-## Use cases
-
-The {{stack}} is used for a wide and growing range of use cases. Here are a few examples:
-
-**Observability**
-
-- **Logs, metrics, and traces**: Collect, store, and analyze logs, metrics, and traces from applications, systems, and services.
-- **Application performance monitoring (APM)**: Monitor and analyze the performance of business-critical software applications.
-- **Real user monitoring (RUM)**: Monitor, quantify, and analyze user interactions with web applications.
-- **OpenTelemetry**: Reuse your existing instrumentation to send telemetry data to the Elastic Stack using the OpenTelemetry standard.
-
-**Security**
-
-- **Security information and event management (SIEM)**: Collect, store, and analyze security data from applications, systems, and services.
-- **Endpoint security**: Monitor and analyze endpoint security data.
-- **Threat hunting**: Search and analyze data to detect and respond to security threats.
-
-**Search**
-
-- **Full-text search**: Build a fast, relevant full-text search solution using inverted indexes, tokenization, and text analysis.
-- **Vector database**: Store and search vectorized data, and create vector embeddings with built-in and third-party natural language processing (NLP) models.
-- **Semantic search**: Understand the intent and contextual meaning behind search queries using tools like synonyms, dense vector embeddings, and learned sparse query-document expansion.
-- **Hybrid search**: Combine full-text search with vector search using state-of-the-art ranking algorithms.
-- **Build search experiences**: Add hybrid search capabilities to apps or websites, or build enterprise search engines over your organization’s internal data sources.
-- **Retrieval augmented generation (RAG)**: Use {{ecloud}} as a retrieval engine to supplement generative AI models with more relevant, up-to-date, or proprietary data for a range of use cases.
-- **Geospatial search**: Search for locations and calculate spatial relationships using geospatial queries.
-
-This is just a sample of search, observability, and security use cases enabled by {{ecloud}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
-
+## {{elastic-sec}}
+:::{include} _snippets/security-overview.md
+:::
+-->
 % TODO: cleanup these links, consolidate with Explore and analyze
-
+$$$what-is-kib$$$
+$$$what-is-es$$$
 $$$visualize-and-analyze$$$
 $$$extend-your-use-case$$$
 $$$_manage_your_data$$$

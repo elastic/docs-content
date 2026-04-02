@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/rate-aggregation.html
   - https://www.elastic.co/guide/en/serverless/current/observability-rateAggregation.html
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Rate aggregation [rate-aggregation]

@@ -1,46 +1,17 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-db-logstash.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-db-logstash.html
+applies_to:
+  stack: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Ingest data from a relational database
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-db-logstash-connect-securely$$$
-
-$$$ec-db-logstash-database-structure$$$
-
-$$$ec-db-logstash-database$$$
-
-$$$ec-db-logstash-driver$$$
-
-$$$ec-db-logstash-output$$$
-
-$$$ec-db-logstash-pipeline$$$
-
-$$$ec-db-logstash-prerequisites$$$
-
-$$$ec-db-logstash-trial$$$
-
-$$$ece-db-logstash-connect-securely$$$
-
-$$$ece-db-logstash-database-structure$$$
-
-$$$ece-db-logstash-database$$$
-
-$$$ece-db-logstash-deployment$$$
-
-$$$ece-db-logstash-driver$$$
-
-$$$ece-db-logstash-output$$$
-
-$$$ece-db-logstash-pipeline$$$
-
-$$$ece-db-logstash-prerequisites$$$
-
-This guide explains how to ingest data from a relational database into {{ecloud}} through [{{ls}}](asciidocalypse://docs/logstash/docs/reference/index.md), using the Logstash [JDBC input plugin](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an {{ech}} or {{ece}} deployment.
+This guide explains how to ingest data from a relational database into {{ecloud}} through [{{ls}}](logstash://reference/index.md), using the Logstash [JDBC input plugin](logstash-docs-md://lsr/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an {{ech}} or {{ece}} deployment.
 
 The code and methods presented here have been tested with MySQL. They should work with other relational databases.
 
@@ -56,9 +27,9 @@ For this tutorial you need a source MySQL instance for Logstash to read from. A 
 
 ## Create a deployment [ec-db-logstash-trial]
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} Elastic Cloud Hosted
+:::{applies-item} ess:
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
 3. Select **Create deployment**.
@@ -69,7 +40,7 @@ For this tutorial you need a source MySQL instance for Logstash to read from. A 
 Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 :::
 
-:::{tab-item} Elastic Cloud Enterprise
+:::{applies-item} ece:
 1. Log into the Elastic Cloud Enterprise admin console.
 2. Select **Create deployment**.
 3. Give your deployment a name. You can leave all other settings at their default values.
@@ -138,7 +109,7 @@ For this example, let’s create a new database *es_db* with table *es_table*, a
 
     There are two possible ways to address this:
 
-    * You can use "soft deletes" in your source database. Essentially, a record is first marked for deletion through a boolean flag. Other programs that are currently using your source database would have to filter out "soft deletes" in their queries. The "soft deletes" are sent over to Elasticsearch, where they can be processed. After that, your source database and Elasticsearch must both remove these "soft deletes."
+    * You can use "soft deletes" in your source database. Essentially, a record is first marked for deletion through a boolean flag. Other programs that are currently using your source database would have to filter out "soft deletes" in their queries. The "soft deletes" are sent over to Elasticsearch, where they can be processed. After that, your source database and Elasticsearch must both remove these "soft deletes".
     * You can periodically clear the Elasticsearch indices that are based off of the database, and then refresh Elasticsearch with a fresh ingest of the contents of the database.
 
 3. Log in to your MySQL server and add three records to your new database:
@@ -151,7 +122,7 @@ For this example, let’s create a new database *es_db* with table *es_table*, a
     (3,"Stark");
     ```
 
-4. Verify your data with a SQL statement:
+4. Verify your data with an SQL statement:
 
     ```txt
     select * from es_table;
@@ -234,13 +205,13 @@ Let’s set up a sample Logstash input pipeline to ingest data from your new JDB
     :   The Logstash JDBC plugin does not come packaged with JDBC driver libraries. The JDBC driver library must be passed explicitly into the plugin using the `jdbc_driver_library` configuration option.
 
     tracking_column
-    :   This parameter specifies the field `unix_ts_in_secs` that tracks the last document read by Logstash from MySQL, stored on disk in [logstash_jdbc_last_run](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-jdbc.md#plugins-inputs-jdbc-last_run_metadata_path). The parameter determines the starting value for documents that Logstash requests in the next iteration of its polling loop. The value stored in `logstash_jdbc_last_run` can be accessed in a SELECT statement as `sql_last_value`.
+    :   This parameter specifies the field `unix_ts_in_secs` that tracks the last document read by Logstash from MySQL, stored on disk in [logstash_jdbc_last_run](logstash-docs-md://lsr/plugins-inputs-jdbc.md#plugins-inputs-jdbc-last_run_metadata_path). The parameter determines the starting value for documents that Logstash requests in the next iteration of its polling loop. The value stored in `logstash_jdbc_last_run` can be accessed in a SELECT statement as `sql_last_value`.
 
     unix_ts_in_secs
     :   The field generated by the SELECT statement, which contains the `modification_time` as a standard [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time) (seconds since the epoch). The field is referenced by the `tracking column`. A Unix timestamp is used for tracking progress rather than a normal timestamp, as a normal timestamp may cause errors due to the complexity of correctly converting back and forth between UMT and the local timezone.
 
     sql_last_value
-    :   This is a [built-in parameter](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-jdbc.md#_predefined_parameters) containing the starting point of the current iteration of the Logstash polling loop, and it is referenced in the SELECT statement line of the JDBC input configuration. This parameter is set to the most recent value of `unix_ts_in_secs`, which is read from `.logstash_jdbc_last_run`. This value is the starting point for documents returned by the MySQL query that is executed in the Logstash polling loop. Including this variable in the query guarantees that we’re not resending data that is already stored in Elasticsearch.
+    :   This is a [built-in parameter](logstash-docs-md://lsr/plugins-inputs-jdbc.md#_predefined_parameters) containing the starting point of the current iteration of the Logstash polling loop, and it is referenced in the SELECT statement line of the JDBC input configuration. This parameter is set to the most recent value of `unix_ts_in_secs`, which is read from `.logstash_jdbc_last_run`. This value is the starting point for documents returned by the MySQL query that is executed in the Logstash polling loop. Including this variable in the query guarantees that we’re not resending data that is already stored in Elasticsearch.
 
     schedule
     :   This uses cron syntax to specify how often Logstash should poll MySQL for changes. The specification `*/5 * * * * *` tells Logstash to contact MySQL every 5 seconds.  Input from this plugin can be scheduled to run periodically according to a specific schedule. This scheduling syntax is powered by [rufus-scheduler](https://github.com/jmettraux/rufus-scheduler). The syntax is cron-like with some extensions specific to Rufus (for example, timezone support).
@@ -323,14 +294,13 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
         ilm_enabled => false
         cloud_id => "<DeploymentName>:<ID>" <1>
         cloud_auth => "elastic:<Password>" <2>
-        ssl => true
         # api_key => "<myAPIid:myAPIkey>"
       }
     }
     ```
 
     1. Use the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-    2. the default username is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check [Configuring security in Logstash](asciidocalypse://docs/logstash/docs/reference/secure-connection.md) for information on roles and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Configuring security in Logstash](asciidocalypse://docs/logstash/docs/reference/secure-connection.md) documentation.
+    2. the default username is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check [Configuring security in Logstash](logstash://reference/secure-connection.md) for information on roles and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Configuring security in Logstash](logstash://reference/secure-connection.md) documentation.
 
 
     Following are some additional details about the configuration file settings:
@@ -384,7 +354,6 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
           elasticsearch {
             index => "rdbms_idx"
             cloud_id => "<myDeployment>"
-            ssl => true
             ilm_enabled => false
             api_key => "2TBR42gBabmINotmvZjv:tV1dnfF-GHI59ykgv4N0U3"
             # user => "<Username>"
@@ -393,7 +362,7 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
         }
         ```
 
-4. At this point, if you simply restart Logstash as is with your new output, then no MySQL data is sent to our Elasticsearch index.
+4. If you simply restart Logstash as is with your new output, then no MySQL data is sent to our Elasticsearch index.
 
     Why? Logstash retains the previous `sql_last_value` timestamp and sees that no new changes have occurred in the MySQL database since that time. Therefore, based on the SQL query that we configured, there’s no new data to send to Logstash.
 
@@ -434,7 +403,7 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
 
     4. The Results pane lists the `client_name` records originating from your MySQL database, similar to the following example:
 
-        ![A picture showing query results with three records](../../../images/cloud-ec-logstash-db-results-scenarios.png "")
+        ![A picture showing query results with three records](/manage-data/images/cloud-ec-logstash-db-results-scenarios.png "")
 
 
 Now, you should have a good understanding of how to configure Logstash to ingest data from your relational database through the JDBC Plugin. You have some design considerations to track records that are new, modified, and deleted. You should have the basics needed to begin experimenting with your own database and Elasticsearch.

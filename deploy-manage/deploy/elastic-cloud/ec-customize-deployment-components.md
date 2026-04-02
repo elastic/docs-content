@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-customize-deployment-components.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-customize-deployment-components.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Customize deployment components [ec-customize-deployment-components]
@@ -19,20 +21,20 @@ Autoscaling reduces some of the manual effort required to manage a deployment by
 
 ## {{es}} [ec-cluster-size]
 
-Depending upon how much data you have and what queries you plan to run, you need to select a cluster size that fits your needs. There is no silver bullet for deciding how much memory you need other than simply testing it. The [cluster performance metrics](../../monitor/stack-monitoring.md) in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) can tell you if your cluster is sized appropriately. You can also [enable deployment monitoring](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) for more detailed performance metrics. Fortunately, you can change the amount of memory allocated to the cluster later without any downtime for HA deployments.
+Depending upon how much data you have and what queries you plan to run, you need to select a cluster size that fits your needs. There is no silver bullet for deciding how much memory you need other than simply testing it. The [cluster performance metrics](../../monitor/stack-monitoring.md) in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) can tell you if your cluster is sized appropriately. You can also [enable deployment monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) for more detailed performance metrics. Fortunately, you can change the amount of memory allocated to the cluster later without any downtime for HA deployments.
 
 To change a cluster’s topology, from deployment management, select **Edit deployment** from the **Actions** dropdown. Next, select a storage and RAM setting from the **Size per zone** drop-down list, and save your changes. When downsizing the cluster, make sure to have enough resources to handle the current load, otherwise your cluster will be under stress.
 
-:::{image} ../../../images/cloud-ec-capacity.png
+:::{image} /deploy-manage/images/cloud-ec-capacity.png
 :alt: Capacity slider to adjust {{es}} cluster size
 :::
 
 For trials, larger sizes are not available until you [add a credit card](../../cloud-organization/billing/add-billing-details.md).
 
-Currently, half the memory is assigned to the JVM heap (a bit less when monitoring is activated). For example, on a 32 GB cluster, 16 GB are allotted to heap. The disk-to-RAM ratio currently is 1:24, meaning that you get 24 GB of storage space for each 1 GB of RAM. All clusters are backed by SSD drives.
+For instances up to 64 GB of RAM, half the memory is assigned to the JVM heap (a bit less when monitoring is activated). For instances larger than 64 GB, the heap size is capped at 32 GB. For example, on a 32 GB instance, 16 GB are allotted to heap, while on a 128 GB instance, 32 GB are allotted to heap. Up to 256 GB RAM per instance is supported. The disk-to-RAM ratio currently is 1:24, meaning that you get 24 GB of storage space for each 1 GB of RAM. All clusters are backed by SSD drives.
 
 ::::{tip}
-For production systems, we recommend not using less than 4 GB of RAM for your cluster, which assigns 2 GB to the JVM heap.
+For production systems, each {{es}} instance in your cluster should have at least 4 GB of RAM, which assigns 2 GB to the JVM heap. Review [Minimum size recommendations for production use](elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
 ::::
 
 
@@ -41,7 +43,7 @@ The CPU resources assigned to a cluster are relative to the size of your cluster
 If you don’t want to autoscale your deployment, you can manually increase or decrease capacity by adjusting the size of hot, warm, cold, and frozen [data tiers](../../../manage-data/lifecycle/data-tiers.md) nodes. For example, you might want to add warm tier nodes if you have time series data that is accessed less frequently and rarely needs to be updated. Alternatively, you might need cold tier nodes if you have time series data that is accessed occasionally and not normally updated. For clusters that have six or more {{es}} nodes, dedicated master-eligible nodes are introduced. When your cluster grows, it becomes important to consider separating dedicated master-eligible nodes from dedicated data nodes.
 
 ::::{tip}
-We recommend using at least 4GB RAM for dedicated master nodes.
+For clusters with dedicated master nodes, we recommend using at least 4 GB of RAM for each dedicated master node. Review [Minimum size recommendations for production use](elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
 ::::
 
 
@@ -50,14 +52,14 @@ We recommend using at least 4GB RAM for dedicated master nodes.
 
 High availability is achieved by running a cluster with replicas in multiple data centers (availability zones), to prevent against downtime when infrastructure problems occur or when resizing or upgrading deployments. We offer the options of running in one, two, or three data centers.
 
-:::{image} ../../../images/cloud-ec-fault-tolerance.png
+:::{image} /deploy-manage/images/cloud-ec-fault-tolerance.png
 :alt: High availability features
 :::
 
 Running in two data centers or availability zones is our default high availability configuration. It provides reasonably high protection against infrastructure failures and intermittent network problems. You might want three data centers if you need even higher fault tolerance. Just one zone might be sufficient, if the cluster is mainly used for testing or development.
 
 ::::{important}
-Some [regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/regions.md) might have only two availability zones.
+Some [regions](cloud://reference/cloud-hosted/regions.md) might have only two availability zones.
 ::::
 
 
@@ -70,9 +72,9 @@ The node capacity you choose is per data center. The reason for this is that the
 
 ## Sharding [ec_sharding]
 
-You can review your {{es}} shard activity from the {{ecloud}} Console. When viewing a hosted deployment details, at the bottom of the {{es}} page, you can hover over each part of the shard visualization for specific numbers.
+You can review your {{es}} shard activity from the {{ecloud}} Console. When viewing a hosted deployment's details, on the **{{es}}** > **Shards and instances** page you can hover over each part of the shard visualization for specific numbers.
 
-:::{image} ../../../images/cloud-ec-shard-activity.gif
+:::{image} /deploy-manage/images/cloud-ec-shard-activity.gif
 :alt: Shard activity
 :::
 
@@ -121,13 +123,13 @@ In production systems, you might need to control what {{es}} data users can acce
 
 ## {{integrations-server}} [ec_integrations_server]
 
-{{integrations-server}} connects observability and security data from Elastic Agents and APM to Elasticsearch. An {{integrations-server}} instance is created automatically as part of every deployment.
+{{integrations-server}} connects observability and security data from Elastic Agents and APM to {{es}}. An {{integrations-server}} instance is created automatically as part of every deployment.
 
 Refer to [Manage your Integrations Server](manage-integrations-server.md) to learn more.
 
 ## Security [ec_security]
 
-Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up traffic filters, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.
+Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up network security, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.
 
 
 ## Actions [ec_actions]

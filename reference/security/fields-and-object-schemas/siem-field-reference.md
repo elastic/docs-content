@@ -1,19 +1,22 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/security/current/siem-field-reference.html
+  - https://www.elastic.co/guide/en/serverless/current/security-siem-field-reference.html
 applies_to:
   stack: all
   serverless:
     security: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/security/current/siem-field-reference.html
-  - https://www.elastic.co/guide/en/serverless/current/security-siem-field-reference.html
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Elastic Security ECS field reference [siem-field-reference]
 
-This section lists [Elastic Common Schema](asciidocalypse://ecs/docs/reference/index.md) fields that provide an optimal SIEM and security analytics experience to users. These fields are used to display data, provide rule previews, enable detection by prebuilt detection rules, provide context during rule triage and investigation, escalate to cases, and more.
+This section lists [Elastic Common Schema](ecs://reference/index.md) fields that provide an optimal SIEM and security analytics experience to users. These fields are used to display data, provide rule previews, enable detection by prebuilt detection rules, provide context during rule triage and investigation, escalate to cases, and more.
 
 ::::{important}
-We recommend you use {{agent}} integrations or {{beats}}  to ship your data to {{elastic-sec}}. {{agent}} integrations and Beat modules (for example, [{{filebeat}} modules](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-modules.md)) are ECS-compliant, which means data they ship to {{elastic-sec}} will automatically populate the relevant ECS fields. If you plan to use a custom implementation to map your data to ECS fields (see [how to map data to ECS](asciidocalypse://docs/reference/ecs-converting.md)), ensure the [always required fields](#siem-always-required-fields) are populated. Ideally, all relevant ECS fields should be populated as well.
+We recommend you use {{agent}} integrations or {{beats}}  to ship your data to {{elastic-sec}}. {{agent}} integrations and Beat modules (for example, [{{filebeat}} modules](beats://reference/filebeat/filebeat-modules.md)) are ECS-compliant, which means data they ship to {{elastic-sec}} will automatically populate the relevant ECS fields. If you plan to use a custom implementation to map your data to ECS fields (see [how to map data to ECS](ecs://reference/ecs-converting.md)), ensure the [always required fields](#siem-always-required-fields) are populated. Ideally, all relevant ECS fields should be populated as well.
 ::::
 
 
@@ -95,7 +98,7 @@ For detailed information about which ECS fields can appear in documents generate
 
 {{elastic-sec}} relies on these fields to analyze and display network data:
 
-* `destination.geo.location` (required for display of [map data](/solutions/security/explore/configure-network-map-data.md))
+* `destination.geo.location` (required for display of [map data](/solutions/security/advanced-entity-analytics/configure-network-map-data.md))
 * `destination.ip`
 * `source.geo.location` (required to display map data)
 * `source.ip`

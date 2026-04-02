@@ -1,17 +1,19 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/index.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/Elastic-Cloud-Enterprise-overview.html
 applies_to:
   deployment:
     ece: all
-mapped_urls:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/index.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/Elastic-Cloud-Enterprise-overview.html
+products:
+  - id: cloud-enterprise
 ---
 
-# Elastic Cloud Enterprise [Elastic-Cloud-Enterprise-overview]
+# {{ece}} [Elastic-Cloud-Enterprise-overview]
 
 {{ece}} (ECE) is an Elastic self-managed solution for deploying, orchestrating, and managing {{es}} clusters at scale. It provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines.
 
-ECE evolves from the Elastic hosted Cloud SaaS offering into a standalone product. You can deploy ECE on public or private clouds, virtual machines, or your own premises.
+ECE evolves from the [{{ech}}](./elastic-cloud.md) offering into a standalone product. You can deploy ECE on public or private clouds, virtual machines, or your own premises.
 
 With {{ece}}, you can:
 
@@ -21,6 +23,10 @@ With {{ece}}, you can:
 * Centralize the management of multiple Elastic deployments across teams or geographies.
 
 Refer to [](./cloud-enterprise/ece-architecture.md) for details about the ECE platform architecture and the technologies used.
+
+:::{admonition} Use cloud services in your ECE environment with Cloud Connect
+With [Cloud Connect](/deploy-manage/cloud-connect.md), you can use Elastic-managed cloud services in your ECE environment without having to install and manage their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
+::::
 
 ## ECE features
 
@@ -32,7 +38,7 @@ Refer to [](./cloud-enterprise/ece-architecture.md) for details about the ECE pl
 - **Air-gapped installations**: Support for off-line installations.
 - **Microservices architecture**: All services are containerized through Docker.
 
-Check the [glossary](asciidocalypse:///docs-content/docs/reference/glossary.md) to get familiar with the terminology for ECE as well as other Elastic products and solutions.
+Check the [glossary](/reference/glossary/index.md) to get familiar with the terminology for ECE as well as other Elastic products and solutions.
 
 ## Section overview
 
@@ -42,7 +48,7 @@ In ECE, a deployment is a managed {{stack}} environment that provides users with
 
 The section covers the following tasks:
 
-* [Deploy ECE orchestrator](./cloud-enterprise/deploy-an-orchestrator.md)
+* [Deploy an ECE orchestrator](./cloud-enterprise/deploy-an-orchestrator.md)
     - [Prepare the environment](./cloud-enterprise/prepare-environment.md)
     - [Install ECE](./cloud-enterprise/install.md)
     - [Air gapped installations](./cloud-enterprise/air-gapped-install.md)
@@ -51,7 +57,7 @@ The section covers the following tasks:
 * [Work with deployments](./cloud-enterprise/working-with-deployments.md)
   - Use [](./cloud-enterprise/deployment-templates.md) to [](./cloud-enterprise/create-deployment.md)
   - [](./cloud-enterprise/customize-deployment.md)
-  - Use the deployment [Cloud ID](./cloud-enterprise/find-cloud-id.md) and [Endpoint URLs](./cloud-enterprise/find-endpoint-url.md) for clients connection
+  - [Connect your applications to {{es}}](./cloud-enterprise/connect-elasticsearch.md)
 
 * Learn about [](./cloud-enterprise/tools-apis.md) that you can use with ECE
 

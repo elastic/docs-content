@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/mapping-anomalies.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/mapping-anomalies.html
+products:
+  - id: machine-learning
 ---
 
 # Mapping anomalies by location [mapping-anomalies]
@@ -20,20 +22,20 @@ This example uses the sample web logs data set. For more information, see [Add t
 
 If you have fields that contain valid vector layers, you can use the **{{data-viz}}** in the **{{ml-app}}** app to see a choropleth map, in which each area is colored based on its document count. For example:
 
-:::{image} ../../../images/machine-learning-weblogs-data-visualizer-choropleth.png
+:::{image} /explore-analyze/images/machine-learning-weblogs-data-visualizer-choropleth.png
 :alt: A screenshot of a field that contains vector layer values in {{data-viz}}
-:class: screenshot
+:screenshot:
 :::
 
 ## Create an {{anomaly-job}} [mapping-anomalies-jobs]
 
-To create an {{anomaly-job}} in {{kib}}, click **Create job** on the **{{ml-cap}} > {{anomaly-detect-cap}}** page and select an appropriate job wizard. Alternatively, use the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+To create an {{anomaly-job}}, navigate to the **Anomaly Detection Jobs** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). Then click **Create job** and select the appropriate job wizard. Alternatively, use the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
 
 For example, use the multi-metric job wizard to create a job that analyzes the sample web logs data set to detect anomalous behavior in the sum of the data transferred (`bytes` values) for each destination country (`geo.dest` values):
 
-:::{image} ../../../images/machine-learning-weblogs-multimetric-wizard-vector.png
+:::{image} /explore-analyze/images/machine-learning-weblogs-multimetric-wizard-vector.png
 :alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} API example
@@ -98,9 +100,9 @@ After the {{anomaly-jobs}} have processed some data, you can view the results in
 If you used APIs to create the jobs and {{dfeeds}}, you cannot see them in {{kib}} until you follow the prompts to synchronize the necessary saved objects.
 ::::
 
-:::{image} ../../../images/machine-learning-weblogs-anomaly-explorer-vectors.png
+:::{image} /explore-analyze/images/machine-learning-weblogs-anomaly-explorer-vectors.png
 :alt: A screenshot of the anomaly count by location in Anomaly Explorer
-:class: screenshot
+:screenshot:
 :::
 
 The **Anomaly Explorer** contains a map, which is affected by your swim lane selections. It colors each location to reflect the number of anomalies in that selected time period. Locations that have few anomalies are indicated in blue; locations with many anomalies are red. Thus you can quickly see the locations that are generating the most anomalies. If your vector layers define regions, counties, or postal codes, you can zoom in for fine details.

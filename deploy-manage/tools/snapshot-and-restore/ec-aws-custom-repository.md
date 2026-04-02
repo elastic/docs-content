@@ -1,17 +1,23 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-aws-custom-repository.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-aws-custom-repository.html
 applies_to:
   deployment:
     ess:
+    ece:
+products:
+  - id: cloud-hosted
+navigation_title: AWS S3
 ---
 
-# Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]
+# Configure an AWS S3 snapshot repository in ECH and ECE [ec-aws-custom-repository]
 
 Configure a custom snapshot repository using an S3 storage bucket in your AWS account.
 
+::::{include} _snippets/ece_ech_custom_repo.md
+::::
 
 ## Prepare an S3 bucket [ec-prepare-aws-bucket]
 
@@ -54,7 +60,7 @@ You can use the {{es}} keystore to store the credentials to access your AWS acco
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Navigate to the **Security** page of the deployment you wish to configure.
-3. Locate **Elasticsearch keystore** and select **Add settings**.
+3. Locate **{{es}} keystore** and select **Add settings**.
 4. With **Type** set to **Single string**, add the following keys and their values:
 
     * `s3.client.secondary.access_key`
@@ -65,7 +71,7 @@ You can use the {{es}} keystore to store the credentials to access your AWS acco
 
 ## Create the repository [ec-create-aws-repository]
 
-1. Open Kibana and go to **Management** > **Snapshot and Restore**.
+1. Open {{kib}} and go to **Management** > **Snapshot and Restore**.
 2. On the **Repositories** tab, select **Register a repository**.
 3. Provide a name for your repository and select type **AWS S3**.
 4. Provide the following settings:
@@ -77,5 +83,5 @@ You can use the {{es}} keystore to store the credentials to access your AWS acco
 6. Select **Register**.
 7. Select **Verify** to confirm that your settings are correct and the deployment can connect to your repository.
 
-Your snapshot repository is now set up using S3! You can use Kibana to manage your snapshots and begin sending Elasticsearch snapshots to your own bucket. For details refer to the [Snapshot and Restore](create-snapshots.md) documentation.
+Your snapshot repository is now set up using S3! You can use {{kib}} to manage your snapshots and begin sending {{es}} snapshots to your own bucket. For details refer to the [Snapshot and Restore](create-snapshots.md) documentation.
 

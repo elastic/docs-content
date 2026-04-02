@@ -1,18 +1,19 @@
 ---
-navigation_title: "Using Cohere with {{es}}"
+navigation_title: Using Cohere with {{es}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/cohere-es.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 
 
 # Using Cohere with Elasticsearch [cohere-es]
 
-
-The instructions in this tutorial shows you how to compute embeddings with Cohere using the {{infer}} API and store them for efficient vector or hybrid search in {{es}}. This tutorial will use the Python {{es}} client to perform the operations.
+The instructions in this tutorial show you how to compute embeddings with Cohere using the {{infer}} API and store them for efficient vector or hybrid search in {{es}}. This tutorial will use the Python {{es}} client to perform the operations.
 
 You’ll learn how to:
 
@@ -29,13 +30,11 @@ Refer to [Cohere’s tutorial](https://docs.cohere.com/docs/elasticsearch-and-co
 
 You can also review the [Colab notebook version of this tutorial](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/integrations/cohere/cohere-elasticsearch.ipynb).
 
-
 ## Requirements [cohere-es-req]
 
 * A paid [Cohere account](https://cohere.com/) is required to use the {{infer-cap}} API with the Cohere service as the Cohere free trial API usage is limited,
-* an [Elastic Cloud](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) account,
+* an Elastic [Serverless](/deploy-manage/deploy/elastic-cloud/serverless.md) or a [Cloud](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) account,
 * Python 3.7 or higher.
-
 
 ## Install required packages [cohere-es-packages]
 
@@ -55,27 +54,25 @@ import json
 import requests
 ```
 
-
 ## Create the {{es}} client [cohere-es-client]
 
 To create your {{es}} client, you need:
 
-* [your Cloud ID](https://www.elastic.co/search-labs/tutorials/install-elasticsearch/elastic-cloud#finding-your-cloud-id),
+* [the URL of your {{es}} endpoint](../../elasticsearch-solution-project/search-connection-details.md)
 * [an encoded API key](https://www.elastic.co/search-labs/tutorials/install-elasticsearch/elastic-cloud#creating-an-api-key).
 
 ```py
-ELASTICSEARCH_ENDPOINT = "elastic_endpoint"
+ELASTIC_URL = "your_elasticsearch_endpoint_url"
 ELASTIC_API_KEY = "elastic_api_key"
 
 client = Elasticsearch(
-  cloud_id=ELASTICSEARCH_ENDPOINT,
+  hosts=ELASTIC_URL,
   api_key=ELASTIC_API_KEY
 )
 
 # Confirm the client has connected
 print(client.info())
 ```
-
 
 ## Create the {{infer}} endpoint [cohere-es-infer-endpoint]
 
@@ -127,7 +124,7 @@ client.indices.create(
 
 ## Create the {{infer}} pipeline [cohere-es-infer-pipeline]
 
-Now you have an {{infer}} endpoint and an index ready to store embeddings. The next step is to create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) that will create the embeddings using the {{infer}} endpoint and stores them in the index.
+Now you have an {{infer}} endpoint and an index ready to store embeddings. The next step is to create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) that will create the embeddings using the {{infer}} endpoint and stores them in the index.
 
 ```py
 client.ingest.put_pipeline(

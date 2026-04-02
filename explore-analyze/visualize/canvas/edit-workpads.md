@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/edit-workpads.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/edit-workpads.html
+products:
+  - id: kibana
 ---
 
 # Edit workpads [edit-workpads]
@@ -32,16 +34,16 @@ For example, to change the {{data-source}} for a set of charts:
 
 1. Specify the variable options.
 
-   :::{image} ../../../images/kibana-specify_variable_syntax.png
+   :::{image} /explore-analyze/images/kibana-specify_variable_syntax.png
    :alt: Variable syntax options
-   :class: screenshot
+   :screenshot:
    :::
 
 2. Copy the variable, then apply it to each element you want to update in the **Expression editor**.
 
-   :::{image} ../../../images/kibana-copy_variable_syntax.png
+   :::{image} /explore-analyze/images/kibana-copy_variable_syntax.png
    :alt: Copied variable syntax pasted in the Expression editor
-   :class: screenshot
+   :screenshot:
    :::
 
 

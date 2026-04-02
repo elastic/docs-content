@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-finding-outliers.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-finding-outliers.html
+products:
+  - id: machine-learning
 ---
 
 # Finding outliers [ml-dfa-finding-outliers]
@@ -43,7 +45,7 @@ Before you can use the {{stack-ml-features}}, there are some configuration requi
 
 ## 3. Prepare and transform data [dfa-outlier-detection-prepare-data]
 
-{{oldetection-cap}} requires specifically structured source data: a two dimensional tabular data structure. For this reason, you might need to [{{transform}}](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for {{oldetection}}.
+{{oldetection-cap}} requires specifically structured source data: a two dimensional tabular data structure. For this reason, you might need to [transform](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for {{oldetection}}.
 
 You can find an example of how to transform your data into an entity-centric index in [this section](#weblogs-outliers).
 
@@ -114,17 +116,17 @@ The evaluate {{dfanalytics}} API can return the false positive rate (`fpr`) and 
 
 The goal of {{oldetection}} is to find the most unusual documents in an index. Let’s try to detect unusual behavior in the [data logs sample data set](../../index.md#gs-get-data-into-kibana).
 
-1. Verify that your environment is set up properly to use {{ml-features}}. If the {{es}} {{security-features}} are enabled, you need a user that has authority to create and manage {{dfanalytics}} jobs. See [Setup and security](../setting-up-machine-learning.md). Since we’ll be creating {{transforms}}, you also need `manage_data_frame_transforms` cluster privileges.
+1. Verify that your environment is set up properly to use {{ml-features}}. If the {{es}} {{security-features}} are enabled, you need a user that has authority to create and manage {{dfanalytics}} jobs. See [Setup and security](../setting-up-machine-learning.md). Since we’ll be creating transforms, you also need `manage_data_frame_transforms` cluster privileges.
 
-2. Create a {{transform}} that generates an entity-centric index with numeric or boolean data to analyze.
+2. Create a transform that generates an entity-centric index with numeric or boolean data to analyze.
    In this example, we’ll use the web logs sample data and pivot the data such that we get a new index that contains a network usage summary for each client IP.
-   In particular, create a {{transform}} that calculates the number of occasions when a specific client IP communicated with the network (`@timestamp.value_count`), the sum of the bytes that are exchanged between the network and the client’s machine (`bytes.sum`), the maximum exchanged bytes during a single occasion (`bytes.max`), and the total number of requests (`request.value_count`) initiated by a specific client IP.
-   You can preview the {{transform}} before you create it in **{{stack-manage-app}}** > **Transforms**:
-   :::{image} ../../../images/machine-learning-logs-transform-preview.jpg
-   :alt: Creating a {{transform}} in {{kib}}
-   :class: screenshot
+   In particular, create a transform that calculates the number of occasions when a specific client IP communicated with the network (`@timestamp.value_count`), the sum of the bytes that are exchanged between the network and the client’s machine (`bytes.sum`), the maximum exchanged bytes during a single occasion (`bytes.max`), and the total number of requests (`request.value_count`) initiated by a specific client IP.
+   You can preview the transform before you create it. Go to the **Transforms** page in the main menu or by using the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.:
+   :::{image} /explore-analyze/images/machine-learning-logs-transform-preview.jpg
+   :alt: Creating a transform in {{kib}}
+   :screenshot:
    :::
-   Alternatively, you can use the [preview {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform) and the [create {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
+   Alternatively, you can use the [preview transform API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform) and the [create transform API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
 
 ::::{dropdown} API example
 
@@ -216,15 +218,15 @@ POST _transform/_preview
 
 ::::
 
-   For more details about creating {{transforms}}, see [Transforming the eCommerce sample data](../../transforms/ecommerce-transforms.md).
+   For more details about creating transforms, see [Transforming the eCommerce sample data](../../transforms/ecommerce-transforms.md).
 
-3. Start the {{transform}}.
+3. Start the transform.
 
 ::::{tip}
-Even though resource utilization is automatically adjusted based on the cluster load, a {{transform}} increases search and indexing load on your cluster while it runs. If you’re experiencing an excessive load, however, you can stop it.
+Even though resource utilization is automatically adjusted based on the cluster load, a transform increases search and indexing load on your cluster while it runs. If you’re experiencing an excessive load, however, you can stop it.
 ::::
 
-   You can start, stop, and manage {{transforms}} in {{kib}}. Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform) API.
+   You can start, stop, and manage transforms in {{kib}}. Alternatively, you can use the [start transforms](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform) API.
 
 ::::{dropdown} API example
 
@@ -237,15 +239,15 @@ POST _transform/logs-by-clientip/_start
 4. Create a {{dfanalytics-job}} to detect outliers in the new entity-centric index.
 
    In the wizard on the **Machine Learning** > **Data Frame Analytics** page in {{kib}}, select your new {{data-source}} then use the default values for {{oldetection}}. For example:
-   :::{image} ../../../images/machine-learning-weblog-outlier-job-1.jpg
+   :::{image} /explore-analyze/images/machine-learning-weblog-outlier-job-1.jpg
    :alt: Create a {{dfanalytics-job}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    The wizard includes a scatterplot matrix, which enables you to explore the relationships between the fields. You can use that information to help you decide which fields to include or exclude from the analysis.
-   :::{image} ../../../images/machine-learning-weblog-outlier-scatterplot.jpg
+   :::{image} /explore-analyze/images/machine-learning-weblog-outlier-scatterplot.jpg
    :alt: A scatterplot matrix for three fields in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
     If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
@@ -291,9 +293,9 @@ PUT _ml/data_frame/analytics/weblog-outliers
 6. View the results of the {{oldetection}} analysis.
    The {{dfanalytics}} job creates an index that contains the original data and {{olscores}} for each document. The {{olscore}} indicates how different each entity is from other entities.
    In {{kib}}, you can view the results from the {{dfanalytics}} job and sort them on the outlier score:
-   :::{image} ../../../images/machine-learning-outliers.jpg
+   :::{image} /explore-analyze/images/machine-learning-outliers.jpg
    :alt: View {{oldetection}} results in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    The `ml.outlier` score is a value between 0 and 1. The larger the value, the more likely they are to be an outlier. In {{kib}}, you can optionally enable histogram charts to get a better understanding of the distribution of values for each column in the result.
@@ -340,9 +342,9 @@ GET weblog-outliers/_search?q="111.237.144.54"
 
    {{kib}} also provides a scatterplot matrix in the results. Outliers with a score that exceeds the threshold are highlighted in each chart. The outlier score threshold can be set by using the slider under the matrix:
 
-:::{image} ../../../images/machine-learning-outliers-scatterplot.jpg
+:::{image} /explore-analyze/images/machine-learning-outliers-scatterplot.jpg
 :alt: View scatterplot in {{oldetection}} results
-:class: screenshot
+:screenshot:
 :::
 
    You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the charts. This function makes it easier to focus on specific values and areas in the results. In addition to the sample size and random scoring options, there is a **Dynamic size** option. If you enable this option, the size of each point is affected by its {{olscore}}; that is to say, the largest points have the highest {{olscores}}. The goal of these charts and options is to help you visualize and explore the outliers within your data.
@@ -350,7 +352,7 @@ GET weblog-outliers/_search?q="111.237.144.54"
    Now that you’ve found unusual behavior in the sample data set, consider how you might apply these steps to other data sets. If you have data that is already marked up with true outliers, you can determine how well the {{oldetection}} algorithms perform by using the evaluate {{dfanalytics}} API. See [6. Evaluate the results](#ml-outlier-detection-evaluate).
 
 ::::{tip}
-If you do not want to keep the {{transform}} and the {{dfanalytics}} job, you can delete them in {{kib}} or use the [delete {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-delete-transform) and [delete {{dfanalytics}} job API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-delete-data-frame-analytics). When you delete {{transforms}} and {{dfanalytics}} jobs in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.
+If you do not want to keep the transform and the {{dfanalytics}} job, you can delete them in {{kib}} or use the [delete transform API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-delete-transform) and [delete {{dfanalytics}} job API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-delete-data-frame-analytics). When you delete transforms and {{dfanalytics}} jobs in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.
 ::::
 
 ## Further reading [outlier-detection-reading]

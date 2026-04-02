@@ -2,6 +2,14 @@
 navigation_title: "Error: Server not ready"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/access.html#not-ready
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    self: all
+    eck: all
+products:
+  - id: kibana
 ---
 
 # Error: {{kib}} server is not ready yet [not-ready]
@@ -17,10 +25,10 @@ To troubleshoot the `Kibana server is not ready yet` error, try these steps:
 2. Guarantee the health of the three {{kib}}-backing indices.  All indices must appear and display `status:green` and `status:open`:
 
     ```sh
-    curl -XGET elasticsearch_ip_or_hostname:9200/_cat/indices/.kibana,.kibana_task_manager,.kibana_security_session?v=true
+    curl -XGET elasticsearch_ip_or_hostname:9200/_cat/indices/.kibana,.kibana_task_manager,.kibana_security_session,.security*?v=true
     ```
 
-    These {{kib}}-backing indices must also not have [index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) flagging `read_only_allow_delete` or `write` [index blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md).
+    These {{kib}}-backing indices must also not have [index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) flagging `read_only_allow_delete` or `write` [index blocks](elasticsearch://reference/elasticsearch/index-settings/index-block.md).
 
 3. [Shut down all {{kib}} nodes](../../deploy-manage/maintenance/start-stop-services/start-stop-kibana.md).
 4. Choose any {{kib}} node, then update the config to set the [debug logging](../../deploy-manage/monitor/logging-configuration/kibana-log-settings-examples.md#change-overall-log-level).

@@ -1,34 +1,30 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: Ubuntu
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-ubuntu-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-ubuntu-onprem.html
-navigation_title: Ubuntu
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure an Ubuntu host [ece-configure-hosts-ubuntu]
 
-The following instructions show you how to prepare your hosts on 20.04 LTS (Focal Fossa) and Ubuntu 22.04 LTS (Jammy Jellyfish).
+The following instructions show you how to prepare your hosts on Ubuntu.
 
-* [Install Docker 24.0](#ece-install-docker-ubuntu)
+* [Install Docker](#ece-install-docker-ubuntu)
 * [Set up XFS quotas](#ece-xfs-setup-ubuntu)
 * [Update the configurations settings](#ece-update-config-ubuntu)
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu)
 
 
-## Install Docker [ece-install-docker-ubuntu]
+## Install Docker on Ubuntu [ece-install-docker-ubuntu]
 
-Install Docker LTS version 24.0 for Ubuntu 20.04 or 22.04.
+Install a compatible Docker version on Ubuntu.
 
-::::{important}
-Make sure to use a combination of Linux distribution and Docker version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
-::::
-
-
-::::{note}
-Docker 25 and higher are not compatible with ECE 3.7.
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
 
@@ -53,22 +49,22 @@ Docker 25 and higher are not compatible with ECE 3.7.
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
 
-4. Install the correct version of the `docker-ce` package, for Ubuntu 20.04 LTS (Focal Fossa) or Ubuntu 22.04 LTS (Jammy Jellyfish):
+4. Install the correct version of the `docker-ce` package. The following is an example of installing Docker 27.0. If you decide to install a different Docker version, make sure to replace with the desired version in the commands below.
 
     ```sh
-    sudo apt install -y docker-ce=5:24.0.* docker-ce-cli=5:24.0.* containerd.io
+    sudo apt update && sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
     ```
 
 
 
 ## Set up XFS quotas [ece-xfs-setup-ubuntu]
 
-XFS is required to support disk space quotas for Elasticsearch data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On Ubuntu, you need to set up an XFS file system and have quotas enabled.
+XFS is required to support disk space quotas for {{es}} data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On Ubuntu, you need to set up an XFS file system and have quotas enabled.
 
-Disk space quotas set a limit on the amount of disk space an Elasticsearch cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
+Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
 ::::{note}
-Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, and it is not supported by Elastic Cloud Enterprise.
+Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, and it is not supported by {{ece}}.
 ::::
 
 
@@ -91,7 +87,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     sudo install -o $USER -g $USER -d -m 700 /mnt/data
     ```
 
-3. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+3. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by {{ece}} is `/mnt/data`.
 
     ```sh
     /dev/xvdg1	/mnt/data	xfs	defaults,nofail,x-systemd.automount,prjquota,pquota  0 2
@@ -133,20 +129,33 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
     # Required by Elasticsearch
-    vm.max_map_count=262144
+    vm.max_map_count=1048576
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
     # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
     net.ipv4.tcp_retries2=5
+    net.netfilter.nf_conntrack_tcp_timeout_established=7200
+    net.netfilter.nf_conntrack_max=262140
     # Make sure the host doesn't swap too early
     vm.swappiness=1
     EOF
     ```
 
     ::::{important}
-    The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than Elasticsearch clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
+    The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than {{es}} clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
+
+    :::{note}
+    According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
+    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
+    * Values below 300 seconds are used as-is.
+    
+    For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
 
 
     1. Apply the settings:
@@ -157,7 +166,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 4. Adjust the system limits.
 
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the Elastic Cloud hosted offering and should be used for Elastic Cloud Enterprise as well.
+    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for {{ece}} as well.
 
     ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
@@ -226,56 +235,79 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 ## Configure the Docker daemon options [ece-configure-docker-daemon-ubuntu]
 
-::::{tip}
-Docker creates a bridge IP address that can conflict with IP addresses on your internal network. To avoid an IP address conflict, change the `--bip=172.17.42.1/16` parameter in our examples to something that you know will work. If there is no conflict, you can omit the `--bip` parameter. The `--bip` parameter is internal to the host and can be set to the same IP for each host in the cluster. More information on Docker daemon options can be found in the  [dockerd command line reference](https://docs.docker.com/engine/reference/commandline/dockerd/).
-::::
+Docker daemon configuration can be defined in multiple ways. In this guide, Docker is configured using both the [daemon configuration file (`/etc/docker/daemon.json`)](https://docs.docker.com/reference/cli/dockerd/#daemon-configuration-file) and a systemd service override. The `daemon.json` file defines runtime settings for the Docker daemon, while the systemd configuration controls how the daemon is started and which command-line flags are applied.
 
+For more information, refer to the [Docker daemon configuration overview](https://docs.docker.com/config/daemon/).
 
-::::{tip}
-You can specify `--log-opt max-size` and `--log-opt max-file` to define the Docker daemon containers log rotation.
-::::
+1. Create the `/etc/docker` directory if it does not exist, then create or update the `/etc/docker/daemon.json` file with the following configuration:
 
+    ```json
+    {
+      "default-ulimits": {
+        "nofile": {
+          "Name": "nofile",
+          "Soft": 1048576,
+          "Hard": 1048576
+        }
+      }
+    }
+    ```
 
-1. Update `/etc/systemd/system/docker.service.d/docker.conf`. If the file path and file do not exist, create them first.
+    This configuration increases the maximum number of open file descriptors available to Docker containers.
 
-    ```sh
+1. Create the `/etc/systemd/system/docker.service.d` directory if it does not exist, then create or update the `/etc/systemd/system/docker.service.d/docker.conf` file with the following configuration:
+
+    ```ini
     [Unit]
     Description=Docker Service
     After=multi-user.target
 
     [Service]
-    Environment="DOCKER_OPTS=-H unix:///run/docker.sock --data-root /mnt/data/docker --storage-driver=overlay2 --bip=172.17.42.1/16 --raw-logs --log-opt max-size=500m --log-opt max-file=10 --icc=false"
+    Environment="DOCKER_OPTS=-H unix:///run/docker.sock --data-root /mnt/data/docker --storage-driver=overlay2 --bip=172.17.42.1/16 --raw-logs --log-opt max-size=500m --log-opt max-file=10 --icc=false" <1>
     ExecStart=
     ExecStart=/usr/bin/dockerd $DOCKER_OPTS
     ```
+    1. You can adjust `--log-opt max-size` and `--log-opt max-file` to configure container log rotation settings for the Docker daemon.
 
-2. Apply the updated Docker daemon configuration:
+    ::::{tip}
+    Alternatively, you can use `sudo systemctl edit docker` to create a systemd override file. This command automatically creates the appropriate directory and opens an editor for you to define the override configuration.
+    ::::
 
-    Reload the Docker daemon configuration:
+    ::::{note}
+    Docker creates a default bridge network that can conflict with IP ranges used in your internal network. The `--bip` parameter defines both the bridge IP address and the subnet used by Docker.
 
-    ```sh
-    sudo systemctl daemon-reload
-    ```
+    To avoid conflicts, replace the `--bip=172.17.42.1/16` parameter in our examples with a subnet that does not overlap with your existing network ranges. If there is no conflict, you can omit the `--bip` parameter. This setting is local to each host, so the same value can be reused across all hosts in the ECE platform.
 
-    Restart the Docker service:
+    For more information, refer to the [dockerd command line reference](https://docs.docker.com/engine/reference/commandline/dockerd/).
+    ::::
 
-    ```sh
-    sudo systemctl restart docker
-    ```
+1. Apply the updated Docker daemon configuration.
 
-    Enable Docker to start on boot:
+    1. Reload the Docker daemon configuration:
 
-    ```sh
-    sudo systemctl enable docker
-    ```
+        ```sh
+        sudo systemctl daemon-reload
+        ```
 
-3. Enable your user to communicate with the Docker subsystem by adding it to the `docker` group:
+    1. Restart the Docker service:
+
+        ```sh
+        sudo systemctl restart docker
+        ```
+
+    1. Enable Docker to start on boot:
+
+        ```sh
+        sudo systemctl enable docker
+        ```
+
+1. Enable your user to communicate with the Docker subsystem by adding it to the `docker` group:
 
     ```sh
     sudo usermod -aG docker $USER
     ```
 
-4. Recommended: Tune your network settings.
+1. Recommended: Tune your network settings.
 
     Create a `70-cloudenterprise.conf` file in the `/etc/sysctl.d/` file path that includes these network settings:
 
@@ -287,7 +319,7 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     SETTINGS
     ```
 
-5. Pin the Docker version to ensure that the package does not get upgraded:
+1. Pin the Docker version to ensure that the package does not get upgraded:
 
     ```sh
     echo "docker-ce hold" | sudo dpkg --set-selections
@@ -295,13 +327,13 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     echo "containerd.io hold" | sudo dpkg --set-selections
     ```
 
-6. Reboot your system to ensure that all configuration changes take effect:
+1. Reboot your system to ensure that all configuration changes take effect:
 
     ```sh
     sudo reboot
     ```
 
-7. After rebooting, verify that your Docker settings persist as expected:
+1. After rebooting, verify that your Docker settings persist as expected:
 
     ```sh
     sudo docker info | grep Root
@@ -309,6 +341,6 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
 
     If the command returns `Docker Root Dir: /mnt/data/docker`, then your changes were applied successfully and persist as expected.
 
-    If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
+    If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Docker daemon configuration](https://docs.docker.com/engine/daemon/) in the Docker documentation.
 
-8. Repeat these steps on other hosts that you want to use with Elastic Cloud Enterprise or follow the steps in the next section to start installing Elastic Cloud Enterprise.
+1. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.

@@ -1,9 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-change-password.html
-applies:
+applies_to:
   serverless: all
-  hosted: all
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Change your password [ec-change-password]

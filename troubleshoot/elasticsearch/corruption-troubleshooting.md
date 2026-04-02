@@ -2,9 +2,21 @@
 navigation_title: Data corruption
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/corruption-troubleshooting.html
+applies_to:
+  deployment:
+    eck:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot data corruption [corruption-troubleshooting]
+
+:::{note}
+:applies_to: {"serverless": "ga", "ess": "ga", }
+While this section applies to troubleshooting  fully self-managed {{es}} clusters, {{ech}} deployments and {{serverless-full}} projects are designed to minimize the risk of data corruption through managed infrastructure and automated operations. If you encounter any of these issues in {{ecloud}}, contact Elastic Support.
+:::
 
 {{es}} expects that the data it reads from disk is exactly the data it previously wrote. If it detects that the data on disk is different from what it wrote then it will report some kind of exception such as:
 

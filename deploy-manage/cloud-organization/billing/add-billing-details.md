@@ -5,6 +5,8 @@ applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - id: cloud-hosted
 ---
 
 # Add your billing details [ec-billing-details]
@@ -21,8 +23,8 @@ Trials get converted to paid subscriptions and billing starts when you add a cre
 
 To add your billing details:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Select the user icon on the header bar and select **Billing** from the menu.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Billing**.
 3. On the **Overview** page, select **Add billing information**.
 4. If prompted, complete the multifactor authentication (MFA) required by your bank.
 

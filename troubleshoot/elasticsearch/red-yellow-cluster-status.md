@@ -2,6 +2,10 @@
 navigation_title: Red or yellow health status
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/red-yellow-cluster-status.html
+applies_to:
+  stack:
+products:
+  - id: elasticsearch
 ---
 
 # Red or yellow cluster health status [red-yellow-cluster-status]
@@ -15,10 +19,8 @@ When your cluster has a red or yellow health status, it will continue to process
 
 In many cases, your cluster will recover to green health status automatically. If the cluster doesn’t automatically recover, then you must [manually address](#fix-red-yellow-cluster-status) the remaining problems so management and cleanup activities can proceed. See [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
 
-::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-
-::::
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 
 
@@ -33,6 +35,11 @@ GET _cluster/health?filter_path=status,*_shards
 ```
 
 A healthy cluster has a green `status` and zero `unassigned_shards`. A yellow status means only replicas are unassigned. A red status means one or more primary shards are unassigned.
+
+:::{tip}
+:applies_to: {ece: ga, ess: ga}
+For {{ece}} and {{ech}} deployments, you can also check cluster health from the deployment's **Monitoring** page in the {{ecloud}} Console or ECE Cloud UI. The Monitoring page provides detailed information on health issues, impacted areas, and troubleshooting support. Refer to [Cloud deployment health](/deploy-manage/monitor/cloud-health-perf.md#ec-es-cluster-health) for more information.
+:::
 
 **View unassigned shards**
 
@@ -55,6 +62,8 @@ GET _cluster/allocation/explain?filter_path=index,node_allocation_decisions.node
 }
 ```
 
+For common API response examples, see [Using the cluster allocation API for troubleshooting](https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples).
+
 
 ## Fix a red or yellow cluster status [fix-red-yellow-cluster-status]
 
@@ -63,7 +72,7 @@ A shard can become unassigned for several reasons. The following tips outline th
 
 ### Single node cluster [fix-cluster-status-only-one-node]
 
-{{es}} will never assign a replica to the same node as the primary shard. A single-node cluster will always have yellow status. To change to green, set [number_of_replicas](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) to 0 for all indices.
+{{es}} will never assign a replica to the same node as the primary shard. A single-node cluster will always have yellow status. To change to green, set [number_of_replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) to 0 for all indices. Only do this if you understand the impact of running without replicas (reduced fault tolerance and recovery options).
 
 Therefore, if the number of replicas equals or exceeds the number of nodes, some shards won’t be allocated.
 
@@ -92,7 +101,7 @@ POST _cluster/reroute
 Misconfigured allocation settings can result in an unassigned primary shard. These settings include:
 
 * [Shard allocation](../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) index settings
-* [Allocation filtering](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) cluster settings
+* [Allocation filtering](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) cluster settings
 * [Allocation awareness](../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) cluster settings
 
 To review your allocation settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and [cluster get settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) APIs.
@@ -123,7 +132,7 @@ PUT _settings
 
 ### Free up or increase disk space [fix-cluster-status-disk-space]
 
-{{es}} uses a [low disk watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) to ensure data nodes have enough disk space for incoming shards. By default, {{es}} does not allocate shards to nodes using more than 85% of disk space.
+{{es}} uses a [low disk watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) to ensure data nodes have enough disk space for incoming shards. By default, {{es}} does not allocate shards to nodes using more than 85% of disk space.
 
 To check the current disk space of your nodes, use the [cat allocation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-allocation).
 
@@ -135,14 +144,14 @@ If your nodes are running low on disk space, you have a few options:
 
 * Upgrade your nodes to increase disk space.
 * Add more nodes to the cluster.
-* Delete unneeded indices to free up space. If you use {{ilm-init}}, you can update your lifecycle policy to use [searchable snapshots](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) or add a delete phase. If you no longer need to search the data, you can use a [snapshot](../../deploy-manage/tools/snapshot-and-restore.md) to store it off-cluster.
-* If you no longer write to an index, use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) or {{ilm-init}}'s [force merge action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) to merge its segments into larger ones.
+* Delete unneeded indices to free up space. If you use {{ilm-init}}, you can update your lifecycle policy to use [searchable snapshots](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) or add a delete phase. If you no longer need to search the data, you can use a [snapshot](../../deploy-manage/tools/snapshot-and-restore.md) to store it off-cluster.
+* If you no longer write to an index, use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) or {{ilm-init}}'s [force merge action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) to merge its segments into larger ones.
 
     ```console
     POST my-index/_forcemerge
     ```
 
-* If an index is read-only, use the [shrink index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) or {{ilm-init}}'s [shrink action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) to reduce its primary shard count.
+* If an index is read-only, use the [shrink index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) or {{ilm-init}}'s [shrink action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) to reduce its primary shard count.
 
     ```console
     POST my-index/_shrink/my-shrunken-index
@@ -162,7 +171,7 @@ If your nodes are running low on disk space, you have a few options:
 
 
 ::::{important}
-This is usually a temporary solution and may cause instability if disk space is not freed up.
+Increasing this watermark is usually a temporary solution and may cause instability if disk space is not freed up.
 
 ::::
 
@@ -170,7 +179,31 @@ This is usually a temporary solution and may cause instability if disk space is 
 
 ### Re-enable shard allocation [fix-cluster-status-reenable-allocation]
 
-You typically disable allocation during a [restart](../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) or other cluster maintenance. If you forgot to re-enable allocation afterward, {{es}} will be unable to assign shards. To re-enable allocation, reset the `cluster.routing.allocation.enable` cluster setting.
+You typically disable shard allocation during a [restart](../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) or other cluster maintenance to prevent a recovery cascade while a node is temporarily out of the cluster. If allocation is not re-enabled afterward, {{es}} cannot assign shards.
+
+Verify whether allocation is disabled using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):
+
+```console
+GET _cluster/settings?include_defaults=true&filter_path=*.cluster.routing.allocation.enable
+```
+
+If allocation is not enabled, the response shows an override from the default value at either the `persistent` or `transient` level, for example:
+
+```
+{
+  "persistent": {
+    "cluster": {"routing": {"allocation": {"enable": "none" } } }
+  },
+  "defaults": {
+    "cluster": {"routing": {"allocation": {"enable": "all" } } } }
+}
+```
+
+::::{note}
+Setting [`cluster.routing.allocation.enable`](/troubleshoot/elasticsearch/allow-all-cluster-allocation.md) only affects shard allocations going forward but does not affect current allocations. So overriding this to `none` does not block existing ingestion. However, new indices cannot be created when overrode, including indices induced from [ILM Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md).
+::::
+
+To re-enable allocation, reset the `cluster.routing.allocation.enable` cluster setting:
 
 ```console
 PUT _cluster/settings
@@ -181,12 +214,18 @@ PUT _cluster/settings
 }
 ```
 
+After re-enabling allocation, the cluster automatically resumes shard assignment, recovery, and rebalancing. You can verify this using the [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health):
+
+```console
+GET _cluster/health
+```
+
 See [this video](https://www.youtube.com/watch?v=MiKKUdZvwnI) for walkthrough of troubleshooting "no allocations are allowed".
 
 
 ### Reduce JVM memory pressure [fix-cluster-status-jvm]
 
-Shard allocation requires JVM heap memory. High JVM memory pressure can trigger [circuit breakers](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) that stop allocation and leave shards unassigned. See [High JVM memory pressure](high-jvm-memory-pressure.md).
+Shard allocation requires JVM heap memory. High JVM memory pressure can trigger [circuit breakers](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) that stop allocation and leave shards unassigned. See [High JVM memory pressure](high-jvm-memory-pressure.md).
 
 
 ### Recover data for a lost primary shard [fix-cluster-status-restore]

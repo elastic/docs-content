@@ -1,9 +1,12 @@
 ---
-navigation_title: "JVM heap dumps"
-applies:
-  eck: all
+navigation_title: JVM heap dumps
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-jvm-heap-dumps.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Troubleshoot JVM heap dumps [k8s-jvm-heap-dumps]

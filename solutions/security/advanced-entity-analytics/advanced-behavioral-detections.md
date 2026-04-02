@@ -1,7 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-behavioral-detections.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-behavioral-detections.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Advanced behavioral detections [advanced-behavioral-detections]

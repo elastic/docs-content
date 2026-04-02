@@ -2,11 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-domain.html
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: all
+products:
+  - id: elasticsearch
 ---
 
 # Security domains [security-domain]
@@ -48,7 +46,7 @@ Security domains must be configured consistently across all nodes in cluster. In
 
 To configure a security domain:
 
-1. Add a security domain configuration to `elasticsearch.yml` in the `xpack.security.authc.domains` namespace:
+1. Add a security domain configuration to [`elasticsearch.yml`](/deploy-manage/stack-settings.md) in the `xpack.security.authc.domains` namespace:
 
     ```yaml
     xpack:

@@ -1,13 +1,17 @@
 ---
+navigation_title: Anomaly detection
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-overview.html
+  - https://www.elastic.co/guide/en/kibana/current/xpack-ml-anomalies.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-overview.html
-  - https://www.elastic.co/guide/en/kibana/current/xpack-ml-anomalies.html
+products:
+  - id: machine-learning
+  - id: kibana
 ---
 
-# Anomaly detection [ml-ad-overview]
+# Anomaly detection with machine learning [ml-ad-overview]
 
 You can use {{stack}} {{ml-features}} to analyze time series data and identify anomalous patterns in your data set.
 

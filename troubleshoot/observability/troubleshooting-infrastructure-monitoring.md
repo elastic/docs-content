@@ -1,8 +1,15 @@
 ---
-navigation_title: "Infrastructure monitoring"
+navigation_title: Infrastructure monitoring
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/troubleshooting-infrastructure-monitoring.html
   - https://www.elastic.co/guide/en/serverless/current/observability-troubleshooting-infrastructure-monitoring.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Troubleshoot infrastructure monitoring [troubleshooting-infrastructure-monitoring]

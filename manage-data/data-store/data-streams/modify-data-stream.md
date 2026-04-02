@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Modify a data stream [modify-data-streams]
@@ -23,7 +25,7 @@ If you later need to change the mappings or settings for a data stream, you have
 * [Change a static index setting for a data stream](../data-streams/modify-data-stream.md#change-static-index-setting-for-a-data-stream)
 
 ::::{tip}
-If your changes include modifications to existing field mappings or [static index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md), a reindex is often required to apply the changes to a data stream’s backing indices. If you are already performing a reindex, you can use the same process to add new field mappings and change [dynamic index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md). See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
+If your changes include modifications to existing field mappings or [static index settings](elasticsearch://reference/elasticsearch/index-settings/index.md), a reindex is often required to apply the changes to a data stream’s backing indices. If you are already performing a reindex, you can use the same process to add new field mappings and change [dynamic index settings](elasticsearch://reference/elasticsearch/index-settings/index.md). See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
 ::::
 
 
@@ -89,16 +91,21 @@ To add a mapping for a new field to a data stream, following these steps:
     ```
 
 
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also add a new field mapping to a data stream in {{kib}}. Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select a stream to view its details and go to the **Schema** tab to add a new field.
+:::
 
 ### Change an existing field mapping in a data stream [change-existing-field-mapping-in-a-data-stream]
 
-The documentation for each [mapping parameter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-parameters.md) indicates whether you can update it for an existing field using the [update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). To update these parameters for an existing field, follow these steps:
+The documentation for each [mapping parameter](elasticsearch://reference/elasticsearch/mapping-reference/mapping-parameters.md) indicates whether you can update it for an existing field using the [update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). To update these parameters for an existing field, follow these steps:
 
 1. Update the index template used by the data stream. This ensures the updated field mapping is added to future backing indices created for the stream.
 
     For example, `my-data-stream-template` is an existing index template used by `my-data-stream`.
 
-    The following [create or update index template](../templates.md) request changes the argument for the `host.ip` field’s [`ignore_malformed`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ignore-malformed.md) mapping parameter to `true`.
+    The following [create or update index template](../templates.md) request changes the argument for the `host.ip` field’s [`ignore_malformed`](elasticsearch://reference/elasticsearch/mapping-reference/ignore-malformed.md) mapping parameter to `true`.
 
     ```console
     PUT /_index_template/my-data-stream-template
@@ -166,6 +173,12 @@ The documentation for each [mapping parameter](asciidocalypse://docs/elasticsear
     ```
 
 
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also update an existing field's mapping in {{kib}}. Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select the stream to view its details and go to the **Schema** tab to make your updates. For more information, refer to [](/solutions/observability/streams/management/schema.md).
+:::
+
 Except for supported mapping parameters, we don’t recommend you change the mapping or field data type of existing fields, even in a data stream’s matching index template or its backing indices. Changing the mapping of an existing field could invalidate any data that’s already indexed.
 
 If you need to change the mapping of an existing field, create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
@@ -173,7 +186,7 @@ If you need to change the mapping of an existing field, create a new data stream
 
 ### Change a dynamic index setting for a data stream [change-dynamic-index-setting-for-a-data-stream]
 
-To change a [dynamic index setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md) for a data stream, follow these steps:
+To change a [dynamic index setting](elasticsearch://reference/elasticsearch/index-settings/index.md) for a data stream, follow these steps:
 
 1. Update the index template used by the data stream. This ensures the setting is applied to future backing indices created for the stream.
 
@@ -212,14 +225,21 @@ To change a [dynamic index setting](asciidocalypse://docs/elasticsearch/docs/ref
 
 
 ::::{important}
-To change the `index.lifecycle.name` setting, first use the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) to remove the existing {{ilm-init}} policy. See [Switch lifecycle policies](../../lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#switch-lifecycle-policies).
+To change the `index.lifecycle.name` setting, first use the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) to remove the existing {{ilm-init}} policy. See [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
 ::::
 
 
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also update certain dynamic index settings for a data stream in {{kib}}, such as the number of shards, replicas, and the refresh interval used. 
+
+Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select the stream to view its details and go to the **Advanced** tab to make your adjustments. For more information, refer to [](/solutions/observability/streams/management/advanced.md#streams-advanced-index-config).
+:::
 
 ### Change a static index setting for a data stream [change-static-index-setting-for-a-data-stream]
 
-[Static index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md) can only be set when a backing index is created. You cannot update static index settings using the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
+[Static index settings](elasticsearch://reference/elasticsearch/index-settings/index.md) can only be set when a backing index is created. You cannot update static index settings using the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
 
 To apply a new static setting to future backing indices, update the index template used by the data stream. The setting is automatically applied to any backing index created after the update.
 
@@ -250,6 +270,7 @@ If wanted, you can [roll over the data stream](../data-streams/use-data-stream.m
 
 To apply static setting changes to existing backing indices, you must create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
 
+See [this video](https://www.youtube.com/watch?v=fHL7SkQr7Wc) for a walkthrough of updating [`number_of_shards`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-number-of-shards).
 
 ### Use reindex to change mappings or settings [data-streams-use-reindex-to-change-mappings-settings]
 
@@ -342,7 +363,7 @@ Follow these steps:
     ```
 
 4. If you do not want to mix new and old data in your new data stream, pause the indexing of new documents. While mixing old and new data is safe, it could interfere with data retention. See [Mixing new and old data in a data stream](../data-streams/modify-data-stream.md#data-stream-mix-new-old-data).
-5. If you use {{ilm-init}} to [automate rollover](../../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md), reduce the {{ilm-init}} poll interval. This ensures the current write index doesn’t grow too large while waiting for the rollover check. By default, {{ilm-init}} checks rollover conditions every 10 minutes.
+5. If you use {{ilm-init}} to [automate rollover](../../lifecycle/index-lifecycle-management/tutorial-time-series-with-data-streams.md), reduce the {{ilm-init}} poll interval. This ensures the current write index doesn’t grow too large while waiting for the rollover check. By default, {{ilm-init}} checks rollover conditions every 10 minutes.
 
     The following [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) request lowers the `indices.lifecycle.poll_interval` setting to `1m` (one minute).
 
@@ -426,7 +447,7 @@ Follow these steps:
 
     You can also use a query to reindex only a subset of documents with each request.
 
-    The following [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) request copies documents from `my-data-stream` to `new-data-stream`. The request uses a [`range` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) to only reindex documents with a timestamp within the last week. Note the request’s `op_type` is `create`.
+    The following [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) request copies documents from `my-data-stream` to `new-data-stream`. The request uses a [`range` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) to only reindex documents with a timestamp within the last week. Note the request’s `op_type` is `create`.
 
     ```console
     POST /_reindex
@@ -499,3 +520,24 @@ POST _aliases
 }
 ```
 
+## Modify the backing indices of a data stream [data-streams-modify-backing-indices]
+
+Use the [modify API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-modify-data-stream) to modify the backing indices of a data stream. Multiple actions can be specified in a single modify request, and they will be executed atomically.
+
+```console
+POST /_data_stream/_modify
+{
+  "actions": [
+    {
+      "add_backing_index": {
+        "data_stream": "my-data-stream",
+        "index": "new-index"
+      },
+      "remove_backing_index": {
+        "data_stream": "my-data-stream",
+        "index": "old-index"
+      }
+    }
+  ]
+}
+```

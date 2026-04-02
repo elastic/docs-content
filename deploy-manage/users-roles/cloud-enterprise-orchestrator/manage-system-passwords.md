@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage system passwords[ece-manage-system-passwords]
@@ -53,5 +55,5 @@ To reset the password for the `admin` user if no secrets file exists:
 bash elastic-cloud-enterprise.sh reset-adminconsole-password
 ```
 
-For additional usage examples, check [`elastic-cloud-enterprise.sh reset-adminconsole-password` Reference](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/ece-installation-script-reset.md).
+For additional usage examples, check [`elastic-cloud-enterprise.sh reset-adminconsole-password` Reference](cloud://reference/cloud-enterprise/ece-installation-script-reset.md).
 

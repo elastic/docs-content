@@ -2,14 +2,12 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-privileges.html
 applies_to:
-  deployment:
-    ece:
-    ess:
-    eck:
-    self:
+  stack: all
+products:
+  - id: kibana
 ---
 
-# Kibana privileges [kibana-privileges]
+# {{kib}} privileges [kibana-privileges]
 
 {{kib}} privileges grant users access to features within {{kib}}. Roles have privileges to determine whether users have write or read access.
 
@@ -31,9 +29,9 @@ $$$kibana-privileges-all$$$
 
 From the role management screen:
 
-:::{image} ../../../images/kibana-assign-base-privilege.png
+:::{image} /deploy-manage/images/kibana-assign-base-privilege.png
 :alt: Assign base privilege
-:class: screenshot
+:screenshot:
 :::
 
 Using the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles):
@@ -76,9 +74,9 @@ Some features allow for finer access control than the `all` and `read` privilege
 
 From the role management screen:
 
-:::{image} ../../../images/kibana-assign-subfeature-privilege.png
+:::{image} /deploy-manage/images/kibana-assign-subfeature-privilege.png
 :alt: Assign feature privilege
-:class: screenshot
+:screenshot:
 :::
 
 Using the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles):

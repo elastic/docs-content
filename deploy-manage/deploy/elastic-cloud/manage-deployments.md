@@ -1,12 +1,15 @@
 ---
+navigation_title: Manage deployments
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-manage-deployment.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-manage-deployment.html
+products:
+  - id: cloud-hosted
 ---
 
-# Manage deployments [ec-manage-deployment]
+# Manage deployments in {{ech}} [ec-manage-deployment]
 
 {{ech}} allows you to configure and maintain your deployments with a high level of control on every component of the {{stack}}. You can adjust the settings of any of your deployments at any time.
 
@@ -17,8 +20,8 @@ mapped_pages:
 
 * Ensure the health of your deployment over time
 
-  * [Keep track of your deployment's activity](keep-track-of-deployment-activity.md) or [Enable logging and monitoring](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) of the deployment performance.
-  * Perform maintenance operations to ensure the health of your deployment, such as [restarting your deployment](../../maintenance/start-stop-services/restart-cloud-hosted-deployment.md) or [stopping routing](../../maintenance/ece/start-stop-routing-requests.md).
+  * [Keep track of your deployment's activity](keep-track-of-deployment-activity.md) or [Enable logging and monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) of the deployment performance.
+  * Perform maintenance operations to ensure the health of your deployment, such as [restarting your deployment](../../maintenance/start-stop-services/restart-cloud-hosted-deployment.md) or [stopping routing](../../maintenance/start-stop-routing-requests.md).
 
 * Manage the lifecycle of your deployment:
 

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-podman.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-podman.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Migrate ECE to Podman hosts [ece-migrate-to-podman]
@@ -21,7 +23,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
 ::::
 
 
-:::{image} ../../../images/cloud-enterprise-podman-migration-overview-1.png
+:::{image} /deploy-manage/images/cloud-enterprise-podman-migration-overview-1.png
 :alt: Migration Overview
 :::
 
@@ -42,13 +44,13 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
     **Example 1** You want to migrate the Docker host `192.168.44.74` with the role `Allocator` to a podman host. Copy the role `allocator`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-1.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-1.png
     :alt: Migrate Allocator
     :::
 
     **Example 2** You want to migrate the Docker host `192.168.44.10` with the roles `Allocator`, `Controller`, `Director`, and `Proxy` to a podman host. Copy the roles `allocator`, `coordinator`, `director`, `proxy`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-2.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-2.png
     :alt: Migrate Allocator
     :::
 
@@ -101,27 +103,55 @@ Using Docker or Podman as container runtime is a configuration local to the host
         SELINUX=enforcing
         ```
 
-4. Install podman:
+4. Install Podman:
 
-    * Install the latest available version `4.*` using dnf.
+    * For Podman 4
 
-        ```sh
-        sudo dnf install podman-4.* podman-remote-4.*
-        ```
+        * Install the latest available version `4.*` using dnf.
 
-    * To prevent automatic Podman major version updates, configure the Podman version to be locked while still allowing minor and patch updates.
+            ```sh
+            sudo dnf install podman-4.* podman-remote-4.*
+            ```
 
-        ```sh
-        ## Install versionlock
-        sudo dnf install 'dnf-command(versionlock)'
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `4.*` while still allowing minor and patch updates.
 
-        ## Lock major version
-        sudo dnf versionlock add --raw 'podman-4.*'
-        sudo dnf versionlock add --raw 'podman-remote-4.*'
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
 
-        ## Verify that podman-4.* and podman-remote-4.* appear in the output
-        sudo dnf versionlock list
-        ```
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-4.*'
+            sudo dnf versionlock add --raw 'podman-remote-4.*'
+
+            ## Verify that podman-4.* and podman-remote-4.* appear in the output
+            sudo dnf versionlock list
+            ```
+
+    * For Podman 5
+
+        * Install the latest available version `5.*` using dnf.
+
+            :::{note}
+            Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later version. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
+            :::
+
+            ```sh
+            sudo dnf install podman-5.* podman-remote-5.*
+            ```
+
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `5.*` while still allowing minor and patch updates.
+
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
+
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-5.*'
+            sudo dnf versionlock add --raw 'podman-remote-5.*'
+
+            ## Verify that podman-5.* and podman-remote-5.* appear in the output
+            sudo dnf versionlock list
+            ```
 
 5. [This step is for RHEL 9 and Rocky Linux 9 only] Switch the network stack from Netavark to CNI:
 
@@ -138,13 +168,13 @@ Using Docker or Podman as container runtime is a configuration local to the host
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Please note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 
     ```text
     [engine]
-    env = ["HTTP_PROXY=http://{proxy-ip}:{proxy-port}", "HTTPS_PROXY=http://{proxy-ip}:{proxy-port}"]
+    env = ["HTTP_PROXY=http://<PROXY_IP>:<PROXY_PORT>", "HTTPS_PROXY=http://<PROXY_IP>:<PROXY_PORT>"]
     ```
 
 7. Reload systemd configuration
@@ -267,7 +297,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     sudo install -o elastic -g elastic -d -m 700 /mnt/data
     ```
 
-21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
 
     ::::{note}
     Replace `/dev/nvme1n1` in the following example with the corresponding device on your host, and add this example configuration as a single line to `/etc/fstab`.
@@ -303,7 +333,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     sudo install -o elastic -g elastic -d -m 700 /mnt/data/docker
     ```
 
-25. If you want to use FirewallD, please ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
+25. If you want to use FirewallD, ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
 
     ```sh
     sudo systemctl disable firewalld
@@ -318,7 +348,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
     # Required by Elasticsearch
-    vm.max_map_count=262144
+    vm.max_map_count=1048576
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
@@ -385,7 +415,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
     1. Use the ECE installer script together with the `--podman` flag to add the additional host as a podman-based host.
 
-        Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](./install.md) documentation to adapt the command line parameters to your environment including fetching the role token.
+        Refer to the official [Install {{ece}} on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](./install.md) documentation to adapt the command line parameters to your environment including fetching the role token.
 
         [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 
@@ -423,13 +453,13 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
         The following screenshot shows the state where the correct roles have been applied. Both hosts in ece-zone-1 have the same color.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-correct-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-correct-role-1.png
         :alt: Correct role
         :::
 
         The following screenshot shows the state where incorrect roles have been applied. The hosts in ece-zone-1 do not have the same coloring.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-wrong-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-wrong-role-1.png
         :alt: Wrong role
         :::
 
@@ -449,7 +479,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
         ::::
 
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-move-instances-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-move-instances-1.png
         :alt: Move instances
         :::
 
@@ -491,3 +521,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     5. Remove the Docker allocator by following the [Delete Hosts](../../maintenance/ece/delete-ece-hosts.md) guidelines.
 
     As an alternative, use the [Delete Runner](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-delete-runner) API.
+
+::::{note}
+When using Podman, removing an image with the `--force` (`-f`) option not only deletes the image reference but also removes any containers that depend on that image. This behavior differs from Docker, where forced image removal does not automatically remove running or stopped containers. Therefore, avoid using the `--force` (`-f`) option with the `docker rmi` command.
+::::

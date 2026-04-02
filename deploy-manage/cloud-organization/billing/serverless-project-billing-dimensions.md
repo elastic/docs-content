@@ -1,9 +1,11 @@
 ---
-navigation_title: "Serverless billing dimensions"
+navigation_title: Serverless billing dimensions
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-billing.html
 applies_to:
-  serverless: all
+  serverless: ga
+products:
+  - id: cloud-serverless
 ---
 
 # Serverless project billing dimensions [general-serverless-billing]
@@ -13,14 +15,15 @@ applies_to:
 * [Offerings](#offerings)
 * [Add-ons](#add-ons)
 
+Specific prices can be found in the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or you can create an [Elastic Cloud Serverless Estimate](https://cloud.elastic.co/pricing/serverless).
 
 ## Offerings [offerings] 
 
 To learn about billing dimensions for specific offerings, refer to:
 
-* [{{es}} billing dimensions](elasticsearch-billing-dimensions.md)
-* [Elastic for Observability billing dimensions](elastic-observability-billing-dimensions.md)
-* [Elastic for Security dimensions](security-billing-dimensions.md)
+* [](elasticsearch-billing-dimensions.md)
+* [](elastic-observability-billing-dimensions.md)
+* [](security-billing-dimensions.md)
 
 
 ## Add-ons [add-ons] 
@@ -34,4 +37,14 @@ To learn about billing dimensions for specific offerings, refer to:
 ### Support [general-serverless-billing-support] 
 
 If your subscription level is Standard, there is no separate charge for Support reflected on your bill. If your subscription level is Gold, Platinum, or Enterprise, a charge is made for Support as a percentage (%) of the ECUs. To find out more about our support levels, go to [https://www.elastic.co/support](https://www.elastic.co/support).
+
+### Serverless Plus [serverless-plus-add-on]
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-plus.md
+:::
+
+#### Availability [serverless-plus-add-on-availability]
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-plus-availability.md
+:::
 

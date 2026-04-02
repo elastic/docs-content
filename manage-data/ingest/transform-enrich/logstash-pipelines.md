@@ -4,17 +4,19 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: cloud-serverless
 ---
 
 # Logstash pipelines [logstash-pipelines]
 
-This content applies to: [![Elasticsearch](../../../images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Observability](../../../images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](../../../images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
+This content applies to: [![Elasticsearch](/manage-data/images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Observability](/manage-data/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/manage-data/images/serverless-sec-badge.svg "")](../../../solutions/security.md)
 
-In **{{project-settings}} → {{manage-app}} → {{ls-pipelines-app}}**, you can control multiple {{ls}} instances and pipeline configurations.
+On the **{{ls-pipelines-app}}** management page, you can control multiple {{ls}} instances and pipeline configurations.
 
-:::{image} ../../../images/serverless-logstash-pipelines-management.png
+:::{image} /manage-data/images/serverless-logstash-pipelines-management.png
 :alt: {{ls-pipelines-app}}"
-:class: screenshot
+:screenshot:
 :::
 
 On the {{ls}} side, you must enable configuration management and register {{ls}} to use the centrally managed pipeline configurations.
@@ -28,8 +30,10 @@ After you configure {{ls}} to use centralized pipeline management, you can no lo
 
 ## Manage pipelines [logstash-pipelines-manage-pipelines]
 
-1. [Configure centralized pipeline management](asciidocalypse://docs/logstash/docs/reference/configuring-centralized-pipelines.md).
-2. To add a new pipeline, go to **{{project-settings}} → {{manage-app}} → {{ls-pipelines-app}}** and click **Create pipeline**. Provide the following details, then click **Create and deploy**.
+1. [Configure centralized pipeline management](logstash://reference/configuring-centralized-pipelines.md).
+1. To add a new pipeline, go to the **{{ls-pipelines-app}}** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Click **Create pipeline**.
+1. Provide the following details, then click **Create and deploy**.
 
     Pipeline ID
     :   A name that uniquely identifies the pipeline. This is the ID that you used when you configured centralized pipeline management and specified a list of pipeline IDs in the `xpack.management.pipeline.id` setting.
@@ -61,4 +65,4 @@ After you configure {{ls}} to use centralized pipeline management, you can no lo
 
 To delete one or more pipelines, select their checkboxes then click **Delete**.
 
-For more information about pipeline behavior, go to [Centralized Pipeline Management](asciidocalypse://docs/logstash/docs/reference/logstash-centralized-pipeline-management.md#_pipeline_behavior).
+For more information about pipeline behavior, go to [Centralized Pipeline Management](logstash://reference/logstash-centralized-pipeline-management.md#_pipeline_behavior).

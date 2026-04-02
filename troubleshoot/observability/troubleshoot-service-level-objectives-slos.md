@@ -1,15 +1,22 @@
 ---
-navigation_title: "SLOs"
+navigation_title: SLOs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo-troubleshoot-slos.html
   - https://www.elastic.co/guide/en/serverless/current/slo-troubleshoot-slos.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Troubleshoot service-level objectives (SLOs) [slo-troubleshoot-slos]
 
 
 ::::{important}
-In {{stack}}, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+In {{stack}}, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
 ::::
 
@@ -64,7 +71,7 @@ It’s common for SLO problems to arise when there are underlying problems in th
 
 ### No transform or ingest nodes [slo-no-transform-ingest-node]
 
-Because SLOs depend on both [ingest pipelines](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) and [transforms](../../explore-analyze/transforms.md) to process the data, it’s essential to ensure that the cluster has nodes with the appropriate [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
+Because SLOs depend on both [ingest pipelines](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) and [transforms](../../explore-analyze/transforms.md) to process the data, it’s essential to ensure that the cluster has nodes with the appropriate [roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
 
 Ensure the cluster includes one or more nodes with both `ingest` and `transform` roles to support the data processing and transformations required for SLOs to function properly. The roles can exist on the same node or be distributed across separate nodes.
 
@@ -187,7 +194,7 @@ Where `sloId` can be obtained from the [Inspect SLO assets](#slo-troubleshoot-in
 
 ### Using API calls to retrieve SLO details [slo-api-calls]
 
-Refer to [SLO API calls](https://www.elastic.co/docs/api/doc/kibana/v8/operation/operation-findslosop) as an alternative to [using SLO Inspect](#slo-troubleshoot-inspect).
+Refer to [SLO API calls]({{kib-apis}}operation/operation-findslosop) as an alternative to [using SLO Inspect](#slo-troubleshoot-inspect).
 
 
 ## Upgrade from beta to GA [slo-troubleshoot-beta]
@@ -202,8 +209,8 @@ To migrate your SLO definitions, open the SLO overview. A banner will display th
 
 If you have a large number of SLO definitions, it is possible to automate this process. To do this, you’ll need to use two Elastic APIs:
 
-* [SLO Definitions Find API](https://github.com/elastic/kibana/blob/9cb830fe9a021cda1d091effbe3e0cd300220969/x-pack/plugins/observability/docs/openapi/slo/bundled.yaml#L453-L514) (`/api/observability/slos/_definitions`)
-* [SLO Reset API](https://www.elastic.co/docs/api/doc/kibana/v8/operation/operation-resetsloop)
+* [SLO Definitions Find API]({{kib-apis}}operation/operation-getdefinitionsop)
+* [SLO Reset API]({{kib-apis}}operation/operation-resetsloop)
 
 Pass in `includeOutdatedOnly=1` as a query parameter to the Definitions Find API. This will display your outdated SLO definitions. Loop through this list, one by one, calling the Reset API on each outdated SLO definition. The Reset API loads the outdated SLO definition and resets it to the new format required for GA. Once an SLO is reset, it will start to regenerate SLIs and summary data.
 

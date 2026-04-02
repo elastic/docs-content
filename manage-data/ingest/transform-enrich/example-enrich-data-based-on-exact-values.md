@@ -4,11 +4,13 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Example: Enrich your data based on exact values [match-enrich-policy-type]
 
-`match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on an exact value, such as a email address or ID, using a [`term` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md).
+`match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on an exact value, such as a email address or ID, using a [`term` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md).
 
 The following example creates a `match` enrich policy that adds user name and contact information to incoming documents based on an email address. It then adds the `match` enrich policy to a processor in an ingest pipeline.
 
@@ -19,14 +21,14 @@ The following index API request creates a source index and indexes a new documen
 ```console
 PUT /users/_doc/1?refresh=wait_for
 {
-  "email": "mardy.brown@asciidocsmith.com",
+  "email": "mardy.brown@example.com",
   "first_name": "Mardy",
   "last_name": "Brown",
   "city": "New Orleans",
   "county": "Orleans",
   "state": "LA",
   "zip": 70116,
-  "web": "mardy.asciidocsmith.com"
+  "web": "mardy.example.com"
 }
 ```
 
@@ -53,7 +55,7 @@ Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elastics
 POST /_enrich/policy/users-policy/_execute?wait_for_completion=false
 ```
 
-Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) that includes:
+Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) that includes:
 
 * Your enrich policy.
 * The `field` of incoming documents used to match documents from the enrich index.
@@ -81,7 +83,7 @@ Use the ingest pipeline to index a document. The incoming document should includ
 ```console
 PUT /my-index-000001/_doc/my_id?pipeline=user_lookup
 {
-  "email": "mardy.brown@asciidocsmith.com"
+  "email": "mardy.brown@example.com"
 }
 ```
 
@@ -103,14 +105,14 @@ The API returns the following response:
   "_primary_term": 1,
   "_source": {
     "user": {
-      "email": "mardy.brown@asciidocsmith.com",
+      "email": "mardy.brown@example.com",
       "first_name": "Mardy",
       "last_name": "Brown",
       "zip": 70116,
       "city": "New Orleans",
       "state": "LA"
     },
-    "email": "mardy.brown@asciidocsmith.com"
+    "email": "mardy.brown@example.com"
   }
 }
 ```

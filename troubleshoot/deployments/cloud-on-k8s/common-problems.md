@@ -1,13 +1,18 @@
 ---
-navigation_title: "Common issues"
-applies:
-  eck: all
+navigation_title: Common issues
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-common-problems.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Troubleshoot common Elastic Cloud on Kubernetes issues [k8s-common-problems]
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## Operator crashes on startup with `OOMKilled` [k8s-common-problems-operator-oom]
 
@@ -18,11 +23,11 @@ kubectl -n elastic-system \
   get pods -o=jsonpath='{.items[].status.containerStatuses}' | jq
 ```
 
-```json
+```json subs=true
 [
   {
     "containerID": "containerd://...",
-    "image": "docker.elastic.co/eck/eck-operator:2.16.1",
+    "image": "docker.elastic.co/eck/eck-operator:{{version.eck}}",
     "imageID": "docker.elastic.co/eck/eck-operator@sha256:...",
     "lastState": {
       "terminated": {
@@ -244,7 +249,7 @@ If you are using one of the affected versions of OLM and upgrading OLM to a newe
 
 ## If you upgraded Elasticsearch to the wrong version [k8s-common-problems-version-downgrade]
 
-If you accidentally upgrade one of your Elasticsearch clusters to a version that does not exist or a version to which a direct upgrade is not possible from your currently deployed version, a validation will prevent you from going back to the previous version. The reason for this validation is that ECK will not allow downgrades as this is not supported by Elasticsearch and once the data directory of Elasticsearch has been upgraded there is no way back to the old version without a [snapshot restore](/deploy-manage/upgrade/prepare-to-upgrade/index-compatibility.md).
+If you accidentally upgrade one of your Elasticsearch clusters to a version that does not exist or a version to which a direct upgrade is not possible from your currently deployed version, a validation will prevent you from going back to the previous version. The reason for this validation is that ECK will not allow downgrades as this is not supported by Elasticsearch and once the data directory of Elasticsearch has been upgraded there is no way back to the old version without a [snapshot restore](/deploy-manage/tools/snapshot-and-restore.md).
 
 These two upgrading scenarios, however, are exceptions because Elasticsearch never started up successfully. If you annotate the Elasticsearch resource with `eck.k8s.elastic.co/disable-downgrade-validation=true` ECK allows you to go back to the old version at your own risk. If you also attempted an upgrade of other related Elastic Stack applications at the same time you can use the same annotation to go back. Remove the annotation afterwards to prevent accidental downgrades and reduced availability.
 
@@ -301,3 +306,14 @@ Check that the role mapping was deleted:
 GET /_security/role_mapping/<roleName>
 {}
 ```
+
+
+## Volume expansion failed [k8s-common-problems-volume-failed-expansion]
+
+If you attempted an expansion of an {{es}} data volume via its [volume claim template](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md#k8s-volume-claim-templates-update), you may have encountered scenarios where the operation failed. For example older versions of the Azure Disk CSI driver did not allow volume expansion without shutting down the Virtual Machine to which the volume was attached. If you try to adjust the volume claim template back to the original size you will encounter an error:
+
+```
+Failed to apply spec change: handle volume expansion: decreasing storage size is not supported: an attempt was made to decrease storage size for claim elasticsearch-data
+```
+
+In this scenario the best course of action is to rename the existing `nodeSet` to a new name while simultaneously updating the volume claim template to the original size. This operation will bring a new `StatefulSet` online while moving all existing data to the new volumes, and will delete the old `StatefulSet` and its volumes once the operation is complete.

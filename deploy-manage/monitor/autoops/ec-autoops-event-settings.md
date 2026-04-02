@@ -2,16 +2,19 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-event-settings.html
 applies_to:
-  deployment:
-    ess: all
+  stack:
+products:
+  - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
-# Events Settings [ec-autoops-event-settings]
+# Event Settings [ec-autoops-event-settings]
 
 AutoOps events are triggered when specific conditions are met and are closed when those conditions are no longer satisfied. An event can be triggered by multiple conditions, and each event comes with a default setting that can be adjusted differently for each connected deployment.
 
 ::::{note}
-Only a user with Cloud Organization Owner role can set up notifications.
+Only **Organization owners** can configure these settings.
 ::::
 
 
@@ -23,8 +26,9 @@ The event settings include:
 * Index patterns to exclude - AutoOps will exclude system indices to prevent unnecessary events from opening. You can add or remove indices from the list.
 * Data roles tier to exclude from indications - Add threshold based on the type of data tier.
 
-:::{image} ../../../images/cloud-autoops-event-settings.png
-:alt: Event settings
+:::{image} /deploy-manage/images/cloud-autoops-event-settings.png
+:screenshot:
+:alt: Screenshot showing the Event Settings dialogue in AutoOps
 :::
 
 
@@ -34,7 +38,8 @@ The **Event Settings** report provides a list of all the events for which the se
 
 From the **Event Settings** report, you can click **Add** to add new settings, or select the edit icon to modify the existing settings.
 
-:::{image} ../../../images/cloud-autoops-events-settings-report.png
-:alt: Event settings report
+:::{image} /deploy-manage/images/cloud-autoops-events-settings-report.png
+:screenshot:
+:alt: Screenshot showing the Event Settings page with the Add button
 :::
 

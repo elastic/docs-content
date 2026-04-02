@@ -1,10 +1,12 @@
 ---
 navigation_title: Apply configuration settings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-operator-config.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-operator-config.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Apply ECK configuration settings [k8s-operator-config]
@@ -12,7 +14,7 @@ mapped_pages:
 This page explains the various methods for configuring and applying ECK settings.
 
 ::::{tip}
-For a detailed list and description of all available settings in ECK, refer to [ECK configuration flags](asciidocalypse://docs/cloud-on-k8s/docs/reference/eck-configuration-flags.md).
+For a detailed list and description of all available settings in ECK, refer to [ECK configuration flags](cloud-on-k8s://reference/eck-configuration-flags.md).
 ::::
 
 By default, the ECK installation includes a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) with an `eck.yaml` key where you can add, remove, or update configuration settings. This ConfigMap is mounted into the operator’s container as a file, and provided to the application through the `--config` flag.
@@ -27,7 +29,13 @@ To configure ECK settings, follow the instructions in the next sections dependin
 
 If you installed ECK through the Helm chart commands listed in [](./install-using-helm-chart.md), add your configuration parameters under the `config` key in your values file, or set them inline using the equivalent `--set config.<setting-name>=<value>` flags when updating or installing the release.
 
-For example, to add the `ca-cert-validity` setting with a value of `43800h`, you can use any of the following methods:
+Note that the Helm chart uses its own configuration parameters rather than the actual ECK parameters that are described in [{{eck}} configuration flags](cloud-on-k8s://reference/eck-configuration-flags.md). To view all configurable values in the Helm chart for the ECK operator, run the following command:
+
+```sh
+helm show values elastic/eck-operator
+```
+
+For example, the parameter `caValidity` in the Helm chart corresponds to the `ca-cert-validity` ECK parameter. To add the `caValidity` setting with a value of `43800h`, you can use either of the following methods:
 
 ### Option 1: Use a values file and reference it in the helm upgrade command:
 
@@ -35,7 +43,7 @@ Create a values file with the following content:
 
 ```yaml
 config:
-  ca-cert-validity: 43800h
+  caValidity: 43800h
 ```
 
 Then, update the installed release pointing to the values file:
@@ -47,16 +55,16 @@ helm upgrade elastic-operator elastic/eck-operator -f my-values-file.yaml -n ela
 ### Option 2: Use `--set` in the helm upgrade command
 
 ```sh
-helm upgrade elastic-operator elastic/eck-operator --set config.ca-cert-validity=43800h -n elastic-system
+helm upgrade elastic-operator elastic/eck-operator --set config.caValidity=43800h -n elastic-system
 ```
 
 ## Using the operator YAML manifests
 
 If you installed ECK using the manifests and the commands listed in [Deploy ECK](./install-using-yaml-manifest-quickstart.md), you can configure it by editing the `eck.yaml` key of the `elastic-operator` ConfigMap. Add, remove or update any configuration setting there and the operator will restart automatically to apply the new changes unless the `--disable-config-watch` flag is set.
 
-You can update the ConfigMap directly using the command `kubectl edit configmap elastic-operator -n elastic-operator` or modify the installation manifests and reapply them with `kubectl apply -f <your-manifest-file.yaml>`.
+You can update the ConfigMap directly using the command `kubectl edit configmap elastic-operator -n elastic-system` or modify the installation manifests and reapply them with `kubectl apply -f <your-manifest-file.yaml>`.
 
-The following shows the default `elastic-operator` ConfigMap, for reference purposes. Refer to [ECK configuration flags](asciidocalypse://docs/cloud-on-k8s/docs/reference/eck-configuration-flags.md) for a complete list of available settings.
+The following shows the default `elastic-operator` ConfigMap, for reference purposes. Refer to [ECK configuration flags](cloud-on-k8s://reference/eck-configuration-flags.md) for a complete list of available settings.
 
 ```yaml
 apiVersion: v1
@@ -89,9 +97,10 @@ data:
     enable-leader-election: true
     elasticsearch-observation-interval: 10s
     ubi-only: false
+    password-length: 24
 ```
 
-Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section of the operator container — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
+Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section of the operator container — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
 
 ## Configure ECK under Operator Lifecycle Manager [k8s-operator-config-olm]
 
@@ -119,7 +128,7 @@ If you use [Operator Lifecycle Manager (OLM)](https://github.com/operator-framew
 
 * Update your [Subscription](https://github.com/operator-framework/operator-lifecycle-manager/blob/master/doc/design/subscription-config.md) to mount the ConfigMap under `/conf`.
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: operators.coreos.com/v1alpha1
     kind: Subscription
     metadata:
@@ -131,7 +140,7 @@ If you use [Operator Lifecycle Manager (OLM)](https://github.com/operator-framew
       name: elastic-cloud-eck
       source: elastic-operators
       sourceNamespace: openshift-marketplace
-      startingCSV: elastic-cloud-eck.v{{eck_version}}
+      startingCSV: elastic-cloud-eck.v{{version.eck}}
       config:
         volumes:
           - name: config
@@ -155,7 +164,7 @@ This section provides a low-level overview of alternative configuration methods,
 
 To pass configuration options as environment variables, convert the flag name to upper case and replace any dashes (`-`) with underscores (`_`). For example, the `log-verbosity` flag can be set by an environment variable named `LOG_VERBOSITY`.
 
-If you use a combination of all or some of the these methods, the descending order of precedence in case of a conflict is as follows:
+If you use a combination of all or some of these methods, the descending order of precedence in case of a conflict is as follows:
 
 * Flag
 * Environment variable

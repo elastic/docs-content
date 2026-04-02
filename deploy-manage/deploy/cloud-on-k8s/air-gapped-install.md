@@ -1,27 +1,33 @@
 ---
 navigation_title: Air-gapped environments
+mapped_pages:
+  - https://www.elastic.co/guide/en/elastic-stack/current/air-gapped-install.html
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-air-gapped.html
 applies_to:
   deployment:
     eck: all
-mapped_urls:
-  - https://www.elastic.co/guide/en/elastic-stack/current/air-gapped-install.html
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-air-gapped.html
+products:
+  - id: cloud-kubernetes
 ---
 
-# Running in air-gapped environments [k8s-air-gapped]
+# Running ECK in air-gapped environments [k8s-air-gapped]
 
 The ECK operator can be run in an air-gapped environment without access to the open internet when configured to avoid pulling container images from `docker.elastic.co`.
 
-By default ECK does not require you to specify the container image for each Elastic Stack application you deploy.
+:::{note}
+To deploy ECK in Google Distributed Cloud (GDC) air-gapped refer to [Deploy ECK on GDC air-gapped](./eck-gdch.md).
+:::
 
-```yaml
+By default ECK does not require you to specify the container image for each {{stack}} application you deploy.
+
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
-  # image: docker.elastic.co/elasticsearch/elasticsearch:8.16.1 // <1>
+  version: {{version.stack}}
+  # image: docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}} // <1>
   nodeSets:
   - name: default
     count: 1
@@ -42,18 +48,30 @@ ECK will automatically set the correct container image for each application. Whe
 
 To deploy the ECK operator in an air-gapped environment, you first have to mirror the operator image itself from `docker.elastic.co` to a private container registry, for example `my.registry`.
 
-Once the ECK operator image is copied internally, replace the original image name `docker.elastic.co/eck/eck-operator:2.16.1` with the private name of the image, for example `my.registry/eck/eck-operator:2.16.1`, in the [operator manifests](../../../deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md). When using [Helm charts](../../../deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md), replace the `image.repository` Helm value with, for example, `my.registry/eck/eck-operator`.
+Once the ECK operator image is copied internally, replace the original image name with the private name of the image in the [operator manifests](../../../deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md). For example:
+
+Before:
+```text subs=true
+docker.elastic.co/eck/eck-operator:{{version.eck}}
+```
+
+After:
+```text subs=true
+my.registry/eck/eck-operator:{{version.eck}}
+```
+
+When using [Helm charts](../../../deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md), replace the `image.repository` Helm value with, for example, `my.registry/eck/eck-operator`.
 
 
 ## Override the default container registry [k8s-container-registry-override]
 
-When creating custom resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash), the operator defaults to using container images pulled from the `docker.elastic.co` registry. If you are in an environment where external network access is restricted, you can configure the operator to use a different default container registry by starting the operator with the `--container-registry` command-line flag. Check [*Configure ECK*](../../../deploy-manage/deploy/cloud-on-k8s/configure-eck.md) for more information on how to configure the operator using command-line flags and environment variables.
+When creating custom resources ({{eck_resources_list}}), the operator defaults to using container images pulled from the `docker.elastic.co` registry. If you are in an environment where external network access is restricted, you can configure the operator to use a different default container registry by starting the operator with the `--container-registry` command-line flag. Check [*Configure ECK*](../../../deploy-manage/deploy/cloud-on-k8s/configure-eck.md) for more information on how to configure the operator using command-line flags and environment variables.
 
-The operator expects container images to be located at specific repositories in the default container registry. Make sure that your container images are stored in the right repositories and are tagged correctly with the Stack version number. For example, if your private registry is `my.registry` and you wish to deploy components from Stack version 8.16.1, the following image names should exist:
+The operator expects container images to be located at specific repositories in the default container registry. Make sure that your container images are stored in the right repositories and are tagged correctly with the Stack version number. For example, if your private registry is `my.registry` and you wish to deploy components from Stack version {{version.stack}}, the following image names should exist:
 
-* `my.registry/elasticsearch/elasticsearch:8.16.1`
-* `my.registry/kibana/kibana:8.16.1`
-* `my.registry/apm/apm-server:8.16.1`
+* my.registry/elasticsearch/elasticsearch:{{version.stack}}
+* my.registry/kibana/kibana:{{version.stack}}
+* my.registry/apm/apm-server:{{version.stack}}
 
 
 ## Use a global container repository [k8s-container-repository-override]
@@ -62,13 +80,13 @@ If you cannot follow the default Elastic image repositories naming scheme, you c
 
 For example, if your private registry is `my.registry` and all Elastic images are located under the `elastic` repository, the following image names should exist:
 
-* `my.registry/elastic/elasticsearch:8.16.1`
-* `my.registry/elastic/kibana:8.16.1`
-* `my.registry/elastic/apm-server:8.16.1`
+* my.registry/elastic/elasticsearch:{{version.stack}}
+* my.registry/elastic/kibana:{{version.stack}}
+* my.registry/elastic/apm-server:{{version.stack}}
 
 
 ## ECK Diagnostics in air-gapped environments [k8s-eck-diag-air-gapped]
 
-The [eck-diagnostics tool](../../../troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md) optionally runs diagnostics for Elastic Stack applications in a separate container that is deployed into the Kubernetes cluster.
+The [eck-diagnostics tool](../../../troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md) optionally runs diagnostics for {{stack}} applications in a separate container that is deployed into the Kubernetes cluster.
 
 In air-gapped environments with no access to the `docker.elastic.co` registry, you should copy the latest support-diagnostics container image to your internal image registry and then run the tool with the additional flag `--diagnostic-image <custom-support-diagnostics-image-name>`. To find out which support diagnostics container image matches your version of eck-diagnostics, run the tool once without arguments and it will print the default image in use.

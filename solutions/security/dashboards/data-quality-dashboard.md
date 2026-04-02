@@ -1,16 +1,23 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/data-quality-dash.html
   - https://www.elastic.co/guide/en/serverless/current/security-data-quality-dash.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Data Quality dashboard
 
-The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md) (ECS). Successful [mapping](/manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}} and {{kib}}.
+The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](ecs://reference/index.md) (ECS). Successful [mapping](/manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}} and {{kib}}.
 
-:::{image} ../../../images/security-data-qual-dash.png
+:::{image} /solutions/images/security-data-qual-dash.png
 :alt: The Data Quality dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Use the Data Quality dashboard to:
@@ -22,13 +29,13 @@ Use the Data Quality dashboard to:
 
 
 ::::{note}
-* On {{serverless-short}} deployments, index `Size` data is not available. 
+* On {{serverless-short}} deployments, index `Size` data is not available.
 * The Data Quality dashboard doesn’t show data from cold or frozen [data tiers](/manage-data/lifecycle/data-tiers.md). It also doesn’t display data from remote clusters using cross-cluster search. To view data from another cluster, log in to that cluster’s {{kib}} instance.
 ::::
 
 
 ::::{admonition} Requirements
-To use the Data Quality dashboard, you need at least the following [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for each index you want to check:
+To use the Data Quality dashboard, you need at least the following [privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for each index you want to check:
 
 * `monitor` or `manage` (required for the [Index stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats))
 * `view_index_metadata` or `manage_ilm` (required for the [Explain lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle))
@@ -75,15 +82,15 @@ Click a node in the treemap to expand the corresponding index.
 
 After an index is checked, a **Pass** or **Fail** status appears. **Fail** indicates mapping problems in an index. To view index check details, including which fields weren’t successfully mapped, click the **Check now** button under **Actions**.
 
-:::{image} ../../../images/security-data-qual-dash-detail.png
+:::{image} /solutions/images/security-data-qual-dash-detail.png
 :alt: An expanded index with some failed results in the Data Quality dashboard
-:class: screenshot
+:screenshot:
 :::
 
 The index check flyout provides more information about the status of fields in that index. Each of its tabs describe fields grouped by mapping status.
 
 ::::{note}
-Fields in the **Same family** category have the correct search behavior, but might have different storage or performance characteristics (for example, you can index strings to both `text` and `keyword` fields). To learn more, refer to [Field data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md).
+Fields in the **Same family** category have the correct search behavior, but might have different storage or performance characteristics (for example, you can index strings to both `text` and `keyword` fields). To learn more, refer to [Field data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
 ::::
 
 
@@ -92,7 +99,7 @@ Fields in the **Same family** category have the correct search behavior, but mig
 
 You can review an index’s data quality history by clicking **View history** under **Actions**, or by clicking the **History** tab in the details flyout. You can filter the results by time and **Pass** / **Fail** status. Click a historical check to expand it and view more details.
 
-:::{image} ../../../images/security-data-qual-dash-history.png
+:::{image} /solutions/images/security-data-qual-dash-history.png
 :alt: The Data Quality dashboard
 :::
 
@@ -109,13 +116,13 @@ You can share data quality results to help track your team’s remediation effor
 * Export results for all indices in the current data view:
 
     1. At the top of the dashboard, under the **Check all** button, are two buttons that allow you to share results. Exported results include all the data which appears in the dashboard.
-    2. Click **Add to new case** to open a new [case](/solutions/security/investigate/cases.md).
+    2. Click **Add to new case** to open a new [case](/solutions/security/investigate/security-cases.md).
     3. Click **Copy to clipboard** to copy a Markdown report to your clipboard.
 
 * Export results for one index:
 
     1. View details for a checked index by clicking the **Check now** button under **Actions**.
-    2. From the **Incompatible fields** tab, select **Add to new case** to open a new [case](/solutions/security/investigate/cases.md).
+    2. From the **Incompatible fields** tab, select **Add to new case** to open a new [case](/solutions/security/investigate/security-cases.md).
 
 
 ::::{note}

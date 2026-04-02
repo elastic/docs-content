@@ -1,11 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/ls-networkbridge.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elastic-agent
+  - id: logstash
 ---
 
 # Elastic Agent to Logstash to Elasticsearch: Logstash as a proxy [ls-networkbridge]
 
-:::{image} ../../../images/ingest-ea-ls-bridge.png
+:::{image} /manage-data/images/ingest-ea-ls-bridge.png
 :alt: Image showing {{agent}}s collecting data and sending to {{ls}} for proxying before sending on to {{es}}
 :::
 
@@ -23,15 +29,15 @@ Example
 
 Info on configuring {{agent}}:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 Info on {{ls}} and {{ls}} plugins:
 
-* [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
+* [{{ls}} Reference](logstash://reference/index.md)
+* [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 

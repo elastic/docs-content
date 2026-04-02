@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-data.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-data.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Map data [k8s-maps-data]
@@ -83,13 +85,13 @@ You can [customize the Elastic Maps Server Pod](customize-pods.md) using a Pod t
 
 The following example demonstrates how to create a Elastic Maps Server deployment which mounts a data volume with the complete basemap.
 
-```yaml
+```yaml subs=true
 apiVersion: maps.k8s.elastic.co/v1alpha1
 kind: ElasticMapsServer
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   podTemplate:
     spec:

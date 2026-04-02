@@ -2,11 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/custom-roles-authorization.html
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
+products:
+  - id: elasticsearch
 ---
 
 # Authorization plugins [custom-roles-authorization]
@@ -66,7 +64,7 @@ To register the security extension for your custom roles provider or authorizati
 
 1. Implement a plugin class that extends `org.elasticsearch.plugins.Plugin`
 2. Create a build configuration file for the plugin; Gradle is our recommendation.
-3. Create a `plugin-descriptor.properties` file as described in [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/index.md).
+3. Create a `plugin-descriptor.properties` file as described in [Help for plugin authors](elasticsearch://extend/index.md).
 4. Create a `META-INF/services/org.elasticsearch.xpack.core.security.SecurityExtension` descriptor file for the extension that contains the fully qualified class name of your `org.elasticsearch.xpack.core.security.SecurityExtension` implementation
 5. Bundle all in a single zip file.
 
@@ -86,7 +84,7 @@ To use a security extension:
     * If you're using {{ece}}, then refer to [](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md).
     * If you're using {{eck}}, then refer to [](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
 
-2. Add any configuration parameters for implementations in the extension to the `elasticsearch.yml` file. The settings are not namespaced and you have access to any settings when constructing the extensions, although it is recommended to have a namespacing convention for extensions to keep your `elasticsearch.yml` configuration easy to understand.
+2. Add any configuration parameters for implementations in the extension to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file. The settings are not namespaced and you have access to any settings when constructing the extensions, although it is recommended to have a namespacing convention for extensions to keep your `elasticsearch.yml` configuration easy to understand.
 
     For example, if you have a custom roles provider that resolves roles from reading a blob in an S3 bucket on AWS, then you would specify settings in `elasticsearch.yml` such as:
 

@@ -1,7 +1,12 @@
 ---
-navigation_title: "Network Firewall logs"
+navigation_title: Network Firewall logs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-firewall-firehose.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 
@@ -34,14 +39,14 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-firewall-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Browse the catalog to find the AWS integration.
 3. Navigate to the **Settings** tab and click **Install AWS assets**.
 
 
 ## Step 2: Select a resource [firehose-firewall-step-two]
 
-:::{image} ../../../images/observability-firehose-networkfirewall-firewall.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-firewall.png
 :alt: AWS Network Firewall
 :::
 
@@ -52,7 +57,7 @@ Creating a Network Firewall is not trivial and is beyond the scope of this guide
 
 ## Step 3: Create a stream in Amazon Data Firehose [firehose-firewall-step-three]
 
-:::{image} ../../../images/observability-firehose-networkfirewall-stream.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-stream.png
 :alt: Firehose stream
 :::
 
@@ -71,7 +76,7 @@ Creating a Network Firewall is not trivial and is beyond the scope of this guide
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Select **Open Kibana**.
-        3. Expand the left-hand menu, under **Management** select **Stack management > API Keys** and click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
+        3. Open the **API keys** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
 
 4. Set up the delivery stream by specifying the following data:
 
@@ -87,7 +92,7 @@ The Firehose stream is ready to send logs to our Elastic Cloud deployment.
 
 ## Step 4: Enable logging [firehose-firewall-step-four]
 
-:::{image} ../../../images/observability-firehose-networkfirewall-logging.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-logging.png
 :alt: AWS Network Firewall logging
 :::
 
@@ -107,7 +112,7 @@ At this point, the Network Firewall will start sending logs to the Firehose stre
 
 ## Step 5: Visualize your Network Firewall logs in {{kib}} [firehose-firewall-step-five]
 
-:::{image} ../../../images/observability-firehose-networkfirewall-data-stream.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-data-stream.png
 :alt: Firehose monitor Network Firewall logs
 :::
 
@@ -115,7 +120,7 @@ With the new logging settings in place, the Network Firewall starts sending log 
 
 Navigate to {{kib}} and choose **Visualize your logs with Discover**.
 
-:::{image} ../../../images/observability-firehose-networkfirewall-discover.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-discover.png
 :alt: Visualize Network Firewall logs with Discover
-:class: screenshot
+:screenshot:
 :::

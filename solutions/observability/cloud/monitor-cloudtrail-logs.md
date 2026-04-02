@@ -1,7 +1,12 @@
 ---
-navigation_title: "CloudTrail logs"
+navigation_title: CloudTrail logs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-cloudtrail-firehose.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 
@@ -40,7 +45,7 @@ Make sure the deployment is on AWS, because the Amazon Data Firehose delivery st
 
 ## Step 2: Export Cloudtrail events to CloudWatch [firehose-cloudtrail-step-two]
 
-:::{image} ../../../images/observability-firehose-cloudtrail-cloudwatch.png
+:::{image} /solutions/images/observability-firehose-cloudtrail-cloudwatch.png
 :alt: Cloudtrail to CloudWatch
 :::
 
@@ -70,7 +75,7 @@ To export CloudTrail logs to CloudWatch, you must set up a **trail** through the
 
     Open the log group you just created on CloudWatch and make sure there are events from the CloudTrail you have just created.
 
-    :::{image} ../../../images/observability-firehose-verify-events-cloudwatch.png
+    :::{image} /solutions/images/observability-firehose-verify-events-cloudwatch.png
     :alt: Verify events in CloudWatch
     :::
 
@@ -78,7 +83,7 @@ To export CloudTrail logs to CloudWatch, you must set up a **trail** through the
 
 ## Step 3: Set up a Firehose delivery stream [firehose-cloudtrail-step-three]
 
-:::{image} ../../../images/observability-firehose-delivery-stream.png
+:::{image} /solutions/images/observability-firehose-delivery-stream.png
 :alt: Firehose delivery stream
 :::
 
@@ -97,7 +102,7 @@ You now have a CloudWatch log group with events coming from CloudTrail. For more
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Select **Open Kibana**.
-        3. Expand the left-hand menu, under **Management** select **Stack management > API Keys** and click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
+        3. Open the **API keys** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
 
 2. Set up the delivery stream by specifying the following data:
 
@@ -117,7 +122,7 @@ You now have an Amazon Data Firehose delivery specified with:
 
 ## Step 4: Set up a subscription filter to route CloudTrail events to a delivery stream [firehose-cloudtrail-step-four]
 
-:::{image} ../../../images/observability-firehose-subscription-filter.png
+:::{image} /solutions/images/observability-firehose-subscription-filter.png
 :alt: Firehose subscription filter
 :::
 
@@ -184,7 +189,7 @@ To check if there are destination error logs, go to the AWS console, visit your 
 
 If everything is correct, this list should be empty. If there’s an error, you can check the details. The following example shows a delivery stream that fails to send records to the Elastic stack due to bad authentication settings:
 
-:::{image} ../../../images/observability-firehose-failed-delivery-stream.png
+:::{image} /solutions/images/observability-firehose-failed-delivery-stream.png
 :alt: Firehose failed delivery stream
 :::
 
@@ -195,7 +200,7 @@ The Amazon Data Firehose delivery stream reports the number of failed deliveries
 
 With the new subscription filter running, CloudWatch starts routing new CloudTrail log events to the Firehose delivery stream.
 
-:::{image} ../../../images/observability-firehose-monitor-cloudtrail-logs.png
+:::{image} /solutions/images/observability-firehose-monitor-cloudtrail-logs.png
 :alt: Firehose monitor CloudTrail logs
 :::
 
@@ -203,18 +208,13 @@ Navigate to {{kib}} and choose among the following monitoring options:
 
 * **Visualize your logs with Discover**
 
-    :::{image} ../../../images/observability-firehose-cloudtrail-discover.png
+    :::{image} /solutions/images/observability-firehose-cloudtrail-discover.png
     :alt: Visualize CloudTrail logs with Disocver
     :::
 
-* **Visualize your logs with Logs explorer**
-
-    :::{image} ../../../images/observability-firehose-cloudtrail-logsexplorer.png
-    :alt: Visualize CloudTrail logs with Logs explorer
-    :::
 
 * **Visualize your logs with the CloudTrail Dashboard**
 
-    :::{image} ../../../images/observability-firehose-cloudtrail-dashboard.png
+    :::{image} /solutions/images/observability-firehose-cloudtrail-dashboard.png
     :alt: Visualize CloudTrail logs with CloudTrail Dashboard
     :::

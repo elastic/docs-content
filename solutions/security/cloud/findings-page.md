@@ -1,20 +1,28 @@
 ---
-mapped_urls:
+navigation_title: CSPM Findings
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cspm-findings-page.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-findings-page.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
-# Findings page
+# View and manage CSPM misconfigurations in Findings
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$cspm-findings-page-filter-findings$$$
 
-The **Misconfigurations** tab on the Findings page displays the configuration risks identified by the [CSPM](/solutions/security/cloud/cloud-security-posture-management.md) and [KSPM](/solutions/security/cloud/kubernetes-security-posture-management.md) integrations, as well as data from [third-party integrations](/solutions/security/cloud/ingest-third-party-cloud-security-data.md).
+The **Misconfigurations** tab on the **Findings** page displays the configuration risks identified by the [CSPM](/solutions/security/cloud/cloud-security-posture-management.md) and [KSPM](/solutions/security/cloud/kubernetes-security-posture-management.md) integrations, as well as data from [third-party integrations](/solutions/security/integrations/ingest-third-party-security-data.md).
 
-:::{image} ../../../images/security-findings-page.png
+:::{image} /solutions/images/security-findings-page.png
 :alt: Findings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -30,9 +38,9 @@ By default, the Findings page lists all findings, without grouping or filtering.
 
 ### Group findings [_group_findings]
 
-Click **Group findings by** to group your data by a field. Select one of the suggested fields or **Custom field** to choose your own. You can select up to three group fields at once. 
+Click **Group findings by** to group your data by a field. Select one of the suggested fields or **Custom field** to choose your own. You can select up to three group fields at once.
 
-* When grouping is turned on, click a group to expand it and examine all sub-groups or findings within that group. 
+* When grouping is turned on, click a group to expand it and examine all sub-groups or findings within that group.
 * To turn off grouping, click **Group findings by** and select **None**.
 
   ::::{note}

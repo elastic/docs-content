@@ -1,19 +1,27 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: Install ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-installing.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-public.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-your-infra.html
-navigation_title: Install ECE
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-cloud.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-onprem.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
-# Install Elastic Cloud Enterprise [ece-installing]
+# Install {{ece}} [ece-installing]
 
 You can deploy {{ece}} (ECE) on public or private clouds, virtual machines, or on-premises.
 
-In ECE, a host refers to any server, VM, or cloud instance where the ECE software is installed. An ECE platform consists of multiple hosts working together to orchestrate Elastic Stack applications.
+::::{tip}
+If you already have an ECE platform up and running, and you want to add hosts to your installation, refer to [](./install-ece-on-additional-hosts.md).
+::::
+
+In ECE, a host refers to any server, VM, or cloud instance where the ECE software is installed. An ECE platform consists of multiple hosts working together to orchestrate {{stack}} applications.
 
 For public cloud deployments, you can choose from the following providers:
 
@@ -21,11 +29,7 @@ For public cloud deployments, you can choose from the following providers:
 * Google Cloud Platform (GCP)
 * Microsoft Azure
 
-::::{tip}
-If you already have an ECE platform up and running, and you want to add hosts to your installation, refer to [](./install-ece-on-additional-hosts.md).
-::::
-
-::::{note} 
+::::{note}
 In these pages we frequently refer to [Docker](https://www.docker.com/), as its currently the most common container engine, but these instructions are generally valid for [Podman](https://podman.io/) as well, with `podman` replacing `docker` in commands as appropriate.
 ::::
 
@@ -37,6 +41,9 @@ Before you start, make sure to [identify your deployment scenario](identify-depl
 
 After completing the prerequisites, proceed to configure your ECE hosts. This includes installing Docker or Podman, setting up XFS quotas, preparing mount points, and other required configurations.
 
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
+::::
+
 ECE supports a [wide range of OS versions](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Below are some OS-specific instructions for preparing your hosts, though other versions follow a similar process. Choose the appropriate guide for your operating system and follow the instructions:
 
 * [Ubuntu 20.04 LTS (Focal Fossa) and Ubuntu 22.04 LTS (Jammy Jellyfish)](configure-host-ubuntu.md)
@@ -44,7 +51,7 @@ ECE supports a [wide range of OS versions](https://www.elastic.co/support/matrix
 * [Rocky Linux 8 and 9](configure-host-rhel.md)
 * [SUSE Linux Enterprise Server (SLES) 12 SP5 and 15](configure-host-suse.md)
 
-::::{important} 
+::::{important}
 Cloud providers default provide automatic operating system patching for their virtual machines. We strongly recommend disabling this feature to avoid potential data loss and installation failure. All patching should be done using the [Perform host maintenance](../../maintenance/ece/perform-ece-hosts-maintenance.md) instructions.
 ::::
 

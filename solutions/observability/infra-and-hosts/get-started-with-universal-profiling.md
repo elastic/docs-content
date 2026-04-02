@@ -1,7 +1,12 @@
 ---
-navigation_title: "Get started"
+navigation_title: Get started
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-get-started.html
+applies_to:
+  stack: ga
+  serverless: unavailable
+products:
+  - id: observability
 ---
 
 
@@ -9,21 +14,23 @@ mapped_pages:
 # Get started with Universal Profiling [profiling-get-started]
 
 
-On this page, you’ll learn how to configure and use Universal Profiling. This page covers:
+This page shows you how to configure and use Universal Profiling on an {{ecloud}} deployment. To set up a self-hosted deployment of {{stack}}, refer to [Run Universal Profiling on self-hosted Elastic stack ](./run-universal-profiling-on-self-hosted-elastic-stack.md).
 
-* Prerequisites to setting up Universal Profiling
+This page covers:
+
+* Prerequisites to setting up Universal Profiling on {{ecloud}}
 * Setting up Universal Profiling in your {{ecloud}} deployment
 * Installing the Universal Profiling Agent
 * Installing the Universal Profiling Agent integration
 
-We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](../../../troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
+We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
 
 
 ## Prerequisites [profiling-prereqs]
 
 Before setting up Universal Profiling, make sure you meet the following requirements:
 
-* An {{stack}} deployment on [{{ecloud}}](http://cloud.elastic.co) at version 8.7.0 or higher. Universal Profiling is currently only available on Elastic Cloud.
+* An {{stack}} deployment on [{{ecloud}}](http://cloud.elastic.co). To set up a self-hosted deployment of {{stack}}, refer to [Run Universal Profiling on self-hosted Elastic stack ](./run-universal-profiling-on-self-hosted-elastic-stack.md).
 * The workloads you’re profiling must be running on Linux machines with x86_64 or ARM64 CPUs.
 * The minimum supported kernel version is either 4.19 for x86_64 or 5.5 for ARM64 machines.
 * The Integrations Server must be enabled on your {{ecloud}} deployment.
@@ -38,7 +45,7 @@ The minimum supported versions of each interpreter are:
 
 * JVM/JDK: 7
 * Python: 3.6
-* V8: 8.1.0
+* V8: 8.1.0 (AMD64 systems require {{stack}} 9.2.2 or later; ARM64 systems require {{stack}} version 9.1.8 or 9.2.2 or later)
 * Perl: 5.28
 * PHP: 7.3
 * Ruby: 2.5
@@ -49,9 +56,8 @@ The minimum supported versions of each interpreter are:
 
 The following deployment configuration example was tested to support profiling data from a fleet of up to 500 hosts, each with 8 or 16 CPU cores, for a total of roughly 6000 cores:
 
-|     |     |     |
-| --- | --- | --- |
 | Component | Size per zone (memory) | Zones |
+| --- | --- | --- |
 | {{es}} | 64 GB | 2 |
 | Kibana | 8 GB | 1 |
 | Integrations Server | 8 GB | 1 |
@@ -68,9 +74,9 @@ To set up Universal Profiling on your {{ecloud}} deployment, you need to [config
 
 After enabling Universal Profiling on your deployment for the first time, select any subheading under **Universal Profiling** in the navigation menu to open the following page:
 
-:::{image} ../../../images/observability-profiling-setup-popup.png
+:::{image} /solutions/images/observability-profiling-setup-popup.png
 :alt: profiling setup popup
-:class: screenshot
+:screenshot:
 :::
 
 Click **Set up Universal Profiling** to configure data ingestion.
@@ -84,6 +90,9 @@ If you’re upgrading from a previous version with Universal Profiling enabled, 
 
 
 ### Programmatic configuration [profiling-configure-data-ingestion-programmatic]
+```{applies_to}
+stack: ga 9.2
+```
 
 If you prefer to configure data ingestion programmatically, you can use a Kibana API call. This call can be made either through the "Dev Tools" console in Kibana or with any standalone HTTP client (such as `curl` or `wget`). In both cases, the API call must be executed using the `elastic` user credentials to ensure the necessary permissions.
 
@@ -92,7 +101,7 @@ A successful API call will return a `202 Accepted` response with an empty body.
 To configure data ingestion from the console, go to **Dev Tools** in the navigation menu and run the following command:
 
 ```console
-POST kbn:/internal/profiling/setup/es_resources
+POST kbn:/api/profiling/setup/es_resources
 {}
 ```
 
@@ -100,7 +109,7 @@ To configure data ingestion programmatically using a standalone HTTP client (e.g
 
 ```console
 curl -u elastic:<PASSWORD> -H "kbn-xsrf: true" -H "Content-Type: application/json" \
-    --data "{}" "https://<kibana-host>:<kibana-port>/internal/profiling/setup/es_resources"
+    --data "{}" "https://<kibana-host>:<kibana-port>/api/profiling/setup/es_resources"
 ```
 
 
@@ -118,9 +127,9 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
 
 1. Copy the `secret token` and `Universal Profiling Collector url` from the Elastic Agent Integration
 
-    :::{image} ../../../images/observability-profiling-elastic-agent.png
+    :::{image} /solutions/images/observability-profiling-elastic-agent.png
     :alt: profiling elastic agent
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click `Manage Universal Profiling Agent in Fleet` to complete the integration.
@@ -130,13 +139,29 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
     1. Add the Universal Profiling collector URL to the **Universal Profiling collector endpoint** field.
     2. Add the secret token to the **Authorization** field.
 
-        :::{image} ../../../images/observability-profililing-elastic-agent-creds.png
+        :::{image} /solutions/images/observability-profililing-elastic-agent-creds.png
         :alt: profililing elastic agent creds
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Save and continue**.
 
+#### Deploy {{agent}} using `Kubernetes` with the Universal Profiling Agent integration
+
+To deploy {{agent}} with the Universal Profiling Agent integration using Kubernetes,
+make sure that the following options are set in the manifest.
+
+```console
+hostPID: true
+securityContext:
+  readOnlyRootFilesystem: true
+  privileged: true
+  runAsUser: 0
+  runAsGroup: 0
+  capabilities:
+    add:
+      - SYS_ADMIN
+```
 
 ## Install the Universal Profiling Agent in standalone mode [profiling-install-agent-standalone]
 
@@ -146,9 +171,9 @@ After clicking **Set up Universal Profiling** in the previous step, you’ll see
 
 The following is an example of the provided instructions for {{k8s}}:
 
-:::{image} ../../../images/observability-profiling-k8s-hostagent.png
+:::{image} /solutions/images/observability-profiling-k8s-hostagent.png
 :alt: profiling k8s hostagent
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -161,3 +186,4 @@ Consider the following when configuring your Universal Profiling Agent:
 * You can find a list of container image versions in the [Elastic container library repository](https://container-library.elastic.co/r/observability/profiling-agent).
 * For {{k8s}} deployments, the Helm chart version is already used to configure the same container image, unless overwritten with the `version` parameter in the Helm values file.
 * For {{stack}} version 8.8, use `v3` host agents. For version 8.7, use `v2`. `v3` host agents are incompatible with 8.7 {{stack}} versions.
+* Deploying the Universal Profiling Agent as a sidecar is not supported or recommended.

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deploy-scenario.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deploy-scenario.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Identify the deployment scenario [ece-deploy-scenario]
@@ -18,7 +20,7 @@ The type of deployment is recommended for development, test, and small-scale use
 * 3 hosts with 128 GB RAM
 * 3 availability zones
 
-:::{image} ../../../images/cloud-enterprise-ece-pb-3.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-pb-3.png
 :alt: A small baseline installation with three hosts across three availability zones
 :::
 
@@ -42,12 +44,12 @@ This type of deployment is recommended for many production setups. You need:
 * 3 hosts with 16 GB RAM each for proxies
 * 3 availability zones
 
-:::{image} ../../../images/cloud-enterprise-ece-pb-6.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-pb-6.png
 :alt: A medium installation with nine to twelve hosts across three availability zones
 :::
 
 * Monitor the load on proxies and make sure the volume of user requests routed by the proxies does not affect the resources available to the ECE management services.
-* Note that the large-sized Elastic Cloud Enterprise installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
+* Note that the large-sized {{ece}} installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
 
 You can proceed with this scenario and [install ECE](./install.md).
 
@@ -65,10 +67,10 @@ This type of deployment is recommended for deployments with significant overall 
 * 3 hosts with 16 GB RAM each for proxies
 * 3 availability zones
 
-:::{image} ../../../images/cloud-enterprise-ece-pb-9.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-pb-9.png
 :alt: A large installation with nine to twelve hosts across three availability zones
 :::
 
-Note that the large-sized Elastic Cloud Enterprise installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
+Note that the large-sized {{ece}} installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
 
 You can proceed with this scenario and [install ECE](./install.md).

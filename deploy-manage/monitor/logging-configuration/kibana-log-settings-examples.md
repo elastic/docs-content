@@ -1,12 +1,15 @@
 ---
+navigation_title: Examples
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/log-settings-examples.html
 applies_to:
   deployment:
     self: all
+products:
+  - id: kibana
 ---
 
-# Examples [log-settings-examples]
+# Examples of {{kib}} logging configurations [log-settings-examples]
 
 Here are some configuration examples for the most common logging use cases:
 
@@ -30,7 +33,7 @@ logging:
 
 ## Log in JSON format [log-in-json-ECS-example]
 
-Log the default log format to JSON layout instead of pattern (the default). With `json` layout, log messages will be formatted as JSON strings in [ECS format](asciidocalypse://docs/ecs/docs/reference/index.md) that includes a timestamp, log level, logger, message text and any other metadata that may be associated with the log message itself.
+Log the default log format to JSON layout instead of pattern (the default). With `json` layout, log messages will be formatted as JSON strings in [ECS format](ecs://reference/index.md) that includes a timestamp, log level, logger, message text and any other metadata that may be associated with the log message itself.
 
 ```yaml
 logging:

@@ -1,12 +1,14 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/scripting-field-extraction.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/scripting-field-extraction.html
+products:
+  - id: elasticsearch
 ---
 
-# Field extraction [scripting-field-extraction]
+# Extracting fields [scripting-field-extraction]
 
 The goal of field extraction is simple; you have fields in your data with a bunch of information, but you only want to extract pieces and parts.
 
@@ -246,7 +248,7 @@ The following pattern tells dissect to return the term `used`, a blank space, th
 emit("used" + ' ' + gc.usize + ', ' + "capacity" + ' ' + gc.csize + ', ' + "committed" + ' ' + gc.comsize)
 ```
 
-Putting it all together, you can create a runtime field named `gc_size` in a search request. Using the [`fields` option](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param), you can retrieve all values for the `gc_size` runtime field. This query also includes a bucket aggregation to group your data.
+Putting it all together, you can create a runtime field named `gc_size` in a search request. Using the [`fields` option](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param), you can retrieve all values for the `gc_size` runtime field. This query also includes a bucket aggregation to group your data.
 
 ```console
 GET my-index/_search

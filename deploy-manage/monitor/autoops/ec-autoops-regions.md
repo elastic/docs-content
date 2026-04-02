@@ -1,26 +1,80 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-regions.html
+navigation_title: Regions
 applies_to:
+  serverless:
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # AutoOps regions [ec-autoops-regions]
 
-A region is the geographic area where the cloud provider’s data center that hosts your deployments is located. Based on a planned release schedule, Elastic is enabling the AutoOps service on the following cloud service providers: AWS, Azure, and GCP.
-
-AutoOps is currently available in the following regions:
-
-| Provider | Region | Name |  |
-| --- | --- | --- | --- |
-| AWS | us-east-1 | US East (N. Virginia) |  |
-| AWS | us-west-2 | Oregon |  |
-| AWS | eu-west-1 | Ireland |  |
-| AWS | ap-southeast-1 |  Singapore | |
+A region is where a cloud service provider's data center hosts your deployments or clusters.
 
 ::::{note} 
-Currently, a limited number of AWS regions are available. More regions for AWS, Azure and GCP will be added in the future. Also, AutoOps is currently not available for GovCloud customers.
+AutoOps is currently not available in any region for GovCloud customers.
 ::::
 
+## AutoOps for {{ECH}} regions
 
+[AutoOps for {{ECH}}](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) is set up and enabled automatically in the following regions for AWS and GCP. Regions for Azure are coming soon.
+
+### AWS
+
+| Region | Name |
+| --- | --- |
+| us-east-1 | US East (N. Virginia) |
+| us-east-2 | US East (Ohio) |
+| us-west-1 | US West (N. California) |
+| us-west-2 | US West (Oregon) |
+| ca-central-1 | Canada (Central) |
+| eu-west-1 | Europe (Ireland) |
+| eu-west-2 | Europe (London) |
+| eu-west-3 | Europe (Paris) |
+| eu-north-1 | Europe (Stockholm) |
+| eu-central-1 | Europe (Frankfurt) |
+| eu-central-2 | Europe (Zurich) |
+| eu-south-1 | Europe (Milan) |
+| me-south-1 | Middle East (Bahrain) |
+| ap-east-1 | Asia Pacific (Hong Kong) |
+| ap-northeast-1 | Asia Pacific (Tokyo) |
+| ap-northeast-2 | Asia Pacific (Seoul) |
+| ap-southeast-1 | Asia Pacific (Singapore) |
+| ap-southeast-2 | Asia Pacific (Sydney) |
+| ap-south-1 | Asia Pacific (Mumbai) |
+| sa-east-1 | South America (Sao Paulo) |
+| af-south-1 | Africa (Cape Town) |
+
+### GCP
+
+| Region | Name |
+| --- | --- |
+| us-west1 | US West (Oregon) |
+| us-central1 | US Central (Iowa) |
+| us-east1 | US East (S. Carolina) |
+| us-east4 | US East (N. Virginia) |
+| europe-west1 | Europe (Belgium) |
+| europe-west2 | Europe (London) |
+| europe-west3 | Europe (Frankfurt) |
+| europe-west4 | Europe (Netherlands) |
+| asia-southeast1 | Asia Pacific (Singapore) |
+
+## AutoOps for {{serverless-full}} regions
+
+[AutoOps for {{serverless-short}}](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) is set up and enabled automatically in the following regions for AWS. The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, GCP, and Azure.
+
+### AWS
+
+| Region | Name |
+| --- | --- |
+| us-east-1 | US East (N. Virginia) |
+| us-east-2 | US East (Ohio) |
+| us-west-2 | US West (Oregon) |
+| eu-west-1 | Europe (Ireland) |
+| eu-west-2 | Europe (London) |
+| eu-central-1 | Europe (Frankfurt) |
+| ap-northeast-1 | Asia Pacific (Tokyo) |
+| ap-southeast-1 | Asia Pacific (Singapore) |

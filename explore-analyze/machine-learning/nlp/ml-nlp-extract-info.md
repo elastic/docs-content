@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-extract-info.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-extract-info.html
+products:
+  - id: machine-learning
 ---
 
 # Extract information [ml-nlp-extract-info]

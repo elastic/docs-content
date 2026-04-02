@@ -1,27 +1,32 @@
 ---
-navigation_title: "High memory pressure"
+navigation_title: High memory pressure
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-metrics-memory-pressure.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-metrics-memory-pressure.html
+applies_to:
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Troubleshoot high memory pressure
 
 When you load up an {{es}} cluster with an indexing and search workload that matches the size of the cluster well, you typically get the classic JVM heap sawtooth pattern as memory gets used and then gets freed up again by the garbage collector. Memory usage increases until it reaches 75% and then drops again as memory is freed up:
 
-:::{image} /images/cloud-metrics-memory-pressure-sawtooth.png
+:::{image} /troubleshoot/images/cloud-metrics-memory-pressure-sawtooth.png
 :alt: The classic JVM sawtooth pattern that shows memory usage
 :::
 
 Now let’s suppose you have a cluster with three nodes and much higher memory pressure overall. In this example, two of the three nodes are maxing out very regularly for extended periods and one node is consistently hovering around the 75% mark.
 
-:::{image} /images/cloud-metrics-high-memory-pressure.png
+:::{image} /troubleshoot/images/cloud-metrics-high-memory-pressure.png
 :alt: High memory pressure
 :::
 
 High memory pressure works against cluster performance in two ways: As memory pressure rises to 75% and above, less memory remains available, but your cluster now also needs to spend some CPU resources to reclaim memory through garbage collection. These CPU resources are not available to handle user requests while garbage collection is going on. As a result, response times for user requests increases as the system becomes more and more resource constrained. If memory pressure continues to rise and reaches near 100%, a much more aggressive form of garbage collection is used, which will in turn affect cluster response times dramatically.
 
-:::{image} /images/cloud-metrics-high-response-times.png
+:::{image} /troubleshoot/images/cloud-metrics-high-response-times.png
 :alt: High response times
 :::
 
@@ -29,8 +34,7 @@ In our example, the **Index Response Times** metric shows that high memory press
 
 If the performance impact from high memory pressure is not acceptable, you need to increase the cluster size or reduce the workload.
 
-:::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
 ## Increase the deployment size [ec_increase_the_deployment_size]
@@ -50,7 +54,7 @@ By understanding and adjusting the way your data is indexed, retained, and searc
 
 ### Data retention [ec_data_retention]
 
-The total amount of data being searched affects search performance. Check the tutorial [Automate rollover with index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) (ILM) to automate data retention policies.
+The total amount of data being searched affects search performance. Check the [{{ilm}} tutorials](/manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md) to learn about automating data retention policies.
 
 
 ### Tune for search speed [ec_tune_for_search_speed]

@@ -1,7 +1,12 @@
 ---
-navigation_title: "Container engines"
+navigation_title: Container engines
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-containers.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Troubleshoot container engines [ece-troubleshooting-containers]
@@ -64,4 +69,4 @@ It is **not** safe to restart the following without explicit steps from Elastic 
 
 For unhealthy Zookeeper, instead see [verify Zookeeper sync status](verify-zookeeper-sync-status.md) and [resolving Zookeeper quorum](rebuilding-broken-zookeeper-quorum.md).
 
-For any {{ece}} system container not listed, kindly reach out to [Elastic Support](ask-for-help.md) for advisement.
+For any {{ece}} system container not listed, reach out to [Elastic Support](/troubleshoot/index.md#contact-us).

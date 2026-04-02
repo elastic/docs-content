@@ -1,42 +1,56 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/documents-indices.html
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#view-edit-indices
-  - https://www.elastic.co/guide/en/serverless/current/index-management.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
-# Index basics
+# Index fundamentals
 
-This content applies to: [![Elasticsearch](/images/serverless-es-badge.svg "")](/solutions/search.md) [![Observability](/images/serverless-obs-badge.svg "")](/solutions/observability.md) [![Security](/images/serverless-sec-badge.svg "")](/solutions/security/elastic-security-serverless.md)
+An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. You can store many independent datasets side by side. 
 
-An index is a fundamental unit of storage in {{es}}. It is a collection of documents uniquely identified by a name or an [alias](/manage-data/data-store/aliases.md). This unique name is important because it’s used to target the index in search queries and other operations.
+To store a document, you add it to a specific index. To search, you target one or more indices. {{es}} searches all data within them and returns any matching documents. You can target your data by index name, through an [alias](/manage-data/data-store/aliases.md) that points to one or more indices, or through a [data stream](/manage-data/data-store/data-streams.md) that routes requests to the appropriate backing indices.
 
-::::{tip} 
-A closely related concept is a [data stream](/manage-data/data-store/data-streams.md). This index abstraction is optimized for append-only timestamped data, and is made up of hidden, auto-generated backing indices. If you’re working with timestamped data, we recommend the [Elastic Observability](https://www.elastic.co/guide/en/observability/current) solution for additional tools and optimized content.
-::::
+Behind the scenes, {{es}} divides each index into _shards_ and distributes them across the nodes in your cluster. The horizontal scaling of your _primary_ shard into _replica_ shards across other nodes allows your index to handle large volumes of traffic efficiently. Replica shards provide fault tolerance, keeping your data available even when an individual node's response fails.
+
+This page explains the core parts of an index (_documents_, _mappings_, and _settings_), describes how {{es}} physically stores index data using _shards_, and highlights common design decisions.
+
+:::{admonition} Indices in {{serverless-full}}
+:applies_to: {"serverless": "ga"}
+
+In {{serverless-full}}:
+* Shards, replicas, and nodes are fully managed for you. The platform automatically scales resources based on your workload, so you don't need to configure or monitor these details. The shard-related content on this page explains how {{es}} works under the hood.
+* Each project supports up to 15,000 total indices. This limit helps ensure reliable performance and stability. If you need a higher limit, you can [request an increase](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#index-and-resource-limits). For index sizing recommendations, refer to [index sizing guidelines](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size).
+
+:::
 
 ## Index components
 
-An index is made up of the following components.
+An index is made up of the following components:
 
-### Documents [elasticsearch-intro-documents-fields] 
+* [**Documents**](#elasticsearch-intro-documents-fields): The JSON objects that hold your data, including system-managed metadata fields like `_index` and `_id`.
+* [**Mappings**](#elasticsearch-intro-documents-fields-mappings): Definitions that specify field data types, and control how data is indexed and queried. Understanding field data types helps you write effective queries and avoid indexing problems.
+* [**Settings**](#index-settings): Index-level configuration such as shard count, replica count, and refresh interval that controls storage and performance behavior.
 
-{{es}} serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can create or have {{es}} auto-generate.
+### Documents [elasticsearch-intro-documents-fields]
+
+{{es}} serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can specify explicitly or have {{es}} auto-generate. An indexed document includes both document fields you define and system-managed metadata.
 
 A simple {{es}} document might look like this:
 
-```js
+```json
 {
-  "_index": "my-first-elasticsearch-index",
-  "_id": "DyFpo5EBxE8fzbb95DOa",
-  "_version": 1,
+  "_index": "my-first-elasticsearch-index", <1>
+  "_id": "DyFpo5EBxE8fzbb95DOa", <1>
+  "_version": 1, <1>
   "_seq_no": 0,
   "_primary_term": 1,
   "found": true,
-  "_source": {
+  "_source": { <2>
     "email": "john@smith.com",
     "first_name": "John",
     "last_name": "Smith",
@@ -52,102 +66,73 @@ A simple {{es}} document might look like this:
   }
 }
 ```
+1. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system-managed fields prefixed with an underscore. `_index` identifies which index stores the document and `_id` is the document's unique identifier within that index.
+2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested.
 
-### Metadata fields [elasticsearch-intro-documents-fields-data-metadata] 
+### Mappings and data types [elasticsearch-intro-documents-fields-mappings]
 
-An indexed document contains data and metadata. [Metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system fields that store information about the documents. In {{es}}, metadata fields are prefixed with an underscore. For example, the following fields are metadata fields:
+Each index has a [mapping](/manage-data/data-store/mapping.md) that defines the [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
 
-* `_index`: The name of the index where the document is stored.
-* `_id`: The document’s ID. IDs must be unique per index.
+For example, the following mapping defines field types for a few common data types:
+```json
+{
+  "properties": {
+    "email":      { "type": "keyword" },
+    "first_name": { "type": "text" },
+    "age":        { "type": "integer" },
+    "join_date":  { "type": "date" }
+  }
+}
+```
 
+### Settings [index-settings]
 
-### Mappings and data types [elasticsearch-intro-documents-fields-mappings] 
+Each index has settings that control its storage and performance behavior. Settings are configured when the index is created, either directly in the [create index request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be updated dynamically on a live index.
 
-Each index has a [mapping](/manage-data/data-store/mapping.md) or schema for how the fields in your documents are indexed. A mapping defines the [data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
+Common settings include:
 
-## Index management
+* `index.number_of_shards`: The number of primary shards. Fixed at creation.
+* `index.number_of_replicas`: The number of replica copies per primary shard. Can be changed at any time.
+* `index.refresh_interval`: How often new data becomes searchable. Defaults to `1s`.
 
-Elastic's index management features are an easy, convenient way to manage your cluster's indices, data streams, index templates, and enrich policies. Practicing good index management ensures your data is stored correctly and in the most cost-effective way possible.
+For the full list of available settings, refer to [Index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md).
 
-Go to **{{project-settings}} → {{manage-app}} → {{index-manage-app}}**.
+## How an index stores data
 
-### Manage indices
+When you create an index, {{es}} doesn't store all its documents in a single location. Instead, it divides the index into one or more _shards_ and distributes those shards across the nodes in your cluster. Each shard is a self-contained [Apache Lucene](https://lucene.apache.org/) index with practical limits on how much data it can efficiently manage, so splitting data across multiple shards keeps individual shards performant. Distributing those shards across cluster nodes adds horizontal scaling and redundancy. The right number of shards depends on your data volume, query patterns, and cluster topology — there is no single correct answer. Refer to [shard sizing and distribution recommendations](/deploy-manage/production-guidance/optimize-performance/size-shards.md#sizing-shard-guidelines) for more information and best practices.
 
-Investigate your indices and perform operations from the **Indices** view.
+You don't interact with shards directly when indexing or searching. Instead, you target the index by name and {{es}} routes the operation to the appropriate shards. However, the number and size of shards you configure affects performance and stability. Refer to [Common index design decisions](#common-index-design-decisions) for more information.
 
-:::{image} /images/serverless-index-management-indices.png
-:alt: Index Management indices
-:class: screenshot
-:::
+A shard holds a subset of the index's documents and can independently handle indexing and search operations. Inside each shard, data is organized into immutable _segments_ that are written as documents are indexed. To learn how segments affect search availability, refer to [Near real-time search](/manage-data/data-store/near-real-time-search.md).
 
-* To show details and perform operations, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
-* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
-* To drill down into the index [mappings](/manage-data/data-store/mapping.md), [settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
-* To create new indices, use the **Create index** wizard.
+There are two types of shards:
 
-### Manage data streams
+* **Primary shards**: Every document belongs to exactly one primary shard. The number of primary shards is fixed at index creation, either through an [index template](/manage-data/data-store/templates.md) or the [`index.number_of_shards`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-number-of-shards) setting in the create index request.
+* **Replica shards**: Copies of primary shards that provide redundancy and serve read requests. You can adjust the number of replicas at any time using the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) setting.
 
-A [data stream](/manage-data/data-store/data-streams.md) lets you store append-only time series data across multiple indices while giving you a single named resource for requests. 
-
-Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
-
-:::{image} /images/serverless-management-data-stream.png
-:alt: Data stream details
-:class: screenshot
-:::
-
-In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB index mode by default. The logsDB index mode creates a [logs data stream](https://www.elastic.co/guide/en/elasticsearch/reference/master/logs-data-stream.html). 
-
-* To view information about the stream's backing indices, click the number in the **Indices** column.
-* A value in the **Data retention** column indicates that the data stream is managed by a data stream lifecycle policy. This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by {{es}} at a later time. 
-* To modify the data retention value, select an index, open the **Manage**  menu, and click **Edit data retention**.
-* To view more information about a data stream, such as its generation or its current index lifecycle policy, click the stream's name. From this view, you can navigate to **Discover** to further explore data within the data stream.
-
-### Manage index templates [index-management-manage-index-templates]
-
-An [index template](/manage-data/data-store/templates.md) is a way to tell {{es}} how to configure an index when it is created. 
-
-Create, edit, clone, and delete your index templates in the **Index Templates** view. Changes made to an index template do not affect existing indices.
-
-:::{image} /images/serverless-index-management-index-templates.png
-:alt: Index templates
-:class: screenshot
-:::
-
-* To show details and perform operations, click the template name.
-* To view more information about the component templates within an index template, click the value in the **Component templates** column. 
-* Values in the **Content** column indicate whether a template contains index mappings, settings, and aliases.
-* To create new index templates, use the **Create template** wizard.
-
-### Manage component templates
-
-[Component templates](/manage-data/data-store/templates.md) are reusable building blocks that configure mappings, settings, and aliases.
-
-Create, edit, clone, and delete your component templates in the **Component Templates** view.
-
-:::{image} /images/serverless-management-component-templates.png
-:alt: Component templates
-:class: screenshot
-:::
-
-* To show details and perform operations, click the template name.
-* To create new component templates, use the **Create component template** wizard.
-
-### Manage enrich policies
-
-An [enrich policy](/manage-data/ingest/transform-enrich/data-enrichment.md#enrich-policy) is a set of configuration options used to add the right enrich data to the right incoming documents.
-
-Add data from your existing indices to incoming documents using the **Enrich Policies** view.
-
-:::{image} /images/serverless-management-enrich-policies.png
-:alt: Enrich policies
-:class: screenshot
-:::
-
-* To show details click the policy name.
-* To perform operations, click the policy name or use the buttons in the **Actions** column.
-* To create new policies, use the **Create enrich policy** wizard.
-
-You must execute a new enrich policy before you can use it with an enrich processor. When executed, an enrich policy uses enrich data from the policy's source indices to create a streamlined system index called the enrich index. The policy uses this index to match and enrich incoming documents.
+By distributing shards across multiple nodes, {{es}} can scale horizontally and continue operating even when individual nodes fail. For a detailed explanation of this distributed model, refer to [](/deploy-manage/distributed-architecture.md).
+To learn how {{es}} coordinates reads and writes across primary and replica shards, refer to [Reading and writing documents](/deploy-manage/distributed-architecture/reading-and-writing-documents.md).
 
 
+## Common index design decisions
+
+Setting up your {{es}} indices involves making some design decisions about the index components: mappings control how the index fields are created for different data types, templates standardize the configuration of settings across indices, aliases decouple queries from the index names, and lifecycle policies automate how the data is stored over time.
+
+When working with indices, you typically make decisions that focus on:
+
+* **Naming and aliases**: Use clear naming patterns for your indices and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
+* **Mapping strategy**: Use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping/explicit-mapping.md) for production use cases. Choosing the right [field type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) up front matters because it controls what queries and aggregations are available, and [changing a field type later requires reindexing](/manage-data/data-store/mapping/update-mappings-examples.md).
+* **Index or data stream**: Use a regular index when you need frequent updates or deletes. For append-only, time series data such as logs, events, and metrics, use a [data stream](/manage-data/data-store/data-streams.md) instead, since data streams manage rolling indices automatically.
+* **Shard sizing**: For production workloads, the number and size of shards affect query speed and cluster stability. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for guidelines.
+* **Data lifecycle**: Decide how long to keep data, when to move it to cheaper tiers, and when to delete it. Refer to [Data lifecycle](/manage-data/lifecycle.md) for more information.
+
+
+## Next steps
+
+Now that you understand index fundamentals, explore these pages for hands-on tasks:
+
+* [](/manage-data/data-store/perform-index-operations.md): View, investigate, and perform operations on indices, data streams, and enrich policies in {{kib}}.
+* [](/manage-data/data-store/templates.md): Create and manage index templates and component templates.
+* [](/manage-data/data-store/data-streams/manage-data-stream.md): Create, monitor, and manage data streams and their backing indices.
+* [](/manage-data/ingest/transform-enrich/data-enrichment.md): Set up enrich policies to add data from existing indices to incoming documents.
+* [](/manage-data/data-store/manage-data-from-the-command-line.md): Index, update, retrieve, search, and delete documents using the {{es}} REST API.

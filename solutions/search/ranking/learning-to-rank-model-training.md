@@ -1,10 +1,12 @@
 ---
-navigation_title: "Deploy and manage LTR models"
+navigation_title: Deploy and manage LTR models
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/learning-to-rank-model-training.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 
@@ -81,7 +83,7 @@ feature_extractors=[
 ::::{admonition} Term statistics as features
 :class: note
 
-It is very common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the  [`script_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md) query.
+It is common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query.
 
 ::::
 
@@ -102,7 +104,7 @@ Building your dataset is a critical step in the training process. This involves 
 ```python
 from eland.ml.ltr import FeatureLogger
 
-# Create a feature logger that will be used to query {{es}} to retrieve the features:
+# Create a feature logger that will be used to query Elasticsearch to retrieve the features:
 feature_logger = FeatureLogger(es_client, MOVIE_INDEX, ltr_config)
 ```
 

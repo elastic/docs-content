@@ -1,18 +1,25 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/document-explorer.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/document-explorer.html
+products:
+  - id: kibana
+description: Customize the Discover view with flexible display options for the document table, chart, and sidebar. Adjust columns, density, row height, and field visibility for optimal exploration.
 ---
 
 # Customize the Discover view [document-explorer]
 
-Fine tune your explorations by customizing **Discover** to bring out the the best view of your documents.
+**Discover** offers flexible customization options to optimize your data exploration experience. Adjust the document table layout, modify column arrangements, control chart and sidebar visibility, and configure display density to focus on the data that matters most. These customizations persist across sessions and help you work more efficiently with your {{product.elasticsearch}} data.
 
-:::{image} ../../images/kibana-hello-field.png
+:::{tip}
+Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data that you're exploring, and you can further customize your Discover view on top of them.
+:::
+
+:::{image} /explore-analyze/images/kibana-hello-field.png
 :alt: A view of the Discover app
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -26,7 +33,7 @@ Fine tune your explorations by customizing **Discover** to bring out the the bes
 
 Customize the appearance of the document table and its contents to your liking.
 
-![Options to customize the table in Discover](../../images/kibana-discover-customize-table.png "")
+![Options to customize the table in Discover](/explore-analyze/images/kibana-discover-customize-table.png "")
 
 
 ### Reorder and resize the columns [document-explorer-columns]
@@ -53,12 +60,11 @@ You can define different settings for the header row and body rows.
 
 ### Limit the sample size [document-explorer-sample-size]
 
-When the number of results returned by your search query (displayed at the top of the **Documents** or **Results** tab) is greater than the value of [`discover:sampleSize`](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-discover-settings), the number of results displayed in the table is limited to the configured value by default. You can adjust the initial sample size for searches to any number between 10 and `discover:sampleSize` from the **Display options** located in the table toolbar.
+When the number of results returned by your search query (displayed at the top of the **Documents** or **Results** tab) is greater than the value of [`discover:sampleSize`](kibana://reference/advanced-settings.md#kibana-discover-settings), the number of results displayed in the table is limited to the configured value by default. You can adjust the initial sample size for searches to any number between 10 and `discover:sampleSize` from the **Display options** located in the table toolbar.
+
+![Limit sample size in Discover](/explore-analyze/images/kibana-discover-limit-sample-size.png "title =50%")
 
 On the last page of the table, a message indicates that you’ve reached the end of the loaded search results. From that message, you can choose to load more results to continue exploring.
-
-![Limit sample size in Discover](../../images/kibana-discover-limit-sample-size.png "title =50%")
-
 
 ### Sort the fields [document-explorer-sort-data]
 
@@ -69,13 +75,14 @@ To add or remove a sort on a single field, click the column header, and then sel
 To sort by multiple fields:
 
 1. Click the **Sort fields** option.
-   ![Pop-up in document table for sorting columns](../../images/kibana-document-explorer-sort-data.png "title =50%")
+   
+   ![Pop-up in document table for sorting columns](/explore-analyze/images/kibana-document-explorer-sort-data.png "title =50%")
 
 2. To add fields to the sort, select their names from the dropdown menu.
    By default, columns are sorted in the order they are added.
-   :::{image} ../../images/kibana-document-explorer-multi-field.png
+   :::{image} /explore-analyze/images/kibana-document-explorer-multi-field.png
    :alt: Multi field sort in the document table
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -94,13 +101,13 @@ Change how {{kib}} displays a field.
 
 ### Filter the documents [document-explorer-compare-data]
 
-Narrow your results to a subset of documents so you’re comparing just the data of interest.
+Narrow your results to a subset of documents so you're comparing the data of interest.
 
 1. Select the documents you want to compare.
 2. Click the **Selected** option, and then select **Show selected documents only**.
-   :::{image} ../../images/kibana-document-explorer-compare-data.png
+   :::{image} /explore-analyze/images/kibana-document-explorer-compare-data.png
    :alt: Compare data in the document table
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -112,7 +119,7 @@ You can also compare individual field values using the [**Compare selected** opt
 
 To change the numbers of results you want to display on each page, use the **Rows per page** menu. The default is 100 results per page.
 
-:::{image} ../../images/kibana-document-table-rows-per-page.png
+:::{image} /explore-analyze/images/kibana-document-table-rows-per-page.png
 :alt: Menu with options for setting the number of results in the document table
-:class: screenshot
+:screenshot:
 :::

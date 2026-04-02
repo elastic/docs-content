@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-orchestrating-elastic-stack-applications.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-update-deployment.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configure deployments [k8s-orchestrating-elastic-stack-applications]
@@ -16,6 +18,8 @@ This section provides details around {{kib}} and {{es}} configuration when runni
 * [**{{kib}} configuration**](kibana-configuration.md): Learn how to connect {{kib}} to an {{es}} cluster, apply advanced configuration settings, and tune the HTTP configuration.
 
 Additionally, the following topics apply to both {{es}} and {{kib}}, and in some cases, to other applications supported by ECK:
+
+* [**Users and roles**](/deploy-manage/users-roles/cluster-or-deployment-auth/managed-credentials-eck.md): Learn how to work with managed credentials, create custom users, and configure authentication realms.
 
 * [**Access services**](accessing-services.md): Learn how to access to the orchestrated clusters and how to adapt the Kubernetes services to your needs.
 
@@ -29,8 +33,10 @@ Additionally, the following topics apply to both {{es}} and {{kib}}, and in some
 
 ECK also facilitates configuration and operation activities with advanced features, such as:
 
-* [**Elastic Stack configuration policies**](elastic-stack-configuration-policies.md): Organize your {{es}} and {{kib}} configuration settings through `StackConfigPolicy` resources that can be referenced within your deployments. This helps to keep your manifests simplified.
+* [**Secure settings**](/deploy-manage/security/k8s-secure-settings.md): Configure {{es}} and {{kib}} keystore settings through Kubernetes secrets.
+
+* [**{{stack}} configuration policies**](elastic-stack-configuration-policies.md): Organize your {{es}} and {{kib}} configuration settings through `StackConfigPolicy` resources that can be referenced within your deployments. This helps to keep your manifests simplified.
 
 ::::{important}
-Explore the [Security](/deploy-manage/security.md) and [Users and roles](/deploy-manage/users-roles.md) sections to to learn more about how to secure and control access your deployments.
+Explore the [](/deploy-manage/security.md) and [Users and roles](/deploy-manage/users-roles.md) sections to learn more about how to secure and control access to your deployments.
 ::::

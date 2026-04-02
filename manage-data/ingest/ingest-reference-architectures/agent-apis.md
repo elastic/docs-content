@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-apis.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elastic-agent
 ---
 
 # Elastic Agent to Elasticsearch: APIs for collection [agent-apis]
 
-:::{image} ../../../images/ingest-ea-apis.png
+:::{image} /manage-data/images/ingest-ea-apis.png
 :alt: Image showing {{agent}} collecting data using APIs and sending to {{es}}
 :::
 

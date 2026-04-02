@@ -1,20 +1,23 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/application-logs.html
   - https://www.elastic.co/guide/en/serverless/current/observability-correlate-application-logs.html
 applies_to:
   stack: all
   serverless: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
-# Stream application logs [observability-correlate-application-logs]
+# Send application log data [observability-correlate-application-logs]
 
 Application logs provide valuable insight into events that have occurred within your services and applications.
 
 The format of your logs (structured or plaintext) influences your log ingestion strategy.
 
 
-## Plaintext logs vs. structured Elastic Common Schema (ECS) logs [observability-correlate-application-logs-plaintext-logs-vs-structured-elastic-common-schema-ecs-logs]
+## Plaintext logs versus structured Elastic Common Schema (ECS) logs [observability-correlate-application-logs-plaintext-logs-vs-structured-elastic-common-schema-ecs-logs]
 
 Logs are typically produced as either plaintext or structured. Plaintext logs contain only text and have no special formatting, for example:
 
@@ -24,7 +27,7 @@ Logs are typically produced as either plaintext or structured. Plaintext logs co
 2019-08-06T14:08:40.199Z DEBUG:spring-petclinic: init find form, org.springframework.samples.petclinic.owner.OwnerController
 ```
 
-Structured logs follow a predefined, repeatable pattern or structure. This structure is applied at write time — preventing the need for parsing at ingest time. The Elastic Common Schema (ECS) defines a common set of fields to use when structuring logs. This structure allows logs to be easily ingested, and provides the ability to correlate, search, and aggregate on individual fields within your logs.
+Structured logs follow a predefined, repeatable pattern or structure. This structure is applied at write time, preventing the need for parsing at ingest time. The Elastic Common Schema (ECS) defines a common set of fields to use when structuring logs. This structure allows logs to be ingested, and provides the ability to correlate, search, and aggregate on individual fields within your logs.
 
 For example, the previous example logs might look like this when structured with ECS-compatible JSON:
 
@@ -46,7 +49,7 @@ With {{filebeat}} or {{agent}}, you can ingest plaintext logs, including existin
 
 For plaintext logs to be useful, you need to use {{filebeat}} or {{agent}} to parse the log data.
 
-**![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [Plaintext logs](../../../solutions/observability/logs/plaintext-application-logs.md)**
+**![documentation icon](/solutions/images/serverless-documentation.svg "") Learn more in [Plaintext logs](/solutions/observability/logs/plaintext-application-logs.md)**
 
 
 ### ECS formatted logs [observability-correlate-application-logs-ecs-formatted-logs]
@@ -60,7 +63,7 @@ Add ECS logging plugins to your logging libraries to format your logs into ECS-c
 
 To use ECS logging, you need to modify your application and its log configuration.
 
-**![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [ECS formatted logs](../../../solutions/observability/logs/ecs-formatted-application-logs.md)**
+**![documentation icon](/solutions/images/serverless-documentation.svg "") Learn more in [ECS formatted logs](/solutions/observability/logs/ecs-formatted-application-logs.md)**
 
 
 #### {{apm-agent}} log reformatting [observability-correlate-application-logs-apm-agent-log-reformatting]
@@ -69,11 +72,11 @@ Some Elastic {{apm-agent}}s can automatically reformat application logs to ECS f
 
 This feature is supported for the following {{apm-agent}}s:
 
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-reformatting)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-reformatting)
+* [Ruby](apm-agent-ruby://reference/configuration.md#config-log-ecs-formatting)
+* [Python](apm-agent-python://reference/logs.md#log-reformatting)
+* [Java](apm-agent-java://reference/logs.md#log-reformatting)
 
-**![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [ECS formatted logs](../../../solutions/observability/logs/ecs-formatted-application-logs.md)**
+**![documentation icon](/solutions/images/serverless-documentation.svg "") Learn more in [ECS formatted logs](/solutions/observability/logs/ecs-formatted-application-logs.md)**
 
 
 ### {{apm-agent}} log sending [observability-correlate-application-logs-apm-agent-log-sending]
@@ -82,22 +85,47 @@ Automatically capture and send logs directly to the managed intake service using
 
 Log sending is supported in the Java {{apm-agent}}.
 
-**![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [{{apm-agent}} log sending](../../../solutions/observability/logs/apm-agent-log-sending.md)**
+**![documentation icon](/solutions/images/serverless-documentation.svg "") Learn more in [{{apm-agent}} log sending](/solutions/observability/logs/apm-agent-log-sending.md)**
 
 
 ## Log correlation [observability-correlate-application-logs-log-correlation]
 
 Correlate your application logs with trace events to:
 
-* view the context of a log and the parameters provided by a user
-* view all logs belonging to a particular trace
-* easily move between logs and traces when debugging application issues
+* See the context of a log and the parameters provided by a user
+* See all logs belonging to a particular trace
+* Move between logs and traces when debugging application issues
 
 Learn more about log correlation in the agent-specific ingestion guides:
 
-* [Go](asciidocalypse://docs/apm-agent-go/docs/reference/logs.md)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-correlation-ids)
-* [.NET](asciidocalypse://docs/apm-agent-dotnet/docs/reference/logs.md)
-* [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-correlation-ids)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/logs.md)
+::::{tab-set}
+
+:::{tab-item} OpenTelemetry (EDOT)
+
+The {{edot}} (EDOT) provides SDKs for multiple programming languages with built-in support for log correlation:
+
+* [Java](elastic-otel-java://reference/edot-java/index.md)
+* [.NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
+* [Node.js](elastic-otel-node://reference/edot-node/index.md)
+* [PHP](elastic-otel-php://reference/edot-php/index.md)
+* [Python](elastic-otel-python://reference/edot-python/index.md)
+
+For more information about EDOT, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
+
+:::
+
+:::{tab-item} APM Agents
+:name: apm-agents
+
+Elastic APM agents provide log correlation capabilities for the following languages:
+
+* [Go](apm-agent-go://reference/logs.md)
+* [Java](apm-agent-java://reference/logs.md#log-correlation-ids)
+* [.NET](apm-agent-dotnet://reference/logs.md)
+* [Node.js](apm-agent-nodejs://reference/logs.md)
+* [Python](apm-agent-python://reference/logs.md#log-correlation-ids)
+* [Ruby](apm-agent-ruby://reference/logs.md)
+
+:::
+
+::::

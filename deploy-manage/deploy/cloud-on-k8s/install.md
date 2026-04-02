@@ -1,15 +1,17 @@
 ---
 navigation_title: Install
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-installing-eck.html
 applies_to:
   deployment:
     eck: all
-mapped_urls:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-installing-eck.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Install ECK [k8s-installing-eck]
 
-Elastic Cloud on Kubernetes (ECK) is a [Kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that helps you deploy and manage Elastic applications on Kubernetes, including Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash.
+{{eck}} (ECK) is a [Kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that helps you deploy and manage Elastic applications on Kubernetes, including {{eck_resources_list}}.
 
 ECK relies on a set of [Custom Resource Definitions (CRDs)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) to define how applications are deployed. CRDs are global resources, shared across the entire Kubernetes cluster, so installing them requires [specific permissions](../../../deploy-manage/deploy/cloud-on-k8s/required-rbac-permissions.md#k8s-eck-permissions-installing-crds).
 
@@ -22,7 +24,7 @@ You can install multiple instances of ECK in the same Kubernetes cluster, but on
 ::::
 
 ::::{warning}
-Deleting CRDs will trigger deletion of all custom resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
+Deleting CRDs will trigger deletion of all custom resources ({{eck_resources_list}}) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
 ::::
 
 For a list of supported Kubernetes versions refer to [](../cloud-on-k8s.md#k8s-supported)
@@ -35,6 +37,7 @@ ECK supports multiple installation methods. Choose the one that best fits your i
 * [Install ECK using a Helm chart](./install-using-helm-chart.md)
 * [](./deploy-eck-on-openshift.md)
 * [](./deploy-eck-on-gke-autopilot.md)
+* [Deploy ECK on Google Distributed Hosted Cloud](./eck-gdch.md)
 * [](./deploy-fips-compatible-version-of-eck.md)
 
 For air-gapped environments, refer to [](./air-gapped-install.md) to understand the requirements and installation considerations.

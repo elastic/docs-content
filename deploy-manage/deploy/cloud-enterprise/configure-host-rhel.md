@@ -1,22 +1,21 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: RHEL
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-onprem.html
-navigation_title: RHEL
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]
 
-
-
 The following instructions show you how to prepare your hosts on Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9.
 
 * [Prerequisites](#ece-prerequisites-rhel8)
-* [Configure the host](#ece-configure-hosts-rhel8-podman)
-
+* [Install Podman and configure the host](#ece-configure-hosts-rhel8-podman)
 
 ## Prerequisites [ece-prerequisites-rhel8]
 
@@ -26,7 +25,10 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
-## Configure the host [ece-configure-hosts-rhel8-podman]
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
+::::
+
+## Install Podman and configure the host [ece-configure-hosts-rhel8-podman]
 
 1. Install the OS packages `lvm2`, `iptables`, `sysstat`, and `net-tools` by executing:
 
@@ -71,27 +73,54 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
         SELINUX=enforcing
         ```
 
-4. Install podman:
+4. Install Podman:
 
-    * Install the latest available version `4.*` using dnf.
+    * For Podman 4
 
-        ```sh
-        sudo dnf install podman-4.* podman-remote-4.*
-        ```
+        * Install the latest available version `4.*` using dnf.
 
-    * To prevent automatic Podman major version updates, configure the Podman version to be locked while still allowing minor and patch updates.
+            ```sh
+            sudo dnf install podman-4.* podman-remote-4.*
+            ```
 
-        ```sh
-        ## Install versionlock
-        sudo dnf install 'dnf-command(versionlock)'
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `4.*` while still allowing minor and patch updates.
 
-        ## Lock major version
-        sudo dnf versionlock add --raw 'podman-4.*'
-        sudo dnf versionlock add --raw 'podman-remote-4.*'
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
 
-        ## Verify that podman-4.* and podman-remote-4.* appear in the output
-        sudo dnf versionlock list
-        ```
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-4.*'
+            sudo dnf versionlock add --raw 'podman-remote-4.*'
+
+            ## Verify that podman-4.* and podman-remote-4.* appear in the output
+            sudo dnf versionlock list
+            ```
+
+    * For Podman 5
+
+        * Install the latest available version `5.*` using dnf.
+
+            :::{note}
+            Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later version. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
+            :::
+
+            ```sh
+            sudo dnf install podman-5.* podman-remote-5.*
+            ```
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `5.*` while still allowing minor and patch updates.
+
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
+
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-5.*'
+            sudo dnf versionlock add --raw 'podman-remote-5.*'
+
+            ## Verify that podman-5.* and podman-remote-5.* appear in the output
+            sudo dnf versionlock list
+            ```
 
 5. [This step is for RHEL 9 and Rocky Linux 9 only] Switch the network stack from Netavark to CNI:
 
@@ -108,13 +137,13 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Please note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 
     ```text
     [engine]
-    env = ["HTTP_PROXY=http://{proxy-ip}:{proxy-port}", "HTTPS_PROXY=http://{proxy-ip}:{proxy-port}"]
+    env = ["HTTP_PROXY=http://<PROXY_IP>:<PROXY_PORT>", "HTTPS_PROXY=http://<PROXY_IP>:<PROXY_PORT>"]
     ```
 
 7. Reload systemd configuration
@@ -237,7 +266,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo install -o elastic -g elastic -d -m 700 /mnt/data
     ```
 
-21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
 
     ::::{note}
     Replace `/dev/nvme1n1` in the following example with the corresponding device on your host, and add this example configuration as a single line to `/etc/fstab`.
@@ -273,7 +302,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo install -o elastic -g elastic -d -m 700 /mnt/data/docker
     ```
 
-25. If you want to use FirewallD, please ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
+25. If you want to use FirewallD, ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
 
     ```sh
     sudo systemctl disable firewalld
@@ -288,16 +317,31 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
     # Required by Elasticsearch
-    vm.max_map_count=262144
+    vm.max_map_count=1048576
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
+    # See https://www.elastic.co/docs/deploy-manage/deploy/self-managed/system-config-tcpretries
     net.ipv4.tcp_retries2=5
+    net.netfilter.nf_conntrack_tcp_timeout_established=7200
+    net.netfilter.nf_conntrack_max=262140
     # Make sure the host doesn't swap too early
     vm.swappiness=1
     EOF
     ```
+
+    :::{note}
+    According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
+    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
+    * Values below 300 seconds are used as-is.
+    
+    For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
+
+
 
 27. Apply the new sysctl settings
 
@@ -324,30 +368,14 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     root             soft    memlock        unlimited
     ```
 
-29. NOTE: This step is optional if the Docker registry doesn’t require authentication.
-
-    Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
-
-    **Example**: In case you use `docker.elastic.co`, the file content looks like as follows:
-
-    ```text
-    {
-     "auths": {
-       "docker.elastic.co": {
-         "auth": "<auth-token>"
-       }
-     }
-    }
-    ```
-
-30. Restart the podman service by running this command:
+29. Restart the podman service by running this command:
 
     ```sh
     sudo systemctl daemon-reload
     sudo systemctl restart podman
     ```
 
-31. Reboot the RHEL host
+30. Reboot the RHEL host.
 
     ```sh
     sudo reboot

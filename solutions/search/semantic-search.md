@@ -1,10 +1,13 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-reference-semantic-search.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Semantic search [semantic-search]
@@ -14,6 +17,8 @@ This page focuses on the semantic search workflows available in {{es}}. For deta
 :::
 
 {{es}} provides various semantic search capabilities using [natural language processing (NLP)](/explore-analyze/machine-learning/nlp.md) and [vector search](vector.md).
+
+To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and inference endpoints, see the [Elastic Inference overview](../../explore-analyze/elastic-inference.md) page.
 
 Learn more about use cases for AI-powered search in the [overview](ai-search/ai-search.md) page.
 
@@ -27,7 +32,7 @@ You have several options for using NLP models for semantic search in the {{stack
 
 This diagram summarizes the relative complexity of each workflow:
 
-:::{image} ../../images/elasticsearch-reference-semantic-options.svg
+:::{image} /solutions/images/elasticsearch-reference-semantic-options.svg
 :alt: Overview of semantic search workflows in {{es}}
 :::
 
@@ -35,17 +40,15 @@ This diagram summarizes the relative complexity of each workflow:
 
 ### Option 1: `semantic_text` [_semantic_text_workflow]
 
-The simplest way to use NLP models in the {{stack}} is through the [`semantic_text` workflow](semantic-search/semantic-search-semantic-text.md). We recommend using this approach because it abstracts away a lot of manual work. All you need to do is create an {{infer}} endpoint and an index mapping to start ingesting, embedding, and querying data. There is no need to define model-related settings and parameters, or to create {{infer}} ingest pipelines. Refer to the [Create an {{infer}} endpoint API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) documentation for a list of supported services.
+The simplest way to use NLP models in the {{stack}} is through the [`semantic_text` workflow](semantic-search/semantic-search-semantic-text.md). We recommend using this approach because it abstracts away a lot of manual work. All you need to do is create an index mapping to start ingesting, embedding, and querying data. There is no need to define model-related settings and parameters, or to create {{infer}} ingest pipelines. For guidance on the available query types for `semantic_text`, see [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
 
-For an end-to-end tutorial, refer to [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md).
-
+To learn more about supported services, refer to [](/explore-analyze/elastic-inference/inference-api.md) and the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) documentation. For an end-to-end tutorial, refer to [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md).
 
 ### Option 2: Inference API [_infer_api_workflow]
 
-The {{infer}} API workflow is more complex but offers greater control over the {{infer}} endpoint configuration. You need to create an {{infer}} endpoint, provide various model-related settings and parameters, define an index mapping, and set up an {{infer}} ingest pipeline with the appropriate settings.
+The {{infer}} API workflow is more complex but offers greater control over the {{infer}} endpoint configuration. You need to create an {{infer}} endpoint, provide various model-related settings and parameters, and define an index mapping. Optionally you can also set up an {{infer}} ingest pipeline for automatic embedding during data ingestion, or alternatively, you can manually call the {{infer}} API.
 
-For an end-to-end tutorial, refer to [Semantic search with the {{infer}} API](inference-api.md).
-
+For an end-to-end tutorial, refer to [Semantic search with the {{infer}} API](semantic-search/semantic-search-inference.md).
 
 ### Option 3: Manual model deployment [_model_deployment_workflow]
 
@@ -68,7 +71,8 @@ Refer to [vector queries and field types](vector.md#vector-queries-and-field-typ
 ### Blogs
 
 - [{{es}} new semantic_text mapping: Simplifying semantic search](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text)
-- [Introducing Elastic Learned Sparse Encoder: Elastic's AI model for semantic search](https://www.elastic.co/blog/may-2023-launch-sparse-encoder-ai-model)
+- [GA information for `semantic_text`](https://www.elastic.co/search-labs/blog/semantic-text-ga)
+- [Introducing ELSER: Elastic's AI model for semantic search](https://www.elastic.co/blog/may-2023-launch-sparse-encoder-ai-model)
 - [How to get the best of lexical and AI-powered search with Elastic's vector database](https://www.elastic.co/blog/lexical-ai-powered-search-elastic-vector-database)
 - Information retrieval blog series:
     - [Part 1: Steps to improve search relevance](https://www.elastic.co/blog/improving-information-retrieval-elastic-stack-search-relevance)

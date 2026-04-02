@@ -1,120 +1,153 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/visualize-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/security-visualize-alerts.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
+description: Visualize and group detection alerts using Summary, Trend, Counts, and Treemap views on the Alerts page.
 ---
 
-# Visualize detection alerts
+# Visualize detection alerts [security-visualize-alerts]
 
-% What needs to be done: Lift-and-shift
+The Alerts page includes a visualization section that helps you spot patterns, identify high-volume rules, and prioritize investigation. Choose from four view types, each designed for different analysis tasks.
 
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/visualize-alerts.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-visualize-alerts.md
-
-Visualize and group detection alerts by specific parameters in the visualization section of the Alerts page.
-
-:::{image} ../../../images/security-alert-page-visualizations.png
-:alt: Alerts page with visualizations section highlighted
-:class: screenshot
+:::{image} /solutions/images/security-alert-page.png
+:alt: Alerts page with visualizations section
+:screenshot:
 :::
 
-Use the left buttons to select a view type (**Summary**, **Trend**, **Counts**, or **Treemap**), and use the right menus to select the ECS fields to use for grouping:
 
-* **Top alerts by** or **Group by**: Primary field for grouping alerts.
-* **Group by top** (if available): Secondary field for further subdividing grouped alerts.
+## View types at a glance [view-types-overview]
 
-For example, you can group first by rule name (`Group by: kibana.alert.rule.name`), then by host name (`Group by top: host.name`) to visualize which detection rules generated alerts, and which hosts triggered each of those rules. For groupings with a lot of unique values, the top 1,000 results are displayed.
+| View | Best for | Supports secondary grouping |
+|------|----------|----------------------------|
+| [Summary](#security-visualize-alerts-summary) | Quick overview of severity, top rules, and affected hosts/users | No |
+| [Trend](#security-visualize-alerts-trend) | Spotting alert spikes and patterns over time | No |
+| [Counts](#security-visualize-alerts-counts) | Comparing alert volumes across rules, hosts, or other fields | Yes |
+| [Treemap](#security-visualize-alerts-treemap) | Identifying the most frequent and critical alert combinations | Yes |
+
+
+## Grouping alerts [grouping-alerts]
+
+Use the dropdown menus above the visualization to group alerts by ECS fields:
+
+| Menu | Purpose |
+|------|---------|
+| Group by (or Top alerts by) | Primary field for grouping alerts |
+| Group by top | Secondary field for subdividing groups (available in Counts and Treemap views) |
+
+**Example**: Group by `kibana.alert.rule.name`, then by `host.name` to see which rules fired and which hosts triggered each rule.
 
 ::::{note}
-Some view types don’t have the **Group by top** option. You can also leave **Group by top** blank to group by only the primary field in **Group by**.
+For groupings with many unique values, only the top 1,000 results are displayed.
 ::::
 
 
-To reset a view to default settings, hover over it and click the options menu (![Settings menu icon](../../../images/security-three-dot-icon.png "")) that appears, then select **Reset group by fields**.
+## Common actions [common-actions]
+
+| Action | How to do it |
+|--------|--------------|
+| Reset grouping | Hover over the visualization, click {icon}`boxes_horizontal`, then select **Reset group by fields** |
+| Inspect queries | Click {icon}`boxes_horizontal` and select **Inspect** |
+| Add to case | Click {icon}`boxes_horizontal` and select **Add to case** (Trend and Counts views only) |
+| Open in Lens | Click {icon}`boxes_horizontal` and select **Open in Lens** (Trend and Counts views only) |
+| Collapse visualization | Click {icon}`arrow_down` to show a compact summary instead |
+
+:::{image} /solutions/images/security-alert-page-viz-collapsed.png
+:alt: Alerts page with visualizations section collapsed
+:screenshot:
+:::
+
+
+## Summary [security-visualize-alerts-summary]
+
+The default view. Shows alert distribution across three panels:
+
+| Panel | What it shows |
+|-------|---------------|
+| Severity levels | Count of alerts by severity (`low`, `medium`, `high`, `critical`) |
+| Alerts by name | Count of alerts by detection rule |
+| Top alerts by | Percentage breakdown by `host.name`, `user.name`, `source.ip`, or `destination.ip` |
+
+Click any element (severity level, rule name, or host) to filter the Alerts table to those values.
+
+:::{image} /solutions/images/security-alerts-viz-summary.png
+:alt: Summary visualization for alerts
+:screenshot:
+:::
+
+
+## Trend [security-visualize-alerts-trend]
+
+Shows alert volume over time as a stacked area chart. Use this to spot spikes, patterns, or changes in alert activity.
+
+| Setting | Default |
+|---------|---------|
+| Group by | `kibana.alert.rule.name` |
+| Secondary grouping | Not available |
+
+:::{image} /solutions/images/security-alerts-viz-trend.png
+:alt: Trend visualization for alerts
+:screenshot:
+:::
+
+
+## Counts [security-visualize-alerts-counts]
+
+Shows alert counts as a table, grouped by one or two fields. Use this to compare alert volumes across rules, hosts, users, or other dimensions.
+
+| Setting | Default |
+|---------|---------|
+| Group by | `kibana.alert.rule.name` |
+| Group by top | `host.name` |
+
+:::{image} /solutions/images/security-alerts-viz-counts.png
+:alt: Counts visualization for alerts
+:screenshot:
+:::
+
+
+## Treemap [security-visualize-alerts-treemap]
+
+Shows alert distribution as nested, proportionally-sized tiles. Larger tiles indicate more alerts; colors indicate risk score.
+
+| Setting | Default |
+|---------|---------|
+| Group by | `kibana.alert.rule.name` |
+| Group by top | `host.name` |
+
+:::{image} /solutions/images/security-alerts-viz-treemap.png
+:alt: Treemap visualization for alerts
+:screenshot:
+:::
+
+### Treemap colors
+
+| Color | Risk score range |
+|-------|------------------|
+| Green | Low (0–46) |
+| Yellow | Medium (47–72) |
+| Orange | High (73–98) |
+| Red | Critical (99–100) |
+
+### Interacting with the treemap
+
+Click elements to filter the alerts table:
+- Click a **group label** (above a section) to filter to that group
+- Click an **individual tile** to filter to that specific combination
+
+Filters appear below the KQL search bar, where you can edit or remove them.
+
+:::{image} /solutions/images/security-treemap-click.gif
+:alt: Animation of clicking the treemap
+:screenshot:
+:::
 
 ::::{tip}
-The options menu also lets you inspect the visualization’s queries. For the trend and counts views, you can add the visualization to a new or existing case, or open it in Lens.
+Some tiles may be small depending on alert volume. Hover over tiles to see details in a tooltip.
 ::::
-
-
-Click the collapse icon (![Collapse icon](../../../images/security-collapse-icon-horiz-down.png "")) to minimize the visualization section and display a summary of key information instead.
-
-:::{image} ../../../images/security-alert-page-viz-collapsed.png
-:alt: Alerts page with visualizations section collapsed
-:class: screenshot
-:::
-
-
-## Summary [_summary]
-
-On the Alerts page, the summary visualization displays by default and shows how alerts are distributed across these indicators:
-
-* **Severity levels**: How many alerts are in each severity level.
-* **Alerts by name**: How many alerts each detection rule created.
-* **Top alerts by**: Percentage of alerts with a specified field value: `host.name` (default), `user.name`, `source.ip`, or `destination.ip`.
-
-You can hover and click on elements within the summary — such as severity levels, rule names, and host names — to add filters with those values to the Alerts page.
-
-:::{image} ../../../images/security-alerts-viz-summary.png
-:alt: Summary visualization for alerts
-:class: screenshot
-:::
-
-
-## Trend [_trend]
-
-The trend view shows the occurrence of alerts over time. By default, it groups alerts by detection rule name (`kibana.alert.rule.name`).
-
-::::{note}
-The **Group by top** menu is unavailable for the trend view.
-::::
-
-
-:::{image} ../../../images/security-alerts-viz-trend.png
-:alt: Trend visualization for alerts
-:class: screenshot
-:::
-
-
-## Counts [_counts]
-
-The counts view shows the count of alerts in each group. By default, it groups alerts first by detection rule name (`kibana.alert.rule.name`), then by host name (`host.name`).
-
-:::{image} ../../../images/security-alerts-viz-counts.png
-:alt: Counts visualization for alerts
-:class: screenshot
-:::
-
-
-## Treemap [_treemap]
-
-The treemap view shows the distribution of alerts as nested, proportionally-sized tiles. This view can help you quickly pinpoint the most prevalent and critical alerts.
-
-:::{image} ../../../images/security-alerts-viz-treemap.png
-:alt: Treemap visualization for alerts
-:class: screenshot
-:::
-
-Larger tiles represent more frequent alerts, and each tile’s color is based on the alerts' risk score:
-
-* **Green**: Low risk (`0` - `46`)
-* **Yellow**: Medium risk (`47` - `72`)
-* **Orange**: High risk (`73` - `98`)
-* **Red**: Critical risk (`99` - `100`)
-
-By default, the treemap groups alerts first by detection rule name (`kibana.alert.rule.name`), then by host name (`host.name`). This shows which rules generated the most alerts, and which hosts were responsible.
-
-::::{note}
-Depending on the amount of alerts, some tiles and text might be very small. Hover over the treemap to display information in a tooltip.
-::::
-
-
-You can click on the treemap to narrow down the alerts displayed in both the treemap and the alerts table below. Click the label above a group to display the alerts in that group, or click an individual tile to display the alerts related to that tile. This adds filters under the KQL search bar, which you can edit or remove to further customize the view.
-
-:::{image} ../../../images/security-treemap-click.gif
-:alt: Animation of clicking the treemap
-:class: screenshot
-:::
-

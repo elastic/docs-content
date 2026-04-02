@@ -1,0 +1,34 @@
+---
+mapped_pages:
+  - https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-support.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: fleet
+  - id: elastic-agent
+---
+
+# Using a proxy server with {{agent}} and {{fleet}} [fleet-agent-proxy-support]
+
+Many enterprises secure their assets by placing a proxy server between them and the internet. The main role of the proxy server is to filter content and provide a single gateway through which all traffic traverses in and out of a data center. These proxy servers provide a various degree of functionality, security, and privacy.
+
+Your organization’s security strategy and other considerations may require you to use a proxy server between some components in your deployment. For example, you may have a firewall rule that prevents endpoints from connecting directly to {{es}}. In this scenario, you can set up the {{agent}} to connect to a proxy, then the proxy can connect to {{es}} through the firewall.
+
+Support is available in {{agent}} and {{fleet}} for connections through HTTP Connect (HTTP 1 only) and SOCKS5 proxy servers.
+
+::::{note}
+Some environments require users to authenticate with the proxy. There are no explicit settings for proxy authentication in {{agent}} or {{fleet}}, except the ability to pass credentials in the URL or as keys/tokens in headers, as described later.
+::::
+
+When {{agent}} connects through a proxy server, DNS resolution of the target endpoint hostnames (such as {{fleet-server}}, {{es}}, and artifact download sources) is performed by the proxy server, not by the {{agent}} host. This applies to both HTTP Connect and SOCKS5 proxies. Ensure that your proxy server can resolve the hostnames of all endpoints that the {{agent}} must reach.
+
+::::{tip}
+For the {{ls}} output with a SOCKS5 proxy, you can override this behavior and resolve hostnames locally on the {{agent}} host by setting `proxy_use_local_resolver` to `true`. Refer to [{{ls}} output settings](/reference/fleet/logstash-output.md) for details. This option is not available for other connection types.
+::::
+
+Refer to [When to configure proxy settings](/reference/fleet/elastic-agent-proxy-config.md) for more detail, or jump into one of the following guides:
+
+* [Proxy server connectivity using default host variables](/reference/fleet/host-proxy-env-vars.md)
+* [{{fleet}}-managed {{agent}} connectivity using a proxy server](/reference/fleet/fleet-agent-proxy-managed.md)
+* [Standalone {{agent}} connectivity using a proxy server](/reference/fleet/fleet-agent-proxy-standalone.md)

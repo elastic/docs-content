@@ -1,8 +1,6 @@
 ---
-navigation_title: "Unavailable nodes"
-applies: 
-  hosted:
-mapped_urls:
+navigation_title: Unavailable nodes
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_is_my_node_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_is_my_node_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-single-node-deployment-disk-used.html
@@ -10,13 +8,18 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-jvm-heap-usage-exceed-allowed-threshold.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-cpu-usage-exceed-allowed-threshold.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-nodes-unavailable-missing.html
+applies_to:
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 % TODO fix the layout and formatting
 
 # Diagnose unavailable nodes [ec-scenario_why_is_my_node_unavailable]
 
-This section provides a list of common symptoms and possible actions that you can take to resolve issues when one or more nodes become unhealthy or unavailable. This guide is particularly useful if you are not [shipping your logs and metrics](/deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to a dedicated monitoring cluster.
+This section provides a list of common symptoms and possible actions that you can take to resolve issues when one or more nodes become unhealthy or unavailable. This guide is particularly useful if you are not [shipping your logs and metrics](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) to a dedicated monitoring cluster.
 
 **What are the symptoms?**
 
@@ -38,11 +41,10 @@ Some actions described here, such as stopping indexing or Machine Learning jobs,
 
 For production deployments, we recommend setting up a dedicated monitoring cluster to collect metrics and logs, troubleshooting views, and cluster alerts.
 
-:::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-:::
-
 If your issue is not addressed here, then [contact Elastic support for help](/troubleshoot/index.md).
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## Full disk on single-node deployment [ec-single-node-deployment-disk-used]
 
@@ -53,7 +55,7 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 
 3. On your deployment page, scroll down to **Instances** and check if the disk allocation for your {{es}} instance is over 90%.
 
-    :::{image} /images/cloud-ec-full-disk-single-node.png
+    :::{image} /troubleshoot/images/cloud-ec-full-disk-single-node.png
     :alt: Full disk on single-node deployment
     :::
 
@@ -65,6 +67,12 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 **Resolution**
 
 * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+  
+::::{note}
+You can delete unused data by running either:
+* API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+* direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum.
+::::
 * Increase the disk size on your Hot data and Content tier (scale up).
 
 ::::{note}
@@ -78,7 +86,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 
     From your deployment menu, go to the **Edit** page and increase the **Size per zone** for your Hot data and Content tiers.
 
-    :::{image} /images/cloud-ec-increase-size-per-zone.png
+    :::{image} /troubleshoot/images/cloud-ec-increase-size-per-zone.png
     :alt: Increase size per zone
     :::
 
@@ -94,13 +102,13 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} /images/cloud-ec-quick-link-to-deployment.png
+    :::{image} /troubleshoot/images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
 3. On your deployment page, scroll down to **Instances** and check if the disk allocation for any of your {{es}} instances is over 90%.
 
-    :::{image} /images/cloud-ec-full-disk-multiple-nodes.png
+    :::{image} /troubleshoot/images/cloud-ec-full-disk-multiple-nodes.png
     :alt: Full disk on multiple-nodes deployment
     :::
 
@@ -112,6 +120,12 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 **Resolution**
 
 * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+  
+::::{note}
+You can delete unused data by running either:
+* API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+* direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum.
+::::
 * Increase the disk size (scale up).
 
 ::::{note}
@@ -125,19 +139,19 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
     1. On your deployment page, scroll down to **Instances** and identify the node attribute of the instances that are running out of disk space.
 
-        :::{image} /images/cloud-ec-node-attribute.png
+        :::{image} /troubleshoot/images/cloud-ec-node-attribute.png
         :alt: Instance node attribute
         :::
 
     2. Use the node types identified at step 1 to find out the corresponding data tier.
 
-        :::{image} /images/cloud-ec-node-types-data-tiers.png
+        :::{image} /troubleshoot/images/cloud-ec-node-types-data-tiers.png
         :alt: Node type and corresponding attribute
         :::
 
     3. From your deployment menu, go to the **Edit** page and increase the **Size per zone** for the data tiers identified at step 2.
 
-        :::{image} /images/cloud-ec-increase-size-per-zone.png
+        :::{image} /troubleshoot/images/cloud-ec-increase-size-per-zone.png
         :alt: Increase size per zone
         :::
 
@@ -153,13 +167,13 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} /images/cloud-ec-quick-link-to-deployment.png
+    :::{image} /troubleshoot/images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
 3. On your deployment page, scroll down to **Instances** and check if the JVM memory pressure for your {{es}} instances is high.
 
-    :::{image} /images/cloud-ec-deployment-instances-config.png
+    :::{image} /troubleshoot/images/cloud-ec-deployment-instances-config.png
     :alt: Deployment instances configuration
     :::
 
@@ -219,13 +233,13 @@ By default, the allowed CPU usage threshold is set at 85%.
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} /images/cloud-ec-quick-link-to-deployment.png
+    :::{image} /troubleshoot/images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
 3. Identify the IDs of your master nodes. On your deployment page, scroll down to **Instances** and filter your instance configuration by master. The IDs of your master nodes are in the title. In this example, the IDs are 21, 26 and 27:
 
-    :::{image} /images/cloud-ec-instances-filtered-by-master-id.png
+    :::{image} /troubleshoot/images/cloud-ec-instances-filtered-by-master-id.png
     :alt: Instances configuration filtered by master nodes ID
     :::
 
@@ -314,6 +328,12 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 * Disk/memory/CPU saturated:
 
     * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+      
+      ::::{note}
+      You can delete unused data by running either:
+        * API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+        * direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum. 
+      ::::
     * Increase disk size.
     * [Enable autoscaling](/deploy-manage/autoscaling.md).
     * Configuration of [ILM](/manage-data/lifecycle/index-lifecycle-management.md) policies.

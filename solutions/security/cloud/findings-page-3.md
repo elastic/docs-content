@@ -1,16 +1,24 @@
 ---
+navigation_title: CNVM Findings
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/vuln-management-findings.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-findings.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
-# Findings page [security-vuln-management-findings]
+# View and manage CNVM vulnerabilities in Findings [security-vuln-management-findings]
 
-The **Vulnerabilities** tab on the Findings page displays the vulnerabilities detected by the [CNVM integration](cloud-native-vulnerability-management.md), as well as those detected by [third-party integrations](ingest-third-party-cloud-security-data.md).
+The **Vulnerabilities** tab on the **Findings** page displays the vulnerabilities detected by the [CNVM integration](cloud-native-vulnerability-management.md), as well as those detected by [third-party integrations](/solutions/security/integrations/ingest-third-party-security-data.md).
 
-:::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-page.png
+:::{image} /solutions/images/serverless--cloud-native-security-cnvm-findings-page.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -39,9 +47,9 @@ Multiple groupings apply to your data in the order you selected them. For exampl
 ::::
 
 
-:::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-grouped.png
+:::{image} /solutions/images/serverless--cloud-native-security-cnvm-findings-grouped.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -84,6 +92,6 @@ To remediate a vulnerability and reduce your attack surface, update the affected
 
 You can create detection rules that detect specific vulnerabilities directly from the Findings page:
 
-1. Click a vulnerability to open the vulnerability details flyout flyout.
+1. Click a vulnerability to open the vulnerability details flyout.
 2. Click **Take action**, then **Create a detection rule**. This automatically creates a detection rule that creates alerts when the associated vulnerability is found.
 3. To review or customize the new rule, click **View rule**.

@@ -1,14 +1,15 @@
 ---
-navigation_title: "Upgrading clusters"
+navigation_title: Upgrading clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-upgrading.html
-
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 

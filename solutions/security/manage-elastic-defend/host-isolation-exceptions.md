@@ -1,7 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/host-isolation-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-host-isolation-exceptions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Host isolation exceptions
@@ -13,7 +20,7 @@ Host isolation exceptions support IPv4 addresses, with optional classless inter-
 
 ::::{admonition} Requirements
 * You must have the **Host Isolation Exceptions** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
-* Host isolation requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}. 
+* Host isolation requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 
@@ -49,9 +56,9 @@ By default, a host isolation exception is recognized globally across all hosts r
 
 The **Host isolation exceptions** page displays all the host isolation exceptions that have been configured for {{elastic-sec}}. To refine the list, use the search bar to search by name, description, or IP address.
 
-:::{image} ../../../images/security-host-isolation-exceptions-ui.png
+:::{image} /solutions/images/security-host-isolation-exceptions-ui.png
 :alt: List of host isolation exceptions
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -61,7 +68,7 @@ You can individually modify each host isolation exception and change the policie
 
 To edit a host isolation exception:
 
-1. Click the actions menu (**…​**) for the exception you want to edit, then select **Edit Exception**.
+1. Click the actions menu (**…**) for the exception you want to edit, then select **Edit Exception**.
 2. Modify details as needed.
 3. Click **Save**. The newly modified exception appears at the top of the list.
 
@@ -72,5 +79,5 @@ You can delete a host isolation exception, which removes it entirely from all {{
 
 To delete a host isolation exception:
 
-1. Click the actions menu (**…​**) on the exception you want to delete, then select **Delete Exception**.
+1. Click the actions menu (**…**) on the exception you want to delete, then select **Delete Exception**.
 2. On the dialog that opens, verify that you are removing the correct host isolation exception, then click **Delete**. A confirmation message is displayed.

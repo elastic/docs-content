@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-generate-roles-token.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-revoke-roles-token.html
 applies_to:
   deployment:
     ece: all
-mapped_urls:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-generate-roles-token.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-revoke-roles-token.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage roles tokens
@@ -33,13 +35,13 @@ Persistent token
 The permitted roles are the same as those you can [assign in the Cloud UI](./assign-roles-to-hosts.md):
 
 `allocator`
-:   Allocates the available computing resources to Elasticsearch nodes or Kibana instances. In larger installations, a majority of the machines will be allocators.
+:   Allocates the available computing resources to {{es}} nodes or {{kib}} instances. In larger installations, a majority of the machines will be allocators.
 
 `coordinator`
 :   Serves as a distributed coordination system and resource scheduler.
 
 `proxy`
-:   Manages communication between a user and an Elasticsearch or Kibana instance.
+:   Manages communication between a user and an {{es}} or {{kib}} instance.
 
 `director`
 :   Manages the ZooKeeper datastore. This role is typically shared with the coordinator role. In production deployments it can be separated from a coordinator.
@@ -49,7 +51,9 @@ The permitted roles are the same as those you can [assign in the Cloud UI](./ass
 To generate an ephemeral token for additional allocators:
 
 ```sh
-curl -H 'Content-Type: application/json' -u USER:PASSWORD https://COORDINATOR_HOST_IP:12443/api/v1/platform/configuration/security/enrollment-tokens -d '{ "persistent": false, "roles": [ "allocator"] }'
+curl -H 'Content-Type: application/json' -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/security/enrollment-tokens -d '{ "persistent": false, "roles": [ "allocator"] }'
+```
+```sh
 {
   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Njk3N2I3ZC1hM2U2LTQ2MDUtYjcwZC0xNzIzMTI5YWY4ZTQiLCJyb2xlcyI6WyJwcm94eSIsImFsbG9jYXRvciJdLCJpc3MiOiJib290c3RyYXAtaW5pdGlhbCIsImV4cCI6MTQ5MzY0NjIxM30.xsaRb72CsNMuXKy6Y-PJgqLc0qmjCljlB4Smcx_MRxg"
 }
@@ -58,7 +62,9 @@ curl -H 'Content-Type: application/json' -u USER:PASSWORD https://COORDINATOR_HO
 To generate a persistent token for additional allocators:
 
 ```sh
-curl -H 'Content-Type: application/json' -u USER:PASSWORD https://COORDINATOR_HOST_IP:12443/api/v1/platform/configuration/security/enrollment-tokens -d '{ "persistent": true, "roles": [ "allocator"] }'
+curl -H 'Content-Type: application/json' -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/security/enrollment-tokens -d '{ "persistent": true, "roles": [ "allocator"] }'
+```
+```sh
 {
   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Yzg5OTBkZi0xZmI3LTQ4MjAtYjg2OC02YmM5ZTg4NjA4MTQiLCJyb2xlcyI6WyJwcm94eSIsImFsbG9jYXRvciJdLCJpc3MiOiJib290c3RyYXAtaW5pdGlhbCJ9.mfTkO4j8uZJ-qwB2jmBuMScyYfLmcJpvKgSTLx2WV24",
   "token_id": "4c8990df-1fb7-4820-b868-6bc9e8860814"
@@ -81,6 +87,8 @@ To delete a token:
 
     ```sh
     curl -u USER:PASSWORD https://localhost:12443/api/v1/platform/configuration/security/enrollment-tokens
+    ```
+    ```sh
     {
       "tokens": [{
         "token_id": "5f9cad2f-c6e7-4ee2-8f6e-53225df45be5",
@@ -96,6 +104,8 @@ To delete a token:
 
     ```sh
     curl -XDELETE -u USER:PASSWORD  'https://localhost:12443/api/v1/platform/configuration/security/enrollment-tokens/4c8990df-1fb7-4820-b868-6bc9e8860814'
+    ```
+    ```sh
     {
     }
     ```

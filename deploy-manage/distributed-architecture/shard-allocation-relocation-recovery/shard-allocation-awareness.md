@@ -1,11 +1,22 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-awareness.html
+applies_to:
+  deployment:
+    self:
+    eck:
+products:
+  - id: elasticsearch
 ---
 
 # Shard allocation awareness [shard-allocation-awareness]
 
 You can use custom node attributes as *awareness attributes* to enable {{es}} to take your physical hardware configuration into account when allocating shards. If {{es}} knows which nodes are on the same physical server, in the same rack, or in the same zone, it can distribute the primary shard and its replica shards to minimize the risk of losing all shard copies in the event of a failure.
+
+:::{tip}
+:applies_to: {ece: ga, ess: ga}
+For {{ece}} and {{ech}} deployments, you can't set custom node attributes, so shard allocation awareness is not available. These platforms handle availability zone awareness automatically through their deployment configuration.
+:::
 
 When shard allocation awareness is enabled with the `cluster.routing.allocation.awareness.attributes` setting, shards are only allocated to nodes that have values set for the specified awareness attributes. If you use multiple awareness attributes, {{es}} considers each attribute separately when allocating shards.
 
@@ -23,11 +34,11 @@ Learn more about [designing resilient clusters](../../production-guidance/availa
 
 To enable shard allocation awareness:
 
-1. Specify the location of each node with a [custom node attribute](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes). For example, if you want Elasticsearch to distribute shards across different racks, you might use an awareness attribute called `rack_id`.
+1. Specify the location of each node with a [custom node attribute](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes). For example, if you want {{es}} to distribute shards across different racks, you might use an awareness attribute called `rack_id`.
 
     You can set custom attributes in two ways:
 
-    * By editing the `elasticsearch.yml` config file:
+    * By editing the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file:
 
         ```yaml
         node.attr.rack_id: rack_one
@@ -39,7 +50,12 @@ To enable shard allocation awareness:
         ./bin/elasticsearch -Enode.attr.rack_id=rack_one
         ```
 
-2. Tell {{es}} to take one or more awareness attributes into account when allocating shards by setting `cluster.routing.allocation.awareness.attributes` in **every** master-eligible node’s `elasticsearch.yml` config file.
+    :::{tip}
+    :applies_to: eck:
+    For {{eck}} deployments, set custom node attributes in the `config` section of your {{es}} resource manifest instead of `elasticsearch.yml`. Starting with ECK 3.4.0, you can use the [`zoneAwareness` field](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md#k8s-zone-awareness) on NodeSets to automatically configure zone-based shard allocation awareness. For manual configuration or earlier versions, refer to [Advanced {{es}} node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md#k8s-zone-awareness-manual).
+    :::
+
+2. Tell {{es}} to take one or more awareness attributes into account when allocating shards by setting `cluster.routing.allocation.awareness.attributes` in **every** master-eligible node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file.
 
     ```yaml
     cluster.routing.allocation.awareness.attributes: rack_id <1>
@@ -62,14 +78,14 @@ To enable shard allocation awareness:
 
 With this example configuration, if you start two nodes with `node.attr.rack_id` set to `rack_one` and create an index with 5 primary shards and 1 replica of each primary, all primaries and replicas are allocated across the two node.
 
-:::{image} ../../../images/elasticsearch-reference-shard-allocation-awareness-one-rack.png
+:::{image} /deploy-manage/images/elasticsearch-reference-shard-allocation-awareness-one-rack.png
 :alt: All primaries and replicas are allocated across two nodes in the same rack
 :title: All primaries and replicas allocated across two nodes in the same rack
 :::
 
 If you add two nodes with `node.attr.rack_id` set to `rack_two`, {{es}} moves shards to the new nodes, ensuring (if possible) that no two copies of the same shard are in the same rack.
 
-:::{image} ../../../images/elasticsearch-reference-shard-allocation-awareness-two-racks.png
+:::{image} /deploy-manage/images/elasticsearch-reference-shard-allocation-awareness-two-racks.png
 :alt: Primaries and replicas are allocated across four nodes in two racks with no two copies of the same shard in the same rack
 :title: Primaries and replicas allocated across four nodes in two racks, with no two copies of the same shard in the same rack
 :::

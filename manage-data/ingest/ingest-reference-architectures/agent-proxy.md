@@ -1,15 +1,20 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-proxy.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elastic-agent
 ---
 
 # Elastic Agent to proxy to Elasticsearch [agent-proxy]
 
-:::{image} ../../../images/ingest-ea-proxy-fs-es.png
+:::{image} /manage-data/images/ingest-ea-proxy-fs-es.png
 :alt: Image showing connections between {{agent}} and {{es}} using a proxy when Fleet Server is managed by Elastic
 :::
 
-:::{image} ../../../images/ingest-ea-fs-proxy-es.png
+:::{image} /manage-data/images/ingest-ea-fs-proxy-es.png
 :alt: Image showing connections between {{agent}} and {{es}} using a proxy
 :::
 
@@ -27,21 +32,21 @@ Use when
 * Using [{{ls}} as proxy](ls-networkbridge.md) is not feasible.
 
 
-Currently {{agent}} is not able to present a certificate for connectivity to {{fleet-server}}. Therefore if a proxy placed between the {{agent}} and {{fleet-server}} is configured for mutual TLS, {{agents}} won’t be able to establish connectivity to {{fleet server}}.
+Currently {{agent}} is not able to present a certificate for connectivity to {{fleet-server}}. Therefore if a proxy placed between the {{agent}} and {{fleet-server}} is configured for mutual TLS, {{agents}} won’t be able to establish connectivity to {{fleet-server}}.
 
 
 ## Resources [agent-proxy-resources]
 
 Info on {{agent}} and agent integrations:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
 * [{{agent}} integrations](https://docs.elastic.co/en/integrations)
 
 Info on using a proxy server:
 
-* [Using a proxy server with {{agent}} and {{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-agent-proxy-support.md)
+* [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 

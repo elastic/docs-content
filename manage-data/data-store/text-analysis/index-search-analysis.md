@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Index and search analysis [analysis-index-search-time]
@@ -11,10 +13,10 @@ applies_to:
 Text analysis occurs at two times:
 
 Index time
-:   When a document is indexed, any [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) field values are analyzed.
+:   When a document is indexed, any [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) field values are analyzed.
 
 Search time
-:   When running a [full-text search](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/full-text-queries.md) on a `text` field, the query string (the text the user is searching for) is analyzed. Search time is also called *query time*.
+:   When running a [full-text search](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md) on a `text` field, the query string (the text the user is searching for) is analyzed. Search time is also called *query time*.
 
     For more details on text analysis at search time, refer to [Text analysis during search](/solutions/search/full-text/text-analysis-during-search.md).
 
@@ -47,10 +49,10 @@ Later, a user searches the same `text` field for:
 
 The user expects this search to match the sentence indexed earlier, `The QUICK brown foxes jumped over the dog!`.
 
-However, the query string does not contain the exact words used in the document’s original text:
+However, the query string does not contain the exact words used in the document's original text:
 
-* `Quick` vs `QUICK`
-* `fox` vs `foxes`
+* `Quick` versus `QUICK`
+* `fox` versus `foxes`
 
 To account for this, the query string is analyzed using the same analyzer. This analyzer produces the following tokens:
 

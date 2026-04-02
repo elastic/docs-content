@@ -1,12 +1,15 @@
 ---
+navigation_title: Examples
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-examples.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-examples.html
+products:
+  - id: machine-learning
 ---
 
-# Examples [ml-nlp-examples]
+# Machine learning NLP examples [ml-nlp-examples]
 
 The following pages contain end-to-end examples of how to use the different {{nlp}} tasks in the {{stack}}.
 

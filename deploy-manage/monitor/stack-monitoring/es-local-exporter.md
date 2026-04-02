@@ -4,19 +4,16 @@ mapped_pages:
 applies_to:
   deployment:
     self: deprecated 7.16.0
+products:
+  - id: elasticsearch
 ---
 
 # Local exporters [local-exporter]
 
-::::{important} 
-{{agent}} and {{metricbeat}} are the recommended methods for collecting and shipping monitoring data to a monitoring cluster.
+:::{include} _snippets/legacy-warning.md
+:::
 
-If you have previously configured legacy collection methods, you should migrate to using [{{agent}}](collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](collecting-monitoring-data-with-metricbeat.md) collection. Do not use legacy collection alongside other collection methods.
-
-::::
-
-
-The `local` exporter is the default exporter in {{monitoring}}. It routes data back into the same (local) cluster. In other words, it uses the production cluster as the monitoring cluster. For example:
+The `local` exporter is the default exporter in {{monitor-features}}. It routes data back into the same (local) cluster. In other words, it uses the production cluster as the monitoring cluster. For example:
 
 ```yaml
 xpack.monitoring.exporters.my_local_exporter: <1>
@@ -30,7 +27,7 @@ This exporter exists to provide a convenient option when hardware is simply not 
 
 * All indexing impacts the local cluster and the nodes that hold the monitoring indices' shards.
 * Most collectors run on the elected master node. Therefore most indexing occurs with the elected master node as the coordinating node, which is a bad practice.
-* Any usage of {{monitoring}} for {{kib}} uses the local cluster’s resources for searches and aggregations, which means that they might not be available for non-monitoring tasks.
+* Any usage of {{monitor-features}} for {{kib}} uses the local cluster’s resources for searches and aggregations, which means that they might not be available for non-monitoring tasks.
 * If the local cluster goes down, the monitoring cluster has inherently gone down with it (and vice versa), which generally defeats the purpose of monitoring.
 
 For the `local` exporter, all setup occurs only on the elected master node. This means that if you do not see any monitoring templates or ingest pipelines, the elected master node is having issues or it is not configured in the same way. Unlike the `http` exporter, the `local` exporter has the advantage of accessing the monitoring cluster’s up-to-date cluster state. It can therefore always check that the templates and ingest pipelines exist without a performance penalty. If the elected master node encounters errors while trying to create the monitoring resources, it logs errors, ignores that collection, and tries again after the next collection.
@@ -39,7 +36,7 @@ The elected master node is the only node to set up resources for the `local` exp
 
 One benefit of the `local` exporter is that it lives within the cluster and therefore no extra configuration is required when the cluster is secured with {{stack}} {{security-features}}. All operations, including indexing operations, that occur from a `local` exporter make use of the internal transport mechanisms within {{es}}. This behavior enables the exporter to be used without providing any user credentials when {{security-features}} are enabled.
 
-For more information about the configuration options for the `local` exporter, see [Local exporter settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#local-exporter-settings).
+For more information about the configuration options for the `local` exporter, see [Local exporter settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md#local-exporter-settings).
 
 ## Cleaner service [local-exporter-cleaner]
 

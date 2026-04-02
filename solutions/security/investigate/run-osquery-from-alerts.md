@@ -1,7 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-run-osquery.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-run-osquery.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Run Osquery from alerts [security-alerts-run-osquery]
@@ -10,7 +17,7 @@ Run live queries on hosts associated with alerts to learn more about your infras
 
 ::::{admonition} Requirements
 * The [Osquery manager integration](/solutions/security/investigate/manage-integration.md) must be installed.
-* {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
+* {{agent}}'s [status](/reference/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
 * Your role must have the appropriate [feature privileges](/solutions/security/investigate/osquery.md#required_osquery-privileges) in {{stack}} or [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 
 ::::
@@ -21,7 +28,7 @@ To run Osquery from an alert:
 1. Do one of the following from the Alerts table:
 
     * Click the **View details** button to open the Alert details flyout, then click **Take action → Run Osquery**.
-    * Select the **More actions** menu (**…​**), then select **Run Osquery**.
+    * Select the **More actions** menu (**…**), then select **Run Osquery**.
 
 2. Choose to run a single query or a query pack.
 3. Select one or more {{agent}}s or groups to query. Start typing in the search field to get suggestions for {{agent}}s by name, ID, platform, and policy.
@@ -50,9 +57,9 @@ To run Osquery from an alert:
         ::::
 
 
-        :::{image} ../../../images/security-setup-query.png
+        :::{image} /solutions/images/security-setup-query.png
         :alt: Shows how to set up a single query
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Submit**. Query results will display within the flyout.

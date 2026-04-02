@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-layer-based-filtering.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-layer-based-filtering.html
+products:
+  - id: kibana
 ---
 
 # Filter a single layer [maps-layer-based-filtering]
@@ -15,8 +17,8 @@ Layer filters are not applied to the right side of **term joins**. You can apply
 ::::
 
 
-:::{image} ../../../images/kibana-layer_search.png
+:::{image} /explore-analyze/images/kibana-layer_search.png
 :alt: layer search
-:class: screenshot
+:screenshot:
 :::
 

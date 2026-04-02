@@ -1,30 +1,32 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-reverting-model-snapshot.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-reverting-model-snapshot.html
+products:
+  - id: machine-learning
 ---
 
 # Reverting to a model snapshot [ml-reverting-model-snapshot]
 
 [Snapshots of the {{ml}} model](ml-ad-run-jobs.md#ml-ad-model-snapshots) for each {{anomaly-job}} are saved frequently to an internal {{es}} index to ensure resilience. It makes it possible to reset the model to a previous state in case of a system failure or if the model changed significantly due to a one-off event.
 
-1. In {{kib}}, navigate to **Jobs**. To open **Jobs**, find **{{ml-app}} > Anomaly Detection** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
+1. Navigate to the **Anomaly Detection Jobs** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). 
 2. Locate the {{anomaly-job}} whose model you want to revert in the job table.
 3. Open the job details and navigate to the **Model Snapshots** tab.
-   :::{image} ../../../images/machine-learning-anomaly-job-model-snapshots.jpg
+   :::{image} /explore-analyze/images/machine-learning-anomaly-job-model-snapshots.jpg
    :alt: A screenshot of a job with the Model Snapshots tab opened
-   :class: screenshot
+   :screenshot:
    :::
 
 4. Select a snapshot from the list and click the **Revert** icon under **Actions**.
 5. Optional: Select if you want to replay the analysis based on the data in your index after the revert has been applied. If you don’t select this option, there will be no {{anomaly-detect}} results after the snapshot was taken and the job results end at the point in time of the snapshot. If you select this option, you can then optionally select one or both of the next two options:
    * You can select whether you want the job to continue running in real time after the replay, or to just replay existing data after the snapshot.
    * You can select a time range you want to avoid during the replay by declaring a calendar event. This way, you can skip any problematic time frame that you want the {{anomaly-job}} to avoid.
-   :::{image} ../../../images/machine-learning-revert-model-snapshot.jpg
+   :::{image} /explore-analyze/images/machine-learning-revert-model-snapshot.jpg
    :alt: A screenshot of a revert model snapshot flyout
-   :class: screenshot
+   :screenshot:
    :::
 
 6. Click **Apply**.

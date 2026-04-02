@@ -1,14 +1,18 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/canvas.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/canvas.html
+products:
+  - id: kibana
 ---
 
 # Canvas [canvas]
 
-**Note:** Canvas is only available for upgraded installations with existing workpads.
+:::{note}
+Canvas is only available for upgraded installations with existing workpads.
+:::
 
 **Canvas** is a data visualization and presentation tool that allows you to pull live data from {{es}}, then combine the data with colors, images, text, and your imagination to create dynamic, multi-page, pixel-perfect displays. If you are a little bit creative, a little bit technical, and a whole lot curious, then **Canvas** is for you.
 
@@ -19,7 +23,7 @@ With **Canvas**, you can:
 * Pull your data directly from {{es}}, then show it off with charts, graphs, progress monitors, and more.
 * Focus the data you want to display with filters.
 
-:::{image} ../../images/kibana-canvas_logWebTrafficWorkpadTemplate_7.17.0.png
+:::{image} /explore-analyze/images/kibana-canvas_logWebTrafficWorkpadTemplate_7.17.0.png
 :alt: Logs Web Traffic workpad template
 :::
 
@@ -34,9 +38,9 @@ A *workpad* provides you with a space where you can build presentations of your 
 To create workpads, you must meet the minimum requirements.
 
 * If you need to set up {{kib}}, use [our free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs).
-* Make sure you have [data indexed into {{es}}](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-general-purpose.html#gp-gs-add-data) and a [data view](../find-and-organize/data-views.md).
+* Make sure you have [data indexed into {{es}}](/manage-data/ingest.md) and a [data view](../find-and-organize/data-views.md).
 * Have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
-* Make sure you have sufficient privileges to create and save workpads. When the read-only indicator appears, you have insufficient privileges, and the options to create and save workpads are unavailable. For more information, refer to [Granting access to {{kib}}](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+* Make sure you have sufficient privileges to create and save workpads. When the read-only indicator appears, you have insufficient privileges, and the options to create and save workpads are unavailable. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 You can open **Canvas** using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -90,7 +94,7 @@ Choose the type of element you want to use, then use the preconfigured demo data
 1. Click **Add element**, then select the element you want to use.
 2. To connect the element to your data, select **Data > Demo data**, then select one of the following data sources:
 
-    * **{{es}} SQL** — Access your data in {{es}} using [SQL syntax](../query-filter/languages/sql-spec.md).
+    * **{{es}} SQL** — Access your data in {{es}} using [SQL syntax](elasticsearch://reference/query-languages/sql/sql-spec.md).
     * **{{es}} documents** — Access your data in {{es}} without using aggregations. To use, select a {{data-source}} and fields. Use **{{es}} documents** when you have low-volume datasets, and you want to view raw documents or to plot exact, non-aggregated values on a chart.
     * **Timelion** — Access your time series data using [**Timelion**](legacy-editors/timelion.md) queries. To use **Timelion** queries, you can enter a query using the [Lucene Query Syntax](../query-filter/languages/lucene-query-syntax.md).
 
@@ -138,7 +142,7 @@ Organize and separate your ideas by adding more pages.
 
 ## Share your workpad [workpad-share-options]
 
-To share workpads with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share workpads with a larger audience, click {icon}`share` **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
 ## Export workpads [export-single-workpad]

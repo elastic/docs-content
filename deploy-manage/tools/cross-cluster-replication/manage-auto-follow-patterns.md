@@ -1,21 +1,22 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow.html
-
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Manage auto-follow patterns [ccr-auto-follow]
 
 To replicate time series indices, you configure an auto-follow pattern so that each new index in the series is replicated automatically. Whenever the name of a new index on the remote cluster matches the auto-follow pattern, a corresponding follower index is added to the local cluster.
 
-::::{note} 
-Auto-follow patterns only match open indices on the remote cluster that have all primary shards started. Auto-follow patterns do not match indices that can’t be used for {{ccr-init}} such as [closed indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open) or [{{search-snaps}}](../snapshot-and-restore/searchable-snapshots.md). Avoid using an auto-follow pattern that matches indices with a [read or write block](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md). These blocks prevent follower indices from replicating such indices.
+::::{note}
+Auto-follow patterns only match open indices on the remote cluster that have all primary shards started. Auto-follow patterns do not match indices that can’t be used for {{ccr-init}} such as [closed indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open) or [{{search-snaps}}](../snapshot-and-restore/searchable-snapshots.md). Avoid using an auto-follow pattern that matches indices with a [read or write block](elasticsearch://reference/elasticsearch/index-settings/index-block.md). These blocks prevent follower indices from replicating such indices.
 ::::
 
 
@@ -26,7 +27,10 @@ The data streams replicated from a remote cluster by CCR are protected from loca
 Auto-follow patterns are especially useful with [{{ilm-cap}}](../../../manage-data/lifecycle/index-lifecycle-management.md), which might continually create new indices on the cluster containing the leader index.
 
 $$$ccr-access-ccr-auto-follow$$$
-To start using {{ccr}} auto-follow patterns from Stack Management in {{kib}}, select **Cross-Cluster Replication** from the side navigation and choose the **Auto-follow patterns** tab.
+To start using {{ccr}} auto-follow patterns from {{kib}}:
+
+1. Go to the **Cross Cluster Replication** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Choose the **Follower Indices** tab.
 
 
 

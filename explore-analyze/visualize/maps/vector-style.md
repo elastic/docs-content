@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/vector-style.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/vector-style.html
+products:
+  - id: kibana
 ---
 
 # Vector styling [vector-style]
@@ -17,9 +19,9 @@ Use static styling to specify a constant value for a style property.
 
 This image shows an example of static styling using the [Kibana sample web logs](/explore-analyze/index.md) data set. The **kibana_sample_data_logs** layer uses static styling for all properties.
 
-:::{image} ../../../images/kibana-vector_style_static.png
+:::{image} /explore-analyze/images/kibana-vector_style_static.png
 :alt: vector style static
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -32,9 +34,9 @@ This image shows an example of data driven styling using the [Kibana sample web 
 * The `hour_of_day` property determines the fill color for each feature based on where the value fits on a linear scale. Light green circles symbolize documents that occur earlier in the day, and dark green circles symbolize documents that occur later in the day.
 * The `bytes` property determines the size of each symbol based on where the value fits on a linear scale. Smaller circles symbolize documents with smaller payloads, and larger circles symbolize documents with larger payloads.
 
-:::{image} ../../../images/kibana-vector_style_dynamic.png
+:::{image} /explore-analyze/images/kibana-vector_style_dynamic.png
 :alt: vector style dynamic
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -76,9 +78,9 @@ Qualitative data driven styling is available for the following styling propertie
 
 This image shows an example of quantitative data driven styling using the [Kibana sample web logs](/explore-analyze/index.md) data set. The `machine.os.keyword` property determines the color of each symbol based on category.
 
-:::{image} ../../../images/kibana-quantitative_data_driven_styling.png
+:::{image} /explore-analyze/images/kibana-quantitative_data_driven_styling.png
 :alt: quantitative data driven styling
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -91,8 +93,8 @@ This image shows an example of class styling using the [Kibana sample web logs](
 * The **Mac OS requests** layer applies the filter `machine.os : osx` so the layer only contains Mac OS requests. The fill color is a static value of green.
 * The **Window OS requests** layer applies the filter `machine.os : win*` so the layer only contains Window OS requests. The fill color is a static value of red.
 
-:::{image} ../../../images/kibana-vector_style_class.png
+:::{image} /explore-analyze/images/kibana-vector_style_class.png
 :alt: vector style class
-:class: screenshot
+:screenshot:
 :::
 

@@ -2,24 +2,31 @@
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
-  
+
 # TSVB [tsvb-panel]
 
 **TSVB** is a set of visualization types that you configure and display on dashboards.
 
 With **TSVB**, you can:
 
-* Combine an infinite number of [aggregations](../supported-chart-types.md#aggregation-reference) to display your data.
+* Combine an infinite number of [aggregations](../../query-filter/aggregations.md) to display your data.
 * Annotate time series data with timestamped events from an {{es}} index.
 * View the data in several types of visualizations, including charts, data tables, and markdown panels.
 * Display multiple [data views](../../find-and-organize/data-views.md) in each visualization.
 * Use custom functions and some math on aggregations.
 * Customize the data with labels and colors.
 
-:::{image} ../../../images/kibana-tsvb-screenshot.png
+:::{image} /explore-analyze/images/kibana-tsvb-screenshot.png
 :alt: TSVB overview
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -37,7 +44,7 @@ When you use only {{data-sources}}, you are able to:
 ::::{important}
 :name: tsvb-index-patterns-mode
 
-Creating **TSVB** visualizations with an {{es}} index string is deprecated and will be removed in a future release. By default, you create **TSVB** visualizations with only {{data-sources}}. To use an {{es}} index string, contact your administrator, or go to [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md) and set `metrics:allowStringIndices` to `true`.
+Creating **TSVB** visualizations with an {{es}} index string is deprecated and will be removed in a future release. By default, you create **TSVB** visualizations with only {{data-sources}}. To use an {{es}} index string, contact your administrator, or go to [Advanced Settings](kibana://reference/advanced-settings.md) and set `metrics:allowStringIndices` to `true`.
 ::::
 
 
@@ -232,9 +239,9 @@ Performing math across data series is unsupported in **TSVB**. To calculate the 
 
 1. Click **Clone Series**, then choose a color for the new series.
 
-   :::{image} ../../../images/kibana-tsvb_clone_series.png
+   :::{image} /explore-analyze/images/kibana-tsvb_clone_series.png
    :alt: Clone Series action
-   :class: screenshot
+   :screenshot:
    :::
 
 2. Click **Options**, then enter the offset value in the **Offset series time by** field.
@@ -258,6 +265,5 @@ For other types of month over month calculations, use [**Timelion**](timelion.md
 Calculating the duration between the start and end of an event is unsupported in **TSVB** because **TSVB** requires correlation between different time periods. **TSVB** requires that the duration is pre-calculated.
 
 ::::
-
 
 
