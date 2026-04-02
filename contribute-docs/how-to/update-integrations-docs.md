@@ -29,12 +29,13 @@ git checkout -b docs-enhancement/my-docs-update
 ::::
 
 ::::{step} Edit the README source file
-Edit the source file at `packages/{package}/docs/README.md` or `packages/{package}/_dev/build/docs/README.md` .
+Edit the source file at `packages/{package}/docs/README.md` or `packages/{package}/_dev/build/docs/README.md`.
 
 :::{important}
-Other structures might occur. Most packages use a single README.md. A small minority use a multi-file structure, for example, one file per cloud service or component. 
+Other structures might exist. Most packages use a single README.md. A small minority use a multi-file structure, for example, one file per cloud service or component. 
 
-If your package has multiple docs files, edit the one that corresponds to the content you're updating.
+<!-- If your package has multiple docs files, edit the one that corresponds to the content you're updating.  -->
+If your package has doc files in both `packages/{package}/docs/README.md` _and_ `packages/{package}/_dev/build/docs/README.md`, ensure you edit the source file at `packages/{package}/_dev/build/docs/README.md`. 
 :::
 
 ::::
@@ -72,12 +73,15 @@ Wait for the **Documentation edit helper** check to complete. This check generat
    git push
    ```
 
-4. Go back to your editor and, from the integrations repository root folder, paste and run the copied commands.
+4. Go back to your editor, and from the integrations repository root folder, paste and run the copied commands.
 
 These commands:
 - Build the generated `packages/{package}/docs/README.md` file.
 - Update `changelog.yml` with the new entry.
 - Update `manifest.yml` with the new version.
+
+If you need to make subsequent edits to your PR, save your changes, then re-run the `elastic-package build` command from the package's root folder (not the integrations root folder) before you push your commits. This ensures the `packages/{package}/docs/README.md` file is updated with your new changes.
+
 ::::
 
 ::::{step} Request review and merge
@@ -114,7 +118,7 @@ If your changes don't appear on the docs site after following these steps:
 
 3. **Check the integration-docs repository**: Look at recent automated update PRs in the integration-docs repository. If they're failing, your changes won't be pulled until the issues are resolved.
 
-4. **Check version compatibility**: If the integration's `manifest.yml` specifies a {{kib}} version that hasn't been released yet. For example, if `^9.3.0` before 9.3 is released, the docs won't appear until that version is live.
+4. **Check version compatibility**: Check if the integration's `manifest.yml` specifies a {{kib}} version that hasn't been released yet. For example, if `^9.3.0` before 9.3 is released, the docs won't appear until that version is live.
 
 ### The edit helper check is missing
 

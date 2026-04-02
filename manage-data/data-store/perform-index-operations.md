@@ -1,4 +1,7 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#view-edit-indices
+  - https://www.elastic.co/guide/en/serverless/current/index-management.html
 applies_to:
   stack: ga
   serverless: ga
@@ -7,56 +10,84 @@ products:
   - id: cloud-serverless
 ---
 
-# Perform operations on indices
+# Manage indices in {{kib}}
 
-You can perform a number of index operations from the **Index management** page in {{kib}}.
+$$$manage-indices$$$
 
-To perform index actions:
+Practicing good index management ensures your data is stored efficiently and cost-effectively. In {{kib}}, the **{{index-manage-app}}** page is where you manage storage resources across your cluster, including [indices](/manage-data/data-store/index-basics.md), [data streams](/manage-data/data-store/data-streams.md), [index and component templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md). Index-specific actions are covered in [Index operations reference](/manage-data/data-store/index-operations-reference.md).
 
-1. Go to the **Index management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Enable **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
-1. Open the **Indices** view.
-1. Click the index name, or to perform operations on multiple indices select their checkboxes and open the **Manage index** menu.
+:::{tip}
+All operations available on the **{{index-manage-app}}** page can also be performed using the {{es}} REST API. Refer to [Manage data from the command line](/manage-data/data-store/manage-data-from-the-command-line.md) for examples, or browse the [{{es}} index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) directly.
+:::
 
-## Available index operations
+## Required permissions [required-permissions]
 
-Several index operations are available from the **Manage index** menu. Some of the operations listed are unavailable in {{serverless-full}} since in that environment many data management tasks are handled automatically.
+The following [security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) are required to manage indices in {{kib}}:
 
-**Show index overview** {applies_to}`stack: ga` {applies_to}`serverless: ga`
-:   View an overview of the index, including its storage size, status, and aliases, as well as a sample API request to add new documents.
+* The `monitor` cluster privilege to access {{kib}}'s **{{index-manage-app}}** features.
+* The `view_index_metadata` and `manage` index privileges to view a data stream or index's data.
+* The `manage_index_templates` cluster privilege to manage index templates.
 
-**Show index settings** {applies_to}`stack: ga` {applies_to}`serverless: ga`
-:   View a list of the currently configured [index settings](elasticsearch://reference/elasticsearch/index-settings/index.md). Enable **Edit mode** to add or change settings.
+{applies_to}`stack: ga` To add these privileges, go to **{{stack-manage-app}} > Security > Roles** or use the [Create or update roles](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) API.
 
-**Show index mapping** {applies_to}`stack: ga` {applies_to}`serverless: ga`
-:   View the [index mappings](/manage-data/data-store/mapping.md). From this page you can set up new mappings for the field types in your index.
 
-**Show index stats** {applies_to}`stack: ga`
-:   View statistics for your index. Statistics are compiled by `primaries`, representing values only for primary shards, and by `total`, representing accumulated values for both primary and replica shards. Refer to the [get index statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats) API for details.
+{applies_to}`serverless: ga` In {{serverless-full}}, permissions are managed through project custom roles instead of **{{stack-manage-app}} > Security > Roles**. To grant access to **{{index-manage-app}}**, configure the required {{es}} and {{kib}} privileges in a custom role. For step-by-step guidance, refer to [{{serverless-short}} project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
 
-**Close index** {applies_to}`stack: ga`
-:   Close the index so that read or write operations cannot be performed. Refer to the [close index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close) API for details.
 
-**Open index** {applies_to}`stack: ga`
-:   Reopen an index that is currently closed to read and write operations. This option is available only for indices that are currently closed. Refer to the [open index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open) API for details.
+## Navigate the Index Management page
 
-**Force merge index** {applies_to}`stack: ga`
-:   Perform a force merge operation on the shards of the indices. This reduces the number of segments in each shard by merging some of them together and also frees up the space used by deleted documents. Refer to the [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) API for details.
+To open the **{{index-manage-app}}** page, use the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-**Refresh index** {applies_to}`stack: ga`
-:   Refresh the index to make the most recent operations performed on the index available for search. Refer to the [refresh index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) API for details.
 
-**Clear index cache** {applies_to}`stack: ga`
-:   Clear all of the caches for the index. Refer to the [clear cache](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clear-cache) API for details.
+:::::{applies-switch}
 
-**Flush index** {applies_to}`stack: ga`
-:   Flush the index to ensure that all data currently stored only in the transaction log is stored permanently in the Lucene index. Refer to the [flush index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush) API for details.
+::::{applies-item} serverless:
 
-**Delete index** {applies_to}`stack: ga` {applies_to}`serverless: ga`
-:   Delete an index including all of its documents, shards, and metadata. Refer to the [delete index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete) API for details.
+:::{image} /manage-data/images/serverless-index-management-indices.png
+:alt: Index Management indices
+:screenshot:
+:::
 
-**Add lifecycle policy** {applies_to}`stack: ga`
-:   Add a lifecycle policy to the index to manage how it transitions over time. The policy governs how the index moves through different phases (`hot`, `warm`, `cold`, `frozen`, and `delete`) and what actions, such as shrinking and downsampling, are performed on the index during each of these phases. Refer to [{{ilm-cap}}](/manage-data/lifecycle/index-lifecycle-management.md) to learn more.
+* To access details and [perform operations](/manage-data/data-store/index-operations-reference.md) on indices:
 
-**Convert to lookup index** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
-:   Convert the index to a lookup mode index that can be used with [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands, so that data from the index can be added to {{esql}} query results. This option is available only for single shard indices that have less than two billion documents. Refer to the {{es}} [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting) index setting for details.
+    * For a single index, click the index name to drill down into the index overview, [mappings](/manage-data/data-store/mapping.md), and [settings](elasticsearch://reference/elasticsearch/index-settings/index.md). From this view, you can navigate to **Discover** to further explore the documents in the index.
+
+    * For multiple indices, select their checkboxes and then open the **Manage indices** menu. 
+
+* Turn on **Include hidden indices** to view the full set of indices, including backing indices for data streams.
+
+* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
+
+* To view and [manage](/manage-data/data-store/data-streams/manage-data-stream.md) your data streams, including backing indices and retention settings, go to the **Data Streams** tab.
+
+* To create, edit, clone, or delete [index templates](/manage-data/data-store/templates.md) and [component templates](/manage-data/data-store/templates.md#component-templates) that define how {{es}} configures new indices or data streams, go the **Index Templates** or **Component Templates** tab.
+
+* To create, execute, or delete [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md) that add data from existing indices to incoming documents during ingest, open the **Enrich Policies** tab.
+
+::::
+
+::::{applies-item} stack:
+:sync: stack
+
+:::{image} /manage-data/images/elasticsearch-reference-management_index_labels.png
+:alt: Index Management UI
+:screenshot:
+:::
+
+* To access details and [perform operations](/manage-data/data-store/index-operations-reference.md) on indices:
+
+    * For a single index, click the index name to drill down into the index overview, [mappings](/manage-data/data-store/mapping.md), [settings](elasticsearch://reference/elasticsearch/index-settings/index.md), and statistics. From this view, you can navigate to **Discover** to further explore the documents in the index, and you can perform operations using the **Manage index** menu.
+
+    * For multiple indices, select their checkboxes and then open the **Manage indices** menu. 
+
+* Turn on **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
+
+* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
+
+* To view and [manage](/manage-data/data-store/data-streams/manage-data-stream.md) your data streams, including backing indices and retention settings, go to the **Data Streams** tab.
+
+* To create, edit, clone, or delete [index templates](/manage-data/data-store/templates.md) and [component templates](/manage-data/data-store/templates.md#component-templates) that define how {{es}} configures new indices or data streams, go the **Index Templates** or **Component Templates** tab.
+
+* To create, execute, or delete [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md) that add data from existing indices to incoming documents during ingest, open the **Enrich Policies** tab.
+::::
+:::::

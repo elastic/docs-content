@@ -9,4 +9,4 @@ products:
 
 # Index management in Kibana [index-mgmt]
 
-This page has moved. Refer to [Index management](/manage-data/data-store/index-basics.md#index-management) for guidance on managing indices, data streams, index templates, component templates, and enrich policies in {{kib}}.
+This page has moved. Refer to [Index management](/manage-data/data-store/perform-index-operations.md) for guidance on managing indices, data streams, index templates, component templates, and enrich policies in {{kib}}.

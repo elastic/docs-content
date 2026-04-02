@@ -7,15 +7,15 @@ products:
   - id: cloud-serverless
 description: >
   Use Kibana to share reports, set up alerts to detect important changes,
-  automate responses with workflows, and track incidents with cases.
+  and track incidents with cases.
 type: overview
 ---
 
 <!-- Overview page created for the v2 navigation -->
 
-# Share, alert, and automate
+# Track and respond
 
-The {{es}} platform provides tools to share insights, get notified about important changes, automate responses, and track incidents. These tools work together across every Elastic solution and project type.
+The {{es}} platform provides tools to share insights, get notified about important changes, and track incidents. These tools work together across every Elastic solution and project type.
 
 ## Distribute insights with reporting and sharing
 
@@ -46,26 +46,9 @@ Notifications go where your team already works: email, Slack, PagerDuty, Microso
 
 Elastic solutions extend this foundation with domain-specific rules. Security detection rules match threat patterns, while Observability rules monitor SLOs, infrastructure metrics, and log error rates. All rules share the same interface, action framework, and notification channels.
 
+Alerts can also trigger [workflows](/explore-analyze/workflows.md) to automate multi-step responses, such as enriching an alert with context, creating a case, or notifying the on-call team.
+
 [Learn more about alerting →](alerting.md)
-
-## Automate multi-step responses with workflows
-
-[Workflows](workflows.md) turn manual, repetitive processes into automated sequences that run reliably every time.
-
-:::{image} /explore-analyze/images/workflows-editor.png
-:alt: The workflow editor showing a sequence of automated steps
-:screenshot:
-:::
-
-A workflow is a sequence of steps triggered by an alert, a schedule, or a manual action. Each step can:
-
-- Query {{es}} or call external APIs
-- Branch on conditions or loop over collections
-- Create cases, send notifications, or isolate hosts
-
-For example, when a security alert fires, a workflow can enrich it with threat intelligence, create a case, notify the on-call analyst, and isolate the affected host, all without human intervention.
-
-[Learn more about workflows →](workflows.md)
 
 ## Track and coordinate response with cases
 
@@ -86,19 +69,17 @@ Cases are available in {{elastic-sec}}, Observability, and Stack Management.
 
 ## How these tools work together
 
-These capabilities chain together into complete operational workflows:
+These capabilities chain together naturally:
 
 1. A **dashboard** reveals a pattern, such as error rates climbing for a specific service.
-2. An **alert rule** detects the threshold breach and triggers a notification.
-3. A **workflow** automatically enriches the alert, checks if the service is in a maintenance window, and creates a case if it isn't.
-4. A **case** tracks the investigation, collecting related alerts, team comments, and resolution steps.
-5. A **scheduled report** captures the post-incident dashboard state and distributes it to stakeholders.
+2. An **alert rule** detects the threshold breach and sends a notification.
+3. A **case** tracks the investigation, collecting related alerts, team comments, and resolution steps.
+4. A **scheduled report** captures the post-incident dashboard state and distributes it to stakeholders.
 
-Together, these tools close the loop from data to action to resolution without requiring you to leave the Elastic platform.
+For more complex scenarios, [workflows](/explore-analyze/workflows.md) can automate the steps between detection and resolution — creating cases, notifying teams, and taking action without human intervention.
 
 ## Next steps
 
 - **[Automatically generate reports](report-and-share/automating-report-generation.md)**: Set up recurring report delivery for your dashboards.
 - **[Getting started with alerting](alerting/alerts/alerting-getting-started.md)**: Create your first alert rule and configure notification channels.
-- **[Get started with workflows](workflows/get-started.md)**: Build your first automated workflow to respond to alerts.
 - **[Create a case](cases/create-cases.md)**: Start tracking an incident and attach relevant alerts and evidence.
