@@ -54,7 +54,7 @@ For each finding, note the following key signals:
 ::::{tab-item} ES|QL
 :sync: esql
 
-Run the following ES|QL query in **Discover** or the [ES|QL query API](/solutions/search/querying/query-your-data-with-esql.md) to retrieve open findings from both scheduled and on-demand discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
+Run the following ES|QL query in [**Discover**](/explore-analyze/query-filter/languages/esql-kibana.md) to retrieve open findings from both scheduled and on-demand discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
 
 ```esql
 FROM .alerts-security.attack.discovery.alerts-default, .adhoc.alerts-security.attack.discovery.alerts-default
