@@ -91,7 +91,6 @@ Out of the box logs and metrics tools, including ECH preconfigured logs and metr
 To learn more about the health and performance tools in {{ecloud}}, refer to [](/deploy-manage/monitor/cloud-health-perf.md).
 
 ## Query activity
-
 ```{applies_to}
 stack: preview 9.4
 serverless: unavailable
