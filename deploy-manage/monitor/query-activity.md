@@ -12,7 +12,7 @@ products:
 
 # Query activity
 
-The **Query activity** page in {{kib}} gives you a real-time view of all search work running in your {{es}} cluster, so you can quickly find long-running or resource-intensive queries, trace them back to their source, and cancel them when needed.
+The **Query activity** page in {{kib}} gives you a real-time view of all search work running in your {{es}} cluster. Use it to find long-running or resource-intensive queries, trace them back to their source, and cancel them when needed.
 
 Query activity surfaces search tasks from all query languages, including ES|QL, DSL, EQL, SQL, and multi-search requests.
 It shows only what is currently running. For historical query data, use [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) or [AutoOps](/deploy-manage/monitor/autoops.md).
@@ -43,7 +43,7 @@ The **Query activity** page lists all in-flight search tasks in your cluster.
 The list does not auto-refresh. Select **Refresh** to update the data. The time of the last refresh is displayed next to the button.
 
 :::{tip}
-Searches that users [send to the background](/explore-analyze/discover/background-search.md) from Discover or Dashboards also appear on this page as **Async search** queries. Background search lets users queue their own Discover and Dashboards long-running searches and return to view results later, while Query activity gives administrators cluster-wide visibility to monitor and manage all running queries.
+Searches that users [send to the background](/explore-analyze/discover/background-search.md) from Discover or Dashboards also appear on this page as **Async search** queries. Background search lets users queue their own Discover and Dashboards long-running searches and return to view results later. Query activity gives administrators cluster-wide visibility to monitor and manage all running queries.
 :::
 
 The table displays the following columns:
@@ -56,7 +56,7 @@ The table displays the following columns:
 
 **Source**
 :   The {{kib}} application that originated the query, such as Discover or Dashboard. This value is extracted from the `X-Opaque-Id` header set by {{kib}}.
-    If the source can't be determined, *Not available* is displayed.
+    If the source cannot be determined, the column shows *Not available*.
     For more information about tracing queries, refer to [Trace an Elasticsearch query to its origin in Kibana](docs-content://troubleshoot/kibana/trace-elasticsearch-query-to-the-origin-in-kibana.md).
 
 **Start time**
