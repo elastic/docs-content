@@ -160,7 +160,7 @@ You've queried, filtered, aggregated, and inspected data, all within Discover us
 
 ## Step 3: Build your dashboard [build-your-dashboard]
 
-Now that you have a dashboard with your first panel, add more visualizations to tell a complete story about your web traffic.
+Now that you have a dashboard with your first panel, add more visualizations to tell a complete story about your web traffic. You can also [recreate this dashboard using the API](#learn-tutorial-create-programmatically) once you have completed the tutorial.
 
 ::::::{stepper}
 
@@ -371,6 +371,114 @@ When you are happy with the layout, select **Save** in the toolbar.
 :::::
 
 ::::::
+
+### Create this dashboard using the API [learn-tutorial-create-programmatically]
+
+::::{dropdown} Recreate the Web logs overview dashboard with one API call
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Once you know what the finished dashboard looks like, you can create it programmatically using the Dashboards API. The following request creates the full dashboard built in this tutorial.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/dashboards" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "title": "Web logs overview",
+  "time_range": { "from": "now-90d", "to": "now" },
+  "panels": [
+    {
+      "type": "lens",
+      "grid": { "x": 0, "y": 0, "w": 12, "h": 5 },
+      "config": {
+        "attributes": {
+          "title": "Median response size",
+          "type": "metric",
+          "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "@timestamp" },
+          "metrics": [{ "type": "primary", "operation": "median", "field": "bytes", "format": { "type": "bytes" } }]
+        }
+      }
+    },
+    {
+      "type": "lens",
+      "grid": { "x": 0, "y": 5, "w": 48, "h": 12 },
+      "config": {
+        "attributes": {
+          "title": "Log volume over time per host",
+          "type": "xy",
+          "layers": [{
+            "type": "line",
+            "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "@timestamp" },
+            "x": { "operation": "date_histogram", "field": "@timestamp" },
+            "y": [{ "operation": "count" }],
+            "breakdown": { "operation": "terms", "fields": ["host.keyword"], "size": 10 }
+          }]
+        }
+      }
+    },
+    {
+      "type": "lens",
+      "grid": { "x": 0, "y": 17, "w": 24, "h": 10 },
+      "config": {
+        "attributes": {
+          "title": "Requests by file extension",
+          "type": "xy",
+          "layers": [{
+            "type": "bar",
+            "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "@timestamp" },
+            "x": { "operation": "terms", "fields": ["extension.keyword"], "size": 10 },
+            "y": [{ "operation": "count" }]
+          }]
+        }
+      }
+    },
+    {
+      "type": "lens",
+      "grid": { "x": 24, "y": 17, "w": 24, "h": 10 },
+      "config": {
+        "attributes": {
+          "title": "Events by response code",
+          "type": "xy",
+          "layers": [{
+            "type": "bar",
+            "dataset": {
+              "type": "esql",
+              "query": "FROM kibana_sample_data_logs | WHERE response IS NOT NULL | STATS event_count = COUNT(*) BY response"
+            },
+            "x": { "operation": "value", "column": "response" },
+            "y": [{ "operation": "value", "column": "event_count" }]
+          }]
+        }
+      }
+    },
+    {
+      "type": "lens",
+      "grid": { "x": 0, "y": 27, "w": 48, "h": 12 },
+      "config": {
+        "attributes": {
+          "title": "",
+          "type": "datatable",
+          "dataset": {
+            "type": "esql",
+            "query": "FROM kibana_sample_data_logs | KEEP @timestamp, request, response, bytes | SORT @timestamp DESC | LIMIT 100"
+          },
+          "metrics": [
+            { "operation": "value", "column": "@timestamp" },
+            { "operation": "value", "column": "request" },
+            { "operation": "value", "column": "response" },
+            { "operation": "value", "column": "bytes" }
+          ],
+          "rows": []
+        }
+      }
+    }
+  ]
+}'
+```
+
+Refer to the [Dashboards API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-dashboards) for the full schema.
+::::
 
 Your dashboard now combines multiple panel types built with Lens, and you've seen how inline editing and interactive filtering make the dashboard both customizable and interactive. To learn more, refer to [Dashboards](dashboards.md), [Lens](visualize/lens.md), and [Panels and visualizations](visualize.md).
 
