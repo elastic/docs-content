@@ -4,6 +4,13 @@ applies_to:
   stack: ga
   serverless: ga
 description: Instructions and best practices for building pie and donut charts with Kibana Lens in Elastic.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Build pie charts with {{kib}}
@@ -125,7 +132,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 
 1. `pie` creates a pie or donut chart. The donut hole size is an appearance setting you can adjust in the Lens editor.
 2. `percentage` displays each slice's share of the total rather than its raw count.
-3. `size: 5` limits the chart to the top 5 destination countries, keeping the pie readable.
+3. `limit: 5` limits the chart to the top 5 destination countries, keeping the pie readable.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -280,7 +287,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. `size: 3` limits the chart to the top 3 hosts by count.
+1. `limit: 3` limits the chart to the top 3 hosts by count.
 2. `other_bucket` groups every remaining host into a single "Other" slice, including documents that lack the field entirely.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
@@ -436,28 +443,28 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "metrics": [
     {
       "operation": "formula",                                                      <1>
-      "formula": "count(kql='referer : *elastic*')",                               <2>
+      "formula": "count(kql='"'"'referer : *elastic*'"'"')",                               <2>
       "label": "Elastic website",
       "format": { "type": "number" },
       "filter": { "query": "" }
     },
     {
       "operation": "formula",
-      "formula": "count(kql='referer : *twitter*')",
+      "formula": "count(kql='"'"'referer : *twitter*'"'"')",
       "label": "Twitter/X",
       "format": { "type": "number" },
       "filter": { "query": "" }
     },
     {
       "operation": "formula",
-      "formula": "count(kql='referer : *facebook*')",
+      "formula": "count(kql='"'"'referer : *facebook*'"'"')",
       "label": "Facebook",
       "format": { "type": "number" },
       "filter": { "query": "" }
     },
     {
       "operation": "formula",
-      "formula": "count(kql='referer : *nytimes*')",
+      "formula": "count(kql='"'"'referer : *nytimes*'"'"')",
       "label": "NY Times",
       "format": { "type": "number" },
       "filter": { "query": "" }
