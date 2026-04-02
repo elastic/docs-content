@@ -35,7 +35,7 @@ Project-scoped API keys, such as [{{serverless-short}} project API keys](/deploy
 
 - Make sure that users who need to search across linked projects have a [role assigned](/deploy-manage/users-roles.md) on each linked project they need to access. Authorization is evaluated on the linked project, without regard to the origin project.
 - If a user reports missing data from a linked project, check their role assignment on that specific linked project first.
-- For programmatic access, make sure the {{ecloud}} API key has the appropriate [roles](/deploy-manage/users-roles.md) on each project the key needs to access.
+- For programmatic access, make sure the {{ecloud}} API key has the appropriate [roles](/deploy-manage/api-keys/elastic-cloud-api-keys#roles) on each project the key needs to access.
 
 % TODO alerting impacts of user role changes 
 
@@ -75,7 +75,11 @@ The scope controls which projects receive the search request, while [querying an
 
 ### Set the default {{cps-init}} scope for a space [cps-default-search-scope]
 
-You can adjust the broad {{cps-init}} default by setting a narrower {{cps}} scope for each space. This setting determines the _default_ search scope for the space. Users can override the default by setting their preferred scope when searching, filtering, or running queries. 
+You can adjust the broad {{cps-init}} default by setting a narrower {{cps}} scope for each space. This setting determines the default search scope for the space. Users can override the default by setting their preferred scope when searching, filtering, or running queries. 
+
+:::{tip}
+For best results, set the default {{cps-init}} scope for each space **before** you link projects.
+:::
 
 Space settings are managed in {{kib}}. 
 

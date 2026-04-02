@@ -41,7 +41,12 @@ If you want to keep the snapshot for future purposes even after the deployment d
 
 ## Serverless
 
-To delete a {{serverless-full}} project:
+:::{note}
+:applies_to: serverless: preview
+You can't delete a project that's linked to a {{cps}} ({{cps-init}}) origin project. To delete a linked project, first [unlink](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-unlink-projects) it from every origin project it's connected to, then delete it.
+:::
+
+To delete an {{serverless-full}} project:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Find your project on the home page in the **Serverless Projects** card and select **Manage** to access it directly. Or, select **Serverless Projects** to go to the projects page to view all of your projects.
