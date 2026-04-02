@@ -78,7 +78,7 @@ The scope controls which projects receive the search request, while [querying an
 You can adjust the broad {{cps-init}} default by setting a narrower {{cps}} scope for each space. This setting determines the default search scope for the space. Users can override the default by setting their preferred scope when searching, filtering, or running queries. 
 
 :::{tip}
-For best results, set the default {{cps-init}} scope for each space **before** your users start searching across projects.
+For best results, set the default {{cps-init}} scope for each space **before** you link projects.
 :::
 
 Space settings are managed in {{kib}}. 
