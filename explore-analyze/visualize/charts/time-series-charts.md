@@ -76,7 +76,7 @@ Refer to [Time series chart settings](#time-series-chart-settings) for all confi
 
 ## Time series chart settings [time-series-chart-settings]
 
-Use these settings to control how data is bucketed over time and how each series is displayed.
+Use these settings to control how data is bucketed over time and how each series appears.
 
 ### Horizontal axis settings [horizontal-axis-settings]
 
