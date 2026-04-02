@@ -235,17 +235,27 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 ## Configure the Docker daemon options [ece-configure-docker-daemon-ubuntu]
 
-::::{tip}
-Docker creates a bridge IP address that can conflict with IP addresses on your internal network. To avoid an IP address conflict, change the `--bip=172.17.42.1/16` parameter in our examples to something that you know will work. If there is no conflict, you can omit the `--bip` parameter. The `--bip` parameter is internal to the host and can be set to the same IP for each host in the cluster. More information on Docker daemon options can be found in the  [dockerd command line reference](https://docs.docker.com/engine/reference/commandline/dockerd/).
-::::
+Docker daemon configuration can be defined in multiple ways. In this guide, Docker is configured using both the [daemon configuration file (`/etc/docker/daemon.json`)](https://docs.docker.com/reference/cli/dockerd/#daemon-configuration-file) and a systemd service override. The `daemon.json` file defines runtime settings for the Docker daemon, while the systemd configuration controls how the daemon is started and which command-line flags are applied.
 
+For more information, refer to the [Docker daemon configuration overview](https://docs.docker.com/config/daemon/).
 
-::::{tip}
-You can specify `--log-opt max-size` and `--log-opt max-file` to define the Docker daemon containers log rotation.
-::::
+1. Create the `/etc/docker` directory if it does not exist, then create or update the `/etc/docker/daemon.json` file with the following configuration:
 
+    ```json
+    {
+      "default-ulimits": {
+        "nofile": {
+          "Name": "nofile",
+          "Soft": 1048576,
+          "Hard": 1048576
+        }
+      }
+    }
+    ```
 
-1. Update `/etc/systemd/system/docker.service.d/docker.conf`. If the file path and file do not exist, create them first.
+    This configuration increases the maximum number of open file descriptors available to Docker containers.
+
+1. Create the `/etc/systemd/system/docker.service.d` directory if it does not exist, then create or update the `/etc/systemd/system/docker.service.d/docker.conf` file with the following configuration:
 
     ```ini
     [Unit]
@@ -253,38 +263,51 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     After=multi-user.target
 
     [Service]
-    Environment="DOCKER_OPTS=-H unix:///run/docker.sock --data-root /mnt/data/docker --storage-driver=overlay2 --bip=172.17.42.1/16 --raw-logs --log-opt max-size=500m --log-opt max-file=10 --icc=false"
+    Environment="DOCKER_OPTS=-H unix:///run/docker.sock --data-root /mnt/data/docker --storage-driver=overlay2 --bip=172.17.42.1/16 --raw-logs --log-opt max-size=500m --log-opt max-file=10 --icc=false" <1>
     ExecStart=
     ExecStart=/usr/bin/dockerd $DOCKER_OPTS
     ```
+    1. You can adjust `--log-opt max-size` and `--log-opt max-file` to configure container log rotation settings for the Docker daemon.
 
-2. Apply the updated Docker daemon configuration:
+    ::::{tip}
+    Alternatively, you can use `sudo systemctl edit docker` to create a systemd override file. This command automatically creates the appropriate directory and opens an editor for you to define the override configuration.
+    ::::
 
-    Reload the Docker daemon configuration:
+    ::::{note}
+    Docker creates a default bridge network that can conflict with IP ranges used in your internal network. The `--bip` parameter defines both the bridge IP address and the subnet used by Docker.
 
-    ```sh
-    sudo systemctl daemon-reload
-    ```
+    To avoid conflicts, replace the `--bip=172.17.42.1/16` parameter in our examples with a subnet that does not overlap with your existing network ranges. If there is no conflict, you can omit the `--bip` parameter. This setting is local to each host, so the same value can be reused across all hosts in the ECE platform.
 
-    Restart the Docker service:
+    For more information, refer to the [dockerd command line reference](https://docs.docker.com/engine/reference/commandline/dockerd/).
+    ::::
 
-    ```sh
-    sudo systemctl restart docker
-    ```
+1. Apply the updated Docker daemon configuration.
 
-    Enable Docker to start on boot:
+    1. Reload the Docker daemon configuration:
 
-    ```sh
-    sudo systemctl enable docker
-    ```
+        ```sh
+        sudo systemctl daemon-reload
+        ```
 
-3. Enable your user to communicate with the Docker subsystem by adding it to the `docker` group:
+    1. Restart the Docker service:
+
+        ```sh
+        sudo systemctl restart docker
+        ```
+
+    1. Enable Docker to start on boot:
+
+        ```sh
+        sudo systemctl enable docker
+        ```
+
+1. Enable your user to communicate with the Docker subsystem by adding it to the `docker` group:
 
     ```sh
     sudo usermod -aG docker $USER
     ```
 
-4. Recommended: Tune your network settings.
+1. Recommended: Tune your network settings.
 
     Create a `70-cloudenterprise.conf` file in the `/etc/sysctl.d/` file path that includes these network settings:
 
@@ -296,7 +319,7 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     SETTINGS
     ```
 
-5. Pin the Docker version to ensure that the package does not get upgraded:
+1. Pin the Docker version to ensure that the package does not get upgraded:
 
     ```sh
     echo "docker-ce hold" | sudo dpkg --set-selections
@@ -304,13 +327,13 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     echo "containerd.io hold" | sudo dpkg --set-selections
     ```
 
-6. Reboot your system to ensure that all configuration changes take effect:
+1. Reboot your system to ensure that all configuration changes take effect:
 
     ```sh
     sudo reboot
     ```
 
-7. After rebooting, verify that your Docker settings persist as expected:
+1. After rebooting, verify that your Docker settings persist as expected:
 
     ```sh
     sudo docker info | grep Root
@@ -318,6 +341,6 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
 
     If the command returns `Docker Root Dir: /mnt/data/docker`, then your changes were applied successfully and persist as expected.
 
-    If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
+    If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Docker daemon configuration](https://docs.docker.com/engine/daemon/) in the Docker documentation.
 
-8. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
+1. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
