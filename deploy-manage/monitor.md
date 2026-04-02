@@ -94,6 +94,7 @@ To learn more about the health and performance tools in {{ecloud}}, refer to [](
 
 ```{applies_to}
 stack: preview 9.4
+serverless: unavailable
 ```
 
 The [Query activity](/deploy-manage/monitor/query-activity.md) page in {{kib}} gives you a real-time view of all search queries currently running in your {{es}} cluster. Use it to identify long-running queries, inspect their details, trace them back to their source, and cancel them when needed.
