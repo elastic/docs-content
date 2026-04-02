@@ -27,7 +27,7 @@ products:
 
 You can find the **Spaces** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-The rest of this page explains how to manage spaces and their settings. For information on using spaces with {{fleet}} in a space-aware data model, refer to [Using Spaces with {{fleet}}](/deploy-manage/manage-spaces-fleet.md).
+The rest of this page explains how to manage spaces and their settings. For information on using spaces with {{fleet}} in a space-aware data model, refer to [](/deploy-manage/manage-spaces-fleet.md).
 
 ## Required permissions [_required_privileges_3]
 
@@ -138,6 +138,15 @@ You can access the **Advanced Settings** management page in the navigation menu 
 :alt: Configure space-level landing page
 :screenshot:
 :::
+
+## Set a scope for {{cps}} [cps-default-search-scope]
+```{applies_to}
+serverless: preview
+```
+
+If your organization uses [{{cps}}](/explore-analyze/cross-project-search.md) ({{cps-init}}) in {{serverless-full}}, you can set the {{cps-init}} scope for each space. This setting determines the default scope for cross-project searches: origin only, or origin + all linked projects. 
+
+For best results, set the default {{cps-init}} scope for each space **before** your users start searching with CPS. Refer to [Set the default {{cps-init}} scope for a space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
 
 ## Make API calls to a space [spaces-api-requests]
 
