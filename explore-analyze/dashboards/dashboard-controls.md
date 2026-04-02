@@ -31,17 +31,17 @@ To add controls to a dashboard, you need:
 
 There are four types of controls:
 
-* **Options list** — A dropdown that allows to filter data by selecting one or more values.
+* **Options list** — A dropdown that lets you filter data by selecting one or more values.
   For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field that allows you to display only the logs generated from `osx` and `ios` operating systems.
 
   ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard_controlsOptionsList.png "title =50%")
 
-* **Range slider** — A slider that allows to filter the data within a specified range of values. This type of control only works with numeric fields.
+* **Range slider** — A slider that lets you filter the data within a specified range of values. This type of control only works with numeric fields.
   For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field that allows you to display only the log data from 9:00AM to 5:00PM.
 
   ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard_controlsRangeSlider_8.3.0.png "title =50%")
 
-* **Time slider** — A time range slider that allows to filter the data within a specified range of time, advance the time range backward and forward, and animate your change in data over the specified time range.
+* **Time slider** — A time range slider that lets you filter the data within a specified range of time, advance the time range backward and forward, and animate your change in data over the specified time range.
 
   ![Time slider control for the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
 
