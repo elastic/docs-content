@@ -21,6 +21,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+:::{changelog} /releases/observability
+:subsections:
+:::
+
 ## 9.3.2 [elastic-observability-9.3.2-release-notes]
 
 
@@ -54,7 +58,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes error handling in `executeEsqlRequest` to propagate ES|QL execution errors [#250605]({{kib-pull}}250605).
 * Fixes query sync on save and adds debounce for preview chart [#249833]({{kib-pull}}249833).
 * Fixes editing feature of significant event queries [#249716]({{kib-pull}}249716).
-
 
 ## 9.3.0 [elastic-observability-9.3.0-release-notes]
 

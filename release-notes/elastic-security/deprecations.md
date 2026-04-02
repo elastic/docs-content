@@ -23,6 +23,12 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+:::{changelog} /releases/security
+:subsections:
+:type: deprecation
+:::
+
+
 ## 9.1.0 [elastic-security-9.1.0-deprecations]
 
 ::::{dropdown} Removes default quick prompts
