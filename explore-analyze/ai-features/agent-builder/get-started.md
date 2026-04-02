@@ -86,7 +86,7 @@ If you already have data in {{es}}, skip ahead to [start a conversation](#start-
 
 If you need to add data first, choose the path that fits:
 
-### Use sample data
+**Use sample data**
 
 If you're not ready to add your own data, you can:
 
@@ -94,7 +94,7 @@ If you're not ready to add your own data, you can:
 - Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-). (This requires your [{{es}} URL and an API key](/solutions/elasticsearch-solution-project/search-connection-details.md)).
 - Follow the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md), which includes sample book data.
 
-### Bring your own data
+**Bring your own data**
 
 If you already have data, you can:
 
