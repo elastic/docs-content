@@ -1,10 +1,12 @@
 ---
+navigation_title: Create programmatically
 description: Use the Dashboards API, the Lens Visualizations API, or AI-powered tools to create and manage Kibana dashboards and visualizations programmatically.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: overview
 ---
 
 # Create dashboards and visualizations programmatically [create-programmatically]
@@ -35,7 +37,7 @@ Refer to the [Lens Visualizations API reference](https://www.elastic.co/docs/api
 
 ## Kibana dashboards agent skill [dashboards-agent-skill]
 
-The Kibana dashboards agent skill enables AI agents and LLM-powered tools to create and manage dashboards through natural language instructions. It is designed for agentic workflows where a language model generates dashboard definitions that are then applied automatically.
+The Kibana dashboards agent skill enables AI agents and LLM-powered tools to create and manage dashboards through natural language instructions. It is designed for agentic workflows where a language model generates dashboard definitions and applies them automatically.
 
 Refer to the [kibana-dashboards agent skill](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards) on GitHub.
 
