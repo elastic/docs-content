@@ -28,8 +28,11 @@ Remote clusters are especially useful in two cases:
 :::{include} ./remote-clusters/_snippets/terminology.md
 :::
 
-::::{note}
-Remote clusters are not available in {{serverless-full}}. To search across more surfaces in {{serverless-short}}, use [{{cps}}](/explore-analyze/cross-project-search.md).
+::::{admonition} Alternatives for {{serverless-short}}
+Remote clusters are not available in {{serverless-full}}.
+
+* The equivalent of {{ccs}} in {{serverless-full}} is [{{cps}}](/deploy-manage/cross-project-search-config.md). {{cps-init}} does not require remote cluster configuration.
+* A feature equivalent to cross-cluster replication is anticipated in a future release.
 ::::
 
 ## Security models and connection modes
