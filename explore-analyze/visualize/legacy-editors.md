@@ -13,7 +13,7 @@ products:
 Legacy editors are still available but have been replaced by better alternatives. Consider using one of the [modern editors](../visualize.md) offered in Elastic such as **Lens**.
 
 :::{note}
-To create a legacy visualization, navigate to the **Dashboards** panel, go to **Visualizations** > **Create visualization** > **Legacy**, then select **TSVB** or **Aggregation-based**. Consider using [Lens](../visualize.md) instead.
+To create a legacy visualization, navigate to the **Dashboards** page, go to **Visualizations** > **Create visualization** > **Legacy**, then select **TSVB** or **Aggregation-based**. Consider using [Lens](../visualize.md) instead.
 :::
 
 The legacy editors are:
