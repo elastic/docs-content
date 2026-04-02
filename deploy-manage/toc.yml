@@ -679,7 +679,6 @@ toc:
     children:
       - file: cross-project-search-config/cps-config-link-and-manage.md
       - file: cross-project-search-config/cps-config-access-and-scope.md
-      - file: cross-project-search-config/cps-config-impacts-and-limitations.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
