@@ -204,15 +204,12 @@ import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 
-// Set the traces endpoint based on the config provided
-const tracesEndpoint = `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/traces`;
-
 // Set the tracer provider for instrumentations and calls to the API to start and end spans
 const tracerProvider = new WebTracerProvider({
   resource,  // All spans will be associated with this resource
   spanProcessors: [
     new BatchSpanProcessor(new OTLPTraceExporter({
-      url: tracesEndpoint,
+      url: `${OTEL_EXPORTER_OTLP_ENDPOINT}`,
     })),
   ],
 });
@@ -251,12 +248,9 @@ import { metrics } from '@opentelemetry/api';
 import { MeterProvider, PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
 
-// Set the metrics endpoint based on the config provided
-const metricsEndpoint = `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/metrics`;
-
 // Create metric reader to process metrics and export using OTLP
 const metricReader = new PeriodicExportingMetricReader({
-  exporter: new OTLPMetricExporter({ url: metricsEndpoint }),
+  exporter: new OTLPMetricExporter({ url: `${OTEL_EXPORTER_OTLP_ENDPOINT}` }),
 });
 
 // Create meter provider to send metrics
@@ -297,11 +291,8 @@ import { logs, SeverityNumber } from '@opentelemetry/api-logs';
 import { BatchLogRecordProcessor, LoggerProvider } from '@opentelemetry/sdk-logs';
 import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-http';
 
-// Set the logs endpoint based on the config provided
-const logsEndpoint = `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/logs`;
-
 // Configure logging to send to the Collector
-const logExporter = new OTLPLogExporter({ url: logsEndpoint });
+const logExporter = new OTLPLogExporter({ url: `${OTEL_EXPORTER_OTLP_ENDPOINT}` });
 
 const loggerProvider = new LoggerProvider({
   resource: resource,
@@ -430,21 +421,19 @@ export function initOpenTelemetry(config) {
                               .merge(detectedResources);
 
   // Trace signal setup
-  const tracesEndpoint = `${config.endpoint}/v1/traces`;
   const tracerProvider = new WebTracerProvider({
     resource,
     spanProcessors: [
       new BatchSpanProcessor(new OTLPTraceExporter({
-        url: tracesEndpoint,
+        url: `${config.endpoint}`,
       })),
     ],
   });
   tracerProvider.register({ contextManager: new ZoneContextManager() })
 
   // Metrics signal setup
-  const metricsEndpoint = `${config.endpoint}/v1/metrics`;
   const metricReader = new PeriodicExportingMetricReader({
-    exporter: new OTLPMetricExporter({ url: metricsEndpoint }),
+    exporter: new OTLPMetricExporter({ url: `${config.endpoint}` }),
   });
   const meterProvider = new MeterProvider({
     resource: resource,
@@ -453,8 +442,7 @@ export function initOpenTelemetry(config) {
   metrics.setGlobalMeterProvider(meterProvider);
 
   // Logs signal setup
-  const logsEndpoint = `${config.endpoint}/v1/logs`;
-  const logExporter = new OTLPLogExporter({ url: logsEndpoint });
+  const logExporter = new OTLPLogExporter({ url: `${config.endpoint}` });
 
   const loggerProvider = new LoggerProvider({
     resource: resource,
