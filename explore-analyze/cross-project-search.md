@@ -180,6 +180,10 @@ For additional information, refer to the [{{product.painless}} execute API refer
 
 For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md).
 
+### Observability app limitations
+
+{{observability}} apps have limited {{cps-init}} support and several known issues exist. For specific app details and a full list of known issues, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md#obs-cps-known-issues).
+
 ## {{cps-cap}} examples [cps-examples]
 
 The following examples demonstrate how search requests behave in different {{cps-init}} scenarios.
