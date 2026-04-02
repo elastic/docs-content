@@ -98,7 +98,7 @@ If you're not ready to add your own data, you can:
 
 If you have data you want agents to work with:
 
-- [Upload a file](/manage-data/ingest/upload-data-files.md) through {{kib}}.
+- [Upload a file](/manage-data/ingest/upload-data-files.md) in the {{kib}} UI for quick testing.
 - Learn about your [ingestion options](/manage-data/ingest.md) if you'd like to ingest larger datasets.
 
 ::::
