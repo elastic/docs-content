@@ -84,14 +84,14 @@ You can control the target data stream using URL path parameters:
 | Endpoint | Data stream |
 | --- | --- |
 | `/_prometheus/api/v1/write` | `metrics-generic.prometheus-default` |
-| `/_prometheus/{dataset}/api/v1/write` | `metrics-{dataset}.prometheus-default` |
-| `/_prometheus/{dataset}/{namespace}/api/v1/write` | `metrics-{dataset}.prometheus-{namespace}` |
+| `/_prometheus/metrics/{dataset}/api/v1/write` | `metrics-{dataset}.prometheus-default` |
+| `/_prometheus/metrics/{dataset}/{namespace}/api/v1/write` | `metrics-{dataset}.prometheus-{namespace}` |
 
 For example, to route infrastructure metrics into a dedicated data stream, configure the remote write URL as:
 
 ```yaml
 remote_write:
-  - url: "https://<es_endpoint>/_prometheus/infrastructure/production/api/v1/write"
+  - url: "https://<es_endpoint>/_prometheus/metrics/infrastructure/production/api/v1/write"
 ```
 
 This sends data to the `metrics-infrastructure.prometheus-production` data stream.

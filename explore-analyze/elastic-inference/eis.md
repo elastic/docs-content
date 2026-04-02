@@ -64,14 +64,15 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 
 Elastic {{infer-cap}} Service is currently available in these regions:
 
-AWS:
+**AWS:**
 
 * `us-east-1` (Virginia)
 
-GCP:
+**GCP:**
 
-* `europe-west1` (Belgium)
 * `asia-southeast1` (Singapore)
+* `europe-west1` (Belgium)
+* `us-east4` (Virginia)
 
 All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
 
