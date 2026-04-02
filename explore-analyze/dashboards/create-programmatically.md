@@ -48,4 +48,4 @@ serverless: preview
 
 Elastic's built-in AI assistant includes dashboard tools that let you create and update dashboards through a chat interface, without leaving the Kibana UI. Describe what you want to build, and the assistant generates the dashboard for you.
 
-Refer to [Agent Builder](../ai-features/agent-builder/overview.md) for an overview of the available built-in tools.
+Refer to [Agent Builder](../ai-features/elastic-agent-builder.md) for an overview of the available built-in tools.
