@@ -25,20 +25,21 @@ For additional information, refer to [{{cps-init}} security](/explore-analyze/cr
 
 % TODO ^^ snippetize from E&A
 
-### Administrator tasks
-
-- Make sure that users who need to search across linked projects have a [role assigned](/deploy-manage/users-roles.md) on each linked project they need to access. Authorization is evaluated on the linked project, without regard to the origin project.
-- If a user reports missing data from a linked project, check their role assignment on that specific linked project first.
-
-% TODO alerting impacts of user role changes 
-
 ### Programmatic access [cps-programmatic-access]
 
 The same role-based access model applies to programmatic access through API keys. For {{cps}}, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), which can authenticate across project boundaries.
 
-Project-scoped API keys (such as {{es}} API keys) cannot search across project boundaries. If a project-scoped API key is used in a {{cps}} context, it silently returns results from the origin project only (no error is returned).
+Project-scoped API keys, such as [{{serverless-short}} project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md), cannot search across project boundaries. If a project-scoped API key is used in a {{cps}} context, it silently returns results from the origin project only (no error is returned).
 
-Each {{ecloud}} API key inherits the permissions of the user who created it. Make sure the user who creates the key has the appropriate [roles](/deploy-manage/users-roles.md) on each project the key needs to access.
+### Administrator tasks
+
+- Make sure that users who need to search across linked projects have a [role assigned](/deploy-manage/users-roles.md) on each linked project they need to access. Authorization is evaluated on the linked project, without regard to the origin project.
+- If a user reports missing data from a linked project, check their role assignment on that specific linked project first.
+- For programmatic access, make sure the {{ecloud}} API key has the appropriate [roles](/deploy-manage/users-roles.md) on each project the key needs to access.
+
+% TODO alerting impacts of user role changes 
+
+
 
 ## Manage {{cps}} scope [cps-search-scope]
 
