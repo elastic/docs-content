@@ -17,6 +17,25 @@ Create a new dashboard in {{product.kibana}} to start visualizing and monitoring
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
 :::
 
+::::{dropdown} Create a dashboard using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Use `POST /api/dashboards` to create a dashboard programmatically. You can create an empty dashboard or include panels inline:
+
+```bash
+curl -X POST "${KIBANA_URL}/api/dashboards" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "title": "Web logs overview",
+  "time_range": { "from": "now-90d", "to": "now" }
+}'
+```
+
+Refer to the [Dashboards API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-dashboards) for the full request schema, including how to add panels and controls.
+::::
+
 ## Requirements [create-dashboard-requirements]
 
 Before creating a dashboard, ensure you have:
@@ -30,25 +49,6 @@ Before creating a dashboard, ensure you have:
 2. Select **Create dashboard** to start with an empty dashboard.
 
     When you create a dashboard, you are automatically in edit mode and can make changes to the dashboard.
-
-::::{dropdown} Create a dashboard using the API
-:applies_to: stack: preview 9.4, serverless: preview
-
-Use `POST /api/dashboards` to create an empty dashboard, or include panels inline:
-
-```bash
-curl -X POST "${KIBANA_URL}/api/dashboards" \
-  -H "Authorization: ApiKey ${API_KEY}" \
-  -H "kbn-xsrf: true" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "title": "Web logs overview",
-  "time_range": { "from": "now-90d", "to": "now" }
-}'
-```
-
-Refer to the [Dashboards API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-dashboards) for the full schema, including how to add panels and controls.
-::::
 
 3. Populate your dashboard with the content that you need. You can:
 
