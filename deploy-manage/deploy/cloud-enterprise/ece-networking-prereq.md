@@ -14,6 +14,10 @@ The first host you install ECE on initially requires the ports for all roles to 
 
 For versions 2.4.0 and 2.4.1, IPv6 should remain enabled on any host with the Proxy role. In 2.4.2 and later, IPv6 can be disabled.
 
+::::{note}
+If you want to expose ECE endpoints to IPv6 clients on {{aws}} while keeping internal ECE networking on IPv4, refer to [Set up IPv6 at the edge for ECE on AWS](./ece-ipv6-aws-setup.md).
+::::
+
 * [Inbound traffic](#ece-inbound)
 * [Outbound traffic](#ece-outbound)
 * [Container communication on the same host](#ece-container-communication-on-same-host)
