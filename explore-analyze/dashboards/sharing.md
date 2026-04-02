@@ -31,7 +31,7 @@ To get started, click {icon}`share` **Share** in the toolbar.
 
 ## Manage access permissions [manage-dashboard-access]
 ```{applies_to}
-serverless:
+serverless: ga
 stack: ga 9.3+
 ```
 
@@ -52,7 +52,7 @@ Share a direct link to your dashboard so that others can access it in {{kib}}.
 
 The link requires authentication. To access the dashboard, users must log in to {{kib}} with an account that has the necessary permissions.
 
-{applies_to}`stack: ga 9.1` When sharing, you can choose to use a relative or an absolute time range:
+{applies_to}`{ stack: ga 9.1, serverless: ga }` When sharing, you can choose to use a relative or an absolute time range:
 
 * **Relative time range**: The link shows current data. For example, if you share a "Last 7 days" view, users always see the most recent 7 days when they open the link.
 * **Absolute time range** (default): The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link always shows that exact week of January 1-7, 2025, regardless of when users open the link.
