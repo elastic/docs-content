@@ -31,6 +31,25 @@ Before creating a dashboard, ensure you have:
 
     When you create a dashboard, you are automatically in edit mode and can make changes to the dashboard.
 
+::::{dropdown} Create a dashboard using the API
+:applies_to: stack: preview 9.4, serverless: preview
+
+Use `POST /api/dashboards` to create an empty dashboard, or include panels inline:
+
+```bash
+curl -X POST "${KIBANA_URL}/api/dashboards" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "title": "Web logs overview",
+  "time_range": { "from": "now-90d", "to": "now" }
+}'
+```
+
+Refer to the [Dashboards API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-dashboards) for the full schema, including how to add panels and controls.
+::::
+
 3. Populate your dashboard with the content that you need. You can:
 
     * [**Add new visualizations**](../visualize.md#panels-editors). Create a chart using [Lens](../visualize/lens.md), the default visualization editor in {{product.kibana}}, or other visualizations such as [Maps](../visualize/maps.md).
@@ -42,7 +61,7 @@ Before creating a dashboard, ensure you have:
 5. Define the main settings of your dashboard from the **Settings** menu located in the toolbar.
 
     1. A meaningful title, description, and [tags](../find-and-organize/tags.md) allow you to find the dashboard quickly later when browsing your list of dashboards or using the {{kib}} search bar.
-    2. Additional display options allow you unify the look and feel of the dashboard’s panels:
+    2. Additional display options allow you unify the look and feel of the dashboard's panels:
 
         * **Store time with dashboard** — Saves the specified time filter.
         * **Use margins between panels** — Adds a margin of space between each panel.
@@ -71,4 +90,3 @@ Before creating a dashboard, ensure you have:
 
     :::{include} ../_snippets/dashboard-ownership.md
     :::
-
