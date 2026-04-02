@@ -35,7 +35,7 @@ This page lists all available settings for [dashboard controls](dashboard-contro
 :::
 :::{applies-item} stack: ga 9.0-9.3
  - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
- - **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
+ - **Minimum width**: Specify how much horizontal space the control should occupy. The final width can vary depending on the other controls and their own width setting.
  - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
 
  - **Selections**:
@@ -71,7 +71,7 @@ This page lists all available settings for [dashboard controls](dashboard-contro
 
 :::{applies-item} stack: ga 9.0-9.3
  - **Label**: Overwrite the default field name with a clearer and self-explanatory label.
- - **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
+ - **Minimum width**: Specify how much horizontal space the control should occupy. The final width can vary depending on the other controls and their own width setting.
  - **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
  - **Step size**: Determine the slider's number of steps. The smaller a slider's step size, the more steps it has.
 
