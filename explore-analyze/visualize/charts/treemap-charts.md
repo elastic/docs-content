@@ -209,7 +209,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 
 1. `treemap` renders nested rectangles whose area is proportional to the metric value.
 2. `absolute` displays the raw byte count on each rectangle instead of a percentage.
-3. `size: 6` limits the chart to the top 6 file extensions, keeping the layout readable.
+3. `limit: 6` limits the chart to the top 6 file extensions, keeping the layout readable.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -320,9 +320,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "filters",                                                      <2>
       "filters": [
-        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success (2xx/3xx)" },
-        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client errors (4xx)" },
-        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server errors (5xx)" }
+        { "filter": { "query": "response.keyword >= \\"200\\" AND response.keyword < \\"400\\"" }, "label": "Success (2xx/3xx)" },
+        { "filter": { "query": "response.keyword >= \\"400\\" AND response.keyword < \\"500\\"" }, "label": "Client errors (4xx)" },
+        { "filter": { "query": "response.keyword >= \\"500\\"" }, "label": "Server errors (5xx)" }
       ]
     }
   ]

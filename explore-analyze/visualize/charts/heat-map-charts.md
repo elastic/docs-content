@@ -299,7 +299,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 ```
 
 1. `hour_of_day` is a runtime field that extracts the hour (0--23) from `@timestamp`, creating one row per hour.
-2. `size: 24` ensures all 24 hours appear on the vertical axis, giving a complete picture of daily activity.
+2. `limit: 24` ensures all 24 hours appear on the vertical axis, giving a complete picture of daily activity.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

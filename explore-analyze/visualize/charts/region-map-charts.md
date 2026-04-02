@@ -160,7 +160,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 
 1. `region_map` renders a geographic choropleth where region color intensity reflects the metric value.
 2. `geo.dest` contains ISO country codes that are matched to EMS world country boundaries.
-3. `size: 50` includes up to 50 countries, providing broad geographic coverage.
+3. `limit: 50` includes up to 50 countries, providing broad geographic coverage.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

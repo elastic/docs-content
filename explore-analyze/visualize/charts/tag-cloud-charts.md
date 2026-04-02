@@ -181,7 +181,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 
 1. `tag_cloud` renders text labels with font size proportional to the metric value.
 2. `request.keyword` provides the text for each tag, showing the full URL path.
-3. `size: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
+3. `limit: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
