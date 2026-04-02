@@ -17,18 +17,36 @@ products:
 
 Learn how to systematically assess open Attack Discovery findings, determine which ones warrant a case, and process them. Following a repeatable triage workflow helps you focus on genuine threats, reduce alert fatigue, and lower your mean time to respond.
 
-Each Attack Discovery finding groups related alerts into a single attack narrative. Rather than investigating each alert individually, you assess the attack as a unit — evaluating confidence based on alert diversity, detection rule quality, and entity risk context — then decide whether to create a case, investigate further, or acknowledge and move on.
+Each Attack Discovery finding groups related alerts into a single attack narrative. Rather than investigating each alert individually, you assess the attack as a unit—evaluating confidence based on alert diversity, detection rule quality, and entity risk context—then decide whether to create a case, investigate further, or acknowledge and move on.
+
+:::{note}
+An [agent skill](https://github.com/elastic/agent-skills-sandbox/tree/main/skills/security/attack-discovery-triage) exists specifically for automating this triage workflow. When loaded into a compatible AI agent, it retrieves open findings, scores confidence programmatically using the same methodology described on this page, and presents a triage summary for your approval before creating cases or acknowledging alerts.
+
+**Advantages of the agent skill:**
+
+- Processes findings in bulk rather than one at a time.
+- Applies the confidence scoring heuristics consistently without manual lookups.
+- Runs all enrichment queries (entity risk, rule frequency, alert context) automatically.
+
+**Trade-offs to consider:**
+
+- The skill requires the [agent-skills-sandbox](https://github.com/elastic/agent-skills-sandbox) repository, Node.js 18+, and API keys with appropriate permissions.
+- Confidence scoring uses fixed heuristics. Manual triage lets you apply institutional knowledge that the skill can't account for, such as knowing that a specific host is a honeypot or that a particular rule was recently tuned.
+- Write operations (case creation, alert acknowledgment) still require your explicit approval, but you have less granular control over how findings are enriched and summarized.
+
+Refer to the [agent-skills-sandbox README](https://github.com/elastic/agent-skills-sandbox/blob/main/README.md) for setup instructions.
+:::
 
 ## Before you begin [before-you-begin]
 
 Before you start, make sure you have the following:
 
 - Attack Discovery is [configured with an LLM connector](/solutions/security/ai/attack-discovery.md#attack-discovery-generate-discoveries).
-- At least one generation has completed, either [manually](/solutions/security/ai/attack-discovery.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery.md#schedule-discoveries).
+- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery.md#schedule-discoveries).
 - Your role has the [required privileges](/solutions/security/ai/attack-discovery.md#attack-discovery-rbac) to view and modify Attack Discovery alerts.
 
 :::{tip}
-For richer triage context, enable [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). Entity risk scores help you assess whether the users and hosts in a discovery are already known to be high-risk, which can strengthen your assessment. Entity analytics isn't required for triage, but it can improve decision quality.
+For richer triage context, enable [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). Entity risk scores help you assess whether the users and hosts in a discovery are already known to be high risk, which can strengthen your assessment. Entity analytics isn't required for triage, but it can improve decision quality.
 :::
 
 ## Step 1: Review open findings [review-open-findings]
@@ -47,7 +65,7 @@ For each finding, note the following key signals:
 
 - **Risk score**: The overall severity assigned to the discovery.
 - **Alert count**: How many underlying security alerts the discovery groups together.
-- **MITRE ATT&CK tactics**: Which tactics the discovery maps to — more tactics suggest a broader attack.
+- **MITRE ATT&CK tactics**: Which tactics the discovery maps to—more tactics suggest a broader attack.
 - **Entities**: Which users and hosts are involved.
 
 ::::
@@ -92,17 +110,17 @@ GET /s/my-space/api/attack_discovery/_find?status=open&sort_field=risk_score&sor
 ::::
 :::::
 
-Before moving to Step 2, scan the results for duplicate findings. Overlapping schedule runs or repeated manual generations can produce similar discoveries covering the same alerts. Compare the `alert_ids` across findings — if two findings share most of their alerts, triage them together as one.
+Before moving to Step 2, scan the results for duplicate findings. Overlapping schedule runs or repeated manual generations can produce similar discoveries covering the same alerts. Compare the `alert_ids` across findings—if two findings share most of their alerts, triage them together as one.
 
 ## Step 2: Assess finding confidence [assess-finding-confidence]
 
 For each finding, evaluate three signals to determine whether it warrants a case, further investigation, or acknowledgment.
 
-**Signal 1 — Alert diversity**: How many alerts does the finding contain, and are they from different detection rules? A single alert from one rule provides minimal corroboration. Multiple alerts from distinct rules across different MITRE ATT&CK tactics provide strong corroboration.
+**Signal 1—Alert diversity**: How many alerts does the finding contain, and are they from different detection rules? A single alert from one rule provides minimal corroboration. Multiple alerts from distinct rules across different MITRE ATT&CK tactics provide strong corroboration.
 
-**Signal 2 — Rule frequency**: How often do the associated detection rules fire in your environment? Rules that rarely fire and affect few hosts carry more signal. Rules that fire dozens of times per week across many hosts are likely noisy and might need tuning.
+**Signal 2—Rule frequency**: How often do the associated detection rules fire in your environment? Rules that rarely fire and affect few hosts carry more signal. Rules that fire dozens of times per week across many hosts are likely noisy and might need tuning.
 
-**Signal 3 — Entity risk** (if entity analytics is enabled): What are the risk scores and [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) levels for the involved users and hosts? A finding involving a critical-risk entity on a high-value asset deserves more attention than one involving an unknown entity with no prior activity.
+**Signal 3—Entity risk** (if entity analytics is enabled): What are the risk scores and [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) levels for the involved users and hosts? A finding involving a critical-risk entity on a high-value asset deserves more attention than one involving an unknown entity with no prior activity.
 
 Use these signals together to assign an overall confidence level:
 
