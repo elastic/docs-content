@@ -57,7 +57,7 @@ A future update will address this when {{cps-init}} is enabled in APM and Infras
 
 ### Discover to Streams
 
-Opening a stream name from Discover may show different document counts in Streams, because Streams does not support {{cps-init}}. For example, Discover may show 20 documents for a stream while the Streams UI shows only 10 (local only).
+Streams remains local-project only and does not support {{cps-init}}. If you open a stream from Discover and the document is from a linked project, {{observability}} shows a warning that the stream is remote. The Streams UI then shows local-project data only, so counts can differ from Discover.
 
 ## Identifying remote and local documents [obs-cps-identify-documents]
 
@@ -98,9 +98,9 @@ APM-specific rules (APM anomaly, error count threshold, failed transaction rate 
 
 Tracking: [kibana#257714](https://github.com/elastic/kibana/issues/257714)
 
-### SLO remote actions not available [obs-cps-slo-remote]
+### Only local SLOs are visible [obs-cps-slo-remote]
 
-Remote SLOs appear in the SLO list with a "remote" badge, but **edit**, **disable**, and **clone** actions are not available for remote SLOs. Only local SLOs are manageable, even when connected to a remote project.
+Only local SLOs are visible, even when connected to a remote project.
 
 Tracking: [kibana#252955](https://github.com/elastic/kibana/issues/252955)
 
@@ -118,9 +118,9 @@ The following Discover flyout links do not work correctly for documents from lin
 
 These issues will be resolved when {{cps-init}} is enabled in APM and Infrastructure.
 
-### {{observability}} Overview alerts are local only [obs-cps-overview-alerts]
+### {{observability}} overview alerts are local only [obs-cps-overview-alerts]
 
-The **Alerts** section of the {{observability}} overview page shows alerts from the local project only, even when rules are configured to act on cross-project data.
+The **Alerts** section on the {{observability}} overview page shows alerts from the local project only, even when rules are configured to act on cross-project data.
 
 ### Logs Essentials projects cannot use {{cps-init}} [obs-cps-logs-essentials]
 
