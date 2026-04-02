@@ -107,16 +107,6 @@ When a role is assigned to *All Spaces*, you can’t remove its access from the 
 
 To move saved objects between spaces, you can [copy objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space), or [export and import objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-export-objects).
 
-## Set a scope for {{cps}} [cps-default-search-scope]
-```{applies_to}
-serverless: preview
-```
-
-If your organization uses [{{cps}}](/explore-analyze/cross-project-search.md) ({{cps-init}}) in {{serverless-full}}, you can set the {{cps-init}} scope for each space. This setting determines the default scope for cross-project searches: origin only, or origin + all linked projects. 
-
-For best results, set the default {{cps-init}} scope for each space **before** your users start searching with CPS. Refer to [Set the default {{cps-init}} scope for a space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
-
-
 ## Customize {{kib}}'s home page [spaces-default-route]
 ```{applies_to}
 stack: ga
