@@ -497,7 +497,7 @@ $$$glossary-leader-index$$$ leader index
 :   Source [index](/reference/glossary/index.md#glossary-index) for [{{ccr}}](/reference/glossary/index.md#glossary-ccr). A leader index exists on a [remote cluster](/reference/glossary/index.md#glossary-remote-cluster) and is replicated to [follower indices](/reference/glossary/index.md#glossary-follower-index). See [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
 
 $$$glossary-lens$$$ Lens
-:   Enables you to build visualizations by dragging and dropping data fields. Lens makes makes smart visualization suggestions for your data, allowing you to switch between visualization types. See [Lens](/explore-analyze/dashboards.md).
+:   Enables you to build visualizations by dragging and dropping data fields. Lens makes smart visualization suggestions for your data, allowing you to switch between visualization types. See [Lens](/explore-analyze/dashboards.md).
 
 $$$glossary-linked-project$$$ linked project
 :   An {{serverless-full}} project that is linked to an [origin project](/reference/glossary/index.md#glossary-origin-project). See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
