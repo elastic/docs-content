@@ -307,7 +307,7 @@ When creating or editing a visualization, you can customize several appearance o
 **Titles and text**
 :    Specify to hide or show bar values on bar charts:
     - **Hide**: Removes the numeric value from the bars entirely. Only the bar height represents the magnitude. 
-    - **Show, if able**: Attempts to draw the value inside each bar, but the label will only render when there’s enough vertical space to keep text legible; crowded bars will not have labels. 
+    - **Show, if able**: Attempts to draw the value inside each bar, but the label will only render when there's enough vertical space to keep text legible; crowded bars will not have labels. 
     
     Your selection applies to the entire chart layer, so you can turn labels on for quick KPI-style charts or keep them off for dense histograms.
 
@@ -318,7 +318,7 @@ When creating or editing a visualization, you can customize several appearance o
     - **Tick labels**: Show or hide the textual values beneath the ticks. When visible, the orientation picker lets you rotate them (horizontal, angled, vertical) to avoid overlap on dense timelines.
     - **Orientation**: Set the placement of the axis title. It can be **Horizontal**, **Vertical**, or **Angled**.
     - **Axis scale**: Select linear (default), log, or square-root scaling.
-    - **Bounds & rounding**: Manually clamp the axis to a min/max or let Lens round to nice intervals. For numeric histograms this also controls whether “nice” bucket labels are used.
+    - **Bounds & rounding**: Manually clamp the axis to a min/max or let Lens round to nice intervals. For numeric histograms this also controls whether "nice" bucket labels are used.
 
     :::{note}
     **Left axis** and **Bottom axis** options can interchange depending on the orientation you selected for the bar chart.
@@ -330,7 +330,7 @@ When creating or editing a visualization, you can customize several appearance o
     - **Gridlines**: Toggles vertical guide lines across the chart, which help compare bar positions against the axis scale.
     - **Tick labels**: Show or hide the textual values beneath the ticks. When visible, the orientation picker lets you rotate them (horizontal, angled, vertical) to avoid overlap on dense timelines.
     - **Show partial data markers**: Highlights buckets at the edges of the time range that only contain partial data—useful for time-based bar charts so viewers know the first/last bucket might be incomplete.
-    - **Show current time marker**: Draws a vertical marker for “now” on time charts, so you can see how recent the latest bar is.
+    - **Show current time marker**: Draws a vertical marker for "now" on time charts, so you can see how recent the latest bar is.
 
 
 #### Legend settings
@@ -418,7 +418,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 ```
 
 1. `label` overrides the default axis label so the vertical axis reads "Page Views" instead of "Count".
-2. `size: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
+2. `limit: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -472,7 +472,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "y": [
         {
           "operation": "formula",                                                  <2>
-          "formula": "count(kql='response > \"300\"') / count()",
+          "formula": "count(kql='response > \\"300\\"') / count()",
           "label": "Error Rate %",
           "format": { "type": "percent" },
           "filter": { "query": "" }
