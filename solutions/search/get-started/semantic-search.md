@@ -9,21 +9,17 @@ products:
 ---
 # Get started with vector search
 
-In this quickstart, you’ll set up a search that combines keyword-based and vector search approaches to find results based on both exact terms and meaning. This is called hybrid search, and in many cases it provides better results than using either approach alone.
+If you want to get a sense of how vector search works in {{es}}, this quickstart is for you. First, you create an index and store your data in two forms: plain text and vector embeddings. Then you run a query that searches both representations and combines the results.
 
-:::{dropdown} What are keyword-based search, vector search, and hybrid search?
-
-Keyword-based search matches exact terms in your data, while vector search understands the intent behind a query.
+:::{note}
+This quickstart uses [hybrid search](../hybrid-search.md): it combines keyword-based and vector search so you can match both exact terms and meaning. Keyword-based search matches exact terms in your data, while vector search understands the intent behind a query using embeddings.
 
 For example, if a document contains the phrase "annual leave policy", a keyword search for "annual leave" will return it because the terms match. However, a search for "vacation rules" may not return the same document, because those exact words are not present.
 
 With vector search, a query like "vacation rules" can still return the "annual leave policy" document, because it matches based on meaning rather than exact terms.
 
 With hybrid search, the same query can return both keyword and semantic matches, combining exact term matching with meaning-based retrieval to improve overall relevance.
-
 :::
-
-First, you create an index and store your data in two forms: plain text and vector embeddings. Then you run a query that searches both representations and combines the results.
 
 ## Prerequisites [semantic-search-quickstart-prerequisites]
 
@@ -34,7 +30,7 @@ A running {{es}} cluster. For the fastest way to follow this quickstart, [create
 :::::{stepper}
 ::::{step} Create an index mapping
 
-Define the index mapping. The mapping specifies the fields in your index and their data types, including both plain text fields and fields used to store vector embeddings for semantic search.
+Define the [index mapping](/manage-data/data-store/mapping.md). The mapping specifies the fields in your index and their data types, including both plain text fields and fields used to store vector embeddings for semantic search.
 
 ```console
 PUT semantic-embeddings
@@ -207,15 +203,15 @@ Documents that score well on either side appear in the final merged list.
   },
   "hits": {
     "total": {
-      "value": 2,
+      "value": 2, <1>
       "relation": "eq"
     },
-    "max_score": 0.032786883,
+    "max_score": 0.032786883, <2>
     "hits": [
       {
         "_index": "semantic-embeddings",
         "_id": "akiYKZ0BGwHk8ONXXqmi",
-        "_score": 0.032786883,
+        "_score": 0.032786883, <3>
         "_source": {
           "content": "After running, cool down with light cardio for a few minutes to lower your heart rate and reduce muscle soreness."
         }
@@ -223,7 +219,7 @@ Documents that score well on either side appear in the final merged list.
       {
         "_index": "semantic-embeddings",
         "_id": "a0iYKZ0BGwHk8ONXXqmi",
-        "_score": 0.016129032,
+        "_score": 0.016129032, <4>
         "_source": {
           "content": "Marathon plans stress weekly mileage; carb loading before a race does not replace recovery between hard sessions."
         }
@@ -233,13 +229,27 @@ Documents that score well on either side appear in the final merged list.
 }
 ```
 
-:::
+1. How many documents matched the query (here, 2).
+2. The highest relevance score among the returned hits (the same as the top-ranked document’s score).
+3. Relevance score for the top-ranked document. Higher values rank earlier.
+4. Relevance score for the second-ranked document. Lower than the first, so it appears next in the list.
 
+:::
 
 ## Next steps
 
-- [Semantic search](../semantic-search.md) - Compare different semantic search workflows and choose one for your scenario (for example `semantic_text`, the {{infer}} API, or deploying models directly in {{es}}).
-- [Vector search](../vector.md) - Learn more about dense and sparse vectors, embeddings, and similarity search.
-- [Ranking and reranking](../ranking.md) - Learn more about multi-stage retrieval, rescoring, and reranking for better relevance.
-- [Build your search queries](../querying-for-search.md) - Learn more about Query DSL, {{esql}}, retrievers, and the Search API.
+### End-to-end tutorials
+
+- [Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md) - Follow a full tutorial on how to set up semantic search with the `semantic_text` field type.
+- [Semantic search with the {{infer}} API](../semantic-search/semantic-search-inference.md) - Use the {{infer}} API with third-party embedding services (for example Cohere, Hugging Face, or OpenAI) to run semantic search.
+- [Hybrid search with `semantic_text`](../hybrid-semantic-text.md) - Combine semantic retrieval on `semantic_text` with full-text search on a text field, then merge results using RRF.
+- [Semantic search with ELSER](../semantic-search/semantic-search-elser-ingest-pipelines.md) - Use the ELSER model for semantic search.
+- [Dense and sparse vector ingest pipelines](../vector/dense-versus-sparse-ingest-pipelines.md) - Implement semantic search end to end with NLP models deployed in {{es}}: pick dense or sparse, deploy the model, build ingest pipelines, and query—without relying on `semantic_text`.
+
+### Concepts and reference
+
+- [Semantic search](../semantic-search.md) - Compare the three workflows (`semantic_text`, {{infer}} API, or models deployed in-cluster) and see how they differ in complexity.
+- [Vector search](../vector.md) - Work directly with `dense_vector` and `sparse_vector` fields, related queries, and manual vector implementations when you need control beyond managed semantic workflows.
+- [Ranking and reranking](../ranking.md) - Structure multi-stage pipelines: initial BM25, vector, or hybrid retrieval, then reranking with stronger models on smaller candidate sets.
+- [Build your search queries](../querying-for-search.md) - Choose Query DSL, {{esql}}, or retrievers on the Search API depending on whether you need classic queries, analytics-style pipes, or composable retrieval pipelines.
 
