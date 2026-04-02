@@ -99,7 +99,6 @@ If you're not ready to add your own data, you can:
 If you have data you want agents to work with:
 
 - [Upload a file](/manage-data/ingest/upload-data-files.md) through {{kib}}.
-- For search-specific guidance, refer to [](/solutions/search/ingest-for-search.md).
 - For a broader overview, refer to [](/manage-data/ingest.md).
 
 ::::
