@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Monitor Elastic Security detection rule executions, view execution logs, check rule status, and identify and help troubleshoot performance issues using the Rule Monitoring tab.
+description: Monitor Elastic Security detection rule executions, view execution results and details, check rule status, and identify and help troubleshoot performance issues using the Rule Monitoring tab and Execution results tab.
 ---
 
 # Monitor rule executions [alerts-ui-monitor]
@@ -70,20 +70,47 @@ To learn how to find and fill gaps, refer to [Fill rule execution gaps](/solutio
 
 ## Execution results tab [rule-execution-logs]
 
-From the **Execution results** tab on a rule's details page, you can access the rule's execution log, monitor gaps, and check manual runs. To find this tab, select the rule's name to open its details, then scroll down.
+From the **Execution results** tab on a rule's details page, you can review how each run performed, monitor gaps, and check manual runs. To find this tab, select the rule's name to open its details, then scroll down.
 
-### Execution log table [execution-log-table]
+Choose the tab for your deployment. **{{stack}}** **9.4** and later and **{{ecloud}} Serverless** use the first tab; **{{stack}}** **9.3** and earlier use the second tab.
 
-Each detection rule execution is logged, including the execution type, success or failure status, any warning or error messages, how long it took to search for data, create alerts, and complete. This can help you identify and troubleshoot a rule if it isn't behaving as expected (for example, if it isn't creating alerts or takes a long time to run).
+::::{applies-switch}
 
-:::{image} /solutions/images/security-rule-execution-logs.png
-:alt: Execution log table on the rule execution results tab
-:screenshot:
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+Each detection rule execution is logged with status, timing, and how many alerts the run produced. The table helps you understand rule performance and troubleshoot failures.
+
+You can hover over each column heading to display a tooltip about that column's data. Select a column heading to sort the table by that column.
+
+| Column | Description |
+|--------|-------------|
+| **Status** | Overall status of the execution. |
+| **Run type** | Whether the run was a standard scheduled execution or a [manual backfill](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) run. |
+| **Timestamp** | Date and time the rule execution started. |
+| **Execution duration** | How long the rule took to run. |
+| **Alerts created** | Number of new alerts generated during this execution. |
+| **Message** | Outcome message from the execution (including warnings or errors when applicable). |
+
+**Row actions**
+
+* **Filter alerts by rule execution ID**: Opens the Alerts table filtered to alerts from this execution. This control is disabled when the execution created no alerts (hover to see a tooltip).
+* **View details**: Opens the [execution details flyout](#execution-details-flyout) for that run.
+
+Continue beleow for to filter what appears in the table.
 :::
 
-You can hover over each column heading to display a tooltip about that column's data. Select a column heading to sort the table by that column. Within the Execution log table, you can select the arrow at the end of a row to expand a long warning or error message.
+:::{applies-item} { stack: ga 8.0-9.3 }
 
-Use these controls to filter what's included in the logs table:
+The **Execution results** tab shows the run history in this layout. Each detection rule execution is logged, including the execution type, success or failure status, any warning or error messages, how long it took to search for data, create alerts, and complete. This can help you identify and troubleshoot a rule if it isn't behaving as expected (for example, if it isn't creating alerts or takes a long time to run).
+
+Continue beleow for to filter what appears in the table.
+:::
+
+::::
+
+You can hover over each column heading to display a tooltip about that column's data. Select a column heading to sort the table by that column. You can select the arrow at the end of a row to expand a long warning or error message.
+
+Use these controls to filter what's included in the table:
 
 * The **Run type** drop-down filters by rule execution type:
 
@@ -100,6 +127,31 @@ Use these controls to filter what's included in the logs table:
 * The **Source event time range** button toggles the display of data pertaining to the time range of manual runs.
 * The **Show metrics columns** toggle includes more or less data in the table, pertaining to the timing of each rule execution.
 * The **Actions** column allows you to show alerts generated from a given rule execution. Select the filter icon {icon}`filterInCircle` to create a global search filter based on the rule execution's ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by selecting **Restore previous filters** in the notification.
+
+
+### Execution details flyout [execution-details-flyout]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Additional timing, indexing, and gap details that were previously available via extra table columns and toggles are now shown in the execution details flyout. Select **View details** on a row to open a side panel. The panel shows the execution ID (copyable) and the following sections:
+
+* **Message**: Outcome message, including errors or warnings from the run.
+* **Source event time range**: For manual (backfill) runs only: **From** and **To** define the source event time range that this execution queried.
+* **Alerts**
+    * **Candidate alerts**: Alerts detected before deduplication and suppression.
+    * **Alerts created**: Alerts indexed in {{es}} after deduplication and suppression.
+* **Indices**
+    * **Matched indices**: Number of indices that matched the rule's index patterns.
+    * **Frozen indices queried**: Number of frozen-tier indices included in the search.
+* **Timing**
+    * **Gap duration**: Duration of any gap in rule execution. Adjust rule look-back or refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) for mitigations.
+    * **Scheduling delay**: Time from when the rule was scheduled to when it ran.
+    * **Execution duration**: How long the rule took to run.
+* **Execution duration breakdown**
+    * **Search**: Time spent on {{es}} search requests during the run.
+    * **Indexing**: Time spent indexing detected alerts.
 
 ### Gaps table
 
