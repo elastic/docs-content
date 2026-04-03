@@ -13,13 +13,26 @@ This page explains how to link {{serverless-full}} projects for {{cps}} ({{cps-i
 
 For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cross-project-search-config.md). For information about _using_ {{cps-init}}, refer to [](/explore-analyze/cross-project-search.md).
 
+## Before you begin
+
+Before you link projects for {{cps}}, review these prerequisites and key concepts:
+
+- Review the [architecture patterns](/deploy-manage/cross-project-search-config.md#cps-arch) to choose the right linking topology for your organization. 
+- Review the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space and make any necessary adjustments. If you don't set default {{cps-init}} scopes at the space level, all searches from the origin project will query data from **every** linked project by default, right after you link projects. 
+- Review [user access and programmatic access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md) for each linked project. Users and API keys need to have the appropriate permissions to access the linked projects.
+
+### How linking works
+
+In {{cps}} configurations, project links are unidirectional and independent:
+
+- Searches that run from a linked project do **not** run against the origin project. If you need bidirectional search, link the projects twice, in both directions.
+- Linking projects is not transitive. If Project A links to Project B, and Project B links to Project C, Project A cannot automatically search Project C. Each link is independent. 
+
 ## Link projects [cps-link-projects]
 
-:::{tip}
-Before linking projects, review the [architecture patterns](/deploy-manage/cross-project-search-config.md#cps-arch) to choose the right linking topology for your organization. Also make sure to review the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space and make any necessary adjustments.
-:::
-
 To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
+
+1. Make sure you've completed the tasks in the [Before you begin](#before-you-begin) section.
 
 1. On the home screen, find the project you want to use as the origin project and click **Manage**.
 
@@ -33,19 +46,6 @@ To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
 
 1. Complete the remaining steps in the wizard to review and save your selections. In the last step, you can click **View API request** to see the equivalent API request for linking to the selected projects.
 
-### How linking works
-
-In {{cps-init}}, project links work as follows:
-
-- Searches that run from a linked project do **not** run against the origin project. If you need bidirectional search, link the projects twice, in both directions.
-- Linking projects is not transitive. If Project A links to Project B, and Project B links to Project C, Project A cannot automatically search Project C. Each link is independent.
-- System indices (such as `.security` and `.fleet-*`) are excluded from {{cps}} by design.
-
-::::{important}
-After you link projects, all searches from the origin project query data from **every** linked project by default. This applies immediately to all queries, including those from existing dashboards and alerting rules.
-
-To limit searches, you can configure a [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space. Users can override the default by setting scope when searching, filtering, or running queries.
-::::
 
 ## Manage linked projects [cps-manage-linked-projects]
 

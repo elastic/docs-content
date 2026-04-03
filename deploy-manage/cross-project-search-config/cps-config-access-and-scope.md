@@ -59,7 +59,7 @@ Users can also set the scope at the query level, using [qualified search express
 By default, an unqualified search from an origin project targets the searchable resources in **all** linked projects, plus the searchable resources in the origin project. This default scope is intentionally broad, to provide the best user experience for searching across linked projects. 
 
 :::{important}
-The broad default {{cps-init}} scope can cause unexpected behavior, especially for alerts and dashboards that operate on the new combined dataset of the origin and all linked projects. Make sure to consider the search scope, including the [default {{cps-init}} scope for the space](#cps-default-search-scope), _before_ your users start working with {{cps}}.
+The system default {{cps-init}} scope can cause unexpected behavior, especially for alerts and dashboards that operate on the new combined dataset of the origin and all linked projects. To limit this behavior, set the [default {{cps-init}} scope for each space](#cps-default-search-scope), _before_ you link projects.
 :::
 
 The following actions change the scope of {{cps}}es:
@@ -76,7 +76,7 @@ The scope controls which projects receive the search request, while [querying an
 
 ### Set the default {{cps-init}} scope for a space [cps-default-search-scope]
 
-You can adjust the broad {{cps-init}} default by setting a narrower {{cps}} scope for each space. This setting determines the default search scope for the space. Users can override the default by setting their preferred scope when searching, filtering, or running queries. 
+You can adjust the {{cps-init}} system default by setting a narrower {{cps}} scope for each space. This setting determines the default search scope for the space. Users can override both the system default and the space-level default by setting their preferred scope when searching, filtering, or running queries. 
 
 :::{tip}
 For best results, set the default {{cps-init}} scope for each space **before** you link projects.

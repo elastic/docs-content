@@ -35,9 +35,9 @@ Projects are intended to act as logical namespaces for data, not hard boundaries
 ::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
 ::::
 
-You can also adjust the search scope by [configuring the {{cps-init}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). You can set this space-level default before or after you link projects. 
+Administrators can also adjust the search scope by [configuring the {{cps-init}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). For best results, set this space-level default before you link projects. 
 
-For details about project IDs and aliases (used in search expressions), refer to [Project IDs and aliases](/explore-analyze/cross-project-search.md#project-ids-and-aliases).
+For details about project IDs and aliases used in search expressions, refer to [Project IDs and aliases](/explore-analyze/cross-project-search.md#project-ids-and-aliases).
 
 ## Before you begin [cps-prerequisites]
 
@@ -94,10 +94,11 @@ The overview project model is strongly recommended and appropriate for most {{cp
 
 ## Configure {{cps-init}}
 
-After reviewing the architecture patterns, you can configure {{cps-init}} scope and manage linked projects:
+After reviewing the architecture patterns, you can configure {{cps-init}} scope and manage linked projects. For best results, complete these tasks in order:
 
-- [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
-- [Access and scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Manage user access across linked projects, configure the default {{cps}} scope for each space, and review programmatic access requirements.
+1. [Set space scope defaults](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#about-cps-init-scope): Configure the default {{cps}} scope for each space that will be used with {{cps}}.
+1. [Manage user access and programmatic access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Confirm user roles in both the origin and linked projects, as well as roles granted to [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md#roles) that will be used with {{cps}}.
+1. [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
 
 Make sure to also review the [feature impacts](#cps-feature-impacts) and [limitations](#cps-limitations) of {{cps-init}}.
 
@@ -128,4 +129,4 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 After you configure {{cps}} and link projects, users can start searching across linked projects from the origin project. For search syntax, scope controls, and examples, refer to the following pages:
 
 - [{{cps-cap}} overview](/explore-analyze/cross-project-search.md): Learn how to build queries in a {{cps-init}} context, including how to restrict search scope.
-- [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Learn how {{cps-init}} works with compatible {{kib}} apps, including adjusting in-app search scope.
+- [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Learn how {{cps-init}} works with compatible {{kib}} apps, including how to adjust search scope.
