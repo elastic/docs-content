@@ -214,6 +214,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a bug in {{elastic-defend}} Linux event collection where some long-running processes were not enriched.
 
 
+## 9.2.8 [elastic-security-9.2.8-release-notes]
+
+### Fixes [elastic-security-9.2.8-fixes]
+
+* Fixes an issue where the search bar on the **Alerts** tab of the rule details page overlapped the alerts table in full screen mode [#260315]({{kib-pull}}260315).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes an issue where notes not associated with a saved Timeline could appear on the **Notes** tab while investigating in Timeline, including for draft Timelines [#259658]({{kib-pull}}259658).
+* Fixes incorrect alert counting for indicator match detection rules when a page of source documents matches no indicators, so max-alerts warnings display correctly [#259199]({{kib-pull}}259199).
+
+
 ## 9.2.7 [elastic-security-9.2.7-release-notes]
 
 ### Features and enhancements [elastic-security-9.2.7-features-enhancements]
