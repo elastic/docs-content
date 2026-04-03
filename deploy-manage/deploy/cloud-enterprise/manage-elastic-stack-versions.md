@@ -51,6 +51,7 @@ Following is the full list of available packs containing {{stack}} versions. Not
 | [{{es}}, {{kib}}, and APM stack pack: 9.3.2](https://download.elastic.co/cloud-enterprise/versions/9.3.2.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.3.1](https://download.elastic.co/cloud-enterprise/versions/9.3.1.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.3.0](https://download.elastic.co/cloud-enterprise/versions/9.3.0.zip) | ECE 4.0.0 |
+| [{{es}}, {{kib}}, and APM stack pack: 9.2.8](https://download.elastic.co/cloud-enterprise/versions/9.2.8.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.2.7](https://download.elastic.co/cloud-enterprise/versions/9.2.7.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.2.6](https://download.elastic.co/cloud-enterprise/versions/9.2.6.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.2.5](https://download.elastic.co/cloud-enterprise/versions/9.2.5.zip) | ECE 4.0.0 |
