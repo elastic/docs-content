@@ -25,13 +25,14 @@ For additional information, refer to [{{cps-init}} security](/explore-analyze/cr
 
 % TODO ^^ snippetize from E&A
 
-### Programmatic access [cps-programmatic-access]
+## Manage programmatic access [cps-programmatic-access]
 
 The same role-based access model applies to programmatic access through API keys. For {{cps}}, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), which can authenticate across project boundaries.
 
 Project-scoped API keys, such as [{{serverless-short}} project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md), cannot search across project boundaries. If a project-scoped API key is used in a {{cps}} context, it silently returns results from the origin project only (no error is returned).
 
-### Administrator tasks
+## Administrator tasks
+% TODO better heading
 
 - Make sure that users who need to search across linked projects have a [role assigned](/deploy-manage/users-roles.md) on each linked project they need to access. Authorization is evaluated on the linked project, without regard to the origin project.
 - If a user reports missing data from a linked project, check their role assignment on that specific linked project first.
@@ -103,12 +104,7 @@ Space settings are managed in {{kib}}.
 The default {{cps}} scope is a space setting, not an access control. Users can still set the scope at the query level. You can also [manage user access](#manage-user-access).
 ::::
 
-### How {{cps-init}} scope works in {{kib}}
+## Next steps
 
-When processing a search request, {{kib}} applies the most specific scope setting available:
-
-1. **Query-level override (most specific):** Explicit [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) or [qualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) set on an individual query, dashboard panel, or saved object (for example, `project_routing: _origin`).
-2. **Session scope:** The scope set by the user using the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the project header. This selection persists as the user navigates between apps, and resets to the space default when a new session starts.
-3. **Space default (least specific):** The [default {{cps}} scope](#cps-default-search-scope) configured for the space. If no default is explicitly configured, the space default is **All projects** (origin project and all linked projects).
-
-For more information, refer to [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
+- Review [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md) for more information about how {{cps-init}} works with compatible {{kib}} apps, including how users can adjust search scope. 
+- Review [](/explore-analyze/cross-project-search/cross-project-search-search.md) for more information about how to build queries in a {{cps-init}} context, including how to restrict search scope using qualified search expressions and project routing.

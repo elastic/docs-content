@@ -127,10 +127,5 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 After you configure {{cps}} and link projects, users can start searching across linked projects from the origin project. For search syntax, scope controls, and examples, refer to the following pages:
 
-* [{{cps-cap}} overview](/explore-analyze/cross-project-search.md): Default search behavior, security model, supported APIs, and examples.
-* [Manage {{cps-init}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Control which projects are searched from Discover, Dashboards, and other {{kib}} apps.
-
-
-% Parking lot
-% - Tag management / custom tags
-% - Licensing / subscription tier requirements
+- [{{cps-cap}} overview](/explore-analyze/cross-project-search.md): Learn how to build queries in a {{cps-init}} context, including how to restrict search scope.
+- [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Learn how {{cps-init}} works with compatible {{kib}} apps, including adjusting in-app search scope.
