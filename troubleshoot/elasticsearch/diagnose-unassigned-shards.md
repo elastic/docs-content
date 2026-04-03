@@ -19,17 +19,23 @@ An unassigned shard is a shard that exists in the cluster metadata but is not cu
 
 Shards can become unassigned for many reasons, such as node failures, cluster or indices configuration, insufficient resources, or allocation rules that prevent {{es}} from placing the shard on any available node.
 
-Unassigned shards directly affects the cluster health status:
+## Check cluster health and scope impact
 
-* If at least one replica shard is unassigned, the cluster health becomes yellow. The cluster can still serve all data, but redundancy is reduced.
-* If at least one primary shard is unassigned, the cluster health becomes red. In this state, some data is unavailable, and affected indices cannot fully operate.
+Unassigned shards directly affects the cluster health status. Start by confirming whether unassigned shards are affecting availability and which indices are impacted:
+```console
+GET /_cluster/health
+```
+* If at least one `replica` shard is unassigned, the cluster health becomes **yellow**. The cluster can still serve all data, but redundancy is reduced.
+* If at least one `primary` shard is unassigned, the cluster health becomes **red**. In this state, some data is unavailable, and affected indices cannot fully operate (including indexing new documents into the impacted shards).
 
 To diagnose the unassigned shards in your deployment, use the following steps. You can use either [API console](/explore-analyze/query-filter/tools/console.md), or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
 1. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
     ```console
-    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state&format=json
+    GET /_cat/shards?v&h=index,shard,prirep,state,node,unassigned.reason&s=state
+    
+    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state&format=json  # for JSON format
     ```
 
     The response looks like this:
@@ -148,3 +154,24 @@ POST _cluster/reroute?retry_failed
 If a shard is unassigned with an allocation status of `no_valid_shard_copy`, you should make sure that all nodes are in the cluster. If all the nodes containing in-sync copies of a shard are lost, then you can recover the data for the shard.
 
 View [this video](https://www.youtube.com/watch?v=6OAg9IyXFO4) for a walkthrough of troubleshooting `no_valid_shard_copy`.
+
+### Disk watermarks prevent allocation
+
+Elasticsearch uses disk-based shard allocation to avoid running nodes out of disk space. If one or more nodes exceed the configured disk [watermarks](https://www.elastic.co/docs/troubleshoot/elasticsearch/fix-watermark-errors), Elasticsearch may refuse to allocate shards to those nodes, leaving shards unassigned.
+
+* **What you might see:** `/_cluster/allocation/explain` includes [disk-related allocation decisions](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings#cluster-routing-allocation-disk-watermark-flood_stage) (for example, deciders indicating insufficient free disk).
+* **What to do:** Free disk space, add capacity, or adjust disk watermark settings as appropriate, then allow allocation to retry.
+
+### Allocation is disabled
+
+Shard allocation can be intentionally [disabled](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings#cluster-shard-allocation-settings) during maintenance or rolling restarts. When allocation is disabled, shards may remain unassigned even if the cluster has enough capacity to allocate them.
+
+* **What you might see:** `/_cluster/allocation/explain` indicates allocation is not permitted (for example, due to cluster routing allocation settings).
+* **What to do:** Check the cluster routing allocation settings (such as `cluster.routing.allocation.enable`) and re-enable allocation when appropriate.
+
+### Not enough eligible nodes for replicas or data tiers
+
+Shards can remain unassigned when there are not enough eligible nodes to satisfy the index’s replica count or its allocation constraints (for example, data tiers or allocation filters). This commonly occurs when the replica count is greater than the number of eligible nodes, or when tier/filter rules exclude all available nodes. Reference [Data tier allocation settings](https://www.elastic.co/docs/reference/elasticsearch/index-settings/data-tier-allocation)
+
+* **What you might see:** `/_cluster/allocation/explain` shows that no node matches the allocation requirements (for example, due to filtering, tier preferences, or awareness constraints).
+* **What to do:** Ensure there are enough eligible nodes for the configured replicas and constraints. Consider adding nodes to the required tier, adjusting allocation rules, or reducing the replica count for the affected indices.
