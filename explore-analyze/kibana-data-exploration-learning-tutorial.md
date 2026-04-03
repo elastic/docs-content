@@ -344,7 +344,7 @@ Dashboard panels are interactive. Try selecting the `404` bar in the **Events by
 To remove the filter, select the {icon}`cross` next to it in the dashboard's filter bar.
 
 :::{tip}
-If you know which dimensions your viewers will want to filter by, you can add [controls](dashboards/add-controls.md) (dropdown menus, range sliders) directly to the dashboard so they don't have to build those filters themselves.
+If you know which dimensions your viewers will want to filter by, you can add [controls](dashboards/dashboard-controls.md) (dropdown menus, range sliders) directly to the dashboard so they don't have to build those filters themselves.
 :::
 :::::
 
