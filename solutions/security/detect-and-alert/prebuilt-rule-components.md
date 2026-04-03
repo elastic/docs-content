@@ -62,14 +62,14 @@ To help you set up the right data sources, rule details pages include:
 **Setup guide**
 :   Step-by-step guidance for configuring the rule's data requirements.
 
-### Check integration status from the {{rules-ui}} table
+### Check integration status from the {{siem-rules-ui}} table
 
 You can check rules' related integrations in the **Installed Rules** and **Rule Monitoring** tables. Select the **integrations** badge to display the related integrations in a popup. The badge shows how many of the rule's related integrations are currently installed and enabled—for example, `1/2` means one of two related integrations is installed and actively collecting data.
 
 An integration is counted as enabled only if it has been added to an agent policy and that policy is deployed to at least one agent. Installing an integration package without adding it to a policy does not increment the enabled count.
 
 :::{admonition} Requirements for viewing related integration status
-To view related integration status in the {{rules-ui}} table, your role needs at least `Read` privileges for the following features under {{manage-app}}:
+To view related integration status in the {{siem-rules-ui}} table, your role needs at least `Read` privileges for the following features under {{manage-app}}:
 
 - {{integrations}}
 - {{fleet}}
@@ -79,7 +79,7 @@ Without these privileges, the integrations badge may not appear or may not refle
 :::
 
 ::::{tip}
-You can hide the **integrations** badge in the {{rules-ui}} tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations).
+You can hide the **integrations** badge in the {{siem-rules-ui}} tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations).
 ::::
 
 
@@ -93,7 +93,7 @@ Many prebuilt rules include investigation guides—Markdown documents that help 
 2. In the alert details flyout, go to the **Investigation** section on the **Overview** tab.
 3. If the rule has an investigation guide, select **Show investigation guide** to open it in the details panel.
 
-You can also view investigation guides from the rule's details page. Find **Detection rules (SIEM)** in the navigation menu, then select the rule name.
+You can also view investigation guides from the rule's details page. Find **{{siem-rules-ui}}** in the navigation menu, then select the rule name.
 
 ### What investigation guides include
 

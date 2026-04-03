@@ -2,9 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detections-permissions-section.html
 applies_to:
-  stack: ga
+  stack: ga all
   serverless:
-    security: ga
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
@@ -158,7 +158,7 @@ Index privileges
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ::::{important}
-To create the `.lists` and `.items` data streams in your space, visit the **Rules** page for each appropriate space.
+To create the `.lists` and `.items` data streams in your space, visit the **{{siem-rules-ui}}** page for each appropriate space.
 ::::
 
 

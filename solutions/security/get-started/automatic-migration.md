@@ -167,7 +167,7 @@ The table's fields are as follows:
 To install any rules that were partially translated or not translated, you must first edit them. Optionally, you can also edit rules that were successfully translated to finetune them.
 
 :::{note}
-You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page.
+You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **{{siem-rules-ui}}** page.
 :::
 
 Click a rule's name to open its details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.

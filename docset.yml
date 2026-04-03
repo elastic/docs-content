@@ -110,6 +110,7 @@ subs:
   stack-manage-app:   "Stack Management"
   stack-monitor-app:   "Stack Monitoring"
   rules-ui:   "Rules"
+  siem-rules-ui: "Detection rules (SIEM)"
   connectors-ui:   "Connectors"
   connectors-feature:   "Actions and Connectors"
   stack-rules-feature:   "Stack Rules"

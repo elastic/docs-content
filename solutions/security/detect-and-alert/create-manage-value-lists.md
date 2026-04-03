@@ -81,7 +81,7 @@ Threshold rules only support exceptions that use small value lists. If a value l
     * The maximum accepted file size is 9 million bytes.
     ::::
 
-2. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Click **Manage value lists**.
 4. From the window, select the list type (**Keywords**, **IP addresses**, **IP ranges**, or **Text**) from the **Type of value list** drop-down.
 5. Drag or select the `csv` or `txt` file that contains the values.
@@ -94,7 +94,7 @@ If you import a file with a name that already exists, a new list is not created.
 
 ## Edit a value list [edit-value-lists]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. In the **Value lists** table, click the value list you want to edit.
 
@@ -115,7 +115,7 @@ You can also edit value lists while creating and managing exceptions that use va
 
 ## Export or remove a value list [export-remove-value-lists]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. From the **Value lists** table, you can:
 

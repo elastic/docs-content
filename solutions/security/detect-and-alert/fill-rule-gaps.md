@@ -1,7 +1,7 @@
 ---
 navigation_title: Fill rule execution gaps
 applies_to:
-  stack: ga
+  stack: ga all
   serverless:
     security: ga all
 products:
@@ -25,7 +25,7 @@ You can find gaps from two locations:
 
 ### Rule Monitoring tab [rule-monitoring-tab-gaps]
 
-From the **Rule Monitoring** tab on the {{rules-ui}} page, you can get an overview of existing gaps and their status. The total number of rules with gaps is tracked in the panel above the Rules table.
+From the **Rule Monitoring** tab on the **{{siem-rules-ui}}** page, you can get an overview of existing gaps and their status. The total number of rules with gaps is tracked in the panel above the Rules table.
 
 ::::{applies-switch}
 
@@ -110,7 +110,7 @@ stack: ga 9.1+
 
 From the Rules table, fill gaps for multiple rules using the **Fill gaps** bulk action.
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the **Rule Monitoring** tab, then do one of the following:
 
     * Fill rules with unfilled or partially filled gaps: Select the appropriate rules or all rules on the page, then select **Bulk actions** > **Fill gaps**.
@@ -140,7 +140,7 @@ When enabled, the automatic gap fill feature runs a job every two minutes to che
 
 ### Enable automatic gap fill
 
-1. On the {{rules-ui}} page, select **Settings** (above the Rules table).
+1. On the **{{siem-rules-ui}}** page, select **Settings** (above the Rules table).
 2. In the **Auto gap fill settings** section, turn on the toggle.
 
 ::::{tip}

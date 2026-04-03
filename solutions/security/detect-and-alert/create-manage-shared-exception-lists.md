@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/shared-exception-lists.html
   - https://www.elastic.co/guide/en/serverless/current/security-shared-exception-lists.html
 applies_to:
-  stack: all
+  stack: ga all
   serverless:
-    security: all
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
@@ -73,7 +73,7 @@ After creating a shared exception list, associate it with the rules that should 
 4. Click **Save**.
 5. (Optional) To verify the association:
 
-    1. Open a rule's details page (**Rules > Detection rules (SIEM) > Rule name**).
+    1. Open a rule's details page (**Rules > {{siem-rules-ui}} > Rule name**).
     2. Scroll down and select the **Rule exceptions** tab.
     3. Navigate to the exception items from the shared list. Click the **Affects shared list** link to view the associated shared exception lists.
 

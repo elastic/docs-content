@@ -3,25 +3,25 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/rules-ui-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-ui-management.html
 applies_to:
-  stack: all
+  stack: ga all
   serverless:
-    security: all
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
-description: View, edit, enable, duplicate, and manage detection rules from the Rules page.
+description: View, edit, enable, duplicate, and manage detection rules from the Detection rules (SIEM) page.
 ---
 
 # Manage detection rules [security-rules-ui-management]
 
-After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **Rules** page to manage them. The **Rules** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/turn-on-detections.md). To open the **Rules** page, find **Detection rules (SIEM)** in the navigation menu or by using the global search field.
+After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **{{siem-rules-ui}}** page to manage them. The **{{siem-rules-ui}}** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/turn-on-detections.md). To open the page, find **{{siem-rules-ui}}** in the navigation menu or by using the global search field.
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management
 :::
 
 ::::{note}
-The **Rules** page was renamed to **Detection rules (SIEM)** in versions 9.3.1, 9.2.6, and 8.19.12.
+The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1, 9.2.6, and 8.19.12.
 ::::
 
 The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
@@ -61,7 +61,7 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 
 ### Edit a single rule [edit-single-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
     * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Edit rule settings**.
     * Click on a rule's name to open its details page, then click **Edit rule settings**.
@@ -72,7 +72,7 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 
 Use bulk editing to update settings on multiple rules simultaneously. Rules that can't be modified are automatically skipped, for example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to edit.
 3. From the **Bulk actions** menu, select one of the following:
 
@@ -93,7 +93,7 @@ Enable rules to activate them so they run on their defined schedules and generat
 
 ### Enable or disable a single rule
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, do one of the following:
     * Switch the rule's **Enabled** toggle on or off.
     * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Enable** or **Disable**.
@@ -101,7 +101,7 @@ Enable rules to activate them so they run on their defined schedules and generat
 
 ### Bulk enable or disable rules
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to enable or disable.
 3. From the **Bulk actions** menu, select **Enable** or **Disable**.
 
@@ -112,7 +112,7 @@ Duplicate rules to create copies that you can modify independently. This is usef
 
 ### Duplicate a single rule
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
     * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Duplicate**.
     * Click on a rule's name to open its details page, then select **All actions** > **Duplicate**.
@@ -127,7 +127,7 @@ If you duplicate the rule and its exceptions, copies of the exceptions are creat
 
 ### Bulk duplicate rules
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to duplicate.
 3. From the **Bulk actions** menu, select **Duplicate**.
 4. If any selected rules have exceptions, choose how to handle them.
@@ -139,7 +139,7 @@ Delete rules to permanently remove them from your system. This action cannot be 
 
 ### Delete a single rule
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
     * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Delete**.
     * Click on a rule's name to open its details page, then select **All actions** > **Delete**.
@@ -147,7 +147,7 @@ Delete rules to permanently remove them from your system. This action cannot be 
 
 ### Bulk delete rules
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to delete.
 3. From the **Bulk actions** menu, select **Delete**.
 4. Confirm the deletion.
@@ -174,7 +174,7 @@ Manually run enabled rules for a specified time period to deliberately test them
 Before manually running rules, make sure you properly understand and plan for rule dependencies. Incorrect scheduling can lead to inconsistent rule results.
 ::::
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, do one of the following:
 
     * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Manual run**.
@@ -248,7 +248,7 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 
 ### Export rules [export-rules-ui]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
 
     * Export a single rule: Find the rule in the Rules table, then select **All actions** > **Export**. Alternatively, export the rule from its details page (click on the rule name to open its details, then click **All actions** > **Export**).

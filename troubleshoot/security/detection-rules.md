@@ -6,9 +6,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-monitor.html#troubleshoot-signals
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-ui-monitor.html#troubleshoot-signals
 applies_to:
-  stack: all
+  stack: ga all
   serverless:
-    security: all
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
@@ -22,12 +22,12 @@ This topic covers common troubleshooting issues when creating or managing [detec
 
 ## Setup errors [setup-errors-ts]
 
-Depending on your privileges and whether detection system indices have already been created for the {{kib}} space, you might get one of these error messages when you open the **Alerts** or **Rules** page:
+Depending on your privileges and whether detection system indices have already been created for the {{kib}} space, you might get one of these error messages when you open the **Alerts** or **{{siem-rules-ui}}** page:
 
 ::::{dropdown} Let's set up your detection engine
 :name: setup-detection-engine-ts
 
-If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Detections prerequisites and requirements](../../solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
+If you get this message, a user with specific privileges must visit the **Alerts** or **{{siem-rules-ui}}** page before you can view detection alerts and rules. Refer to [Detections prerequisites and requirements](../../solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
 
 :::{note}
 For **self-managed** {{stack}} deployments only, this message may be displayed when the `xpack.encryptedSavedObjects.encryptionKey` setting has not been added to the `kibana.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/turn-on-detections.md).
@@ -54,7 +54,7 @@ For **self-managed** {{stack}} deployments only, this message may be displayed w
 
 If a {{ml}} rule is failing, check to make sure the required {{ml}} jobs are running and start any jobs that have stopped.
 
-1. Go to **Rules** → **Detection rules (SIEM)**, then select the {{ml}} rule. The required {{ml}} jobs and their statuses are listed in the **Definition** section.
+1. Go to **Rules** → **{{siem-rules-ui}}**, then select the {{ml}} rule. The required {{ml}} jobs and their statuses are listed in the **Definition** section.
 
    :::{image} /troubleshoot/images/security-rules-ts-ml-job-stopped.png
    :alt: Rule details page with ML job stopped

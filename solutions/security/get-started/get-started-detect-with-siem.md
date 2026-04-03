@@ -2,9 +2,9 @@
 navigation_title: Detect and respond to threats with SIEM
 description: An introduction to detecting threats with SIEM in {{elastic-sec}}.
 applies_to:
+  stack: ga all
   serverless:
-    security: all
-  stack:
+    security: ga all
 products:
   - id: security
 ---
@@ -95,7 +95,7 @@ Detection rules allow you to monitor your environment by searching for source ev
 
 :::{dropdown} Steps to install and turn on prebuilt rules
 1. On the **Get Started** page, scroll down to the **Configure rules and alerts** section. 
-2. Click **Install Elastic rules**, then **Add Elastic rules**. The **Rules** page displays. 
+2. Click **Install Elastic rules**, then **Add Elastic rules**. The **{{siem-rules-ui}}** page displays. 
 3. At the top of the page, click **Add Elastic rules**. The badge next to it shows the number of prebuilt rules available for installation.  
 4. Use the search bar and **Tags** filter to find the rules you want to install. For example, to filter by operating system, search for the appropriate OS (such as `macOS`) from the **Tags** menu. 
 5. Once you've filtered the rules, confirm that the rules displayed are the ones you'd like to install. If you'd like to learn more about any rule before installing it, click on the rule name to expand the rule details flyout. Here's an example of one: 
