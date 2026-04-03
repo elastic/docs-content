@@ -55,10 +55,10 @@ To detect threats using this data, you’ll need active [detection rules](/solut
 
 To set up threat detection, install and enable Elastic's prebuilt rules that use data ingested by D4C:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Add Elastic rules**.
+1. Find **{{siem-rules-ui}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Add Elastic rules**.
 2. Click the **Tags** filter next to the search bar, and search for the `Data Source: Elastic Defend for Containers` tag.
 3. Select all the displayed rules, then click **Install *x* selected rule(s)**.
-4. Return to the **Rules** page. Click the **Tags** filter next to the search bar, and search for the `Data Source: Elastic Defend for Containers` tag.
+4. Return to the **{{siem-rules-ui}}** page. Click the **Tags** filter next to the search bar, and search for the `Data Source: Elastic Defend for Containers` tag.
 5. Select all the rules with the tag, and then click **Bulk actions > Enable**.
 
 

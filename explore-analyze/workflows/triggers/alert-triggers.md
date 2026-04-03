@@ -59,7 +59,7 @@ After creating your workflow, configure your alert rule to trigger it.
 :::
 
 :::{tab-item} Security detection rules
-1. Go to **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to **{{siem-rules-ui}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Find or create the detection rule you want to trigger the workflow.
 3. In the rule settings, under **Actions**, select **Workflows**.
 4. Select your workflow from the dropdown or create a new one. You can only select enabled workflows.

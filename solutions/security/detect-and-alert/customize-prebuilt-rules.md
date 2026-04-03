@@ -30,7 +30,7 @@ Your subscription determines how you can customize prebuilt rules:
 
 With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, you can edit most prebuilt rule settings directly (except **Author** and **License**).
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, find the prebuilt rule you want to edit.
 3. Do one of the following:
     * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Edit rule settings**.
@@ -58,7 +58,7 @@ If you can't edit prebuilt rules directly, or if you want to preserve the origin
 Duplicated rules are entirely separate from the original prebuilt rule. They don't receive Elastic updates when the prebuilt rule is updated.
 ::::
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, select the **Elastic rules** filter.
 3. Do one of the following:
     * Duplicate a single rule: Select the **All actions** menu {icon}`boxes_horizontal` on the rule, then select **Duplicate**.
