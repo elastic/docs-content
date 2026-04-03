@@ -108,14 +108,16 @@ Users must log in to their deployment at least once before they can be assigned 
 
 ::::{applies-switch} 
 
-:::{applies-item} stack: ga
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 
-* `All` for the **Cases** feature under the appropriate solution (**Security** or **{{observability}}**). 
-* `Read` for a solution that has alerts (for example, **{{observability}}** or **Security**).
+* `All` for the **Cases** feature under the appropriate solution (**Security** or **{{observability}}**).
+* To work with alerts in cases:
+  - **Security**: `Read` or `All` for the **Security > Alerts** feature. For what each level allows, refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#manage-alerts).
+  - **{{observability}}**: `Read` for **{{observability}}** 
 
 :::
 
-:::{applies-item} serverless: ga
+:::{applies-item} stack: ga 9.0-9.3
 
 * `All` for the **Cases** feature under the appropriate solution (**Security** or **{{observability}}**).
 * `Read` for a solution that has alerts (for example, **{{observability}}** or **Security**).
