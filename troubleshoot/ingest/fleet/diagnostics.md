@@ -16,7 +16,7 @@ Their information can be used to troubleshoot problems with your setup. You can 
 
 ## Which information do I need? [agent-diagnostic-type]
 
-For [{{fleet}}-managed {{agent}}](/reference/fleet/install-fleet-managed-elastic-agent.md), related settings and states can by surfaced by:
+For [{{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md) and the [Agentless Integration](/manage-data/ingest/agentless/agentless-integrations.md), related settings and states can by surfaced by:
 
 * {{kib}} from the [{{kib}} {{fleet}} APIs](/reference/fleet/fleet-api-docs.md)
 * {{agent}} and {{fleet}} from their [command reference](/reference/fleet/agent-command-reference.md)
@@ -33,6 +33,11 @@ To pull data from the respective applicable locations, refer to:
     :::{note}
     :applies_to: ess: ga
     To pull {{agent}} diagnostics for the managed [{{fleet-server}}](/reference/fleet/fleet-server.md) on your hosted deployment, you have to use the {{fleet}} UI. The {{fleet-server}} agent is associated with a managed agent policy named "Elastic Cloud agent policy".
+    :::
+
+    :::{note}
+    :applies_to: serverless: ga,:applies_to: ess: ga
+    To pull [Agentless Integration](/manage-data/ingest/agentless/agentless-integrations.md) diagnostics, you have to use the {{fleet}} UI. To show Elastic Agentless, toggle **Show agentless resources** under **Advanced Settings** of the [{{fleet}} Settings UI](fleet://reference/fleet/fleet-settings.md).
     :::
 
 You need to determine which diagnostic types are needed to investigate your specific issue. This table shows common troubleshooting situations and which diagnostics are commonly associated:
@@ -70,23 +75,24 @@ Diagnostics and logs mainly emit product metadata and settings, but they might e
 
 The diagnostics are sent to {{fleet-server}} which in turn sends it to {{es}}. Therefore, this works even with {{agents}} that are not using the {{es}} output. To download the diagnostics bundle for local viewing:
 
-1. In {{fleet}}, open the **Agents** tab.
-2. In the **Host** column, click the agent’s name.
-3. Select the **Diagnostics** tab and click the **Request diagnostics .zip** button.
+1. If related to the [Agentless Integration](/manage-data/ingest/agentless/agentless-integrations.md), first toggle **Show agentless resources** under **Advanced Settings** of the [{{fleet}} Settings UI](fleet://reference/fleet/fleet-settings.md).
+2. In {{fleet}}, open the **Agents** tab.
+3. In the **Host** column, click the agent’s name.
+4. Select the **Diagnostics** tab and click the **Request diagnostics .zip** button.
 
     :::{image} /troubleshoot/images/fleet-collect-agent-diagnostics1.png
     :alt: Collect agent diagnostics under agent details
     :screenshot:
     :::
 
-4. In the **Request diagnostics** pop-up, select **Collect additional CPU metrics** if you’d like detailed CPU data.
+5. In the **Request diagnostics** pop-up, select **Collect additional CPU metrics** if you’d like detailed CPU data.
 
     :::{image} /troubleshoot/images/fleet-collect-agent-diagnostics2.png
     :alt: Collect agent diagnostics confirmation pop-up
     :screenshot:
     :::
 
-5. Click the **Request diagnostics** button.
+6. Click the **Request diagnostics** button.
 
 When it is available, the new diagnostics bundle is listed on the **Diagnostics** tab along with any in-progress or previously collected bundles for the {{agent}}.
 
