@@ -33,7 +33,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
    If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
    :::
 
-   Let’s say we want to find out what operating system users have and how much RAM is on their machine.
+   Let's say we want to find out what operating system users have and how much RAM is on their machine.
 
 3. Set the time range to **Last 7 days**.
 4. Copy the following query. To make queries more readable, you can put each processing command on a new line.
@@ -44,7 +44,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
     ```
 
     1. We're specifically looking for data from the sample web logs we installed.
-    2. We’re only keeping the `machine.os` and `machine.ram` fields in the results table.
+    2. We're only keeping the `machine.os` and `machine.ram` fields in the results table.
    
    ::::{note}
    {{esql}} keywords are not case sensitive.
@@ -53,7 +53,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
 5. Click **▶Run**.
    ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
 
-Let’s add `geo.dest` to our query to find out the geographical destination of the visits and limit the results.
+Let's add `geo.dest` to our query to find out the geographical destination of the visits and limit the results.
 
 1. Copy the query below:
 
@@ -65,7 +65,7 @@ Let’s add `geo.dest` to our query to find out the geographical destination of 
 
 2. Click **▶Run** again. You can notice that the table is now limited to 10 results. The visualization also updated automatically based on the query, and broke down the data for you.
    ::::{note}
-   When you don’t specify any specific fields to retain using `KEEP`, the visualization isn’t broken down automatically. Instead, an additional option appears above the visualization and lets you select a field manually.
+   When you don't specify any specific fields to retain using `KEEP`, the visualization isn't broken down automatically. Instead, an additional option appears above the visualization and lets you select a field manually.
    ::::
    ![An image of the extended query result](/explore-analyze/images/kibana-esql-limit.png "")
 
@@ -91,9 +91,9 @@ We will now take it a step further to sort the data by machine RAM and filter ou
 
 ## Edit the ES|QL visualization [_edit_the_esql_visualization]
 
-You can make changes to the visualization by clicking the pencil icon. This opens additional settings that let you adjust the chart type, axes, breakdown, colors, and information displayed to your liking. If you’re not sure which route to go, check one of the suggestions available in the visualization editor.
+You can make changes to the visualization by clicking the pencil icon. This opens additional settings that let you adjust the chart type, axes, breakdown, colors, and information displayed to your liking. If you're not sure which route to go, check one of the suggestions available in the visualization editor.
 
-If you’d like to keep the visualization and add it to a dashboard, you can save it using the floppy disk icon.
+If you'd like to keep the visualization and add it to a dashboard, you can save it using the floppy disk icon.
 
 
 ## Organize the query results [esql-kibana-results-table]
@@ -137,11 +137,11 @@ FROM kibana_sample_data_logs
 
 By default, ES|QL identifies time series data when an index contains a `@timestamp` field. This enables the time range selector and visualization options for your query.
 
-If your index doesn’t have an explicit `@timestamp` field, but has a different time field, you can still enable the time range selector and visualization options by calling the `?_tstart` and `?_tend` parameters in your query.
+If your index doesn't have an explicit `@timestamp` field, but has a different time field, you can still enable the time range selector and visualization options by calling the `?_tstart` and `?_tend` parameters in your query.
 
-For example, the eCommerce sample data set doesn’t have a `@timestamp` field, but has an `order_date` field.
+For example, the eCommerce sample data set doesn't have a `@timestamp` field, but has an `order_date` field.
 
-By default, when querying this data set, time series capabilities aren’t active. No visualization is generated and the time picker is disabled.
+By default, when querying this data set, time series capabilities aren't active. No visualization is generated and the time picker is disabled.
 
 ```esql
 FROM kibana_sample_data_ecommerce
@@ -332,6 +332,54 @@ When you save your edits, the control is updated for your query.
 ### Import a Discover query along with its controls into a dashboard
 
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
+:::
+
+
+## Explore STATS results in a grouped view [esql-discover-grouped-stats]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+When you run an {{esql}} query with a [`STATS ... BY`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) command that groups results by a single field, **Discover** can display results in a grouped view. Instead of a flat table, results are organized by group, with each row representing one value of the `BY` field alongside its aggregated metrics.
+
+% TODO: Add a screenshot of the grouped view. Uncomment the image directive below and replace the path when the screenshot is available.
+% :::{image} /explore-analyze/images/discover-esql-grouped-view.png
+% :alt: Grouped view of STATS results in Discover showing expandable rows
+% :screenshot:
+% :::
+
+### Use the grouped view
+
+1. Run an {{esql}} query with `STATS ... BY <field>`. For example:
+
+   ```esql
+   FROM kibana_sample_data_logs
+   | STATS count = COUNT(*), avg_bytes = AVG(bytes) BY geo.dest
+   ```
+
+2. The **Group by** button appears in the table toolbar with a {icon}`flask` badge indicating this is a technical preview feature. It lists the available grouping field.
+
+3. Select a field from the **Group by** list. Results are reorganized into groups.
+
+4. Expand any group row to view the underlying documents for that group.
+
+5. To return to the standard flat table, open the **Group by** menu and select **none**.
+
+### Group row actions
+
+Each group row has an actions menu ({icon}`boxes_horizontal`) with the following options:
+
+- **Copy to clipboard**: Copy the group value.
+- **Filter in**: Add a `WHERE` clause to the query to keep only this group's value.
+- **Filter out**: Add a `WHERE` clause to exclude this group's value.
+- **Open in new tab**: Open a new Discover tab with a query filtered to show documents for the selected group.
+
+:::{note}
+The grouped view is available when:
+
+- The query uses `STATS ... BY` with a single `BY` field.
+- The `BY` field does not use grouping functions such as `BUCKET`.
 :::
 
 
