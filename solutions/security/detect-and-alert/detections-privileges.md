@@ -138,9 +138,36 @@ Index privileges
 :   None
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` At least `Read` for the `Rules and Exceptions` feature and **Manage Exceptions** selected for the `Exceptions` sub-feature
+:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` At least `Read` for the `Rules and Exceptions` feature and **Manage Exceptions** selected for the `Exceptions` sub-feature. Refer to [View and manage rules and exceptions separately](#rules-exceptions-subfeatures) for valid combinations of **Rules** and **Exceptions** access.
     - {applies_to}`stack: ga =9.3` `All` for the `Rules, Alerts, and Exceptions` feature
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
+
+
+## View and manage rules and exceptions separately [rules-exceptions-subfeatures]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+After setting `Read` or `All` on `Rules and Exceptions`, you can toggle **Customize sub-feature privileges** to set independent access to rules and exceptions. To learn about sub-feature privileges, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#_sub_feature_privileges).
+
+Cluster privileges
+:   None
+
+Index privileges
+:   None
+
+{{kib}} privileges
+:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `Read` for `Rules`: View detection rules (including the {{rules-ui}} table, rule details, and rule monitoring).
+    - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `All` for `Rules`: Create, edit, duplicate, delete, enable, and disable detection rules.
+    - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `Read` for `Exceptions` (deselect **Manage Exceptions**): View exception lists and exception items.
+    - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `All` for `Exceptions` (**Manage Exceptions** selected): Create and manage exceptions for rules and shared exception lists.
+
+:::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+**Read** for **`Rules`** and **All** for **`Exceptions`** is valid: users can manage exceptions from **Rule exceptions** and **Shared exception lists** without full rule management privileges.
+:::
 
 ## Manage value lists [detections-privileges-manage-value-lists]
 
