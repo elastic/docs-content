@@ -37,14 +37,14 @@ The detection APIs are part of the {{kib}} API. Use the appropriate reference fo
 
 | Task | {{stack}} | {{serverless-full}} |
 |---|---|---|
-| Create a rule | [Stack]({{kib-apis}}/operation/operation-createrule) | [Serverless]({{kib-serverless-apis}}/operation/operation-createrule) |
-| List all rules | [Stack]({{kib-apis}}/operation/operation-findrules) | [Serverless]({{kib-serverless-apis}}/operation/operation-findrules) |
-| Update a rule | [Stack]({{kib-apis}}/operation/operation-updaterule) | [Serverless]({{kib-serverless-apis}}/operation/operation-updaterule) |
-| Bulk actions | [Stack]({{kib-apis}}/operation/operation-performrulesbulkaction) | [Serverless]({{kib-serverless-apis}}/operation/operation-performrulesbulkaction) |
-| Import rules | [Stack]({{kib-apis}}/operation/operation-importrules) | [Serverless]({{kib-serverless-apis}}/operation/operation-importrules) |
-| Export rules | [Stack]({{kib-apis}}/operation/operation-exportrules) | [Serverless]({{kib-serverless-apis}}/operation/operation-exportrules) |
-| Install prebuilt rules | [Stack]({{kib-apis}}/operation/operation-installprebuiltrulesandtimelines) | [Serverless]({{kib-serverless-apis}}/operation/operation-installprebuiltrulesandtimelines) |
-| Set alert status | [Stack]({{kib-apis}}/operation/operation-setalertsstatus) | [Serverless]({{kib-serverless-apis}}/operation/operation-setalertsstatus) |
-| Manage rule exceptions | [Stack]({{kib-apis}}/group/endpoint-security-exceptions-api) | [Serverless]({{kib-serverless-apis}}/group/endpoint-security-exceptions-api) |
-| Manage endpoint exceptions | [Stack]({{kib-apis}}/group/endpoint-security-endpoint-exceptions-api) | [Serverless]({{kib-serverless-apis}}/group/endpoint-security-endpoint-exceptions-api) |
-| Manage value lists | [Stack]({{kib-apis}}/group/endpoint-security-lists-api) | [Serverless]({{kib-serverless-apis}}/group/endpoint-security-lists-api) |
+| Create a rule | [`POST /api/detection_engine/rules`]({{kib-apis}}/operation/operation-createrule) | [`POST /api/detection_engine/rules`]({{kib-serverless-apis}}/operation/operation-createrule) |
+| List all rules | [`GET /api/detection_engine/rules/_find`]({{kib-apis}}/operation/operation-findrules) | [`GET /api/detection_engine/rules/_find`]({{kib-serverless-apis}}/operation/operation-findrules) |
+| Update a rule | [`PUT /api/detection_engine/rules`]({{kib-apis}}/operation/operation-updaterule) | [`PUT /api/detection_engine/rules`]({{kib-serverless-apis}}/operation/operation-updaterule) |
+| Bulk actions | [`POST /api/detection_engine/rules/_bulk_action`]({{kib-apis}}/operation/operation-performrulesbulkaction) | [`POST /api/detection_engine/rules/_bulk_action`]({{kib-serverless-apis}}/operation/operation-performrulesbulkaction) |
+| Import rules | [`POST /api/detection_engine/rules/_import`]({{kib-apis}}/operation/operation-importrules) | [`POST /api/detection_engine/rules/_import`]({{kib-serverless-apis}}/operation/operation-importrules) |
+| Export rules | [`POST /api/detection_engine/rules/_export`]({{kib-apis}}/operation/operation-exportrules) | [`POST /api/detection_engine/rules/_export`]({{kib-serverless-apis}}/operation/operation-exportrules) |
+| Install prebuilt rules | [`PUT /api/detection_engine/rules/prepackaged`]({{kib-apis}}/operation/operation-installprebuiltrulesandtimelines) | [`PUT /api/detection_engine/rules/prepackaged`]({{kib-serverless-apis}}/operation/operation-installprebuiltrulesandtimelines) |
+| Set alert status | [`POST /api/detection_engine/signals/status`]({{kib-apis}}/operation/operation-setalertsstatus) | [`POST /api/detection_engine/signals/status`]({{kib-serverless-apis}}/operation/operation-setalertsstatus) |
+| Manage rule exceptions | [`POST /api/exception_lists`]({{kib-apis}}/group/endpoint-security-exceptions-api) | [`POST /api/exception_lists`]({{kib-serverless-apis}}/group/endpoint-security-exceptions-api) |
+| Manage endpoint exceptions | [`POST /api/endpoint_list`]({{kib-apis}}/group/endpoint-security-endpoint-exceptions-api) | [`POST /api/endpoint_list`]({{kib-serverless-apis}}/group/endpoint-security-endpoint-exceptions-api) |
+| Manage value lists | [`POST /api/lists`]({{kib-apis}}/group/endpoint-security-lists-api) | [`POST /api/lists`]({{kib-serverless-apis}}/group/endpoint-security-lists-api) |
