@@ -44,9 +44,9 @@ This general-purpose API enables you to perform {{infer}} operations using EIS, 
 
 Natural Language Processing (NLP) enables you to analyze natural language data and make predictions.  Elastic offers a range of [built-in NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) such as the Elastic-trained [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) or [Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md). You can also [deploy custom NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
 
-### AI-powered search
+### Vector search
 
-[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses {{ml}} models to capture meaning in content.
+[Vector search](/solutions/search/vector.md) helps you find data based on intent and contextual meaning using vector embeddings, which use {{ml}} models to capture meaning in content.
 
 #### Semantic and hybrid search
 
@@ -55,7 +55,7 @@ Depending on your team's technical expertise and requirements, you can choose fr
 - For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text).
 - For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector) manually.
 
-[Hybrid search](/solutions/search/hybrid-search.md) combines traditional full-text search with AI-powered search for more powerful search experiences that serve a wider range of user needs.
+[Hybrid search](/solutions/search/hybrid-search.md) combines traditional full-text search with vector search for more powerful search experiences that serve a wider range of user needs.
 
 ### Semantic re-ranking
 

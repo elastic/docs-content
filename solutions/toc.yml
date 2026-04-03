@@ -27,22 +27,21 @@ toc:
               - file: search/full-text/search-with-synonyms.md
                 children:
                   - file: search/full-text/create-update-synonyms-api-example.md
-          - file: search/ai-search/ai-search.md
+          - file: search/vector.md
             children:
-              - file: search/vector.md
-                children:
-                  - file: search/vector/dense-vector.md
-                    children:
-                      - file: search/vector/knn.md
-                      - file: search/vector/bring-own-vectors.md
-                  - file: search/vector/sparse-vector.md
-                  - file: search/vector/dense-versus-sparse-ingest-pipelines.md
+              - file: search/vector/how-vector-search-works.md
               - file: search/semantic-search.md
                 children:
                   - file: search/semantic-search/semantic-search-semantic-text.md
                   - file: search/semantic-search/semantic-search-inference.md
                   - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
                   - file: search/semantic-search/cohere-es.md
+              - file: search/vector/dense-vector.md
+                children:
+                  - file: search/vector/knn.md
+                  - file: search/vector/bring-own-vectors.md
+              - file: search/vector/sparse-vector.md
+              - file: search/vector/dense-versus-sparse-ingest-pipelines.md
               - file: search/using-openai-compatible-models.md
           - file: search/hybrid-search.md
             children:
