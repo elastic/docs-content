@@ -124,7 +124,8 @@ Index privileges
     - `.items-<space-id>`
 
 {{kib}} privileges
-:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `Read` for `Alerts` to view alerts, open alert flyouts, and view alert tables on pages and dashboards with alert-related flows. To do everything that `Read` provides, plus changing alert status, setting assignees, setting tags, and bulk actions on alerts, set `Alerts` to `All`.  
+:   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `Read` for `Alerts`: View alerts, open alert flyouts, and view alert tables on pages and dashboards with alert-related flows.
+    - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `All` for `Alerts`: Everything that `Read` provides, plus changing alert status, setting assignees, setting tags, and bulk actions on alerts.
     - {applies_to}`stack: ga 9.3` `All` for the `Rules, Alerts, and Exceptions` feature to view alert management flows
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 

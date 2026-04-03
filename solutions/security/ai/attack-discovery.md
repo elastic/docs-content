@@ -68,7 +68,7 @@ Ensure your role has:
 
 * `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
 
-    ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
+    ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png "elasticsearch =60%x60%")
 
 * The appropriate [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
 
@@ -83,7 +83,7 @@ Ensure your role has:
 
 Ensure your role has `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature.
 
-![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
+![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png "elasticsearch =60%x60%")
 
 :::
 
@@ -101,7 +101,8 @@ In {{stack}} 9.0.0, the **Run** button is called **Generate**.
 
 ::::{image} /solutions/images/security-attack-discovery-settings.png
 :alt: Attack Discovery's settings menu
-:width: 500px
+:screenshot:
+:width: 60%
 ::::
 
 You can select which alerts Attack Discovery will process by filtering based on a KQL query, the time and date selector, and the **Number of alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error. Under **Alert summary** you can view a summary of the selected alerts grouped by various fields, and under **Alerts preview** you can see more details about the selected alerts.
@@ -134,6 +135,8 @@ You’ll need to select an LLM connector before you can analyze alerts. To get s
 
     :::{image} /solutions/images/security-attck-disc-select-model-empty.png
     :alt: attck disc select model empty
+    :screenshot:
+    :width: 60%
     :::
 
 3. Once you’ve selected a connector, do one of the following to start the analysis:
@@ -157,6 +160,8 @@ Each discovery includes the following information describing the potential threa
 
 :::{image} /solutions/images/security-attck-disc-example-disc.png
 :alt: Attack Discovery detail view
+:screenshot:
+:width: 60%
 :::
 
 
@@ -172,6 +177,7 @@ There are several ways you can incorporate discoveries into your {{elastic-sec}}
 
 :::{image} /solutions/images/security-add-discovery-to-assistant.gif
 :alt: Attack Discovery view in AI Assistant
+:width: 60%
 :::
 
 ## Schedule discoveries
