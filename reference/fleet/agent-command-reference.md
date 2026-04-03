@@ -230,7 +230,7 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 :   Timeout waiting for {{agent}} daemon.
 
 `--delay-enroll`
-:   Delays enrollment to occur on first start of the {{agent}} service. This setting is useful when you don’t want the {{agent}} to enroll until the next reboot or manual start of the service, for example, when you’re preparing an image that includes {{agent}}.
+:   Delays enrollment to occur on first start of the {{agent}} service. This setting is useful when you don't want the {{agent}} to enroll until the next reboot or manual start of the service, for example, when you're preparing an image that includes {{agent}} or deploying to environments where network access may not be immediately available. If {{fleet-server}} is unreachable when the service starts, {{agent}} will retry enrollment indefinitely until it succeeds.
 
 `--elastic-agent-cert`
 :   Certificate to use as the client certificate for the {{agent}}'s connections to {{fleet-server}}.
