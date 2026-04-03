@@ -40,6 +40,7 @@ toc:
               - file: search/semantic-search.md
                 children:
                   - file: search/semantic-search/semantic-search-semantic-text.md
+                  - file: search/semantic-search/vector-storage-for-semantic-search.md
                   - file: search/semantic-search/semantic-search-inference.md
                   - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
                   - file: search/semantic-search/cohere-es.md
