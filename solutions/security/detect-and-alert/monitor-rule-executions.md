@@ -72,11 +72,13 @@ To learn how to find and fill gaps, refer to [Fill rule execution gaps](/solutio
 
 From the **Execution results** tab on a rule's details page, you can review how each run performed, monitor gaps, and check manual runs. To find this tab, select the rule's name to open its details, then scroll down.
 
-Choose the tab for your deployment. **{{stack}}** **9.4** and later and **{{ecloud}} Serverless** use the first tab; **{{stack}}** **9.3** and earlier use the second tab.
+Select the tab for your deployment. **{{stack}}** **9.4** and later and **{{ecloud}} Serverless** use the first tab. **{{stack}}** **9.3** and earlier use the second tab.
 
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+### Execution results table [execution-results-table]
 
 Each detection rule execution is logged with status, timing, and how many alerts the run produced. The table helps you understand rule performance and troubleshoot failures.
 
@@ -91,22 +93,36 @@ You can hover over each column heading to display a tooltip about that column's 
 | **Alerts created** | Number of new alerts generated during this execution. |
 | **Message** | Outcome message from the execution (including warnings or errors when applicable). |
 
-**Row actions**
+From the table, you can use the following row actions:
 
 * **Filter alerts by rule execution ID**: Opens the Alerts table filtered to alerts from this execution. This control is disabled when the execution created no alerts (hover to see a tooltip).
 * **View details**: Opens the [execution details flyout](#execution-details-flyout) for that run.
 
-Continue beleow for to filter what appears in the table.
+Use these controls to filter what appears in the table:
+
+* The **Run type** drop-down filters by rule execution type:
+
+    * **Scheduled**: Automatic, scheduled rule executions.
+    * **Manual**: Rule executions that were [started manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules).
+
+* The **Status** drop-down filters by rule execution status:
+
+    * **Succeeded**: The rule completed its defined search.
+    * **Failed**: The rule encountered an error that prevented it from running.
+    * **Warning**: The rule ran but might have returned unexpected results.
+
+* The date and time picker sets the time range of rule executions included in the table. This is separate from the global date and time picker at the top of the rule details page.
+
+Additional timing, indexing, and gap details that were previously available through extra table columns and toggles are now shown in the [execution details flyout](#execution-details-flyout).
+
 :::
 
 :::{applies-item} { stack: ga 8.0-9.3 }
 
+### Execution results table [execution-log-table]
+
 The **Execution results** tab shows the run history in this layout. Each detection rule execution is logged, including the execution type, success or failure status, any warning or error messages, how long it took to search for data, create alerts, and complete. This can help you identify and troubleshoot a rule if it isn't behaving as expected (for example, if it isn't creating alerts or takes a long time to run).
 
-Continue beleow for to filter what appears in the table.
-:::
-
-::::
 
 You can hover over each column heading to display a tooltip about that column's data. Select a column heading to sort the table by that column. You can select the arrow at the end of a row to expand a long warning or error message.
 
@@ -127,6 +143,10 @@ Use these controls to filter what's included in the table:
 * The **Source event time range** button toggles the display of data pertaining to the time range of manual runs.
 * The **Show metrics columns** toggle includes more or less data in the table, pertaining to the timing of each rule execution.
 * The **Actions** column allows you to show alerts generated from a given rule execution. Select the filter icon {icon}`filterInCircle` to create a global search filter based on the rule execution's ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by selecting **Restore previous filters** in the notification.
+
+:::
+
+::::
 
 
 ### Execution details flyout [execution-details-flyout]
