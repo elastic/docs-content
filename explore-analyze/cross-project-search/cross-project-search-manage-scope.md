@@ -77,6 +77,11 @@ The header's {{cps-init}} scope selector is not available in other apps, includi
 
 {{elastic-sec}} apps have limited {{cps-init}} support. Within Timeline, only the **{{esql}}** tab supports `SET project_routing`; all other Timeline tabs search the local project only. Other Security features. including the **Explore** page, threat-hunting workflows, the alert details flyout, and entity store, also remain scoped to the local project.
 
+:::{note}
+:applies_to: { "serverless": "preview"}
+**Tech preview limitation:** Rules that query data across linked projects can generate alerts, and you can view those alerts in the UI. The alert response workflow, which includes actions after an alert is raised, such as triage, investigation, and case management across linked projects, is not yet fully supported with {{cps-init}}.
+:::
+
 ## Related pages
 
 * [{{cps-cap}} overview](/explore-analyze/cross-project-search.md)
