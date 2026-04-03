@@ -145,7 +145,12 @@ Index privileges
 
 ## View and manage rules and exceptions separately [rules-exceptions-subfeatures]
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` After **`Read`** or **`All`** on **`Rules and Exceptions`**, enable **Customize sub-feature privileges** to set **`Rules`** and **`Exceptions`** independently. For more on sub-feature privileges, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#_sub_feature_privileges).
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+After setting `Read` or `All` on `Rules and Exceptions`, you can toggle **Customize sub-feature privileges** to set independent access to rules and exceptions. To learn about sub-feature privileges, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#_sub_feature_privileges).
 
 Cluster privileges
 :   None
