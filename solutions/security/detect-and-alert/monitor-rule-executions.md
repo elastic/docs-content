@@ -117,7 +117,7 @@ Additional timing, indexing, and gap details that were previously available thro
 
 :::
 
-:::{applies-item} { stack: ga 8.0-9.3 }
+:::{applies-item} { stack: ga 9.0-9.3 }
 
 ### Execution results table [execution-log-table]
 
