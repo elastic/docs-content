@@ -13,6 +13,10 @@ products:
 
 When you [sign up for {{ecloud}}](/deploy-manage/deploy/elastic-cloud/create-an-organization.md), you create an organization. This organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. 
 
+:::{important}
+If your organization restricts outbound browser traffic with a firewall, proxy, or secure web gateway, make sure users can access `console.estccdn.com`. If this domain is blocked, users can encounter blank pages after sign-in for surfaces that authenticate through `cloud.elastic.co`.
+:::
+
 You can perform the following tasks to manage your Cloud organization:
 
 * [Manage billing](/deploy-manage/cloud-organization/billing.md)
