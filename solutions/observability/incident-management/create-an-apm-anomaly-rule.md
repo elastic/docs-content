@@ -19,7 +19,7 @@ To use the APM Anomaly rule, you have to enable [machine learning](/solutions/ob
 
 To create APM anomaly rules, you need the following:
 
-- {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions) and permissions to run machine learning jobs.
+- {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions) and permissions to run machine learning (ML) jobs.
 - {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ### Indices used by this rule
