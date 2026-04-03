@@ -140,7 +140,7 @@ For a full feature comparison, upgrading instructions, and more, refer to [{{obs
 
 ## Project tags
 
-Project tags are custom metadata key-value pairs that allow you to categorize and organize your projects.
+Project tags are custom metadata key-value pairs that allow you to categorize and organize your projects. If you're using {{cps}} in {{serverless-full}}, tags also enable [routing searches to specific projects](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
 While each project is automatically categorized by attributes such as its project type, cloud service provider, and region, you can add your own tags to further categorize your projects. 
 

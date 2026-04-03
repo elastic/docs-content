@@ -675,6 +675,10 @@ toc:
           - file: remote-clusters/eck-remote-clusters.md
           - file: remote-clusters/eck-remote-clusters-to-other-eck.md
           - file: remote-clusters/eck-remote-clusters-to-external.md
+  - file: cross-project-search-config.md
+    children:
+      - file: cross-project-search-config/cps-config-link-and-manage.md
+      - file: cross-project-search-config/cps-config-access-and-scope.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
