@@ -28,7 +28,7 @@ To create uptime duration anomaly rules, you need the following:
 
 ### Indices used by this rule
 
-This rule queries the ML anomalies indices and the index patterns specified in the uptime settings. The defaults are `.ml-anomalies-*` and `heartbeat-*` (may include `synthetics-*`). You cannot override these indices on a per-rule basis.
+This rule queries the machine learning anomalies indices and the index patterns specified in the uptime settings. The defaults are `.ml-anomalies-*` and `heartbeat-*` (may include `synthetics-*`). You cannot override these indices on a per-rule basis.
 
 ## Conditions [duration-alert-conditions]
 
