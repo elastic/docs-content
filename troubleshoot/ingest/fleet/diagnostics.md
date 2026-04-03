@@ -75,7 +75,7 @@ Diagnostics and logs mainly emit product metadata and settings, but they might e
 
 The diagnostics are sent to {{fleet-server}} which in turn sends it to {{es}}. Therefore, this works even with {{agents}} that are not using the {{es}} output. To download the diagnostics bundle for local viewing:
 
-1. If related to the [Agentless Integration](/manage-data/ingest/agentless/agentless-integrations.md), first toggle **Show agentless resources** under **Advanced Settings** of the [{{fleet}} Settings UI](fleet://reference/fleet/fleet-settings.md).
+1. If related to the [Agentless Integration](/manage-data/ingest/agentless/agentless-integrations.md), first toggle **Show agentless resources** under **Advanced Settings** of the [{{fleet}} Settings UI](/reference/fleet/fleet-settings.md).
 2. In {{fleet}}, open the **Agents** tab.
 3. In the **Host** column, click the agent’s name.
 4. Select the **Diagnostics** tab and click the **Request diagnostics .zip** button.
