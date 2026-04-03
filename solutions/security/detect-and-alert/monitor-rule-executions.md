@@ -78,8 +78,6 @@ Select the tab for your deployment. **{{stack}}** **9.4** and later and **{{eclo
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 
-### Execution results table [execution-results-table]
-
 Each detection rule execution is logged with status, timing, and how many alerts the run produced. The table helps you understand rule performance and troubleshoot failures.
 
 You can hover over each column heading to display a tooltip about that column's data. Select a column heading to sort the table by that column.
@@ -119,8 +117,6 @@ Additional timing, indexing, and gap details that were previously available thro
 
 :::{applies-item} { stack: ga 9.0-9.3 }
 
-### Execution results table [execution-log-table]
-
 The **Execution results** tab shows the run history in this layout. Each detection rule execution is logged, including the execution type, success or failure status, any warning or error messages, how long it took to search for data, create alerts, and complete. This can help you identify and troubleshoot a rule if it isn't behaving as expected (for example, if it isn't creating alerts or takes a long time to run).
 
 
@@ -155,23 +151,40 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-Additional timing, indexing, and gap details that were previously available via extra table columns and toggles are now shown in the execution details flyout. Select **View details** on a row to open a side panel. The panel shows the execution ID (copyable) and the following sections:
+Additional timing, indexing, and gap details are provided in the execution details flyout. Select **View details** on a row to open a side panel. The panel shows the execution ID (copyable) and the following fields:
 
-* **Message**: Outcome message, including errors or warnings from the run.
-* **Source event time range**: For manual (backfill) runs only: **From** and **To** define the source event time range that this execution queried.
-* **Alerts**
-    * **Candidate alerts**: Alerts detected before deduplication and suppression.
-    * **Alerts created**: Alerts indexed in {{es}} after deduplication and suppression.
-* **Indices**
-    * **Matched indices**: Number of indices that matched the rule's index patterns.
-    * **Frozen indices queried**: Number of frozen-tier indices included in the search.
-* **Timing**
-    * **Gap duration**: Duration of any gap in rule execution. Adjust rule look-back or refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) for mitigations.
-    * **Scheduling delay**: Time from when the rule was scheduled to when it ran.
-    * **Execution duration**: How long the rule took to run.
-* **Execution duration breakdown**
-    * **Search**: Time spent on {{es}} search requests during the run.
-    * **Indexing**: Time spent indexing detected alerts.
+Message
+:   Whether the run completed successfully, plus errors or warnings (for example, index or query issues). Check this field first when a run failed or shows a warning, before you review timing or alert counts.
+
+Source event time range
+:   Manual runs only. `From` and `To` bound the source events the rule searched, not the clock time when the run started. Compare this to the run timestamp in the table above: a manual run can execute now while querying events from an earlier window. Scheduled runs rely on the rule’s schedule and look-back instead. This section is most relevant when validating a [manual run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules).
+
+Candidate alerts
+:   Detections produced by the rule query before deduplication and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md). If this number is high but **Alerts created** is low, review duplicate detection, suppression settings, and exception lists to find where alerts were dropped.
+
+Alerts created
+:   Alerts written to {{es}} after deduplication and suppression. These are the alerts shown on the **Alerts** page and in downstream workflows. Use this count to judge whether the run added meaningful new issues versus noise.
+
+Matched indices
+:   How many concrete indices matched the rule’s index patterns or data view for this run. If you expected data from a new index and this is `0`, check index names, data streams, and whether the index pattern includes the right time range.
+
+Frozen indices queried
+:   How many indices on the [frozen](/manage-data/lifecycle/data-tiers.md) data tier were searched. Searching frozen data can increase latency. A non-zero value here can explain slower search times in the breakdown below.
+
+Gap duration
+:   How long execution was behind the ideal schedule for this interval (missed or delayed coverage). Non-zero values mean some event time range was not searched on schedule. Refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) and consider look-back, load, or maintenance windows.
+
+Scheduling delay
+:   Latency between the scheduled start time and when the run actually began. Large delays often point to queue backlog, cluster load, or resource limits rather than a problem inside the rule query itself.
+
+Execution duration
+:   End-to-end time for this run (search plus indexing work attributed to the run). Compare it to the rule’s run interval. If runs routinely approach or exceed the interval, consider narrowing scope, optimizing queries, or scaling the cluster.
+
+Search
+:   Time in {{es}} for queries and aggregations. If this value is the largest part of the breakdown, focus on query cost, index patterns, shard count, and whether frozen indices were queried.
+
+Indexing
+:   Time spent persisting new alerts. If this value is the largest part of the breakdown, investigate alert volume per run, bulk indexing health, and {{es}} performance on alert indices.
 
 ### Gaps table
 
