@@ -37,7 +37,7 @@ To pull data from the respective applicable locations, refer to:
 
     :::{note}
     :applies_to: serverless: ga,:applies_to: ess: ga
-    To pull [Agentless Integration](/manage-data/ingest/agentless/agentless-integrations.md) diagnostics, you have to use the {{fleet}} UI. To show Elastic Agentless, toggle **Show agentless resources** under **Advanced Settings** of the [{{fleet}} Settings UI](fleet://reference/fleet/fleet-settings.md).
+    To pull [Agentless Integration](/manage-data/ingest/agentless/agentless-integrations.md) diagnostics, you have to use the {{fleet}} UI. To show Elastic Agentless, toggle **Show agentless resources** under **Advanced Settings** of the [{{fleet}} Settings UI](/reference/fleet/fleet-settings.md).
     :::
 
 You need to determine which diagnostic types are needed to investigate your specific issue. This table shows common troubleshooting situations and which diagnostics are commonly associated:
