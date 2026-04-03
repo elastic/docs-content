@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: View, edit, enable, duplicate, and manage detection rules from the Rules page.
+description: View, edit, enable, duplicate, and manage detection rules from the Rules page, including deprecated prebuilt rules in 9.4 and later.
 ---
 
 # Manage detection rules [security-rules-ui-management]
@@ -48,6 +48,19 @@ You can also filter the rules list by selecting the **Tags**, **Last response**,
 
 The rules list retains your sorting and filtering settings when you navigate away and return to the page. These settings are also preserved when you copy the page’s URL and paste into another browser. Select **Clear filters** above the table to revert to the default view.
 
+## Handle deprecated prebuilt rules [deprecated-prebuilt-rules]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When a prebuilt rule that you installed is deprecated, it is no longer maintained as part of Elastic’s prebuilt rule library. Deprecated rules do not receive new updates or fixes from Elastic. If you want to keep the same detection logic and maintain it yourself, duplicate the rule as a custom rule before you remove the deprecated prebuilt installation.
+
+{{elastic-sec}} surfaces deprecated prebuilt rules in the UI so you can find them and respond. If any are installed, a dismissible callout on the **Installed Rules** tab alerts you. On a rule’s details page, a callout also marks deprecated prebuilt rules and includes a reason if the package provides one. From that page you can choose to delete the deprecated prebuilt rule, or [create a duplicate](#duplicate-rules) as a custom rule before deleting the original prebuilt rule. That way you keep the same detection logic and can maintain it as a custom rule.
+
+:::{tip}
+Staying current with Elastic’s prebuilt rule updates helps you get the latest detection logic and fixes while rules are still supported. Refer to [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md) for more details.
+:::
 
 
 ## Edit rule settings [edit-rules-settings]

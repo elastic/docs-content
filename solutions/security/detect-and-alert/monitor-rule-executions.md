@@ -21,6 +21,7 @@ Detection rules only protect your environment when they run reliably. This page 
 | Check if a rule succeeded, failed, or has warnings | [Rule execution status](#rule-status) (Rules table) |
 | Compare status across all rules | [Rule Monitoring tab](#rule-monitoring-tab) |
 | Review a specific rule's run history | [Execution results](#rule-execution-logs) (rule details page) |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Handle deprecated prebuilt rules | [Handle deprecated prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#deprecated-prebuilt-rules) (Rules page and rule details) |
 | Fill gaps from missed rule runs | [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) |
 | Run a rule manually for a specific time range | [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) |
 | View rule performance metrics in a dashboard | [Detection rule monitoring dashboard](../dashboards/detection-rule-monitoring-dashboard.md) |
@@ -71,6 +72,10 @@ To learn how to find and fill gaps, refer to [Fill rule execution gaps](/solutio
 ## Execution results tab [rule-execution-logs]
 
 From the **Execution results** tab on a rule's details page, you can access the rule's execution log, monitor gaps, and check manual runs. To find this tab, select the rule's name to open its details, then scroll down.
+
+:::{note}
+The rule details page can also show other information at the top of the page, such as {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` deprecation callouts described in [Handle deprecated prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#deprecated-prebuilt-rules).
+:::
 
 ### Execution log table [execution-log-table]
 
