@@ -57,7 +57,7 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
 :::
 
-Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads.
+Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [Share and export dashboards](/explore-analyze/dashboards/sharing.md).
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
@@ -153,7 +153,7 @@ serverless: unavailable
 ```
 
 * {applies_to}`stack: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
-* **Embed code** — Embed fully interactive dashboards as an iframe on web pages.
+* **Embed code** — Embed fully interactive dashboards as an iframe on web pages. Refer to [Embed in a webpage](/explore-analyze/dashboards/sharing.md#embed-dashboard) for detailed instructions.
 
 ::::{note}
 :name: reporting-on-cloud-resource-requirements
