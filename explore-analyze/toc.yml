@@ -261,6 +261,7 @@ toc:
       - file: dashboards/building.md
         children:
           - file: dashboards/create-dashboard.md
+          - file: dashboards/create-programmatically.md
           - file: dashboards/open-dashboard.md
           - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
