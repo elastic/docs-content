@@ -94,6 +94,50 @@ This example uses the **Kibana Sample Data eCommerce** data set. If you haven't 
 
 ![Waffle chart showing revenue progress toward a sales target](/explore-analyze/images/waffle-scenario-completion.png "=70%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses two metrics without a `group_by` to create a goal-tracking waffle: one metric shows earned revenue and the other calculates the gap to a $500K target.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "waffle",                                                                <1>
+  "title": "Revenue progress toward sales target",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "sum",
+      "field": "taxful_total_price",
+      "label": "Revenue earned",                                                   <2>
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    },
+    {
+      "operation": "formula",
+      "formula": "500000 - sum(taxful_total_price)",                               <3>
+      "label": "Remaining to goal",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ]
+}'
+```
+
+1. `waffle` renders a 10x10 grid of squares where each square represents 1% of the whole.
+2. The first metric fills squares proportionally to earned revenue, showing progress at a glance.
+3. The `formula` metric computes the gap between a $500K target and actual revenue, filling the remaining squares.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ## Waffle chart settings [waffle-chart-settings]
 
 Customize your waffle chart to display exactly the information you need, formatted the way you want.
@@ -186,6 +230,50 @@ The following examples show various configuration options for building impactful
 
 ![Waffle chart showing response status breakdown](/explore-analyze/images/waffle-example-response-status.png "=70%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses `filters` grouping to define three custom categories based on HTTP response code ranges, each filling a proportional section of the waffle grid.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "waffle",
+  "title": "Response status breakdown",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "filters",                                                      <1>
+      "filters": [
+        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success (2xx/3xx)" },
+        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client errors (4xx)" },
+        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server errors (5xx)" }                                <2>
+      ]
+    }
+  ]
+}'
+```
+
+1. `filters` creates one waffle section per KQL query, letting you define arbitrary status categories rather than grouping by raw field values.
+2. Each filter entry defines a KQL query and a display label. The number of squares each section occupies is proportional to its document count.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **OS distribution**
 :   Show the distribution of operating systems used by your website visitors:
 
@@ -194,3 +282,44 @@ The following examples show various configuration options for building impactful
     * **Metric**: Count
 
 ![Waffle chart showing OS distribution](/explore-analyze/images/waffle-example-os.png "=70%")
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a waffle chart grouped by operating system, where each colored section represents a different OS and its size shows the proportion of visitors using it.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "waffle",
+  "title": "OS distribution",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },                                       <1>
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["machine.os.keyword"],                                            <2>
+      "size": 5
+    }
+  ]
+}'
+```
+
+1. `percentage` mode labels each section with its share of total traffic, which maps naturally to the waffle's 100-square grid.
+2. `machine.os.keyword` splits the waffle by operating system, with the top 5 OSes each getting a proportionally sized colored section.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

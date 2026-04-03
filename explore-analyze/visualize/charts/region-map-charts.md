@@ -129,6 +129,42 @@ The following examples show various configuration options for building impactful
 
 ![Region map showing website traffic by destination country](/explore-analyze/images/region-map-example-traffic.png "=70%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a choropleth map that colors countries by request count, using the `geo.dest` field which contains two-letter ISO country codes.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "region_map",                                                            <1>
+  "title": "Website traffic by destination country",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metric": {
+    "operation": "count",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["geo.dest"],                                                        <2>
+    "size": 50                                                                     <3>
+  }
+}'
+```
+
+1. `region_map` renders a geographic choropleth where region color intensity reflects the metric value.
+2. `geo.dest` contains ISO country codes that are matched to EMS world country boundaries.
+3. `limit: 50` includes up to 50 countries, providing broad geographic coverage.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Customer distribution by country**
 :   Show where your customers are located around the world:
 
@@ -139,6 +175,43 @@ The following examples show various configuration options for building impactful
 
 ![Region map showing customer distribution by country](/explore-analyze/images/region-map-example-customers.png "=70%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example colors countries by the number of unique customers rather than total orders, giving a clearer picture of market reach per region.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "region_map",
+  "title": "Customer distribution by country",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "metric": {
+    "operation": "unique_count",                                                   <1>
+    "field": "customer_id",
+    "label": "Unique customers",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["geoip.country_iso_code"],                                          <2>
+    "size": 50
+  }
+}'
+```
+
+1. `unique_count` on `customer_id` counts distinct customers per country, avoiding inflation from repeat buyers.
+2. `geoip.country_iso_code` provides ISO codes that map directly to EMS world country boundaries.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Average ticket price by destination country**
 :   Compare average flight ticket prices across destination countries:
 
@@ -148,3 +221,40 @@ The following examples show various configuration options for building impactful
     * **Metric**: Average of `AvgTicketPrice`
 
 ![Region map showing average ticket price by destination country](/explore-analyze/images/region-map-example-ticket-price.png "=70%")
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example maps average flight ticket prices by destination country, highlighting which regions have the most expensive flights.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "region_map",
+  "title": "Average ticket price by destination country",
+  "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metric": {
+    "operation": "average",                                                        <1>
+    "field": "AvgTicketPrice",
+    "label": "Average ticket price",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["DestCountry"],                                                     <2>
+    "size": 50
+  }
+}'
+```
+
+1. `average` on `AvgTicketPrice` computes the mean ticket price per country, making color intensity reflect cost rather than volume.
+2. `DestCountry` contains ISO country codes from the flights sample data, matched to EMS world boundaries.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

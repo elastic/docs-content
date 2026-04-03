@@ -133,6 +133,47 @@ To add trend indicators to your metric visualization:
 
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "metric",
+  "title": "Weekly page views",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "count",
+      "label": "Page views",
+      "format": { "type": "number", "decimals": 0, "compact": true },
+      "filter": { "query": "" },
+      "alignments": { "labels": "left", "value": "right" },
+      "icon": { "name": "empty" }
+    },
+    {
+      "type": "secondary",
+      "operation": "formula",
+      "formula": "count(shift='''1w''')",
+      "label": "Compared to previous week",
+      "format": { "type": "number", "decimals": 0, "compact": true },
+      "filter": { "query": "" },
+      "alignments": { "value": "right" },
+      "color": { "type": "static", "color": "#6092c0" }
+    }
+  ]
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::
+
 ### Show progress by setting a maximum value [metric-progress]
 
 When creating **Metric** visualizations with numeric data, you can specify a maximum value to show progress toward a goal or capacity limit. When combined with the **Bar** background chart option, this displays a progress bar that visually represents how close your current metric is to reaching the maximum value.
@@ -161,6 +202,40 @@ The metric visualization now shows a progress bar indicating how close the curre
 
 ::::{tip}
 You can combine progress bars with secondary metrics to show both progress toward a goal and trends over time. To do this, add both a maximum value and a secondary metric to your visualization.
+::::
+
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "metric",
+  "title": "Storage used",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metrics": [{
+    "type": "primary",
+    "operation": "sum",
+    "field": "bytes",
+    "format": { "type": "bytes" },
+    "filter": { "query": "" },
+    "alignments": { "labels": "left", "value": "right" },
+    "icon": { "name": "empty" }
+  }],
+  "breakdown_by": {
+    "operation": "terms",
+    "fields": ["machine.os.keyword"],
+    "size": 5
+  }
+}'
+```
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
 
 ## Metric chart settings [settings]
@@ -280,7 +355,56 @@ The following examples show various configuration options that you can use for b
       * **Value format**: `Percent`
       * **Label**: Custom, set to `Target:`
 
-    ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
+![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
+
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a metric that calculates the ratio of successful HTTP requests using a formula with a KQL filter, and adds a fixed target value as a secondary metric.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "metric",
+  "title": "Successful requests (2xx)",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "formula",
+      "formula": "count(kql='''response >= 200 and response < 300''') / count()",  <1>
+      "label": "Successful requests (2xx)",
+      "format": { "type": "percent", "decimals": 1 },                             <2>
+      "filter": { "query": "" },
+      "alignments": { "labels": "left", "value": "right" },
+      "icon": { "name": "empty" },
+      "color": { "type": "static", "color": "#209280" }
+    },
+    {
+      "type": "secondary",
+      "operation": "formula",
+      "formula": "0.95",                                                           <3>
+      "label": "Target:",
+      "format": { "type": "percent", "decimals": 0 },
+      "filter": { "query": "" },
+      "alignments": { "value": "right" },
+      "color": { "type": "static", "color": "#6092c0" }
+    }
+  ]
+}'
+```
+
+1. A KQL-filtered formula divides successful responses (2xx) by total responses.
+2. Formats the result as a percentage.
+3. The secondary metric displays a fixed 95% target for comparison.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::
 
 **Ratio of successful requests per origin**
 :   This example builds on the previous one to display the percentage of successful requests for the 10 countries with the most incoming requests on a monitoring dashboard:
@@ -295,9 +419,62 @@ The following examples show various configuration options that you can use for b
       * **Value format**: `Percent`
     * **Break down by**: `geo.dest`
       * **Number of values**: `10`
-      * **Rank by**: `Custom` > `Count` > `Records` to get countries generating most requests 
+      * **Rank by**: `Custom` > `Count` > `Records` to get countries generating most requests
 
-    ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate-top-countries.png "=70%")
+![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate-top-countries.png "=70%")
+
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example builds on the previous one by adding a breakdown that splits the success rate into one tile per destination country.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "metric",
+  "title": "Successful requests (2xx)",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "formula",
+      "formula": "count(kql='''response >= 200 and response < 300''') / count()",
+      "label": "Successful requests (2xx)",
+      "format": { "type": "percent", "decimals": 1 },
+      "filter": { "query": "" },
+      "alignments": { "labels": "left", "value": "right" },
+      "icon": { "name": "empty" },
+      "color": { "type": "static", "color": "#209280" }
+    },
+    {
+      "type": "secondary",
+      "operation": "formula",
+      "formula": "0.95",
+      "label": "Target:",
+      "format": { "type": "percent", "decimals": 0 },
+      "filter": { "query": "" },
+      "alignments": { "value": "right" },
+      "color": { "type": "static", "color": "#6092c0" }
+    }
+  ],
+  "breakdown_by": {                                                         <1>
+    "operation": "terms",
+    "fields": ["geo.dest"],
+    "size": 10                                                              <2>
+  }
+}'
+```
+
+1. `breakdown_by` splits the metric into separate tiles, one per destination country.
+2. Shows the top 10 countries by document count.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::
 
 **Website traffic with trend**
 :   Monitor current traffic and show whether it's increasing or decreasing compared to the previous period:
@@ -311,4 +488,51 @@ The following examples show various configuration options that you can use for b
       * **Label**: "Compared to previous week"
       * **Color palette**: Green for increases (more traffic is positive)
 
-    ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
+![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
+
+::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a metric that counts page views and compares the current value to the previous week using a time-shifted formula.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "metric",
+  "title": "Weekly page views",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "count",
+      "label": "Page views",
+      "format": { "type": "number", "decimals": 0, "compact": true },      <1>
+      "filter": { "query": "" },
+      "alignments": { "labels": "left", "value": "right" },
+      "icon": { "name": "empty" }
+    },
+    {
+      "type": "secondary",                                                  <2>
+      "operation": "formula",
+      "formula": "count(shift='''1w''')",                                   <3>
+      "label": "Compared to previous week",
+      "format": { "type": "number", "decimals": 0, "compact": true },
+      "filter": { "query": "" },
+      "alignments": { "value": "right" },
+      "color": { "type": "static", "color": "#6092c0" }
+    }
+  ]
+}'
+```
+
+1. `compact: true` displays large numbers in abbreviated form (for example, 1.2K).
+2. The secondary metric appears below the primary value as a comparison indicator.
+3. `shift='1w'` runs the same count query offset by one week, enabling trend detection.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+::::

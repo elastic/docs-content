@@ -5,6 +5,7 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+description: "Create and configure Lens visualizations in Kibana using the drag-and-drop editor or the Visualizations API."
 products:
   - id: kibana
 ---
@@ -45,9 +46,24 @@ With Lens, you can create the following visualization types:
 | [Tag cloud](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Highlight the most frequent or important terms in a dataset. |
 | [Region map](/explore-analyze/visualize/charts/region-map-charts.md) | Show how values vary across geographic regions (choropleth). |
 
+## Create visualizations with the API [lens-api]
+
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+You can create and manage Lens visualizations programmatically using the Visualizations API ([stateful](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations), [serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-visualizations)). This is useful for managing visualizations as code, automating their lifecycle, or building tooling around Lens charts.
+
+Visualizations created through this API can be added to dashboards using the Kibana UI or the Dashboards API.
+
+:::{note}
+The Visualizations API is in technical preview and may change in future releases.
+:::
+
 ## Create visualizations [create-the-visualization-panel]
 
-If you’re unsure about the visualization type you want to use, or how you want to display the data, drag the fields you want to visualize onto the workspace, then let **Lens** choose for you.
+If you're unsure about the visualization type you want to use, or how you want to display the data, drag the fields you want to visualize onto the workspace, then let **Lens** choose for you.
 
 If you already know the visualization type you want to use, and how you want to display the data, use the following process.
 
@@ -399,7 +415,7 @@ Each visualization offers various options that you can use to customize its appe
 
 * **Style** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
 * **Labels** — Specifies how to display the labels for donut charts, pie charts, and treemaps.
-* **Legend** — Specifies how to display the legend. You can choose to display the legend inside or outside the visualization, truncate the legend values when they’re too long, and [select additional statistics to show](#customize-visualization-legend).
+* **Legend** — Specifies how to display the legend. You can choose to display the legend inside or outside the visualization, truncate the legend values when they're too long, and [select additional statistics to show](#customize-visualization-legend).
 * **Left axis**, **Bottom axis**, and **Right axis** — Specify how you want to display the chart axes. For example, add axis labels and change the orientation and bounds.
 
 ### Visualization appearance and style options [customize-visualization-appearance]
@@ -527,11 +543,11 @@ To customize the legend of your visualization, click the **Legend** icon ![Legen
 :::
 
 ::::{note}
-The options available can vary based on the type of chart you’re setting up. For example, showing additional statistics is only possible for time series charts.
+The options available can vary based on the type of chart you're setting up. For example, showing additional statistics is only possible for time series charts.
 ::::
 
 
-**Change the legend’s display**
+**Change the legend's display**
 
 With the **Visibility**, **Position**, and **Width** options, you can adjust the way the legend appears in or next to the visualization.
 
@@ -665,7 +681,7 @@ For each y-axis, you can select **Left** and **Right**, and configure a differen
 ::::{dropdown} Why is my value the incorrect color when I use value-based coloring?
 :name: why-is-my-value-with-the-right-color-using-value-based-coloring
 
-Here’s a short list of few different aspects to check:
+Here's a short list of few different aspects to check:
 
 * Make sure the value falls within the desired color stop value defined in the panel. Color stop values are "inclusive".
 * Make sure you have the correct value precision setup. Value formatters could round the numeric values up or down.
@@ -795,6 +811,6 @@ The logic is as follows. If there is a Breakdown dimension for multiple visualiz
 If there is no Breakdown dimension for a single visualization tile:
 
 * When there is a **Maximum dimension**, the range is from zero to the value of your **Maximum dimension**.
-* When there is no **Maximum dimension**, **Value type: Percent** cannot be selected because there’s no way to determine a range.
+* When there is no **Maximum dimension**, **Value type: Percent** cannot be selected because there's no way to determine a range.
 
 ::::

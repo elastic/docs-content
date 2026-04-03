@@ -109,6 +109,56 @@ To create a stacked bar chart:
 
 ![Bar chart with stacking](../../images/stacked-bar-chart.png "=70%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a stacked bar chart that counts log entries over time and breaks them down by destination country.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Stacked bar chart",
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
+  "layers": [
+    {
+      "type": "bar_stacked",                                                      <1>
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp"
+      },
+      "y": [
+        {
+          "operation": "count",
+          "format": { "type": "number" },
+          "filter": { "query": "" }
+        }
+      ],
+      "breakdown_by": {                                                            <2>
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "size": 5
+      }
+    }
+  ]
+}'
+```
+
+1. `bar_stacked` renders bars with colored segments stacked on top of each other, showing both the total and the contribution of each category.
+2. `breakdown_by` splits each bar into segments by the top 5 destination countries.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Create unstacked (side-by-side) bar charts [grouped-bars]
 
 Unstacked bar charts display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
@@ -126,6 +176,56 @@ To create an unstacked bar chart:
 4. Add a dimension to **Break down by** to split each bar into different bars that show next to each other, recognizable with varying colors.
 
 ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "=70%")
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates an unstacked bar chart where each breakdown category renders as a separate bar placed side by side, making it easy to compare individual values.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Unstacked bar chart",
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
+  "layers": [
+    {
+      "type": "bar",                                                               <1>
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp"
+      },
+      "y": [
+        {
+          "operation": "count",
+          "format": { "type": "number" },
+          "filter": { "query": "" }
+        }
+      ],
+      "breakdown_by": {                                                            <2>
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "size": 5
+      }
+    }
+  ]
+}'
+```
+
+1. `bar` (instead of `bar_stacked`) places each category's bar side by side for direct comparison.
+2. `breakdown_by` creates a separate bar for each of the top 5 destination countries within every time bucket.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ## Bar chart settings [settings]
 
@@ -207,7 +307,7 @@ When creating or editing a visualization, you can customize several appearance o
 **Titles and text**
 :    Specify to hide or show bar values on bar charts:
     - **Hide**: Removes the numeric value from the bars entirely. Only the bar height represents the magnitude. 
-    - **Show, if able**: Attempts to draw the value inside each bar, but the label will only render when there’s enough vertical space to keep text legible; crowded bars will not have labels. 
+    - **Show, if able**: Attempts to draw the value inside each bar, but the label will only render when there's enough vertical space to keep text legible; crowded bars will not have labels. 
     
     Your selection applies to the entire chart layer, so you can turn labels on for quick KPI-style charts or keep them off for dense histograms.
 
@@ -218,7 +318,7 @@ When creating or editing a visualization, you can customize several appearance o
     - **Tick labels**: Show or hide the textual values beneath the ticks. When visible, the orientation picker lets you rotate them (horizontal, angled, vertical) to avoid overlap on dense timelines.
     - **Orientation**: Set the placement of the axis title. It can be **Horizontal**, **Vertical**, or **Angled**.
     - **Axis scale**: Select linear (default), log, or square-root scaling.
-    - **Bounds & rounding**: Manually clamp the axis to a min/max or let Lens round to nice intervals. For numeric histograms this also controls whether “nice” bucket labels are used.
+    - **Bounds & rounding**: Manually clamp the axis to a min/max or let Lens round to nice intervals. For numeric histograms this also controls whether "nice" bucket labels are used.
 
     :::{note}
     **Left axis** and **Bottom axis** options can interchange depending on the orientation you selected for the bar chart.
@@ -230,7 +330,7 @@ When creating or editing a visualization, you can customize several appearance o
     - **Gridlines**: Toggles vertical guide lines across the chart, which help compare bar positions against the axis scale.
     - **Tick labels**: Show or hide the textual values beneath the ticks. When visible, the orientation picker lets you rotate them (horizontal, angled, vertical) to avoid overlap on dense timelines.
     - **Show partial data markers**: Highlights buckets at the edges of the time range that only contain partial data—useful for time-based bar charts so viewers know the first/last bucket might be incomplete.
-    - **Show current time marker**: Draws a vertical marker for “now” on time charts, so you can see how recent the latest bar is.
+    - **Show current time marker**: Draws a vertical marker for "now" on time charts, so you can see how recent the latest bar is.
 
 
 #### Legend settings
@@ -272,6 +372,57 @@ The following examples show various configuration options that you can use for b
 
 ![Stacked bar chart showing traffic per week broken down per region](/explore-analyze/images/weekly-website-traffic-per-region.png "=70%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a stacked bar chart that tracks page views over time with a custom metric label and breaks them down by the top 9 destination regions.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Weekly website traffic per region",
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
+  "layers": [
+    {
+      "type": "bar_stacked",
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp"
+      },
+      "y": [
+        {
+          "operation": "count",
+          "label": "Page Views",                                                   <1>
+          "format": { "type": "number" },
+          "filter": { "query": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "size": 9                                                                  <2>
+      }
+    }
+  ]
+}'
+```
+
+1. `label` overrides the default axis label so the vertical axis reads "Page Views" instead of "Count".
+2. `limit: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Request error rate per host (with threshold)**
 :   Monitor error rates across hosts with a target threshold line:
 
@@ -289,3 +440,64 @@ The following examples show various configuration options that you can use for b
     * **Layout**: Horizontal orientation (for better service name readability)
 
 ![Bar chart with reference line showing traffic per week broken down per region](/explore-analyze/images/request-error-rate-per-host.png "=70%")
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a horizontal bar chart with a formula-based metric and a reference line layer that marks the acceptable error threshold.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Request error rate per host",
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "visibility": "auto" },
+  "fitting": { "type": "none" },
+  "axis": {},
+  "decorations": {},
+  "layers": [
+    {
+      "type": "bar_horizontal",                                                    <1>
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "x": {
+        "operation": "terms",
+        "fields": ["host.keyword"],
+        "size": 4
+      },
+      "y": [
+        {
+          "operation": "formula",                                                  <2>
+          "formula": "count(kql='response > \\"300\\"') / count()",
+          "label": "Error Rate %",
+          "format": { "type": "percent" },
+          "filter": { "query": "" }
+        }
+      ]
+    },
+    {
+      "type": "referenceLines",                                                    <3>
+      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "thresholds": [
+        {
+          "operation": "static_value",
+          "value": 0.10,
+          "format": { "type": "percent" },
+          "label": "Maximum acceptable error rate"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+1. `bar_horizontal` renders bars horizontally, giving more room for long host names.
+2. `formula` computes the error rate as the ratio of responses above 300 to total requests, formatted as a percentage.
+3. A `referenceLines` layer draws a threshold line at 10% so hosts exceeding it are immediately visible.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

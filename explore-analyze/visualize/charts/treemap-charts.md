@@ -170,6 +170,50 @@ The following examples show various configuration options for building impactful
 
 ![Treemap showing bytes per file extension](/explore-analyze/images/treemap-example-bytes-per-extension.png "=70%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a single-level treemap where each rectangle represents a file extension and its size reflects total bandwidth consumed.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "treemap",                                                               <1>
+  "title": "Bytes per file extension",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "absolute" },                                         <2>
+  "metrics": [
+    {
+      "operation": "sum",
+      "field": "bytes",
+      "label": "Total bytes",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["extension.keyword"],
+      "size": 6                                                                    <3>
+    }
+  ]
+}'
+```
+
+1. `treemap` renders nested rectangles whose area is proportional to the metric value.
+2. `absolute` displays the raw byte count on each rectangle instead of a percentage.
+3. `limit: 6` limits the chart to the top 6 file extensions, keeping the layout readable.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Flights by carrier and destination country**
 :   Show how flight volume is distributed across airlines and their destination countries, using two hierarchy levels:
 
@@ -179,6 +223,53 @@ The following examples show various configuration options for building impactful
     * **Metric**: Count
 
 ![Treemap showing flights by carrier and destination country](/explore-analyze/images/treemap-example-flights-carrier.png "=70%")
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a two-level treemap: the outer rectangles represent airlines and the inner rectangles show destination countries, revealing how each carrier's flight volume is distributed geographically.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "treemap",
+  "title": "Flights by carrier and destination country",
+  "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "absolute" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Flights",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["Carrier"],                                                       <1>
+      "size": 5
+    },
+    {
+      "operation": "terms",
+      "fields": ["DestCountry"],                                                   <2>
+      "size": 5
+    }
+  ]
+}'
+```
+
+1. The first `group_by` entry creates the outer (parent) rectangles, one per airline carrier.
+2. The second `group_by` entry nests destination countries inside each carrier, forming the two-level hierarchy.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 **Response status per host**
 :   See which hosts handle the most traffic and how their response status breaks down:
@@ -193,3 +284,53 @@ The following examples show various configuration options for building impactful
     * **Color**: Gradient (`#ffc7db`)
 
 ![Treemap showing response status per host](/explore-analyze/images/treemap-example-response-per-host.png "=70%")
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example nests KQL-based response status categories inside host rectangles, combining `terms` and `filters` groupings to show both traffic volume and health per host.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "treemap",
+  "title": "Response status per host",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "absolute" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["host.keyword"],                                                  <1>
+      "size": 3
+    },
+    {
+      "operation": "filters",                                                      <2>
+      "filters": [
+        { "filter": { "query": "response.keyword >= \\"200\\" AND response.keyword < \\"400\\"" }, "label": "Success (2xx/3xx)" },
+        { "filter": { "query": "response.keyword >= \\"400\\" AND response.keyword < \\"500\\"" }, "label": "Client errors (4xx)" },
+        { "filter": { "query": "response.keyword >= \\"500\\"" }, "label": "Server errors (5xx)" }
+      ]
+    }
+  ]
+}'
+```
+
+1. The top-level `terms` grouping creates one outer rectangle per host, sized by total request count.
+2. The nested `filters` grouping splits each host rectangle into success, client error, and server error segments using KQL queries.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::

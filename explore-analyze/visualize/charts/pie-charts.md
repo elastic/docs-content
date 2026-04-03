@@ -4,6 +4,13 @@ applies_to:
   stack: ga
   serverless: ga
 description: Instructions and best practices for building pie and donut charts with Kibana Lens in Elastic.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Build pie charts with {{kib}}
@@ -88,6 +95,48 @@ Donut charts are pie charts with a hollow center. The empty space can provide a 
 
 ![Setting the donut hole size in Pie chart Style settings](/explore-analyze/images/pie-chart-donut.png "50%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a pie chart sliced by the top 5 destination countries, with values shown as percentages. The donut hole size is controlled in the Lens UI style settings.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "pie",                                                                   <1>
+  "title": "Donut chart by destination",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },                                       <2>
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["geo.dest"],
+      "size": 5                                                                    <3>
+    }
+  ]
+}'
+```
+
+1. `pie` creates a pie or donut chart. The donut hole size is an appearance setting you can adjust in the Lens editor.
+2. `percentage` displays each slice's share of the total rather than its raw count.
+3. `limit: 5` limits the chart to the top 5 destination countries, keeping the pie readable.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Compare multiple metrics in a pie chart [multiple-metrics]
 
 By default, pie charts use a single metric with **Slice by** to split that metric by values in a categorical field. The **Multiple metrics** option lets you take a different approach: each slice represents a distinct metric you define, rather than values from your data.
@@ -127,6 +176,55 @@ This example demonstrates the core value of multiple metrics: comparing differen
 The {{kib}} sample data sets don't include multiple comparable numeric fields. To try this scenario, adapt the field names to match your own data.
 :::
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses multiple metrics mode (no `group_by`) so each slice represents a distinct aggregation rather than values from a single field.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "pie",
+  "title": "Server resource consumption",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [                                                                     <1>
+    {
+      "operation": "sum",
+      "field": "bytes",
+      "label": "Bandwidth",                                                        <2>
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    },
+    {
+      "operation": "sum",
+      "field": "machine.ram",
+      "label": "Memory usage",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    },
+    {
+      "operation": "count",
+      "label": "Request count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ]
+}'
+```
+
+1. Three entries in `metrics` without a `group_by` activates multiple-metrics mode, where each metric becomes its own slice.
+2. Each `label` provides the legend text for that slice (for example, "Bandwidth", "Memory usage", "Request count").
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Group smaller values into a single slice [other-category]
 
 When you have many categories with small values, you can group them into an "Other" category to simplify the visualization.
@@ -152,6 +250,48 @@ This example uses the **Kibana Sample Data Logs** data set. If you haven't insta
 The resulting chart shows the 3 most common hosts, with all remaining hosts combined into a single "Other" slice. This keeps the chart readable while still accounting for the full data set.
 
 ![Pie chart showing top 3 hosts with remaining hosts grouped as Other](/explore-analyze/images/pie-chart-group-as-other.png)
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example shows the top 3 hosts as individual slices and groups all remaining hosts into an "Other" slice using the `other_bucket` option.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "pie",
+  "title": "Top hosts with Other",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["host.keyword"],
+      "size": 3,                                                                   <1>
+      "other_bucket": { "include_documents_without_field": true }                  <2>
+    }
+  ]
+}'
+```
+
+1. `limit: 3` limits the chart to the top 3 hosts by count.
+2. `other_bucket` groups every remaining host into a single "Other" slice, including documents that lack the field entirely.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ## Pie chart settings [pie-chart-settings]
 
@@ -282,6 +422,63 @@ The following examples show various configuration options for building impactful
 
 ![Donut chart with traffic by sources](/explore-analyze/images/pie-chart-example-traffic-by-source.png "=60%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses formula-based metrics to count visits from specific referrer domains, producing one slice per traffic source without a `group_by` dimension.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "pie",
+  "title": "Website traffic by source",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "formula",                                                      <1>
+      "formula": "count(kql='"'"'referer : *elastic*'"'"')",                               <2>
+      "label": "Elastic website",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    },
+    {
+      "operation": "formula",
+      "formula": "count(kql='"'"'referer : *twitter*'"'"')",
+      "label": "Twitter/X",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    },
+    {
+      "operation": "formula",
+      "formula": "count(kql='"'"'referer : *facebook*'"'"')",
+      "label": "Facebook",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    },
+    {
+      "operation": "formula",
+      "formula": "count(kql='"'"'referer : *nytimes*'"'"')",
+      "label": "NY Times",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ]
+}'
+```
+
+1. `formula` lets each metric apply its own KQL filter, creating slices that represent custom-defined categories.
+2. The `kql` parameter inside `count()` filters documents to only those whose `referer` field matches the given pattern.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Revenue distribution by product category**
 :   Show how revenue is distributed across product categories:
 
@@ -291,6 +488,49 @@ The following examples show various configuration options for building impactful
     * **Style**: Pie (no donut hole)
 
 ![Pie chart with revenue by product category](/explore-analyze/images/pie-chart-example-revenue-by-product-category.png "=60%")
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a pie chart that sums revenue per product category from the eCommerce sample data, showing each category's share of total revenue.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "pie",
+  "title": "Revenue distribution by product category",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "sum",                                                          <1>
+      "field": "taxful_total_price",
+      "label": "Revenue",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["category.keyword"],                                              <2>
+      "size": 6
+    }
+  ]
+}'
+```
+
+1. `sum` on `taxful_total_price` sizes each slice by total revenue rather than document count.
+2. `category.keyword` splits the pie by product category, with each of the top 6 categories becoming its own slice.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 **Error distribution by type**
 :   Display the proportion of different error types in your application:
@@ -305,3 +545,47 @@ The following examples show various configuration options for building impactful
     * **Color mapping**: Red for client errors, yellow for server errors, green for success
 
 ![Donut chart with distribution of errors by type](/explore-analyze/images/pie-chart-example-response-distribution.png "=60%")
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses the `filters` grouping operation to define custom slices based on HTTP response code ranges, rather than relying on field values directly.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "pie",
+  "title": "Error distribution by type",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "legend": { "size": "auto" },
+  "value_display": { "mode": "percentage" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Count of records",
+      "format": { "type": "number" },
+      "filter": { "query": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "filters",                                                      <1>
+      "filters": [
+        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client Error" },
+        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server Error" },
+        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success" }
+      ]
+    }
+  ]
+}'
+```
+
+1. `filters` creates one slice per KQL query, letting you define arbitrary categories such as "Client Error" (4xx), "Server Error" (5xx), and "Success" (2xx/3xx).
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
