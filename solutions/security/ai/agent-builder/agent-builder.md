@@ -30,6 +30,30 @@ Agent Builder features a built-in [Threat Hunting agent](/explore-analyze/ai-fea
 
 By default it includes the [platform core tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#platform-core-tools) and [security tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#security-tools). You can [clone the agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) to create a version with access to additional built-in or custom tools. To learn more about the available tools, refer to [](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
 
+## Create and refine detection rules in Agent Builder [create-and-refine-detection-rules-in-agent-builder]
+
+```{applies_to}
+stack: ga 9.4
+serverless:
+  security: ga
+```
+
+You can pass a detection rule into the Agent Builder chat so you can ask questions about it, get suggestions for improving rule fields, or request an appropriate investigation guide, without copying and pasting rule content between the UI and the chat. Open Agent Builder with a rule in context from any of these places:
+
+- **AI rule creation**: On the [Detection rules (SIEM)](/solutions/security/detect-and-alert/manage-detection-rules.md) page, choose **Create a rule** → **AI rule creation**. The flyout opens with an empty rule attachment and a prefilled prompt for an {{esql}} detection rule with the main rule fields. You can edit the prompt before sending the message.
+- **Rule details**: Open a rule from the list, then use **Add to chat** on the rule details page.
+- **Rule form (create or edit)**: While [creating](/solutions/security/detect-and-alert/using-the-rule-ui.md) or [editing](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-single-rule) a rule, use **Add to chat** to send the current rule draft.
+- **Alerts flyout**: Open an alert, expand the rule summary in the flyout, then use **Add to chat**.
+- **Alerts table rule flyout**: From the alerts table, open the rule flyout for an alert and use **Add to chat**.
+
+This flow uses the [Threat Hunting agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) with a security session context. When it responds, the rule appears in the chat as a rich attachment that shows the rule type, description, query with syntax highlighting, index patterns, tags, severity and risk score, and schedule. It draws on the attached rule to help with detection intent, query logic, MITRE ATT&CK coverage, timing and scheduling, and rule metadata quality. 
+
+:::{note}
+The Threat Hunting agent only has access to the fields defined in the rule. It does not retrieve [exception lists](/solutions/security/detect-and-alert/add-manage-exceptions.md). Rules reference exceptions by ID only.
+:::
+
+If your role has the [privileges required to manage detection rules](/solutions/security/detect-and-alert/detections-privileges.md), use **Apply to creation** or **Update rule** on that attachment to open the create or edit rule form with the fields filled in. If your role does not have access to managing rules, the actions aren't shown. On the **Create rule** or **Edit rule** page, when the Agent Builder flyout is open at the same time, the rule fields in the form and the rule attachment in the chat update together when you edit either side.
+
 ## Use Agent Builder and Workflows together
 
 [Workflows](/explore-analyze/workflows.md) is an automation engine built into the Elastic platform. You can define workflows declaratively in YAML to create deterministic, event-driven automation, without building custom integrations or switching context from your Elastic environment. Combined with Agent Builder, Workflows enable you to:
