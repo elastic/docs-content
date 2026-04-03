@@ -20,7 +20,7 @@ To create a legacy visualization, navigate to the **Dashboards** page, go to **V
 :::
 
 :::{applies-item} stack: ga 9.0-9.3
-To create a legacy visualization, click the {icon}`search` **Search** icon on the menu bar and search for **Visualize library**. If you have never used these panel types, use Lens instead.
+To create a legacy visualization, click the {icon}`search` **Search** icon on the menu bar and search for **Visualize library**. Select **Create visualization** > **Legacy**, then select **TSVB** or **Aggregation-based**. Consider using [Lens](../visualize.md) instead if you have never used these panel types.
 :::
 
 ::::
