@@ -201,6 +201,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes gap while loading data [#238879]({{kib-pull}}238879).
 * Fixes **Dataset Quality** flyout rendering [#237840]({{kib-pull}}237840).
 
+## 9.2.8 [elastic-observability-9.2.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.8-features-enhancements]
+* Adds no-data behavior options to custom threshold rules, including options to recover, remain active, or trigger a no-data alert [#251976]({{kib-pull}}251976).
+
+
+### Fixes [elastic-observability-9.2.8-fixes]
+* Fixes **Hosts** exclusion filters by applying post-enrichment filtering to excluded metadata values [#260426]({{kib-pull}}260426).
+* Fixes **Hosts** filter option suggestions to match the selected schema (ECS or semconv) [#259825]({{kib-pull}}259825).
+* Fixes alert tags when source tags are provided as a string [#259729]({{kib-pull}}259729).
+* Fixes OTel metric mapping in the **Infrastructure** tab so host, pod, and container metrics no longer show `N/A` when data exists [#259552]({{kib-pull}}259552).
+* Fixes semconv metric calculations on the **Hosts** page to prevent `N/A` values and align CPU, memory, and disk usage calculations [#259372]({{kib-pull}}259372).
+
 ## 9.2.7 [elastic-observability-9.2.7-release-notes]
 
 
