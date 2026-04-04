@@ -21,6 +21,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.3.3 [elastic-observability-9.3.3-release-notes]
+
+### Fixes [elastic-observability-9.3.3-fixes]
+* Fixes **Hosts** exclusion filters so hosts with excluded metadata values are no longer shown after enrichment [#260426]({{kib-pull}}260426).
+* Fixes Index threshold rule `filterKuery` wildcard behavior on keyword fields so generated queries return the expected matches [#260283]({{kib-pull}}260283).
+* Fixes metric threshold rule evaluation for wildcard KQL filters when no data view is available, so alerts evaluate correctly [#260046]({{kib-pull}}260046).
+* Fixes **Hosts** filter option suggestions to match the selected schema (ECS or semconv) [#259825]({{kib-pull}}259825).
+* Fixes alert tags when source tags are provided as a string [#259729]({{kib-pull}}259729).
+* Fixes OTel metric mapping in the **Infrastructure** tab so host, pod, and container metrics no longer show `N/A` when data exists [#259552]({{kib-pull}}259552).
+* Fixes missing action variables in Slack Web API text message mode [#259499]({{kib-pull}}259499).
+* Fixes semconv metric calculations on the **Hosts** page to prevent `N/A` values and align CPU, memory, and disk usage calculations [#259372]({{kib-pull}}259372).
+* Improves static dashboard selection in the APM **Metrics** tab by incorporating service runtime version into dashboard resolution [#258483]({{kib-pull}}258483).
+
 ## 9.3.2 [elastic-observability-9.3.2-release-notes]
 
 
