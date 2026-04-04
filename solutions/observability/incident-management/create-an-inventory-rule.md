@@ -34,6 +34,17 @@ When you select **Create inventory alert**, the parameters you configured on the
 
 ::::
 
+# Requirements
+
+To create inventory rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` The **Admin** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings, and the metrics indices from the Infrastructure / Metrics Explorer settings. The defaults are `metrics-*` ,`metricbeat-*` for metrics; `logs-*-*`, `logs-*-*` and `filebeat-*` for log rate. You cannot override these indices on a per-rule basis.
+
 ## Inventory conditions [inventory-conditions]
 
 Conditions for each rule can be applied to specific metrics relating to the inventory type you select. You can choose the aggregation type, the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. When creating the rule, you can still get notified if no data is returned for the specific metric or if the rule fails to query {{es}}.

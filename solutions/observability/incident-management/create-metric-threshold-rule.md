@@ -21,6 +21,17 @@ When you create this rule on the **Metrics Explorer** page, the rule is automati
 You can also create a rule based on a single graph. On the **Metrics Explorer** page, click **Alerts and rules** → **Create alert**. The condition and filter sections of the threshold rule are automatically populated.
 ::::
 
+## Requirements
+
+To create metric threshold rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` The **Admin** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the metrics indices from the [Infrastructure and Metrics Explorer settings](/solutions/observability/infra-and-hosts/configure-settings.md). The default are `metrics-*` and `metricbeat-*`. You cannot override these indices on a per-rule basis.
+
 ## Metric conditions [metrics-conditions]
 
 Conditions for each rule can be applied to specific metrics that you select. You can select the aggregation type (refer to [Aggregation options](aggregation-options.md)), the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. To help you determine which thresholds are meaningful to you, the preview charts provide a visualization.
