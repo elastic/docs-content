@@ -87,7 +87,7 @@ The overview project model is strongly recommended and appropriate for most {{cp
 
 - **Shared data project (N-to-1):** A single project stores data from a shared service (for example, logs). Multiple origin projects link to this central data project. 
 
-    The N-to-1 pattern is often used when several teams need to query shared data independently. The main risk is that linking to a shared data project affects searches, dashboards, and alerts in each origin project. If the shared project is a large, active project, the expanded dataset might cause unexpected behavior. If you're using this pattern, make sure to [manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access) and consider [CPS scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-search-scope).
+    The N-to-1 pattern is often used when several teams need to query shared data independently. The main risk is that linking to a shared data project affects searches, dashboards, and alerts in each origin project. If the shared project is a large, active project, the expanded dataset might cause unexpected behavior. If you're using this pattern, make sure to [manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access) and consider [CPS scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-search-scope).
 
 - **Data mesh (N-to-N):** Multiple active projects link directly to each other.
 
@@ -114,7 +114,7 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 - **Dashboards and visualizations:** Existing dashboards and visualizations in the origin project will query all linked projects by default. To control this, set the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual dashboard panels.
 
-- **User permissions:** {{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles will see different results from the same query. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access).
+- **User permissions:** {{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles will see different results from the same query. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
 
 - **{{product.painless}} scripting:** The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) does not search across linked projects. It resolves index names against the origin project only. You can target a linked project by prefixing the index with the project alias (for example, `projectAlias:myindex`).
 

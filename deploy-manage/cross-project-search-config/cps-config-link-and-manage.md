@@ -42,7 +42,7 @@ To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
 
 1. Select the checkbox for each project you want to link. You can link up to 20 projects to each origin project.
 
-     If a project you expected to link to is missing from the list, it might not meet the [requirements](/deploy-manage/cross-project-search-config.md#cps-compatibility), or you might not have the necessary [permissions](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-access) on the linked project.
+     If a project you expected to link to is missing from the list, it might not meet the [requirements](/deploy-manage/cross-project-search-config.md#cps-compatibility), or you might not have the necessary [permissions](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access) on the linked project.
 
 1. Complete the remaining steps in the wizard to review and save your selections. In the last step, you can click **View API request** to see the equivalent API request for linking to the selected projects.
 

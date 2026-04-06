@@ -58,7 +58,7 @@ The following actions change the scope of {{cps}}es:
 
 - **Administrator actions:** 
   - Setting the [default {{cps}} scope for a space](#cps-default-search-scope)
-  - Adjusting [user permissions](#manage-user-access) using roles or API keys (for example, creating {{ecloud}} API keys that span multiple projects)
+  - Adjusting [user permissions](#manage-user-and-api-key-access) using roles or API keys (for example, creating {{ecloud}} API keys that span multiple projects)
 - **User actions:**
   - Using the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the project header
   - Using [qualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)
@@ -93,7 +93,7 @@ Space settings are managed in {{kib}}.
 % (not yet) - **Specific projects:** Select individual linked projects to include in the default scope.
 
 ::::{note}
-The default {{cps}} scope is a space setting, not an access control. Users can still set the scope at the query level. You can also [manage user access](#manage-user-access).
+The default {{cps}} scope is a space setting, not an access control. Users can still set the scope at the query level. You can also [manage user access](#manage-user-and-api-key-access).
 ::::
 
 ## Next steps
