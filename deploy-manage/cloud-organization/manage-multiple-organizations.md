@@ -25,7 +25,7 @@ You can perform the following tasks to manage multiple organizations:
 * [Create a new organization](#create-a-new-organization)
 * [View the organizations you have access to](#view-organizations)
 * [Switch to a different organization](#switch-to-a-different-organization)
-* [Invite users to join additional organizations](#invite-users-to-join-additional-organizations)
+* [Invite users to join additional organizations](#invite-additional-orgs)
 
 :::{include} _snippets/view-orgs.md
 :::
@@ -53,7 +53,7 @@ You can also create a new organization by clicking on your current organization 
 
 ## Invite users to join additional organizations [invite-additional-orgs]
 
-:::{include} _snippets/invite-additional-orgs.md
+:::{include} /deploy-manage/users-roles/cloud-organization/_snippets/invite-additional-orgs.md
 :::
 
 ## Reconcile alternative email addresses
@@ -63,5 +63,5 @@ You can also create a new organization by clicking on your current organization 
 
 ## View your users' organization memberships
 
-:::{include} _snippets/view-users-org-memberships.md
+:::{include} /deploy-manage/users-roles/cloud-organization/_snippets/view-org-memberships.md
 :::
