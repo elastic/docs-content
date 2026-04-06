@@ -9,11 +9,12 @@ navigation_title: "Cross-project search"
 
 # Configure {{cps}} [configure-cross-project-search]
 
-With {{cps}} ({{cps-init}}), users in your organization can search across multiple {{serverless-full}} projects at once, instead of searching each project individually. When your data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all the data from a single place. 
+::::{include} /deploy-manage/_snippets/cps-definition.md
+::::
 
 {{cps-cap}} is the {{serverless-short}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements:
 
-* Setting up cross-project search doesn't require an understanding of your deployment architecture or complex security configurations.
+* Setting up {{cps}} doesn't require an understanding of your deployment architecture or complex security configurations.
 * Permissions stay consistent across projects, and you can always adjust scope and access as needed. 
 * Searches are performed across projects by default, reducing the need to refactor your queries as you link additional projects.
 

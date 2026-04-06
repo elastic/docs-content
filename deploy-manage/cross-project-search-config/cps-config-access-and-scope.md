@@ -13,30 +13,22 @@ This page explains how user permissions and scope affect {{cps}} ({{cps-init}}) 
 
 For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cross-project-search-config.md). For information about _using_ {{cps-init}}, refer to [](/explore-analyze/cross-project-search.md).
 
-## Manage user access [manage-user-access]
+## Manage user and API key access
 
-Access to data in linked projects is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to the user in each project. Whether a user queries a project directly or through {{cps}}, the same permissions apply.
+:::{include} /explore-analyze/cross-project-search/_snippets/cps-security.md
+:::
 
-When a {{cps}} query reaches a linked project, the system verifies the user's identity and evaluates the roles assigned to that user in the linked project. Users can only access resources if their roles permit. This means {{cps}} results can vary by user, depending on each user's role assignments across projects.
+### How access is evaluated
 
-For example, if a user has read access to the `logs` index in Project B but not in Project C, a {{cps}} for `logs` returns documents from Project B and silently excludes Project C.
-
-For additional information, refer to [{{cps-init}} security](/explore-analyze/cross-project-search.md#security).
-
-% TODO ^^ snippetize from E&A
-
-## Manage programmatic access [cps-programmatic-access]
-
-The same role-based access model applies to programmatic access through API keys. For {{cps}}, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), which can authenticate across project boundaries.
-
-Project-scoped API keys, such as [{{serverless-short}} project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md), cannot search across project boundaries. If a project-scoped API key is used in a {{cps}} context, it silently returns results from the origin project only (no error is returned).
+:::{include} /explore-analyze/cross-project-search/_snippets/cps-access-evaluation.md
+:::
 
 ## Administrator tasks
 % TODO better heading
 
-- Make sure that users who need to search across linked projects have a [role assigned](/deploy-manage/users-roles.md) on each linked project they need to access. Authorization is evaluated on the linked project, without regard to the origin project.
+- Make sure that users who need to search across linked projects have a [role assigned](/deploy-manage/users-roles.md) on each linked project they need to access, and are granted **Cloud Console, {{es}}, and {{kib}}** access to those projects. Authorization is evaluated on the linked project, without regard to the origin project.
 - If a user reports missing data from a linked project, check their role assignment on that specific linked project first.
-- For programmatic access, make sure the {{ecloud}} API key has the appropriate [roles](/deploy-manage/api-keys/elastic-cloud-api-keys.md#roles) on each project the key needs to access.
+- For programmatic access, make sure the {{ecloud}} API key has the appropriate [roles](/deploy-manage/api-keys/elastic-cloud-api-keys.md#roles) on each project the key needs to access, and is granted **Cloud, {{es}}, and {{kib}} API access** to those projects.
 
 % TODO alerting impacts of user role changes 
 
