@@ -30,7 +30,7 @@ Depending on your privileges and whether detection system indices have already b
 If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Detections prerequisites and requirements](../../solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
 
 :::{note}
-For **self-managed** {{stack}} deployments only, this message may be displayed when the `xpack.encryptedSavedObjects.encryptionKey` setting has not been added to the `kibana.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/turn-on-detections.md).
+For **self-managed** {{stack}} deployments only, this message might display when the `xpack.encryptedSavedObjects.encryptionKey` setting has not been added to the `kibana.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/turn-on-detections.md).
 :::
 
 ::::
@@ -41,7 +41,7 @@ For **self-managed** {{stack}} deployments only, this message may be displayed w
 If you get this message, you do not have the required privileges to view the **Detections** feature, and you should contact your {{kib}} administrator.
 
 :::{note}
-For **self-managed** {{stack}} deployments only, this message may be displayed when the `xpack.security.enabled` setting is not enabled in the `elasticsearch.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/turn-on-detections.md).
+For **self-managed** {{stack}} deployments only, this message might display when the `xpack.security.enabled` setting is not enabled in the `elasticsearch.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/turn-on-detections.md).
 :::
 
 ::::
@@ -162,7 +162,7 @@ In the following example, the selected field is unmapped across two indices.
 ### Troubleshoot missing alerts [troubleshoot-signals]
 
 
-When a rule fails to run close to its scheduled time, some alerts may be missing. There are a number of ways to try to resolve this issue.
+When a rule fails to run close to its scheduled time, some alerts might be missing. There are a number of ways to try to resolve this issue.
 
 ::::{dropdown} Troubleshoot maximum alerts warning
 :name: troubleshoot-max-alerts
@@ -212,10 +212,11 @@ For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} un
 ::::
 
 :::{dropdown} Troubleshoot namespace filter
+:name: troubleshoot-namespace-filter
 :applies_to: {stack: ga 9.4+, serverless: ga}
 
 
-If detection rules are not creating expected alerts or appear to be missing data, the **Include data stream namespaces in rule execution** [advanced setting](../../solutions/security/get-started/configure-advanced-settings.md#included-data-stream-namespaces-rule-execution) may be limiting which documents are searched. When configured, only events with a matching `data_stream.namespace` value are queried by all rules in the {{kib}} space.
+If detection rules are not creating expected alerts or appear to be missing data, the **Include data stream namespaces in rule execution** [advanced setting](../../solutions/security/get-started/configure-advanced-settings.md#included-data-stream-namespaces-rule-execution) might be limiting which documents are searched. When configured, only events with a matching `data_stream.namespace` value are queried by all rules in the {{kib}} space.
 
 To verify:
 
@@ -227,14 +228,11 @@ To verify:
 
 ::::{dropdown} Troubleshoot missing alerts for {{ml}} jobs
 :name: ml-job-compatibility
-
-```yaml {applies_to}
-stack: all
-```
+:applies_to: {stack: ga, serverless: unavailable}
 
 {{ml-cap}} detection rules use {{ml}} jobs that have dependencies on data fields populated by the {{beats}} and {{agent}} integrations. In {{stack}} version 8.3, new {{ml}} jobs (prefixed with `v3`) were released to operate on the ECS fields available at that time.
 
-If you’re using 8.2 or earlier versions of {{beats}} or {{agent}} with {{stack}} version 8.3 or later, you may need to duplicate prebuilt rules or create new custom rules *before* you update the Elastic prebuilt rules. Once you update the prebuilt rules, they will only use `v3` {{ml}} jobs. Duplicating the relevant prebuilt rules before updating them ensures continued coverage by allowing you to keep using `v1` or `v2` jobs (in the duplicated rules) while also running the new `v3` jobs (in the updated prebuilt rules). Keep in mind that duplicated rules may result in duplicate anomaly detections and alerts, and ensure that the relevant `v3` {{ml}} jobs are running before you update the Elastic prebuilt rules.
+If you’re using 8.2 or earlier versions of {{beats}} or {{agent}} with {{stack}} version 8.3 or later, you might need to duplicate prebuilt rules or create new custom rules *before* you update the Elastic prebuilt rules. Once you update the prebuilt rules, they will only use `v3` {{ml}} jobs. Duplicating the relevant prebuilt rules before updating them ensures continued coverage by allowing you to keep using `v1` or `v2` jobs (in the duplicated rules) while also running the new `v3` jobs (in the updated prebuilt rules). Keep in mind that duplicated rules might result in duplicate anomaly detections and alerts, and ensure that the relevant `v3` {{ml}} jobs are running before you update the Elastic prebuilt rules.
 
 * If you only have **8.3 or later versions of {{beats}} and {{agent}}**: You can download or update your prebuilt rules and use the latest `v3` {{ml}} jobs. No additional action is required.
 * If you only have **8.2 or earlier versions of {{beats}} or {{agent}}**, or **a mix of old and new versions**: To continue using the `v1` and `v2` {{ml}} jobs specified by pre-8.3 prebuilt detection rules, you must duplicate affected prebuilt rules *before* updating them to the latest rule versions. The duplicated rules can continue using the same `v1` and `v2` {{ml}} jobs, and the updated prebuilt {{ml}} rules will use the new `v3` {{ml}} jobs.
@@ -260,7 +258,7 @@ The following Elastic prebuilt rules use the new `v3` {{ml}} jobs to generate al
 
 ::::
 
-You can also use Task Manager in {{kib}} to troubleshoot background tasks and processes that may be related to missing alerts:
+You can also use Task Manager in {{kib}} to troubleshoot background tasks and processes that might be related to missing alerts:
 
 * [Task Manager health monitoring](../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md)
 * [Task Manager troubleshooting](../../troubleshoot/kibana/task-manager.md)
