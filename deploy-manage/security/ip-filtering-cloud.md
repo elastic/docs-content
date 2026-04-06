@@ -56,30 +56,15 @@ To create an IP filter:
 
 :::{include} _snippets/network-security-page.md
 ::: 
-1. Select **Create policy** > **IP filter**.
-2. Select the resource type that the IP filter will be applied to: either hosted deployments or serverless projects.
-3. Select the cloud provider and region for the IP filter. 
-   
-    :::{tip}
-    IP filters are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate an IP filter with resources in multiple regions, then you have to create the same filter in all the regions you want to apply it to.
-    :::
-4. Add a meaningful name and description for the IP filter.
-5. Under **Access control**, select whether the IP filter should be applied to ingress or egress traffic. Currently, only ingress traffic filters are supported.
-6. Add one or more allowed sources using IPv4, or a range of addresses with CIDR.
-
-    ::::{note}
-    DNS names are not supported in IP filters.
-    ::::
-7.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the  IP filter with a deployment or project, it starts filtering traffic.
-
-    :::{tip}
-    You can apply multiple policies to a single deployment or project. For {{ech}} deployments and {{serverless-short}} projects, you can apply both IP filter policies and private connection policies. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
-
-    [Learn more about how network security policies affect your deployment or project](network-security-policies.md).
-    :::
-
-8.  To automatically attach this IP filter to new deployments or projects, select **Apply to future resources by default**.
-9.   Click **Create**.
+3. Select **Create policy** > **IP filter**.
+4. Select the resource type that the IP filter will be applied to: either hosted deployments or serverless projects.
+5. Select the cloud provider and region for the IP filter. 
+6. Add a meaningful name and description for the IP filter.
+7. Under **Access control**, select whether the IP filter should be applied to ingress or egress traffic. Currently, only ingress traffic filters are supported.
+8. Add one or more allowed sources using IPv4, or a range of addresses with CIDR.
+9.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the  IP filter with a deployment or project, it starts filtering traffic.
+10.  To automatically attach this IP filter to new deployments or projects, select **Apply to future resources by default**.
+11.  Click **Create**.
 
 ### Step 2: Associate an IP filter with a deployment or project
 
@@ -118,9 +103,9 @@ You can apply multiple policies to a single deployment or project. For {{ech}} d
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the IP filter you want to edit and click the **Edit** {icon}`pencil` icon.
-6. Under **Apply to resources**, associate the IP filter with one or more deployments or projects.
-7. Save your changes.
+3. Find the IP filter you want to edit and click the **Edit** {icon}`pencil` icon.
+4. Under **Apply to resources**, associate the IP filter with one or more deployments or projects.
+5. Save your changes.
 
 ## Remove an IP filter from your deployment or project [remove-filter-deployment]
 
@@ -153,9 +138,9 @@ If you want to a specific IP filter from a deployment or project, or delete the 
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the IP filter you want to edit, then click the **Edit** {icon}`pencil` icon.
-6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
-7. Click **Update** to save your changes.
+3. Find the IP filter you want to edit, then click the **Edit** {icon}`pencil` icon.
+4. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
+5. Click **Update** to save your changes.
 
 ## Edit an IP filter
 
@@ -163,8 +148,8 @@ You can edit an IP filter's name or description, change the allowed traffic sour
 
 :::{include} _snippets/network-security-page.md
 :::
-1. Find the IP filter you want to edit, then click the **Edit** {icon}`pencil` icon.
-2. Click **Update** to save your changes.
+3. Find the IP filter you want to edit, then click the **Edit** {icon}`pencil` icon.
+4. Click **Update** to save your changes.
 
 :::{tip}
 You can also edit IP filters from your deployment's **Security** page or your project's **Network security** page.
@@ -178,4 +163,4 @@ To delete an IP filter:
 
 :::{include} _snippets/network-security-page.md
 :::
-1. Find the IP filter you want to delete, then click the **Delete** {icon}`trash` icon. The icon is inactive if there are deployments or projects associated with the IP filter.
+3. Find the IP filter you want to delete, then click the **Delete** {icon}`trash` icon. The icon is inactive if there are deployments or projects associated with the IP filter.

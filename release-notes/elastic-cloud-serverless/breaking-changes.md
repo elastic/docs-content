@@ -6,6 +6,19 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+## March 18, 2026 [elastic-cloud-serverless-03182026-breaking]
+
+:::{dropdown} The `_source` field mode is now saved to the template index settings
+
+The index and component template forms in **Index Management** previously saved the `_source` field mode (`stored` and `synthetic`) in the `mappings._source.mode` setting. This path is deprecated and has no effect in {{es}}. The form now uses the correct `settings.index.mapping.source.mode` setting. When you edit a template in the UI, any existing `mappings._source.mode` setting is automatically moved to the index settings and removed from mappings. Other `_source` options (`enabled`, `includes`, and `excludes`) remain in mappings.
+
+**Impact:**
+
+The template's JSON structure has changed: The `_source` mode setting (`stored`/`synthetic`) appears in the index settings, not in mappings. Options that were previously ignored when saved from the UI can now take effect for indices that match the template. Automation that only reads `mappings._source.mode` should read `settings.index.mapping.source.mode` instead. Open and save the template in the UI to automatically migrate the field.
+
+For more information, view [#255122]({{kib-pull}}255122).
+:::
+
 ## March 2, 2026 [elastic-cloud-serverless-03022026-breaking]
 
 :::{dropdown} Removes serializer and deserializer parameters from the {{elastic-sec}} Lists API
