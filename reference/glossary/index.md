@@ -607,6 +607,9 @@ $$$glossary-plugin$$$ plugin
 $$$glossary-primary-shard$$$ primary shard
 :   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). When you index a [document](/reference/glossary/index.md#glossary-document), {{es}} adds the document to primary shards before [replica shards](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
+$$$glossary-project-tag$$$ project tag
+:   A key-value pair that you use as metadata for an {{serverless-full}} project. You can use project tags to categorize and organize projects, and to filter lists of projects. If [{{cps}}](/reference/glossary/index.md#glossary-cps) is enabled, you can also use project tags to [route searches to specific projects](/explore-analyze/cross-project-search/cross-project-search-tags.md). See [Project tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags). _For tags on {{kib}} saved objects, see [tag](/reference/glossary/index.md#glossary-tag)._
+
 $$$glossary-proxy$$$ proxy
 :   A highly available, TLS-enabled proxy layer that routes user requests, mapping cluster IDs that are passed in request URLs for the container to the cluster nodes handling the user requests.
 
@@ -757,7 +760,7 @@ $$$glossary-system-index$$$ system index
 ## T [t-glos]
 
 $$$glossary-tag$$$ tag
-:   A keyword or label that you assign to {{kib}} saved objects, such as dashboards and visualizations, so you can classify them in a way that is meaningful to you. Tags makes it easier for you to manage your content. See [Tags](/explore-analyze/find-and-organize/tags.md). For information about the project metadata tags used in {{cps}}, see [Project tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags).
+:   A keyword or label that you assign to {{kib}} saved objects, such as dashboards and visualizations, so you can classify them in a way that is meaningful to you. Tags makes it easier for you to manage your content. See [Tags](/explore-analyze/find-and-organize/tags.md). _For metadata on {{ecloud}} projects, see [project tag](/reference/glossary/index.md#glossary-project-tag)._
 
 $$$glossary-term-join$$$ term join
 :   A shared key that combines vector features with the results of an {{es}} terms aggregation. Term joins augment vector features with properties for data-driven styling and rich tooltip content in maps.
