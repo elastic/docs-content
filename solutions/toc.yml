@@ -465,6 +465,7 @@ toc:
             - file: observability/streams/management/extract/date.md
             - file: observability/streams/management/extract/dissect.md
             - file: observability/streams/management/extract/drop.md
+            - file: observability/streams/management/extract/enrich.md
             - file: observability/streams/management/extract/grok.md
             - file: observability/streams/management/extract/join.md
             - file: observability/streams/management/extract/lowercase.md

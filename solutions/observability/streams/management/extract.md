@@ -40,6 +40,7 @@ Streams supports the following processors:
 - [**Date**](./extract/date.md): Converts date strings into timestamps, with options for timezone, locale, and output formatting.
 - [**Dissect**](./extract/dissect.md): Extracts fields from structured log messages using defined delimiters instead of patterns, making it faster than Grok and ideal for consistently formatted logs.
 - [**Drop**](./extract/drop.md): Drops the document without raising any errors. This is useful to prevent the document from getting indexed based on a condition.
+- [**Enrich**](./extract/enrich.md): Adds data from an enrich policy to incoming documents, such as geographic coordinates from an IP address or account details from a user ID.
 - [**Grok**](./extract/grok.md): Extracts fields from unstructured log messages using predefined or custom patterns, supports multiple match attempts in sequence, and can automatically generate patterns with an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 - [**Join**](./extract/join.md): Concatenates the values of multiple fields with a delimiter.
 - [**Lowercase**](./extract/lowercase.md): Converts a string field to lowercase.
