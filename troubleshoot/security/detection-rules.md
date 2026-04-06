@@ -226,7 +226,7 @@ To verify:
 :::
 
 
-::::{dropdown} Troubleshoot missing alerts for {{ml}} jobs
+::::{dropdown} Troubleshoot missing {{ml}} alerts
 :name: ml-job-compatibility
 :applies_to: {stack: ga 9.0+, serverless: unavailable}
 
