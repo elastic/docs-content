@@ -22,6 +22,8 @@ You can perform the following tasks to control access to your Cloud organization
   * If you have {{serverless-full}} projects, assign project-level roles and create custom roles.
 * Configure [SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) for your organization.
 
+You can also control programmatic access to {{ecloud}}, your deployments, and your projects using [API keys](/deploy-manage/api-keys.md).
+
 :::{tip}
 If you're using {{ech}}, then you can also manage users and control access [at the deployment level](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
 :::

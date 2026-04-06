@@ -25,6 +25,7 @@ Use this guide to troubleshoot any issues you may encounter.
 * [My organization's firewall might be preventing {{agent}} from collecting and sending metrics.](#firewall)
 * [{{agent}} is failing to connect because it doesn't recognize my SSL certificate.](#custom-cert)
 * [I went through the wizard with {{ECK}} (ECK) as my installation method, but I can't view any connected clusters in my account.](#eck-no-clusters) {applies_to}`eck: ga 3.3`
+* [My `AutoOpsAgentPolicy` resource entered the `Invalid` phase after a license change.](#invalid-phase-license-change) {applies_to}`eck: ga 3.3`
 
 $$$single-cloud-org$$$**I’m trying to create a Cloud organization, but I’m already part of a different one.**
 :   :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
@@ -51,6 +52,11 @@ $$$custom-cert$$$**{{agent}} is failing to connect because it doesn't recognize 
 
 $$$eck-no-clusters$$$**I went through the wizard with {{ECK}} (ECK) as my installation method, but I can't view any connected clusters in my account.** {applies_to}`eck: ga 3.3`
 :   Refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-eck-no-clusters.md) to diagnose and resolve common issues.
+
+$$$invalid-phase-license-change$$$**My `AutoOpsAgentPolicy` resource entered the `Invalid` phase after a license change.** {applies_to}`eck: ga 3.3`
+:   The [minimum required {{agent}} version](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for the ECK installation method depends on your license type. Enterprise licenses require agent versions 9.2.1 and later, and Basic licenses require versions 9.2.4 or later. If your license is downgraded from Enterprise to Basic and your agent version is between 9.2.1 and 9.2.3, the policy will fail validation and enter the `Invalid` phase.
+
+    To resolve this issue, upgrade {{agent}}.
 
 ## Run the AutoOps Connectivity Check
 

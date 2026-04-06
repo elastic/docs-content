@@ -25,10 +25,8 @@ You can check the detailed usage for a selected time range grouped either by pro
 
 To access your account usage:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From a deployment or project on the home page, select **Manage**.
-3. From the lower navigation menu, select **Billing and Subscription**.
-4. Go to the **Usage** page.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Billing > Usage**.
 
 ::::{important}
 The usage breakdown information visible on the **Usage** page is an estimate, and does not include prepaid credits, free allowances or any discounts. To get the exact amount you owe for a given month, check your invoices in the [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).

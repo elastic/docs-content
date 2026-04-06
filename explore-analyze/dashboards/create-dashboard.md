@@ -13,6 +13,10 @@ products:
 
 Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data that meets your specific monitoring and analysis needs.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
+:::
+
 ## Requirements [create-dashboard-requirements]
 
 Before creating a dashboard, ensure you have:

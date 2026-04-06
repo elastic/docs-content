@@ -13,7 +13,7 @@ products:
 
 # {{agent-builder}}
 
-{{agent-builder}} combines large language models with Elastic-native features for prompt engineering, context engineering, and automation. Key use cases enabled by Agent Builder include:
+{{agent-builder}} is an AI conversational platform that lets you create AI agents that answer questions and take actions over your {{es}} data using natural language. Agents combine LLM reasoning and context engineering with built-in and custom tools that query your indices, so responses are grounded in your data. Key use cases include:
 
 - **Chat with your {{es}} data immediately** using the chat interface, preconfigured agents, and built-in tools available out of the box.
 - **Build custom agents and tools** tailored to your specific use cases using the UI or APIs.

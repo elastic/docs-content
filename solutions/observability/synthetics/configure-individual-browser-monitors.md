@@ -25,6 +25,7 @@ You’ll need to set a few configuration options:
 * **Give your monitor a name.** Provide a human readable name and a unique ID for the monitor. This will appear in {{kib}} or your Observability Serverless project where you can view and manage monitors after they’re created.
 * **Set the schedule.** Specify the interval at which your tests will run.
 * **Specify where the monitors should run.** You can run monitors on Elastic’s global managed testing infrastructure or [create a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md) to run monitors from your own premises.
+* {applies_to}`stack: ga 9.1+` **Choose which spaces the monitor is visible in.** ({{kib}} only) You can make the monitor visible in one or more [spaces](/deploy-manage/manage-spaces.md), or use `'*'` for all spaces. Options set in `monitor.use()` override the project-level `spaces` setting in your [Synthetics project config](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor).
 * **Set other options as needed.** There are several other options you can set to customize your implementation including params, tags, screenshot options, throttling options, and more.
 
 Configure each monitor directly in your `journey` code using `monitor.use`. The `monitor` API allows you to set unique options for each journey’s monitor directly through code. For example:
@@ -36,6 +37,7 @@ journey('Ensure placeholder is correct', ({ page, params }) => {
   monitor.use({
     id: 'example-monitor',
     schedule: 10,
+    spaces: ['default', 'team-a'],
     throttling: {
       download: 10,
       upload: 5,
@@ -55,4 +57,4 @@ journey('Ensure placeholder is correct', ({ page, params }) => {
 });
 ```
 
-For each journey, you can specify its `schedule` and the `locations` in which it runs. When those options are not set, Synthetics will use the default values in the global configuration file. For more details, refer to [Configure a Synthetics project](/solutions/observability/synthetics/configure-projects.md).
+For each journey, you can specify its `schedule`, the `locations` in which it runs, {applies_to}`stack: ga 9.1+` `spaces` (applies to Stack deployments only), and other options. When an option is not set in `monitor.use()`, Synthetics uses the default from the global configuration file. Options set in `monitor.use()` take precedence over the project-level config—for example, `spaces` here overrides the global `monitor.spaces` setting. For more details, refer to [Configure a Synthetics project](/solutions/observability/synthetics/configure-projects.md).

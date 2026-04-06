@@ -27,6 +27,28 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.3.2 [elastic-security-9.3.2-release-notes]
+
+### Features and enhancements [elastic-security-9.3.2-features-enhancements]
+
+* Adds a callout and badge to the visual event analyzer in the alert details flyout to indicate when cold and frozen data tiers are excluded from analyzer queries [#257015]({{kib-pull}}257015).
+* Adds an advanced setting to exclude cold and frozen data tiers from prevalence queries in the alert details flyout, improving load performance [#257011]({{kib-pull}}257011).
+* Improves the reliability of {{elastic-defend}}'s malware-on-write detection.
+
+### Fixes [elastic-security-9.3.2-fixes]
+
+* Fixes an issue where the alert details flyout persisted after navigating away from {{elastic-sec}} [#256001]({{kib-pull}}256001).
+* Fixes an issue where the visual event analyzer preview could fetch data with incorrect indices before the {{data-source}} was fully loaded [#255400]({{kib-pull}}255400).
+* Fixes an issue where visual event analyzer queries could return cached results for incorrect indices [#255396]({{kib-pull}}255396).
+* Fixes an issue where {{esql}} rule execution did not apply data tier exclusion filters to the source document enrichment query, potentially querying excluded cold and frozen tiers [#255341]({{kib-pull}}255341).
+* Fixes an issue where the visual event analyzer did not display in the alert details flyout in certain {{data-source}} configurations [#255182]({{kib-pull}}255182).
+* Fixes out-of-memory crashes and {{kib}} restarts caused by the gap auto-fill scheduler creating excessively large saved objects for rules with short intervals and long gaps [#254788]({{kib-pull}}254788).
+* Fixes an issue where the legacy `rules/prepackaged` endpoints returned 500 errors on Basic licenses when processing prebuilt rule packages that include {{ml}} rules [#253574]({{kib-pull}}253574).
+* Adds support for timestamp overrides to Timeline at the {{data-source}} level, allowing Timeline to use the {{data-source}}'s configured timestamp field instead of `@timestamp` [#251827]({{kib-pull}}251827).
+* Fixes an issue that would cause hotfix builds of {{elastic-defend}} to incorrectly report their version in Windows Security Center. 
+* Improves {{elastic-defend}} Linux trusted application handling by using Quark's trusted PID queue APIs for more consistent trusted PID synchronization.
+
+
 ## 9.3.1 [elastic-security-9.3.1-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.1-features-enhancements]
@@ -78,6 +100,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves the reliability of Cloud Security Posture (CSP) data by automatically upgrading outdated Misconfiguration and Vulnerabilities data views to the correct versions [#238547]({{kib-pull}}238547).
 * Fixes Cloud Security Posture regressions to ensure AWS, GCP, and Azure cloud providers are all supported [#242592]({{kib-pull}}242592).
 * Upgrades the Osquery schema to v5.19.0 and the ECS schema to v9.2.0 [#246005]({{kib-pull}}246005).
+* For Osquery live queries, improves {{agent}} selection by evaluating the Osquery component's health status rather than the overall {{agent}} status. This allows you to run queries on {{agents}} where the Osquery integration is functional even when other {{agent}} components are degraded [#239304]({{kib-pull}}239304).
+* Allows you to submit live Osquery queries to more than 10,000 {{agents}} [#239536]({{kib-pull}}239536).
+* Allows you to load Osquery live query action results for queries that targeted many {{agents}}, which previously failed when the request URL grew too large [#239527]({{kib-pull}}239527).
+* Improves the performance of the Osquery **Status** tab when displaying results for queries with more than 10,000 {{agents}} [#240082]({{kib-pull}}240082).
 * Adds a file download relative URI to response actions that provide file output [#237713]({{kib-pull}}237713).
 * Adds a free-text input option to the `runscript` response action for providing input to the selected script [#239436]({{kib-pull}}239436).
 * Displays `runscript` response action output for Microsoft Defender for Endpoint for files up to 4.5 KB [#242441]({{kib-pull}}242441).
@@ -186,6 +212,24 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * For {{elastic-defend}} on Linux, reduces the occurrence of policy failures related to malware protection system deadlock avoidance.
 * Improves {{elastic-defend}} on Linux to better handle fanotify events from different mount namespaces.
 * Fixes a bug in {{elastic-defend}} Linux event collection where some long-running processes were not enriched.
+
+
+## 9.2.7 [elastic-security-9.2.7-release-notes]
+
+### Features and enhancements [elastic-security-9.2.7-features-enhancements]
+* Adds a callout and badge to the visual event analyzer in the alert details flyout to indicate when cold and frozen data tiers are excluded from analyzer queries [#257015]({{kib-pull}}257015).
+* Adds an advanced setting to exclude cold and frozen data tiers from prevalence queries in the alert details flyout, improving load performance [#257011]({{kib-pull}}257011).
+* Improves the reliability of {{elastic-defend}}'s malware-on-write detection.
+
+### Fixes [elastic-security-9.2.7-fixes]
+* Fixes an issue where the alert details flyout persisted after navigating away from {{elastic-sec}} [#256001]({{kib-pull}}256001).
+* Fixes an issue where the visual event analyzer preview could fetch data with incorrect indices before the {{data-source}} was fully loaded [#255400]({{kib-pull}}255400).
+* Fixes an issue where visual event analyzer queries could return cached results for incorrect indices [#255396]({{kib-pull}}255396).
+* Fixes an issue where the visual event analyzer did not display in the alert details flyout in certain {{data-source}} configurations [#255182]({{kib-pull}}255182).
+* Enables the `defaultModel` setting for the Azure OpenAI connector to support APIM endpoints [#253577]({{kib-pull}}253577).
+* Fixes an issue where the legacy `rules/prepackaged` endpoints returned 500 errors on Basic licenses when processing prebuilt rule packages that include {{ml}} rules [#253574]({{kib-pull}}253574).
+* Adds support for timestamp overrides to Timeline at the {{data-source}} level, allowing Timeline to use the {{data-source}}'s configured timestamp field instead of `@timestamp` [#251827]({{kib-pull}}251827).
+* Fixes an issue that would cause hotfix builds of {{elastic-defend}} to incorrectly report their version in Windows Security Center.
 
 
 ## 9.2.6 [elastic-security-9.2.6-release-notes]

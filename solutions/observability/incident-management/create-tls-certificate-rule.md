@@ -11,7 +11,6 @@ products:
 
 # Create a TLS certificate rule [tls-certificate-alert]
 
-
 In {{kib}}, you can create a rule that notifies you when one or more of your monitors has a TLS certificate expiring within a specified threshold, or when it exceeds an age limit.
 
 There are two types of TLS certificate rule:
@@ -29,9 +28,23 @@ There are two types of TLS certificate rule:
 Within the Synthetics UI, create a **TLS certificate** rule to receive notifications based on errors and outages.
 
 
+### Filters [tls-rule-synthetics-filters]
+
+The **Filter by** section controls the scope of the rule. The rule evaluates only monitors that match the filters you define. Use the filter bar and field filters to narrow which monitors the TLS rule applies to:
+
+* **MONITOR** — Limit the rule to specific monitors by ID.
+* **TYPE** — Limit the rule by monitor type. The TLS certificate rule applies only to **http** and **tcp** monitor types (browser and other types are excluded, since they do not perform TLS checks).
+* **TAGS** — Limit the rule to monitors that have the selected tags.
+* **PROJECTS** — Limit the rule to monitors in selected Synthetics projects.
+* **LOCATIONS** — Limit the rule to monitors that run from selected locations.
+* {applies_to}`stack: ga 9.1` **KQL query** — Enter a free-form KQL query to filter monitors by any indexed fields. The same KQL syntax used elsewhere in Synthetics is supported.
+
+Conditions you set for the rule are applied only to monitors that match these filters. If you do not set any filters, the rule considers all http and tcp monitors.
+
+
 ### Conditions [tls-rule-synthetics-conditions]
 
-You can specify the following thresholds for your rule:
+You can specify the following thresholds for your rule. They apply to all monitors that match the filters in the [**Filter by** section](#tls-rule-synthetics-filters).
 
 |     |     |
 | --- | --- |
@@ -113,7 +126,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.checkedAt`
 :   Timestamp of the monitor run.
@@ -265,7 +278,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.agingCommonNameAndDate`
 :   The common names and expiration date/time of the detected certs.

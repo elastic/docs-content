@@ -52,11 +52,15 @@ AutoOps is currently not available in any region for GovCloud customers.
 
 | Region | Name |
 | --- | --- |
-| us-east1 | US East (S. Carolina) |
-| us-east4 | US East (N. Virginia) |
 | us-west1 | US West (Oregon) |
 | us-central1 | US Central (Iowa) |
+| us-east1 | US East (S. Carolina) |
+| us-east4 | US East (N. Virginia) |
 | europe-west1 | Europe (Belgium) |
+| europe-west2 | Europe (London) |
+| europe-west3 | Europe (Frankfurt) |
+| europe-west4 | Europe (Netherlands) |
+| asia-southeast1 | Asia Pacific (Singapore) |
 
 ## AutoOps for {{serverless-full}} regions
 

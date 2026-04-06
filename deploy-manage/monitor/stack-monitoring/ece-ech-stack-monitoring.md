@@ -59,7 +59,9 @@ Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may 
 
 When sending monitoring and logging data to a deployment, an ILM policy is pre-configured to control data retention. To view or edit the policies, Go to the **Index Lifecycle Policies** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-For monitoring indices, the retention period is configured in the `.monitoring-8-ilm-policy` index lifecycle policy.
+:::{important}
+On {{ech}} deployments, monitoring indices use the `elastic-cloud-logs` [{{ilm}} ({{ilm-init}})](/manage-data/lifecycle/index-lifecycle-management.md) policy. By default, this policy does not include a [delete phase](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md), which means that logs can grow infinitely and cause a potential disk storage issue in the future. To manage storage effectively, we recommend adding a delete phase with a retention period tailored to your requirements.
+:::
 
 ## Enable logging and monitoring [enable-logging-and-monitoring-steps]
 
@@ -79,7 +81,7 @@ To enable monitoring on your deployment:
 :::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-3. Under the deployment's name in the navigation menu, select **Logs and metrics**.
+3. From the navigation menu, select **Logs and metrics**.
 4. Under **Ship to a deployment**, select **Enable**.
 5. Choose where to send your logs and metrics. Select **Save**.
 

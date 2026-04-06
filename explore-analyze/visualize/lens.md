@@ -19,6 +19,10 @@ Data views are created automatically if you [upload a file](/manage-data/ingest/
 
 Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
+:::
+
 With Lens, you can create the following visualization types:
 
 | **Chart type** | **Use when you want to...** |
