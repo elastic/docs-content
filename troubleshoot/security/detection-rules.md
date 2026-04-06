@@ -211,14 +211,9 @@ For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} un
 
 ::::
 
+:::{dropdown} Troubleshoot namespace filter
+:applies_to: {stack: ga 9.4+, serverless: ga}
 
-::::{dropdown} Troubleshoot namespace filter
-:name: troubleshoot-namespace-filter
-
-```yaml {applies_to}
-stack: ga 9.4
-serverless: ga
-```
 
 If detection rules are not creating expected alerts or appear to be missing data, the **Include data stream namespaces in rule execution** [advanced setting](../../solutions/security/get-started/configure-advanced-settings.md#included-data-stream-namespaces-rule-execution) may be limiting which documents are searched. When configured, only events with a matching `data_stream.namespace` value are queried by all rules in the {{kib}} space.
 
@@ -227,8 +222,7 @@ To verify:
 1. Go to **{{stack-manage-app}}** → **Advanced Settings** (or **Project Settings** → **{{stack-manage-app}}** → **Advanced Settings** in {{serverless-short}}).
 2. Scroll to **Security Solution** and find **Include data stream namespaces in rule execution**.
 3. If the setting lists one or more namespaces, ensure your data is written to those namespaces (for example, check your {{fleet}} integration or data shipper configuration for the `data_stream.namespace` value). If your data uses different namespace values, add them to the setting or clear the setting to search all namespaces.
-
-::::
+:::
 
 
 ::::{dropdown} Troubleshoot missing alerts for {{ml}} jobs
