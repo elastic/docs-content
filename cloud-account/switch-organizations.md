@@ -5,9 +5,10 @@ applies_to:
   serverless: ga
 products:
   - id: cloud-hosted
+navigation_title: Switch between organizations
 ---
 
-# Switch between organizations
+# Switch between {{ecloud}} organizations
 
 From a single {{ecloud}} account, you can access multiple organizations.
 
