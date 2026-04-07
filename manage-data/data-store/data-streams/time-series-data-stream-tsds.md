@@ -101,7 +101,9 @@ A time series data stream works like a regular data stream, with some key differ
 * {applies_to}`stack: ga 9.3` **Doc value Skippers:** A TSDS enables [docvalue skippers](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md#doc-values-skippers) on its `_tsid`, `@timestamp`, [dimension](#time-series-dimension), and [metric](#time-series-metric) fields. Because `tsid` and `@timestamp` are part of the index sort, the skippers allow {{es}} to avoid building backing indexes for these fields, meaning lower disk usage and faster ingest speed.
 
 ## Query time series data
-{applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.4`
+```{applies_to}
+stack: preview =9.2, ga 9.4+
+```
 
 You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for processing time series data efficiently and enables the use of time series [aggregation functions](elasticsearch://reference/query-languages/esql/functions-operators/time-series-aggregation-functions.md) with window support.
 
