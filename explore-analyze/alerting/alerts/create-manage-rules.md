@@ -15,6 +15,13 @@ The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of 
 
 You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rules** in {{kib}} or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+::::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+
+All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** > **Alerts and insights** > **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
+::::
+
+
 ![Rules page navigation](/explore-analyze/images/kibana-stack-management-rules.png "")
 
 **{{rules-ui}}** provides a central place to:
