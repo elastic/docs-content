@@ -35,12 +35,12 @@ toc:
                     children:
                       - file: search/vector/knn.md
                       - file: search/vector/bring-own-vectors.md
+                      - file: search/vector/vector-storage-for-semantic-search.md
                   - file: search/vector/sparse-vector.md
                   - file: search/vector/dense-versus-sparse-ingest-pipelines.md
               - file: search/semantic-search.md
                 children:
                   - file: search/semantic-search/semantic-search-semantic-text.md
-                  - file: search/semantic-search/vector-storage-for-semantic-search.md
                   - file: search/semantic-search/semantic-search-inference.md
                   - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
                   - file: search/semantic-search/cohere-es.md

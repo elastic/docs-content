@@ -25,7 +25,7 @@ We recommend using the `semantic_text` workflow for [semantic search](../semanti
 
 This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), but you can use any service and model supported by the [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md).
 
-## Before you begin [semantic-text-requirements]
+## Requirements [semantic-text-requirements]
 
 - This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects.
 ::::{note}
@@ -86,7 +86,7 @@ PUT semantic-embeddings
 :::::::
 
 :::{note}
-For large-scale deployments using dense vector embeddings, you can significantly reduce memory usage by configuring quantization strategies like BBQ. For advanced configuration, refer to [Optimizing vector storage](vector-storage-for-semantic-search.md).
+For large-scale deployments using dense vector embeddings, you can significantly reduce memory usage by configuring quantization strategies like BBQ. For advanced configuration, refer to [Optimizing vector storage](../vector/vector-storage-for-semantic-search.md).
 :::
 
 
@@ -168,10 +168,10 @@ POST /_query?format=txt
 
 Both queries return the documents ranked by semantic relevance. The documents about running and muscle soreness score highest because they are semantically closest to the query, while the document about cluster performance scores lower.
 
-## Further examples and reading [semantic-text-further-examples]
+## Related pages[semantic-text-further-examples]
 
 * For an overview of all query types supported by `semantic_text` fields and guidance on when to use them, see [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
 * If you want to use `semantic_text` in hybrid search, refer to [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb) for a step-by-step guide.
 * For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
 * To learn more about model autoscaling, refer to the [trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) page.
-* To learn how to optimize storage and search performance when using dense vector embeddings, read about [Optimizing vector storage](vector-storage-for-semantic-search.md).
+* To learn how to optimize storage and search performance when using dense vector embeddings, read about [Optimizing vector storage](../vector/vector-storage-for-semantic-search.md).

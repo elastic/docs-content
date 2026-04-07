@@ -13,7 +13,7 @@ description: Reduce the memory footprint of dense vector embeddings in semantic 
 
 When scaling semantic search, the memory footprint of dense vector embeddings can become a primary concern. You can optimize storage and search performance for your `semantic_text` indexes by configuring the `index_options` parameter on the underlying `dense_vector` field. The `index_options` parameter controls how vectors are indexed and stored. You can specify [quantization strategies](https://www.elastic.co/blog/vector-search-elasticsearch-rationale) like [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) that compress high-dimensional vectors into more efficient representations, achieving up to 32x memory reduction while maintaining search quality.
 
-## Before you begin
+## Requirements
 
 - You need a `semantic_text` field that uses an {{infer}} endpoint producing **dense vector embeddings** (such as E5, OpenAI embeddings, or Cohere).
 - If you use a custom model, create the {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
@@ -194,12 +194,12 @@ PUT semantic-embeddings-custom
 
 ## Next steps
 
-- Follow the [Semantic search with `semantic_text`](semantic-search-semantic-text.md) tutorial to set up an end-to-end semantic search workflow.
+- Follow the [Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md) tutorial to set up an end-to-end semantic search workflow.
 - Combine semantic search with keyword search using [hybrid search](../hybrid-semantic-text.md).
 
 ## Related pages
 
 - [`dense_vector` `index_options` reference](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options)
 - [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md)
-- [Dense vector search](../vector/dense-vector.md)
+- [Dense vector search](dense-vector.md)
 - [Trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md)
