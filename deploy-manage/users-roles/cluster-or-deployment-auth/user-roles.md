@@ -12,6 +12,10 @@ products:
 
 After a user is [authenticated](user-authentication.md), {{stack}} needs to determine whether the user behind an incoming request is allowed to execute the request. The primary method of authorization in a cluster is [role-based access control](#roles) (RBAC), although {{stack}} also supports [Attribute-based access control](#attributes) (ABAC).
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authz
+:::
+
 :::{tip}
 If you use {{ece}} or {{ech}}, then you can also implement RBAC at the level of your [{{ece}} orchestrator](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md) or [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization.md).
 

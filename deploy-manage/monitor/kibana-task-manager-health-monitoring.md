@@ -115,9 +115,7 @@ The Runtime `status` indicates whether task executions have exceeded any of the 
 Some tasks (such as [connectors](../manage-connectors.md)) will incorrectly report their status as successful even if the task failed. The runtime and workload block will return data about success and failures and will not take this into consideration.
 
 To get a better sense of action failures, refer to the [Event log index](../../explore-analyze/alerting/alerts/event-log-index.md) for more accurate context into failures and successes.
-
 ::::
-
 
 The Capacity Estimation `status` indicates the sufficiency of the observed capacity. An `OK` status means capacity is sufficient. A `Warning` status means that capacity is sufficient for the scheduled recurring tasks, but non-recurring tasks often cause the cluster to exceed capacity. An `Error` status means that there is insufficient capacity across all types of tasks.
 

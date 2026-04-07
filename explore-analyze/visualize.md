@@ -44,3 +44,4 @@ $$$panels-editors$$$
 :::{note}
 Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
 :::
+

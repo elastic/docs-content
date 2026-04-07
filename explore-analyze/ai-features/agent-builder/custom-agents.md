@@ -17,10 +17,14 @@ products:
 Custom agents enable you to create specialized AI assistants tailored to your specific use cases and workflows. Unlike [built-in agents](builtin-agents-reference.md), which are pre-configured by Elastic, custom agents give you full control over instructions, tools, and behavior.
 
 :::{note}
-Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch.
+Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch. The **Elastic AI Agent** is an exception {applies_to}`stack: ga 9.4+`: as the default agent for each space, it can be edited directly.
 :::
 
 Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created. In contrast, built-in agents are available across all spaces.
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/agent-builder
+:::
 
 ## Create a custom agent
 
@@ -107,7 +111,7 @@ From the **Agents** page, you can perform various actions on custom agents:
 :::
 
 :::{note}
-These management options apply only to custom agents. Built-in agents like the **Elastic AI Agent** can only be chatted with or cloned, not edited or deleted.
+These management options apply only to custom agents and the Elastic AI Agent {applies_to}`stack: ga 9.4+`. Other built-in agents can only be chatted with or cloned, not edited or deleted.
 :::
 
 ## Best practices for custom agents

@@ -21,6 +21,34 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.3.3 [elastic-observability-9.3.3-release-notes]
+
+### Fixes [elastic-observability-9.3.3-fixes]
+* Fixes **Hosts** exclusion filters so hosts with excluded metadata values are no longer shown after enrichment [#260426]({{kib-pull}}260426).
+* Fixes Index threshold rule `filterKuery` wildcard behavior on keyword fields so generated queries return the expected matches [#260283]({{kib-pull}}260283).
+* Fixes metric threshold rule evaluation for wildcard KQL filters when no data view is available, so alerts evaluate correctly [#260046]({{kib-pull}}260046).
+* Fixes **Hosts** filter option suggestions to match the selected schema (ECS or semconv) [#259825]({{kib-pull}}259825).
+* Fixes alert tags when source tags are provided as a string [#259729]({{kib-pull}}259729).
+* Fixes OTel metric mapping in the **Infrastructure** tab so host, pod, and container metrics no longer show `N/A` when data exists [#259552]({{kib-pull}}259552).
+* Fixes missing action variables in Slack Web API text message mode [#259499]({{kib-pull}}259499).
+* Fixes semconv metric calculations on the **Hosts** page to prevent `N/A` values and align CPU, memory, and disk usage calculations [#259372]({{kib-pull}}259372).
+* Improves static dashboard selection in the APM **Metrics** tab by incorporating service runtime version into dashboard resolution [#258483]({{kib-pull}}258483).
+
+## 9.3.2 [elastic-observability-9.3.2-release-notes]
+
+
+### Features and enhancements [elastic-observability-9.3.2-features-enhancements]
+* Adds Gemini 2.5 Flash Lite, Claude 4.5 Haiku, and Claude 4.6 Sonnet preconfigured connectors [#253109]({{kib-pull}}253109).
+
+
+### Fixes [elastic-observability-9.3.2-fixes]
+* Fixes error on burn rate alert details page for suppressed alerts [#256435]({{kib-pull}}256435).
+* Fixes asset details locator parameters in custom dashboards [#256412]({{kib-pull}}256412).
+* Fixes `Missing required fields (transaction.sampled) in event` error [#255788]({{kib-pull}}255788).
+* Fixes alerts wildcard queries on keyword fields [#255225]({{kib-pull}}255225).
+* Fixes alert visibility and filters for grouped SLOs on details page [#254601]({{kib-pull}}254601).
+* Fixes `scanDashboards` include sections [#254600]({{kib-pull}}254600).
+
 ## 9.3.1 [elastic-observability-9.3.1-release-notes]
 
 
@@ -186,6 +214,27 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes gap while loading data [#238879]({{kib-pull}}238879).
 * Fixes **Dataset Quality** flyout rendering [#237840]({{kib-pull}}237840).
 
+## 9.2.8 [elastic-observability-9.2.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.8-features-enhancements]
+* Adds no-data behavior options to custom threshold rules, including options to recover, remain active, or trigger a no-data alert [#251976]({{kib-pull}}251976).
+
+
+### Fixes [elastic-observability-9.2.8-fixes]
+* Fixes **Hosts** exclusion filters by applying post-enrichment filtering to excluded metadata values [#260426]({{kib-pull}}260426).
+* Fixes **Hosts** filter option suggestions to match the selected schema (ECS or semconv) [#259825]({{kib-pull}}259825).
+* Fixes alert tags when source tags are provided as a string [#259729]({{kib-pull}}259729).
+* Fixes OTel metric mapping in the **Infrastructure** tab so host, pod, and container metrics no longer show `N/A` when data exists [#259552]({{kib-pull}}259552).
+* Fixes semconv metric calculations on the **Hosts** page to prevent `N/A` values and align CPU, memory, and disk usage calculations [#259372]({{kib-pull}}259372).
+
+## 9.2.7 [elastic-observability-9.2.7-release-notes]
+
+
+### Fixes [elastic-observability-9.2.7-fixes]
+* Fixes error on burn rate alert details page for suppressed alerts [#256435]({{kib-pull}}256435).
+* Fixes `Missing required fields (transaction.sampled) in event` error [#255788]({{kib-pull}}255788).
+* Fixes alerts wildcard queries on keyword fields [#255225]({{kib-pull}}255225).
+* Fixes alert visibility and filters for grouped SLOs on details page [#254601]({{kib-pull}}254601).
 
 ## 9.2.6 [elastic-observability-9.2.6-release-notes]
 

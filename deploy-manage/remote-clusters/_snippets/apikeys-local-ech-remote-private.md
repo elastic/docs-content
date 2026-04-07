@@ -6,12 +6,11 @@ This snippet is in use in the following locations:
 
 It requires remote_type substitution to be defined
 -->
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Hosted deployments** page to view all of your deployments.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
-    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-3. From the navigation menu, select **Security**.
+    On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+3. From the navigation menu, select **Access and Security** > **Security**.
 4. Select **Remote Connections > Add trusted environment** and choose **{{remote_type}}**. Then click **Next**.
 5. Select **API keys** as authentication mechanism and click **Next**.
 6. When asked whether the Certificate Authority (CA) of the remote environment’s proxy or load-balancing infrastructure is public, select **No, it is private**.
