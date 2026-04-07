@@ -15,8 +15,8 @@ Private connectivity is a secure way for your {{ecloud}} deployments and project
 :::{note}
 {{serverless-short}} Observability and Security projects must belong to a specific feature tier to apply private connection policies:
 
-* Observability: [Observability Complete](solutions/observability/observability-serverless-feature-tiers.md) 
-* Security: [Security Analytics Complete](solutions/security/security-serverless-feature-tiers.md) 
+* Observability: [Observability Complete](/solutions/observability/observability-serverless-feature-tiers.md) 
+* Security: [Security Analytics Complete](/solutions/security/security-serverless-feature-tiers.md)  
 :::
 
 :::{tip}
