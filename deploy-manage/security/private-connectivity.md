@@ -15,8 +15,8 @@ Private connectivity is a secure way for your {{ecloud}} deployments and project
 :::{note}
 {{serverless-short}} Observability and Security projects must belong to a specific feature tier to apply private connection policies:
 
-* Observability: [Observability Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#observability-complete) 
-* Security: [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#security-analytics-complete) 
+* Observability: [Observability Complete](solutions/observability/observability-serverless-feature-tiers.md) 
+* Security: [Security Analytics Complete](solutions/security/security-serverless-feature-tiers.md) 
 :::
 
 :::{tip}

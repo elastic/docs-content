@@ -39,8 +39,8 @@ To learn how multiple IP filters are processed, and how IP filters and [private 
 :::{note}
 {{serverless-short}} Observability and Security projects must belong to a specific feature tier to apply IP filter policies:
 
-* Observability: [Observability Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#observability-complete) 
-* Security: [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#security-analytics-complete) 
+* Observability: [Observability Complete](solutions/observability/observability-serverless-feature-tiers.md) 
+* Security: [Security Analytics Complete](solutions/security/security-serverless-feature-tiers.md) 
 :::
 
 ## ECE
