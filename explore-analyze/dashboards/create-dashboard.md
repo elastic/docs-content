@@ -47,6 +47,7 @@ Before creating a dashboard, ensure you have:
         * **Store time with dashboard** — Saves the specified time filter.
         * **Use margins between panels** — Adds a margin of space between each panel.
         * **Show panel titles** — Displays the titles in the panel headers.
+        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Show panel borders** — Displays a border around each panel. Turn off for a cleaner look. Individual panels can override this setting from their own settings.
         * **Sync color palettes across panels** — Applies the same color palette to all panels on the dashboard.
         * **Sync cursor across panels** — When you hover your cursor over a time series chart or a heatmap, the cursor on all other related dashboard charts automatically appears.
         * **Sync tooltips across panels** — When you hover your cursor over a **Lens** chart, the tooltips on all other related dashboard charts automatically appear.
