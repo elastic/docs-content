@@ -58,27 +58,7 @@ Streams remains scoped to the origin project only and does not support {{cps-ini
 
 ## Identifying remote and origin documents [obs-cps-identify-documents]
 
-To determine whether a document comes from the origin project or a linked project, examine the `_index` field.
-
-Remote documents include the linked project's alias as a prefix, separated by a colon:
-
-```
-my-linked-project-abc123:.ds-logs-generic.otel-default-2026.03.02-000001
-```
-
-Origin documents have no prefix:
-
-```
-.ds-logs-generic.otel-default-2026.03.02-000001
-```
-
-In {{esql}}, the `_index` field is not returned by default. To include it, use the `METADATA` keyword:
-
-```esql
-FROM logs-* METADATA _index
-| WHERE @timestamp > "2026-03-16T15:15:00Z"
-| KEEP @timestamp, _index, message
-```
+To determine whether a document comes from the origin project or a linked project, refer to [Identifying remote and origin documents](/explore-analyze/cross-project-search.md#cps-identify-documents).
 
 ## Known issues and limitations [obs-cps-known-issues]
 
