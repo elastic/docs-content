@@ -85,7 +85,7 @@ The **Region key** dimension defines which geographic areas to display on the ma
       - **Field**: Select the field containing geographic identifiers to group by.
       - **Number of values**: How many regions to display. The default number of values depends on your environment:
         - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 3 or 5.
+        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md

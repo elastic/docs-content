@@ -233,7 +233,7 @@ Customize your metric chart to display exactly the information you need, formatt
 
     - **Number of values**: The number of tiles to show. The default number of values depends on your environment:
       - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-      - {applies_to}`stack: ga 9.0-9.3` Defaults to 3 or 5.
+      - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
 
       If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
     :::{include} ../../_snippets/lens-rank-by-options.md
