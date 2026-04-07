@@ -57,24 +57,25 @@ The following table lists all available processors. Refer to the individual proc
 | Action | Description |
 | --- | --- |
 | [`append`](./extract/append.md) | Adds values to an array field, or creates the field as an array if it doesn't exist. |
-| [`concat`](./extract/concat.md) | Concatenates a mix of field values and literal strings into a single field. |
-| [`convert`](./extract/convert.md) | Converts a field value to a different data type. |
+| [`concat`](./extract/concat.md) | {applies_to}`stack: ga 9.4+` Concatenates a mix of field values and literal strings into a single field. |
+| [`convert`](./extract/convert.md) | {applies_to}`stack: ga 9.3+` Converts a field value to a different data type. |
 | [`date`](./extract/date.md) | Parses date strings into timestamps. |
 | [`dissect`](./extract/dissect.md) | Parses structured text using delimiter-based patterns. |
-| [`drop_document`](./extract/drop.md) | Prevents indexing of a document from based on a condition. |
+| [`drop_document`](./extract/drop.md) | {applies_to}`stack: ga 9.3+` Prevents indexing of a document from based on a condition. |
+| [`enrich`](./extract/enrich.md) | {applies_to}`stack: ga 9.4+` Adds data from an enrich policy to incoming documents. |
 | [`grok`](./extract/grok.md) | Parses unstructured text using predefined or custom patterns. |
-| [`join`](./extract/join.md) | Concatenates the values of multiple fields with a delimiter. |
-| [`lowercase`](./extract/lowercase.md) | Converts a string field to lowercase. |
-| [`math`](./extract/math.md) | Evaluates an arithmetic expression and stores the result. |
-| [`network_direction`](./extract/network-direction.md) | Determines network traffic direction based on source and destination IP addresses. |
-| [`redact`](./extract/redact.md) | Redacts sensitive data in a string field by matching patterns. |
-| [`remove`](./extract/remove.md) | Removes a field from the document. |
+| [`join`](./extract/join.md) | {applies_to}`stack: ga 9.4+` Concatenates the values of multiple fields with a delimiter. |
+| [`lowercase`](./extract/lowercase.md) | {applies_to}`stack: ga 9.4+` Converts a string field to lowercase. |
+| [`math`](./extract/math.md) | {applies_to}`stack: ga 9.3+` Evaluates an arithmetic expression and stores the result. |
+| [`network_direction`](./extract/network-direction.md) | {applies_to}`stack: ga 9.4+` Determines network traffic direction based on source and destination IP addresses. |
+| [`redact`](./extract/redact.md) | {applies_to}`stack: ga 9.4+` Redacts sensitive data in a string field by matching patterns. |
+| [`remove`](./extract/remove.md) | {applies_to}`stack: ga 9.3+` Removes a field from the document. |
 | [`remove_by_prefix`](./extract/remove.md#streams-remove-by-prefix-processor) | Removes a field and all nested fields matching a prefix. |
 | [`rename`](./extract/rename.md) | Moves a field's value to a new field name and removes the original. |
-| [`replace`](./extract/replace.md) | Replaces portions of a string field that match a regular expression. |
+| [`replace`](./extract/replace.md) | {applies_to}`stack: ga 9.3+` Replaces portions of a string field that match a regular expression. |
 | [`set`](./extract/set.md) | Assigns a value to a field, creating the field if it doesn't exist. |
-| [`trim`](./extract/trim.md) | Removes leading and trailing whitespace from a string field. |
-| [`uppercase`](./extract/uppercase.md) | Converts a string field to uppercase. |
+| [`trim`](./extract/trim.md) | {applies_to}`stack: ga 9.4+` Removes leading and trailing whitespace from a string field. |
+| [`uppercase`](./extract/uppercase.md) | {applies_to}`stack: ga 9.4+` Converts a string field to uppercase. |
 
 ## Conditions [streams-streamlang-conditions]
 
