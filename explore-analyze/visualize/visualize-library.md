@@ -10,7 +10,7 @@ products:
 
 # Visualize Library [visualize-library]
 
-The **Visualize Library** is a space where you can save visualization panels that you may want to use across multiple dashboards. The **Visualize Library** consists of two sections:
+The **Visualize Library** is a space where you can save visualization panels that you may want to use across multiple dashboards. The **Visualize Library** consists of two tabs:
 
 * **Visualizations**
 * **Annotation groups**
@@ -22,7 +22,7 @@ In Elastic Classic navigation, the Visualize Library is also accessible from the
 
 ## Visualizations [visualize-library-visualizations]
 
-By default the **Visualizations** section opens first. Here you can create new visualizations, or select from a list of previously created visualizations. To learn more, refer to [Save to the Visualize Library](../../explore-analyze/visualize/manage-panels.md).
+By default the **Visualizations** tab opens first. Here you can create new visualizations, or select from a list of previously created visualizations. To learn more, refer to [Save to the Visualize Library](../../explore-analyze/visualize/manage-panels.md).
 
 
 ## Annotation groups [visualize-library-annotation-groups]
