@@ -12,7 +12,7 @@ description: Learn how cross-project search (CPS) works in Elastic Observability
 
 [{{cps-cap}} ({{cps-init}})](/explore-analyze/cross-project-search.md) lets you run a single search request across multiple {{serverless-short}} projects. When your observability data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all that data from a single origin project without searching each project individually.
 
-When projects are linked, platform apps like Discover and Dashboards automatically include data from all linked projects. {{observability}} apps have varying levels of {{cps-init}} support. Some apps show cross-project data automatically; others remain scoped to the local project.
+When projects are linked, platform apps like Discover and Dashboards automatically include data from all linked projects. {{observability}} apps have varying levels of {{cps-init}} support. Some apps show cross-project data automatically; others remain scoped to the origin project.
 
 For full details on {{cps-init}} concepts, configuration, and search syntax, refer to:
 
@@ -36,7 +36,7 @@ In {{observability}} apps, the scope selector is not available. This means:
 
 * {{observability}} apps operate in their default scope, which varies by app (refer to [{{observability}} app compatibility](#obs-cps-compatability)).
 * The scope you select in platform apps like Discover does not carry over to {{observability}} apps.
-* Data volumes might change when switching between Discover (which shows cross-project data by default) and an {{observability}} app (which is scoped to a local project) for the same index pattern.
+* Data volumes might change when switching between Discover (which shows cross-project data by default) and an {{observability}} app (which is scoped to a origin project) for the same index pattern.
 
 For apps where the scope selector is available, refer to [Managing {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
 
@@ -48,17 +48,17 @@ When {{cps-init}} is enabled, Discover shows documents from all linked projects 
 
 ### Discover to {{product.apm}} and Infrastructure
 
-**Open in {{product.apm}}** and **Open in Infra** links in the Discover document flyout may not resolve correctly for documents from linked projects. Because {{product.apm}} and Infrastructure are scoped to the local project, following a link for a remote document may fail to load the expected data. If a remote service shares the same name as a local service, the local service may open instead.
+**Open in {{product.apm}}** and **Open in Infra** links in the Discover document flyout may not resolve correctly for documents from linked projects. Because {{product.apm}} and Infrastructure are scoped to the origin project, following a link for a remote document may fail to load the expected data. If a remote service shares the same name as a origin service, the origin service may open instead.
 
 This will be resolved when {{cps-init}} is enabled in APM and Infrastructure.
 
 ### Discover to Streams
 
-Streams remains scoped to the origin project only and does not support {{cps-init}}. If you open a stream from Discover and the document is from a linked project, {{observability}} shows a warning that the stream is remote. The Streams UI then shows local project data only, so counts can differ from Discover.
+Streams remains scoped to the origin project only and does not support {{cps-init}}. If you open a stream from Discover and the document is from a linked project, {{observability}} shows a warning that the stream is remote. The Streams UI then shows origin project data only, so counts can differ from Discover.
 
-## Identifying remote and local documents [obs-cps-identify-documents]
+## Identifying remote and origin documents [obs-cps-identify-documents]
 
-To determine whether a document comes from the local project or a linked project, examine the `_index` field.
+To determine whether a document comes from the origin project or a linked project, examine the `_index` field.
 
 Remote documents include the linked project's alias as a prefix, separated by a colon:
 
@@ -66,7 +66,7 @@ Remote documents include the linked project's alias as a prefix, separated by a 
 my-linked-project-abc123:.ds-logs-generic.otel-default-2026.03.02-000001
 ```
 
-Local documents have no prefix:
+Origin documents have no prefix:
 
 ```
 .ds-logs-generic.otel-default-2026.03.02-000001
@@ -86,9 +86,9 @@ The following known issues and limitations apply to {{cps-init}} in {{observabil
 
 ### Rules data scope inconsistency [obs-cps-rules-scope]
 
-Custom threshold and SLO burn rate rules query only local project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means:
+Custom threshold and SLO burn rate rules query only origin project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means:
 
-* A rule simulation may show a condition is violated, but the rule itself may not trigger an alert because it evaluates only local data.
+* A rule simulation may show a condition is violated, but the rule itself may not trigger an alert because it evaluates only origin data.
 * Discover and rules may show different results for the same data view.
 
 APM-specific rules (APM anomaly, error count threshold, failed transaction rate threshold, latency threshold) and Infrastructure Inventory rules are not fully tested with {{cps-init}}.
@@ -97,7 +97,7 @@ Tracking: [kibana#257714](https://github.com/elastic/kibana/issues/257714)
 
 ### SLO visibility [obs-cps-slo-remote]
 
-Only local SLOs are visible, even when connected to a remote project.
+Only origin SLOs are visible, even when connected to a remote project.
 
 Tracking: [kibana#252955](https://github.com/elastic/kibana/issues/252955)
 
@@ -115,9 +115,9 @@ The following Discover flyout links do not work correctly for documents from lin
 
 These issues will be resolved when {{cps-init}} is enabled in APM and Infrastructure.
 
-### {{observability}} overview alerts are local only [obs-cps-overview-alerts]
+### {{observability}} overview alerts are origin only [obs-cps-overview-alerts]
 
-The **Alerts** section on the {{observability}} overview page shows alerts from the local project only, even when rules are configured to act on cross-project data.
+The **Alerts** section on the {{observability}} overview page shows alerts from the origin project only, even when rules are configured to act on cross-project data.
 
 ### Logs Essentials projects cannot use {{cps-init}} [obs-cps-logs-essentials]
 
@@ -125,7 +125,7 @@ The **Alerts** section on the {{observability}} overview page shows alerts from 
 
 ### Synthetics is not affected by {{cps-init}} [obs-cps-synthetics]
 
-Synthetics monitors and TLS certificates are bound to saved objects and remain scoped to the local project. Monitors from linked projects do not appear in the Synthetics UI of the origin project.
+Synthetics monitors and TLS certificates are bound to saved objects and remain scoped to the origin project. Monitors from linked projects do not appear in the Synthetics UI of the origin project.
 
 ## What's next [obs-cps-whats-next]
 
