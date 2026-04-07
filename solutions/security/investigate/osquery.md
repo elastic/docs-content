@@ -74,6 +74,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 6. Click **Submit**.
 
     ::::{tip}
+    :applies_to: stack: ga 9.0-9.3
     To save a single query for future use, click **Save for later** and define the ID, description, and other [details](../../../solutions/security/investigate/osquery.md#osquery-manage-query).
     ::::
 
@@ -189,7 +190,7 @@ To save a query:
 
 1. Depending on your version, do one of the following:
 
-    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Click **Save query** from the **Queries** tab. Once you save a query, you can only edit it from the **Queries** tab.
+    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Click **Create query** from the **Queries** tab. Once you save a query, you can only edit it from the **Queries** tab.
     * {applies_to}`stack: ga 9.0-9.3` Click **Add saved query** from the **Saved queries** tab. Once you save a query, you can only edit it from the **Saved queries** tab.
 
 2. Provide the following fields:
@@ -212,7 +213,7 @@ To save a query:
 4. Click **Save** or **Update**.
 
 ::::{tip}
-After running a live query, you can also save it by clicking **Save for later**.
+After running a live query, you can also save it by clicking **Save query** from the query details page.
 ::::
 
 ### Filter and duplicate saved queries
