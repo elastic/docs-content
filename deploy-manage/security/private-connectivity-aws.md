@@ -143,7 +143,11 @@ Private connection policies are optional for AWS PrivateLink. After the VPC endp
 
 Before you begin, you should ensure your VPC endpoint is in all availability zones supported by {{ecloud}} for the region and resource type. Placing your VPC endpoint in all supported {{ecloud}} availability zones for the region improves throughput and resiliency when connecting over PrivateLink.
 
-For {{ech}} deployments, if your VPC is not in all supported availability zones, traffic can become imbalanced, saturating some coordinating nodes while underutilizing others, which might impact performance.
+For {{ech}} deployments, if your VPC is not in all supported availability zones, traffic can become imbalanced across your deployment nodes. This affects all node types, including Elasticsearch coordinating nodes and APM/Integration servers.
+
+This imbalance occurs because the {{ecloud}} proxy routes each incoming request to a node in the same AZ where the request was received, to avoid inter-AZ data transfer costs. The AWS Network Load Balancer (NLB) in front of the {{ecloud}} proxy uses a flow hash algorithm based on source IP, port, and other connection metadata — it does not use round-robin distribution. As a result, if your VPC endpoint does not cover a particular AZ, no traffic is directed to {{ecloud}} nodes in that AZ, regardless of how many nodes you have running there.
+
+A common symptom of this is uneven traffic after scaling up: for example, adding a third APM/Integration server in a new AZ will not receive PrivateLink traffic if your VPC endpoint only covers the original two AZs. To resolve this, ensure your VPC endpoint is updated to include all AZs where your {{ecloud}} deployment has nodes.
 
 You can find the zone name to zone ID mapping with AWS CLI:
 
