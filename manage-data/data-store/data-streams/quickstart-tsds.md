@@ -212,7 +212,7 @@ Now that your data stream has some documents, you can use the ES|QL [`_query` en
 ```console
 POST _query
 {
-  query: "TS quickstart-weather | STATS max(avg_over_time(temperature) BY TBUCKET(1h), location"
+  query: "TS quickstart-weather | STATS max(avg_over_time(temperature) BY location, TBUCKET(1h)"
 }
 ```
 
