@@ -12,7 +12,7 @@ description: Learn how cross-project search (CPS) works in Elastic Observability
 
 [{{cps-cap}} ({{cps-init}})](/explore-analyze/cross-project-search.md) lets you run a single search request across multiple {{serverless-short}} projects. When your observability data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all that data from a single origin project without searching each project individually.
 
-When projects are linked, platform apps like Discover and Dashboards automatically include data from all linked projects — sometimes called "flat world" behavior. {{observability}} apps have varying levels of {{cps-init}} support. Some apps show cross-project data automatically; others remain scoped to the local project.
+When projects are linked, platform apps like Discover and Dashboards automatically include data from all linked projects. {{observability}} apps have varying levels of {{cps-init}} support. Some apps show cross-project data automatically; others remain scoped to the local project.
 
 For full details on {{cps-init}} concepts, configuration, and search syntax, refer to:
 
@@ -22,14 +22,11 @@ For full details on {{cps-init}} concepts, configuration, and search syntax, ref
 
 ## {{observability}} app compatibility [obs-cps-compatibility]
 
-The following table shows how each {{observability}} app behaves with {{cps-init}} at technical preview. The **CCS in {{ech}}** column shows the baseline cross-cluster search support in {{ech}}, which {{cps-init}} in {{serverless-short}} is intended to mirror.
+The following table shows how each {{observability}} app behaves with {{cps-init}} at technical preview.
 
 ::::{include} /solutions/_snippets/cps-obs-compatibility.md
 ::::
 
-:::{note}
-In {{serverless-short}}, {{observability}} apps do not expose index configuration settings the way {{ech}} does. For example, APM index settings are not available in the Serverless UI. {{cps-init}} in Serverless is configured at the project level through the Cloud UI, not within individual app settings. Refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md) for setup instructions.
-:::
 
 ## {{cps-cap}} scope selector in {{observability}} apps [obs-cps-scope-selector]
 
@@ -45,7 +42,7 @@ For apps where the scope selector is available, refer to [Managing {{cps}} scope
 
 ## Navigating between Discover and {{observability}} apps [obs-cps-discover-navigation]
 
-When {{cps-init}} is enabled, Discover operates in "flat world" mode and shows documents from all linked projects by default. {{observability}} apps may not have the same scope, which can lead to differences when navigating between them.
+When {{cps-init}} is enabled, Discover shows documents from all linked projects by default. {{observability}} apps may not have the same scope, which can lead to differences when navigating between them.
 
 % DOCS NOTE — CONDITIONAL: Include the following subsection only if APM/Infra CPS work (observability-dev#5328, observability-dev#5374) has NOT shipped. Remove it when that work lands.
 
@@ -57,7 +54,7 @@ This will be resolved when {{cps-init}} is enabled in APM and Infrastructure.
 
 ### Discover to Streams
 
-Streams remains local-project only and does not support {{cps-init}}. If you open a stream from Discover and the document is from a linked project, {{observability}} shows a warning that the stream is remote. The Streams UI then shows local-project data only, so counts can differ from Discover.
+Streams remains scoped to the origin project only and does not support {{cps-init}}. If you open a stream from Discover and the document is from a linked project, {{observability}} shows a warning that the stream is remote. The Streams UI then shows local project data only, so counts can differ from Discover.
 
 ## Identifying remote and local documents [obs-cps-identify-documents]
 
