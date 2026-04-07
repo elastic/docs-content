@@ -248,6 +248,7 @@ Scanning can take longer for directories containing a lot of files.
 ### `runscript` [runscript]
 
 ::::{note}
+:applies_to: stack: ga 9.0-9.3
 This response action is supported only for hosts enrolled in [third-party endpoint protection systems](/solutions/security/endpoint-response-actions/third-party-response-actions.md).
 ::::
 
@@ -317,6 +318,27 @@ For SentinelOne, you must include the following parameter to identify the script
 You can also use this optional parameter:
 
 * `--inputParams`: Additional command-line arguments passed to the script to customize its execution.
+
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Example: `runscript --script="copy.sh" --inputParams="~/logs/log.txt /tmp/log.backup.txt"`
+
+#### {{elastic-defend}} [runscript-defend]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+For {{elastic-defend}}, you must include the following parameter to identify the script you want to run:
+
+* `--script`: The name of the script to run. Select from a list of scripts available for the host's OS type. You can manage these scripts in the [script library](/solutions/security/endpoint-response-actions/script-library.md).
+
+You can also use these optional parameters:
+
+* `--inputParams`: Additional command-line arguments passed to the script to customize its execution.
+* `--timeout`: The maximum duration that the host should wait for the script to complete. Use `h` for hours, `m` for minutes, or `s` for seconds (for example, `37m`). If no timeout is specified, it defaults to four hours.
 
 Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
 
