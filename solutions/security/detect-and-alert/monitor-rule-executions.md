@@ -72,7 +72,6 @@ To learn how to find and fill gaps, refer to [Fill rule execution gaps](/solutio
 
 From the **Execution results** tab on a rule's details page, you can review how each run performed, monitor gaps, and check manual runs. To find this tab, select the rule's name to open its details, then scroll down.
 
-Select the tab for your deployment. **{{stack}}** **9.4** and later and **{{ecloud}} Serverless** use the first tab. **{{stack}}** **9.3** and earlier use the second tab.
 
 ::::{applies-switch}
 
