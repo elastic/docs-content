@@ -95,6 +95,12 @@ The following Discover flyout links do not work correctly for documents from lin
 
 These issues will be resolved when {{cps-init}} is enabled in APM and Infrastructure.
 
+### No default data views in origin projects [obs-cps-no-data-views]
+
+In a {{cps-init}} origin project, Discover may show no data even when linked projects contain data due to missing data views in the origin project.
+
+Tracking: [kibana#260930](https://github.com/elastic/kibana/issues/260930)
+
 ### {{observability}} overview alerts are origin only [obs-cps-overview-alerts]
 
 The **Alerts** section on the {{observability}} overview page shows alerts from the origin project only, even when rules are configured to act on cross-project data.
