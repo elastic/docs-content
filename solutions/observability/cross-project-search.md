@@ -32,7 +32,7 @@ The following table shows how each {{observability}} app behaves with {{cps-init
 
 The **{{cps-init}} scope** selector ({icon}`cross_project_search`) in the project header for platform apps like Discover, Dashboards, and Lens, lets you search **This project** or **All projects**.
 
-In {{observability}} apps, the scope selector is not available. This means:
+In {{observability}}-specific apps, the scope selector is not available. This means:
 
 * {{observability}} apps operate in their default scope, which varies by app (refer to [{{observability}} app compatibility](#obs-cps-compatability)).
 * The scope you select in platform apps like Discover does not carry over to {{observability}} apps.
@@ -42,7 +42,7 @@ For apps where the scope selector is available, refer to [Managing {{cps}} scope
 
 ## Navigating between Discover and {{observability}} apps [obs-cps-discover-navigation]
 
-When {{cps-init}} is enabled, Discover shows documents from all linked projects by default. {{observability}} apps may not have the same scope, which can lead to differences when navigating between them.
+When {{cps-init}} is enabled, Discover shows documents from all linked projects by default, unless the space-level default scope has been changed. {{observability}} apps may not have the same scope, which can lead to differences when navigating between them.
 
 % DOCS NOTE — CONDITIONAL: Include the following subsection only if APM/Infra CPS work (observability-dev#5328, observability-dev#5374) has NOT shipped. Remove it when that work lands.
 
