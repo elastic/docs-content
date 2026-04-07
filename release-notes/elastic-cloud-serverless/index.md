@@ -17,7 +17,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds workflow steps for cases, including adding alerts, events, observables, and tags, assigning and unassigning cases, setting properties, finding similar cases, and updating or deleting cases [#256922]({{kib-pull}}256922)
 * Adds an **Export JSON** option to the **Export** menu in Dashboards that shows an API-capable JSON export in a flyout, with a button to open the request in the console for direct API testing [#255382]({{kib-pull}}255382)
 * Enables dragging collapsible sections by their entire header in Dashboards, and allows clicking the header to expand or collapse the section [#258502]({{kib-pull}}258502)
-* Enables monospace numeric font rendering for Lens charts, including axis labels, legend values, data labels, and tooltips [#251576]({{kib-pull}}251576)
+* Enables the monospaced numeric font rendering for Lens charts, including axis labels, legend values, data labels, and tooltips [#251576]({{kib-pull}}251576)
 * Adds a toggle to Discover that lets you hide the main data table [#259083]({{kib-pull}}259083)
 * Moves the inspector menu item to the tab menu in Discover [#258767]({{kib-pull}}258767)
 * Adds a button for saving a Discover table to a Dashboard [#259626]({{kib-pull}}259626)
