@@ -61,7 +61,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   If cells are too small to read, reduce the number of buckets or use a larger time interval on your axes.
 
 **Order categories meaningfully**
-:   For categorical axes, order values logically (alphabetically, by frequency, or by a natural ordering like days of the week).
+:   For categorical axes, order values logically (alphabetically, by frequency, or by a natural ordering like days of the week). Use the **Sort order** [style setting](#appearance-options) to control how axis values are sorted.
 
 Refer to [Heat map chart settings](#heat-map-chart-settings) to find all configuration options for your heat map chart.
 :::::
@@ -177,6 +177,12 @@ When creating or editing a visualization, you can customize several appearance o
 **Tick labels**
 :   Toggle whether to show or hide the tick labels on the vertical axis.
 
+**Sort order** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`
+:   Control the sort order of the vertical axis values:
+    - **Unsorted**: Use the default sort order (default).
+    - **Ascending**: Sort values in ascending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
+    - **Descending**: Sort values in descending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
+
 **Horizontal axis**
 
 **Axis title**
@@ -184,6 +190,12 @@ When creating or editing a visualization, you can customize several appearance o
 
 **Tick labels**
 :   Toggle whether to show or hide the tick labels on the horizontal axis.
+
+**Sort order** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`
+:   Control the sort order of the horizontal axis values. Not available for time-based horizontal axes.
+    - **Unsorted**: Use the default sort order (default).
+    - **Ascending**: Sort values in ascending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
+    - **Descending**: Sort values in descending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
 
 **Orientation**
 :   Control the orientation of horizontal axis tick labels. Only available when **Tick labels** is enabled.
