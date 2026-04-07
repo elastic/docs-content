@@ -12,7 +12,7 @@ description: Learn how cross-project search (CPS) works in Elastic Observability
 
 [{{cps-cap}} ({{cps-init}})](/explore-analyze/cross-project-search.md) lets you run a single search request across multiple {{serverless-short}} projects. When your observability data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all that data from a single origin project without searching each project individually.
 
-When projects are linked, platform apps like Discover and Dashboards automatically include data from all linked projects. {{observability}} apps have varying levels of {{cps-init}} support. Some apps show cross-project data automatically; others remain scoped to the origin project.
+When projects are linked, platform apps like Discover and Dashboards automatically include data from all linked projects. {{observability}} apps have varying levels of {{cps-init}} support. Some apps show cross-project data automatically; others remain scoped to the origin project. {{cps-cap}} is unavailable for Logs Essentials projects.
 
 For full details on {{cps-init}} concepts, configuration, and search syntax, refer to:
 
@@ -118,10 +118,6 @@ These issues will be resolved when {{cps-init}} is enabled in APM and Infrastruc
 ### {{observability}} overview alerts are origin only [obs-cps-overview-alerts]
 
 The **Alerts** section on the {{observability}} overview page shows alerts from the origin project only, even when rules are configured to act on cross-project data.
-
-### Logs Essentials projects cannot use {{cps-init}} [obs-cps-logs-essentials]
-
-{{cps-init}} is unavailable for Logs Essentials projects.
 
 ### Synthetics is not affected by {{cps-init}} [obs-cps-synthetics]
 
