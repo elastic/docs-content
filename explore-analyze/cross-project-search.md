@@ -182,7 +182,7 @@ For administrator-focused details including compatibility, architecture patterns
 
 ### Observability app limitations
 
-{{observability}} apps have limited {{cps-init}} support and several known issues exist. For specific app details and a full list of known issues, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md#obs-cps-known-issues).
+{{observability}}-specific apps have limited {{cps-init}} support. The scope selector is not available and they remain scoped to the local project. This does not apply to shared apps such as Discover and dashboards.
 
 ## {{cps-cap}} examples [cps-examples]
 
