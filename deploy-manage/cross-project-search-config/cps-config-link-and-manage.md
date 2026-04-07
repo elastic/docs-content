@@ -11,7 +11,7 @@ navigation_title: "Link and manage projects"
 
 This page explains how to link {{serverless-full}} projects for {{cps}} ({{cps-init}}), manage your linked projects, and unlink projects you no longer need to search across.
 
-For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cross-project-search-config.md). For information about _using_ {{cps-init}}, refer to [](/explore-analyze/cross-project-search.md).
+For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cross-project-search-config.md). For information about using {{cps-init}}, refer to [](/explore-analyze/cross-project-search.md).
 
 ## Before you begin
 

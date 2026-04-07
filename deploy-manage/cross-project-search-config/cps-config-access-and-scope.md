@@ -9,9 +9,9 @@ navigation_title: "Access and scope"
 
 # Manage access and scope for {{cps}} [cps-access-and-scope]
 
-This page explains how user permissions and scope affect {{cps}} ({{cps-init}}) behavior. 
+This page explains how user permissions and scope affect [{{cps}}](/deploy-manage/cross-project-search-config.md) ({{cps-init}}) behavior, and how to set a default scope at the space level.
 
-For more details about {{cps-init}} configuration, refer to [](/deploy-manage/cross-project-search-config.md). For information about _using_ {{cps-init}}, refer to [](/explore-analyze/cross-project-search.md).
+For details about how {{cps-init}} scope works in {{kib}}, refer to [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
 
 ## Manage user and API key access
 
@@ -51,7 +51,7 @@ Users can also set the scope at the query level, using [qualified search express
 By default, an unqualified search from an origin project targets the searchable resources in **all** linked projects, plus the searchable resources in the origin project. This default scope is intentionally broad, to provide the best user experience for searching across linked projects. 
 
 :::{important}
-The system default {{cps-init}} scope can cause unexpected behavior, especially for alerts and dashboards that operate on the new combined dataset of the origin and all linked projects. To limit this behavior, set the [default {{cps-init}} scope for each space](#cps-default-search-scope), _before_ you link projects.
+The system-level default {{cps-init}} scope can cause unexpected behavior, especially for alerts and dashboards that operate on the new combined dataset of the origin and all linked projects. To limit this behavior, set the [default {{cps-init}} scope for each space](#cps-default-search-scope), _before_ you link projects.
 :::
 
 The following actions change the scope of {{cps}}es:
@@ -68,7 +68,7 @@ The scope controls which projects receive the search request, while [querying an
 
 ### Set the default {{cps-init}} scope for a space [cps-default-search-scope]
 
-You can adjust the {{cps-init}} system default by setting a narrower {{cps}} scope for each space. This setting determines the default search scope for the space. Users can override both the system default and the space-level default by setting their preferred scope when searching, filtering, or running queries. 
+You can adjust the {{cps-init}} system-level default scope by setting a narrower {{cps}} scope for each space. This setting determines the default search scope for the space. Users can override both the system-level default and the space-level default by setting their preferred scope when searching, filtering, or running queries. 
 
 :::{tip}
 For best results, set the default {{cps-init}} scope for each space **before** you link projects.
