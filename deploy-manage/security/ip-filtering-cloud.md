@@ -36,6 +36,16 @@ To learn how to create IP filters for {{ece}} deployments, refer to [](ip-filter
 To learn how to create IP filters for self-managed clusters or {{eck}} deployments, refer to [](ip-filtering-basic.md).
 :::
 
+## Requirements
+```{applies_to}
+serverless:
+```
+
+:::{include} _snippets/network-sec-tier-reqs.md
+:::
+
+There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
+
 ## Apply an IP filter to a deployment or project
 
 To apply an IP filter to a deployment or project, you must first create an IP filter policy (referred to as "IP filter") at the organization or platform level, and then apply it to your deployment.

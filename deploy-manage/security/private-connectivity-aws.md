@@ -31,6 +31,16 @@ To learn how private connection policies impact your deployment or project, refe
 {{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
 :::
 
+## Requirements
+```{applies_to}
+serverless:
+```
+
+:::{include} _snippets/network-sec-tier-reqs.md
+:::
+
+There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
+
 ## Considerations
 
 Before you begin, review  the following considerations:

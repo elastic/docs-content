@@ -12,6 +12,8 @@ products:
   - id: cloud-enterprise
   - id: cloud-serverless
 navigation_title: Through the API
+sub:
+  policy-type: "network security"
 ---
 
 # Manage network security through the API
@@ -44,6 +46,16 @@ Refer to [](network-security.md) to learn more about network security across all
 :::{tip}
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{ecloud}} API.
 :::
+
+## Requirements
+```{applies_to}
+serverless:
+```
+
+:::{include} _snippets/network-sec-tier-reqs.md
+:::
+
+There are no specific requirements for {{es-serverless}} projects, {{ech}} deployments, or {{ece}} deployments.
 
 ## API reference
 

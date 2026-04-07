@@ -12,6 +12,13 @@ products:
 
 Private connectivity is a secure way for your {{ecloud}} deployments and projects to communicate with other cloud provider services over your cloud provider's private network. You can create a virtual private connection (VPC) using your provider's private link service, and then manage it in {{ecloud}} using a private connection policy. You can also optionally filter traffic to your deployments and projects by creating ingress filters for your VPC in {{ecloud}}.
 
+:::{note}
+{{serverless-short}} Observability and Security projects must belong to a specific feature tier to apply private connection policies:
+
+* Observability: [Observability Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#observability-complete) 
+* Security: [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#security-analytics-complete) 
+:::
+
 :::{tip}
 Private connection policies are a type of [network security policy](/deploy-manage/security/network-security-policies.md).
 :::

@@ -41,6 +41,8 @@ The following table compares features available in each feature tier:
 | **[Entity analytics / UEBA](/solutions/security/advanced-entity-analytics.md)** | ✅ | ❌ | ❌ |
 | **Extended security content** | ✅ | ❌ | ❌ |
 | **Threat intelligence management** | ✅ | ❌ | ❌ |
+| **[Private connectivity](/deploy-manage/security/private-connectivity.md)** | ✅ | ❌ | ❌ |
+| **[IP filtering](/deploy-manage/security/ip-filtering.md)** | ✅ | ❌ | ❌ |
 
 
 ## Add-on options
