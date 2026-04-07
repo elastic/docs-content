@@ -12,7 +12,9 @@ products:
 To query a downsampled index, use the [`_query`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-query) endpoint. [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [`_async_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoints are also supported but not optimized for time series processing.
 
 ## {{esql}} `TS` command
-{applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.4`
+```{applies_to}
+stack: preview =9.2, ga 9.4+
+```
 
 You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for processing time series data efficiently and enables the use of time series [aggregation functions](elasticsearch://reference/query-languages/esql/functions-operators/time-series-aggregation-functions.md) with window support.
 
