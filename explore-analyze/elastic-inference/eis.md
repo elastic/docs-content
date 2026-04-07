@@ -94,7 +94,7 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 
 ## Pricing
 
-All models on EIS incur a charge per million tokens. The pricing details are available on our [Pricing page](https://www.elastic.co/pricing/serverless-search).
+All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://www.elastic.co/pricing/serverless-search).
 
 This pricing model differs from the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models), which is billed through VCUs consumed.
 
