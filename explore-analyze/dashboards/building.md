@@ -20,6 +20,10 @@ You can:
 * Add text, images, and links to help viewers make the most of your dashboard
 * Include additional controls to facilitate filtering and browsing the data
 
+::::{tip}
+{applies_to}`serverless:` {applies_to}`stack: ga 9.4+` You can also browse and manage saved visualizations and annotation groups directly from the **Dashboards** listing page, without needing a separate app. Refer to [Dashboards listing tabs](managing.md#dashboard-listing-tabs) for details.
+::::
+
 ## Requirements [dashboard-minimum-requirements]
 
 To create or edit dashboards, you need:

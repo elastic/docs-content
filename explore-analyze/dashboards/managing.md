@@ -14,6 +14,19 @@ products:
 Manage your collection of dashboards in {{product.kibana}} using search, filtering, and organization features that help you quickly find and track the dashboards you need. Whether you're working with a few dashboards or hundreds, these management tools help you stay organized and monitor dashboard usage across your team.
 
 
+## Dashboards listing tabs [dashboard-listing-tabs]
+
+{applies_to}`serverless:` {applies_to}`stack: ga 9.4+`
+
+The **Dashboards** page includes multiple tabs that let you browse and manage different types of saved content from one place:
+
+* **Dashboards**: View, search, and manage your dashboards. This is the default tab.
+* **Visualizations**: Browse saved visualizations from the [Visualize Library](../visualize/visualize-library.md), or create new ones. When you select **Create visualization**, the Lens editor opens.
+* **Annotation groups**: Browse saved annotation groups, or create new ones. Annotation groups let you mark events such as deployments on time series visualizations, and reuse them across multiple panels. Refer to [Annotations](../visualize/lens.md#add-annotations) for more information.
+
+From the **Visualizations** and **Annotation groups** tabs you can also search, filter by tags, and delete saved items.
+
+
 ## Browse dashboards [find-dashboards]
 
 When looking for specific dashboards to open or share, several actions are available to you to help you find them quicker.

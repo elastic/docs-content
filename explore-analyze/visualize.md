@@ -12,6 +12,8 @@ products:
 
 {{kib}} provides many options to create panels with visualizations of your data and add content to your dashboards. From advanced charts, maps, and metrics to plain text and images, multiple types of panels with different capabilities are available.
 
+{applies_to}`serverless:` {applies_to}`stack: ga 9.4+` You can browse and manage saved visualizations and annotation groups directly from the **Dashboards** listing page using the **Visualizations** and **Annotation groups** tabs. Refer to [Dashboards listing tabs](dashboards/managing.md#dashboard-listing-tabs) for details.
+
 Use one of the editors to create visualizations of your data. Each editor offers various capabilities.
 
 $$$panels-editors$$$

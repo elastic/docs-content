@@ -27,6 +27,9 @@ Before creating a dashboard, ensure you have:
 ## Create a new dashboard [create-dashboard-steps]
 
 1. Open the **Dashboards** page in {{product.kibana}}.
+
+    {applies_to}`serverless:` {applies_to}`stack: ga 9.4+` The **Dashboards** page includes tabs for **Dashboards**, **Visualizations**, and **Annotation groups**. Make sure the **Dashboards** tab is selected.
+
 2. Select **Create dashboard** to start with an empty dashboard.
 
     When you create a dashboard, you are automatically in edit mode and can make changes to the dashboard.
