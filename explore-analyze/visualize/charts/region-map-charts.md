@@ -83,7 +83,7 @@ The **Region key** dimension defines which geographic areas to display on the ma
 
     - **Top values**: Display the regions with the highest metric values.
       - **Field**: Select the field containing geographic identifiers to group by.
-      - **Number of values**: How many regions to display.
+      - **Number of values**: How many regions to display. Defaults to 9 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
