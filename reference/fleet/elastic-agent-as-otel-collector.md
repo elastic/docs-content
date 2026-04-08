@@ -131,6 +131,7 @@ service:
 ## OpenTelemetry integrations [otel-integrations]
 
 ```{applies_to}
+serverless: preview
 stack: preview 9.2+
 ```
 
