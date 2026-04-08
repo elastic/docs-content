@@ -20,6 +20,10 @@ Agent Builder integrates tightly with {{observability}}, shipping with built-in 
 To use Agent Builder in {{observability}}, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 :::
 
+## Recommended models
+
+While Agent Builder works with any [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), model performance varies. Refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) to select a model that performs well for your intended use cases.
+
 ## Observability agent
 
 Agent Builder features a built-in [Observability agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) designed to assist with infrastructure monitoring and application performance troubleshooting.
