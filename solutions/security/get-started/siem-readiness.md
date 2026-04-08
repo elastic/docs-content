@@ -50,7 +50,13 @@ You can switch between two views:
 
 #### Data coverage [siem-readiness-data-coverage]
 
-The **Coverage** tab's **Data coverage** table shows which log categories are sending data to {{elastic-sec}} and which aren't. 
+The **Coverage** tab's **Data coverage** table shows which log categories are sending data to {{elastic-sec}} and which aren't. SIEM Readiness organizes data sources into five categories:
+
+- **Endpoint**: Data from hosts and devices, such as process activity, file events, and OS-level telemetry.
+- **Cloud**: Data from cloud service providers, including audit logs, resource inventories, and configuration events.
+- **Network**: Data from network devices and traffic, such as firewall logs, DNS queries, and flow records.
+- **Identity**: Data from identity providers and authentication systems, such as login events, directory changes, and access management logs.
+- **Application/SaaS**: Data from business applications and SaaS platforms, such as email, productivity suites, and collaboration tools.
 
 Each category displays a coverage status (**Has data** or **Missing data**) and links to view related integrations. If a category has missing data, you can click **View integrations** to review integrations that can help close the gap.
 
@@ -63,7 +69,7 @@ Each category displays a coverage status (**Has data** or **Missing data**) and 
 
 The Quality pillar answers: *Is your data ECS-compatible?* Schema errors can prevent rules, dashboards, and other features from working correctly.
 
-It checks your indices for [Elastic Common Schema (ECS)](ecs://reference/ecs-event.md) compatibility issues and missing fields. It groups indices by data category (such as Endpoint, Identity, Network, and Cloud), and each category shows:
+It checks your indices for [Elastic Common Schema (ECS)](ecs://reference/ecs-event.md) compatibility issues and missing fields. It groups indices by data category (Endpoint, Cloud, Network, Identity, and Application/SaaS), and each category shows:
 
 - **Status**: **Healthy** or **Actions required**
 - **Incompatible fields**: The number of fields with mapping issues
@@ -89,6 +95,10 @@ It tracks ingest pipeline failure rates across your log categories. Each categor
 
 Expand a category to see individual pipelines with counts of their total ingested documents and failed documents, as well as their failure rates and status. Click **View failures** to investigate failing pipelines.
 
+:::{note}
+{applies_to}`serverless: beta` Statistics for ingested documents and failure rates aren't currently available. The Continuity pillar displays pipeline information, but without document count or failure rate metrics.
+:::
+
 :::{image} /solutions/images/security-siem-readiness-5-continuity.png
 :alt: The SIEM Readiness page's Continuity tab
 :screenshot:
@@ -104,6 +114,10 @@ It checks whether your indices comply with retention best practices based on Fed
 - **Data streams**: The number of data streams and indices in the category
 
 Expand a category to view individual indices with their current retention periods, the recommended baseline retention, and compliance status. Click **View ILM policies** to open the relevant index lifecycle management policy and update the retention period.
+
+:::{note}
+{applies_to}`serverless: beta` Index lifecycle management (ILM) policies aren't available. Retention is managed through data stream lifecycle (DSL) instead, and the Retention pillar displays DSL-based retention information rather than ILM policies.
+:::
 
 :::{image} /solutions/images/security-siem-readiness-6-retention.png
 :alt: The SIEM Readiness page's Continuity tab
