@@ -358,7 +358,7 @@ To manage and organize your tabs, you can:
   :::
 - Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs menu** icon located at the end of the tab bar.
 
-To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
+To keep all your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 
 ### Inspect your Discover queries
 
