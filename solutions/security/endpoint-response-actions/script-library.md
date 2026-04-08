@@ -35,22 +35,27 @@ To access the script library, find **Script library** in the navigation menu or 
         ::::
 
     * **File type**: Select the type of uploaded file — **Script file** or **Archive**. If you select **Archive**, you must also provide the **Path to executable file**, which is the relative path to the main script inside the archive (for example, `./scripts/cleanup_logs.sh`).
-    * **Name**: A display name for the script.
-    * **Operating systems**: The platforms the script supports (Linux, macOS, Windows). Select at least one.
+    * **Name**: Enter a display name for the script.
+    * **Operating systems**: Select the platforms the script supports (Linux, macOS, Windows). You can select more than one platform.
 
     **Optional fields:**
 
     * **This script requires user input**: Select this option if the script prompts for or requires additional input parameters when executed.
-    * **Categories**: Classify the script using one or more predefined categories, such as Data Collection, Remediation Action, System Inventory, or Forensic Collection.
-    * **Description**: A brief summary of what the script does.
-    * **Instructions**: Step-by-step guidance on how to run or configure the script.
-    * **Examples**: Example usage of the script.
+    * **Categories**: Classify the script using one or more predefined categories, such as Data Collection, Remediation Action, or System Inventory.
+    * **Description**: Enter a brief summary of what the script does.
+    * **Instructions**: Provide step-by-step guidance on how to run or configure the script.
+    * **Examples**: Provide one or more examples of how to use the script.
 
 3. Click **Upload**.
 
 ## View and manage scripts [manage-scripts]
 
 The **Script Library** page displays all uploaded scripts. You can search by name or SHA256 hash, and filter by **File type**, **Operating systems**, or **Categories**.
+
+:::{image} /solutions/images/security-script-library.png
+:alt: Script library showing a list of uploaded scripts
+:screenshot:
+:::
 
 ### View script details [view-script-details]
 
