@@ -49,7 +49,7 @@ By default, your most recently viewed dashboards are displayed first. You can in
 
 ## Browse saved visualizations and annotation groups [find-visualizations-annotation-groups]
 
-To browse your saved visualizations and annotation groups, open the [Visualize Library](../visualize/visualize-library.md). Select **Visualize** from the main navigation, or search for "Visualize" in the {{kib}} search bar, to open it.
+To browse your saved visualizations and annotation groups, open the [Visualize Library](../visualize/visualize-library.md). Find **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}

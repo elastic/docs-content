@@ -18,7 +18,7 @@ The **Visualize Library** is a space where you can save visualization panels tha
 
 ## Access the Visualize Library [visualize-library-access]
 
-Select **Visualize** from the main navigation, or search for "Visualize" in the {{kib}} search bar, to open the Visualize Library.
+Find **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}

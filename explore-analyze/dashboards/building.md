@@ -34,7 +34,7 @@ To create or edit dashboards, you need:
 
 ## Manage saved visualizations and annotation groups [dashboard-manage-library]
 
-Saved visualizations and annotation groups are managed through the [Visualize Library](../visualize/visualize-library.md). Select **Visualize** from the main navigation, or search for "Visualize" in the {{kib}} search bar, to access it.
+Saved visualizations and annotation groups are managed through the [Visualize Library](../visualize/visualize-library.md). Find **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
