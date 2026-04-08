@@ -8,12 +8,12 @@ description: Learn how to use project routing to limit cross-project search (CPS
 navigation_title: "Project routing"
 ---
 
-# Using project routing to limit search scope [cps-project-routing]
+# Using project routing to limit {{cps}} scope [cps-project-routing]
 
 Project routing enables you to limit a search to a subset of projects, including the origin project and linked projects, based on tag values.
 
 When you use project routing, the routing decision is made before the search request is performed.
-Based on the specified tags, {{cps-init}} determines which projects the query is sent to, and the search is performed only on those projects.
+Based on the specified tags, {{cps}} determines which projects the query is sent to, and the search is performed only on those projects.
 
 For an overview of {{cps}} concepts, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md). For details on available tags, refer to [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
