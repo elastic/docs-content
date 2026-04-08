@@ -15,26 +15,14 @@ products:
 
 # Triage Attack Discovery findings [triage-attack-discovery-findings]
 
-Learn how to systematically assess open Attack Discovery findings, determine which ones warrant a case, and process them. Following a repeatable triage workflow helps you focus on genuine threats, reduce alert fatigue, and lower your mean time to respond.
+Learn how to systematically assess open Attack Discovery findings, determine which ones warrant a case, and process them. Following a repeatable triage workflow helps you focus on genuine threats, reduce alert fatigue, and shorten your mean time to respond.
 
 Each Attack Discovery finding groups related alerts into a single attack narrative. Rather than investigating each alert individually, you assess the attack as a unit—evaluating confidence based on alert diversity, detection rule quality, and entity risk context—then decide whether to create a case, investigate further, or acknowledge and move on.
 
-:::{note}
-An [agent skill](https://github.com/elastic/agent-skills-sandbox/tree/main/skills/security/attack-discovery-triage) exists specifically for automating this triage workflow. When loaded into a compatible AI agent, it retrieves open findings, scores confidence programmatically using the same methodology described on this page, and presents a triage summary for your approval before creating cases or acknowledging alerts.
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills@security-attack-discovery-triage
 
-**Advantages of the agent skill:**
-
-- Processes findings in bulk rather than one at a time.
-- Applies the confidence scoring heuristics consistently without manual lookups.
-- Runs all enrichment queries (entity risk, rule frequency, alert context) automatically.
-
-**Trade-offs to consider:**
-
-- The skill requires the [agent-skills-sandbox](https://github.com/elastic/agent-skills-sandbox) repository, Node.js 18+, and API keys with appropriate permissions.
-- Confidence scoring uses fixed heuristics. Manual triage lets you apply institutional knowledge that the skill can't account for, such as knowing that a specific host is a honeypot or that a particular rule was recently tuned.
-- Write operations (case creation, alert acknowledgment) still require your explicit approval, but you have less granular control over how findings are enriched and summarized.
-
-Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
+This skill automates the triage workflow described on this page, scoring confidence programmatically and presenting a summary for your approval before creating cases or acknowledging alerts. For details, refer to [Automate triage with an agent skill](#automate-triage-agent-skill).
 :::
 
 ## Before you begin [before-you-begin]
@@ -54,8 +42,8 @@ For richer triage context, enable [entity analytics](/solutions/security/advance
 Start by retrieving all open findings and prioritizing them by risk score. This gives you a ranked list of potential attacks to work through, starting with the most critical.
 
 :::::{tab-set}
-::::{tab-item} UI
-:sync: ui
+::::{tab-item} Attack Discovery UI
+:sync: attack-discovery-ui
 
 1. Go to **Attack Discovery** from the {{elastic-sec}} navigation menu.
 2. Use the **Status** filter to show only **Open** findings.
@@ -69,10 +57,10 @@ For each finding, note the following key signals:
 - **Entities**: Which users and hosts are involved.
 
 ::::
-::::{tab-item} ES|QL
+::::{tab-item} Discover with ES|QL queries
 :sync: esql
 
-Run the following ES|QL query in [**Discover**](/explore-analyze/query-filter/languages/esql-kibana.md) to retrieve open findings from both scheduled and on-demand discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
+You can run ES|QL queries in multiple ways, including from [**Discover**](/explore-analyze/query-filter/languages/esql-kibana.md). The following query retrieves open findings from both scheduled and on-demand discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
 
 ```esql
 FROM .alerts-security.attack.discovery.alerts-default, .adhoc.alerts-security.attack.discovery.alerts-default METADATA _id
@@ -92,20 +80,22 @@ FROM .alerts-security.attack.discovery.alerts-default, .adhoc.alerts-security.at
 If one index doesn't exist yet (for example, no scheduled discoveries have been generated), ES|QL returns an error. In that case, query each index separately and combine the results.
 
 ::::
-::::{tab-item} API
+::::{tab-item} Attack Discovery API
 :sync: api
 
-Use the Attack Discovery Find API to retrieve open findings sorted by risk score:
+Use the Attack Discovery Find API to retrieve open findings. Results are sorted by `@timestamp` (most recent first) by default:
 
 ```bash
-GET /api/attack_discovery/_find?status=open&sort_field=risk_score&sort_order=desc&with_replacements=true&per_page=50
+GET /api/attack_discovery/_find?status=open&start=now-24h&end=now&with_replacements=true&per_page=50
 ```
 
 If you're using a non-default {{kib}} space, prefix the path with `/s/{space_id}`:
 
 ```bash
-GET /s/my-space/api/attack_discovery/_find?status=open&sort_field=risk_score&sort_order=desc&with_replacements=true&per_page=50
+GET /s/my-space/api/attack_discovery/_find?status=open&start=now-24h&end=now&with_replacements=true&per_page=50
 ```
+
+Review the returned findings and prioritize by `risk_score` in the response.
 
 ::::
 :::::
@@ -193,13 +183,13 @@ The following subsections explain how to gather each signal.
 ### Check entity risk context [check-entity-risk]
 
 :::::{tab-set}
-::::{tab-item} UI
-:sync: ui
+::::{tab-item} Attack Discovery UI
+:sync: attack-discovery-ui
 
 Click an entity's name in the finding to open the entity details flyout. Review the entity's risk score, asset criticality, and recent activity. Repeat for each user and host mentioned in the finding.
 
 ::::
-::::{tab-item} ES|QL
+::::{tab-item} Discover with ES|QL queries
 :sync: esql
 
 Query the risk score index for the entities mentioned in the discovery. Replace the entity names with the actual hostnames or usernames from the finding:
@@ -212,6 +202,8 @@ FROM risk-score.risk-score-latest-default
        host.risk.calculated_score_norm, user.risk.calculated_score_norm
 ```
 
+Each risk score document represents a single entity type, so host columns are null for user rows and vice versa.
+
 ::::
 :::::
 
@@ -222,8 +214,8 @@ If entity analytics isn't enabled, skip this signal and rely more heavily on ale
 ### Review associated alerts and rules [review-alerts-rules]
 
 :::::{tab-set}
-::::{tab-item} UI
-:sync: ui
+::::{tab-item} Attack Discovery UI
+:sync: attack-discovery-ui
 
 Expand the finding to view its associated alerts. For each alert, note:
 
@@ -234,7 +226,7 @@ Expand the finding to view its associated alerts. For each alert, note:
 Use the **Status** filter on the **Alerts** page to check how often these rules fire in your environment.
 
 ::::
-::::{tab-item} ES|QL
+::::{tab-item} Discover with ES|QL queries
 :sync: esql
 
 Query the security alerts index using the alert IDs from the discovery. Replace the alert IDs with the actual values from the finding's `alert_ids` field:
@@ -278,11 +270,44 @@ After assessing confidence for your open findings, take the appropriate action f
 
 ### Create cases for high-confidence findings [create-cases]
 
-For findings you've assessed as high confidence:
+For findings you've assessed as high confidence, create a case and attach the relevant context:
+
+:::::{tab-set}
+::::{tab-item} Attack Discovery UI
+:sync: attack-discovery-ui
 
 1. Click **Take action**, then select **Add to new case** or **Add to existing case**.
 2. Include the discovery's summary and associated alerts in the case description. The LLM-generated narrative provides valuable context for analysts who pick up the case.
 3. Set an appropriate severity on the case based on the finding's risk score and your confidence assessment.
+
+::::
+::::{tab-item} Attack Discovery API
+:sync: api
+
+Use the {{kib}} Cases API to create a case, then attach the discovery's alert IDs:
+
+```bash
+POST /api/cases
+{
+  "title": "AD: <discovery title>",
+  "description": "<discovery summary from the finding>",
+  "owner": "securitySolution",
+  "tags": ["attack-discovery"],
+  "severity": "high",
+  "connector": { "id": "none", "name": "none", "type": ".none", "fields": null }
+}
+```
+
+After creating the case, attach the discovery's alerts to it using the alert IDs from the finding.
+
+::::
+::::{tab-item} Discover with ES|QL queries
+:sync: esql
+
+If you identified findings using ES|QL queries, you can create cases through the Attack Discovery UI or the Cases API. Use the discovery IDs or alert IDs from your query results to locate the findings in the UI, or pass them directly to the API.
+
+::::
+:::::
 
 For more on case management, refer to [Cases](/solutions/security/investigate/security-cases.md).
 
@@ -304,8 +329,8 @@ After investigating, either create a case (if the finding is confirmed) or ackno
 For findings that don't warrant further action:
 
 :::::{tab-set}
-::::{tab-item} UI
-:sync: ui
+::::{tab-item} Attack Discovery UI
+:sync: attack-discovery-ui
 
 - **Individual findings**: Click **Take action**, then select **Mark as acknowledged** or **Mark as closed**.
 - **Bulk actions**: Select the checkboxes next to multiple findings, click **Selected *x* Attack discoveries**, and choose the status change.
@@ -313,7 +338,7 @@ For findings that don't warrant further action:
 When you change a finding's status, you can choose to change the status of only the discovery, or of both the discovery and its associated alerts.
 
 ::::
-::::{tab-item} API
+::::{tab-item} Attack Discovery API
 :sync: api
 
 Use the bulk API to update the status of multiple findings at once. Replace the discovery IDs with the actual `_id` values from Step 1:
@@ -321,9 +346,9 @@ Use the bulk API to update the status of multiple findings at once. Replace the 
 ```bash
 POST /api/attack_discovery/_bulk
 {
-  "ids": ["discovery-id-1", "discovery-id-2", "discovery-id-3"],
-  "action": {
-    "workflow_status": "acknowledged"
+  "update": {
+    "ids": ["discovery-id-1", "discovery-id-2", "discovery-id-3"],
+    "kibana_alert_workflow_status": "acknowledged"
   }
 }
 ```
@@ -337,4 +362,23 @@ POST /api/attack_discovery/_bulk
 - Set up [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) for richer triage context.
 - Learn about [case management workflows](/solutions/security/investigate/security-cases.md) to standardize how your team tracks confirmed threats.
 - Use [AI Assistant](/solutions/security/ai/ai-assistant.md) for follow-up investigation and deeper analysis of individual findings.
+
+:::{dropdown} Automate triage with an agent skill [automate-triage-agent-skill]
+
+An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/security/attack-discovery-triage) is available that automates the triage workflow described on this page. When loaded into a compatible AI agent, it retrieves open findings, scores confidence using the same methodology, and presents a triage summary for your approval before taking action.
+
+**Advantages:**
+
+- Processes findings in bulk rather than one at a time.
+- Applies the confidence scoring heuristics consistently without manual lookups.
+- Runs all enrichment queries (entity risk, rule frequency, alert context) automatically.
+
+**Trade-offs to consider:**
+
+- The skill requires the [agent-skills](https://github.com/elastic/agent-skills) repository, Node.js 18+, and API keys with appropriate permissions.
+- Confidence scoring uses fixed heuristics. Manual triage lets you apply institutional knowledge that the skill can't account for, such as knowing that a specific host is a honeypot or that a particular rule was recently tuned.
+- Write operations (case creation, alert acknowledgment) still require your explicit approval, but you have less granular control over how findings are enriched and summarized.
+
+Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
+:::
 
