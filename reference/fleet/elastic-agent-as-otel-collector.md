@@ -76,18 +76,18 @@ This example shows a {{filebeat}} input configuration and its respective generat
 :alt: Beat input configuration translated into an OTel configuration
 :::
 
-## {{agent}} as a hybrid agent [hybrid-elastic-agent]
+## {{agent}} with multiple data collection methods [elastic-agent-multiple-collection-methods]
 
-The term _hybrid agent_ refers to an {{agent}} that collects data using two methods at the same time:
+{{agent}} can collect data using two methods simultaneously in the same OTel Collector process:
 
 * **{{beats}}-based data collection:** The agent uses Beat inputs or Beat receivers to collect ECS-formatted data.
 * **OTel-native data collection:** The agent uses standard OTel Collector receivers to ingest telemetry data using OTLP, with the data following semantic conventions.
 
-Both methods run inside the same OTel Collector process. This is what makes the agent "hybrid": it combines traditional {{beats}}-based data collection and OTel-native data collection within a single agent instance, rather than requiring separate tools for each. This reduces memory consumption compared to running separate Beat sub-processes alongside a standalone OTel Collector.
+Both methods run inside the same OTel Collector process. This lets you combine traditional {{beats}}-based data collection and OTel-native data collection within a single agent instance, rather than requiring separate tools for each. This reduces memory consumption compared to running separate Beat sub-processes alongside a standalone OTel Collector.
 
 In practice, a single `elastic-agent.yml` can contain both an `inputs` and `outputs` section for {{beats}}-based data collection and `receivers`, `exporters`, and `service.pipelines` sections for OTel-based data collection.
 
-This example shows a hybrid agent configuration that collects system auth logs through a Beat input and monitors an HTTP endpoint through an OTel receiver.
+This example shows an {{agent}} configuration that collects system auth logs through a Beat input and monitors an HTTP endpoint through an OTel receiver.
 
 ```yaml
 inputs:
@@ -139,7 +139,7 @@ The {{integrations}} catalog offers packages that bundle application-specific co
 * **OpenTelemetry input packages** contain the configuration required for the OTel receiver and related pipeline components.
 * **Content packages** contain the corresponding set of assets (dashboards, visualizations, and more) for the application whose data is ingested through the OTel receiver.
 
-The same agent policy can include both ECS-based integrations and OpenTelemetry input packages. When you add an OpenTelemetry input package to your agent policy, it configures the OTel receiver section of the hybrid agent configuration. Once data is ingested into {{es}}, the relevant OTel assets are automatically installed when available.
+The same agent policy can include both ECS-based integrations and OpenTelemetry input packages. When you add an OpenTelemetry input package to your agent policy, it configures the OTel receiver section of the {{agent}} configuration. Once data is ingested into {{es}}, the relevant OTel assets are automatically installed when available.
 
 For more details on OpenTelemetry input packages and their configuration, refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md).
 
@@ -153,20 +153,20 @@ Depending on your environment, you can use {{agent}} (as described on this page)
 
 | Collector | {{fleet}} central monitoring | {{fleet}} central management | Beat receivers | {{ls}} exporter | {{elastic-defend}} | Cloud Security | Profiler |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Hybrid agent ({{fleet}}-managed) | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") |
-| Hybrid agent (standalone) | Planned | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
+| {{agent}} ({{fleet}}-managed) | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") |
+| {{agent}} (standalone) | Planned | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
 | EDOT Collector | Planned | Planned | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
 | Upstream OTel Collector | Planned | Planned | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
 
 *Planned* indicates that support is on the roadmap and not yet generally available.
 
 :::{note}
-A standalone hybrid {{agent}} can enroll into {{fleet}} in the field if an in-place upgrade to {{fleet}}-managed is required. The standalone EDOT Collector does not support enrollment into {{fleet}}.
+A standalone {{agent}} can enroll into {{fleet}} in the field if an in-place upgrade to {{fleet}}-managed is required. The standalone EDOT Collector does not support enrollment into {{fleet}}.
 :::
 
 ## Frequently asked questions [faq]
 
-:::{dropdown} Does the data collected by a hybrid agent go through ingest pipelines?
+:::{dropdown} Does the data collected by {{agent}} go through ingest pipelines?
 
 It depends on which receiver collected the data.
 
@@ -203,9 +203,9 @@ receivers:
 ```
 :::
 
-:::{dropdown} What are the differences between hybrid {{agent}}, EDOT Collector, and a third-party OpenTelemetry Collector?
+:::{dropdown} What are the differences between {{agent}}, the EDOT Collector, and a third-party OpenTelemetry Collector?
 
-The main difference is management support. Hybrid {{agent}} can be managed by {{fleet}}. The EDOT Collector does not support {{fleet}} enrollment or central management. Some features, such as {{elastic-defend}}, are only available under {{fleet}} management and cannot be used with the EDOT Collector alone. Refer to the [collector type comparison](#collector-comparison) table for a full breakdown.
+The main difference is management support. {{agent}} can be managed by {{fleet}} when you use {{fleet}}-managed deployment. The EDOT Collector does not support {{fleet}} enrollment or central management. Some features, such as {{elastic-defend}}, are only available under {{fleet}} management and cannot be used with the EDOT Collector alone. Refer to the [collector type comparison](#collector-comparison) table for a full breakdown.
 :::
 
 :::{dropdown} What is the future of {{agent}} in standalone mode?
@@ -215,7 +215,7 @@ Standalone {{agent}} use cases can now be addressed using the EDOT Collector. A 
 
 :::{dropdown} Can data collected with third-party OTel Collectors trigger the automatic installation of relevant assets?
 
-The automatic asset installation from OTel content packages currently works only for data ingested by an EDOT Collector or a hybrid {{agent}}. Data ingested with a third-party OpenTelemetry Collector does not trigger automatic asset installation.
+The automatic asset installation from OTel content packages currently works only for data ingested by an EDOT Collector or {{agent}}. Data ingested with a third-party OpenTelemetry Collector does not trigger automatic asset installation.
 :::
 
 :::{dropdown} Will there be a separate operating system support matrix?
