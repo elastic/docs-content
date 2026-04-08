@@ -71,7 +71,7 @@ This table compares core identity, access, and platform capabilities between {{e
 | **High availability** | ✅ | ✅ | Automatic resilience |
 | **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering, private connectivity (VPCs, PrivateLink) | Private connectivity for Serverless projects is currently supported in AWS regions only. Requires the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus). |
 | **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | Available across {{ech}} and Serverless using deployment/project and cloud API key types. |
-| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | Only API key-based authentication is supported at the project level. User authentication, including SAML SSO, is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
+| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | {{serverless-short}} does not support {{es}} authentication realms. User authentication is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
 | **Role-based access control** | ✅ | ✅ | In Serverless, RBAC is managed at organization level with optional project custom roles. |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
