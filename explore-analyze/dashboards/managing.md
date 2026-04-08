@@ -47,23 +47,14 @@ The creator information is only available for dashboards created on or after ver
 By default, your most recently viewed dashboards are displayed first. You can instead sort the dashboard list based on their name or their last update date.
 
 
-## Browse visualizations and annotation groups [find-visualizations-annotation-groups]
+## Browse saved visualizations and annotation groups [find-visualizations-annotation-groups]
 
-Open **Visualize** from the main navigation to browse and manage your saved visualizations and annotation groups in the [Visualize Library](../visualize/visualize-library.md).
+To browse your saved visualizations and annotation groups, open the [Visualize Library](../visualize/visualize-library.md). Select **Visualize** from the main navigation, or search for "Visualize" in the {{kib}} search bar, to open it.
 
-### Visualizations and Annotation groups tabs [find-visualizations-tabs]
-
-```{applies_to}
-stack: ga 9.4
-serverless: ga
-```
-
-The **Dashboards** app listing includes dedicated **Visualizations** and **Annotation groups** tabs alongside **Dashboards**:
-
-* **Visualizations**: Lists all saved visualizations. You can create new visualizations, open existing ones in the editor, or add them to dashboards.
-* **Annotation groups**: Lists all saved annotation groups. You can create new groups or reuse existing ones across multiple visualization panels.
-
-These tabs replace the standalone **Visualize** navigation entry in solution UIs (Observability, Security, and other solution experiences). In Elastic Classic, the **Visualize** navigation entry remains available alongside these tabs.
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+The **Dashboards** app listing includes **Visualizations** and **Annotation groups** tabs that give you direct access to the Visualize Library from the Dashboards page. In solution UIs (Observability, Security, and other solution experiences), these tabs replace the standalone **Visualize** navigation entry.
+:::
 
 
 ## Keep track of your favorite dashboards [_keep_track_of_your_favorite_dashboards]

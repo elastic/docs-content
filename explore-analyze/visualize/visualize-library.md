@@ -18,16 +18,12 @@ The **Visualize Library** is a space where you can save visualization panels tha
 
 ## Access the Visualize Library [visualize-library-access]
 
-Open **Visualize** from the main navigation to access the Visualize Library.
+Select **Visualize** from the main navigation, or search for "Visualize" in the {{kib}} search bar, to open the Visualize Library.
 
-### Access in solution UIs [visualize-library-access-solution]
-
-```{applies_to}
-stack: ga 9.4
-serverless: ga
-```
-
-In solution UIs (Observability, Security, and other solution experiences), the standalone **Visualize** navigation entry is not available. Open **Dashboards** from the main navigation instead, then select the **Visualizations** or **Annotation groups** tab to reach the Visualize Library.
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+In solution UIs (Observability, Security, and other solution experiences), the standalone **Visualize** navigation entry is not available. The **Dashboards** app listing includes **Visualizations** and **Annotation groups** tabs that give you direct access to the Visualize Library from the Dashboards page.
+:::
 
 
 ## Visualizations [visualize-library-visualizations]
