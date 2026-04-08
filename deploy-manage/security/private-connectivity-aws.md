@@ -41,13 +41,13 @@ You can opt out by disconnecting all policies from the project.
 
 ## Considerations
 
-Before you begin, review  the following considerations:
+Before you decide to set up private connectivity with AWS PrivateLink, review  the following considerations:
 
 ### Private connections and regions
 
 Private connectivity with AWS PrivateLink is supported only in AWS regions.
 
-AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the ID (e.g. `use1-az4`) of each available AZ for the service.
+AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the [list of AWS regions](#ec-private-link-service-names-aliases) shows the ID (e.g. `use1-az4`) of each available AZ for the service.
 
 Refer to [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-availability-zones) for more details.
 
