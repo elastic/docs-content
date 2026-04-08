@@ -205,7 +205,7 @@ Avoid using the {{esql}} [`SET time_zone`](elasticsearch://reference/query-langu
 
 They're available for:
 * [Discover queries](/explore-analyze/discover/try-esql.md#add-variable-control) {applies_to}`stack: ga 9.2`
-* [{{esql}} visualizations in dashboards](/explore-analyze/dashboards/add-controls.md#add-variable-control)
+* [{{esql}} visualizations in dashboards](/explore-analyze/dashboards/add-variable-controls.md)
 
 :::{include} ../../_snippets/variable-control-procedure.md
 :::
@@ -261,4 +261,4 @@ In the **Starred** tab, find all the queries you have previously starred.
 - [Using {{esql}} in Discover](/explore-analyze/discover/try-esql.md): Hands-on tutorial and Discover-specific features like result tables, visualizations, and lookup indices.
 - [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
-- [Dashboard controls](/explore-analyze/dashboards/add-controls.md): Add {{esql}}-powered controls to dashboards.
+- [Dashboard controls](/explore-analyze/dashboards/add-variable-controls.md): Add {{esql}}-powered variable controls to dashboards.

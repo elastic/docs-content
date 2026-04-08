@@ -309,7 +309,7 @@ applies_to:
 
 #### If the section lifecycle is different than the page level [unversioned-added-different]
 
-For example, on the [Dashboard controls](https://www.elastic.co/docs/explore-analyze/dashboards/add-controls#add-esql-control) page we added content about new ES|QL controls functionality that was added to Serverless in preview.
+For example, on the [Add variable controls with ES|QL](https://www.elastic.co/docs/explore-analyze/dashboards/add-variable-controls) page we added content about new ES|QL controls functionality that was added to Serverless in preview.
 Because this is different than the page-level applicability in the frontmatter, `serverless: ga`,
 label the content about the new functionality with `serverless: preview`.
 

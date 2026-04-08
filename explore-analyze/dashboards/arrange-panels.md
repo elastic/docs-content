@@ -42,7 +42,7 @@ Users viewing the dashboard will find the section in the same state as when you 
 :::{note} 
 :applies_to: stack: ga 9.4
 
-**Filter controls and sections**: Controls placed inside a collapsible section apply their filters only to panels within that section. Controls placed outside sections, or [pinned to the dashboard header](add-controls.md), have global scope and filter all relevant panels on the dashboard. Refer to [Add filter controls](add-controls.md) for more on pinned and unpinned controls.
+**Filter controls and sections**: Controls placed inside a collapsible section apply their filters only to panels within that section. Controls placed outside sections, or [pinned to the dashboard header](dashboard-controls.md), have global scope and filter all relevant panels on the dashboard. Refer to [Dashboard controls](dashboard-controls.md) for more on pinned and unpinned controls.
 :::
 
 ![Collapsible sections](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8c368aecdd095010/685e8fcb9c34ed3c353812a5/collapsible_panels.gif)
