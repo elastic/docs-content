@@ -44,7 +44,6 @@ Elastic provides different [subscription levels](https://www.elastic.co/subscrip
 
 Note the following items before you subscribe:
 
-* You cannot use an email address that already has an {{ecloud}} account. If you want to use the same account email address with AWS Marketplace billing, you must first change the email address on your existing account before setting up your new AWS Marketplace subscription. For instructions on how to change your email address in {{ecloud}}, check [update your email address](../../../cloud-account/update-your-email-address.md).
 * If you want to manage deployments on the existing {{ecloud}} account with your AWS MP billing account, you must migrate your deployments over to the new MP billing account. To migrate, use a [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md) to take a snapshot and then restore that snapshot to a new deployment under your AWS Marketplace account.
 
 
@@ -57,7 +56,7 @@ To subscribe to {{ecloud}} through the AWS Marketplace:
 3. Follow the steps displayed to complete the signup process.
 
     1. Ensure that you have the necessary AWS permissions required to complete a marketplace transaction.
-    2. Create a new {{ecloud}} account. This account is linked to your AWS Marketplace subscription.
+    2. Create a new {{ecloud}} account or log in with an existing account. This account is linked to your AWS Marketplace subscription.
     3. (Optional) Use the {{ecloud}} CloudFormation template to quickly get started with Elastic. The template deploys the {{stack}} in your {{ecloud}} account, and also provisions the {{agent}} on a new EC2 instance in your AWS environment.
     4. Navigate to {{ecloud}} to continue.
 
@@ -91,6 +90,7 @@ If the {{ecloud}} login page displays when coming from the AWS console, then an 
 If you can’t remember which email address you used to sign up to {{ecloud}}, or you need more help, contact `support@elastic.co`.
 
 
+% is this still true?
 ### When I try to configure an account from the AWS console I get an error that an active AWS subscription already exists. [ec-awsmp-account-collision03]
 
 This error occurs when you have already provisioned a marketplace subscription under your AWS user account. Each AWS user account can only subscribe to {{ecloud}} once.
