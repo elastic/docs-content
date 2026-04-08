@@ -30,7 +30,6 @@ Known issues are significant defects or limitations that may impact your impleme
 :subsections:
 :type: known-issue
 :config: /changelog.yml
-:product: security
 :::
 
 :::{dropdown} Details about gap fills aren't properly updated

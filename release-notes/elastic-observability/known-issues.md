@@ -30,7 +30,6 @@ Known issues are significant defects or limitations that may impact your impleme
 :subsections:
 :type: known-issue
 :config: /changelog.yml
-:product: observability
 :::
 ::::{dropdown} Browser monitors with JavaScript template literals fail on private locations
 Applies to: All {{stack}} versions

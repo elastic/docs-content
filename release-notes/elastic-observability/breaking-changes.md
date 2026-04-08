@@ -31,7 +31,6 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 :subsections:
 :type: breaking-change
 :config: /changelog.yml
-:product: observability
 :::
 
 ## 9.0.1 [elastic-observability-9.0.1-breaking-changes]
