@@ -356,16 +356,13 @@ POST /api/attack_discovery/_bulk
 ::::
 :::::
 
-## Next steps [next-steps]
+## Automate triage with an agent skill [automate-triage-agent-skill]
 
-- [Schedule discoveries](/solutions/security/ai/attack-discovery.md#schedule-discoveries) for continuous coverage without manual generation.
-- Set up [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) for richer triage context.
-- Learn about [case management workflows](/solutions/security/investigate/security-cases.md) to standardize how your team tracks confirmed threats.
-- Use [AI Assistant](/solutions/security/ai/ai-assistant.md) for follow-up investigation and deeper analysis of individual findings.
+An agent skill is available that automates the triage workflow described on this page using the same confidence scoring methodology.
 
-:::{dropdown} Automate triage with an agent skill [automate-triage-agent-skill]
+:::{dropdown} Agent skill details
 
-An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/security/attack-discovery-triage) is available that automates the triage workflow described on this page. When loaded into a compatible AI agent, it retrieves open findings, scores confidence using the same methodology, and presents a triage summary for your approval before taking action.
+An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/security/attack-discovery-triage) can be loaded into a compatible AI agent to retrieve open findings, score confidence programmatically, and present a triage summary for your approval before taking action.
 
 **Advantages:**
 
@@ -381,4 +378,11 @@ An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/securi
 
 Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
 :::
+
+## Next steps [next-steps]
+
+- [Schedule discoveries](/solutions/security/ai/attack-discovery.md#schedule-discoveries) for continuous coverage without manual generation.
+- Set up [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) for richer triage context.
+- Learn about [case management workflows](/solutions/security/investigate/security-cases.md) to standardize how your team tracks confirmed threats.
+- Use [AI Assistant](/solutions/security/ai/ai-assistant.md) for follow-up investigation and deeper analysis of individual findings.
 
