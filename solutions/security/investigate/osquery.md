@@ -66,7 +66,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
         ::::
 
 
-        :::{image} /solutions/images/kibana-enter-query.png
+        :::{image} /solutions/images/security-osquery-new-query.png
         :alt: Select saved query dropdown name showing query name and description
         :screenshot:
         :::
