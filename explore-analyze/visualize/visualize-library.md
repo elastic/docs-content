@@ -21,7 +21,7 @@ The **Visualize Library** is a space where you can save visualization panels tha
 Find **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In solution UIs (Observability, Security), the standalone **Visualize** navigation entry is not available. Access the Visualize Library from the **Dashboards** page under the **Visualizations** or **Annotation groups** tab.
-* In Elastic Classic, **Visualize** has its own entry in the navigation menu.
+* With the **Classic** solution view, **Visualize** has its own entry in the navigation menu.
 
 
 ## Visualizations [visualize-library-visualizations]
