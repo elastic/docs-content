@@ -47,7 +47,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 1. Go to **Osquery** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Depending on your version, do one of the following:
     * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Click **Run query**.
-    * {applies_to}`stack: ga 9.0-9.3` In the **Live queries** tab, click  **New live query**.
+    * {applies_to}`stack: ga 9.0-9.3` In the **Live queries** tab, click **New live query**.
 
 3. Choose to run a single query or a query pack.
 4. Select one or more agents or groups to query. Start typing in the search field, and you’ll get suggestions for agents by name, ID, platform, and policy.
@@ -95,7 +95,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 
 ::::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
 
-The **History** tab displays a unified log of all Osquery actions, including live queries, rule-triggered response actions, and scheduled pack executions. Adjust the time filter to view history entires generated within a specific timeframe.
+The **History** tab displays a unified log of all Osquery actions, including live queries, rule-triggered response actions, and scheduled pack executions. Adjust the time filter to view history entries generated within a specific timeframe.
 
 You can search history entries by query or pack name, and use the filter dropdowns to filter by **Tags**, **Source**, or **Run by**.
 
@@ -182,7 +182,7 @@ serverless: ga
 ```
 The **Packs** tab includes search and filter options to help you find specific packs.
 
-You can duplicate an existing pack by clicking the **Actions** menu next to the query and selecting **Duplicate pack**. You can also duplicate a pack from its details or edit pages.
+You can duplicate an existing pack by clicking the **Actions** menu next to the pack and selecting **Duplicate pack**. You can also duplicate a pack from its details or edit pages.
 
 ## Save queries [osquery-manage-query]
 
@@ -249,7 +249,7 @@ Follow these steps to load and turn on new or updated prebuilt packs:
 2. For each pack that you want to activate and schedule:
 
     1. To ensure the pack runs continuously, turn on:
-        * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The **Enable** toggle 
+        * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The **Enable** toggle
         * {applies_to}`stack: ga 9.0-9.3` The **Active** toggle
 
         ::::{note}
