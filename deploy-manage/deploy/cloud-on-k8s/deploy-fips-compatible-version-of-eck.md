@@ -20,7 +20,7 @@ For the ECK operator, adherence to FIPS 140-2 is ensured by:
 * Compiling the operator using the [BoringCrypto](https://github.com/golang/go/blob/dev.boringcrypto/README.boringcrypto.md) library for various cryptographic primitives.
 
 ::::{warning}
-Due to a build configuration issue, FIPS-enabled ECK operator images published between versions 2.9.0 and 3.3.1 use the standard Go cryptography library instead of BoringCrypto and **are not FIPS compatible**. Upgrade to version 3.3.2 or later to get a correctly built FIPS image.
+Due to a build configuration issue, ECK operator images published between versions 2.9.0 and 3.3.1 use the standard Go cryptography library instead of BoringCrypto. Standard Go **does not use FIPS 140-2/3 validated cryptographic libraries**. Upgrade to version 3.3.2 or later to get images built using FIPS 140-2/3 validated cryptographic libraries.
 ::::
 
 ## FIPS compatible installation using Helm [k8s_fips_compliant_installation_using_helm]
