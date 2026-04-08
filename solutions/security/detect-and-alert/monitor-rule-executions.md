@@ -152,6 +152,10 @@ serverless: ga
 
 The execution details flyout displays additional timing, indexing, and gap details for the selected run. Use it to get a better understanding of that run, including errors and warnings, the number of candidate detections that became stored alerts, which indices were searched, and more. To open the execution details flyout, select **View details** on a row in the Execution log table.
 
+::::{note}
+These flyout metrics are stored only for executions logged on {{stack}} 9.4 or later, and for {{serverless-full}} projects after the same data began to be persisted. Executions logged on older versions (for example {{stack}} 9.3 or earlier) might have blank fields in the flyout because those values were not recorded when the run was logged.
+::::
+
 #### Outcome
 
 | Field | Description | How to use |
