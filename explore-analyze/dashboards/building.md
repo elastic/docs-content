@@ -36,7 +36,5 @@ To create or edit dashboards, you need:
 
 Saved visualizations and annotation groups are managed through the [Visualize Library](../visualize/visualize-library.md). Find **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{note}
-:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-The **Dashboards** app listing includes **Visualizations** and **Annotation groups** tabs that give you direct access to the Visualize Library from the Dashboards page. In solution UIs (Observability, Security, and other solution experiences), these tabs replace the standalone **Visualize** navigation entry.
-:::
+* {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` The **Dashboards** page includes **Visualizations** and **Annotation groups** tabs for direct access to the Visualize Library. In solution UIs (Observability, Security), these tabs replace the standalone **Visualize** navigation entry.
+* In Elastic Classic, the Visualize Library is available from **Visualize** in the navigation menu.
