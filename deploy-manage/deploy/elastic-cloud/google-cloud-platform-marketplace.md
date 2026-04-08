@@ -14,6 +14,8 @@ products:
 
 Subscribe to {{ecloud}} directly from the Google Cloud Platform (GCP). You then have the convenience of viewing your {{ecloud}} subscription as part of your GCP bill, and you do not have to supply any additional credit card information to Elastic. Your investment in Elastic draws against your cloud purchase commitment.
 
+If you already have an {{ecloud}} trial, you can [convert it to a GCP Marketplace subscription](marketplace-trial-conversion.md) instead of creating a new organization through the GCP Marketplace.
+
 Some differences exist when you subscribe to {{ecloud}} through the GCP Marketplace:
 
 * New {{ecloud}} customers obtain a 7-day trial period. During this period, you can use a single deployment and three projects of {{ecloud}}. After this period, usage-based billing starts, unless you delete your cloud resources. Note that once customers unsubscribe from the GCP offer, their trial will end immediately. Even if they resubscribe, they will not be able to resume the trial.

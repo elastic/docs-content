@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # AWS Marketplace [ec-billing-aws]
@@ -20,10 +21,11 @@ The free trial includes provisioning of a single deployment and you are not char
 
 You can subscribe to {{ecloud}} directly from the AWS Marketplace. You then have the convenience of viewing your {{ecloud}} subscription as part of your AWS bill, and you do not have to supply any additional billing information to Elastic.
 
+If you already have an {{ecloud}} trial, you can [convert it to an AWS Marketplace subscription](marketplace-trial-conversion.md) instead of creating a new account.
+
 Some differences exist when you subscribe to {{ecloud}} through the AWS Marketplace:
 
 * Billing starts automatically after the 7-day trial period.
-* Previous {{ecloud}} accounts cannot be converted to use the AWS Marketplace. If you already have an account, you must use a different email address when you sign up for a subscription through the AWS Marketplace.
 * Pricing is based on the AWS region, the size of your deployment, as well as some other parameters such as data transfer out, data transfer internode, snapshot storage, and snapshot APIs. For more details, check [Billing Dimensions](../../cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
 * The consolidated charges for your {{ecloud}} subscription display in the AWS Marketplace billing console. It can take a day or two before new charges show up.
 * Regardless of where your deployment is hosted (visible in the {{ecloud}} console), the AWS Marketplace charges for all AWS regions are metered in US East (Northern Virginia). As a result, US East (Northern Virginia) is listed as the region in the AWS Marketplace console.

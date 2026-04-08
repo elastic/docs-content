@@ -193,7 +193,7 @@ $$$azure-integration-prior-cloud-account$$$I already have an {{ecloud}} account,
 :   Yes. If you already have an {{ecloud}} account with the same email address as your Azure account you may need to contact `support@elastic.co`.
 
 $$$azure-integration-convert-trial$$$Can I sign up for an {{ecloud}} trial account and then convert to the {{ecloud}} Azure Native ISV Service?
-:   Yes. You can start a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and then convert your account over to Azure. There are a few requirements:
+:   Yes. You can start a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and then convert your account over to Azure. For step-by-step instructions, refer to [Convert a trial to a marketplace subscription](marketplace-trial-conversion.md). Keep in mind the following requirements:
 
     * Make sure when creating deployments in the trial account you specify Azure as the cloud provider.
     * To convert your trial to the Azure marketplace you need to create a deployment in the Azure console. Just delete the new deployment if you don’t need it. After you create the new deployment your marketplace subscription is ready.
