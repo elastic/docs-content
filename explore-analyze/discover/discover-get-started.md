@@ -20,9 +20,10 @@ Learn how to explore your {{product.elasticsearch}} data using **Discover**. Thi
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
   * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
-% LINK/PAGE TBD  * **Traces exploration**
-% * Security:
-% LINK/PAGE TBD  * **Security data exploration**
+  * **[Traces exploration](/solutions/observability/apm/discover-traces.md)**
+  {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
+* Security:
+  * **[Security data exploration](/solutions/security/investigate/discover-security.md)** {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview`
 
 This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
 

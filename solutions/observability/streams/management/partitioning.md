@@ -59,9 +59,13 @@ logs
 To manually configure when to send data to child streams:
 
 1. Select **Create partition manually**.
-1. From the **Data preview**, filter data based on fields or attributes by hovering over the field and selecting the {icon}`plus_in_circle` icon. This creates a **Condition** for your stream.
+1. From the **Data preview**, filter data based on fields or attributes by hovering over the field and selecting:
+  - {icon}`plus_in_circle` to add routing conditions that equal the field.
+  - {icon}`minus_in_circle`to add routing conditions that do not equal the field.
 1. Under **Stream name**, give your stream a name based on the condition.
 1. Select **Save** to create the child stream.
+
+Under **Condition**, you can also set the field you want to use for the condition, the comparator, and the value of the field. Turning on the **Syntax editor** lets you manually enter the conditions in a YAML editor. For more on conditions, refer to [Streamlang conditions](./streamlang.md#streams-streamlang-conditions).
 
 ## Create partitions using AI suggestions [streams-AI-partitioning]
 

@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+description: Associate rule exceptions with detection rules to prevent trusted activity from generating unnecessary alerts.
 ---
 
 # Rule exceptions [detections-ui-exceptions]
@@ -20,7 +21,7 @@ When creating exceptions, you can assign them to [individual rules](#rule-except
 
 ## Exceptions for individual rules [rule-exceptions-intro]
 
-Exceptions, also referred to as *exception items*, contain the source event conditions that determine when alerts shouldn’t be generated.
+Exceptions, also referred to as **exception items**, contain the source event conditions that determine when alerts shouldn’t be generated.
 
 You can create exceptions that apply exclusively to a single rule. These types of exceptions can’t be used by other rules, and you must manage them from the rule’s details page. To learn more about creating and managing single-rule exceptions, refer to [Add and manage exceptions](add-manage-exceptions.md).
 

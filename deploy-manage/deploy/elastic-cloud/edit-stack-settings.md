@@ -30,7 +30,7 @@ To add or edit user settings:
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-1. Under the deployment's name in the navigation menu, select **Edit**.
+1. From the navigation menu, select **Edit**.
 2. Look for the **Manage user settings and extensions** and **Edit user settings** links for each deployment, and select the one corresponding to the component you want to update, such as {{es}} or {{kib}}.
 3. Apply the necessary settings in the **Users Settings** tab of the editor and select **Back** when finished.
 4. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.

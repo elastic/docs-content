@@ -102,15 +102,15 @@ A time series data stream works like a regular data stream, with some key differ
 
 ## Query time series data
 ```{applies_to}
-serverless: preview
+stack: preview 9.2-9.3, ga 9.4+
 ```
 
-You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for time series data. It also enables the use of aggregation functions that efficiently process metrics per time series, before aggregating results.
-
+You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for processing time series data efficiently and enables the use of time series [aggregation functions](elasticsearch://reference/query-languages/esql/functions-operators/time-series-aggregation-functions.md) with window support.
 
 ## Next steps [tsds-whats-next]
 
 * Try the [quickstart](/manage-data/data-store/data-streams/quickstart-tsds.md) for a hands-on introduction
 * [Set up a time series data stream](/manage-data/data-store/data-streams/set-up-tsds.md)
 * [Ingest data using the OpenTelemetry Protocol (OTLP)](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
+* [Ingest data using Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
 * Learn about [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to reduce storage footprint

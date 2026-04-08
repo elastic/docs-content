@@ -388,3 +388,19 @@ batch:
 ```
 
 ::::
+
+::::{dropdown} Profiling Symbolizer unable to store symbols for private executables
+
+Applies to: {{stack}} 9.1, 9.2, 9.3
+
+**Details**
+
+Due to a bug in how Elasticsearch processes empty `keyword` fields encoded with SMILE, Symbolizer fails to store symbols for private executables.
+Elasticsearch versions affected: 9.1.4+
+Fixed in the following Elasticsearch releases:
+
+* 9.1.11
+* 9.2.8
+* 9.3.3
+
+::::

@@ -66,7 +66,10 @@ GET _nodes?filter_path=**.mlockall
 
 If you see that `mlockall` is `false`, then it means that the `mlockall` request has failed. You will also see a line with more information in the logs with the words `Unable to lock JVM Memory`.
 
-The most probable reason, on Linux/Unix systems, is that the user running {{es}} doesn’t have permission to lock memory. This can be granted as follows:
+The most probable reason, on Linux/Unix systems, is that the user running {{es}} doesn’t have permission to lock memory. To change defaults on package-based installations, you can adjust limits by using `ulimit`, editing `/etc/security/limits.conf`, or through `systemd` service overrides, depending on whether limits are applied per session, per user, or for the service.
+
+You can grant permission to lock memory as follows:
+
 
 `.zip` and `.tar.gz`
 :   Set [`ulimit -l unlimited`](setting-system-settings.md#ulimit) as root before starting {{es}}. Alternatively, set `memlock` to `unlimited` in `/etc/security/limits.conf`:
