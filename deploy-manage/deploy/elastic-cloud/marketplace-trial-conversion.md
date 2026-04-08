@@ -58,31 +58,29 @@ If none of your existing organizations are eligible for conversion, you can stil
 
 ## Convert your trial in the Azure Marketplace [ec-marketplace-trial-conversion-azure]
 
-The Azure flow works differently because Elastic resources are created directly from the Azure portal.
+The Azure flow works differently from {{aws}} and {{gcp}} because Elastic resources are created directly from the Azure portal rather than through an Elastic sign-up page.
 
 ::::::{stepper}
 :::::{step} Create your {{ecloud}} trial
-If you haven't already, [sign up](create-an-organization.md) for an {{ecloud}} trial using the email address you prefer.
+If you haven't already, [sign up](create-an-organization.md) for an {{ecloud}} trial using the email address you prefer. When creating resources during the trial, specify Azure as the cloud provider so that the organization is [eligible for conversion](#ec-marketplace-conversion-candidates).
 :::::
 :::::{step} Create an Elastic resource from the Azure portal
 Go to the [{{ecloud}} ({{es}}) - An Azure Native ISV Service](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp) listing in the Azure portal. Select **Subscribe** and follow the prompts to create an Elastic resource.
 
-When you create the resource, it is automatically linked to your existing trial organization if you have a single eligible trial. You can delete the new deployment afterward if you don't need it.
+When you create the resource, it is linked to your existing trial organization and the trial is converted to an Azure Marketplace subscription. You can delete the new deployment afterward if you don't need it.
 :::::
 ::::::
-
-::::{note}
-If your account has multiple trial organizations that are eligible for conversion, you cannot convert from the Azure portal. You must leave the other trial organizations first so that only one eligible organization remains. For more details, refer to [Azure Native ISV Service](azure-native-isv-service.md).
-::::
 
 ## Which organizations can be converted [ec-marketplace-conversion-candidates]
 
 Not all organizations are eligible for marketplace conversion. An organization can be converted if it meets the following conditions:
 
-- The {{ecloud}} account that you log in with is the owner of the organization.
-- The organization is on a **trial** subscription (active or expired).
+- You are the owner of the organization.
+- The organization is on a trial subscription (active or expired).
 - The organization does not already have a credit card or another marketplace subscription attached.
 - The organization's deployments and projects are hosted on the same cloud provider as the marketplace. For example, an organization with deployments on {{aws}} can only be converted to an {{aws}} Marketplace subscription, not a {{gcp}} Marketplace subscription.
+
+If none of your organizations are eligible, you can create a new organization through the marketplace sign-up flow, or [subscribe directly](/deploy-manage/cloud-organization/billing/add-billing-details.md) with a credit card.
 
 ## After conversion [ec-marketplace-post-conversion]
 
@@ -90,5 +88,4 @@ After your trial is converted:
 
 - All existing deployments and projects in the converted organization are preserved.
 - Billing starts through the marketplace immediately. There is no additional trial period.
-- Your subscription level might change depending on the marketplace. Check your marketplace-specific page for details: [{{aws}}](aws-marketplace.md), [Azure](azure-native-isv-service.md), [{{gcp}}](google-cloud-platform-marketplace.md).
 - To monitor your usage and costs, go to **Billing > Usage** in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).

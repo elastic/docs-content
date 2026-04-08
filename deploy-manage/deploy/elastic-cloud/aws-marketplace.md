@@ -44,7 +44,8 @@ Elastic provides different [subscription levels](https://www.elastic.co/subscrip
 
 Note the following items before you subscribe:
 
-* If you want to manage deployments on the existing {{ecloud}} account with your AWS MP billing account, you must migrate your deployments over to the new MP billing account. To migrate, use a [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md) to take a snapshot and then restore that snapshot to a new deployment under your AWS Marketplace account.
+* Each AWS billing account supports one {{ecloud}} subscription, which maps to one {{ecloud}} organization. If you need multiple organizations (for example, separate production and development environments), use separate AWS accounts.
+* If you want to migrate deployments from an existing non-marketplace organization into your AWS Marketplace organization, use a [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md) to take a snapshot and then restore it to a new deployment under your AWS Marketplace organization.
 
 
 ## Subscribe to {{ecloud}} through the AWS Marketplace [ec_subscribe_to_elasticsearch_service_through_the_aws_marketplace]
@@ -79,7 +80,7 @@ This section describes some scenarios that you may experience onboarding onto th
 
 This occurs when you attempt to sign up to the marketplace offer using an email address that already exists in {{ecloud}}, such as part of a trial account. You have a few options:
 
-* **Change the email address of your previous {{ecloud}} account** - Log in to your existing {{ecloud}} account and change the email address. Once changed, navigate back to the AWS console to finish setting up your marketplace subscription.
+* **Sign in with your existing account** - Choose to sign in instead of signing up. You can then [convert an existing trial organization](marketplace-trial-conversion.md) to your AWS Marketplace subscription or create a new organization.
 * **Sign up using a different email address** - Sign up to {{ecloud}} using a different email address.
 
 

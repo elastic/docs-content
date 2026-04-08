@@ -41,7 +41,7 @@ $$$ec-supported-regions$$$
 Before setting up an {{ecloud}} deployment or project through the Azure Native ISV Service, review the following requirements:
 
 * Your Azure account role for the subscription must be set to **Owner** or **Contributor**. For details and steps to assign roles, refer to [Roles and permissions](https://learn.microsoft.com/en-us/marketplace/roles-permissions#roles-and-permissions-1) in the Azure documentation.
-* You can't use an email address that already has an {{ecloud}} account. Use a different Azure account to set up the {{es}} resource, or [contact Elastic Support](azure-native-isv-service-troubleshooting.md#azure-integration-support) for assistance. For a workaround, refer to [Sign up using an existing email address](//cloud-account/update-your-email-address.md#sign-up-existing).
+* If you already have an {{ecloud}} account, you can sign in with your existing credentials during setup. Your new resource will be linked to an existing organization or a new one will be created. For details on how accounts and organizations work together, refer to [Subscribe from a marketplace](subscribe-from-marketplace.md#ec-marketplace-org-relationship).
 * You must have a credit card registered on your Azure subscription. If you have a non-payment subscription, such as a [Virtual Studio Subscription](https://visualstudio.microsoft.com/subscriptions/), you can't create an {{ecloud}} deployment. Refer to the Azure [Purchase errors](https://learn.microsoft.com/en-us/azure/partner-solutions/elastic/troubleshoot#marketplace-purchase-errors) troubleshooting documentation for more information.
 * To single sign-on into your {{ecloud}} deployment or project from Azure, you need to request approval from your Azure administrator.
 
@@ -100,25 +100,34 @@ You have a few options to access your deployment or project:
   * [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#ec_how_to_operate_elasticsearch_service)
   * [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md#get-started)
 
+## Multi-org accounts and the Azure portal [ec-azure-multi-org-limitations]
+
+Unlike {{aws}} and {{gcp}}, the Azure portal does not provide an organization picker during resource creation. When your account has a single organization, the Azure portal automatically adds new resources to that organization and can handle trial conversion. When your account has multiple organizations, the portal may not be able to determine which organization to target.
+
+The following limitations apply:
+
+- **Multiple Azure MP organizations:** You can't create resources from the Azure portal. Create resources directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) instead, where you can select the specific organization to use.
+- **Multiple eligible trial organizations:** You can't convert a trial from the Azure portal. To resolve this, leave the other trial organizations so that only one eligible organization remains. Alternatively, use the [{{aws}}](aws-marketplace.md) or [{{gcp}}](google-cloud-platform-marketplace.md) marketplace instead, which support an organization picker during sign-up.
+
 ## Trials and existing accounts [ec-azure-integration-trials]
-% needs to be updated for multi org
 
 $$$azure-integration-prior-cloud-account$$$
-If you already have an {{ecloud}} account with the same email address as your Azure account, you might need to contact `support@elastic.co`.
+If you already have an {{ecloud}} account, you can sign in with your existing credentials when creating an Elastic resource in the Azure portal. If your account has a single organization, the resource is added to that organization. If you have multiple organizations, refer to [Multi-org accounts and the Azure portal](#ec-azure-multi-org-limitations).
 
 ### Convert a trial to Azure ISV [azure-integration-convert-trial]
 
-You can start a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and then convert your organization over to Azure. There are a few requirements:
+If you have an existing {{ecloud}} trial, you can convert it to an Azure Marketplace subscription. For step-by-step instructions, refer to [Convert a trial to a marketplace subscription](marketplace-trial-conversion.md#ec-marketplace-trial-conversion-azure).
 
-* Make sure when creating resources in the trial account that you specify Azure as the cloud provider.
-* To convert your trial to the Azure marketplace you need to [create a resource](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md#ec-azure-integration-getting-started) in the Azure console. Delete this resource if you don't need it. After you create the new resource, your marketplace subscription is ready.
+Keep in mind:
+
+* When creating resources in the trial account, specify Azure as the cloud provider so that the organization is [eligible for conversion](marketplace-trial-conversion.md#ec-marketplace-conversion-candidates).
+* To convert your trial to the Azure Marketplace, [create a resource](#ec-azure-integration-getting-started) in the Azure console. Delete this resource if you don't need it. After you create the new resource, your marketplace subscription is ready.
 * Any resources created during your trial won't show up in the Azure console, because they weren't created in Azure, but they are still accessible through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and you are billed for their usage.
 
 ### Start a trial from Azure Marketplace [azure-integration-native-trials]
 
 You can start a 7-day trial by creating a deployment through the Azure Marketplace. The following restrictions apply:
 
-* The email associated with the Azure account used to create the deployment must not already be linked to an existing Elastic organization.
 * During the 7-day trial period, you can create up to one deployment and three serverless projects. If you want to convert to a paid subscription before the end of the trial period, contact `support@elastic.co`.
 * After 7 days, the trial will automatically convert to a paid offering. You can contact Elastic Support to unsubscribe, but doing so might result in your resources being deleted after a grace period.
 * You can sign up for only one trial per user account. After the trial expires, you can't start another trial. If you need a trial extension, reach out to Elastic Support.
@@ -155,7 +164,7 @@ The integrated billing process involves the following concepts:
 
 The following diagram shows the mapping between Microsoft Azure IDs, {{ecloud}} organization IDs, and your Elastic resources (deployments).
 
-% needs to be updated for multi org
+% TODO: update diagram for multi-org
 :::{image} /deploy-manage/images/cloud-ec-azure-billing-mapping.png
 :alt: Azure to {{ecloud}} mappings
 :::
@@ -189,9 +198,8 @@ $$$azure-integration-billing-which-subscription$$$
 
 The Azure Marketplace integrated billing posts all of the Elastic resource costs related to an {{ecloud}} organization to the Azure subscription you used to create your first-ever Elastic resource, even if your individual Elastic resources (deployments and projects) are spread across different Azure subscriptions.
 
-% needs to be updated for multi org
 $$$azure-integration-billing-different-deployments$$$
-To have different Elastic resources' costs reported to different Azure subscriptions, they need to be in separate {{ecloud}} organizations. To create a separate {{ecloud}} organization from an Azure subscription, you will need to subscribe as a user who is not already part of an existing {{ecloud}} organization.
+To have different Elastic resources' costs reported to different Azure subscriptions, they need to be in separate {{ecloud}} organizations. To create a separate organization, [create a new Elastic resource](#ec-azure-integration-getting-started) from the Azure portal. A new organization is created as part of the resource creation process.
 
 #### How costs are reported
 
@@ -226,7 +234,7 @@ There are several options to integrate Microsoft authentication with {{ecloud}}:
 * [{{ecloud}} RBAC capabilities](../../users-roles/cloud-organization/user-roles.md) are available only from the {{ecloud}} Console and is not integrated with Azure Portal. Users who interact with Elastic resources from Azure Portal will not be recognized by the {{ecloud}} RBAC policies.
 
 $$$azure-integration-authorization-access$$$
-* Elastic is not currently integrated with Azure user management. Azure users who deploy {{es}} on Azure view and manage their own cluster through the Cloud console. Other Azure users in the same tenant cannot access clusters through the Cloud console other than those that they themselves created.
+* Elastic is not currently integrated with Azure user management. Azure users who deploy {{es}} on Azure view and manage their own cluster through the Cloud console. Other Azure users in the same tenant can't access clusters through the Cloud console other than those that they themselves created.
 
     When trying to access resources such as {{es}}, {{kib}}, or {{product.apm}} in a deployment or project that was created by another Azure user, the following error is shown:
 
