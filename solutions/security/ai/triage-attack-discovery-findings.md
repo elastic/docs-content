@@ -34,7 +34,7 @@ An [agent skill](https://github.com/elastic/agent-skills-sandbox/tree/main/skill
 - Confidence scoring uses fixed heuristics. Manual triage lets you apply institutional knowledge that the skill can't account for, such as knowing that a specific host is a honeypot or that a particular rule was recently tuned.
 - Write operations (case creation, alert acknowledgment) still require your explicit approval, but you have less granular control over how findings are enriched and summarized.
 
-Refer to the [agent-skills-sandbox README](https://github.com/elastic/agent-skills-sandbox/blob/main/README.md) for setup instructions.
+Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
 :::
 
 ## Before you begin [before-you-begin]
@@ -46,7 +46,7 @@ Before you start, make sure you have the following:
 - Your role has the [required privileges](/solutions/security/ai/attack-discovery.md#attack-discovery-rbac) to view and modify Attack Discovery alerts.
 
 :::{tip}
-For richer triage context, enable [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). Entity risk scores help you assess whether the users and hosts in a discovery are already known to be high risk, which can strengthen your assessment. Entity analytics isn't required for triage, but it can improve decision quality.
+For richer triage context, enable [entity analytics](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). This helps you assess whether the users and hosts in a discovery are already known to be high risk, which can strengthen your assessment. Entity analytics isn't required for triage, but it can improve decision quality.
 :::
 
 ## Step 1: Review open findings [review-open-findings]
@@ -144,7 +144,7 @@ Combine your three signal scores to estimate confidence:
 
 :::{dropdown} Full confidence scoring matrix
 
-The following tables provide a detailed scoring rubric for each signal. If you'd rather automate this process than score each finding manually, you can use the [Attack Discovery Triage agent skill](https://github.com/elastic/agent-skills-sandbox/tree/main/skills/security/attack-discovery-triage), which applies these heuristics programmatically and presents a triage summary for your approval.
+The following tables provide a detailed scoring rubric for each signal. If you'd rather automate this process than score each finding manually, you can use the [Attack Discovery Triage agent skill](https://github.com/elastic/agent-skills/tree/main/skills/security/attack-discovery-triage), which applies these heuristics programmatically and presents a triage summary for your approval.
 
 #### Signal 1: Alert diversity [signal-alert-diversity]
 
@@ -182,7 +182,8 @@ If [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-ri
 | Unknown (less than 20) | Any | Neutral (no signal either way) |
 
 :::{tip}
-On Stack 9.3+, the risk scoring engine includes privileged user status as an additional risk input. If a user entity in the finding has privileged status, treat this as equivalent to high-impact asset criticality.
+:applies_to: stack: ga 9.3+
+The risk scoring engine includes privileged user status as an additional risk input. If a user entity in the finding has privileged status, treat this as equivalent to high-impact asset criticality.
 :::
 
 :::
