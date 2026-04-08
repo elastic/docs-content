@@ -24,24 +24,15 @@ Before you query Attack Discovery data programmatically, make sure you have the 
 
 ## Attack Discovery index aliases [attack-discovery-index-aliases]
 
-{{es}} stores Attack Discovery alerts in dedicated indices, separate from detection rule alerts. Query the index *alias* rather than the internal backing indices directly. The alias automatically spans all backing indices as they roll over.
+Attack Discovery alerts use a dedicated index alias, separate from detection rule alerts:
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Alias (recommended) | `.alerts-security.attack.discovery.alerts-<space-id>` | `.alerts-security.attack.discovery.alerts-default` |
-| Internal index | `.internal.alerts-security.attack.discovery.alerts-<space-id>-NNNNNN` | `.internal.alerts-security.attack.discovery.alerts-default-000001` |
+`.alerts-security.attack.discovery.alerts-<space-id>`
 
-Replace `<space-id>` with your {{kib}} space ID (for example, `default`). Don't add a dash or wildcard after the space ID.
-
-For background on alert index naming conventions across all rule types, refer to [Query alert indices](/explore-analyze/alerting/alerts/query-alerts.md).
+Replace `<space-id>` with your {{kib}} space ID (for example, `default`). Always query the alias rather than the internal backing indices. For background on alert index naming conventions, including backing index patterns and rollover behavior, refer to [Query alert indices](/explore-analyze/alerting/alerts/query-alerts.md).
 
 ## Query with the Search API [attack-discovery-search-api]
 
-Use the {{es}} [Search API](elasticsearch://reference/elasticsearch/rest-apis/search-your-data.md) to query Attack Discovery alerts directly. The following examples target the alias for the `default` {{kib}} space.
-
-### Retrieve recent discoveries [ad-retrieve-recent]
-
-Return the 10 most recent Attack Discovery alerts, sorted by timestamp:
+Use the {{es}} [Search API](elasticsearch://reference/elasticsearch/rest-apis/search-your-data.md) to query Attack Discovery alerts. The following example retrieves the 10 most recent alerts from the `default` {{kib}} space:
 
 ```json
 GET /.alerts-security.attack.discovery.alerts-default/_search
@@ -65,106 +56,15 @@ GET /.alerts-security.attack.discovery.alerts-default/_search
 }
 ```
 
-- `.alerts-security.attack.discovery.alerts-default`: The index alias for Attack Discovery alerts in the `default` space.
-- `fields`: Retrieves specific fields without relying on `_source`, which is the recommended approach for system indices.
-- `@timestamp` sort: Returns the newest discoveries first.
-
-### Filter by severity and time range [ad-filter-severity-time]
-
-Return critical Attack Discovery alerts from the last 24 hours:
-
-```json
-GET /.alerts-security.attack.discovery.alerts-default/_search
-{
-  "size": 50,
-  "query": {
-    "bool": {
-      "filter": [
-        { "term": { "kibana.alert.severity": "critical" } },
-        {
-          "range": {
-            "@timestamp": {
-              "gte": "now-24h",
-              "lte": "now"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "fields": [
-    "kibana.alert.rule.name",
-    "kibana.alert.severity",
-    "host.name",
-    "user.name",
-    "@timestamp"
-  ],
-  "_source": false
-}
-```
-
-- `kibana.alert.severity`: Filters by severity level (`low`, `medium`, `high`, or `critical`).
-- `@timestamp` range: Restricts results to a specific time window. Adjust `gte` for your desired lookback period.
-
-### Filter by status and host [ad-filter-status-host]
-
-Return open Attack Discovery alerts for a specific host:
-
-```json
-GET /.alerts-security.attack.discovery.alerts-default/_search
-{
-  "size": 50,
-  "query": {
-    "bool": {
-      "filter": [
-        { "term": { "kibana.alert.workflow_status": "open" } },
-        { "term": { "host.name": "web-server-01" } }
-      ]
-    }
-  },
-  "fields": [
-    "kibana.alert.rule.name",
-    "kibana.alert.severity",
-    "kibana.alert.workflow_status",
-    "host.name",
-    "user.name",
-    "@timestamp"
-  ],
-  "_source": false
-}
-```
-
-- `kibana.alert.workflow_status`: Filters by triage status (`open`, `acknowledged`, or `closed`).
-- `host.name`: Filters by the hostname associated with the discovery.
-
-## Query with {{esql}} [attack-discovery-esql]
-
-You can also use {{esql}} to query Attack Discovery data. The following example counts open discoveries grouped by severity:
-
-```esql
-FROM .alerts-security.attack.discovery.alerts-default
-| WHERE kibana.alert.workflow_status == "open"
-| STATS count = COUNT(*) BY kibana.alert.severity
-| SORT count DESC
-| LIMIT 10
-```
-
-You can run {{esql}} queries from **Discover**, **Timeline**, the [Dev Tools Console](elasticsearch://reference/query-languages/esql/esql-rest.md#esql-kibana-console), or the `POST /_query` REST endpoint.
+For additional query patterns (filtering by time range, severity, status, and more), refer to [Query alert indices](/explore-analyze/alerting/alerts/query-alerts.md#_sample_queries) and adapt those examples by replacing the index pattern with the Attack Discovery alias. You can also use [{{esql}}](/solutions/security/detect-and-alert/query-alert-indices.md#example_queries) with the same alias. For a list of common alert fields, refer to [Common alert fields](/solutions/security/detect-and-alert/query-alert-indices.md#common-alert-fields).
 
 ## Query with the Attack Discovery API [attack-discovery-kibana-api]
 
-{{kib}} provides purpose-built REST APIs for working with Attack Discovery data. These APIs return enriched discovery objects, including LLM-generated summaries, MITRE ATT&CK mappings, and entity information, that aren't available in the raw alert index documents.
+{{kib}} provides purpose-built REST APIs for Attack Discovery data that return enriched discovery objects, including LLM-generated summaries, MITRE ATT&CK mappings, and entity information, that aren't available in the raw alert index documents.
 
-The following endpoints are commonly used:
-
-Find discoveries
-:   `GET /api/attack_discovery/_find`. Search, filter, and paginate through saved discoveries. Supports parameters like `search` (free text), `status` (workflow status filter), `start`/`end` (time range), and `connector_names`.
-
-Generate discoveries
-:   `POST /api/attack_discovery/_generate`. Trigger a new discovery generation from alerts. Returns an `execution_uuid` you can use to track progress.
-
-Get a generation
-:   `GET /api/attack_discovery/generations/{execution_uuid}`. Retrieve the results and metadata for a specific generation.
+- `GET /api/attack_discovery/_find`: Search, filter, and paginate through saved discoveries.
+- `POST /api/attack_discovery/_generate`: Trigger a new discovery generation from alerts.
+- `GET /api/attack_discovery/generations/{execution_uuid}`: Retrieve results for a specific generation.
 
 For the full list of endpoints and parameters, refer to the [Attack Discovery API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-attack-discovery-api).
 
@@ -244,14 +144,3 @@ To mitigate these risks:
 - Use a markdown renderer that strips raw HTML tags by default.
 - Validate or restrict link URLs to trusted domains before rendering.
 - If you enabled the `enable_field_rendering` API parameter, implement dedicated parsing for the `{{ field_name value }}` syntax rather than passing it through to the HTML renderer.
-
-### Guard against prompt injection in LLM pipelines [ad-prompt-injection]
-
-If your integration forwards Attack Discovery content to an LLM for further analysis, for example to generate remediation recommendations, the discovery text might contain adversarial instructions designed to manipulate the model's behavior. This is possible because discovery content reflects alert data that can originate from attacker-controlled sources.
-
-To reduce this risk:
-
-- **Treat discovery content as untrusted data.** Don't insert it directly into the system prompt or instruction portion of your LLM request.
-- **Use structured prompts with clear data boundaries.** Separate instructions from data so the LLM can distinguish between them. For example, wrap discovery content in explicit delimiters and instruct the model to treat delimited content as data only.
-- **Limit the LLM's available actions.** If your pipeline allows the LLM to call tools or take actions, restrict what actions are available so that a manipulated response can't cause harm.
-- **Use built-in anonymization.** [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md) includes anonymization features that obfuscate sensitive field values before sending data to LLMs. Consider using these features when building pipelines that process discovery data.
