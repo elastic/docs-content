@@ -31,3 +31,16 @@ To create or edit dashboards, you need:
   ::::
 
 * Sufficient privileges for the **Dashboard** feature. Without them, you might get a read-only indicator. A {{product.kibana}} administrator can [grant you the required privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+
+## Manage visualizations and annotation groups [dashboard-manage-library]
+
+You can manage saved visualizations and annotation groups from the [Visualize Library](../visualize/visualize-library.md).
+
+### Visualizations and Annotation groups tabs [dashboard-manage-library-tabs]
+
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+The **Dashboards** app listing includes **Visualizations** and **Annotation groups** tabs alongside **Dashboards**, giving you a single place to manage all your library assets. For details, refer to [Visualizations and Annotation groups tabs](managing.md#find-visualizations-tabs).
