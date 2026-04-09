@@ -20,11 +20,32 @@ You can find SIEM Readiness in the **Launchpad** section of the {{security-app}}
 :alt: The SIEM Readiness page open to the Coverage tab
 :screenshot:
 :::
-<!--
-## Requirements [siem-readiness-requirements]
+::::{admonition} Requirements
+To use SIEM Readiness, you need the following privileges:
 
-[TODO: Confirm RBAC requirements. Likely needs specific Kibana privileges. Update this section with exact role/privilege requirements once confirmed.]
--->
+**{{kib}} feature privileges:**
+
+* `Security` feature access
+* `Security > Rules` read access (Coverage tab)
+* `{{fleet}} > Integrations` read access (Coverage tab)
+
+**{{es}} index privileges** (on relevant data indices such as `logs-*` and `metrics-*`):
+
+* `read` (Coverage tab: data detection and MITRE ATT&CK doc counts)
+* `view_index_metadata` (all tabs: index settings, mappings, data stream metadata)
+* `monitor` (Quality and Continuity tabs: index stats and ingest pipeline stats)
+
+**{{es}} cluster privileges:**
+
+* `monitor` (Continuity tab: ingest pipeline statistics)
+* `read_ilm` (Retention tab: ILM lifecycle policies)
+
+:::{note}
+Without the required {{es}} privileges, most tabs silently return empty or partial results rather than explicit errors. Only the {{fleet}} integrations API returns an explicit access error.
+:::
+::::
+
+
 ## The four pillars [siem-readiness-pillars]
 
 SIEM Readiness organizes your data health assessment into four pillars. Each one appears as a summary card at the top of the page showing its current status: **Healthy** or **Actions required**. Select any pillar's tab to view its details.
