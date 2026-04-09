@@ -96,7 +96,7 @@ If you're using web crawlers or connectors to generate indices, you have to [upd
 
 ## Ingest data [semantic-text-load-data]
 
-With your index mapping in place, add some data. Because you mapped the `content` field as `semantic_text`, {{es}} automatically intercepts the text during ingestion, sends it to the {{infer}} endpoint, and stores the resulting vector embeddings alongside your document.
+With your index mapping in place, you can add some data. When you index a document, {{es}} automatically sends the `semantic_text` field's contents to the configured {{infer}} endpoint, generates vector embeddings, and stores them in the document.
 
 Use the [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to ingest a few sample documents:
 
