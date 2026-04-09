@@ -217,7 +217,7 @@ DELETE /semantic-index
 ## Next steps
 
 Thanks for taking the time to try out semantic search.
-For a deeper dive, go to [](/solutions/search/semantic-search.md).
+For a deeper dive, go to [](/solutions/search/semantic-search.md). For a step-by-step tutorial covering index mappings, data ingestion, and querying, refer to [Semantic search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md).
 
 If you want to extend this example, try an index with more fields.
 For example, if you have both a `text` field and a `semantic_text` field, you can combine the strengths of traditional keyword search and advanced semantic search.
