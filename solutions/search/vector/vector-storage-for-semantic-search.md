@@ -11,7 +11,7 @@ description: Reduce the memory footprint of dense vector embeddings in semantic 
 
 # Optimize dense vector storage for semantic search [semantic-text-index-options]
 
-When scaling semantic search, the memory footprint of dense vector embeddings can become a primary concern. You can optimize storage and search performance for your `semantic_text` indexes by configuring the `index_options` parameter on the underlying `dense_vector` field. The `index_options` parameter controls how vectors are indexed and stored. You can specify [quantization strategies](https://www.elastic.co/blog/vector-search-elasticsearch-rationale) like [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) that compress high-dimensional vectors into more efficient representations, achieving up to 32x memory reduction while maintaining search quality.
+When scaling semantic search, the memory footprint of your dense vector embeddings is a primary concern. You can optimize storage and search performance for your `semantic_text` indexes by configuring the `index_options` parameter on the underlying `dense_vector` field. The `index_options` parameter controls how vectors are indexed and stored. You can specify [quantization strategies](https://www.elastic.co/blog/vector-search-elasticsearch-rationale) like [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) that compress high-dimensional vectors into more efficient representations, achieving up to 32x memory reduction while maintaining search quality.
 
 ## Requirements
 
