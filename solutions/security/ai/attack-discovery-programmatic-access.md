@@ -32,7 +32,7 @@ Replace `<space-id>` with your {{kib}} space ID (for example, `default`). Always
 
 ## Query with the Search API [attack-discovery-search-api]
 
-Use the {{es}} [Search API](elasticsearch://reference/elasticsearch/rest-apis/search-your-data.md) to query Attack Discovery alerts. The following example retrieves the 10 most recent alerts from the `default` {{kib}} space:
+Use the {{es}} [Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to query Attack Discovery alerts. The following example retrieves the 10 most recent alerts from the `default` {{kib}} space:
 
 ```json
 GET /.alerts-security.attack.discovery.alerts-default/_search
