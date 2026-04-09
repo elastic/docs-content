@@ -169,7 +169,7 @@ If you added it by starting from a query, the control is directly inserted in th
 You can then insert it in any other {{esql}} visualization queries by typing the control's name.
 
 :::{tip}
-You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the dashboard's toolbar. 
+You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the application menu.
 :::
 
 :::{include} ../_snippets/variable-control-examples.md
@@ -206,7 +206,7 @@ To chain variable controls, you reference one control's variable in another cont
    Create the controls that will be referenced in other controls first. This allows the {{esql}} editor to provide proper autocomplete suggestions.
    :::
    
-   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar, then define the control:
+   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the application menu, then define the control:
    
    * **Type**: Values from a query
    * **Query**: 
@@ -267,7 +267,7 @@ You can add one interactive time slider control to a dashboard.
 1. Open or create a new dashboard.
 2. Add a time slider control.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the application menu.
     * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
 
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
@@ -299,7 +299,7 @@ For pinned controls, you can click the Settings {icon}`gear` icon on control to 
 
 1. Configure the control settings.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the application menu.
     * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Settings**.
 
 2. On the **Control settings** flyout, configure the following settings:
