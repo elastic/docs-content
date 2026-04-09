@@ -120,7 +120,10 @@ Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze
 :   Updates an existing dashboard with new panels or modifications. 
 -->
 
-## Streams tools {applies_to}`stack: ga 9.4`
+## Streams tools
+```{applies_to}
+stack: ga 9.4
+```
 
 % TODO (9.4): Confirm with Streams team (kibana#258330) before publishing:
 % 1. Are all platform.streams.* tools assignable to arbitrary custom agents, or are they
