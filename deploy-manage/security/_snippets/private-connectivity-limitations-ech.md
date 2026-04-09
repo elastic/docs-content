@@ -1,5 +1,5 @@
 * **Transport client:** The {{es}} transport client is not supported over private connections.
-* **Managed OTLP endpoint:** The [managed OTLP endpoint](opentelemetry://reference/motlp.md) is not accessible over private connections. The public endpoint is still available.
+* **Managed OTLP endpoint:** In {{ech}} deployments, the [managed OTLP endpoint](opentelemetry://reference/motlp.md) is not accessible over private connections. The public endpoint is still available.
 * **SSO to {{kib}} from the {{ecloud}} console:** You can't use SSO to log in to {{kib}} endpoints that are protected by private connections. The connection to {{kib}} public URL is still available.
 
   As a workaround, you can [add an IP filter](/deploy-manage/security/ip-filtering-cloud.md) for the hosts that will use SSO through the {{ecloud}} console.
