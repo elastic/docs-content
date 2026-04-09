@@ -13,7 +13,7 @@ products:
 
 To help you understand costs and manage spending on {{ecloud}}, you can create budgets and configure email alerts when month-to-date usage for the budget's scope reaches the defined thresholds. When you create a budget, you can review how it compares to your usage over the past six months.
 
-When configured, any email notifications are sent to users who are members of the Organization owner or Billing admin [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles). To set or change those addresses, follow [Update billing and operational contacts](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md).
+When configured, any email notifications are sent to users who are members of the Organization owner or Billing admin [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles). To set or change the addresses of these users, follow [Update billing and operational contacts](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md).
 
 To configure budgets and email notifications for your {{ecloud}} billing:
 
