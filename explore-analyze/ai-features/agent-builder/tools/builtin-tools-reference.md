@@ -120,6 +120,40 @@ Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze
 :   Updates an existing dashboard with new panels or modifications. 
 -->
 
+## Streams tools {applies_to}`stack: ga 9.4`
+
+% TODO (9.4): Confirm with Streams team (kibana#258330) before publishing:
+% 1. Are all platform.streams.* tools assignable to arbitrary custom agents, or are they
+%    only available within the built-in Streams skill/agent?
+% 2. Does platform.streams.sig_events.search_kis belong in this reference or is it internal?
+% 3. Are these available in serverless? If so, which projects?
+
+Streams tools provide capabilities for exploring and managing [Streams](/manage-data/data-store/data-streams.md).
+
+`platform.streams.list_streams` {applies_to}`stack: ga 9.4`
+:   Lists all streams the current user has access to, returning each stream's name, type (wired, classic, or query), and description.
+
+`platform.streams.get_stream` {applies_to}`stack: ga 9.4`
+:   Returns the full definition of a single stream: type, description, retention policy, processing rules, field mappings, routing/partitions, and parent-child hierarchy.
+
+`platform.streams.get_schema` {applies_to}`stack: ga 9.4`
+:   Returns the schema of a stream: mapped fields (own and inherited) with their types, and unmapped fields detected from recent documents.
+
+`platform.streams.get_data_quality` {applies_to}`stack: ga 9.4`
+:   Returns data quality metrics for a stream: degraded document percentage, failed document percentage, an overall quality indicator (good, degraded, or poor), and failure store status.
+
+`platform.streams.get_lifecycle_stats` {applies_to}`stack: ga 9.4`
+:   Returns lifecycle and storage statistics for a stream: effective retention policy and its source, total storage size, document count, and ILM tier breakdown.
+
+`platform.streams.query_documents` {applies_to}`stack: ga 9.4`
+:   Queries or aggregates data from a stream using a natural language description.
+
+`platform.streams.get_failed_documents` {applies_to}`stack: ga 9.4`
+:   Retrieves documents from a stream's failure store with error details (error type, message, stack trace) and the original document that failed ingestion.
+
+`platform.streams.sig_events.search_kis` {applies_to}`stack: ga 9.4`
+:   Searches Knowledge Indicators derived from streams data to enrich context for a target stream, service, or group of streams.
+
 ## Observability tools
 
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
@@ -194,7 +228,7 @@ The [built-in Observability agent](/explore-analyze/ai-features/agent-builder/bu
 % 3. Update the prerequisites and air-gapped hosting docs once confirmed.
 % Source: https://github.com/elastic/kibana/pull/255717
 `observability.elasticsearch` {applies_to}`stack: ga 9.4`
-:   Calls Elasticsearch APIs from natural language. Read operations (`GET`, `HEAD`) execute immediately; write and delete operations (`POST`, `PUT`, `DELETE`) require explicit user confirmation before execution. Responses are automatically truncated or summarized to fit the AI context window.
+:   Calls Elasticsearch APIs from natural language. Read operations (`GET`, `HEAD`) execute immediately, while write and delete operations (`POST`, `PUT`, `DELETE`) require explicit user confirmation before execution. Responses are automatically truncated or summarized to fit the AI context window.
 
 % TODO (9.4): Confirm with Obs team before publishing: which pages trigger each attachment,
 % what context is fetched, and do these apply to serverless:observability?
@@ -214,7 +248,7 @@ The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/b
 :::
 
 `security.alerts` {applies_to}`stack: ga 9.3+`
-:   Searches and analyzes security alerts using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
+:   Searches and analyzes [security alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
 $$$agent-builder-security-entity-risk-score-tool$$$
 `security.entity_risk_score`
@@ -228,13 +262,13 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
 
 `security.create_detection_rule` {applies_to}`stack: ga 9.4`
-:   Creates a security detection rule from a natural language description, including ES|QL query generation, metadata, tags, and scheduling. Currently supports ES|QL rules only; form changes suggested in chat must be applied manually.
+:   Creates a security detection [rule](/solutions/security/detect-and-alert/rule-types.md) from a natural language description, including ES|QL query generation, metadata, tags, and scheduling. Currently supports [ES|QL rules](/solutions/security/detect-and-alert/esql.md) only. Form changes suggested in chat must be applied manually.
 
 `security.get_entity` {applies_to}`stack: ga 9.4`
 :   Retrieves an entity profile (user, host, service, or generic) from the Entity store by entity ID (EUID), including any alerts that contributed to its risk score. Requires the entity risk engine and entity store to be enabled.
 
 `security.search_entities` {applies_to}`stack: ga 9.4`
-:   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known; use `security.get_entity` when it is.
+:   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is.
 
 % TODO (9.4): Confirm tool ID with Security team before publishing.
 % The ML jobs skill matches user questions to started ML anomaly jobs by comparing
