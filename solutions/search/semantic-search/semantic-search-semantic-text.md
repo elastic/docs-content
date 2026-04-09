@@ -21,7 +21,7 @@ This tutorial walks you through setting up semantic search using the [`semantic_
 
 The `semantic_text` field type simplifies the {{infer}} workflow by providing {{infer}} at ingestion time with sensible defaults. You don’t need to define model-related settings and parameters, or create {{infer}} ingest pipelines.
 
-We recommend using the `semantic_text` workflow for [semantic search](../semantic-search.md) in the {{stack}}. When you need more control over indexing and query settings, you can use the complete {{infer}} workflow instead (refer to the [Inference API documentation](../../../explore-analyze/elastic-inference/inference-api.md) for details).
+We recommend using the `semantic_text` workflow for [semantic search](../semantic-search.md) in the {{stack}}. When you need more control over indexing and query settings, you can use the complete {{infer}} workflow instead (refer to [Semantic search with the Inference API](semantic-search-inference.md) for details).
 
 This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), but you can use any service and model supported by the [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md).
 
@@ -86,7 +86,7 @@ PUT semantic-embeddings
 :::::::
 
 :::{note}
-For large-scale deployments using dense vector embeddings, you can significantly reduce memory usage by configuring quantization strategies like BBQ. For advanced configuration, refer to [Optimizing vector storage](../vector/vector-storage-for-semantic-search.md).
+For large-scale deployments using dense vector embeddings, you can significantly reduce memory usage by configuring quantization strategies like [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md). For advanced configuration, refer to [Optimizing vector storage](../vector/vector-storage-for-semantic-search.md).
 :::
 
 

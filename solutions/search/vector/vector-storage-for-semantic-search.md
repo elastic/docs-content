@@ -11,7 +11,9 @@ description: Reduce the memory footprint of dense vector embeddings in semantic 
 
 # Optimize dense vector storage for semantic search [semantic-text-index-options]
 
-When scaling semantic search, the memory footprint of your dense vector embeddings is a primary concern. You can optimize storage and search performance for your `semantic_text` indexes by configuring the `index_options` parameter on the underlying `dense_vector` field. The `index_options` parameter controls how vectors are indexed and stored. You can specify [quantization strategies](https://www.elastic.co/blog/vector-search-elasticsearch-rationale) like [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) that compress high-dimensional vectors into more efficient representations, achieving up to 32x memory reduction while maintaining search quality.
+When scaling semantic search, the memory footprint of dense vector embeddings is a primary concern. You can reduce storage requirements by configuring a [quantization strategy](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) on your `semantic_text` fields using the `index_options` parameter.
+
+This guide walks you through choosing a strategy and applying it to a `semantic_text` field mapping. For full details on all available quantization options and their parameters, refer to the [`dense_vector` field type reference](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options).
 
 ## Requirements
 
@@ -19,7 +21,7 @@ When scaling semantic search, the memory footprint of your dense vector embeddin
 - If you use a custom model, create the {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 
 ::::{note}
-These `index_options` do not apply to sparse vector models like ELSER, which use a different internal representation. For details on all available options and their trade-offs, refer to the [`dense_vector` `index_options` documentation](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options).
+These `index_options` do not apply to sparse vector models like ELSER, which use a different internal representation.
 ::::
 
 ## Choose a quantization strategy
@@ -64,7 +66,7 @@ PUT semantic-embeddings-optimized
 ```
 
 1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
-2. Better Binary Quantization with HNSW indexing for optimal memory efficiency. This setting applies to the underlying `dense_vector` field that stores the embeddings.
+2. Uses [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) with HNSW indexing for up to 32x memory reduction.
 
 ::::::::
 
@@ -91,7 +93,7 @@ PUT semantic-embeddings-flat
 }
 ```
 
-1. BBQ without HNSW for smaller datasets. Uses brute-force search, which requires fewer resources during indexing but more during querying.
+1. BBQ without HNSW for smaller datasets. Uses brute-force search, so queries are slower but indexing is lighter.
 
 ::::::::
 
@@ -123,7 +125,7 @@ PUT semantic-embeddings-disk
 }
 ```
 
-1. Use DiskBBQ when RAM is limited. This option keeps vectors in compressed form on disk and only loads/decompresses small portions on-demand during queries. Unlike standard HNSW indexes (which rely on filesystem cache to load vectors into memory for fast search), DiskBBQ dramatically reduces RAM requirements by avoiding the need to cache vectors in memory. This enables vector search on much larger datasets with minimal memory, though queries are slower compared to in-memory approaches.
+1. DiskBBQ keeps vectors compressed on disk, dramatically reducing RAM requirements at the cost of slower queries.
 
 ::::::::
 
@@ -148,7 +150,7 @@ PUT semantic-embeddings-int8
 }
 ```
 
-1. 8-bit integer quantization for 4x memory reduction with high accuracy retention. For 4-bit quantization, use `"type": "int4_hnsw"` instead (up to 8x memory reduction). For the full list of other available quantization options (including `int4_flat` and others), refer to the [`dense_vector` `index_options` documentation](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options).
+1. 8-bit integer quantization for ~4x memory reduction. For higher compression, use `"type": "int4_hnsw"` (~8x reduction).
 
 ::::::::
 
@@ -166,7 +168,7 @@ The response includes the `index_options` you configured under the `content` fie
 
 ## (Optional) Tune HNSW parameters
 
-For HNSW-specific tuning parameters like `m` and `ef_construction`, you can include them in the `index_options`:
+For HNSW-based strategies, you can tune graph parameters like `m` and `ef_construction` in the `index_options`. Refer to the [`dense_vector` field type reference](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) for the full list of tunable parameters.
 
 ```console
 PUT semantic-embeddings-custom
@@ -189,8 +191,8 @@ PUT semantic-embeddings-custom
 }
 ```
 
-1. Number of neighbors each node connects to in the HNSW graph. Higher values improve recall but increase memory usage. Default: `16`.
-2. Number of candidates considered during graph construction. Higher values improve index quality but slow down indexing. Default: `100`.
+1. Controls graph connectivity. Higher values improve recall at the cost of memory. Default: `16`.
+2. Controls index build quality. Higher values improve quality but slow indexing. Default: `100`.
 
 ## Next steps
 
