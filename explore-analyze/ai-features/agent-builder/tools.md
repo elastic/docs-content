@@ -48,7 +48,7 @@ You can extend the built-in tool catalog with your own custom tool definitions. 
 
 ## Manage tools
 
-You can view, organize, and manage tools from the Tools page in Kibana or programmatically using the [Tools API](kibana-api.md#tools-apis).
+You can view, organize, and manage tools from the **Tools** page in {{kib}} or programmatically using the [Tools API](kibana-api.md#tools-apis).
 
 - {applies_to}`stack: ga =9.3` Access the Tools page from the key actions menu in the Agent Chat UI.
 - {applies_to}`stack: ga 9.4+` Access the Tools page from **Manage components** at the bottom of the left sidebar, or from **Customize > Tools > Manage all tools** on an agent's page.
