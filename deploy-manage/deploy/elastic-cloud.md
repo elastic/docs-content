@@ -65,7 +65,7 @@ If your organization restricts outbound browser traffic with a firewall, proxy, 
 
 ### Standard {{ecloud}} domains
 
-These domains are used for the {{ecloud}} console, authentication, and deployment endpoints:
+These domains are used for the {{ecloud}} console, authentication, and deployment or project endpoints:
 
 * `cloud.elastic.co`
 * `*.cloud.es.io`
