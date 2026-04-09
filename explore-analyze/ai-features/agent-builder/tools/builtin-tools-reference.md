@@ -2,8 +2,8 @@
 navigation_title: "Built-in tools"
 description: "Reference of all built-in tools available in Elastic Agent Builder."
 applies_to:
-  stack: preview =9.2, ga 9.3+
-  serverless: ga
+  stack: 
+  serverless:
 products:
   - id: elasticsearch
   - id: kibana
@@ -33,13 +33,6 @@ Built-in platform core tools are available across all deployments, while observa
 [Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. For example, the Observability agent includes all observability tools by default. You can assign any available built-in tools to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create.
 
 ## Platform core tools
-```{applies_to}
-stack: preview =9.2, ga 9.3
-serverless:
-  elasticsearch: ga
-  observability: ga
-  security: ga
-```
 
 Platform core tools provide fundamental capabilities for interacting with {{es}} data, executing queries, and working with indices. They are relevant to many use cases.
 
@@ -47,25 +40,25 @@ Platform core tools provide fundamental capabilities for interacting with {{es}}
 All [built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are assigned these tools by default.
 :::
 
-`platform.core.execute_esql`
+`platform.core.execute_esql` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Executes an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query and returns the results in a tabular format.
 
-`platform.core.generate_esql`
+`platform.core.generate_esql` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Generates an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query from a natural language query.
 
-`platform.core.get_document_by_id`
+`platform.core.get_document_by_id` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Retrieves the full content of an {{es}} document based on its ID and index name.
 
-`platform.core.get_index_mapping`
+`platform.core.get_index_mapping` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Retrieves mappings for the specified index or indices.
 
-`platform.core.index_explorer`
+`platform.core.index_explorer` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Lists relevant indices and corresponding mappings based on a natural language query.
 
-`platform.core.list_indices`
+`platform.core.list_indices` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
-`platform.core.search`
+`platform.core.search` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
 
 $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
@@ -82,6 +75,9 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 
 `platform.core.get_workflow_execution_status` {applies_to}`stack: ga 9.3+`
 :   Retrieves the execution status of a workflow.
+
+`platform.core.resume_workflow_execution` {applies_to}`stack: ga 9.4`
+:   Resumes a workflow execution that is paused and waiting for human input.
 
 <!--
 ### Attachment tools
@@ -125,11 +121,6 @@ Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze
 -->
 
 ## Observability tools
-```{applies_to}
-stack: ga 9.3+
-serverless:
-  observability: ga
-```
 
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
 
@@ -137,48 +128,84 @@ Observability tools provide specialized capabilities for monitoring applications
 The [built-in Observability agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) is assigned these tools by default.
 :::
 
-`observability.get_alerts`
+% TODO (9.4): Document time range awareness behavior change in agent-builder-observability.md.
+% As of 9.4, the agent uses the current page's time picker by default when invoking tools,
+% unless the user specifies a different time range.
+% Source: https://github.com/elastic/kibana/pull/256343
+
+`observability.get_alerts` {applies_to}`stack: ga 9.3+`
 :   Retrieves Observability [alerts](/solutions/observability/incident-management/alerting.md) within a specified time range, supporting filtering by status (active/recovered) and KQL queries.
 
-`observability.get_services`
+`observability.get_services` {applies_to}`stack: ga 9.3+`
 :   Retrieves information about services being monitored in [APM](/solutions/observability/apm/index.md).
 
-`observability.get_hosts`
+`observability.get_hosts` {applies_to}`stack: ga 9.3+`
 :   Retrieves information about hosts being monitored in infrastructure monitoring.
 
-`observability.get_index_info`
+`observability.get_index_info` {applies_to}`stack: ga 9.3+`
 :   Retrieves information about Observability indices and their fields. Supports operations for getting an overview of available data sources, listing fields that contain actual data, and retrieving distinct values or ranges for specific fields.
 
-`observability.get_trace_metrics`
-:   Retrieves metrics and statistics for distributed traces.
+`observability.get_trace_metrics` {applies_to}`stack: ga 9.3+`
+:   Retrieves metrics and statistics for distributed traces.<br>
+    Supports sorting by `latency`, `failureRate`, or `throughput`, and returning average, p95, or p99 latency. {applies_to}`stack: ga 9.4`
 
-`observability.get_downstream_dependencies`
+`observability.get_downstream_dependencies` {applies_to}`stack: removed 9.4`
 :   Identifies downstream dependencies (other services, databases, external APIs) for a specific service to understand service topology and blast radius.
 
-`observability.get_log_categories`
+`observability.get_service_topology` {applies_to}`stack: ga 9.4`
+:   Retrieves the service topology (dependency graph) for a service, including RED metrics (latency, throughput, and error rate) per connection.
+
+`observability.get_log_categories` {applies_to}`stack: removed 9.4`
 :   Retrieves categorized log patterns to identify common log message types.
 
-`observability.get_log_change_points`
+`observability.get_log_groups` {applies_to}`stack: ga 9.4`
+:   Returns categorized log messages and exceptions from logs and spans, grouped by type (`spanException` for APM errors, `logException` for log exceptions).
+
+`observability.get_log_change_points` {applies_to}`stack: ga 9.3+`
 :   Detects statistically significant changes in log patterns and volumes.
 
-`observability.get_metric_change_points`
+`observability.get_metric_change_points` {applies_to}`stack: ga 9.3+`
 :   Detects statistically significant changes in metrics across groups (for example, by service, host, or custom fields), identifying spikes, dips, step changes, and trend changes.
 
-`observability.get_correlated_logs`
+`observability.get_correlated_logs` {applies_to}`stack: removed 9.4`
 :   Finds logs that are correlated with a specific event or time period.
 
-`observability.run_log_rate_analysis`
+`observability.get_traces` {applies_to}`stack: ga 9.4`
+:   Retrieves Observability documents (logs, transactions, spans, and errors) for one or more traces, grouped by trace ID.
+
+`observability.run_log_rate_analysis` {applies_to}`stack: ga 9.3+`
 :   Analyzes log ingestion rates to identify anomalies and trends.
 
-`observability.get_anomaly_detection_jobs`
+`observability.get_anomaly_detection_jobs` {applies_to}`stack: ga 9.3+`
 :   Retrieves {{ml-app}} [{{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection.md) and their top anomaly records for investigating outliers and abnormal behavior.
 
+`observability.get_logs` {applies_to}`stack: ga 9.4`
+:   Searches and filters logs, returning a histogram trend, total count, log samples, and message pattern categories in a single query.
+
+`observability.get_runtime_metrics` {applies_to}`stack: ga 9.4`
+:   Retrieves runtime metrics for services, including CPU usage, memory consumption, thread counts, and GC duration. Currently supports JVM (Java) metrics.
+
+`observability.get_trace_change_points` {applies_to}`stack: ga 9.4`
+:   Detects statistically significant change points in trace latency, throughput, and failure rate across groups (for example, by service, transaction, or host).
+
+% TODO (9.4): Confirm with Team:AI Infra before publishing:
+% 1. Is kb-product-doc-openapi-9.4.zip auto-installed with the knowledge base, or a separate step?
+% 2. Does this tool apply to stateful, serverless, or both?
+% 3. Update the prerequisites and air-gapped hosting docs once confirmed.
+% Source: https://github.com/elastic/kibana/pull/255717
+`observability.elasticsearch` {applies_to}`stack: ga 9.4`
+:   Calls Elasticsearch APIs from natural language. Read operations (`GET`, `HEAD`) execute immediately; write and delete operations (`POST`, `PUT`, `DELETE`) require explicit user confirmation before execution. Responses are automatically truncated or summarized to fit the AI context window.
+
+% TODO (9.4): Confirm with Obs team before publishing: which pages trigger each attachment,
+% what context is fetched, and do these apply to serverless:observability?
+% Source: https://github.com/elastic/kibana/pull/252390
+`observability.service` {applies_to}`stack: ga 9.4`
+:   Attaches APM service context when viewing service detail pages, including environments, agent info, versions, anomalies, alerts, and deployments.
+
+`observability.slo` {applies_to}`stack: ga 9.4`
+:   Attaches SLO context when viewing SLO detail pages.
+
 ## Security tools
-```{applies_to}
-stack: ga 9.3+
-serverless: 
-  security: ga
-```
 
 Security tools provide specialized capabilities for security monitoring, threat detection, and incident response.
 
@@ -186,7 +213,7 @@ Security tools provide specialized capabilities for security monitoring, threat 
 The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is assigned these tools by default.
 :::
 
-`security.alerts`
+`security.alerts` {applies_to}`stack: ga 9.3+`
 :   Searches and analyzes security alerts using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
 $$$agent-builder-security-entity-risk-score-tool$$$
@@ -199,6 +226,21 @@ $$$agent-builder-security-attack-discovery-search-tool$$$
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
+
+`security.create_detection_rule` {applies_to}`stack: ga 9.4`
+:   Creates a security detection rule from a natural language description, including ES|QL query generation, metadata, tags, and scheduling. Currently supports ES|QL rules only; form changes suggested in chat must be applied manually.
+
+`security.get_entity` {applies_to}`stack: ga 9.4`
+:   Retrieves an entity profile (user, host, service, or generic) from the Entity store by entity ID (EUID), including any alerts that contributed to its risk score. Requires the entity risk engine and entity store to be enabled.
+
+`security.search_entities` {applies_to}`stack: ga 9.4`
+:   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known; use `security.get_entity` when it is.
+
+% TODO (9.4): Confirm tool ID with Security team before publishing.
+% The ML jobs skill matches user questions to started ML anomaly jobs by comparing
+% against anomaly titles and descriptions, then generates ES|QL queries against
+% the relevant ML anomaly indices. Requires relevant ML security jobs to be started.
+% Source: https://github.com/elastic/kibana/pull/254908
 
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
