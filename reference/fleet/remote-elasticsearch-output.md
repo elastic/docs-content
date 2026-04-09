@@ -216,12 +216,10 @@ To configure {{ccs-init}} in the management cluster:
 1. Open the {{kib}} menu, and go to **{{manage-app}}** → **{{stack-manage-app}}** → **Remote Clusters**.
 2. Select **Add a remote cluster**, then follow the steps to add your remote cluster.
 
-    ::::{note}
-    When prompted to add the remote cluster's _remote address_, enter your remote cluster's proxy address:
+    When prompted to add the _remote address_, enter your remote cluster's proxy address:
 
     1. In your remote cluster, go to **Deployment** → **Manage this deployment** → **Security** (or go to `deployments/<deployment_id>/security`).
     2. Scroll to the **Remote cluster parameters** section, then copy the **Proxy Address**.
     3. In your management cluster, enter the copied value in the **Remote address** field of the remote cluster setup.
-    ::::
 
     Refer to [Remote clusters](/deploy-manage/remote-clusters.md) for more details on adding a remote cluster.
