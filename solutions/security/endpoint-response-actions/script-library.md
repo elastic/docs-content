@@ -36,7 +36,7 @@ To access the script library, find **Script library** in the navigation menu or 
 
     * **File type**: Select the type of uploaded file — **Script file** or **Archive**. If you select **Archive**, you must also provide the **Path to executable file**, which is the relative path to the main script inside the archive (for example, `./scripts/cleanup_logs.sh`).
     * **Name**: Enter a display name for the script.
-    * **Operating systems**: Select the platforms the script supports (Linux, macOS, Windows). Select all the platforms that the script is compatible with.
+    * **Operating systems**: Select all the platforms that the script is compatible with (Linux, macOS, Windows).
 
     **Optional fields:**
 
