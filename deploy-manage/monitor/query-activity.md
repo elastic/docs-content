@@ -86,7 +86,6 @@ Select a task ID from the table to open the **Query details** flyout.
 :::{image} /deploy-manage/images/query-activity-flyout.png
 :alt: The query details flyout showing the task ID, query type, start time, runtime, indices count, trace ID, source, and full query text
 :screenshot:
-:width: 66%
 :::
 
 The flyout provides detailed information about the selected query:
