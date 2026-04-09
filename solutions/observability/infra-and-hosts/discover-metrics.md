@@ -8,7 +8,7 @@ products:
   - id: security
 ---
 
-# Explore metrics data with Discover in Kibana
+# Explore metrics data with Discover in {{kib}}
 
 :::{important}
 This functionality is experimental and not supported. It may change or be removed at anytime.
