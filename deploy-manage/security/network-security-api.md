@@ -52,6 +52,8 @@ Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{eclo
 serverless:
 ```
 
+The following requirements apply to the project where you want to apply a network security policy:
+
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
 

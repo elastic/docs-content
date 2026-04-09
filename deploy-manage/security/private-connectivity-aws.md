@@ -36,6 +36,8 @@ To learn how private connection policies impact your deployment or project, refe
 serverless:
 ```
 
+The following requirements apply to the project where you want to apply a private connection policy:
+
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
 
