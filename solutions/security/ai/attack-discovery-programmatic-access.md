@@ -7,19 +7,19 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Query Attack Discovery indices with the Search API, ES|QL, and Kibana APIs, and learn how to guard integrations against injection risks.
+description: Query Attack Discovery indices with the Search API, ES|QL, and Kibana APIs, and learn how to guard against injection risks.
 ---
 
 # Query Attack Discovery data programmatically [attack-discovery-programmatic-access]
 
-You can query Attack Discovery data directly to build custom dashboards, feed automated triage pipelines, export discoveries to external tools, or integrate Attack Discovery results with third-party SIEM and SOAR platforms. This page explains how to query the correct indices, provides example queries, and covers security considerations for integrations that consume Attack Discovery data.
+You can query Attack Discovery data directly to build custom dashboards, feed automated triage pipelines, export discoveries to external tools, or integrate Attack Discovery results with third-party SIEM and SOAR platforms. This page explains how to query the correct indices, provides example queries, and covers security considerations consuming Attack Discovery data.
 
 ## Prerequisites [attack-discovery-programmatic-prerequisites]
 
 Before you query Attack Discovery data programmatically, make sure you have the following:
 
 - **Index privileges**: `read` and `view_index_metadata` privileges on the Attack Discovery alert indices. Refer to [Attack Discovery RBAC](/solutions/security/ai/attack-discovery.md#attack-discovery-rbac) for the full list of required privileges.
-- **Authentication**: An [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) to authenticate API requests. Scope the key to the minimum privileges your integration requires.
+- **Authentication**: An [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) to authenticate API requests. Scope the key to the minimum required privileges.
 
 ## Attack Discovery index aliases [attack-discovery-index-aliases]
 
