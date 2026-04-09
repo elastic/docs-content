@@ -203,9 +203,15 @@ If you choose not to synchronize integrations automatically, you need to ensure 
 
 If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests connectivity to all remote {{es}} outputs. If the {{fleet-server}} instances have different network scopes, some of them might not be able to reach a certain remote output. In this case, the remote output will display as unhealthy in the UI with an `Unable to connect` error. You can ignore this status as long as the {{fleet-server}} instance that manages the {{agents}} using that remote output has connectivity to the remote cluster.
 
-## Allow {{ccs}}
+## Set up {{ccs}} to query remote data [set-up-ccs]
 
-In some cases, {{ccs}} is needed to query data on the remote cluster from the management cluster: for example, Osquery queries on {{agents}} using a remote {{es}} output. To configure {{ccs-init}} in the management cluster:
+In some cases, {{ccs}} (CCS) is required to query data on the remote cluster from the management cluster, such as Osquery queries on {{agents}} that use a remote {{es}} output.
+
+:::{note}
+You don't need to set up {{ccs-init}} for {{agents}} to send data to a remote {{es}} output or for [automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md). Add {{ccs}} only when the management cluster must search data stored on the remote cluster.
+:::
+
+To configure {{ccs-init}} in the management cluster:
 
 1. Open the {{kib}} menu, and go to **{{manage-app}}** → **{{stack-manage-app}}** → **Remote Clusters**.
 2. Select **Add a remote cluster**, then follow the steps to add your remote cluster.
@@ -218,4 +224,4 @@ In some cases, {{ccs}} is needed to query data on the remote cluster from the ma
     3. In your management cluster, enter the copied value in the **Remote address** field of the remote cluster setup.
     ::::
 
-    Refer to [Remote clusters](/deploy-manage/remote-clusters.md) for more details on how to add your management cluster as a remote cluster.
+    Refer to [Remote clusters](/deploy-manage/remote-clusters.md) for more details on adding a remote cluster.
